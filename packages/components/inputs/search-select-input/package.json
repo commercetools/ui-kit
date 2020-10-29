@@ -1,22 +1,30 @@
 {
   "name": "@commercetools-uikit/search-select-input",
-  "version": "10.38.0",
   "description": "A search select input component built on top of `@commercetools-uikit/async-select-input` to asynchronously load results (options) using the keyword that the user has entered.",
-  "main": "dist/search-select-input.cjs.js",
-  "module": "dist/search-select-input.esm.js",
+  "version": "10.38.0",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/inputs/search-select-input"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/search-select-input.cjs.js",
+  "module": "dist/search-select-input.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
     "generate-readme": "generate-readme ."
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/async-select-input": "10.38.0",
     "@commercetools-uikit/design-system": "10.18.4",

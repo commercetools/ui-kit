@@ -3404,7 +3404,7 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@manypkg/find-root@^1.1.0":
+"@manypkg/find-root@1.1.0", "@manypkg/find-root@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@manypkg/find-root/-/find-root-1.1.0.tgz#a62d8ed1cd7e7d4c11d9d52a8397460b5d4ad29f"
   integrity sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==
@@ -14042,6 +14042,11 @@ octokit-pagination-methods@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/octokit-pagination-methods/-/octokit-pagination-methods-1.1.0.tgz#cf472edc9d551055f9ef73f6e42b4dbb4c80bea4"
   integrity sha512-fZ4qZdQ2nxJvtcasX7Ghl+WlWS/d9IgnBIwFZXVNNZUmzpno91SX5bc5vuxiuKoCtK78XxGGNuSCrDC7xYB3OQ==
+
+omit-empty-es@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/omit-empty-es/-/omit-empty-es-1.0.3.tgz#b6577b40756ff7d8da6e2d0ed4b4c79c883793e1"
+  integrity sha512-SobkOViA9e2sNtw7ebBDEfgy76zKbXx+quKqgCZ17a4Y7FZ6JduHwOlABsjs0Rdz6d/YAf9/bRS0Q+V6idWxOQ==
 
 omit-empty@1.0.0:
   version "1.0.0"

@@ -1,22 +1,30 @@
 {
   "name": "@commercetools-uikit/date-range-input",
-  "version": "10.38.0",
   "description": "The `DateRangeInput` component allows the user to select a date range.",
-  "main": "dist/date-range-input.cjs.js",
-  "module": "dist/date-range-input.esm.js",
+  "version": "10.38.0",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/inputs/date-range-input"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/date-range-input.cjs.js",
+  "module": "dist/date-range-input.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
     "generate-readme": "generate-readme ."
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/accessible-button": "10.30.1",
     "@commercetools-uikit/calendar-utils": "10.35.2",

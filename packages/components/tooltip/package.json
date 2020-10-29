@@ -1,21 +1,29 @@
 {
   "name": "@commercetools-uikit/tooltip",
-  "version": "10.37.1",
   "description": "Tooltips display informative text when users hover over or focus on an element.",
-  "main": "dist/tooltip.cjs.js",
-  "module": "dist/tooltip.esm.js",
+  "version": "10.37.1",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/tooltip"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/tooltip.cjs.js",
+  "module": "dist/tooltip.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/hooks": "10.30.1",

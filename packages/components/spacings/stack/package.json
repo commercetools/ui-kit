@@ -1,21 +1,29 @@
 {
-  "name": "@commercetools-uikit/spacings-stack",
+  "name": "@commercetools-uikit/stack",
+  "description": "A stack spacing component renders its children vertically with a consistent spacing between them.",
   "version": "10.30.1",
-  "description": "",
-  "main": "dist/stack.cjs.js",
-  "module": "dist/stack.esm.js",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/spacings/stack"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/stack.cjs.js",
+  "module": "dist/stack.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js"
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/design-system": "10.18.4",
     "@commercetools-uikit/utils": "10.21.0",

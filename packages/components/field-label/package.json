@@ -1,21 +1,29 @@
 {
   "name": "@commercetools-uikit/field-label",
+  "description": "The FieldLabel component represents the label for a field in a form.",
   "version": "10.38.0",
-  "description": "",
-  "main": "dist/field-label.cjs.js",
-  "module": "dist/field-label.esm.js",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/field-label"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/field-label.cjs.js",
+  "module": "dist/field-label.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/buttons": "10.36.0",
     "@commercetools-uikit/constraints": "10.30.1",

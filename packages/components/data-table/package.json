@@ -1,22 +1,30 @@
 {
   "name": "@commercetools-uikit/data-table",
-  "version": "10.38.0",
   "description": "A component for rendering tabular data.",
-  "main": "dist/data-table.cjs.js",
-  "module": "dist/data-table.esm.js",
+  "version": "10.38.0",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/data-table"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/data-table.cjs.js",
+  "module": "dist/data-table.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js",
     "generate-readme": "generate-readme ."
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/accessible-button": "10.30.1",
     "@commercetools-uikit/design-system": "10.13.0",
@@ -31,11 +39,11 @@
     "react-required-if": "1.0.3",
     "tiny-invariant": "1.1.0"
   },
-  "peerDependencies": {
-    "react": ">= 16.8.0"
-  },
   "devDependencies": {
     "formik": "2.2.0",
     "@testing-library/react-hooks": "3.4.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
   }
 }

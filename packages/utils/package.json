@@ -1,23 +1,31 @@
 {
   "name": "@commercetools-uikit/utils",
-  "version": "10.21.0",
   "description": "A collection of utilities shared across the other packages.",
-  "main": "dist/utils.cjs.js",
-  "module": "dist/utils.esm.js",
+  "version": "10.21.0",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/utils"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "main": "dist/utils.cjs.js",
+  "module": "dist/utils.esm.js",
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
   },
-  "files": ["dist"],
-  "sideEffects": false,
   "dependencies": {
     "@emotion/is-prop-valid": "0.8.8",
     "warning": "4.0.3"
-  },
-  "license": "MIT"
+  }
 }

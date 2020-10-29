@@ -1,21 +1,29 @@
 {
   "name": "@commercetools-uikit/design-system",
+  "description": "Core package of the commercetools design system.",
   "version": "10.18.4",
-  "description": "",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "design-system"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
   "main": "dist/design-system.cjs.js",
   "module": "dist/design-system.esm.js",
   "files": ["dist", "materials"],
-  "sideEffects": false,
   "scripts": {
     "prepare": "../scripts/version.js replace",
     "prebuild": "rimraf dist && yarn build:tokens",
     "build": "cross-env NODE_ENV=production rollup -c ../rollup.config.js -i ./index.js",
     "build:tokens": "node ./scripts/generate-custom-properties.js",
     "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn build:tokens'"
-  },
-  "license": "MIT"
+  }
 }

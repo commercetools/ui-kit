@@ -1,26 +1,30 @@
 {
   "name": "@commercetools-frontend/ui-kit",
+  "description": "A preset of all the UI-Kit components.",
   "version": "10.39.0",
-  "description": "",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "presets/ui-kit"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "design system", "react", "uikit"],
+  "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
   "main": "dist/ui-kit.cjs.js",
   "module": "dist/ui-kit.esm.js",
+  "files": ["dist", "materials", "i18n"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist && rimraf i18n && rimraf materials",
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js",
     "postbuild": "mkdir -p i18n/data && cp -R ../../design-system/materials materials && cp -R ../../packages/i18n/data i18n/"
   },
-  "files": [
-    "dist",
-    "materials",
-    "i18n"
-  ],
-  "sideEffects": false,
-  "license": "MIT",
   "dependencies": {
     "@commercetools-uikit/accessible-hidden": "10.30.2",
     "@commercetools-uikit/avatar": "10.37.1",
