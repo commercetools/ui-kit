@@ -2,34 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import invariant from 'tiny-invariant';
+import { getMaxPropTokenValue, getMaxPropEquivalent } from '../helpers';
 
-function getConstraintSyles({ max, constraint }) {
-  let constraintToken;
-
-  if (max === 1 || constraint === 'xs') constraintToken = vars.constraint1;
-  if (max === 2) constraintToken = vars.constraint2;
-  if (max === 3 || constraint === 's') constraintToken = vars.constraint3;
-  if (max === 4) constraintToken = vars.constraint4;
-  if (max === 5) constraintToken = vars.constraint5;
-  if (max === 6) constraintToken = vars.constraint6;
-  if (max === 7 || constraint === 'm') constraintToken = vars.constraint7;
-  if (max === 8) constraintToken = vars.constraint8;
-  if (max === 9) constraintToken = vars.constraint9;
-  if (max === 10 || constraint === 'l') constraintToken = vars.constraint10;
-  if (max === 12) constraintToken = vars.constraint12;
-  if (max === 13) constraintToken = vars.constraint13;
-  if (max === 14) constraintToken = vars.constraint14;
-  if (max === 15) constraintToken = vars.constraint15;
-  if (max === 16 || constraint === 'xl') constraintToken = vars.constraint16;
+function getConstraintSyles({ maxProp, constraintProp }) {
+  const constraintToken = maxProp
+    ? getMaxPropTokenValue(maxProp)
+    : getMaxPropTokenValue(getMaxPropEquivalent(constraintProp));
 
   return css`
     ${constraintToken ? `max-width: ${constraintToken};` : ''}
-    ${max === 'auto' ? 'width: auto;' : ''}
+    ${maxProp === 'auto' ? 'width: auto;' : ''}
   `;
 }
 
 const Horizontal = (props) => {
+  invariant(
+    !(props.constraint && props.max),
+    '`ui-kit/constraints/horizontal: props `constraint` and `max` should not be used in conjunction. Please prefer `max` prop.'
+  );
+
   // TODO: uncomment this when we effectively deprecate the constraint prop
   // if (props.constraint != null) {
   //   warnDeprecatedProp(
@@ -84,10 +76,6 @@ Horizontal.propTypes = {
    */
   constraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   children: PropTypes.node.isRequired,
-};
-
-Horizontal.defaultProps = {
-  max: 'scale',
 };
 
 export default Horizontal;

@@ -1,19 +1,25 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select } from '@storybook/addon-knobs/react';
+import { withKnobs } from '@storybook/addon-knobs/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import Horizontal from './horizontal';
 import Readme from '../../README.md';
 
 const ColouredRow = styled.div`
-  height: 100px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: ${vars.borderRadius6};
   color: ${vars.colorSurface};
   background-color: ${vars.colorPrimary};
+`;
+
+const Stack = styled.div`
+  > * + * {
+    margin: 8px 0 0;
+  }
 `;
 
 storiesOf('Components|Constraints', module)
@@ -25,15 +31,19 @@ storiesOf('Components|Constraints', module)
     },
   })
   .add('Horizontal', () => {
-    const max = select(
-      'max',
-      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'],
-      'scale'
-    );
+    const values = [
+      ...Array.from({ length: 16 }).map((_, index) => index + 1),
+      'scale',
+      'auto',
+    ];
 
     return (
-      <Horizontal max={max}>
-        <ColouredRow>{max.toString()}</ColouredRow>
-      </Horizontal>
+      <Stack>
+        {values.map((max) => (
+          <Horizontal key={max} max={max}>
+            <ColouredRow>{max.toString()}</ColouredRow>
+          </Horizontal>
+        ))}
+      </Stack>
     );
   });

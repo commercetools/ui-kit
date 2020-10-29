@@ -23,11 +23,11 @@
 
 ## `constraint` prop values (deprecating soon)
 
-| Scale | Pixel   |
-| :---- | :------ |
-| scale | `100%`  |
-| xs    | `42px`  |
-| s     | `142px` |
-| m     | `342px` |
-| l     | `484px` |
-| xl    | `784px` |
+| Scale | Pixel   | `max` prop equivalent |
+| :---- | :------ | --------------------- |
+| scale | `100%`  | `scale`               |
+| xs    | `42px`  | 1                     |
+| s     | `142px` | 3                     |
+| m     | `342px` | 7                     |
+| l     | `484px` | 10                    |
+| xl    | `784px` | 16                    |
