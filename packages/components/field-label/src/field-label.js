@@ -18,8 +18,13 @@ export const FieldLabel = (props) => {
       `ui-kit/FieldLabel: setting an hintIcon size is not supported.`
     );
   }
+
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal
+      max={Constraints.parseHorizontalConstraintProp(
+        props.horizontalConstraint
+      )}
+    >
       <Stack scale="xs">
         <Inline alignItems="flexStart" scale="xs">
           <Text.Wrap>
@@ -96,7 +101,14 @@ FieldLabel.propTypes = {
   hasRequiredIndicator: PropTypes.bool,
   htmlFor: PropTypes.string,
   id: PropTypes.string,
-  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf([
+    's',
+    'm',
+    'l',
+    'xl',
+    'scale',
+    ...Constraints.getAcceptedMaxPropValues(),
+  ]),
 };
 
 FieldLabel.defaultProps = {

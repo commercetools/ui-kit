@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
 import FlatButton from '@commercetools-uikit/flat-button';
 import * as icons from '@commercetools-uikit/icons';
+import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from '../README.md';
 import FieldLabel from './field-label';
@@ -28,7 +29,7 @@ storiesOf('Components|FieldLabel', module)
         <FieldLabel
           horizontalConstraint={select(
             'horizontalConstraint',
-            ['s', 'm', 'l', 'xl', 'scale'],
+            Constraints.getAcceptedMaxPropValues(3),
             'scale'
           )}
           title={text('title', 'Sort Order')}
