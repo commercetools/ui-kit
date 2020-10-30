@@ -1,7 +1,7 @@
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const getMaxPropTokenValue = (max) => {
-  return vars[`constraint${max}`] ?? null;
+  return vars[`constraint${max}`];
 };
 
 /* Useful for mapping a constraint prop to its equivalent max prop for ui-kit components
