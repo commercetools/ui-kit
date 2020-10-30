@@ -12,8 +12,20 @@ const getMaxPropEquivalent = (constraint) => {
   if (constraint === 'm') return 7;
   if (constraint === 'l') return 10;
   if (constraint === 'xl') return 16;
-  if (constraint === 'scale') return 'scale';
   return null;
 };
 
-export { getMaxPropTokenValue, getMaxPropEquivalent };
+const parseHorizontalConstraintProp = (prop) => {
+  if (typeof prop === 'number' || prop === 'auto' || prop === 'scale') {
+    // prop is of type `max`
+    return prop;
+  }
+  // prop is of type `constraint`
+  return getMaxPropEquivalent(prop);
+};
+
+export {
+  getMaxPropTokenValue,
+  getMaxPropEquivalent,
+  parseHorizontalConstraintProp,
+};
