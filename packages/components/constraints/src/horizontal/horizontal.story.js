@@ -4,6 +4,7 @@ import { withKnobs } from '@storybook/addon-knobs/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import Horizontal from './horizontal';
+import { getAcceptedMaxPropValues } from '../helpers';
 import Readme from '../../README.md';
 
 const ColouredRow = styled.div`
@@ -31,11 +32,7 @@ storiesOf('Components|Constraints', module)
     },
   })
   .add('Horizontal', () => {
-    const values = [
-      ...Array.from({ length: 16 }).map((_, index) => index + 1),
-      'scale',
-      'auto',
-    ];
+    const values = getAcceptedMaxPropValues();
 
     return (
       <Stack>
