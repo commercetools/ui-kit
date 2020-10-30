@@ -12,6 +12,7 @@ const getMaxPropEquivalent = (constraint) => {
   if (constraint === 'm') return 7;
   if (constraint === 'l') return 10;
   if (constraint === 'xl') return 16;
+  if (constraint === 'scale') return 'scale';
   return null;
 };
 
