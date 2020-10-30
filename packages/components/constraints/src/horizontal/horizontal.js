@@ -5,7 +5,7 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 import invariant from 'tiny-invariant';
 import { getMaxPropTokenValue, getMaxPropEquivalent } from '../helpers';
 
-function getConstraintSyles({ maxProp, constraintProp }) {
+function getConstraintStyles(maxProp, constraintProp) {
   const constraintToken = maxProp
     ? getMaxPropTokenValue(maxProp)
     : getMaxPropTokenValue(getMaxPropEquivalent(constraintProp));
@@ -37,7 +37,7 @@ const Horizontal = (props) => {
           width: 100%;
           position: relative;
         `,
-        getConstraintSyles(props),
+        getConstraintStyles(props.max, props.constraint),
       ]}
       {...filterDataAttributes(props)}
     >
