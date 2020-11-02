@@ -15,6 +15,12 @@ import Readme from '../README.md';
 import * as icons from '../../../icons';
 import NumberField from './number-field';
 
+const getStepValue = (step) => {
+  if (step.trim() === '') return undefined;
+  if (step === 'any') return step;
+  return parseFloat(step, 10);
+};
+
 storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addParameters({
@@ -69,7 +75,7 @@ storiesOf('Components|Fields', module)
               title={text('title', 'Age')}
               min={number('min')}
               max={number('max')}
-              step={number('step')}
+              step={getStepValue(text('step', ''))}
               hint={hint}
               description={text('description', '')}
               onInfoButtonClick={

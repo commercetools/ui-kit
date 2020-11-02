@@ -7,6 +7,12 @@ import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
 import NumberInput from './number-input';
 
+const getStepValue = (step) => {
+  if (step.trim() === '') return undefined;
+  if (step === 'any') return step;
+  return parseFloat(step, 10);
+};
+
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addParameters({
@@ -19,6 +25,7 @@ storiesOf('Components|Inputs', module)
     const min = text('min', '');
     const max = text('max', '');
     const step = text('step', '');
+
     return (
       <Section>
         <Value
@@ -35,7 +42,7 @@ storiesOf('Components|Inputs', module)
               onBlur={action('onBlur')}
               min={min.trim() === '' ? undefined : parseInt(min, 10)}
               max={max.trim() === '' ? undefined : parseInt(max, 10)}
-              step={step.trim() === '' ? undefined : parseFloat(step, 10)}
+              step={getStepValue(step)}
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}

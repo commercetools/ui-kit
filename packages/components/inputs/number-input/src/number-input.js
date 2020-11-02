@@ -63,8 +63,10 @@ NumberInput.propTypes = {
   max: PropTypes.number,
   /**
    * Value is used as `step` property on input field
+   * <br />
+   * Use the value `any` for inputs which accept an unpredictable amount of decimals.
    */
-  step: PropTypes.number,
+  step: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf(['any'])]),
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    * <br />
