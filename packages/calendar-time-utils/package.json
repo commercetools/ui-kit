@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/calendar-time-utils",
   "description": "Utilities to work with time values for a calendar.",
-  "version": "10.35.2",
+  "version": "10.39.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "packages/calendar-time-utils"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -25,7 +30,7 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js"
   },
   "dependencies": {
-    "@commercetools-uikit/utils": "10.21.0"
+    "@commercetools-uikit/utils": "10.39.1"
   },
   "peerDependencies": {
     "moment-timezone": "0.5.x"

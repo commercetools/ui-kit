@@ -1,5 +1,32 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.39.1
+
+### Patch Changes
+
+- [`7897ced`](https://github.com/commercetools/ui-kit/commit/7897cede31440e29ce8afdb2b17fa23462f6f211) [#1642](https://github.com/commercetools/ui-kit/pull/1642) Thanks [@emmenko](https://github.com/emmenko)! - Ensure each package.json of each package has all the necessary fields.
+
+- Updated dependencies [[`7897ced`](https://github.com/commercetools/ui-kit/commit/7897cede31440e29ce8afdb2b17fa23462f6f211)]:
+  - @commercetools-uikit/design-system@10.39.1
+  - @commercetools-uikit/accessible-hidden@10.39.1
+  - @commercetools-uikit/accessible-button@10.39.1
+  - @commercetools-uikit/primary-button@10.39.1
+  - @commercetools-uikit/secondary-button@10.39.1
+  - @commercetools-uikit/secondary-icon-button@10.39.1
+  - @commercetools-uikit/card@10.39.1
+  - @commercetools-uikit/collapsible-motion@10.39.1
+  - @commercetools-uikit/field-label@10.39.1
+  - @commercetools-uikit/grid@10.39.1
+  - @commercetools-uikit/icons@10.39.1
+  - @commercetools-uikit/async-select-input@10.39.1
+  - @commercetools-uikit/radio-input@10.39.1
+  - @commercetools-uikit/select-input@10.39.1
+  - @commercetools-uikit/tag@10.39.1
+  - @commercetools-uikit/text@10.39.1
+  - @commercetools-uikit/hooks@10.39.1
+  - @commercetools-uikit/utils@10.39.1
+  - @commercetools-uikit/spacings@10.39.1
+
 ## 10.38.0
 
 ### Patch Changes

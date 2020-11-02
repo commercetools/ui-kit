@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/messages",
   "description": "A component to render error or warning messages within together with form fields.",
-  "version": "10.36.0",
+  "version": "10.39.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "packages/components/messages"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -25,8 +30,8 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js"
   },
   "dependencies": {
-    "@commercetools-uikit/text": "10.36.0",
-    "@commercetools-uikit/utils": "10.21.0",
+    "@commercetools-uikit/text": "10.39.1",
+    "@commercetools-uikit/utils": "10.39.1",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
     "prop-types": "15.7.2",

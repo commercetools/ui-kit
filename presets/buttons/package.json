@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/buttons",
   "description": "A preset of all the UI-Kit buttons components.",
-  "version": "10.36.0",
+  "version": "10.39.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "presets/buttons"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -24,14 +29,14 @@
     "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
   },
   "dependencies": {
-    "@commercetools-uikit/accessible-button": "10.30.1",
-    "@commercetools-uikit/design-system": "10.18.4",
-    "@commercetools-uikit/flat-button": "10.36.0",
-    "@commercetools-uikit/icon-button": "10.36.0",
-    "@commercetools-uikit/link-button": "10.36.0",
-    "@commercetools-uikit/primary-button": "10.36.0",
-    "@commercetools-uikit/secondary-button": "10.36.0",
-    "@commercetools-uikit/secondary-icon-button": "10.36.0"
+    "@commercetools-uikit/accessible-button": "10.39.1",
+    "@commercetools-uikit/design-system": "10.39.1",
+    "@commercetools-uikit/flat-button": "10.39.1",
+    "@commercetools-uikit/icon-button": "10.39.1",
+    "@commercetools-uikit/link-button": "10.39.1",
+    "@commercetools-uikit/primary-button": "10.39.1",
+    "@commercetools-uikit/secondary-button": "10.39.1",
+    "@commercetools-uikit/secondary-icon-button": "10.39.1"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",

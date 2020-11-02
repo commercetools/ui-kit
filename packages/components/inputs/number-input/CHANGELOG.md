@@ -1,5 +1,18 @@
 # @commercetools-uikit/number-input
 
+## 10.39.1
+
+### Patch Changes
+
+- [`2348623`](https://github.com/commercetools/ui-kit/commit/2348623385bb9d4067f901bd353e78e98400e0e9) [#1645](https://github.com/commercetools/ui-kit/pull/1645) Thanks [@islam3zzat](https://github.com/islam3zzat)! - Allow NumberInput and NumberField to have the step prop set to "any"
+
+* [`7897ced`](https://github.com/commercetools/ui-kit/commit/7897cede31440e29ce8afdb2b17fa23462f6f211) [#1642](https://github.com/commercetools/ui-kit/pull/1642) Thanks [@emmenko](https://github.com/emmenko)! - Ensure each package.json of each package has all the necessary fields.
+
+* Updated dependencies [[`7897ced`](https://github.com/commercetools/ui-kit/commit/7897cede31440e29ce8afdb2b17fa23462f6f211)]:
+  - @commercetools-uikit/design-system@10.39.1
+  - @commercetools-uikit/constraints@10.39.1
+  - @commercetools-uikit/utils@10.39.1
+
 ## 10.34.1
 
 ### Patch Changes

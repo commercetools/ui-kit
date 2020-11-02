@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/field-errors",
   "description": "Renders errors based on configuration.",
-  "version": "10.36.0",
+  "version": "10.39.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "packages/components/field-errors"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -26,7 +31,7 @@
     "generate-readme": "generate-readme ."
   },
   "dependencies": {
-    "@commercetools-uikit/messages": "10.36.0",
+    "@commercetools-uikit/messages": "10.39.1",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
     "prop-types": "15.7.2"

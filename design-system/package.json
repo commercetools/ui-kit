@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/design-system",
   "description": "Core package of the commercetools design system.",
-  "version": "10.18.4",
+  "version": "10.39.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "design-system"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -18,7 +23,10 @@
   "sideEffects": false,
   "main": "dist/design-system.cjs.js",
   "module": "dist/design-system.esm.js",
-  "files": ["dist", "materials"],
+  "files": [
+    "dist",
+    "materials"
+  ],
   "scripts": {
     "prepare": "../scripts/version.js replace",
     "prebuild": "rimraf dist && yarn build:tokens",
