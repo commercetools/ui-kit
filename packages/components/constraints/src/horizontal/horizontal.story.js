@@ -23,6 +23,26 @@ const Stack = styled.div`
   }
 `;
 
+const Wrapper = styled.div`
+  position: relative;
+  padding-top: ${vars.spacingXl};
+`;
+
+const ColumnsContainer = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+`;
+const Column = styled.div`
+  display: inline-block;
+  width: ${vars.constraint2};
+  margin-right: ${vars.spacingM};
+  height: 100%;
+  text-align: center;
+  background-color: rgba(241, 109, 14, 0.3);
+`;
+
 storiesOf('Components|Constraints', module)
   .addDecorator(withKnobs)
   .addParameters({
@@ -35,12 +55,19 @@ storiesOf('Components|Constraints', module)
     const values = getAcceptedMaxPropValues();
 
     return (
-      <Stack>
-        {values.map((max) => (
-          <Horizontal key={max} max={max}>
-            <ColouredRow>{max.toString()}</ColouredRow>
-          </Horizontal>
-        ))}
-      </Stack>
+      <Wrapper>
+        <ColumnsContainer>
+          {Array.from({ length: 8 }).map((_, index) => (
+            <Column key={index}>{`Column ${index + 1}`}</Column>
+          ))}
+        </ColumnsContainer>
+        <Stack>
+          {values.map((max) => (
+            <Horizontal key={max} max={max}>
+              <ColouredRow>{max.toString()}</ColouredRow>
+            </Horizontal>
+          ))}
+        </Stack>
+      </Wrapper>
     );
   });
