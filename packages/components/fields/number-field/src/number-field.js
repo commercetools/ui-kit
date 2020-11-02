@@ -108,7 +108,9 @@ class NumberField extends React.Component {
      */
     max: PropTypes.number,
     /**
-     * Value is used as `step` property on input field
+     * Value is used as `step` property on input field.
+     * <br />
+     * Use the value `any` for inputs which accept an unpredictable amount of decimals.
      */
     step: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf(['any'])]),
 
