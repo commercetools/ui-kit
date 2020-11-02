@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { action } from '@storybook/addon-actions';
 import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
 import { Value } from 'react-value';
@@ -35,8 +36,8 @@ storiesOf('Components|Inputs', module)
               }}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['m', 'l', 'xl', 'scale'],
-                'l'
+                Constraints.getAcceptedMaxPropValues(7),
+                10
               )}
               id={text('id', '')}
               name={text('name', '')}

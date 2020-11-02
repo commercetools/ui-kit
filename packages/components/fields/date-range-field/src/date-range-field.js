@@ -28,7 +28,23 @@ class DateRangeField extends React.Component {
     /**
      * Horizontal size limit of the input fields.
      */
-    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf([
+      'm',
+      'l',
+      'xl',
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      'scale',
+      'auto',
+    ]),
     /**
      * A map of errors. Error messages for known errors are rendered automatically.
      * <br />
@@ -149,7 +165,11 @@ class DateRangeField extends React.Component {
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     return (
-      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
+      <Constraints.Horizontal
+        max={Constraints.parseHorizontalConstraintProp(
+          this.props.horizontalConstraint
+        )}
+      >
         <Spacings.Stack scale="xs">
           <FieldLabel
             title={this.props.title}

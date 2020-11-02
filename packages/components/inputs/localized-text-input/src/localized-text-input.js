@@ -150,7 +150,11 @@ const LocalizedTextInput = (props) => {
     languages.length > 1 && !props.hideLanguageExpansionControls;
 
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal
+      max={Constraints.parseHorizontalConstraintProp(
+        props.horizontalConstraint
+      )}
+    >
       <Stack scale="xs">
         <Stack>
           {languages.map((language, index) => {
@@ -269,7 +273,31 @@ LocalizedTextInput.propTypes = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf([
+    'xs',
+    's',
+    'm',
+    'l',
+    'xl',
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
   /**
    * Will apply the error state to each input without showing any error message.
    */

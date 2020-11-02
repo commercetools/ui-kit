@@ -9,6 +9,7 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
 import * as icons from '../../../icons';
@@ -48,8 +49,8 @@ storiesOf('Components|Fields', module)
               id={name.trim() === '' ? undefined : name}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['m', 'l', 'xl', 'scale'],
-                'm'
+                Constraints.getAcceptedMaxPropValues(7),
+                7
               )}
               errors={object('errors', { missing: true, customError: true })}
               renderError={(key) => {

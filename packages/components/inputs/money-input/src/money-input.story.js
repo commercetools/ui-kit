@@ -9,6 +9,7 @@ import {
   text,
   select,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
 import MoneyInput from './money-input';
@@ -82,8 +83,8 @@ class MoneyInputStory extends React.Component {
             hasWarning={boolean('hasWarning', false)}
             horizontalConstraint={select(
               'horizontalConstraint',
-              ['s', 'm', 'l', 'xl', 'scale'],
-              'm'
+              Constraints.getAcceptedMaxPropValues(3),
+              7
             )}
             hasHighPrecisionBadge={boolean('hasHighPrecisionBadge', false)}
           />

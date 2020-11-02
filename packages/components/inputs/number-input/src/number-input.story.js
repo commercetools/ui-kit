@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { Value } from 'react-value';
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
@@ -51,8 +52,8 @@ storiesOf('Components|Inputs', module)
               placeholder={text('placeholder', 'Placeholder')}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                'm'
+                Constraints.getAcceptedMaxPropValues(),
+                7
               )}
             />
           )}

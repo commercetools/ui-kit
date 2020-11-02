@@ -55,7 +55,11 @@ const Editor = (props) => {
           toggle();
         }
         return (
-          <Constraints.Horizontal constraint={props.horizontalConstraint}>
+          <Constraints.Horizontal
+            max={Constraints.parseHorizontalConstraintProp(
+              props.horizontalConstraint
+            )}
+          >
             <Stack scale="xs" alignItems="flex-end">
               <EditorWrapper
                 isDisabled={props.isDisabled}
@@ -151,7 +155,23 @@ const sharedProps = {
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
-  horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf([
+    'm',
+    'l',
+    'xl',
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
 };
 
 Editor.displayName = 'Editor';

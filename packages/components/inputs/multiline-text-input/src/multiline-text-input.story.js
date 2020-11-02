@@ -3,6 +3,7 @@ import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
 import MultilineTextInput from './multiline-text-input';
@@ -38,7 +39,7 @@ storiesOf('Components|Inputs', module)
               placeholder={text('placeholder')}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['m', 'l', 'xl', 'scale'],
+                Constraints.getAcceptedMaxPropValues(7),
                 'scale'
               )}
               isDisabled={boolean('isDisabled', false)}

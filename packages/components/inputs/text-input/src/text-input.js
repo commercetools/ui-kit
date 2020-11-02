@@ -7,7 +7,11 @@ import { getInputStyles } from '../../styles';
 
 const TextInput = (props) => {
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal
+      max={Constraints.parseHorizontalConstraintProp(
+        props.horizontalConstraint
+      )}
+    >
       <input
         id={props.id}
         name={props.name}
@@ -93,7 +97,28 @@ TextInput.propTypes = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf([
+    's',
+    'm',
+    'l',
+    'xl',
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
 };
 
 TextInput.defaultProps = {

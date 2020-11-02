@@ -93,7 +93,11 @@ const DateInput = (props) => {
   };
 
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal
+      max={Constraints.parseHorizontalConstraintProp(
+        props.horizontalConstraint
+      )}
+    >
       <Downshift
         key={intl.locale}
         inputId={props.id}
@@ -313,7 +317,23 @@ DateInput.propTypes = {
   /**
    * Horizontal size limit of the input field.
    */
-  horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf([
+    'm',
+    'l',
+    'xl',
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
   /**
    * The selected date, must either be an empty string or a date formatted as "YYYY-MM-DD".
    */
