@@ -5,6 +5,8 @@
 
 ## Description
 
+An input component that works as checkbox input.
+
 ## Installation
 
 ```
