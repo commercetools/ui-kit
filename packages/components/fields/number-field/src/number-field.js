@@ -110,7 +110,7 @@ class NumberField extends React.Component {
     /**
      * Value is used as `step` property on input field
      */
-    step: PropTypes.number,
+    step: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf(['any'])]),
 
     // LabelField
     /**

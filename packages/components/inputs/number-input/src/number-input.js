@@ -64,7 +64,7 @@ NumberInput.propTypes = {
   /**
    * Value is used as `step` property on input field
    */
-  step: PropTypes.number,
+  step: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf(['any'])]),
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    * <br />
