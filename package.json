@@ -24,7 +24,7 @@
   "scripts": {
     "auth": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "clean": "lerna exec 'rm -rf dist'",
-    "generate-readmes": "lerna run generate-readme --concurrency 6 --no-private",
+    "generate-readmes": "yarn generate-readme --all-workspace-packages",
     "generate-icons": "node ./scripts/generate-icon-exports.js",
     "design-tokens:build": "yarn --cwd design-system build:tokens",
     "design-tokens:build:watch": "yarn --cwd design-system build:tokens:watch",

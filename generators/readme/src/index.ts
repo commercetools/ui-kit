@@ -458,13 +458,7 @@ function readmeTransformer(packageFolderPath: string) {
 export async function transformDocument(
   doc: VFileCompatible,
   packageFolderPath: string
-): Promise<VFile | undefined> {
-  const hasReadmeGenerationEnabled = fs.existsSync(
-    path.join(packageFolderPath, 'docs')
-  );
-
-  if (!hasReadmeGenerationEnabled) return;
-
+) {
   return new Promise<VFile>((resolve, reject) => {
     unified()
       .use(markdown)
@@ -511,19 +505,25 @@ export async function generate(
     const workspacePackages = getPackagesSync(process.cwd());
     const aggregatedErrors: string[] = [];
     await Promise.all(
-      workspacePackages.packages.map(async (packageInfo) => {
-        const readmePath = path.join(packageInfo.dir, 'README.md');
-        try {
-          // Create an empty VFile.
-          const doc = vfile();
-          const content = await transformDocument(doc, packageInfo.dir);
-          if (content) {
+      workspacePackages.packages
+        .filter((packageInfo) => {
+          const hasReadmeGenerationEnabled = fs.existsSync(
+            path.join(packageInfo.dir, 'docs')
+          );
+          return hasReadmeGenerationEnabled;
+        })
+        .map(async (packageInfo) => {
+          const readmePath = path.join(packageInfo.dir, 'README.md');
+          console.log('Processing', packageInfo.packageJson.name);
+          try {
+            // Create an empty VFile.
+            const doc = vfile();
+            const content = await transformDocument(doc, packageInfo.dir);
             writeFile(readmePath, content, options);
+          } catch (error) {
+            aggregatedErrors.push(error.message);
           }
-        } catch (error) {
-          aggregatedErrors.push(error.message);
-        }
-      })
+        })
     );
     if (aggregatedErrors.length > 0) {
       throw new Error(
@@ -537,8 +537,6 @@ export async function generate(
     // Create an empty VFile.
     const doc = vfile();
     const content = await transformDocument(doc, packageFolderPath);
-    if (content) {
-      writeFile(path.join(packageFolderPath, 'README.md'), content, options);
-    }
+    writeFile(path.join(packageFolderPath, 'README.md'), content, options);
   }
 }
