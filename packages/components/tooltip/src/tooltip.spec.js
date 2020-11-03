@@ -7,6 +7,7 @@ import {
   render,
   fireEvent,
   waitFor,
+  waitForElementToBeRemoved,
 } from '../../../../test/test-utils';
 import Tooltip from './tooltip';
 
@@ -147,7 +148,7 @@ describe('Tooltip', () => {
       expect(onOpen).toHaveBeenCalled();
       // should show the tooltip
 
-      screen.findByText('What kind of bear is best?');
+      await screen.findByText('What kind of bear is best?');
       // should remove the title
       expect(button).toHaveProperty('title', '');
       fireEvent.mouseLeave(button);
@@ -182,7 +183,7 @@ describe('Tooltip', () => {
       expect(onFocus).toHaveBeenCalled();
       expect(onOpen).toHaveBeenCalled();
       // should show the tooltip
-      screen.findByText('What kind of bear is best?');
+      await screen.findByText('What kind of bear is best?');
       // should remove the title
       expect(button).toHaveProperty('title', '');
       fireEvent.blur(button);
@@ -220,7 +221,7 @@ describe('Tooltip', () => {
       expect(onFocus).toHaveBeenCalled();
       expect(onOpen).toHaveBeenCalled();
       // should show the tooltip
-      screen.findByText('What kind of bear is best?');
+      await screen.findByText('What kind of bear is best?');
       fireEvent.blur(button);
       // should call callback
       expect(onBlur).toHaveBeenCalled();
@@ -230,11 +231,11 @@ describe('Tooltip', () => {
       act(() => {
         jest.advanceTimersByTime(1000);
       });
-      expect(onClose).toHaveBeenCalled();
       // should hide tooltip again
-      expect(
-        screen.queryByText('What kind of bear is best?')
-      ).not.toBeInTheDocument();
+      await waitForElementToBeRemoved(() =>
+        screen.getByText('What kind of bear is best?')
+      );
+      expect(onClose).toHaveBeenCalled();
     });
   });
   describe('when controlled with open prop', () => {
@@ -248,7 +249,7 @@ describe('Tooltip', () => {
       ).not.toBeInTheDocument();
       toggleButton.click();
       // should show the tooltip
-      screen.findByText('What kind of bear is best?');
+      await screen.findByText('What kind of bear is best?');
       toggleButton.click();
       // tooltip should be hidden
       expect(
@@ -350,7 +351,7 @@ describe('when used with a custom wrapper component', () => {
     expect(onFocus).toHaveBeenCalled();
     expect(onOpen).toHaveBeenCalled();
     // should show the tooltip
-    screen.findByText('What kind of bear is best?');
+    await screen.findByText('What kind of bear is best?');
     // should remove the title
     expect(button).toHaveProperty('title', '');
     fireEvent.blur(button);
