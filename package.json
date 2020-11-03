@@ -200,6 +200,7 @@
     "yaml-loader": "0.6.0"
   },
   "resolutions": {
+    "@testing-library/dom": "7.26.3",
     "**/core-js-compat": "3.6.5"
   }
 }
