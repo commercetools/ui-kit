@@ -201,6 +201,9 @@
   },
   "resolutions": {
     "@testing-library/dom": "7.26.3",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "react-test-renderer": "16.14.0",
     "**/core-js-compat": "3.6.5"
   }
 }
