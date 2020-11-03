@@ -1,8 +1,8 @@
 {
   "files": [
     {
-      "path": "visual-testing-app/dist/ui-kit.js",
-      "maxSize": "190 kB"
+      "path": "packages/**/dist/*.es.js",
+      "maxSize": "60 kB"
     }
   ]
 }
