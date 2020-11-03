@@ -29,6 +29,7 @@ import type {
 import fs from 'fs';
 import path from 'path';
 import shelljs from 'shelljs';
+import { getPackagesSync } from '@manypkg/get-packages';
 import toVfile from 'to-vfile';
 import vfile from 'vfile';
 import unified from 'unified';
@@ -373,9 +374,9 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
   return table(tableHeaders, tableBody, [null, null, 'center', null, null]);
 };
 
-function readmeTransformer(options: GeneratorReadmeOptions) {
+function readmeTransformer(packageFolderPath: string) {
   const packageJsonRaw = fs.readFileSync(
-    path.join(options.packagePath, 'package.json'),
+    path.join(packageFolderPath, 'package.json'),
     {
       encoding: 'utf8',
     }
@@ -386,7 +387,7 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
     description: parsedPackageJson.description,
     version: parsedPackageJson.version,
     readme: {
-      componentPath: `src/${path.basename(options.packagePath)}.js`,
+      componentPath: `src/${path.basename(packageFolderPath)}.js`,
       ...(parsedPackageJson.readme ?? {}),
     },
     peerDependencies: parsedPackageJson.peerDependencies,
@@ -394,12 +395,12 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
 
   const paths = {
     componentPath: path.join(
-      options.packagePath,
+      packageFolderPath,
       packageJsonInfo.readme.componentPath
     ),
-    description: path.join(options.packagePath, 'docs/description.md'),
-    usageExample: path.join(options.packagePath, 'docs/usage-example.js'),
-    additionalInfo: path.join(options.packagePath, 'docs/additional-info.md'),
+    description: path.join(packageFolderPath, 'docs/description.md'),
+    usageExample: path.join(packageFolderPath, 'docs/usage-example.js'),
+    additionalInfo: path.join(packageFolderPath, 'docs/additional-info.md'),
   };
 
   return transformer;
@@ -413,7 +414,7 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
         ].join('\n')
       ),
       // The main heading is derived by the name of the folder
-      heading(1, upperFirst(camelcase(path.basename(options.packagePath)))),
+      heading(1, upperFirst(camelcase(path.basename(packageFolderPath)))),
       // The description is what's defined in the package.json
       heading(2, 'Description'),
       ...(fs.existsSync(paths.description)
@@ -456,14 +457,20 @@ function readmeTransformer(options: GeneratorReadmeOptions) {
 
 export async function transformDocument(
   doc: VFileCompatible,
-  options: GeneratorReadmeOptions
-) {
+  packageFolderPath: string
+): Promise<VFile | undefined> {
+  const hasReadmeGenerationEnabled = fs.existsSync(
+    path.join(packageFolderPath, 'docs')
+  );
+
+  if (!hasReadmeGenerationEnabled) return;
+
   return new Promise<VFile>((resolve, reject) => {
     unified()
       .use(markdown)
       .use(stringify, stringfyOptions)
       .use(mdx)
-      .use(readmeTransformer, options)
+      .use(readmeTransformer, packageFolderPath)
       .process(doc, (err, file) => {
         if (err) reject(err);
         else resolve(file);
@@ -471,20 +478,13 @@ export async function transformDocument(
   });
 }
 
-export async function generate(
-  relativePackagePath: string,
-  flags: CommandFlags
+function writeFile(
+  filePath: string,
+  file: VFile,
+  options: GeneratorReadmeOptions
 ) {
-  const options: GeneratorReadmeOptions = {
-    packagePath: path.resolve(process.cwd(), relativePackagePath),
-    dryRun: flags.dryRun,
-  };
-
-  // Create an empty VFile.
-  const doc = vfile();
-  const file = await transformDocument(doc, options);
   // Assign the path where to write the file to.
-  file.path = path.join(options.packagePath, 'README.md');
+  file.path = filePath;
   // Format file using prettier.
   file.contents = prettier.format(file.contents.toString(), {
     ...prettierConfig,
@@ -495,6 +495,50 @@ export async function generate(
     console.log(vfile(file).contents);
   } else {
     // Write the file to disk.
-    await toVfile.write(file);
+    toVfile.writeSync(file);
+  }
+}
+
+export async function generate(
+  relativePackagePath: string,
+  flags: CommandFlags
+) {
+  const options: GeneratorReadmeOptions = {
+    dryRun: flags.dryRun,
+  };
+
+  if (flags.allWorkspacePackages) {
+    const workspacePackages = getPackagesSync(process.cwd());
+    const aggregatedErrors: string[] = [];
+    await Promise.all(
+      workspacePackages.packages.map(async (packageInfo) => {
+        const readmePath = path.join(packageInfo.dir, 'README.md');
+        try {
+          // Create an empty VFile.
+          const doc = vfile();
+          const content = await transformDocument(doc, packageInfo.dir);
+          if (content) {
+            writeFile(readmePath, content, options);
+          }
+        } catch (error) {
+          aggregatedErrors.push(error.message);
+        }
+      })
+    );
+    if (aggregatedErrors.length > 0) {
+      throw new Error(
+        `Found errors in ${
+          aggregatedErrors.length
+        } packages:\n\n${aggregatedErrors.join('\n')}\n`
+      );
+    }
+  } else {
+    const packageFolderPath = path.resolve(process.cwd(), relativePackagePath);
+    // Create an empty VFile.
+    const doc = vfile();
+    const content = await transformDocument(doc, packageFolderPath);
+    if (content) {
+      writeFile(path.join(packageFolderPath, 'README.md'), content, options);
+    }
   }
 }

@@ -30,6 +30,12 @@ const writeFile = (
   }
 };
 
+const getRelativePathToWorkspace = (relativePackageFolderPath: string) =>
+  relativePackageFolderPath
+    .split('/')
+    .map(() => '..')
+    .join('/');
+
 export const transformDocument = (
   packageFolderPath: string,
   options: GeneratorPackageJsonOptions
@@ -57,6 +63,11 @@ export const transformDocument = (
     );
   }
 
+  const relativePathToWorkspace = getRelativePathToWorkspace(
+    relativePackageFolderPath
+  );
+  delete originalPackageJson.scripts['generate-readme'];
+
   return omitEmpty({
     name: `${npmScope}/${packageFolderName}`,
     description: originalPackageJson.description,
@@ -78,7 +89,14 @@ export const transformDocument = (
     main: originalPackageJson.main,
     module: originalPackageJson.module,
     files: originalPackageJson.files,
-    scripts: originalPackageJson.scripts,
+    scripts: {
+      ...originalPackageJson.scripts,
+      prepare: `${relativePathToWorkspace}/scripts/version.js replace`,
+      prebuild: 'rimraf dist',
+      build: 'yarn build:bundles',
+      'build:bundles': `cross-env NODE_ENV=production rollup -c ${relativePathToWorkspace}/rollup.config.js -i ./src/index.ts`,
+      'build:bundles:watch': 'yarn build:bundles -w',
+    },
     dependencies: originalPackageJson.dependencies,
     devDependencies: originalPackageJson.devDependencies,
     peerDependencies: originalPackageJson.peerDependencies,
@@ -118,6 +136,9 @@ export async function generate(
     }
   } else {
     const packageFolderPath = path.resolve(process.cwd(), relativePackagePath);
-    transformDocument(packageFolderPath, options);
+    const doc = transformDocument(packageFolderPath, options);
+    if (doc) {
+      writeFile(path.join(packageFolderPath, 'package.json'), doc, options);
+    }
   }
 }
