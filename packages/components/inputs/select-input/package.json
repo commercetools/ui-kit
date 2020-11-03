@@ -37,6 +37,7 @@
     "@emotion/core": "^10.0.34",
     "@emotion/is-prop-valid": "0.8.8",
     "@emotion/styled": "^10.0.27",
+    "@emotion/styled-base": "^10.0.31",
     "lodash": "4.17.20",
     "lodash-es": "4.17.15",
     "prop-types": "15.7.2",

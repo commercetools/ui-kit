@@ -50,6 +50,7 @@
     "@commercetools-uikit/utils": "10.39.1",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
+    "@emotion/styled-base": "^10.0.31",
     "debounce-promise": "^3.1.2",
     "lodash": "4.17.20",
     "lodash-es": "4.17.15",

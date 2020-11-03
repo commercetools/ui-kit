@@ -12,6 +12,7 @@
     "@commercetools-uikit/design-system": "10.39.1",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
+    "@emotion/styled-base": "^10.0.31",
     "emotion-theming": "10.0.27",
     "moment": "2.29.1",
     "moment-timezone": "0.5.31",
