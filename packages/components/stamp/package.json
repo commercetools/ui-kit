@@ -9,12 +9,7 @@
     "directory": "packages/components/stamp"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -22,15 +17,18 @@
   },
   "sideEffects": false,
   "main": "dist/stamp.cjs.js",
-  "module": "dist/stamp.esm.js",
+  "module": "dist/stamp.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js",
-    "generate-readme": "generate-readme ."
+    "build": "yarn build:bundles",
+    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js",
+    "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/design-system": "10.39.1",
     "@emotion/core": "^10.0.34",
     "prop-types": "15.7.2"

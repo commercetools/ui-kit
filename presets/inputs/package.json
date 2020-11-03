@@ -9,12 +9,7 @@
     "directory": "presets/inputs"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -22,13 +17,18 @@
   },
   "sideEffects": false,
   "main": "dist/inputs.cjs.js",
-  "module": "dist/inputs.esm.js",
+  "module": "dist/inputs.es.js",
   "files": ["dist"],
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js"
+    "build": "yarn build:bundles",
+    "prepare": "../../scripts/version.js replace",
+    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js",
+    "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/async-creatable-select-input": "10.39.1",
     "@commercetools-uikit/async-select-input": "10.39.1",
     "@commercetools-uikit/checkbox-input": "10.39.1",

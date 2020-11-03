@@ -3,10 +3,10 @@ import type { Text } from 'mdast';
 
 export type CommandFlags = {
   dryRun: boolean;
+  allWorkspacePackages: boolean;
 };
 
 export type GeneratorReadmeOptions = {
-  packagePath: string;
   dryRun: CommandFlags['dryRun'];
 };
 

@@ -1,7 +1,9 @@
 /* eslint-disable global-require */
 module.exports = function getBabelPreset(api) {
-  // Cache the returned value forever and don't call this function again.
-  api.cache(true);
+  if (api) {
+    // Cache the returned value forever and don't call this function again.
+    api.cache(true);
+  }
 
   // This is similar to how `env` works in Babel:
   // https://babeljs.io/docs/usage/babelrc/#env-option
@@ -29,7 +31,7 @@ module.exports = function getBabelPreset(api) {
         require('@babel/preset-env').default,
         {
           targets: {
-            browsers: ['last 1 versions'],
+            browsers: ['last 2 versions'],
             node: '8',
           },
         },
@@ -39,10 +41,9 @@ module.exports = function getBabelPreset(api) {
         require('@babel/preset-env').default,
         {
           targets: {
-            browsers: ['last 1 versions'],
-            node: 'current',
+            browsers: ['last 2 versions'],
           },
-          corejs: 2,
+          corejs: { version: 3, proposals: true },
           // `entry` transforms `@babel/polyfill` into individual requires for
           // the targeted browsers. This is safer than `usage` which performs
           // static code analysis to determine what's required.
@@ -108,7 +109,9 @@ module.exports = function getBabelPreset(api) {
       [
         require('@babel/plugin-transform-runtime').default,
         {
-          helpers: false,
+          corejs: 3,
+          // To be able to use `runtime` in Rollup babel plugin
+          helpers: true,
           regenerator: true,
         },
       ],

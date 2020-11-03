@@ -9,12 +9,7 @@
     "directory": "packages/components/fields/password-field"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -22,15 +17,18 @@
   },
   "sideEffects": false,
   "main": "dist/password-field.cjs.js",
-  "module": "dist/password-field.esm.js",
+  "module": "dist/password-field.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./index.js",
-    "generate-readme": "generate-readme ."
+    "build": "yarn build:bundles",
+    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./src/index.js",
+    "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/constraints": "10.39.1",
     "@commercetools-uikit/design-system": "10.39.1",
     "@commercetools-uikit/field-errors": "10.39.1",

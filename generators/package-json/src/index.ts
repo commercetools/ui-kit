@@ -30,6 +30,12 @@ const writeFile = (
   }
 };
 
+const getRelativePathToWorkspace = (relativePackageFolderPath: string) =>
+  relativePackageFolderPath
+    .split('/')
+    .map(() => '..')
+    .join('/');
+
 export const transformDocument = (
   packageFolderPath: string,
   options: GeneratorPackageJsonOptions
@@ -57,6 +63,13 @@ export const transformDocument = (
     );
   }
 
+  const relativePathToWorkspace = getRelativePathToWorkspace(
+    relativePackageFolderPath
+  );
+  const moduleEntryPath = fs.existsSync(path.join(packageFolderPath, 'src'))
+    ? './src/index.js'
+    : './index.js';
+
   return omitEmpty({
     name: `${npmScope}/${packageFolderName}`,
     description: originalPackageJson.description,
@@ -75,11 +88,22 @@ export const transformDocument = (
       access: 'public',
     },
     sideEffects: false,
-    main: originalPackageJson.main,
-    module: originalPackageJson.module,
+    main: `dist/${packageFolderName}.cjs.js`,
+    module: `dist/${packageFolderName}.es.js`,
     files: originalPackageJson.files,
-    scripts: originalPackageJson.scripts,
-    dependencies: originalPackageJson.dependencies,
+    scripts: {
+      ...originalPackageJson.scripts,
+      prepare: `${relativePathToWorkspace}/scripts/version.js replace`,
+      prebuild: 'rimraf dist',
+      build: 'yarn build:bundles',
+      'build:bundles': `cross-env NODE_ENV=production rollup -c ${relativePathToWorkspace}/rollup.config.js -i ${moduleEntryPath}`,
+      'build:bundles:watch': 'yarn build:bundles -w',
+    },
+    dependencies: {
+      '@babel/runtime': '7.12.1',
+      '@babel/runtime-corejs3': '7.12.1',
+      ...originalPackageJson.dependencies,
+    },
     devDependencies: originalPackageJson.devDependencies,
     peerDependencies: originalPackageJson.peerDependencies,
     readme: originalPackageJson.readme,
@@ -118,6 +142,9 @@ export async function generate(
     }
   } else {
     const packageFolderPath = path.resolve(process.cwd(), relativePackagePath);
-    transformDocument(packageFolderPath, options);
+    const doc = transformDocument(packageFolderPath, options);
+    if (doc) {
+      writeFile(path.join(packageFolderPath, 'package.json'), doc, options);
+    }
   }
 }

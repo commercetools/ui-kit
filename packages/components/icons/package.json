@@ -9,12 +9,7 @@
     "directory": "packages/components/icons"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -22,13 +17,18 @@
   },
   "sideEffects": false,
   "main": "dist/icons.cjs.js",
-  "module": "dist/icons.esm.js",
+  "module": "dist/icons.es.js",
   "files": ["dist"],
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./index.js"
+    "build": "yarn build:bundles",
+    "prepare": "../../../scripts/version.js replace",
+    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js",
+    "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/design-system": "10.39.1",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",

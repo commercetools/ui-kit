@@ -132,10 +132,10 @@ const Tooltip = (props) => {
 
       if (closeAfter) {
         leaveTimer.current = setTimeout(() => {
-          handleClose();
+          handleClose(event);
         }, closeAfter);
       } else {
-        handleClose();
+        handleClose(event);
       }
     },
     [closeAfter, onBlur, onMouseLeave, handleClose]

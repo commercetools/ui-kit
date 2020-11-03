@@ -10,14 +10,16 @@ import mri from 'mri';
 import report from 'vfile-reporter';
 import { generate } from '../src/index';
 
-const flags = mri(process.argv.slice(2), {
-  alias: { help: ['h'], boolean: ['dry-run'] },
-});
+const flags = mri(process.argv.slice(2), { alias: { help: ['h'] } });
 const [pathToPackage] = flags._;
 
 const dryRun: boolean = flags['dry-run'] ? true : false;
+const allWorkspacePackages: boolean = flags['all-workspace-packages']
+  ? true
+  : false;
+const hasRequiredArguments = allWorkspacePackages || pathToPackage;
 
-if (flags.help || !pathToPackage) {
+if (flags.help || !hasRequiredArguments) {
   console.log(`
   Usage: generate-readme [path-to-package] [options]
 
@@ -28,13 +30,15 @@ if (flags.help || !pathToPackage) {
     This assumes that the path is the package folder containing a "package.json".
 
   Options:
-    --dry-run  (optional) Simulate a run, the generated content will be printed to stdout.
+    --all-workspace-packages      (optional) Run the script to all workspace packages. The "path-to-package" option is ignored.
+    --dry-run                     (optional) Simulate a run, the generated content will be printed to stdout.
   `);
   process.exit(0);
 }
 
 const options: CommandFlags = {
   dryRun,
+  allWorkspacePackages,
 };
 
 generate(pathToPackage, options).catch((error) => {
