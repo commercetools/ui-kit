@@ -9,12 +9,7 @@
     "directory": "presets/ui-kit"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -23,16 +18,14 @@
   "sideEffects": false,
   "main": "dist/ui-kit.cjs.js",
   "module": "dist/ui-kit.esm.js",
-  "files": [
-    "dist",
-    "materials",
-    "i18n"
-  ],
+  "files": ["dist", "materials", "i18n"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
-    "prebuild": "rimraf dist && rimraf i18n && rimraf materials",
-    "build": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js",
-    "postbuild": "mkdir -p i18n/data && cp -R ../../design-system/materials materials && cp -R ../../packages/i18n/data i18n/"
+    "prebuild": "rimraf dist",
+    "build": "yarn build:bundles",
+    "postbuild": "mkdir -p i18n/data && cp -R ../../design-system/materials materials && cp -R ../../packages/i18n/data i18n/",
+    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.ts",
+    "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
     "@commercetools-uikit/accessible-hidden": "10.39.1",

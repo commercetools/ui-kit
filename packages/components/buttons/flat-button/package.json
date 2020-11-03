@@ -9,12 +9,7 @@
     "directory": "packages/components/buttons/flat-button"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -27,7 +22,9 @@
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./src/index.js"
+    "build": "yarn build:bundles",
+    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./src/index.ts",
+    "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
     "@commercetools-uikit/accessible-button": "10.39.1",

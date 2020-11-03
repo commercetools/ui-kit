@@ -9,12 +9,7 @@
     "directory": "design-system"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -23,15 +18,14 @@
   "sideEffects": false,
   "main": "dist/design-system.cjs.js",
   "module": "dist/design-system.esm.js",
-  "files": [
-    "dist",
-    "materials"
-  ],
+  "files": ["dist", "materials"],
   "scripts": {
     "prepare": "../scripts/version.js replace",
-    "prebuild": "rimraf dist && yarn build:tokens",
-    "build": "cross-env NODE_ENV=production rollup -c ../rollup.config.js -i ./index.js",
+    "prebuild": "rimraf dist",
+    "build": "yarn build:bundles",
     "build:tokens": "node ./scripts/generate-custom-properties.js",
-    "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn build:tokens'"
+    "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn build:tokens'",
+    "build:bundles": "cross-env NODE_ENV=production rollup -c ../rollup.config.js -i ./src/index.ts",
+    "build:bundles:watch": "yarn build:bundles -w"
   }
 }
