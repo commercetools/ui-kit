@@ -99,11 +99,7 @@ export const transformDocument = (
       'build:bundles': `cross-env NODE_ENV=production rollup -c ${relativePathToWorkspace}/rollup.config.js -i ${moduleEntryPath}`,
       'build:bundles:watch': 'yarn build:bundles -w',
     },
-    dependencies: {
-      '@babel/runtime': '7.12.1',
-      '@babel/runtime-corejs3': '7.12.1',
-      ...originalPackageJson.dependencies,
-    },
+    dependencies: originalPackageJson.dependencies,
     devDependencies: originalPackageJson.devDependencies,
     peerDependencies: originalPackageJson.peerDependencies,
     readme: originalPackageJson.readme,
