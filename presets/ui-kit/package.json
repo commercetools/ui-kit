@@ -24,7 +24,7 @@
     "prebuild": "rimraf dist",
     "build": "yarn build:bundles",
     "postbuild": "mkdir -p i18n/data && cp -R ../../design-system/materials materials && cp -R ../../packages/i18n/data i18n/",
-    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.ts",
+    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js",
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
