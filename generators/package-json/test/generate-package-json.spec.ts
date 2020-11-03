@@ -42,10 +42,6 @@ describe('when package.json is NOT private', () => {
     expect(content).toMatchInlineSnapshot(`
       Object {
         "bugs": "https://github.com/commercetools/ui-kit/issues",
-        "dependencies": Object {
-          "@babel/runtime": "7.12.1",
-          "@babel/runtime-corejs3": "7.12.1",
-        },
         "description": "Render an Avenger",
         "homepage": "https://uikit.commercetools.com",
         "keywords": Array [
