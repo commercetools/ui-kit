@@ -32,6 +32,7 @@
     "@commercetools-uikit/messages": "10.39.1",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
+    "@emotion/styled-base": "^10.0.31",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

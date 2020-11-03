@@ -39,6 +39,7 @@
     "@emotion/core": "^10.0.34",
     "@emotion/is-prop-valid": "0.8.8",
     "@emotion/styled": "^10.0.27",
+    "@emotion/styled-base": "^10.0.31",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3"
   },
