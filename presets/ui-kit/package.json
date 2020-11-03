@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/ui-kit.cjs.js",
-  "module": "dist/ui-kit.esm.js",
+  "module": "dist/ui-kit.es.js",
   "files": ["dist", "materials", "i18n"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
@@ -28,6 +28,8 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/accessible-hidden": "10.39.1",
     "@commercetools-uikit/avatar": "10.39.1",
     "@commercetools-uikit/buttons": "10.39.1",

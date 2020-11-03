@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/hooks.cjs.js",
-  "module": "dist/hooks.esm.js",
+  "module": "dist/hooks.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
@@ -27,10 +27,13 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/utils": "10.39.1"
   },
   "peerDependencies": {
     "lodash": "4.17.20",
+    "lodash-es": "4.17.15",
     "react": ">= 16.8.0"
   }
 }

@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/grid.cjs.js",
-  "module": "dist/grid.esm.js",
+  "module": "dist/grid.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
@@ -27,6 +27,8 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
     "prop-types": "15.7.2"

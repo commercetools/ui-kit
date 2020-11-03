@@ -61,6 +61,9 @@ jobs:
       - name: Building packages
         run: yarn build
 
+      - name: Building package READMEs
+        run: yarn generate-readmes
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@master

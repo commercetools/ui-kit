@@ -66,7 +66,9 @@ export const transformDocument = (
   const relativePathToWorkspace = getRelativePathToWorkspace(
     relativePackageFolderPath
   );
-  delete originalPackageJson.scripts['generate-readme'];
+  const moduleEntryPath = fs.existsSync(path.join(packageFolderPath, 'src'))
+    ? './src/index.js'
+    : './index.js';
 
   return omitEmpty({
     name: `${npmScope}/${packageFolderName}`,
@@ -86,18 +88,22 @@ export const transformDocument = (
       access: 'public',
     },
     sideEffects: false,
-    main: originalPackageJson.main,
-    module: originalPackageJson.module,
+    main: `dist/${packageFolderName}.cjs.js`,
+    module: `dist/${packageFolderName}.es.js`,
     files: originalPackageJson.files,
     scripts: {
       ...originalPackageJson.scripts,
       prepare: `${relativePathToWorkspace}/scripts/version.js replace`,
       prebuild: 'rimraf dist',
       build: 'yarn build:bundles',
-      'build:bundles': `cross-env NODE_ENV=production rollup -c ${relativePathToWorkspace}/rollup.config.js -i ./src/index.ts`,
+      'build:bundles': `cross-env NODE_ENV=production rollup -c ${relativePathToWorkspace}/rollup.config.js -i ${moduleEntryPath}`,
       'build:bundles:watch': 'yarn build:bundles -w',
     },
-    dependencies: originalPackageJson.dependencies,
+    dependencies: {
+      '@babel/runtime': '7.12.1',
+      '@babel/runtime-corejs3': '7.12.1',
+      ...originalPackageJson.dependencies,
+    },
     devDependencies: originalPackageJson.devDependencies,
     peerDependencies: originalPackageJson.peerDependencies,
     readme: originalPackageJson.readme,

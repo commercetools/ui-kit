@@ -3,46 +3,62 @@ import path from 'path';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
-import { babel } from '@rollup/plugin-babel';
+import babel from '@rollup/plugin-babel';
 import replace from '@rollup/plugin-replace';
 import peerDeps from 'rollup-plugin-peer-deps-external';
 import builtins from 'rollup-plugin-node-builtins';
 import readPkgUp from 'read-pkg-up';
 
+const getBabelPreset = require('./babel.config');
+
 const { packageJson: pkg } = readPkgUp.sync({
   cwd: fs.realpathSync(process.cwd()),
 });
-const packageName = pkg.name.replace(/^@commercetools-(\w+)\/(\w+)$/, '$2');
+const packageName = pkg.name.replace(
+  /^@commercetools-([\w-]+)\/([\w-]+)$/,
+  '$2'
+);
 const extensions = ['.js', '.ts', '.tsx'];
+const babelOptions = getBabelPreset();
 
 // NOTE: the order of the plugins is important!
-const rollupPlugins = [
-  replace({
-    'process.env.NODE_ENV': JSON.stringify('production'),
-  }),
-  peerDeps({
-    includeDependencies: true,
-  }),
-  // See also https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953
-  // Transpile sources using our custom babel preset.
-  babel({
-    exclude: path.join(__dirname, '/node_modules/**'),
-    runtimeHelpers: true,
-    rootMode: 'upward',
-  }),
-  // To convert CJS modules to ES6
-  commonjs({
-    include: path.join(__dirname, '/node_modules/**'),
-  }),
-  nodeResolve({
-    extensions,
-    mainFields: ['module', 'main', 'jsnext'],
-    preferBuiltins: true,
-    modulesOnly: true,
-  }),
-  json({ namedExports: false }),
-  builtins(),
-].filter(Boolean);
+const createPlugins = (format) => {
+  const isFormatEs = format === 'es';
+  return [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    peerDeps({
+      includeDependencies: true,
+    }),
+    babel({
+      extensions,
+      babelHelpers: 'runtime',
+      ...babelOptions,
+      plugins: [
+        ...babelOptions.plugins,
+        isFormatEs && [
+          'transform-rename-import',
+          {
+            replacements: [{ original: 'lodash', replacement: 'lodash-es' }],
+          },
+        ],
+      ].filter(Boolean),
+    }),
+    // To convert CJS modules to ES6
+    commonjs({
+      include: path.join(__dirname, '/node_modules/**'),
+    }),
+    nodeResolve({
+      extensions,
+      mainFields: ['module', 'main', 'jsnext'],
+      preferBuiltins: true,
+      modulesOnly: true,
+    }),
+    json({ namedExports: false }),
+    builtins(),
+  ].filter(Boolean);
+};
 
 const createConfig = (cliArgs) => {
   return [
@@ -64,7 +80,7 @@ const createConfig = (cliArgs) => {
             }),
         sourcemap: true,
       },
-      plugins: rollupPlugins,
+      plugins: createPlugins('cjs'),
     },
     // Bundle for es format
     {
@@ -84,7 +100,7 @@ const createConfig = (cliArgs) => {
             }),
         sourcemap: true,
       },
-      plugins: rollupPlugins,
+      plugins: createPlugins('es'),
     },
   ];
 };

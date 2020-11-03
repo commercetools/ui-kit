@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/primary-button.cjs.js",
-  "module": "dist/primary-button.esm.js",
+  "module": "dist/primary-button.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
@@ -27,6 +27,8 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/accessible-button": "10.39.1",
     "@commercetools-uikit/design-system": "10.39.1",
     "@commercetools-uikit/spacings-inline": "10.30.1",
@@ -36,6 +38,7 @@
     "@emotion/styled": "^10.0.27",
     "common-tags": "1.8.0",
     "lodash": "4.17.20",
+    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3"
   },

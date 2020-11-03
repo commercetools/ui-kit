@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/localized-text-field.cjs.js",
-  "module": "dist/localized-text-field.esm.js",
+  "module": "dist/localized-text-field.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
@@ -27,6 +27,8 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/constraints": "10.39.1",
     "@commercetools-uikit/design-system": "10.39.1",
     "@commercetools-uikit/field-errors": "10.39.1",

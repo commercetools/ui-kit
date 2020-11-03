@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/constraints.cjs.js",
-  "module": "dist/constraints.esm.js",
+  "module": "dist/constraints.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
@@ -27,6 +27,8 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/design-system": "10.39.1",
     "@commercetools-uikit/utils": "10.39.1",
     "@emotion/core": "^10.0.34",

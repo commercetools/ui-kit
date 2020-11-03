@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/i18n.cjs.js",
-  "module": "dist/i18n.esm.js",
+  "module": "dist/i18n.es.js",
   "files": ["dist", "data", "compiled-data"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
@@ -26,5 +26,9 @@
     "compile-data": "formatjs compile-folder --format=$(pwd)/transifex-transformer.js --ast data compiled-data",
     "build:bundles": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js",
     "build:bundles:watch": "yarn build:bundles -w"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1"
   }
 }

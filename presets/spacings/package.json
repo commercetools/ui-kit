@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/spacings.cjs.js",
-  "module": "dist/spacings.esm.js",
+  "module": "dist/spacings.es.js",
   "files": ["dist"],
   "scripts": {
     "prebuild": "rimraf dist",
@@ -27,6 +27,8 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/spacings-inline": "10.30.1",
     "@commercetools-uikit/spacings-inset": "10.30.1",
     "@commercetools-uikit/spacings-inset-squish": "10.30.1",

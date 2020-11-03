@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/design-system.cjs.js",
-  "module": "dist/design-system.esm.js",
+  "module": "dist/design-system.es.js",
   "files": ["dist", "materials"],
   "scripts": {
     "prepare": "../scripts/version.js replace",
@@ -27,5 +27,9 @@
     "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn build:tokens'",
     "build:bundles": "cross-env NODE_ENV=production rollup -c ../rollup.config.js -i ./index.js",
     "build:bundles:watch": "yarn build:bundles -w"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1"
   }
 }

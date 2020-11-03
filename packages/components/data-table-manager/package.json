@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/data-table-manager.cjs.js",
-  "module": "dist/data-table-manager.esm.js",
+  "module": "dist/data-table-manager.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
@@ -27,6 +27,8 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/accessible-button": "10.39.1",
     "@commercetools-uikit/accessible-hidden": "10.39.1",
     "@commercetools-uikit/async-select-input": "10.39.1",
@@ -50,6 +52,7 @@
     "@emotion/styled": "^10.0.27",
     "debounce-promise": "^3.1.2",
     "lodash": "4.17.20",
+    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react-beautiful-dnd": "13.0.0",
     "react-required-if": "1.0.3",

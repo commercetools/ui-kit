@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/fields.cjs.js",
-  "module": "dist/fields.esm.js",
+  "module": "dist/fields.es.js",
   "files": ["dist"],
   "scripts": {
     "prebuild": "rimraf dist",
@@ -27,6 +27,8 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/async-creatable-select-field": "10.39.1",
     "@commercetools-uikit/async-select-field": "10.39.1",
     "@commercetools-uikit/creatable-select-field": "10.39.1",

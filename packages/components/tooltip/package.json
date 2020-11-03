@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/tooltip.cjs.js",
-  "module": "dist/tooltip.esm.js",
+  "module": "dist/tooltip.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
@@ -27,12 +27,15 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/design-system": "10.39.1",
     "@commercetools-uikit/hooks": "10.39.1",
     "@commercetools-uikit/utils": "10.39.1",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
     "lodash": "4.17.20",
+    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react-is": "16.13.1",
     "use-popper": "1.1.6",

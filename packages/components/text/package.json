@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/text.cjs.js",
-  "module": "dist/text.esm.js",
+  "module": "dist/text.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
@@ -27,11 +27,14 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
+    "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/design-system": "10.39.1",
     "@commercetools-uikit/utils": "10.39.1",
     "@emotion/core": "^10.0.34",
     "common-tags": "1.8.0",
     "lodash": "4.17.20",
+    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
     "warning": "4.0.3"
