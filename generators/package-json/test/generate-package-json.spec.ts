@@ -42,6 +42,10 @@ describe('when package.json is NOT private', () => {
     expect(content).toMatchInlineSnapshot(`
       Object {
         "bugs": "https://github.com/commercetools/ui-kit/issues",
+        "dependencies": Object {
+          "@babel/runtime": "7.12.1",
+          "@babel/runtime-corejs3": "7.12.1",
+        },
         "description": "Render an Avenger",
         "homepage": "https://uikit.commercetools.com",
         "keywords": Array [
@@ -51,6 +55,8 @@ describe('when package.json is NOT private', () => {
           "uikit",
         ],
         "license": "MIT",
+        "main": "dist/avenger.cjs.js",
+        "module": "dist/avenger.es.js",
         "name": "@commercetools-uikit/avenger",
         "peerDependencies": Object {
           "react": "16.8.x",
@@ -66,6 +72,13 @@ describe('when package.json is NOT private', () => {
           "directory": "packages/avenger",
           "type": "git",
           "url": "https://github.com/commercetools/ui-kit.git",
+        },
+        "scripts": Object {
+          "build": "yarn build:bundles",
+          "build:bundles": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js",
+          "build:bundles:watch": "yarn build:bundles -w",
+          "prebuild": "rimraf dist",
+          "prepare": "../../scripts/version.js replace",
         },
         "sideEffects": false,
         "version": "1.0.0",
