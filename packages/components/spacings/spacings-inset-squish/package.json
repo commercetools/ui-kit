@@ -1,28 +1,23 @@
 {
-  "name": "@commercetools-uikit/inset",
-  "description": "An inset spacing component provides a consistent padding to the inner component.",
+  "name": "@commercetools-uikit/spacings-inset-squish",
+  "description": "An inset squish spacing component provides a consistent padding to the inner component, with horizontal padding being proportionally bigger than the vertical padding.",
   "version": "10.39.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/commercetools/ui-kit.git",
-    "directory": "packages/components/spacings/inset"
+    "directory": "packages/components/spacings/spacings-inset-squish"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/inset.cjs.js",
-  "module": "dist/inset.es.js",
+  "main": "dist/spacings-inset-squish.cjs.js",
+  "module": "dist/spacings-inset-squish.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
