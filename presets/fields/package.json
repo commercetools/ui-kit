@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/fields",
   "description": "A preset of all the UI-Kit fields components.",
-  "version": "10.39.2",
+  "version": "10.39.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "presets/fields"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -29,22 +34,22 @@
   "dependencies": {
     "@babel/runtime": "7.12.1",
     "@babel/runtime-corejs3": "7.12.1",
-    "@commercetools-uikit/async-creatable-select-field": "10.39.2",
-    "@commercetools-uikit/async-select-field": "10.39.2",
-    "@commercetools-uikit/creatable-select-field": "10.39.2",
-    "@commercetools-uikit/date-field": "10.39.2",
-    "@commercetools-uikit/date-range-field": "10.39.2",
-    "@commercetools-uikit/date-time-field": "10.39.2",
-    "@commercetools-uikit/localized-multiline-text-field": "10.39.2",
-    "@commercetools-uikit/localized-text-field": "10.39.2",
-    "@commercetools-uikit/money-field": "10.39.2",
-    "@commercetools-uikit/multiline-text-field": "10.39.2",
-    "@commercetools-uikit/number-field": "10.39.2",
-    "@commercetools-uikit/password-field": "10.39.2",
-    "@commercetools-uikit/radio-field": "10.39.2",
-    "@commercetools-uikit/select-field": "10.39.2",
-    "@commercetools-uikit/text-field": "10.39.2",
-    "@commercetools-uikit/time-field": "10.39.2"
+    "@commercetools-uikit/async-creatable-select-field": "10.39.3",
+    "@commercetools-uikit/async-select-field": "10.39.3",
+    "@commercetools-uikit/creatable-select-field": "10.39.3",
+    "@commercetools-uikit/date-field": "10.39.3",
+    "@commercetools-uikit/date-range-field": "10.39.3",
+    "@commercetools-uikit/date-time-field": "10.39.3",
+    "@commercetools-uikit/localized-multiline-text-field": "10.39.3",
+    "@commercetools-uikit/localized-text-field": "10.39.3",
+    "@commercetools-uikit/money-field": "10.39.3",
+    "@commercetools-uikit/multiline-text-field": "10.39.3",
+    "@commercetools-uikit/number-field": "10.39.3",
+    "@commercetools-uikit/password-field": "10.39.3",
+    "@commercetools-uikit/radio-field": "10.39.3",
+    "@commercetools-uikit/select-field": "10.39.3",
+    "@commercetools-uikit/text-field": "10.39.3",
+    "@commercetools-uikit/time-field": "10.39.3"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",

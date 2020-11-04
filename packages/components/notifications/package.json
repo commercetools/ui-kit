@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/notifications",
   "description": "Notification components.",
-  "version": "10.39.2",
+  "version": "10.39.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "packages/components/notifications"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -29,9 +34,9 @@
   "dependencies": {
     "@babel/runtime": "7.12.1",
     "@babel/runtime-corejs3": "7.12.1",
-    "@commercetools-uikit/design-system": "10.39.2",
-    "@commercetools-uikit/icons": "10.39.2",
-    "@commercetools-uikit/utils": "10.39.2",
+    "@commercetools-uikit/design-system": "10.39.3",
+    "@commercetools-uikit/icons": "10.39.3",
+    "@commercetools-uikit/utils": "10.39.3",
     "@emotion/core": "^10.0.34",
     "common-tags": "1.8.0",
     "prop-types": "15.7.2",
