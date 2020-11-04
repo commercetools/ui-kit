@@ -1,5 +1,25 @@
 # @commercetools-uikit/localized-text-input
 
+## 10.39.2
+
+### Patch Changes
+
+- [`efde835`](https://github.com/commercetools/ui-kit/commit/efde83584d00f1e3147d179f3ee8233a325b515b) [#1646](https://github.com/commercetools/ui-kit/pull/1646) Thanks [@emmenko](https://github.com/emmenko)! - Improve Rollup configuration, use babel runtime helpers
+
+* [`d65d494`](https://github.com/commercetools/ui-kit/commit/d65d4946feeac082ad8f0a5d44010e3afacb4c79) [#1649](https://github.com/commercetools/ui-kit/pull/1649) Thanks [@emmenko](https://github.com/emmenko)! - Explicitly declare `@emotion/styled-base` dependency so that Yarn workspaces can properly hoist it and node can resolve the module.
+
+* Updated dependencies [[`efde835`](https://github.com/commercetools/ui-kit/commit/efde83584d00f1e3147d179f3ee8233a325b515b), [`d65d494`](https://github.com/commercetools/ui-kit/commit/d65d4946feeac082ad8f0a5d44010e3afacb4c79)]:
+  - @commercetools-uikit/design-system@10.39.2
+  - @commercetools-uikit/flat-button@10.39.2
+  - @commercetools-uikit/constraints@10.39.2
+  - @commercetools-uikit/icons@10.39.2
+  - @commercetools-uikit/text-input@10.39.2
+  - @commercetools-uikit/messages@10.39.2
+  - @commercetools-uikit/text@10.39.2
+  - @commercetools-uikit/hooks@10.39.2
+  - @commercetools-uikit/localized-utils@10.39.2
+  - @commercetools-uikit/utils@10.39.2
+
 ## 10.39.1
 
 ### Patch Changes

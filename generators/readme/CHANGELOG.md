@@ -1,5 +1,11 @@
 # @commercetools-local/generator-readme
 
+## 1.1.4
+
+### Patch Changes
+
+- [`efde835`](https://github.com/commercetools/ui-kit/commit/efde83584d00f1e3147d179f3ee8233a325b515b) [#1646](https://github.com/commercetools/ui-kit/pull/1646) Thanks [@emmenko](https://github.com/emmenko)! - Improve Rollup configuration, use babel runtime helpers
+
 ## 1.1.3
 
 ### Patch Changes

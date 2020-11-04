@@ -1,5 +1,15 @@
 # @commercetools-uikit/text
 
+## 10.39.2
+
+### Patch Changes
+
+- [`efde835`](https://github.com/commercetools/ui-kit/commit/efde83584d00f1e3147d179f3ee8233a325b515b) [#1646](https://github.com/commercetools/ui-kit/pull/1646) Thanks [@emmenko](https://github.com/emmenko)! - Improve Rollup configuration, use babel runtime helpers
+
+- Updated dependencies [[`efde835`](https://github.com/commercetools/ui-kit/commit/efde83584d00f1e3147d179f3ee8233a325b515b)]:
+  - @commercetools-uikit/design-system@10.39.2
+  - @commercetools-uikit/utils@10.39.2
+
 ## 10.39.1
 
 ### Patch Changes

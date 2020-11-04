@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/utils",
   "description": "A collection of utilities shared across the other packages.",
-  "version": "10.39.1",
+  "version": "10.39.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "packages/utils"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {

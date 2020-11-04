@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/multiline-text-field",
   "description": "A controlled text input component for multi-line strings with validation states and a label.",
-  "version": "10.39.1",
+  "version": "10.39.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "packages/components/fields/multiline-text-field"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -29,13 +34,13 @@
   "dependencies": {
     "@babel/runtime": "7.12.1",
     "@babel/runtime-corejs3": "7.12.1",
-    "@commercetools-uikit/constraints": "10.39.1",
-    "@commercetools-uikit/design-system": "10.39.1",
-    "@commercetools-uikit/field-errors": "10.39.1",
-    "@commercetools-uikit/field-label": "10.39.1",
-    "@commercetools-uikit/multiline-text-input": "10.39.1",
-    "@commercetools-uikit/spacings": "10.39.1",
-    "@commercetools-uikit/utils": "10.39.1",
+    "@commercetools-uikit/constraints": "10.39.2",
+    "@commercetools-uikit/design-system": "10.39.2",
+    "@commercetools-uikit/field-errors": "10.39.2",
+    "@commercetools-uikit/field-label": "10.39.2",
+    "@commercetools-uikit/multiline-text-input": "10.39.2",
+    "@commercetools-uikit/spacings": "10.39.2",
+    "@commercetools-uikit/utils": "10.39.2",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",
