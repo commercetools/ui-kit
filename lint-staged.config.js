@@ -1,7 +1,9 @@
 module.exports = {
-  '*.md': ['yarn format:md'],
-  '*.yaml': ['yarn format:yaml'],
+  '*.md': ['prettier --write --parser markdown'],
+  '*.yaml': ['prettier --write --parser yaml'],
+  '*.json': ['prettier --write --parser json'],
   '*.js': [
+    'prettier --write',
     // NOTE: apparently if you pass some argument that is not a flag AFTER the `reporters`
     // flag, jest does not seem correctly parse the arguments.
     //
