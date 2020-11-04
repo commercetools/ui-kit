@@ -51,7 +51,7 @@ const createPlugins = (format) => {
     }),
     nodeResolve({
       extensions,
-      mainFields: ['module', 'main', 'jsnext'],
+      mainFields: isFormatEs ? ['module', 'main', 'jsnext'] : ['main'],
       preferBuiltins: true,
       modulesOnly: true,
     }),
