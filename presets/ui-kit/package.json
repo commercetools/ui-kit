@@ -9,12 +9,7 @@
     "directory": "presets/ui-kit"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -23,11 +18,7 @@
   "sideEffects": false,
   "main": "dist/ui-kit.cjs.js",
   "module": "dist/ui-kit.es.js",
-  "files": [
-    "dist",
-    "materials",
-    "i18n"
-  ],
+  "files": ["dist", "materials", "i18n"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist",

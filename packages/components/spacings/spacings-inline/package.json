@@ -1,28 +1,23 @@
 {
-  "name": "@commercetools-uikit/inline",
+  "name": "@commercetools-uikit/spacings-inline",
   "description": "An inline spacing component renders its children horizontally with a consistent spacing between them.",
   "version": "10.39.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/commercetools/ui-kit.git",
-    "directory": "packages/components/spacings/inline"
+    "directory": "packages/components/spacings/spacings-inline"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/inline.cjs.js",
-  "module": "dist/inline.es.js",
+  "main": "dist/spacings-inline.cjs.js",
+  "module": "dist/spacings-inline.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",

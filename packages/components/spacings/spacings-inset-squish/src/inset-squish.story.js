@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import Text from '@commercetools-uikit/text';
-import Inline from '../../inline';
-import Inset from '../../inset';
+import Inline from '../../spacings-inline';
+import Inset from '../../spacings-inset';
 import InsetSquish from './inset-squish';
 import Readme from '../README.md';
 

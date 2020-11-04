@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import Text from '@commercetools-uikit/text';
-import Inline from '../../inline';
+import Inline from '../../spacings-inline';
 import Inset from './inset';
 import Readme from '../README.md';
 

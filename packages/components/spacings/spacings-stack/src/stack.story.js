@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
 import styled from '@emotion/styled';
 import Text from '@commercetools-uikit/text';
-import Inline from '../../inline';
-import Inset from '../../inset';
+import Inline from '../../spacings-inline';
+import Inset from '../../spacings-inset';
 import Stack from './stack';
 import Readme from '../README.md';
 
