@@ -1,5 +1,17 @@
 # @commercetools-uikit/spacings
 
+## 10.39.4
+
+### Patch Changes
+
+- [`a635fcc`](https://github.com/commercetools/ui-kit/commit/a635fcc8105b81545baaa684751432769cc0d94a) [#1652](https://github.com/commercetools/ui-kit/pull/1652) Thanks [@emmenko](https://github.com/emmenko)! - Fix spacings package name (regression).
+
+- Updated dependencies [[`a635fcc`](https://github.com/commercetools/ui-kit/commit/a635fcc8105b81545baaa684751432769cc0d94a)]:
+  - @commercetools-uikit/spacings-inline@10.39.4
+  - @commercetools-uikit/spacings-inset@10.39.4
+  - @commercetools-uikit/spacings-inset-squish@10.39.4
+  - @commercetools-uikit/spacings-stack@10.39.4
+
 ## 10.39.3
 
 ### Patch Changes

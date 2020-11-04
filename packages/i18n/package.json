@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/i18n",
   "description": "All translation messages from the UI-Kit components.",
-  "version": "10.39.3",
+  "version": "10.39.4",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "packages/i18n"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -18,7 +23,11 @@
   "sideEffects": false,
   "main": "dist/i18n.cjs.js",
   "module": "dist/i18n.es.js",
-  "files": ["dist", "data", "compiled-data"],
+  "files": [
+    "dist",
+    "data",
+    "compiled-data"
+  ],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
     "prebuild": "rimraf dist",
