@@ -1,5 +1,21 @@
 # @commercetools-uikit/async-creatable-select-input
 
+## 10.39.4
+
+### Patch Changes
+
+- [`a635fcc`](https://github.com/commercetools/ui-kit/commit/a635fcc8105b81545baaa684751432769cc0d94a) [#1652](https://github.com/commercetools/ui-kit/pull/1652) Thanks [@emmenko](https://github.com/emmenko)! - Fix spacings package name (regression).
+
+- Updated dependencies [[`a635fcc`](https://github.com/commercetools/ui-kit/commit/a635fcc8105b81545baaa684751432769cc0d94a)]:
+  - @commercetools-uikit/design-system@10.39.4
+  - @commercetools-uikit/constraints@10.39.4
+  - @commercetools-uikit/icons@10.39.4
+  - @commercetools-uikit/select-utils@10.39.4
+  - @commercetools-uikit/loading-spinner@10.39.4
+  - @commercetools-uikit/text@10.39.4
+  - @commercetools-uikit/utils@10.39.4
+  - @commercetools-uikit/spacings@10.39.4
+
 ## 10.39.3
 
 ### Patch Changes

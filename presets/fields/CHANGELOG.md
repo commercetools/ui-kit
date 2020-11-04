@@ -1,5 +1,29 @@
 # @commercetools-uikit/fields
 
+## 10.39.4
+
+### Patch Changes
+
+- [`a635fcc`](https://github.com/commercetools/ui-kit/commit/a635fcc8105b81545baaa684751432769cc0d94a) [#1652](https://github.com/commercetools/ui-kit/pull/1652) Thanks [@emmenko](https://github.com/emmenko)! - Fix spacings package name (regression).
+
+- Updated dependencies [[`a635fcc`](https://github.com/commercetools/ui-kit/commit/a635fcc8105b81545baaa684751432769cc0d94a)]:
+  - @commercetools-uikit/async-creatable-select-field@10.39.4
+  - @commercetools-uikit/async-select-field@10.39.4
+  - @commercetools-uikit/creatable-select-field@10.39.4
+  - @commercetools-uikit/date-field@10.39.4
+  - @commercetools-uikit/date-range-field@10.39.4
+  - @commercetools-uikit/date-time-field@10.39.4
+  - @commercetools-uikit/localized-multiline-text-field@10.39.4
+  - @commercetools-uikit/localized-text-field@10.39.4
+  - @commercetools-uikit/money-field@10.39.4
+  - @commercetools-uikit/multiline-text-field@10.39.4
+  - @commercetools-uikit/number-field@10.39.4
+  - @commercetools-uikit/password-field@10.39.4
+  - @commercetools-uikit/radio-field@10.39.4
+  - @commercetools-uikit/select-field@10.39.4
+  - @commercetools-uikit/text-field@10.39.4
+  - @commercetools-uikit/time-field@10.39.4
+
 ## 10.39.3
 
 ### Patch Changes
