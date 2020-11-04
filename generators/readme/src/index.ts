@@ -321,7 +321,10 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
           const unionValues = propInfo.type.value as ReactComponentPropType[];
           const combinedUnionValues = unionValues
             .map((union) => union.name)
-            .join('\\|');
+            // FIXME: it seems that there is a regression about escaping mulitple pipes.
+            // https://github.com/syntax-tree/mdast-util-gfm-table
+            // .join('\\|');
+            .join(', ');
           propTypeNode = [inlineCode(`<${combinedUnionValues}>`)];
           break;
         }
@@ -334,7 +337,10 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
             inlineCode(
               (propInfo.type.value as { value: string }[])
                 .map((enumValue) => enumValue.value)
-                .join(' \\| ')
+                // FIXME: it seems that there is a regression about escaping mulitple pipes.
+                // https://github.com/syntax-tree/mdast-util-gfm-table
+                // .join(' \\| ');
+                .join(', ')
             ),
           ];
           break;
