@@ -250,7 +250,7 @@ Tooltip.propTypes = {
     16,
     'scale',
     'auto',
-  ]).isRequired,
+  ]),
   /**
    * Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip.
    */
