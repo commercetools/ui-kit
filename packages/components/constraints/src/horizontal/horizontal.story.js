@@ -4,12 +4,13 @@ import { withKnobs } from '@storybook/addon-knobs/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import Horizontal from './horizontal';
-import { getAcceptedMaxPropValues } from '../helpers';
+import { getAcceptedMaxPropValues, getMaxPropTokenValue } from '../helpers';
 import Readme from '../../README.md';
 
 const ColouredRow = styled.div`
-  height: 30px;
   display: flex;
+  padding: 2px;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: ${vars.borderRadius6};
@@ -65,7 +66,12 @@ storiesOf('Components|Constraints', module)
         <Stack>
           {values.map((max) => (
             <Horizontal key={max} max={max}>
-              <ColouredRow>{max.toString()}</ColouredRow>
+              <ColouredRow>
+                <b>{max.toString()}</b>
+                {typeof max === 'number' ? (
+                  <small>{`${getMaxPropTokenValue(max)}`}</small>
+                ) : null}
+              </ColouredRow>
             </Horizontal>
           ))}
         </Stack>
