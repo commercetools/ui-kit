@@ -2,62 +2,80 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import invariant from 'tiny-invariant';
+import { getMaxPropTokenValue, getMaxPropEquivalent } from '../helpers';
 
-const getConstraintSyles = (constraint) => {
-  switch (constraint) {
-    case 'xs':
-      return css`
-        max-width: ${vars.constraintXs};
-      `;
-    case 's':
-      return css`
-        max-width: ${vars.constraintS};
-      `;
-    case 'm':
-      return css`
-        max-width: ${vars.constraintM};
-      `;
-    case 'l':
-      return css`
-        max-width: ${vars.constraintL};
-      `;
-    case 'xl':
-      return css`
-        max-width: ${vars.constraintXl};
-      `;
-    case 'scale':
-      return css`
-        width: ${vars.constraintScale};
-      `;
-    default:
-      return css``;
-  }
+function getConstraintStyles(maxProp, constraintProp) {
+  const constraintToken = maxProp
+    ? getMaxPropTokenValue(maxProp)
+    : getMaxPropTokenValue(getMaxPropEquivalent(constraintProp));
+
+  return css`
+    ${constraintToken ? `max-width: ${constraintToken};` : ''}
+    ${maxProp === 'auto' ? 'width: auto;' : ''}
+  `;
+}
+
+const Horizontal = (props) => {
+  invariant(
+    !(props.constraint && props.max),
+    '`ui-kit/constraints/horizontal: props `constraint` and `max` should not be used in conjunction. Please prefer `max` prop.'
+  );
+
+  // TODO: uncomment this when we effectively deprecate the constraint prop
+  // if (props.constraint != null) {
+  //   warnDeprecatedProp(
+  //     'constraint',
+  //     'Constraints.Horizontal',
+  //     `\n Please use "max" prop instead.`
+  //   );
+
+  return (
+    <div
+      css={[
+        css`
+          width: 100%;
+          position: relative;
+        `,
+        getConstraintStyles(props.max, props.constraint),
+      ]}
+      {...filterDataAttributes(props)}
+    >
+      {props.children}
+    </div>
+  );
 };
-
-const Horizontal = (props) => (
-  <div
-    css={[
-      css`
-        width: 100%;
-        position: relative;
-      `,
-      getConstraintSyles(props.constraint),
-    ]}
-    {...filterDataAttributes(props)}
-  >
-    {props.children}
-  </div>
-);
 
 Horizontal.displayName = 'Horizontal';
 Horizontal.propTypes = {
+  /**
+   * Determines scale of the constraint.
+   */
+  max: PropTypes.oneOf([
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
+  /**
+   * DEPRECATING SOON: Please use the `max` prop instead. Determines scale of the constraint.
+   */
   constraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
   children: PropTypes.node.isRequired,
-};
-
-Horizontal.defaultProps = {
-  constraint: 'scale',
 };
 
 export default Horizontal;
