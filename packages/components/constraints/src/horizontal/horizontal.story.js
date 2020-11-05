@@ -33,6 +33,7 @@ const ColumnsContainer = styled.div`
   left: 0;
   top: 0;
   bottom: 0;
+  white-space: nowrap;
 `;
 const Column = styled.div`
   display: inline-block;
