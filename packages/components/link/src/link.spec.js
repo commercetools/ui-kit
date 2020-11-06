@@ -3,7 +3,7 @@ import { screen, render } from '../../../../test/test-utils';
 import Link from './link';
 
 const createTestProps = (custom) => ({
-  to: 'https://mc.ct-test.com',
+  to: 'https://mc.ct-test.com/',
   ...custom,
 });
 
