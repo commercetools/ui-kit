@@ -1,5 +1,11 @@
 # @commercetools-frontend/ui-kit
 
+## 10.39.5
+
+### Patch Changes
+
+- [`974e15e`](https://github.com/commercetools/ui-kit/commit/974e15ef53b6817522321ffdf07d931c179cf7c7) [#1654](https://github.com/commercetools/ui-kit/pull/1654) Thanks [@mohib0306](https://github.com/mohib0306)! - Add SearchSelectField to presets
+
 ## 10.39.4
 
 ### Patch Changes
