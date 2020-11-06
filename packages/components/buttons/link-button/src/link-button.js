@@ -5,13 +5,13 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
-  getPassThroughProps,
   warnDeprecatedComponent,
+  filterInvalidAttributes,
 } from '@commercetools-uikit/utils';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Text from '@commercetools-uikit/text';
 
-const hoverStyles = () => css`
+const hoverStyles = css`
   &:hover,
   &:focus,
   &:active {
@@ -25,7 +25,7 @@ const hoverStyles = () => css`
   }
 `;
 
-const createStyledComponent = (component) => styled(component)`
+const StyledExternalLink = styled.a`
   display: inline-flex;
   align-items: center;
   font-size: 1rem;
@@ -44,9 +44,6 @@ const createStyledComponent = (component) => styled(component)`
 
   ${(props) => !props.disabled && hoverStyles}
 `;
-
-const StyledReactRouterLink = createStyledComponent(ReactRouterLink);
-const StyledExternalLink = createStyledComponent('a');
 
 const LinkBody = (props) => (
   <Inline scale="xs" alignItems="center">
@@ -70,10 +67,7 @@ const LinkButton = (props) => {
   React.useEffect(() => {
     warnDeprecatedComponent('LinkButton');
   }, []);
-  const remainingProps = getPassThroughProps(
-    props,
-    Object.keys(LinkButton.propTypes)
-  );
+  const remainingProps = filterInvalidAttributes(props);
 
   if (props.isExternal) {
     return (
@@ -97,7 +91,8 @@ const LinkButton = (props) => {
   }
 
   return (
-    <StyledReactRouterLink
+    <StyledExternalLink
+      as={ReactRouterLink}
       to={props.to}
       disabled={props.isDisabled}
       onClick={props.isDisabled ? (event) => event.preventDefault() : undefined}
@@ -110,7 +105,7 @@ const LinkButton = (props) => {
         isDisabled={props.isDisabled}
         label={props.label}
       />
-    </StyledReactRouterLink>
+    </StyledExternalLink>
   );
 };
 

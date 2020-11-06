@@ -1,11 +1,13 @@
 import isPropValid from '@emotion/is-prop-valid';
 
-export default function filterProps(obj) {
+export default function filterInvalidAttributes(obj) {
   return Object.keys(obj)
     .filter((prop) => isPropValid(prop))
-    .reduce((acc, prop) => {
-      // eslint-disable-next-line no-param-reassign
-      acc[prop] = obj[prop];
-      return acc;
-    }, {});
+    .reduce(
+      (acc, prop) => ({
+        ...acc,
+        [prop]: obj[prop],
+      }),
+      {}
+    );
 }
