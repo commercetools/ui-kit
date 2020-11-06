@@ -3,7 +3,7 @@ import { screen, render } from '../../../../test/test-utils';
 import Link from './link';
 
 const createTestProps = (custom) => ({
-  to: 'https://facebook.com',
+  to: 'https://mc.ct-test.com/',
   ...custom,
 });
 
@@ -25,7 +25,7 @@ describe('rendering', () => {
     beforeEach(() => {
       props = createTestProps({
         isExternal: true,
-        to: 'https://www.kanyetothe.com/',
+        isFoo: 'bar',
       });
     });
     it('should render a react router link', () => {
@@ -39,7 +39,6 @@ describe('rendering', () => {
     beforeEach(() => {
       props = createTestProps({
         isExternal: true,
-        to: 'https://www.omg.com/',
         intlMessage,
       });
     });
