@@ -1,5 +1,14 @@
 # visual-testing-app
 
+## 10.18.18
+
+### Patch Changes
+
+- [`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e) [#1657](https://github.com/commercetools/ui-kit/pull/1657) Thanks [@emmenko](https://github.com/emmenko)! - Fix Rollup: keep `process.env.NODE_ENV` in production bundles.
+
+- Updated dependencies [[`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e)]:
+  - @commercetools-uikit/design-system@10.39.6
+
 ## 10.18.17
 
 ### Patch Changes

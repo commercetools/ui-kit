@@ -1,5 +1,18 @@
 # @commercetools-uikit/secondary-button
 
+## 10.39.6
+
+### Patch Changes
+
+- [`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e) [#1657](https://github.com/commercetools/ui-kit/pull/1657) Thanks [@emmenko](https://github.com/emmenko)! - Fix Rollup: keep `process.env.NODE_ENV` in production bundles.
+
+- Updated dependencies [[`3564da3`](https://github.com/commercetools/ui-kit/commit/3564da32dcf07e72ecfff92bdba79f63b26855b8), [`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e)]:
+  - @commercetools-uikit/utils@10.39.6
+  - @commercetools-uikit/design-system@10.39.6
+  - @commercetools-uikit/accessible-button@10.39.6
+  - @commercetools-uikit/spacings-inline@10.39.6
+  - @commercetools-uikit/text@10.39.6
+
 ## 10.39.4
 
 ### Patch Changes
