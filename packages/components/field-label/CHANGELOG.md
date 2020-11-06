@@ -1,5 +1,20 @@
 # @commercetools-uikit/field-label
 
+## 10.39.6
+
+### Patch Changes
+
+- [`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e) [#1657](https://github.com/commercetools/ui-kit/pull/1657) Thanks [@emmenko](https://github.com/emmenko)! - Fix Rollup: keep `process.env.NODE_ENV` in production bundles.
+
+- Updated dependencies [[`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e)]:
+  - @commercetools-uikit/constraints@10.39.6
+  - @commercetools-uikit/icons@10.39.6
+  - @commercetools-uikit/label@10.39.6
+  - @commercetools-uikit/spacings-inline@10.39.6
+  - @commercetools-uikit/spacings-stack@10.39.6
+  - @commercetools-uikit/text@10.39.6
+  - @commercetools-uikit/buttons@10.39.6
+
 ## 10.39.4
 
 ### Patch Changes

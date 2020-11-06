@@ -1,5 +1,45 @@
 # @commercetools-frontend/ui-kit
 
+## 10.39.6
+
+### Patch Changes
+
+- [`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e) [#1657](https://github.com/commercetools/ui-kit/pull/1657) Thanks [@emmenko](https://github.com/emmenko)! - Fix Rollup: keep `process.env.NODE_ENV` in production bundles.
+
+- Updated dependencies [[`3564da3`](https://github.com/commercetools/ui-kit/commit/3564da32dcf07e72ecfff92bdba79f63b26855b8), [`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e)]:
+  - @commercetools-uikit/link@10.39.6
+  - @commercetools-uikit/utils@10.39.6
+  - @commercetools-uikit/design-system@10.39.6
+  - @commercetools-uikit/accessible-hidden@10.39.6
+  - @commercetools-uikit/avatar@10.39.6
+  - @commercetools-uikit/card@10.39.6
+  - @commercetools-uikit/collapsible@10.39.6
+  - @commercetools-uikit/collapsible-motion@10.39.6
+  - @commercetools-uikit/collapsible-panel@10.39.6
+  - @commercetools-uikit/constraints@10.39.6
+  - @commercetools-uikit/data-table@10.39.6
+  - @commercetools-uikit/data-table-manager@10.39.6
+  - @commercetools-uikit/field-errors@10.39.6
+  - @commercetools-uikit/field-label@10.39.6
+  - @commercetools-uikit/grid@10.39.6
+  - @commercetools-uikit/icons@10.39.6
+  - @commercetools-uikit/label@10.39.6
+  - @commercetools-uikit/loading-spinner@10.39.6
+  - @commercetools-uikit/messages@10.39.6
+  - @commercetools-uikit/notifications@10.39.6
+  - @commercetools-uikit/primary-action-dropdown@10.39.6
+  - @commercetools-uikit/stamp@10.39.6
+  - @commercetools-uikit/table@10.39.6
+  - @commercetools-uikit/tag@10.39.6
+  - @commercetools-uikit/text@10.39.6
+  - @commercetools-uikit/tooltip@10.39.6
+  - @commercetools-uikit/hooks@10.39.6
+  - @commercetools-uikit/i18n@10.39.6
+  - @commercetools-uikit/buttons@10.39.6
+  - @commercetools-uikit/fields@10.39.6
+  - @commercetools-uikit/inputs@10.39.6
+  - @commercetools-uikit/spacings@10.39.6
+
 ## 10.39.5
 
 ### Patch Changes

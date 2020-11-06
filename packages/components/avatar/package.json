@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/avatar",
   "description": "A component for rendering profile images",
-  "version": "10.39.4",
+  "version": "10.39.6",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -34,8 +34,8 @@
   "dependencies": {
     "@babel/runtime": "7.12.1",
     "@babel/runtime-corejs3": "7.12.1",
-    "@commercetools-uikit/design-system": "10.39.4",
-    "@commercetools-uikit/utils": "10.39.4",
+    "@commercetools-uikit/design-system": "10.39.6",
+    "@commercetools-uikit/utils": "10.39.6",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",

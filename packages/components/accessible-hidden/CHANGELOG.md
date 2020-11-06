@@ -1,5 +1,11 @@
 # @commercetools-uikit/accessible-hidden
 
+## 10.39.6
+
+### Patch Changes
+
+- [`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e) [#1657](https://github.com/commercetools/ui-kit/pull/1657) Thanks [@emmenko](https://github.com/emmenko)! - Fix Rollup: keep `process.env.NODE_ENV` in production bundles.
+
 ## 10.39.4
 
 ### Patch Changes

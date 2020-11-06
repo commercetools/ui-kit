@@ -1,5 +1,30 @@
 # @commercetools-uikit/fields
 
+## 10.39.6
+
+### Patch Changes
+
+- [`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e) [#1657](https://github.com/commercetools/ui-kit/pull/1657) Thanks [@emmenko](https://github.com/emmenko)! - Fix Rollup: keep `process.env.NODE_ENV` in production bundles.
+
+- Updated dependencies [[`bcb2d29`](https://github.com/commercetools/ui-kit/commit/bcb2d29956c959b09c32a1cedaee5ae2fadf034e)]:
+  - @commercetools-uikit/async-creatable-select-field@10.39.6
+  - @commercetools-uikit/async-select-field@10.39.6
+  - @commercetools-uikit/creatable-select-field@10.39.6
+  - @commercetools-uikit/date-field@10.39.6
+  - @commercetools-uikit/date-range-field@10.39.6
+  - @commercetools-uikit/date-time-field@10.39.6
+  - @commercetools-uikit/localized-multiline-text-field@10.39.6
+  - @commercetools-uikit/localized-text-field@10.39.6
+  - @commercetools-uikit/money-field@10.39.6
+  - @commercetools-uikit/multiline-text-field@10.39.6
+  - @commercetools-uikit/number-field@10.39.6
+  - @commercetools-uikit/password-field@10.39.6
+  - @commercetools-uikit/radio-field@10.39.6
+  - @commercetools-uikit/search-select-field@10.39.6
+  - @commercetools-uikit/select-field@10.39.6
+  - @commercetools-uikit/text-field@10.39.6
+  - @commercetools-uikit/time-field@10.39.6
+
 ## 10.39.4
 
 ### Patch Changes
