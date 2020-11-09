@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Pages from '../raw-components/pages';
 
-const Component = (props) => (
-  <Pages {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Pages {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'PagesIcon';
 

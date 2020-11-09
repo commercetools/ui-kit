@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import ArrowDown from '../raw-components/arrow-down';
 
-const Component = (props) => (
-  <ArrowDown {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <ArrowDown {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'ArrowDownIcon';
 

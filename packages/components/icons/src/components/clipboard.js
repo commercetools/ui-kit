@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Clipboard from '../raw-components/clipboard';
 
-const Component = (props) => (
-  <Clipboard {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Clipboard {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'ClipboardIcon';
 

@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import TagStacked from '../raw-components/tag-stacked';
 
-const Component = (props) => (
-  <TagStacked {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <TagStacked {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'TagStackedIcon';
 

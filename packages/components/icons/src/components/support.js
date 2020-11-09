@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Support from '../raw-components/support';
 
-const Component = (props) => (
-  <Support {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Support {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'SupportIcon';
 

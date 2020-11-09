@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Restore from '../raw-components/restore';
 
-const Component = (props) => (
-  <Restore {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Restore {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'RestoreIcon';
 

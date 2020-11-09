@@ -4,6 +4,7 @@ import requiredIf from 'react-required-if';
 import pick from 'lodash/pick';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { useTheme } from 'emotion-theming';
 import { useIntl } from 'react-intl';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';
@@ -94,6 +95,7 @@ const Editor = (props) => {
     props.error ||
     props.warning;
 
+  const theme = useTheme();
   return (
     <CollapsibleMotion
       minHeight={COLLAPSED_HEIGHT}
@@ -109,7 +111,7 @@ const Editor = (props) => {
               isDisabled={props.isDisabled}
               isReadOnly={props.isReadOnly}
             >
-              <EditorLanguageLabel htmlFor={props.id}>
+              <EditorLanguageLabel htmlFor={props.id} theme={theme}>
                 {/* FIXME: add proper tone for disabled when tones are refactored */}
                 <Text.Detail tone="secondary">
                   {props.language.toUpperCase()}

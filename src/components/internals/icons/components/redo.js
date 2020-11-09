@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Redo from '../raw-components/redo';
 
-const Component = (props) => (
-  <Redo {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Redo {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'RedoIcon';
 

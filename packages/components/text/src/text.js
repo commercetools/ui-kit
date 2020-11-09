@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
+import { useTheme } from 'emotion-theming';
 import isNil from 'lodash/isNil';
 import { oneLine } from 'common-tags';
 import {
   filterDataAttributes,
   warnDeprecatedProp,
 } from '@commercetools-uikit/utils';
-
 import {
   bodyStyles,
   detailStyles,
@@ -42,10 +42,11 @@ const nonEmptyString = (props, propName, componentName) => {
 };
 
 const Headline = (props) => {
+  const theme = useTheme();
   const HeadlineElement = props.as || props.elementType;
   return (
     <HeadlineElement
-      css={(theme) => headlineStyles(props, theme)}
+      css={headlineStyles(props, theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -53,7 +54,6 @@ const Headline = (props) => {
     </HeadlineElement>
   );
 };
-
 Headline.displayName = 'TextHeadline';
 Headline.propTypes = {
   as: requiredIf(
@@ -98,18 +98,18 @@ Headline.propTypes = {
 };
 
 const Subheadline = (props) => {
+  const theme = useTheme();
   const SubheadlineElement = props.as || props.elementType;
   return (
     <SubheadlineElement
       title={props.title}
-      css={(theme) => subheadlineStyles(props, theme)}
+      css={subheadlineStyles(props, theme)}
       {...filterDataAttributes(props)}
     >
       <Text intlMessage={props.intlMessage}>{props.children}</Text>
     </SubheadlineElement>
   );
 };
-
 Subheadline.displayName = 'TextSubheadline';
 Subheadline.propTypes = {
   as: requiredIf(PropTypes.oneOf(['h4', 'h5']), (props) => !props.elementType),
@@ -158,16 +158,18 @@ Subheadline.propTypes = {
   children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
 };
 
-const Wrap = (props) => (
-  <div
-    css={(theme) => wrapStyles(props, theme)}
-    title={props.title}
-    {...filterDataAttributes(props)}
-  >
-    <Text intlMessage={props.intlMessage}>{props.children}</Text>
-  </div>
-);
-
+const Wrap = (props) => {
+  const theme = useTheme();
+  return (
+    <div
+      css={wrapStyles(props, theme)}
+      title={props.title}
+      {...filterDataAttributes(props)}
+    >
+      <Text intlMessage={props.intlMessage}>{props.children}</Text>
+    </div>
+  );
+};
 Wrap.displayName = 'TextWrap';
 Wrap.propTypes = {
   title: nonEmptyString,
@@ -179,12 +181,12 @@ Wrap.propTypes = {
 };
 
 const Body = (props) => {
+  const theme = useTheme();
   if (props.as) {
     const BodyElement = props.as;
-
     return (
       <BodyElement
-        css={(theme) => bodyStyles(props, theme)}
+        css={bodyStyles(props, theme)}
         title={props.title}
         {...filterDataAttributes(props)}
       >
@@ -195,7 +197,7 @@ const Body = (props) => {
 
   return props.isInline ? (
     <span
-      css={(theme) => bodyStyles(props, theme)}
+      css={bodyStyles(props, theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -203,7 +205,7 @@ const Body = (props) => {
     </span>
   ) : (
     <p
-      css={(theme) => bodyStyles(props, theme)}
+      css={bodyStyles(props, theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -211,7 +213,6 @@ const Body = (props) => {
     </p>
   );
 };
-
 Body.displayName = 'TextBody';
 Body.propTypes = {
   as: PropTypes.oneOf(['span', 'p']),
@@ -251,16 +252,18 @@ Body.propTypes = {
   children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
 };
 
-const Detail = (props) => (
-  <small
-    css={(theme) => detailStyles(props, theme)}
-    title={props.title}
-    {...filterDataAttributes(props)}
-  >
-    <Text intlMessage={props.intlMessage}>{props.children}</Text>
-  </small>
-);
-
+const Detail = (props) => {
+  const theme = useTheme();
+  return (
+    <small
+      css={detailStyles(props, theme)}
+      title={props.title}
+      {...filterDataAttributes(props)}
+    >
+      <Text intlMessage={props.intlMessage}>{props.children}</Text>
+    </small>
+  );
+};
 Detail.displayName = 'TextDetail';
 Detail.propTypes = {
   isBold: PropTypes.bool,

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
+import { useTheme } from 'emotion-theming';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '../../styles';
 
 const TextInput = (props) => {
+  const theme = useTheme();
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <input
@@ -22,7 +24,7 @@ const TextInput = (props) => {
         readOnly={props.isReadOnly}
         autoFocus={props.isAutofocussed}
         autoComplete={props.autoComplete}
-        css={(theme) => getInputStyles(props, theme)}
+        css={getInputStyles(props, theme)}
         {...filterDataAttributes(props)}
         /* ARIA */
         aria-readonly={props.isReadOnly}

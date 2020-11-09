@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import OrderedList from '../raw-components/ordered-list';
 
-const Component = (props) => (
-  <OrderedList {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <OrderedList {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'OrderedListIcon';
 

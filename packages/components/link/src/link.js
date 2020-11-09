@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 import { FormattedMessage } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
@@ -29,11 +30,11 @@ const getLinkStyles = (props, theme) => {
 
 const Link = (props) => {
   const remainingProps = filterInvalidAttributes(props);
-
+  const theme = useTheme();
   if (props.isExternal) {
     return (
       <a
-        css={(theme) => getLinkStyles(props, theme)}
+        css={getLinkStyles(props, theme)}
         href={props.to}
         target="_blank"
         rel="noopener noreferrer"
@@ -50,7 +51,7 @@ const Link = (props) => {
 
   return (
     <ReactRouterLink
-      css={(theme) => getLinkStyles(props, theme)}
+      css={getLinkStyles(props, theme)}
       to={props.to}
       {...remainingProps}
     >

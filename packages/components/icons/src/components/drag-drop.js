@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import DragDrop from '../raw-components/drag-drop';
 
-const Component = (props) => (
-  <DragDrop {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <DragDrop {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'DragDropIcon';
 

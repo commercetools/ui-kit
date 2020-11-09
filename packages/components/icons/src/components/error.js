@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Error from '../raw-components/error';
 
-const Component = (props) => (
-  <Error {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Error {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'ErrorIcon';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 import omit from 'lodash/omit';
 import requiredIf from 'react-required-if';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -67,7 +68,11 @@ export const FlatButton = (props) => {
     // we fall back to `isDisabled`
     disabled: props.isDisabled,
   };
-
+  const theme = useTheme();
+  const overwrittenVars = {
+    ...vars,
+    ...theme,
+  };
   return (
     <AccessibleButton
       as={props.as}
@@ -75,39 +80,33 @@ export const FlatButton = (props) => {
       label={props.label}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
-      css={(theme) => {
-        const overwrittenVars = {
-          ...vars,
-          ...theme,
-        };
-
-        return css`
-          min-height: initial;
-          align-items: center;
-          ${props.as && props.as !== 'button'
-            ? `white-space: normal;
+      css={css`
+        min-height: initial;
+        align-items: center;
+        ${props.as && props.as !== 'button'
+          ? `white-space: normal;
                display: inline-block;`
-            : ''};
+          : ''};
 
-          span {
-            color: ${props.isDisabled
-              ? overwrittenVars.colorNeutral
-              : getTextColor(props.tone, false, overwrittenVars)};
-          }
+        span {
+          color: ${props.isDisabled
+            ? overwrittenVars.colorNeutral
+            : getTextColor(props.tone, false, overwrittenVars)};
+        }
 
-          svg * {
-            fill: ${props.isDisabled
-              ? overwrittenVars.colorNeutral
-              : getTextColor(props.tone, false, overwrittenVars)};
-          }
+        svg * {
+          fill: ${props.isDisabled
+            ? overwrittenVars.colorNeutral
+            : getTextColor(props.tone, false, overwrittenVars)};
+        }
 
-          * + span,
-          * + svg {
-            margin-left: ${vars.spacingXs};
-          }
+        * + span,
+        * + svg {
+          margin-left: ${vars.spacingXs};
+        }
 
-          ${!props.isDisabled
-            ? `
+        ${!props.isDisabled
+          ? `
             &:hover,
             &:focus {
               span {
@@ -117,9 +116,8 @@ export const FlatButton = (props) => {
                 fill: ${getTextColor(props.tone, true, overwrittenVars)};
               }
             }`
-            : ''}
-        `;
-      }}
+          : ''}
+      `}
       buttonAttributes={dataProps}
     >
       {props.icon && props.iconPosition === 'left' && <ButtonIcon {...props} />}

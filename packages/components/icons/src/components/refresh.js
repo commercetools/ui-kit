@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Refresh from '../raw-components/refresh';
 
-const Component = (props) => (
-  <Refresh {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Refresh {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'RefreshIcon';
 

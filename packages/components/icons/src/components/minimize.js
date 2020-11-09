@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Minimize from '../raw-components/minimize';
 
-const Component = (props) => (
-  <Minimize {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Minimize {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'MinimizeIcon';
 

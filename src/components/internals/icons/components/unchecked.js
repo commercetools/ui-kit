@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Unchecked from '../raw-components/unchecked';
 
-const Component = (props) => (
-  <Unchecked {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Unchecked {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'UncheckedIcon';
 

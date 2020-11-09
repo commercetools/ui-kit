@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTheme } from 'emotion-theming';
 import omit from 'lodash/omit';
 import requiredIf from 'react-required-if';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
@@ -16,6 +17,7 @@ export const SecondaryIconButton = (props) => {
     // we fall back to `isDisabled`
     disabled: props.isDisabled,
   };
+  const theme = useTheme();
   return (
     <AccessibleButton
       as={props.as}
@@ -24,7 +26,7 @@ export const SecondaryIconButton = (props) => {
       label={props.label}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
-      css={(theme) => getBaseStyles(theme, props)}
+      css={getBaseStyles(props, theme)}
     >
       {props.icon}
     </AccessibleButton>

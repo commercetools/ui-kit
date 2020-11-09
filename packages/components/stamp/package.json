@@ -9,12 +9,7 @@
     "directory": "packages/components/stamp"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -36,6 +31,7 @@
     "@babel/runtime-corejs3": "7.12.1",
     "@commercetools-uikit/design-system": "10.39.6",
     "@emotion/core": "^10.0.34",
+    "emotion-theming": "^10.0.27",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

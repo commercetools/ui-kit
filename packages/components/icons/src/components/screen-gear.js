@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import ScreenGear from '../raw-components/screen-gear';
 
-const Component = (props) => (
-  <ScreenGear {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <ScreenGear {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'ScreenGearIcon';
 

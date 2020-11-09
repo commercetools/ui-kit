@@ -122,10 +122,14 @@ iconsToProcess.forEach((data) => {
 
       const importStatement = stripIndents`
         import React from 'react';
+        import { useTheme } from 'emotion-theming';
         import { getIconStyles, iconPropTypes } from '${relativeStyledIconPath}';
         import ${componentName} from '../raw-components/${fileNameWithoutExtension}';
 
-        const Component = props => <${componentName} {...props} css={theme => getIconStyles(props, theme)} />;
+        const Component = props => {
+          const theme = useTheme();
+          return <${componentName} {...props} css={getIconStyles(props, theme)} />
+        };
 
         Component.displayName = '${displayName}';
 

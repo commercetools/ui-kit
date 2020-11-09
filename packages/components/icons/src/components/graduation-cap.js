@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import GraduationCap from '../raw-components/graduation-cap';
 
-const Component = (props) => (
-  <GraduationCap {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <GraduationCap {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'GraduationCapIcon';
 

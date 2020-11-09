@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import EyeCrossed from '../raw-components/eye-crossed';
 
-const Component = (props) => (
-  <EyeCrossed {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <EyeCrossed {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'EyeCrossedIcon';
 

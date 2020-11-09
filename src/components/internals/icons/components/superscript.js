@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Superscript from '../raw-components/superscript';
 
-const Component = (props) => (
-  <Superscript {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Superscript {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'SuperscriptIcon';
 

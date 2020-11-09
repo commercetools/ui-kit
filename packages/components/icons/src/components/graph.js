@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Graph from '../raw-components/graph';
 
-const Component = (props) => (
-  <Graph {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Graph {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'GraphIcon';
 

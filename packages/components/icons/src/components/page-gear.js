@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import PageGear from '../raw-components/page-gear';
 
-const Component = (props) => (
-  <PageGear {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <PageGear {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'PageGearIcon';
 

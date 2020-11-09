@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Subscript from '../raw-components/subscript';
 
-const Component = (props) => (
-  <Subscript {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Subscript {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'SubscriptIcon';
 

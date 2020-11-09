@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Chain from '../raw-components/chain';
 
-const Component = (props) => (
-  <Chain {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Chain {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'ChainIcon';
 

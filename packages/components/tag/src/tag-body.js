@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 import {
   customProperties as vars,
   designTokens,
@@ -10,7 +11,7 @@ import Text from '@commercetools-uikit/text';
 
 const Body = styled.div``;
 
-const getClickableContentWrapperStyles = ({ type, theme }) => {
+const getClickableContentWrapperStyles = (type, theme) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -72,47 +73,47 @@ const getContentWrapperStyles = (props, theme) => {
   `;
 };
 
-const TagBody = (props) => (
-  <Body
-    to={props.to}
-    as={props.as}
-    css={(theme) => [
-      getContentWrapperStyles(props, theme),
-      Boolean(props.onRemove) &&
-        css`
-          padding-right: ${vars.spacingS};
-          border-right: 0;
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-        `,
-      !props.isDisabled &&
-        Boolean(props.onClick) &&
-        getClickableContentWrapperStyles({
-          type: props.type,
-          theme,
-        }),
-      !props.isDisabled &&
-        Boolean(props.onClick) &&
-        css`
-          &:hover {
-            box-shadow: ${vars.shadowBoxTagWhenHovered};
-            &::after {
-              position: absolute;
-              right: -1px;
-              content: '';
-              background-color: ${vars.borderColorForTagWhenFocused};
-              width: 1px;
-              height: 100%;
+const TagBody = (props) => {
+  const theme = useTheme();
+  return (
+    <Body
+      to={props.to}
+      as={props.as}
+      css={[
+        getContentWrapperStyles(props, theme),
+        Boolean(props.onRemove) &&
+          css`
+            padding-right: ${vars.spacingS};
+            border-right: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          `,
+        !props.isDisabled &&
+          Boolean(props.onClick) &&
+          getClickableContentWrapperStyles(props.type, theme),
+        !props.isDisabled &&
+          Boolean(props.onClick) &&
+          css`
+            &:hover {
+              box-shadow: ${vars.shadowBoxTagWhenHovered};
+              &::after {
+                position: absolute;
+                right: -1px;
+                content: '';
+                background-color: ${vars.borderColorForTagWhenFocused};
+                width: 1px;
+                height: 100%;
+              }
             }
-          }
-        `,
-      props.styles?.body,
-    ]}
-    onClick={props.isDisabled ? undefined : props.onClick}
-  >
-    <Text.Detail>{props.children}</Text.Detail>
-  </Body>
-);
+          `,
+        props.styles?.body,
+      ]}
+      onClick={props.isDisabled ? undefined : props.onClick}
+    >
+      <Text.Detail>{props.children}</Text.Detail>
+    </Body>
+  );
+};
 
 TagBody.displayName = 'TagBody';
 TagBody.propTypes = {

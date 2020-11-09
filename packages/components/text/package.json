@@ -9,12 +9,7 @@
     "directory": "packages/components/text"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -38,6 +33,7 @@
     "@commercetools-uikit/utils": "10.39.6",
     "@emotion/core": "^10.0.34",
     "common-tags": "1.8.0",
+    "emotion-theming": "^10.0.27",
     "lodash": "4.17.20",
     "lodash-es": "4.17.15",
     "prop-types": "15.7.2",

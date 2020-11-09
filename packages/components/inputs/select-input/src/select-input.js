@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { ThemeContext } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 import has from 'lodash/has';
 import flatMap from 'lodash/flatMap';
 import Select, { components as defaultComponents } from 'react-select';
@@ -19,8 +19,6 @@ import {
 } from '@commercetools-uikit/utils';
 import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
 import messages from '../../../../../src/components/internals/messages/select';
-
-const useTheme = () => useContext(ThemeContext);
 
 const customizedComponents = {
   DropdownIndicator,

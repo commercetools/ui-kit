@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Review from '../raw-components/review';
 
-const Component = (props) => (
-  <Review {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Review {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'ReviewIcon';
 

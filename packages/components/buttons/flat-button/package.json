@@ -9,12 +9,7 @@
     "directory": "packages/components/buttons/flat-button"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -43,6 +38,7 @@
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",
     "common-tags": "1.8.0",
+    "emotion-theming": "^10.0.27",
     "lodash": "4.17.20",
     "lodash-es": "4.17.15",
     "prop-types": "15.7.2",

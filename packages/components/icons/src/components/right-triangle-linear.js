@@ -1,16 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import RightTriangleLinear from '../raw-components/right-triangle-linear';
 
-const Component = (props) => (
-  <RightTriangleLinear
-    {...props}
-    css={(theme) => getIconStyles(props, theme)}
-  />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <RightTriangleLinear {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'RightTriangleLinearIcon';
 

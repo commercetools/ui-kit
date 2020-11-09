@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import UserLinear from '../raw-components/user-linear';
 
-const Component = (props) => (
-  <UserLinear {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <UserLinear {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'UserLinearIcon';
 

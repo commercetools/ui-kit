@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import CaretUp from '../raw-components/caret-up';
 
-const Component = (props) => (
-  <CaretUp {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <CaretUp {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'CaretUpIcon';
 

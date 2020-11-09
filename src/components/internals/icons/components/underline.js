@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Underline from '../raw-components/underline';
 
-const Component = (props) => (
-  <Underline {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Underline {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'UnderlineIcon';
 
