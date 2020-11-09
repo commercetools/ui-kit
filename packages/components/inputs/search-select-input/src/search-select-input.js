@@ -160,7 +160,7 @@ SearchSelectInput.propTypes = {
    */
   showOptionGroupDivider: PropTypes.bool,
   /**
-   * The default set of options to show before the user starts searching. When set to true, the results for loadOptions('') will be autoloaded.
+   * The default set of options to show before the user starts searching. When set to `true`, the results for `loadOptions('')` will be autoloaded.
    */
   defaultOptions: PropTypes.oneOfType([
     PropTypes.bool,
