@@ -48,7 +48,6 @@ const SearchSelectInput = (props) => {
         loadingMessage={loadingMessage}
         noOptionsMessage={noOptionsMessage}
         isSearchable={true}
-        defaultOptions={false}
       />
     </SearchSelectInputWrapper>
   );
@@ -160,6 +159,17 @@ SearchSelectInput.propTypes = {
    * Determines if option groups will be separated by a divider
    */
   showOptionGroupDivider: PropTypes.bool,
+  /**
+   * The default set of options to show before the user starts searching. When set to true, the results for loadOptions('') will be autoloaded.
+   */
+  defaultOptions: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.string.isRequired,
+      })
+    ),
+  ]),
   /**
    * Handle blur events on the control
    */
