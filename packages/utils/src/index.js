@@ -1,7 +1,6 @@
 export { default as filterDataAttributes } from './filter-data-attributes';
 export { default as filterAriaAttributes } from './filter-aria-attributes';
 export { default as filterInvalidAttributes } from './filter-invalid-attributes';
-export { default as getPassThroughProps } from './get-pass-through-props';
 export { default as isNumberish } from './is-numberish';
 export { default as warnDeprecatedComponent } from './warn-deprecated-component';
 export { default as warnDeprecatedProp } from './warn-deprecated-prop';

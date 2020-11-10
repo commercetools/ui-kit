@@ -4,7 +4,6 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import babel from '@rollup/plugin-babel';
-import replace from '@rollup/plugin-replace';
 import peerDeps from 'rollup-plugin-peer-deps-external';
 import builtins from 'rollup-plugin-node-builtins';
 import readPkgUp from 'read-pkg-up';
@@ -25,9 +24,6 @@ const babelOptions = getBabelPreset();
 const createPlugins = (format) => {
   const isFormatEs = format === 'es';
   return [
-    replace({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
     peerDeps({
       includeDependencies: true,
     }),
@@ -51,7 +47,7 @@ const createPlugins = (format) => {
     }),
     nodeResolve({
       extensions,
-      mainFields: ['module', 'main', 'jsnext'],
+      mainFields: isFormatEs ? ['module', 'main', 'jsnext'] : ['main'],
       preferBuiltins: true,
       modulesOnly: true,
     }),

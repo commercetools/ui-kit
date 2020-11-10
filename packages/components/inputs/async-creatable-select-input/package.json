@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/async-creatable-select-input",
   "description": "An input component getting a selection from an asynchronously loaded list from the user, and where options can be created by the user.",
-  "version": "10.39.1",
+  "version": "10.39.6",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "packages/components/inputs/async-creatable-select-input"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -29,14 +34,14 @@
   "dependencies": {
     "@babel/runtime": "7.12.1",
     "@babel/runtime-corejs3": "7.12.1",
-    "@commercetools-uikit/constraints": "10.39.1",
-    "@commercetools-uikit/design-system": "10.39.1",
-    "@commercetools-uikit/icons": "10.39.1",
-    "@commercetools-uikit/loading-spinner": "10.39.1",
-    "@commercetools-uikit/select-utils": "10.39.1",
-    "@commercetools-uikit/spacings": "10.39.1",
-    "@commercetools-uikit/text": "10.39.1",
-    "@commercetools-uikit/utils": "10.39.1",
+    "@commercetools-uikit/constraints": "10.39.6",
+    "@commercetools-uikit/design-system": "10.39.6",
+    "@commercetools-uikit/icons": "10.39.6",
+    "@commercetools-uikit/loading-spinner": "10.39.6",
+    "@commercetools-uikit/select-utils": "10.39.6",
+    "@commercetools-uikit/spacings": "10.39.6",
+    "@commercetools-uikit/text": "10.39.6",
+    "@commercetools-uikit/utils": "10.39.6",
     "@emotion/core": "^10.0.34",
     "@emotion/is-prop-valid": "0.8.8",
     "@emotion/styled": "^10.0.27",

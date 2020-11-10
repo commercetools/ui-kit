@@ -5,7 +5,7 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/core';
 import { FormattedMessage } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { getPassThroughProps } from '@commercetools-uikit/utils';
+import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 
 const getLinkStyles = (props, theme) => {
   const overwrittenVars = {
@@ -28,10 +28,7 @@ const getLinkStyles = (props, theme) => {
 };
 
 const Link = (props) => {
-  const remainingProps = getPassThroughProps(
-    props,
-    Object.keys(Link.propTypes)
-  );
+  const remainingProps = filterInvalidAttributes(props);
 
   if (props.isExternal) {
     return (

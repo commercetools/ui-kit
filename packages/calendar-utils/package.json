@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/calendar-utils",
   "description": "Utilities to work with values for a calendar.",
-  "version": "10.39.1",
+  "version": "10.39.6",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,12 @@
     "directory": "packages/calendar-utils"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -29,8 +34,8 @@
   "dependencies": {
     "@babel/runtime": "7.12.1",
     "@babel/runtime-corejs3": "7.12.1",
-    "@commercetools-uikit/accessible-button": "10.39.1",
-    "@commercetools-uikit/utils": "10.39.1"
+    "@commercetools-uikit/accessible-button": "10.39.6",
+    "@commercetools-uikit/utils": "10.39.6"
   },
   "peerDependencies": {
     "moment": "2.x"
