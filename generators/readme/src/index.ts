@@ -33,14 +33,16 @@ import { getPackagesSync } from '@manypkg/get-packages';
 import toVfile from 'to-vfile';
 import vfile from 'vfile';
 import unified from 'unified';
-import markdown from 'remark-parse';
+import parse from 'remark-parse';
 import mdx from 'remark-mdx';
+import gfm from 'remark-gfm';
 import stringify from 'remark-stringify';
 import rcfile from 'rcfile';
 import prettier from 'prettier';
 import camelcase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
-import stringfyOptions from './utils/stringify-options';
+import stringifyOptions from './utils/stringify-options';
+import gfmOptions from './utils/gfm-options';
 
 const prettierConfig = rcfile<PrettierOptions>('prettier');
 
@@ -93,8 +95,9 @@ const tableCellMultiline = (children: PhrasingContent[]): TableCell => ({
 });
 const parseMarkdownFragmentToAST = (fragmentContent: VFileCompatible) => {
   const fragmentAST = unified()
-    .use(markdown)
-    .use(stringify, stringfyOptions)
+    .use(parse)
+    .use(gfm, gfmOptions)
+    .use(stringify, stringifyOptions)
     .use(mdx)
     .parse(fragmentContent) as Root;
   return fragmentAST.children;
@@ -318,7 +321,10 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
           const unionValues = propInfo.type.value as ReactComponentPropType[];
           const combinedUnionValues = unionValues
             .map((union) => union.name)
-            .join('\\|');
+            // FIXME: it seems that there is a regression about escaping mulitple pipes.
+            // https://github.com/syntax-tree/mdast-util-gfm-table
+            // .join('\\|');
+            .join(', ');
           propTypeNode = [inlineCode(`<${combinedUnionValues}>`)];
           break;
         }
@@ -331,7 +337,10 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
             inlineCode(
               (propInfo.type.value as { value: string }[])
                 .map((enumValue) => enumValue.value)
-                .join(' \\| ')
+                // FIXME: it seems that there is a regression about escaping mulitple pipes.
+                // https://github.com/syntax-tree/mdast-util-gfm-table
+                // .join(' \\| ');
+                .join(', ')
             ),
           ];
           break;
@@ -461,8 +470,9 @@ export async function transformDocument(
 ) {
   return new Promise<VFile>((resolve, reject) => {
     unified()
-      .use(markdown)
-      .use(stringify, stringfyOptions)
+      .use(parse)
+      .use(gfm, gfmOptions)
+      .use(stringify, stringifyOptions)
       .use(mdx)
       .use(readmeTransformer, packageFolderPath)
       .process(doc, (err, file) => {

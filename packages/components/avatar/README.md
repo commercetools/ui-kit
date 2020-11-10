@@ -47,10 +47,10 @@ export default Example;
 
 ## Properties
 
-| Props           | Type                                              | Required | Default | Description                             |
-| --------------- | ------------------------------------------------- | :------: | ------- | --------------------------------------- |
-| `firstName`     | `string`                                          |          | `''`    | The first name of the user.             |
-| `lastName`      | `string`                                          |          | `''`    | The last name of the user.              |
-| `gravatarHash`  | `string`                                          |    ✅    |         | The hashed string of the user gravatar. |
-| `isHighlighted` | `bool`                                            |          | `false` | Enhances the appearance of the avatar.  |
-| `size`          | `enum`<br>Possible values:<br>`'s' \| 'm' \| 'l'` |          | `'s'`   | The size of the rendered avatar.        |
+| Props           | Type                                          | Required | Default | Description                             |
+| --------------- | --------------------------------------------- | :------: | ------- | --------------------------------------- |
+| `firstName`     | `string`                                      |          | `''`    | The first name of the user.             |
+| `lastName`      | `string`                                      |          | `''`    | The last name of the user.              |
+| `gravatarHash`  | `string`                                      |    ✅    |         | The hashed string of the user gravatar. |
+| `isHighlighted` | `bool`                                        |          | `false` | Enhances the appearance of the avatar.  |
+| `size`          | `enum`<br>Possible values:<br>`'s', 'm', 'l'` |          | `'s'`   | The size of the rendered avatar.        |

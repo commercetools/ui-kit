@@ -49,9 +49,9 @@ export default Example;
 
 ## Properties
 
-| Props             | Type   | Required | Default | Description                                                                                                                                                                                    |
-| ----------------- | ------ | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `isDefaultClosed` | `bool` |          | `false` | This is only used to initialize the `isOpen` state once, when the component mounts. Therefore there should not be any `componentWillReceiveProps` to update the state from an external source. |
-| `children`        | `func` |    ✅    |         | A render-prop function.<br> Signature: `({ isOpen: boolean, toggle: (event) => void }) => void`                                                                                                |
-| `isClosed`        | `bool` |          |         | Passing this prop makes the component a controlled component. Controlled components also require to pass a `onToggle` callback function.                                                       |
-| `onToggle`        | `func` |          |         | A callback function, called when the consumer calls the `toggle` function. This function is only required when the component is controlled.<br> Signature: `(event) => void`                   |
+| Props             | Type   | Required | Default | Description                                                                                                                                                                                            |
+| ----------------- | ------ | :------: | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `isDefaultClosed` | `bool` |          | `false` | This is only used to initialize the `isOpen` state once, when the component mounts.&#xA;Therefore there should not be any `componentWillReceiveProps` to update the state&#xA;from an external source. |
+| `children`        | `func` |    ✅    |         | A render-prop function.&#xA;<br>&#xA;Signature: `({ isOpen: boolean, toggle: (event) => void }) => void`                                                                                               |
+| `isClosed`        | `bool` |          |         | Passing this prop makes the component a controlled component.&#xA;Controlled components also require to pass a `onToggle` callback function.                                                           |
+| `onToggle`        | `func` |          |         | A callback function, called when the consumer calls the `toggle` function.&#xA;This function is only required when the component is controlled.&#xA;<br>&#xA;Signature: `(event) => void`              |
