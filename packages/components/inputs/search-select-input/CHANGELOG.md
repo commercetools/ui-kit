@@ -1,5 +1,18 @@
 # @commercetools-uikit/search-select-input
 
+## 10.39.7
+
+### Patch Changes
+
+- [`c473935`](https://github.com/commercetools/ui-kit/commit/c4739352a757329808bf583a1642f1fae62fcf8d) [#1663](https://github.com/commercetools/ui-kit/pull/1663) Thanks [@mohib0306](https://github.com/mohib0306)! - Enable `defaultOptions` on `SearchSelectInput` to preload selected options
+
+- Updated dependencies [[`050af75`](https://github.com/commercetools/ui-kit/commit/050af75aabefd0f11b498b48f5926383e7cfcf8b)]:
+  - @commercetools-uikit/design-system@10.39.7
+  - @commercetools-uikit/async-select-input@10.39.7
+  - @commercetools-uikit/select-utils@10.39.7
+  - @commercetools-uikit/text@10.39.7
+  - @commercetools-uikit/spacings@10.39.7
+
 ## 10.39.6
 
 ### Patch Changes

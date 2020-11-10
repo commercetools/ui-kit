@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/field-errors",
   "description": "Renders errors based on configuration.",
-  "version": "10.39.6",
+  "version": "10.39.7",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/messages": "10.39.6",
+    "@commercetools-uikit/messages": "10.39.7",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
     "@emotion/styled-base": "^10.0.31",

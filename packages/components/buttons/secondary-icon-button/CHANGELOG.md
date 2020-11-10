@@ -1,5 +1,17 @@
 # @commercetools-uikit/secondary-icon-button
 
+## 10.39.7
+
+### Patch Changes
+
+- [`050af75`](https://github.com/commercetools/ui-kit/commit/050af75aabefd0f11b498b48f5926383e7cfcf8b) [#1659](https://github.com/commercetools/ui-kit/pull/1659) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update all dependencies
+
+- Updated dependencies [[`050af75`](https://github.com/commercetools/ui-kit/commit/050af75aabefd0f11b498b48f5926383e7cfcf8b)]:
+  - @commercetools-uikit/design-system@10.39.7
+  - @commercetools-uikit/accessible-button@10.39.7
+  - @commercetools-uikit/text@10.39.7
+  - @commercetools-uikit/spacings@10.39.7
+
 ## 10.39.6
 
 ### Patch Changes

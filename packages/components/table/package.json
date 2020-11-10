@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/table",
   "description": "A component to render tabular data (DEPRECATED).",
-  "version": "10.39.6",
+  "version": "10.39.7",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -34,11 +34,11 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/design-system": "10.39.6",
-    "@commercetools-uikit/icons": "10.39.6",
-    "@commercetools-uikit/spacings-inset": "10.39.6",
-    "@commercetools-uikit/spacings-inset-squish": "10.39.6",
-    "@commercetools-uikit/text": "10.39.6",
+    "@commercetools-uikit/design-system": "10.39.7",
+    "@commercetools-uikit/icons": "10.39.7",
+    "@commercetools-uikit/spacings-inset": "10.39.7",
+    "@commercetools-uikit/spacings-inset-squish": "10.39.7",
+    "@commercetools-uikit/text": "10.39.7",
     "@commercetools-uikit/utils": "10.39.6",
     "@emotion/core": "^10.0.34",
     "@emotion/styled": "^10.0.27",
