@@ -1,5 +1,21 @@
 # @commercetools-uikit/date-time-field
 
+## 10.39.7
+
+### Patch Changes
+
+- [`050af75`](https://github.com/commercetools/ui-kit/commit/050af75aabefd0f11b498b48f5926383e7cfcf8b) [#1659](https://github.com/commercetools/ui-kit/pull/1659) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update all dependencies
+
+* [`a783a3e`](https://github.com/commercetools/ui-kit/commit/a783a3e4c17d89e0cabc77610768b63028e47ac6) [#1630](https://github.com/commercetools/ui-kit/pull/1630) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update remark monorepo to v9 (major)
+
+* Updated dependencies [[`050af75`](https://github.com/commercetools/ui-kit/commit/050af75aabefd0f11b498b48f5926383e7cfcf8b), [`a783a3e`](https://github.com/commercetools/ui-kit/commit/a783a3e4c17d89e0cabc77610768b63028e47ac6)]:
+  - @commercetools-uikit/design-system@10.39.7
+  - @commercetools-uikit/constraints@10.39.7
+  - @commercetools-uikit/field-errors@10.39.7
+  - @commercetools-uikit/field-label@10.39.7
+  - @commercetools-uikit/date-time-input@10.39.7
+  - @commercetools-uikit/spacings@10.39.7
+
 ## 10.39.6
 
 ### Patch Changes

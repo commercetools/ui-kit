@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/calendar-utils",
   "description": "Utilities to work with values for a calendar.",
-  "version": "10.39.6",
+  "version": "10.39.7",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/accessible-button": "10.39.6",
+    "@commercetools-uikit/accessible-button": "10.39.7",
     "@commercetools-uikit/utils": "10.39.6"
   },
   "peerDependencies": {
