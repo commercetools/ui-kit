@@ -32,8 +32,8 @@
     "build:bundles:watch": "yarn build:bundles -w"
   },
   "dependencies": {
-    "@babel/runtime": "7.12.1",
-    "@babel/runtime-corejs3": "7.12.1",
+    "@babel/runtime": "7.12.5",
+    "@babel/runtime-corejs3": "7.12.5",
     "@commercetools-uikit/constraints": "10.39.6",
     "@commercetools-uikit/design-system": "10.39.6",
     "@commercetools-uikit/flat-button": "10.39.6",
