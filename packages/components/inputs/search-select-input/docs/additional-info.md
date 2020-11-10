@@ -3,7 +3,6 @@ The underlying `@commercetools-uikit/async-select-input` is built on top of [`re
 - `components.DropdownIndicator`: Default dropdown indicator is replaced with search icon indicator
 - `components.Option`: The option shown in the dropdown menu can be one of `singled-lined`, `brief-detailed`, or `extended-detailed` types. However, if someone still wants to have a different option layout, they can still pass their own `components.Option` to `@commercetools-uikit/search-select-input`
 - `isSearchable`: `true`
-- `defaultOptions`: `false`
 - `iconLeft`: `undefined`
 
 See the [official documentation](https://react-select.com/components) for more information about the available props.
