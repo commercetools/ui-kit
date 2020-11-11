@@ -1,5 +1,45 @@
 # @commercetools-frontend/ui-kit
 
+## 10.39.8
+
+### Patch Changes
+
+- [`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5) [#1662](https://github.com/commercetools/ui-kit/pull/1662) Thanks [@emmenko](https://github.com/emmenko)! - Explicitly get Emotion theme from context instead of relying on the implicit behavior
+
+- Updated dependencies [[`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5)]:
+  - @commercetools-uikit/design-system@10.39.8
+  - @commercetools-uikit/accessible-hidden@10.39.8
+  - @commercetools-uikit/avatar@10.39.8
+  - @commercetools-uikit/card@10.39.8
+  - @commercetools-uikit/collapsible@10.39.8
+  - @commercetools-uikit/collapsible-motion@10.39.8
+  - @commercetools-uikit/collapsible-panel@10.39.8
+  - @commercetools-uikit/constraints@10.39.8
+  - @commercetools-uikit/data-table@10.39.8
+  - @commercetools-uikit/data-table-manager@10.39.8
+  - @commercetools-uikit/field-errors@10.39.8
+  - @commercetools-uikit/field-label@10.39.8
+  - @commercetools-uikit/grid@10.39.8
+  - @commercetools-uikit/icons@10.39.8
+  - @commercetools-uikit/label@10.39.8
+  - @commercetools-uikit/link@10.39.8
+  - @commercetools-uikit/loading-spinner@10.39.8
+  - @commercetools-uikit/messages@10.39.8
+  - @commercetools-uikit/notifications@10.39.8
+  - @commercetools-uikit/primary-action-dropdown@10.39.8
+  - @commercetools-uikit/stamp@10.39.8
+  - @commercetools-uikit/table@10.39.8
+  - @commercetools-uikit/tag@10.39.8
+  - @commercetools-uikit/text@10.39.8
+  - @commercetools-uikit/tooltip@10.39.8
+  - @commercetools-uikit/hooks@10.39.8
+  - @commercetools-uikit/i18n@10.39.8
+  - @commercetools-uikit/utils@10.39.8
+  - @commercetools-uikit/buttons@10.39.8
+  - @commercetools-uikit/fields@10.39.8
+  - @commercetools-uikit/inputs@10.39.8
+  - @commercetools-uikit/spacings@10.39.8
+
 ## 10.39.7
 
 ### Patch Changes

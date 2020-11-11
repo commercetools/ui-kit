@@ -1,5 +1,30 @@
 # @commercetools-uikit/fields
 
+## 10.39.8
+
+### Patch Changes
+
+- [`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5) [#1662](https://github.com/commercetools/ui-kit/pull/1662) Thanks [@emmenko](https://github.com/emmenko)! - Explicitly get Emotion theme from context instead of relying on the implicit behavior
+
+- Updated dependencies [[`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5)]:
+  - @commercetools-uikit/async-creatable-select-field@10.39.8
+  - @commercetools-uikit/async-select-field@10.39.8
+  - @commercetools-uikit/creatable-select-field@10.39.8
+  - @commercetools-uikit/date-field@10.39.8
+  - @commercetools-uikit/date-range-field@10.39.8
+  - @commercetools-uikit/date-time-field@10.39.8
+  - @commercetools-uikit/localized-multiline-text-field@10.39.8
+  - @commercetools-uikit/localized-text-field@10.39.8
+  - @commercetools-uikit/money-field@10.39.8
+  - @commercetools-uikit/multiline-text-field@10.39.8
+  - @commercetools-uikit/number-field@10.39.8
+  - @commercetools-uikit/password-field@10.39.8
+  - @commercetools-uikit/radio-field@10.39.8
+  - @commercetools-uikit/search-select-field@10.39.8
+  - @commercetools-uikit/select-field@10.39.8
+  - @commercetools-uikit/text-field@10.39.8
+  - @commercetools-uikit/time-field@10.39.8
+
 ## 10.39.7
 
 ### Patch Changes

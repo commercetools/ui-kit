@@ -1,5 +1,23 @@
 # @commercetools-uikit/localized-multiline-text-input
 
+## 10.39.8
+
+### Patch Changes
+
+- [`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5) [#1662](https://github.com/commercetools/ui-kit/pull/1662) Thanks [@emmenko](https://github.com/emmenko)! - Explicitly get Emotion theme from context instead of relying on the implicit behavior
+
+- Updated dependencies [[`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5)]:
+  - @commercetools-uikit/design-system@10.39.8
+  - @commercetools-uikit/flat-button@10.39.8
+  - @commercetools-uikit/constraints@10.39.8
+  - @commercetools-uikit/icons@10.39.8
+  - @commercetools-uikit/messages@10.39.8
+  - @commercetools-uikit/spacings-stack@10.39.8
+  - @commercetools-uikit/text@10.39.8
+  - @commercetools-uikit/hooks@10.39.8
+  - @commercetools-uikit/localized-utils@10.39.8
+  - @commercetools-uikit/utils@10.39.8
+
 ## 10.39.7
 
 ### Patch Changes

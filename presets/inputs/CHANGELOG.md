@@ -1,5 +1,35 @@
 # @commercetools-uikit/inputs
 
+## 10.39.8
+
+### Patch Changes
+
+- [`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5) [#1662](https://github.com/commercetools/ui-kit/pull/1662) Thanks [@emmenko](https://github.com/emmenko)! - Explicitly get Emotion theme from context instead of relying on the implicit behavior
+
+- Updated dependencies [[`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5)]:
+  - @commercetools-uikit/async-creatable-select-input@10.39.8
+  - @commercetools-uikit/async-select-input@10.39.8
+  - @commercetools-uikit/checkbox-input@10.39.8
+  - @commercetools-uikit/creatable-select-input@10.39.8
+  - @commercetools-uikit/date-input@10.39.8
+  - @commercetools-uikit/date-range-input@10.39.8
+  - @commercetools-uikit/date-time-input@10.39.8
+  - @commercetools-uikit/localized-money-input@10.39.8
+  - @commercetools-uikit/localized-multiline-text-input@10.39.8
+  - @commercetools-uikit/localized-rich-text-input@10.39.8
+  - @commercetools-uikit/localized-text-input@10.39.8
+  - @commercetools-uikit/money-input@10.39.8
+  - @commercetools-uikit/multiline-text-input@10.39.8
+  - @commercetools-uikit/number-input@10.39.8
+  - @commercetools-uikit/password-input@10.39.8
+  - @commercetools-uikit/radio-input@10.39.8
+  - @commercetools-uikit/rich-text-input@10.39.8
+  - @commercetools-uikit/search-select-input@10.39.8
+  - @commercetools-uikit/select-input@10.39.8
+  - @commercetools-uikit/text-input@10.39.8
+  - @commercetools-uikit/time-input@10.39.8
+  - @commercetools-uikit/toggle-input@10.39.8
+
 ## 10.39.7
 
 ### Patch Changes
