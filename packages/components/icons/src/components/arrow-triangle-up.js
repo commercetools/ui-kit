@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import ArrowTriangleUp from '../raw-components/arrow-triangle-up';
 
-const Component = (props) => (
-  <ArrowTriangleUp {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <ArrowTriangleUp {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'ArrowTriangleUpIcon';
 

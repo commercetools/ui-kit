@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 import {
   customProperties as vars,
   designTokens,
@@ -11,36 +12,29 @@ import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
 import TagBody from './tag-body';
 
-const getWrapperBackgroundColor = (type, theme) => {
+const Tag = (props) => {
+  const linkProps =
+    props.linkTo && !props.isDisabled ? { as: Link, to: props.linkTo } : {};
+  const theme = useTheme();
   const overwrittenVars = {
     ...vars,
     ...theme,
   };
-
-  return type === 'warning'
-    ? overwrittenVars[designTokens.backgroundColorForTagWarning]
-    : overwrittenVars[designTokens.backgroundColorForTag];
-};
-
-const Tag = (props) => {
-  const linkProps =
-    props.linkTo && !props.isDisabled ? { as: Link, to: props.linkTo } : {};
-
   return (
     <Constraints.Horizontal constraint={props.horizontalConstraint}>
       <div
-        css={(theme) =>
-          css`
-            a {
-              cursor: pointer;
-              text-decoration: none;
-            }
-            cursor: default;
-            min-width: 0;
-            display: flex;
-            background-color: ${getWrapperBackgroundColor(props.type, theme)};
-          `
-        }
+        css={css`
+          a {
+            cursor: pointer;
+            text-decoration: none;
+          }
+          cursor: default;
+          min-width: 0;
+          display: flex;
+          background-color: ${props.type === 'warning'
+            ? overwrittenVars[designTokens.backgroundColorForTagWarning]
+            : overwrittenVars[designTokens.backgroundColorForTag]};
+        `}
       >
         <TagBody
           {...linkProps}
@@ -58,49 +52,42 @@ const Tag = (props) => {
             label="Remove"
             isDisabled={props.isDisabled}
             onClick={props.onRemove}
-            css={(theme) => {
-              const overwrittenVars = {
-                ...vars,
-                ...theme,
-              };
+            css={[
+              css`
+                border-color: ${props.type === 'warning'
+                  ? overwrittenVars[designTokens.borderColorForTagWarning]
+                  : overwrittenVars[designTokens.borderColorForTag]};
+                padding: 0 ${vars.spacingXs};
+                border-radius: 0
+                  ${overwrittenVars[designTokens.borderRadiusForTag]}
+                  ${overwrittenVars[designTokens.borderRadiusForTag]} 0;
+                display: flex;
+                align-items: center;
+                background: inherit;
+                border-style: solid;
+                border-width: 1px 1px 1px 1px;
+                :not(:disabled)&:hover,
+                :not(:disabled)&:focus {
+                  border-color: ${overwrittenVars[
+                    designTokens.borderColorForTagWarning
+                  ]};
 
-              return [
-                css`
-                  border-color: ${props.type === 'warning'
-                    ? overwrittenVars[designTokens.borderColorForTagWarning]
-                    : overwrittenVars[designTokens.borderColorForTag]};
-                  padding: 0 ${vars.spacingXs};
-                  border-radius: 0
-                    ${overwrittenVars[designTokens.borderRadiusForTag]}
-                    ${overwrittenVars[designTokens.borderRadiusForTag]} 0;
-                  display: flex;
-                  align-items: center;
-                  background: inherit;
-                  border-style: solid;
-                  border-width: 1px 1px 1px 1px;
-                  :not(:disabled)&:hover,
-                  :not(:disabled)&:focus {
-                    border-color: ${overwrittenVars[
+                  > svg * {
+                    fill: ${overwrittenVars[
                       designTokens.borderColorForTagWarning
                     ]};
-
-                    > svg * {
-                      fill: ${overwrittenVars[
-                        designTokens.borderColorForTagWarning
-                      ]};
-                    }
                   }
-                  > svg * {
-                    fill: ${overwrittenVars[designTokens.fontColorForTag]};
-                  }
-                  &:disabled > svg * {
-                    fill: ${overwrittenVars[
-                      designTokens.fontColorForTagWhenDisabled
-                    ]};
-                  }
-                `,
-              ];
-            }}
+                }
+                > svg * {
+                  fill: ${overwrittenVars[designTokens.fontColorForTag]};
+                }
+                &:disabled > svg * {
+                  fill: ${overwrittenVars[
+                    designTokens.fontColorForTagWhenDisabled
+                  ]};
+                }
+              `,
+            ]}
           >
             <CloseBoldIcon size="medium" />
           </AccessibleButton>

@@ -1,33 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
+import { useTheme } from 'emotion-theming';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '../../styles';
 
-const PasswordInput = (props) => (
-  <Constraints.Horizontal constraint={props.horizontalConstraint}>
-    <input
-      id={props.id}
-      name={props.name}
-      type={props.isPasswordVisible ? 'text' : 'password'}
-      value={props.value}
-      onChange={props.onChange}
-      onBlur={props.onBlur}
-      onFocus={props.onFocus}
-      disabled={props.isDisabled}
-      placeholder={props.placeholder}
-      autoComplete={props.autoComplete}
-      css={(theme) => getInputStyles(props, theme)}
-      readOnly={props.isReadOnly}
-      autoFocus={props.isAutofocussed}
-      {...filterDataAttributes(props)}
-      /* ARIA */
-      aria-readonly={props.isReadOnly}
-      contentEditable={!props.isReadOnly}
-    />
-  </Constraints.Horizontal>
-);
+const PasswordInput = (props) => {
+  const theme = useTheme();
+  return (
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+      <input
+        id={props.id}
+        name={props.name}
+        type={props.isPasswordVisible ? 'text' : 'password'}
+        value={props.value}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
+        disabled={props.isDisabled}
+        placeholder={props.placeholder}
+        autoComplete={props.autoComplete}
+        css={getInputStyles(props, theme)}
+        readOnly={props.isReadOnly}
+        autoFocus={props.isAutofocussed}
+        {...filterDataAttributes(props)}
+        /* ARIA */
+        aria-readonly={props.isReadOnly}
+        contentEditable={!props.isReadOnly}
+      />
+    </Constraints.Horizontal>
+  );
+};
 
 PasswordInput.displayName = 'PasswordInput';
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTheme } from 'emotion-theming';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -150,4 +151,4 @@ CalendarBody.defaultProps = {
   isClearable: true,
 };
 
-export default CalendarBody;
+export default withTheme(CalendarBody);

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { useTheme } from 'emotion-theming';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -96,6 +97,8 @@ const TranslationInput = (props) => {
     props.error ||
     props.warning;
 
+  const theme = useTheme();
+
   return (
     <Stack scale="xs">
       <div
@@ -106,10 +109,7 @@ const TranslationInput = (props) => {
           display: flex;
         `}
       >
-        <label
-          htmlFor={props.id}
-          css={(theme) => getLanguageLabelStyles(props, theme)}
-        >
+        <label htmlFor={props.id} css={getLanguageLabelStyles(props, theme)}>
           {/* FIXME: add proper tone for disabled when tones are refactored */}
           <Text.Detail tone="secondary">
             {props.language.toUpperCase()}
@@ -126,7 +126,7 @@ const TranslationInput = (props) => {
           onFocus={handleFocus}
           isDisabled={props.isDisabled}
           placeholder={props.placeholder}
-          css={(theme) => getTextareaStyles(props, theme)}
+          css={getTextareaStyles(props, theme)}
           hasError={props.hasError}
           hasWarning={props.hasWarning}
           isReadOnly={props.isReadOnly}

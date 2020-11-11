@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import FlagLinear from '../raw-components/flag-linear';
 
-const Component = (props) => (
-  <FlagLinear {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <FlagLinear {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'FlagLinearIcon';
 

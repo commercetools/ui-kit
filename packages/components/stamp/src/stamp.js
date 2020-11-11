@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 export const availableTones = [
@@ -76,17 +77,20 @@ const getStampStyles = (props, theme) => {
   `;
 };
 
-const Stamp = (props) => (
-  <div
-    css={(theme) => [
-      getStampStyles(props, theme),
-      getToneStyles(props, theme),
-      getPaddingStyle(props),
-    ]}
-  >
-    {props.children}
-  </div>
-);
+const Stamp = (props) => {
+  const theme = useTheme();
+  return (
+    <div
+      css={[
+        getStampStyles(props, theme),
+        getToneStyles(props, theme),
+        getPaddingStyle(props),
+      ]}
+    >
+      {props.children}
+    </div>
+  );
+};
 
 Stamp.displayName = 'Stamp';
 Stamp.propTypes = {

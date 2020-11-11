@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { ThemeContext } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 import { components as defaultComponents } from 'react-select';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import Constraints from '@commercetools-uikit/constraints';
@@ -19,8 +19,6 @@ import {
 import LoadingIndicator from '../../../../../src/components/internals/loading-indicator';
 import messages from '../../../../../src/components/internals/messages/select';
 import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
-
-const useTheme = () => useContext(ThemeContext);
 
 const customizedComponents = {
   DropdownIndicator,

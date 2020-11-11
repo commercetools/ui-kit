@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Download from '../raw-components/download';
 
-const Component = (props) => (
-  <Download {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Download {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'DownloadIcon';
 

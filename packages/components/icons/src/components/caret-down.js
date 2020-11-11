@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import CaretDown from '../raw-components/caret-down';
 
-const Component = (props) => (
-  <CaretDown {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <CaretDown {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'CaretDownIcon';
 

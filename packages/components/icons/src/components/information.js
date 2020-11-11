@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Information from '../raw-components/information';
 
-const Component = (props) => (
-  <Information {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Information {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'InformationIcon';
 

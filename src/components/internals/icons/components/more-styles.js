@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import MoreStyles from '../raw-components/more-styles';
 
-const Component = (props) => (
-  <MoreStyles {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <MoreStyles {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'MoreStylesIcon';
 

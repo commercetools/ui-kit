@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import List from '../raw-components/list';
 
-const Component = (props) => (
-  <List {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <List {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'ListIcon';
 

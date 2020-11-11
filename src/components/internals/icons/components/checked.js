@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Checked from '../raw-components/checked';
 
-const Component = (props) => (
-  <Checked {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Checked {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'CheckedIcon';
 

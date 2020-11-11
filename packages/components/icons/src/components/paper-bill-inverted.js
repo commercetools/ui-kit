@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import PaperBillInverted from '../raw-components/paper-bill-inverted';
 
-const Component = (props) => (
-  <PaperBillInverted {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <PaperBillInverted {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'PaperBillInvertedIcon';
 

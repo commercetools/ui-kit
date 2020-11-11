@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { withTheme } from 'emotion-theming';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const iconSizes = {
@@ -90,5 +91,5 @@ export default function createStyledIcon(Component, displayName) {
   );
   StyledComponent.displayName = displayName;
   StyledComponent.propTypes = iconPropTypes;
-  return StyledComponent;
+  return withTheme(StyledComponent);
 }

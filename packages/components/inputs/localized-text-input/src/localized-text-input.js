@@ -4,6 +4,7 @@ import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
 import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -52,6 +53,7 @@ const LocalizedInput = (props) => {
     },
     [props.language, onChange]
   );
+  const theme = useTheme();
 
   return (
     <div
@@ -62,10 +64,7 @@ const LocalizedInput = (props) => {
         display: flex;
       `}
     >
-      <label
-        htmlFor={props.id}
-        css={(theme) => getLanguageLabelStyles(props, theme)}
-      >
+      <label htmlFor={props.id} css={getLanguageLabelStyles(props, theme)}>
         {/* FIXME: add proper tone for disabled when tones are refactored */}
         <Text.Detail tone="secondary">
           {props.language.toUpperCase()}

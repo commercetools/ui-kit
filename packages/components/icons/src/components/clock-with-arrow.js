@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import ClockWithArrow from '../raw-components/clock-with-arrow';
 
-const Component = (props) => (
-  <ClockWithArrow {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <ClockWithArrow {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'ClockWithArrowIcon';
 

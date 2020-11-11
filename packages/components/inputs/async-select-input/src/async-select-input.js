@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { ThemeContext } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 import { components as defaultComponents } from 'react-select';
 import AsyncSelect from 'react-select/async';
 import {
@@ -19,8 +19,6 @@ import {
 import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
 import LoadingIndicator from '../../../../../src/components/internals/loading-indicator';
 import messages from '../../../../../src/components/internals/messages/select';
-
-const useTheme = () => useContext(ThemeContext);
 
 const customizedComponents = {
   DropdownIndicator,

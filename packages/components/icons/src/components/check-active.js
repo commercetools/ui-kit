@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import CheckActive from '../raw-components/check-active';
 
-const Component = (props) => (
-  <CheckActive {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <CheckActive {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'CheckActiveIcon';
 

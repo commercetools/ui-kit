@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import CodeView from '../raw-components/code-view';
 
-const Component = (props) => (
-  <CodeView {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <CodeView {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'CodeViewIcon';
 

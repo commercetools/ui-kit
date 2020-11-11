@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Dot from '../raw-components/dot';
 
-const Component = (props) => (
-  <Dot {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Dot {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'DotIcon';
 

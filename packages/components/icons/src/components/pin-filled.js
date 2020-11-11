@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import PinFilled from '../raw-components/pin-filled';
 
-const Component = (props) => (
-  <PinFilled {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <PinFilled {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'PinFilledIcon';
 

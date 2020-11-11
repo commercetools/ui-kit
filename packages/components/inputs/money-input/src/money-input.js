@@ -8,6 +8,7 @@ import Select, { components } from 'react-select';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { useTheme } from 'emotion-theming';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
   isNumberish,
@@ -67,19 +68,18 @@ SingleValue.propTypes = {
 };
 
 // overwrite styles of createSelectStyles
-const createCurrencySelectStyles = ({
-  hasWarning,
-  hasError,
-  isDisabled,
-  isReadOnly,
-  hasFocus,
-  menuPortalZIndex,
-}) => {
-  const selectStyles = createSelectStyles({
-    hasWarning,
-    hasError,
-    menuPortalZIndex,
-  });
+const createCurrencySelectStyles = (
+  { hasWarning, hasError, isDisabled, isReadOnly, hasFocus, menuPortalZIndex },
+  theme
+) => {
+  const selectStyles = createSelectStyles(
+    {
+      hasWarning,
+      hasError,
+      menuPortalZIndex,
+    },
+    theme
+  );
   return {
     ...selectStyles,
     control: (base, state) => ({
@@ -472,15 +472,18 @@ const MoneyInput = (props) => {
 
   const hasNoCurrencies = props.currencies.length === 0;
   const hasFocus = currencyHasFocus || amountHasFocus;
-
-  const currencySelectStyles = createCurrencySelectStyles({
-    hasWarning: props.hasWarning,
-    hasError: props.hasError,
-    isDisabled: props.isDisabled,
-    isReadOnly: props.isReadOnly,
-    hasFocus,
-    menuPortalZIndex: props.menuPortalZIndex,
-  });
+  const theme = useTheme();
+  const currencySelectStyles = createCurrencySelectStyles(
+    {
+      hasWarning: props.hasWarning,
+      hasError: props.hasError,
+      isDisabled: props.isDisabled,
+      isReadOnly: props.isReadOnly,
+      hasFocus,
+      menuPortalZIndex: props.menuPortalZIndex,
+    },
+    theme
+  );
   const options = props.currencies.map((currencyCode) => ({
     label: currencyCode,
     value: currencyCode,

@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import BidirectionalArrow from '../raw-components/bidirectional-arrow';
 
-const Component = (props) => (
-  <BidirectionalArrow {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <BidirectionalArrow {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'BidirectionalArrowIcon';
 

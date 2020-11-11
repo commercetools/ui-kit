@@ -31,6 +31,7 @@
     "@babel/runtime-corejs3": "7.12.5",
     "@commercetools-uikit/design-system": "10.39.7",
     "@emotion/core": "^10.0.34",
+    "emotion-theming": "^10.0.27",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

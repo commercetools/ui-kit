@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import AngleUp from '../raw-components/angle-up';
 
-const Component = (props) => (
-  <AngleUp {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <AngleUp {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'AngleUpIcon';
 

@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import CloseBold from '../raw-components/close-bold';
 
-const Component = (props) => (
-  <CloseBold {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <CloseBold {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'CloseBoldIcon';
 

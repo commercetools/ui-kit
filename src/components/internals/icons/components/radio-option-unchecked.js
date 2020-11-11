@@ -1,13 +1,12 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import RadioOptionUnchecked from '../raw-components/radio-option-unchecked';
 
-const Component = (props) => (
-  <RadioOptionUnchecked
-    {...props}
-    css={(theme) => getIconStyles(props, theme)}
-  />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <RadioOptionUnchecked {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'RadioOptionUncheckedIcon';
 

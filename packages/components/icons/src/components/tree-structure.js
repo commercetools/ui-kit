@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import TreeStructure from '../raw-components/tree-structure';
 
-const Component = (props) => (
-  <TreeStructure {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <TreeStructure {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'TreeStructureIcon';
 

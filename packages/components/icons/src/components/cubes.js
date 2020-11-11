@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Cubes from '../raw-components/cubes';
 
-const Component = (props) => (
-  <Cubes {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Cubes {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'CubesIcon';
 

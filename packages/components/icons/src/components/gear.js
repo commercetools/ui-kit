@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Gear from '../raw-components/gear';
 
-const Component = (props) => (
-  <Gear {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Gear {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'GearIcon';
 

@@ -2,37 +2,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import requiredIf from 'react-required-if';
+import { useTheme } from 'emotion-theming';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '../../styles';
 
-const NumberInput = (props) => (
-  <Constraints.Horizontal constraint={props.horizontalConstraint}>
-    <input
-      id={props.id}
-      name={props.name}
-      type="number"
-      autoComplete={props.autoComplete}
-      value={props.value}
-      min={props.min}
-      max={props.max}
-      step={props.step}
-      onChange={props.onChange}
-      onBlur={props.onBlur}
-      onFocus={props.onFocus}
-      disabled={props.isDisabled}
-      placeholder={props.placeholder}
-      css={(theme) => getInputStyles(props, theme)}
-      readOnly={props.isReadOnly}
-      autoFocus={props.isAutofocussed}
-      {...filterDataAttributes(props)}
-      /* ARIA */
-      aria-readonly={props.isReadOnly}
-      role="textbox"
-      contentEditable={!props.isReadOnly}
-    />
-  </Constraints.Horizontal>
-);
+const NumberInput = (props) => {
+  const theme = useTheme();
+  return (
+    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+      <input
+        id={props.id}
+        name={props.name}
+        type="number"
+        autoComplete={props.autoComplete}
+        value={props.value}
+        min={props.min}
+        max={props.max}
+        step={props.step}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
+        disabled={props.isDisabled}
+        placeholder={props.placeholder}
+        css={getInputStyles(props, theme)}
+        readOnly={props.isReadOnly}
+        autoFocus={props.isAutofocussed}
+        {...filterDataAttributes(props)}
+        /* ARIA */
+        aria-readonly={props.isReadOnly}
+        role="textbox"
+        contentEditable={!props.isReadOnly}
+      />
+    </Constraints.Horizontal>
+  );
+};
 
 NumberInput.displayName = 'NumberInput';
 

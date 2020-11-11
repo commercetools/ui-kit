@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Tag from '../raw-components/tag';
 
-const Component = (props) => (
-  <Tag {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Tag {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'TagIcon';
 

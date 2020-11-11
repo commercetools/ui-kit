@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Terminal from '../raw-components/terminal';
 
-const Component = (props) => (
-  <Terminal {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Terminal {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'TerminalIcon';
 

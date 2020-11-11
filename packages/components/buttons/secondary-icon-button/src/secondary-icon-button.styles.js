@@ -41,7 +41,7 @@ const getColorStyle = (props, overwrittenVars) => {
   }
 };
 
-const getBaseStyles = (theme, props) => {
+const getBaseStyles = (props, theme) => {
   const overwrittenVars = {
     ...vars,
     ...theme,

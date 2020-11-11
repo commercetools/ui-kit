@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import {
   getIconStyles,
   iconPropTypes,
 } from '../../../../../src/components/internals/icons/create-styled-icon';
 import Filter from '../raw-components/filter';
 
-const Component = (props) => (
-  <Filter {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Filter {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'FilterIcon';
 

@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from 'emotion-theming';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Undo from '../raw-components/undo';
 
-const Component = (props) => (
-  <Undo {...props} css={(theme) => getIconStyles(props, theme)} />
-);
+const Component = (props) => {
+  const theme = useTheme();
+  return <Undo {...props} css={getIconStyles(props, theme)} />;
+};
 
 Component.displayName = 'UndoIcon';
 
