@@ -39,7 +39,7 @@ storiesOf('Components|Inputs', module)
               placeholder={text('placeholder')}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                Constraints.getAcceptedMaxPropValues(7),
+                Constraints.getAcceptedMaxPropValues(6),
                 'scale'
               )}
               isDisabled={boolean('isDisabled', false)}

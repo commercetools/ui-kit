@@ -102,6 +102,7 @@ class DateRangeCalendar extends React.Component {
       'm',
       'l',
       'xl',
+      6,
       7,
       8,
       9,

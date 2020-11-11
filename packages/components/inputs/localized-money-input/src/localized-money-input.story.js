@@ -77,7 +77,7 @@ storiesOf('Components|Inputs', module)
               placeholder={object('placeholder', { EUR: '', USD: '' })}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                Constraints.getAcceptedMaxPropValues(7),
+                Constraints.getAcceptedMaxPropValues(3),
                 7
               )}
               hasError={boolean('hasError', false)}

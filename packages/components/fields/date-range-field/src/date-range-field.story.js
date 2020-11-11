@@ -41,7 +41,7 @@ storiesOf('Components|Fields', module)
               id={name.trim() === '' ? undefined : name}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                Constraints.getAcceptedMaxPropValues(7),
+                Constraints.getAcceptedMaxPropValues(6),
                 7
               )}
               errors={object('errors', { missing: true, customError: true })}

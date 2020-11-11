@@ -321,6 +321,7 @@ DateInput.propTypes = {
     'm',
     'l',
     'xl',
+    6,
     7,
     8,
     9,

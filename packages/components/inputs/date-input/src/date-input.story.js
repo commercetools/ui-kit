@@ -36,7 +36,7 @@ storiesOf('Components|Inputs', module)
               }}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                Constraints.getAcceptedMaxPropValues(7),
+                Constraints.getAcceptedMaxPropValues(6),
                 10
               )}
               id={text('id', '')}

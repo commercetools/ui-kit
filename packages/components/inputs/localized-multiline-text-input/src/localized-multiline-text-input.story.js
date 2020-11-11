@@ -71,7 +71,7 @@ storiesOf('Components|Inputs', module)
               placeholder={object('placeholder', { en: '', de: '' })}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                Constraints.getAcceptedMaxPropValues(7),
+                Constraints.getAcceptedMaxPropValues(6),
                 7
               )}
               hasError={boolean('hasError', false)}

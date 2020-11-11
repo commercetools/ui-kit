@@ -28,7 +28,7 @@ class DateRangeInputStory extends React.Component {
           onChange={this.handleChange}
           horizontalConstraint={select(
             'horizontalConstraint',
-            Constraints.getAcceptedMaxPropValues(7),
+            Constraints.getAcceptedMaxPropValues(6),
             10
           )}
           id={text('id', '')}
