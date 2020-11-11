@@ -21,7 +21,11 @@ const Tag = (props) => {
     ...theme,
   };
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal
+      max={Constraints.parseHorizontalConstraintProp(
+        props.horizontalConstraint
+      )}
+    >
       <div
         css={css`
           a {
@@ -131,7 +135,31 @@ Tag.propTypes = {
   /**
    * Horizontal size limit of the input field.
    */
-  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf([
+    'xs',
+    's',
+    'm',
+    'l',
+    'xl',
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
   /**
    * Content rendered within the tag
    */

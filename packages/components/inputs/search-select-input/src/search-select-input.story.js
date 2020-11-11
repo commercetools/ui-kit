@@ -9,6 +9,7 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { SELECT_DROPDOWN_OPTION_TYPES } from '@commercetools-uikit/select-utils';
 import Section from '../../../../../.storybook/decorators/section';
 import SearchSelectInput from './search-select-input';
@@ -71,7 +72,7 @@ class SearchSelectInputStory extends React.Component {
                 <SearchSelectInput
                   horizontalConstraint={select(
                     'horizontalConstraint',
-                    ['s', 'm', 'l', 'xl', 'scale'],
+                    Constraints.getAcceptedMaxPropValues(3),
                     'scale'
                   )}
                   optionType={optionType}

@@ -226,8 +226,31 @@ Tooltip.propTypes = {
   /**
    * Horizontal size limit of the tooltip.
    */
-  horizontalConstraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale'])
-    .isRequired,
+  horizontalConstraint: PropTypes.oneOf([
+    'xs',
+    's',
+    'm',
+    'l',
+    'xl',
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
   /**
    * Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip.
    */

@@ -9,6 +9,7 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
@@ -43,8 +44,8 @@ storiesOf('Components|Fields', module)
               id={name.trim() === '' ? undefined : name}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['m', 'l', 'xl', 'scale'],
-                'm'
+                Constraints.getAcceptedMaxPropValues(6),
+                7
               )}
               errors={object('errors', { missing: true, customError: true })}
               renderError={(key) => {

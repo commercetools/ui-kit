@@ -9,6 +9,7 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
@@ -64,8 +65,8 @@ storiesOf('Components|Inputs', module)
               placeholder={object('placeholder', { en: '', de: '' })}
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['xs', 's', 'm', 'l', 'xl', 'scale'],
-                'm'
+                Constraints.getAcceptedMaxPropValues(),
+                7
               )}
               hasError={boolean('hasError', false)}
               errors={

@@ -10,6 +10,7 @@ import {
   object,
   number,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { SELECT_DROPDOWN_OPTION_TYPES } from '../../../inputs/select-utils';
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
@@ -86,8 +87,8 @@ storiesOf('Components|Fields/SelectFields', module)
               <SearchSelectField
                 horizontalConstraint={select(
                   'horizontalConstraint',
-                  ['s', 'm', 'l', 'xl', 'scale'],
-                  'm'
+                  Constraints.getAcceptedMaxPropValues(3),
+                  7
                 )}
                 errors={object('errors', { missing: true, customError: true })}
                 renderError={(key) => {

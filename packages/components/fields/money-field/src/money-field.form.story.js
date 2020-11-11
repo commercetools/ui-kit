@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { injectIntl } from 'react-intl';
 import Spacings from '@commercetools-uikit/spacings';
 import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
@@ -26,8 +27,8 @@ const Story = injectIntl((props) => {
   const currencies = ['EUR', 'USD', 'AED', 'KWD'];
   const horizontalConstraint = select(
     'horizontalConstraint',
-    ['m', 'l', 'xl', 'scale'],
-    'm'
+    Constraints.getAcceptedMaxPropValues(7),
+    7
   );
   const initialValues = {
     price: MoneyInput.parseMoneyValue(),

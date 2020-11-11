@@ -9,6 +9,7 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import LinkTo from '@storybook/addon-links/react';
 import Section from '../../../../../.storybook/decorators/section';
@@ -108,7 +109,7 @@ storiesOf('Components|Inputs/SelectInputs', module)
               <SelectInput
                 horizontalConstraint={select(
                   'horizontalConstraint',
-                  ['s', 'm', 'l', 'xl', 'scale'],
+                  Constraints.getAcceptedMaxPropValues(3),
                   'scale'
                 )}
                 hasError={boolean('hasError', false)}

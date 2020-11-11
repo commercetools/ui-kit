@@ -8,6 +8,7 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { injectIntl } from 'react-intl';
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
@@ -64,8 +65,8 @@ class MoneyFieldStory extends React.Component {
           id={name.trim() === '' ? undefined : name}
           horizontalConstraint={select(
             'horizontalConstraint',
-            ['xs', 's', 'm', 'l', 'xl', 'scale'],
-            'm'
+            Constraints.getAcceptedMaxPropValues(),
+            7
           )}
           errors={object('errors', { missing: true, customError: true })}
           renderError={(key) => {

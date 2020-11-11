@@ -42,7 +42,11 @@ const MultilineTextInput = (props) => {
     contentRowCount > MultilineTextInput.MIN_ROW_COUNT;
 
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal
+      max={Constraints.parseHorizontalConstraintProp(
+        props.horizontalConstraint
+      )}
+    >
       <Stack scale="xs">
         <MultilineInput
           name={props.name}
@@ -167,7 +171,24 @@ MultilineTextInput.propTypes = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf([
+    'm',
+    'l',
+    'xl',
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
 };
 
 MultilineTextInput.defaultProps = {

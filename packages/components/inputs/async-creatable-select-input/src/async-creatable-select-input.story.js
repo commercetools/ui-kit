@@ -9,6 +9,7 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../../.storybook/decorators/section';
 import Readme from '../README.md';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
@@ -73,7 +74,7 @@ class SelectStory extends React.Component {
                 <AsyncCreatableSelectInput
                   horizontalConstraint={select(
                     'horizontalConstraint',
-                    ['s', 'm', 'l', 'xl', 'scale'],
+                    Constraints.getAcceptedMaxPropValues(3),
                     'scale'
                   )}
                   hasError={boolean('hasError', false)}

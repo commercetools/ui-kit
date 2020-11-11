@@ -98,7 +98,24 @@ class DateRangeCalendar extends React.Component {
     /**
      * Horizontal size limit of the input field.
      */
-    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf([
+      'm',
+      'l',
+      'xl',
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      'scale',
+      'auto',
+    ]),
     /**
      * The selected date range, must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".
      */
@@ -221,7 +238,11 @@ class DateRangeCalendar extends React.Component {
   };
   render() {
     return (
-      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
+      <Constraints.Horizontal
+        max={Constraints.parseHorizontalConstraintProp(
+          this.props.horizontalConstraint
+        )}
+      >
         <Downshift
           key={this.props.intl.locale}
           inputId={this.props.id}
