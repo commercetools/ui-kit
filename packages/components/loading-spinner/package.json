@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/loading-spinner",
   "description": "A spinner animation to indicate loading state (e.g pending requests) for the user.",
-  "version": "10.39.7",
+  "version": "10.39.8",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -29,10 +29,10 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/design-system": "10.39.7",
-    "@commercetools-uikit/spacings-inline": "10.39.7",
-    "@commercetools-uikit/text": "10.39.7",
-    "@commercetools-uikit/utils": "10.39.6",
+    "@commercetools-uikit/design-system": "10.39.8",
+    "@commercetools-uikit/spacings-inline": "10.39.8",
+    "@commercetools-uikit/text": "10.39.8",
+    "@commercetools-uikit/utils": "10.39.8",
     "@emotion/core": "^10.0.34",
     "prop-types": "15.7.2"
   },

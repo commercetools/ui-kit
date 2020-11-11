@@ -1,5 +1,20 @@
 # @commercetools-uikit/search-select-field
 
+## 10.39.8
+
+### Patch Changes
+
+- [`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5) [#1662](https://github.com/commercetools/ui-kit/pull/1662) Thanks [@emmenko](https://github.com/emmenko)! - Explicitly get Emotion theme from context instead of relying on the implicit behavior
+
+- Updated dependencies [[`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5)]:
+  - @commercetools-uikit/design-system@10.39.8
+  - @commercetools-uikit/constraints@10.39.8
+  - @commercetools-uikit/field-errors@10.39.8
+  - @commercetools-uikit/field-label@10.39.8
+  - @commercetools-uikit/search-select-input@10.39.8
+  - @commercetools-uikit/utils@10.39.8
+  - @commercetools-uikit/spacings@10.39.8
+
 ## 10.39.7
 
 ### Patch Changes

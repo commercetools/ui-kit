@@ -1,5 +1,11 @@
 # @commercetools-uikit/i18n
 
+## 10.39.8
+
+### Patch Changes
+
+- [`3bebfed`](https://github.com/commercetools/ui-kit/commit/3bebfed8f7468f247be2cef30e274088138166e5) [#1662](https://github.com/commercetools/ui-kit/pull/1662) Thanks [@emmenko](https://github.com/emmenko)! - Explicitly get Emotion theme from context instead of relying on the implicit behavior
+
 ## 10.39.6
 
 ### Patch Changes
