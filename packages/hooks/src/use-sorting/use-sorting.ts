@@ -7,6 +7,7 @@ type TSortState<T, U> = {
   sortedBy: U;
   sortDirection: TSortDirection;
 };
+type TSortChangeCallback<U> = (nextFieldToSort: U) => void;
 
 // we're using lodash sortBy as our default sorting fn
 const sortItems = <T, U>(
@@ -55,7 +56,7 @@ const useSorting = <T, U>(
   sortDirection: TSortDirection,
   sortingFunction?: <T>() => T[]
 ): TSortState<T, U> & {
-  onSortChange: (nextFieldToSort: U) => void;
+  onSortChange: TSortChangeCallback<U>;
 } => {
   const [sortState, setSorting] = useSortingState<T, U>(
     items,
@@ -64,8 +65,8 @@ const useSorting = <T, U>(
     sortingFunction
   );
 
-  const onSortChange = React.useCallback(
-    (nextFieldToSort: U) => {
+  const onSortChange = React.useCallback<TSortChangeCallback<U>>(
+    (nextFieldToSort: U): void => {
       // if nextFieldToSort is not the same as what is already sorted,
       // we reset the sortDirection with `asc`
       if (sortState.sortedBy !== nextFieldToSort) {
