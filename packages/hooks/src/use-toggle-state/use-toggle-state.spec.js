@@ -16,7 +16,7 @@ const TestComponent = (props) => {
   return (
     <div>
       <div data-testid="openState">{isOpen ? 'open' : 'closed'}</div>
-      <button data-testid="toggle" onClick={toggle}>
+      <button data-testid="toggle" onClick={() => toggle()}>
         Toggle
       </button>
       <button data-testid="setOff" onClick={setOff}>
