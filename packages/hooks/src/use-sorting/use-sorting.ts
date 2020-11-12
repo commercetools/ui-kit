@@ -29,7 +29,7 @@ const getInitialState = <T, U>(
   items: T[],
   field: U,
   sortDirection: TSortDirection,
-  sortingFunction: <T>() => T[]
+  sortingFunction?: <T>() => T[]
 ): TSortState<T, U> => ({
   items: sortItems(items, field, sortDirection, sortingFunction),
   sortedBy: field,
@@ -40,7 +40,7 @@ const useSortingState = <T, U>(
   items: T[],
   field: U,
   sortDirection: TSortDirection,
-  sortingFunction: <T>() => T[]
+  sortingFunction?: <T>() => T[]
 ): [TSortState<T, U>, any] => {
   const [sortState, setSorting] = React.useState<TSortState<T, U>>(() =>
     getInitialState(items, field, sortDirection, sortingFunction)
@@ -53,7 +53,7 @@ const useSorting = <T, U>(
   items: T[],
   field: U,
   sortDirection: TSortDirection,
-  sortingFunction: <T>() => T[]
+  sortingFunction?: <T>() => T[]
 ): TSortState<T, U> & {
   onSortChange: (nextFieldToSort: U) => void;
 } => {
