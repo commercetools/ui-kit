@@ -64,28 +64,34 @@ const useSorting = <T, U>(
     sortingFunction
   );
 
-  function onSortChange(nextFieldToSort: U): void {
-    let nextSortDirection: TSortDirection;
-    let sortedItems: T[];
+  const onSortChange = React.useCallback(
+    (nextFieldToSort: U) => {
+      // if nextFieldToSort is not the same as what is already sorted,
+      // we reset the sortDirection with `asc`
+      if (sortState.sortedBy !== nextFieldToSort) {
+        const nextSortDirection = 'asc';
+        setSorting({
+          items: sortItems<T, U>(
+            sortState.items,
+            nextFieldToSort,
+            nextSortDirection
+          ),
+          sortedBy: nextFieldToSort,
+          sortDirection: nextSortDirection,
+        });
+      } else {
+        const nextSortDirection =
+          sortState.sortDirection === 'asc' ? 'desc' : 'asc';
+        setSorting({
+          items: sortState.items.reverse(),
+          sortedBy: nextFieldToSort,
+          sortDirection: nextSortDirection,
+        });
+      }
+    },
+    [sortState, setSorting]
+  );
 
-    if (sortState.sortedBy !== nextFieldToSort) {
-      // if the intented field is not already sorted, the initial direction is 'asc'
-      nextSortDirection = 'asc';
-      sortedItems = sortItems<T, U>(
-        sortState.items,
-        nextFieldToSort,
-        nextSortDirection
-      );
-    } else {
-      nextSortDirection = sortState.sortDirection === 'asc' ? 'desc' : 'asc';
-      sortedItems = sortState.items.reverse();
-    }
-    setSorting({
-      items: sortedItems,
-      sortedBy: nextFieldToSort,
-      sortDirection: nextSortDirection,
-    });
-  }
   return {
     items: sortState.items,
     sortedBy: sortState.sortedBy,
