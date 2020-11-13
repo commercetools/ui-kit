@@ -4,9 +4,11 @@
 // Use it as
 //  const sequentialId = createSequentialId('text-field-');
 //  const element = <div id={sequentialId()}>foo</div>
-const createSequentialId = (prefix) => {
+
+type TSignatureCreatesId = () => string;
+const createSequentialId = (prefix: string | number): TSignatureCreatesId => {
   let id = 0;
-  return () => {
+  return (): string => {
     id += 1;
     return `${prefix}${id}`;
   };
