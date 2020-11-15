@@ -77,7 +77,7 @@ module.exports = function getBabelPreset(api, opts = {}) {
         '@emotion/babel-preset-css-prop',
         {
           sourceMap: isEnvDevelopment,
-          autoLabel: !isEnvProduction,
+          autoLabel: 'dev-only',
         },
       ],
       [require('@babel/preset-typescript').default],
