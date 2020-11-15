@@ -93,10 +93,6 @@ export const transformDocument = (
     scripts: {
       ...originalPackageJson.scripts,
       prepare: `${relativePathToWorkspace}/scripts/version.js replace`,
-      prebuild: undefined,
-      build: undefined,
-      'build:bundles': undefined,
-      'build:bundles:watch': undefined,
     },
     dependencies: originalPackageJson.dependencies,
     devDependencies: originalPackageJson.devDependencies,
