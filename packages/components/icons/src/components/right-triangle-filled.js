@@ -5,7 +5,7 @@ This file is created by the 'scripts/generate-icon-exports.js' script.
 */
 
 import React from 'react';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import RightTriangleFilled from '../raw-components/right-triangle-filled';
 

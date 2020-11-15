@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import isNil from 'lodash/isNil';
 import { oneLine } from 'common-tags';
 import {

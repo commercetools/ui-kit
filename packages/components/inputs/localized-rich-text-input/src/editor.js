@@ -4,7 +4,7 @@ import requiredIf from 'react-required-if';
 import pick from 'lodash/pick';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { useIntl } from 'react-intl';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';

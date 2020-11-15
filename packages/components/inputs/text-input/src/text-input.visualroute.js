@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextInput } from '@commercetools-frontend/ui-kit';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 import { Suite, Spec } from '../../../../../test/percy';
 
 const value = 'hello world how are you?';

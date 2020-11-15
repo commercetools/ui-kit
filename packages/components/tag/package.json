@@ -34,8 +34,7 @@
     "@commercetools-uikit/design-system": "10.40.0",
     "@commercetools-uikit/icons": "10.40.1",
     "@commercetools-uikit/text": "10.40.0",
-    "@emotion/core": "^10.0.34",
-    "emotion-theming": "^10.0.27",
+    "@emotion/react": "^11.0.0",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

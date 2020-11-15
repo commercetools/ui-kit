@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import requiredIf from 'react-required-if';
 import TextareaAutosize from 'react-textarea-autosize';
 import { filterDataAttributes } from '@commercetools-uikit/utils';

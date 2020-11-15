@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTheme } from 'emotion-theming';
+import { withTheme } from '@emotion/react';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { useToggleState } from '@commercetools-uikit/hooks';

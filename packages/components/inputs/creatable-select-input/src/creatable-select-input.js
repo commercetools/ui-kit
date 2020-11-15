@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { components as defaultComponents } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import Constraints from '@commercetools-uikit/constraints';

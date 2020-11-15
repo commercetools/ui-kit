@@ -4,7 +4,7 @@ import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
 import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';

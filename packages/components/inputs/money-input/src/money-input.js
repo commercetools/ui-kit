@@ -8,7 +8,7 @@ import Select, { components } from 'react-select';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
   isNumberish,

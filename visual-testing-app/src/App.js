@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { customProperties } from '@commercetools-uikit/design-system';
 
