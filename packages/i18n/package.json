@@ -17,15 +17,11 @@
   },
   "sideEffects": false,
   "main": "dist/i18n.cjs.js",
-  "module": "dist/i18n.es.js",
+  "module": "dist/i18n.esm.js",
   "files": ["dist", "data", "compiled-data"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
-    "prebuild": "rimraf dist",
-    "build": "yarn build:bundles",
-    "compile-data": "formatjs compile-folder --format=$(pwd)/transifex-transformer.js --ast data compiled-data",
-    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./index.js",
-    "build:bundles:watch": "yarn build:bundles -w"
+    "compile-data": "formatjs compile-folder --format=$(pwd)/transifex-transformer.js --ast data compiled-data"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",

@@ -17,14 +17,10 @@
   },
   "sideEffects": false,
   "main": "dist/accessible-button.cjs.js",
-  "module": "dist/accessible-button.es.js",
+  "module": "dist/accessible-button.esm.js",
   "files": ["dist"],
   "scripts": {
-    "prepare": "../../../../scripts/version.js replace",
-    "prebuild": "rimraf dist",
-    "build": "yarn build:bundles",
-    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./src/index.js",
-    "build:bundles:watch": "yarn build:bundles -w"
+    "prepare": "../../../../scripts/version.js replace"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",

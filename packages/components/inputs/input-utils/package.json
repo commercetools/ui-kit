@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "main": "dist/input-utils.cjs.js",
-  "module": "dist/input-utils.es.js",
+  "module": "dist/input-utils.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",

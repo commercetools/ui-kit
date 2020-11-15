@@ -17,14 +17,10 @@
   },
   "sideEffects": false,
   "main": "dist/creatable-select-input.cjs.js",
-  "module": "dist/creatable-select-input.es.js",
+  "module": "dist/creatable-select-input.esm.js",
   "files": ["dist"],
   "scripts": {
-    "prepare": "../../../../scripts/version.js replace",
-    "prebuild": "rimraf dist",
-    "build": "yarn build:bundles",
-    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./src/index.js",
-    "build:bundles:watch": "yarn build:bundles -w"
+    "prepare": "../../../../scripts/version.js replace"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
