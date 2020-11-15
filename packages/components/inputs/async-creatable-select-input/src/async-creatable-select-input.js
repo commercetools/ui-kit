@@ -5,20 +5,23 @@ import { useTheme } from 'emotion-theming';
 import { components as defaultComponents } from 'react-select';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import Constraints from '@commercetools-uikit/constraints';
+import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import {
   ClearIndicator,
   DropdownIndicator,
   TagRemove,
   customComponentsWithIcons,
+  messages,
+  createSelectStyles,
 } from '@commercetools-uikit/select-utils';
 import {
   addStaticFields,
   SafeHTMLElement,
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
-import LoadingIndicator from '../../../../../src/components/internals/loading-indicator';
-import messages from '../../../../../src/components/internals/messages/select';
-import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
+
+const LoadingIndicator = () => <LoadingSpinner scale="s" />;
+LoadingIndicator.displayName = 'LoadingIndicator';
 
 const customizedComponents = {
   DropdownIndicator,

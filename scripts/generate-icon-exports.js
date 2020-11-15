@@ -12,26 +12,6 @@ const rcfile = require('rcfile');
 const iconFileExt = '.react.svg';
 const prettierConfig = rcfile('prettier');
 
-const internalIconsPath = path.join(
-  __dirname,
-  '../src/components/internals/icons/svg/*.svg'
-);
-
-const internalRawExportsPath = path.join(
-  __dirname,
-  '../src/components/internals/icons/raw-components/'
-);
-
-const internalIconComponentsPath = path.join(
-  __dirname,
-  '../src/components/internals/icons/components/'
-);
-
-const internalIndexPath = path.join(
-  __dirname,
-  '../src/components/internals/icons/index.js'
-);
-
 const publicIconsPath = path.join(
   __dirname,
   '../packages/components/icons/src/svg/*.svg'
@@ -54,16 +34,12 @@ const publicIndexPath = path.join(
 
 const createStyledIconPath = path.join(
   __dirname,
-  '../src/components/internals/icons/create-styled-icon'
+  '../packages/components/icons/src/create-styled-icon'
 );
 
-shelljs.exec(
-  `rm -rf ${publicRawExportsPath} ${publicIconComponentsPath} ${internalRawExportsPath} ${internalIconComponentsPath}`
-);
+shelljs.exec(`rm -rf ${publicRawExportsPath} ${publicIconComponentsPath}`);
 
-shelljs.exec(
-  `mkdir ${publicRawExportsPath} ${publicIconComponentsPath} ${internalRawExportsPath} ${internalIconComponentsPath}`
-);
+shelljs.exec(`mkdir ${publicRawExportsPath} ${publicIconComponentsPath}`);
 
 const iconsToProcess = [
   {
@@ -71,12 +47,6 @@ const iconsToProcess = [
     svgPath: publicIconsPath,
     rawExportsPath: publicRawExportsPath,
     iconComponentsPath: publicIconComponentsPath,
-  },
-  {
-    indexPath: internalIndexPath,
-    svgPath: internalIconsPath,
-    rawExportsPath: internalRawExportsPath,
-    iconComponentsPath: internalIconComponentsPath,
   },
 ];
 

@@ -15,14 +15,12 @@ import {
   getId,
   getName,
 } from '@commercetools-uikit/localized-utils';
-import RichTextInput from './rich-text-input';
 import {
-  isEmpty,
-  createLocalizedString,
-  omitEmptyTranslations,
-} from '../../../../../src/components/internals/rich-text-utils/localized';
+  LocalizedInputToggle,
+  localized,
+} from '@commercetools-uikit/input-utils';
+import RichTextInput from './rich-text-input';
 import RequiredValueErrorMessage from './required-value-error-message';
-import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
 
 const expandedTranslationsReducer = (state, action) => {
   switch (action.type) {
@@ -239,11 +237,11 @@ LocalizedRichTextInput.defaultProps = {
   showExpandIcon: false,
 };
 
-LocalizedRichTextInput.createLocalizedString = createLocalizedString;
+LocalizedRichTextInput.createLocalizedString = localized.createLocalizedString;
 
-LocalizedRichTextInput.isEmpty = isEmpty;
+LocalizedRichTextInput.isEmpty = localized.isEmpty;
 
-LocalizedRichTextInput.omitEmptyTranslations = omitEmptyTranslations;
+LocalizedRichTextInput.omitEmptyTranslations = localized.omitEmptyTranslations;
 
 LocalizedRichTextInput.isTouched = isTouched;
 

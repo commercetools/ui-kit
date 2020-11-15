@@ -9,8 +9,10 @@ import { useToggleState } from '@commercetools-uikit/hooks';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
-import MultilineInput from '../../../../../src/components/internals/multiline-input';
-import messages from '../../../../../src/components/internals/messages/multiline-input';
+import {
+  MultilineInput,
+  messagesMultilineInput,
+} from '@commercetools-uikit/input-utils';
 
 const MultilineTextInput = (props) => {
   const intl = useIntl();
@@ -71,7 +73,9 @@ const MultilineTextInput = (props) => {
               onClick={toggle}
               isDisabled={props.isDisabled}
               label={intl.formatMessage(
-                isOpen ? messages.collapse : messages.expand
+                isOpen
+                  ? messagesMultilineInput.collapse
+                  : messagesMultilineInput.expand
               )}
               icon={
                 isOpen ? (

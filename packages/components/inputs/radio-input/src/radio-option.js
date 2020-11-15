@@ -7,8 +7,8 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
   RadioOptionCheckedIcon,
   RadioOptionUncheckedIcon,
-} from '../../../../../src/components/internals/icons';
-import accessibleHiddenInputStyles from '../../../../../src/components/internals/accessible-hidden-input.styles';
+} from '@commercetools-uikit/icons';
+import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 import {
   getLabelStyles,
   getContainerStyles,

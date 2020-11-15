@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import accessibleHiddenInputStyles from '../../../../../src/components/internals/accessible-hidden-input.styles';
+import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 
 // accessible input :)
 const Input = styled.input`

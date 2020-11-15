@@ -35,6 +35,7 @@
     "@commercetools-uikit/flat-button": "10.39.8",
     "@commercetools-uikit/hooks": "10.39.8",
     "@commercetools-uikit/icons": "10.39.8",
+    "@commercetools-uikit/input-utils": "10.39.8",
     "@commercetools-uikit/spacings-inline": "10.39.8",
     "@commercetools-uikit/spacings-stack": "10.39.8",
     "@commercetools-uikit/tooltip": "10.39.8",

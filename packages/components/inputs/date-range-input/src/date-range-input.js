@@ -21,12 +21,12 @@ import {
   parseInputToDate,
   getPreviousDay,
   getDaysInMonth,
+  CalendarBody,
+  CalendarMenu,
+  CalendarHeader,
+  CalendarContent,
+  CalendarDay,
 } from '@commercetools-uikit/calendar-utils';
-import CalendarBody from '../../../../../src/components/internals/calendar-body';
-import CalendarMenu from '../../../../../src/components/internals/calendar-menu';
-import CalendarHeader from '../../../../../src/components/internals/calendar-header';
-import CalendarContent from '../../../../../src/components/internals/calendar-content';
-import CalendarDay from '../../../../../src/components/internals/calendar-day';
 import messages from './messages';
 
 const preventDownshiftDefault = (event) => {

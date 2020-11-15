@@ -30,9 +30,23 @@
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
     "@commercetools-uikit/accessible-button": "10.39.8",
-    "@commercetools-uikit/utils": "10.39.8"
+    "@commercetools-uikit/hooks": "10.39.8",
+    "@commercetools-uikit/icons": "10.39.8",
+    "@commercetools-uikit/input-utils": "10.39.8",
+    "@commercetools-uikit/secondary-icon-button": "10.39.8",
+    "@commercetools-uikit/spacings-inline": "10.39.8",
+    "@commercetools-uikit/text": "10.39.8",
+    "@commercetools-uikit/tooltip": "10.39.8",
+    "@commercetools-uikit/utils": "10.39.8",
+    "@emotion/core": "^10.0.34",
+    "@emotion/styled": "^10.0.27",
+    "@emotion/styled-base": "^10.0.31",
+    "prop-types": "15.7.2",
+    "react-select": "3.1.0"
   },
   "peerDependencies": {
-    "moment": "2.x"
+    "moment": "2.x",
+    "react": ">= 16.8.0",
+    "react-intl": "3.x || 4.x || 5.x"
   }
 }

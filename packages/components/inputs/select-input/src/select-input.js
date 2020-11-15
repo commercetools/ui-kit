@@ -11,14 +11,14 @@ import {
   TagRemove,
   DropdownIndicator,
   customComponentsWithIcons,
+  createSelectStyles,
+  messages,
 } from '@commercetools-uikit/select-utils';
 import {
   addStaticFields,
   SafeHTMLElement,
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
-import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
-import messages from '../../../../../src/components/internals/messages/select';
 
 const customizedComponents = {
   DropdownIndicator,

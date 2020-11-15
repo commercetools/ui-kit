@@ -33,6 +33,7 @@
     "@commercetools-uikit/design-system": "10.39.8",
     "@commercetools-uikit/hooks": "10.39.8",
     "@commercetools-uikit/icons": "10.39.8",
+    "@commercetools-uikit/input-utils": "10.39.8",
     "@commercetools-uikit/select-utils": "10.39.8",
     "@commercetools-uikit/tooltip": "10.39.8",
     "@commercetools-uikit/utils": "10.39.8",

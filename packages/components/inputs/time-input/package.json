@@ -34,6 +34,7 @@
     "@commercetools-uikit/design-system": "10.39.8",
     "@commercetools-uikit/hooks": "10.39.8",
     "@commercetools-uikit/icons": "10.39.8",
+    "@commercetools-uikit/input-utils": "10.39.8",
     "@commercetools-uikit/spacings-inline": "10.39.8",
     "@commercetools-uikit/utils": "10.39.8",
     "@emotion/core": "^10.0.34",

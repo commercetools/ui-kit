@@ -4,9 +4,11 @@ import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
 import pick from 'lodash/pick';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import plugins from '../../../../../src/components/internals/rich-text-plugins';
-import html from '../../../../../src/components/internals/rich-text-utils/html';
-import isEmpty from '../../../../../src/components/internals/rich-text-utils/is-empty';
+import {
+  richTextPlugins,
+  html,
+  isEmpty,
+} from '@commercetools-uikit/input-utils';
 import renderEditor from './editor';
 
 class RichTextInput extends React.PureComponent {
@@ -120,7 +122,7 @@ class RichTextInput extends React.PureComponent {
           'onClickExpand',
         ])}
         onChange={this.onValueChange}
-        plugins={plugins}
+        plugins={richTextPlugins}
         renderEditor={renderEditor}
       />
     );

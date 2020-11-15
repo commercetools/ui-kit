@@ -4,7 +4,7 @@ import requiredIf from 'react-required-if';
 import { useTheme } from 'emotion-theming';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import { getInputStyles } from '../../styles';
+import { getInputStyles } from '@commercetools-uikit/input-utils';
 
 const PasswordInput = (props) => {
   const theme = useTheme();

@@ -15,9 +15,9 @@ import {
   TagRemove,
   DropdownIndicator,
   customComponentsWithIcons,
+  createSelectStyles,
+  messages,
 } from '@commercetools-uikit/select-utils';
-import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
-import messages from '../../../../../src/components/internals/messages/select';
 
 const customizedComponents = {
   DropdownIndicator,

@@ -14,7 +14,7 @@ import {
   IndeterminateIcon,
   CheckedIcon,
   UncheckedIcon,
-} from '../../../../../src/components/internals/icons';
+} from '@commercetools-uikit/icons';
 import { getCheckboxWrapperStyles } from './checkbox-input.styles';
 import Checkbox from './checkbox';
 
