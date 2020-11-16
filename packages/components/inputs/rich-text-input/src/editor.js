@@ -9,11 +9,11 @@ import Stack from '@commercetools-uikit/spacings-stack';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
 import FlatButton from '@commercetools-uikit/flat-button';
+import { messagesMultilineInput } from '@commercetools-uikit/input-utils';
 import {
-  messagesMultilineInput,
   RichTextBody,
   HiddenInput,
-} from '@commercetools-uikit/input-utils';
+} from '@commercetools-uikit/rich-text-utils';
 import { EditorWrapper } from './editor.styles';
 
 const COLLAPSED_HEIGHT = 32;

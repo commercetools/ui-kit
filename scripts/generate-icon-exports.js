@@ -22,7 +22,7 @@ const createIconPaths = (rootPath) => ({
 
 const publicIconsPaths = createIconPaths('packages/components/icons/src');
 const richTextIconsPaths = createIconPaths(
-  'packages/components/inputs/input-utils/src/rich-text-body/icons'
+  'packages/components/inputs/rich-text-utils/src/rich-text-body/icons'
 );
 const radioGroupIconsPaths = createIconPaths(
   'packages/components/inputs/radio-input/src/icons'

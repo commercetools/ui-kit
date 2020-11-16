@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import accessibleHiddenInputStyles from '../accessible-hidden-input.styles';
+import accessibleHiddenInputStyles from '@commercetools-uikit/input-utils';
 
 const HiddenInput = (props) => {
   const { handleFocus } = props;

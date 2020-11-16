@@ -8,7 +8,7 @@ import {
   richTextPlugins,
   html,
   isEmpty,
-} from '@commercetools-uikit/input-utils';
+} from '@commercetools-uikit/rich-text-utils';
 import renderEditor from './editor';
 
 class RichTextInput extends React.PureComponent {

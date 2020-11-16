@@ -32,8 +32,8 @@ import Button from './rich-text-body-button';
 import Divider from './divider';
 import Dropdown from './dropdown';
 import { DropdownItem } from './dropdown.styles';
-import { MARK_TAGS, BLOCK_TAGS } from '../rich-text-utils/tags';
-import hasBlock from '../rich-text-utils/has-block';
+import { MARK_TAGS, BLOCK_TAGS } from '../tags';
+import hasBlock from '../has-block';
 import messages from './messages';
 
 const MoreStylesDropdownLabel = () => <MoreStylesIcon size="medium" />;

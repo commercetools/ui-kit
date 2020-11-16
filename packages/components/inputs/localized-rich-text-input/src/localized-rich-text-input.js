@@ -15,10 +15,8 @@ import {
   getId,
   getName,
 } from '@commercetools-uikit/localized-utils';
-import {
-  LocalizedInputToggle,
-  localized,
-} from '@commercetools-uikit/input-utils';
+import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
+import { localized } from '@commercetools-uikit/rich-text-utils';
 import RichTextInput from './rich-text-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 

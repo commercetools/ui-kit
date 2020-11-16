@@ -5,7 +5,7 @@ import pick from 'lodash/pick';
 import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { richTextPlugins, html } from '@commercetools-uikit/input-utils';
+import { richTextPlugins, html } from '@commercetools-uikit/rich-text-utils';
 import renderEditor from './editor';
 
 class RichTextInput extends React.PureComponent {

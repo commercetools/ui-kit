@@ -5,7 +5,14 @@ import ListPlugin from './plugins/list';
 import MarkPlugin from './plugins/mark';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
 import PlaceholderPlugin from './plugins/placeholder';
-import { BLOCK_TAGS, MARK_TAGS } from '../rich-text-utils/tags';
+import { BLOCK_TAGS, MARK_TAGS } from './tags';
+
+// eslint-disable-next-line camelcase, react/display-name
+const RenderMark_Strong = (props) => <strong {...props} />;
+// eslint-disable-next-line camelcase, react/display-name
+const RenderMark_Em = (props) => <em {...props} />;
+// eslint-disable-next-line camelcase, react/display-name
+const RenderMark_U = (props) => <u {...props} />;
 
 const plugins = [
   {
@@ -47,24 +54,21 @@ const plugins = [
     hotkey: 'mod+b',
     command: 'toggleBoldMark',
     query: 'hasBoldMark',
-    // eslint-disable-next-line react/display-name
-    RenderMark: (props) => <strong {...props} />,
+    RenderMark: RenderMark_Strong,
   }),
   MarkPlugin({
     typeName: MARK_TAGS.em,
     hotkey: 'mod+i',
     command: 'toggleItalicMark',
     query: 'hasItalicMark',
-    // eslint-disable-next-line react/display-name
-    RenderMark: (props) => <em {...props} />,
+    RenderMark: RenderMark_Em,
   }),
   MarkPlugin({
     typeName: MARK_TAGS.u,
     hotkey: 'mod+u',
     command: 'toggleUnderlinedMark',
     query: 'hasUnderlinedMark',
-    // eslint-disable-next-line react/display-name
-    RenderMark: (props) => <u {...props} />,
+    RenderMark: RenderMark_U,
   }),
   RenderMarkPlugin(),
   RenderBlockPlugin(),

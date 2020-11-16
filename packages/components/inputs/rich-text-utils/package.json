@@ -1,12 +1,12 @@
 {
-  "name": "@commercetools-uikit/input-utils",
-  "description": "Utilities for working with input components.",
+  "name": "@commercetools-uikit/rich-text-utils",
+  "description": "Utilities for working with rich-text components.",
   "version": "10.39.8",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/commercetools/ui-kit.git",
-    "directory": "packages/components/inputs/input-utils"
+    "directory": "packages/components/inputs/rich-text-utils"
   },
   "homepage": "https://uikit.commercetools.com",
   "keywords": ["javascript", "design system", "react", "uikit"],
@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/input-utils.cjs.js",
-  "module": "dist/input-utils.es.js",
+  "main": "dist/rich-text-utils.cjs.js",
+  "module": "dist/rich-text-utils.es.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
@@ -30,14 +30,22 @@
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
     "@commercetools-uikit/design-system": "10.39.8",
-    "@commercetools-uikit/flat-button": "10.39.8",
     "@commercetools-uikit/icons": "10.39.8",
-    "@commercetools-uikit/utils": "10.39.8",
+    "@commercetools-uikit/input-utils": "10.39.8",
+    "@commercetools-uikit/spacings-inline": "10.39.8",
+    "@commercetools-uikit/tooltip": "10.39.8",
     "@emotion/core": "^10.0.34",
+    "@emotion/styled": "^10.0.27",
+    "@emotion/styled-base": "^10.0.31",
     "emotion-theming": "^10.0.27",
+    "downshift": "6.0.6",
+    "is-hotkey": "0.1.6",
+    "lodash": "4.17.20",
+    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
-    "react-textarea-autosize": "8.3.0"
+    "slate-html-serializer": "0.8.11",
+    "tiny-invariant": "1.1.0"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",
