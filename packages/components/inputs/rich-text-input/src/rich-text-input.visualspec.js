@@ -36,344 +36,337 @@ describe('RichTextInput', () => {
     await percySnapshot(page, 'RichTextInput');
   });
 
-  it('Interactive', async () => {
-    await page.goto(`${HOST}/rich-text-input/interactive`);
-    const doc = await getDocument(page);
-    const input = await getByTestId(doc, 'rich-text');
+  describe('Interactive', () => {
+    it('apply bold, italic, underline, strikethrough, superscript, subscript', async () => {
+      await page.goto(`${HOST}/rich-text-input/interactive`);
+      const doc = await getDocument(page);
+      const input = await getByTestId(doc, 'rich-text');
 
-    // make the text bold
-    const boldButton = await getByLabelText(doc, 'Bold');
-    await boldButton.click();
+      await selectAllText(input);
+      await input.press('Backspace');
 
-    await input.type('Hello world');
-    await wait(() => getByText(doc, 'Hello world'));
+      // make the text bold
+      const boldButton = await getByLabelText(doc, 'Bold');
+      await boldButton.click();
 
-    // check that there is now a strong tag in the document.
-    let numOfTags = await getNumberOfTags('strong');
+      await input.type('Hello world');
+      await wait(() => getByText(doc, 'Hello world'));
 
-    expect(numOfTags).toEqual(1);
+      // check that there is now a strong tag in the document.
+      let numOfTags = await getNumberOfTags('strong');
 
-    // select the text
-    await selectAllText(input);
-    // click the bold button again
-    await boldButton.click();
+      expect(numOfTags).toEqual(1);
 
-    // check there are no strong tags in the document.
-    numOfTags = await getNumberOfTags('strong');
-    expect(numOfTags).toEqual(0);
+      // select the text
+      await selectAllText(input);
+      // click the bold button again
+      await boldButton.click();
 
-    await input.press('Backspace');
+      // check there are no strong tags in the document.
+      numOfTags = await getNumberOfTags('strong');
+      expect(numOfTags).toEqual(0);
 
-    await input.type('Italic text!');
+      await input.press('Backspace');
 
-    await wait(() => getByText(doc, 'Italic text!'));
+      await input.type('Italic text!');
 
-    await selectAllText(input);
+      await wait(() => getByText(doc, 'Italic text!'));
 
-    // make the selection italic
-    const italicButton = await getByLabelText(doc, 'Italic');
-    await italicButton.click();
+      await selectAllText(input);
 
-    // check there are italic tags in the document.
-    numOfTags = await getNumberOfTags('em');
-    expect(numOfTags).toEqual(1);
+      // make the selection italic
+      const italicButton = await getByLabelText(doc, 'Italic');
+      await italicButton.click();
 
-    // click italic button to remove it
-    await italicButton.click();
+      // check there are italic tags in the document.
+      numOfTags = await getNumberOfTags('em');
+      expect(numOfTags).toEqual(1);
 
-    // check that the italic tags have been removed.
-    numOfTags = await getNumberOfTags('em');
-    expect(numOfTags).toEqual(0);
+      // click italic button to remove it
+      await italicButton.click();
 
-    await selectAllText(input);
-    await input.press('Backspace');
-    await input.type('Underlined text!');
+      // check that the italic tags have been removed.
+      numOfTags = await getNumberOfTags('em');
+      expect(numOfTags).toEqual(0);
 
-    await wait(() => getByText(doc, 'Underlined text!'));
+      await selectAllText(input);
+      await input.press('Backspace');
+      await input.type('Underlined text!');
 
-    await selectAllText(input);
+      await wait(() => getByText(doc, 'Underlined text!'));
 
-    // make the selection underlined
-    const underlineButton = await getByLabelText(doc, 'Underline');
-    await underlineButton.click();
+      await selectAllText(input);
 
-    // check there are italic tags in the document.
-    numOfTags = await getNumberOfTags('u');
-    expect(numOfTags).toEqual(1);
+      // make the selection underlined
+      const underlineButton = await getByLabelText(doc, 'Underline');
+      await underlineButton.click();
 
-    await wait(() => getByText(doc, 'Underlined text!'));
+      // check there are italic tags in the document.
+      numOfTags = await getNumberOfTags('u');
+      expect(numOfTags).toEqual(1);
 
-    // click italic button to remove it
-    await underlineButton.click();
+      await wait(() => getByText(doc, 'Underlined text!'));
 
-    // check that the italic tags have been removed.
-    numOfTags = await getNumberOfTags('u');
-    expect(numOfTags).toEqual(0);
+      // click italic button to remove it
+      await underlineButton.click();
 
-    // multi select marks
+      // check that the italic tags have been removed.
+      numOfTags = await getNumberOfTags('u');
+      expect(numOfTags).toEqual(0);
 
-    // Strike through
-    await selectAllText(input);
-    await input.press('Backspace');
+      // multi select marks
 
-    await input.type('Strike through?!');
-    await wait(() => getByText(doc, 'Strike through?!'));
+      // Strike through
+      await selectAllText(input);
+      await input.press('Backspace');
 
-    await selectAllText(input);
+      await input.type('Strike through?!');
+      await wait(() => getByText(doc, 'Strike through?!'));
 
-    const moreStylesButton = await getByLabelText(doc, 'More styles');
-    await moreStylesButton.click();
+      await selectAllText(input);
 
-    await wait(() => getByText(doc, 'Strikethrough'));
-    await percySnapshot(page, 'RichTextInput - more styles menu open');
+      const moreStylesButton = await getByLabelText(doc, 'More styles');
+      await moreStylesButton.click();
 
-    let strikethroughButton = await getByText(doc, 'Strikethrough');
-    await strikethroughButton.click();
+      await wait(() => getByText(doc, 'Strikethrough'));
+      await percySnapshot(page, 'RichTextInput - more styles menu open');
 
-    // check there are del tags in the document.
-    numOfTags = await getNumberOfTags('del');
-    expect(numOfTags).toEqual(1);
+      let strikethroughButton = await getByText(doc, 'Strikethrough');
+      await strikethroughButton.click();
 
-    // remove the mark
-    await moreStylesButton.click();
+      // check there are del tags in the document.
+      numOfTags = await getNumberOfTags('del');
+      expect(numOfTags).toEqual(1);
 
-    await wait(() => getByText(doc, 'Strikethrough'));
+      // remove the mark
+      await moreStylesButton.click();
 
-    strikethroughButton = await getByText(doc, 'Strikethrough');
-    await strikethroughButton.click();
+      await wait(() => getByText(doc, 'Strikethrough'));
 
-    // check there are del tags in the document.
-    numOfTags = await getNumberOfTags('del');
-    expect(numOfTags).toEqual(0);
+      strikethroughButton = await getByText(doc, 'Strikethrough');
+      await strikethroughButton.click();
 
-    await selectAllText(input);
-    await input.press('Backspace');
+      // check there are del tags in the document.
+      numOfTags = await getNumberOfTags('del');
+      expect(numOfTags).toEqual(0);
 
-    await input.type('Superscript!');
-    await wait(() => getByText(doc, 'Superscript!'));
+      await selectAllText(input);
+      await input.press('Backspace');
 
-    await selectAllText(input);
+      await input.type('Superscript!');
+      await wait(() => getByText(doc, 'Superscript!'));
 
-    await moreStylesButton.click();
+      await selectAllText(input);
 
-    await wait(() => getByText(doc, 'Superscript'));
+      await moreStylesButton.click();
 
-    let superscriptButton = await getByText(doc, 'Superscript');
-    await superscriptButton.click();
+      await wait(() => getByText(doc, 'Superscript'));
 
-    // check there are sup tags in the document.
-    numOfTags = await getNumberOfTags('sup');
-    expect(numOfTags).toEqual(1);
+      let superscriptButton = await getByText(doc, 'Superscript');
+      await superscriptButton.click();
 
-    // remove the mark
-    await moreStylesButton.click();
+      // check there are sup tags in the document.
+      numOfTags = await getNumberOfTags('sup');
+      expect(numOfTags).toEqual(1);
 
-    await wait(() => getByText(doc, 'Superscript'));
-    superscriptButton = await getByText(doc, 'Superscript');
-    await superscriptButton.click();
+      // remove the mark
+      await moreStylesButton.click();
 
-    // check there are no del tags in the document.
-    numOfTags = await getNumberOfTags('sup');
-    expect(numOfTags).toEqual(0);
+      await wait(() => getByText(doc, 'Superscript'));
+      superscriptButton = await getByText(doc, 'Superscript');
+      await superscriptButton.click();
 
-    // apply subscript to the selection
+      // check there are no del tags in the document.
+      numOfTags = await getNumberOfTags('sup');
+      expect(numOfTags).toEqual(0);
 
-    await moreStylesButton.click();
-    let subscriptButton = await getByText(doc, 'Subscript');
+      // apply subscript to the selection
 
-    await subscriptButton.click();
+      await moreStylesButton.click();
+      let subscriptButton = await getByText(doc, 'Subscript');
 
-    // check there are sub tags in the document.
-    numOfTags = await getNumberOfTags('sub');
-    expect(numOfTags).toEqual(1);
+      await subscriptButton.click();
 
-    // remove subscript now
+      // check there are sub tags in the document.
+      numOfTags = await getNumberOfTags('sub');
+      expect(numOfTags).toEqual(1);
 
-    await moreStylesButton.click();
-    subscriptButton = await getByText(doc, 'Subscript');
-    await subscriptButton.click();
+      // remove subscript now
 
-    // check there are no sub tags in the document.
-    numOfTags = await getNumberOfTags('sub');
-    expect(numOfTags).toEqual(0);
+      await moreStylesButton.click();
+      subscriptButton = await getByText(doc, 'Subscript');
+      await subscriptButton.click();
 
-    /* UNDO & REDO FUNCTIONALITY TESTING */
+      // check there are no sub tags in the document.
+      numOfTags = await getNumberOfTags('sub');
+      expect(numOfTags).toEqual(0);
+    });
 
-    /* with marks */
+    it('undo and redo', async () => {
+      await page.goto(`${HOST}/rich-text-input/interactive`);
+      const doc = await getDocument(page);
+      const input = await getByTestId(doc, 'rich-text');
 
-    // start by removing all values
-    await selectAllText(input);
-    await input.press('Backspace');
+      await selectAllText(input);
+      await input.press('Backspace');
 
-    await input.type('Let us now test undo!');
-    await wait(() => getByText(doc, 'Let us now test undo!'));
+      // make the text bold
+      const boldButton = await getByLabelText(doc, 'Bold');
 
-    // apply bold to selection.
-    await selectAllText(input);
-    await boldButton.click();
+      await input.type('Let us now test undo!');
+      await wait(() => getByText(doc, 'Let us now test undo!'));
 
-    // bold should be applied
-    numOfTags = await getNumberOfTags('strong');
-    expect(numOfTags).toEqual(1);
+      // apply bold to selection.
+      await selectAllText(input);
+      await boldButton.click();
 
-    const undoButton = await getByLabelText(doc, 'Undo');
-    await undoButton.click();
+      // bold should be applied
+      let numOfTags = await getNumberOfTags('strong');
+      expect(numOfTags).toEqual(1);
 
-    // bold should be removed
-    numOfTags = await getNumberOfTags('strong');
-    expect(numOfTags).toEqual(0);
+      const undoButton = await getByLabelText(doc, 'Undo');
+      await undoButton.click();
 
-    // now we can try redoing it
-    const redoButton = await getByLabelText(doc, 'Redo');
-    await redoButton.click();
+      // bold should be removed
+      numOfTags = await getNumberOfTags('strong');
+      expect(numOfTags).toEqual(0);
 
-    // bold should be added again
-    numOfTags = await getNumberOfTags('strong');
-    expect(numOfTags).toEqual(1);
+      // now we can try redoing it
+      const redoButton = await getByLabelText(doc, 'Redo');
+      await redoButton.click();
 
-    /* with text */
+      // bold should be added again
+      numOfTags = await getNumberOfTags('strong');
+      expect(numOfTags).toEqual(1);
 
-    // start by removing all the text
-    await selectAllText(input);
-    await input.press('Backspace');
+      /* with text */
 
-    // then click undo, text should be back
+      // start by removing all the text
+      await selectAllText(input);
+      await input.press('Backspace');
 
-    await undoButton.click();
-    await wait(() => getByText(doc, 'Let us now test undo!'));
+      // then click undo, text should be back
 
-    /* Testing Blocks */
+      await undoButton.click();
+      await wait(() => getByText(doc, 'Let us now test undo!'));
+    });
 
-    // start by removing all the text
-    await selectAllText(input);
-    await input.press('Backspace');
+    it('apply text styles', async () => {
+      await page.goto(`${HOST}/rich-text-input/interactive`);
+      const doc = await getDocument(page);
+      const input = await getByTestId(doc, 'rich-text');
 
-    // next, open the Style menu
+      await selectAllText(input);
+      await input.press('Backspace');
 
-    // blur input first to test that editor focus works correctly
-    await blur(input);
+      // next, open the Style menu
+      // blur input first to test that editor focus works correctly
+      await blur(input);
 
-    const styleMenuButton = await getByLabelText(doc, 'Style');
-    await styleMenuButton.click();
+      const styleMenuButton = await getByLabelText(doc, 'Style');
+      await styleMenuButton.click();
 
-    await wait(() => getByText(doc, 'Headline H1'));
-    await percySnapshot(page, 'RichTextInput - style menu open');
+      await wait(() => getByText(doc, 'Headline H1'));
+      await percySnapshot(page, 'RichTextInput - style menu open');
 
-    // then click on the H1 button
-    const h1Button = await getByText(doc, 'Headline H1');
-    await h1Button.click();
+      // then click on the H1 button
+      const h1Button = await getByText(doc, 'Headline H1');
+      await h1Button.click();
 
-    // now type into the input
-    const h1Text = 'here is our first h1';
-    await input.type(h1Text);
+      // now type into the input
+      const h1Text = 'here is our first h1';
+      await input.type(h1Text);
 
-    // text we typed should be visible on the screen
-    await wait(() => getByText(doc, h1Text));
+      // text we typed should be visible on the screen
+      await wait(() => getByText(doc, h1Text));
 
-    // h1 should be in document
-    numOfTags = await getNumberOfTags('h1');
-    expect(numOfTags).toEqual(1);
+      // h1 should be in document
+      let numOfTags = await getNumberOfTags('h1');
+      expect(numOfTags).toEqual(1);
 
-    // now, let's change back to h3
-    await selectAllText(input);
+      // now, let's change back to h3
+      await selectAllText(input);
 
-    // open style menu again
-    await styleMenuButton.click();
+      // open style menu again
+      await styleMenuButton.click();
 
-    // then click on the H1 button
-    const h3Button = await getByText(doc, 'Headline H3');
-    await h3Button.click();
+      // then click on the H1 button
+      const h3Button = await getByText(doc, 'Headline H3');
+      await h3Button.click();
 
-    // h1 should not be in document
-    numOfTags = await getNumberOfTags('h1');
-    expect(numOfTags).toEqual(0);
+      // h1 should not be in document
+      numOfTags = await getNumberOfTags('h1');
+      expect(numOfTags).toEqual(0);
 
-    // h3 should be in document
-    numOfTags = await getNumberOfTags('h3');
-    expect(numOfTags).toEqual(1);
+      // h3 should be in document
+      numOfTags = await getNumberOfTags('h3');
+      expect(numOfTags).toEqual(1);
 
-    // now change back to paragraph (the default)
+      // now change back to paragraph (the default)
 
-    // blur input first to test that editor focus works correctly
-    await blur(input);
+      // blur input first to test that editor focus works correctly
+      await blur(input);
 
-    // open style menu again
-    await styleMenuButton.click();
+      // open style menu again
+      await styleMenuButton.click();
 
-    // then click on the paragraph button
-    const paragraphbutton = await getByText(doc, 'Paragraph');
-    await paragraphbutton.click();
+      // then click on the paragraph button
+      const paragraphbutton = await getByText(doc, 'Paragraph');
+      await paragraphbutton.click();
 
-    // h3 should not be in document
-    numOfTags = await getNumberOfTags('h3');
-    expect(numOfTags).toEqual(0);
+      // h3 should not be in document
+      numOfTags = await getNumberOfTags('h3');
+      expect(numOfTags).toEqual(0);
+    });
 
-    // working with lists.
+    it('apply lists', async () => {
+      await page.goto(`${HOST}/rich-text-input/interactive`);
+      const doc = await getDocument(page);
+      const input = await getByTestId(doc, 'rich-text');
 
-    // start by removing all the text
-    await selectAllText(input);
-    await input.press('Backspace');
-    // get and click unordered list button
-    const unorderedListButton = await getByLabelText(doc, 'Bullet list');
-    await unorderedListButton.click();
+      const resetButton = await getByLabelText(
+        doc,
+        'Reset value to Hello World'
+      );
+      await resetButton.click();
+      await selectAllText(input);
+      await input.press('Backspace');
 
-    await input.type('Item 1');
-    await input.press('Enter');
-    await input.type('Item 2');
+      // get and click unordered list button
+      const unorderedListButton = await getByLabelText(doc, 'Bullet list');
+      await unorderedListButton.click();
 
-    // ul should be in the document
-    numOfTags = await getNumberOfTags('ul');
-    expect(numOfTags).toEqual(1);
+      await input.type('Item 1');
+      await input.press('Enter');
+      await input.type('Item 2');
 
-    // two li tags should be in the document
+      // ul should be in the document
+      let numOfTags = await getNumberOfTags('ul');
+      expect(numOfTags).toEqual(1);
 
-    numOfTags = await getNumberOfTags('li');
-    expect(numOfTags).toEqual(2);
+      // two li tags should be in the document
 
-    // now switch to an ordered list
+      numOfTags = await getNumberOfTags('li');
+      expect(numOfTags).toEqual(2);
 
-    await selectAllText(input);
-    const orderedListButton = await getByLabelText(doc, 'Numbered list');
-    await orderedListButton.click();
+      // now switch to an ordered list
 
-    // ul should not be in the document
-    numOfTags = await getNumberOfTags('ul');
-    expect(numOfTags).toEqual(0);
+      await selectAllText(input);
+      const orderedListButton = await getByLabelText(doc, 'Numbered list');
+      await orderedListButton.click();
 
-    // ol should not be in the document
-    numOfTags = await getNumberOfTags('ol');
-    expect(numOfTags).toEqual(1);
+      // ul should not be in the document
+      numOfTags = await getNumberOfTags('ul');
+      expect(numOfTags).toEqual(0);
 
-    // two li tags should still be in the document
+      // ol should be in the document
+      numOfTags = await getNumberOfTags('ol');
+      expect(numOfTags).toEqual(1);
 
-    numOfTags = await getNumberOfTags('li');
-    expect(numOfTags).toEqual(2);
+      // two li tags should still be in the document
 
-    // remove all the text
-    await selectAllText(input);
-    await input.press('Backspace');
-
-    const resetButton = await getByLabelText(doc, 'Reset value to Hello World');
-    await resetButton.click();
-
-    // 1 strong tag should be in the document
-
-    numOfTags = await getNumberOfTags('strong');
-    expect(numOfTags).toEqual(1);
-
-    await wait(() => getByText(doc, 'Hello World'));
-
-    await input.click();
-    // remove bold from text
-    await selectAllText(input);
-    await boldButton.click();
-
-    numOfTags = await getNumberOfTags('strong');
-    expect(numOfTags).toEqual(0);
-
-    await input.press('Backspace');
-
-    await input.type('Okay dokey');
-    await wait(() => getByText(doc, 'Okay dokey'));
-  }, 20000);
+      numOfTags = await getNumberOfTags('li');
+      expect(numOfTags).toEqual(2);
+    });
+  });
 });
