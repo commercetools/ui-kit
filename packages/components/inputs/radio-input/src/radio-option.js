@@ -4,11 +4,8 @@ import { isValidElementType } from 'react-is';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import {
-  RadioOptionCheckedIcon,
-  RadioOptionUncheckedIcon,
-} from '@commercetools-uikit/icons';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
+import { RadioOptionCheckedIcon, RadioOptionUncheckedIcon } from './icons';
 import {
   getLabelStyles,
   getContainerStyles,

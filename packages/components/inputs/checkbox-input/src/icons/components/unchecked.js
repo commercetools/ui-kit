@@ -6,15 +6,18 @@ This file is created by the 'scripts/generate-icon-exports.js' script.
 
 import React from 'react';
 import { useTheme } from 'emotion-theming';
-import { getIconStyles, iconPropTypes } from '../create-styled-icon';
-import Subscript from '../raw-components/subscript';
+import {
+  getIconStyles,
+  iconPropTypes,
+} from '../../../../../icons/src/create-styled-icon';
+import Unchecked from '../raw-components/unchecked';
 
 const Component = (props) => {
   const theme = useTheme();
-  return <Subscript {...props} css={getIconStyles(props, theme)} />;
+  return <Unchecked {...props} css={getIconStyles(props, theme)} />;
 };
 
-Component.displayName = 'SubscriptIcon';
+Component.displayName = 'UncheckedIcon';
 
 // we do this to enable treeshaking
 // please see https://github.com/alex996/react-css-spinners/issues/1

@@ -6,15 +6,18 @@ This file is created by the 'scripts/generate-icon-exports.js' script.
 
 import React from 'react';
 import { useTheme } from 'emotion-theming';
-import { getIconStyles, iconPropTypes } from '../create-styled-icon';
-import OrderedList from '../raw-components/ordered-list';
+import {
+  getIconStyles,
+  iconPropTypes,
+} from '../../../../../../icons/src/create-styled-icon';
+import Superscript from '../raw-components/superscript';
 
 const Component = (props) => {
   const theme = useTheme();
-  return <OrderedList {...props} css={getIconStyles(props, theme)} />;
+  return <Superscript {...props} css={getIconStyles(props, theme)} />;
 };
 
-Component.displayName = 'OrderedListIcon';
+Component.displayName = 'SuperscriptIcon';
 
 // we do this to enable treeshaking
 // please see https://github.com/alex996/react-css-spinners/issues/1

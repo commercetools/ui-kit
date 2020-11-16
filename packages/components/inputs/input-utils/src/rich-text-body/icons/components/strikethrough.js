@@ -6,15 +6,18 @@ This file is created by the 'scripts/generate-icon-exports.js' script.
 
 import React from 'react';
 import { useTheme } from 'emotion-theming';
-import { getIconStyles, iconPropTypes } from '../create-styled-icon';
-import Checked from '../raw-components/checked';
+import {
+  getIconStyles,
+  iconPropTypes,
+} from '../../../../../../icons/src/create-styled-icon';
+import Strikethrough from '../raw-components/strikethrough';
 
 const Component = (props) => {
   const theme = useTheme();
-  return <Checked {...props} css={getIconStyles(props, theme)} />;
+  return <Strikethrough {...props} css={getIconStyles(props, theme)} />;
 };
 
-Component.displayName = 'CheckedIcon';
+Component.displayName = 'StrikethroughIcon';
 
 // we do this to enable treeshaking
 // please see https://github.com/alex996/react-css-spinners/issues/1

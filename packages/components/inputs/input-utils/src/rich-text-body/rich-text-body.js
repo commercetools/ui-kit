@@ -5,10 +5,11 @@ import requiredIf from 'react-required-if';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Tooltip from '@commercetools-uikit/tooltip';
+import { CaretDownIcon } from '@commercetools-uikit/icons';
+import Inline from '@commercetools-uikit/spacings-inline';
 import {
-  CaretDownIcon,
   BoldIcon,
-  ExpandIcon,
+  ExpandFullIcon,
   ItalicIcon,
   UnorderedListIcon,
   OrderedListIcon,
@@ -19,8 +20,7 @@ import {
   StrikethroughIcon,
   SuperscriptIcon,
   MoreStylesIcon,
-} from '@commercetools-uikit/icons';
-import Inline from '@commercetools-uikit/spacings-inline';
+} from './icons';
 import {
   Toolbar,
   ToolbarMainControls,
@@ -437,7 +437,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                   label={intl.formatMessage(messages.expandButtonLabel)}
                   onClick={props.onClickExpand}
                 >
-                  <ExpandIcon size="medium" />
+                  <ExpandFullIcon size="medium" />
                 </Button>
               </Tooltip>
             </React.Fragment>

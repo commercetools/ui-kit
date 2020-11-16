@@ -6,15 +6,18 @@ This file is created by the 'scripts/generate-icon-exports.js' script.
 
 import React from 'react';
 import { useTheme } from 'emotion-theming';
-import { getIconStyles, iconPropTypes } from '../create-styled-icon';
-import Indeterminate from '../raw-components/indeterminate';
+import {
+  getIconStyles,
+  iconPropTypes,
+} from '../../../../../../icons/src/create-styled-icon';
+import UnorderedList from '../raw-components/unordered-list';
 
 const Component = (props) => {
   const theme = useTheme();
-  return <Indeterminate {...props} css={getIconStyles(props, theme)} />;
+  return <UnorderedList {...props} css={getIconStyles(props, theme)} />;
 };
 
-Component.displayName = 'IndeterminateIcon';
+Component.displayName = 'UnorderedListIcon';
 
 // we do this to enable treeshaking
 // please see https://github.com/alex996/react-css-spinners/issues/1

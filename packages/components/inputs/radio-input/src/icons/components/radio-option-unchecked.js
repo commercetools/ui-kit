@@ -6,15 +6,18 @@ This file is created by the 'scripts/generate-icon-exports.js' script.
 
 import React from 'react';
 import { useTheme } from 'emotion-theming';
-import { getIconStyles, iconPropTypes } from '../create-styled-icon';
-import Italic from '../raw-components/italic';
+import {
+  getIconStyles,
+  iconPropTypes,
+} from '../../../../../icons/src/create-styled-icon';
+import RadioOptionUnchecked from '../raw-components/radio-option-unchecked';
 
 const Component = (props) => {
   const theme = useTheme();
-  return <Italic {...props} css={getIconStyles(props, theme)} />;
+  return <RadioOptionUnchecked {...props} css={getIconStyles(props, theme)} />;
 };
 
-Component.displayName = 'ItalicIcon';
+Component.displayName = 'RadioOptionUncheckedIcon';
 
 // we do this to enable treeshaking
 // please see https://github.com/alex996/react-css-spinners/issues/1

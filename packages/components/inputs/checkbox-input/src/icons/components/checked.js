@@ -6,15 +6,18 @@ This file is created by the 'scripts/generate-icon-exports.js' script.
 
 import React from 'react';
 import { useTheme } from 'emotion-theming';
-import { getIconStyles, iconPropTypes } from '../create-styled-icon';
-import Bold from '../raw-components/bold';
+import {
+  getIconStyles,
+  iconPropTypes,
+} from '../../../../../icons/src/create-styled-icon';
+import Checked from '../raw-components/checked';
 
 const Component = (props) => {
   const theme = useTheme();
-  return <Bold {...props} css={getIconStyles(props, theme)} />;
+  return <Checked {...props} css={getIconStyles(props, theme)} />;
 };
 
-Component.displayName = 'BoldIcon';
+Component.displayName = 'CheckedIcon';
 
 // we do this to enable treeshaking
 // please see https://github.com/alex996/react-css-spinners/issues/1
