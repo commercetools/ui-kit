@@ -45,7 +45,7 @@
     "tiny-invariant": "1.1.0"
   },
   "devDependencies": {
-    "formik": "2.2.3",
+    "formik": "2.2.5",
     "@testing-library/react-hooks": "3.4.2"
   },
   "peerDependencies": {
