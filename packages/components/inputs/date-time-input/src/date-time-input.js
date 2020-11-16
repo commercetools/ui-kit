@@ -23,12 +23,14 @@ import {
   parseInputText,
   getPreviousDay,
   getDaysInMonth,
+} from '@commercetools-uikit/calendar-time-utils';
+import {
   CalendarBody,
   CalendarMenu,
   CalendarHeader,
   CalendarContent,
   CalendarDay,
-} from '@commercetools-uikit/calendar-time-utils';
+} from '@commercetools-uikit/calendar-utils';
 import TimeInput from './time-input';
 import messages from './messages';
 
