@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Columns(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g id="columns__Icons" stroke="none" strokeWidth={1} fillRule="evenodd">
         <g
           id="columns__MC-icon-set"

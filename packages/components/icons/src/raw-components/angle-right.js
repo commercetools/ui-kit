@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function AngleRight(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g
         id="angle-right__Icons"
         stroke="none"

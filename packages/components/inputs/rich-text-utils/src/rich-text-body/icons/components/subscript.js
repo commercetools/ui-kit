@@ -6,10 +6,7 @@ This file is created by the 'scripts/generate-icon-exports.js' script.
 
 import React from 'react';
 import { useTheme } from 'emotion-theming';
-import {
-  getIconStyles,
-  iconPropTypes,
-} from '../../../../../../icons/src/create-styled-icon';
+import { getIconStyles, iconPropTypes } from '@commercetools-uikit/icons';
 import Subscript from '../raw-components/subscript';
 
 const Component = (props) => {

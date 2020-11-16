@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Drag(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g id="drag__Icons" stroke="none" strokeWidth={1} fillRule="evenodd">
         <g id="drag__MC-icon-set" transform="translate(-96 -840)" fill="#000">
           <g id="drag__Actions" transform="translate(24 648)">

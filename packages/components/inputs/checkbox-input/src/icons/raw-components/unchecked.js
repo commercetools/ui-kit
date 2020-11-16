@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Unchecked(props) {
   return (
-    <svg width={16} height={16} viewBox="0 0 16 16" {...props}>
+    <svg
+      width={16}
+      height={16}
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g
         id="unchecked__ATOM---Checkboxes---Radio-buttons"
         stroke="none"

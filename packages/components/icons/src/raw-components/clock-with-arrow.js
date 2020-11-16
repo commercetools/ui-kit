@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function ClockWithArrow(props) {
   return (
-    <svg width={33} height={32} viewBox="0 0 33 32" {...props}>
+    <svg
+      width={33}
+      height={32}
+      viewBox="0 0 33 32"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g
         id="clock-with-arrow__Icons"
         stroke="none"

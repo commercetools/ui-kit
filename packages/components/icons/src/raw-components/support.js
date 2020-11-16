@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Support(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g id="support__Icons" stroke="none" strokeWidth={1} fillRule="evenodd">
         <g id="support__MC-icon-set" transform="translate(-170 -1175)">
           <g id="support__Support" transform="translate(170 1175)">

@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function ViewGridPlus(props) {
   return (
-    <svg width={25} height={24} viewBox="0 0 25 24" {...props}>
+    <svg
+      width={25}
+      height={24}
+      viewBox="0 0 25 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g
         id="view-grid-plus__Page-1"
         stroke="none"
