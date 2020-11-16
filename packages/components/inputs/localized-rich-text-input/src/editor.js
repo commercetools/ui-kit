@@ -13,14 +13,16 @@ import Stack from '@commercetools-uikit/spacings-stack';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';
 import FlatButton from '@commercetools-uikit/flat-button';
-import RichTextBody from '../../../../../src/components/internals/rich-text-body';
-import HiddenInput from '../../../../../src/components/internals/rich-text-body/hidden-input';
+import { messagesMultilineInput } from '@commercetools-uikit/input-utils';
+import {
+  RichTextBody,
+  HiddenInput,
+} from '@commercetools-uikit/rich-text-utils';
 import {
   EditorWrapper,
   EditorLanguageLabel,
   ToggleButtonWrapper,
 } from './editor.styles';
-import messages from '../../../../../src/components/internals/messages/multiline-input';
 
 const COLLAPSED_HEIGHT = 32;
 
@@ -168,7 +170,9 @@ const Editor = (props) => {
                     <FlatButton
                       onClick={toggle}
                       label={intl.formatMessage(
-                        isOpen ? messages.collapse : messages.expand
+                        isOpen
+                          ? messagesMultilineInput.collapse
+                          : messagesMultilineInput.expand
                       )}
                       icon={
                         isOpen ? (

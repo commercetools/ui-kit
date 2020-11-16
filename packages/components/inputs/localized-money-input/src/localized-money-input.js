@@ -19,8 +19,8 @@ import {
   createSequentialId,
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
+import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import messages from './messages';
-import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
 
 const sequentialId = createSequentialId('localized-money-input-');
 

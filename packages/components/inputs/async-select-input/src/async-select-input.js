@@ -10,15 +10,18 @@ import {
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
+import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import {
   ClearIndicator,
   TagRemove,
   DropdownIndicator,
   customComponentsWithIcons,
+  messages,
+  createSelectStyles,
 } from '@commercetools-uikit/select-utils';
-import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
-import LoadingIndicator from '../../../../../src/components/internals/loading-indicator';
-import messages from '../../../../../src/components/internals/messages/select';
+
+const LoadingIndicator = () => <LoadingSpinner scale="s" />;
+LoadingIndicator.displayName = 'LoadingIndicator';
 
 const customizedComponents = {
   DropdownIndicator,

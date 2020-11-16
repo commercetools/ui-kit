@@ -16,11 +16,13 @@ import {
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
 import Tooltip from '@commercetools-uikit/tooltip';
-import { DropdownIndicator } from '@commercetools-uikit/select-utils';
+import {
+  DropdownIndicator,
+  createSelectStyles,
+} from '@commercetools-uikit/select-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
 import { useToggleState } from '@commercetools-uikit/hooks';
-import createSelectStyles from '../../../../../src/components/internals/create-select-styles';
 import currencies from './currencies.json';
 import {
   getHighPrecisionWrapperStyles,

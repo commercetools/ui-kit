@@ -9,8 +9,10 @@ import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
-import MultilineInput from '../../../../../src/components/internals/multiline-input';
-import messages from '../../../../../src/components/internals/messages/multiline-input';
+import {
+  MultilineInput,
+  messagesMultilineInput,
+} from '@commercetools-uikit/input-utils';
 import {
   getTextareaStyles,
   getLanguageLabelStyles,
@@ -161,7 +163,9 @@ const TranslationInput = (props) => {
                 <FlatButton
                   onClick={props.onToggle}
                   isDisabled={props.isDisabled}
-                  label={props.intl.formatMessage(messages.collapse)}
+                  label={props.intl.formatMessage(
+                    messagesMultilineInput.collapse
+                  )}
                   icon={<AngleUpIcon size="small" />}
                 />
               </ToggleButtonWrapper>

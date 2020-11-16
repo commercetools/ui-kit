@@ -31,6 +31,7 @@
     "@babel/runtime-corejs3": "7.12.5",
     "@commercetools-uikit/accessible-button": "10.39.8",
     "@commercetools-uikit/calendar-time-utils": "10.39.8",
+    "@commercetools-uikit/calendar-utils": "10.39.8",
     "@commercetools-uikit/constraints": "10.39.8",
     "@commercetools-uikit/design-system": "10.39.8",
     "@commercetools-uikit/hooks": "10.39.8",

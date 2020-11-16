@@ -1,11 +1,11 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ErrorMessage } from '@commercetools-uikit/messages';
-import messages from '../../../../../src/components/internals/messages/localized-input';
+import { messagesLocalizedInput } from '@commercetools-uikit/input-utils';
 
 const RequiredValueErrorMessage = () => (
   <ErrorMessage>
-    <FormattedMessage {...messages.missingRequiredField} />
+    <FormattedMessage {...messagesLocalizedInput.missingRequiredField} />
   </ErrorMessage>
 );
 

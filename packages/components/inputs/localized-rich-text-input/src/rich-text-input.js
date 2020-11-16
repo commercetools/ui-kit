@@ -5,8 +5,7 @@ import pick from 'lodash/pick';
 import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import plugins from '../../../../../src/components/internals/rich-text-plugins';
-import html from '../../../../../src/components/internals/rich-text-utils/html';
+import { richTextPlugins, html } from '@commercetools-uikit/rich-text-utils';
 import renderEditor from './editor';
 
 class RichTextInput extends React.PureComponent {
@@ -120,7 +119,7 @@ class RichTextInput extends React.PureComponent {
           ]),
         }}
         onChange={this.onValueChange}
-        plugins={plugins}
+        plugins={richTextPlugins}
         renderEditor={renderEditor}
       />
     );

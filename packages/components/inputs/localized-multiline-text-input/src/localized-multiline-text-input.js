@@ -19,9 +19,9 @@ import {
   getId,
   getName,
 } from '@commercetools-uikit/localized-utils';
+import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
-import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
 
 const expandedTranslationsReducer = (state, action) => {
   switch (action.type) {

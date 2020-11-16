@@ -24,11 +24,13 @@ import {
 import { createSequentialId } from '@commercetools-uikit/utils';
 import TextInput from '@commercetools-uikit/text-input';
 import {
+  LocalizedInputToggle,
+  messagesLocalizedInput,
+} from '@commercetools-uikit/input-utils';
+import {
   getLocalizedInputStyles,
   getLanguageLabelStyles,
 } from './localized-text-input.styles';
-import LocalizedInputToggle from '../../../../../src/components/internals/localized-input-toggle';
-import messages from '../../../../../src/components/internals/messages/localized-input';
 
 const sequentialId = createSequentialId('localized-text-input-');
 
@@ -110,7 +112,7 @@ LocalizedInput.propTypes = {
 
 const RequiredValueErrorMessage = () => (
   <ErrorMessage>
-    <FormattedMessage {...messages.missingRequiredField} />
+    <FormattedMessage {...messagesLocalizedInput.missingRequiredField} />
   </ErrorMessage>
 );
 

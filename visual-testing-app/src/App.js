@@ -10,24 +10,14 @@ const darkTheme = {
   colorNeutral: 'rgba(255,255,255,0.60)',
   colorAccent98: 'rgba(0,0,0,0.98)',
 };
-
-const srcComponentsContext = require.context(
-  '../../src/components',
-  true,
-  /\.visualroute\.js$/
-);
 const pkgComponentsContext = require.context(
   '../../packages',
   true,
   /\.visualroute\.js$/
 );
-const srcRouteComponent = srcComponentsContext
-  .keys()
-  .map((id) => srcComponentsContext(id));
-const pkgRouteComponent = pkgComponentsContext
+const allRouteComponents = pkgComponentsContext
   .keys()
   .map((id) => pkgComponentsContext(id));
-const allRouteComponents = srcRouteComponent.concat(pkgRouteComponent);
 const allUniqueRouteComponents = allRouteComponents.reduce(
   (allComponents, RouteComponent) => {
     // trim leading slash

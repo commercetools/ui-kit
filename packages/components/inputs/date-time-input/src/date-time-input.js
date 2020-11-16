@@ -24,11 +24,13 @@ import {
   getPreviousDay,
   getDaysInMonth,
 } from '@commercetools-uikit/calendar-time-utils';
-import CalendarBody from '../../../../../src/components/internals/calendar-body';
-import CalendarMenu from '../../../../../src/components/internals/calendar-menu';
-import CalendarHeader from '../../../../../src/components/internals/calendar-header';
-import CalendarContent from '../../../../../src/components/internals/calendar-content';
-import CalendarDay from '../../../../../src/components/internals/calendar-day';
+import {
+  CalendarBody,
+  CalendarMenu,
+  CalendarHeader,
+  CalendarContent,
+  CalendarDay,
+} from '@commercetools-uikit/calendar-utils';
 import TimeInput from './time-input';
 import messages from './messages';
 

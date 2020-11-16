@@ -10,11 +10,7 @@ import {
   filterAriaAttributes,
 } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
-import {
-  IndeterminateIcon,
-  CheckedIcon,
-  UncheckedIcon,
-} from '../../../../../src/components/internals/icons';
+import { IndeterminateIcon, CheckedIcon, UncheckedIcon } from './icons';
 import { getCheckboxWrapperStyles } from './checkbox-input.styles';
 import Checkbox from './checkbox';
 
