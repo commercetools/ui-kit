@@ -225,6 +225,7 @@ These are informal steps we suggest you to follow when adding a new component.
 
 1. Add the raw SVG of the new icon to `packages/components/icons/src/svg`.
 2. Run `yarn generate-icons` to generate icon files and changes to `packages/components/icons/src/index.js`. This file should never be edited manually.
+3. Manually update the typings for icons in `merchant-center-application-kit` to include the new icon [here](https://github.com/commercetools/merchant-center-application-kit/blob/master/%40types/commercetools-uikit__icons/index.d.ts?rgh-link-date=2020-11-17T15%3A16%3A15Z).
 
 ### Resources
 
