@@ -42,8 +42,10 @@ const Row = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  ${(props) =>
-    !props.shouldToggleButtonTakeSpace ? 'margin-top: 0 !important;' : null}
+  /* stylelint-disable declaration-bang-space-before */
+  margin-top: ${(props) =>
+    !props.shouldToggleButtonTakeSpace ? '0 !important' : 'inherit'};
+  /* stylelint-enable declaration-bang-space-before */
 `;
 
 const Editor = (props) => {
