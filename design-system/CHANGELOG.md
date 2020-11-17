@@ -1,5 +1,11 @@
 # @commercetools-uikit/design-system
 
+## 10.40.0
+
+### Minor Changes
+
+- [`a2c1615`](https://github.com/commercetools/ui-kit/commit/a2c1615512b416c464310d3e67a9ee220dde47d8) [#1632](https://github.com/commercetools/ui-kit/pull/1632) Thanks [@jonnybel](https://github.com/jonnybel)! - Add new constraint design tokens system (from 0.5 to 8, with units of 0.5) and update "classic" system (xs, s, m, l, xl) to match values of the new one.
+
 ## 10.39.8
 
 ### Patch Changes
