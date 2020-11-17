@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Error(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g id="error__Icons" stroke="none" strokeWidth={1} fillRule="evenodd">
         <g id="error__MC-icon-set" transform="translate(-96 -360)" fill="#000">
           <g id="error__Notices" transform="translate(24 312)">

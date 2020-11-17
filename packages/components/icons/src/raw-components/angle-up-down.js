@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function AngleUpDown(props) {
   return (
-    <svg width={32} height={32} viewBox="0 0 32 32" {...props}>
+    <svg
+      width={32}
+      height={32}
+      viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g
         id="angle-up-down__AngleUpDownIcon"
         stroke="none"

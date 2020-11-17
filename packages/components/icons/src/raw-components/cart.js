@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Cart(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g id="cart__Icons" stroke="none" strokeWidth={1} fillRule="evenodd">
         <g id="cart__MC-icon-set" transform="translate(-96 -216)" fill="#000">
           <g id="cart__Menu" transform="translate(24 168)">

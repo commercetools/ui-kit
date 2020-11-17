@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Grid(props) {
   return (
-    <svg width={18} height={17} viewBox="0 0 18 17" {...props}>
+    <svg
+      width={18}
+      height={17}
+      viewBox="0 0 18 17"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g
         id="grid__Old-table-manager-icon"
         stroke="none"

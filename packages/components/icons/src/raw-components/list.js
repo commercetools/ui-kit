@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function List(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g id="list__Icons" stroke="none" strokeWidth={1} fillRule="evenodd">
         <g id="list__MC-icon-set" transform="translate(-24 -600)" fill="#000">
           <g id="list__Grid-display" transform="translate(24 600)">

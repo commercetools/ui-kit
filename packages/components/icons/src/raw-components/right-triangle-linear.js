@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function RightTriangleLinear(props) {
   return (
-    <svg width={8} height={8} viewBox="0 0 8 8" {...props}>
+    <svg
+      width={8}
+      height={8}
+      viewBox="0 0 8 8"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g
         id="right-triangle-linear__Table-compact-truncation-v3"
         stroke="none"

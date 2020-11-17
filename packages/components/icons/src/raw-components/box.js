@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Box(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g id="box__Icons" stroke="none" strokeWidth={1} fillRule="evenodd">
         <g id="box__MC-icon-set" transform="translate(-96 -168)" fill="#000">
           <g id="box__Menu" transform="translate(24 168)">

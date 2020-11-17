@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Cube(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g id="cube__Icons" stroke="none" strokeWidth={1} fillRule="evenodd">
         <g id="cube__MC-icon-set" transform="translate(-24 -72)" fill="#000">
           <g id="cube__Application" transform="translate(24 24)">

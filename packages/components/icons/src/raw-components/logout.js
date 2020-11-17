@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Logout(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g id="logout__Icons" stroke="none" strokeWidth={1} fillRule="evenodd">
         <g id="logout__MC-icon-set" transform="translate(-24 -24)" fill="#000">
           <g id="logout__Application" transform="translate(24 24)">

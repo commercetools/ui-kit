@@ -2,7 +2,13 @@ import * as React from 'react';
 
 function Arrows(props) {
   return (
-    <svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <g id="arrows__Icons" stroke="none" strokeWidth={1} fillRule="evenodd">
         <g id="arrows__MC-icon-set" transform="translate(-24 -744)" fill="#000">
           <g id="arrows__Actions" transform="translate(24 648)">
