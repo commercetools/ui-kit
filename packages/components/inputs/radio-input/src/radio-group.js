@@ -58,7 +58,11 @@ const Group = (props) => {
   }
   return (
     <div aria-labelledby={props.id}>
-      <Constraints.Horizontal constraint={props.horizontalConstraint}>
+      <Constraints.Horizontal
+        max={Constraints.parseHorizontalConstraintProp(
+          props.horizontalConstraint
+        )}
+      >
         <Stack {...props.directionProps} {...filterDataAttributes(props)}>
           {optionElements}
         </Stack>
@@ -79,7 +83,23 @@ Group.propTypes = {
   isReadOnly: PropTypes.bool,
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
-  horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf([
+    'm',
+    'l',
+    'xl',
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
   direction: PropTypes.oneOf(Object.keys(directionWrapper)),
   directionProps: PropTypes.object,
   children: PropTypes.node.isRequired,

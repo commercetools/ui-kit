@@ -57,7 +57,11 @@ const SelectInput = (props) => {
       ) || null;
 
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal
+      max={Constraints.parseHorizontalConstraintProp(
+        props.horizontalConstraint
+      )}
+    >
       <div {...filterDataAttributes(props)}>
         <Select
           aria-label={props['aria-label']}
@@ -191,7 +195,28 @@ SelectInput.defaultProps = {
 };
 
 SelectInput.propTypes = {
-  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf([
+    's',
+    'm',
+    'l',
+    'xl',
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
   /**
    * Indicates that input has errors
    */

@@ -64,7 +64,24 @@ class DateTimeInput extends React.Component {
     /**
      * Horizontal size limit of the input field.
      */
-    horizontalConstraint: PropTypes.oneOf(['m', 'l', 'xl', 'scale']),
+    horizontalConstraint: PropTypes.oneOf([
+      'm',
+      'l',
+      'xl',
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      'scale',
+      'auto',
+    ]),
     /**
      * The selected date, must either be an empty string or a date formatted in ISO 8601 (e.g. "2018-10-04T09:00:00.000Z").
      */
@@ -185,7 +202,11 @@ class DateTimeInput extends React.Component {
     });
   render() {
     return (
-      <Constraints.Horizontal constraint={this.props.horizontalConstraint}>
+      <Constraints.Horizontal
+        max={Constraints.parseHorizontalConstraintProp(
+          this.props.horizontalConstraint
+        )}
+      >
         <Downshift
           // Setting the key to the timeZone conveniently forces a rerender
           // when the time-zone changes. Otherwise we'd need to make

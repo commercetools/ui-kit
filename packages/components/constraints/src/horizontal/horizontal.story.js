@@ -1,9 +1,22 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select } from '@storybook/addon-knobs/react';
+import { withKnobs } from '@storybook/addon-knobs/react';
+import { customProperties as vars } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import Horizontal from './horizontal';
+import { getAcceptedMaxPropValues, getMaxPropTokenValue } from '../helpers';
 import Readme from '../../README.md';
+
+const ColouredRow = styled.div`
+  display: flex;
+  padding: 2px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: ${vars.borderRadius6};
+  color: ${vars.colorSurface};
+  background-color: ${vars.colorPrimary};
+`;
 
 const Stack = styled.div`
   > * + * {
@@ -11,25 +24,26 @@ const Stack = styled.div`
   }
 `;
 
-const Row = styled.div`
-  display: block;
+const Wrapper = styled.div`
+  position: relative;
+  padding-top: ${vars.spacingXl};
 `;
 
-const InlineColorWrapper = styled.div`
-  background-color: #e1ffdd;
-  display: inline-flex;
-  align-items: stretch;
-  height: 100px;
-  width: ${(props) => props.width};
+const ColumnsContainer = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  white-space: nowrap;
 `;
-
-const sizes = [
-  { name: 'xs', width: '10%' },
-  { name: 's', width: '20%' },
-  { name: 'm', width: '30%' },
-  { name: 'l', width: '70%' },
-  { name: 'xl', width: '100%' },
-];
+const Column = styled.div`
+  display: inline-block;
+  width: ${vars.constraint2};
+  margin-right: ${vars.spacingM};
+  height: 100%;
+  text-align: center;
+  background-color: rgba(241, 109, 14, 0.3);
+`;
 
 storiesOf('Components|Constraints', module)
   .addDecorator(withKnobs)
@@ -40,20 +54,27 @@ storiesOf('Components|Constraints', module)
     },
   })
   .add('Horizontal', () => {
-    const constraint = select(
-      'constraint',
-      ['xs', 's', 'm', 'l', 'xl', 'scale'],
-      'scale'
-    );
+    const values = getAcceptedMaxPropValues();
+
     return (
-      <Horizontal constraint={constraint}>
+      <Wrapper>
+        <ColumnsContainer>
+          {Array.from({ length: 8 }).map((_, index) => (
+            <Column key={index}>{`Column ${index + 1}`}</Column>
+          ))}
+        </ColumnsContainer>
         <Stack>
-          {sizes.map((size) => (
-            <Row key={size.name}>
-              <InlineColorWrapper width={size.width} />
-            </Row>
+          {values.map((max) => (
+            <Horizontal key={max} max={max}>
+              <ColouredRow>
+                <b>{max.toString()}</b>
+                {typeof max === 'number' ? (
+                  <small>{`${getMaxPropTokenValue(max)}`}</small>
+                ) : null}
+              </ColouredRow>
+            </Horizontal>
           ))}
         </Stack>
-      </Horizontal>
+      </Wrapper>
     );
   });

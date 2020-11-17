@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { action } from '@storybook/addon-actions';
 import Readme from '../README.md';
 import DateTimeInput from './date-time-input';
@@ -32,8 +33,8 @@ class DateTimeInputStory extends React.Component {
           onChange={this.handleChange}
           horizontalConstraint={select(
             'horizontalConstraint',
-            ['m', 'l', 'xl', 'scale'],
-            'l'
+            Constraints.getAcceptedMaxPropValues(6),
+            10
           )}
           timeZone={select(
             'timeZone',

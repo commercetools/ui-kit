@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { action } from '@storybook/addon-actions';
 import Readme from '../README.md';
 import DateRangeInput from './date-range-input';
@@ -27,8 +28,8 @@ class DateRangeInputStory extends React.Component {
           onChange={this.handleChange}
           horizontalConstraint={select(
             'horizontalConstraint',
-            ['m', 'l', 'xl', 'scale'],
-            'l'
+            Constraints.getAcceptedMaxPropValues(6),
+            10
           )}
           id={text('id', '')}
           name={text('name', '')}

@@ -19,7 +19,11 @@ const SearchSelectField = (props) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
   const id = props.id || sequentialId();
   return (
-    <Constraints.Horizontal constraint={props.horizontalConstraint}>
+    <Constraints.Horizontal
+      max={Constraints.parseHorizontalConstraintProp(
+        props.horizontalConstraint
+      )}
+    >
       <Spacings.Stack scale="xs">
         <FieldLabel
           title={props.title}
@@ -86,7 +90,28 @@ SearchSelectField.propTypes = {
   /**
    *Horizontal size limit of the input fields.
    */
-  horizontalConstraint: PropTypes.oneOf(['s', 'm', 'l', 'xl', 'scale']),
+  horizontalConstraint: PropTypes.oneOf([
+    's',
+    'm',
+    'l',
+    'xl',
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
   /**
    * Aria label (for assistive tech)
    */

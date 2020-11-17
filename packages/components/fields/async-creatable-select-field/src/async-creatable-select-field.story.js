@@ -10,6 +10,7 @@ import {
   object,
   number,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../../.storybook/decorators/section';
 import * as icons from '../../../icons';
 import Readme from '../README.md';
@@ -111,8 +112,8 @@ storiesOf('Components|Fields/SelectFields', module)
             <AsyncCreatableSelectField
               horizontalConstraint={select(
                 'horizontalConstraint',
-                ['s', 'm', 'l', 'xl', 'scale'],
-                'm'
+                Constraints.getAcceptedMaxPropValues(3),
+                7
               )}
               errors={object('errors', { missing: true, customError: true })}
               renderError={(key) => {

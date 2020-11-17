@@ -6,6 +6,9 @@ import TextInput from '@commercetools-uikit/text-input';
 import Readme from './TOKENS.md';
 import vars from '../custom-properties';
 import definition from './definition.yaml';
+import deprecatedTokens from './deprecated-tokens';
+
+const getIsDeprecated = (token) => deprecatedTokens.includes(token);
 
 const Table = styled.table`
   border: 1px solid #ccc;
@@ -116,7 +119,10 @@ const ChoiceGroup = (props) => {
           {choices.map(([name, value]) => (
             <tr key={name}>
               <td>
-                <Token>{name}</Token>
+                <>
+                  <Token>{name}</Token>
+                  {getIsDeprecated(name) && <DeprecationBadge />}
+                </>
               </td>
               <td>{props.renderSample(value, name)}</td>
             </tr>

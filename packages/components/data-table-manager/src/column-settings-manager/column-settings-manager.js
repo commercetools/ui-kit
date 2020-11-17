@@ -23,7 +23,7 @@ import { HIDDEN_COLUMNS_PANEL, SELECTED_COLUMNS_PANEL } from './constants';
 const DroppableContainer = styled.div`
   width: 100%;
   position: relative;
-  max-width: ${vars.constraintL};
+  max-width: ${vars.constraint10};
   cursor: ${(props) => (props.isDragging ? 'grabbing' : 'auto')};
 `;
 

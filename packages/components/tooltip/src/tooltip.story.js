@@ -9,6 +9,7 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import { PrimaryButton } from '@commercetools-uikit/buttons';
 import Section from '../../../../.storybook/decorators/section';
 import Readme from '../README.md';
@@ -45,7 +46,7 @@ storiesOf('Components|Tooltips', module)
 
     const constraint = select(
       'constraint',
-      ['xs', 's', 'm', 'l', 'xl', 'scale'],
+      Constraints.getAcceptedMaxPropValues(),
       'scale'
     );
 

@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, select } from '@storybook/addon-knobs/react';
+import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
 import Section from '../../../../../.storybook/decorators/section';
@@ -95,8 +96,8 @@ storiesOf('Examples|Forms/Fields/SelectFields', module)
               <SelectField
                 horizontalConstraint={select(
                   'horizontalConstraint',
-                  ['s', 'm', 'l', 'xl', 'scale'],
-                  'm'
+                  Constraints.getAcceptedMaxPropValues(3),
+                  7
                 )}
                 errors={formik.errors.animal}
                 isRequired={true}

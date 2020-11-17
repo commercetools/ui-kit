@@ -6,7 +6,7 @@ const TagContainerEditable = styled.div`
   border: ${vars.borderRadius1} solid ${vars.colorNeutral60};
   border-radius: ${vars.borderRadius6};
   padding: ${vars.spacingS};
-  height: ${vars.constraintM};
+  height: ${vars.constraint7};
   overflow: auto;
 `;
 
