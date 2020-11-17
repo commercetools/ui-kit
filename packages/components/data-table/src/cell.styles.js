@@ -61,7 +61,7 @@ const getTruncatedStyle = (props) => {
 
 /* the :focus-within state doesn't enable the outline styles,
   so we have to set them manually. */
-const getOutlineStyles = () => css`
+const outlineStyles = css`
   /* to avoid getting cut by overflow:hidden */
   outline-offset: -3px;
 
@@ -83,10 +83,15 @@ const getCellInnerStyles = (props) => {
     getVerticalAlignmentStyle(props),
     getHorizontalAlignmentStyle(props),
     getTruncatedStyle(props),
-    getOutlineStyles(),
+    outlineStyles,
   ];
 };
 
+/**
+ * The `shouldClipContent` overflow rule should only be enabled upon manual column resizing,
+ * otherwise it will change the way css-grid automatically allocates space for the cells of the table,
+ * preferring to clip the cells instead and adding horizontal scrollbar to the table container
+ */
 const CellInner = styled.div`
   box-sizing: border-box;
   flex: 1;
@@ -94,10 +99,6 @@ const CellInner = styled.div`
   ${getPaddingStyle}
   ${getCellInnerStyles}
 
-  /* The following overflow rule should only be enabled upon manual column resizing
-  // otherwise it will change the way css-grid automatically allocates space for the cells of the table
-  // preferring to clip the cells instead and adding horizontal scrollbar to the table container
-  */
   ${(props) =>
     props.shouldClipContent
       ? css`
