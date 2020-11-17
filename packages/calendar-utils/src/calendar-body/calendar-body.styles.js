@@ -161,7 +161,7 @@ const getInputContainerStyles = (props, state) => {
       props.hasWarning ||
       props.isReadOnly ||
       ((props.isOpen || state.isFocused) && !props.isReadOnly)
-        ? 'initial'
+        ? 'inherit'
         : vars.borderColorForInputWhenFocused};
     }
   `;
