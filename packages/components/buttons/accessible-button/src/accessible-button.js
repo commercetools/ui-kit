@@ -4,15 +4,15 @@ import omit from 'lodash/omit';
 import { oneLine } from 'common-tags';
 import { filterAriaAttributes } from '@commercetools-uikit/utils';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import getNormalizedButtonStyles from './accessible-button.styles';
 
 const propsToOmit = ['onClick'];
 
 const getIsEnterOrSpace = (e) => e.key === ' ' || e.key === 'Enter';
 
-const Button = styled.button`
-  ${getNormalizedButtonStyles}
+const buttonStyles = css`
+  ${getNormalizedButtonStyles()}
   display: inline-flex;
   font-size: ${vars.fontSizeDefault};
 
@@ -56,12 +56,13 @@ const AccessibleButton = React.forwardRef((props, ref) => {
   }
 
   return (
-    <Button
+    <button
       as={props.as}
       id={props.id}
       ref={ref}
       aria-label={props.label}
       onClick={handleClick}
+      css={buttonStyles}
       // Allow to override the styles by passing a `className` prop.
       // Custom styles can also be passed using the `css` prop from emotion.
       // https://emotion.sh/docs/css-prop#style-precedence
@@ -74,7 +75,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
       {...filterAriaAttributes(props)}
     >
       {props.children}
-    </Button>
+    </button>
   );
 });
 
