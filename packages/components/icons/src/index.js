@@ -4,7 +4,6 @@
   This file is created by the 'scripts/generate-icon-exports.js' script.
 */
 
-export * from './create-styled-icon';
 export { default as AngleDownIcon } from './components/angle-down';
 export { default as AngleLeftIcon } from './components/angle-left';
 export { default as AngleRightIcon } from './components/angle-right';

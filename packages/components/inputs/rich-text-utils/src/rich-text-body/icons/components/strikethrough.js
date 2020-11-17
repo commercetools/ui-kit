@@ -6,7 +6,7 @@ This file is created by the 'scripts/generate-icon-exports.js' script.
 
 import React from 'react';
 import { useTheme } from 'emotion-theming';
-import { getIconStyles, iconPropTypes } from '@commercetools-uikit/icons';
+import { getIconStyles, iconPropTypes } from '../create-styled-icon';
 import Strikethrough from '../raw-components/strikethrough';
 
 const Component = (props) => {
