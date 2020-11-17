@@ -1,9 +1,18 @@
 # @commercetools-uikit/rich-text-utils
 
-## 10.40.0
+## 10.40.1
+
 ### Patch Changes
 
+- [`2d7c352`](https://github.com/commercetools/ui-kit/commit/2d7c35215b0b42d5d20488e6bc20b771ad22de68) [#1679](https://github.com/commercetools/ui-kit/pull/1679) Thanks [@emmenko](https://github.com/emmenko)! - Do not export `create-styled-icon.js` but copy the file in each generated icons package.
 
+- Updated dependencies [[`2d7c352`](https://github.com/commercetools/ui-kit/commit/2d7c35215b0b42d5d20488e6bc20b771ad22de68)]:
+  - @commercetools-uikit/icons@10.40.1
+  - @commercetools-uikit/input-utils@10.40.1
+
+## 10.40.0
+
+### Patch Changes
 
 - [`d9bc2d2`](https://github.com/commercetools/ui-kit/commit/d9bc2d29cef14cdde9a659609ed1b7e9b24d21d0) [#1677](https://github.com/commercetools/ui-kit/pull/1677) Thanks [@emmenko](https://github.com/emmenko)! - Fix relative imports leftovers
 

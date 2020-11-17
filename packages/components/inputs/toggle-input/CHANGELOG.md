@@ -1,5 +1,12 @@
 # @commercetools-uikit/toggle-input
 
+## 10.40.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/input-utils@10.40.1
+
 ## 10.40.0
 
 ### Patch Changes
