@@ -5,11 +5,15 @@ import { oneLine } from 'common-tags';
 import { filterAriaAttributes } from '@commercetools-uikit/utils';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { normalizedButtonStyles } from './accessible-button.styles';
 
 const propsToOmit = ['onClick'];
 
 const getIsEnterOrSpace = (e) => e.key === ' ' || e.key === 'Enter';
+
+// This needs to be a styled component to be able to use the `as` prop.
+const Button = styled.button``;
 
 const AccessibleButton = React.forwardRef((props, ref) => {
   const { onClick } = props;
@@ -45,7 +49,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
   }
 
   return (
-    <button
+    <Button
       as={props.as}
       id={props.id}
       ref={ref}
@@ -72,7 +76,7 @@ const AccessibleButton = React.forwardRef((props, ref) => {
       {...filterAriaAttributes(props)}
     >
       {props.children}
-    </button>
+    </Button>
   );
 });
 
