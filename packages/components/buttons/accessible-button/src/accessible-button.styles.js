@@ -1,7 +1,7 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/core';
 
 // resets button styles given automatically by browsers
-const getNormalizedButtonStyles = () => css`
+const normalizedButtonStyles = css`
   display: inline-block;
   box-sizing: border-box;
   padding: 0;
@@ -24,4 +24,7 @@ const getNormalizedButtonStyles = () => css`
   text-shadow: inherit;
 `;
 
-export default getNormalizedButtonStyles;
+// Backwards compatibility
+const getNormalizedButtonStyles = () => normalizedButtonStyles;
+
+export { normalizedButtonStyles, getNormalizedButtonStyles };
