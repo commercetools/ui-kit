@@ -42,7 +42,7 @@ const getIconBorderColor = (vars, props, state) => {
   if (props.isOpen || state.isFocused) {
     return vars.borderColorForInputWhenFocused;
   }
-  return 'initial';
+  return vars.borderColorForInput;
 };
 const getIconFontColor = (vars, props) => {
   if (props.isDisabled) {

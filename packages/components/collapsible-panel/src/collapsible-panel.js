@@ -1,19 +1,24 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import isNil from 'lodash/isNil';
 import uniqueId from 'lodash/uniqueId';
+import styled from '@emotion/styled';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import HeaderIcon from './header-icon';
 import {
-  Container,
-  HeaderContainer,
+  baseContainerStyles,
+  getHeaderContainerStyles,
+  getThemeStyle,
   HeaderControlsWrapper,
   SectionWrapper,
   SectionContent,
 } from './collapsible-panel.styles';
+
+const HeaderContainer = styled(AccessibleButton)``;
 
 const panelContentIdPrefix = 'panel-content-';
 const getPanelContentId = (id) => panelContentIdPrefix + id;
@@ -33,19 +38,18 @@ const CollapsiblePanel = (props) => {
       isDefaultClosed={props.isDefaultClosed}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
-        <Container theme={props.theme} className={props.className}>
+        <div css={baseContainerStyles} className={props.className}>
           <HeaderContainer
             as="div"
+            css={[
+              getHeaderContainerStyles(props, isOpen),
+              getThemeStyle(props.theme),
+            ]}
             id={props.id}
-            theme={props.theme}
             label=""
-            isOpen={isOpen}
             onClick={props.isDisabled ? undefined : toggle}
-            isSticky={props.isSticky}
             isDisabled={props.isDisabled}
-            isCondensed={props.condensed}
             buttonAttributes={dataProps}
-            headerControlsAlignment={props.headerControlsAlignment}
             aria-controls={panelContentId}
             aria-expanded={isOpen ? 'true' : 'false'}
           >
@@ -98,7 +102,7 @@ const CollapsiblePanel = (props) => {
               </Spacings.Inset>
             </SectionWrapper>
           </div>
-        </Container>
+        </div>
       )}
     </CollapsibleMotion>
   );
