@@ -63,6 +63,8 @@ jobs:
 
       - name: Building package READMEs
         run: yarn generate-readmes
+        env:
+          CI: true
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
