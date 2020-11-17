@@ -1,5 +1,11 @@
 # @commercetools-uikit/icons
 
+## 10.40.1
+
+### Patch Changes
+
+- [`2d7c352`](https://github.com/commercetools/ui-kit/commit/2d7c35215b0b42d5d20488e6bc20b771ad22de68) [#1679](https://github.com/commercetools/ui-kit/pull/1679) Thanks [@emmenko](https://github.com/emmenko)! - Do not export `create-styled-icon.js` but copy the file in each generated icons package.
+
 ## 10.40.0
 
 ### Patch Changes

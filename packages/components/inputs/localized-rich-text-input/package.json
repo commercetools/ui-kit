@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/localized-rich-text-input",
   "description": "A controlled text input component for localized rich text input with validation states.",
-  "version": "10.40.0",
+  "version": "10.40.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -34,11 +34,11 @@
     "@commercetools-uikit/design-system": "10.40.0",
     "@commercetools-uikit/flat-button": "10.40.0",
     "@commercetools-uikit/hooks": "10.40.0",
-    "@commercetools-uikit/icons": "10.40.0",
-    "@commercetools-uikit/input-utils": "10.40.0",
+    "@commercetools-uikit/icons": "10.40.1",
+    "@commercetools-uikit/input-utils": "10.40.1",
     "@commercetools-uikit/localized-utils": "10.40.0",
     "@commercetools-uikit/messages": "10.40.0",
-    "@commercetools-uikit/rich-text-utils": "10.40.0",
+    "@commercetools-uikit/rich-text-utils": "10.40.1",
     "@commercetools-uikit/spacings-inline": "10.40.0",
     "@commercetools-uikit/spacings-stack": "10.40.0",
     "@commercetools-uikit/text": "10.40.0",

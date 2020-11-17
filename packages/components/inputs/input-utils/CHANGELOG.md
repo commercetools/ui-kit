@@ -1,9 +1,15 @@
 # @commercetools-uikit/input-utils
 
-## 10.40.0
+## 10.40.1
+
 ### Patch Changes
 
+- Updated dependencies [[`2d7c352`](https://github.com/commercetools/ui-kit/commit/2d7c35215b0b42d5d20488e6bc20b771ad22de68)]:
+  - @commercetools-uikit/icons@10.40.1
 
+## 10.40.0
+
+### Patch Changes
 
 - [`37a68a0`](https://github.com/commercetools/ui-kit/commit/37a68a012bb2e912ee25798312d69ab9b3464bf8) [#1672](https://github.com/commercetools/ui-kit/pull/1672) Thanks [@emmenko](https://github.com/emmenko)! - Move internal source code into utils packages, to avoid using relative paths pointing to locations outside of the packages.
 
