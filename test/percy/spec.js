@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import pick from 'lodash/pick';
 import { customProperties } from '@commercetools-frontend/ui-kit';
@@ -110,20 +111,23 @@ Props.propTypes = {
   propsToList: PropTypes.arrayOf(PropTypes.string),
 };
 
-const Spec = (props) => (
-  <SpecContainer>
-    <Label>{props.label}</Label>
-    {!props.omitPropsList && (
-      <Props
-        propsToList={props.propsToList}
-        listPropsOfNestedChild={props.listPropsOfNestedChild}
-      >
-        {props.children}
-      </Props>
-    )}
-    <Box>{props.children}</Box>
-  </SpecContainer>
-);
+const Spec = (props) => {
+  const theme = useTheme();
+  return (
+    <SpecContainer>
+      <Label>{props.label}</Label>
+      {!props.omitPropsList && (
+        <Props
+          propsToList={props.propsToList}
+          listPropsOfNestedChild={props.listPropsOfNestedChild}
+        >
+          {props.children}
+        </Props>
+      )}
+      <Box theme={theme}>{props.children}</Box>
+    </SpecContainer>
+  );
+};
 
 Spec.propTypes = {
   label: PropTypes.string.isRequired,

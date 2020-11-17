@@ -70,7 +70,7 @@ const getCalendarIconContainerStyles = (props, state) => {
     box-sizing: border-box;
     background-color: ${props.isDisabled
       ? vars.backgroundColorForInputWhenDisabled
-      : 'none'};
+      : vars.backgroundColorForInput};
     border: 0;
     border-left: 1px solid ${vars.borderColorForInput};
     border-top-right-radius: ${vars.borderRadiusForInput};
