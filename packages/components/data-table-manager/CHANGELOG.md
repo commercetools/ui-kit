@@ -1,5 +1,30 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.40.0
+
+### Patch Changes
+
+- [`7e8a9b7`](https://github.com/commercetools/ui-kit/commit/7e8a9b7da1721dfdeb42594f9325987c4b2d472c) [#1673](https://github.com/commercetools/ui-kit/pull/1673) Thanks [@renovate](https://github.com/apps/renovate)! - update all deps
+
+- Updated dependencies [[`37a68a0`](https://github.com/commercetools/ui-kit/commit/37a68a012bb2e912ee25798312d69ab9b3464bf8), [`d9bc2d2`](https://github.com/commercetools/ui-kit/commit/d9bc2d29cef14cdde9a659609ed1b7e9b24d21d0), [`a2c1615`](https://github.com/commercetools/ui-kit/commit/a2c1615512b416c464310d3e67a9ee220dde47d8), [`de7dcdf`](https://github.com/commercetools/ui-kit/commit/de7dcdf295218c50711b238ef12038850bc2463b), [`a2c1615`](https://github.com/commercetools/ui-kit/commit/a2c1615512b416c464310d3e67a9ee220dde47d8)]:
+  - @commercetools-uikit/icons@10.40.0
+  - @commercetools-uikit/async-select-input@10.40.0
+  - @commercetools-uikit/radio-input@10.40.0
+  - @commercetools-uikit/select-input@10.40.0
+  - @commercetools-uikit/field-label@10.40.0
+  - @commercetools-uikit/tag@10.40.0
+  - @commercetools-uikit/utils@10.40.0
+  - @commercetools-uikit/design-system@10.40.0
+  - @commercetools-uikit/accessible-button@10.40.0
+  - @commercetools-uikit/primary-button@10.40.0
+  - @commercetools-uikit/secondary-button@10.40.0
+  - @commercetools-uikit/secondary-icon-button@10.40.0
+  - @commercetools-uikit/card@10.40.0
+  - @commercetools-uikit/text@10.40.0
+  - @commercetools-uikit/hooks@10.40.0
+  - @commercetools-uikit/spacings@10.40.0
+  - @commercetools-uikit/collapsible-motion@10.40.0
+
 ## 10.39.8
 
 ### Patch Changes

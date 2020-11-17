@@ -1,5 +1,11 @@
 # @commercetools-uikit/utils
 
+## 10.40.0
+
+### Patch Changes
+
+- [`de7dcdf`](https://github.com/commercetools/ui-kit/commit/de7dcdf295218c50711b238ef12038850bc2463b) [#1668](https://github.com/commercetools/ui-kit/pull/1668) Thanks [@adnasa](https://github.com/adnasa)! - remove `is-variation`
+
 ## 10.39.8
 
 ### Patch Changes
