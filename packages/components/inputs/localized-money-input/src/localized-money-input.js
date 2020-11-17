@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 import { useIntl } from 'react-intl';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { useToggleState, useFieldId } from '@commercetools-uikit/hooks';
 import MoneyInput from '@commercetools-uikit/money-input';
 import Stack from '@commercetools-uikit/spacings-stack';

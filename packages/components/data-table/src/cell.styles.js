@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
@@ -98,7 +98,12 @@ const CellInner = styled.div`
   // otherwise it will change the way css-grid automatically allocates space for the cells of the table
   // preferring to clip the cells instead and adding horizontal scrollbar to the table container
   */
-  ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
+  ${(props) =>
+    props.shouldClipContent
+      ? css`
+          overflow: hidden;
+        `
+      : ''}
 `;
 
 const BaseCell = styled.td`
@@ -109,8 +114,18 @@ const BaseCell = styled.td`
     props.shouldRenderBottomBorder
       ? `1px solid ${vars.colorNeutral90};`
       : 'none'};
-  ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
-  ${(props) => (props.shouldIgnoreRowClick ? 'cursor: auto;' : '')}
+  ${(props) =>
+    props.shouldClipContent
+      ? css`
+          overflow: hidden;
+        `
+      : ''}
+  ${(props) =>
+    props.shouldIgnoreRowClick
+      ? css`
+          cursor: auto;
+        `
+      : ''}
 `;
 
 const BaseFooterCell = styled.td`
@@ -128,7 +143,7 @@ const BaseFooterCell = styled.td`
 `;
 
 const RowExpandCollapseButton = styled(AccessibleButton)`
-  cursor: ${(props) => (props.isRowCollapsed ? 's-resize' : 'n-resize')};
+  cursor: ${(props) => (props.isRowCollapsed ? css`s-resize` : css`n-resize`)};
   position: absolute;
   height: 16px;
   width: 16px;

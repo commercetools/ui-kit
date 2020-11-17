@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
-import { useTheme } from '@emotion/react';
+import { css, useTheme } from '@emotion/react';
 import omit from 'lodash/omit';
 import requiredIf from 'react-required-if';
 import { customProperties as vars } from '@commercetools-uikit/design-system';

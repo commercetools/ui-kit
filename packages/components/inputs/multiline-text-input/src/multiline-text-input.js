@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { useIntl } from 'react-intl';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { useToggleState } from '@commercetools-uikit/hooks';

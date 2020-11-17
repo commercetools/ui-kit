@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const getBorderColor = (props) => {

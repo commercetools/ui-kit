@@ -1,6 +1,6 @@
 import React from 'react';
 import Downshift from 'downshift';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import Tooltip from '@commercetools-uikit/tooltip';

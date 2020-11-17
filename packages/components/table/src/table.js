@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AutoSizer } from 'react-virtualized';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import BaseTable from './base-table';
 
 /* The table shouldn't be greater than 768px on smaller screens,

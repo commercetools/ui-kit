@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
   customProperties as vars,

@@ -6,9 +6,8 @@ import has from 'lodash/has';
 import requiredIf from 'react-required-if';
 import Select, { components } from 'react-select';
 import { useIntl } from 'react-intl';
-import { css } from '@emotion/core';
+import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
   isNumberish,
