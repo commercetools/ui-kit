@@ -38,7 +38,10 @@ const CollapsiblePanel = (props) => {
       isDefaultClosed={props.isDefaultClosed}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
-        <div css={baseContainerStyles} className={props.className}>
+        <div
+          css={[baseContainerStyles, getThemeStyle(props.theme)]}
+          className={props.className}
+        >
           <HeaderContainer
             as="div"
             css={[

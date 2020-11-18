@@ -55,7 +55,6 @@ const getHeaderContainerStyles = (props, isOpen) => {
 };
 
 const baseContainerStyles = css`
-  ${getThemeStyle}
   position: relative;
   min-width: 550px;
   padding: 0;
