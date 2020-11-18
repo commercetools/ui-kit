@@ -68,9 +68,7 @@ const getCalendarIconContainerStyles = (props, state) => {
   return css`
     align-items: center;
     box-sizing: border-box;
-    background-color: ${props.isDisabled
-      ? vars.backgroundColorForInputWhenDisabled
-      : vars.backgroundColorForInput};
+    background: none;
     border: 0;
     border-left: 1px solid ${vars.borderColorForInput};
     border-top-right-radius: ${vars.borderRadiusForInput};
@@ -161,7 +159,7 @@ const getInputContainerStyles = (props, state) => {
       props.hasWarning ||
       props.isReadOnly ||
       ((props.isOpen || state.isFocused) && !props.isReadOnly)
-        ? 'inherit'
+        ? ''
         : vars.borderColorForInputWhenFocused};
     }
   `;
