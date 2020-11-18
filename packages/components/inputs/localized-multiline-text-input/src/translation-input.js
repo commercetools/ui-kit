@@ -169,7 +169,7 @@ const TranslationInput = (props) => {
             <RightColumn>
               <ToggleButtonWrapper
                 css={[
-                  shouldToggleButtonTakeSpace &&
+                  !shouldToggleButtonTakeSpace &&
                     css`
                       position: absolute;
                       top: 0;
