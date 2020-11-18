@@ -5,6 +5,7 @@ import pick from 'lodash/pick';
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
+import { customProperties } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
@@ -41,11 +42,6 @@ const RightColumn = styled.div`
 const Row = styled.div`
   display: flex;
   justify-content: flex-end;
-
-  /* stylelint-disable declaration-bang-space-before */
-  margin-top: ${(props) =>
-    !props.shouldToggleButtonTakeSpace ? '0 !important' : 'inherit'};
-  /* stylelint-enable declaration-bang-space-before */
 `;
 
 const Editor = (props) => {
@@ -147,7 +143,20 @@ const Editor = (props) => {
                 {props.children}
               </RichTextBody>
             </EditorWrapper>
-            <Row shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}>
+            <Row
+              // NOTE: applying this style withing the `styled` component results in the production
+              // bundle to apply the style in the wrong order.
+              // For instance, we need to override the marging of the spacing component, which also
+              // uses `!important`.
+              // Anyway, apparently by passing the style as a `css` prop to the `styled` component
+              // does the trick.
+              // TODO: revisit the logic and the implementation to maybe avoid having to apply this style.
+              css={css`
+                margin-top: ${shouldToggleButtonTakeSpace
+                  ? 'inherit'
+                  : '0px !important'};
+              `}
+            >
               {(() => {
                 if (props.error)
                   return (
@@ -166,7 +175,15 @@ const Editor = (props) => {
               {renderToggleButton && (
                 <RightColumn>
                   <ToggleButtonWrapper
-                    shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}
+                    css={[
+                      !shouldToggleButtonTakeSpace &&
+                        css`
+                          position: absolute;
+                          top: 0;
+                          right: 0;
+                          margin-top: ${customProperties.spacingXs};
+                        `,
+                    ]}
                   >
                     <FlatButton
                       onClick={toggle}
