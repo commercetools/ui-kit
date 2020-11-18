@@ -110,6 +110,7 @@ const DataTableSettings = (props) => {
               onChange={handleDropdownChange}
               options={dropdownOptions}
               iconLeft={<TableIcon />}
+              horizontalConstraint={4}
             />
           </SelectContainer>
         )}
