@@ -47,8 +47,6 @@ const getInputStyles = (props, theme) => {
       : vars[designTokens.backgroundColorForInput]};
     border: 1px solid ${getInputBorderColor(vars, props)};
     border-radius: ${vars[designTokens.borderRadiusForInput]};
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
     box-sizing: border-box;
     color: ${getInputFontColor(vars, props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};

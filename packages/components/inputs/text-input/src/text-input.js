@@ -20,7 +20,6 @@ const TextInput = (props) => {
         type="text"
         value={props.value}
         onChange={props.onChange}
-        className={props.className}
         onBlur={props.onBlur}
         onFocus={props.onFocus}
         disabled={props.isDisabled}
@@ -29,6 +28,10 @@ const TextInput = (props) => {
         autoFocus={props.isAutofocussed}
         autoComplete={props.autoComplete}
         css={getInputStyles(props, theme)}
+        // Allow to override the styles by passing a `className` prop.
+        // Custom styles can also be passed using the `css` prop from emotion.
+        // https://emotion.sh/docs/css-prop#style-precedence
+        className={props.className}
         {...filterDataAttributes(props)}
         /* ARIA */
         aria-readonly={props.isReadOnly}

@@ -40,6 +40,9 @@ const CollapsiblePanel = (props) => {
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
         <div
           css={[baseContainerStyles, getThemeStyle(props.theme)]}
+          // Allow to override the styles by passing a `className` prop.
+          // Custom styles can also be passed using the `css` prop from emotion.
+          // https://emotion.sh/docs/css-prop#style-precedence
           className={props.className}
         >
           <HeaderContainer

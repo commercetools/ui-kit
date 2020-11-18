@@ -18,6 +18,9 @@ const Card = (props) => (
         ? vars.colorNeutral95
         : vars.colorSurface};
     `}
+    // Allow to override the styles by passing a `className` prop.
+    // Custom styles can also be passed using the `css` prop from emotion.
+    // https://emotion.sh/docs/css-prop#style-precedence
     className={props.className}
   >
     {props.children}

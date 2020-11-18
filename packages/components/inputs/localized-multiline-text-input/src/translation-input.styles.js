@@ -12,8 +12,8 @@ import {
 const getTextareaStyles = (props) => {
   const baseStyles = [
     css`
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
     `,
     props.isCollapsed &&
       css`
@@ -55,20 +55,9 @@ const getLanguageLabelStyles = (props, theme) => {
   `;
 };
 
-const getToggleButtonWrapperPosition = (props) =>
-  !props.shouldToggleButtonTakeSpace
-    ? css`
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin-top: ${vars.spacingXs};
-      `
-    : '';
-
 const ToggleButtonWrapper = styled.div`
   flex: 0;
   display: flex;
-  ${getToggleButtonWrapperPosition}
 `;
 
 export { getTextareaStyles, getLanguageLabelStyles, ToggleButtonWrapper };

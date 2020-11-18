@@ -35,8 +35,11 @@ const MultilineInput = (props) => {
       placeholder={props.placeholder}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
-      className={props.className}
       css={getTextareaStyles(props, theme)}
+      // Allow to override the styles by passing a `className` prop.
+      // Custom styles can also be passed using the `css` prop from emotion.
+      // https://emotion.sh/docs/css-prop#style-precedence
+      className={props.className}
       /* ARIA */
       aria-readonly={props.isReadOnly}
       aria-multiline="true"

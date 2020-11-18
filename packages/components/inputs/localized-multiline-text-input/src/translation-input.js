@@ -7,6 +7,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { customProperties } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import {
   MultilineInput,
@@ -32,11 +33,6 @@ const RightColumn = styled.div`
 const Row = styled.div`
   display: flex;
   justify-content: flex-end;
-
-  /* stylelint-disable declaration-bang-space-before */
-  margin-top: ${(props) =>
-    !props.shouldToggleButtonTakeSpace ? '0 !important' : 'inherit'};
-  /* stylelint-enable declaration-bang-space-before */
 `;
 
 const TranslationInput = (props) => {
@@ -138,7 +134,20 @@ const TranslationInput = (props) => {
           {...filterDataAttributes(props)}
         />
       </div>
-      <Row shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}>
+      <Row
+        // NOTE: applying this style withing the `styled` component results in the production
+        // bundle to apply the style in the wrong order.
+        // For instance, we need to override the marging of the spacing component, which also
+        // uses `!important`.
+        // Anyway, apparently by passing the style as a `css` prop to the `styled` component
+        // does the trick.
+        // TODO: revisit the logic and the implementation to maybe avoid having to apply this style.
+        css={css`
+          margin-top: ${shouldToggleButtonTakeSpace
+            ? 'inherit'
+            : '0px !important'};
+        `}
+      >
         {(() => {
           if (props.error)
             return (
@@ -159,7 +168,15 @@ const TranslationInput = (props) => {
             <LeftColumn />
             <RightColumn>
               <ToggleButtonWrapper
-                shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}
+                css={[
+                  shouldToggleButtonTakeSpace &&
+                    css`
+                      position: absolute;
+                      top: 0;
+                      right: 0;
+                      margin-top: ${customProperties.spacingXs};
+                    `,
+                ]}
               >
                 <FlatButton
                   onClick={props.onToggle}
