@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { isValidElementType } from 'react-is';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import {
+  filterDataAttributes,
+  filterInvalidAttributes,
+} from '@commercetools-uikit/utils';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 import { RadioOptionCheckedIcon, RadioOptionUncheckedIcon } from './icons';
 import {
@@ -27,7 +30,7 @@ const Option = (props) => {
       aria-checked={props.isChecked}
       onFocus={props.onFocus}
       onBlur={props.onBlur}
-      {...labelProps}
+      {...filterInvalidAttributes(labelProps)}
     >
       <Input
         css={accessibleHiddenInputStyles}

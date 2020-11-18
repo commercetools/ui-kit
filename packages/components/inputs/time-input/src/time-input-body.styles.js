@@ -107,10 +107,10 @@ const getInputContainerFontColor = (vars, props) => {
   }
   return vars.fontColorForInput;
 };
-const getInputContainerStyles = (props) => {
+const getInputContainerStyles = (props, theme) => {
   const overwrittenVars = {
     ...customProperties,
-    ...props.theme,
+    ...theme,
   };
 
   return css`
@@ -164,16 +164,15 @@ const getTimeInputStyles = (props) => {
   return baseStyles;
 };
 
+// This styled component is only useful because it's referenced in the `StyledInputContainer`.
 const StyledClockIconContainer = styled.label``;
 
-const StyledInput = styled.input`
-  ${getTimeInputStyles}
-`;
-
 const StyledInputContainer = styled.div`
-  ${getInputContainerStyles}
-
-  &:hover, &:hover ${StyledClockIconContainer}, &:focus-within ${StyledClockIconContainer} {
+  &:hover,
+  &:hover
+    ${StyledClockIconContainer},
+    &:focus-within
+    ${StyledClockIconContainer} {
     border-color: ${customProperties.borderColorForInputWhenFocused};
   }
 `;
@@ -181,7 +180,8 @@ const StyledInputContainer = styled.div`
 export {
   getClearSectionStyles,
   getClockIconContainerStyles,
-  StyledInput,
+  getInputContainerStyles,
+  getTimeInputStyles,
   StyledInputContainer,
   StyledClockIconContainer,
 };

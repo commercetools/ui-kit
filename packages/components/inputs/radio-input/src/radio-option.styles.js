@@ -1,162 +1,120 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 const LabelTextWrapper = styled.div`
-  margin-left: ${vars.spacingS};
+  margin-left: ${customProperties.spacingS};
   font-size: 1rem;
   font-family: inherit;
   color: ${(props) =>
     props.isDisabled
-      ? vars.fontColorForInputWhenDisabled
-      : vars.fontColorForInput};
+      ? customProperties.fontColorForInputWhenDisabled
+      : customProperties.fontColorForInput};
 `;
 
-const getContainerStyles = (props) => {
-  const baseStyles = css`
-    display: flex;
-    align-items: center;
-
-    svg {
-      fill: ${vars.backgroundColorForInput};
-    }
-
-    svg [id$='borderAndContent'] > [id$='border'] {
-      stroke: 1px ${vars.borderColorForInput} solid;
-    }
-    svg [id$='borderAndContent'] > [id$='content'] {
-      fill: ${vars.borderColorForInputWhenFocused};
-    }
-  `;
+const getSvgContainerBorderStroke = (props) => {
   if (props.isDisabled) {
-    return [
-      baseStyles,
-      css`
-        svg {
-          fill: ${vars.backgroundColorForInputWhenDisabled};
-        }
-        svg [id$='borderAndContent'] > [id$='content'] {
-          fill: ${vars.fontColorForInputWhenDisabled};
-        }
-        svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorForInputWhenDisabled};
-        }
-      `,
-    ];
+    return customProperties.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return [
-      baseStyles,
-      css`
-        svg [id$='borderAndContent'] > [id$='content'] {
-          fill: ${vars.fontColorForInputWhenError};
-        }
-        svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorForInputWhenError};
-        }
-      `,
-    ];
+    return customProperties.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return [
-      baseStyles,
-      css`
-        svg [id$='borderAndContent'] > [id$='content'] {
-          fill: ${vars.fontColorForInputWhenWarning};
-        }
-        svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorForInputWhenWarning};
-        }
-      `,
-    ];
+    return customProperties.borderColorForInputWhenWarning;
   }
   if (props.isHovered && !props.isDisabled) {
-    return [
-      baseStyles,
-      css`
-        svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorForInputWhenFocused};
-        }
-      `,
-    ];
+    return customProperties.borderColorForInputWhenFocused;
   }
   if (props.isReadOnly) {
-    return [
-      baseStyles,
-      css`
-        svg [id$='borderAndContent'] > [id$='content'] {
-          fill: ${vars.fontColorForInputWhenReadonly};
-        }
-        svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorForInputWhenReadonly};
-        }
-      `,
-    ];
+    return customProperties.borderColorForInputWhenReadonly;
   }
-  return baseStyles;
+  return customProperties.borderColorForInput;
 };
-
-const getLabelStyles = (props) => {
-  const baseStyles = css`
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    position: relative;
-    &:hover svg [id$='borderAndContent'] > [id$='border'] {
-      stroke: ${vars.borderColorForInputWhenFocused};
-    }
-    :focus-within ${LabelTextWrapper} {
-      outline: auto 2px ${vars.borderColorForInputWhenFocused};
-      outline-offset: 3px;
-    }
-  `;
+const getSvgContainerContentFill = (props) => {
   if (props.isDisabled) {
-    return [
-      baseStyles,
-      css`
-        cursor: not-allowed;
-        color: ${vars.fontColorForInputWhenDisabled};
-        &:hover svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorForInputWhenDisabled};
-        }
-      `,
-    ];
+    return customProperties.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return [
-      baseStyles,
-      css`
-        color: ${vars.fontColorForInputWhenError};
-        &:hover svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorForInputWhenError};
-        }
-      `,
-    ];
+    return customProperties.fontColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return [
-      baseStyles,
-      css`
-        color: ${vars.fontColorForInputWhenWarning};
-        &:hover svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorForInputWhenWarning};
-        }
-      `,
-    ];
+    return customProperties.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return [
-      baseStyles,
-      css`
-        cursor: default;
-        color: ${vars.fontColorForInputWhenReadonly};
-        &:hover svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${vars.borderColorForInputWhenReadonly};
-        }
-      `,
-    ];
+    return customProperties.fontColorForInputWhenReadonly;
   }
-  return baseStyles;
+  return customProperties.borderColorForInputWhenFocused;
 };
+const getContainerStyles = (props) => css`
+  display: flex;
+  align-items: center;
+
+  svg {
+    fill: ${props.isDisabled
+      ? customProperties.backgroundColorForInputWhenDisabled
+      : customProperties.backgroundColorForInput};
+  }
+
+  svg [id$='borderAndContent'] > [id$='border'] {
+    stroke: ${getSvgContainerBorderStroke(props)};
+  }
+  svg [id$='borderAndContent'] > [id$='content'] {
+    fill: ${getSvgContainerContentFill(props)};
+  }
+`;
+
+const getSvgLabelBorderStroke = (props) => {
+  if (props.isDisabled) {
+    return customProperties.borderColorForInputWhenDisabled;
+  }
+  if (props.hasError) {
+    return customProperties.borderColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return customProperties.borderColorForInputWhenWarning;
+  }
+  if (props.isReadOnly) {
+    return customProperties.borderColorForInputWhenReadonly;
+  }
+  return customProperties.borderColorForInputWhenFocused;
+};
+const getLabelColor = (props) => {
+  if (props.isDisabled) {
+    return customProperties.fontColorForInputWhenDisabled;
+  }
+  if (props.hasError) {
+    return customProperties.fontColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return customProperties.fontColorForInputWhenWarning;
+  }
+  if (props.isReadOnly) {
+    return customProperties.fontColorForInputWhenReadonly;
+  }
+  return customProperties.fontColorForInput;
+};
+const getLabelCursor = (props) => {
+  if (props.isDisabled) {
+    return 'not-allowed';
+  }
+  if (props.isReadOnly) {
+    return 'default';
+  }
+  return 'pointer';
+};
+const getLabelStyles = (props) => css`
+  align-items: center;
+  color: ${getLabelColor(props)};
+  cursor: ${getLabelCursor(props)};
+  display: flex;
+  position: relative;
+  &:hover svg [id$='borderAndContent'] > [id$='border'] {
+    stroke: ${getSvgLabelBorderStroke(props)};
+  }
+  :focus-within ${LabelTextWrapper} {
+    outline: auto 2px ${customProperties.borderColorForInputWhenFocused};
+    outline-offset: 3px;
+  }
+`;
 
 export { getContainerStyles, getLabelStyles, LabelTextWrapper };

@@ -8,8 +8,9 @@ import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
   getClearSectionStyles,
   getClockIconContainerStyles,
+  getInputContainerStyles,
+  getTimeInputStyles,
   StyledClockIconContainer,
-  StyledInput,
   StyledInputContainer,
 } from './time-input-body.styles';
 
@@ -39,14 +40,9 @@ const TimeInputBody = (props) => {
   const theme = useTheme();
   return (
     <Inline alignItems="center">
-      <StyledInputContainer
-        theme={theme}
-        isDisabled={props.isDisabled}
-        isReadOnly={props.isReadOnly}
-        hasError={props.hasError}
-      >
-        <StyledInput
-          theme={theme}
+      <StyledInputContainer css={getInputContainerStyles(props, theme)}>
+        <input
+          css={getTimeInputStyles(props, theme)}
           id={props.id}
           name={props.name}
           autoComplete={props.autoComplete}
@@ -58,7 +54,6 @@ const TimeInputBody = (props) => {
           onChange={props.onChange}
           onFocus={props.onFocus}
           onBlur={props.onBlur}
-          hasError={props.hasError}
           {...filterDataAttributes(props)}
           /* ARIA */
           role="textbox"

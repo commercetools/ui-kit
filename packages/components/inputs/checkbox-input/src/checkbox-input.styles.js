@@ -1,73 +1,18 @@
 import { css } from '@emotion/react';
 import {
-  customProperties as vars,
+  customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
 
-const getCheckboxWrapperStyles = (props, theme) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-  const baseStyles = css`
-    /* resets from createStyledIcon styles */
-    * {
-      fill: none;
-    }
-
-    display: flex;
-    align-items: center;
-    svg [id$='borderAndContent'] > [id$='border'] {
-      stroke: ${overwrittenVars[designTokens.borderColorForInput]};
-      fill: ${overwrittenVars[designTokens.backgroundColorForInput]};
-    }
-    svg [id$='borderAndContent'] > [id$='content'] {
-      fill: ${overwrittenVars[designTokens.borderColorForInputWhenFocused]};
-    }
-  `;
+const getSvgBorderStroke = (vars, props) => {
   if (props.isDisabled) {
-    return [
-      baseStyles,
-      css`
-        svg [id$='borderAndContent'] > [id$='content'] {
-          fill: ${overwrittenVars[designTokens.fontColorForInputWhenDisabled]};
-        }
-        svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${overwrittenVars[
-            designTokens.borderColorForInputWhenDisabled
-          ]};
-        }
-      `,
-    ];
-  }
-  if (props.isReadOnly) {
-    return [
-      baseStyles,
-      css`
-        svg [id$='borderAndContent'] > [id$='content'] {
-          fill: ${overwrittenVars[designTokens.fontColorForInputWhenReadonly]};
-        }
-        svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${overwrittenVars[
-            designTokens.borderColorForInputWhenReadonly
-          ]};
-        }
-      `,
-    ];
+    return vars[designTokens.borderColorForInputWhenDisabled];
   }
   if (props.hasError) {
-    return [
-      baseStyles,
-      css`
-        svg [id$='borderAndContent'] > [id$='content'] {
-          fill: ${overwrittenVars[designTokens.borderColorForInputWhenError]};
-        }
-
-        svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${overwrittenVars[designTokens.fontColorForInputWhenError]};
-        }
-      `,
-    ];
+    return vars[designTokens.borderColorForInputWhenError];
+  }
+  if (props.isReadOnly) {
+    return vars[designTokens.borderColorForInputWhenReadonly];
   }
   if (
     props.isHovered &&
@@ -75,18 +20,43 @@ const getCheckboxWrapperStyles = (props, theme) => {
     !props.isDisabled &&
     !props.hasError
   ) {
-    return [
-      baseStyles,
-      css`
-        svg [id$='borderAndContent'] > [id$='border'] {
-          stroke: ${overwrittenVars[
-            designTokens.borderColorForInputWhenFocused
-          ]};
-        }
-      `,
-    ];
+    return vars[designTokens.borderColorForInputWhenFocused];
   }
-  return baseStyles;
+  return vars[designTokens.borderColorForInput];
+};
+const getSvgContentFill = (vars, props) => {
+  if (props.isDisabled) {
+    return vars[designTokens.fontColorForInputWhenDisabled];
+  }
+  if (props.hasError) {
+    return vars[designTokens.fontColorForInputWhenError];
+  }
+  if (props.isReadOnly) {
+    return vars[designTokens.fontColorForInputWhenReadonly];
+  }
+  return vars[designTokens.borderColorForInputWhenFocused];
+};
+const getCheckboxWrapperStyles = (props, theme) => {
+  const overwrittenVars = {
+    ...customProperties,
+    ...theme,
+  };
+  /* resets from createStyledIcon styles */
+  return css`
+    * {
+      fill: none;
+    }
+
+    display: flex;
+    align-items: center;
+    svg [id$='borderAndContent'] > [id$='border'] {
+      stroke: ${getSvgBorderStroke(overwrittenVars, props)};
+      fill: ${overwrittenVars[designTokens.backgroundColorForInput]};
+    }
+    svg [id$='borderAndContent'] > [id$='content'] {
+      fill: ${getSvgContentFill(overwrittenVars, props)};
+    }
+  `;
 };
 
 // eslint-disable-next-line import/prefer-default-export
