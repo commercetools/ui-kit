@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@emotion/react';
 import requiredIf from 'react-required-if';
 import TextareaAutosize from 'react-textarea-autosize';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
@@ -18,7 +17,6 @@ const MultilineInput = (props) => {
     },
     [ref, onHeightChange]
   );
-  const theme = useTheme();
   return (
     <TextareaAutosize
       ref={ref}
@@ -35,7 +33,7 @@ const MultilineInput = (props) => {
       placeholder={props.placeholder}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
-      css={getTextareaStyles(props, theme)}
+      css={getTextareaStyles(props)}
       // Allow to override the styles by passing a `className` prop.
       // Custom styles can also be passed using the `css` prop from emotion.
       // https://emotion.sh/docs/css-prop#style-precedence

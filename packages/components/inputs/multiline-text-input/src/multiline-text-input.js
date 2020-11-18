@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { useIntl } from 'react-intl';
-import { css } from '@emotion/react';
+import { css, useTheme } from '@emotion/react';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -41,6 +41,7 @@ const MultilineTextInput = (props) => {
   const shouldRenderToggleButton =
     contentRowCount > MultilineTextInput.MIN_ROW_COUNT;
 
+  const theme = useTheme();
   return (
     <Constraints.Horizontal
       max={Constraints.parseHorizontalConstraintProp(
@@ -49,6 +50,7 @@ const MultilineTextInput = (props) => {
     >
       <Stack scale="xs">
         <MultilineInput
+          theme={theme}
           name={props.name}
           autoComplete={props.autoComplete}
           value={props.value}

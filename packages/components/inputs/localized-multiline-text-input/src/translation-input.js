@@ -97,7 +97,6 @@ const TranslationInput = (props) => {
     props.warning;
 
   const theme = useTheme();
-
   return (
     <Stack scale="xs">
       <div
@@ -115,6 +114,7 @@ const TranslationInput = (props) => {
           </Text.Detail>
         </label>
         <MultilineInput
+          theme={theme}
           id={props.id}
           name={props.name}
           autoComplete={props.autoComplete}
@@ -125,7 +125,7 @@ const TranslationInput = (props) => {
           onFocus={handleFocus}
           isDisabled={props.isDisabled}
           placeholder={props.placeholder}
-          css={getTextareaStyles(props, theme)}
+          css={getTextareaStyles(props)}
           hasError={props.hasError}
           hasWarning={props.hasWarning}
           isReadOnly={props.isReadOnly}
