@@ -12,6 +12,7 @@ const Body = styled.div`
 `;
 
 const ContainerWithPadding = styled.div`
+  position: 'relative';
   padding-top: 50px;
 `;
 
@@ -20,38 +21,32 @@ export const routePath = '/tooltip';
 export const component = () => {
   return (
     <Suite>
-      <div style={{ position: 'relative' }}>
-        <Spec label="Closed">
-          <Tooltip title={title}>
+      <Spec label="Closed">
+        <Tooltip title={title}>
+          <PrimaryButton onClick={noop} label="Hello" />
+        </Tooltip>
+      </Spec>
+      <Spec label="Open" listPropsOfNestedChild={true}>
+        <ContainerWithPadding>
+          <Tooltip title={title} isOpen={true}>
             <PrimaryButton onClick={noop} label="Hello" />
           </Tooltip>
-        </Spec>
-      </div>
-      <div style={{ position: 'relative' }}>
-        <Spec label="Open" listPropsOfNestedChild={true}>
-          <ContainerWithPadding>
-            <Tooltip title={title} isOpen={true}>
-              <PrimaryButton onClick={noop} label="Hello" />
-            </Tooltip>
-          </ContainerWithPadding>
-        </Spec>
-      </div>
-      <div style={{ position: 'relative' }}>
-        <Spec
-          label="Open with custom body component"
-          listPropsOfNestedChild={true}
-        >
-          <ContainerWithPadding>
-            <Tooltip
-              title={title}
-              isOpen={true}
-              components={{ BodyComponent: Body }}
-            >
-              <PrimaryButton onClick={noop} label="Hello" />
-            </Tooltip>
-          </ContainerWithPadding>
-        </Spec>
-      </div>
+        </ContainerWithPadding>
+      </Spec>
+      <Spec
+        label="Open with custom body component"
+        listPropsOfNestedChild={true}
+      >
+        <ContainerWithPadding>
+          <Tooltip
+            title={title}
+            isOpen={true}
+            components={{ BodyComponent: Body }}
+          >
+            <PrimaryButton onClick={noop} label="Hello" />
+          </Tooltip>
+        </ContainerWithPadding>
+      </Spec>
     </Suite>
   );
 };
