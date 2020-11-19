@@ -11,11 +11,6 @@ const Body = styled.div`
   margin-top: 12px;
 `;
 
-const ContainerWithPadding = styled.div`
-  position: 'relative';
-  padding-top: 50px;
-`;
-
 export const routePath = '/tooltip';
 
 export const component = () => {
@@ -27,25 +22,22 @@ export const component = () => {
         </Tooltip>
       </Spec>
       <Spec label="Open" listPropsOfNestedChild={true}>
-        <ContainerWithPadding>
-          <Tooltip title={title} isOpen={true}>
-            <PrimaryButton onClick={noop} label="Hello" />
-          </Tooltip>
-        </ContainerWithPadding>
+        <Tooltip title={title} isOpen={true} placement="bottom">
+          <PrimaryButton onClick={noop} label="Hello" />
+        </Tooltip>
       </Spec>
       <Spec
         label="Open with custom body component"
         listPropsOfNestedChild={true}
       >
-        <ContainerWithPadding>
-          <Tooltip
-            title={title}
-            isOpen={true}
-            components={{ BodyComponent: Body }}
-          >
-            <PrimaryButton onClick={noop} label="Hello" />
-          </Tooltip>
-        </ContainerWithPadding>
+        <Tooltip
+          title={title}
+          isOpen={true}
+          components={{ BodyComponent: Body }}
+          placement="bottom"
+        >
+          <PrimaryButton onClick={noop} label="Hello" />
+        </Tooltip>
       </Spec>
     </Suite>
   );
