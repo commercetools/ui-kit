@@ -4,12 +4,10 @@ import React from 'react';
 import { isValidElementType } from 'react-is';
 import invariant from 'tiny-invariant';
 import isNil from 'lodash/isNil';
-import usePopper from 'use-popper';
+import { usePopper } from 'react-popper';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
-import {
-  createSequentialId,
-  SafeHTMLElement,
-} from '@commercetools-uikit/utils';
+import { createSequentialId } from '@commercetools-uikit/utils';
+import { customProperties } from '@commercetools-uikit/design-system';
 import { Wrapper, Body, getBodyStyles } from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
@@ -21,6 +19,26 @@ TooltipWrapper.displayName = 'TooltipWrapperComponent';
 TooltipWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+const popperDefaultModifiers = [
+  {
+    name: 'arrow',
+    enabled: false,
+  },
+  {
+    name: 'preventOverflow',
+    options: {
+      // https://popper.js.org/docs/v2/modifiers/prevent-overflow/#altaxis
+      altAxis: true,
+    },
+  },
+  {
+    name: 'offset',
+    options: {
+      offset: [0, parseInt(customProperties.spacingXs, 10)],
+    },
+  },
+];
 
 const Tooltip = (props) => {
   const leaveTimer = React.useRef();
@@ -53,10 +71,14 @@ const Tooltip = (props) => {
     };
   }, []);
 
-  const { reference, popper } = usePopper({
+  const [referenceElement, setReferenceElement] = React.useState(null);
+  const [popperElement, setPopperElement] = React.useState(null);
+
+  const popper = usePopper(referenceElement, popperElement, {
     placement: props.placement,
-    modifiers: props.modifiers,
+    modifiers: [...(popperDefaultModifiers || props.modifiers)],
   });
+
   const [isOpen, toggle] = useToggleState(false);
   const closeTooltip = React.useCallback(() => {
     toggle(false);
@@ -191,7 +213,7 @@ const Tooltip = (props) => {
 
   return (
     <React.Fragment>
-      <WrapperComponent {...eventListeners} ref={reference.ref}>
+      <WrapperComponent {...eventListeners} ref={setReferenceElement}>
         {React.cloneElement(props.children, {
           ...childrenProps,
           ...tooltipProps,
@@ -200,16 +222,15 @@ const Tooltip = (props) => {
       {tooltipIsOpen && (
         <TooltipWrapperComponent>
           <div
-            ref={popper.ref}
+            ref={setPopperElement}
             css={{
-              ...popper.styles,
+              ...popper.styles.popper,
               ...getBodyStyles({
                 constraint: props.horizontalConstraint,
-                placement: popper.placement,
                 customStyles: props.styles.body,
               }),
             }}
-            data-placement={popper.placement}
+            {...popper.attributes.popper}
           >
             <BodyComponent>{props.title}</BodyComponent>
           </div>
@@ -321,84 +342,9 @@ Tooltip.propTypes = {
     WrapperComponent: PropTypes.elementType,
   }),
   /**
-   * Provides a way to fine-tune an appearance of underlying Popper tooltip element. For more information, please check [Popper.js documentation](https://popper.js.org/popper-documentation.html#modifiers).
+   * Provides a way to fine-tune an appearance of underlying Popper tooltip element. For more information, please check [Popper.js documentation](https://popper.js.org/docs/v2/modifiers/).
    */
-  modifiers: PropTypes.shape({
-    shift: PropTypes.shape({
-      order: PropTypes.number,
-      enabled: PropTypes.bool,
-      fn: PropTypes.func,
-    }),
-    offset: PropTypes.shape({
-      order: PropTypes.number,
-      enabled: PropTypes.bool,
-      fn: PropTypes.func,
-      offset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    }),
-    preventOverflow: PropTypes.shape({
-      order: PropTypes.number,
-      enabled: PropTypes.bool,
-      fn: PropTypes.func,
-      priority: PropTypes.arrayOf(['left', 'right', 'top', 'bottom']),
-      padding: PropTypes.number,
-      boundariesElement: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.instanceOf(SafeHTMLElement),
-      ]),
-    }),
-    keepTogether: PropTypes.shape({
-      order: PropTypes.number,
-      enabled: PropTypes.bool,
-      fn: PropTypes.func,
-    }),
-    arrow: PropTypes.shape({
-      order: PropTypes.number,
-      enabled: PropTypes.bool,
-      fn: PropTypes.func,
-      element: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.instanceOf(SafeHTMLElement),
-      ]),
-    }),
-    flip: PropTypes.shape({
-      order: PropTypes.number,
-      enabled: PropTypes.bool,
-      fn: PropTypes.func,
-      behavior: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-      ]),
-      padding: PropTypes.number,
-      boundariesElement: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.instanceOf(SafeHTMLElement),
-      ]),
-    }),
-    inner: PropTypes.shape({
-      order: PropTypes.number,
-      enabled: PropTypes.bool,
-      fn: PropTypes.func,
-    }),
-    hide: PropTypes.shape({
-      order: PropTypes.number,
-      enabled: PropTypes.bool,
-      fn: PropTypes.func,
-    }),
-    computeStyle: PropTypes.shape({
-      order: PropTypes.number,
-      enabled: PropTypes.bool,
-      fn: PropTypes.func,
-      gpuAcceleration: PropTypes.bool,
-      x: PropTypes.number,
-      y: PropTypes.number,
-    }),
-    applyStyle: PropTypes.shape({
-      order: PropTypes.number,
-      enabled: PropTypes.bool,
-      fn: PropTypes.func,
-      onLoad: PropTypes.func,
-    }),
-  }),
+  modifiers: PropTypes.object,
 };
 
 Tooltip.defaultProps = {
