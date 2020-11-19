@@ -20,6 +20,8 @@ TooltipWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+const tooltipOffsetMargin = parseInt(customProperties.spacingXs, 10);
+
 const popperDefaultModifiers = [
   {
     name: 'arrow',
@@ -28,15 +30,19 @@ const popperDefaultModifiers = [
   {
     name: 'preventOverflow',
     options: {
-      // https://popper.js.org/docs/v2/modifiers/prevent-overflow/#altaxis
-      altAxis: true,
-      padding: parseInt(customProperties.spacingXs, 10),
+      padding: tooltipOffsetMargin,
+    },
+  },
+  {
+    name: 'flip',
+    options: {
+      padding: tooltipOffsetMargin,
     },
   },
   {
     name: 'offset',
     options: {
-      offset: [0, parseInt(customProperties.spacingXs, 10)],
+      offset: [0, tooltipOffsetMargin],
     },
   },
 ];
@@ -287,6 +293,9 @@ Tooltip.propTypes = {
    * Determines if the tooltip should not appear.
    */
   off: PropTypes.bool.isRequired,
+  /**
+   * Forces the Tooltip to appear.
+   */
   isOpen: PropTypes.bool,
   /**
    * An identifier for the tooltip, used for `aria-describedby`.
