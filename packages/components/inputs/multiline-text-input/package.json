@@ -39,7 +39,7 @@
     "@commercetools-uikit/spacings-stack": "10.40.0",
     "@commercetools-uikit/tooltip": "10.40.0",
     "@commercetools-uikit/utils": "10.40.0",
-    "@emotion/react": "^11.0.0",
+    "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "@emotion/styled-base": "^11.0.0",
     "downshift": "6.0.6",

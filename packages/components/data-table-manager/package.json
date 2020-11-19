@@ -48,7 +48,7 @@
     "@commercetools-uikit/text": "10.40.0",
     "@commercetools-uikit/tag": "10.40.1",
     "@commercetools-uikit/utils": "10.40.0",
-    "@emotion/react": "^11.0.0",
+    "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "@emotion/styled-base": "^11.0.0",
     "debounce-promise": "^3.1.2",
