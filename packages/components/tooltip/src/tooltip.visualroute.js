@@ -20,32 +20,38 @@ export const routePath = '/tooltip';
 export const component = () => {
   return (
     <Suite>
-      <Spec label="Closed">
-        <Tooltip title={title}>
-          <PrimaryButton onClick={noop} label="Hello" />
-        </Tooltip>
-      </Spec>
-      <Spec label="Open" listPropsOfNestedChild={true}>
-        <ContainerWithPadding>
-          <Tooltip title={title} isOpen={true}>
+      <div style={{ position: 'relative' }}>
+        <Spec label="Closed">
+          <Tooltip title={title}>
             <PrimaryButton onClick={noop} label="Hello" />
           </Tooltip>
-        </ContainerWithPadding>
-      </Spec>
-      <Spec
-        label="Open with custom body component"
-        listPropsOfNestedChild={true}
-      >
-        <ContainerWithPadding>
-          <Tooltip
-            title={title}
-            isOpen={true}
-            components={{ BodyComponent: Body }}
-          >
-            <PrimaryButton onClick={noop} label="Hello" />
-          </Tooltip>
-        </ContainerWithPadding>
-      </Spec>
+        </Spec>
+      </div>
+      <div style={{ position: 'relative' }}>
+        <Spec label="Open" listPropsOfNestedChild={true}>
+          <ContainerWithPadding>
+            <Tooltip title={title} isOpen={true}>
+              <PrimaryButton onClick={noop} label="Hello" />
+            </Tooltip>
+          </ContainerWithPadding>
+        </Spec>
+      </div>
+      <div style={{ position: 'relative' }}>
+        <Spec
+          label="Open with custom body component"
+          listPropsOfNestedChild={true}
+        >
+          <ContainerWithPadding>
+            <Tooltip
+              title={title}
+              isOpen={true}
+              components={{ BodyComponent: Body }}
+            >
+              <PrimaryButton onClick={noop} label="Hello" />
+            </Tooltip>
+          </ContainerWithPadding>
+        </Spec>
+      </div>
     </Suite>
   );
 };
