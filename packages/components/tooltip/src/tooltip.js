@@ -30,6 +30,7 @@ const popperDefaultModifiers = [
     options: {
       // https://popper.js.org/docs/v2/modifiers/prevent-overflow/#altaxis
       altAxis: true,
+      padding: parseInt(customProperties.spacingXs, 10),
     },
   },
   {
@@ -76,7 +77,7 @@ const Tooltip = (props) => {
 
   const popper = usePopper(referenceElement, popperElement, {
     placement: props.placement,
-    modifiers: [...(popperDefaultModifiers || props.modifiers)],
+    modifiers: [...popperDefaultModifiers, ...(props.modifiers || [])],
   });
 
   const [isOpen, toggle] = useToggleState(false);
