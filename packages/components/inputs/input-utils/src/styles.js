@@ -1,104 +1,85 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import {
-  customProperties as vars,
+  customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
 
+const getInputBorderColor = (vars, props) => {
+  if (props.isDisabled || props.disabled) {
+    return vars[designTokens.borderColorForInputWhenDisabled];
+  }
+  if (props.hasError) {
+    return vars[designTokens.borderColorForInputWhenError];
+  }
+  if (props.hasWarning) {
+    return vars[designTokens.borderColorForInputWhenWarning];
+  }
+  if (props.isReadOnly || props.readOnly) {
+    return vars[designTokens.borderColorForInputWhenReadonly];
+  }
+  return vars[designTokens.borderColorForInput];
+};
+const getInputFontColor = (vars, props) => {
+  if (props.isDisabled || props.disabled) {
+    return vars[designTokens.fontColorForInputWhenDisabled];
+  }
+  if (props.hasError) {
+    return vars[designTokens.fontColorForInputWhenError];
+  }
+  if (props.hasWarning) {
+    return vars[designTokens.fontColorForInputWhenWarning];
+  }
+  if (props.isReadOnly || props.readOnly) {
+    return vars[designTokens.fontColorForInputWhenReadonly];
+  }
+  return vars[designTokens.fontColorForInput];
+};
 const getInputStyles = (props, theme) => {
-  const overwrittenVars = {
-    ...vars,
+  const vars = {
+    ...customProperties,
     ...theme,
   };
 
-  const baseStyles = css`
+  return css`
     appearance: none;
-    background-color: ${overwrittenVars[designTokens.backgroundColorForInput]};
-    border: 1px solid ${overwrittenVars[designTokens.borderColorForInput]};
-    border-radius: ${overwrittenVars[designTokens.borderRadiusForInput]};
+    background-color: ${props.isDisabled || props.disabled
+      ? vars[designTokens.backgroundColorForInputWhenDisabled]
+      : vars[designTokens.backgroundColorForInput]};
+    border: 1px solid ${getInputBorderColor(vars, props)};
+    border-radius: ${vars[designTokens.borderRadiusForInput]};
     box-sizing: border-box;
-    color: ${overwrittenVars[designTokens.fontColorForInput]};
+    color: ${getInputFontColor(vars, props)};
+    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     display: flex;
     flex: 1;
     font-family: inherit;
-    font-size: ${overwrittenVars[designTokens.fontSizeForInput]};
-    height: ${overwrittenVars.sizeHeightInput};
-    min-height: ${overwrittenVars.sizeHeightInput};
+    font-size: ${vars[designTokens.fontSizeForInput]};
+    height: ${vars.sizeHeightInput};
+    min-height: ${vars.sizeHeightInput};
+    opacity: ${props.isDisabled || props.disabled
+      ? '1'
+      : 'unset'}; /* fix for mobile safari */
     outline: none;
     overflow: hidden;
-    padding: 0 ${overwrittenVars.spacingS};
-    transition: border-color ${overwrittenVars.transitionStandard},
-      background-color ${overwrittenVars.transitionStandard},
-      color ${overwrittenVars.transitionStandard},
-      box-shadow ${overwrittenVars.transitionStandard};
+    padding: 0 ${vars.spacingS};
+    transition: border-color ${vars.transitionStandard},
+      background-color ${vars.transitionStandard},
+      color ${vars.transitionStandard}, box-shadow ${vars.transitionStandard};
     width: 100%;
 
     &::placeholder {
-      color: ${overwrittenVars[designTokens.placeholderFontColorForInput]};
+      color: ${vars[designTokens.placeholderFontColorForInput]};
     }
     :active,
     :focus,
     :hover:not(:disabled):not(:read-only) {
-      border-color: ${overwrittenVars[
-        designTokens.borderColorForInputWhenFocused
-      ]};
+      border-color: ${vars[designTokens.borderColorForInputWhenFocused]};
     }
     :focus {
       box-shadow: inset 0 0 0 2px
-        ${overwrittenVars[designTokens.borderColorForInputWhenFocused]};
+        ${vars[designTokens.borderColorForInputWhenFocused]};
     }
   `;
-  if (props.isDisabled || props.disabled) {
-    return [
-      baseStyles,
-      css`
-        background-color: ${overwrittenVars[
-          designTokens.backgroundColorForInputWhenDisabled
-        ]};
-        border-color: ${overwrittenVars[
-          designTokens.borderColorForInputWhenDisabled
-        ]};
-        color: ${overwrittenVars[designTokens.fontColorForInputWhenDisabled]};
-        cursor: not-allowed;
-        opacity: 1; /* fix for mobile safari */
-      `,
-    ];
-  }
-  if (props.hasError) {
-    return [
-      baseStyles,
-      css`
-        border-color: ${overwrittenVars[
-          designTokens.borderColorForInputWhenError
-        ]};
-        color: ${overwrittenVars[designTokens.fontColorForInputWhenError]};
-      `,
-    ];
-  }
-  if (props.hasWarning) {
-    return [
-      baseStyles,
-      css`
-        ${baseStyles}
-        border-color: ${overwrittenVars[
-          designTokens.borderColorForInputWhenWarning
-        ]};
-        color: ${overwrittenVars[designTokens.fontColorForInputWhenWarning]};
-      `,
-    ];
-  }
-  if (props.isReadOnly || props.readOnly) {
-    return [
-      baseStyles,
-      css`
-        border-color: ${overwrittenVars[
-          designTokens.borderColorForInputWhenReadonly
-        ]};
-        color: ${overwrittenVars[designTokens.fontColorForInputWhenReadonly]};
-        cursor: default;
-      `,
-    ];
-  }
-  return baseStyles;
 };
 
 // eslint-disable-next-line import/prefer-default-export

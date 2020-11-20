@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 
 const darkTheme = {
   colorSolid: vars.colorSurface,

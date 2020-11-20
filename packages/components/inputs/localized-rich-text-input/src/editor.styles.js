@@ -1,14 +1,14 @@
 /* eslint-disable import/prefer-default-export */
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
-  customProperties as vars,
+  customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
 
 const EditorLanguageLabel = styled.label((props) => {
   const overwrittenVars = {
-    ...vars,
+    ...customProperties,
     ...props.theme,
   };
 
@@ -17,7 +17,10 @@ const EditorLanguageLabel = styled.label((props) => {
     white-space: nowrap;
     flex: 0;
     color: ${overwrittenVars[designTokens.fontColorForInputWhenDisabled]};
-    line-height: calc(${vars.sizeHeightInput} - 2 * ${vars.borderRadius1});
+    line-height: calc(
+      ${customProperties.sizeHeightInput} - 2 *
+        ${customProperties.borderRadius1}
+    );
     background-color: ${overwrittenVars[
       designTokens.backgroundColorForInputWhenDisabled
     ]};
@@ -29,10 +32,10 @@ const EditorLanguageLabel = styled.label((props) => {
     ]};
     border: 1px ${overwrittenVars[designTokens.borderColorForInputWhenDisabled]}
       solid;
-    padding: 0 ${vars.spacingS};
-    transition: border-color ${vars.transitionStandard},
-      background-color ${vars.transitionStandard},
-      color ${vars.transitionStandard};
+    padding: 0 ${customProperties.spacingS};
+    transition: border-color ${customProperties.transitionStandard},
+      background-color ${customProperties.transitionStandard},
+      color ${customProperties.transitionStandard};
     border-right: 0;
     box-shadow: none;
     appearance: none;
@@ -53,20 +56,9 @@ const EditorWrapper = styled.div`
     props.isDisabled || props.isReadOnly ? 'not-allowed' : 'inherit'};
 `;
 
-const getToggleButtonWrapperPosition = (props) =>
-  !props.shouldToggleButtonTakeSpace
-    ? css`
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin-top: ${vars.spacingXs};
-      `
-    : '';
-
 const ToggleButtonWrapper = styled.div`
   flex: 0;
   display: flex;
-  ${getToggleButtonWrapperPosition}
 `;
 
 export { EditorLanguageLabel, EditorWrapper, ToggleButtonWrapper };

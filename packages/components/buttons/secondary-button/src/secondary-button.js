@@ -4,7 +4,7 @@ import { oneLine } from 'common-tags';
 import { Link } from 'react-router-dom';
 import isNil from 'lodash/isNil';
 import requiredIf from 'react-required-if';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Inline from '@commercetools-uikit/spacings-inline';
 import {

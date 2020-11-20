@@ -1,9 +1,8 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import AccessibleButton from '@commercetools-uikit/accessible-button';
 
-function getThemeStyle({ theme }) {
+function getThemeStyle(theme) {
   if (theme === 'light') {
     return css`
       background-color: ${vars.colorSurface};
@@ -14,13 +13,7 @@ function getThemeStyle({ theme }) {
   `;
 }
 
-const getHeaderContainerStyles = ({
-  isOpen,
-  isSticky,
-  isDisabled,
-  isCondensed,
-  headerControlsAlignment,
-}) => {
+const getHeaderContainerStyles = (props, isOpen) => {
   const baseStyles = css`
     position: relative;
     border-top-left-radius: ${vars.borderRadius6};
@@ -29,21 +22,21 @@ const getHeaderContainerStyles = ({
     flex: 1;
     align-items: center;
     list-style-type: none;
-    justify-content: ${headerControlsAlignment === 'left'
+    justify-content: ${props.headerControlsAlignment === 'left'
       ? 'flex-start'
       : 'space-between'};
-    padding: ${isCondensed
+    padding: ${props.condensed
       ? `${vars.spacingXs} ${vars.spacingS}`
       : `${vars.spacingS} ${vars.spacingM}`};
   `;
 
   return [
     baseStyles,
-    isDisabled &&
+    props.isDisabled &&
       css`
         cursor: default;
       `,
-    isSticky &&
+    props.isSticky &&
       isOpen &&
       css`
         z-index: 1;
@@ -52,17 +45,16 @@ const getHeaderContainerStyles = ({
         border-top-right-radius: ${vars.borderRadius6};
         border-top-left-radius: ${vars.borderRadius6};
       `,
-    !isCondensed &&
+    !props.condensed &&
+      // To understand why this min-height see: https://github.com/commercetools/ui-kit/pull/616
       css`
-        /* to understand why this min-height see: https://github.com/commercetools/ui-kit/pull/616 */
         min-height: ${vars.bigButtonHeight};
-        box-sizing: content-box; /* makes the padding extend beyound the min-height */
+        box-sizing: content-box; /* makes the padding extend beyond the min-height */
       `,
   ];
 };
 
-const Container = styled.div`
-  ${getThemeStyle}
+const baseContainerStyles = css`
   position: relative;
   min-width: 550px;
   padding: 0;
@@ -73,11 +65,6 @@ const Container = styled.div`
   color: ${vars.colorSolid};
   font-family: inherit;
   font-size: ${vars.fontSizeDefault};
-`;
-
-const HeaderContainer = styled(AccessibleButton)`
-  ${getHeaderContainerStyles}
-  ${getThemeStyle}
 `;
 
 const HeaderControlsWrapper = styled.div`
@@ -101,9 +88,10 @@ const SectionWrapper = styled.div`
 `;
 
 export {
-  Container,
+  baseContainerStyles,
+  getHeaderContainerStyles,
+  getThemeStyle,
   SectionContent,
   SectionWrapper,
-  HeaderContainer,
   HeaderControlsWrapper,
 };

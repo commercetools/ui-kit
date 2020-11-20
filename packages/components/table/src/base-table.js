@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { CellMeasurer, CellMeasurerCache, MultiGrid } from 'react-virtualized';
 import sortBy from 'lodash/sortBy';
 import getScrollbarSize from 'dom-helpers/scrollbarSize';
-import { Global, ClassNames, css } from '@emotion/core';
+import { Global, ClassNames, css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Inset from '@commercetools-uikit/spacings-inset';
 import InsetSquish from '@commercetools-uikit/spacings-inset-squish';

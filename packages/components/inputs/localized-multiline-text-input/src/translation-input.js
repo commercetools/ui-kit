@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
-import { css } from '@emotion/core';
+import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useTheme } from 'emotion-theming';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { customProperties } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import {
   MultilineInput,
@@ -33,9 +33,6 @@ const RightColumn = styled.div`
 const Row = styled.div`
   display: flex;
   justify-content: flex-end;
-
-  ${(props) =>
-    !props.shouldToggleButtonTakeSpace ? 'margin-top: 0 !important;' : null}
 `;
 
 const TranslationInput = (props) => {
@@ -100,7 +97,6 @@ const TranslationInput = (props) => {
     props.warning;
 
   const theme = useTheme();
-
   return (
     <Stack scale="xs">
       <div
@@ -118,6 +114,7 @@ const TranslationInput = (props) => {
           </Text.Detail>
         </label>
         <MultilineInput
+          theme={theme}
           id={props.id}
           name={props.name}
           autoComplete={props.autoComplete}
@@ -128,7 +125,7 @@ const TranslationInput = (props) => {
           onFocus={handleFocus}
           isDisabled={props.isDisabled}
           placeholder={props.placeholder}
-          css={getTextareaStyles(props, theme)}
+          css={getTextareaStyles(props)}
           hasError={props.hasError}
           hasWarning={props.hasWarning}
           isReadOnly={props.isReadOnly}
@@ -137,7 +134,20 @@ const TranslationInput = (props) => {
           {...filterDataAttributes(props)}
         />
       </div>
-      <Row shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}>
+      <Row
+        // NOTE: applying this style withing the `styled` component results in the production
+        // bundle to apply the style in the wrong order.
+        // For instance, we need to override the marging of the spacing component, which also
+        // uses `!important`.
+        // Anyway, apparently by passing the style as a `css` prop to the `styled` component
+        // does the trick.
+        // TODO: revisit the logic and the implementation to maybe avoid having to apply this style.
+        css={css`
+          margin-top: ${shouldToggleButtonTakeSpace
+            ? 'inherit'
+            : '0px !important'};
+        `}
+      >
         {(() => {
           if (props.error)
             return (
@@ -158,7 +168,15 @@ const TranslationInput = (props) => {
             <LeftColumn />
             <RightColumn>
               <ToggleButtonWrapper
-                shouldToggleButtonTakeSpace={shouldToggleButtonTakeSpace}
+                css={[
+                  !shouldToggleButtonTakeSpace &&
+                    css`
+                      position: absolute;
+                      top: 0;
+                      right: 0;
+                      margin-top: ${customProperties.spacingXs};
+                    `,
+                ]}
               >
                 <FlatButton
                   onClick={props.onToggle}

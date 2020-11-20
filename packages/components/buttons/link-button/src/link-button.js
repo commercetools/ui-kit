@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {

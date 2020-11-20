@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '../styles';
 
@@ -9,9 +9,9 @@ const sizeInputLineHeight = '22px';
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getTextareaStyles = (props, theme) => {
+const getTextareaStyles = (props) => {
   const baseStyles = [
-    getInputStyles(props, theme),
+    getInputStyles(props, props.theme),
     css`
       padding: ${vars.spacingXs} ${vars.spacingS};
       line-height: ${sizeInputLineHeight};

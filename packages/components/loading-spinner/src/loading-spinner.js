@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { css, keyframes } from '@emotion/core';
+import { css, keyframes } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import Inline from '@commercetools-uikit/spacings-inline';

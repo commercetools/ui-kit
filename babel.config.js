@@ -65,7 +65,7 @@ module.exports = function getBabelPreset(api, opts = {}) {
           // behavior for any plugins that require one.
           ...(opts.runtime === 'automatic'
             ? // https://emotion.sh/docs/css-prop#babel-preset
-              { importSource: '@emotion/core' }
+              { importSource: '@emotion/react' }
             : { useBuiltIns: true }),
           runtime: opts.runtime || 'classic',
         },
@@ -77,7 +77,7 @@ module.exports = function getBabelPreset(api, opts = {}) {
         '@emotion/babel-preset-css-prop',
         {
           sourceMap: isEnvDevelopment,
-          autoLabel: !isEnvProduction,
+          autoLabel: 'dev-only',
         },
       ],
       [require('@babel/preset-typescript').default],

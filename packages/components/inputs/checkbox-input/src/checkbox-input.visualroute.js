@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 import { CheckboxInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 

@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { customProperties } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 
@@ -26,13 +26,46 @@ const getClearSectionStyles = (props) => {
     }
   `;
 };
+const getIconBorderColor = (vars, props, state) => {
+  if (props.isDisabled) {
+    return vars.borderColorForInputWhenDisabled;
+  }
+  if (props.hasError) {
+    return vars.borderColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return vars.borderColorForInputWhenWarning;
+  }
+  if (props.isReadOnly) {
+    return vars.borderColorForInputWhenReadonly;
+  }
+  if (props.isOpen || state.isFocused) {
+    return vars.borderColorForInputWhenFocused;
+  }
+  return vars.borderColorForInput;
+};
+const getIconFontColor = (vars, props) => {
+  if (props.isDisabled) {
+    return vars.fontColorForInputWhenDisabled;
+  }
+  if (props.hasError) {
+    return vars.fontColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return vars.fontColorForInputWhenWarning;
+  }
+  if (props.isReadOnly) {
+    return vars.fontColorForInputWhenReadonly;
+  }
+  return 'initial';
+};
 const getCalendarIconContainerStyles = (props, state) => {
   const vars = {
     ...customProperties,
     ...props.theme,
   };
 
-  const baseIconStyles = css`
+  return css`
     align-items: center;
     box-sizing: border-box;
     background: none;
@@ -40,6 +73,9 @@ const getCalendarIconContainerStyles = (props, state) => {
     border-left: 1px solid ${vars.borderColorForInput};
     border-top-right-radius: ${vars.borderRadiusForInput};
     border-bottom-right-radius: ${vars.borderRadiusForInput};
+    border-color: ${getIconBorderColor(vars, props, state)};
+    color: ${getIconFontColor(vars, props)};
+    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     height: 100%;
     display: flex;
     padding: ${vars.spacingXs};
@@ -52,68 +88,57 @@ const getCalendarIconContainerStyles = (props, state) => {
       border-color: ${vars.borderColorForInputWhenFocused};
     }
   `;
-  if (props.isDisabled) {
-    return [
-      baseIconStyles,
-      css`
-        cursor: not-allowed;
-        background-color: ${vars.backgroundColorForInputWhenDisabled};
-        color: ${vars.fontColorForInputWhenDisabled};
-        border-color: ${vars.borderColorForInputWhenDisabled};
-      `,
-    ];
-  }
-  if (props.hasError) {
-    return [
-      baseIconStyles,
-      css`
-        color: ${vars.fontColorForInputWhenError};
-        border-color: ${vars.borderColorForInputWhenError};
-      `,
-    ];
-  }
-  if (props.hasWarning) {
-    return [
-      baseIconStyles,
-      css`
-        color: ${vars.fontColorForInputWhenWarning};
-        border-color: ${vars.borderColorForInputWhenWarning};
-      `,
-    ];
-  }
-  if (props.isReadOnly) {
-    return [
-      baseIconStyles,
-      css`
-        color: ${vars.fontColorForInputWhenReadonly};
-        border-color: ${vars.borderColorForInputWhenReadonly};
-      `,
-    ];
-  }
-  if (props.isOpen || state.isFocused) {
-    return [
-      baseIconStyles,
-      css`
-        border-color: ${vars.borderColorForInputWhenFocused};
-      `,
-    ];
-  }
-  return baseIconStyles;
 };
 
+const getInputBorderColor = (vars, props, state) => {
+  if (props.isDisabled) {
+    return vars.borderColorForInputWhenDisabled;
+  }
+  if (props.hasError) {
+    return vars.borderColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return vars.borderColorForInputWhenWarning;
+  }
+  if (props.isReadOnly) {
+    return vars.borderColorForInputWhenReadonly;
+  }
+  if ((props.isOpen || state.isFocused) && !props.isReadOnly) {
+    return vars.borderColorForInputWhenFocused;
+  }
+  return vars.borderColorForInput;
+};
+const getInputFontColor = (vars, props) => {
+  if (props.isDisabled) {
+    return vars.fontColorForInputWhenDisabled;
+  }
+  if (props.hasError) {
+    return vars.fontColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return vars.fontColorForInputWhenWarning;
+  }
+  if (props.isReadOnly) {
+    return vars.fontColorForInputWhenReadonly;
+  }
+  return vars.fontColorForInput;
+};
 const getInputContainerStyles = (props, state) => {
   const vars = {
     ...customProperties,
     ...props.theme,
   };
 
-  const baseStyles = css`
+  return css`
     appearance: none;
-    background-color: ${vars.backgroundColorForInput};
-    border: 1px solid ${vars.borderColorForInput};
+    background-color: ${props.isDisabled
+      ? vars.backgroundColorForInputWhenDisabled
+      : vars.backgroundColorForInput};
+    border: 1px solid ${getInputBorderColor(vars, props, state)};
     border-radius: ${vars.borderRadiusForInput};
     box-sizing: border-box;
-    color: ${vars.fontColorForInput};
+    color: ${getInputFontColor(vars, props)};
+    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     width: 100%;
     height: ${vars.sizeHeightInput};
     align-items: center;
@@ -127,66 +152,17 @@ const getInputContainerStyles = (props, state) => {
       border-color: ${vars.borderColorForInputWhenFocused};
       box-shadow: inset 0 0 0 2px ${vars.borderColorForInputWhenFocused};
     }
+    &:focus,
+    &:hover {
+      border-color: ${props.isDisabled ||
+      props.hasError ||
+      props.hasWarning ||
+      props.isReadOnly ||
+      ((props.isOpen || state.isFocused) && !props.isReadOnly)
+        ? ''
+        : vars.borderColorForInputWhenFocused};
+    }
   `;
-
-  if (props.isDisabled) {
-    return [
-      baseStyles,
-      css`
-        background-color: ${vars.backgroundColorForInputWhenDisabled};
-        color: ${vars.fontColorForInputWhenDisabled};
-        border-color: ${vars.borderColorForInputWhenDisabled};
-        cursor: not-allowed;
-      `,
-    ];
-  }
-  if (props.hasError) {
-    return [
-      baseStyles,
-      css`
-        color: ${vars.fontColorForInputWhenError};
-        border-color: ${vars.borderColorForInputWhenError};
-      `,
-    ];
-  }
-  if (props.hasWarning) {
-    return [
-      baseStyles,
-      css`
-        color: ${vars.fontColorForInputWhenWarning};
-        border-color: ${vars.borderColorForInputWhenWarning};
-      `,
-    ];
-  }
-  if (props.isReadOnly) {
-    return [
-      baseStyles,
-      css`
-        color: ${vars.fontColorForInputWhenReadonly};
-        border-color: ${vars.borderColorForInputWhenReadonly};
-      `,
-    ];
-  }
-
-  if ((props.isOpen || state.isFocused) && !props.isReadOnly) {
-    return [
-      baseStyles,
-      css`
-        border-color: ${vars.borderColorForInputWhenFocused};
-        color: ${vars.fontColorForInput};
-      `,
-    ];
-  }
-
-  return [
-    baseStyles,
-    css`
-      &:focus,
-      &:hover {
-        border-color: ${vars.borderColorForInputWhenFocused};
-      }
-    `,
-  ];
 };
 
 const getDateTimeInputStyles = (props) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { FlatButton, InformationIcon } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import requiredIf from 'react-required-if';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { IconButton } from '@commercetools-uikit/buttons';
 import { InformationIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';

@@ -29,7 +29,7 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@emotion/is-prop-valid": "0.8.8",
+    "@emotion/is-prop-valid": "1.0.0",
     "warning": "4.0.3"
   }
 }

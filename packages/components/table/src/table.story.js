@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, number } from '@storybook/addon-knobs/react';
 import sortBy from 'lodash/sortBy';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Button from '@commercetools-uikit/secondary-button';
 import Readme from '../README.md';
 import Table from './table';

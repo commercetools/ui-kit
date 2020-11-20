@@ -1,28 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
-  StyledClearSection,
+  getClearSectionStyles,
+  getClockIconContainerStyles,
+  getInputContainerStyles,
+  getTimeInputStyles,
   StyledClockIconContainer,
-  StyledInput,
   StyledInputContainer,
 } from './time-input-body.styles';
 
 export const ClearSection = (props) => {
   const theme = useTheme();
   return (
-    <StyledClearSection
+    <AccessibleButton
       theme={theme}
+      css={getClearSectionStyles(theme)}
       label="clear"
       aria-label="clear"
       onClick={props.onClear}
       hasError={props.hasError}
     >
       <CloseIcon size="medium" />
-    </StyledClearSection>
+    </AccessibleButton>
   );
 };
 
@@ -36,14 +40,9 @@ const TimeInputBody = (props) => {
   const theme = useTheme();
   return (
     <Inline alignItems="center">
-      <StyledInputContainer
-        theme={theme}
-        isDisabled={props.isDisabled}
-        isReadOnly={props.isReadOnly}
-        hasError={props.hasError}
-      >
-        <StyledInput
-          theme={theme}
+      <StyledInputContainer css={getInputContainerStyles(props, theme)}>
+        <input
+          css={getTimeInputStyles(props, theme)}
           id={props.id}
           name={props.name}
           autoComplete={props.autoComplete}
@@ -55,7 +54,6 @@ const TimeInputBody = (props) => {
           onChange={props.onChange}
           onFocus={props.onFocus}
           onBlur={props.onBlur}
-          hasError={props.hasError}
           {...filterDataAttributes(props)}
           /* ARIA */
           role="textbox"
@@ -72,12 +70,9 @@ const TimeInputBody = (props) => {
           />
         )}
         <StyledClockIconContainer
-          theme={theme}
+          css={getClockIconContainerStyles(props, theme)}
           htmlFor={props.id}
           data-toggle
-          isDisabled={props.isDisabled}
-          isReadOnly={props.isReadOnly}
-          hasError={props.hasError}
         >
           <ClockIcon
             color={props.isDisabled || props.isReadOnly ? 'neutral60' : 'solid'}

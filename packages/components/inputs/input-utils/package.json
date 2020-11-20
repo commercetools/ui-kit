@@ -33,8 +33,7 @@
     "@commercetools-uikit/flat-button": "10.40.0",
     "@commercetools-uikit/icons": "10.40.1",
     "@commercetools-uikit/utils": "10.40.0",
-    "@emotion/core": "^10.0.34",
-    "emotion-theming": "^10.0.27",
+    "@emotion/react": "^11.1.0",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
     "react-textarea-autosize": "8.3.0"

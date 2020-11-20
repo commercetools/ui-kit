@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 import * as UIKit from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 

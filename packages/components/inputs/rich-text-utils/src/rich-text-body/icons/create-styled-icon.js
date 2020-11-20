@@ -6,8 +6,7 @@
 import PropTypes from 'prop-types';
 import invariant from 'tiny-invariant';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { withTheme } from 'emotion-theming';
+import { css, withTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 const iconSizes = {

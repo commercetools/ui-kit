@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import { useToggleState } from '@commercetools-uikit/hooks';
