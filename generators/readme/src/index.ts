@@ -29,6 +29,9 @@ import type {
 import fs from 'fs';
 import path from 'path';
 import shelljs from 'shelljs';
+import Listr from 'listr';
+// @ts-ignore
+import ListrVerboseRenderer from 'listr-verbose-renderer';
 import { getPackagesSync } from '@manypkg/get-packages';
 import toVfile from 'to-vfile';
 import vfile from 'vfile';
@@ -45,6 +48,15 @@ import stringifyOptions from './utils/stringify-options';
 import gfmOptions from './utils/gfm-options';
 
 const prettierConfig = rcfile<PrettierOptions>('prettier');
+
+async function existPath(filePath: string) {
+  try {
+    await fs.promises.access(filePath);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
 
 const html = (value: string): HTML => ({
   type: 'html',
@@ -414,7 +426,7 @@ function readmeTransformer(packageFolderPath: string) {
 
   return transformer;
 
-  function transformer(tree: Node, _file: VFile) {
+  async function transformer(tree: Node, _file: VFile) {
     (tree as Parent).children = [
       html(
         [
@@ -426,8 +438,8 @@ function readmeTransformer(packageFolderPath: string) {
       heading(1, upperFirst(camelcase(path.basename(packageFolderPath)))),
       // The description is what's defined in the package.json
       heading(2, 'Description'),
-      ...(fs.existsSync(paths.description)
-        ? parseMarkdownFragmentToAST(toVfile.readSync(paths.description))
+      ...((await existPath(paths.description))
+        ? parseMarkdownFragmentToAST(await toVfile.read(paths.description))
         : // Fall back to the package.json description field.
           [paragraph(packageJsonInfo.description)]),
 
@@ -452,13 +464,16 @@ function readmeTransformer(packageFolderPath: string) {
       ),
       // Usage example
       heading(2, 'Usage'),
-      code('jsx', fs.readFileSync(paths.usageExample, { encoding: 'utf8' })),
+      code(
+        'jsx',
+        await fs.promises.readFile(paths.usageExample, { encoding: 'utf8' })
+      ),
       // Describe the component's properties
       heading(2, 'Properties'),
       parsePropTypesToMarkdown(paths.componentPath),
       // Additional information (can be anything, there is no pre-defined structure here)
-      ...(fs.existsSync(paths.additionalInfo)
-        ? parseMarkdownFragmentToAST(toVfile.readSync(paths.additionalInfo))
+      ...((await existPath(paths.additionalInfo))
+        ? parseMarkdownFragmentToAST(await toVfile.read(paths.additionalInfo))
         : []),
     ];
   }
@@ -513,40 +528,40 @@ export async function generate(
 
   if (flags.allWorkspacePackages) {
     const workspacePackages = getPackagesSync(process.cwd());
-    const aggregatedErrors: string[] = [];
-    await Promise.all(
-      workspacePackages.packages
-        .filter((packageInfo) => {
-          const hasReadmeGenerationEnabled = fs.existsSync(
-            path.join(packageInfo.dir, 'docs')
-          );
-          return hasReadmeGenerationEnabled;
-        })
-        .map(async (packageInfo) => {
+    const taskList = new Listr(
+      workspacePackages.packages.map((packageInfo) => ({
+        title: `Processing ${packageInfo.packageJson.name}`,
+        task: async () => {
           const readmePath = path.join(packageInfo.dir, 'README.md');
-          console.log('Processing', packageInfo.packageJson.name);
-          try {
-            // Create an empty VFile.
-            const doc = vfile();
-            const content = await transformDocument(doc, packageInfo.dir);
-            writeFile(readmePath, content, options);
-          } catch (error) {
-            aggregatedErrors.push(error.message);
-          }
-        })
+          // Create an empty VFile.
+          const doc = vfile();
+          const content = await transformDocument(doc, packageInfo.dir);
+          await writeFile(readmePath, content, options);
+        },
+        skip: async () =>
+          !(await existPath(path.join(packageInfo.dir, 'docs'))),
+      })),
+      {
+        concurrent: 10,
+        exitOnError: false,
+        renderer:
+          // @ts-ignore
+          process.env.CI === true || process.env.CI === 'true'
+            ? ListrVerboseRenderer
+            : 'default',
+        nonTTYRenderer: ListrVerboseRenderer,
+      }
     );
-    if (aggregatedErrors.length > 0) {
-      throw new Error(
-        `Found errors in ${
-          aggregatedErrors.length
-        } packages:\n\n${aggregatedErrors.join('\n')}\n`
-      );
-    }
+    await taskList.run();
   } else {
     const packageFolderPath = path.resolve(process.cwd(), relativePackagePath);
     // Create an empty VFile.
     const doc = vfile();
     const content = await transformDocument(doc, packageFolderPath);
-    writeFile(path.join(packageFolderPath, 'README.md'), content, options);
+    await writeFile(
+      path.join(packageFolderPath, 'README.md'),
+      content,
+      options
+    );
   }
 }
