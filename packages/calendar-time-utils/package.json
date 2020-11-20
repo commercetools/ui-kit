@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/calendar-time-utils",
   "description": "Utilities to work with time values for a calendar.",
-  "version": "10.40.0",
+  "version": "10.41.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/utils": "10.40.0"
+    "@commercetools-uikit/utils": "10.41.0"
   },
   "peerDependencies": {
     "moment-timezone": "0.5.x"
