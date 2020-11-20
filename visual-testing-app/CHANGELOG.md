@@ -1,5 +1,11 @@
 # visual-testing-app
 
+## 10.19.0
+
+### Minor Changes
+
+- [`26c6562`](https://github.com/commercetools/ui-kit/commit/26c65622f7f1911f51fc0056ade2d0c8ec8af0a1) [#1670](https://github.com/commercetools/ui-kit/pull/1670) Thanks [@emmenko](https://github.com/emmenko)! - Migrate to emotion v11. https://emotion.sh/docs/emotion-11
+
 ## 10.18.21
 
 ### Patch Changes

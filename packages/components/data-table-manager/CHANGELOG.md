@@ -1,5 +1,35 @@
 # @commercetools-uikit/data-table-manager
 
+## 10.41.0
+
+### Minor Changes
+
+- [`26c6562`](https://github.com/commercetools/ui-kit/commit/26c65622f7f1911f51fc0056ade2d0c8ec8af0a1) [#1670](https://github.com/commercetools/ui-kit/pull/1670) Thanks [@emmenko](https://github.com/emmenko)! - Migrate to emotion v11. https://emotion.sh/docs/emotion-11
+
+### Patch Changes
+
+- [`7433733`](https://github.com/commercetools/ui-kit/commit/7433733aaeed9c54817d6261c55af685d2a3ef99) [#1683](https://github.com/commercetools/ui-kit/pull/1683) Thanks [@jonnybel](https://github.com/jonnybel)! - Adjust size of settings selector
+
+- Updated dependencies [[`26c6562`](https://github.com/commercetools/ui-kit/commit/26c65622f7f1911f51fc0056ade2d0c8ec8af0a1)]:
+  - @commercetools-uikit/accessible-hidden@10.41.0
+  - @commercetools-uikit/accessible-button@10.41.0
+  - @commercetools-uikit/primary-button@10.41.0
+  - @commercetools-uikit/secondary-button@10.41.0
+  - @commercetools-uikit/secondary-icon-button@10.41.0
+  - @commercetools-uikit/card@10.41.0
+  - @commercetools-uikit/collapsible-motion@10.41.0
+  - @commercetools-uikit/field-label@10.41.0
+  - @commercetools-uikit/grid@10.41.0
+  - @commercetools-uikit/icons@10.41.0
+  - @commercetools-uikit/async-select-input@10.41.0
+  - @commercetools-uikit/radio-input@10.41.0
+  - @commercetools-uikit/select-input@10.41.0
+  - @commercetools-uikit/tag@10.41.0
+  - @commercetools-uikit/text@10.41.0
+  - @commercetools-uikit/utils@10.41.0
+  - @commercetools-uikit/spacings@10.41.0
+  - @commercetools-uikit/hooks@10.41.0
+
 ## 10.40.1
 
 ### Patch Changes

@@ -1,5 +1,19 @@
 # @commercetools-uikit/secondary-button
 
+## 10.41.0
+
+### Minor Changes
+
+- [`26c6562`](https://github.com/commercetools/ui-kit/commit/26c65622f7f1911f51fc0056ade2d0c8ec8af0a1) [#1670](https://github.com/commercetools/ui-kit/pull/1670) Thanks [@emmenko](https://github.com/emmenko)! - Migrate to emotion v11. https://emotion.sh/docs/emotion-11
+
+### Patch Changes
+
+- Updated dependencies [[`26c6562`](https://github.com/commercetools/ui-kit/commit/26c65622f7f1911f51fc0056ade2d0c8ec8af0a1)]:
+  - @commercetools-uikit/accessible-button@10.41.0
+  - @commercetools-uikit/spacings-inline@10.41.0
+  - @commercetools-uikit/text@10.41.0
+  - @commercetools-uikit/utils@10.41.0
+
 ## 10.40.0
 
 ### Patch Changes
