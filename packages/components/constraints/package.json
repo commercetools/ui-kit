@@ -30,7 +30,8 @@
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "@emotion/styled-base": "^11.0.0",
-    "prop-types": "15.7.2"
+    "prop-types": "15.7.2",
+    "tiny-invariant": "1.1.0"
   },
   "peerDependencies": {
     "react": ">= 16.8.0"
