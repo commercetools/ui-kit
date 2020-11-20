@@ -36,7 +36,6 @@
     "@emotion/styled": "^11.0.0",
     "@emotion/styled-base": "^11.0.0",
     "lodash": "4.17.20",
-    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3"
   },

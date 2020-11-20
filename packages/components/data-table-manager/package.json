@@ -49,7 +49,6 @@
     "@emotion/styled-base": "^11.0.0",
     "debounce-promise": "^3.1.2",
     "lodash": "4.17.20",
-    "lodash-es": "4.17.15",
     "prop-types": "15.7.2",
     "react-beautiful-dnd": "13.0.0",
     "react-required-if": "1.0.3",
