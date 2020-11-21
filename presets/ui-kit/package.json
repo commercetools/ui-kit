@@ -20,7 +20,8 @@
   "module": "dist/ui-kit.esm.js",
   "files": ["dist", "materials", "i18n"],
   "scripts": {
-    "prepare": "../../scripts/version.js replace && mkdir -p i18n/data && cp -R ../../design-system/materials materials && cp -R ../../packages/i18n/data i18n/"
+    "prepare": "../../scripts/version.js replace",
+    "copy-assets": "rm -rf i18n materials && mkdir -p i18n/data && cp -R ../../design-system/materials materials && cp -R ../../packages/i18n/data i18n/"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
