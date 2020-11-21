@@ -1,8 +1,12 @@
 {
   "files": [
     {
-      "path": "packages/**/dist/*.es.js",
-      "maxSize": "60 kB"
+      "path": "packages/**/dist/*.cjs.prod.js",
+      "maxSize": "40 kB"
+    },
+    {
+      "path": "packages/**/dist/*.esm.js",
+      "maxSize": "40 kB"
     }
   ]
 }

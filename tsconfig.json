@@ -2,10 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "commonjs",
-    "lib": [
-      "DOM",
-      "ES2020"
-    ],
+    "lib": ["DOM", "ES2020"],
     "declaration": true,
     "baseUrl": ".",
     "outDir": "lib",
@@ -27,24 +24,6 @@
     "strictNullChecks": true,
     "stripInternal": true,
     "allowJs": false,
-    // https://stackoverflow.com/a/40326719
-    "paths": {
-      "*": [
-        "@types/*",
-        "*"
-      ],
-    },
-    "typeRoots": [
-      "@types",
-      "node_modules/@types"
-    ]
-  },
-  "include": [
-    "**/*.spec.ts",
-    "**/*.spec.tsx"
-  ],
-  "exclude": [
-    "**/node_modules",
-    "**/dist/**/*"
-  ]
+    "typeRoots": ["@types", "node_modules/@types"]
+  }
 }

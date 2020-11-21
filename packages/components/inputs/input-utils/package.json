@@ -17,14 +17,10 @@
   },
   "sideEffects": false,
   "main": "dist/input-utils.cjs.js",
-  "module": "dist/input-utils.es.js",
+  "module": "dist/input-utils.esm.js",
   "files": ["dist"],
   "scripts": {
-    "prepare": "../../../../scripts/version.js replace",
-    "prebuild": "rimraf dist",
-    "build": "yarn build:bundles",
-    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../../../rollup.config.js -i ./src/index.js",
-    "build:bundles:watch": "yarn build:bundles -w"
+    "prepare": "../../../../scripts/version.js replace"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
@@ -33,7 +29,7 @@
     "@commercetools-uikit/flat-button": "10.41.0",
     "@commercetools-uikit/icons": "10.41.0",
     "@commercetools-uikit/utils": "10.41.0",
-    "@emotion/react": "^11.1.0",
+    "@emotion/react": "^11.1.1",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
     "react-textarea-autosize": "8.3.0"

@@ -17,23 +17,18 @@
   },
   "sideEffects": false,
   "main": "dist/hooks.cjs.js",
-  "module": "dist/hooks.es.js",
+  "module": "dist/hooks.esm.js",
   "files": ["dist"],
   "scripts": {
-    "prepare": "../../scripts/version.js replace",
-    "prebuild": "rimraf dist",
-    "build": "yarn build:bundles",
-    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js",
-    "build:bundles:watch": "yarn build:bundles -w"
+    "prepare": "../../scripts/version.js replace"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/utils": "10.41.0"
+    "@commercetools-uikit/utils": "10.41.0",
+    "lodash": "4.17.20"
   },
   "peerDependencies": {
-    "lodash": "4.17.20",
-    "lodash-es": "4.17.15",
     "react": ">= 16.8.0"
   }
 }

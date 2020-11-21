@@ -2,6 +2,8 @@
   "name": "@commercetools-test/avenger",
   "description": "Render an Avenger",
   "version": "1.0.0",
+  "main": "dist/avenger.cjs.js",
+  "module": "dist/avenger.esm.js",
   "peerDependencies": {
     "react": "16.8.x"
   },

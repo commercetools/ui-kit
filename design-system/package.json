@@ -21,12 +21,8 @@
   "files": ["dist", "materials"],
   "scripts": {
     "prepare": "../scripts/version.js replace",
-    "prebuild": "rimraf dist",
-    "build": "yarn build:bundles",
     "build:tokens": "node ./scripts/generate-custom-properties.js",
-    "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn build:tokens'",
-    "build:bundles": "cross-env NODE_ENV=production rollup -c ../rollup.config.js -i ./index.js",
-    "build:bundles:watch": "yarn build:bundles -w"
+    "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn build:tokens'"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",

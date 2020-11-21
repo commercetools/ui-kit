@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 // resets button styles given automatically by browsers
 const normalizedButtonStyles = css`

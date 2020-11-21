@@ -52,7 +52,7 @@ describe('when package.json is NOT private', () => {
         ],
         "license": "MIT",
         "main": "dist/avenger.cjs.js",
-        "module": "dist/avenger.es.js",
+        "module": "dist/avenger.esm.js",
         "name": "@commercetools-uikit/avenger",
         "peerDependencies": Object {
           "react": "16.8.x",
@@ -70,10 +70,6 @@ describe('when package.json is NOT private', () => {
           "url": "https://github.com/commercetools/ui-kit.git",
         },
         "scripts": Object {
-          "build": "yarn build:bundles",
-          "build:bundles": "cross-env NODE_ENV=production rollup -c ../../rollup.config.js -i ./src/index.js",
-          "build:bundles:watch": "yarn build:bundles -w",
-          "prebuild": "rimraf dist",
           "prepare": "../../scripts/version.js replace",
         },
         "sideEffects": false,

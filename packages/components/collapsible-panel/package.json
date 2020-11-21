@@ -17,14 +17,10 @@
   },
   "sideEffects": false,
   "main": "dist/collapsible-panel.cjs.js",
-  "module": "dist/collapsible-panel.es.js",
+  "module": "dist/collapsible-panel.esm.js",
   "files": ["dist"],
   "scripts": {
-    "prepare": "../../../scripts/version.js replace",
-    "prebuild": "rimraf dist",
-    "build": "yarn build:bundles",
-    "build:bundles": "cross-env NODE_ENV=production rollup -c ../../../rollup.config.js -i ./src/index.js",
-    "build:bundles:watch": "yarn build:bundles -w"
+    "prepare": "../../../scripts/version.js replace"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
@@ -40,7 +36,6 @@
     "@emotion/styled": "^11.0.0",
     "@emotion/styled-base": "^11.0.0",
     "lodash": "4.17.20",
-    "lodash-es": "4.17.15",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

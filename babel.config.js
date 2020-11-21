@@ -146,6 +146,8 @@ module.exports = function getBabelPreset(api, opts = {}) {
       // use the `@emotion/babel-preset-css-prop` preset.
       // https://emotion.sh/docs/@emotion/babel-preset-css-prop
       opts.runtime === 'automatic' && require('babel-plugin-emotion').default,
+      // Cherry-pick Lodash modules
+      require('babel-plugin-lodash').default,
     ].filter(Boolean),
   };
 };

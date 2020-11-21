@@ -3,6 +3,8 @@
   "description": "Render a Justice League",
   "version": "1.0.0",
   "private": true,
+  "main": "dist/justice-league.cjs.js",
+  "module": "dist/justice-league.esm.js",
   "peerDependencies": {
     "react": "16.8.x"
   }

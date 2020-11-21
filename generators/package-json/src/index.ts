@@ -66,9 +66,6 @@ export const transformDocument = (
   const relativePathToWorkspace = getRelativePathToWorkspace(
     relativePackageFolderPath
   );
-  const moduleEntryPath = fs.existsSync(path.join(packageFolderPath, 'src'))
-    ? './src/index.js'
-    : './index.js';
 
   return omitEmpty({
     name: `${npmScope}/${packageFolderName}`,
@@ -88,16 +85,14 @@ export const transformDocument = (
       access: 'public',
     },
     sideEffects: false,
-    main: `dist/${packageFolderName}.cjs.js`,
-    module: `dist/${packageFolderName}.es.js`,
+    // Managed by `preconstruct`
+    main: originalPackageJson.main,
+    // Managed by `preconstruct`
+    module: originalPackageJson.module,
     files: originalPackageJson.files,
     scripts: {
       ...originalPackageJson.scripts,
       prepare: `${relativePathToWorkspace}/scripts/version.js replace`,
-      prebuild: 'rimraf dist',
-      build: 'yarn build:bundles',
-      'build:bundles': `cross-env NODE_ENV=production rollup -c ${relativePathToWorkspace}/rollup.config.js -i ${moduleEntryPath}`,
-      'build:bundles:watch': 'yarn build:bundles -w',
     },
     dependencies: originalPackageJson.dependencies,
     devDependencies: originalPackageJson.devDependencies,
