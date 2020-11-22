@@ -64,7 +64,7 @@
     "nohoist": ["react-virtualized/dom-helpers"]
   },
   "preconstruct": {
-    "packages": ["packages/**/*", "presets/*"]
+    "packages": ["design-system", "packages/**/*", "presets/*"]
   },
   "dependencies": {
     "@babel/core": "7.12.3",
