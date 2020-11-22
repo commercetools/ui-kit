@@ -1,5 +1,11 @@
 # @commercetools-uikit/design-system
 
+## 10.42.1
+
+### Patch Changes
+
+- [`3c522ed`](https://github.com/commercetools/ui-kit/commit/3c522ed7576af3a6bc6dca30777df76202ca8834) [#1688](https://github.com/commercetools/ui-kit/pull/1688) Thanks [@emmenko](https://github.com/emmenko)! - Bundling setup
+
 ## 10.42.0
 
 ### Minor Changes
