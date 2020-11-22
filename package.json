@@ -61,7 +61,11 @@
       "presets/*",
       "visual-testing-app"
     ],
-    "nohoist": ["react-virtualized/dom-helpers"]
+    "nohoist": [
+      "**/@storybook/theming",
+      "**/@storybook/theming/**",
+      "react-virtualized/dom-helpers"
+    ]
   },
   "preconstruct": {
     "packages": ["design-system", "packages/**/*", "presets/*"]
