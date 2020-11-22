@@ -1,5 +1,36 @@
 # @commercetools-frontend/ui-kit
 
+## 10.42.1
+
+### Patch Changes
+
+- Updated dependencies [[`3c522ed`](https://github.com/commercetools/ui-kit/commit/3c522ed7576af3a6bc6dca30777df76202ca8834)]:
+  - @commercetools-uikit/design-system@10.42.1
+  - @commercetools-uikit/avatar@10.42.1
+  - @commercetools-uikit/card@10.42.1
+  - @commercetools-uikit/collapsible-panel@10.42.1
+  - @commercetools-uikit/constraints@10.42.1
+  - @commercetools-uikit/data-table@10.42.1
+  - @commercetools-uikit/data-table-manager@10.42.1
+  - @commercetools-uikit/icons@10.42.1
+  - @commercetools-uikit/label@10.42.1
+  - @commercetools-uikit/link@10.42.1
+  - @commercetools-uikit/loading-spinner@10.42.1
+  - @commercetools-uikit/notifications@10.42.1
+  - @commercetools-uikit/primary-action-dropdown@10.42.1
+  - @commercetools-uikit/stamp@10.42.1
+  - @commercetools-uikit/table@10.42.1
+  - @commercetools-uikit/tag@10.42.1
+  - @commercetools-uikit/text@10.42.1
+  - @commercetools-uikit/tooltip@10.42.1
+  - @commercetools-uikit/buttons@10.42.1
+  - @commercetools-uikit/field-label@10.42.1
+  - @commercetools-uikit/fields@10.42.1
+  - @commercetools-uikit/inputs@10.42.1
+  - @commercetools-uikit/spacings@10.42.1
+  - @commercetools-uikit/messages@10.42.1
+  - @commercetools-uikit/field-errors@10.42.1
+
 ## 10.42.0
 
 ### Minor Changes
