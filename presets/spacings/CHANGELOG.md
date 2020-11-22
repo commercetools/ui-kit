@@ -1,5 +1,19 @@
 # @commercetools-uikit/spacings
 
+## 10.42.0
+
+### Minor Changes
+
+- [`04ea8ab`](https://github.com/commercetools/ui-kit/commit/04ea8abdfbada5fedd9a932743323762fb790fd0) [#1671](https://github.com/commercetools/ui-kit/pull/1671) Thanks [@emmenko](https://github.com/emmenko)! - Compile and bundle packages using [preconstruct](https://preconstruct.tools)
+
+### Patch Changes
+
+- Updated dependencies [[`04ea8ab`](https://github.com/commercetools/ui-kit/commit/04ea8abdfbada5fedd9a932743323762fb790fd0)]:
+  - @commercetools-uikit/spacings-inline@10.42.0
+  - @commercetools-uikit/spacings-inset@10.42.0
+  - @commercetools-uikit/spacings-inset-squish@10.42.0
+  - @commercetools-uikit/spacings-stack@10.42.0
+
 ## 10.41.0
 
 ### Patch Changes

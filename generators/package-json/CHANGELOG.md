@@ -1,5 +1,11 @@
 # @commercetools-local/generator-package-json
 
+## 1.2.0
+
+### Minor Changes
+
+- [`04ea8ab`](https://github.com/commercetools/ui-kit/commit/04ea8abdfbada5fedd9a932743323762fb790fd0) [#1671](https://github.com/commercetools/ui-kit/pull/1671) Thanks [@emmenko](https://github.com/emmenko)! - Compile and bundle packages using [preconstruct](https://preconstruct.tools)
+
 ## 1.1.7
 
 ### Patch Changes

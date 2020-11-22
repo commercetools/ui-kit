@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/constraints",
   "description": "Constraints are container elements with a configurable constraint size, like width or height.",
-  "version": "10.41.0",
+  "version": "10.42.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,8 +25,8 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/design-system": "10.40.0",
-    "@commercetools-uikit/utils": "10.41.0",
+    "@commercetools-uikit/design-system": "10.42.0",
+    "@commercetools-uikit/utils": "10.42.0",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "@emotion/styled-base": "^11.0.0",
