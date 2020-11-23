@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/buttons.cjs.js",
-  "module": "dist/buttons.esm.js",
+  "main": "dist/commercetools-uikit-buttons.cjs.js",
+  "module": "dist/commercetools-uikit-buttons.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace"

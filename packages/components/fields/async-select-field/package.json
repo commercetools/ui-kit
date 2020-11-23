@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/async-select-field.cjs.js",
-  "module": "dist/async-select-field.esm.js",
+  "main": "dist/commercetools-uikit-async-select-field.cjs.js",
+  "module": "dist/commercetools-uikit-async-select-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

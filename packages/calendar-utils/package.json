@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/calendar-utils.cjs.js",
-  "module": "dist/calendar-utils.esm.js",
+  "main": "dist/commercetools-uikit-calendar-utils.cjs.js",
+  "module": "dist/commercetools-uikit-calendar-utils.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace"

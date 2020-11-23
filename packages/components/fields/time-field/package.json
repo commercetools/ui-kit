@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/time-field.cjs.js",
-  "module": "dist/time-field.esm.js",
+  "main": "dist/commercetools-uikit-time-field.cjs.js",
+  "module": "dist/commercetools-uikit-time-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

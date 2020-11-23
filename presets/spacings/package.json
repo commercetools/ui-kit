@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/spacings.cjs.js",
-  "module": "dist/spacings.esm.js",
+  "main": "dist/commercetools-uikit-spacings.cjs.js",
+  "module": "dist/commercetools-uikit-spacings.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace"

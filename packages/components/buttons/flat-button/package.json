@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/flat-button.cjs.js",
-  "module": "dist/flat-button.esm.js",
+  "main": "dist/commercetools-uikit-flat-button.cjs.js",
+  "module": "dist/commercetools-uikit-flat-button.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

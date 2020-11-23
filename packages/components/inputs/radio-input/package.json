@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/radio-input.cjs.js",
-  "module": "dist/radio-input.esm.js",
+  "main": "dist/commercetools-uikit-radio-input.cjs.js",
+  "module": "dist/commercetools-uikit-radio-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

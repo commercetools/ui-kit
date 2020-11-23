@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/checkbox-input.cjs.js",
-  "module": "dist/checkbox-input.esm.js",
+  "main": "dist/commercetools-uikit-checkbox-input.cjs.js",
+  "module": "dist/commercetools-uikit-checkbox-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

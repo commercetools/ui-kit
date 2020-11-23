@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/accessible-button.cjs.js",
-  "module": "dist/accessible-button.esm.js",
+  "main": "dist/commercetools-uikit-accessible-button.cjs.js",
+  "module": "dist/commercetools-uikit-accessible-button.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

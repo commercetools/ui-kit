@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/localized-money-input.cjs.js",
-  "module": "dist/localized-money-input.esm.js",
+  "main": "dist/commercetools-uikit-localized-money-input.cjs.js",
+  "module": "dist/commercetools-uikit-localized-money-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

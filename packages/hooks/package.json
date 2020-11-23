@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/hooks.cjs.js",
-  "module": "dist/hooks.esm.js",
+  "main": "dist/commercetools-uikit-hooks.cjs.js",
+  "module": "dist/commercetools-uikit-hooks.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace"

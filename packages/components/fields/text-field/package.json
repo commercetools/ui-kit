@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/text-field.cjs.js",
-  "module": "dist/text-field.esm.js",
+  "main": "dist/commercetools-uikit-text-field.cjs.js",
+  "module": "dist/commercetools-uikit-text-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

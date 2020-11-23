@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/stamp.cjs.js",
-  "module": "dist/stamp.esm.js",
+  "main": "dist/commercetools-uikit-stamp.cjs.js",
+  "module": "dist/commercetools-uikit-stamp.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

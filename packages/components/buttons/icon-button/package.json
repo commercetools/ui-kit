@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/icon-button.cjs.js",
-  "module": "dist/icon-button.esm.js",
+  "main": "dist/commercetools-uikit-icon-button.cjs.js",
+  "module": "dist/commercetools-uikit-icon-button.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

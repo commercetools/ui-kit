@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/secondary-button.cjs.js",
-  "module": "dist/secondary-button.esm.js",
+  "main": "dist/commercetools-uikit-secondary-button.cjs.js",
+  "module": "dist/commercetools-uikit-secondary-button.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

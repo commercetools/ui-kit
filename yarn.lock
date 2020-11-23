@@ -3171,10 +3171,10 @@
   dependencies:
     "@percy/agent" "~0"
 
-"@preconstruct/cli@1.1.34":
-  version "1.1.34"
-  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-1.1.34.tgz#092416a936c4915777fa4560c2bcb16fb1f274cc"
-  integrity sha512-yrKUxDzHskWqcyLqhUFQpxkvKo+xnpkMmXso0c/u6AKn9dvTSbcBx7fdcMshDk5tzW1nR+M/xn0Eb+CtLcGT7w==
+"@preconstruct/cli@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-2.0.0.tgz#bface3fb95da6dabc8da6eae60802b6867f3fb72"
+  integrity sha512-PZQtozf3gv6tN7KJg0Tq3xhHx/NZMka24HPMj/E6NJFhfYropyTB7G6M69hEMnW9E3Adz6qTq85PDA1I1M5CMg==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.7"
@@ -3193,14 +3193,13 @@
     enquirer "^2.3.6"
     estree-walker "^2.0.1"
     fast-deep-equal "^2.0.1"
+    fast-glob "^3.2.4"
     fs-extra "^9.0.1"
-    globby "^11.0.1"
     is-ci "^2.0.0"
     is-reference "^1.2.1"
     jest-worker "^26.3.0"
     magic-string "^0.25.7"
     meow "^7.1.0"
-    micromatch "^4.0.2"
     ms "^2.1.2"
     normalize-path "^3.0.0"
     npm-packlist "^2.1.2"

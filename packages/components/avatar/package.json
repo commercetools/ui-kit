@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/avatar.cjs.js",
-  "module": "dist/avatar.esm.js",
+  "main": "dist/commercetools-uikit-avatar.cjs.js",
+  "module": "dist/commercetools-uikit-avatar.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

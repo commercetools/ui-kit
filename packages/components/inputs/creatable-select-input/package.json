@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/creatable-select-input.cjs.js",
-  "module": "dist/creatable-select-input.esm.js",
+  "main": "dist/commercetools-uikit-creatable-select-input.cjs.js",
+  "module": "dist/commercetools-uikit-creatable-select-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

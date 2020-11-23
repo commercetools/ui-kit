@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/search-select-field.cjs.js",
-  "module": "dist/search-select-field.esm.js",
+  "main": "dist/commercetools-uikit-search-select-field.cjs.js",
+  "module": "dist/commercetools-uikit-search-select-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

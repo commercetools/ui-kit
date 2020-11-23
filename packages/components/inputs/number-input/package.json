@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/number-input.cjs.js",
-  "module": "dist/number-input.esm.js",
+  "main": "dist/commercetools-uikit-number-input.cjs.js",
+  "module": "dist/commercetools-uikit-number-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

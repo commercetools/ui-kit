@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/notifications.cjs.js",
-  "module": "dist/notifications.esm.js",
+  "main": "dist/commercetools-uikit-notifications.cjs.js",
+  "module": "dist/commercetools-uikit-notifications.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/field-label.cjs.js",
-  "module": "dist/field-label.esm.js",
+  "main": "dist/commercetools-uikit-field-label.cjs.js",
+  "module": "dist/commercetools-uikit-field-label.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

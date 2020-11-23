@@ -95,7 +95,7 @@
     "@emotion/babel-preset-css-prop": "11.0.0",
     "@formatjs/cli": "2.13.12",
     "@percy/puppeteer": "1.1.0",
-    "@preconstruct/cli": "1.1.34",
+    "@preconstruct/cli": "2.0.0",
     "@storybook/addon-a11y": "5.3.21",
     "@storybook/addon-actions": "5.3.21",
     "@storybook/addon-contexts": "5.3.21",

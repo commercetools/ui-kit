@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/calendar-time-utils.cjs.js",
-  "module": "dist/calendar-time-utils.esm.js",
+  "main": "dist/commercetools-uikit-calendar-time-utils.cjs.js",
+  "module": "dist/commercetools-uikit-calendar-time-utils.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace"

@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/date-field.cjs.js",
-  "module": "dist/date-field.esm.js",
+  "main": "dist/commercetools-uikit-date-field.cjs.js",
+  "module": "dist/commercetools-uikit-date-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

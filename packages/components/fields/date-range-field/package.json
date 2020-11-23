@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/date-range-field.cjs.js",
-  "module": "dist/date-range-field.esm.js",
+  "main": "dist/commercetools-uikit-date-range-field.cjs.js",
+  "module": "dist/commercetools-uikit-date-range-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

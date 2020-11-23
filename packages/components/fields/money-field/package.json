@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/money-field.cjs.js",
-  "module": "dist/money-field.esm.js",
+  "main": "dist/commercetools-uikit-money-field.cjs.js",
+  "module": "dist/commercetools-uikit-money-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

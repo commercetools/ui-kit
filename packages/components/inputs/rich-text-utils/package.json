@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/rich-text-utils.cjs.js",
-  "module": "dist/rich-text-utils.esm.js",
+  "main": "dist/commercetools-uikit-rich-text-utils.cjs.js",
+  "module": "dist/commercetools-uikit-rich-text-utils.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

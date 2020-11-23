@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/localized-text-field.cjs.js",
-  "module": "dist/localized-text-field.esm.js",
+  "main": "dist/commercetools-uikit-localized-text-field.cjs.js",
+  "module": "dist/commercetools-uikit-localized-text-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"
