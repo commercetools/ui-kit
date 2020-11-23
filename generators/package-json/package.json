@@ -15,14 +15,14 @@
     "@manypkg/find-root": "1.1.0",
     "@manypkg/get-packages": "1.1.1",
     "@types/mri": "1.1.0",
-    "@types/node": "12.19.4",
+    "@types/node": "12.19.6",
     "mri": "1.1.6",
     "omit-empty-es": "1.0.3",
     "rcfile": "1.0.3"
   },
   "devDependencies": {
     "ts-node": "9.0.0",
-    "typescript": "4.0.5"
+    "typescript": "4.1.2"
   },
   "peerDependencies": {
     "prettier": "2.x",
