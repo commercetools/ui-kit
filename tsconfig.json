@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "commonjs",
-    "lib": ["DOM", "ES2020"],
-    "declaration": true,
-    "baseUrl": ".",
-    "outDir": "lib",
-    "rootDir": ".",
-    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
     "esModuleInterop": true,
     "importHelpers": true,
+    // See https://devblogs.microsoft.com/typescript/typescript-and-babel-7/
+    "isolatedModules": true,
+    "jsx": "react",
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -21,9 +22,15 @@
     "pretty": true,
     "removeComments": true,
     "sourceMap": true,
+    "strict": true,
     "strictNullChecks": true,
     "stripInternal": true,
+    "target": "ES2019",
     "allowJs": false,
-    "typeRoots": ["@types", "node_modules/@types"]
+    "typeRoots": [
+      "@types",
+      // "@types-extensions",
+      "node_modules/@types"
+    ]
   }
 }

@@ -12,4 +12,4 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
 # Execute the script using the `ts-node` CLI.
-npx ts-node "$DIR/generate-package-json.ts" "$@"
+npx ts-node --compiler-options '{"module": "commonjs"}' "$DIR/generate-package-json.ts" "$@"
