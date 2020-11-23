@@ -181,7 +181,10 @@ fs.writeFileSync(
 
 fs.writeFileSync(
   path.join(__dirname, '../materials/custom-properties.ts'),
-  prettier.format(printTypeScript(tokens), prettierConfig)
+  prettier.format(printTypeScript(tokens), {
+    ...prettierConfig,
+    parser: 'typescript',
+  })
 );
 
 fs.writeFileSync(
