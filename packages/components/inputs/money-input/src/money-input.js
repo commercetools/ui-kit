@@ -361,6 +361,7 @@ const MoneyInput = (props) => {
       if (String(formattedAmount) !== amount) {
         // We need to emit an event with the now formatted value
         const fakeEvent = {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           persist: () => {},
           target: {
             id: MoneyInput.getAmountInputId(props.id),
@@ -385,6 +386,7 @@ const MoneyInput = (props) => {
     (event) => {
       if (isNumberish(event.target.value)) {
         onChange({
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           persist: () => {},
           target: {
             id: MoneyInput.getAmountInputId(props.id),
@@ -421,6 +423,7 @@ const MoneyInput = (props) => {
 
         // change currency code
         const fakeCurrencyEvent = {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           persist: () => {},
           target: {
             id: MoneyInput.getCurrencyDropdownId(props.id),
@@ -433,6 +436,7 @@ const MoneyInput = (props) => {
         // change amount if necessary
         if (props.value.amount !== nextAmount) {
           onChange({
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             persist: () => {},
             target: {
               id: MoneyInput.getAmountInputId(props.id),

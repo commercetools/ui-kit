@@ -115,6 +115,7 @@ const CreatableSelectInput = (props) => {
                         return props.name ? `${props.name}.0` : undefined;
                       })(),
                     },
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
                     persist: () => {},
                   };
                   props.onBlur(event);
@@ -134,6 +135,7 @@ const CreatableSelectInput = (props) => {
             props.onChange(
               {
                 target: { name: props.name, value: newValue },
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 persist: () => {},
               },
               info

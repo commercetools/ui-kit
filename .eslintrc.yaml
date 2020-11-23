@@ -79,9 +79,11 @@ rules:
 overrides:
   - files: ['*.story.js']
     rules:
+      '@typescript-eslint/no-empty-function': 1
       '@typescript-eslint/no-use-before-define': 1
       'max-classes-per-file': 0
       'import/namespace': 1
+      'react/display-name': 0
   - files: ['*.spec.js', '**/docs/*.js']
     rules:
       '@typescript-eslint/no-empty-function': 1

@@ -131,7 +131,7 @@ type CustomProperties = {
 ${Object.entries(data)
   .map(
     ([key, value]) =>
-      `${camelCase(key)}: "${camelCaseValue ? camelCase(value) : value}",`
+      `${camelCase(key)}: "${camelCaseValue ? camelCase(value) : value}";`
   )
   .join('\n')}
 };

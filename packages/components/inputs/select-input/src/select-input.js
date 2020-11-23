@@ -139,6 +139,7 @@ const SelectInput = (props) => {
                         return props.name ? `${props.name}.0` : undefined;
                       })(),
                     },
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
                     persist: () => {},
                   };
                   props.onBlur(event);
@@ -166,6 +167,7 @@ const SelectInput = (props) => {
                 name: props.name,
                 value,
               },
+              // eslint-disable-next-line @typescript-eslint/no-empty-function
               persist: () => {},
             });
           }}
