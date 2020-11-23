@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/field-errors.cjs.js",
-  "module": "dist/field-errors.esm.js",
+  "main": "dist/commercetools-uikit-field-errors.cjs.js",
+  "module": "dist/commercetools-uikit-field-errors.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

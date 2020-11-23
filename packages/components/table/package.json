@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/table.cjs.js",
-  "module": "dist/table.esm.js",
+  "main": "dist/commercetools-uikit-table.cjs.js",
+  "module": "dist/commercetools-uikit-table.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

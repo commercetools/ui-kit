@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/collapsible-motion.cjs.js",
-  "module": "dist/collapsible-motion.esm.js",
+  "main": "dist/commercetools-uikit-collapsible-motion.cjs.js",
+  "module": "dist/commercetools-uikit-collapsible-motion.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

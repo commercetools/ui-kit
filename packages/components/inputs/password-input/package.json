@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/password-input.cjs.js",
-  "module": "dist/password-input.esm.js",
+  "main": "dist/commercetools-uikit-password-input.cjs.js",
+  "module": "dist/commercetools-uikit-password-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

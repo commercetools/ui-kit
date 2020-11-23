@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/collapsible-panel.cjs.js",
-  "module": "dist/collapsible-panel.esm.js",
+  "main": "dist/commercetools-uikit-collapsible-panel.cjs.js",
+  "module": "dist/commercetools-uikit-collapsible-panel.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

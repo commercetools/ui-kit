@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/data-table.cjs.js",
-  "module": "dist/data-table.esm.js",
+  "main": "dist/commercetools-uikit-data-table.cjs.js",
+  "module": "dist/commercetools-uikit-data-table.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

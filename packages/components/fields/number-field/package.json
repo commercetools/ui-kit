@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/number-field.cjs.js",
-  "module": "dist/number-field.esm.js",
+  "main": "dist/commercetools-uikit-number-field.cjs.js",
+  "module": "dist/commercetools-uikit-number-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

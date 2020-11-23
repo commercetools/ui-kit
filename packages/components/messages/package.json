@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/messages.cjs.js",
-  "module": "dist/messages.esm.js",
+  "main": "dist/commercetools-uikit-messages.cjs.js",
+  "module": "dist/commercetools-uikit-messages.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

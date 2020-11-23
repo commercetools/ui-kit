@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/utils.cjs.js",
-  "module": "dist/utils.esm.js",
+  "main": "dist/commercetools-uikit-utils.cjs.js",
+  "module": "dist/commercetools-uikit-utils.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace"

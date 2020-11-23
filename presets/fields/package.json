@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/fields.cjs.js",
-  "module": "dist/fields.esm.js",
+  "main": "dist/commercetools-uikit-fields.cjs.js",
+  "module": "dist/commercetools-uikit-fields.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../scripts/version.js replace"

@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/constraints.cjs.js",
-  "module": "dist/constraints.esm.js",
+  "main": "dist/commercetools-uikit-constraints.cjs.js",
+  "module": "dist/commercetools-uikit-constraints.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

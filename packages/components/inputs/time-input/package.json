@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/time-input.cjs.js",
-  "module": "dist/time-input.esm.js",
+  "main": "dist/commercetools-uikit-time-input.cjs.js",
+  "module": "dist/commercetools-uikit-time-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/rich-text-input.cjs.js",
-  "module": "dist/rich-text-input.esm.js",
+  "main": "dist/commercetools-uikit-rich-text-input.cjs.js",
+  "module": "dist/commercetools-uikit-rich-text-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/loading-spinner.cjs.js",
-  "module": "dist/loading-spinner.esm.js",
+  "main": "dist/commercetools-uikit-loading-spinner.cjs.js",
+  "module": "dist/commercetools-uikit-loading-spinner.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

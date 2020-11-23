@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/date-range-input.cjs.js",
-  "module": "dist/date-range-input.esm.js",
+  "main": "dist/commercetools-uikit-date-range-input.cjs.js",
+  "module": "dist/commercetools-uikit-date-range-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

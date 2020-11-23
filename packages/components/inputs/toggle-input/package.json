@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/toggle-input.cjs.js",
-  "module": "dist/toggle-input.esm.js",
+  "main": "dist/commercetools-uikit-toggle-input.cjs.js",
+  "module": "dist/commercetools-uikit-toggle-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

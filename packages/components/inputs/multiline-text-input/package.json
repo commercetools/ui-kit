@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/multiline-text-input.cjs.js",
-  "module": "dist/multiline-text-input.esm.js",
+  "main": "dist/commercetools-uikit-multiline-text-input.cjs.js",
+  "module": "dist/commercetools-uikit-multiline-text-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

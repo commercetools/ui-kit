@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/spacings-inset-squish.cjs.js",
-  "module": "dist/spacings-inset-squish.esm.js",
+  "main": "dist/commercetools-uikit-spacings-inset-squish.cjs.js",
+  "module": "dist/commercetools-uikit-spacings-inset-squish.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/tooltip.cjs.js",
-  "module": "dist/tooltip.esm.js",
+  "main": "dist/commercetools-uikit-tooltip.cjs.js",
+  "module": "dist/commercetools-uikit-tooltip.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

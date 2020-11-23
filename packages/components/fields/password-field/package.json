@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/password-field.cjs.js",
-  "module": "dist/password-field.esm.js",
+  "main": "dist/commercetools-uikit-password-field.cjs.js",
+  "module": "dist/commercetools-uikit-password-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/creatable-select-field.cjs.js",
-  "module": "dist/creatable-select-field.esm.js",
+  "main": "dist/commercetools-uikit-creatable-select-field.cjs.js",
+  "module": "dist/commercetools-uikit-creatable-select-field.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

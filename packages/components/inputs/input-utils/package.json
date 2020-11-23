@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/input-utils.cjs.js",
-  "module": "dist/input-utils.esm.js",
+  "main": "dist/commercetools-uikit-input-utils.cjs.js",
+  "module": "dist/commercetools-uikit-input-utils.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

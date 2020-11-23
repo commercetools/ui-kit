@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/async-creatable-select-input.cjs.js",
-  "module": "dist/async-creatable-select-input.esm.js",
+  "main": "dist/commercetools-uikit-async-creatable-select-input.cjs.js",
+  "module": "dist/commercetools-uikit-async-creatable-select-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

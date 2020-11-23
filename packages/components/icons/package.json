@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/icons.cjs.js",
-  "module": "dist/icons.esm.js",
+  "main": "dist/commercetools-uikit-icons.cjs.js",
+  "module": "dist/commercetools-uikit-icons.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

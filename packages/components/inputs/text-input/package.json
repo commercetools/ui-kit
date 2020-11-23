@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/text-input.cjs.js",
-  "module": "dist/text-input.esm.js",
+  "main": "dist/commercetools-uikit-text-input.cjs.js",
+  "module": "dist/commercetools-uikit-text-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

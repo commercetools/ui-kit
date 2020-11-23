@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/label.cjs.js",
-  "module": "dist/label.esm.js",
+  "main": "dist/commercetools-uikit-label.cjs.js",
+  "module": "dist/commercetools-uikit-label.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

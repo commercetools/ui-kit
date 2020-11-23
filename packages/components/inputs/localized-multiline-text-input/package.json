@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/localized-multiline-text-input.cjs.js",
-  "module": "dist/localized-multiline-text-input.esm.js",
+  "main": "dist/commercetools-uikit-localized-multiline-text-input.cjs.js",
+  "module": "dist/commercetools-uikit-localized-multiline-text-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

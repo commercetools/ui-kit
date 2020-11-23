@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/grid.cjs.js",
-  "module": "dist/grid.esm.js",
+  "main": "dist/commercetools-uikit-grid.cjs.js",
+  "module": "dist/commercetools-uikit-grid.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"

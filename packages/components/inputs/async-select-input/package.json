@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/async-select-input.cjs.js",
-  "module": "dist/async-select-input.esm.js",
+  "main": "dist/commercetools-uikit-async-select-input.cjs.js",
+  "module": "dist/commercetools-uikit-async-select-input.esm.js",
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"

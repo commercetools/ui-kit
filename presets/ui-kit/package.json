@@ -16,8 +16,8 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/ui-kit.cjs.js",
-  "module": "dist/ui-kit.esm.js",
+  "main": "dist/commercetools-frontend-ui-kit.cjs.js",
+  "module": "dist/commercetools-frontend-ui-kit.esm.js",
   "files": ["dist", "materials", "i18n"],
   "scripts": {
     "prepare": "../../scripts/version.js replace",
