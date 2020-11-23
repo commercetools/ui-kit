@@ -39,7 +39,7 @@
     "@emotion/styled": "^11.0.0",
     "@emotion/styled-base": "^11.0.0",
     "prop-types": "15.7.2",
-    "react-select": "3.1.0"
+    "react-select": "3.1.1"
   },
   "peerDependencies": {
     "moment": "2.x",
