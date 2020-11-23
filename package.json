@@ -62,8 +62,12 @@
       "visual-testing-app"
     ],
     "nohoist": [
+      "**/@storybook/react",
+      "**/@storybook/react/**",
       "**/@storybook/theming",
       "**/@storybook/theming/**",
+      "**/@storybook/ui",
+      "**/@storybook/ui/**",
       "react-virtualized/dom-helpers"
     ]
   },
