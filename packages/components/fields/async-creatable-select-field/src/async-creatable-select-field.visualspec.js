@@ -1,13 +1,11 @@
 import { percySnapshot } from '@percy/puppeteer';
 import { getDocument, queries } from 'pptr-testing-library';
 
-const { getAllByLabelText } = queries;
-
 describe('AsyncCreatableSelectField', () => {
   it('Default', async () => {
     await page.goto(`${HOST}/async-creatable-select-field`);
     const doc = await getDocument(page);
-    const select = await getAllByLabelText(doc, 'State');
+    const select = await queries.findAllByLabelText(doc, 'State');
     await expect(select).toBeTruthy();
     await percySnapshot(page, 'AsyncCreatableSelectField');
   });
@@ -15,7 +13,7 @@ describe('AsyncCreatableSelectField', () => {
     it('When open', async () => {
       await page.goto(`${HOST}/async-creatable-select-field/interaction`);
       const doc = await getDocument(page);
-      const selects = await getAllByLabelText(doc, 'State');
+      const selects = await queries.findAllByLabelText(doc, 'State');
       const select = selects[0];
       await select.click();
       await percySnapshot(page, 'AsyncCreatableSelectField - Open');
@@ -27,7 +25,7 @@ describe('AsyncCreatableSelectField', () => {
         `${HOST}/async-creatable-select-field/interaction/without-default-options`
       );
       const doc = await getDocument(page);
-      const selects = await getAllByLabelText(doc, 'State');
+      const selects = await queries.findAllByLabelText(doc, 'State');
       const select = selects[0];
       await select.click();
       await percySnapshot(

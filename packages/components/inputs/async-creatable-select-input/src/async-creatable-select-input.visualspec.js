@@ -1,8 +1,6 @@
 import { percySnapshot } from '@percy/puppeteer';
 import { getDocument, queries } from 'pptr-testing-library';
 
-const { getByText } = queries;
-
 describe('AsyncCreatableSelectInput', () => {
   it('Default', async () => {
     await page.goto(`${HOST}/async-creatable-select-input`);
@@ -13,7 +11,7 @@ describe('AsyncCreatableSelectInput', () => {
   it('Open', async () => {
     await page.goto(`${HOST}/async-creatable-select-input-open`);
     const doc = await getDocument(page);
-    const select = await getByText(doc, 'One');
+    const select = await queries.findByText(doc, 'One');
     await select.click();
     // typing triggers async loadOptions
     await select.type('Two');

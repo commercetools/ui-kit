@@ -1,49 +1,47 @@
 ---
-parser: babel-eslint
+parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
     jsx: true
   ecmaVersion: 8
   sourceType: module
 extends:
-  - 'airbnb-base'
+  - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:import/errors'
+  - 'plugin:import/warnings'
+  - 'plugin:import/typescript'
   - 'plugin:jest/recommended'
   - 'plugin:jest-dom/recommended'
   - 'plugin:react/recommended'
+  - 'plugin:testing-library/react'
   - 'prettier'
   - 'prettier/react'
-env:
-  browser: true
-  es6: true
-  jest: true
-  node: true
-  mocha: false
+  - 'prettier/@typescript-eslint'
 plugins:
   - 'formatjs'
   - 'import'
   - 'jest'
   - 'jsx-a11y'
   - 'prettier'
-  - 'prefer-object-spread'
   - 'react'
   - 'react-hooks'
-overrides:
-  - files: ['*.story.js']
-    rules:
-      'max-classes-per-file': 0
-  - files: ['*.spec.js', '**/docs/*.js']
-    rules:
-      'react/display-name': 0
-      'react/prop-types': 0
-  - files: ['*.visualroute.js']
-    rules:
-      'react/prop-types': 0
-      'react/display-name': 0
-  - files: ['*.visualspec.js']
-    globals:
-      page: true
-      HOST: true
+  - '@typescript-eslint/eslint-plugin'
 settings:
+  import/parsers:
+    '@typescript-eslint/parser':
+      - '.js'
+      - '.jsx'
+      - '.ts'
+      - '.tsx'
+  import/resolver:
+    'eslint-import-resolver-typescript': true
+    typescript: {}
+    node:
+      extensions:
+        - '.js'
+        - '.jsx'
+        - '.ts'
+        - '.tsx'
   import/ignore:
     # included by default, but replaced if explicitly configured
     - node_modules
@@ -57,44 +55,54 @@ settings:
     version: detect
 
 rules:
-  'class-methods-use-this':
-    - 'error'
-    - exceptMethods:
-        - render
-        - getInitialState
-        - getDefaultProps
-        - getChildContext
-        - shouldComponentUpdate
-        - UNSAFE_componentWillMount
-        - UNSAFE_componentWillReceiveProps
-        - UNSAFE_componentWillUpdate
-        - componentWillUnmount
-        - componentDidMount
-        - componentDidUpdate
-  'function-paren-newline': 0
-  'import/no-extraneous-dependencies': 0
-  'import/no-named-as-default': 0
-  'import/first': 0
-  'import/order': 2
-  'no-restricted-globals': ['error', 'find', 'name', 'location']
-  'no-warning-comments': 0
-  'no-use-before-define':
+  '@typescript-eslint/ban-types': 0
+  '@typescript-eslint/naming-convention': 0
+  '@typescript-eslint/consistent-type-definitions': 0
+  '@typescript-eslint/no-explicit-any': 2
+  '@typescript-eslint/no-use-before-define':
     - error
     - functions: false
-  'no-underscore-dangle': 0
-  'jest/no-identical-title': 'warn'
-  'jest/no-focused-tests': 2
-  'react/jsx-uses-vars': 2
-  'react/wrap-multilines': 0
-  'react/no-deprecated': 'error'
-  'react/no-find-dom-node': 0
-  'react/display-name':
-    - 1
-    - ignoreTranspilerName: true
-  'prefer-object-spread/prefer-object-spread': 2
-  'prefer-destructuring': 0
-  'prefer-promise-reject-errors': 'warn'
-  'react/jsx-no-target-blank': 0
-  'lines-between-class-members': 0
-  'react-hooks/rules-of-hooks': 'error'
-  'react-hooks/exhaustive-deps': 'warn'
+  '@typescript-eslint/no-var-requires': 0
+  '@typescript-eslint/unbound-method': 0
+  'react/jsx-tag-spacing': 0
+  'import/no-extraneous-dependencies': 0
+  'import/no-named-as-default': 0
+  'import/no-named-as-default-member': 0
+  'import/default': 0
+  'import/no-unresolved': 2
+  'react-hooks/rules-of-hooks': 2
+  'react-hooks/exhaustive-deps': 1
+  'jest/expect-expect': 0
+  'testing-library/prefer-presence-queries': 2
+  'testing-library/await-async-query': 2
+
+overrides:
+  - files: ['*.story.js']
+    rules:
+      '@typescript-eslint/no-use-before-define': 1
+      'max-classes-per-file': 0
+      'import/namespace': 1
+  - files: ['*.spec.js', '**/docs/*.js']
+    rules:
+      '@typescript-eslint/no-empty-function': 1
+      'react/display-name': 0
+      'react/prop-types': 0
+  - files: ['*.visualroute.js']
+    rules:
+      '@typescript-eslint/no-empty-function': 1
+      'react/prop-types': 0
+      'react/display-name': 0
+  - files: ['*.visualspec.js']
+    globals:
+      page: true
+      HOST: true
+  - files: ['*.ts', '*.tsx']
+    rules:
+      '@typescript-eslint/ban-ts-comment': 0
+      '@typescript-eslint/explicit-function-return-type': 0
+      '@typescript-eslint/explicit-member-accessibility':
+        - error
+        - accessibility: 'no-public'
+      '@typescript-eslint/no-require-imports': 0
+      '@typescript-eslint/promise-function-async': 0
+      'react/prop-types': 0

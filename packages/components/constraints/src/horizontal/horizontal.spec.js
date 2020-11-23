@@ -11,7 +11,7 @@ it('should render children', () => {
       <div data-testid="child" />
     </Horizontal>
   );
-  expect(screen.queryByTestId('child')).toBeInTheDocument();
+  expect(screen.getByTestId('child')).toBeInTheDocument();
 });
 
 it('should pass down `data` prop', () => {
@@ -20,5 +20,5 @@ it('should pass down `data` prop', () => {
       <div />
     </Horizontal>
   );
-  expect(screen.queryByTestId('child')).toBeInTheDocument();
+  expect(screen.getByTestId('child')).toBeInTheDocument();
 });

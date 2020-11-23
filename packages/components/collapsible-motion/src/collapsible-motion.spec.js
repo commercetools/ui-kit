@@ -295,7 +295,7 @@ describe('content visibility', () => {
     render(<CollapsibleMotion isDefaultClosed>{renderProp}</CollapsibleMotion>);
 
     expect(screen.queryByLabelText('I am invisible!')).not.toBeVisible();
-    expect(screen.queryByLabelText('I am invisible!')).toBeInTheDocument();
+    expect(screen.getByLabelText('I am invisible!')).toBeInTheDocument();
   });
 
   it('should make content invisible when it is collapsed', async () => {
@@ -321,7 +321,7 @@ describe('content visibility', () => {
     fireEvent.click(screen.getByTestId('button'));
 
     expect(screen.queryByLabelText('I am invisible!')).not.toBeVisible();
-    expect(screen.queryByLabelText('I am invisible!')).toBeInTheDocument();
+    expect(screen.getByLabelText('I am invisible!')).toBeInTheDocument();
   });
 
   it('should make content visible when it is opened', async () => {
@@ -343,7 +343,7 @@ describe('content visibility', () => {
     render(<CollapsibleMotion isDefaultClosed>{renderProp}</CollapsibleMotion>);
 
     expect(screen.queryByLabelText('I am invisible!')).not.toBeVisible();
-    expect(screen.queryByLabelText('I am invisible!')).toBeInTheDocument();
+    expect(screen.getByLabelText('I am invisible!')).toBeInTheDocument();
 
     fireEvent.click(screen.getByTestId('button'));
 

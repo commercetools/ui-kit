@@ -76,6 +76,7 @@ storiesOf('Components|Grid', module)
               <a
                 href="https://css-tricks.com/snippets/css/complete-guide-grid"
                 target="_blank"
+                rel="noreferrer"
               >
                 {'CSS Grid Layout'}
               </a>

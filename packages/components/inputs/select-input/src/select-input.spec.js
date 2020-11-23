@@ -203,7 +203,7 @@ describe('in multi mode', () => {
     describe('when disabled', () => {
       it('should not call onChange when value is cleared', () => {
         const onChange = jest.fn();
-        const { getByLabelText, queryByText } = renderInput({
+        const { getByLabelText, getByText } = renderInput({
           onChange,
           isMulti: true,
           value: ['mango'],
@@ -213,7 +213,7 @@ describe('in multi mode', () => {
         fireEvent.focus(input);
         fireEvent.keyDown(input, { key: 'Backspace' });
         expect(onChange).not.toHaveBeenCalled();
-        expect(queryByText('Mango')).toBeInTheDocument();
+        expect(getByText('Mango')).toBeInTheDocument();
       });
       it('should not render the clear button', () => {
         const { queryByTitle } = renderInput({
@@ -333,7 +333,7 @@ describe('in multi mode', () => {
     describe('when read-only', () => {
       it('should not call onChange when value is cleared', () => {
         const onChange = jest.fn();
-        const { getByLabelText, queryByText } = renderInput({
+        const { getByLabelText, getByText } = renderInput({
           onChange,
           isMulti: true,
           value: ['mango'],
@@ -343,7 +343,7 @@ describe('in multi mode', () => {
         fireEvent.focus(input);
         fireEvent.keyDown(input, { key: 'Backspace' });
         expect(onChange).not.toHaveBeenCalled();
-        expect(queryByText('Mango')).toBeInTheDocument();
+        expect(getByText('Mango')).toBeInTheDocument();
       });
       it('should not render the clear button', () => {
         const { queryByTitle } = renderInput({

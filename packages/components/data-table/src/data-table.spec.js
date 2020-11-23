@@ -34,15 +34,15 @@ describe('DataTable', () => {
   it('should render the column labels', () => {
     render(<DataTable {...baseProps} />);
 
-    expect(screen.queryByText('Title')).toBeInTheDocument();
-    expect(screen.queryByText('Year')).toBeInTheDocument();
+    expect(screen.getByText('Title')).toBeInTheDocument();
+    expect(screen.getByText('Year')).toBeInTheDocument();
   });
 
   it('should be able to find headers by the data-testid', () => {
     render(<DataTable {...baseProps} />);
 
-    expect(screen.queryByTestId('header-title')).toBeInTheDocument();
-    expect(screen.queryByTestId('header-year')).toBeInTheDocument();
+    expect(screen.getByTestId('header-title')).toBeInTheDocument();
+    expect(screen.getByTestId('header-year')).toBeInTheDocument();
   });
 
   it('should be able to find headers by the data-id', () => {
@@ -58,17 +58,17 @@ describe('DataTable', () => {
   it('should be able to find cells by the data-testid', () => {
     render(<DataTable {...baseProps} />);
 
-    expect(screen.queryByTestId('cell-0-title')).toBeInTheDocument();
-    expect(screen.queryByTestId('cell-1-title')).toBeInTheDocument();
-    expect(screen.queryByTestId('cell-2-title')).toBeInTheDocument();
-    expect(screen.queryByTestId('cell-0-year')).toBeInTheDocument();
+    expect(screen.getByTestId('cell-0-title')).toBeInTheDocument();
+    expect(screen.getByTestId('cell-1-title')).toBeInTheDocument();
+    expect(screen.getByTestId('cell-2-title')).toBeInTheDocument();
+    expect(screen.getByTestId('cell-0-year')).toBeInTheDocument();
   });
 
   it('should render item fields which have corresponding column keys', () => {
     render(<DataTable {...baseProps} />);
 
-    expect(screen.queryByText('Woman At War')).toBeInTheDocument();
-    expect(screen.queryByText('2018')).toBeInTheDocument();
+    expect(screen.getByText('Woman At War')).toBeInTheDocument();
+    expect(screen.getByText('2018')).toBeInTheDocument();
     expect(screen.queryByText('2-woman')).not.toBeInTheDocument();
   });
 

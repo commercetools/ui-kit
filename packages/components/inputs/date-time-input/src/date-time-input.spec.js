@@ -133,7 +133,7 @@ it('should open the date picker on clicking', () => {
 
   fireEvent.click(dateInput);
 
-  expect(screen.queryByText('September')).toBeInTheDocument();
+  expect(screen.getByText('September')).toBeInTheDocument();
 });
 
 it('should not open the date picker just by gaining focus', () => {
@@ -154,13 +154,13 @@ describe('date picker keyboard navigation', () => {
 
     fireEvent.click(dateInput);
 
-    expect(screen.queryByText('September')).toBeInTheDocument();
+    expect(screen.getByText('September')).toBeInTheDocument();
 
     // ArrowDown
     fireEvent.keyDown(dateInput, { keyCode: 40 });
 
     expect(screen.queryByText('September')).not.toBeInTheDocument();
-    expect(screen.queryByText('October')).toBeInTheDocument();
+    expect(screen.getByText('October')).toBeInTheDocument();
   });
   it('should move to previous month when pressing ArrowUp with first day of month highlighted', () => {
     renderDateTimeInput({ value: '2020-09-01' });
@@ -169,12 +169,12 @@ describe('date picker keyboard navigation', () => {
 
     fireEvent.click(dateInput);
 
-    expect(screen.queryByText('September')).toBeInTheDocument();
+    expect(screen.getByText('September')).toBeInTheDocument();
 
     // ArrowUp
     fireEvent.keyDown(dateInput, { keyCode: 38 });
 
     expect(screen.queryByText('September')).not.toBeInTheDocument();
-    expect(screen.queryByText('August')).toBeInTheDocument();
+    expect(screen.getByText('August')).toBeInTheDocument();
   });
 });
