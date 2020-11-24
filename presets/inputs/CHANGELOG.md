@@ -1,5 +1,35 @@
 # @commercetools-uikit/inputs
 
+## 10.42.2
+
+### Patch Changes
+
+- [`c7d495b`](https://github.com/commercetools/ui-kit/commit/c7d495b9160392ffd7aa7af24d15518da7948c97) [#1693](https://github.com/commercetools/ui-kit/pull/1693) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade preconstruct CLI to v2 for bundling.
+
+- Updated dependencies [[`c7d495b`](https://github.com/commercetools/ui-kit/commit/c7d495b9160392ffd7aa7af24d15518da7948c97), [`85fe702`](https://github.com/commercetools/ui-kit/commit/85fe702d28c23de58a376cbcf38d39b838357fbc), [`d38ddb6`](https://github.com/commercetools/ui-kit/commit/d38ddb66b29a003eb2620d26199f2cfd86b8ffa4)]:
+  - @commercetools-uikit/async-creatable-select-input@10.42.2
+  - @commercetools-uikit/async-select-input@10.42.2
+  - @commercetools-uikit/checkbox-input@10.42.2
+  - @commercetools-uikit/creatable-select-input@10.42.2
+  - @commercetools-uikit/date-input@10.42.2
+  - @commercetools-uikit/date-range-input@10.42.2
+  - @commercetools-uikit/date-time-input@10.42.2
+  - @commercetools-uikit/localized-money-input@10.42.2
+  - @commercetools-uikit/localized-multiline-text-input@10.42.2
+  - @commercetools-uikit/localized-rich-text-input@10.42.2
+  - @commercetools-uikit/localized-text-input@10.42.2
+  - @commercetools-uikit/money-input@10.42.2
+  - @commercetools-uikit/multiline-text-input@10.42.2
+  - @commercetools-uikit/number-input@10.42.2
+  - @commercetools-uikit/password-input@10.42.2
+  - @commercetools-uikit/radio-input@10.42.2
+  - @commercetools-uikit/rich-text-input@10.42.2
+  - @commercetools-uikit/search-select-input@10.42.2
+  - @commercetools-uikit/select-input@10.42.2
+  - @commercetools-uikit/text-input@10.42.2
+  - @commercetools-uikit/time-input@10.42.2
+  - @commercetools-uikit/toggle-input@10.42.2
+
 ## 10.42.1
 
 ### Patch Changes

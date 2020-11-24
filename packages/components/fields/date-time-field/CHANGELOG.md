@@ -1,5 +1,22 @@
 # @commercetools-uikit/date-time-field
 
+## 10.42.2
+
+### Patch Changes
+
+- [`c7d495b`](https://github.com/commercetools/ui-kit/commit/c7d495b9160392ffd7aa7af24d15518da7948c97) [#1693](https://github.com/commercetools/ui-kit/pull/1693) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade preconstruct CLI to v2 for bundling.
+
+* [`85fe702`](https://github.com/commercetools/ui-kit/commit/85fe702d28c23de58a376cbcf38d39b838357fbc) [#1697](https://github.com/commercetools/ui-kit/pull/1697) Thanks [@emmenko](https://github.com/emmenko)! - Remove dependency `@emotion/styled-base` as it's not necessary anymore in emotion v11.
+
+* Updated dependencies [[`c7d495b`](https://github.com/commercetools/ui-kit/commit/c7d495b9160392ffd7aa7af24d15518da7948c97), [`85fe702`](https://github.com/commercetools/ui-kit/commit/85fe702d28c23de58a376cbcf38d39b838357fbc)]:
+  - @commercetools-uikit/design-system@10.42.2
+  - @commercetools-uikit/constraints@10.42.2
+  - @commercetools-uikit/field-errors@10.42.2
+  - @commercetools-uikit/field-label@10.42.2
+  - @commercetools-uikit/date-time-input@10.42.2
+  - @commercetools-uikit/utils@10.42.2
+  - @commercetools-uikit/spacings@10.42.2
+
 ## 10.42.1
 
 ### Patch Changes
