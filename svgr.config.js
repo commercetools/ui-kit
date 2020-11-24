@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const templateCreateStyledIcon = fs.readFileSync(
-  path.join(__dirname, 'templates/create-styled-icon.js'),
+  path.join(__dirname, 'templates/icon.styles.js'),
   { encoding: 'utf8' }
 );
 
