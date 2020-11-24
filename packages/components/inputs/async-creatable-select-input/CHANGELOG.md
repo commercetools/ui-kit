@@ -1,5 +1,25 @@
 # @commercetools-uikit/async-creatable-select-input
 
+## 10.42.2
+
+### Patch Changes
+
+- [`c7d495b`](https://github.com/commercetools/ui-kit/commit/c7d495b9160392ffd7aa7af24d15518da7948c97) [#1693](https://github.com/commercetools/ui-kit/pull/1693) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade preconstruct CLI to v2 for bundling.
+
+* [`85fe702`](https://github.com/commercetools/ui-kit/commit/85fe702d28c23de58a376cbcf38d39b838357fbc) [#1697](https://github.com/commercetools/ui-kit/pull/1697) Thanks [@emmenko](https://github.com/emmenko)! - Remove dependency `@emotion/styled-base` as it's not necessary anymore in emotion v11.
+
+- [`d38ddb6`](https://github.com/commercetools/ui-kit/commit/d38ddb66b29a003eb2620d26199f2cfd86b8ffa4) [#1692](https://github.com/commercetools/ui-kit/pull/1692) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`c7d495b`](https://github.com/commercetools/ui-kit/commit/c7d495b9160392ffd7aa7af24d15518da7948c97), [`85fe702`](https://github.com/commercetools/ui-kit/commit/85fe702d28c23de58a376cbcf38d39b838357fbc), [`d38ddb6`](https://github.com/commercetools/ui-kit/commit/d38ddb66b29a003eb2620d26199f2cfd86b8ffa4)]:
+  - @commercetools-uikit/design-system@10.42.2
+  - @commercetools-uikit/constraints@10.42.2
+  - @commercetools-uikit/icons@10.42.2
+  - @commercetools-uikit/select-utils@10.42.2
+  - @commercetools-uikit/loading-spinner@10.42.2
+  - @commercetools-uikit/text@10.42.2
+  - @commercetools-uikit/utils@10.42.2
+  - @commercetools-uikit/spacings@10.42.2
+
 ## 10.42.1
 
 ### Patch Changes

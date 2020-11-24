@@ -1,5 +1,30 @@
 # @commercetools-uikit/fields
 
+## 10.42.2
+
+### Patch Changes
+
+- [`c7d495b`](https://github.com/commercetools/ui-kit/commit/c7d495b9160392ffd7aa7af24d15518da7948c97) [#1693](https://github.com/commercetools/ui-kit/pull/1693) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade preconstruct CLI to v2 for bundling.
+
+- Updated dependencies [[`c7d495b`](https://github.com/commercetools/ui-kit/commit/c7d495b9160392ffd7aa7af24d15518da7948c97), [`85fe702`](https://github.com/commercetools/ui-kit/commit/85fe702d28c23de58a376cbcf38d39b838357fbc)]:
+  - @commercetools-uikit/async-creatable-select-field@10.42.2
+  - @commercetools-uikit/async-select-field@10.42.2
+  - @commercetools-uikit/creatable-select-field@10.42.2
+  - @commercetools-uikit/date-field@10.42.2
+  - @commercetools-uikit/date-range-field@10.42.2
+  - @commercetools-uikit/date-time-field@10.42.2
+  - @commercetools-uikit/localized-multiline-text-field@10.42.2
+  - @commercetools-uikit/localized-text-field@10.42.2
+  - @commercetools-uikit/money-field@10.42.2
+  - @commercetools-uikit/multiline-text-field@10.42.2
+  - @commercetools-uikit/number-field@10.42.2
+  - @commercetools-uikit/password-field@10.42.2
+  - @commercetools-uikit/radio-field@10.42.2
+  - @commercetools-uikit/search-select-field@10.42.2
+  - @commercetools-uikit/select-field@10.42.2
+  - @commercetools-uikit/text-field@10.42.2
+  - @commercetools-uikit/time-field@10.42.2
+
 ## 10.42.1
 
 ### Patch Changes

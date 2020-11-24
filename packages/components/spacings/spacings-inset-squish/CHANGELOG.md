@@ -1,5 +1,15 @@
 # @commercetools-uikit/spacings-inset-squish
 
+## 10.42.2
+
+### Patch Changes
+
+- [`c7d495b`](https://github.com/commercetools/ui-kit/commit/c7d495b9160392ffd7aa7af24d15518da7948c97) [#1693](https://github.com/commercetools/ui-kit/pull/1693) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade preconstruct CLI to v2 for bundling.
+
+- Updated dependencies [[`c7d495b`](https://github.com/commercetools/ui-kit/commit/c7d495b9160392ffd7aa7af24d15518da7948c97)]:
+  - @commercetools-uikit/design-system@10.42.2
+  - @commercetools-uikit/utils@10.42.2
+
 ## 10.42.1
 
 ### Patch Changes
