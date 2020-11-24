@@ -103,16 +103,6 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
   return [animationRef.current, containerStyles, handleToggle, nodeRef];
 };
 
-const CollapsibleMotion = (props) => {
-  const isControlledComponent = !isNil(props.isClosed);
-
-  if (isControlledComponent) {
-    return <ControlledCollapsibleMotion {...props} />;
-  }
-
-  return <UncontrolledCollapsibleMotion {...props} />;
-};
-
 const ControlledCollapsibleMotion = (props) => {
   const [
     animation,
@@ -150,7 +140,6 @@ const ControlledCollapsibleMotion = (props) => {
     </ClassNames>
   );
 };
-
 ControlledCollapsibleMotion.displayName = 'ControlledCollapsibleMotion';
 ControlledCollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
@@ -193,13 +182,21 @@ const UncontrolledCollapsibleMotion = (props) => {
     </ClassNames>
   );
 };
-
-UncontrolledCollapsibleMotion.defaultProps = defaultProps;
 UncontrolledCollapsibleMotion.displayName = 'UncontrolledCollapsibleMotion';
+UncontrolledCollapsibleMotion.defaultProps = defaultProps;
 UncontrolledCollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
-CollapsibleMotion.defaultProps = defaultProps;
+const CollapsibleMotion = (props) => {
+  const isControlledComponent = !isNil(props.isClosed);
+
+  if (isControlledComponent) {
+    return <ControlledCollapsibleMotion {...props} />;
+  }
+
+  return <UncontrolledCollapsibleMotion {...props} />;
+};
 CollapsibleMotion.displayName = 'CollapsibleMotion';
+CollapsibleMotion.defaultProps = defaultProps;
 CollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
 export default CollapsibleMotion;

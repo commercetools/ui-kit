@@ -247,7 +247,7 @@ it('should open the date picker on clicking', () => {
 
   fireEvent.click(dateInput);
 
-  expect(screen.queryByText('September')).toBeInTheDocument();
+  expect(screen.getByText('September')).toBeInTheDocument();
 });
 
 it('should not open the date picker just by gaining focus', () => {
@@ -268,7 +268,7 @@ describe('date picker keyboard navigation', () => {
 
     fireEvent.click(dateRangeInput);
 
-    expect(screen.queryByText('September')).toBeInTheDocument();
+    expect(screen.getByText('September')).toBeInTheDocument();
 
     // DateRangePicker highlights the first day of the month of the start of the range
     // Therefore, we only need to press ArrowDown at least 30 times in September
@@ -279,7 +279,7 @@ describe('date picker keyboard navigation', () => {
     }
 
     expect(screen.queryByText('September')).not.toBeInTheDocument();
-    expect(screen.queryByText('October')).toBeInTheDocument();
+    expect(screen.getByText('October')).toBeInTheDocument();
   });
   it('should move to previous month when pressing ArrowUp through the current month', () => {
     renderDateRangeInput({ value: ['2020-09-10', '2020-09-20'] });
@@ -288,13 +288,13 @@ describe('date picker keyboard navigation', () => {
 
     fireEvent.click(dateRangeInput);
 
-    expect(screen.queryByText('September')).toBeInTheDocument();
+    expect(screen.getByText('September')).toBeInTheDocument();
 
     // DateRangePicker highlights the first day of the month of the start of the range
     // therefore, we only need to press ArrowUp once
     fireEvent.keyDown(dateRangeInput, { keyCode: 38 });
 
     expect(screen.queryByText('September')).not.toBeInTheDocument();
-    expect(screen.queryByText('August')).toBeInTheDocument();
+    expect(screen.getByText('August')).toBeInTheDocument();
   });
 });

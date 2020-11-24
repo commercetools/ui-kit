@@ -1,7 +1,5 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { getDocument, queries, wait } from 'pptr-testing-library';
-
-const { getByLabelText, getByTestId, getByText } = queries;
+import { getDocument, queries } from 'pptr-testing-library';
 
 describe('RichTextInput', () => {
   const blur = async (element) => {
@@ -40,17 +38,17 @@ describe('RichTextInput', () => {
     it('apply bold, italic, underline, strikethrough, superscript, subscript', async () => {
       await page.goto(`${HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
-      const input = await getByTestId(doc, 'rich-text');
+      const input = await queries.findByTestId(doc, 'rich-text');
 
       await selectAllText(input);
       await input.press('Backspace');
 
       // make the text bold
-      const boldButton = await getByLabelText(doc, 'Bold');
+      const boldButton = await queries.findByLabelText(doc, 'Bold');
       await boldButton.click();
 
       await input.type('Hello world');
-      await wait(() => getByText(doc, 'Hello world'));
+      await queries.findByText(doc, 'Hello world');
 
       // check that there is now a strong tag in the document.
       let numOfTags = await getNumberOfTags('strong');
@@ -70,12 +68,12 @@ describe('RichTextInput', () => {
 
       await input.type('Italic text!');
 
-      await wait(() => getByText(doc, 'Italic text!'));
+      await queries.findByText(doc, 'Italic text!');
 
       await selectAllText(input);
 
       // make the selection italic
-      const italicButton = await getByLabelText(doc, 'Italic');
+      const italicButton = await queries.findByLabelText(doc, 'Italic');
       await italicButton.click();
 
       // check there are italic tags in the document.
@@ -93,19 +91,19 @@ describe('RichTextInput', () => {
       await input.press('Backspace');
       await input.type('Underlined text!');
 
-      await wait(() => getByText(doc, 'Underlined text!'));
+      await queries.findByText(doc, 'Underlined text!');
 
       await selectAllText(input);
 
       // make the selection underlined
-      const underlineButton = await getByLabelText(doc, 'Underline');
+      const underlineButton = await queries.findByLabelText(doc, 'Underline');
       await underlineButton.click();
 
       // check there are italic tags in the document.
       numOfTags = await getNumberOfTags('u');
       expect(numOfTags).toEqual(1);
 
-      await wait(() => getByText(doc, 'Underlined text!'));
+      await queries.findByText(doc, 'Underlined text!');
 
       // click italic button to remove it
       await underlineButton.click();
@@ -121,17 +119,20 @@ describe('RichTextInput', () => {
       await input.press('Backspace');
 
       await input.type('Strike through?!');
-      await wait(() => getByText(doc, 'Strike through?!'));
+      await queries.findByText(doc, 'Strike through?!');
 
       await selectAllText(input);
 
-      const moreStylesButton = await getByLabelText(doc, 'More styles');
+      const moreStylesButton = await queries.findByLabelText(
+        doc,
+        'More styles'
+      );
       await moreStylesButton.click();
 
-      await wait(() => getByText(doc, 'Strikethrough'));
+      await queries.findByText(doc, 'Strikethrough');
       await percySnapshot(page, 'RichTextInput - more styles menu open');
 
-      let strikethroughButton = await getByText(doc, 'Strikethrough');
+      let strikethroughButton = await queries.findByText(doc, 'Strikethrough');
       await strikethroughButton.click();
 
       // check there are del tags in the document.
@@ -141,9 +142,9 @@ describe('RichTextInput', () => {
       // remove the mark
       await moreStylesButton.click();
 
-      await wait(() => getByText(doc, 'Strikethrough'));
+      await queries.findByText(doc, 'Strikethrough');
 
-      strikethroughButton = await getByText(doc, 'Strikethrough');
+      strikethroughButton = await queries.findByText(doc, 'Strikethrough');
       await strikethroughButton.click();
 
       // check there are del tags in the document.
@@ -154,15 +155,15 @@ describe('RichTextInput', () => {
       await input.press('Backspace');
 
       await input.type('Superscript!');
-      await wait(() => getByText(doc, 'Superscript!'));
+      await queries.findByText(doc, 'Superscript!');
 
       await selectAllText(input);
 
       await moreStylesButton.click();
 
-      await wait(() => getByText(doc, 'Superscript'));
+      await queries.findByText(doc, 'Superscript');
 
-      let superscriptButton = await getByText(doc, 'Superscript');
+      let superscriptButton = await queries.findByText(doc, 'Superscript');
       await superscriptButton.click();
 
       // check there are sup tags in the document.
@@ -172,8 +173,8 @@ describe('RichTextInput', () => {
       // remove the mark
       await moreStylesButton.click();
 
-      await wait(() => getByText(doc, 'Superscript'));
-      superscriptButton = await getByText(doc, 'Superscript');
+      await queries.findByText(doc, 'Superscript');
+      superscriptButton = await queries.findByText(doc, 'Superscript');
       await superscriptButton.click();
 
       // check there are no del tags in the document.
@@ -183,7 +184,7 @@ describe('RichTextInput', () => {
       // apply subscript to the selection
 
       await moreStylesButton.click();
-      let subscriptButton = await getByText(doc, 'Subscript');
+      let subscriptButton = await queries.findByText(doc, 'Subscript');
 
       await subscriptButton.click();
 
@@ -194,7 +195,7 @@ describe('RichTextInput', () => {
       // remove subscript now
 
       await moreStylesButton.click();
-      subscriptButton = await getByText(doc, 'Subscript');
+      subscriptButton = await queries.findByText(doc, 'Subscript');
       await subscriptButton.click();
 
       // check there are no sub tags in the document.
@@ -205,16 +206,16 @@ describe('RichTextInput', () => {
     it('undo and redo', async () => {
       await page.goto(`${HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
-      const input = await getByTestId(doc, 'rich-text');
+      const input = await queries.findByTestId(doc, 'rich-text');
 
       await selectAllText(input);
       await input.press('Backspace');
 
       // make the text bold
-      const boldButton = await getByLabelText(doc, 'Bold');
+      const boldButton = await queries.findByLabelText(doc, 'Bold');
 
       await input.type('Let us now test undo!');
-      await wait(() => getByText(doc, 'Let us now test undo!'));
+      await queries.findByText(doc, 'Let us now test undo!');
 
       // apply bold to selection.
       await selectAllText(input);
@@ -224,7 +225,7 @@ describe('RichTextInput', () => {
       let numOfTags = await getNumberOfTags('strong');
       expect(numOfTags).toEqual(1);
 
-      const undoButton = await getByLabelText(doc, 'Undo');
+      const undoButton = await queries.findByLabelText(doc, 'Undo');
       await undoButton.click();
 
       // bold should be removed
@@ -232,7 +233,7 @@ describe('RichTextInput', () => {
       expect(numOfTags).toEqual(0);
 
       // now we can try redoing it
-      const redoButton = await getByLabelText(doc, 'Redo');
+      const redoButton = await queries.findByLabelText(doc, 'Redo');
       await redoButton.click();
 
       // bold should be added again
@@ -248,13 +249,13 @@ describe('RichTextInput', () => {
       // then click undo, text should be back
 
       await undoButton.click();
-      await wait(() => getByText(doc, 'Let us now test undo!'));
+      await queries.findByText(doc, 'Let us now test undo!');
     });
 
     it('apply text styles', async () => {
       await page.goto(`${HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
-      const input = await getByTestId(doc, 'rich-text');
+      const input = await queries.findByTestId(doc, 'rich-text');
 
       await selectAllText(input);
       await input.press('Backspace');
@@ -263,14 +264,14 @@ describe('RichTextInput', () => {
       // blur input first to test that editor focus works correctly
       await blur(input);
 
-      const styleMenuButton = await getByLabelText(doc, 'Style');
+      const styleMenuButton = await queries.findByLabelText(doc, 'Style');
       await styleMenuButton.click();
 
-      await wait(() => getByText(doc, 'Headline H1'));
+      await queries.findByText(doc, 'Headline H1');
       await percySnapshot(page, 'RichTextInput - style menu open');
 
       // then click on the H1 button
-      const h1Button = await getByText(doc, 'Headline H1');
+      const h1Button = await queries.findByText(doc, 'Headline H1');
       await h1Button.click();
 
       // now type into the input
@@ -278,7 +279,7 @@ describe('RichTextInput', () => {
       await input.type(h1Text);
 
       // text we typed should be visible on the screen
-      await wait(() => getByText(doc, h1Text));
+      await queries.findByText(doc, h1Text);
 
       // h1 should be in document
       let numOfTags = await getNumberOfTags('h1');
@@ -291,7 +292,7 @@ describe('RichTextInput', () => {
       await styleMenuButton.click();
 
       // then click on the H1 button
-      const h3Button = await getByText(doc, 'Headline H3');
+      const h3Button = await queries.findByText(doc, 'Headline H3');
       await h3Button.click();
 
       // h1 should not be in document
@@ -311,7 +312,7 @@ describe('RichTextInput', () => {
       await styleMenuButton.click();
 
       // then click on the paragraph button
-      const paragraphbutton = await getByText(doc, 'Paragraph');
+      const paragraphbutton = await queries.findByText(doc, 'Paragraph');
       await paragraphbutton.click();
 
       // h3 should not be in document
@@ -322,9 +323,9 @@ describe('RichTextInput', () => {
     it('apply lists', async () => {
       await page.goto(`${HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
-      const input = await getByTestId(doc, 'rich-text');
+      const input = await queries.findByTestId(doc, 'rich-text');
 
-      const resetButton = await getByLabelText(
+      const resetButton = await queries.findByLabelText(
         doc,
         'Reset value to Hello World'
       );
@@ -333,7 +334,10 @@ describe('RichTextInput', () => {
       await input.press('Backspace');
 
       // get and click unordered list button
-      const unorderedListButton = await getByLabelText(doc, 'Bullet list');
+      const unorderedListButton = await queries.findByLabelText(
+        doc,
+        'Bullet list'
+      );
       await unorderedListButton.click();
 
       await input.type('Item 1');
@@ -352,7 +356,10 @@ describe('RichTextInput', () => {
       // now switch to an ordered list
 
       await selectAllText(input);
-      const orderedListButton = await getByLabelText(doc, 'Numbered list');
+      const orderedListButton = await queries.findByLabelText(
+        doc,
+        'Numbered list'
+      );
       await orderedListButton.click();
 
       // ul should not be in the document

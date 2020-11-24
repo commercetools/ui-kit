@@ -58,7 +58,7 @@ describe('<Headline>', () => {
         Title
       </Text.Headline>
     );
-    expect(screen.queryByTitle('tooltip text')).toBeInTheDocument();
+    expect(screen.getByTitle('tooltip text')).toBeInTheDocument();
   });
 
   it('should forward data attriutes', () => {
@@ -131,7 +131,7 @@ describe('<Subheadline>', () => {
         Title
       </Text.Subheadline>
     );
-    expect(screen.queryByTitle('tooltip text')).toBeInTheDocument();
+    expect(screen.getByTitle('tooltip text')).toBeInTheDocument();
   });
 
   it('should forward data attriutes', () => {
@@ -181,7 +181,7 @@ describe('<Wrap>', () => {
 
   it('should set `title` attribute', () => {
     render(<Text.Wrap title="tooltip text">Title</Text.Wrap>);
-    expect(screen.queryByTitle('tooltip text')).toBeInTheDocument();
+    expect(screen.getByTitle('tooltip text')).toBeInTheDocument();
   });
 
   it('should forward data attriutes', () => {

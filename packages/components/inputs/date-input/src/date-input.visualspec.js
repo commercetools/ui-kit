@@ -1,7 +1,5 @@
 import { percySnapshot } from '@percy/puppeteer';
-import { getDocument, queries, wait } from 'pptr-testing-library';
-
-const { getByLabelText, getByTestId, getByText } = queries;
+import { getDocument, queries } from 'pptr-testing-library';
 
 describe('DateInput', () => {
   it('Default', async () => {
@@ -16,12 +14,15 @@ describe('DateInput', () => {
     await percySnapshot(page, 'DateInput - open');
 
     const doc = await getDocument(page);
-    const input = await getByTestId(doc, 'date-input');
+    const input = await queries.findByTestId(doc, 'date-input');
 
-    const prevMonthButton = await getByLabelText(doc, 'show prev month');
+    const prevMonthButton = await queries.findByLabelText(
+      doc,
+      'show prev month'
+    );
     await prevMonthButton.click();
 
-    await wait(() => getByText(doc, 'October'));
+    await queries.findByText(doc, 'October');
     // our input should still be focused even though we clicked a header button
 
     await input.press('Backspace');
@@ -29,6 +30,6 @@ describe('DateInput', () => {
     await input.press('Backspace');
     await input.press('Backspace');
     await input.type('2017');
-    await wait(() => getByText(doc, '2017'));
+    await queries.findByText(doc, '2017');
   });
 });

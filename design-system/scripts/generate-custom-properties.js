@@ -131,7 +131,7 @@ type CustomProperties = {
 ${Object.entries(data)
   .map(
     ([key, value]) =>
-      `${camelCase(key)}: "${camelCaseValue ? camelCase(value) : value}",`
+      `${camelCase(key)}: "${camelCaseValue ? camelCase(value) : value}";`
   )
   .join('\n')}
 };
@@ -181,7 +181,10 @@ fs.writeFileSync(
 
 fs.writeFileSync(
   path.join(__dirname, '../materials/custom-properties.ts'),
-  prettier.format(printTypeScript(tokens), prettierConfig)
+  prettier.format(printTypeScript(tokens), {
+    ...prettierConfig,
+    parser: 'typescript',
+  })
 );
 
 fs.writeFileSync(

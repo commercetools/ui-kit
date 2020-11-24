@@ -42,12 +42,12 @@ it('should render option with a controlled wrapper', () => {
     </Group>
   );
   const { rerender } = render(RadioInput);
-  expect(screen.queryByText('Custom Element Content')).toBeInTheDocument();
-  expect(screen.queryByLabelText('Option with wrapper')).toBeInTheDocument();
+  expect(screen.getByText('Custom Element Content')).toBeInTheDocument();
+  expect(screen.getByLabelText('Option with wrapper')).toBeInTheDocument();
   visible = false;
   rerender(RadioInput);
   expect(screen.queryByText('Custom Element Content')).not.toBeInTheDocument();
-  expect(screen.queryByLabelText('Option with wrapper')).toBeInTheDocument();
+  expect(screen.getByLabelText('Option with wrapper')).toBeInTheDocument();
 });
 
 it('should call onChange when options are clicked', () => {

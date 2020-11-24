@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
+import { render, fireEvent } from '../../../../../test/test-utils';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
 
 // We use this component to simulate the whole flow of
@@ -124,22 +124,27 @@ describe('in single mode', () => {
   });
   describe('interacting', () => {
     it('should open the list and all options should be visible', async () => {
-      const { getByLabelText, getByText } = renderInput();
+      const { getByLabelText, getByText, findByText } = renderInput();
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.keyUp(input, { key: 'ArrowDown' });
-      await waitFor(() => getByText('Mango'));
+      await findByText('Mango');
       expect(getByText('Mango')).toBeInTheDocument();
       expect(getByText('Lichi')).toBeInTheDocument();
       expect(getByText('Raspberry')).toBeInTheDocument();
     });
     it('should be able to select an option', async () => {
-      const { getByLabelText, getByText, queryByText } = renderInput();
+      const {
+        getByLabelText,
+        getByText,
+        queryByText,
+        findByText,
+      } = renderInput();
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitFor(() => getByText('Mango'));
+      await findByText('Mango');
       getByText('Mango').click();
       // new selected value should be Mango
       expect(getByText('Mango')).toBeInTheDocument();
@@ -148,13 +153,13 @@ describe('in single mode', () => {
     });
     it('should call onChange when value selected', async () => {
       const onChange = jest.fn();
-      const { getByLabelText, getByText } = renderInput({
+      const { getByLabelText, getByText, findByText } = renderInput({
         onChange,
       });
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitFor(() => getByText('Mango'));
+      await findByText('Mango');
       getByText('Mango').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
@@ -177,14 +182,14 @@ describe('in single mode', () => {
     });
     it('should call onChange with the created option', async () => {
       const onChange = jest.fn();
-      const { getByLabelText, getByText } = renderInput({
+      const { getByLabelText, getByText, findByText } = renderInput({
         onChange,
         value: null,
       });
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.change(input, { target: { value: 'Orange', label: 'Orange' } });
-      await waitFor(() => getByText('Create "Orange"'));
+      await findByText('Create "Orange"');
       getByText('Create "Orange"').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
@@ -225,7 +230,7 @@ describe('in multi mode', () => {
   });
   describe('interacting', () => {
     it('should open the list and all options should be visible', async () => {
-      const { getByLabelText, getByText } = renderInput({
+      const { getByLabelText, getByText, findByText } = renderInput({
         isMulti: true,
         value: [],
       });
@@ -233,20 +238,25 @@ describe('in multi mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.keyUp(input, { key: 'ArrowDown' });
-      await waitFor(() => getByText('Mango'));
+      await findByText('Mango');
       expect(getByText('Mango')).toBeInTheDocument();
       expect(getByText('Lichi')).toBeInTheDocument();
       expect(getByText('Raspberry')).toBeInTheDocument();
     });
     it('should be able to select two option', async () => {
-      const { getByLabelText, getByText, queryByText } = renderInput({
+      const {
+        getByLabelText,
+        getByText,
+        queryByText,
+        findByText,
+      } = renderInput({
         isMulti: true,
         value: [],
       });
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitFor(() => getByText('Mango'));
+      await findByText('Mango');
       getByText('Mango').click();
       // new selected value should be Mango
       expect(getByText('Mango')).toBeInTheDocument();
@@ -255,7 +265,7 @@ describe('in multi mode', () => {
       // open list again
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitFor(() => getByText('Banana'));
+      await findByText('Banana');
       getByText('Banana').click();
       // new values should be Banana and Mango
       expect(getByText('Banana')).toBeInTheDocument();
@@ -265,7 +275,7 @@ describe('in multi mode', () => {
     });
     it('should call onChange when two values selected', async () => {
       const onChange = jest.fn();
-      const { getByLabelText, getByText } = renderInput({
+      const { getByLabelText, getByText, findByText } = renderInput({
         onChange,
         isMulti: true,
         value: [],
@@ -273,7 +283,7 @@ describe('in multi mode', () => {
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitFor(() => getByText('Mango'));
+      await findByText('Mango');
       getByText('Mango').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
@@ -285,7 +295,7 @@ describe('in multi mode', () => {
       // open list again
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await waitFor(() => getByText('Raspberry'));
+      await findByText('Raspberry');
       getByText('Raspberry').click();
 
       expect(onChange).toHaveBeenCalledWith({
@@ -302,7 +312,7 @@ describe('in multi mode', () => {
       });
     });
     it('should be able to create two options', async () => {
-      const { getByLabelText, getByText } = renderInput({
+      const { getByLabelText, getByText, findByText } = renderInput({
         isMulti: true,
         value: [],
       });
@@ -311,14 +321,14 @@ describe('in multi mode', () => {
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       const event = { target: { value: 'Orange', label: 'Orange' } };
       fireEvent.change(input, event);
-      await waitFor(() => getByText('Create "Orange"'));
+      await findByText('Create "Orange"');
       getByText('Create "Orange"').click();
       // open again
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       const appleEvent = { target: { value: 'Apple', label: 'Apple' } };
       fireEvent.change(input, appleEvent);
-      await waitFor(() => getByText('Create "Apple"'));
+      await findByText('Create "Apple"');
       getByText('Create "Apple"').click();
 
       expect(getByText('Orange')).toBeInTheDocument();
@@ -326,7 +336,7 @@ describe('in multi mode', () => {
     });
     it('should call onChange when two created values', async () => {
       const onChange = jest.fn();
-      const { getByLabelText, getByText } = renderInput({
+      const { getByLabelText, getByText, findByText } = renderInput({
         onChange,
         isMulti: true,
         value: [],
@@ -335,7 +345,7 @@ describe('in multi mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'Orange', label: 'Orange' } });
-      await waitFor(() => getByText('Create "Orange"'));
+      await findByText('Create "Orange"');
       getByText('Create "Orange"').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
@@ -349,7 +359,7 @@ describe('in multi mode', () => {
 
       // open list again
       fireEvent.change(input, { target: { value: 'Apple', label: 'Apple' } });
-      await waitFor(() => getByText('Create "Apple"'));
+      await findByText('Create "Apple"');
       getByText('Create "Apple"').click();
 
       expect(onChange).toHaveBeenCalledWith({

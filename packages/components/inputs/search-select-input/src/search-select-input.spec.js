@@ -146,7 +146,7 @@ describe('in single mode', () => {
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.keyUp(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
-      await waitFor(() => screen.getByText('Mango'));
+      await screen.findByText('Mango');
       expect(screen.getByText('Mango')).toBeInTheDocument();
       expect(screen.queryByText('Lichi')).not.toBeInTheDocument();
       expect(screen.queryByText('Raspberry')).not.toBeInTheDocument();
@@ -158,7 +158,7 @@ describe('in single mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
-      await waitFor(() => screen.getByText('Mango'));
+      await screen.findByText('Mango');
       screen.getByText('Mango').click();
       // new selected value should be Mango
       expect(screen.getByText('Mango')).toBeInTheDocument();
@@ -174,7 +174,7 @@ describe('in single mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
-      await waitFor(() => screen.getByText('Mango'));
+      await screen.findByText('Mango');
       screen.getByText('Mango').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
@@ -223,7 +223,7 @@ describe('in multi mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
-      await waitFor(() => screen.getByText('Mango'));
+      await screen.findByText('Mango');
       screen.getByText('Mango').click();
       // new selected value should be Mango
       expect(screen.getByText('Mango')).toBeInTheDocument();
@@ -231,7 +231,7 @@ describe('in multi mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'banana' } });
-      await waitFor(() => screen.getByText('Banana'));
+      await screen.findByText('Banana');
       screen.getByText('Banana').click();
       // new values should be Banana and Mango
       expect(screen.getByText('Banana')).toBeInTheDocument();
@@ -248,7 +248,7 @@ describe('in multi mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'mango' } });
-      await waitFor(() => screen.getByText('Mango'));
+      await screen.findByText('Mango');
       screen.getByText('Mango').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
@@ -262,7 +262,7 @@ describe('in multi mode', () => {
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.change(input, { target: { value: 'raspberry' } });
-      await waitFor(() => screen.getByText('Raspberry'));
+      await screen.findByText('Raspberry');
       screen.getByText('Raspberry').click();
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),

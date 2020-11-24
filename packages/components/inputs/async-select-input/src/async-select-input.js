@@ -126,6 +126,7 @@ const AsyncSelectInput = (props) => {
                         return `${props.name}.0`;
                       })(),
                     },
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
                     persist: () => {},
                   };
                   props.onBlur(event);
@@ -141,6 +142,7 @@ const AsyncSelectInput = (props) => {
             props.onChange(
               {
                 target: { name: props.name, value: newValue },
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 persist: () => {},
               },
               info

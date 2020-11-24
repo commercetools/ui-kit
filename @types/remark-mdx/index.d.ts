@@ -1,4 +1,5 @@
 declare module 'remark-mdx' {
+  // eslint-disable-next-line import/no-unresolved
   import type { Node } from 'unist';
   import type { VFile } from 'vfile';
 
