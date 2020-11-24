@@ -82,8 +82,8 @@ const iconPropTypes = {
 
 const SvgViewGridPlus = (props) => (
   <svg
-    width="1em"
-    height="1em"
+    width={25}
+    height={24}
     viewBox="0 0 25 24"
     xmlns="http://www.w3.org/2000/svg"
     {...props}

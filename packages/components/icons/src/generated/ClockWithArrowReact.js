@@ -82,8 +82,8 @@ const iconPropTypes = {
 
 const SvgClockWithArrow = (props) => (
   <svg
-    width="1em"
-    height="1em"
+    width={33}
+    height={32}
     viewBox="0 0 33 32"
     xmlns="http://www.w3.org/2000/svg"
     {...props}

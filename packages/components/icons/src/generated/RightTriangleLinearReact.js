@@ -82,8 +82,8 @@ const iconPropTypes = {
 
 const SvgRightTriangleLinear = (props) => (
   <svg
-    width="1em"
-    height="1em"
+    width={8}
+    height={8}
     viewBox="0 0 8 8"
     xmlns="http://www.w3.org/2000/svg"
     {...props}

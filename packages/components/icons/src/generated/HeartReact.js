@@ -88,8 +88,6 @@ const SvgHeart = (props) => (
     y={0}
     viewBox="0 0 24 24"
     xmlSpace="preserve"
-    width="1em"
-    height="1em"
     {...props}
   >
     <g id="heart_react_svg__MC-icon-set" transform="translate(-241 -1256)">

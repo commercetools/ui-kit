@@ -88,8 +88,6 @@ const SvgPaperclip = (props) => (
     y={0}
     viewBox="0 0 24 24"
     xmlSpace="preserve"
-    width="1em"
-    height="1em"
     {...props}
   >
     <g id="paperclip_react_svg__Icons">
