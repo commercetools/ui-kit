@@ -64,7 +64,7 @@ export default ${reactComponentName};
 };
 
 module.exports = {
-  icon: true,
+  icon: false,
   svgoConfig: {
     plugins: [
       { removeViewBox: false },
