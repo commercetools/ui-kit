@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { PrimaryButton, Tooltip } from '@commercetools-frontend/ui-kit';
-import { Switch, Route } from 'react-router-dom';
 import { Suite, Spec } from '../../../../test/percy';
 
 const title = 'What kind of bear is best';
 const noop = () => {};
 
-// const Body = styled.div`
-//   color: red;
-//   margin-top: 12px;
-// `;
+const Body = styled.div`
+  color: red;
+  margin-top: 12px;
+`;
 
 const ContainerWithPadding = styled.div`
   padding-top: 50px;
@@ -18,7 +17,7 @@ const ContainerWithPadding = styled.div`
 
 export const routePath = '/tooltip';
 
-export const DefaultRoute = () => {
+export const component = () => {
   return (
     <Suite>
       <Spec label="Closed">
@@ -26,16 +25,23 @@ export const DefaultRoute = () => {
           <PrimaryButton onClick={noop} label="Hello" />
         </Tooltip>
       </Spec>
-    </Suite>
-  );
-};
-
-export const InteractiveRoute = () => {
-  return (
-    <Suite>
-      <Spec label="Open" omitPropsList>
+      <Spec label="Open" listPropsOfNestedChild={true}>
         <ContainerWithPadding>
-          <Tooltip title={title} closeAfter={5000}>
+          <Tooltip title={title} isOpen={true}>
+            <PrimaryButton onClick={noop} label="Hello" />
+          </Tooltip>
+        </ContainerWithPadding>
+      </Spec>
+      <Spec
+        label="Open with custom body component"
+        listPropsOfNestedChild={true}
+      >
+        <ContainerWithPadding>
+          <Tooltip
+            title={title}
+            isOpen={true}
+            components={{ BodyComponent: Body }}
+          >
             <PrimaryButton onClick={noop} label="Hello" />
           </Tooltip>
         </ContainerWithPadding>
@@ -43,10 +49,3 @@ export const InteractiveRoute = () => {
     </Suite>
   );
 };
-
-export const component = () => (
-  <Switch>
-    <Route path={`${routePath}/interactive`} component={InteractiveRoute} />
-    <Route path={routePath} component={DefaultRoute} />
-  </Switch>
-);
