@@ -71,7 +71,7 @@ module.exports = function getBabelPreset(api, opts = {}) {
         },
       ],
       // Use this preset only with the JSX runtime `classic`, otherwise
-      // use the `babel-plugin-emotion` plugin.
+      // use the `@emotion/babel-plugin` plugin.
       // https://emotion.sh/docs/@emotion/babel-preset-css-prop
       opts.runtime !== 'automatic' && [
         '@emotion/babel-preset-css-prop',
