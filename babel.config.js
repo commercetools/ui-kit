@@ -145,7 +145,7 @@ module.exports = function getBabelPreset(api, opts = {}) {
       // Use this plugin only with the JSX runtime `automatic`, otherwise
       // use the `@emotion/babel-preset-css-prop` preset.
       // https://emotion.sh/docs/@emotion/babel-preset-css-prop
-      opts.runtime === 'automatic' && require('babel-plugin-emotion').default,
+      opts.runtime === 'automatic' && require('@emotion/babel-plugin').default,
       // Cherry-pick Lodash modules
       require('babel-plugin-lodash').default,
     ].filter(Boolean),
