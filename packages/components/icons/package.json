@@ -20,7 +20,8 @@
   "module": "dist/commercetools-uikit-icons.esm.js",
   "files": ["dist"],
   "scripts": {
-    "prepare": "../../../scripts/version.js replace"
+    "prepare": "../../../scripts/version.js replace",
+    "generate-icons": "svgr -d src/components src/svg"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
