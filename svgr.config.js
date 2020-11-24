@@ -36,6 +36,8 @@ const styledIconsTemplate = (
     // props,
   }
 ) => {
+  const svgComponentName = opts.state.componentName.replace(/react/i, '');
+  const reactComponentName = `${svgComponentName.replace(/svg/i, '')}Icon`;
   const babelOptions = {
     preserveComments: true,
     plugins: ['jsx', opts.typescript && 'typescript'].filter(Boolean),
@@ -47,16 +49,16 @@ const styledIconsTemplate = (
 // Original SVG file: ${opts.state.filePath}
 ${templateCreateStyledIcon}
 
-const ${opts.state.componentName} = (props) => JSX;
-${opts.state.componentName}.displayName = "${opts.state.componentName}";
+const ${svgComponentName} = (props) => JSX;
+${svgComponentName}.displayName = "${svgComponentName}";
 
-const Component = (props) => {
+const ${reactComponentName} = (props) => {
   const theme = useTheme();
-  return <${opts.state.componentName} {...props} css={getIconStyles(props, theme)} />
+  return <${svgComponentName} {...props} css={getIconStyles(props, theme)} />
 };
-Component.propTypes = iconPropTypes;
+${reactComponentName}.propTypes = iconPropTypes;
 
-export default Component;
+export default ${reactComponentName};
   `;
   return template.smart(code, babelOptions)(templateOptions);
 };
