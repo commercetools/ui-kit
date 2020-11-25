@@ -20,7 +20,8 @@
   "module": "dist/commercetools-uikit-radio-input.esm.js",
   "files": ["dist"],
   "scripts": {
-    "prepare": "../../../../scripts/version.js replace"
+    "prepare": "../../../../scripts/version.js replace",
+    "generate-icons": "svgr -d src/icons/generated src/icons/svg"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
