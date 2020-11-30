@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
 import Section from '../../../../.storybook/decorators/section';
+import Constraints from '@commercetools-uikit/constraints';
 import CollapsiblePanel from './collapsible-panel';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 import Readme from '../README.md';
@@ -38,6 +39,11 @@ storiesOf('Components|Panels', module)
           condensed={condensed}
           secondaryHeader={text('secondaryHeader', 'Subtitle')}
           headerControlsAlignment={select('size', ['left', 'right'], 'right')}
+          horizontalConstraint={select(
+            'horizontalConstraint',
+            Constraints.getAcceptedMaxPropValues(6),
+            'scale'
+          )}
         >
           {text('Text', 'Sample text')}
         </CollapsiblePanel>
