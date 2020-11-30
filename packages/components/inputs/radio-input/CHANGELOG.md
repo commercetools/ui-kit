@@ -1,5 +1,15 @@
 # @commercetools-uikit/radio-input
 
+## 10.42.3
+
+### Patch Changes
+
+- [`7531d9e`](https://github.com/commercetools/ui-kit/commit/7531d9e4ef07b1af2d2a8bde3192ea453f725b1a) [#1699](https://github.com/commercetools/ui-kit/pull/1699) Thanks [@emmenko](https://github.com/emmenko)! - Generate SVG icons components using `@svgr/cli`.
+
+- Updated dependencies [[`7531d9e`](https://github.com/commercetools/ui-kit/commit/7531d9e4ef07b1af2d2a8bde3192ea453f725b1a)]:
+  - @commercetools-uikit/icons@10.42.3
+  - @commercetools-uikit/input-utils@10.42.3
+
 ## 10.42.2
 
 ### Patch Changes

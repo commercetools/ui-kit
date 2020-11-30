@@ -1,5 +1,11 @@
 # @commercetools-local/generator-package-json
 
+## 1.2.2
+
+### Patch Changes
+
+- [`984fd00`](https://github.com/commercetools/ui-kit/commit/984fd00a809288f3b823df09555abdbd8b85abb7) [#1701](https://github.com/commercetools/ui-kit/pull/1701) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies
+
 ## 1.2.1
 
 ### Patch Changes

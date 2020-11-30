@@ -1,5 +1,12 @@
 # @commercetools-uikit/text-input
 
+## 10.42.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/input-utils@10.42.3
+
 ## 10.42.2
 
 ### Patch Changes

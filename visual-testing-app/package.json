@@ -1,6 +1,6 @@
 {
   "name": "visual-testing-app",
-  "version": "10.19.3",
+  "version": "10.19.4",
   "description": "An app to facilitate visual testing",
   "private": true,
   "scripts": {
