@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/collapsible-panel",
   "description": "A panel to collapse and expand your content.",
-  "version": "10.42.2",
+  "version": "10.42.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "@commercetools-uikit/accessible-button": "10.42.2",
     "@commercetools-uikit/collapsible-motion": "10.42.2",
     "@commercetools-uikit/design-system": "10.42.2",
-    "@commercetools-uikit/icons": "10.42.2",
+    "@commercetools-uikit/icons": "10.42.3",
     "@commercetools-uikit/spacings": "10.42.2",
     "@commercetools-uikit/text": "10.42.2",
     "@commercetools-uikit/utils": "10.42.2",
