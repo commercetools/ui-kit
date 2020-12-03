@@ -40,9 +40,7 @@ const CollapsiblePanel = (props) => {
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
         <Constraints.Horizontal
-          max={Constraints.parseHorizontalConstraintProp(
-            props.horizontalConstraint
-          )}
+          max={props.horizontalConstraint}
         >
           <div
             css={[baseContainerStyles, getThemeStyle(props.theme)]}
