@@ -222,9 +222,6 @@ CollapsiblePanel.propTypes = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf([
-    'm',
-    'l',
-    'xl',
     6,
     7,
     8,

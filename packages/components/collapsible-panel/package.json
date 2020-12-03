@@ -25,9 +25,9 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/constraints": "10.42.2",
     "@commercetools-uikit/accessible-button": "10.42.2",
     "@commercetools-uikit/collapsible-motion": "10.42.2",
+    "@commercetools-uikit/constraints": "10.42.2",
     "@commercetools-uikit/design-system": "10.42.2",
     "@commercetools-uikit/icons": "10.42.3",
     "@commercetools-uikit/spacings": "10.42.2",
