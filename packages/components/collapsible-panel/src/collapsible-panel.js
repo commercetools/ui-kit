@@ -39,9 +39,7 @@ const CollapsiblePanel = (props) => {
       isDefaultClosed={props.isDefaultClosed}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
-        <Constraints.Horizontal
-          max={props.horizontalConstraint}
-        >
+        <Constraints.Horizontal max={props.horizontalConstraint}>
           <div
             css={[baseContainerStyles, getThemeStyle(props.theme)]}
             // Allow to override the styles by passing a `className` prop.
