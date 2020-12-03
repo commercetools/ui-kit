@@ -227,7 +227,7 @@ export const component = () => (
     </Spec>
     <Spec label="regular (not condensed) - horizontalConstraint set to scale">
       <CollapsiblePanel
-        header="Header"
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
         description="Some description"
         isDisabled={false}
         tone="primary"
@@ -241,19 +241,18 @@ export const component = () => (
     </Spec>
     <Spec label="regular (not condensed) - horizontalConstraint set to 6">
       <CollapsiblePanel
-        header="Header"
+        header={<CollapsiblePanel.Header>Header</CollapsiblePanel.Header>}
         description="Some description"
         isDisabled={false}
         tone="primary"
         headerControls="headerControl"
         theme="dark"
-        secondaryHeader="Secondary Header"
         horizontalConstraint={6}
       >
         Content
       </CollapsiblePanel>
     </Spec>
-    <Spec label="regular (not condensed) - horizontalConstraint set to 11">
+    <Spec label="condensed - horizontalConstraint set to 11">
       <CollapsiblePanel
         header="Header"
         description="Some description"
@@ -261,6 +260,7 @@ export const component = () => (
         tone="primary"
         headerControls="headerControl"
         theme="dark"
+        condensed
         secondaryHeader="Secondary Header"
         horizontalConstraint={11}
       >
