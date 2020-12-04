@@ -1,5 +1,13 @@
 # @commercetools-frontend/ui-kit
 
+## 10.43.0
+
+### Patch Changes
+
+- Updated dependencies [[`6e4cf01`](https://github.com/commercetools/ui-kit/commit/6e4cf010a6793d4421440c709641230b56c81c51)]:
+  - @commercetools-uikit/collapsible-panel@10.43.0
+  - @commercetools-uikit/collapsible@10.43.0
+
 ## 10.42.3
 
 ### Patch Changes
