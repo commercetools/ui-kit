@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-frontend/ui-kit",
   "description": "A preset of all the UI-Kit components.",
-  "version": "10.42.3",
+  "version": "10.43.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -30,9 +30,9 @@
     "@commercetools-uikit/avatar": "10.42.2",
     "@commercetools-uikit/buttons": "10.42.2",
     "@commercetools-uikit/card": "10.42.2",
-    "@commercetools-uikit/collapsible": "10.42.2",
+    "@commercetools-uikit/collapsible": "10.43.0",
     "@commercetools-uikit/collapsible-motion": "10.42.2",
-    "@commercetools-uikit/collapsible-panel": "10.42.3",
+    "@commercetools-uikit/collapsible-panel": "10.43.0",
     "@commercetools-uikit/constraints": "10.42.2",
     "@commercetools-uikit/data-table": "10.42.3",
     "@commercetools-uikit/data-table-manager": "10.42.3",

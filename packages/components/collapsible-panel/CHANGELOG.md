@@ -1,5 +1,11 @@
 # @commercetools-uikit/collapsible-panel
 
+## 10.43.0
+
+### Minor Changes
+
+- [`6e4cf01`](https://github.com/commercetools/ui-kit/commit/6e4cf010a6793d4421440c709641230b56c81c51) [#1703](https://github.com/commercetools/ui-kit/pull/1703) Thanks [@YahiaElTai](https://github.com/YahiaElTai)! - add horizontal constraint to collapsible panel with `scale` as default value.
+
 ## 10.42.3
 
 ### Patch Changes
