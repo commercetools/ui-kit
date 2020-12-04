@@ -8,6 +8,7 @@ import AccessibleButton from '@commercetools-uikit/accessible-button';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
+import Constraints from '@commercetools-uikit/constraints';
 import HeaderIcon from './header-icon';
 import {
   baseContainerStyles,
@@ -38,77 +39,79 @@ const CollapsiblePanel = (props) => {
       isDefaultClosed={props.isDefaultClosed}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
-        <div
-          css={[baseContainerStyles, getThemeStyle(props.theme)]}
-          // Allow to override the styles by passing a `className` prop.
-          // Custom styles can also be passed using the `css` prop from emotion.
-          // https://emotion.sh/docs/css-prop#style-precedence
-          className={props.className}
-        >
-          <HeaderContainer
-            as="div"
-            css={[
-              getHeaderContainerStyles(props, isOpen),
-              getThemeStyle(props.theme),
-            ]}
-            id={props.id}
-            label=""
-            onClick={props.isDisabled ? undefined : toggle}
-            isDisabled={props.isDisabled}
-            buttonAttributes={dataProps}
-            aria-controls={panelContentId}
-            aria-expanded={isOpen ? 'true' : 'false'}
+        <Constraints.Horizontal max={props.horizontalConstraint}>
+          <div
+            css={[baseContainerStyles, getThemeStyle(props.theme)]}
+            // Allow to override the styles by passing a `className` prop.
+            // Custom styles can also be passed using the `css` prop from emotion.
+            // https://emotion.sh/docs/css-prop#style-precedence
+            className={props.className}
           >
-            <Spacings.Inline alignItems="center" scale="s">
-              {!props.hideExpansionControls && (
-                <HeaderIcon
-                  isClosed={!isOpen}
-                  isDisabled={props.isDisabled}
-                  tone={props.tone}
-                  size={props.condensed ? 'small' : 'medium'}
-                />
-              )}
-              <Spacings.Inline alignItems="center" scale={scale}>
-                {props.condensed ? (
-                  <Text.Detail isInline={true} isBold={true} truncate={true}>
-                    {props.header}
-                  </Text.Detail>
-                ) : (
-                  props.header
+            <HeaderContainer
+              as="div"
+              css={[
+                getHeaderContainerStyles(props, isOpen),
+                getThemeStyle(props.theme),
+              ]}
+              id={props.id}
+              label=""
+              onClick={props.isDisabled ? undefined : toggle}
+              isDisabled={props.isDisabled}
+              buttonAttributes={dataProps}
+              aria-controls={panelContentId}
+              aria-expanded={isOpen ? 'true' : 'false'}
+            >
+              <Spacings.Inline alignItems="center" scale="s">
+                {!props.hideExpansionControls && (
+                  <HeaderIcon
+                    isClosed={!isOpen}
+                    isDisabled={props.isDisabled}
+                    tone={props.tone}
+                    size={props.condensed ? 'small' : 'medium'}
+                  />
                 )}
-                {props.secondaryHeader && (
-                  <Text.Detail tone="secondary" truncate={true}>
-                    {props.secondaryHeader}
-                  </Text.Detail>
-                )}
+                <Spacings.Inline alignItems="center" scale={scale}>
+                  {props.condensed ? (
+                    <Text.Detail isInline={true} isBold={true} truncate={true}>
+                      {props.header}
+                    </Text.Detail>
+                  ) : (
+                    props.header
+                  )}
+                  {props.secondaryHeader && (
+                    <Text.Detail tone="secondary" truncate={true}>
+                      {props.secondaryHeader}
+                    </Text.Detail>
+                  )}
+                </Spacings.Inline>
               </Spacings.Inline>
-            </Spacings.Inline>
-            {props.headerControls && (
-              <HeaderControlsWrapper
-                onClick={(event) => event.stopPropagation()}
-              >
-                {props.headerControls}
-              </HeaderControlsWrapper>
-            )}
-          </HeaderContainer>
-          <div style={containerStyles}>
-            <SectionWrapper isOpen={isOpen} ref={registerContentNode}>
-              {props.description && (
-                <Spacings.Inset scale={scale}>
-                  <Text.Detail>{props.description}</Text.Detail>
-                </Spacings.Inset>
-              )}
-              <Spacings.Inset scale={scale}>
-                <SectionContent
-                  id={panelContentId}
-                  aria-hidden={isOpen ? 'false' : 'true'}
+              {props.headerControls && (
+                <HeaderControlsWrapper
+                  onClick={(event) => event.stopPropagation()}
                 >
-                  {props.children}
-                </SectionContent>
-              </Spacings.Inset>
-            </SectionWrapper>
+                  {props.headerControls}
+                </HeaderControlsWrapper>
+              )}
+            </HeaderContainer>
+            <div style={containerStyles}>
+              <SectionWrapper isOpen={isOpen} ref={registerContentNode}>
+                {props.description && (
+                  <Spacings.Inset scale={scale}>
+                    <Text.Detail>{props.description}</Text.Detail>
+                  </Spacings.Inset>
+                )}
+                <Spacings.Inset scale={scale}>
+                  <SectionContent
+                    id={panelContentId}
+                    aria-hidden={isOpen ? 'false' : 'true'}
+                  >
+                    {props.children}
+                  </SectionContent>
+                </Spacings.Inset>
+              </SectionWrapper>
+            </div>
           </div>
-        </div>
+        </Constraints.Horizontal>
       )}
     </CollapsibleMotion>
   );
@@ -211,6 +214,24 @@ CollapsiblePanel.propTypes = {
     // uncontrolled component does not have `onToggle` so no validation needed.
     return null;
   },
+  /**
+   * Horizontal size limit of the input fields.
+   */
+  horizontalConstraint: PropTypes.oneOf([
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
 };
 
 CollapsiblePanel.defaultProps = {
@@ -219,6 +240,7 @@ CollapsiblePanel.defaultProps = {
   condensed: false,
   isDisabled: false,
   headerControlsAlignment: 'right',
+  horizontalConstraint: 'scale',
 };
 
 export default CollapsiblePanel;

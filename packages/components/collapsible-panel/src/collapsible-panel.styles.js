@@ -56,7 +56,7 @@ const getHeaderContainerStyles = (props, isOpen) => {
 
 const baseContainerStyles = css`
   position: relative;
-  min-width: 550px;
+  min-width: ${vars.constraint6};
   padding: 0;
   display: flex;
   flex-direction: column;
