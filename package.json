@@ -132,7 +132,7 @@
     "core-js": "3.8.0",
     "cross-env": "7.0.2",
     "eslint": "7.14.0",
-    "eslint-config-prettier": "6.15.0",
+    "eslint-config-prettier": "7.0.0",
     "eslint-formatter-pretty": "4.0.0",
     "eslint-import-resolver-typescript": "2.3.0",
     "eslint-plugin-formatjs": "2.9.10",
