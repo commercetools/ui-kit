@@ -2,20 +2,6 @@ import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 
-const getOffsetMargin = ({ placement }) => {
-  const position = (placement && placement.split('-')[0]) || '';
-  switch (position) {
-    case 'left':
-    case 'right':
-      return `0 ${vars.spacingXs}`;
-    case 'top':
-    case 'bottom':
-      return `${vars.spacingXs} 0`;
-    default:
-      return '';
-  }
-};
-
 export const Body = styled.div`
   font-family: inherit;
   border-radius: ${vars.borderRadius6};
@@ -30,14 +16,13 @@ export const Body = styled.div`
 // here we use object styles so we can spread these
 // with the styles we get from react-popper :D
 // eslint-disable-next-line import/prefer-default-export
-export const getBodyStyles = ({ constraint, placement, customStyles }) => {
+export const getBodyStyles = ({ constraint, customStyles }) => {
   const parsedConstraint = Constraints.parseHorizontalConstraintProp(
     constraint
   );
 
   return {
     fontFamily: 'inherit',
-    margin: `${getOffsetMargin({ placement })} !important`,
     maxWidth: vars[`constraint${parsedConstraint}`],
     // so hovering over the tooltip when the tooltip overlaps the component
     pointerEvents: 'none',

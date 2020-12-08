@@ -42,7 +42,7 @@ storiesOf('Components|Tooltips', module)
     },
   })
   .add('Tooltip', () => {
-    const label = text('children', 'Tool tip text.');
+    const label = text('children', 'Tooltip text.');
 
     const constraint = select(
       'constraint',
@@ -85,6 +85,7 @@ storiesOf('Components|Tooltips', module)
           <Tooltip
             off={boolean('off', false)}
             title={label}
+            isOpen={select('isOpen', [undefined, true, false], undefined)}
             closeAfter={closeAfter}
             placement={placement}
             horizontalConstraint={constraint}
