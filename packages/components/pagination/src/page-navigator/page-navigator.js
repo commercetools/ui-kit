@@ -1,0 +1,106 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useIntl } from 'react-intl';
+import {
+  AngleThinLeftIcon,
+  AngleThinRightIcon,
+} from '@commercetools-uikit/icons';
+import NumberInput from '@commercetools-uikit/number-input';
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import Label from '@commercetools-uikit/label';
+import { createSequentialId } from '@commercetools-uikit/utils';
+import { isValid, normalizeValue } from './utils';
+import messages from './messages';
+
+const sequentialId = createSequentialId('page-number-');
+
+function PageNavigator(props) {
+  const intl = useIntl();
+  const [page, setPage] = React.useState(props.currentPage);
+
+  const normalizedValue = Number(normalizeValue(page, props.totalPages));
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    setPage(normalizedValue);
+
+    props.onPageChange(normalizedValue);
+  };
+
+  const onBlurNormalize = () => setPage(normalizedValue);
+
+  const isDisabled = props.totalPages === 0;
+
+  const onPrevPage = () => {
+    const prevPage = page - 1;
+    if (prevPage < 1) return null;
+
+    setPage(prevPage);
+    props.onPageChange(prevPage);
+  };
+
+  const onNextPage = () => {
+    const nextPage = page + 1;
+    if (nextPage > props.totalPages) return null;
+
+    setPage(nextPage);
+    props.onPageChange(nextPage);
+  };
+
+  const isPreviousDisabled = page <= 1;
+  const isNextDisabled = page >= props.totalPages;
+
+  const pageNumberInputId = sequentialId();
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Spacings.Inline alignItems="center" scale="s">
+        <SecondaryIconButton
+          label={intl.formatMessage(messages.previousPageLabel)}
+          onClick={onPrevPage}
+          isDisabled={isPreviousDisabled || isDisabled}
+          icon={<AngleThinLeftIcon />}
+        />
+        <Label htmlFor={pageNumberInputId} intlMessage={messages.page} />
+        <div>
+          <NumberInput
+            id={pageNumberInputId}
+            value={page}
+            onBlur={onBlurNormalize}
+            onFocus={(event) => event.target.select()}
+            onChange={(event) => setPage(event.target.value)}
+            isDisabled={isDisabled}
+            hasWarning={isValid(page, props.totalPages)}
+            horizontalConstraint={2}
+          />
+        </div>
+        <Text.Body
+          intlMessage={{
+            ...messages.pageCount,
+            values: {
+              count: intl.formatNumber(props.totalPages),
+            },
+          }}
+        />
+        <SecondaryIconButton
+          label={intl.formatMessage(messages.nextPageLabel)}
+          onClick={onNextPage}
+          isDisabled={isNextDisabled || isDisabled}
+          icon={<AngleThinRightIcon />}
+        />
+      </Spacings.Inline>
+    </form>
+  );
+}
+
+PageNavigator.displayName = 'PageNavigator';
+PageNavigator.propTypes = {
+  totalPages: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+};
+
+export default PageNavigator;
