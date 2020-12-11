@@ -215,7 +215,7 @@ Knowing which fields have been touched by the user is important information for 
 Formik accepts a `validate` function out of the box. We can add it to our example:
 
 ```js
-import omitEmpty from 'omit-empty';
+import omitEmpty from 'omit-empty-es';
 
 const validate = (values) => {
   const errors = { name: {} };
@@ -277,7 +277,7 @@ Multiple conventions are set now:
 We can now render a form, let users interact with it and determine error messages. But we still need to show the error messages to our users. This can be done using
 
 ```js
-import omitEmpty from 'omit-empty';
+import omitEmpty from 'omit-empty-es';
 // Extracted "validate" to keep snippet short.
 // It's the same function as in the last snippet
 import validate from './validate';
@@ -323,7 +323,7 @@ In this case, there is another thing we need to be aware of: When a form is subm
 We can pass an `onSubmit` property to Formik. That function will be called with `values` and `formik`.
 
 ```js
-import omitEmpty from 'omit-empty';
+import omitEmpty from 'omit-empty-es';
 import validate from './validate';
 
 <GetProduct id="party-parrot">

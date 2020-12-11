@@ -15,13 +15,13 @@
     "@manypkg/find-root": "1.1.0",
     "@manypkg/get-packages": "1.1.1",
     "@types/mri": "1.1.0",
-    "@types/node": "12.19.7",
+    "@types/node": "12.19.8",
     "mri": "1.1.6",
-    "omit-empty-es": "1.0.3",
+    "omit-empty-es": "1.1.2",
     "rcfile": "1.0.3"
   },
   "devDependencies": {
-    "ts-node": "9.0.0",
+    "ts-node": "9.1.1",
     "typescript": "4.1.2"
   },
   "peerDependencies": {

@@ -75,6 +75,8 @@ rules:
   'jest/expect-expect': 0
   'testing-library/prefer-presence-queries': 2
   'testing-library/await-async-query': 2
+  # FIXME: https://github.com/testing-library/eslint-plugin-jest-dom/issues/117
+  'jest-dom/prefer-to-have-value': 'off'
 
 overrides:
   - files: ['*.story.js']
