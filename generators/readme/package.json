@@ -17,7 +17,7 @@
     "@types/lodash": "4.14.165",
     "@types/mdast": "3.0.3",
     "@types/mri": "1.1.0",
-    "@types/node": "12.19.7",
+    "@types/node": "12.19.8",
     "@types/shelljs": "0.8.8",
     "@types/unist": "2.0.3",
     "@types/vfile": "4.0.0",
@@ -28,17 +28,17 @@
     "rcfile": "1.0.3",
     "react-docgen": "5.3.1",
     "remark-gfm": "1.0.0",
-    "remark-mdx": "1.6.21",
+    "remark-mdx": "1.6.22",
     "remark-parse": "9.0.0",
-    "remark-stringify": "9.0.0",
+    "remark-stringify": "9.0.1",
     "shelljs": "0.8.4",
     "to-vfile": "6.1.0",
     "unified": "9.2.0",
-    "vfile": "4.2.0",
-    "vfile-reporter": "6.0.1"
+    "vfile": "4.2.1",
+    "vfile-reporter": "6.0.2"
   },
   "devDependencies": {
-    "ts-node": "9.0.0",
+    "ts-node": "9.1.1",
     "typescript": "4.1.2"
   },
   "peerDependencies": {
