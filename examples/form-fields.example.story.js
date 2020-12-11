@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { Formik } from 'formik';
 import { injectIntl } from 'react-intl';
 import { action } from '@storybook/addon-actions';
-import omitEmpty from 'omit-empty';
+import omitEmpty from 'omit-empty-es';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import {
   Text,

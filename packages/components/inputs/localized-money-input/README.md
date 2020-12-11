@@ -202,7 +202,7 @@ Here's an example of how `LocalizedMoneyInput` would be used inside a form.
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Formik } from 'formik';
-import omitEmpty from 'omit-empty';
+import omitEmpty from 'omit-empty-es';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import LocalizedMoneyInput from '@commercetools-uikit/localized-money-input';
 

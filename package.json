@@ -170,7 +170,7 @@
     "moment-locales-webpack-plugin": "1.2.0",
     "moment-timezone": "0.5.32",
     "mri": "1.1.6",
-    "omit-empty": "1.0.0",
+    "omit-empty-es": "1.1.2",
     "postcss": "8.2.1",
     "postcss-value-parser": "4.1.0",
     "pptr-testing-library": "0.6.4",

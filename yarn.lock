@@ -14055,13 +14055,6 @@ omit-empty-es@1.1.2:
     "@babel/runtime" "7.12.1"
     "@babel/runtime-corejs3" "7.12.1"
 
-omit-empty@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/omit-empty/-/omit-empty-1.0.0.tgz#827ad1fdc569511bb9fb3f038a9171a7f10d9040"
-  integrity sha512-eaWd8kwqDyChgf7IYVyfZf2b9b9JOIhpAow4cegg8CVx29U2mZKgCvpfvOSeJctmRTqjGWTZeO2Us58ebDtQ4A==
-  dependencies:
-    kind-of "^6.0.2"
-
 on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"

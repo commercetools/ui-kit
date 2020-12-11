@@ -1,5 +1,5 @@
 import type { Options as PrettierOptions } from 'prettier';
-import type { OmitObject } from 'omit-empty-es';
+import type { Package } from '@manypkg/get-packages';
 import type { CommandFlags, GeneratorPackageJsonOptions } from './types';
 
 import fs from 'fs';
@@ -14,7 +14,7 @@ const prettierConfig = rcfile<PrettierOptions>('prettier');
 
 const writeFile = (
   filePath: string,
-  content: OmitObject,
+  content: Package['packageJson'],
   options: GeneratorPackageJsonOptions
 ) => {
   const formatted = prettier.format(JSON.stringify(content, null, 2), {
@@ -39,7 +39,7 @@ const getRelativePathToWorkspace = (relativePackageFolderPath: string) =>
 export const transformDocument = (
   packageFolderPath: string,
   options: GeneratorPackageJsonOptions
-): OmitObject | undefined => {
+): Package['packageJson'] | undefined => {
   const packageFolderName = path.basename(packageFolderPath);
   const packageJsonPath = path.join(packageFolderPath, 'package.json');
   const relativePackageFolderPath = path.relative(
@@ -67,7 +67,7 @@ export const transformDocument = (
     relativePackageFolderPath
   );
 
-  return omitEmpty({
+  return omitEmpty<Package['packageJson']>({
     name: `${npmScope}/${packageFolderName}`,
     description: originalPackageJson.description,
     version: originalPackageJson.version,

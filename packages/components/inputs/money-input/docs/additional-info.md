@@ -99,7 +99,7 @@ Here's an example of how `MoneyInput` would be used inside a form.
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Formik } from 'formik';
-import omitEmpty from 'omit-empty';
+import omitEmpty from 'omit-empty-es';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import MoneyInput from '@commercetools-uikit/money-input';
 

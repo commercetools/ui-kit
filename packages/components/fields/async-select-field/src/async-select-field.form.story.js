@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
-import omitEmpty from 'omit-empty';
+import omitEmpty from 'omit-empty-es';
 import { action } from '@storybook/addon-actions';
 import {
   withKnobs,
