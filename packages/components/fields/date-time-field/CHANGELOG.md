@@ -1,5 +1,12 @@
 # @commercetools-uikit/date-time-field
 
+## 10.43.1
+
+### Patch Changes
+
+- Updated dependencies [[`a5bcaec`](https://github.com/commercetools/ui-kit/commit/a5bcaec24f0a48036d3bbeb6812a4e5e8709b75c)]:
+  - @commercetools-uikit/date-time-input@10.43.1
+
 ## 10.42.3
 
 ### Patch Changes

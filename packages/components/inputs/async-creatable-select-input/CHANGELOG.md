@@ -1,5 +1,11 @@
 # @commercetools-uikit/async-creatable-select-input
 
+## 10.43.1
+
+### Patch Changes
+
+- [`6299e8c`](https://github.com/commercetools/ui-kit/commit/6299e8c12b10e852410e32f3ddfdadd33d885c07) [#1713](https://github.com/commercetools/ui-kit/pull/1713) Thanks [@jonnybel](https://github.com/jonnybel)! - Removed unused dependency
+
 ## 10.42.3
 
 ### Patch Changes
