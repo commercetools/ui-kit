@@ -1,5 +1,13 @@
 # @commercetools-local/generator-readme
 
+## 1.1.10
+
+### Patch Changes
+
+- [`0f7c099`](https://github.com/commercetools/ui-kit/commit/0f7c0997d4c5add68dfa8ce8345041f582e0952a) [#1710](https://github.com/commercetools/ui-kit/pull/1710) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies
+
+* [`a5bcaec`](https://github.com/commercetools/ui-kit/commit/a5bcaec24f0a48036d3bbeb6812a4e5e8709b75c) [#1705](https://github.com/commercetools/ui-kit/pull/1705) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
 ## 1.1.9
 
 ### Patch Changes

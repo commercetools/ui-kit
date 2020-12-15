@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/localized-money-input",
   "description": "A controlled input component for localized money values with validation states.",
-  "version": "10.42.3",
+  "version": "10.43.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
     "@commercetools-uikit/icons": "10.42.3",
     "@commercetools-uikit/input-utils": "10.42.3",
     "@commercetools-uikit/localized-utils": "10.42.2",
-    "@commercetools-uikit/money-input": "10.42.3",
+    "@commercetools-uikit/money-input": "10.43.1",
     "@commercetools-uikit/select-utils": "10.42.3",
     "@commercetools-uikit/spacings-stack": "10.42.2",
     "@commercetools-uikit/tooltip": "10.42.2",

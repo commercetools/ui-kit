@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/search-select-field",
   "description": "A search select field built on top of search select input, allowing users to asynchronously search for options",
-  "version": "10.42.3",
+  "version": "10.43.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
