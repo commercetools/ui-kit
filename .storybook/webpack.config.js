@@ -39,9 +39,9 @@ module.exports = ({ config }) => {
       loaders: [require.resolve('@storybook/source-loader')],
       enforce: 'pre',
     },
-    // Process JS with Babel.
+    // Process JS/TS with Babel.
     {
-      test: /\.js$/,
+      test: /\.(js|jsx|ts|tsx)$/,
       include: sourceFolders,
       use: [
         {
@@ -80,6 +80,6 @@ module.exports = ({ config }) => {
       type: 'javascript/auto',
     },
   ];
-
+  config.resolve.extensions.push('.ts', '.tsx');
   return config;
 };
