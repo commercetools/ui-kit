@@ -53,6 +53,8 @@ module.exports = function getBabelPreset(api, opts = {}) {
           // Do not transform modules to CJS
           modules: false,
           include: ['transform-classes'],
+          // Exclude transforms that make all code slower
+          exclude: ['transform-typeof-symbol'],
         },
       ],
       [
