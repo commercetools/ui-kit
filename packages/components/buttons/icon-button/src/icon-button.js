@@ -32,7 +32,7 @@ const getIconThemeColor = (props) => {
   return props.icon.props.theme;
 };
 
-export const IconButton = (props) => {
+const IconButton = (props) => {
   const attributes = {
     'data-track-component': 'IconButton',
     ...filterInvalidAttributes(props),
@@ -145,4 +145,4 @@ IconButton.defaultProps = {
 
 IconButton.displayName = 'IconButton';
 
-export default IconButton;
+export { IconButton };

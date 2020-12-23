@@ -39,4 +39,4 @@ Inline.defaultProps = {
   justifyContent: 'flex-start',
 };
 
-export default Inline;
+export { Inline };

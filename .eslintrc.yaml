@@ -79,7 +79,7 @@ rules:
   'jest-dom/prefer-to-have-value': 'off'
 
 overrides:
-  - files: ['*.story.js']
+  - files: ['*.story.js', '*.stories.js']
     rules:
       '@typescript-eslint/no-empty-function': 1
       '@typescript-eslint/no-use-before-define': 1

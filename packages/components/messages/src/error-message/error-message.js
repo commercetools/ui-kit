@@ -28,4 +28,4 @@ ErrorMessage.propTypes = {
   ),
 };
 
-export default ErrorMessage;
+export { ErrorMessage };

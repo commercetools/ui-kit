@@ -86,4 +86,4 @@ PrimaryButton.defaultProps = {
 };
 PrimaryButton.displayName = 'PrimaryButton';
 
-export default PrimaryButton;
+export { PrimaryButton };

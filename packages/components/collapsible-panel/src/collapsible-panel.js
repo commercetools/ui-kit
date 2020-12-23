@@ -243,4 +243,4 @@ CollapsiblePanel.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-export default CollapsiblePanel;
+export { CollapsiblePanel };

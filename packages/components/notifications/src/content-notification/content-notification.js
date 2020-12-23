@@ -41,34 +41,31 @@ const getIconByType = (type) => {
   }
 };
 
-class NotificationIcon extends React.PureComponent {
-  static displayName = 'NotificationIcon';
-  static propTypes = {
-    type: PropTypes.oneOf(['error', 'info', 'warning', 'success']).isRequired,
-    theme: PropTypes.string.isRequired,
-  };
-
-  render() {
-    const Icon = getIconByType(this.props.type);
-    return (
-      <div
-        css={css`
-          display: flex;
-          align-items: center;
-          border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
-          border-width: 0;
-          padding: ${vars.spacingS} ${vars.spacingM};
-          background-color: ${getIconContainerBackgroundColour(this.props)};
-          svg {
-            margin: 0 -3px;
-          }
-        `}
-      >
-        <Icon color="surface" />
-      </div>
-    );
-  }
-}
+const NotificationIcon = (props) => {
+  const Icon = getIconByType(props.type);
+  return (
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+        border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
+        border-width: 0;
+        padding: ${vars.spacingS} ${vars.spacingM};
+        background-color: ${getIconContainerBackgroundColour(props)};
+        svg {
+          margin: 0 -3px;
+        }
+      `}
+    >
+      <Icon color="surface" />
+    </div>
+  );
+};
+NotificationIcon.displayName = 'NotificationIcon';
+NotificationIcon.propTypes = {
+  type: PropTypes.oneOf(['error', 'info', 'warning', 'success']).isRequired,
+  theme: PropTypes.string.isRequired,
+};
 
 const getContentBorderColor = (props) => {
   switch (props.type) {
@@ -85,60 +82,56 @@ const getContentBorderColor = (props) => {
   }
 };
 
-export default class ContentNotification extends React.PureComponent {
-  static displayName = 'ContentNotification';
-
-  static propTypes = {
-    type: PropTypes.oneOf(['error', 'info', 'warning', 'success']).isRequired,
-    children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
-    intlMessage: requiredIf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        description: PropTypes.string,
-        defaultMessage: PropTypes.string.isRequired,
-      }),
-      (props) => !React.Children.count(props.children)
-    ),
-  };
-
-  render() {
-    return (
-      <div
-        {...filterDataAttributes(this.props)}
-        css={css`
-          display: flex;
-          align-items: stretch;
-          text-align: left;
-          word-break: break-word;
-          hyphens: auto;
-          font-size: ${vars.fontSizeDefault};
-          color: ${vars.colorSolid};
-          font-family: inherit;
-        `}
-      >
-        <NotificationIcon type={this.props.type} theme="white" />
-        <div
-          css={css`
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            padding: ${vars.spacingS};
-            background: ${vars.colorSurface};
-            border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
-            border-width: 1px;
-            border-style: solid;
-            border-color: ${getContentBorderColor(this.props)};
-          `}
-        >
-          {this.props.intlMessage ? (
-            <div>
-              <FormattedMessage {...this.props.intlMessage} />
-            </div>
-          ) : (
-            this.props.children
-          )}
+const ContentNotification = (props) => (
+  <div
+    {...filterDataAttributes(props)}
+    css={css`
+      display: flex;
+      align-items: stretch;
+      text-align: left;
+      word-break: break-word;
+      hyphens: auto;
+      font-size: ${vars.fontSizeDefault};
+      color: ${vars.colorSolid};
+      font-family: inherit;
+    `}
+  >
+    <NotificationIcon type={props.type} theme="white" />
+    <div
+      css={css`
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        padding: ${vars.spacingS};
+        background: ${vars.colorSurface};
+        border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
+        border-width: 1px;
+        border-style: solid;
+        border-color: ${getContentBorderColor(props)};
+      `}
+    >
+      {props.intlMessage ? (
+        <div>
+          <FormattedMessage {...props.intlMessage} />
         </div>
-      </div>
-    );
-  }
-}
+      ) : (
+        props.children
+      )}
+    </div>
+  </div>
+);
+ContentNotification.displayName = 'ContentNotification';
+ContentNotification.propTypes = {
+  type: PropTypes.oneOf(['error', 'info', 'warning', 'success']).isRequired,
+  children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
+  intlMessage: requiredIf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      defaultMessage: PropTypes.string.isRequired,
+    }),
+    (props) => !React.Children.count(props.children)
+  ),
+};
+
+export { ContentNotification };

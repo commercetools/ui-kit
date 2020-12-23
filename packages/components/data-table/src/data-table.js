@@ -347,4 +347,4 @@ DataTable.defaultProps = {
 };
 DataTable.displayName = 'DataTable';
 
-export default DataTable;
+export { DataTable };

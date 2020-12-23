@@ -94,4 +94,4 @@ FieldErrors.errorTypes = {
   FRACTIONS: 'fractions',
 };
 
-export default FieldErrors;
+export { FieldErrors };

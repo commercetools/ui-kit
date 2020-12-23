@@ -96,4 +96,4 @@ Link.defaultProps = {
   isExternal: false,
 };
 
-export default Link;
+export { Link };

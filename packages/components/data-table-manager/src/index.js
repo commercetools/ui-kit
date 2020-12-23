@@ -1,4 +1,7 @@
-export { default } from './data-table-manager';
+import { DataTableManager } from './data-table-manager';
+
+export default DataTableManager;
+export { DataTableManager };
 export { UPDATE_ACTIONS } from './constants';
 export { default as version } from './version';
 

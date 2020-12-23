@@ -1,1 +1,1 @@
-export { default } from './content-notification';
+export { ContentNotification } from './content-notification';

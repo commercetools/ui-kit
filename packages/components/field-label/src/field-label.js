@@ -11,14 +11,14 @@ import Stack from '@commercetools-uikit/spacings-stack';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Label from '@commercetools-uikit/label';
 
-export const FieldLabel = (props) => {
+const FieldLabel = (props) => {
   if (props.hintIcon && props.hintIcon.props && props.hintIcon.props.size) {
     invariant(
       false,
       `ui-kit/FieldLabel: setting an hintIcon size is not supported.`
     );
   }
-
+  console.log(props);
   return (
     <Constraints.Horizontal
       max={Constraints.parseHorizontalConstraintProp(
@@ -129,4 +129,4 @@ FieldLabel.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-export default FieldLabel;
+export { FieldLabel };

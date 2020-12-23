@@ -52,4 +52,4 @@ Card.defaultProps = {
   theme: 'light',
 };
 
-export default Card;
+export { Card };

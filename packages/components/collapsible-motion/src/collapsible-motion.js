@@ -199,4 +199,4 @@ CollapsibleMotion.displayName = 'CollapsibleMotion';
 CollapsibleMotion.defaultProps = defaultProps;
 CollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
-export default CollapsibleMotion;
+export { CollapsibleMotion };

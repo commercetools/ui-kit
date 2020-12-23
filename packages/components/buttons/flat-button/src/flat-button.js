@@ -59,7 +59,7 @@ const getTextColor = (tone, isHover = false, overwrittenVars) => {
   }
 };
 
-export const FlatButton = (props) => {
+const FlatButton = (props) => {
   const dataProps = {
     'data-track-component': 'FlatButton',
     ...filterInvalidAttributes(omit(props, propsToOmit)),
@@ -146,4 +146,4 @@ FlatButton.defaultProps = {
   isDisabled: false,
 };
 
-export default FlatButton;
+export { FlatButton };

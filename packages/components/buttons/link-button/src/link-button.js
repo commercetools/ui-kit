@@ -130,4 +130,4 @@ LinkButton.defaultProps = {
   isExternal: false,
 };
 
-export default LinkButton;
+export { LinkButton };

@@ -242,4 +242,4 @@ DataTableManager.propTypes = {
 };
 DataTableManager.displayName = 'DataTableManager';
 
-export default DataTableManager;
+export { DataTableManager };

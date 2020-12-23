@@ -78,4 +78,4 @@ Horizontal.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Horizontal;
+export { Horizontal };

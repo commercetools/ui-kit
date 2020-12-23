@@ -13,4 +13,4 @@ CollapsiblePanelHeader.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default CollapsiblePanelHeader;
+export { CollapsiblePanelHeader };

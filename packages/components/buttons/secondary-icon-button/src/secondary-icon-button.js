@@ -9,7 +9,7 @@ import { getBaseStyles } from './secondary-icon-button.styles';
 
 const propsToOmit = ['type'];
 
-export const SecondaryIconButton = (props) => {
+const SecondaryIconButton = (props) => {
   const buttonAttributes = {
     ...filterInvalidAttributes(omit(props, propsToOmit)),
     'data-track-component': 'SecondaryIconButton',
@@ -51,4 +51,4 @@ SecondaryIconButton.defaultProps = {
   isDisabled: false,
 };
 
-export default SecondaryIconButton;
+export { SecondaryIconButton };

@@ -61,15 +61,7 @@
       "presets/*",
       "visual-testing-app"
     ],
-    "nohoist": [
-      "**/@storybook/react",
-      "**/@storybook/react/**",
-      "**/@storybook/theming",
-      "**/@storybook/theming/**",
-      "**/@storybook/ui",
-      "**/@storybook/ui/**",
-      "react-virtualized/dom-helpers"
-    ]
+    "nohoist": ["react-virtualized/dom-helpers"]
   },
   "preconstruct": {
     "packages": ["design-system", "packages/**/*", "presets/*"]
@@ -96,17 +88,7 @@
     "@formatjs/cli": "2.13.16",
     "@percy/puppeteer": "1.1.0",
     "@preconstruct/cli": "2.0.1",
-    "@storybook/addon-a11y": "5.3.21",
-    "@storybook/addon-actions": "5.3.21",
-    "@storybook/addon-contexts": "5.3.21",
-    "@storybook/addon-google-analytics": "5.3.21",
-    "@storybook/addon-info": "5.3.21",
-    "@storybook/addon-knobs": "5.3.21",
-    "@storybook/addon-links": "5.3.21",
-    "@storybook/addon-options": "5.3.21",
-    "@storybook/addon-storysource": "5.3.21",
-    "@storybook/react": "5.3.21",
-    "@storybook/theming": "5.3.21",
+    "@storybook/theming": "6.1.11",
     "@svgr/cli": "5.5.0",
     "@svgr/plugin-jsx": "5.5.0",
     "@svgr/plugin-svgo": "5.5.0",
@@ -188,7 +170,6 @@
     "replace": "1.2.0",
     "rimraf": "3.0.2",
     "shelljs": "0.8.4",
-    "storybook-readme": "5.0.9",
     "stylelint": "13.8.0",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "20.0.0",
@@ -205,5 +186,11 @@
     "react-dom": "16.14.0",
     "react-test-renderer": "16.14.0",
     "**/core-js-compat": "3.8.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.1.11",
+    "@storybook/addon-essentials": "^6.1.11",
+    "@storybook/addon-links": "^6.1.11",
+    "@storybook/react": "^6.1.11"
   }
 }

@@ -25,7 +25,7 @@ export const getIconColor = (props) => {
   return props.iconLeft.props.color;
 };
 
-export const SecondaryButton = (props) => {
+const SecondaryButton = (props) => {
   const isActive = props.isToggleButton && props.isToggled;
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
 
@@ -221,4 +221,4 @@ SecondaryButton.defaultProps = {
 
 SecondaryButton.displayName = 'SecondaryButton';
 
-export default SecondaryButton;
+export { SecondaryButton };

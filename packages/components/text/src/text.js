@@ -287,4 +287,4 @@ Detail.propTypes = {
   children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
 };
 
-export default { Headline, Wrap, Subheadline, Detail, Body };
+export { Headline, Wrap, Subheadline, Detail, Body };
