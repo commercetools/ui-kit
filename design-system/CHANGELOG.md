@@ -1,5 +1,11 @@
 # @commercetools-uikit/design-system
 
+## 10.43.2
+
+### Patch Changes
+
+- [`276b88d`](https://github.com/commercetools/ui-kit/commit/276b88d4d2e25dc6d45f3c0a182e2b348652275c) [#1719](https://github.com/commercetools/ui-kit/pull/1719) Thanks [@emmenko](https://github.com/emmenko)! - Correctly bundle and export custom properties and type declarations
+
 ## 10.42.2
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # @commercetools-uikit/table
 
+## 10.43.2
+
+### Patch Changes
+
+- [`ea93f19`](https://github.com/commercetools/ui-kit/commit/ea93f19693922a7cdcecffa53ee2da2becee7965) [#1714](https://github.com/commercetools/ui-kit/pull/1714) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`276b88d`](https://github.com/commercetools/ui-kit/commit/276b88d4d2e25dc6d45f3c0a182e2b348652275c)]:
+  - @commercetools-uikit/design-system@10.43.2
+  - @commercetools-uikit/icons@10.43.2
+  - @commercetools-uikit/spacings-inset@10.43.2
+  - @commercetools-uikit/spacings-inset-squish@10.43.2
+  - @commercetools-uikit/text@10.43.2
+
 ## 10.42.3
 
 ### Patch Changes
