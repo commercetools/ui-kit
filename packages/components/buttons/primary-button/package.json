@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/primary-button",
   "description": "Primary buttons are used for a primary action on a page.",
-  "version": "10.42.2",
+  "version": "10.43.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,10 +25,10 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/accessible-button": "10.42.2",
-    "@commercetools-uikit/design-system": "10.42.2",
-    "@commercetools-uikit/spacings-inline": "10.42.2",
-    "@commercetools-uikit/text": "10.42.2",
+    "@commercetools-uikit/accessible-button": "10.43.2",
+    "@commercetools-uikit/design-system": "10.43.2",
+    "@commercetools-uikit/spacings-inline": "10.43.2",
+    "@commercetools-uikit/text": "10.43.2",
     "@commercetools-uikit/utils": "10.42.2",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
