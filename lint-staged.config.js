@@ -2,6 +2,7 @@ module.exports = {
   '*.md': ['prettier --write --parser markdown'],
   '*.yaml': ['prettier --write --parser yaml'],
   '*.json': ['prettier --write --parser json'],
+  '*.{ts,tsx}': ['prettier --write --parser typescript'],
   '*.js': [
     'prettier --write',
     // NOTE: apparently if you pass some argument that is not a flag AFTER the `reporters`

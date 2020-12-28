@@ -144,7 +144,7 @@ fs.writeFileSync(
 
 fs.writeFileSync(
   path.join(__dirname, '../materials/design-tokens.ts'),
-  prettier.format(printTypeScript(designTokens, { camelCase: true }), {
+  prettier.format(printTypeScript(designTokens, { camelCaseValue: true }), {
     ...prettierConfig,
     parser: 'typescript',
   })
