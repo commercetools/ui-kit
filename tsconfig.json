@@ -26,7 +26,7 @@
     "strictNullChecks": true,
     "stripInternal": true,
     "target": "ES2019",
-    "allowJs": false,
+    "allowJs": true,
     "typeRoots": [
       "@types",
       // "@types-extensions",

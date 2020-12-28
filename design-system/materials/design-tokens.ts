@@ -35,4 +35,4 @@ export default {
   placeholderFontColorForInput: 'colorNeutral60',
   fontSizeForInput: 'fontSizeM',
   shadowBoxTagWhenHovered: 'shadow1',
-};
+} as const;
