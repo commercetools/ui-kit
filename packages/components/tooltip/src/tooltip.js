@@ -410,4 +410,4 @@ Tooltip.defaultProps = {
   placement: 'top',
 };
 
-export { Tooltip };
+export default Tooltip;

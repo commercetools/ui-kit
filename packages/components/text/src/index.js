@@ -8,5 +8,4 @@ const Text = {
   Wrap,
 };
 export default Text;
-export { Headline, Subheadline, Body, Detail, Wrap };
 export { default as version } from './version';

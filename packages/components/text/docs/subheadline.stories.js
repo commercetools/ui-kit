@@ -1,5 +1,5 @@
 import React from 'react';
-import { Subheadline } from '../src';
+import { Subheadline } from '../src/text';
 
 export default {
   title: 'Components/Text/Subheadline',

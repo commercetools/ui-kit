@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { getAcceptedMaxPropValues, getMaxPropTokenValue } from '../src/helpers';
-import { Horizontal } from '../src';
+import Horizontal from '../src/horizontal';
 
 const values = getAcceptedMaxPropValues();
 

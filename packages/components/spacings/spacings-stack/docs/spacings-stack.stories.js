@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsInset from '@commercetools-uikit/spacings-inset';
 import Text from '@commercetools-uikit/text';
-import { SpacingsStack } from '../src';
+import SpacingsStack from '../src';
 
 const StackColorWrapper = styled.div`
   background-color: #d4e0ec;

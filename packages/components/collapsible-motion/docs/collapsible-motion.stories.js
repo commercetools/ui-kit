@@ -1,6 +1,6 @@
 import React from 'react';
 import Spacings from '@commercetools-uikit/spacings';
-import { CollapsibleMotion } from '../src';
+import CollapsibleMotion from '../src';
 
 export default {
   title: 'Components/Collapsibles/CollapsibleMotion',

@@ -38,4 +38,4 @@ InsetSquish.defaultProps = {
   scale: 'm',
 };
 
-export { InsetSquish };
+export default InsetSquish;

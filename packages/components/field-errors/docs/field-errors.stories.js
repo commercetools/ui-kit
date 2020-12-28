@@ -1,5 +1,5 @@
 import React from 'react';
-import { FieldErrors } from '../src';
+import FieldErrors from '../src';
 
 export default {
   title: 'Components/FieldErrors',

@@ -101,4 +101,4 @@ Stamp.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export { Stamp };
+export default Stamp;

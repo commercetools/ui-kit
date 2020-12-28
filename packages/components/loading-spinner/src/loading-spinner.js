@@ -82,4 +82,4 @@ LoadingSpinner.propTypes = {
   children: PropTypes.node,
 };
 
-export { LoadingSpinner };
+export default LoadingSpinner;

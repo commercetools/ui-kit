@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Link } from '../src';
+import Link from '../src';
 
 export default {
   title: 'Components/Link',

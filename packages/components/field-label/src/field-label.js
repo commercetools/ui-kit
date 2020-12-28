@@ -18,7 +18,7 @@ const FieldLabel = (props) => {
       `ui-kit/FieldLabel: setting an hintIcon size is not supported.`
     );
   }
-  console.log(props);
+
   return (
     <Constraints.Horizontal
       max={Constraints.parseHorizontalConstraintProp(
@@ -129,4 +129,4 @@ FieldLabel.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-export { FieldLabel };
+export default FieldLabel;

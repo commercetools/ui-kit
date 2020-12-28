@@ -62,4 +62,4 @@ Label.propTypes = {
   children: requiredIf(PropTypes.node, (props) => !props.intlMessage),
 };
 
-export { Label };
+export default Label;

@@ -1,5 +1,2 @@
-import { InsetSquish as SpacingsInsetSquish } from './inset-squish';
-
-export default SpacingsInsetSquish;
-export { SpacingsInsetSquish };
+export { default } from './inset-squish';
 export { default as version } from './version';

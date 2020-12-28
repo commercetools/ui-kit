@@ -1,5 +1,2 @@
-import { Tooltip } from './tooltip';
-
-export default Tooltip;
-export { Tooltip };
+export { default } from './tooltip';
 export { default as version } from './version';

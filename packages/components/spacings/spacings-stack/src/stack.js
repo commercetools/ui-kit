@@ -29,4 +29,4 @@ Stack.defaultProps = {
   alignItems: 'stretch',
 };
 
-export { Stack };
+export default Stack;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import SpacingsInset from '@commercetools-uikit/spacings-inset';
 import Text from '@commercetools-uikit/text';
-import { SpacingsInline } from '../src';
+import SpacingsInline from '../src';
 
 const Stack = styled.div`
   > * + * {

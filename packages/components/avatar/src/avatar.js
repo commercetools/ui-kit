@@ -139,4 +139,4 @@ Avatar.propTypes = {
   size: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
 };
 
-export { Avatar };
+export default Avatar;

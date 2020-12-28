@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { BoxIcon, BrainIcon, FlameIcon } from '@commercetools-uikit/icons';
-import { PrimaryActionDropdown, Option } from '../src';
+import PrimaryActionDropdown, { Option } from '../src';
 
 export default {
   title: 'Components/Buttons/PrimaryActionDropdown',

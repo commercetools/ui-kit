@@ -82,4 +82,4 @@ Collapsible.displayName = 'Collapsible';
 Collapsible.propTypes = collapsiblePropTypes;
 Collapsible.defaultProps = { isDefaultClosed: false };
 
-export { Collapsible };
+export default Collapsible;

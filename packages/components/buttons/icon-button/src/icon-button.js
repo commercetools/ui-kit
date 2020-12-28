@@ -145,4 +145,4 @@ IconButton.defaultProps = {
 
 IconButton.displayName = 'IconButton';
 
-export { IconButton };
+export default IconButton;

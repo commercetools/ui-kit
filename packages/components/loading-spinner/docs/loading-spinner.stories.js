@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingSpinner } from '../src';
+import LoadingSpinner from '../src';
 
 export default {
   title: 'Components/LoadingSpinner',

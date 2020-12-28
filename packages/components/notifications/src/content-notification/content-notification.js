@@ -134,4 +134,4 @@ ContentNotification.propTypes = {
   ),
 };
 
-export { ContentNotification };
+export default ContentNotification;

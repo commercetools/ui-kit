@@ -1,5 +1,2 @@
-import { SecondaryIconButton } from './secondary-icon-button';
-
-export default SecondaryIconButton;
-export { SecondaryIconButton };
+export { default } from './secondary-icon-button';
 export { default as version } from './version';

@@ -1,5 +1,2 @@
-import { IconButton } from './icon-button';
-
-export default IconButton;
-export { IconButton };
+export { default } from './icon-button';
 export { default as version } from './version';

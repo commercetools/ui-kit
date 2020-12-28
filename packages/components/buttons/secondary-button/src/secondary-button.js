@@ -221,4 +221,4 @@ SecondaryButton.defaultProps = {
 
 SecondaryButton.displayName = 'SecondaryButton';
 
-export { SecondaryButton };
+export default SecondaryButton;

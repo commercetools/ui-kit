@@ -1,7 +1,7 @@
 import React from 'react';
 import Constraints from '@commercetools-uikit/constraints';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { Label } from '../src';
+import Label from '../src';
 
 export default {
   title: 'Components/Label',

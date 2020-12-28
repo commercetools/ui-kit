@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Text from '@commercetools-uikit/text';
 
 const CollapsiblePanelHeader = (props) => (
@@ -13,4 +13,4 @@ CollapsiblePanelHeader.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export { CollapsiblePanelHeader };
+export default CollapsiblePanelHeader;

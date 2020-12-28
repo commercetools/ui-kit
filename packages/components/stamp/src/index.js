@@ -1,5 +1,2 @@
-import { Stamp } from './stamp';
-
-export default Stamp;
-export { Stamp };
+export { default } from './stamp';
 export { default as version } from './version';

@@ -294,4 +294,4 @@ PrimaryActionDropdown.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export { PrimaryActionDropdown };
+export default PrimaryActionDropdown;

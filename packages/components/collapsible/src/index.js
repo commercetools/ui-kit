@@ -1,5 +1,2 @@
-import { Collapsible } from './collapsible';
-
-export default Collapsible;
-export { Collapsible };
+export { default } from './collapsible';
 export { default as version } from './version';

@@ -1,5 +1,2 @@
-import { PrimaryButton } from './primary-button';
-
-export default PrimaryButton;
-export { PrimaryButton };
+export { default } from './primary-button';
 export { default as version } from './version';

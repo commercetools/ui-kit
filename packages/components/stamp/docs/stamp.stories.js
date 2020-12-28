@@ -3,7 +3,7 @@ import Text from '@commercetools-uikit/text';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import * as icons from '@commercetools-uikit/icons';
-import { Stamp } from '../src';
+import Stamp from '../src';
 import { availableTones } from '../src/stamp';
 
 const iconNames = Object.keys(icons);
@@ -14,9 +14,18 @@ const getRandomIndex = (min, max) =>
 export default {
   title: 'Components/Stamp',
   component: Stamp,
+  argTypes: {
+    tone: {
+      control: {
+        type: 'select',
+        options: availableTones,
+      },
+    },
+  },
 };
 
-const Template = (args) => (
+const Template = (args) => <Stamp tone="primary" {...args} />;
+const TemplateAll = (args) => (
   <SpacingsStack>
     {availableTones.map((tone) => {
       const iconIndex = getRandomIndex(0, numberOfIcons);
@@ -38,9 +47,40 @@ const Template = (args) => (
   </SpacingsStack>
 );
 
-export const Default = Template.bind({});
-Default.args = {};
-export const Condensed = Template.bind({});
+export const All = TemplateAll.bind({});
+All.args = {};
+export const Condensed = TemplateAll.bind({});
 Condensed.args = {
   isCondensed: true,
+};
+
+export const Primary = Template.bind({});
+Primary.args = {
+  tone: 'primary',
+  children: 'Hello',
+};
+export const Secondary = Template.bind({});
+Secondary.args = {
+  tone: 'secondary',
+  children: 'Hello',
+};
+export const Critical = Template.bind({});
+Critical.args = {
+  tone: 'critical',
+  children: 'Hello',
+};
+export const Warning = Template.bind({});
+Warning.args = {
+  tone: 'warning',
+  children: 'Hello',
+};
+export const Positive = Template.bind({});
+Positive.args = {
+  tone: 'positive',
+  children: 'Hello',
+};
+export const Information = Template.bind({});
+Information.args = {
+  tone: 'information',
+  children: 'Hello',
 };

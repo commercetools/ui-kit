@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { Headline, Subheadline, Body, Detail, Wrap } from '../src';
+import { Headline, Subheadline, Body, Detail, Wrap } from '../src/text';
 
 const InlineColorWrapper = styled.div`
   background-color: #e1ffdd;

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsInset from '@commercetools-uikit/spacings-inset';
 import Text from '@commercetools-uikit/text';
-import { SpacingsInsetSquish } from '../src';
+import SpacingsInsetSquish from '../src';
 
 const View = styled.div`
   display: flex;

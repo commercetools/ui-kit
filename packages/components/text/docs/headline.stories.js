@@ -1,5 +1,5 @@
 import React from 'react';
-import { Headline } from '../src';
+import { Headline } from '../src/text';
 
 export default {
   title: 'Components/Text/Headline',

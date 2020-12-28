@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
-import { Horizontal } from './horizontal';
+import Horizontal from './horizontal';
 import {
   parseHorizontalConstraintProp,
   getAcceptedMaxPropValues,
@@ -12,5 +12,4 @@ const Constraints = {
 };
 
 export default Constraints;
-export { Horizontal, parseHorizontalConstraintProp, getAcceptedMaxPropValues };
 export { default as version } from './version';

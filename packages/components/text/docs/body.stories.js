@@ -1,6 +1,6 @@
 import React from 'react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { Body } from '../src';
+import { Body } from '../src/text';
 
 export default {
   title: 'Components/Text/Body',

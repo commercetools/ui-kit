@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import Text from '@commercetools-uikit/text';
-import { SpacingsInset } from '../src';
+import SpacingsInset from '../src';
 
 const View = styled.div`
   display: flex;

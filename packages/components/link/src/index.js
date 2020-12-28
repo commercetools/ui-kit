@@ -1,5 +1,2 @@
-import { Link } from './link';
-
-export default Link;
-export { Link };
+export { default } from './link';
 export { default as version } from './version';

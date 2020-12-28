@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { action } from '@storybook/addon-actions';
 import * as icons from '@commercetools-uikit/icons';
-import { LinkButton } from '../src';
+import LinkButton from '../src';
 
 const iconNames = Object.keys(icons);
 
@@ -27,5 +27,6 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   label: 'Click me',
+  to: '/foo',
   onClick: action('clicked'),
 };

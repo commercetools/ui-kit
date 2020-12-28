@@ -1,5 +1,2 @@
-import { SecondaryButton } from './secondary-button';
-
-export default SecondaryButton;
-export { SecondaryButton };
+export { default } from './secondary-button';
 export { default as version } from './version';

@@ -4,7 +4,7 @@ import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import { useRowSelection, useSorting } from '@commercetools-uikit/hooks';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
-import { DataTableManager, UPDATE_ACTIONS } from '../src';
+import DataTableManager, { UPDATE_ACTIONS } from '../src';
 
 const items = [
   {

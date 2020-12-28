@@ -12,14 +12,6 @@ const slugifyLocale = (locale) => {
   }
 };
 
-const IntlWrapper = (props) => {
-  const locale = props.locale;
-  return (
-    <IntlProvider locale={slugifyLocale(locale)} messages={messages[locale]}>
-      {props.children}
-    </IntlProvider>
-  );
-};
 const withIntlProvider = (Story, context) => {
   const locale = context.globals.locale;
   return (

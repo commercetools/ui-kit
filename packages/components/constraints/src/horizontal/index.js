@@ -1,1 +1,1 @@
-export { Horizontal } from './horizontal';
+export { default } from './horizontal';

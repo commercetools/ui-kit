@@ -1,6 +1,5 @@
-import { DataTable } from './data-table';
-
-export default DataTable;
-export { DataTable };
-export { useRowSelection, useSorting } from '@commercetools-uikit/hooks';
+export { default } from './data-table';
 export { default as version } from './version';
+
+// Re-exports for convenience
+export { useRowSelection, useSorting } from '@commercetools-uikit/hooks';

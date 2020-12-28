@@ -42,4 +42,4 @@ Inset.defaultProps = {
   scale: 'm',
 };
 
-export { Inset };
+export default Inset;

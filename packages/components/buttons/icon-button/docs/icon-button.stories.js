@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import * as icons from '@commercetools-uikit/icons';
-import { IconButton } from '../src';
+import IconButton from '../src';
 
 const iconNames = Object.keys(icons);
 

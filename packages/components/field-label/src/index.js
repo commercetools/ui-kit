@@ -1,5 +1,2 @@
-import { FieldLabel } from './field-label';
-
-export default FieldLabel;
-export { FieldLabel };
+export { default } from './field-label';
 export { default as version } from './version';

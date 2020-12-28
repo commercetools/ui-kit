@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { action } from '@storybook/addon-actions';
-import { Tag } from '../src';
+import Tag from '../src';
 
 export default {
   title: 'Components/Tag',

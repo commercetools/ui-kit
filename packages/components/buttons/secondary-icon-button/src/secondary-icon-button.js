@@ -51,4 +51,4 @@ SecondaryIconButton.defaultProps = {
   isDisabled: false,
 };
 
-export { SecondaryIconButton };
+export default SecondaryIconButton;

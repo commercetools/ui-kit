@@ -9,7 +9,7 @@ import SelectInput from '@commercetools-uikit/select-input';
 import NumberInput from '@commercetools-uikit/number-input';
 import IconButton from '@commercetools-uikit/icon-button';
 import { InformationIcon } from '@commercetools-uikit/icons';
-import { DataTable } from '../src';
+import DataTable from '../src';
 
 // aux function for the maxHeight and maxWidth prop knobs
 // which can accept Number values but the text knob always returns String

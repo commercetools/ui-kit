@@ -171,4 +171,4 @@ Tag.defaultProps = {
 };
 Tag.displayName = 'Tag';
 
-export { Tag };
+export default Tag;

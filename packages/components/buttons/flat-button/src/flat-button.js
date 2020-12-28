@@ -146,4 +146,4 @@ FlatButton.defaultProps = {
   isDisabled: false,
 };
 
-export { FlatButton };
+export default FlatButton;

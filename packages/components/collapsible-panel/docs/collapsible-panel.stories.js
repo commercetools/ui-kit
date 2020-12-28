@@ -1,11 +1,12 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { CollapsiblePanel } from '../src';
+import CollapsiblePanel from '../src';
+import CollapsiblePanelHeader from '../src/collapsible-panel-header';
 
 export default {
   title: 'Components/Collapsibles/CollapsiblePanel',
   component: CollapsiblePanel,
-  subcomponents: { CollapsiblePanelHeader: CollapsiblePanel.Header },
+  subcomponents: { CollapsiblePanelHeader },
 };
 
 const headerTitle = 'Lorem ipsum';
@@ -19,7 +20,7 @@ const Template = (args) => (
       args.condensed ? (
         args.header
       ) : (
-        <CollapsiblePanel.Header>{args.header}</CollapsiblePanel.Header>
+        <CollapsiblePanelHeader>{args.header}</CollapsiblePanelHeader>
       )
     }
   />

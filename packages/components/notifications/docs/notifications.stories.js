@@ -1,6 +1,6 @@
 import React from 'react';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { ContentNotification } from '../src';
+import ContentNotification from '../src';
 
 export default {
   title: 'Components/Notifications/ContentNotification',

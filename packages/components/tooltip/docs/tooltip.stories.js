@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { action } from '@storybook/addon-actions';
 import { PrimaryButton } from '@commercetools-uikit/buttons';
-import { Tooltip } from '../src';
+import Tooltip from '../src';
 
 const Container = styled.div`
   padding: 80px 0 80px 80px;

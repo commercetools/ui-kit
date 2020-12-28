@@ -1,9 +1,15 @@
 import React from 'react';
-import { Avatar } from '../src';
+import Avatar from '../src';
 
 export default {
   title: 'Components/Avatar',
   component: Avatar,
+};
+
+const storyProps = {
+  firstName: 'John',
+  lastName: 'Snow',
+  gravatarHash: '111',
 };
 
 const Template = (args) => <Avatar {...args} />;
@@ -11,20 +17,17 @@ const Template = (args) => <Avatar {...args} />;
 export const Small = Template.bind({});
 Small.args = {
   size: 's',
-  firstName: 'John',
-  lastName: 'Snow',
+  ...storyProps,
 };
 
 export const Medium = Template.bind({});
 Medium.args = {
   size: 'm',
-  firstName: 'John',
-  lastName: 'Snow',
+  ...storyProps,
 };
 
 export const Large = Template.bind({});
 Large.args = {
   size: 'l',
-  firstName: 'John',
-  lastName: 'Snow',
+  ...storyProps,
 };

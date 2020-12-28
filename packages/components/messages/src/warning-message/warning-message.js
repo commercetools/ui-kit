@@ -24,4 +24,4 @@ WarningMessage.propTypes = {
   ),
 };
 
-export { WarningMessage };
+export default WarningMessage;
