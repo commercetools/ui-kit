@@ -1,0 +1,8 @@
+{
+  "name": "@commercetools-test/justice-league",
+  "description": "Render an Justice League",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "react": "16.8.x"
+  }
+}

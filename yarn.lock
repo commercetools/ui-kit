@@ -18036,6 +18036,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typescript-react-function-component-props-handler@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/typescript-react-function-component-props-handler/-/typescript-react-function-component-props-handler-1.1.1.tgz#35d94d67fac1629996af9fd9e368958a62d248c5"
+  integrity sha512-qw6yunlvKQ7ZzHllQkg1XywhBSvAVik93CXLI1nR4wZw09eIrTRITfEj6S54s2j1HxttlhY/HM1cRadqQP5y3g==
+
 typescript@4.1.3, typescript@^4.0:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.3.tgz#519d582bd94cba0cf8934c7d8e8467e473f53bb7"
