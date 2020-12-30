@@ -11,6 +11,7 @@ type Tone =
   | 'information'
   | 'primary'
   | 'secondary';
+
 type Props = {
   /**
    * Indicates the color scheme of stamp
