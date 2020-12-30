@@ -141,7 +141,7 @@ describe('generate README (for TS file)', () => {
       import React from 'react';
       import JusticeLeague from '@commercetools-uikit/justice-league';
 
-      const Example = () => <JusticeLeague name=\\"Dr. Strange\\" />;
+      const Example = () => <JusticeLeague name=\\"Batman\\" />;
 
       export default Example;
 
