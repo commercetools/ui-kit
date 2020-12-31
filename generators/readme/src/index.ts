@@ -5,6 +5,7 @@ import type {
   Heading,
   Text,
   Paragraph,
+  Link,
   Code,
   Root,
   HTML,
@@ -13,7 +14,7 @@ import type {
   TableCell,
   AlignType,
   InlineCode,
-  StaticPhrasingContent,
+  BlockContent,
   PhrasingContent,
 } from 'mdast';
 import type { Options as PrettierOptions } from 'prettier';
@@ -24,11 +25,12 @@ import type {
   ReactAPI,
   ReactComponentProps,
   ReactComponentPropType,
+  ReactComponentTSDescriptor,
 } from './types';
 
 import fs from 'fs';
 import path from 'path';
-import shelljs from 'shelljs';
+// import shelljs from 'shelljs';
 import Listr from 'listr';
 // @ts-ignore
 import ListrVerboseRenderer from 'listr-verbose-renderer';
@@ -40,6 +42,10 @@ import parse from 'remark-parse';
 import mdx from 'remark-mdx';
 import gfm from 'remark-gfm';
 import stringify from 'remark-stringify';
+// @ts-ignore
+import * as reactDocgen from 'react-docgen';
+// @ts-ignore
+import setParamsTypeDefinitionFromFunctionType from 'typescript-react-function-component-props-handler';
 import rcfile from 'rcfile';
 import prettier from 'prettier';
 import camelcase from 'lodash/camelCase';
@@ -73,6 +79,11 @@ const paragraph = (value: string): Paragraph => ({
 const heading = (depth: Heading['depth'], value: string): Heading => ({
   type: 'heading',
   depth,
+  children: [text(value)],
+});
+const link = (url: Link['url'], value: string): Link => ({
+  type: 'link',
+  url,
   children: [text(value)],
 });
 const code = (lang: string, value: string): Code => ({
@@ -140,12 +151,18 @@ const parseEmbeddedDefaultValue = (
 // in a separate row.
 const normalizeReactProps = (
   normalizedPropName: string,
-  componentPropsInfo: ReactComponentProps
+  componentPropsInfo: ReactComponentProps,
+  options: { isTsx: boolean }
 ): ReactAPI['props'] => {
-  switch (componentPropsInfo.type.name) {
+  if (options.isTsx) {
+    // NOTE: we can't really normalize the nested TS types, as the AST structure is a bit weird.
+    // Instead, we print the signature below the table and simply link to that.
+    return { [normalizedPropName]: componentPropsInfo };
+  }
+  const propInfoType = componentPropsInfo.type as ReactComponentPropType;
+  switch (propInfoType.name) {
     case 'arrayOf': {
-      const arrayValue = componentPropsInfo.type
-        .value as ReactComponentPropType;
+      const arrayValue = propInfoType.value as ReactComponentPropType;
       switch (arrayValue.name) {
         case 'shape': {
           const arrayShapeValue = arrayValue.value as {
@@ -170,7 +187,8 @@ const normalizeReactProps = (
                 // The name of the prop has the "array + dot" notation (`[].`),
                 // meaning that it's the property of an object of the array.
                 `${normalizedPropName}[].${shapePropName}`,
-                nextPropInfo
+                nextPropInfo,
+                options
               ),
             };
           }, {});
@@ -199,7 +217,8 @@ const normalizeReactProps = (
                   type: shapePropInfo,
                   required: shapePropInfo.required ?? false,
                   description: shapePropInfo.description ?? '',
-                }
+                },
+                options
               ),
             }),
             {}
@@ -220,7 +239,7 @@ const normalizeReactProps = (
       }
     }
     case 'shape': {
-      const shapeValue = componentPropsInfo.type.value as {
+      const shapeValue = propInfoType.value as {
         [name: string]: ReactComponentPropType;
       };
       const normalizedShapeProps = Object.entries(shapeValue).reduce(
@@ -242,7 +261,8 @@ const normalizeReactProps = (
               // The name of the prop has the "dot" notation (`.`),
               // meaning that it's the property of an object.
               `${normalizedPropName}.${shapePropName}`,
-              nextPropInfo
+              nextPropInfo,
+              options
             ),
           };
         },
@@ -260,8 +280,7 @@ const normalizeReactProps = (
       };
     }
     case 'union': {
-      const unionValues = componentPropsInfo.type
-        .value as ReactComponentPropType[];
+      const unionValues = propInfoType.value as ReactComponentPropType[];
       const normalizedUnionProps = unionValues.reduce(
         (normalizedUnionValues, shapePropInfo) => {
           switch (shapePropInfo.name) {
@@ -278,7 +297,8 @@ const normalizeReactProps = (
                     type: shapePropInfo,
                     required: shapePropInfo.required ?? false,
                     description: shapePropInfo.description ?? '',
-                  }
+                  },
+                  options
                 ),
               };
           }
@@ -293,15 +313,22 @@ const normalizeReactProps = (
       };
     }
   }
-  return {
-    [normalizedPropName]: componentPropsInfo,
-  };
+  return { [normalizedPropName]: componentPropsInfo };
 };
-const parsePropTypesToMarkdown = (componentPath: string) => {
-  const result = shelljs.exec(`react-docgen ${componentPath}`, {
-    silent: true,
-  });
-  const reactAPI: ReactAPI = JSON.parse(result.stdout);
+const parsePropTypesToMarkdown = (
+  componentPath: string,
+  options: { isTsx: boolean }
+): (PhrasingContent | BlockContent)[] => {
+  const result = reactDocgen.parse(
+    fs.readFileSync(componentPath, { encoding: 'utf8' }),
+    reactDocgen.resolver.findExportedComponentDefinition,
+    [setParamsTypeDefinitionFromFunctionType, ...reactDocgen.defaultHandlers],
+    {
+      filename: componentPath,
+    }
+  );
+  const reactAPI: ReactAPI = result;
+
   const tableHeaders = tableRow([
     tableCell('Props'),
     tableCell('Type'),
@@ -313,68 +340,166 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
   const normalizedReactProps = Object.entries(reactAPI.props).reduce(
     (normalizedProps, [propName, propInfo]) => ({
       ...normalizedProps,
-      ...normalizeReactProps(propName, propInfo),
+      ...normalizeReactProps(propName, propInfo, options),
     }),
     {} as ReactAPI['props']
   );
 
+  const signatures: (PhrasingContent | BlockContent)[] = [];
+
   const tableBody = Object.entries(normalizedReactProps).map(
     ([propName, propInfo]) => {
-      let propTypeNode: StaticPhrasingContent[];
-      switch (propInfo.type.name) {
-        // This case is only for arrays of scalar values, so we can render it as `Array of <scalar>`.
-        case 'arrayOf': {
-          const arrayValue = propInfo.type.value as ReactComponentPropType;
-          propTypeNode = [text('Array of '), inlineCode(arrayValue.name)];
-          break;
+      let propTypeNode: PhrasingContent[];
+      if (options.isTsx) {
+        const propInfoType = propInfo.tsType as ReactComponentTSDescriptor;
+        switch (propInfoType.name) {
+          case 'signature': {
+            switch (propInfoType.type) {
+              case 'object': {
+                propTypeNode = [
+                  inlineCode('Object'),
+                  html('<br/>'),
+                  link(`#signature-${propName}`, 'See signature.'),
+                ];
+                signatures.push(
+                  ...[
+                    heading(3, `Signature ${propName}`),
+                    code('ts', propInfoType.raw),
+                  ]
+                );
+                break;
+              }
+              case 'function': {
+                propTypeNode = [inlineCode(propInfoType.raw)];
+                break;
+              }
+              default:
+                propTypeNode = [];
+                break;
+            }
+            break;
+          }
+          case 'Array': {
+            propTypeNode = [
+              inlineCode(`Array: ${propInfoType.raw}`),
+              html('<br/>'),
+              link(`#signature-${propName}`, 'See signature.'),
+            ];
+            signatures.push(
+              ...[
+                heading(3, `Signature ${propName}`),
+                ...propInfoType.elements
+                  .map((elemNode) => {
+                    switch (elemNode.name) {
+                      case 'signature':
+                        return elemNode.raw;
+                      // TODO: add support for more cases?
+                      default:
+                        return undefined;
+                    }
+                  })
+                  .filter(Boolean)
+                  .map((value) => code('ts', value!)),
+              ]
+            );
+            break;
+          }
+          case 'union': {
+            const possibleSignatures = propInfoType.elements
+              .map((elemNode) => {
+                switch (elemNode.name) {
+                  case 'signature':
+                    return elemNode.raw;
+                  // TODO: add support for more cases?
+                  default:
+                    return undefined;
+                }
+              })
+              .filter(Boolean)
+              .map((value) => code('ts', value!));
+            propTypeNode = [
+              inlineCode(propInfoType.name),
+              html('<br/>'),
+              html('Possible values:'),
+              html('<br/>'),
+              inlineCode(
+                (propInfoType.raw || '').replace(/\n/g, '').replace(/\|/g, ',')
+              ),
+              ...(possibleSignatures.length > 0
+                ? [
+                    html('<br/>'),
+                    link(`#signature-${propName}`, 'See signature.'),
+                  ]
+                : []),
+            ];
+            if (possibleSignatures.length > 0) {
+              signatures.push(
+                ...[heading(3, `Signature ${propName}`), ...possibleSignatures]
+              );
+            }
+            break;
+          }
+          default:
+            propTypeNode = [inlineCode(propInfoType.name)];
         }
-        // This case is for unions of scalar values, so we can render it as `Array of <scalar>`.
-        case 'union': {
-          const unionValues = propInfo.type.value as ReactComponentPropType[];
-          const combinedUnionValues = unionValues
-            .map((union) => union.name)
-            // FIXME: it seems that there is a regression about escaping mulitple pipes.
-            // https://github.com/syntax-tree/mdast-util-gfm-table
-            // .join('\\|');
-            .join(', ');
-          propTypeNode = [inlineCode(`<${combinedUnionValues}>`)];
-          break;
-        }
-        case 'enum': {
-          propTypeNode = [
-            inlineCode(propInfo.type.name),
-            html('<br>'),
-            html('Possible values:'),
-            html('<br>'),
-            inlineCode(
-              (propInfo.type.value as { value: string }[])
-                .map((enumValue) => enumValue.value)
-                // FIXME: it seems that there is a regression about escaping mulitple pipes.
-                // https://github.com/syntax-tree/mdast-util-gfm-table
-                // .join(' \\| ');
-                .join(', ')
-            ),
-          ];
-          break;
-        }
-        case 'objectOf': {
-          propTypeNode = [
-            inlineCode(
-              `${propInfo.type.name}(${
-                (propInfo.type.value as ReactComponentPropType).name
-              })`
-            ),
-          ];
-          break;
-        }
-        default: {
-          propTypeNode = [
-            inlineCode(
-              propInfo.type.value
-                ? String(propInfo.type.value)
-                : propInfo.type.name
-            ),
-          ];
+      } else {
+        const propInfoType = propInfo.type as ReactComponentPropType;
+        switch (propInfoType.name) {
+          // This case is only for arrays of scalar values, so we can render it as `Array of <scalar>`.
+          case 'arrayOf': {
+            const arrayValue = propInfoType.value as ReactComponentPropType;
+            propTypeNode = [text('Array of '), inlineCode(arrayValue.name)];
+            break;
+          }
+          // This case is for unions of scalar values, so we can render it as `Array of <scalar>`.
+          case 'union': {
+            let unionValues = (propInfoType.value as ReactComponentPropType[]).map(
+              (union) => union.name
+            );
+            const combinedUnionValues = unionValues
+              // FIXME: it seems that there is a regression about escaping mulitple pipes.
+              // https://github.com/syntax-tree/mdast-util-gfm-table
+              // .join('\\|');
+              .join(', ');
+            propTypeNode = [inlineCode(`<${combinedUnionValues}>`)];
+            break;
+          }
+          case 'enum': {
+            propTypeNode = [
+              inlineCode(propInfoType.name),
+              html('<br/>'),
+              html('Possible values:'),
+              html('<br/>'),
+              inlineCode(
+                (propInfoType.value as { value: string }[])
+                  .map((enumValue) => enumValue.value)
+                  // FIXME: it seems that there is a regression about escaping mulitple pipes.
+                  // https://github.com/syntax-tree/mdast-util-gfm-table
+                  // .join(' \\| ');
+                  .join(', ')
+              ),
+            ];
+            break;
+          }
+          case 'objectOf': {
+            propTypeNode = [
+              inlineCode(
+                `${propInfoType.name}(${
+                  (propInfoType.value as ReactComponentPropType).name
+                })`
+              ),
+            ];
+            break;
+          }
+          default: {
+            propTypeNode = [
+              inlineCode(
+                propInfoType.value
+                  ? String(propInfoType.value)
+                  : propInfoType.name
+              ),
+            ];
+          }
         }
       }
 
@@ -392,15 +517,16 @@ const parsePropTypesToMarkdown = (componentPath: string) => {
     }
   );
 
-  return table(tableHeaders, tableBody, [null, null, 'center', null, null]);
+  return [
+    table(tableHeaders, tableBody, [null, null, 'center', null, null]),
+    ...(signatures.length > 0 ? [heading(2, 'Signatures'), ...signatures] : []),
+  ];
 };
 
 function readmeTransformer(packageFolderPath: string) {
   const packageJsonRaw = fs.readFileSync(
     path.join(packageFolderPath, 'package.json'),
-    {
-      encoding: 'utf8',
-    }
+    { encoding: 'utf8' }
   );
   const parsedPackageJson = JSON.parse(packageJsonRaw);
   const packageJsonInfo: PackgeJsonInfo = {
@@ -414,11 +540,18 @@ function readmeTransformer(packageFolderPath: string) {
     peerDependencies: parsedPackageJson.peerDependencies,
   };
 
+  let componentPath = path.join(
+    packageFolderPath,
+    packageJsonInfo.readme.componentPath
+  );
+  // If the path does not exist, we assume it's
+  if (!fs.existsSync(componentPath)) {
+    componentPath = componentPath.replace(/\.js$/, '.tsx');
+  }
+  const isTsx = componentPath.endsWith('tsx');
+
   const paths = {
-    componentPath: path.join(
-      packageFolderPath,
-      packageJsonInfo.readme.componentPath
-    ),
+    componentPath,
     description: path.join(packageFolderPath, 'docs/description.md'),
     usageExample: path.join(packageFolderPath, 'docs/usage-example.js'),
     additionalInfo: path.join(packageFolderPath, 'docs/additional-info.md'),
@@ -470,7 +603,7 @@ function readmeTransformer(packageFolderPath: string) {
       ),
       // Describe the component's properties
       heading(2, 'Properties'),
-      parsePropTypesToMarkdown(paths.componentPath),
+      ...parsePropTypesToMarkdown(paths.componentPath, { isTsx }),
       // Additional information (can be anything, there is no pre-defined structure here)
       ...((await existPath(paths.additionalInfo))
         ? parseMarkdownFragmentToAST(await toVfile.read(paths.additionalInfo))

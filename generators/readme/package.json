@@ -33,6 +33,7 @@
     "remark-stringify": "9.0.1",
     "shelljs": "0.8.4",
     "to-vfile": "6.1.0",
+    "typescript-react-function-component-props-handler": "1.1.1",
     "unified": "9.2.0",
     "vfile": "4.2.1",
     "vfile-reporter": "6.0.2"
