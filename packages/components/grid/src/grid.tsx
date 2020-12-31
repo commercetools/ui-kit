@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from 'react';
-import styled from '@emotion/styled';
 
 type GridItemProps = {
   children?: ReactNode;
@@ -58,46 +57,52 @@ type GridProps = {
   gridAutoFlow?: string;
   grid?: string;
 };
-type GridStaticProps = {
-  Item: FC<GridItemProps>;
-};
 
-const GridItem = styled.div<GridItemProps>((props) => ({
-  gridArea: props.gridArea,
-  gridColumn: props.gridColumn,
-  gridColumnStart: props.gridColumnStart,
-  gridColumnEnd: props.gridColumnEnd,
-  gridRow: props.gridRow,
-  gridRowStart: props.gridRowStart,
-  gridRowEnd: props.gridRowEnd,
-  justifySelf: props.justifySelf,
-  alignSelf: props.alignSelf,
-  placeSelf: props.placeSelf,
-}));
+const GridItem: FC<GridItemProps> = (props) => (
+  <div
+    css={{
+      gridArea: props.gridArea,
+      gridColumn: props.gridColumn,
+      gridColumnStart: props.gridColumnStart,
+      gridColumnEnd: props.gridColumnEnd,
+      gridRow: props.gridRow,
+      gridRowStart: props.gridRowStart,
+      gridRowEnd: props.gridRowEnd,
+      justifySelf: props.justifySelf,
+      alignSelf: props.alignSelf,
+      placeSelf: props.placeSelf,
+    }}
+  >
+    {props.children}
+  </div>
+);
 GridItem.displayName = 'GridItem';
 
-const GridContainer = styled.div<GridProps>((props) => ({
-  display: props.display,
-  grid: props.grid,
-  gridTemplate: props.gridTemplate,
-  gridTemplateColumns: props.gridTemplateColumns,
-  gridTemplateRows: props.gridTemplateRows,
-  gridTemplateAreas: props.gridTemplateAreas,
-  gridGap: props.gridGap,
-  gridColumnGap: props.gridColumnGap,
-  gridRowGap: props.gridRowGap,
-  justifyItems: props.justifyItems,
-  alignItems: props.alignItems,
-  placeItems: props.placeItems,
-  justifyContent: props.justifyContent,
-  alignContent: props.alignContent,
-  placeContent: props.placeContent,
-  gridAutoColumns: props.gridAutoColumns,
-  gridAutoRows: props.gridAutoRows,
-  gridAutoFlow: props.gridAutoFlow,
-}));
-const Grid: FC<GridProps> & GridStaticProps = (props) => (
-  <GridContainer {...props} />
+const Grid = (props: GridProps): JSX.Element => (
+  <div
+    css={{
+      display: props.display,
+      grid: props.grid,
+      gridTemplate: props.gridTemplate,
+      gridTemplateColumns: props.gridTemplateColumns,
+      gridTemplateRows: props.gridTemplateRows,
+      gridTemplateAreas: props.gridTemplateAreas,
+      gridGap: props.gridGap,
+      gridColumnGap: props.gridColumnGap,
+      gridRowGap: props.gridRowGap,
+      justifyItems: props.justifyItems,
+      alignItems: props.alignItems,
+      placeItems: props.placeItems,
+      justifyContent: props.justifyContent,
+      alignContent: props.alignContent,
+      placeContent: props.placeContent,
+      gridAutoColumns: props.gridAutoColumns,
+      gridAutoRows: props.gridAutoRows,
+      gridAutoFlow: props.gridAutoFlow,
+    }}
+  >
+    {props.children}
+  </div>
 );
 Grid.displayName = 'Grid';
 Grid.defaultProps = {
