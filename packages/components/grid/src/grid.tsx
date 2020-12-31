@@ -1,4 +1,5 @@
 import React, { FC, ReactNode } from 'react';
+import styled from '@emotion/styled';
 
 type GridItemProps = {
   children?: ReactNode;
@@ -78,32 +79,27 @@ const GridItem: FC<GridItemProps> = (props) => (
 );
 GridItem.displayName = 'GridItem';
 
-const Grid = (props: GridProps): JSX.Element => (
-  <div
-    css={{
-      display: props.display,
-      grid: props.grid,
-      gridTemplate: props.gridTemplate,
-      gridTemplateColumns: props.gridTemplateColumns,
-      gridTemplateRows: props.gridTemplateRows,
-      gridTemplateAreas: props.gridTemplateAreas,
-      gridGap: props.gridGap,
-      gridColumnGap: props.gridColumnGap,
-      gridRowGap: props.gridRowGap,
-      justifyItems: props.justifyItems,
-      alignItems: props.alignItems,
-      placeItems: props.placeItems,
-      justifyContent: props.justifyContent,
-      alignContent: props.alignContent,
-      placeContent: props.placeContent,
-      gridAutoColumns: props.gridAutoColumns,
-      gridAutoRows: props.gridAutoRows,
-      gridAutoFlow: props.gridAutoFlow,
-    }}
-  >
-    {props.children}
-  </div>
-);
+const GridContainer = styled.div<GridProps>((props) => ({
+  display: props.display,
+  grid: props.grid,
+  gridTemplate: props.gridTemplate,
+  gridTemplateColumns: props.gridTemplateColumns,
+  gridTemplateRows: props.gridTemplateRows,
+  gridTemplateAreas: props.gridTemplateAreas,
+  gridGap: props.gridGap,
+  gridColumnGap: props.gridColumnGap,
+  gridRowGap: props.gridRowGap,
+  justifyItems: props.justifyItems,
+  alignItems: props.alignItems,
+  placeItems: props.placeItems,
+  justifyContent: props.justifyContent,
+  alignContent: props.alignContent,
+  placeContent: props.placeContent,
+  gridAutoColumns: props.gridAutoColumns,
+  gridAutoRows: props.gridAutoRows,
+  gridAutoFlow: props.gridAutoFlow,
+}));
+const Grid = (props: GridProps): JSX.Element => <GridContainer {...props} />;
 Grid.displayName = 'Grid';
 Grid.defaultProps = {
   display: 'grid',
