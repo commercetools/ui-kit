@@ -1,5 +1,11 @@
 # @commercetools-uikit/design-system
 
+## 10.43.3
+
+### Patch Changes
+
+- [`13e18a0`](https://github.com/commercetools/ui-kit/commit/13e18a01cc66146c616d5e076e9a16f2642259cf) [#1723](https://github.com/commercetools/ui-kit/pull/1723) Thanks [@emmenko](https://github.com/emmenko)! - fix(design-system): move ts generated files into src folder, to avoid accidentally importing the JSON file.
+
 ## 10.43.2
 
 ### Patch Changes
