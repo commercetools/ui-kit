@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-module.exports = function getBabelPreset(api, opts = {}) {
+module.exports = function getBabelConfig(api, opts = {}) {
   if (api) {
     // Cache the returned value forever and don't call this function again.
     api.cache(true);

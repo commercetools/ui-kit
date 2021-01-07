@@ -143,7 +143,15 @@ fs.writeFileSync(
 );
 
 fs.writeFileSync(
-  path.join(__dirname, '../materials/design-tokens.ts'),
+  path.join(__dirname, '../materials/custom-properties.css'),
+  prettier.format(printCss(tokens), {
+    ...prettierConfig,
+    parser: 'css',
+  })
+);
+
+fs.writeFileSync(
+  path.join(__dirname, '../src/design-tokens.ts'),
   prettier.format(printTypeScript(designTokens, { camelCaseValue: true }), {
     ...prettierConfig,
     parser: 'typescript',
@@ -151,17 +159,9 @@ fs.writeFileSync(
 );
 
 fs.writeFileSync(
-  path.join(__dirname, '../materials/custom-properties.ts'),
+  path.join(__dirname, '../src/custom-properties.ts'),
   prettier.format(printTypeScript(tokens), {
     ...prettierConfig,
     parser: 'typescript',
-  })
-);
-
-fs.writeFileSync(
-  path.join(__dirname, '../materials/custom-properties.css'),
-  prettier.format(printCss(tokens), {
-    ...prettierConfig,
-    parser: 'css',
   })
 );
