@@ -1,5 +1,12 @@
 # @commercetools-uikit/avatar
 
+## 10.43.3
+
+### Patch Changes
+
+- Updated dependencies [[`13e18a0`](https://github.com/commercetools/ui-kit/commit/13e18a01cc66146c616d5e076e9a16f2642259cf)]:
+  - @commercetools-uikit/design-system@10.43.3
+
 ## 10.43.2
 
 ### Patch Changes
