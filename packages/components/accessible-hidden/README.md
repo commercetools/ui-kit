@@ -58,9 +58,9 @@ export default Example;
 
 ## Properties
 
-| Props      | Type   | Required | Default | Description |
-| ---------- | ------ | :------: | ------- | ----------- |
-| `children` | `node` |    ✅    |         |             |
+| Props      | Type        | Required | Default | Description |
+| ---------- | ----------- | :------: | ------- | ----------- |
+| `children` | `ReactNode` |    ✅    |         |             |
 
 ## Using the component for a11y testing
 

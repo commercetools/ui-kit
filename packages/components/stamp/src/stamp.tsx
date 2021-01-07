@@ -1,9 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import type { Theme } from '@emotion/react';
+
+import React, { FC, ReactNode } from 'react';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-export const availableTones = [
+type Tone =
+  | 'critical'
+  | 'warning'
+  | 'positive'
+  | 'information'
+  | 'primary'
+  | 'secondary';
+
+type Props = {
+  /**
+   * Indicates the color scheme of stamp
+   */
+  tone: Tone;
+  /**
+   * If `true`, renders a condensed version of the stamp.
+   */
+  isCondensed?: boolean;
+  children: ReactNode;
+};
+
+export const availableTones: Tone[] = [
   'critical',
   'warning',
   'positive',
@@ -11,7 +32,7 @@ export const availableTones = [
   'primary',
   'secondary',
 ];
-const getPaddingStyle = (props) => {
+const getPaddingStyle = (props: Props) => {
   if (props.isCondensed)
     return css`
       padding: 1px ${vars.spacingXs};
@@ -21,7 +42,7 @@ const getPaddingStyle = (props) => {
   `;
 };
 
-const getToneStyles = (props, theme) => {
+const getToneStyles = (props: Props, theme: Theme) => {
   const overwrittenVars = { ...vars, ...theme };
 
   switch (props.tone) {
@@ -66,7 +87,7 @@ const getToneStyles = (props, theme) => {
   }
 };
 
-const getStampStyles = (props, theme) => {
+const getStampStyles = (_props: Props, theme: Theme) => {
   const overwrittenVars = { ...vars, ...theme };
 
   return css`
@@ -76,7 +97,7 @@ const getStampStyles = (props, theme) => {
   `;
 };
 
-const Stamp = (props) => {
+const Stamp: FC<Props> = (props) => {
   const theme = useTheme();
   return (
     <div
@@ -90,15 +111,6 @@ const Stamp = (props) => {
     </div>
   );
 };
-
 Stamp.displayName = 'Stamp';
-Stamp.propTypes = {
-  /**
-   * Indicates the color scheme of stamp
-   */
-  tone: PropTypes.oneOf(availableTones).isRequired,
-  isCondensed: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-};
 
 export default Stamp;
