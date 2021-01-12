@@ -17,7 +17,7 @@
     "auth": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "clean": "lerna exec 'rm -rf dist'",
     "generate-readmes": "yarn generate-readme --all-workspace-packages",
-    "generate-icons": "lerna run generate-icons && prettier --write '**/generated/*.js'",
+    "generate-icons": "lerna run generate-icons && prettier --write '**/generated/*.{js,tsx}'",
     "design-tokens:build": "yarn --cwd design-system build:tokens",
     "design-tokens:build:watch": "yarn --cwd design-system build:tokens:watch",
     "storybook:build": "NODE_ENV=production build-storybook -o public -s docs/assets",
