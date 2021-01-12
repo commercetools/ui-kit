@@ -3,18 +3,30 @@
 // Original SVG file: src/icons/svg/unchecked.react.svg
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
-import PropTypes from 'prop-types';
+import type { Theme } from '@emotion/react';
+import React, { FC } from 'react';
 import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+type Props = {
+  color:
+    | 'solid'
+    | 'neutral60'
+    | 'surface'
+    | 'info'
+    | 'primary'
+    | 'primary40'
+    | 'warning'
+    | 'error';
+  size: 'small' | 'medium' | 'big' | 'scale';
+};
 const iconSizes = {
   small: 12,
   medium: 16,
   big: 24,
-};
+} as const;
 
-const getSizeStyle = (size) => {
+const getSizeStyle = (size: Props['size']) => {
   switch (size) {
     case 'scale':
       return `
@@ -40,11 +52,12 @@ const getSizeStyle = (size) => {
   }
 };
 
-const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
+const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
-const getColor = (color, theme) => {
+const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme };
+  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
@@ -58,7 +71,7 @@ const getColor = (color, theme) => {
   return iconColor;
 };
 
-const getIconStyles = (props, theme) => css`
+const getIconStyles = (props: Props, theme: Theme) => css`
   * {
     fill: ${getColor(props.color, theme)};
   }
@@ -66,21 +79,7 @@ const getIconStyles = (props, theme) => css`
   flex-shrink: 0;
 `;
 
-const iconPropTypes = {
-  color: PropTypes.oneOf([
-    'solid',
-    'neutral60',
-    'surface',
-    'info',
-    'primary',
-    'primary40',
-    'warning',
-    'error',
-  ]),
-  size: PropTypes.oneOf(['small', 'medium', 'big', 'scale']),
-};
-
-const SvgUnchecked = (props) => (
+const SvgUnchecked: FC<Props> = (props) => (
   <svg
     width={16}
     height={16}
@@ -134,10 +133,9 @@ const SvgUnchecked = (props) => (
 
 SvgUnchecked.displayName = 'SvgUnchecked';
 
-const UncheckedIcon = (props) => {
+const UncheckedIcon: FC<Props> = (props) => {
   const theme = useTheme();
   return <SvgUnchecked {...props} css={getIconStyles(props, theme)} />;
 };
 
-UncheckedIcon.propTypes = iconPropTypes;
 export default UncheckedIcon;
