@@ -21,7 +21,7 @@
   "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace",
-    "generate-icons": "svgr -d src/rich-text-body/icons/generated src/rich-text-body/icons/svg"
+    "generate-icons": "svgr -d src/rich-text-body/icons/generated --typescript src/rich-text-body/icons/svg"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
