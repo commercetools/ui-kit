@@ -2,12 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageNavigator from './page-navigator';
 import PageSizeSelector from './page-size-selector';
+import Spacings from '@commercetools-uikit/spacings';
 import styled from '@emotion/styled';
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
 
 function Pagination(props) {
   const totalPages = Math.ceil(props.totalItems / props.pageSize);
@@ -18,7 +14,7 @@ function Pagination(props) {
       : props.pageSize;
 
   return (
-    <Container>
+    <Spacings.Inline justifyContent="space-between">
       <PageSizeSelector
         options={props.pageSizeOptions}
         pageSize={props.pageSize}
@@ -30,7 +26,7 @@ function Pagination(props) {
         currentPage={props.currentPage}
         onPageChange={props.onPageChange}
       />
-    </Container>
+    </Spacings.Inline>
   );
 }
 Pagination.displayName = 'Pagination';
@@ -48,7 +44,9 @@ Pagination.propTypes = {
    */
   currentPage: PropTypes.number.isRequired,
   /**
-   * Called when the page is changed
+   * A callback function, called when the page is changed.
+   * <br>
+   * Signature: `(page: number) => void`
    */
   onPageChange: PropTypes.func.isRequired,
   /**
@@ -56,7 +54,9 @@ Pagination.propTypes = {
    */
   pageSizeOptions: PropTypes.arrayOf(PropTypes.number).isRequired,
   /**
-   * Called when pageSize is changed
+   * A callback function, called when pageSize is changed.
+   * <br>
+   * Signature: `(pageSize: number) => void`
    */
   onPageSizeChange: PropTypes.func.isRequired,
 };

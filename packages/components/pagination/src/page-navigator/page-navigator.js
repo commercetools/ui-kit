@@ -11,7 +11,7 @@ import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import Label from '@commercetools-uikit/label';
 import { createSequentialId } from '@commercetools-uikit/utils';
-import { isValid, normalizeValue } from './utils';
+import { isValid, normalizePageValue } from './utils';
 import messages from './messages';
 
 const sequentialId = createSequentialId('page-number-');
@@ -20,38 +20,42 @@ function PageNavigator(props) {
   const intl = useIntl();
   const [page, setPage] = React.useState(props.currentPage);
 
-  const normalizedValue = Number(normalizeValue(page, props.totalPages));
+  const { onPageChange, totalPages } = props;
+  const normalizedValue = Number(normalizePageValue(page, totalPages));
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = React.useCallback(
+    (event) => {
+      event.preventDefault();
 
-    setPage(normalizedValue);
+      setPage(normalizedValue);
 
-    props.onPageChange(normalizedValue);
-  };
+      onPageChange(normalizedValue);
+    },
+    [normalizedValue, onPageChange]
+  );
 
   const onBlurNormalize = () => setPage(normalizedValue);
 
-  const isDisabled = props.totalPages === 0;
+  const isDisabled = totalPages === 0;
 
-  const onPrevPage = () => {
+  const onPrevPage = React.useCallback(() => {
     const prevPage = page - 1;
     if (prevPage < 1) return null;
 
     setPage(prevPage);
-    props.onPageChange(prevPage);
-  };
+    onPageChange(prevPage);
+  }, [page, onPageChange]);
 
-  const onNextPage = () => {
+  const onNextPage = React.useCallback(() => {
     const nextPage = page + 1;
-    if (nextPage > props.totalPages) return null;
+    if (nextPage > totalPages) return null;
 
     setPage(nextPage);
-    props.onPageChange(nextPage);
-  };
+    onPageChange(nextPage);
+  }, [page, onPageChange, totalPages]);
 
   const isPreviousDisabled = page <= 1;
-  const isNextDisabled = page >= props.totalPages;
+  const isNextDisabled = page >= totalPages;
 
   const pageNumberInputId = sequentialId();
 
@@ -73,7 +77,7 @@ function PageNavigator(props) {
             onFocus={(event) => event.target.select()}
             onChange={(event) => setPage(event.target.value)}
             isDisabled={isDisabled}
-            hasWarning={isValid(page, props.totalPages)}
+            hasWarning={!isValid(page, props.totalPages)}
             horizontalConstraint={2}
           />
         </div>
