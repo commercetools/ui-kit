@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
+import uniqueId from 'lodash/uniqueId';
 import {
   AngleThinLeftIcon,
   AngleThinRightIcon,
@@ -10,18 +11,21 @@ import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import Label from '@commercetools-uikit/label';
-import { createSequentialId } from '@commercetools-uikit/utils';
 import { isValid, normalizePageValue } from './utils';
 import messages from './messages';
 
-const sequentialId = createSequentialId('page-number-');
-
 function PageNavigator(props) {
   const intl = useIntl();
+
+  const [pageNumberInputId] = React.useState(uniqueId('page-number-'));
   const [page, setPage] = React.useState(props.currentPage);
 
   const { onPageChange, totalPages } = props;
+
   const normalizedValue = Number(normalizePageValue(page, totalPages));
+  const isDisabled = totalPages === 0;
+  const isPreviousDisabled = page <= 1;
+  const isNextDisabled = page >= totalPages;
 
   const handleSubmit = React.useCallback(
     (event) => {
@@ -34,9 +38,9 @@ function PageNavigator(props) {
     [normalizedValue, onPageChange]
   );
 
-  const onBlurNormalize = () => setPage(normalizedValue);
-
-  const isDisabled = totalPages === 0;
+  const onBlurNormalize = React.useCallback(() => {
+    () => setPage(normalizedValue);
+  }, [normalizedValue]);
 
   const onPrevPage = React.useCallback(() => {
     const prevPage = page - 1;
@@ -53,11 +57,6 @@ function PageNavigator(props) {
     setPage(nextPage);
     onPageChange(nextPage);
   }, [page, onPageChange, totalPages]);
-
-  const isPreviousDisabled = page <= 1;
-  const isNextDisabled = page >= totalPages;
-
-  const pageNumberInputId = sequentialId();
 
   return (
     <form onSubmit={handleSubmit}>

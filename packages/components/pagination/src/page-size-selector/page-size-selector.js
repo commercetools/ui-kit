@@ -1,23 +1,25 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useIntl } from 'react-intl';
+import uniqueId from 'lodash/uniqueId';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import Constraints from '@commercetools-uikit/constraints';
 import Label from '@commercetools-uikit/label';
-import { createSequentialId } from '@commercetools-uikit/utils';
 import messages from './messages';
-
-const sequentialId = createSequentialId('page-size-selector-');
 
 function PageSizeSelector(props) {
   const intl = useIntl();
 
-  const handleSelectPerPage = (event) => {
-    props.onPageSizeChange(Number(event.target.value));
-  };
+  const [pageSizeSelectorId] = React.useState(uniqueId('page-size-selector-'));
 
-  const pageSizeSelectorId = sequentialId();
+  const { onPageSizeChange } = props;
+  const handleSelectPerPage = React.useCallback(
+    (event) => {
+      onPageSizeChange(Number(event.target.value));
+    },
+    [onPageSizeChange]
+  );
 
   return (
     <Spacings.Inline alignItems="center">
