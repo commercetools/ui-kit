@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import PageNavigator from './page-navigator';
 import PageSizeSelector from './page-size-selector';
 import Spacings from '@commercetools-uikit/spacings';
-import styled from '@emotion/styled';
 
 function Pagination(props) {
   const totalPages = Math.ceil(props.totalItems / props.pageSize);

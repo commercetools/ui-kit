@@ -3,7 +3,6 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
-import Text from '@commercetools-uikit/text';
 import Constraints from '@commercetools-uikit/constraints';
 import Label from '@commercetools-uikit/label';
 import { createSequentialId } from '@commercetools-uikit/utils';
