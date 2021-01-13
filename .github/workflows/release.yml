@@ -70,6 +70,7 @@ jobs:
         id: changesets
         uses: changesets/action@master
         with:
+          commit: 'ci(changesets): version packages'
           publish: yarn changeset publish
           version: yarn changeset:version-and-format
         env:
