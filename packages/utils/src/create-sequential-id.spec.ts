@@ -1,3 +1,4 @@
+import type { SequentialIdFn } from './create-sequential-id';
 import createSequentialId from './create-sequential-id';
 
 it('should return a function', () => {
@@ -5,7 +6,7 @@ it('should return a function', () => {
 });
 
 describe('when the factory is created', () => {
-  let sequentialId;
+  let sequentialId: SequentialIdFn;
   beforeEach(() => {
     sequentialId = createSequentialId('first-');
   });
@@ -16,8 +17,8 @@ describe('when the factory is created', () => {
 });
 
 describe('when two factories are created', () => {
-  let sequentialIdFirst;
-  let sequentialIdSecond;
+  let sequentialIdFirst: SequentialIdFn;
+  let sequentialIdSecond: SequentialIdFn;
   beforeEach(() => {
     sequentialIdFirst = createSequentialId('first-');
     sequentialIdSecond = createSequentialId('second-');
