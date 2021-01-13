@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "formik": "2.2.6",
-    "@testing-library/react-hooks": "3.7.0"
+    "@testing-library/react-hooks": "4.0.1"
   },
   "peerDependencies": {
     "react": ">= 16.8.0"
