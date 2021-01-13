@@ -36,6 +36,6 @@
     "react": ">= 16.8.0"
   },
   "readme": {
-    "componentPath": "./src/horizontal/horizontal.js"
+    "componentPath": "./src/horizontal/horizontal.tsx"
   }
 }
