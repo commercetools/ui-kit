@@ -47,6 +47,6 @@ export default Example;
 
 | Props         | Type                                                                                                        | Required | Default | Description                                          |
 | ------------- | ----------------------------------------------------------------------------------------------------------- | :------: | ------- | ---------------------------------------------------- |
-| `tone`        | `union`<br/>Possible values:<br/>`'critical', 'warning', 'positive', 'information', 'primary', 'secondary'` |    ✅    |         | Indicates the color scheme of stamp                  |
-| `isCondensed` | `boolean`                                                                                                   |          |         | If `true`, renders a condensed version of the stamp. |
+| `tone`        | `union`<br/>Possible values:<br/>`'critical', 'warning', 'positive', 'information', 'primary', 'secondary'` |          |         | Indicates the color scheme of stamp                  |
+| `isCondensed` | `boolean`                                                                                                   |          | `false` | If `true`, renders a condensed version of the stamp. |
 | `children`    | `ReactNode`                                                                                                 |    ✅    |         |                                                      |
