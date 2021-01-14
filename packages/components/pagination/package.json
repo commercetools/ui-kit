@@ -25,22 +25,22 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@babel/runtime-corejs3": "7.12.5",
-    "@commercetools-uikit/design-system": "10.42.2",
-    "@commercetools-uikit/constraints": "10.42.2",
-    "@commercetools-uikit/secondary-icon-button": "10.42.2",
-    "@commercetools-uikit/icons": "10.42.3",
-    "@commercetools-uikit/label": "10.42.2",
-    "@commercetools-uikit/number-input": "10.42.3",
-    "@commercetools-uikit/spacings": "10.42.2",
-    "@commercetools-uikit/select-input": "10.42.3",
-    "@commercetools-uikit/text": "10.42.2",
+    "@commercetools-uikit/design-system": "10.43.3",
+    "@commercetools-uikit/constraints": "10.44.4",
+    "@commercetools-uikit/secondary-icon-button": "10.44.4",
+    "@commercetools-uikit/icons": "10.44.4",
+    "@commercetools-uikit/label": "10.44.4",
+    "@commercetools-uikit/number-input": "10.44.4",
+    "@commercetools-uikit/spacings": "10.44.4",
+    "@commercetools-uikit/select-input": "10.44.4",
+    "@commercetools-uikit/text": "10.44.4",
     "lodash": "4.17.20",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {
-    "react": ">= 16.8.0",
+    "react": ">= 16.8.0 || >= 17.0.0",
     "react-intl": "3.x || 4.x || 5.x"
   }
 }
