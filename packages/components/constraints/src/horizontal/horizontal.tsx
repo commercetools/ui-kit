@@ -51,7 +51,7 @@ function getConstraintStyles(
   `;
 }
 
-const Horizontal = (props: TProps): JSX.Element => {
+const Horizontal: React.FC<TProps> = (props) => {
   invariant(
     !(props.constraint && props.max),
     '`ui-kit/constraints/horizontal: props `constraint` and `max` should not be used in conjunction. Please prefer `max` prop.'
