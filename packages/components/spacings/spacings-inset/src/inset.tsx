@@ -1,10 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-const getPadding = (scale) => {
+export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
+
+const getPadding = (scale?: TScale) => {
   switch (scale) {
     case 'xs':
       return vars.spacingXs;
@@ -21,7 +22,12 @@ const getPadding = (scale) => {
   }
 };
 
-const Inset = (props) => (
+type TProps = {
+  scale?: TScale;
+  children?: React.ReactNode;
+};
+
+const Inset: React.FC<TProps> = (props) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
@@ -33,11 +39,6 @@ const Inset = (props) => (
 );
 
 Inset.displayName = 'Inset';
-Inset.propTypes = {
-  scale: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-  children: PropTypes.node,
-};
-
 Inset.defaultProps = {
   scale: 'm',
 };
