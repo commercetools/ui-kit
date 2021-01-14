@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Spacings from '@commercetools-uikit/spacings';
 import PageNavigator from './page-navigator';
 import PageSizeSelector from './page-size-selector';
-import Spacings from '@commercetools-uikit/spacings';
 
-function Pagination(props) {
+const Pagination = (props) => {
   const totalPages = Math.ceil(props.totalItems / props.pageSize);
 
   const currentPageItems =
@@ -27,7 +27,7 @@ function Pagination(props) {
       />
     </Spacings.Inline>
   );
-}
+};
 Pagination.displayName = 'Pagination';
 Pagination.propTypes = {
   /**

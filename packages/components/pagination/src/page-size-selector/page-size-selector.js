@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import uniqueId from 'lodash/uniqueId';
 import SelectInput from '@commercetools-uikit/select-input';
@@ -8,7 +8,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import Label from '@commercetools-uikit/label';
 import messages from './messages';
 
-function PageSizeSelector(props) {
+const PageSizeSelector = (props) => {
   const intl = useIntl();
 
   const [pageSizeSelectorId] = React.useState(uniqueId('page-size-selector-'));
@@ -46,7 +46,7 @@ function PageSizeSelector(props) {
       />
     </Spacings.Inline>
   );
-}
+};
 
 PageSizeSelector.displayName = 'PageSizeSelector';
 PageSizeSelector.propTypes = {

@@ -34,9 +34,9 @@
     "@commercetools-uikit/spacings": "10.44.4",
     "@commercetools-uikit/select-input": "10.44.4",
     "@commercetools-uikit/text": "10.44.4",
-    "lodash": "4.17.20",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
+    "lodash": "4.17.20",
     "prop-types": "15.7.2"
   },
   "peerDependencies": {

@@ -14,7 +14,7 @@ import Label from '@commercetools-uikit/label';
 import { isValid, normalizePageValue } from './utils';
 import messages from './messages';
 
-function PageNavigator(props) {
+const PageNavigator = (props) => {
   const intl = useIntl();
 
   const [pageNumberInputId] = React.useState(uniqueId('page-number-'));
@@ -97,7 +97,7 @@ function PageNavigator(props) {
       </Spacings.Inline>
     </form>
   );
-}
+};
 
 PageNavigator.displayName = 'PageNavigator';
 PageNavigator.propTypes = {
