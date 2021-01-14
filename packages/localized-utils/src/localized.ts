@@ -24,7 +24,8 @@ export const getId = (
 export const getName = (
   namePrefix?: string,
   language?: string
-): string | undefined => (namePrefix ? `${namePrefix}.${language}` : undefined);
+): string | undefined =>
+  namePrefix && language ? `${namePrefix}.${language}` : undefined;
 
 export const getPrimaryLanguage = (language: string): string =>
   language.split('-')[0];
@@ -71,17 +72,17 @@ export const createLocalizedDataAttributes = <TProps extends {}>(
   language: string
 ): TLocalizedDataAttributes => {
   const entries = Object.entries(filterDataAttributes(props));
-  return entries.reduce((acc, [key, value]) => {
+  return entries.reduce((localizedDataAttributes, [key, value]) => {
     switch (key) {
       case 'data-track-component':
       case 'data-testid':
       case 'data-test':
-        acc[key] = `${value}-${language}`;
+        localizedDataAttributes[key] = `${value}-${language}`;
         break;
       default:
-        acc[key] = value;
+        localizedDataAttributes[key] = value;
     }
-    return acc;
+    return localizedDataAttributes;
   }, {} as TLocalizedDataAttributes);
 };
 
@@ -90,9 +91,8 @@ export const getHasErrorOnRemainingLanguages = <TErrors extends {}>(
   selectedLanguage?: string
 ): boolean => {
   if (errors && Object.keys(errors).length > 0 && selectedLanguage) {
-    return (
-      Object.keys(errors).filter((language) => language !== selectedLanguage)
-        .length > 0
+    return Object.keys(errors).some(
+      (language) => language !== selectedLanguage
     );
   }
   return false;
@@ -103,9 +103,8 @@ export const getHasWarningOnRemainingLanguages = <TWarnings extends {}>(
   selectedLanguage?: string
 ): boolean => {
   if (warnings && Object.keys(warnings).length > 0 && selectedLanguage) {
-    return (
-      Object.keys(warnings).filter((language) => language !== selectedLanguage)
-        .length > 0
+    return Object.keys(warnings).some(
+      (language) => language !== selectedLanguage
     );
   }
   return false;
