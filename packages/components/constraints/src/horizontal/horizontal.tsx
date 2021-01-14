@@ -26,9 +26,15 @@ type TMaxProp =
 
 type TConstraintProp = 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
 type TProps = {
+  /**
+   * Determines scale of the constraint.
+   */
+  max: TMaxProp;
+  /**
+   * @deprecated: Please use the `max` prop instead. Determines scale of the constraint.
+   */
   constraint: TConstraintProp;
   children: React.ReactNode;
-  max: TMaxProp;
 };
 
 function getConstraintStyles(
