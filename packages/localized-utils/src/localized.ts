@@ -72,18 +72,21 @@ export const createLocalizedDataAttributes = <TProps extends {}>(
   language: string
 ): TLocalizedDataAttributes => {
   const entries = Object.entries(filterDataAttributes(props));
-  return entries.reduce((localizedDataAttributes, [key, value]) => {
-    switch (key) {
-      case 'data-track-component':
-      case 'data-testid':
-      case 'data-test':
-        localizedDataAttributes[key] = `${value}-${language}`;
-        break;
-      default:
-        localizedDataAttributes[key] = value;
-    }
-    return localizedDataAttributes;
-  }, {} as TLocalizedDataAttributes);
+  return entries.reduce<TLocalizedDataAttributes>(
+    (localizedDataAttributes, [key, value]) => {
+      switch (key) {
+        case 'data-track-component':
+        case 'data-testid':
+        case 'data-test':
+          localizedDataAttributes[key] = `${value}-${language}`;
+          break;
+        default:
+          localizedDataAttributes[key] = value;
+      }
+      return localizedDataAttributes;
+    },
+    {} as TLocalizedDataAttributes
+  );
 };
 
 export const getHasErrorOnRemainingLanguages = <TErrors extends {}>(
@@ -117,7 +120,7 @@ export const createLocalizedString = (
   const mergedLanguages = existingTranslations
     ? uniq([...languages, ...Object.keys(existingTranslations)])
     : languages;
-  return mergedLanguages.reduce(
+  return mergedLanguages.reduce<TLocalizedString>(
     (localizedString, locale) => ({
       ...localizedString,
       [locale]: (existingTranslations && existingTranslations[locale]) || '',
@@ -141,7 +144,7 @@ export const omitEmptyTranslations = <TTranslations extends TLocalizedString>(
     'omitEmptyTranslations must be called with an object'
   );
 
-  return Object.entries(localizedString).reduce(
+  return Object.entries(localizedString).reduce<TLocalizedString>(
     (localizedStringWithoutEmptyTranslations, [locale, value]) => {
       if (value && value.trim().length > 0) {
         return {
