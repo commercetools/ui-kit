@@ -38,8 +38,8 @@ type TProps = {
 };
 
 function getConstraintStyles(
-  maxProp: TMaxProp,
-  constraintProp: TConstraintProp
+  maxProp?: TMaxProp,
+  constraintProp?: TConstraintProp
 ) {
   const constraintToken = maxProp
     ? getMaxPropTokenValue(maxProp)

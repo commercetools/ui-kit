@@ -9,7 +9,7 @@ const getMaxPropTokenValue = (max: number | string | null) => {
 
 /* Useful for mapping a constraint prop to its equivalent max prop for ui-kit components
  which have a `horizontalConstraint` prop and while both props are still acceptable */
-const getMaxPropEquivalent = (constraint: string) => {
+const getMaxPropEquivalent = (constraint?: string) => {
   if (constraint === 'xs') return 1;
   if (constraint === 's') return 3;
   if (constraint === 'm') return 7;
