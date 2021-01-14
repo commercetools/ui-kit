@@ -29,11 +29,11 @@ type TProps = {
   /**
    * Determines scale of the constraint.
    */
-  max: TMaxProp;
+  max?: TMaxProp;
   /**
    * @deprecated: Please use the `max` prop instead. Determines scale of the constraint.
    */
-  constraint: TConstraintProp;
+  constraint?: TConstraintProp;
   children: React.ReactNode;
 };
 
