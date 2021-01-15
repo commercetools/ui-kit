@@ -1,11 +1,46 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import invariant from 'tiny-invariant';
 import { getMaxPropTokenValue, getMaxPropEquivalent } from '../helpers';
 
-function getConstraintStyles(maxProp, constraintProp) {
+type TMaxProp =
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | 'scale'
+  | 'auto';
+
+type TConstraintProp = 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
+type TProps = {
+  /**
+   * Determines scale of the constraint.
+   */
+  max?: TMaxProp;
+  /**
+   * @deprecated: Please use the `max` prop instead. Determines scale of the constraint.
+   */
+  constraint?: TConstraintProp;
+  children: React.ReactNode;
+};
+
+function getConstraintStyles(
+  maxProp?: TMaxProp,
+  constraintProp?: TConstraintProp
+) {
   const constraintToken = maxProp
     ? getMaxPropTokenValue(maxProp)
     : getMaxPropTokenValue(getMaxPropEquivalent(constraintProp));
@@ -16,7 +51,7 @@ function getConstraintStyles(maxProp, constraintProp) {
   `;
 }
 
-const Horizontal = (props) => {
+const Horizontal: React.FC<TProps> = (props) => {
   invariant(
     !(props.constraint && props.max),
     '`ui-kit/constraints/horizontal: props `constraint` and `max` should not be used in conjunction. Please prefer `max` prop.'
@@ -44,38 +79,6 @@ const Horizontal = (props) => {
       {props.children}
     </div>
   );
-};
-
-Horizontal.displayName = 'Horizontal';
-Horizontal.propTypes = {
-  /**
-   * Determines scale of the constraint.
-   */
-  max: PropTypes.oneOf([
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-  /**
-   * DEPRECATING SOON: Please use the `max` prop instead. Determines scale of the constraint.
-   */
-  constraint: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl', 'scale']),
-  children: PropTypes.node.isRequired,
 };
 
 export default Horizontal;

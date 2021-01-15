@@ -44,11 +44,11 @@ import Constraints from '@commercetools-uikit/constraints';
 
 ## Properties
 
-| Props        | Type                                                                                                   | Required | Default | Description                                                                              |
-| ------------ | ------------------------------------------------------------------------------------------------------ | :------: | ------- | ---------------------------------------------------------------------------------------- |
-| `max`        | `enum`<br>Possible values:<br>`1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          |         | Determines scale of the constraint.                                                      |
-| `constraint` | `enum`<br>Possible values:<br>`'xs', 's', 'm', 'l', 'xl', 'scale'`                                     |          |         | DEPRECATING SOON: Please use the `max` prop instead. Determines scale of the constraint. |
-| `children`   | `node`                                                                                                 |    ✅    |         |                                                                                          |
+| Props        | Type                                                                                                      | Required | Default | Description                                                                         |
+| ------------ | --------------------------------------------------------------------------------------------------------- | :------: | ------- | ----------------------------------------------------------------------------------- |
+| `max`        | `union`<br/>Possible values:<br/>`1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          |         | Determines scale of the constraint.                                                 |
+| `constraint` | `union`<br/>Possible values:<br/>`'xs' , 's' , 'm' , 'l' , 'xl' , 'scale'`                                |          |         | @deprecated: Please use the `max` prop instead. Determines scale of the constraint. |
+| `children`   | `ReactReactNode`                                                                                          |    ✅    |         |                                                                                     |
 
 ## `max` constraint values:
 
