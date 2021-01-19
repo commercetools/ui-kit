@@ -1,10 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-const getPadding = (scale) => {
+type TScale = 's' | 'm' | 'l';
+type TProps = {
+  scale?: TScale;
+  children: React.ReactNode;
+};
+
+const getPadding = (scale?: TScale) => {
   switch (scale) {
     case 's':
       return `${vars.spacingXs} ${vars.spacingS}`;
@@ -17,7 +22,7 @@ const getPadding = (scale) => {
   }
 };
 
-const InsetSquish = (props) => (
+const InsetSquish: FC<TProps> = (props) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
@@ -29,11 +34,6 @@ const InsetSquish = (props) => (
 );
 
 InsetSquish.displayName = 'InsetSquish';
-InsetSquish.propTypes = {
-  scale: PropTypes.oneOf(['s', 'm', 'l']),
-  children: PropTypes.node,
-};
-
 InsetSquish.defaultProps = {
   scale: 'm',
 };
