@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import getStyles from './stack.styles';
-import { TProps } from './types';
 
-const Stack: React.FC<TProps> = (props) => (
+export type TAlignItem =
+  | 'stretch'
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'baseline'
+  // Deprecated
+  | 'flexStart'
+  | 'flexEnd';
+
+export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
+
+export type TProps = {
+  scale?: TScale;
+  alignItems?: TAlignItem;
+  children: React.ReactNode;
+};
+
+const Stack: FC<TProps> = (props) => (
   <div css={getStyles(props)} {...filterDataAttributes(props)}>
     {props.children}
   </div>

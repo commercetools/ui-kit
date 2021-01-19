@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
@@ -22,7 +22,7 @@ const getPadding = (scale?: TScale) => {
   }
 };
 
-const InsetSquish: React.FC<TProps> = (props) => (
+const InsetSquish: FC<TProps> = (props) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};

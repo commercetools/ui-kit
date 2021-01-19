@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import getStyles from './inline.styles';
-import type { TProps } from './types';
 
-const Inline: React.FC<TProps> = (props) => (
+export type TAlignItem =
+  | 'stretch'
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'baseline'
+  // Deprecated
+  | 'flexStart'
+  | 'flexEnd';
+
+export type TJustifyContent =
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly';
+
+export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
+
+export type TProps = {
+  scale?: TScale;
+  alignItems?: TAlignItem;
+  justifyContent?: TJustifyContent;
+  children: React.ReactNode;
+};
+
+const Inline: FC<TProps> = (props) => (
   <span css={getStyles(props)} {...filterDataAttributes(props)}>
     {props.children}
   </span>

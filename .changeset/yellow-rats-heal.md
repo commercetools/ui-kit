@@ -5,4 +5,4 @@
 '@commercetools-uikit/spacings-stack': minor
 ---
 
-Convert @commercetools-uikit/spacings to typescript
+Migrate spacing components to typescript

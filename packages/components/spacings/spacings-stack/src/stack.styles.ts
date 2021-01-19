@@ -1,6 +1,7 @@
+import type { TAlignItem, TScale, TProps } from './stack';
+
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { TAlignItem, TScale, TProps } from './types';
 
 const getAlignItem = (alignment?: TAlignItem) => {
   switch (alignment) {
@@ -36,7 +37,7 @@ const getMargin = (scale?: TScale) => {
  * causing the margings of the spacing components to be ignored.
  * See https://github.com/commercetools/ui-kit/issues/542
  */
-export default (props: TProps) => css`
+const getStyles = (props: TProps) => css`
   display: flex;
   flex-direction: column;
   align-items: ${getAlignItem(props.alignItems)};
@@ -45,3 +46,5 @@ export default (props: TProps) => css`
     margin: ${getMargin(props.scale)} 0 0 !important;
   }
 `;
+
+export default getStyles;

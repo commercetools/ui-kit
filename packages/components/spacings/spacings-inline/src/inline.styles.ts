@@ -1,6 +1,7 @@
+import type { TAlignItem, TProps, TScale } from './inline';
+
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import type { TAlignItem, TProps, TScale } from './types';
 
 // @TODO remove this when we deprecate `flexStart`/`flexEnd`
 const getAlignItem = (alignment?: TAlignItem) => {
@@ -37,7 +38,7 @@ const getMargin = (scale?: TScale): string | number => {
  * causing the margings of the spacing components to be ignored.
  * See https://github.com/commercetools/ui-kit/issues/542
  */
-export default (props: TProps) => css`
+const getStyles = (props: TProps) => css`
   display: flex;
   align-items: ${getAlignItem(props.alignItems)};
   justify-content: ${props.justifyContent};
@@ -46,3 +47,5 @@ export default (props: TProps) => css`
     margin: 0 0 0 ${getMargin(props.scale)} !important;
   }
 `;
+
+export default getStyles;
