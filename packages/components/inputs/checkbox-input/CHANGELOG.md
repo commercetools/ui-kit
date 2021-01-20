@@ -1,5 +1,20 @@
 # @commercetools-uikit/checkbox-input
 
+## 10.44.0
+
+### Minor Changes
+
+- [`22164a3`](https://github.com/commercetools/ui-kit/commit/22164a34ec0607b778df534378f5cf3f8403f80f) [#1740](https://github.com/commercetools/ui-kit/pull/1740) Thanks [@emmenko](https://github.com/emmenko)! - Migrate icons to TypeScript
+
+### Patch Changes
+
+- Updated dependencies [[`22164a3`](https://github.com/commercetools/ui-kit/commit/22164a34ec0607b778df534378f5cf3f8403f80f), [`22164a3`](https://github.com/commercetools/ui-kit/commit/22164a34ec0607b778df534378f5cf3f8403f80f), [`22164a3`](https://github.com/commercetools/ui-kit/commit/22164a34ec0607b778df534378f5cf3f8403f80f)]:
+  - @commercetools-uikit/icons@10.44.0
+  - @commercetools-uikit/utils@10.44.0
+  - @commercetools-uikit/input-utils@10.44.0
+  - @commercetools-uikit/select-utils@10.44.0
+  - @commercetools-uikit/text@10.44.0
+
 ## 10.43.3
 
 ### Patch Changes

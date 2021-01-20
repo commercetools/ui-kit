@@ -1,5 +1,16 @@
 # @commercetools-uikit/localized-utils
 
+## 10.44.0
+
+### Minor Changes
+
+- [`22164a3`](https://github.com/commercetools/ui-kit/commit/22164a34ec0607b778df534378f5cf3f8403f80f) [#1740](https://github.com/commercetools/ui-kit/pull/1740) Thanks [@emmenko](https://github.com/emmenko)! - migrate to typescript
+
+### Patch Changes
+
+- Updated dependencies [[`22164a3`](https://github.com/commercetools/ui-kit/commit/22164a34ec0607b778df534378f5cf3f8403f80f)]:
+  - @commercetools-uikit/utils@10.44.0
+
 ## 10.42.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @commercetools-local/generator-readme
 
+## 1.1.11
+
+### Patch Changes
+
+- [`22164a3`](https://github.com/commercetools/ui-kit/commit/22164a34ec0607b778df534378f5cf3f8403f80f) [#1740](https://github.com/commercetools/ui-kit/pull/1740) Thanks [@emmenko](https://github.com/emmenko)! - fix(deps): update all dependencies
+
 ## 1.1.10
 
 ### Patch Changes

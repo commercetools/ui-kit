@@ -1,5 +1,12 @@
 # @commercetools-uikit/label
 
+## 10.44.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/text@10.44.0
+
 ## 10.43.3
 
 ### Patch Changes
