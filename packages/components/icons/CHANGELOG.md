@@ -1,5 +1,15 @@
 # @commercetools-uikit/icons
 
+## 10.44.0
+
+### Minor Changes
+
+- [`22164a3`](https://github.com/commercetools/ui-kit/commit/22164a34ec0607b778df534378f5cf3f8403f80f) [#1740](https://github.com/commercetools/ui-kit/pull/1740) Thanks [@emmenko](https://github.com/emmenko)! - Migrate icons to TypeScript
+
+### Patch Changes
+
+- [`22164a3`](https://github.com/commercetools/ui-kit/commit/22164a34ec0607b778df534378f5cf3f8403f80f) [#1740](https://github.com/commercetools/ui-kit/pull/1740) Thanks [@emmenko](https://github.com/emmenko)! - refactor(filter and list icon): updated icon content per UX request
+
 ## 10.43.3
 
 ### Patch Changes
