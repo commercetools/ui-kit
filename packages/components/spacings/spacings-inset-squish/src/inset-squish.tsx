@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 type TScale = 's' | 'm' | 'l';
 type TProps = {
-  scale?: TScale;
+  scale: TScale;
   children: React.ReactNode;
 };
 
@@ -22,7 +22,7 @@ const getPadding = (scale?: TScale) => {
   }
 };
 
-const InsetSquish: FC<TProps> = (props) => (
+const InsetSquish = (props: TProps) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
@@ -32,10 +32,10 @@ const InsetSquish: FC<TProps> = (props) => (
     {props.children}
   </div>
 );
-
-InsetSquish.displayName = 'InsetSquish';
-InsetSquish.defaultProps = {
+const defaultProps: Pick<TProps, 'scale'> = {
   scale: 'm',
 };
+InsetSquish.displayName = 'InsetSquish';
+InsetSquish.defaultProps = defaultProps;
 
 export default InsetSquish;

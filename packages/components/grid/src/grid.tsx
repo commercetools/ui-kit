@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 
 type GridItemProps = {
@@ -18,7 +18,7 @@ type GridItemProps = {
 type GridProps = {
   children: ReactNode;
   // List based on https://css-tricks.com/snippets/css/complete-guide-grid
-  display?: 'grid' | 'inline-grid';
+  display: 'grid' | 'inline-grid';
   gridTemplateColumns?: string;
   gridTemplateRows?: string;
   gridTemplateAreas?: string;
@@ -59,7 +59,7 @@ type GridProps = {
   grid?: string;
 };
 
-const GridItem: FC<GridItemProps> = (props) => (
+const GridItem = (props: GridItemProps) => (
   <div
     css={{
       gridArea: props.gridArea,
@@ -99,11 +99,12 @@ const GridContainer = styled.div<GridProps>((props) => ({
   gridAutoRows: props.gridAutoRows,
   gridAutoFlow: props.gridAutoFlow,
 }));
-const Grid = (props: GridProps): JSX.Element => <GridContainer {...props} />;
-Grid.displayName = 'Grid';
-Grid.defaultProps = {
+const defaultProps: Pick<GridProps, 'display'> = {
   display: 'grid',
 };
+const Grid = (props: GridProps) => <GridContainer {...props} />;
+Grid.displayName = 'Grid';
+Grid.defaultProps = defaultProps;
 // Assign GridItem as a static property of Grid
 Grid.Item = GridItem;
 

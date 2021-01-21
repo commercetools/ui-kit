@@ -1,6 +1,6 @@
 import type { Theme } from '@emotion/react';
 
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
@@ -16,11 +16,11 @@ type Props = {
   /**
    * Indicates the color scheme of stamp
    */
-  tone: Tone;
+  tone?: Tone;
   /**
    * If `true`, renders a condensed version of the stamp.
    */
-  isCondensed?: boolean;
+  isCondensed: boolean;
   children: ReactNode;
 };
 
@@ -97,7 +97,7 @@ const getStampStyles = (_props: Props, theme: Theme) => {
   `;
 };
 
-const Stamp: FC<Props> = (props) => {
+const Stamp = (props: Props) => {
   const theme = useTheme();
   return (
     <div
@@ -111,6 +111,10 @@ const Stamp: FC<Props> = (props) => {
     </div>
   );
 };
+const defaultProps: Pick<Props, 'isCondensed'> = {
+  isCondensed: false,
+};
 Stamp.displayName = 'Stamp';
+Stamp.defaultProps = defaultProps;
 
 export default Stamp;

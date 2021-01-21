@@ -1,10 +1,10 @@
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 // `null` is derived from `getMaxPropEquivalent`
 const getMaxPropTokenValue = (max: number | string | null) => {
   if (!max) return null;
   // @ts-expect-error
-  return vars[`constraint${max}`];
+  return customProperties[`constraint${max}`];
 };
 
 /* Useful for mapping a constraint prop to its equivalent max prop for ui-kit components

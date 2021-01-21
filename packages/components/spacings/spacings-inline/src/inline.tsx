@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import getStyles from './inline.styles';
 
@@ -23,22 +23,23 @@ export type TJustifyContent =
 export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
 
 export type TProps = {
-  scale?: TScale;
-  alignItems?: TAlignItem;
-  justifyContent?: TJustifyContent;
+  scale: TScale;
+  alignItems: TAlignItem;
+  justifyContent: TJustifyContent;
   children: React.ReactNode;
 };
 
-const Inline: FC<TProps> = (props) => (
+const Inline = (props: TProps) => (
   <span css={getStyles(props)} {...filterDataAttributes(props)}>
     {props.children}
   </span>
 );
-Inline.defaultProps = {
+const defaultProps: Pick<TProps, 'scale' | 'alignItems' | 'justifyContent'> = {
   scale: 's',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
 };
+Inline.defaultProps = defaultProps;
 Inline.displayName = 'Inline';
 
 export default Inline;
