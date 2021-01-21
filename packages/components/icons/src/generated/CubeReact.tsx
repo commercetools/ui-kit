@@ -9,7 +9,7 @@ import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
+  color:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,12 +18,12 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size?: 'small' | 'medium' | 'big' | 'scale';
+  size: 'small' | 'medium' | 'big' | 'scale';
 };
-const defaultProps = {
+const defaultProps: Pick<Props, 'color' | 'size'> = {
   color: 'solid',
   size: 'big',
-} as const;
+};
 const iconSizes = {
   small: 12,
   medium: 16,
@@ -117,10 +117,11 @@ const SvgCube = (props: Props) => (
 
 SvgCube.displayName = 'SvgCube';
 
-const CubeIcon = (props: Props = defaultProps) => {
+const CubeIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgCube {...props} css={getIconStyles(props, theme)} />;
 };
 
 CubeIcon.displayName = 'CubeIcon';
+CubeIcon.defaultProps = defaultProps;
 export default CubeIcon;

@@ -9,7 +9,7 @@ import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
+  color:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,12 +18,12 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size?: 'small' | 'medium' | 'big' | 'scale';
+  size: 'small' | 'medium' | 'big' | 'scale';
 };
-const defaultProps = {
+const defaultProps: Pick<Props, 'color' | 'size'> = {
   color: 'solid',
   size: 'big',
-} as const;
+};
 const iconSizes = {
   small: 12,
   medium: 16,
@@ -132,7 +132,7 @@ const SvgRadioOptionUnchecked = (props: Props) => (
 
 SvgRadioOptionUnchecked.displayName = 'SvgRadioOptionUnchecked';
 
-const RadioOptionUncheckedIcon = (props: Props = defaultProps) => {
+const RadioOptionUncheckedIcon = (props: Props) => {
   const theme = useTheme();
   return (
     <SvgRadioOptionUnchecked {...props} css={getIconStyles(props, theme)} />
@@ -140,4 +140,5 @@ const RadioOptionUncheckedIcon = (props: Props = defaultProps) => {
 };
 
 RadioOptionUncheckedIcon.displayName = 'RadioOptionUncheckedIcon';
+RadioOptionUncheckedIcon.defaultProps = defaultProps;
 export default RadioOptionUncheckedIcon;

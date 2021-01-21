@@ -9,7 +9,7 @@ import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
+  color:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,12 +18,12 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size?: 'small' | 'medium' | 'big' | 'scale';
+  size: 'small' | 'medium' | 'big' | 'scale';
 };
-const defaultProps = {
+const defaultProps: Pick<Props, 'color' | 'size'> = {
   color: 'solid',
   size: 'big',
-} as const;
+};
 const iconSizes = {
   small: 12,
   medium: 16,
@@ -118,10 +118,11 @@ const SvgPinFilled = (props: Props) => (
 
 SvgPinFilled.displayName = 'SvgPinFilled';
 
-const PinFilledIcon = (props: Props = defaultProps) => {
+const PinFilledIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgPinFilled {...props} css={getIconStyles(props, theme)} />;
 };
 
 PinFilledIcon.displayName = 'PinFilledIcon';
+PinFilledIcon.defaultProps = defaultProps;
 export default PinFilledIcon;

@@ -9,7 +9,7 @@ import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
+  color:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,12 +18,12 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size?: 'small' | 'medium' | 'big' | 'scale';
+  size: 'small' | 'medium' | 'big' | 'scale';
 };
-const defaultProps = {
+const defaultProps: Pick<Props, 'color' | 'size'> = {
   color: 'solid',
   size: 'big',
-} as const;
+};
 const iconSizes = {
   small: 12,
   medium: 16,
@@ -119,10 +119,11 @@ const SvgArrowTriangleUp = (props: Props) => (
 
 SvgArrowTriangleUp.displayName = 'SvgArrowTriangleUp';
 
-const ArrowTriangleUpIcon = (props: Props = defaultProps) => {
+const ArrowTriangleUpIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgArrowTriangleUp {...props} css={getIconStyles(props, theme)} />;
 };
 
 ArrowTriangleUpIcon.displayName = 'ArrowTriangleUpIcon';
+ArrowTriangleUpIcon.defaultProps = defaultProps;
 export default ArrowTriangleUpIcon;

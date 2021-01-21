@@ -60,11 +60,12 @@ ${templateCreateStyledIcon}
 const ${svgComponentName} = (props: Props) => JSX;
 ${svgComponentName}.displayName = "${svgComponentName}";
 
-const ${reactComponentName} = (props: Props = defaultProps) => {
+const ${reactComponentName} = (props: Props) => {
   const theme = useTheme();
   return <${svgComponentName} {...props} css={getIconStyles(props, theme)} />
 };
 ${reactComponentName}.displayName = "${reactComponentName}";
+${reactComponentName}.defaultProps = defaultProps;
 
 export default ${reactComponentName};
   `;

@@ -9,7 +9,7 @@ import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
+  color:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,12 +18,12 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size?: 'small' | 'medium' | 'big' | 'scale';
+  size: 'small' | 'medium' | 'big' | 'scale';
 };
-const defaultProps = {
+const defaultProps: Pick<Props, 'color' | 'size'> = {
   color: 'solid',
   size: 'big',
-} as const;
+};
 const iconSizes = {
   small: 12,
   medium: 16,
@@ -100,10 +100,11 @@ const SvgTagStacked = (props: Props) => (
 
 SvgTagStacked.displayName = 'SvgTagStacked';
 
-const TagStackedIcon = (props: Props = defaultProps) => {
+const TagStackedIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgTagStacked {...props} css={getIconStyles(props, theme)} />;
 };
 
 TagStackedIcon.displayName = 'TagStackedIcon';
+TagStackedIcon.defaultProps = defaultProps;
 export default TagStackedIcon;

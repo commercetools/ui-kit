@@ -9,7 +9,7 @@ import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
+  color:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,12 +18,12 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size?: 'small' | 'medium' | 'big' | 'scale';
+  size: 'small' | 'medium' | 'big' | 'scale';
 };
-const defaultProps = {
+const defaultProps: Pick<Props, 'color' | 'size'> = {
   color: 'solid',
   size: 'big',
-} as const;
+};
 const iconSizes = {
   small: 12,
   medium: 16,
@@ -123,10 +123,11 @@ const SvgVerified = (props: Props) => (
 
 SvgVerified.displayName = 'SvgVerified';
 
-const VerifiedIcon = (props: Props = defaultProps) => {
+const VerifiedIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgVerified {...props} css={getIconStyles(props, theme)} />;
 };
 
 VerifiedIcon.displayName = 'VerifiedIcon';
+VerifiedIcon.defaultProps = defaultProps;
 export default VerifiedIcon;
