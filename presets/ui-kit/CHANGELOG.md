@@ -1,5 +1,30 @@
 # @commercetools-frontend/ui-kit
 
+## 10.44.1
+
+### Patch Changes
+
+- Updated dependencies [[`5f8a7da`](https://github.com/commercetools/ui-kit/commit/5f8a7da2518b401c4f8fe06046dc33b4e8f4414d)]:
+  - @commercetools-uikit/accessible-hidden@10.44.1
+  - @commercetools-uikit/constraints@10.44.1
+  - @commercetools-uikit/grid@10.44.1
+  - @commercetools-uikit/icons@10.44.1
+  - @commercetools-uikit/stamp@10.44.1
+  - @commercetools-uikit/spacings@10.44.1
+  - @commercetools-uikit/data-table-manager@10.44.1
+  - @commercetools-uikit/collapsible-panel@10.44.1
+  - @commercetools-uikit/field-label@10.44.1
+  - @commercetools-uikit/tag@10.44.1
+  - @commercetools-uikit/tooltip@10.44.1
+  - @commercetools-uikit/data-table@10.44.1
+  - @commercetools-uikit/notifications@10.44.1
+  - @commercetools-uikit/primary-action-dropdown@10.44.1
+  - @commercetools-uikit/table@10.44.1
+  - @commercetools-uikit/inputs@10.44.1
+  - @commercetools-uikit/loading-spinner@10.44.1
+  - @commercetools-uikit/fields@10.44.1
+  - @commercetools-uikit/buttons@10.44.1
+
 ## 10.44.0
 
 ### Patch Changes

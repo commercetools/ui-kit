@@ -1,5 +1,15 @@
 # @commercetools-uikit/time-input
 
+## 10.44.1
+
+### Patch Changes
+
+- Updated dependencies [[`5f8a7da`](https://github.com/commercetools/ui-kit/commit/5f8a7da2518b401c4f8fe06046dc33b4e8f4414d)]:
+  - @commercetools-uikit/constraints@10.44.1
+  - @commercetools-uikit/icons@10.44.1
+  - @commercetools-uikit/spacings-inline@10.44.1
+  - @commercetools-uikit/input-utils@10.44.1
+
 ## 10.44.0
 
 ### Patch Changes
