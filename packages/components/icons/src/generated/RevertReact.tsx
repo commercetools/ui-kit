@@ -4,12 +4,12 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@emotion/react';
-import React, { FC } from 'react';
+import React from 'react';
 import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color:
+  color?:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,8 +18,12 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size: 'small' | 'medium' | 'big' | 'scale';
+  size?: 'small' | 'medium' | 'big' | 'scale';
 };
+const defaultProps = {
+  color: 'solid',
+  size: 'big',
+} as const;
 const iconSizes = {
   small: 12,
   medium: 16,
@@ -79,7 +83,7 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgRevert: FC<Props> = (props) => (
+const SvgRevert = (props: Props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={24}
@@ -93,9 +97,10 @@ const SvgRevert: FC<Props> = (props) => (
 
 SvgRevert.displayName = 'SvgRevert';
 
-const RevertIcon: FC<Props> = (props) => {
+const RevertIcon = (props: Props = defaultProps) => {
   const theme = useTheme();
   return <SvgRevert {...props} css={getIconStyles(props, theme)} />;
 };
 
+RevertIcon.displayName = 'RevertIcon';
 export default RevertIcon;

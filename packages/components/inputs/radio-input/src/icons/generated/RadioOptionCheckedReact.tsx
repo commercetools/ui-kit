@@ -4,12 +4,12 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@emotion/react';
-import React, { FC } from 'react';
+import React from 'react';
 import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color:
+  color?:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,8 +18,12 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size: 'small' | 'medium' | 'big' | 'scale';
+  size?: 'small' | 'medium' | 'big' | 'scale';
 };
+const defaultProps = {
+  color: 'solid',
+  size: 'big',
+} as const;
 const iconSizes = {
   small: 12,
   medium: 16,
@@ -79,7 +83,7 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgRadioOptionChecked: FC<Props> = (props) => (
+const SvgRadioOptionChecked = (props: Props) => (
   <svg
     width={16}
     height={16}
@@ -135,9 +139,10 @@ const SvgRadioOptionChecked: FC<Props> = (props) => (
 
 SvgRadioOptionChecked.displayName = 'SvgRadioOptionChecked';
 
-const RadioOptionCheckedIcon: FC<Props> = (props) => {
+const RadioOptionCheckedIcon = (props: Props = defaultProps) => {
   const theme = useTheme();
   return <SvgRadioOptionChecked {...props} css={getIconStyles(props, theme)} />;
 };
 
+RadioOptionCheckedIcon.displayName = 'RadioOptionCheckedIcon';
 export default RadioOptionCheckedIcon;
