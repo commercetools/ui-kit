@@ -9,7 +9,7 @@ import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color:
+  color?:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,11 +18,7 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size: 'small' | 'medium' | 'big' | 'scale';
-};
-const defaultProps: Pick<Props, 'color' | 'size'> = {
-  color: 'solid',
-  size: 'big',
+  size?: 'small' | 'medium' | 'big' | 'scale';
 };
 const iconSizes = {
   small: 12,
@@ -115,5 +111,4 @@ const EyeIcon = (props: Props) => {
 };
 
 EyeIcon.displayName = 'EyeIcon';
-EyeIcon.defaultProps = defaultProps;
 export default EyeIcon;

@@ -65,7 +65,6 @@ const ${reactComponentName} = (props: Props) => {
   return <${svgComponentName} {...props} css={getIconStyles(props, theme)} />
 };
 ${reactComponentName}.displayName = "${reactComponentName}";
-${reactComponentName}.defaultProps = defaultProps;
 
 export default ${reactComponentName};
   `;
