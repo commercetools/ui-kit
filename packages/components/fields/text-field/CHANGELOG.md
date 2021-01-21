@@ -1,5 +1,15 @@
 # @commercetools-uikit/text-field
 
+## 10.44.1
+
+### Patch Changes
+
+- Updated dependencies [[`5f8a7da`](https://github.com/commercetools/ui-kit/commit/5f8a7da2518b401c4f8fe06046dc33b4e8f4414d)]:
+  - @commercetools-uikit/constraints@10.44.1
+  - @commercetools-uikit/spacings-stack@10.44.1
+  - @commercetools-uikit/field-label@10.44.1
+  - @commercetools-uikit/text-input@10.44.1
+
 ## 10.44.0
 
 ### Patch Changes

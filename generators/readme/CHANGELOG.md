@@ -1,5 +1,11 @@
 # @commercetools-local/generator-readme
 
+## 1.1.12
+
+### Patch Changes
+
+- [`5f8a7da`](https://github.com/commercetools/ui-kit/commit/5f8a7da2518b401c4f8fe06046dc33b4e8f4414d) [#1742](https://github.com/commercetools/ui-kit/pull/1742) Thanks [@emmenko](https://github.com/emmenko)! - Fix types. Avoid using `React.FC` as it does not properly work with `defaultProps`.
+
 ## 1.1.11
 
 ### Patch Changes
