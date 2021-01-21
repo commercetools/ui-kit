@@ -4,12 +4,12 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@emotion/react';
-import React, { FC } from 'react';
+import React from 'react';
 import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color:
+  color?:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,7 +18,7 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size: 'small' | 'medium' | 'big' | 'scale';
+  size?: 'small' | 'medium' | 'big' | 'scale';
 };
 const iconSizes = {
   small: 12,
@@ -79,7 +79,7 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgRightTriangleLinear: FC<Props> = (props) => (
+const SvgRightTriangleLinear = (props: Props) => (
   <svg
     width={8}
     height={8}
@@ -110,11 +110,12 @@ const SvgRightTriangleLinear: FC<Props> = (props) => (
 
 SvgRightTriangleLinear.displayName = 'SvgRightTriangleLinear';
 
-const RightTriangleLinearIcon: FC<Props> = (props) => {
+const RightTriangleLinearIcon = (props: Props) => {
   const theme = useTheme();
   return (
     <SvgRightTriangleLinear {...props} css={getIconStyles(props, theme)} />
   );
 };
 
+RightTriangleLinearIcon.displayName = 'RightTriangleLinearIcon';
 export default RightTriangleLinearIcon;

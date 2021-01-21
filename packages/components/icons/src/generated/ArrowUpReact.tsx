@@ -4,12 +4,12 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@emotion/react';
-import React, { FC } from 'react';
+import React from 'react';
 import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color:
+  color?:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,7 +18,7 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size: 'small' | 'medium' | 'big' | 'scale';
+  size?: 'small' | 'medium' | 'big' | 'scale';
 };
 const iconSizes = {
   small: 12,
@@ -79,7 +79,7 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgArrowUp: FC<Props> = (props) => (
+const SvgArrowUp = (props: Props) => (
   <svg
     width={24}
     height={24}
@@ -114,9 +114,10 @@ const SvgArrowUp: FC<Props> = (props) => (
 
 SvgArrowUp.displayName = 'SvgArrowUp';
 
-const ArrowUpIcon: FC<Props> = (props) => {
+const ArrowUpIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgArrowUp {...props} css={getIconStyles(props, theme)} />;
 };
 
+ArrowUpIcon.displayName = 'ArrowUpIcon';
 export default ArrowUpIcon;

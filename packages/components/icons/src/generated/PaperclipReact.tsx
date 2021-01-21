@@ -4,12 +4,12 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@emotion/react';
-import React, { FC } from 'react';
+import React from 'react';
 import invariant from 'tiny-invariant';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color:
+  color?:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,7 +18,7 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size: 'small' | 'medium' | 'big' | 'scale';
+  size?: 'small' | 'medium' | 'big' | 'scale';
 };
 const iconSizes = {
   small: 12,
@@ -79,7 +79,7 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgPaperclip: FC<Props> = (props) => (
+const SvgPaperclip = (props: Props) => (
   <svg
     id="paperclip_react_svg__Ebene_1"
     xmlns="http://www.w3.org/2000/svg"
@@ -104,9 +104,10 @@ const SvgPaperclip: FC<Props> = (props) => (
 
 SvgPaperclip.displayName = 'SvgPaperclip';
 
-const PaperclipIcon: FC<Props> = (props) => {
+const PaperclipIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgPaperclip {...props} css={getIconStyles(props, theme)} />;
 };
 
+PaperclipIcon.displayName = 'PaperclipIcon';
 export default PaperclipIcon;

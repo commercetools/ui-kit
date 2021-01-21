@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 type Identity = {
   /**
@@ -67,15 +67,16 @@ type Props = {
    */
   power: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
-  isAlive?: boolean;
+  isAlive: boolean;
 };
-
-const JusticeLeague: FC<Props> = (props) => (
-  <div>{`JusticeLeague: ${props.name}`}</div>
-);
-JusticeLeague.defaultProps = {
+const defaultProps: Pick<Props, 'power' | 'isAlive'> = {
   power: 1,
   isAlive: true,
 };
+
+const JusticeLeague = (props: Props) => (
+  <div>{`JusticeLeague: ${props.name}`}</div>
+);
+JusticeLeague.defaultProps = defaultProps;
 
 export default JusticeLeague;

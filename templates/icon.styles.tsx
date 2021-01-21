@@ -2,14 +2,14 @@
 import type { Theme } from '@emotion/react';
 
 // @ts-ignore
-import React, { FC } from 'react';
+import React from 'react';
 import invariant from 'tiny-invariant';
 // @ts-ignore
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 type Props = {
-  color:
+  color?:
     | 'solid'
     | 'neutral60'
     | 'surface'
@@ -18,7 +18,7 @@ type Props = {
     | 'primary40'
     | 'warning'
     | 'error';
-  size: 'small' | 'medium' | 'big' | 'scale';
+  size?: 'small' | 'medium' | 'big' | 'scale';
 };
 
 const iconSizes = {
