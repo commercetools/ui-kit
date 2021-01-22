@@ -1,5 +1,11 @@
 # @commercetools-uikit/spacings
 
+## 10.44.2
+
+### Patch Changes
+
+- [`c7b3d51`](https://github.com/commercetools/ui-kit/commit/c7b3d51876663e6ac6036d5274b6b577c7e8a208) [#1744](https://github.com/commercetools/ui-kit/pull/1744) Thanks [@emmenko](https://github.com/emmenko)! - Be explicit in typing `Spacings` object as otherwise inferred type declarations are not generated correctly.
+
 ## 10.44.1
 
 ### Patch Changes

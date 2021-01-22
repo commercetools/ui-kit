@@ -1,5 +1,12 @@
 # @commercetools-uikit/time-field
 
+## 10.44.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@10.44.2
+
 ## 10.44.1
 
 ### Patch Changes

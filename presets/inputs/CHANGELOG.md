@@ -1,5 +1,22 @@
 # @commercetools-uikit/inputs
 
+## 10.44.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-input@10.44.2
+  - @commercetools-uikit/async-select-input@10.44.2
+  - @commercetools-uikit/creatable-select-input@10.44.2
+  - @commercetools-uikit/search-select-input@10.44.2
+  - @commercetools-uikit/date-input@10.44.2
+  - @commercetools-uikit/date-range-input@10.44.2
+  - @commercetools-uikit/date-time-input@10.44.2
+  - @commercetools-uikit/checkbox-input@10.44.2
+  - @commercetools-uikit/localized-money-input@10.44.2
+  - @commercetools-uikit/money-input@10.44.2
+  - @commercetools-uikit/select-input@10.44.2
+
 ## 10.44.1
 
 ### Patch Changes
