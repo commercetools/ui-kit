@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
 import invariant from 'tiny-invariant';
 import uniqueId from 'lodash/uniqueId';
 import SelectInput from '@commercetools-uikit/select-input';
@@ -25,6 +24,8 @@ const mapRangeToListOfOptions = (pageSizeRange) => {
 };
 
 const PageSizeSelector = (props) => {
+  const [pageSizeSelectorId] = React.useState(uniqueId('page-size-selector-'));
+
   const options = mapRangeToListOfOptions(props.pageSizeRange);
   const hasValidPageSizeOptions = options.includes(props.pageSize);
 
@@ -34,10 +35,6 @@ const PageSizeSelector = (props) => {
       props.pageSize
     }. It must be one of the values of the selected range in "${options.toString()}".`
   );
-
-  const intl = useIntl();
-
-  const [pageSizeSelectorId] = React.useState(uniqueId('page-size-selector-'));
 
   const { onPageSizeChange } = props;
   const handleSelectPerPage = React.useCallback(
@@ -66,7 +63,7 @@ const PageSizeSelector = (props) => {
         intlMessage={{
           ...messages.pageSize,
           values: {
-            count: intl.formatNumber(props.currentPageItems),
+            count: props.currentPageItems,
           },
         }}
       />
@@ -76,26 +73,14 @@ const PageSizeSelector = (props) => {
 
 PageSizeSelector.displayName = 'PageSizeSelector';
 PageSizeSelector.propTypes = {
-  /**
-   * Number of items per page, according to the pre-defined range values.
-   */
-  pageSize: PropTypes.oneOfType([
-    PropTypes.oneOf([20, 50]),
-    PropTypes.oneOf([20, 50, 100]),
-    PropTypes.oneOf([200, 500]),
-  ]).isRequired,
-  /**
-   * Range of items per page.
-   * <br/>
-   * - s: 20,50
-   * <br/>
-   * - m: 20,50,100
-   * <br/>
-   * - l: 200,500
-   */
-  pageSizeRange: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
+  pageSize: PropTypes.number,
+  pageSizeRange: PropTypes.oneOf(['s', 'm', 'l']),
   onPageSizeChange: PropTypes.func.isRequired,
   currentPageItems: PropTypes.number.isRequired,
+};
+PageSizeSelector.defaultProps = {
+  pageSize: 20,
+  pageSizeRange: 's',
 };
 
 export default PageSizeSelector;

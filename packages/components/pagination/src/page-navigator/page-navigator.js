@@ -39,10 +39,18 @@ const PageNavigator = (props) => {
   );
 
   const onBlurNormalize = React.useCallback(() => {
-    () => setPage(normalizedValue);
+    setPage(normalizedValue);
   }, [normalizedValue]);
 
-  const onPrevPage = React.useCallback(() => {
+  const handleFocus = React.useCallback((event) => {
+    event.target.select();
+  }, []);
+
+  const handleChange = React.useCallback((event) => {
+    setPage(event.target.value);
+  }, []);
+
+  const handlePrevPage = React.useCallback(() => {
     const prevPage = page - 1;
     if (prevPage < 1) return null;
 
@@ -50,7 +58,7 @@ const PageNavigator = (props) => {
     onPageChange(prevPage);
   }, [page, onPageChange]);
 
-  const onNextPage = React.useCallback(() => {
+  const handleNextPage = React.useCallback(() => {
     const nextPage = page + 1;
     if (nextPage > totalPages) return null;
 
@@ -63,7 +71,7 @@ const PageNavigator = (props) => {
       <Spacings.Inline alignItems="center" scale="s">
         <SecondaryIconButton
           label={intl.formatMessage(messages.previousPageLabel)}
-          onClick={onPrevPage}
+          onClick={handlePrevPage}
           isDisabled={isPreviousDisabled || isDisabled}
           icon={<AngleThinLeftIcon />}
         />
@@ -75,8 +83,8 @@ const PageNavigator = (props) => {
             min={1}
             max={totalPages}
             onBlur={onBlurNormalize}
-            onFocus={(event) => event.target.select()}
-            onChange={(event) => setPage(event.target.value)}
+            onFocus={handleFocus}
+            onChange={handleChange}
             isDisabled={isDisabled}
             hasWarning={!isValid(page, props.totalPages)}
             horizontalConstraint={2}
@@ -86,13 +94,13 @@ const PageNavigator = (props) => {
           intlMessage={{
             ...messages.pageCount,
             values: {
-              count: intl.formatNumber(props.totalPages),
+              count: props.totalPages,
             },
           }}
         />
         <SecondaryIconButton
           label={intl.formatMessage(messages.nextPageLabel)}
-          onClick={onNextPage}
+          onClick={handleNextPage}
           isDisabled={isNextDisabled || isDisabled}
           icon={<AngleThinRightIcon />}
         />

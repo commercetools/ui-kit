@@ -1,5 +1,5 @@
 import React from 'react';
-import Pagination from '@commercetools-uikit/pagination';
+import { Pagination } from '@commercetools-uikit/pagination';
 
 const Example = ({ items }) => (
   <Pagination
