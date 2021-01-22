@@ -93,7 +93,7 @@
     "@commitlint/config-conventional": "11.0.0",
     "@emotion/babel-plugin": "11.1.2",
     "@emotion/babel-preset-css-prop": "11.0.0",
-    "@formatjs/cli": "2.15.0",
+    "@formatjs/cli": "3.0.1",
     "@percy/puppeteer": "1.1.0",
     "@preconstruct/cli": "2.0.1",
     "@storybook/addon-a11y": "5.3.21",
