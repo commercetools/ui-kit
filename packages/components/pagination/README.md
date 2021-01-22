@@ -5,7 +5,7 @@
 
 ## Description
 
-A component that provides an interface for navigating through pages of items
+Components for navigating through pages of items
 
 ## Installation
 
@@ -20,11 +20,11 @@ npm --save install @commercetools-uikit/pagination
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+yarn add react react-intl
 ```
 
 ```
-npm --save install react
+npm --save install react react-intl
 ```
 
 ## Usage
@@ -47,11 +47,11 @@ export default Example;
 
 ## Properties
 
-| Props              | Type              | Required | Default                        | Description                            |
-| ------------------ | ----------------- | :------: | ------------------------------ | -------------------------------------- |
-| `pageSize`         | `number`          |          | 20                             | Number of items per page               |
-| `totalItems`       | `number`          |    ✅    |                                | Total number of items across all pages |
-| `currentPage`      | `number`          |    ✅    |                                | The currently selected page            |
-| `onPageChange`     | `func`            |    ✅    |                                | Called when the page is changed        |
-| `pageSizeOptions`  | Array of `number` |          | `[20, 50]`                     | Options to display as pageSizes        |
-| `onPageSizeChange` | `func`            |    ✅    |                                | Called when pageSize is changed        |
+| Props              | Type                                            | Required | Default | Description                                                                                                                                               |
+| ------------------ | ----------------------------------------------- | :------: | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `totalItems`       | `number`                                        |    ✅    |         | Total number of items across all pages                                                                                                                    |
+| `currentPage`      | `number`                                        |    ✅    |         | The currently selected page                                                                                                                               |
+| `onPageChange`     | `func`                                          |    ✅    |         | A callback function, called when the page is changed.&#xA;<br/>&#xA;Signature: `(page: number) => void`&#xA;<br/>&#xA;Signature: `(page: number) => void` |
+| `pageSize`         | `number`                                        |          | `20`    | Number of items per page, according to the pre-defined range values.                                                                                      |
+| `pageSizeRange`    | `enum`<br/>Possible values:<br/>`'s', 'm', 'l'` |          | `'s'`   | Range of items per page.&#xA;<br/>&#xA;`s: 20,50`&#xA;<br/>&#xA;`m: 20,50,100`&#xA;<br/>&#xA;`l: 200,500`                                                 |
+| `onPageSizeChange` | `func`                                          |    ✅    |         | A callback function, called when pageSize is changed.&#xA;<br/>&#xA;Signature: `(pageSize: number) => void`                                               |

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/react';
 import Spacings from '@commercetools-uikit/spacings';
 import PageNavigator from './page-navigator';
 import PageSizeSelector from './page-size-selector';
@@ -14,12 +15,18 @@ const Pagination = (props) => {
 
   return (
     <Spacings.Inline justifyContent="space-between">
-      <PageSizeSelector
-        options={props.pageSizeOptions}
-        pageSize={props.pageSize}
-        currentPageItems={currentPageItems}
-        onPageSizeChange={props.onPageSizeChange}
-      />
+      <div
+        css={css`
+          flex-grow: 2;
+        `}
+      >
+        <PageSizeSelector
+          pageSize={props.pageSize}
+          pageSizeRange={props.pageSizeRange}
+          currentPageItems={currentPageItems}
+          onPageSizeChange={props.onPageSizeChange}
+        />
+      </div>
       <PageNavigator
         totalPages={totalPages}
         currentPage={props.currentPage}
@@ -31,10 +38,6 @@ const Pagination = (props) => {
 Pagination.displayName = 'Pagination';
 Pagination.propTypes = {
   /**
-   * Number of items per page
-   */
-  pageSize: PropTypes.number.isRequired,
-  /**
    * Total number of items across all pages
    */
   totalItems: PropTypes.number.isRequired,
@@ -44,24 +47,36 @@ Pagination.propTypes = {
   currentPage: PropTypes.number.isRequired,
   /**
    * A callback function, called when the page is changed.
-   * <br>
+   * <br/>
+   * Signature: `(page: number) => void`
+   * <br/>
    * Signature: `(page: number) => void`
    */
   onPageChange: PropTypes.func.isRequired,
   /**
-   * Options to display as pageSizes
+   * Number of items per page, according to the pre-defined range values.
    */
-  pageSizeOptions: PropTypes.arrayOf(PropTypes.number).isRequired,
+  pageSize: PropTypes.number,
+  /**
+   * Range of items per page.
+   * <br/>
+   * `s: 20,50`
+   * <br/>
+   * `m: 20,50,100`
+   * <br/>
+   * `l: 200,500`
+   */
+  pageSizeRange: PropTypes.oneOf(['s', 'm', 'l']),
   /**
    * A callback function, called when pageSize is changed.
-   * <br>
+   * <br/>
    * Signature: `(pageSize: number) => void`
    */
   onPageSizeChange: PropTypes.func.isRequired,
 };
 Pagination.defaultProps = {
   pageSize: 20,
-  pageSizeOptions: [20, 50],
+  pageSizeRange: 's',
 };
 
 export default Pagination;

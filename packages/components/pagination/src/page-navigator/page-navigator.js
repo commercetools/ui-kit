@@ -72,6 +72,8 @@ const PageNavigator = (props) => {
           <NumberInput
             id={pageNumberInputId}
             value={page}
+            min={1}
+            max={totalPages}
             onBlur={onBlurNormalize}
             onFocus={(event) => event.target.select()}
             onChange={(event) => setPage(event.target.value)}

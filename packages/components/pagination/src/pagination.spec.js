@@ -125,3 +125,82 @@ describe('page size selector interaction', () => {
     expect(onPageSizeChange).toHaveBeenCalledWith(50);
   });
 });
+
+describe('validation', () => {
+  it('should throw an error if the page size range is invalid', async () => {
+    const onPageSizeChange = jest.fn();
+    console.error = jest.fn();
+    expect(() =>
+      render(
+        <Pagination
+          {...createTestProps({ onPageSizeChange, pageSizeRange: 'wrong' })}
+        />
+      )
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"Invalid page size range \\"wrong\\", expected one of \\"s,m,l\\"."`
+    );
+  });
+  describe.each`
+    range  | invalidSize
+    ${'s'} | ${10}
+    ${'s'} | ${100}
+    ${'m'} | ${10}
+    ${'m'} | ${200}
+    ${'l'} | ${100}
+    ${'l'} | ${600}
+  `(
+    'when page size range is "$range" and page size is $invalidSize',
+    ({ range, invalidSize }) => {
+      it('should throw an error', async () => {
+        const onPageSizeChange = jest.fn();
+        console.error = jest.fn();
+        expect(() =>
+          render(
+            <Pagination
+              {...createTestProps({
+                onPageSizeChange,
+                pageSizeRange: range,
+                pageSize: invalidSize,
+              })}
+            />
+          )
+        ).toThrowError(
+          expect.objectContaining({
+            message: expect.stringContaining(
+              `Invariant failed: @commercetools-uikit/pagination: invalid page size ${invalidSize}`
+            ),
+          })
+        );
+      });
+    }
+  );
+  describe.each`
+    range  | size
+    ${'s'} | ${20}
+    ${'s'} | ${50}
+    ${'m'} | ${20}
+    ${'m'} | ${50}
+    ${'m'} | ${100}
+    ${'l'} | ${200}
+    ${'l'} | ${500}
+  `(
+    'when page size range is "$range" and page size is $size',
+    ({ range, size }) => {
+      it('should not throw an error', async () => {
+        const onPageSizeChange = jest.fn();
+        console.error = jest.fn();
+        expect(() =>
+          render(
+            <Pagination
+              {...createTestProps({
+                onPageSizeChange,
+                pageSizeRange: range,
+                pageSize: size,
+              })}
+            />
+          )
+        ).not.toThrow();
+      });
+    }
+  );
+});
