@@ -60,6 +60,7 @@ PrimaryButton.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   label: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
   buttonAttributes: PropTypes.object,
   iconLeft: PropTypes.node,
   isToggleButton: PropTypes.bool.isRequired,

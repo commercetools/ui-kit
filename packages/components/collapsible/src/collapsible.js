@@ -10,6 +10,7 @@ const collapsiblePropTypes = {
    * Therefore there should not be any `componentWillReceiveProps` to update the state
    * from an external source.
    */
+  // eslint-disable-next-line react/no-unused-prop-types
   isDefaultClosed: PropTypes.bool,
 
   /**
@@ -23,6 +24,7 @@ const collapsiblePropTypes = {
    * Passing this prop makes the component a controlled component.
    * Controlled components also require to pass a `onToggle` callback function.
    */
+  // eslint-disable-next-line react/no-unused-prop-types
   isClosed: PropTypes.bool,
 
   /**
@@ -31,6 +33,7 @@ const collapsiblePropTypes = {
    * <br>
    * Signature: `(event) => void`
    */
+  // eslint-disable-next-line react/no-unused-prop-types
   onToggle: PropTypes.func,
 };
 

@@ -39,6 +39,7 @@ SecondaryIconButton.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   icon: PropTypes.element.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
   color: PropTypes.oneOf(['solid', 'primary']),
   label: PropTypes.string.isRequired,
   onClick: requiredIf(PropTypes.func, (props) => !props.as),

@@ -193,6 +193,7 @@ Option.propTypes = {
   onClick: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
   children: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
   iconLeft: PropTypes.node.isRequired,
 };
 Option.defaultProps = {

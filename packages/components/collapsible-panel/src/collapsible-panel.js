@@ -142,6 +142,7 @@ CollapsiblePanel.propTypes = {
   /**
    * Makes the panel's header sticky in regards to the page's scroll
    */
+  // eslint-disable-next-line react/no-unused-prop-types
   isSticky: PropTypes.bool,
   /**
    * Controls at the top right part of the panel
@@ -169,6 +170,7 @@ CollapsiblePanel.propTypes = {
    * Controls the visibility of the expansion controls on the left
    */
   hideExpansionControls: PropTypes.bool,
+  // eslint-disable-next-line react/no-unused-prop-types
   headerControlsAlignment: PropTypes.oneOf(['left', 'right']),
 
   /**
