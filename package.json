@@ -112,7 +112,7 @@
     "@svgr/plugin-svgo": "5.5.0",
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "11.2.3",
-    "@testing-library/react-hooks": "3.7.0",
+    "@testing-library/react-hooks": "5.0.3",
     "@types/jest": "26.0.20",
     "@typescript-eslint/eslint-plugin": "4.13.0",
     "@typescript-eslint/parser": "4.13.0",
