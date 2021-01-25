@@ -38,7 +38,7 @@
     "lodash": "4.17.20",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
-    "react-select": "3.1.1",
+    "react-select": "3.2.0",
     "tiny-invariant": "1.1.0"
   },
   "peerDependencies": {

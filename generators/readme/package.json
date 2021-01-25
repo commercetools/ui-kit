@@ -14,10 +14,10 @@
   "dependencies": {
     "@manypkg/get-packages": "1.1.1",
     "@types/listr": "0.14.2",
-    "@types/lodash": "4.14.167",
+    "@types/lodash": "4.14.168",
     "@types/mdast": "3.0.3",
     "@types/mri": "1.1.0",
-    "@types/node": "12.19.13",
+    "@types/node": "12.19.15",
     "@types/shelljs": "0.8.8",
     "@types/unist": "2.0.3",
     "@types/vfile": "4.0.0",
