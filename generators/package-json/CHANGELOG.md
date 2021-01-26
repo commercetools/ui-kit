@@ -1,5 +1,11 @@
 # @commercetools-local/generator-package-json
 
+## 1.2.5
+
+### Patch Changes
+
+- [`e0b5c0c`](https://github.com/commercetools/ui-kit/commit/e0b5c0c6bcc1edb7c357106f88b4e2ff55d2c1a8) [#1738](https://github.com/commercetools/ui-kit/pull/1738) Thanks [@adnasa](https://github.com/adnasa)! - fix(deps): update all dependencies
+
 ## 1.2.4
 
 ### Patch Changes

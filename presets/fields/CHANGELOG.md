@@ -1,5 +1,22 @@
 # @commercetools-uikit/fields
 
+## 10.44.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@10.44.3
+  - @commercetools-uikit/async-select-field@10.44.3
+  - @commercetools-uikit/creatable-select-field@10.44.3
+  - @commercetools-uikit/localized-multiline-text-field@10.44.3
+  - @commercetools-uikit/money-field@10.44.3
+  - @commercetools-uikit/select-field@10.44.3
+  - @commercetools-uikit/date-field@10.44.3
+  - @commercetools-uikit/date-range-field@10.44.3
+  - @commercetools-uikit/date-time-field@10.44.3
+  - @commercetools-uikit/multiline-text-field@10.44.3
+  - @commercetools-uikit/search-select-field@10.44.3
+
 ## 10.44.2
 
 ### Patch Changes
