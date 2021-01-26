@@ -39,8 +39,8 @@
     "react-select": "4.0.2"
   },
   "peerDependencies": {
-    "react": ">= 16.8.0",
-    "react-dom": ">= 16.8.0",
+    "react": ">= 16.8.0 || >= 17.0.0",
+    "react-dom": ">= 16.8.0 || >= 17.0.0",
     "react-intl": "3.x || 4.x || 5.x"
   }
 }

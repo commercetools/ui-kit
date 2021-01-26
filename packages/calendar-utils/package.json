@@ -42,7 +42,7 @@
   },
   "peerDependencies": {
     "moment": "2.x",
-    "react": ">= 16.8.0",
+    "react": ">= 16.8.0 || >= 17.0.0",
     "react-intl": "3.x || 4.x || 5.x"
   }
 }
