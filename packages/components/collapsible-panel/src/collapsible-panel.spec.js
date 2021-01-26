@@ -88,9 +88,10 @@ describe('when isDefaultClosed and isClosed are passed', () => {
       </CollapsiblePanel>
     );
     expect(console.error).toHaveBeenCalledWith(
-      expect.stringMatching(
-        /Warning: Failed prop type: Invalid prop `isDefaultClosed` supplied to `CollapsiblePanel`\. Component must either be controlled or uncontrolled. Pass either `isClosed` or `isDefaultClosed` but not both\./
-      )
+      expect.stringMatching(/Warning/),
+      'prop',
+      expect.stringMatching(/Invalid prop `isDefaultClosed` supplied to (.*)/),
+      expect.any(String)
     );
   });
   /* eslint-enable no-console */
@@ -113,9 +114,10 @@ describe('when onToggle is provided without isClosed', () => {
       </CollapsiblePanel>
     );
     expect(console.error).toHaveBeenCalledWith(
-      expect.stringMatching(
-        /Warning: Failed prop type: Invalid prop `onToggle` supplied to `CollapsiblePanel`\. `onToggle` does not have any effect when the component is uncontrolled\./
-      )
+      expect.stringMatching(/Warning/),
+      'prop',
+      expect.stringMatching(/Invalid prop `onToggle` supplied to (.*)/),
+      expect.any(String)
     );
   });
   /* eslint-enable no-console */
