@@ -33,11 +33,11 @@
     "@emotion/styled": "^11.0.0",
     "lodash": "4.17.20",
     "prop-types": "15.7.2",
-    "react-is": "16.13.1",
+    "react-is": "17.0.1",
     "use-popper": "1.1.6",
     "tiny-invariant": "1.1.0"
   },
   "peerDependencies": {
-    "react": ">= 16.8.0"
+    "react": ">= 16.8.0 || >= 17.0.0"
   }
 }

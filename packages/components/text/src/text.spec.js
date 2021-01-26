@@ -82,14 +82,12 @@ describe('<Headline>', () => {
     it('should warn but not crash', () => {
       render(<Text.Headline as="h1" />);
       expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(/Warning/),
+        'prop',
         expect.stringMatching(
-          /Warning: Failed prop type: The prop `intlMessage` is marked as required in `TextHeadline`, but its value is `undefined`/
-        )
-      );
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(
-          /Warning: Failed prop type: The prop `children` is marked as required in `TextHeadline`, but its value is `undefined`/
-        )
+          /The prop `(intlMessage|children)` is marked as required in(.*)/
+        ),
+        expect.any(String)
       );
     });
   });
@@ -155,14 +153,12 @@ describe('<Subheadline>', () => {
     it('should warn but not crash', () => {
       render(<Text.Subheadline as="h4" />);
       expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(/Warning/),
+        'prop',
         expect.stringMatching(
-          /Warning: Failed prop type: The prop `intlMessage` is marked as required in `TextSubheadline`, but its value is `undefined`/
-        )
-      );
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(
-          /Warning: Failed prop type: The prop `children` is marked as required in `TextSubheadline`, but its value is `undefined`/
-        )
+          /The prop `(intlMessage|children)` is marked as required in(.*)/
+        ),
+        expect.any(String)
       );
     });
   });
@@ -205,14 +201,12 @@ describe('<Wrap>', () => {
     it('should warn but not crash', () => {
       render(<Text.Wrap />);
       expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(/Warning/),
+        'prop',
         expect.stringMatching(
-          /Warning: Failed prop type: The prop `intlMessage` is marked as required in `TextWrap`, but its value is `undefined`/
-        )
-      );
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(
-          /Warning: Failed prop type: The prop `children` is marked as required in `TextWrap`, but its value is `undefined`/
-        )
+          /The prop `(intlMessage|children)` is marked as required in(.*)/
+        ),
+        expect.any(String)
       );
     });
   });
@@ -275,14 +269,12 @@ describe('<Body>', () => {
     it('should warn but not crash', () => {
       render(<Text.Body />);
       expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(/Warning/),
+        'prop',
         expect.stringMatching(
-          /Warning: Failed prop type: The prop `intlMessage` is marked as required in `TextBody`, but its value is `undefined`/
-        )
-      );
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(
-          /Warning: Failed prop type: The prop `children` is marked as required in `TextBody`, but its value is `undefined`/
-        )
+          /The prop `(intlMessage|children)` is marked as required in(.*)/
+        ),
+        expect.any(String)
       );
     });
   });
@@ -327,14 +319,12 @@ describe('<Detail>', () => {
     it('should warn but not crash', () => {
       render(<Text.Detail />);
       expect(console.error).toHaveBeenCalledWith(
+        expect.stringMatching(/Warning/),
+        'prop',
         expect.stringMatching(
-          /Warning: Failed prop type: The prop `intlMessage` is marked as required in `TextDetail`, but its value is `undefined`/
-        )
-      );
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(
-          /Warning: Failed prop type: The prop `children` is marked as required in `TextDetail`, but its value is `undefined`/
-        )
+          /The prop `(intlMessage|children)` is marked as required in(.*)/
+        ),
+        expect.any(String)
       );
     });
   });

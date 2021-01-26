@@ -118,9 +118,10 @@ describe('rendering', () => {
       render(<SecondaryButton {...props} onClick={null} to="/foo/bar" />);
 
       expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(
-          /Warning: Failed prop type: Invalid prop "to" supplied to "SecondaryButton"\./
-        )
+        expect.stringMatching(/Warning/),
+        'prop',
+        expect.stringMatching(/Invalid prop \"to\" supplied to(.*)/),
+        expect.any(String)
       );
     });
   });
