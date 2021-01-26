@@ -1,5 +1,12 @@
 # @commercetools-uikit/localized-multiline-text-field
 
+## 10.44.3
+
+### Patch Changes
+
+- Updated dependencies [[`e0b5c0c`](https://github.com/commercetools/ui-kit/commit/e0b5c0c6bcc1edb7c357106f88b4e2ff55d2c1a8), [`e0b5c0c`](https://github.com/commercetools/ui-kit/commit/e0b5c0c6bcc1edb7c357106f88b4e2ff55d2c1a8)]:
+  - @commercetools-uikit/localized-multiline-text-input@10.44.3
+
 ## 10.44.2
 
 ### Patch Changes

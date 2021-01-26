@@ -1,5 +1,11 @@
 # @commercetools-uikit/rich-text-utils
 
+## 10.44.3
+
+### Patch Changes
+
+- [`e0b5c0c`](https://github.com/commercetools/ui-kit/commit/e0b5c0c6bcc1edb7c357106f88b4e2ff55d2c1a8) [#1738](https://github.com/commercetools/ui-kit/pull/1738) Thanks [@adnasa](https://github.com/adnasa)! - fix(deps): update all dependencies
+
 ## 10.44.1
 
 ### Patch Changes
