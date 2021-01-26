@@ -1,5 +1,14 @@
 # @commercetools-uikit/label
 
+## 10.44.4
+
+### Patch Changes
+
+- [`d3c9002f`](https://github.com/commercetools/ui-kit/commit/d3c9002fcabeed3c4d2b73835e352490d3532208) [#1637](https://github.com/commercetools/ui-kit/pull/1637) Thanks [@renovate](https://github.com/apps/renovate)! - Support `react` and `react-dom` peer dependencies for version `>= 17`
+
+- Updated dependencies [[`d3c9002f`](https://github.com/commercetools/ui-kit/commit/d3c9002fcabeed3c4d2b73835e352490d3532208)]:
+  - @commercetools-uikit/text@10.44.4
+
 ## 10.44.0
 
 ### Patch Changes
