@@ -167,11 +167,11 @@
     "puppeteer": "5.5.0",
     "qs": "6.9.6",
     "rcfile": "1.0.3",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "react-intl": "5.10.17",
     "react-router-dom": "5.2.0",
-    "react-test-renderer": "16.14.0",
+    "react-test-renderer": "17.0.1",
     "react-value": "0.2.0",
     "read-pkg-up": "7.0.1",
     "replace": "1.2.0",
@@ -190,9 +190,9 @@
   },
   "resolutions": {
     "@testing-library/dom": "7.29.4",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
-    "react-test-renderer": "16.14.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-test-renderer": "17.0.1",
     "**/core-js-compat": "3.8.3"
   }
 }

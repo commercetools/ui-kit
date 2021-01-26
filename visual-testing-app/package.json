@@ -15,8 +15,8 @@
     "moment": "2.29.1",
     "moment-timezone": "0.5.32",
     "prop-types": "15.7.2",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "react-intl": "5.10.17",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0"
