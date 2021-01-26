@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import TextInput from '@commercetools-uikit/text-input';
+import customProperties from '../custom-properties.json';
 import Readme from './TOKENS.md';
-import vars from '../custom-properties';
 import definition from './definition.yaml';
 import deprecatedTokens from './deprecated-tokens';
 
@@ -27,8 +27,8 @@ const Table = styled.table`
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
-  font-family: ${vars.fontFamilyDefault};
-  color: ${vars.colorBlack};
+  font-family: ${customProperties['--font-family-default']};
+  color: ${customProperties['--color-solid']};
   margin: 10px;
   > * + * {
     margin: 16px 0 0 0;

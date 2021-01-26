@@ -22,6 +22,7 @@ const emptyValue = '';
 export const routePath = '/localized-rich-text-input';
 
 // this route will be used with puppeteer based testing.
+// eslint-disable-next-line react/prop-types
 const WrappedComponent = ({ onChange, value }) => {
   const handleChange = (event) => {
     onChange({

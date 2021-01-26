@@ -126,7 +126,9 @@ const customCellRenderer = (type) => {
           <TextInput
             type="text"
             value={value}
-            onChange={() => onChange(event.target.value)}
+            onChange={(event) => {
+              onChange(event.target.value);
+            }}
           />
         )}
       />
@@ -137,7 +139,9 @@ const customCellRenderer = (type) => {
           <SelectInput
             value={value}
             menuPortalTarget={document.body}
-            onChange={(event) => onChange(event.target.value)}
+            onChange={(event) => {
+              onChange(event.target.value);
+            }}
             options={[
               { value: 'one', label: 'One' },
               { value: 'two', label: 'Two' },
@@ -151,7 +155,9 @@ const customCellRenderer = (type) => {
         render={(value, onChange) => (
           <NumberInput
             value={value}
-            onChange={(event) => onChange(event.target.value)}
+            onChange={(event) => {
+              onChange(event.target.value);
+            }}
           />
         )}
       />

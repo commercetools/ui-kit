@@ -16,10 +16,12 @@ const collapsibleMotionPropTypes = {
   /**
    * Determines the state of the toggle `isOpen`. Setting this prop will make the component **controlled**
    */
+  // eslint-disable-next-line react/no-unused-prop-types
   isClosed: PropTypes.bool,
   /**
    * A callback function called when the `toggle` function is called. This prop is required when the component is **controlled**.
    */
+  // eslint-disable-next-line react/no-unused-prop-types
   onToggle: PropTypes.func,
   /**
    * The minimal height of the container being animated.
@@ -28,6 +30,7 @@ const collapsibleMotionPropTypes = {
   /**
    *The initial value to the internal toggle state `isOpen`.
    */
+  // eslint-disable-next-line react/no-unused-prop-types
   isDefaultClosed: PropTypes.bool,
 };
 

@@ -24,8 +24,11 @@ export const ClearSection = (props) => (
 );
 ClearSection.displayName = 'ClearSection';
 ClearSection.propTypes = {
+  // eslint-disable-next-line react/no-unused-prop-types
   isDisabled: PropTypes.bool,
+  // eslint-disable-next-line react/no-unused-prop-types
   hasError: PropTypes.bool,
+  // eslint-disable-next-line react/no-unused-prop-types
   hasWarning: PropTypes.bool,
   onClear: PropTypes.func,
 };

@@ -45,6 +45,7 @@ class NotificationIcon extends React.PureComponent {
   static displayName = 'NotificationIcon';
   static propTypes = {
     type: PropTypes.oneOf(['error', 'info', 'warning', 'success']).isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     theme: PropTypes.string.isRequired,
   };
 

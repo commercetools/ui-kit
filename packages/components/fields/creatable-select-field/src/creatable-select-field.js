@@ -117,6 +117,7 @@ export default class CreatableSelectField extends React.Component {
     /**
      * Is the select read-only
      */
+    // eslint-disable-next-line react/no-unused-prop-types
     isReadOnly: PropTypes.bool,
     /**
      * Override the built-in logic to detect whether an option is disabled
