@@ -1,5 +1,42 @@
 # @commercetools-frontend/ui-kit
 
+## 10.44.4
+
+### Patch Changes
+
+- [`d3c9002f`](https://github.com/commercetools/ui-kit/commit/d3c9002fcabeed3c4d2b73835e352490d3532208) [#1637](https://github.com/commercetools/ui-kit/pull/1637) Thanks [@renovate](https://github.com/apps/renovate)! - Support `react` and `react-dom` peer dependencies for version `>= 17`
+
+- Updated dependencies [[`d3c9002f`](https://github.com/commercetools/ui-kit/commit/d3c9002fcabeed3c4d2b73835e352490d3532208)]:
+  - @commercetools-uikit/accessible-hidden@10.44.4
+  - @commercetools-uikit/avatar@10.44.4
+  - @commercetools-uikit/card@10.44.4
+  - @commercetools-uikit/collapsible@10.44.4
+  - @commercetools-uikit/collapsible-motion@10.44.4
+  - @commercetools-uikit/collapsible-panel@10.44.4
+  - @commercetools-uikit/constraints@10.44.4
+  - @commercetools-uikit/data-table@10.44.4
+  - @commercetools-uikit/data-table-manager@10.44.4
+  - @commercetools-uikit/field-errors@10.44.4
+  - @commercetools-uikit/field-label@10.44.4
+  - @commercetools-uikit/grid@10.44.4
+  - @commercetools-uikit/icons@10.44.4
+  - @commercetools-uikit/label@10.44.4
+  - @commercetools-uikit/link@10.44.4
+  - @commercetools-uikit/loading-spinner@10.44.4
+  - @commercetools-uikit/messages@10.44.4
+  - @commercetools-uikit/notifications@10.44.4
+  - @commercetools-uikit/primary-action-dropdown@10.44.4
+  - @commercetools-uikit/stamp@10.44.4
+  - @commercetools-uikit/table@10.44.4
+  - @commercetools-uikit/tag@10.44.4
+  - @commercetools-uikit/text@10.44.4
+  - @commercetools-uikit/tooltip@10.44.4
+  - @commercetools-uikit/hooks@10.44.4
+  - @commercetools-uikit/buttons@10.44.4
+  - @commercetools-uikit/fields@10.44.4
+  - @commercetools-uikit/inputs@10.44.4
+  - @commercetools-uikit/spacings@10.44.4
+
 ## 10.44.3
 
 ### Patch Changes
