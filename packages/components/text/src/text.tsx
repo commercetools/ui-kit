@@ -118,7 +118,8 @@ const Headline = (props: THeadlineProps) => {
   // however, if none of the prop is specified,
   // we render plain text and set a warning on the log.
   if (!HeadlineElement) {
-    console.error(
+    invariant(
+      false,
       'ui-kit/Text: You attempt to render a TextHeadline without specifying `as` prop.'
     );
     return <Text intlMessage={props.intlMessage}>{props.children}</Text>;
@@ -161,7 +162,8 @@ const Subheadline = (props: TSubheadlineProps) => {
 
   const SubheadlineElement = props.as || props.elementType;
   if (!SubheadlineElement) {
-    console.error(
+    invariant(
+      false,
       'ui-kit/Text: You attempt to render TextSubheadline without specifying `as` prop.'
     );
     return <Text intlMessage={props.intlMessage}>{props.children}</Text>;
