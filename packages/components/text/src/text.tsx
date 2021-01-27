@@ -20,9 +20,13 @@ import {
   wrapStyles,
 } from './text.styles';
 
-type TTextProps = {
+type TBasicTextProps = {
   intlMessage?: MessageDescriptor;
   children?: React.ReactNode;
+};
+
+type TBasicHeadlineProps = {
+  title?: string | null;
 };
 
 const getIsIntlMessage = (
@@ -36,7 +40,22 @@ const getIsIntlMessage = (
   );
 };
 
-const warnIfMissingContent = (props: TTextProps, componentName: string) => {
+const warnIfMissingTitle = (
+  props: TBasicHeadlineProps,
+  componentName: string
+) => {
+  if (typeof props.title === 'string') {
+    invariant(
+      props.title.length > 0,
+      `Invalid prop 'title' supplied to '${componentName}'. Expected it to be nonempty string, but it was empty.`
+    );
+  }
+};
+
+const warnIfMissingContent = (
+  props: TBasicTextProps,
+  componentName: string
+) => {
   const hasContent =
     getIsIntlMessage(props.intlMessage) ||
     Boolean(React.Children.count(props.children));
@@ -59,7 +78,7 @@ const warnIfMissingContent = (props: TTextProps, componentName: string) => {
   );
 };
 
-const Text = (props: TTextProps) => (
+const Text = (props: TBasicTextProps) => (
   <>
     {props.intlMessage ? (
       <FormattedMessage {...props.intlMessage} />
@@ -74,9 +93,9 @@ type THeadlineProps = {
   as?: 'h1' | 'h2' | 'h3';
   // @deprecated
   elementType?: 'h1' | 'h2' | 'h3';
-  title?: string | null;
   truncate?: boolean;
-} & TTextProps;
+} & TBasicTextProps &
+  TBasicHeadlineProps;
 
 const Headline = (props: THeadlineProps) => {
   const theme = useTheme();
@@ -89,6 +108,7 @@ const Headline = (props: THeadlineProps) => {
     );
   }
 
+  warnIfMissingTitle(props, 'TextHeadline');
   warnIfMissingContent(props, 'TextHeadline');
 
   // For backwards compatibility
@@ -120,11 +140,11 @@ type TSubheadlineProps = {
   as?: 'h4' | 'h5';
   // @deprecated
   elementType?: 'h4' | 'h5';
-  title?: string;
   truncate?: boolean;
   isBold?: boolean;
   tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
-} & TTextProps;
+} & TBasicTextProps &
+  TBasicHeadlineProps;
 
 const Subheadline = (props: TSubheadlineProps) => {
   const theme = useTheme();
@@ -136,6 +156,7 @@ const Subheadline = (props: TSubheadlineProps) => {
       `\n \`elementType\` is deprecated. \n Please use "as" prop instead.`
     );
   }
+  warnIfMissingTitle(props, 'TextSubheadline');
   warnIfMissingContent(props, 'TextSubheadline');
 
   const SubheadlineElement = props.as || props.elementType;
@@ -157,12 +178,11 @@ const Subheadline = (props: TSubheadlineProps) => {
 };
 Subheadline.displayName = 'TextSubheadline';
 
-type TWrapProps = {
-  title?: string;
-} & TTextProps;
+type TWrapProps = TBasicTextProps & TBasicHeadlineProps;
 
 const Wrap = (props: TWrapProps) => {
   const theme = useTheme();
+  warnIfMissingTitle(props, 'TextWrap');
   warnIfMissingContent(props, 'TextWrap');
   return (
     <div
@@ -183,13 +203,14 @@ type TBodyProps = {
   // @deprecated
   isInline?: boolean;
   tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
-  title?: string;
   truncate?: boolean;
-} & TTextProps;
+} & TBasicTextProps &
+  TBasicHeadlineProps;
 
 const Body = (props: TBodyProps) => {
   const theme = useTheme();
 
+  warnIfMissingTitle(props, 'TextBody');
   warnIfMissingContent(props, 'TextBody');
 
   if (props.isInline) {
@@ -237,12 +258,13 @@ type TDetailProps = {
   isBold?: boolean;
   isItalic?: boolean;
   tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
-  title?: string;
   truncate?: boolean;
-} & TTextProps;
+} & TBasicTextProps &
+  TBasicHeadlineProps;
 
 const Detail = (props: TDetailProps) => {
   const theme = useTheme();
+  warnIfMissingTitle(props, 'TextDetail');
   warnIfMissingContent(props, 'TextDetail');
   return (
     <small
