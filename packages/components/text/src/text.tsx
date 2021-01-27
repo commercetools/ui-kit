@@ -88,7 +88,7 @@ const Text = (props: TBasicTextProps) => (
 );
 Text.displayName = 'Text';
 
-type THeadlineProps = {
+export type THeadlineProps = {
   as?: 'h1' | 'h2' | 'h3';
   // @deprecated: use `as` instead
   elementType?: 'h1' | 'h2' | 'h3';
@@ -136,7 +136,7 @@ const Headline = (props: THeadlineProps) => {
 };
 Headline.displayName = 'TextHeadline';
 
-type TSubheadlineProps = {
+export type TSubheadlineProps = {
   as?: 'h4' | 'h5';
   // @deprecated: use `as` instead
   elementType?: 'h4' | 'h5';
@@ -179,7 +179,7 @@ const Subheadline = (props: TSubheadlineProps) => {
 };
 Subheadline.displayName = 'TextSubheadline';
 
-type TWrapProps = TBasicTextProps & TBasicHeadlineProps;
+export type TWrapProps = TBasicTextProps & TBasicHeadlineProps;
 
 const Wrap = (props: TWrapProps) => {
   const theme = useTheme();
@@ -187,7 +187,7 @@ const Wrap = (props: TWrapProps) => {
   warnIfMissingContent(props, 'TextWrap');
   return (
     <div
-      css={wrapStyles(props, theme)}
+      css={wrapStyles(theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -197,7 +197,7 @@ const Wrap = (props: TWrapProps) => {
 };
 Wrap.displayName = 'TextWrap';
 
-type TBodyProps = {
+export type TBodyProps = {
   as: 'span' | 'p';
   isBold?: boolean;
   isItalic?: boolean;
@@ -255,9 +255,11 @@ const Body = (props: TBodyProps) => {
 };
 Body.displayName = 'TextBody';
 
-type TDetailProps = {
+export type TDetailProps = {
   isBold?: boolean;
   isItalic?: boolean;
+  // used for styling via `detailStyles`
+  isInline?: boolean;
   tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
   truncate?: boolean;
 } & TBasicTextProps &
