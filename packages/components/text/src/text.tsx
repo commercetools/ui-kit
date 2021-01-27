@@ -6,6 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
 import { useTheme } from '@emotion/react';
 import isNil from 'lodash/isNil';
+import invariant from 'tiny-invariant';
 import { oneLine } from 'common-tags';
 import {
   filterDataAttributes,
@@ -24,28 +25,38 @@ type TTextProps = {
   children?: React.ReactNode;
 };
 
-type TDeprecatedProps = {
-  // @deprecated
-  elementType: string;
+const getIsIntlMessage = (
+  intlMessage: unknown
+): intlMessage is MessageDescriptor => {
+  return (
+    typeof intlMessage === 'object' &&
+    'id' in intlMessage &&
+    'description' in intlMessage &&
+    'defaultMessage' in intlMessage
+  );
 };
 
-const warnIfNoTextProps = (props: TTextProps, componentName) => {
-  if (!props.intlMessage && !React.Children.count(props.children)) {
-    console.error(
-      oneLine`
-        Warning: Failed prop type:
-        The prop \`intlMessage\` is marked as required in \`${componentName}\`,
-        but its value is \`undefined\`
+const warnIfMissingContent = (props: TTextProps, componentName: string) => {
+  const hasContent =
+    getIsIntlMessage(props.intlMessage) ||
+    Boolean(React.Children.count(props.children));
+
+  invariant(
+    hasContent,
+    oneLine`
+      Warning: Failed prop type:
+      The prop \`intlMessage\` is marked as required in \`${componentName}\`,
+      but its value is \`undefined\`
       `
-    );
-    console.error(
-      oneLine`
+  );
+  invariant(
+    hasContent,
+    oneLine`
         Warning: Failed prop type:
         The prop \`children\` is marked as required in \`${componentName}\`,
         but its value is \`undefined\`
       `
-    );
-  }
+  );
 };
 
 const Text = (props: TTextProps) => (
@@ -78,7 +89,7 @@ const Headline = (props: THeadlineProps) => {
     );
   }
 
-  warnIfNoTextProps(props, 'TextHeadline');
+  warnIfMissingContent(props, 'TextHeadline');
 
   // For backwards compatibility
   // we allow both `as` and `elementType` to be optional.
@@ -125,7 +136,7 @@ const Subheadline = (props: TSubheadlineProps) => {
       `\n \`elementType\` is deprecated. \n Please use "as" prop instead.`
     );
   }
-  warnIfNoTextProps(props, 'TextSubheadline');
+  warnIfMissingContent(props, 'TextSubheadline');
 
   const SubheadlineElement = props.as || props.elementType;
   if (!SubheadlineElement) {
@@ -152,7 +163,7 @@ type TWrapProps = {
 
 const Wrap = (props: TWrapProps) => {
   const theme = useTheme();
-  warnIfNoTextProps(props, 'TextWrap');
+  warnIfMissingContent(props, 'TextWrap');
   return (
     <div
       css={wrapStyles(props, theme)}
@@ -179,7 +190,7 @@ type TBodyProps = {
 const Body = (props: TBodyProps) => {
   const theme = useTheme();
 
-  warnIfNoTextProps(props, 'TextBody');
+  warnIfMissingContent(props, 'TextBody');
 
   if (props.isInline) {
     warnDeprecatedProp(
@@ -232,7 +243,7 @@ type TDetailProps = {
 
 const Detail = (props: TDetailProps) => {
   const theme = useTheme();
-  warnIfNoTextProps(props, 'TextDetail');
+  warnIfMissingContent(props, 'TextDetail');
   return (
     <small
       css={detailStyles(props, theme)}

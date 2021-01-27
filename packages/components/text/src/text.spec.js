@@ -1,6 +1,9 @@
 import React from 'react';
+import invariant from 'tiny-invariant';
 import { screen, render } from '../../../../test/test-utils';
 import Text from './text';
+
+jest.mock('tiny-invariant');
 
 const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
 
@@ -70,24 +73,16 @@ describe('<Headline>', () => {
     expect(screen.getByTitle('headline')).toHaveAttribute('data-foo', 'bar');
   });
   describe('when no text is provided', () => {
-    let log;
-    /* eslint-disable no-console */
-    beforeEach(() => {
-      log = console.error;
-      console.error = jest.fn();
-    });
-    afterEach(() => {
-      console.error = log;
-    });
     it('should warn but not crash', () => {
       render(<Text.Headline as="h1" />);
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(/Warning/),
-        'prop',
-        expect.stringMatching(
-          /The prop `(intlMessage|children)` is marked as required in(.*)/
-        ),
-        expect.any(String)
+      expect(invariant).toHaveBeenCalledTimes(2);
+      expect(invariant).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/is marked as required in/i)
+      );
+      expect(invariant).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/TextHeadline/i)
       );
     });
   });
@@ -141,24 +136,16 @@ describe('<Subheadline>', () => {
     expect(screen.getByTitle('subheadline')).toHaveAttribute('data-foo', 'bar');
   });
   describe('when no text is provided', () => {
-    let log;
-    /* eslint-disable no-console */
-    beforeEach(() => {
-      log = console.error;
-      console.error = jest.fn();
-    });
-    afterEach(() => {
-      console.error = log;
-    });
     it('should warn but not crash', () => {
       render(<Text.Subheadline as="h4" />);
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(/Warning/),
-        'prop',
-        expect.stringMatching(
-          /The prop `(intlMessage|children)` is marked as required in(.*)/
-        ),
-        expect.any(String)
+      expect(invariant).toHaveBeenCalledTimes(2);
+      expect(invariant).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/is marked as required in/i)
+      );
+      expect(invariant).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/TextSubheadline/i)
       );
     });
   });
@@ -189,24 +176,16 @@ describe('<Wrap>', () => {
     expect(screen.getByTitle('wrap')).toHaveAttribute('data-foo', 'bar');
   });
   describe('when no text is provided', () => {
-    let log;
-    /* eslint-disable no-console */
-    beforeEach(() => {
-      log = console.error;
-      console.error = jest.fn();
-    });
-    afterEach(() => {
-      console.error = log;
-    });
     it('should warn but not crash', () => {
       render(<Text.Wrap />);
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(/Warning/),
-        'prop',
-        expect.stringMatching(
-          /The prop `(intlMessage|children)` is marked as required in(.*)/
-        ),
-        expect.any(String)
+      expect(invariant).toHaveBeenCalledTimes(2);
+      expect(invariant).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/is marked as required in/i)
+      );
+      expect(invariant).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/TextWrap/i)
       );
     });
   });
@@ -257,24 +236,16 @@ describe('<Body>', () => {
     });
   });
   describe('when no text is provided', () => {
-    let log;
-    /* eslint-disable no-console */
-    beforeEach(() => {
-      log = console.error;
-      console.error = jest.fn();
-    });
-    afterEach(() => {
-      console.error = log;
-    });
     it('should warn but not crash', () => {
       render(<Text.Body />);
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(/Warning/),
-        'prop',
-        expect.stringMatching(
-          /The prop `(intlMessage|children)` is marked as required in(.*)/
-        ),
-        expect.any(String)
+      expect(invariant).toHaveBeenCalledTimes(2);
+      expect(invariant).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/is marked as required in/i)
+      );
+      expect(invariant).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/TextBody/i)
       );
     });
   });
@@ -307,24 +278,16 @@ describe('<Detail>', () => {
     expect(screen.getByTitle('detail')).toHaveAttribute('data-foo', 'bar');
   });
   describe('when no text is provided', () => {
-    let log;
-    /* eslint-disable no-console */
-    beforeEach(() => {
-      log = console.error;
-      console.error = jest.fn();
-    });
-    afterEach(() => {
-      console.error = log;
-    });
     it('should warn but not crash', () => {
       render(<Text.Detail />);
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(/Warning/),
-        'prop',
-        expect.stringMatching(
-          /The prop `(intlMessage|children)` is marked as required in(.*)/
-        ),
-        expect.any(String)
+      expect(invariant).toHaveBeenCalledTimes(2);
+      expect(invariant).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/is marked as required in/i)
+      );
+      expect(invariant).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/TextDetail/i)
       );
     });
   });
