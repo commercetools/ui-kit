@@ -91,7 +91,7 @@ Text.displayName = 'Text';
 
 type THeadlineProps = {
   as?: 'h1' | 'h2' | 'h3';
-  // @deprecated
+  // @deprecated: use `as` instead
   elementType?: 'h1' | 'h2' | 'h3';
   truncate?: boolean;
 } & TBasicTextProps &
@@ -138,7 +138,7 @@ Headline.displayName = 'TextHeadline';
 
 type TSubheadlineProps = {
   as?: 'h4' | 'h5';
-  // @deprecated
+  // @deprecated: use `as` instead
   elementType?: 'h4' | 'h5';
   truncate?: boolean;
   isBold?: boolean;
@@ -200,7 +200,7 @@ type TBodyProps = {
   as: 'span' | 'p';
   isBold?: boolean;
   isItalic?: boolean;
-  // @deprecated
+  // @deprecated: use `as="span"` instead
   isInline?: boolean;
   tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
   truncate?: boolean;
