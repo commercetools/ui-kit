@@ -28,6 +28,7 @@
     "@commercetools-uikit/design-system": "10.43.3",
     "@commercetools-uikit/utils": "10.44.0",
     "@emotion/react": "^11.1.1",
+    "@types/common-tags": "^1.8.0",
     "common-tags": "1.8.0",
     "lodash": "4.17.20",
     "prop-types": "15.7.2",

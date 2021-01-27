@@ -1,11 +1,8 @@
 import type { MessageDescriptor } from 'react-intl';
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import requiredIf from 'react-required-if';
 import { useTheme } from '@emotion/react';
-import isNil from 'lodash/isNil';
 import invariant from 'tiny-invariant';
 import { oneLine } from 'common-tags';
 import {
@@ -26,18 +23,20 @@ type TBasicTextProps = {
 };
 
 type TBasicHeadlineProps = {
-  title?: string | null;
+  title?: string;
 };
 
 const getIsIntlMessage = (
   intlMessage: unknown
 ): intlMessage is MessageDescriptor => {
-  return (
-    typeof intlMessage === 'object' &&
-    'id' in intlMessage &&
-    'description' in intlMessage &&
-    'defaultMessage' in intlMessage
-  );
+  if (intlMessage && typeof intlMessage === 'object') {
+    return (
+      'id' in intlMessage &&
+      'description' in intlMessage &&
+      'defaultMessage' in intlMessage
+    );
+  }
+  return false;
 };
 
 const warnIfMissingTitle = (
