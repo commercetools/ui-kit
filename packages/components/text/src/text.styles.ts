@@ -1,7 +1,15 @@
+import type { Theme } from '@emotion/react';
+import type {
+  TBodyProps,
+  THeadlineProps,
+  TSubheadlineProps,
+  TDetailProps,
+} from './text';
+
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getBaseStyles = (props, theme) => {
+const getBaseStyles = (theme: Theme) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -30,7 +38,7 @@ const inline = `
   display: inline-block;
 `;
 
-const getTone = (tone, theme) => {
+const getTone = (tone: string, theme: Theme) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -55,7 +63,7 @@ const getTone = (tone, theme) => {
   }
 };
 
-const getElementFontSize = (elementType) => {
+const getElementFontSize = (elementType?: string) => {
   switch (elementType) {
     case 'h1':
       return '2.4615rem';
@@ -72,8 +80,8 @@ const getElementFontSize = (elementType) => {
   }
 };
 
-export const bodyStyles = (props, theme) => css`
-  ${getBaseStyles(props, theme)}
+export const bodyStyles = (props: TBodyProps, theme: Theme) => css`
+  ${getBaseStyles(theme)}
   margin: 0;
   font-size: 1rem;
   ${props.isBold && bold}
@@ -82,16 +90,19 @@ export const bodyStyles = (props, theme) => css`
   ${props.truncate && truncate}
 `;
 
-export const headlineStyles = (props, theme) => css`
-  ${getBaseStyles(props, theme)}
+export const headlineStyles = (props: THeadlineProps, theme: Theme) => css`
+  ${getBaseStyles(theme)}
   margin: 0;
   font-size: ${getElementFontSize(props.as || props.elementType)};
   font-weight: 300;
   ${props.truncate && truncate}
 `;
 
-export const subheadlineStyles = (props, theme) => css`
-  ${getBaseStyles(props, theme)}
+export const subheadlineStyles = (
+  props: TSubheadlineProps,
+  theme: Theme
+) => css`
+  ${getBaseStyles(theme)}
   margin: 0;
   font-size: ${getElementFontSize(props.as || props.elementType)};
   font-weight: normal;
@@ -100,14 +111,14 @@ export const subheadlineStyles = (props, theme) => css`
   ${props.tone && getTone(props.tone, theme)}
 `;
 
-export const wrapStyles = (props, theme) => css`
-  ${getBaseStyles(props, theme)}
+export const wrapStyles = (theme: Theme) => css`
+  ${getBaseStyles(theme)}
   font-size: 1rem;
   white-space: pre-wrap;
 `;
 
-export const detailStyles = (props, theme) => css`
-  ${getBaseStyles(props, theme)}
+export const detailStyles = (props: TDetailProps, theme: Theme) => css`
+  ${getBaseStyles(theme)}
   display: block;
   font-size: 0.9231rem;
   ${props.isInline && inline}
