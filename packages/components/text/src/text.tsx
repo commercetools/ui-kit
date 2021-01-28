@@ -4,7 +4,6 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useTheme } from '@emotion/react';
 import invariant from 'tiny-invariant';
-import { oneLine } from 'common-tags';
 import {
   filterDataAttributes,
   warnDeprecatedProp,
@@ -47,19 +46,19 @@ const warnIfMissingContent = (
 
   invariant(
     hasContent,
-    oneLine`
-      Warning: Failed prop type:
-      The prop \`intlMessage\` is marked as required in \`${componentName}\`,
-      but its value is \`undefined\`
-      `
+    [
+      'Warning: Failed prop type:',
+      `The prop \`intlMessage\` is marked as required in \`${componentName}\``,
+      'but its value is `undefined`',
+    ].join(' ')
   );
   invariant(
     hasContent,
-    oneLine`
-        Warning: Failed prop type:
-        The prop \`children\` is marked as required in \`${componentName}\`,
-        but its value is \`undefined\`
-      `
+    [
+      'Warning: Failed prop type:',
+      `The prop \`children\` is marked as required in \`${componentName}\``,
+      'but its value is `undefined`',
+    ].join(' ')
   );
 };
 
