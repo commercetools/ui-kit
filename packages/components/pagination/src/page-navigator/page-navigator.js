@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import uniqueId from 'lodash/uniqueId';
-import {
-  AngleThinLeftIcon,
-  AngleThinRightIcon,
-} from '@commercetools-uikit/icons';
+import { AngleLeftIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 import NumberInput from '@commercetools-uikit/number-input';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Spacings from '@commercetools-uikit/spacings';
@@ -73,7 +70,7 @@ const PageNavigator = (props) => {
           label={intl.formatMessage(messages.previousPageLabel)}
           onClick={handlePrevPage}
           isDisabled={isPreviousDisabled || isDisabled}
-          icon={<AngleThinLeftIcon />}
+          icon={<AngleLeftIcon />}
         />
         <Label htmlFor={pageNumberInputId} intlMessage={messages.page} />
         <div>
@@ -102,7 +99,7 @@ const PageNavigator = (props) => {
           label={intl.formatMessage(messages.nextPageLabel)}
           onClick={handleNextPage}
           isDisabled={isNextDisabled || isDisabled}
-          icon={<AngleThinRightIcon />}
+          icon={<AngleRightIcon />}
         />
       </Spacings.Inline>
     </form>
