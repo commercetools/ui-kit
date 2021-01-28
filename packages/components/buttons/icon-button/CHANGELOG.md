@@ -1,5 +1,12 @@
 # @commercetools-uikit/icon-button
 
+## 10.45.0
+
+### Patch Changes
+
+- Updated dependencies [[`16198082`](https://github.com/commercetools/ui-kit/commit/1619808251d9dfaa5278bf436116f5f87120148e)]:
+  - @commercetools-uikit/text@10.45.0
+
 ## 10.44.4
 
 ### Patch Changes

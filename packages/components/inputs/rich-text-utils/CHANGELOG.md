@@ -1,5 +1,12 @@
 # @commercetools-uikit/rich-text-utils
 
+## 10.45.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/input-utils@10.45.0
+
 ## 10.44.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @commercetools-uikit/text
 
+## 10.45.0
+
+### Minor Changes
+
+- [`16198082`](https://github.com/commercetools/ui-kit/commit/1619808251d9dfaa5278bf436116f5f87120148e) [#1746](https://github.com/commercetools/ui-kit/pull/1746) Thanks [@adnasa](https://github.com/adnasa)! - migrate Text to typescript
+
 ## 10.44.4
 
 ### Patch Changes
