@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-frontend/ui-kit",
   "description": "A preset of all the UI-Kit components.",
-  "version": "10.45.0",
+  "version": "10.46.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -50,7 +50,7 @@
     "@commercetools-uikit/loading-spinner": "10.45.0",
     "@commercetools-uikit/messages": "10.45.0",
     "@commercetools-uikit/notifications": "10.44.4",
-    "@commercetools-uikit/pagination": "0.0.0",
+    "@commercetools-uikit/pagination": "10.46.0",
     "@commercetools-uikit/primary-action-dropdown": "10.45.0",
     "@commercetools-uikit/spacings": "10.44.4",
     "@commercetools-uikit/stamp": "10.44.4",

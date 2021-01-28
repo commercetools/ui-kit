@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/pagination",
   "description": "Components for navigating through pages of items",
-  "version": "0.0.0",
+  "version": "10.46.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
