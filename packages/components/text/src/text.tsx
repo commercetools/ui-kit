@@ -26,19 +26,6 @@ type TBasicHeadlineProps = {
   title?: string;
 };
 
-const getIsIntlMessage = (
-  intlMessage: unknown
-): intlMessage is MessageDescriptor => {
-  if (intlMessage && typeof intlMessage === 'object') {
-    return (
-      'id' in intlMessage &&
-      'description' in intlMessage &&
-      'defaultMessage' in intlMessage
-    );
-  }
-  return false;
-};
-
 const warnIfMissingTitle = (
   props: TBasicHeadlineProps,
   componentName: string
@@ -56,8 +43,7 @@ const warnIfMissingContent = (
   componentName: string
 ) => {
   const hasContent =
-    getIsIntlMessage(props.intlMessage) ||
-    Boolean(React.Children.count(props.children));
+    props.intlMessage || Boolean(React.Children.count(props.children));
 
   invariant(
     hasContent,
