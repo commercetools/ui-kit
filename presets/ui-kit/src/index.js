@@ -28,6 +28,11 @@ export { default as Grid } from '@commercetools-uikit/grid';
 export { default as Label } from '@commercetools-uikit/label';
 export { default as LoadingSpinner } from '@commercetools-uikit/loading-spinner';
 export { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
+export {
+  PageNavigator,
+  PageSizeSelector,
+  Pagination,
+} from '@commercetools-uikit/pagination';
 export { default as Spacings } from '@commercetools-uikit/spacings';
 export { default as Stamp } from '@commercetools-uikit/stamp';
 export { Table, BaseTable, TableCell } from '@commercetools-uikit/table';
