@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   extends: ['@commercetools-frontend/eslint-config-mc-app'],
   overrides: [
@@ -5,6 +7,13 @@ module.exports = {
       files: ['*.story.js', '*.visualroute.js', '**/docs/*.js'],
       rules: {
         'react/display-name': 'off',
+      },
+      settings: {
+        'import/resolver': {
+          node: {
+            paths: [path.resolve('docs/node_modules')],
+          },
+        },
       },
     },
     {
