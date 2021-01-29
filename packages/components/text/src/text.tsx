@@ -245,7 +245,14 @@ export type TDetailProps = {
   isItalic?: boolean;
   // used for styling via `detailStyles`
   isInline?: boolean;
-  tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
+  tone?:
+    | 'primary'
+    | 'secondary'
+    | 'information'
+    | 'positive'
+    | 'negative'
+    | 'warning'
+    | 'inverted';
   truncate?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
