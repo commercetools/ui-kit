@@ -1,3 +1,1 @@
-module.exports = {
-  presets: ['@commercetools-frontend/babel-preset-mc-app'],
-};
+module.exports = require('../babel.config');
