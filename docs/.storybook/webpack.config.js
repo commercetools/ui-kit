@@ -81,5 +81,6 @@ module.exports = ({ config }) => {
     },
   ];
   config.resolve.extensions.push('.ts', '.tsx');
+  config.resolve.modules.push(path.resolve(__dirname, '../node_modules'));
   return config;
 };
