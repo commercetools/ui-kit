@@ -40,8 +40,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-        env:
-          NOSTORYBOOKPOSTINSTALL: 1
 
       - name: Building packages
         run: yarn build
