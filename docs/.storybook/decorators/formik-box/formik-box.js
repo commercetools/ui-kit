@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Text from '@commercetools-uikit/text';
-import SpacingsStack from '@commercetools-uikit/spacings-stack';
+import Text from '../../../../packages/components/text';
+import SpacingsStack from '../../../../packages/components/spacings/spacings-stack';
 
 export default class FormikBox extends React.Component {
   static displayName = 'FormikBox';

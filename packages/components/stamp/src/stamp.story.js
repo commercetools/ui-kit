@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, withKnobs } from '@storybook/addon-knobs';
-import Section from '../../../../.storybook/decorators/section';
+import Section from '../../../../docs/.storybook/decorators/section';
 import Text from '../../text';
 import SpacingsStack from '../../spacings/spacings-stack';
 import SpacingsInline from '../../spacings/spacings-inline';

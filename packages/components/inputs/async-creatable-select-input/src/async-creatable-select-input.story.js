@@ -10,7 +10,7 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
-import Section from '../../../../../.storybook/decorators/section';
+import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
 import * as icons from '../../../icons';

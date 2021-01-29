@@ -4,10 +4,10 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const sourceFolders = [
   path.resolve(__dirname),
   path.resolve(__dirname, '../examples'),
-  path.resolve(__dirname, '../design-system'),
   path.resolve(__dirname, '../philosophy'),
-  path.resolve(__dirname, '../packages'),
-  path.resolve(__dirname, '../presets'),
+  path.resolve(__dirname, '../../design-system'),
+  path.resolve(__dirname, '../../packages'),
+  path.resolve(__dirname, '../../presets'),
 ];
 
 module.exports = ({ config }) => {

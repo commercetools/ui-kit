@@ -5,7 +5,7 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
 import FlatButton from '@commercetools-uikit/flat-button';
 import * as icons from '@commercetools-uikit/icons';
-import Section from '../../../../.storybook/decorators/section';
+import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import FieldLabel from './field-label';
 

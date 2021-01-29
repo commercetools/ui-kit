@@ -3,7 +3,7 @@ import { MemoryRouter, Link } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
-import Section from '../../../../../.storybook/decorators/section';
+import Section from '../../../../../docs/.storybook/decorators/section';
 import * as icons from '../../../icons';
 import Readme from '../README.md';
 import IconButton from './icon-button';

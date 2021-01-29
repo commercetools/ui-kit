@@ -107,9 +107,9 @@ Note that canary releases **will not create git tags and version bump commits**.
 
 ## Publishing documentation website
 
-The documentation is currently built with [Storybook](https://storybook.js.org) and is hosted on [Netlify](https://www.netlify.com/).
+The documentation is currently built with [Storybook](https://storybook.js.org) and is hosted on [Vercel](https://vercel.com).
 
-By default, only _Deploy Previews_ (Pull Requests) are deployed to [Netlify](https://www.netlify.com). The _Production_ website is deployed from the branch `master`.
+By default, only _Deploy Previews_ (Pull Requests) are deployed to [Vercel](https://vercel.com). The _Production_ website is deployed from the branch `master`.
 
 ## Translations (i18n)
 

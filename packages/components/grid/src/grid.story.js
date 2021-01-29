@@ -5,7 +5,7 @@ import LinkTo from '@storybook/addon-links/react';
 import styled from '@emotion/styled';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
-import Section from '../../../../.storybook/decorators/section';
+import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import Grid from './grid';
 

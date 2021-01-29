@@ -1,6 +1,8 @@
 .cache
 .public
 public
+docs/.public
+docs/public
 dist
 .percy-debug
 vendors

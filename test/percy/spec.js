@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import pick from 'lodash/pick';
-import { customProperties } from '@commercetools-frontend/ui-kit';
+import { customProperties } from '../../design-system';
 
 const getThemedProperty = (name) => (props) =>
   props.theme[name] || customProperties[name];

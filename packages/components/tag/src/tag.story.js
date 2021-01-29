@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
-import Section from '../../../../.storybook/decorators/section';
+import Section from '../../../../docs/.storybook/decorators/section';
 import Tag from './tag';
 import Readme from '../README.md';
 
