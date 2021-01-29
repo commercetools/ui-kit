@@ -41,6 +41,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+        env:
+          NOSTORYBOOKPOSTINSTALL: 1
 
       - name: Creating .npmrc
         run: |

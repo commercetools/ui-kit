@@ -13,7 +13,7 @@
   "keywords": ["javascript", "frontend", "ui-kit", "design-system", "react"],
   "sideEffects": false,
   "scripts": {
-    "postinstall": "preconstruct dev",
+    "postinstall": "preconstruct dev && test -n \"$NOSTORYBOOKPOSTINSTALL\" || yarn --cwd docs",
     "auth": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "clean": "lerna exec 'rm -rf dist'",
     "generate-readmes": "yarn generate-readme --all-workspace-packages",
