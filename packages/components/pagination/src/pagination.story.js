@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number } from '@storybook/addon-knobs/react';
 import { Value } from 'react-value';
-import Section from '../../../../.storybook/decorators/section';
+import Section from '../../../../docs/.storybook/decorators/section';
 import Pagination from './pagination';
 import PageNavigator from './page-navigator';
 import PageSizeSelector from './page-size-selector';

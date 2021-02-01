@@ -11,7 +11,7 @@ import {
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
 import { SELECT_DROPDOWN_OPTION_TYPES } from '@commercetools-uikit/select-utils';
-import Section from '../../../../../.storybook/decorators/section';
+import Section from '../../../../../docs/.storybook/decorators/section';
 import SearchSelectInput from './search-select-input';
 import Readme from '../README.md';
 

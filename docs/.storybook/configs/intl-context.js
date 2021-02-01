@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
-import * as messages from '@commercetools-uikit/i18n';
+import * as messages from '../../../packages/i18n';
 
 const locales = Object.keys(messages);
 

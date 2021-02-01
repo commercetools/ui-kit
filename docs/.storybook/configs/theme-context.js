@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { ThemeProvider } from '@emotion/react';
+import { customProperties } from '../../../design-system';
 
 const darkTheme = {
-  colorSolid: vars.colorSurface,
-  colorSurface: vars.colorSolid,
+  colorSolid: customProperties.colorSurface,
+  colorSurface: customProperties.colorSolid,
 };
 
-const defaultTheme = vars;
+const defaultTheme = customProperties;
 
 const ThemeWrapper = (props) => (
   <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>

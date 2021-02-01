@@ -1,7 +1,6 @@
 import React from 'react';
-import { css } from '@emotion/react';
-import { useTheme } from '@emotion/react';
 import PropTypes from 'prop-types';
+import { css, useTheme } from '@emotion/react';
 
 const Section = (props) => {
   const theme = useTheme();

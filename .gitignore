@@ -82,6 +82,8 @@ typings/
 # Storybook build output
 .public
 public
+docs/.public
+docs/public
 
 # Serverless directories
 .serverless

@@ -5,7 +5,7 @@ import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
 import { Value } from 'react-value';
 import Spacings from '@commercetools-uikit/spacings';
-import Section from '../../../../../.storybook/decorators/section';
+import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import RadioInput from '.';
 

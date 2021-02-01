@@ -12,7 +12,7 @@ import {
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import LinkTo from '@storybook/addon-links/react';
-import Section from '../../../../../.storybook/decorators/section';
+import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import SelectInput from './select-input';
 import * as icons from '../../../icons';

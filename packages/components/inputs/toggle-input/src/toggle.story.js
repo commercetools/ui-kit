@@ -3,7 +3,7 @@ import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
-import Section from '../../../../../.storybook/decorators/section';
+import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import Toggle from '.';
 

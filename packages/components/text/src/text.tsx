@@ -183,7 +183,7 @@ const Wrap = (props: TWrapProps) => {
 Wrap.displayName = 'TextWrap';
 
 export type TBodyProps = {
-  as: 'span' | 'p';
+  as?: 'span' | 'p';
   isBold?: boolean;
   isItalic?: boolean;
   // @deprecated: use `as="span"` instead
@@ -245,7 +245,14 @@ export type TDetailProps = {
   isItalic?: boolean;
   // used for styling via `detailStyles`
   isInline?: boolean;
-  tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
+  tone?:
+    | 'primary'
+    | 'secondary'
+    | 'information'
+    | 'positive'
+    | 'negative'
+    | 'warning'
+    | 'inverted';
   truncate?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;

@@ -5,7 +5,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import { action } from '@storybook/addon-actions';
 import Readme from '../README.md';
 import DateTimeInput from './date-time-input';
-import Section from '../../../../../.storybook/decorators/section';
+import Section from '../../../../../docs/.storybook/decorators/section';
 
 class DateTimeInputStory extends React.Component {
   static displayName = 'DateTimeInputStory';

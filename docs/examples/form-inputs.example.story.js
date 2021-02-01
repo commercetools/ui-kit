@@ -17,7 +17,7 @@ import {
   PrimaryButton,
   SecondaryButton,
   Spacings,
-} from '@commercetools-frontend/ui-kit';
+} from '../../presets/ui-kit';
 import { FormikBox, Section } from '../.storybook/decorators';
 import Forms from './form-inputs.md';
 

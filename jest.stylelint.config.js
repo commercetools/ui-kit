@@ -4,7 +4,7 @@ module.exports = {
   moduleFileExtensions: ['js'],
   modulePathIgnorePatterns: [
     'dist',
-    'public',
+    'docs/public',
     '.spec.js',
     '.visualspec.js',
     '.visualroute.js',

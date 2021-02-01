@@ -7,7 +7,7 @@ import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
 import { Value } from 'react-value';
 import Readme from '../README.md';
 import DateInput from './date-input';
-import Section from '../../../../../.storybook/decorators/section';
+import Section from '../../../../../docs/.storybook/decorators/section';
 
 const exampleDates = getExampleDateStrings();
 

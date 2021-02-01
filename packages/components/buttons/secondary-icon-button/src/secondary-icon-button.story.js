@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
 import * as icons from '@commercetools-uikit/icons';
-import Section from '../../../../../.storybook/decorators/section';
+import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import SecondaryIconButton from './secondary-icon-button';
 

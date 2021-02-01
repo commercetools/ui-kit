@@ -37,15 +37,15 @@ addParameters({
   },
 });
 
-const packagesStories = require.context('../packages', true, /\.story\.js$/);
+const packagesStories = require.context('../../packages', true, /\.story\.js$/);
 const materialsStories = require.context(
-  '../design-system/materials',
+  '../../design-system/materials',
   true,
   /\.story\.js$/
 );
 const exampleStories = require.context('../examples', true, /\.story\.js$/);
 const packagesExampleStories = require.context(
-  '../packages',
+  '../../packages',
   true,
   /\.example.story\.js$/
 );
