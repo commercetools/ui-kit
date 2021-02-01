@@ -1,5 +1,11 @@
 # @commercetools-uikit/text
 
+## 10.46.1
+
+### Patch Changes
+
+- [`4f4cc642`](https://github.com/commercetools/ui-kit/commit/4f4cc642fc3c3ffbe659fa236ae8831198efb7c5) [#1757](https://github.com/commercetools/ui-kit/pull/1757) Thanks [@emmenko](https://github.com/emmenko)! - The `<Text.Body>` prop is optional
+
 ## 10.45.0
 
 ### Minor Changes
