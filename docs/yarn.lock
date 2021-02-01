@@ -1079,10 +1079,10 @@
   dependencies:
     tslib "^2.0.1"
 
-"@formatjs/intl-datetimeformat@3.2.5":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-datetimeformat/-/intl-datetimeformat-3.2.5.tgz#3c6d5d38dfbf15816592082886e8aaef20364a48"
-  integrity sha512-rTxk9CDpk1Vi07hDRI4p31X/HO3UsEfxHLWEBw+eWmW9CF6na5X96oeB0qkDpru++BqdWhNWdAl1oHCBk9ysKQ==
+"@formatjs/intl-datetimeformat@3.2.6":
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-datetimeformat/-/intl-datetimeformat-3.2.6.tgz#58c0902b576337cc1407e4f84ab37f3f6c073fa5"
+  integrity sha512-6tO95ajF+GOGQ4q6sBEayiytAkFcgXu2eWGvo8i24zmx51cbvVTrgc/+S6dccdsbYtvarD2LjLcY3I0RxZ09iw==
   dependencies:
     "@formatjs/ecma402-abstract" "1.5.2"
     tslib "^2.0.1"
@@ -1111,13 +1111,13 @@
     "@formatjs/ecma402-abstract" "1.5.2"
     tslib "^2.0.1"
 
-"@formatjs/intl@1.6.4":
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-1.6.4.tgz#36b69e0adc398f7e11b59725e659bc3535690be5"
-  integrity sha512-pjx/Zw5djoLtQz3iphLZS/hql+Wp8r38hXkNtFddkpgoHJT1Us+CWl+Mvh3WyV6OcGuFkN7ZPeAPVFLqnB9rew==
+"@formatjs/intl@1.6.5":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-1.6.5.tgz#a67c94113fcd58160bcf04f9aa9aefad7c95204b"
+  integrity sha512-uJ7ukBulcaN3nT5x5d7CkvzdtVYQNoEyp1Ob8N6zkibA08DMdGy1pqq5n3y3Z2GBemMUJ4qFgGSVww4Z5SXf2A==
   dependencies:
     "@formatjs/ecma402-abstract" "1.5.2"
-    "@formatjs/intl-datetimeformat" "3.2.5"
+    "@formatjs/intl-datetimeformat" "3.2.6"
     "@formatjs/intl-displaynames" "4.0.5"
     "@formatjs/intl-listformat" "5.0.5"
     "@formatjs/intl-relativetimeformat" "8.0.4"
@@ -7365,13 +7365,13 @@ react-inspector@^4.0.0:
     is-dom "^1.0.9"
     prop-types "^15.6.1"
 
-react-intl@5.10.19:
-  version "5.10.19"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.10.19.tgz#a16a15373ec4b06cf1857e4605d80f38e17afe71"
-  integrity sha512-l8OoBqNT1XqilyMnb7PxXxL7ran/EQ/N/sln5Vun4y0Sz0kFYYSJdw9IbeGDzNcXWKDTQ5MIr9ccsVa0CDVWzw==
+react-intl@5.11.0:
+  version "5.11.0"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.11.0.tgz#1606941ec402b9b566e6191f5ddb3efea967b31b"
+  integrity sha512-1ZOlKdRD1yKcm+TuuGpHrp7dGRrQeozH7n4/i5r8c6RM74ByO00bBAS1Ut4hJJcCqbMa7AqLD69kFe6Y7j46RA==
   dependencies:
     "@formatjs/ecma402-abstract" "1.5.2"
-    "@formatjs/intl" "1.6.4"
+    "@formatjs/intl" "1.6.5"
     "@formatjs/intl-displaynames" "4.0.5"
     "@formatjs/intl-listformat" "5.0.5"
     "@formatjs/intl-relativetimeformat" "8.0.4"
