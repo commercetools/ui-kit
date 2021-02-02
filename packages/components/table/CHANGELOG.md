@@ -1,5 +1,12 @@
 # @commercetools-uikit/table
 
+## 10.46.1
+
+### Patch Changes
+
+- Updated dependencies [[`4f4cc642`](https://github.com/commercetools/ui-kit/commit/4f4cc642fc3c3ffbe659fa236ae8831198efb7c5)]:
+  - @commercetools-uikit/text@10.46.1
+
 ## 10.45.0
 
 ### Patch Changes

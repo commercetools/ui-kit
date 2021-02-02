@@ -1,5 +1,27 @@
 # @commercetools-frontend/ui-kit
 
+## 10.46.1
+
+### Patch Changes
+
+- Updated dependencies [[`4f4cc642`](https://github.com/commercetools/ui-kit/commit/4f4cc642fc3c3ffbe659fa236ae8831198efb7c5)]:
+  - @commercetools-uikit/text@10.46.1
+  - @commercetools-uikit/collapsible-panel@10.46.1
+  - @commercetools-uikit/data-table-manager@10.46.1
+  - @commercetools-uikit/field-label@10.46.1
+  - @commercetools-uikit/label@10.46.1
+  - @commercetools-uikit/loading-spinner@10.46.1
+  - @commercetools-uikit/messages@10.46.1
+  - @commercetools-uikit/pagination@10.46.1
+  - @commercetools-uikit/primary-action-dropdown@10.46.1
+  - @commercetools-uikit/table@10.46.1
+  - @commercetools-uikit/tag@10.46.1
+  - @commercetools-uikit/buttons@10.46.1
+  - @commercetools-uikit/data-table@10.46.1
+  - @commercetools-uikit/inputs@10.46.1
+  - @commercetools-uikit/field-errors@10.46.1
+  - @commercetools-uikit/fields@10.46.1
+
 ## 10.46.0
 
 ### Patch Changes

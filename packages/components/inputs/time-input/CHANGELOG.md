@@ -1,5 +1,12 @@
 # @commercetools-uikit/time-input
 
+## 10.46.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/input-utils@10.46.1
+
 ## 10.45.0
 
 ### Patch Changes
