@@ -1,12 +1,12 @@
 <h2 align="center">🎹 commercetools UI Kit 💅</h2>
 
 <p align="center">
-  <a href="https://github.com/commercetools/ui-kit"><img alt="Logo" src="https://raw.githubusercontent.com/commercetools/ui-kit/master/logo.png" /></a><br /><br />
+  <a href="https://github.com/commercetools/ui-kit"><img alt="Logo" src="https://raw.githubusercontent.com/commercetools/ui-kit/main/logo.png" /></a><br /><br />
 </p>
 
 <p align="center">
 <a href="https://www.npmjs.com/package/@commercetools-frontend/ui-kit"><img src="https://badgen.net/npm/v/@commercetools-frontend/ui-kit" alt="Latest release (latest dist-tag)" /></a> <a href="https://www.npmjs.com/package/@commercetools-frontend/ui-kit"><img src="https://badgen.net/npm/v/@commercetools-frontend/ui-kit/next" alt="Latest release (next dist-tag)" /></a> <a href="https://circleci.com/gh/commercetools/ui-kit"><img src="https://circleci.com/gh/commercetools/ui-kit.svg?style=shield&circle-token=477a5b4b825bc5a09b933d15054b99e57e3cbe73" alt="CI status" /></a> <a href="https://percy.io/commercetools-GmbH/merchant-center-application-kit"><img src="https://percy.io/static/images/percy-badge.svg" alt="This project is using Percy.io for visual regression testing" /></a>
-<a href="https://bundlephobia.com/result?p=@commercetools-frontend/ui-kit"><img src="https://badgen.net/bundlephobia/minzip/@commercetools-frontend/ui-kit" alt="Minified + GZipped size" /></a> <a href="https://github.com/commercetools/ui-kit/blob/master/LICENSE"><img src="https://badgen.net/github/license/commercetools/ui-kit" alt="GitHub license" /></a>
+<a href="https://bundlephobia.com/result?p=@commercetools-frontend/ui-kit"><img src="https://badgen.net/bundlephobia/minzip/@commercetools-frontend/ui-kit" alt="Minified + GZipped size" /></a> <a href="https://github.com/commercetools/ui-kit/blob/main/LICENSE"><img src="https://badgen.net/github/license/commercetools/ui-kit" alt="GitHub license" /></a>
 </p>
 <p align="center">
   <i>✨ Component library based on our design system 🛠</i>
@@ -32,7 +32,7 @@ import { AngleDownIcon } from '@commercetools-uikit/icons';
 
 # Using presets
 
-If you plan to use more components, you can also use some of the [preset packages](https://github.com/commercetools/ui-kit/tree/master/presets) that group multiple packages together. This is useful to reduce the number of dependencies and imports.
+If you plan to use more components, you can also use some of the [preset packages](https://github.com/commercetools/ui-kit/tree/main/presets) that group multiple packages together. This is useful to reduce the number of dependencies and imports.
 
 For example:
 
@@ -123,4 +123,4 @@ import { customProperties } from '@commercetools-uikit/design-system';
 const primary = customProperties.colorPrimary;
 ```
 
-> Please look at the [`custom-properties.js`](https://github.com/commercetools/ui-kit/blob/master/design-system/materials/custom-properties.js) itself to inspect which variables are available.
+> Please look at the [`custom-properties.js`](https://github.com/commercetools/ui-kit/blob/main/design-system/materials/custom-properties.js) itself to inspect which variables are available.

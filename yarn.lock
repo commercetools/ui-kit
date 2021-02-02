@@ -10004,13 +10004,6 @@ jest-validate@26.6.2, jest-validate@^26.6.2:
     leven "^3.1.0"
     pretty-format "^26.6.2"
 
-jest-watch-master@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/jest-watch-master/-/jest-watch-master-1.0.0.tgz#b00e18879b281ec2477ebb98a485a3e13baa9497"
-  integrity sha512-k5cGkA9uHkPkBkLyOC6BWjhmqQay0Bm/yQdERNN3myaeSJhfSpjQ0YtLjanpNajv6WljrNjPx+5orPgiZhpkDw==
-  dependencies:
-    chalk "^2.0.0"
-
 jest-watch-typeahead@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/jest-watch-typeahead/-/jest-watch-typeahead-0.6.1.tgz#45221b86bb6710b7e97baaa1640ae24a07785e63"

@@ -99,9 +99,9 @@ The command will promote the version published on `next` to the `latest` npm dis
 
 ## Canary releases
 
-On `master` branch, we automatically publish **canary** releases from CI to the `canary` distribution channel, _after_ the build runs successfully.
+On `main` branch, we automatically publish **canary** releases from CI to the `canary` distribution channel, _after_ the build runs successfully.
 
-Canary releases are useful to test early changes that should not be released yet to `next` or `latest`. They are automatically triggered and released after a Pull Request is merged to `master`, unless the commit message contains `[skip publish]`.
+Canary releases are useful to test early changes that should not be released yet to `next` or `latest`. They are automatically triggered and released after a Pull Request is merged to `main`.
 
 Note that canary releases **will not create git tags and version bump commits**.
 
@@ -109,7 +109,7 @@ Note that canary releases **will not create git tags and version bump commits**.
 
 The documentation is currently built with [Storybook](https://storybook.js.org) and is hosted on [Vercel](https://vercel.com).
 
-By default, only _Deploy Previews_ (Pull Requests) are deployed to [Vercel](https://vercel.com). The _Production_ website is deployed from the branch `master`.
+By default, only _Deploy Previews_ (Pull Requests) are deployed to [Vercel](https://vercel.com). The _Production_ website is deployed from the branch `main`.
 
 ## Translations (i18n)
 

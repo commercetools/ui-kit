@@ -11,5 +11,5 @@ module.exports = {
     '.story.js',
   ],
   testMatch: ['<rootDir>/**/*.js'],
-  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-master'],
+  watchPlugins: ['jest-watch-typeahead/filename'],
 };

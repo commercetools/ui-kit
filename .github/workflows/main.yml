@@ -1,13 +1,13 @@
 name: Main workflow
 
 # The event triggers are configured as following:
-# - on branch master, trigger the workflow on every push
+# - on branch main, trigger the workflow on every push
 # - on any pull request, trigger the workflow
 # This is to avoid running the workflow twice on pull requests.
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:

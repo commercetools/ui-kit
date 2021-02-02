@@ -36,5 +36,5 @@ module.exports = {
     '^.+\\.js?$': 'babel-jest',
     '^.+\\.tsx?$': 'ts-jest',
   },
-  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-master'],
+  watchPlugins: ['jest-watch-typeahead/filename'],
 };
