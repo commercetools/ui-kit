@@ -1,5 +1,11 @@
 # @commercetools-uikit/text
 
+## 10.46.2
+
+### Patch Changes
+
+- [`298e1334`](https://github.com/commercetools/ui-kit/commit/298e13346fd2c4d8b7cea8ea00ebc23e35127ed3) [#1762](https://github.com/commercetools/ui-kit/pull/1762) Thanks [@adnasa](https://github.com/adnasa)! - fix accepted props for Text.Body
+
 ## 10.46.1
 
 ### Patch Changes
