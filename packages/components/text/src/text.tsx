@@ -188,7 +188,13 @@ export type TBodyProps = {
   isItalic?: boolean;
   // @deprecated: use `as="span"` instead
   isInline?: boolean;
-  tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
+  tone?:
+    | 'primary'
+    | 'secondary'
+    | 'information'
+    | 'positive'
+    | 'negative'
+    | 'inverted';
   truncate?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
