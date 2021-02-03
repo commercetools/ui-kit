@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/secondary-icon-button",
   "description": "Secondary icon buttons are a simpler version of icon buttons.",
-  "version": "10.46.1",
+  "version": "10.46.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "@commercetools-uikit/accessible-button": "10.44.4",
     "@commercetools-uikit/design-system": "10.43.3",
     "@commercetools-uikit/spacings": "10.44.4",
-    "@commercetools-uikit/text": "10.46.1",
+    "@commercetools-uikit/text": "10.46.2",
     "@commercetools-uikit/utils": "10.44.0",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",

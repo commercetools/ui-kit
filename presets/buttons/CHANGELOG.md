@@ -1,5 +1,17 @@
 # @commercetools-uikit/buttons
 
+## 10.46.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/flat-button@10.46.2
+  - @commercetools-uikit/icon-button@10.46.2
+  - @commercetools-uikit/link-button@10.46.2
+  - @commercetools-uikit/primary-button@10.46.2
+  - @commercetools-uikit/secondary-button@10.46.2
+  - @commercetools-uikit/secondary-icon-button@10.46.2
+
 ## 10.46.1
 
 ### Patch Changes
