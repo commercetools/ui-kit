@@ -23,8 +23,8 @@
     "prepare": "../../../../scripts/version.js replace"
   },
   "dependencies": {
-    "@babel/runtime": "7.12.5",
-    "@babel/runtime-corejs3": "7.12.5",
+    "@babel/runtime": "7.12.13",
+    "@babel/runtime-corejs3": "7.12.13",
     "@commercetools-uikit/constraints": "10.44.4",
     "@commercetools-uikit/design-system": "10.43.3",
     "@commercetools-uikit/flat-button": "10.46.2",
@@ -42,7 +42,7 @@
     "common-tags": "1.8.0",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
-    "react-select": "4.0.2",
+    "react-select": "4.1.0",
     "tiny-invariant": "1.1.0"
   },
   "peerDependencies": {
