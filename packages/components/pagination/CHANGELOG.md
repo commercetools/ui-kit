@@ -1,5 +1,22 @@
 # @commercetools-uikit/pagination
 
+## 10.46.3
+
+### Patch Changes
+
+- [`38ddfbd7`](https://github.com/commercetools/ui-kit/commit/38ddfbd7c3d62da83e41ae65f14ca92354be793d) [#1770](https://github.com/commercetools/ui-kit/pull/1770) Thanks [@adnasa](https://github.com/adnasa)! - add `range` selector for PageSizeSelector
+
+- Updated dependencies [[`8a6238a3`](https://github.com/commercetools/ui-kit/commit/8a6238a384fb4e1c3c73826d28e3812a1debfe67)]:
+  - @commercetools-uikit/design-system@10.46.3
+  - @commercetools-uikit/secondary-icon-button@10.46.3
+  - @commercetools-uikit/constraints@10.46.3
+  - @commercetools-uikit/icons@10.46.3
+  - @commercetools-uikit/number-input@10.46.3
+  - @commercetools-uikit/select-input@10.46.3
+  - @commercetools-uikit/label@10.46.3
+  - @commercetools-uikit/text@10.46.3
+  - @commercetools-uikit/spacings@10.46.3
+
 ## 10.46.2
 
 ### Patch Changes

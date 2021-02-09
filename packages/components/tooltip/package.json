@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/tooltip",
   "description": "Tooltips display informative text when users hover over or focus on an element.",
-  "version": "10.44.4",
+  "version": "10.46.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,8 +25,8 @@
   "dependencies": {
     "@babel/runtime": "7.12.13",
     "@babel/runtime-corejs3": "7.12.13",
-    "@commercetools-uikit/design-system": "10.43.3",
-    "@commercetools-uikit/constraints": "10.44.4",
+    "@commercetools-uikit/design-system": "10.46.3",
+    "@commercetools-uikit/constraints": "10.46.3",
     "@commercetools-uikit/hooks": "10.44.4",
     "@commercetools-uikit/utils": "10.44.0",
     "@emotion/react": "^11.1.1",
