@@ -1,11 +1,8 @@
 import type { MessageDescriptor } from 'react-intl';
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import Text from '@commercetools-uikit/text';
-import { FormattedMessage } from 'react-intl';
-import requiredIf from 'react-required-if';
 import { warning } from '@commercetools-uikit/utils';
+import Text from '@commercetools-uikit/text';
 import RequiredIndicator from './required-indicator';
 
 type TBasicTextProps = {
@@ -46,7 +43,7 @@ const Label = (props: TLabelProps) => {
   const hasContent =
     props.intlMessage || Boolean(React.Children.count(props.children));
 
-  invariant(
+  warning(
     hasContent,
     [
       'Warning: Failed prop type:',
@@ -54,7 +51,7 @@ const Label = (props: TLabelProps) => {
       'but its value is `undefined`',
     ].join(' ')
   );
-  invariant(
+  warning(
     hasContent,
     [
       'Warning: Failed prop type:',
