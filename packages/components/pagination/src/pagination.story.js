@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, number } from '@storybook/addon-knobs/react';
+import { select, withKnobs, number } from '@storybook/addon-knobs/react';
 import { Value } from 'react-value';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Pagination from './pagination';
@@ -36,21 +36,27 @@ storiesOf('Components|Pagination', module)
       />
     </Section>
   ))
-  .add('PageSizeSelector', () => (
-    <Section>
-      <Value
-        defaultValue={20}
-        render={(pageSize, onPageSizeChange) => (
-          <PageSizeSelector
-            pageSize={pageSize}
-            pageSizeRange={'s'}
-            currentPageItems={1}
-            onPageSizeChange={onPageSizeChange}
-          />
-        )}
-      />
-    </Section>
-  ))
+  .add('PageSizeSelector', () => {
+    const range = select('range', ['s', 'm', 'l'], 's');
+    const getMinimumPageSizeFromRange = (selectedRange) => {
+      switch (selectedRange) {
+        case 'l':
+          return 200;
+        default:
+          return 20;
+      }
+    };
+    return (
+      <Section>
+        <PageSizeSelector
+          pageSize={getMinimumPageSizeFromRange(range)}
+          pageSizeRange={range}
+          currentPageItems={1}
+          onPageSizeChange={() => {}}
+        />
+      </Section>
+    );
+  })
   .add('PageNavigator', () => (
     <Section>
       <Value
