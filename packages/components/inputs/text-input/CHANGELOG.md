@@ -1,5 +1,14 @@
 # @commercetools-uikit/text-input
 
+## 10.46.3
+
+### Patch Changes
+
+- Updated dependencies [[`8a6238a3`](https://github.com/commercetools/ui-kit/commit/8a6238a384fb4e1c3c73826d28e3812a1debfe67)]:
+  - @commercetools-uikit/design-system@10.46.3
+  - @commercetools-uikit/constraints@10.46.3
+  - @commercetools-uikit/input-utils@10.46.3
+
 ## 10.46.2
 
 ### Patch Changes
