@@ -71,6 +71,7 @@ export { default as HeartIcon } from './HeartReact';
 export { default as ImportIcon } from './ImportReact';
 export { default as InfoIcon } from './InfoReact';
 export { default as InformationIcon } from './InformationReact';
+export { default as ListWithSearch } from './ListWithSearch';
 export { default as ListIcon } from './ListReact';
 export { default as LogoutIcon } from './LogoutReact';
 export { default as MailIcon } from './MailReact';

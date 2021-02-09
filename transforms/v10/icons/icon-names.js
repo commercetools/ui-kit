@@ -69,6 +69,7 @@ const iconNames = [
   'InfoIcon',
   'InformationIcon',
   'ListIcon',
+  'ListWithSearchIcon',
   'LogoutIcon',
   'MailIcon',
   'MinimizeIcon',
