@@ -33,12 +33,10 @@ type TLabelProps = {
 } & TBasicTextProps;
 
 const Label = (props: TLabelProps) => {
-  if (props.id && props.htmlFor) {
-    warning(
-      false,
-      `ui-kit/Label: provide only the "id" or the "htmlFor" properties, not both.`
-    );
-  }
+  warning(
+    !(Boolean(props.id) && Boolean(props.htmlFor)),
+    `ui-kit/Label: provide only the "id" or the "htmlFor" properties, not both.`
+  );
 
   const hasContent =
     props.intlMessage || Boolean(React.Children.count(props.children));
