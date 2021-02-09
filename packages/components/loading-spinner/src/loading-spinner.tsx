@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { css, keyframes } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -24,10 +23,25 @@ const sizePerScale = {
   s: '18px',
   l: '32px',
 };
-const scale = Object.keys(sizePerScale);
+
 const positionOrigin = '20px';
 
-const LoadingSpinner = (props) => {
+type TLoadingSpinnerProps = {
+  /**
+   * Set the size of the loading spinner.
+   */
+  scale: 's' | 'l';
+  /**
+   * -
+   */
+  children: React.ReactNode;
+};
+
+const defaultProps: Pick<TLoadingSpinnerProps, 'scale'> = {
+  scale: 'l',
+};
+
+const LoadingSpinner = (props: TLoadingSpinnerProps) => {
   const size = sizePerScale[props.scale];
   return (
     <Inline alignItems="center">
@@ -68,18 +82,6 @@ const LoadingSpinner = (props) => {
   );
 };
 LoadingSpinner.displayName = 'LoadingSpinner';
-LoadingSpinner.defaultProps = {
-  scale: 'l',
-};
-LoadingSpinner.propTypes = {
-  /**
-   * Set the size of the loading spinner.
-   */
-  scale: PropTypes.oneOf(scale).isRequired,
-  /**
-   * -
-   */
-  children: PropTypes.node,
-};
+LoadingSpinner.defaultProps = defaultProps;
 
 export default LoadingSpinner;
