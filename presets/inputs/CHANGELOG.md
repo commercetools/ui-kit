@@ -1,5 +1,14 @@
 # @commercetools-uikit/inputs
 
+## 10.47.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/localized-multiline-text-input@10.47.2
+  - @commercetools-uikit/localized-rich-text-input@10.47.2
+  - @commercetools-uikit/localized-text-input@10.47.2
+
 ## 10.47.0
 
 ### Patch Changes

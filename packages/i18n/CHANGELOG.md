@@ -1,5 +1,17 @@
 # @commercetools-uikit/i18n
 
+## 10.47.2
+
+### Patch Changes
+
+- [`e807d44b`](https://github.com/commercetools/ui-kit/commit/e807d44b24db6c23374fef85eab8e168e9644999) [#1783](https://github.com/commercetools/ui-kit/pull/1783) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Translate '/packages/i18n/data/core.json' in 'de'
+
+* [`d2c6d939`](https://github.com/commercetools/ui-kit/commit/d2c6d939783976387949e7663d065ec6b69e7f29) [#1781](https://github.com/commercetools/ui-kit/pull/1781) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Translate '/packages/i18n/data/core.json' in 'ja'
+
+- [`1d5badb0`](https://github.com/commercetools/ui-kit/commit/1d5badb0a1924ba5b80c355a3607b7dfe763e2b6) [#1784](https://github.com/commercetools/ui-kit/pull/1784) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Translate '/packages/i18n/data/core.json' in 'fr_FR'
+
+* [`4e39abe4`](https://github.com/commercetools/ui-kit/commit/4e39abe48bdd76a3059ef435e747aa85f321ffc1) [#1782](https://github.com/commercetools/ui-kit/pull/1782) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Translate '/packages/i18n/data/core.json' in 'es'
+
 ## 10.47.1
 
 ### Patch Changes

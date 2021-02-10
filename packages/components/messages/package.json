@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/messages",
   "description": "A component to render error or warning messages within together with form fields.",
-  "version": "10.47.0",
+  "version": "10.47.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

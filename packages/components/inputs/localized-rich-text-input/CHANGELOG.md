@@ -1,5 +1,12 @@
 # @commercetools-uikit/localized-rich-text-input
 
+## 10.47.2
+
+### Patch Changes
+
+- Updated dependencies [[`434752fe`](https://github.com/commercetools/ui-kit/commit/434752fe86fc25b17d4fff71b5d5084e86f72289)]:
+  - @commercetools-uikit/messages@10.47.2
+
 ## 10.47.0
 
 ### Patch Changes
