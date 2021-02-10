@@ -1,5 +1,13 @@
 # @commercetools-uikit/i18n
 
+## 10.47.1
+
+### Patch Changes
+
+- [`76ddbc1d`](https://github.com/commercetools/ui-kit/commit/76ddbc1d57b1d922a975e7378364e09671f79d8b) [#1779](https://github.com/commercetools/ui-kit/pull/1779) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Translate '/packages/i18n/data/core.json' in 'en'
+
+* [`92d9557b`](https://github.com/commercetools/ui-kit/commit/92d9557b64e4fde804160de12e1684abda121787) [#1778](https://github.com/commercetools/ui-kit/pull/1778) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Translate '/packages/i18n/data/core.json' in 'zh_CN'
+
 ## 10.42.2
 
 ### Patch Changes
