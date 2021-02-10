@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import invariant from 'tiny-invariant';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
+import { invariant } from '@commercetools-uikit/utils';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
