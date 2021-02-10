@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import invariant from 'tiny-invariant';
+import { invariant } from '@commercetools-uikit/utils';
 import { useIntl } from 'react-intl';
 import styled from '@emotion/styled';
 import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
