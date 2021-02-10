@@ -32,7 +32,9 @@ type TLoadingSpinnerProps = {
    */
   scale: 's' | 'l';
   /**
-   * -
+   * The content rendered inside the `LoadingSpinner`.
+   * <br />
+   * It will be rendered as `Text.Detail` with `secondary` tone.
    */
   children: React.ReactNode;
 };
