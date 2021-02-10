@@ -9,5 +9,6 @@ export { default as getFieldId } from './get-field-id';
 export { default as parseTime } from './parse-time';
 export { default as SafeHTMLElement } from './helpers/safeHTMLElement';
 export { default as addStaticFields } from './add-static-fields';
+export { default as invariant } from './invariant';
 
 export { default as version } from './version';

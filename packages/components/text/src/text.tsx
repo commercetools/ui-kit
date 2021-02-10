@@ -3,10 +3,10 @@ import type { MessageDescriptor } from 'react-intl';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useTheme } from '@emotion/react';
-import invariant from 'tiny-invariant';
 import {
   filterDataAttributes,
   warnDeprecatedProp,
+  invariant,
 } from '@commercetools-uikit/utils';
 import {
   bodyStyles,
@@ -108,7 +108,6 @@ const Headline = (props: THeadlineProps) => {
     );
     return <Text intlMessage={props.intlMessage}>{props.children}</Text>;
   }
-
   return (
     <HeadlineElement
       css={headlineStyles(props, theme)}
