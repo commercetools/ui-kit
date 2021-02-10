@@ -2,7 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
-import * as UIKit from '@commercetools-frontend/ui-kit';
+import * as icons from '@commercetools-uikit/icons';
+import Text from '@commercetools-uikit/text';
 import { Suite, Spec } from '../../../../test/percy';
 
 const IconList = styled.div`
@@ -26,9 +27,7 @@ const IconContainer = styled.div`
   width: ${(props) => (props.big ? '50px' : '25px')};
 `;
 
-const icons = Object.keys(UIKit)
-  .filter((thing) => thing.endsWith('Icon'))
-  .sort();
+const allIconNames = Object.keys(icons).sort();
 
 const sizes = ['small', 'medium', 'big', 'scale'];
 
@@ -46,13 +45,13 @@ const colors = [
 export const routePath = '/icons';
 
 const renderIcon = (iconName, color, size) => {
-  const Icon = UIKit[iconName];
+  const Icon = icons[iconName];
   return (
     <IconItem key={iconName}>
       <IconContainer big={size === 'scale'}>
         <Icon color={color} size={size} />
       </IconContainer>
-      <UIKit.Text.Body>{iconName}</UIKit.Text.Body>
+      <Text.Body>{iconName}</Text.Body>
     </IconItem>
   );
 };
@@ -73,7 +72,9 @@ export const component = ({ themes }) => (
                 omitPropsList
               >
                 <IconList>
-                  {icons.map((iconName) => renderIcon(iconName, color, size))}
+                  {allIconNames.map((iconName) =>
+                    renderIcon(iconName, color, size)
+                  )}
                 </IconList>
               </Spec>
             ))}
