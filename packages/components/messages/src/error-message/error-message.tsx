@@ -14,8 +14,6 @@ type TErrorMessageProps = {
 };
 
 const ErrorMessage = (props: TErrorMessageProps) => (
-  // intlMessage is required is children is missing and vice versa
-  // we let Text.Detail set the warning if content is missing.
   <Text.Detail
     intlMessage={props.intlMessage}
     tone="negative"
