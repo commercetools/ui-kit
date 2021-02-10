@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import invariant from 'tiny-invariant';
+import { invariant } from '@commercetools-uikit/utils';
 import { getMaxPropTokenValue, getMaxPropEquivalent } from '../helpers';
 
 type TMaxProp =
