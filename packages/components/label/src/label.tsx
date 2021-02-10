@@ -60,12 +60,13 @@ const Label = (props: TLabelProps) => {
 
   return (
     <label id={props.id} htmlFor={props.htmlFor}>
-      <Text.Body
-        tone={props.tone}
-        isBold={props.isBold}
-        intlMessage={props.intlMessage}
-      >
-        {props.children}
+      <Text.Body tone={props.tone} isBold={props.isBold}>
+        {props.intlMessage ? (
+          <FormattedMessage {...props.intlMessage} />
+        ) : (
+          props.children
+        )}
+        {props.isRequiredIndicatorVisible && <RequiredIndicator />}
         {props.isRequiredIndicatorVisible && <RequiredIndicator />}
       </Text.Body>
     </label>
