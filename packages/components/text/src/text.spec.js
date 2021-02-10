@@ -1,9 +1,12 @@
 import React from 'react';
-import invariant from 'tiny-invariant';
+import { invariant } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
 import Text from './text';
 
-jest.mock('tiny-invariant');
+jest.mock('@commercetools-uikit/utils', () => ({
+  ...jest.requireActual('@commercetools-uikit/utils'),
+  invariant: jest.fn(),
+}));
 
 const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
 
@@ -64,7 +67,7 @@ describe('<Headline>', () => {
     expect(screen.getByTitle('tooltip text')).toBeInTheDocument();
   });
 
-  it('should forward data attriutes', () => {
+  it('should forward data attributes', () => {
     render(
       <Text.Headline as="h1" data-foo="bar" title="headline">
         Title
@@ -127,7 +130,7 @@ describe('<Subheadline>', () => {
     expect(screen.getByTitle('tooltip text')).toBeInTheDocument();
   });
 
-  it('should forward data attriutes', () => {
+  it('should forward data attributes', () => {
     render(
       <Text.Subheadline as="h4" data-foo="bar" title="subheadline">
         Title
@@ -167,7 +170,7 @@ describe('<Wrap>', () => {
     expect(screen.getByTitle('tooltip text')).toBeInTheDocument();
   });
 
-  it('should forward data attriutes', () => {
+  it('should forward data attributes', () => {
     render(
       <Text.Wrap data-foo="bar" title="wrap">
         Title
@@ -209,7 +212,7 @@ describe('<Body>', () => {
     expect(screen.getByText('Hello')).toBeInTheDocument();
   });
 
-  it('should forward data attriutes', () => {
+  it('should forward data attributes', () => {
     render(
       <Text.Body data-foo="bar" title="body">
         Title
@@ -269,7 +272,7 @@ describe('<Detail>', () => {
     expect(screen.getByText('Hello')).toBeInTheDocument();
   });
 
-  it('should forward data attriutes', () => {
+  it('should forward data attributes', () => {
     render(
       <Text.Detail data-foo="bar" title="detail">
         Title
