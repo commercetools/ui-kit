@@ -1,4 +1,4 @@
-import invariant from 'tiny-invariant';
+import { invariant } from '@commercetools-uikit/utils';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 

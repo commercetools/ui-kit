@@ -2,13 +2,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { isValidElementType } from 'react-is';
-import invariant from 'tiny-invariant';
 import isNil from 'lodash/isNil';
 import usePopper from 'use-popper';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import {
   createSequentialId,
   SafeHTMLElement,
+  invariant,
 } from '@commercetools-uikit/utils';
 import { Wrapper, Body, getBodyStyles } from './tooltip.styles';
 

@@ -26,7 +26,6 @@
     "@babel/runtime": "7.12.13",
     "@babel/runtime-corejs3": "7.12.13",
     "@commercetools-uikit/utils": "10.44.0",
-    "lodash": "4.17.20",
-    "tiny-invariant": "1.1.0"
+    "lodash": "4.17.20"
   }
 }

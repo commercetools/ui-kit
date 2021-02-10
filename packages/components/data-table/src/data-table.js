@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import invariant from 'tiny-invariant';
 import isEqual from 'lodash/isEqual';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { invariant, filterDataAttributes } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';
 import {
   TableContainer,

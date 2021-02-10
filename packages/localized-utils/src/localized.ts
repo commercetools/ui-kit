@@ -1,6 +1,5 @@
-import invariant from 'tiny-invariant';
 import uniq from 'lodash/uniq';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, invariant } from '@commercetools-uikit/utils';
 
 type TLocalizedString = {
   [locale: string]: string;

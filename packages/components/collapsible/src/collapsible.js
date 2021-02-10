@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isNil from 'lodash/isNil';
-import invariant from 'tiny-invariant';
+import { invariant } from '@commercetools-uikit/utils';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
 const collapsiblePropTypes = {

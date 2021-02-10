@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import invariant from 'tiny-invariant';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { invariant, filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Inline from '@commercetools-uikit/spacings-inline';

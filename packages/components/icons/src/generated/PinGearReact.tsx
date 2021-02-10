@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@emotion/react';
 import React from 'react';
-import invariant from 'tiny-invariant';
+import { invariant } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {

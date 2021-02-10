@@ -45,7 +45,6 @@
     "prop-types": "15.7.2",
     "react-is": "17.0.1",
     "react-required-if": "1.0.3",
-    "tiny-invariant": "1.1.0",
     "warning": "4.0.3"
   },
   "peerDependencies": {

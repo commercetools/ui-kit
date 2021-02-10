@@ -26,11 +26,11 @@
     "@babel/runtime": "7.12.13",
     "@babel/runtime-corejs3": "7.12.13",
     "@commercetools-uikit/hooks": "10.44.4",
+    "@commercetools-uikit/utils": "10.44.0",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "lodash": "4.17.20",
-    "prop-types": "15.7.2",
-    "tiny-invariant": "1.1.0"
+    "prop-types": "15.7.2"
   },
   "peerDependencies": {
     "react": ">= 16.8.0 || >= 17.0.0"

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import invariant from 'tiny-invariant';
+import { invariant } from '@commercetools-uikit/utils';
 import { keyframes, ClassNames } from '@emotion/react';
 import isNil from 'lodash/isNil';
 import { useToggleState, usePrevious } from '@commercetools-uikit/hooks';
