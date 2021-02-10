@@ -1,5 +1,12 @@
 # @commercetools-uikit/spacings-stack
 
+## 10.47.0
+
+### Patch Changes
+
+- Updated dependencies [[`48abdf42`](https://github.com/commercetools/ui-kit/commit/48abdf42c8522a700403f7b3436e0fdce22022b0)]:
+  - @commercetools-uikit/utils@10.47.0
+
 ## 10.46.3
 
 ### Patch Changes

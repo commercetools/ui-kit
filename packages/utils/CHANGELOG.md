@@ -1,5 +1,11 @@
 # @commercetools-uikit/utils
 
+## 10.47.0
+
+### Patch Changes
+
+- [`48abdf42`](https://github.com/commercetools/ui-kit/commit/48abdf42c8522a700403f7b3436e0fdce22022b0) [#1775](https://github.com/commercetools/ui-kit/pull/1775) Thanks [@adnasa](https://github.com/adnasa)! - Clone invariant, do not throw on production
+
 ## 10.44.0
 
 ### Minor Changes

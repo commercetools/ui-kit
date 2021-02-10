@@ -1,5 +1,14 @@
 # @commercetools-uikit/localized-utils
 
+## 10.47.0
+
+### Patch Changes
+
+- [`7fc183bc`](https://github.com/commercetools/ui-kit/commit/7fc183bcccdc5e81c2cc2eb7029cf32b34087ef3) [#1777](https://github.com/commercetools/ui-kit/pull/1777) Thanks [@adnasa](https://github.com/adnasa)! - drop tiny-variant, migrate to ui-kit/invariant
+
+- Updated dependencies [[`48abdf42`](https://github.com/commercetools/ui-kit/commit/48abdf42c8522a700403f7b3436e0fdce22022b0)]:
+  - @commercetools-uikit/utils@10.47.0
+
 ## 10.44.0
 
 ### Minor Changes

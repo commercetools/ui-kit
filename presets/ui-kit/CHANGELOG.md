@@ -1,5 +1,39 @@
 # @commercetools-frontend/ui-kit
 
+## 10.47.0
+
+### Patch Changes
+
+- Updated dependencies [[`7fc183bc`](https://github.com/commercetools/ui-kit/commit/7fc183bcccdc5e81c2cc2eb7029cf32b34087ef3), [`48abdf42`](https://github.com/commercetools/ui-kit/commit/48abdf42c8522a700403f7b3436e0fdce22022b0), [`49d7b6a7`](https://github.com/commercetools/ui-kit/commit/49d7b6a7a03bdf97bc0f2c5da82cabcd8f1e8b99)]:
+  - @commercetools-uikit/collapsible@10.47.0
+  - @commercetools-uikit/collapsible-motion@10.47.0
+  - @commercetools-uikit/constraints@10.47.0
+  - @commercetools-uikit/data-table@10.47.0
+  - @commercetools-uikit/data-table-manager@10.47.0
+  - @commercetools-uikit/field-label@10.47.0
+  - @commercetools-uikit/icons@10.47.0
+  - @commercetools-uikit/label@10.47.0
+  - @commercetools-uikit/pagination@10.47.0
+  - @commercetools-uikit/primary-action-dropdown@10.47.0
+  - @commercetools-uikit/tooltip@10.47.0
+  - @commercetools-uikit/text@10.47.0
+  - @commercetools-uikit/utils@10.47.0
+  - @commercetools-uikit/buttons@10.47.0
+  - @commercetools-uikit/collapsible-panel@10.47.0
+  - @commercetools-uikit/tag@10.47.0
+  - @commercetools-uikit/notifications@10.47.0
+  - @commercetools-uikit/table@10.47.0
+  - @commercetools-uikit/inputs@10.47.0
+  - @commercetools-uikit/loading-spinner@10.47.0
+  - @commercetools-uikit/messages@10.47.0
+  - @commercetools-uikit/avatar@10.47.0
+  - @commercetools-uikit/card@10.47.0
+  - @commercetools-uikit/link@10.47.0
+  - @commercetools-uikit/hooks@10.47.0
+  - @commercetools-uikit/fields@10.47.0
+  - @commercetools-uikit/field-errors@10.47.0
+  - @commercetools-uikit/spacings@10.47.0
+
 ## 10.46.3
 
 ### Patch Changes
