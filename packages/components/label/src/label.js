@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import invariant from 'tiny-invariant';
 import Text from '@commercetools-uikit/text';
 import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
+import { invariant } from '@commercetools-uikit/utils';
 import RequiredIndicator from './required-indicator';
 
 const Label = (props) => {
