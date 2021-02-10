@@ -1,6 +1,6 @@
 // copied from https://github.com/ianstormtaylor/slate/tree/master/packages/slate-react-placeholder/src
 // and modified to use editor's `options.placeholder` prop instead.
-import invariant from 'tiny-invariant';
+import { invariant } from '@commercetools-uikit/utils';
 import React from 'react';
 
 /*

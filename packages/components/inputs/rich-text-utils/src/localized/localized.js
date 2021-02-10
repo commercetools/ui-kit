@@ -1,4 +1,4 @@
-import invariant from 'tiny-invariant';
+import { invariant } from '@commercetools-uikit/utils';
 import uniq from 'lodash/uniq';
 import html from '../html';
 import isRichTextEmpty from '../is-empty';

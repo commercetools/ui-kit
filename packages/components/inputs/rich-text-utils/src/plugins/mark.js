@@ -1,6 +1,6 @@
 import React from 'react';
 import { isKeyHotkey } from 'is-hotkey';
-import invariant from 'tiny-invariant';
+import { invariant } from '@commercetools-uikit/utils';
 import memoize from 'lodash/memoize';
 
 const memoizedIsHotkey = memoize(isKeyHotkey);

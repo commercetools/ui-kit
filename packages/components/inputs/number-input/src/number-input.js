@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import invariant from 'tiny-invariant';
 import requiredIf from 'react-required-if';
 import { useTheme } from '@emotion/react';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, invariant } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 

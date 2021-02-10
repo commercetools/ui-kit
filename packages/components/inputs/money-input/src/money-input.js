@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import invariant from 'tiny-invariant';
 import has from 'lodash/has';
 import requiredIf from 'react-required-if';
 import Select, { components } from 'react-select';
@@ -10,6 +9,7 @@ import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
+  invariant,
   isNumberish,
   SafeHTMLElement,
   filterDataAttributes,
