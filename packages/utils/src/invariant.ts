@@ -5,11 +5,11 @@ const prefix: string = 'Invariant failed';
 // Throw an error if the condition fails
 // Strip out error messages for production
 // > Not providing an inline default argument for message as the result is smaller
-const invariant = (condition: any, message?: string): asserts condition => {
+const invariant = (condition: unknown, message?: string): asserts condition => {
   if (condition) {
     return;
   }
-  // GIVEN product, supress the message.
+  // GIVEN product, suppress the message.
   if (isProduction) {
     return;
   }
