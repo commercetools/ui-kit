@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import invariant from 'tiny-invariant';
 import uniqueId from 'lodash/uniqueId';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import Constraints from '@commercetools-uikit/constraints';
+import { invariant } from '@commercetools-uikit/utils';
 import Label from '@commercetools-uikit/label';
 import messages from './messages';
 
