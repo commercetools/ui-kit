@@ -1,5 +1,12 @@
 # @commercetools-uikit/password-field
 
+## 10.47.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-errors@10.47.2
+
 ## 10.47.0
 
 ### Patch Changes

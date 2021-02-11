@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/localized-text-input",
   "description": "A controlled text input component for localized single-line strings with validation states.",
-  "version": "10.47.0",
+  "version": "10.47.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
     "@commercetools-uikit/icons": "10.47.0",
     "@commercetools-uikit/input-utils": "10.47.0",
     "@commercetools-uikit/localized-utils": "10.47.0",
-    "@commercetools-uikit/messages": "10.47.0",
+    "@commercetools-uikit/messages": "10.47.2",
     "@commercetools-uikit/spacings-stack": "10.47.0",
     "@commercetools-uikit/text": "10.47.0",
     "@commercetools-uikit/text-input": "10.47.0",

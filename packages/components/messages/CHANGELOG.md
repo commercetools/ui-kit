@@ -1,5 +1,11 @@
 # @commercetools-uikit/messages
 
+## 10.47.2
+
+### Patch Changes
+
+- [`434752fe`](https://github.com/commercetools/ui-kit/commit/434752fe86fc25b17d4fff71b5d5084e86f72289) [#1772](https://github.com/commercetools/ui-kit/pull/1772) Thanks [@adnasa](https://github.com/adnasa)! - Migrate `messages` to typescript
+
 ## 10.47.0
 
 ### Patch Changes
