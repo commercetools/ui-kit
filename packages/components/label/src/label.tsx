@@ -67,7 +67,6 @@ const Label = (props: TLabelProps) => {
           props.children
         )}
         {props.isRequiredIndicatorVisible && <RequiredIndicator />}
-        {props.isRequiredIndicatorVisible && <RequiredIndicator />}
       </Text.Body>
     </label>
   );
