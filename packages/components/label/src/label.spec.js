@@ -31,14 +31,3 @@ it('should render given text with react-intl', () => {
   render(<Label intlMessage={intlMessage} />);
   expect(screen.getByText('translated-label')).toBeInTheDocument();
 });
-
-describe('when both id and htmlFor are provided', () => {
-  it('should warn', () => {
-    render(
-      <Label id="test-id" htmlFor="test-html-for">
-        Hello World
-      </Label>
-    );
-    expect(invariant).toHaveBeenCalled();
-  });
-});
