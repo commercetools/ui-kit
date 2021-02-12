@@ -8,7 +8,7 @@ import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import {
   createSequentialId,
   SafeHTMLElement,
-  invariant,
+  warning,
 } from '@commercetools-uikit/utils';
 import { Wrapper, Body, getBodyStyles } from './tooltip.styles';
 
@@ -26,19 +26,19 @@ const Tooltip = (props) => {
   const leaveTimer = React.useRef();
   const childrenRef = React.useRef();
 
-  invariant(
+  warning(
     props.components.BodyComponent
       ? isValidElementType(props.components.BodyComponent)
       : true,
     `ui-kit/Tooltip: the prop 'components.BodyComponent' is not a valid React element.`
   );
-  invariant(
+  warning(
     props.components.TooltipWrapperComponent
       ? isValidElementType(props.components.TooltipWrapperComponent)
       : true,
     `ui-kit/Tooltip: the prop 'components.TooltipWrapperComponent' is not a valid React element.`
   );
-  invariant(
+  warning(
     props.components.WrapperComponent
       ? isValidElementType(props.components.WrapperComponent)
       : true,

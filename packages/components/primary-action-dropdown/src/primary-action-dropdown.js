@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
@@ -254,7 +254,7 @@ const PrimaryActionDropdown = (props) => {
     toggle();
   }, [toggle]);
 
-  invariant(
+  warning(
     childrenAsArray.length > 1,
     '@commercetools-frontend/ui-kit/dropdowns/primary-action-dropdown: must contain at least two options'
   );
