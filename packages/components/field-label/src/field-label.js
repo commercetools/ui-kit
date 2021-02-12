@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import requiredIf from 'react-required-if';
 import { css } from '@emotion/react';
 import { IconButton } from '@commercetools-uikit/buttons';
@@ -13,7 +13,7 @@ import Label from '@commercetools-uikit/label';
 
 export const FieldLabel = (props) => {
   if (props.hintIcon && props.hintIcon.props && props.hintIcon.props.size) {
-    invariant(
+    warning(
       false,
       `ui-kit/FieldLabel: setting an hintIcon size is not supported.`
     );

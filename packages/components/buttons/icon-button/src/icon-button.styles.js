@@ -1,4 +1,4 @@
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 
@@ -184,7 +184,7 @@ const getThemeStyles = (theme) => {
         }
       `;
     default: {
-      invariant(
+      warning(
         false,
         `ui-kit/IconButton: the specified theme '${theme}' is not supported.`
       );

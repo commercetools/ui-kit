@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import { useIntl } from 'react-intl';
 import styled from '@emotion/styled';
 import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
@@ -65,7 +65,7 @@ const DataTableSettings = (props) => {
   const areColumnSettingsEnabled = Boolean(
     props.columnManager && !props.columnManager.disableColumnManager
   );
-  invariant(
+  warning(
     areDisplaySettingsEnabled || areColumnSettingsEnabled
       ? typeof props.onSettingsChange === 'function'
       : true,

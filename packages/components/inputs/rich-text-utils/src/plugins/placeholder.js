@@ -1,6 +1,6 @@
 // copied from https://github.com/ianstormtaylor/slate/tree/master/packages/slate-react-placeholder/src
 // and modified to use editor's `options.placeholder` prop instead.
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import React from 'react';
 
 /*
@@ -21,7 +21,7 @@ function SlateReactPlaceholder(options = {}) {
   const instanceId = instanceCounter++;
   const { when, style = {} } = options;
 
-  invariant(
+  warning(
     typeof when === 'string' || typeof when === 'function',
     'You must pass `SlateReactPlaceholder` an `options.when` query.'
   );

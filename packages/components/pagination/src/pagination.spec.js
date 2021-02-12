@@ -167,7 +167,7 @@ describe('validation', () => {
         ).toThrowError(
           expect.objectContaining({
             message: expect.stringContaining(
-              `Invariant failed: @commercetools-uikit/pagination: invalid page size ${invalidSize}`
+              `Warning: @commercetools-uikit/pagination: invalid page size ${invalidSize}`
             ),
           })
         );

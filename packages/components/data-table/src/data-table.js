@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import { invariant, filterDataAttributes } from '@commercetools-uikit/utils';
+import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';
 import {
   TableContainer,
@@ -32,7 +32,7 @@ const shouldRenderRowBottomBorder = (rowIndex, rowCount, footer) => {
 };
 
 const DataTable = (props) => {
-  invariant(
+  warning(
     Array.isArray(props.columns),
     `ui-kit/DataTable: the prop "columns" is required.`
   );

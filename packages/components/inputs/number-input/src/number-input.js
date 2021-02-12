@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { useTheme } from '@emotion/react';
-import { filterDataAttributes, invariant } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 
@@ -168,7 +168,7 @@ NumberInput.isEmpty = (value) => {
 
 NumberInput.hasFractionDigits = (number) => {
   const fraction = number % 1;
-  invariant(
+  warning(
     !isNaN(fraction),
     'NumberInput.hasFractionDigits may only be called with valid numbers (either as string or number).'
   );

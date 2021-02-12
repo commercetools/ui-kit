@@ -9,7 +9,7 @@ import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
-  invariant,
+  warning,
   isNumberish,
   SafeHTMLElement,
   filterDataAttributes,
@@ -232,7 +232,7 @@ export const createMoneyValue = (currencyCode, rawAmount, locale) => {
 
   if (rawAmount.length === 0 || !isNumberish(rawAmount)) return null;
 
-  invariant(
+  warning(
     locale || currency.fractionDigits !== 0,
     `A locale must be provided when currency has no fraction digits (${currencyCode})`
   );
@@ -687,27 +687,27 @@ MoneyInput.convertToMoneyValue = (value, locale) =>
 MoneyInput.parseMoneyValue = (moneyValue, locale) => {
   if (!moneyValue) return { currencyCode: '', amount: '' };
 
-  invariant(
+  warning(
     typeof locale === 'string',
     'MoneyInput.parseMoneyValue: A locale must be passed as the second argument'
   );
 
-  invariant(
+  warning(
     typeof moneyValue === 'object',
     'MoneyInput.parseMoneyValue: Value must be passed as an object or be undefined'
   );
 
-  invariant(
+  warning(
     typeof moneyValue.currencyCode === 'string',
     'MoneyInput.parseMoneyValue: Value must contain "currencyCode"'
   );
 
-  invariant(
+  warning(
     has(currencies, moneyValue.currencyCode),
     'MoneyInput.parseMoneyValue: Value must use known currency code'
   );
 
-  invariant(
+  warning(
     // highPrecision or centPrecision values must be set
     typeof moneyValue.centAmount === 'number' ||
       (typeof moneyValue.preciseAmount === 'number' &&
@@ -732,7 +732,7 @@ MoneyInput.isEmpty = (formValue) =>
   formValue.currencyCode.trim() === '';
 
 MoneyInput.isHighPrecision = (formValue, locale) => {
-  invariant(
+  warning(
     !MoneyInput.isEmpty(formValue),
     'MoneyValue.isHighPrecision may not be called with an empty money value.'
   );

@@ -1,5 +1,5 @@
 import uniq from 'lodash/uniq';
-import { filterDataAttributes, invariant } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 
 type TLocalizedString = {
   [locale: string]: string;
@@ -138,7 +138,7 @@ export const isEmpty = (localizedString?: TLocalizedString): boolean => {
 export const omitEmptyTranslations = <TTranslations extends TLocalizedString>(
   localizedString?: TTranslations
 ): TLocalizedString => {
-  invariant(
+  warning(
     typeof localizedString === 'object',
     'omitEmptyTranslations must be called with an object'
   );

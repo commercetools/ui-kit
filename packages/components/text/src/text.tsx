@@ -6,7 +6,7 @@ import { useTheme } from '@emotion/react';
 import {
   filterDataAttributes,
   warnDeprecatedProp,
-  invariant,
+  warning,
 } from '@commercetools-uikit/utils';
 import {
   bodyStyles,
@@ -30,7 +30,7 @@ const warnIfMissingTitle = (
   componentName: string
 ) => {
   if (typeof props.title === 'string') {
-    invariant(
+    warning(
       props.title.length > 0,
       `Invalid prop 'title' supplied to '${componentName}'. Expected it to be nonempty string, but it was empty.`
     );
@@ -44,7 +44,7 @@ const warnIfMissingContent = (
   const hasContent =
     props.intlMessage || Boolean(React.Children.count(props.children));
 
-  invariant(
+  warning(
     hasContent,
     [
       'Warning: Failed prop type:',
@@ -52,7 +52,7 @@ const warnIfMissingContent = (
       'but its value is `undefined`',
     ].join(' ')
   );
-  invariant(
+  warning(
     hasContent,
     [
       'Warning: Failed prop type:',
@@ -102,7 +102,7 @@ const Headline = (props: THeadlineProps) => {
   // however, if none of the prop is specified,
   // we render plain text and set a warning on the log.
   if (!HeadlineElement) {
-    invariant(
+    warning(
       false,
       'ui-kit/Text: You attempt to render a TextHeadline without specifying `as` prop.'
     );
@@ -145,7 +145,7 @@ const Subheadline = (props: TSubheadlineProps) => {
 
   const SubheadlineElement = props.as || props.elementType;
   if (!SubheadlineElement) {
-    invariant(
+    warning(
       false,
       'ui-kit/Text: You attempt to render TextSubheadline without specifying `as` prop.'
     );

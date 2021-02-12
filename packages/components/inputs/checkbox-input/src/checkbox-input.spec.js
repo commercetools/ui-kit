@@ -2,8 +2,6 @@ import React from 'react';
 import { screen, render } from '../../../../../test/test-utils';
 import CheckboxInput from './checkbox-input';
 
-jest.mock('tiny-invariant');
-
 it('should render the label', () => {
   render(
     <CheckboxInput onChange={() => {}} isChecked={false}>

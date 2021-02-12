@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import { keyframes, ClassNames } from '@emotion/react';
 import isNil from 'lodash/isNil';
 import { useToggleState, usePrevious } from '@commercetools-uikit/hooks';
@@ -67,7 +67,7 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
 
   React.useEffect(
     () => {
-      invariant(
+      warning(
         nodeRef.current,
         'You need to call `registerContentNode` in order to use this component'
       );
@@ -78,7 +78,7 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
   );
 
   const handleToggle = React.useCallback(() => {
-    invariant(
+    warning(
       nodeRef.current,
       'You need to call `registerContentNode` in order to use this component'
     );

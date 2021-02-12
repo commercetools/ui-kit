@@ -1,4 +1,4 @@
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
@@ -81,7 +81,7 @@ const getThemeStyles = (theme) => {
         }
       `;
     default: {
-      invariant(
+      warning(
         false,
         `ui-kit/SecondaryButton: the specified theme '${theme}' is not supported.`
       );

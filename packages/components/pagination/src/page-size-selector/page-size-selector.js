@@ -4,7 +4,7 @@ import uniqueId from 'lodash/uniqueId';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import Constraints from '@commercetools-uikit/constraints';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import Label from '@commercetools-uikit/label';
 import messages from './messages';
 
@@ -29,7 +29,7 @@ const PageSizeSelector = (props) => {
   const options = mapRangeToListOfOptions(props.pageSizeRange);
   const hasValidPageSizeOptions = options.includes(props.pageSize);
 
-  invariant(
+  warning(
     hasValidPageSizeOptions,
     `@commercetools-uikit/pagination: invalid page size ${
       props.pageSize

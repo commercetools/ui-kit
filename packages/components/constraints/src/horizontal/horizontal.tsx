@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import { getMaxPropTokenValue, getMaxPropEquivalent } from '../helpers';
 
 type TMaxProp =
@@ -52,7 +52,7 @@ function getConstraintStyles(
 }
 
 const Horizontal = (props: TProps) => {
-  invariant(
+  warning(
     !(props.constraint && props.max),
     '`ui-kit/constraints/horizontal: props `constraint` and `max` should not be used in conjunction. Please prefer `max` prop.'
   );

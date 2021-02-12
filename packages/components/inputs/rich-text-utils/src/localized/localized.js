@@ -1,4 +1,4 @@
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import uniq from 'lodash/uniq';
 import html from '../html';
 import isRichTextEmpty from '../is-empty';
@@ -13,7 +13,7 @@ export const isEmpty = (localizedHtmlValue) => {
 };
 
 export const omitEmptyTranslations = (localizedString) => {
-  invariant(
+  warning(
     typeof localizedString === 'object',
     'omitEmptyTranslations must be called with an object'
   );
