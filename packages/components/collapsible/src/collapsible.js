@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isNil from 'lodash/isNil';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
 const collapsiblePropTypes = {
@@ -67,14 +67,14 @@ const Collapsible = (props) => {
   const hasOnToggle = !isNil(props.onToggle);
 
   if (isControlledComponent) {
-    invariant(
+    warning(
       hasOnToggle,
       `ui-kit/Collapsible: missing required prop "onToggle" when using the "isClosed" prop (controlled component).`
     );
     return <ControlledCollapsible {...props} />;
   }
 
-  invariant(
+  warning(
     !hasOnToggle,
     `ui-kit/Collapsible: the prop "onToggle" does not have any effect (uncontrolled component). Please remove it.`
   );
