@@ -1,9 +1,8 @@
 import React from 'react';
+import { warning } from '@commercetools-uikit/utils';
 import { WarningIcon } from '@commercetools-uikit/icons';
 import { screen, render } from '../../../../test/test-utils';
 import FieldLabel from './field-label';
-
-jest.mock('tiny-invariant');
 
 it('should accept a title', () => {
   render(<FieldLabel title="Title" />);

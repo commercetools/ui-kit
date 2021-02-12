@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Text from '@commercetools-uikit/text';
 import { FormattedMessage } from 'react-intl';
 import requiredIf from 'react-required-if';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import RequiredIndicator from './required-indicator';
 
 const Label = (props) => {
   if (props.id && props.htmlFor) {
-    invariant(
+    warning(
       false,
       `ui-kit/Label: provide only the "id" or the "htmlFor" properties, not both.`
     );
