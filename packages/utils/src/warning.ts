@@ -1,16 +1,16 @@
 const isProduction: boolean = process.env.NODE_ENV === 'production';
 // @TODO: allow consumer to set the prefix e.g `[ Text.Body ]`
-const prefix: string = 'Invariant failed';
+const prefix: string = 'Warning';
 
 // Throw an error if the condition fails
 // Strip out error messages for production
 // > Not providing an inline default argument for message as the result is smaller
-const invariant = (condition: unknown, message?: string): asserts condition => {
-  if (condition) {
+const warning = (condition: unknown, message?: string): asserts condition => {
+  if (isProduction) {
     return;
   }
-  // GIVEN product, suppress the message.
-  if (isProduction) {
+
+  if (condition) {
     return;
   }
 
@@ -19,4 +19,4 @@ const invariant = (condition: unknown, message?: string): asserts condition => {
   // *This block will be removed in production builds*
   throw new Error(`${prefix}: ${message || ''}`);
 };
-export default invariant;
+export default warning;
