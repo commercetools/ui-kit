@@ -3,7 +3,7 @@ import type { Theme } from '@emotion/react';
 
 // @ts-ignore
 import React from 'react';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 // @ts-ignore
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -64,7 +64,7 @@ const getColor = (color: Props['color'], theme: Theme) => {
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    invariant(
+    warning(
       color,
       `ui-kit/Icon: the specified color '${color}' is not supported.`
     );
