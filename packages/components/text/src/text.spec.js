@@ -1,11 +1,11 @@
 import React from 'react';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
 import Text from './text';
 
 jest.mock('@commercetools-uikit/utils', () => ({
   ...jest.requireActual('@commercetools-uikit/utils'),
-  invariant: jest.fn(),
+  warning: jest.fn(),
 }));
 
 const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
@@ -78,12 +78,12 @@ describe('<Headline>', () => {
   describe('when no text is provided', () => {
     it('should warn but not crash', () => {
       render(<Text.Headline as="h1" />);
-      expect(invariant).toHaveBeenCalledTimes(2);
-      expect(invariant).toHaveBeenCalledWith(
+      expect(warning).toHaveBeenCalledTimes(2);
+      expect(warning).toHaveBeenCalledWith(
         expect.any(Boolean),
         expect.stringMatching(/is marked as required in/i)
       );
-      expect(invariant).toHaveBeenCalledWith(
+      expect(warning).toHaveBeenCalledWith(
         expect.any(Boolean),
         expect.stringMatching(/TextHeadline/i)
       );
@@ -141,12 +141,12 @@ describe('<Subheadline>', () => {
   describe('when no text is provided', () => {
     it('should warn but not crash', () => {
       render(<Text.Subheadline as="h4" />);
-      expect(invariant).toHaveBeenCalledTimes(2);
-      expect(invariant).toHaveBeenCalledWith(
+      expect(warning).toHaveBeenCalledTimes(2);
+      expect(warning).toHaveBeenCalledWith(
         expect.any(Boolean),
         expect.stringMatching(/is marked as required in/i)
       );
-      expect(invariant).toHaveBeenCalledWith(
+      expect(warning).toHaveBeenCalledWith(
         expect.any(Boolean),
         expect.stringMatching(/TextSubheadline/i)
       );
@@ -181,12 +181,12 @@ describe('<Wrap>', () => {
   describe('when no text is provided', () => {
     it('should warn but not crash', () => {
       render(<Text.Wrap />);
-      expect(invariant).toHaveBeenCalledTimes(2);
-      expect(invariant).toHaveBeenCalledWith(
+      expect(warning).toHaveBeenCalledTimes(2);
+      expect(warning).toHaveBeenCalledWith(
         expect.any(Boolean),
         expect.stringMatching(/is marked as required in/i)
       );
-      expect(invariant).toHaveBeenCalledWith(
+      expect(warning).toHaveBeenCalledWith(
         expect.any(Boolean),
         expect.stringMatching(/TextWrap/i)
       );
@@ -241,12 +241,12 @@ describe('<Body>', () => {
   describe('when no text is provided', () => {
     it('should warn but not crash', () => {
       render(<Text.Body />);
-      expect(invariant).toHaveBeenCalledTimes(2);
-      expect(invariant).toHaveBeenCalledWith(
+      expect(warning).toHaveBeenCalledTimes(2);
+      expect(warning).toHaveBeenCalledWith(
         expect.any(Boolean),
         expect.stringMatching(/is marked as required in/i)
       );
-      expect(invariant).toHaveBeenCalledWith(
+      expect(warning).toHaveBeenCalledWith(
         expect.any(Boolean),
         expect.stringMatching(/TextBody/i)
       );
@@ -283,12 +283,12 @@ describe('<Detail>', () => {
   describe('when no text is provided', () => {
     it('should warn but not crash', () => {
       render(<Text.Detail />);
-      expect(invariant).toHaveBeenCalledTimes(2);
-      expect(invariant).toHaveBeenCalledWith(
+      expect(warning).toHaveBeenCalledTimes(2);
+      expect(warning).toHaveBeenCalledWith(
         expect.any(Boolean),
         expect.stringMatching(/is marked as required in/i)
       );
-      expect(invariant).toHaveBeenCalledWith(
+      expect(warning).toHaveBeenCalledWith(
         expect.any(Boolean),
         expect.stringMatching(/TextDetail/i)
       );
