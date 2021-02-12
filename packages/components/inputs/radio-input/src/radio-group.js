@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { invariant, filterDataAttributes } from '@commercetools-uikit/utils';
+import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Inline from '@commercetools-uikit/spacings-inline';
@@ -20,7 +20,7 @@ const Group = (props) => {
       (child) => child.type.displayName === Option.displayName
     );
 
-    invariant(
+    warning(
       optionChildrenAsArray.length > 0,
       'Radio.Group must contain at least one Radio.Option'
     );

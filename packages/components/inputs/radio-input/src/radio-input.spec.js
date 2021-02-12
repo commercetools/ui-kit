@@ -3,8 +3,6 @@ import { screen, render } from '../../../../../test/test-utils';
 import Group from './radio-group';
 import Option from './radio-option';
 
-jest.mock('tiny-invariant');
-
 it('should render all options', () => {
   const onChange = jest.fn();
   render(

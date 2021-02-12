@@ -1,6 +1,6 @@
 import React from 'react';
 import { isKeyHotkey } from 'is-hotkey';
-import { invariant } from '@commercetools-uikit/utils';
+import { warning } from '@commercetools-uikit/utils';
 import memoize from 'lodash/memoize';
 
 const memoizedIsHotkey = memoize(isKeyHotkey);
@@ -24,7 +24,7 @@ const validate = (options) => {
 const MarkPlugin = (options = {}) => {
   const missingRequiredOptions = validate(options);
 
-  invariant(
+  warning(
     missingRequiredOptions.length >= 0,
     `ui-kit/rich-text-input/Mark: missing required options: ${missingRequiredOptions.join(
       ','
