@@ -81,6 +81,15 @@ const heading = (depth: Heading['depth'], value: string): Heading => ({
   depth,
   children: [text(value)],
 });
+const headingSignature = (
+  depth: Heading['depth'],
+  value: string,
+  propName: string
+): Heading => ({
+  type: 'heading',
+  depth,
+  children: [text(value), text(' '), inlineCode(propName)],
+});
 const link = (url: Link['url'], value: string): Link => ({
   type: 'link',
   url,
@@ -363,14 +372,24 @@ const parsePropTypesToMarkdown = (
                 ];
                 signatures.push(
                   ...[
-                    heading(3, `Signature ${propName}`),
+                    headingSignature(3, 'Signature', propName),
                     code('ts', propInfoType.raw),
                   ]
                 );
                 break;
               }
               case 'function': {
-                propTypeNode = [inlineCode(propInfoType.raw)];
+                propTypeNode = [
+                  inlineCode('Function'),
+                  html('<br/>'),
+                  link(`#signature-${propName}`, 'See signature.'),
+                ];
+                signatures.push(
+                  ...[
+                    headingSignature(3, 'Signature', propName),
+                    code('ts', propInfoType.raw),
+                  ]
+                );
                 break;
               }
               default:
@@ -381,13 +400,13 @@ const parsePropTypesToMarkdown = (
           }
           case 'Array': {
             propTypeNode = [
-              inlineCode(`Array: ${propInfoType.raw}`),
+              inlineCode(`Array: ${propInfoType.raw.replace('\n', '')}`),
               html('<br/>'),
               link(`#signature-${propName}`, 'See signature.'),
             ];
             signatures.push(
               ...[
-                heading(3, `Signature ${propName}`),
+                headingSignature(3, 'Signature', propName),
                 ...propInfoType.elements
                   .map((elemNode) => {
                     switch (elemNode.name) {
@@ -434,7 +453,10 @@ const parsePropTypesToMarkdown = (
             ];
             if (possibleSignatures.length > 0) {
               signatures.push(
-                ...[heading(3, `Signature ${propName}`), ...possibleSignatures]
+                ...[
+                  headingSignature(3, 'Signature', propName),
+                  ...possibleSignatures,
+                ]
               );
             }
             break;

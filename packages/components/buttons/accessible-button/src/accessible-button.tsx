@@ -1,8 +1,13 @@
-import type { KeyboardEvent, ElementType, SyntheticEvent } from 'react';
-
-import React from 'react';
+import React, {
+  ReactNode,
+  KeyboardEvent,
+  ElementType,
+  MouseEventHandler,
+  KeyboardEventHandler,
+  MouseEvent,
+} from 'react';
 import omit from 'lodash/omit';
-import { filterAriaAttributes, invariant } from '@commercetools-uikit/utils';
+import { filterAriaAttributes, warning } from '@commercetools-uikit/utils';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -10,42 +15,65 @@ import { normalizedButtonStyles } from './accessible-button.styles';
 
 const propsToOmit = ['onClick'];
 
-const getIsEnterOrSpace = (e: KeyboardEvent): boolean =>
-  e.key === ' ' || e.key === 'Enter';
+const getIsEnterOrSpace = (event: KeyboardEvent<HTMLButtonElement>): boolean =>
+  event.key === ' ' || event.key === 'Enter';
 
 // This needs to be a styled component to be able to use the `as` prop.
 const Button = styled.button``;
 
 type TAccessibleButtonProps = {
-  // an `ElemenType` to indicate if this is a `submit`, `reset` or `button`.
-  // <br /> Derived from `styled.button` (`@emotion`)
+  /**
+   * By default the component renders a `button` element. You can pass an optional `React.ElemenType`
+   * in case this needs to be rendered as a different element.
+   */
   as?: ElementType;
-  // a unique `id` assigned on `styled.button`
+  /**
+   * The ID of the element.
+   */
   id?: string;
-  // @deprecated in favor of `as`
+  //
+  /**
+   * The [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) of the `button` element.
+   */
   type?: 'submit' | 'reset' | 'button';
-  // value of the `aria-label`
+  /**
+   * The aria-label value.
+   */
   label: string;
-  // Content of the button
-  children: React.ReactNode;
-  // Set to `true` or `false` to indicate this is a toggle button
+  /**
+   * Any React node.
+   */
+  children: ReactNode;
+  /**
+   * If `true`, indicates that this is a toggle button.
+   */
   isToggleButton?: boolean;
-  // Set to `true` or `false` to indicate toggle state.
-  // <br/>
-  // This prop **is required** if `isToggledButton=true`
+  /**
+   * If `true`, indicates that this element is in a toggled state.
+   * <br/>
+   * This prop is only used if `isToggleButton` is `true`.
+   */
   isToggled?: boolean;
-  // Set to `true` or `false` to indicate that underlying button html element is disabled.
-  // <br />
-  // Given that it is **not** disabled, the underlying button html element will handle keyPress on `ENTER` and `SPACE`
+  /**
+   * If `true`, indicates that the element is in a disabled state.
+   */
   isDisabled?: boolean;
-  // `className` assigned on Button
+  /**
+   * Allow to override the styles by passing a `className` prop.
+   * <br/>
+   * Custom styles can also be passed using the [`css` prop from emotion](https://emotion.sh/docs/css-prop#style-precedence).
+   */
   className?: string;
-  // A synthetic `MouseEventHandler`.
-  // <br />
-  // This handler will be called when Button handles keyPress on `ENTER` and `SPACE` (see `isDisabled`)
-  onClick?: (event: SyntheticEvent) => void;
-  // allows setting custom attributes on the underlying button html element
-  buttonAttributes: any;
+  /**
+   * Event handler when the button is clicked, or the user presses `ENTER` or `SPACE`.
+   */
+  onClick?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
+  /**
+   * Any HTML attributes to be forwarded to the HTML element.
+   */
+  buttonAttributes?: Record<string, string>;
 };
 
 const defaultProps: Pick<
@@ -58,34 +86,48 @@ const defaultProps: Pick<
   isToggled: false,
 };
 
-const AccessibleButton = React.forwardRef(
-  (props: TAccessibleButtonProps, ref) => {
-    invariant(
-      !(props.as && props.type),
-      `AccessibleButton: "type" does not have any effect when "as" is set.`
+const AccessibleButton = React.forwardRef<null, TAccessibleButtonProps>(
+  (props, ref) => {
+    warning(
+      !(props.as && props.type !== 'button'),
+      `ui-kit/AccessibleButton: "type" does not have any effect when "as" is set.`
     );
 
-    const shouldNotWarn = true;
-    invariant(
-      props.isToggleButton !== undefined
-        ? props.isToggled !== undefined
-        : shouldNotWarn,
-      `\`isToggled\` is a required prop if \`isToggleButton\` is \`true\` on AccessibleButton component`
+    warning(
+      !(props.isToggleButton && props.isToggled === undefined),
+      `ui-kit/AccessibleButton: "isToggled" is required if "isToggleButton" is "true"`
     );
 
     const isButton = !props.as || props.as === 'button';
-    const handleClick = React.useCallback(
-      (event: SyntheticEvent) => {
+
+    const { onClick } = props;
+    const handleClick = React.useCallback<MouseEventHandler<HTMLButtonElement>>(
+      (event) => {
         if (props.isDisabled) {
           event.preventDefault();
           return false;
         }
-        if (!props.isDisabled && props.onClick) {
-          return props.onClick(event);
+        if (!props.isDisabled && onClick) {
+          return onClick(event);
         }
         return;
       },
-      [props.onClick, props.isDisabled]
+      [onClick, props.isDisabled]
+    );
+    const handleKeyPress = React.useCallback<
+      KeyboardEventHandler<HTMLButtonElement>
+    >(
+      (event) => {
+        if (props.isDisabled) {
+          event.preventDefault();
+          return false;
+        }
+        if (!props.isDisabled && onClick && getIsEnterOrSpace(event)) {
+          return onClick(event);
+        }
+        return;
+      },
+      [onClick, props.isDisabled]
     );
 
     let buttonProps = {};
@@ -97,11 +139,7 @@ const AccessibleButton = React.forwardRef(
       buttonProps = {
         role: 'button',
         tabIndex: '0',
-        onKeyPress: (event: KeyboardEvent) => {
-          if (getIsEnterOrSpace(event)) {
-            handleClick(event);
-          }
-        },
+        onKeyPress: handleKeyPress,
       };
     }
 
@@ -109,9 +147,6 @@ const AccessibleButton = React.forwardRef(
       <Button
         as={props.as}
         id={props.id}
-        // Type 'ForwardedRef<unknown>' is not assignable to type 'LegacyRef<HTMLButtonElement> | undefined'.
-        // Type 'MutableRefObject<unknown>' is not assignable to type 'LegacyRef<HTMLButtonElement> | undefined'.
-        // @ts-ignore
         ref={ref}
         aria-label={props.label}
         onClick={handleClick}
@@ -140,8 +175,7 @@ const AccessibleButton = React.forwardRef(
     );
   }
 );
-
-AccessibleButton.defaultProps = defaultProps;
 AccessibleButton.displayName = 'AccessibleButton';
+AccessibleButton.defaultProps = defaultProps;
 
 export default AccessibleButton;
