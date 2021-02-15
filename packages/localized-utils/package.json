@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/localized-utils",
   "description": "Utilities to work with localized data.",
-  "version": "10.47.0",
+  "version": "10.47.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "dependencies": {
     "@babel/runtime": "7.12.13",
     "@babel/runtime-corejs3": "7.12.13",
-    "@commercetools-uikit/utils": "10.47.0",
+    "@commercetools-uikit/utils": "10.47.3",
     "lodash": "4.17.20"
   }
 }

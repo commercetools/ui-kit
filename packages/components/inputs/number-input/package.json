@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/number-input",
   "description": "A controlled input component for numbers with validation states.",
-  "version": "10.47.0",
+  "version": "10.47.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,10 +25,10 @@
   "dependencies": {
     "@babel/runtime": "7.12.13",
     "@babel/runtime-corejs3": "7.12.13",
-    "@commercetools-uikit/constraints": "10.47.0",
+    "@commercetools-uikit/constraints": "10.47.3",
     "@commercetools-uikit/design-system": "10.46.3",
-    "@commercetools-uikit/input-utils": "10.47.0",
-    "@commercetools-uikit/utils": "10.47.0",
+    "@commercetools-uikit/input-utils": "10.47.3",
+    "@commercetools-uikit/utils": "10.47.3",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "prop-types": "15.7.2",
