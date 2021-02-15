@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/time-field",
   "description": "A controlled date input component for single date.",
-  "version": "10.47.2",
+  "version": "10.47.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,13 +25,13 @@
   "dependencies": {
     "@babel/runtime": "7.12.13",
     "@babel/runtime-corejs3": "7.12.13",
-    "@commercetools-uikit/constraints": "10.47.0",
+    "@commercetools-uikit/constraints": "10.47.3",
     "@commercetools-uikit/design-system": "10.46.3",
-    "@commercetools-uikit/field-errors": "10.47.2",
-    "@commercetools-uikit/field-label": "10.47.0",
-    "@commercetools-uikit/spacings-stack": "10.47.0",
-    "@commercetools-uikit/time-input": "10.47.0",
-    "@commercetools-uikit/utils": "10.47.0",
+    "@commercetools-uikit/field-errors": "10.47.3",
+    "@commercetools-uikit/field-label": "10.47.3",
+    "@commercetools-uikit/spacings-stack": "10.47.3",
+    "@commercetools-uikit/time-input": "10.47.3",
+    "@commercetools-uikit/utils": "10.47.3",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "prop-types": "15.7.2",

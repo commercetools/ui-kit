@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/creatable-select-input",
   "description": "An input component getting a selection from the user, and where options can also be created by the user.",
-  "version": "10.47.0",
+  "version": "10.47.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,13 +25,13 @@
   "dependencies": {
     "@babel/runtime": "7.12.13",
     "@babel/runtime-corejs3": "7.12.13",
-    "@commercetools-uikit/constraints": "10.47.0",
+    "@commercetools-uikit/constraints": "10.47.3",
     "@commercetools-uikit/design-system": "10.46.3",
-    "@commercetools-uikit/icons": "10.47.0",
-    "@commercetools-uikit/select-utils": "10.47.0",
-    "@commercetools-uikit/spacings": "10.47.0",
-    "@commercetools-uikit/text": "10.47.0",
-    "@commercetools-uikit/utils": "10.47.0",
+    "@commercetools-uikit/icons": "10.47.3",
+    "@commercetools-uikit/select-utils": "10.47.3",
+    "@commercetools-uikit/spacings": "10.47.3",
+    "@commercetools-uikit/text": "10.47.3",
+    "@commercetools-uikit/utils": "10.47.3",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "lodash": "4.17.20",
