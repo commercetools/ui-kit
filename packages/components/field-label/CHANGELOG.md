@@ -1,5 +1,21 @@
 # @commercetools-uikit/field-label
 
+## 10.47.3
+
+### Patch Changes
+
+- [`88653838`](https://github.com/commercetools/ui-kit/commit/8865383861492f22a2bfd2def4a5133e3ccf0af1) [#1787](https://github.com/commercetools/ui-kit/pull/1787) Thanks [@adnasa](https://github.com/adnasa)! - rename `invariant` to `warning`
+
+- Updated dependencies [[`88653838`](https://github.com/commercetools/ui-kit/commit/8865383861492f22a2bfd2def4a5133e3ccf0af1)]:
+  - @commercetools-uikit/constraints@10.47.3
+  - @commercetools-uikit/icons@10.47.3
+  - @commercetools-uikit/label@10.47.3
+  - @commercetools-uikit/text@10.47.3
+  - @commercetools-uikit/utils@10.47.3
+  - @commercetools-uikit/buttons@10.47.3
+  - @commercetools-uikit/spacings-inline@10.47.3
+  - @commercetools-uikit/spacings-stack@10.47.3
+
 ## 10.47.0
 
 ### Patch Changes
