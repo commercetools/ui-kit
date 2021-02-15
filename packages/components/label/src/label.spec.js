@@ -1,6 +1,9 @@
 import React from 'react';
+import { invariant } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
 import Label from './label';
+
+jest.mock('@commercetools-uikit/utils');
 
 const intlMessage = { id: 'input-label', defaultMessage: 'translated-label' };
 
