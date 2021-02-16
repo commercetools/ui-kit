@@ -95,16 +95,16 @@ const SvgListWithSearch = (props: Props) => (
       fillRule="evenodd"
     >
       <g
-        id="list-with-search_react_svg__New-Audit-log-icon|-magnifyin-glass"
+        id="list-with-search_react_svg__list-with-search-icon|-magnifying-glass"
         transform="translate(-18 -442)"
         fill="#000"
       >
         <g
-          id="list-with-search_react_svg__Component-/-icon-/-24px-/-audit-log"
+          id="list-with-search_react_svg__Component-/-icon-/-24px-/-list-with-search"
           transform="translate(18 442)"
         >
           <g
-            id="list-with-search_react_svg__audit-log-icon"
+            id="list-with-search_react_svg__list-with-search-icon"
             transform="translate(4 4)"
           >
             <path
