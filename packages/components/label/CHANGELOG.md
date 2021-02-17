@@ -1,5 +1,11 @@
 # @commercetools-uikit/label
 
+## 10.47.4
+
+### Patch Changes
+
+- [`96c0718a`](https://github.com/commercetools/ui-kit/commit/96c0718a4c5b06ef6f3b70b78ab16fc30186fefa) [#1771](https://github.com/commercetools/ui-kit/pull/1771) Thanks [@adnasa](https://github.com/adnasa)! - Migrate Label to typescript
+
 ## 10.47.3
 
 ### Patch Changes

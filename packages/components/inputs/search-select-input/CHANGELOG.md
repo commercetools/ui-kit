@@ -1,5 +1,13 @@
 # @commercetools-uikit/search-select-input
 
+## 10.47.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-select-input@10.47.4
+  - @commercetools-uikit/select-utils@10.47.4
+
 ## 10.47.3
 
 ### Patch Changes
