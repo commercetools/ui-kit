@@ -1,5 +1,11 @@
 # @commercetools-uikit/icons
 
+## 10.47.4
+
+### Patch Changes
+
+- [`a05ad894`](https://github.com/commercetools/ui-kit/commit/a05ad89455990d68eb1b47b5cdc77e669a4ece20) [#1791](https://github.com/commercetools/ui-kit/pull/1791) Thanks [@stephsprinkle](https://github.com/stephsprinkle)! - fix(icons): list with search export
+
 ## 10.47.3
 
 ### Patch Changes

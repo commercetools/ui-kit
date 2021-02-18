@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/toggle-input",
   "description": "The ToggleInput component allows a single settings option to be turned on or off.",
-  "version": "10.47.3",
+  "version": "10.47.4",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "@babel/runtime-corejs3": "7.12.13",
     "@commercetools-uikit/constraints": "10.47.3",
     "@commercetools-uikit/design-system": "10.46.3",
-    "@commercetools-uikit/input-utils": "10.47.3",
+    "@commercetools-uikit/input-utils": "10.47.4",
     "@commercetools-uikit/utils": "10.47.3",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
