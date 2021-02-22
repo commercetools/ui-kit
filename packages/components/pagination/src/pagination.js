@@ -6,12 +6,12 @@ import PageNavigator from './page-navigator';
 import PageSizeSelector from './page-size-selector';
 
 const Pagination = (props) => {
-  const totalPages = Math.ceil(props.totalItems / props.pageSize);
+  const totalPages = Math.ceil(props.totalItems / props.perPage);
 
-  const currentPageItems =
-    props.currentPage === totalPages
-      ? props.totalItems - props.pageSize * (props.currentPage - 1)
-      : props.pageSize;
+  const pageItems =
+    props.page === totalPages
+      ? props.totalItems - props.perPage * (props.page - 1)
+      : props.perPage;
 
   return (
     <Spacings.Inline justifyContent="space-between">
@@ -21,15 +21,15 @@ const Pagination = (props) => {
         `}
       >
         <PageSizeSelector
-          pageSize={props.pageSize}
-          pageSizeRange={props.pageSizeRange}
-          currentPageItems={currentPageItems}
-          onPageSizeChange={props.onPageSizeChange}
+          pageItems={pageItems}
+          perPage={props.perPage}
+          perPageRange={props.perPageRange}
+          onPerPageChange={props.onPerPageChange}
         />
       </div>
       <PageNavigator
         totalPages={totalPages}
-        currentPage={props.currentPage}
+        page={props.page}
         onPageChange={props.onPageChange}
       />
     </Spacings.Inline>
@@ -42,9 +42,9 @@ Pagination.propTypes = {
    */
   totalItems: PropTypes.number.isRequired,
   /**
-   * The currently selected page
+   * The current page
    */
-  currentPage: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
   /**
    * A callback function, called when the page is changed.
    * <br/>
@@ -56,7 +56,7 @@ Pagination.propTypes = {
   /**
    * Number of items per page, according to the pre-defined range values.
    */
-  pageSize: PropTypes.number,
+  perPage: PropTypes.number,
   /**
    * Range of items per page.
    * <br/>
@@ -66,17 +66,17 @@ Pagination.propTypes = {
    * <br/>
    * `l: 200,500`
    */
-  pageSizeRange: PropTypes.oneOf(['s', 'm', 'l']),
+  perPageRange: PropTypes.oneOf(['s', 'm', 'l']),
   /**
-   * A callback function, called when pageSize is changed.
+   * A callback function, called when `perPage` is changed.
    * <br/>
-   * Signature: `(pageSize: number) => void`
+   * Signature: `(nextPerPage: number) => void`
    */
-  onPageSizeChange: PropTypes.func.isRequired,
+  onPerPageChange: PropTypes.func.isRequired,
 };
 Pagination.defaultProps = {
-  pageSize: 20,
-  pageSizeRange: 's',
+  perPage: 20,
+  perPageRange: 's',
 };
 
 export default Pagination;
