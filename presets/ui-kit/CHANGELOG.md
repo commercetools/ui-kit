@@ -1,5 +1,12 @@
 # @commercetools-frontend/ui-kit
 
+## 11.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`b94ce71c`](https://github.com/commercetools/ui-kit/commit/b94ce71c340320d22185e8e504874bf2c3de8ca3)]:
+  - @commercetools-uikit/pagination@11.0.0
+
 ## 10.47.4
 
 ### Patch Changes
