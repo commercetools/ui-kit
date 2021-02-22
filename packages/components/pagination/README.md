@@ -33,25 +33,28 @@ npm --save install react react-intl
 import React from 'react';
 import { Pagination } from '@commercetools-uikit/pagination';
 
-const Example = ({ items }) => (
-  <Pagination
-    totalItems={items.length}
-    currentPage={1}
-    onPageChange={() => {}}
-    onPageSizeChange={() => {}}
-  />
-);
+const Example = () => {
+  const items = [{ id: '1' }, { id: '2' }];
+  return (
+    <Pagination
+      totalItems={items.length}
+      page={1}
+      onPageChange={() => {}}
+      onPerPageChange={() => {}}
+    />
+  );
+};
 
 export default Example;
 ```
 
 ## Properties
 
-| Props              | Type                                            | Required | Default | Description                                                                                                                                               |
-| ------------------ | ----------------------------------------------- | :------: | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `totalItems`       | `number`                                        |    ✅    |         | Total number of items across all pages                                                                                                                    |
-| `currentPage`      | `number`                                        |    ✅    |         | The currently selected page                                                                                                                               |
-| `onPageChange`     | `func`                                          |    ✅    |         | A callback function, called when the page is changed.&#xA;<br/>&#xA;Signature: `(page: number) => void`&#xA;<br/>&#xA;Signature: `(page: number) => void` |
-| `pageSize`         | `number`                                        |          | `20`    | Number of items per page, according to the pre-defined range values.                                                                                      |
-| `pageSizeRange`    | `enum`<br/>Possible values:<br/>`'s', 'm', 'l'` |          | `'s'`   | Range of items per page.&#xA;<br/>&#xA;`s: 20,50`&#xA;<br/>&#xA;`m: 20,50,100`&#xA;<br/>&#xA;`l: 200,500`                                                 |
-| `onPageSizeChange` | `func`                                          |    ✅    |         | A callback function, called when pageSize is changed.&#xA;<br/>&#xA;Signature: `(pageSize: number) => void`                                               |
+| Props             | Type                                            | Required | Default | Description                                                                                                                                               |
+| ----------------- | ----------------------------------------------- | :------: | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `totalItems`      | `number`                                        |    ✅    |         | Total number of items across all pages                                                                                                                    |
+| `page`            | `number`                                        |    ✅    |         | The current page                                                                                                                                          |
+| `onPageChange`    | `func`                                          |    ✅    |         | A callback function, called when the page is changed.&#xA;<br/>&#xA;Signature: `(page: number) => void`&#xA;<br/>&#xA;Signature: `(page: number) => void` |
+| `perPage`         | `number`                                        |          | `20`    | Number of items per page, according to the pre-defined range values.                                                                                      |
+| `perPageRange`    | `enum`<br/>Possible values:<br/>`'s', 'm', 'l'` |          | `'s'`   | Range of items per page.&#xA;<br/>&#xA;`s: 20,50`&#xA;<br/>&#xA;`m: 20,50,100`&#xA;<br/>&#xA;`l: 200,500`                                                 |
+| `onPerPageChange` | `func`                                          |    ✅    |         | A callback function, called when `perPage` is changed.&#xA;<br/>&#xA;Signature: `(nextPerPage: number) => void`                                           |
