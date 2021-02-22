@@ -9,25 +9,25 @@ export const component = () => (
     <Spec label="Pagination on first page (with 60 items)">
       <Pagination
         totalItems={60}
-        currentPage={1}
-        onPageSizeChange={() => null}
+        page={1}
         onPageChange={() => null}
+        onPerPageChange={() => null}
       />
     </Spec>
     <Spec label="Pagination on page in the middle (with 60 items)">
       <Pagination
         totalItems={60}
-        currentPage={2}
-        onPageSizeChange={() => null}
+        page={2}
         onPageChange={() => null}
+        onPerPageChange={() => null}
       />
     </Spec>
     <Spec label="Pagination on last page (with 60 items)">
       <Pagination
         totalItems={60}
-        currentPage={3}
-        onPageSizeChange={() => null}
+        page={3}
         onPageChange={() => null}
+        onPerPageChange={() => null}
       />
     </Spec>
   </Suite>
