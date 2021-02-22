@@ -1,5 +1,11 @@
 # @commercetools-uikit/pagination
 
+## 11.0.0
+
+### Major Changes
+
+- [`b94ce71c`](https://github.com/commercetools/ui-kit/commit/b94ce71c340320d22185e8e504874bf2c3de8ca3) [#1794](https://github.com/commercetools/ui-kit/pull/1794) Thanks [@adnasa](https://github.com/adnasa)! - rename pageSize -> perPage, currentPage -> page
+
 ## 10.47.4
 
 ### Patch Changes
