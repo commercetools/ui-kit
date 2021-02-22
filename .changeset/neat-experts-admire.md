@@ -1,5 +1,5 @@
 ---
-'@commercetools-uikit/pagination': minor
+'@commercetools-uikit/pagination': major
 ---
 
 rename pageSize -> perPage, currentPage -> page
