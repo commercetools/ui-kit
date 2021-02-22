@@ -6,9 +6,9 @@ const Example = () => {
   return (
     <Pagination
       totalItems={items.length}
-      currentPage={1}
+      page={1}
       onPageChange={() => {}}
-      onPageSizeChange={() => {}}
+      onPerPageChange={() => {}}
     />
   );
 };

@@ -60,7 +60,7 @@ storiesOf('Components|Pagination', module)
   .add('PageNavigator', () => (
     <Section>
       <Value
-        defaultValue={number('page', 1)}
+        defaultValue={1}
         render={(page, onPageChange) => (
           <PageNavigator
             totalPages={10}
