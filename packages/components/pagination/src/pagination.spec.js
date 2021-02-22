@@ -4,8 +4,8 @@ import Pagination from './pagination';
 
 const createTestProps = (custom) => ({
   totalItems: 60,
-  currentPage: 1,
-  onPageSizeChange: jest.fn(),
+  page: 1,
+  onPerPageChange: jest.fn(),
   onPageChange: jest.fn(),
   ...custom,
 });
@@ -21,7 +21,7 @@ it('should display the correct number of pages', () => {
   render(
     <Pagination
       {...createTestProps({
-        pageSize: 20,
+        perPage: 20,
         totalItems: 79,
       })}
     />
@@ -37,9 +37,9 @@ it('should display the correct number of items displayed', () => {
   render(
     <Pagination
       {...createTestProps({
-        pageSize: 20,
+        page: 4,
+        perPage: 20,
         totalItems: 79,
-        currentPage: 4,
       })}
     />
   );
@@ -75,7 +75,7 @@ describe('page navigator interaction', () => {
       <Pagination
         {...createTestProps({
           onPageChange,
-          currentPage: 2,
+          page: 2,
         })}
       />
     );
@@ -90,7 +90,7 @@ describe('page navigator interaction', () => {
     render(
       <Pagination
         {...createTestProps({
-          currentPage: 1,
+          page: 1,
           totalItems: 20,
         })}
       />
@@ -107,37 +107,37 @@ describe('page navigator interaction', () => {
   });
 });
 
-describe('page size selector interaction', () => {
-  it('should call onPageSizeChange with the selected value', async () => {
-    const onPageSizeChange = jest.fn();
-    render(<Pagination {...createTestProps({ onPageSizeChange })} />);
+describe('per page selector interaction', () => {
+  it('should call onPerPageChange with the selected value', async () => {
+    const onPerPageChange = jest.fn();
+    render(<Pagination {...createTestProps({ onPerPageChange })} />);
 
-    const pageSizeSelector = screen.getByLabelText(/Items per page/);
+    const perPageSelector = screen.getByLabelText(/Items per page/);
 
-    fireEvent.focus(pageSizeSelector);
-    fireEvent.change(pageSizeSelector, { target: { value: 50 } });
-    fireEvent.keyDown(pageSizeSelector, {
+    fireEvent.focus(perPageSelector);
+    fireEvent.change(perPageSelector, { target: { value: 50 } });
+    fireEvent.keyDown(perPageSelector, {
       key: 'Enter',
       keyCode: 13,
       which: 13,
     });
 
-    expect(onPageSizeChange).toHaveBeenCalledWith(50);
+    expect(onPerPageChange).toHaveBeenCalledWith(50);
   });
 });
 
 describe('validation', () => {
-  it('should throw an error if the page size range is invalid', async () => {
-    const onPageSizeChange = jest.fn();
+  it('should throw an error if the per page range is invalid', async () => {
+    const onPerPageChange = jest.fn();
     console.error = jest.fn();
     expect(() =>
       render(
         <Pagination
-          {...createTestProps({ onPageSizeChange, pageSizeRange: 'wrong' })}
+          {...createTestProps({ onPerPageChange, perPageRange: 'wrong' })}
         />
       )
     ).toThrowErrorMatchingInlineSnapshot(
-      `"Invalid page size range \\"wrong\\", expected one of \\"s,m,l\\"."`
+      `"Invalid page range \\"wrong\\", expected one of \\"s,m,l\\"."`
     );
   });
   describe.each`
@@ -149,18 +149,18 @@ describe('validation', () => {
     ${'l'} | ${100}
     ${'l'} | ${600}
   `(
-    'when page size range is "$range" and page size is $invalidSize',
-    ({ range, invalidSize }) => {
+    'when page size range is "$perPageRange" and page size is $invalidSize',
+    ({ perPageRange, invalidSize }) => {
       it('should throw an error', async () => {
-        const onPageSizeChange = jest.fn();
+        const onPerPageChange = jest.fn();
         console.error = jest.fn();
         expect(() =>
           render(
             <Pagination
               {...createTestProps({
-                onPageSizeChange,
-                pageSizeRange: range,
-                pageSize: invalidSize,
+                onPerPageChange,
+                perPageRange,
+                perPage: invalidSize,
               })}
             />
           )
@@ -184,18 +184,18 @@ describe('validation', () => {
     ${'l'} | ${200}
     ${'l'} | ${500}
   `(
-    'when page size range is "$range" and page size is $size',
-    ({ range, size }) => {
+    'when per page range is "$perPageRange" and perPage is "$perPage"',
+    ({ perPageRange, perPage }) => {
       it('should not throw an error', async () => {
-        const onPageSizeChange = jest.fn();
+        const onPerPageChange = jest.fn();
         console.error = jest.fn();
         expect(() =>
           render(
             <Pagination
               {...createTestProps({
-                onPageSizeChange,
-                pageSizeRange: range,
-                pageSize: size,
+                perPage,
+                onPerPageChange,
+                perPageRange,
               })}
             />
           )

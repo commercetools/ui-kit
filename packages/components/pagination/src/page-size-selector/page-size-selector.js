@@ -8,8 +8,8 @@ import { warning } from '@commercetools-uikit/utils';
 import Label from '@commercetools-uikit/label';
 import messages from './messages';
 
-const mapRangeToListOfOptions = (pageSizeRange) => {
-  switch (pageSizeRange) {
+const mapRangeToListOfOptions = (perPageRange) => {
+  switch (perPageRange) {
     case 's':
       return [20, 50];
     case 'm':
@@ -18,39 +18,38 @@ const mapRangeToListOfOptions = (pageSizeRange) => {
       return [200, 500];
     default:
       throw new Error(
-        `Invalid page size range "${pageSizeRange}", expected one of "s,m,l".`
+        `Invalid page range "${perPageRange}", expected one of "s,m,l".`
       );
   }
 };
 
 const PageSizeSelector = (props) => {
-  const [pageSizeSelectorId] = React.useState(uniqueId('page-size-selector-'));
-
-  const options = mapRangeToListOfOptions(props.pageSizeRange);
-  const hasValidPageSizeOptions = options.includes(props.pageSize);
+  const [perPageSelectorId] = React.useState(uniqueId('per-page-selector-'));
+  const options = mapRangeToListOfOptions(props.perPageRange);
+  const hasValidPerPageOption = options.includes(props.perPage);
 
   warning(
-    hasValidPageSizeOptions,
+    hasValidPerPageOption,
     `@commercetools-uikit/pagination: invalid page size ${
-      props.pageSize
+      props.perPage
     }. It must be one of the values of the selected range in "${options.toString()}".`
   );
 
-  const { onPageSizeChange } = props;
+  const { onPerPageChange } = props;
   const handleSelectPerPage = React.useCallback(
     (event) => {
-      onPageSizeChange(Number(event.target.value));
+      onPerPageChange(Number(event.target.value));
     },
-    [onPageSizeChange]
+    [onPerPageChange]
   );
 
   return (
     <Spacings.Inline alignItems="center">
       <Constraints.Horizontal max={2}>
         <SelectInput
-          id={pageSizeSelectorId}
-          name="page-size-selector"
-          value={props.pageSize.toString()}
+          id={perPageSelectorId}
+          name="per-page-selector"
+          value={props.perPage.toString()}
           options={options.map((option) => ({
             value: option.toString(),
             label: option.toString(),
@@ -59,11 +58,11 @@ const PageSizeSelector = (props) => {
         />
       </Constraints.Horizontal>
       <Label
-        htmlFor={pageSizeSelectorId}
+        htmlFor={perPageSelectorId}
         intlMessage={{
           ...messages.pageSize,
           values: {
-            count: props.currentPageItems,
+            count: props.pageItems,
           },
         }}
       />
@@ -73,14 +72,15 @@ const PageSizeSelector = (props) => {
 
 PageSizeSelector.displayName = 'PageSizeSelector';
 PageSizeSelector.propTypes = {
-  pageSize: PropTypes.number,
-  pageSizeRange: PropTypes.oneOf(['s', 'm', 'l']),
-  onPageSizeChange: PropTypes.func.isRequired,
-  currentPageItems: PropTypes.number.isRequired,
+  perPage: PropTypes.number,
+  perPageRange: PropTypes.oneOf(['s', 'm', 'l']),
+  onPerPageChange: PropTypes.func.isRequired,
+  pageItems: PropTypes.number.isRequired,
 };
+
 PageSizeSelector.defaultProps = {
-  pageSize: 20,
-  pageSizeRange: 's',
+  perPage: 20,
+  perPageRange: 's',
 };
 
 export default PageSizeSelector;

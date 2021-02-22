@@ -19,16 +19,16 @@ storiesOf('Components|Pagination', module)
     <Section>
       <Value
         defaultValue={20}
-        render={(pageSize, onPageSizeChange) => (
+        render={(perPage, onPerPageChange) => (
           <Value
             defaultValue={number('page', 1)}
-            render={(currentPage, onPageChange) => (
+            render={(page, onPageChange) => (
               <Pagination
-                pageSize={pageSize}
                 totalItems={number('totalItems', 200)}
-                currentPage={currentPage}
-                onPageSizeChange={onPageSizeChange}
+                page={page}
                 onPageChange={onPageChange}
+                perPage={perPage}
+                onPerPageChange={onPerPageChange}
               />
             )}
           />
@@ -49,10 +49,10 @@ storiesOf('Components|Pagination', module)
     return (
       <Section>
         <PageSizeSelector
-          pageSize={getMinimumPageSizeFromRange(range)}
-          pageSizeRange={range}
-          currentPageItems={1}
-          onPageSizeChange={() => {}}
+          pageItems={1}
+          perPage={getMinimumPageSizeFromRange(range)}
+          perPageRange={range}
+          onPerPageChange={() => {}}
         />
       </Section>
     );
@@ -61,10 +61,10 @@ storiesOf('Components|Pagination', module)
     <Section>
       <Value
         defaultValue={number('page', 1)}
-        render={(currentPage, onPageChange) => (
+        render={(page, onPageChange) => (
           <PageNavigator
             totalPages={10}
-            currentPage={currentPage}
+            page={page}
             onPageChange={onPageChange}
           />
         )}

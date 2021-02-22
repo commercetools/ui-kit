@@ -14,8 +14,9 @@ import messages from './messages';
 const PageNavigator = (props) => {
   const intl = useIntl();
 
+  const [page, setPage] = React.useState(props.page);
+
   const [pageNumberInputId] = React.useState(uniqueId('page-number-'));
-  const [page, setPage] = React.useState(props.currentPage);
 
   const { onPageChange, totalPages } = props;
 
@@ -109,7 +110,7 @@ const PageNavigator = (props) => {
 PageNavigator.displayName = 'PageNavigator';
 PageNavigator.propTypes = {
   totalPages: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
 };
 
