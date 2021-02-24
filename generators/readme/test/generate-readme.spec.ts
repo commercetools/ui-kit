@@ -112,7 +112,7 @@ describe('generate README (for TS file)', () => {
 
       ## Description
 
-      Render an Justice League
+      Render a Justice League
 
       ## Installation
 
@@ -153,7 +153,7 @@ describe('generate README (for TS file)', () => {
       | - | - | :-: | - | - |
       | \`name\` | \`string\` | ✅ | | The name of an Avenger. |
       | \`identity\` | \`Object\`<br/>[See signature.](#signature-identity) | ✅ | | The real identity of this Avenger, if known. |
-      | \`onClick\` | \`(event: Event) => void\` | | | A callback function, called when the component is clicked. |
+      | \`onClick\` | \`Function\`<br/>[See signature.](#signature-onClick) | | | A callback function, called when the component is clicked. |
       | \`abilities\` | \`Array: Ability[]\`<br/>[See signature.](#signature-abilities) | ✅ | | List the abilities of this Avenger. |
       | \`movies\` | \`union\`<br/>Possible values:<br/>\`string , Movie\`<br/>[See signature.](#signature-movies) | ✅ | | The list of movies where this Avenger appears in.&#xA;It can either be just the name of the movie or a more detailed&#xA;information about the movie. |
       | \`power\` | \`union\`<br/>Possible values:<br/>\`1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10\` | | \`1\` | Define the power for this Avenger, from a scale of 1-10. |
@@ -161,7 +161,7 @@ describe('generate README (for TS file)', () => {
 
       ## Signatures
 
-      ### Signature identity
+      ### Signature \`identity\`
 
       \`\`\`ts
       {
@@ -174,7 +174,13 @@ describe('generate README (for TS file)', () => {
       }
       \`\`\`
 
-      ### Signature abilities
+      ### Signature \`onClick\`
+
+      \`\`\`ts
+      (event: Event) => void
+      \`\`\`
+
+      ### Signature \`abilities\`
 
       \`\`\`ts
       {
@@ -192,7 +198,7 @@ describe('generate README (for TS file)', () => {
       }
       \`\`\`
 
-      ### Signature movies
+      ### Signature \`movies\`
 
       \`\`\`ts
       {
