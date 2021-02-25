@@ -23,8 +23,8 @@
     "prepare": "../../scripts/version.js replace"
   },
   "dependencies": {
-    "@babel/runtime": "7.12.13",
-    "@babel/runtime-corejs3": "7.12.13",
+    "@babel/runtime": "7.13.7",
+    "@babel/runtime-corejs3": "7.13.7",
     "@commercetools-uikit/async-creatable-select-input": "10.47.4",
     "@commercetools-uikit/async-select-input": "10.47.4",
     "@commercetools-uikit/checkbox-input": "10.47.4",

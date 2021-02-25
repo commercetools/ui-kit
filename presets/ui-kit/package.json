@@ -24,8 +24,8 @@
     "copy-assets": "rm -rf i18n materials && mkdir -p i18n/data && cp -R ../../design-system/materials materials && cp -R ../../packages/i18n/data i18n/"
   },
   "dependencies": {
-    "@babel/runtime": "7.12.13",
-    "@babel/runtime-corejs3": "7.12.13",
+    "@babel/runtime": "7.13.7",
+    "@babel/runtime-corejs3": "7.13.7",
     "@commercetools-uikit/accessible-hidden": "10.46.3",
     "@commercetools-uikit/avatar": "10.47.3",
     "@commercetools-uikit/buttons": "10.47.3",
