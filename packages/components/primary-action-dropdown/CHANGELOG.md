@@ -1,5 +1,16 @@
 # @commercetools-uikit/primary-action-dropdown
 
+## 11.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`89302420`](https://github.com/commercetools/ui-kit/commit/89302420fbac2d93785a6908985f42d80e1f377e), [`ac50d08e`](https://github.com/commercetools/ui-kit/commit/ac50d08ea22ebaa56d73c44bb7fb81020511c86b)]:
+  - @commercetools-uikit/design-system@11.0.1
+  - @commercetools-uikit/accessible-button@11.0.1
+  - @commercetools-uikit/icons@11.0.1
+  - @commercetools-uikit/text@11.0.1
+  - @commercetools-uikit/buttons@11.0.1
+
 ## 10.47.4
 
 ### Patch Changes
