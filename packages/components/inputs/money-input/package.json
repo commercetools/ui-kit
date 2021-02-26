@@ -23,8 +23,8 @@
     "prepare": "../../../../scripts/version.js replace"
   },
   "dependencies": {
-    "@babel/runtime": "7.12.13",
-    "@babel/runtime-corejs3": "7.12.13",
+    "@babel/runtime": "7.13.7",
+    "@babel/runtime-corejs3": "7.13.7",
     "@commercetools-uikit/constraints": "10.47.3",
     "@commercetools-uikit/design-system": "10.46.3",
     "@commercetools-uikit/hooks": "10.47.3",
