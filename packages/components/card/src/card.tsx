@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-type Props = {
+type TCardProps = {
   /**
    * Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.
    */
@@ -23,7 +23,7 @@ type Props = {
   children: ReactNode;
 };
 
-const Card = (props: Props) => (
+const Card = (props: TCardProps) => (
   <div
     {...filterDataAttributes(props)}
     css={css`
@@ -46,7 +46,7 @@ const Card = (props: Props) => (
   </div>
 );
 
-const defaultProps: Pick<Props, 'type' | 'theme'> = {
+const defaultProps: Pick<TCardProps, 'type' | 'theme'> = {
   type: 'raised',
   theme: 'light',
 };
