@@ -23,15 +23,15 @@
     "prepare": "../../../scripts/version.js replace"
   },
   "dependencies": {
-    "@babel/runtime": "7.13.7",
-    "@babel/runtime-corejs3": "7.13.7",
+    "@babel/runtime": "7.13.9",
+    "@babel/runtime-corejs3": "7.13.9",
     "@commercetools-uikit/design-system": "11.0.1",
     "@commercetools-uikit/constraints": "11.0.1",
     "@commercetools-uikit/hooks": "10.47.3",
     "@commercetools-uikit/utils": "10.47.3",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "prop-types": "15.7.2",
     "react-is": "17.0.1",
     "use-popper": "1.1.6"

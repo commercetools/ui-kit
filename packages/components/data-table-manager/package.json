@@ -23,8 +23,8 @@
     "prepare": "../../../scripts/version.js replace"
   },
   "dependencies": {
-    "@babel/runtime": "7.13.7",
-    "@babel/runtime-corejs3": "7.13.7",
+    "@babel/runtime": "7.13.9",
+    "@babel/runtime-corejs3": "7.13.9",
     "@commercetools-uikit/accessible-button": "11.0.1",
     "@commercetools-uikit/accessible-hidden": "11.0.1",
     "@commercetools-uikit/async-select-input": "11.0.1",
@@ -47,7 +47,7 @@
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "debounce-promise": "^3.1.2",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "prop-types": "15.7.2",
     "react-beautiful-dnd": "13.0.0",
     "react-required-if": "1.0.3"
