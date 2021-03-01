@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import React, { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
