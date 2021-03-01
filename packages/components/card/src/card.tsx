@@ -1,10 +1,29 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+// import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-const Card = (props) => (
+type Props = {
+  /**
+   * Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.
+   */
+  type: 'raised' | 'flat';
+  /**
+   * Determines the background color of the card.
+   */
+  theme: 'light' | 'dark';
+  /**
+   * Pass a custom CSS class, useful to override the styles.
+   * <br>
+   * NOTE: This is not recommended and should only be used for building new components
+   * that require special style adjustments.
+   */
+  className: string;
+  children: ReactNode;
+};
+
+const Card = (props: Props) => (
   <div
     {...filterDataAttributes(props)}
     css={css`
@@ -27,29 +46,12 @@ const Card = (props) => (
   </div>
 );
 
-Card.displayName = 'Card';
-Card.propTypes = {
-  /**
-   * Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.
-   */
-  type: PropTypes.oneOf(['raised', 'flat']),
-  /**
-   * Determines the background color of the card.
-   */
-  theme: PropTypes.oneOf(['light', 'dark']),
-  children: PropTypes.node,
-  /**
-   * Pass a custom CSS class, useful to override the styles.
-   * <br>
-   * NOTE: This is not recommended and should only be used for building new components
-   * that require special style adjustments.
-   */
-  className: PropTypes.string,
-};
-
-Card.defaultProps = {
+const defaultProps: Pick<Props, 'type' | 'theme'> = {
   type: 'raised',
   theme: 'light',
 };
+
+Card.displayName = 'Card';
+Card.defaultProps = defaultProps;
 
 export default Card;
