@@ -18,8 +18,8 @@ type TCardProps = {
    * NOTE: This is not recommended and should only be used for building new components
    * that require special style adjustments.
    */
-  className: string;
-  children: ReactNode;
+  className?: string;
+  children?: ReactNode;
 };
 
 const Card = (props: TCardProps) => (
