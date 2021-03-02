@@ -1,5 +1,21 @@
 # @commercetools-uikit/async-creatable-select-field
 
+## 11.0.2
+
+### Patch Changes
+
+- [`b49a5bf0`](https://github.com/commercetools/ui-kit/commit/b49a5bf04fe25d2dda249a3bc9a5ced365a8e67f) [#1806](https://github.com/commercetools/ui-kit/pull/1806) Thanks [@tdeekens](https://github.com/tdeekens)! - feat: add manypkg for mono-repo management
+
+* [`db2e8a20`](https://github.com/commercetools/ui-kit/commit/db2e8a2038a6bf813adf4c16fd77103d356893b6) [#1798](https://github.com/commercetools/ui-kit/pull/1798) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* Updated dependencies [[`b49a5bf0`](https://github.com/commercetools/ui-kit/commit/b49a5bf04fe25d2dda249a3bc9a5ced365a8e67f), [`db2e8a20`](https://github.com/commercetools/ui-kit/commit/db2e8a2038a6bf813adf4c16fd77103d356893b6)]:
+  - @commercetools-uikit/constraints@11.0.2
+  - @commercetools-uikit/field-errors@11.0.2
+  - @commercetools-uikit/field-label@11.0.2
+  - @commercetools-uikit/design-system@11.0.2
+  - @commercetools-uikit/async-creatable-select-input@11.0.2
+  - @commercetools-uikit/spacings@11.0.2
+
 ## 11.0.1
 
 ### Patch Changes
