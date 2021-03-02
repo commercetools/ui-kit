@@ -9,22 +9,14 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
-    | 'solid'
-    | 'neutral60'
-    | 'surface'
-    | 'info'
-    | 'primary'
-    | 'primary40'
-    | 'warning'
-    | 'error';
+  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = {
+const iconSizes = ({
   small: 12,
   medium: 16,
-  big: 24,
-} as const;
+  big: 24
+} as const);
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -56,15 +48,14 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars,
+    ...theme
+  }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(
-      color,
-      `ui-kit/Icon: the specified color '${color}' is not supported.`
-    );
+    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
     return 'inherit';
   }
 
@@ -79,44 +70,14 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgBox = (props: Props) => (
-  <svg
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <g
-      id="box_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="box_react_svg__MC-icon-set"
-        transform="translate(-96 -168)"
-        fill="#000"
-      >
-        <g id="box_react_svg__Menu" transform="translate(24 168)">
-          <g id="box_react_svg__Box" transform="translate(72)">
-            <path
-              d="M20.06 16.601L12.27 21v-8.797l.867-.49 6.924-3.909v8.797zM12.03 3l3.13 1.767-7.79 4.399-3.13-1.768L12.03 3zm4.29 2.422l3.501 1.976-4.892 2.763-2.899 1.636-2.914-1.645-.588-.332 7.792-4.398zM8.28 12.57v-2.35l3.51 1.983V21L4 16.601V7.804l3.148 1.777v2.416l1.132.573z"
-              id="box_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
-  </svg>
-);
+const SvgBox = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="box_react_svg__Icons" stroke="none" strokeWidth={1} fillRule="evenodd"><g id="box_react_svg__MC-icon-set" transform="translate(-96 -168)" fill="#000"><g id="box_react_svg__Menu" transform="translate(24 168)"><g id="box_react_svg__Box" transform="translate(72)"><path d="M20.06 16.601L12.27 21v-8.797l.867-.49 6.924-3.909v8.797zM12.03 3l3.13 1.767-7.79 4.399-3.13-1.768L12.03 3zm4.29 2.422l3.501 1.976-4.892 2.763-2.899 1.636-2.914-1.645-.588-.332 7.792-4.398zM8.28 12.57v-2.35l3.51 1.983V21L4 16.601V7.804l3.148 1.777v2.416l1.132.573z" id="box_react_svg__shape" /></g></g></g></g></svg>;
 
-SvgBox.displayName = 'SvgBox';
+SvgBox.displayName = "SvgBox";
 
 const BoxIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgBox {...props} css={getIconStyles(props, theme)} />;
 };
 
-BoxIcon.displayName = 'BoxIcon';
+BoxIcon.displayName = "BoxIcon";
 export default BoxIcon;

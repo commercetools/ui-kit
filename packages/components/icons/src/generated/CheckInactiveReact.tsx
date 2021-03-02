@@ -9,22 +9,14 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
-    | 'solid'
-    | 'neutral60'
-    | 'surface'
-    | 'info'
-    | 'primary'
-    | 'primary40'
-    | 'warning'
-    | 'error';
+  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = {
+const iconSizes = ({
   small: 12,
   medium: 16,
-  big: 24,
-} as const;
+  big: 24
+} as const);
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -56,15 +48,14 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars,
+    ...theme
+  }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(
-      color,
-      `ui-kit/Icon: the specified color '${color}' is not supported.`
-    );
+    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
     return 'inherit';
   }
 
@@ -79,47 +70,14 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgCheckInactive = (props: Props) => (
-  <svg
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <g
-      id="check-inactive_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="check-inactive_react_svg__MC-icon-set"
-        transform="translate(-24 -360)"
-      >
-        <g id="check-inactive_react_svg__Notices" transform="translate(24 312)">
-          <g
-            id="check-inactive_react_svg__Check-Inactive"
-            transform="translate(0 48)"
-          >
-            <path
-              d="M12 21a9 9 0 110-18 9 9 0 010 18zm-6-9.495v.99c0 .291.224.505.5.505h11c.271 0 .5-.226.5-.505v-.99a.495.495 0 00-.5-.505h-11c-.271 0-.5.226-.5.505z"
-              id="check-inactive_react_svg__shape"
-              fill="#000"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
-  </svg>
-);
+const SvgCheckInactive = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="check-inactive_react_svg__Icons" stroke="none" strokeWidth={1} fillRule="evenodd"><g id="check-inactive_react_svg__MC-icon-set" transform="translate(-24 -360)"><g id="check-inactive_react_svg__Notices" transform="translate(24 312)"><g id="check-inactive_react_svg__Check-Inactive" transform="translate(0 48)"><path d="M12 21a9 9 0 110-18 9 9 0 010 18zm-6-9.495v.99c0 .291.224.505.5.505h11c.271 0 .5-.226.5-.505v-.99a.495.495 0 00-.5-.505h-11c-.271 0-.5.226-.5.505z" id="check-inactive_react_svg__shape" fill="#000" /></g></g></g></g></svg>;
 
-SvgCheckInactive.displayName = 'SvgCheckInactive';
+SvgCheckInactive.displayName = "SvgCheckInactive";
 
 const CheckInactiveIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgCheckInactive {...props} css={getIconStyles(props, theme)} />;
 };
 
-CheckInactiveIcon.displayName = 'CheckInactiveIcon';
+CheckInactiveIcon.displayName = "CheckInactiveIcon";
 export default CheckInactiveIcon;

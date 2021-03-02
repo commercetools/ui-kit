@@ -9,22 +9,14 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
-    | 'solid'
-    | 'neutral60'
-    | 'surface'
-    | 'info'
-    | 'primary'
-    | 'primary40'
-    | 'warning'
-    | 'error';
+  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = {
+const iconSizes = ({
   small: 12,
   medium: 16,
-  big: 24,
-} as const;
+  big: 24
+} as const);
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -56,15 +48,14 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars,
+    ...theme
+  }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(
-      color,
-      `ui-kit/Icon: the specified color '${color}' is not supported.`
-    );
+    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
     return 'inherit';
   }
 
@@ -79,36 +70,14 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgSpeechBubble = (props: Props) => (
-  <svg
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <g
-      id="speech-bubble_react_svg__Component-/-icon-/-24px-/-speech-bubble"
-      stroke="none"
-      strokeWidth={1}
-      fill="none"
-      fillRule="evenodd"
-    >
-      <path
-        d="M3 15.094c.002 1.162 1.008 2.104 2.25 2.105h6.175l4.393 3.408c.07.039.15.06.232.06.248 0 .45-.189.45-.421v-3.047h2.25c1.242-.001 2.249-.943 2.25-2.105V5.772c-.001-1.162-1.008-2.104-2.25-2.105H5.25c-1.242 0-2.248.943-2.25 2.105v9.322z"
-        id="speech-bubble_react_svg__Fill-1"
-        fill="#1A1A1A"
-      />
-    </g>
-  </svg>
-);
+const SvgSpeechBubble = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="speech-bubble_react_svg__Component-/-icon-/-24px-/-speech-bubble" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd"><path d="M3 15.094c.002 1.162 1.008 2.104 2.25 2.105h6.175l4.393 3.408c.07.039.15.06.232.06.248 0 .45-.189.45-.421v-3.047h2.25c1.242-.001 2.249-.943 2.25-2.105V5.772c-.001-1.162-1.008-2.104-2.25-2.105H5.25c-1.242 0-2.248.943-2.25 2.105v9.322z" id="speech-bubble_react_svg__Fill-1" fill="#1A1A1A" /></g></svg>;
 
-SvgSpeechBubble.displayName = 'SvgSpeechBubble';
+SvgSpeechBubble.displayName = "SvgSpeechBubble";
 
 const SpeechBubbleIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgSpeechBubble {...props} css={getIconStyles(props, theme)} />;
 };
 
-SpeechBubbleIcon.displayName = 'SpeechBubbleIcon';
+SpeechBubbleIcon.displayName = "SpeechBubbleIcon";
 export default SpeechBubbleIcon;

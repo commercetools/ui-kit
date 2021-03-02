@@ -9,22 +9,14 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
-    | 'solid'
-    | 'neutral60'
-    | 'surface'
-    | 'info'
-    | 'primary'
-    | 'primary40'
-    | 'warning'
-    | 'error';
+  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = {
+const iconSizes = ({
   small: 12,
   medium: 16,
-  big: 24,
-} as const;
+  big: 24
+} as const);
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -56,15 +48,14 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars,
+    ...theme
+  }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(
-      color,
-      `ui-kit/Icon: the specified color '${color}' is not supported.`
-    );
+    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
     return 'inherit';
   }
 
@@ -79,42 +70,14 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgFilterAndList = (props: Props) => (
-  <svg
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <g
-      id="filter-and-list_react_svg__Component-/-icon-/-24px-/-filter_and_-list"
-      stroke="none"
-      strokeWidth={1}
-      fill="none"
-      fillRule="evenodd"
-    >
-      <g
-        id="filter-and-list_react_svg__filter-&amp;-list_2"
-        transform="translate(3 3)"
-        fill="#000"
-        fillRule="nonzero"
-      >
-        <path
-          d="M17.25 15a.75.75 0 110 1.5h-4.5a.75.75 0 110-1.5h4.5zM15.026 0c.35 0 .586.216.685.508.068.229.052.546-.085.804l-.097.148-5.503 6.601v9.05c0 .375-.145.639-.436.79a.736.736 0 01-.188.06l-.09.008c-.162 0-.301-.055-.419-.164l-.084-.092-2.858-3.427a.893.893 0 01-.198-.434l-.014-.169V8.061L.236 1.459C.006 1.201-.047.772.04.492.159.195.366.046.613.009L.739 0h14.287zm-1.484 1.498L2.22 1.496l5.02 6.022-.006 5.965 1.29 1.548.002-7.513 5.016-6.02zM17.25 10.5a.75.75 0 110 1.5h-4.5a.75.75 0 110-1.5h4.5zm0-4.5a.75.75 0 110 1.5h-4.5a.75.75 0 110-1.5h4.5z"
-          id="filter-and-list_react_svg__Shape"
-        />
-      </g>
-    </g>
-  </svg>
-);
+const SvgFilterAndList = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="filter-and-list_react_svg__Component-/-icon-/-24px-/-filter_and_-list" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd"><g id="filter-and-list_react_svg__filter-&amp;-list_2" transform="translate(3 3)" fill="#000" fillRule="nonzero"><path d="M17.25 15a.75.75 0 110 1.5h-4.5a.75.75 0 110-1.5h4.5zM15.026 0c.35 0 .586.216.685.508.068.229.052.546-.085.804l-.097.148-5.503 6.601v9.05c0 .375-.145.639-.436.79a.736.736 0 01-.188.06l-.09.008c-.162 0-.301-.055-.419-.164l-.084-.092-2.858-3.427a.893.893 0 01-.198-.434l-.014-.169V8.061L.236 1.459C.006 1.201-.047.772.04.492.159.195.366.046.613.009L.739 0h14.287zm-1.484 1.498L2.22 1.496l5.02 6.022-.006 5.965 1.29 1.548.002-7.513 5.016-6.02zM17.25 10.5a.75.75 0 110 1.5h-4.5a.75.75 0 110-1.5h4.5zm0-4.5a.75.75 0 110 1.5h-4.5a.75.75 0 110-1.5h4.5z" id="filter-and-list_react_svg__Shape" /></g></g></svg>;
 
-SvgFilterAndList.displayName = 'SvgFilterAndList';
+SvgFilterAndList.displayName = "SvgFilterAndList";
 
 const FilterAndListIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgFilterAndList {...props} css={getIconStyles(props, theme)} />;
 };
 
-FilterAndListIcon.displayName = 'FilterAndListIcon';
+FilterAndListIcon.displayName = "FilterAndListIcon";
 export default FilterAndListIcon;

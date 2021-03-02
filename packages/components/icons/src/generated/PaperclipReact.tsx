@@ -9,22 +9,14 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
-    | 'solid'
-    | 'neutral60'
-    | 'surface'
-    | 'info'
-    | 'primary'
-    | 'primary40'
-    | 'warning'
-    | 'error';
+  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = {
+const iconSizes = ({
   small: 12,
   medium: 16,
-  big: 24,
-} as const;
+  big: 24
+} as const);
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -56,15 +48,14 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars,
+    ...theme
+  }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(
-      color,
-      `ui-kit/Icon: the specified color '${color}' is not supported.`
-    );
+    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
     return 'inherit';
   }
 
@@ -79,35 +70,14 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgPaperclip = (props: Props) => (
-  <svg
-    id="paperclip_react_svg__Ebene_1"
-    xmlns="http://www.w3.org/2000/svg"
-    x={0}
-    y={0}
-    viewBox="0 0 24 24"
-    xmlSpace="preserve"
-    {...props}
-  >
-    <g id="paperclip_react_svg__Icons">
-      <g id="paperclip_react_svg__MC-icon-set" transform="translate(-24 -1307)">
-        <g id="paperclip_react_svg__paperclip" transform="translate(24 1307)">
-          <path
-            id="paperclip_react_svg__shape"
-            d="M9.3 18.7c-.5.5-1.3.8-2.1.8s-1.5-.3-2.1-.8c-.5-.5-.9-1.1-.9-1.8s.3-1.4.9-1.8L16.4 5c.7-.6 1.9-.6 2.6 0 .7.7.7 1.7 0 2.4l-10 9c-.3.3-.8.3-1.1 0-.1-.1-.2-.3-.2-.5s.1-.4.2-.5l5.9-5.1c.2-.1.2-.3.2-.4 0-.2-.1-.3-.2-.4-.3-.2-.7-.2-1 0l-5.9 5.1c-.4.4-.6.8-.6 1.4 0 .5.2 1 .6 1.4.8.7 2.2.7 3 0l10.1-9c.7-.7 1-1.4 1-2.2 0-.8-.3-1.5-.9-2-.6-.5-1.4-.8-2.3-.8-.9 0-1.7.3-2.3.8l-11.2 10c-.9.7-1.3 1.7-1.3 2.7 0 1 .4 2 1.2 2.7.8.7 1.9 1.1 3 1.1s2.2-.4 3-1.1l9.3-8.4c.1-.1.2-.3.2-.4 0-.2-.1-.3-.2-.4-.3-.2-.7-.2-1 0l-9.2 8.3z"
-          />
-        </g>
-      </g>
-    </g>
-  </svg>
-);
+const SvgPaperclip = (props: Props) => <svg id="paperclip_react_svg__Ebene_1" xmlns="http://www.w3.org/2000/svg" x={0} y={0} viewBox="0 0 24 24" xmlSpace="preserve" {...props}><g id="paperclip_react_svg__Icons"><g id="paperclip_react_svg__MC-icon-set" transform="translate(-24 -1307)"><g id="paperclip_react_svg__paperclip" transform="translate(24 1307)"><path id="paperclip_react_svg__shape" d="M9.3 18.7c-.5.5-1.3.8-2.1.8s-1.5-.3-2.1-.8c-.5-.5-.9-1.1-.9-1.8s.3-1.4.9-1.8L16.4 5c.7-.6 1.9-.6 2.6 0 .7.7.7 1.7 0 2.4l-10 9c-.3.3-.8.3-1.1 0-.1-.1-.2-.3-.2-.5s.1-.4.2-.5l5.9-5.1c.2-.1.2-.3.2-.4 0-.2-.1-.3-.2-.4-.3-.2-.7-.2-1 0l-5.9 5.1c-.4.4-.6.8-.6 1.4 0 .5.2 1 .6 1.4.8.7 2.2.7 3 0l10.1-9c.7-.7 1-1.4 1-2.2 0-.8-.3-1.5-.9-2-.6-.5-1.4-.8-2.3-.8-.9 0-1.7.3-2.3.8l-11.2 10c-.9.7-1.3 1.7-1.3 2.7 0 1 .4 2 1.2 2.7.8.7 1.9 1.1 3 1.1s2.2-.4 3-1.1l9.3-8.4c.1-.1.2-.3.2-.4 0-.2-.1-.3-.2-.4-.3-.2-.7-.2-1 0l-9.2 8.3z" /></g></g></g></svg>;
 
-SvgPaperclip.displayName = 'SvgPaperclip';
+SvgPaperclip.displayName = "SvgPaperclip";
 
 const PaperclipIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgPaperclip {...props} css={getIconStyles(props, theme)} />;
 };
 
-PaperclipIcon.displayName = 'PaperclipIcon';
+PaperclipIcon.displayName = "PaperclipIcon";
 export default PaperclipIcon;

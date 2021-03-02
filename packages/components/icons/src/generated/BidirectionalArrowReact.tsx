@@ -9,22 +9,14 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
-    | 'solid'
-    | 'neutral60'
-    | 'surface'
-    | 'info'
-    | 'primary'
-    | 'primary40'
-    | 'warning'
-    | 'error';
+  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = {
+const iconSizes = ({
   small: 12,
   medium: 16,
-  big: 24,
-} as const;
+  big: 24
+} as const);
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -56,15 +48,14 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars,
+    ...theme
+  }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(
-      color,
-      `ui-kit/Icon: the specified color '${color}' is not supported.`
-    );
+    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
     return 'inherit';
   }
 
@@ -79,27 +70,14 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgBidirectionalArrow = (props: Props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    {...props}
-  >
-    <path
-      fillRule="evenodd"
-      d="M12 10.05h-1V8.41h1v1.64zm-2 0H9V8.41h1v1.64zm-2 0H7V8.41h1v1.64zm-2 1.983l-1-.935V7.325l1-.952v5.66zm-2-1.869L3 9.23l1-.952v1.886zm13.318.517L21 14.121l-3.682 3.506v-2.686h-5.5a.82.82 0 010-1.64h5.5v-2.62z"
-    />
-  </svg>
-);
+const SvgBidirectionalArrow = (props: Props) => <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" {...props}><path fillRule="evenodd" d="M12 10.05h-1V8.41h1v1.64zm-2 0H9V8.41h1v1.64zm-2 0H7V8.41h1v1.64zm-2 1.983l-1-.935V7.325l1-.952v5.66zm-2-1.869L3 9.23l1-.952v1.886zm13.318.517L21 14.121l-3.682 3.506v-2.686h-5.5a.82.82 0 010-1.64h5.5v-2.62z" /></svg>;
 
-SvgBidirectionalArrow.displayName = 'SvgBidirectionalArrow';
+SvgBidirectionalArrow.displayName = "SvgBidirectionalArrow";
 
 const BidirectionalArrowIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgBidirectionalArrow {...props} css={getIconStyles(props, theme)} />;
 };
 
-BidirectionalArrowIcon.displayName = 'BidirectionalArrowIcon';
+BidirectionalArrowIcon.displayName = "BidirectionalArrowIcon";
 export default BidirectionalArrowIcon;

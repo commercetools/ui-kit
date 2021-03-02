@@ -9,22 +9,14 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
-    | 'solid'
-    | 'neutral60'
-    | 'surface'
-    | 'info'
-    | 'primary'
-    | 'primary40'
-    | 'warning'
-    | 'error';
+  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = {
+const iconSizes = ({
   small: 12,
   medium: 16,
-  big: 24,
-} as const;
+  big: 24
+} as const);
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -56,15 +48,14 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars,
+    ...theme
+  }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(
-      color,
-      `ui-kit/Icon: the specified color '${color}' is not supported.`
-    );
+    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
     return 'inherit';
   }
 
@@ -79,44 +70,14 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgBinLinear = (props: Props) => (
-  <svg
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <g
-      id="bin-linear_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="bin-linear_react_svg__MC-icon-set"
-        transform="translate(-96 -120)"
-        fill="#000"
-      >
-        <g id="bin-linear_react_svg__CRUD" transform="translate(24 120)">
-          <g id="bin-linear_react_svg__Delete" transform="translate(72)">
-            <path
-              d="M20.2 6.919V7.5H4V4.8h4.5V3h7.2v1.8h4.5v2.119zm-.9-.319v-.9H4.9v.9h14.4zM9.4 4.8h5.4v-.9H9.4v.9zm8.1 2.7h.9l-.788 11.82A1.797 1.797 0 0115.818 21H8.382a1.8 1.8 0 01-1.794-1.68L5.8 7.5h.9l.81 11.346A1.35 1.35 0 008.857 20.1h6.486a1.35 1.35 0 001.347-1.254L17.5 7.5zm-4.95 9h-.9V9.3h.9v7.2zm-2.25 0h-.9V9.3h.9v7.2zm4.5 0h-.9V9.3h.9v7.2z"
-              id="bin-linear_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
-  </svg>
-);
+const SvgBinLinear = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="bin-linear_react_svg__Icons" stroke="none" strokeWidth={1} fillRule="evenodd"><g id="bin-linear_react_svg__MC-icon-set" transform="translate(-96 -120)" fill="#000"><g id="bin-linear_react_svg__CRUD" transform="translate(24 120)"><g id="bin-linear_react_svg__Delete" transform="translate(72)"><path d="M20.2 6.919V7.5H4V4.8h4.5V3h7.2v1.8h4.5v2.119zm-.9-.319v-.9H4.9v.9h14.4zM9.4 4.8h5.4v-.9H9.4v.9zm8.1 2.7h.9l-.788 11.82A1.797 1.797 0 0115.818 21H8.382a1.8 1.8 0 01-1.794-1.68L5.8 7.5h.9l.81 11.346A1.35 1.35 0 008.857 20.1h6.486a1.35 1.35 0 001.347-1.254L17.5 7.5zm-4.95 9h-.9V9.3h.9v7.2zm-2.25 0h-.9V9.3h.9v7.2zm4.5 0h-.9V9.3h.9v7.2z" id="bin-linear_react_svg__shape" /></g></g></g></g></svg>;
 
-SvgBinLinear.displayName = 'SvgBinLinear';
+SvgBinLinear.displayName = "SvgBinLinear";
 
 const BinLinearIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgBinLinear {...props} css={getIconStyles(props, theme)} />;
 };
 
-BinLinearIcon.displayName = 'BinLinearIcon';
+BinLinearIcon.displayName = "BinLinearIcon";
 export default BinLinearIcon;

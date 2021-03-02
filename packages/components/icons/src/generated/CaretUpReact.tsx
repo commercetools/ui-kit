@@ -9,22 +9,14 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
-    | 'solid'
-    | 'neutral60'
-    | 'surface'
-    | 'info'
-    | 'primary'
-    | 'primary40'
-    | 'warning'
-    | 'error';
+  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = {
+const iconSizes = ({
   small: 12,
   medium: 16,
-  big: 24,
-} as const;
+  big: 24
+} as const);
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -56,15 +48,14 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars,
+    ...theme
+  }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(
-      color,
-      `ui-kit/Icon: the specified color '${color}' is not supported.`
-    );
+    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
     return 'inherit';
   }
 
@@ -79,45 +70,14 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgCaretUp = (props: Props) => (
-  <svg
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <g
-      id="caret-up_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="caret-up_react_svg__MC-icon-set"
-        transform="translate(-240 -936)"
-        fill="#000"
-      >
-        <g id="caret-up_react_svg__Directions" transform="translate(24 888)">
-          <g id="caret-up_react_svg__Caret-Up" transform="translate(216 48)">
-            <path
-              d="M20.666 7.354A1.052 1.052 0 0019.875 7H4.125c-.305 0-.568.118-.791.354A1.18 1.18 0 003 8.192c0 .322.111.601.334.837l7.875 8.34c.223.236.486.354.791.354.305 0 .568-.118.791-.354l7.875-8.34A1.18 1.18 0 0021 8.192c0-.323-.112-.602-.334-.838z"
-              id="caret-up_react_svg__shape"
-              transform="rotate(-180 12 12.361)"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
-  </svg>
-);
+const SvgCaretUp = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="caret-up_react_svg__Icons" stroke="none" strokeWidth={1} fillRule="evenodd"><g id="caret-up_react_svg__MC-icon-set" transform="translate(-240 -936)" fill="#000"><g id="caret-up_react_svg__Directions" transform="translate(24 888)"><g id="caret-up_react_svg__Caret-Up" transform="translate(216 48)"><path d="M20.666 7.354A1.052 1.052 0 0019.875 7H4.125c-.305 0-.568.118-.791.354A1.18 1.18 0 003 8.192c0 .322.111.601.334.837l7.875 8.34c.223.236.486.354.791.354.305 0 .568-.118.791-.354l7.875-8.34A1.18 1.18 0 0021 8.192c0-.323-.112-.602-.334-.838z" id="caret-up_react_svg__shape" transform="rotate(-180 12 12.361)" /></g></g></g></g></svg>;
 
-SvgCaretUp.displayName = 'SvgCaretUp';
+SvgCaretUp.displayName = "SvgCaretUp";
 
 const CaretUpIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgCaretUp {...props} css={getIconStyles(props, theme)} />;
 };
 
-CaretUpIcon.displayName = 'CaretUpIcon';
+CaretUpIcon.displayName = "CaretUpIcon";
 export default CaretUpIcon;

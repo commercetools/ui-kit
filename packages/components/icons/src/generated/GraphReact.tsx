@@ -9,22 +9,14 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?:
-    | 'solid'
-    | 'neutral60'
-    | 'surface'
-    | 'info'
-    | 'primary'
-    | 'primary40'
-    | 'warning'
-    | 'error';
+  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = {
+const iconSizes = ({
   small: 12,
   medium: 16,
-  big: 24,
-} as const;
+  big: 24
+} as const);
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -56,15 +48,14 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars,
+    ...theme
+  }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(
-      color,
-      `ui-kit/Icon: the specified color '${color}' is not supported.`
-    );
+    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
     return 'inherit';
   }
 
@@ -79,44 +70,14 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgGraph = (props: Props) => (
-  <svg
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <g
-      id="graph_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="graph_react_svg__MC-icon-set"
-        transform="translate(-168 -72)"
-        fill="#000"
-      >
-        <g id="graph_react_svg__Application" transform="translate(24 24)">
-          <g id="graph_react_svg__Graph" transform="translate(144 48)">
-            <path
-              d="M3 12.51c0-.282.215-.51.498-.51h4.004a.5.5 0 01.498.51v7.98c0 .282-.215.51-.498.51H3.498A.5.5 0 013 20.49v-7.98zM9.51 3.5c0-.276.216-.5.498-.5h4.005c.275 0 .498.228.498.5v17c0 .276-.215.5-.498.5h-4.005a.501.501 0 01-.497-.5v-17zM16 8.494A.49.49 0 0116.498 8h4.004c.275 0 .498.226.498.494v12.012a.49.49 0 01-.498.494h-4.004a.499.499 0 01-.498-.494V8.494z"
-              id="graph_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
-  </svg>
-);
+const SvgGraph = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="graph_react_svg__Icons" stroke="none" strokeWidth={1} fillRule="evenodd"><g id="graph_react_svg__MC-icon-set" transform="translate(-168 -72)" fill="#000"><g id="graph_react_svg__Application" transform="translate(24 24)"><g id="graph_react_svg__Graph" transform="translate(144 48)"><path d="M3 12.51c0-.282.215-.51.498-.51h4.004a.5.5 0 01.498.51v7.98c0 .282-.215.51-.498.51H3.498A.5.5 0 013 20.49v-7.98zM9.51 3.5c0-.276.216-.5.498-.5h4.005c.275 0 .498.228.498.5v17c0 .276-.215.5-.498.5h-4.005a.501.501 0 01-.497-.5v-17zM16 8.494A.49.49 0 0116.498 8h4.004c.275 0 .498.226.498.494v12.012a.49.49 0 01-.498.494h-4.004a.499.499 0 01-.498-.494V8.494z" id="graph_react_svg__shape" /></g></g></g></g></svg>;
 
-SvgGraph.displayName = 'SvgGraph';
+SvgGraph.displayName = "SvgGraph";
 
 const GraphIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgGraph {...props} css={getIconStyles(props, theme)} />;
 };
 
-GraphIcon.displayName = 'GraphIcon';
+GraphIcon.displayName = "GraphIcon";
 export default GraphIcon;
