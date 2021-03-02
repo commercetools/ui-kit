@@ -24,8 +24,8 @@
     "generate-icons": "svgr -d src/rich-text-body/icons/generated --typescript src/rich-text-body/icons/svg"
   },
   "dependencies": {
-    "@babel/runtime": "7.13.7",
-    "@babel/runtime-corejs3": "7.13.7",
+    "@babel/runtime": "7.13.9",
+    "@babel/runtime-corejs3": "7.13.9",
     "@commercetools-uikit/design-system": "11.0.1",
     "@commercetools-uikit/icons": "11.0.1",
     "@commercetools-uikit/input-utils": "11.0.1",

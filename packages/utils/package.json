@@ -23,8 +23,8 @@
     "prepare": "../../scripts/version.js replace"
   },
   "dependencies": {
-    "@babel/runtime": "7.13.7",
-    "@babel/runtime-corejs3": "7.13.7",
+    "@babel/runtime": "7.13.9",
+    "@babel/runtime-corejs3": "7.13.9",
     "@emotion/is-prop-valid": "1.1.0",
     "@types/warning": "^3.0.0",
     "warning": "4.0.3"
