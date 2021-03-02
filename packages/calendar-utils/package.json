@@ -40,6 +40,11 @@
     "prop-types": "15.7.2",
     "react-select": "4.1.0"
   },
+  "devDependencies": {
+    "moment": "2.29.1",
+    "react": "17.0.1",
+    "react-intl": "5.13.2"
+  },
   "peerDependencies": {
     "moment": "2.x",
     "react": ">= 16.8.0 || >= 17.0.0",

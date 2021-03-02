@@ -33,12 +33,17 @@
     "@commercetools-uikit/spacings": "11.0.1",
     "@commercetools-uikit/text": "11.0.1",
     "@commercetools-uikit/utils": "10.47.3",
-    "@emotion/react": "^11.1.1",
     "@emotion/is-prop-valid": "1.1.0",
+    "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "lodash": "4.17.20",
     "prop-types": "15.7.2",
     "react-select": "4.1.0"
+  },
+  "devDependencies": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-intl": "5.13.2"
   },
   "peerDependencies": {
     "react": ">= 16.8.0 || >= 17.0.0",

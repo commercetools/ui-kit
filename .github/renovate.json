@@ -1,5 +1,10 @@
 {
-  "extends": ["config:base", ":preserveSemverRanges", "schedule:weekly"],
+  "extends": [
+    "config:base",
+    "pinOnlyDevDependencies",
+    ":preserveSemverRanges",
+    "schedule:weekly"
+  ],
   "separateMajorMinor": true,
   "packageRules": [
     {

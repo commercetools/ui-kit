@@ -41,6 +41,10 @@
     "react-required-if": "1.0.3",
     "slate-html-serializer": "0.8.11"
   },
+  "devDependencies": {
+    "react": "17.0.1",
+    "react-intl": "5.13.2"
+  },
   "peerDependencies": {
     "react": ">= 16.8.0 || >= 17.0.0",
     "react-intl": "3.x || 4.x || 5.x"
