@@ -28,6 +28,9 @@
     "@commercetools-uikit/utils": "10.47.3",
     "lodash": "4.17.20"
   },
+  "devDependencies": {
+    "react": "17.0.1"
+  },
   "peerDependencies": {
     "react": ">= 16.8.0 || >= 17.0.0"
   }

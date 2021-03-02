@@ -46,6 +46,11 @@
     "react-required-if": "1.0.3",
     "warning": "4.0.3"
   },
+  "devDependencies": {
+    "moment": "2.29.1",
+    "react": "17.0.1",
+    "react-intl": "5.13.2"
+  },
   "peerDependencies": {
     "moment": "2.x",
     "react": ">= 16.8.0 || >= 17.0.0",

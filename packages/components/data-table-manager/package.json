@@ -28,8 +28,8 @@
     "@commercetools-uikit/accessible-button": "11.0.1",
     "@commercetools-uikit/accessible-hidden": "11.0.1",
     "@commercetools-uikit/async-select-input": "11.0.1",
-    "@commercetools-uikit/collapsible-motion": "11.0.1",
     "@commercetools-uikit/card": "11.0.1",
+    "@commercetools-uikit/collapsible-motion": "11.0.1",
     "@commercetools-uikit/design-system": "11.0.1",
     "@commercetools-uikit/field-label": "11.0.1",
     "@commercetools-uikit/grid": "10.44.4",
@@ -41,8 +41,8 @@
     "@commercetools-uikit/secondary-icon-button": "11.0.1",
     "@commercetools-uikit/select-input": "11.0.1",
     "@commercetools-uikit/spacings": "11.0.1",
-    "@commercetools-uikit/text": "11.0.1",
     "@commercetools-uikit/tag": "11.0.1",
+    "@commercetools-uikit/text": "11.0.1",
     "@commercetools-uikit/utils": "10.47.3",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
@@ -53,7 +53,10 @@
     "react-required-if": "1.0.3"
   },
   "devDependencies": {
-    "formik": "2.2.6"
+    "formik": "2.2.6",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-intl": "5.13.2"
   },
   "peerDependencies": {
     "react": ">= 16.8.0 || >= 17.0.0",
