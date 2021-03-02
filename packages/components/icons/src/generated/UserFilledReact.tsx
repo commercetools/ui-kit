@@ -9,14 +9,22 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
+  color?:
+    | 'solid'
+    | 'neutral60'
+    | 'surface'
+    | 'info'
+    | 'primary'
+    | 'primary40'
+    | 'warning'
+    | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = ({
+const iconSizes = {
   small: 12,
   medium: 16,
-  big: 24
-} as const);
+  big: 24,
+} as const;
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -48,14 +56,15 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars,
-    ...theme
-  }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
+    warning(
+      color,
+      `ui-kit/Icon: the specified color '${color}' is not supported.`
+    );
     return 'inherit';
   }
 
@@ -70,14 +79,44 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgUserFilled = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="user-filled_react_svg__Icons" stroke="none" strokeWidth={1} fillRule="evenodd"><g id="user-filled_react_svg__MC-icon-set" transform="translate(-240 -168)" fill="#000"><g id="user-filled_react_svg__Menu" transform="translate(24 168)"><g id="user-filled_react_svg__User-Filled" transform="translate(216)"><path d="M12.107 19.998A3.533 3.533 0 0112 20c-2.696 0-7.513-3.081-7.513-3.081-.702-.714-.635-3.805.137-4.42L7.67 12c.17 0 2.75 1.965 4.313 2 .04 0 .078.004.117.008a1.11 1.11 0 01.113-.008c1.525-.035 4.042-2 4.209-2l2.97.498c.754.616.819 3.707.134 4.42 0 0-4.683 3.082-7.313 3.082-.035 0-.07 0-.105-.002zM12 13c-1.551 0-4-2.239-4-5s1.581-5 4-5 4 2.239 4 5-2.449 5-4 5z" id="user-filled_react_svg__shape" /></g></g></g></g></svg>;
+const SvgUserFilled = (props: Props) => (
+  <svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <g
+      id="user-filled_react_svg__Icons"
+      stroke="none"
+      strokeWidth={1}
+      fillRule="evenodd"
+    >
+      <g
+        id="user-filled_react_svg__MC-icon-set"
+        transform="translate(-240 -168)"
+        fill="#000"
+      >
+        <g id="user-filled_react_svg__Menu" transform="translate(24 168)">
+          <g id="user-filled_react_svg__User-Filled" transform="translate(216)">
+            <path
+              d="M12.107 19.998A3.533 3.533 0 0112 20c-2.696 0-7.513-3.081-7.513-3.081-.702-.714-.635-3.805.137-4.42L7.67 12c.17 0 2.75 1.965 4.313 2 .04 0 .078.004.117.008a1.11 1.11 0 01.113-.008c1.525-.035 4.042-2 4.209-2l2.97.498c.754.616.819 3.707.134 4.42 0 0-4.683 3.082-7.313 3.082-.035 0-.07 0-.105-.002zM12 13c-1.551 0-4-2.239-4-5s1.581-5 4-5 4 2.239 4 5-2.449 5-4 5z"
+              id="user-filled_react_svg__shape"
+            />
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+);
 
-SvgUserFilled.displayName = "SvgUserFilled";
+SvgUserFilled.displayName = 'SvgUserFilled';
 
 const UserFilledIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgUserFilled {...props} css={getIconStyles(props, theme)} />;
 };
 
-UserFilledIcon.displayName = "UserFilledIcon";
+UserFilledIcon.displayName = 'UserFilledIcon';
 export default UserFilledIcon;

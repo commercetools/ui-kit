@@ -9,14 +9,22 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
+  color?:
+    | 'solid'
+    | 'neutral60'
+    | 'surface'
+    | 'info'
+    | 'primary'
+    | 'primary40'
+    | 'warning'
+    | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = ({
+const iconSizes = {
   small: 12,
   medium: 16,
-  big: 24
-} as const);
+  big: 24,
+} as const;
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -48,14 +56,15 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars,
-    ...theme
-  }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
+    warning(
+      color,
+      `ui-kit/Icon: the specified color '${color}' is not supported.`
+    );
     return 'inherit';
   }
 
@@ -70,14 +79,44 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgAngleDown = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="angle-down_react_svg__Icons" stroke="none" strokeWidth={1} fillRule="evenodd"><g id="angle-down_react_svg__MC-icon-set" transform="translate(-168 -888)" fill="#000"><g id="angle-down_react_svg__Directions" transform="translate(24 888)"><g id="angle-down_react_svg__Angle-Down" transform="translate(144)"><path d="M20.816 8.115l-.902-.909a.567.567 0 00-.415-.182.567.567 0 00-.414.182l-7.087 7.147L4.91 7.206a.567.567 0 00-.414-.181.567.567 0 00-.415.181l-.902.91a.576.576 0 000 .836l8.403 8.474c.12.12.259.182.415.182.156 0 .294-.061.414-.182l8.404-8.474a.577.577 0 000-.837z" id="angle-down_react_svg__shape" /></g></g></g></g></svg>;
+const SvgAngleDown = (props: Props) => (
+  <svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <g
+      id="angle-down_react_svg__Icons"
+      stroke="none"
+      strokeWidth={1}
+      fillRule="evenodd"
+    >
+      <g
+        id="angle-down_react_svg__MC-icon-set"
+        transform="translate(-168 -888)"
+        fill="#000"
+      >
+        <g id="angle-down_react_svg__Directions" transform="translate(24 888)">
+          <g id="angle-down_react_svg__Angle-Down" transform="translate(144)">
+            <path
+              d="M20.816 8.115l-.902-.909a.567.567 0 00-.415-.182.567.567 0 00-.414.182l-7.087 7.147L4.91 7.206a.567.567 0 00-.414-.181.567.567 0 00-.415.181l-.902.91a.576.576 0 000 .836l8.403 8.474c.12.12.259.182.415.182.156 0 .294-.061.414-.182l8.404-8.474a.577.577 0 000-.837z"
+              id="angle-down_react_svg__shape"
+            />
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+);
 
-SvgAngleDown.displayName = "SvgAngleDown";
+SvgAngleDown.displayName = 'SvgAngleDown';
 
 const AngleDownIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgAngleDown {...props} css={getIconStyles(props, theme)} />;
 };
 
-AngleDownIcon.displayName = "AngleDownIcon";
+AngleDownIcon.displayName = 'AngleDownIcon';
 export default AngleDownIcon;

@@ -9,14 +9,22 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
+  color?:
+    | 'solid'
+    | 'neutral60'
+    | 'surface'
+    | 'info'
+    | 'primary'
+    | 'primary40'
+    | 'warning'
+    | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = ({
+const iconSizes = {
   small: 12,
   medium: 16,
-  big: 24
-} as const);
+  big: 24,
+} as const;
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -48,14 +56,15 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars,
-    ...theme
-  }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
+    warning(
+      color,
+      `ui-kit/Icon: the specified color '${color}' is not supported.`
+    );
     return 'inherit';
   }
 
@@ -70,14 +79,24 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgRestore = (props: Props) => <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" {...props}><path d="M17.42 8.314a.777.777 0 011.305-.843 8.545 8.545 0 11-5.88-3.81.777.777 0 01-.235 1.535 6.991 6.991 0 104.81 3.118zm-6.976-.676a.777.777 0 011.553-.019l.063 5.111a.777.777 0 11-1.554.02l-.062-5.112zm4.278 6.133a.777.777 0 11-.757 1.356l-3.06-1.709a.777.777 0 11.757-1.356l3.06 1.709zm1.845-3.443a.332.332 0 01-.184-.173.332.332 0 01-.014-.253l1.015-3.06a.296.296 0 01.403-.188l2.996 1.19a.331.331 0 01.184.173.332.332 0 01.015.253.296.296 0 01-.16.184l-4.011 1.87a.296.296 0 01-.244.004z" /></svg>;
+const SvgRestore = (props: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    {...props}
+  >
+    <path d="M17.42 8.314a.777.777 0 011.305-.843 8.545 8.545 0 11-5.88-3.81.777.777 0 01-.235 1.535 6.991 6.991 0 104.81 3.118zm-6.976-.676a.777.777 0 011.553-.019l.063 5.111a.777.777 0 11-1.554.02l-.062-5.112zm4.278 6.133a.777.777 0 11-.757 1.356l-3.06-1.709a.777.777 0 11.757-1.356l3.06 1.709zm1.845-3.443a.332.332 0 01-.184-.173.332.332 0 01-.014-.253l1.015-3.06a.296.296 0 01.403-.188l2.996 1.19a.331.331 0 01.184.173.332.332 0 01.015.253.296.296 0 01-.16.184l-4.011 1.87a.296.296 0 01-.244.004z" />
+  </svg>
+);
 
-SvgRestore.displayName = "SvgRestore";
+SvgRestore.displayName = 'SvgRestore';
 
 const RestoreIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgRestore {...props} css={getIconStyles(props, theme)} />;
 };
 
-RestoreIcon.displayName = "RestoreIcon";
+RestoreIcon.displayName = 'RestoreIcon';
 export default RestoreIcon;

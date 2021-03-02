@@ -9,14 +9,22 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
+  color?:
+    | 'solid'
+    | 'neutral60'
+    | 'surface'
+    | 'info'
+    | 'primary'
+    | 'primary40'
+    | 'warning'
+    | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = ({
+const iconSizes = {
   small: 12,
   medium: 16,
-  big: 24
-} as const);
+  big: 24,
+} as const;
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -48,14 +56,15 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars,
-    ...theme
-  }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
+    warning(
+      color,
+      `ui-kit/Icon: the specified color '${color}' is not supported.`
+    );
     return 'inherit';
   }
 
@@ -70,14 +79,24 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgRevert = (props: Props) => <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 18 10" {...props}><path d="M9.458 0a8.524 8.524 0 00-6.7 3.246L.796 1.283C.358.845 0 .993 0 1.613v7.335c0 .619.024.594.643.594h7.286c.619 0 .767-.358.33-.796L6.015 6.503a6.283 6.283 0 015.697-3.64 6.283 6.283 0 016.277 6.085A8.542 8.542 0 009.459 0z" /></svg>;
+const SvgRevert = (props: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 18 10"
+    {...props}
+  >
+    <path d="M9.458 0a8.524 8.524 0 00-6.7 3.246L.796 1.283C.358.845 0 .993 0 1.613v7.335c0 .619.024.594.643.594h7.286c.619 0 .767-.358.33-.796L6.015 6.503a6.283 6.283 0 015.697-3.64 6.283 6.283 0 016.277 6.085A8.542 8.542 0 009.459 0z" />
+  </svg>
+);
 
-SvgRevert.displayName = "SvgRevert";
+SvgRevert.displayName = 'SvgRevert';
 
 const RevertIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgRevert {...props} css={getIconStyles(props, theme)} />;
 };
 
-RevertIcon.displayName = "RevertIcon";
+RevertIcon.displayName = 'RevertIcon';
 export default RevertIcon;

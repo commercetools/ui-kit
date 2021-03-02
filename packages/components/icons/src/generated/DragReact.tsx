@@ -9,14 +9,22 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
+  color?:
+    | 'solid'
+    | 'neutral60'
+    | 'surface'
+    | 'info'
+    | 'primary'
+    | 'primary40'
+    | 'warning'
+    | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = ({
+const iconSizes = {
   small: 12,
   medium: 16,
-  big: 24
-} as const);
+  big: 24,
+} as const;
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -48,14 +56,15 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars,
-    ...theme
-  }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
+    warning(
+      color,
+      `ui-kit/Icon: the specified color '${color}' is not supported.`
+    );
     return 'inherit';
   }
 
@@ -70,14 +79,44 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgDrag = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="drag_react_svg__Icons" stroke="none" strokeWidth={1} fillRule="evenodd"><g id="drag_react_svg__MC-icon-set" transform="translate(-96 -840)" fill="#000"><g id="drag_react_svg__Actions" transform="translate(24 648)"><g id="drag_react_svg__Drag" transform="translate(72 192)"><path d="M9 3h2v2H9V3zm4 0h2v2h-2V3zM9 7h2v2H9V7zm4 0h2v2h-2V7zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2z" id="drag_react_svg__shape" /></g></g></g></g></svg>;
+const SvgDrag = (props: Props) => (
+  <svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <g
+      id="drag_react_svg__Icons"
+      stroke="none"
+      strokeWidth={1}
+      fillRule="evenodd"
+    >
+      <g
+        id="drag_react_svg__MC-icon-set"
+        transform="translate(-96 -840)"
+        fill="#000"
+      >
+        <g id="drag_react_svg__Actions" transform="translate(24 648)">
+          <g id="drag_react_svg__Drag" transform="translate(72 192)">
+            <path
+              d="M9 3h2v2H9V3zm4 0h2v2h-2V3zM9 7h2v2H9V7zm4 0h2v2h-2V7zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2z"
+              id="drag_react_svg__shape"
+            />
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+);
 
-SvgDrag.displayName = "SvgDrag";
+SvgDrag.displayName = 'SvgDrag';
 
 const DragIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgDrag {...props} css={getIconStyles(props, theme)} />;
 };
 
-DragIcon.displayName = "DragIcon";
+DragIcon.displayName = 'DragIcon';
 export default DragIcon;

@@ -9,14 +9,22 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 type Props = {
-  color?: 'solid' | 'neutral60' | 'surface' | 'info' | 'primary' | 'primary40' | 'warning' | 'error';
+  color?:
+    | 'solid'
+    | 'neutral60'
+    | 'surface'
+    | 'info'
+    | 'primary'
+    | 'primary40'
+    | 'warning'
+    | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-const iconSizes = ({
+const iconSizes = {
   small: 12,
   medium: 16,
-  big: 24
-} as const);
+  big: 24,
+} as const;
 
 const getSizeStyle = (size: Props['size']) => {
   switch (size) {
@@ -48,14 +56,15 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars,
-    ...theme
-  }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
 
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
-    warning(color, `ui-kit/Icon: the specified color '${color}' is not supported.`);
+    warning(
+      color,
+      `ui-kit/Icon: the specified color '${color}' is not supported.`
+    );
     return 'inherit';
   }
 
@@ -70,14 +79,44 @@ const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgSplit = (props: Props) => <svg width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><g id="split_react_svg__Icons" stroke="none" strokeWidth={1} fillRule="evenodd"><g id="split_react_svg__MC-icon-set" transform="translate(-168 -792)" fill="#000"><g id="split_react_svg__Actions" transform="translate(24 648)"><g id="split_react_svg__Split" transform="translate(144 144)"><path d="M11.667 19l-5.844-5.368a2 2 0 11.044-3.232l5.8-5.4h5V3.438c0-.119.044-.222.132-.308A.431.431 0 0117.11 3a.43.43 0 01.313.13l3.11 3.062c.089.087.133.19.133.308a.418.418 0 01-.132.308L17.424 9.87a.43.43 0 01-.313.13.43.43 0 01-.312-.13.417.417 0 01-.132-.308V7h-4.263L7 12.039 12.32 17h4.347v-2.562c0-.119.044-.222.132-.308a.431.431 0 01.312-.13.43.43 0 01.313.13l3.11 3.062c.089.087.133.19.133.308a.418.418 0 01-.132.308l-3.111 3.062a.43.43 0 01-.313.13.43.43 0 01-.312-.13.417.417 0 01-.132-.308V19h-5z" id="split_react_svg__shape" /></g></g></g></g></svg>;
+const SvgSplit = (props: Props) => (
+  <svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <g
+      id="split_react_svg__Icons"
+      stroke="none"
+      strokeWidth={1}
+      fillRule="evenodd"
+    >
+      <g
+        id="split_react_svg__MC-icon-set"
+        transform="translate(-168 -792)"
+        fill="#000"
+      >
+        <g id="split_react_svg__Actions" transform="translate(24 648)">
+          <g id="split_react_svg__Split" transform="translate(144 144)">
+            <path
+              d="M11.667 19l-5.844-5.368a2 2 0 11.044-3.232l5.8-5.4h5V3.438c0-.119.044-.222.132-.308A.431.431 0 0117.11 3a.43.43 0 01.313.13l3.11 3.062c.089.087.133.19.133.308a.418.418 0 01-.132.308L17.424 9.87a.43.43 0 01-.313.13.43.43 0 01-.312-.13.417.417 0 01-.132-.308V7h-4.263L7 12.039 12.32 17h4.347v-2.562c0-.119.044-.222.132-.308a.431.431 0 01.312-.13.43.43 0 01.313.13l3.11 3.062c.089.087.133.19.133.308a.418.418 0 01-.132.308l-3.111 3.062a.43.43 0 01-.313.13.43.43 0 01-.312-.13.417.417 0 01-.132-.308V19h-5z"
+              id="split_react_svg__shape"
+            />
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+);
 
-SvgSplit.displayName = "SvgSplit";
+SvgSplit.displayName = 'SvgSplit';
 
 const SplitIcon = (props: Props) => {
   const theme = useTheme();
   return <SvgSplit {...props} css={getIconStyles(props, theme)} />;
 };
 
-SplitIcon.displayName = "SplitIcon";
+SplitIcon.displayName = 'SplitIcon';
 export default SplitIcon;
