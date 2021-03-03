@@ -1,5 +1,14 @@
 # @commercetools-uikit/number-input
 
+## 11.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`b49a5bf0`](https://github.com/commercetools/ui-kit/commit/b49a5bf04fe25d2dda249a3bc9a5ced365a8e67f), [`db2e8a20`](https://github.com/commercetools/ui-kit/commit/db2e8a2038a6bf813adf4c16fd77103d356893b6)]:
+  - @commercetools-uikit/constraints@11.0.2
+  - @commercetools-uikit/design-system@11.0.2
+  - @commercetools-uikit/input-utils@11.0.2
+
 ## 11.0.1
 
 ### Patch Changes

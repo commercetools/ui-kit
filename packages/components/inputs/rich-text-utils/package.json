@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/rich-text-utils",
   "description": "Utilities for working with rich-text components.",
-  "version": "11.0.1",
+  "version": "11.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -26,11 +26,11 @@
   "dependencies": {
     "@babel/runtime": "7.13.9",
     "@babel/runtime-corejs3": "7.13.9",
-    "@commercetools-uikit/design-system": "11.0.1",
-    "@commercetools-uikit/icons": "11.0.1",
-    "@commercetools-uikit/input-utils": "11.0.1",
-    "@commercetools-uikit/spacings-inline": "11.0.1",
-    "@commercetools-uikit/tooltip": "11.0.1",
+    "@commercetools-uikit/design-system": "11.0.2",
+    "@commercetools-uikit/icons": "11.0.2",
+    "@commercetools-uikit/input-utils": "11.0.2",
+    "@commercetools-uikit/spacings-inline": "11.0.2",
+    "@commercetools-uikit/tooltip": "11.0.2",
     "@commercetools-uikit/utils": "10.47.3",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",

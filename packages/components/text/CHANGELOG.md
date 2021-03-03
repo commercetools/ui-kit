@@ -1,5 +1,12 @@
 # @commercetools-uikit/text
 
+## 11.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`db2e8a20`](https://github.com/commercetools/ui-kit/commit/db2e8a2038a6bf813adf4c16fd77103d356893b6)]:
+  - @commercetools-uikit/design-system@11.0.2
+
 ## 11.0.1
 
 ### Patch Changes

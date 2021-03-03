@@ -1,5 +1,11 @@
 # @commercetools-local/generator-package-json
 
+## 1.2.8
+
+### Patch Changes
+
+- [`b49a5bf0`](https://github.com/commercetools/ui-kit/commit/b49a5bf04fe25d2dda249a3bc9a5ced365a8e67f) [#1806](https://github.com/commercetools/ui-kit/pull/1806) Thanks [@tdeekens](https://github.com/tdeekens)! - feat: add manypkg for mono-repo management
+
 ## 1.2.7
 
 ### Patch Changes

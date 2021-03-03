@@ -1,5 +1,16 @@
 # @commercetools-uikit/rich-text-utils
 
+## 11.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`db2e8a20`](https://github.com/commercetools/ui-kit/commit/db2e8a2038a6bf813adf4c16fd77103d356893b6)]:
+  - @commercetools-uikit/design-system@11.0.2
+  - @commercetools-uikit/input-utils@11.0.2
+  - @commercetools-uikit/tooltip@11.0.2
+  - @commercetools-uikit/icons@11.0.2
+  - @commercetools-uikit/spacings-inline@11.0.2
+
 ## 11.0.1
 
 ### Patch Changes

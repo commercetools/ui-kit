@@ -1,5 +1,31 @@
 # @commercetools-uikit/data-table-manager
 
+## 11.0.2
+
+### Patch Changes
+
+- [`b49a5bf0`](https://github.com/commercetools/ui-kit/commit/b49a5bf04fe25d2dda249a3bc9a5ced365a8e67f) [#1806](https://github.com/commercetools/ui-kit/pull/1806) Thanks [@tdeekens](https://github.com/tdeekens)! - feat: add manypkg for mono-repo management
+
+* [`db2e8a20`](https://github.com/commercetools/ui-kit/commit/db2e8a2038a6bf813adf4c16fd77103d356893b6) [#1798](https://github.com/commercetools/ui-kit/pull/1798) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* Updated dependencies [[`b49a5bf0`](https://github.com/commercetools/ui-kit/commit/b49a5bf04fe25d2dda249a3bc9a5ced365a8e67f), [`db2e8a20`](https://github.com/commercetools/ui-kit/commit/db2e8a2038a6bf813adf4c16fd77103d356893b6), [`573cb676`](https://github.com/commercetools/ui-kit/commit/573cb6768ffd254bd659114bbfa6164f33b45d52)]:
+  - @commercetools-uikit/accessible-hidden@11.0.2
+  - @commercetools-uikit/accessible-button@11.0.2
+  - @commercetools-uikit/primary-button@11.0.2
+  - @commercetools-uikit/secondary-button@11.0.2
+  - @commercetools-uikit/secondary-icon-button@11.0.2
+  - @commercetools-uikit/card@11.0.2
+  - @commercetools-uikit/collapsible-motion@11.0.2
+  - @commercetools-uikit/field-label@11.0.2
+  - @commercetools-uikit/design-system@11.0.2
+  - @commercetools-uikit/tag@11.0.2
+  - @commercetools-uikit/async-select-input@11.0.2
+  - @commercetools-uikit/radio-input@11.0.2
+  - @commercetools-uikit/select-input@11.0.2
+  - @commercetools-uikit/icons@11.0.2
+  - @commercetools-uikit/text@11.0.2
+  - @commercetools-uikit/spacings@11.0.2
+
 ## 11.0.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @commercetools-uikit/design-system
 
+## 11.0.2
+
+### Patch Changes
+
+- [`db2e8a20`](https://github.com/commercetools/ui-kit/commit/db2e8a2038a6bf813adf4c16fd77103d356893b6) [#1798](https://github.com/commercetools/ui-kit/pull/1798) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
 ## 11.0.1
 
 ### Patch Changes
