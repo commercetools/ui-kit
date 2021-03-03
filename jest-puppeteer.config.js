@@ -11,6 +11,7 @@ module.exports = {
   },
   server: {
     command: 'yarn visual-testing-app:serve',
+    launchTimeout: 30000,
     port: 3001,
     launchTimeout: 20000,
   },
