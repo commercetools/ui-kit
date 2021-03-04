@@ -44,7 +44,7 @@
     "test:watch": "yarn test --watch",
     "test:bundle": "jest --config jest.bundle.config.js",
     "test:visual": "jest --config jest.visual.config.js --runInBand",
-    "vrt:components": "percy exec -- yarn test:visual",
+    "vrt:components": "percy exec -- yarn test:visual --testTimeout=10000",
     "bundlesize": "bundlesize",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "changeset": "changeset",
