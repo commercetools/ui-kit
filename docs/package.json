@@ -27,5 +27,11 @@
     "storybook-readme": "5.0.9",
     "yaml": "1.10.0",
     "yaml-loader": "0.6.0"
+  },
+  "devDependencies": {
+    "prismjs": "1.23.0"
+  },
+  "peerDependencies": {
+    "prismjs": "1.23.0"
   }
 }
