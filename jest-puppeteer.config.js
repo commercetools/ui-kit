@@ -4,6 +4,11 @@
  *
  *  Ref: https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#setting-up-chrome-linux-sandbox
  */
+
+console.log(
+  process.env.PUPPETEER_EXECUTABLE_PATH,
+  process.env.PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+);
 module.exports = {
   launch: {
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
