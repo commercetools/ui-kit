@@ -1,4 +1,4 @@
-import { percySnapshot } from '@percy/puppeteer';
+import percySnapshot from '@percy/puppeteer';
 
 // let's go wide, to fit more icons.
 const snapshot = (page, description) =>

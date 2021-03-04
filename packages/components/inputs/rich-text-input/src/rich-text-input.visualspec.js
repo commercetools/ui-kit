@@ -1,4 +1,4 @@
-import { percySnapshot } from '@percy/puppeteer';
+import percySnapshot from '@percy/puppeteer';
 import { getDocument, queries } from 'pptr-testing-library';
 
 describe('RichTextInput', () => {

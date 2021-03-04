@@ -163,7 +163,7 @@ Below is an example of how to add Visual Regression Test.
 ```js
 // primary-button.visualspec.js
 
-import { percySnapshot } from '@percy/puppeteer';
+import percySnapshot from '@percy/puppeteer';
 
 describe('PrimaryButton', () => {
   beforeAll(async () => {
