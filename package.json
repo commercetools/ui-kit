@@ -87,6 +87,7 @@
     "@formatjs/cli": "3.1.6",
     "@manypkg/cli": "0.17.0",
     "@percy/cli": "v1.0.0-beta.39",
+    "@percy/puppeteer": "2.0.0",
     "@preconstruct/cli": "2.0.6",
     "@svgr/cli": "5.5.0",
     "@svgr/plugin-jsx": "5.5.0",
