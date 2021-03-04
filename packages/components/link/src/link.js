@@ -7,6 +7,21 @@ import { FormattedMessage } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 
+const getColorValue = (tone, overwrittenVars) => {
+  if (tone === 'primary') {
+    return overwrittenVars.colorPrimary;
+  }
+
+  return overwrittenVars.fontColorForTextWhenInverted;
+};
+const getActiveColorValue = (tone, overwrittenVars) => {
+  if (tone === 'primary') {
+    return overwrittenVars.colorPrimary25;
+  }
+
+  return overwrittenVars.fontColorForTextWhenInverted;
+};
+
 const getLinkStyles = (props, theme) => {
   const overwrittenVars = {
     ...vars,
@@ -15,14 +30,14 @@ const getLinkStyles = (props, theme) => {
 
   return css`
     font-family: inherit;
-    color: ${overwrittenVars.colorPrimary};
+    color: ${getColorValue(props.tone, overwrittenVars)};
     font-size: ${overwrittenVars.fontSizeDefault};
     text-decoration: ${props.hasUnderline ? 'underline' : 'none'};
 
     &:hover,
     &:focus,
     &:active {
-      color: ${overwrittenVars.colorPrimary25};
+      color: ${getActiveColorValue(props.tone, overwrittenVars)};
     }
   `;
 };
@@ -66,6 +81,7 @@ const Link = (props) => {
 Link.displayName = 'Link';
 
 Link.propTypes = {
+  tone: PropTypes.oneOf(['primary', 'inverted']),
   hasUnderline: PropTypes.bool.isRequired,
   isExternal: PropTypes.bool.isRequired,
   to: requiredIf(
@@ -92,6 +108,7 @@ Link.propTypes = {
 };
 
 Link.defaultProps = {
+  tone: 'primary',
   hasUnderline: true,
   isExternal: false,
 };

@@ -35,5 +35,8 @@ export const component = () => (
     <Spec label="intlMessage">
       <Link to="/" intlMessage={intlMessage} />
     </Spec>
+    <Spec label="white">
+      <Link to="/" tone={'inverted'} />
+    </Spec>
   </Suite>
 );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
@@ -18,6 +18,7 @@ storiesOf('Components|Links', module)
     <Router>
       <Section>
         <Link
+          tone={select('Tone', ['primary', 'inverted'])}
           to={text('to', '/foo/bar')}
           hasUnderline={boolean('hasUnderline', true)}
           isExternal={boolean('isExternal', false)}
