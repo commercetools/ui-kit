@@ -1,4 +1,4 @@
-import { percySnapshot } from '@percy/puppeteer';
+import percySnapshot from '@percy/puppeteer';
 
 describe('Constraints.Horizontal', () => {
   beforeAll(async () => {

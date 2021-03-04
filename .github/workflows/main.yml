@@ -57,6 +57,7 @@ jobs:
 
       - name: Running Visual Regression Tests for UI components
         uses: ianwalter/puppeteer-container@v4.0.0
+        timeout-minutes: 20
         with:
           args: "yarn vrt:components"
         env:

@@ -10,7 +10,13 @@
   },
   "private": true,
   "license": "MIT",
-  "keywords": ["javascript", "frontend", "ui-kit", "design-system", "react"],
+  "keywords": [
+    "javascript",
+    "frontend",
+    "ui-kit",
+    "design-system",
+    "react"
+  ],
   "sideEffects": false,
   "scripts": {
     "postinstall": "manypkg check && preconstruct dev && yarn --cwd docs",
@@ -57,16 +63,22 @@
       "presets/*",
       "visual-testing-app"
     ],
-    "nohoist": ["react-virtualized/dom-helpers"]
+    "nohoist": [
+      "react-virtualized/dom-helpers"
+    ]
   },
   "preconstruct": {
-    "packages": ["design-system", "packages/**/*", "presets/*"]
+    "packages": [
+      "design-system",
+      "packages/**/*",
+      "presets/*"
+    ]
   },
   "dependencies": {
     "@changesets/changelog-github": "0.2.8",
     "@changesets/cli": "2.14.1",
-    "@commercetools-frontend/babel-preset-mc-app": "18.5.2",
-    "@commercetools-frontend/eslint-config-mc-app": "18.5.2",
+    "@commercetools-frontend/babel-preset-mc-app": "18.5.4",
+    "@commercetools-frontend/eslint-config-mc-app": "18.5.4",
     "@commercetools/github-labels": "1.1.0",
     "@commitlint/cli": "12.0.1",
     "@commitlint/config-conventional": "12.0.1",
@@ -74,8 +86,9 @@
     "@emotion/babel-preset-css-prop": "11.2.0",
     "@formatjs/cli": "3.1.6",
     "@manypkg/cli": "0.17.0",
-    "@percy/puppeteer": "1.1.0",
-    "@preconstruct/cli": "2.0.5",
+    "@percy/cli": "v1.0.0-beta.39",
+    "@percy/puppeteer": "2.0.0",
+    "@preconstruct/cli": "2.0.6",
     "@svgr/cli": "5.5.0",
     "@svgr/plugin-jsx": "5.5.0",
     "@svgr/plugin-svgo": "5.5.0",
@@ -93,7 +106,6 @@
     "colors": "1.4.0",
     "common-tags": "1.8.0",
     "conventional-changelog-cli": "2.1.1",
-    "core-js": "3.9.1",
     "cross-env": "7.0.3",
     "eslint": "7.21.0",
     "eslint-formatter-pretty": "4.0.0",
@@ -140,7 +152,7 @@
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "20.0.0",
     "stylelint-order": "4.1.0",
-    "ts-jest": "26.5.2",
+    "ts-jest": "26.5.3",
     "ts-node": "9.1.1",
     "typescript": "4.2.2"
   },

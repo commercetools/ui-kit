@@ -9,7 +9,12 @@
     "directory": "packages/components/inputs/localized-rich-text-input"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -18,7 +23,9 @@
   "sideEffects": false,
   "main": "dist/commercetools-uikit-localized-rich-text-input.cjs.js",
   "module": "dist/commercetools-uikit-localized-rich-text-input.esm.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"
   },
@@ -49,7 +56,7 @@
     "lodash": "4.17.20",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
-    "react-textarea-autosize": "8.3.1",
+    "react-textarea-autosize": "8.3.2",
     "slate": "0.47.9",
     "slate-html-serializer": "0.8.11",
     "slate-react": "0.22.10"
