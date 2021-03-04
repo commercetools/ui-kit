@@ -1406,10 +1406,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@commercetools-frontend/babel-preset-mc-app@18.5.2":
-  version "18.5.2"
-  resolved "https://registry.yarnpkg.com/@commercetools-frontend/babel-preset-mc-app/-/babel-preset-mc-app-18.5.2.tgz#90051940e023955f969a7a74132fdec64ab084a9"
-  integrity sha512-hiNN7ZY6g1ryqYOjpAfTjy3bG9bqiNfSIieY2C1nkVu1m/ictZxod1BLfTcYpYsx1rEk8f63vqFKnvJ5xzAgFQ==
+"@commercetools-frontend/babel-preset-mc-app@18.5.4":
+  version "18.5.4"
+  resolved "https://registry.yarnpkg.com/@commercetools-frontend/babel-preset-mc-app/-/babel-preset-mc-app-18.5.4.tgz#5b20e2db5f840bad4ad91a80d2a304e2dbe4f2ee"
+  integrity sha512-SNMqUHHyWOcttbuwGWChe7zgQcWKJPg9HHogDBB4/AVFxATeCYOd16ZilHxN+9vuAc8t9632ckFK4lJ7mSldRw==
   dependencies:
     "@babel/core" "7.13.8"
     "@babel/plugin-proposal-class-properties" "7.13.0"
@@ -1437,10 +1437,10 @@
     babel-plugin-transform-react-remove-prop-types "0.4.24"
     core-js "3.9.1"
 
-"@commercetools-frontend/eslint-config-mc-app@18.5.2":
-  version "18.5.2"
-  resolved "https://registry.yarnpkg.com/@commercetools-frontend/eslint-config-mc-app/-/eslint-config-mc-app-18.5.2.tgz#d62bc570b89a315821a42c78ca861f77fe08fdc8"
-  integrity sha512-DkCrkjauD7w1E+ziFKIx94U23TvyzxxvuzkkDSq++JCpSOcSCic0kXIc2hb/IcwmAMM1hBTvwC+1Bx9zBDGXKQ==
+"@commercetools-frontend/eslint-config-mc-app@18.5.4":
+  version "18.5.4"
+  resolved "https://registry.yarnpkg.com/@commercetools-frontend/eslint-config-mc-app/-/eslint-config-mc-app-18.5.4.tgz#9024c014ce7026b13967a939b57d7bd517095ddd"
+  integrity sha512-uErnMIAMyw7XonqlYKXTn6SKvZW1uCHAjEZgVE0aT75XfRuMmXs3t1XbtsziSiABkocTbM2iw6YOigZ3KQ0Iag==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.14.0"
     "@typescript-eslint/parser" "^4.14.0"
@@ -3198,10 +3198,10 @@
   dependencies:
     "@percy/agent" "~0"
 
-"@preconstruct/cli@2.0.5":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-2.0.5.tgz#bd952ecae0fbe5cba37040d7f05c41cab3ac4250"
-  integrity sha512-yWB0GwqZi9tTpSmsEkcVYxnieCT89L9938XR7s9ffjKf59GFMwy8O0G8wMA8Rm6jNjf3ob5zuVWvCaoHppUS8Q==
+"@preconstruct/cli@2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-2.0.6.tgz#1abc9235176cf579f27caaaa5d498c73dddcbd93"
+  integrity sha512-qdulyG9OEGyAsWa9WG2su4u2n6sn/RkUVe/YcOLOjHXJBH+8MNijC0C0Xow/zCfdDUjzM2qMpzMB8zaTWQOoLA==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.7"
@@ -3467,7 +3467,7 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@testing-library/dom@7.29.6", "@testing-library/dom@^7.22.2", "@testing-library/dom@^7.28.1":
+"@testing-library/dom@^7.22.2", "@testing-library/dom@^7.28.1":
   version "7.29.6"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.29.6.tgz#eb37844fb431186db7960a7ff6749ea65a19617c"
   integrity sha512-vzTsAXa439ptdvav/4lsKRcGpAQX7b6wBIqia7+iNzqGJ5zjswApxA6jDAsexrc6ue9krWcbh8o+LYkBXW+GCQ==
@@ -3623,7 +3623,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@*", "@types/jest@26.0.20", "@types/jest@26.x":
+"@types/jest@*", "@types/jest@26.0.20":
   version "26.0.20"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.20.tgz#cd2f2702ecf69e86b586e1f5223a60e454056307"
   integrity sha512-9zi2Y+5USJRxd0FsahERhBwlcvFh6D2GLQnY2FH2BzK8J9s9omvNHIbvABwIluXa0fD8XVKMLTO0aOEuUfACAA==
@@ -6326,7 +6326,7 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-core-js-compat@3.9.1, core-js-compat@^3.8.1, core-js-compat@^3.9.0:
+core-js-compat@^3.8.1, core-js-compat@^3.9.0:
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.9.1.tgz#4e572acfe90aff69d76d8c37759d21a5c59bb455"
   integrity sha512-jXAirMQxrkbiiLsCx9bQPJFA6llDadKMpYrBJQJ3/c4/vsPP/fAf29h24tviRlvwUL6AmY5CHLu2GvjuYviQqA==
@@ -13713,10 +13713,10 @@ react-test-renderer@17.0.1:
     react-shallow-renderer "^16.13.1"
     scheduler "^0.20.1"
 
-react-textarea-autosize@8.3.1:
-  version "8.3.1"
-  resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-8.3.1.tgz#b942a934cc660ecfc645717d1fb84344b69dcb15"
-  integrity sha512-Vk02C3RWKLjx1wSwcVuPwfTuyGIemBB2MjDi01OnBYxKWSJFA/O7IOzr9FrO8AuRlkupk4X6Kjew2mYyEDXi0A==
+react-textarea-autosize@8.3.2:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-8.3.2.tgz#4f9374d357b0a6f6469956726722549124a1b2db"
+  integrity sha512-JrMWVgQSaExQByP3ggI1eA8zF4mF0+ddVuX7acUeK2V7bmrpjVOY72vmLz2IXFJSAXoY3D80nEzrn0GWajWK3Q==
   dependencies:
     "@babel/runtime" "^7.10.2"
     use-composed-ref "^1.0.0"
@@ -15971,12 +15971,11 @@ ts-essentials@^2.0.3:
   resolved "https://registry.yarnpkg.com/ts-essentials/-/ts-essentials-2.0.12.tgz#c9303f3d74f75fa7528c3d49b80e089ab09d8745"
   integrity sha512-3IVX4nI6B5cc31/GFFE+i8ey/N2eA0CZDbo6n0yrz0zDX8ZJ8djmU1p+XRz7G3is0F3bB3pu2pAroFdAWQKU3w==
 
-ts-jest@26.5.2:
-  version "26.5.2"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.5.2.tgz#5281d6b44c2f94f71205728a389edc3d7995b0c4"
-  integrity sha512-bwyJ2zJieSugf7RB+o8fgkMeoMVMM2KPDE0UklRLuACxjwJsOrZNo6chrcScmK33YavPSwhARffy8dZx5LJdUQ==
+ts-jest@26.5.3:
+  version "26.5.3"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.5.3.tgz#a6ee00ba547be3b09877550df40a1465d0295554"
+  integrity sha512-nBiiFGNvtujdLryU7MiMQh1iPmnZ/QvOskBbD2kURiI1MwqvxlxNnaAB/z9TbslMqCsSbu5BXvSSQPc5tvHGeA==
   dependencies:
-    "@types/jest" "26.x"
     bs-logger "0.x"
     buffer-from "1.x"
     fast-json-stable-stringify "2.x"
