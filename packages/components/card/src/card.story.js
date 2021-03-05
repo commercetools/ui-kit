@@ -30,7 +30,7 @@ storiesOf('Components|Cards', module)
             light: 'light',
             dark: 'dark',
           })}
-          padding={select('padding', {
+          insetSpace={select('insetSpace', {
             m: 'm',
             s: 's',
           })}

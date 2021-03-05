@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Inset from '@commercetools-uikit/spacings-inset';
 
 type TCardProps = {
   /**
@@ -9,9 +10,9 @@ type TCardProps = {
    */
   type: 'raised' | 'flat';
   /**
-   * Determinse the padding that the conent should have from the card borders
+   * Determinse the padding (inset spacing) that the content should have from the card borders
    */
-  padding: 's' | 'm';
+  insetSpace: 's' | 'm';
   /**
    * Determines the background color of the card.
    */
@@ -32,7 +33,6 @@ const Card = (props: TCardProps) => (
     css={css`
       box-sizing: border-box;
       width: 100%;
-      padding: ${props.padding === 's' ? vars.spacingS : vars.spacingM};
       font-size: 1rem;
       box-shadow: ${props.type === 'raised' ? vars.shadow1 : 'none'};
       border-radius: ${vars.borderRadius6};
@@ -45,14 +45,14 @@ const Card = (props: TCardProps) => (
     // https://emotion.sh/docs/css-prop#style-precedence
     className={props.className}
   >
-    {props.children}
+    <Inset scale={props.insetSpace}>{props.children}</Inset>
   </div>
 );
 
-const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'padding'> = {
+const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'insetSpace'> = {
   type: 'raised',
   theme: 'light',
-  padding: 'm',
+  insetSpace: 'm',
 };
 
 Card.displayName = 'Card';
