@@ -23,17 +23,35 @@ const WrappedCard = (props) => (
 
 export const component = () => (
   <Suite>
-    <Spec label="Type - Raised, Theme - Light">
+    <Spec label="Type - Raised, Theme - Light, Padding - M">
       <WrappedCard>{text}</WrappedCard>
     </Spec>
-    <Spec label="Type - Raised, Theme - Dark">
+    <Spec label="Type - Raised, Theme - Dark, Padding - M">
       <WrappedCard theme="dark">{text}</WrappedCard>
     </Spec>
-    <Spec label="Type - Flat, Theme - Light">
+    <Spec label="Type - Flat, Theme - Light, Padding - M">
       <WrappedCard type="flat">{text}</WrappedCard>
     </Spec>
-    <Spec label="Type - Flat - Theme - Dark">
+    <Spec label="Type - Raised, Theme - Light, Padding - S">
+      <WrappedCard padding="s">{text}</WrappedCard>
+    </Spec>
+    <Spec label="Type - Raised, Theme - Dark, Padding - S">
+      <WrappedCard theme="dark" padding="s">
+        {text}
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Flat, Theme - Light, Padding - S">
+      <WrappedCard type="flat" padding="s">
+        {text}
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Flat, Theme - Dark, Padding - M">
       <WrappedCard type="flat" theme="dark">
+        {text}
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Flat, Theme - Dark, Padding - S">
+      <WrappedCard type="flat" theme="dark" padding="s">
         {text}
       </WrappedCard>
     </Spec>
