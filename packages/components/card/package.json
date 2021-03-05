@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/card",
-  "description": "Cards are used to display content and actions on a single topic.",
+  "description": "Cards are used to display content and actions on a single topic. Only use padding 's' (or 8px) as container for single fields. When in doubt, use padding 'm' (or 16px)",
   "version": "11.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
