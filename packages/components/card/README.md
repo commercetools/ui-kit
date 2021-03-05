@@ -5,7 +5,7 @@
 
 ## Description
 
-Cards are used to display content and actions on a single topic. Only use padding 's' (or 8px) as container for single fields. When in doubt, use padding 'm' (or 16px)
+Only use `insetSpace = "s"` (or 8px) as container for single fields. When in doubt, use `insetSpace = "m"` (or 16px).
 
 ## Installation
 
@@ -44,10 +44,10 @@ export default Example;
 
 ## Properties
 
-| Props       | Type                                                 | Required | Default    | Description                                                                                                                                                                                        |
-| ----------- | ---------------------------------------------------- | :------: | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`      | `union`<br/>Possible values:<br/>`'raised' , 'flat'` |          | `'raised'` | Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.                                                                                      |
-| `padding`   | `union`<br/>Possible values:<br/>`'s' , 'm'`         |          | `'m'`      | Determinse the padding that the conent should have from the card borders                                                                                                                           |
-| `theme`     | `union`<br/>Possible values:<br/>`'light' , 'dark'`  |          | `'light'`  | Determines the background color of the card.                                                                                                                                                       |
-| `className` | `string`                                             |          |            | Pass a custom CSS class, useful to override the styles.&#xA;<br>&#xA;NOTE: This is not recommended and should only be used for building new components&#xA;that require special style adjustments. |
-| `children`  | `ReactNode`                                          |          |            |                                                                                                                                                                                                    |
+| Props        | Type                                                 | Required | Default    | Description                                                                                                                                                                                        |
+| ------------ | ---------------------------------------------------- | :------: | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`       | `union`<br/>Possible values:<br/>`'raised' , 'flat'` |          | `'raised'` | Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.                                                                                      |
+| `insetSpace` | `union`<br/>Possible values:<br/>`'s' , 'm'`         |          | `'m'`      | Determinse the padding (inset spacing) that the content should have from the card borders                                                                                                          |
+| `theme`      | `union`<br/>Possible values:<br/>`'light' , 'dark'`  |          | `'light'`  | Determines the background color of the card.                                                                                                                                                       |
+| `className`  | `string`                                             |          |            | Pass a custom CSS class, useful to override the styles.&#xA;<br>&#xA;NOTE: This is not recommended and should only be used for building new components&#xA;that require special style adjustments. |
+| `children`   | `ReactNode`                                          |          |            |                                                                                                                                                                                                    |
