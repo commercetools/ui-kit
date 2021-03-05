@@ -30,6 +30,10 @@ storiesOf('Components|Cards', module)
             light: 'light',
             dark: 'dark',
           })}
+          padding={select('padding', {
+            m: 'm',
+            s: 's',
+          })}
         >
           {text('children', 'Card text')}
         </Card>
