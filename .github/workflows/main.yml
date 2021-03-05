@@ -56,14 +56,10 @@ jobs:
         run: yarn visual-testing-app:build
 
       - name: Running Visual Regression Tests for UI components
-        uses: ianwalter/puppeteer-container@v4.0.0
+        run: yarn vrt:components
         timeout-minutes: 20
-        with:
-          args: "yarn vrt:components"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-          PUPPETEER_EXECUTABLE_PATH: '/usr/bin/google-chrome-stable'
 
 
       - name: Checking bundle size of visual testing app
