@@ -9,6 +9,10 @@ type TCardProps = {
    */
   type: 'raised' | 'flat';
   /**
+   * Determinse the padding that the conent should have from the card borders
+   */
+  padding: 's' | 'm';
+  /**
    * Determines the background color of the card.
    */
   theme: 'light' | 'dark';
@@ -28,7 +32,7 @@ const Card = (props: TCardProps) => (
     css={css`
       box-sizing: border-box;
       width: 100%;
-      padding: ${vars.spacingM};
+      padding: ${props.padding === 's' ? vars.spacingS : vars.spacingM};
       font-size: 1rem;
       box-shadow: ${props.type === 'raised' ? vars.shadow1 : 'none'};
       border-radius: ${vars.borderRadius6};
@@ -45,9 +49,10 @@ const Card = (props: TCardProps) => (
   </div>
 );
 
-const defaultProps: Pick<TCardProps, 'type' | 'theme'> = {
+const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'padding'> = {
   type: 'raised',
   theme: 'light',
+  padding: 'm',
 };
 
 Card.displayName = 'Card';
