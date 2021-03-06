@@ -1,5 +1,4 @@
 import React from 'react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { screen, render } from '../../../../test/test-utils';
 import Link from './link';
 

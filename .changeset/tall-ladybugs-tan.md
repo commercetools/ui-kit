@@ -2,4 +2,4 @@
 "@commercetools-uikit/link": minor
 ---
 
-Adds a `tone` property to the `link` component supporting a `primary` and `inverted` tone
+Adds a `tone` property to the `<Link>` component. Supported values are `primary` (the default) and `inverted`.
