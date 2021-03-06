@@ -12,7 +12,7 @@ const purpleTheme = {
   colorPrimary25: 'deeppurple',
 };
 
-export const component = () => (
+export const component = ({ themes }) => (
   <Suite>
     <Spec label="regular">
       <Link to="/">A label text</Link>
@@ -35,8 +35,17 @@ export const component = () => (
     <Spec label="intlMessage">
       <Link to="/" intlMessage={intlMessage} />
     </Spec>
-    <Spec label="white">
-      <Link to="/" tone={'inverted'} />
-    </Spec>
+    <ThemeProvider theme={themes.darkTheme}>
+      <Spec label="tone - inverted - with underline">
+        <Link to="/" tone="inverted">
+          An inverted label text
+        </Link>
+      </Spec>
+      <Spec label="tone - inverted - without underline">
+        <Link to="/" hasUnderline={false} tone="inverted">
+          An inverted label text
+        </Link>
+      </Spec>
+    </ThemeProvider>
   </Suite>
 );
