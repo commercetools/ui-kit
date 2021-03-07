@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/async-select-input",
   "description": "An input component getting a selection from an asynchronously loaded list from the user.",
-  "version": "11.0.2",
+  "version": "11.1.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,12 +9,7 @@
     "directory": "packages/components/inputs/async-select-input"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -23,9 +18,7 @@
   "sideEffects": false,
   "main": "dist/commercetools-uikit-async-select-input.cjs.js",
   "module": "dist/commercetools-uikit-async-select-input.esm.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"
   },
@@ -36,7 +29,7 @@
     "@commercetools-uikit/design-system": "11.0.2",
     "@commercetools-uikit/icons": "11.0.2",
     "@commercetools-uikit/loading-spinner": "11.0.2",
-    "@commercetools-uikit/select-utils": "11.0.2",
+    "@commercetools-uikit/select-utils": "11.1.0",
     "@commercetools-uikit/spacings": "11.0.2",
     "@commercetools-uikit/text": "11.0.2",
     "@commercetools-uikit/utils": "10.47.3",

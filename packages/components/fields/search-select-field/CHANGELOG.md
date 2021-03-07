@@ -1,5 +1,12 @@
 # @commercetools-uikit/search-select-field
 
+## 11.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/search-select-input@11.1.0
+
 ## 11.0.2
 
 ### Patch Changes

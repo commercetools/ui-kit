@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/pagination",
   "description": "Components for navigating through pages of items",
-  "version": "11.0.2",
+  "version": "11.1.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,12 +9,7 @@
     "directory": "packages/components/pagination"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -23,9 +18,7 @@
   "sideEffects": false,
   "main": "dist/commercetools-uikit-pagination.cjs.js",
   "module": "dist/commercetools-uikit-pagination.esm.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"
   },
@@ -38,7 +31,7 @@
     "@commercetools-uikit/label": "11.0.2",
     "@commercetools-uikit/number-input": "11.0.2",
     "@commercetools-uikit/secondary-icon-button": "11.0.2",
-    "@commercetools-uikit/select-input": "11.0.2",
+    "@commercetools-uikit/select-input": "11.1.0",
     "@commercetools-uikit/spacings": "11.0.2",
     "@commercetools-uikit/text": "11.0.2",
     "@commercetools-uikit/utils": "10.47.3",

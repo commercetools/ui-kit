@@ -1,5 +1,11 @@
 # @commercetools-local/generator-readme
 
+## 1.1.17
+
+### Patch Changes
+
+- [`e3510fff`](https://github.com/commercetools/ui-kit/commit/e3510fff26ba23edba33e28596521e61857921fc) [#1815](https://github.com/commercetools/ui-kit/pull/1815) Thanks [@tdeekens](https://github.com/tdeekens)! - chore: update deps
+
 ## 1.1.16
 
 ### Patch Changes

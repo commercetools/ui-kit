@@ -10,13 +10,7 @@
   },
   "private": true,
   "license": "MIT",
-  "keywords": [
-    "javascript",
-    "frontend",
-    "ui-kit",
-    "design-system",
-    "react"
-  ],
+  "keywords": ["javascript", "frontend", "ui-kit", "design-system", "react"],
   "sideEffects": false,
   "scripts": {
     "postinstall": "manypkg check && preconstruct dev && yarn --cwd docs",
@@ -63,16 +57,10 @@
       "presets/*",
       "visual-testing-app"
     ],
-    "nohoist": [
-      "react-virtualized/dom-helpers"
-    ]
+    "nohoist": ["react-virtualized/dom-helpers"]
   },
   "preconstruct": {
-    "packages": [
-      "design-system",
-      "packages/**/*",
-      "presets/*"
-    ]
+    "packages": ["design-system", "packages/**/*", "presets/*"]
   },
   "dependencies": {
     "@changesets/changelog-github": "0.2.8",

@@ -1,5 +1,11 @@
 # @commercetools-uikit/localized-multiline-text-input
 
+## 11.1.0
+
+### Patch Changes
+
+- [`e3510fff`](https://github.com/commercetools/ui-kit/commit/e3510fff26ba23edba33e28596521e61857921fc) [#1815](https://github.com/commercetools/ui-kit/pull/1815) Thanks [@tdeekens](https://github.com/tdeekens)! - chore: update deps
+
 ## 11.0.2
 
 ### Patch Changes

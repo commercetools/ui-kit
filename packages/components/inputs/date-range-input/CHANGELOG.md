@@ -1,5 +1,13 @@
 # @commercetools-uikit/date-range-input
 
+## 11.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`e3510fff`](https://github.com/commercetools/ui-kit/commit/e3510fff26ba23edba33e28596521e61857921fc)]:
+  - @commercetools-uikit/calendar-utils@11.1.0
+  - @commercetools-uikit/select-utils@11.1.0
+
 ## 11.0.2
 
 ### Patch Changes

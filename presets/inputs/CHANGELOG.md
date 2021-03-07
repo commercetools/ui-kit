@@ -1,5 +1,23 @@
 # @commercetools-uikit/inputs
 
+## 11.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`e3510fff`](https://github.com/commercetools/ui-kit/commit/e3510fff26ba23edba33e28596521e61857921fc)]:
+  - @commercetools-uikit/async-creatable-select-input@11.1.0
+  - @commercetools-uikit/async-select-input@11.1.0
+  - @commercetools-uikit/creatable-select-input@11.1.0
+  - @commercetools-uikit/localized-money-input@11.1.0
+  - @commercetools-uikit/localized-multiline-text-input@11.1.0
+  - @commercetools-uikit/money-input@11.1.0
+  - @commercetools-uikit/select-input@11.1.0
+  - @commercetools-uikit/date-input@11.1.0
+  - @commercetools-uikit/date-range-input@11.1.0
+  - @commercetools-uikit/date-time-input@11.1.0
+  - @commercetools-uikit/search-select-input@11.1.0
+  - @commercetools-uikit/checkbox-input@11.1.0
+
 ## 11.0.2
 
 ### Patch Changes
