@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/link",
   "description": "Links are used either to link to other UI routes, or to link to external pages. This component is a very thin wrapper over either a React Router Link, or a normal HTML <a> tag.",
-  "version": "11.0.2",
+  "version": "11.1.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,12 +9,7 @@
     "directory": "packages/components/link"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -23,9 +18,7 @@
   "sideEffects": false,
   "main": "dist/commercetools-uikit-link.cjs.js",
   "module": "dist/commercetools-uikit-link.esm.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"
   },

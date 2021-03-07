@@ -1,5 +1,16 @@
 # @commercetools-frontend/ui-kit
 
+## 11.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`4bfea97e`](https://github.com/commercetools/ui-kit/commit/4bfea97ef8f99f60fbf64688ee0d61d35d74b3d2)]:
+  - @commercetools-uikit/link@11.1.0
+  - @commercetools-uikit/inputs@11.1.0
+  - @commercetools-uikit/data-table-manager@11.1.0
+  - @commercetools-uikit/pagination@11.1.0
+  - @commercetools-uikit/fields@11.1.0
+
 ## 11.0.2
 
 ### Patch Changes

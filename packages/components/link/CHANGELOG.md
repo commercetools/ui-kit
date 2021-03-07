@@ -1,5 +1,11 @@
 # @commercetools-uikit/link
 
+## 11.1.0
+
+### Minor Changes
+
+- [`4bfea97e`](https://github.com/commercetools/ui-kit/commit/4bfea97ef8f99f60fbf64688ee0d61d35d74b3d2) [#1811](https://github.com/commercetools/ui-kit/pull/1811) Thanks [@Rombelirk](https://github.com/Rombelirk)! - Adds a `tone` property to the `<Link>` component. Supported values are `primary` (the default) and `inverted`.
+
 ## 11.0.2
 
 ### Patch Changes
