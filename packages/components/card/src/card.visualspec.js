@@ -6,7 +6,7 @@ describe('Card', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Type - Raised, Theme - Light, InsetSpace - M');
+    await expect(page).toMatch(/InsetScale/);
     await percySnapshot(page, 'Card');
   });
 });
