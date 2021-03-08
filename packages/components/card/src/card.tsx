@@ -10,9 +10,9 @@ type TCardProps = {
    */
   type: 'raised' | 'flat';
   /**
-   * Determinse the padding (inset spacing) that the content should have from the card borders
+   * Determines the spacing (padding) that the content should have from the card borders. In case there is no space needed, you can pass `none`.
    */
-  insetSpace: 's' | 'm';
+  insetScale: 'none' | 's' | 'm';
   /**
    * Determines the background color of the card.
    */
@@ -45,14 +45,18 @@ const Card = (props: TCardProps) => (
     // https://emotion.sh/docs/css-prop#style-precedence
     className={props.className}
   >
-    <Inset scale={props.insetSpace}>{props.children}</Inset>
+    {props.insetScale === 'none' ? (
+      props.children
+    ) : (
+      <Inset scale={props.insetScale}>{props.children}</Inset>
+    )}
   </div>
 );
 
-const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'insetSpace'> = {
+const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'insetScale'> = {
   type: 'raised',
   theme: 'light',
-  insetSpace: 'm',
+  insetScale: 'm',
 };
 
 Card.displayName = 'Card';

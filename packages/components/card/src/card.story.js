@@ -31,6 +31,7 @@ storiesOf('Components|Cards', module)
             dark: 'dark',
           })}
           insetSpace={select('insetSpace', {
+            none: 'none',
             m: 'm',
             s: 's',
           })}
