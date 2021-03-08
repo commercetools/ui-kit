@@ -46,7 +46,9 @@ const Card = (props: TCardProps) => (
     className={props.className}
   >
     {props.insetScale === 'none' ? (
-      props.children
+      // Use a `<div>` to ensure that there is always a wrapper container.
+      // This is mostly useful in case custom styles are targeting this element.
+      <div>{props.children}</div>
     ) : (
       <Inset scale={props.insetScale}>{props.children}</Inset>
     )}

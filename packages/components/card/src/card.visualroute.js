@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { css } from '@emotion/react';
-import { Card } from '@commercetools-frontend/ui-kit';
+import Card from '@commercetools-uikit/card';
+import Text from '@commercetools-uikit/text';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/card';
@@ -18,7 +20,9 @@ const WrappedCard = (props) => (
       width: 300px;
     `}
     {...props}
-  />
+  >
+    <Text.Body>{props.children}</Text.Body>
+  </Card>
 );
 
 export const component = () => (
