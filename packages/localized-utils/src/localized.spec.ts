@@ -200,6 +200,10 @@ describe('isEmpty', () => {
 describe('omitEmptyTranslations', () => {
   describe('when called with no value', () => {
     it('should throw an error', () => {
+      // An error is expected as no localized string but undefined is passed.
+      // We throw an `Error` using a `warning` in non-production
+      // environments to inform consumers.
+      // @ts-expect-error
       expect(() => omitEmptyTranslations()).toThrow();
     });
   });

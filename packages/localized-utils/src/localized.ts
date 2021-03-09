@@ -136,7 +136,7 @@ export const isEmpty = (localizedString?: TLocalizedString): boolean => {
 };
 
 export const omitEmptyTranslations = <TTranslations extends TLocalizedString>(
-  localizedString?: TTranslations
+  localizedString: TTranslations
 ): TLocalizedString => {
   warning(
     typeof localizedString === 'object',
