@@ -3,7 +3,7 @@
 ### Using a `<button/>`
 
 > If you can use a native HTML element or attribute with the semantics and
-> behaviour you require already built in, instead of re-purposing an element and
+> behavior you require already built in, instead of re-purposing an element and
 > adding an ARIA role, state or property to make it accessible, then do so.
 
 This means that instead of using a `<div/>` to create a button we should use the
@@ -19,17 +19,17 @@ and/or an icon.
 
 ### Toggle buttons
 
-In order to indicate to screenreaders that a button is a toggle button — meaning
+In order to indicate to screen readers that a button is a toggle button — meaning
 that it will keep the active state once clicked — you need to set the
 `aria-pressed` attribute accordingly.
 
 This is automatically done when you specify the `isToggled` property. If this
 prop is omitted though we don't set the `aria-pressed` attribute at all so
-screenreaders to not mistake our button for a togglable button.
+screen readers to not mistake our button for a toggle button.
 
 ### Icon buttons
 
-In order for screenreaders to know what a button does we need to provide a
+In order for screen readers to know what a button does we need to provide a
 proper label. The `<button/>` element is able to figure out the `aria-label` on
 its own for simple buttons that only contain text.
 
@@ -42,7 +42,7 @@ providing the `label` prop.
 
 ### Disabled buttons
 
-In order for screenreaders to know if your button is disabled we need to set the
+In order for screen readers to know if your button is disabled we need to set the
 `aria-disabled` and `disabled` attributes on the button. We do so automatically
 if you set the `isDisabled` prop to true.
 

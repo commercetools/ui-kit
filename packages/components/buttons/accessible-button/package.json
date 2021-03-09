@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/accessible-button",
-  "description": "A React component that you can use to wrap your buttons in an accessibile <button/> element.",
+  "description": "A React component that you can use to wrap your buttons in an accessible <button/> element.",
   "version": "11.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
@@ -29,9 +29,11 @@
     "@commercetools-uikit/utils": "10.47.3",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
+    "@types/react-is": "^17.0.0",
     "common-tags": "1.8.0",
     "lodash": "4.17.20",
-    "prop-types": "15.7.2"
+    "prop-types": "15.7.2",
+    "react-is": "17.0.1"
   },
   "devDependencies": {
     "react": "17.0.1"

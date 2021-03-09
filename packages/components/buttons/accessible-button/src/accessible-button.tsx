@@ -2,10 +2,12 @@ import React, {
   ReactNode,
   KeyboardEvent,
   ElementType,
+  ComponentType,
   MouseEventHandler,
   KeyboardEventHandler,
   MouseEvent,
 } from 'react';
+import { isValidElementType } from 'react-is';
 import omit from 'lodash/omit';
 import { filterAriaAttributes, warning } from '@commercetools-uikit/utils';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -26,7 +28,7 @@ type TAccessibleButtonProps = {
    * By default the component renders a `button` element. You can pass an optional `React.ElemenType`
    * in case this needs to be rendered as a different element.
    */
-  as?: ElementType;
+  as?: string | ComponentType;
   /**
    * The ID of the element.
    */
@@ -89,6 +91,11 @@ const defaultProps: Pick<
 const AccessibleButton = React.forwardRef<null, TAccessibleButtonProps>(
   (props, ref) => {
     warning(
+      props.as ? isValidElementType(props.as) : true,
+      `ui-kit/AccessibleButton: "as" must be a valid element type.`
+    );
+
+    warning(
       !(props.as && props.type !== 'button'),
       `ui-kit/AccessibleButton: "type" does not have any effect when "as" is set.`
     );
@@ -145,7 +152,7 @@ const AccessibleButton = React.forwardRef<null, TAccessibleButtonProps>(
 
     return (
       <Button
-        as={props.as}
+        as={props.as as ElementType}
         id={props.id}
         ref={ref}
         aria-label={props.label}

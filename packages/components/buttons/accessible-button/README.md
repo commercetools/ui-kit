@@ -5,7 +5,7 @@
 
 ## Description
 
-A React component that you can use to wrap your buttons in an accessible \<button/> element.
+A React component that you can use to wrap your buttons in an accessibile \<button/> element.
 
 ## Installation
 
@@ -48,7 +48,7 @@ export default Example;
 
 | Props              | Type                                                             | Required | Default    | Description                                                                                                                                                                                        |
 | ------------------ | ---------------------------------------------------------------- | :------: | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `as`               | `ElementType`                                                    |          |            | By default the component renders a `button` element. You can pass an optional `React.ElemenType`&#xA;in case this needs to be rendered as a different element.                                     |
+| `as`               | `union`<br/>Possible values:<br/>`string , ComponentType`        |          |            | By default the component renders a `button` element. You can pass an optional `React.ElemenType`&#xA;in case this needs to be rendered as a different element.                                     |
 | `id`               | `string`                                                         |          |            | The ID of the element.                                                                                                                                                                             |
 | `type`             | `union`<br/>Possible values:<br/>`'submit' , 'reset' , 'button'` |          | `'button'` | The [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) of the `button` element.                                                                                              |
 | `label`            | `string`                                                         |    ✅    |            | The aria-label value.                                                                                                                                                                              |
@@ -59,7 +59,7 @@ export default Example;
 | `className`        | `string`                                                         |          |            | Allow to override the styles by passing a `className` prop.&#xA;<br/>&#xA;Custom styles can also be passed using the [`css` prop from emotion](https://emotion.sh/docs/css-prop#style-precedence). |
 | `onClick`          | `Function`<br/>[See signature.](#signature-onClick)              |          |            | Event handler when the button is clicked, or the user presses `ENTER` or `SPACE`.                                                                                                                  |
 | `buttonAttributes` | `Record`                                                         |          | `{}`       | Any HTML attributes to be forwarded to the HTML element.                                                                                                                                           |
-| `ref`              | `ForwardedRef`                                                   |    ✅    |            |                                                                                                                                                                                                    |
+| `ref`              | `ForwardedRef`                                                   |          |            |                                                                                                                                                                                                    |
 
 ## Signatures
 
