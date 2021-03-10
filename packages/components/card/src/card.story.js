@@ -18,13 +18,13 @@ const CardStoryTemplate = (props) => (
     {themes.map((theme) => (
       <Spacings.Stack key={theme}>
         <Text.Headline as="h2">
-          Theme: <code>{theme}</code>
+          <code>theme: {theme}</code>
         </Text.Headline>
         <Spacings.Inline>
           {insetScaleValues.map((scale) => (
             <Spacings.Stack key={scale} scale="s">
               <Text.Body isBold>
-                Scale: <code>{scale}</code>
+                <code>insetScale: {scale}</code>
               </Text.Body>
               <Card insetScale={scale} type={props.type} theme={theme}>
                 {text('content', content)}
