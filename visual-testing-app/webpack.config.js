@@ -41,7 +41,7 @@ module.exports = {
         exclude: [/(node_modules)/, /(dist)/],
         use: {
           loader: 'babel-loader',
-          query: {
+          options: {
             compact: true,
             configFile: '../babel.config.js',
           },
