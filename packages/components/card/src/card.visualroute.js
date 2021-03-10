@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { css } from '@emotion/react';
-import { Card } from '@commercetools-frontend/ui-kit';
+import Card from '@commercetools-uikit/card';
+import Text from '@commercetools-uikit/text';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/card';
@@ -18,22 +20,72 @@ const WrappedCard = (props) => (
       width: 300px;
     `}
     {...props}
-  />
+  >
+    <Text.Body>{props.children}</Text.Body>
+  </Card>
 );
 
 export const component = () => (
   <Suite>
-    <Spec label="Type - Raised, Theme - Light">
-      <WrappedCard>{text}</WrappedCard>
+    <Spec label="Type - Raised, Theme - Light, InsetScale - None">
+      <WrappedCard type="raised" theme="light" insetScale="none">
+        {text}
+      </WrappedCard>
     </Spec>
-    <Spec label="Type - Raised, Theme - Dark">
-      <WrappedCard theme="dark">{text}</WrappedCard>
+    <Spec label="Type - Raised, Theme - Dark, InsetScale - None">
+      <WrappedCard type="raised" theme="dark" insetScale="none">
+        {text}
+      </WrappedCard>
     </Spec>
-    <Spec label="Type - Flat, Theme - Light">
-      <WrappedCard type="flat">{text}</WrappedCard>
+    <Spec label="Type - Flat, Theme - Light, InsetScale - None">
+      <WrappedCard type="flat" theme="light" insetScale="none">
+        {text}
+      </WrappedCard>
     </Spec>
-    <Spec label="Type - Flat - Theme - Dark">
-      <WrappedCard type="flat" theme="dark">
+    <Spec label="Type - Flat, Theme - Dark, InsetScale - None">
+      <WrappedCard type="flat" theme="dark" insetScale="none">
+        {text}
+      </WrappedCard>
+    </Spec>
+
+    <Spec label="Type - Raised, Theme - Light, InsetScale - S">
+      <WrappedCard type="raised" theme="light" insetScale="s">
+        {text}
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Raised, Theme - Dark, InsetScale - S">
+      <WrappedCard type="raised" theme="dark" insetScale="s">
+        {text}
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Flat, Theme - Light, InsetScale - S">
+      <WrappedCard type="flat" theme="light" insetScale="s">
+        {text}
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Flat, Theme - Dark, InsetScale - S">
+      <WrappedCard type="flat" theme="dark" insetScale="s">
+        {text}
+      </WrappedCard>
+    </Spec>
+
+    <Spec label="Type - Raised, Theme - Light, InsetScale - M">
+      <WrappedCard type="raised" theme="light" insetScale="m">
+        {text}
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Raised, Theme - Dark, InsetScale - M">
+      <WrappedCard type="raised" theme="dark" insetScale="m">
+        {text}
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Flat, Theme - Light, InsetScale - M">
+      <WrappedCard type="flat" theme="light" insetScale="m">
+        {text}
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Flat, Theme - Dark, InsetScale - M">
+      <WrappedCard type="flat" theme="dark" insetScale="m">
         {text}
       </WrappedCard>
     </Spec>

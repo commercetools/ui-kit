@@ -2,12 +2,17 @@ import React, { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import Inset from '@commercetools-uikit/spacings-inset';
 
 type TCardProps = {
   /**
    * Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.
    */
   type: 'raised' | 'flat';
+  /**
+   * Determines the spacing (padding) that the content should have from the card borders. In case there is no space needed, you can pass `none`.
+   */
+  insetScale: 'none' | 's' | 'm';
   /**
    * Determines the background color of the card.
    */
@@ -28,7 +33,6 @@ const Card = (props: TCardProps) => (
     css={css`
       box-sizing: border-box;
       width: 100%;
-      padding: ${vars.spacingM};
       font-size: 1rem;
       box-shadow: ${props.type === 'raised' ? vars.shadow1 : 'none'};
       border-radius: ${vars.borderRadius6};
@@ -41,13 +45,20 @@ const Card = (props: TCardProps) => (
     // https://emotion.sh/docs/css-prop#style-precedence
     className={props.className}
   >
-    {props.children}
+    {props.insetScale === 'none' ? (
+      // Use a `<div>` to ensure that there is always a wrapper container.
+      // This is mostly useful in case custom styles are targeting this element.
+      <div>{props.children}</div>
+    ) : (
+      <Inset scale={props.insetScale}>{props.children}</Inset>
+    )}
   </div>
 );
 
-const defaultProps: Pick<TCardProps, 'type' | 'theme'> = {
+const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'insetScale'> = {
   type: 'raised',
   theme: 'light',
+  insetScale: 'm',
 };
 
 Card.displayName = 'Card';
