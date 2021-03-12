@@ -36,7 +36,7 @@ type TLoadingSpinnerProps = {
    * <br />
    * It will be rendered as `Text.Detail` with `secondary` tone.
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 const defaultProps: Pick<TLoadingSpinnerProps, 'scale'> = {
