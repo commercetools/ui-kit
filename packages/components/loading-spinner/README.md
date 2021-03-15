@@ -40,7 +40,7 @@ export default Example;
 
 ## Properties
 
-| Props      | Type                                       | Required | Default | Description                          |
-| ---------- | ------------------------------------------ | :------: | ------- | ------------------------------------ |
-| `scale`    | `enum`<br/>Possible values:<br/>`"s", "l"` |          | `'l'`   | Set the size of the loading spinner. |
-| `children` | `node`                                     |          |         | \*                                   |
+| Props      | Type                                         | Required | Default | Description                                       |
+| ---------- | -------------------------------------------- | :------: | ------- | ------------------------------------------------- |
+| `scale`    | `union`<br/>Possible values:<br/>`'s' , 'l'` |          | `'l'`   | Set the size of the loading spinner.              |
+| `children` | `ReactReactNode`                             |          |         | The content rendered inside the `LoadingSpinner`. |
