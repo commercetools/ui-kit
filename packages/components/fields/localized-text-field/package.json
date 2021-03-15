@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/localized-text-field",
   "description": "A controlled text input component for localized single-line strings with validation states.",
-  "version": "11.0.2",
+  "version": "11.2.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,13 +25,13 @@
   "dependencies": {
     "@babel/runtime": "7.13.9",
     "@babel/runtime-corejs3": "7.13.9",
-    "@commercetools-uikit/constraints": "11.0.2",
+    "@commercetools-uikit/constraints": "11.2.0",
     "@commercetools-uikit/design-system": "11.0.2",
-    "@commercetools-uikit/field-errors": "11.0.2",
-    "@commercetools-uikit/field-label": "11.0.2",
-    "@commercetools-uikit/localized-text-input": "11.0.2",
-    "@commercetools-uikit/spacings": "11.0.2",
-    "@commercetools-uikit/utils": "10.47.3",
+    "@commercetools-uikit/field-errors": "11.2.0",
+    "@commercetools-uikit/field-label": "11.2.0",
+    "@commercetools-uikit/localized-text-input": "11.2.0",
+    "@commercetools-uikit/spacings": "11.2.0",
+    "@commercetools-uikit/utils": "11.2.0",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "common-tags": "1.8.0",

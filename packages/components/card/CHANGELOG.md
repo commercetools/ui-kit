@@ -1,5 +1,29 @@
 # @commercetools-uikit/card
 
+## 11.2.0
+
+### Minor Changes
+
+- [`c27c7bad`](https://github.com/commercetools/ui-kit/commit/c27c7baddc4c8aba9d8fae51db4af8d46772f3ad) [#1814](https://github.com/commercetools/ui-kit/pull/1814) Thanks [@mohib0306](https://github.com/mohib0306)! - Add `insetScale` prop to Card component, to control the spacing (padding). Available values are `s`, `m` (default) or `none` (for no padding).
+
+  **Possible visual regressions**
+
+  Be aware that if you are passing **custom styles** (through the `className` prop, or `css` prop if you use Emotion), the `<Card>` component renders the `children` within a wrapper `<div>` container.
+
+  ```
+  <card-container>
+    <card-wrapper>
+      <children>
+  ```
+
+  Therefore, if you encounter visual regressions, make sure to check that the custom styles target the correct elements.
+
+### Patch Changes
+
+- Updated dependencies [[`93232c64`](https://github.com/commercetools/ui-kit/commit/93232c64be9f2c794557f42fc9cf14bc61f2d557)]:
+  - @commercetools-uikit/utils@11.2.0
+  - @commercetools-uikit/spacings-inset@11.2.0
+
 ## 11.0.2
 
 ### Patch Changes

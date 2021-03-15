@@ -1,5 +1,13 @@
 # @commercetools-uikit/collapsible
 
+## 11.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`93232c64`](https://github.com/commercetools/ui-kit/commit/93232c64be9f2c794557f42fc9cf14bc61f2d557)]:
+  - @commercetools-uikit/utils@11.2.0
+  - @commercetools-uikit/hooks@11.2.0
+
 ## 11.0.2
 
 ### Patch Changes
