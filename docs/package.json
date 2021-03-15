@@ -25,7 +25,7 @@
     "markdown-loader": "6.0.0",
     "moment-locales-webpack-plugin": "1.2.0",
     "storybook-readme": "5.0.9",
-    "yaml": "1.10.0",
+    "yaml": "1.10.2",
     "yaml-loader": "0.6.0"
   },
   "devDependencies": {

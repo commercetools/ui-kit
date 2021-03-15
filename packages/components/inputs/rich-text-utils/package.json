@@ -24,8 +24,8 @@
     "generate-icons": "svgr -d src/rich-text-body/icons/generated --typescript src/rich-text-body/icons/svg"
   },
   "dependencies": {
-    "@babel/runtime": "7.13.9",
-    "@babel/runtime-corejs3": "7.13.9",
+    "@babel/runtime": "7.13.10",
+    "@babel/runtime-corejs3": "7.13.10",
     "@commercetools-uikit/design-system": "11.0.2",
     "@commercetools-uikit/icons": "11.2.0",
     "@commercetools-uikit/input-utils": "11.2.0",
@@ -36,7 +36,7 @@
     "@emotion/styled": "^11.0.0",
     "downshift": "6.1.0",
     "is-hotkey": "0.2.0",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
     "slate-html-serializer": "0.8.11"

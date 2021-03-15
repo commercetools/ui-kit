@@ -23,8 +23,8 @@
     "prepare": "../../../../scripts/version.js replace"
   },
   "dependencies": {
-    "@babel/runtime": "7.13.9",
-    "@babel/runtime-corejs3": "7.13.9",
+    "@babel/runtime": "7.13.10",
+    "@babel/runtime-corejs3": "7.13.10",
     "@commercetools-uikit/async-select-input": "11.2.0",
     "@commercetools-uikit/design-system": "11.0.2",
     "@commercetools-uikit/select-utils": "11.2.0",
