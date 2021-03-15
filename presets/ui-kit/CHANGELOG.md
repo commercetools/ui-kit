@@ -1,5 +1,39 @@
 # @commercetools-frontend/ui-kit
 
+## 11.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`93232c64`](https://github.com/commercetools/ui-kit/commit/93232c64be9f2c794557f42fc9cf14bc61f2d557), [`c27c7bad`](https://github.com/commercetools/ui-kit/commit/c27c7baddc4c8aba9d8fae51db4af8d46772f3ad), [`3103ea42`](https://github.com/commercetools/ui-kit/commit/3103ea421106687b32a5fada26c1131b7c43cded)]:
+  - @commercetools-uikit/utils@11.2.0
+  - @commercetools-uikit/card@11.2.0
+  - @commercetools-uikit/loading-spinner@11.2.0
+  - @commercetools-uikit/collapsible-panel@11.2.0
+  - @commercetools-uikit/data-table@11.2.0
+  - @commercetools-uikit/data-table-manager@11.2.0
+  - @commercetools-uikit/primary-action-dropdown@11.2.0
+  - @commercetools-uikit/tag@11.2.0
+  - @commercetools-uikit/buttons@11.2.0
+  - @commercetools-uikit/avatar@11.2.0
+  - @commercetools-uikit/collapsible@11.2.0
+  - @commercetools-uikit/collapsible-motion@11.2.0
+  - @commercetools-uikit/constraints@11.2.0
+  - @commercetools-uikit/field-label@11.2.0
+  - @commercetools-uikit/icons@11.2.0
+  - @commercetools-uikit/label@11.2.0
+  - @commercetools-uikit/link@11.2.0
+  - @commercetools-uikit/messages@11.2.0
+  - @commercetools-uikit/notifications@11.2.0
+  - @commercetools-uikit/pagination@11.2.0
+  - @commercetools-uikit/table@11.2.0
+  - @commercetools-uikit/text@11.2.0
+  - @commercetools-uikit/tooltip@11.2.0
+  - @commercetools-uikit/hooks@11.2.0
+  - @commercetools-uikit/inputs@11.2.0
+  - @commercetools-uikit/fields@11.2.0
+  - @commercetools-uikit/field-errors@11.2.0
+  - @commercetools-uikit/spacings@11.2.0
+
 ## 11.1.0
 
 ### Patch Changes

@@ -1,5 +1,33 @@
 # @commercetools-uikit/inputs
 
+## 11.2.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/date-input@11.2.0
+  - @commercetools-uikit/date-range-input@11.2.0
+  - @commercetools-uikit/date-time-input@11.2.0
+  - @commercetools-uikit/time-input@11.2.0
+  - @commercetools-uikit/async-creatable-select-input@11.2.0
+  - @commercetools-uikit/async-select-input@11.2.0
+  - @commercetools-uikit/checkbox-input@11.2.0
+  - @commercetools-uikit/creatable-select-input@11.2.0
+  - @commercetools-uikit/localized-money-input@11.2.0
+  - @commercetools-uikit/localized-multiline-text-input@11.2.0
+  - @commercetools-uikit/localized-rich-text-input@11.2.0
+  - @commercetools-uikit/localized-text-input@11.2.0
+  - @commercetools-uikit/money-input@11.2.0
+  - @commercetools-uikit/multiline-text-input@11.2.0
+  - @commercetools-uikit/number-input@11.2.0
+  - @commercetools-uikit/password-input@11.2.0
+  - @commercetools-uikit/radio-input@11.2.0
+  - @commercetools-uikit/rich-text-input@11.2.0
+  - @commercetools-uikit/search-select-input@11.2.0
+  - @commercetools-uikit/select-input@11.2.0
+  - @commercetools-uikit/text-input@11.2.0
+  - @commercetools-uikit/toggle-input@11.2.0
+
 ## 11.1.0
 
 ### Patch Changes

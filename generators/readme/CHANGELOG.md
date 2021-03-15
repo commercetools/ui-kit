@@ -1,5 +1,11 @@
 # @commercetools-local/generator-readme
 
+## 1.1.18
+
+### Patch Changes
+
+- [`93232c64`](https://github.com/commercetools/ui-kit/commit/93232c64be9f2c794557f42fc9cf14bc61f2d557) [#1786](https://github.com/commercetools/ui-kit/pull/1786) Thanks [@adnasa](https://github.com/adnasa)! - Migrate `AccessibleButton` to TypeScript
+
 ## 1.1.17
 
 ### Patch Changes

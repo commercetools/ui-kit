@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-local/generator-readme",
   "description": "CLI to generate README files for each package",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "private": true,
   "bin": {
     "generate-readme": "./bin/generate_readme.sh"
