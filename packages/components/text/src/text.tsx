@@ -3,11 +3,7 @@ import type { MessageDescriptor } from 'react-intl';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useTheme } from '@emotion/react';
-import {
-  filterDataAttributes,
-  warnDeprecatedProp,
-  warning,
-} from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   bodyStyles,
   detailStyles,
@@ -75,8 +71,6 @@ Text.displayName = 'Text';
 
 export type THeadlineProps = {
   as?: 'h1' | 'h2' | 'h3';
-  // @deprecated: use `as` instead
-  elementType?: 'h1' | 'h2' | 'h3';
   truncate?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
@@ -84,23 +78,10 @@ export type THeadlineProps = {
 const Headline = (props: THeadlineProps) => {
   const theme = useTheme();
 
-  if (props.elementType) {
-    warnDeprecatedProp(
-      'elementType',
-      'TextHeadline',
-      `\n \`elementType\` is deprecated. \n Please use "as" prop instead.`
-    );
-  }
-
   warnIfMissingTitle(props, 'TextHeadline');
   warnIfMissingContent(props, 'TextHeadline');
 
-  // For backwards compatibility
-  // we allow both `as` and `elementType` to be optional.
-  const HeadlineElement = props.as || props.elementType;
-
-  // however, if none of the prop is specified,
-  // we render plain text and set a warning on the log.
+  const HeadlineElement = props.as;
   if (!HeadlineElement) {
     warning(
       false,
@@ -122,8 +103,6 @@ Headline.displayName = 'TextHeadline';
 
 export type TSubheadlineProps = {
   as?: 'h4' | 'h5';
-  // @deprecated: use `as` instead
-  elementType?: 'h4' | 'h5';
   truncate?: boolean;
   isBold?: boolean;
   tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
@@ -133,17 +112,10 @@ export type TSubheadlineProps = {
 const Subheadline = (props: TSubheadlineProps) => {
   const theme = useTheme();
 
-  if (props.elementType) {
-    warnDeprecatedProp(
-      'elementType',
-      'TextSubheadline',
-      `\n \`elementType\` is deprecated. \n Please use "as" prop instead.`
-    );
-  }
   warnIfMissingTitle(props, 'TextSubheadline');
   warnIfMissingContent(props, 'TextSubheadline');
 
-  const SubheadlineElement = props.as || props.elementType;
+  const SubheadlineElement = props.as;
   if (!SubheadlineElement) {
     warning(
       false,
@@ -151,6 +123,7 @@ const Subheadline = (props: TSubheadlineProps) => {
     );
     return <Text intlMessage={props.intlMessage}>{props.children}</Text>;
   }
+
   return (
     <SubheadlineElement
       title={props.title}
@@ -185,8 +158,6 @@ export type TBodyProps = {
   as?: 'span' | 'p';
   isBold?: boolean;
   isItalic?: boolean;
-  // @deprecated: use `as="span"` instead
-  isInline?: boolean;
   tone?:
     | 'primary'
     | 'secondary'
@@ -204,14 +175,6 @@ const Body = (props: TBodyProps) => {
   warnIfMissingTitle(props, 'TextBody');
   warnIfMissingContent(props, 'TextBody');
 
-  if (props.isInline) {
-    warnDeprecatedProp(
-      'isInline',
-      'TextSubheadline',
-      `\n \`isInline\` is deprecated. \n Please use "as" prop instead.`
-    );
-  }
-
   if (props.as) {
     const BodyElement = props.as;
     return (
@@ -225,15 +188,7 @@ const Body = (props: TBodyProps) => {
     );
   }
 
-  return props.isInline ? (
-    <span
-      css={bodyStyles(props, theme)}
-      title={props.title}
-      {...filterDataAttributes(props)}
-    >
-      <Text intlMessage={props.intlMessage}>{props.children}</Text>
-    </span>
-  ) : (
+  return (
     <p
       css={bodyStyles(props, theme)}
       title={props.title}
@@ -248,8 +203,6 @@ Body.displayName = 'TextBody';
 export type TDetailProps = {
   isBold?: boolean;
   isItalic?: boolean;
-  // used for styling via `detailStyles`
-  isInline?: boolean;
   tone?:
     | 'primary'
     | 'secondary'
