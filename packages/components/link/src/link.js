@@ -32,7 +32,7 @@ const getLinkStyles = (props, theme) => {
     font-family: inherit;
     color: ${getColorValue(props.tone, overwrittenVars)};
     font-size: ${overwrittenVars.fontSizeDefault};
-    text-decoration: ${props.hasUnderline ? 'underline' : 'none'};
+    text-decoration: 'underline';
 
     &:hover,
     &:focus,
@@ -82,7 +82,6 @@ Link.displayName = 'Link';
 
 Link.propTypes = {
   tone: PropTypes.oneOf(['primary', 'inverted']),
-  hasUnderline: PropTypes.bool.isRequired,
   isExternal: PropTypes.bool.isRequired,
   to: requiredIf(
     PropTypes.oneOfType([
@@ -109,7 +108,6 @@ Link.propTypes = {
 
 Link.defaultProps = {
   tone: 'primary',
-  hasUnderline: true,
   isExternal: false,
 };
 
