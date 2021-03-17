@@ -1,8 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { warning } from '@commercetools-uikit/utils';
-import { getMaxPropTokenValue, getMaxPropEquivalent } from '../helpers';
+import { getMaxPropTokenValue } from '../helpers';
 
 type TMaxProp =
   | 1
@@ -24,61 +23,35 @@ type TMaxProp =
   | 'scale'
   | 'auto';
 
-type TConstraintProp = 'xs' | 's' | 'm' | 'l' | 'xl' | 'scale';
 type TProps = {
   /**
    * Determines scale of the constraint.
    */
   max?: TMaxProp;
-  /**
-   * @deprecated: Please use the `max` prop instead. Determines scale of the constraint.
-   */
-  constraint?: TConstraintProp;
   children: React.ReactNode;
 };
 
-function getConstraintStyles(
-  maxProp?: TMaxProp,
-  constraintProp?: TConstraintProp
-) {
-  const constraintToken = maxProp
-    ? getMaxPropTokenValue(maxProp)
-    : getMaxPropTokenValue(getMaxPropEquivalent(constraintProp));
-
+function getConstraintStyles(maxProp?: TMaxProp) {
+  const constraintToken = maxProp ? getMaxPropTokenValue(maxProp) : null;
   return css`
     ${constraintToken ? `max-width: ${constraintToken};` : ''}
     ${maxProp === 'auto' ? 'width: auto;' : ''}
   `;
 }
 
-const Horizontal = (props: TProps) => {
-  warning(
-    !(props.constraint && props.max),
-    '`ui-kit/constraints/horizontal: props `constraint` and `max` should not be used in conjunction. Please prefer `max` prop.'
-  );
-
-  // TODO: uncomment this when we effectively deprecate the constraint prop
-  // if (props.constraint != null) {
-  //   warnDeprecatedProp(
-  //     'constraint',
-  //     'Constraints.Horizontal',
-  //     `\n Please use "max" prop instead.`
-  //   );
-
-  return (
-    <div
-      css={[
-        css`
-          width: 100%;
-          position: relative;
-        `,
-        getConstraintStyles(props.max, props.constraint),
-      ]}
-      {...filterDataAttributes(props)}
-    >
-      {props.children}
-    </div>
-  );
-};
+const Horizontal = (props: TProps) => (
+  <div
+    css={[
+      css`
+        width: 100%;
+        position: relative;
+      `,
+      getConstraintStyles(props.max),
+    ]}
+    {...filterDataAttributes(props)}
+  >
+    {props.children}
+  </div>
+);
 
 export default Horizontal;

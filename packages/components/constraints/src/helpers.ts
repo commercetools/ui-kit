@@ -24,6 +24,7 @@ const parseHorizontalConstraintProp = (prop: number | string) => {
     // prop is of type `max`
     return prop;
   }
+  // @TODO: remove this dependency
   // prop is of type `constraint`
   return getMaxPropEquivalent(prop);
 };
@@ -39,7 +40,6 @@ const getAcceptedMaxPropValues = (min = 1, max = 16) => {
 
 export {
   getMaxPropTokenValue,
-  getMaxPropEquivalent,
   parseHorizontalConstraintProp,
   getAcceptedMaxPropValues,
 };
