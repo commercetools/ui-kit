@@ -34,10 +34,6 @@ const italic = `
   font-style: italic;
 `;
 
-const inline = `
-  display: inline-block;
-`;
-
 const getTone = (tone: string, theme: Theme) => {
   const overwrittenVars = {
     ...vars,
@@ -93,7 +89,7 @@ export const bodyStyles = (props: TBodyProps, theme: Theme) => css`
 export const headlineStyles = (props: THeadlineProps, theme: Theme) => css`
   ${getBaseStyles(theme)}
   margin: 0;
-  font-size: ${getElementFontSize(props.as || props.elementType)};
+  font-size: ${getElementFontSize(props.as)};
   font-weight: 300;
   ${props.truncate && truncate}
 `;
@@ -104,7 +100,7 @@ export const subheadlineStyles = (
 ) => css`
   ${getBaseStyles(theme)}
   margin: 0;
-  font-size: ${getElementFontSize(props.as || props.elementType)};
+  font-size: ${getElementFontSize(props.as)};
   font-weight: normal;
   ${props.truncate && truncate}
   ${props.isBold && bold}
@@ -121,7 +117,6 @@ export const detailStyles = (props: TDetailProps, theme: Theme) => css`
   ${getBaseStyles(theme)}
   display: block;
   font-size: 0.9231rem;
-  ${props.isInline && inline}
   ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.tone && getTone(props.tone, theme)}
