@@ -31,17 +31,13 @@ export const Body = styled.div`
 // with the styles we get from react-popper :D
 // eslint-disable-next-line import/prefer-default-export
 export const getBodyStyles = ({ constraint, placement, customStyles }) => {
-  const parsedConstraint = Constraints.parseHorizontalConstraintProp(
-    constraint
-  );
-
   return {
     fontFamily: 'inherit',
     margin: `${getOffsetMargin({ placement })} !important`,
-    maxWidth: vars[`constraint${parsedConstraint}`],
+    maxWidth: vars[`constraint${constraint}`],
     // so hovering over the tooltip when the tooltip overlaps the component
     pointerEvents: 'none',
-    width: parsedConstraint === 'auto' ? 'auto' : undefined,
+    width: constraint === 'auto' ? 'auto' : undefined,
     zIndex: 1,
     ...customStyles,
   };

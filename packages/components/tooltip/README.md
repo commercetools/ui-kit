@@ -31,6 +31,7 @@ npm --save install react
 
 ```jsx
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import styled from '@emotion/styled';
 import Tooltip from '@commercetools-uikit/tooltip';
@@ -77,6 +78,9 @@ const Wrapper = React.forwardRef((props, ref) => (
     {props.children}
   </div>
 ));
+Wrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 const FullWidthButton = styled.button`
   display: block;
   width: 100%;
@@ -130,6 +134,9 @@ const ExampleWithConditionals = (props) => (
     <button disabled={props.isDisabled}>Submit</button>
   </Tooltip>
 );
+ExampleWithConditionals.propTypes = {
+  isDisabled: PropTypes.bool,
+};
 
 /**
  * 7. Fine-tuning underlying Popper.js behavior
@@ -156,6 +163,9 @@ const ExampleWithCustomPopperBehavior = (props) => (
     <button disabled={props.isDisabled}>Submit</button>
   </Tooltip>
 );
+ExampleWithCustomPopperBehavior.propTypes = {
+  isDisabled: PropTypes.bool,
+};
 
 export {
   ExampleStandard,
@@ -173,7 +183,7 @@ export {
 | Props                                         | Type                                                                                                                                                                           | Required | Default        | Description                                                                                                                                                                                              |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------: | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `children`                                    | `node`                                                                                                                                                                         |    ✅    |                |                                                                                                                                                                                                          |
-| `horizontalConstraint`                        | `enum`<br/>Possible values:<br/>`'xs', 's', 'm', 'l', 'xl', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'`                                            |          | `'scale'`      | Horizontal size limit of the tooltip.                                                                                                                                                                    |
+| `horizontalConstraint`                        | `enum`<br/>Possible values:<br/>`1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'`                                                                       |          | `'scale'`      | Horizontal size limit of the tooltip.                                                                                                                                                                    |
 | `closeAfter`                                  | `number`                                                                                                                                                                       |          | `0`            | Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip.                                                                                                         |
 | `styles`                                      | `object`                                                                                                                                                                       |          | `{ body: {} }` | Custom css-in-js object styles for the tooltip body.                                                                                                                                                     |
 | `styles.body`                                 | `object`                                                                                                                                                                       |    ✅    | `{ body: {} }` |                                                                                                                                                                                                          |
