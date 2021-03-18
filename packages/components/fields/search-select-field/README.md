@@ -39,7 +39,7 @@ const Example = () => (
     id="customer"
     name="customer"
     isRequired={true}
-    horizontalConstraint="m"
+    horizontalConstraint={7}
     optionType="single-lined"
     isAutofocussed={false}
     backspaceRemovesValue={true}
