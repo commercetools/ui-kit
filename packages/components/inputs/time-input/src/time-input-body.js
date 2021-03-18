@@ -98,11 +98,6 @@ TimeInputBody.propTypes = {
   onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   horizontalConstraint: PropTypes.oneOf([
-    'xs',
-    's',
-    'm',
-    'l',
-    'xl',
     1,
     2,
     3,

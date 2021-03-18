@@ -99,9 +99,6 @@ class DateRangeCalendar extends React.Component {
      * Horizontal size limit of the input field.
      */
     horizontalConstraint: PropTypes.oneOf([
-      'm',
-      'l',
-      'xl',
       6,
       7,
       8,
@@ -238,11 +235,7 @@ class DateRangeCalendar extends React.Component {
   };
   render() {
     return (
-      <Constraints.Horizontal
-        max={Constraints.parseHorizontalConstraintProp(
-          this.props.horizontalConstraint
-        )}
-      >
+      <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Downshift
           key={this.props.intl.locale}
           inputId={this.props.id}

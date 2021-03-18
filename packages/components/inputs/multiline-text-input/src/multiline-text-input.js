@@ -43,11 +43,7 @@ const MultilineTextInput = (props) => {
 
   const theme = useTheme();
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
         <MultilineInput
           theme={theme}
@@ -174,9 +170,6 @@ MultilineTextInput.propTypes = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf([
-    'm',
-    'l',
-    'xl',
     6,
     7,
     8,

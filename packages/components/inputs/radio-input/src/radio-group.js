@@ -57,11 +57,7 @@ const Group = (props) => {
   }
   return (
     <div aria-labelledby={props.id}>
-      <Constraints.Horizontal
-        max={Constraints.parseHorizontalConstraintProp(
-          props.horizontalConstraint
-        )}
-      >
+      <Constraints.Horizontal max={props.horizontalConstraint}>
         <Stack {...props.directionProps} {...filterDataAttributes(props)}>
           {optionElements}
         </Stack>
@@ -83,9 +79,6 @@ Group.propTypes = {
   hasError: PropTypes.bool,
   hasWarning: PropTypes.bool,
   horizontalConstraint: PropTypes.oneOf([
-    'm',
-    'l',
-    'xl',
     7,
     8,
     9,
