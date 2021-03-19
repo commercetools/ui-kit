@@ -44,7 +44,7 @@ const Example = () => (
   <Tag
     type="normal"
     isDisabled={false}
-    linkTo="/project-key/products/icecream"
+    to="/project-key/products/icecream"
     onRemove={() => {}}
   >
     Icecream
