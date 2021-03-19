@@ -38,6 +38,7 @@
 '@commercetools-uikit/rich-text-input': major
 '@commercetools-uikit/search-select-input': major
 '@commercetools-uikit/select-input': major
+'@commercetools-uikit/tag': major
 '@commercetools-uikit/text-input': major
 '@commercetools-uikit/time-input': major
 '@commercetools-uikit/tooltip': major
