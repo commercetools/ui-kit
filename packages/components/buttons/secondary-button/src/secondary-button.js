@@ -136,13 +136,12 @@ SecondaryButton.propTypes = {
   }),
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   to(props, propName, componentName, ...rest) {
-    if (props[propName] !== null) {
+    if (props[propName]) {
       if (!props.as) {
         return new Error(oneLine`
           Invalid prop "${propName}" supplied to "${componentName}".
           "${propName}" does not have any effect when "as" is not defined`);
       }
-
       return PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.shape({
@@ -152,7 +151,6 @@ SecondaryButton.propTypes = {
         }),
       ])(props, propName, componentName, ...rest);
     }
-
     return PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.shape({
