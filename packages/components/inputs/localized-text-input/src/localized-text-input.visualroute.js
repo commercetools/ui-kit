@@ -28,7 +28,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         defaultExpandLanguages={true}
       />
     </Spec>
@@ -37,7 +37,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hideLanguageExpansionControls={true}
       />
     </Spec>
@@ -46,7 +46,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
         defaultExpandLanguages={true}
       />
@@ -56,7 +56,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
       />
     </Spec>
@@ -65,7 +65,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
         defaultExpandLanguages={true}
       />
@@ -75,7 +75,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -84,7 +84,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ en: <ErrorMessage>foo</ErrorMessage> }}
       />
     </Spec>
@@ -93,7 +93,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ de: <ErrorMessage>foo</ErrorMessage> }}
       />
     </Spec>
@@ -102,7 +102,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
       />
     </Spec>
@@ -112,7 +112,7 @@ export const component = ({ themes }) => (
           value={value}
           onChange={() => {}}
           selectedLanguage="en"
-          horizontalConstraint="m"
+          horizontalConstraint={7}
         />
       </Spec>
     </ThemeProvider>

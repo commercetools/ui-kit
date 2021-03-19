@@ -19,7 +19,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
   </Suite>

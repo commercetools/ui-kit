@@ -13,28 +13,28 @@ export const routePath = '/constraints-horizontal';
 
 export const component = () => (
   <Suite>
-    <Spec label='when constraints is "xs"'>
-      <Constraints.Horizontal constraint="xs">
+    <Spec label="when constraints is 1">
+      <Constraints.Horizontal constraint={1}>
         <GreenBox />
       </Constraints.Horizontal>
     </Spec>
-    <Spec label='when constraints is "s"'>
-      <Constraints.Horizontal constraint="s">
+    <Spec label="when constraints is 3">
+      <Constraints.Horizontal constraint={3}>
         <GreenBox />
       </Constraints.Horizontal>
     </Spec>
-    <Spec label='when constraints is "m"'>
-      <Constraints.Horizontal constraint="m">
+    <Spec label="when constraints is 7">
+      <Constraints.Horizontal constraint={7}>
         <GreenBox />
       </Constraints.Horizontal>
     </Spec>
-    <Spec label='when constraints is "l"'>
-      <Constraints.Horizontal constraint="l">
+    <Spec label="when constraints is 10">
+      <Constraints.Horizontal constraint={10}>
         <GreenBox />
       </Constraints.Horizontal>
     </Spec>
-    <Spec label='when constraints is "xl"'>
-      <Constraints.Horizontal constraint="xl">
+    <Spec label="when constraints is 16">
+      <Constraints.Horizontal constraint={16}>
         <GreenBox />
       </Constraints.Horizontal>
     </Spec>

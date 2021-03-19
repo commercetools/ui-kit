@@ -22,7 +22,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when disabled">
@@ -32,7 +32,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -42,7 +42,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ missing: true }}
       />
     </Spec>
@@ -52,7 +52,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ missing: true }}
         touched={true}
       />
@@ -63,7 +63,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hint="Select a state"
       />
     </Spec>
@@ -74,7 +74,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
       />
     </Spec>
@@ -85,7 +85,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
       />
     </Spec>
@@ -106,7 +106,7 @@ const InteractionRoute = () => (
               onChange={() => {}}
               defaultOptions={false}
               loadOptions={loadOptions}
-              horizontalConstraint="m"
+              horizontalConstraint={7}
             />
           </Spec>
         </Suite>
@@ -124,7 +124,7 @@ const InteractionRoute = () => (
               onChange={() => {}}
               defaultOptions={true}
               loadOptions={loadOptions}
-              horizontalConstraint="m"
+              horizontalConstraint={7}
             />
           </Spec>
         </Suite>

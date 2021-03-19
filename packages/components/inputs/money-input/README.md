@@ -257,7 +257,7 @@ return (
           hasError={
             MoneyInput.isTouched(touched.somePrice) && Boolean(errors.somePrice)
           }
-          horizontalConstraint="l"
+          horizontalConstraint={10}
         />
         {touched.somePrice && errors.somePrice && errors.somePrice.missing && (
           <ErrorMessage>This field is required!</ErrorMessage>

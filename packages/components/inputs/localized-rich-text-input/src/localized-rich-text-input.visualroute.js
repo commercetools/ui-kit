@@ -39,7 +39,7 @@ const WrappedComponent = ({ onChange, value }) => {
       onChange={handleChange}
       value={value}
       selectedLanguage="en"
-      horizontalConstraint="m"
+      horizontalConstraint={7}
     />
   );
 };
@@ -74,7 +74,7 @@ const DefaultRoute = () => (
           es: emptyValue,
         }}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when multiline text is expanded by default" omitPropsList>
@@ -82,7 +82,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         defaultExpandMultilineText={true}
       />
     </Spec>
@@ -94,7 +94,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         defaultExpandMultilineText={true}
         defaultExpandLanguages={true}
       />
@@ -104,7 +104,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hideLanguageExpansionControls={true}
       />
     </Spec>
@@ -113,7 +113,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         defaultExpandLanguages={true}
       />
     </Spec>
@@ -122,7 +122,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
         defaultExpandLanguages={true}
       />
@@ -132,7 +132,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
       />
     </Spec>
@@ -141,7 +141,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
         defaultExpandLanguages={true}
       />
@@ -151,7 +151,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -163,7 +163,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ en: <ErrorMessage>foo</ErrorMessage> }}
       />
     </Spec>
@@ -175,7 +175,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ de: <ErrorMessage>foo</ErrorMessage> }}
       />
     </Spec>
@@ -184,7 +184,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
       />
     </Spec>
@@ -196,7 +196,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         warnings={{ en: <WarningMessage>foo</WarningMessage> }}
       />
     </Spec>
@@ -208,7 +208,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         warnings={{ de: <WarningMessage>foo</WarningMessage> }}
       />
     </Spec>
@@ -217,7 +217,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
       />
     </Spec>
@@ -226,7 +226,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         showExpandIcon={true}
         onClickExpand={() => {}}
       />
@@ -236,7 +236,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
         onClickExpand={() => {}}
       />
@@ -246,7 +246,7 @@ const DefaultRoute = () => (
         value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
         onClickExpand={() => {}}
       />

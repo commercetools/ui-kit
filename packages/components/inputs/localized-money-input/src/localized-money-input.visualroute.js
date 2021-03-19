@@ -45,7 +45,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hideCurrencyExpansionControls={true}
       />
     </Spec>
@@ -54,7 +54,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
         defaultExpandCurrencies={true}
       />
@@ -64,7 +64,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -73,7 +73,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
         defaultExpandCurrencies={true}
       />
@@ -83,7 +83,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
       />
     </Spec>
@@ -92,7 +92,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ CAD: <ErrorMessage>foo</ErrorMessage> }}
       />
     </Spec>
@@ -101,7 +101,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ EUR: <ErrorMessage>foo</ErrorMessage> }}
       />
     </Spec>
@@ -110,7 +110,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         warnings={{ CAD: <WarningMessage>foo</WarningMessage> }}
       />
     </Spec>
@@ -119,7 +119,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         warnings={{ EUR: <WarningMessage>foo</WarningMessage> }}
       />
     </Spec>
@@ -128,7 +128,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
       />
     </Spec>
@@ -137,7 +137,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedCurrency="CAD"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
       />
     </Spec>

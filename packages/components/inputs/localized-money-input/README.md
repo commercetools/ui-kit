@@ -305,7 +305,7 @@ return (
           onBlur={handleBlur}
           isDisabled={isSubmitting}
           errors={renderErrors(errors)}
-          horizontalConstraint="l"
+          horizontalConstraint={10}
         />
 
         <button type="submit">Submit</button>

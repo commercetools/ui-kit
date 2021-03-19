@@ -23,7 +23,7 @@ export const component = () => (
     <Spec label="minimal">
       <MoneyField
         title="Price"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={currencies}
@@ -32,7 +32,7 @@ export const component = () => (
     <Spec label="without currency selection">
       <MoneyField
         title="Price"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
       />
@@ -40,7 +40,7 @@ export const component = () => (
     <Spec label="when disabled">
       <MoneyField
         title="Price"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={currencies}
@@ -51,7 +51,7 @@ export const component = () => (
       <MoneyField
         title="Price"
         description="How much is the fish?"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={currencies}
@@ -60,7 +60,7 @@ export const component = () => (
     <Spec label="with high precision badge and regular price">
       <MoneyField
         title="Price"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={currencies}
@@ -70,7 +70,7 @@ export const component = () => (
     <Spec label="with high precision badge and high precision price">
       <MoneyField
         title="Price"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={highPrecisionValue}
         onChange={() => {}}
         currencies={currencies}
@@ -80,7 +80,7 @@ export const component = () => (
     <Spec label="with placeholder">
       <MoneyField
         title="Price"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={emptyValue}
         onChange={() => {}}
         currencies={currencies}
@@ -90,7 +90,7 @@ export const component = () => (
     <Spec label="with error when not touched">
       <MoneyField
         title="Price"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={emptyValue}
         onChange={() => {}}
         currencies={currencies}
@@ -100,7 +100,7 @@ export const component = () => (
     <Spec label="with error when touched">
       <MoneyField
         title="Price"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={emptyValue}
         onChange={() => {}}
         currencies={currencies}
@@ -111,7 +111,7 @@ export const component = () => (
     <Spec label="when readonly">
       <MoneyField
         title="Price"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={currencies}

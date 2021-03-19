@@ -12,7 +12,7 @@ export const component = () => (
       <DateTimeField
         timeZone="UTC"
         title="Release Date"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
       />
@@ -21,7 +21,7 @@ export const component = () => (
       <DateTimeField
         timeZone="UTC"
         title="Release Date"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         isDisabled={true}
@@ -31,7 +31,7 @@ export const component = () => (
       <DateTimeField
         timeZone="UTC"
         title="Release Date"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         isRequired={true}
@@ -42,7 +42,7 @@ export const component = () => (
         timeZone="UTC"
         title="Release Date"
         description="When will the product be avialable?"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
       />
@@ -51,7 +51,7 @@ export const component = () => (
       <DateTimeField
         timeZone="UTC"
         title="Release Date"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value=""
         onChange={() => {}}
         placeholder="Select release date"
@@ -61,7 +61,7 @@ export const component = () => (
       <DateTimeField
         timeZone="UTC"
         title="Release Date"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value=""
         onChange={() => {}}
         errors={{ missing: true }}
@@ -71,7 +71,7 @@ export const component = () => (
       <DateTimeField
         timeZone="UTC"
         title="Release Date"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value=""
         onChange={() => {}}
         errors={{ missing: true }}
@@ -82,7 +82,7 @@ export const component = () => (
       <DateTimeField
         timeZone="UTC"
         title="Release Date"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         isReadOnly

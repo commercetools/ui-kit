@@ -14,7 +14,7 @@ export const component = ({ themes }) => (
       <MultilineTextInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when disabled">
@@ -22,7 +22,7 @@ export const component = ({ themes }) => (
         isDisabled={true}
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when read-only">
@@ -30,7 +30,7 @@ export const component = ({ themes }) => (
         isReadOnly={true}
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when placeholder is visible">
@@ -38,7 +38,7 @@ export const component = ({ themes }) => (
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when placeholder is visible and input is disabled">
@@ -47,14 +47,14 @@ export const component = ({ themes }) => (
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="with error">
       <MultilineTextInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
       />
     </Spec>
@@ -62,7 +62,7 @@ export const component = ({ themes }) => (
       <MultilineTextInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
       />
     </Spec>
@@ -70,7 +70,7 @@ export const component = ({ themes }) => (
       <MultilineTextInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
         hasWarning={true}
       />
@@ -79,7 +79,7 @@ export const component = ({ themes }) => (
       <MultilineTextInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         defaultExpandMultilineText={true}
       />
     </Spec>
@@ -87,7 +87,7 @@ export const component = ({ themes }) => (
       <MultilineTextInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         defaultExpandMultilineText={true}
         isDisabled={true}
       />
@@ -97,7 +97,7 @@ export const component = ({ themes }) => (
         <MultilineTextInput
           value={value}
           onChange={() => {}}
-          horizontalConstraint="m"
+          horizontalConstraint={7}
         />
       </Spec>
     </ThemeProvider>

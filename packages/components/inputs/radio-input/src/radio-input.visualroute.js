@@ -92,7 +92,7 @@ export const component = () => (
         value="apples"
         onChange={() => {}}
         direction="stack"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       >
         <RadioInput.Option value="apples">
           <GreenBox>
@@ -109,7 +109,7 @@ export const component = () => (
         value="apples"
         onChange={() => {}}
         direction="stack"
-        horizontalConstraint="l"
+        horizontalConstraint={10}
       >
         <RadioInput.Option value="apples">
           <GreenBox>
@@ -126,7 +126,7 @@ export const component = () => (
         value="apples"
         onChange={() => {}}
         direction="stack"
-        horizontalConstraint="xl"
+        horizontalConstraint={16}
       >
         <RadioInput.Option value="apples">
           <GreenBox>

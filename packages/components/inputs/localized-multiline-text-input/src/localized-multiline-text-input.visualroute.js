@@ -32,7 +32,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         defaultExpandMultilineText={true}
       />
     </Spec>
@@ -41,7 +41,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         defaultExpandMultilineText={true}
         defaultExpandLanguages={true}
       />
@@ -51,7 +51,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hideLanguageExpansionControls={true}
       />
     </Spec>
@@ -60,7 +60,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         defaultExpandLanguages={true}
       />
     </Spec>
@@ -69,7 +69,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
         defaultExpandLanguages={true}
       />
@@ -79,7 +79,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
       />
     </Spec>
@@ -88,7 +88,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
         defaultExpandLanguages={true}
       />
@@ -98,7 +98,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -107,7 +107,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ en: <ErrorMessage>foo</ErrorMessage> }}
       />
     </Spec>
@@ -116,7 +116,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ de: <ErrorMessage>foo</ErrorMessage> }}
       />
     </Spec>
@@ -125,7 +125,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
       />
     </Spec>
@@ -134,7 +134,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         warnings={{ en: <WarningMessage>foo</WarningMessage> }}
       />
     </Spec>
@@ -143,7 +143,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         warnings={{ de: <WarningMessage>foo</WarningMessage> }}
       />
     </Spec>
@@ -152,7 +152,7 @@ export const component = ({ themes }) => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
       />
     </Spec>

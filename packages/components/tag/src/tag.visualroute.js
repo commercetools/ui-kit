@@ -24,28 +24,28 @@ export const component = ({ themes }) => (
         With remove
       </Tag>
     </Spec>
-    <Spec label="Normal - horizontalConstraint - xs">
-      <Tag type="normal" horizontalConstraint="xs">
+    <Spec label="Normal - horizontalConstraint - 1">
+      <Tag type="normal" horizontalConstraint={1}>
         Tag
       </Tag>
     </Spec>
-    <Spec label="Normal - horizontalConstraint - s">
-      <Tag type="normal" horizontalConstraint="s">
+    <Spec label="Normal - horizontalConstraint - 3">
+      <Tag type="normal" horizontalConstraint={3}>
         Tag
       </Tag>
     </Spec>
-    <Spec label="Normal - horizontalConstraint - m">
-      <Tag type="normal" horizontalConstraint="m">
+    <Spec label="Normal - horizontalConstraint - 7">
+      <Tag type="normal" horizontalConstraint={7}>
         Tag
       </Tag>
     </Spec>
-    <Spec label="Normal - horizontalConstraint - l">
-      <Tag type="normal" horizontalConstraint="l">
+    <Spec label="Normal - horizontalConstraint - 10">
+      <Tag type="normal" horizontalConstraint={10}>
         Tag
       </Tag>
     </Spec>
-    <Spec label="Normal - horizontalConstraint - xl">
-      <Tag type="normal" horizontalConstraint="xl">
+    <Spec label="Normal - horizontalConstraint - 16">
+      <Tag type="normal" horizontalConstraint={16}>
         Tag
       </Tag>
     </Spec>
@@ -92,42 +92,42 @@ export const component = ({ themes }) => (
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with to - horizontalConstraint - xs"
+      label="Normal - with to - horizontalConstraint - 1"
       propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" to="foo/bar" horizontalConstraint="xs">
+      <Tag type="normal" to="foo/bar" horizontalConstraint={1}>
         Tag
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with to - horizontalConstraint - s"
+      label="Normal - with to - horizontalConstraint - 3"
       propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" to="foo/bar" horizontalConstraint="s">
+      <Tag type="normal" to="foo/bar" horizontalConstraint={3}>
         Tag
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with to - horizontalConstraint - m"
+      label="Normal - with to - horizontalConstraint - 7"
       propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" to="foo/bar" horizontalConstraint="m">
+      <Tag type="normal" to="foo/bar" horizontalConstraint={7}>
         Tag
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with to - horizontalConstraint - l"
+      label="Normal - with to - horizontalConstraint - 10"
       propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" to="foo/bar" horizontalConstraint="l">
+      <Tag type="normal" to="foo/bar" horizontalConstraint={10}>
         Tag
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with to - horizontalConstraint - xl"
+      label="Normal - with to - horizontalConstraint - 16"
       propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" to="foo/bar" horizontalConstraint="xl">
+      <Tag type="normal" to="foo/bar" horizontalConstraint={16}>
         Tag
       </Tag>
     </Spec>
