@@ -1,5 +1,6 @@
 ---
 '@commercetools-uikit/secondary-button': major
+'@commercetools-uikit/tag': major
 ---
 
-refactor(secondary-button): remove linkTo
+remove `linkTo` prop in favor of `to`
