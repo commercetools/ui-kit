@@ -7,7 +7,10 @@ import requiredIf from 'react-required-if';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Inline from '@commercetools-uikit/spacings-inline';
-import { filterInvalidAttributes } from '@commercetools-uikit/utils';
+import {
+  filterInvalidAttributes,
+  warnDeprecatedProp,
+} from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 
@@ -24,11 +27,14 @@ export const getIconColor = (props) => {
 
 export const SecondaryButton = (props) => {
   const isActive = props.isToggleButton && props.isToggled;
-  const shouldUseLinkTag = !props.isDisabled && Boolean(props.to);
+  const shouldUseLinkTag = !props.isDisabled && Boolean(props.linkTo);
+
+  const asProps = shouldUseLinkTag ? { as: Link } : { as: props.as };
+
   const buttonAttributes = {
     'data-track-component': 'SecondaryButton',
     ...filterInvalidAttributes(props),
-    ...(shouldUseLinkTag ? { to: props.to } : {}),
+    ...(shouldUseLinkTag ? { to: props.linkTo } : {}),
   };
 
   const containerStyles = [
@@ -48,7 +54,7 @@ export const SecondaryButton = (props) => {
 
   return (
     <AccessibleButton
-      as={shouldUseLinkTag ? Link : props.as}
+      {...asProps}
       type={props.type}
       buttonAttributes={buttonAttributes}
       label={props.label}
@@ -114,7 +120,17 @@ SecondaryButton.propTypes = {
     );
   },
   isDisabled: PropTypes.bool,
+  buttonAttributes: PropTypes.object,
   type: (props, propName, componentName, ...rest) => {
+    // the type defaults to `button`, so we don't need to handle undefined
+    if (props.linkTo && props.type !== 'button') {
+      throw new Error(
+        oneLine`
+          ${componentName}: "${propName}" does not have any effect when
+          "linkTo" is set.
+        `
+      );
+    }
     if (props.as && props.type !== 'button') {
       throw new Error(
         oneLine`
@@ -132,16 +148,51 @@ SecondaryButton.propTypes = {
   },
 
   onClick: requiredIf(PropTypes.func, (props) => {
-    return !props.to && !props.as;
+    return !props.linkTo && !props.as;
   }),
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   to(props, propName, componentName, ...rest) {
-    if (props[propName]) {
+    if (props[propName] != null) {
       if (!props.as) {
         return new Error(oneLine`
           Invalid prop "${propName}" supplied to "${componentName}".
           "${propName}" does not have any effect when "as" is not defined`);
       }
+
+      return PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          pathname: PropTypes.string.isRequired,
+          search: PropTypes.string,
+          query: PropTypes.objectOf(PropTypes.string),
+        }),
+      ])(props, propName, componentName, ...rest);
+    }
+
+    return PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+        search: PropTypes.string,
+        query: PropTypes.objectOf(PropTypes.string),
+      }),
+    ])(props, propName, componentName, ...rest);
+  },
+  linkTo(props, propName, componentName, ...rest) {
+    // here
+    if (props[propName] != null) {
+      warnDeprecatedProp(
+        propName,
+        componentName,
+        `\n Please use "as" prop instead.`
+      );
+
+      if (props.as) {
+        return new Error(oneLine`
+          Invalid prop "${propName}" supplied to "${componentName}".
+          "${propName}" does not have any effect when "as" is defined`);
+      }
+
       return PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.shape({

@@ -1,5 +1,11 @@
 # RichTextInput
 
+### THIS COMPONENT IS IN BETA!
+
+Please be aware that this component may be subject to upcoming breaking changes as it's still in active development.
+
+---
+
 ## Description
 
 A controlled rich text input component for rich text with validation

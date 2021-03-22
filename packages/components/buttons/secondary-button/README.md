@@ -31,7 +31,7 @@ import SecondaryButton from '@commercetools-uikit/secondary-button';
 | `buttonAttributes` | `object`              |    -     | -                           | -         | Allows setting custom attributes on the underlying button html element                                                                           |
 | `type`             | `string`              |    -     | `submit`, `reset`, `button` | `button`  | Used as the HTML `type` attribute.                                                                                                               |
 | `onClick`          | `func`                |          | -                           | -         | What the button will trigger when clicked                                                                                                        |
-| `to`               | `string` or `object`  |    -     | -                           | -         | Where the button should redirect when clicked                                                                                                    |
+| `linkTo`           | `string` or `object`  |    -     | -                           | -         | Where the button should redirect when clicked                                                                                                    |
 | `as`               | `string` or `element` |    -     | -                           | -         | You may pass in a string like "a" to have the button render as an anchor tag instead. Or you could pass in a React Component, like a `Link`.     |
 
 The component further forwards all valid HTML attributes to the underlying `button` component.

@@ -19,11 +19,13 @@ storiesOf('Components|Buttons', module)
     },
   })
   .add('SecondaryButton', () => {
-    const toProp = text('to');
+    const linkTo = text('linkTo');
+
     const isToggled = boolean('isToggled', false);
     const isToggleButton = boolean('isToggleButton', false);
     const toggleProps = isToggleButton ? { isToggled } : {};
-    const linkProps = (toProp ?? '').length > 0 ? { to: toProp, as: Link } : {};
+    const linkProps = linkTo && linkTo !== '' ? { to: linkTo, as: Link } : {};
+
     return (
       <Section>
         <MemoryRouter>

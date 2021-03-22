@@ -35,6 +35,7 @@ export {
 } from '@commercetools-uikit/pagination';
 export { default as Spacings } from '@commercetools-uikit/spacings';
 export { default as Stamp } from '@commercetools-uikit/stamp';
+export { Table, BaseTable, TableCell } from '@commercetools-uikit/table';
 export { default as DataTable } from '@commercetools-uikit/data-table';
 export { default as DataTableManager } from '@commercetools-uikit/data-table-manager';
 export { default as Tag } from '@commercetools-uikit/tag';

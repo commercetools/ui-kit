@@ -65,9 +65,9 @@ describe('when disabled', () => {
   });
 });
 
-describe('when `to` is set', () => {
+describe('when linkTo is set', () => {
   it('should redirect when clicked', () => {
-    const { history } = render(<Tag to="/foo">Bread</Tag>);
+    const { history } = render(<Tag linkTo="/foo">Bread</Tag>);
     screen.getByText('Bread').click();
 
     expect(history.location.pathname).toBe('/foo');
@@ -76,7 +76,7 @@ describe('when `to` is set', () => {
   it('should still call onClick when clicked', () => {
     const onClick = jest.fn();
     const { history } = render(
-      <Tag onClick={onClick} to="/foo">
+      <Tag onClick={onClick} linkTo="/foo">
         Bread
       </Tag>
     );
@@ -89,7 +89,7 @@ describe('when `to` is set', () => {
   it('should not redirect when removed', () => {
     const onRemove = jest.fn();
     const { history } = render(
-      <Tag onRemove={onRemove} to="/foo">
+      <Tag onRemove={onRemove} linkTo="/foo">
         Bread
       </Tag>
     );
@@ -106,7 +106,7 @@ describe('when `to` is set', () => {
 
   it('should not redirect when disabled', () => {
     const { history } = render(
-      <Tag to="/foo" isDisabled={true}>
+      <Tag linkTo="/foo" isDisabled={true}>
         Bread
       </Tag>
     );

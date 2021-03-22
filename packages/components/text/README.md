@@ -18,13 +18,14 @@ import Text from '@commercetools-uikit/text';
 
 ### Properties
 
-| Props         | Type             | Required | Values               | Default | Description                                                            |
-| ------------- | ---------------- | :------: | -------------------- | ------- | ---------------------------------------------------------------------- |
-| `as`          | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                                      |
-| `children`    | `PropTypes.node` | ✅ (\*)  | -                    | -       | -                                                                      |
-| `intlMessage` | `intl message`   | ✅ (\*)  | -                    | -       | An `intl` message object that will be rendered with `FormattedMessage` |
-| `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element                    |
-| `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width         |
+| Props         | Type             | Required | Values               | Default | Description                                                          |
+| ------------- | ---------------- | :------: | -------------------- | ------- | -------------------------------------------------------------------- |
+| `as`          | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                                    |
+| `children`    | `PropTypes.node` | ✅ (\*)  | -                    | -       | -                                                                    |
+| `intlMessage` | `intl message`   | ✅ (\*)  | -                    | -       | An intl message object that will be rendered with `FormattedMessage` |
+| `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element                  |
+| `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width       |
+| `elementType` | `String`         |    -     | `['h1', 'h2', 'h3']` | -       | ⚠️ Deprecated                                                        |
 
 > `*`: `children` is required only if `intlMessage` is not provided
 
@@ -43,20 +44,21 @@ Wraps the given text in the given HTML header `size`.
 ```js
 import Text from '@commercetools-uikit/text';
 
-<Text.Subheadline as="h4">{'The subtitle'}</Text.Subheadline>;
+<Text.Subheadline elementType="h4">{'The subtitle'}</Text.Subheadline>;
 ```
 
 ### Properties
 
 | Props         | Type             | Required | Values                                                            | Default |
-| ------------- | ---------------- | :------: | ----------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
+| ------------- | ---------------- | :------: | ----------------------------------------------------------------- | ------- |
 | `as`          | `String`         |    ✅    | `['h4', 'h5']`                                                    | -       |
 | `isBold`      | `Boolean`        |    -     | -                                                                 | `false` |
 | `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative']` | -       |
 | `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                 | -       |
-| `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                 | -       | An `intl` message object that will be rendered with `FormattedMessage` |
+| `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                 | -       | An intl message object that will be rendered with `FormattedMessage` |
 | `title`       | `String`         |    -     | -                                                                 | -       |
 | `truncate`    | `Bool`           |    -     | -                                                                 | `false` |
+| `elementType` | `String`         |    -     | `['h4', 'h5']`                                                    | -       | ⚠️ Deprecated |
 
 > `*`: `children` is required only if `intlMessage` is not provided
 
@@ -97,15 +99,16 @@ import Text from '@commercetools-uikit/text';
 ### Properties
 
 | Props         | Type             | Required | Values                                                                        | Default |
-| ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
+| ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
 | `as`          | `String`         |    -     | `['p', 'span']`                                                               | -       |
 | `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |
 | `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |
 | `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'inverted']` | -       |
 | `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |
-| `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                             | -       | An `intl` message object that will be rendered with `FormattedMessage` |
+| `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                             | -       | An intl message object that will be rendered with `FormattedMessage` |
 | `title`       | `String`         |    -     | -                                                                             | -       |
 | `truncate`    | `Bool`           |    -     | -                                                                             | `false` |
+| `isInline`    | `Bool`           |    -     | -                                                                             | `false` | ⚠️ Deprecated |
 
 > `*`: `children` is required only if `intlMessage` is not provided
 
@@ -132,14 +135,15 @@ import Text from '@commercetools-uikit/text';
 ### Properties
 
 | Props         | Type             | Required | Values                                                                        | Default |
-| ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
+| ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- |
 | `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |
 | `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |
 | `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'warning'']` | -       |
 | `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |
-| `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                             | -       | An `intl` message object that will be rendered with `FormattedMessage` |
+| `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                             | -       | An intl message object that will be rendered with `FormattedMessage` |
 | `title`       | `String`         |    -     | -                                                                             | -       |
 | `truncate`    | `Bool`           |    -     | -                                                                             | `false` |
+| `isInline`    | `Bool`           |    -     | -                                                                             | `false` |
 
 > `*`: `children` is required only if `intlMessage` is not provided
 

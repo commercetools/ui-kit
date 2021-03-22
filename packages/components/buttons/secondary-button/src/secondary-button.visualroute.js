@@ -84,7 +84,7 @@ export const component = () => (
     </Spec>
 
     <Spec label="when used as link">
-      <SecondaryButton label="A label text" to="/" />
+      <SecondaryButton label="A label text" linkTo="/" />
     </Spec>
   </Suite>
 );
