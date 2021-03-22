@@ -6,7 +6,7 @@ describe('Constraints.Horizontal', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('when constraints is "xs"');
+    await expect(page).toMatch('when constraints is 1');
     await percySnapshot(page, 'Constraints.Horizontal');
   });
 });
