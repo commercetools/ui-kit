@@ -1,11 +1,5 @@
 # LocalizedRichTextInput
 
-### THIS COMPONENT IS IN BETA!
-
-Please be aware that this component may be subject to upcoming breaking changes as it's still in active development.
-
----
-
 ## Description
 
 A controlled text input component for localized rich text input with validation
