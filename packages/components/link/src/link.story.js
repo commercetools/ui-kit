@@ -20,7 +20,6 @@ storiesOf('Components|Links', module)
         <Link
           tone={select('Tone', ['primary', 'inverted'])}
           to={text('to', '/foo/bar')}
-          hasUnderline={boolean('hasUnderline', true)}
           isExternal={boolean('isExternal', false)}
         >
           {text('label', 'Accessibility text')}
