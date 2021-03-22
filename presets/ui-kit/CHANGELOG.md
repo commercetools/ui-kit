@@ -1,5 +1,31 @@
 # @commercetools-frontend/ui-kit
 
+## 12.0.0
+
+### Major Changes
+
+- [#1830](https://github.com/commercetools/ui-kit/pull/1830) [`66491924`](https://github.com/commercetools/ui-kit/commit/664919248cfa14d6553da4007aff380ad6e64de9) Thanks [@adnasa](https://github.com/adnasa)! - refactor(components): remove `Table` in favor of `DataTable`
+
+### Patch Changes
+
+- Updated dependencies [[`66491924`](https://github.com/commercetools/ui-kit/commit/664919248cfa14d6553da4007aff380ad6e64de9), [`66491924`](https://github.com/commercetools/ui-kit/commit/664919248cfa14d6553da4007aff380ad6e64de9), [`66491924`](https://github.com/commercetools/ui-kit/commit/664919248cfa14d6553da4007aff380ad6e64de9)]:
+  - @commercetools-uikit/tag@12.0.0
+  - @commercetools-uikit/text@12.0.0
+  - @commercetools-uikit/link@12.0.0
+  - @commercetools-uikit/inputs@12.0.0
+  - @commercetools-uikit/data-table-manager@12.0.0
+  - @commercetools-uikit/buttons@12.0.0
+  - @commercetools-uikit/collapsible-panel@12.0.0
+  - @commercetools-uikit/field-label@12.0.0
+  - @commercetools-uikit/label@12.0.0
+  - @commercetools-uikit/loading-spinner@12.0.0
+  - @commercetools-uikit/messages@12.0.0
+  - @commercetools-uikit/pagination@12.0.0
+  - @commercetools-uikit/primary-action-dropdown@12.0.0
+  - @commercetools-uikit/data-table@12.0.0
+  - @commercetools-uikit/field-errors@12.0.0
+  - @commercetools-uikit/fields@12.0.0
+
 ## 11.2.0
 
 ### Patch Changes

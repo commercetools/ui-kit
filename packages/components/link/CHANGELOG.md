@@ -1,5 +1,11 @@
 # @commercetools-uikit/link
 
+## 12.0.0
+
+### Major Changes
+
+- [#1830](https://github.com/commercetools/ui-kit/pull/1830) [`66491924`](https://github.com/commercetools/ui-kit/commit/664919248cfa14d6553da4007aff380ad6e64de9) Thanks [@adnasa](https://github.com/adnasa)! - refactor(link): remove `hasUnderline` prop
+
 ## 11.2.0
 
 ### Patch Changes

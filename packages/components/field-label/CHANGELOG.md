@@ -1,5 +1,14 @@
 # @commercetools-uikit/field-label
 
+## 12.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`66491924`](https://github.com/commercetools/ui-kit/commit/664919248cfa14d6553da4007aff380ad6e64de9)]:
+  - @commercetools-uikit/text@12.0.0
+  - @commercetools-uikit/buttons@12.0.0
+  - @commercetools-uikit/label@12.0.0
+
 ## 11.2.0
 
 ### Patch Changes

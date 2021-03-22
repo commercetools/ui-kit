@@ -1,5 +1,16 @@
 # @commercetools-uikit/rich-text-input
 
+## 12.0.0
+
+### Patch Changes
+
+- [#1830](https://github.com/commercetools/ui-kit/pull/1830) [`66491924`](https://github.com/commercetools/ui-kit/commit/664919248cfa14d6553da4007aff380ad6e64de9) Thanks [@adnasa](https://github.com/adnasa)! - set rich-text out of beta
+
+- Updated dependencies []:
+  - @commercetools-uikit/flat-button@12.0.0
+  - @commercetools-uikit/input-utils@12.0.0
+  - @commercetools-uikit/rich-text-utils@12.0.0
+
 ## 11.2.0
 
 ### Patch Changes

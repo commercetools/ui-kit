@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/radio-input",
   "description": "A RadioInput represents a group of options where only one option can be selected at a time.",
-  "version": "11.2.0",
+  "version": "12.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "@commercetools-uikit/constraints": "11.2.0",
     "@commercetools-uikit/design-system": "11.0.2",
     "@commercetools-uikit/icons": "11.2.0",
-    "@commercetools-uikit/input-utils": "11.2.0",
+    "@commercetools-uikit/input-utils": "12.0.0",
     "@commercetools-uikit/spacings-inline": "11.2.0",
     "@commercetools-uikit/spacings-stack": "11.2.0",
     "@commercetools-uikit/utils": "11.2.0",

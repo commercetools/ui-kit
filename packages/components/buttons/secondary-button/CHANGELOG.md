@@ -1,5 +1,16 @@
 # @commercetools-uikit/secondary-button
 
+## 12.0.0
+
+### Major Changes
+
+- [#1830](https://github.com/commercetools/ui-kit/pull/1830) [`66491924`](https://github.com/commercetools/ui-kit/commit/664919248cfa14d6553da4007aff380ad6e64de9) Thanks [@adnasa](https://github.com/adnasa)! - remove `linkTo` prop in favor of `to`
+
+### Patch Changes
+
+- Updated dependencies [[`66491924`](https://github.com/commercetools/ui-kit/commit/664919248cfa14d6553da4007aff380ad6e64de9)]:
+  - @commercetools-uikit/text@12.0.0
+
 ## 11.2.0
 
 ### Patch Changes
