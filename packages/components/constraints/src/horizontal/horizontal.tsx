@@ -25,7 +25,7 @@ type TMaxProp =
 
 type TProps = {
   /**
-   * Determines scale of the constraint.
+   * The value of the constraint. See equivalent pixel values [here](https://uikit.commercetools.com/?path=/story/basics-tokens--all-tokens).
    */
   max?: TMaxProp;
   children: React.ReactNode;

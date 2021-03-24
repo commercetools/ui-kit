@@ -1460,6 +1460,26 @@
     eslint-plugin-react-hooks "^4.2.0"
     eslint-plugin-testing-library "^3.10.1"
 
+"@commercetools-uikit/table@11.2.0":
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/@commercetools-uikit/table/-/table-11.2.0.tgz#048ff764b529bda486bde22fcb8a6a7876959b43"
+  integrity sha512-cRicu7yduHMXmGlCZwzpR96l6Bnoz0QRwQK3JM2x9UVHxGUVPtx3wSi+HsBYQeGkcYpoVCtoOXXRlqm9qvOyWg==
+  dependencies:
+    "@babel/runtime" "7.13.9"
+    "@babel/runtime-corejs3" "7.13.9"
+    "@commercetools-uikit/design-system" "11.0.2"
+    "@commercetools-uikit/icons" "11.2.0"
+    "@commercetools-uikit/spacings-inset" "11.2.0"
+    "@commercetools-uikit/spacings-inset-squish" "11.2.0"
+    "@commercetools-uikit/text" "11.2.0"
+    "@commercetools-uikit/utils" "11.2.0"
+    "@emotion/react" "^11.1.1"
+    "@emotion/styled" "^11.0.0"
+    dom-helpers "5.2.0"
+    lodash "4.17.20"
+    prop-types "15.7.2"
+    react-virtualized "9.22.3"
+
 "@commercetools/github-labels@1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@commercetools/github-labels/-/github-labels-1.1.0.tgz#0be242831fad863cd5bd7b41b7366763ea7dbeea"
