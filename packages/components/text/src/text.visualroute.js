@@ -164,10 +164,6 @@ export const component = ({ themes }) => (
         </Text.Detail>
       </Spec>
     </NarrowBox>
-    <Spec label="Detail - inline" omitPropsList>
-      <Text.Detail isInline={true}>One inline detail text{'. '}</Text.Detail>
-      <Text.Detail isInline={true}>A second inline text.</Text.Detail>
-    </Spec>
     <Spec label="Headline - h1 (intl message)">
       <Text.Headline as="h1" intlMessage={intlMessage} />
     </Spec>
