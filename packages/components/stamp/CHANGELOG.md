@@ -1,5 +1,14 @@
 # @commercetools-uikit/stamp
 
+## 11.2.1
+
+### Patch Changes
+
+- [#1836](https://github.com/commercetools/ui-kit/pull/1836) [`f4b53b59`](https://github.com/commercetools/ui-kit/commit/f4b53b59971711b0b585a39246ad2c52c85288b9) Thanks [@adnasa](https://github.com/adnasa)! - chore: update dependencies
+
+- Updated dependencies [[`f4b53b59`](https://github.com/commercetools/ui-kit/commit/f4b53b59971711b0b585a39246ad2c52c85288b9)]:
+  - @commercetools-uikit/design-system@11.2.1
+
 ## 11.0.2
 
 ### Patch Changes

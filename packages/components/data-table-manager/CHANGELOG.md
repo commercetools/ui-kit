@@ -1,5 +1,32 @@
 # @commercetools-uikit/data-table-manager
 
+## 11.2.1
+
+### Patch Changes
+
+- [#1836](https://github.com/commercetools/ui-kit/pull/1836) [`f4b53b59`](https://github.com/commercetools/ui-kit/commit/f4b53b59971711b0b585a39246ad2c52c85288b9) Thanks [@adnasa](https://github.com/adnasa)! - chore: update dependencies
+
+- Updated dependencies [[`f4b53b59`](https://github.com/commercetools/ui-kit/commit/f4b53b59971711b0b585a39246ad2c52c85288b9)]:
+  - @commercetools-uikit/design-system@11.2.1
+  - @commercetools-uikit/accessible-hidden@11.2.1
+  - @commercetools-uikit/accessible-button@11.2.1
+  - @commercetools-uikit/primary-button@11.2.1
+  - @commercetools-uikit/secondary-button@11.2.1
+  - @commercetools-uikit/secondary-icon-button@11.2.1
+  - @commercetools-uikit/card@11.2.1
+  - @commercetools-uikit/collapsible-motion@11.2.1
+  - @commercetools-uikit/field-label@11.2.1
+  - @commercetools-uikit/grid@11.2.1
+  - @commercetools-uikit/icons@11.2.1
+  - @commercetools-uikit/async-select-input@11.2.1
+  - @commercetools-uikit/radio-input@11.2.1
+  - @commercetools-uikit/select-input@11.2.1
+  - @commercetools-uikit/tag@11.2.1
+  - @commercetools-uikit/text@11.2.1
+  - @commercetools-uikit/hooks@11.2.1
+  - @commercetools-uikit/utils@11.2.1
+  - @commercetools-uikit/spacings@11.2.1
+
 ## 11.2.0
 
 ### Patch Changes
