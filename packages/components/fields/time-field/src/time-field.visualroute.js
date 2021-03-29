@@ -11,7 +11,7 @@ export const component = () => (
     <Spec label="minimal">
       <TimeField
         title="Release Time"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
       />
@@ -19,7 +19,7 @@ export const component = () => (
     <Spec label="when disabled">
       <TimeField
         title="Release Time"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         isDisabled={true}
@@ -28,7 +28,7 @@ export const component = () => (
     <Spec label="when required">
       <TimeField
         title="Release Time"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         isRequired={true}
@@ -38,7 +38,7 @@ export const component = () => (
       <TimeField
         title="Release Time"
         description="At which time will the product be avialable?"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
       />
@@ -46,7 +46,7 @@ export const component = () => (
     <Spec label="with placeholder">
       <TimeField
         title="Release Time"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value=""
         onChange={() => {}}
         placeholder="Select release time"
@@ -55,7 +55,7 @@ export const component = () => (
     <Spec label="with error when not touched">
       <TimeField
         title="Release Time"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value=""
         onChange={() => {}}
         errors={{ missing: true }}
@@ -64,7 +64,7 @@ export const component = () => (
     <Spec label="with error when touched">
       <TimeField
         title="Release Time"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value=""
         onChange={() => {}}
         errors={{ missing: true }}

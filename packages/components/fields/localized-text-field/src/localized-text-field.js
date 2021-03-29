@@ -30,9 +30,6 @@ class LocalizedTextField extends React.Component {
      * Horizontal size limit of the input fields.
      */
     horizontalConstraint: PropTypes.oneOf([
-      'm',
-      'l',
-      'xl',
       6,
       7,
       8,
@@ -200,11 +197,7 @@ class LocalizedTextField extends React.Component {
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     return (
-      <Constraints.Horizontal
-        max={Constraints.parseHorizontalConstraintProp(
-          this.props.horizontalConstraint
-        )}
-      >
+      <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
           <FieldLabel
             title={this.props.title}

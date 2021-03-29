@@ -22,7 +22,7 @@ export const component = () => (
   <Suite>
     <Spec label="minimal">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={currencies}
@@ -30,7 +30,7 @@ export const component = () => (
     </Spec>
     <Spec label="with only one currency">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={['EUR']}
@@ -38,7 +38,7 @@ export const component = () => (
     </Spec>
     <Spec label="with high precision">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={highPrecisionValue}
         onChange={() => {}}
         currencies={currencies}
@@ -47,7 +47,7 @@ export const component = () => (
     </Spec>
     <Spec label="with high precision badge and disabled">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={highPrecisionValue}
         onChange={() => {}}
         currencies={currencies}
@@ -57,7 +57,7 @@ export const component = () => (
     </Spec>
     <Spec label="when disabled">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={currencies}
@@ -67,7 +67,7 @@ export const component = () => (
     <Spec label="with description">
       <MoneyInput
         description="How much is the fish?"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={currencies}
@@ -75,7 +75,7 @@ export const component = () => (
     </Spec>
     <Spec label="with placeholder">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={emptyValue}
         onChange={() => {}}
         currencies={currencies}
@@ -84,7 +84,7 @@ export const component = () => (
     </Spec>
     <Spec label="with error">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={emptyValue}
         onChange={() => {}}
         currencies={currencies}
@@ -93,7 +93,7 @@ export const component = () => (
     </Spec>
     <Spec label="with warning">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={emptyValue}
         onChange={() => {}}
         currencies={currencies}
@@ -102,7 +102,7 @@ export const component = () => (
     </Spec>
     <Spec label="when readOnly">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={currencies}
@@ -111,7 +111,7 @@ export const component = () => (
     </Spec>
     <Spec label="without currencies">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={[]}
@@ -119,7 +119,7 @@ export const component = () => (
     </Spec>
     <Spec label="without currencies - when readOnly">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={[]}
@@ -128,7 +128,7 @@ export const component = () => (
     </Spec>
     <Spec label="without currencies - when disabled">
       <MoneyInput
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         currencies={[]}

@@ -31,10 +31,6 @@ class MoneyField extends React.Component {
      * Horizontal size limit of the input fields.
      */
     horizontalConstraint: PropTypes.oneOf([
-      's',
-      'm',
-      'l',
-      'xl',
       3,
       4,
       5,
@@ -213,11 +209,7 @@ class MoneyField extends React.Component {
     const hasError =
       MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
     return (
-      <Constraints.Horizontal
-        max={Constraints.parseHorizontalConstraintProp(
-          this.props.horizontalConstraint
-        )}
-      >
+      <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
           <FieldLabel
             title={this.props.title}

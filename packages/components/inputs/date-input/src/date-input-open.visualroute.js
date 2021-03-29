@@ -14,7 +14,7 @@ export const component = () => (
         data-testid="date-input"
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
   </Suite>

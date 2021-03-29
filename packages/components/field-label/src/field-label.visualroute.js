@@ -13,21 +13,21 @@ export const routePath = '/field-label';
 export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
-      <FieldLabel title="Hello" horizontalConstraint="m" />
+      <FieldLabel title="Hello" horizontalConstraint={7} />
     </Spec>
     <Spec label="with hint and hint icon">
       <FieldLabel
         title="Hello"
         hint="a hint"
         hintIcon={<WarningIcon />}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="with required indicator">
       <FieldLabel
         title="Hello"
         hasRequiredIndicator={true}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="with all options">
@@ -40,7 +40,7 @@ export const component = ({ themes }) => (
         description="description"
         badge={<FlatButton tone="primary" label="show" />}
         htmlFor="sampleInput"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="with all options and large horizontal constraint">
@@ -53,7 +53,7 @@ export const component = ({ themes }) => (
         description="description"
         badge={<FlatButton tone="primary" label="show" />}
         htmlFor="sampleInput"
-        horizontalConstraint="l"
+        horizontalConstraint={10}
       />
     </Spec>
     <Spec label="with a very long hint">
@@ -61,7 +61,7 @@ export const component = ({ themes }) => (
         title="Hello"
         hint="Sed vel condimentum lacus. Nam sit amet dui et magna tincidunt faucibus. Praesent gravida tempor semper. Donec et faucibus ante. Maecenas consectetur urna mi."
         hintIcon={<WarningIcon />}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>

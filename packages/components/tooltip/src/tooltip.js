@@ -227,11 +227,6 @@ Tooltip.propTypes = {
    * Horizontal size limit of the tooltip.
    */
   horizontalConstraint: PropTypes.oneOf([
-    'xs',
-    's',
-    'm',
-    'l',
-    'xl',
     1,
     2,
     3,

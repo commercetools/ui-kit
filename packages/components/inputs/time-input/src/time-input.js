@@ -63,11 +63,7 @@ const TimeInput = (props) => {
   }
 
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <TimeInputBody
         id={id}
         name={props.name}
@@ -110,10 +106,6 @@ TimeInput.propTypes = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf([
-    's',
-    'm',
-    'l',
-    'xl',
     3,
     4,
     5,

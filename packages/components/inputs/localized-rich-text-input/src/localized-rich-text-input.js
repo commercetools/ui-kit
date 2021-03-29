@@ -109,11 +109,7 @@ const LocalizedRichTextInput = (props) => {
     languages.length > 1 && !props.hideLanguageExpansionControls;
 
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
         <Stack>
           {languages.map((language, index) => {
@@ -222,9 +218,6 @@ LocalizedRichTextInput.propTypes = {
   isReadOnly: PropTypes.bool,
   placeholder: PropTypes.objectOf(PropTypes.string),
   horizontalConstraint: PropTypes.oneOf([
-    'm',
-    'l',
-    'xl',
     7,
     8,
     9,

@@ -45,7 +45,7 @@ const InteractiveRoute = () => {
           id="rich-text"
           onChange={onChange}
           value={value}
-          horizontalConstraint="m"
+          horizontalConstraint={7}
         />
       </Spec>
     </Suite>
@@ -58,7 +58,7 @@ const DefaultRoute = () => (
       <RichTextInput
         onChange={() => {}}
         value={minimalValue}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
 
@@ -69,7 +69,7 @@ const DefaultRoute = () => (
       <RichTextInput
         onChange={() => {}}
         value={largeValue}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec
@@ -80,7 +80,7 @@ const DefaultRoute = () => (
         onChange={() => {}}
         value={largeValue}
         defaultExpandMultilineText={true}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when placeholder is visible" omitPropsList>
@@ -89,7 +89,7 @@ const DefaultRoute = () => (
         value={emptyValue}
         placeholder="Placeholder"
         defaultExpandMultilineText={true}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when hasWarning" omitPropsList>
@@ -97,7 +97,7 @@ const DefaultRoute = () => (
         onChange={() => {}}
         value={minimalValue}
         hasWarning={true}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when hasError" omitPropsList>
@@ -105,21 +105,21 @@ const DefaultRoute = () => (
         onChange={() => {}}
         value={minimalValue}
         hasError={true}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="with horizontalConstraint `l`" omitPropsList>
       <RichTextInput
         onChange={() => {}}
         value={minimalValue}
-        horizontalConstraint="l"
+        horizontalConstraint={10}
       />
     </Spec>
     <Spec label="with horizontalConstraint `xl`" omitPropsList>
       <RichTextInput
         onChange={() => {}}
         value={minimalValue}
-        horizontalConstraint="xl"
+        horizontalConstraint={16}
       />
     </Spec>
     <Spec label="with horizontalConstraint `scale`" omitPropsList>

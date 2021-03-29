@@ -11,7 +11,7 @@ export const component = () => (
     <Spec label="minimal">
       <DateRangeField
         title="Discounted days"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
       />
@@ -19,7 +19,7 @@ export const component = () => (
     <Spec label="when disabled">
       <DateRangeField
         title="Discounted days"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         isDisabled={true}
@@ -28,7 +28,7 @@ export const component = () => (
     <Spec label="when required">
       <DateRangeField
         title="Discounted days"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         isRequired={true}
@@ -38,7 +38,7 @@ export const component = () => (
       <DateRangeField
         title="Discounted days"
         description="When will the product be discounted?"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
       />
@@ -46,7 +46,7 @@ export const component = () => (
     <Spec label="with placeholder">
       <DateRangeField
         title="Discounted days"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={[]}
         onChange={() => {}}
         placeholder="Select release date"
@@ -55,7 +55,7 @@ export const component = () => (
     <Spec label="with error when not touched">
       <DateRangeField
         title="Discounted days"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={[]}
         onChange={() => {}}
         errors={{ missing: true }}
@@ -64,7 +64,7 @@ export const component = () => (
     <Spec label="with error when touched">
       <DateRangeField
         title="Discounted days"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={[]}
         onChange={() => {}}
         errors={{ missing: true }}
@@ -74,7 +74,7 @@ export const component = () => (
     <Spec label="when read-only" propsToList={['isReadOnly']}>
       <DateRangeField
         title="Discounted Days"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         value={value}
         onChange={() => {}}
         isReadOnly

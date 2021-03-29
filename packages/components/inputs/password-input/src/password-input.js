@@ -9,11 +9,7 @@ import { getInputStyles } from '@commercetools-uikit/input-utils';
 const PasswordInput = (props) => {
   const theme = useTheme();
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <input
         id={props.id}
         name={props.name}
@@ -102,10 +98,6 @@ PasswordInput.propTypes = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf([
-    's',
-    'm',
-    'l',
-    'xl',
     3,
     4,
     5,

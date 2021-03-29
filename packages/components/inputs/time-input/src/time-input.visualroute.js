@@ -10,13 +10,13 @@ export const routePath = '/time-input';
 export const component = ({ themes }) => (
   <Suite>
     <Spec label="minimal">
-      <TimeInput value={value} onChange={() => {}} horizontalConstraint="m" />
+      <TimeInput value={value} onChange={() => {}} horizontalConstraint={7} />
     </Spec>
     <Spec label="when disabled">
       <TimeInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -24,7 +24,7 @@ export const component = ({ themes }) => (
       <TimeInput
         value=""
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         placeholder="Select something"
       />
     </Spec>
@@ -32,7 +32,7 @@ export const component = ({ themes }) => (
       <TimeInput
         value={null}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
       />
     </Spec>
@@ -40,13 +40,13 @@ export const component = ({ themes }) => (
       <TimeInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
       />
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>
       <Spec label="with custom (inverted) theme">
-        <TimeInput value={value} onChange={() => {}} horizontalConstraint="m" />
+        <TimeInput value={value} onChange={() => {}} horizontalConstraint={7} />
       </Spec>
     </ThemeProvider>
   </Suite>

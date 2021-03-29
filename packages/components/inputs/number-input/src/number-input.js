@@ -9,11 +9,7 @@ import { getInputStyles } from '@commercetools-uikit/input-utils';
 const NumberInput = (props) => {
   const theme = useTheme();
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <input
         id={props.id}
         name={props.name}
@@ -120,11 +116,6 @@ NumberInput.propTypes = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf([
-    'xs',
-    's',
-    'm',
-    'l',
-    'xl',
     1,
     2,
     3,

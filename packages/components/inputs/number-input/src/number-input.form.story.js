@@ -35,7 +35,7 @@ storiesOf('Examples|Forms/Inputs', module)
                 value={formik.values.age}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                horizontalConstraint="m"
+                horizontalConstraint={7}
               />
               <Spacings.Inline>
                 <SecondaryButton

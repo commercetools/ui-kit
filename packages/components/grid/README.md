@@ -60,26 +60,26 @@ export default Example;
 
 ## Properties
 
-| Props                 | Type                                                                                                                    | Required | Default  | Description |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------- | :------: | -------- | ----------- |
-| `children`            | `ReactNode`                                                                                                             |    ✅    |          |             |
-| `display`             | `union`<br/>Possible values:<br/>`'grid' , 'inline-grid'`                                                               |          | `'grid'` |             |
-| `gridTemplateColumns` | `string`                                                                                                                |          |          |             |
-| `gridTemplateRows`    | `string`                                                                                                                |          |          |             |
-| `gridTemplateAreas`   | `string`                                                                                                                |          |          |             |
-| `gridTemplate`        | `string`                                                                                                                |          |          |             |
-| `gridColumnGap`       | `string`                                                                                                                |          |          |             |
-| `gridRowGap`          | `string`                                                                                                                |          |          |             |
-| `gridGap`             | `string`                                                                                                                |          |          |             |
-| `justifyItems`        | `union`<br/>Possible values:<br/>`'start' , 'end' , 'center' , 'stretch'`                                               |          |          |             |
-| `alignItems`          | `union`<br/>Possible values:<br/>`'start' , 'end' , 'center' , 'stretch'`                                               |          |          |             |
-| `placeItems`          | `union`<br/>Possible values:<br/>`'start' , 'end' , 'center' , 'stretch'`                                               |          |          |             |
-| `justifyContent`      | `union`<br/>Possible values:<br/>`'start', 'end', 'center', 'stretch', 'space-around', 'space-between', 'space-evenly'` |          |          |             |
-| `alignContent`        | `union`<br/>Possible values:<br/>`'start', 'end', 'center', 'stretch', 'space-around', 'space-between', 'space-evenly'` |          |          |             |
-| `placeContent`        | `union`<br/>Possible values:<br/>`'start', 'end', 'center', 'stretch', 'space-around', 'space-between', 'space-evenly'` |          |          |             |
-| `gridAutoColumns`     | `string`                                                                                                                |          |          |             |
-| `gridAutoRows`        | `string`                                                                                                                |          |          |             |
-| `gridAutoFlow`        | `string`                                                                                                                |          |          |             |
-| `grid`                | `string`                                                                                                                |          |          |             |
+| Props                 | Type                                                                                                                      | Required | Default  | Description |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------- | :------: | -------- | ----------- |
+| `children`            | `ReactNode`                                                                                                               |    ✅    |          |             |
+| `display`             | `union`<br/>Possible values:<br/>`'grid' , 'inline-grid'`                                                                 |          | `'grid'` |             |
+| `gridTemplateColumns` | `string`                                                                                                                  |          |          |             |
+| `gridTemplateRows`    | `string`                                                                                                                  |          |          |             |
+| `gridTemplateAreas`   | `string`                                                                                                                  |          |          |             |
+| `gridTemplate`        | `string`                                                                                                                  |          |          |             |
+| `gridColumnGap`       | `string`                                                                                                                  |          |          |             |
+| `gridRowGap`          | `string`                                                                                                                  |          |          |             |
+| `gridGap`             | `string`                                                                                                                  |          |          |             |
+| `justifyItems`        | `union`<br/>Possible values:<br/>`'start' , 'end' , 'center' , 'stretch'`                                                 |          |          |             |
+| `alignItems`          | `union`<br/>Possible values:<br/>`'start' , 'end' , 'center' , 'stretch'`                                                 |          |          |             |
+| `placeItems`          | `union`<br/>Possible values:<br/>`'start' , 'end' , 'center' , 'stretch'`                                                 |          |          |             |
+| `justifyContent`      | `union`<br/>Possible values:<br/>`, 'start', 'end', 'center', 'stretch', 'space-around', 'space-between', 'space-evenly'` |          |          |             |
+| `alignContent`        | `union`<br/>Possible values:<br/>`, 'start', 'end', 'center', 'stretch', 'space-around', 'space-between', 'space-evenly'` |          |          |             |
+| `placeContent`        | `union`<br/>Possible values:<br/>`, 'start', 'end', 'center', 'stretch', 'space-around', 'space-between', 'space-evenly'` |          |          |             |
+| `gridAutoColumns`     | `string`                                                                                                                  |          |          |             |
+| `gridAutoRows`        | `string`                                                                                                                  |          |          |             |
+| `gridAutoFlow`        | `string`                                                                                                                  |          |          |             |
+| `grid`                | `string`                                                                                                                  |          |          |             |
 
 > The component accepts all supported CSS Grid properties, [as listed here](https://css-tricks.com/snippets/css/complete-guide-grid), in **camelCase** format

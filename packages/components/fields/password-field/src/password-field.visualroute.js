@@ -13,7 +13,7 @@ export const component = () => (
         title="Welcome Text"
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when required">
@@ -22,7 +22,7 @@ export const component = () => (
         isRequired={true}
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when disabled">
@@ -31,7 +31,7 @@ export const component = () => (
         isDisabled={true}
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when placeholder is shown">
@@ -40,7 +40,7 @@ export const component = () => (
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when placeholder is shown and disabled">
@@ -50,7 +50,7 @@ export const component = () => (
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="with error when not touched">
@@ -58,7 +58,7 @@ export const component = () => (
         title="Welcome Text"
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ missing: true }}
       />
     </Spec>
@@ -67,7 +67,7 @@ export const component = () => (
         title="Welcome Text"
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ missing: true }}
         touched={true}
       />
@@ -77,7 +77,7 @@ export const component = () => (
         title="Welcome Text"
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hint="Make sure the Caps Lock is disabled"
         description="Your secret password"
       />
