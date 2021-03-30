@@ -1,5 +1,5 @@
 ---
-'@commercetools-uikit/pagination': minor
+'@commercetools-uikit/pagination': patch
 ---
 
-refactor page-navigator to not use internal state
+Fix issue with `Pagination` where programmatic changes to the `page` prop are not reflected into the component internal state.
