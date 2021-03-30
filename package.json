@@ -97,7 +97,7 @@
     "cross-env": "7.0.3",
     "eslint": "7.22.0",
     "eslint-formatter-pretty": "4.0.0",
-    "formik": "2.2.6",
+    "formik": "^2.2.6",
     "glob": "7.1.6",
     "global": "4.4.0",
     "history": "5.0.0",
