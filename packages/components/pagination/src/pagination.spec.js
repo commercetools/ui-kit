@@ -111,7 +111,7 @@ describe('page navigator interaction', () => {
 });
 
 describe('per page selector interaction', () => {
-  it('should call onPerPageChange with the selected value', async () => {
+  it('should call onPerPageChange with the selected value', () => {
     const onPerPageChange = jest.fn();
     render(<Pagination {...createTestProps({ onPerPageChange })} />);
 
