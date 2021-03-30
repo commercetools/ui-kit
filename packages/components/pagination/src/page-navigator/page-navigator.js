@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useFormik } from 'formik';
 import { useIntl } from 'react-intl';
 import uniqueId from 'lodash/uniqueId';
 import { AngleLeftIcon, AngleRightIcon } from '@commercetools-uikit/icons';
@@ -14,77 +15,69 @@ import messages from './messages';
 const PageNavigator = (props) => {
   const intl = useIntl();
 
-  const [page, setPage] = React.useState(props.page);
-
   const [pageNumberInputId] = React.useState(uniqueId('page-number-'));
 
-  const { onPageChange, totalPages } = props;
+  const paginationForm = useFormik({
+    initialValues: { page: props.page },
+    enableReinitialize: true,
+    validateOnBlur: true,
+    validateOnChange: true,
+    validateOnMount: true,
+    onSubmit: (values /**, helpers */) => {
+      const nextNormalizedValue = Number(
+        normalizePageValue(values.page, props.totalPages)
+      );
+      props.onPageChange(nextNormalizedValue);
+    },
+    validate: (values) => {
+      if (!isValid(values.page, props.totalPages)) {
+        return { page: true };
+      }
+      return {};
+    },
+  });
 
-  const normalizedValue = Number(normalizePageValue(page, totalPages));
+  const { page, totalPages } = props;
   const isDisabled = totalPages === 0;
   const isPreviousDisabled = page <= 1;
   const isNextDisabled = page >= totalPages;
 
-  const handleSubmit = React.useCallback(
-    (event) => {
-      event.preventDefault();
+  const handlePrevPageChange = React.useCallback(() => {
+    const previousPage = paginationForm.values.page - 1;
+    if (previousPage < 1) return;
+    paginationForm.setFieldValue('page', previousPage, true);
+    paginationForm.submitForm();
+  }, [paginationForm]);
 
-      setPage(normalizedValue);
-
-      onPageChange(normalizedValue);
-    },
-    [normalizedValue, onPageChange]
-  );
-
-  const onBlurNormalize = React.useCallback(() => {
-    setPage(normalizedValue);
-  }, [normalizedValue]);
-
-  const handleFocus = React.useCallback((event) => {
-    event.target.select();
-  }, []);
-
-  const handleChange = React.useCallback((event) => {
-    setPage(event.target.value);
-  }, []);
-
-  const handlePrevPage = React.useCallback(() => {
-    const prevPage = page - 1;
-    if (prevPage < 1) return null;
-
-    setPage(prevPage);
-    onPageChange(prevPage);
-  }, [page, onPageChange]);
-
-  const handleNextPage = React.useCallback(() => {
-    const nextPage = page + 1;
+  const handleNextPageChange = React.useCallback(() => {
+    const nextPage = paginationForm.values.page + 1;
     if (nextPage > totalPages) return null;
-
-    setPage(nextPage);
-    onPageChange(nextPage);
-  }, [page, onPageChange, totalPages]);
+    paginationForm.setFieldValue('page', nextPage, true);
+    paginationForm.submitForm();
+  }, [paginationForm, totalPages]);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={paginationForm.handleSubmit}>
       <Spacings.Inline alignItems="center" scale="s">
         <SecondaryIconButton
           label={intl.formatMessage(messages.previousPageLabel)}
-          onClick={handlePrevPage}
+          onClick={handlePrevPageChange}
           isDisabled={isPreviousDisabled || isDisabled}
           icon={<AngleLeftIcon />}
         />
         <Label htmlFor={pageNumberInputId} intlMessage={messages.page} />
         <div>
           <NumberInput
+            name="page"
             id={pageNumberInputId}
-            value={page}
+            value={paginationForm.values.page}
             min={1}
             max={totalPages}
-            onBlur={onBlurNormalize}
-            onFocus={handleFocus}
-            onChange={handleChange}
+            onBlur={paginationForm.handleBlur}
+            onFocus={paginationForm.handleFocus}
+            onChange={paginationForm.handleChange}
             isDisabled={isDisabled}
-            hasWarning={!isValid(page, props.totalPages)}
+            hasWarning={paginationForm.errors.page}
             horizontalConstraint={2}
           />
         </div>
@@ -98,7 +91,7 @@ const PageNavigator = (props) => {
         />
         <SecondaryIconButton
           label={intl.formatMessage(messages.nextPageLabel)}
-          onClick={handleNextPage}
+          onClick={handleNextPageChange}
           isDisabled={isNextDisabled || isDisabled}
           icon={<AngleRightIcon />}
         />
