@@ -53,24 +53,26 @@ it('should display the correct number of items displayed', () => {
 });
 
 describe('page navigator interaction', () => {
-  it('should increment page number on clicking the Next page button', () => {
-    const onPageChange = jest.fn();
+  it('should increment page number on clicking the Next page button', async () => {
+    const onPageChange = jest.fn().mockName('onPageChange');
     render(
       <Pagination
         {...createTestProps({
           onPageChange,
+          page: 1,
         })}
       />
     );
 
-    const nextPageButton = screen.getByLabelText(/Next page/);
+    const nextPageButton = await screen.findByLabelText(/Next page/);
     nextPageButton.click();
 
+    await screen.findByLabelText('Page');
     expect(onPageChange).toHaveBeenCalledWith(2);
-    expect(screen.getByLabelText('Page')).toHaveDisplayValue(2);
+    expect(await screen.findByLabelText('Page')).toHaveDisplayValue(2);
   });
-  it('should decrement page number on clicking the Previous page button', () => {
-    const onPageChange = jest.fn();
+  it('should decrement page number on clicking the Previous page button', async () => {
+    const onPageChange = jest.fn().mockName('onPageChange');
     render(
       <Pagination
         {...createTestProps({
@@ -80,11 +82,12 @@ describe('page navigator interaction', () => {
       />
     );
 
-    const prevPageButton = screen.getByLabelText(/Previous page/);
+    const prevPageButton = await screen.findByLabelText(/Previous page/);
     prevPageButton.click();
 
+    await screen.findByLabelText('Page');
     expect(onPageChange).toHaveBeenCalledWith(1);
-    expect(screen.getByLabelText('Page')).toHaveDisplayValue(1);
+    expect(await screen.findByLabelText('Page')).toHaveDisplayValue(1);
   });
   it('should disable next page button when there are no next pages', () => {
     render(
