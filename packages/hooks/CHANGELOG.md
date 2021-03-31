@@ -1,5 +1,11 @@
 # @commercetools-uikit/hooks
 
+## 11.3.0
+
+### Minor Changes
+
+- [#1842](https://github.com/commercetools/ui-kit/pull/1842) [`3e51c4f2`](https://github.com/commercetools/ui-kit/commit/3e51c4f206339c18ab0c78119be2a61905ea5959) Thanks [@adnasa](https://github.com/adnasa)! - Add `usePaginationState` and `useDataTableSortingState`. These hooks help to manage pagination state and should be used together with the `<Pagination>` and/or `<DataTable>` components.
+
 ## 11.2.1
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @commercetools-uikit/data-table-manager
 
+## 11.3.0
+
+### Patch Changes
+
+- Updated dependencies [[`3e51c4f2`](https://github.com/commercetools/ui-kit/commit/3e51c4f206339c18ab0c78119be2a61905ea5959)]:
+  - @commercetools-uikit/hooks@11.3.0
+  - @commercetools-uikit/collapsible-motion@11.3.0
+
 ## 11.2.1
 
 ### Patch Changes

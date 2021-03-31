@@ -1,5 +1,11 @@
 # @commercetools-uikit/pagination
 
+## 11.3.0
+
+### Patch Changes
+
+- [#1840](https://github.com/commercetools/ui-kit/pull/1840) [`c48070a1`](https://github.com/commercetools/ui-kit/commit/c48070a177cac53bbb68fe7f4ffb6519fadc4e41) Thanks [@adnasa](https://github.com/adnasa)! - Fix issue with `Pagination` where programmatic changes to the `page` prop are not reflected into the component internal state.
+
 ## 11.2.1
 
 ### Patch Changes
