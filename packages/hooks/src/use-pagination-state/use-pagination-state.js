@@ -1,14 +1,16 @@
 import { useState, useCallback } from 'react';
 
+const applyIf = (values, key) => (values[key] ? { key } : {});
 const defaultValues = {
   page: 1,
   perPage: 20,
 };
 
-const usePaginationState = (initialValues) => {
+const usePaginationState = (initialValues = {}) => {
   const mergedValues = {
     ...defaultValues,
-    ...initialValues,
+    ...applyIf(initialValues, 'page'),
+    ...applyIf(initialValues, 'perPage'),
   };
 
   const [page, setPage] = useState(mergedValues.page);

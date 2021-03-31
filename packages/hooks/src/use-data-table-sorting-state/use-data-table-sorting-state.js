@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 const defaultValues = { key: 'createdAt', order: 'desc' };
 const applyIf = (values, key) => (values[key] ? { key } : {});
 
-const useDataTableSortingState = (initialValues) => {
+const useDataTableSortingState = (initialValues = {}) => {
   const mergedValues = {
     ...defaultValues,
     ...applyIf(initialValues, 'key'),
