@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { Spacings, PrimaryButton } from '@commercetools-frontend/ui-kit';
 import usePaginationState from './use-pagination-state';
 
@@ -28,32 +28,32 @@ const TestComponent = () => {
 
 describe('per page', () => {
   it('should default per page and allow increasing page size', async () => {
-    const rendered = render(<TestComponent />);
-    expect(rendered.getByText(/Per page: 20/)).toBeInTheDocument();
-    fireEvent.click(rendered.getByLabelText(/Change per page/));
-    expect(rendered.getByText(/Per page: 50/)).toBeInTheDocument();
+    render(<TestComponent />);
+    expect(screen.getByText(/Per page: 20/)).toBeInTheDocument();
+    fireEvent.click(screen.getByLabelText(/Change per page/));
+    expect(screen.getByText(/Per page: 50/)).toBeInTheDocument();
   });
   describe('when changing per page', () => {
     it('should reset page state', () => {
-      const rendered = render(<TestComponent />);
+      render(<TestComponent />);
       // update page state
-      expect(rendered.getByText(/Page: 1/)).toBeInTheDocument();
-      fireEvent.click(rendered.getByLabelText(/Change page/));
-      expect(rendered.getByText(/Page: 2/)).toBeInTheDocument();
+      expect(screen.getByText(/Page: 1/)).toBeInTheDocument();
+      fireEvent.click(screen.getByLabelText(/Change page/));
+      expect(screen.getByText(/Page: 2/)).toBeInTheDocument();
 
       // update per page
       // reset page
-      fireEvent.click(rendered.getByLabelText(/Change per page/));
-      expect(rendered.getByText(/Page: 1/)).toBeInTheDocument();
+      fireEvent.click(screen.getByLabelText(/Change per page/));
+      expect(screen.getByText(/Page: 1/)).toBeInTheDocument();
     });
   });
 });
 
 describe('page', () => {
   it('should default page and allow moving to next page', async () => {
-    const rendered = render(<TestComponent />);
-    expect(rendered.getByText(/Page: 1/)).toBeInTheDocument();
-    fireEvent.click(rendered.getByLabelText(/Change page/));
-    expect(rendered.getByText(/Page: 2/)).toBeInTheDocument();
+    render(<TestComponent />);
+    expect(screen.getByText(/Page: 1/)).toBeInTheDocument();
+    fireEvent.click(screen.getByLabelText(/Change page/));
+    expect(screen.getByText(/Page: 2/)).toBeInTheDocument();
   });
 });
