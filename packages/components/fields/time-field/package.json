@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/time-field",
   "description": "A controlled date input component for single date.",
-  "version": "11.2.1",
+  "version": "11.3.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
     "@commercetools-uikit/field-errors": "11.2.1",
     "@commercetools-uikit/field-label": "11.2.1",
     "@commercetools-uikit/spacings-stack": "11.2.1",
-    "@commercetools-uikit/time-input": "11.2.1",
+    "@commercetools-uikit/time-input": "11.3.0",
     "@commercetools-uikit/utils": "11.2.1",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
