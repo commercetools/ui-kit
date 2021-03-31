@@ -33,6 +33,20 @@ describe('per page', () => {
     fireEvent.click(rendered.getByLabelText(/Change per page/));
     expect(rendered.getByText(/Per page: 50/)).toBeInTheDocument();
   });
+  describe('when changing per page', () => {
+    it('should reset page state', () => {
+      const rendered = render(<TestComponent />);
+      // update page state
+      expect(rendered.getByText(/Page: 1/)).toBeInTheDocument();
+      fireEvent.click(rendered.getByLabelText(/Change page/));
+      expect(rendered.getByText(/Page: 2/)).toBeInTheDocument();
+
+      // update per page
+      // reset page
+      fireEvent.click(rendered.getByLabelText(/Change per page/));
+      expect(rendered.getByText(/Page: 1/)).toBeInTheDocument();
+    });
+  });
 });
 
 describe('page', () => {

@@ -23,6 +23,9 @@ const usePaginationState = (initialValues) => {
 
   const onPerPageChange = useCallback(
     (nextPerPage) => {
+      // side-effect:
+      // GIVEN client updates `perPage`,
+      // THEN we reset `page` (discards initialValues.page)
       setPage(1);
       setPerPage(nextPerPage);
     },
