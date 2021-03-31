@@ -29,6 +29,7 @@
     "lodash": "4.17.20"
   },
   "devDependencies": {
+    "@testing-library/react": "11.2.5",
     "react": "17.0.1"
   },
   "peerDependencies": {
