@@ -5,7 +5,7 @@ const defaultValues = {
   perPage: 20,
 };
 
-const usePaginationState = (initialValues = defaultValues) => {
+const usePaginationState = (initialValues) => {
   const mergedValues = {
     ...defaultValues,
     ...initialValues,
