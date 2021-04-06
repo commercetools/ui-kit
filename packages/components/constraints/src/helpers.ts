@@ -7,4 +7,13 @@ const getMaxPropTokenValue = (max: number | string | null) => {
   return customProperties[`constraint${max}`];
 };
 
-export { getMaxPropTokenValue };
+// Generates an array of accepted values for the max prop, given a min and max
+const getAcceptedMaxPropValues = (min = 1, max = 16) => {
+  return [
+    ...Array.from({ length: max - min + 1 }).map((_, index) => index + min),
+    'scale',
+    'auto',
+  ];
+};
+
+export { getMaxPropTokenValue, getAcceptedMaxPropValues };
