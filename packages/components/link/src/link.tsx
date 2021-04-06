@@ -99,7 +99,10 @@ const Link = (props: TLinkProps) => {
   const theme = useTheme();
 
   const remainingProps = filterInvalidAttributes(props);
-  warnIfMissingContent(remainingProps as TLinkProps);
+
+  // `filterInvalidAttributes` strips off `intlMessage` and `children`
+  // so we pass in the "raw" props instead.
+  warnIfMissingContent(props);
 
   if (props.isExternal && typeof props.to === 'string') {
     return (
