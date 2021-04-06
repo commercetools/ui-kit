@@ -131,7 +131,6 @@
     "react-router-dom": "5.2.0",
     "react-test-renderer": "17.0.1",
     "react-value": "0.2.0",
-    "read-pkg-up": "7.0.1",
     "replace": "1.2.0",
     "rimraf": "3.0.2",
     "shelljs": "0.8.4",
