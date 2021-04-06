@@ -47,7 +47,8 @@
     "visual-testing-app:build:watch": "manypkg run visual-testing-app build:watch",
     "visual-testing-app:serve": "manypkg run visual-testing-app start",
     "labels:sync": "github-labels sync",
-    "typecheck": "tsc --noEmit --skipLibCheck"
+    "typecheck": "tsc --noEmit --skipLibCheck",
+    "prepare": "husky install"
   },
   "workspaces": {
     "packages": [
