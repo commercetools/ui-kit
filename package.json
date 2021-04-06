@@ -47,7 +47,8 @@
     "visual-testing-app:build:watch": "manypkg run visual-testing-app build:watch",
     "visual-testing-app:serve": "manypkg run visual-testing-app start",
     "labels:sync": "github-labels sync",
-    "typecheck": "tsc --noEmit --skipLibCheck"
+    "typecheck": "tsc --noEmit --skipLibCheck",
+    "prepare": "husky install"
   },
   "workspaces": {
     "packages": [
@@ -101,7 +102,7 @@
     "glob": "7.1.6",
     "global": "4.4.0",
     "history": "5.0.0",
-    "husky": "4.3.8",
+    "husky": "6.0.0",
     "identity-obj-proxy": "3.0.0",
     "intl-pluralrules": "1.2.2",
     "jest": "26.6.3",
