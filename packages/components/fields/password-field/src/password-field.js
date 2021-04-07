@@ -28,11 +28,7 @@ const PasswordField = (props) => {
   const hasError = props.touched && hasErrors(props.errors);
 
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
         <Inline alignItems="flex-end" justifyContent="space-between">
           <FieldLabel
@@ -97,10 +93,6 @@ PasswordField.propTypes = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf([
-    's',
-    'm',
-    'l',
-    'xl',
     3,
     4,
     5,

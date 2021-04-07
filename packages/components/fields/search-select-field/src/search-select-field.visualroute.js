@@ -23,7 +23,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when disabled">
@@ -33,7 +33,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -43,7 +43,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ missing: true }}
       />
     </Spec>
@@ -53,7 +53,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ missing: true }}
         touched={true}
       />
@@ -64,7 +64,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hint="Select a state"
       />
     </Spec>
@@ -75,7 +75,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
       />
     </Spec>
@@ -86,7 +86,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
       />
     </Spec>

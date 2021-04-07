@@ -38,7 +38,7 @@ const DefaultRoute = ({ themes }) => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when disabled">
@@ -46,7 +46,7 @@ const DefaultRoute = ({ themes }) => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -55,7 +55,7 @@ const DefaultRoute = ({ themes }) => (
         value={null}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         placeholder="Select something"
       />
     </Spec>
@@ -64,7 +64,7 @@ const DefaultRoute = ({ themes }) => (
         value={null}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
       />
     </Spec>
@@ -73,7 +73,7 @@ const DefaultRoute = ({ themes }) => (
         value={null}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
       />
     </Spec>
@@ -82,7 +82,7 @@ const DefaultRoute = ({ themes }) => (
         value={null}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
       />
     </Spec>
@@ -91,7 +91,7 @@ const DefaultRoute = ({ themes }) => (
         value={null}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
         hasWarning={true}
       />
@@ -102,7 +102,7 @@ const DefaultRoute = ({ themes }) => (
         onChange={() => {}}
         options={options}
         isMulti={true}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="with multiple values selected and disabled">
@@ -112,7 +112,7 @@ const DefaultRoute = ({ themes }) => (
         options={options}
         isMulti={true}
         isDisabled={true}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>
@@ -121,7 +121,7 @@ const DefaultRoute = ({ themes }) => (
           value={value}
           onChange={() => {}}
           options={options}
-          horizontalConstraint="m"
+          horizontalConstraint={7}
         />
       </Spec>
     </ThemeProvider>
@@ -130,7 +130,7 @@ const DefaultRoute = ({ themes }) => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
       />
     </Spec>
@@ -141,7 +141,7 @@ const DefaultRoute = ({ themes }) => (
         options={options}
         isMulti={true}
         isReadOnly={true}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label={'with iconLeft'}>
@@ -149,7 +149,7 @@ const DefaultRoute = ({ themes }) => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         iconLeft={<WorldIcon />}
       />
     </Spec>
@@ -158,7 +158,7 @@ const DefaultRoute = ({ themes }) => (
         value={null}
         onChange={() => {}}
         options={options}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         iconLeft={<WorldIcon />}
       />
     </Spec>
@@ -173,7 +173,7 @@ const OpenRoute = () => (
         value={value}
         onChange={() => {}}
         options={longOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
   </Suite>
@@ -188,7 +188,7 @@ const OpenRouteDarkTheme = ({ themes }) => (
           value={value}
           onChange={() => {}}
           options={longOptions}
-          horizontalConstraint="m"
+          horizontalConstraint={7}
         />
       </Spec>
     </ThemeProvider>
@@ -203,7 +203,7 @@ const OpenRouteWithOptionGroups = () => (
         value={value}
         onChange={() => {}}
         options={optionsWithGroups}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
   </Suite>
@@ -217,7 +217,7 @@ const OpenRouteWithOptionGroupsAndDivider = () => (
         value={value}
         onChange={() => {}}
         options={optionsWithGroups}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         showOptionGroupDivider={true}
       />
     </Spec>

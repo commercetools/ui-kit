@@ -22,7 +22,7 @@ import FieldLabel from '@commercetools-uikit/field-label';
   description={<FormattedMessage {...messages.description} />}
   badge={<FlatButton tone="primary" label="show" />}
   htmlFor="sampleInput"
-  horizontalConstraint="m"
+  horizontalConstraint={7}
 />
 ```
 
@@ -39,7 +39,7 @@ The `hintIcon` also accepts a custom `color` while defaulting to `warning` in th
   description={<FormattedMessage {...messages.description} />}
   badge={<FlatButton tone="primary" label="show" />}
   htmlFor="sampleInput"
-  horizontalConstraint="m"
+  horizontalConstraint={7}
 />
 ```
 

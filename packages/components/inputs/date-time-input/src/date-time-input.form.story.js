@@ -39,7 +39,7 @@ storiesOf('Examples|Forms/Inputs', module)
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 timeZone="Europe/Berlin"
-                horizontalConstraint="m"
+                horizontalConstraint={7}
               />
               <DateTimeInput
                 name="endDate"
@@ -47,7 +47,7 @@ storiesOf('Examples|Forms/Inputs', module)
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 timeZone="Europe/Berlin"
-                horizontalConstraint="m"
+                horizontalConstraint={7}
               />
               <Spacings.Inline>
                 <SecondaryButton

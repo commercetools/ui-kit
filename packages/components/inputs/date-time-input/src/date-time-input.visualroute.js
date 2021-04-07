@@ -13,7 +13,7 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when disabled">
@@ -21,18 +21,18 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
     <Spec label="when default placeholder is shown">
-      <DateTimeInput value="" onChange={() => {}} horizontalConstraint="m" />
+      <DateTimeInput value="" onChange={() => {}} horizontalConstraint={7} />
     </Spec>
     <Spec label="when custom placeholder is shown">
       <DateTimeInput
         value=""
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         placeholder="Select date and time"
       />
     </Spec>
@@ -41,7 +41,7 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
       />
     </Spec>
@@ -50,7 +50,7 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
         isDisabled={true}
       />
@@ -60,7 +60,7 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
       />
     </Spec>
@@ -69,7 +69,7 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
         isDisabled={true}
       />
@@ -79,7 +79,7 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
         hasWarning={true}
       />
@@ -89,7 +89,7 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly
       />
     </Spec>
@@ -101,7 +101,7 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly
         isDisabled
       />
@@ -114,7 +114,7 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly
         hasWarning
       />
@@ -127,7 +127,7 @@ export const component = () => (
         value={value}
         timeZone="UTC"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly
         hasError
       />

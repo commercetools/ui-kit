@@ -29,10 +29,6 @@ class TimeField extends React.Component {
      * Horizontal size limit of the input fields.
      */
     horizontalConstraint: PropTypes.oneOf([
-      's',
-      'm',
-      'l',
-      'xl',
       3,
       4,
       5,
@@ -173,11 +169,7 @@ class TimeField extends React.Component {
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     return (
-      <Constraints.Horizontal
-        max={Constraints.parseHorizontalConstraintProp(
-          this.props.horizontalConstraint
-        )}
-      >
+      <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Stack scale="xs">
           <FieldLabel
             title={this.props.title}

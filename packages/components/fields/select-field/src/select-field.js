@@ -27,10 +27,6 @@ export default class SelectField extends React.Component {
      */
     id: PropTypes.string,
     horizontalConstraint: PropTypes.oneOf([
-      's',
-      'm',
-      'l',
-      'xl',
       3,
       4,
       5,
@@ -277,11 +273,7 @@ export default class SelectField extends React.Component {
     const hasError =
       SelectInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
     return (
-      <Constraints.Horizontal
-        max={Constraints.parseHorizontalConstraintProp(
-          this.props.horizontalConstraint
-        )}
-      >
+      <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
           <FieldLabel
             title={this.props.title}

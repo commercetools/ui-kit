@@ -20,7 +20,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when disabled">
@@ -28,7 +28,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -37,7 +37,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
       />
     </Spec>
@@ -46,7 +46,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
       />
     </Spec>
@@ -55,7 +55,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isClearable={true}
       />
     </Spec>
@@ -64,7 +64,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
         hasWarning={true}
       />
@@ -74,7 +74,7 @@ export const component = () => (
         value={null}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         placeholder="Select a state"
       />
     </Spec>
@@ -83,7 +83,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
       />
     </Spec>
@@ -92,7 +92,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         iconLeft={<WorldIcon />}
       />
     </Spec>
@@ -101,7 +101,7 @@ export const component = () => (
         value={null}
         onChange={() => {}}
         loadOptions={loadOptions}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         iconLeft={<WorldIcon />}
       />
     </Spec>

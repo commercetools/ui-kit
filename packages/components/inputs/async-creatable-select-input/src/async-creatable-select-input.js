@@ -38,11 +38,7 @@ const AsyncCreatableSelectInput = (props) => {
     props.placeholder || intl.formatMessage(messages.placeholder);
 
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
         <AsyncCreatableSelect
           aria-label={props['aria-label']}
@@ -194,10 +190,6 @@ AsyncCreatableSelectInput.propTypes = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf([
-    's',
-    'm',
-    'l',
-    'xl',
     3,
     4,
     5,

@@ -72,37 +72,6 @@ describe('rendering', () => {
       expect(screen.getByLabelText('Add')).toHaveAttribute('type', 'reset');
     });
   });
-  describe('when using "linkTo"', () => {
-    /* eslint-disable no-console */
-    let log;
-    beforeEach(() => {
-      log = console.error;
-      console.error = jest.fn();
-    });
-    afterEach(() => {
-      console.error = log;
-    });
-
-    it('should warn', () => {
-      render(<SecondaryButton {...props} onClick={null} linkTo="/foo/bar" />);
-
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringMatching(
-          /Warning: "linkTo" property of "SecondaryButton" has been deprecated and will be removed in the next major version\./
-        )
-      );
-    });
-
-    it('should navigate to link when clicked', async () => {
-      const { history } = render(
-        <SecondaryButton {...props} onClick={null} linkTo="/foo/bar" />
-      );
-      fireEvent.click(screen.getByLabelText('Add'));
-      await waitFor(() => {
-        expect(history.location.pathname).toBe('/foo/bar');
-      });
-    });
-  });
   describe('when using `to` without using `as`', () => {
     /* eslint-disable no-console */
     let log;
@@ -113,10 +82,8 @@ describe('rendering', () => {
     afterEach(() => {
       console.error = log;
     });
-
     it('should warn', () => {
       render(<SecondaryButton {...props} onClick={null} to="/foo/bar" />);
-
       expect(console.error).toHaveBeenCalledWith(
         expect.stringMatching(/Warning/),
         'prop',

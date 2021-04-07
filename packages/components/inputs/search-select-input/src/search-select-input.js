@@ -58,10 +58,6 @@ SearchSelectInput.propTypes = {
    *Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf([
-    's',
-    'm',
-    'l',
-    'xl',
     3,
     4,
     5,

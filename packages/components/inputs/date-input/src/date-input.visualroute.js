@@ -9,13 +9,13 @@ export const routePath = '/date-input';
 export const component = () => (
   <Suite>
     <Spec label="minimal">
-      <DateInput value={value} onChange={() => {}} horizontalConstraint="m" />
+      <DateInput value={value} onChange={() => {}} horizontalConstraint={7} />
     </Spec>
     <Spec label="when disabled">
       <DateInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -23,7 +23,7 @@ export const component = () => (
       <DateInput
         value=""
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         placeholder="Select something"
       />
     </Spec>
@@ -31,7 +31,7 @@ export const component = () => (
       <DateInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
       />
     </Spec>
@@ -39,7 +39,7 @@ export const component = () => (
       <DateInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
         hasError={true}
       />
@@ -48,7 +48,7 @@ export const component = () => (
       <DateInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasWarning={true}
       />
     </Spec>
@@ -56,7 +56,7 @@ export const component = () => (
       <DateInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
         hasWarning={true}
       />
@@ -65,7 +65,7 @@ export const component = () => (
       <DateInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hasError={true}
         hasWarning={true}
       />
@@ -74,7 +74,7 @@ export const component = () => (
       <DateInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly
       />
     </Spec>
@@ -85,7 +85,7 @@ export const component = () => (
       <DateInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly
         isDisabled
       />
@@ -97,7 +97,7 @@ export const component = () => (
       <DateInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly
         hasWarning
       />
@@ -109,7 +109,7 @@ export const component = () => (
       <DateInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly
         hasError
       />

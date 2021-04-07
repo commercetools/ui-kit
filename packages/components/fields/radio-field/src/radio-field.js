@@ -29,9 +29,6 @@ class RadioField extends React.Component {
      * Horizontal size limit of the input fields.
      */
     horizontalConstraint: PropTypes.oneOf([
-      'm',
-      'l',
-      'xl',
       7,
       8,
       9,
@@ -173,11 +170,7 @@ class RadioField extends React.Component {
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
     return (
-      <Constraints.Horizontal
-        max={Constraints.parseHorizontalConstraintProp(
-          this.props.horizontalConstraint
-        )}
-      >
+      <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Stack scale="xs">
           <FieldLabel
             title={this.props.title}
@@ -199,9 +192,7 @@ class RadioField extends React.Component {
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasError={hasError}
-            horizontalmax={Constraints.parseHorizontalConstraintProp(
-              this.props.horizontalConstraint
-            )}
+            horizontalConstraint={this.props.horizontalConstraint}
             direction={this.props.direction}
             directionProps={this.props.directionProps}
             {...filterDataAttributes(this.props)}

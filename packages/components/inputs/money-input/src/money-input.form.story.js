@@ -64,7 +64,7 @@ const Story = injectIntl((props) => {
                   MoneyInput.isTouched(formik.touched.price) &&
                   Boolean(formik.errors.price)
                 }
-                horizontalConstraint="m"
+                horizontalConstraint={7}
               />
               {MoneyInput.isTouched(formik.touched.price) &&
                 formik.errors.price &&

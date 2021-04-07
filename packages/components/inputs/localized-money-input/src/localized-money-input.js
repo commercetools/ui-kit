@@ -147,11 +147,7 @@ const LocalizedMoneyInput = (props) => {
     currencies.length > 1 && !props.hideCurrencyExpansionControls;
 
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
         <Stack scale="s">
           {currencies.map((currency, index) => {
@@ -249,9 +245,6 @@ LocalizedMoneyInput.propTypes = {
   isReadOnly: PropTypes.bool,
   placeholder: PropTypes.objectOf(PropTypes.string),
   horizontalConstraint: PropTypes.oneOf([
-    'm',
-    'l',
-    'xl',
     3,
     4,
     5,

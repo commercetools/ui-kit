@@ -13,7 +13,7 @@ export const component = () => (
         title="Welcome Text"
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       >
         <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
         <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
@@ -25,7 +25,7 @@ export const component = () => (
         isRequired={true}
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       >
         <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
         <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
@@ -37,7 +37,7 @@ export const component = () => (
         isDisabled={true}
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       >
         <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
         <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
@@ -49,7 +49,7 @@ export const component = () => (
         isReadOnly={true}
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       >
         <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
         <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
@@ -60,7 +60,7 @@ export const component = () => (
         title="Welcome Text"
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ missing: true }}
       >
         <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
@@ -72,7 +72,7 @@ export const component = () => (
         title="Welcome Text"
         value={value}
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ missing: true }}
         touched={true}
       >

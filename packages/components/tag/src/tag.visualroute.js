@@ -24,28 +24,28 @@ export const component = ({ themes }) => (
         With remove
       </Tag>
     </Spec>
-    <Spec label="Normal - horizontalConstraint - xs">
-      <Tag type="normal" horizontalConstraint="xs">
+    <Spec label="Normal - horizontalConstraint - 1">
+      <Tag type="normal" horizontalConstraint={1}>
         Tag
       </Tag>
     </Spec>
-    <Spec label="Normal - horizontalConstraint - s">
-      <Tag type="normal" horizontalConstraint="s">
+    <Spec label="Normal - horizontalConstraint - 3">
+      <Tag type="normal" horizontalConstraint={3}>
         Tag
       </Tag>
     </Spec>
-    <Spec label="Normal - horizontalConstraint - m">
-      <Tag type="normal" horizontalConstraint="m">
+    <Spec label="Normal - horizontalConstraint - 7">
+      <Tag type="normal" horizontalConstraint={7}>
         Tag
       </Tag>
     </Spec>
-    <Spec label="Normal - horizontalConstraint - l">
-      <Tag type="normal" horizontalConstraint="l">
+    <Spec label="Normal - horizontalConstraint - 10">
+      <Tag type="normal" horizontalConstraint={10}>
         Tag
       </Tag>
     </Spec>
-    <Spec label="Normal - horizontalConstraint - xl">
-      <Tag type="normal" horizontalConstraint="xl">
+    <Spec label="Normal - horizontalConstraint - 16">
+      <Tag type="normal" horizontalConstraint={16}>
         Tag
       </Tag>
     </Spec>
@@ -78,99 +78,93 @@ export const component = ({ themes }) => (
         <Tag type="normal">Tag</Tag>
       </Spec>
     </ThemeProvider>
-    <Spec
-      label="Normal - with linkTo"
-      propsToList={[...basePropsToList, 'linkTo']}
-    >
-      <Tag type="normal" linkTo="foo/bar">
+    <Spec label="Normal - with to" propsToList={[...basePropsToList, 'to']}>
+      <Tag type="normal" to="foo/bar">
         Tag
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with linkTo - onRemove"
-      propsToList={[...basePropsToList, 'linkTo']}
+      label="Normal - with to - onRemove"
+      propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" linkTo="foo/bar" onRemove={() => {}}>
+      <Tag type="normal" to="foo/bar" onRemove={() => {}}>
         With remove
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with linkTo - horizontalConstraint - xs"
-      propsToList={[...basePropsToList, 'linkTo']}
+      label="Normal - with to - horizontalConstraint - 1"
+      propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" linkTo="foo/bar" horizontalConstraint="xs">
+      <Tag type="normal" to="foo/bar" horizontalConstraint={1}>
         Tag
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with linkTo - horizontalConstraint - s"
-      propsToList={[...basePropsToList, 'linkTo']}
+      label="Normal - with to - horizontalConstraint - 3"
+      propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" linkTo="foo/bar" horizontalConstraint="s">
+      <Tag type="normal" to="foo/bar" horizontalConstraint={3}>
         Tag
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with linkTo - horizontalConstraint - m"
-      propsToList={[...basePropsToList, 'linkTo']}
+      label="Normal - with to - horizontalConstraint - 7"
+      propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" linkTo="foo/bar" horizontalConstraint="m">
+      <Tag type="normal" to="foo/bar" horizontalConstraint={7}>
         Tag
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with linkTo - horizontalConstraint - l"
-      propsToList={[...basePropsToList, 'linkTo']}
+      label="Normal - with to - horizontalConstraint - 10"
+      propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" linkTo="foo/bar" horizontalConstraint="l">
+      <Tag type="normal" to="foo/bar" horizontalConstraint={10}>
         Tag
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with linkTo - horizontalConstraint - xl"
-      propsToList={[...basePropsToList, 'linkTo']}
+      label="Normal - with to - horizontalConstraint - 16"
+      propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" linkTo="foo/bar" horizontalConstraint="xl">
+      <Tag type="normal" to="foo/bar" horizontalConstraint={16}>
         Tag
       </Tag>
     </Spec>
-    <Spec
-      label="Warning - with linkTo"
-      propsToList={[...basePropsToList, 'linkTo']}
-    >
-      <Tag type="warning" linkTo="foo/bar">
+    <Spec label="Warning - with to" propsToList={[...basePropsToList, 'to']}>
+      <Tag type="warning" to="foo/bar">
         Warning message
       </Tag>
     </Spec>
     <Spec
-      label="Warning - with linkTo - disabled"
-      propsToList={[...basePropsToList, 'linkTo']}
+      label="Warning - with to - disabled"
+      propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="warning" linkTo="foo/bar" isDisabled={true}>
+      <Tag type="warning" to="foo/bar" isDisabled={true}>
         Warning but disabled
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with linkTo - multiple lines of text"
-      propsToList={[...basePropsToList, 'linkTo']}
+      label="Normal - with to - multiple lines of text"
+      propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" linkTo="foo/bar">
+      <Tag type="normal" to="foo/bar">
         {longText}
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with linkTo - multiple lines of text - onRemove"
-      propsToList={[...basePropsToList, 'linkTo']}
+      label="Normal - with to - multiple lines of text - onRemove"
+      propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" linkTo="foo/bar" onRemove={() => {}}>
+      <Tag type="normal" to="foo/bar" onRemove={() => {}}>
         {longText}
       </Tag>
     </Spec>
     <Spec
-      label="Normal - with linkTo - onRemove (disabled)"
-      propsToList={[...basePropsToList, 'linkTo']}
+      label="Normal - with to - onRemove (disabled)"
+      propsToList={[...basePropsToList, 'to']}
     >
-      <Tag type="normal" linkTo="foo/bar" onRemove={() => {}} isDisabled={true}>
+      <Tag type="normal" to="foo/bar" onRemove={() => {}} isDisabled={true}>
         {longText}
       </Tag>
     </Spec>
@@ -178,10 +172,10 @@ export const component = ({ themes }) => (
       theme={{ ...themes.darkTheme, colorNeutral95: 'rgba(0,0,0,0.05)' }}
     >
       <Spec
-        label="Dark theme - with linkTo"
-        propsToList={[...basePropsToList, 'linkTo']}
+        label="Dark theme - with to"
+        propsToList={[...basePropsToList, 'to']}
       >
-        <Tag type="normal" linkTo="foo/bar">
+        <Tag type="normal" to="foo/bar">
           Tag
         </Tag>
       </Spec>

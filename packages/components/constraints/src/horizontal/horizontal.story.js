@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import Horizontal from './horizontal';
@@ -46,7 +45,6 @@ const Column = styled.div`
 `;
 
 storiesOf('Components|Constraints', module)
-  .addDecorator(withKnobs)
   .addParameters({
     readme: {
       // Show readme at the addons panel

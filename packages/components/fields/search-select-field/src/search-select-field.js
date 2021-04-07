@@ -19,11 +19,7 @@ const SearchSelectField = (props) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
   const id = props.id || sequentialId();
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <Spacings.Stack scale="xs">
         <FieldLabel
           title={props.title}
@@ -91,10 +87,6 @@ SearchSelectField.propTypes = {
    *Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf([
-    's',
-    'm',
-    'l',
-    'xl',
     3,
     4,
     5,

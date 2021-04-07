@@ -6,7 +6,7 @@ const Example = () => {
     <SearchSelectInput
       id="customers"
       name="customers"
-      horizontalConstraint="m"
+      horizontalConstraint={7}
       optionType="single-lined"
       isAutofocussed={false}
       backspaceRemovesValue={true}

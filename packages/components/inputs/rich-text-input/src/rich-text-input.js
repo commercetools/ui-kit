@@ -152,9 +152,6 @@ RichTextInput.propTypes = {
   isDisabled: PropTypes.bool,
   isReadOnly: PropTypes.bool,
   horizontalConstraint: PropTypes.oneOf([
-    'm',
-    'l',
-    'xl',
     7,
     8,
     9,

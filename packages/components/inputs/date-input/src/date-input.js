@@ -93,11 +93,7 @@ const DateInput = (props) => {
   };
 
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <Downshift
         key={intl.locale}
         inputId={props.id}
@@ -318,9 +314,6 @@ DateInput.propTypes = {
    * Horizontal size limit of the input field.
    */
   horizontalConstraint: PropTypes.oneOf([
-    'm',
-    'l',
-    'xl',
     6,
     7,
     8,

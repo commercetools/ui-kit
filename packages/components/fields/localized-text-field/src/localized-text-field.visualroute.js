@@ -18,7 +18,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
     <Spec label="when languages are opened by default">
@@ -27,7 +27,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         defaultExpandLanguages={true}
       />
     </Spec>
@@ -37,7 +37,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         hideLanguageExpansionControls={true}
       />
     </Spec>
@@ -47,7 +47,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
         defaultExpandLanguages={true}
       />
@@ -58,7 +58,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isReadOnly={true}
       />
     </Spec>
@@ -68,7 +68,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
         defaultExpandLanguages={true}
       />
@@ -79,7 +79,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         isDisabled={true}
       />
     </Spec>
@@ -89,7 +89,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ missing: true }}
       />
     </Spec>
@@ -99,7 +99,7 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         selectedLanguage="en"
-        horizontalConstraint="m"
+        horizontalConstraint={7}
         errors={{ missing: true }}
         touched={true}
       />

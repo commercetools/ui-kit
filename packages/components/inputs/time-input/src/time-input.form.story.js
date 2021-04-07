@@ -36,14 +36,14 @@ const Story = injectIntl((props) => {
               value={formik.values.startTime}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              horizontalConstraint="m"
+              horizontalConstraint={7}
             />
             <TimeInput
               name="endTime"
               value={formik.values.endTime}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              horizontalConstraint="m"
+              horizontalConstraint={7}
             />
             <Spacings.Inline>
               <SecondaryButton

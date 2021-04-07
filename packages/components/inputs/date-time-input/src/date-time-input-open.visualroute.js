@@ -14,7 +14,7 @@ export const component = () => (
         timeZone="UTC"
         id="date-time-input"
         onChange={() => {}}
-        horizontalConstraint="m"
+        horizontalConstraint={7}
       />
     </Spec>
   </Suite>

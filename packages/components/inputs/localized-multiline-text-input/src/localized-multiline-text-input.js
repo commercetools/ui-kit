@@ -113,11 +113,7 @@ const LocalizedMultilineTextInput = (props) => {
     languages.length > 1 && !props.hideLanguageExpansionControls;
 
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
         <Stack scale="s">
           {languages.map((language, index) => {
@@ -275,9 +271,6 @@ LocalizedMultilineTextInput.propTypes = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint: PropTypes.oneOf([
-    'm',
-    'l',
-    'xl',
     6,
     7,
     8,

@@ -13,18 +13,14 @@ import TagBody from './tag-body';
 
 const Tag = (props) => {
   const linkProps =
-    props.linkTo && !props.isDisabled ? { as: Link, to: props.linkTo } : {};
+    props.to && !props.isDisabled ? { as: Link, to: props.to } : {};
   const theme = useTheme();
   const overwrittenVars = {
     ...vars,
     ...theme,
   };
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <div
         css={css`
           a {
@@ -114,7 +110,7 @@ Tag.propTypes = {
   /**
    * Link of the tag when not disabled
    */
-  linkTo: PropTypes.string,
+  to: PropTypes.string,
   /**
    * Disable the tag element along with the option to remove it.
    */
@@ -135,11 +131,6 @@ Tag.propTypes = {
    * Horizontal size limit of the input field.
    */
   horizontalConstraint: PropTypes.oneOf([
-    'xs',
-    's',
-    'm',
-    'l',
-    'xl',
     1,
     2,
     3,

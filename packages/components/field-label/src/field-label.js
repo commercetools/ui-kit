@@ -20,11 +20,7 @@ export const FieldLabel = (props) => {
   }
 
   return (
-    <Constraints.Horizontal
-      max={Constraints.parseHorizontalConstraintProp(
-        props.horizontalConstraint
-      )}
-    >
+    <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
         <Inline alignItems="flexStart" scale="xs">
           <Text.Wrap>
