@@ -10,6 +10,7 @@ import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 type TExtendedTheme = Theme & {
   [key: string]: string;
 };
+
 type TLinkShape = {
   pathname: string;
   search: string;
