@@ -1,5 +1,22 @@
 # @commercetools-uikit/async-creatable-select-input
 
+## 12.0.0
+
+### Major Changes
+
+- [#1829](https://github.com/commercetools/ui-kit/pull/1829) [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac) Thanks [@adnasa](https://github.com/adnasa)! - Remove `constraint` prop (`xs`, `s`, `m`, `l`, `xl`) in favor of `max`.
+
+### Patch Changes
+
+- Updated dependencies [[`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac), [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac), [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac)]:
+  - @commercetools-uikit/design-system@12.0.0
+  - @commercetools-uikit/constraints@12.0.0
+  - @commercetools-uikit/text@12.0.0
+  - @commercetools-uikit/icons@12.0.0
+  - @commercetools-uikit/select-utils@12.0.0
+  - @commercetools-uikit/loading-spinner@12.0.0
+  - @commercetools-uikit/spacings@12.0.0
+
 ## 11.2.1
 
 ### Patch Changes

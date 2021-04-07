@@ -1,5 +1,25 @@
 # @commercetools-uikit/data-table-manager
 
+## 12.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac), [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac), [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac)]:
+  - @commercetools-uikit/design-system@12.0.0
+  - @commercetools-uikit/field-label@12.0.0
+  - @commercetools-uikit/async-select-input@12.0.0
+  - @commercetools-uikit/radio-input@12.0.0
+  - @commercetools-uikit/select-input@12.0.0
+  - @commercetools-uikit/tag@12.0.0
+  - @commercetools-uikit/secondary-button@12.0.0
+  - @commercetools-uikit/text@12.0.0
+  - @commercetools-uikit/accessible-button@12.0.0
+  - @commercetools-uikit/primary-button@12.0.0
+  - @commercetools-uikit/secondary-icon-button@12.0.0
+  - @commercetools-uikit/card@12.0.0
+  - @commercetools-uikit/icons@12.0.0
+  - @commercetools-uikit/spacings@12.0.0
+
 ## 11.3.0
 
 ### Patch Changes

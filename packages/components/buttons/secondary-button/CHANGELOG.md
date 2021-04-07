@@ -1,5 +1,19 @@
 # @commercetools-uikit/secondary-button
 
+## 12.0.0
+
+### Major Changes
+
+- [#1829](https://github.com/commercetools/ui-kit/pull/1829) [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac) Thanks [@adnasa](https://github.com/adnasa)! - Remove `linkTo` prop in favor of `to` from `SecondaryButton` and `Tag`
+
+### Patch Changes
+
+- Updated dependencies [[`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac), [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac)]:
+  - @commercetools-uikit/design-system@12.0.0
+  - @commercetools-uikit/text@12.0.0
+  - @commercetools-uikit/accessible-button@12.0.0
+  - @commercetools-uikit/spacings-inline@12.0.0
+
 ## 11.2.1
 
 ### Patch Changes
