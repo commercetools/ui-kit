@@ -44,4 +44,4 @@
 '@commercetools-uikit/tooltip': major
 ---
 
-remove use of old constraint values
+Remove `constraint` prop (`xs`, `s`, `m`, `l`, `xl`) in favor of `max`.

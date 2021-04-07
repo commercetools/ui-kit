@@ -3,4 +3,4 @@
 '@commercetools-uikit/tag': major
 ---
 
-remove `linkTo` prop in favor of `to`
+Remove `linkTo` prop in favor of `to` from `SecondaryButton` and `Tag`

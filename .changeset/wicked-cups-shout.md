@@ -2,4 +2,4 @@
 '@commercetools-uikit/constraints': major
 ---
 
-remove `constraint` prop
+Remove `constraint` in favor of `max` prop.

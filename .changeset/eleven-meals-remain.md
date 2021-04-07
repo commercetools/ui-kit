@@ -3,4 +3,4 @@
 '@commercetools-uikit/rich-text-input': patch
 ---
 
-set rich-text out of beta
+Set `LocalizedRichTextInput` and `RichTextInput` out of `BETA`.

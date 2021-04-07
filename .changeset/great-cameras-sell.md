@@ -2,4 +2,4 @@
 '@commercetools-frontend/ui-kit': major
 ---
 
-refactor(components): remove `Table` in favor of `DataTable`
+Remove `Table` in favor of `DataTable`

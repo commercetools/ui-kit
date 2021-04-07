@@ -2,4 +2,5 @@
 '@commercetools-uikit/link': major
 ---
 
-refactor(link): remove `hasUnderline` prop
+Remove deprecated prop `hasUnderline` from `Link`.
+`Link` will have `underline` by default.
