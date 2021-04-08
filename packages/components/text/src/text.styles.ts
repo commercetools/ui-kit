@@ -115,7 +115,6 @@ export const wrapStyles = (theme: Theme) => css`
 
 export const detailStyles = (props: TDetailProps, theme: Theme) => css`
   ${getBaseStyles(theme)}
-  display: block;
   font-size: 0.9231rem;
   ${props.isBold && bold}
   ${props.isItalic && italic}
