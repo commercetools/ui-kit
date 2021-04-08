@@ -203,7 +203,8 @@ Body.displayName = 'TextBody';
 export type TDetailProps = {
   isBold?: boolean;
   isItalic?: boolean;
-  isInline?: boolean;
+  // only span is supported for now.
+  as?: 'span';
   tone?:
     | 'primary'
     | 'secondary'
@@ -220,14 +221,27 @@ const Detail = (props: TDetailProps) => {
   const theme = useTheme();
   warnIfMissingTitle(props, 'TextDetail');
   warnIfMissingContent(props, 'TextDetail');
+  if (props.as) {
+    const TextDetailElement = props.as;
+    return (
+      <TextDetailElement
+        css={detailStyles(props, theme)}
+        title={props.title}
+        {...filterDataAttributes(props)}
+      >
+        <Text intlMessage={props.intlMessage}>{props.children}</Text>
+      </TextDetailElement>
+    );
+  }
+
   return (
-    <small
+    <div
       css={detailStyles(props, theme)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
       <Text intlMessage={props.intlMessage}>{props.children}</Text>
-    </small>
+    </div>
   );
 };
 Detail.displayName = 'TextDetail';

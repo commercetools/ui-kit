@@ -130,7 +130,7 @@ export const component = ({ themes }) => (
       <Text.Detail>Detail text</Text.Detail>
     </Spec>
     <Spec label="Detail - inline">
-      <Text.Detail isInline={true}>Detail text bold</Text.Detail>
+      <Text.Detail as="span">Detail text bold</Text.Detail>
     </Spec>
     <Spec label="Detail - bold">
       <Text.Detail isBold={true}>Detail text bold</Text.Detail>

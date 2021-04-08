@@ -133,8 +133,8 @@ import Text from '@commercetools-uikit/text';
 
 | Props         | Type             | Required | Values                                                                        | Default |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
+| `as`          | `string`         |    -     | `span` `[^]`                                                                  | `false` |
 | `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |
-| `isInline`    | `Boolean`        |    -     | -                                                                             | `false` |
 | `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |
 | `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'warning'']` | -       |
 | `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |
@@ -143,6 +143,7 @@ import Text from '@commercetools-uikit/text';
 | `truncate`    | `Bool`           |    -     | -                                                                             | `false` |
 
 > `*`: `children` is required only if `intlMessage` is not provided
+> `[^]`: Only supported `as` value is `span`. Use `span` to apply inline styling.
 
 The component further forwards all `data-` attributes to the underlying component.
 

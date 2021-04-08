@@ -34,10 +34,6 @@ const italic = `
   font-style: italic;
 `;
 
-const inline = `
-  display: inline-block;
-`;
-
 const getTone = (tone: string, theme: Theme) => {
   const overwrittenVars = {
     ...vars,
@@ -119,9 +115,7 @@ export const wrapStyles = (theme: Theme) => css`
 
 export const detailStyles = (props: TDetailProps, theme: Theme) => css`
   ${getBaseStyles(theme)}
-  display: block;
   font-size: 0.9231rem;
-  ${props.isInline && inline}
   ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.tone && getTone(props.tone, theme)}
