@@ -203,8 +203,7 @@ Body.displayName = 'TextBody';
 export type TDetailProps = {
   isBold?: boolean;
   isItalic?: boolean;
-  // only span is supported for now.
-  as?: 'span';
+  as?: 'span' | 'small';
   tone?:
     | 'primary'
     | 'secondary'

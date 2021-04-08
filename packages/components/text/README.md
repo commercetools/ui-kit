@@ -48,15 +48,15 @@ import Text from '@commercetools-uikit/text';
 
 ### Properties
 
-| Props         | Type             | Required | Values                                                            | Default |
+| Props         | Type             | Required | Values                                                            | Default |                                                                        |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
-| `as`          | `String`         |    ✅    | `['h4', 'h5']`                                                    | -       |
-| `isBold`      | `Boolean`        |    -     | -                                                                 | `false` |
-| `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative']` | -       |
-| `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                 | -       |
+| `as`          | `String`         |    ✅    | `['h4', 'h5']`                                                    | -       |                                                                        |
+| `isBold`      | `Boolean`        |    -     | -                                                                 | `false` |                                                                        |
+| `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative']` | -       |                                                                        |
+| `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                 | -       |                                                                        |
 | `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                 | -       | An `intl` message object that will be rendered with `FormattedMessage` |
-| `title`       | `String`         |    -     | -                                                                 | -       |
-| `truncate`    | `Bool`           |    -     | -                                                                 | `false` |
+| `title`       | `String`         |    -     | -                                                                 | -       |                                                                        |
+| `truncate`    | `Bool`           |    -     | -                                                                 | `false` |                                                                        |
 
 > `*`: `children` is required only if `intlMessage` is not provided
 
@@ -96,16 +96,16 @@ import Text from '@commercetools-uikit/text';
 
 ### Properties
 
-| Props         | Type             | Required | Values                                                                        | Default |
+| Props         | Type             | Required | Values                                                                        | Default |                                                                        |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
-| `as`          | `String`         |    -     | `['p', 'span']`                                                               | -       |
-| `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |
-| `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |
-| `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'inverted']` | -       |
-| `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |
+| `as`          | `String`         |    -     | `['p', 'span']`                                                               | -       |                                                                        |
+| `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |                                                                        |
+| `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |                                                                        |
+| `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'inverted']` | -       |                                                                        |
+| `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |                                                                        |
 | `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                             | -       | An `intl` message object that will be rendered with `FormattedMessage` |
-| `title`       | `String`         |    -     | -                                                                             | -       |
-| `truncate`    | `Bool`           |    -     | -                                                                             | `false` |
+| `title`       | `String`         |    -     | -                                                                             | -       |                                                                        |
+| `truncate`    | `Bool`           |    -     | -                                                                             | `false` |                                                                        |
 
 > `*`: `children` is required only if `intlMessage` is not provided
 
@@ -131,19 +131,19 @@ import Text from '@commercetools-uikit/text';
 
 ### Properties
 
-| Props         | Type             | Required | Values                                                                        | Default |
+| Props         | Type             | Required | Values                                                                        | Default |                                                                        |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
-| `as`          | `string`         |    -     | `span` `[^]`                                                                  | `false` |
-| `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |
-| `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |
-| `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'warning'']` | -       |
-| `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |
+| `as`          | `string`         |    -     | `['small', 'span']` `[^]`                                                     | `false` |                                                                        |
+| `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |                                                                        |
+| `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |                                                                        |
+| `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'warning'']` | -       |                                                                        |
+| `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |                                                                        |
 | `intlMessage` | `intl message`   | ✅ (\*)  | -                                                                             | -       | An `intl` message object that will be rendered with `FormattedMessage` |
-| `title`       | `String`         |    -     | -                                                                             | -       |
-| `truncate`    | `Bool`           |    -     | -                                                                             | `false` |
+| `title`       | `String`         |    -     | -                                                                             | -       |                                                                        |
+| `truncate`    | `Bool`           |    -     | -                                                                             | `false` |                                                                        |
 
-> `*`: `children` is required only if `intlMessage` is not provided
-> `[^]`: Only supported `as` value is `span`. Use `span` to apply inline styling.
+> `*`: `children` is required only if `intlMessage` is not provided.
+> `[^]`: Use `as` prop to render an inline element.
 
 The component further forwards all `data-` attributes to the underlying component.
 
