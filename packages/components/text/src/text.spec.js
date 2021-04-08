@@ -255,11 +255,11 @@ describe('<Body>', () => {
 });
 
 describe('<Detail>', () => {
-  it('should render element tag small', () => {
+  it('should render element tag div', () => {
     const { container } = render(
       <Text.Detail title="tooltip text">{'Detail'}</Text.Detail>
     );
-    expect(container.querySelector('small')).toBeInTheDocument();
+    expect(container.querySelector('div')).toBeInTheDocument();
   });
 
   it('should render given text', () => {
@@ -279,6 +279,28 @@ describe('<Detail>', () => {
       </Text.Detail>
     );
     expect(screen.getByTitle('detail')).toHaveAttribute('data-foo', 'bar');
+  });
+  describe('when `as` is defined', () => {
+    describe('as `span`', () => {
+      it('should render element tag `span`', () => {
+        const { container } = render(
+          <Text.Detail as="span" title="tooltip text">
+            {'Detail'}
+          </Text.Detail>
+        );
+        expect(container.querySelector('span')).toBeInTheDocument();
+      });
+    });
+    describe('as `small`', () => {
+      it('should render element tag `small`', () => {
+        const { container } = render(
+          <Text.Detail as="small" title="tooltip text">
+            {'Detail'}
+          </Text.Detail>
+        );
+        expect(container.querySelector('small')).toBeInTheDocument();
+      });
+    });
   });
   describe('when no text is provided', () => {
     it('should warn but not crash', () => {
