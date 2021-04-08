@@ -93,6 +93,7 @@ storiesOf('Basics|Typography/Text', module)
   .add('Detail', () => (
     <Section>
       <Text.Detail
+        isInline={boolean('inline', false)}
         isBold={boolean('bold', false)}
         isItalic={boolean('italic', false)}
         tone={select('Text tone', {

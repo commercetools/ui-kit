@@ -203,6 +203,7 @@ Body.displayName = 'TextBody';
 export type TDetailProps = {
   isBold?: boolean;
   isItalic?: boolean;
+  isInline?: boolean;
   tone?:
     | 'primary'
     | 'secondary'

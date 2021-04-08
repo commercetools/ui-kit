@@ -134,6 +134,7 @@ import Text from '@commercetools-uikit/text';
 | Props         | Type             | Required | Values                                                                        | Default |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
 | `isBold`      | `Boolean`        |    -     | -                                                                             | `false` |
+| `isInline`    | `Boolean`        |    -     | -                                                                             | `false` |
 | `isItalic`    | `Boolean`        |    -     | -                                                                             | `false` |
 | `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'warning'']` | -       |
 | `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |
