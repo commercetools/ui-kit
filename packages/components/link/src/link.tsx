@@ -19,11 +19,32 @@ type TLinkShape = {
 };
 
 type TLinkProps = {
-  tone?: 'primary' | 'inverted';
-  isExternal: boolean;
-  intlMessage?: MessageDescriptor;
+  /**
+   * Value of the link.
+   * <br />
+   * Required if `intlMessage` is not provided.
+   */
   children: React.ReactNode;
+  /**
+   * An intl message object that will be rendered with `FormattedMessage`.
+   * <br />
+   * Required if `children` is not provided.
+   */
+  intlMessage?: MessageDescriptor;
+  /**
+   * A flag to indicate if the Link points to an external source.
+   * <bt />
+   * If `true`, a regular `<a>` is rendered instead of the default `react-router`s `<Link />`
+   */
+  isExternal: boolean;
+  /**
+   * The URL that the Link should point to
+   */
   to: string | TLinkShape;
+  /**
+   * Color of the link
+   */
+  tone?: 'primary' | 'inverted';
 };
 
 const warnIfMissingContent = (props: TLinkProps) => {
