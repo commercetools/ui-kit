@@ -2,4 +2,4 @@
 "@commercetools-uikit/spacings-inline": patch
 ---
 
-docs(spacings-inline): flex-wrap alternative
+Document recommendation for [`<Grid />`](https://uikit.commercetools.com/?path=/story/components-grid--grid) instead of using `flex-wrap`.
