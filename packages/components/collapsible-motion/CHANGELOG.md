@@ -1,5 +1,22 @@
 # @commercetools-uikit/collapsible-motion
 
+## 12.0.0
+
+### Major Changes
+
+- [#1852](https://github.com/commercetools/ui-kit/pull/1852) [`236994dd`](https://github.com/commercetools/ui-kit/commit/236994ddbd033b0fa296d05ac40ce907524ff35d) Thanks [@adnasa](https://github.com/adnasa)! - Bump `@commercetools-uikit/*` and `@commercetools-frontend/ui-kit` to v12.
+
+  Read more about it in our [Release Notes](https://docs.commercetools.com/custom-applications/releases).
+
+* [#1855](https://github.com/commercetools/ui-kit/pull/1855) [`af70fa9c`](https://github.com/commercetools/ui-kit/commit/af70fa9cd60c790f1db73c45c02852aeb5cba989) Thanks [@emmenko](https://github.com/emmenko)! - \* The peer dependencies `react` and `react-dom` now only require version `>=17`.
+  - The peer dependency `react-intl` now only requires version `>=5`.
+
+### Patch Changes
+
+- Updated dependencies [[`236994dd`](https://github.com/commercetools/ui-kit/commit/236994ddbd033b0fa296d05ac40ce907524ff35d), [`af70fa9c`](https://github.com/commercetools/ui-kit/commit/af70fa9cd60c790f1db73c45c02852aeb5cba989)]:
+  - @commercetools-uikit/hooks@12.0.0
+  - @commercetools-uikit/utils@12.0.0
+
 ## 11.3.0
 
 ### Patch Changes
