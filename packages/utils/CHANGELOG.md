@@ -1,5 +1,13 @@
 # @commercetools-uikit/utils
 
+## 12.0.0
+
+### Major Changes
+
+- [#1852](https://github.com/commercetools/ui-kit/pull/1852) [`236994dd`](https://github.com/commercetools/ui-kit/commit/236994ddbd033b0fa296d05ac40ce907524ff35d) Thanks [@adnasa](https://github.com/adnasa)! - Bump `@commercetools-uikit/*` and `@commercetools-frontend/ui-kit` to v12.
+
+  Read more about it in our [Release Notes](https://docs.commercetools.com/custom-applications/releases).
+
 ## 11.2.1
 
 ### Patch Changes

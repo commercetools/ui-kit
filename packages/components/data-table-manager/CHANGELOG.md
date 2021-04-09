@@ -1,5 +1,39 @@
 # @commercetools-uikit/data-table-manager
 
+## 12.0.0
+
+### Major Changes
+
+- [#1852](https://github.com/commercetools/ui-kit/pull/1852) [`236994dd`](https://github.com/commercetools/ui-kit/commit/236994ddbd033b0fa296d05ac40ce907524ff35d) Thanks [@adnasa](https://github.com/adnasa)! - Bump `@commercetools-uikit/*` and `@commercetools-frontend/ui-kit` to v12.
+
+  Read more about it in our [Release Notes](https://docs.commercetools.com/custom-applications/releases).
+
+* [#1855](https://github.com/commercetools/ui-kit/pull/1855) [`af70fa9c`](https://github.com/commercetools/ui-kit/commit/af70fa9cd60c790f1db73c45c02852aeb5cba989) Thanks [@emmenko](https://github.com/emmenko)! - \* The peer dependencies `react` and `react-dom` now only require version `>=17`.
+  - The peer dependency `react-intl` now only requires version `>=5`.
+
+### Patch Changes
+
+- Updated dependencies [[`236994dd`](https://github.com/commercetools/ui-kit/commit/236994ddbd033b0fa296d05ac40ce907524ff35d), [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac), [`af70fa9c`](https://github.com/commercetools/ui-kit/commit/af70fa9cd60c790f1db73c45c02852aeb5cba989), [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac), [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac)]:
+  - @commercetools-uikit/design-system@12.0.0
+  - @commercetools-uikit/accessible-hidden@12.0.0
+  - @commercetools-uikit/accessible-button@12.0.0
+  - @commercetools-uikit/primary-button@12.0.0
+  - @commercetools-uikit/secondary-button@12.0.0
+  - @commercetools-uikit/secondary-icon-button@12.0.0
+  - @commercetools-uikit/card@12.0.0
+  - @commercetools-uikit/collapsible-motion@12.0.0
+  - @commercetools-uikit/field-label@12.0.0
+  - @commercetools-uikit/grid@12.0.0
+  - @commercetools-uikit/icons@12.0.0
+  - @commercetools-uikit/async-select-input@12.0.0
+  - @commercetools-uikit/radio-input@12.0.0
+  - @commercetools-uikit/select-input@12.0.0
+  - @commercetools-uikit/tag@12.0.0
+  - @commercetools-uikit/text@12.0.0
+  - @commercetools-uikit/hooks@12.0.0
+  - @commercetools-uikit/utils@12.0.0
+  - @commercetools-uikit/spacings@12.0.0
+
 ## 11.3.0
 
 ### Patch Changes

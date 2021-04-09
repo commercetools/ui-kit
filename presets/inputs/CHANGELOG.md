@@ -1,5 +1,42 @@
 # @commercetools-uikit/inputs
 
+## 12.0.0
+
+### Major Changes
+
+- [#1852](https://github.com/commercetools/ui-kit/pull/1852) [`236994dd`](https://github.com/commercetools/ui-kit/commit/236994ddbd033b0fa296d05ac40ce907524ff35d) Thanks [@adnasa](https://github.com/adnasa)! - Bump `@commercetools-uikit/*` and `@commercetools-frontend/ui-kit` to v12.
+
+  Read more about it in our [Release Notes](https://docs.commercetools.com/custom-applications/releases).
+
+* [#1855](https://github.com/commercetools/ui-kit/pull/1855) [`af70fa9c`](https://github.com/commercetools/ui-kit/commit/af70fa9cd60c790f1db73c45c02852aeb5cba989) Thanks [@emmenko](https://github.com/emmenko)! - \* The peer dependencies `react` and `react-dom` now only require version `>=17`.
+  - The peer dependency `react-intl` now only requires version `>=5`.
+
+### Patch Changes
+
+- Updated dependencies [[`236994dd`](https://github.com/commercetools/ui-kit/commit/236994ddbd033b0fa296d05ac40ce907524ff35d), [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac), [`d0fd05c9`](https://github.com/commercetools/ui-kit/commit/d0fd05c986cd88333d22798714a816ca67048dac), [`af70fa9c`](https://github.com/commercetools/ui-kit/commit/af70fa9cd60c790f1db73c45c02852aeb5cba989)]:
+  - @commercetools-uikit/async-creatable-select-input@12.0.0
+  - @commercetools-uikit/async-select-input@12.0.0
+  - @commercetools-uikit/checkbox-input@12.0.0
+  - @commercetools-uikit/creatable-select-input@12.0.0
+  - @commercetools-uikit/date-input@12.0.0
+  - @commercetools-uikit/date-range-input@12.0.0
+  - @commercetools-uikit/date-time-input@12.0.0
+  - @commercetools-uikit/localized-money-input@12.0.0
+  - @commercetools-uikit/localized-multiline-text-input@12.0.0
+  - @commercetools-uikit/localized-rich-text-input@12.0.0
+  - @commercetools-uikit/localized-text-input@12.0.0
+  - @commercetools-uikit/money-input@12.0.0
+  - @commercetools-uikit/multiline-text-input@12.0.0
+  - @commercetools-uikit/number-input@12.0.0
+  - @commercetools-uikit/password-input@12.0.0
+  - @commercetools-uikit/radio-input@12.0.0
+  - @commercetools-uikit/rich-text-input@12.0.0
+  - @commercetools-uikit/search-select-input@12.0.0
+  - @commercetools-uikit/select-input@12.0.0
+  - @commercetools-uikit/text-input@12.0.0
+  - @commercetools-uikit/time-input@12.0.0
+  - @commercetools-uikit/toggle-input@12.0.0
+
 ## 11.3.0
 
 ### Patch Changes

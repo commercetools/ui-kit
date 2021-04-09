@@ -1,5 +1,12 @@
 # @commercetools-local/generator-package-json
 
+## 2.0.0
+
+### Major Changes
+
+- [#1855](https://github.com/commercetools/ui-kit/pull/1855) [`af70fa9c`](https://github.com/commercetools/ui-kit/commit/af70fa9cd60c790f1db73c45c02852aeb5cba989) Thanks [@emmenko](https://github.com/emmenko)! - \* The peer dependencies `react` and `react-dom` now only require version `>=17`.
+  - The peer dependency `react-intl` now only requires version `>=5`.
+
 ## 1.2.10
 
 ### Patch Changes
