@@ -1,3 +1,4 @@
+import type { LocationDescriptor } from 'history';
 import type { Theme } from '@emotion/react';
 import type { MessageDescriptor } from 'react-intl';
 import React from 'react';
@@ -9,13 +10,6 @@ import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 
 type TExtendedTheme = Theme & {
   [key: string]: string;
-};
-
-type TLinkShape = {
-  pathname: string;
-  search: string;
-  hash?: string;
-  state: unknown;
 };
 
 type TLinkProps = {
@@ -40,7 +34,7 @@ type TLinkProps = {
   /**
    * The URL that the Link should point to
    */
-  to: string | TLinkShape;
+  to: string | LocationDescriptor;
   /**
    * Color of the link
    */
