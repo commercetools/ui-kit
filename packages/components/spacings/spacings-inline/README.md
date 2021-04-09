@@ -41,6 +41,8 @@ import Spacings from '@commercetools-uikit/spacings';
 | `justifyContent` | `oneOf`          |    -     | `['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly']` | `flex-start` |
 | `children`       | `PropTypes.node` |    -     | -                                                                                       | -            |
 
+If you need to use `flex-wrap` CSS property, consider using instead the component [`<Grid />`](https://uikit.commercetools.com/?path=/story/components-grid--grid).
+
 ## Scales
 
 | Scale | Pixel |
