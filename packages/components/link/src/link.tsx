@@ -3,6 +3,7 @@ import type { Theme } from '@emotion/react';
 import type { MessageDescriptor } from 'react-intl';
 import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
+import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -120,7 +121,11 @@ const Link = (props: TLinkProps) => {
   // so we pass in the "raw" props instead.
   warnIfMissingContent(props);
 
-  if (props.isExternal && typeof props.to === 'string') {
+  if (props.isExternal) {
+    if (typeof props.to !== 'string') {
+      throw new Error('`to` must be a `string` when `isExternal` is provided.');
+    }
+
     return (
       <a
         css={getLinkStyles(props, theme)}
