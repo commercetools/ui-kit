@@ -29,8 +29,10 @@
     "@commercetools-uikit/utils": "11.2.1",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
-    "prop-types": "15.7.2",
-    "react-required-if": "1.0.3"
+    "@types/history": "^4.7.8",
+    "@types/react-router-dom": "^5.1.7",
+    "history": "4.10.1",
+    "prop-types": "15.7.2"
   },
   "devDependencies": {
     "react": "17.0.1",
