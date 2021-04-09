@@ -75,7 +75,7 @@ type TAccessibleButtonProps = {
   /**
    * Any HTML attributes to be forwarded to the HTML element.
    */
-  buttonAttributes?: Record<string, string>;
+  buttonAttributes?: Record<string, unknown>;
 };
 
 const defaultProps: Pick<
