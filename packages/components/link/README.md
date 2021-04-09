@@ -45,27 +45,10 @@ export default Example;
 
 ## Properties
 
-| Props         | Type                                                                                       | Required | Default     | Description                                                                                                                                                          |
-| ------------- | ------------------------------------------------------------------------------------------ | :------: | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `children`    | `ReactReactNode`                                                                           |    ✅    |             | Value of the link.&#xA;<br />&#xA;Required if `intlMessage` is not provided.                                                                                         |
-| `intlMessage` | `MessageDescriptor`                                                                        |          |             | An intl message object that will be rendered with `FormattedMessage`.&#xA;<br />&#xA;Required if `children` is not provided.                                         |
-| `isExternal`  | `boolean`                                                                                  |          | `false`     | A flag to indicate if the Link points to an external source.&#xA;<bt />&#xA;If `true`, a regular `<a>` is rendered instead of the default `react-router`s `<Link />` |
-| `to`          | `union`<br/>Possible values:<br/>`string , TLinkShape`<br/>[See signature.](#signature-to) |    ✅    |             | The URL that the Link should point to                                                                                                                                |
-| `tone`        | `union`<br/>Possible values:<br/>`'primary' , 'inverted'`                                  |          | `'primary'` | Color of the link                                                                                                                                                    |
-
-## Signatures
-
-### Signature `to`
-
-```ts
-{
-  pathname: string;
-  search: string;
-  hash?: string;
-  state: unknown;
-}
-```
-
-## Prerequisite
-
-> Requires [`react-router`](https://github.com/ReactTraining/react-router).
+| Props         | Type                                                           | Required | Default     | Description                                                                                                                                                          |
+| ------------- | -------------------------------------------------------------- | :------: | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`    | `ReactReactNode`                                               |    ✅    |             | Value of the link.&#xA;<br />&#xA;Required if `intlMessage` is not provided.                                                                                         |
+| `intlMessage` | `MessageDescriptor`                                            |          |             | An `intl` message object that will be rendered with `FormattedMessage`.&#xA;<br />&#xA;Required if `children` is not provided.                                       |
+| `isExternal`  | `boolean`                                                      |          | `false`     | A flag to indicate if the Link points to an external source.&#xA;<bt />&#xA;If `true`, a regular `<a>` is rendered instead of the default `react-router`s `<Link />` |
+| `to`          | `union`<br/>Possible values:<br/>`string , LocationDescriptor` |    ✅    |             | The URL that the Link should point to.                                                                                                                               |
+| `tone`        | `union`<br/>Possible values:<br/>`'primary' , 'inverted'`      |          | `'primary'` | Color of the link                                                                                                                                                    |

@@ -3,7 +3,6 @@ import type { Theme } from '@emotion/react';
 import type { MessageDescriptor } from 'react-intl';
 import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
-import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -21,7 +20,7 @@ type TLinkProps = {
    */
   children: React.ReactNode;
   /**
-   * An intl message object that will be rendered with `FormattedMessage`.
+   * An `intl` message object that will be rendered with `FormattedMessage`.
    * <br />
    * Required if `children` is not provided.
    */
@@ -33,7 +32,7 @@ type TLinkProps = {
    */
   isExternal: boolean;
   /**
-   * The URL that the Link should point to
+   * The URL that the Link should point to.
    */
   to: string | LocationDescriptor;
   /**
