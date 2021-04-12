@@ -123,4 +123,4 @@ import { customProperties } from '@commercetools-uikit/design-system';
 const primary = customProperties.colorPrimary;
 ```
 
-> Please look at the [`custom-properties.js`](https://github.com/commercetools/ui-kit/blob/main/design-system/materials/custom-properties.js) itself to inspect which variables are available.
+> Please look at the [`custom-properties.ts`](https://github.com/commercetools/ui-kit/blob/main/design-system/src/custom-properties.ts) itself to inspect which variables are available.
