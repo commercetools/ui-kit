@@ -46,6 +46,8 @@ export {
   useToggleState,
   useSorting,
   useRowSelection,
+  usePaginationState,
+  useDataTableSortingState,
 } from '@commercetools-uikit/hooks';
 
 export { customProperties } from '@commercetools-uikit/design-system';
