@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 
-const applyIf = (values, key) => (values[key] ? { key } : {});
+const applyIf = (values, key) => (values[key] ? { [key]: values[key] } : {});
+
 const defaultValues = {
   page: 1,
   perPage: 20,
