@@ -1,5 +1,15 @@
 # @commercetools-uikit/localized-rich-text-input
 
+## 12.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`81dc7ba9`](https://github.com/commercetools/ui-kit/commit/81dc7ba995dd408a1ab7dde6f75b26dc69d2254a)]:
+  - @commercetools-uikit/hooks@12.0.2
+  - @commercetools-uikit/collapsible-motion@12.0.2
+  - @commercetools-uikit/tooltip@12.0.2
+  - @commercetools-uikit/rich-text-utils@12.0.2
+
 ## 12.0.0
 
 ### Major Changes

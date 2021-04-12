@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/primary-action-dropdown",
   "description": "A dropdown component with any number of action, where the first action of the dropdown can be triggered without opening the dropdown itself.",
-  "version": "12.0.0",
+  "version": "12.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "@commercetools-uikit/accessible-button": "12.0.0",
     "@commercetools-uikit/buttons": "12.0.0",
     "@commercetools-uikit/design-system": "12.0.0",
-    "@commercetools-uikit/hooks": "12.0.0",
+    "@commercetools-uikit/hooks": "12.0.2",
     "@commercetools-uikit/icons": "12.0.0",
     "@commercetools-uikit/text": "12.0.0",
     "@commercetools-uikit/utils": "12.0.0",
