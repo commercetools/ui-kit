@@ -1,5 +1,12 @@
 # @commercetools-uikit/rich-text-utils
 
+## 12.0.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/tooltip@12.0.2
+
 ## 12.0.0
 
 ### Major Changes

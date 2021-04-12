@@ -1,5 +1,20 @@
 # @commercetools-uikit/fields
 
+## 12.0.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/password-field@12.0.2
+  - @commercetools-uikit/date-field@12.0.2
+  - @commercetools-uikit/date-range-field@12.0.2
+  - @commercetools-uikit/date-time-field@12.0.2
+  - @commercetools-uikit/localized-multiline-text-field@12.0.2
+  - @commercetools-uikit/localized-text-field@12.0.2
+  - @commercetools-uikit/money-field@12.0.2
+  - @commercetools-uikit/multiline-text-field@12.0.2
+  - @commercetools-uikit/time-field@12.0.2
+
 ## 12.0.0
 
 ### Major Changes

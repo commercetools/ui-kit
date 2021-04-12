@@ -1,5 +1,11 @@
 # @commercetools-uikit/hooks
 
+## 12.0.2
+
+### Patch Changes
+
+- [#1863](https://github.com/commercetools/ui-kit/pull/1863) [`81dc7ba9`](https://github.com/commercetools/ui-kit/commit/81dc7ba995dd408a1ab7dde6f75b26dc69d2254a) Thanks [@adnasa](https://github.com/adnasa)! - Apply value when is not nullable
+
 ## 12.0.0
 
 ### Major Changes

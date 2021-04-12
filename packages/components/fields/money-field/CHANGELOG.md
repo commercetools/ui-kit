@@ -1,5 +1,12 @@
 # @commercetools-uikit/money-field
 
+## 12.0.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/money-input@12.0.2
+
 ## 12.0.0
 
 ### Major Changes
