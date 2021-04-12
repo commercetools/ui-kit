@@ -1,5 +1,11 @@
 # @commercetools-frontend/ui-kit
 
+## 12.0.1
+
+### Patch Changes
+
+- [#1861](https://github.com/commercetools/ui-kit/pull/1861) [`e8ca0dc1`](https://github.com/commercetools/ui-kit/commit/e8ca0dc1760e7e82a662c7aabdf9ec1015720473) Thanks [@adnasa](https://github.com/adnasa)! - export `usePaginationState` and `useDataTableSortingState` from `presets`
+
 ## 12.0.0
 
 ### Major Changes
