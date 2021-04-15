@@ -13,7 +13,7 @@
   "keywords": ["javascript", "frontend", "ui-kit", "design-system", "react"],
   "sideEffects": false,
   "scripts": {
-    "postinstall": "patch-package",
+    "postinstall": "manypkg check && preconstruct dev && yarn --cwd docs && patch-package",
     "auth": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "clean": "manypkg exec rm -rf dist",
     "generate-readmes": "yarn generate-readme --all-workspace-packages",
