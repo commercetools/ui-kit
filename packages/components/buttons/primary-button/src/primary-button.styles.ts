@@ -1,8 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import type { TPrimaryButtonProps } from './primary-button';
 
-const getSizeStyles = (size) => {
+const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
   switch (size) {
     case 'small':
       return css`
@@ -23,7 +24,12 @@ const getSizeStyles = (size) => {
   }
 };
 
-const getButtonStyles = (isDisabled, isActive, tone, size) => {
+const getButtonStyles = (
+  isDisabled: TPrimaryButtonProps['isDisabled'],
+  isActive: boolean,
+  tone: TPrimaryButtonProps['tone'],
+  size: TPrimaryButtonProps['size']
+) => {
   const baseStyles = css`
     align-items: center;
     color: ${vars.colorSurface};
