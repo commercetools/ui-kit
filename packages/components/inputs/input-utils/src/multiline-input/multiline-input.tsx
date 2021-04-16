@@ -32,7 +32,7 @@ const MultilineInput = (props: TMultiLineInputProps) => {
   const handleHeightChange = React.useCallback<
     (height: number, meta?: TextareaHeightChangeMeta) => void
   >(
-    (height, meta) => {
+    (height: number, meta?: TextareaHeightChangeMeta) => {
       // @ts-ignore
       const rowCount = Math.floor(ref?.current?.scrollHeight / meta?.rowHeight);
       if (onHeightChange) {
