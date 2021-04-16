@@ -45,7 +45,6 @@ const MultilineInput = (props: TMultiLineInputProps) => {
     <TextareaAutosize
       name={props.name}
       onHeightChange={handleHeightChange}
-      type="text"
       autoComplete={props.autoComplete}
       value={props.value}
       onChange={props.onChange}
