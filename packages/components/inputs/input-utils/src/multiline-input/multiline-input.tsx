@@ -1,31 +1,54 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
-import TextareaAutosize from 'react-textarea-autosize';
+import React, { ChangeEventHandler } from 'react';
+import TextareaAutosize, {
+  TextareaHeightChangeMeta,
+} from 'react-textarea-autosize';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { getTextareaStyles } from './multiline-input.styles';
 
 const MIN_ROW_COUNT = 1;
 
-const MultilineInput = (props) => {
+export type TMultiLineInputProps = {
+  autoComplete?: string;
+  className?: string;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  id?: string;
+  isAutofocussed?: boolean;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  name?: string;
+  onBlur?: ChangeEventHandler;
+  onChange?: ChangeEventHandler;
+  onFocus?: ChangeEventHandler;
+  placeholder?: string;
+  value: string;
+  isOpen: boolean;
+  onHeightChange?: (height: number, rowCount: number) => void;
+};
+
+const MultilineInput = (props: TMultiLineInputProps) => {
   const { onHeightChange } = props;
   const ref = React.useRef();
-  const handleHeightChange = React.useCallback(
+  const handleHeightChange = React.useCallback<
+    (height: number, meta?: TextareaHeightChangeMeta) => void
+  >(
     (height, meta) => {
-      const rowCount = Math.floor(ref.current.scrollHeight / meta.rowHeight);
-      onHeightChange(height, rowCount);
+      // @ts-ignore
+      const rowCount = Math.floor(ref?.current?.scrollHeight / meta?.rowHeight);
+      if (onHeightChange) {
+        onHeightChange(height, rowCount);
+      }
     },
     [ref, onHeightChange]
   );
   return (
     <TextareaAutosize
-      ref={ref}
       name={props.name}
+      onHeightChange={handleHeightChange}
       type="text"
       autoComplete={props.autoComplete}
       value={props.value}
       onChange={props.onChange}
-      onHeightChange={handleHeightChange}
       id={props.id}
       onBlur={props.onBlur}
       onFocus={props.onFocus}
@@ -51,24 +74,5 @@ const MultilineInput = (props) => {
 };
 
 MultilineInput.displayName = 'MultilineInput';
-
-MultilineInput.propTypes = {
-  name: PropTypes.string,
-  className: PropTypes.string,
-  autoComplete: PropTypes.string,
-  id: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  isAutofocussed: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  placeholder: PropTypes.string,
-  isOpen: PropTypes.bool.isRequired,
-  onHeightChange: PropTypes.func,
-};
 
 export default MultilineInput;
