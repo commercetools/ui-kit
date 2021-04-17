@@ -4,11 +4,9 @@ import PasswordInput from '@commercetools-uikit/password-input';
 const Example = () => (
   <PasswordInput
     value="foo"
-    onChange={
-      (/** event */) => {
-        /** alert(event.target.value) */
-      }
-    }
+    onChange={(event) => {
+      alert(event.target.value);
+    }}
   />
 );
 
