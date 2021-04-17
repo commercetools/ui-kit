@@ -1,18 +1,39 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import messages from './messages';
 
-const isObject = (obj) => typeof obj === 'object';
+const isObject = (obj: unknown): boolean => typeof obj === 'object';
 
-const FieldErrors = (props) => {
+type TErrorRenderer = (key: string, error?: boolean) => React.ReactNode;
+
+type TFieldErrorsProps = {
+  /**
+   * List of errors. Only entries with truthy values will count as active errors.
+   */
+  errors: Record<string, boolean>;
+  /**
+   * `true` when the error messages should be rendered. Usually you'd pass in a `touched` state of fields.
+   */
+  isVisible?: boolean;
+  /**
+   * Function which gets called with each error key (from the `errors` prop) and may render an error message or return `null` to hand the error handling off to `renderDefaultError`.
+   */
+  renderError?: TErrorRenderer;
+  /**
+   * Function which gets called with each error key (from the `errors` prop) for which `renderError` returned `null`.
+   * It may render an error message or return `null` to hand the error handling off to `FieldError`s built-in error handling.
+   */
+  renderDefaultError?: TErrorRenderer;
+};
+
+const FieldErrors = (props: TFieldErrorsProps) => {
   if (!props.isVisible) return null;
   if (!isObject(props.errors)) return null;
 
   return (
     <React.Fragment>
-      {Object.entries(props.errors)
+      {Object.entries<boolean>(props.errors)
         // Only render errors which have truthy values, to avoid
         // rendering an error for, e.g. { missing: false }
         .filter(([, error]) => error)
@@ -63,31 +84,6 @@ const FieldErrors = (props) => {
 };
 
 FieldErrors.displayName = 'FieldErrors';
-
-FieldErrors.propTypes = {
-  /**
-   * List of errors. Only entries with truthy values will count as active errors.
-   */
-  errors: PropTypes.object,
-  /**
-   * `true` when the error messages should be rendered. Usually you'd pass in a `touched` state of fields.
-   */
-  isVisible: PropTypes.bool,
-  /**
-   * Function which gets called with each error key (from the `errors` prop) and may render an error message or return `null` to hand the error handling off to `renderDefaultError`.
-   * <br />
-   * Signature: `(key, error) => React.node`
-   */
-  renderError: PropTypes.func,
-  /**
-   * Function which gets called with each error key (from the `errors` prop) for which `renderError` returned `null`.
-   * It may render an error message or return `null` to hand the error handling off to `FieldError`s built-in error handling.
-   * <br />
-   * Signature: `(key, error) => React.node`
-   */
-  renderDefaultError: PropTypes.func,
-};
-
 FieldErrors.errorTypes = {
   MISSING: 'missing',
   NEGATIVE: 'negative',
