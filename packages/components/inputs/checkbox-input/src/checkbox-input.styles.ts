@@ -1,10 +1,16 @@
+import type { Theme } from '@emotion/react';
 import { css } from '@emotion/react';
 import {
   customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
+import type { TCheckboxProps } from './checkbox-input';
 
-const getSvgBorderStroke = (vars, props) => {
+type TExtendedTheme = Theme & {
+  [key: string]: string;
+};
+
+const getSvgBorderStroke = (vars: TExtendedTheme, props: TCheckboxProps) => {
   if (props.isDisabled) {
     return vars[designTokens.borderColorForInputWhenDisabled];
   }
@@ -24,7 +30,8 @@ const getSvgBorderStroke = (vars, props) => {
   }
   return vars[designTokens.borderColorForInput];
 };
-const getSvgContentFill = (vars, props) => {
+
+const getSvgContentFill = (vars: TExtendedTheme, props: TCheckboxProps) => {
   if (props.isDisabled) {
     return vars[designTokens.fontColorForInputWhenDisabled];
   }
@@ -36,7 +43,8 @@ const getSvgContentFill = (vars, props) => {
   }
   return vars[designTokens.borderColorForInputWhenFocused];
 };
-const getCheckboxWrapperStyles = (props, theme) => {
+
+const getCheckboxWrapperStyles = (props: TCheckboxProps, theme: Theme) => {
   const overwrittenVars = {
     ...customProperties,
     ...theme,
