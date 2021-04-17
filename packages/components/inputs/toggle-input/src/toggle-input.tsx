@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ChangeEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -7,12 +6,58 @@ import {
   filterDataAttributes,
   filterAriaAttributes,
 } from '@commercetools-uikit/utils';
+// @ts-ignore
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 
 const thumbSmallSize = '13px';
 const thumbBigSize = `calc(${thumbSmallSize} * 2)`;
 
-const sizeStyles = (props) => {
+type TToggleInputProps = {
+  /**
+   * Used as the HTML `id` property
+   */
+  id?: string;
+  /**
+   * Used as the HTML `name` property
+   */
+  name?: string;
+  /**
+   * The size of the ToggleInput component.
+   */
+  size?: 'small' | 'big';
+  /**
+   * Disables the ToggleInput
+   */
+  isDisabled?: boolean;
+  /**
+   * Checks the ToggleInput
+   */
+  isChecked: boolean;
+  /**
+   * Determines the toggle state.
+   */
+  value?: string;
+  /**
+   * Handler when toggle state changes. <br/>
+   * **Note**: that key value of the `target` is `checked`.
+   */
+  onChange: ChangeEventHandler;
+};
+
+type TStyledLabelProps = Pick<TToggleInputProps, 'isDisabled' | 'size'>;
+type TStyledSpanProps = Pick<TToggleInputProps, 'size'>;
+type TStyledInputProps = Pick<TToggleInputProps, 'size'>;
+
+const defaultProps: Pick<
+  TToggleInputProps,
+  'isDisabled' | 'isChecked' | 'size'
+> = {
+  isDisabled: false,
+  isChecked: false,
+  size: 'big',
+};
+
+const labelSizeStyles = (props: TStyledLabelProps) => {
   if (props.size === 'small')
     return css`
       height: calc(${vars.standardInputHeight} / 2);
@@ -24,12 +69,12 @@ const sizeStyles = (props) => {
   `;
 };
 
-const Label = styled.label`
+const Label = styled.label<TStyledLabelProps>`
   position: relative;
   display: inline-block;
   cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
 
-  ${sizeStyles}
+  ${labelSizeStyles}
 
   &:focus-within {
     outline: auto 2px ${vars.borderColorForInputWhenFocused};
@@ -37,7 +82,7 @@ const Label = styled.label`
   }
 `;
 
-const Span = styled.span`
+const Span = styled.span<TStyledSpanProps>`
   /* this is the track */
 
   &::before {
@@ -73,14 +118,14 @@ const Span = styled.span`
   }
 `;
 
-const Input = styled.input`
+const Input = styled.input<TStyledInputProps>`
   /* when checked */
   &:checked {
     + ${Span}::before {
       background: ${vars.colorPrimary};
     }
     & + ${Span}::after {
-      transform: ${(props) =>
+      transform: ${(props: TStyledInputProps) =>
         props.size === 'small'
           ? 'translate(117%, -50%)'
           : 'translate(127%, -50%)'};
@@ -117,42 +162,27 @@ const Input = styled.input`
   }
 `;
 
-const ToggleInput = (props) => {
-  return (
-    <Label htmlFor={props.id} size={props.size} isDisabled={props.isDisabled}>
-      <Input
-        css={accessibleHiddenInputStyles}
-        id={props.id}
-        name={props.name}
-        onChange={props.onChange}
-        disabled={props.isDisabled}
-        checked={props.isChecked}
-        value={props.value}
-        type="checkbox"
-        size={props.size}
-        {...filterDataAttributes(props)}
-        {...filterAriaAttributes(props)}
-      />
-      <Span aria-hidden="true" size={props.size} />
-    </Label>
-  );
-};
+const ToggleInput = (props: TToggleInputProps) => (
+  <Label htmlFor={props.id} size={props.size} isDisabled={props.isDisabled}>
+    <Input
+      css={accessibleHiddenInputStyles}
+      id={props.id}
+      name={props.name}
+      onChange={props.onChange}
+      disabled={props.isDisabled}
+      checked={props.isChecked}
+      value={props.value}
+      type="checkbox"
+      // @ts-ignore
+      size={props.size}
+      {...filterDataAttributes(props)}
+      {...filterAriaAttributes(props)}
+    />
+    <Span aria-hidden="true" size={props.size} />
+  </Label>
+);
 
 ToggleInput.displayName = 'Toggle';
-ToggleInput.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'big']).isRequired,
-  isDisabled: PropTypes.bool,
-  isChecked: PropTypes.bool.isRequired,
-  value: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-};
-
-ToggleInput.defaultProps = {
-  isDisabled: false,
-  isChecked: false,
-  size: 'big',
-};
+ToggleInput.defaultProps = defaultProps;
 
 export default ToggleInput;
