@@ -1,10 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
+import React, {
+  ChangeEventHandler,
+  FocusEventHandler,
+  FocusEvent,
+} from 'react';
 import { useIntl } from 'react-intl';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import FlatButton from '@commercetools-uikit/flat-button';
+// @ts-ignore
 import { useToggleState } from '@commercetools-uikit/hooks';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -14,22 +17,112 @@ import {
   messagesMultilineInput,
 } from '@commercetools-uikit/input-utils';
 
-const MultilineTextInput = (props) => {
+type TMultilineTextInputProps = {
+  /**
+   * Used as HTML name of the input component. property
+   */
+  name?: string;
+  /**
+   * Used as HTML `autocomplete` property
+   */
+  autoComplete?: string;
+  /**
+   * Used as HTML id property. An id is auto-generated when it is not specified.
+   */
+  id?: string;
+  /**
+   * Value of the input component.
+   */
+  value: string;
+  /**
+   * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
+   */
+  onChange?: ChangeEventHandler;
+  /**
+   * Called when input is blurred
+   */
+  onBlur?: FocusEventHandler;
+  /**
+   * Called when input is focused
+   */
+  onFocus?: FocusEventHandler;
+  /**
+   * Focus the input on initial render
+   */
+  isAutofocussed?: boolean;
+  /**
+   * Expands multiline text input initially
+   */
+  defaultExpandMultilineText?: boolean;
+  /**
+   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
+   */
+  isDisabled?: boolean;
+  /**
+   * Indicates that the field is displaying read-only content
+   */
+  isReadOnly?: boolean;
+  /**
+   * Placeholder text for the input
+   */
+  placeholder?: string;
+  /**
+   * Indicates that input has errors
+   */
+  hasError?: boolean;
+  /**
+   * Control to indicate on the input if there are selected values that are potentially invalid
+   */
+  hasWarning?: boolean;
+  /**
+   * Horizontal size limit of the input fields.
+   */
+  horizontalConstraint?:
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+};
+
+const defaultProps: Pick<
+  TMultilineTextInputProps,
+  'defaultExpandMultilineText'
+> = {
+  defaultExpandMultilineText: false,
+};
+
+const MultilineTextInput = (props: TMultilineTextInputProps) => {
   const intl = useIntl();
 
-  const [contentRowCount, setContentRowCount] = React.useState(
+  const [contentRowCount, setContentRowCount] = React.useState<number>(
     MultilineTextInput.MIN_ROW_COUNT
   );
 
-  const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
+  const [isOpen, toggle] = useToggleState<
+    TMultilineTextInputProps['defaultExpandMultilineText']
+  >(props.defaultExpandMultilineText);
 
   const { onFocus } = props;
-  const handleFocus = React.useCallback(() => {
-    if (!isOpen) toggle();
-    if (onFocus) onFocus();
-  }, [isOpen, onFocus, toggle]);
+  const handleFocus = React.useCallback<FocusEventHandler>(
+    (event: FocusEvent) => {
+      if (!isOpen) toggle(true);
+      if (onFocus) onFocus(event);
+    },
+    [isOpen, onFocus, toggle]
+  );
 
-  const handleHeightChange = React.useCallback(
+  const handleHeightChange = React.useCallback<
+    (height: number, rowCount: number) => void
+  >(
     (_, rowCount) => {
       setContentRowCount(rowCount);
     },
@@ -41,12 +134,10 @@ const MultilineTextInput = (props) => {
   const shouldRenderToggleButton =
     contentRowCount > MultilineTextInput.MIN_ROW_COUNT;
 
-  const theme = useTheme();
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
         <MultilineInput
-          theme={theme}
           name={props.name}
           autoComplete={props.autoComplete}
           value={props.value}
@@ -101,93 +192,8 @@ MultilineTextInput.displayName = 'MultilineTextInput';
 // so that the input "collapses".
 MultilineTextInput.MIN_ROW_COUNT = 1;
 
-MultilineTextInput.isEmpty = (value) => !value || value.trim().length === 0;
-
-MultilineTextInput.propTypes = {
-  /**
-   * Used as HTML name of the input component. property
-   */
-  name: PropTypes.string,
-  /**
-   * Used as HTML `autocomplete` property
-   */
-  autoComplete: PropTypes.string,
-  /**
-   * Used as HTML id property. An id is auto-generated when it is not specified.
-   */
-  id: PropTypes.string,
-  /**
-   * Value of the input component.
-   */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  /**
-   * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
-   * <br />
-   * Signature: `(event) => void`
-   */
-  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
-  /**
-   * Called when input is blurred
-   * <br />
-   * Signature: `(event) => void`
-   */
-  onBlur: PropTypes.func,
-  /**
-   * Called when input is focused
-   * <br />
-   * Signature: `(event) => void`
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Focus the input on initial render
-   */
-  isAutofocussed: PropTypes.bool,
-  /**
-   * Expands multiline text input initially
-   */
-  defaultExpandMultilineText: PropTypes.bool,
-  /**
-   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Indicates that the field is displaying read-only content
-   */
-  isReadOnly: PropTypes.bool,
-  /**
-   * Placeholder text for the input
-   */
-  placeholder: PropTypes.string,
-  /**
-   * Indicates that input has errors
-   */
-  hasError: PropTypes.bool,
-  /**
-   * Control to indicate on the input if there are selected values that are potentially invalid
-   */
-  hasWarning: PropTypes.bool,
-  /**
-   * Horizontal size limit of the input fields.
-   */
-  horizontalConstraint: PropTypes.oneOf([
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-};
-
-MultilineTextInput.defaultProps = {
-  defaultExpandMultilineText: false,
-};
+MultilineTextInput.isEmpty = (value: TMultilineTextInputProps['value']) =>
+  !value || value.trim().length === 0;
+MultilineTextInput.defaultProps = defaultProps;
 
 export default MultilineTextInput;
