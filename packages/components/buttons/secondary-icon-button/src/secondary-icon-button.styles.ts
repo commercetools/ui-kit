@@ -1,7 +1,13 @@
+import type { Theme } from '@emotion/react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import type { TSecondaryButtonProps } from './secondary-icon-button';
 
-const getDisabledStyle = (overwrittenVars) => {
+type TExtendedTheme = {
+  [key: string]: string;
+} & Theme;
+
+const getDisabledStyle = (overwrittenVars: TExtendedTheme) => {
   /* By using the css 'disabled' selector directly, we don't need additional logic to check the isDisabled prop */
   return css`
     &:disabled svg * {
@@ -10,7 +16,10 @@ const getDisabledStyle = (overwrittenVars) => {
   `;
 };
 
-const getColorStyle = (props, overwrittenVars) => {
+const getColorStyle = (
+  props: Pick<TSecondaryButtonProps, 'color'>,
+  overwrittenVars: TExtendedTheme
+) => {
   switch (props.color) {
     case 'solid':
       return css`
@@ -41,8 +50,8 @@ const getColorStyle = (props, overwrittenVars) => {
   }
 };
 
-const getBaseStyles = (props, theme) => {
-  const overwrittenVars = {
+const getBaseStyles = (props: TSecondaryButtonProps, theme: Theme) => {
+  const overwrittenVars: TExtendedTheme = {
     ...vars,
     ...theme,
   };
