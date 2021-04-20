@@ -1,4 +1,5 @@
 import React, { ChangeEventHandler } from 'react';
+import { useTheme } from '@emotion/react';
 import TextareaAutosize, {
   TextareaHeightChangeMeta,
 } from 'react-textarea-autosize';
@@ -27,6 +28,7 @@ export type TMultiLineInputProps = {
 };
 
 const MultilineInput = (props: TMultiLineInputProps) => {
+  const theme = useTheme();
   const { onHeightChange } = props;
   const ref = React.useRef();
   const handleHeightChange = React.useCallback<
@@ -57,7 +59,7 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       placeholder={props.placeholder}
       readOnly={props.isReadOnly}
       autoFocus={props.isAutofocussed}
-      css={getTextareaStyles(props)}
+      css={getTextareaStyles(props, theme)}
       // Allow to override the styles by passing a `className` prop.
       // Custom styles can also be passed using the `css` prop from emotion.
       // https://emotion.sh/docs/css-prop#style-precedence
