@@ -5,7 +5,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import { WorldIcon } from '@commercetools-uikit/icons';
 import messages from '../messages/localized-input';
 
-type TLocalizedInputToggle = {
+type TLocalizedInputToggleProps = {
   icon?: React.ReactElement;
   isOpen?: boolean;
   /**
@@ -17,18 +17,18 @@ type TLocalizedInputToggle = {
   isDisabled?: boolean;
   showMessage: string | MessageDescriptor;
   hideMessage: string | MessageDescriptor;
-  remainingLocalizations: number;
+  remainingLocalizations?: number;
 };
 
 const defaultProps: Pick<
-  TLocalizedInputToggle,
+  TLocalizedInputToggleProps,
   'showMessage' | 'hideMessage'
 > = {
   hideMessage: messages.hide,
   showMessage: messages.show,
 };
 
-const LocalizedInputToggle = (props: TLocalizedInputToggle) => {
+const LocalizedInputToggle = (props: TLocalizedInputToggleProps) => {
   const intl = useIntl();
   const labelMessage = props.isOpen ? props.hideMessage : props.showMessage;
   const label =
