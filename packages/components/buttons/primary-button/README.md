@@ -5,7 +5,7 @@
 
 ## Description
 
-Primary buttons are used for a primary action on a page.
+Primary buttons are used for a primary action on a page. You must also pass a label for accessibility reasons.
 
 ## Installation
 
