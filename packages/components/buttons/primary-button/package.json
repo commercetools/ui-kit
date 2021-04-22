@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/primary-button",
-  "description": "Primary buttons are used for a primary action on a page.",
+  "description": "Primary buttons are used for a primary action on a page. You must also pass a label for accessibility reasons.",
   "version": "12.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
@@ -34,8 +34,7 @@
     "@emotion/styled": "^11.0.0",
     "common-tags": "1.8.0",
     "lodash": "4.17.20",
-    "prop-types": "15.7.2",
-    "react-required-if": "1.0.3"
+    "prop-types": "15.7.2"
   },
   "devDependencies": {
     "react": "17.0.1"

@@ -1,6 +1,7 @@
 import { warning } from '@commercetools-uikit/utils';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
+import type { TIconButtonProps } from './icon-button';
 
 const buttonSizes = {
   small: '16px',
@@ -8,7 +9,34 @@ const buttonSizes = {
   big: '32px',
 };
 
-const getStateStyles = (isDisabled, isActive, theme) => {
+// Gets the color which the icon should have based on context of button's state/cursor behavior
+const getIconThemeColor = (
+  props: Pick<
+    TIconButtonProps,
+    'isToggleButton' | 'isToggled' | 'theme' | 'isDisabled' | 'icon'
+  >
+) => {
+  const isActive = props.isToggleButton && props.isToggled;
+
+  // if button has a theme, icon should be white when hovering/clicking
+  if (props.theme !== 'default' && isActive) {
+    if (props.isDisabled) {
+      return 'neutral60';
+    }
+    return 'surface';
+  }
+
+  // if button is disabled, icon should be neutral60
+  if (props.isDisabled) return 'neutral60';
+  // if button is not disabled nor has a theme, return icon's default color
+  return props.icon?.props.theme;
+};
+
+const getStateStyles = (
+  isDisabled: TIconButtonProps['isDisabled'],
+  isActive: boolean,
+  theme: TIconButtonProps['theme']
+) => {
   if (isDisabled) {
     const disabledStyle = css`
       background-color: ${vars.colorAccent98};
@@ -113,7 +141,10 @@ const getStateStyles = (isDisabled, isActive, theme) => {
   `;
 };
 
-const getShapeStyles = (shape, size) => {
+const getShapeStyles = (
+  shape: TIconButtonProps['shape'],
+  size: TIconButtonProps['size']
+) => {
   switch (shape) {
     case 'round':
       return css`
@@ -140,7 +171,7 @@ const getShapeStyles = (shape, size) => {
       return css``;
   }
 };
-const getSizeStyles = (size) => {
+const getSizeStyles = (size: TIconButtonProps['size']) => {
   switch (size) {
     case 'small':
       return css`
@@ -161,7 +192,7 @@ const getSizeStyles = (size) => {
       return css``;
   }
 };
-const getThemeStyles = (theme) => {
+const getThemeStyles = (theme: TIconButtonProps['theme']) => {
   if (!theme) return css``;
 
   if (theme === 'default') return css``;
@@ -193,7 +224,10 @@ const getThemeStyles = (theme) => {
   }
 };
 
-const getHoverStyles = (isDisabled, theme) => {
+const getHoverStyles = (
+  isDisabled: TIconButtonProps['isDisabled'],
+  theme: TIconButtonProps['theme']
+) => {
   if (theme === 'default' || isDisabled) return css``;
 
   return css`
@@ -211,4 +245,5 @@ export {
   getShapeStyles,
   getSizeStyles,
   getThemeStyles,
+  getIconThemeColor,
 };

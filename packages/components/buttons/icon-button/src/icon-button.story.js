@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { MemoryRouter, Link } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -36,8 +37,8 @@ storiesOf('Components|Buttons', module)
             )}
             onClick={action('onClick')}
             label={text('label', 'Accessibility text')}
-            isToggleButton={boolean('isToggleButton', false)}
-            isToggled={boolean('isToggled', false)}
+            isToggleButton={boolean('isToggleButton', true)}
+            isToggled={boolean('isToggled', true)}
             isDisabled={boolean('isDisabled?', false)}
           />
         </MemoryRouter>

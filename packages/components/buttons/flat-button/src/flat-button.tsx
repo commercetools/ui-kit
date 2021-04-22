@@ -1,29 +1,80 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import type { Theme } from '@emotion/react';
+import React, { ElementType, MouseEvent, KeyboardEvent } from 'react';
 import { css, useTheme } from '@emotion/react';
 import omit from 'lodash/omit';
-import requiredIf from 'react-required-if';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
+import { getTextColor, getButtonIconColor } from './flat-button.styles';
 
 const propsToOmit = ['type'];
 
-const ButtonIcon = (props) => {
+export type TExtendedTheme = Theme & {
+  [key: string]: string;
+};
+export type TFlatButtonProps = {
+  /**
+   * You may pass in a string like "a" to have the button render as an anchor tag instead.
+   * <br/>
+   * Or you could pass in a React Component, like a `Link`.
+   */
+  as?: string | ElementType;
+  /**
+   * Indicates the color scheme of button
+   */
+  tone?: 'primary' | 'secondary' | 'inverted';
+  /**
+   * Used as the HTML `type` attribute.
+   */
+  type?: 'submit' | 'reset' | 'button';
+  /**
+   * Should describe what the button is for
+   */
+  label: string;
+  /**
+   * Handler when the button is clicked
+   * <br />
+   * Signature: (event: MouseEvent<HTMLButtonElement) => void
+   */
+  onClick?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
+  /**
+   * The icon of the button
+   */
+  icon?: React.ReactElement;
+  /**
+   * The position of the icon
+   */
+  iconPosition?: 'left' | 'right';
+  /**
+   * Determines if the button is disabled.
+   * <br />
+   * Note that this influences the `tone` and `onClick` will not be triggered in this state.
+   */
+  isDisabled?: boolean;
+};
+
+const defaultProps: Pick<
+  TFlatButtonProps,
+  'tone' | 'isDisabled' | 'type' | 'iconPosition'
+> = {
+  tone: 'primary',
+  type: 'button',
+  iconPosition: 'left',
+  isDisabled: false,
+};
+
+const ButtonIcon = (
+  props: Pick<TFlatButtonProps, 'as' | 'isDisabled' | 'tone' | 'icon'>
+) => {
   if (!props.icon) return null;
-
-  let iconColor = 'solid';
-  if (props.isDisabled) iconColor = 'neutral60';
-  else if (props.tone === 'primary') iconColor = 'primary';
-  else if (props.tone === 'secondary') iconColor = 'solid';
-  else if (props.tone === 'inverted') iconColor = 'surface';
-
+  const iconColor = getButtonIconColor(props);
   const Icon = React.cloneElement(props.icon, {
     size: 'medium',
     color: iconColor,
   });
-
   if (props.as && props.as !== 'button') {
     return (
       <span
@@ -38,28 +89,8 @@ const ButtonIcon = (props) => {
   return Icon;
 };
 ButtonIcon.displayName = 'ButtonIcon';
-ButtonIcon.propTypes = {
-  icon: PropTypes.element,
-  tone: PropTypes.oneOf(['primary', 'secondary', 'inverted']),
-  isDisabled: PropTypes.bool,
-};
 
-const getTextColor = (tone, isHover = false, overwrittenVars) => {
-  switch (tone) {
-    case 'primary':
-      return isHover
-        ? overwrittenVars.colorPrimary25
-        : overwrittenVars.colorPrimary;
-    case 'secondary':
-      return overwrittenVars.colorSolid;
-    case 'inverted':
-      return overwrittenVars.fontColorForTextWhenInverted;
-    default:
-      return 'inherit';
-  }
-};
-
-export const FlatButton = (props) => {
+const FlatButton = (props: TFlatButtonProps) => {
   const dataProps = {
     'data-track-component': 'FlatButton',
     ...filterInvalidAttributes(omit(props, propsToOmit)),
@@ -67,11 +98,13 @@ export const FlatButton = (props) => {
     // we fall back to `isDisabled`
     disabled: props.isDisabled,
   };
+
   const theme = useTheme();
-  const overwrittenVars = {
+  const overwrittenVars: TExtendedTheme = {
     ...vars,
     ...theme,
   };
+
   return (
     <AccessibleButton
       as={props.as}
@@ -129,21 +162,6 @@ export const FlatButton = (props) => {
 };
 
 FlatButton.displayName = 'FlatButton';
-FlatButton.propTypes = {
-  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  tone: PropTypes.oneOf(['primary', 'secondary', 'inverted']),
-  type: PropTypes.oneOf(['submit', 'reset', 'button']),
-  label: PropTypes.string.isRequired,
-  onClick: requiredIf(PropTypes.func, (props) => !props.as),
-  icon: PropTypes.element,
-  iconPosition: PropTypes.oneOf(['left', 'right']),
-  isDisabled: PropTypes.bool,
-};
-FlatButton.defaultProps = {
-  tone: 'primary',
-  type: 'button',
-  iconPosition: 'left',
-  isDisabled: false,
-};
+FlatButton.defaultProps = defaultProps;
 
 export default FlatButton;
