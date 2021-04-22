@@ -8,10 +8,7 @@ import messages from '../messages/localized-input';
 type TLocalizedInputToggleProps = {
   icon?: React.ReactElement;
   isOpen?: boolean;
-  /**
-   * Handler when the button is clicked
-   */
-  onClick?: (
+  onClick: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   isDisabled?: boolean;
