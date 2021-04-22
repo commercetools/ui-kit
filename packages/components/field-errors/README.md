@@ -72,12 +72,26 @@ export default Example;
 
 ## Properties
 
-| Props                | Type     | Required | Default | Description                                                                                                                                                                                                                                                                                          |
-| -------------------- | -------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `errors`             | `object` |          |         | List of errors. Only entries with truthy values will count as active errors.                                                                                                                                                                                                                         |
-| `isVisible`          | `bool`   |          |         | `true` when the error messages should be rendered. Usually you'd pass in a `touched` state of fields.                                                                                                                                                                                                |
-| `renderError`        | `func`   |          |         | Function which gets called with each error key (from the `errors` prop) and may render an error message or return `null` to hand the error handling off to `renderDefaultError`.&#xA;<br />&#xA;Signature: `(key, error) => React.node`                                                              |
-| `renderDefaultError` | `func`   |          |         | Function which gets called with each error key (from the `errors` prop) for which `renderError` returned `null`.&#xA;It may render an error message or return `null` to hand the error handling off to `FieldError`s built-in error handling.&#xA;<br />&#xA;Signature: `(key, error) => React.node` |
+| Props                | Type                                                           | Required | Default | Description                                                                                                                                                                                                                                   |
+| -------------------- | -------------------------------------------------------------- | :------: | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `errors`             | `Record`                                                       |    ✅    |         | List of errors. Only entries with truthy values will count as active errors.                                                                                                                                                                  |
+| `isVisible`          | `boolean`                                                      |          |         | `true` when the error messages should be rendered. Usually you'd pass in a `touched` state of fields.                                                                                                                                         |
+| `renderError`        | `Function`<br/>[See signature.](#signature-renderError)        |          |         | Function which gets called with each error key (from the `errors` prop) and may render an error message or return `null` to hand the error handling off to `renderDefaultError`.                                                              |
+| `renderDefaultError` | `Function`<br/>[See signature.](#signature-renderDefaultError) |          |         | Function which gets called with each error key (from the `errors` prop) for which `renderError` returned `null`.&#xA;It may render an error message or return `null` to hand the error handling off to `FieldError`s built-in error handling. |
+
+## Signatures
+
+### Signature `renderError`
+
+```ts
+(key: string, error?: boolean) => React.ReactNode;
+```
+
+### Signature `renderDefaultError`
+
+```ts
+(key: string, error?: boolean) => React.ReactNode;
+```
 
 ## Static properties
 
