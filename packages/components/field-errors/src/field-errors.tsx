@@ -33,7 +33,7 @@ const FieldErrors = (props: TFieldErrorsProps) => {
 
   return (
     <React.Fragment>
-      {Object.entries<boolean>(props.errors)
+      {Object.entries(props.errors)
         // Only render errors which have truthy values, to avoid
         // rendering an error for, e.g. { missing: false }
         .filter(([, error]) => error)
