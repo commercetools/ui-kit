@@ -27,16 +27,19 @@ export type TMultiLineInputProps = {
   onHeightChange?: (height: number, rowCount: number) => void;
 };
 
+type TInputRef = {
+  scrollHeight: number;
+};
+
 const MultilineInput = (props: TMultiLineInputProps) => {
   const theme = useTheme();
   const { onHeightChange } = props;
-  const ref = React.useRef();
+  const ref = React.useRef<TInputRef>({ scrollHeight: 0 });
   const handleHeightChange = React.useCallback<
-    (height: number, meta?: TextareaHeightChangeMeta) => void
+    (height: number, meta: TextareaHeightChangeMeta) => void
   >(
-    (height: number, meta?: TextareaHeightChangeMeta) => {
-      // @ts-ignore
-      const rowCount = Math.floor(ref?.current?.scrollHeight / meta?.rowHeight);
+    (height: number, meta: TextareaHeightChangeMeta) => {
+      const rowCount = Math.floor(ref.current.scrollHeight / meta.rowHeight);
       if (onHeightChange) {
         onHeightChange(height, rowCount);
       }
