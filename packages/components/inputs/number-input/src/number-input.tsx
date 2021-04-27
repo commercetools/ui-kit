@@ -155,8 +155,8 @@ NumberInput.isEmpty = (value: number | string): boolean => {
   return true;
 };
 
-NumberInput.hasFractionDigits = (number: number) => {
-  const fraction = number % 1;
+NumberInput.hasFractionDigits = (number: number | string) => {
+  const fraction = Number(number) % 1;
   warning(
     !isNaN(fraction),
     'NumberInput.hasFractionDigits may only be called with valid numbers (either as string or number).'
