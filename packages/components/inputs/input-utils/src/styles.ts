@@ -1,10 +1,24 @@
+import type { Theme } from '@emotion/react';
 import { css } from '@emotion/react';
 import {
   customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
 
-const getInputBorderColor = (vars, props) => {
+type TExtendedTheme = {
+  [key: string]: string;
+} & Theme;
+
+type TInputProps = {
+  isDisabled?: boolean;
+  disabled?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  isReadOnly?: boolean;
+  readOnly?: boolean;
+};
+
+const getInputBorderColor = (vars: TExtendedTheme, props: TInputProps) => {
   if (props.isDisabled || props.disabled) {
     return vars[designTokens.borderColorForInputWhenDisabled];
   }
@@ -19,7 +33,8 @@ const getInputBorderColor = (vars, props) => {
   }
   return vars[designTokens.borderColorForInput];
 };
-const getInputFontColor = (vars, props) => {
+
+const getInputFontColor = (vars: TExtendedTheme, props: TInputProps) => {
   if (props.isDisabled || props.disabled) {
     return vars[designTokens.fontColorForInputWhenDisabled];
   }
@@ -34,8 +49,9 @@ const getInputFontColor = (vars, props) => {
   }
   return vars[designTokens.fontColorForInput];
 };
-const getInputStyles = (props, theme) => {
-  const vars = {
+
+const getInputStyles = (props: TInputProps, theme: Theme) => {
+  const vars: TExtendedTheme = {
     ...customProperties,
     ...theme,
   };
