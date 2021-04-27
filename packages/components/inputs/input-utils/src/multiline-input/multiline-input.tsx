@@ -3,7 +3,7 @@ import { useTheme } from '@emotion/react';
 import TextareaAutosize, {
   TextareaHeightChangeMeta,
 } from 'react-textarea-autosize';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { getTextareaStyles } from './multiline-input.styles';
 
 const MIN_ROW_COUNT = 1;
@@ -27,28 +27,33 @@ export type TMultiLineInputProps = {
   onHeightChange?: (height: number, rowCount: number) => void;
 };
 
-type TInputRef = {
-  scrollHeight: number;
-};
-
 const MultilineInput = (props: TMultiLineInputProps) => {
   const theme = useTheme();
   const { onHeightChange } = props;
-  const ref = React.useRef<TInputRef>({ scrollHeight: 0 });
+  const ref = React.useRef<HTMLTextAreaElement | null>(null);
   const handleHeightChange = React.useCallback<
     (height: number, meta: TextareaHeightChangeMeta) => void
   >(
     (height: number, meta: TextareaHeightChangeMeta) => {
-      const rowCount = Math.floor(ref.current.scrollHeight / meta.rowHeight);
+      const rowCount = Math.floor(
+        ref.current?.scrollHeight || 0 / meta.rowHeight
+      );
       if (onHeightChange) {
         onHeightChange(height, rowCount);
       }
     },
     [ref, onHeightChange]
   );
+
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'MultilineInput: "onChange" is required when is not read only.'
+    );
+  }
+
   return (
     <TextareaAutosize
-      // @ts-ignore
       ref={ref}
       name={props.name}
       onHeightChange={handleHeightChange}
