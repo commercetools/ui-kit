@@ -63,7 +63,7 @@ export default Example;
 | `hasWarning`           | `boolean`                                                                                             |          |           | Indicates that the input has a warning due to e.g invalid values                                                          |
 | `isPasswordVisible`    | `boolean`                                                                                             |          | `false`   | Indicates whether we show the password or not                                                                             |
 | `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                |
-| `autoComplete`         | `union`<br/>Possible values:<br/>`'on' , 'off' , 'current-password' , 'new-password'`                 |    ✅    |           | Password autocomplete mode                                                                                                |
+| `autoComplete`         | `union`<br/>Possible values:<br/>`'on' , 'off' , 'current-password' , 'new-password'`                 |          |           | Password autocomplete mode                                                                                                |
 
 ## `data-*` props
 

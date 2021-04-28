@@ -82,7 +82,7 @@ type TPasswordInputProps = {
   /**
    * Password autocomplete mode
    */
-  autoComplete: 'on' | 'off' | 'current-password' | 'new-password';
+  autoComplete?: 'on' | 'off' | 'current-password' | 'new-password';
 };
 
 const defaultProps: Pick<
