@@ -1,8 +1,10 @@
 import { useCallback, useState } from 'react';
 
 const useToggleState = (defaultValue?: boolean) => {
-  const [isToggled, setIsToggled] = useState<boolean>(defaultValue || true);
-  const toggle = useCallback(
+  const initialValue = typeof defaultValue === 'boolean' ? defaultValue : true;
+
+  const [isToggled, setIsToggled] = useState(initialValue);
+  const toggle = useCallback<(forceIsToggled?: boolean) => void>(
     (forceIsToggled?: boolean) => {
       setIsToggled(
         typeof forceIsToggled === 'boolean' ? forceIsToggled : !isToggled
