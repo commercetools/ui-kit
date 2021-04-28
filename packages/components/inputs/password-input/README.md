@@ -36,11 +36,9 @@ import PasswordInput from '@commercetools-uikit/password-input';
 const Example = () => (
   <PasswordInput
     value="foo"
-    onChange={
-      (/** event */) => {
-        /** alert(event.target.value) */
-      }
-    }
+    onChange={(event) => {
+      alert(event.target.value);
+    }}
   />
 );
 
@@ -49,23 +47,23 @@ export default Example;
 
 ## Properties
 
-| Props                  | Type                                                                                               | Required | Default   | Description                                                                                                                                                           |
-| ---------------------- | -------------------------------------------------------------------------------------------------- | :------: | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                   | `string`                                                                                           |          |           | Used as HTML id property. An id is auto-generated when it is not specified.                                                                                           |
-| `name`                 | `string`                                                                                           |          |           | Used as HTML name of the input component. property                                                                                                                    |
-| `value`                | `string`                                                                                           |    ✅    |           | Value of the input component.                                                                                                                                         |
-| `onChange`             | `custom`                                                                                           |          |           | Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.&#xA;<br />&#xA;Signature: `(event) => void` |
-| `onBlur`               | `func`                                                                                             |          |           | Called when input is blurred&#xA;<br />&#xA;Signature: `(event) => void`                                                                                              |
-| `onFocus`              | `func`                                                                                             |          |           | Called when input is focused&#xA;<br />&#xA;Signature: `(event) => void`                                                                                              |
-| `isAutofocussed`       | `bool`                                                                                             |          |           | Focus the input on initial render                                                                                                                                     |
-| `isDisabled`           | `bool`                                                                                             |          | `false`   | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                        |
-| `isReadOnly`           | `bool`                                                                                             |          | `false`   | Indicates that the field is displaying read-only content                                                                                                              |
-| `hasError`             | `bool`                                                                                             |          |           | Indicates that the input has an error                                                                                                                                 |
-| `hasWarning`           | `bool`                                                                                             |          |           | Indicates that the input has a warning due to e.g invalid values                                                                                                      |
-| `isPasswordVisible`    | `bool`                                                                                             |          | `false`   | Indicates whether we show the password or not                                                                                                                         |
-| `placeholder`          | `string`                                                                                           |          |           | Placeholder text for the input                                                                                                                                        |
-| `horizontalConstraint` | `enum`<br/>Possible values:<br/>`3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                            |
-| `autoComplete`         | `enum`<br/>Possible values:<br/>`'on', 'off', 'current-password', 'new-password'`                  |          |           | Password autocomplete mode                                                                                                                                            |
+| Props                  | Type                                                                                                  | Required | Default   | Description                                                                                                               |
+| ---------------------- | ----------------------------------------------------------------------------------------------------- | :------: | --------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `id`                   | `string`                                                                                              |          |           | Used as HTML id property. An id is auto-generated when it is not specified.                                               |
+| `name`                 | `string`                                                                                              |          |           | Used as HTML name of the input component. property                                                                        |
+| `value`                | `string`                                                                                              |    ✅    |           | Value of the input component.                                                                                             |
+| `placeholder`          | `string`                                                                                              |          |           | Placeholder text for the input                                                                                            |
+| `onChange`             | `ChangeEventHandler`                                                                                  |          |           | Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value. |
+| `onBlur`               | `FocusEventHandler`                                                                                   |          |           | Called when input is blurred.                                                                                             |
+| `onFocus`              | `FocusEventHandler`                                                                                   |          |           | Called when input is focused.                                                                                             |
+| `isAutofocussed`       | `boolean`                                                                                             |          |           | Focus the input on initial render.                                                                                        |
+| `isDisabled`           | `boolean`                                                                                             |          | `false`   | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                            |
+| `isReadOnly`           | `boolean`                                                                                             |          | `false`   | Indicates that the field is displaying read-only content                                                                  |
+| `hasError`             | `boolean`                                                                                             |          |           | Indicates that the input has an error                                                                                     |
+| `hasWarning`           | `boolean`                                                                                             |          |           | Indicates that the input has a warning due to e.g invalid values                                                          |
+| `isPasswordVisible`    | `boolean`                                                                                             |          | `false`   | Indicates whether we show the password or not                                                                             |
+| `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                |
+| `autoComplete`         | `union`<br/>Possible values:<br/>`'on' , 'off' , 'current-password' , 'new-password'`                 |          |           | Password autocomplete mode                                                                                                |
 
 ## `data-*` props
 
