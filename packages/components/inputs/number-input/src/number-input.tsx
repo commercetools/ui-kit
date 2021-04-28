@@ -46,11 +46,11 @@ type TNumberProps = {
   /**
    * Called when input is blurred
    */
-  onBlur: FocusEventHandler;
+  onBlur?: FocusEventHandler;
   /**
    * Called when input is focused
    */
-  onFocus: FocusEventHandler;
+  onFocus?: FocusEventHandler;
   /**
    * Focus the input on initial render
    */
