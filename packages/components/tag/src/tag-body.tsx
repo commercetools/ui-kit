@@ -1,16 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import type { Theme } from '@emotion/react';
+import type { LocationDescriptor } from 'history';
+
+import React, { MouseEvent, KeyboardEvent, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css, useTheme } from '@emotion/react';
+import { Link } from 'react-router-dom';
+import { css, useTheme, SerializedStyles } from '@emotion/react';
 import {
   customProperties as vars,
   designTokens,
 } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 
+type TTagBodyProps = {
+  to?: string | LocationDescriptor;
+  type: string;
+  onClick?: (
+    event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>
+  ) => void;
+  onRemove?: (
+    event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>
+  ) => void;
+  isDisabled?: boolean;
+  children: ReactNode;
+  styles?: Record<string, SerializedStyles>;
+};
+
 const Body = styled.div``;
 
-const getClickableContentWrapperStyles = (type, theme) => {
+const getClickableContentWrapperStyles = (
+  type: TTagBodyProps['type'],
+  theme: Theme
+) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -29,7 +49,10 @@ const getClickableContentWrapperStyles = (type, theme) => {
       ];
 };
 
-const getTextDetailColor = (isDisabled, theme) => {
+const getTextDetailColor = (
+  isDisabled: TTagBodyProps['isDisabled'],
+  theme: Theme
+) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -39,7 +62,7 @@ const getTextDetailColor = (isDisabled, theme) => {
   return overwrittenVars[designTokens.fontColorForTag];
 };
 
-const getContentWrapperStyles = (props, theme) => {
+const getContentWrapperStyles = (props: TTagBodyProps, theme: Theme) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -72,12 +95,14 @@ const getContentWrapperStyles = (props, theme) => {
   `;
 };
 
-const TagBody = (props) => {
-  const theme = useTheme();
+const TagBody = (props: TTagBodyProps) => {
+  const theme: Theme = useTheme();
+  const linkProps =
+    props.to && !props.isDisabled ? { as: Link, to: props.to } : {};
+
   return (
     <Body
-      to={props.to}
-      as={props.as}
+      {...linkProps}
       css={[
         getContentWrapperStyles(props, theme),
         Boolean(props.onRemove) &&
@@ -115,17 +140,5 @@ const TagBody = (props) => {
 };
 
 TagBody.displayName = 'TagBody';
-TagBody.propTypes = {
-  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  to: PropTypes.string,
-  type: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  onRemove: PropTypes.func,
-  isDisabled: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired,
-  styles: PropTypes.shape({
-    body: PropTypes.object,
-  }),
-};
 
 export default TagBody;
