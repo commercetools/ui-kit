@@ -1,5 +1,14 @@
 # @commercetools-uikit/text-field
 
+## 12.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`7d56aa92`](https://github.com/commercetools/ui-kit/commit/7d56aa92d1683b1c9940a7d13f9081e44f777a63), [`bf774967`](https://github.com/commercetools/ui-kit/commit/bf7749675fff92cfdf5bde489ffe5b96361091c1)]:
+  - @commercetools-uikit/text-input@12.0.3
+  - @commercetools-uikit/field-errors@12.0.3
+  - @commercetools-uikit/field-label@12.0.3
+
 ## 12.0.0
 
 ### Major Changes

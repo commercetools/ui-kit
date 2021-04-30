@@ -1,5 +1,13 @@
 # @commercetools-uikit/rich-text-utils
 
+## 12.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`4acb66d4`](https://github.com/commercetools/ui-kit/commit/4acb66d44988b62b64411216ad49a1c896d18a93)]:
+  - @commercetools-uikit/input-utils@12.0.3
+  - @commercetools-uikit/tooltip@12.0.3
+
 ## 12.0.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @commercetools-uikit/hooks
 
+## 12.0.3
+
+### Patch Changes
+
+- [#1872](https://github.com/commercetools/ui-kit/pull/1872) [`043e9d2f`](https://github.com/commercetools/ui-kit/commit/043e9d2f36a06b01fe2ce6172a0708de2f70d35d) Thanks [@adnasa](https://github.com/adnasa)! - Migrate `hooks` to TypeScript
+
 ## 12.0.2
 
 ### Patch Changes

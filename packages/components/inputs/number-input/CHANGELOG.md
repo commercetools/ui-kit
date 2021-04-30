@@ -1,5 +1,14 @@
 # @commercetools-uikit/number-input
 
+## 12.0.3
+
+### Patch Changes
+
+- [#1875](https://github.com/commercetools/ui-kit/pull/1875) [`d8530a82`](https://github.com/commercetools/ui-kit/commit/d8530a82cb25c821b423642eae346d0b5ab69993) Thanks [@adnasa](https://github.com/adnasa)! - Migrate `<NumberInput />` to TypeScript
+
+- Updated dependencies [[`4acb66d4`](https://github.com/commercetools/ui-kit/commit/4acb66d44988b62b64411216ad49a1c896d18a93)]:
+  - @commercetools-uikit/input-utils@12.0.3
+
 ## 12.0.0
 
 ### Major Changes

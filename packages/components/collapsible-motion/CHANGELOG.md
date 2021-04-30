@@ -1,5 +1,12 @@
 # @commercetools-uikit/collapsible-motion
 
+## 12.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`043e9d2f`](https://github.com/commercetools/ui-kit/commit/043e9d2f36a06b01fe2ce6172a0708de2f70d35d)]:
+  - @commercetools-uikit/hooks@12.0.3
+
 ## 12.0.2
 
 ### Patch Changes

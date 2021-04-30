@@ -1,5 +1,12 @@
 # @commercetools-uikit/creatable-select-input
 
+## 12.0.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-utils@12.0.3
+
 ## 12.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 12.0.3
+
+### Patch Changes
+
+- [#1873](https://github.com/commercetools/ui-kit/pull/1873) [`72667c8e`](https://github.com/commercetools/ui-kit/commit/72667c8e801b241fcd8c462fb084129ab972e4f2) Thanks [@adnasa](https://github.com/adnasa)! - migrate to TypeScript, use Moment Types
+
 ## 12.0.0
 
 ### Major Changes
