@@ -1,5 +1,13 @@
 # @commercetools-uikit/collapsible-panel
 
+## 12.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`8952076b`](https://github.com/commercetools/ui-kit/commit/8952076bcc5a89c1911981af08e80fc986394c8f), [`8952076b`](https://github.com/commercetools/ui-kit/commit/8952076bcc5a89c1911981af08e80fc986394c8f)]:
+  - @commercetools-uikit/accessible-button@12.0.3
+  - @commercetools-uikit/collapsible-motion@12.0.3
+
 ## 12.0.2
 
 ### Patch Changes

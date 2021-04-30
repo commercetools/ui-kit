@@ -1,5 +1,14 @@
 # @commercetools-uikit/multiline-text-field
 
+## 12.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`bf774967`](https://github.com/commercetools/ui-kit/commit/bf7749675fff92cfdf5bde489ffe5b96361091c1), [`3ff440f6`](https://github.com/commercetools/ui-kit/commit/3ff440f66fa914ea1da4bcd6746fa85c3639dd14)]:
+  - @commercetools-uikit/field-errors@12.0.3
+  - @commercetools-uikit/multiline-text-input@12.0.3
+  - @commercetools-uikit/field-label@12.0.3
+
 ## 12.0.2
 
 ### Patch Changes

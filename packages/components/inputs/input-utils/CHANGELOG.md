@@ -1,5 +1,14 @@
 # @commercetools-uikit/input-utils
 
+## 12.0.3
+
+### Patch Changes
+
+- [#1867](https://github.com/commercetools/ui-kit/pull/1867) [`4acb66d4`](https://github.com/commercetools/ui-kit/commit/4acb66d44988b62b64411216ad49a1c896d18a93) Thanks [@adnasa](https://github.com/adnasa)! - migrate `input-utils` to TypeScript
+
+- Updated dependencies [[`8952076b`](https://github.com/commercetools/ui-kit/commit/8952076bcc5a89c1911981af08e80fc986394c8f)]:
+  - @commercetools-uikit/flat-button@12.0.3
+
 ## 12.0.0
 
 ### Major Changes

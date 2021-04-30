@@ -1,5 +1,16 @@
 # @commercetools-uikit/password-field
 
+## 12.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`8952076b`](https://github.com/commercetools/ui-kit/commit/8952076bcc5a89c1911981af08e80fc986394c8f), [`0f280030`](https://github.com/commercetools/ui-kit/commit/0f280030f208b6a065479cc72d4adf707060a78a), [`043e9d2f`](https://github.com/commercetools/ui-kit/commit/043e9d2f36a06b01fe2ce6172a0708de2f70d35d), [`bf774967`](https://github.com/commercetools/ui-kit/commit/bf7749675fff92cfdf5bde489ffe5b96361091c1)]:
+  - @commercetools-uikit/flat-button@12.0.3
+  - @commercetools-uikit/password-input@12.0.3
+  - @commercetools-uikit/hooks@12.0.3
+  - @commercetools-uikit/field-errors@12.0.3
+  - @commercetools-uikit/field-label@12.0.3
+
 ## 12.0.2
 
 ### Patch Changes

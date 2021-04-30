@@ -1,5 +1,14 @@
 # @commercetools-uikit/password-input
 
+## 12.0.3
+
+### Patch Changes
+
+- [#1870](https://github.com/commercetools/ui-kit/pull/1870) [`0f280030`](https://github.com/commercetools/ui-kit/commit/0f280030f208b6a065479cc72d4adf707060a78a) Thanks [@adnasa](https://github.com/adnasa)! - Migrate `<PasswordInput />` to TypeScript
+
+- Updated dependencies [[`4acb66d4`](https://github.com/commercetools/ui-kit/commit/4acb66d44988b62b64411216ad49a1c896d18a93)]:
+  - @commercetools-uikit/input-utils@12.0.3
+
 ## 12.0.0
 
 ### Major Changes

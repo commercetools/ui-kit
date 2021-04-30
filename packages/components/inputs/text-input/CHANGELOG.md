@@ -1,5 +1,14 @@
 # @commercetools-uikit/text-input
 
+## 12.0.3
+
+### Patch Changes
+
+- [#1868](https://github.com/commercetools/ui-kit/pull/1868) [`7d56aa92`](https://github.com/commercetools/ui-kit/commit/7d56aa92d1683b1c9940a7d13f9081e44f777a63) Thanks [@adnasa](https://github.com/adnasa)! - Migrate `<TextInput />` to TypeScript
+
+- Updated dependencies [[`4acb66d4`](https://github.com/commercetools/ui-kit/commit/4acb66d44988b62b64411216ad49a1c896d18a93)]:
+  - @commercetools-uikit/input-utils@12.0.3
+
 ## 12.0.0
 
 ### Major Changes

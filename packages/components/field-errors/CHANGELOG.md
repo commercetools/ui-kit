@@ -1,5 +1,11 @@
 # @commercetools-uikit/field-errors
 
+## 12.0.3
+
+### Patch Changes
+
+- [#1874](https://github.com/commercetools/ui-kit/pull/1874) [`bf774967`](https://github.com/commercetools/ui-kit/commit/bf7749675fff92cfdf5bde489ffe5b96361091c1) Thanks [@adnasa](https://github.com/adnasa)! - Migrate `<FieldErrors />` to TypeScript
+
 ## 12.0.0
 
 ### Major Changes
