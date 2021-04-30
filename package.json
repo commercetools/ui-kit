@@ -73,7 +73,7 @@
     "@commitlint/config-conventional": "12.0.1",
     "@emotion/babel-plugin": "11.2.0",
     "@emotion/babel-preset-css-prop": "11.2.0",
-    "@formatjs/cli": "3.1.6",
+    "@formatjs/cli": "4.2.10",
     "@manypkg/cli": "0.17.0",
     "@percy/cli": "1.0.0-beta.42",
     "@percy/puppeteer": "2.0.0",
