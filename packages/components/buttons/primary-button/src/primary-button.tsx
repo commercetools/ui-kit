@@ -12,7 +12,7 @@ const propsToOmit = ['type'];
 
 export type TPrimaryButtonProps = {
   /**
-   * an `ComponentType`. <br />
+   * a `ComponentType`. <br />
    * You may pass in a string like "a" to have the button render as an anchor tag instead.
    */
   as?: string | ComponentType;
