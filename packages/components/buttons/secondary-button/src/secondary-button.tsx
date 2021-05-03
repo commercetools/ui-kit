@@ -18,7 +18,7 @@ export type TSecondaryButtonProps = {
    * an `ElementType`. <br />
    * You may pass in a string like "a" to have the button render as an anchor tag instead.
    */
-  as?: string | ElementType;
+  as?: string | ComponentType;
   /**
    * Used as the HTML type attribute.
    */

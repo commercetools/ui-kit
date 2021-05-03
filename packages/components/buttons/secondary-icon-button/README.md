@@ -49,7 +49,7 @@ export default Example;
 
 | Props        | Type                                                             | Required | Default    | Description                                                                                                        |
 | ------------ | ---------------------------------------------------------------- | :------: | ---------- | ------------------------------------------------------------------------------------------------------------------ |
-| `as`         | `union`<br/>Possible values:<br/>`string , ElementType`          |          |            | an `ElementType`. <br />&#xA;You may pass in a string like "a" to have the button render as an anchor tag instead. |
+| `as`         | `union`<br/>Possible values:<br/>`string , ComponentType`        |          |            | an `ElementType`. <br />&#xA;You may pass in a string like "a" to have the button render as an anchor tag instead. |
 | `type`       | `union`<br/>Possible values:<br/>`'submit' , 'reset' , 'button'` |          | `'button'` | Used as the HTML type attribute.                                                                                   |
 | `icon`       | `ReactReactElement`                                              |          |            | An <Icon /> component.                                                                                             |
 | `color`      | `union`<br/>Possible values:<br/>`'solid' , 'primary'`           |          | `'solid'`  | Sets the color of the icon                                                                                         |

@@ -1,4 +1,4 @@
-import React, { ElementType, MouseEvent, KeyboardEvent } from 'react';
+import React, { ComponentType, MouseEvent, KeyboardEvent } from 'react';
 import { useTheme } from '@emotion/react';
 import omit from 'lodash/omit';
 import { warning, filterInvalidAttributes } from '@commercetools-uikit/utils';
@@ -12,7 +12,7 @@ export type TSecondaryButtonProps = {
    * an `ElementType`. <br />
    * You may pass in a string like "a" to have the button render as an anchor tag instead.
    */
-  as?: string | ElementType;
+  as?: string | ComponentType;
   /**
    * Used as the HTML type attribute.
    */

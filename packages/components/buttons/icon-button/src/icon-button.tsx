@@ -1,4 +1,4 @@
-import React, { ElementType, MouseEvent, KeyboardEvent } from 'react';
+import React, { ComponentType, MouseEvent, KeyboardEvent } from 'react';
 import { css } from '@emotion/react';
 import isNil from 'lodash/isNil';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -18,7 +18,7 @@ export type TIconButtonProps = {
    * an `ElementType`. <br />
    * You may pass in a string like "a" to have the button render as an anchor tag instead.
    */
-  as?: string | ElementType;
+  as?: string | ComponentType;
   /**
    * Used as the HTML type attribute.
    */
