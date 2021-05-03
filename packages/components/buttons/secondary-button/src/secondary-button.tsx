@@ -139,7 +139,7 @@ export const SecondaryButton = (props: TSecondaryButtonProps) => {
 
   return (
     <AccessibleButton
-      as={shouldUseLinkTag ? Link : props.as}
+      as={(shouldUseLinkTag ? Link : props.as) as ComponentType}
       type={props.type}
       buttonAttributes={buttonAttributes}
       label={props.label}
