@@ -1,5 +1,5 @@
 import type { Theme } from '@emotion/react';
-import React, { ElementType, MouseEvent, KeyboardEvent } from 'react';
+import React, { ComponentType, MouseEvent, KeyboardEvent } from 'react';
 import { css, useTheme } from '@emotion/react';
 import omit from 'lodash/omit';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -19,7 +19,7 @@ export type TFlatButtonProps = {
    * <br/>
    * Or you could pass in a React Component, like a `Link`.
    */
-  as?: string | ElementType;
+  as?: string | ComponentType;
   /**
    * Indicates the color scheme of button
    */

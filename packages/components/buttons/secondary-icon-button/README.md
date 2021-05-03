@@ -47,15 +47,15 @@ export default Example;
 
 ## Properties
 
-| Props        | Type                                                             | Required | Default    | Description                                                                                                        |
-| ------------ | ---------------------------------------------------------------- | :------: | ---------- | ------------------------------------------------------------------------------------------------------------------ |
-| `as`         | `union`<br/>Possible values:<br/>`string , ElementType`          |          |            | an `ElementType`. <br />&#xA;You may pass in a string like "a" to have the button render as an anchor tag instead. |
-| `type`       | `union`<br/>Possible values:<br/>`'submit' , 'reset' , 'button'` |          | `'button'` | Used as the HTML type attribute.                                                                                   |
-| `icon`       | `ReactReactElement`                                              |          |            | An <Icon /> component.                                                                                             |
-| `color`      | `union`<br/>Possible values:<br/>`'solid' , 'primary'`           |          | `'solid'`  | Sets the color of the icon                                                                                         |
-| `label`      | `string`                                                         |    ✅    |            | Should describe what the button does, for accessibility purposes (screen-reader users)                             |
-| `isDisabled` | `boolean`                                                        |          | `false`    | Tells when the button should present a disabled state                                                              |
-| `onClick`    | `Function`<br/>[See signature.](#signature-onClick)              |          |            | Handler when the button is clicked.&#xA;<br />&#xA;This is required if `as` is not defined.                        |
+| Props        | Type                                                             | Required | Default    | Description                                                                                                         |
+| ------------ | ---------------------------------------------------------------- | :------: | ---------- | ------------------------------------------------------------------------------------------------------------------- |
+| `as`         | `union`<br/>Possible values:<br/>`string , ComponentType`        |          |            | a `ComponentType`. <br />&#xA;You may pass in a string like "a" to have the button render as an anchor tag instead. |
+| `type`       | `union`<br/>Possible values:<br/>`'submit' , 'reset' , 'button'` |          | `'button'` | Used as the HTML type attribute.                                                                                    |
+| `icon`       | `ReactReactElement`                                              |          |            | An <Icon /> component.                                                                                              |
+| `color`      | `union`<br/>Possible values:<br/>`'solid' , 'primary'`           |          | `'solid'`  | Sets the color of the icon                                                                                          |
+| `label`      | `string`                                                         |    ✅    |            | Should describe what the button does, for accessibility purposes (screen-reader users)                              |
+| `isDisabled` | `boolean`                                                        |          | `false`    | Tells when the button should present a disabled state                                                               |
+| `onClick`    | `Function`<br/>[See signature.](#signature-onClick)              |          |            | Handler when the button is clicked.&#xA;<br />&#xA;This is required if `as` is not defined.                         |
 
 ## Signatures
 
