@@ -2,7 +2,7 @@ import React, {
   ReactElement,
   KeyboardEvent,
   MouseEvent,
-  ElementType,
+  ComponentType,
 } from 'react';
 import { Link } from 'react-router-dom';
 import isNil from 'lodash/isNil';
@@ -15,7 +15,7 @@ import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 
 export type TSecondaryButtonProps = {
   /**
-   * an `ElementType`. <br />
+   * an `ComponentType`. <br />
    * You may pass in a string like "a" to have the button render as an anchor tag instead.
    */
   as?: string | ComponentType;
@@ -139,7 +139,7 @@ export const SecondaryButton = (props: TSecondaryButtonProps) => {
 
   return (
     <AccessibleButton
-      as={(shouldUseLinkTag ? Link : props.as) as ElementType}
+      as={shouldUseLinkTag ? Link : props.as}
       type={props.type}
       buttonAttributes={buttonAttributes}
       label={props.label}

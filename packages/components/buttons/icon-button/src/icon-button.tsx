@@ -15,7 +15,7 @@ import {
 
 export type TIconButtonProps = {
   /**
-   * an `ElementType`. <br />
+   * an `ComponentType`. <br />
    * You may pass in a string like "a" to have the button render as an anchor tag instead.
    */
   as?: string | ComponentType;
