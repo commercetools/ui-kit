@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/checkbox-input",
   "description": "An input component that works as checkbox input.",
-  "version": "12.0.3",
+  "version": "12.0.4",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "@babel/runtime-corejs3": "7.13.10",
     "@commercetools-uikit/design-system": "12.0.0",
     "@commercetools-uikit/icons": "12.0.0",
-    "@commercetools-uikit/input-utils": "12.0.3",
+    "@commercetools-uikit/input-utils": "12.0.4",
     "@commercetools-uikit/select-utils": "12.0.3",
     "@commercetools-uikit/text": "12.0.0",
     "@commercetools-uikit/utils": "12.0.0",
