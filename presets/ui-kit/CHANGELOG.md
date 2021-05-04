@@ -1,5 +1,17 @@
 # @commercetools-frontend/ui-kit
 
+## 12.0.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/data-table-manager@12.0.5
+  - @commercetools-uikit/buttons@12.0.5
+  - @commercetools-uikit/inputs@12.0.5
+  - @commercetools-uikit/field-label@12.0.5
+  - @commercetools-uikit/primary-action-dropdown@12.0.5
+  - @commercetools-uikit/fields@12.0.5
+
 ## 12.0.4
 
 ### Patch Changes

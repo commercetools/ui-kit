@@ -1,5 +1,11 @@
 # @commercetools-uikit/secondary-button
 
+## 12.0.5
+
+### Patch Changes
+
+- [#1887](https://github.com/commercetools/ui-kit/pull/1887) [`b97e148d`](https://github.com/commercetools/ui-kit/commit/b97e148d94f41c5cc0e9335cfa3a7eb5b7460a97) Thanks [@adnasa](https://github.com/adnasa)! - Update `to` prop to use `history.LocationDescriptor`
+
 ## 12.0.4
 
 ### Patch Changes

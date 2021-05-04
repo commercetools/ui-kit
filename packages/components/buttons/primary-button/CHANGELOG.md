@@ -1,5 +1,11 @@
 # @commercetools-uikit/primary-button
 
+## 12.0.5
+
+### Patch Changes
+
+- [#1890](https://github.com/commercetools/ui-kit/pull/1890) [`614d0ca6`](https://github.com/commercetools/ui-kit/commit/614d0ca6325b1a8c740f26d3b328d8c7aaaec3ea) Thanks [@adnasa](https://github.com/adnasa)! - `onClick` is required when `as` is undefined
+
 ## 12.0.4
 
 ### Patch Changes

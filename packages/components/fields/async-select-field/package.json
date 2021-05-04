@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/async-select-field",
   "description": "A controlled input component with validation states and a label getting a selection from an asynchronously loaded list from the user.",
-  "version": "12.0.4",
+  "version": "12.0.5",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "@commercetools-uikit/constraints": "12.0.0",
     "@commercetools-uikit/design-system": "12.0.0",
     "@commercetools-uikit/field-errors": "12.0.3",
-    "@commercetools-uikit/field-label": "12.0.4",
+    "@commercetools-uikit/field-label": "12.0.5",
     "@commercetools-uikit/spacings": "12.0.0",
     "@commercetools-uikit/utils": "12.0.0",
     "@emotion/react": "^11.1.1",
