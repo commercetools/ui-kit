@@ -1,3 +1,4 @@
+import type { LocationDescriptorObject, LocationDescriptor } from 'history';
 import React, {
   ReactElement,
   KeyboardEvent,
@@ -12,6 +13,10 @@ import Inline from '@commercetools-uikit/spacings-inline';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
+
+type TLocationDescriptionWithQuery = LocationDescriptorObject & {
+  query?: unknown;
+};
 
 export type TSecondaryButtonProps = {
   /**
@@ -52,8 +57,8 @@ export type TSecondaryButtonProps = {
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
 
-  theme?: 'default' | 'info'; // TODO consider renaming this to `tone`
-  to?: string;
+  theme?: 'default' | 'info';
+  to?: LocationDescriptor | TLocationDescriptionWithQuery;
 };
 
 // Gets the color which the icon sho√uld have based on context of button's state/cursor behavior
