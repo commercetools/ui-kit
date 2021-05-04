@@ -74,9 +74,9 @@ const PrimaryButton = (props: TPrimaryButtonProps) => {
     disabled: props.isDisabled,
   };
 
-  if (!isNil(props.as)) {
+  if (isNil(props.as)) {
     warning(
-      props.onClick,
+      typeof props.onClick === 'function',
       'PrimaryButton: `onClick` is required when `as` is not provided.'
     );
   }
