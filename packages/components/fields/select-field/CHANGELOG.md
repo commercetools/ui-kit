@@ -1,5 +1,12 @@
 # @commercetools-uikit/select-field
 
+## 12.0.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@12.0.4
+
 ## 12.0.3
 
 ### Patch Changes

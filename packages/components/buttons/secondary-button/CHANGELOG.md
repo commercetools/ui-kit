@@ -1,5 +1,11 @@
 # @commercetools-uikit/secondary-button
 
+## 12.0.4
+
+### Patch Changes
+
+- [#1885](https://github.com/commercetools/ui-kit/pull/1885) [`d6c24023`](https://github.com/commercetools/ui-kit/commit/d6c2402312a294802490beefeb225adbabd972f4) Thanks [@adnasa](https://github.com/adnasa)! - use `ComponentType` on `as` prop
+
 ## 12.0.3
 
 ### Patch Changes
