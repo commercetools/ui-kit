@@ -27,9 +27,8 @@ type TTextInputProps = {
   value: string;
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
-   * <br />
    */
-  onChange: ChangeEventHandler;
+  onChange?: ChangeEventHandler;
   /**
    * Called when input is blurred
    */
@@ -89,7 +88,7 @@ const TextInput = (props: TTextInputProps) => {
   const theme = useTheme();
   if (!props.isReadOnly) {
     warning(
-      Boolean(props.onChange),
+      typeof props.onChange === 'function',
       'TextInput: `onChange` is required when is not read only.'
     );
   }
