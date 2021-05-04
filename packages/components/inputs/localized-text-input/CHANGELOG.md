@@ -1,5 +1,12 @@
 # @commercetools-uikit/localized-text-input
 
+## 12.0.5
+
+### Patch Changes
+
+- Updated dependencies [[`b97e148d`](https://github.com/commercetools/ui-kit/commit/b97e148d94f41c5cc0e9335cfa3a7eb5b7460a97)]:
+  - @commercetools-uikit/text-input@12.0.5
+
 ## 12.0.4
 
 ### Patch Changes
