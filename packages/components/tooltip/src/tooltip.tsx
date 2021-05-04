@@ -1,10 +1,7 @@
-import { Modifiers } from 'popper.js';
-import { SerializedStyles } from '@emotion/utils';
-import type { ElementType, FocusEvent, ChangeEvent, LegacyRef } from 'react';
-
 // inspired from https://github.com/mui-org/material-ui/blob/9ecc8db8abbfb829111d3b5c0678267827984024/packages/material-ui/src/Tooltip/Tooltip.js
-import PropTypes from 'prop-types';
-import React from 'react';
+import { Modifiers } from 'popper.js';
+import { SerializedStyles } from '@emotion/react';
+import React, { ElementType, FocusEvent, ChangeEvent, LegacyRef } from 'react';
 import { isValidElementType } from 'react-is';
 import isNil from 'lodash/isNil';
 import usePopper from 'use-popper';
