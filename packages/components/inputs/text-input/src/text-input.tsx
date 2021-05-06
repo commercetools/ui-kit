@@ -4,7 +4,7 @@ import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 
-type TTextInputProps = {
+export type TTextInputProps = {
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
    */
@@ -61,7 +61,7 @@ type TTextInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint:
+  horizontalConstraint?:
     | 3
     | 4
     | 5

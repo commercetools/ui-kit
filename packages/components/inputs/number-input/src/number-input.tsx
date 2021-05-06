@@ -4,7 +4,7 @@ import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 
-type TNumberProps = {
+export type TNumberProps = {
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
    */

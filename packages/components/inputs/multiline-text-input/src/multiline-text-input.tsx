@@ -17,7 +17,7 @@ import {
   messagesMultilineInput,
 } from '@commercetools-uikit/input-utils';
 
-type TMultilineTextInputProps = {
+export type TMultilineTextInputProps = {
   /**
    * Used as HTML name of the input component. property
    */
