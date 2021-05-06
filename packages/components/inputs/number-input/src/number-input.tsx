@@ -4,7 +4,7 @@ import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 
-type TNumberProps = {
+export type TNumberInputProps = {
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
    */
@@ -95,11 +95,11 @@ type TNumberProps = {
     | 'auto';
 };
 
-const defaultProps: Pick<TNumberProps, 'horizontalConstraint'> = {
+const defaultProps: Pick<TNumberInputProps, 'horizontalConstraint'> = {
   horizontalConstraint: 'scale',
 };
 
-const NumberInput = (props: TNumberProps) => {
+const NumberInput = (props: TNumberInputProps) => {
   const theme = useTheme();
   if (!props.isReadOnly) {
     warning(

@@ -5,7 +5,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import { WorldIcon } from '@commercetools-uikit/icons';
 import messages from '../messages/localized-input';
 
-type TLocalizedInputToggleProps = {
+export type TLocalizedInputToggleProps = {
   icon?: React.ReactElement;
   isOpen?: boolean;
   onClick: (
