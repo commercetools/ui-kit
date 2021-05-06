@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/data-table-manager",
   "description": "This component enhances the DataTable component and additionally provides a UI and state management to handle configuration of the table such as column manager.",
-  "version": "12.0.5",
+  "version": "12.0.6",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
     "@commercetools-uikit/hooks": "12.0.3",
     "@commercetools-uikit/icons": "12.0.0",
     "@commercetools-uikit/primary-button": "12.0.5",
-    "@commercetools-uikit/radio-input": "12.0.4",
+    "@commercetools-uikit/radio-input": "12.0.6",
     "@commercetools-uikit/secondary-button": "12.0.5",
     "@commercetools-uikit/secondary-icon-button": "12.0.4",
     "@commercetools-uikit/select-input": "12.0.3",

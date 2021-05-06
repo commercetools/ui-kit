@@ -1,5 +1,11 @@
 # @commercetools-uikit/input-utils
 
+## 12.0.6
+
+### Patch Changes
+
+- [#1892](https://github.com/commercetools/ui-kit/pull/1892) [`fa4f030d`](https://github.com/commercetools/ui-kit/commit/fa4f030d1580929ee28f62fb31ebe3e742c6c8dd) Thanks [@adnasa](https://github.com/adnasa)! - export `TMultilineTextInputProps` and `TLocalizedInputToggleProps`
+
 ## 12.0.4
 
 ### Patch Changes

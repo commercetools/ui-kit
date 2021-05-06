@@ -1,5 +1,12 @@
 # @commercetools-uikit/localized-multiline-text-field
 
+## 12.0.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/localized-multiline-text-input@12.0.6
+
 ## 12.0.5
 
 ### Patch Changes
