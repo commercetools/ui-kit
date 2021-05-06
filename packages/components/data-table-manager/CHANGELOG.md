@@ -1,5 +1,12 @@
 # @commercetools-uikit/data-table-manager
 
+## 12.0.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/radio-input@12.0.6
+
 ## 12.0.5
 
 ### Patch Changes

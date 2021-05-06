@@ -1,5 +1,15 @@
 # @commercetools-frontend/ui-kit
 
+## 12.0.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/pagination@12.0.6
+  - @commercetools-uikit/inputs@12.0.6
+  - @commercetools-uikit/fields@12.0.6
+  - @commercetools-uikit/data-table-manager@12.0.6
+
 ## 12.0.5
 
 ### Patch Changes

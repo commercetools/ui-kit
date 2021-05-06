@@ -1,5 +1,12 @@
 # @commercetools-uikit/date-time-input
 
+## 12.0.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/calendar-utils@12.0.6
+
 ## 12.0.4
 
 ### Patch Changes

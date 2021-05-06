@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/money-input",
   "description": "A controlled input component for money values with validation states.",
-  "version": "12.0.4",
+  "version": "12.0.6",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "@commercetools-uikit/design-system": "12.0.0",
     "@commercetools-uikit/hooks": "12.0.3",
     "@commercetools-uikit/icons": "12.0.0",
-    "@commercetools-uikit/input-utils": "12.0.4",
+    "@commercetools-uikit/input-utils": "12.0.6",
     "@commercetools-uikit/select-utils": "12.0.3",
     "@commercetools-uikit/tooltip": "12.0.3",
     "@commercetools-uikit/utils": "12.0.0",

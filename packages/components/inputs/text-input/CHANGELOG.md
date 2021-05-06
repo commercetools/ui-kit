@@ -1,5 +1,14 @@
 # @commercetools-uikit/text-input
 
+## 12.0.6
+
+### Patch Changes
+
+- [#1892](https://github.com/commercetools/ui-kit/pull/1892) [`fa4f030d`](https://github.com/commercetools/ui-kit/commit/fa4f030d1580929ee28f62fb31ebe3e742c6c8dd) Thanks [@adnasa](https://github.com/adnasa)! - export `TTextInputProps`
+
+- Updated dependencies [[`fa4f030d`](https://github.com/commercetools/ui-kit/commit/fa4f030d1580929ee28f62fb31ebe3e742c6c8dd)]:
+  - @commercetools-uikit/input-utils@12.0.6
+
 ## 12.0.5
 
 ### Patch Changes
