@@ -2,4 +2,4 @@
 '@commercetools-uikit/number-input': patch
 ---
 
-export `TNumberProps`
+export `TNumberInputProps`
