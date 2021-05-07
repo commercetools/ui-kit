@@ -1,13 +1,9 @@
 import type { Theme } from '@emotion/react';
-import React, {
-  MouseEvent,
-  KeyboardEvent,
-  ReactNode,
-  ElementType,
-} from 'react';
+import type { TTagProps } from './tag';
+
+import React, { ReactNode, ElementType } from 'react';
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
-import { css, useTheme, SerializedStyles } from '@emotion/react';
+import { css, useTheme } from '@emotion/react';
 import {
   customProperties as vars,
   designTokens,
@@ -15,20 +11,22 @@ import {
 import Text from '@commercetools-uikit/text';
 
 export type TTagBodyProps = {
-  to?: string;
-  type: string;
-  onClick?: (
-    event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>
-  ) => void;
-  onRemove?: (
-    event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>
-  ) => void;
+  to?: TTagProps['to'];
+  as?: ElementType;
+  type?: TTagProps['type'];
+  onClick?: TTagProps['onClick'];
+  onRemove?: TTagProps['onRemove'];
   isDisabled?: boolean;
   children: ReactNode;
-  styles?: Record<string, SerializedStyles>;
+  styles?: TTagProps['styles'];
 };
 
-type TBody = Pick<TTagBodyProps, 'to'> & { as?: ElementType };
+const defaultProps: Pick<TTagProps, 'type' | 'isDisabled'> = {
+  type: 'normal',
+  isDisabled: false,
+};
+
+type TBody = Pick<TTagBodyProps, 'to' | 'as'>;
 const Body = styled.div<TBody>``;
 
 const getClickableContentWrapperStyles = (
@@ -104,7 +102,7 @@ const TagBody = (props: TTagBodyProps) => {
   return (
     <Body
       to={props.to}
-      as={props.to && !props.isDisabled ? Link : undefined}
+      as={props.as}
       css={[
         getContentWrapperStyles(props, theme),
         Boolean(props.onRemove) &&
@@ -141,6 +139,7 @@ const TagBody = (props: TTagBodyProps) => {
   );
 };
 
+TagBody.defaultProps = defaultProps;
 TagBody.displayName = 'TagBody';
 
 export default TagBody;

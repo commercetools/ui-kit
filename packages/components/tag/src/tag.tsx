@@ -2,6 +2,7 @@ import type { LocationDescriptor } from 'history';
 
 import React, { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 import { css, SerializedStyles, useTheme } from '@emotion/react';
+import { Link } from 'react-router-dom';
 import {
   customProperties as vars,
   designTokens,
@@ -27,7 +28,7 @@ export type TTagProps = {
   /**
    * Disable the tag element along with the option to remove it.
    */
-  isDisabled: boolean;
+  isDisabled?: boolean;
   /**
    * Called when remove button is clicked.
    */
@@ -37,13 +38,11 @@ export type TTagProps = {
   /**
    * Called when tag element is clicked. This is not called when remove button is clicked.
    */
-  onClick?: (
-    event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>
-  ) => void;
+  onClick?: (event: MouseEvent<HTMLElement>) => void;
   /**
    * Horizontal size limit of the input field.
    */
-  horizontalConstraint:
+  horizontalConstraint?:
     | 1
     | 2
     | 3
@@ -78,6 +77,8 @@ const defaultProps: Pick<
 };
 
 const Tag = (props: TTagProps) => {
+  const linkProps =
+    props.to && !props.isDisabled ? { as: Link, to: props.to } : {};
   const theme = useTheme();
   const overwrittenVars = {
     ...vars,
@@ -100,12 +101,12 @@ const Tag = (props: TTagProps) => {
         `}
       >
         <TagBody
+          {...linkProps}
           styles={props.styles}
           type={props.type}
           onClick={props.onClick}
           onRemove={props.onRemove}
           isDisabled={props.isDisabled}
-          to={props.to}
         >
           {props.children}
         </TagBody>
