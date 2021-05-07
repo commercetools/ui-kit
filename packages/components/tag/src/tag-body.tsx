@@ -1,7 +1,10 @@
 import type { Theme } from '@emotion/react';
-import type { LocationDescriptor } from 'history';
-
-import React, { MouseEvent, KeyboardEvent, ReactNode } from 'react';
+import React, {
+  MouseEvent,
+  KeyboardEvent,
+  ReactNode,
+  ElementType,
+} from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { css, useTheme, SerializedStyles } from '@emotion/react';
@@ -11,8 +14,8 @@ import {
 } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 
-type TTagBodyProps = {
-  to?: string | LocationDescriptor;
+export type TTagBodyProps = {
+  to?: string;
   type: string;
   onClick?: (
     event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>
@@ -25,7 +28,8 @@ type TTagBodyProps = {
   styles?: Record<string, SerializedStyles>;
 };
 
-const Body = styled.div``;
+type TBody = Pick<TTagBodyProps, 'to'> & { as?: ElementType };
+const Body = styled.div<TBody>``;
 
 const getClickableContentWrapperStyles = (
   type: TTagBodyProps['type'],
@@ -97,12 +101,10 @@ const getContentWrapperStyles = (props: TTagBodyProps, theme: Theme) => {
 
 const TagBody = (props: TTagBodyProps) => {
   const theme: Theme = useTheme();
-  const linkProps =
-    props.to && !props.isDisabled ? { as: Link, to: props.to } : {};
-
   return (
     <Body
-      {...linkProps}
+      to={props.to}
+      as={props.to && !props.isDisabled ? Link : undefined}
       css={[
         getContentWrapperStyles(props, theme),
         Boolean(props.onRemove) &&

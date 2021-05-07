@@ -1,3 +1,5 @@
+import type { LocationDescriptor } from 'history';
+
 import React, { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 import { css, SerializedStyles, useTheme } from '@emotion/react';
 import {
@@ -9,11 +11,11 @@ import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
 import TagBody from './tag-body';
 
-type TTagProps = {
+export type TTagProps = {
   /**
    * Indicates color scheme of the tag.
    */
-  type: 'normal' | 'warning';
+  type?: 'normal' | 'warning';
   /**
    * Styles object that is spread into the tag body.
    */
@@ -21,7 +23,7 @@ type TTagProps = {
   /**
    * Link of the tag when not disabled
    */
-  to?: string;
+  to?: string | LocationDescriptor;
   /**
    * Disable the tag element along with the option to remove it.
    */
