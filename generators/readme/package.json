@@ -23,7 +23,7 @@
     "@types/vfile": "4.0.0",
     "listr": "0.14.3",
     "listr-verbose-renderer": "0.6.0",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "mri": "1.1.6",
     "rcfile": "1.0.3",
     "react-docgen": "5.3.1",
