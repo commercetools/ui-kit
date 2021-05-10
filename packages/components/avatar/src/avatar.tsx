@@ -26,23 +26,32 @@ export type TAvatarProps = {
   size: 's' | 'm' | 'l';
 };
 
-export type TGravatarImg = {
-  hash?: string;
-  size: TAvatarProps['size'];
-  isHighlighted?: boolean;
+export type TGravatarImgProps = Pick<
+  TAvatarProps,
+  'gravatarHash' | 'isHighlighted' | 'size'
+> & {
   altText?: string;
 };
 
-export type TInitialsProps = {
-  firstName?: string;
-  lastName?: string;
-  size: TAvatarProps['size'];
-};
+export type TInitialsProps = Pick<
+  TAvatarProps,
+  'firstName' | 'lastName' | 'size'
+>;
 
 const avatarSizes = {
   s: { width: '26px', fontSize: '1em' },
   m: { width: '48px', fontSize: '1.5em' },
   l: { width: '100px', fontSize: '3em' },
+};
+
+const defaultProps: Pick<
+  TAvatarProps,
+  'firstName' | 'lastName' | 'isHighlighted' | 'size'
+> = {
+  firstName: '',
+  lastName: '',
+  isHighlighted: false,
+  size: 's',
 };
 
 const getFirstChar = (str: string) =>
@@ -51,10 +60,8 @@ const getFirstChar = (str: string) =>
 const getInitialsFromName = ({
   firstName = '',
   lastName = '',
-}: {
-  firstName?: string;
-  lastName?: string;
-}) => `${getFirstChar(firstName)}${getFirstChar(lastName)}`;
+}: Pick<TAvatarProps, 'firstName' | 'lastName'>) =>
+  `${getFirstChar(firstName)}${getFirstChar(lastName)}`;
 
 /**
  * `s` - defines the size. We want a bigger one if the user is on a retina-display
@@ -64,8 +71,8 @@ const getInitialsFromName = ({
  * @see: https://de.gravatar.com/site/implement/images/
  */
 const createGravatarImgUrl = (
-  md5Hash: TGravatarImg['hash'],
-  size: TGravatarImg['size'],
+  md5Hash: TAvatarProps['gravatarHash'],
+  size: TAvatarProps['size'],
   multiplyBy: number = 1
 ) => {
   const sizeAsInt = parseInt(avatarSizes[size].width.replace(/px$/, ''), 10);
@@ -73,7 +80,7 @@ const createGravatarImgUrl = (
   return `https://www.gravatar.com/avatar/${md5Hash}?s=${gravatarSize}&d=blank`;
 };
 
-const GravatarImg = (props: TGravatarImg) => (
+const GravatarImg = (props: TGravatarImgProps) => (
   <img
     css={css`
       background-position: center center;
@@ -83,10 +90,10 @@ const GravatarImg = (props: TGravatarImg) => (
 
       ${props.isHighlighted ? 'opacity: 0.7;' : ''}
     `}
-    src={createGravatarImgUrl(props.hash, props.size)}
+    src={createGravatarImgUrl(props.gravatarHash, props.size)}
     srcSet={[
-      `${createGravatarImgUrl(props.hash, props.size)} 1x`,
-      `${createGravatarImgUrl(props.hash, props.size, 2)} 2x`,
+      `${createGravatarImgUrl(props.gravatarHash, props.size)} 1x`,
+      `${createGravatarImgUrl(props.gravatarHash, props.size, 2)} 2x`,
     ].join(',')}
     alt={props.altText}
   />
@@ -129,7 +136,7 @@ const Avatar = (props: TAvatarProps) => (
     {...filterDataAttributes(props)}
   >
     <GravatarImg
-      hash={props.gravatarHash}
+      gravatarHash={props.gravatarHash}
       size={props.size}
       isHighlighted={props.isHighlighted}
       altText={getInitialsFromName({
@@ -145,11 +152,6 @@ const Avatar = (props: TAvatarProps) => (
   </div>
 );
 Avatar.displayName = 'Avatar';
-Avatar.defaultProps = {
-  firstName: '',
-  lastName: '',
-  isHighlighted: false,
-  size: 's',
-};
+Avatar.defaultProps = defaultProps;
 
 export default Avatar;
