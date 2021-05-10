@@ -1,9 +1,43 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { oneLineTrim } from 'common-tags';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+
+export type TAvatarProps = {
+  /**
+   * The first name of the user.
+   */
+  firstName?: string;
+  /**
+   * The last name of the user.
+   */
+  lastName?: string;
+  /**
+   * The hashed string of the user gravatar.
+   */
+  gravatarHash: string;
+  /**
+   * Enhances the appearance of the avatar.
+   */
+  isHighlighted?: boolean;
+  /**
+   * The size of the rendered avatar.
+   */
+  size: 's' | 'm' | 'l';
+};
+
+export type TGravatarImg = {
+  hash?: string;
+  size: TAvatarProps['size'];
+  isHighlighted?: boolean;
+  altText?: string;
+};
+
+export type TInitialsProps = {
+  firstName?: string;
+  lastName?: string;
+  size: TAvatarProps['size'];
+};
 
 const avatarSizes = {
   s: { width: '26px', fontSize: '1em' },
@@ -22,12 +56,6 @@ const getInitialsFromName = ({
   lastName?: string;
 }) => `${getFirstChar(firstName)}${getFirstChar(lastName)}`;
 
-export type TGravatarImg = {
-  hash?: string;
-  size: 's' | 'm' | 'l';
-  isHighlighted?: boolean;
-  altText?: string;
-};
 /**
  * `s` - defines the size. We want a bigger one if the user is on a retina-display
  * `d` - defines the default if the user is not known to Gravatar. It returns a blank image,
@@ -65,11 +93,6 @@ const GravatarImg = (props: TGravatarImg) => (
 );
 GravatarImg.displayName = 'GravatarImg';
 
-export type TInitialsProps = {
-  firstName?: string;
-  lastName?: string;
-  size: 's' | 'm' | 'l';
-};
 const Initials = (props: TInitialsProps) => (
   <div
     css={css`
@@ -85,28 +108,6 @@ const Initials = (props: TInitialsProps) => (
 );
 Initials.displayName = 'Initials';
 
-export type TAvatarProps = {
-  /**
-   * The first name of the user.
-   */
-  firstName?: string;
-  /**
-   * The last name of the user.
-   */
-  lastName?: string;
-  /**
-   * The hashed string of the user gravatar.
-   */
-  gravatarHash: string;
-  /**
-   * Enhances the appearance of the avatar.
-   */
-  isHighlighted?: boolean;
-  /**
-   * The size of the rendered avatar.
-   */
-  size: 's' | 'm' | 'l';
-};
 const Avatar = (props: TAvatarProps) => (
   <div
     css={css`
