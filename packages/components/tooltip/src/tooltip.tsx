@@ -110,9 +110,6 @@ const TooltipWrapper = (props: Pick<TTooltipProps, 'children'>) => (
   <React.Fragment>{props.children}</React.Fragment>
 );
 TooltipWrapper.displayName = 'TooltipWrapperComponent';
-TooltipWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 const tooltipDefaultProps: Pick<
   TTooltipProps,
