@@ -2,5 +2,5 @@
 '@commercetools-uikit/hooks': patch
 ---
 
-- `useFieldId`: update signature to accept `id` as optional parameter.
+- `useFieldId`: update signature to allow undefined `id`.
 - `useToggleState`: remove type signature in `useCallback`, specify explicit `ReturnType`
