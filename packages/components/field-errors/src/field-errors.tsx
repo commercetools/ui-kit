@@ -7,11 +7,12 @@ const isObject = (obj: unknown): boolean => typeof obj === 'object';
 
 type TErrorRenderer = (key: string, error?: boolean) => React.ReactNode;
 
-type TFieldErrorsProps = {
+export type TFieldErrors = Record<string, boolean>;
+export type TFieldErrorsProps = {
   /**
    * List of errors. Only entries with truthy values will count as active errors.
    */
-  errors: Record<string, boolean>;
+  errors: TFieldErrors;
   /**
    * `true` when the error messages should be rendered. Usually you'd pass in a `touched` state of fields.
    */
