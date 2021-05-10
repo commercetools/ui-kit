@@ -2,4 +2,4 @@
 '@commercetools-uikit/tag': patch
 ---
 
-Migrate to Typescript
+Migrate to `Typescript`
