@@ -1,5 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import type { Theme } from '@emotion/react';
+import type { TTagProps } from './tag';
+
+import React, { ReactNode, ElementType } from 'react';
 import styled from '@emotion/styled';
 import { css, useTheme } from '@emotion/react';
 import {
@@ -8,9 +10,29 @@ import {
 } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 
-const Body = styled.div``;
+export type TTagBodyProps = {
+  to?: TTagProps['to'];
+  as?: ElementType;
+  type?: TTagProps['type'];
+  onClick?: TTagProps['onClick'];
+  onRemove?: TTagProps['onRemove'];
+  isDisabled?: boolean;
+  children: ReactNode;
+  styles?: TTagProps['styles'];
+};
 
-const getClickableContentWrapperStyles = (type, theme) => {
+const defaultProps: Pick<TTagProps, 'type' | 'isDisabled'> = {
+  type: 'normal',
+  isDisabled: false,
+};
+
+type TBody = Pick<TTagBodyProps, 'to' | 'as'>;
+const Body = styled.div<TBody>``;
+
+const getClickableContentWrapperStyles = (
+  type: TTagBodyProps['type'],
+  theme: Theme
+) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -29,7 +51,10 @@ const getClickableContentWrapperStyles = (type, theme) => {
       ];
 };
 
-const getTextDetailColor = (isDisabled, theme) => {
+const getTextDetailColor = (
+  isDisabled: TTagBodyProps['isDisabled'],
+  theme: Theme
+) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -39,7 +64,7 @@ const getTextDetailColor = (isDisabled, theme) => {
   return overwrittenVars[designTokens.fontColorForTag];
 };
 
-const getContentWrapperStyles = (props, theme) => {
+const getContentWrapperStyles = (props: TTagBodyProps, theme: Theme) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
@@ -72,8 +97,8 @@ const getContentWrapperStyles = (props, theme) => {
   `;
 };
 
-const TagBody = (props) => {
-  const theme = useTheme();
+const TagBody = (props: TTagBodyProps) => {
+  const theme: Theme = useTheme();
   return (
     <Body
       to={props.to}
@@ -114,18 +139,7 @@ const TagBody = (props) => {
   );
 };
 
+TagBody.defaultProps = defaultProps;
 TagBody.displayName = 'TagBody';
-TagBody.propTypes = {
-  as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  to: PropTypes.string,
-  type: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  onRemove: PropTypes.func,
-  isDisabled: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired,
-  styles: PropTypes.shape({
-    body: PropTypes.object,
-  }),
-};
 
 export default TagBody;
