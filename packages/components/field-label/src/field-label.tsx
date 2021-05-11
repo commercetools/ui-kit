@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { css } from '@emotion/react';
-import { IconButton } from '@commercetools-uikit/buttons';
+import IconButton from '@commercetools-uikit/icon-button';
 import { InformationIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';
 import Constraints from '@commercetools-uikit/constraints';
