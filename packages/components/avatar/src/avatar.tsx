@@ -1,9 +1,42 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { oneLineTrim } from 'common-tags';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+
+export type TAvatarProps = {
+  /**
+   * The first name of the user.
+   */
+  firstName?: string;
+  /**
+   * The last name of the user.
+   */
+  lastName?: string;
+  /**
+   * The hashed string of the user gravatar.
+   */
+  gravatarHash: string;
+  /**
+   * Enhances the appearance of the avatar.
+   */
+  isHighlighted?: boolean;
+  /**
+   * The size of the rendered avatar.
+   */
+  size: 's' | 'm' | 'l';
+};
+
+export type TGravatarImgProps = Pick<
+  TAvatarProps,
+  'gravatarHash' | 'isHighlighted' | 'size'
+> & {
+  altText?: string;
+};
+
+export type TInitialsProps = Pick<
+  TAvatarProps,
+  'firstName' | 'lastName' | 'size'
+>;
 
 const avatarSizes = {
   s: { width: '26px', fontSize: '1em' },
@@ -11,10 +44,23 @@ const avatarSizes = {
   l: { width: '100px', fontSize: '3em' },
 };
 
-const getFirstChar = (str) =>
+const defaultProps: Pick<
+  TAvatarProps,
+  'firstName' | 'lastName' | 'isHighlighted' | 'size'
+> = {
+  firstName: '',
+  lastName: '',
+  isHighlighted: false,
+  size: 's',
+};
+
+const getFirstChar = (str: string) =>
   typeof str === 'string' ? str.trim().slice(0, 1).toUpperCase() : '';
 
-const getInitialsFromName = ({ firstName = '', lastName = '' }) =>
+const getInitialsFromName = ({
+  firstName = '',
+  lastName = '',
+}: Pick<TAvatarProps, 'firstName' | 'lastName'>) =>
   `${getFirstChar(firstName)}${getFirstChar(lastName)}`;
 
 /**
@@ -24,13 +70,17 @@ const getInitialsFromName = ({ firstName = '', lastName = '' }) =>
  *
  * @see: https://de.gravatar.com/site/implement/images/
  */
-const createGravatarImgUrl = (md5Hash, size, multiplyBy = 1) => {
-  const sizeAsInt = avatarSizes[size].width.replace(/px$/, '');
+const createGravatarImgUrl = (
+  md5Hash: TAvatarProps['gravatarHash'],
+  size: TAvatarProps['size'],
+  multiplyBy: number = 1
+) => {
+  const sizeAsInt = parseInt(avatarSizes[size].width.replace(/px$/, ''), 10);
   const gravatarSize = sizeAsInt * multiplyBy;
   return `https://www.gravatar.com/avatar/${md5Hash}?s=${gravatarSize}&d=blank`;
 };
 
-const GravatarImg = (props) => (
+const GravatarImg = (props: TGravatarImgProps) => (
   <img
     css={css`
       background-position: center center;
@@ -40,22 +90,17 @@ const GravatarImg = (props) => (
 
       ${props.isHighlighted ? 'opacity: 0.7;' : ''}
     `}
-    src={createGravatarImgUrl(props.hash, props.size)}
-    srcSet={oneLineTrim`
-      ${createGravatarImgUrl(props.hash, props.size)} 1x,
-      ${createGravatarImgUrl(props.hash, props.size, 2)} 2x
-    `}
+    src={createGravatarImgUrl(props.gravatarHash, props.size)}
+    srcSet={[
+      `${createGravatarImgUrl(props.gravatarHash, props.size)} 1x`,
+      `${createGravatarImgUrl(props.gravatarHash, props.size, 2)} 2x`,
+    ].join(',')}
+    alt={props.altText}
   />
 );
-
 GravatarImg.displayName = 'GravatarImg';
-GravatarImg.propTypes = {
-  hash: PropTypes.string,
-  size: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
-  isHighlighted: PropTypes.bool,
-};
 
-const Initials = (props) => (
+const Initials = (props: TInitialsProps) => (
   <div
     css={css`
       position: absolute;
@@ -68,15 +113,9 @@ const Initials = (props) => (
     })}
   </div>
 );
-
 Initials.displayName = 'Initials';
-Initials.propTypes = {
-  firstName: PropTypes.string,
-  lastName: PropTypes.string,
-  size: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
-};
 
-const Avatar = (props) => (
+const Avatar = (props: TAvatarProps) => (
   <div
     css={css`
       align-items: center;
@@ -97,9 +136,13 @@ const Avatar = (props) => (
     {...filterDataAttributes(props)}
   >
     <GravatarImg
-      hash={props.gravatarHash}
+      gravatarHash={props.gravatarHash}
       size={props.size}
       isHighlighted={props.isHighlighted}
+      altText={getInitialsFromName({
+        firstName: props.firstName,
+        lastName: props.lastName,
+      })}
     />
     <Initials
       size={props.size}
@@ -109,34 +152,6 @@ const Avatar = (props) => (
   </div>
 );
 Avatar.displayName = 'Avatar';
-Avatar.defaultProps = {
-  firstName: '',
-  lastName: '',
-  isHighlighted: false,
-  size: 's',
-};
-
-Avatar.propTypes = {
-  /**
-   * The first name of the user.
-   */
-  firstName: PropTypes.string,
-  /**
-   * The last name of the user.
-   */
-  lastName: PropTypes.string,
-  /**
-   * The hashed string of the user gravatar.
-   */
-  gravatarHash: PropTypes.string.isRequired,
-  /**
-   * Enhances the appearance of the avatar.
-   */
-  isHighlighted: PropTypes.bool,
-  /**
-   * The size of the rendered avatar.
-   */
-  size: PropTypes.oneOf(['s', 'm', 'l']).isRequired,
-};
+Avatar.defaultProps = defaultProps;
 
 export default Avatar;
