@@ -66,7 +66,7 @@
   "dependencies": {
     "@changesets/changelog-github": "0.3.0",
     "@changesets/cli": "2.14.1",
-    "@commercetools-frontend/babel-preset-mc-app": "18.5.6",
+    "@commercetools-frontend/babel-preset-mc-app": "20.0.1",
     "@commercetools-frontend/eslint-config-mc-app": "19.0.1",
     "@commercetools/github-labels": "1.1.0",
     "@commitlint/cli": "12.0.1",
@@ -113,7 +113,7 @@
     "jest-silent-reporter": "0.5.0",
     "jest-validate": "26.6.2",
     "jest-watch-typeahead": "0.6.1",
-    "lint-staged": "10.5.4",
+    "lint-staged": "11.0.0",
     "moment": "2.29.1",
     "moment-timezone": "0.5.33",
     "mri": "1.1.6",
