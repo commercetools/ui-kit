@@ -1,4 +1,4 @@
-import { SerializedStyles } from '@emotion/react';
+import { CSSProperties } from 'react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import type { TTooltipProps } from './tooltip';
@@ -39,8 +39,8 @@ export const getBodyStyles = ({
 }: {
   constraint: TTooltipProps['horizontalConstraint'];
   placement: string;
-  customStyles: SerializedStyles;
-}) => {
+  customStyles?: CSSProperties;
+}): CSSProperties => {
   return {
     fontFamily: 'inherit',
     margin: `${getOffsetMargin({ placement })} !important`,
