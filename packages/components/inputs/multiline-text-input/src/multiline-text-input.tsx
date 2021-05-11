@@ -7,7 +7,6 @@ import { useIntl } from 'react-intl';
 import { css } from '@emotion/react';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import FlatButton from '@commercetools-uikit/flat-button';
-// @ts-ignore
 import { useToggleState } from '@commercetools-uikit/hooks';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -107,9 +106,7 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
     MultilineTextInput.MIN_ROW_COUNT
   );
 
-  const [isOpen, toggle] = useToggleState<
-    TMultilineTextInputProps['defaultExpandMultilineText']
-  >(props.defaultExpandMultilineText);
+  const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
 
   const { onFocus } = props;
   const handleFocus = React.useCallback<FocusEventHandler>(
@@ -163,7 +160,7 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
             `}
           >
             <FlatButton
-              onClick={toggle}
+              onClick={() => toggle()}
               isDisabled={props.isDisabled}
               label={intl.formatMessage(
                 isOpen
