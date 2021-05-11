@@ -32,7 +32,7 @@ npm --save install react
 ```jsx
 import React from 'react';
 import { defineMessage, FormattedMessage } from 'react-intl';
-import { FlatButton } from '@commercetools-buttons/flat-button';
+import FlatButton from '@commercetools-uikit/flat-button';
 import FieldLabel from '@commercetools-uikit/field-label';
 import { WarningIcon } from '@commercetools-uikit/icons';
 
