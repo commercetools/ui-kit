@@ -1,43 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import isNil from 'lodash/isNil';
 import { warning } from '@commercetools-uikit/utils';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
-const collapsiblePropTypes = {
+type TToggleCallback = (toggleState: boolean) => void;
+export type TCollapsibleProps = {
   /**
    * This is only used to initialize the `isOpen` state once, when the component mounts.
    * Therefore there should not be any `componentWillReceiveProps` to update the state
    * from an external source.
    */
-  // eslint-disable-next-line react/no-unused-prop-types
-  isDefaultClosed: PropTypes.bool,
-
+  isDefaultClosed?: boolean;
   /**
    * A render-prop function.
-   * <br>
-   * Signature: `({ isOpen: boolean, toggle: (event) => void }) => void`
    */
-  children: PropTypes.func.isRequired,
-
+  children: (options: {
+    isOpen: boolean;
+    toggle?: TToggleCallback;
+  }) => ReactNode;
   /**
    * Passing this prop makes the component a controlled component.
    * Controlled components also require to pass a `onToggle` callback function.
    */
-  // eslint-disable-next-line react/no-unused-prop-types
-  isClosed: PropTypes.bool,
-
+  isClosed?: boolean;
   /**
    * A callback function, called when the consumer calls the `toggle` function.
    * This function is only required when the component is controlled.
-   * <br>
-   * Signature: `(event) => void`
    */
-  // eslint-disable-next-line react/no-unused-prop-types
-  onToggle: PropTypes.func,
+  onToggle?: TToggleCallback;
 };
 
-const ControlledCollapsible = (props) => (
+const ControlledCollapsible = (
+  props: Pick<TCollapsibleProps, 'isClosed' | 'onToggle' | 'children'>
+) => (
   <>
     {props.children({
       isOpen: !props.isClosed,
@@ -46,9 +41,10 @@ const ControlledCollapsible = (props) => (
   </>
 );
 ControlledCollapsible.displayName = 'ControlledCollapsible';
-ControlledCollapsible.propTypes = collapsiblePropTypes;
 
-const UncontrolledCollapsible = (props) => {
+const UncontrolledCollapsible = (
+  props: Pick<TCollapsibleProps, 'children' | 'isDefaultClosed'>
+) => {
   const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
   return (
     <>
@@ -60,9 +56,8 @@ const UncontrolledCollapsible = (props) => {
   );
 };
 UncontrolledCollapsible.displayName = 'UncontrolledCollapsible';
-UncontrolledCollapsible.propTypes = collapsiblePropTypes;
 
-const Collapsible = (props) => {
+const Collapsible = (props: TCollapsibleProps) => {
   const isControlledComponent = !isNil(props.isClosed);
   const hasOnToggle = !isNil(props.onToggle);
 
@@ -82,7 +77,10 @@ const Collapsible = (props) => {
 };
 
 Collapsible.displayName = 'Collapsible';
-Collapsible.propTypes = collapsiblePropTypes;
-Collapsible.defaultProps = { isDefaultClosed: false };
+
+const collapsibleDefaultProps: Pick<TCollapsibleProps, 'isDefaultClosed'> = {
+  isDefaultClosed: false,
+};
+Collapsible.defaultProps = collapsibleDefaultProps;
 
 export default Collapsible;
