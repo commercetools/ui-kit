@@ -1,6 +1,7 @@
 import { SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import type { TTooltipProps } from './tooltip';
 
 const getOffsetMargin = ({ placement }: { placement: string }) => {
   const position = (placement && placement.split('-')[0]) || '';
@@ -36,7 +37,7 @@ export const getBodyStyles = ({
   placement,
   customStyles,
 }: {
-  constraint: string;
+  constraint: TTooltipProps['horizontalConstraint'];
   placement: string;
   customStyles: SerializedStyles;
 }) => {

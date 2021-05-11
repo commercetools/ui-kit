@@ -26,7 +26,7 @@ type TComponents = {
   WrapperComponent?: ElementType;
 };
 
-type TTooltipProps = {
+export type TTooltipProps = {
   children: React.ReactElement;
 
   /**
