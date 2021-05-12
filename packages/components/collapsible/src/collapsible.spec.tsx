@@ -1,13 +1,21 @@
+import type { TCollapsibleProps } from './collapsible';
 import React from 'react';
 import Collapsible from './collapsible';
 import { screen, render } from '../../../../test/test-utils';
 
-const TestComponent = (props) => (
+const TestComponent = (props: Omit<TCollapsibleProps, 'children'>) => (
   <Collapsible {...props}>
     {(options) => (
       <div>
         <div data-testid="openState">{options.isOpen ? 'open' : 'closed'}</div>
-        <button data-testid="toggle" onClick={options.toggle}>
+        <button
+          data-testid="toggle"
+          onClick={() => {
+            if (options.toggle) {
+              options.toggle();
+            }
+          }}
+        >
           Toggle
         </button>
       </div>
