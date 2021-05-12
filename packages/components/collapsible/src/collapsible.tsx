@@ -3,7 +3,7 @@ import isNil from 'lodash/isNil';
 import { warning } from '@commercetools-uikit/utils';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
-type TToggleCallback = (toggleState: boolean) => void;
+type TToggleCallback = (toggleState?: boolean) => void;
 export type TCollapsibleProps = {
   /**
    * This is only used to initialize the `isOpen` state once, when the component mounts.
@@ -13,6 +13,10 @@ export type TCollapsibleProps = {
   isDefaultClosed?: boolean;
   /**
    * A render-prop function.
+   * <br/>
+   * `children` will be called with `options: { isOpen: boolean; toggle: TToggleCallback }`
+   * <br />
+   * `options.toggle` will be defined given that Collapsible is a controlled component.
    */
   children: (options: {
     isOpen: boolean;
