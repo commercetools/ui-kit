@@ -1,1 +1,12 @@
-module.exports = require('../babel.config');
+module.exports = {
+  presets: [
+    [
+      '@commercetools-frontend/babel-preset-mc-app',
+      {
+        // TODO: change this to `automatic` when using the new runtime
+        runtime: 'classic',
+        disableLooseMode: true,
+      },
+    ],
+  ],
+};
