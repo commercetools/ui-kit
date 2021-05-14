@@ -74,6 +74,7 @@
     "@emotion/babel-plugin": "11.3.0",
     "@emotion/babel-preset-css-prop": "11.2.0",
     "@formatjs/cli": "4.2.12",
+    "@formatjs/intl-relativetimeformat": "8.1.8",
     "@manypkg/cli": "0.17.0",
     "@percy/cli": "1.0.0-beta.49",
     "@percy/puppeteer": "2.0.0",

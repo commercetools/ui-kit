@@ -7,4 +7,4 @@
 // react-testing-library setup
 import '@testing-library/jest-dom/extend-expect';
 import 'intl-pluralrules';
-import '@formatjs/intl-relativetimeformat/polyfill-locales';
+import '@formatjs/intl-relativetimeformat/polyfill';
