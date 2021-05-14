@@ -23,8 +23,8 @@
     "prepare": "../../../../scripts/version.js replace"
   },
   "dependencies": {
-    "@babel/runtime": "7.13.10",
-    "@babel/runtime-corejs3": "7.13.10",
+    "@babel/runtime": "7.14.0",
+    "@babel/runtime-corejs3": "7.14.0",
     "@commercetools-uikit/async-creatable-select-input": "12.0.3",
     "@commercetools-uikit/constraints": "12.0.0",
     "@commercetools-uikit/design-system": "12.0.0",
@@ -38,7 +38,7 @@
     "react-required-if": "1.0.3"
   },
   "devDependencies": {
-    "react": "17.0.1"
+    "react": "17.0.2"
   },
   "peerDependencies": {
     "react": "17.x"

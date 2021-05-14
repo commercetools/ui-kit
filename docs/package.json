@@ -7,7 +7,7 @@
     "build": "NODE_ENV=production build-storybook -o public -s assets"
   },
   "dependencies": {
-    "@emotion/react": "11.1.5",
+    "@emotion/react": "11.4.0",
     "@storybook/addon-a11y": "5.3.21",
     "@storybook/addon-actions": "5.3.21",
     "@storybook/addon-contexts": "5.3.21",
