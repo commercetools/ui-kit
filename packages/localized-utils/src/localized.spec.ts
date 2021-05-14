@@ -101,9 +101,9 @@ describe('sortLanguages', () => {
 
 describe('createLocalizedDataAttributes', () => {
   it('should localize the data-test attribute', () => {
-    expect(
-      createLocalizedDataAttributes({ 'data-test': 'foo' }, 'en')
-    ).toEqual({ 'data-test': 'foo-en' });
+    expect(createLocalizedDataAttributes({ 'data-test': 'foo' }, 'en')).toEqual(
+      { 'data-test': 'foo-en' }
+    );
   });
   it('should localize the data-track-component attribute', () => {
     expect(

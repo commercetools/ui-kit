@@ -29,9 +29,8 @@ const useDataTableSortingState = (
     ...applyIf(initialValues, 'key'),
     ...applyIf(initialValues, 'order'),
   };
-  const [sortDefinition, setSortDefinition] = useState<TSortDefinition>(
-    mergedValues
-  );
+  const [sortDefinition, setSortDefinition] =
+    useState<TSortDefinition>(mergedValues);
   const onTableSortingChange = useCallback<TDataTableSortingState['onChange']>(
     (key: TSortDefinition['key'], order: TSortDefinition['order']): void => {
       setSortDefinition({
