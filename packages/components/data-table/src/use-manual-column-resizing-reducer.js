@@ -124,9 +124,10 @@ const useManualColumnResizing = (tableRef) => {
       );
       const newColumnsSizes = setColumnWidth(state.sizes, columnIndex, width);
 
-      state.tableRef.current.style.gridTemplateColumns = getGridTemplateColumnsStyle(
-        newColumnsSizes.map((newColumnsSize) => newColumnsSize.width)
-      );
+      state.tableRef.current.style.gridTemplateColumns =
+        getGridTemplateColumnsStyle(
+          newColumnsSizes.map((newColumnsSize) => newColumnsSize.width)
+        );
     });
 
   const finishResizing = () => {

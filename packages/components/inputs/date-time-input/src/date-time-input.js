@@ -385,9 +385,8 @@ class DateTimeInput extends React.Component {
                           // then bypass normal arrow navigation
                           preventDownshiftDefault(event); // eslint-disable-line no-param-reassign
 
-                          const numberOfDaysOfPrevMonth = getDaysInMonth(
-                            previousDay
-                          );
+                          const numberOfDaysOfPrevMonth =
+                            getDaysInMonth(previousDay);
                           // then jump to the last day of the previous month
                           this.jumpMonths(-1, numberOfDaysOfPrevMonth - 1);
                         }

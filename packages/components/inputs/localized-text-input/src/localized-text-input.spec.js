@@ -252,15 +252,12 @@ describe('when the error is not on the selected language', () => {
 
 describe('when the error is on the selected language', () => {
   it('should display the error without expanding', () => {
-    const {
-      getByLabelText,
-      getByText,
-      queryByLabelText,
-    } = renderLocalizedTextInput({
-      errors: {
-        en: 'Some error',
-      },
-    });
+    const { getByLabelText, getByText, queryByLabelText } =
+      renderLocalizedTextInput({
+        errors: {
+          en: 'Some error',
+        },
+      });
     expect(getByLabelText('EN')).toBeInTheDocument();
     expect(queryByLabelText('FR')).not.toBeInTheDocument();
     expect(getByText('Some error')).toBeInTheDocument();

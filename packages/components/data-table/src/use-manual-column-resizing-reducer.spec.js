@@ -61,9 +61,7 @@ describe('useManualColumnResizing', () => {
     expect(result.current.getHasTableBeenResized()).toBe(false);
     expect(result.current.getIsAnyColumnBeingResized()).toBe(false);
     expect(result.current.getSizes().map((size) => size.width)).toStrictEqual([
-      50,
-      100,
-      200,
+      50, 100, 200,
     ]);
   });
 
@@ -204,9 +202,7 @@ describe('useManualColumnResizing', () => {
     expect(result.current.getHasTableBeenResized()).toBe(false);
     expect(result.current.getIsAnyColumnBeingResized()).toBe(false);
     expect(result.current.getSizes().map((size) => size.width)).toStrictEqual([
-      50,
-      100,
-      200,
+      50, 100, 200,
     ]);
   });
 

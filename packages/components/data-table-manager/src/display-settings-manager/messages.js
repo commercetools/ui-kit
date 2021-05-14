@@ -17,14 +17,12 @@ export default defineMessages({
     defaultMessage: 'Density display',
   },
   textWrappingAllWrapVisibleOption: {
-    id:
-      'UIKit.DataTableManager.DensityManager.textWrappingAllWrapVisibleOption',
+    id: 'UIKit.DataTableManager.DensityManager.textWrappingAllWrapVisibleOption',
     description: 'All wrapped texts visible option.',
     defaultMessage: 'Make all wrapped texts visible',
   },
   textWrappingShowHideOnDemandOption: {
-    id:
-      'UIKit.DataTableManager.DensityManager.textWrappingShowHideOnDemandOption',
+    id: 'UIKit.DataTableManager.DensityManager.textWrappingShowHideOnDemandOption',
     description: 'Show or hide texts on demand option.',
     defaultMessage: 'Show / hide texts by row on demand',
   },

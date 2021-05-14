@@ -127,12 +127,8 @@ describe('in single mode', () => {
       expect(getByText('Raspberry')).toBeInTheDocument();
     });
     it('should be able to select an option', async () => {
-      const {
-        getByLabelText,
-        getByText,
-        queryByText,
-        findByText,
-      } = renderInput();
+      const { getByLabelText, getByText, queryByText, findByText } =
+        renderInput();
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
@@ -206,15 +202,11 @@ describe('in multi mode', () => {
       expect(getByText('Raspberry')).toBeInTheDocument();
     });
     it('should be able to select two option', async () => {
-      const {
-        getByLabelText,
-        getByText,
-        queryByText,
-        findByText,
-      } = renderInput({
-        isMulti: true,
-        value: [],
-      });
+      const { getByLabelText, getByText, queryByText, findByText } =
+        renderInput({
+          isMulti: true,
+          value: [],
+        });
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });

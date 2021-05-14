@@ -107,12 +107,8 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
 };
 
 const ControlledCollapsibleMotion = (props) => {
-  const [
-    animation,
-    containerStyles,
-    animationToggle,
-    registerContentNode,
-  ] = useToggleAnimation(!props.isClosed, props.onToggle, props.minHeight);
+  const [animation, containerStyles, animationToggle, registerContentNode] =
+    useToggleAnimation(!props.isClosed, props.onToggle, props.minHeight);
 
   return (
     <ClassNames>
@@ -149,12 +145,8 @@ ControlledCollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 const UncontrolledCollapsibleMotion = (props) => {
   const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
 
-  const [
-    animation,
-    containerStyles,
-    animationToggle,
-    registerContentNode,
-  ] = useToggleAnimation(isOpen, toggle, props.minHeight);
+  const [animation, containerStyles, animationToggle, registerContentNode] =
+    useToggleAnimation(isOpen, toggle, props.minHeight);
 
   return (
     <ClassNames>

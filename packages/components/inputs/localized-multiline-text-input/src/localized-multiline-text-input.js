@@ -64,13 +64,11 @@ const LocalizedMultilineTextInput = (props) => {
     {}
   );
 
-  const [
-    expandedTranslationsState,
-    expandedTranslationsDispatch,
-  ] = React.useReducer(
-    expandedTranslationsReducer,
-    initialExpandedTranslationsState
-  );
+  const [expandedTranslationsState, expandedTranslationsDispatch] =
+    React.useReducer(
+      expandedTranslationsReducer,
+      initialExpandedTranslationsState
+    );
 
   const defaultExpansionState =
     props.hideLanguageExpansionControls ||
@@ -185,7 +183,8 @@ const LocalizedMultilineTextInput = (props) => {
 
 LocalizedMultilineTextInput.displayName = 'LocalizedMultilineTextInput';
 
-LocalizedMultilineTextInput.RequiredValueErrorMessage = RequiredValueErrorMessage;
+LocalizedMultilineTextInput.RequiredValueErrorMessage =
+  RequiredValueErrorMessage;
 
 LocalizedMultilineTextInput.propTypes = {
   /**

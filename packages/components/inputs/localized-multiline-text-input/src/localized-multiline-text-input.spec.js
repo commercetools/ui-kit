@@ -154,12 +154,10 @@ describe('when expanded by default', () => {
 
 describe('when expansion controls are hidden', () => {
   it('should render one input per language and no hide button', () => {
-    const {
-      getByLabelText,
-      queryByLabelText,
-    } = renderLocalizedMultilineTextInput({
-      hideLanguageExpansionControls: true,
-    });
+    const { getByLabelText, queryByLabelText } =
+      renderLocalizedMultilineTextInput({
+        hideLanguageExpansionControls: true,
+      });
     expect(getByLabelText('EN')).toBeInTheDocument();
     expect(getByLabelText('FR')).toBeInTheDocument();
     expect(queryByLabelText(/hide languages/i)).not.toBeInTheDocument();
@@ -190,12 +188,10 @@ describe('when disabled', () => {
 describe('when read-only', () => {
   describe('when not expanded', () => {
     it('should render a readonly input', () => {
-      const {
-        getByLabelText,
-        queryByLabelText,
-      } = renderLocalizedMultilineTextInput({
-        isReadOnly: true,
-      });
+      const { getByLabelText, queryByLabelText } =
+        renderLocalizedMultilineTextInput({
+          isReadOnly: true,
+        });
       expect(getByLabelText('EN')).toHaveAttribute('readonly');
       expect(queryByLabelText('FR')).not.toBeInTheDocument();
     });
@@ -265,15 +261,12 @@ describe('when the error is not on the selected language', () => {
 
 describe('when the error is on the selected language', () => {
   it('should display the error without expanding', () => {
-    const {
-      getByLabelText,
-      getByText,
-      queryByLabelText,
-    } = renderLocalizedMultilineTextInput({
-      errors: {
-        en: 'Some error',
-      },
-    });
+    const { getByLabelText, getByText, queryByLabelText } =
+      renderLocalizedMultilineTextInput({
+        errors: {
+          en: 'Some error',
+        },
+      });
     expect(getByLabelText('EN')).toBeInTheDocument();
     expect(queryByLabelText('FR')).not.toBeInTheDocument();
     expect(getByText('Some error')).toBeInTheDocument();

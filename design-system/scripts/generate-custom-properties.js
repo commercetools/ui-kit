@@ -20,7 +20,8 @@ const endProgram = (message) => {
   process.exit(1);
 };
 
-const TOKEN_REGEX = /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-on-([\w-]+?))?$/i;
+const TOKEN_REGEX =
+  /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-on-([\w-]+?))?$/i;
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);

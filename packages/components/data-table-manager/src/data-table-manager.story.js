@@ -162,9 +162,12 @@ storiesOf('Components|DataTable', module)
     const [isCondensed, setIsCondensed] = React.useState(false);
     const [isWrappingText, setIsWrappingText] = React.useState(false);
 
-    const { items: rows, sortedBy, sortDirection, onSortChange } = useSorting(
-      items
-    );
+    const {
+      items: rows,
+      sortedBy,
+      sortDirection,
+      onSortChange,
+    } = useSorting(items);
 
     const withRowSelection = boolean('withRowSelection', true);
     const footer = text('footer', 'This is a Footer');
