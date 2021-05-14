@@ -59,13 +59,11 @@ const LocalizedRichTextInput = (props) => {
     {}
   );
 
-  const [
-    expandedTranslationsState,
-    expandedTranslationsDispatch,
-  ] = React.useReducer(
-    expandedTranslationsReducer,
-    initialExpandedTranslationsState
-  );
+  const [expandedTranslationsState, expandedTranslationsDispatch] =
+    React.useReducer(
+      expandedTranslationsReducer,
+      initialExpandedTranslationsState
+    );
 
   const defaultExpansionState =
     props.hideLanguageExpansionControls ||

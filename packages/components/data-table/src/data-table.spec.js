@@ -79,9 +79,8 @@ describe('DataTable', () => {
      * per row, which controls the expand and collapse of its whole row.
      * Since we have only three rows, it should render only three row expand-collapse buttons
      */
-    const rowExpandCollapseButtons = screen.queryAllByLabelText(
-      /Expand\/Collapse Row/i
-    );
+    const rowExpandCollapseButtons =
+      screen.queryAllByLabelText(/Expand\/Collapse Row/i);
     expect(rowExpandCollapseButtons).toHaveLength(3);
   });
 

@@ -224,9 +224,8 @@ const DateInput = (props) => {
                         // then bypass normal arrow navigation
                         preventDownshiftDefault(event);
 
-                        const numberOfDaysOfPrevMonth = getDaysInMonth(
-                          previousDay
-                        );
+                        const numberOfDaysOfPrevMonth =
+                          getDaysInMonth(previousDay);
                         // then jump to the last day of the previous month
                         jumpMonth(-1, numberOfDaysOfPrevMonth - 1);
                       }

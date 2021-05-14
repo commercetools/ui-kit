@@ -475,9 +475,9 @@ const parsePropTypesToMarkdown = (
           }
           // This case is for unions of scalar values, so we can render it as `Array of <scalar>`.
           case 'union': {
-            let unionValues = (propInfoType.value as ReactComponentPropType[]).map(
-              (union) => union.name
-            );
+            let unionValues = (
+              propInfoType.value as ReactComponentPropType[]
+            ).map((union) => union.name);
             const combinedUnionValues = unionValues
               // FIXME: it seems that there is a regression about escaping mulitple pipes.
               // https://github.com/syntax-tree/mdast-util-gfm-table

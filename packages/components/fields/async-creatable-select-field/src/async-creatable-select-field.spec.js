@@ -104,13 +104,10 @@ it('should have focus automatically when isAutofocussed is passed', () => {
 
 it('should call onChange when changing the value', async () => {
   const onChange = jest.fn();
-  const {
-    getByLabelText,
-    getByText,
-    findByText,
-  } = renderAsyncCreatableSelectField({
-    onChange,
-  });
+  const { getByLabelText, getByText, findByText } =
+    renderAsyncCreatableSelectField({
+      onChange,
+    });
   const input = getByLabelText('AsyncCreatableSelectField');
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });

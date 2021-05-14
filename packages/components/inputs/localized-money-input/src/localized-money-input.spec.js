@@ -267,15 +267,12 @@ describe('when the error is on the selected currency', () => {
     const errors = {
       CAD: 'A value is required',
     };
-    const {
-      queryByLabelText,
-      getByText,
-      getByLabelText,
-    } = renderLocalizedMoneyInput({
-      selectedCurrency: 'CAD',
-      name: 'foo',
-      errors,
-    });
+    const { queryByLabelText, getByText, getByLabelText } =
+      renderLocalizedMoneyInput({
+        selectedCurrency: 'CAD',
+        name: 'foo',
+        errors,
+      });
     const usdInput = queryByLabelText('USD');
     const CADInput = getByLabelText('CAD');
 

@@ -451,9 +451,8 @@ class DateRangeCalendar extends React.Component {
                           // then bypass normal arrow navigation
                           preventDownshiftDefault(event);
 
-                          const numberOfDaysOfPrevMonth = getDaysInMonth(
-                            previousDay
-                          );
+                          const numberOfDaysOfPrevMonth =
+                            getDaysInMonth(previousDay);
                           // then jump to the last day of the previous month
                           this.jumpMonth(-1, numberOfDaysOfPrevMonth - 1);
                         }
@@ -512,17 +511,14 @@ class DateRangeCalendar extends React.Component {
                         const isHighlighted =
                           this.state.suggestedItems.length + index ===
                           highlightedIndex;
-                        const {
-                          isRangeStart,
-                          isRangeBetween,
-                          isRangeEnd,
-                        } = getRange({
-                          item,
-                          value: this.props.value,
-                          startDate: this.state.startDate,
-                          highlightedItem:
-                            allItems[this.state.highlightedIndex],
-                        });
+                        const { isRangeStart, isRangeBetween, isRangeEnd } =
+                          getRange({
+                            item,
+                            value: this.props.value,
+                            startDate: this.state.startDate,
+                            highlightedItem:
+                              allItems[this.state.highlightedIndex],
+                          });
                         return (
                           <CalendarDay
                             key={item}

@@ -338,9 +338,12 @@ storiesOf('Components|DataTable', module)
     });
     const [columnSizes, setColumnSizes] = React.useState();
 
-    const { items: rows, sortedBy, sortDirection, onSortChange } = useSorting(
-      items
-    );
+    const {
+      items: rows,
+      sortedBy,
+      sortDirection,
+      onSortChange,
+    } = useSorting(items);
 
     // column update handler for the ColumnConfigForm
     const handleUpdateColumn = (column, colIndex) => {
