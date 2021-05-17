@@ -29,7 +29,7 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "@testing-library/react": "11.2.6",
+    "@testing-library/react": "11.2.7",
     "react": "17.0.2"
   },
   "peerDependencies": {
