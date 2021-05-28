@@ -94,7 +94,7 @@ describe('generate README (for JS file)', () => {
       This section should come AFTER the \\"Properties\\".
       "
     `);
-  });
+  }, 10000);
 });
 
 describe('generate README (for TS file)', () => {
@@ -214,5 +214,5 @@ describe('generate README (for TS file)', () => {
       \`\`\`
       "
     `);
-  });
+  }, 10000);
 });
