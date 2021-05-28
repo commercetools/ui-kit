@@ -299,6 +299,7 @@ const Tooltip = (props: TTooltipProps) => {
 
   return (
     <React.Fragment>
+      {/* @ts-expect-error */}
       <WrapperComponent {...eventListeners} ref={reference.ref}>
         {React.cloneElement(props.children, {
           ...childrenProps,
