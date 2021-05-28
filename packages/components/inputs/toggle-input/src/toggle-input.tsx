@@ -121,10 +121,10 @@ const Span = styled.span<TStyledSpanProps>`
 const Input = styled.input<TStyledInputProps>`
   /* when checked */
   &:checked {
-    + ${Span}::before {
+    + span::before {
       background: ${vars.colorPrimary};
     }
-    & + ${Span}::after {
+    & + span::after {
       transform: ${(props: TStyledInputProps) =>
         props.size === 'small'
           ? 'translate(117%, -50%)'
@@ -134,11 +134,11 @@ const Input = styled.input<TStyledInputProps>`
 
   /* when disabled */
   &:disabled {
-    & + ${Span}::before {
+    & + span::before {
       background: ${vars.colorNeutral};
       box-shadow: none;
     }
-    & + ${Span}::after {
+    & + span::after {
       background: ${vars.colorAccent95};
       box-shadow: none;
     }
@@ -146,18 +146,18 @@ const Input = styled.input<TStyledInputProps>`
 
   /* when disabled and checked */
   &:disabled&:checked {
-    & + ${Span}::before {
+    & + span::before {
       background: ${vars.colorPrimary25};
     }
-    & + ${Span}::after {
+    & + span::after {
       background: ${vars.colorNeutral};
     }
   }
 
   :not(:disabled)&:hover
-    + ${Span}::after,
+    + span::after,
     :not(:disabled)&:focus
-    + ${Span}::after {
+    + span::after {
     box-shadow: ${vars.shadow16};
   }
 `;

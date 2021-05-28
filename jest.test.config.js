@@ -15,6 +15,7 @@ module.exports = {
     // - https://github.com/kulshekhar/ts-jest/blob/master/docs/user/config/isolatedModules.md
     'ts-jest': {
       isolatedModules: true,
+      babelConfig: true,
     },
   },
   moduleDirectories: ['packages', 'node_modules'],
