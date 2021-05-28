@@ -1,4 +1,4 @@
-import type {TToggleInputProps} from './toggle-input'
+import type { TToggleInputProps } from './toggle-input';
 
 import React from 'react';
 import { screen, render } from '../../../../../test/test-utils';
@@ -23,7 +23,7 @@ const TestComponent = (props: TToggleInputProps) => {
       />
     </div>
   );
-}
+};
 
 it('should render children', () => {
   const onChange = jest.fn();

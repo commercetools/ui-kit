@@ -153,10 +153,8 @@ const Input = styled.input<TStyledInputProps>`
     }
   }
 
-  :not(:disabled)&:hover
-    + span::after,
-    :not(:disabled)&:focus
-    + span::after {
+  :not(:disabled)&:hover + span::after,
+  :not(:disabled)&:focus + span::after {
     box-shadow: ${vars.shadow16};
   }
 `;
