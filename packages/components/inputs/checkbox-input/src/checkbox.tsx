@@ -18,7 +18,7 @@ type TInputRef = {
   indeterminate: boolean;
 };
 
-type TProps = Omit<TCheckboxProps, 'children'> & {
+type TProps = Omit<TCheckboxProps, 'children' | 'hasError' | 'isHovered'> & {
   type?: string;
 };
 
@@ -34,7 +34,7 @@ const Checkbox = (props: TProps) => {
   }, [props.isIndeterminate]);
 
   const { onChange } = props;
-  const handleChange = React.useCallback<ChangeEventHandler>(
+  const handleChange = React.useCallback<ChangeEventHandler<HTMLInputElement>>(
     (event) => !props.isReadOnly && onChange && onChange(event),
     [props.isReadOnly, onChange]
   );
@@ -55,6 +55,7 @@ const Checkbox = (props: TProps) => {
       disabled={props.isDisabled || props.isReadOnly}
       readOnly={props.isReadOnly}
       checked={props.isChecked && !props.isIndeterminate}
+      {...props}
       onChange={handleChange}
     />
   );

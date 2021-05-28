@@ -46,7 +46,7 @@ export type TCheckboxProps = {
   /**
    *  Will be triggered whenever an `CheckboxInput` is clicked. Called with `event`
    */
-  onChange: ChangeEventHandler;
+  onChange: ChangeEventHandler<HTMLInputElement>;
   /**
    * Forces CheckboxInput to be rendered in a hovered state.
    * Needed for cases when hovered appearance should be triggered by the parent component and not the CheckboxInput itself.
