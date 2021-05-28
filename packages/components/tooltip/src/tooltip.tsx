@@ -1,7 +1,7 @@
 // inspired from https://github.com/mui-org/material-ui/blob/9ecc8db8abbfb829111d3b5c0678267827984024/packages/material-ui/src/Tooltip/Tooltip.js
 import { Modifiers } from 'popper.js';
 import React, {
-  ElementType,
+  ComponentType,
   FocusEvent,
   ChangeEvent,
   LegacyRef,
@@ -20,15 +20,15 @@ type TComponents = {
   /**
    * The component rendered as the tooltip body.
    */
-  BodyComponent?: ElementType;
+  BodyComponent?: ComponentType;
   /**
    * Where the tooltip should be rendered. This can be useful to render the tooltip into another part of the document, using React portal.
    */
-  TooltipWrapperComponent?: ElementType;
+  TooltipWrapperComponent?: ComponentType;
   /**
    * A custom component wrapper for the tooltip.
    */
-  WrapperComponent?: ElementType;
+  WrapperComponent?: ComponentType;
 };
 
 export type TTooltipProps = {
