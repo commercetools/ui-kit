@@ -1,4 +1,7 @@
-import type { VFile, VFileCompatible } from 'vfile';
+import type {
+  VFile as TVFile,
+  VFileCompatible as TVFileCompatible,
+} from 'vfile';
 import type { Node } from 'unist';
 import type {
   Parent,
@@ -36,7 +39,7 @@ import Listr from 'listr';
 import ListrVerboseRenderer from 'listr-verbose-renderer';
 import { getPackagesSync } from '@manypkg/get-packages';
 import toVfile from 'to-vfile';
-import vfile from 'vfile';
+import { VFile } from 'vfile';
 import unified from 'unified';
 import parse from 'remark-parse';
 import mdx from 'remark-mdx';
@@ -125,7 +128,7 @@ const tableCellMultiline = (children: PhrasingContent[]): TableCell => ({
   type: 'tableCell',
   children,
 });
-const parseMarkdownFragmentToAST = (fragmentContent: VFileCompatible) => {
+const parseMarkdownFragmentToAST = (fragmentContent: TVFileCompatible) => {
   const fragmentAST = unified()
     .use(parse)
     .use(gfm, gfmOptions)
@@ -581,7 +584,7 @@ function readmeTransformer(packageFolderPath: string) {
 
   return transformer;
 
-  async function transformer(tree: Node, _file: VFile) {
+  async function transformer(tree: Node, _file: TVFile) {
     (tree as Parent).children = [
       html(
         [
@@ -635,10 +638,10 @@ function readmeTransformer(packageFolderPath: string) {
 }
 
 export async function transformDocument(
-  doc: VFileCompatible,
+  doc: TVFileCompatible,
   packageFolderPath: string
 ) {
-  return new Promise<VFile>((resolve, reject) => {
+  return new Promise<TVFile>((resolve, reject) => {
     unified()
       .use(parse)
       .use(gfm, gfmOptions)
@@ -654,19 +657,19 @@ export async function transformDocument(
 
 function writeFile(
   filePath: string,
-  file: VFile,
+  file: TVFile,
   options: GeneratorReadmeOptions
 ) {
   // Assign the path where to write the file to.
   file.path = filePath;
   // Format file using prettier.
-  file.contents = prettier.format(file.contents.toString(), {
+  file.contents = prettier.format(file.value.toString(), {
     ...prettierConfig,
     parser: 'markdown',
   });
 
   if (options.dryRun) {
-    console.log(vfile(file).contents);
+    console.log(new VFile(file).value);
   } else {
     // Write the file to disk.
     toVfile.writeSync(file);
@@ -689,7 +692,7 @@ export async function generate(
         task: async () => {
           const readmePath = path.join(packageInfo.dir, 'README.md');
           // Create an empty VFile.
-          const doc = vfile();
+          const doc = new VFile();
           const content = await transformDocument(doc, packageInfo.dir);
           await writeFile(readmePath, content, options);
         },
@@ -711,7 +714,7 @@ export async function generate(
   } else {
     const packageFolderPath = path.resolve(process.cwd(), relativePackagePath);
     // Create an empty VFile.
-    const doc = vfile();
+    const doc = new VFile();
     const content = await transformDocument(doc, packageFolderPath);
     await writeFile(
       path.join(packageFolderPath, 'README.md'),
