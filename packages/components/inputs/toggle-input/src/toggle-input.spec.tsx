@@ -1,39 +1,29 @@
+import type { TToggleInputProps } from './toggle-input';
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { screen, render } from '../../../../../test/test-utils';
 import ToggleInput from './toggle-input';
 
-class TestComponent extends React.Component {
-  static propTypes = {
-    isChecked: PropTypes.bool,
-    onChange: PropTypes.func,
-    id: PropTypes.string,
-  };
+const TestComponent = (props: TToggleInputProps) => {
+  const [isChecked, setIsChecked] = React.useState(false);
 
-  state = {
-    isChecked: this.props.isChecked,
-  };
+  return (
+    <div>
+      <label htmlFor={props.id}>Toggle</label>
+      <ToggleInput
+        id={props.id}
+        isChecked={isChecked}
+        onChange={(evt) => {
+          setIsChecked(evt.target.checked);
 
-  render() {
-    return (
-      <div>
-        <label htmlFor={this.props.id}>Toggle</label>
-        <ToggleInput
-          id={this.props.id}
-          isChecked={this.state.isChecked}
-          onChange={(evt) => {
-            this.setState({
-              isChecked: evt.target.checked,
-            });
-            if (this.props.onChange) {
-              this.props.onChange(evt);
-            }
-          }}
-        />
-      </div>
-    );
-  }
-}
+          if (props.onChange) {
+            props.onChange(evt);
+          }
+        }}
+      />
+    </div>
+  );
+};
 
 it('should render children', () => {
   const onChange = jest.fn();
