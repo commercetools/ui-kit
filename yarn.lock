@@ -13351,13 +13351,13 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-to-vfile@6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/to-vfile/-/to-vfile-6.1.0.tgz#5f7a3f65813c2c4e34ee1f7643a5646344627699"
-  integrity sha512-BxX8EkCxOAZe+D/ToHdDsJcVI4HqQfmw0tCkp31zf3dNP/XWIAjU4CmeuSwsSoOzOTqHPOL0KUzyZqJplkD0Qw==
+to-vfile@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/to-vfile/-/to-vfile-7.0.0.tgz#c05f8cfcf36df24adab0f71cb3b07e275c78d6b3"
+  integrity sha512-l2/CqmSVwXZhzyWsxsllCi/JQr9oFO4hKNG7Y1dk9nhHQnO/2hU94wxxmTehMvQKA4z+EcjSyfWJFR+Ybhy4cA==
   dependencies:
     is-buffer "^2.0.0"
-    vfile "^4.0.0"
+    vfile "^5.0.0"
 
 tough-cookie@^2.3.3, tough-cookie@~2.5.0:
   version "2.5.0"
@@ -13971,7 +13971,7 @@ vfile@*, vfile@^4.0.0:
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
 
-vfile@5.0.1:
+vfile@5.0.1, vfile@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/vfile/-/vfile-5.0.1.tgz#41c6d50d419e700424ef577fbc00dd6bc6487b7e"
   integrity sha512-lbcf0k66x96Syy36HG+nIBFaSD/fAk589q4nETZTr0JW7eRRmrVo1vHwbD8NlHszUM5ICtFSWQ5xHC292hYZ/w==
