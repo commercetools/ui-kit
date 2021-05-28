@@ -6,7 +6,6 @@ import {
   filterDataAttributes,
   filterAriaAttributes,
 } from '@commercetools-uikit/utils';
-// @ts-expect-error
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 
 const thumbSmallSize = '13px';
@@ -41,7 +40,7 @@ export type TToggleInputProps = {
    * Handler when toggle state changes. <br/>
    * **Note**: that key value of the `target` is `checked`.
    */
-  onChange: ChangeEventHandler;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 type TStyledLabelProps = Pick<TToggleInputProps, 'isDisabled' | 'size'>;
