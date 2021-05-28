@@ -6,13 +6,13 @@ import {
   filterDataAttributes,
   filterAriaAttributes,
 } from '@commercetools-uikit/utils';
-// @ts-ignore
+// @ts-expect-error
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 
 const thumbSmallSize = '13px';
 const thumbBigSize = `calc(${thumbSmallSize} * 2)`;
 
-type TToggleInputProps = {
+export type TToggleInputProps = {
   /**
    * Used as the HTML `id` property
    */
