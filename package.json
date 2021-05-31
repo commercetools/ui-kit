@@ -67,7 +67,7 @@
     "@changesets/changelog-github": "0.4.0",
     "@changesets/cli": "2.16.0",
     "@commercetools-frontend/babel-preset-mc-app": "20.3.0",
-    "@commercetools-frontend/eslint-config-mc-app": "19.4.0",
+    "@commercetools-frontend/eslint-config-mc-app": "20.3.2",
     "@commercetools/github-labels": "1.1.0",
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-conventional": "12.1.4",
