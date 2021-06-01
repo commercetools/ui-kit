@@ -172,6 +172,7 @@ DataTableSettings.propTypes = {
     secondaryButton: PropTypes.element,
   }),
   columnManager: PropTypes.shape({
+    areHiddenColumnsSearchable: PropTypes.bool,
     disableColumnManager: PropTypes.bool,
     visibleColumnKeys: PropTypes.arrayOf(PropTypes.string.isRequired),
     hideableColumns: PropTypes.arrayOf(
