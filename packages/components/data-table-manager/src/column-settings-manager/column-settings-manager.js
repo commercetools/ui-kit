@@ -147,7 +147,7 @@ export const ColumnSettingsManager = (props) => {
                   title={intl.formatMessage(messages.hiddenColumns)}
                 />
               </Spacings.Inline>
-              {!props.disableHiddenColumnSearch && (
+              {props.areHiddenColumnsSearchable && (
                 <AsyncSelectInput
                   {...(props.searchHiddenColumnsPlaceholder
                     ? {
@@ -175,7 +175,7 @@ export const ColumnSettingsManager = (props) => {
                   messages.noHiddenColumnsToShow
                 )}
                 columns={hiddenColumns}
-                isSearchable={!props.disableHiddenColumnSearch}
+                isSearchable={props.areHiddenColumnsSearchable}
               />
             </Spacings.Stack>
           </DroppableContainer>
@@ -225,10 +225,10 @@ ColumnSettingsManager.propTypes = {
   ).isRequired,
   onUpdateColumns: PropTypes.func.isRequired,
 
-  disableHiddenColumnSearch: PropTypes.bool,
+  areHiddenColumnsSearchable: PropTypes.bool,
   searchHiddenColumns: requiredIf(
     PropTypes.func,
-    (props) => !props.disableHiddenColumnSearch
+    (props) => props.areHiddenColumnsSearchable
   ),
   searchHiddenColumnsPlaceholder: PropTypes.string,
 
@@ -240,7 +240,6 @@ ColumnSettingsManager.propTypes = {
 
 ColumnSettingsManager.defaultProps = {
   availableColumns: [],
-  disableHiddenColumnSearch: true,
 };
 
 export default ColumnSettingsManager;

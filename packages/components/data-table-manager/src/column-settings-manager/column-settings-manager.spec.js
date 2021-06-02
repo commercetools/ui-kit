@@ -38,7 +38,7 @@ describe('ColumnSettingsManager', () => {
     expect(screen.getByText(/Column 1/i)).toBeInTheDocument();
   });
 
-  describe('when `disableHiddenColumnSearch` is false', () => {
+  describe('when `areColumnSettingsEnabled` is true', () => {
     it('should render columns search input', () => {
       const props = createTestProps({
         selectedColumns: [
@@ -53,7 +53,7 @@ describe('ColumnSettingsManager', () => {
             label: 'Column 1',
           },
         ],
-        disableHiddenColumnSearch: false,
+        areHiddenColumnsSearchable: true,
         searchHiddenColumnsPlaceholder: 'search',
         searchHiddenColumns: jest.fn(),
       });

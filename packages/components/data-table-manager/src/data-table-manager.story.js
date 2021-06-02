@@ -262,6 +262,8 @@ storiesOf('Components|DataTable', module)
     };
 
     const columnManager = {
+      areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
+      searchHiddenColumns: () => {},
       disableColumnManager: boolean('disableColumnManager', false),
       visibleColumnKeys: tableData.visibleColumnKeys,
       hideableColumns: tableData.columns,
