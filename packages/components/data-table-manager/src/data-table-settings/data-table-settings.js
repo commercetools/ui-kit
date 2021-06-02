@@ -23,6 +23,10 @@ const SelectContainer = styled.div`
   width: ${customProperties.constraint4};
 `;
 
+const TopBarContainer = styled.div`
+  flex-grow: 1;
+`;
+
 export const getDropdownOptions = ({
   areColumnSettingsEnabled,
   areDisplaySettingsEnabled,
@@ -97,7 +101,7 @@ const DataTableSettings = (props) => {
   return (
     <Spacings.Stack>
       <Spacings.Inline justifyContent="space-between" alignItems="center">
-        <div>{props.topBar}</div>
+        <TopBarContainer>{props.topBar}</TopBarContainer>
         {dropdownOptions.length > 0 && (
           <SelectContainer>
             <AccessibleHidden>
