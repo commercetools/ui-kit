@@ -17,7 +17,7 @@
     "@types/lodash": "4.14.170",
     "@types/mdast": "3.0.3",
     "@types/mri": "1.1.0",
-    "@types/node": "14.17.1",
+    "@types/node": "14.17.2",
     "@types/shelljs": "0.8.8",
     "@types/unist": "2.0.3",
     "@types/vfile": "4.0.0",
@@ -39,7 +39,7 @@
     "vfile-reporter": "6.0.2"
   },
   "devDependencies": {
-    "prettier": "2.3.0",
+    "prettier": "2.3.1",
     "ts-node": "10.0.0",
     "typescript": "4.3.2"
   },
