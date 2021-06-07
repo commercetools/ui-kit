@@ -1,5 +1,26 @@
 # @commercetools-uikit/select-input
 
+## 12.0.7
+
+### Patch Changes
+
+- [#1916](https://github.com/commercetools/ui-kit/pull/1916) [`38e2ab22`](https://github.com/commercetools/ui-kit/commit/38e2ab226d50291fa159a01ee2a7c66d988aed1f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1831](https://github.com/commercetools/ui-kit/pull/1831) [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- [#1932](https://github.com/commercetools/ui-kit/pull/1932) [`c39e9e83`](https://github.com/commercetools/ui-kit/commit/c39e9e837ec00ddbd9c85ebcfe467fe1ae154961) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1911](https://github.com/commercetools/ui-kit/pull/1911) [`2d2364d0`](https://github.com/commercetools/ui-kit/commit/2d2364d0118cdd6751c7f7f3b18932ea016080af) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#1896](https://github.com/commercetools/ui-kit/pull/1896) [`0e200eb4`](https://github.com/commercetools/ui-kit/commit/0e200eb40198068b4c351e8ceefe00807fcdb170) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade `lodash` to `v4.17.21`
+
+- Updated dependencies [[`38e2ab22`](https://github.com/commercetools/ui-kit/commit/38e2ab226d50291fa159a01ee2a7c66d988aed1f), [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808), [`c39e9e83`](https://github.com/commercetools/ui-kit/commit/c39e9e837ec00ddbd9c85ebcfe467fe1ae154961), [`2d2364d0`](https://github.com/commercetools/ui-kit/commit/2d2364d0118cdd6751c7f7f3b18932ea016080af), [`0e200eb4`](https://github.com/commercetools/ui-kit/commit/0e200eb40198068b4c351e8ceefe00807fcdb170)]:
+  - @commercetools-uikit/select-utils@12.0.7
+  - @commercetools-uikit/design-system@12.0.7
+  - @commercetools-uikit/constraints@12.0.7
+  - @commercetools-uikit/icons@12.0.7
+  - @commercetools-uikit/utils@12.0.7
+
 ## 12.0.3
 
 ### Patch Changes

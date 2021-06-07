@@ -1,5 +1,45 @@
 # @commercetools-frontend/ui-kit
 
+## 12.0.7
+
+### Patch Changes
+
+- [#1831](https://github.com/commercetools/ui-kit/pull/1831) [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- Updated dependencies [[`b49b7b51`](https://github.com/commercetools/ui-kit/commit/b49b7b5101df52b50a5ab29b6af5a1d23e71121c), [`e8bc09e3`](https://github.com/commercetools/ui-kit/commit/e8bc09e36d072c744f9380358b490e120906536b), [`7ffa8531`](https://github.com/commercetools/ui-kit/commit/7ffa85317e5c48b5df6d97ee624ea5025df19b90), [`207aef6f`](https://github.com/commercetools/ui-kit/commit/207aef6f41866f0b30506c887d02255142c50e41), [`b5c2db67`](https://github.com/commercetools/ui-kit/commit/b5c2db67ce640cb5a28072a6fa9f7f7fefefc067), [`38e2ab22`](https://github.com/commercetools/ui-kit/commit/38e2ab226d50291fa159a01ee2a7c66d988aed1f), [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808), [`c39e9e83`](https://github.com/commercetools/ui-kit/commit/c39e9e837ec00ddbd9c85ebcfe467fe1ae154961), [`2d2364d0`](https://github.com/commercetools/ui-kit/commit/2d2364d0118cdd6751c7f7f3b18932ea016080af), [`bc33d82e`](https://github.com/commercetools/ui-kit/commit/bc33d82e97648a5fbcbccc6aae6a849f3bf35f09), [`0e200eb4`](https://github.com/commercetools/ui-kit/commit/0e200eb40198068b4c351e8ceefe00807fcdb170), [`a7a0f76d`](https://github.com/commercetools/ui-kit/commit/a7a0f76d27fdcb5ec56b7dd770f46b682e02f023), [`d10e1c2e`](https://github.com/commercetools/ui-kit/commit/d10e1c2ef21eec802c89f0cc117bf110a3f40bf0), [`9d9f710f`](https://github.com/commercetools/ui-kit/commit/9d9f710f448541cc0273759efc84a8778de4b26c)]:
+  - @commercetools-uikit/data-table-manager@12.0.7
+  - @commercetools-uikit/hooks@12.0.7
+  - @commercetools-uikit/field-errors@12.0.7
+  - @commercetools-uikit/field-label@12.0.7
+  - @commercetools-uikit/collapsible@12.0.7
+  - @commercetools-uikit/data-table@12.0.7
+  - @commercetools-uikit/label@12.0.7
+  - @commercetools-uikit/link@12.0.7
+  - @commercetools-uikit/design-system@12.0.7
+  - @commercetools-uikit/accessible-hidden@12.0.7
+  - @commercetools-uikit/avatar@12.0.7
+  - @commercetools-uikit/card@12.0.7
+  - @commercetools-uikit/collapsible-motion@12.0.7
+  - @commercetools-uikit/collapsible-panel@12.0.7
+  - @commercetools-uikit/constraints@12.0.7
+  - @commercetools-uikit/grid@12.0.7
+  - @commercetools-uikit/icons@12.0.7
+  - @commercetools-uikit/loading-spinner@12.0.7
+  - @commercetools-uikit/messages@12.0.7
+  - @commercetools-uikit/notifications@12.0.7
+  - @commercetools-uikit/pagination@12.0.7
+  - @commercetools-uikit/primary-action-dropdown@12.0.7
+  - @commercetools-uikit/stamp@12.0.7
+  - @commercetools-uikit/tag@12.0.7
+  - @commercetools-uikit/text@12.0.7
+  - @commercetools-uikit/tooltip@12.0.7
+  - @commercetools-uikit/i18n@12.0.7
+  - @commercetools-uikit/utils@12.0.7
+  - @commercetools-uikit/buttons@12.0.7
+  - @commercetools-uikit/fields@12.0.7
+  - @commercetools-uikit/inputs@12.0.7
+  - @commercetools-uikit/spacings@12.0.7
+
 ## 12.0.6
 
 ### Patch Changes

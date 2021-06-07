@@ -1,5 +1,44 @@
 # @commercetools-uikit/data-table-manager
 
+## 12.0.7
+
+### Patch Changes
+
+- [#1930](https://github.com/commercetools/ui-kit/pull/1930) [`b49b7b51`](https://github.com/commercetools/ui-kit/commit/b49b7b5101df52b50a5ab29b6af5a1d23e71121c) Thanks [@pa3](https://github.com/pa3)! - fix(data-table-manager): areHiddenColumnsSearchable prop has no effect
+
+* [#1916](https://github.com/commercetools/ui-kit/pull/1916) [`38e2ab22`](https://github.com/commercetools/ui-kit/commit/38e2ab226d50291fa159a01ee2a7c66d988aed1f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#1831](https://github.com/commercetools/ui-kit/pull/1831) [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+* [#1932](https://github.com/commercetools/ui-kit/pull/1932) [`c39e9e83`](https://github.com/commercetools/ui-kit/commit/c39e9e837ec00ddbd9c85ebcfe467fe1ae154961) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#1911](https://github.com/commercetools/ui-kit/pull/1911) [`2d2364d0`](https://github.com/commercetools/ui-kit/commit/2d2364d0118cdd6751c7f7f3b18932ea016080af) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1931](https://github.com/commercetools/ui-kit/pull/1931) [`bc33d82e`](https://github.com/commercetools/ui-kit/commit/bc33d82e97648a5fbcbccc6aae6a849f3bf35f09) Thanks [@pa3](https://github.com/pa3)! - fix(data-table-manager): make top bar take up all available space
+
+- [#1896](https://github.com/commercetools/ui-kit/pull/1896) [`0e200eb4`](https://github.com/commercetools/ui-kit/commit/0e200eb40198068b4c351e8ceefe00807fcdb170) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade `lodash` to `v4.17.21`
+
+- Updated dependencies [[`e8bc09e3`](https://github.com/commercetools/ui-kit/commit/e8bc09e36d072c744f9380358b490e120906536b), [`207aef6f`](https://github.com/commercetools/ui-kit/commit/207aef6f41866f0b30506c887d02255142c50e41), [`38e2ab22`](https://github.com/commercetools/ui-kit/commit/38e2ab226d50291fa159a01ee2a7c66d988aed1f), [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808), [`c39e9e83`](https://github.com/commercetools/ui-kit/commit/c39e9e837ec00ddbd9c85ebcfe467fe1ae154961), [`2d2364d0`](https://github.com/commercetools/ui-kit/commit/2d2364d0118cdd6751c7f7f3b18932ea016080af), [`0e200eb4`](https://github.com/commercetools/ui-kit/commit/0e200eb40198068b4c351e8ceefe00807fcdb170), [`a7a0f76d`](https://github.com/commercetools/ui-kit/commit/a7a0f76d27fdcb5ec56b7dd770f46b682e02f023)]:
+  - @commercetools-uikit/hooks@12.0.7
+  - @commercetools-uikit/field-label@12.0.7
+  - @commercetools-uikit/secondary-button@12.0.7
+  - @commercetools-uikit/async-select-input@12.0.7
+  - @commercetools-uikit/select-input@12.0.7
+  - @commercetools-uikit/design-system@12.0.7
+  - @commercetools-uikit/accessible-hidden@12.0.7
+  - @commercetools-uikit/accessible-button@12.0.7
+  - @commercetools-uikit/primary-button@12.0.7
+  - @commercetools-uikit/secondary-icon-button@12.0.7
+  - @commercetools-uikit/card@12.0.7
+  - @commercetools-uikit/collapsible-motion@12.0.7
+  - @commercetools-uikit/grid@12.0.7
+  - @commercetools-uikit/icons@12.0.7
+  - @commercetools-uikit/radio-input@12.0.7
+  - @commercetools-uikit/tag@12.0.7
+  - @commercetools-uikit/text@12.0.7
+  - @commercetools-uikit/utils@12.0.7
+  - @commercetools-uikit/spacings@12.0.7
+
 ## 12.0.6
 
 ### Patch Changes

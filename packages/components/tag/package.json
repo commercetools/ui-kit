@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/tag",
   "description": "A tag is often used for items that need to be labeled or categorized.",
-  "version": "12.0.3",
+  "version": "12.0.7",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,11 +25,11 @@
   "dependencies": {
     "@babel/runtime": "7.14.0",
     "@babel/runtime-corejs3": "7.14.0",
-    "@commercetools-uikit/accessible-button": "12.0.3",
-    "@commercetools-uikit/constraints": "12.0.0",
-    "@commercetools-uikit/design-system": "12.0.0",
-    "@commercetools-uikit/icons": "12.0.0",
-    "@commercetools-uikit/text": "12.0.0",
+    "@commercetools-uikit/accessible-button": "12.0.7",
+    "@commercetools-uikit/constraints": "12.0.7",
+    "@commercetools-uikit/design-system": "12.0.7",
+    "@commercetools-uikit/icons": "12.0.7",
+    "@commercetools-uikit/text": "12.0.7",
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "prop-types": "15.7.2"
