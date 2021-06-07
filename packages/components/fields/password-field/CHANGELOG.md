@@ -1,5 +1,30 @@
 # @commercetools-uikit/password-field
 
+## 12.0.7
+
+### Patch Changes
+
+- [#1916](https://github.com/commercetools/ui-kit/pull/1916) [`38e2ab22`](https://github.com/commercetools/ui-kit/commit/38e2ab226d50291fa159a01ee2a7c66d988aed1f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1831](https://github.com/commercetools/ui-kit/pull/1831) [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- [#1932](https://github.com/commercetools/ui-kit/pull/1932) [`c39e9e83`](https://github.com/commercetools/ui-kit/commit/c39e9e837ec00ddbd9c85ebcfe467fe1ae154961) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1911](https://github.com/commercetools/ui-kit/pull/1911) [`2d2364d0`](https://github.com/commercetools/ui-kit/commit/2d2364d0118cdd6751c7f7f3b18932ea016080af) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* Updated dependencies [[`e8bc09e3`](https://github.com/commercetools/ui-kit/commit/e8bc09e36d072c744f9380358b490e120906536b), [`7ffa8531`](https://github.com/commercetools/ui-kit/commit/7ffa85317e5c48b5df6d97ee624ea5025df19b90), [`207aef6f`](https://github.com/commercetools/ui-kit/commit/207aef6f41866f0b30506c887d02255142c50e41), [`38e2ab22`](https://github.com/commercetools/ui-kit/commit/38e2ab226d50291fa159a01ee2a7c66d988aed1f), [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808), [`c39e9e83`](https://github.com/commercetools/ui-kit/commit/c39e9e837ec00ddbd9c85ebcfe467fe1ae154961), [`2d2364d0`](https://github.com/commercetools/ui-kit/commit/2d2364d0118cdd6751c7f7f3b18932ea016080af), [`0e200eb4`](https://github.com/commercetools/ui-kit/commit/0e200eb40198068b4c351e8ceefe00807fcdb170)]:
+  - @commercetools-uikit/hooks@12.0.7
+  - @commercetools-uikit/field-errors@12.0.7
+  - @commercetools-uikit/field-label@12.0.7
+  - @commercetools-uikit/design-system@12.0.7
+  - @commercetools-uikit/flat-button@12.0.7
+  - @commercetools-uikit/constraints@12.0.7
+  - @commercetools-uikit/icons@12.0.7
+  - @commercetools-uikit/password-input@12.0.7
+  - @commercetools-uikit/spacings-inline@12.0.7
+  - @commercetools-uikit/spacings-stack@12.0.7
+  - @commercetools-uikit/utils@12.0.7
+
 ## 12.0.6
 
 ### Patch Changes

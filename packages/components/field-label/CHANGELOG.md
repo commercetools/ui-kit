@@ -1,5 +1,23 @@
 # @commercetools-uikit/field-label
 
+## 12.0.7
+
+### Patch Changes
+
+- [#1905](https://github.com/commercetools/ui-kit/pull/1905) [`207aef6f`](https://github.com/commercetools/ui-kit/commit/207aef6f41866f0b30506c887d02255142c50e41) Thanks [@adnasa](https://github.com/adnasa)! - Migrate to `TypeScript`
+
+* [#1831](https://github.com/commercetools/ui-kit/pull/1831) [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+* Updated dependencies [[`38e2ab22`](https://github.com/commercetools/ui-kit/commit/38e2ab226d50291fa159a01ee2a7c66d988aed1f), [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808), [`c39e9e83`](https://github.com/commercetools/ui-kit/commit/c39e9e837ec00ddbd9c85ebcfe467fe1ae154961), [`2d2364d0`](https://github.com/commercetools/ui-kit/commit/2d2364d0118cdd6751c7f7f3b18932ea016080af), [`0e200eb4`](https://github.com/commercetools/ui-kit/commit/0e200eb40198068b4c351e8ceefe00807fcdb170)]:
+  - @commercetools-uikit/label@12.0.7
+  - @commercetools-uikit/icon-button@12.0.7
+  - @commercetools-uikit/constraints@12.0.7
+  - @commercetools-uikit/icons@12.0.7
+  - @commercetools-uikit/spacings-inline@12.0.7
+  - @commercetools-uikit/spacings-stack@12.0.7
+  - @commercetools-uikit/text@12.0.7
+  - @commercetools-uikit/utils@12.0.7
+
 ## 12.0.5
 
 ### Patch Changes

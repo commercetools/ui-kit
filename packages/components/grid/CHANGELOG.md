@@ -1,5 +1,11 @@
 # @commercetools-uikit/grid
 
+## 12.0.7
+
+### Patch Changes
+
+- [#1831](https://github.com/commercetools/ui-kit/pull/1831) [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
 ## 12.0.0
 
 ### Major Changes

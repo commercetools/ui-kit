@@ -1,5 +1,19 @@
 # @commercetools-uikit/toggle-input
 
+## 12.0.7
+
+### Patch Changes
+
+- [#1831](https://github.com/commercetools/ui-kit/pull/1831) [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+* [#1869](https://github.com/commercetools/ui-kit/pull/1869) [`02478943`](https://github.com/commercetools/ui-kit/commit/024789431efa4f492aa6a629427ecaf9d057d8e7) Thanks [@adnasa](https://github.com/adnasa)! - Migrate `<ToggleInput />` to TypeScript
+
+* Updated dependencies [[`38e2ab22`](https://github.com/commercetools/ui-kit/commit/38e2ab226d50291fa159a01ee2a7c66d988aed1f), [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808), [`c39e9e83`](https://github.com/commercetools/ui-kit/commit/c39e9e837ec00ddbd9c85ebcfe467fe1ae154961), [`2d2364d0`](https://github.com/commercetools/ui-kit/commit/2d2364d0118cdd6751c7f7f3b18932ea016080af)]:
+  - @commercetools-uikit/input-utils@12.0.7
+  - @commercetools-uikit/design-system@12.0.7
+  - @commercetools-uikit/constraints@12.0.7
+  - @commercetools-uikit/utils@12.0.7
+
 ## 12.0.6
 
 ### Patch Changes

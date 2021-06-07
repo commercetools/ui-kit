@@ -1,5 +1,20 @@
 # @commercetools-uikit/tag
 
+## 12.0.7
+
+### Patch Changes
+
+- [#1831](https://github.com/commercetools/ui-kit/pull/1831) [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+* [#1888](https://github.com/commercetools/ui-kit/pull/1888) [`a7a0f76d`](https://github.com/commercetools/ui-kit/commit/a7a0f76d27fdcb5ec56b7dd770f46b682e02f023) Thanks [@bradd123](https://github.com/bradd123)! - Migrate to `Typescript`
+
+* Updated dependencies [[`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808), [`0e200eb4`](https://github.com/commercetools/ui-kit/commit/0e200eb40198068b4c351e8ceefe00807fcdb170)]:
+  - @commercetools-uikit/design-system@12.0.7
+  - @commercetools-uikit/accessible-button@12.0.7
+  - @commercetools-uikit/constraints@12.0.7
+  - @commercetools-uikit/icons@12.0.7
+  - @commercetools-uikit/text@12.0.7
+
 ## 12.0.3
 
 ### Patch Changes

@@ -1,5 +1,21 @@
 # @commercetools-uikit/tooltip
 
+## 12.0.7
+
+### Patch Changes
+
+- [#1831](https://github.com/commercetools/ui-kit/pull/1831) [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+* [#1896](https://github.com/commercetools/ui-kit/pull/1896) [`0e200eb4`](https://github.com/commercetools/ui-kit/commit/0e200eb40198068b4c351e8ceefe00807fcdb170) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade `lodash` to `v4.17.21`
+
+- [#1891](https://github.com/commercetools/ui-kit/pull/1891) [`d10e1c2e`](https://github.com/commercetools/ui-kit/commit/d10e1c2ef21eec802c89f0cc117bf110a3f40bf0) Thanks [@adnasa](https://github.com/adnasa)! - Migrate to `TypeScript`
+
+- Updated dependencies [[`e8bc09e3`](https://github.com/commercetools/ui-kit/commit/e8bc09e36d072c744f9380358b490e120906536b), [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808), [`0e200eb4`](https://github.com/commercetools/ui-kit/commit/0e200eb40198068b4c351e8ceefe00807fcdb170)]:
+  - @commercetools-uikit/hooks@12.0.7
+  - @commercetools-uikit/design-system@12.0.7
+  - @commercetools-uikit/constraints@12.0.7
+  - @commercetools-uikit/utils@12.0.7
+
 ## 12.0.3
 
 ### Patch Changes

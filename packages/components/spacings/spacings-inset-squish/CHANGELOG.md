@@ -1,5 +1,15 @@
 # @commercetools-uikit/spacings-inset-squish
 
+## 12.0.7
+
+### Patch Changes
+
+- [#1831](https://github.com/commercetools/ui-kit/pull/1831) [`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- Updated dependencies [[`f2f40530`](https://github.com/commercetools/ui-kit/commit/f2f405300317f544b08d27da2eb8b284e6484808)]:
+  - @commercetools-uikit/design-system@12.0.7
+  - @commercetools-uikit/utils@12.0.7
+
 ## 12.0.0
 
 ### Major Changes
