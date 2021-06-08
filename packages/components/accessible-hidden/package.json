@@ -9,7 +9,12 @@
     "directory": "packages/components/accessible-hidden"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -18,14 +23,16 @@
   "sideEffects": false,
   "main": "dist/commercetools-uikit-accessible-hidden.cjs.js",
   "module": "dist/commercetools-uikit-accessible-hidden.esm.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "../../../scripts/version.js replace"
   },
   "dependencies": {
     "@babel/runtime": "7.14.0",
     "@babel/runtime-corejs3": "7.14.0",
-    "@emotion/react": "^11.1.1",
+    "@emotion/react": "^11.4.0",
     "prop-types": "15.7.2"
   },
   "devDependencies": {

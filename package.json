@@ -10,7 +10,13 @@
   },
   "private": true,
   "license": "MIT",
-  "keywords": ["javascript", "frontend", "ui-kit", "design-system", "react"],
+  "keywords": [
+    "javascript",
+    "frontend",
+    "ui-kit",
+    "design-system",
+    "react"
+  ],
   "sideEffects": false,
   "scripts": {
     "postinstall": "manypkg check && preconstruct dev && yarn --cwd docs",
@@ -58,10 +64,16 @@
       "presets/*",
       "visual-testing-app"
     ],
-    "nohoist": ["react-virtualized/dom-helpers"]
+    "nohoist": [
+      "react-virtualized/dom-helpers"
+    ]
   },
   "preconstruct": {
-    "packages": ["design-system", "packages/**/*", "presets/*"]
+    "packages": [
+      "design-system",
+      "packages/**/*",
+      "presets/*"
+    ]
   },
   "dependencies": {
     "@changesets/changelog-github": "0.4.0",
@@ -86,8 +98,8 @@
     "@testing-library/react": "11.2.7",
     "@testing-library/react-hooks": "7.0.0",
     "@types/jest": "26.0.23",
-    "@typescript-eslint/eslint-plugin": "4.26.0",
-    "@typescript-eslint/parser": "4.26.0",
+    "@typescript-eslint/eslint-plugin": "4.26.1",
+    "@typescript-eslint/parser": "4.26.1",
     "babel-jest": "26.6.3",
     "babel-loader": "8.2.2",
     "babel-plugin-typescript-to-proptypes": "1.4.2",
@@ -99,7 +111,7 @@
     "cross-env": "7.0.3",
     "eslint": "7.28.0",
     "eslint-formatter-pretty": "4.1.0",
-    "formik": "^2.2.6",
+    "formik": "^2.2.9",
     "glob": "7.1.7",
     "global": "4.4.0",
     "husky": "6.0.0",
