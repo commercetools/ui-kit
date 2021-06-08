@@ -211,7 +211,7 @@ describe('Tooltip', () => {
           onOpen={onOpen}
           onFocus={onFocus}
           onBlur={onBlur}
-          closeAfter={1000}
+          closeAfter={500}
         />
       );
 
@@ -228,12 +228,14 @@ describe('Tooltip', () => {
       // should not call onClose
       expect(onClose).not.toHaveBeenCalled();
       // after delay
+
       act(() => {
         jest.advanceTimersByTime(1000);
       });
+
       // should hide tooltip again
-      await waitForElementToBeRemoved(() =>
-        screen.getByText('What kind of bear is best?')
+      await waitForElementToBeRemoved(
+        screen.queryByText('What kind of bear is best?')
       );
       expect(onClose).toHaveBeenCalled();
     });
