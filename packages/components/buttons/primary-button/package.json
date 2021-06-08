@@ -9,7 +9,12 @@
     "directory": "packages/components/buttons/primary-button"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -18,7 +23,9 @@
   "sideEffects": false,
   "main": "dist/commercetools-uikit-primary-button.cjs.js",
   "module": "dist/commercetools-uikit-primary-button.esm.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "../../../../scripts/version.js replace"
   },
@@ -30,8 +37,8 @@
     "@commercetools-uikit/spacings-inline": "12.0.7",
     "@commercetools-uikit/text": "12.0.7",
     "@commercetools-uikit/utils": "12.0.7",
-    "@emotion/react": "^11.1.1",
-    "@emotion/styled": "^11.0.0",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
     "common-tags": "1.8.0",
     "lodash": "4.17.21",
     "prop-types": "15.7.2"
