@@ -11,8 +11,6 @@ import {
 } from '../../../../test/test-utils';
 import Tooltip from './tooltip';
 
-jest.useFakeTimers();
-
 const Portal = (props) => {
   const domNode = document.querySelector('#portal-id');
   return ReactDOM.createPortal(props.children, domNode);
@@ -211,7 +209,7 @@ describe('Tooltip', () => {
           onOpen={onOpen}
           onFocus={onFocus}
           onBlur={onBlur}
-          closeAfter={500}
+          closeAfter={100}
         />
       );
 
@@ -227,13 +225,8 @@ describe('Tooltip', () => {
       expect(onBlur).toHaveBeenCalled();
       // should not call onClose
       expect(onClose).not.toHaveBeenCalled();
-      // after delay
 
-      act(() => {
-        jest.advanceTimersByTime(1000);
-      });
-
-      // should hide tooltip again
+      // should hide tooltip after delay again
       await waitForElementToBeRemoved(
         screen.queryByText('What kind of bear is best?')
       );
