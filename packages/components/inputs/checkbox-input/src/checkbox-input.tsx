@@ -109,7 +109,7 @@ const Label = styled.label<TLabelProps>`
 
   ${hoverStyles}
 
-  &:focus-within ${LabelTextWrapper} {
+  &:focus-within div {
     box-shadow: 0 0 0 2px ${vars.borderColorForInputWhenFocused};
   }
 `;
