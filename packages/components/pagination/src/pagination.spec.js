@@ -10,14 +10,14 @@ const createTestProps = (custom) => ({
   ...custom,
 });
 
-it('should render a page-size selector and a page navigator', () => {
+it('should render a page-size selector and a page navigator', async () => {
   render(<Pagination {...createTestProps()} />);
 
-  expect(screen.getByLabelText(/Items per page/)).toBeInTheDocument();
+  await screen.findByLabelText(/Items per page/);
   expect(screen.getByLabelText('Page')).toHaveDisplayValue(1);
 });
 
-it('should display the correct number of pages', () => {
+it('should display the correct number of pages', async () => {
   render(
     <Pagination
       {...createTestProps({
@@ -30,10 +30,10 @@ it('should display the correct number of pages', () => {
   // totalItems / pageSize, rounded up
   const expectedNumberOfPages = 4;
 
-  expect(screen.getByText(`of ${expectedNumberOfPages}`)).toBeInTheDocument();
+  await screen.findByText(`of ${expectedNumberOfPages}`);
 });
 
-it('should display the correct number of items displayed', () => {
+it('should display the correct number of items displayed', async () => {
   render(
     <Pagination
       {...createTestProps({
@@ -47,9 +47,7 @@ it('should display the correct number of items displayed', () => {
   // on the fourth page, there are 19 items left
   const expectedNumberOfItems = 19;
 
-  expect(
-    screen.getByText(`Items per page (${expectedNumberOfItems} items)`)
-  ).toBeInTheDocument();
+  await screen.findByText(`Items per page (${expectedNumberOfItems} items)`);
 });
 
 describe('page navigator interaction', () => {
@@ -89,7 +87,7 @@ describe('page navigator interaction', () => {
     expect(onPageChange).toHaveBeenCalledWith(1);
     expect(await screen.findByLabelText('Page')).toHaveDisplayValue(1);
   });
-  it('should disable next page button when there are no next pages', () => {
+  it('should disable next page button when there are no next pages', async () => {
     render(
       <Pagination
         {...createTestProps({
@@ -99,23 +97,23 @@ describe('page navigator interaction', () => {
       />
     );
 
-    const nextPageButton = screen.getByLabelText(/Next page/);
+    const nextPageButton = await screen.findByLabelText(/Next page/);
     expect(nextPageButton).toBeDisabled();
   });
-  it('should disable previous page button when there are no previous pages', () => {
+  it('should disable previous page button when there are no previous pages', async () => {
     render(<Pagination {...createTestProps()} />);
 
-    const prevPageButton = screen.getByLabelText(/Previous page/);
+    const prevPageButton = await screen.findByLabelText(/Previous page/);
     expect(prevPageButton).toBeDisabled();
   });
 });
 
 describe('per page selector interaction', () => {
-  it('should call onPerPageChange with the selected value', () => {
+  it('should call onPerPageChange with the selected value', async () => {
     const onPerPageChange = jest.fn();
     render(<Pagination {...createTestProps({ onPerPageChange })} />);
 
-    const perPageSelector = screen.getByLabelText(/Items per page/);
+    const perPageSelector = await screen.findByLabelText(/Items per page/);
 
     fireEvent.focus(perPageSelector);
     fireEvent.change(perPageSelector, { target: { value: 50 } });
