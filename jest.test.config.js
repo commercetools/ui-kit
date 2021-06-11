@@ -28,7 +28,7 @@ module.exports = {
   rootDir: rootPath,
   setupFiles: ['<rootDir>/test/setup-tests.js', 'jest-localstorage-mock'],
   setupFilesAfterEnv: ['<rootDir>/scripts/setup-test-framework.js'],
-  testEnvironment: 'jest-environment-jsdom-sixteen',
+  testEnvironment: 'jsdom',
   testURL: 'https://mc.commercetools.com/',
   testPathIgnorePatterns: ['generators', '/node_modules/'],
   testRegex: '\\.spec\\.[j|t]sx?$',
