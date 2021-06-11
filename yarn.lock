@@ -1678,10 +1678,10 @@
     human-id "^1.0.2"
     prettier "^1.19.1"
 
-"@commercetools-frontend/babel-preset-mc-app@20.3.1":
-  version "20.3.1"
-  resolved "https://registry.yarnpkg.com/@commercetools-frontend/babel-preset-mc-app/-/babel-preset-mc-app-20.3.1.tgz#230f7f5b8aa8e152547c4dd152c132f47a5d2e20"
-  integrity sha512-czPKVvAjqYRQb9jFitm6C/rxs1r+ku/PUXQGwv1N4UqNYld10GW4cR4BYe9JP86BOCPkiNG5mHdCyFhb7FrvGw==
+"@commercetools-frontend/babel-preset-mc-app@20.5.0":
+  version "20.5.0"
+  resolved "https://registry.yarnpkg.com/@commercetools-frontend/babel-preset-mc-app/-/babel-preset-mc-app-20.5.0.tgz#75475cda6c66b20e534fdd70ad4ee14cef524091"
+  integrity sha512-sg0Rl1x9MFoob5pwyPQSfsx108hkQdEKtO/lDyoTM1WJBIfdOEAFp/56VgcHLhU/+u7h28iTppEe2Gm/uQrIGw==
   dependencies:
     "@babel/core" "7.14.3"
     "@babel/plugin-proposal-class-properties" "7.13.0"
@@ -1707,12 +1707,12 @@
     babel-plugin-macros "3.1.0"
     babel-plugin-preval "5.0.0"
     babel-plugin-transform-react-remove-prop-types "0.4.24"
-    core-js "3.13.1"
+    core-js "3.14.0"
 
-"@commercetools-frontend/eslint-config-mc-app@20.3.2":
-  version "20.3.2"
-  resolved "https://registry.yarnpkg.com/@commercetools-frontend/eslint-config-mc-app/-/eslint-config-mc-app-20.3.2.tgz#19c4795f0befd1b52398f4c02161ed11643a93a1"
-  integrity sha512-CebxlnSvz3M+d68Fq4zkcNeKixApG8JFtvpfaxw3EGvjVXJq59+Enc/vLHXl6rle8bBfc9NjsmOrA9omcMCO+w==
+"@commercetools-frontend/eslint-config-mc-app@20.4.0":
+  version "20.4.0"
+  resolved "https://registry.yarnpkg.com/@commercetools-frontend/eslint-config-mc-app/-/eslint-config-mc-app-20.4.0.tgz#6573e792eebe5dc989403483dd81bed82c660a62"
+  integrity sha512-jOFTwTG6aQYpIddWDttyAhp5suG0JIsIsiwaDVmXGWwCu1MkbvfxyEFXUbp0+WT/wFn1NmUwBre/00mGxHjUOA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.14.0"
     "@typescript-eslint/parser" "^4.14.0"
@@ -5533,10 +5533,10 @@ core-js-pure@^3.0.0:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.8.3.tgz#10e9e3b2592ecaede4283e8f3ad7020811587c02"
   integrity sha512-V5qQZVAr9K0xu7jXg1M7qTEwuxUgqr7dUOezGaNa7i+Xn9oXAU/d1fzqD9ObuwpVQOaorO5s70ckyi1woP9lVA==
 
-core-js@3.13.1:
-  version "3.13.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.13.1.tgz#30303fabd53638892062d8b4e802cac7599e9fb7"
-  integrity sha512-JqveUc4igkqwStL2RTRn/EPFGBOfEZHxJl/8ej1mXJR75V3go2mFF4bmUYkEIT1rveHKnkUlcJX/c+f1TyIovQ==
+core-js@3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.14.0.tgz#62322b98c71cc2018b027971a69419e2425c2a6c"
+  integrity sha512-3s+ed8er9ahK+zJpp9ZtuVcDoFzHNiZsPbNAAE4KXgrRHbjSqqNN6xGSXq6bq7TZIbKj4NLrLb6bJ5i+vSVjHA==
 
 core-util-is@~1.0.0:
   version "1.0.2"
