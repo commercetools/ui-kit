@@ -1,5 +1,12 @@
 # @commercetools-frontend/ui-kit
 
+## 12.0.11
+
+### Patch Changes
+
+- Updated dependencies [[`4dbb74b4`](https://github.com/commercetools/ui-kit/commit/4dbb74b46f20260bf555ef55e8e54966f4bc9d86)]:
+  - @commercetools-uikit/link@12.0.11
+
 ## 12.0.10
 
 ### Patch Changes
