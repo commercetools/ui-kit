@@ -2,6 +2,7 @@ import type { LocationDescriptor } from 'history';
 import type { Theme } from '@emotion/react';
 import type { MessageDescriptor } from 'react-intl';
 import React from 'react';
+import styled from '@emotion/styled';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css, useTheme } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
