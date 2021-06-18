@@ -20,7 +20,7 @@ type TLinkProps = {
    * <br />
    * Required if `intlMessage` is not provided.
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * An `intl` message object that will be rendered with `FormattedMessage`.
    * <br />
@@ -45,7 +45,7 @@ type TLinkProps = {
 type TIconColor = 'primary' | 'surface';
 
 const warnIfMissingContent = (props: TLinkProps) => {
-  const hasContent =
+const hasContent =
     Boolean(props.intlMessage) || Boolean(React.Children.count(props.children));
 
   warning(
