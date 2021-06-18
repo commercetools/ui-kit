@@ -45,7 +45,7 @@ type TLinkProps = {
 type TIconColor = 'primary' | 'surface';
 
 const warnIfMissingContent = (props: TLinkProps) => {
-const hasContent =
+  const hasContent =
     Boolean(props.intlMessage) || Boolean(React.Children.count(props.children));
 
   warning(
