@@ -7,6 +7,8 @@ import { css, useTheme } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
+import { ExternalLinkIcon } from '@commercetools-uikit/icons';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
 
 type TExtendedTheme = Theme & {
   [key: string]: string;
@@ -40,10 +42,11 @@ type TLinkProps = {
    */
   tone?: 'primary' | 'inverted';
 };
+type TIconColor = 'primary' | 'surface';
 
 const warnIfMissingContent = (props: TLinkProps) => {
   const hasContent =
-    props.intlMessage || Boolean(React.Children.count(props.children));
+    Boolean(props.intlMessage) || Boolean(React.Children.count(props.children));
 
   warning(
     hasContent,
@@ -68,8 +71,8 @@ const defaultProps: Pick<TLinkProps, 'tone' | 'isExternal'> = {
   isExternal: false,
 };
 
-const getColorValue = (
-  tone: string = 'primary',
+const getTextColorValue = (
+  tone: TLinkProps['tone'] = 'primary',
   overwrittenVars: TExtendedTheme
 ) => {
   if (tone === 'primary') {
@@ -77,6 +80,15 @@ const getColorValue = (
   }
 
   return overwrittenVars.fontColorForTextWhenInverted;
+};
+const getIconColorValue = (
+  tone: TLinkProps['tone'] = 'primary'
+): TIconColor => {
+  if (tone === 'inverted') {
+    return 'surface';
+  }
+
+  return tone;
 };
 const getActiveColorValue = (
   tone: string = 'primary',
@@ -95,19 +107,19 @@ const getLinkStyles = (props: TLinkProps, theme: Theme) => {
     ...theme,
   };
 
-  const color = getColorValue(props.tone, overwrittenVars);
+  const color = getTextColorValue(props.tone, overwrittenVars);
   const hoverColor = getActiveColorValue(props.tone, overwrittenVars);
 
   return css`
     font-family: inherit;
     color: ${color};
     font-size: ${overwrittenVars.fontSizeDefault};
-    text-decoration: underline;
     &:hover,
     &:focus,
     &:active {
       color: ${hoverColor};
     }
+    text-decoration: 'underline';
   `;
 };
 
@@ -126,19 +138,27 @@ const Link = (props: TLinkProps) => {
     }
 
     return (
-      <a
-        css={getLinkStyles(props, theme)}
-        href={props.to}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...remainingProps}
-      >
-        {props.intlMessage ? (
-          <FormattedMessage {...props.intlMessage} />
-        ) : (
-          props.children
+      <SpacingsInline scale="xs" alignItems="center">
+        <a
+          css={getLinkStyles(props, theme)}
+          href={props.to}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...remainingProps}
+        >
+          {props.intlMessage ? (
+            <FormattedMessage {...props.intlMessage} />
+          ) : (
+            props.children
+          )}
+        </a>
+        {props.isExternal && (
+          <ExternalLinkIcon
+            size="medium"
+            color={getIconColorValue(props.tone)}
+          />
         )}
-      </a>
+      </SpacingsInline>
     );
   }
 

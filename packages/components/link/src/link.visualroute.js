@@ -18,12 +18,7 @@ export const component = ({ themes }) => (
       <Link to="/">A label text</Link>
     </Spec>
     <Spec label="external">
-      <Link to="/" isExternal={true}>
-        A label text
-      </Link>
-    </Spec>
-    <Spec label="without underline">
-      <Link to="/" hasUnderline={false}>
+      <Link to="/" isExternal>
         A label text
       </Link>
     </Spec>
@@ -36,13 +31,8 @@ export const component = ({ themes }) => (
       <Link to="/" intlMessage={intlMessage} />
     </Spec>
     <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="tone - inverted - with underline">
+      <Spec label="tone - inverted">
         <Link to="/" tone="inverted">
-          An inverted label text
-        </Link>
-      </Spec>
-      <Spec label="tone - inverted - without underline">
-        <Link to="/" hasUnderline={false} tone="inverted">
           An inverted label text
         </Link>
       </Spec>
