@@ -20,7 +20,7 @@ type TLinkProps = {
    * <br />
    * Required if `intlMessage` is not provided.
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * An `intl` message object that will be rendered with `FormattedMessage`.
    * <br />
