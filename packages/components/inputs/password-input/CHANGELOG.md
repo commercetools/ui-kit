@@ -1,5 +1,14 @@
 # @commercetools-uikit/password-input
 
+## 12.0.8
+
+### Patch Changes
+
+- Updated dependencies [[`5c6f88fd`](https://github.com/commercetools/ui-kit/commit/5c6f88fd944f13f5a4d7e58c4e5985b925fe975a), [`509ee816`](https://github.com/commercetools/ui-kit/commit/509ee816c83a3f9ccd65fe46c4d2dfdfe790744d)]:
+  - @commercetools-uikit/design-system@12.0.8
+  - @commercetools-uikit/constraints@12.0.8
+  - @commercetools-uikit/input-utils@12.0.8
+
 ## 12.0.7
 
 ### Patch Changes

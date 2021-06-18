@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/stamp",
   "description": "Stamps are visual labels which hold small amounts of information regarding an item. (E.g Indicating if a product is published in a list).",
-  "version": "12.0.7",
+  "version": "12.0.8",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "dependencies": {
     "@babel/runtime": "7.14.5",
     "@babel/runtime-corejs3": "7.14.5",
-    "@commercetools-uikit/design-system": "12.0.7",
+    "@commercetools-uikit/design-system": "12.0.8",
     "@emotion/react": "^11.4.0",
     "prop-types": "15.7.2"
   },

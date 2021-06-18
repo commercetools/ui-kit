@@ -1,5 +1,22 @@
 # @commercetools-uikit/field-label
 
+## 12.0.8
+
+### Patch Changes
+
+- [#1939](https://github.com/commercetools/ui-kit/pull/1939) [`5c6f88fd`](https://github.com/commercetools/ui-kit/commit/5c6f88fd944f13f5a4d7e58c4e5985b925fe975a) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1935](https://github.com/commercetools/ui-kit/pull/1935) [`509ee816`](https://github.com/commercetools/ui-kit/commit/509ee816c83a3f9ccd65fe46c4d2dfdfe790744d) Thanks [@tdeekens](https://github.com/tdeekens)! - Update dependencies
+
+* Updated dependencies [[`5c6f88fd`](https://github.com/commercetools/ui-kit/commit/5c6f88fd944f13f5a4d7e58c4e5985b925fe975a), [`509ee816`](https://github.com/commercetools/ui-kit/commit/509ee816c83a3f9ccd65fe46c4d2dfdfe790744d)]:
+  - @commercetools-uikit/icon-button@12.0.8
+  - @commercetools-uikit/constraints@12.0.8
+  - @commercetools-uikit/icons@12.0.8
+  - @commercetools-uikit/label@12.0.8
+  - @commercetools-uikit/spacings-inline@12.0.8
+  - @commercetools-uikit/spacings-stack@12.0.8
+  - @commercetools-uikit/text@12.0.8
+
 ## 12.0.7
 
 ### Patch Changes
