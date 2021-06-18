@@ -1,5 +1,16 @@
 # @commercetools-uikit/link
 
+## 12.0.8
+
+### Patch Changes
+
+- [#1941](https://github.com/commercetools/ui-kit/pull/1941) [`a246b2f2`](https://github.com/commercetools/ui-kit/commit/a246b2f2a71b46dee188d62ff4100594cffb0448) Thanks [@tdeekens](https://github.com/tdeekens)! - Add an icon to the `Link` whenever `isExternal` is passed
+
+- Updated dependencies [[`5c6f88fd`](https://github.com/commercetools/ui-kit/commit/5c6f88fd944f13f5a4d7e58c4e5985b925fe975a)]:
+  - @commercetools-uikit/design-system@12.0.8
+  - @commercetools-uikit/icons@12.0.8
+  - @commercetools-uikit/spacings-inline@12.0.8
+
 ## 12.0.7
 
 ### Patch Changes
