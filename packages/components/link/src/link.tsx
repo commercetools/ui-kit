@@ -119,7 +119,7 @@ const getLinkStyles = (props: TLinkProps, theme: Theme) => {
     &:active {
       color: ${hoverColor};
     }
-    text-decoration: 'underline';
+    text-decoration: underline;
   `;
 };
 
