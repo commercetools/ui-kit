@@ -8,7 +8,6 @@ import { FormattedMessage } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import { ExternalLinkIcon } from '@commercetools-uikit/icons';
-import SpacingsInline from '@commercetools-uikit/spacings-inline';
 
 type TExtendedTheme = Theme & {
   [key: string]: string;
@@ -123,6 +122,14 @@ const getLinkStyles = (props: TLinkProps, theme: Theme) => {
   `;
 };
 
+const Wrapper = styled.span`
+  display: inline-flex;
+  align-items: center;
+  > svg {
+    margin: 0 0 0 ${vars.spacingXs} !important;
+  }
+`;
+
 const Link = (props: TLinkProps) => {
   const theme = useTheme();
 
@@ -138,7 +145,7 @@ const Link = (props: TLinkProps) => {
     }
 
     return (
-      <SpacingsInline scale="xs" alignItems="center">
+      <Wrapper>
         <a
           css={getLinkStyles(props, theme)}
           href={props.to}
@@ -158,7 +165,7 @@ const Link = (props: TLinkProps) => {
             color={getIconColorValue(props.tone)}
           />
         )}
-      </SpacingsInline>
+      </Wrapper>
     );
   }
 
