@@ -1,5 +1,11 @@
 # @commercetools-uikit/link
 
+## 12.0.11
+
+### Patch Changes
+
+- [#1947](https://github.com/commercetools/ui-kit/pull/1947) [`4dbb74b4`](https://github.com/commercetools/ui-kit/commit/4dbb74b46f20260bf555ef55e8e54966f4bc9d86) Thanks [@tdeekens](https://github.com/tdeekens)! - Fix prop-types of `Link` for children
+
 ## 12.0.10
 
 ### Patch Changes
