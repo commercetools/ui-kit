@@ -1,5 +1,11 @@
 # @commercetools-uikit/link
 
+## 12.0.10
+
+### Patch Changes
+
+- [#1945](https://github.com/commercetools/ui-kit/pull/1945) [`d8909f8d`](https://github.com/commercetools/ui-kit/commit/d8909f8df7c71f8598be6e9c28ee15492b8e7759) Thanks [@tdeekens](https://github.com/tdeekens)! - Fix `Link` to use `inline-flex` for spacing of icon and text to support in text usage
+
 ## 12.0.9
 
 ### Patch Changes
