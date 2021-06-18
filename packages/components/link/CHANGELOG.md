@@ -1,5 +1,11 @@
 # @commercetools-uikit/link
 
+## 12.0.9
+
+### Patch Changes
+
+- [#1943](https://github.com/commercetools/ui-kit/pull/1943) [`c5b23bc5`](https://github.com/commercetools/ui-kit/commit/c5b23bc5169ada29a3779aedae0a3d815276689e) Thanks [@tdeekens](https://github.com/tdeekens)! - Fixes the Link to show an underline
+
 ## 12.0.8
 
 ### Patch Changes
