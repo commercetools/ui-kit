@@ -124,10 +124,9 @@ const getLinkStyles = (props: TLinkProps, theme: Theme) => {
 };
 
 const Wrapper = styled.span`
-  display: inline-flex;
-  align-items: center;
   > svg {
     margin: 0 0 0 ${vars.spacingXs} !important;
+    vertical-align: bottom;
   }
 `;
 
