@@ -1,5 +1,14 @@
 # @commercetools-uikit/field-errors
 
+## 12.0.12
+
+### Patch Changes
+
+- [#1949](https://github.com/commercetools/ui-kit/pull/1949) [`aac07cda`](https://github.com/commercetools/ui-kit/commit/aac07cda3cb5704fd77a65da9e985e9635032616) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@12.0.12
+
 ## 12.0.8
 
 ### Patch Changes

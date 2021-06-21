@@ -1,5 +1,39 @@
 # @commercetools-frontend/ui-kit
 
+## 12.0.12
+
+### Patch Changes
+
+- Updated dependencies [[`aac07cda`](https://github.com/commercetools/ui-kit/commit/aac07cda3cb5704fd77a65da9e985e9635032616), [`db75e2df`](https://github.com/commercetools/ui-kit/commit/db75e2df1c19dca9de7b4611fe235ab71a50cc05)]:
+  - @commercetools-uikit/design-system@12.0.12
+  - @commercetools-uikit/accessible-hidden@12.0.12
+  - @commercetools-uikit/avatar@12.0.12
+  - @commercetools-uikit/card@12.0.12
+  - @commercetools-uikit/collapsible-motion@12.0.12
+  - @commercetools-uikit/collapsible-panel@12.0.12
+  - @commercetools-uikit/collapsible@12.0.12
+  - @commercetools-uikit/constraints@12.0.12
+  - @commercetools-uikit/data-table-manager@12.0.12
+  - @commercetools-uikit/data-table@12.0.12
+  - @commercetools-uikit/field-errors@12.0.12
+  - @commercetools-uikit/field-label@12.0.12
+  - @commercetools-uikit/link@12.0.12
+  - @commercetools-uikit/icons@12.0.12
+  - @commercetools-uikit/label@12.0.12
+  - @commercetools-uikit/loading-spinner@12.0.12
+  - @commercetools-uikit/notifications@12.0.12
+  - @commercetools-uikit/pagination@12.0.12
+  - @commercetools-uikit/primary-action-dropdown@12.0.12
+  - @commercetools-uikit/stamp@12.0.12
+  - @commercetools-uikit/tag@12.0.12
+  - @commercetools-uikit/text@12.0.12
+  - @commercetools-uikit/tooltip@12.0.12
+  - @commercetools-uikit/buttons@12.0.12
+  - @commercetools-uikit/fields@12.0.12
+  - @commercetools-uikit/inputs@12.0.12
+  - @commercetools-uikit/spacings@12.0.12
+  - @commercetools-uikit/messages@12.0.12
+
 ## 12.0.11
 
 ### Patch Changes
