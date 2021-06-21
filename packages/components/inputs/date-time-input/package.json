@@ -23,8 +23,8 @@
     "prepare": "../../../../scripts/version.js replace"
   },
   "dependencies": {
-    "@babel/runtime": "7.14.5",
-    "@babel/runtime-corejs3": "7.14.5",
+    "@babel/runtime": "7.14.6",
+    "@babel/runtime-corejs3": "7.14.6",
     "@commercetools-uikit/accessible-button": "12.0.8",
     "@commercetools-uikit/calendar-time-utils": "12.0.8",
     "@commercetools-uikit/calendar-utils": "12.0.8",
@@ -50,7 +50,7 @@
   "devDependencies": {
     "moment": "2.29.1",
     "react": "17.0.2",
-    "react-intl": "5.20.2"
+    "react-intl": "5.20.3"
   },
   "peerDependencies": {
     "moment": "2.x",
