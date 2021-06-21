@@ -1,5 +1,16 @@
 # @commercetools-uikit/link
 
+## 12.0.12
+
+### Patch Changes
+
+- [#1952](https://github.com/commercetools/ui-kit/pull/1952) [`db75e2df`](https://github.com/commercetools/ui-kit/commit/db75e2df1c19dca9de7b4611fe235ab71a50cc05) Thanks [@tdeekens](https://github.com/tdeekens)! - Fix vertical alignment of external link icon to text when using `isExternal`
+
+- Updated dependencies [[`aac07cda`](https://github.com/commercetools/ui-kit/commit/aac07cda3cb5704fd77a65da9e985e9635032616)]:
+  - @commercetools-uikit/design-system@12.0.12
+  - @commercetools-uikit/icons@12.0.12
+  - @commercetools-uikit/spacings-inline@12.0.12
+
 ## 12.0.11
 
 ### Patch Changes
