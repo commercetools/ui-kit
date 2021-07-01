@@ -1,5 +1,14 @@
 # @commercetools-uikit/avatar
 
+## 12.1.0
+
+### Patch Changes
+
+- [#1954](https://github.com/commercetools/ui-kit/pull/1954) [`1878a2bf`](https://github.com/commercetools/ui-kit/commit/1878a2bf796f105c55195e86f5496198180d7e2d) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`1878a2bf`](https://github.com/commercetools/ui-kit/commit/1878a2bf796f105c55195e86f5496198180d7e2d)]:
+  - @commercetools-uikit/design-system@12.1.0
+
 ## 12.0.12
 
 ### Patch Changes
