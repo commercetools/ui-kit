@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/design-system",
   "description": "Core package of the commercetools design system.",
-  "version": "12.0.12",
+  "version": "12.1.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

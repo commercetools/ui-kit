@@ -1,5 +1,29 @@
 # @commercetools-uikit/data-table-manager
 
+## 12.1.0
+
+### Patch Changes
+
+- [#1954](https://github.com/commercetools/ui-kit/pull/1954) [`1878a2bf`](https://github.com/commercetools/ui-kit/commit/1878a2bf796f105c55195e86f5496198180d7e2d) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`1878a2bf`](https://github.com/commercetools/ui-kit/commit/1878a2bf796f105c55195e86f5496198180d7e2d), [`31a75d13`](https://github.com/commercetools/ui-kit/commit/31a75d1392d30a9897c840b3acaf403eec381b36)]:
+  - @commercetools-uikit/design-system@12.1.0
+  - @commercetools-uikit/accessible-hidden@12.1.0
+  - @commercetools-uikit/accessible-button@12.1.0
+  - @commercetools-uikit/primary-button@12.1.0
+  - @commercetools-uikit/secondary-button@12.1.0
+  - @commercetools-uikit/secondary-icon-button@12.1.0
+  - @commercetools-uikit/card@12.1.0
+  - @commercetools-uikit/collapsible-motion@12.1.0
+  - @commercetools-uikit/field-label@12.1.0
+  - @commercetools-uikit/icons@12.1.0
+  - @commercetools-uikit/async-select-input@12.1.0
+  - @commercetools-uikit/radio-input@12.1.0
+  - @commercetools-uikit/select-input@12.1.0
+  - @commercetools-uikit/tag@12.1.0
+  - @commercetools-uikit/text@12.1.0
+  - @commercetools-uikit/spacings@12.1.0
+
 ## 12.0.12
 
 ### Patch Changes
