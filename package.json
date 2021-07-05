@@ -102,7 +102,7 @@
     "formik": "^2.2.9",
     "glob": "7.1.7",
     "global": "4.4.0",
-    "husky": "6.0.0",
+    "husky": "7.0.0",
     "identity-obj-proxy": "3.0.0",
     "intl-pluralrules": "1.2.2",
     "jest": "27.0.5",
