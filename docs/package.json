@@ -29,9 +29,9 @@
     "yaml-loader": "0.6.0"
   },
   "devDependencies": {
-    "prismjs": "1.24.0"
+    "prismjs": "1.24.1"
   },
   "peerDependencies": {
-    "prismjs": "1.24.0"
+    "prismjs": "1.24.1"
   }
 }

@@ -38,7 +38,7 @@
     "react-required-if": "1.0.3"
   },
   "devDependencies": {
-    "@testing-library/react-hooks": "7.0.0",
+    "@testing-library/react-hooks": "7.0.1",
     "formik": "^2.2.9",
     "react": "17.0.2"
   },
