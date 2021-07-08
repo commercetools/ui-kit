@@ -54,14 +54,28 @@
     "packages": [
       "design-system",
       "generators/*",
-      "packages/**/*",
+      "packages/*",
+      "packages/components/*",
+      "packages/components/buttons/*",
+      "packages/components/fields/*",
+      "packages/components/inputs/*",
+      "packages/components/spacings/*",
       "presets/*",
       "visual-testing-app"
     ],
     "nohoist": ["react-virtualized/dom-helpers"]
   },
   "preconstruct": {
-    "packages": ["design-system", "packages/**/*", "presets/*"]
+    "packages": [
+      "design-system",
+      "packages/*",
+      "packages/components/*",
+      "packages/components/buttons/*",
+      "packages/components/fields/*",
+      "packages/components/inputs/*",
+      "packages/components/spacings/*",
+      "presets/*"
+    ]
   },
   "dependencies": {
     "@changesets/changelog-github": "0.4.0",

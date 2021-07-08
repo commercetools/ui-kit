@@ -4,7 +4,6 @@ import percySnapshot from '@percy/puppeteer';
 const snapshot = (page, description) =>
   percySnapshot(page, description, { widths: [1600] });
 
-const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
 const colors = [
   'solid',
   'neutral60',
@@ -17,17 +16,23 @@ const colors = [
 ];
 
 describe('Icons', () => {
-  colors.map((color) =>
-    // eslint-disable-next-line jest/valid-title
-    it(capitalize(color), async () => {
-      await page.goto(`${HOST}/icons/${color}`);
-      await expect(page).toMatch(color);
-      await snapshot(page, `Icons - Color: ${color}`);
-    })
-  );
-  it('Default', async () => {
+  describe('Colors', () => {
+    colors.map((color) =>
+      it(`Color ${color}`, async () => {
+        await page.goto(`${HOST}/icons/${color}`);
+        await expect(page).toMatch(color);
+        await snapshot(page, `Icons - Color: ${color}`);
+      })
+    );
+  });
+  it('Theme', async () => {
     await page.goto(`${HOST}/icons/theme`);
     await expect(page).toMatch('Themed Icons');
     await percySnapshot(page, `Icons - Dark theme`);
+  });
+  it('Inline SVG', async () => {
+    await page.goto(`${HOST}/icons/inline-svg`);
+    await expect(page).toMatch('Inline SVG');
+    await percySnapshot(page, `Icons - Inline SVG`);
   });
 });

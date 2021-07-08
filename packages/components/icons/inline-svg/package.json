@@ -1,0 +1,4 @@
+{
+  "main": "dist/commercetools-uikit-icons-inline-svg.cjs.js",
+  "module": "dist/commercetools-uikit-icons-inline-svg.esm.js"
+}

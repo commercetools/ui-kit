@@ -89,6 +89,7 @@ export const transformDocument = (
     main: originalPackageJson.main,
     // Managed by `preconstruct`
     module: originalPackageJson.module,
+    preconstruct: originalPackageJson.preconstruct,
     files: originalPackageJson.files,
     scripts: {
       ...originalPackageJson.scripts,
