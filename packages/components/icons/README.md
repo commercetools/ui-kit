@@ -64,6 +64,8 @@ import svg from './cart.svg';
 const svg = 'https://website.com/cart.svg';
 ```
 
+> NOTE that the `<svg>` document must contain `fill="#000000"` attributes wherever needed. The attribute color is then replaced on runtime by the component `color` value.
+
 ### Usage
 
 ```js
