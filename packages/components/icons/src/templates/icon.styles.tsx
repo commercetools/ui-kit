@@ -65,6 +65,7 @@ const getColor = (color: Props['color'], theme: Theme) => {
     ...theme,
   };
 
+  // @ts-expect-error
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {

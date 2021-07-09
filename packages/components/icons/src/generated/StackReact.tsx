@@ -74,7 +74,8 @@ const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme };
+  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
