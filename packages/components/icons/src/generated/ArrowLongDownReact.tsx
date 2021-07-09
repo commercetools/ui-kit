@@ -93,7 +93,10 @@ export const getIconStyles = (props: Props, theme: Theme) => css`
   * {
     fill: ${getColor(props.color, theme)};
   }
-  ${getSizeStyle(props.size)};
+  &,
+  image {
+    ${getSizeStyle(props.size)};
+  }
   flex-shrink: 0;
 `;
 
