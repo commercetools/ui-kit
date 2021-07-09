@@ -63,7 +63,7 @@ const svg = `<svg><path ... /></svg>`;
 const App = () => <InlineSvg data={svg} color="primary" size="medium" />;
 ```
 
-The component accepts the same props as the `<*Icon>` components `color` and `size`. Additionally it requires the `data` prop, which is the actual SVG content. Alternatively the value can also be a URL.
+The component accepts the same props as the `<*Icon>` components `color` and `size`. Additionally it requires the `data` prop, which is the actual SVG content.
 
 ### XSS protection
 
