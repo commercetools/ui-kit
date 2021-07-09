@@ -25,7 +25,8 @@ const iconSizes = {
   medium: 16,
   big: 24,
 } as const;
-export const getSizeDimensions = (size: Props['size']) => {
+
+const getSizeDimensions = (size: Props['size']) => {
   switch (size) {
     case 'scale':
       return {
@@ -71,10 +72,9 @@ const getSizeStyle = (size: Props['size']) => {
 
 const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
 
-export const getColor = (color: Props['color'], theme: Theme) => {
+const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
-
+  const overwrittenVars = { ...vars, ...theme };
   const iconColor = overwrittenVars[`color${capitalize(color)}`];
 
   if (!iconColor) {
@@ -88,7 +88,7 @@ export const getColor = (color: Props['color'], theme: Theme) => {
   return iconColor;
 };
 
-const getIconStyles = (props: Props, theme: Theme) => css`
+export const getIconStyles = (props: Props, theme: Theme) => css`
   * {
     fill: ${getColor(props.color, theme)};
   }

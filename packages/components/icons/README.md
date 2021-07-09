@@ -53,19 +53,6 @@ The component is exported as a separate entry point:
 import InlineSvg from '@commercetools-uikit/icons/inline-svg';
 ```
 
-The SVG data must be provided as an inline string.
-
-```js
-// OK
-const svg = `<svg><path ... /></svg>`;
-
-// NO
-import svg from './cart.svg';
-const svg = 'https://website.com/cart.svg';
-```
-
-> NOTE that the `<svg>` document must contain `fill="#000000"` attributes wherever needed. The attribute color is then replaced on runtime by the component `color` value.
-
 ### Usage
 
 ```js
@@ -76,19 +63,11 @@ const svg = `<svg><path ... /></svg>`;
 const App = () => <InlineSvg data={svg} color="primary" size="medium" />;
 ```
 
-The component accepts the same props as the icon components `color` and `size`. Additionally it requires the `data` prop, which is the actual SVG content.
+The component accepts the same props as the `<*Icon>` components `color` and `size`. Additionally it requires the `data` prop, which is the actual SVG content. Alternatively the value can also be a URL.
 
 ### XSS protection
 
-The component is designed to prevent execution of unwanted `script` elements embedded into the `<svg>` document.
-
-To do so, the SVG can be rendered in two different ways:
-
-- as an `image`: the SVG content is base64 encoded and rendered as a DATA URI of an `<img>` HTML element.
-
-- within a sandboxed `iframe`: the SVG document is rendered normally into the DOM but within a sandboxed `<iframe>`. This prevents any embedded `script` to be executed outside of the `<iframe>`.
-
-You can choose either option by providing the `as` prop.
+The `data` passed to the component is run through a DOM sanitizer to prevent unwanted XSS injections.
 
 ### Where to use
 
