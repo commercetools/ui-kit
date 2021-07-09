@@ -7,6 +7,7 @@ export { default as warnDeprecatedProp } from './warn-deprecated-prop';
 export { default as createSequentialId } from './create-sequential-id';
 export { default as getFieldId } from './get-field-id';
 export { default as parseTime } from './parse-time';
+export { canUseDOM } from './helpers/exenv';
 export { default as SafeHTMLElement } from './helpers/safeHTMLElement';
 export { default as addStaticFields } from './add-static-fields';
 export { default as warning } from './warning';

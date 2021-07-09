@@ -18,7 +18,10 @@
   "sideEffects": false,
   "main": "dist/commercetools-uikit-icons.cjs.js",
   "module": "dist/commercetools-uikit-icons.esm.js",
-  "files": ["dist"],
+  "preconstruct": {
+    "entrypoints": ["./index.ts", "./inline-svg.tsx"]
+  },
+  "files": ["dist", "inline-svg"],
   "scripts": {
     "prepare": "../../../scripts/version.js replace",
     "generate-icons": "svgr -d src/generated --typescript src/svg"
@@ -30,7 +33,10 @@
     "@commercetools-uikit/utils": "12.0.7",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "prop-types": "15.7.2"
+    "@types/dompurify": "^2.2.3",
+    "dompurify": "2.3.0",
+    "prop-types": "15.7.2",
+    "react-from-dom": "0.6.1"
   },
   "devDependencies": {
     "react": "17.0.2"

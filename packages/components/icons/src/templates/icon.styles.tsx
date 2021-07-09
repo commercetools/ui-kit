@@ -8,7 +8,7 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-type Props = {
+export type Props = {
   color?:
     | 'solid'
     | 'neutral60'
@@ -26,27 +26,32 @@ const iconSizes = {
   medium: 16,
   big: 24,
 } as const;
-
+const getSizeDimensions = (size: Props['size']) => {
+  switch (size) {
+    case 'scale':
+      return { width: '100%', height: 'auto' };
+    case 'small':
+    case 'medium':
+    case 'big':
+      return { width: `${iconSizes[size]}px`, height: `${iconSizes[size]}px` };
+    default:
+      return { width: `${iconSizes.big}px`, height: `${iconSizes.big}px` };
+  }
+};
 const getSizeStyle = (size: Props['size']) => {
+  const dimensions = getSizeDimensions(size);
   switch (size) {
     case 'scale':
       return `
         &:not(:root) {
-          width: 100%;
-          height: auto;
+          width: ${dimensions.width};
+          height: ${dimensions.height};
         }
-      `;
-    case 'small':
-    case 'medium':
-    case 'big':
-      return `
-        width: ${iconSizes[size]}px;
-        height: ${iconSizes[size]}px;
       `;
     default:
       return `
-        width: ${iconSizes.big}px;
-        height: ${iconSizes.big}px;
+        width: ${dimensions.width};
+        height: ${dimensions.height};
       `;
   }
 };
@@ -75,10 +80,13 @@ const getColor = (color: Props['color'], theme: Theme) => {
 };
 
 // @ts-ignore
-const getIconStyles = (props: Props, theme: Theme) => css`
+export const getIconStyles = (props: Props, theme: Theme) => css`
   * {
     fill: ${getColor(props.color, theme)};
   }
-  ${getSizeStyle(props.size)};
+  &,
+  image {
+    ${getSizeStyle(props.size)};
+  }
   flex-shrink: 0;
 `;

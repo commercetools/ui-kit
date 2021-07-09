@@ -3,7 +3,10 @@ const fs = require('fs');
 const path = require('path');
 
 const templateCreateStyledIcon = fs.readFileSync(
-  path.join(__dirname, `templates/icon.styles.tsx`),
+  path.join(
+    __dirname,
+    `packages/components/icons/src/templates/icon.styles.tsx`
+  ),
   { encoding: 'utf8' }
 );
 
