@@ -1,5 +1,12 @@
 # @commercetools-uikit/localized-utils
 
+## 12.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`c5a5bc9e`](https://github.com/commercetools/ui-kit/commit/c5a5bc9e23b5f5ea551c1666c8e2f1330f6b32d7)]:
+  - @commercetools-uikit/utils@12.2.0
+
 ## 12.0.7
 
 ### Patch Changes

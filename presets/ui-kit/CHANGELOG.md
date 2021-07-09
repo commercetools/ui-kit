@@ -1,5 +1,38 @@
 # @commercetools-frontend/ui-kit
 
+## 12.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`c5a5bc9e`](https://github.com/commercetools/ui-kit/commit/c5a5bc9e23b5f5ea551c1666c8e2f1330f6b32d7), [`c5a5bc9e`](https://github.com/commercetools/ui-kit/commit/c5a5bc9e23b5f5ea551c1666c8e2f1330f6b32d7), [`1540b374`](https://github.com/commercetools/ui-kit/commit/1540b374f6b545b0d103a7b30bed514f43f10104)]:
+  - @commercetools-uikit/utils@12.2.0
+  - @commercetools-uikit/icons@12.2.0
+  - @commercetools-uikit/data-table@12.2.0
+  - @commercetools-uikit/avatar@12.2.0
+  - @commercetools-uikit/card@12.2.0
+  - @commercetools-uikit/collapsible@12.2.0
+  - @commercetools-uikit/collapsible-motion@12.2.0
+  - @commercetools-uikit/collapsible-panel@12.2.0
+  - @commercetools-uikit/constraints@12.2.0
+  - @commercetools-uikit/data-table-manager@12.2.0
+  - @commercetools-uikit/field-label@12.2.0
+  - @commercetools-uikit/label@12.2.0
+  - @commercetools-uikit/link@12.2.0
+  - @commercetools-uikit/loading-spinner@12.2.0
+  - @commercetools-uikit/messages@12.2.0
+  - @commercetools-uikit/notifications@12.2.0
+  - @commercetools-uikit/pagination@12.2.0
+  - @commercetools-uikit/primary-action-dropdown@12.2.0
+  - @commercetools-uikit/text@12.2.0
+  - @commercetools-uikit/tooltip@12.2.0
+  - @commercetools-uikit/hooks@12.2.0
+  - @commercetools-uikit/tag@12.2.0
+  - @commercetools-uikit/inputs@12.2.0
+  - @commercetools-uikit/buttons@12.2.0
+  - @commercetools-uikit/fields@12.2.0
+  - @commercetools-uikit/field-errors@12.2.0
+  - @commercetools-uikit/spacings@12.2.0
+
 ## 12.1.0
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @commercetools-uikit/utils
 
+## 12.2.0
+
+### Patch Changes
+
+- [#1964](https://github.com/commercetools/ui-kit/pull/1964) [`c5a5bc9e`](https://github.com/commercetools/ui-kit/commit/c5a5bc9e23b5f5ea551c1666c8e2f1330f6b32d7) Thanks [@emmenko](https://github.com/emmenko)! - Expose `canUseDOM` helper
+
 ## 12.0.7
 
 ### Patch Changes
