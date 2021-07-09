@@ -1,5 +1,18 @@
 # @commercetools-uikit/data-table
 
+## 12.2.0
+
+### Patch Changes
+
+- [#1960](https://github.com/commercetools/ui-kit/pull/1960) [`1540b374`](https://github.com/commercetools/ui-kit/commit/1540b374f6b545b0d103a7b30bed514f43f10104) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`c5a5bc9e`](https://github.com/commercetools/ui-kit/commit/c5a5bc9e23b5f5ea551c1666c8e2f1330f6b32d7), [`c5a5bc9e`](https://github.com/commercetools/ui-kit/commit/c5a5bc9e23b5f5ea551c1666c8e2f1330f6b32d7)]:
+  - @commercetools-uikit/utils@12.2.0
+  - @commercetools-uikit/icons@12.2.0
+  - @commercetools-uikit/accessible-button@12.2.0
+  - @commercetools-uikit/secondary-icon-button@12.2.0
+  - @commercetools-uikit/hooks@12.2.0
+
 ## 12.1.0
 
 ### Patch Changes
