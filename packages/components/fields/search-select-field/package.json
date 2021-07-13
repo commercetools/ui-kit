@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/search-select-field",
   "description": "A search select field built on top of search select input, allowing users to asynchronously search for options",
-  "version": "12.2.0",
+  "version": "12.2.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -28,8 +28,8 @@
     "@commercetools-uikit/constraints": "12.2.0",
     "@commercetools-uikit/design-system": "12.1.0",
     "@commercetools-uikit/field-errors": "12.2.0",
-    "@commercetools-uikit/field-label": "12.2.0",
-    "@commercetools-uikit/search-select-input": "12.2.0",
+    "@commercetools-uikit/field-label": "12.2.1",
+    "@commercetools-uikit/search-select-input": "12.2.1",
     "@commercetools-uikit/spacings": "12.2.0",
     "@commercetools-uikit/utils": "12.2.0",
     "@emotion/react": "^11.4.0",

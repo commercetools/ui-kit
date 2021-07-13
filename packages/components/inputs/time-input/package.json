@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/time-input",
   "description": "The TimeInput component allows the user to select a time.",
-  "version": "12.2.0",
+  "version": "12.2.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -29,8 +29,8 @@
     "@commercetools-uikit/constraints": "12.2.0",
     "@commercetools-uikit/design-system": "12.1.0",
     "@commercetools-uikit/hooks": "12.2.0",
-    "@commercetools-uikit/icons": "12.2.0",
-    "@commercetools-uikit/input-utils": "12.2.0",
+    "@commercetools-uikit/icons": "12.2.1",
+    "@commercetools-uikit/input-utils": "12.2.1",
     "@commercetools-uikit/spacings-inline": "12.2.0",
     "@commercetools-uikit/utils": "12.2.0",
     "@emotion/is-prop-valid": "1.1.0",

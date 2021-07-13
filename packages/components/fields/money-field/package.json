@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/money-field",
   "description": "A controlled input component for money values with validation states and a label.",
-  "version": "12.2.0",
+  "version": "12.2.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -28,8 +28,8 @@
     "@commercetools-uikit/constraints": "12.2.0",
     "@commercetools-uikit/design-system": "12.1.0",
     "@commercetools-uikit/field-errors": "12.2.0",
-    "@commercetools-uikit/field-label": "12.2.0",
-    "@commercetools-uikit/money-input": "12.2.0",
+    "@commercetools-uikit/field-label": "12.2.1",
+    "@commercetools-uikit/money-input": "12.2.1",
     "@commercetools-uikit/spacings": "12.2.0",
     "@commercetools-uikit/utils": "12.2.0",
     "@emotion/react": "^11.4.0",

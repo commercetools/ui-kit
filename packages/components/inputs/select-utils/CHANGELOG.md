@@ -1,5 +1,14 @@
 # @commercetools-uikit/select-utils
 
+## 12.2.1
+
+### Patch Changes
+
+- [#1965](https://github.com/commercetools/ui-kit/pull/1965) [`96cb4491`](https://github.com/commercetools/ui-kit/commit/96cb4491f07f7059e2ded4ff43896bd128fae326) Thanks [@emmenko](https://github.com/emmenko)! - Remove unnecessary `fill="none"` attribute from SVG files. We noticed that when refining the style selector for nested `fill` colors to avoid overriding `fill="none"` style, icons rendered without an explicit color (therefore using `inherit`) were not applying the color correctly due to cascading conflicts. After a deeper look, it appears that the `fill="none"` attributes are actually irrelevant for our set of icons.
+
+- Updated dependencies [[`96cb4491`](https://github.com/commercetools/ui-kit/commit/96cb4491f07f7059e2ded4ff43896bd128fae326)]:
+  - @commercetools-uikit/icons@12.2.1
+
 ## 12.2.0
 
 ### Patch Changes
