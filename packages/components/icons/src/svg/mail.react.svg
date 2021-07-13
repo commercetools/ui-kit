@@ -4,7 +4,7 @@
     <title>mail</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Icons" stroke="none" stroke-width="1"  fill-rule="evenodd">
         <g id="MC-icon-set" transform="translate(-96.000000, -232.000000)" fill="#000000" fill-rule="nonzero">
             <g id="CRUD" transform="translate(24.000000, 152.000000)">
                 <g id="Mail" transform="translate(72.000000, 80.000000)">

@@ -90,7 +90,7 @@ const getColor = (color: Props['color'], theme: Theme) => {
 };
 
 export const getIconStyles = (props: Props, theme: Theme) => css`
-  * {
+  *:not([fill='none']) {
     fill: ${getColor(props.color, theme)};
   }
   &,
@@ -112,7 +112,6 @@ const SvgClipboard = (props: Props) => (
       id="clipboard_react_svg__Icons"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g id="clipboard_react_svg__MC-icon-set" transform="translate(-240 -944)">

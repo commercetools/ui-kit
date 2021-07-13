@@ -3,7 +3,7 @@
     <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
     <title>circle</title>
     <desc>Created with Sketch.</desc>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Symbols" stroke="none" stroke-width="1"  fill-rule="evenodd">
         <g id="Component-/-icon-/-24px-/-circle-Copy" fill="#000000" fill-rule="nonzero">
             <path d="M12.5,17.5 C15.2614237,17.5 17.5,15.2614237 17.5,12.5 C17.5,9.73857625 15.2614237,7.5 12.5,7.5 C9.73857625,7.5 7.5,9.73857625 7.5,12.5 C7.5,15.2614237 9.73857625,17.5 12.5,17.5 Z M12.5,20 C8.35786438,20 5,16.6421356 5,12.5 C5,8.35786438 8.35786438,5 12.5,5 C16.6421356,5 20,8.35786438 20,12.5 C20,16.6421356 16.6421356,20 12.5,20 Z" id="circle"></path>
         </g>

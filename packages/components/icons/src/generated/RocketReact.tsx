@@ -90,7 +90,7 @@ const getColor = (color: Props['color'], theme: Theme) => {
 };
 
 export const getIconStyles = (props: Props, theme: Theme) => css`
-  * {
+  *:not([fill='none']) {
     fill: ${getColor(props.color, theme)};
   }
   &,
@@ -112,7 +112,6 @@ const SvgRocket = (props: Props) => (
       id="rocket_react_svg__Symbols"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g id="rocket_react_svg__Rocket">

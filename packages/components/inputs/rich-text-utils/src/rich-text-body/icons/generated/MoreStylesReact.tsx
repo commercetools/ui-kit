@@ -90,7 +90,7 @@ const getColor = (color: Props['color'], theme: Theme) => {
 };
 
 export const getIconStyles = (props: Props, theme: Theme) => css`
-  * {
+  *:not([fill='none']) {
     fill: ${getColor(props.color, theme)};
   }
   &,
@@ -119,7 +119,6 @@ const SvgMoreStyles = (props: Props) => (
       id="more-styles_react_svg__Component-/-icon-/-24px-/-Richtext-/-more-styles"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g id="more-styles_react_svg__Component-/-icon-/-16px-/-Richtext-/-Strike-trough">

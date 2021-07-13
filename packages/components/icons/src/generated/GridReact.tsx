@@ -90,7 +90,7 @@ const getColor = (color: Props['color'], theme: Theme) => {
 };
 
 export const getIconStyles = (props: Props, theme: Theme) => css`
-  * {
+  *:not([fill='none']) {
     fill: ${getColor(props.color, theme)};
   }
   &,
@@ -112,7 +112,6 @@ const SvgGrid = (props: Props) => (
       id="grid_react_svg__Old-table-manager-icon"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g id="grid_react_svg__Group-3" transform="translate(-3 -4)">

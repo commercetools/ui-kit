@@ -4,7 +4,7 @@
     <title>checkbox-indeterminate-default</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="ATOM---Checkboxes---Radio-buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="ATOM---Checkboxes---Radio-buttons" stroke="none" stroke-width="1"  fill-rule="evenodd">
         <g id="Checkboxes-Radio-Buttons" transform="translate(-177.000000, -909.000000)">
             <g id="checkbox-indeterminate-default" transform="translate(177.000000, 908.000000)">
                 <rect id="background" fill="#FFFFFF" x="0" y="1" width="16" height="16" rx="4"></rect>

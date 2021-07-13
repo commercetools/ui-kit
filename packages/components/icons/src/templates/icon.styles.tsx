@@ -81,7 +81,7 @@ const getColor = (color: Props['color'], theme: Theme) => {
 
 // @ts-ignore
 export const getIconStyles = (props: Props, theme: Theme) => css`
-  * {
+  *:not([fill='none']) {
     fill: ${getColor(props.color, theme)};
   }
   &,

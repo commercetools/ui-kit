@@ -8,18 +8,18 @@ import { CloseBoldIcon } from '@commercetools-uikit/icons';
 const removeProps = ['onClick', 'onTouchEnd', 'onMouseDown'];
 
 const TagRemove = (props) => {
+  const isDisabled = Boolean(
+    props.selectProps.isDisabled || props.selectProps.isReadOnly
+  );
   // when the select input is disabled,
   // we don't want to spread the removeProp event handlers
-  const innerProps = props.selectProps.isDisabled
+  const innerProps = isDisabled
     ? omit(props.innerProps, removeProps)
     : props.innerProps;
 
   return (
     <AccessibleButton label="Remove" {...innerProps}>
-      <CloseBoldIcon
-        color={props.selectProps.isDisabled ? 'neutral60' : 'solid'}
-        size="medium"
-      />
+      <CloseBoldIcon color={isDisabled ? 'neutral60' : 'solid'} size="medium" />
     </AccessibleButton>
   );
 };
@@ -29,6 +29,7 @@ TagRemove.displayName = 'TagRemove';
 TagRemove.propTypes = {
   selectProps: PropTypes.shape({
     isDisabled: PropTypes.bool.isRequired,
+    isReadOnly: PropTypes.bool,
   }).isRequired,
   innerProps: PropTypes.object,
 };

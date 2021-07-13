@@ -49,7 +49,7 @@ const getButtonStyles = (props = { isStyleButton: true }) => [
         background-color: ${vars.colorAccent30};
         color: ${vars.colorSurface};
 
-        * {
+        svg {
           fill: ${vars.colorSurface};
         }
       }
@@ -58,7 +58,7 @@ const getButtonStyles = (props = { isStyleButton: true }) => [
     css`
       color: ${vars.colorNeutral60};
 
-      * {
+      svg {
         fill: ${vars.colorNeutral60};
       }
     `,
@@ -66,7 +66,7 @@ const getButtonStyles = (props = { isStyleButton: true }) => [
     css`
       color: ${vars.colorNeutral60};
 
-      * {
+      svg {
         fill: ${vars.colorNeutral60};
       }
     `,
