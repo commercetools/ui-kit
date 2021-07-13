@@ -1,5 +1,15 @@
 # @commercetools-uikit/date-input
 
+## 12.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`96cb4491`](https://github.com/commercetools/ui-kit/commit/96cb4491f07f7059e2ded4ff43896bd128fae326)]:
+  - @commercetools-uikit/secondary-icon-button@12.2.1
+  - @commercetools-uikit/icons@12.2.1
+  - @commercetools-uikit/select-utils@12.2.1
+  - @commercetools-uikit/calendar-utils@12.2.1
+
 ## 12.2.0
 
 ### Patch Changes

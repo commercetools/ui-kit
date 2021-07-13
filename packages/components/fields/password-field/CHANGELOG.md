@@ -1,5 +1,14 @@
 # @commercetools-uikit/password-field
 
+## 12.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`96cb4491`](https://github.com/commercetools/ui-kit/commit/96cb4491f07f7059e2ded4ff43896bd128fae326)]:
+  - @commercetools-uikit/icons@12.2.1
+  - @commercetools-uikit/field-label@12.2.1
+  - @commercetools-uikit/password-input@12.2.1
+
 ## 12.2.0
 
 ### Patch Changes

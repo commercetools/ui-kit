@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/multiline-text-input",
   "description": "A controlled text input component for multi-line strings with validation states.",
-  "version": "12.2.0",
+  "version": "12.2.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -29,8 +29,8 @@
     "@commercetools-uikit/design-system": "12.1.0",
     "@commercetools-uikit/flat-button": "12.2.0",
     "@commercetools-uikit/hooks": "12.2.0",
-    "@commercetools-uikit/icons": "12.2.0",
-    "@commercetools-uikit/input-utils": "12.2.0",
+    "@commercetools-uikit/icons": "12.2.1",
+    "@commercetools-uikit/input-utils": "12.2.1",
     "@commercetools-uikit/spacings-inline": "12.2.0",
     "@commercetools-uikit/spacings-stack": "12.2.0",
     "@commercetools-uikit/tooltip": "12.2.0",

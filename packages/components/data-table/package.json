@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/data-table",
   "description": "A component for rendering tabular data.",
-  "version": "12.2.0",
+  "version": "12.2.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -28,8 +28,8 @@
     "@commercetools-uikit/accessible-button": "12.2.0",
     "@commercetools-uikit/design-system": "12.1.0",
     "@commercetools-uikit/hooks": "12.2.0",
-    "@commercetools-uikit/icons": "12.2.0",
-    "@commercetools-uikit/secondary-icon-button": "12.2.0",
+    "@commercetools-uikit/icons": "12.2.1",
+    "@commercetools-uikit/secondary-icon-button": "12.2.1",
     "@commercetools-uikit/utils": "12.2.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
