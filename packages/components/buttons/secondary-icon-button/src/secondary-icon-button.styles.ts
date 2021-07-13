@@ -10,7 +10,7 @@ type TExtendedTheme = {
 const getDisabledStyle = (overwrittenVars: TExtendedTheme) => {
   /* By using the css 'disabled' selector directly, we don't need additional logic to check the isDisabled prop */
   return css`
-    &:disabled svg * {
+    &:disabled svg {
       fill: ${overwrittenVars.colorNeutral60};
     }
   `;
@@ -23,27 +23,27 @@ const getColorStyle = (
   switch (props.color) {
     case 'solid':
       return css`
-        & svg * {
+        & svg {
           fill: ${overwrittenVars.colorSolid};
         }
         &:focus,
-        &:hover svg * {
+        &:hover svg {
           fill: ${overwrittenVars.colorPrimary};
         }
       `;
     case 'primary':
       return css`
-        & svg * {
+        & svg {
           fill: ${overwrittenVars.colorPrimary};
         }
         &:focus,
-        &:hover svg * {
+        &:hover svg {
           fill: ${overwrittenVars.colorPrimary25};
         }
       `;
     default:
       return css`
-        svg * {
+        svg {
           fill: ${overwrittenVars.colorSolid};
         }
       `;
