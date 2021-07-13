@@ -1,7 +1,7 @@
 import os from 'os';
 import path from 'path';
 import shelljs from 'shelljs';
-import vfile from 'vfile';
+import { VFile } from 'vfile';
 import { transformDocument } from '../src';
 
 const tmpFolder = os.tmpdir();
@@ -20,7 +20,7 @@ beforeAll(() => {
 describe('generate README (for JS file)', () => {
   it('should generate README based on package info', async () => {
     const file = await transformDocument(
-      vfile(),
+      new VFile(),
       path.join(testPackages, 'avenger')
     );
     const content = file.toString();
@@ -100,7 +100,7 @@ describe('generate README (for JS file)', () => {
 describe('generate README (for TS file)', () => {
   it('should generate README based on package info', async () => {
     const file = await transformDocument(
-      vfile(),
+      new VFile(),
       path.join(testPackages, 'justice-league')
     );
     const content = file.toString();
