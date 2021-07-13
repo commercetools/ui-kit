@@ -112,7 +112,6 @@ const SvgRightTriangleLinear = (props: Props) => (
       id="right-triangle-linear_react_svg__Table-compact-truncation-v3"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

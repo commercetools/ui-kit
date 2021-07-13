@@ -112,7 +112,6 @@ const SvgClockWithArrow = (props: Props) => (
       id="clock-with-arrow_react_svg__Icons"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

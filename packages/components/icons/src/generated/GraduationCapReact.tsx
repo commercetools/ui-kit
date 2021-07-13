@@ -112,7 +112,6 @@ const SvgGraduationCap = (props: Props) => (
       id="graduation-cap_react_svg__Component-/-icon-/-24px-/-GraduationCap"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <path

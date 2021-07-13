@@ -112,7 +112,6 @@ const SvgStrikethrough = (props: Props) => (
       id="strikethrough_react_svg__Component-/-icon-/-24px-/-Richtext-/-Strike-trough"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

@@ -112,7 +112,6 @@ const SvgConnectedTriangle = (props: Props) => (
       id="connected-triangle_react_svg__Connected-Triangle"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <path

@@ -112,7 +112,6 @@ const SvgClipboard = (props: Props) => (
       id="clipboard_react_svg__Icons"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g id="clipboard_react_svg__MC-icon-set" transform="translate(-240 -944)">

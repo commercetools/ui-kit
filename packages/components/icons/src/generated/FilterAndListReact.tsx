@@ -112,7 +112,6 @@ const SvgFilterAndList = (props: Props) => (
       id="filter-and-list_react_svg__Component-/-icon-/-24px-/-filter_and_-list"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

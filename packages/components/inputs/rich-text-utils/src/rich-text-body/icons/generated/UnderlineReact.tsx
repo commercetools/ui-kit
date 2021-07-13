@@ -112,7 +112,6 @@ const SvgUnderline = (props: Props) => (
       id="underline_react_svg__Component-/-icon-/-24px-/-Richtext-/-Underline"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

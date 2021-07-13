@@ -112,7 +112,6 @@ const SvgExternalLink = (props: Props) => (
       id="external-link_react_svg__Component-/-icon-/-24px-/-external-window"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <path

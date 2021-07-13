@@ -112,7 +112,6 @@ const SvgExpandFull = (props: Props) => (
       id="expand-full_react_svg__Component-/-icon-/-16px-/-Richtext-/-Expand"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

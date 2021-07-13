@@ -119,7 +119,6 @@ const SvgRedo = (props: Props) => (
       id="redo_react_svg__Component-/-icon-/-24px-/-Richtext-/-Redo"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

@@ -119,7 +119,6 @@ const SvgUnorderedList = (props: Props) => (
       id="unordered-list_react_svg__Component-/-icon-/-24px-/-Richtext-/-Bullet-list"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g id="unordered-list_react_svg__Component-/-icon-/-16px-/-Richtext-/-Bullet-list">

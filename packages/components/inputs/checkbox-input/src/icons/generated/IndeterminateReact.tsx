@@ -112,7 +112,6 @@ const SvgIndeterminate = (props: Props) => (
       id="indeterminate_react_svg__ATOM---Checkboxes---Radio-buttons"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

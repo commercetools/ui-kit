@@ -112,7 +112,6 @@ const SvgBold = (props: Props) => (
       id="bold_react_svg__Component-/-icon-/-24px-/-Richtext-/-Bold-"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

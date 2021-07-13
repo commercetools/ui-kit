@@ -112,7 +112,6 @@ const SvgAngleUpDown = (props: Props) => (
       id="angle-up-down_react_svg__AngleUpDownIcon"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

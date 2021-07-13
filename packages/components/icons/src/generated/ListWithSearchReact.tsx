@@ -112,7 +112,6 @@ const SvgListWithSearch = (props: Props) => (
       id="list-with-search_react_svg__Page-1"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

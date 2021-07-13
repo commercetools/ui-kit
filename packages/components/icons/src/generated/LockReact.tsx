@@ -112,7 +112,6 @@ const SvgLock = (props: Props) => (
       id="lock_react_svg__Final-ImportBoard"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

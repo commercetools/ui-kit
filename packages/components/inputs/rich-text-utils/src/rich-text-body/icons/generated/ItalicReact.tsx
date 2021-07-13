@@ -112,7 +112,6 @@ const SvgItalic = (props: Props) => (
       id="italic_react_svg__Component-/-icon-/-24px-/-Richtext-/-Italic-"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

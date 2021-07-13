@@ -119,7 +119,6 @@ const SvgReview = (props: Props) => (
       id="review_react_svg__Icons"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
       transform="translate(-136 -476)"
     >

@@ -119,7 +119,6 @@ const SvgPageGear = (props: Props) => (
       id="page-gear_react_svg__Artboard"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g id="page-gear_react_svg__Component-/-icon-/-24px-/-project-settings">

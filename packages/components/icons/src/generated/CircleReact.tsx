@@ -112,7 +112,6 @@ const SvgCircle = (props: Props) => (
       id="circle_react_svg__Symbols"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

@@ -123,7 +123,6 @@ const SvgPlugin = (props: Props) => (
       id="plugin_react_svg__Symbols"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g id="plugin_react_svg__plugin---Icon">

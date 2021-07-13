@@ -112,7 +112,6 @@ const SvgSpeechBubble = (props: Props) => (
       id="speech-bubble_react_svg__Component-/-icon-/-24px-/-speech-bubble"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <path

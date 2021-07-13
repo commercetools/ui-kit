@@ -112,7 +112,6 @@ const SvgMail = (props: Props) => (
       id="mail_react_svg__Icons"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

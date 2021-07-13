@@ -112,7 +112,6 @@ const SvgOperations = (props: Props) => (
       id="operations_react_svg__Symbols"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

@@ -112,7 +112,6 @@ const SvgRightTriangleFilled = (props: Props) => (
       id="right-triangle-filled_react_svg__Table-compact-truncation-v3"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

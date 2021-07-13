@@ -112,7 +112,6 @@ const SvgFractionDigits = (props: Props) => (
       id="fraction-digits_react_svg__HP-icon-17"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <path

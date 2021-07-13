@@ -112,7 +112,6 @@ const SvgSuperscript = (props: Props) => (
       id="superscript_react_svg__Component-/-icon-/-24px-/-Richtext-/-Super-script"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <path

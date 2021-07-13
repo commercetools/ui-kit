@@ -112,7 +112,6 @@ const SvgDownload = (props: Props) => (
       id="download_react_svg__Icons"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g id="download_react_svg__MC-icon-set" transform="translate(-170 -944)">

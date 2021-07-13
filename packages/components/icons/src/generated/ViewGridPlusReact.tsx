@@ -112,7 +112,6 @@ const SvgViewGridPlus = (props: Props) => (
       id="view-grid-plus_react_svg__Page-1"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

@@ -112,8 +112,8 @@ const SvgStack = (props: Props) => (
       id="stack_react_svg__Component-/-icon-/-24px-/-Stock"
       stroke="none"
       strokeWidth={1}
-      fill="#1A1A1A"
       fillRule="evenodd"
+      fill="#1A1A1A"
     >
       <path
         d="M3.698 11.153l8.16 2.007a.548.548 0 00.262 0l8.16-2.007a.535.535 0 01.669.513v1.113a.53.53 0 01-.407.514l-8.422 2.071a.548.548 0 01-.261 0l-8.422-2.071a.53.53 0 01-.407-.514v-1.113c0-.344.328-.597.668-.513"

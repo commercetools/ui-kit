@@ -119,7 +119,6 @@ const SvgPinGear = (props: Props) => (
       id="pin-gear_react_svg__Table-manager"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g id="pin-gear_react_svg__pin-settings" transform="translate(-3 -3)">

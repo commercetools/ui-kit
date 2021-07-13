@@ -119,7 +119,6 @@ const SvgSubdirectoryArrow = (props: Props) => (
       id="subdirectory-arrow_react_svg__Icons"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g

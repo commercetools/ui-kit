@@ -112,7 +112,6 @@ const SvgEye = (props: Props) => (
       id="eye_react_svg__Component-/-icon-/-24px-/-eye-"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <path

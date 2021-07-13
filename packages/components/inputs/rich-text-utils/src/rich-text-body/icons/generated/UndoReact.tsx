@@ -119,7 +119,6 @@ const SvgUndo = (props: Props) => (
       id="undo_react_svg__Component-/-icon-/-24px-/-Richtext-/-Undo"
       stroke="none"
       strokeWidth={1}
-      fill="none"
       fillRule="evenodd"
     >
       <g
