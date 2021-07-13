@@ -407,23 +407,25 @@ const multiValueRemoveStyles = (props, theme) => (base, state) => {
   };
 };
 
-export default (props, theme) => ({
-  control: controlStyles(props, theme),
-  menu: menuStyles(props, theme),
-  indicatorSeparator: indicatorSeparatorStyles(props, theme),
-  dropdownIndicator: dropdownIndicatorStyles(props, theme),
-  clearIndicator: clearIndicatorStyles(props, theme),
-  menuList: menuListStyles(props, theme),
-  menuPortal: menuPortalStyles(props, theme),
-  multiValue: multiValueStyles(props, theme),
-  multiValueLabel: multiValueLabelStyles(props, theme),
-  multiValueRemove: multiValueRemoveStyles(props, theme),
-  indicatorsContainer: indicatorsContainerStyles(props, theme),
-  option: optionStyles(props, theme),
-  placeholder: placeholderStyles(props, theme),
-  valueContainer: valueContainerStyles(props, theme),
-  singleValue: singleValueStyles(props, theme),
-  group: groupStyles(props, theme),
-  groupHeading: groupHeadingStyles(props, theme),
-  container: containerStyles(props, theme),
-});
+export default function createSelectStyles(props, theme) {
+  return {
+    control: controlStyles(props, theme),
+    menu: menuStyles(props, theme),
+    indicatorSeparator: indicatorSeparatorStyles(props, theme),
+    dropdownIndicator: dropdownIndicatorStyles(props, theme),
+    clearIndicator: clearIndicatorStyles(props, theme),
+    menuList: menuListStyles(props, theme),
+    menuPortal: menuPortalStyles(props, theme),
+    multiValue: multiValueStyles(props, theme),
+    multiValueLabel: multiValueLabelStyles(props, theme),
+    multiValueRemove: multiValueRemoveStyles(props, theme),
+    indicatorsContainer: indicatorsContainerStyles(props, theme),
+    option: optionStyles(props, theme),
+    placeholder: placeholderStyles(props, theme),
+    valueContainer: valueContainerStyles(props, theme),
+    singleValue: singleValueStyles(props, theme),
+    group: groupStyles(props, theme),
+    groupHeading: groupHeadingStyles(props, theme),
+    container: containerStyles(props, theme),
+  };
+}
