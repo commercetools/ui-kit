@@ -18,12 +18,16 @@ type TLocationDescriptionWithQuery = LocationDescriptorObject & {
   query?: unknown;
 };
 
-export type TSecondaryButtonProps = {
+export type TSecondaryButtonProps<
+  TStringOrComponent extends React.ElementType = 'button'
+> = {
   /**
-   * a `ComponentType`. <br />
-   * You may pass in a string like "a" to have the button render as an anchor tag instead.
+   * You may pass in a string like "a" to have the button element render an anchor tag, or
+   * you could pass in a React Component, like a `Link`.
+   * <br />
+   * The `<SecondaryButton>` additionally accepts any props or attributes specific to the given element or component.
    */
-  as?: string | ComponentType;
+  as?: TStringOrComponent;
   /**
    * Used as the HTML type attribute.
    */
@@ -51,15 +55,20 @@ export type TSecondaryButtonProps = {
   /**
    * Handler when the button is clicked.
    * <br />
-   * Required when `as` is `undefined`
+   * Signature: (event: MouseEvent<HTMLButtonElement) => void
    */
   onClick?: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
-
+  /**
+   * Indicates the color scheme of the button.
+   */
   theme?: 'default' | 'info';
-  to?: LocationDescriptor | TLocationDescriptionWithQuery;
-};
+} & /**
+ * Include any props derived from the React component passed to the `as` prop.
+ * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
+ * passed to `<SecondaryButton>`: <SecondaryButton as={Link} to="/foo" label="Foo" />.
+ */ React.ComponentPropsWithRef<TStringOrComponent>;
 
 // Gets the color which the icon sho√uld have based on context of button's state/cursor behavior
 export const getIconColor = (
@@ -88,7 +97,11 @@ const defaultProps: Pick<
   isToggleButton: false,
 };
 
-export const SecondaryButton = (props: TSecondaryButtonProps) => {
+export const SecondaryButton = <
+  TStringOrComponent extends React.ElementType = 'button'
+>(
+  props: TSecondaryButtonProps<TStringOrComponent>
+) => {
   const isActive = Boolean(props.isToggleButton && props.isToggled);
   const shouldUseLinkTag = !props.isDisabled && Boolean(props.to);
   const buttonAttributes = {
@@ -106,20 +119,6 @@ export const SecondaryButton = (props: TSecondaryButtonProps) => {
     !(props.as && props.type !== 'button'),
     'SecondaryButton: "type" does not have any effect when "as" is set.'
   );
-
-  if (isNil(props.to) && isNil(props.as)) {
-    warning(
-      typeof props.onClick === 'function',
-      'SecondaryButton: "onClick" is required when "to" and "as" are not defined.'
-    );
-  }
-
-  if (!isNil(props.to)) {
-    warning(
-      !isNil(props.as),
-      'Invalid prop "to" supplied to "SecondaryButton". "to" does not have any effect when "as" is not defined.'
-    );
-  }
 
   const containerStyles = [
     css`

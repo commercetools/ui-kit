@@ -1,4 +1,4 @@
-import React, { ComponentType, MouseEvent, KeyboardEvent } from 'react';
+import React, { MouseEvent, KeyboardEvent } from 'react';
 import isNil from 'lodash/isNil';
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
@@ -10,12 +10,16 @@ import { getButtonStyles } from './primary-button.styles';
 
 const propsToOmit = ['type'];
 
-export type TPrimaryButtonProps = {
+export type TPrimaryButtonProps<
+  TStringOrComponent extends React.ElementType = 'button'
+> = {
   /**
-   * a `ComponentType`. <br />
-   * You may pass in a string like "a" to have the button render as an anchor tag instead.
+   * You may pass in a string like "a" to have the button element render an anchor tag, or
+   * you could pass in a React Component, like a `Link`.
+   * <br />
+   * The `<PrimaryButton>` additionally accepts any props or attributes specific to the given element or component.
    */
-  as?: string | ComponentType;
+  as?: TStringOrComponent;
   /**
    * Used as the HTML type attribute.
    */
@@ -49,11 +53,18 @@ export type TPrimaryButtonProps = {
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * The component may have a theme only if `isToggleButton` is `true`
+   * Indicates the size of the icon.
    */
   size?: 'small' | 'big';
+  /**
+   * Indicates the color scheme of the button.
+   */
   tone?: 'urgent' | 'primary';
-};
+} & /**
+ * Include any props derived from the React component passed to the `as` prop.
+ * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
+ * passed to `<PrimaryButton>`: <PrimaryButton as={Link} to="/foo" label="Foo" />.
+ */ React.ComponentPropsWithRef<TStringOrComponent>;
 
 const defaultProps: Pick<
   TPrimaryButtonProps,
@@ -65,8 +76,10 @@ const defaultProps: Pick<
   tone: 'primary',
 };
 
-const PrimaryButton = (props: TPrimaryButtonProps) => {
-  const dataProps = {
+const PrimaryButton = <TStringOrComponent extends React.ElementType = 'button'>(
+  props: TPrimaryButtonProps<TStringOrComponent>
+) => {
+  const buttonAttributes = {
     'data-track-component': 'PrimaryButton',
     ...filterInvalidAttributes(omit(props, propsToOmit)),
     // if there is a divergence between `isDisabled` and `disabled`,
@@ -93,7 +106,7 @@ const PrimaryButton = (props: TPrimaryButtonProps) => {
     <AccessibleButton
       as={props.as}
       type={props.type}
-      buttonAttributes={dataProps}
+      buttonAttributes={buttonAttributes}
       label={props.label}
       onClick={props.onClick}
       isToggleButton={props.isToggleButton}

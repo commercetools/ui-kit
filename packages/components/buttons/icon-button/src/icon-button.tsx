@@ -1,4 +1,4 @@
-import React, { ComponentType, MouseEvent, KeyboardEvent } from 'react';
+import React, { MouseEvent, KeyboardEvent } from 'react';
 import { css } from '@emotion/react';
 import isNil from 'lodash/isNil';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -13,12 +13,16 @@ import {
   getIconThemeColor,
 } from './icon-button.styles';
 
-export type TIconButtonProps = {
+export type TIconButtonProps<
+  TStringOrComponent extends React.ElementType = 'button'
+> = {
   /**
-   * a `ComponentType`. <br />
-   * You may pass in a string like "a" to have the button render as an anchor tag instead.
+   * You may pass in a string like "a" to have the button element render an anchor tag, or
+   * you could pass in a React Component, like a `Link`.
+   * <br />
+   * The `<IconButton>` additionally accepts any props or attributes specific to the given element or component.
    */
-  as?: string | ComponentType;
+  as?: TStringOrComponent;
   /**
    * Used as the HTML type attribute.
    */
@@ -59,8 +63,15 @@ export type TIconButtonProps = {
    * The component may have a theme only if `isToggleButton` is `true`
    */
   theme?: 'default' | 'primary' | 'info';
+  /**
+   * Indicates the size of the icon.
+   */
   size?: 'small' | 'medium' | 'big';
-};
+} & /**
+ * Include any props derived from the React component passed to the `as` prop.
+ * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
+ * passed to `<IconButton>`: <IconButton as={Link} to="/foo" label="Foo" />.
+ */ React.ComponentPropsWithRef<TStringOrComponent>;
 
 const defaultProps: Pick<
   TIconButtonProps,
@@ -73,7 +84,9 @@ const defaultProps: Pick<
   isToggleButton: false,
 };
 
-const IconButton = (props: TIconButtonProps) => {
+const IconButton = <TStringOrComponent extends React.ElementType = 'button'>(
+  props: TIconButtonProps<TStringOrComponent>
+) => {
   if (props.isToggleButton) {
     warning(
       !isNil(props.isToggled),
@@ -90,7 +103,7 @@ const IconButton = (props: TIconButtonProps) => {
     `Invalid prop \`theme\` supplied to \`IconButton\`. Only toggle buttons may have a theme.`
   );
 
-  const attributes = {
+  const buttonAttributes = {
     'data-track-component': 'IconButton',
     ...filterInvalidAttributes(props),
   };
@@ -99,7 +112,7 @@ const IconButton = (props: TIconButtonProps) => {
   return (
     <AccessibleButton
       as={props.as}
-      buttonAttributes={attributes}
+      buttonAttributes={buttonAttributes}
       type={props.type}
       label={props.label}
       onClick={props.onClick}
