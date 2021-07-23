@@ -1,6 +1,12 @@
 import React from 'react';
+import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../../test/test-utils';
 import AccessibleButton from './accessible-button';
+
+jest.mock('@commercetools-uikit/utils', () => ({
+  ...jest.requireActual('@commercetools-uikit/utils'),
+  warning: jest.fn(),
+}));
 
 const createTestProps = (custom) => ({
   label: 'test-button',
@@ -71,7 +77,19 @@ describe('rendering', () => {
       );
     });
   });
-
+  describe('warnings', () => {
+    describe('when using both `type` and `as` props', () => {
+      it('should warn', () => {
+        render(
+          <AccessibleButton {...props} onClick={null} as="div" type="submit" />
+        );
+        expect(warning).toHaveBeenCalledWith(
+          false,
+          'ui-kit/AccessibleButton: "type" does not have any effect when "as" is set.'
+        );
+      });
+    });
+  });
   describe('rendering as a div', () => {
     it('should render a div element with accessibility attributes', () => {
       render(<AccessibleButton {...props} as="div" />);
