@@ -1,10 +1,9 @@
 import React, { MouseEvent, KeyboardEvent } from 'react';
-import isNil from 'lodash/isNil';
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
+import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getButtonStyles } from './primary-button.styles';
 
@@ -86,20 +85,6 @@ const PrimaryButton = <TStringOrComponent extends React.ElementType = 'button'>(
     // we fall back to `isDisabled`
     disabled: props.isDisabled,
   };
-
-  if (isNil(props.as)) {
-    warning(
-      typeof props.onClick === 'function',
-      'PrimaryButton: `onClick` is required when `as` is not provided.'
-    );
-  }
-
-  if (props.isToggleButton) {
-    warning(
-      !isNil(props.isToggled),
-      '`PrimaryButton`: `isToggled` is required when `isToggleButton` is provided.'
-    );
-  }
 
   const isActive = Boolean(props.isToggleButton && props.isToggled);
   return (

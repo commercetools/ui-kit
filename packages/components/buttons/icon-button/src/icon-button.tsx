@@ -1,6 +1,5 @@
 import React, { MouseEvent, KeyboardEvent } from 'react';
 import { css } from '@emotion/react';
-import isNil from 'lodash/isNil';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
@@ -87,17 +86,6 @@ const defaultProps: Pick<
 const IconButton = <TStringOrComponent extends React.ElementType = 'button'>(
   props: TIconButtonProps<TStringOrComponent>
 ) => {
-  if (props.isToggleButton) {
-    warning(
-      !isNil(props.isToggled),
-      '`IconButton`: `isToggled` is required when `isToggleButton` is provided.'
-    );
-  }
-  // the type defaults to `button`, so we don't need to handle undefined
-  warning(
-    !(props.as && props.type !== 'button'),
-    'IconButton`: "type" does not have any effect when "as" is set.'
-  );
   warning(
     !(props.theme !== 'default' && !props.isToggleButton),
     `Invalid prop \`theme\` supplied to \`IconButton\`. Only toggle buttons may have a theme.`

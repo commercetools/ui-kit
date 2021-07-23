@@ -1,4 +1,3 @@
-import type { LocationDescriptorObject, LocationDescriptor } from 'history';
 import React, {
   ReactElement,
   KeyboardEvent,
@@ -6,17 +5,12 @@ import React, {
   ComponentType,
 } from 'react';
 import { Link } from 'react-router-dom';
-import isNil from 'lodash/isNil';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
-
-type TLocationDescriptionWithQuery = LocationDescriptorObject & {
-  query?: unknown;
-};
 
 export type TSecondaryButtonProps<
   TStringOrComponent extends React.ElementType = 'button'
@@ -113,11 +107,6 @@ export const SecondaryButton = <
   warning(
     !(props.theme !== 'default' && !props.isToggleButton),
     `Invalid prop \`theme\` supplied to \`SecondaryButton\`. Only toggle buttons may have a theme.`
-  );
-
-  warning(
-    !(props.as && props.type !== 'button'),
-    'SecondaryButton: "type" does not have any effect when "as" is set.'
   );
 
   const containerStyles = [
