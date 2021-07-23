@@ -13768,6 +13768,11 @@ ts-node@10.0.0:
     source-map-support "^0.5.17"
     yn "3.1.1"
 
+tsc-files@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/tsc-files/-/tsc-files-1.1.2.tgz#acd181949ef53811fc6df455baef41adaf616442"
+  integrity sha512-biLtl4npoohZ9MBnTFw4NttqYM60RscjzjWxT538UCS8iXaGRZMi+AXj+vEEpDdcjIS2Kx0Acj++1gor5dbbBw==
+
 tsconfig-paths@^3.9.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.9.0.tgz#098547a6c4448807e8fcb8eae081064ee9a3c90b"

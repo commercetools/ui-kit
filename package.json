@@ -155,6 +155,7 @@
     "stylelint-order": "4.1.0",
     "ts-jest": "27.0.3",
     "ts-node": "10.0.0",
+    "tsc-files": "1.1.2",
     "typescript": "4.3.5"
   },
   "resolutions": {
