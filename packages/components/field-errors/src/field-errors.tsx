@@ -12,7 +12,7 @@ export type TFieldErrorsProps = {
   /**
    * List of errors. Only entries with truthy values will count as active errors.
    */
-  errors: TFieldErrors;
+  errors?: TFieldErrors;
   /**
    * `true` when the error messages should be rendered. Usually you'd pass in a `touched` state of fields.
    */
@@ -30,7 +30,7 @@ export type TFieldErrorsProps = {
 
 const FieldErrors = (props: TFieldErrorsProps) => {
   if (!props.isVisible) return null;
-  if (!isObject(props.errors)) return null;
+  if (!props.errors || !isObject(props.errors)) return null;
 
   return (
     <React.Fragment>
