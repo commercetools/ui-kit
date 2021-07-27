@@ -2,9 +2,8 @@ module.exports = {
   '*.md': ['prettier --write --parser markdown'],
   '*.yaml': ['prettier --write --parser yaml'],
   '*.json': ['prettier --write --parser json'],
-  '*.{ts,tsx}': ['prettier --write --parser typescript'],
-  '*.js': [
-    'prettier --write',
+  '*.{js,ts,tsx}': [
+    'yarn prettier --write',
     // NOTE: apparently if you pass some argument that is not a flag AFTER the `reporters`
     // flag, jest does not seem correctly parse the arguments.
     //
@@ -14,6 +13,6 @@ module.exports = {
     //
     // For that reason, we move the `--onlyChanged` flag next to it.
     'yarn lint:js --reporters=jest-silent-reporter --onlyChanged',
-    'yarn lint:css --reporters=jest-silent-reporter --onlyChanged --passWithNoTests',
+    'tsc-files --noEmit',
   ],
 };

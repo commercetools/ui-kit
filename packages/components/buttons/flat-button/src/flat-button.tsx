@@ -1,5 +1,5 @@
 import type { Theme } from '@emotion/react';
-import React, { ComponentType, MouseEvent, KeyboardEvent } from 'react';
+import React, { MouseEvent, KeyboardEvent } from 'react';
 import { css, useTheme } from '@emotion/react';
 import omit from 'lodash/omit';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -13,15 +13,18 @@ const propsToOmit = ['type'];
 export type TExtendedTheme = Theme & {
   [key: string]: string;
 };
-export type TFlatButtonProps = {
+export type TFlatButtonProps<
+  TStringOrComponent extends React.ElementType = 'button'
+> = {
   /**
-   * You may pass in a string like "a" to have the button render as an anchor tag instead.
-   * <br/>
-   * Or you could pass in a React Component, like a `Link`.
+   * You may pass in a string like "a" to have the button element render an anchor tag, or
+   * you could pass in a React Component, like a `Link`.
+   * <br />
+   * The `<FlatButton>` additionally accepts any props or attributes specific to the given element or component.
    */
-  as?: string | ComponentType;
+  as?: TStringOrComponent;
   /**
-   * Indicates the color scheme of button
+   * Indicates the color scheme of the button.
    */
   tone?: 'primary' | 'secondary' | 'inverted';
   /**
@@ -29,11 +32,11 @@ export type TFlatButtonProps = {
    */
   type?: 'submit' | 'reset' | 'button';
   /**
-   * Should describe what the button is for
+   * Should describe what the button is for.
    */
   label: string;
   /**
-   * Handler when the button is clicked
+   * Handler when the button is clicked.
    * <br />
    * Signature: (event: MouseEvent<HTMLButtonElement) => void
    */
@@ -41,11 +44,11 @@ export type TFlatButtonProps = {
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * The icon of the button
+   * The icon of the button.
    */
   icon?: React.ReactElement;
   /**
-   * The position of the icon
+   * The position of the icon.
    */
   iconPosition?: 'left' | 'right';
   /**
@@ -54,7 +57,11 @@ export type TFlatButtonProps = {
    * Note that this influences the `tone` and `onClick` will not be triggered in this state.
    */
   isDisabled?: boolean;
-};
+} & /**
+ * Include any props derived from the React component passed to the `as` prop.
+ * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
+ * passed to `<FlatButton>`: <FlatButton as={Link} to="/foo" label="Foo" />.
+ */ React.ComponentPropsWithRef<TStringOrComponent>;
 
 const defaultProps: Pick<
   TFlatButtonProps,
@@ -66,8 +73,11 @@ const defaultProps: Pick<
   isDisabled: false,
 };
 
-const ButtonIcon = (
-  props: Pick<TFlatButtonProps, 'as' | 'isDisabled' | 'tone' | 'icon'>
+const ButtonIcon = <TStringOrComponent extends React.ElementType = 'button'>(
+  props: Pick<
+    TFlatButtonProps<TStringOrComponent>,
+    'as' | 'isDisabled' | 'tone' | 'icon'
+  >
 ) => {
   if (!props.icon) return null;
   const iconColor = getButtonIconColor(props);
@@ -90,9 +100,12 @@ const ButtonIcon = (
 };
 ButtonIcon.displayName = 'ButtonIcon';
 
-const FlatButton = (props: TFlatButtonProps) => {
-  const dataProps = {
+const FlatButton = <TStringOrComponent extends React.ElementType = 'button'>(
+  props: TFlatButtonProps<TStringOrComponent>
+) => {
+  const buttonAttributes = {
     'data-track-component': 'FlatButton',
+    // Forward valid attributes to the `<AccessibleButton>`.
     ...filterInvalidAttributes(omit(props, propsToOmit)),
     // if there is a divergence between `isDisabled` and `disabled`,
     // we fall back to `isDisabled`
@@ -150,12 +163,14 @@ const FlatButton = (props: TFlatButtonProps) => {
             }`
           : ''}
       `}
-      buttonAttributes={dataProps}
+      buttonAttributes={buttonAttributes}
     >
-      {props.icon && props.iconPosition === 'left' && <ButtonIcon {...props} />}
+      {props.icon && props.iconPosition === 'left' && (
+        <ButtonIcon<TStringOrComponent> {...props} />
+      )}
       <Text.Body as="span">{props.label}</Text.Body>
       {props.icon && props.iconPosition === 'right' && (
-        <ButtonIcon {...props} />
+        <ButtonIcon<TStringOrComponent> {...props} />
       )}
     </AccessibleButton>
   );

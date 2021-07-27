@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
-import { warning } from '@commercetools-uikit/utils';
 import {
   screen,
   render,
@@ -9,11 +8,6 @@ import {
   waitFor,
 } from '../../../../../test/test-utils';
 import SecondaryButton from './secondary-button';
-
-jest.mock('@commercetools-uikit/utils', () => ({
-  ...jest.requireActual('@commercetools-uikit/utils'),
-  warning: jest.fn(),
-}));
 
 const createTestProps = (custom) => ({
   label: 'Add',
@@ -76,15 +70,6 @@ describe('rendering', () => {
     it('should render a button of type "reset"', () => {
       render(<SecondaryButton {...props} type="reset" />);
       expect(screen.getByLabelText('Add')).toHaveAttribute('type', 'reset');
-    });
-  });
-  describe('when using `to` and using `as`', () => {
-    it('should warn', () => {
-      render(<SecondaryButton {...props} onClick={null} to="/foo/bar" />);
-      expect(warning).toHaveBeenCalledWith(
-        false,
-        'Invalid prop "to" supplied to "SecondaryButton". "to" does not have any effect when "as" is not defined.'
-      );
     });
   });
   describe('when using as', () => {

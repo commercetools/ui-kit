@@ -217,14 +217,14 @@ export {
   /**
    * The component rendered as the tooltip body.
    */
-  BodyComponent?: ElementType;
+  BodyComponent?: ComponentType;
   /**
    * Where the tooltip should be rendered. This can be useful to render the tooltip into another part of the document, using React portal.
    */
-  TooltipWrapperComponent?: ElementType;
+  TooltipWrapperComponent?: ComponentType;
   /**
    * A custom component wrapper for the tooltip.
    */
-  WrapperComponent?: ElementType;
+  WrapperComponent?: ComponentType;
 }
 ```
