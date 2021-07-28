@@ -19,7 +19,7 @@
   "main": "dist/commercetools-uikit-icons.cjs.js",
   "module": "dist/commercetools-uikit-icons.esm.js",
   "preconstruct": {
-    "entrypoints": ["./index.ts", "./inline-svg.tsx"]
+    "entrypoints": ["./index.ts", "./inline-svg/index.ts"]
   },
   "files": ["dist", "inline-svg"],
   "scripts": {

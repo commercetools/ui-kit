@@ -1,11 +1,11 @@
-import type { Props } from './templates/icon.styles';
+import type { Props } from '../templates/icon.styles';
 
 import React, { useMemo } from 'react';
 import DOMPurify from 'dompurify';
 import convert from 'react-from-dom';
 import { useTheme, ClassNames } from '@emotion/react';
 import { canUseDOM } from '@commercetools-uikit/utils';
-import { getIconStyles } from './templates/icon.styles';
+import { getIconStyles } from '../templates/icon.styles';
 
 type InlineSvgProps = Props & {
   data: string;
