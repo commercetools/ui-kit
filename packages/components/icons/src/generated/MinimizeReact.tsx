@@ -142,24 +142,7 @@ const SvgMinimize = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="minimize_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="minimize_react_svg__MC-icon-set"
-        transform="translate(-24 -648)"
-        fill="#000"
-      >
-        <g id="minimize_react_svg__Actions" transform="translate(24 648)">
-          <g id="minimize_react_svg__Minimize">
-            <path id="minimize_react_svg__shape" d="M6 11h12v2H6z" />
-          </g>
-        </g>
-      </g>
-    </g>
+    <path d="M6 11h12v2H6z" fillRule="evenodd" />
   </svg>
 );
 

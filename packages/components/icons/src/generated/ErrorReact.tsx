@@ -142,27 +142,10 @@ const SvgError = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="error_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M8.337 17.491a6.6 6.6 0 009.154-9.154l-9.154 9.154zm-1.72-1.673l9.201-9.202a6.6 6.6 0 00-9.202 9.202zM12 21a9 9 0 110-18 9 9 0 010 18z"
       fillRule="evenodd"
-    >
-      <g
-        id="error_react_svg__MC-icon-set"
-        transform="translate(-96 -360)"
-        fill="#000"
-      >
-        <g id="error_react_svg__Notices" transform="translate(24 312)">
-          <g id="error_react_svg__Error" transform="translate(72 48)">
-            <path
-              d="M8.337 17.491a6.6 6.6 0 009.154-9.154l-9.154 9.154zm-1.72-1.673l9.201-9.202a6.6 6.6 0 00-9.202 9.202zM12 21a9 9 0 110-18 9 9 0 010 18z"
-              id="error_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

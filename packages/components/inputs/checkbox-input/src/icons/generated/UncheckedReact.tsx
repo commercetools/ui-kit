@@ -142,45 +142,17 @@ const SvgUnchecked = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="unchecked_react_svg__ATOM---Checkboxes---Radio-buttons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="unchecked_react_svg__Checkboxes-Radio-Buttons"
-        transform="translate(-177 -645)"
-      >
-        <g
-          id="unchecked_react_svg__checkbox-empty-default"
-          transform="translate(177 644)"
-        >
-          <rect
-            id="unchecked_react_svg__background"
-            fill="#FFF"
-            x={0}
-            y={1}
-            width={16}
-            height={16}
-            rx={4}
-          />
-          <g
-            id="unchecked_react_svg__borderAndContent"
-            transform="translate(0 .5)"
-            stroke="#AFAFAF"
-          >
-            <rect
-              id="unchecked_react_svg__border"
-              x={0.5}
-              y={1}
-              width={15}
-              height={15}
-              rx={4}
-            />
-          </g>
-        </g>
-      </g>
+    <g transform="translate(0 -1)" fillRule="evenodd">
+      <rect fill="#FFF" y={1} width={16} height={16} rx={4} />
+      <rect
+        x={0.5}
+        y={1}
+        width={15}
+        height={15}
+        rx={4}
+        transform="translate(0 .5)"
+        stroke="#AFAFAF"
+      />
     </g>
   </svg>
 );

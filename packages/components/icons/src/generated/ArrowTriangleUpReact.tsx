@@ -142,29 +142,7 @@ const SvgArrowTriangleUp = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="arrow-triangle-up_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="arrow-triangle-up_react_svg__MC-icon-set"
-        transform="translate(-168 -1032)"
-        fill="#000"
-      >
-        <g
-          id="arrow-triangle-up_react_svg__Directions"
-          transform="translate(24 888)"
-        >
-          <path
-            d="M12 4l9 15H3"
-            transform="translate(144 144)"
-            id="arrow-triangle-up_react_svg__Arrow-Triangle-Up"
-          />
-        </g>
-      </g>
-    </g>
+    <path d="M12 4l9 15H3" fillRule="evenodd" />
   </svg>
 );
 

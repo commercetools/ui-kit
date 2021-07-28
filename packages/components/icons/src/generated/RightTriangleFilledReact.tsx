@@ -142,20 +142,7 @@ const SvgRightTriangleFilled = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="right-triangle-filled_react_svg__Table-compact-truncation-v3"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="right-triangle-filled_react_svg__Component-/-icon-/-12px-/-triangle-corner-/-filled"
-        transform="translate(-2 -2)"
-        fill="#1A1A1A"
-      >
-        <path d="M10 2v8H2z" id="right-triangle-filled_react_svg__Triangle" />
-      </g>
-    </g>
+    <path d="M8 0v8H0z" fill="#1A1A1A" fillRule="evenodd" />
   </svg>
 );
 

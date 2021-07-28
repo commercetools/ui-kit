@@ -135,26 +135,11 @@ export const getIconStyles = (props: Props, theme: Theme) => css`
 `;
 
 const SvgStar = (props: Props) => (
-  <svg
-    id="star_react_svg__Ebene_1"
-    xmlns="http://www.w3.org/2000/svg"
-    x={0}
-    y={0}
-    viewBox="0 0 24 24"
-    xmlSpace="preserve"
-    {...props}
-  >
-    <g id="star_react_svg__Symbols">
-      <g id="star_react_svg__star-icon">
-        <g id="star_react_svg__Group">
-          <path
-            id="star_react_svg__Path"
-            className="star_react_svg__st0"
-            d="M9.1 9L12 3l2.9 6 6.6.9-4.9 4.5 1.3 6.6-5.9-3.2L6.1 21l1.3-6.6-4.9-4.5z"
-          />
-        </g>
-      </g>
-    </g>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <path
+      className="star_react_svg__st0"
+      d="M9.1 9L12 3l2.9 6 6.6.9-4.9 4.5 1.3 6.6-5.9-3.2L6.1 21l1.3-6.6-4.9-4.5z"
+    />
   </svg>
 );
 

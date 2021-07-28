@@ -142,23 +142,10 @@ const SvgCircle = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="circle_react_svg__Symbols"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="circle_react_svg__Component-/-icon-/-24px-/-circle-Copy"
-        fill="#000"
-        fillRule="nonzero"
-      >
-        <path
-          d="M12.5 17.5a5 5 0 100-10 5 5 0 000 10zm0 2.5a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"
-          id="circle_react_svg__circle"
-        />
-      </g>
-    </g>
+    <path
+      d="M12.5 17.5a5 5 0 100-10 5 5 0 000 10zm0 2.5a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"
+      fillRule="nonzero"
+    />
   </svg>
 );
 

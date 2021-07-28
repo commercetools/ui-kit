@@ -142,23 +142,11 @@ const SvgRightTriangleLinear = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="right-triangle-linear_react_svg__Table-compact-truncation-v3"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M8 0v8H0l8-8zM7 2.287L2.247 7H7V2.287z"
+      fill="#1A1A1A"
       fillRule="evenodd"
-    >
-      <g
-        id="right-triangle-linear_react_svg__Component-/-icon-/-12px-/-triangle-corner-/-linear"
-        transform="translate(-2 -2)"
-        fill="#1A1A1A"
-      >
-        <path
-          d="M10 2v8H2l8-8zM9 4.287L4.247 9H9V4.287z"
-          id="right-triangle-linear_react_svg__Combined-Shape"
-        />
-      </g>
-    </g>
+    />
   </svg>
 );
 

@@ -142,33 +142,10 @@ const SvgArrowLongDown = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="arrow-long-down_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M15.494 17.318H12.875v-13.5a.82.82 0 00-1.64 0v13.5H8.547L12.055 21l3.44-3.682z"
       fillRule="evenodd"
-    >
-      <g
-        id="arrow-long-down_react_svg__MC-icon-set"
-        transform="translate(-96 -984)"
-        fill="#000"
-      >
-        <g
-          id="arrow-long-down_react_svg__Directions"
-          transform="translate(24 888)"
-        >
-          <g
-            id="arrow-long-down_react_svg__Arrow-Long-Down"
-            transform="translate(72 96)"
-          >
-            <path
-              d="M15.494 17.318H12.875v-13.5a.82.82 0 00-1.64 0v13.5H8.547L12.055 21l3.44-3.682z"
-              id="arrow-long-down_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

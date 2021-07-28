@@ -142,28 +142,10 @@ const SvgAngleUp = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="angle-up_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M3.18 16.817l.901.94c.12.125.259.188.415.188a.558.558 0 00.415-.188l7.087-7.39 7.086 7.39c.12.125.259.188.415.188a.559.559 0 00.415-.188l.901-.94a.606.606 0 000-.866l-8.403-8.763A.56.56 0 0011.998 7a.558.558 0 00-.415.188L3.18 15.951a.607.607 0 000 .866z"
       fillRule="evenodd"
-    >
-      <g
-        id="angle-up_react_svg__MC-icon-set"
-        transform="translate(-240 -888)"
-        fill="#000"
-      >
-        <g id="angle-up_react_svg__Directions" transform="translate(24 888)">
-          <g id="angle-up_react_svg__Angle-Up" transform="translate(216)">
-            <path
-              d="M20.816 8.128l-.902-.94A.559.559 0 0019.5 7a.558.558 0 00-.414.188l-7.087 7.39-7.087-7.39A.559.559 0 004.497 7a.559.559 0 00-.415.188l-.902.94a.606.606 0 000 .866l8.403 8.763a.56.56 0 00.415.188.558.558 0 00.414-.188l8.404-8.763a.607.607 0 000-.866z"
-              id="angle-up_react_svg__shape"
-              transform="rotate(-180 11.998 12.473)"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

@@ -142,31 +142,10 @@ const SvgPinLinear = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="pin-linear_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M9.023 12.328l2.813 1.97 3.982-5.687-2.813-1.97-3.982 5.687zm5.365 5.811c.533-.761.336-1.82-.441-2.363l-.704-.493 3.983-5.688c.774.519 1.816.339 2.342-.413l-8.411-5.89c-.533.762-.336 1.82.441 2.364l-3.982 5.687-.703-.492c-.777-.545-1.84-.368-2.372.393L8.76 14.2l-3.74 5.342 1.406.985 3.74-5.342 4.221 2.955z"
       fillRule="evenodd"
-    >
-      <g
-        id="pin-linear_react_svg__MC-icon-set"
-        transform="translate(-240 -744)"
-        fill="#000"
-      >
-        <g id="pin-linear_react_svg__Actions" transform="translate(24 648)">
-          <g
-            id="pin-linear_react_svg__Pin-active"
-            transform="translate(216 96)"
-          >
-            <path
-              d="M8.833 13.351h3.435V6.41H8.833v6.942zm7.728 1.683c0-.93-.769-1.683-1.717-1.683h-.859V6.407c.932-.019 1.682-.764 1.682-1.681H5.398c0 .93.77 1.683 1.718 1.683v6.942h-.859c-.949 0-1.717.754-1.717 1.683h5.152v6.522h1.717v-6.522h5.152z"
-              id="pin-linear_react_svg__shape"
-              transform="rotate(35 10.55 13.14)"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

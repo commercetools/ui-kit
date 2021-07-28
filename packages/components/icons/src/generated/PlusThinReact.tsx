@@ -142,27 +142,10 @@ const SvgPlusThin = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="plus-thin_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M12.5 11.5v-8a.5.5 0 10-1 0v8h-8a.5.5 0 100 1h8v8a.5.5 0 101 0v-8h8a.5.5 0 100-1h-8z"
       fillRule="evenodd"
-    >
-      <g
-        id="plus-thin_react_svg__MC-icon-set"
-        transform="translate(-168 -120)"
-        fill="#000"
-      >
-        <g id="plus-thin_react_svg__CRUD" transform="translate(24 120)">
-          <g id="plus-thin_react_svg__Add" transform="translate(144)">
-            <path
-              d="M12.5 11.5v-8a.5.5 0 10-1 0v8h-8a.5.5 0 100 1h8v8a.5.5 0 101 0v-8h8a.5.5 0 100-1h-8z"
-              id="plus-thin_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

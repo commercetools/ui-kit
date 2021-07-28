@@ -142,27 +142,10 @@ const SvgAngleDown = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="angle-down_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M20.816 8.115l-.902-.909a.567.567 0 00-.415-.182.567.567 0 00-.414.182l-7.087 7.147L4.91 7.206a.567.567 0 00-.414-.181.567.567 0 00-.415.181l-.902.91a.576.576 0 000 .836l8.403 8.474c.12.12.259.182.415.182.156 0 .294-.061.414-.182l8.404-8.474a.577.577 0 000-.837z"
       fillRule="evenodd"
-    >
-      <g
-        id="angle-down_react_svg__MC-icon-set"
-        transform="translate(-168 -888)"
-        fill="#000"
-      >
-        <g id="angle-down_react_svg__Directions" transform="translate(24 888)">
-          <g id="angle-down_react_svg__Angle-Down" transform="translate(144)">
-            <path
-              d="M20.816 8.115l-.902-.909a.567.567 0 00-.415-.182.567.567 0 00-.414.182l-7.087 7.147L4.91 7.206a.567.567 0 00-.414-.181.567.567 0 00-.415.181l-.902.91a.576.576 0 000 .836l8.403 8.474c.12.12.259.182.415.182.156 0 .294-.061.414-.182l8.404-8.474a.577.577 0 000-.837z"
-              id="angle-down_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

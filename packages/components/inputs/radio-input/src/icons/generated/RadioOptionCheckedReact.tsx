@@ -142,47 +142,10 @@ const SvgRadioOptionChecked = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="radio-option-checked_react_svg__ATOM---Checkboxes---Radio-buttons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="radio-option-checked_react_svg__Checkboxes-Radio-Buttons"
-        transform="translate(-402 -725)"
-      >
-        <g
-          id="radio-option-checked_react_svg__RadioButton-active-default"
-          transform="translate(402 725)"
-        >
-          <circle
-            id="radio-option-checked_react_svg__background"
-            stroke="#AFAFAF"
-            fill="#FFF"
-            cx={8}
-            cy={8}
-            r={7.5}
-          />
-          <g id="radio-option-checked_react_svg__borderAndContent">
-            <circle
-              id="radio-option-checked_react_svg__border"
-              stroke="#AFAFAF"
-              fill="#FFF"
-              cx={8}
-              cy={8}
-              r={7.5}
-            />
-            <circle
-              id="radio-option-checked_react_svg__content"
-              fill="#20AD92"
-              cx={8}
-              cy={8}
-              r={4}
-            />
-          </g>
-        </g>
-      </g>
+    <g fillRule="evenodd">
+      <circle stroke="#AFAFAF" fill="#FFF" cx={8} cy={8} r={7.5} />
+      <circle stroke="#AFAFAF" fill="#FFF" cx={8} cy={8} r={7.5} />
+      <circle fill="#20AD92" cx={8} cy={8} r={4} />
     </g>
   </svg>
 );

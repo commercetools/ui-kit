@@ -142,27 +142,10 @@ const SvgDragDrop = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="drag-drop_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M12.982 9.877V7.293H16.076L12.037 3 8.076 7.293h3.016v6.753c0 .018 0 .035.002.052v2.585H8l4.039 4.292L16 16.683H12.983V9.929l-.001-.052z"
       fillRule="evenodd"
-    >
-      <g
-        id="drag-drop_react_svg__MC-icon-set"
-        transform="translate(-240 -792)"
-        fill="#000"
-      >
-        <g id="drag-drop_react_svg__Actions" transform="translate(24 648)">
-          <g id="drag-drop_react_svg__Drag-Drop" transform="translate(216 144)">
-            <path
-              d="M12.982 9.877V7.293H16.076L12.037 3 8.076 7.293h3.016v6.753c0 .018 0 .035.002.052v2.585H8l4.039 4.292L16 16.683H12.983V9.929l-.001-.052z"
-              id="drag-drop_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

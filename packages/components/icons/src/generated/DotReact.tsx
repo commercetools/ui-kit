@@ -142,13 +142,13 @@ const SvgDot = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g id="dot_react_svg__dot" stroke="none" strokeWidth={1} fillRule="evenodd">
-      <g transform="translate(-97 -49)" id="dot_react_svg__TableOld">
-        <g id="dot_react_svg__Dot" transform="translate(0 40)">
-          <circle id="dot_react_svg__Oval-3" cx={106} cy={18} r={9} />
-        </g>
-      </g>
-    </g>
+    <circle
+      cx={106}
+      cy={18}
+      r={9}
+      transform="translate(-97 -9)"
+      fillRule="evenodd"
+    />
   </svg>
 );
 

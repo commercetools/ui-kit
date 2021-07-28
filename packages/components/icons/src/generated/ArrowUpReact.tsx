@@ -142,28 +142,10 @@ const SvgArrowUp = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="arrow-up_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M5.784 9.44H10.488v10.129c0 .79.66 1.431 1.473 1.431.814 0 1.473-.64 1.473-1.431V9.439h4.825L11.96 3 5.784 9.44z"
       fillRule="evenodd"
-    >
-      <g
-        id="arrow-up_react_svg__MC-icon-set"
-        transform="translate(-240 -984)"
-        fill="#000"
-      >
-        <g id="arrow-up_react_svg__Directions" transform="translate(24 888)">
-          <g id="arrow-up_react_svg__Arrow-Up" transform="translate(216 96)">
-            <path
-              d="M18.259 14.56H13.555V4.432c0-.79-.66-1.431-1.474-1.431-.813 0-1.473.64-1.473 1.431v10.13H5.784L12.08 21l6.178-6.44z"
-              id="arrow-up_react_svg__shape"
-              transform="rotate(-180 12.021 12)"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 
