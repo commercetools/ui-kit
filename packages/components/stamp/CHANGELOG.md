@@ -1,5 +1,12 @@
 # @commercetools-uikit/stamp
 
+## 12.2.2
+
+### Patch Changes
+
+- Updated dependencies [[`52cd68bf`](https://github.com/commercetools/ui-kit/commit/52cd68bfaac2359801bb6a716a41b200da9d8b99)]:
+  - @commercetools-uikit/design-system@12.2.2
+
 ## 12.1.0
 
 ### Patch Changes

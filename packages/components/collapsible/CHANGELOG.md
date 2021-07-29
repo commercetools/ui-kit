@@ -1,5 +1,14 @@
 # @commercetools-uikit/collapsible
 
+## 12.2.2
+
+### Patch Changes
+
+- [#1966](https://github.com/commercetools/ui-kit/pull/1966) [`52cd68bf`](https://github.com/commercetools/ui-kit/commit/52cd68bfaac2359801bb6a716a41b200da9d8b99) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`64e4bc89`](https://github.com/commercetools/ui-kit/commit/64e4bc891914b65d319611b35c4a52f011c11a07), [`64e4bc89`](https://github.com/commercetools/ui-kit/commit/64e4bc891914b65d319611b35c4a52f011c11a07)]:
+  - @commercetools-uikit/hooks@12.2.2
+
 ## 12.2.0
 
 ### Patch Changes

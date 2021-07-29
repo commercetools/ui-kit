@@ -1,5 +1,16 @@
 # @commercetools-uikit/search-select-input
 
+## 12.2.2
+
+### Patch Changes
+
+- Updated dependencies [[`52cd68bf`](https://github.com/commercetools/ui-kit/commit/52cd68bfaac2359801bb6a716a41b200da9d8b99)]:
+  - @commercetools-uikit/design-system@12.2.2
+  - @commercetools-uikit/async-select-input@12.2.2
+  - @commercetools-uikit/select-utils@12.2.2
+  - @commercetools-uikit/text@12.2.2
+  - @commercetools-uikit/spacings@12.2.2
+
 ## 12.2.1
 
 ### Patch Changes
