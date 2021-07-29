@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgSorting = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="sorting_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M12.994 17.318L9.554 21l-3.506-3.682h2.686v-5.5a.82.82 0 011.641 0v5.5h2.62zM11.006 6.682L14.446 3l3.506 3.682h-2.686v5.5a.82.82 0 01-1.641 0v-5.5h-2.62z"
       fillRule="evenodd"
-    >
-      <g
-        id="sorting_react_svg__MC-icon-set"
-        transform="translate(-24 -840)"
-        fill="#000"
-      >
-        <g id="sorting_react_svg__Actions" transform="translate(24 648)">
-          <g id="sorting_react_svg__Sorting" transform="translate(0 192)">
-            <path
-              d="M12.994 17.318L9.554 21l-3.506-3.682h2.686v-5.5a.82.82 0 011.641 0v5.5h2.62zM11.006 6.682L14.446 3l3.506 3.682h-2.686v5.5a.82.82 0 01-1.641 0v-5.5h-2.62z"
-              id="sorting_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

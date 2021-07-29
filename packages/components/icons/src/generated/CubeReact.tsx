@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgCube = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="cube_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M8.174 9.646l-.026.016-3.445-2.127L11.998 3l2.937 1.825.031-.02 4.327 2.73-7.295 4.535-3.824-2.424zm3.599 2.845v8.369L4.5 16.325v-8.37l3.513 2.198 3.76 2.338zm.45 0l7.273-4.535v8.369l-7.273 4.535v-8.37z"
       fillRule="evenodd"
-    >
-      <g
-        id="cube_react_svg__MC-icon-set"
-        transform="translate(-24 -72)"
-        fill="#000"
-      >
-        <g id="cube_react_svg__Application" transform="translate(24 24)">
-          <g id="cube_react_svg__Cube" transform="translate(0 48)">
-            <path
-              d="M8.174 9.646l-.026.016-3.445-2.127L11.998 3l2.937 1.825.031-.02 4.327 2.73-7.295 4.535-3.824-2.424zm3.599 2.845v8.369L4.5 16.325v-8.37l3.513 2.198 3.76 2.338zm.45 0l7.273-4.535v8.369l-7.273 4.535v-8.37z"
-              id="cube_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

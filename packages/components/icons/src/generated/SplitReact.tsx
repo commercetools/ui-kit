@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgSplit = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="split_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M11.667 19l-5.844-5.368a2 2 0 11.044-3.232l5.8-5.4h5V3.438c0-.119.044-.222.132-.308A.431.431 0 0117.11 3a.43.43 0 01.313.13l3.11 3.062c.089.087.133.19.133.308a.418.418 0 01-.132.308L17.424 9.87a.43.43 0 01-.313.13.43.43 0 01-.312-.13.417.417 0 01-.132-.308V7h-4.263L7 12.039 12.32 17h4.347v-2.562c0-.119.044-.222.132-.308a.431.431 0 01.312-.13.43.43 0 01.313.13l3.11 3.062c.089.087.133.19.133.308a.418.418 0 01-.132.308l-3.111 3.062a.43.43 0 01-.313.13.43.43 0 01-.312-.13.417.417 0 01-.132-.308V19h-5z"
       fillRule="evenodd"
-    >
-      <g
-        id="split_react_svg__MC-icon-set"
-        transform="translate(-168 -792)"
-        fill="#000"
-      >
-        <g id="split_react_svg__Actions" transform="translate(24 648)">
-          <g id="split_react_svg__Split" transform="translate(144 144)">
-            <path
-              d="M11.667 19l-5.844-5.368a2 2 0 11.044-3.232l5.8-5.4h5V3.438c0-.119.044-.222.132-.308A.431.431 0 0117.11 3a.43.43 0 01.313.13l3.11 3.062c.089.087.133.19.133.308a.418.418 0 01-.132.308L17.424 9.87a.43.43 0 01-.313.13.43.43 0 01-.312-.13.417.417 0 01-.132-.308V7h-4.263L7 12.039 12.32 17h4.347v-2.562c0-.119.044-.222.132-.308a.431.431 0 01.312-.13.43.43 0 01.313.13l3.11 3.062c.089.087.133.19.133.308a.418.418 0 01-.132.308l-3.111 3.062a.43.43 0 01-.313.13.43.43 0 01-.312-.13.417.417 0 01-.132-.308V19h-5z"
-              id="split_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

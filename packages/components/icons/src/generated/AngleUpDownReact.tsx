@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,26 +142,8 @@ const SvgAngleUpDown = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="angle-up-down_react_svg__AngleUpDownIcon"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="angle-up-down_react_svg__Component-/-icon-/-16px-/-angle-/-down-"
-        fill="#1A1A1A"
-      >
-        <path
-          d="M23.84 19.142l-.801-.86a.491.491 0 00-.37-.171.49.49 0 00-.368.172l-6.3 6.752-6.302-6.752a.491.491 0 00-.368-.172.49.49 0 00-.37.172l-.8.859a.562.562 0 00-.161.395c0 .149.054.28.16.395l7.471 8.007c.107.115.23.172.37.172a.49.49 0 00.368-.172l7.471-8.007a.562.562 0 00.16-.395.563.563 0 00-.16-.395z"
-          id="angle-up-down_react_svg__shape"
-        />
-        <path
-          d="M23.84 5.03l-.801-.858a.491.491 0 00-.37-.172.49.49 0 00-.368.172l-6.3 6.752-6.302-6.752A.491.491 0 009.331 4a.49.49 0 00-.37.172l-.8.86A.562.562 0 008 5.425c0 .15.054.28.16.395l7.471 8.007c.107.115.23.172.37.172a.49.49 0 00.368-.172l7.471-8.007a.562.562 0 00.16-.395.563.563 0 00-.16-.395z"
-          id="angle-up-down_react_svg__shape"
-          transform="matrix(1 0 0 -1 0 18)"
-        />
-      </g>
+    <g fill="#1A1A1A" fillRule="evenodd">
+      <path d="M23.84 19.142l-.801-.86a.491.491 0 00-.37-.171.49.49 0 00-.368.172l-6.3 6.752-6.302-6.752a.491.491 0 00-.368-.172.49.49 0 00-.37.172l-.8.859a.562.562 0 00-.161.395c0 .149.054.28.16.395l7.471 8.007c.107.115.23.172.37.172a.49.49 0 00.368-.172l7.471-8.007a.562.562 0 00.16-.395.563.563 0 00-.16-.395zM23.84 12.97l-.801.858a.491.491 0 01-.37.172.49.49 0 01-.368-.172l-6.3-6.752-6.302 6.752a.491.491 0 01-.368.172.49.49 0 01-.37-.172l-.8-.86A.562.562 0 018 12.575c0-.15.054-.28.16-.395l7.471-8.007a.491.491 0 01.37-.172.49.49 0 01.368.172l7.471 8.007c.107.114.16.246.16.395 0 .149-.053.28-.16.395z" />
     </g>
   </svg>
 );

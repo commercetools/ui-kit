@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,28 +142,10 @@ const SvgPinFilled = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="pin-filled_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M14.286 18.122a1.673 1.673 0 00-.4-2.332l-.682-.478 3.98-5.683c.75.503 1.772.31 2.298-.44l-8.156-5.711a1.673 1.673 0 00.4 2.332l-3.978 5.681-.682-.477a1.673 1.673 0 00-2.329.422l4.092 2.866-3.737 5.337 1.364.955 3.737-5.337 4.093 2.865z"
       fillRule="evenodd"
-    >
-      <g
-        id="pin-filled_react_svg__MC-icon-set"
-        transform="translate(-168 -744)"
-        fill="#000"
-      >
-        <g id="pin-filled_react_svg__Actions" transform="translate(24 648)">
-          <g id="pin-filled_react_svg__Pin" transform="translate(144 96)">
-            <path
-              d="M16.425 15.121c0-.928-.746-1.681-1.666-1.681h-.832V6.502a1.673 1.673 0 001.63-1.68H5.601c0 .93.745 1.682 1.665 1.682v6.936h-.833c-.92 0-1.665.753-1.665 1.681h4.996v6.516h1.665V15.12h4.996z"
-              id="pin-filled_react_svg__shape"
-              transform="rotate(35 10.596 13.23)"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

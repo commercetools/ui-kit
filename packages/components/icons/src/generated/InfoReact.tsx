@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgInfo = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="info_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 4.5a1.125 1.125 0 110 2.25 1.125 1.125 0 010-2.25zm1.688 9h-3.376a.562.562 0 110-1.125h.563V12h-.563a.562.562 0 110-1.125h2.25c.311 0 .563.252.563.563v3.937h.563a.563.563 0 010 1.125z"
       fillRule="evenodd"
-    >
-      <g
-        id="info_react_svg__MC-icon-set"
-        transform="translate(-96 -312)"
-        fill="#000"
-      >
-        <g id="info_react_svg__Notices" transform="translate(24 312)">
-          <g id="info_react_svg__Info" transform="translate(72)">
-            <path
-              d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 4.5a1.125 1.125 0 110 2.25 1.125 1.125 0 010-2.25zm1.688 9h-3.376a.562.562 0 110-1.125h.563V12h-.563a.562.562 0 110-1.125h2.25c.311 0 .563.252.563.563v3.937h.563a.563.563 0 010 1.125z"
-              id="info_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

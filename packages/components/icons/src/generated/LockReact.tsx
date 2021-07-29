@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,24 +142,11 @@ const SvgLock = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="lock_react_svg__Final-ImportBoard"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="lock_react_svg__2-Upload-files---Locked"
-        transform="translate(-697 -285)"
-        fill="#999"
-        fillRule="nonzero"
-      >
-        <path
-          d="M781.167 334.925h-6.824V319.04c0-18.772-15.3-34.04-34.122-34.04-18.817 0-34.122 15.268-34.122 34.04v15.885h-6.824a2.273 2.273 0 00-2.275 2.27v51.99c0 .79.414 1.524 1.087 1.937 12.753 7.77 27.32 11.878 42.134 11.878 14.813 0 29.381-4.107 42.138-11.878a2.284 2.284 0 001.083-1.938v-51.99a2.276 2.276 0 00-2.275-2.269zm-35.577 33.989v15.868c0 1.572-1.208 2.858-2.684 2.858h-5.37c-1.482 0-2.685-1.286-2.685-2.858v-15.868c-3.2-1.983-5.37-5.617-5.37-9.846 0-6.308 4.812-11.428 10.74-11.428s10.74 5.12 10.74 11.428c0 4.217-2.17 7.863-5.37 9.846zm14.526-34.519h-41.163v-15.607c0-11.064 9.235-20.067 20.582-20.067 11.343 0 20.581 9.003 20.581 20.067v15.607z"
-          id="lock_react_svg__Shape"
-        />
-      </g>
-    </g>
+    <path
+      d="M84.167 49.925h-6.824V34.04C77.343 15.268 62.043 0 43.22 0 24.404 0 9.099 15.268 9.099 34.04v15.885H2.275A2.273 2.273 0 000 52.195v51.99c0 .79.414 1.524 1.087 1.937C13.84 113.892 28.407 118 43.221 118c14.813 0 29.381-4.107 42.138-11.878a2.284 2.284 0 001.083-1.938v-51.99a2.276 2.276 0 00-2.275-2.269zM48.59 83.914v15.868c0 1.572-1.208 2.858-2.684 2.858h-5.37c-1.482 0-2.685-1.286-2.685-2.858V83.914c-3.2-1.983-5.37-5.617-5.37-9.846 0-6.308 4.812-11.428 10.74-11.428s10.74 5.12 10.74 11.428c0 4.217-2.17 7.863-5.37 9.846zm14.526-34.519H21.953V33.788c0-11.064 9.235-20.067 20.582-20.067 11.343 0 20.581 9.003 20.581 20.067v15.607z"
+      fill="#999"
+      fillRule="nonzero"
+    />
   </svg>
 );
 

@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,18 +142,11 @@ const SvgEye = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="eye_react_svg__Component-/-icon-/-24px-/-eye-"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M3.535 11.65c0-2.454 4.772-5.73 8.756-5.73 3.98 0 8.7 3.27 8.7 5.73 0 2.47-4.72 5.79-8.7 5.79-3.984 0-8.756-3.326-8.756-5.79zm1.4 0c0 1.56 4.06 4.39 7.356 4.39 3.29 0 7.3-2.82 7.3-4.39 0-1.553-4.007-4.33-7.3-4.33-3.299 0-7.356 2.785-7.356 4.33zm7.282 3.16a3 3 0 110-6 3 3 0 010 6z"
+      fill="#1A1A1A"
       fillRule="evenodd"
-    >
-      <path
-        d="M3.535 11.65c0-2.454 4.772-5.73 8.756-5.73 3.98 0 8.7 3.27 8.7 5.73 0 2.47-4.72 5.79-8.7 5.79-3.984 0-8.756-3.326-8.756-5.79zm1.4 0c0 1.56 4.06 4.39 7.356 4.39 3.29 0 7.3-2.82 7.3-4.39 0-1.553-4.007-4.33-7.3-4.33-3.299 0-7.356 2.785-7.356 4.33zm7.282 3.16a3 3 0 110-6 3 3 0 010 6z"
-        id="eye_react_svg__Shape"
-        fill="#1A1A1A"
-      />
-    </g>
+    />
   </svg>
 );
 

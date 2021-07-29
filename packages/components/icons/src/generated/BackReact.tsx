@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,26 +142,10 @@ const SvgBack = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="back_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M19.862 10.922H7.25l5.82-5.906-1.478-1.454-8.269 8.392 8.27 8.437 1.478-1.5-5.821-5.86h12.612"
       fillRule="evenodd"
-    >
-      <g
-        id="back_react_svg__MC-icon-set"
-        transform="translate(-24 -984)"
-        fill="#000"
-      >
-        <g id="back_react_svg__Directions" transform="translate(24 888)">
-          <path
-            d="M19.862 10.922H7.25l5.82-5.906-1.478-1.454-8.269 8.392 8.27 8.437 1.478-1.5-5.821-5.86h12.612"
-            transform="translate(0 96)"
-            id="back_react_svg__Back"
-          />
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

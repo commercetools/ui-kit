@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,11 @@ const SvgClipboard = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="clipboard_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g id="clipboard_react_svg__MC-icon-set" transform="translate(-240 -944)">
-        <g
-          id="clipboard_react_svg__Actions"
-          transform="translate(24 752)"
-          fill="#000"
-          fillRule="nonzero"
-        >
-          <g id="clipboard_react_svg__Clipboard" transform="translate(216 192)">
-            <path
-              d="M14.504 4.407h1.233c.912 0 1.66.76 1.66 1.689v3.823a.25.25 0 01-.25.25h-.963a.25.25 0 01-.25-.25v-3.11a.736.736 0 00-.74-.753h-.713v.753c0 .306-.465.376-.766.376H7.797a.567.567 0 01-.555-.565v-.564h-.925a.736.736 0 00-.74.753v11.66c0 .423.324.752.74.752h8.877c.416 0 .74-.329.74-.752v-2.378c0-.117.095-.212.212-.212h1.001a.25.25 0 01.25.25v3.053c0 .928-.748 1.688-1.66 1.688H5.775c-.913 0-1.66-.76-1.66-1.688V6.096c0-.928.747-1.689 1.66-1.689h1.474v-.612c0-.131.112-.24.25-.24h1.099V3.17c0-.132.112-.24.25-.24h4.057c.138 0 .25.108.25.24v.386h1.1c.136 0 .249.108.249.24m5.105 8.542c.197 0 .358.114.358.255v.626c0 .141-.16.255-.358.255h-7.412l2.487 2.455a.24.24 0 01.078.176.241.241 0 01-.078.177l-.39.384a.248.248 0 01-.357 0l-3.625-3.578a.24.24 0 01-.078-.176c0-.067.026-.126.078-.177l3.625-3.577a.248.248 0 01.358 0l.389.384a.24.24 0 01.078.176.241.241 0 01-.078.177l-2.476 2.443h7.4z"
-              id="clipboard_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
+    <g fillRule="evenodd">
+      <path
+        d="M14.504 4.407h1.233c.912 0 1.66.76 1.66 1.689v3.823a.25.25 0 01-.25.25h-.963a.25.25 0 01-.25-.25v-3.11a.736.736 0 00-.74-.753h-.713v.753c0 .306-.465.376-.766.376H7.797a.567.567 0 01-.555-.565v-.564h-.925a.736.736 0 00-.74.753v11.66c0 .423.324.752.74.752h8.877c.416 0 .74-.329.74-.752v-2.378c0-.117.095-.212.212-.212h1.001a.25.25 0 01.25.25v3.053c0 .928-.748 1.688-1.66 1.688H5.775c-.913 0-1.66-.76-1.66-1.688V6.096c0-.928.747-1.689 1.66-1.689h1.474v-.612c0-.131.112-.24.25-.24h1.099V3.17c0-.132.112-.24.25-.24h4.057c.138 0 .25.108.25.24v.386h1.1c.136 0 .249.108.249.24m5.105 8.542c.197 0 .358.114.358.255v.626c0 .141-.16.255-.358.255h-7.412l2.487 2.455a.24.24 0 01.078.176.241.241 0 01-.078.177l-.39.384a.248.248 0 01-.357 0l-3.625-3.578a.24.24 0 01-.078-.176c0-.067.026-.126.078-.177l3.625-3.577a.248.248 0 01.358 0l.389.384a.24.24 0 01.078.176.241.241 0 01-.078.177l-2.476 2.443h7.4z"
+        fillRule="nonzero"
+      />
     </g>
   </svg>
 );

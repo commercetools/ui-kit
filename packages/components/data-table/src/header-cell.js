@@ -120,9 +120,13 @@ const HeaderCell = (props) => {
             <AngleUpDownIcon
               size="medium"
               color="surface"
-              id="nonActiveSortingIcon"
+              data-icon-state="inactive"
             />
-            <SortingIcon size="medium" color="surface" id="activeSortingIcon" />
+            <SortingIcon
+              size="medium"
+              color="surface"
+              data-icon-state="active"
+            />
           </>
         )}
       </HeaderCellInner>

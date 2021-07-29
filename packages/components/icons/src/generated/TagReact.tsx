@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgTag = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="tag_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M20.659 12.424L11.235 3 4.554 3C3.696 3 3 3.696 3 4.553v6.683l9.424 9.423a1.164 1.164 0 001.647 0l6.587-6.588a1.164 1.164 0 000-1.647zM6.474 6.474A1.164 1.164 0 114.827 4.83a1.164 1.164 0 011.647 1.644z"
       fillRule="evenodd"
-    >
-      <g
-        id="tag_react_svg__MC-icon-set"
-        transform="translate(-24 -456)"
-        fill="#000"
-      >
-        <g id="tag_react_svg__Switch-states" transform="translate(24 408)">
-          <g id="tag_react_svg__Tag" transform="translate(0 48)">
-            <path
-              d="M20.659 12.424L11.235 3 4.554 3C3.696 3 3 3.696 3 4.553v6.683l9.424 9.423a1.164 1.164 0 001.647 0l6.587-6.588a1.164 1.164 0 000-1.647zM6.474 6.474A1.164 1.164 0 114.827 4.83a1.164 1.164 0 011.647 1.644z"
-              id="tag_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgColumns = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="columns_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M19.2 17.6h-2.7v-1.8h2.7v1.8zm-6.3-1.8h2.7v1.8h-2.7v-1.8zm-3.6 0H12v1.8H9.3v-1.8zM12 9.5H9.3V6.8H12v2.7zm3.6 0h-2.7V6.8h2.7v2.7zm3.6 0h-2.7V6.8h2.7v2.7zm-2.7 3.6h2.7v1.8h-2.7v-1.8zm-3.6 0h2.7v1.8h-2.7v-1.8zm-3.6 0H12v1.8H9.3v-1.8zm2.7-.9H9.3v-1.8H12v1.8zm3.6 0h-2.7v-1.8h2.7v1.8zm3.6 0h-2.7v-1.8h2.7v1.8zm.113-7.2H3.9a.9.9 0 00-.9.9v12.6a.9.9 0 00.9.9H20.1a.9.9 0 00.9-.9V5.9a.9.9 0 00-.9-.9h-.788z"
       fillRule="evenodd"
-    >
-      <g
-        id="columns_react_svg__MC-icon-set"
-        transform="translate(-168 -600)"
-        fill="#000"
-      >
-        <g id="columns_react_svg__Grid-display" transform="translate(24 600)">
-          <g id="columns_react_svg__Columns" transform="translate(144)">
-            <path
-              d="M19.2 17.6h-2.7v-1.8h2.7v1.8zm-6.3-1.8h2.7v1.8h-2.7v-1.8zm-3.6 0H12v1.8H9.3v-1.8zM12 9.5H9.3V6.8H12v2.7zm3.6 0h-2.7V6.8h2.7v2.7zm3.6 0h-2.7V6.8h2.7v2.7zm-2.7 3.6h2.7v1.8h-2.7v-1.8zm-3.6 0h2.7v1.8h-2.7v-1.8zm-3.6 0H12v1.8H9.3v-1.8zm2.7-.9H9.3v-1.8H12v1.8zm3.6 0h-2.7v-1.8h2.7v1.8zm3.6 0h-2.7v-1.8h2.7v1.8zm.113-7.2H3.9a.9.9 0 00-.9.9v12.6a.9.9 0 00.9.9H20.1a.9.9 0 00.9-.9V5.9a.9.9 0 00-.9-.9h-.788z"
-              id="columns_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

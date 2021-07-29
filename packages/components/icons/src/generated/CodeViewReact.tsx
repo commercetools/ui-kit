@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgCodeView = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="code-view_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M8.381 17.89a.317.317 0 01-.237.11.316.316 0 01-.237-.11l-4.804-5.137a.36.36 0 010-.507L7.907 7.11A.316.316 0 018.144 7c.09 0 .169.037.237.11l.516.551A.36.36 0 019 7.915a.36.36 0 01-.103.253L4.845 12.5l4.052 4.332a.36.36 0 01.103.253.36.36 0 01-.103.254l-.516.551zM15.62 7.11a.317.317 0 01.237-.11c.089 0 .168.036.237.11l4.804 5.137a.36.36 0 010 .507l-4.804 5.136a.316.316 0 01-.237.11.316.316 0 01-.237-.11l-.516-.551a.36.36 0 01-.103-.254.36.36 0 01.103-.253l4.052-4.332-4.052-4.332A.36.36 0 0115 7.915a.36.36 0 01.103-.254l.516-.551zm-1.83 2.343l-2.767 6.704-1.456-.072 2.767-6.705 1.456.073z"
       fillRule="evenodd"
-    >
-      <g
-        id="code-view_react_svg__MC-icon-set"
-        transform="translate(-240 -552)"
-        fill="#000"
-      >
-        <g id="code-view_react_svg__Views" transform="translate(24 552)">
-          <g id="code-view_react_svg__Code-View" transform="translate(216)">
-            <path
-              d="M8.381 17.89a.317.317 0 01-.237.11.316.316 0 01-.237-.11l-4.804-5.137a.36.36 0 010-.507L7.907 7.11A.316.316 0 018.144 7c.09 0 .169.037.237.11l.516.551A.36.36 0 019 7.915a.36.36 0 01-.103.253L4.845 12.5l4.052 4.332a.36.36 0 01.103.253.36.36 0 01-.103.254l-.516.551zM15.62 7.11a.317.317 0 01.237-.11c.089 0 .168.036.237.11l4.804 5.137a.36.36 0 010 .507l-4.804 5.136a.316.316 0 01-.237.11.316.316 0 01-.237-.11l-.516-.551a.36.36 0 01-.103-.254.36.36 0 01.103-.253l4.052-4.332-4.052-4.332A.36.36 0 0115 7.915a.36.36 0 01.103-.254l.516-.551zm-1.83 2.343l-2.767 6.704-1.456-.072 2.767-6.705 1.456.073z"
-              id="code-view_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

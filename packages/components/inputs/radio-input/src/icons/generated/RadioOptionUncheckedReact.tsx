@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,40 +142,15 @@ const SvgRadioOptionUnchecked = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="radio-option-unchecked_react_svg__ATOM---Checkboxes---Radio-buttons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="radio-option-unchecked_react_svg__Checkboxes-Radio-Buttons"
-        transform="translate(-402 -645)"
-      >
-        <g
-          id="radio-option-unchecked_react_svg__RadioButton-empty-default"
-          transform="translate(402 645)"
-        >
-          <circle
-            id="radio-option-unchecked_react_svg__background"
-            fill="#FFF"
-            cx={8}
-            cy={8}
-            r={8}
-          />
-          <g
-            id="radio-option-unchecked_react_svg__borderAndContent"
-            stroke="#AFAFAF"
-          >
-            <circle
-              id="radio-option-unchecked_react_svg__border"
-              cx={8}
-              cy={8}
-              r={7.5}
-            />
-          </g>
-        </g>
-      </g>
+    <g fillRule="evenodd">
+      <circle fill="#FFF" cx={8} cy={8} r={8} />
+      <circle
+        data-style="radio-option__border"
+        cx={8}
+        cy={8}
+        r={7.5}
+        stroke="#AFAFAF"
+      />
     </g>
   </svg>
 );

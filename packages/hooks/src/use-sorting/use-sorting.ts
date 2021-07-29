@@ -1,47 +1,62 @@
 import React from 'react';
 import sortBy from 'lodash/sortBy';
 
+interface TItem {
+  id: string;
+}
+type TSortDirection = 'asc' | 'desc';
+type TSortingState<Item extends TItem = TItem> = {
+  items: Item[];
+  sortedBy?: string;
+  sortDirection?: TSortDirection;
+};
+type TSortingFn = typeof sortBy;
+
 // we're using lodash sortBy as our default sorting fn
-const sortItems = (items, field, direction, sortingFunction = sortBy) => {
+const sortItems = <Item extends TItem = TItem>(
+  items: Item[],
+  field?: string,
+  sortDirection?: TSortDirection,
+  sortingFunction: TSortingFn = sortBy
+) => {
   if (!field) {
     return items;
   }
   const sortedItems = sortingFunction(items, field);
 
-  if (direction === 'desc') {
+  if (sortDirection === 'desc') {
     return sortedItems.reverse();
   }
 
   return sortedItems;
 };
 
-const getInitialState = (items, field, sortDirection, sortingFunction) => ({
+const getInitialState = <Item extends TItem = TItem>(
+  items: Item[],
+  field?: string,
+  sortDirection?: TSortDirection,
+  sortingFunction?: TSortingFn
+): TSortingState<Item> => ({
   items: sortItems(items, field, sortDirection, sortingFunction),
   sortedBy: field,
   sortDirection,
 });
 
-const useSortingState = (items, field, sortDirection, sortingFunction) => {
+const useSorting = <Item extends TItem = TItem>(
+  items: Item[],
+  field?: string,
+  sortDirection?: TSortDirection,
+  sortingFunction?: TSortingFn
+) => {
   const [sortState, setSorting] = React.useState(() =>
     getInitialState(items, field, sortDirection, sortingFunction)
   );
 
   React.useDebugValue(sortState);
 
-  return [sortState, setSorting];
-};
-
-const useSorting = (items, field, sortDirection, sortingFunction) => {
-  const [sortState, setSorting] = useSortingState(
-    items,
-    field,
-    sortDirection,
-    sortingFunction
-  );
-
-  function onSortChange(fieldKey) {
-    let nextSortDirection;
-    let sortedItems;
+  function onSortChange(fieldKey: string) {
+    let nextSortDirection: TSortDirection;
+    let sortedItems: Item[];
 
     if (sortState.sortedBy !== fieldKey) {
       // if the intented field is not already sorted, the initial direction is 'asc'

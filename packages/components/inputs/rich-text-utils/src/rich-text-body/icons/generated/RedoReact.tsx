@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -112,29 +146,15 @@ const SvgRedo = (props: Props) => (
     <defs>
       <path
         d="M12.458 7.41a8.524 8.524 0 00-6.7 3.246L3.796 8.693c-.437-.438-.795-.29-.795.33v7.335c0 .618.024.593.643.593h7.286c.619 0 .767-.358.33-.795l-2.243-2.243a6.283 6.283 0 015.697-3.64 6.283 6.283 0 016.277 6.085 8.542 8.542 0 00-8.531-8.948z"
-        id="redo_react_svg__path-1"
+        id="redo_react_svg__a"
       />
     </defs>
-    <g
-      id="redo_react_svg__Component-/-icon-/-24px-/-Richtext-/-Redo"
-      stroke="none"
-      strokeWidth={1}
+    <use
+      fill="#1A1A1A"
+      xlinkHref="#redo_react_svg__a"
+      transform="matrix(-1 0 0 1 24 0)"
       fillRule="evenodd"
-    >
-      <g
-        id="redo_react_svg__Component-/-icon-/-12px-/-redo--"
-        transform="matrix(-1 0 0 1 24 0)"
-      >
-        <mask id="redo_react_svg__mask-2" fill="#fff">
-          <use xlinkHref="#redo_react_svg__path-1" />
-        </mask>
-        <use
-          id="redo_react_svg__Shape"
-          fill="#1A1A1A"
-          xlinkHref="#redo_react_svg__path-1"
-        />
-      </g>
-    </g>
+    />
   </svg>
 );
 

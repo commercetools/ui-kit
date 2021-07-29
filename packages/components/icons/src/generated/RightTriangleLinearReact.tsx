@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,23 +142,11 @@ const SvgRightTriangleLinear = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="right-triangle-linear_react_svg__Table-compact-truncation-v3"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M8 0v8H0l8-8zM7 2.287L2.247 7H7V2.287z"
+      fill="#1A1A1A"
       fillRule="evenodd"
-    >
-      <g
-        id="right-triangle-linear_react_svg__Component-/-icon-/-12px-/-triangle-corner-/-linear"
-        transform="translate(-2 -2)"
-        fill="#1A1A1A"
-      >
-        <path
-          d="M10 2v8H2l8-8zM9 4.287L4.247 9H9V4.287z"
-          id="right-triangle-linear_react_svg__Combined-Shape"
-        />
-      </g>
-    </g>
+    />
   </svg>
 );
 

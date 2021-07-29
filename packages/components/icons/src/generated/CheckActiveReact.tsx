@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,29 +142,10 @@ const SvgCheckActive = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="check-active_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M12.014 21a8.986 8.986 0 110-17.972 8.986 8.986 0 010 17.972zm3.9-12.572a.394.394 0 00-.556 0l-4.922 4.922a.394.394 0 01-.555 0L8.67 12.138a.394.394 0 00-.555 0l-.743.744a.394.394 0 000 .555l2.51 2.51a.394.394 0 00.555 0l6.22-6.22a.394.394 0 000-.556l-.743-.743z"
       fillRule="evenodd"
-    >
-      <g
-        id="check-active_react_svg__MC-icon-set"
-        transform="translate(-240 -312)"
-      >
-        <g id="check-active_react_svg__Notices" transform="translate(24 312)">
-          <g
-            id="check-active_react_svg__Check-Active"
-            transform="translate(216)"
-          >
-            <path
-              d="M12.014 21a8.986 8.986 0 110-17.972 8.986 8.986 0 010 17.972zm3.9-12.572a.394.394 0 00-.556 0l-4.922 4.922a.394.394 0 01-.555 0L8.67 12.138a.394.394 0 00-.555 0l-.743.744a.394.394 0 000 .555l2.51 2.51a.394.394 0 00.555 0l6.22-6.22a.394.394 0 000-.556l-.743-.743z"
-              id="check-active_react_svg__path-1"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

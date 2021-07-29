@@ -1,17 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>44D6399D-AC58-43B3-AD8A-2D04CFB4D072</title>
-    <desc>Created with sketchtool.</desc>
-    <defs></defs>
-    <g id="ATOM---Checkboxes---Radio-buttons" stroke="none" stroke-width="1"  fill-rule="evenodd">
-        <g id="Checkboxes-Radio-Buttons" transform="translate(-402.000000, -645.000000)">
-            <g id="RadioButton-empty-default" transform="translate(402.000000, 645.000000)">
-                <circle id="background" fill="#FFFFFF" cx="8" cy="8" r="8"></circle>
-                <g id="borderAndContent" stroke="#AFAFAF">
-                    <circle id="border" cx="8" cy="8" r="7.5"></circle>
-                </g>
-            </g>
-        </g>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <g fill-rule="evenodd">
+        <circle fill="#FFF" cx="8" cy="8" r="8"/>
+        <circle data-style="radio-option__border" cx="8" cy="8" r="7.5" stroke="#AFAFAF"/>
     </g>
 </svg>

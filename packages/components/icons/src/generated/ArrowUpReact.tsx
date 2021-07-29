@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,28 +142,10 @@ const SvgArrowUp = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="arrow-up_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M5.784 9.44H10.488v10.129c0 .79.66 1.431 1.473 1.431.814 0 1.473-.64 1.473-1.431V9.439h4.825L11.96 3 5.784 9.44z"
       fillRule="evenodd"
-    >
-      <g
-        id="arrow-up_react_svg__MC-icon-set"
-        transform="translate(-240 -984)"
-        fill="#000"
-      >
-        <g id="arrow-up_react_svg__Directions" transform="translate(24 888)">
-          <g id="arrow-up_react_svg__Arrow-Up" transform="translate(216 96)">
-            <path
-              d="M18.259 14.56H13.555V4.432c0-.79-.66-1.431-1.474-1.431-.813 0-1.473.64-1.473 1.431v10.13H5.784L12.08 21l6.178-6.44z"
-              id="arrow-up_react_svg__shape"
-              transform="rotate(-180 12.021 12)"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

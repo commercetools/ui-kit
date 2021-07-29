@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgExport = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="export_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M9.954 14C9.427 14 9 13.543 9 13c0-.542.427-1 .954-1H17V9l4 4-4 4v-3H9.954zM7.414 3H16a1 1 0 011 1v3a1 1 0 01-2 0V5h-5v5H5v9h10a1 1 0 012 0v1a1 1 0 01-1 1H4a1 1 0 01-1-1V7.414a1 1 0 01.293-.707l3.414-3.414A1 1 0 017.414 3zM5 8h3V5h-.172L5 7.828V8z"
       fillRule="evenodd"
-    >
-      <g
-        id="export_react_svg__MC-icon-set"
-        transform="translate(-240 -648)"
-        fill="#000"
-      >
-        <g id="export_react_svg__Actions" transform="translate(24 648)">
-          <g id="export_react_svg__Export" transform="translate(216)">
-            <path
-              d="M9.954 14C9.427 14 9 13.543 9 13c0-.542.427-1 .954-1H17V9l4 4-4 4v-3H9.954zM7.414 3H16a1 1 0 011 1v3a1 1 0 01-2 0V5h-5v5H5v9h10a1 1 0 012 0v1a1 1 0 01-1 1H4a1 1 0 01-1-1V7.414a1 1 0 01.293-.707l3.414-3.414A1 1 0 017.414 3zM5 8h3V5h-.172L5 7.828V8z"
-              id="export_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

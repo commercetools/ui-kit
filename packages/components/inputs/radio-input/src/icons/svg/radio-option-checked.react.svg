@@ -1,18 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>279EAF28-AFF7-41EF-B743-1AE24E30CE84</title>
-    <desc>Created with sketchtool.</desc>
-    <defs></defs>
-    <g id="ATOM---Checkboxes---Radio-buttons" stroke="none" stroke-width="1"  fill-rule="evenodd">
-        <g id="Checkboxes-Radio-Buttons" transform="translate(-402.000000, -725.000000)">
-            <g id="RadioButton-active-default" transform="translate(402.000000, 725.000000)">
-                <circle id="background" stroke="#AFAFAF" fill="#FFFFFF" cx="8" cy="8" r="7.5"></circle>
-                <g id="borderAndContent">
-                    <circle id="border" stroke="#AFAFAF" fill="#FFFFFF" cx="8" cy="8" r="7.5"></circle>
-                    <circle id="content" fill="#20AD92" cx="8" cy="8" r="4"></circle>
-                </g>
-            </g>
-        </g>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <g fill-rule="evenodd">
+        <circle stroke="#AFAFAF" fill="#FFF" cx="8" cy="8" r="7.5"/>
+        <circle data-style="radio-option__border" stroke="#AFAFAF" fill="#FFF" cx="8" cy="8" r="7.5"/>
+        <circle data-style="radio-option__content" fill="#20AD92" cx="8" cy="8" r="4"/>
     </g>
 </svg>

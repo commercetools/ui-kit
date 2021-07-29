@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgTagMulti = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="tag-multi_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M20.72 11.56L12.97 4H7.477C6.772 4 6.2 4.558 6.2 5.246v5.36l7.748 7.56a.974.974 0 001.355 0l5.416-5.285a.918.918 0 000-1.32zM9.055 6.787a.974.974 0 01-1.354 0 .918.918 0 010-1.32.975.975 0 011.354 0 .918.918 0 010 1.32zm-4.38 4.07l2.186 7.955-3.152-.823a.933.933 0 01-.677-1.145l1.644-5.986zm1.816 1.796l6.51 6.351-3.522.921a.961.961 0 01-1.172-.66l-1.816-6.612z"
       fillRule="evenodd"
-    >
-      <g
-        id="tag-multi_react_svg__MC-icon-set"
-        transform="translate(-168 -216)"
-        fill="#000"
-      >
-        <g id="tag-multi_react_svg__Menu" transform="translate(24 168)">
-          <g id="tag-multi_react_svg__Tag-Multi" transform="translate(144 48)">
-            <path
-              d="M20.72 11.56L12.97 4H7.477C6.772 4 6.2 4.558 6.2 5.246v5.36l7.748 7.56a.974.974 0 001.355 0l5.416-5.285a.918.918 0 000-1.32zM9.055 6.787a.974.974 0 01-1.354 0 .918.918 0 010-1.32.975.975 0 011.354 0 .918.918 0 010 1.32zm-4.38 4.07l2.186 7.955-3.152-.823a.933.933 0 01-.677-1.145l1.644-5.986zm1.816 1.796l6.51 6.351-3.522.921a.961.961 0 01-1.172-.66l-1.816-6.612z"
-              id="tag-multi_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

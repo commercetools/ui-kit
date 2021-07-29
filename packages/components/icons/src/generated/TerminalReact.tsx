@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,21 +142,8 @@ const SvgTerminal = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="terminal_react_svg__Component-/-icon-/-24px-/-Terminal"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-      fill="#1A1A1A"
-    >
-      <path
-        d="M5.753 13.405l2.796-2.75a.427.427 0 01.612 0 .41.41 0 010 .602l-2.49 2.448 2.49 2.449a.41.41 0 010 .601.435.435 0 01-.306.13.435.435 0 01-.306-.13l-2.796-2.727a.42.42 0 01-.131-.301.47.47 0 01.13-.322zm4.413 2.856l3.015-5.498c.11-.215.372-.28.59-.172.219.108.284.365.175.58l-3.015 5.498a.461.461 0 01-.393.237c-.066 0-.131-.022-.197-.043-.218-.13-.306-.387-.175-.602zm4.763-4.983a.41.41 0 010-.6.427.427 0 01.612 0l2.797 2.748a.42.42 0 01.13.3.42.42 0 01-.13.302l-2.797 2.749a.436.436 0 01-.306.129.434.434 0 01-.306-.13.41.41 0 010-.6l2.49-2.45-2.49-2.448zM3 17.034c0 .838.677 1.504 1.53 1.504H19.56c.852 0 1.53-.666 1.53-1.504V8.873H3v8.161z"
-        id="terminal_react_svg__Fill-1"
-      />
-      <path
-        d="M8.086 6.504c0-.482.385-.879.853-.879.469 0 .853.397.853.879s-.384.878-.853.878c-.468 0-.853-.396-.853-.878zm-2.324 0c0-.482.384-.879.853-.879.468 0 .853.397.853.879s-.385.878-.853.878c-.469 0-.853-.396-.853-.878zm-2.325 0c0-.482.385-.879.853-.879.468 0 .853.397.853.879s-.385.878-.853.878c-.468 0-.853-.396-.853-.878zm1.092-1.658C3.677 4.846 3 5.535 3 6.4v1.667h18.09V6.4c0-.844-.699-1.555-1.529-1.555H4.529z"
-        id="terminal_react_svg__Fill-4"
-      />
+    <g fillRule="evenodd" fill="#1A1A1A">
+      <path d="M5.753 13.405l2.796-2.75a.427.427 0 01.612 0 .41.41 0 010 .602l-2.49 2.448 2.49 2.449a.41.41 0 010 .601.435.435 0 01-.306.13.435.435 0 01-.306-.13l-2.796-2.727a.42.42 0 01-.131-.301.47.47 0 01.13-.322zm4.413 2.856l3.015-5.498c.11-.215.372-.28.59-.172.219.108.284.365.175.58l-3.015 5.498a.461.461 0 01-.393.237c-.066 0-.131-.022-.197-.043-.218-.13-.306-.387-.175-.602zm4.763-4.983a.41.41 0 010-.6.427.427 0 01.612 0l2.797 2.748a.42.42 0 01.13.3.42.42 0 01-.13.302l-2.797 2.749a.436.436 0 01-.306.129.434.434 0 01-.306-.13.41.41 0 010-.6l2.49-2.45-2.49-2.448zM3 17.034c0 .838.677 1.504 1.53 1.504H19.56c.852 0 1.53-.666 1.53-1.504V8.873H3v8.161zM8.086 6.504c0-.482.385-.879.853-.879.469 0 .853.397.853.879s-.384.878-.853.878c-.468 0-.853-.396-.853-.878zm-2.324 0c0-.482.384-.879.853-.879.468 0 .853.397.853.879s-.385.878-.853.878c-.469 0-.853-.396-.853-.878zm-2.325 0c0-.482.385-.879.853-.879.468 0 .853.397.853.879s-.385.878-.853.878c-.468 0-.853-.396-.853-.878zm1.092-1.658C3.677 4.846 3 5.535 3 6.4v1.667h18.09V6.4c0-.844-.699-1.555-1.529-1.555H4.529z" />
     </g>
   </svg>
 );

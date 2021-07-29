@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgCopy = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="copy_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M16.91 15.324h-.564v2.762h.563v-2.762zm1.124 0h-.614v2.762h.614v-2.762zm-3.323 0h-1.075v2.762h1.075v-2.762zm1.125 2.762h-.614v-2.762h.614v2.762zM3.052 3.102v12.836H7.5V14.76H4.227V4.33H14.66v3.22h1.227V3.102H3.052zM7.5 20.336h12.784V7.552H7.5v12.784zM8.625 8.727h10.432V19.16H8.625V8.727z"
       fillRule="evenodd"
-    >
-      <g
-        id="copy_react_svg__MC-icon-set"
-        transform="translate(-240 -696)"
-        fill="#000"
-      >
-        <g id="copy_react_svg__Actions" transform="translate(24 648)">
-          <g id="copy_react_svg__Copy" transform="translate(216 48)">
-            <path
-              d="M16.91 15.324h-.564v2.762h.563v-2.762zm1.124 0h-.614v2.762h.614v-2.762zm-3.323 0h-1.075v2.762h1.075v-2.762zm1.125 2.762h-.614v-2.762h.614v2.762zM3.052 3.102v12.836H7.5V14.76H4.227V4.33H14.66v3.22h1.227V3.102H3.052zM7.5 20.336h12.784V7.552H7.5v12.784zM8.625 8.727h10.432V19.16H8.625V8.727z"
-              id="copy_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

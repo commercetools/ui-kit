@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgExpand = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="expand_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M10.344 12.532l1.094 1.094-4.741 4.74 2.591 2.593H3V14.67l2.602 2.603 4.742-4.741zM20.959 3v6.288l-2.592-2.591-4.741 4.74-1.094-1.093 4.74-4.742L14.67 3h6.289z"
       fillRule="evenodd"
-    >
-      <g
-        id="expand_react_svg__MC-icon-set"
-        transform="translate(-168 -696)"
-        fill="#000"
-      >
-        <g id="expand_react_svg__Actions" transform="translate(24 648)">
-          <g id="expand_react_svg__Expand" transform="translate(144 48)">
-            <path
-              d="M10.344 12.532l1.094 1.094-4.741 4.74 2.591 2.593H3V14.67l2.602 2.603 4.742-4.741zM20.959 3v6.288l-2.592-2.591-4.741 4.74-1.094-1.093 4.74-4.742L14.67 3h6.289z"
-              id="expand_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

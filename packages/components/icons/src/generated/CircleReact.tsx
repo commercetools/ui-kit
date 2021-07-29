@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,23 +142,10 @@ const SvgCircle = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="circle_react_svg__Symbols"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="circle_react_svg__Component-/-icon-/-24px-/-circle-Copy"
-        fill="#000"
-        fillRule="nonzero"
-      >
-        <path
-          d="M12.5 17.5a5 5 0 100-10 5 5 0 000 10zm0 2.5a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"
-          id="circle_react_svg__circle"
-        />
-      </g>
-    </g>
+    <path
+      d="M12.5 17.5a5 5 0 100-10 5 5 0 000 10zm0 2.5a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"
+      fillRule="nonzero"
+    />
   </svg>
 );
 

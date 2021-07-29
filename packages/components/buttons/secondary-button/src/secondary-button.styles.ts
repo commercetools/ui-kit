@@ -1,8 +1,14 @@
+import type { Theme } from '@emotion/react';
+
 import { warning } from '@commercetools-uikit/utils';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getStateStyles = (isDisabled, isActive, theme) => {
+const getStateStyles = (
+  isDisabled: boolean,
+  isActive: boolean,
+  theme: Theme
+) => {
   if (isDisabled) {
     const baseDisabledStyles = css`
       box-shadow: 0 0 0 1px ${vars.colorNeutral} inset;
@@ -63,7 +69,7 @@ const getStateStyles = (isDisabled, isActive, theme) => {
   `;
 };
 
-const getThemeStyles = (theme) => {
+const getThemeStyles = (theme: Theme) => {
   if (!theme) return css``;
 
   if (theme === 'default') return css``;

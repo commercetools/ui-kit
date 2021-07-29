@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,28 +142,10 @@ const SvgPlusBold = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="plus-bold_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="plus-bold_react_svg__MC-icon-set"
-        transform="translate(-240 -120)"
-        fillRule="nonzero"
-        fill="#000"
-      >
-        <g id="plus-bold_react_svg__CRUD" transform="translate(24 120)">
-          <g id="plus-bold_react_svg__Add-Bold" transform="translate(216)">
-            <path
-              d="M13.844 10.334v-3.51c0-.97-.784-1.755-1.75-1.755-.967 0-1.75.785-1.75 1.755v3.51h-3.5c-.967 0-1.75.785-1.75 1.754 0 .97.783 1.755 1.75 1.755h3.5v3.51c0 .97.783 1.755 1.75 1.755.966 0 1.75-.786 1.75-1.755v-3.51h3.5c.966 0 1.75-.785 1.75-1.755 0-.969-.784-1.754-1.75-1.754h-3.5z"
-              id="plus-bold_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    <path
+      d="M13.844 10.334v-3.51c0-.97-.784-1.755-1.75-1.755-.967 0-1.75.785-1.75 1.755v3.51h-3.5c-.967 0-1.75.785-1.75 1.754 0 .97.783 1.755 1.75 1.755h3.5v3.51c0 .97.783 1.755 1.75 1.755.966 0 1.75-.786 1.75-1.755v-3.51h3.5c.966 0 1.75-.785 1.75-1.755 0-.969-.784-1.754-1.75-1.754h-3.5z"
+      fillRule="nonzero"
+    />
   </svg>
 );
 

@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,17 +142,7 @@ const SvgCheckThin = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g id="check-thin_react_svg__Icons" stroke="none" strokeWidth={1}>
-      <g id="check-thin_react_svg__MC-icon-set" transform="translate(-24 -696)">
-        <g id="check-thin_react_svg__Actions" transform="translate(24 648)">
-          <path
-            d="M20.28 4.363l1.471 1.262L9.053 20.524 2.238 12.64l1.523-1.337 5.292 6.172"
-            transform="translate(0 48)"
-            id="check-thin_react_svg__Done"
-          />
-        </g>
-      </g>
-    </g>
+    <path d="M20.28 4.363l1.471 1.262L9.053 20.524 2.238 12.64l1.523-1.337 5.292 6.172" />
   </svg>
 );
 

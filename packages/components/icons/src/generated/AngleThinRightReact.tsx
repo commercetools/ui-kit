@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,34 +142,10 @@ const SvgAngleThinRight = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="angle-thin-right_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M7.39 3c.118 0 .196.038.274.15l8.633 8.25a.353.353 0 010 .525l-8.633 8.288a.389.389 0 01-.547 0 .353.353 0 010-.525l8.36-8.025-8.36-7.988a.353.353 0 010-.525.342.342 0 01.274-.15z"
       fillRule="evenodd"
-    >
-      <g
-        id="angle-thin-right_react_svg__MC-icon-set"
-        transform="translate(-96 -936)"
-        fill="#000"
-      >
-        <g
-          id="angle-thin-right_react_svg__Directions"
-          transform="translate(24 888)"
-        >
-          <g
-            id="angle-thin-right_react_svg__Angle-Thin-Right"
-            transform="translate(72 48)"
-          >
-            <path
-              d="M16.024 20.325c-.117 0-.196-.037-.274-.15l-8.633-8.25a.353.353 0 010-.525l8.633-8.288c.157-.15.39-.15.547 0a.353.353 0 010 .526l-8.36 8.024 8.36 7.988a.353.353 0 010 .525.342.342 0 01-.274.15h.001z"
-              id="angle-thin-right_react_svg__shape"
-              transform="rotate(180 11.707 11.663)"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

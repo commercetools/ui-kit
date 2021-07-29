@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgTruck = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="truck_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M20.19 14.308a2.9 2.9 0 00-5.535 0h-1.27V7.385l2.43-.012c1.914-.008 3.149 1.082 2.762 2.435l1.59 1.061c.454.304.833 1.008.833 1.565v1.874h-.81zm-9.75 0a2.9 2.9 0 00-5.535 0H3v-4.3A4.01 4.01 0 016.998 6h5.694v8.308h-2.251zm-2.767 3.115a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5zm9.75 0a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5z"
       fillRule="evenodd"
-    >
-      <g
-        id="truck_react_svg__MC-icon-set"
-        transform="translate(-96 -408)"
-        fill="#000"
-      >
-        <g id="truck_react_svg__Switch-states" transform="translate(24 408)">
-          <g id="truck_react_svg__Truck" transform="translate(72)">
-            <path
-              d="M20.19 14.308a2.9 2.9 0 00-5.535 0h-1.27V7.385l2.43-.012c1.914-.008 3.149 1.082 2.762 2.435l1.59 1.061c.454.304.833 1.008.833 1.565v1.874h-.81zm-9.75 0a2.9 2.9 0 00-5.535 0H3v-4.3A4.01 4.01 0 016.998 6h5.694v8.308h-2.251zm-2.767 3.115a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5zm9.75 0a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5z"
-              id="truck_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

@@ -1,18 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>checkbox-active-default</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="ATOM---Checkboxes---Radio-buttons" stroke="none" stroke-width="1"  fill-rule="evenodd">
-        <g id="Checkboxes-Radio-Buttons" transform="translate(-177.000000, -725.000000)">
-            <g id="checkbox-active-default" transform="translate(177.000000, 724.000000)">
-                <rect id="background" fill="#FFFFFF" x="0" y="1" width="16" height="16" rx="4"></rect>
-                <g id="borderAndContent" transform="translate(0.000000, 0.500000)">
-                    <rect id="border" stroke="#AFAFAF" x="0.5" y="1" width="15" height="15" rx="4"></rect>
-                    <path d="M12.9179452,3.7585074 C12.7257192,3.56615603 12.4104384,3.56615603 12.218087,3.7585074 L6.01058872,9.96638159 C5.81823735,10.158733 5.50308185,10.158733 5.31073048,9.96638159 L3.78181904,8.43759545 C3.58946767,8.24524408 3.27431216,8.24524408 3.08196079,8.43759545 L2.14426353,9.37579396 C1.95191216,9.56814533 1.95191216,9.88330083 2.14426353,10.0756522 L5.31073048,13.2414926 C5.50308185,13.433844 5.81823735,13.433844 6.01058872,13.2414926 L13.8556425,5.39606291 C14.0481192,5.20358623 14.0481192,4.88855603 13.8556425,4.69607935 L12.9179452,3.7585074 Z" id="content" fill="#20AD92" fill-rule="nonzero"></path>
-                </g>
-            </g>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(0 -1)" fill-rule="evenodd">
+        <rect fill="#FFF" y="1" width="16" height="16" rx="4"/>
+        <g transform="translate(0 .5)">
+            <rect data-style="checkbox__border" stroke="#AFAFAF" x=".5" y="1" width="15" height="15" rx="4"/>
+            <path data-style="checkbox__content" d="M12.918 3.759a.497.497 0 00-.7 0L6.011 9.966a.497.497 0 01-.7 0L3.78 8.438a.497.497 0 00-.699 0l-.938.938a.497.497 0 000 .7l3.167 3.165a.497.497 0 00.7 0l7.845-7.845a.496.496 0 000-.7l-.938-.937z" fill="#20AD92" fill-rule="nonzero"/>
         </g>
     </g>
 </svg>

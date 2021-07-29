@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,28 +142,10 @@ const SvgAngleLeft = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="angle-left_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M16.198 21.11l.91-.902a.567.567 0 00.181-.415.567.567 0 00-.182-.414l-7.146-7.087 7.146-7.087a.567.567 0 00.182-.415.567.567 0 00-.182-.414l-.909-.902a.576.576 0 00-.836 0l-8.474 8.403a.568.568 0 00-.182.415c0 .156.06.294.182.414l8.474 8.404a.577.577 0 00.836 0z"
       fillRule="evenodd"
-    >
-      <g
-        id="angle-left_react_svg__MC-icon-set"
-        transform="translate(-24 -888)"
-        fill="#000"
-      >
-        <g id="angle-left_react_svg__Directions" transform="translate(24 888)">
-          <g id="angle-left_react_svg__Angle-Left">
-            <path
-              d="M20.816 8.091l-.902-.91A.567.567 0 0019.5 7a.567.567 0 00-.414.182l-7.087 7.146L4.91 7.182A.567.567 0 004.497 7a.567.567 0 00-.415.182l-.902.91a.576.576 0 000 .836l8.403 8.473c.12.122.259.182.415.182.156 0 .294-.06.414-.182l8.404-8.473a.577.577 0 000-.837z"
-              id="angle-left_react_svg__shape"
-              transform="rotate(90 11.998 12.292)"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

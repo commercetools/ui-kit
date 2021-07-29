@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,26 +142,9 @@ const SvgOperations = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="operations_react_svg__Symbols"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="operations_react_svg__Component-/-icon-/-24px-/-operations"
-        fill="#000"
-        fillRule="nonzero"
-      >
-        <path
-          d="M8 11c-.542 0-1 .458-1 1 0 .56.458 1 1 1 .56 0 1-.458 1-1s-.44-1-1-1zM16 11c-.56 0-1 .458-1 1 0 .56.458 1 1 1s1-.44 1-1c0-.542-.458-1-1-1zM12 11c-.56 0-1 .458-1 1 0 .56.458 1 1 1 .56 0 1-.458 1-1s-.44-1-1-1z"
-          id="operations_react_svg__Path"
-        />
-        <path
-          d="M21 14.5h-1.79l.027-.13a7.13 7.13 0 00.13-1.009l.007-.098c.009-.122.017-.243.017-.367 0-3.635-2.59-5.532-6.195-5.89v2.225L9.555 6.11 13.195 3l.001 2.241c4.592.364 7.958 3.04 7.958 7.655 0 .083-.006.164-.011.245a5.12 5.12 0 00-.009.142 9.046 9.046 0 01-.118 1.127L21 14.5zM10.881 21v-2.235c-4.649-.316-7.826-2.994-7.826-7.66 0-.11.008-.218.015-.326l.01-.146c.018-.36.056-.711.114-1.043l.015-.09H5l-.028.131c-.07.336-.115.7-.135 1.111l-.008.121c-.006.08-.011.16-.011.241 0 3.685 2.402 5.585 6.062 5.896v-2.255l3.642 3.145-3.64 3.11z"
-          id="operations_react_svg__Shape"
-        />
-      </g>
+    <g fillRule="nonzero">
+      <path d="M8 11c-.542 0-1 .458-1 1 0 .56.458 1 1 1 .56 0 1-.458 1-1s-.44-1-1-1zM16 11c-.56 0-1 .458-1 1 0 .56.458 1 1 1s1-.44 1-1c0-.542-.458-1-1-1zM12 11c-.56 0-1 .458-1 1 0 .56.458 1 1 1 .56 0 1-.458 1-1s-.44-1-1-1z" />
+      <path d="M21 14.5h-1.79l.027-.13a7.13 7.13 0 00.13-1.009l.007-.098c.009-.122.017-.243.017-.367 0-3.635-2.59-5.532-6.195-5.89v2.225L9.555 6.11 13.195 3l.001 2.241c4.592.364 7.958 3.04 7.958 7.655 0 .083-.006.164-.011.245a5.12 5.12 0 00-.009.142 9.046 9.046 0 01-.118 1.127L21 14.5zM10.881 21v-2.235c-4.649-.316-7.826-2.994-7.826-7.66 0-.11.008-.218.015-.326l.01-.146c.018-.36.056-.711.114-1.043l.015-.09H5l-.028.131c-.07.336-.115.7-.135 1.111l-.008.121c-.006.08-.011.16-.011.241 0 3.685 2.402 5.585 6.062 5.896v-2.255l3.642 3.145-3.64 3.11z" />
     </g>
   </svg>
 );

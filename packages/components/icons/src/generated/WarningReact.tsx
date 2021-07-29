@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgWarning = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="warning_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M20.678 17.887L13.37 5.229c-.752-1.305-1.987-1.305-2.74 0L3.322 17.887c-.754 1.305-.137 2.373 1.37 2.373h14.616c1.508 0 2.124-1.068 1.37-2.373zm-7.96.049a.976.976 0 01-.712.297.98.98 0 01-.721-.297.994.994 0 01-.3-.72c0-.276.104-.513.3-.712.197-.2.439-.3.72-.3.278 0 .51.1.712.3a.98.98 0 01.295.711c0 .281-.099.522-.295.72zm-.36-2.286h-.717c-.962-3.774-1.441-5.814-1.441-6.112 0-.364.184-.657.557-.88a2.344 2.344 0 011.25-.335c.498 0 .92.116 1.272.356.345.237.52.52.52.845 0 .307-.477 2.352-1.44 6.126z"
       fillRule="evenodd"
-    >
-      <g
-        id="warning_react_svg__MC-icon-set"
-        transform="translate(-24 -312)"
-        fill="#000"
-      >
-        <g id="warning_react_svg__Notices" transform="translate(24 312)">
-          <g id="warning_react_svg__Warning">
-            <path
-              d="M20.678 17.887L13.37 5.229c-.752-1.305-1.987-1.305-2.74 0L3.322 17.887c-.754 1.305-.137 2.373 1.37 2.373h14.616c1.508 0 2.124-1.068 1.37-2.373zm-7.96.049a.976.976 0 01-.712.297.98.98 0 01-.721-.297.994.994 0 01-.3-.72c0-.276.104-.513.3-.712.197-.2.439-.3.72-.3.278 0 .51.1.712.3a.98.98 0 01.295.711c0 .281-.099.522-.295.72zm-.36-2.286h-.717c-.962-3.774-1.441-5.814-1.441-6.112 0-.364.184-.657.557-.88a2.344 2.344 0 011.25-.335c.498 0 .92.116 1.272.356.345.237.52.52.52.845 0 .307-.477 2.352-1.44 6.126z"
-              id="warning_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

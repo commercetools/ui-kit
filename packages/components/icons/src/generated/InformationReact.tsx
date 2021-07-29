@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,30 +142,10 @@ const SvgInformation = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="information_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M11.856 4.773a1.932 1.932 0 110 3.863 1.932 1.932 0 010-3.863zm3.112 14.81H9.173a.966.966 0 110-1.932h.966v-5.795h-.966a.966.966 0 110-1.932h3.864c.533 0 .966.433.966.966v6.761h.965a.966.966 0 010 1.932z"
       fillRule="evenodd"
-    >
-      <g
-        id="information_react_svg__MC-icon-set"
-        transform="translate(-168 -360)"
-        fill="#000"
-      >
-        <g id="information_react_svg__Notices" transform="translate(24 312)">
-          <g
-            id="information_react_svg__Information"
-            transform="translate(144 48)"
-          >
-            <path
-              d="M11.856 4.773a1.932 1.932 0 110 3.863 1.932 1.932 0 010-3.863zm3.112 14.81H9.173a.966.966 0 110-1.932h.966v-5.795h-.966a.966.966 0 110-1.932h3.864c.533 0 .966.433.966.966v6.761h.965a.966.966 0 010 1.932z"
-              id="information_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

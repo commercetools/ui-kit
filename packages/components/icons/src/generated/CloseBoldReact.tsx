@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,28 +142,10 @@ const SvgCloseBold = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="close-bold_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
-      fillRule="evenodd"
-    >
-      <g
-        id="close-bold_react_svg__MC-icon-set"
-        transform="translate(-168 -648)"
-        fillRule="nonzero"
-        fill="#000"
-      >
-        <g id="close-bold_react_svg__Actions" transform="translate(24 648)">
-          <g id="close-bold_react_svg__Close-Bold" transform="translate(144)">
-            <path
-              d="M14.574 12.044l2.571-2.572c.71-.71.712-1.86.004-2.567a1.816 1.816 0 00-2.568.003L12.01 9.48 9.446 6.916a1.816 1.816 0 00-2.568.003c-.71.71-.712 1.86-.004 2.568l2.564 2.564-2.571 2.571c-.71.71-.712 1.86-.004 2.568a1.816 1.816 0 002.568-.004l2.571-2.571 2.565 2.564a1.816 1.816 0 002.567-.003c.71-.71.712-1.86.004-2.568l-2.564-2.564z"
-              id="close-bold_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    <path
+      d="M14.574 12.044l2.571-2.572c.71-.71.712-1.86.004-2.567a1.816 1.816 0 00-2.568.003L12.01 9.48 9.446 6.916a1.816 1.816 0 00-2.568.003c-.71.71-.712 1.86-.004 2.568l2.564 2.564-2.571 2.571c-.71.71-.712 1.86-.004 2.568a1.816 1.816 0 002.568-.004l2.571-2.571 2.565 2.564a1.816 1.816 0 002.567-.003c.71-.71.712-1.86.004-2.568l-2.564-2.564z"
+      fillRule="nonzero"
+    />
   </svg>
 );
 

@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,22 +142,11 @@ const SvgItalic = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="italic_react_svg__Component-/-icon-/-24px-/-Richtext-/-Italic-"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M9 20.99L12.827 3h2.067l-3.827 17.99z"
+      fill="#1A1A1A"
       fillRule="evenodd"
-    >
-      <g
-        id="italic_react_svg__Component-/-icon-/-16px-/-Richtext-/-Italic-"
-        fill="#1A1A1A"
-      >
-        <path
-          id="italic_react_svg__I"
-          d="M9 20.99L12.827 3h2.067l-3.827 17.99z"
-        />
-      </g>
-    </g>
+    />
   </svg>
 );
 

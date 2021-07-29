@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -112,31 +146,15 @@ const SvgSubdirectoryArrow = (props: Props) => (
     <defs>
       <path
         d="M16.404 17v-1.625c0-.102.04-.19.118-.264a.394.394 0 01.28-.111c.107 0 .2.037.279.111l2.78 2.625a.351.351 0 010 .527l-2.78 2.626a.393.393 0 01-.28.111.393.393 0 01-.279-.111.35.35 0 01-.118-.264V19H10a1 1 0 01-1-1V4a1 1 0 112 0v13h5.404z"
-        id="subdirectory-arrow_react_svg__path-1"
+        id="subdirectory-arrow_react_svg__a"
       />
     </defs>
-    <g
-      id="subdirectory-arrow_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <use
+      fill="#1A1A1A"
+      xlinkHref="#subdirectory-arrow_react_svg__a"
+      transform="translate(-9 -3)"
       fillRule="evenodd"
-    >
-      <g
-        id="subdirectory-arrow_react_svg__Component-/-icon-/-12px-/-suplink--"
-        transform="translate(-9 -3)"
-      >
-        <g id="subdirectory-arrow_react_svg__Component-/-icon-/-24px-/-suplink">
-          <mask id="subdirectory-arrow_react_svg__mask-2" fill="#fff">
-            <use xlinkHref="#subdirectory-arrow_react_svg__path-1" />
-          </mask>
-          <use
-            id="subdirectory-arrow_react_svg__Mask"
-            fill="#1A1A1A"
-            xlinkHref="#subdirectory-arrow_react_svg__path-1"
-          />
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

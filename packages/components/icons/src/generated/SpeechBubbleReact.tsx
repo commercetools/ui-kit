@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,18 +142,11 @@ const SvgSpeechBubble = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="speech-bubble_react_svg__Component-/-icon-/-24px-/-speech-bubble"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M3 15.094c.002 1.162 1.008 2.104 2.25 2.105h6.175l4.393 3.408c.07.039.15.06.232.06.248 0 .45-.189.45-.421v-3.047h2.25c1.242-.001 2.249-.943 2.25-2.105V5.772c-.001-1.162-1.008-2.104-2.25-2.105H5.25c-1.242 0-2.248.943-2.25 2.105v9.322z"
+      fill="#1A1A1A"
       fillRule="evenodd"
-    >
-      <path
-        d="M3 15.094c.002 1.162 1.008 2.104 2.25 2.105h6.175l4.393 3.408c.07.039.15.06.232.06.248 0 .45-.189.45-.421v-3.047h2.25c1.242-.001 2.249-.943 2.25-2.105V5.772c-.001-1.162-1.008-2.104-2.25-2.105H5.25c-1.242 0-2.248.943-2.25 2.105v9.322z"
-        id="speech-bubble_react_svg__Fill-1"
-        fill="#1A1A1A"
-      />
-    </g>
+    />
   </svg>
 );
 

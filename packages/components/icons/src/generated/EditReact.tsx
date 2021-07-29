@@ -70,13 +70,47 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const capitalize = (value: string) => value[0].toUpperCase() + value.slice(1);
-
 const getColor = (color: Props['color'], theme: Theme) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme }; // @ts-expect-error
+  const overwrittenVars = { ...vars, ...theme };
+  let iconColor;
 
-  const iconColor = overwrittenVars[`color${capitalize(color)}`];
+  switch (color) {
+    case 'solid':
+      iconColor = overwrittenVars.colorSolid;
+      break;
+
+    case 'neutral60':
+      iconColor = overwrittenVars.colorNeutral60;
+      break;
+
+    case 'surface':
+      iconColor = overwrittenVars.colorSurface;
+      break;
+
+    case 'info':
+      iconColor = overwrittenVars.colorInfo;
+      break;
+
+    case 'primary':
+      iconColor = overwrittenVars.colorPrimary;
+      break;
+
+    case 'primary40':
+      iconColor = overwrittenVars.colorPrimary40;
+      break;
+
+    case 'warning':
+      iconColor = overwrittenVars.colorWarning;
+      break;
+
+    case 'error':
+      iconColor = overwrittenVars.colorError;
+      break;
+
+    default:
+      break;
+  }
 
   if (!iconColor) {
     warning(
@@ -108,27 +142,10 @@ const SvgEdit = (props: Props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g
-      id="edit_react_svg__Icons"
-      stroke="none"
-      strokeWidth={1}
+    <path
+      d="M16.883 10.854l-8.029 8.029L6 16.028 14.028 8l2.855 2.854zM5 19.854V17l2.855 2.855H5zM18.962 6.358a1.335 1.335 0 010 1.888l-1.108 1.108L15 6.5l1.108-1.108a1.335 1.335 0 011.888 0l.966.966z"
       fillRule="evenodd"
-    >
-      <g
-        id="edit_react_svg__MC-icon-set"
-        transform="translate(-24 -120)"
-        fill="#000"
-      >
-        <g id="edit_react_svg__CRUD" transform="translate(24 120)">
-          <g id="edit_react_svg__Edit">
-            <path
-              d="M16.883 10.854l-8.029 8.029L6 16.028 14.028 8l2.855 2.854zM5 19.854V17l2.855 2.855H5zM18.962 6.358a1.335 1.335 0 010 1.888l-1.108 1.108L15 6.5l1.108-1.108a1.335 1.335 0 011.888 0l.966.966z"
-              id="edit_react_svg__shape"
-            />
-          </g>
-        </g>
-      </g>
-    </g>
+    />
   </svg>
 );
 

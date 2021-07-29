@@ -1,18 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>checkbox-indeterminate-default</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="ATOM---Checkboxes---Radio-buttons" stroke="none" stroke-width="1"  fill-rule="evenodd">
-        <g id="Checkboxes-Radio-Buttons" transform="translate(-177.000000, -909.000000)">
-            <g id="checkbox-indeterminate-default" transform="translate(177.000000, 908.000000)">
-                <rect id="background" fill="#FFFFFF" x="0" y="1" width="16" height="16" rx="4"></rect>
-                <g id="borderAndContent" transform="translate(0.000000, 0.500000)">
-                    <rect id="border" stroke="#AFAFAF" x="0.5" y="1" width="15" height="15" rx="4"></rect>
-                    <rect id="content" fill="#00B6A1" x="3" y="7.5" width="10" height="2"></rect>
-                </g>
-            </g>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(0 -1)" fill-rule="evenodd">
+        <rect fill="#FFF" y="1" width="16" height="16" rx="4"/>
+        <g transform="translate(0 .5)">
+            <rect data-style="checkbox__border" stroke="#AFAFAF" x=".5" y="1" width="15" height="15" rx="4"/>
+            <path data-style="checkbox__content" fill="#00B6A1" d="M3 7.5h10v2H3z"/>
         </g>
     </g>
 </svg>
