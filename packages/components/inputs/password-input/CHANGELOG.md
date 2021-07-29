@@ -1,5 +1,18 @@
 # @commercetools-uikit/password-input
 
+## 12.2.2
+
+### Patch Changes
+
+- [#1967](https://github.com/commercetools/ui-kit/pull/1967) [`64e4bc89`](https://github.com/commercetools/ui-kit/commit/64e4bc891914b65d319611b35c4a52f011c11a07) Thanks [@renovate](https://github.com/apps/renovate)! - Fix TypeScript export declarations from package entry point. Migrate missing TS files.
+
+* [#1967](https://github.com/commercetools/ui-kit/pull/1967) [`64e4bc89`](https://github.com/commercetools/ui-kit/commit/64e4bc891914b65d319611b35c4a52f011c11a07) Thanks [@renovate](https://github.com/apps/renovate)! - Some files were not migrated to TypeScript. Also, each package entry point should not contain any TypeScript syntax (as it does not play well with preconstruct).
+  Instead, explicit export types are defined in a `export-types.ts` file, which is then re-exported from the entry point.
+* Updated dependencies [[`52cd68bf`](https://github.com/commercetools/ui-kit/commit/52cd68bfaac2359801bb6a716a41b200da9d8b99)]:
+  - @commercetools-uikit/design-system@12.2.2
+  - @commercetools-uikit/constraints@12.2.2
+  - @commercetools-uikit/input-utils@12.2.2
+
 ## 12.2.1
 
 ### Patch Changes

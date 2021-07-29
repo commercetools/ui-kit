@@ -1,5 +1,31 @@
 # @commercetools-uikit/avatar
 
+## 12.2.2
+
+### Patch Changes
+
+- [#1966](https://github.com/commercetools/ui-kit/pull/1966) [`52cd68bf`](https://github.com/commercetools/ui-kit/commit/52cd68bfaac2359801bb6a716a41b200da9d8b99) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#1967](https://github.com/commercetools/ui-kit/pull/1967) [`64e4bc89`](https://github.com/commercetools/ui-kit/commit/64e4bc891914b65d319611b35c4a52f011c11a07) Thanks [@renovate](https://github.com/apps/renovate)! - Fix TypeScript export declarations from package entry point. Migrate missing TS files.
+
+- [#1967](https://github.com/commercetools/ui-kit/pull/1967) [`64e4bc89`](https://github.com/commercetools/ui-kit/commit/64e4bc891914b65d319611b35c4a52f011c11a07) Thanks [@renovate](https://github.com/apps/renovate)! - Some files were not migrated to TypeScript. Also, each package entry point should not contain any TypeScript syntax (as it does not play well with preconstruct).
+  Instead, explicit export types are defined in a `export-types.ts` file, which is then re-exported from the entry point.
+
+* [#1970](https://github.com/commercetools/ui-kit/pull/1970) [`f3745882`](https://github.com/commercetools/ui-kit/commit/f37458821fdba54d4ef746eb03a4eb9327ff1a42) Thanks [@emmenko](https://github.com/emmenko)! - Fix TypeScript signatures for `as` props in buttons. Now TypeScript correctly infers and checks any props or attributes specific to the component passed to the `as` prop.
+
+  For example, if you need to pass `Link` (from React Router) to a `<FlatButton>`, you need to provide the `to` prop.
+
+  ```js
+  <FlatButton as={Link} to="/foo" label="Foo" />
+  ```
+
+  Previously TypeScript would show an error that the `to` prop is not recognized by the `<FlatButton>` component. Now, TypeScript is able to do that correctly.
+
+  > NOTE: the generated `prop-types` will define the `as` prop as `any`. This is because the actual type is a generic type and it cannot be statically defined.
+
+* Updated dependencies [[`52cd68bf`](https://github.com/commercetools/ui-kit/commit/52cd68bfaac2359801bb6a716a41b200da9d8b99)]:
+  - @commercetools-uikit/design-system@12.2.2
+
 ## 12.2.0
 
 ### Patch Changes

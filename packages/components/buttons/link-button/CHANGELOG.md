@@ -1,5 +1,17 @@
 # @commercetools-uikit/link-button
 
+## 12.2.2
+
+### Patch Changes
+
+- [#1966](https://github.com/commercetools/ui-kit/pull/1966) [`52cd68bf`](https://github.com/commercetools/ui-kit/commit/52cd68bfaac2359801bb6a716a41b200da9d8b99) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`52cd68bf`](https://github.com/commercetools/ui-kit/commit/52cd68bfaac2359801bb6a716a41b200da9d8b99), [`f3745882`](https://github.com/commercetools/ui-kit/commit/f37458821fdba54d4ef746eb03a4eb9327ff1a42)]:
+  - @commercetools-uikit/design-system@12.2.2
+  - @commercetools-uikit/accessible-button@12.2.2
+  - @commercetools-uikit/spacings-inline@12.2.2
+  - @commercetools-uikit/text@12.2.2
+
 ## 12.2.0
 
 ### Patch Changes
