@@ -57,11 +57,11 @@ const getCheckboxWrapperStyles = (props: TCheckboxProps, theme: Theme) => {
 
     display: flex;
     align-items: center;
-    svg [id$='borderAndContent'] > [id$='border'] {
+    svg *[data-style='checkbox__border'] {
       stroke: ${getSvgBorderStroke(overwrittenVars, props)};
       fill: ${overwrittenVars[designTokens.backgroundColorForInput]};
     }
-    svg [id$='borderAndContent'] > [id$='content'] {
+    svg *[data-style='checkbox__content'] {
       fill: ${getSvgContentFill(overwrittenVars, props)};
     }
   `;

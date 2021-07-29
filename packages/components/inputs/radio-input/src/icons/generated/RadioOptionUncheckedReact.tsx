@@ -144,7 +144,13 @@ const SvgRadioOptionUnchecked = (props: Props) => (
   >
     <g fillRule="evenodd">
       <circle fill="#FFF" cx={8} cy={8} r={8} />
-      <circle cx={8} cy={8} r={7.5} stroke="#AFAFAF" />
+      <circle
+        data-style="radio-option__border"
+        cx={8}
+        cy={8}
+        r={7.5}
+        stroke="#AFAFAF"
+      />
     </g>
   </svg>
 );

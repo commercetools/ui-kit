@@ -55,10 +55,10 @@ const getContainerStyles = (props) => css`
       : customProperties.backgroundColorForInput};
   }
 
-  svg [id$='borderAndContent'] > [id$='border'] {
+  svg *[data-style='radio-option__border'] {
     stroke: ${getSvgContainerBorderStroke(props)};
   }
-  svg [id$='borderAndContent'] > [id$='content'] {
+  svg *[data-style='radio-option__content'] {
     fill: ${getSvgContainerContentFill(props)};
   }
 `;
@@ -108,7 +108,7 @@ const getLabelStyles = (props) => css`
   cursor: ${getLabelCursor(props)};
   display: flex;
   position: relative;
-  &:hover svg [id$='borderAndContent'] > [id$='border'] {
+  &:hover svg *[data-style='radio-option__border'] {
     stroke: ${getSvgLabelBorderStroke(props)};
   }
   :focus-within ${LabelTextWrapper} {

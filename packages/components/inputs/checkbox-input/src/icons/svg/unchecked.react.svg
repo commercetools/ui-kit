@@ -1,17 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>checkbox-empty-default</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="ATOM---Checkboxes---Radio-buttons" stroke="none" stroke-width="1"  fill-rule="evenodd">
-        <g id="Checkboxes-Radio-Buttons" transform="translate(-177.000000, -645.000000)">
-            <g id="checkbox-empty-default" transform="translate(177.000000, 644.000000)">
-                <rect id="background" fill="#FFFFFF" x="0" y="1" width="16" height="16" rx="4"></rect>
-                <g id="borderAndContent" transform="translate(0.000000, 0.500000)" stroke="#AFAFAF">
-                    <rect id="border" x="0.5" y="1" width="15" height="15" rx="4"></rect>
-                </g>
-            </g>
-        </g>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(0 -1)" fill-rule="evenodd">
+        <rect fill="#FFF" y="1" width="16" height="16" rx="4"/>
+        <rect data-style="checkbox__border" x=".5" y="1" width="15" height="15" rx="4" transform="translate(0 .5)" stroke="#AFAFAF"/>
     </g>
 </svg>

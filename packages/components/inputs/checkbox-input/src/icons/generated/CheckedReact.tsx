@@ -145,8 +145,17 @@ const SvgChecked = (props: Props) => (
     <g transform="translate(0 -1)" fillRule="evenodd">
       <rect fill="#FFF" y={1} width={16} height={16} rx={4} />
       <g transform="translate(0 .5)">
-        <rect stroke="#AFAFAF" x={0.5} y={1} width={15} height={15} rx={4} />
+        <rect
+          data-style="checkbox__border"
+          stroke="#AFAFAF"
+          x={0.5}
+          y={1}
+          width={15}
+          height={15}
+          rx={4}
+        />
         <path
+          data-style="checkbox__content"
           d="M12.918 3.759a.497.497 0 00-.7 0L6.011 9.966a.497.497 0 01-.7 0L3.78 8.438a.497.497 0 00-.699 0l-.938.938a.497.497 0 000 .7l3.167 3.165a.497.497 0 00.7 0l7.845-7.845a.496.496 0 000-.7l-.938-.937z"
           fill="#20AD92"
           fillRule="nonzero"

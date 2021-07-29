@@ -9,7 +9,7 @@ import {
 import type { TCheckboxProps } from './checkbox-input';
 
 const Input = styled.input`
-  &:focus + div > svg [id$='borderAndContent'] > [id$='border'] {
+  &:focus + div > svg *[data-style='checkbox__border'] {
     stroke: ${vars.borderColorForInputWhenFocused};
   }
 `;

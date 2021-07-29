@@ -16,38 +16,38 @@ const getButtonStyle = () => css`
   font-family: inherit;
 `;
 
+/* A sortable header has the two arrow svg icons
+ * GIVEN column is sortable and is not focused
+ * THEN AngleUpDown icon is shown (default behaviour)
+ * AND AngleUp or AngleDown icon is not shown
+ *
+ * GIVEN column is sortable and foucsed
+ * THEN AngleUpDown icon is hidden
+ * AND AngleUp or AngleDown icon is shown
+ */
 const getSortableHeaderStyles = (props) => css`
   width: 100%;
   display: flex;
   align-items: center;
 
-  /* A sortable header has the two arrow svg icons
-  * GIVEN column is sortable and is not focused
-  * THEN AngleUpDown icon is shown (default behaviour)
-  * AND AngleUp or AngleDown icon is not shown
-  *
-  * GIVEN column is sortable and foucsed
-  * THEN AngleUpDown icon is hidden
-  * AND AngleUp or AngleDown icon is shown
-  */
-  svg[id='nonActiveSortingIcon'],
-  svg[id='activeSortingIcon'] {
+  svg[data-icon-state='inactive'],
+  svg[data-icon-state='active'] {
     margin-left: ${vars.spacingS};
     flex-shrink: 0;
   }
-  svg[id='nonActiveSortingIcon'] {
+  svg[data-icon-state='inactive'] {
     display: ${props.isActive ? 'none' : 'inline-block'};
   }
-  svg[id='activeSortingIcon'] {
+  svg[data-icon-state='active'] {
     display: ${props.isActive ? 'inline-block' : 'none'};
   }
 
   :hover,
   :focus {
-    svg[id='nonActiveSortingIcon'] {
+    svg[data-icon-state='inactive'] {
       display: none;
     }
-    svg[id='activeSortingIcon'] {
+    svg[data-icon-state='active'] {
       display: inline-block;
       * {
         fill: ${vars.colorNeutral};

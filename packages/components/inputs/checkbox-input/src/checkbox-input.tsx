@@ -83,7 +83,7 @@ const defaultProps: Pick<
 const hoverStyles = (props: TLabelProps) => {
   if (!props.hasError && !props.readOnly && !props.disabled) {
     return css`
-      &:hover svg [id$='borderAndContent'] > [id$='border'] {
+      &:hover svg *[data-style='checkbox__border'] {
         stroke: ${vars.borderColorForInputWhenFocused};
       }
     `;

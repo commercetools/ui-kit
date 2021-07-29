@@ -85,7 +85,12 @@ export default ${reactComponentName};
 module.exports = {
   icon: false,
   svgoConfig: {
-    plugins: [{ removeViewBox: false }],
+    plugins: [
+      {
+        removeViewBox: false,
+        prefixIds: true,
+      },
+    ],
   },
   // same as the rollup plugin
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],

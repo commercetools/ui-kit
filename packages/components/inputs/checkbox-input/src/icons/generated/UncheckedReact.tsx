@@ -145,6 +145,7 @@ const SvgUnchecked = (props: Props) => (
     <g transform="translate(0 -1)" fillRule="evenodd">
       <rect fill="#FFF" y={1} width={16} height={16} rx={4} />
       <rect
+        data-style="checkbox__border"
         x={0.5}
         y={1}
         width={15}

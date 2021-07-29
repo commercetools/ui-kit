@@ -145,8 +145,20 @@ const SvgIndeterminate = (props: Props) => (
     <g transform="translate(0 -1)" fillRule="evenodd">
       <rect fill="#FFF" y={1} width={16} height={16} rx={4} />
       <g transform="translate(0 .5)">
-        <rect stroke="#AFAFAF" x={0.5} y={1} width={15} height={15} rx={4} />
-        <path fill="#00B6A1" d="M3 7.5h10v2H3z" />
+        <rect
+          data-style="checkbox__border"
+          stroke="#AFAFAF"
+          x={0.5}
+          y={1}
+          width={15}
+          height={15}
+          rx={4}
+        />
+        <path
+          data-style="checkbox__content"
+          fill="#00B6A1"
+          d="M3 7.5h10v2H3z"
+        />
       </g>
     </g>
   </svg>
