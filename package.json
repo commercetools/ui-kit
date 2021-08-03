@@ -80,8 +80,8 @@
   "dependencies": {
     "@changesets/changelog-github": "0.4.0",
     "@changesets/cli": "2.16.0",
-    "@commercetools-frontend/babel-preset-mc-app": "20.7.0",
-    "@commercetools-frontend/eslint-config-mc-app": "20.7.0",
+    "@commercetools-frontend/babel-preset-mc-app": "20.8.0",
+    "@commercetools-frontend/eslint-config-mc-app": "20.8.0",
     "@commercetools/github-labels": "1.1.0",
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
@@ -90,7 +90,7 @@
     "@formatjs/cli": "4.2.29",
     "@formatjs/intl-relativetimeformat": "9.2.0",
     "@manypkg/cli": "0.18.0",
-    "@percy/cli": "1.0.0-beta.60",
+    "@percy/cli": "1.0.0-beta.62",
     "@percy/puppeteer": "2.0.0",
     "@preconstruct/cli": "2.1.0",
     "@svgr/cli": "5.5.0",
@@ -111,7 +111,7 @@
     "common-tags": "1.8.0",
     "conventional-changelog-cli": "2.1.1",
     "cross-env": "7.0.3",
-    "eslint": "7.31.0",
+    "eslint": "7.32.0",
     "eslint-formatter-pretty": "4.1.0",
     "formik": "^2.2.9",
     "glob": "7.1.7",
@@ -165,6 +165,6 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2",
-    "**/core-js-compat": "3.15.2"
+    "**/core-js-compat": "3.16.0"
   }
 }
