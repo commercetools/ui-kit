@@ -1,4 +1,4 @@
-import type { VFile, VFileCompatible } from 'vfile';
+import type { VFileCompatible } from 'vfile';
 import type { Node } from 'unist';
 import type {
   Parent,
@@ -30,14 +30,13 @@ import type {
 
 import fs from 'fs';
 import path from 'path';
-// import shelljs from 'shelljs';
 import Listr from 'listr';
 // @ts-ignore
 import ListrVerboseRenderer from 'listr-verbose-renderer';
 import { getPackagesSync } from '@manypkg/get-packages';
-import toVfile from 'to-vfile';
-import vfile from 'vfile';
-import unified from 'unified';
+import { VFile } from 'vfile';
+import { read as readVFile, writeSync as writeToVFileSync } from 'to-vfile';
+import { unified } from 'unified';
 import parse from 'remark-parse';
 import mdx from 'remark-mdx';
 import gfm from 'remark-gfm';
@@ -594,7 +593,7 @@ function readmeTransformer(packageFolderPath: string) {
       // The description is what's defined in the package.json
       heading(2, 'Description'),
       ...((await existPath(paths.description))
-        ? parseMarkdownFragmentToAST(await toVfile.read(paths.description))
+        ? parseMarkdownFragmentToAST(await readVFile(paths.description))
         : // Fall back to the package.json description field.
           [paragraph(packageJsonInfo.description)]),
 
@@ -628,7 +627,7 @@ function readmeTransformer(packageFolderPath: string) {
       ...parsePropTypesToMarkdown(paths.componentPath, { isTsx }),
       // Additional information (can be anything, there is no pre-defined structure here)
       ...((await existPath(paths.additionalInfo))
-        ? parseMarkdownFragmentToAST(await toVfile.read(paths.additionalInfo))
+        ? parseMarkdownFragmentToAST(await readVFile(paths.additionalInfo))
         : []),
     ];
   }
@@ -647,7 +646,7 @@ export async function transformDocument(
       .use(readmeTransformer, packageFolderPath)
       .process(doc, (err, file) => {
         if (err) reject(err);
-        else resolve(file);
+        else if (file) resolve(file);
       });
   });
 }
@@ -660,16 +659,16 @@ function writeFile(
   // Assign the path where to write the file to.
   file.path = filePath;
   // Format file using prettier.
-  file.contents = prettier.format(file.contents.toString(), {
+  file.value = prettier.format(file.value.toString(), {
     ...prettierConfig,
     parser: 'markdown',
   });
 
   if (options.dryRun) {
-    console.log(vfile(file).contents);
+    console.log(new VFile(file).value);
   } else {
     // Write the file to disk.
-    toVfile.writeSync(file);
+    writeToVFileSync(file);
   }
 }
 
@@ -689,7 +688,7 @@ export async function generate(
         task: async () => {
           const readmePath = path.join(packageInfo.dir, 'README.md');
           // Create an empty VFile.
-          const doc = vfile();
+          const doc = new VFile();
           const content = await transformDocument(doc, packageInfo.dir);
           await writeFile(readmePath, content, options);
         },
@@ -711,7 +710,7 @@ export async function generate(
   } else {
     const packageFolderPath = path.resolve(process.cwd(), relativePackagePath);
     // Create an empty VFile.
-    const doc = vfile();
+    const doc = new VFile();
     const content = await transformDocument(doc, packageFolderPath);
     await writeFile(
       path.join(packageFolderPath, 'README.md'),

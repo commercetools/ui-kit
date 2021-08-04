@@ -29,14 +29,14 @@
     "react-docgen": "5.4.0",
     "remark-gfm": "1.0.0",
     "remark-mdx": "1.6.22",
-    "remark-parse": "9.0.0",
-    "remark-stringify": "9.0.1",
+    "remark-parse": "10.0.0",
+    "remark-stringify": "10.0.0",
     "shelljs": "0.8.4",
-    "to-vfile": "6.1.0",
+    "to-vfile": "7.2.1",
     "typescript-react-function-component-props-handler": "1.1.1",
     "unified": "10.1.0",
-    "vfile": "4.2.1",
-    "vfile-reporter": "6.0.2"
+    "vfile": "5.0.2",
+    "vfile-reporter": "7.0.1"
   },
   "devDependencies": {
     "prettier": "2.3.2",
