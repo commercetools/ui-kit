@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+import type { LocationDescriptor } from 'history';
+
 import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
@@ -10,6 +11,40 @@ import {
 } from '@commercetools-uikit/utils';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Text from '@commercetools-uikit/text';
+
+export type TLinkButtonProps = {
+  /**
+   * Should describe what the button is for.
+   */
+  label: string;
+
+  /**
+   * A string or an object representing the link location.
+   */
+  to: string | LocationDescriptor;
+
+  /**
+   * The icon of the button.
+   */
+  iconLeft?: React.ReactElement;
+
+  /**
+   * Determines if the button is disabled.
+   * <br />
+   * Note that this influences the `tone` and `onClick` will not be triggered in this state.
+   */
+  isDisabled?: boolean;
+
+  /**
+   * Determines if the button link should be a normal `<a>` element or not.
+   */
+  isExternal?: boolean;
+};
+
+const defaultProps: Pick<TLinkButtonProps, 'isDisabled' | 'isExternal'> = {
+  isDisabled: false,
+  isExternal: false,
+};
 
 const hoverStyles = css`
   &:hover,
@@ -25,7 +60,9 @@ const hoverStyles = css`
   }
 `;
 
-const StyledExternalLink = styled.a`
+const StyledExternalLink = styled.a<
+  Pick<TLinkButtonProps, 'to' | 'isDisabled'>
+>`
   display: inline-flex;
   align-items: center;
   font-size: 1rem;
@@ -37,46 +74,50 @@ const StyledExternalLink = styled.a`
 
   span {
     color: ${(props) =>
-      props.disabled ? vars.colorNeutral : vars.colorPrimary};
+      props.isDisabled ? vars.colorNeutral : vars.colorPrimary};
   }
 
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
 
-  ${(props) => !props.disabled && hoverStyles}
+  ${(props) => !props.isDisabled && hoverStyles}
 `;
 
-const LinkBody = (props) => (
+const LinkBody = (
+  props: Pick<TLinkButtonProps, 'iconLeft' | 'label' | 'isDisabled'>
+) => (
   <Inline scale="xs" alignItems="center">
-    {Boolean(props.iconLeft) &&
-      React.cloneElement(props.iconLeft, {
-        size: 'medium',
-        color: props.isDisabled ? 'neutral60' : 'primary',
-      })}
+    {props.iconLeft
+      ? React.cloneElement(props.iconLeft, {
+          size: 'medium',
+          color: props.isDisabled ? 'neutral60' : 'primary',
+        })
+      : null}
     <Text.Body as="span">{props.label}</Text.Body>
   </Inline>
 );
 
 LinkBody.displayName = 'LinkBody';
-LinkBody.propTypes = {
-  iconLeft: PropTypes.element,
-  label: PropTypes.string,
-  isDisabled: PropTypes.bool,
-};
 
-const LinkButton = (props) => {
+const LinkButton = (props: TLinkButtonProps) => {
   React.useEffect(() => {
     warnDeprecatedComponent('LinkButton');
   }, []);
   const remainingProps = filterInvalidAttributes(props);
 
   if (props.isExternal) {
+    if (typeof props.to !== 'string') {
+      throw new Error('`to` must be a `string` when `isExternal` is provided.');
+    }
+
     return (
+      // @ts-ignore: the `to` prop in this case is not required
+      // to be provided, instead the `href` is.
       <StyledExternalLink
         href={props.to}
         onClick={
           props.isDisabled ? (event) => event.preventDefault() : undefined
         }
-        disabled={props.isDisabled}
+        isDisabled={props.isDisabled}
         data-track-component="LinkButton"
         aria-label={props.label}
         {...remainingProps}
@@ -94,7 +135,7 @@ const LinkButton = (props) => {
     <StyledExternalLink
       as={ReactRouterLink}
       to={props.to}
-      disabled={props.isDisabled}
+      isDisabled={props.isDisabled}
       onClick={props.isDisabled ? (event) => event.preventDefault() : undefined}
       data-track-component="LinkButton"
       aria-label={props.label}
@@ -110,24 +151,6 @@ const LinkButton = (props) => {
 };
 
 LinkButton.displayName = 'LinkButton';
-LinkButton.propTypes = {
-  label: PropTypes.node.isRequired,
-  to: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-      search: PropTypes.string,
-      query: PropTypes.objectOf(PropTypes.string),
-    }),
-  ]).isRequired,
-  iconLeft: PropTypes.element,
-  isDisabled: PropTypes.bool,
-  isExternal: PropTypes.bool,
-};
-
-LinkButton.defaultProps = {
-  isDisabled: false,
-  isExternal: false,
-};
+LinkButton.defaultProps = defaultProps;
 
 export default LinkButton;
