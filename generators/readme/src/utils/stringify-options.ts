@@ -1,6 +1,6 @@
-import type { RemarkStringifyOptions } from 'remark-stringify';
+import type { Options } from 'remark-stringify';
 
-const stringifyOptions: Partial<RemarkStringifyOptions> = {
+const stringifyOptions: Partial<Options> = {
   // options approximating prettier output
   // https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#options
   listItemIndent: 'one',
