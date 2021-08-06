@@ -1,4 +1,3 @@
-import React from 'react';
 import { createSequentialId } from '@commercetools-uikit/utils';
 import useToggleState from '../use-toggle-state';
 import useFieldId from './use-field-id';

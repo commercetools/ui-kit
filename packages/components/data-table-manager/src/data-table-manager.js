@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import { useMemo, cloneElement } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings from './data-table-settings';
 
@@ -10,7 +10,7 @@ const DataTableManager = (props) => {
   const isWrappingText =
     areDisplaySettingsEnabled && props.displaySettings.isWrappingText;
 
-  const columns = React.useMemo(
+  const columns = useMemo(
     () =>
       props.columns.map((column) => ({
         ...column,
@@ -30,7 +30,7 @@ const DataTableManager = (props) => {
         displaySettings={props.displaySettings}
         managerTheme={props.managerTheme}
       />
-      {React.cloneElement(props.children, {
+      {cloneElement(props.children, {
         columns,
         isCondensed:
           areDisplaySettingsEnabled && props.displaySettings.isCondensed,

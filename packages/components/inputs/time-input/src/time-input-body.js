@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
@@ -56,7 +55,6 @@ const TimeInputBody = (props) => {
           onBlur={props.onBlur}
           {...filterDataAttributes(props)}
           /* ARIA */
-          role="textbox"
           aria-readonly={props.isReadOnly}
           contentEditable={!props.isReadOnly}
         />

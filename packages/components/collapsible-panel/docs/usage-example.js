@@ -1,4 +1,3 @@
-import React from 'react';
 import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';

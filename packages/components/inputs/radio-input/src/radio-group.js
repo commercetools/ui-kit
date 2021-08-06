@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -12,10 +12,10 @@ const directionWrapper = {
 };
 
 const Group = (props) => {
-  React.useEffect(() => {
+  useEffect(() => {
     // NOTE: We allow mixed children rendered as (e.g. spacers)
     // as a result we need to filter out children of the correct type.
-    const childrenAsArray = React.Children.toArray(props.children);
+    const childrenAsArray = Children.toArray(props.children);
     const optionChildrenAsArray = childrenAsArray.filter(
       (child) => child.type.displayName === Option.displayName
     );
@@ -26,10 +26,10 @@ const Group = (props) => {
     );
   }, [props.children]);
 
-  const optionElements = React.Children.map(props.children, (child, index) => {
+  const optionElements = Children.map(props.children, (child, index) => {
     // NOTE: Allowing to intersperse other elements than `Option`.
     if (child && child.type.displayName === Option.displayName) {
-      const clonedChild = React.cloneElement(child, {
+      const clonedChild = cloneElement(child, {
         id: props.id && `${props.id}-${index}`,
         name: props.name,
         isChecked: props.value === child.props.value,

@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from 'react-intl';
 
-import React from 'react';
+import { Children, ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
@@ -14,7 +14,7 @@ import {
 
 type TBasicTextProps = {
   intlMessage?: MessageDescriptor;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 type TBasicHeadlineProps = {
@@ -38,7 +38,7 @@ const warnIfMissingContent = (
   componentName: string
 ) => {
   const hasContent =
-    props.intlMessage || Boolean(React.Children.count(props.children));
+    props.intlMessage || Boolean(Children.count(props.children));
 
   warning(
     hasContent,

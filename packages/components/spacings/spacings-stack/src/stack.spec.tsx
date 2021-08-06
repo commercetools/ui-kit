@@ -1,4 +1,3 @@
-import React from 'react';
 import { screen, render } from '../../../../../test/test-utils';
 import Stack from './stack';
 

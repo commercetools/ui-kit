@@ -1,4 +1,3 @@
-import React from 'react';
 import { isKeyHotkey } from 'is-hotkey';
 import { warning } from '@commercetools-uikit/utils';
 import memoize from 'lodash/memoize';

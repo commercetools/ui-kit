@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';

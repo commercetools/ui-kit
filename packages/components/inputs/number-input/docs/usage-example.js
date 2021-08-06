@@ -1,4 +1,3 @@
-import React from 'react';
 import NumberInput from '@commercetools-uikit/number-input';
 
 const Example = () => (

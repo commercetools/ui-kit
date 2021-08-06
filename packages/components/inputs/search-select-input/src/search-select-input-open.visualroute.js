@@ -1,4 +1,3 @@
-import React from 'react';
 import SearchSelectInput from './search-select-input';
 import { Suite, Spec } from '../../../../../test/percy';
 

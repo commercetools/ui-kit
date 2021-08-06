@@ -1,4 +1,11 @@
-import React, { MouseEvent, KeyboardEvent } from 'react';
+import {
+  MouseEvent,
+  KeyboardEvent,
+  ElementType,
+  ReactElement,
+  ComponentPropsWithRef,
+  cloneElement,
+} from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
@@ -13,7 +20,7 @@ import {
 } from './icon-button.styles';
 
 export type TIconButtonProps<
-  TStringOrComponent extends React.ElementType = 'button'
+  TStringOrComponent extends ElementType = 'button'
 > = {
   /**
    * You may pass in a string like "a" to have the button element render an anchor tag, or
@@ -33,7 +40,7 @@ export type TIconButtonProps<
   /**
    * an <Icon /> component
    */
-  icon?: React.ReactElement;
+  icon?: ReactElement;
   /**
    * If this is active, it means the button will persist in an "active" state when toggled (see `isToggled`), and back to normal state when untoggled.
    */
@@ -70,7 +77,7 @@ export type TIconButtonProps<
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
  * passed to `<IconButton>`: <IconButton as={Link} to="/foo" label="Foo" />.
- */ React.ComponentPropsWithRef<TStringOrComponent>;
+ */ ComponentPropsWithRef<TStringOrComponent>;
 
 const defaultProps: Pick<
   TIconButtonProps,
@@ -83,7 +90,7 @@ const defaultProps: Pick<
   isToggleButton: false,
 };
 
-const IconButton = <TStringOrComponent extends React.ElementType = 'button'>(
+const IconButton = <TStringOrComponent extends ElementType = 'button'>(
   props: TIconButtonProps<TStringOrComponent>
 ) => {
   warning(
@@ -129,7 +136,7 @@ const IconButton = <TStringOrComponent extends React.ElementType = 'button'>(
       ]}
     >
       {props.icon &&
-        React.cloneElement(props.icon, {
+        cloneElement(props.icon, {
           size: props.size,
           color: getIconThemeColor(props),
         })}

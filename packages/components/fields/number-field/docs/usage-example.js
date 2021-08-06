@@ -1,4 +1,3 @@
-import React from 'react';
 import NumberField from '@commercetools-uikit/number-field';
 
 const Example = () => (

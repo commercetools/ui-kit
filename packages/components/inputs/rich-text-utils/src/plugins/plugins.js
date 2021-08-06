@@ -1,4 +1,3 @@
-import React from 'react';
 import { BLOCK_TAGS, MARK_TAGS } from '../tags';
 
 // eslint-disable-next-line import/prefer-default-export

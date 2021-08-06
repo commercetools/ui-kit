@@ -1,4 +1,3 @@
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import { messagesLocalizedInput } from '@commercetools-uikit/input-utils';

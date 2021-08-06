@@ -30,6 +30,9 @@ if (!info) {
   );
 }
 
+/**
+ * @type {import('@jest/types').Config.ProjectConfig}
+ */
 module.exports = {
   displayName: 'bundle',
   globals: { 'process.env': { NODE_ENV: 'test' } },

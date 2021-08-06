@@ -1,4 +1,3 @@
-import React from 'react';
 import LocalizedTextInput from '@commercetools-uikit/localized-text-input';
 
 const Example = () => (

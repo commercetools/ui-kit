@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
@@ -35,7 +35,7 @@ const sequentialId = createSequentialId('localized-text-input-');
 
 const LocalizedInput = (props) => {
   const { onChange } = props;
-  const handleChange = React.useCallback(
+  const handleChange = useCallback(
     (event) => {
       // We manipulate the event to add the language to the target.
       // That way the users of LocalizedTextInput's onChange can read

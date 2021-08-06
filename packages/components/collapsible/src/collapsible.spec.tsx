@@ -1,5 +1,4 @@
 import type { TCollapsibleProps } from './collapsible';
-import React from 'react';
 import Collapsible from './collapsible';
 import { screen, render } from '../../../../test/test-utils';
 

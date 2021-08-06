@@ -1,6 +1,6 @@
 import type { LocationDescriptor } from 'history';
 
-import React, { ReactNode, MouseEvent, KeyboardEvent } from 'react';
+import { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 import { css, SerializedStyles, useTheme } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import {

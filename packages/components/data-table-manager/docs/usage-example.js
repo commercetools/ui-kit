@@ -1,4 +1,3 @@
-import React from 'react';
 import DataTableManager from '@commercetools-uikit/data-table-manager';
 import DataTable from '@commercetools-uikit/data-table';
 

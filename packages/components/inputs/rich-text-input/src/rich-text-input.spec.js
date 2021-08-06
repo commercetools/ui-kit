@@ -1,4 +1,3 @@
-import React from 'react';
 import { screen, render } from '../../../../../test/test-utils';
 import RichTextInput from './rich-text-input';
 

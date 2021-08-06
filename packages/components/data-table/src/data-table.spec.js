@@ -1,4 +1,3 @@
-import React from 'react';
 import { screen, render, within } from '../../../../test/test-utils';
 import DataTable from '.';
 import IconButton from '../../buttons/icon-button';

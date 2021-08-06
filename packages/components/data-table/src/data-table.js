@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
@@ -36,7 +36,7 @@ const DataTable = (props) => {
     Array.isArray(props.columns),
     `ui-kit/DataTable: the prop "columns" is required.`
   );
-  const tableRef = React.useRef();
+  const tableRef = useRef();
   const columnResizingReducer = useManualColumnResizing(tableRef);
 
   // if the table columns have been measured
@@ -51,11 +51,12 @@ const DataTable = (props) => {
     columns: columnsInfo,
     isCondensed: props.isCondensed,
   };
-  React.useLayoutEffect(() => {
-    if (!isEqual(prevLayout, currentLayout)) {
+  const hasLayoutChanged = !isEqual(prevLayout, currentLayout);
+  useLayoutEffect(() => {
+    if (hasLayoutChanged) {
       columnResizingReducer.reset();
     }
-  }, [prevLayout, currentLayout, columnResizingReducer]);
+  }, [columnResizingReducer, hasLayoutChanged]);
 
   const hasTableBeenResized = columnResizingReducer.getHasTableBeenResized();
   const resizedTotalWidth = hasTableBeenResized

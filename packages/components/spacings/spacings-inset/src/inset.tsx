@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
@@ -24,7 +24,7 @@ const getPadding = (scale?: TScale) => {
 
 type TProps = {
   scale: TScale;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const Inset = (props: TProps) => (

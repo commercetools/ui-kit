@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef, useCallback, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import requiredIf from 'react-required-if';
@@ -168,7 +168,7 @@ const createMoreStylesDropdownOptions = (intl) => {
   ];
 };
 
-const RichTextEditorBody = React.forwardRef((props, ref) => {
+const RichTextEditorBody = forwardRef((props, ref) => {
   const { registerContentNode, containerRef } = ref;
   const intl = useIntl();
 
@@ -178,7 +178,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
   const hasUndos = props.editor.hasUndos();
   const hasRedos = props.editor.hasRedos();
 
-  const onClickBlock = React.useCallback(
+  const onClickBlock = useCallback(
     ({ value: type }) => {
       // Handle everything but list buttons.
       if (type !== BLOCK_TAGS.ul && type !== BLOCK_TAGS.ol) {
@@ -220,7 +220,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
     [props.editor]
   );
 
-  const onChangeMoreStyles = React.useCallback(
+  const onChangeMoreStyles = useCallback(
     (val) => {
       props.editor.toggleMark(val.value);
     },
@@ -252,7 +252,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
 
   // we prevent all our defined onClicks inside of the CalendarHeader
   // from blurring our input.
-  const onToolbarMouseDown = React.useCallback((event) => {
+  const onToolbarMouseDown = useCallback((event) => {
     event.preventDefault();
   }, []);
 
@@ -424,7 +424,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
             </Button>
           </Tooltip>
           {props.showExpandIcon && (
-            <React.Fragment>
+            <Fragment>
               <Divider />
               <Tooltip
                 title={intl.formatMessage(messages.expandButtonLabel)}
@@ -440,7 +440,7 @@ const RichTextEditorBody = React.forwardRef((props, ref) => {
                   <ExpandFullIcon size="medium" />
                 </Button>
               </Tooltip>
-            </React.Fragment>
+            </Fragment>
           )}
         </ToolbarRightControls>
       </Toolbar>

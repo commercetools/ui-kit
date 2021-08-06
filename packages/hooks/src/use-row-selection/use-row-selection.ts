@@ -1,4 +1,4 @@
-import React from 'react';
+import { useReducer, useDebugValue } from 'react';
 
 interface TRowItem {
   id: string;
@@ -71,11 +71,11 @@ const useRowSelection = <RowItem extends TRowItem = TRowItem>(
   keyName: string,
   rows: RowItem[]
 ) => {
-  const [selectionState, dispatch] = React.useReducer<
+  const [selectionState, dispatch] = useReducer<
     (prevState: TSelectionState, action: TSelectionAction) => TSelectionState
   >(selectionReducer, getInitialState<RowItem>(keyName, rows));
 
-  React.useDebugValue(selectionState);
+  useDebugValue(selectionState);
 
   const selectableRows = rows.map((item) => ({
     ...item,

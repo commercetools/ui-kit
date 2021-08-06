@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
@@ -32,7 +32,7 @@ const TimeInput = (props) => {
 
   const { name, value, onBlur, onChange } = props;
 
-  const emitChange = React.useCallback(
+  const emitChange = useCallback(
     (nextValue) => {
       const event = {
         target: { id, name, value: nextValue },
@@ -42,7 +42,7 @@ const TimeInput = (props) => {
     [id, name, onChange]
   );
 
-  const handleBlur = React.useCallback(
+  const handleBlur = useCallback(
     (event) => {
       // check formatting and reformat when necessary
       const formattedTime = TimeInput.toLocaleTime(value, intl.locale);
@@ -55,7 +55,7 @@ const TimeInput = (props) => {
     [intl.locale, value, onBlur, emitChange]
   );
 
-  const onClear = React.useCallback(() => emitChange(''), [emitChange]);
+  const onClear = useCallback(() => emitChange(''), [emitChange]);
 
   // if locale has changed
   if (typeof prevLocale !== 'undefined' && prevLocale !== intl.locale) {

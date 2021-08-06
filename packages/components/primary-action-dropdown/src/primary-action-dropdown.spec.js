@@ -1,4 +1,3 @@
-import React from 'react';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
 import { screen, render, fireEvent } from '../../../../test/test-utils';
 import PrimaryActionDropdown, { Option } from './primary-action-dropdown';

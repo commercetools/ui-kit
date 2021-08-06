@@ -1,4 +1,6 @@
-import React, {
+import {
+  forwardRef,
+  useCallback,
   ReactNode,
   KeyboardEvent,
   ElementType,
@@ -88,7 +90,7 @@ const defaultProps: Pick<
   isToggled: false,
 };
 
-const AccessibleButton = React.forwardRef<null, TAccessibleButtonProps>(
+const AccessibleButton = forwardRef<null, TAccessibleButtonProps>(
   (props, ref) => {
     warning(
       props.as ? isValidElementType(props.as) : true,
@@ -108,7 +110,7 @@ const AccessibleButton = React.forwardRef<null, TAccessibleButtonProps>(
     const isButton = !props.as || props.as === 'button';
 
     const { onClick } = props;
-    const handleClick = React.useCallback<MouseEventHandler<HTMLButtonElement>>(
+    const handleClick = useCallback<MouseEventHandler<HTMLButtonElement>>(
       (event) => {
         if (props.isDisabled) {
           event.preventDefault();
@@ -121,9 +123,7 @@ const AccessibleButton = React.forwardRef<null, TAccessibleButtonProps>(
       },
       [onClick, props.isDisabled]
     );
-    const handleKeyPress = React.useCallback<
-      KeyboardEventHandler<HTMLButtonElement>
-    >(
+    const handleKeyPress = useCallback<KeyboardEventHandler<HTMLButtonElement>>(
       (event) => {
         if (props.isDisabled) {
           event.preventDefault();

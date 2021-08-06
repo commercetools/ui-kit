@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import isNil from 'lodash/isNil';
 import { warning } from '@commercetools-uikit/utils';
 import { useToggleState } from '@commercetools-uikit/hooks';

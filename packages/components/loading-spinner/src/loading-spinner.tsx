@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { css, keyframes } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
@@ -34,7 +34,7 @@ type TLoadingSpinnerProps = {
   /**
    * The content rendered inside the `LoadingSpinner`.
    */
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const defaultProps: Pick<TLoadingSpinnerProps, 'scale'> = {

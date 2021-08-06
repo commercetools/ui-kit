@@ -1,4 +1,3 @@
-import React from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
 import Text from './text';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { screen, render } from '../../../../../test/test-utils';
 import DroppablePanel from './droppable-panel';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import Text from '@commercetools-uikit/text';
 
 type TIntlMessageDescriptor = {
@@ -9,7 +9,7 @@ type TIntlMessageDescriptor = {
 
 type TWarningMessageProps = {
   intlMessage?: TIntlMessageDescriptor;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const WarningMessage = (props: TWarningMessageProps) => (

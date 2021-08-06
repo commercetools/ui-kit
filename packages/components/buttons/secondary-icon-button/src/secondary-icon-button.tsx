@@ -1,4 +1,10 @@
-import React, { MouseEvent, KeyboardEvent } from 'react';
+import {
+  MouseEvent,
+  KeyboardEvent,
+  ElementType,
+  ReactElement,
+  ComponentPropsWithRef,
+} from 'react';
 import { useTheme } from '@emotion/react';
 import omit from 'lodash/omit';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
@@ -8,7 +14,7 @@ import { getBaseStyles } from './secondary-icon-button.styles';
 const propsToOmit = ['type'];
 
 export type TSecondaryButtonProps<
-  TStringOrComponent extends React.ElementType = 'button'
+  TStringOrComponent extends ElementType = 'button'
 > = {
   /**
    * You may pass in a string like "a" to have the button element render an anchor tag, or
@@ -24,7 +30,7 @@ export type TSecondaryButtonProps<
   /**
    * An <Icon /> component.
    */
-  icon?: React.ReactElement;
+  icon?: ReactElement;
   /**
    * Indicates the color scheme of the button.
    */
@@ -49,11 +55,9 @@ export type TSecondaryButtonProps<
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
  * passed to `<SecondaryIconButton>`: <SecondaryIconButton as={Link} to="/foo" label="Foo" />.
- */ React.ComponentPropsWithRef<TStringOrComponent>;
+ */ ComponentPropsWithRef<TStringOrComponent>;
 
-const SecondaryIconButton = <
-  TStringOrComponent extends React.ElementType = 'button'
->(
+const SecondaryIconButton = <TStringOrComponent extends ElementType = 'button'>(
   props: TSecondaryButtonProps<TStringOrComponent>
 ) => {
   const buttonAttributes = {

@@ -1,4 +1,3 @@
-import React from 'react';
 import UndoPlugin from './plugins/undo';
 import RedoPlugin from './plugins/redo';
 import ListPlugin from './plugins/list';

@@ -1,4 +1,3 @@
-import React from 'react';
 import Tag from '@commercetools-uikit/tag';
 
 const Example = () => (

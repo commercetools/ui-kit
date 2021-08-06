@@ -1,4 +1,3 @@
-import React from 'react';
 import { TimeField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 

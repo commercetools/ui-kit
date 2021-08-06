@@ -1,6 +1,11 @@
+process.env.ENABLE_NEW_JSX_TRANSFORM = 'true';
+
 // Resolve the absolute path of the caller location.
 const rootPath = process.cwd();
 
+/**
+ * @type {import('@jest/types').Config.ProjectConfig}
+ */
 module.exports = {
   displayName: 'test',
   globals: {

@@ -1,4 +1,3 @@
-import React from 'react';
 import SelectField from '@commercetools-uikit/select-field';
 
 const Example = () => (

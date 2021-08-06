@@ -1,4 +1,4 @@
-import React from 'react';
+import { useReducer, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
@@ -64,11 +64,10 @@ const LocalizedMultilineTextInput = (props) => {
     {}
   );
 
-  const [expandedTranslationsState, expandedTranslationsDispatch] =
-    React.useReducer(
-      expandedTranslationsReducer,
-      initialExpandedTranslationsState
-    );
+  const [expandedTranslationsState, expandedTranslationsDispatch] = useReducer(
+    expandedTranslationsReducer,
+    initialExpandedTranslationsState
+  );
 
   const defaultExpansionState =
     props.hideLanguageExpansionControls ||
@@ -80,7 +79,7 @@ const LocalizedMultilineTextInput = (props) => {
     defaultExpansionState
   );
 
-  const toggleLanguage = React.useCallback(
+  const toggleLanguage = useCallback(
     (language) => {
       expandedTranslationsDispatch({ type: 'toggle', payload: language });
     },

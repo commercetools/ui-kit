@@ -7,7 +7,8 @@
     "importHelpers": true,
     // See https://devblogs.microsoft.com/typescript/typescript-and-babel-7/
     "isolatedModules": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "lib": ["ESNext", "DOM"],
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -27,6 +28,10 @@
     "stripInternal": true,
     "target": "ES2019",
     "allowJs": true,
-    "typeRoots": ["@types", "@types-extensions", "node_modules/@types"]
+    "typeRoots": [
+      "@types",
+      // "@types-extensions",
+      "node_modules/@types"
+    ]
   }
 }

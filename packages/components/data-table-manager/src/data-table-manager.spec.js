@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { screen, render, fireEvent, within } from '../../../../test/test-utils';
 import DataTableManager from './data-table-manager';
 import { UPDATE_ACTIONS } from './constants';
@@ -15,8 +15,8 @@ const TestTable = (props) => (
 );
 
 const TestComponent = (props) => {
-  const [isCondensed, setIsCondensed] = React.useState(false);
-  const [isWrappingText, setIsWrappingText] = React.useState(false);
+  const [isCondensed, setIsCondensed] = useState(false);
+  const [isWrappingText, setIsWrappingText] = useState(false);
   const tableSettingsChangeHandler = {
     [UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE]: setIsCondensed,
     [UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE]: setIsWrappingText,

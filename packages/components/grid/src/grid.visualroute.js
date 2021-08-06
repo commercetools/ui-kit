@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import Grid from '@commercetools-uikit/grid';
 import { customProperties } from '@commercetools-uikit/design-system';

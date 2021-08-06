@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import getStyles from './inline.styles';
 
@@ -26,7 +26,7 @@ export type TProps = {
   scale: TScale;
   alignItems: TAlignItem;
   justifyContent: TJustifyContent;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const Inline = (props: TProps) => (

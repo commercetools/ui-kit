@@ -1,6 +1,6 @@
 import type { Props } from '../templates/icon.styles';
 
-import React, { useMemo } from 'react';
+import { cloneElement, isValidElement, ReactElement, useMemo } from 'react';
 import DOMPurify from 'dompurify';
 import convert from 'react-from-dom';
 import { useTheme, ClassNames } from '@emotion/react';
@@ -30,7 +30,7 @@ const InlineSvg = (props: InlineSvgProps) => {
     return (
       <ClassNames>
         {({ css }) =>
-          React.cloneElement(svgElement, {
+          cloneElement(svgElement, {
             className: css(getIconStyles(props, theme)),
           })
         }
@@ -44,7 +44,7 @@ const InlineSvg = (props: InlineSvgProps) => {
 export default InlineSvg;
 
 // Inspired by https://github.com/gilbarbara/react-inlinesvg
-function useStringToReactElement(data: string): React.ReactElement | null {
+function useStringToReactElement(data: string): ReactElement | null {
   return useMemo(() => {
     if (!canUseDOM) {
       return null;
@@ -59,7 +59,7 @@ function useStringToReactElement(data: string): React.ReactElement | null {
 
       const element = convert(node);
 
-      if (!element || !React.isValidElement(element)) {
+      if (!element || !isValidElement(element)) {
         throw new Error('Could not convert the DOM node to a React element');
       }
       return element;

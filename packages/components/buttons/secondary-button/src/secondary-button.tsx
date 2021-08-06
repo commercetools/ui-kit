@@ -1,8 +1,11 @@
-import React, {
+import {
   ReactElement,
   KeyboardEvent,
   MouseEvent,
   ComponentType,
+  ElementType,
+  ComponentPropsWithRef,
+  cloneElement,
 } from 'react';
 import { Link } from 'react-router-dom';
 import { css } from '@emotion/react';
@@ -13,7 +16,7 @@ import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getStateStyles, getThemeStyles } from './secondary-button.styles';
 
 export type TSecondaryButtonProps<
-  TStringOrComponent extends React.ElementType = 'button'
+  TStringOrComponent extends ElementType = 'button'
 > = {
   /**
    * You may pass in a string like "a" to have the button element render an anchor tag, or
@@ -62,7 +65,7 @@ export type TSecondaryButtonProps<
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
  * passed to `<SecondaryButton>`: <SecondaryButton as={Link} to="/foo" label="Foo" />.
- */ React.ComponentPropsWithRef<TStringOrComponent>;
+ */ ComponentPropsWithRef<TStringOrComponent>;
 
 // Gets the color which the icon sho√uld have based on context of button's state/cursor behavior
 export const getIconColor = (
@@ -92,7 +95,7 @@ const defaultProps: Pick<
 };
 
 export const SecondaryButton = <
-  TStringOrComponent extends React.ElementType = 'button'
+  TStringOrComponent extends ElementType = 'button'
 >(
   props: TSecondaryButtonProps<TStringOrComponent>
 ) => {
@@ -153,7 +156,7 @@ export const SecondaryButton = <
             `}
           >
             {props.iconLeft &&
-              React.cloneElement(props.iconLeft, {
+              cloneElement(props.iconLeft, {
                 color: getIconColor(props),
               })}
           </span>

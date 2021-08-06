@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { PlusThinIcon } from '@commercetools-uikit/icons';
 import { screen, render } from '../../../../../test/test-utils';

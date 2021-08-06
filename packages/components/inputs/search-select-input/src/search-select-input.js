@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { SafeHTMLElement } from '@commercetools-uikit/utils';
@@ -21,7 +21,7 @@ const SearchSelectInput = (props) => {
     props.placeholder || intl.formatMessage(messages.placeholderMessage);
   const optionType = props.optionType;
 
-  const components = React.useMemo(() => {
+  const components = useMemo(() => {
     return {
       // eslint-disable-next-line react/display-name
       Option: (optionInnerProps) => (

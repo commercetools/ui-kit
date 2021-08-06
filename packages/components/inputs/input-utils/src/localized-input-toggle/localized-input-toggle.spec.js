@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrainIcon } from '@commercetools-uikit/icons';
 import { screen, render } from '../../../../../../test/test-utils';
 import LocalizedInputToggle from './localized-input-toggle';

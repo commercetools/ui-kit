@@ -1,4 +1,3 @@
-import React from 'react';
 import FieldErrors from './field-errors';
 import { screen, render } from '../../../../test/test-utils';
 

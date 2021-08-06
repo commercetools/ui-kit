@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { useIntl } from 'react-intl';
 import styled from '@emotion/styled';
@@ -186,7 +186,6 @@ DataTableSettings.propTypes = {
           .isRequired,
       })
     ),
-    areHiddenColumnsSearchable: PropTypes.bool,
     searchHiddenColumns: PropTypes.func,
     searchHiddenColumnsPlaceholder: PropTypes.string,
     primaryButton: PropTypes.element,

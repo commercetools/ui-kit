@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-import React from 'react';
+import { Component } from 'react';
 import { screen, render, fireEvent } from '../../../../test/test-utils';
 import CollapsibleMotion from './collapsible-motion';
 
@@ -142,7 +142,7 @@ describe('controlled mode', () => {
       </div>
     ));
 
-    class TestComponent extends React.Component {
+    class TestComponent extends Component {
       state = {
         isClosed: false,
       };

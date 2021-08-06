@@ -1,4 +1,3 @@
-import React from 'react';
 import { PlusBoldIcon } from '@commercetools-uikit/icons';
 import {
   screen,

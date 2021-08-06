@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from '@emotion/react';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
@@ -38,7 +38,7 @@ export const CalendarBody = (props) => {
 
   const { onFocus: onInputFocus } = props.inputProps;
 
-  const handleInputFocus = React.useCallback(
+  const handleInputFocus = useCallback(
     (event) => {
       toggleIsFocused(true);
       if (onInputFocus) onInputFocus(event);
@@ -48,7 +48,7 @@ export const CalendarBody = (props) => {
 
   const { onBlur: onInputBlur } = props.inputProps;
 
-  const handleInputBlur = React.useCallback(
+  const handleInputBlur = useCallback(
     (event) => {
       toggleIsFocused(false);
       if (onInputBlur) onInputBlur(event);
@@ -58,7 +58,7 @@ export const CalendarBody = (props) => {
 
   const { onFocus: onToggleFocus } = props.toggleButtonProps;
 
-  const handleToggleFocus = React.useCallback(
+  const handleToggleFocus = useCallback(
     (event) => {
       toggleIsFocused(true);
       if (onToggleFocus) onToggleFocus(event);
@@ -68,7 +68,7 @@ export const CalendarBody = (props) => {
 
   const { onBlur: onToggleBlur } = props.toggleButtonProps;
 
-  const handleToggleBlur = React.useCallback(
+  const handleToggleBlur = useCallback(
     (event) => {
       toggleIsFocused(false);
       if (onToggleBlur) onToggleBlur(event);

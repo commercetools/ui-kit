@@ -1,4 +1,3 @@
-import React from 'react';
 import Avatar from '@commercetools-uikit/avatar';
 
 const Example = () => (

@@ -1,5 +1,4 @@
 /* eslint-disable consistent-return */
-import React from 'react';
 import Html from 'slate-html-serializer';
 import flatMap from 'lodash/flatMap';
 import { MARK_TAGS, BLOCK_TAGS } from '../tags';

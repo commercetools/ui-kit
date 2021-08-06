@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { ThemeProvider } from '@emotion/react';
 import { Text } from '@commercetools-frontend/ui-kit';

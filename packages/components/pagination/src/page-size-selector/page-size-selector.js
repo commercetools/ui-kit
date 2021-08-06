@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
 import SelectInput from '@commercetools-uikit/select-input';
@@ -24,7 +24,7 @@ const mapRangeToListOfOptions = (perPageRange) => {
 };
 
 const PageSizeSelector = (props) => {
-  const [perPageSelectorId] = React.useState(uniqueId('per-page-selector-'));
+  const [perPageSelectorId] = useState(uniqueId('per-page-selector-'));
   const options = mapRangeToListOfOptions(props.perPageRange);
   const hasValidPerPageOption = options.includes(props.perPage);
 
@@ -36,7 +36,7 @@ const PageSizeSelector = (props) => {
   );
 
   const { onPerPageChange } = props;
-  const handleSelectPerPage = React.useCallback(
+  const handleSelectPerPage = useCallback(
     (event) => {
       onPerPageChange(Number(event.target.value));
     },

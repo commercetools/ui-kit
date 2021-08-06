@@ -1,4 +1,3 @@
-import React from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { screen, render } from '../../../../../test/test-utils';
 import DraggableTag from './draggable-tag';

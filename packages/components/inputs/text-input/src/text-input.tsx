@@ -1,4 +1,4 @@
-import React, { FocusEventHandler, ChangeEventHandler } from 'react';
+import { FocusEventHandler, ChangeEventHandler } from 'react';
 import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -115,7 +115,6 @@ const TextInput = (props: TTextInputProps) => {
         {...filterDataAttributes(props)}
         /* ARIA */
         aria-readonly={props.isReadOnly}
-        role="textbox"
         contentEditable={!props.isReadOnly}
       />
     </Constraints.Horizontal>

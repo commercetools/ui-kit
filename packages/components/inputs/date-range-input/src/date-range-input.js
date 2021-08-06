@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef, Component } from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { injectIntl } from 'react-intl';
@@ -88,7 +88,7 @@ const getRange = ({ item, value, startDate, highlightedItem }) => {
   };
 };
 
-class DateRangeCalendar extends React.Component {
+class DateRangeCalendar extends Component {
   static displayName = 'DateRangeCalendar';
   static propTypes = {
     intl: PropTypes.shape({
@@ -186,7 +186,7 @@ class DateRangeCalendar extends React.Component {
       inputValue: formatRange(props.value, props.intl.locale),
     };
   }
-  inputRef = React.createRef();
+  inputRef = createRef();
   state = {
     calendarDate:
       this.props.value.length === 2 ? this.props.value[0] : getToday(),

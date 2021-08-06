@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef, Component } from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { injectIntl } from 'react-intl';
@@ -53,7 +53,7 @@ const createBlurHandler = (timeInputRef) => (event) => {
   }
 };
 
-class DateTimeInput extends React.Component {
+class DateTimeInput extends Component {
   static displayName = 'DateTimeInput';
   static propTypes = {
     intl: PropTypes.shape({
@@ -130,8 +130,8 @@ class DateTimeInput extends React.Component {
      */
     hasWarning: PropTypes.bool,
   };
-  inputRef = React.createRef();
-  timeInputRef = React.createRef();
+  inputRef = createRef();
+  timeInputRef = createRef();
   state = {
     calendarDate: getToday(this.props.timeZone),
     suggestedItems: [],

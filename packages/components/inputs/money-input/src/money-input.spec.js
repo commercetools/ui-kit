@@ -1,11 +1,11 @@
-import React from 'react';
+import { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import MoneyInput from './money-input';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
 
 // We use this component to simulate the whole flow of
 // changing a value and formatting on blur.
-class TestComponent extends React.Component {
+class TestComponent extends Component {
   state = {
     value: this.props.value,
   };
@@ -41,7 +41,7 @@ class TestComponent extends React.Component {
   };
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <label htmlFor={MoneyInput.getAmountInputId(this.props.id)}>
           Amount
         </label>
@@ -50,7 +50,7 @@ class TestComponent extends React.Component {
           onChange={this.props.onChange || this.handleChange}
           value={this.state.value}
         />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

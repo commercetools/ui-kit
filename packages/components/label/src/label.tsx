@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from 'react-intl';
 
-import React from 'react';
+import { Children, ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { warning } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
@@ -53,7 +53,7 @@ type TLabelProps = {
    * <br />
    * This is required when `intlMessage` is `undefined` and vice versa
    */
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const Label = (props: TLabelProps) => {
@@ -62,7 +62,7 @@ const Label = (props: TLabelProps) => {
     `ui-kit/Label: provide only the "id" or the "htmlFor" properties, not both.`
   );
   const hasContent =
-    props.intlMessage || Boolean(React.Children.count(props.children));
+    props.intlMessage || Boolean(Children.count(props.children));
   warning(
     hasContent,
     [

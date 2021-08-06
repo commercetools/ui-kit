@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import getStyles from './stack.styles';
 
@@ -17,7 +17,7 @@ export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
 export type TProps = {
   scale: TScale;
   alignItems: TAlignItem;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const Stack = (props: TProps) => (

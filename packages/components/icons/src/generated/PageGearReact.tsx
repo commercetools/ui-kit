@@ -4,9 +4,8 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@emotion/react';
-import React from 'react';
 import { warning } from '@commercetools-uikit/utils';
-import { css, useTheme } from '@emotion/react';
+import { css, ClassNames, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 export type Props = {
   color?:
@@ -19,6 +18,9 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+};
+export type SVGProps = Props & {
+  className: string;
 };
 const iconSizes = {
   small: 12,
@@ -134,7 +136,7 @@ export const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgPageGear = (props: Props) => (
+const SvgPageGear = (props: SVGProps) => (
   <svg
     width={24}
     height={24}
@@ -161,7 +163,16 @@ SvgPageGear.displayName = 'SvgPageGear';
 
 const PageGearIcon = (props: Props) => {
   const theme = useTheme();
-  return <SvgPageGear {...props} css={getIconStyles(props, theme)} />;
+  return (
+    <ClassNames>
+      {({ css: createClass }) => (
+        <SvgPageGear
+          {...props}
+          className={createClass(getIconStyles(props, theme))}
+        />
+      )}
+    </ClassNames>
+  );
 };
 
 PageGearIcon.displayName = 'PageGearIcon';

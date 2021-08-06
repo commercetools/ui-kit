@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 import { css } from '@emotion/react';
 import Card from '@commercetools-uikit/card';
 import Text from '@commercetools-uikit/text';

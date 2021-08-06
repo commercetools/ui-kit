@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { useIntl } from 'react-intl';
 import FieldLabel from '@commercetools-uikit/field-label';
 import Grid from '@commercetools-uikit/grid';

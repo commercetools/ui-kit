@@ -60,12 +60,18 @@ const styledIconsTemplate = (
 
 ${templateCreateStyledIcon}
 
-const ${svgComponentName} = (props: Props) => JSX;
+const ${svgComponentName} = (props: SVGProps) => JSX;
 ${svgComponentName}.displayName = "${svgComponentName}";
 
 const ${reactComponentName} = (props: Props) => {
   const theme = useTheme();
-  return <${svgComponentName} {...props} css={getIconStyles(props, theme)} />
+  return (
+    <ClassNames>
+      {({ css: createClass }) =>
+        <${svgComponentName} {...props} className={createClass(getIconStyles(props, theme))} />
+      }
+    </ClassNames>
+  );
 };
 ${reactComponentName}.displayName = "${reactComponentName}";
 

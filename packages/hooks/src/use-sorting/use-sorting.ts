@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useDebugValue } from 'react';
 import sortBy from 'lodash/sortBy';
 
 interface TItem {
@@ -48,11 +48,11 @@ const useSorting = <Item extends TItem = TItem>(
   sortDirection?: TSortDirection,
   sortingFunction?: TSortingFn
 ) => {
-  const [sortState, setSorting] = React.useState(() =>
+  const [sortState, setSorting] = useState(() =>
     getInitialState(items, field, sortDirection, sortingFunction)
   );
 
-  React.useDebugValue(sortState);
+  useDebugValue(sortState);
 
   function onSortChange(fieldKey: string) {
     let nextSortDirection: TSortDirection;

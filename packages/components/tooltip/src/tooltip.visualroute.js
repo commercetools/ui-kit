@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { PrimaryButton, Tooltip } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';

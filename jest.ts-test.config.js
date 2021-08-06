@@ -1,3 +1,8 @@
+process.env.ENABLE_NEW_JSX_TRANSFORM = 'true';
+
+/**
+ * @type {import('@jest/types').Config.ProjectConfig}
+ */
 module.exports = {
   preset: 'ts-jest',
   displayName: 'test-node',

@@ -1,4 +1,3 @@
-import React from 'react';
 import { components } from 'react-select';
 import { SearchIcon } from '@commercetools-uikit/icons';
 

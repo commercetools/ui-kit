@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import { ChangeEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';

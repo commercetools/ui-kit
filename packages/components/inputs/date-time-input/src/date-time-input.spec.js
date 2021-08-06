@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import DateTimeInput from './date-time-input';
@@ -10,7 +10,7 @@ import DateTimeInput from './date-time-input';
 // It also makes sure the event's value passed to onChange flows back to the
 // component so that we can test it under real conditions.
 // As a convenience, we enable accessing a mocked onChange function.
-class Story extends React.Component {
+class Story extends Component {
   static displayName = 'Story';
   static propTypes = {
     onChange: PropTypes.func,

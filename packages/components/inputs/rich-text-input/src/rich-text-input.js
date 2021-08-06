@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { Editor } from 'slate-react';
@@ -11,7 +11,7 @@ import {
 } from '@commercetools-uikit/rich-text-utils';
 import renderEditor from './editor';
 
-class RichTextInput extends React.PureComponent {
+class RichTextInput extends PureComponent {
   serializedValue = this.props.value || '';
   internalSlateValue = html.deserialize(this.props.value || '');
 

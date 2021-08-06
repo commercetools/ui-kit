@@ -1,11 +1,11 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import messages from './messages';
 
 const isObject = (obj: unknown): boolean => typeof obj === 'object';
 
-type TErrorRenderer = (key: string, error?: boolean) => React.ReactNode;
+type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
 export type TFieldErrors = Record<string, boolean>;
 export type TFieldErrorsProps = {
@@ -33,7 +33,7 @@ const FieldErrors = (props: TFieldErrorsProps) => {
   if (!props.errors || !isObject(props.errors)) return null;
 
   return (
-    <React.Fragment>
+    <>
       {Object.entries(props.errors)
         // Only render errors which have truthy values, to avoid
         // rendering an error for, e.g. { missing: false }
@@ -80,7 +80,7 @@ const FieldErrors = (props: TFieldErrorsProps) => {
           // was returned
           return null;
         })}
-    </React.Fragment>
+    </>
   );
 };
 

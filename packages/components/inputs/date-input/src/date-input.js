@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { useIntl } from 'react-intl';
@@ -36,17 +36,15 @@ const preventDownshiftDefault = (event) => {
 
 const DateInput = (props) => {
   const intl = useIntl();
-  const [calendarDate, setCalendarDate] = React.useState(
-    props.value || getToday()
-  );
-  const [suggestedItems, setSuggestedItems] = React.useState([]);
-  const [highlightedIndex, setHighlightedIndex] = React.useState(
+  const [calendarDate, setCalendarDate] = useState(props.value || getToday());
+  const [suggestedItems, setSuggestedItems] = useState([]);
+  const [highlightedIndex, setHighlightedIndex] = useState(
     props.value === '' ? null : getDateInMonth(props.value) - 1
   );
-  const inputRef = React.useRef();
+  const inputRef = useRef();
 
   const { onChange } = props;
-  const emit = React.useCallback(
+  const emit = useCallback(
     (value) =>
       onChange({
         target: {
@@ -60,7 +58,7 @@ const DateInput = (props) => {
     [onChange, props.id, props.name]
   );
 
-  const handleChange = React.useCallback(
+  const handleChange = useCallback(
     (date) => {
       inputRef.current.setSelectionRange(0, 100);
       emit(date);
@@ -69,7 +67,7 @@ const DateInput = (props) => {
   );
 
   const { onBlur } = props;
-  const handleBlur = React.useCallback(() => {
+  const handleBlur = useCallback(() => {
     if (onBlur)
       onBlur({
         target: {

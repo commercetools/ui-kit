@@ -1,11 +1,6 @@
-import React from 'react';
+import { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {
-  render,
-  fireEvent,
-  waitFor,
-  screen,
-} from '../../../../../test/test-utils';
+import { render, fireEvent, screen } from '../../../../../test/test-utils';
 import SearchSelectInput from './search-select-input';
 
 const fruits = [
@@ -16,7 +11,7 @@ const fruits = [
 ];
 // We use this component to simulate the whole flow of
 // changing a value and formatting on blur.
-class TestSearchSelectComponent extends React.Component {
+class TestSearchSelectComponent extends Component {
   static displayName = 'TestSearchSelectComponent';
   static propTypes = {
     id: PropTypes.string,
@@ -55,7 +50,7 @@ class TestSearchSelectComponent extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <label htmlFor={this.props.id}>Fruit</label>
         <SearchSelectInput
           {...this.props}
@@ -63,7 +58,7 @@ class TestSearchSelectComponent extends React.Component {
           value={this.state.value}
           loadOptions={this.props.loadOptions}
         />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

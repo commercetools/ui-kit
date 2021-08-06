@@ -4,9 +4,8 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@emotion/react';
-import React from 'react';
 import { warning } from '@commercetools-uikit/utils';
-import { css, useTheme } from '@emotion/react';
+import { css, ClassNames, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 export type Props = {
   color?:
@@ -19,6 +18,9 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+};
+export type SVGProps = Props & {
+  className: string;
 };
 const iconSizes = {
   small: 12,
@@ -134,7 +136,7 @@ export const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgDownload = (props: Props) => (
+const SvgDownload = (props: SVGProps) => (
   <svg
     width={24}
     height={24}
@@ -155,7 +157,16 @@ SvgDownload.displayName = 'SvgDownload';
 
 const DownloadIcon = (props: Props) => {
   const theme = useTheme();
-  return <SvgDownload {...props} css={getIconStyles(props, theme)} />;
+  return (
+    <ClassNames>
+      {({ css: createClass }) => (
+        <SvgDownload
+          {...props}
+          className={createClass(getIconStyles(props, theme))}
+        />
+      )}
+    </ClassNames>
+  );
 };
 
 DownloadIcon.displayName = 'DownloadIcon';

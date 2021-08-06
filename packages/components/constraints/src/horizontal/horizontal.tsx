@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { getMaxPropTokenValue } from '../helpers';
@@ -28,7 +28,7 @@ type TProps = {
    * The value of the constraint. See equivalent pixel values [here](https://uikit.commercetools.com/?path=/story/basics-tokens--all-tokens).
    */
   max?: TMaxProp;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 function getConstraintStyles(maxProp?: TMaxProp) {

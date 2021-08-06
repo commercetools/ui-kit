@@ -4,9 +4,8 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@emotion/react';
-import React from 'react';
 import { warning } from '@commercetools-uikit/utils';
-import { css, useTheme } from '@emotion/react';
+import { css, ClassNames, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 export type Props = {
   color?:
@@ -19,6 +18,9 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+};
+export type SVGProps = Props & {
+  className: string;
 };
 const iconSizes = {
   small: 12,
@@ -134,7 +136,7 @@ export const getIconStyles = (props: Props, theme: Theme) => css`
   flex-shrink: 0;
 `;
 
-const SvgClockWithArrow = (props: Props) => (
+const SvgClockWithArrow = (props: SVGProps) => (
   <svg
     width={33}
     height={32}
@@ -154,7 +156,16 @@ SvgClockWithArrow.displayName = 'SvgClockWithArrow';
 
 const ClockWithArrowIcon = (props: Props) => {
   const theme = useTheme();
-  return <SvgClockWithArrow {...props} css={getIconStyles(props, theme)} />;
+  return (
+    <ClassNames>
+      {({ css: createClass }) => (
+        <SvgClockWithArrow
+          {...props}
+          className={createClass(getIconStyles(props, theme))}
+        />
+      )}
+    </ClassNames>
+  );
 };
 
 ClockWithArrowIcon.displayName = 'ClockWithArrowIcon';

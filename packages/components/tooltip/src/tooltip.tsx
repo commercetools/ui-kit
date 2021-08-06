@@ -1,11 +1,16 @@
 // inspired from https://github.com/mui-org/material-ui/blob/9ecc8db8abbfb829111d3b5c0678267827984024/packages/material-ui/src/Tooltip/Tooltip.js
 import { Modifiers } from 'popper.js';
-import React, {
+import {
   ComponentType,
   FocusEvent,
   ChangeEvent,
   LegacyRef,
   CSSProperties,
+  ReactElement,
+  useRef,
+  useEffect,
+  useCallback,
+  cloneElement,
 } from 'react';
 import { isValidElementType } from 'react-is';
 import isNil from 'lodash/isNil';
@@ -32,7 +37,7 @@ type TComponents = {
 };
 
 export type TTooltipProps = {
-  children: React.ReactElement;
+  children: ReactElement;
 
   /**
    * Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip.
@@ -112,7 +117,7 @@ export type TTooltipProps = {
 };
 
 const TooltipWrapper = (props: Pick<TTooltipProps, 'children'>) => (
-  <React.Fragment>{props.children}</React.Fragment>
+  <>{props.children}</>
 );
 TooltipWrapper.displayName = 'TooltipWrapperComponent';
 
@@ -127,8 +132,8 @@ const tooltipDefaultProps: Pick<
 };
 
 const Tooltip = (props: TTooltipProps) => {
-  const leaveTimer = React.useRef<ReturnType<typeof setTimeout>>();
-  const childrenRef = React.useRef<ReturnType<typeof setTimeout>>();
+  const leaveTimer = useRef<ReturnType<typeof setTimeout>>();
+  const childrenRef = useRef<ReturnType<typeof setTimeout>>();
   if (props.components?.BodyComponent) {
     warning(
       isValidElementType(props.components.BodyComponent),
@@ -148,7 +153,7 @@ const Tooltip = (props: TTooltipProps) => {
     );
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       if (leaveTimer.current) {
         clearTimeout(leaveTimer.current);
@@ -161,10 +166,10 @@ const Tooltip = (props: TTooltipProps) => {
     modifiers: props.modifiers,
   });
   const [isOpen, toggle] = useToggleState(false);
-  const closeTooltip = React.useCallback(() => {
+  const closeTooltip = useCallback(() => {
     toggle(false);
   }, [toggle]);
-  const openTooltip = React.useCallback(() => {
+  const openTooltip = useCallback(() => {
     toggle(true);
   }, [toggle]);
 
@@ -173,7 +178,7 @@ const Tooltip = (props: TTooltipProps) => {
   const id = useFieldId(props.id, sequentialId);
 
   const { onClose } = props;
-  const handleClose = React.useCallback(
+  const handleClose = useCallback(
     (event?: ChangeEvent | FocusEvent) => {
       if (!isControlled) {
         closeTooltip();
@@ -187,7 +192,7 @@ const Tooltip = (props: TTooltipProps) => {
 
   const { onFocus, onMouseOver } = props.children.props;
   const { onOpen } = props;
-  const handleEnter = React.useCallback(
+  const handleEnter = useCallback(
     (event?: ChangeEvent | FocusEvent) => {
       // Remove the title ahead of time.
       // We don't want to wait for the next render commit.
@@ -224,7 +229,7 @@ const Tooltip = (props: TTooltipProps) => {
   const { onBlur, onMouseLeave } = props.children.props;
   const { closeAfter } = props;
 
-  const handleLeave = React.useCallback(
+  const handleLeave = useCallback(
     (event) => {
       if (leaveTimer.current) {
         clearTimeout(leaveTimer.current);
@@ -249,7 +254,7 @@ const Tooltip = (props: TTooltipProps) => {
     [closeAfter, onBlur, onMouseLeave, handleClose]
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     // if tooltip was open, and then component
     // updated to be off, we should close the tooltip
     if (isOpen && props.off) {
@@ -298,10 +303,13 @@ const Tooltip = (props: TTooltipProps) => {
     props.components?.TooltipWrapperComponent || TooltipWrapper;
 
   return (
-    <React.Fragment>
-      {/* @ts-expect-error */}
-      <WrapperComponent {...eventListeners} ref={reference.ref}>
-        {React.cloneElement(props.children, {
+    <>
+      <WrapperComponent
+        {...eventListeners}
+        // @ts-expect-error: yes, ref can be undefined
+        ref={reference.ref}
+      >
+        {cloneElement(props.children, {
           ...childrenProps,
           ...tooltipProps,
         })}
@@ -326,10 +334,11 @@ const Tooltip = (props: TTooltipProps) => {
           </div>
         </TooltipWrapperComponent>
       )}
-    </React.Fragment>
+    </>
   );
 };
 
 Tooltip.displayName = 'ToolTip';
 Tooltip.defaultProps = tooltipDefaultProps;
+
 export default Tooltip;

@@ -1,9 +1,9 @@
-import React from 'react';
+import { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import MultilineTextInput from './multiline-text-input';
 
-class TestComponent extends React.Component {
+class TestComponent extends Component {
   static displayName = 'TestComponent';
   static propTypes = {
     id: PropTypes.string,
@@ -32,14 +32,14 @@ class TestComponent extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <label htmlFor={this.props.id}>Description</label>
         <MultilineTextInput
           {...this.props}
           value={this.state.value}
           onChange={this.props.onChange || this.handleChange}
         />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

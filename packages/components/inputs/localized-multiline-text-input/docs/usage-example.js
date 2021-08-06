@@ -1,4 +1,3 @@
-import React from 'react';
 import LocalizedMultilineTextInput from '@commercetools-uikit/localized-multiline-text-input';
 
 const Example = () => (

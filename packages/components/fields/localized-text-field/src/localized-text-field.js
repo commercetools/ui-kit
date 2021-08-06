@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
@@ -17,7 +17,7 @@ const sequentialId = createSequentialId('localized-text-field-');
 
 const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
-class LocalizedTextField extends React.Component {
+class LocalizedTextField extends Component {
   static displayName = 'LocalizedTextField';
 
   static propTypes = {

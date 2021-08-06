@@ -1,4 +1,3 @@
-import React from 'react';
 import TimeInput from './time-input';
 import { render, fireEvent } from '../../../../../test/test-utils';
 
