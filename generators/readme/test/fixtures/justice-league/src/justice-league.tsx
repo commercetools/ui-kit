@@ -1,5 +1,3 @@
-import React from 'react';
-
 type Identity = {
   /**
    * The name of the Avenger.
