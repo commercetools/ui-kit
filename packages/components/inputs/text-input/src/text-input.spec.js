@@ -44,11 +44,6 @@ describe('TextInput', () => {
     );
   });
 
-  it('should have ARIA role', () => {
-    const { container } = render(<TextInput {...baseProps} />);
-    expect(container.querySelector('input')).toHaveAttribute('role', 'textbox');
-  });
-
   it('should forward the passed value', () => {
     const { container } = render(<TextInput {...baseProps} value="foo" />);
     expect(container.querySelector('input')).toHaveAttribute('value', 'foo');

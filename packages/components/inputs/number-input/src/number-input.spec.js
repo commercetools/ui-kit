@@ -80,11 +80,6 @@ describe('NumberInput', () => {
     expect(container.querySelector('input')).toHaveAttribute('name', 'foo');
   });
 
-  it('should have ARIA role', () => {
-    const { container } = render(<NumberInput {...baseProps} />);
-    expect(container.querySelector('input')).toHaveAttribute('role', 'textbox');
-  });
-
   it('should have pass autoComplete', () => {
     const { container } = render(
       <NumberInput autoComplete="off" {...baseProps} />
