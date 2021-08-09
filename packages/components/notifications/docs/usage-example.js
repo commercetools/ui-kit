@@ -1,4 +1,3 @@
-import React from 'react';
 import { ContentNotification } from '@commercetools-uikit/notifications';
 
 export const Success = () => (

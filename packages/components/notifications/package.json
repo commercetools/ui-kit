@@ -41,6 +41,6 @@
     "react-intl": "5.x"
   },
   "readme": {
-    "componentPath": "./src/content-notification/content-notification.tsx"
+    "componentPaths": ["./src/content-notification/content-notification.tsx"]
   }
 }

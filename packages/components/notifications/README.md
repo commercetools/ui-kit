@@ -30,7 +30,6 @@ npm --save install react react-intl
 ## Usage
 
 ```jsx
-import React from 'react';
 import { ContentNotification } from '@commercetools-uikit/notifications';
 
 export const Success = () => (
@@ -53,10 +52,12 @@ export const Error = () => (
 );
 ```
 
-## Properties
+## ContentNotification
+
+### Properties
 
 | Props         | Type                                                                        | Required | Default | Description                                                                                                                    |
 | ------------- | --------------------------------------------------------------------------- | :------: | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | `type`        | `union`<br/>Possible values:<br/>`'error' , 'info' , 'warning' , 'success'` |    ✅    |         | Determines the color/type of notification.                                                                                     |
 | `intlMessage` | `MessageDescriptor`                                                         |          |         | An `intl` message object that will be rendered with `FormattedMessage`.&#xA;<br />&#xA;Required if `children` is not provided. |
-| `children`    | `ReactReactNode`                                                            |          |         | The content of the notification.&#xA;<br />&#xA;Required if `intlMessage` is not provided.                                     |
+| `children`    | `ReactNode`                                                                 |          |         | The content of the notification.&#xA;<br />&#xA;Required if `intlMessage` is not provided.                                     |
