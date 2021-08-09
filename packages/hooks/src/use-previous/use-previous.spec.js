@@ -1,4 +1,3 @@
-import React from 'react';
 import isNil from 'lodash/isNil';
 import { screen, render } from '../../../../test/test-utils';
 import useToggleState from '../use-toggle-state';

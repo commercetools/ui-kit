@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef, useState, useCallback, useEffect, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import pick from 'lodash/pick';
@@ -20,13 +20,13 @@ const COLLAPSED_HEIGHT = 32;
 
 const Editor = (props) => {
   const intl = useIntl();
-  const ref = React.useRef();
+  const ref = useRef();
 
   const prevIsFocused = usePrevious(props.editor.value.selection.isFocused);
 
-  const [renderToggleButton, setRenderToggleButton] = React.useState(false);
+  const [renderToggleButton, setRenderToggleButton] = useState(false);
 
-  const updateRenderToggleButton = React.useCallback(() => {
+  const updateRenderToggleButton = useCallback(() => {
     const doesExceedCollapsedHeightLimit =
       ref.current.clientHeight > COLLAPSED_HEIGHT;
 
@@ -38,7 +38,7 @@ const Editor = (props) => {
     }
   }, [setRenderToggleButton, renderToggleButton]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     updateRenderToggleButton();
   }, [props.editor.value.document, updateRenderToggleButton]);
 
@@ -111,7 +111,7 @@ const Editor = (props) => {
 const renderEditor = (props, editor, next) => {
   const internalId = `${props.id}__internal__id`;
 
-  const children = React.cloneElement(next(), {
+  const children = cloneElement(next(), {
     id: internalId,
   });
 

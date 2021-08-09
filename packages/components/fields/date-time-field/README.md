@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import DateTimeField from '@commercetools-uikit/date-time-field';
 
 const Example = () => (

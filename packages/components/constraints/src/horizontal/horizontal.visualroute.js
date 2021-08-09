@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { Constraints } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';

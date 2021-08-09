@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 import { useIntl } from 'react-intl';
@@ -36,7 +36,7 @@ export const sortCurrencies = (selectedCurrency, allCurrencies) => {
 
 const LocalizedInput = (props) => {
   const { onChange } = props;
-  const handleChange = React.useCallback(
+  const handleChange = useCallback(
     (event) => {
       // We manipulate the event to add the currency to the target.
       // That way the users  can read

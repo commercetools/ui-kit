@@ -33,7 +33,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
 
 /**

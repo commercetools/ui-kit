@@ -39,7 +39,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import DataTable from '@commercetools-uikit/data-table';
 
 const rows = [

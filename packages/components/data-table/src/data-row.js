@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row } from './data-table.styles';
 import DataCell from './cell';
@@ -6,18 +6,18 @@ import DataCell from './cell';
 import ColumnResizingContext from './column-resizing-context';
 
 const DataRow = (props) => {
-  const { getIsColumnBeingResized } = React.useContext(ColumnResizingContext);
+  const { getIsColumnBeingResized } = useContext(ColumnResizingContext);
 
   const rowHasTruncatedColumn = props.columns.some(
     (column) => column.isTruncated
   );
-  const [isRowCollapsed, collapseRow] = React.useState(rowHasTruncatedColumn);
+  const [isRowCollapsed, collapseRow] = useState(rowHasTruncatedColumn);
   const handleRowCollapseClick = () => {
     collapseRow(!isRowCollapsed);
   };
 
   // update the collapsed state if isTruncated options are changed for the whole row
-  React.useEffect(() => {
+  useEffect(() => {
     if (rowHasTruncatedColumn) {
       collapseRow(true);
     } else {

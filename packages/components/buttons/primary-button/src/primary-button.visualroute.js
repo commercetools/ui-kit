@@ -1,4 +1,3 @@
-import React from 'react';
 import { InformationIcon, PrimaryButton } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 

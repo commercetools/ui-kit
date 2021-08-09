@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
@@ -26,7 +26,7 @@ storiesOf('Components|Buttons', module)
           tone={select('tone', ['urgent', 'primary'], 'primary')}
           size={select('size', ['small', 'big'], 'big')}
           {...(selectedIcon
-            ? { iconLeft: React.createElement(icons[selectedIcon]) }
+            ? { iconLeft: createElement(icons[selectedIcon]) }
             : {})}
           label={text('label', 'Accessibility text')}
           isToggleButton={boolean('isToggleButton', false)}

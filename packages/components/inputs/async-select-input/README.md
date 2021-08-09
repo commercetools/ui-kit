@@ -30,7 +30,6 @@ npm --save install react react-dom react-intl
 ## Usage
 
 ```jsx
-import React from 'react';
 import PropTypes from 'prop-types';
 import AsyncSelectInput from '@commercetools-uikit/async-select-input';
 

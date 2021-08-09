@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import { useRef, useCallback, ChangeEventHandler } from 'react';
 import { useTheme } from '@emotion/react';
 import TextareaAutosize, {
   TextareaHeightChangeMeta,
@@ -30,8 +30,8 @@ export type TMultiLineInputProps = {
 const MultilineInput = (props: TMultiLineInputProps) => {
   const theme = useTheme();
   const { onHeightChange } = props;
-  const ref = React.useRef<HTMLTextAreaElement | null>(null);
-  const handleHeightChange = React.useCallback<
+  const ref = useRef<HTMLTextAreaElement | null>(null);
+  const handleHeightChange = useCallback<
     (height: number, meta: TextareaHeightChangeMeta) => void
   >(
     (height: number, meta: TextareaHeightChangeMeta) => {

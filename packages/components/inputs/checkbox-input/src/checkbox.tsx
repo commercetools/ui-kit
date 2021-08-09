@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import { useRef, useEffect, useCallback, ChangeEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
@@ -23,18 +23,18 @@ type TProps = Omit<TCheckboxProps, 'children' | 'hasError' | 'isHovered'> & {
 };
 
 const Checkbox = (props: TProps) => {
-  const ref = React.useRef<TInputRef>({
+  const ref = useRef<TInputRef>({
     indeterminate: false,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.isIndeterminate) {
       ref.current.indeterminate = true;
     }
   }, [props.isIndeterminate]);
 
   const { onChange } = props;
-  const handleChange = React.useCallback<ChangeEventHandler<HTMLInputElement>>(
+  const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (event) => !props.isReadOnly && onChange && onChange(event),
     [props.isReadOnly, onChange]
   );

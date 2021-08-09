@@ -1,4 +1,3 @@
-import React from 'react';
 import { BLOCK_TAGS } from '../tags';
 
 const DEFAULT_NODE = BLOCK_TAGS.p;

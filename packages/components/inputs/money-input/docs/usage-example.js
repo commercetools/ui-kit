@@ -1,4 +1,3 @@
-import React from 'react';
 import MoneyInput from '@commercetools-uikit/money-input';
 
 const Example = () => (

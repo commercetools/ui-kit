@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useMemo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { useIntl } from 'react-intl';
@@ -95,7 +95,7 @@ export const ColumnSettingsManager = (props) => {
     setIsDragging(true);
   };
 
-  const hiddenColumns = React.useMemo(
+  const hiddenColumns = useMemo(
     () =>
       differenceWith(
         props.availableColumns,
@@ -105,7 +105,7 @@ export const ColumnSettingsManager = (props) => {
     [props.availableColumns, props.selectedColumns]
   );
 
-  const handleDragEnd = React.useCallback(
+  const handleDragEnd = useCallback(
     (dragResult) =>
       handleColumnsUpdate(
         dragResult,
@@ -117,7 +117,7 @@ export const ColumnSettingsManager = (props) => {
     [props.onUpdateColumns, props.selectedColumns, props.availableColumns]
   );
 
-  const handleInputChange = React.useCallback(
+  const handleInputChange = useCallback(
     (input) =>
       // loadOptions is not invoked when input is empty
       !input.length && searchHiddenColumns(input),

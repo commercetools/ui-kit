@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../../test/test-utils';
 import AccessibleButton from './accessible-button';
@@ -30,7 +30,7 @@ describe('rendering', () => {
     expect(screen.getByLabelText('test-button')).toHaveClass('foo');
   });
   it('should pass a ref', () => {
-    const ref = React.createRef();
+    const ref = createRef();
     const { container } = render(<AccessibleButton {...props} ref={ref} />);
     expect(container).toContainElement(ref.current);
   });

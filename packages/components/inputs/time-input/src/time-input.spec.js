@@ -1,4 +1,3 @@
-import React from 'react';
 import TimeInput from './time-input';
 import { render, fireEvent } from '../../../../../test/test-utils';
 
@@ -65,11 +64,6 @@ describe('TimeInput', () => {
       'autocomplete',
       'off'
     );
-  });
-
-  it('should have ARIA role', () => {
-    const { container } = render(<TimeInput {...baseProps} />);
-    expect(container.querySelector('input')).toHaveAttribute('role', 'textbox');
   });
 
   it('should forward the passed value', () => {

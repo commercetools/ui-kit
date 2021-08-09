@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
@@ -7,7 +7,7 @@ import Readme from '../README.md';
 import DateRangeInput from './date-range-input';
 import Section from '../../../../../docs/.storybook/decorators/section';
 
-class DateRangeInputStory extends React.Component {
+class DateRangeInputStory extends Component {
   static displayName = 'DateRangeInputStory';
 
   state = {

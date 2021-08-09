@@ -1,7 +1,7 @@
 import type { LocationDescriptor } from 'history';
 import type { Theme } from '@emotion/react';
 import type { MessageDescriptor } from 'react-intl';
-import React from 'react';
+import { Children, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css, useTheme } from '@emotion/react';
@@ -20,7 +20,7 @@ type TLinkProps = {
    * <br />
    * Required if `intlMessage` is not provided.
    */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /**
    * An `intl` message object that will be rendered with `FormattedMessage`.
    * <br />
@@ -46,7 +46,7 @@ type TIconColor = 'primary' | 'surface';
 
 const warnIfMissingContent = (props: TLinkProps) => {
   const hasContent =
-    Boolean(props.intlMessage) || Boolean(React.Children.count(props.children));
+    Boolean(props.intlMessage) || Boolean(Children.count(props.children));
 
   warning(
     hasContent,

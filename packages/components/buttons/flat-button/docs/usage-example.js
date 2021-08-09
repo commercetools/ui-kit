@@ -1,4 +1,3 @@
-import React from 'react';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { InformationIcon } from '@commercetools-uikit/icons';
 

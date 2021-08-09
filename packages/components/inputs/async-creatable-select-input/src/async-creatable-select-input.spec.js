@@ -1,11 +1,11 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
 
 // We use this component to simulate the whole flow of
 // changing a value and formatting on blur.
-class TestComponent extends React.Component {
+class TestComponent extends Component {
   static displayName = 'TestComponent';
   static propTypes = {
     id: PropTypes.string,
@@ -54,7 +54,7 @@ class TestComponent extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <label htmlFor={this.props.id}>Fruit</label>
         <AsyncCreatableSelectInput
           {...this.props}
@@ -64,7 +64,7 @@ class TestComponent extends React.Component {
           defaultOptions={this.props.defaultOptions}
           isSearchable={this.props.isSearchable}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

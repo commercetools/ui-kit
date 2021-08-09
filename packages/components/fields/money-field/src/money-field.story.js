@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component, createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import {
@@ -21,7 +21,7 @@ import MoneyInput from '../../../inputs/money-input';
 // the component rerenders, so we'd need to use two separate <Value />
 // components to not lose data. So we use a dedicated component instead.
 // That makes it easier to log the parsed value as well.
-class MoneyFieldStory extends React.Component {
+class MoneyFieldStory extends Component {
   static displayName = 'MoneyFieldStory';
 
   state = {
@@ -57,7 +57,7 @@ class MoneyFieldStory extends React.Component {
     // hintIcon will only render when hint exists
     const iconNames = Object.keys(icons);
     const icon = select('hintIcon', ['', ...iconNames], '');
-    const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
+    const hintIcon = icon ? createElement(icons[icon]) : undefined;
     return (
       <Section>
         <MoneyField

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useReducer, useDebugValue } from 'react';
 
 const MINIMUM_COLUMN_SIZE = 32;
 
@@ -72,12 +72,12 @@ function reducer(state, action) {
 }
 
 const useManualResizingReducer = (tableRef) => {
-  const [manualResizingState, dispatch] = React.useReducer(
+  const [manualResizingState, dispatch] = useReducer(
     reducer,
     initialState(tableRef)
   );
 
-  React.useDebugValue(manualResizingState);
+  useDebugValue(manualResizingState);
 
   return [manualResizingState, dispatch];
 };
@@ -163,7 +163,7 @@ const useManualColumnResizing = (tableRef) => {
 
   const getSizes = () => state.sizes;
 
-  React.useDebugValue(state);
+  useDebugValue(state);
 
   return {
     reset,

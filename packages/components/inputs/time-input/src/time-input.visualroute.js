@@ -1,4 +1,3 @@
-import React from 'react';
 import { TimeInput } from '@commercetools-frontend/ui-kit';
 import { ThemeProvider } from '@emotion/react';
 import { Suite, Spec } from '../../../../../test/percy';

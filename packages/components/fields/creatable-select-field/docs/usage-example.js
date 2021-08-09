@@ -1,4 +1,3 @@
-import React from 'react';
 import CreatableSelectField from '@commercetools-uikit/creatable-select-field';
 
 const Example = () => (

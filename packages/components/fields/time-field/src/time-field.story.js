@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Value } from 'react-value';
@@ -35,7 +35,7 @@ storiesOf('Components|Fields', module)
           // hintIcon will only render when hint exists
           const iconNames = Object.keys(icons);
           const icon = select('hintIcon', ['', ...iconNames], '');
-          const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
+          const hintIcon = icon ? createElement(icons[icon]) : undefined;
           return (
             <TimeField
               id={name.trim() === '' ? undefined : name}

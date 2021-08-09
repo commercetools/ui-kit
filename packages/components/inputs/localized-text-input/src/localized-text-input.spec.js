@@ -1,11 +1,11 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import LocalizedTextInput from './localized-text-input';
 
 // We use this component to simulate the whole flow of
 // changing a value and formatting on blur.
-class TestComponent extends React.Component {
+class TestComponent extends Component {
   static displayName = 'TestComponent';
   static propTypes = {
     id: PropTypes.string,

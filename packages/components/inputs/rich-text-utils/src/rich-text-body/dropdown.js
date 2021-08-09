@@ -1,4 +1,3 @@
-import React from 'react';
 import Downshift from 'downshift';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';

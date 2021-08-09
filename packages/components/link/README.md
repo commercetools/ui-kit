@@ -30,7 +30,6 @@ npm --save install react react-intl react-router-dom
 ## Usage
 
 ```jsx
-import React from 'react';
 import Link from '@commercetools-uikit/link';
 
 const Example = () => <Link to={'/foo/bar'}>Go to foo bar</Link>;

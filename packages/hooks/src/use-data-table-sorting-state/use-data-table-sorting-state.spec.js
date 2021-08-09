@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { Spacings, PrimaryButton } from '@commercetools-frontend/ui-kit';
 import useDataTableSortingState from './use-data-table-sorting-state';

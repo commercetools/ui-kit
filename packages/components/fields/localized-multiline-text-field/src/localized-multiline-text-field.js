@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { oneLine } from 'common-tags';
@@ -17,7 +17,7 @@ const sequentialId = createSequentialId('localized-multiline-text-field-');
 
 const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
-class LocalizedMultilineTextField extends React.Component {
+class LocalizedMultilineTextField extends Component {
   static displayName = 'LocalizedMultilineTextField';
 
   static propTypes = {

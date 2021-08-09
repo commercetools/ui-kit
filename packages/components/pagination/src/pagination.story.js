@@ -1,4 +1,3 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { select, withKnobs, number } from '@storybook/addon-knobs/react';
 import { Value } from 'react-value';

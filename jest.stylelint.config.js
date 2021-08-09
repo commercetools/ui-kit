@@ -1,3 +1,6 @@
+/**
+ * @type {import('@jest/types').Config.ProjectConfig}
+ */
 module.exports = {
   runner: 'jest-runner-stylelint',
   displayName: 'stylelint',

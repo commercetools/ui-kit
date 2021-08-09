@@ -1,4 +1,3 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, select } from '@storybook/addon-knobs/react';
 import LinkTo from '@storybook/addon-links/react';
@@ -68,7 +67,7 @@ storiesOf('Components|Grid', module)
     },
   })
   .add('Grid', () => (
-    <React.Fragment>
+    <>
       <Section>
         <Spacings.Stack scale="m">
           <Spacings.Stack scale="s">
@@ -184,5 +183,5 @@ storiesOf('Components|Grid', module)
           </Grid>
         </Spacings.Stack>
       </Section>
-    </React.Fragment>
+    </>
   ));

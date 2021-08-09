@@ -1,4 +1,3 @@
-import React from 'react';
 import TextInput from '@commercetools-uikit/text-input';
 
 const Example = () => (

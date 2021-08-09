@@ -1,6 +1,6 @@
 import type { LocationDescriptor } from 'history';
 
-import React from 'react';
+import { cloneElement, ReactElement, useEffect } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -26,7 +26,7 @@ export type TLinkButtonProps = {
   /**
    * The icon of the button.
    */
-  iconLeft?: React.ReactElement;
+  iconLeft?: ReactElement;
 
   /**
    * Determines if the button is disabled.
@@ -87,7 +87,7 @@ const LinkBody = (
 ) => (
   <Inline scale="xs" alignItems="center">
     {props.iconLeft
-      ? React.cloneElement(props.iconLeft, {
+      ? cloneElement(props.iconLeft, {
           size: 'medium',
           color: props.isDisabled ? 'neutral60' : 'primary',
         })
@@ -99,7 +99,7 @@ const LinkBody = (
 LinkBody.displayName = 'LinkBody';
 
 const LinkButton = (props: TLinkButtonProps) => {
-  React.useEffect(() => {
+  useEffect(() => {
     warnDeprecatedComponent('LinkButton');
   }, []);
   const remainingProps = filterInvalidAttributes(props);

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean, select, withKnobs } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
@@ -154,13 +154,13 @@ storiesOf('Components|DataTable', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('DataTableManager', () => {
-    const [tableData, setTableData] = React.useState({
+    const [tableData, setTableData] = useState({
       columns: initialColumnsState,
       visibleColumnKeys: initialColumnsState.map(({ key }) => key),
     });
 
-    const [isCondensed, setIsCondensed] = React.useState(false);
-    const [isWrappingText, setIsWrappingText] = React.useState(false);
+    const [isCondensed, setIsCondensed] = useState(false);
+    const [isWrappingText, setIsWrappingText] = useState(false);
 
     const {
       items: rows,
@@ -271,7 +271,7 @@ storiesOf('Components|DataTable', module)
     };
 
     return (
-      <React.Fragment>
+      <>
         <DataTableManager
           topBar={topBar}
           columns={withRowSelection ? columnsWithSelect : visibleColumns}
@@ -299,6 +299,6 @@ storiesOf('Components|DataTable', module)
         </DataTableManager>
         <br />
         <hr />
-      </React.Fragment>
+      </>
     );
   });

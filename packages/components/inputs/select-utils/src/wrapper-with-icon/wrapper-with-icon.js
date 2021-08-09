@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { customProperties } from '@commercetools-uikit/design-system';
@@ -7,16 +7,16 @@ import { components as defaultComponents } from 'react-select';
 const getDefaultComponent = (type) => {
   if (type === 'singleValue') return defaultComponents.SingleValue;
   if (type === 'placeholder') return defaultComponents.Placeholder;
-  return React.Fragment;
+  return Fragment;
 };
 
 const WrapperWithIcon = ({ children, ...props }) => {
   const Component = getDefaultComponent(props.type);
 
   return (
-    <React.Fragment>
+    <>
       {props.selectProps.iconLeft &&
-        React.cloneElement(props.selectProps.iconLeft, {
+        cloneElement(props.selectProps.iconLeft, {
           size: 'big',
         })}
       <span
@@ -30,7 +30,7 @@ const WrapperWithIcon = ({ children, ...props }) => {
       >
         <Component {...props}>{children}</Component>
       </span>
-    </React.Fragment>
+    </>
   );
 };
 WrapperWithIcon.propTypes = {

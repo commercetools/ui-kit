@@ -30,7 +30,6 @@ npm --save install react react-intl
 ## Usage
 
 ```jsx
-import React from 'react';
 import LocalizedTextInput from '@commercetools-uikit/localized-text-input';
 
 const Example = () => (

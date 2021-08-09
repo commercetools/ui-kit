@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -68,7 +68,7 @@ export type TCheckboxProps = {
   /**
    * The descriptive text of the CheckboxInput, used as its label.
    */
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const defaultProps: Pick<

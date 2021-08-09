@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   render,
@@ -15,7 +15,7 @@ const fruits = [
   { value: 'lichi', label: 'Lichi' },
 ];
 
-class TestSearchSelectField extends React.Component {
+class TestSearchSelectField extends Component {
   static displayName = 'TestSearchSelectField';
   static propTypes = {
     onChange: PropTypes.func.isRequired,

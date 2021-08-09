@@ -1,12 +1,12 @@
 import type { MessageDescriptor } from 'react-intl';
-import React, { MouseEvent, KeyboardEvent } from 'react';
+import { MouseEvent, KeyboardEvent, ReactElement } from 'react';
 import { useIntl } from 'react-intl';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { WorldIcon } from '@commercetools-uikit/icons';
 import messages from '../messages/localized-input';
 
 export type TLocalizedInputToggleProps = {
-  icon?: React.ReactElement;
+  icon?: ReactElement;
   isOpen?: boolean;
   onClick: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>

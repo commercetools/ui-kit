@@ -1,4 +1,3 @@
-import React from 'react';
 import AsyncSelectField from '@commercetools-uikit/async-select-field';
 
 const Example = () => (

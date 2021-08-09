@@ -1,4 +1,3 @@
-import React from 'react';
 import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
 
 /**

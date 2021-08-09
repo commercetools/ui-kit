@@ -1,4 +1,3 @@
-import React from 'react';
 import FieldErrors from '@commercetools-uikit/field-errors';
 
 const Example = () => (

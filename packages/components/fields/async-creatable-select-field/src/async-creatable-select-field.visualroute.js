@@ -1,4 +1,3 @@
-import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { AsyncCreatableSelectField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';

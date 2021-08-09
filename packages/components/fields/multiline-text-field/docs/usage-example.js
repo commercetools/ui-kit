@@ -1,4 +1,3 @@
-import React from 'react';
 import MultilineTextField from '@commercetools-uikit/multiline-text-field';
 
 const Example = () => (

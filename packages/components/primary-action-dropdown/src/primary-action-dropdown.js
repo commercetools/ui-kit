@@ -1,4 +1,11 @@
-import React from 'react';
+import {
+  cloneElement,
+  forwardRef,
+  useRef,
+  useCallback,
+  useEffect,
+  Children,
+} from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -67,7 +74,7 @@ const DropdownHead = (props) => (
           justify-content: center;
         `}
       >
-        {React.cloneElement(props.iconLeft, {
+        {cloneElement(props.iconLeft, {
           size: 'big',
           color: props.isDisabled ? 'neutral60' : 'solid',
         })}
@@ -98,7 +105,7 @@ DropdownHead.propTypes = {
   chevron: PropTypes.element.isRequired,
 };
 
-const DropdownChevron = React.forwardRef((props, ref) => (
+const DropdownChevron = forwardRef((props, ref) => (
   <AccessibleButton
     ref={ref}
     label="Open Dropdown"
@@ -128,7 +135,7 @@ const DropdownChevron = React.forwardRef((props, ref) => (
         margin-top: 3px;
       `}
     >
-      {React.cloneElement(
+      {cloneElement(
         props.isOpen && !props.isDisabled ? <CaretUpIcon /> : <CaretDownIcon />,
         {
           color: props.isDisabled ? 'neutral60' : 'solid',
@@ -211,10 +218,10 @@ Option.defaultProps = {
   immediately.
  */
 const PrimaryActionDropdown = (props) => {
-  const ref = React.useRef();
+  const ref = useRef();
   const [isOpen, toggle] = useToggleState(false);
 
-  const handleGlobalClick = React.useCallback(
+  const handleGlobalClick = useCallback(
     (event) => {
       const dropdownButton = ref.current;
       if (
@@ -227,20 +234,20 @@ const PrimaryActionDropdown = (props) => {
     },
     [ref, toggle]
   );
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('click', handleGlobalClick);
     return () => {
       window.removeEventListener('click', handleGlobalClick);
     };
   }, [handleGlobalClick]);
 
-  const childrenAsArray = React.Children.toArray(props.children);
+  const childrenAsArray = Children.toArray(props.children);
   const primaryOption =
     childrenAsArray.find((option) => !option.props.isDisabled) ||
     childrenAsArray[0];
 
   const { onClick } = primaryOption.props;
-  const handleClickOnHead = React.useCallback(
+  const handleClickOnHead = useCallback(
     (event) => {
       if (isOpen) {
         toggle(true);
@@ -250,7 +257,7 @@ const PrimaryActionDropdown = (props) => {
     },
     [isOpen, onClick, toggle]
   );
-  const handleClickOnChevron = React.useCallback(() => {
+  const handleClickOnChevron = useCallback(() => {
     toggle();
   }, [toggle]);
 

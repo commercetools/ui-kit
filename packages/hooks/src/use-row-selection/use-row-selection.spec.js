@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 import { screen, render } from '../../../../test/test-utils';
 import useRowSelection from './use-row-selection';
 

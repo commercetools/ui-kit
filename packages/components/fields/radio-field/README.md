@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import RadioField from '@commercetools-uikit/radio-field';
 import RadioInput from '@commercetools-uikit/radio-input';
 

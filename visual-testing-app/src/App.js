@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { customProperties } from '@commercetools-uikit/design-system';
@@ -36,7 +36,7 @@ const allSortedComponents = Object.keys(allUniqueRouteComponents)
   .sort()
   .map((key) => allUniqueRouteComponents[key]);
 
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
       <ThemeProvider theme={customProperties}>
@@ -62,6 +62,7 @@ class App extends React.Component {
               <Route
                 key={Component.routePath}
                 path={Component.routePath}
+                // eslint-disable-next-line react/jsx-pascal-case
                 render={() => <Component.component themes={{ darkTheme }} />}
               />
             ))}

@@ -1,4 +1,3 @@
-import React from 'react';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import { screen, render } from '../../../../../test/test-utils';

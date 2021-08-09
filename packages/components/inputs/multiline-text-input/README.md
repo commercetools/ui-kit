@@ -30,7 +30,6 @@ npm --save install react react-intl
 ## Usage
 
 ```jsx
-import React from 'react';
 import MultilineTextInput from '@commercetools-uikit/multiline-text-input';
 
 const Example = () => (

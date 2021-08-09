@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import {
@@ -16,7 +16,7 @@ const sequentialId = createSequentialId('radio-field-');
 
 const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
-class RadioField extends React.Component {
+class RadioField extends Component {
   static displayName = 'RadioField';
 
   static propTypes = {

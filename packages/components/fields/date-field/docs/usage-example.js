@@ -1,4 +1,3 @@
-import React from 'react';
 import DateField from '@commercetools-uikit/date-field';
 
 const Example = () => (

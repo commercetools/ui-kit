@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -25,7 +25,7 @@ const CalendarHeader = (props) => {
 
   // we prevent all our defined onClicks inside of the CalendarHeader
   // from blurring our input.
-  const onMouseDown = React.useCallback((event) => {
+  const onMouseDown = useCallback((event) => {
     event.preventDefault();
   }, []);
   return (

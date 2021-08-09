@@ -37,7 +37,6 @@ npm --save install react react-router-dom
 ## Usage
 
 ```jsx
-import React from 'react';
 import Tag from '@commercetools-uikit/tag';
 
 const Example = () => (

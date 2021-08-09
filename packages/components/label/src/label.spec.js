@@ -1,5 +1,3 @@
-import React from 'react';
-import { invariant } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
 import Label from './label';
 

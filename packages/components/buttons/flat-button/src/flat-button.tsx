@@ -1,5 +1,12 @@
 import type { Theme } from '@emotion/react';
-import React, { MouseEvent, KeyboardEvent } from 'react';
+import {
+  MouseEvent,
+  KeyboardEvent,
+  ElementType,
+  ReactElement,
+  ComponentPropsWithRef,
+  cloneElement,
+} from 'react';
 import { css, useTheme } from '@emotion/react';
 import omit from 'lodash/omit';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -14,7 +21,7 @@ export type TExtendedTheme = Theme & {
   [key: string]: string;
 };
 export type TFlatButtonProps<
-  TStringOrComponent extends React.ElementType = 'button'
+  TStringOrComponent extends ElementType = 'button'
 > = {
   /**
    * You may pass in a string like "a" to have the button element render an anchor tag, or
@@ -46,7 +53,7 @@ export type TFlatButtonProps<
   /**
    * The icon of the button.
    */
-  icon?: React.ReactElement;
+  icon?: ReactElement;
   /**
    * The position of the icon.
    */
@@ -61,7 +68,7 @@ export type TFlatButtonProps<
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
  * passed to `<FlatButton>`: <FlatButton as={Link} to="/foo" label="Foo" />.
- */ React.ComponentPropsWithRef<TStringOrComponent>;
+ */ ComponentPropsWithRef<TStringOrComponent>;
 
 const defaultProps: Pick<
   TFlatButtonProps,
@@ -73,7 +80,7 @@ const defaultProps: Pick<
   isDisabled: false,
 };
 
-const ButtonIcon = <TStringOrComponent extends React.ElementType = 'button'>(
+const ButtonIcon = <TStringOrComponent extends ElementType = 'button'>(
   props: Pick<
     TFlatButtonProps<TStringOrComponent>,
     'as' | 'isDisabled' | 'tone' | 'icon'
@@ -81,7 +88,7 @@ const ButtonIcon = <TStringOrComponent extends React.ElementType = 'button'>(
 ) => {
   if (!props.icon) return null;
   const iconColor = getButtonIconColor(props);
-  const Icon = React.cloneElement(props.icon, {
+  const Icon = cloneElement(props.icon, {
     size: 'medium',
     color: iconColor,
   });
@@ -100,7 +107,7 @@ const ButtonIcon = <TStringOrComponent extends React.ElementType = 'button'>(
 };
 ButtonIcon.displayName = 'ButtonIcon';
 
-const FlatButton = <TStringOrComponent extends React.ElementType = 'button'>(
+const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
   props: TFlatButtonProps<TStringOrComponent>
 ) => {
   const buttonAttributes = {

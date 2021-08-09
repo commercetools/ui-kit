@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import Card from '@commercetools-uikit/card';
 
 const Example = () => (

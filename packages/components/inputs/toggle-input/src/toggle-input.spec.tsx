@@ -1,11 +1,11 @@
 import type { TToggleInputProps } from './toggle-input';
 
-import React from 'react';
+import { useState } from 'react';
 import { screen, render } from '../../../../../test/test-utils';
 import ToggleInput from './toggle-input';
 
 const TestComponent = (props: TToggleInputProps) => {
-  const [isChecked, setIsChecked] = React.useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   return (
     <div>

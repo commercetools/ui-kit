@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { css, useTheme } from '@emotion/react';
@@ -36,11 +36,11 @@ const Row = styled.div`
 `;
 
 const TranslationInput = (props) => {
-  const [contentRowCount, setContentRowCount] = React.useState(
+  const [contentRowCount, setContentRowCount] = useState(
     TranslationInput.MIN_ROW_COUNT
   );
 
-  const handleHeightChange = React.useCallback(
+  const handleHeightChange = useCallback(
     (_, rowCount) => {
       setContentRowCount(rowCount);
     },
@@ -49,7 +49,7 @@ const TranslationInput = (props) => {
 
   const { onChange } = props;
 
-  const handleChange = React.useCallback(
+  const handleChange = useCallback(
     (event) => {
       // We manipulate the event to add the language to the target.
       // That way the users of LocalizedTextInput's onChange can read
@@ -70,7 +70,7 @@ const TranslationInput = (props) => {
   );
 
   const { onFocus, onToggle } = props;
-  const handleFocus = React.useCallback(() => {
+  const handleFocus = useCallback(() => {
     // Expand the input on focus
     if (props.isCollapsed) onToggle();
     if (onFocus) onFocus();
@@ -164,7 +164,7 @@ const TranslationInput = (props) => {
           return null;
         })()}
         {!props.isCollapsed && contentExceedsShownRows && (
-          <React.Fragment>
+          <>
             <LeftColumn />
             <RightColumn>
               <ToggleButtonWrapper
@@ -188,7 +188,7 @@ const TranslationInput = (props) => {
                 />
               </ToggleButtonWrapper>
             </RightColumn>
-          </React.Fragment>
+          </>
         )}
       </Row>
     </Stack>

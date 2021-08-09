@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import has from 'lodash/has';
@@ -328,11 +328,11 @@ const MoneyInput = (props) => {
   const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
   const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
 
-  const containerRef = React.useRef();
-  const amountInputRef = React.useRef();
+  const containerRef = useRef();
+  const amountInputRef = useRef();
 
   const { onFocus } = props;
-  const handleAmountFocus = React.useCallback(() => {
+  const handleAmountFocus = useCallback(() => {
     if (onFocus)
       onFocus({
         target: {
@@ -344,7 +344,7 @@ const MoneyInput = (props) => {
   }, [toggleAmountHasFocus, onFocus, props.id, props.name]);
 
   const { onChange } = props;
-  const handleAmountBlur = React.useCallback(() => {
+  const handleAmountBlur = useCallback(() => {
     const amount = props.value.amount.trim();
     toggleAmountHasFocus(false);
     // Skip formatting for empty value or when the input is used with an
@@ -382,7 +382,7 @@ const MoneyInput = (props) => {
     toggleAmountHasFocus,
   ]);
 
-  const handleAmountChange = React.useCallback(
+  const handleAmountChange = useCallback(
     (event) => {
       if (isNumberish(event.target.value)) {
         onChange({
@@ -399,7 +399,7 @@ const MoneyInput = (props) => {
     [onChange, props.id, props.name]
   );
 
-  const handleCurrencyChange = React.useCallback(
+  const handleCurrencyChange = useCallback(
     (option) => {
       const currencyCode = option.value;
       if (props.value.currencyCode !== currencyCode) {
@@ -459,7 +459,7 @@ const MoneyInput = (props) => {
     ]
   );
 
-  const handleCurrencyFocus = React.useCallback(() => {
+  const handleCurrencyFocus = useCallback(() => {
     if (onFocus)
       onFocus({
         target: {
@@ -471,7 +471,7 @@ const MoneyInput = (props) => {
     toggleCurrencyHasFocus(true);
   }, [onFocus, toggleCurrencyHasFocus, props.name, props.id]);
 
-  const handleCurrencyBlur = React.useCallback(() => {
+  const handleCurrencyBlur = useCallback(() => {
     toggleCurrencyHasFocus(false);
   }, [toggleCurrencyHasFocus]);
 
@@ -516,7 +516,7 @@ const MoneyInput = (props) => {
     MoneyInput.isHighPrecision(props.value, intl.locale);
 
   const { onBlur } = props;
-  const handleContainerBlur = React.useCallback(
+  const handleContainerBlur = useCallback(
     (event) => {
       // ensures that both fields are marked as touched when one of them
       // is blurred
@@ -541,7 +541,7 @@ const MoneyInput = (props) => {
     [onBlur, props.id, props.name]
   );
 
-  const TooltipPortal = React.useCallback(
+  const TooltipPortal = useCallback(
     (remainingProps) => <Portal {...remainingProps} id={props.id} />,
     [props.id]
   );
@@ -629,7 +629,7 @@ const MoneyInput = (props) => {
             {...filterDataAttributes(props)}
           />
           {props.hasHighPrecisionBadge && isHighPrecision && (
-            <React.Fragment>
+            <>
               {!props.isDisabled && <div id={getPortalId(props.id)} />}
               <div
                 css={() =>
@@ -659,7 +659,7 @@ const MoneyInput = (props) => {
                   />
                 </Tooltip>
               </div>
-            </React.Fragment>
+            </>
           )}
         </div>
       </div>

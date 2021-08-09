@@ -1,4 +1,3 @@
-import React from 'react';
 import { Value } from 'react-value';
 import { Switch, Route } from 'react-router-dom';
 import {

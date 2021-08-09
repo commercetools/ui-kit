@@ -1,4 +1,5 @@
-import React, {
+import {
+  cloneElement,
   MouseEvent,
   KeyboardEvent,
   ReactElement,
@@ -121,7 +122,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
           <Inline alignItems="flexStart" scale="xs">
             {props.hintIcon && (
               <Inline>
-                {React.cloneElement(props.hintIcon, {
+                {cloneElement(props.hintIcon, {
                   // FIXME: add proper tone when tones are refactored
                   size: 'medium',
                   color: props.hintIcon.props.color || 'warning',

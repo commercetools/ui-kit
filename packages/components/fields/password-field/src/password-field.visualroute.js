@@ -1,4 +1,3 @@
-import React from 'react';
 import { PasswordField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 

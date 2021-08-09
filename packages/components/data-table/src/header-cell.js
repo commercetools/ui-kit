@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import {
@@ -17,8 +17,8 @@ import ColumnResizingContext from './column-resizing-context';
 import isFixedWidthValue from './utils/is-fixed-width-value';
 
 const HeaderCellWrapper = (props) => {
-  const columnResizingReducer = React.useContext(ColumnResizingContext);
-  const headerRef = React.useRef(null);
+  const columnResizingReducer = useContext(ColumnResizingContext);
+  const headerRef = useRef(null);
 
   const onStartResizing = (event) => {
     columnResizingReducer.startResizing(headerRef, event);

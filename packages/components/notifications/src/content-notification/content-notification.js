@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import React from 'react';
+import { PureComponent, Children } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -41,7 +41,7 @@ const getIconByType = (type) => {
   }
 };
 
-class NotificationIcon extends React.PureComponent {
+class NotificationIcon extends PureComponent {
   static displayName = 'NotificationIcon';
   static propTypes = {
     type: PropTypes.oneOf(['error', 'info', 'warning', 'success']).isRequired,
@@ -86,7 +86,7 @@ const getContentBorderColor = (props) => {
   }
 };
 
-export default class ContentNotification extends React.PureComponent {
+export default class ContentNotification extends PureComponent {
   static displayName = 'ContentNotification';
 
   static propTypes = {
@@ -98,7 +98,7 @@ export default class ContentNotification extends React.PureComponent {
         description: PropTypes.string,
         defaultMessage: PropTypes.string.isRequired,
       }),
-      (props) => !React.Children.count(props.children)
+      (props) => !Children.count(props.children)
     ),
   };
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import DateRangeInput from '@commercetools-uikit/date-range-input';
 
 const Example = () => (

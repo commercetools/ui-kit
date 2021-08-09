@@ -1,7 +1,6 @@
-import React from 'react';
+import { Component, forwardRef } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { act } from 'react-dom/test-utils';
 import {
   screen,
   render,
@@ -16,7 +15,7 @@ const Portal = (props) => {
   return ReactDOM.createPortal(props.children, domNode);
 };
 
-class TestComponent extends React.Component {
+class TestComponent extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     buttonLabel: PropTypes.string.isRequired,
@@ -54,7 +53,7 @@ class TestComponent extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div id="portal-id" />
         <div id="main">
           <Tooltip
@@ -83,7 +82,7 @@ class TestComponent extends React.Component {
             onClick={this.toggleTooltip}
           />
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }
@@ -254,7 +253,7 @@ describe('Tooltip', () => {
   });
 });
 
-const TooltipWrapper = React.forwardRef((props, ref) => (
+const TooltipWrapper = forwardRef((props, ref) => (
   <div
     data-testid="tooltip-custom-wrapper"
     ref={ref}

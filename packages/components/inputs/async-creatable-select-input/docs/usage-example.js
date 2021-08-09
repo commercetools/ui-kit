@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import AsyncCreatableSelectInput from '@commercetools-uikit/async-creatable-select-input';
 

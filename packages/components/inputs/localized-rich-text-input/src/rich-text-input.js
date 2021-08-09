@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import pick from 'lodash/pick';
 import requiredIf from 'react-required-if';
@@ -8,7 +8,7 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { richTextPlugins, html } from '@commercetools-uikit/rich-text-utils';
 import renderEditor from './editor';
 
-class RichTextInput extends React.PureComponent {
+class RichTextInput extends PureComponent {
   serializedValue = this.props.value || '';
   internalSlateValue = html.deserialize(this.props.value || '');
 

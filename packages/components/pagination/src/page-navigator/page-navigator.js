@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 import { useIntl } from 'react-intl';
@@ -15,7 +15,7 @@ import messages from './messages';
 const PageNavigator = (props) => {
   const intl = useIntl();
 
-  const [pageNumberInputId] = React.useState(uniqueId('page-number-'));
+  const [pageNumberInputId] = useState(uniqueId('page-number-'));
 
   const paginationForm = useFormik({
     initialValues: { page: props.page },
@@ -42,14 +42,14 @@ const PageNavigator = (props) => {
   const isPreviousDisabled = page <= 1;
   const isNextDisabled = page >= totalPages;
 
-  const handlePrevPageChange = React.useCallback(() => {
+  const handlePrevPageChange = useCallback(() => {
     const previousPage = paginationForm.values.page - 1;
     if (previousPage < 1) return;
     paginationForm.setFieldValue('page', previousPage, true);
     paginationForm.submitForm();
   }, [paginationForm]);
 
-  const handleNextPageChange = React.useCallback(() => {
+  const handleNextPageChange = useCallback(() => {
     const nextPage = paginationForm.values.page + 1;
     if (nextPage > totalPages) return null;
     paginationForm.setFieldValue('page', nextPage, true);

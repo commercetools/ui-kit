@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types, react/display-name */
-import React from 'react';
+
+import { useState, useCallback } from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
@@ -16,8 +17,8 @@ import Readme from '../README.md';
 const initialValue = '<h1>H1 heading</h1>';
 
 const Input = (props) => {
-  const [value, setValue] = React.useState(initialValue);
-  const onChange = React.useCallback(
+  const [value, setValue] = useState(initialValue);
+  const onChange = useCallback(
     (event) => {
       setValue(event.target.value);
       action('onChange')(event);
@@ -50,13 +51,13 @@ storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('RichTextInput', () => {
-    const onClickExpand = React.useCallback(() => {
+    const onClickExpand = useCallback(() => {
       // eslint-disable-next-line no-alert
       alert('Expand');
     }, []);
 
-    const onBlur = React.useCallback(action('onBlur'), []);
-    const onFocus = React.useCallback(action('onFocus'), []);
+    const onBlur = useCallback(action('onBlur'), []);
+    const onFocus = useCallback(action('onFocus'), []);
     const id = text('id', 'test-id');
     return (
       <Section>

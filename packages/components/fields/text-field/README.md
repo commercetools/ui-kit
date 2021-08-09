@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import TextField from '@commercetools-uikit/text-field';
 
 const Example = () => (

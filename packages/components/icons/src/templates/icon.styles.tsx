@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@emotion/react';
 
-// @ts-ignore
-import React from 'react';
 import { warning } from '@commercetools-uikit/utils';
 // @ts-ignore
-import { css, useTheme } from '@emotion/react';
+import { css, ClassNames, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 export type Props = {
@@ -20,6 +18,7 @@ export type Props = {
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
+export type SVGProps = Props & { className: string };
 
 const iconSizes = {
   small: 12,

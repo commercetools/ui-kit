@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 
 // The `AccessibleButton` component is intended to be used as a wrapper

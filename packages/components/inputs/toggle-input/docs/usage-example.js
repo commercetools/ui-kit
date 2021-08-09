@@ -1,4 +1,3 @@
-import React from 'react';
 import ToggleInput from '@commercetools-uikit/toggle-input';
 
 const Example = () => (

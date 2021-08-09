@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import NumberInput from './number-input';
 
@@ -79,11 +78,6 @@ describe('NumberInput', () => {
   it('should have an HTML name', () => {
     const { container } = render(<NumberInput {...baseProps} name="foo" />);
     expect(container.querySelector('input')).toHaveAttribute('name', 'foo');
-  });
-
-  it('should have ARIA role', () => {
-    const { container } = render(<NumberInput {...baseProps} />);
-    expect(container.querySelector('input')).toHaveAttribute('role', 'textbox');
   });
 
   it('should have pass autoComplete', () => {

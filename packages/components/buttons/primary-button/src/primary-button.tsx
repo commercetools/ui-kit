@@ -1,4 +1,11 @@
-import React, { MouseEvent, KeyboardEvent } from 'react';
+import {
+  cloneElement,
+  MouseEvent,
+  KeyboardEvent,
+  ElementType,
+  ReactElement,
+  ComponentPropsWithRef,
+} from 'react';
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import Inline from '@commercetools-uikit/spacings-inline';
@@ -10,7 +17,7 @@ import { getButtonStyles } from './primary-button.styles';
 const propsToOmit = ['type'];
 
 export type TPrimaryButtonProps<
-  TStringOrComponent extends React.ElementType = 'button'
+  TStringOrComponent extends ElementType = 'button'
 > = {
   /**
    * You may pass in a string like "a" to have the button element render an anchor tag, or
@@ -30,7 +37,7 @@ export type TPrimaryButtonProps<
   /**
    * The left icon displayed within the button.
    */
-  iconLeft?: React.ReactElement;
+  iconLeft?: ReactElement;
   /**
    * If this is active, it means the button will persist in an "active" state when toggled (see `isToggled`), and back to normal state when untoggled
    */
@@ -63,7 +70,7 @@ export type TPrimaryButtonProps<
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
  * passed to `<PrimaryButton>`: <PrimaryButton as={Link} to="/foo" label="Foo" />.
- */ React.ComponentPropsWithRef<TStringOrComponent>;
+ */ ComponentPropsWithRef<TStringOrComponent>;
 
 const defaultProps: Pick<
   TPrimaryButtonProps,
@@ -75,7 +82,7 @@ const defaultProps: Pick<
   tone: 'primary',
 };
 
-const PrimaryButton = <TStringOrComponent extends React.ElementType = 'button'>(
+const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
   props: TPrimaryButtonProps<TStringOrComponent>
 ) => {
   const buttonAttributes = {
@@ -110,7 +117,7 @@ const PrimaryButton = <TStringOrComponent extends React.ElementType = 'button'>(
             `}
           >
             {props.iconLeft &&
-              React.cloneElement(props.iconLeft, {
+              cloneElement(props.iconLeft, {
                 color: props.isDisabled ? 'neutral60' : 'surface',
                 size: props.size === 'small' ? 'medium' : 'big',
               })}

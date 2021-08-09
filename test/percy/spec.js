@@ -1,4 +1,4 @@
-import React from 'react';
+import { Children, isValidElement } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -58,10 +58,10 @@ const Box = styled.div`
 
 const Pill = (props) => {
   const value = (() => {
-    if (React.isValidElement(props.value)) return 'React Element';
+    if (isValidElement(props.value)) return 'React Element';
     if (
       Array.isArray(props.value) &&
-      props.value.every((element) => React.isValidElement(element))
+      props.value.every((element) => isValidElement(element))
     )
       return '[React Element]';
     try {
@@ -86,8 +86,8 @@ Pill.propTypes = {
 
 const Props = (props) => {
   const node = props.listPropsOfNestedChild
-    ? React.Children.only(props.children.props.children)
-    : React.Children.only(props.children);
+    ? Children.only(props.children.props.children)
+    : Children.only(props.children);
 
   const propEntries = Object.entries(
     props.propsToList ? pick(node.props, props.propsToList) : node.props

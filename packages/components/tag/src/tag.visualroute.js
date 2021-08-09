@@ -1,4 +1,3 @@
-import React from 'react';
 import { ThemeProvider } from '@emotion/react';
 import { Tag } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import {
@@ -17,7 +17,7 @@ const sequentialId = createSequentialId('async-creatable-select-field-');
 
 const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
-export default class AsyncCreatableSelectField extends React.Component {
+export default class AsyncCreatableSelectField extends Component {
   static displayName = 'AsyncCreatableSelectField';
 
   static propTypes = {

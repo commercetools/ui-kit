@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { Formik } from 'formik';
@@ -36,7 +36,7 @@ const resourceLanguages = ['en', 'de', 'pt'];
 // We only need to update docToForm and formToDoc in that case.
 // This makes the form flexible, we can easily move the data source from
 // the CTP API to GraphQL.
-class FakeConnector extends React.Component {
+class FakeConnector extends Component {
   static displayName = 'FakeConnector';
   static propTypes = { children: PropTypes.func.isRequired };
   product = {
@@ -223,7 +223,7 @@ const validate = (formValues, locale) => {
   return omitEmpty(errors);
 };
 
-class ProductForm extends React.Component {
+class ProductForm extends Component {
   static displayName = 'ProductForm';
   static propTypes = {
     formik: PropTypes.shape({

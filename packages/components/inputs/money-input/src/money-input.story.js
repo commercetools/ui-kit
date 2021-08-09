@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -19,7 +19,7 @@ import MoneyInput from './money-input';
 // the component rerenders, so we'd need to use two separate <Value />
 // components to not lose data. So we use a dedicated component instead.
 // That makes it easier to log the parsed value as well.
-class MoneyInputStory extends React.Component {
+class MoneyInputStory extends Component {
   static displayName = 'MoneyInputStory';
 
   state = {
@@ -55,7 +55,7 @@ class MoneyInputStory extends React.Component {
       currencyCode: this.state.currencyCode,
     };
     return (
-      <React.Fragment>
+      <>
         <Section>
           <MoneyInput
             id={text('id', '')}
@@ -97,7 +97,7 @@ class MoneyInputStory extends React.Component {
             </i>
           </p>
         </Section>
-      </React.Fragment>
+      </>
     );
   }
 }

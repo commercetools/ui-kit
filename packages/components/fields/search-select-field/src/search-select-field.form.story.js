@@ -1,4 +1,3 @@
-import React from 'react';
 import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty-es';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import Text from '@commercetools-uikit/text';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
@@ -10,7 +10,7 @@ type TIntlMessageDescriptor = {
 
 type TErrorMessageProps = {
   intlMessage?: TIntlMessageDescriptor;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const ErrorMessage = (props: TErrorMessageProps) => (

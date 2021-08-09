@@ -3,10 +3,6 @@
     {
       "path": "packages/**/dist/*.cjs.prod.js",
       "maxSize": "50 kB"
-    },
-    {
-      "path": "packages/**/dist/*.esm.js",
-      "maxSize": "50 kB"
     }
   ]
 }

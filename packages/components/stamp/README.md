@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import Stamp from '@commercetools-uikit/stamp';
 import Text from '@commercetools-uikit/text';
 

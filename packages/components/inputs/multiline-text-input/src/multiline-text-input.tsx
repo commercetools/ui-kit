@@ -1,4 +1,6 @@
-import React, {
+import {
+  useState,
+  useCallback,
   ChangeEventHandler,
   FocusEventHandler,
   FocusEvent,
@@ -102,14 +104,14 @@ const defaultProps: Pick<
 const MultilineTextInput = (props: TMultilineTextInputProps) => {
   const intl = useIntl();
 
-  const [contentRowCount, setContentRowCount] = React.useState<number>(
+  const [contentRowCount, setContentRowCount] = useState<number>(
     MultilineTextInput.MIN_ROW_COUNT
   );
 
   const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
 
   const { onFocus } = props;
-  const handleFocus = React.useCallback<FocusEventHandler>(
+  const handleFocus = useCallback<FocusEventHandler>(
     (event: FocusEvent) => {
       if (!isOpen) toggle(true);
       if (onFocus) onFocus(event);
@@ -117,7 +119,7 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
     [isOpen, onFocus, toggle]
   );
 
-  const handleHeightChange = React.useCallback<
+  const handleHeightChange = useCallback<
     (height: number, rowCount: number) => void
   >(
     (_, rowCount) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import { MemoryRouter, Link } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -30,7 +30,7 @@ storiesOf('Components|Buttons', module)
           <SecondaryButton
             type={select('type', ['button', 'reset', 'submit'], 'button')}
             theme={select('theme', ['info', 'default'], 'default')}
-            iconLeft={React.createElement(
+            iconLeft={createElement(
               icons[select('iconLeft', iconNames, iconNames[0])]
             )}
             onClick={action('onClick')}

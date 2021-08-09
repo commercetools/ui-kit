@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import TextInput from './text-input';
 
@@ -43,11 +42,6 @@ describe('TextInput', () => {
       'autocomplete',
       'off'
     );
-  });
-
-  it('should have ARIA role', () => {
-    const { container } = render(<TextInput {...baseProps} />);
-    expect(container.querySelector('input')).toHaveAttribute('role', 'textbox');
   });
 
   it('should forward the passed value', () => {

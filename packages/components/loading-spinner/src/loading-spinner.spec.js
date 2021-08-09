@@ -1,4 +1,3 @@
-import React from 'react';
 import { screen, render } from '../../../../test/test-utils';
 import LoadingSpinner from './loading-spinner';
 

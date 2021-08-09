@@ -1,7 +1,7 @@
 import type { Theme } from '@emotion/react';
 import type { TTagProps } from './tag';
 
-import React, { ReactNode, ElementType } from 'react';
+import { ReactNode, ElementType } from 'react';
 import styled from '@emotion/styled';
 import { css, useTheme } from '@emotion/react';
 import {

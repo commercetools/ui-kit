@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isValidElementType } from 'react-is';
 import styled from '@emotion/styled';
@@ -80,7 +80,7 @@ Option.propTypes = {
             `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the supplied function should expect one argument`
           );
         }
-        if (isValidElementType(props[propName](React.Fragment))) {
+        if (isValidElementType(props[propName](Fragment))) {
           return new Error(
             `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the function supplied should return a valid react element`
           );

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -44,7 +44,7 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const loadOptions = (inputValue) =>
   delay(500).then(() => filterColors(inputValue));
 
-class SearchSelectInputStory extends React.Component {
+class SearchSelectInputStory extends Component {
   static displayName = 'SearchSelectInputStory';
   render() {
     const isMulti = boolean('isMulti', false);
@@ -62,7 +62,7 @@ class SearchSelectInputStory extends React.Component {
       SELECT_DROPDOWN_OPTION_TYPES.SINGLE_PROPERTY
     );
     return (
-      <React.Fragment>
+      <>
         <Section>
           <Value
             key={`${isMulti}`}
@@ -128,7 +128,7 @@ class SearchSelectInputStory extends React.Component {
             )}
           />
         </Section>
-      </React.Fragment>
+      </>
     );
   }
 }

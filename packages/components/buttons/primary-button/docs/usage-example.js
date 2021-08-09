@@ -1,4 +1,3 @@
-import React from 'react';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import { InformationIcon } from '@commercetools-uikit/icons';
 

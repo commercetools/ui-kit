@@ -1,4 +1,3 @@
-import React from 'react';
 import DateInput from '@commercetools-uikit/date-input';
 
 const Example = () => (

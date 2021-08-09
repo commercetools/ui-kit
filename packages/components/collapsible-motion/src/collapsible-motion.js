@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { keyframes, ClassNames } from '@emotion/react';
 import isNil from 'lodash/isNil';
@@ -61,11 +61,11 @@ const createClosingAnimation = (height, minHeight) =>
   `;
 
 const useToggleAnimation = (isOpen, toggle, minHeight) => {
-  const nodeRef = React.useRef();
-  const animationRef = React.useRef(null);
+  const nodeRef = useRef();
+  const animationRef = useRef(null);
   const prevIsOpen = usePrevious(isOpen);
 
-  React.useEffect(
+  useEffect(
     () => {
       warning(
         nodeRef.current,
@@ -77,7 +77,7 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
     [nodeRef]
   );
 
-  const handleToggle = React.useCallback(() => {
+  const handleToggle = useCallback(() => {
     warning(
       nodeRef.current,
       'You need to call `registerContentNode` in order to use this component'

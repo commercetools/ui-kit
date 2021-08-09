@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '../../../../test/test-utils';
 import Grid from './grid';
 
