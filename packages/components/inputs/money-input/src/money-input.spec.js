@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import MoneyInput from './money-input';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
@@ -41,7 +41,7 @@ class TestComponent extends Component {
   };
   render() {
     return (
-      <Fragment>
+      <>
         <label htmlFor={MoneyInput.getAmountInputId(this.props.id)}>
           Amount
         </label>
@@ -50,7 +50,7 @@ class TestComponent extends Component {
           onChange={this.props.onChange || this.handleChange}
           value={this.state.value}
         />
-      </Fragment>
+      </>
     );
   }
 }

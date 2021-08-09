@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent, screen } from '../../../../../test/test-utils';
 import SearchSelectInput from './search-select-input';
@@ -50,7 +50,7 @@ class TestSearchSelectComponent extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <label htmlFor={this.props.id}>Fruit</label>
         <SearchSelectInput
           {...this.props}
@@ -58,7 +58,7 @@ class TestSearchSelectComponent extends Component {
           value={this.state.value}
           loadOptions={this.props.loadOptions}
         />
-      </Fragment>
+      </>
     );
   }
 }

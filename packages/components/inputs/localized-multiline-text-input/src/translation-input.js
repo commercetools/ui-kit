@@ -1,4 +1,4 @@
-import { useState, useCallback, Fragment } from 'react';
+import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 import { css, useTheme } from '@emotion/react';
@@ -164,7 +164,7 @@ const TranslationInput = (props) => {
           return null;
         })()}
         {!props.isCollapsed && contentExceedsShownRows && (
-          <Fragment>
+          <>
             <LeftColumn />
             <RightColumn>
               <ToggleButtonWrapper
@@ -188,7 +188,7 @@ const TranslationInput = (props) => {
                 />
               </ToggleButtonWrapper>
             </RightColumn>
-          </Fragment>
+          </>
         )}
       </Row>
     </Stack>

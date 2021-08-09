@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, Fragment } from 'react';
+import { forwardRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import requiredIf from 'react-required-if';
@@ -424,7 +424,7 @@ const RichTextEditorBody = forwardRef((props, ref) => {
             </Button>
           </Tooltip>
           {props.showExpandIcon && (
-            <Fragment>
+            <>
               <Divider />
               <Tooltip
                 title={intl.formatMessage(messages.expandButtonLabel)}
@@ -440,7 +440,7 @@ const RichTextEditorBody = forwardRef((props, ref) => {
                   <ExpandFullIcon size="medium" />
                 </Button>
               </Tooltip>
-            </Fragment>
+            </>
           )}
         </ToolbarRightControls>
       </Toolbar>

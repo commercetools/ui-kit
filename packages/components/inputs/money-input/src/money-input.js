@@ -1,4 +1,4 @@
-import { useRef, useCallback, Fragment } from 'react';
+import { useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import has from 'lodash/has';
@@ -629,7 +629,7 @@ const MoneyInput = (props) => {
             {...filterDataAttributes(props)}
           />
           {props.hasHighPrecisionBadge && isHighPrecision && (
-            <Fragment>
+            <>
               {!props.isDisabled && <div id={getPortalId(props.id)} />}
               <div
                 css={() =>
@@ -659,7 +659,7 @@ const MoneyInput = (props) => {
                   />
                 </Tooltip>
               </div>
-            </Fragment>
+            </>
           )}
         </div>
       </div>

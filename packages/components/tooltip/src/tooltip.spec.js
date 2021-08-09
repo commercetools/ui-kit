@@ -1,4 +1,4 @@
-import { Component, forwardRef, Fragment } from 'react';
+import { Component, forwardRef } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {
@@ -53,7 +53,7 @@ class TestComponent extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <div id="portal-id" />
         <div id="main">
           <Tooltip
@@ -82,7 +82,7 @@ class TestComponent extends Component {
             onClick={this.toggleTooltip}
           />
         </div>
-      </Fragment>
+      </>
     );
   }
 }

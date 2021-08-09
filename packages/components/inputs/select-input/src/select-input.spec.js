@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import SelectInput from './select-input';
@@ -49,7 +49,7 @@ class TestComponent extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <label htmlFor={this.props.id}>Fruit</label>
         <SelectInput
           {...this.props}
@@ -57,7 +57,7 @@ class TestComponent extends Component {
           value={this.state.value}
           options={this.props.options}
         />
-      </Fragment>
+      </>
     );
   }
 }

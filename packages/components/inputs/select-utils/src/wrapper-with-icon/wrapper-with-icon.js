@@ -14,7 +14,7 @@ const WrapperWithIcon = ({ children, ...props }) => {
   const Component = getDefaultComponent(props.type);
 
   return (
-    <Fragment>
+    <>
       {props.selectProps.iconLeft &&
         cloneElement(props.selectProps.iconLeft, {
           size: 'big',
@@ -30,7 +30,7 @@ const WrapperWithIcon = ({ children, ...props }) => {
       >
         <Component {...props}>{children}</Component>
       </span>
-    </Fragment>
+    </>
   );
 };
 WrapperWithIcon.propTypes = {

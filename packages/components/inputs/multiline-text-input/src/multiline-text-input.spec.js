@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
 import MultilineTextInput from './multiline-text-input';
@@ -32,14 +32,14 @@ class TestComponent extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <label htmlFor={this.props.id}>Description</label>
         <MultilineTextInput
           {...this.props}
           value={this.state.value}
           onChange={this.props.onChange || this.handleChange}
         />
-      </Fragment>
+      </>
     );
   }
 }

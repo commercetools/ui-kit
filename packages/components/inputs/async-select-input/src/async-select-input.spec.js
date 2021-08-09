@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import AsyncSelectInput from './async-select-input';
@@ -47,7 +47,7 @@ class TestComponent extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <label htmlFor={this.props.id}>Fruit</label>
         <AsyncSelectInput
           {...this.props}
@@ -56,7 +56,7 @@ class TestComponent extends Component {
           loadOptions={this.props.loadOptions}
           defaultOptions={this.props.defaultOptions}
         />
-      </Fragment>
+      </>
     );
   }
 }

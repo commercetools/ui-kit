@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
@@ -54,7 +54,7 @@ class TestComponent extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <label htmlFor={this.props.id}>Fruit</label>
         <AsyncCreatableSelectInput
           {...this.props}
@@ -64,7 +64,7 @@ class TestComponent extends Component {
           defaultOptions={this.props.defaultOptions}
           isSearchable={this.props.isSearchable}
         />
-      </Fragment>
+      </>
     );
   }
 }
