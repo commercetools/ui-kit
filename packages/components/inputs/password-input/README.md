@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import PasswordInput from '@commercetools-uikit/password-input';
 
 const Example = () => (

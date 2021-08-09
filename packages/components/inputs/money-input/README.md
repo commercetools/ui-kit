@@ -30,7 +30,6 @@ npm --save install react react-dom react-intl
 ## Usage
 
 ```jsx
-import React from 'react';
 import MoneyInput from '@commercetools-uikit/money-input';
 
 const Example = () => (
@@ -172,7 +171,6 @@ MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' }, 'en'); // -> thr
 Here's an example of how `MoneyInput` would be used inside a form.
 
 ```jsx
-import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Formik } from 'formik';
 import omitEmpty from 'omit-empty-es';

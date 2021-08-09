@@ -30,7 +30,6 @@ npm --save install moment react react-intl
 ## Usage
 
 ```jsx
-import React from 'react';
 import DateInput from '@commercetools-uikit/date-input';
 
 const Example = () => (

@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import Constraints from '@commercetools-uikit/constraints';
 
 <Constraints.Horizontal max={7}>

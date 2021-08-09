@@ -41,7 +41,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 
 const Example = () => (

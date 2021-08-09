@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -147,7 +147,7 @@ storiesOf('Components|Inputs/SelectInputs', module)
                   'last'
                 )}
                 showOptionGroupDivider={showOptionGroupDivider}
-                iconLeft={iconLeft ? React.createElement(iconLeft) : undefined}
+                iconLeft={iconLeft ? createElement(iconLeft) : undefined}
               />
             )}
           />

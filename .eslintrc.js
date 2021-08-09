@@ -26,14 +26,6 @@ module.exports = {
       },
     },
     {
-      // Storybook related files still require "React in scope".
-      files: ['*.story.js'],
-      rules: {
-        'react/jsx-uses-react': 'error',
-        'react/react-in-jsx-scope': 'error',
-      },
-    },
-    {
       files: ['*.visualspec.js'],
       globals: {
         page: true,

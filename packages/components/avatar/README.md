@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import Avatar from '@commercetools-uikit/avatar';
 
 const Example = () => (

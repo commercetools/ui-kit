@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types, react/display-name */
-import React from 'react';
+
+import { Component } from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -20,7 +21,7 @@ import LocalizedRichTextInput from './localized-rich-text-input';
 
 const initialValue = '';
 
-class StoryWrapper extends React.Component {
+class StoryWrapper extends Component {
   onChange = (event) => {
     this.props.onChange({
       ...this.props.value,

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
@@ -14,7 +14,7 @@ import AsyncSelectInput from './async-select-input';
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-class FakeConnector extends React.Component {
+class FakeConnector extends Component {
   static displayName = 'FakeConnector';
 
   static propTypes = {
@@ -57,7 +57,7 @@ const docToForm = (product, isMulti) => ({
     : product.category.key,
 });
 
-class AsyncSelectInputStory extends React.Component {
+class AsyncSelectInputStory extends Component {
   static displayName = 'AsyncSelectInputStory';
   render() {
     const isMulti = boolean('Use multi-value select input', false);

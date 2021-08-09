@@ -42,7 +42,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import MoneyField from '@commercetools-uikit/money-field';
 
 const Example = () => (

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { text, select, boolean, withKnobs } from '@storybook/addon-knobs/react';
@@ -333,10 +333,10 @@ storiesOf('Components|DataTable', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('DataTable', () => {
-    const [tableData, setTableData] = React.useState({
+    const [tableData, setTableData] = useState({
       columns: initialColumnsState,
     });
-    const [columnSizes, setColumnSizes] = React.useState();
+    const [columnSizes, setColumnSizes] = useState();
 
     const {
       items: rows,
@@ -402,7 +402,7 @@ storiesOf('Components|DataTable', module)
     ];
 
     return (
-      <React.Fragment>
+      <>
         <DataTable
           rows={withRowSelection ? rowsWithSelection : rows}
           columns={withRowSelection ? columnsWithSelect : tableData.columns}
@@ -495,6 +495,6 @@ storiesOf('Components|DataTable', module)
             'The columns are still untouched.'
           )}
         </div>
-      </React.Fragment>
+      </>
     );
   });

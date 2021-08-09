@@ -30,7 +30,6 @@ npm --save install react react-dom react-intl
 ## Usage
 
 ```jsx
-import React from 'react';
 import PropTypes from 'prop-types';
 import CreatableSelectInput from '@commercetools-uikit/creatable-select-input';
 

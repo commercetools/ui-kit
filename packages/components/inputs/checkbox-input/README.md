@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 
 const Example = () => (

@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
@@ -20,9 +20,7 @@ storiesOf('Components|Buttons', module)
   .add('SecondaryIconButton', () => (
     <Section>
       <SecondaryIconButton
-        icon={React.createElement(
-          icons[select('icon', iconNames, iconNames[0])]
-        )}
+        icon={createElement(icons[select('icon', iconNames, iconNames[0])])}
         label={text('label', 'Accessibility text')}
         color={select('color', ['solid', 'primary'], 'solid')}
         onClick={action('onClick')}

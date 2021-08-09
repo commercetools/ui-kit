@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
@@ -7,7 +7,7 @@ import Readme from '../README.md';
 import DateTimeInput from './date-time-input';
 import Section from '../../../../../docs/.storybook/decorators/section';
 
-class DateTimeInputStory extends React.Component {
+class DateTimeInputStory extends Component {
   static displayName = 'DateTimeInputStory';
 
   state = {

@@ -136,7 +136,6 @@ All visual routes must import from the bundled ui-kit. This rule is introduced t
 ```js
 // primary-button.visualroute.js
 
-import React from 'react';
 import { InformationIcon, PrimaryButton } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 

@@ -30,7 +30,6 @@ npm --save install react react-intl
 ## Usage
 
 ```jsx
-import React from 'react';
 import FieldErrors from '@commercetools-uikit/field-errors';
 
 const Example = () => (

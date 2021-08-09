@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component, createElement } from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -53,7 +53,7 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const loadOptions = (inputValue) =>
   delay(500).then(() => filterColors(inputValue));
 
-class SelectStory extends React.Component {
+class SelectStory extends Component {
   static displayName = 'SelectStory';
   render() {
     const isMulti = boolean('isMulti', false);
@@ -64,7 +64,7 @@ class SelectStory extends React.Component {
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
 
     return (
-      <React.Fragment>
+      <>
         <Section>
           <Value
             key={`${isMulti}-${defaultOptions}`}
@@ -118,15 +118,13 @@ class SelectStory extends React.Component {
                     'last'
                   )}
                   showOptionGroupDivider={showOptionGroupDivider}
-                  iconLeft={
-                    iconLeft ? React.createElement(iconLeft) : undefined
-                  }
+                  iconLeft={iconLeft ? createElement(iconLeft) : undefined}
                 />
               </div>
             )}
           />
         </Section>
-      </React.Fragment>
+      </>
     );
   }
 }

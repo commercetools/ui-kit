@@ -30,7 +30,6 @@ npm --save install react react-dom react-intl
 ## Usage
 
 ```jsx
-import React from 'react';
 import SearchSelectInput from '@commercetools-uikit/search-select-input';
 
 const Example = () => {

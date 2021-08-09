@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Value } from 'react-value';
@@ -73,7 +73,7 @@ storiesOf('Components|Fields/SelectFields', module)
     // hintIcon will only render when hint exists
     const iconNames = Object.keys(icons);
     const icon = select('hintIcon', ['', ...iconNames], '');
-    const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
+    const hintIcon = icon ? createElement(icons[icon]) : undefined;
     const name = text('name', 'color');
     const id = text('id', '');
 

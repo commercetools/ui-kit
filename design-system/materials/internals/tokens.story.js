@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
@@ -322,7 +322,7 @@ const SpacingSample = styled.div`
   margin: 0 10px;
 `;
 
-class Story extends React.Component {
+class Story extends Component {
   static displayName = 'Story';
 
   state = {
@@ -458,27 +458,27 @@ class Story extends React.Component {
           choiceGroup={definition.choiceGroups.colors}
           searchText={this.state.searchText}
           renderSample={(value) => (
-            <React.Fragment>
+            <>
               <ColorSample color={value} /> {value}
-            </React.Fragment>
+            </>
           )}
         />
         <ChoiceGroup
           choiceGroup={definition.choiceGroups.borderRadiuses}
           searchText={this.state.searchText}
           renderSample={(value) => (
-            <React.Fragment>
+            <>
               <BorderRadiusSample borderRadius={value} /> {value}
-            </React.Fragment>
+            </>
           )}
         />
         <ChoiceGroup
           choiceGroup={definition.choiceGroups.shadows}
           searchText={this.state.searchText}
           renderSample={(value) => (
-            <React.Fragment>
+            <>
               <ShadowSample shadow={value} /> {value}
-            </React.Fragment>
+            </>
           )}
         />
         <ChoiceGroup
@@ -489,9 +489,9 @@ class Story extends React.Component {
           choiceGroup={definition.choiceGroups.spacings}
           searchText={this.state.searchText}
           renderSample={(value) => (
-            <React.Fragment>
+            <>
               <SpacingSample spacing={value} /> {value}
-            </React.Fragment>
+            </>
           )}
         />
         <ChoiceGroup
@@ -524,45 +524,45 @@ class Story extends React.Component {
           decisionGroup={definition.decisionGroups.backgroundColors}
           searchText={this.state.searchText}
           renderSample={(value) => (
-            <React.Fragment>
+            <>
               <ColorSample color={value} /> {value}
-            </React.Fragment>
+            </>
           )}
         />
         <DecisionGroup
           decisionGroup={definition.decisionGroups.borderColors}
           searchText={this.state.searchText}
           renderSample={(value) => (
-            <React.Fragment>
+            <>
               <ColorSample color={value} /> {value}
-            </React.Fragment>
+            </>
           )}
         />
         <DecisionGroup
           decisionGroup={definition.decisionGroups.borderRadiuses}
           searchText={this.state.searchText}
           renderSample={(value) => (
-            <React.Fragment>
+            <>
               <BorderRadiusSample borderRadius={value} /> {value}
-            </React.Fragment>
+            </>
           )}
         />
         <DecisionGroup
           decisionGroup={definition.decisionGroups.fontColors}
           searchText={this.state.searchText}
           renderSample={(value) => (
-            <React.Fragment>
+            <>
               <FontColorSample color={value} /> {value}
-            </React.Fragment>
+            </>
           )}
         />
         <DecisionGroup
           decisionGroup={definition.decisionGroups.shadows}
           searchText={this.state.searchText}
           renderSample={(value) => (
-            <React.Fragment>
+            <>
               <ShadowSample shadow={value} /> {value}
-            </React.Fragment>
+            </>
           )}
         />
       </Background>

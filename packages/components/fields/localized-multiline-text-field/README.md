@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import LocalizedMultilineTextField from '@commercetools-uikit/localized-multiline-text-field';
 
 const Example = () => (

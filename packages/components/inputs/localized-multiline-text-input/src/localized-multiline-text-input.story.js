@@ -1,4 +1,3 @@
-import React from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';

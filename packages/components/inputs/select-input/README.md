@@ -30,7 +30,6 @@ npm --save install react react-intl
 ## Usage
 
 ```jsx
-import React from 'react';
 import PropTypes from 'prop-types';
 import SelectInput from '@commercetools-uikit/select-input';
 

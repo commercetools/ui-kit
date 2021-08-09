@@ -199,7 +199,6 @@ LocalizedMoneyInput.getEmptyCurrencies({
 Here's an example of how `LocalizedMoneyInput` would be used inside a form.
 
 ```jsx
-import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Formik } from 'formik';
 import omitEmpty from 'omit-empty-es';
@@ -250,9 +249,8 @@ const validate = (formValues) => {
   );
   // ['EUR', 'USD']
   // This form doesn't accept high precision prices
-  const highPrecisionCurrencies = LocalizedMoneyInput.getHighPrecisionCurrencies(
-    formValues.prices
-  );
+  const highPrecisionCurrencies =
+    LocalizedMoneyInput.getHighPrecisionCurrencies(formValues.prices);
 
   // ['CAD', 'USD']
   emptyCurrencies.forEach((emptyCurrency) => {

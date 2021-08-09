@@ -30,7 +30,6 @@ npm --save install react
 ## Usage
 
 ```jsx
-import React from 'react';
 import CreatableSelectField from '@commercetools-uikit/creatable-select-field';
 
 const Example = () => (

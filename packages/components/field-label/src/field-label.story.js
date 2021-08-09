@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
@@ -23,7 +23,7 @@ storiesOf('Components|FieldLabel', module)
     // hintIcon will only render when hint exists
     const iconNames = Object.keys(icons);
     const icon = select('hintIcon', ['', ...iconNames], 'SortingIcon');
-    const hintIcon = icon ? React.createElement(icons[icon]) : undefined;
+    const hintIcon = icon ? createElement(icons[icon]) : undefined;
     return (
       <Section>
         <FieldLabel

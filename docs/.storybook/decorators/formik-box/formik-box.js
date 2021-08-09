@@ -1,9 +1,9 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Text from '../../../../packages/components/text';
 import SpacingsStack from '../../../../packages/components/spacings/spacings-stack';
 
-export default class FormikBox extends React.Component {
+export default class FormikBox extends Component {
   static displayName = 'FormikBox';
   static propTypes = {
     formik: PropTypes.shape({

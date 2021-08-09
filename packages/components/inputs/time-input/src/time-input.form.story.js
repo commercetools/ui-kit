@@ -1,4 +1,3 @@
-import React from 'react';
 import { Formik } from 'formik';
 import { injectIntl } from 'react-intl';
 import { storiesOf } from '@storybook/react';

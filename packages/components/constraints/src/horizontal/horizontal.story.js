@@ -1,4 +1,3 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';

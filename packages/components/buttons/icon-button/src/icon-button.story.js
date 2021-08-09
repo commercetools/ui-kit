@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement } from 'react';
 import { MemoryRouter, Link } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -31,9 +31,7 @@ storiesOf('Components|Buttons', module)
             shape={select('shape', ['round', 'square'], 'round')}
             size={select('size', ['big', 'medium', 'small'], 'big')}
             theme={select('theme', ['primary', 'info', 'default'], 'default')}
-            icon={React.createElement(
-              icons[select('icon', iconNames, iconNames[0])]
-            )}
+            icon={createElement(icons[select('icon', iconNames, iconNames[0])])}
             onClick={action('onClick')}
             label={text('label', 'Accessibility text')}
             isToggleButton={boolean('isToggleButton', true)}
