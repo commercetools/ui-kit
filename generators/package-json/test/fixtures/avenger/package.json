@@ -8,6 +8,6 @@
     "react": "16.8.x"
   },
   "readme": {
-    "componentPath": "./src/avenger.js"
+    "componentPaths": ["./src/avenger.js"]
   }
 }

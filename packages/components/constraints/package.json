@@ -38,6 +38,6 @@
     "react": "17.x"
   },
   "readme": {
-    "componentPath": "./src/horizontal/horizontal.tsx"
+    "componentPaths": ["./src/horizontal/horizontal.tsx"]
   }
 }

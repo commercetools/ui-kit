@@ -10,13 +10,14 @@ export type GeneratorReadmeOptions = {
   dryRun: CommandFlags['dryRun'];
 };
 
+export type ReadmeConfig = {
+  componentPaths?: string[];
+};
+
 export type PackgeJsonInfo = {
   name: string;
   description: string;
   version: string;
-  readme: {
-    componentPath: string;
-  };
   peerDependencies: { [packageName: string]: string };
 };
 

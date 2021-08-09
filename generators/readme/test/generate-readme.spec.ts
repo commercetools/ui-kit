@@ -65,7 +65,9 @@ export default Example;
 
 \`\`\`
 
-## Properties
+## Avenger
+
+### Properties
 
 | Props | Type | Required | Default | Description |
 | - | - | :-: | - | - |
