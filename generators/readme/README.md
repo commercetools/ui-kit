@@ -22,7 +22,7 @@ yarn generate-readme packages/components/avatar
 
 The prop types declarations of the main component exported by the package are automatically parsed and transformed into a Markdown table. To do that we rely on the `react-docgen` library.
 
-By default, the main component is picked assuming that the file name is the same name as the package folder, located in the `./src` folder. If the file is in a different location or does not match the package folder name, you can provide the path to the component file by adding a `{ "readme": { "componentPath": "./src/..." } }` to the `package.json`.
+By default, the main component is picked assuming that the file name is the same name as the package folder, located in the `./src` folder. If the file is in a different location or does not match the package folder name, you can provide the path to the component file by adding a `{ "readme": { "componentPaths": ["./src/..."] } }` to the `package.json`.
 
 To show more information about each prop type, it is recommended to define JS Doc comments on each prop type.
 

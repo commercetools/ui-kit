@@ -41,9 +41,11 @@ import Constraints from '@commercetools-uikit/constraints';
 </Constraints.Horizontal>;
 ```
 
-## Properties
+## Horizontal
+
+### Properties
 
 | Props      | Type                                                                                                        | Required | Default | Description                                                                                                                              |
 | ---------- | ----------------------------------------------------------------------------------------------------------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | `max`      | `union`<br/>Possible values:<br/>`, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          |         | The value of the constraint. See equivalent pixel values [here](https://uikit.commercetools.com/?path=/story/basics-tokens--all-tokens). |
-| `children` | `ReactReactNode`                                                                                            |    ✅    |         |                                                                                                                                          |
+| `children` | `ReactNode`                                                                                                 |    ✅    |         |                                                                                                                                          |

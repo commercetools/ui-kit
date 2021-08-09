@@ -21,6 +21,7 @@ import type { Options as PrettierOptions } from 'prettier';
 import type {
   CommandFlags,
   GeneratorReadmeOptions,
+  ReadmeConfig,
   PackgeJsonInfo,
   ReactAPI,
   ReactComponentProps,
@@ -326,7 +327,7 @@ const normalizeReactProps = (
 };
 const parsePropTypesToMarkdown = (
   componentPath: string,
-  options: { isTsx: boolean }
+  options: { isTsx: boolean; hasManyComponents: boolean }
 ): (PhrasingContent | BlockContent)[] => {
   const result = reactDocgen.parse(
     fs.readFileSync(componentPath, { encoding: 'utf8' }),
@@ -372,7 +373,11 @@ const parsePropTypesToMarkdown = (
                 ];
                 signatures.push(
                   ...[
-                    headingSignature(3, 'Signature', propName),
+                    headingSignature(
+                      options.hasManyComponents ? 4 : 3,
+                      'Signature',
+                      propName
+                    ),
                     code('ts', propInfoType.raw),
                   ]
                 );
@@ -386,7 +391,11 @@ const parsePropTypesToMarkdown = (
                 ];
                 signatures.push(
                   ...[
-                    headingSignature(3, 'Signature', propName),
+                    headingSignature(
+                      options.hasManyComponents ? 4 : 3,
+                      'Signature',
+                      propName
+                    ),
                     code('ts', propInfoType.raw),
                   ]
                 );
@@ -406,7 +415,11 @@ const parsePropTypesToMarkdown = (
             ];
             signatures.push(
               ...[
-                headingSignature(3, 'Signature', propName),
+                headingSignature(
+                  options.hasManyComponents ? 4 : 3,
+                  'Signature',
+                  propName
+                ),
                 ...propInfoType.elements
                   .map((elemNode) => {
                     switch (elemNode.name) {
@@ -454,7 +467,11 @@ const parsePropTypesToMarkdown = (
             if (possibleSignatures.length > 0) {
               signatures.push(
                 ...[
-                  headingSignature(3, 'Signature', propName),
+                  headingSignature(
+                    options.hasManyComponents ? 4 : 3,
+                    'Signature',
+                    propName
+                  ),
                   ...possibleSignatures,
                 ]
               );
@@ -541,7 +558,12 @@ const parsePropTypesToMarkdown = (
 
   return [
     table(tableHeaders, tableBody, [null, null, 'center', null, null]),
-    ...(signatures.length > 0 ? [heading(2, 'Signatures'), ...signatures] : []),
+    ...(signatures.length > 0
+      ? [
+          heading(options.hasManyComponents ? 3 : 2, 'Signatures'),
+          ...signatures,
+        ]
+      : []),
   ];
 };
 
@@ -551,29 +573,30 @@ function readmeTransformer(packageFolderPath: string) {
     { encoding: 'utf8' }
   );
   const parsedPackageJson = JSON.parse(packageJsonRaw);
+  const readmeConfig: ReadmeConfig = parsedPackageJson.readme ?? {};
+
   const packageJsonInfo: PackgeJsonInfo = {
     name: parsedPackageJson.name,
     description: parsedPackageJson.description,
     version: parsedPackageJson.version,
-    readme: {
-      componentPath: `src/${path.basename(packageFolderPath)}.js`,
-      ...(parsedPackageJson.readme ?? {}),
-    },
     peerDependencies: parsedPackageJson.peerDependencies,
   };
 
-  let componentPath = path.join(
+  const isTsx = fs.existsSync(path.join(packageFolderPath, 'src/index.ts'));
+
+  const hasCustomComponentsPath = readmeConfig.componentPaths
+    ? readmeConfig.componentPaths.length > 0
+    : false;
+  const defaultComponentPath = path.join(
     packageFolderPath,
-    packageJsonInfo.readme.componentPath
+    `src/${path.basename(packageFolderPath)}.${isTsx ? 'tsx' : 'js'}`
   );
-  // If the path does not exist, we assume it's
-  if (!fs.existsSync(componentPath)) {
-    componentPath = componentPath.replace(/\.js$/, '.tsx');
-  }
-  const isTsx = componentPath.endsWith('tsx');
 
   const paths = {
-    componentPath,
+    componentPaths:
+      readmeConfig.componentPaths?.map((componentPath) =>
+        path.join(packageFolderPath, componentPath)
+      ) ?? [],
     description: path.join(packageFolderPath, 'docs/description.md'),
     usageExample: path.join(packageFolderPath, 'docs/usage-example.js'),
     additionalInfo: path.join(packageFolderPath, 'docs/additional-info.md'),
@@ -623,9 +646,32 @@ function readmeTransformer(packageFolderPath: string) {
         'jsx',
         await fs.promises.readFile(paths.usageExample, { encoding: 'utf8' })
       ),
-      // Describe the component's properties
-      heading(2, 'Properties'),
-      ...parsePropTypesToMarkdown(paths.componentPath, { isTsx }),
+
+      ...(hasCustomComponentsPath
+        ? // Render components in a group, otherwise omit the nested heading.
+          paths.componentPaths.flatMap((componentPath) => {
+            const [componentName] = path
+              .basename(componentPath)
+              .split(isTsx ? '.tsx' : '.js');
+            return [
+              heading(2, upperFirst(camelcase(componentName))),
+              // Describe the component's properties
+              heading(3, 'Properties'),
+              ...parsePropTypesToMarkdown(componentPath, {
+                isTsx,
+                hasManyComponents: true,
+              }),
+            ];
+          })
+        : [
+            // Describe the component's properties
+            heading(2, 'Properties'),
+            ...parsePropTypesToMarkdown(defaultComponentPath, {
+              isTsx,
+              hasManyComponents: false,
+            }),
+          ]),
+
       // Additional information (can be anything, there is no pre-defined structure here)
       ...((await existPath(paths.additionalInfo))
         ? parseMarkdownFragmentToAST(await toVfile.read(paths.additionalInfo))
