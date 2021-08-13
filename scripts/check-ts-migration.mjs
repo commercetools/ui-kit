@@ -53,10 +53,7 @@ const execute = async () => {
             ? null
             : {
                 name: packageInfo.packageJson.name,
-                url: `https://github.com/commercetools/ui-kit/tree/main/${path.relative(
-                  process.cwd(),
-                  packageInfo.dir
-                )}`,
+                dir: path.relative(process.cwd(), packageInfo.dir),
               },
         ].filter(Boolean),
       };
@@ -87,10 +84,13 @@ The following **${
     stats.pending
   } packages** have not been migrated to TypeScript yet:
 
-| Package |
-| --- |
+| Package | Location |
+| --- | --- |
 ${stats.pendingPackages
-  .map((packageInfo) => `| [${packageInfo.name}](${packageInfo.url}) |`)
+  .map(
+    (packageInfo) =>
+      `| \`${packageInfo.name}\` | [${packageInfo.dir}](https://github.com/commercetools/ui-kit/tree/main/${packageInfo.dir}) |`
+  )
   .join('\n')}
   `;
 
