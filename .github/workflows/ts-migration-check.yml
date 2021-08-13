@@ -40,3 +40,5 @@ jobs:
 
       - name: Checking TypeScript migration
         run: ./scripts/check-ts-migration.mjs
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
