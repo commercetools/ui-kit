@@ -3,6 +3,7 @@ import percySnapshot from '@percy/puppeteer';
 describe('LoadingSpinner', () => {
   beforeAll(async () => {
     await page.goto(`${HOST}/loading-spinner`);
+    await page.waitFor(1001);
   });
 
   it('Default', async () => {
