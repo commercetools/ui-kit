@@ -25,6 +25,10 @@ module.exports = {
     //
     // For that reason, we move the `--onlyChanged` flag next to it.
     'yarn lint:js --reporters=jest-silent-reporter --onlyChanged',
+    // NOTE: lint-staged ignores tsconfig.json when called through husky hooks because husky passes filenames as an argument
+    // calling tsc using function syntax allows tsc to use tsconfig.json,
+    // causing tsc to have the same output as it would if it were called via `yarn typecheck`
+    // see https://github.com/okonet/lint-staged/issues/825#issuecomment-620018284
     () => 'tsc --skipLibCheck --noEmit',
   ],
 };
