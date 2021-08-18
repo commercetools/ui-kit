@@ -25,6 +25,6 @@ module.exports = {
     //
     // For that reason, we move the `--onlyChanged` flag next to it.
     'yarn lint:js --reporters=jest-silent-reporter --onlyChanged',
-    'tsc-files --noEmit',
+    () => 'tsc --skipLibCheck --noEmit',
   ],
 };

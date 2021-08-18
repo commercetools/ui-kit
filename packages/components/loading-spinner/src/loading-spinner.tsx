@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { css, keyframes } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
@@ -28,6 +28,11 @@ const positionOrigin = '20px';
 
 type TLoadingSpinnerProps = {
   /**
+   * Set the amount of time to delay the loading spinner before it renders.
+   * The default value of 1000ms has been agreed upon by the design team for all usecases.
+   */
+  maxDelayDuration: number;
+  /**
    * Set the size of the loading spinner.
    */
   scale: 's' | 'l';
@@ -37,12 +42,25 @@ type TLoadingSpinnerProps = {
   children?: ReactNode;
 };
 
-const defaultProps: Pick<TLoadingSpinnerProps, 'scale'> = {
+const defaultProps: Pick<TLoadingSpinnerProps, 'scale' | 'maxDelayDuration'> = {
   scale: 'l',
+  maxDelayDuration: 1000,
 };
 
 const LoadingSpinner = (props: TLoadingSpinnerProps) => {
+  const [showSpinner, setShowSpinner] = useState(false);
   const size = sizePerScale[props.scale];
+  useEffect(() => {
+    const delaySpinnerTimeout = setTimeout(
+      () => setShowSpinner(true),
+      props.maxDelayDuration
+    );
+
+    return () => clearTimeout(delaySpinnerTimeout);
+  }, [props.maxDelayDuration]);
+
+  if (!showSpinner) return null;
+
   return (
     <Inline alignItems="center">
       <div

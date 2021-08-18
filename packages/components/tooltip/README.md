@@ -30,6 +30,7 @@ npm --save install react
 ## Usage
 
 ```jsx
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import styled from '@emotion/styled';
@@ -72,7 +73,7 @@ const ExampleWithDisabledElements = () => (
  * If you want to customize this behaviour, then you can pass in a custom element.
  * Be sure to use `React.forwardRef`, as we need the to pass the ref to the wrapper.
  */
-const Wrapper = React.forwardRef((props, ref) => (
+const Wrapper = forwardRef((props, ref) => (
   <div ref={ref} style={{ display: 'block' }} {...props}>
     {props.children}
   </div>
@@ -181,7 +182,7 @@ export {
 
 | Props                  | Type                                                                                                                                                                              | Required | Default   | Description                                                                                                                                                                                              |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------: | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `children`             | `ReactReactElement`                                                                                                                                                               |    ✅    |           |                                                                                                                                                                                                          |
+| `children`             | `ReactElement`                                                                                                                                                                    |    ✅    |           |                                                                                                                                                                                                          |
 | `closeAfter`           | `number`                                                                                                                                                                          |          | `0`       | Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip.                                                                                                         |
 | `styles`               | `Record`                                                                                                                                                                          |          |           | Custom css-in-js object styles for the tooltip body.                                                                                                                                                     |
 | `off`                  | `boolean`                                                                                                                                                                         |          | `false`   | Determines if the tooltip should not appear.                                                                                                                                                             |

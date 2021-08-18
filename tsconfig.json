@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "importHelpers": true,
     // See https://devblogs.microsoft.com/typescript/typescript-and-babel-7/
+    "noEmit": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",

@@ -6,7 +6,9 @@ describe('LoadingSpinner', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('with scale "l" (default)');
+    await expect(page).toMatch(
+      'with scale "l", maxDelayDuration "1000" (default)'
+    );
     await percySnapshot(page, 'LoadingSpinner');
   });
 });
