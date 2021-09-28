@@ -11,4 +11,4 @@
 '@commercetools-uikit/tooltip': patch
 ---
 
-feat(LoadingSpinner): add 1 second delay between component mount and render of spinner, update loading spinner tests and docs, chore(readmes): update readmes
+The `<LoadingSpinner>` now waits for 1s before rendering. This is meant to improve the visual perceived feedback.
