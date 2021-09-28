@@ -29,7 +29,7 @@ const positionOrigin = '20px';
 type TLoadingSpinnerProps = {
   /**
    * Set the amount of time to delay the loading spinner before it renders.
-   * The default value of 1000ms has been agreed upon by the design team for all usecases.
+   * The default value of is 1000ms.
    */
   maxDelayDuration: number;
   /**
