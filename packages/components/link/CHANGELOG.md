@@ -1,5 +1,20 @@
 # @commercetools-uikit/link
 
+## 12.2.3
+
+### Patch Changes
+
+- [#1990](https://github.com/commercetools/ui-kit/pull/1990) [`a29b0719`](https://github.com/commercetools/ui-kit/commit/a29b071996e5dd7cc095a22c1b5b10c61a178e97) Thanks [@ByronDWall](https://github.com/ByronDWall)! - The `<LoadingSpinner>` now waits for 1s before rendering. This is meant to improve the visual perceived feedback.
+
+* [#1981](https://github.com/commercetools/ui-kit/pull/1981) [`410c24dd`](https://github.com/commercetools/ui-kit/commit/410c24ddb6a5de1aee4dae905cc7a2521752ca0b) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- [#1980](https://github.com/commercetools/ui-kit/pull/1980) [`c1990f33`](https://github.com/commercetools/ui-kit/commit/c1990f33b29e96be33a77dd4b02c63e65f43047f) Thanks [@emmenko](https://github.com/emmenko)! - Use new TS compiler options `jsx: react-jsx` and `jsxImportSource: @emotion/react`. All unused React imports then have been removed or migrated to destructured named imports.
+
+- Updated dependencies [[`425b45a3`](https://github.com/commercetools/ui-kit/commit/425b45a30b0b64f28a7c2db635ab6d0da7eabd8f), [`c1990f33`](https://github.com/commercetools/ui-kit/commit/c1990f33b29e96be33a77dd4b02c63e65f43047f)]:
+  - @commercetools-uikit/design-system@12.2.3
+  - @commercetools-uikit/icons@12.2.3
+  - @commercetools-uikit/spacings-inline@12.2.3
+
 ## 12.2.2
 
 ### Patch Changes

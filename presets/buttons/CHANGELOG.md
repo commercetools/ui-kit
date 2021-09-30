@@ -1,5 +1,23 @@
 # @commercetools-uikit/buttons
 
+## 12.2.3
+
+### Patch Changes
+
+- [#1981](https://github.com/commercetools/ui-kit/pull/1981) [`410c24dd`](https://github.com/commercetools/ui-kit/commit/410c24ddb6a5de1aee4dae905cc7a2521752ca0b) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+* [#1977](https://github.com/commercetools/ui-kit/pull/1977) [`a8cd3a6e`](https://github.com/commercetools/ui-kit/commit/a8cd3a6e6fef8029b08062385a3fee9d3715e5f0) Thanks [@emmenko](https://github.com/emmenko)! - Make preset `buttons` to export type declarations
+
+* Updated dependencies [[`a29b0719`](https://github.com/commercetools/ui-kit/commit/a29b071996e5dd7cc095a22c1b5b10c61a178e97), [`410c24dd`](https://github.com/commercetools/ui-kit/commit/410c24ddb6a5de1aee4dae905cc7a2521752ca0b), [`a8cd3a6e`](https://github.com/commercetools/ui-kit/commit/a8cd3a6e6fef8029b08062385a3fee9d3715e5f0), [`425b45a3`](https://github.com/commercetools/ui-kit/commit/425b45a30b0b64f28a7c2db635ab6d0da7eabd8f), [`c1990f33`](https://github.com/commercetools/ui-kit/commit/c1990f33b29e96be33a77dd4b02c63e65f43047f)]:
+  - @commercetools-uikit/flat-button@12.2.3
+  - @commercetools-uikit/icon-button@12.2.3
+  - @commercetools-uikit/primary-button@12.2.3
+  - @commercetools-uikit/secondary-icon-button@12.2.3
+  - @commercetools-uikit/link-button@12.2.3
+  - @commercetools-uikit/secondary-button@12.2.3
+  - @commercetools-uikit/design-system@12.2.3
+  - @commercetools-uikit/accessible-button@12.2.3
+
 ## 12.2.2
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @commercetools-uikit/icons
 
+## 12.2.3
+
+### Patch Changes
+
+- [#1980](https://github.com/commercetools/ui-kit/pull/1980) [`c1990f33`](https://github.com/commercetools/ui-kit/commit/c1990f33b29e96be33a77dd4b02c63e65f43047f) Thanks [@emmenko](https://github.com/emmenko)! - Use new TS compiler options `jsx: react-jsx` and `jsxImportSource: @emotion/react`. All unused React imports then have been removed or migrated to destructured named imports.
+
+- Updated dependencies [[`425b45a3`](https://github.com/commercetools/ui-kit/commit/425b45a30b0b64f28a7c2db635ab6d0da7eabd8f)]:
+  - @commercetools-uikit/design-system@12.2.3
+
 ## 12.2.2
 
 ### Patch Changes

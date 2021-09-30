@@ -1,5 +1,13 @@
 # @commercetools-local/generator-package-json
 
+## 2.0.7
+
+### Patch Changes
+
+- [#1981](https://github.com/commercetools/ui-kit/pull/1981) [`410c24dd`](https://github.com/commercetools/ui-kit/commit/410c24ddb6a5de1aee4dae905cc7a2521752ca0b) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+* [#1983](https://github.com/commercetools/ui-kit/pull/1983) [`96753647`](https://github.com/commercetools/ui-kit/commit/9675364778895b24a9087f0e1655254df5242a60) Thanks [@emmenko](https://github.com/emmenko)! - Improve readme generator when using `componentPaths` config.
+
 ## 2.0.6
 
 ### Patch Changes
