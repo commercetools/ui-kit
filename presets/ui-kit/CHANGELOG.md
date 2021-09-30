@@ -1,5 +1,43 @@
 # @commercetools-frontend/ui-kit
 
+## 12.2.3
+
+### Patch Changes
+
+- [#1981](https://github.com/commercetools/ui-kit/pull/1981) [`410c24dd`](https://github.com/commercetools/ui-kit/commit/410c24ddb6a5de1aee4dae905cc7a2521752ca0b) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- Updated dependencies [[`a29b0719`](https://github.com/commercetools/ui-kit/commit/a29b071996e5dd7cc095a22c1b5b10c61a178e97), [`410c24dd`](https://github.com/commercetools/ui-kit/commit/410c24ddb6a5de1aee4dae905cc7a2521752ca0b), [`96753647`](https://github.com/commercetools/ui-kit/commit/9675364778895b24a9087f0e1655254df5242a60), [`a8cd3a6e`](https://github.com/commercetools/ui-kit/commit/a8cd3a6e6fef8029b08062385a3fee9d3715e5f0), [`425b45a3`](https://github.com/commercetools/ui-kit/commit/425b45a30b0b64f28a7c2db635ab6d0da7eabd8f), [`c1990f33`](https://github.com/commercetools/ui-kit/commit/c1990f33b29e96be33a77dd4b02c63e65f43047f)]:
+  - @commercetools-uikit/collapsible-panel@12.2.3
+  - @commercetools-uikit/field-errors@12.2.3
+  - @commercetools-uikit/link@12.2.3
+  - @commercetools-uikit/loading-spinner@12.2.3
+  - @commercetools-uikit/tooltip@12.2.3
+  - @commercetools-uikit/data-table-manager@12.2.3
+  - @commercetools-uikit/label@12.2.3
+  - @commercetools-uikit/notifications@12.2.3
+  - @commercetools-uikit/pagination@12.2.3
+  - @commercetools-uikit/text@12.2.3
+  - @commercetools-uikit/buttons@12.2.3
+  - @commercetools-uikit/fields@12.2.3
+  - @commercetools-uikit/inputs@12.2.3
+  - @commercetools-uikit/constraints@12.2.3
+  - @commercetools-uikit/design-system@12.2.3
+  - @commercetools-uikit/accessible-hidden@12.2.3
+  - @commercetools-uikit/avatar@12.2.3
+  - @commercetools-uikit/card@12.2.3
+  - @commercetools-uikit/collapsible-motion@12.2.3
+  - @commercetools-uikit/collapsible@12.2.3
+  - @commercetools-uikit/data-table@12.2.3
+  - @commercetools-uikit/field-label@12.2.3
+  - @commercetools-uikit/grid@12.2.3
+  - @commercetools-uikit/icons@12.2.3
+  - @commercetools-uikit/messages@12.2.3
+  - @commercetools-uikit/primary-action-dropdown@12.2.3
+  - @commercetools-uikit/stamp@12.2.3
+  - @commercetools-uikit/tag@12.2.3
+  - @commercetools-uikit/hooks@12.2.3
+  - @commercetools-uikit/spacings@12.2.3
+
 ## 12.2.2
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @commercetools-uikit/spacings
 
+## 12.2.3
+
+### Patch Changes
+
+- Updated dependencies [[`c1990f33`](https://github.com/commercetools/ui-kit/commit/c1990f33b29e96be33a77dd4b02c63e65f43047f)]:
+  - @commercetools-uikit/spacings-inline@12.2.3
+  - @commercetools-uikit/spacings-inset@12.2.3
+  - @commercetools-uikit/spacings-inset-squish@12.2.3
+  - @commercetools-uikit/spacings-stack@12.2.3
+
 ## 12.2.2
 
 ### Patch Changes

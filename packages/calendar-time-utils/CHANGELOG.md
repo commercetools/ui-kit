@@ -1,5 +1,11 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 12.2.3
+
+### Patch Changes
+
+- [#1974](https://github.com/commercetools/ui-kit/pull/1974) [`425b45a3`](https://github.com/commercetools/ui-kit/commit/425b45a30b0b64f28a7c2db635ab6d0da7eabd8f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
 ## 12.2.2
 
 ### Patch Changes
