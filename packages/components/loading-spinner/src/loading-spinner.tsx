@@ -31,7 +31,7 @@ type TLoadingSpinnerProps = {
    * Set the amount of time to delay the loading spinner before it renders.
    * The default value of is 1000ms.
    */
-  maxDelayDuration: number;
+  maxDelayDuration?: number;
   /**
    * Set the size of the loading spinner.
    */
