@@ -5,7 +5,7 @@
 
 ## Description
 
-A spinner animation to indicate loading state (e.g pending requests) for the user. By default, there is a 1 second delay between when the component mounts and when it renders.
+A spinner animation to indicate loading state (e.g pending requests) for the user.
 
 ## Installation
 

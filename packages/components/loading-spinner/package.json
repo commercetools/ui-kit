@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-uikit/loading-spinner",
-  "description": "A spinner animation to indicate loading state (e.g pending requests) for the user. By default, there is a 1 second delay between when the component mounts and when it renders.",
+  "description": "A spinner animation to indicate loading state (e.g pending requests) for the user.",
   "version": "12.2.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
