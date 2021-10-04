@@ -122,7 +122,9 @@ export async function generate(
           writeFile(packageJsonPath, doc, options);
         }
       } catch (error) {
-        aggregatedErrors.push(error.message);
+        if (error instanceof Error) {
+          aggregatedErrors.push(error.message);
+        }
       }
     });
     if (aggregatedErrors.length > 0) {
