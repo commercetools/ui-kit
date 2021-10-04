@@ -27,14 +27,14 @@
     "generate-icons": "svgr -d src/generated --typescript src/svg"
   },
   "dependencies": {
-    "@babel/runtime": "7.14.8",
-    "@babel/runtime-corejs3": "7.14.9",
+    "@babel/runtime": "7.15.4",
+    "@babel/runtime-corejs3": "7.15.4",
     "@commercetools-uikit/design-system": "12.2.3",
     "@commercetools-uikit/utils": "12.2.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@types/dompurify": "^2.2.3",
-    "dompurify": "2.3.0",
+    "dompurify": "2.3.3",
     "prop-types": "15.7.2",
     "react-from-dom": "0.6.1"
   },
