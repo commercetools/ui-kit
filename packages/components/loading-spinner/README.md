@@ -39,7 +39,8 @@ export default Example;
 
 ## Properties
 
-| Props      | Type                                         | Required | Default | Description                                       |
-| ---------- | -------------------------------------------- | :------: | ------- | ------------------------------------------------- |
-| `scale`    | `union`<br/>Possible values:<br/>`'s' , 'l'` |          | `'l'`   | Set the size of the loading spinner.              |
-| `children` | `ReactReactNode`                             |          |         | The content rendered inside the `LoadingSpinner`. |
+| Props              | Type                                         | Required | Default | Description                                                                                                |
+| ------------------ | -------------------------------------------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------- |
+| `maxDelayDuration` | `number`                                     |          | `1000`  | Set the amount of time to delay the loading spinner before it renders.&#xA;The default value of is 1000ms. |
+| `scale`            | `union`<br/>Possible values:<br/>`'s' , 'l'` |          | `'l'`   | Set the size of the loading spinner.                                                                       |
+| `children`         | `ReactNode`                                  |          |         | The content rendered inside the `LoadingSpinner`.                                                          |

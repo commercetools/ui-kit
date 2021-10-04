@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-local/generator-package-json",
   "description": "CLI to generate the necessary information for each package.json",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "private": true,
   "bin": {
     "generate-package-json": "./bin/generate_package_json.sh"
@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "prettier": "2.3.2",
-    "ts-node": "10.1.0",
+    "ts-node": "10.2.0",
     "typescript": "4.3.5"
   },
   "peerDependencies": {

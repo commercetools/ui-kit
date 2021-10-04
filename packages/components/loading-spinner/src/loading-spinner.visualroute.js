@@ -5,7 +5,7 @@ export const routePath = '/loading-spinner';
 
 export const component = () => (
   <Suite>
-    <Spec label='with scale "l" (default)'>
+    <Spec label='with scale "l", maxDelayDuration "1000" (default)'>
       <LoadingSpinner />
     </Spec>
     <Spec label='with scale "s"'>

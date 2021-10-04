@@ -1,5 +1,30 @@
 # @commercetools-uikit/fields
 
+## 12.2.3
+
+### Patch Changes
+
+- [#1981](https://github.com/commercetools/ui-kit/pull/1981) [`410c24dd`](https://github.com/commercetools/ui-kit/commit/410c24ddb6a5de1aee4dae905cc7a2521752ca0b) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- Updated dependencies [[`410c24dd`](https://github.com/commercetools/ui-kit/commit/410c24ddb6a5de1aee4dae905cc7a2521752ca0b), [`425b45a3`](https://github.com/commercetools/ui-kit/commit/425b45a30b0b64f28a7c2db635ab6d0da7eabd8f), [`c1990f33`](https://github.com/commercetools/ui-kit/commit/c1990f33b29e96be33a77dd4b02c63e65f43047f)]:
+  - @commercetools-uikit/password-field@12.2.3
+  - @commercetools-uikit/async-creatable-select-field@12.2.3
+  - @commercetools-uikit/async-select-field@12.2.3
+  - @commercetools-uikit/creatable-select-field@12.2.3
+  - @commercetools-uikit/date-field@12.2.3
+  - @commercetools-uikit/date-range-field@12.2.3
+  - @commercetools-uikit/date-time-field@12.2.3
+  - @commercetools-uikit/localized-multiline-text-field@12.2.3
+  - @commercetools-uikit/localized-text-field@12.2.3
+  - @commercetools-uikit/money-field@12.2.3
+  - @commercetools-uikit/multiline-text-field@12.2.3
+  - @commercetools-uikit/number-field@12.2.3
+  - @commercetools-uikit/radio-field@12.2.3
+  - @commercetools-uikit/search-select-field@12.2.3
+  - @commercetools-uikit/select-field@12.2.3
+  - @commercetools-uikit/text-field@12.2.3
+  - @commercetools-uikit/time-field@12.2.3
+
 ## 12.2.2
 
 ### Patch Changes
