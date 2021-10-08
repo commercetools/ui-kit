@@ -105,6 +105,7 @@ describe('Tooltip', () => {
       <TestComponent id="my-tooltip" isOpen={true} />
     );
 
+    // eslint-disable-next-line testing-library/prefer-find-by
     await waitFor(() =>
       expect(
         container.querySelector("[aria-describedby='my-tooltip']")
