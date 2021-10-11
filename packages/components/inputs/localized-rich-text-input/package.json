@@ -44,7 +44,7 @@
     "@emotion/styled": "^11.3.0",
     "common-tags": "1.8.0",
     "downshift": "6.1.7",
-    "immutable": "4.0.0-rc.15",
+    "immutable": "4.0.0",
     "is-hotkey": "0.2.0",
     "lodash": "4.17.21",
     "prop-types": "15.7.2",
