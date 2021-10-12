@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/spacings-stack",
   "description": "A stack spacing component renders its children vertically with a consistent spacing between them.",
-  "version": "12.2.3",
+  "version": "12.2.4",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "dependencies": {
     "@babel/runtime": "7.15.4",
     "@babel/runtime-corejs3": "7.15.4",
-    "@commercetools-uikit/design-system": "12.2.3",
+    "@commercetools-uikit/design-system": "12.2.4",
     "@commercetools-uikit/utils": "12.2.0",
     "@emotion/react": "^11.4.0",
     "prop-types": "15.7.2"
