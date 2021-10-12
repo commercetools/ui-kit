@@ -1,5 +1,15 @@
 # @commercetools-uikit/notifications
 
+## 12.2.4
+
+### Patch Changes
+
+- [#1979](https://github.com/commercetools/ui-kit/pull/1979) [`791eb61d`](https://github.com/commercetools/ui-kit/commit/791eb61d90017e2b47638677e750b0756c6974c4) Thanks [@emmenko](https://github.com/emmenko)! - Migrate to TypeScript
+
+- Updated dependencies [[`dcc63b4b`](https://github.com/commercetools/ui-kit/commit/dcc63b4b487623f7da3d415336d608fba95cd4d5)]:
+  - @commercetools-uikit/design-system@12.2.4
+  - @commercetools-uikit/icons@12.2.4
+
 ## 12.2.3
 
 ### Patch Changes
