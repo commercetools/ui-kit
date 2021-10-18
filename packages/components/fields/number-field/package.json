@@ -29,18 +29,21 @@
     "@commercetools-uikit/design-system": "12.2.4",
     "@commercetools-uikit/field-errors": "12.2.4",
     "@commercetools-uikit/field-label": "12.2.4",
+    "@commercetools-uikit/hooks": "^12.2.3",
     "@commercetools-uikit/number-input": "12.2.4",
     "@commercetools-uikit/spacings-stack": "12.2.4",
     "@commercetools-uikit/utils": "12.2.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "prop-types": "15.7.2",
-    "react-required-if": "1.0.3"
+    "prop-types": "15.7.2"
   },
   "devDependencies": {
     "react": "17.0.2"
   },
   "peerDependencies": {
     "react": "17.x"
+  },
+  "readme": {
+    "componentPaths": ["./src/number-field/number-field.tsx"]
   }
 }
