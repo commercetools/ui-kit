@@ -42,8 +42,5 @@
   },
   "peerDependencies": {
     "react": "17.x"
-  },
-  "readme": {
-    "componentPaths": ["./src/number-field/number-field.tsx"]
   }
 }
