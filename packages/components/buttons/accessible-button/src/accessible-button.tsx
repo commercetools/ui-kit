@@ -90,7 +90,7 @@ const defaultProps: Pick<
   isToggled: false,
 };
 
-const AccessibleButton = forwardRef<null, TAccessibleButtonProps>(
+const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
   (props, ref) => {
     warning(
       props.as ? isValidElementType(props.as) : true,
