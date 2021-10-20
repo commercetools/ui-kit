@@ -177,9 +177,21 @@ const Options = styled.div`
 `;
 
 type TOption = {
+  /**
+   * Event handler triggers whenever the option is clicked.
+   */
   onClick: () => void;
+  /**
+   * Disables the option within the dropdown. If all options are disabled the dropdown will be disabled.
+   */
   isDisabled?: boolean;
+  /**
+   * Any string which serves as the label.
+   */
   children: string;
+  /**
+   * Any React node.
+   */
   iconLeft: ReactNode;
 };
 
@@ -230,9 +242,21 @@ Option.defaultProps = {
   immediately.
  */
 type TPrimaryActionDropdown = {
+  /**
+   * Event handler when the dropdown is clicked.
+   */
   onClick: () => void;
+  /**
+   * If `true`, indicates that the element is in a disabled state.
+   */
   isDisabled?: boolean;
+  /**
+   * Any React element.
+   */
   children: ReactElement;
+  /**
+   * Any React node.
+   */
   iconLeft: ReactNode;
 };
 
