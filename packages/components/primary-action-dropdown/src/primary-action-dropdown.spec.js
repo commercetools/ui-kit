@@ -1,6 +1,7 @@
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
 import { screen, render, fireEvent } from '../../../../test/test-utils';
-import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
+import PrimaryActionDropdown from './primary-action-dropdown';
+import Option from './option';
 
 it('should execute the primary actions callback when primary action is clicked', () => {
   const primaryAction = jest.fn();

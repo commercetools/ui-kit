@@ -5,8 +5,12 @@ import {
   useCallback,
   useEffect,
   Children,
+  ReactElement,
+  isValidElement,
+  MouseEvent,
+  KeyboardEvent,
+  ForwardedRef,
 } from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
@@ -16,7 +20,7 @@ import { warning } from '@commercetools-uikit/utils';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
-const getButtonStyles = (isDisabled) => {
+const getButtonStyles = (isDisabled: boolean) => {
   const baseButtonStyles = css`
     display: flex;
     align-items: center;
@@ -47,7 +51,16 @@ const getButtonStyles = (isDisabled) => {
   ];
 };
 
-const DropdownHead = (props) => (
+type TDropdownHead = {
+  iconLeft: ReactElement;
+  onClick?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
+  children: string;
+  isDisabled: boolean;
+  chevron: ReactElement;
+};
+const DropdownHead = (props: TDropdownHead) => (
   <div
     css={css`
       display: flex;
@@ -97,61 +110,59 @@ const DropdownHead = (props) => (
 );
 
 DropdownHead.displayName = 'DropdownHead';
-DropdownHead.propTypes = {
-  iconLeft: PropTypes.element.isRequired,
-  onClick: PropTypes.func,
-  children: PropTypes.node.isRequired,
-  isDisabled: PropTypes.bool.isRequired,
-  chevron: PropTypes.element.isRequired,
-};
 
-const DropdownChevron = forwardRef((props, ref) => (
-  <AccessibleButton
-    ref={ref}
-    label="Open Dropdown"
-    onClick={props.onClick}
-    isDisabled={props.isDisabled}
-    isOpen={props.isOpen}
-    css={[
-      ...getButtonStyles(props.isDisabled),
-      css`
-        padding: 0 ${vars.spacingXs};
-        border-left: 1px solid ${vars.colorNeutral};
-        border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
-      `,
-    ]}
-  >
-    {/*
+type TDropdownChevron = {
+  onClick: () => void;
+  isDisabled: boolean;
+  isOpen: boolean;
+};
+const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
+  (props, ref) => (
+    <AccessibleButton
+      ref={ref}
+      label="Open Dropdown"
+      onClick={props.onClick}
+      isDisabled={props.isDisabled}
+      css={[
+        ...getButtonStyles(props.isDisabled),
+        css`
+          padding: 0 ${vars.spacingXs};
+          border-left: 1px solid ${vars.colorNeutral};
+          border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
+        `,
+      ]}
+    >
+      {/*
     We need to apply pointer-events: none on the icons, so that
     event.target is always set to the button and never to the icons.
 
     That way we can use the ref to compare event.target to the
     AccessibleButton's button in the global click handler.
   */}
-    <div
-      // The margin-top is to center the icon as the caret visually looks too high otherwise
-      css={css`
-        pointer-events: none;
-        margin-top: 3px;
-      `}
-    >
-      {cloneElement(
-        props.isOpen && !props.isDisabled ? <CaretUpIcon /> : <CaretDownIcon />,
-        {
-          color: props.isDisabled ? 'neutral60' : 'solid',
-          size: 'small',
-        }
-      )}
-    </div>
-  </AccessibleButton>
-));
+      <div
+        // The margin-top is to center the icon as the caret visually looks too high otherwise
+        css={css`
+          pointer-events: none;
+          margin-top: 3px;
+        `}
+      >
+        {cloneElement(
+          props.isOpen && !props.isDisabled ? (
+            <CaretUpIcon />
+          ) : (
+            <CaretDownIcon />
+          ),
+          {
+            color: props.isDisabled ? 'neutral60' : 'solid',
+            size: 'small',
+          }
+        )}
+      </div>
+    </AccessibleButton>
+  )
+);
 
 DropdownChevron.displayName = 'DropdownChevron';
-DropdownChevron.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-};
 
 const Options = styled.div`
   position: absolute;
@@ -164,49 +175,6 @@ const Options = styled.div`
   box-shadow: ${vars.shadow1};
 `;
 
-export const Option = (props) => (
-  <AccessibleButton
-    label={props.children}
-    onClick={props.onClick}
-    isDisabled={props.isDisabled}
-    css={[
-      css`
-        display: block;
-        text-align: left;
-        width: 100%;
-        padding: ${vars.spacingS};
-        background-color: ${vars.colorSurface};
-        &:first-of-type {
-          border-radius: ${vars.borderRadius6} ${vars.borderRadius6} 0 0;
-        }
-        &:last-of-type {
-          border-radius: 0 0 ${vars.borderRadius6} ${vars.borderRadius6};
-        }
-        &:hover {
-          background-color: ${vars.colorNeutral95};
-        }
-      `,
-      props.isDisabled &&
-        css`
-          color: ${vars.colorNeutral};
-        `,
-    ]}
-  >
-    {props.children}
-  </AccessibleButton>
-);
-Option.displayName = 'Option';
-Option.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool,
-  children: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/no-unused-prop-types
-  iconLeft: PropTypes.node.isRequired,
-};
-Option.defaultProps = {
-  isDisabled: false,
-};
-
 /*
   This component registers a global click event listener to close the dropdown.
   It uses this global listener to close when:
@@ -217,8 +185,15 @@ Option.defaultProps = {
   when the dropdown trigger itself is clicked. Otherwise it would open and close
   immediately.
  */
-const PrimaryActionDropdown = (props) => {
-  const ref = useRef();
+type TPrimaryActionDropdown = {
+  /**
+   * Any React element.
+   */
+  children: ReactElement;
+};
+
+const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
+  const ref = useRef<HTMLButtonElement>();
   const [isOpen, toggle] = useToggleState(false);
 
   const handleGlobalClick = useCallback(
@@ -242,11 +217,12 @@ const PrimaryActionDropdown = (props) => {
   }, [handleGlobalClick]);
 
   const childrenAsArray = Children.toArray(props.children);
-  const primaryOption =
-    childrenAsArray.find((option) => !option.props.isDisabled) ||
-    childrenAsArray[0];
+  const primaryOption = (childrenAsArray.find(
+    (option) => isValidElement(option) && !option.props.isDisabled
+  ) || childrenAsArray[0]) as ReactElement;
 
   const { onClick } = primaryOption.props;
+
   const handleClickOnHead = useCallback(
     (event) => {
       if (isOpen) {
@@ -280,7 +256,7 @@ const PrimaryActionDropdown = (props) => {
         onClick={handleClickOnHead}
         chevron={
           <DropdownChevron
-            ref={ref}
+            ref={ref as ForwardedRef<HTMLButtonElement>}
             onClick={handleClickOnChevron}
             isDisabled={primaryOption.props.isDisabled}
             isOpen={isOpen}
@@ -297,9 +273,5 @@ const PrimaryActionDropdown = (props) => {
 };
 
 PrimaryActionDropdown.displayName = 'PrimaryActionDropdown';
-
-PrimaryActionDropdown.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default PrimaryActionDropdown;

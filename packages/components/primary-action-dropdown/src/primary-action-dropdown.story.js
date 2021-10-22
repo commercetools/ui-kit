@@ -4,7 +4,8 @@ import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import Section from '../../../../docs/.storybook/decorators/section';
 import { BoxIcon, BrainIcon, FlameIcon } from '../../icons';
 import Readme from '../README.md';
-import PrimaryActionDropdown, { Option } from './primary-action-dropdown';
+import PrimaryActionDropdown from './primary-action-dropdown';
+import Option from './option';
 
 const groupIdOption1 = 'option-1';
 const groupIdOption2 = 'option-2';
