@@ -58,20 +58,9 @@ export default Example;
 
 ### Properties
 
-| Props        | Type                                                | Required | Default | Description                                                   |
-| ------------ | --------------------------------------------------- | :------: | ------- | ------------------------------------------------------------- |
-| `onClick`    | `Function`<br/>[See signature.](#signature-onClick) |    ✅    |         | Event handler when the dropdown is clicked.                   |
-| `isDisabled` | `boolean`                                           |          |         | If `true`, indicates that the element is in a disabled state. |
-| `children`   | `ReactElement`                                      |    ✅    |         | Any React element.                                            |
-| `iconLeft`   | `ReactNode`                                         |    ✅    |         | Any React node.                                               |
-
-### Signatures
-
-#### Signature `onClick`
-
-```ts
-() => void
-```
+| Props      | Type           | Required | Default | Description        |
+| ---------- | -------------- | :------: | ------- | ------------------ |
+| `children` | `ReactElement` |    ✅    |         | Any React element. |
 
 ## Option
 

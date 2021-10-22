@@ -6,7 +6,6 @@ import {
   useEffect,
   Children,
   ReactElement,
-  ReactNode,
   isValidElement,
   MouseEvent,
   KeyboardEvent,
@@ -188,21 +187,9 @@ const Options = styled.div`
  */
 type TPrimaryActionDropdown = {
   /**
-   * Event handler when the dropdown is clicked.
-   */
-  onClick: () => void;
-  /**
-   * If `true`, indicates that the element is in a disabled state.
-   */
-  isDisabled?: boolean;
-  /**
    * Any React element.
    */
   children: ReactElement;
-  /**
-   * Any React node.
-   */
-  iconLeft: ReactNode;
 };
 
 const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
