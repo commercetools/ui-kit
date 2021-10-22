@@ -1,49 +1,77 @@
-import PropTypes from 'prop-types';
-import { useRef, useEffect, useCallback } from 'react';
+import {
+  useRef,
+  useEffect,
+  useCallback,
+  ReactNode,
+  MutableRefObject,
+} from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { keyframes, ClassNames } from '@emotion/react';
+
 import isNil from 'lodash/isNil';
 import { useToggleState, usePrevious } from '@commercetools-uikit/hooks';
 
-const collapsibleMotionPropTypes = {
+type TContainerStyles = {
+  height?: string | number;
+  overflow?: string;
+  visibility?: string;
+  name?: string;
+  animation?: string;
+};
+
+type TRenderFunction = {
+  isOpen: boolean;
+  containerStyles: TContainerStyles;
+  toggle:
+    | typeof keyframes
+    | MutableRefObject<TNodeRefObject | undefined>
+    | TContainerStyles
+    | (() => void)
+    | null;
+  registerContentNode: ReactNode;
+};
+
+export type TCollapsibleMotionProps = {
   /**
    * A render function, called with the following named arguments: `isOpen` (boolean), `toggle` (function),
    * `containerStyles` (css-in-js object), `registerContentNode` (React reference to be used on the animated container).
    * <br/>
    * Siganture: `({ isOpen, containerStyles, toggle, registerContentNode }) => React.node`
    */
-  children: PropTypes.func.isRequired,
+  children: ({
+    isOpen,
+    containerStyles,
+    toggle,
+    registerContentNode,
+  }: TRenderFunction) => ReactNode;
   /**
    * Determines the state of the toggle `isOpen`. Setting this prop will make the component **controlled**
    */
-  // eslint-disable-next-line react/no-unused-prop-types
-  isClosed: PropTypes.bool,
+  isClosed: boolean;
   /**
    * A callback function called when the `toggle` function is called. This prop is required when the component is **controlled**.
    */
-  // eslint-disable-next-line react/no-unused-prop-types
-  onToggle: PropTypes.func,
+  onToggle: () => void;
   /**
    * The minimal height of the container being animated.
    */
-  minHeight: PropTypes.number,
+  minHeight: number;
   /**
    *The initial value to the internal toggle state `isOpen`.
    */
-  // eslint-disable-next-line react/no-unused-prop-types
-  isDefaultClosed: PropTypes.bool,
+  isDefaultClosed: boolean;
 };
 
-const defaultProps = {
+const defaultProps: Pick<TCollapsibleMotionProps, 'minHeight'> = {
   minHeight: 0,
 };
 
-const getMinHeight = (minHeight) =>
+const getMinHeight = (minHeight: number) =>
   minHeight !== 0 ? `${minHeight}px` : minHeight;
 
-const getVisibility = (height) => (height === 0 ? 'hidden' : 'visible');
+const getVisibility = (height: number) => (height === 0 ? 'hidden' : 'visible');
 
-const createOpeningAnimation = (height, minHeight = 0) =>
+const createOpeningAnimation = (height: number, minHeight = 0) =>
   keyframes`
     0% { height: ${getMinHeight(
       minHeight
@@ -52,7 +80,7 @@ const createOpeningAnimation = (height, minHeight = 0) =>
     100% { height: auto; overflow: visible; }
   `;
 
-const createClosingAnimation = (height, minHeight) =>
+const createClosingAnimation = (height: number, minHeight: number) =>
   keyframes`
     from { height: ${height}px; }
     to { height: ${getMinHeight(
@@ -60,9 +88,17 @@ const createClosingAnimation = (height, minHeight) =>
     )}; overflow: hidden; visibility: ${getVisibility(minHeight)}; }
   `;
 
-const useToggleAnimation = (isOpen, toggle, minHeight) => {
-  const nodeRef = useRef();
-  const animationRef = useRef(null);
+type TNodeRefObject = {
+  clientHeight: number;
+};
+
+const useToggleAnimation = (
+  isOpen: boolean,
+  toggle: () => void,
+  minHeight: number
+) => {
+  const nodeRef = useRef<TNodeRefObject>();
+  const animationRef = useRef<ReturnType<typeof keyframes> | null>(null);
   const prevIsOpen = usePrevious(isOpen);
 
   useEffect(
@@ -73,7 +109,6 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
       );
     },
     // to match the componentDidMount behaviour
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [nodeRef]
   );
 
@@ -88,7 +123,7 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
     toggle();
   }, [nodeRef, toggle]);
 
-  const containerStyles = isOpen
+  const containerStyles: TContainerStyles = isOpen
     ? { height: 'auto' }
     : {
         height: getMinHeight(minHeight),
@@ -97,7 +132,11 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
       };
 
   // if state has changed
-  if (typeof prevIsOpen !== 'undefined' && prevIsOpen !== isOpen) {
+  if (
+    typeof prevIsOpen !== 'undefined' &&
+    prevIsOpen !== isOpen &&
+    nodeRef.current
+  ) {
     animationRef.current = isOpen
       ? createOpeningAnimation(nodeRef.current.clientHeight, minHeight)
       : createClosingAnimation(nodeRef.current.clientHeight, minHeight);
@@ -106,7 +145,7 @@ const useToggleAnimation = (isOpen, toggle, minHeight) => {
   return [animationRef.current, containerStyles, handleToggle, nodeRef];
 };
 
-const ControlledCollapsibleMotion = (props) => {
+const ControlledCollapsibleMotion = (props: TCollapsibleMotionProps) => {
   const [animation, containerStyles, animationToggle, registerContentNode] =
     useToggleAnimation(!props.isClosed, props.onToggle, props.minHeight);
 
@@ -119,17 +158,20 @@ const ControlledCollapsibleMotion = (props) => {
           // By calling `css`, emotion injects the required CSS into the document head.
           // eslint-disable-next-line no-unused-expressions
           css`
-            animation: ${animation} 200ms forwards;
+            animation: ${animation as ReturnType<typeof keyframes>} 200ms
+              forwards;
           `;
           animationStyle = {
-            animation: `${animation.name} 200ms forwards`,
+            animation: `${
+              (animation as ReturnType<typeof keyframes>).name
+            } 200ms forwards`,
           };
         }
 
         return props.children({
           isOpen: !props.isClosed,
           containerStyles: {
-            ...containerStyles,
+            ...(containerStyles as TContainerStyles),
             ...animationStyle,
           },
           toggle: animationToggle,
@@ -140,9 +182,8 @@ const ControlledCollapsibleMotion = (props) => {
   );
 };
 ControlledCollapsibleMotion.displayName = 'ControlledCollapsibleMotion';
-ControlledCollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
-const UncontrolledCollapsibleMotion = (props) => {
+const UncontrolledCollapsibleMotion = (props: TCollapsibleMotionProps) => {
   const [isOpen, toggle] = useToggleState(!props.isDefaultClosed);
 
   const [animation, containerStyles, animationToggle, registerContentNode] =
@@ -157,17 +198,20 @@ const UncontrolledCollapsibleMotion = (props) => {
           // By calling `css`, emotion injects the required CSS into the document head.
           // eslint-disable-next-line no-unused-expressions
           css`
-            animation: ${animation} 200ms forwards;
+            animation: ${animation as ReturnType<typeof keyframes>} 200ms
+              forwards;
           `;
           animationStyle = {
-            animation: `${animation.name} 200ms forwards`,
+            animation: `${
+              (animation as ReturnType<typeof keyframes>).name
+            } 200ms forwards`,
           };
         }
 
         return props.children({
           isOpen,
           containerStyles: {
-            ...containerStyles,
+            ...(containerStyles as TContainerStyles),
             ...animationStyle,
           },
           toggle: animationToggle,
@@ -179,9 +223,8 @@ const UncontrolledCollapsibleMotion = (props) => {
 };
 UncontrolledCollapsibleMotion.displayName = 'UncontrolledCollapsibleMotion';
 UncontrolledCollapsibleMotion.defaultProps = defaultProps;
-UncontrolledCollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
-const CollapsibleMotion = (props) => {
+const CollapsibleMotion = (props: TCollapsibleMotionProps) => {
   const isControlledComponent = !isNil(props.isClosed);
 
   if (isControlledComponent) {
@@ -192,6 +235,5 @@ const CollapsibleMotion = (props) => {
 };
 CollapsibleMotion.displayName = 'CollapsibleMotion';
 CollapsibleMotion.defaultProps = defaultProps;
-CollapsibleMotion.propTypes = collapsibleMotionPropTypes;
 
 export default CollapsibleMotion;
