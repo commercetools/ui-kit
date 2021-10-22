@@ -47,19 +47,19 @@ export type TCollapsibleMotionProps = {
   /**
    * Determines the state of the toggle `isOpen`. Setting this prop will make the component **controlled**
    */
-  isClosed: boolean;
+  isClosed?: boolean;
   /**
    * A callback function called when the `toggle` function is called. This prop is required when the component is **controlled**.
    */
-  onToggle: () => void;
+  onToggle?: () => void;
   /**
    * The minimal height of the container being animated.
    */
-  minHeight: number;
+  minHeight?: number;
   /**
    *The initial value to the internal toggle state `isOpen`.
    */
-  isDefaultClosed: boolean;
+  isDefaultClosed?: boolean;
 };
 
 const defaultProps: Pick<TCollapsibleMotionProps, 'minHeight'> = {
@@ -80,7 +80,7 @@ const createOpeningAnimation = (height: number, minHeight = 0) =>
     100% { height: auto; overflow: visible; }
   `;
 
-const createClosingAnimation = (height: number, minHeight: number) =>
+const createClosingAnimation = (height: number, minHeight = 0) =>
   keyframes`
     from { height: ${height}px; }
     to { height: ${getMinHeight(
@@ -94,8 +94,8 @@ type TNodeRefObject = {
 
 const useToggleAnimation = (
   isOpen: boolean,
-  toggle: () => void,
-  minHeight: number
+  toggle?: () => void,
+  minHeight = 0
 ) => {
   const nodeRef = useRef<TNodeRefObject>();
   const animationRef = useRef<ReturnType<typeof keyframes> | null>(null);
@@ -120,7 +120,7 @@ const useToggleAnimation = (
 
     // set panel height to the height of the content,
     // so we can animate between the height and 0
-    toggle();
+    toggle && toggle();
   }, [nodeRef, toggle]);
 
   const containerStyles: TContainerStyles = isOpen
