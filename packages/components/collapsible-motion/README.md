@@ -65,10 +65,25 @@ export default Example;
 
 ## Properties
 
-| Props             | Type     | Required | Default | Description                                                                                                                                                                                                                                                                                                                        |
-| ----------------- | -------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `children`        | `func`   |    ✅    |         | A render function, called with the following named arguments: `isOpen` (boolean), `toggle` (function),&#xA;`containerStyles` (css-in-js object), `registerContentNode` (React reference to be used on the animated container).&#xA;<br/>&#xA;Siganture: `({ isOpen, containerStyles, toggle, registerContentNode }) => React.node` |
-| `isClosed`        | `bool`   |          |         | Determines the state of the toggle `isOpen`. Setting this prop will make the component **controlled**                                                                                                                                                                                                                              |
-| `onToggle`        | `func`   |          |         | A callback function called when the `toggle` function is called. This prop is required when the component is **controlled**.                                                                                                                                                                                                       |
-| `minHeight`       | `number` |          | `0`     | The minimal height of the container being animated.                                                                                                                                                                                                                                                                                |
-| `isDefaultClosed` | `bool`   |          |         | The initial value to the internal toggle state `isOpen`.                                                                                                                                                                                                                                                                           |
+| Props             | Type                                                 | Required | Default | Description                                                                                                                                                                                                                                                                                                                        |
+| ----------------- | ---------------------------------------------------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`        | `Function`<br/>[See signature.](#signature-children) |    ✅    |         | A render function, called with the following named arguments: `isOpen` (boolean), `toggle` (function),&#xA;`containerStyles` (css-in-js object), `registerContentNode` (React reference to be used on the animated container).&#xA;<br/>&#xA;Siganture: `({ isOpen, containerStyles, toggle, registerContentNode }) => React.node` |
+| `isClosed`        | `boolean`                                            |          |         | Determines the state of the toggle `isOpen`. Setting this prop will make the component **controlled**                                                                                                                                                                                                                              |
+| `onToggle`        | `Function`<br/>[See signature.](#signature-onToggle) |          |         | A callback function called when the `toggle` function is called. This prop is required when the component is **controlled**.                                                                                                                                                                                                       |
+| `minHeight`       | `number`                                             |          | `0`     | The minimal height of the container being animated.                                                                                                                                                                                                                                                                                |
+| `isDefaultClosed` | `boolean`                                            |          |         | The initial value to the internal toggle state `isOpen`.                                                                                                                                                                                                                                                                           |
+
+## Signatures
+
+### Signature `children`
+
+```ts
+({ isOpen, containerStyles, toggle, registerContentNode }: TRenderFunction) =>
+  ReactNode;
+```
+
+### Signature `onToggle`
+
+```ts
+() => void
+```
