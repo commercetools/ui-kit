@@ -42,5 +42,8 @@
   },
   "peerDependencies": {
     "react": "17.x"
+  },
+  "readme": {
+    "componentPaths": ["./src/primary-action-dropdown.tsx", "./src/option.tsx"]
   }
 }
