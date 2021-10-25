@@ -19,7 +19,7 @@ type TContainerStyles = {
   animation?: string;
 };
 
-type TRenderFunction = {
+type TRenderFunctionOptions = {
   isOpen: boolean;
   containerStyles: TContainerStyles;
   toggle:
@@ -38,12 +38,7 @@ export type TCollapsibleMotionProps = {
    * <br/>
    * Siganture: `({ isOpen, containerStyles, toggle, registerContentNode }) => React.node`
    */
-  children: ({
-    isOpen,
-    containerStyles,
-    toggle,
-    registerContentNode,
-  }: TRenderFunction) => ReactNode;
+  children: (options: TRenderFunctionOptions) => ReactNode;
   /**
    * Determines the state of the toggle `isOpen`. Setting this prop will make the component **controlled**
    */
