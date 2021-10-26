@@ -1,10 +1,4 @@
-import {
-  useRef,
-  useEffect,
-  useCallback,
-  ReactNode,
-  MutableRefObject,
-} from 'react';
+import { useRef, useEffect, useCallback, ReactNode } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { keyframes, ClassNames } from '@emotion/react';
 
@@ -22,12 +16,7 @@ type TContainerStyles = {
 type TRenderFunctionOptions = {
   isOpen: boolean;
   containerStyles: TContainerStyles;
-  toggle:
-    | typeof keyframes
-    | MutableRefObject<TNodeRefObject | undefined>
-    | TContainerStyles
-    | (() => void)
-    | null;
+  toggle: () => void;
   registerContentNode: ReactNode;
 };
 
@@ -169,7 +158,7 @@ const ControlledCollapsibleMotion = (props: TCollapsibleMotionProps) => {
             ...(containerStyles as TContainerStyles),
             ...animationStyle,
           },
-          toggle: animationToggle,
+          toggle: animationToggle as () => void,
           registerContentNode,
         });
       }}
@@ -209,7 +198,7 @@ const UncontrolledCollapsibleMotion = (props: TCollapsibleMotionProps) => {
             ...(containerStyles as TContainerStyles),
             ...animationStyle,
           },
-          toggle: animationToggle,
+          toggle: animationToggle as () => void,
           registerContentNode,
         });
       }}
