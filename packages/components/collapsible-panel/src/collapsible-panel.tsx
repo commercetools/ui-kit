@@ -1,7 +1,8 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
+import isNil from 'lodash/isNil';
 import uniqueId from 'lodash/uniqueId';
 import styled from '@emotion/styled';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
@@ -54,7 +55,7 @@ export type TCollapsiblePanel = {
   /**
    * Disables the panel and all interactions with it
    */
-  isDisabled?: () => void;
+  isDisabled?: boolean;
   /**
    * The actual content rendered inside the panel
    */
@@ -94,24 +95,24 @@ export type TCollapsiblePanel = {
    * <br />
    * Signature: `() => void`
    */
-  onToggle: () => void;
+  onToggle?: () => void;
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint?: 
-    6|
-    7|
-    8|
-    9|
-    10|
-    11|
-    12|
-    13|
-    14|
-    15|
-    16|
-    'scale'|
-    'auto';
+  horizontalConstraint?:
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
 };
 
 // When `isClosed` is provided the component behaves as a controlled component,
@@ -121,6 +122,34 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
+
+  const componentName = 'CollapsiblePanel';
+  const isClosedAndIsDefaultClosed =
+    !isNil(props.isClosed) && !isNil(props.isDefaultClosed);
+  warning(
+    !isClosedAndIsDefaultClosed,
+    `Invalid prop \`isDefaultClosed\` supplied to \`${componentName}\`. Component must either be controlled or uncontrolled. Pass either \`isClosed\` or \`isDefaultClosed\` but not both.`
+  );
+
+  const hasOnToggle = !isNil(props.onToggle);
+  const isControlledComponent = !isNil(props.isClosed);
+  const propName = 'onToggle';
+
+  // controlled
+  if (isControlledComponent) {
+    warning(
+      hasOnToggle,
+      `missing required prop \`${propName}\` when using the "isClosed" prop (controlled component).`
+    );
+  }
+
+  // uncontrolled
+  if (!isControlledComponent) {
+    warning(
+      !hasOnToggle,
+      `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the component is uncontrolled.`
+    );
+  }
 
   return (
     <CollapsibleMotion
@@ -155,14 +184,14 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                 {!props.hideExpansionControls && (
                   <HeaderIcon
                     isClosed={!isOpen}
-                    isDisabled={props.isDisabled}
+                    isDisabled={props.isDisabled || false}
                     tone={props.tone}
                     size={props.condensed ? 'small' : 'medium'}
                   />
                 )}
                 <Spacings.Inline alignItems="center" scale={scale}>
                   {props.condensed ? (
-                    <Text.Detail isInline={true} isBold={true} truncate={true}>
+                    <Text.Detail isBold={true} truncate={true}>
                       {props.header}
                     </Text.Detail>
                   ) : (
@@ -184,7 +213,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               )}
             </HeaderContainer>
             <div style={containerStyles}>
-              <SectionWrapper isOpen={isOpen} ref={registerContentNode}>
+              <SectionWrapper ref={registerContentNode}>
                 {props.description && (
                   <Spacings.Inset scale={scale}>
                     <Text.Detail>{props.description}</Text.Detail>
@@ -209,7 +238,6 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
 
 CollapsiblePanel.getPanelContentId = getPanelContentId;
 CollapsiblePanel.displayName = 'CollapsiblePanel';
-
 CollapsiblePanel.defaultProps = {
   id: uniqueId(),
   theme: 'dark',

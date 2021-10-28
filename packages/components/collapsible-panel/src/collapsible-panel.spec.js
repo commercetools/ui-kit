@@ -75,25 +75,20 @@ describe('when isDefaultClosed and isClosed are passed', () => {
   afterEach(() => {
     console.error = log;
   });
-  it('should warn', () => {
-    render(
-      <CollapsiblePanel
-        header="Header"
-        isClosed={true}
-        isDefaultClosed={false}
-        onToggle={() => {}}
-      >
-        Children
-      </CollapsiblePanel>
-    );
-    expect(console.error).toHaveBeenCalledWith(
-      expect.stringMatching(/Warning/),
-      'prop',
-      expect.stringMatching(/Invalid prop `isDefaultClosed` supplied to (.*)/),
-      expect.any(String)
-    );
+  it('should throw error', () => {
+    expect(() =>
+      render(
+        <CollapsiblePanel
+          header="Header"
+          isClosed={true}
+          isDefaultClosed={false}
+          onToggle={() => {}}
+        >
+          Children
+        </CollapsiblePanel>
+      )
+    ).toThrowError(/Invalid prop `isDefaultClosed` supplied to (.*)/);
   });
-  /* eslint-enable no-console */
 });
 
 describe('when onToggle is provided without isClosed', () => {
@@ -107,19 +102,14 @@ describe('when onToggle is provided without isClosed', () => {
     console.error = log;
   });
   it('should warn', () => {
-    render(
-      <CollapsiblePanel header="Header" onToggle={() => {}}>
-        Children
-      </CollapsiblePanel>
-    );
-    expect(console.error).toHaveBeenCalledWith(
-      expect.stringMatching(/Warning/),
-      'prop',
-      expect.stringMatching(/Invalid prop `onToggle` supplied to (.*)/),
-      expect.any(String)
-    );
+    expect(() =>
+      render(
+        <CollapsiblePanel header="Header" onToggle={() => {}}>
+          Children
+        </CollapsiblePanel>
+      )
+    ).toThrowError(/Invalid prop `onToggle` supplied to (.*)/);
   });
-  /* eslint-enable no-console */
 });
 
 it('should call "onToggle" when header is clicked', () => {
@@ -193,7 +183,10 @@ describe('aria attributes', () => {
     };
   };
   it('should have a valid aria-controls correspondence', () => {
-    const { getPanelHeader, getPanelContent } = renderPanel({ id: 'test-id' });
+    const { getPanelHeader, getPanelContent } = renderPanel({
+      id: 'test-id',
+      isClosed: false,
+    });
 
     const panelContentId = CollapsiblePanel.getPanelContentId('test-id');
 

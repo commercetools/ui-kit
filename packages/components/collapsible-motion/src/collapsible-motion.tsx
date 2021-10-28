@@ -1,4 +1,11 @@
-import { useRef, useEffect, useCallback, ReactNode } from 'react';
+import {
+  useRef,
+  useEffect,
+  useCallback,
+  ReactNode,
+  CSSProperties,
+  LegacyRef,
+} from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { keyframes, ClassNames } from '@emotion/react';
 
@@ -11,13 +18,13 @@ type TContainerStyles = {
   visibility?: string;
   name?: string;
   animation?: string;
-};
+} & CSSProperties;
 
 type TRenderFunctionOptions = {
   isOpen: boolean;
   containerStyles: TContainerStyles;
   toggle: () => void;
-  registerContentNode: ReactNode;
+  registerContentNode: TNodeRefObject;
 };
 
 export type TCollapsibleMotionProps = {
@@ -74,7 +81,7 @@ const createClosingAnimation = (height: number, minHeight = 0) =>
 
 type TNodeRefObject = {
   clientHeight: number;
-};
+} & LegacyRef<HTMLDivElement>;
 
 const useToggleAnimation = (
   isOpen: boolean,
@@ -159,7 +166,7 @@ const ControlledCollapsibleMotion = (props: TCollapsibleMotionProps) => {
             ...animationStyle,
           },
           toggle: animationToggle as () => void,
-          registerContentNode,
+          registerContentNode: registerContentNode as TNodeRefObject,
         });
       }}
     </ClassNames>
@@ -199,7 +206,7 @@ const UncontrolledCollapsibleMotion = (props: TCollapsibleMotionProps) => {
             ...animationStyle,
           },
           toggle: animationToggle as () => void,
-          registerContentNode,
+          registerContentNode: registerContentNode as TNodeRefObject,
         });
       }}
     </ClassNames>
