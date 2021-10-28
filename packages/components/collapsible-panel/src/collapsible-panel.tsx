@@ -17,6 +17,7 @@ import {
   SectionWrapper,
   SectionContent,
 } from './collapsible-panel.styles';
+import CollapsiblePanelHeader from './collapsible-panel-header';
 
 const HeaderContainer = styled(AccessibleButton)``;
 
@@ -246,5 +247,6 @@ CollapsiblePanel.defaultProps = {
   headerControlsAlignment: 'right',
   horizontalConstraint: 'scale',
 };
+CollapsiblePanel.Header = CollapsiblePanelHeader;
 
 export default CollapsiblePanel;
