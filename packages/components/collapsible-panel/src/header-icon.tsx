@@ -5,7 +5,10 @@ import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 const sizeIconContainer = '22px';
 const sizeIconContainerSmall = '14px';
 
-const getArrowColor = ({ tone, isDisabled }: Pick<THeaderIcon, 'isDisabled' | 'tone'>) => {
+const getArrowColor = ({
+  tone,
+  isDisabled,
+}: Pick<THeaderIcon, 'isDisabled' | 'tone'>) => {
   if (isDisabled) return 'neutral60';
   if (tone === 'urgent') return 'surface';
   return 'solid';
@@ -17,7 +20,6 @@ type THeaderIcon = {
   isDisabled: boolean;
   size: 'small' | 'medium' | 'big' | 'scale';
 };
-
 
 const HeaderIcon = (props: THeaderIcon) => {
   const backgroundColor =
