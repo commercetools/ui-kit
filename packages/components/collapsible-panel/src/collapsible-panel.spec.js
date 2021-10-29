@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
 import CollapsiblePanel from './collapsible-panel';
 
@@ -9,6 +10,11 @@ const HeaderControls = (props) => (
 HeaderControls.propTypes = {
   onClick: PropTypes.func,
 };
+
+jest.mock('@commercetools-uikit/utils', () => ({
+  ...jest.requireActual('@commercetools-uikit/utils'),
+  warning: jest.fn(),
+}));
 
 it('should smoke', () => {
   render(<CollapsiblePanel header="Header">Children</CollapsiblePanel>);
@@ -75,19 +81,22 @@ describe('when isDefaultClosed and isClosed are passed', () => {
   afterEach(() => {
     console.error = log;
   });
-  it('should throw error', () => {
-    expect(() =>
-      render(
-        <CollapsiblePanel
-          header="Header"
-          isClosed={true}
-          isDefaultClosed={false}
-          onToggle={() => {}}
-        >
-          Children
-        </CollapsiblePanel>
-      )
-    ).toThrowError(/Invalid prop `isDefaultClosed` supplied to (.*)/);
+  it('should warn', () => {
+    render(
+      <CollapsiblePanel
+        header="Header"
+        isClosed={true}
+        isDefaultClosed={false}
+        onToggle={() => {}}
+      >
+        Children
+      </CollapsiblePanel>
+    );
+
+    expect(warning).toHaveBeenCalledWith(
+      expect.any(Boolean),
+      expect.stringMatching(/Invalid prop `isDefaultClosed` supplied to (.*)/i)
+    );
   });
 });
 
@@ -102,13 +111,15 @@ describe('when onToggle is provided without isClosed', () => {
     console.error = log;
   });
   it('should warn', () => {
-    expect(() =>
-      render(
-        <CollapsiblePanel header="Header" onToggle={() => {}}>
-          Children
-        </CollapsiblePanel>
-      )
-    ).toThrowError(/Invalid prop `onToggle` supplied to (.*)/);
+    render(
+      <CollapsiblePanel header="Header" onToggle={() => {}}>
+        Children
+      </CollapsiblePanel>
+    );
+    expect(warning).toHaveBeenCalledWith(
+      expect.any(Boolean),
+      expect.stringMatching(/Invalid prop `onToggle` supplied to (.*)/i)
+    );
   });
 });
 

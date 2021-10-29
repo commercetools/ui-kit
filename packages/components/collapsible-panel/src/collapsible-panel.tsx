@@ -43,11 +43,15 @@ export type TCollapsiblePanel = {
    * If passed will be shown below the title as more information regarding the panel
    */
   description?: string;
+  /**
+   * Allow to override the styles by passing a `className` prop.
+   * <br/>
+   * Custom styles can also be passed using the [`css` prop from emotion](https://emotion.sh/docs/css-prop#style-precedence).
+   */
   className?: string;
   /**
    * Makes the panel's header sticky in regards to the page's scroll
    */
-  // eslint-disable-next-line react/no-unused-prop-types
   isSticky?: boolean;
   /**
    * Controls at the top right part of the panel
@@ -61,9 +65,12 @@ export type TCollapsiblePanel = {
    * The actual content rendered inside the panel
    */
   children?: ReactNode;
+  /**
+   * Indicates the color scheme of the panel.
+   */
   tone?: 'urgent' | 'primary';
   /**
-   * The main color combination of the for the panel header and container
+   * Determines the background color of the panel.
    */
   theme?: 'dark' | 'light';
   /**
@@ -75,7 +82,9 @@ export type TCollapsiblePanel = {
    * Controls the visibility of the expansion controls on the left
    */
   hideExpansionControls?: boolean;
-  // eslint-disable-next-line react/no-unused-prop-types
+  /**
+   * Indicates the position of the control elements in the header component.
+   */
   headerControlsAlignment?: 'left' | 'right';
   /**
    * Indicates if the panel's content should be collapsed or shown by default.
@@ -98,7 +107,7 @@ export type TCollapsiblePanel = {
    */
   onToggle?: () => void;
   /**
-   * Horizontal size limit of the input fields.
+   * Horizontal size limit of the panel.
    */
   horizontalConstraint?:
     | 6
@@ -124,23 +133,21 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
 
-  const componentName = 'CollapsiblePanel';
   const isClosedAndIsDefaultClosed =
     !isNil(props.isClosed) && !isNil(props.isDefaultClosed);
   warning(
     !isClosedAndIsDefaultClosed,
-    `Invalid prop \`isDefaultClosed\` supplied to \`${componentName}\`. Component must either be controlled or uncontrolled. Pass either \`isClosed\` or \`isDefaultClosed\` but not both.`
+    `Invalid prop \`isDefaultClosed\` supplied to \`CollapsiblePanel\`. Component must either be controlled or uncontrolled. Pass either \`isClosed\` or \`isDefaultClosed\` but not both.`
   );
 
   const hasOnToggle = !isNil(props.onToggle);
   const isControlledComponent = !isNil(props.isClosed);
-  const propName = 'onToggle';
 
   // controlled
   if (isControlledComponent) {
     warning(
       hasOnToggle,
-      `missing required prop \`${propName}\` when using the "isClosed" prop (controlled component).`
+      `missing required prop \`onToggle\` when using the "isClosed" prop (controlled component).`
     );
   }
 
@@ -148,7 +155,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
   if (!isControlledComponent) {
     warning(
       !hasOnToggle,
-      `Invalid prop \`${propName}\` supplied to \`${componentName}\`. \`${propName}\` does not have any effect when the component is uncontrolled.`
+      `Invalid prop \`onToggle\` supplied to \`CollapsiblePanel\`. \`onToggle\` does not have any effect when the component is uncontrolled.`
     );
   }
 
@@ -192,7 +199,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                 )}
                 <Spacings.Inline alignItems="center" scale={scale}>
                   {props.condensed ? (
-                    <Text.Detail isBold={true} truncate={true}>
+                    <Text.Detail as="span" isBold truncate>
                       {props.header}
                     </Text.Detail>
                   ) : (

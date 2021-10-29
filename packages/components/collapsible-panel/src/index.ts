@@ -1,5 +1,3 @@
-import CollapsiblePanel from './collapsible-panel';
-
-export default CollapsiblePanel;
+export { default } from './collapsible-panel';
 
 export { default as version } from './version';

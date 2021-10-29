@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { TCollapsiblePanel } from './collapsible-panel';
+import type { TCollapsiblePanel } from './collapsible-panel';
 
-function getThemeStyle(theme?: string) {
+function getThemeStyle(theme?: TCollapsiblePanel['theme']) {
   if (theme === 'light') {
     return css`
       background-color: ${vars.colorSurface};
