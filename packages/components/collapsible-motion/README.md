@@ -78,8 +78,7 @@ export default Example;
 ### Signature `children`
 
 ```ts
-({ isOpen, containerStyles, toggle, registerContentNode }: TRenderFunction) =>
-  ReactNode;
+(options: TRenderFunctionOptions) => ReactNode;
 ```
 
 ### Signature `onToggle`

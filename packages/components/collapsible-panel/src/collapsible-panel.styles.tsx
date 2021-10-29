@@ -1,8 +1,9 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import type { TCollapsiblePanel } from './collapsible-panel';
 
-function getThemeStyle(theme) {
+function getThemeStyle(theme?: TCollapsiblePanel['theme']) {
   if (theme === 'light') {
     return css`
       background-color: ${vars.colorSurface};
@@ -13,7 +14,13 @@ function getThemeStyle(theme) {
   `;
 }
 
-const getHeaderContainerStyles = (props, isOpen) => {
+const getHeaderContainerStyles = (
+  props: Pick<
+    TCollapsiblePanel,
+    'headerControlsAlignment' | 'condensed' | 'isDisabled' | 'isSticky'
+  >,
+  isOpen: boolean
+) => {
   const baseStyles = css`
     position: relative;
     border-top-left-radius: ${vars.borderRadius6};

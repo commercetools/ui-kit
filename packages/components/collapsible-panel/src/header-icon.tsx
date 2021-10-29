@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
@@ -6,13 +5,23 @@ import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 const sizeIconContainer = '22px';
 const sizeIconContainerSmall = '14px';
 
-const getArrowColor = ({ tone, isDisabled }) => {
+const getArrowColor = ({
+  tone,
+  isDisabled,
+}: Pick<THeaderIcon, 'isDisabled' | 'tone'>) => {
   if (isDisabled) return 'neutral60';
   if (tone === 'urgent') return 'surface';
   return 'solid';
 };
 
-const HeaderIcon = (props) => {
+type THeaderIcon = {
+  tone?: 'urgent' | 'primary';
+  isClosed: boolean;
+  isDisabled: boolean;
+  size: 'small' | 'medium' | 'big' | 'scale';
+};
+
+const HeaderIcon = (props: THeaderIcon) => {
   const backgroundColor =
     props.tone === 'urgent' ? vars.colorWarning : vars.colorSurface;
   return (
@@ -64,13 +73,6 @@ const HeaderIcon = (props) => {
 };
 
 HeaderIcon.displayName = 'HeaderIcon';
-HeaderIcon.propTypes = {
-  tone: PropTypes.oneOf(['urgent', 'primary']),
-  isClosed: PropTypes.bool.isRequired,
-  isDisabled: PropTypes.bool.isRequired,
-  size: PropTypes.string.isRequired,
-};
-
 HeaderIcon.defaultProps = {
   tone: 'primary',
 };

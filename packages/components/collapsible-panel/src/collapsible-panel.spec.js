@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
 import CollapsiblePanel from './collapsible-panel';
 
@@ -9,6 +10,11 @@ const HeaderControls = (props) => (
 HeaderControls.propTypes = {
   onClick: PropTypes.func,
 };
+
+jest.mock('@commercetools-uikit/utils', () => ({
+  ...jest.requireActual('@commercetools-uikit/utils'),
+  warning: jest.fn(),
+}));
 
 it('should smoke', () => {
   render(<CollapsiblePanel header="Header">Children</CollapsiblePanel>);
@@ -86,14 +92,12 @@ describe('when isDefaultClosed and isClosed are passed', () => {
         Children
       </CollapsiblePanel>
     );
-    expect(console.error).toHaveBeenCalledWith(
-      expect.stringMatching(/Warning/),
-      'prop',
-      expect.stringMatching(/Invalid prop `isDefaultClosed` supplied to (.*)/),
-      expect.any(String)
+
+    expect(warning).toHaveBeenCalledWith(
+      expect.any(Boolean),
+      expect.stringMatching(/Invalid prop `isDefaultClosed` supplied to (.*)/i)
     );
   });
-  /* eslint-enable no-console */
 });
 
 describe('when onToggle is provided without isClosed', () => {
@@ -112,14 +116,11 @@ describe('when onToggle is provided without isClosed', () => {
         Children
       </CollapsiblePanel>
     );
-    expect(console.error).toHaveBeenCalledWith(
-      expect.stringMatching(/Warning/),
-      'prop',
-      expect.stringMatching(/Invalid prop `onToggle` supplied to (.*)/),
-      expect.any(String)
+    expect(warning).toHaveBeenCalledWith(
+      expect.any(Boolean),
+      expect.stringMatching(/Invalid prop `onToggle` supplied to (.*)/i)
     );
   });
-  /* eslint-enable no-console */
 });
 
 it('should call "onToggle" when header is clicked', () => {
@@ -193,7 +194,10 @@ describe('aria attributes', () => {
     };
   };
   it('should have a valid aria-controls correspondence', () => {
-    const { getPanelHeader, getPanelContent } = renderPanel({ id: 'test-id' });
+    const { getPanelHeader, getPanelContent } = renderPanel({
+      id: 'test-id',
+      isClosed: false,
+    });
 
     const panelContentId = CollapsiblePanel.getPanelContentId('test-id');
 
