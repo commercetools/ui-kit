@@ -125,6 +125,23 @@ export type TCollapsiblePanel = {
     | 'auto';
 };
 
+const defaultProps: Pick<
+  TCollapsiblePanel,
+  | 'id'
+  | 'theme'
+  | 'condensed'
+  | 'isDisabled'
+  | 'headerControlsAlignment'
+  | 'horizontalConstraint'
+> = {
+  id: uniqueId(),
+  theme: 'dark',
+  condensed: false,
+  isDisabled: false,
+  headerControlsAlignment: 'right',
+  horizontalConstraint: 'scale',
+};
+
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = (props: TCollapsiblePanel) => {
@@ -246,14 +263,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
 
 CollapsiblePanel.getPanelContentId = getPanelContentId;
 CollapsiblePanel.displayName = 'CollapsiblePanel';
-CollapsiblePanel.defaultProps = {
-  id: uniqueId(),
-  theme: 'dark',
-  condensed: false,
-  isDisabled: false,
-  headerControlsAlignment: 'right',
-  horizontalConstraint: 'scale',
-};
+CollapsiblePanel.defaultProps = defaultProps;
 CollapsiblePanel.Header = CollapsiblePanelHeader;
 
 export default CollapsiblePanel;
