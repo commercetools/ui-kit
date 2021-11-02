@@ -7626,18 +7626,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-typescript-to-proptypes@npm:1.4.2":
-  version: 1.4.2
-  resolution: "babel-plugin-typescript-to-proptypes@npm:1.4.2"
+"babel-plugin-typescript-to-proptypes@npm:2.0.0":
+  version: 2.0.0
+  resolution: "babel-plugin-typescript-to-proptypes@npm:2.0.0"
   dependencies:
     "@babel/helper-module-imports": ^7.12.5
-    "@babel/helper-plugin-utils": ^7.10.4
     "@babel/plugin-syntax-typescript": ^7.12.1
     "@babel/types": ^7.12.6
   peerDependencies:
     "@babel/core": ^7.0.0
-    typescript: ^3.0.0 || ^4.0.0
-  checksum: 00a9e3f44c98a9f22b8201d7a24d82928ae6e39aec208f8101d8f3d9d5ea8b5ec420b7ae45558d8c1b6f554031305731973b1731d6a61e2a769a2d39827ae23a
+    typescript: ^4.0.0
+  checksum: 7eef77c5ffd8face65a199d6f23a0fbab2e464c8bd8fcf1e3458b3682bebb08fa4a6fd53cd61564ab5d845ba2ccbabf22a6bb30609fa9b843e1e709ab98715f2
   languageName: node
   linkType: hard
 
@@ -19515,7 +19514,7 @@ __metadata:
     "@typescript-eslint/parser": 4.33.0
     babel-jest: 27.3.1
     babel-loader: 8.2.3
-    babel-plugin-typescript-to-proptypes: 1.4.2
+    babel-plugin-typescript-to-proptypes: 2.0.0
     browserslist: 4.17.5
     bundlesize: 0.18.1
     colors: 1.4.0

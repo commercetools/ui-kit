@@ -99,7 +99,7 @@
     "@typescript-eslint/parser": "4.33.0",
     "babel-jest": "27.3.1",
     "babel-loader": "8.2.3",
-    "babel-plugin-typescript-to-proptypes": "1.4.2",
+    "babel-plugin-typescript-to-proptypes": "2.0.0",
     "browserslist": "4.17.5",
     "bundlesize": "0.18.1",
     "colors": "1.4.0",
