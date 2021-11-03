@@ -1,6 +1,10 @@
-import { useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { withTheme } from '@emotion/react';
+import {
+  useCallback,
+  LegacyRef,
+  FocusEventHandler,
+  KeyboardEvent,
+} from 'react';
+import { withTheme, Theme } from '@emotion/react';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -12,7 +16,15 @@ import {
   getInputContainerStyles,
 } from './calendar-body.styles';
 
-export const ClearSection = (props) => (
+export type TClearSection = {
+  isDisabled?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  onClear?: () => void;
+  theme?: Theme;
+};
+
+export const ClearSection = (props: TClearSection) => (
   <AccessibleButton
     css={getClearSectionStyles(props)}
     label="clear"
@@ -23,20 +35,38 @@ export const ClearSection = (props) => (
   </AccessibleButton>
 );
 ClearSection.displayName = 'ClearSection';
-ClearSection.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types
-  isDisabled: PropTypes.bool,
-  // eslint-disable-next-line react/no-unused-prop-types
-  hasError: PropTypes.bool,
-  // eslint-disable-next-line react/no-unused-prop-types
-  hasWarning: PropTypes.bool,
-  onClear: PropTypes.func,
+
+export type TInputProps = {
+  onBlur?: FocusEventHandler;
+  onFocus?: FocusEventHandler;
+  onKeyDown?: (
+    event: KeyboardEvent<HTMLInputElement | HTMLButtonElement>
+  ) => void;
 };
 
-export const CalendarBody = (props) => {
+export type TCalendarBody = {
+  inputRef: LegacyRef<HTMLInputElement>;
+  icon?: string;
+  id?: string;
+  inputProps?: TInputProps;
+  isClearable?: boolean;
+  toggleButtonProps?: Pick<TInputProps, 'onBlur' | 'onFocus'>;
+  value?: string;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  isOpen?: boolean;
+  hasSelection?: boolean;
+  hasWarning?: boolean;
+  hasError?: boolean;
+  onClear?: () => void;
+  placeholder?: string;
+  theme?: Theme;
+};
+
+export const CalendarBody = (props: TCalendarBody) => {
   const [isFocused, toggleIsFocused] = useToggleState(false);
 
-  const { onFocus: onInputFocus } = props.inputProps;
+  const onInputFocus = props?.inputProps?.onFocus;
 
   const handleInputFocus = useCallback(
     (event) => {
@@ -46,7 +76,7 @@ export const CalendarBody = (props) => {
     [onInputFocus, toggleIsFocused]
   );
 
-  const { onBlur: onInputBlur } = props.inputProps;
+  const onInputBlur = props?.inputProps?.onBlur;
 
   const handleInputBlur = useCallback(
     (event) => {
@@ -56,7 +86,7 @@ export const CalendarBody = (props) => {
     [onInputBlur, toggleIsFocused]
   );
 
-  const { onFocus: onToggleFocus } = props.toggleButtonProps;
+  const onToggleFocus = props?.toggleButtonProps?.onFocus;
 
   const handleToggleFocus = useCallback(
     (event) => {
@@ -66,7 +96,7 @@ export const CalendarBody = (props) => {
     [onToggleFocus, toggleIsFocused]
   );
 
-  const { onBlur: onToggleBlur } = props.toggleButtonProps;
+  const onToggleBlur = props?.toggleButtonProps?.onBlur;
 
   const handleToggleBlur = useCallback(
     (event) => {
@@ -95,8 +125,6 @@ export const CalendarBody = (props) => {
           <ClearSection
             hasError={props.hasError}
             hasWarning={props.hasWarning}
-            isFocused={isFocused}
-            isOpen={props.isOpen}
             onClear={props.onClear}
           />
         )}
@@ -107,7 +135,7 @@ export const CalendarBody = (props) => {
           onFocus={handleToggleFocus}
           onBlur={handleToggleBlur}
           disabled={disabledOrReadOnly}
-          onKeyDown={props.inputProps.onKeyDown}
+          onKeyDown={props.inputProps && props.inputProps.onKeyDown}
           /* keyboard users don't need this button */
           tabIndex={-1}
         >
@@ -123,31 +151,6 @@ export const CalendarBody = (props) => {
 };
 
 CalendarBody.displayName = 'CalendarBody';
-
-CalendarBody.propTypes = {
-  inputRef: PropTypes.object.isRequired,
-  icon: PropTypes.string,
-  id: PropTypes.string,
-  inputProps: PropTypes.shape({
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    onKeyDown: PropTypes.func,
-  }),
-  isClearable: PropTypes.bool,
-  toggleButtonProps: PropTypes.shape({
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-  }),
-  value: PropTypes.string,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  isOpen: PropTypes.bool,
-  hasSelection: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  hasError: PropTypes.bool,
-  onClear: PropTypes.func,
-  placeholder: PropTypes.string,
-};
 
 CalendarBody.defaultProps = {
   isClearable: true,
