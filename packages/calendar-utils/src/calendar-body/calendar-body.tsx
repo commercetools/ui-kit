@@ -63,6 +63,13 @@ export type TCalendarBody = {
   theme?: Theme;
 };
 
+type TDefaultProps = {
+  isClearable: boolean;
+};
+const defaultProps: TDefaultProps = {
+  isClearable: true,
+};
+
 export const CalendarBody = (props: TCalendarBody) => {
   const [isFocused, toggleIsFocused] = useToggleState(false);
 
@@ -152,8 +159,6 @@ export const CalendarBody = (props: TCalendarBody) => {
 
 CalendarBody.displayName = 'CalendarBody';
 
-CalendarBody.defaultProps = {
-  isClearable: true,
-};
+CalendarBody.defaultProps = defaultProps;
 
 export default withTheme(CalendarBody);
