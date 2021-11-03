@@ -22,6 +22,8 @@ export type TClearSection = {
   hasWarning?: boolean;
   onClear?: () => void;
   theme?: Theme;
+  isFocused?: boolean;
+  isOpen?: boolean;
 };
 
 export const ClearSection = (props: TClearSection) => (
@@ -132,6 +134,8 @@ export const CalendarBody = (props: TCalendarBody) => {
           <ClearSection
             hasError={props.hasError}
             hasWarning={props.hasWarning}
+            isFocused={isFocused}
+            isOpen={props.isOpen}
             onClear={props.onClear}
           />
         )}

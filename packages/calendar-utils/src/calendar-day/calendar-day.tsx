@@ -4,7 +4,7 @@ import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 type TCalendarDay = {
   children?: ReactNode;
-  type?: 'heading' | 'spacing' | 'day';
+  type: 'heading' | 'spacing' | 'day';
   isHighlighted?: boolean;
   isSelected?: boolean;
   isRangeStart?: boolean;
@@ -17,7 +17,7 @@ type TCalendarDay = {
 const getStyles = (props: TCalendarDay) => {
   const styles = [];
 
-  if (props.type && !['heading', 'spacing'].includes(props.type)) {
+  if (!['heading', 'spacing'].includes(props.type)) {
     styles.push(css`
       text-align: center;
       padding: ${vars.spacingS} 0;
@@ -25,7 +25,7 @@ const getStyles = (props: TCalendarDay) => {
       border-radius: ${vars.borderRadius4};
     `);
   }
-  if (props.type && ['heading', 'spacing'].includes(props.type)) {
+  if (['heading', 'spacing'].includes(props.type)) {
     styles.push(css`
       text-align: center;
       padding: ${vars.spacingS} 0;
