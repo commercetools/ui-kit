@@ -1,16 +1,16 @@
 import { css, Theme } from '@emotion/react';
 import { customProperties } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
-import type { TCalendarBody, TClearSection } from './calendar-body';
+import type { TCalendarBody } from './calendar-body';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getClearSectionStyles = (props: TClearSection) => {
+const getClearSectionStyles = (theme: Theme) => {
   const vars = {
     ...customProperties,
-    ...props.theme,
+    ...theme,
   };
 
   return css`
@@ -77,11 +77,12 @@ const getIconFontColor = (vars: TExtendedTheme, props: TCalendarBody) => {
 
 const getCalendarIconContainerStyles = (
   props: TCalendarBody,
-  state: TState
+  state: TState,
+  theme: Theme
 ) => {
   const vars = {
     ...customProperties,
-    ...props.theme,
+    ...theme,
   };
 
   return css`
@@ -146,10 +147,14 @@ const getInputFontColor = (vars: TExtendedTheme, props: TCalendarBody) => {
   }
   return vars.fontColorForInput;
 };
-const getInputContainerStyles = (props: TCalendarBody, state: TState) => {
+const getInputContainerStyles = (
+  props: TCalendarBody,
+  state: TState,
+  theme: Theme
+) => {
   const vars = {
     ...customProperties,
-    ...props.theme,
+    ...theme,
   };
 
   return css`
@@ -188,9 +193,9 @@ const getInputContainerStyles = (props: TCalendarBody, state: TState) => {
   `;
 };
 
-const getDateTimeInputStyles = (props: TCalendarBody) => {
+const getDateTimeInputStyles = (props: TCalendarBody, theme: Theme) => {
   const baseStyles = [
-    getInputStyles(props, customProperties),
+    getInputStyles(props, theme),
     css`
       border: none;
       background: none;

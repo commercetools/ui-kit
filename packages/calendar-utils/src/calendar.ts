@@ -1,4 +1,5 @@
-import moment, { MomentInput, DurationInputArg1 } from 'moment';
+import moment from 'moment';
+import type { MomentInput, DurationInputArg1 } from 'moment';
 
 export const getDaysInMonth = (day: MomentInput) => moment(day).daysInMonth();
 export const getDateInMonth = (day: MomentInput) => moment(day).date();
