@@ -2,8 +2,9 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
+import type { TDataCell } from './cell';
 
-const getPaddingStyle = (props) => {
+const getPaddingStyle = (props: Pick<TDataCell, 'isCondensed'>) => {
   if (props.isCondensed)
     return css`
       padding: ${vars.spacingS};
@@ -13,7 +14,9 @@ const getPaddingStyle = (props) => {
   `;
 };
 
-const getHorizontalAlignmentStyle = (props) => {
+const getHorizontalAlignmentStyle = (
+  props: Pick<TDataCell, 'horizontalCellAlignment'>
+) => {
   if (props.horizontalCellAlignment === 'center') {
     return css`
       text-align: center;
@@ -32,7 +35,9 @@ const getHorizontalAlignmentStyle = (props) => {
   `;
 };
 
-const getVerticalAlignmentStyle = (props) => {
+const getVerticalAlignmentStyle = (
+  props: Pick<TDataCell, 'verticalCellAlignment'>
+) => {
   if (props.verticalCellAlignment === 'center') {
     return css`
       align-self: center;
@@ -48,7 +53,7 @@ const getVerticalAlignmentStyle = (props) => {
   `;
 };
 
-const getTruncatedStyle = (props) => {
+const getTruncatedStyle = (props: Pick<TDataCell, 'isTruncated'>) => {
   if (props.isTruncated) {
     return css`
       overflow: hidden;
@@ -78,7 +83,7 @@ const outlineStyles = css`
   }
 `;
 
-const getCellInnerStyles = (props) => {
+const getCellInnerStyles = (props: TCellInner) => {
   return [
     getVerticalAlignmentStyle(props),
     getHorizontalAlignmentStyle(props),
@@ -92,7 +97,17 @@ const getCellInnerStyles = (props) => {
  * otherwise it will change the way css-grid automatically allocates space for the cells of the table,
  * preferring to clip the cells instead and adding horizontal scrollbar to the table container
  */
-const CellInner = styled.div`
+type TCellInner = {
+  shouldClipContent?: boolean;
+} & Pick<
+  TDataCell,
+  | 'verticalCellAlignment'
+  | 'horizontalCellAlignment'
+  | 'isTruncated'
+  | 'isCondensed'
+>;
+
+const CellInner = styled.div<TCellInner>`
   box-sizing: border-box;
   flex: 1;
 
@@ -107,7 +122,11 @@ const CellInner = styled.div`
       : ''}
 `;
 
-const BaseCell = styled.td`
+type TBaseCell = {
+  shouldClipContent?: boolean;
+} & Pick<TDataCell, 'shouldRenderBottomBorder' | 'shouldIgnoreRowClick'>;
+
+const BaseCell = styled.td<TBaseCell>`
   position: relative;
   display: flex;
   background-color: ${vars.colorSurface};
@@ -129,7 +148,12 @@ const BaseCell = styled.td`
       : ''}
 `;
 
-const BaseFooterCell = styled.td`
+type TBaseFooterCell = {
+  disableFooterStickiness?: boolean;
+  numberOfColumns?: number;
+};
+
+const BaseFooterCell = styled.td<TBaseFooterCell>`
   position: ${(props) =>
     props.disableFooterStickiness ? 'relative' : 'sticky'};
   left: 0;
@@ -143,7 +167,9 @@ const BaseFooterCell = styled.td`
   margin-top: -1px;
 `;
 
-const RowExpandCollapseButton = styled(AccessibleButton)`
+const RowExpandCollapseButton = styled(AccessibleButton)<
+  Pick<TDataCell, 'isRowCollapsed'>
+>`
   cursor: ${(props) => (props.isRowCollapsed ? css`s-resize` : css`n-resize`)};
   position: absolute;
   height: 16px;
