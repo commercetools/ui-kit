@@ -1,4 +1,4 @@
-const isFixedWidthValue = (value) => {
+const isFixedWidthValue = (value: string) => {
   return !Number.isNaN(parseInt(value, 10));
 };
 
