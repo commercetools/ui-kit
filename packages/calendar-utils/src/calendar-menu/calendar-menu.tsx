@@ -1,17 +1,17 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
+import { Component, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-export default class CalendarMenu extends Component {
+type TCalendarMenu = {
+  children: ReactNode;
+  hasFooter?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  footer?: ReactNode;
+};
+
+export default class CalendarMenu extends Component<TCalendarMenu> {
   static displayName = 'CalendarMenu';
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    hasFooter: PropTypes.bool,
-    hasError: PropTypes.bool,
-    hasWarning: PropTypes.bool,
-    footer: PropTypes.node,
-  };
   render() {
     const { hasFooter, hasWarning, hasError, ...rest } = this.props;
 

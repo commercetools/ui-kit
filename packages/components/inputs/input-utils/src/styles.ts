@@ -50,7 +50,7 @@ const getInputFontColor = (vars: TExtendedTheme, props: TInputProps) => {
   return vars[designTokens.fontColorForInput];
 };
 
-const getInputStyles = (props: TInputProps, theme: Theme) => {
+const getInputStyles = (props: TInputProps, theme?: Theme) => {
   const vars: TExtendedTheme = {
     ...customProperties,
     ...theme,

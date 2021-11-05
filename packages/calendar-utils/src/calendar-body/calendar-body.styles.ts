@@ -1,15 +1,16 @@
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import { customProperties } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
+import type { TCalendarBody } from './calendar-body';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getClearSectionStyles = (props) => {
+const getClearSectionStyles = (theme: Theme) => {
   const vars = {
     ...customProperties,
-    ...props.theme,
+    ...theme,
   };
 
   return css`
@@ -26,7 +27,20 @@ const getClearSectionStyles = (props) => {
     }
   `;
 };
-const getIconBorderColor = (vars, props, state) => {
+
+type TExtendedTheme = Theme & {
+  [key: string]: string;
+};
+
+type TState = {
+  isFocused: boolean;
+};
+
+const getIconBorderColor = (
+  vars: TExtendedTheme,
+  props: TCalendarBody,
+  state: TState
+) => {
   if (props.isDisabled) {
     return vars.borderColorForInputWhenDisabled;
   }
@@ -44,7 +58,8 @@ const getIconBorderColor = (vars, props, state) => {
   }
   return vars.borderColorForInput;
 };
-const getIconFontColor = (vars, props) => {
+
+const getIconFontColor = (vars: TExtendedTheme, props: TCalendarBody) => {
   if (props.isDisabled) {
     return vars.fontColorForInputWhenDisabled;
   }
@@ -59,10 +74,15 @@ const getIconFontColor = (vars, props) => {
   }
   return 'initial';
 };
-const getCalendarIconContainerStyles = (props, state) => {
+
+const getCalendarIconContainerStyles = (
+  props: TCalendarBody,
+  state: TState,
+  theme: Theme
+) => {
   const vars = {
     ...customProperties,
-    ...props.theme,
+    ...theme,
   };
 
   return css`
@@ -90,7 +110,11 @@ const getCalendarIconContainerStyles = (props, state) => {
   `;
 };
 
-const getInputBorderColor = (vars, props, state) => {
+const getInputBorderColor = (
+  vars: TExtendedTheme,
+  props: TCalendarBody,
+  state: TState
+) => {
   if (props.isDisabled) {
     return vars.borderColorForInputWhenDisabled;
   }
@@ -108,7 +132,7 @@ const getInputBorderColor = (vars, props, state) => {
   }
   return vars.borderColorForInput;
 };
-const getInputFontColor = (vars, props) => {
+const getInputFontColor = (vars: TExtendedTheme, props: TCalendarBody) => {
   if (props.isDisabled) {
     return vars.fontColorForInputWhenDisabled;
   }
@@ -123,10 +147,14 @@ const getInputFontColor = (vars, props) => {
   }
   return vars.fontColorForInput;
 };
-const getInputContainerStyles = (props, state) => {
+const getInputContainerStyles = (
+  props: TCalendarBody,
+  state: TState,
+  theme: Theme
+) => {
   const vars = {
     ...customProperties,
-    ...props.theme,
+    ...theme,
   };
 
   return css`
@@ -165,9 +193,9 @@ const getInputContainerStyles = (props, state) => {
   `;
 };
 
-const getDateTimeInputStyles = (props) => {
+const getDateTimeInputStyles = (props: TCalendarBody, theme: Theme) => {
   const baseStyles = [
-    getInputStyles(props),
+    getInputStyles(props, theme),
     css`
       border: none;
       background: none;

@@ -1,11 +1,23 @@
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getStyles = (props) => {
+type TCalendarDay = {
+  children?: ReactNode;
+  type?: 'heading' | 'spacing' | 'day';
+  isHighlighted?: boolean;
+  isSelected?: boolean;
+  isRangeStart?: boolean;
+  isRangeBetween?: boolean;
+  isRangeEnd?: boolean;
+  isToday?: boolean;
+  disabled?: boolean;
+};
+
+const getStyles = (props: TCalendarDay) => {
   const styles = [];
 
-  if (!['heading', 'spacing'].includes(props.type)) {
+  if (!['heading', 'spacing'].includes(props.type || '')) {
     styles.push(css`
       text-align: center;
       padding: ${vars.spacingS} 0;
@@ -13,7 +25,7 @@ const getStyles = (props) => {
       border-radius: ${vars.borderRadius4};
     `);
   }
-  if (['heading', 'spacing'].includes(props.type)) {
+  if (['heading', 'spacing'].includes(props.type || '')) {
     styles.push(css`
       text-align: center;
       padding: ${vars.spacingS} 0;
@@ -74,7 +86,7 @@ const getStyles = (props) => {
   return styles;
 };
 
-const CalendarDay = (props) => {
+const CalendarDay = (props: TCalendarDay) => {
   const {
     isHighlighted,
     isSelected,
@@ -99,16 +111,5 @@ const CalendarDay = (props) => {
 };
 
 CalendarDay.displayName = 'CalendarDay';
-
-CalendarDay.propTypes = {
-  children: PropTypes.node,
-  type: PropTypes.oneOf(['heading', 'spacing', 'day']),
-  isHighlighted: PropTypes.bool,
-  isSelected: PropTypes.bool,
-  isRangeStart: PropTypes.bool,
-  isRangeBetween: PropTypes.bool,
-  isRangeEnd: PropTypes.bool,
-  isToday: PropTypes.bool,
-};
 
 export default CalendarDay;

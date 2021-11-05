@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
@@ -19,7 +18,17 @@ const WrapperComponent = styled.div`
   display: flex;
 `;
 
-const CalendarHeader = (props) => {
+type TCalendarHeader = {
+  monthLabel: string;
+  yearLabel: string;
+  onPrevMonthClick: () => void;
+  onTodayClick: () => void;
+  onNextMonthClick: () => void;
+  onPrevYearClick: () => void;
+  onNextYearClick: () => void;
+};
+
+const CalendarHeader = (props: TCalendarHeader) => {
   const intl = useIntl();
   // https://codepen.io/mudassir0909/pen/eIHqB
 
@@ -102,15 +111,5 @@ const CalendarHeader = (props) => {
 };
 
 CalendarHeader.displayName = 'CalendarHeader';
-
-CalendarHeader.propTypes = {
-  monthLabel: PropTypes.string.isRequired,
-  yearLabel: PropTypes.string.isRequired,
-  onPrevMonthClick: PropTypes.func.isRequired,
-  onTodayClick: PropTypes.func.isRequired,
-  onNextMonthClick: PropTypes.func.isRequired,
-  onPrevYearClick: PropTypes.func.isRequired,
-  onNextYearClick: PropTypes.func.isRequired,
-};
 
 export default CalendarHeader;
