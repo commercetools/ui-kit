@@ -4,7 +4,7 @@
   "version": "2.0.8",
   "private": true,
   "bin": {
-    "generate-package-json": "./bin/generate_package_json.sh"
+    "generate-package-json": "./bin/cli.mjs"
   },
   "main": "./src/index.ts",
   "scripts": {

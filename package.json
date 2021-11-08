@@ -4,36 +4,33 @@
   "description": "UI component library based on our Design System",
   "homepage": "https://uikit.commercetools.com/",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/commercetools/ui-kit.git"
-  },
   "private": true,
-  "license": "MIT",
-  "keywords": ["javascript", "frontend", "ui-kit", "design-system", "react"],
+  "keywords": [
+    "javascript",
+    "frontend",
+    "ui-kit",
+    "design-system",
+    "react"
+  ],
   "sideEffects": false,
   "scripts": {
-    "postinstall": "manypkg check && preconstruct dev && patch-package && yarn --cwd docs",
     "auth": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "clean": "manypkg exec rm -rf dist",
     "generate-readmes": "yarn generate-readme --all-workspace-packages",
     "generate-icons": "manypkg run icons generate-icons && manypkg run checkbox-input generate-icons && manypkg run radio-input generate-icons && manypkg run rich-text-utils generate-icons && prettier --write '**/generated/*.tsx'",
     "design-tokens:build": "manypkg run design-system build:tokens",
     "design-tokens:build:watch": "manypkg run design-system build:tokens:watch",
-    "prebuild": "yarn generate-icons && yarn design-tokens:build && yarn i18n:compile",
-    "postbuild": "yarn workspace @commercetools-frontend/ui-kit run copy-assets",
-    "build": "preconstruct build",
+    "build": "./scripts/build.sh",
     "build:watch": "preconstruct watch",
     "start": "yarn --cwd docs start",
-    "i18n:build": "formatjs extract --format=$(pwd)/packages/i18n/transifex-transformer.js --out-file=$(pwd)/packages/i18n/data/core.json '{packages,src/components}/**/messages.js'",
-    "i18n:compile": "manypkg run i18n compile-data",
+    "extract-intl": "formatjs extract --format=./packages/i18n/transifex-transformer.js --out-file=./packages/i18n/data/core.json '{packages,src/components}/**/messages.js'",
+    "compile-intl": "yarn workspace @commercetools-uikit/i18n compile-data",
     "lint": "jest --projects jest.eslint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",
     "lint:css": "jest --config jest.stylelint.config.js",
     "format:js": "prettier --write '**/*.{js,ts,tsx}'",
     "format:md": "prettier --write --parser markdown '**/*.md'",
     "format:yaml": "prettier --write --parser yaml '**/*.yaml'",
-    "pretest": "yarn i18n:compile",
     "test": "jest --projects jest.{ts-test,test}.config.js",
     "test:watch": "yarn test --watch",
     "test:bundle": "jest --config jest.bundle.config.js",
@@ -47,24 +44,21 @@
     "visual-testing-app:build:watch": "manypkg run visual-testing-app build:watch",
     "visual-testing-app:serve": "manypkg run visual-testing-app start",
     "labels:sync": "github-labels sync",
-    "typecheck": "tsc --noEmit --skipLibCheck",
-    "prepare": "husky install"
+    "typecheck": "tsc --noEmit --skipLibCheck"
   },
-  "workspaces": {
-    "packages": [
-      "design-system",
-      "generators/*",
-      "packages/*",
-      "packages/components/*",
-      "packages/components/buttons/*",
-      "packages/components/fields/*",
-      "packages/components/inputs/*",
-      "packages/components/spacings/*",
-      "presets/*",
-      "visual-testing-app"
-    ],
-    "nohoist": ["react-virtualized/dom-helpers"]
-  },
+  "packageManager": "yarn@3.1.0",
+  "workspaces": [
+    "design-system",
+    "generators/*",
+    "packages/*",
+    "packages/components/*",
+    "packages/components/buttons/*",
+    "packages/components/fields/*",
+    "packages/components/inputs/*",
+    "packages/components/spacings/*",
+    "presets/*",
+    "visual-testing-app"
+  ],
   "preconstruct": {
     "packages": [
       "design-system",
@@ -82,6 +76,8 @@
     "@changesets/cli": "2.17.0",
     "@commercetools-frontend/babel-preset-mc-app": "20.10.4",
     "@commercetools-frontend/eslint-config-mc-app": "20.10.1",
+    "@commercetools-local/generator-package-json": "*",
+    "@commercetools-local/generator-readme": "*",
     "@commercetools/github-labels": "1.1.0",
     "@commitlint/cli": "13.2.1",
     "@commitlint/config-conventional": "13.2.0",
@@ -161,10 +157,10 @@
   "resolutions": {
     "@types/unist": "2.0.6",
     "@testing-library/dom": "8.10.1",
+    "core-js-compat": "3.19.0",
     "lodash": "4.17.21",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-test-renderer": "17.0.2",
-    "**/core-js-compat": "3.19.0"
+    "react-test-renderer": "17.0.2"
   }
 }

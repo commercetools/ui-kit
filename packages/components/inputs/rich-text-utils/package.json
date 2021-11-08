@@ -9,18 +9,23 @@
     "directory": "packages/components/inputs/rich-text-utils"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
   "main": "dist/commercetools-uikit-rich-text-utils.cjs.js",
   "module": "dist/commercetools-uikit-rich-text-utils.esm.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "prepare": "../../../../scripts/version.js replace",
     "generate-icons": "svgr -d src/rich-text-body/icons/generated --typescript src/rich-text-body/icons/svg"
   },
   "dependencies": {

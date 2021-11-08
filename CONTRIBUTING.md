@@ -102,7 +102,7 @@ The UI Kit uses `react-intl` to define and consume messages. The source/core mes
 
 The translations for the supported languages exist in the `/i18n` folder. We do not use any automated translation software.
 
-After adding new messages, you need to run `yarn i18n:build`. This will modify the language files in `/i18n` by adding empty translations for the message keys.
+After adding new messages, you need to run `yarn extract-intl`. This will modify the language files in `/i18n` by adding empty translations for the message keys.
 
 If you want to modify an existing translation, you will need to manually edit the related files in `/i18n`.
 

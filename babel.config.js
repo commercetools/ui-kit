@@ -11,5 +11,8 @@ module.exports = {
       },
     ],
   ],
-  plugins: ['babel-plugin-typescript-to-proptypes'],
+  plugins: [
+    'babel-plugin-typescript-to-proptypes',
+    require('./babel-plugin-package-version'),
+  ],
 };

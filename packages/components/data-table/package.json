@@ -9,19 +9,22 @@
     "directory": "packages/components/data-table"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
   "main": "dist/commercetools-uikit-data-table.cjs.js",
   "module": "dist/commercetools-uikit-data-table.esm.js",
-  "files": ["dist"],
-  "scripts": {
-    "prepare": "../../../scripts/version.js replace"
-  },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@babel/runtime": "7.16.0",
     "@babel/runtime-corejs3": "7.16.0",

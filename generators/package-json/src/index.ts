@@ -30,12 +30,6 @@ const writeFile = (
   }
 };
 
-const getRelativePathToWorkspace = (relativePackageFolderPath: string) =>
-  relativePackageFolderPath
-    .split('/')
-    .map(() => '..')
-    .join('/');
-
 export const transformDocument = (
   packageFolderPath: string,
   options: GeneratorPackageJsonOptions
@@ -63,10 +57,6 @@ export const transformDocument = (
     );
   }
 
-  const relativePathToWorkspace = getRelativePathToWorkspace(
-    relativePackageFolderPath
-  );
-
   return omitEmpty<Package['packageJson']>({
     name: `${npmScope}/${packageFolderName}`,
     description: originalPackageJson.description,
@@ -91,10 +81,7 @@ export const transformDocument = (
     module: originalPackageJson.module,
     preconstruct: originalPackageJson.preconstruct,
     files: originalPackageJson.files,
-    scripts: {
-      ...originalPackageJson.scripts,
-      prepare: `${relativePathToWorkspace}/scripts/version.js replace`,
-    },
+    scripts: originalPackageJson.scripts,
     dependencies: originalPackageJson.dependencies,
     devDependencies: originalPackageJson.devDependencies,
     peerDependencies: originalPackageJson.peerDependencies,
