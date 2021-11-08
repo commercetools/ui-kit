@@ -39,7 +39,7 @@
     "bundlesize": "bundlesize",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "changeset": "changeset",
-    "changeset:version-and-format": "changeset version && yarn prettier --write --parser json '**/package.json'",
+    "changeset:version-and-format": "changeset version && yarn prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install",
     "visual-testing-app:build": "manypkg run visual-testing-app build",
     "visual-testing-app:build:watch": "manypkg run visual-testing-app build:watch",
     "visual-testing-app:serve": "manypkg run visual-testing-app start",
