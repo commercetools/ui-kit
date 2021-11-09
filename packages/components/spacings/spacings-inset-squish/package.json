@@ -23,8 +23,8 @@
     "prepare": "../../../../scripts/version.js replace"
   },
   "dependencies": {
-    "@babel/runtime": "7.15.4",
-    "@babel/runtime-corejs3": "7.15.4",
+    "@babel/runtime": "7.16.0",
+    "@babel/runtime-corejs3": "7.16.0",
     "@commercetools-uikit/design-system": "12.2.4",
     "@commercetools-uikit/utils": "12.2.0",
     "@emotion/react": "^11.4.0",
