@@ -9,18 +9,23 @@
     "directory": "packages/components/inputs/radio-input"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
   "main": "dist/commercetools-uikit-radio-input.cjs.js",
   "module": "dist/commercetools-uikit-radio-input.esm.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "prepare": "../../../../scripts/version.js replace",
     "generate-icons": "svgr -d src/icons/generated --typescript src/icons/svg"
   },
   "dependencies": {

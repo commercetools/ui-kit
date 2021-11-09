@@ -9,19 +9,26 @@
     "directory": "packages/i18n"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": [
+    "javascript",
+    "design system",
+    "react",
+    "uikit"
+  ],
   "license": "MIT",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
   "main": "dist/commercetools-uikit-i18n.cjs.js",
   "module": "dist/commercetools-uikit-i18n.esm.js",
-  "files": ["dist", "data", "compiled-data"],
+  "files": [
+    "dist",
+    "data",
+    "compiled-data"
+  ],
   "scripts": {
-    "prepare": "../../scripts/version.js replace",
-    "compile-data": "formatjs compile-folder --format=$(pwd)/transifex-transformer.js --ast data compiled-data"
+    "compile-data": "formatjs compile-folder --format=./transifex-transformer.js --ast data compiled-data"
   },
   "dependencies": {
     "@babel/runtime": "7.16.0",

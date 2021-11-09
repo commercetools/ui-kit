@@ -71,9 +71,6 @@ Object {
     "type": "git",
     "url": "https://github.com/commercetools/ui-kit.git",
   },
-  "scripts": Object {
-    "prepare": "../../scripts/version.js replace",
-  },
   "sideEffects": false,
   "version": "1.0.0",
 }
