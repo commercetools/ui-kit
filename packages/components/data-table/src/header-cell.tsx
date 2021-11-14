@@ -32,7 +32,7 @@ type THeaderRef = {
 type TColumnResizingReducer = {
   startResizing: (headerRef: RefObject<THeaderRef>, event: MouseEvent) => void;
   onDrag: EventListenerOrEventListenerObject;
-  onDragResizing: (event: MouseEvent, cellIndex?: string) => void;
+  onDragResizing: (event: globalThis.MouseEvent, cellIndex?: string) => void;
   finishResizing: () => TColumn[];
   getIsColumnBeingResized: (cellIndex?: string) => {};
   getHasTableBeenResized: () => boolean;
@@ -48,7 +48,7 @@ const HeaderCellWrapper = (props: THeaderCellWrapper) => {
     columnResizingReducer.startResizing(headerRef, event);
   };
 
-  const onDrag = (event: MouseEvent) =>
+  const onDrag = (event: globalThis.MouseEvent) =>
     columnResizingReducer.onDragResizing(event, headerRef.current?.cellIndex);
 
   const onDragEnd = () => {
@@ -58,14 +58,14 @@ const HeaderCellWrapper = (props: THeaderCellWrapper) => {
       props.onColumnResized(finalSizes);
     }
 
-    window.removeEventListener('mousemove', onDrag as unknown as EventListener);
+    window.removeEventListener('mousemove', onDrag);
     window.removeEventListener('mouseup', onDragEnd);
   };
 
   if (
     columnResizingReducer.getIsColumnBeingResized(headerRef.current?.cellIndex)
   ) {
-    window.addEventListener('mousemove', onDrag as unknown as EventListener);
+    window.addEventListener('mousemove', onDrag);
     window.addEventListener('mouseup', onDragEnd);
   }
   /**
