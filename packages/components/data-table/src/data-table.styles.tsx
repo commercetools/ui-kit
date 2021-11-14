@@ -3,8 +3,14 @@ import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { RowExpandCollapseButton } from './cell.styles';
 import convertNumericDimensionToPixelValue from './utils/convert-numeric-dimension-to-pixel-value';
+import type { TDataTable } from './data-table';
+import type { TDataRow } from './data-row';
 
-const getClickableRowStyle = (props) => {
+type TGetClickableRowStyle = {
+  isRowClickable?: TDataRow['onRowClick'];
+};
+
+const getClickableRowStyle = (props: TGetClickableRowStyle) => {
   if (props.isRowClickable) {
     return css`
       cursor: pointer;
@@ -16,7 +22,13 @@ const getClickableRowStyle = (props) => {
   return '';
 };
 
-const getDisabledSelfContainmentStyles = (props) => {
+type TGetDisabledSelfContainmentStyles = {
+  disableSelfContainment: boolean;
+};
+
+const getDisabledSelfContainmentStyles = (
+  props: TGetDisabledSelfContainmentStyles
+) => {
   if (props.disableSelfContainment) {
     return css`
       position: unset;
@@ -27,7 +39,13 @@ const getDisabledSelfContainmentStyles = (props) => {
   return '';
 };
 
-const TableContainer = styled.div`
+type TTableContainer = {
+  isBeingResized?: boolean;
+  maxWidth?: string | number;
+  disableSelfContainment: boolean;
+};
+
+const TableContainer = styled.div<TTableContainer>`
   position: relative;
   z-index: 0;
   overflow-x: auto;
@@ -47,10 +65,18 @@ const TableContainer = styled.div`
   ${getDisabledSelfContainmentStyles}
 `;
 
-const TableGrid = styled.table`
+type TTableGrid = {
+  resizedTotalWidth?: number;
+  columns?: TDataTable['columns'];
+  disableSelfContainment: boolean;
+  maxHeight?: string | number;
+};
+
+const TableGrid = styled.table<TTableGrid>`
   display: grid;
   /* stylelint-disable function-whitespace-after */
   grid-template-columns: ${(props) =>
+    props.columns &&
     props.columns.map((column) => column.width || 'auto').join(' ')};
   /* stylelint-enable function-whitespace-after */
 
@@ -75,7 +101,7 @@ const Body = styled.tbody`
   display: contents;
 `;
 
-const Row = styled.tr`
+const Row = styled.tr<TGetClickableRowStyle>`
   display: contents;
   ${getClickableRowStyle}
   :hover, :focus-within {

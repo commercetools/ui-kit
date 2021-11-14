@@ -1,9 +1,20 @@
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { getPaddingStyle, getHorizontalAlignmentStyle } from './cell.styles';
 
-const Footer = styled.div`
+type TFooter = {
+  children: ReactNode;
+  isCondensed?: boolean;
+  horizontalCellAlignment?: 'left' | 'center' | 'right';
+  resizedTotalWidth?: number;
+};
+
+const defaultProps: Pick<TFooter, 'horizontalCellAlignment'> = {
+  horizontalCellAlignment: 'left',
+};
+
+const Footer = styled.div<TFooter>`
   box-sizing: border-box;
   display: block;
   ${getPaddingStyle}
@@ -15,13 +26,6 @@ const Footer = styled.div`
     props.resizedTotalWidth ? `max-width: ${props.resizedTotalWidth}px;` : ''}
 `;
 Footer.displayName = 'Footer';
-Footer.propTypes = {
-  children: PropTypes.node.isRequired,
-  isCondensed: PropTypes.bool,
-  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
-};
-Footer.defaultProps = {
-  horizontalCellAlignment: 'left',
-};
 
+Footer.defaultProps = defaultProps;
 export default Footer;

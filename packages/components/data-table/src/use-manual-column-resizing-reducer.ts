@@ -1,12 +1,62 @@
-import { useReducer, useDebugValue } from 'react';
+import { useReducer, useDebugValue, MutableRefObject, Dispatch } from 'react';
+import type { TColumn } from './data-table';
+
+type TTableRef = MutableRefObject<HTMLTableElement | undefined>;
+
+type TState = {
+  tableRef?: TTableRef;
+  sizes?: TRenderedColumnMeasurements[];
+  initialColWidth?: number;
+  initialMousePosition?: number;
+  columnBeingResized?: number;
+  hasBeenResized?: boolean;
+};
+
+export type TRenderedColumnMeasurements = {
+  key: string | null;
+  width: number;
+};
+
+type TPayload = {
+  initialColWidth: undefined;
+  initialMousePosition: undefined;
+  columnBeingResized: undefined;
+  hasBeenResized: boolean;
+  sizes: undefined;
+  tableRef: TTableRef;
+};
+
+type TStartResizingPayload = {
+  initialColWidth: number;
+  initialMousePosition: number;
+  columnBeingResized: number;
+} & TState;
+
+type TFinishResizingPayload = {
+  initialColWidth: undefined;
+  initialMousePosition: undefined;
+  columnBeingResized: undefined;
+  hasBeenResized: true;
+} & TState;
+
+type TRegisterColumnMeasurements = {
+  sizes: TRenderedColumnMeasurements[];
+} & TState;
+
+type TAction =
+  | { type: 'reset'; payload?: TPayload }
+  | { type: 'registerColumnMeasurements'; payload: TRegisterColumnMeasurements }
+  | { type: 'startResizing'; payload: TStartResizingPayload }
+  | { type: 'finishResizing'; payload?: TFinishResizingPayload }
+  | { type: undefined };
 
 const MINIMUM_COLUMN_SIZE = 32;
 
 // calculates size on mouse-drag and enforces a minimum size
 const calculateNewSize = (
-  initialSize,
-  initialMousePosition,
-  newMousePosition,
+  initialSize = 0,
+  initialMousePosition = 0,
+  newMousePosition: number,
   minSize = MINIMUM_COLUMN_SIZE
 ) => {
   const newSize = initialSize - (initialMousePosition - newMousePosition);
@@ -14,7 +64,11 @@ const calculateNewSize = (
   return minSize > newSize ? minSize : newSize;
 };
 
-const setColumnWidth = (columns, position, value) => {
+const setColumnWidth = (
+  columns: TRenderedColumnMeasurements[] = [],
+  position: number,
+  value: number
+) => {
   // columns => comes from state.sizes which reflects component's state
   // any update to the columns results in updating the state
 
@@ -24,10 +78,10 @@ const setColumnWidth = (columns, position, value) => {
   return columns;
 };
 
-const getGridTemplateColumnsStyle = (columns) =>
+const getGridTemplateColumnsStyle = (columns: TColumn['width'][]) =>
   `${columns.map((width) => `${width || 0}px`).join(' ')}`;
 
-const initialState = (tableRef) => ({
+const initialState = (tableRef?: TTableRef) => ({
   initialColWidth: undefined,
   initialMousePosition: undefined,
   columnBeingResized: undefined,
@@ -36,7 +90,7 @@ const initialState = (tableRef) => ({
   tableRef,
 });
 
-function reducer(state, action) {
+function reducer(state: TState, action: TAction) {
   switch (action.type) {
     case 'reset': {
       return {
@@ -71,23 +125,24 @@ function reducer(state, action) {
   }
 }
 
-const useManualResizingReducer = (tableRef) => {
-  const [manualResizingState, dispatch] = useReducer(
-    reducer,
-    initialState(tableRef)
-  );
+const useManualResizingReducer = (
+  tableRef?: TTableRef
+): [TState, Dispatch<TAction>] => {
+  const [manualResizingState, dispatch] = useReducer<
+    (prevState: TState, action: TAction) => TState
+  >(reducer, initialState(tableRef));
 
   useDebugValue(manualResizingState);
 
   return [manualResizingState, dispatch];
 };
 
-const useManualColumnResizing = (tableRef) => {
+const useManualColumnResizing = (tableRef?: TTableRef) => {
   const [state, dispatch] = useManualResizingReducer(tableRef);
 
   // if the table element has been rendered and we haven't yet measured the columns
-  if (state.tableRef.current && !state.sizes) {
-    const renderedColumnMeasurements = [];
+  if (state.tableRef?.current && !state.sizes) {
+    const renderedColumnMeasurements: TRenderedColumnMeasurements[] = [];
     state.tableRef.current.querySelectorAll('th').forEach((header) => {
       renderedColumnMeasurements.push({
         key: header.getAttribute('data-id'),
@@ -103,7 +158,13 @@ const useManualColumnResizing = (tableRef) => {
     });
   }
 
-  const startResizing = (headerRef, mouseEvent) => {
+  type THeaderRef = {
+    cellIndex: number;
+  } & HTMLTableElement;
+  const startResizing = (
+    headerRef: MutableRefObject<THeaderRef>,
+    mouseEvent: MouseEvent
+  ) => {
     dispatch({
       type: 'startResizing',
       payload: {
@@ -114,7 +175,7 @@ const useManualColumnResizing = (tableRef) => {
     });
   };
 
-  const onDragResizing = (event, columnIndex) =>
+  const onDragResizing = (event: MouseEvent, columnIndex: number) => {
     // throttle and sync resizing update rate with screen refresh rate
     requestAnimationFrame(() => {
       const width = calculateNewSize(
@@ -124,19 +185,20 @@ const useManualColumnResizing = (tableRef) => {
       );
       const newColumnsSizes = setColumnWidth(state.sizes, columnIndex, width);
 
+      if (!state.tableRef?.current) return;
       state.tableRef.current.style.gridTemplateColumns =
         getGridTemplateColumnsStyle(
           newColumnsSizes.map((newColumnsSize) => newColumnsSize.width)
         );
     });
-
+  };
   const finishResizing = () => {
     dispatch({ type: 'finishResizing' });
 
     return state.sizes;
   };
 
-  const getIsColumnBeingResized = (columnIndex) =>
+  const getIsColumnBeingResized = (columnIndex: number) =>
     state.columnBeingResized !== undefined
       ? state.columnBeingResized === columnIndex
       : false;
@@ -154,6 +216,7 @@ const useManualColumnResizing = (tableRef) => {
   };
 
   const reset = () => {
+    if (!state.tableRef?.current) return;
     state.tableRef.current.style.gridTemplateColumns = '';
 
     return dispatch({

@@ -1,12 +1,50 @@
 import { useContext, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Row } from './data-table.styles';
 import DataCell from './cell';
+import { TColumn, TRow, TDataTable } from './data-table';
 
 import ColumnResizingContext from './column-resizing-context';
 
-const DataRow = (props) => {
-  const { getIsColumnBeingResized } = useContext(ColumnResizingContext);
+export type TDataRow = {
+  row: TRow;
+  rowIndex: number;
+  columns: TColumn[];
+  shouldClipContent: boolean;
+  shouldRenderBottomBorder: boolean;
+} & Pick<
+  TDataTable,
+  | 'onRowClick'
+  | 'isCondensed'
+  | 'verticalCellAlignment'
+  | 'horizontalCellAlignment'
+  | 'itemRenderer'
+>;
+
+const defaultProps: Pick<
+  TDataRow,
+  | 'isCondensed'
+  | 'shouldClipContent'
+  | 'verticalCellAlignment'
+  | 'horizontalCellAlignment'
+  | 'shouldRenderBottomBorder'
+  | 'itemRenderer'
+> = {
+  isCondensed: false,
+  shouldClipContent: false,
+  verticalCellAlignment: 'top',
+  horizontalCellAlignment: 'left',
+  shouldRenderBottomBorder: true,
+  itemRenderer: (row, column) => row[column.key],
+};
+
+type TColumnResizingContext = {
+  getIsColumnBeingResized: (columnIndex: number) => boolean;
+};
+
+const DataRow = (props: TDataRow) => {
+  const { getIsColumnBeingResized } = useContext(
+    ColumnResizingContext
+  ) as TColumnResizingContext;
 
   const rowHasTruncatedColumn = props.columns.some(
     (column) => column.isTruncated
@@ -25,8 +63,10 @@ const DataRow = (props) => {
     }
   }, [rowHasTruncatedColumn]);
 
-  const shouldRenderCollapseButton = (totalColumnsLength, currentColumnIndex) =>
-    rowHasTruncatedColumn && totalColumnsLength - 1 === currentColumnIndex;
+  const shouldRenderCollapseButton = (
+    totalColumnsLength: number,
+    currentColumnIndex: number
+  ) => rowHasTruncatedColumn && totalColumnsLength - 1 === currentColumnIndex;
 
   return (
     <Row isRowClickable={props.onRowClick}>
@@ -52,7 +92,7 @@ const DataRow = (props) => {
               ? () => props.onRowClick?.(props.row, props.rowIndex, column.key)
               : undefined
           }
-          shouldClipContent={props.shouldClipContent}
+          // shouldClipContent={props.shouldClipContent}
           shouldRenderBottomBorder={props.shouldRenderBottomBorder}
           shouldRenderResizingIndicator={getIsColumnBeingResized(columnIndex)}
         >
@@ -64,42 +104,8 @@ const DataRow = (props) => {
     </Row>
   );
 };
-DataRow.propTypes = {
-  row: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }).isRequired,
-  rowIndex: PropTypes.number.isRequired,
-  columns: PropTypes.arrayOf(
-    PropTypes.shape({
-      key: PropTypes.string.isRequired,
-      align: PropTypes.oneOf(['left', 'center', 'right']),
-      onClick: PropTypes.func,
-      /* custom item renderer, specific for items of this column */
-      renderItem: PropTypes.func,
-      isTruncated: PropTypes.bool,
-      shouldIgnoreRowClick: PropTypes.bool,
-    })
-  ).isRequired,
-  onRowClick: PropTypes.func,
-  isCondensed: PropTypes.bool,
-  shouldClipContent: PropTypes.bool.isRequired,
-  shouldRenderBottomBorder: PropTypes.bool.isRequired,
-  verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
-  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
-  /* the default item (cell) renderer.
-    an existing per-column `renderItem` func takes precedence over this */
-  itemRenderer: PropTypes.func.isRequired,
-  /* the default cell alignment
-    an existing per-column `align` property takes precedence over this */
-};
-DataRow.defaultProps = {
-  isCondensed: false,
-  shouldClipContent: false,
-  verticalCellAlignment: 'top',
-  horizontalCellAlignment: 'left',
-  shouldRenderBottomBorder: true,
-  itemRenderer: (row, column) => row[column.key],
-};
+
+DataRow.defaultProps = defaultProps;
 DataRow.displayName = 'DataRow';
 
 export default DataRow;

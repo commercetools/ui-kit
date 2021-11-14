@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { getCellInnerStyles } from './cell.styles';
+import type { THeaderCell } from './header-cell';
 
 const getButtonStyle = () => css`
   cursor: pointer;
@@ -25,7 +26,11 @@ const getButtonStyle = () => css`
  * THEN AngleUpDown icon is hidden
  * AND AngleUp or AngleDown icon is shown
  */
-const getSortableHeaderStyles = (props) => css`
+type TGetSortableHeaderStyles = {
+  isActive?: boolean;
+};
+
+const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
   width: 100%;
   display: flex;
   align-items: center;
@@ -56,7 +61,13 @@ const getSortableHeaderStyles = (props) => css`
   }
 `;
 
-const HeaderCellInner = styled.div`
+type THeaderCellInner = Pick<
+  THeaderCell,
+  'shouldWrap' | 'isCondensed' | 'isSortable' | 'horizontalCellAlignment'
+> &
+  TGetSortableHeaderStyles;
+
+const HeaderCellInner = styled.div<THeaderCellInner>`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -64,11 +75,15 @@ const HeaderCellInner = styled.div`
 
   ${getCellInnerStyles}
   ${(props) => (props.isSortable ? getSortableHeaderStyles(props) : '')};
-  ${(props) => (props.as === 'button' ? getButtonStyle(props) : '')};
+  ${(props) => (props.as === 'button' ? getButtonStyle() : '')};
   ${(props) => (props.shouldWrap ? '' : 'white-space: nowrap')}
 `;
 
-const BaseHeaderCell = styled.th`
+type TBaseHeaderCell = {
+  disableHeaderStickiness?: boolean;
+  shouldClipContent?: boolean;
+};
+const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   color: ${vars.colorSurface};
   background-color: ${vars.colorAccent};
 

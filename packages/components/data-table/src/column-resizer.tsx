@@ -1,8 +1,9 @@
+import type { MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
 type TColumnResizer = {
-  onMouseDown?: () => void;
+  onMouseDown?: (event: MouseEvent) => void;
   isOnDataCell?: boolean;
 };
 
