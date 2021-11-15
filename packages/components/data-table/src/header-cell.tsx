@@ -110,7 +110,10 @@ export type THeaderCell = {
   iconComponent?: ReactNode;
 };
 
-const defaultProps = {
+const defaultProps: Pick<
+  THeaderCell,
+  'sortDirection' | 'disableHeaderStickiness' | 'horizontalCellAlignment'
+> = {
   sortDirection: 'desc',
   disableHeaderStickiness: false,
   horizontalCellAlignment: 'left',
