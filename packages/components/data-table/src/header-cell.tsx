@@ -134,12 +134,12 @@ const HeaderCell = (props: THeaderCell) => {
       isActive,
       isSortable: true,
     };
-  }
 
-  warning(
-    !props.isSortable,
-    `data-table: "onClick" is required if "isSortable" is "true"`
-  );
+    warning(
+      typeof props.onClick === 'function',
+      `data-table: "onClick" is required if "isSortable" is "true"`
+    );
+  }
 
   return (
     <HeaderCellWrapper
