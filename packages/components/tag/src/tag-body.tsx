@@ -1,7 +1,7 @@
 import type { Theme } from '@emotion/react';
 import type { TTagProps } from './tag';
 
-import { ReactNode, ElementType } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css, useTheme } from '@emotion/react';
 import {
@@ -9,10 +9,11 @@ import {
   designTokens,
 } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
+import { Link } from 'react-router-dom';
 
 export type TTagBodyProps = {
   to?: TTagProps['to'];
-  as?: ElementType;
+  as?: typeof Link;
   type?: TTagProps['type'];
   onClick?: TTagProps['onClick'];
   onRemove?: TTagProps['onRemove'];

@@ -2,4 +2,4 @@
 '@commercetools-uikit/primary-action-dropdown': patch
 ---
 
-Update type
+Update primary action dropdown "children" type
