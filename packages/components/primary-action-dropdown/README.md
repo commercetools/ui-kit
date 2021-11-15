@@ -58,9 +58,13 @@ export default Example;
 
 ### Properties
 
-| Props      | Type           | Required | Default | Description        |
-| ---------- | -------------- | :------: | ------- | ------------------ |
-| `children` | `ReactElement` |    ✅    |         | Any React element. |
+| Props      | Type                                                              | Required | Default | Description        |
+| ---------- | ----------------------------------------------------------------- | :------: | ------- | ------------------ |
+| `children` | `Array: ReactElement[]`<br/>[See signature.](#signature-children) |    ✅    |         | Any React element. |
+
+### Signatures
+
+#### Signature `children`
 
 ## Option
 

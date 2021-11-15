@@ -189,7 +189,7 @@ type TPrimaryActionDropdown = {
   /**
    * Any React element.
    */
-  children: ReactElement;
+  children: ReactElement[];
 };
 
 const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
