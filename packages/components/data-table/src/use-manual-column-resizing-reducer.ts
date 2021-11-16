@@ -17,26 +17,10 @@ export type TRenderedColumnMeasurements = {
   width: number;
 };
 
-type TPayload = {
-  initialColWidth: undefined;
-  initialMousePosition: undefined;
-  columnBeingResized: undefined;
-  hasBeenResized: boolean;
-  sizes: undefined;
-  tableRef: TTableRef;
-};
-
 type TStartResizingPayload = {
   initialColWidth: number;
   initialMousePosition: number;
   columnBeingResized: number;
-} & TState;
-
-type TFinishResizingPayload = {
-  initialColWidth: undefined;
-  initialMousePosition: undefined;
-  columnBeingResized: undefined;
-  hasBeenResized: true;
 } & TState;
 
 type TRegisterColumnMeasurements = {
@@ -44,10 +28,10 @@ type TRegisterColumnMeasurements = {
 } & TState;
 
 type TAction =
-  | { type: 'reset'; payload?: TPayload }
+  | { type: 'reset' }
   | { type: 'registerColumnMeasurements'; payload: TRegisterColumnMeasurements }
   | { type: 'startResizing'; payload: TStartResizingPayload }
-  | { type: 'finishResizing'; payload?: TFinishResizingPayload }
+  | { type: 'finishResizing' }
   | { type: undefined };
 
 const MINIMUM_COLUMN_SIZE = 32;
@@ -72,7 +56,6 @@ const setColumnWidth = (
   // columns => comes from state.sizes which reflects component's state
   // any update to the columns results in updating the state
 
-  // eslint-disable-next-line no-param-reassign
   columns[position] = { ...columns[position], width: value };
 
   return columns;

@@ -39,7 +39,7 @@ const DataCell = (props: TDataCell) => {
       'DataTable: "handleRowCollapseClick" is required when shouldRenderCollapseButton is true.'
     );
     warning(
-      props.isRowCollapsed,
+      typeof props.isRowCollapsed === 'boolean',
       'DataTable: "isRowCollapsed" is required when shouldRenderCollapseButton is true.'
     );
   }
@@ -70,7 +70,7 @@ const DataCell = (props: TDataCell) => {
         <RowExpandCollapseButton
           label="Expand/Collapse Row"
           onClick={(event) => {
-            props.handleRowCollapseClick && props.handleRowCollapseClick();
+            if (props.handleRowCollapseClick) props.handleRowCollapseClick();
             event.stopPropagation();
           }}
           isRowCollapsed={props.isRowCollapsed}

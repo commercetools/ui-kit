@@ -92,7 +92,6 @@ const DataRow = (props: TDataRow) => {
               ? () => props.onRowClick?.(props.row, props.rowIndex, column.key)
               : undefined
           }
-          // shouldClipContent={props.shouldClipContent}
           shouldRenderBottomBorder={props.shouldRenderBottomBorder}
           shouldRenderResizingIndicator={getIsColumnBeingResized(columnIndex)}
         >

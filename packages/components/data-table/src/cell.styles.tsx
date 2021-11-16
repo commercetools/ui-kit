@@ -4,7 +4,17 @@ import { customProperties as vars } from '@commercetools-uikit/design-system';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import type { TDataCell } from './cell';
 
-const getPaddingStyle = (props: Pick<TDataCell, 'isCondensed'>) => {
+type TCellInner = {
+  shouldClipContent?: boolean;
+} & Pick<
+  TDataCell,
+  | 'verticalCellAlignment'
+  | 'horizontalCellAlignment'
+  | 'isTruncated'
+  | 'isCondensed'
+>;
+
+const getPaddingStyle = (props: TCellInner) => {
   if (props.isCondensed)
     return css`
       padding: ${vars.spacingS};
@@ -14,9 +24,7 @@ const getPaddingStyle = (props: Pick<TDataCell, 'isCondensed'>) => {
   `;
 };
 
-const getHorizontalAlignmentStyle = (
-  props: Pick<TDataCell, 'horizontalCellAlignment'>
-) => {
+const getHorizontalAlignmentStyle = (props: TCellInner) => {
   if (props.horizontalCellAlignment === 'center') {
     return css`
       text-align: center;
@@ -35,9 +43,7 @@ const getHorizontalAlignmentStyle = (
   `;
 };
 
-const getVerticalAlignmentStyle = (
-  props: Pick<TDataCell, 'verticalCellAlignment'>
-) => {
+const getVerticalAlignmentStyle = (props: TCellInner) => {
   if (props.verticalCellAlignment === 'center') {
     return css`
       align-self: center;
@@ -53,7 +59,7 @@ const getVerticalAlignmentStyle = (
   `;
 };
 
-const getTruncatedStyle = (props: Pick<TDataCell, 'isTruncated'>) => {
+const getTruncatedStyle = (props: TCellInner) => {
   if (props.isTruncated) {
     return css`
       overflow: hidden;
@@ -97,16 +103,6 @@ const getCellInnerStyles = (props: TCellInner) => {
  * otherwise it will change the way css-grid automatically allocates space for the cells of the table,
  * preferring to clip the cells instead and adding horizontal scrollbar to the table container
  */
-type TCellInner = {
-  shouldClipContent?: boolean;
-} & Pick<
-  TDataCell,
-  | 'verticalCellAlignment'
-  | 'horizontalCellAlignment'
-  | 'isTruncated'
-  | 'isCondensed'
->;
-
 const CellInner = styled.div<TCellInner>`
   box-sizing: border-box;
   flex: 1;
