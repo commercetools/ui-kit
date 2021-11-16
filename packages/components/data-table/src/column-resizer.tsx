@@ -1,8 +1,13 @@
-import PropTypes from 'prop-types';
+import type { MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const ResizerIndicator = styled.div`
+type TColumnResizer = {
+  onMouseDown?: (event: MouseEvent) => void;
+  isOnDataCell?: boolean;
+};
+
+const ResizerIndicator = styled.div<TColumnResizer>`
   height: 100%;
   width: 3px;
   background: ${vars.colorInfo};
@@ -45,15 +50,11 @@ const DraggableArea = styled.div`
   }
 `;
 
-const ColumnResizer = (props) => (
+const ColumnResizer = (props: TColumnResizer) => (
   <DraggableArea role="presentation" onMouseDown={props.onMouseDown}>
     <ResizerIndicator isOnDataCell={props.isOnDataCell} />
   </DraggableArea>
 );
 ColumnResizer.displayName = 'ColumnResizer';
-ColumnResizer.propTypes = {
-  onMouseDown: PropTypes.func,
-  isOnDataCell: PropTypes.bool,
-};
 
 export default ColumnResizer;

@@ -1,6 +1,4 @@
-import { useContext, useRef } from 'react';
-import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
+import { useContext, useRef, ReactNode, MouseEvent, RefObject } from 'react';
 import {
   AngleUpIcon,
   AngleDownIcon,
@@ -15,17 +13,43 @@ import {
 import Resizer from './column-resizer';
 import ColumnResizingContext from './column-resizing-context';
 import isFixedWidthValue from './utils/is-fixed-width-value';
+import { warning } from '@commercetools-uikit/utils';
+import type { TColumn } from './data-table';
 
-const HeaderCellWrapper = (props) => {
-  const columnResizingReducer = useContext(ColumnResizingContext);
-  const headerRef = useRef(null);
+type THeaderCellWrapper = {
+  children: ReactNode;
+  columnKey: string;
+  columnWidth?: number;
+  disableResizing?: boolean;
+  onColumnResized?: (args: TColumn[]) => void;
+  disableHeaderStickiness?: boolean;
+};
 
-  const onStartResizing = (event) => {
+type THeaderRef = {
+  cellIndex: string;
+} & HTMLTableCellElement;
+
+type TColumnResizingReducer = {
+  startResizing: (headerRef: RefObject<THeaderRef>, event: MouseEvent) => void;
+  onDrag: EventListenerOrEventListenerObject;
+  onDragResizing: (event: globalThis.MouseEvent, cellIndex?: string) => void;
+  finishResizing: () => TColumn[];
+  getIsColumnBeingResized: (cellIndex?: string) => {};
+  getHasTableBeenResized: () => boolean;
+  getIsAnyColumnBeingResized: () => boolean;
+};
+const HeaderCellWrapper = (props: THeaderCellWrapper) => {
+  const columnResizingReducer = useContext(
+    ColumnResizingContext
+  ) as TColumnResizingReducer;
+  const headerRef = useRef<THeaderRef>(null);
+
+  const onStartResizing = (event: MouseEvent) => {
     columnResizingReducer.startResizing(headerRef, event);
   };
 
-  const onDrag = (event) =>
-    columnResizingReducer.onDragResizing(event, headerRef.current.cellIndex);
+  const onDrag = (event: globalThis.MouseEvent) =>
+    columnResizingReducer.onDragResizing(event, headerRef.current?.cellIndex);
 
   const onDragEnd = () => {
     const finalSizes = columnResizingReducer.finishResizing();
@@ -50,7 +74,7 @@ const HeaderCellWrapper = (props) => {
    * THEN the header content should be clipped
    */
   const shouldClipContent =
-    isFixedWidthValue(props.columnWidth) ||
+    (props.columnWidth && isFixedWidthValue(props.columnWidth)) ||
     columnResizingReducer.getHasTableBeenResized() ||
     columnResizingReducer.getIsAnyColumnBeingResized();
 
@@ -67,19 +91,37 @@ const HeaderCellWrapper = (props) => {
     </BaseHeaderCell>
   );
 };
-HeaderCellWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-  columnKey: PropTypes.string.isRequired,
-  columnWidth: PropTypes.string,
-  disableResizing: PropTypes.bool,
-  onColumnResized: PropTypes.func,
-  disableHeaderStickiness: PropTypes.bool,
-};
 HeaderCellWrapper.displayName = 'HeaderCellWrapper';
 
-const HeaderCell = (props) => {
+export type THeaderCell = {
+  onClick?: (columnKey: string, sortDirection: 'asc' | 'desc') => void;
+  sortedBy?: string;
+  children: ReactNode;
+  columnKey: string;
+  columnWidth?: number;
+  shouldWrap?: boolean;
+  isSortable?: boolean;
+  isCondensed?: boolean;
+  sortDirection?: 'desc' | 'asc';
+  disableResizing?: boolean;
+  onColumnResized?: (args: TColumn[]) => void;
+  disableHeaderStickiness: boolean;
+  horizontalCellAlignment: 'left' | 'center' | 'right';
+  iconComponent?: ReactNode;
+};
+
+const defaultProps: Pick<
+  THeaderCell,
+  'sortDirection' | 'disableHeaderStickiness' | 'horizontalCellAlignment'
+> = {
+  sortDirection: 'desc',
+  disableHeaderStickiness: false,
+  horizontalCellAlignment: 'left',
+};
+
+const HeaderCell = (props: THeaderCell) => {
   let sortableHeaderProps = {};
-  let SortingIcon;
+  let SortingIcon!: typeof AngleDownIcon;
 
   if (props.isSortable) {
     const isActive = props.sortedBy === props.columnKey;
@@ -90,10 +132,16 @@ const HeaderCell = (props) => {
     sortableHeaderProps = {
       as: 'button',
       label: props.sortDirection,
-      onClick: () => props.onClick(props.columnKey, nextSortDirection),
+      onClick: () =>
+        props.onClick && props.onClick(props.columnKey, nextSortDirection),
       isActive,
       isSortable: true,
     };
+
+    warning(
+      typeof props.onClick === 'function',
+      `data-table: "onClick" is required if "isSortable" is "true"`
+    );
   }
 
   return (
@@ -134,26 +182,6 @@ const HeaderCell = (props) => {
   );
 };
 HeaderCell.displayName = 'HeaderCell';
-HeaderCell.propTypes = {
-  onClick: requiredIf(PropTypes.func, (props) => props.isSortable),
-  sortedBy: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  columnKey: PropTypes.string.isRequired,
-  columnWidth: PropTypes.string,
-  shouldWrap: PropTypes.bool,
-  isSortable: PropTypes.bool,
-  isCondensed: PropTypes.bool,
-  sortDirection: PropTypes.oneOf(['desc', 'asc']),
-  disableResizing: PropTypes.bool,
-  onColumnResized: PropTypes.func,
-  disableHeaderStickiness: PropTypes.bool.isRequired,
-  horizontalCellAlignment: PropTypes.string.isRequired,
-  iconComponent: PropTypes.node,
-};
-HeaderCell.defaultProps = {
-  sortDirection: 'desc',
-  disableHeaderStickiness: false,
-  horizontalCellAlignment: 'left',
-};
+HeaderCell.defaultProps = defaultProps;
 
 export default HeaderCell;

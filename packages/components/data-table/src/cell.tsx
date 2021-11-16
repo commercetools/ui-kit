@@ -1,18 +1,53 @@
-import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
+import { ReactNode } from 'react';
 import {
   RightTriangleFilledIcon,
   RightTriangleLinearIcon,
 } from '@commercetools-uikit/icons';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { BaseCell, CellInner, RowExpandCollapseButton } from './cell.styles';
 
 import Resizer from './column-resizer';
 
-const DataCell = (props) => {
+export type TDataCell = {
+  children: ReactNode;
+  isCondensed?: boolean;
+  isTruncated?: boolean;
+  onCellClick?: () => void;
+  shouldIgnoreRowClick?: boolean;
+  verticalCellAlignment?: 'top' | 'center' | 'bottom';
+  horizontalCellAlignment?: 'left' | 'center' | 'right';
+  shouldRenderBottomBorder: boolean;
+  shouldRenderCollapseButton: boolean;
+  shouldRenderResizingIndicator: boolean;
+  handleRowCollapseClick?: () => void;
+  isRowCollapsed?: boolean;
+};
+
+type TDefaultProps = {
+  isTruncated: boolean;
+  shouldRenderBottomBorder: boolean;
+};
+const defaultProps: TDefaultProps = {
+  isTruncated: false,
+  shouldRenderBottomBorder: true,
+};
+
+const DataCell = (props: TDataCell) => {
+  if (props.shouldRenderCollapseButton) {
+    warning(
+      typeof props.handleRowCollapseClick === 'function',
+      'DataTable: "handleRowCollapseClick" is required when shouldRenderCollapseButton is true.'
+    );
+    warning(
+      typeof props.isRowCollapsed === 'boolean',
+      'DataTable: "isRowCollapsed" is required when shouldRenderCollapseButton is true.'
+    );
+  }
+
   const Icon = props.isRowCollapsed
     ? RightTriangleFilledIcon
     : RightTriangleLinearIcon;
+
   return (
     <BaseCell
       onClick={props.onCellClick}
@@ -35,7 +70,7 @@ const DataCell = (props) => {
         <RowExpandCollapseButton
           label="Expand/Collapse Row"
           onClick={(event) => {
-            props.handleRowCollapseClick();
+            if (props.handleRowCollapseClick) props.handleRowCollapseClick();
             event.stopPropagation();
           }}
           isRowCollapsed={props.isRowCollapsed}
@@ -48,29 +83,7 @@ const DataCell = (props) => {
   );
 };
 DataCell.displayName = 'DataCell';
-DataCell.propTypes = {
-  children: PropTypes.node.isRequired,
-  isCondensed: PropTypes.bool,
-  isTruncated: PropTypes.bool,
-  onCellClick: PropTypes.func,
-  shouldIgnoreRowClick: PropTypes.bool,
-  verticalCellAlignment: PropTypes.oneOf(['top', 'center', 'bottom']),
-  horizontalCellAlignment: PropTypes.oneOf(['left', 'center', 'right']),
-  shouldRenderBottomBorder: PropTypes.bool.isRequired,
-  shouldRenderCollapseButton: PropTypes.bool.isRequired,
-  shouldRenderResizingIndicator: PropTypes.bool.isRequired,
-  handleRowCollapseClick: requiredIf(
-    PropTypes.func,
-    (props) => props.shouldRenderCollapseButton
-  ),
-  isRowCollapsed: requiredIf(
-    PropTypes.bool,
-    (props) => props.shouldRenderCollapseButton
-  ),
-};
-DataCell.defaultProps = {
-  isTruncated: false,
-  shouldRenderBottomBorder: true,
-};
+
+DataCell.defaultProps = defaultProps;
 
 export default DataCell;

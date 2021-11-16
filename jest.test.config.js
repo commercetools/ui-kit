@@ -39,8 +39,7 @@ module.exports = {
   testRegex: '\\.spec\\.[j|t]sx?$',
   moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx'],
   transform: {
-    '^.+\\.js?$': 'babel-jest',
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.(js|jsx|ts|tsx)?$': 'babel-jest',
   },
   watchPlugins: ['jest-watch-typeahead/filename'],
 };
