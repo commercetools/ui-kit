@@ -31,8 +31,7 @@ type TAction =
   | { type: 'reset' }
   | { type: 'registerColumnMeasurements'; payload: TRegisterColumnMeasurements }
   | { type: 'startResizing'; payload: TStartResizingPayload }
-  | { type: 'finishResizing' }
-  | { type: undefined };
+  | { type: 'finishResizing' };
 
 const MINIMUM_COLUMN_SIZE = 32;
 
@@ -102,9 +101,7 @@ function reducer(state: TState, action: TAction) {
         hasBeenResized: true,
       };
     default:
-      throw new Error(
-        `Action type '${action.type}' for 'useManualColumnResizing' reducer is not defined.`
-      );
+      return state;
   }
 }
 
