@@ -12,7 +12,10 @@ module.exports = {
     ],
   ],
   plugins: [
-    'babel-plugin-typescript-to-proptypes',
+    [
+      'babel-plugin-typescript-to-proptypes',
+      { mapUnknownReferenceTypesToAny: true },
+    ],
     require('./babel-plugin-package-version'),
   ],
 };
