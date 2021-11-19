@@ -61,9 +61,9 @@ const defaultProps: Pick<
   itemRenderer: (row, column) => row[column.key],
 };
 
+type TAny = string | number | boolean | undefined | null;
 export type TRow = {
-  id: string;
-  [key: string]: string;
+  [key: string | number]: TAny | TAny[];
 };
 
 export type TColumn = {
@@ -344,7 +344,7 @@ const DataTable = (props: TDataTable) => {
               <DataRow
                 {...props}
                 row={row}
-                key={row.id}
+                key={String(row.id)}
                 rowIndex={rowIndex}
                 shouldClipContent={
                   columnResizingReducer.getIsAnyColumnBeingResized() ||
