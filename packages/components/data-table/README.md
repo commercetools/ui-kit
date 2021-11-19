@@ -85,8 +85,7 @@ export default Example;
 
 ```ts
 {
-  id: string;
-  [key: string]: string;
+  [key: string | number]: TAny | TAny[];
 }
 ```
 
