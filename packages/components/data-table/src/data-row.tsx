@@ -8,11 +8,11 @@ import ColumnResizingContext from './column-resizing-context';
 export type TDataRow = {
   row: TRow;
   rowIndex: number;
-  columns: TColumn[];
+  columns: TColumn<TRow>[];
   shouldClipContent: boolean;
   shouldRenderBottomBorder: boolean;
 } & Pick<
-  TDataTable,
+  TDataTable<TRow>,
   | 'onRowClick'
   | 'isCondensed'
   | 'verticalCellAlignment'

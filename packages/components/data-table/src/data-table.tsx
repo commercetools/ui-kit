@@ -21,11 +21,17 @@ import DataRow from './data-row';
 import useManualColumnResizing from './use-manual-column-resizing-reducer';
 import ColumnResizingContext from './column-resizing-context';
 
+export type TRow = {
+  id: string;
+  [key: string]: string;
+};
+
 type TGetColumnsLayoutInfo = {
   key: string;
   width?: number;
 };
-const getColumnsLayoutInfo = (columns: TColumn[]) =>
+
+const getColumnsLayoutInfo = (columns: TColumn<TRow>[]) =>
   columns.reduce<TGetColumnsLayoutInfo[]>(
     (acc, currentValue) => [
       ...acc,
@@ -45,7 +51,7 @@ const shouldRenderRowBottomBorder = (
 };
 
 const defaultProps: Pick<
-  TDataTable,
+  TDataTable<TRow>,
   | 'isCondensed'
   | 'wrapHeaderLabels'
   | 'horizontalCellAlignment'
@@ -61,12 +67,7 @@ const defaultProps: Pick<
   itemRenderer: (row, column) => row[column.key],
 };
 
-type TAny = string | number | boolean | undefined | null;
-export type TRow = {
-  [key: string | number]: TAny | TAny[];
-};
-
-export type TColumn = {
+export type TColumn<RowData> = {
   /**
    * The unique key of the column that is used to identify your data type.
    * You can use this value to determine which value from a row item should be rendered.
@@ -109,7 +110,7 @@ export type TColumn = {
    * <br>
    * Signature: `(row: object, isRowCollapsed: boolean) => React.Node`
    */
-  renderItem?: (row: TRow, isRowCollapsed: boolean) => ReactNode;
+  renderItem?: (row: RowData, isRowCollapsed: boolean) => ReactNode;
   /**
    * Use this prop to place an `Icon` or `IconButton` on the left of the column label.
    * It is advised to place these types of components through this prop instead of `label`,
@@ -156,13 +157,13 @@ export type TColumn = {
   shouldIgnoreRowClick?: boolean;
 };
 
-export type TDataTable = {
+export type TDataTable<RowData> = {
   /**
    * The list of data that needs to be rendered in the table. Each object in the list can
    * have any shape as long as it has a unique identifier.
    * The data is rendered by using the callback render function `itemRenderer`.
    */
-  rows: TRow[];
+  rows: RowData[];
   /**
    * Each object requires a unique `key` which should correspond to property key of
    * the items of `rows` that you want to render under this column, and a `label`
@@ -170,7 +171,7 @@ export type TDataTable = {
    * The list of columns to be rendered.
    * Each column can be customized (see properties below).
    */
-  columns: TColumn[];
+  columns: TColumn<RowData>[];
   /**
    * Element to render within the `tfoot` (footer) element of the table.
    */
@@ -203,7 +204,7 @@ export type TDataTable = {
    * <br>
    * Signature: `([{key: string, width: number} ...]) => func()`
    */
-  onColumnResized?: (args: TColumn[]) => void;
+  onColumnResized?: (args: TColumn<RowData>[]) => void;
   /**
    * Set this to `true` to take control of the containment of the table and doing it on a parent element.
    * This means that the table will grow in size without adding scrollbars on itself,
@@ -225,7 +226,7 @@ export type TDataTable = {
    */
   itemRenderer: (
     item: TRow,
-    column: TColumn,
+    column: TColumn<RowData>,
     isRowCollapsed: boolean
   ) => ReactNode;
   /**
@@ -259,7 +260,7 @@ export type TDataTable = {
   sortDirection?: 'desc' | 'asc';
 };
 
-const DataTable = (props: TDataTable) => {
+const DataTable = (props: TDataTable<TRow>) => {
   warning(
     Array.isArray(props.columns),
     `ui-kit/DataTable: the prop "columns" is required.`
