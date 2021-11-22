@@ -5,13 +5,7 @@
   "homepage": "https://uikit.commercetools.com/",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "private": true,
-  "keywords": [
-    "javascript",
-    "frontend",
-    "ui-kit",
-    "design-system",
-    "react"
-  ],
+  "keywords": ["javascript", "frontend", "ui-kit", "design-system", "react"],
   "sideEffects": false,
   "scripts": {
     "auth": "npm_config_registry=https://registry.npmjs.org npm whoami",
@@ -39,7 +33,7 @@
     "bundlesize": "bundlesize",
     "test:bundle:watch": "jest --config jest.bundle.config.js --watch",
     "changeset": "changeset",
-    "changeset:version-and-format": "changeset version && yarn prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install",
+    "changeset:version-and-format": "changeset version && yarn prettier --write --parser json '**/package.json' && YARN_ENABLE_IMMUTABLE_INSTALLS=false SKIP_INSTALL_STORYBOOK=true yarn install",
     "visual-testing-app:build": "manypkg run visual-testing-app build",
     "visual-testing-app:build:watch": "manypkg run visual-testing-app build:watch",
     "visual-testing-app:serve": "manypkg run visual-testing-app start",
