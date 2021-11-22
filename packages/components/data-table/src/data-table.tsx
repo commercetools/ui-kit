@@ -345,7 +345,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTable<Row>) => {
               <DataRow
                 {...props}
                 row={row}
-                key={String(row.id)}
+                key={row.id}
                 rowIndex={rowIndex}
                 shouldClipContent={
                   columnResizingReducer.getIsAnyColumnBeingResized() ||
