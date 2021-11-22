@@ -26,8 +26,8 @@
     "dist"
   ],
   "dependencies": {
-    "@babel/runtime": "7.16.0",
-    "@babel/runtime-corejs3": "7.16.0",
+    "@babel/runtime": "7.16.3",
+    "@babel/runtime-corejs3": "7.16.3",
     "@commercetools-uikit/constraints": "12.2.4",
     "@commercetools-uikit/design-system": "12.2.4",
     "@commercetools-uikit/flat-button": "12.2.4",
@@ -41,7 +41,7 @@
     "@commercetools-uikit/utils": "12.2.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "common-tags": "1.8.0",
+    "common-tags": "1.8.2",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
     "react-select": "4.3.1",
@@ -50,7 +50,7 @@
   "devDependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intl": "5.21.0"
+    "react-intl": "5.21.2"
   },
   "peerDependencies": {
     "react": "17.x",

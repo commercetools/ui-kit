@@ -26,8 +26,8 @@
     "dist"
   ],
   "dependencies": {
-    "@babel/runtime": "7.16.0",
-    "@babel/runtime-corejs3": "7.16.0",
+    "@babel/runtime": "7.16.3",
+    "@babel/runtime-corejs3": "7.16.3",
     "@commercetools-uikit/constraints": "12.2.4",
     "@commercetools-uikit/icon-button": "12.2.4",
     "@commercetools-uikit/icons": "12.2.4",

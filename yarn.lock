@@ -1553,7 +1553,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime-corejs3@npm:7.16.0, @babel/runtime-corejs3@npm:^7.10.2, @babel/runtime-corejs3@npm:^7.12.5":
+"@babel/runtime-corejs3@npm:7.16.3":
+  version: 7.16.3
+  resolution: "@babel/runtime-corejs3@npm:7.16.3"
+  dependencies:
+    core-js-pure: ^3.19.0
+    regenerator-runtime: ^0.13.4
+  checksum: cdf97a52e6e980325190d680322ef182025249b6ac2fd7efa4e28bbf4e9ae8c41ef48457a25c90f03c5e759d2f66fe8d459c31e0f6b16815c9ca90654041f487
+  languageName: node
+  linkType: hard
+
+"@babel/runtime-corejs3@npm:^7.10.2, @babel/runtime-corejs3@npm:^7.12.5":
   version: 7.16.0
   resolution: "@babel/runtime-corejs3@npm:7.16.0"
   dependencies:
@@ -1572,7 +1582,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.16.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2, @babel/runtime@npm:^7.9.6":
+"@babel/runtime@npm:7.16.3":
+  version: 7.16.3
+  resolution: "@babel/runtime@npm:7.16.3"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: ab8ac887096d76185ddbf291d28fb976cd32473696dc497ad4905b784acbd5aa462533ad83a5c5104e10ead28c2e0e119840ee28ed8eff90dcdde9d57f916eda
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2, @babel/runtime@npm:^7.9.6":
   version: 7.16.0
   resolution: "@babel/runtime@npm:7.16.0"
   dependencies:
@@ -1626,7 +1645,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/apply-release-plan@npm:^5.0.1":
+"@changesets/apply-release-plan@npm:^5.0.2":
   version: 5.0.2
   resolution: "@changesets/apply-release-plan@npm:5.0.2"
   dependencies:
@@ -1647,7 +1666,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/assemble-release-plan@npm:^5.0.1, @changesets/assemble-release-plan@npm:^5.0.2":
+"@changesets/assemble-release-plan@npm:^5.0.2":
   version: 5.0.2
   resolution: "@changesets/assemble-release-plan@npm:5.0.2"
   dependencies:
@@ -1672,21 +1691,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/cli@npm:2.17.0":
-  version: 2.17.0
-  resolution: "@changesets/cli@npm:2.17.0"
+"@changesets/cli@npm:2.18.0":
+  version: 2.18.0
+  resolution: "@changesets/cli@npm:2.18.0"
   dependencies:
     "@babel/runtime": ^7.10.4
-    "@changesets/apply-release-plan": ^5.0.1
-    "@changesets/assemble-release-plan": ^5.0.1
-    "@changesets/config": ^1.6.1
+    "@changesets/apply-release-plan": ^5.0.2
+    "@changesets/assemble-release-plan": ^5.0.2
+    "@changesets/config": ^1.6.2
     "@changesets/errors": ^0.1.4
-    "@changesets/get-dependents-graph": ^1.2.2
-    "@changesets/get-release-plan": ^3.0.1
-    "@changesets/git": ^1.1.2
+    "@changesets/get-dependents-graph": ^1.2.3
+    "@changesets/get-release-plan": ^3.0.2
+    "@changesets/git": ^1.2.0
     "@changesets/logger": ^0.0.5
     "@changesets/pre": ^1.0.7
-    "@changesets/read": ^0.5.0
+    "@changesets/read": ^0.5.1
     "@changesets/types": ^4.0.1
     "@changesets/write": ^0.1.5
     "@manypkg/get-packages": ^1.0.1
@@ -1708,11 +1727,11 @@ __metadata:
     tty-table: ^2.8.10
   bin:
     changeset: bin.js
-  checksum: 214a0752ccb0df059212986cf1415e10b2ae2a3416309a5990db737515ed0c914a06e078bfbc762e09009e9bb64021529778cf0a77e3509b319281586501fbcd
+  checksum: 0a20c1529071a4c64ff7d71f1d69f183bbc4bdb1ff6ff8b5cc048d4bbbc411e6887f06d21fb09d97f10aa6724366c18151b090a75334a129c304ddea87d99116
   languageName: node
   linkType: hard
 
-"@changesets/config@npm:^1.6.1, @changesets/config@npm:^1.6.2":
+"@changesets/config@npm:^1.6.2":
   version: 1.6.2
   resolution: "@changesets/config@npm:1.6.2"
   dependencies:
@@ -1736,7 +1755,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/get-dependents-graph@npm:^1.2.2, @changesets/get-dependents-graph@npm:^1.2.3":
+"@changesets/get-dependents-graph@npm:^1.2.3":
   version: 1.2.3
   resolution: "@changesets/get-dependents-graph@npm:1.2.3"
   dependencies:
@@ -1759,7 +1778,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/get-release-plan@npm:^3.0.1":
+"@changesets/get-release-plan@npm:^3.0.2":
   version: 3.0.2
   resolution: "@changesets/get-release-plan@npm:3.0.2"
   dependencies:
@@ -1781,7 +1800,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/git@npm:^1.1.2, @changesets/git@npm:^1.2.0":
+"@changesets/git@npm:^1.2.0":
   version: 1.2.0
   resolution: "@changesets/git@npm:1.2.0"
   dependencies:
@@ -1827,7 +1846,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/read@npm:^0.5.0, @changesets/read@npm:^0.5.1":
+"@changesets/read@npm:^0.5.1":
   version: 0.5.1
   resolution: "@changesets/read@npm:0.5.1"
   dependencies:
@@ -1870,9 +1889,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-frontend/babel-preset-mc-app@npm:20.10.4":
-  version: 20.10.4
-  resolution: "@commercetools-frontend/babel-preset-mc-app@npm:20.10.4"
+"@commercetools-frontend/babel-preset-mc-app@npm:20.10.6":
+  version: 20.10.6
+  resolution: "@commercetools-frontend/babel-preset-mc-app@npm:20.10.6"
   dependencies:
     "@babel/core": 7.15.8
     "@babel/plugin-proposal-class-properties": 7.14.5
@@ -1899,13 +1918,13 @@ __metadata:
     babel-plugin-preval: 5.0.0
     babel-plugin-transform-react-remove-prop-types: 0.4.24
     core-js: 3.19.0
-  checksum: 2020e01b3e8f4b183e2d7c3f6944d8f722f79954e2697dd19b0d26949019ea62d30817592b725f8855a1ce1c58013dd1dde21119bfcce2ab8b2378bf9efeb7d5
+  checksum: 13c4d3a348875cb0de15922450434984bf59178ea0088639128e2d71d63184eea48d7746a7941cef2bc340538b2aaa088a5d9b001fdec7f961c1f9d3acb9fba5
   languageName: node
   linkType: hard
 
-"@commercetools-frontend/eslint-config-mc-app@npm:20.10.1":
-  version: 20.10.1
-  resolution: "@commercetools-frontend/eslint-config-mc-app@npm:20.10.1"
+"@commercetools-frontend/eslint-config-mc-app@npm:20.10.6":
+  version: 20.10.6
+  resolution: "@commercetools-frontend/eslint-config-mc-app@npm:20.10.6"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
@@ -1926,7 +1945,7 @@ __metadata:
     eslint-plugin-testing-library: ^4.0.0
   peerDependencies:
     eslint: ">=7.0.0"
-  checksum: e2767df82d4825b11bb72a414853c896088d429c5fca97aa3195be426f527b6e12a1cabcd1ff8045ef78fc2e3ed37295fa32a8cdbd0c61ccb64c677d283306b9
+  checksum: f71657e5b616b4b72d49451f5d8172711527bd5e4307606f2b98a93ee0e536fa4a640087145754cc144579e78f5834dc5385e2263ce6b7f6ac322b676271ccbe
   languageName: node
   linkType: hard
 
@@ -1934,8 +1953,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-frontend/ui-kit@workspace:presets/ui-kit"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-hidden": 12.2.4
     "@commercetools-uikit/avatar": 12.2.4
     "@commercetools-uikit/buttons": 12.2.4
@@ -1969,9 +1988,9 @@ __metadata:
     "@commercetools-uikit/tooltip": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     moment: 2.29.1
-    moment-timezone: 0.5.33
+    moment-timezone: 0.5.34
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-router-dom: 5.3.0
   peerDependencies:
     moment: 2.x
@@ -1987,9 +2006,9 @@ __metadata:
   resolution: "@commercetools-local/generator-package-json@workspace:generators/package-json"
   dependencies:
     "@manypkg/find-root": 1.1.0
-    "@manypkg/get-packages": 1.1.2
+    "@manypkg/get-packages": 1.1.3
     "@types/mri": 1.1.1
-    "@types/node": 16.11.6
+    "@types/node": 16.11.7
     mri: 1.2.0
     omit-empty-es: 1.1.3
     prettier: 2.4.1
@@ -2008,12 +2027,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-local/generator-readme@workspace:generators/readme"
   dependencies:
-    "@manypkg/get-packages": 1.1.2
+    "@manypkg/get-packages": 1.1.3
     "@types/listr": 0.14.4
-    "@types/lodash": 4.14.176
+    "@types/lodash": 4.14.177
     "@types/mdast": 3.0.10
     "@types/mri": 1.1.1
-    "@types/node": 16.11.6
+    "@types/node": 16.11.7
     "@types/shelljs": 0.8.9
     "@types/unist": 2.0.6
     "@types/vfile": 4.0.0
@@ -2048,14 +2067,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/accessible-button@workspace:packages/components/buttons/accessible-button"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     "@types/react-is": ^17.0.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
@@ -2069,8 +2088,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/accessible-hidden@workspace:packages/components/accessible-hidden"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@emotion/react": ^11.4.0
     prop-types: 15.7.2
     react: 17.0.2
@@ -2083,8 +2102,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/async-creatable-select-field@workspace:packages/components/fields/async-creatable-select-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/async-creatable-select-input": 12.2.4
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -2106,8 +2125,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/async-creatable-select-input@workspace:packages/components/inputs/async-creatable-select-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
@@ -2116,14 +2135,14 @@ __metadata:
     "@commercetools-uikit/spacings": 12.2.4
     "@commercetools-uikit/text": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
-    "@emotion/is-prop-valid": 1.1.0
+    "@emotion/is-prop-valid": 1.1.1
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-select: 4.3.1
   peerDependencies:
     react: 17.x
@@ -2136,8 +2155,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/async-select-field@workspace:packages/components/fields/async-select-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/async-select-input": 12.2.4
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -2159,8 +2178,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/async-select-input@workspace:packages/components/inputs/async-select-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
@@ -2175,7 +2194,7 @@ __metadata:
     prop-types: 15.7.2
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-select: 4.3.1
   peerDependencies:
     react: 17.x
@@ -2188,8 +2207,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/avatar@workspace:packages/components/avatar"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
@@ -2205,8 +2224,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/buttons@workspace:presets/buttons"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/flat-button": 12.2.4
@@ -2216,7 +2235,7 @@ __metadata:
     "@commercetools-uikit/secondary-button": 12.2.4
     "@commercetools-uikit/secondary-icon-button": 12.2.4
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -2229,10 +2248,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/calendar-time-utils@workspace:packages/calendar-time-utils"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/utils": 12.2.0
-    moment-timezone: 0.5.33
+    moment-timezone: 0.5.34
   peerDependencies:
     moment-timezone: 0.5.x
   languageName: unknown
@@ -2242,8 +2261,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/calendar-utils@workspace:packages/calendar-utils"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/hooks": 12.2.3
@@ -2259,7 +2278,7 @@ __metadata:
     moment: 2.29.1
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-select: 4.3.1
   peerDependencies:
     moment: 2.x
@@ -2272,8 +2291,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/card@workspace:packages/components/card"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/spacings-inset": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
@@ -2290,8 +2309,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/checkbox-input@workspace:packages/components/inputs/checkbox-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
     "@commercetools-uikit/input-utils": 12.2.4
@@ -2311,8 +2330,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/collapsible-motion@workspace:packages/components/collapsible-motion"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/hooks": 12.2.3
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
@@ -2329,8 +2348,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/collapsible-panel@workspace:packages/components/collapsible-panel"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/collapsible-motion": 12.2.4
     "@commercetools-uikit/constraints": 12.2.4
@@ -2353,8 +2372,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/collapsible@workspace:packages/components/collapsible"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/hooks": 12.2.3
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
@@ -2371,8 +2390,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/constraints@workspace:packages/components/constraints"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
@@ -2388,8 +2407,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/creatable-select-field@workspace:packages/components/fields/creatable-select-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/creatable-select-input": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -2411,8 +2430,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/creatable-select-input@workspace:packages/components/inputs/creatable-select-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
@@ -2426,7 +2445,7 @@ __metadata:
     prop-types: 15.7.2
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-select: 4.3.1
   peerDependencies:
     react: 17.x
@@ -2439,8 +2458,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/data-table-manager@workspace:packages/components/data-table-manager"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/accessible-hidden": 12.2.4
     "@commercetools-uikit/async-select-input": 12.2.4
@@ -2469,7 +2488,7 @@ __metadata:
     react: 17.0.2
     react-beautiful-dnd: 13.1.0
     react-dom: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -2482,8 +2501,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/data-table@workspace:packages/components/data-table"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/hooks": 12.2.3
@@ -2507,8 +2526,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-field@workspace:packages/components/fields/date-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/date-input": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -2530,8 +2549,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-input@workspace:packages/components/inputs/date-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/calendar-utils": 12.2.4
     "@commercetools-uikit/constraints": 12.2.4
@@ -2546,12 +2565,12 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     downshift: 6.1.7
     moment: 2.29.1
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-is: 17.0.2
     react-required-if: 1.0.3
     warning: 4.0.3
@@ -2566,8 +2585,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-range-field@workspace:packages/components/fields/date-range-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/date-range-input": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -2589,8 +2608,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-range-input@workspace:packages/components/inputs/date-range-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/calendar-utils": 12.2.4
     "@commercetools-uikit/constraints": 12.2.4
@@ -2605,12 +2624,12 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     downshift: 6.1.7
     moment: 2.29.1
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-is: 17.0.2
     react-required-if: 1.0.3
     warning: 4.0.3
@@ -2625,8 +2644,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-time-field@workspace:packages/components/fields/date-time-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/date-time-input": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -2648,8 +2667,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-time-input@workspace:packages/components/inputs/date-time-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/calendar-time-utils": 12.2.4
     "@commercetools-uikit/calendar-utils": 12.2.4
@@ -2665,12 +2684,12 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     downshift: 6.1.7
     moment: 2.29.1
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-is: 17.0.2
     react-required-if: 1.0.3
     warning: 4.0.3
@@ -2685,8 +2704,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/design-system@workspace:design-system"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
   languageName: unknown
   linkType: soft
 
@@ -2694,14 +2713,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/field-errors@workspace:packages/components/field-errors"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/messages": 12.2.4
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -2712,8 +2731,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/field-label@workspace:packages/components/field-label"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/icon-button": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
@@ -2736,8 +2755,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/fields@workspace:presets/fields"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/async-creatable-select-field": 12.2.4
     "@commercetools-uikit/async-select-field": 12.2.4
     "@commercetools-uikit/creatable-select-field": 12.2.4
@@ -2756,7 +2775,7 @@ __metadata:
     "@commercetools-uikit/text-field": 12.2.4
     "@commercetools-uikit/time-field": 12.2.4
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -2769,8 +2788,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/flat-button@workspace:packages/components/buttons/flat-button"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/spacings-inline": 12.2.4
@@ -2778,7 +2797,7 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
@@ -2791,8 +2810,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/grid@workspace:packages/components/grid"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     prop-types: 15.7.2
@@ -2806,8 +2825,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/hooks@workspace:packages/hooks"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/utils": 12.2.0
     "@testing-library/react": 12.1.2
     lodash: 4.17.21
@@ -2821,8 +2840,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/i18n@workspace:packages/i18n"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
   languageName: unknown
   linkType: soft
 
@@ -2830,8 +2849,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/icon-button@workspace:packages/components/buttons/icon-button"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/spacings": 12.2.4
@@ -2839,7 +2858,7 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
@@ -2852,8 +2871,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/icons@workspace:packages/components/icons"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
@@ -2872,8 +2891,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/input-utils@workspace:packages/components/inputs/input-utils"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/flat-button": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
@@ -2881,7 +2900,7 @@ __metadata:
     "@emotion/react": ^11.4.0
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
     react-textarea-autosize: 8.3.3
   peerDependencies:
@@ -2894,8 +2913,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/inputs@workspace:presets/inputs"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/async-creatable-select-input": 12.2.4
     "@commercetools-uikit/async-select-input": 12.2.4
     "@commercetools-uikit/checkbox-input": 12.2.4
@@ -2919,7 +2938,7 @@ __metadata:
     "@commercetools-uikit/time-input": 12.2.4
     "@commercetools-uikit/toggle-input": 12.2.4
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -2932,8 +2951,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/label@workspace:packages/components/label"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/text": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
@@ -2941,7 +2960,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -2952,8 +2971,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/link-button@workspace:packages/components/buttons/link-button"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/spacings-inline": 12.2.4
@@ -2961,11 +2980,11 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -2978,8 +2997,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/link@workspace:packages/components/link"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
     "@commercetools-uikit/spacings-inline": 12.2.4
@@ -2991,7 +3010,7 @@ __metadata:
     history: 4.10.1
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -3004,8 +3023,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/loading-spinner@workspace:packages/components/loading-spinner"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/spacings-inline": 12.2.4
     "@commercetools-uikit/text": 12.2.4
@@ -3022,8 +3041,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-money-input@workspace:packages/components/inputs/localized-money-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/flat-button": 12.2.4
@@ -3038,11 +3057,11 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     prop-types: 15.7.2
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
     react-select: 4.3.1
   peerDependencies:
@@ -3056,8 +3075,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-multiline-text-field@workspace:packages/components/fields/localized-multiline-text-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -3067,7 +3086,7 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     prop-types: 15.7.2
     react: 17.0.2
     react-required-if: 1.0.3
@@ -3080,8 +3099,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-multiline-text-input@workspace:packages/components/inputs/localized-multiline-text-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/flat-button": 12.2.4
@@ -3095,11 +3114,11 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     prop-types: 15.7.2
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
     react-select: 4.3.1
     react-textarea-autosize: 8.3.3
@@ -3114,8 +3133,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-rich-text-input@workspace:packages/components/inputs/localized-rich-text-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/collapsible-motion": 12.2.4
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -3133,14 +3152,14 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     downshift: 6.1.7
     immutable: 4.0.0
     is-hotkey: 0.2.0
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
     react-textarea-autosize: 8.3.3
     slate: 0.47.9
@@ -3156,8 +3175,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-text-field@workspace:packages/components/fields/localized-text-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -3167,7 +3186,7 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     prop-types: 15.7.2
     react: 17.0.2
     react-required-if: 1.0.3
@@ -3180,8 +3199,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-text-input@workspace:packages/components/inputs/localized-text-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/flat-button": 12.2.4
@@ -3196,10 +3215,10 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3211,8 +3230,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-utils@workspace:packages/localized-utils"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/utils": 12.2.0
     lodash: 4.17.21
   languageName: unknown
@@ -3222,8 +3241,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/messages@workspace:packages/components/messages"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/text": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
@@ -3239,8 +3258,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/money-field@workspace:packages/components/fields/money-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -3263,8 +3282,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/money-input@workspace:packages/components/inputs/money-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/hooks": 12.2.3
@@ -3279,7 +3298,7 @@ __metadata:
     prop-types: 15.7.2
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
     react-select: 4.3.1
   peerDependencies:
@@ -3293,8 +3312,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/multiline-text-field@workspace:packages/components/fields/multiline-text-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -3316,8 +3335,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/multiline-text-input@workspace:packages/components/inputs/multiline-text-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/flat-button": 12.2.4
@@ -3333,7 +3352,7 @@ __metadata:
     downshift: 6.1.7
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
     react-textarea-autosize: 8.3.3
   peerDependencies:
@@ -3346,16 +3365,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/notifications@workspace:packages/components/notifications"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -3366,8 +3385,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/number-field@workspace:packages/components/fields/number-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -3389,8 +3408,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/number-input@workspace:packages/components/inputs/number-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/input-utils": 12.2.4
@@ -3408,8 +3427,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/pagination@workspace:packages/components/pagination"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
@@ -3426,7 +3445,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -3437,8 +3456,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/password-field@workspace:packages/components/fields/password-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -3454,7 +3473,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3466,8 +3485,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/password-input@workspace:packages/components/inputs/password-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/input-utils": 12.2.4
@@ -3486,8 +3505,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/primary-action-dropdown@workspace:packages/components/primary-action-dropdown"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/buttons": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -3509,8 +3528,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/primary-button@workspace:packages/components/buttons/primary-button"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/spacings-inline": 12.2.4
@@ -3518,7 +3537,7 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
@@ -3531,8 +3550,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/radio-field@workspace:packages/components/fields/radio-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -3554,8 +3573,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/radio-input@workspace:packages/components/inputs/radio-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
@@ -3578,8 +3597,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/rich-text-input@workspace:packages/components/inputs/rich-text-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/collapsible-motion": 12.2.4
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -3600,7 +3619,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
     slate: 0.47.9
     slate-html-serializer: 0.8.13
@@ -3615,8 +3634,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/rich-text-utils@workspace:packages/components/inputs/rich-text-utils"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
     "@commercetools-uikit/input-utils": 12.2.4
@@ -3630,7 +3649,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
     slate-html-serializer: 0.8.13
   peerDependencies:
@@ -3643,8 +3662,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/search-select-field@workspace:packages/components/fields/search-select-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -3666,8 +3685,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/search-select-input@workspace:packages/components/inputs/search-select-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/async-select-input": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/select-utils": 12.2.4
@@ -3679,7 +3698,7 @@ __metadata:
     prop-types: 15.7.2
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
   peerDependencies:
     react: 17.x
     react-dom: 17.x
@@ -3691,8 +3710,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/secondary-button@workspace:packages/components/buttons/secondary-button"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/spacings-inline": 12.2.4
@@ -3700,11 +3719,11 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -3717,8 +3736,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/secondary-icon-button@workspace:packages/components/buttons/secondary-icon-button"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/spacings": 12.2.4
@@ -3726,7 +3745,7 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
@@ -3739,8 +3758,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/select-field@workspace:packages/components/fields/select-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -3762,20 +3781,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/select-input@workspace:packages/components/inputs/select-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
     "@commercetools-uikit/select-utils": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
-    "@emotion/is-prop-valid": 1.1.0
+    "@emotion/is-prop-valid": 1.1.1
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-select: 4.3.1
   peerDependencies:
     react: 17.x
@@ -3787,8 +3806,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/select-utils@workspace:packages/components/inputs/select-utils"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/icons": 12.2.4
@@ -3800,7 +3819,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-select: 4.3.1
   peerDependencies:
     react: 17.x
@@ -3812,8 +3831,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/spacings-inline@workspace:packages/components/spacings/spacings-inline"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
@@ -3828,8 +3847,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/spacings-inset-squish@workspace:packages/components/spacings/spacings-inset-squish"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
@@ -3844,8 +3863,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/spacings-inset@workspace:packages/components/spacings/spacings-inset"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
@@ -3860,8 +3879,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/spacings-stack@workspace:packages/components/spacings/spacings-stack"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
@@ -3876,8 +3895,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/spacings@workspace:presets/spacings"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/spacings-inline": 12.2.4
     "@commercetools-uikit/spacings-inset": 12.2.4
     "@commercetools-uikit/spacings-inset-squish": 12.2.4
@@ -3892,8 +3911,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/stamp@workspace:packages/components/stamp"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@emotion/react": ^11.4.0
     prop-types: 15.7.2
@@ -3907,8 +3926,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/tag@workspace:packages/components/tag"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -3929,8 +3948,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/text-field@workspace:packages/components/fields/text-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -3952,8 +3971,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/text-input@workspace:packages/components/inputs/text-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/input-utils": 12.2.4
@@ -3971,15 +3990,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/text@workspace:packages/components/text"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
     "@emotion/react": ^11.4.0
     lodash: 4.17.21
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
     warning: 4.0.3
   peerDependencies:
@@ -3992,8 +4011,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/time-field@workspace:packages/components/fields/time-field"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/field-errors": 12.2.4
@@ -4015,8 +4034,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/time-input@workspace:packages/components/inputs/time-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/accessible-button": 12.2.4
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
@@ -4025,12 +4044,12 @@ __metadata:
     "@commercetools-uikit/input-utils": 12.2.4
     "@commercetools-uikit/spacings-inline": 12.2.4
     "@commercetools-uikit/utils": 12.2.0
-    "@emotion/is-prop-valid": 1.1.0
+    "@emotion/is-prop-valid": 1.1.1
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     prop-types: 15.7.2
     react: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -4042,8 +4061,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/toggle-input@workspace:packages/components/inputs/toggle-input"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/input-utils": 12.2.4
@@ -4061,8 +4080,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/tooltip@workspace:packages/components/tooltip"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
     "@commercetools-uikit/constraints": 12.2.4
     "@commercetools-uikit/design-system": 12.2.4
     "@commercetools-uikit/hooks": 12.2.3
@@ -4083,9 +4102,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/utils@workspace:packages/utils"
   dependencies:
-    "@babel/runtime": 7.16.0
-    "@babel/runtime-corejs3": 7.16.0
-    "@emotion/is-prop-valid": 1.1.0
+    "@babel/runtime": 7.16.3
+    "@babel/runtime-corejs3": 7.16.3
+    "@emotion/is-prop-valid": 1.1.1
     "@types/warning": ^3.0.0
     warning: 4.0.3
   languageName: unknown
@@ -4380,7 +4399,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/is-prop-valid@npm:1.1.0, @emotion/is-prop-valid@npm:^1.1.0":
+"@emotion/is-prop-valid@npm:1.1.1":
+  version: 1.1.1
+  resolution: "@emotion/is-prop-valid@npm:1.1.1"
+  dependencies:
+    "@emotion/memoize": ^0.7.4
+  checksum: 5816696dae6ac79537a31fe95256e0c1f55651507204676dd9903542b102f727c16a68924e6634a89b0972f0d15b0803bb9d4e14bd0fb8a49da8a2e3956e6639
+  languageName: node
+  linkType: hard
+
+"@emotion/is-prop-valid@npm:^1.1.0":
   version: 1.1.0
   resolution: "@emotion/is-prop-valid@npm:1.1.0"
   dependencies:
@@ -4621,23 +4649,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl@npm:1.15.0":
-  version: 1.15.0
-  resolution: "@formatjs/intl@npm:1.15.0"
+"@formatjs/intl@npm:1.15.2":
+  version: 1.15.2
+  resolution: "@formatjs/intl@npm:1.15.2"
   dependencies:
     "@formatjs/ecma402-abstract": 1.10.0
     "@formatjs/fast-memoize": 1.2.0
     "@formatjs/icu-messageformat-parser": 2.0.14
     "@formatjs/intl-displaynames": 5.2.5
     "@formatjs/intl-listformat": 6.3.5
-    intl-messageformat: 9.9.4
+    intl-messageformat: 9.9.6
     tslib: ^2.1.0
   peerDependencies:
     typescript: ^4.4
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 204bef6f0dc0280ee454be30ebdfd51df1e951ea30bc31cda27f22c56f4b197da8537449a47c8b48811bcd7864ef3cc3f8841f79c0a8e2977e63c3f70028face
+  checksum: f69709d58a96eedd5eada3e0082bfd7b2d3fadf0f8fc61b32c8461b88ba7bd576c0641aa038edcada51dcba7331e0c08386a85348a98bae0085057ed01e6e1d6
   languageName: node
   linkType: hard
 
@@ -4941,12 +4969,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@manypkg/cli@npm:0.19.0":
-  version: 0.19.0
-  resolution: "@manypkg/cli@npm:0.19.0"
+"@manypkg/cli@npm:0.19.1":
+  version: 0.19.1
+  resolution: "@manypkg/cli@npm:0.19.1"
   dependencies:
     "@babel/runtime": ^7.5.5
-    "@manypkg/get-packages": ^1.1.2
+    "@manypkg/get-packages": ^1.1.3
     chalk: ^2.4.2
     detect-indent: ^6.0.0
     find-up: ^4.1.0
@@ -4962,7 +4990,7 @@ __metadata:
     validate-npm-package-name: ^3.0.0
   bin:
     manypkg: bin.js
-  checksum: 434062caad74c4072f5956301f6c41b12dfda58e89be72212ff874b69e060b76eb12b3a6031a42fd2a34c2822d4154e9891b1828444743d6ba089573a599b55e
+  checksum: 6dbb944a1111f9cdbe37de487a038fde279d01674194e5d5964002083da184976a7e97da57ffe69b0a2c689de0d373fcee18fc7efa88a69257a9330ee2616e48
   languageName: node
   linkType: hard
 
@@ -4978,21 +5006,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@manypkg/get-packages@npm:1.1.2":
-  version: 1.1.2
-  resolution: "@manypkg/get-packages@npm:1.1.2"
-  dependencies:
-    "@babel/runtime": ^7.5.5
-    "@changesets/types": ^4.0.1
-    "@manypkg/find-root": ^1.1.0
-    fs-extra: ^8.1.0
-    globby: ^11.0.0
-    read-yaml-file: ^1.1.0
-  checksum: 08377c7046adeab53468daf969ff55631121ab9ff625467dfd567ab5f705e30cc09a50ebb7d71200746d4e04654327ed51a3d4f1d251202e9a019d256c817a99
-  languageName: node
-  linkType: hard
-
-"@manypkg/get-packages@npm:^1.0.1, @manypkg/get-packages@npm:^1.1.2":
+"@manypkg/get-packages@npm:1.1.3, @manypkg/get-packages@npm:^1.0.1, @manypkg/get-packages@npm:^1.1.3":
   version: 1.1.3
   resolution: "@manypkg/get-packages@npm:1.1.3"
   dependencies:
@@ -5846,9 +5860,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:8.10.1":
-  version: 8.10.1
-  resolution: "@testing-library/dom@npm:8.10.1"
+"@testing-library/dom@npm:8.11.1":
+  version: 8.11.1
+  resolution: "@testing-library/dom@npm:8.11.1"
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.12.5
@@ -5858,7 +5872,7 @@ __metadata:
     dom-accessibility-api: ^0.5.9
     lz-string: ^1.4.4
     pretty-format: ^27.0.2
-  checksum: c11da16d981d4479fa18b2e90a62d2c19871da414016a4f80136394cf35e833ca4de4b56a64225f6bd5d3a13842176236d3508d217e3858c5e2ef35a3f391d5b
+  checksum: 082104b104def94db071fe35f967124c52d387d995a61327cd60ed39c310126f4cde2fa51054c37977cd3a2082311795417413506ad1a14df1010bd1cbb02bc5
   languageName: node
   linkType: hard
 
@@ -6167,10 +6181,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:4.14.176":
-  version: 4.14.176
-  resolution: "@types/lodash@npm:4.14.176"
-  checksum: 9e949704dfffab60365b5cdca0477926af6eabe82c64b7be8f74b3a117bb373d58371be962c2b159dd0cf8fad49a7dcacc748564aea4ce6b6883c197a6f0bfa8
+"@types/lodash@npm:4.14.177":
+  version: 4.14.177
+  resolution: "@types/lodash@npm:4.14.177"
+  checksum: 00f9eb300ed5219cfbabb3448d4a71744895edad60dcfda9f028c0808a50eb6ad1ca9f673b56a85f85668a4ea54b9870643625468a747039c435643e52253a75
   languageName: node
   linkType: hard
 
@@ -6204,7 +6218,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:14 || 16, @types/node@npm:>= 8":
+"@types/node@npm:*, @types/node@npm:14 || 16, @types/node@npm:16.11.7, @types/node@npm:>= 8":
   version: 16.11.7
   resolution: "@types/node@npm:16.11.7"
   checksum: 2706403e6efc4aa40fdce8f0b5d9884d5600c3c8610aedc7fa5e7e298d30366f7e8b7296028d52898dca3edef4c3e827b03bf20952c4780f13fa4e79864f7a86
@@ -6215,13 +6229,6 @@ __metadata:
   version: 14.17.33
   resolution: "@types/node@npm:14.17.33"
   checksum: 47ee8d5a398f84b376023f03b83e43a71f1bf617d1014d34c0af24b0332b42e7b392c967c20bfb907fb37971993035e3b25c47a1678c745c5d122d8205ba5a19
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:16.11.6":
-  version: 16.11.6
-  resolution: "@types/node@npm:16.11.6"
-  checksum: 6e19634766ff589d3d2f361c2196b671f8f133cdadc5ad347a621c360d8994b6c4fbccfb2ad9c60c588c593831a96497c9c6b77d2b7e91be723384b94f6368e7
   languageName: node
   linkType: hard
 
@@ -7837,22 +7844,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:4.17.5":
-  version: 4.17.5
-  resolution: "browserslist@npm:4.17.5"
+"browserslist@npm:4.18.1, browserslist@npm:^4.17.6":
+  version: 4.18.1
+  resolution: "browserslist@npm:4.18.1"
   dependencies:
-    caniuse-lite: ^1.0.30001271
-    electron-to-chromium: ^1.3.878
+    caniuse-lite: ^1.0.30001280
+    electron-to-chromium: ^1.3.896
     escalade: ^3.1.1
     node-releases: ^2.0.1
     picocolors: ^1.0.0
   bin:
     browserslist: cli.js
-  checksum: 0a1d762305c39dd317bb21e3159f44250bb1029a497f9a901ef5066f909263372eaacda58fd39174121c2741c0c32a7e6ace04df9172abe22c2fb69eba139a01
+  checksum: ae58322deef15960fc2e601d71bc081b571cfab6705999a3d24db5325b9cfadf5f676615f4460207a93e600549c33d60d37b4502007fe9e737b3cc19e20575d5
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.12.0, browserslist@npm:^4.14.5, browserslist@npm:^4.16.6, browserslist@npm:^4.17.5":
+"browserslist@npm:^4.12.0, browserslist@npm:^4.14.5, browserslist@npm:^4.16.6":
   version: 4.17.6
   resolution: "browserslist@npm:4.17.6"
   dependencies:
@@ -8153,10 +8160,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001271, caniuse-lite@npm:^1.0.30001274":
+"caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001274":
   version: 1.0.30001279
   resolution: "caniuse-lite@npm:1.0.30001279"
   checksum: c0330577718e4221caae92a1bee8131f546668001840cf66455d5aa6050797f44709865779c5cdcba7cbf32527004a743dc2879497d23f60478f8bbb203cfeeb
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001280":
+  version: 1.0.30001280
+  resolution: "caniuse-lite@npm:1.0.30001280"
+  checksum: 5794b22f4254927f095e83c65e89ddfc63065c7ed16e6544555a3252ee3d16e48f8a7846713dc64869c52e1abe9a2a93161804b40c2097d1abc9aaa0155a0b65
   languageName: node
   linkType: hard
 
@@ -8660,10 +8674,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"common-tags@npm:1.8.0":
-  version: 1.8.0
-  resolution: "common-tags@npm:1.8.0"
-  checksum: fb0cc9420d149176f2bd2b1fc9e6df622cd34eccaca60b276aa3253a7c9241e8a8ed1ec0702b2679eba7e47aeef721869c686bbd7257b75b5c44993c8462cd7f
+"common-tags@npm:1.8.2":
+  version: 1.8.2
+  resolution: "common-tags@npm:1.8.2"
+  checksum: 767a6255a84bbc47df49a60ab583053bb29a7d9687066a18500a516188a062c4e4cd52de341f22de0b07062e699b1b8fe3cfa1cb55b241cb9301aeb4f45b4dff
   languageName: node
   linkType: hard
 
@@ -8959,13 +8973,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js-compat@npm:3.19.0":
-  version: 3.19.0
-  resolution: "core-js-compat@npm:3.19.0"
+"core-js-compat@npm:3.19.1":
+  version: 3.19.1
+  resolution: "core-js-compat@npm:3.19.1"
   dependencies:
-    browserslist: ^4.17.5
+    browserslist: ^4.17.6
     semver: 7.0.0
-  checksum: 78a497590bcb85a6836a423640a84a1d4968168a3deb483c5cd7b47bf68862d26167ee9d2ce7887881d11ab6211b4912feb9a84594eba5c79db3068d910c5408
+  checksum: ed302c99814bd7227b549f639fe5f1a3b9d885c0f878c1203f10be0a33c7d0b199931cb904074cc988ab48411132d4f41adf1603e4eebe5c5d42bdc62a3f5c5d
   languageName: node
   linkType: hard
 
@@ -9878,10 +9892,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.3.878, electron-to-chromium@npm:^1.3.886":
+"electron-to-chromium@npm:^1.3.886":
   version: 1.3.892
   resolution: "electron-to-chromium@npm:1.3.892"
   checksum: 330a185e712dc9e2e5eca40138ce2e425408f7ff76ec28e8d8e7a487d59d160a1446aa54229b8e6a58cb2900181b1ff1280afbf538a8a5c0cc6102d0b6909ce8
+  languageName: node
+  linkType: hard
+
+"electron-to-chromium@npm:^1.3.896":
+  version: 1.3.899
+  resolution: "electron-to-chromium@npm:1.3.899"
+  checksum: 1c6e59fb618c48710bfc5cd731d0ccc8120dceac12535698a304351dceffab78d71c20f4ecd2bd1b3ce7612a4e78380f2450ae5f801f5a87d37253043c6cdc0b
   languageName: node
   linkType: hard
 
@@ -12242,14 +12263,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"intl-messageformat@npm:9.9.4":
-  version: 9.9.4
-  resolution: "intl-messageformat@npm:9.9.4"
+"intl-messageformat@npm:9.9.6":
+  version: 9.9.6
+  resolution: "intl-messageformat@npm:9.9.6"
   dependencies:
     "@formatjs/fast-memoize": 1.2.0
     "@formatjs/icu-messageformat-parser": 2.0.14
     tslib: ^2.1.0
-  checksum: a54fcd0138ed5c4e33fcd6b447a9c34622c4c3f7b18f0282e133c26bb638fdfbbd2a31211cd85e9df3a88c335392db8a185e6b6d82ad11fb7ae8a418d79d782a
+  checksum: 204e83338a47afed1093501506d553052ffbc8b55e1e7f07a81fedbeb645389388dfbaf9a9fd9d83ba9a500a7701947f6b0c8b949cdbc32f81f6f71c84961413
   languageName: node
   linkType: hard
 
@@ -15062,12 +15083,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment-timezone@npm:0.5.33":
-  version: 0.5.33
-  resolution: "moment-timezone@npm:0.5.33"
+"moment-timezone@npm:0.5.34":
+  version: 0.5.34
+  resolution: "moment-timezone@npm:0.5.34"
   dependencies:
     moment: ">= 2.9.0"
-  checksum: dea6043b4a21aedf2e64d545cdfc795a11e0739edb06f4eb10570503118cb1fe4ab57e012a5f3594bd1cdd2a3c617f42836fb6e4faff33eb25a1fe3cc239c9bf
+  checksum: 12a1d3d52e4ba509cf1fa36bbda59d898a08fa80ab35f6c358747e93aec1f07e617cec647eaf2e8acf5f9132e581d4704d34a9edffa9a80c5cd04bf23b277595
   languageName: node
   linkType: hard
 
@@ -16723,19 +16744,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-intl@npm:5.21.0":
-  version: 5.21.0
-  resolution: "react-intl@npm:5.21.0"
+"react-intl@npm:5.21.2":
+  version: 5.21.2
+  resolution: "react-intl@npm:5.21.2"
   dependencies:
     "@formatjs/ecma402-abstract": 1.10.0
     "@formatjs/icu-messageformat-parser": 2.0.14
-    "@formatjs/intl": 1.15.0
+    "@formatjs/intl": 1.15.2
     "@formatjs/intl-displaynames": 5.2.5
     "@formatjs/intl-listformat": 6.3.5
     "@types/hoist-non-react-statics": ^3.3.1
     "@types/react": 16 || 17
     hoist-non-react-statics: ^3.3.2
-    intl-messageformat: 9.9.4
+    intl-messageformat: 9.9.6
     tslib: ^2.1.0
   peerDependencies:
     react: ^16.3.0 || 17
@@ -16743,7 +16764,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 1bb92665498856a21e76d0e7d6f6947a501b3c733d27aad2b9e73c0b3f3d4baee5a667cc1d0ec0ff922d5648551b6012aa8c23106dff10799f1c3d015f7025a5
+  checksum: 59ec5721243b4482c917cd82dd552aa17f3efe4be1ae633eea071b3a1d815d6aeaedc350acce598910f5ec2d73a45a186bb43f884d8c3c84de8db4576baa5e07
   languageName: node
   linkType: hard
 
@@ -19489,9 +19510,9 @@ __metadata:
   resolution: "ui-kit@workspace:."
   dependencies:
     "@changesets/changelog-github": 0.4.1
-    "@changesets/cli": 2.17.0
-    "@commercetools-frontend/babel-preset-mc-app": 20.10.4
-    "@commercetools-frontend/eslint-config-mc-app": 20.10.1
+    "@changesets/cli": 2.18.0
+    "@commercetools-frontend/babel-preset-mc-app": 20.10.6
+    "@commercetools-frontend/eslint-config-mc-app": 20.10.6
     "@commercetools-local/generator-package-json": "*"
     "@commercetools-local/generator-readme": "*"
     "@commercetools/github-labels": 1.1.0
@@ -19499,8 +19520,8 @@ __metadata:
     "@commitlint/config-conventional": 13.2.0
     "@formatjs/cli": 4.4.0
     "@formatjs/intl-relativetimeformat": 9.3.2
-    "@manypkg/cli": 0.19.0
-    "@manypkg/get-packages": 1.1.2
+    "@manypkg/cli": 0.19.1
+    "@manypkg/get-packages": 1.1.3
     "@percy/cli": 1.0.0-beta.70
     "@percy/puppeteer": 2.0.0
     "@preconstruct/cli": 2.1.5
@@ -19516,10 +19537,10 @@ __metadata:
     babel-jest: 27.3.1
     babel-loader: 8.2.3
     babel-plugin-typescript-to-proptypes: 1.4.2
-    browserslist: 4.17.5
+    browserslist: 4.18.1
     bundlesize: 0.18.1
     colors: 1.4.0
-    common-tags: 1.8.0
+    common-tags: 1.8.2
     conventional-changelog-cli: 2.1.1
     cross-env: 7.0.3
     eslint: 7.32.0
@@ -19541,7 +19562,7 @@ __metadata:
     jest-watch-typeahead: 1.0.0
     lint-staged: 11.2.6
     moment: 2.29.1
-    moment-timezone: 0.5.33
+    moment-timezone: 0.5.34
     mri: 1.2.0
     omit-empty-es: 1.1.3
     patch-package: 6.4.7
@@ -19554,7 +19575,7 @@ __metadata:
     rcfile: 1.0.3
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-router-dom: 5.3.0
     react-test-renderer: 17.0.2
     react-value: 0.2.0
@@ -20098,15 +20119,15 @@ __metadata:
     html-webpack-plugin: 5.5.0
     moment: 2.29.1
     moment-locales-webpack-plugin: 1.2.0
-    moment-timezone: 0.5.33
+    moment-timezone: 0.5.34
     prop-types: 15.7.2
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.21.0
+    react-intl: 5.21.2
     react-router: 5.2.1
     react-router-dom: 5.3.0
     serve: 12.0.1
-    webpack: 5.61.0
+    webpack: 5.64.1
     webpack-cli: 4.9.1
   languageName: unknown
   linkType: soft
@@ -20265,16 +20286,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-sources@npm:^3.2.0":
-  version: 3.2.1
-  resolution: "webpack-sources@npm:3.2.1"
-  checksum: 438ee4759f70ee2d5ae17a2fc5e66a1f71f0ba8ad9de77edfaf4180c82925f6504790c5a1ddfa2a6d409212cd9e7332a6822d6acabb0f39303bc3b14354872e6
+"webpack-sources@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "webpack-sources@npm:3.2.2"
+  checksum: cc81f1f1bfd1c25c7a565598850294b515bcccf7974d0249b4a0c8c607307866ce3f9e8cdef1c74d5facfb0d993944c499cfd4b7c8f52d01359b6671cc5823d4
   languageName: node
   linkType: hard
 
-"webpack@npm:5.61.0":
-  version: 5.61.0
-  resolution: "webpack@npm:5.61.0"
+"webpack@npm:5.64.1":
+  version: 5.64.1
+  resolution: "webpack@npm:5.64.1"
   dependencies:
     "@types/eslint-scope": ^3.7.0
     "@types/estree": ^0.0.50
@@ -20299,13 +20320,13 @@ __metadata:
     tapable: ^2.1.1
     terser-webpack-plugin: ^5.1.3
     watchpack: ^2.2.0
-    webpack-sources: ^3.2.0
+    webpack-sources: ^3.2.2
   peerDependenciesMeta:
     webpack-cli:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 442958ec48645c9e612a2628a815c411cbc18289b5cc7b3d1b5d0f8e5b41606ed225decf4f3684edc365e6390867bded244d20387c70fbb630c0ac08443c34c8
+  checksum: d2a1baddaed03f2ce70c13501b89935d4bb4af30b4accb0d2dfbd00ec6f491eaf46272346cedcf013b477e131c8cc202ee0b2d2c51ece1cfb713fd2d98b80a52
   languageName: node
   linkType: hard
 

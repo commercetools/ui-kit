@@ -26,14 +26,14 @@
     "dist"
   ],
   "dependencies": {
-    "@babel/runtime": "7.16.0",
-    "@babel/runtime-corejs3": "7.16.0",
+    "@babel/runtime": "7.16.3",
+    "@babel/runtime-corejs3": "7.16.3",
     "@commercetools-uikit/design-system": "12.2.4",
     "@commercetools-uikit/utils": "12.2.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@types/react-is": "^17.0.0",
-    "common-tags": "1.8.0",
+    "common-tags": "1.8.2",
     "lodash": "4.17.21",
     "prop-types": "15.7.2",
     "react-is": "17.0.2"
