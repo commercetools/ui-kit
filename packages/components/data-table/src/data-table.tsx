@@ -50,7 +50,7 @@ const shouldRenderRowBottomBorder = (
 };
 
 const defaultProps: Pick<
-  TDataTable<TRow>,
+  TDataTable,
   | 'isCondensed'
   | 'wrapHeaderLabels'
   | 'horizontalCellAlignment'

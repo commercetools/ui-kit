@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { RowExpandCollapseButton } from './cell.styles';
 import convertNumericDimensionToPixelValue from './utils/convert-numeric-dimension-to-pixel-value';
-import type { TDataTable, TRow } from './data-table';
+import type { TDataTable } from './data-table';
 import type { TDataRow } from './data-row';
 
 type TGetClickableRowStyle = {
@@ -67,7 +67,7 @@ const TableContainer = styled.div<TTableContainer>`
 
 type TTableGrid = {
   resizedTotalWidth?: number;
-  columns?: TDataTable<TRow>['columns'];
+  columns?: TDataTable['columns'];
   disableSelfContainment: boolean;
   maxHeight?: string | number;
 };
