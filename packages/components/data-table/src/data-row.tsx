@@ -5,14 +5,14 @@ import { TColumn, TRow, TDataTable } from './data-table';
 
 import ColumnResizingContext from './column-resizing-context';
 
-export type TDataRow = {
-  row: TRow;
+export type TDataRow<Row extends TRow = TRow> = {
+  row: Row;
   rowIndex: number;
-  columns: TColumn<TRow>[];
+  columns: TColumn[];
   shouldClipContent: boolean;
   shouldRenderBottomBorder: boolean;
 } & Pick<
-  TDataTable<TRow>,
+  TDataTable,
   | 'onRowClick'
   | 'isCondensed'
   | 'verticalCellAlignment'
@@ -34,6 +34,7 @@ const defaultProps: Pick<
   verticalCellAlignment: 'top',
   horizontalCellAlignment: 'left',
   shouldRenderBottomBorder: true,
+  // @ts-ignore
   itemRenderer: (row, column) => row[column.key],
 };
 
@@ -41,7 +42,7 @@ type TColumnResizingContext = {
   getIsColumnBeingResized: (columnIndex: number) => boolean;
 };
 
-const DataRow = (props: TDataRow) => {
+const DataRow = <Row extends TRow = TRow>(props: TDataRow<Row>) => {
   const { getIsColumnBeingResized } = useContext(
     ColumnResizingContext
   ) as TColumnResizingContext;

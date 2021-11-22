@@ -14,14 +14,14 @@ import Resizer from './column-resizer';
 import ColumnResizingContext from './column-resizing-context';
 import isFixedWidthValue from './utils/is-fixed-width-value';
 import { warning } from '@commercetools-uikit/utils';
-import type { TColumn, TRow } from './data-table';
+import type { TColumn } from './data-table';
 
 type THeaderCellWrapper = {
   children: ReactNode;
   columnKey: string;
   columnWidth?: number;
   disableResizing?: boolean;
-  onColumnResized?: (args: TColumn<TRow>[]) => void;
+  onColumnResized?: (args: TColumn[]) => void;
   disableHeaderStickiness?: boolean;
 };
 
@@ -33,7 +33,7 @@ type TColumnResizingReducer = {
   startResizing: (headerRef: RefObject<THeaderRef>, event: MouseEvent) => void;
   onDrag: EventListenerOrEventListenerObject;
   onDragResizing: (event: globalThis.MouseEvent, cellIndex?: string) => void;
-  finishResizing: () => TColumn<TRow>[];
+  finishResizing: () => TColumn[];
   getIsColumnBeingResized: (cellIndex?: string) => {};
   getHasTableBeenResized: () => boolean;
   getIsAnyColumnBeingResized: () => boolean;
@@ -104,7 +104,7 @@ export type THeaderCell = {
   isCondensed?: boolean;
   sortDirection?: 'desc' | 'asc';
   disableResizing?: boolean;
-  onColumnResized?: (args: TColumn<TRow>[]) => void;
+  onColumnResized?: (args: TColumn[]) => void;
   disableHeaderStickiness: boolean;
   horizontalCellAlignment: 'left' | 'center' | 'right';
   iconComponent?: ReactNode;

@@ -1,5 +1,5 @@
 import { useReducer, useDebugValue, MutableRefObject, Dispatch } from 'react';
-import type { TColumn, TRow } from './data-table';
+import type { TColumn } from './data-table';
 
 type TTableRef = MutableRefObject<HTMLTableElement | undefined>;
 
@@ -60,7 +60,7 @@ const setColumnWidth = (
   return columns;
 };
 
-const getGridTemplateColumnsStyle = (columns: TColumn<TRow>['width'][]) =>
+const getGridTemplateColumnsStyle = (columns: TColumn['width'][]) =>
   `${columns.map((width) => `${width || 0}px`).join(' ')}`;
 
 const initialState = (tableRef?: TTableRef) => ({
