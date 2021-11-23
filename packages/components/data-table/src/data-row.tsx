@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { Row } from './data-table.styles';
 import DataCell from './cell';
-import { TColumn, TRow, TDataTable } from './data-table';
+import { TColumn, TRow, TDataTableProps } from './data-table';
 
 import ColumnResizingContext from './column-resizing-context';
 
@@ -12,7 +12,7 @@ export type TDataRow<Row extends TRow = TRow> = {
   shouldClipContent: boolean;
   shouldRenderBottomBorder: boolean;
 } & Pick<
-  TDataTable,
+  TDataTableProps,
   | 'onRowClick'
   | 'isCondensed'
   | 'verticalCellAlignment'

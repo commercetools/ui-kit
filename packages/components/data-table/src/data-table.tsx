@@ -50,7 +50,7 @@ const shouldRenderRowBottomBorder = (
 };
 
 const defaultProps: Pick<
-  TDataTable,
+  TDataTableProps,
   | 'isCondensed'
   | 'wrapHeaderLabels'
   | 'horizontalCellAlignment'
@@ -157,7 +157,7 @@ export type TColumn<Row extends TRow = TRow> = {
   shouldIgnoreRowClick?: boolean;
 };
 
-export type TDataTable<Row extends TRow = TRow> = {
+export type TDataTableProps<Row extends TRow = TRow> = {
   /**
    * The list of data that needs to be rendered in the table. Each object in the list can
    * have any shape as long as it has a unique identifier.
@@ -260,7 +260,7 @@ export type TDataTable<Row extends TRow = TRow> = {
   sortDirection?: 'desc' | 'asc';
 };
 
-const DataTable = <Row extends TRow = TRow>(props: TDataTable<Row>) => {
+const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   warning(
     Array.isArray(props.columns),
     `ui-kit/DataTable: the prop "columns" is required.`
