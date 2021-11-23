@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import mri from 'mri';
-import execa from 'execa';
+import { execa } from 'execa';
 import { getPackagesSync } from '@manypkg/get-packages';
 
 const flags = mri(process.argv.slice(2), { alias: { help: ['h'] } });
