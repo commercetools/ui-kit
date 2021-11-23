@@ -61,7 +61,7 @@ export default Example;
 
 | Props                     | Type                                                           | Required | Default                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------- | -------------------------------------------------------------- | :------: | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `rows`                    | `Array: TRow[]`<br/>[See signature.](#signature-rows)          |    ✅    |                                    | The list of data that needs to be rendered in the table. Each object in the list can&#xA;have any shape as long as it has a unique identifier.&#xA;The data is rendered by using the callback render function `itemRenderer`.                                                                                                                                                                                                                                                                                                                     |
+| `rows`                    | `Array: Row[]`<br/>[See signature.](#signature-rows)           |    ✅    |                                    | The list of data that needs to be rendered in the table. Each object in the list can&#xA;have any shape as long as it has a unique identifier.&#xA;The data is rendered by using the callback render function `itemRenderer`.                                                                                                                                                                                                                                                                                                                     |
 | `columns`                 | `Array: TColumn[]`<br/>[See signature.](#signature-columns)    |    ✅    |                                    | Each object requires a unique `key` which should correspond to property key of&#xA;the items of `rows` that you want to render under this column, and a `label`&#xA;which defines the name shown on the header.&#xA;The list of columns to be rendered.&#xA;Each column can be customized (see properties below).                                                                                                                                                                                                                                 |
 | `footer`                  | `ReactNode`                                                    |          |                                    | Element to render within the `tfoot` (footer) element of the table.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `maxWidth`                | `union`<br/>Possible values:<br/>`number , string`             |          |                                    | The max width (a number of pixels or a css value string with units) for which the table&#xA;is allowed to grow. If unset, the table will grow horizontally to fill its parent.                                                                                                                                                                                                                                                                                                                                                                    |
@@ -82,13 +82,6 @@ export default Example;
 ## Signatures
 
 ### Signature `rows`
-
-```ts
-{
-  id: string;
-  [key: string]: string;
-}
-```
 
 ### Signature `columns`
 
@@ -136,7 +129,7 @@ export default Example;
    * <br>
    * Signature: `(row: object, isRowCollapsed: boolean) => React.Node`
    */
-  renderItem?: (row: TRow, isRowCollapsed: boolean) => ReactNode;
+  renderItem?: (row: Row, isRowCollapsed: boolean) => ReactNode;
   /**
    * Use this prop to place an `Icon` or `IconButton` on the left of the column label.
    * It is advised to place these types of components through this prop instead of `label`,
@@ -193,13 +186,13 @@ export default Example;
 ### Signature `onColumnResized`
 
 ```ts
-(args: TColumn[]) => void
+(args: TColumn<Row>[]) => void
 ```
 
 ### Signature `itemRenderer`
 
 ```ts
-(item: TRow, column: TColumn, isRowCollapsed: boolean) => ReactNode;
+(item: TRow, column: TColumn<Row>, isRowCollapsed: boolean) => ReactNode;
 ```
 
 ### Signature `onSortChange`
