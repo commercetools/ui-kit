@@ -1,5 +1,35 @@
 # @commercetools-uikit/inputs
 
+## 12.2.5
+
+### Patch Changes
+
+- [#2018](https://github.com/commercetools/ui-kit/pull/2018) [`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080) Thanks [@emmenko](https://github.com/emmenko)! - Upgrarde to Yarn v3
+
+- Updated dependencies [[`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080)]:
+  - @commercetools-uikit/async-creatable-select-input@12.2.5
+  - @commercetools-uikit/async-select-input@12.2.5
+  - @commercetools-uikit/checkbox-input@12.2.5
+  - @commercetools-uikit/creatable-select-input@12.2.5
+  - @commercetools-uikit/date-input@12.2.5
+  - @commercetools-uikit/date-range-input@12.2.5
+  - @commercetools-uikit/date-time-input@12.2.5
+  - @commercetools-uikit/localized-money-input@12.2.5
+  - @commercetools-uikit/localized-multiline-text-input@12.2.5
+  - @commercetools-uikit/localized-rich-text-input@12.2.5
+  - @commercetools-uikit/localized-text-input@12.2.5
+  - @commercetools-uikit/money-input@12.2.5
+  - @commercetools-uikit/multiline-text-input@12.2.5
+  - @commercetools-uikit/number-input@12.2.5
+  - @commercetools-uikit/password-input@12.2.5
+  - @commercetools-uikit/radio-input@12.2.5
+  - @commercetools-uikit/rich-text-input@12.2.5
+  - @commercetools-uikit/search-select-input@12.2.5
+  - @commercetools-uikit/select-input@12.2.5
+  - @commercetools-uikit/text-input@12.2.5
+  - @commercetools-uikit/time-input@12.2.5
+  - @commercetools-uikit/toggle-input@12.2.5
+
 ## 12.2.4
 
 ### Patch Changes

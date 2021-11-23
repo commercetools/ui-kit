@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/icons",
   "description": "All SVG icons are rendered as React components.",
-  "version": "12.2.4",
+  "version": "12.2.5",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,13 +9,9 @@
     "directory": "packages/components/icons"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
+  "private": false,
   "publishConfig": {
     "access": "public"
   },
@@ -23,23 +19,17 @@
   "main": "dist/commercetools-uikit-icons.cjs.js",
   "module": "dist/commercetools-uikit-icons.esm.js",
   "preconstruct": {
-    "entrypoints": [
-      "./index.ts",
-      "./inline-svg/index.ts"
-    ]
+    "entrypoints": ["./index.ts", "./inline-svg/index.ts"]
   },
-  "files": [
-    "dist",
-    "inline-svg"
-  ],
+  "files": ["dist", "inline-svg"],
   "scripts": {
     "generate-icons": "svgr -d src/generated --typescript src/svg"
   },
   "dependencies": {
     "@babel/runtime": "7.16.3",
     "@babel/runtime-corejs3": "7.16.3",
-    "@commercetools-uikit/design-system": "12.2.4",
-    "@commercetools-uikit/utils": "12.2.0",
+    "@commercetools-uikit/design-system": "12.2.5",
+    "@commercetools-uikit/utils": "12.2.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@types/dompurify": "^2.2.3",

@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/hooks",
   "description": "A collection of React hooks used across some of the UI-Kit components.",
-  "version": "12.2.3",
+  "version": "12.2.5",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,26 +9,20 @@
     "directory": "packages/hooks"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
+  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
   "main": "dist/commercetools-uikit-hooks.cjs.js",
   "module": "dist/commercetools-uikit-hooks.esm.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "dependencies": {
     "@babel/runtime": "7.16.3",
     "@babel/runtime-corejs3": "7.16.3",
-    "@commercetools-uikit/utils": "12.2.0",
+    "@commercetools-uikit/utils": "12.2.5",
     "lodash": "4.17.21"
   },
   "devDependencies": {

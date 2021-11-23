@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/label",
   "description": "The Label component represents the primitive label for a form field component.",
-  "version": "12.2.4",
+  "version": "12.2.5",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,28 +9,22 @@
     "directory": "packages/components/label"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
+  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
   "main": "dist/commercetools-uikit-label.cjs.js",
   "module": "dist/commercetools-uikit-label.esm.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "dependencies": {
     "@babel/runtime": "7.16.3",
     "@babel/runtime-corejs3": "7.16.3",
-    "@commercetools-uikit/design-system": "12.2.4",
-    "@commercetools-uikit/text": "12.2.4",
-    "@commercetools-uikit/utils": "12.2.0",
+    "@commercetools-uikit/design-system": "12.2.5",
+    "@commercetools-uikit/text": "12.2.5",
+    "@commercetools-uikit/utils": "12.2.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "prop-types": "15.7.2"

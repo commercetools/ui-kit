@@ -1,5 +1,24 @@
 # @commercetools-uikit/password-field
 
+## 12.2.5
+
+### Patch Changes
+
+- [#2018](https://github.com/commercetools/ui-kit/pull/2018) [`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080) Thanks [@emmenko](https://github.com/emmenko)! - Upgrarde to Yarn v3
+
+- Updated dependencies [[`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080), [`c253bad3`](https://github.com/commercetools/ui-kit/commit/c253bad3fae2f84158aeeebe1d0bec9124cfe10e), [`37661395`](https://github.com/commercetools/ui-kit/commit/37661395813297ad58b3227f41ca40c291c3b282)]:
+  - @commercetools-uikit/design-system@12.2.5
+  - @commercetools-uikit/flat-button@12.2.5
+  - @commercetools-uikit/constraints@12.2.5
+  - @commercetools-uikit/field-errors@12.2.5
+  - @commercetools-uikit/field-label@12.2.5
+  - @commercetools-uikit/icons@12.2.5
+  - @commercetools-uikit/password-input@12.2.5
+  - @commercetools-uikit/spacings-inline@12.2.5
+  - @commercetools-uikit/spacings-stack@12.2.5
+  - @commercetools-uikit/hooks@12.2.5
+  - @commercetools-uikit/utils@12.2.5
+
 ## 12.2.4
 
 ### Patch Changes

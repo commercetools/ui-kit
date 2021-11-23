@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/i18n",
   "description": "All translation messages from the UI-Kit components.",
-  "version": "12.0.7",
+  "version": "12.2.5",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,24 +9,16 @@
     "directory": "packages/i18n"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
+  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
   "main": "dist/commercetools-uikit-i18n.cjs.js",
   "module": "dist/commercetools-uikit-i18n.esm.js",
-  "files": [
-    "dist",
-    "data",
-    "compiled-data"
-  ],
+  "files": ["dist", "data", "compiled-data"],
   "scripts": {
     "compile-data": "formatjs compile-folder --format=./transifex-transformer.js --ast data compiled-data"
   },

@@ -1,5 +1,23 @@
 # @commercetools-uikit/collapsible-motion
 
+## 12.2.5
+
+### Patch Changes
+
+- [#2006](https://github.com/commercetools/ui-kit/pull/2006) [`b372354a`](https://github.com/commercetools/ui-kit/commit/b372354aa79cab28d23e19a2a065c146d179c2b1) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Migrate to Typescript
+
+* [#2008](https://github.com/commercetools/ui-kit/pull/2008) [`537e696e`](https://github.com/commercetools/ui-kit/commit/537e696e3085ce72272b04e861c6a3ca6c67cd40) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Update types for props
+
+- [#2018](https://github.com/commercetools/ui-kit/pull/2018) [`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080) Thanks [@emmenko](https://github.com/emmenko)! - Upgrarde to Yarn v3
+
+* [#2009](https://github.com/commercetools/ui-kit/pull/2009) [`c253bad3`](https://github.com/commercetools/ui-kit/commit/c253bad3fae2f84158aeeebe1d0bec9124cfe10e) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#2020](https://github.com/commercetools/ui-kit/pull/2020) [`37661395`](https://github.com/commercetools/ui-kit/commit/37661395813297ad58b3227f41ca40c291c3b282) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080)]:
+  - @commercetools-uikit/hooks@12.2.5
+  - @commercetools-uikit/utils@12.2.5
+
 ## 12.2.4
 
 ### Patch Changes

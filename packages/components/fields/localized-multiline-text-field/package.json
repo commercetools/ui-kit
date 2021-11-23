@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/localized-multiline-text-field",
   "description": "A controlled text input component for localized multi-line strings with validation states.",
-  "version": "12.2.4",
+  "version": "12.2.5",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,32 +9,26 @@
     "directory": "packages/components/fields/localized-multiline-text-field"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
+  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
   "main": "dist/commercetools-uikit-localized-multiline-text-field.cjs.js",
   "module": "dist/commercetools-uikit-localized-multiline-text-field.esm.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "dependencies": {
     "@babel/runtime": "7.16.3",
     "@babel/runtime-corejs3": "7.16.3",
-    "@commercetools-uikit/constraints": "12.2.4",
-    "@commercetools-uikit/design-system": "12.2.4",
-    "@commercetools-uikit/field-errors": "12.2.4",
-    "@commercetools-uikit/field-label": "12.2.4",
-    "@commercetools-uikit/localized-multiline-text-input": "12.2.4",
-    "@commercetools-uikit/spacings": "12.2.4",
-    "@commercetools-uikit/utils": "12.2.0",
+    "@commercetools-uikit/constraints": "12.2.5",
+    "@commercetools-uikit/design-system": "12.2.5",
+    "@commercetools-uikit/field-errors": "12.2.5",
+    "@commercetools-uikit/field-label": "12.2.5",
+    "@commercetools-uikit/localized-multiline-text-input": "12.2.5",
+    "@commercetools-uikit/spacings": "12.2.5",
+    "@commercetools-uikit/utils": "12.2.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "common-tags": "1.8.2",
