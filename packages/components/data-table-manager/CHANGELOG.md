@@ -1,5 +1,36 @@
 # @commercetools-uikit/data-table-manager
 
+## 12.2.5
+
+### Patch Changes
+
+- [#2018](https://github.com/commercetools/ui-kit/pull/2018) [`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080) Thanks [@emmenko](https://github.com/emmenko)! - Upgrarde to Yarn v3
+
+* [#2009](https://github.com/commercetools/ui-kit/pull/2009) [`c253bad3`](https://github.com/commercetools/ui-kit/commit/c253bad3fae2f84158aeeebe1d0bec9124cfe10e) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#2020](https://github.com/commercetools/ui-kit/pull/2020) [`37661395`](https://github.com/commercetools/ui-kit/commit/37661395813297ad58b3227f41ca40c291c3b282) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`b372354a`](https://github.com/commercetools/ui-kit/commit/b372354aa79cab28d23e19a2a065c146d179c2b1), [`537e696e`](https://github.com/commercetools/ui-kit/commit/537e696e3085ce72272b04e861c6a3ca6c67cd40), [`7be0e193`](https://github.com/commercetools/ui-kit/commit/7be0e193dc5c6117a8b5f07c7bd234ac4db898b8), [`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080), [`c253bad3`](https://github.com/commercetools/ui-kit/commit/c253bad3fae2f84158aeeebe1d0bec9124cfe10e), [`39be0660`](https://github.com/commercetools/ui-kit/commit/39be06609e1991858252710d80e2abec4a82587a), [`37661395`](https://github.com/commercetools/ui-kit/commit/37661395813297ad58b3227f41ca40c291c3b282)]:
+  - @commercetools-uikit/collapsible-motion@12.2.5
+  - @commercetools-uikit/accessible-button@12.2.5
+  - @commercetools-uikit/design-system@12.2.5
+  - @commercetools-uikit/accessible-hidden@12.2.5
+  - @commercetools-uikit/primary-button@12.2.5
+  - @commercetools-uikit/secondary-button@12.2.5
+  - @commercetools-uikit/secondary-icon-button@12.2.5
+  - @commercetools-uikit/card@12.2.5
+  - @commercetools-uikit/field-label@12.2.5
+  - @commercetools-uikit/grid@12.2.5
+  - @commercetools-uikit/icons@12.2.5
+  - @commercetools-uikit/async-select-input@12.2.5
+  - @commercetools-uikit/radio-input@12.2.5
+  - @commercetools-uikit/select-input@12.2.5
+  - @commercetools-uikit/tag@12.2.5
+  - @commercetools-uikit/text@12.2.5
+  - @commercetools-uikit/hooks@12.2.5
+  - @commercetools-uikit/utils@12.2.5
+  - @commercetools-uikit/spacings@12.2.5
+
 ## 12.2.4
 
 ### Patch Changes

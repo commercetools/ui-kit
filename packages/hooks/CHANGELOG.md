@@ -1,5 +1,14 @@
 # @commercetools-uikit/hooks
 
+## 12.2.5
+
+### Patch Changes
+
+- [#2018](https://github.com/commercetools/ui-kit/pull/2018) [`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080) Thanks [@emmenko](https://github.com/emmenko)! - Upgrarde to Yarn v3
+
+- Updated dependencies [[`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080)]:
+  - @commercetools-uikit/utils@12.2.5
+
 ## 12.2.3
 
 ### Patch Changes

@@ -1,5 +1,30 @@
 # @commercetools-uikit/fields
 
+## 12.2.5
+
+### Patch Changes
+
+- [#2018](https://github.com/commercetools/ui-kit/pull/2018) [`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080) Thanks [@emmenko](https://github.com/emmenko)! - Upgrarde to Yarn v3
+
+- Updated dependencies [[`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080), [`c253bad3`](https://github.com/commercetools/ui-kit/commit/c253bad3fae2f84158aeeebe1d0bec9124cfe10e), [`37661395`](https://github.com/commercetools/ui-kit/commit/37661395813297ad58b3227f41ca40c291c3b282)]:
+  - @commercetools-uikit/async-creatable-select-field@12.2.5
+  - @commercetools-uikit/async-select-field@12.2.5
+  - @commercetools-uikit/creatable-select-field@12.2.5
+  - @commercetools-uikit/date-field@12.2.5
+  - @commercetools-uikit/date-range-field@12.2.5
+  - @commercetools-uikit/date-time-field@12.2.5
+  - @commercetools-uikit/localized-multiline-text-field@12.2.5
+  - @commercetools-uikit/localized-text-field@12.2.5
+  - @commercetools-uikit/money-field@12.2.5
+  - @commercetools-uikit/multiline-text-field@12.2.5
+  - @commercetools-uikit/number-field@12.2.5
+  - @commercetools-uikit/password-field@12.2.5
+  - @commercetools-uikit/radio-field@12.2.5
+  - @commercetools-uikit/search-select-field@12.2.5
+  - @commercetools-uikit/select-field@12.2.5
+  - @commercetools-uikit/text-field@12.2.5
+  - @commercetools-uikit/time-field@12.2.5
+
 ## 12.2.4
 
 ### Patch Changes

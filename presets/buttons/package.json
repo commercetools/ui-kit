@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/buttons",
   "description": "A preset of all the UI-Kit buttons components.",
-  "version": "12.2.4",
+  "version": "12.2.5",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,33 +9,27 @@
     "directory": "presets/buttons"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": [
-    "javascript",
-    "design system",
-    "react",
-    "uikit"
-  ],
+  "keywords": ["javascript", "design system", "react", "uikit"],
   "license": "MIT",
+  "private": false,
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
   "main": "dist/commercetools-uikit-buttons.cjs.js",
   "module": "dist/commercetools-uikit-buttons.esm.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "dependencies": {
     "@babel/runtime": "7.16.3",
     "@babel/runtime-corejs3": "7.16.3",
-    "@commercetools-uikit/accessible-button": "12.2.4",
-    "@commercetools-uikit/design-system": "12.2.4",
-    "@commercetools-uikit/flat-button": "12.2.4",
-    "@commercetools-uikit/icon-button": "12.2.4",
-    "@commercetools-uikit/link-button": "12.2.4",
-    "@commercetools-uikit/primary-button": "12.2.4",
-    "@commercetools-uikit/secondary-button": "12.2.4",
-    "@commercetools-uikit/secondary-icon-button": "12.2.4"
+    "@commercetools-uikit/accessible-button": "12.2.5",
+    "@commercetools-uikit/design-system": "12.2.5",
+    "@commercetools-uikit/flat-button": "12.2.5",
+    "@commercetools-uikit/icon-button": "12.2.5",
+    "@commercetools-uikit/link-button": "12.2.5",
+    "@commercetools-uikit/primary-button": "12.2.5",
+    "@commercetools-uikit/secondary-button": "12.2.5",
+    "@commercetools-uikit/secondary-icon-button": "12.2.5"
   },
   "devDependencies": {
     "react": "17.0.2",

@@ -1,5 +1,20 @@
 # @commercetools-uikit/tag
 
+## 12.2.5
+
+### Patch Changes
+
+- [#2018](https://github.com/commercetools/ui-kit/pull/2018) [`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080) Thanks [@emmenko](https://github.com/emmenko)! - Upgrarde to Yarn v3
+
+* [#2019](https://github.com/commercetools/ui-kit/pull/2019) [`39be0660`](https://github.com/commercetools/ui-kit/commit/39be06609e1991858252710d80e2abec4a82587a) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Update Tag body "as" type
+
+* Updated dependencies [[`7be0e193`](https://github.com/commercetools/ui-kit/commit/7be0e193dc5c6117a8b5f07c7bd234ac4db898b8), [`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080), [`c253bad3`](https://github.com/commercetools/ui-kit/commit/c253bad3fae2f84158aeeebe1d0bec9124cfe10e), [`37661395`](https://github.com/commercetools/ui-kit/commit/37661395813297ad58b3227f41ca40c291c3b282)]:
+  - @commercetools-uikit/accessible-button@12.2.5
+  - @commercetools-uikit/design-system@12.2.5
+  - @commercetools-uikit/constraints@12.2.5
+  - @commercetools-uikit/icons@12.2.5
+  - @commercetools-uikit/text@12.2.5
+
 ## 12.2.4
 
 ### Patch Changes

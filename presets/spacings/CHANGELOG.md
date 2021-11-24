@@ -1,5 +1,17 @@
 # @commercetools-uikit/spacings
 
+## 12.2.5
+
+### Patch Changes
+
+- [#2018](https://github.com/commercetools/ui-kit/pull/2018) [`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080) Thanks [@emmenko](https://github.com/emmenko)! - Upgrarde to Yarn v3
+
+- Updated dependencies [[`878d08f7`](https://github.com/commercetools/ui-kit/commit/878d08f7ef9a4015b3756e887448b3e26ab91080)]:
+  - @commercetools-uikit/spacings-inline@12.2.5
+  - @commercetools-uikit/spacings-inset@12.2.5
+  - @commercetools-uikit/spacings-inset-squish@12.2.5
+  - @commercetools-uikit/spacings-stack@12.2.5
+
 ## 12.2.4
 
 ### Patch Changes
