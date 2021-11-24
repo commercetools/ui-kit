@@ -70,7 +70,6 @@ export const transformDocument = (
     homepage: 'https://uikit.commercetools.com',
     keywords: ['javascript', 'design system', 'react', 'uikit'],
     license: 'MIT',
-    private: false,
     publishConfig: {
       access: 'public',
     },
