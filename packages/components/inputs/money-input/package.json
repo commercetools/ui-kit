@@ -34,7 +34,7 @@
     "lodash": "4.17.21",
     "prop-types": "15.7.2",
     "react-required-if": "1.0.3",
-    "react-select": "4.3.1"
+    "react-select": "5.2.1"
   },
   "devDependencies": {
     "react": "17.0.2",

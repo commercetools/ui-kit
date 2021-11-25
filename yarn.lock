@@ -2143,7 +2143,7 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     react-intl: 5.21.2
-    react-select: 4.3.1
+    react-select: 5.2.1
   peerDependencies:
     react: 17.x
     react-dom: 17.x
@@ -2195,7 +2195,7 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     react-intl: 5.21.2
-    react-select: 4.3.1
+    react-select: 5.2.1
   peerDependencies:
     react: 17.x
     react-dom: 17.x
@@ -2279,7 +2279,7 @@ __metadata:
     prop-types: 15.7.2
     react: 17.0.2
     react-intl: 5.21.2
-    react-select: 4.3.1
+    react-select: 5.2.1
   peerDependencies:
     moment: 2.x
     react: 17.x
@@ -2446,7 +2446,7 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     react-intl: 5.21.2
-    react-select: 4.3.1
+    react-select: 5.2.1
   peerDependencies:
     react: 17.x
     react-dom: 17.x
@@ -3063,7 +3063,7 @@ __metadata:
     react-dom: 17.0.2
     react-intl: 5.21.2
     react-required-if: 1.0.3
-    react-select: 4.3.1
+    react-select: 5.2.1
   peerDependencies:
     react: 17.x
     react-dom: 17.x
@@ -3120,7 +3120,7 @@ __metadata:
     react-dom: 17.0.2
     react-intl: 5.21.2
     react-required-if: 1.0.3
-    react-select: 4.3.1
+    react-select: 5.2.1
     react-textarea-autosize: 8.3.3
   peerDependencies:
     react: 17.x
@@ -3300,7 +3300,7 @@ __metadata:
     react-dom: 17.0.2
     react-intl: 5.21.2
     react-required-if: 1.0.3
-    react-select: 4.3.1
+    react-select: 5.2.1
   peerDependencies:
     react: 17.x
     react-dom: 17.x
@@ -3795,7 +3795,7 @@ __metadata:
     prop-types: 15.7.2
     react: 17.0.2
     react-intl: 5.21.2
-    react-select: 4.3.1
+    react-select: 5.2.1
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -3820,7 +3820,7 @@ __metadata:
     prop-types: 15.7.2
     react: 17.0.2
     react-intl: 5.21.2
-    react-select: 4.3.1
+    react-select: 5.2.1
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -6331,6 +6331,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: ecaae8df36cd8cfeb89080d52534856acc3789bad9a6e369ff5119426377c827b4e5b5daa638507f2c1c2fd6c994bf45de288a698143178cd4049c2cd8b77b35
+  languageName: node
+  linkType: hard
+
+"@types/react-transition-group@npm:^4.4.0":
+  version: 4.4.4
+  resolution: "@types/react-transition-group@npm:4.4.4"
+  dependencies:
+    "@types/react": "*"
+  checksum: 86e9ff9731798e12bc2afe0304678918769633b531dcf6397f86af81718fb7930ef8648e894eeb3718fc6eab6eb885cfb9b82a44d1d74e10951ee11ebc4643ae
   languageName: node
   linkType: hard
 
@@ -16818,17 +16827,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-input-autosize@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "react-input-autosize@npm:3.0.0"
-  dependencies:
-    prop-types: ^15.5.8
-  peerDependencies:
-    react: ^16.3.0 || ^17.0.0
-  checksum: cc3309ddc87446ade742c7d0e88ef089dd8b6981f21506a2bb27daf01a8803ac697f64157c4ffc7e81dfcf3892b54a4072dbc3652fd9addcf6d22dd0b87ab723
-  languageName: node
-  linkType: hard
-
 "react-intl@npm:5.21.2":
   version: 5.21.2
   resolution: "react-intl@npm:5.21.2"
@@ -16932,21 +16930,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-select@npm:4.3.1":
-  version: 4.3.1
-  resolution: "react-select@npm:4.3.1"
+"react-select@npm:5.2.1":
+  version: 5.2.1
+  resolution: "react-select@npm:5.2.1"
   dependencies:
     "@babel/runtime": ^7.12.0
     "@emotion/cache": ^11.4.0
     "@emotion/react": ^11.1.1
+    "@types/react-transition-group": ^4.4.0
     memoize-one: ^5.0.0
     prop-types: ^15.6.0
-    react-input-autosize: ^3.0.0
     react-transition-group: ^4.3.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: e87e0b42a662ddce7957a69a3029ea769b22264c197cbd1d8bde1ce631e49c5c5f42414773364674a7a6a8431340e1ede49220583bf1dcd966b63e9bd25cfc12
+  checksum: 014cde5d23ca466795bd7f02455769efda74522c41f11109ec2d6f0e3c77f401ea91ae23cdccce997efb653aa6ea88688a16f40e59bfdef2a2414d0cfd10f374
   languageName: node
   linkType: hard
 
