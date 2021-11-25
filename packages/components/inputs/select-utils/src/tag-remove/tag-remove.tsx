@@ -6,7 +6,18 @@ import { CloseBoldIcon } from '@commercetools-uikit/icons';
 // see https://github.com/JedWatson/react-select/blob/44e9fb29b230e49a754a2f0d6f30c2250aa45009/src/components/MultiValue.js
 const removeProps = ['onClick', 'onTouchEnd', 'onMouseDown'];
 
-const TagRemove = (props) => {
+type TSelectProps = {
+  isDisabled: boolean;
+  isReadOnly: boolean;
+};
+
+type TInnerProps = {};
+
+type TTagRemoveProps = {
+  selectProps: TSelectProps;
+  innerProps: TInnerProps;
+};
+const TagRemove = (props: TTagRemoveProps) => {
   const isDisabled = Boolean(
     props.selectProps.isDisabled || props.selectProps.isReadOnly
   );

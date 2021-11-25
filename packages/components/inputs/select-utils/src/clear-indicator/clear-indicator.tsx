@@ -1,11 +1,19 @@
-import PropTypes from 'prop-types';
+import { CSSProperties, LegacyRef } from 'react';
 import { css } from '@emotion/react';
 import { useIntl } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
 
-const ClearIndicator = (props) => {
+type TGetStylesProps = unknown;
+type TInnerProps = {
+  ref?: LegacyRef<HTMLButtonElement>;
+};
+type TClearIndicator = {
+  getStyles: (s: string, props: TGetStylesProps) => CSSProperties;
+  innerProps: TInnerProps;
+};
+const ClearIndicator = (props: TClearIndicator) => {
   const intl = useIntl();
   const {
     getStyles,
@@ -35,9 +43,5 @@ const ClearIndicator = (props) => {
 };
 
 ClearIndicator.displayName = 'ClearIndicator';
-ClearIndicator.propTypes = {
-  innerProps: PropTypes.object,
-  getStyles: PropTypes.func.isRequired,
-};
 
 export default ClearIndicator;

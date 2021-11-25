@@ -1,7 +1,7 @@
-import { components } from 'react-select';
+import { components, DropdownIndicatorProps } from 'react-select';
 import { SearchIcon } from '@commercetools-uikit/icons';
 
-const SearchIconDropdownIndicator = (props) => {
+const SearchIconDropdownIndicator = (props: DropdownIndicatorProps) => {
   return (
     <components.DropdownIndicator {...props}>
       <SearchIcon color={'neutral60'} size="big" />

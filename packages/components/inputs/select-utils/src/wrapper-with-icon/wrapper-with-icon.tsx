@@ -1,16 +1,29 @@
-import { Fragment, cloneElement } from 'react';
+import { Fragment, cloneElement, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { customProperties } from '@commercetools-uikit/design-system';
-import { components as defaultComponents } from 'react-select';
+import {
+  components as defaultComponents,
+  SingleValueProps,
+  PlaceholderProps,
+} from 'react-select';
 
-const getDefaultComponent = (type) => {
+const getDefaultComponent = (type: string) => {
   if (type === 'singleValue') return defaultComponents.SingleValue;
   if (type === 'placeholder') return defaultComponents.Placeholder;
   return Fragment;
 };
 
-const WrapperWithIcon = ({ children, ...props }) => {
+type TSelectProps = {
+  iconLeft: ReactElement;
+};
+export type TWrapperWithIconProps = {
+  type: string;
+  selectProps: TSelectProps;
+} & SingleValueProps &
+  PlaceholderProps;
+
+const WrapperWithIcon = (props: TWrapperWithIconProps) => {
   const Component = getDefaultComponent(props.type);
 
   return (
@@ -28,7 +41,7 @@ const WrapperWithIcon = ({ children, ...props }) => {
           customProperties.spacingXs};
         `}
       >
-        <Component {...props}>{children}</Component>
+        <Component {...props}>{props.children}</Component>
       </span>
     </>
   );
@@ -46,8 +59,12 @@ export default WrapperWithIcon;
 
 /* eslint-disable react/display-name */
 const customComponents = {
-  SingleValue: (props) => <WrapperWithIcon {...props} type="singleValue" />,
-  Placeholder: (props) => <WrapperWithIcon {...props} type="placeholder" />,
+  SingleValue: (props: TWrapperWithIconProps) => (
+    <WrapperWithIcon {...props} type="singleValue" />
+  ),
+  Placeholder: (props: TWrapperWithIconProps) => (
+    <WrapperWithIcon {...props} type="placeholder" />
+  ),
 };
 /* eslint-enable react/display-name */
 
