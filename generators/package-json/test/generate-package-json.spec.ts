@@ -40,40 +40,39 @@ describe('when package.json is NOT private', () => {
       options
     );
     expect(content).toMatchInlineSnapshot(`
-Object {
-  "bugs": "https://github.com/commercetools/ui-kit/issues",
-  "description": "Render an Avenger",
-  "homepage": "https://uikit.commercetools.com",
-  "keywords": Array [
-    "javascript",
-    "design system",
-    "react",
-    "uikit",
-  ],
-  "license": "MIT",
-  "main": "dist/avenger.cjs.js",
-  "module": "dist/avenger.esm.js",
-  "name": "@commercetools-uikit/avenger",
-  "peerDependencies": Object {
-    "react": "16.8.x",
-  },
-  "private": false,
-  "publishConfig": Object {
-    "access": "public",
-  },
-  "readme": Object {
-    "componentPaths": Array [
-      "./src/avenger.js",
-    ],
-  },
-  "repository": Object {
-    "directory": "packages/avenger",
-    "type": "git",
-    "url": "https://github.com/commercetools/ui-kit.git",
-  },
-  "sideEffects": false,
-  "version": "1.0.0",
-}
-`);
+      Object {
+        "bugs": "https://github.com/commercetools/ui-kit/issues",
+        "description": "Render an Avenger",
+        "homepage": "https://uikit.commercetools.com",
+        "keywords": Array [
+          "javascript",
+          "design system",
+          "react",
+          "uikit",
+        ],
+        "license": "MIT",
+        "main": "dist/avenger.cjs.js",
+        "module": "dist/avenger.esm.js",
+        "name": "@commercetools-uikit/avenger",
+        "peerDependencies": Object {
+          "react": "16.8.x",
+        },
+        "publishConfig": Object {
+          "access": "public",
+        },
+        "readme": Object {
+          "componentPaths": Array [
+            "./src/avenger.js",
+          ],
+        },
+        "repository": Object {
+          "directory": "packages/avenger",
+          "type": "git",
+          "url": "https://github.com/commercetools/ui-kit.git",
+        },
+        "sideEffects": false,
+        "version": "1.0.0",
+      }
+    `);
   });
 });
