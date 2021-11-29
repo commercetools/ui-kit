@@ -202,7 +202,7 @@ describe('when readOnly', () => {
   it('should make the inputs readonly', () => {
     const { getByLabelText } = renderMoneyField({ isReadOnly: true });
     expect(getByLabelText('Amount')).toHaveAttribute('readonly');
-    expect(getByLabelText('EUR')).toHaveAttribute('readonly');
+    expect(getByLabelText('EUR').inputMode).toBe('none');
   });
 });
 

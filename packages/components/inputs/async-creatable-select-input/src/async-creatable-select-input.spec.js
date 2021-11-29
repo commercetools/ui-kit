@@ -165,8 +165,8 @@ describe('in single mode', () => {
         },
       });
     });
-    it('should be able to create an option', () => {
-      const { getByLabelText, getByText } = renderInput();
+    it('should be able to create an option', async () => {
+      const { getByLabelText, findByText } = renderInput();
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
@@ -174,7 +174,7 @@ describe('in single mode', () => {
       fireEvent.change(input, event);
       fireEvent.keyDown(input, { key: 'Enter' });
       fireEvent.keyUp(input, { key: 'Enter' });
-      expect(getByText('Orange')).toBeInTheDocument();
+      await findByText('Create "Orange"');
     });
     it('should call onChange with the created option', async () => {
       const onChange = jest.fn();
