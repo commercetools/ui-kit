@@ -5634,12 +5634,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sideway/address@npm:^4.1.0":
-  version: 4.1.2
-  resolution: "@sideway/address@npm:4.1.2"
+"@sideway/address@npm:^4.1.3":
+  version: 4.1.3
+  resolution: "@sideway/address@npm:4.1.3"
   dependencies:
     "@hapi/hoek": ^9.0.0
-  checksum: 1e4910f7b3205347f78e698923dd7e0bb400c9e9e9bdd4a059edb6d2e32a540b426aba4652d095ea299fb75019d87883251dd9b96b350c00a35454bcdfa5f9f5
+  checksum: 3c1faf6ef37a0b59b62ce42b59c012c00ef1fc4194ad6776c65c2f9a6dd6c1710c6f6362b3ca3fa582fdb93984f0cb64ca44f9f5e02940634805f5e561279c22
   languageName: node
   linkType: hard
 
@@ -8269,7 +8269,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1":
+"chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -8678,13 +8678,6 @@ __metadata:
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
   checksum: ab8c07884e42c3a8dbc5dd9592c606176c7eb5c1ca5ff274bcf907039b2c41de3626f684ea75ccf4d361ba004bbaff1f577d5384c155f3871e456bdf27becf9e
-  languageName: node
-  linkType: hard
-
-"commander@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "commander@npm:3.0.2"
-  checksum: 6d14ad030d1904428139487ed31febcb04c1604db2b8d9fae711f60ee6718828dc0e11602249e91c8a97b0e721e9c6d53edbc166bad3cde1596851d59a8f824d
   languageName: node
   linkType: hard
 
@@ -10724,10 +10717,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect-puppeteer@npm:^5.0.4":
-  version: 5.0.4
-  resolution: "expect-puppeteer@npm:5.0.4"
-  checksum: 002201879884038c7e9cd303bab772adc8f3d8a1c81112cada627bc58184223cd3d533958dc27fee3e09c8f03918d1d120b3da3201f1161c4c71354fdf5cf0cc
+"expect-puppeteer@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "expect-puppeteer@npm:6.0.2"
+  checksum: 16847469b3a09b56d05bb78bd46d1669582d63ea1b59f261337c1f66dbedd06d5dee38cb3d0722b7f3bd2875aecbde4a85eea051bb7c6f9fdcca15612dfca95c
   languageName: node
   linkType: hard
 
@@ -11025,16 +11018,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"find-process@npm:^1.4.4":
-  version: 1.4.5
-  resolution: "find-process@npm:1.4.5"
+"find-process@npm:^1.4.5":
+  version: 1.4.7
+  resolution: "find-process@npm:1.4.7"
   dependencies:
     chalk: ^4.0.0
     commander: ^5.1.0
     debug: ^4.1.1
   bin:
     find-process: bin/find-process.js
-  checksum: 6b6bb76f3d508522d97d34b05019c532ff1b145b65e497877ebd1caae5ad67ab2ad6c90810b7c5fa99753e6360da0ce90718aee0854c096d806adceeee12ce0c
+  checksum: 1953e6a16af86ec033d613ddfcac24f68b7ca6cc7d7aadc037ede4ccad4f03c5571d3c95165842475bfa9432120be5c995cc234c9c02726fc886ac6cd85ece3b
   languageName: node
   linkType: hard
 
@@ -13142,18 +13135,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-dev-server@npm:^5.0.3":
-  version: 5.0.3
-  resolution: "jest-dev-server@npm:5.0.3"
+"jest-dev-server@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "jest-dev-server@npm:6.0.2"
   dependencies:
-    chalk: ^4.1.1
+    chalk: ^4.1.2
     cwd: ^0.10.0
-    find-process: ^1.4.4
+    find-process: ^1.4.5
     prompts: ^2.4.1
-    spawnd: ^5.0.0
+    spawnd: ^6.0.2
     tree-kill: ^1.2.2
-    wait-on: ^5.3.0
-  checksum: 7285dfd4c903b14653ce58a50c4dcbc06236d367c341646f366f16aee0cfa9fa56f473e8e24ea71b4be1382cd13173ee3162855ee8b63d9c77bc41cd5211f18a
+    wait-on: ^6.0.0
+  checksum: 9ff40c0707bc13429f30bcf82ec8dd50963b5151418de7fe91191113c438c7c24ab81205aad7e1809c190b7d26040458201ba772868f57805251b4b52e0242fd
   languageName: node
   linkType: hard
 
@@ -13206,7 +13199,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-environment-node@npm:^27.0.1, jest-environment-node@npm:^27.3.1":
+"jest-environment-node@npm:^27.3.1":
   version: 27.3.1
   resolution: "jest-environment-node@npm:27.3.1"
   dependencies:
@@ -13220,16 +13213,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-environment-puppeteer@npm:^5.0.4":
-  version: 5.0.4
-  resolution: "jest-environment-puppeteer@npm:5.0.4"
+"jest-environment-puppeteer@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "jest-environment-puppeteer@npm:6.0.2"
   dependencies:
-    chalk: ^4.1.1
+    chalk: ^4.1.2
     cwd: ^0.10.0
-    jest-dev-server: ^5.0.3
-    jest-environment-node: ^27.0.1
+    jest-dev-server: ^6.0.2
+    jest-environment-node: ^27.3.1
     merge-deep: ^3.0.3
-  checksum: 0d5864f1069bf49d75b9a6f9c19c11bdf44c77f7d0b908e74ad3524a4486d495fac2f3c3cfeaeed6dcf7fa62ba7d88fb8340169c57a6769cb7211dcf296d8cc9
+  checksum: 92846d24c8799149bdc9691b9b60b2bc6cb5bd8a99d5c7fccb48ea58aa457554480139372e9c08dd77e68cadb557a45fa0df99affa065abd715eb4bd8e3535f9
   languageName: node
   linkType: hard
 
@@ -13358,15 +13351,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-puppeteer@npm:5.0.4":
-  version: 5.0.4
-  resolution: "jest-puppeteer@npm:5.0.4"
+"jest-puppeteer@npm:6.0.2":
+  version: 6.0.2
+  resolution: "jest-puppeteer@npm:6.0.2"
   dependencies:
-    expect-puppeteer: ^5.0.4
-    jest-environment-puppeteer: ^5.0.4
+    expect-puppeteer: ^6.0.2
+    jest-environment-puppeteer: ^6.0.2
   peerDependencies:
-    puppeteer: ">= 1.5.0 < 10"
-  checksum: 29737a1a015950f78691838fbeedb8072cab2383b1212384fc631959ffd39971a50acc8c857a9f13e2df47357589319442828cdd445266efbe5727b9af23a0d4
+    puppeteer: ">= 1.5.0"
+  checksum: cb1a1541707a7796b075ffc9bd8c9b9764162059b12e65f1cbeeeece5858bdfde2aa49d28d4d42f04627849ef6106776416eb100817bcb217b2f30eb6e6d0603
   languageName: node
   linkType: hard
 
@@ -13673,16 +13666,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joi@npm:^17.3.0":
-  version: 17.4.2
-  resolution: "joi@npm:17.4.2"
+"joi@npm:^17.4.0":
+  version: 17.5.0
+  resolution: "joi@npm:17.5.0"
   dependencies:
     "@hapi/hoek": ^9.0.0
     "@hapi/topo": ^5.0.0
-    "@sideway/address": ^4.1.0
+    "@sideway/address": ^4.1.3
     "@sideway/formula": ^3.0.0
     "@sideway/pinpoint": ^2.0.0
-  checksum: 977ada1f9d38c2762689b61cec1272176968ccea731a16b71713ebaa067f140460e0b6f7eccff6fc12206fddce22e7f4ed74724651bc1b24b1e26d43280633d0
+  checksum: 6a20d009d2fa8a72dbfd9bc739d240f678b09d3a16c05b4bfb4e2d0503e60f7d7914250f0bfc52fb79a537490739ba36a1ace00a05b8ddecaaacfcedafc5c8b9
   languageName: node
   linkType: hard
 
@@ -17644,7 +17637,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^6.3.3, rxjs@npm:^6.5.1, rxjs@npm:^6.6.3":
+"rxjs@npm:^6.3.3, rxjs@npm:^6.5.1":
   version: 6.6.7
   resolution: "rxjs@npm:6.6.7"
   dependencies:
@@ -17653,7 +17646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^7.4.0":
+"rxjs@npm:^7.1.0, rxjs@npm:^7.4.0":
   version: 7.4.0
   resolution: "rxjs@npm:7.4.0"
   dependencies:
@@ -17942,7 +17935,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"signal-exit@npm:^3.0.5":
+"signal-exit@npm:^3.0.5, signal-exit@npm:^3.0.6":
   version: 3.0.6
   resolution: "signal-exit@npm:3.0.6"
   checksum: b819ac81ba757af559dad0804233ae31bf6f054591cd8a671e9cbcf09f21c72ec3076fe87d1e04861f5b33b47d63f0694b568de99c99cd733ee2060515beb6d5
@@ -18310,15 +18303,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"spawnd@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "spawnd@npm:5.0.0"
+"spawnd@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "spawnd@npm:6.0.2"
   dependencies:
     exit: ^0.1.2
-    signal-exit: ^3.0.3
+    signal-exit: ^3.0.6
     tree-kill: ^1.2.2
-    wait-port: ^0.2.9
-  checksum: 6a14b8b3c5f398c645e8dce46fe8f02eb2db3c31a43e9e978e904d46bddcfc723cc0c171d7f745d6b899dbe745c1a29ec035b1db0283993116ac6795d2eb0dea
+  checksum: 39060a101e908c07497e8bc1c8335cb93d2708c4c1065824653d2e8de788437c590bd32a6fc3b03ddf7ff937642f3870442b778814adef8526fbca3723092bdb
   languageName: node
   linkType: hard
 
@@ -19641,7 +19633,7 @@ __metadata:
     intl-pluralrules: 1.3.1
     jest: 27.3.1
     jest-localstorage-mock: 2.4.18
-    jest-puppeteer: 5.0.4
+    jest-puppeteer: 6.0.2
     jest-runner-eslint: 1.0.0
     jest-runner-stylelint: 2.3.7
     jest-silent-reporter: 0.5.0
@@ -20244,31 +20236,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wait-on@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "wait-on@npm:5.3.0"
+"wait-on@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "wait-on@npm:6.0.0"
   dependencies:
     axios: ^0.21.1
-    joi: ^17.3.0
+    joi: ^17.4.0
     lodash: ^4.17.21
     minimist: ^1.2.5
-    rxjs: ^6.6.3
+    rxjs: ^7.1.0
   bin:
     wait-on: bin/wait-on
-  checksum: b7099104b7900ff6349f1196edff759076ab557a2053c017a587819f7a59f146ec9e35c99579acd31dcda371bfa72241ef28b8ccda902f0bf3fbf2d780a00ebf
-  languageName: node
-  linkType: hard
-
-"wait-port@npm:^0.2.9":
-  version: 0.2.9
-  resolution: "wait-port@npm:0.2.9"
-  dependencies:
-    chalk: ^2.4.2
-    commander: ^3.0.2
-    debug: ^4.1.1
-  bin:
-    wait-port: bin/wait-port.js
-  checksum: 62ad348234b4a7398f600e409a6b549b641319cb6d00b04b6a762041763634f453c3788ef10d3fcbd59cb466d49ce0917702fe0de331b7625ed4f18c158be664
+  checksum: 6ae7bd2a933715c3b2f1c49f033d97c576b2c6a0257420d4c83964d2846c3967bfce33bc9af9a1a631ef38dfa6185be03cef57d2867c8c30c523278f964ac9e3
   languageName: node
   linkType: hard
 
