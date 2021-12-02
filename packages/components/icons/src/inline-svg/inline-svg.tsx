@@ -1,7 +1,7 @@
 import type { Props } from '../templates/icon.styles';
 
 import { cloneElement, isValidElement, ReactElement, useMemo } from 'react';
-import DOMPurify from 'dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 import convert from 'react-from-dom';
 import { useTheme, ClassNames } from '@emotion/react';
 import { canUseDOM } from '@commercetools-uikit/utils';

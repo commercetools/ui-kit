@@ -32,7 +32,7 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@types/dompurify": "^2.2.3",
-    "dompurify": "2.3.3",
+    "isomorphic-dompurify": "0.16.0",
     "prop-types": "15.7.2",
     "react-from-dom": "0.6.1"
   },
