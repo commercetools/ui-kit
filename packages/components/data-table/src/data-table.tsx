@@ -88,7 +88,7 @@ export type TColumn<Row extends TRow = TRow> = {
    *
    * @@defaultValue@@: auto
    */
-  width?: number | string;
+  width?: string;
   /**
    * Use this to override the table's own `horizontalCellAlignment` prop for this specific column.
    */

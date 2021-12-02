@@ -100,7 +100,7 @@ export type THeaderCell = {
   sortedBy?: string;
   children: ReactNode;
   columnKey: string;
-  columnWidth?: number | string;
+  columnWidth?: string;
   shouldWrap?: boolean;
   isSortable?: boolean;
   isCondensed?: boolean;
