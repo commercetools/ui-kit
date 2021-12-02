@@ -1,5 +1,13 @@
 # @commercetools-uikit/radio-field
 
+## 12.2.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@12.2.7
+  - @commercetools-uikit/radio-input@12.2.7
+
 ## 12.2.6
 
 ### Patch Changes
