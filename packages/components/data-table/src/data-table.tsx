@@ -25,13 +25,8 @@ export interface TRow {
   id: string;
 }
 
-type TGetColumnsLayoutInfo = {
-  key: string;
-  width?: number;
-};
-
 const getColumnsLayoutInfo = (columns: TColumn[]) =>
-  columns.reduce<TGetColumnsLayoutInfo[]>(
+  columns.reduce<Pick<TColumn, 'key' | 'width'>[]>(
     (acc, currentValue) => [
       ...acc,
       { key: currentValue.key, width: currentValue.width },
@@ -93,7 +88,7 @@ export type TColumn<Row extends TRow = TRow> = {
    *
    * @@defaultValue@@: auto
    */
-  width?: number;
+  width?: number | string;
   /**
    * Use this to override the table's own `horizontalCellAlignment` prop for this specific column.
    */
