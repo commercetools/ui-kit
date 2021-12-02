@@ -1,5 +1,11 @@
 # @commercetools-uikit/icons
 
+## 12.2.6
+
+### Patch Changes
+
+- [#2037](https://github.com/commercetools/ui-kit/pull/2037) [`d43dc325`](https://github.com/commercetools/ui-kit/commit/d43dc325410172fbec063e63b08714ffe52e72b1) Thanks [@emmenko](https://github.com/emmenko)! - Use `isomorphic-dompurify` to allow using it server-side.
+
 ## 12.2.5
 
 ### Patch Changes

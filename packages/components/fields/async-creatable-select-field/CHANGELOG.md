@@ -1,5 +1,13 @@
 # @commercetools-uikit/async-creatable-select-field
 
+## 12.2.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@12.2.6
+  - @commercetools-uikit/async-creatable-select-input@12.2.6
+
 ## 12.2.5
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # visual-testing-app
 
+## 10.19.24
+
+### Patch Changes
+
+- [#2013](https://github.com/commercetools/ui-kit/pull/2013) [`d98fcf1d`](https://github.com/commercetools/ui-kit/commit/d98fcf1d386b45fea781436862bd1f15890f60de) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update dependency serve to v13
+
 ## 10.19.23
 
 ### Patch Changes
