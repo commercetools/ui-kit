@@ -1,5 +1,12 @@
 # @commercetools-uikit/link
 
+## 12.2.7
+
+### Patch Changes
+
+- Updated dependencies [[`b745bf99`](https://github.com/commercetools/ui-kit/commit/b745bf9987c4d305e3acf13fd7b054fafc1a9fc7)]:
+  - @commercetools-uikit/icons@12.2.7
+
 ## 12.2.6
 
 ### Patch Changes
