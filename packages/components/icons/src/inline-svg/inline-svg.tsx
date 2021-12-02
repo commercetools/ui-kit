@@ -1,7 +1,7 @@
 import type { Props } from '../templates/icon.styles';
 
 import { cloneElement, isValidElement, ReactElement, useMemo } from 'react';
-import DOMPurify from 'isomorphic-dompurify';
+import DOMPurify from 'dompurify';
 import convert from 'react-from-dom';
 import { useTheme, ClassNames } from '@emotion/react';
 import { canUseDOM } from '@commercetools-uikit/utils';
@@ -13,17 +13,18 @@ type InlineSvgProps = Props & {
 
 const InlineSvg = (props: InlineSvgProps) => {
   const theme = useTheme();
-  const sanitized = useMemo(
-    () =>
-      DOMPurify.sanitize(props.data, {
-        USE_PROFILES: { svg: true },
-        FORBID_ATTR: [
-          // To avoid injection by using `style="filter:url(\"data:image/svg+xml,<svg`
-          'style',
-        ],
-      }),
-    [props.data]
-  );
+  const sanitized = useMemo(() => {
+    if (!canUseDOM) {
+      return props.data;
+    }
+    return DOMPurify.sanitize(props.data, {
+      USE_PROFILES: { svg: true },
+      FORBID_ATTR: [
+        // To avoid injection by using `style="filter:url(\"data:image/svg+xml,<svg`
+        'style',
+      ],
+    });
+  }, [props.data]);
   const svgElement = useStringToReactElement(sanitized);
 
   if (svgElement) {
