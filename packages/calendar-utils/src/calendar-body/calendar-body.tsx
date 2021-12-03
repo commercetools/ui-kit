@@ -69,10 +69,7 @@ export type TCalendarBody = {
   theme?: Theme;
 };
 
-type TDefaultProps = {
-  isClearable: boolean;
-};
-const defaultProps: TDefaultProps = {
+const defaultProps: Pick<TCalendarBody, 'isClearable'> = {
   isClearable: true,
 };
 

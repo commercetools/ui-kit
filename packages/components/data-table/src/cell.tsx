@@ -23,11 +23,10 @@ export type TDataCell = {
   isRowCollapsed?: boolean;
 };
 
-type TDefaultProps = {
-  isTruncated: boolean;
-  shouldRenderBottomBorder: boolean;
-};
-const defaultProps: TDefaultProps = {
+const defaultProps: Pick<
+  TDataCell,
+  'isTruncated' | 'shouldRenderBottomBorder'
+> = {
   isTruncated: false,
   shouldRenderBottomBorder: true,
 };
