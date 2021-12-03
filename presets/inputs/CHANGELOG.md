@@ -1,5 +1,14 @@
 # @commercetools-uikit/inputs
 
+## 12.2.8
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/date-input@12.2.8
+  - @commercetools-uikit/date-range-input@12.2.8
+  - @commercetools-uikit/date-time-input@12.2.8
+
 ## 12.2.7
 
 ### Patch Changes
