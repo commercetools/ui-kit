@@ -57,137 +57,146 @@ class Story extends Component {
 const renderAsyncSelectField = (props, options) =>
   render(<Story {...props} />, options);
 
-it('should render a text field', () => {
-  const { getByLabelText } = renderAsyncSelectField();
-  expect(getByLabelText('AsyncSelectField')).toBeInTheDocument();
+it('should render a text field', async () => {
+  const { findByLabelText } = renderAsyncSelectField();
+  expect(await findByLabelText('AsyncSelectField')).toBeInTheDocument();
 });
 
-it('should render a title', () => {
-  const { getByText } = renderAsyncSelectField({ title: 'foo title' });
-  expect(getByText('foo title')).toBeInTheDocument();
+it('should render a title', async () => {
+  const { findByText } = renderAsyncSelectField({ title: 'foo title' });
+  expect(await findByText('foo title')).toBeInTheDocument();
 });
 
-it('should forward data-attributes', () => {
+it('should forward data-attributes', async () => {
   const { container } = renderAsyncSelectField({ 'data-foo': 'bar' });
-  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
+  // eslint-disable-next-line testing-library/prefer-find-by
+  await waitFor(() =>
+    expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument()
+  );
 });
 
-it('should have an HTML name', () => {
+it('should have an HTML name', async () => {
   const { container } = renderAsyncSelectField({ name: 'foo' });
-  expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
+  // eslint-disable-next-line testing-library/prefer-find-by
+  await waitFor(() =>
+    expect(container.querySelector('[name="foo"]')).toBeInTheDocument()
+  );
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
-  const { getByLabelText } = renderAsyncSelectField({ onFocus });
-  getByLabelText('AsyncSelectField').focus();
-  expect(getByLabelText('AsyncSelectField')).toHaveFocus();
+  const { findByLabelText } = renderAsyncSelectField({ onFocus });
+  const asyncSelectField = await findByLabelText('AsyncSelectField');
+  asyncSelectField.focus();
+  expect(asyncSelectField).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
-  const { getByLabelText } = renderAsyncSelectField({ onBlur });
-  getByLabelText('AsyncSelectField').focus();
-  expect(getByLabelText('AsyncSelectField')).toHaveFocus();
-  getByLabelText('AsyncSelectField').blur();
-  expect(getByLabelText('AsyncSelectField')).not.toHaveFocus();
+  const { findByLabelText } = renderAsyncSelectField({ onBlur });
+  const asyncSelectField = await findByLabelText('AsyncSelectField');
+  asyncSelectField.focus();
+  expect(asyncSelectField).toHaveFocus();
+  asyncSelectField.blur();
+  expect(asyncSelectField).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
 
-it('should have focus automatically when isAutofocussed is passed', () => {
-  const { getByLabelText } = renderAsyncSelectField({
+it('should have focus automatically when isAutofocussed is passed', async () => {
+  const { findByLabelText } = renderAsyncSelectField({
     isAutofocussed: true,
   });
-  expect(getByLabelText('AsyncSelectField')).toHaveFocus();
+  expect(await findByLabelText('AsyncSelectField')).toHaveFocus();
 });
 
 it('should call onChange when changing the value', async () => {
   const onChange = jest.fn();
-  const { getByLabelText, getByText, findByText } = renderAsyncSelectField({
+  const { findByLabelText, getByText, findByText } = renderAsyncSelectField({
     onChange,
   });
-  const input = getByLabelText('AsyncSelectField');
+  const input = await findByLabelText('AsyncSelectField');
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
-  await waitFor(() => findByText('Shipped'));
+  await findByText('Shipped');
   getByText('Shipped').click();
   expect(onChange).toHaveBeenCalled();
 });
 
 describe('when `description` is passed', () => {
-  it('should render a description', () => {
-    const { getByText } = renderAsyncSelectField({
+  it('should render a description', async () => {
+    const { findByText } = renderAsyncSelectField({
       description: 'foo description',
     });
-    expect(getByText('foo description')).toBeInTheDocument();
+    expect(await findByText('foo description')).toBeInTheDocument();
   });
 });
 
 describe('when `hint` is passed', () => {
-  it('should render a hint', () => {
-    const { getByText } = renderAsyncSelectField({ hint: 'foo hint' });
-    expect(getByText('foo hint')).toBeInTheDocument();
+  it('should render a hint', async () => {
+    const { findByText } = renderAsyncSelectField({ hint: 'foo hint' });
+    expect(await findByText('foo hint')).toBeInTheDocument();
   });
 });
 
 describe('when `badge` is passed', () => {
-  it('should render a badge', () => {
-    const { getByText } = renderAsyncSelectField({ badge: 'foo badge' });
-    expect(getByText('foo badge')).toBeInTheDocument();
+  it('should render a badge', async () => {
+    const { findByText } = renderAsyncSelectField({ badge: 'foo badge' });
+    expect(await findByText('foo badge')).toBeInTheDocument();
   });
 });
 
 describe('when disabled', () => {
-  it('should disable the input', () => {
-    const { getByLabelText } = renderAsyncSelectField({ isDisabled: true });
-    expect(getByLabelText('AsyncSelectField')).toBeDisabled();
+  it('should disable the input', async () => {
+    const { findByLabelText } = renderAsyncSelectField({ isDisabled: true });
+    expect(await findByLabelText('AsyncSelectField')).toBeDisabled();
   });
 });
 
 describe('when required', () => {
-  it('should add `*` to title`', () => {
-    const { getByText } = renderAsyncSelectField({ isRequired: true });
-    expect(getByText('*')).toBeInTheDocument();
+  it('should add `*` to title`', async () => {
+    const { findByText } = renderAsyncSelectField({ isRequired: true });
+    expect(await findByText('*')).toBeInTheDocument();
   });
 });
 
 describe('when showing an info button', () => {
-  it('should render an info button', () => {
+  it('should render an info button', async () => {
     const onInfoButtonClick = jest.fn();
-    const { getByLabelText } = renderAsyncSelectField({
+    const { findByLabelText } = renderAsyncSelectField({
       onInfoButtonClick,
     });
-    expect(getByLabelText('More Info')).toBeInTheDocument();
+    expect(await findByLabelText('More Info')).toBeInTheDocument();
   });
-  it('should call onInfoButtonClick when button is clicked', () => {
+  it('should call onInfoButtonClick when button is clicked', async () => {
     const onInfoButtonClick = jest.fn();
-    const { getByLabelText } = renderAsyncSelectField({
+    const { findByLabelText } = renderAsyncSelectField({
       onInfoButtonClick,
     });
-    getByLabelText('More Info').click();
+    const moreInfoButton = await findByLabelText('More Info');
+    moreInfoButton.click();
     expect(onInfoButtonClick).toHaveBeenCalled();
   });
 });
 
 describe('when field is touched and has errors', () => {
   describe('when field empty', () => {
-    it('should render a default error', () => {
-      const { getByText } = renderAsyncSelectField({
+    it('should render a default error', async () => {
+      const { findByText } = renderAsyncSelectField({
         touched: true,
         errors: { missing: true },
       });
-      expect(getByText(/field is required/i)).toBeInTheDocument();
+      expect(await findByText(/field is required/i)).toBeInTheDocument();
     });
   });
   describe('when there is a custom error', () => {
-    it('should render the custom error message', () => {
-      const { getByText } = renderAsyncSelectField({
+    it('should render the custom error message', async () => {
+      const { findByText } = renderAsyncSelectField({
         touched: true,
         errors: { custom: true },
         renderError: () => 'Custom error',
       });
-      expect(getByText('Custom error')).toBeInTheDocument();
+      expect(await findByText('Custom error')).toBeInTheDocument();
     });
   });
 });

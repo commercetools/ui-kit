@@ -57,58 +57,75 @@ class Story extends Component {
 const renderAsyncCreatableSelectField = (props, options) =>
   render(<Story {...props} />, options);
 
-it('should render a text field', () => {
-  const { getByLabelText } = renderAsyncCreatableSelectField();
-  expect(getByLabelText('AsyncCreatableSelectField')).toBeInTheDocument();
+it('should render a text field', async () => {
+  const { findByLabelText } = renderAsyncCreatableSelectField();
+  expect(
+    await findByLabelText('AsyncCreatableSelectField')
+  ).toBeInTheDocument();
 });
 
-it('should render a title', () => {
-  const { getByText } = renderAsyncCreatableSelectField({ title: 'foo title' });
-  expect(getByText('foo title')).toBeInTheDocument();
+it('should render a title', async () => {
+  const { findByText } = renderAsyncCreatableSelectField({
+    title: 'foo title',
+  });
+  expect(await findByText('foo title')).toBeInTheDocument();
 });
 
-it('should forward data-attributes', () => {
+it('should forward data-attributes', async () => {
   const { container } = renderAsyncCreatableSelectField({ 'data-foo': 'bar' });
-  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
+  // eslint-disable-next-line testing-library/prefer-find-by
+  await waitFor(() =>
+    expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument()
+  );
 });
 
-it('should have an HTML name', () => {
+it('should have an HTML name', async () => {
   const { container } = renderAsyncCreatableSelectField({ name: 'foo' });
   expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
+  // eslint-disable-next-line testing-library/prefer-find-by
+  await waitFor(() =>
+    expect(container.querySelector('[name="foo"]')).toBeInTheDocument()
+  );
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
-  const { getByLabelText } = renderAsyncCreatableSelectField({ onFocus });
-  getByLabelText('AsyncCreatableSelectField').focus();
-  expect(getByLabelText('AsyncCreatableSelectField')).toHaveFocus();
+  const { findByLabelText } = renderAsyncCreatableSelectField({ onFocus });
+  const asyncCreatableSelectField = await findByLabelText(
+    'AsyncCreatableSelectField'
+  );
+  asyncCreatableSelectField.focus();
+  expect(asyncCreatableSelectField).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
-  const { getByLabelText } = renderAsyncCreatableSelectField({ onBlur });
-  getByLabelText('AsyncCreatableSelectField').focus();
-  expect(getByLabelText('AsyncCreatableSelectField')).toHaveFocus();
-  getByLabelText('AsyncCreatableSelectField').blur();
-  expect(getByLabelText('AsyncCreatableSelectField')).not.toHaveFocus();
+  const { findByLabelText } = renderAsyncCreatableSelectField({ onBlur });
+  const asyncCreatableSelectField = await findByLabelText(
+    'AsyncCreatableSelectField'
+  );
+  asyncCreatableSelectField.focus();
+  expect(asyncCreatableSelectField).toHaveFocus();
+  asyncCreatableSelectField.blur();
+  expect(asyncCreatableSelectField).not.toHaveFocus();
   expect(onBlur).toHaveBeenCalled();
 });
 
-it('should have focus automatically when isAutofocussed is passed', () => {
-  const { getByLabelText } = renderAsyncCreatableSelectField({
+it('should have focus automatically when isAutofocussed is passed', async () => {
+  const { findByLabelText } = renderAsyncCreatableSelectField({
     isAutofocussed: true,
   });
-  expect(getByLabelText('AsyncCreatableSelectField')).toHaveFocus();
+  expect(await findByLabelText('AsyncCreatableSelectField')).toHaveFocus();
 });
 
 it('should call onChange when changing the value', async () => {
   const onChange = jest.fn();
-  const { getByLabelText, getByText, findByText } =
+  const { findByLabelText, getByText, findByText } =
     renderAsyncCreatableSelectField({
       onChange,
     });
-  const input = getByLabelText('AsyncCreatableSelectField');
+  const input = await findByLabelText('AsyncCreatableSelectField');
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   await waitFor(() => findByText('Shipped'));
@@ -117,82 +134,87 @@ it('should call onChange when changing the value', async () => {
 });
 
 describe('when `description` is passed', () => {
-  it('should render a description', () => {
-    const { getByText } = renderAsyncCreatableSelectField({
+  it('should render a description', async () => {
+    const { findByText } = renderAsyncCreatableSelectField({
       description: 'foo description',
     });
-    expect(getByText('foo description')).toBeInTheDocument();
+    expect(await findByText('foo description')).toBeInTheDocument();
   });
 });
 
 describe('when `hint` is passed', () => {
-  it('should render a hint', () => {
-    const { getByText } = renderAsyncCreatableSelectField({ hint: 'foo hint' });
-    expect(getByText('foo hint')).toBeInTheDocument();
+  it('should render a hint', async () => {
+    const { findByText } = renderAsyncCreatableSelectField({
+      hint: 'foo hint',
+    });
+    expect(await findByText('foo hint')).toBeInTheDocument();
   });
 });
 
 describe('when `badge` is passed', () => {
-  it('should render a badge', () => {
-    const { getByText } = renderAsyncCreatableSelectField({
+  it('should render a badge', async () => {
+    const { findByText } = renderAsyncCreatableSelectField({
       badge: 'foo badge',
     });
-    expect(getByText('foo badge')).toBeInTheDocument();
+    expect(await findByText('foo badge')).toBeInTheDocument();
   });
 });
 
 describe('when disabled', () => {
-  it('should disable the input', () => {
-    const { getByLabelText } = renderAsyncCreatableSelectField({
+  it('should disable the input', async () => {
+    const { findByLabelText } = renderAsyncCreatableSelectField({
       isDisabled: true,
     });
-    expect(getByLabelText('AsyncCreatableSelectField')).toBeDisabled();
+    expect(await findByLabelText('AsyncCreatableSelectField')).toBeDisabled();
   });
 });
 
 describe('when required', () => {
-  it('should add `*` to title`', () => {
-    const { getByText } = renderAsyncCreatableSelectField({ isRequired: true });
-    expect(getByText('*')).toBeInTheDocument();
+  it('should add `*` to title`', async () => {
+    const { findByText } = renderAsyncCreatableSelectField({
+      isRequired: true,
+    });
+    await findByText('*');
   });
 });
 
 describe('when showing an info button', () => {
-  it('should render an info button', () => {
+  it('should render an info button', async () => {
     const onInfoButtonClick = jest.fn();
-    const { getByLabelText } = renderAsyncCreatableSelectField({
+    const { findByLabelText } = renderAsyncCreatableSelectField({
       onInfoButtonClick,
     });
-    expect(getByLabelText('More Info')).toBeInTheDocument();
+    expect(await findByLabelText('More Info')).toBeInTheDocument();
   });
-  it('should call onInfoButtonClick when button is clicked', () => {
+  it('should call onInfoButtonClick when button is clicked', async () => {
     const onInfoButtonClick = jest.fn();
-    const { getByLabelText } = renderAsyncCreatableSelectField({
+    const { findByLabelText } = renderAsyncCreatableSelectField({
       onInfoButtonClick,
     });
-    getByLabelText('More Info').click();
+    const moreInfoButton = await findByLabelText('More Info');
+    await moreInfoButton.click();
     expect(onInfoButtonClick).toHaveBeenCalled();
   });
 });
 
 describe('when field is touched and has errors', () => {
   describe('when field empty', () => {
-    it('should render a default error', () => {
-      const { getByText } = renderAsyncCreatableSelectField({
+    it('should render a default error', async () => {
+      const { findByText } = renderAsyncCreatableSelectField({
         touched: true,
         errors: { missing: true },
       });
-      expect(getByText(/field is required/i)).toBeInTheDocument();
+      expect(await findByText(/field is required/i)).toBeInTheDocument();
     });
   });
   describe('when there is a custom error', () => {
-    it('should render the custom error message', () => {
-      const { getByText } = renderAsyncCreatableSelectField({
+    it('should render the custom error message', async () => {
+      const { findByText } = renderAsyncCreatableSelectField({
         touched: true,
         errors: { custom: true },
         renderError: () => 'Custom error',
       });
-      expect(getByText('Custom error')).toBeInTheDocument();
+      expect(await findByText('Custom error')).toBeInTheDocument();
     });
   });
 });
