@@ -1,5 +1,19 @@
 # @commercetools-uikit/number-input
 
+## 12.2.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/input-utils@12.2.7
+
+## 12.2.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/input-utils@12.2.6
+
 ## 12.2.5
 
 ### Patch Changes

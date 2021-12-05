@@ -1,5 +1,21 @@
 # @commercetools-uikit/data-table
 
+## 12.2.7
+
+### Patch Changes
+
+- Updated dependencies [[`b745bf99`](https://github.com/commercetools/ui-kit/commit/b745bf9987c4d305e3acf13fd7b054fafc1a9fc7)]:
+  - @commercetools-uikit/icons@12.2.7
+
+## 12.2.6
+
+### Patch Changes
+
+- [#2036](https://github.com/commercetools/ui-kit/pull/2036) [`aa652ffa`](https://github.com/commercetools/ui-kit/commit/aa652ffa7c0d38fe0a94fe7b0168b69d4eaaecb9) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Update width type in column to be string.
+  Remove unnecessary types.
+- Updated dependencies [[`d43dc325`](https://github.com/commercetools/ui-kit/commit/d43dc325410172fbec063e63b08714ffe52e72b1)]:
+  - @commercetools-uikit/icons@12.2.6
+
 ## 12.2.5
 
 ### Patch Changes

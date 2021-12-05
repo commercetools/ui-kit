@@ -1,5 +1,41 @@
 # @commercetools-frontend/ui-kit
 
+## 12.2.7
+
+### Patch Changes
+
+- Updated dependencies [[`b745bf99`](https://github.com/commercetools/ui-kit/commit/b745bf9987c4d305e3acf13fd7b054fafc1a9fc7)]:
+  - @commercetools-uikit/icons@12.2.7
+  - @commercetools-uikit/collapsible-panel@12.2.7
+  - @commercetools-uikit/data-table@12.2.7
+  - @commercetools-uikit/data-table-manager@12.2.7
+  - @commercetools-uikit/field-label@12.2.7
+  - @commercetools-uikit/link@12.2.7
+  - @commercetools-uikit/notifications@12.2.7
+  - @commercetools-uikit/pagination@12.2.7
+  - @commercetools-uikit/primary-action-dropdown@12.2.7
+  - @commercetools-uikit/tag@12.2.7
+  - @commercetools-uikit/fields@12.2.7
+  - @commercetools-uikit/inputs@12.2.7
+
+## 12.2.6
+
+### Patch Changes
+
+- Updated dependencies [[`d43dc325`](https://github.com/commercetools/ui-kit/commit/d43dc325410172fbec063e63b08714ffe52e72b1), [`aa652ffa`](https://github.com/commercetools/ui-kit/commit/aa652ffa7c0d38fe0a94fe7b0168b69d4eaaecb9)]:
+  - @commercetools-uikit/icons@12.2.6
+  - @commercetools-uikit/data-table@12.2.6
+  - @commercetools-uikit/collapsible-panel@12.2.6
+  - @commercetools-uikit/data-table-manager@12.2.6
+  - @commercetools-uikit/field-label@12.2.6
+  - @commercetools-uikit/link@12.2.6
+  - @commercetools-uikit/notifications@12.2.6
+  - @commercetools-uikit/pagination@12.2.6
+  - @commercetools-uikit/primary-action-dropdown@12.2.6
+  - @commercetools-uikit/tag@12.2.6
+  - @commercetools-uikit/fields@12.2.6
+  - @commercetools-uikit/inputs@12.2.6
+
 ## 12.2.5
 
 ### Patch Changes

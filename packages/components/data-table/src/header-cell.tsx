@@ -16,15 +16,6 @@ import isFixedWidthValue from './utils/is-fixed-width-value';
 import { warning } from '@commercetools-uikit/utils';
 import type { TColumn } from './data-table';
 
-type THeaderCellWrapper = {
-  children: ReactNode;
-  columnKey: string;
-  columnWidth?: number;
-  disableResizing?: boolean;
-  onColumnResized?: (args: TColumn[]) => void;
-  disableHeaderStickiness?: boolean;
-};
-
 type THeaderRef = {
   cellIndex: string;
 } & HTMLTableCellElement;
@@ -38,7 +29,18 @@ type TColumnResizingReducer = {
   getHasTableBeenResized: () => boolean;
   getIsAnyColumnBeingResized: () => boolean;
 };
-const HeaderCellWrapper = (props: THeaderCellWrapper) => {
+
+const HeaderCellWrapper = (
+  props: Pick<
+    THeaderCell,
+    | 'children'
+    | 'columnKey'
+    | 'columnWidth'
+    | 'disableResizing'
+    | 'disableHeaderStickiness'
+    | 'onColumnResized'
+  >
+) => {
   const columnResizingReducer = useContext(
     ColumnResizingContext
   ) as TColumnResizingReducer;
@@ -98,7 +100,7 @@ export type THeaderCell = {
   sortedBy?: string;
   children: ReactNode;
   columnKey: string;
-  columnWidth?: number;
+  columnWidth?: string;
   shouldWrap?: boolean;
   isSortable?: boolean;
   isCondensed?: boolean;

@@ -25,13 +25,8 @@ export interface TRow {
   id: string;
 }
 
-type TGetColumnsLayoutInfo = {
-  key: string;
-  width?: number;
-};
-
 const getColumnsLayoutInfo = (columns: TColumn[]) =>
-  columns.reduce<TGetColumnsLayoutInfo[]>(
+  columns.reduce<Pick<TColumn, 'key' | 'width'>[]>(
     (acc, currentValue) => [
       ...acc,
       { key: currentValue.key, width: currentValue.width },
@@ -51,6 +46,7 @@ const shouldRenderRowBottomBorder = (
 
 const defaultProps: Pick<
   TDataTableProps,
+  | 'columns'
   | 'isCondensed'
   | 'wrapHeaderLabels'
   | 'horizontalCellAlignment'
@@ -58,6 +54,7 @@ const defaultProps: Pick<
   | 'disableSelfContainment'
   | 'itemRenderer'
 > = {
+  columns: [],
   isCondensed: false,
   wrapHeaderLabels: true,
   verticalCellAlignment: 'top',
@@ -93,7 +90,7 @@ export type TColumn<Row extends TRow = TRow> = {
    *
    * @@defaultValue@@: auto
    */
-  width?: number;
+  width?: string;
   /**
    * Use this to override the table's own `horizontalCellAlignment` prop for this specific column.
    */
@@ -262,8 +259,8 @@ export type TDataTableProps<Row extends TRow = TRow> = {
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   warning(
-    Array.isArray(props.columns),
-    `ui-kit/DataTable: the prop "columns" is required.`
+    props.columns.length > 0,
+    `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
   );
   const tableRef = useRef<HTMLTableElement>();
   const columnResizingReducer = useManualColumnResizing(tableRef);
@@ -312,32 +309,29 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         <ColumnResizingContext.Provider value={columnResizingReducer}>
           <Header>
             <Row>
-              {props.columns &&
-                props.columns.map((column) => (
-                  <HeaderCell
-                    key={column.key}
-                    shouldWrap={props.wrapHeaderLabels}
-                    isCondensed={props.isCondensed}
-                    iconComponent={column.headerIcon}
-                    onColumnResized={props.onColumnResized}
-                    disableResizing={column.disableResizing}
-                    horizontalCellAlignment={
-                      column.align
-                        ? column.align
-                        : props.horizontalCellAlignment
-                    }
-                    disableHeaderStickiness={props.disableHeaderStickiness}
-                    columnWidth={column.width}
-                    /* Sorting Props */
-                    onClick={props.onSortChange && props.onSortChange}
-                    sortedBy={props.sortedBy}
-                    columnKey={column.key}
-                    isSortable={column.isSortable}
-                    sortDirection={props.sortDirection}
-                  >
-                    {column.label}
-                  </HeaderCell>
-                ))}
+              {props.columns.map((column) => (
+                <HeaderCell
+                  key={column.key}
+                  shouldWrap={props.wrapHeaderLabels}
+                  isCondensed={props.isCondensed}
+                  iconComponent={column.headerIcon}
+                  onColumnResized={props.onColumnResized}
+                  disableResizing={column.disableResizing}
+                  horizontalCellAlignment={
+                    column.align ? column.align : props.horizontalCellAlignment
+                  }
+                  disableHeaderStickiness={props.disableHeaderStickiness}
+                  columnWidth={column.width}
+                  /* Sorting Props */
+                  onClick={props.onSortChange && props.onSortChange}
+                  sortedBy={props.sortedBy}
+                  columnKey={column.key}
+                  isSortable={column.isSortable}
+                  sortDirection={props.sortDirection}
+                >
+                  {column.label}
+                </HeaderCell>
+              ))}
             </Row>
           </Header>
           <Body>

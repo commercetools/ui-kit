@@ -13,17 +13,18 @@ type InlineSvgProps = Props & {
 
 const InlineSvg = (props: InlineSvgProps) => {
   const theme = useTheme();
-  const sanitized = useMemo(
-    () =>
-      DOMPurify.sanitize(props.data, {
-        USE_PROFILES: { svg: true },
-        FORBID_ATTR: [
-          // To avoid injection by using `style="filter:url(\"data:image/svg+xml,<svg`
-          'style',
-        ],
-      }),
-    [props.data]
-  );
+  const sanitized = useMemo(() => {
+    if (!canUseDOM) {
+      return props.data;
+    }
+    return DOMPurify.sanitize(props.data, {
+      USE_PROFILES: { svg: true },
+      FORBID_ATTR: [
+        // To avoid injection by using `style="filter:url(\"data:image/svg+xml,<svg`
+        'style',
+      ],
+    });
+  }, [props.data]);
   const svgElement = useStringToReactElement(sanitized);
 
   if (svgElement) {

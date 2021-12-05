@@ -168,7 +168,9 @@ const useManualColumnResizing = (tableRef?: TTableRef) => {
       if (!state.tableRef?.current) return;
       state.tableRef.current.style.gridTemplateColumns =
         getGridTemplateColumnsStyle(
-          newColumnsSizes.map((newColumnsSize) => newColumnsSize.width)
+          newColumnsSizes.map((newColumnsSize) =>
+            newColumnsSize.width.toString()
+          )
         );
     });
   };
