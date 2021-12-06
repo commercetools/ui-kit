@@ -1,5 +1,13 @@
 # @commercetools-uikit/data-table
 
+## 12.2.8
+
+### Patch Changes
+
+- [#2040](https://github.com/commercetools/ui-kit/pull/2040) [`b512cc5d`](https://github.com/commercetools/ui-kit/commit/b512cc5d48cc65a4898c97ed9750fa81d9a23306) Thanks [@emmenko](https://github.com/emmenko)! - Use `Pick` for default props.
+
+* [#2040](https://github.com/commercetools/ui-kit/pull/2040) [`b512cc5d`](https://github.com/commercetools/ui-kit/commit/b512cc5d48cc65a4898c97ed9750fa81d9a23306) Thanks [@emmenko](https://github.com/emmenko)! - Use default `columns` prop and keep the type required.
+
 ## 12.2.7
 
 ### Patch Changes

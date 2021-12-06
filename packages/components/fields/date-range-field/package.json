@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/date-range-field",
   "description": "A controlled date input component for a date range, with validation states and a label.",
-  "version": "12.2.7",
+  "version": "12.2.8",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "@babel/runtime": "7.16.3",
     "@babel/runtime-corejs3": "7.16.3",
     "@commercetools-uikit/constraints": "12.2.5",
-    "@commercetools-uikit/date-range-input": "12.2.7",
+    "@commercetools-uikit/date-range-input": "12.2.8",
     "@commercetools-uikit/design-system": "12.2.5",
     "@commercetools-uikit/field-errors": "12.2.5",
     "@commercetools-uikit/field-label": "12.2.7",
