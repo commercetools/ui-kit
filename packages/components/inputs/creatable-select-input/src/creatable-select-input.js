@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
+import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
 import { components as defaultComponents } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
@@ -68,6 +69,8 @@ const CreatableSelectInput = (props) => {
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
+              isMulti: props.isMulti,
+              hasValue: !isEmpty(props.value),
             },
             theme
           )}

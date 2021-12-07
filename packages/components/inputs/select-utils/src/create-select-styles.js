@@ -235,7 +235,10 @@ const valueContainerStyles = (props, theme) => (base) => {
     padding: '0',
     backgroundColor: 'none',
     overflow: 'hidden',
-    display: props.iconLeft ? 'flex' : 'grid',
+    display:
+      (props.iconLeft && !props.isMulti) || (props.isMulti && props.hasValue)
+        ? 'flex'
+        : 'grid',
     fill:
       props.isDisabled || props.isReadOnly
         ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
