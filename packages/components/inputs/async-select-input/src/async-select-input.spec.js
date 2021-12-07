@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { render, fireEvent } from '../../../../../test/test-utils';
+import { render, fireEvent, waitFor } from '../../../../../test/test-utils';
 import AsyncSelectInput from './async-select-input';
 
 // We use this component to simulate the whole flow of
@@ -64,31 +64,34 @@ class TestComponent extends Component {
 const renderInput = (props, options) =>
   render(<TestComponent {...props} />, options);
 
-it('should forward data-attributes', () => {
+it('should forward data-attributes', async () => {
   const { container } = renderInput({ 'data-foo': 'bar' });
   // here we have to use container.querySelector because the data attributes are attached
   // to the wrapper div, not to the input itself.
-  expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument();
+  // eslint-disable-next-line testing-library/prefer-find-by
+  await waitFor(() =>
+    expect(container.querySelector('[data-foo="bar"]')).toBeInTheDocument()
+  );
 });
 
-it('should have focus automatically when isAutofocussed is passed', () => {
-  const { getByLabelText } = renderInput({ isAutofocussed: true });
-  expect(getByLabelText('Fruit')).toHaveFocus();
+it('should have focus automatically when isAutofocussed is passed', async () => {
+  const { findByLabelText } = renderInput({ isAutofocussed: true });
+  expect(await findByLabelText('Fruit')).toHaveFocus();
 });
 
-it('should call onFocus when the input is focused', () => {
+it('should call onFocus when the input is focused', async () => {
   const onFocus = jest.fn();
-  const { getByLabelText } = renderInput({ onFocus });
-  const input = getByLabelText('Fruit');
+  const { findByLabelText } = renderInput({ onFocus });
+  const input = await findByLabelText('Fruit');
   input.focus();
   expect(input).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
 });
 
-it('should call onBlur when input loses focus', () => {
+it('should call onBlur when input loses focus', async () => {
   const onBlur = jest.fn();
-  const { getByLabelText } = renderInput({ onBlur });
-  const input = getByLabelText('Fruit');
+  const { findByLabelText } = renderInput({ onBlur });
+  const input = await findByLabelText('Fruit');
   input.focus();
   expect(input).toHaveFocus();
   input.blur();
@@ -98,26 +101,26 @@ it('should call onBlur when input loses focus', () => {
 
 describe('in single mode', () => {
   describe('when no value is specified', () => {
-    it('should render a select input', () => {
-      const { getByLabelText } = renderInput();
-      const input = getByLabelText('Fruit');
+    it('should render a select input', async () => {
+      const { findByLabelText } = renderInput();
+      const input = await findByLabelText('Fruit');
       expect(input).toBeInTheDocument();
     });
   });
   describe('when a value is specified', () => {
-    it('should render a select input with preselected value', () => {
-      const { getByLabelText, getByText } = renderInput({
+    it('should render a select input with preselected value', async () => {
+      const { findByLabelText, getByText } = renderInput({
         value: { value: 'banana', label: 'Banana' },
       });
-      const input = getByLabelText('Fruit');
+      const input = await findByLabelText('Fruit');
       expect(input).toBeInTheDocument();
       expect(getByText('Banana')).toBeInTheDocument();
     });
   });
   describe('interacting', () => {
     it('should open the list and all options should be visible', async () => {
-      const { getByLabelText, getByText, findByText } = renderInput();
-      const input = getByLabelText('Fruit');
+      const { findByLabelText, findByText, getByText } = renderInput();
+      const input = await findByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.keyUp(input, { key: 'ArrowDown' });
@@ -126,10 +129,11 @@ describe('in single mode', () => {
       expect(getByText('Lichi')).toBeInTheDocument();
       expect(getByText('Raspberry')).toBeInTheDocument();
     });
+
     it('should be able to select an option', async () => {
-      const { getByLabelText, getByText, queryByText, findByText } =
+      const { findByLabelText, getByText, queryByText, findByText } =
         renderInput();
-      const input = getByLabelText('Fruit');
+      const input = await findByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       await findByText('Mango');
@@ -162,24 +166,24 @@ describe('in single mode', () => {
 
 describe('in multi mode', () => {
   describe('when no value is specified', () => {
-    it('should render a select input', () => {
-      const { getByLabelText } = renderInput({
+    it('should render a select input', async () => {
+      const { findByLabelText } = renderInput({
         isMulti: true,
         value: [],
       });
-      const input = getByLabelText('Fruit');
+      const input = await findByLabelText('Fruit');
       expect(input).toBeInTheDocument();
     });
     describe('when values are specified', () => {
-      it('should render a select input with preselected values', () => {
-        const { getByLabelText, getByText } = renderInput({
+      it('should render a select input with preselected values', async () => {
+        const { findByLabelText, getByText } = renderInput({
           isMulti: true,
           value: [
             { value: 'mango', label: 'Mango' },
             { value: 'raspberry', label: 'Raspberry' },
           ],
         });
-        const input = getByLabelText('Fruit');
+        const input = await findByLabelText('Fruit');
         expect(input).toBeInTheDocument();
         expect(getByText('Mango')).toBeInTheDocument();
         expect(getByText('Raspberry')).toBeInTheDocument();
@@ -188,11 +192,11 @@ describe('in multi mode', () => {
   });
   describe('interacting', () => {
     it('should open the list and all options should be visible', async () => {
-      const { getByLabelText, getByText, findByText } = renderInput({
+      const { findByLabelText, getByText, findByText } = renderInput({
         isMulti: true,
         value: [],
       });
-      const input = getByLabelText('Fruit');
+      const input = await findByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       fireEvent.keyUp(input, { key: 'ArrowDown' });
@@ -202,12 +206,12 @@ describe('in multi mode', () => {
       expect(getByText('Raspberry')).toBeInTheDocument();
     });
     it('should be able to select two option', async () => {
-      const { getByLabelText, getByText, queryByText, findByText } =
+      const { findByLabelText, getByText, queryByText, findByText } =
         renderInput({
           isMulti: true,
           value: [],
         });
-      const input = getByLabelText('Fruit');
+      const input = await findByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       await findByText('Mango');
@@ -228,12 +232,12 @@ describe('in multi mode', () => {
     });
     it('should call onChange when two values selected', async () => {
       const onChange = jest.fn();
-      const { getByLabelText, getByText, findByText } = renderInput({
+      const { findByLabelText, getByText, findByText } = renderInput({
         onChange,
         isMulti: true,
         value: [],
       });
-      const input = getByLabelText('Fruit');
+      const input = await findByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       await findByText('Mango');
@@ -263,14 +267,14 @@ describe('in multi mode', () => {
         },
       });
     });
-    it('should call onChange when value is cleared', () => {
+    it('should call onChange when value is cleared', async () => {
       const onChange = jest.fn();
-      const { getByLabelText, queryByText } = renderInput({
+      const { findByLabelText, queryByText } = renderInput({
         onChange,
         isMulti: true,
         value: [{ value: 'mango', label: 'Mango' }],
       });
-      const input = getByLabelText('Fruit');
+      const input = await findByLabelText('Fruit');
       fireEvent.focus(input);
       fireEvent.keyDown(input, { key: 'Backspace' });
       expect(onChange).toHaveBeenCalledWith({
@@ -303,12 +307,12 @@ describe('when used with option groups', () => {
 
   const yellowOption = colourOptions[2];
 
-  it('should render a select input with preselected values', () => {
-    const { getByLabelText, getByText } = renderInput({
+  it('should render a select input with preselected values', async () => {
+    const { findByLabelText, getByText } = renderInput({
       value: yellowOption,
       loadOptions: () => Promise.resolve(groupedOptions),
     });
-    const input = getByLabelText('Fruit');
+    const input = await findByLabelText('Fruit');
     expect(input).toBeInTheDocument();
     expect(getByText(yellowOption.label)).toBeInTheDocument();
   });

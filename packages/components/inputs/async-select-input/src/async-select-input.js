@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
+import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
 import { components as defaultComponents } from 'react-select';
 import AsyncSelect from 'react-select/async';
@@ -76,6 +77,9 @@ const AsyncSelectInput = (props) => {
               menuPortalZIndex: props.menuPortalZIndex,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
+              iconLeft: props.iconLeft,
+              isMulti: props.isMulti,
+              hasValue: !isEmpty(props.value),
             },
             theme
           )}
