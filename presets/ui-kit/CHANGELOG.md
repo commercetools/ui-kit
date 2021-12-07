@@ -1,5 +1,14 @@
 # @commercetools-frontend/ui-kit
 
+## 12.2.8
+
+### Patch Changes
+
+- Updated dependencies [[`b512cc5d`](https://github.com/commercetools/ui-kit/commit/b512cc5d48cc65a4898c97ed9750fa81d9a23306), [`b512cc5d`](https://github.com/commercetools/ui-kit/commit/b512cc5d48cc65a4898c97ed9750fa81d9a23306)]:
+  - @commercetools-uikit/data-table@12.2.8
+  - @commercetools-uikit/inputs@12.2.8
+  - @commercetools-uikit/fields@12.2.8
+
 ## 12.2.7
 
 ### Patch Changes
