@@ -70,6 +70,7 @@ jobs:
           version: yarn changeset:version-and-format
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
+          SKIP_POSTINSTALL_DEV_SETUP: true
 
       # Publish canary releases only if the packages weren't published already
       - name: Publishing canary releases to npm registry
