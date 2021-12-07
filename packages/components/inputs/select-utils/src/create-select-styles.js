@@ -236,6 +236,8 @@ const valueContainerStyles = (props, theme) => (base) => {
     backgroundColor: 'none',
     overflow: 'hidden',
     display:
+      // Display property should be grid when isMulti and has no value so the Placeholder component is positioned correctly with the Input
+      // Display property should be Flex when there is an iconLeft, also when the input has some values when isMulti.
       (props.iconLeft && !props.isMulti) || (props.isMulti && props.hasValue)
         ? 'flex'
         : 'grid',
