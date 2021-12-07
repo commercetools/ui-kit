@@ -90,6 +90,7 @@ const SelectInput = (props) => {
               menuPortalZIndex: props.menuPortalZIndex,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
+              iconLeft: props.iconLeft,
             },
             theme
           )}
