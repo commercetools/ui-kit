@@ -247,13 +247,6 @@ const placeholderStyles = (props: TProps, theme: Theme) => (base: TBase) => {
     color: overwrittenVars[designTokens.placeholderFontColorForInput],
     width: '100%',
     overflow: 'hidden',
-    // Display property should be grid when isMulti and has no value so the Placeholder component is positioned correctly with the Input
-    // Display property should be Flex when there is an iconLeft, also when the input has some values when isMulti.
-    // See PR from react select for more insight https://github.com/JedWatson/react-select/pull/4833
-    display:
-      (props.iconLeft && !props.isMulti) || (props.isMulti && props.hasValue)
-        ? 'flex'
-        : 'grid',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
     fill:
@@ -274,6 +267,13 @@ const valueContainerStyles = (props: TProps, theme: Theme) => (base: TBase) => {
     padding: '0',
     backgroundColor: 'none',
     overflow: 'hidden',
+    // Display property should be grid when isMulti and has no value so the Placeholder component is positioned correctly with the Input
+    // Display property should be Flex when there is an iconLeft, also when the input has some values when isMulti.
+    // See PR from react select for more insight https://github.com/JedWatson/react-select/pull/4833
+    display:
+      (props.iconLeft && !props.isMulti) || (props.isMulti && props.hasValue)
+        ? 'flex'
+        : 'grid',
     fill:
       props.isDisabled || props.isReadOnly
         ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
