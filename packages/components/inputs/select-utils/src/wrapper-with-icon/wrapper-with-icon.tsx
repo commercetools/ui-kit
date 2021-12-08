@@ -8,7 +8,13 @@ import {
   PlaceholderProps,
 } from 'react-select';
 
-const getDefaultComponent = (type: string) => {
+export type TWrapperWithIconProps = {
+  type: string;
+  selectProps: TSelectProps;
+} & SingleValueProps &
+  PlaceholderProps;
+
+const getDefaultComponent = (type: TWrapperWithIconProps['type']) => {
   if (type === 'singleValue') return defaultComponents.SingleValue;
   if (type === 'placeholder') return defaultComponents.Placeholder;
   return Fragment;
@@ -17,11 +23,6 @@ const getDefaultComponent = (type: string) => {
 type TSelectProps = {
   iconLeft: ReactElement;
 };
-export type TWrapperWithIconProps = {
-  type: string;
-  selectProps: TSelectProps;
-} & SingleValueProps &
-  PlaceholderProps;
 
 const WrapperWithIcon = (props: TWrapperWithIconProps) => {
   const Component = getDefaultComponent(props.type);

@@ -1,18 +1,18 @@
-import { CSSProperties, LegacyRef } from 'react';
+import type { CSSProperties, LegacyRef } from 'react';
 import { css } from '@emotion/react';
 import { useIntl } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
 
-type TGetStylesProps = unknown;
 type TInnerProps = {
-  ref?: LegacyRef<HTMLButtonElement>;
-};
+  ref: LegacyRef<HTMLDivElement>;
+} & JSX.IntrinsicElements['button'];
 type TClearIndicator = {
-  getStyles: (s: string, props: TGetStylesProps) => CSSProperties;
+  getStyles: (s: string, props: unknown) => CSSProperties;
   innerProps: TInnerProps;
 };
+
 const ClearIndicator = (props: TClearIndicator) => {
   const intl = useIntl();
   const {
