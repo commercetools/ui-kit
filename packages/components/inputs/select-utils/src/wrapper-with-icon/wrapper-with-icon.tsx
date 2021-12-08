@@ -1,5 +1,4 @@
 import { Fragment, cloneElement, ReactElement } from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { customProperties } from '@commercetools-uikit/design-system';
 import {
@@ -47,13 +46,7 @@ const WrapperWithIcon = (props: TWrapperWithIconProps) => {
     </>
   );
 };
-WrapperWithIcon.propTypes = {
-  children: PropTypes.node,
-  type: PropTypes.oneOf(['singleValue', 'placeholder']),
-  selectProps: PropTypes.shape({
-    iconLeft: PropTypes.node,
-  }),
-};
+
 WrapperWithIcon.displayName = 'WrapperWithIcon';
 
 export default WrapperWithIcon;
