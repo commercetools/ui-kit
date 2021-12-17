@@ -11,7 +11,6 @@ type TInnerProps = {
 } & JSX.IntrinsicElements['button'];
 
 type TClearIndicator = {
-  getStyles: (s: string, props: unknown) => CSSProperties;
   innerProps: TInnerProps;
 } & ClearIndicatorProps;
 
@@ -35,7 +34,7 @@ const ClearIndicator = (props: TClearIndicator) => {
           fill: ${vars.colorWarning};
         }
       `}
-      style={getStyles('clearIndicator', props)}
+      style={getStyles('clearIndicator', props) as CSSProperties}
       title={intl.formatMessage(messages.clearButtonLabel)}
       aria-label={intl.formatMessage(messages.clearButtonLabel)}
     >
