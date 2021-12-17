@@ -1,5 +1,23 @@
 # @commercetools-uikit/pagination
 
+## 12.2.9
+
+### Patch Changes
+
+- [#2030](https://github.com/commercetools/ui-kit/pull/2030) [`abeb016f`](https://github.com/commercetools/ui-kit/commit/abeb016f1ceb07483b54185626431bc3f8b53f34) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- Updated dependencies [[`abeb016f`](https://github.com/commercetools/ui-kit/commit/abeb016f1ceb07483b54185626431bc3f8b53f34), [`d80d607c`](https://github.com/commercetools/ui-kit/commit/d80d607c64ba7c0cbb1ac26d4f99a0fb38db90a5)]:
+  - @commercetools-uikit/design-system@12.2.9
+  - @commercetools-uikit/secondary-icon-button@12.2.9
+  - @commercetools-uikit/constraints@12.2.9
+  - @commercetools-uikit/icons@12.2.9
+  - @commercetools-uikit/number-input@12.2.9
+  - @commercetools-uikit/select-input@12.2.9
+  - @commercetools-uikit/label@12.2.9
+  - @commercetools-uikit/text@12.2.9
+  - @commercetools-uikit/utils@12.2.9
+  - @commercetools-uikit/spacings@12.2.9
+
 ## 12.2.7
 
 ### Patch Changes
