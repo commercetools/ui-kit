@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-field-label.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.3",
-    "@babel/runtime-corejs3": "7.16.3",
+    "@babel/runtime": "7.16.5",
+    "@babel/runtime-corejs3": "7.16.5",
     "@commercetools-uikit/constraints": "12.2.5",
     "@commercetools-uikit/icon-button": "12.2.5",
     "@commercetools-uikit/icons": "12.2.7",
