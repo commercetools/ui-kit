@@ -3,7 +3,7 @@ import Text from '@commercetools-uikit/text';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 type TIntlMessageDescriptor = {
-  id: string | number;
+  id: string;
   description?: string | object;
   defaultMessage: string;
 };
