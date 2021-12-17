@@ -1,12 +1,20 @@
-import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
+import type { MultiValueGenericProps } from 'react-select';
 
 // see https://github.com/JedWatson/react-select/blob/44e9fb29b230e49a754a2f0d6f30c2250aa45009/src/components/MultiValue.js
 const removeProps = ['onClick', 'onTouchEnd', 'onMouseDown'];
 
-const TagRemove = (props) => {
+type TSelectProps = {
+  isReadOnly: boolean;
+} & MultiValueGenericProps['selectProps'];
+
+type TTagRemoveProps = {
+  selectProps: TSelectProps;
+} & MultiValueGenericProps;
+
+const TagRemove = (props: TTagRemoveProps) => {
   const isDisabled = Boolean(
     props.selectProps.isDisabled || props.selectProps.isReadOnly
   );
@@ -24,13 +32,5 @@ const TagRemove = (props) => {
 };
 
 TagRemove.displayName = 'TagRemove';
-
-TagRemove.propTypes = {
-  selectProps: PropTypes.shape({
-    isDisabled: PropTypes.bool.isRequired,
-    isReadOnly: PropTypes.bool,
-  }).isRequired,
-  innerProps: PropTypes.object,
-};
 
 export default TagRemove;

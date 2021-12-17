@@ -1,11 +1,20 @@
-import PropTypes from 'prop-types';
+import type { CSSProperties, LegacyRef } from 'react';
+import type { ClearIndicatorProps } from 'react-select';
 import { css } from '@emotion/react';
 import { useIntl } from 'react-intl';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
 
-const ClearIndicator = (props) => {
+type TInnerProps = {
+  ref: LegacyRef<HTMLButtonElement>;
+} & JSX.IntrinsicElements['button'];
+
+type TClearIndicator = {
+  innerProps: TInnerProps;
+} & ClearIndicatorProps;
+
+const ClearIndicator = (props: TClearIndicator) => {
   const intl = useIntl();
   const {
     getStyles,
@@ -25,7 +34,7 @@ const ClearIndicator = (props) => {
           fill: ${vars.colorWarning};
         }
       `}
-      style={getStyles('clearIndicator', props)}
+      style={getStyles('clearIndicator', props) as CSSProperties}
       title={intl.formatMessage(messages.clearButtonLabel)}
       aria-label={intl.formatMessage(messages.clearButtonLabel)}
     >
@@ -35,9 +44,5 @@ const ClearIndicator = (props) => {
 };
 
 ClearIndicator.displayName = 'ClearIndicator';
-ClearIndicator.propTypes = {
-  innerProps: PropTypes.object,
-  getStyles: PropTypes.func.isRequired,
-};
 
 export default ClearIndicator;

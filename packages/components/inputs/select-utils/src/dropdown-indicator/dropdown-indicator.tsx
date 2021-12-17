@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
-import { components } from 'react-select';
+import { components, DropdownIndicatorProps } from 'react-select';
 import { CaretDownIcon } from '@commercetools-uikit/icons';
 
-const DropdownIndicator = (props) => (
+const DropdownIndicator = (props: DropdownIndicatorProps) => (
   <components.DropdownIndicator {...props}>
     {/* FIXME: add proper tone when tones are refactored */}
     <CaretDownIcon
@@ -13,9 +12,5 @@ const DropdownIndicator = (props) => (
 );
 
 DropdownIndicator.displayName = 'DropdownIndicator';
-
-DropdownIndicator.propTypes = {
-  isDisabled: PropTypes.bool,
-};
 
 export default DropdownIndicator;
