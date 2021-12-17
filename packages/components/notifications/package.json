@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/notifications",
   "description": "Notification components.",
-  "version": "12.2.7",
+  "version": "12.2.9",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,9 +21,9 @@
   "dependencies": {
     "@babel/runtime": "7.16.5",
     "@babel/runtime-corejs3": "7.16.5",
-    "@commercetools-uikit/design-system": "12.2.5",
-    "@commercetools-uikit/icons": "12.2.7",
-    "@commercetools-uikit/utils": "12.2.5",
+    "@commercetools-uikit/design-system": "12.2.9",
+    "@commercetools-uikit/icons": "12.2.9",
+    "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
     "common-tags": "1.8.2",
     "prop-types": "15.7.2"

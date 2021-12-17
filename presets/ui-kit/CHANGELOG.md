@@ -1,5 +1,45 @@
 # @commercetools-frontend/ui-kit
 
+## 12.2.9
+
+### Patch Changes
+
+- [#2030](https://github.com/commercetools/ui-kit/pull/2030) [`abeb016f`](https://github.com/commercetools/ui-kit/commit/abeb016f1ceb07483b54185626431bc3f8b53f34) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- Updated dependencies [[`abeb016f`](https://github.com/commercetools/ui-kit/commit/abeb016f1ceb07483b54185626431bc3f8b53f34)]:
+  - @commercetools-uikit/design-system@12.2.9
+  - @commercetools-uikit/accessible-hidden@12.2.9
+  - @commercetools-uikit/avatar@12.2.9
+  - @commercetools-uikit/card@12.2.9
+  - @commercetools-uikit/collapsible@12.2.9
+  - @commercetools-uikit/collapsible-motion@12.2.9
+  - @commercetools-uikit/collapsible-panel@12.2.9
+  - @commercetools-uikit/constraints@12.2.9
+  - @commercetools-uikit/data-table@12.2.9
+  - @commercetools-uikit/data-table-manager@12.2.9
+  - @commercetools-uikit/field-errors@12.2.9
+  - @commercetools-uikit/field-label@12.2.9
+  - @commercetools-uikit/grid@12.2.9
+  - @commercetools-uikit/icons@12.2.9
+  - @commercetools-uikit/label@12.2.9
+  - @commercetools-uikit/link@12.2.9
+  - @commercetools-uikit/loading-spinner@12.2.9
+  - @commercetools-uikit/messages@12.2.9
+  - @commercetools-uikit/notifications@12.2.9
+  - @commercetools-uikit/pagination@12.2.9
+  - @commercetools-uikit/primary-action-dropdown@12.2.9
+  - @commercetools-uikit/stamp@12.2.9
+  - @commercetools-uikit/tag@12.2.9
+  - @commercetools-uikit/text@12.2.9
+  - @commercetools-uikit/tooltip@12.2.9
+  - @commercetools-uikit/hooks@12.2.9
+  - @commercetools-uikit/i18n@12.2.9
+  - @commercetools-uikit/utils@12.2.9
+  - @commercetools-uikit/buttons@12.2.9
+  - @commercetools-uikit/fields@12.2.9
+  - @commercetools-uikit/inputs@12.2.9
+  - @commercetools-uikit/spacings@12.2.9
+
 ## 12.2.8
 
 ### Patch Changes
