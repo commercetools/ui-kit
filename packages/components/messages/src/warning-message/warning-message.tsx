@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import Text from '@commercetools-uikit/text';
 
 type TIntlMessageDescriptor = {
-  id: string | number;
+  id: string;
   description?: string | object;
   defaultMessage: string;
 };
