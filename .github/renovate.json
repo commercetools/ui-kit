@@ -11,6 +11,13 @@
       "groupName": "all svgr packages"
     },
     {
+      "sourceUrlPrefixes": [
+        "https://github.com/stylelint/stylelint-config-standard", 
+        "https://github.com/stylelint/stylelint"
+      ],
+      "groupName": "all stylelint packages"
+    },
+    {
       "packagePatterns": ["*"],
       "updateTypes": ["minor", "patch"],
       "groupName": "all dependencies",
