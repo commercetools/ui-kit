@@ -25,15 +25,15 @@
     "generate-icons": "svgr -d src/generated --typescript src/svg"
   },
   "dependencies": {
-    "@babel/runtime": "7.16.5",
-    "@babel/runtime-corejs3": "7.16.5",
+    "@babel/runtime": "7.16.7",
+    "@babel/runtime-corejs3": "7.16.7",
     "@commercetools-uikit/design-system": "12.2.9",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@types/dompurify": "^2.3.1",
     "dompurify": "2.3.4",
-    "prop-types": "15.7.2",
+    "prop-types": "15.8.1",
     "react-from-dom": "0.6.1"
   },
   "devDependencies": {
