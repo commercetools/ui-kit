@@ -1,4 +1,4 @@
-import { ReactNode, FocusEvent } from 'react';
+import type { ReactNode, FocusEvent } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
