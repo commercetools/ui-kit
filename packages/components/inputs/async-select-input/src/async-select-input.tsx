@@ -217,6 +217,20 @@ type TAsyncSelectInputProps = {
   iconLeft?: ReactNode;
 };
 
+type TDefaultProps = {
+  value: TAsyncSelectInputProps['value'];
+  isSearchable: TAsyncSelectInputProps['isSearchable'];
+  menuPortalZIndex: TAsyncSelectInputProps['menuPortalZIndex'];
+};
+
+const defaultProps: TDefaultProps = {
+  // Using "null" will ensure that the currently selected value disappears in
+  // case "undefined" gets passed as the next value
+  value: null,
+  isSearchable: true,
+  menuPortalZIndex: 1,
+};
+
 const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
   const theme = useTheme();
   const intl = useIntl();
@@ -367,13 +381,7 @@ AsyncSelectInput.isTouched = (touched: unknown) => Boolean(touched);
 
 AsyncSelectInput.displayName = 'AsyncSelectInput';
 
-AsyncSelectInput.defaultProps = {
-  // Using "null" will ensure that the currently selected value disappears in
-  // case "undefined" gets passed as the next value
-  value: null,
-  isSearchable: true,
-  menuPortalZIndex: 1,
-};
+AsyncSelectInput.defaultProps = defaultProps;
 
 addStaticFields(AsyncSelectInput, {
   ...defaultComponents,
