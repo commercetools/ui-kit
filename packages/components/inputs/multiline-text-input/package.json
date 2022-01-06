@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-multiline-text-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.5",
-    "@babel/runtime-corejs3": "7.16.5",
+    "@babel/runtime": "7.16.7",
+    "@babel/runtime-corejs3": "7.16.7",
     "@commercetools-uikit/constraints": "12.2.9",
     "@commercetools-uikit/design-system": "12.2.9",
     "@commercetools-uikit/flat-button": "12.2.9",
@@ -34,13 +34,13 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "downshift": "6.1.7",
-    "prop-types": "15.7.2",
+    "prop-types": "15.8.1",
     "react-required-if": "1.0.3",
     "react-textarea-autosize": "8.3.3"
   },
   "devDependencies": {
     "react": "17.0.2",
-    "react-intl": "5.23.0"
+    "react-intl": "5.24.1"
   },
   "peerDependencies": {
     "react": "17.x",

@@ -19,18 +19,18 @@
   "module": "dist/commercetools-uikit-label.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.5",
-    "@babel/runtime-corejs3": "7.16.5",
+    "@babel/runtime": "7.16.7",
+    "@babel/runtime-corejs3": "7.16.7",
     "@commercetools-uikit/design-system": "12.2.9",
     "@commercetools-uikit/text": "12.2.9",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "prop-types": "15.7.2"
+    "prop-types": "15.8.1"
   },
   "devDependencies": {
     "react": "17.0.2",
-    "react-intl": "5.23.0"
+    "react-intl": "5.24.1"
   },
   "peerDependencies": {
     "react": "17.x",
