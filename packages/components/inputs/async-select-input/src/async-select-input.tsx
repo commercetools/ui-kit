@@ -4,6 +4,8 @@ import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
 import {
   components as defaultComponents,
+  GroupBase,
+  OptionsOrGroups,
   Props,
   PropsValue,
 } from 'react-select';
@@ -192,17 +194,26 @@ type TAsyncSelectInputProps = {
   /**
    * The value of the select; reflected by the selected option
    */
-  value: PropsValue<TValue>;
+  value?: PropsValue<TValue>;
 
   // Async props
   /**
    * The default set of options to show before the user starts searching. When set to true, the results for loadOptions('') will be autoloaded.
    */
-  defaultOptions?: boolean | TValue[];
+  defaultOptions?: OptionsOrGroups<unknown, GroupBase<unknown>> | boolean;
   /**
    * Function that returns a promise, which is the set of options to be used once the promise resolves.
    */
-  loadOptions: () => void;
+  loadOptions:
+    | ((
+        inputValue: string,
+        callback: (
+          options: OptionsOrGroups<unknown, GroupBase<unknown>>
+        ) => void
+      ) => void)
+    | ((
+        inputValue: string
+      ) => Promise<OptionsOrGroups<unknown, GroupBase<unknown>>>);
   /**
    * If cacheOptions is truthy, then the loaded data will be cached. The cache will remain until cacheOptions changes value.
    */
