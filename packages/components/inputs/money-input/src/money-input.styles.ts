@@ -16,7 +16,16 @@ const getCurrencyLabelStyles = () => css`
   box-sizing: border-box;
 `;
 
-const getAmountInputStyles = (props) => [
+type TInputProps = {
+  isDisabled?: boolean;
+  disabled?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  isReadOnly?: boolean;
+  readOnly?: boolean;
+};
+
+const getAmountInputStyles = (props: TInputProps) => [
   getInputStyles(props),
   css`
     border-top-left-radius: 0;
@@ -29,7 +38,13 @@ const getAmountInputStyles = (props) => [
   `,
 ];
 
-const getHighPrecisionWrapperStyles = ({ isDisabled }) => css`
+type TGetHighPrecisionWrapperStyles = {
+  isDisabled: boolean;
+};
+
+const getHighPrecisionWrapperStyles = ({
+  isDisabled,
+}: TGetHighPrecisionWrapperStyles) => css`
   position: absolute;
   top: 0;
   right: 0;

@@ -1,9 +1,16 @@
-import { useRef, useCallback } from 'react';
+// @ts-nocheck
+import { useRef, useCallback, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import has from 'lodash/has';
 import requiredIf from 'react-required-if';
-import Select, { components } from 'react-select';
+import Select, {
+  components,
+  SingleValueProps,
+  Theme,
+  Props,
+  CSSObjectWithLabel,
+} from 'react-select';
 import { useIntl } from 'react-intl';
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -34,15 +41,24 @@ const TooltipWrapper = styled.div`
   display: flex;
 `;
 
-const getPortalId = (id) => `portal-${id}`;
-const getPortalNode = (id) => document.querySelector(`#${getPortalId(id)}`);
+const getPortalId = (id: string) => `portal-${id}`;
+const getPortalNode = (id: string) =>
+  document.querySelector(`#${getPortalId(id)}`);
 
-const Portal = (props) => {
+const Portal = (props: TLabel) => {
   const domNode = getPortalNode(props.id);
-  return ReactDOM.createPortal(props.children, domNode);
+  if (domNode) {
+    return ReactDOM.createPortal(props.children, domNode);
+  }
+  return;
 };
 
-const CurrencyLabel = (props) => (
+type TLabel = {
+  id: string;
+  children: ReactNode;
+};
+
+const CurrencyLabel = (props: TLabel) => (
   <label htmlFor={props.id} css={getCurrencyLabelStyles()}>
     {props.children}
   </label>
@@ -50,12 +66,11 @@ const CurrencyLabel = (props) => (
 
 CurrencyLabel.displayName = 'CurrencyLabel';
 
-CurrencyLabel.propTypes = {
-  id: PropTypes.string,
-  children: PropTypes.node,
-};
+type TSingleValue = {
+  id: string;
+} & SingleValueProps;
 
-const SingleValue = ({ id, ...props }) => (
+const SingleValue = ({ id, ...props }: TSingleValue) => (
   <components.SingleValue {...props}>
     <label htmlFor={id}>{props.children}</label>
   </components.SingleValue>
@@ -63,13 +78,20 @@ const SingleValue = ({ id, ...props }) => (
 
 SingleValue.displayName = 'SingleValue';
 
-SingleValue.propTypes = {
-  id: PropTypes.string,
-  children: PropTypes.node,
+type TcreateCurrencySelectStyles = (input: TInputProps, theme: Theme) => void;
+
+type TInputProps = {
+  isDisabled: boolean;
+  hasError: boolean;
+  hasWarning: boolean;
+  isReadOnly: boolean;
+  hasFocus: boolean;
+  menuPortalZIndex?: number;
+  theme: Theme;
 };
 
 // overwrite styles of createSelectStyles
-const createCurrencySelectStyles = (
+const createCurrencySelectStyles: TcreateCurrencySelectStyles = (
   { hasWarning, hasError, isDisabled, isReadOnly, hasFocus, menuPortalZIndex },
   theme
 ) => {
@@ -83,7 +105,7 @@ const createCurrencySelectStyles = (
   );
   return {
     ...selectStyles,
-    control: (base, state) => ({
+    control: (base: CSSObjectWithLabel, state: Props) => ({
       ...selectStyles.control(base, state),
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
@@ -109,7 +131,7 @@ const createCurrencySelectStyles = (
         return base.backgroundColor;
       })(),
     }),
-    singleValue: (base) => ({
+    singleValue: (base: CSSObjectWithLabel) => ({
       ...base,
       marginLeft: 0,
       maxWidth: 'initial',
@@ -191,7 +213,7 @@ const createCurrencySelectStyles = (
 // This means the highest amount always wins. We do this by comparing the last
 // position of `.` and `,`. Whatever occurs later is used as the decimal
 // separator.
-export const parseRawAmountToNumber = (rawAmount, locale) => {
+export const parseRawAmountToNumber = (rawAmount: string, locale: string) => {
   let fractionsSeparator;
 
   if (locale) {
@@ -210,7 +232,7 @@ export const parseRawAmountToNumber = (rawAmount, locale) => {
     .replace(new RegExp(`[^0-9${fractionsSeparator}]`, 'g'), '') // we just keep the numbers and the fraction symbol
     .replace(fractionsSeparator, '.'); // then we change whatever `fractionsSeparator` was to `.` so we can parse it as float
 
-  return parseFloat(normalizedAmount, 10);
+  return parseFloat(normalizedAmount);
 };
 
 // Turns the user input into a value the MoneyInput can pass up through onChange
@@ -224,7 +246,14 @@ export const parseRawAmountToNumber = (rawAmount, locale) => {
 //  - no currency was selected
 //
 // This function expects the "amount" to be a trimmed value.
-export const createMoneyValue = (currencyCode, rawAmount, locale) => {
+
+type TCurrencyCode = keyof typeof currencies;
+
+export const createMoneyValue = (
+  currencyCode: TCurrencyCode,
+  rawAmount: string,
+  locale: string
+) => {
   if (!currencyCode) return null;
 
   const currency = currencies[currencyCode];
@@ -294,14 +323,26 @@ export const createMoneyValue = (currencyCode, rawAmount, locale) => {
   };
 };
 
-const getAmountAsNumberFromMoneyValue = (moneyValue) =>
+type TMoneyValue = {
+  type: string;
+  currencyCode: TCurrencyCode;
+  centAmount: number;
+  preciseAmount: number;
+  fractionDigits: number;
+};
+
+const getAmountAsNumberFromMoneyValue = (moneyValue: TMoneyValue) =>
   moneyValue.type === 'highPrecision'
     ? moneyValue.preciseAmount / 10 ** moneyValue.fractionDigits
     : moneyValue.centAmount /
       10 ** currencies[moneyValue.currencyCode].fractionDigits;
 
 // gets called with a string and should return a formatted string
-const formatAmount = (rawAmount, currencyCode, locale) => {
+const formatAmount = (
+  rawAmount: string,
+  currencyCode: TCurrencyCode,
+  locale: string
+) => {
   // fallback in case the user didn't enter an amount yet (or it's invalid)
   const moneyValue = createMoneyValue(currencyCode, rawAmount, locale) || {
     currencyCode,
