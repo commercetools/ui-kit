@@ -16,19 +16,14 @@ import FieldLabel from '@commercetools-uikit/field-label';
 import MultilineTextInput from '@commercetools-uikit/multiline-text-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 
-const sequentialId = createSequentialId('multiline-text-field-');
-
-const hasErrors = (errors: { [s: string]: unknown } | ArrayLike<unknown>) =>
-  errors && Object.values(errors).some(Boolean);
-
-type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+export type TFieldErrors = Record<string, boolean>;
 
 export type TMultiTextFieldProps = {
   // FieldLabel
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
    */
-  id: string;
+  id?: string;
   /**
    * Horizontal size limit of the input fields.
    */
@@ -47,14 +42,6 @@ export type TMultiTextFieldProps = {
     | 'scale'
     | 'auto';
   /**
-   * A map of errors. Error messages for known errors are rendered automatically.
-   * <br />
-   * Unknown errors will be forwarded to `renderError`
-   */
-  errors: {
-    missing: boolean;
-  };
-  /**
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    * <br />
    * Signature: `(key, error) => React.node`
@@ -63,21 +50,21 @@ export type TMultiTextFieldProps = {
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
-  isRequired: boolean;
+  isRequired?: boolean;
   /**
    * Indicates whether the field was touched. Errors will only be shown when the field was touched.
    */
-  touched: boolean;
+  touched?: boolean;
 
   // TextInput
   /**
    * Used as HTML `autocomplete` property
    */
-  autoComplete: string;
+  autoComplete?: string;
   /**
    * Used as HTML name of the input component. property
    */
-  name: string;
+  name?: string;
   /**
    * Value of the input component.
    */
@@ -107,7 +94,7 @@ export type TMultiTextFieldProps = {
   /**
    * Expands multiline text input initially
    */
-  defaultExpandMultilineText: boolean;
+  defaultExpandMultilineText?: boolean;
   /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
@@ -120,16 +107,22 @@ export type TMultiTextFieldProps = {
    * Placeholder text for the input
    */
   placeholder?: string;
+  /**
+   * A map of errors. Error messages for known errors are rendered automatically.
+   * <br />
+   * Unknown errors will be forwarded to `renderError`
+   */
+  errors?: TFieldErrors;
 
   // LabelField
   /**
    * Title of the label
    */
-  title?: string;
+  title?: string | ReactNode;
   /**
    * 	Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas `description` can describe it in more depth. Can also receive a `hintIcon`.
    */
-  hint?: string;
+  hint?: string | ReactNode;
   /**
    * Provides a description for the title.
    */
@@ -141,7 +134,7 @@ export type TMultiTextFieldProps = {
    * <br />
    * Signature: `(event) => void`
    */
-  onInfoButtonClick: () => void;
+  onInfoButtonClick?: () => void;
   /**
    * Icon to be displayed beside the hint text.
    * <br />
@@ -153,8 +146,15 @@ export type TMultiTextFieldProps = {
    * <br />
    * Might be used to display additional information about the content of the field (E.g verified email)
    */
-  badge: () => void;
+  badge?: string;
 };
+
+const sequentialId = createSequentialId('multiline-text-field-');
+
+const hasErrors = (errors?: TFieldErrors) =>
+  errors && Object.values(errors).some(Boolean);
+
+type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
 class MultilineTextField extends Component<TMultiTextFieldProps> {
   static displayName = 'MultilineTextField';
@@ -171,7 +171,7 @@ class MultilineTextField extends Component<TMultiTextFieldProps> {
 
   static getDerivedStateFromProps = (
     props: TMultiTextFieldProps,
-    state: { id?: string | undefined }
+    state: { id?: string }
   ) => ({
     id: getFieldId(props, state, sequentialId),
   });
