@@ -257,6 +257,16 @@ type TSelectInputProps = {
   value: string[] | string;
 };
 
+type TDefaultProps = {
+  maxMenuHeight: number;
+  menuPortalZIndex: number;
+};
+
+const defaultProps: TDefaultProps = {
+  maxMenuHeight: 220,
+  menuPortalZIndex: 1,
+};
+
 const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
   const theme = useTheme();
@@ -309,7 +319,6 @@ const SelectInput = (props: TSelectInputProps) => {
               // react-select doesn't support readOnly mode; this is a workaround:
               ...(props.isReadOnly
                 ? {
-                    // eslint-disable-next-line react/display-name
                     Input: (ownProps) => (
                       <defaultComponents.Input {...ownProps} readOnly />
                     ),
@@ -388,7 +397,6 @@ const SelectInput = (props: TSelectInputProps) => {
           onChange={(nextSelectedOptions) => {
             // nextSelectedOptions is either an array, or a single option, or null
             // depending on whether we're in multi-mode or not (isMulti)
-
             let value = null;
 
             if (props.isMulti) {
@@ -409,7 +417,6 @@ const SelectInput = (props: TSelectInputProps) => {
                   name: props.name,
                   value,
                 },
-                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 persist: () => {},
               });
           }}
@@ -432,12 +439,9 @@ SelectInput.displayName = 'SelectInput';
 
 // Both "true" and an empty array [] represent a touched state. The Boolean
 // conveniently handles both cases
-SelectInput.isTouched = (touched: unknown) => Boolean(touched);
+SelectInput.isTouched = (touched: boolean | unknown[]) => Boolean(touched);
 
-SelectInput.defaultProps = {
-  maxMenuHeight: 220,
-  menuPortalZIndex: 1,
-};
+SelectInput.defaultProps = defaultProps;
 
 addStaticFields(SelectInput, {
   ...defaultComponents,
