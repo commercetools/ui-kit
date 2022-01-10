@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-time-field.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.5",
-    "@babel/runtime-corejs3": "7.16.5",
+    "@babel/runtime": "7.16.7",
+    "@babel/runtime-corejs3": "7.16.7",
     "@commercetools-uikit/constraints": "12.2.9",
     "@commercetools-uikit/design-system": "12.2.9",
     "@commercetools-uikit/field-errors": "12.2.9",
@@ -30,7 +30,7 @@
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "prop-types": "15.7.2",
+    "prop-types": "15.8.1",
     "react-required-if": "1.0.3"
   },
   "devDependencies": {
