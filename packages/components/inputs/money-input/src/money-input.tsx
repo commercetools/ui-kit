@@ -1,9 +1,14 @@
 // @ts-nocheck
-import { useRef, useCallback, ReactNode } from 'react';
+
+import {
+  useRef,
+  useCallback,
+  ReactNode,
+  FocusEventHandler,
+  FormEvent,
+} from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import has from 'lodash/has';
-import requiredIf from 'react-required-if';
 import Select, {
   components,
   SingleValueProps,
@@ -18,7 +23,6 @@ import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
   warning,
   isNumberish,
-  SafeHTMLElement,
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
 import Tooltip from '@commercetools-uikit/tooltip';
@@ -344,10 +348,10 @@ const formatAmount = (
   locale: string
 ) => {
   // fallback in case the user didn't enter an amount yet (or it's invalid)
-  const moneyValue = createMoneyValue(currencyCode, rawAmount, locale) || {
+  const moneyValue = (createMoneyValue(currencyCode, rawAmount, locale) || {
     currencyCode,
     centAmount: NaN,
-  };
+  }) as TMoneyValue;
 
   const amount = getAmountAsNumberFromMoneyValue(moneyValue);
 
@@ -360,17 +364,126 @@ const formatAmount = (
     : amount.toLocaleString(locale, { minimumFractionDigits: fractionDigits });
 };
 
-const getAmountInputName = (name) => (name ? `${name}.amount` : undefined);
-const getCurrencyDropdownName = (name) =>
-  name ? `${name}.currencyCode` : undefined;
+const getAmountInputName = (name?: string) => (name ? `${name}.amount` : '');
+const getCurrencyDropdownName = (name?: string) =>
+  name ? `${name}.currencyCode` : '';
 
-const MoneyInput = (props) => {
+type TValue = {
+  amount: string;
+  currencyCode: TCurrencyCode;
+};
+
+type TMoneyInputProps = {
+  /**
+   * Used as HTML id property. An id is auto-generated when it is not specified.
+   */
+  id?: string;
+  /**
+   * Used as HTML `autocomplete` property
+   */
+  autoComplete?: string;
+  /**
+   * The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).
+   */
+  name?: string;
+  /**
+   * Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator.
+   */
+  value: TValue;
+  /**
+   * List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.
+   */
+  currencies: string[];
+  /**
+   * Placeholder text for the input
+   */
+  placeholder?: string;
+  /**
+   * Called when input is blurred
+   */
+  onBlur?: FocusEventHandler;
+  /**
+   * Called when input is focused
+   */
+  onFocus?: FocusEventHandler;
+  /**
+   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
+   */
+  isDisabled?: boolean;
+  /**
+   * Indicates that the field is displaying read-only content
+   */
+  isReadOnly?: boolean;
+  /**
+   * Focus the input on initial render
+   */
+  isAutofocussed?: boolean;
+  /**
+   * Called with the event of the input or dropdown when either the currency or the amount have changed.
+   * <br />
+   * Signature: `(event) => void`
+   */
+  onChange: (event: FormEvent<HTMLInputElement>) => void;
+  /**
+   * Dom element to portal the currency select menu to
+   */
+  menuPortalTarget?: Props['menuPortalTarget'];
+  /**
+   * z-index value for the currency select menu portal
+   */
+  menuPortalZIndex?: number;
+  /**
+   * whether the menu should block scroll while open
+   */
+  menuShouldBlockScroll: Props['menuShouldBlockScroll'];
+  /**
+   * Indicates that input has errors
+   */
+  hasError?: boolean;
+  /**
+   * Control to indicate on the input if there are selected values that are potentially invalid
+   */
+  hasWarning?: boolean;
+  /**
+   * Shows high precision badge in case current value uses high precision.
+   */
+  hasHighPrecisionBadge?: boolean;
+  /**
+   * Horizontal size limit of the input fields.
+   */
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+};
+
+const MoneyInput = (props: TMoneyInputProps) => {
   const intl = useIntl();
   const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
   const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
 
   const containerRef = useRef();
   const amountInputRef = useRef();
+
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'MoneyInput: "onChange" is required when is not read only.'
+    );
+  }
 
   const { onFocus } = props;
   const handleAmountFocus = useCallback(() => {
@@ -779,107 +892,6 @@ MoneyInput.isHighPrecision = (formValue, locale) => {
 
 MoneyInput.isTouched = (touched) =>
   Boolean(touched && touched.currencyCode && touched.amount);
-
-MoneyInput.propTypes = {
-  /**
-   * Used as HTML id property. An id is auto-generated when it is not specified.
-   */
-  id: PropTypes.string,
-  /**
-   * Used as HTML `autocomplete` property
-   */
-  autoComplete: PropTypes.string,
-  /**
-   * The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).
-   */
-  name: PropTypes.string,
-  /**
-   * Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator.
-   */
-  value: PropTypes.shape({
-    amount: PropTypes.string.isRequired,
-    currencyCode: PropTypes.string.isRequired,
-  }).isRequired,
-  /**
-   * List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.
-   */
-  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  /**
-   * Placeholder text for the input
-   */
-  placeholder: PropTypes.string,
-  /**
-   * Called when input is blurred
-   */
-  onBlur: PropTypes.func,
-  /**
-   * Called when input is focused
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Indicates that the field is displaying read-only content
-   */
-  isReadOnly: PropTypes.bool,
-  /**
-   * Focus the input on initial render
-   */
-  isAutofocussed: PropTypes.bool,
-  /**
-   * Called with the event of the input or dropdown when either the currency or the amount have changed.
-   * <br />
-   * Signature: `(event) => void`
-   */
-  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
-  /**
-   * Dom element to portal the currency select menu to
-   */
-  menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
-  /**
-   * z-index value for the currency select menu portal
-   */
-  menuPortalZIndex: PropTypes.number,
-  /**
-   * whether the menu should block scroll while open
-   */
-  menuShouldBlockScroll: PropTypes.bool,
-  /**
-   * Indicates that input has errors
-   */
-  hasError: PropTypes.bool,
-  /**
-   * Control to indicate on the input if there are selected values that are potentially invalid
-   */
-  hasWarning: PropTypes.bool,
-  /**
-   * Shows high precision badge in case current value uses high precision.
-   */
-  hasHighPrecisionBadge: PropTypes.bool,
-  /**
-   * Horizontal size limit of the input fields.
-   */
-  horizontalConstraint: PropTypes.oneOf([
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-};
 
 MoneyInput.defaultProps = {
   currencies: [],
