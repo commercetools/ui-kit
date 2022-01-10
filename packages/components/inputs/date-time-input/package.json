@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-date-time-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.5",
-    "@babel/runtime-corejs3": "7.16.5",
+    "@babel/runtime": "7.16.7",
+    "@babel/runtime-corejs3": "7.16.7",
     "@commercetools-uikit/accessible-button": "12.2.9",
     "@commercetools-uikit/calendar-time-utils": "12.2.9",
     "@commercetools-uikit/calendar-utils": "12.2.9",
@@ -38,7 +38,7 @@
     "@emotion/styled": "^11.3.0",
     "common-tags": "1.8.2",
     "downshift": "6.1.7",
-    "prop-types": "15.7.2",
+    "prop-types": "15.8.1",
     "react-is": "17.0.2",
     "react-required-if": "1.0.3",
     "warning": "4.0.3"
@@ -46,7 +46,7 @@
   "devDependencies": {
     "moment": "2.29.1",
     "react": "17.0.2",
-    "react-intl": "5.23.0"
+    "react-intl": "5.24.1"
   },
   "peerDependencies": {
     "moment": "2.x",
