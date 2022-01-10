@@ -355,6 +355,8 @@ const SelectInput = (props: TSelectInputProps) => {
           isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
+          // @ts-ignore
+          isReadOnly={props.isReadOnly}
           isMulti={props.isMulti}
           isSearchable={props.isSearchable}
           maxMenuHeight={props.maxMenuHeight}
