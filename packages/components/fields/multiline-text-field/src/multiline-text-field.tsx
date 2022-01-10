@@ -2,6 +2,7 @@ import {
   ChangeEventHandler,
   Component,
   FocusEventHandler,
+  isValidElement,
   ReactElement,
   ReactNode,
 } from 'react';
@@ -9,6 +10,7 @@ import {
   createSequentialId,
   filterDataAttributes,
   getFieldId,
+  warning,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
@@ -68,7 +70,7 @@ export type TMultiTextFieldProps = {
   /**
    * Value of the input component.
    */
-  value: string;
+  value: number | string;
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    * <br />
@@ -126,7 +128,7 @@ export type TMultiTextFieldProps = {
   /**
    * Provides a description for the title.
    */
-  description?: string;
+  description?: string | ReactNode;
   /**
    * Function called when info button is pressed.
    * <br />
@@ -159,7 +161,7 @@ type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 class MultilineTextField extends Component<TMultiTextFieldProps> {
   static displayName = 'MultilineTextField';
 
-  static defaultProps = {
+  static defaultProps: Pick<TMultiTextFieldProps, 'horizontalConstraint'> = {
     horizontalConstraint: 'scale',
   };
 
@@ -178,6 +180,20 @@ class MultilineTextField extends Component<TMultiTextFieldProps> {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    if (!this.props.isReadOnly) {
+      warning(
+        typeof this.props.onChange === 'function',
+        'MultilineInput: "onChange" is required when is not read only.'
+      );
+    }
+    if (this.props.hintIcon) {
+      warning(
+        typeof this.props.hintIcon === 'string' ||
+          isValidElement(this.props.hintIcon),
+        'MultilineInput: "hint" is required when `hintIcon` is string or reactnode.'
+      );
+    }
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -195,7 +211,7 @@ class MultilineTextField extends Component<TMultiTextFieldProps> {
             id={this.state.id}
             name={this.props.name}
             autoComplete={this.props.autoComplete}
-            value={this.props.value}
+            value={this.props.value as string}
             onChange={this.props.onChange}
             onBlur={this.props.onBlur}
             onFocus={this.props.onFocus}
