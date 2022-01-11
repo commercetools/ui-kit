@@ -97,12 +97,12 @@ type TTextFieldProps = {
    * Called when input is blurred
    * Signature: `(event) => void`
    */
-  onBlur: FocusEventHandler;
+  onBlur?: FocusEventHandler;
   /**
    * Called when input is focused
    * Signature: `(event) => void`
    */
-  onFocus: FocusEventHandler;
+  onFocus?: FocusEventHandler;
   /**
    * Focus the input on initial render
    */
