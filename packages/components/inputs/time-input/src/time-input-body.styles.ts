@@ -1,13 +1,14 @@
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
+import type { TTimeInput } from './time-input';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getClearSectionStyles = (theme) => {
+const getClearSectionStyles = (theme: Theme) => {
   const overwrittenVars = {
     ...customProperties,
     ...theme,
@@ -26,7 +27,14 @@ const getClearSectionStyles = (theme) => {
   `;
 };
 
-const getClockIconContainerColor = (vars, props) => {
+type TExtendedTheme = Theme & {
+  [key: string]: string;
+};
+
+const getClockIconContainerColor = (
+  vars: TExtendedTheme,
+  props: TTimeInput
+) => {
   if (props.isDisabled) {
     return vars.borderColorForInputWhenDisabled;
   }
@@ -38,7 +46,10 @@ const getClockIconContainerColor = (vars, props) => {
   }
   return vars.borderColorForInput;
 };
-const getClockIconContainerFontColor = (vars, props) => {
+const getClockIconContainerFontColor = (
+  vars: TExtendedTheme,
+  props: TTimeInput
+) => {
   if (props.isDisabled) {
     return vars.fontColorForInputWhenDisabled;
   }
@@ -50,7 +61,7 @@ const getClockIconContainerFontColor = (vars, props) => {
   }
   return vars.fontColorForInput;
 };
-const getClockIconContainerStyles = (props, theme) => {
+const getClockIconContainerStyles = (props: TTimeInput, theme: Theme) => {
   const overwrittenVars = {
     ...customProperties,
     ...theme,
@@ -83,7 +94,10 @@ const getClockIconContainerStyles = (props, theme) => {
   `;
 };
 
-const getInputContainerBorderColor = (vars, props) => {
+const getInputContainerBorderColor = (
+  vars: TExtendedTheme,
+  props: TTimeInput
+) => {
   if (props.isDisabled) {
     return vars.borderColorForInputWhenDisabled;
   }
@@ -95,7 +109,10 @@ const getInputContainerBorderColor = (vars, props) => {
   }
   return vars.borderColorForInput;
 };
-const getInputContainerFontColor = (vars, props) => {
+const getInputContainerFontColor = (
+  vars: TExtendedTheme,
+  props: TTimeInput
+) => {
   if (props.isDisabled) {
     return vars.fontColorForInputWhenDisabled;
   }
@@ -107,7 +124,7 @@ const getInputContainerFontColor = (vars, props) => {
   }
   return vars.fontColorForInput;
 };
-const getInputContainerStyles = (props, theme) => {
+const getInputContainerStyles = (props: TTimeInput, theme: Theme) => {
   const overwrittenVars = {
     ...customProperties,
     ...theme,
@@ -150,7 +167,7 @@ const getInputContainerStyles = (props, theme) => {
     }
   `;
 };
-const getTimeInputStyles = (props) => {
+const getTimeInputStyles = (props: TTimeInput) => {
   const baseStyles = [
     getInputStyles(props),
     css`

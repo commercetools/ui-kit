@@ -1,5 +1,4 @@
-import { useCallback } from 'react';
-import PropTypes from 'prop-types';
+import { useCallback, FocusEvent } from 'react';
 import { useIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
 import {
@@ -11,11 +10,103 @@ import { useFieldId, usePrevious } from '@commercetools-uikit/hooks';
 import TimeInputBody from './time-input-body';
 import messages from './messages';
 
+type ParsedTime = {
+  hours: number;
+  minutes: number;
+  seconds: number;
+  milliseconds: number;
+};
+
+export type TTimeInput = {
+  /**
+   * Used as HTML id property. An id is auto-generated when it is not specified.
+   */
+  id?: string;
+  /**
+   * Horizontal size limit of the input fields.
+   */
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  /**
+   * Used as HTML name of the input component.
+   */
+  name?: string;
+  /**
+   * Used as HTML autocomplete of the input component.
+   */
+  autoComplete?: string;
+  /**
+   * Value of the input
+   */
+  value: string;
+  /**
+   * Called with an event holding the new value.
+   * <br/>
+   * Required when input is not read only. Parent should pass it back as `value`-
+   * <br />
+   * Signature: `(event) => void`
+   */
+  onChange: (event: string | unknown) => void;
+  /**
+   * Called when input is blurred
+   * <br/>
+   * Signature: `(event) => void`
+   */
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+  /**
+   * Called when input is focused
+   * <br/>
+   * Signature: `(event) => void`
+   */
+  onFocus?: () => void;
+  /**
+   * Focus the input on initial render
+   */
+  isAutofocussed?: boolean;
+  /**
+   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
+   */
+  isDisabled?: boolean;
+  /**
+   * Placeholder text for the input
+   */
+  placeholder?: string;
+  /**
+   * Indicates if the input has invalid values
+   */
+  hasError?: boolean;
+  /**
+   * Indicates that the field is displaying read-only content
+   */
+  isReadOnly?: boolean;
+};
+
 const sequentialId = createSequentialId('time-input-');
 
-const leftPad = (value, length = 2) => String(value).padStart(length, '0');
+const leftPad = (value: number, length = 2) =>
+  String(value).padStart(length, '0');
 
-const format24hr = ({ hours, minutes, seconds, milliseconds }) => {
+const format24hr = ({
+  hours,
+  minutes,
+  seconds,
+  milliseconds,
+}: ParsedTime): string => {
   const base = `${leftPad(hours)}:${leftPad(minutes)}`;
   if (seconds === 0 && milliseconds === 0) return base;
   if (milliseconds === 0) return `${base}:${leftPad(seconds)}`;
@@ -23,9 +114,14 @@ const format24hr = ({ hours, minutes, seconds, milliseconds }) => {
   return `${base}:${leftPad(seconds)}.${leftPad(milliseconds, 3)}`;
 };
 
-const hasMilliseconds = (parsedTime) => parsedTime.milliseconds !== 0;
+const hasMilliseconds = (parsedTime: {
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+  milliseconds: number;
+}) => parsedTime.milliseconds !== 0;
 
-const TimeInput = (props) => {
+const TimeInput = (props: TTimeInput) => {
   const id = useFieldId(props.id, sequentialId);
   const intl = useIntl();
   const prevLocale = usePrevious(intl.locale);
@@ -92,89 +188,9 @@ TimeInput.displayName = 'TimeInput';
 
 // Takes any input like 15:10, 3 AM, 3AM, 3:15AM, 3:5AM and turns it
 // into a 24h format (with seconds and milliseconds if present)
-TimeInput.to24h = (time) => {
+TimeInput.to24h = (time: string) => {
   const parsedTime = parseTime(time);
   return parsedTime ? format24hr(parsedTime) : '';
-};
-
-TimeInput.propTypes = {
-  /**
-   * Used as HTML id property. An id is auto-generated when it is not specified.
-   */
-  id: PropTypes.string,
-  /**
-   * Horizontal size limit of the input fields.
-   */
-  horizontalConstraint: PropTypes.oneOf([
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-  /**
-   * Used as HTML name of the input component.
-   */
-  name: PropTypes.string,
-  /**
-   * Used as HTML autocomplete of the input component.
-   */
-  autoComplete: PropTypes.string,
-  /**
-   * Value of the input
-   */
-  value: PropTypes.string,
-  /**
-   * Called with an event holding the new value.
-   * <br/>
-   * Required when input is not read only. Parent should pass it back as `value`-
-   * <br />
-   * Signature: `(event) => void`
-   */
-  onChange: PropTypes.func.isRequired,
-  /**
-   * Called when input is blurred
-   * <br/>
-   * Signature: `(event) => void`
-   */
-  onBlur: PropTypes.func,
-  /**
-   * Called when input is focused
-   * <br/>
-   * Signature: `(event) => void`
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Focus the input on initial render
-   */
-  isAutofocussed: PropTypes.bool,
-  /**
-   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Placeholder text for the input
-   */
-  placeholder: PropTypes.string,
-  /**
-   * Indicates if the input has invalid values
-   */
-  hasError: PropTypes.bool,
-  /**
-   * Indicates that the field is displaying read-only content
-   */
-  isReadOnly: PropTypes.bool,
 };
 
 TimeInput.defaultProps = {
@@ -187,7 +203,7 @@ TimeInput.defaultProps = {
 // the 24h format is returned.
 //
 // Returns time in a format suitable for the locale.
-TimeInput.toLocaleTime = (time, locale) => {
+TimeInput.toLocaleTime = (time: string, locale: string) => {
   const parsedTime = parseTime(time);
   if (!parsedTime) return '';
 
@@ -212,7 +228,7 @@ TimeInput.toLocaleTime = (time, locale) => {
     minute: 'numeric',
     // only show seconds when time contains seconds
     second: parsedTime.seconds > 0 ? 'numeric' : undefined,
-  };
+  } as const;
 
   const isValidDate = !isNaN(date.getTime());
   return isValidDate ? date.toLocaleTimeString(locale, options) : '';
