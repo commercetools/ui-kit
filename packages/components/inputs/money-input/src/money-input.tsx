@@ -1,23 +1,20 @@
-// @ts-nocheck
-
 import {
   useRef,
   useCallback,
   ReactNode,
   FocusEventHandler,
-  FormEvent,
+  FocusEvent,
 } from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
 import Select, {
   components,
   SingleValueProps,
-  Theme,
   Props,
   CSSObjectWithLabel,
 } from 'react-select';
 import { useIntl } from 'react-intl';
-import { css, useTheme } from '@emotion/react';
+import { css, useTheme, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
@@ -45,8 +42,8 @@ const TooltipWrapper = styled.div`
   display: flex;
 `;
 
-const getPortalId = (id: string) => `portal-${id}`;
-const getPortalNode = (id: string) =>
+const getPortalId = (id?: string) => `portal-${id}`;
+const getPortalNode = (id?: string) =>
   document.querySelector(`#${getPortalId(id)}`);
 
 const Portal = (props: TLabel) => {
@@ -54,12 +51,13 @@ const Portal = (props: TLabel) => {
   if (domNode) {
     return ReactDOM.createPortal(props.children, domNode);
   }
-  return;
+  return null;
 };
 
 type TLabel = {
-  id: string;
+  id?: string;
   children: ReactNode;
+  isDisabled?: boolean;
 };
 
 const CurrencyLabel = (props: TLabel) => (
@@ -71,7 +69,7 @@ const CurrencyLabel = (props: TLabel) => (
 CurrencyLabel.displayName = 'CurrencyLabel';
 
 type TSingleValue = {
-  id: string;
+  id?: string;
 } & SingleValueProps;
 
 const SingleValue = ({ id, ...props }: TSingleValue) => (
@@ -85,13 +83,13 @@ SingleValue.displayName = 'SingleValue';
 type TcreateCurrencySelectStyles = (input: TInputProps, theme: Theme) => void;
 
 type TInputProps = {
-  isDisabled: boolean;
-  hasError: boolean;
-  hasWarning: boolean;
-  isReadOnly: boolean;
-  hasFocus: boolean;
+  isDisabled?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  isReadOnly?: boolean;
+  hasFocus?: boolean;
   menuPortalZIndex?: number;
-  theme: Theme;
+  theme?: Theme;
 };
 
 // overwrite styles of createSelectStyles
@@ -364,14 +362,26 @@ const formatAmount = (
     : amount.toLocaleString(locale, { minimumFractionDigits: fractionDigits });
 };
 
-const getAmountInputName = (name?: string) => (name ? `${name}.amount` : '');
+const getAmountInputName = (name?: string) =>
+  name ? `${name}.amount` : undefined;
 const getCurrencyDropdownName = (name?: string) =>
-  name ? `${name}.currencyCode` : '';
+  name ? `${name}.currencyCode` : undefined;
 
 type TValue = {
   amount: string;
   currencyCode: TCurrencyCode;
 };
+
+type TOnChangeEvent = {
+  target: {
+    id?: string;
+    name?: string;
+    value: string | string[] | null;
+  };
+  persist: () => void;
+};
+
+type TOnChange = (event: TOnChangeEvent) => void;
 
 type TMoneyInputProps = {
   /**
@@ -423,7 +433,7 @@ type TMoneyInputProps = {
    * <br />
    * Signature: `(event) => void`
    */
-  onChange: (event: FormEvent<HTMLInputElement>) => void;
+  onChange: TOnChange;
   /**
    * Dom element to portal the currency select menu to
    */
@@ -475,8 +485,8 @@ const MoneyInput = (props: TMoneyInputProps) => {
   const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
   const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
 
-  const containerRef = useRef();
-  const amountInputRef = useRef();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const amountInputRef = useRef<HTMLInputElement>(null);
 
   if (!props.isReadOnly) {
     warning(
@@ -493,7 +503,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
           id: MoneyInput.getAmountInputId(props.id),
           name: getAmountInputName(props.name),
         },
-      });
+      } as FocusEvent<HTMLInputElement, Element>);
     toggleAmountHasFocus(true);
   }, [toggleAmountHasFocus, onFocus, props.id, props.name]);
 
@@ -571,7 +581,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
         // The user could be changing the currency before entering any amount,
         // or while the amount is invalid. In these cases, we don't attempt to
         // format the amount.
-        const nextAmount = isNaN(formattedAmount)
+        const nextAmount = isNaN(Number(formattedAmount))
           ? props.value.amount
           : formattedAmount;
 
@@ -600,7 +610,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
           });
         }
 
-        amountInputRef.current.focus();
+        amountInputRef.current?.focus();
       }
     },
     [
@@ -620,7 +630,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
           id: MoneyInput.getCurrencyDropdownId(props.id),
           name: getCurrencyDropdownName(props.name),
         },
-      });
+      } as FocusEvent<HTMLInputElement, Element>);
 
     toggleCurrencyHasFocus(true);
   }, [onFocus, toggleCurrencyHasFocus, props.name, props.id]);
@@ -676,20 +686,20 @@ const MoneyInput = (props: TMoneyInputProps) => {
       // is blurred
       if (
         typeof onBlur === 'function' &&
-        !containerRef.current.contains(event.relatedTarget)
+        !containerRef.current?.contains(event.relatedTarget)
       ) {
         onBlur({
           target: {
             id: MoneyInput.getCurrencyDropdownId(props.id),
             name: getCurrencyDropdownName(props.name),
           },
-        });
+        } as FocusEvent<HTMLInputElement, Element>);
         onBlur({
           target: {
             id: MoneyInput.getAmountInputId(props.id),
             name: getAmountInputName(props.name),
           },
-        });
+        } as FocusEvent<HTMLInputElement, Element>);
       }
     },
     [onBlur, props.id, props.name]
@@ -727,22 +737,21 @@ const MoneyInput = (props: TMoneyInputProps) => {
             value={option}
             isDisabled={props.isDisabled}
             isSearchable={false}
-            components={{
-              // eslint-disable-next-line react/display-name
-              SingleValue: (innerProps) => (
-                <SingleValue {...innerProps} id={id} />
-              ),
-              // eslint-disable-next-line react/display-name
-              Input: (ownProps) => (
-                // eslint-disable-next-line react/prop-types
-                <components.Input {...ownProps} readOnly={props.isReadOnly} />
-              ),
-              DropdownIndicator,
-            }}
+            components={
+              {
+                SingleValue: (innerProps) => (
+                  <SingleValue {...innerProps} id={id} />
+                ),
+                Input: (ownProps) => (
+                  <components.Input {...ownProps} readOnly={props.isReadOnly} />
+                ),
+                DropdownIndicator,
+              } as Props['components']
+            }
             options={options}
             menuIsOpen={props.isReadOnly ? false : undefined}
             placeholder=""
-            styles={currencySelectStyles}
+            styles={currencySelectStyles as Props['styles']}
             onFocus={handleCurrencyFocus}
             menuPortalTarget={props.menuPortalTarget}
             menuShouldBlockScroll={props.menuShouldBlockScroll}
@@ -827,14 +836,14 @@ MoneyInput.getAmountInputId = getAmountInputName;
 
 MoneyInput.getCurrencyDropdownId = getCurrencyDropdownName;
 
-MoneyInput.convertToMoneyValue = (value, locale) =>
+MoneyInput.convertToMoneyValue = (value: TValue, locale: string) =>
   createMoneyValue(
     value.currencyCode,
     typeof value.amount === 'string' ? value.amount.trim() : '',
     locale
   );
 
-MoneyInput.parseMoneyValue = (moneyValue, locale) => {
+MoneyInput.parseMoneyValue = (moneyValue: TMoneyValue, locale: string) => {
   if (!moneyValue) return { currencyCode: '', amount: '' };
 
   warning(
@@ -876,12 +885,12 @@ MoneyInput.parseMoneyValue = (moneyValue, locale) => {
   return { amount, currencyCode: moneyValue.currencyCode };
 };
 
-MoneyInput.isEmpty = (formValue) =>
+MoneyInput.isEmpty = (formValue: TValue) =>
   !formValue ||
   formValue.amount.trim() === '' ||
   formValue.currencyCode.trim() === '';
 
-MoneyInput.isHighPrecision = (formValue, locale) => {
+MoneyInput.isHighPrecision = (formValue: TValue, locale: string) => {
   warning(
     !MoneyInput.isEmpty(formValue),
     'MoneyValue.isHighPrecision may not be called with an empty money value.'
@@ -890,7 +899,7 @@ MoneyInput.isHighPrecision = (formValue, locale) => {
   return moneyValue && moneyValue.type === 'highPrecision';
 };
 
-MoneyInput.isTouched = (touched) =>
+MoneyInput.isTouched = (touched: TValue) =>
   Boolean(touched && touched.currencyCode && touched.amount);
 
 MoneyInput.defaultProps = {

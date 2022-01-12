@@ -25,7 +25,10 @@ type TInputProps = {
   readOnly?: boolean;
 };
 
-const getAmountInputStyles = (props: TInputProps) => [
+type TGetAmountInputStyles = {
+  hasFocus: boolean;
+} & TInputProps;
+const getAmountInputStyles = (props: TGetAmountInputStyles) => [
   getInputStyles(props),
   css`
     border-top-left-radius: 0;
@@ -39,7 +42,7 @@ const getAmountInputStyles = (props: TInputProps) => [
 ];
 
 type TGetHighPrecisionWrapperStyles = {
-  isDisabled: boolean;
+  isDisabled?: boolean;
 };
 
 const getHighPrecisionWrapperStyles = ({
