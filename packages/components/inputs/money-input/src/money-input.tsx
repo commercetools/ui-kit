@@ -56,7 +56,7 @@ const Portal = (props: TLabel) => {
 
 type TLabel = {
   id?: string;
-  children: ReactNode;
+  children?: ReactNode;
   isDisabled?: boolean;
 };
 
@@ -70,6 +70,7 @@ CurrencyLabel.displayName = 'CurrencyLabel';
 
 type TSingleValue = {
   id?: string;
+  children?: ReactNode;
 } & SingleValueProps;
 
 const SingleValue = ({ id, ...props }: TSingleValue) => (
@@ -92,6 +93,9 @@ type TInputProps = {
   theme?: Theme;
 };
 
+type TCreateCurrencySelectStylesBase = {
+  backgroundColor: string;
+};
 // overwrite styles of createSelectStyles
 const createCurrencySelectStyles: TcreateCurrencySelectStyles = (
   { hasWarning, hasError, isDisabled, isReadOnly, hasFocus, menuPortalZIndex },
@@ -107,7 +111,7 @@ const createCurrencySelectStyles: TcreateCurrencySelectStyles = (
   );
   return {
     ...selectStyles,
-    control: (base: CSSObjectWithLabel, state: Props) => ({
+    control: (base: TCreateCurrencySelectStylesBase, state: Props) => ({
       ...selectStyles.control(base, state),
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',

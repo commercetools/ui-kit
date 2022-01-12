@@ -13,7 +13,6 @@ import {
   designTokens,
 } from '@commercetools-uikit/design-system';
 import { Theme } from '@emotion/react';
-import type { CSSObjectWithLabel } from 'react-select';
 
 type TProps = {
   isDisabled?: boolean;
@@ -27,7 +26,16 @@ type TProps = {
   hasValue?: boolean;
 };
 
-type TBase = CSSObjectWithLabel;
+type TBase = {
+  fontColorForInput?: string;
+  borderColorForInput?: string;
+  color?: string;
+  backgroundColor?: string;
+  borderTop?: string;
+  borderColor?: string;
+  boxShadow?: string;
+  pointerEvents?: string;
+};
 
 type TState = {
   isFocused?: boolean;
