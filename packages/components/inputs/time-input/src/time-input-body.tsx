@@ -1,4 +1,4 @@
-import { KeyboardEvent, MouseEvent } from 'react';
+import type { KeyboardEvent, MouseEvent } from 'react';
 import { useTheme } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
@@ -13,7 +13,7 @@ import {
   StyledInputContainer,
 } from './time-input-body.styles';
 
-import { TTimeInput } from './time-input';
+import type { TTimeInput } from './time-input';
 
 type TExtendedTimeInput = TTimeInput & {
   onClear: (

@@ -1,5 +1,5 @@
 ---
-'@commercetools-uikit/time-input': major
+'@commercetools-uikit/time-input': patch
 ---
 
 migrate time input to typescript

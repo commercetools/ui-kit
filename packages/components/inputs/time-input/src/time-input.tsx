@@ -53,7 +53,7 @@ export type TTimeInput = {
   /**
    * Value of the input
    */
-  value: string;
+  value?: string;
   /**
    * Called with an event holding the new value.
    * <br/>
@@ -141,7 +141,10 @@ const TimeInput = (props: TTimeInput) => {
   const handleBlur = useCallback(
     (event) => {
       // check formatting and reformat when necessary
-      const formattedTime = TimeInput.toLocaleTime(value, intl.locale);
+      const formattedTime = TimeInput.toLocaleTime(
+        value as string,
+        intl.locale
+      );
 
       if (formattedTime !== value) emitChange(formattedTime);
 
@@ -155,7 +158,7 @@ const TimeInput = (props: TTimeInput) => {
 
   // if locale has changed
   if (typeof prevLocale !== 'undefined' && prevLocale !== intl.locale) {
-    emitChange(TimeInput.toLocaleTime(value, intl.locale));
+    emitChange(TimeInput.toLocaleTime(value as string, intl.locale));
   }
 
   return (
