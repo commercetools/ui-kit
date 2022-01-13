@@ -386,7 +386,6 @@ const SelectInput = (props: TSelectInputProps) => {
                         return props.name ? `${props.name}.0` : undefined;
                       })(),
                     },
-                    // eslint-disable-next-line @typescript-eslint/no-empty-function
                     persist: () => {},
                   };
                   props.onBlur &&
