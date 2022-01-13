@@ -291,7 +291,6 @@ const CreatableSelectInput = (props: TCreatableSelectInput) => {
               // react-select doesn't support readOnly mode; this is a workaround:
               ...(props.isReadOnly
                 ? {
-                    // eslint-disable-next-line react/display-name
                     Input: (ownProps) => (
                       <defaultComponents.Input {...ownProps} readOnly />
                     ),
@@ -357,7 +356,6 @@ const CreatableSelectInput = (props: TCreatableSelectInput) => {
                         return props.name ? `${props.name}.0` : undefined;
                       })(),
                     },
-                    // eslint-disable-next-line @typescript-eslint/no-empty-function
                     persist: () => {},
                   };
                   props.onBlur &&
@@ -381,7 +379,6 @@ const CreatableSelectInput = (props: TCreatableSelectInput) => {
               props.onChange(
                 {
                   target: { name: props.name, value: newValue },
-                  // eslint-disable-next-line @typescript-eslint/no-empty-function
                   persist: () => {},
                 },
                 info
