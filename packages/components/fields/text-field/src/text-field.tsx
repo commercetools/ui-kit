@@ -183,7 +183,7 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
       warning(
         typeof this.props.hint === 'string' ||
           isValidElement(typeof this.props.hint),
-        'TextField: `hint` is required when hintIcon is present'
+        'TextField: `hint` is required to be string or ReactNode if hintIcon is present'
       );
     }
 
