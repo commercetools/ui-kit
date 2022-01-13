@@ -7,12 +7,7 @@ import {
 } from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
-import Select, {
-  components,
-  SingleValueProps,
-  Props,
-  CSSObjectWithLabel,
-} from 'react-select';
+import Select, { components, SingleValueProps, Props } from 'react-select';
 import { useIntl } from 'react-intl';
 import { css, useTheme, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -46,18 +41,18 @@ const getPortalId = (id?: string) => `portal-${id}`;
 const getPortalNode = (id?: string) =>
   document.querySelector(`#${getPortalId(id)}`);
 
+type TLabel = {
+  id?: string;
+  children?: ReactNode;
+  isDisabled?: boolean;
+};
+
 const Portal = (props: TLabel) => {
   const domNode = getPortalNode(props.id);
   if (domNode) {
     return ReactDOM.createPortal(props.children, domNode);
   }
   return null;
-};
-
-type TLabel = {
-  id?: string;
-  children?: ReactNode;
-  isDisabled?: boolean;
 };
 
 const CurrencyLabel = (props: TLabel) => (
@@ -93,8 +88,9 @@ type TInputProps = {
   theme?: Theme;
 };
 
-type TCreateCurrencySelectStylesBase = {
-  backgroundColor: string;
+type TBase = {
+  backgroundColor?: string;
+  color?: string;
 };
 // overwrite styles of createSelectStyles
 const createCurrencySelectStyles: TcreateCurrencySelectStyles = (
@@ -111,7 +107,7 @@ const createCurrencySelectStyles: TcreateCurrencySelectStyles = (
   );
   return {
     ...selectStyles,
-    control: (base: TCreateCurrencySelectStylesBase, state: Props) => ({
+    control: (base: TBase, state: Props) => ({
       ...selectStyles.control(base, state),
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
@@ -137,7 +133,7 @@ const createCurrencySelectStyles: TcreateCurrencySelectStyles = (
         return base.backgroundColor;
       })(),
     }),
-    singleValue: (base: CSSObjectWithLabel) => ({
+    singleValue: (base: TBase) => ({
       ...base,
       marginLeft: 0,
       maxWidth: 'initial',
@@ -529,7 +525,6 @@ const MoneyInput = (props: TMoneyInputProps) => {
       if (String(formattedAmount) !== amount) {
         // We need to emit an event with the now formatted value
         const fakeEvent = {
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
           persist: () => {},
           target: {
             id: MoneyInput.getAmountInputId(props.id),
@@ -554,7 +549,6 @@ const MoneyInput = (props: TMoneyInputProps) => {
     (event) => {
       if (isNumberish(event.target.value)) {
         onChange({
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
           persist: () => {},
           target: {
             id: MoneyInput.getAmountInputId(props.id),
@@ -591,7 +585,6 @@ const MoneyInput = (props: TMoneyInputProps) => {
 
         // change currency code
         const fakeCurrencyEvent = {
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
           persist: () => {},
           target: {
             id: MoneyInput.getCurrencyDropdownId(props.id),
@@ -604,7 +597,6 @@ const MoneyInput = (props: TMoneyInputProps) => {
         // change amount if necessary
         if (props.value.amount !== nextAmount) {
           onChange({
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
             persist: () => {},
             target: {
               id: MoneyInput.getAmountInputId(props.id),
