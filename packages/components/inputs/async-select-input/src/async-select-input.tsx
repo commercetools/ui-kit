@@ -273,7 +273,6 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               // react-select doesn't support readOnly mode; this is a workaround:
               ...(props.isReadOnly
                 ? {
-                    // eslint-disable-next-line react/display-name
                     Input: (ownProps) => (
                       <defaultComponents.Input {...ownProps} readOnly />
                     ),
@@ -341,7 +340,6 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
                         return `${props.name}.0`;
                       })(),
                     },
-                    // eslint-disable-next-line @typescript-eslint/no-empty-function
                     persist: () => {},
                   };
                   props.onBlur &&
