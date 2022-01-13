@@ -6,6 +6,7 @@
   "plugins": [
     "stylelint-order"
   ],
+  "customSyntax": "@stylelint/postcss-css-in-js",
   "rules": {
     "font-family-name-quotes": ["always-unless-keyword"],
     "function-url-quotes": "always",
@@ -38,6 +39,6 @@
     "declaration-empty-line-before": null,
     "no-missing-end-of-source-newline": null,
     "function-name-case": null,
-    "value-keyword-case": null,
+    "value-keyword-case": null
   }
 }
