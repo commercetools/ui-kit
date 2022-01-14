@@ -4,7 +4,10 @@ import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
 import has from 'lodash/has';
 import flatMap from 'lodash/flatMap';
-import Select, { components as defaultComponents, Props } from 'react-select';
+import Select, {
+  components as defaultComponents,
+  type Props,
+} from 'react-select';
 import Constraints from '@commercetools-uikit/constraints';
 import {
   ClearIndicator,
