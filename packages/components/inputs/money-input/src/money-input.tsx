@@ -1,15 +1,19 @@
 import {
   useRef,
   useCallback,
-  ReactNode,
-  FocusEventHandler,
-  FocusEvent,
+  type ReactNode,
+  type FocusEventHandler,
+  type FocusEvent,
 } from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
-import Select, { components, SingleValueProps, Props } from 'react-select';
+import Select, {
+  components,
+  type SingleValueProps,
+  type Props,
+} from 'react-select';
 import { useIntl } from 'react-intl';
-import { css, useTheme, Theme } from '@emotion/react';
+import { css, useTheme, type Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
