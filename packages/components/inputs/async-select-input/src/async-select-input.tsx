@@ -5,9 +5,9 @@ import { useTheme } from '@emotion/react';
 import {
   components as defaultComponents,
   GroupBase,
-  OptionsOrGroups,
-  Props,
-  PropsValue,
+  type OptionsOrGroups,
+  type Props,
+  type PropsValue,
 } from 'react-select';
 import AsyncSelect from 'react-select/async';
 import {
