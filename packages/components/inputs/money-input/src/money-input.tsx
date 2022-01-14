@@ -1,10 +1,4 @@
-import {
-  useRef,
-  useCallback,
-  type ReactNode,
-  type FocusEventHandler,
-  type FocusEvent,
-} from 'react';
+import { useRef, useCallback, type ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
 import Select, {
@@ -376,16 +370,14 @@ type TValue = {
   currencyCode: TCurrencyCode;
 };
 
-type TOnChangeEvent = {
+type TEvent = {
   target: {
     id?: string;
     name?: string;
-    value: string | string[] | null;
+    value?: string | string[] | null;
   };
-  persist: () => void;
+  persist?: () => void;
 };
-
-type TOnChange = (event: TOnChangeEvent) => void;
 
 type TMoneyInputProps = {
   /**
@@ -415,11 +407,11 @@ type TMoneyInputProps = {
   /**
    * Called when input is blurred
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: (event: TEvent) => void;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: (event: TEvent) => void;
   /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
@@ -437,7 +429,7 @@ type TMoneyInputProps = {
    * <br />
    * Signature: `(event) => void`
    */
-  onChange: TOnChange;
+  onChange: (event: TEvent) => void;
   /**
    * Dom element to portal the currency select menu to
    */
@@ -507,7 +499,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
           id: MoneyInput.getAmountInputId(props.id),
           name: getAmountInputName(props.name),
         },
-      } as FocusEvent<HTMLInputElement, Element>);
+      });
     toggleAmountHasFocus(true);
   }, [toggleAmountHasFocus, onFocus, props.id, props.name]);
 
@@ -630,7 +622,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
           id: MoneyInput.getCurrencyDropdownId(props.id),
           name: getCurrencyDropdownName(props.name),
         },
-      } as FocusEvent<HTMLInputElement, Element>);
+      });
 
     toggleCurrencyHasFocus(true);
   }, [onFocus, toggleCurrencyHasFocus, props.name, props.id]);
@@ -693,13 +685,13 @@ const MoneyInput = (props: TMoneyInputProps) => {
             id: MoneyInput.getCurrencyDropdownId(props.id),
             name: getCurrencyDropdownName(props.name),
           },
-        } as FocusEvent<HTMLInputElement, Element>);
+        });
         onBlur({
           target: {
             id: MoneyInput.getAmountInputId(props.id),
             name: getAmountInputName(props.name),
           },
-        } as FocusEvent<HTMLInputElement, Element>);
+        });
       }
     },
     [onBlur, props.id, props.name]
