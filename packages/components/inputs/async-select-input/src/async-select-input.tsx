@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
 import {
+  ActionMeta,
   components as defaultComponents,
   type GroupBase,
   type OptionsOrGroups,
@@ -36,6 +37,14 @@ const customizedComponents = {
 };
 
 type TValue = { value: string };
+
+type TEvent = {
+  target: {
+    name?: string;
+    value?: unknown;
+  };
+  persist: () => void;
+};
 
 type TAsyncSelectInputProps = {
   /**
@@ -162,11 +171,11 @@ type TAsyncSelectInputProps = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: Props['onBlur'];
+  onBlur?: (event: TEvent) => void;
   /**
    * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
    */
-  onChange: Props['onChange'];
+  onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
   /**
    * Handle focus events on the control
    */
@@ -204,16 +213,7 @@ type TAsyncSelectInputProps = {
   /**
    * Function that returns a promise, which is the set of options to be used once the promise resolves.
    */
-  loadOptions:
-    | ((
-        inputValue: string,
-        callback: (
-          options: OptionsOrGroups<unknown, GroupBase<unknown>>
-        ) => void
-      ) => void)
-    | ((
-        inputValue: string
-      ) => Promise<OptionsOrGroups<unknown, GroupBase<unknown>>>);
+  loadOptions: () => void;
   /**
    * If cacheOptions is truthy, then the loaded data will be cached. The cache will remain until cacheOptions changes value.
    */
