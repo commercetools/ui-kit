@@ -4,7 +4,7 @@ import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
 import {
   components as defaultComponents,
-  GroupBase,
+  type GroupBase,
   type OptionsOrGroups,
   type Props,
   type PropsValue,
