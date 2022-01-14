@@ -1,4 +1,4 @@
-import { useCallback, FocusEvent } from 'react';
+import { useCallback, type FocusEvent } from 'react';
 import { useIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
 import {
