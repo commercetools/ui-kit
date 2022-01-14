@@ -1,10 +1,10 @@
 import {
-  ChangeEventHandler,
-  Component,
-  FocusEventHandler,
+  type ChangeEventHandler,
+  type FocusEventHandler,
+  type ReactElement,
+  type ReactNode,
   isValidElement,
-  ReactElement,
-  ReactNode,
+  Component,
 } from 'react';
 import {
   createSequentialId,
