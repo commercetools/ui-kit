@@ -1,4 +1,4 @@
-import type { ReactNode, FocusEvent } from 'react';
+import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
@@ -11,6 +11,7 @@ import {
   type GetOptionValue,
   type Options,
   type OptionsOrGroups,
+  ActionMeta,
 } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import Constraints from '@commercetools-uikit/constraints';
@@ -42,6 +43,14 @@ type TOptions = TValue[] | { options: TValue[] }[];
 type Accessors<Option> = {
   getOptionValue: GetOptionValue<Option>;
   getOptionLabel: GetOptionLabel<Option>;
+};
+
+type TEvent = {
+  target: {
+    name?: string;
+    value?: unknown;
+  };
+  persist?: () => void;
 };
 
 type TCreatableSelectInput = {
@@ -172,13 +181,13 @@ type TCreatableSelectInput = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: Props['onBlur'];
+  onBlur?: (event: TEvent) => void;
   /**
    * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
    * <br />
    * Signature: `(event) => void`
    */
-  onChange: Props['onChange'];
+  onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
   /**
    * Handle focus events on the control
    */
@@ -358,10 +367,7 @@ const CreatableSelectInput = (props: TCreatableSelectInput) => {
                     },
                     persist: () => {},
                   };
-                  props.onBlur &&
-                    props.onBlur(
-                      event as FocusEvent<HTMLInputElement, Element>
-                    );
+                  props.onBlur && props.onBlur(event);
                 }
               : undefined
           }
@@ -375,14 +381,13 @@ const CreatableSelectInput = (props: TCreatableSelectInput) => {
               newValue = [];
             }
 
-            props.onChange &&
-              props.onChange(
-                {
-                  target: { name: props.name, value: newValue },
-                  persist: () => {},
-                },
-                info
-              );
+            props.onChange(
+              {
+                target: { name: props.name, value: newValue },
+                persist: () => {},
+              },
+              info
+            );
           }}
           onFocus={props.onFocus}
           onInputChange={props.onInputChange}
