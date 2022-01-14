@@ -1,10 +1,10 @@
 import {
-  ChangeEventHandler,
   Component,
-  FocusEventHandler,
   isValidElement,
-  ReactElement,
-  ReactNode,
+  type ChangeEventHandler,
+  type FocusEventHandler,
+  type ReactElement,
+  type ReactNode,
 } from 'react';
 import Constraints from '@commercetools-uikit/constraints';
 import Stack from '@commercetools-uikit/spacings-stack';
