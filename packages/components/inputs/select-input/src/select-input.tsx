@@ -1,4 +1,4 @@
-import type { ReactNode, FocusEvent } from 'react';
+import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
@@ -38,14 +38,13 @@ type TOptionObject = {
 
 type TOptions = TOption[] | TOptionObject[];
 
-type TOnChangeEvent = {
+type TEvent = {
   target: {
     name: Props['name'];
-    value: string | string[] | null;
+    value?: string | string[] | null;
   };
   persist: () => void;
 };
-type TOnChange = (event: TOnChangeEvent) => void;
 
 type TSelectInputProps = {
   horizontalConstraint?:
@@ -205,7 +204,7 @@ type TSelectInputProps = {
    * <br />
    * Signature: `(event) => void`
    */
-  onBlur?: Props['onBlur'];
+  onBlur?: (event: TEvent) => void;
   /**
    * Called with a fake event when value changes. The event's target.name will be the name supplied in props. The event's target.value will hold the value.
    * <br/>
@@ -213,7 +212,7 @@ type TSelectInputProps = {
    * <br />
    * Signature: `(event) => void`
    */
-  onChange?: TOnChange;
+  onChange?: (event: TEvent) => void;
   /**
    * Handle focus events on the control
    * <br />
@@ -391,10 +390,7 @@ const SelectInput = (props: TSelectInputProps) => {
                     },
                     persist: () => {},
                   };
-                  props.onBlur &&
-                    props.onBlur(
-                      event as FocusEvent<HTMLInputElement, Element>
-                    );
+                  props.onBlur && props.onBlur(event);
                 }
               : undefined
           }
