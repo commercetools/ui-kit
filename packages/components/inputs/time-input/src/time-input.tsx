@@ -1,4 +1,4 @@
-import { useCallback, type FocusEvent } from 'react';
+import { type FocusEventHandler, useCallback } from 'react';
 import { useIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
 import {
@@ -15,6 +15,10 @@ type ParsedTime = {
   minutes: number;
   seconds: number;
   milliseconds: number;
+};
+
+type TEvent = {
+  target: { id: string; name?: string; value: unknown };
 };
 
 export type TTimeInput = {
@@ -63,19 +67,19 @@ export type TTimeInput = {
    * <br />
    * Signature: `(event) => void`
    */
-  onChange: (event: string | unknown) => void;
+  onChange: (event: TEvent) => void;
   /**
    * Called when input is blurred
    * <br/>
    * Signature: `(event) => void`
    */
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+  onBlur?: FocusEventHandler;
   /**
    * Called when input is focused
    * <br/>
    * Signature: `(event) => void`
    */
-  onFocus?: () => void;
+  onFocus?: FocusEventHandler;
   /**
    * Focus the input on initial render
    */
