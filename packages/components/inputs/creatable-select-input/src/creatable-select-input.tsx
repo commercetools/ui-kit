@@ -4,13 +4,13 @@ import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
 import {
   components as defaultComponents,
-  Props,
-  PropsValue,
-  GroupBase,
-  GetOptionLabel,
-  GetOptionValue,
-  Options,
-  OptionsOrGroups,
+  type Props,
+  type PropsValue,
+  type GroupBase,
+  type GetOptionLabel,
+  type GetOptionValue,
+  type Options,
+  type OptionsOrGroups,
 } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import Constraints from '@commercetools-uikit/constraints';
