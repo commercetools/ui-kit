@@ -181,7 +181,7 @@ type TNumberFieldState = {
 class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
   static displayName = 'NumberField';
 
-  static defaultProps = {
+  static defaultProps: Pick<TNumberFieldProps, 'horizontalConstraint'> = {
     horizontalConstraint: 'scale',
   };
 
