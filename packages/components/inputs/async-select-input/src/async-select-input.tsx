@@ -91,7 +91,6 @@ type TAsyncSelectInputProps = {
   /**
    * Aria label (for assistive tech)
    * [Props from React select was used](https://react-select.com/props)
-   * [Props from React select was used](https://react-select.com/props)
    */
   'aria-label'?: ReactSelectProps['aria-label'];
   /**
