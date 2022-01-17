@@ -57,15 +57,15 @@ export default Example;
 | `value`                 | `Object`<br/>[See signature.](#signature-value)                                                       |    ✅    |           | Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator. |
 | `currencies`            | `Array: string[]`<br/>[See signature.](#signature-currencies)                                         |          | `[]`      | List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.                       |
 | `placeholder`           | `string`                                                                                              |          |           | Placeholder text for the input                                                                                                                                |
-| `onBlur`                | `FocusEventHandler`                                                                                   |          |           | Called when input is blurred                                                                                                                                  |
-| `onFocus`               | `FocusEventHandler`                                                                                   |          |           | Called when input is focused                                                                                                                                  |
+| `onBlur`                | `Function`<br/>[See signature.](#signature-onBlur)                                                    |          |           | Called when input is blurred                                                                                                                                  |
+| `onFocus`               | `Function`<br/>[See signature.](#signature-onFocus)                                                   |          |           | Called when input is focused                                                                                                                                  |
 | `isDisabled`            | `boolean`                                                                                             |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                |
 | `isReadOnly`            | `boolean`                                                                                             |          |           | Indicates that the field is displaying read-only content                                                                                                      |
 | `isAutofocussed`        | `boolean`                                                                                             |          |           | Focus the input on initial render                                                                                                                             |
 | `onChange`              | `Function`<br/>[See signature.](#signature-onChange)                                                  |    ✅    |           | Called with the event of the input or dropdown when either the currency or the amount have changed.&#xA;<br />&#xA;Signature: `(event) => void`               |
-| `menuPortalTarget`      | `Props['menuPortalTarget']`                                                                           |          |           | Dom element to portal the currency select menu to                                                                                                             |
+| `menuPortalTarget`      | `ReactSelectProps['menuPortalTarget']`                                                                |          |           | Dom element to portal the currency select menu to&#xA;[Props from React select was used](https://react-select.com/props)                                      |
 | `menuPortalZIndex`      | `number`                                                                                              |          | `1`       | z-index value for the currency select menu portal                                                                                                             |
-| `menuShouldBlockScroll` | `Props['menuShouldBlockScroll']`                                                                      |    ✅    |           | whether the menu should block scroll while open                                                                                                               |
+| `menuShouldBlockScroll` | `ReactSelectProps['menuShouldBlockScroll']`                                                           |    ✅    |           | whether the menu should block scroll while open&#xA;[Props from React select was used](https://react-select.com/props)                                        |
 | `hasError`              | `boolean`                                                                                             |          |           | Indicates that input has errors                                                                                                                               |
 | `hasWarning`            | `boolean`                                                                                             |          |           | Control to indicate on the input if there are selected values that are potentially invalid                                                                    |
 | `hasHighPrecisionBadge` | `boolean`                                                                                             |          |           | Shows high precision badge in case current value uses high precision.                                                                                         |
@@ -84,10 +84,22 @@ export default Example;
 
 ### Signature `currencies`
 
+### Signature `onBlur`
+
+```ts
+(event: TEvent) => void
+```
+
+### Signature `onFocus`
+
+```ts
+(event: TEvent) => void
+```
+
 ### Signature `onChange`
 
 ```ts
-(event: TOnChangeEvent) => void
+(event: TEvent) => void
 ```
 
 ## Static methods

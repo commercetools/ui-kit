@@ -4,7 +4,7 @@ import has from 'lodash/has';
 import Select, {
   components,
   type SingleValueProps,
-  type Props,
+  type Props as ReactSelectProps,
 } from 'react-select';
 import { useIntl } from 'react-intl';
 import { css, useTheme, type Theme } from '@emotion/react';
@@ -105,7 +105,7 @@ const createCurrencySelectStyles: TcreateCurrencySelectStyles = (
   );
   return {
     ...selectStyles,
-    control: (base: TBase, state: Props) => ({
+    control: (base: TBase, state: ReactSelectProps) => ({
       ...selectStyles.control(base, state),
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
@@ -432,16 +432,18 @@ type TMoneyInputProps = {
   onChange: (event: TEvent) => void;
   /**
    * Dom element to portal the currency select menu to
+   * [Props from React select was used](https://react-select.com/props)
    */
-  menuPortalTarget?: Props['menuPortalTarget'];
+  menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
    * z-index value for the currency select menu portal
    */
   menuPortalZIndex?: number;
   /**
    * whether the menu should block scroll while open
+   * [Props from React select was used](https://react-select.com/props)
    */
-  menuShouldBlockScroll: Props['menuShouldBlockScroll'];
+  menuShouldBlockScroll: ReactSelectProps['menuShouldBlockScroll'];
   /**
    * Indicates that input has errors
    */
@@ -474,6 +476,15 @@ type TMoneyInputProps = {
     | 16
     | 'scale'
     | 'auto';
+};
+
+const defaultProps: Pick<
+  TMoneyInputProps,
+  'currencies' | 'horizontalConstraint' | 'menuPortalZIndex'
+> = {
+  currencies: [],
+  horizontalConstraint: 'scale',
+  menuPortalZIndex: 1,
 };
 
 const MoneyInput = (props: TMoneyInputProps) => {
@@ -738,12 +749,12 @@ const MoneyInput = (props: TMoneyInputProps) => {
                   <components.Input {...ownProps} readOnly={props.isReadOnly} />
                 ),
                 DropdownIndicator,
-              } as Props['components']
+              } as ReactSelectProps['components']
             }
             options={options}
             menuIsOpen={props.isReadOnly ? false : undefined}
             placeholder=""
-            styles={currencySelectStyles as Props['styles']}
+            styles={currencySelectStyles as ReactSelectProps['styles']}
             onFocus={handleCurrencyFocus}
             menuPortalTarget={props.menuPortalTarget}
             menuShouldBlockScroll={props.menuShouldBlockScroll}
@@ -894,10 +905,6 @@ MoneyInput.isHighPrecision = (formValue: TValue, locale: string) => {
 MoneyInput.isTouched = (touched: TValue) =>
   Boolean(touched && touched.currencyCode && touched.amount);
 
-MoneyInput.defaultProps = {
-  currencies: [],
-  horizontalConstraint: 'scale',
-  menuPortalZIndex: 1,
-};
+MoneyInput.defaultProps = defaultProps;
 
 export default MoneyInput;
