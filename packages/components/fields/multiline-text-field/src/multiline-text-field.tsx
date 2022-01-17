@@ -151,6 +151,10 @@ export type TMultiTextFieldProps = {
   badge?: string;
 };
 
+type TState = {
+  id?: string;
+};
+
 const sequentialId = createSequentialId('multiline-text-field-');
 
 const hasErrors = (errors?: TFieldErrors) =>
@@ -173,7 +177,7 @@ class MultilineTextField extends Component<TMultiTextFieldProps> {
 
   static getDerivedStateFromProps = (
     props: TMultiTextFieldProps,
-    state: { id?: string }
+    state: TState
   ) => ({
     id: getFieldId(props, state, sequentialId),
   });
