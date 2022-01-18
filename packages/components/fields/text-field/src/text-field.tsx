@@ -147,14 +147,12 @@ type TTextFieldProps = {
   badge?: ReactNode;
 };
 
-type TTextFieldState = {
-  id: TTextFieldProps['id'];
-};
+type TTextFieldState = Pick<TTextFieldProps, 'id'>;
 
 class TextField extends Component<TTextFieldProps, TTextFieldState> {
   static displayName = 'TextField';
 
-  static defaultProps = {
+  static defaultProps: Pick<TTextFieldProps, 'horizontalConstraint'> = {
     horizontalConstraint: 'scale',
   };
 
