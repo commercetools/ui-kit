@@ -92,11 +92,13 @@ type TSelectInputProps = {
   // See https://react-select.com/props#select-props
   /**
    * Aria label (for assistive tech)
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   'aria-label'?: ReactSelectProps['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   'aria-labelledby'?: ReactSelectProps['aria-labelledby'];
@@ -106,6 +108,7 @@ type TSelectInputProps = {
   isAutofocussed?: boolean;
   /**
    * Remove the currently focused option when the user presses backspace
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   backspaceRemovesValue?: ReactSelectProps['backspaceRemovesValue'];
@@ -117,6 +120,7 @@ type TSelectInputProps = {
   // closeMenuOnScroll: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   /**
    * Map of components to overwrite the default ones, see what components you can override
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   components?: ReactSelectProps['components'];
@@ -127,6 +131,7 @@ type TSelectInputProps = {
    * Custom method to filter whether an option should be displayed in the menu
    * <br />
    * Signature: `(option, rawInput) => boolean`
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   filterOption?: ReactSelectProps['filterOption'];
@@ -141,6 +146,8 @@ type TSelectInputProps = {
    */
   id?: string;
   /**
+   * The value of the search input
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   inputValue: ReactSelectProps['inputValue'];
@@ -152,29 +159,34 @@ type TSelectInputProps = {
   // instanceId: PropTypes.string,
   /**
    * Is the select value clearable
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   isClearable?: ReactSelectProps['isClearable'];
   /**
    * Is the select disabled
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   isDisabled?: ReactSelectProps['isDisabled'];
   // isLoading: PropTypes.bool,
   /**
    * Override the built-in logic to detect whether an option is disabled
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   isOptionDisabled?: ReactSelectProps['isOptionDisabled'];
   // isOptionSelected: PropTypes.func,
   /**
    * Support multiple selected options
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   isMulti?: ReactSelectProps['isMulti'];
   // isRtl: PropTypes.bool,
   /**
    * Whether to enable search functionality
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   isSearchable?: ReactSelectProps['isSearchable'];
@@ -182,6 +194,7 @@ type TSelectInputProps = {
   // minMenuHeight: PropTypes.number,
   /**
    * Maximum height of the menu before scrolling
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   maxMenuHeight?: ReactSelectProps['maxMenuHeight'];
@@ -190,6 +203,7 @@ type TSelectInputProps = {
   // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
   /**
    * Dom element to portal the select menu to
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
@@ -199,12 +213,14 @@ type TSelectInputProps = {
   menuPortalZIndex?: number;
   /**
    * whether the menu should block scroll while open
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   menuShouldBlockScroll?: ReactSelectProps['menuShouldBlockScroll'];
   // menuShouldScrollIntoView: PropTypes.bool,
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   name?: ReactSelectProps['name'];
@@ -214,6 +230,7 @@ type TSelectInputProps = {
    * `inputValue` will be an empty string when no search text is present.
    * <br />
    * Signature: `({ inputValue}) => string`
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   noOptionsMessage?: ReactSelectProps['noOptionsMessage'];
@@ -235,6 +252,7 @@ type TSelectInputProps = {
    * Handle focus events on the control
    * <br />
    * Signature: `(event) => void`
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   onFocus?: ReactSelectProps['onFocus'];
@@ -242,6 +260,7 @@ type TSelectInputProps = {
    * Handle change events on the input
    * <br />
    * Signature: `(newValue, actionMeta) => void`
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   onInputChange?: ReactSelectProps['onInputChange'];
@@ -260,6 +279,7 @@ type TSelectInputProps = {
   // pageSize: PropTypes.number,
   /**
    * Placeholder text for the select value
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   placeholder?: ReactSelectProps['placeholder'];
@@ -268,6 +288,7 @@ type TSelectInputProps = {
   // theme: PropTypes.object,
   /**
    * Sets the tabIndex attribute on the input
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   tabIndex?: ReactSelectProps['tabIndex'];
