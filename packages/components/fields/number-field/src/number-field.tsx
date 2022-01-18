@@ -174,9 +174,7 @@ type TNumberFieldProps = {
   badge?: ReactNode;
 };
 
-type TNumberFieldState = {
-  id: TNumberFieldProps['id'];
-};
+type TNumberFieldState = Pick<TNumberFieldProps, 'id'>;
 
 class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
   static displayName = 'NumberField';
