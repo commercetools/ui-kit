@@ -5,7 +5,6 @@ import {
   type KeyboardEvent,
   FocusEventHandler,
 } from 'react';
-import PropTypes from 'prop-types';
 import Downshift from 'downshift';
 import { useIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
@@ -43,7 +42,6 @@ type TDownshiftEvent = {
 } & KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
 
 const preventDownshiftDefault = (event: TDownshiftEvent) => {
-  // eslint-disable-next-line no-param-reassign
   event.nativeEvent.preventDownshiftDefault = true;
 };
 
@@ -195,7 +193,6 @@ const DateInput = (props: TDateInput) => {
         highlightedIndex={highlightedIndex}
         onChange={handleChange}
         onStateChange={(changes) => {
-          /* eslint-disable no-prototype-builtins */
           if (changes.hasOwnProperty('inputValue')) {
             // input changed because user typed
             if (changes.type === Downshift.stateChangeTypes.changeInput) {
@@ -220,7 +217,6 @@ const DateInput = (props: TDateInput) => {
           if (changes.hasOwnProperty('highlightedIndex')) {
             setHighlightedIndex(changes.highlightedIndex);
           }
-          /* eslint-enable no-prototype-builtins */
         }}
       >
         {({
@@ -403,80 +399,5 @@ const DateInput = (props: TDateInput) => {
 DateInput.displayName = 'DateInput';
 
 DateInput.isEmpty = (value: string) => value === '';
-
-DateInput.propTypes = {
-  /**
-   * Horizontal size limit of the input field.
-   */
-  horizontalConstraint: PropTypes.oneOf([
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-  /**
-   * The selected date, must either be an empty string or a date formatted as "YYYY-MM-DD".
-   */
-  value: PropTypes.string.isRequired,
-  /**
-   * Called when the date changes. Called with an event containing either an empty string (no value) or a string in this format: "YYYY-MM-DD".
-   * <br />
-   * Signature: `(event) => void`
-   */
-  onChange: PropTypes.func.isRequired,
-  /**
-   * Called when the date input gains focus.
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Called when the date input loses focus.
-   */
-  onBlur: PropTypes.func,
-  /**
-   * Used as the HTML `id` attribute.
-   */
-  id: PropTypes.string,
-  /**
-   * Used as the HTML `name` attribute.
-   */
-  name: PropTypes.string,
-  /**
-   * Placeholder value to show in the input field
-   */
-  placeholder: PropTypes.string,
-  /**
-   * Disables the date picker
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Disables the date picker menu and makes input field read-only
-   */
-  isReadOnly: PropTypes.bool,
-  /**
-   * Indicates the input field has an error
-   */
-  hasError: PropTypes.bool,
-  /**
-   * Indicates the input field has a warning
-   */
-  hasWarning: PropTypes.bool,
-  /**
-   * A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
-   */
-  minValue: PropTypes.string,
-  /**
-   * A maximum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
-   */
-  maxValue: PropTypes.string,
-};
 
 export default DateInput;
