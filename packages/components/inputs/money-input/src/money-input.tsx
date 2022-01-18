@@ -432,6 +432,7 @@ type TMoneyInputProps = {
   onChange: (event: TEvent) => void;
   /**
    * Dom element to portal the currency select menu to
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
@@ -441,6 +442,7 @@ type TMoneyInputProps = {
   menuPortalZIndex?: number;
   /**
    * whether the menu should block scroll while open
+   * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   menuShouldBlockScroll: ReactSelectProps['menuShouldBlockScroll'];
