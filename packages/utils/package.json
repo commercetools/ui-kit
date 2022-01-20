@@ -20,7 +20,7 @@
   "files": ["dist"],
   "dependencies": {
     "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.7",
+    "@babel/runtime-corejs3": "7.16.8",
     "@emotion/is-prop-valid": "1.1.1",
     "@types/warning": "^3.0.0",
     "warning": "4.0.3"
