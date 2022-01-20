@@ -145,7 +145,7 @@ const SvgDrag = (props: SVGProps) => (
     {...props}
   >
     <path
-      d="M9 3h2v2H9V3zm4 0h2v2h-2V3zM9 7h2v2H9V7zm4 0h2v2h-2V7zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2z"
+      d="M9 3h2v2H9V3Zm4 0h2v2h-2V3ZM9 7h2v2H9V7Zm4 0h2v2h-2V7Zm-4 4h2v2H9v-2Zm4 0h2v2h-2v-2Zm-4 4h2v2H9v-2Zm4 0h2v2h-2v-2Zm-4 4h2v2H9v-2Zm4 0h2v2h-2v-2Z"
       fillRule="evenodd"
     />
   </svg>
