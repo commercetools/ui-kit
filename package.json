@@ -140,7 +140,7 @@
     "react-value": "0.2.0",
     "replace": "1.2.1",
     "rimraf": "3.0.2",
-    "shelljs": "0.8.4",
+    "shelljs": "0.8.5",
     "stylelint": "14.2.0",
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-standard": "24.0.0",
