@@ -1,6 +1,52 @@
 // copied from https://github.com/ianstormtaylor/slate/tree/master/packages/slate-react-placeholder/src
 // and modified to use editor's `options.placeholder` prop instead.
+//@ts-nocheck
 import { warning } from '@commercetools-uikit/utils';
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+import { ReactNode } from 'react';
+
+type TWhen = string | (() => void);
+
+type TOptions = {
+  when: TWhen;
+  style: object;
+};
+
+type TFirst = {
+  firstNode: unknown;
+  firstPath: unknown;
+};
+
+type TNode = {
+  texts: (s?: unknown) => {
+    first: TFirst;
+  };
+};
+
+type TEditor = {
+  query: (
+    when: TWhen,
+    node: TNode
+  ) => {
+    next: () => void;
+  };
+  props: {
+    options: {
+      placeholder: string;
+    };
+  };
+};
+
+type TRenderDecorationProps = {
+  style: unknown;
+  children: ReactNode;
+  decoration: {
+    type: string;
+    data: {
+      get: (s: string) => number;
+    };
+  };
+};
 
 /*
  * Instance counter to enable unique marks for multiple Placeholder instances.
@@ -15,7 +61,7 @@ let instanceCounter = 0;
  * @return {Object}
  */
 
-function SlateReactPlaceholder(options = {}) {
+function SlateReactPlaceholder(options = {} as TOptions) {
   // eslint-disable-next-line no-plusplus
   const instanceId = instanceCounter++;
   const { when, style = {} } = options;
@@ -34,18 +80,19 @@ function SlateReactPlaceholder(options = {}) {
    * @return {Array}
    */
 
-  function decorateNode(node, editor, next) {
+  function decorateNode(node: TNode, editor: TEditor, next: () => void) {
     if (!editor.query(when, node)) {
       return next();
     }
 
     const others = next();
+
     const [first] = node.texts();
     const [last] = node.texts({ direction: 'backward' });
     const [firstNode, firstPath] = first;
     const [lastNode, lastPath] = last;
 
-    const decoration = {
+    const decoration: unknown = {
       type: 'placeholder',
       data: { key: instanceId },
       anchor: { key: firstNode.key, offset: 0, path: firstPath },
@@ -68,7 +115,11 @@ function SlateReactPlaceholder(options = {}) {
    * @return {Element}
    */
 
-  function renderDecoration(props, editor, next) {
+  function renderDecoration(
+    props: TRenderDecorationProps,
+    editor: Pick<TEditor, 'props'>,
+    next: () => ReactJSXElement
+  ) {
     const { children, decoration: deco } = props;
 
     if (deco.type === 'placeholder' && deco.data.get('key') === instanceId) {

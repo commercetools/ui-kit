@@ -1,6 +1,38 @@
+//@ts-nocheck
 import { isKeyHotkey } from 'is-hotkey';
 import { warning } from '@commercetools-uikit/utils';
 import memoize from 'lodash/memoize';
+import { ReactNode } from 'react';
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+
+type TOptions = {
+  hotkey: string;
+  typeName: string;
+  RenderMark: ReactNode;
+  command: string;
+  query: string;
+};
+
+type TMark = {
+  type: string;
+};
+
+type TValue = {
+  activeMarks: {
+    some: (s: (mark: TMark) => boolean) => void;
+  };
+};
+
+type TEditor = {
+  toggleMark: (s: unknown) => void;
+  value: TValue;
+};
+
+type TProps = {
+  children: ReactNode;
+  mark: TMark;
+  attributes: unknown;
+};
 
 const memoizedIsHotkey = memoize(isKeyHotkey);
 
@@ -12,15 +44,15 @@ const requiredOptions = [
   'RenderMark',
 ];
 
-const validate = (options) => {
+const validate = (options: TOptions) => {
   // eslint-disable-next-line consistent-return
   const missingRequiredOptions = requiredOptions.filter(
-    (option) => !options[option]
+    (option: string) => !options[option]
   );
   return missingRequiredOptions;
 };
 
-const MarkPlugin = (options = {}) => {
+const MarkPlugin = (options = {} as TOptions) => {
   const missingRequiredOptions = validate(options);
 
   warning(
@@ -35,7 +67,11 @@ const MarkPlugin = (options = {}) => {
   return [
     {
       // eslint-disable-next-line consistent-return
-      onKeyDown(event, editor, next) {
+      onKeyDown(
+        event: { preventDefault: () => void },
+        editor: { toggleMark: (arg0: unknown) => void },
+        next: () => void
+      ) {
         if (!isHotKey(event)) {
           return next();
         }
@@ -43,12 +79,13 @@ const MarkPlugin = (options = {}) => {
         event.preventDefault();
         editor.toggleMark(options.typeName);
       },
-      renderMark(props, editor, next) {
+      renderMark(props: TProps, editor: TEditor, next: () => ReactJSXElement) {
         const { children, mark, attributes } = props;
 
         switch (mark.type) {
           case options.typeName:
             return (
+              //@ts-ignore
               <options.RenderMark {...attributes}>
                 {children}
               </options.RenderMark>
@@ -58,12 +95,13 @@ const MarkPlugin = (options = {}) => {
         }
       },
       commands: {
-        [options.command]: (editor) => editor.toggleMark(options.typeName),
+        [options.command]: (editor: TEditor) =>
+          editor.toggleMark(options.typeName),
       },
       queries: {
-        [options.query]: (editor) =>
+        [options.query]: (editor: TEditor) =>
           editor.value.activeMarks.some(
-            (mark) => mark.type === options.typeName
+            (mark: TMark) => mark.type === options.typeName
           ),
       },
     },

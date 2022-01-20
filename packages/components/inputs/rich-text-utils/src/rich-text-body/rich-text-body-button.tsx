@@ -2,15 +2,24 @@ import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { type ReactNode } from 'react';
+
+type Props = {
+  isDisabled?: boolean;
+  label?: string;
+  isActive?: boolean;
+  isReadOnly: boolean;
+  children: ReactNode;
+};
 
 const propsToOmit = ['isActive', 'label', 'isDisabled', 'isReadOnly'];
 
-function getFillColor(props) {
+function getFillColor(props: Props) {
   if (props.isActive) return vars.colorSurface;
   return vars.colorSolid;
 }
 
-const RichTextBodyButton = (props) => {
+const RichTextBodyButton = (props: Props) => {
   const restOfProps = omit(props, propsToOmit);
 
   return (

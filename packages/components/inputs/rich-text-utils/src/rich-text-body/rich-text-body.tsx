@@ -1,4 +1,5 @@
-import { forwardRef, useCallback } from 'react';
+//@ts-nocheck
+import { forwardRef, type ReactNode, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import requiredIf from 'react-required-if';
@@ -36,10 +37,15 @@ import { MARK_TAGS, BLOCK_TAGS } from '../tags';
 import hasBlock from '../has-block';
 import messages from './messages';
 
+type Props = {
+  value: string;
+  children: ReactNode;
+};
+
 const MoreStylesDropdownLabel = () => <MoreStylesIcon size="medium" />;
 MoreStylesDropdownLabel.displayName = 'MoreStylesDropdownLabel';
 
-const MoreStylesDropdownItem = (props) => {
+const MoreStylesDropdownItem = (props: Props) => {
   let Icon;
   switch (props.value) {
     case 'subscript':
@@ -68,7 +74,7 @@ MoreStylesDropdownItem.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const DropdownLabel = (props) => {
+const DropdownLabel = (props: Props) => {
   return (
     <Inline scale="xs" alignItems="center" justifyContent="center">
       <span>{props.children}</span>
@@ -87,10 +93,11 @@ const Item = styled.div`
   text-align: left;
 `;
 
-const StylesDropdownItem = (props) => {
+const StylesDropdownItem = (props: Props) => {
   const as =
-    Object.keys(BLOCK_TAGS).find((key) => BLOCK_TAGS[key] === props.value) ||
-    'div';
+    Object.keys(BLOCK_TAGS).find(
+      (key: Pick<>) => BLOCK_TAGS[key] === props.value
+    ) || 'div';
 
   return (
     <DropdownItem {...props}>
@@ -471,7 +478,10 @@ RichTextEditorBody.propTypes = {
   children: PropTypes.node,
   containerStyles: PropTypes.any,
   showExpandIcon: PropTypes.bool.isRequired,
-  onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
+  onClickExpand: requiredIf(
+    PropTypes.func,
+    (props: { showExpandIcon: unknown }) => props.showExpandIcon
+  ),
   styles: PropTypes.any,
 };
 

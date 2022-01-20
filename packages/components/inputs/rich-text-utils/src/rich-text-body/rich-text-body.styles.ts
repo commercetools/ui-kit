@@ -2,7 +2,14 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const getBorderColor = (props) => {
+type Props = {
+  hasError?: boolean;
+  hasWarning?: boolean;
+  isReadOnly?: boolean;
+  isDisabled?: boolean;
+};
+
+const getBorderColor = (props: Props) => {
   if (props.isDisabled) {
     return css`
       border-color: ${vars.borderColorForInputWhenDisabled};
@@ -28,17 +35,18 @@ const getBorderColor = (props) => {
   `;
 };
 
-const getBackgroundColor = (props) => {
+const getBackgroundColor = (props: Props) => {
   if (props.isDisabled) {
     return css`
       background-color: ${vars.backgroundColorForInputWhenDisabled};
     `;
   }
-  if (props.isReadOnly) {
-    return css`
-      background-color: ${vars.backgroundColorForInputWhenReadonly};
-    `;
-  }
+  //Question: imported vars has no property with `backgroundColorForInputWhenReadonly` as key. Should this be defined?
+  // if (props.isReadOnly) {
+  //   return css`
+  //     background-color: ${vars.backgroundColorForInputWhenReadonly};
+  //   `;
+  // }
   return css`
     background-color: ${vars.backgroundColorForInput};
   `;
@@ -86,7 +94,7 @@ export const Toolbar = styled.div`
   }
 `;
 
-const reset = (props) => [
+const reset = (props: Props) => [
   css`
     h1,
     h2,

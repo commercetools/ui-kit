@@ -1,3 +1,4 @@
+//@ts-nocheck
 import Downshift from 'downshift';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -9,15 +10,35 @@ import {
   DropdownContainer,
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
+import { ReactNode } from 'react';
 
-const getIsSelected = (props, item) =>
+type Props = {
+  value: unknown[];
+  isMulti: boolean;
+  isDisabled: boolean;
+  isReadOnly: boolean;
+  onChange: () => void;
+  label: string;
+  components: {
+    Item: ReactNode;
+    Label: ReactNode;
+  };
+  options: unknown[];
+};
+
+type TItem = {
+  value: unknown;
+  label: string;
+};
+
+const getIsSelected = (props: Props, item: TItem) =>
   !props.isMulti
     ? item.value === props.value
     : props.value.find((selectedItem) => selectedItem === item.value);
 
 const Label = styled.div;
 
-const Dropdown = (props) => {
+const Dropdown = (props: Props) => {
   const DropdownItem = props.components.Item;
   const DropdownLabel = props.components.Label;
   const isIndeterminate =
@@ -38,7 +59,7 @@ const Dropdown = (props) => {
               title={props.label}
               placement="bottom"
               off={isOpen}
-              style={{ body: { zIndex: 9999 } }}
+              styles={{ body: { zIndex: 9999 } }}
             >
               <Button
                 {...toggleButtonProps}
@@ -61,7 +82,7 @@ const Dropdown = (props) => {
                 `}
               >
                 <DropdownContainer>
-                  {props.options.map((item, index) => {
+                  {props.options.map((item: TItem, index: number) => {
                     const itemProps = getItemProps({
                       index,
                       item,

@@ -1,18 +1,67 @@
+//@ts-nocheck
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+import { ReactNode } from 'react';
 import { BLOCK_TAGS } from '../tags';
+
+type TEditor = {
+  focus: () => void;
+  value: {
+    blocks: {
+      size: number;
+      some: (block: unknown) => boolean | void;
+      first: () => {
+        key: string;
+      };
+    };
+    document: {
+      getClosest: (
+        block: { key: unknown },
+        s: (parent: { type: TType }) => boolean
+      ) => void;
+      getParent: (x: string) => void;
+    };
+    selection: {
+      isFocused: boolean;
+    };
+  };
+  setBlocks: (x: string) => {
+    unwrapBlock: (y: string) => {
+      unwrapBlock: (z: string) => void;
+    };
+    wrapBlock: (y: string) => void;
+  };
+  unwrapBlock: (x: string) => {
+    wrapBlock: (y: string) => void;
+  };
+};
+
+type TType = {
+  type: string;
+};
+
+type TListPlugin = {
+  attributes: unknown;
+  children: ReactNode;
+  node: TType;
+};
 
 const DEFAULT_NODE = BLOCK_TAGS.p;
 
-const hasBlock = (type, editor) =>
-  editor.value.blocks.some((node) => node.type === type);
+const hasBlock = (type: string, editor: TEditor) =>
+  editor.value.blocks.some((node: { type: string }) => {
+    return node.type === type;
+  });
 
-const toggle = (editor, typeName) => {
+const toggle = (editor: TEditor, typeName: string) => {
   // Handle the extra wrapping required for list buttons.
   const isList = hasBlock(BLOCK_TAGS.li, editor);
-  const isType = editor.value.blocks.some((block) => {
+  const isType = editor.value.blocks.some((block: { key: unknown }) => {
     return Boolean(
       editor.value.document.getClosest(
         block.key,
-        (parent) => parent.type === typeName
+        (parent: { type: unknown }) => {
+          return parent.type === typeName;
+        }
       )
     );
   });
@@ -31,7 +80,7 @@ const toggle = (editor, typeName) => {
   }
 };
 
-const query = (editor, typeName) => {
+const query = (editor: TEditor, typeName: string) => {
   let isActive = hasBlock(typeName, editor);
 
   if (editor.value.blocks.size > 0) {
@@ -47,7 +96,11 @@ const query = (editor, typeName) => {
 const ListPlugin = () => {
   return [
     {
-      renderBlock(props, editor, next) {
+      renderBlock(
+        props: TListPlugin,
+        editor: TEditor,
+        next: () => ReactJSXElement
+      ) {
         const { attributes, children, node } = props;
 
         switch (node.type) {
@@ -62,13 +115,13 @@ const ListPlugin = () => {
         }
       },
       commands: {
-        toggleBulletedListBlock: (editor) => {
+        toggleBulletedListBlock: (editor: TEditor) => {
           if (!editor.value.selection.isFocused) {
             editor.focus();
           }
           toggle(editor, BLOCK_TAGS.ul);
         },
-        toggleNumberedListBlock: (editor) => {
+        toggleNumberedListBlock: (editor: TEditor) => {
           if (!editor.value.selection.isFocused) {
             editor.focus();
           }
@@ -76,8 +129,8 @@ const ListPlugin = () => {
         },
       },
       queries: {
-        hasBulletedListBlock: (editor) => query(editor, BLOCK_TAGS.ul),
-        hasNumberedListBlock: (editor) => query(editor, BLOCK_TAGS.ol),
+        hasBulletedListBlock: (editor: TEditor) => query(editor, BLOCK_TAGS.ul),
+        hasNumberedListBlock: (editor: TEditor) => query(editor, BLOCK_TAGS.ol),
       },
     },
   ];
