@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import { ReactNode } from 'react';
 import { BLOCK_TAGS } from '../tags';
@@ -18,7 +17,9 @@ type TEditor = {
         block: { key: unknown },
         s: (parent: { type: TType }) => boolean
       ) => void;
-      getParent: (x: string) => void;
+      getParent: (x: string) => {
+        type: string;
+      };
     };
     selection: {
       isFocused: boolean;
@@ -55,16 +56,18 @@ const hasBlock = (type: string, editor: TEditor) =>
 const toggle = (editor: TEditor, typeName: string) => {
   // Handle the extra wrapping required for list buttons.
   const isList = hasBlock(BLOCK_TAGS.li, editor);
-  const isType = editor.value.blocks.some((block: { key: unknown }) => {
-    return Boolean(
-      editor.value.document.getClosest(
-        block.key,
-        (parent: { type: unknown }) => {
-          return parent.type === typeName;
-        }
-      )
-    );
-  });
+  const isType = editor.value.blocks.some(
+    (block: { key: { key: unknown } }) => {
+      return Boolean(
+        editor.value.document.getClosest(
+          block.key,
+          (parent: { type: unknown }) => {
+            return parent.type === typeName;
+          }
+        )
+      );
+    }
+  );
 
   if (isList && isType) {
     editor
@@ -98,6 +101,7 @@ const ListPlugin = () => {
     {
       renderBlock(
         props: TListPlugin,
+        //@ts-ignore
         editor: TEditor,
         next: () => ReactJSXElement
       ) {
