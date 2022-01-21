@@ -45,24 +45,53 @@ export default Example;
 
 ## Properties
 
-| Props                  | Type                                                                                      | Required | Default | Description                                                                                                                                                                                                   |
-| ---------------------- | ----------------------------------------------------------------------------------------- | :------: | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `intl`                 | `object`                                                                                  |    ✅    |         |                                                                                                                                                                                                               |
-| `intl.locale`          | `string`                                                                                  |    ✅    |         |                                                                                                                                                                                                               |
-| `intl.formatMessage`   | `func`                                                                                    |    ✅    |         |                                                                                                                                                                                                               |
-| `horizontalConstraint` | `enum`<br/>Possible values:<br/>`6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          |         | Horizontal size limit of the input field.                                                                                                                                                                     |
-| `value`                | Array of `string`                                                                         |    ✅    |         | The selected date range, must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".                                                                                    |
-| `onChange`             | `func`                                                                                    |    ✅    |         | Called when the date range changes. Called with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".&#xA;<br />&#xA;Signature: `(event) => void` |
-| `isClearable`          | `bool`                                                                                    |          | `true`  | Allows the range to be cleared                                                                                                                                                                                |
-| `onFocus`              | `func`                                                                                    |          |         | Called when the date input gains focus.                                                                                                                                                                       |
-| `onBlur`               | `func`                                                                                    |          |         | Called when the date input loses focus.                                                                                                                                                                       |
-| `id`                   | `string`                                                                                  |          |         | Used as the HTML `id` attribute.                                                                                                                                                                              |
-| `name`                 | `string`                                                                                  |          |         | Used as the HTML `name` attribute.                                                                                                                                                                            |
-| `placeholder`          | `string`                                                                                  |          |         | Placeholder value to show in the input field                                                                                                                                                                  |
-| `isDisabled`           | `bool`                                                                                    |          |         | Disables the date picker                                                                                                                                                                                      |
-| `isReadOnly`           | `bool`                                                                                    |          |         | Disables the date picker menu and makes input field read-only                                                                                                                                                 |
-| `hasError`             | `bool`                                                                                    |          |         | Indicates the input field has an error                                                                                                                                                                        |
-| `hasWarning`           | `bool`                                                                                    |          |         | Indicates the input field has warning                                                                                                                                                                         |
+| Props                  | Type                                                                                         | Required | Default | Description                                                                                                                                                                                                   |
+| ---------------------- | -------------------------------------------------------------------------------------------- | :------: | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `intl`                 | `Object`<br/>[See signature.](#signature-intl)                                               |    ✅    |         |                                                                                                                                                                                                               |
+| `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          |         | Horizontal size limit of the input field.                                                                                                                                                                     |
+| `value`                | `Array: MomentInput[]`<br/>[See signature.](#signature-value)                                |    ✅    |         | The selected date range, must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".                                                                                    |
+| `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                         |    ✅    |         | Called when the date range changes. Called with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".&#xA;<br />&#xA;Signature: `(event) => void` |
+| `isClearable`          | `boolean`                                                                                    |          | `true`  | Allows the range to be cleared                                                                                                                                                                                |
+| `onFocus`              | `Function`<br/>[See signature.](#signature-onFocus)                                          |          |         | Called when the date input gains focus.                                                                                                                                                                       |
+| `onBlur`               | `Function`<br/>[See signature.](#signature-onBlur)                                           |          |         | Called when the date input loses focus.                                                                                                                                                                       |
+| `id`                   | `string`                                                                                     |          |         | Used as the HTML `id` attribute.                                                                                                                                                                              |
+| `name`                 | `string`                                                                                     |          |         | Used as the HTML `name` attribute.                                                                                                                                                                            |
+| `placeholder`          | `string`                                                                                     |          |         | Placeholder value to show in the input field                                                                                                                                                                  |
+| `isDisabled`           | `boolean`                                                                                    |          |         | Disables the date picker                                                                                                                                                                                      |
+| `isReadOnly`           | `boolean`                                                                                    |          |         | Disables the date picker menu and makes input field read-only                                                                                                                                                 |
+| `hasError`             | `boolean`                                                                                    |          |         | Indicates the input field has an error                                                                                                                                                                        |
+| `hasWarning`           | `boolean`                                                                                    |          |         | Indicates the input field has warning                                                                                                                                                                         |
+
+## Signatures
+
+### Signature `intl`
+
+```ts
+{
+  locale: string;
+  formatMessage: (message: MessageDescriptor) => void;
+}
+```
+
+### Signature `value`
+
+### Signature `onChange`
+
+```ts
+(event: TEvent) => void
+```
+
+### Signature `onFocus`
+
+```ts
+(event: TEvent) => void
+```
+
+### Signature `onBlur`
+
+```ts
+(event: TEvent) => void
+```
 
 ## `data-*` props
 
