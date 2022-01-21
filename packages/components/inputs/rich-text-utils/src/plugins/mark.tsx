@@ -1,4 +1,4 @@
-//@ts-nocheck
+//@ts-ignore
 import { isKeyHotkey } from 'is-hotkey';
 import { warning } from '@commercetools-uikit/utils';
 import memoize from 'lodash/memoize';
@@ -11,6 +11,7 @@ type TOptions = {
   RenderMark: ReactNode;
   command: string;
   query: string;
+  [option: string]: string | ReactNode;
 };
 
 type TMark = {
@@ -47,7 +48,7 @@ const requiredOptions = [
 const validate = (options: TOptions) => {
   // eslint-disable-next-line consistent-return
   const missingRequiredOptions = requiredOptions.filter(
-    (option: string) => !options[option]
+    (option) => !options[option]
   );
   return missingRequiredOptions;
 };
@@ -79,6 +80,7 @@ const MarkPlugin = (options = {} as TOptions) => {
         event.preventDefault();
         editor.toggleMark(options.typeName);
       },
+      //@ts-ignore
       renderMark(props: TProps, editor: TEditor, next: () => ReactJSXElement) {
         const { children, mark, attributes } = props;
 

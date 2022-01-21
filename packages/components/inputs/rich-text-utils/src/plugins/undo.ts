@@ -1,5 +1,5 @@
-//@ts-nocheck
 import { KeyboardEvent } from 'react';
+//@ts-ignore
 import { isKeyHotkey } from 'is-hotkey';
 import memoize from 'lodash/memoize';
 import { type TEditor, type TOptions } from './redo';

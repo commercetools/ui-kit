@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { ReactNode } from 'react';
 import { BLOCK_TAGS, MARK_TAGS } from '../tags';
 
@@ -16,6 +15,7 @@ type TProps = {
 // eslint-disable-next-line import/prefer-default-export
 export const RenderBlockPlugin = () => {
   return {
+    //@ts-ignore
     renderBlock(props: TProps, editor: unknown, next: () => ReactNode) {
       const { attributes, children, node } = props;
       switch (node.type) {
@@ -54,6 +54,7 @@ export const RenderBlockPlugin = () => {
 
 export const RenderMarkPlugin = () => {
   return {
+    //@ts-ignore
     renderMark(props: TProps, editor: unknown, next: () => ReactNode) {
       const { children, mark, attributes } = props;
 
