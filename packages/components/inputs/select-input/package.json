@@ -20,7 +20,7 @@
   "files": ["dist"],
   "dependencies": {
     "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.7",
+    "@babel/runtime-corejs3": "7.16.8",
     "@commercetools-uikit/constraints": "12.2.9",
     "@commercetools-uikit/design-system": "12.2.9",
     "@commercetools-uikit/icons": "12.2.9",
@@ -31,11 +31,11 @@
     "@emotion/styled": "^11.3.0",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-select": "5.2.1"
+    "react-select": "5.2.2"
   },
   "devDependencies": {
     "react": "17.0.2",
-    "react-intl": "5.24.1"
+    "react-intl": "5.24.3"
   },
   "peerDependencies": {
     "react": "17.x",
