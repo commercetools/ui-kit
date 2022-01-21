@@ -1,4 +1,3 @@
-//@ts-ignore
 import { isKeyHotkey } from 'is-hotkey';
 import { warning } from '@commercetools-uikit/utils';
 import memoize from 'lodash/memoize';
@@ -35,6 +34,8 @@ type TProps = {
   attributes: unknown;
 };
 
+type TEvent = { preventDefault: () => void };
+
 const memoizedIsHotkey = memoize(isKeyHotkey);
 
 const requiredOptions = [
@@ -69,11 +70,11 @@ const MarkPlugin = (options = {} as TOptions) => {
     {
       // eslint-disable-next-line consistent-return
       onKeyDown(
-        event: { preventDefault: () => void },
+        event: TEvent,
         editor: { toggleMark: (arg0: unknown) => void },
         next: () => void
-      ) {
-        if (!isHotKey(event)) {
+      ): void {
+        if (!isHotKey(event as KeyboardEvent)) {
           return next();
         }
 

@@ -1,5 +1,4 @@
 import { KeyboardEvent } from 'react';
-//@ts-ignore
 import { isKeyHotkey } from 'is-hotkey';
 import memoize from 'lodash/memoize';
 

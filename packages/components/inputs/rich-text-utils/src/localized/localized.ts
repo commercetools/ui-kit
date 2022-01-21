@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { warning } from '@commercetools-uikit/utils';
 import uniq from 'lodash/uniq';
 import html from '../html';
@@ -17,17 +16,20 @@ export const isEmpty = (
   return Object.values(localizedHtmlValue).every(isLocalizedHtmlValueEmpty);
 };
 
+type TOmitEmptyTranslations = {
+  language: unknown;
+};
+
 export const omitEmptyTranslations = (
-  localizedString: ArrayLike<unknown> | { [s: string]: unknown }
+  localizedString: TOmitEmptyTranslations
 ) => {
   warning(
     typeof localizedString === 'object',
     'omitEmptyTranslations must be called with an object'
   );
-  return Object.entries(localizedString).reduce(
+  return Object.entries(localizedString).reduce<Record<string, unknown>>( //TODO: type reduce
     (localizedStringWithoutEmptyTranslations, [language, value]) => {
       if (!isLocalizedHtmlValueEmpty(value)) {
-        // eslint-disable-next-line no-param-reassign
         localizedStringWithoutEmptyTranslations[language] = value;
       }
       return localizedStringWithoutEmptyTranslations;
@@ -36,21 +38,23 @@ export const omitEmptyTranslations = (
   );
 };
 
+type TCreateLocalizedString = {
+  [key: string]: string;
+};
+
 export const createLocalizedString = (
   languages: string[],
-  existingTranslations = {}
+  existingTranslations = {} as TCreateLocalizedString
 ) => {
   const mergedLanguages = existingTranslations
     ? uniq([...languages, ...Object.keys(existingTranslations)])
     : languages;
 
-  return mergedLanguages.reduce(
-    (localizedString: { language: string[] }, language: string) => {
-      // eslint-disable-next-line no-param-reassign
-      localizedString[language] =
-        existingTranslations && existingTranslations[language]
-          ? initializeValue(existingTranslations[language])
-          : initializeValue('');
+  return mergedLanguages.reduce<Record<string, unknown>>(
+    (localizedString, language: string) => {
+      localizedString[language] = existingTranslations[language]
+        ? initializeValue(existingTranslations[language])
+        : initializeValue('');
 
       return localizedString;
     },
