@@ -190,11 +190,10 @@ class MultilineTextField extends Component<TMultiTextFieldProps> {
         'MultilineInput: "onChange" is required when is not read only.'
       );
     }
-    if (this.props.hintIcon) {
+    if (this.props.hint) {
       warning(
-        typeof this.props.hintIcon === 'string' ||
-          isValidElement(this.props.hintIcon),
-        'MultilineInput: "hint" is required when `hintIcon` is string or reactnode.'
+        typeof this.props.hint === 'string' || isValidElement(this.props.hint),
+        'MultilineInput: "hint" should be string or ReactNode if `hintIcon` is present'
       );
     }
 
