@@ -7,7 +7,7 @@
     "build": "NODE_ENV=production build-storybook -o public -s assets"
   },
   "dependencies": {
-    "@babel/core": "7.16.10",
+    "@babel/core": "7.16.12",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@manypkg/get-packages": "1.1.3",
@@ -38,7 +38,7 @@
   "devDependencies": {
     "@commercetools-frontend/babel-preset-mc-app": "20.12.3",
     "prismjs": "1.26.0",
-    "webpack": "5.66.0"
+    "webpack": "5.67.0"
   },
   "peerDependencies": {
     "prismjs": "1.26.0"
