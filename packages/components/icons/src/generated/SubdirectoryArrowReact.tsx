@@ -148,12 +148,12 @@ const SvgSubdirectoryArrow = (props: SVGProps) => (
     <defs>
       <path
         d="M16.404 17v-1.625c0-.102.04-.19.118-.264a.394.394 0 0 1 .28-.111c.107 0 .2.037.279.111l2.78 2.625a.351.351 0 0 1 0 .527l-2.78 2.626a.393.393 0 0 1-.28.111.393.393 0 0 1-.279-.111.35.35 0 0 1-.118-.264V19H10a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v13h5.404Z"
-        id="a"
+        id="subdirectory-arrow_react_svg__a"
       />
     </defs>
     <use
       fill="#1A1A1A"
-      xlinkHref="#a"
+      xlinkHref="#subdirectory-arrow_react_svg__a"
       transform="translate(-9 -3)"
       fillRule="evenodd"
     />
