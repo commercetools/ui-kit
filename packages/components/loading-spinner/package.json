@@ -20,7 +20,7 @@
   "files": ["dist"],
   "dependencies": {
     "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.7",
+    "@babel/runtime-corejs3": "7.16.8",
     "@commercetools-uikit/design-system": "12.2.9",
     "@commercetools-uikit/spacings-inline": "12.2.9",
     "@commercetools-uikit/text": "12.2.9",

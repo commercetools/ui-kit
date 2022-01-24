@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.7",
+    "@babel/runtime-corejs3": "7.16.8",
     "@commercetools-uikit/design-system": "12.2.9",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
