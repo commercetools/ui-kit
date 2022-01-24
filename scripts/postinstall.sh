@@ -25,6 +25,7 @@ if [ -n "$SKIP_INSTALL_STORYBOOK" ]; then
 
 else
   echo "Installing dependencies for Storybook."
-  yarn --cwd docs
+  pushd docs/
+  yarn
 
 fi
