@@ -3,6 +3,14 @@ import uniq from 'lodash/uniq';
 import html from '../html';
 import isRichTextEmpty from '../is-empty';
 
+type TOmitEmptyTranslations = {
+  language: unknown;
+};
+
+type TCreateLocalizedString = {
+  [key: string]: string;
+};
+
 const initializeValue = (value: string) =>
   html.serialize(html.deserialize(value));
 
@@ -16,10 +24,6 @@ export const isEmpty = (
   return Object.values(localizedHtmlValue).every(isLocalizedHtmlValueEmpty);
 };
 
-type TOmitEmptyTranslations = {
-  language: unknown;
-};
-
 export const omitEmptyTranslations = (
   localizedString: TOmitEmptyTranslations
 ) => {
@@ -27,7 +31,7 @@ export const omitEmptyTranslations = (
     typeof localizedString === 'object',
     'omitEmptyTranslations must be called with an object'
   );
-  return Object.entries(localizedString).reduce<Record<string, unknown>>( //TODO: type reduce
+  return Object.entries(localizedString).reduce<Record<string, unknown>>(
     (localizedStringWithoutEmptyTranslations, [language, value]) => {
       if (!isLocalizedHtmlValueEmpty(value)) {
         localizedStringWithoutEmptyTranslations[language] = value;
@@ -36,10 +40,6 @@ export const omitEmptyTranslations = (
     },
     {}
   );
-};
-
-type TCreateLocalizedString = {
-  [key: string]: string;
 };
 
 export const createLocalizedString = (
