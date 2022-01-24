@@ -145,7 +145,7 @@ const SvgItalic = (props: SVGProps) => (
     {...props}
   >
     <path
-      d="M9 20.99L12.827 3h2.067l-3.827 17.99z"
+      d="M9 20.99 12.827 3h2.067l-3.827 17.99z"
       fill="#1A1A1A"
       fillRule="evenodd"
     />
