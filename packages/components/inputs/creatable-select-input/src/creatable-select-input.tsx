@@ -4,16 +4,10 @@ import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
 import {
   components as defaultComponents,
-  type Props as ReactSelectProps,
-  type PropsValue,
   type GroupBase,
-  type GetOptionLabel,
-  type GetOptionValue,
-  type Options,
-  type OptionsOrGroups,
-  ActionMeta,
+  type ActionMeta,
 } from 'react-select';
-import CreatableSelect from 'react-select/creatable';
+import CreatableSelect, { type CreatableProps } from 'react-select/creatable';
 import Constraints from '@commercetools-uikit/constraints';
 import {
   addStaticFields,
@@ -40,11 +34,6 @@ type TValue = {
 
 type TOptions = TValue[] | { options: TValue[] }[];
 
-type Accessors<Option> = {
-  getOptionValue: GetOptionValue<Option>;
-  getOptionLabel: GetOptionLabel<Option>;
-};
-
 type TEvent = {
   target: {
     name?: string;
@@ -53,7 +42,13 @@ type TEvent = {
   persist?: () => void;
 };
 
-type TCreatableSelectInput = {
+type ReactSelectCreatableProps = CreatableProps<
+  unknown,
+  boolean,
+  GroupBase<unknown>
+>;
+
+type TCreatableSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
@@ -102,15 +97,15 @@ type TCreatableSelectInput = {
   /**
    * Aria label (for assistive tech)
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  'aria-label': ReactSelectProps['aria-label'];
+  'aria-label': ReactSelectCreatableProps['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  'aria-labelledby': ReactSelectProps['aria-labelledby'];
+  'aria-labelledby': ReactSelectCreatableProps['aria-labelledby'];
   /**
    * Focus the control when it is mounted
    */
@@ -118,83 +113,83 @@ type TCreatableSelectInput = {
   /**
    * Remove the currently focused option when the user presses backspace
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  backspaceRemovesValue?: ReactSelectProps['backspaceRemovesValue'];
+  backspaceRemovesValue?: ReactSelectCreatableProps['backspaceRemovesValue'];
   /**
    * Map of components to overwrite the default ones, see [what components you can override](https://react-select.com/components)
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  components?: ReactSelectProps['components'];
+  components?: ReactSelectCreatableProps['components'];
   /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  filterOption?: ReactSelectProps['filterOption'];
+  filterOption?: ReactSelectCreatableProps['filterOption'];
   // This forwarded as react-select's "inputId"
   /**
    * The id of the search input
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  id?: ReactSelectProps['inputId'];
+  id?: ReactSelectCreatableProps['inputId'];
   // This is forwarded as react-select's "id"
   /**
    * The value of the search input
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  inputValue?: ReactSelectProps['inputValue'];
+  inputValue?: ReactSelectCreatableProps['inputValue'];
   /**
    * The id to set on the SelectContainer component
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  containerId?: ReactSelectProps['id'];
+  containerId?: ReactSelectCreatableProps['id'];
   /**
    * Is the select value clearable
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isClearable?: ReactSelectProps['isClearable'];
+  isClearable?: ReactSelectCreatableProps['isClearable'];
   /**
    * Is the select disabled
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isDisabled?: ReactSelectProps['isDisabled'];
+  isDisabled?: ReactSelectCreatableProps['isDisabled'];
   /**
    * Override the built-in logic to detect whether an option is disabled
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isOptionDisabled?: ReactSelectProps['isOptionDisabled'];
+  isOptionDisabled?: ReactSelectCreatableProps['isOptionDisabled'];
   /**
    * Support multiple selected options
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isMulti?: ReactSelectProps['isMulti'];
+  isMulti?: ReactSelectCreatableProps['isMulti'];
   /**
    * Whether to enable search functionality
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isSearchable?: ReactSelectProps['isSearchable'];
+  isSearchable?: ReactSelectCreatableProps['isSearchable'];
   /**
    * Maximum height of the menu before scrolling
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  maxMenuHeight?: ReactSelectProps['maxMenuHeight'];
+  maxMenuHeight?: ReactSelectCreatableProps['maxMenuHeight'];
   /**
    * Dom element to portal the select menu to
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
+  menuPortalTarget?: ReactSelectCreatableProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
    */
@@ -202,21 +197,21 @@ type TCreatableSelectInput = {
   /**
    * whether the menu should block scroll while open
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  menuShouldBlockScroll?: ReactSelectProps['menuShouldBlockScroll'];
+  menuShouldBlockScroll?: ReactSelectCreatableProps['menuShouldBlockScroll'];
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  name?: ReactSelectProps['name'];
+  name?: ReactSelectCreatableProps['name'];
   /**
    * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with `{ inputValue: String }`. `inputValue` will be an empty string when no search text is present.
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  noOptionsMessage?: ReactSelectProps['noOptionsMessage'];
+  noOptionsMessage?: ReactSelectCreatableProps['noOptionsMessage'];
   /**
    * Handle blur events on the control
    */
@@ -230,15 +225,15 @@ type TCreatableSelectInput = {
   /**
    * Handle focus events on the control
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  onFocus?: ReactSelectProps['onFocus'];
+  onFocus?: ReactSelectCreatableProps['onFocus'];
   /**
    * Handle change events on the input
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  onInputChange?: ReactSelectProps['onInputChange'];
+  onInputChange?: ReactSelectCreatableProps['onInputChange'];
   /**
    * Array of options that populate the select menu
    */
@@ -250,62 +245,69 @@ type TCreatableSelectInput = {
   /**
    * Placeholder text for the select value
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  placeholder?: ReactSelectProps['placeholder'];
+  placeholder?: ReactSelectCreatableProps['placeholder'];
   /**
    * Sets the tabIndex attribute on the input
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  tabIndex?: ReactSelectProps['tabIndex'];
+  tabIndex?: ReactSelectCreatableProps['tabIndex'];
   /**
    * Select the currently focused option when the user presses tab
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  tabSelectsValue?: ReactSelectProps['tabSelectsValue'];
+  tabSelectsValue?: ReactSelectCreatableProps['tabSelectsValue'];
   /**
    * The value of the select; reflected by the selected option
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  value: PropsValue<TValue>;
+  value: ReactSelectCreatableProps['value'];
 
   // Creatable props
   /**
    * Allow options to be created while the isLoading prop is true. Useful to prevent the "create new ..." option being displayed while async results are still being loaded.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  allowCreateWhileLoading?: boolean;
+  allowCreateWhileLoading?: ReactSelectCreatableProps['allowCreateWhileLoading'];
   /**
    * Gets the label for the "create new ..." option in the menu. Is given the current input value.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  formatCreateLabel?: (inputValue: string) => ReactNode;
+  formatCreateLabel?: ReactSelectCreatableProps['formatCreateLabel'];
   /**
    * Determines whether the "create new ..." option should be displayed based on the current input value, select value and options array.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isValidNewOption?: (
-    inputValue: string,
-    value: Options<unknown>,
-    options: OptionsOrGroups<unknown, GroupBase<unknown>>,
-    accessors: Accessors<unknown>
-  ) => boolean;
+  isValidNewOption?: ReactSelectCreatableProps['isValidNewOption'];
   /**
    * Returns the data for the new option when it is created. Used to display the value, and is passed to onChange.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  getNewOptionData?: (inputValue: string, optionLabel: ReactNode) => TValue;
+  getNewOptionData?: ReactSelectCreatableProps['getNewOptionData'];
   /**
    * If provided, this will be called with the input value when a new option is created, and onChange will not be called. Use this when you need more control over what happens when new options are created.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  onCreateOption?: (inputValue: string) => void;
+  onCreateOption?: ReactSelectCreatableProps['onCreateOption'];
   /**
    * Sets the position of the createOption element in your options list.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  createOptionPosition?: 'first' | 'last';
+  createOptionPosition?: ReactSelectCreatableProps['createOptionPosition'];
 };
 
 const defaultProps: Pick<
-  TCreatableSelectInput,
+  TCreatableSelectInputProps,
   'value' | 'isSearchable' | 'menuPortalZIndex'
 > = {
   // Using "null" will ensure that the currently selected value disappears in
@@ -321,7 +323,7 @@ const defaultProps: Pick<
   menuPortalZIndex: 1,
 };
 
-const CreatableSelectInput = (props: TCreatableSelectInput) => {
+const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
   const intl = useIntl();
   const theme = useTheme();
 
@@ -354,7 +356,7 @@ const CreatableSelectInput = (props: TCreatableSelectInput) => {
                   }
                 : {}),
               ...props.components,
-            } as ReactSelectProps['components']
+            } as ReactSelectCreatableProps['components']
           }
           menuIsOpen={props.isReadOnly ? false : undefined}
           styles={
@@ -371,7 +373,7 @@ const CreatableSelectInput = (props: TCreatableSelectInput) => {
                 hasValue: !isEmpty(props.value),
               },
               theme
-            ) as ReactSelectProps['styles']
+            ) as ReactSelectCreatableProps['styles']
           }
           filterOption={props.filterOption}
           // react-select uses "id" (for the container) and "inputId" (for the input),
