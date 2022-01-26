@@ -142,9 +142,11 @@ type TSelectInputProps = {
   // hideSelectedOptions: PropTypes.bool,
   /**
    * Used as HTML id property. An id is generated automatically when not provided.
-   *This forwarded as react-select's "inputId"
+   * This forwarded as react-select's "inputId"
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
-  id?: string;
+  id?: ReactSelectProps['inputId'];
   /**
    * The value of the search input
    * <br>
@@ -154,8 +156,10 @@ type TSelectInputProps = {
   /**
    * The id to set on the SelectContainer component
    * This is forwarded as react-select's "id"
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
-  containerId?: string;
+  containerId?: ReactSelectProps['id'];
   // instanceId: PropTypes.string,
   /**
    * Is the select value clearable
@@ -294,12 +298,16 @@ type TSelectInputProps = {
   tabIndex?: ReactSelectProps['tabIndex'];
   /**
    * Select the currently focused option when the user presses tab
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
-  tabSelectsValue?: boolean;
+  tabSelectsValue?: ReactSelectProps['tabSelectsValue'];
   /**
    * The value of the select; reflected by the selected option
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
-  value: string[] | string;
+  value: ReactSelectProps['value'];
 };
 
 const defaultProps: Pick<
