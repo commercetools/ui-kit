@@ -145,7 +145,7 @@ const SvgCircle = (props: SVGProps) => (
     {...props}
   >
     <path
-      d="M12.5 17.5a5 5 0 100-10 5 5 0 000 10zm0 2.5a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"
+      d="M12.5 17.5a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2.5a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"
       fillRule="nonzero"
     />
   </svg>
