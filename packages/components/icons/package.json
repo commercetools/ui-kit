@@ -22,7 +22,7 @@
   },
   "files": ["dist", "inline-svg"],
   "scripts": {
-    "generate-icons": "svgr -d src/generated --typescript src/svg"
+    "generate-icons": "svgr -d src/generated --typescript -- src/svg"
   },
   "dependencies": {
     "@babel/runtime": "7.16.7",

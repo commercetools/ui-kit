@@ -145,7 +145,7 @@ const SvgArrowLongDown = (props: SVGProps) => (
     {...props}
   >
     <path
-      d="M15.494 17.318H12.875v-13.5a.82.82 0 00-1.64 0v13.5H8.547L12.055 21l3.44-3.682z"
+      d="M15.494 17.318H12.875v-13.5a.82.82 0 0 0-1.64 0v13.5H8.547L12.055 21l3.44-3.682Z"
       fillRule="evenodd"
     />
   </svg>
