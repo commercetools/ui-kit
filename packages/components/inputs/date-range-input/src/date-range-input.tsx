@@ -1,6 +1,7 @@
 import { createRef, Component, type KeyboardEvent } from 'react';
 import Downshift from 'downshift';
 import { injectIntl, type MessageDescriptor } from 'react-intl';
+import type { DurationInputArg1, MomentInput } from 'moment';
 import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
@@ -27,7 +28,6 @@ import {
   CalendarDay,
 } from '@commercetools-uikit/calendar-utils';
 import messages from './messages';
-import { DurationInputArg1, MomentInput } from 'moment';
 
 type TPreventDownshiftDefaultEvent = {
   nativeEvent: { preventDownshiftDefault: boolean };
