@@ -3,10 +3,11 @@ import {
   useRef,
   useCallback,
   type KeyboardEvent,
-  FocusEventHandler,
+  type FocusEventHandler,
 } from 'react';
 import Downshift from 'downshift';
 import { useIntl } from 'react-intl';
+import type { DurationInputArg1 } from 'moment';
 import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
@@ -33,7 +34,6 @@ import {
   CalendarDay,
 } from '@commercetools-uikit/calendar-utils';
 import messages from './messages';
-import { DurationInputArg1 } from 'moment';
 
 type TDownshiftEvent = {
   nativeEvent: {
