@@ -30,8 +30,6 @@ export type TTimeInput = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint?:
-    | 1
-    | 2
     | 3
     | 4
     | 5
