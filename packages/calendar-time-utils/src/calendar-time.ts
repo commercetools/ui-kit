@@ -8,6 +8,7 @@ import moment, {
   LocaleSpecifier,
 } from 'moment-timezone';
 import { parseTime } from '@commercetools-uikit/utils';
+import { DATE_FORMAT_LOCALIZED_MAPPINGS } from './formats';
 
 type ParsedTime = {
   hours: number;
@@ -164,4 +165,31 @@ export const parseInputText = (
     return date.toISOString();
   }
   return '';
+};
+
+export const getLocalizedDateFormatPattern = (
+  locale: string,
+  formatType: 'short' | 'long' = 'short'
+) => {
+  // References:
+  //  https://momentjs.com/docs/#/i18n/locale-data/
+  //  https://momentjs.com/docs/#/displaying/ ("Localized formats" section)
+  const localeData = moment().locale(locale).localeData();
+  const localizedFormat = `${localeData.longDateFormat('L')}${
+    formatType === 'long' ? ' - ' + localeData.longDateFormat('LT') : ''
+  }`;
+  const [languageCode] = locale.split('-');
+  const localeMappings = Object.entries(
+    DATE_FORMAT_LOCALIZED_MAPPINGS[locale] ||
+      DATE_FORMAT_LOCALIZED_MAPPINGS[languageCode] ||
+      {}
+  );
+
+  if (localeMappings && localeMappings.length > 0) {
+    return localeMappings.reduce((localizedPattern, [token, mappedValue]) => {
+      return localizedPattern.replace(token, mappedValue);
+    }, localizedFormat);
+  } else {
+    return localizedFormat;
+  }
 };
