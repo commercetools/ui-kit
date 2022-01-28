@@ -263,8 +263,8 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
     props.placeholder || intl.formatMessage(messages.placeholderMessage);
   const optionType = props.optionType;
 
-  const components = useMemo(() => {
-    return {
+  const components = useMemo(
+    () => ({
       Option: (optionInnerProps: TOptionInnerProps) => (
         <CustomSelectInputOption
           {...optionInnerProps}
@@ -274,8 +274,9 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
       ),
       ...props.components,
       DropdownIndicator: SearchIconDropdownIndicator,
-    };
-  }, [props.components, optionType]);
+    }),
+    [props.components, optionType]
+  );
 
   return (
     <SearchSelectInputWrapper
