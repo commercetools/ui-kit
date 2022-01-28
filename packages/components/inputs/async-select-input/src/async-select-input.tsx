@@ -3,12 +3,12 @@ import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
 import {
-  ActionMeta,
   components as defaultComponents,
+  type ActionMeta,
   type GroupBase,
   type OptionsOrGroups,
 } from 'react-select';
-import AsyncSelect, { AsyncProps } from 'react-select/async';
+import AsyncSelect, { type AsyncProps } from 'react-select/async';
 import {
   addStaticFields,
   filterDataAttributes,

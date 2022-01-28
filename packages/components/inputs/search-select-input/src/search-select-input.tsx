@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
-import { ActionMeta, type GroupBase, type OptionProps } from 'react-select';
-import { AsyncProps } from 'react-select/async';
+import type { ActionMeta, GroupBase, OptionProps } from 'react-select';
+import type { AsyncProps } from 'react-select/async';
 import AsyncSelectInput from '@commercetools-uikit/async-select-input';
 import {
   CustomSelectInputOption,
