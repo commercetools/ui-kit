@@ -4,9 +4,9 @@ import { components, OptionProps } from 'react-select';
 import { NO_VALUE_FALLBACK, SELECT_DROPDOWN_OPTION_TYPES } from './constants';
 
 type TData = {
-  label: string;
-  key: string;
-  id: string;
+  label?: string;
+  key?: string;
+  id?: string;
 };
 
 type SelectDropdownOptionTypesKeys = keyof typeof SELECT_DROPDOWN_OPTION_TYPES;
@@ -73,7 +73,7 @@ export const CustomSelectInputOption = (
     case SELECT_DROPDOWN_OPTION_TYPES.DOUBLE_PROPERTY:
       return (
         <DoublePropertySelectInputOption
-          {...props.optionInnerProps}
+          {...props?.optionInnerProps}
           noValueFallback={noValueFallback}
         />
       );
