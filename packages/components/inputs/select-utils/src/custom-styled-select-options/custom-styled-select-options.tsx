@@ -73,7 +73,7 @@ export const CustomSelectInputOption = (
     case SELECT_DROPDOWN_OPTION_TYPES.DOUBLE_PROPERTY:
       return (
         <DoublePropertySelectInputOption
-          {...props?.optionInnerProps}
+          {...props.optionInnerProps}
           noValueFallback={noValueFallback}
         />
       );
