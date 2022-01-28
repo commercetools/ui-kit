@@ -243,6 +243,15 @@ type TOptionInnerProps = {
   data?: TOptionInnerPropsData;
 } & OptionProps;
 
+const defaultProps: Pick<
+  TSearchSelectInputProps,
+  'value' | 'menuPortalZIndex' | 'maxMenuHeight'
+> = {
+  value: null,
+  menuPortalZIndex: 1,
+  maxMenuHeight: 220,
+};
+
 const SearchSelectInput = (props: TSearchSelectInputProps) => {
   const intl = useIntl();
   const noOptionsMessage =
@@ -286,11 +295,7 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
   );
 };
 
-SearchSelectInput.defaultProps = {
-  value: null,
-  menuPortalZIndex: 1,
-  maxMenuHeight: 220,
-};
+SearchSelectInput.defaultProps = defaultProps;
 SearchSelectInput.displayName = 'SearchSelectInput';
 
 export default SearchSelectInput;
