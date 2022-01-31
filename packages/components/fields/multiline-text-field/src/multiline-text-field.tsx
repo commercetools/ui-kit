@@ -70,7 +70,7 @@ export type TMultiTextFieldProps = {
   /**
    * Value of the input component.
    */
-  value: number | string;
+  value: string;
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    * <br />
@@ -162,7 +162,7 @@ const hasErrors = (errors?: TFieldErrors) =>
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
-class MultilineTextField extends Component<TMultiTextFieldProps> {
+class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
   static displayName = 'MultilineTextField';
 
   static defaultProps: Pick<TMultiTextFieldProps, 'horizontalConstraint'> = {
@@ -214,7 +214,7 @@ class MultilineTextField extends Component<TMultiTextFieldProps> {
             id={this.state.id}
             name={this.props.name}
             autoComplete={this.props.autoComplete}
-            value={this.props.value as string}
+            value={this.props.value}
             onChange={this.props.onChange}
             onBlur={this.props.onBlur}
             onFocus={this.props.onFocus}
