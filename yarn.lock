@@ -10376,10 +10376,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"devtools-protocol@npm:0.0.937139":
-  version: 0.0.937139
-  resolution: "devtools-protocol@npm:0.0.937139"
-  checksum: 4ac9d9e5fad229fca6786d2afe95bac4ee87a8e188092ce088a0fba222b20397ec61f8eff8d1703b96e3dab27927cb91a5c6f84d151342e0603c09d4378ab62d
+"devtools-protocol@npm:0.0.948846":
+  version: 0.0.948846
+  resolution: "devtools-protocol@npm:0.0.948846"
+  checksum: add29ebdcc60d2ccb11f8c7125c3d500957da63bac6bc7633041761ea12320febebbc58530e94bc23e0586ce4de2623fb5eaae0971ecbfc778f7159448519b0a
   languageName: node
   linkType: hard
 
@@ -16081,12 +16081,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:2.6.5":
-  version: 2.6.5
-  resolution: "node-fetch@npm:2.6.5"
+"node-fetch@npm:2.6.7":
+  version: 2.6.7
+  resolution: "node-fetch@npm:2.6.7"
   dependencies:
     whatwg-url: ^5.0.0
-  checksum: 4e83db450718e70762882f00d96f647a7f2f3170035225934ddd5450cb1d91ef339ceb180d3687bcb0a6ed78c3fa5636ce8d3e44ec81ab59e0224ebf8965f65f
+  peerDependencies:
+    encoding: ^0.1.0
+  peerDependenciesMeta:
+    encoding:
+      optional: true
+  checksum: 8d816ffd1ee22cab8301c7756ef04f3437f18dace86a1dae22cf81db8ef29c0bf6655f3215cb0cdb22b420b6fe141e64b26905e7f33f9377a7fa59135ea3e10b
   languageName: node
   linkType: hard
 
@@ -17366,15 +17371,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"puppeteer@npm:12.0.1":
-  version: 12.0.1
-  resolution: "puppeteer@npm:12.0.1"
+"puppeteer@npm:13.1.3":
+  version: 13.1.3
+  resolution: "puppeteer@npm:13.1.3"
   dependencies:
     debug: 4.3.2
-    devtools-protocol: 0.0.937139
+    devtools-protocol: 0.0.948846
     extract-zip: 2.0.1
     https-proxy-agent: 5.0.0
-    node-fetch: 2.6.5
+    node-fetch: 2.6.7
     pkg-dir: 4.2.0
     progress: 2.0.3
     proxy-from-env: 1.1.0
@@ -17382,7 +17387,7 @@ __metadata:
     tar-fs: 2.1.1
     unbzip2-stream: 1.4.3
     ws: 8.2.3
-  checksum: 022b5b7f3eda41f1d54f9b978cb52c38113aa0e6f1240898fd089f27d6756faff1cfaccbfefb9990c77494d1d1f694a1fde446f29bd0f27f3d19b5696b1214ec
+  checksum: 2875a47cf7ff11f78b7bfdbc594dbf42bb09da4c6fba2548cf9c08a95c701b6d08ae38bedfe5cf38cecf9f368a94633f3f3633cbe41c2481d76086ab1abf6650
   languageName: node
   linkType: hard
 
@@ -20468,7 +20473,7 @@ __metadata:
     postcss-value-parser: 4.2.0
     pptr-testing-library: 0.7.0
     prettier: 2.5.1
-    puppeteer: 12.0.1
+    puppeteer: 13.1.3
     qs: 6.10.3
     rcfile: 1.0.3
     react: 17.0.2
