@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties } from '@commercetools-uikit/design-system';

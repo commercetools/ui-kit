@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isValidElementType } from 'react-is';

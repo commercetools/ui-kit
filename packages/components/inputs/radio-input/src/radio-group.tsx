@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
