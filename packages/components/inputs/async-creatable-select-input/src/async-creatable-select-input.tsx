@@ -203,6 +203,12 @@ type TAsyncCreatableSelectInputProps = {
    */
   menuShouldBlockScroll?: ReactSelectAsyncCreatableProps['menuShouldBlockScroll'];
   /**
+   * whether the menu should be closed after a value is selected
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  closeMenuOnSelect?: ReactSelectAsyncCreatableProps['closeMenuOnSelect'];
+  /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -323,13 +329,14 @@ type TAsyncCreatableSelectInputProps = {
 
 const defaultProps: Pick<
   TAsyncCreatableSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex'
+  'value' | 'isSearchable' | 'menuPortalZIndex' | 'closeMenuOnSelect'
 > = {
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
   value: null,
   isSearchable: true,
   menuPortalZIndex: 1,
+  closeMenuOnSelect: true,
 };
 
 const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
@@ -406,6 +413,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
+          closeMenuOnScroll={props.closeMenuOnSelect}
           name={props.name}
           noOptionsMessage={
             props.noOptionsMessage ||
