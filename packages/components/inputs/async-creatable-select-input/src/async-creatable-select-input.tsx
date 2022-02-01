@@ -23,6 +23,7 @@ import {
 import {
   addStaticFields,
   filterDataAttributes,
+  warning,
 } from '@commercetools-uikit/utils';
 
 const LoadingIndicator = () => <LoadingSpinner scale="s" />;
@@ -337,6 +338,13 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
+
+  if (props.isMulti) {
+    warning(
+      Array.isArray(props.value),
+      'AsyncCreatableSelectInput: `value` is expected to be an array when isMulti is true'
+    );
+  }
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
