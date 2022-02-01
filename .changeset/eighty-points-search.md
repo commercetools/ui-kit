@@ -2,4 +2,4 @@
 '@commercetools-uikit/async-select-input': patch
 ---
 
-Update type defination and Include react select link
+Update type definition and include react select links
