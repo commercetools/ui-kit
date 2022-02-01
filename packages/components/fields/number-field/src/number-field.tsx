@@ -63,7 +63,6 @@ type TNumberFieldProps = {
   /**
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    * <br />
-   * Signature: `(key, error) => React.node`
    */
   renderError?: TErrorRenderer;
   /**
@@ -91,19 +90,16 @@ type TNumberFieldProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    * <br />
-   * Signature: `(event) => void`
    */
   onChange?: ChangeEventHandler;
   /**
    * Called when input is blurred
    * <br />
-   * Signature: `(event) => void`
    */
   onBlur?: FocusEventHandler;
   /**
    * Called when input is focused
    * <br />
-   * Signature: `(event) => void`
    */
   onFocus?: FocusEventHandler;
   /**
@@ -155,7 +151,6 @@ type TNumberFieldProps = {
    * <br />
    * Info button will only be visible when this prop is passed.
    * <br />
-   * Signature: `(event) => void`
    */
   onInfoButtonClick?: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
