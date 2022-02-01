@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
@@ -6,10 +5,11 @@ import { type ReactNode } from 'react';
 
 type Props = {
   isDisabled?: boolean;
-  label?: string;
+  label: string;
   isActive?: boolean;
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
   children: ReactNode;
+  onClick?: () => void;
 };
 
 const propsToOmit = ['isActive', 'label', 'isDisabled', 'isReadOnly'];
@@ -74,15 +74,6 @@ const RichTextBodyButton = (props: Props) => {
       {props.children}
     </button>
   );
-};
-
-RichTextBodyButton.propTypes = {
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  onClick: PropTypes.func,
-  label: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
-  children: PropTypes.element.isRequired,
 };
 
 RichTextBodyButton.displayName = 'RichTextInputButton';

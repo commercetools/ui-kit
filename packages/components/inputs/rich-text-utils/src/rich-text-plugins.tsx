@@ -1,4 +1,3 @@
-//@ts-nocheck
 import UndoPlugin from './plugins/undo';
 import RedoPlugin from './plugins/redo';
 import ListPlugin from './plugins/list';
@@ -6,15 +5,22 @@ import MarkPlugin from './plugins/mark';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
 import PlaceholderPlugin from './plugins/placeholder';
 import { BLOCK_TAGS, MARK_TAGS } from './tags';
+import { ReactNode } from 'react';
+
+type TMap = {
+  map: (node: ReactNode) => {
+    toArray: () => string[];
+  };
+};
 
 type TEditor = {
   hasPlaceholder: boolean;
   value: {
     document: {
       text: string;
-      nodes: [node: { text: string }];
+      nodes: TMap;
     };
-    blocks: [block: { type: unknown }];
+    blocks: TMap;
   };
 };
 
@@ -34,8 +40,9 @@ const plugins = [
       shouldUsePlaceholder: (editor: TEditor) => {
         const isEditorEmpty = editor.value.document.text === '';
         const hasOneNode =
-          editor.value.document.nodes.map((node) => node.text).toArray()
-            .length === 1;
+          editor.value.document.nodes
+            .map((node: { text: string }) => node.text)
+            .toArray().length === 1;
         const blocks = editor.value.blocks
           .map((block: { type: unknown }) => block.type)
           .toArray();
@@ -51,7 +58,7 @@ const plugins = [
           isParagraph;
 
         // eslint-disable-next-line no-param-reassign
-        editor.hasPlaceholder = shouldUsePlaceholder;
+        editor.hasPlaceholder = shouldUsePlaceholder as boolean;
         return shouldUsePlaceholder;
       },
     },
