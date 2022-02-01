@@ -49,7 +49,7 @@ export default Example;
 | ---------------------- | -------------------------------------------------------------------------------------------- | :------: | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `intl`                 | `Object`<br/>[See signature.](#signature-intl)                                               |    ✅    |         |                                                                                                                                                                                                               |
 | `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          |         | Horizontal size limit of the input field.                                                                                                                                                                     |
-| `value`                | `Array: MomentInput[]`<br/>[See signature.](#signature-value)                                |    ✅    |         | The selected date range, must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".                                                                                    |
+| `value`                | `Array: MomentInput[]`                                                                       |    ✅    |         | The selected date range, must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".                                                                                    |
 | `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                         |    ✅    |         | Called when the date range changes. Called with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".&#xA;<br />&#xA;Signature: `(event) => void` |
 | `isClearable`          | `boolean`                                                                                    |          | `true`  | Allows the range to be cleared                                                                                                                                                                                |
 | `onFocus`              | `Function`<br/>[See signature.](#signature-onFocus)                                          |          |         | Called when the date input gains focus.                                                                                                                                                                       |
@@ -72,8 +72,6 @@ export default Example;
   formatMessage: (message: MessageDescriptor) => void;
 }
 ```
-
-### Signature `value`
 
 ### Signature `onChange`
 

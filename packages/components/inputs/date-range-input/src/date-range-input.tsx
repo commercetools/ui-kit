@@ -453,7 +453,8 @@ class DateRangeCalendar extends Component<
                     onMouseEnter: () => {
                       // we remove the highlight so that the user can use the
                       // arrow keys to move the cursor when hovering
-                      if (isOpen) setHighlightedIndex(0);
+                      // @ts-ignore
+                      if (isOpen) setHighlightedIndex(null);
                     },
                     onKeyDown: (event) => {
                       if (this.props.isReadOnly) {
@@ -578,7 +579,8 @@ class DateRangeCalendar extends Component<
                               disabled: this.props.isDisabled,
                               item,
                               onMouseOut: () => {
-                                setHighlightedIndex(0);
+                                // @ts-ignore
+                                setHighlightedIndex(null);
                               },
                             })}
                             isHighlighted={isHighlighted}
