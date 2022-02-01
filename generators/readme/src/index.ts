@@ -408,32 +408,42 @@ const parsePropTypesToMarkdown = (
             break;
           }
           case 'Array': {
-            propTypeNode = [
-              inlineCode(`Array: ${propInfoType.raw.replace('\n', '')}`),
-              html('<br/>'),
-              link(`#signature-${propName}`, 'See signature.'),
-            ];
-            signatures.push(
-              ...[
-                headingSignature(
-                  options.hasManyComponents ? 4 : 3,
-                  'Signature',
-                  propName
-                ),
-                ...propInfoType.elements
-                  .map((elemNode) => {
-                    switch (elemNode.name) {
-                      case 'signature':
-                        return elemNode.raw;
-                      // TODO: add support for more cases?
-                      default:
-                        return undefined;
-                    }
-                  })
-                  .filter(Boolean)
-                  .map((value) => code('ts', value!)),
-              ]
+            const hasSignatureType = propInfoType.elements.some(
+              (elemNode) => elemNode.name === 'signature'
             );
+
+            if (hasSignatureType) {
+              propTypeNode = [
+                inlineCode(`Array: ${propInfoType.raw.replace('\n', '')}`),
+                html('<br/>'),
+                link(`#signature-${propName}`, 'See signature.'),
+              ];
+              signatures.push(
+                ...[
+                  headingSignature(
+                    options.hasManyComponents ? 4 : 3,
+                    'Signature',
+                    propName
+                  ),
+                  ...propInfoType.elements
+                    .map((elemNode) => {
+                      switch (elemNode.name) {
+                        case 'signature':
+                          return elemNode.raw;
+                        // TODO: add support for more cases?
+                        default:
+                          return undefined;
+                      }
+                    })
+                    .filter(Boolean)
+                    .map((value) => code('ts', value!)),
+                ]
+              );
+            } else {
+              propTypeNode = [
+                inlineCode(`Array: ${propInfoType.raw.replace('\n', '')}`),
+              ];
+            }
             break;
           }
           case 'union': {
