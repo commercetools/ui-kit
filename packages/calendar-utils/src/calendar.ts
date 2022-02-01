@@ -70,7 +70,7 @@ export const createItemRangeToString =
 export const createItemToString = (locale: string) => (item: MomentInput) =>
   item ? formatDate(item, locale) : '';
 
-export const formatRange = (range: string[], locale: string) =>
+export const formatRange = (range: MomentInput[], locale: string) =>
   range
     .sort()
     .map((item) => formatDate(item, locale))

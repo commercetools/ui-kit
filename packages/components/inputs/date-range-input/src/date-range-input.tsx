@@ -1,7 +1,7 @@
-import { createRef, Component } from 'react';
-import PropTypes from 'prop-types';
+import { createRef, Component, type KeyboardEvent } from 'react';
 import Downshift from 'downshift';
-import { injectIntl } from 'react-intl';
+import { injectIntl, type MessageDescriptor } from 'react-intl';
+import type { DurationInputArg1, MomentInput } from 'moment';
 import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
@@ -29,12 +29,15 @@ import {
 } from '@commercetools-uikit/calendar-utils';
 import messages from './messages';
 
-const preventDownshiftDefault = (event) => {
-  // eslint-disable-next-line no-param-reassign
+type TPreventDownshiftDefaultEvent = {
+  nativeEvent: { preventDownshiftDefault: boolean };
+} & KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
+
+const preventDownshiftDefault = (event: TPreventDownshiftDefaultEvent) => {
   event.nativeEvent.preventDownshiftDefault = true;
 };
 
-const parseRangeText = (text, locale) => {
+const parseRangeText = (text: string, locale: string) => {
   const parts = text
     .split(' - ')
     .map((part) => {
@@ -45,14 +48,29 @@ const parseRangeText = (text, locale) => {
   return parts;
 };
 
-const isSameRange = (a, b) => {
+const isSameRange = (
+  a: TDateRangeCalendarProps['value'],
+  b: TDateRangeCalendarProps['value']
+) => {
   if (a.length !== b.length) return false;
   if (a.length === 0) return true;
   if (a[0] === b[0] && a[1] === b[1]) return true;
   return false;
 };
 
-const getRange = ({ item, value, startDate, highlightedItem }) => {
+type TGetRangeArgs = {
+  item: MomentInput;
+  value: MomentInput[];
+  startDate: MomentInput;
+  highlightedItem: MomentInput;
+};
+
+const getRange = ({
+  item,
+  value,
+  startDate,
+  highlightedItem,
+}: TGetRangeArgs) => {
   const isRangeSelectionInProgress = startDate;
   const hasSelection = value.length === 2;
   const isStartDate = isSameDay(item, startDate);
@@ -69,7 +87,7 @@ const getRange = ({ item, value, startDate, highlightedItem }) => {
 
   let isRangeBetween = false;
   if (isRangeSelectionInProgress) {
-    isRangeBetween = isBetween;
+    isRangeBetween = isBetween as boolean;
   } else if (hasSelection) {
     isRangeBetween = isBetweenDates(item, value[0], value[1]);
   }
@@ -88,87 +106,114 @@ const getRange = ({ item, value, startDate, highlightedItem }) => {
   };
 };
 
-class DateRangeCalendar extends Component {
-  static displayName = 'DateRangeCalendar';
-  static propTypes = {
-    intl: PropTypes.shape({
-      locale: PropTypes.string.isRequired,
-      formatMessage: PropTypes.func.isRequired,
-    }).isRequired,
-    /**
-     * Horizontal size limit of the input field.
-     */
-    horizontalConstraint: PropTypes.oneOf([
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      'scale',
-      'auto',
-    ]),
-    /**
-     * The selected date range, must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".
-     */
-    value: PropTypes.arrayOf(PropTypes.string).isRequired,
-    /**
-     * Called when the date range changes. Called with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".
-     * <br />
-     * Signature: `(event) => void`
-     */
-    onChange: PropTypes.func.isRequired,
-    /**
-     * Allows the range to be cleared
-     */
-    isClearable: PropTypes.bool,
-    /**
-     * Called when the date input gains focus.
-     */
-    onFocus: PropTypes.func,
-    /**
-     * Called when the date input loses focus.
-     */
-    onBlur: PropTypes.func,
-    /**
-     * Used as the HTML `id` attribute.
-     */
-    id: PropTypes.string,
-    /**
-     * Used as the HTML `name` attribute.
-     */
-    name: PropTypes.string,
-    /**
-     * Placeholder value to show in the input field
-     */
-    placeholder: PropTypes.string,
-    /**
-     * Disables the date picker
-     */
-    isDisabled: PropTypes.bool,
-    /**
-     * Disables the date picker menu and makes input field read-only
-     */
-    isReadOnly: PropTypes.bool,
-    /**
-     * Indicates the input field has an error
-     */
-    hasError: PropTypes.bool,
-    /**
-     * Indicates the input field has warning
-     */
-    hasWarning: PropTypes.bool,
+type TIntl = {
+  locale: string;
+  formatMessage: (message: MessageDescriptor) => void;
+};
+
+type TEvent = {
+  target: {
+    id?: string;
+    name?: string;
+    value?: MomentInput[];
   };
-  static defaultProps = {
+};
+
+type TDateRangeCalendarProps = {
+  intl: TIntl;
+  /**
+   * Horizontal size limit of the input field.
+   */
+  horizontalConstraint?:
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  /**
+   * The selected date range, must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".
+   */
+  value: MomentInput[];
+  /**
+   * Called when the date range changes. Called with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".
+   * <br />
+   * Signature: `(event) => void`
+   */
+  onChange: (event: TEvent) => void;
+  /**
+   * Allows the range to be cleared
+   */
+  isClearable?: boolean;
+  /**
+   * Called when the date input gains focus.
+   */
+  onFocus?: (event: TEvent) => void;
+  /**
+   * Called when the date input loses focus.
+   */
+  onBlur?: (event: TEvent) => void;
+  /**
+   * Used as the HTML `id` attribute.
+   */
+  id?: string;
+  /**
+   * Used as the HTML `name` attribute.
+   */
+  name?: string;
+  /**
+   * Placeholder value to show in the input field
+   */
+  placeholder?: string;
+  /**
+   * Disables the date picker
+   */
+  isDisabled?: boolean;
+  /**
+   * Disables the date picker menu and makes input field read-only
+   */
+  isReadOnly?: boolean;
+  /**
+   * Indicates the input field has an error
+   */
+  hasError?: boolean;
+  /**
+   * Indicates the input field has warning
+   */
+  hasWarning?: boolean;
+};
+
+type TDateRangeCalendarState = {
+  calendarDate?: MomentInput;
+  suggestedItems: MomentInput[];
+  startDate?: MomentInput;
+  highlightedIndex?: number | null;
+  isOpen?: boolean;
+  inputValue?: MomentInput;
+  prevValue: MomentInput[];
+  prevLocale?: string;
+};
+
+class DateRangeCalendar extends Component<
+  TDateRangeCalendarProps,
+  TDateRangeCalendarState
+> {
+  static displayName = 'DateRangeCalendar';
+  static defaultProps: Pick<TDateRangeCalendarProps, 'isClearable'> = {
     isClearable: true,
   };
-  static isEmpty = (range) => range.length === 0;
-  static getDerivedStateFromProps(props, state) {
+  static isEmpty = (range: number[]) => range.length === 0;
+  static getDerivedStateFromProps(
+    props: TDateRangeCalendarProps,
+    state: TDateRangeCalendarState
+  ) {
     // We need to update the input value string in case so that is is formatted
     // according to the locale and holds the current value in case the value
     // changes or when the locale changes
@@ -186,7 +231,8 @@ class DateRangeCalendar extends Component {
       inputValue: formatRange(props.value, props.intl.locale),
     };
   }
-  inputRef = createRef();
+  inputRef = createRef<HTMLInputElement>();
+
   state = {
     calendarDate:
       this.props.value.length === 2 ? this.props.value[0] : getToday(),
@@ -198,7 +244,8 @@ class DateRangeCalendar extends Component {
     prevValue: this.props.value,
     prevLocale: this.props.intl.locale,
   };
-  jumpMonth = (amount, dayToHighlight = 0) => {
+
+  jumpMonth = (amount: DurationInputArg1, dayToHighlight = 0) => {
     this.setState((prevState) => {
       const nextDate = changeMonth(prevState.calendarDate, amount);
       return { calendarDate: nextDate, highlightedIndex: dayToHighlight };
@@ -212,7 +259,7 @@ class DateRangeCalendar extends Component {
         highlightedIndex:
           prevState.suggestedItems.length + getDateInMonth(today) - 1,
       }),
-      () => this.inputRef.current.focus()
+      () => this.inputRef.current?.focus()
     );
   };
   handleBlur = () => {
@@ -224,7 +271,7 @@ class DateRangeCalendar extends Component {
         },
       });
   };
-  emit = (unsortedRange) => {
+  emit = (unsortedRange: MomentInput[]) => {
     this.props.onChange({
       target: {
         id: this.props.id,
@@ -246,6 +293,7 @@ class DateRangeCalendar extends Component {
           onInputValueChange={(inputValue, changes) => {
             // only attempt to parse input when the user typed into the input
             // field
+            // @ts-ignore
             if (changes.type !== Downshift.stateChangeTypes.changeInput) return;
 
             this.setState(() => {
@@ -284,9 +332,7 @@ class DateRangeCalendar extends Component {
             });
           }}
           onStateChange={(changes) => {
-            /* eslint-disable no-prototype-builtins */
             this.setState((prevState) => {
-              // ensure input value matches prop value when menu is closed
               if (
                 changes.type === Downshift.stateChangeTypes.mouseUp ||
                 changes.type === Downshift.stateChangeTypes.blurInput
@@ -354,7 +400,6 @@ class DateRangeCalendar extends Component {
 
               return null;
             });
-            /* eslint-enable no-prototype-builtins */
           }}
           onChange={(selectedItem) => {
             if (this.state.startDate && selectedItem) {
@@ -379,17 +424,14 @@ class DateRangeCalendar extends Component {
             isOpen,
             inputValue,
           }) => {
-            const calendarItems = createCalendarItems(
-              this.state.calendarDate,
-              this.props.intl
-            );
+            const calendarItems = createCalendarItems(this.state.calendarDate);
             const allItems = [...this.state.suggestedItems, ...calendarItems];
 
             const paddingDayCount = getPaddingDayCount(
               this.state.calendarDate,
               this.props.intl.locale
             );
-            const paddingDays = Array(paddingDayCount).fill();
+            const paddingDays = Array(paddingDayCount).fill(undefined);
 
             const weekdays = getWeekdayNames(this.props.intl.locale);
 
@@ -411,16 +453,19 @@ class DateRangeCalendar extends Component {
                     onMouseEnter: () => {
                       // we remove the highlight so that the user can use the
                       // arrow keys to move the cursor when hovering
+                      // @ts-ignore
                       if (isOpen) setHighlightedIndex(null);
                     },
                     onKeyDown: (event) => {
                       if (this.props.isReadOnly) {
-                        preventDownshiftDefault(event);
+                        preventDownshiftDefault(
+                          event as TPreventDownshiftDefaultEvent
+                        );
                         return;
                       }
                       if (
                         event.key === 'Enter' &&
-                        inputValue.trim() === '' &&
+                        inputValue?.trim() === '' &&
                         // do not clear value when user presses Enter to
                         // select the end date (so only clear when there is no
                         // startDate)
@@ -432,10 +477,15 @@ class DateRangeCalendar extends Component {
                       }
                       // ArrowDown
                       if (event.keyCode === 40) {
-                        if (highlightedIndex + 1 >= calendarItems.length) {
+                        if (
+                          (highlightedIndex as number) + 1 >=
+                          calendarItems.length
+                        ) {
                           // if it's the end of the month
                           // then bypass normal arrow navigation
-                          preventDownshiftDefault(event);
+                          preventDownshiftDefault(
+                            event as TPreventDownshiftDefaultEvent
+                          );
                           // then jump to start of next month
                           this.jumpMonth(1, 0);
                         }
@@ -443,13 +493,15 @@ class DateRangeCalendar extends Component {
                       // ArrowUp
                       if (event.keyCode === 38) {
                         const previousDay = getPreviousDay(
-                          calendarItems[highlightedIndex]
+                          calendarItems[highlightedIndex as number]
                         );
 
-                        if (highlightedIndex <= 0) {
+                        if ((highlightedIndex as number) <= 0) {
                           // if it's the start of the month
                           // then bypass normal arrow navigation
-                          preventDownshiftDefault(event);
+                          preventDownshiftDefault(
+                            event as TPreventDownshiftDefaultEvent
+                          );
 
                           const numberOfDaysOfPrevMonth =
                             getDaysInMonth(previousDay);
@@ -504,7 +556,7 @@ class DateRangeCalendar extends Component {
                           {weekday}
                         </CalendarDay>
                       ))}
-                      {paddingDays.map((day, index) => (
+                      {paddingDays.map((_, index) => (
                         <CalendarDay key={index} type="spacing" />
                       ))}
                       {calendarItems.map((item, index) => {
@@ -517,7 +569,7 @@ class DateRangeCalendar extends Component {
                             value: this.props.value,
                             startDate: this.state.startDate,
                             highlightedItem:
-                              allItems[this.state.highlightedIndex],
+                              allItems[this.state.highlightedIndex || 0],
                           });
                         return (
                           <CalendarDay
@@ -527,6 +579,7 @@ class DateRangeCalendar extends Component {
                               disabled: this.props.isDisabled,
                               item,
                               onMouseOut: () => {
+                                // @ts-ignore
                                 setHighlightedIndex(null);
                               },
                             })}
@@ -551,4 +604,5 @@ class DateRangeCalendar extends Component {
   }
 }
 
+// @ts-ignore
 export default injectIntl(DateRangeCalendar);
