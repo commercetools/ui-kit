@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
+import type { TInputProps } from './money-input';
 
 const getCurrencyLabelStyles = () => css`
   display: flex;
@@ -16,7 +17,10 @@ const getCurrencyLabelStyles = () => css`
   box-sizing: border-box;
 `;
 
-const getAmountInputStyles = (props) => [
+type TGetAmountInputStyles = {
+  hasFocus: boolean;
+} & TInputProps;
+const getAmountInputStyles = (props: TGetAmountInputStyles) => [
   getInputStyles(props),
   css`
     border-top-left-radius: 0;
@@ -29,7 +33,13 @@ const getAmountInputStyles = (props) => [
   `,
 ];
 
-const getHighPrecisionWrapperStyles = ({ isDisabled }) => css`
+type TGetHighPrecisionWrapperStyles = {
+  isDisabled?: boolean;
+};
+
+const getHighPrecisionWrapperStyles = ({
+  isDisabled,
+}: TGetHighPrecisionWrapperStyles) => css`
   position: absolute;
   top: 0;
   right: 0;
