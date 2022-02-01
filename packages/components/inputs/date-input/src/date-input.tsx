@@ -256,7 +256,8 @@ const DateInput = (props: TDateInput) => {
                   onMouseEnter: () => {
                     // we remove the highlight so that the user can use the
                     // arrow keys to move the cursor when hovering
-                    if (isOpen) setDownshiftHighlightedIndex(0);
+                    // @ts-ignore
+                    if (isOpen) setDownshiftHighlightedIndex(null);
                   },
                   onKeyDown: (event) => {
                     if (props.isReadOnly) {
@@ -376,7 +377,8 @@ const DateInput = (props: TDateInput) => {
                           ),
                           item,
                           onMouseOut: () => {
-                            setDownshiftHighlightedIndex(0);
+                            // @ts-ignore
+                            setDownshiftHighlightedIndex(null);
                           },
                         })}
                         isHighlighted={index === downshiftHighlightedIndex}
@@ -398,6 +400,6 @@ const DateInput = (props: TDateInput) => {
 
 DateInput.displayName = 'DateInput';
 
-DateInput.isEmpty = (value: string) => value === '';
+DateInput.isEmpty = (value?: string) => value === '';
 
 export default DateInput;
