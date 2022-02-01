@@ -268,18 +268,6 @@ describe('in multi mode', () => {
       // list should closed and not visible
       expect(queryByText('Raspberry')).not.toBeInTheDocument();
     });
-    it('should not close the menu on option selection', async () => {
-      const { findByLabelText, getByText, queryByText, findByText } =
-        renderInput({ closeMenuOnSelect: false });
-      const input = await findByLabelText('Fruit');
-      fireEvent.focus(input);
-      fireEvent.keyDown(input, { key: 'ArrowDown' });
-      await findByText('Mango');
-      getByText('Mango').click();
-      expect(getByText('Mango')).toBeInTheDocument();
-      // list should not be closed
-      expect(getByText('Banana')).toBeInTheDocument();
-    });
     it('should call onChange when two values selected', async () => {
       const onChange = jest.fn();
       const { findByLabelText, getByText, findByText } = renderInput({
