@@ -166,6 +166,10 @@ export type TSearchSelectInputProps = {
    */
   menuShouldBlockScroll?: ReactSelectAsyncProps['menuShouldBlockScroll'];
   /**
+   * whether the menu should be closed when a value is selected
+   */
+  closeMenuOnSelect?: ReactSelectAsyncProps['closeMenuOnSelect'];
+  /**
    * Determines if option groups will be separated by a divider
    */
   showOptionGroupDivider?: boolean;
@@ -291,6 +295,7 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
         loadingMessage={loadingMessage}
         noOptionsMessage={noOptionsMessage}
         isSearchable={true}
+        closeMenuOnSelect={props.closeMenuOnSelect}
       />
     </SearchSelectInputWrapper>
   );

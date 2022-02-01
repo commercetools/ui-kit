@@ -160,6 +160,23 @@ describe('in single mode', () => {
       // list should closed and not visible
       expect(screen.queryByText('Banana')).not.toBeInTheDocument();
     });
+
+    it('should not close the menu list on option selection', async () => {
+      renderInput({
+        closeMenuOnSelect: false,
+      });
+      const input = screen.getByLabelText('Fruit');
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      fireEvent.change(input, { target: { value: 'mango' } });
+      await screen.findByText('Mango');
+      screen.getByText('Mango').click();
+      // new selected value should be Mango
+      expect(screen.getByText('Mango')).toBeInTheDocument();
+      // list should not be closed
+      expect(screen.getByText('Banana')).toBeInTheDocument();
+    });
+
     it('should call onChange when value selected', async () => {
       const onChange = jest.fn();
       renderInput({
