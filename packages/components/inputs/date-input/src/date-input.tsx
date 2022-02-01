@@ -1,7 +1,13 @@
-import { useState, useRef, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import {
+  useState,
+  useRef,
+  useCallback,
+  type KeyboardEvent,
+  type FocusEventHandler,
+} from 'react';
 import Downshift from 'downshift';
 import { useIntl } from 'react-intl';
+import type { DurationInputArg1 } from 'moment';
 import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
@@ -29,19 +35,106 @@ import {
 } from '@commercetools-uikit/calendar-utils';
 import messages from './messages';
 
-const preventDownshiftDefault = (event) => {
-  // eslint-disable-next-line no-param-reassign
+type TDownshiftEvent = {
+  nativeEvent: {
+    preventDownshiftDefault?: boolean;
+  };
+} & KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
+
+const preventDownshiftDefault = (event: TDownshiftEvent) => {
   event.nativeEvent.preventDownshiftDefault = true;
 };
 
-const DateInput = (props) => {
+type TEvent = {
+  target: {
+    id?: string;
+    name?: string;
+    value?: string;
+  };
+};
+
+type TDateInput = {
+  /**
+   * Horizontal size limit of the input field.
+   */
+  horizontalConstraint?:
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  /**
+   * The selected date, must either be an empty string or a date formatted as "YYYY-MM-DD".
+   */
+  value: string;
+  /**
+   * Called when the date changes. Called with an event containing either an empty string (no value) or a string in this format: "YYYY-MM-DD".
+   * <br />
+   * Signature: `(event) => void`
+   */
+  onChange: (event: TEvent) => void;
+  /**
+   * Called when the date input gains focus.
+   */
+  onFocus?: FocusEventHandler;
+  /**
+   * Called when the date input loses focus.
+   */
+  onBlur?: (event: TEvent) => void;
+  /**
+   * Used as the HTML `id` attribute.
+   */
+  id?: string;
+  /**
+   * Used as the HTML `name` attribute.
+   */
+  name?: string;
+  /**
+   * Placeholder value to show in the input field
+   */
+  placeholder?: string;
+  /**
+   * Disables the date picker
+   */
+  isDisabled?: boolean;
+  /**
+   * Disables the date picker menu and makes input field read-only
+   */
+  isReadOnly?: boolean;
+  /**
+   * Indicates the input field has an error
+   */
+  hasError?: boolean;
+  /**
+   * Indicates the input field has a warning
+   */
+  hasWarning?: boolean;
+  /**
+   * A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
+   */
+  minValue?: string;
+  /**
+   * A maximum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
+   */
+  maxValue?: string;
+};
+
+const DateInput = (props: TDateInput) => {
   const intl = useIntl();
   const [calendarDate, setCalendarDate] = useState(props.value || getToday());
-  const [suggestedItems, setSuggestedItems] = useState([]);
-  const [highlightedIndex, setHighlightedIndex] = useState(
-    props.value === '' ? null : getDateInMonth(props.value) - 1
-  );
-  const inputRef = useRef();
+  const [suggestedItems, setSuggestedItems] = useState<string[]>([]);
+  const [highlightedIndex, setHighlightedIndex] = useState<
+    number | null | undefined
+  >(props.value === '' ? null : getDateInMonth(props.value) - 1);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const { onChange } = props;
   const emit = useCallback(
@@ -60,7 +153,7 @@ const DateInput = (props) => {
 
   const handleChange = useCallback(
     (date) => {
-      inputRef.current.setSelectionRange(0, 100);
+      inputRef.current?.setSelectionRange(0, 100);
       emit(date);
     },
     [inputRef, emit]
@@ -81,10 +174,10 @@ const DateInput = (props) => {
     const today = getToday();
     setCalendarDate(today);
     setHighlightedIndex(suggestedItems.length + getDateInMonth(today) - 1);
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
-  const jumpMonth = (amount, dayToHighlight = 0) => {
+  const jumpMonth = (amount: DurationInputArg1, dayToHighlight = 0) => {
     const nextDate = changeMonth(calendarDate, amount);
     setCalendarDate(nextDate);
     setHighlightedIndex(dayToHighlight);
@@ -100,7 +193,6 @@ const DateInput = (props) => {
         highlightedIndex={highlightedIndex}
         onChange={handleChange}
         onStateChange={(changes) => {
-          /* eslint-disable no-prototype-builtins */
           if (changes.hasOwnProperty('inputValue')) {
             // input changed because user typed
             if (changes.type === Downshift.stateChangeTypes.changeInput) {
@@ -125,7 +217,6 @@ const DateInput = (props) => {
           if (changes.hasOwnProperty('highlightedIndex')) {
             setHighlightedIndex(changes.highlightedIndex);
           }
-          /* eslint-enable no-prototype-builtins */
         }}
       >
         {({
@@ -141,10 +232,10 @@ const DateInput = (props) => {
           isOpen,
           inputValue,
         }) => {
-          const calendarItems = createCalendarItems(calendarDate, intl);
+          const calendarItems = createCalendarItems(calendarDate);
 
           const paddingDayCount = getPaddingDayCount(calendarDate, intl.locale);
-          const paddingDays = Array(paddingDayCount).fill();
+          const paddingDays = Array(paddingDayCount).fill(undefined);
 
           const weekdays = getWeekdayNames(intl.locale);
           const today = getToday();
@@ -165,6 +256,7 @@ const DateInput = (props) => {
                   onMouseEnter: () => {
                     // we remove the highlight so that the user can use the
                     // arrow keys to move the cursor when hovering
+                    // @ts-ignore
                     if (isOpen) setDownshiftHighlightedIndex(null);
                   },
                   onKeyDown: (event) => {
@@ -172,13 +264,13 @@ const DateInput = (props) => {
                       preventDownshiftDefault(event);
                       return;
                     }
-                    if (event.key === 'Enter' && inputValue.trim() === '') {
+                    if (event.key === 'Enter' && inputValue?.trim() === '') {
                       clearSelection();
                     }
                     // ArrowDown
                     if (event.keyCode === 40) {
                       const nextDayToHighlight = getNextDay(
-                        calendarItems[highlightedIndex]
+                        calendarItems[Number(highlightedIndex)]
                       );
                       if (
                         !getIsDateInRange(
@@ -192,7 +284,10 @@ const DateInput = (props) => {
                         preventDownshiftDefault(event);
                         return;
                       }
-                      if (highlightedIndex + 1 >= calendarItems.length) {
+                      if (
+                        Number(highlightedIndex) + 1 >=
+                        calendarItems.length
+                      ) {
                         // if it's the end of the month
                         // then bypass normal arrow navigation
                         preventDownshiftDefault(event);
@@ -203,7 +298,7 @@ const DateInput = (props) => {
                     // ArrowUp
                     if (event.keyCode === 38) {
                       const previousDay = getPreviousDay(
-                        calendarItems[highlightedIndex]
+                        calendarItems[Number(highlightedIndex)]
                       );
                       if (
                         !getIsDateInRange(
@@ -217,7 +312,7 @@ const DateInput = (props) => {
                         preventDownshiftDefault(event);
                         return;
                       }
-                      if (highlightedIndex <= 0) {
+                      if (Number(highlightedIndex) <= 0) {
                         // if it's the start of the month
                         // then bypass normal arrow navigation
                         preventDownshiftDefault(event);
@@ -267,7 +362,7 @@ const DateInput = (props) => {
                         {weekday}
                       </CalendarDay>
                     ))}
-                    {paddingDays.map((day, index) => (
+                    {paddingDays.map((_, index) => (
                       <CalendarDay key={index} type="spacing" />
                     ))}
                     {calendarItems.map((item, index) => (
@@ -282,6 +377,7 @@ const DateInput = (props) => {
                           ),
                           item,
                           onMouseOut: () => {
+                            // @ts-ignore
                             setDownshiftHighlightedIndex(null);
                           },
                         })}
@@ -304,81 +400,6 @@ const DateInput = (props) => {
 
 DateInput.displayName = 'DateInput';
 
-DateInput.isEmpty = (value) => value === '';
-
-DateInput.propTypes = {
-  /**
-   * Horizontal size limit of the input field.
-   */
-  horizontalConstraint: PropTypes.oneOf([
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-  /**
-   * The selected date, must either be an empty string or a date formatted as "YYYY-MM-DD".
-   */
-  value: PropTypes.string.isRequired,
-  /**
-   * Called when the date changes. Called with an event containing either an empty string (no value) or a string in this format: "YYYY-MM-DD".
-   * <br />
-   * Signature: `(event) => void`
-   */
-  onChange: PropTypes.func.isRequired,
-  /**
-   * Called when the date input gains focus.
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Called when the date input loses focus.
-   */
-  onBlur: PropTypes.func,
-  /**
-   * Used as the HTML `id` attribute.
-   */
-  id: PropTypes.string,
-  /**
-   * Used as the HTML `name` attribute.
-   */
-  name: PropTypes.string,
-  /**
-   * Placeholder value to show in the input field
-   */
-  placeholder: PropTypes.string,
-  /**
-   * Disables the date picker
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Disables the date picker menu and makes input field read-only
-   */
-  isReadOnly: PropTypes.bool,
-  /**
-   * Indicates the input field has an error
-   */
-  hasError: PropTypes.bool,
-  /**
-   * Indicates the input field has a warning
-   */
-  hasWarning: PropTypes.bool,
-  /**
-   * A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
-   */
-  minValue: PropTypes.string,
-  /**
-   * A maximum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
-   */
-  maxValue: PropTypes.string,
-};
+DateInput.isEmpty = (value?: string) => value === '';
 
 export default DateInput;
