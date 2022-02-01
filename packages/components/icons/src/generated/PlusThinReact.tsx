@@ -145,7 +145,7 @@ const SvgPlusThin = (props: SVGProps) => (
     {...props}
   >
     <path
-      d="M12.5 11.5v-8a.5.5 0 10-1 0v8h-8a.5.5 0 100 1h8v8a.5.5 0 101 0v-8h8a.5.5 0 100-1h-8z"
+      d="M12.5 11.5v-8a.5.5 0 1 0-1 0v8h-8a.5.5 0 1 0 0 1h8v8a.5.5 0 1 0 1 0v-8h8a.5.5 0 1 0 0-1h-8Z"
       fillRule="evenodd"
     />
   </svg>
