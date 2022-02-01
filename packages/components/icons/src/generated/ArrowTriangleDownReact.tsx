@@ -144,7 +144,7 @@ const SvgArrowTriangleDown = (props: SVGProps) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <path d="M12 20L3 5h18" fillRule="evenodd" />
+    <path d="M12 20 3 5h18" fillRule="evenodd" />
   </svg>
 );
 
