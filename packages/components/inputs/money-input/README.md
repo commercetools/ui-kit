@@ -55,7 +55,7 @@ export default Example;
 | `autoComplete`          | `string`                                                                                              |          |           | Used as HTML `autocomplete` property                                                                                                                          |
 | `name`                  | `string`                                                                                              |          |           | The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).            |
 | `value`                 | `Object`<br/>[See signature.](#signature-value)                                                       |    ✅    |           | Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator. |
-| `currencies`            | `Array: string[]`<br/>[See signature.](#signature-currencies)                                         |          | `[]`      | List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.                       |
+| `currencies`            | `Array: string[]`                                                                                     |          | `[]`      | List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.                       |
 | `placeholder`           | `string`                                                                                              |          |           | Placeholder text for the input                                                                                                                                |
 | `onBlur`                | `Function`<br/>[See signature.](#signature-onBlur)                                                    |          |           | Called when input is blurred                                                                                                                                  |
 | `onFocus`               | `Function`<br/>[See signature.](#signature-onFocus)                                                   |          |           | Called when input is focused                                                                                                                                  |
@@ -81,8 +81,6 @@ export default Example;
   currencyCode: TCurrencyCode;
 }
 ```
-
-### Signature `currencies`
 
 ### Signature `onBlur`
 

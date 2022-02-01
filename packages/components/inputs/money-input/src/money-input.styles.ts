@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
+import type { TInputProps } from './money-input';
 
 const getCurrencyLabelStyles = () => css`
   display: flex;
@@ -15,15 +16,6 @@ const getCurrencyLabelStyles = () => css`
   font-size: ${vars.fontSizeForInput};
   box-sizing: border-box;
 `;
-
-type TInputProps = {
-  isDisabled?: boolean;
-  disabled?: boolean;
-  hasError?: boolean;
-  hasWarning?: boolean;
-  isReadOnly?: boolean;
-  readOnly?: boolean;
-};
 
 type TGetAmountInputStyles = {
   hasFocus: boolean;

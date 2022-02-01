@@ -40,7 +40,7 @@ const getPortalNode = (id?: string) =>
   document.querySelector(`#${getPortalId(id)}`);
 
 type TLabel = {
-  id?: string;
+  id: string;
   children?: ReactNode;
   isDisabled?: boolean;
 };
@@ -74,9 +74,9 @@ const SingleValue = ({ id, ...props }: TSingleValue) => (
 
 SingleValue.displayName = 'SingleValue';
 
-type TcreateCurrencySelectStyles = (input: TInputProps, theme: Theme) => void;
+type TCreateCurrencySelectStyles = (input: TInputProps, theme: Theme) => void;
 
-type TInputProps = {
+export type TInputProps = {
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
@@ -91,7 +91,7 @@ type TBase = {
   color?: string;
 };
 // overwrite styles of createSelectStyles
-const createCurrencySelectStyles: TcreateCurrencySelectStyles = (
+const createCurrencySelectStyles: TCreateCurrencySelectStyles = (
   { hasWarning, hasError, isDisabled, isReadOnly, hasFocus, menuPortalZIndex },
   theme
 ) => {
@@ -730,7 +730,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
       >
         {hasNoCurrencies ? (
           <CurrencyLabel
-            id={MoneyInput.getAmountInputId(props.id)}
+            id={MoneyInput.getAmountInputId(props.id) as string}
             isDisabled={props.isDisabled}
           >
             {option && option.label}
