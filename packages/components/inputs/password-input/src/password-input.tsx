@@ -25,7 +25,6 @@ export type TPasswordInputProps = {
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
   onChange?: ChangeEventHandler;
-  //requiredIf(PropTypes.func, (props) => !props.isReadOnly),
   /**
    * Called when input is blurred.
    */
