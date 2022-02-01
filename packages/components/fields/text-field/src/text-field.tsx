@@ -62,7 +62,6 @@ type TTextFieldProps = {
   /**
    * This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    * <br />
-   * Signature: `(key, error) => React.node`
    */
   renderError?: TErrorRenderer;
   /**
@@ -90,17 +89,14 @@ type TTextFieldProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    * <br />
-   * Signature: `(event) => void`
    */
   onChange?: ChangeEventHandler;
   /**
    * Called when input is blurred
-   * Signature: `(event) => void`
    */
   onBlur?: FocusEventHandler;
   /**
    * Called when input is focused
-   * Signature: `(event) => void`
    */
   onFocus?: FocusEventHandler;
   /**
