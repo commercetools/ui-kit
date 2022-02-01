@@ -1,4 +1,4 @@
-//@ts-nocheck
+/// <reference types="@emotion/react/types/css-prop" />
 import { ElementType, FunctionComponent } from 'react';
 import DownshiftUntyped, {
   GetItemPropsOptions,
