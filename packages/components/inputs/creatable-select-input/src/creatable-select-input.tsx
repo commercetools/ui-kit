@@ -1,50 +1,54 @@
-import type { ReactNode, FocusEvent } from 'react';
+import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
 import {
   components as defaultComponents,
-  type ActionMeta,
   type GroupBase,
-  type OptionsOrGroups,
+  type ActionMeta,
 } from 'react-select';
-import AsyncSelect, { type AsyncProps } from 'react-select/async';
+import CreatableSelect, { type CreatableProps } from 'react-select/creatable';
+import Constraints from '@commercetools-uikit/constraints';
 import {
   addStaticFields,
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
-import Constraints from '@commercetools-uikit/constraints';
-import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import {
   ClearIndicator,
   TagRemove,
   DropdownIndicator,
   customComponentsWithIcons,
-  messages,
   createSelectStyles,
+  messages,
 } from '@commercetools-uikit/select-utils';
-
-const LoadingIndicator = () => <LoadingSpinner scale="s" />;
-LoadingIndicator.displayName = 'LoadingIndicator';
 
 const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
-  LoadingIndicator,
   MultiValueRemove: TagRemove,
 };
+
+type TValue = {
+  value: string;
+};
+
+type TOptions = TValue[] | { options: TValue[] }[];
 
 type TEvent = {
   target: {
     name?: string;
     value?: unknown;
   };
-  persist: () => void;
+  persist?: () => void;
 };
 
-type ReactSelectAsyncProps = AsyncProps<unknown, boolean, GroupBase<unknown>>;
+type ReactSelectCreatableProps = CreatableProps<
+  unknown,
+  boolean,
+  GroupBase<unknown>
+>;
 
-type TAsyncSelectInputProps = {
+type TCreatableSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
@@ -74,9 +78,13 @@ type TAsyncSelectInputProps = {
    */
   hasWarning?: boolean;
   /**
-   * Indicates that the field is displaying read-only content
+   * Disables the select input as it is read-only
    */
   isReadOnly?: boolean;
+  /**
+   * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
+   */
+  iconLeft?: ReactNode;
 
   // react-select base props
   //
@@ -89,100 +97,99 @@ type TAsyncSelectInputProps = {
   /**
    * Aria label (for assistive tech)
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  'aria-label'?: ReactSelectAsyncProps['aria-label'];
+  'aria-label': ReactSelectCreatableProps['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  'aria-labelledby'?: ReactSelectAsyncProps['aria-labelledby'];
-  // renamed autoFocus of react-select
+  'aria-labelledby': ReactSelectCreatableProps['aria-labelledby'];
   /**
    * Focus the control when it is mounted
    */
-  isAutofocussed?: boolean;
+  isAutofocussed?: boolean; // original: autoFocus
   /**
    * Remove the currently focused option when the user presses backspace
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  backspaceRemovesValue?: ReactSelectAsyncProps['backspaceRemovesValue'];
+  backspaceRemovesValue?: ReactSelectCreatableProps['backspaceRemovesValue'];
   /**
    * Map of components to overwrite the default ones, see [what components you can override](https://react-select.com/components)
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  components?: ReactSelectAsyncProps['components'];
+  components?: ReactSelectCreatableProps['components'];
   /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  filterOption?: ReactSelectAsyncProps['filterOption'];
+  filterOption?: ReactSelectCreatableProps['filterOption'];
   // This forwarded as react-select's "inputId"
   /**
    * The id of the search input
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  id?: ReactSelectAsyncProps['inputId'];
+  id?: ReactSelectCreatableProps['inputId'];
+  // This is forwarded as react-select's "id"
   /**
    * The value of the search input
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  inputValue?: ReactSelectAsyncProps['inputValue'];
-  // This is forwarded as react-select's "id"
+  inputValue?: ReactSelectCreatableProps['inputValue'];
   /**
    * The id to set on the SelectContainer component
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  containerId?: ReactSelectAsyncProps['id'];
+  containerId?: ReactSelectCreatableProps['id'];
   /**
    * Is the select value clearable
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isClearable?: ReactSelectAsyncProps['isClearable'];
+  isClearable?: ReactSelectCreatableProps['isClearable'];
   /**
    * Is the select disabled
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isDisabled?: ReactSelectAsyncProps['isDisabled'];
+  isDisabled?: ReactSelectCreatableProps['isDisabled'];
   /**
    * Override the built-in logic to detect whether an option is disabled
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isOptionDisabled?: ReactSelectAsyncProps['isOptionDisabled'];
+  isOptionDisabled?: ReactSelectCreatableProps['isOptionDisabled'];
   /**
    * Support multiple selected options
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isMulti?: ReactSelectAsyncProps['isMulti'];
+  isMulti?: ReactSelectCreatableProps['isMulti'];
   /**
    * Whether to enable search functionality
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  isSearchable?: ReactSelectAsyncProps['isSearchable'];
+  isSearchable?: ReactSelectCreatableProps['isSearchable'];
   /**
    * Maximum height of the menu before scrolling
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  maxMenuHeight?: ReactSelectAsyncProps['maxMenuHeight'];
+  maxMenuHeight?: ReactSelectCreatableProps['maxMenuHeight'];
   /**
    * Dom element to portal the select menu to
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  menuPortalTarget?: ReactSelectAsyncProps['menuPortalTarget'];
+  menuPortalTarget?: ReactSelectCreatableProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
    */
@@ -190,122 +197,143 @@ type TAsyncSelectInputProps = {
   /**
    * whether the menu should block scroll while open
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  menuShouldBlockScroll?: ReactSelectAsyncProps['menuShouldBlockScroll'];
+  menuShouldBlockScroll?: ReactSelectCreatableProps['menuShouldBlockScroll'];
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  name?: ReactSelectAsyncProps['name'];
+  name?: ReactSelectCreatableProps['name'];
   /**
    * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with `{ inputValue: String }`. `inputValue` will be an empty string when no search text is present.
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  noOptionsMessage?: ReactSelectAsyncProps['noOptionsMessage'];
+  noOptionsMessage?: ReactSelectCreatableProps['noOptionsMessage'];
   /**
    * Handle blur events on the control
    */
   onBlur?: (event: TEvent) => void;
   /**
    * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
+   * <br />
+   * Signature: `(event) => void`
    */
   onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
   /**
    * Handle focus events on the control
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  onFocus?: ReactSelectAsyncProps['onFocus'];
+  onFocus?: ReactSelectCreatableProps['onFocus'];
   /**
    * Handle change events on the input
    * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  onInputChange?: ReactSelectAsyncProps['onInputChange'];
+  onInputChange?: ReactSelectCreatableProps['onInputChange'];
   /**
-   * Placeholder text for the select value
-   * <br>
-   * [Props from React select was used](https://react-select.com/props)
+   * Array of options that populate the select menu
    */
-  placeholder?: ReactSelectAsyncProps['placeholder'];
-  /**
-   * loading message shown while the options are being loaded
-   */
-  loadingMessage?: string | (() => string);
-  /**
-   * Sets the tabIndex attribute on the input
-   * <br>
-   * [Props from React select was used](https://react-select.com/props)
-   */
-  tabIndex?: ReactSelectAsyncProps['tabIndex'];
-  /**
-   * Select the currently focused option when the user presses tab
-   * <br>
-   * [Props from React select was used](https://react-select.com/props)
-   */
-  tabSelectsValue?: ReactSelectAsyncProps['tabSelectsValue'];
-  /**
-   * The value of the select; reflected by the selected option
-   * <br>
-   * [Props from React select was used](https://react-select.com/props)
-   */
-  value?: ReactSelectAsyncProps['value'];
-
-  // Async props
-  /**
-   * The default set of options to show before the user starts searching. When set to true, the results for loadOptions('') will be autoloaded.
-   * <br>
-   * [Props from React select was used](https://react-select.com/props)
-   */
-  defaultOptions?: OptionsOrGroups<unknown, GroupBase<unknown>> | boolean;
-  /**
-   * Function that returns a promise, which is the set of options to be used once the promise resolves.
-   */
-  loadOptions: ReactSelectAsyncProps['loadOptions'];
-  /**
-   * If cacheOptions is truthy, then the loaded data will be cached. The cache will remain until cacheOptions changes value.
-   */
-  cacheOptions?: ReactSelectAsyncProps['cacheOptions'];
+  options: TOptions;
   /**
    * Determines if option groups will be separated by a divider
    */
   showOptionGroupDivider?: boolean;
   /**
-   * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
+   * Placeholder text for the select value
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  iconLeft?: ReactNode;
+  placeholder?: ReactSelectCreatableProps['placeholder'];
+  /**
+   * Sets the tabIndex attribute on the input
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
+   */
+  tabIndex?: ReactSelectCreatableProps['tabIndex'];
+  /**
+   * Select the currently focused option when the user presses tab
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
+   */
+  tabSelectsValue?: ReactSelectCreatableProps['tabSelectsValue'];
+  /**
+   * The value of the select; reflected by the selected option
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
+   */
+  value: ReactSelectCreatableProps['value'];
+
+  // Creatable props
+  /**
+   * Allow options to be created while the isLoading prop is true. Useful to prevent the "create new ..." option being displayed while async results are still being loaded.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
+   */
+  allowCreateWhileLoading?: ReactSelectCreatableProps['allowCreateWhileLoading'];
+  /**
+   * Gets the label for the "create new ..." option in the menu. Is given the current input value.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
+   */
+  formatCreateLabel?: ReactSelectCreatableProps['formatCreateLabel'];
+  /**
+   * Determines whether the "create new ..." option should be displayed based on the current input value, select value and options array.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
+   */
+  isValidNewOption?: ReactSelectCreatableProps['isValidNewOption'];
+  /**
+   * Returns the data for the new option when it is created. Used to display the value, and is passed to onChange.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
+   */
+  getNewOptionData?: ReactSelectCreatableProps['getNewOptionData'];
+  /**
+   * If provided, this will be called with the input value when a new option is created, and onChange will not be called. Use this when you need more control over what happens when new options are created.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
+   */
+  onCreateOption?: ReactSelectCreatableProps['onCreateOption'];
+  /**
+   * Sets the position of the createOption element in your options list.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
+   */
+  createOptionPosition?: ReactSelectCreatableProps['createOptionPosition'];
 };
 
 const defaultProps: Pick<
-  TAsyncSelectInputProps,
+  TCreatableSelectInputProps,
   'value' | 'isSearchable' | 'menuPortalZIndex'
 > = {
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
   value: null,
+  // The input needs to be searchable, otherwise it's not possible to create
+  // new options.
+  // We still allow consumers to pass isSearchable={false} so that they can
+  // use CreatableSelectInput as an alternative to SelectInput, which does
+  // not do the option/value mapping going on there and therefore provides
+  // the default API of react-select.
   isSearchable: true,
   menuPortalZIndex: 1,
 };
 
-const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
-  const theme = useTheme();
+const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
   const intl = useIntl();
+  const theme = useTheme();
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
-  const loadingMessage = () => {
-    if (typeof props.loadingMessage === 'function') {
-      return props.loadingMessage();
-    }
-    return props.loadingMessage || intl.formatMessage(messages.loadingOptions);
-  };
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
-        <AsyncSelect
+        <CreatableSelect
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
           autoFocus={props.isAutofocussed}
@@ -315,6 +343,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           components={
             {
               ...customizedComponents,
+              ...props.components,
               ...(props.iconLeft && !props.isMulti
                 ? customComponentsWithIcons
                 : {}),
@@ -327,7 +356,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
                   }
                 : {}),
               ...props.components,
-            } as ReactSelectAsyncProps['components']
+            } as ReactSelectCreatableProps['components']
           }
           menuIsOpen={props.isReadOnly ? false : undefined}
           styles={
@@ -344,7 +373,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
                 hasValue: !isEmpty(props.value),
               },
               theme
-            ) as ReactSelectAsyncProps['styles']
+            ) as ReactSelectCreatableProps['styles']
           }
           filterOption={props.filterOption}
           // react-select uses "id" (for the container) and "inputId" (for the input),
@@ -363,7 +392,6 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
           name={props.name}
-          loadingMessage={loadingMessage}
           noOptionsMessage={
             props.noOptionsMessage ||
             (({ inputValue }) =>
@@ -374,31 +402,31 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
                   }))
           }
           onBlur={
-            props.onBlur
+            typeof props.onBlur === 'function'
               ? () => {
                   const event = {
                     target: {
                       name: (() => {
-                        if (!props.name) return undefined;
                         if (!props.isMulti) return props.name;
                         // We append the ".0" to make Formik set the touched
                         // state as an array instead of a boolean only.
                         // Otherwise the shapes would clash on submission, as
                         // Formik will create an array on submission anyways.
-                        return `${props.name}.0`;
+                        return props.name ? `${props.name}.0` : undefined;
                       })(),
                     },
                     persist: () => {},
                   };
-                  props.onBlur &&
-                    props.onBlur(
-                      event as FocusEvent<HTMLInputElement, Element>
-                    );
+                  props.onBlur && props.onBlur(event);
                 }
               : undefined
           }
           onChange={(value, info) => {
+            // selectedOptions is either an array, or a single option, or null
+            // depending on whether we're in multi-mode or not (isMulti)
+
             let newValue = value;
+
             if (props.isMulti && !newValue) {
               newValue = [];
             }
@@ -413,15 +441,25 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           }}
           onFocus={props.onFocus}
           onInputChange={props.onInputChange}
+          options={props.options}
           placeholder={placeholder}
           tabIndex={props.tabIndex}
           tabSelectsValue={props.tabSelectsValue}
           value={props.value}
-          // Async react-select props
-          defaultOptions={props.defaultOptions}
-          loadOptions={props.loadOptions}
-          cacheOptions={props.cacheOptions}
-          // @ts-ignore
+          // Creatable props
+          allowCreateWhileLoading={props.allowCreateWhileLoading}
+          formatCreateLabel={
+            props.formatCreateLabel ||
+            ((inputValue) =>
+              intl.formatMessage(messages.createLabel, {
+                inputValue,
+              }))
+          }
+          isValidNewOption={props.isValidNewOption}
+          getNewOptionData={props.getNewOptionData}
+          onCreateOption={props.onCreateOption}
+          createOptionPosition={props.createOptionPosition}
+          //@ts-ignore
           iconLeft={props.iconLeft}
         />
       </div>
@@ -429,20 +467,18 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
   );
 };
 
-// Formik will set the field to an array on submission, so we always have to
-// deal with an array. The touched state ends up being an empty array in case
-// values were removed only. So we have to treat any array we receive as
-// a signal of the field having been touched.
-AsyncSelectInput.isTouched = (touched: unknown) => Boolean(touched);
+CreatableSelectInput.displayName = 'CreatableSelectInput';
 
-AsyncSelectInput.displayName = 'AsyncSelectInput';
+// Both "true" and an empty array [] represent a touched state. The Boolean
+// conveniently handles both cases
+CreatableSelectInput.isTouched = (touched: unknown) => Boolean(touched);
 
-AsyncSelectInput.defaultProps = defaultProps;
+CreatableSelectInput.defaultProps = defaultProps;
 
-addStaticFields(AsyncSelectInput, {
+addStaticFields(CreatableSelectInput, {
   ...defaultComponents,
   ...customizedComponents,
-  isTouched: AsyncSelectInput.isTouched,
+  isTouched: CreatableSelectInput.isTouched,
 });
 
-export default AsyncSelectInput;
+export default CreatableSelectInput;
