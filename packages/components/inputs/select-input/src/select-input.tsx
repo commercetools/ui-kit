@@ -222,7 +222,7 @@ type TSelectInputProps = {
    */
   menuShouldBlockScroll?: ReactSelectProps['menuShouldBlockScroll'];
   /**
-   * whether the menu should close when a value is selected
+   * whether the menu should close after a value is selected
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
@@ -317,10 +317,11 @@ type TSelectInputProps = {
 
 const defaultProps: Pick<
   TSelectInputProps,
-  'maxMenuHeight' | 'menuPortalZIndex'
+  'maxMenuHeight' | 'menuPortalZIndex' | 'closeMenuOnSelect'
 > = {
   maxMenuHeight: 220,
   menuPortalZIndex: 1,
+  closeMenuOnSelect: true,
 };
 
 const SelectInput = (props: TSelectInputProps) => {

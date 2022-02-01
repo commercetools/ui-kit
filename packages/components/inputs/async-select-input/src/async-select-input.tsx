@@ -198,7 +198,7 @@ type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  closeMenuOnSelect: ReactSelectAsyncProps['closeMenuOnSelect'];
+  closeMenuOnSelect?: ReactSelectAsyncProps['closeMenuOnSelect'];
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
@@ -287,13 +287,14 @@ type TAsyncSelectInputProps = {
 
 const defaultProps: Pick<
   TAsyncSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex'
+  'value' | 'isSearchable' | 'menuPortalZIndex' | 'closeMenuOnSelect'
 > = {
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
   value: null,
   isSearchable: true,
   menuPortalZIndex: 1,
+  closeMenuOnSelect: true,
 };
 
 const AsyncSelectInput = (props: TAsyncSelectInputProps) => {

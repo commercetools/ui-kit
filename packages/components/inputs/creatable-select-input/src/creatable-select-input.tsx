@@ -203,7 +203,7 @@ type TCreatableSelectInputProps = {
   /**
    * When set to false, the select menu will not be closed after an option is selected. By default, it is set to true.
    */
-  closeMenuOnSelect: ReactSelectCreatableProps['closeMenuOnSelect'];
+  closeMenuOnSelect?: ReactSelectCreatableProps['closeMenuOnSelect'];
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
@@ -312,7 +312,7 @@ type TCreatableSelectInputProps = {
 
 const defaultProps: Pick<
   TCreatableSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex'
+  'value' | 'isSearchable' | 'menuPortalZIndex' | 'closeMenuOnSelect'
 > = {
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
@@ -325,6 +325,7 @@ const defaultProps: Pick<
   // the default API of react-select.
   isSearchable: true,
   menuPortalZIndex: 1,
+  closeMenuOnSelect: true,
 };
 
 const CreatableSelectInput = (props: TCreatableSelectInputProps) => {

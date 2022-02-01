@@ -166,7 +166,9 @@ export type TSearchSelectInputProps = {
    */
   menuShouldBlockScroll?: ReactSelectAsyncProps['menuShouldBlockScroll'];
   /**
-   * whether the menu should be closed when a value is selected
+   * whether the menu should be closed after a value is selected
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
   closeMenuOnSelect?: ReactSelectAsyncProps['closeMenuOnSelect'];
   /**
@@ -249,11 +251,12 @@ type TOptionInnerProps = {
 
 const defaultProps: Pick<
   TSearchSelectInputProps,
-  'value' | 'menuPortalZIndex' | 'maxMenuHeight'
+  'value' | 'menuPortalZIndex' | 'maxMenuHeight' | 'closeMenuOnSelect'
 > = {
   value: null,
   menuPortalZIndex: 1,
   maxMenuHeight: 220,
+  closeMenuOnSelect: true,
 };
 
 const SearchSelectInput = (props: TSearchSelectInputProps) => {

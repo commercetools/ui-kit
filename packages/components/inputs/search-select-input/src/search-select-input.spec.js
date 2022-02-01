@@ -160,7 +160,6 @@ describe('in single mode', () => {
       // list should closed and not visible
       expect(screen.queryByText('Banana')).not.toBeInTheDocument();
     });
-
     it('should call onChange when value selected', async () => {
       const onChange = jest.fn();
       renderInput({
