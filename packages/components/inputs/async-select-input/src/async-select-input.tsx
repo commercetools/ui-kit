@@ -198,7 +198,7 @@ type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  closeMenuOnSelect: ReactSelectProps['closeMenuOnSelect'];
+  closeMenuOnSelect: ReactSelectAsyncProps['closeMenuOnSelect'];
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
