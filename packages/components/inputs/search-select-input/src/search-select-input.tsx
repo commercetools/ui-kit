@@ -251,12 +251,11 @@ type TOptionInnerProps = {
 
 const defaultProps: Pick<
   TSearchSelectInputProps,
-  'value' | 'menuPortalZIndex' | 'maxMenuHeight' | 'closeMenuOnSelect'
+  'value' | 'menuPortalZIndex' | 'maxMenuHeight'
 > = {
   value: null,
   menuPortalZIndex: 1,
   maxMenuHeight: 220,
-  closeMenuOnSelect: true,
 };
 
 const SearchSelectInput = (props: TSearchSelectInputProps) => {

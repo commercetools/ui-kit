@@ -317,11 +317,10 @@ type TSelectInputProps = {
 
 const defaultProps: Pick<
   TSelectInputProps,
-  'maxMenuHeight' | 'menuPortalZIndex' | 'closeMenuOnSelect'
+  'maxMenuHeight' | 'menuPortalZIndex'
 > = {
   maxMenuHeight: 220,
   menuPortalZIndex: 1,
-  closeMenuOnSelect: true,
 };
 
 const SelectInput = (props: TSelectInputProps) => {

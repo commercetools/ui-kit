@@ -312,7 +312,7 @@ type TCreatableSelectInputProps = {
 
 const defaultProps: Pick<
   TCreatableSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex' | 'closeMenuOnSelect'
+  'value' | 'isSearchable' | 'menuPortalZIndex'
 > = {
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
@@ -325,7 +325,6 @@ const defaultProps: Pick<
   // the default API of react-select.
   isSearchable: true,
   menuPortalZIndex: 1,
-  closeMenuOnSelect: true,
 };
 
 const CreatableSelectInput = (props: TCreatableSelectInputProps) => {

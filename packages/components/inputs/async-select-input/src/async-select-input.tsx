@@ -287,14 +287,13 @@ type TAsyncSelectInputProps = {
 
 const defaultProps: Pick<
   TAsyncSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex' | 'closeMenuOnSelect'
+  'value' | 'isSearchable' | 'menuPortalZIndex'
 > = {
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
   value: null,
   isSearchable: true,
   menuPortalZIndex: 1,
-  closeMenuOnSelect: true,
 };
 
 const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
