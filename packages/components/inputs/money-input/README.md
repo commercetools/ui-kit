@@ -49,29 +49,56 @@ export default Example;
 
 ## Properties
 
-| Props                   | Type                                                                                               | Required | Default   | Description                                                                                                                                                   |
-| ----------------------- | -------------------------------------------------------------------------------------------------- | :------: | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                    | `string`                                                                                           |          |           | Used as HTML id property. An id is auto-generated when it is not specified.                                                                                   |
-| `autoComplete`          | `string`                                                                                           |          |           | Used as HTML `autocomplete` property                                                                                                                          |
-| `name`                  | `string`                                                                                           |          |           | The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).            |
-| `value`                 | `object`                                                                                           |    ✅    |           | Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator. |
-| `value.amount`          | `string`                                                                                           |    ✅    |           |                                                                                                                                                               |
-| `value.currencyCode`    | `string`                                                                                           |    ✅    |           |                                                                                                                                                               |
-| `currencies`            | Array of `string`                                                                                  |          | `[]`      | List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.                       |
-| `placeholder`           | `string`                                                                                           |          |           | Placeholder text for the input                                                                                                                                |
-| `onBlur`                | `func`                                                                                             |          |           | Called when input is blurred                                                                                                                                  |
-| `onFocus`               | `func`                                                                                             |          |           | Called when input is focused                                                                                                                                  |
-| `isDisabled`            | `bool`                                                                                             |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                |
-| `isReadOnly`            | `bool`                                                                                             |          |           | Indicates that the field is displaying read-only content                                                                                                      |
-| `isAutofocussed`        | `bool`                                                                                             |          |           | Focus the input on initial render                                                                                                                             |
-| `onChange`              | `custom`                                                                                           |          |           | Called with the event of the input or dropdown when either the currency or the amount have changed.&#xA;<br />&#xA;Signature: `(event) => void`               |
-| `menuPortalTarget`      | `SafeHTMLElement`                                                                                  |          |           | Dom element to portal the currency select menu to                                                                                                             |
-| `menuPortalZIndex`      | `number`                                                                                           |          | `1`       | z-index value for the currency select menu portal                                                                                                             |
-| `menuShouldBlockScroll` | `bool`                                                                                             |          |           | whether the menu should block scroll while open                                                                                                               |
-| `hasError`              | `bool`                                                                                             |          |           | Indicates that input has errors                                                                                                                               |
-| `hasWarning`            | `bool`                                                                                             |          |           | Control to indicate on the input if there are selected values that are potentially invalid                                                                    |
-| `hasHighPrecisionBadge` | `bool`                                                                                             |          |           | Shows high precision badge in case current value uses high precision.                                                                                         |
-| `horizontalConstraint`  | `enum`<br/>Possible values:<br/>`3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                    |
+| Props                   | Type                                                                                                  | Required | Default   | Description                                                                                                                                                   |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- | :------: | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                    | `string`                                                                                              |          |           | Used as HTML id property. An id is auto-generated when it is not specified.                                                                                   |
+| `autoComplete`          | `string`                                                                                              |          |           | Used as HTML `autocomplete` property                                                                                                                          |
+| `name`                  | `string`                                                                                              |          |           | The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).            |
+| `value`                 | `Object`<br/>[See signature.](#signature-value)                                                       |    ✅    |           | Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator. |
+| `currencies`            | `Array: string[]`                                                                                     |          | `[]`      | List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.                       |
+| `placeholder`           | `string`                                                                                              |          |           | Placeholder text for the input                                                                                                                                |
+| `onBlur`                | `Function`<br/>[See signature.](#signature-onBlur)                                                    |          |           | Called when input is blurred                                                                                                                                  |
+| `onFocus`               | `Function`<br/>[See signature.](#signature-onFocus)                                                   |          |           | Called when input is focused                                                                                                                                  |
+| `isDisabled`            | `boolean`                                                                                             |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                |
+| `isReadOnly`            | `boolean`                                                                                             |          |           | Indicates that the field is displaying read-only content                                                                                                      |
+| `isAutofocussed`        | `boolean`                                                                                             |          |           | Focus the input on initial render                                                                                                                             |
+| `onChange`              | `Function`<br/>[See signature.](#signature-onChange)                                                  |    ✅    |           | Called with the event of the input or dropdown when either the currency or the amount have changed.&#xA;<br />&#xA;Signature: `(event) => void`               |
+| `menuPortalTarget`      | `ReactSelectProps['menuPortalTarget']`                                                                |          |           | Dom element to portal the currency select menu to&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                             |
+| `menuPortalZIndex`      | `number`                                                                                              |          | `1`       | z-index value for the currency select menu portal                                                                                                             |
+| `menuShouldBlockScroll` | `ReactSelectProps['menuShouldBlockScroll']`                                                           |    ✅    |           | whether the menu should block scroll while open&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                               |
+| `hasError`              | `boolean`                                                                                             |          |           | Indicates that input has errors                                                                                                                               |
+| `hasWarning`            | `boolean`                                                                                             |          |           | Control to indicate on the input if there are selected values that are potentially invalid                                                                    |
+| `hasHighPrecisionBadge` | `boolean`                                                                                             |          |           | Shows high precision badge in case current value uses high precision.                                                                                         |
+| `horizontalConstraint`  | `union`<br/>Possible values:<br/>`, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                    |
+
+## Signatures
+
+### Signature `value`
+
+```ts
+{
+  amount: string;
+  currencyCode: TCurrencyCode;
+}
+```
+
+### Signature `onBlur`
+
+```ts
+(event: TEvent) => void
+```
+
+### Signature `onFocus`
+
+```ts
+(event: TEvent) => void
+```
+
+### Signature `onChange`
+
+```ts
+(event: TEvent) => void
+```
 
 ## Static methods
 
