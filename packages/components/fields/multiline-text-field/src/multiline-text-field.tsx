@@ -43,11 +43,7 @@ export type TMultiTextFieldProps = {
     | 16
     | 'scale'
     | 'auto';
-  /**
-   * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
-   * <br />
-   * Signature: `(key, error) => React.node`
-   */
+
   renderError?: TErrorRenderer;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
