@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "config:base",
-    ":preserveSemverRanges",
-    "schedule:weekly"
-  ],
+  "extends": ["config:base", ":preserveSemverRanges", "schedule:weekly"],
   "separateMajorMinor": true,
   "packageRules": [
     {
@@ -12,7 +8,7 @@
     },
     {
       "sourceUrlPrefixes": [
-        "https://github.com/stylelint/stylelint-config-standard", 
+        "https://github.com/stylelint/stylelint-config-standard",
         "https://github.com/stylelint/stylelint"
       ],
       "groupName": "all stylelint packages"
@@ -29,7 +25,6 @@
   },
   "labels": ["🤖 Type: Dependencies"],
   "ignoreDeps": [
-    "@svgr/plugin-svgo",
     "@storybook/addon-a11y",
     "@storybook/addon-actions",
     "@storybook/addon-google-analytics",
