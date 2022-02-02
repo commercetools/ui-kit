@@ -1,12 +1,15 @@
-// @ts-nocheck
-import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { isValidElementType } from 'react-is';
+import {
+  type ChangeEventHandler,
+  type FocusEventHandler,
+  type ReactElement,
+  isValidElement,
+} from 'react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
   filterDataAttributes,
   filterInvalidAttributes,
+  warning,
 } from '@commercetools-uikit/utils';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 import { RadioOptionCheckedIcon, RadioOptionUncheckedIcon } from './icons';
@@ -22,8 +25,53 @@ const Input = styled.input`
   }
 `;
 
-const Option = (props) => {
+type TComponents = {
+  wrapper?: (children: ReactElement) => ReactElement;
+};
+
+export type TOptionProps = {
+  // Direct props
+  value: string | boolean;
+  children: string | ReactElement | (() => ReactElement);
+  components?: TComponents;
+  // Injected props from the parent Group component
+  id?: string;
+  name?: string;
+  isChecked?: boolean;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  onChange?: ChangeEventHandler;
+  onFocus?: FocusEventHandler;
+  onBlur?: FocusEventHandler;
+
+  // This prop forces Radio.Option to be rendered in a hovered state (though isDisabled takes
+  // precedence over that). We need that to address a use-case when hovering is comming
+  // from somewhere up the hierarchy. There is no need to touch this prop in case
+  // all you need is a general highlighting on hover of Radio.Option body, which is solved
+  // by a corresponding :hover selector in the syles of this component.
+  isHovered?: boolean;
+};
+
+const Option = (props: TOptionProps) => {
   const labelProps = props.id ? { htmlFor: props.id } : {};
+
+  if (props.components?.wrapper) {
+    warning(
+      typeof props.components?.wrapper === 'function',
+      `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the prop is not a function`
+    );
+    warning(
+      props.components?.wrapper.length === 1,
+      `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the supplied function should expect one argument`
+    );
+    warning(
+      isValidElement(props.components?.wrapper(<></>)),
+      `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the function supplied should return a valid react element`
+    );
+  }
+
   return (
     <label
       css={getLabelStyles(props)}
@@ -37,6 +85,7 @@ const Option = (props) => {
         css={accessibleHiddenInputStyles}
         id={props.id}
         name={props.name}
+        // @ts-ignore
         value={props.value}
         onChange={props.isReadOnly ? undefined : props.onChange}
         disabled={props.isDisabled}
@@ -60,56 +109,6 @@ const Option = (props) => {
   );
 };
 Option.displayName = 'RadioOption';
-Option.propTypes = {
-  // Direct props
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.func,
-  ]).isRequired,
-  components: PropTypes.shape({
-    wrapper: (props, propName) => {
-      if (props[propName]) {
-        if (typeof props[propName] !== 'function') {
-          return new Error(
-            `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the prop is not a function`
-          );
-        }
-        if (props[propName].length !== 1) {
-          return new Error(
-            `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the supplied function should expect one argument`
-          );
-        }
-        if (isValidElementType(props[propName](Fragment))) {
-          return new Error(
-            `Invalid prop 'components.wrapper' supplied to 'RadioInput.Option': the function supplied should return a valid react element`
-          );
-        }
-      }
-      return null;
-    },
-  }),
-
-  // Injected props from the parent Group component
-  id: PropTypes.string,
-  name: PropTypes.string,
-  isChecked: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  onChange: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-
-  // This prop forces Radio.Option to be rendered in a hovered state (though isDisabled takes
-  // precedence over that). We need that to address a use-case when hovering is comming
-  // from somewhere up the hierarchy. There is no need to touch this prop in case
-  // all you need is a general highlighting on hover of Radio.Option body, which is solved
-  // by a corresponding :hover selector in the syles of this component.
-  isHovered: PropTypes.bool,
-};
 
 Option.defaultProps = {
   components: {},
