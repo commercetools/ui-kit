@@ -13,15 +13,15 @@ import {
   StyledInputContainer,
 } from './time-input-body.styles';
 
-import type { TTimeInput } from './time-input';
+import type { TTimeInputProps } from './time-input';
 
-type TExtendedTimeInput = TTimeInput & {
+type TTimeInputBodyProps = TTimeInputProps & {
   onClear: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
 };
 
-type TClearSection = {
+type TClearSectionProps = {
   isDisabled?: boolean;
   hasError?: boolean;
   isReadOnly?: boolean;
@@ -30,7 +30,7 @@ type TClearSection = {
   ) => void;
 };
 
-export const ClearSection = (props: TClearSection) => {
+export const ClearSection = (props: TClearSectionProps) => {
   const theme = useTheme();
   return (
     <AccessibleButton
@@ -46,7 +46,7 @@ export const ClearSection = (props: TClearSection) => {
 
 ClearSection.displayName = 'ClearSection';
 
-const TimeInputBody = (props: TExtendedTimeInput) => {
+const TimeInputBody = (props: TTimeInputBodyProps) => {
   const theme = useTheme();
   return (
     <Inline alignItems="center">

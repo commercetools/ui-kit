@@ -21,7 +21,7 @@ type TEvent = {
   target: { id: string; name?: string; value: unknown };
 };
 
-export type TTimeInput = {
+export type TTimeInputProps = {
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
    */
@@ -60,16 +60,11 @@ export type TTimeInput = {
   value?: string;
   /**
    * Called with an event holding the new value.
-   * <br/>
-   * Required when input is not read only. Parent should pass it back as `value`-
-   * <br />
-   * Signature: `(event) => void`
    */
   onChange: (event: TEvent) => void;
   /**
    * Called when input is blurred
    * <br/>
-   * Signature: `(event) => void`
    */
   onBlur?: FocusEventHandler;
   /**
@@ -125,7 +120,7 @@ const hasMilliseconds = (parsedTime: {
   milliseconds: number;
 }) => parsedTime.milliseconds !== 0;
 
-const TimeInput = (props: TTimeInput) => {
+const TimeInput = (props: TTimeInputProps) => {
   const id = useFieldId(props.id, sequentialId);
   const intl = useIntl();
   const prevLocale = usePrevious(intl.locale);
@@ -145,10 +140,7 @@ const TimeInput = (props: TTimeInput) => {
   const handleBlur = useCallback(
     (event) => {
       // check formatting and reformat when necessary
-      const formattedTime = TimeInput.toLocaleTime(
-        value as string,
-        intl.locale
-      );
+      const formattedTime = value && TimeInput.toLocaleTime(value, intl.locale);
 
       if (formattedTime !== value) emitChange(formattedTime);
 
@@ -230,12 +222,12 @@ TimeInput.toLocaleTime = (time: string, locale: string) => {
     parsedTime.milliseconds
   );
 
-  const options = {
+  const options: Intl.DateTimeFormatOptions = {
     hour: 'numeric',
     minute: 'numeric',
     // only show seconds when time contains seconds
     second: parsedTime.seconds > 0 ? 'numeric' : undefined,
-  } as const;
+  };
 
   const isValidDate = !isNaN(date.getTime());
   return isValidDate ? date.toLocaleTimeString(locale, options) : '';
