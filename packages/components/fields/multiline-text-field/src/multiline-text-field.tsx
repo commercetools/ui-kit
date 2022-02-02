@@ -45,7 +45,6 @@ export type TMultiTextFieldProps = {
     | 'auto';
   /**
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
-   * <br />
    */
   renderError?: TErrorRenderer;
   /**
