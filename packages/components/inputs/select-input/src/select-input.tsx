@@ -1,53 +1,52 @@
-import type { ReactNode, FocusEvent } from 'react';
+import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import { useTheme } from '@emotion/react';
-import {
+import has from 'lodash/has';
+import flatMap from 'lodash/flatMap';
+import Select, {
   components as defaultComponents,
-  type ActionMeta,
-  type GroupBase,
-  type OptionsOrGroups,
+  type Props as ReactSelectProps,
 } from 'react-select';
-import AsyncSelect, { type AsyncProps } from 'react-select/async';
-import {
-  addStaticFields,
-  filterDataAttributes,
-} from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import {
   ClearIndicator,
   TagRemove,
   DropdownIndicator,
   customComponentsWithIcons,
-  messages,
   createSelectStyles,
+  messages,
 } from '@commercetools-uikit/select-utils';
-
-const LoadingIndicator = () => <LoadingSpinner scale="s" />;
-LoadingIndicator.displayName = 'LoadingIndicator';
+import {
+  addStaticFields,
+  filterDataAttributes,
+} from '@commercetools-uikit/utils';
 
 const customizedComponents = {
   DropdownIndicator,
   ClearIndicator,
-  LoadingIndicator,
   MultiValueRemove: TagRemove,
 };
 
+type TOption = {
+  value: string;
+};
+
+type TOptionObject = {
+  options: TOption[];
+};
+
+type TOptions = TOption[] | TOptionObject[];
+
 type TEvent = {
   target: {
-    name?: string;
-    value?: unknown;
+    name: ReactSelectProps['name'];
+    value?: string | string[] | null;
   };
   persist: () => void;
 };
 
-type ReactSelectAsyncProps = AsyncProps<unknown, boolean, GroupBase<unknown>>;
-
-type TAsyncSelectInputProps = {
-  /**
-   * Horizontal size limit of the input fields.
-   */
+type TSelectInputProps = {
   horizontalConstraint?:
     | 3
     | 4
@@ -66,17 +65,22 @@ type TAsyncSelectInputProps = {
     | 'scale'
     | 'auto';
   /**
-   * Indicates the input field has an error
+   * Indicates that input has errors
    */
   hasError?: boolean;
   /**
-   * Indicates the input field has a warning
+   * Is the select read-only
+   */
+  isReadOnly?: boolean;
+
+  /**
+   * Control to indicate on the input if there are selected values that are potentially invalid
    */
   hasWarning?: boolean;
   /**
-   * Indicates that the field is displaying read-only content
+   * 	Icon to display on the left of the placeholder text and selected value. Has no effect when isMulti is enabled.
    */
-  isReadOnly?: boolean;
+  iconLeft?: ReactNode;
 
   // react-select base props
   //
@@ -91,14 +95,13 @@ type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-label'?: ReactSelectAsyncProps['aria-label'];
+  'aria-label'?: ReactSelectProps['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-labelledby'?: ReactSelectAsyncProps['aria-labelledby'];
-  // renamed autoFocus of react-select
+  'aria-labelledby'?: ReactSelectProps['aria-labelledby'];
   /**
    * Focus the control when it is mounted
    */
@@ -108,204 +111,250 @@ type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  backspaceRemovesValue?: ReactSelectAsyncProps['backspaceRemovesValue'];
+  backspaceRemovesValue?: ReactSelectProps['backspaceRemovesValue'];
+  // blurInputOnSelect: PropTypes.bool,
+  // captureMenuScroll: PropTypes.bool,
+  // className: PropTypes.string,
+  // classNamePrefix: PropTypes.string,
+  // closeMenuOnSelect: PropTypes.bool,
+  // closeMenuOnScroll: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   /**
-   * Map of components to overwrite the default ones, see [what components you can override](https://react-select.com/components)
+   * Map of components to overwrite the default ones, see what components you can override
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  components?: ReactSelectAsyncProps['components'];
+  components?: ReactSelectProps['components'];
+  // controlShouldRenderValue: PropTypes.bool,
+  // delimiter: PropTypes.string,
+  // escapeClearsValue: PropTypes.bool,
   /**
    * Custom method to filter whether an option should be displayed in the menu
+   * <br />
+   * Signature: `(option, rawInput) => boolean`
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  filterOption?: ReactSelectAsyncProps['filterOption'];
-  // This forwarded as react-select's "inputId"
+  filterOption?: ReactSelectProps['filterOption'];
+  // formatGroupLabel: PropTypes.func,
+  // formatOptionLabel: PropTypes.func,
+  // getOptionLabel: PropTypes.func,
+  // getOptionValue: PropTypes.func,
+  // hideSelectedOptions: PropTypes.bool,
   /**
-   * The id of the search input
+   * Used as HTML id property. An id is generated automatically when not provided.
+   * This forwarded as react-select's "inputId"
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  id?: ReactSelectAsyncProps['inputId'];
+  id?: ReactSelectProps['inputId'];
   /**
    * The value of the search input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  inputValue?: ReactSelectAsyncProps['inputValue'];
-  // This is forwarded as react-select's "id"
+  inputValue: ReactSelectProps['inputValue'];
   /**
    * The id to set on the SelectContainer component
+   * This is forwarded as react-select's "id"
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  containerId?: ReactSelectAsyncProps['id'];
+  containerId?: ReactSelectProps['id'];
+  // instanceId: PropTypes.string,
   /**
    * Is the select value clearable
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isClearable?: ReactSelectAsyncProps['isClearable'];
+  isClearable?: ReactSelectProps['isClearable'];
   /**
    * Is the select disabled
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isDisabled?: ReactSelectAsyncProps['isDisabled'];
+  isDisabled?: ReactSelectProps['isDisabled'];
+  // isLoading: PropTypes.bool,
   /**
    * Override the built-in logic to detect whether an option is disabled
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isOptionDisabled?: ReactSelectAsyncProps['isOptionDisabled'];
+  isOptionDisabled?: ReactSelectProps['isOptionDisabled'];
+  // isOptionSelected: PropTypes.func,
   /**
    * Support multiple selected options
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isMulti?: ReactSelectAsyncProps['isMulti'];
+  isMulti?: ReactSelectProps['isMulti'];
+  // isRtl: PropTypes.bool,
   /**
    * Whether to enable search functionality
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  isSearchable?: ReactSelectAsyncProps['isSearchable'];
+  isSearchable?: ReactSelectProps['isSearchable'];
+  // loadingMessage: PropTypes.func,
+  // minMenuHeight: PropTypes.number,
   /**
    * Maximum height of the menu before scrolling
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  maxMenuHeight?: ReactSelectAsyncProps['maxMenuHeight'];
+  maxMenuHeight?: ReactSelectProps['maxMenuHeight'];
+  // menuIsOpen: PropTypes.bool,
+  // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
+  // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
   /**
    * Dom element to portal the select menu to
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuPortalTarget?: ReactSelectAsyncProps['menuPortalTarget'];
+  menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
    */
-  menuPortalZIndex: number;
+  menuPortalZIndex?: number;
   /**
    * whether the menu should block scroll while open
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuShouldBlockScroll?: ReactSelectAsyncProps['menuShouldBlockScroll'];
+  menuShouldBlockScroll?: ReactSelectProps['menuShouldBlockScroll'];
+  // menuShouldScrollIntoView: PropTypes.bool,
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  name?: ReactSelectAsyncProps['name'];
+  name?: ReactSelectProps['name'];
   /**
-   * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with `{ inputValue: String }`. `inputValue` will be an empty string when no search text is present.
+   * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with { inputValue: String }.
+   * <br />
+   * `inputValue` will be an empty string when no search text is present.
+   * <br />
+   * Signature: `({ inputValue}) => string`
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  noOptionsMessage?: ReactSelectAsyncProps['noOptionsMessage'];
+  noOptionsMessage?: ReactSelectProps['noOptionsMessage'];
   /**
    * Handle blur events on the control
+   * <br />
+   * Signature: `(event) => void`
    */
   onBlur?: (event: TEvent) => void;
   /**
-   * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
+   * Called with a fake event when value changes. The event's target.name will be the name supplied in props. The event's target.value will hold the value.
+   * <br/>
+   * The value will be the selected option, or an array of options in case isMulti is true.
+   * <br />
+   * Signature: `(event) => void`
    */
-  onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
+  onChange?: (event: TEvent) => void;
   /**
    * Handle focus events on the control
+   * <br />
+   * Signature: `(event) => void`
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onFocus?: ReactSelectAsyncProps['onFocus'];
+  onFocus?: ReactSelectProps['onFocus'];
   /**
    * Handle change events on the input
+   * <br />
+   * Signature: `(newValue, actionMeta) => void`
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onInputChange?: ReactSelectAsyncProps['onInputChange'];
+  onInputChange?: ReactSelectProps['onInputChange'];
+  // onKeyDown: PropTypes.func,
+  // onMenuOpen: PropTypes.func,
+  // onMenuClose: PropTypes.func,
+  // onMenuScrollToTop: PropTypes.func,
+  // onMenuScrollToBottom: PropTypes.func,
+  // openMenuOnFocus: PropTypes.bool,
+  // openMenuOnClick: PropTypes.bool,
+  /**
+   * Array of options that populate the select menu
+   */
+  options?: TOptions;
+  showOptionGroupDivider?: boolean;
+  // pageSize: PropTypes.number,
   /**
    * Placeholder text for the select value
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  placeholder?: ReactSelectAsyncProps['placeholder'];
-  /**
-   * loading message shown while the options are being loaded
-   */
-  loadingMessage?: string | (() => string);
+  placeholder?: ReactSelectProps['placeholder'];
+  // screenReaderStatus: PropTypes.func,
+  // styles: PropTypes.objectOf(PropTypes.func),
+  // theme: PropTypes.object,
   /**
    * Sets the tabIndex attribute on the input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  tabIndex?: ReactSelectAsyncProps['tabIndex'];
+  tabIndex?: ReactSelectProps['tabIndex'];
   /**
    * Select the currently focused option when the user presses tab
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  tabSelectsValue?: ReactSelectAsyncProps['tabSelectsValue'];
+  tabSelectsValue?: ReactSelectProps['tabSelectsValue'];
   /**
    * The value of the select; reflected by the selected option
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  value?: ReactSelectAsyncProps['value'];
-
-  // Async props
-  /**
-   * The default set of options to show before the user starts searching. When set to true, the results for loadOptions('') will be autoloaded.
-   * <br>
-   * [Props from React select was used](https://react-select.com/props)
-   */
-  defaultOptions?: OptionsOrGroups<unknown, GroupBase<unknown>> | boolean;
-  /**
-   * Function that returns a promise, which is the set of options to be used once the promise resolves.
-   */
-  loadOptions: ReactSelectAsyncProps['loadOptions'];
-  /**
-   * If cacheOptions is truthy, then the loaded data will be cached. The cache will remain until cacheOptions changes value.
-   */
-  cacheOptions?: ReactSelectAsyncProps['cacheOptions'];
-  /**
-   * Determines if option groups will be separated by a divider
-   */
-  showOptionGroupDivider?: boolean;
-  /**
-   * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
-   */
-  iconLeft?: ReactNode;
+  value: ReactSelectProps['value'];
 };
 
 const defaultProps: Pick<
-  TAsyncSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex'
+  TSelectInputProps,
+  'maxMenuHeight' | 'menuPortalZIndex'
 > = {
-  // Using "null" will ensure that the currently selected value disappears in
-  // case "undefined" gets passed as the next value
-  value: null,
-  isSearchable: true,
+  maxMenuHeight: 220,
   menuPortalZIndex: 1,
 };
 
-const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
-  const theme = useTheme();
+const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
+  const theme = useTheme();
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
-  const loadingMessage = () => {
-    if (typeof props.loadingMessage === 'function') {
-      return props.loadingMessage();
-    }
-    return props.loadingMessage || intl.formatMessage(messages.loadingOptions);
-  };
+  // Options can be grouped as
+  //   const colourOptions = [{ value: 'green', label: 'Green' }];
+  //   const flavourOptions = [{ value: 'vanilla', label: 'Vanilla' }];
+  //   const groupedOptions = [
+  //     { label: 'Colours', options: colourOptions },
+  //     { label: 'Flavours', options: flavourOptions },
+  //   ];
+  // So we "ungroup" the options by merging them all into one list first.
+  const optionsWithoutGroups = flatMap(props.options, (option) =>
+    has(option, 'value') ? option : (option as TOptionObject).options
+  );
+
+  const selectedOptions = props.isMulti
+    ? (props.value as string[])
+        // Pass the options in the order selected by the use, so that the
+        // sorting is not lost
+        .map((value: string) =>
+          optionsWithoutGroups.find(
+            (option) => (option as TOption).value === value
+          )
+        )
+        .filter(Boolean)
+    : optionsWithoutGroups.find(
+        (option) =>
+          has(option, 'value') && (option as TOption).value === props.value
+      ) || null;
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
-        <AsyncSelect
+        <Select
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
           autoFocus={props.isAutofocussed}
@@ -327,7 +376,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
                   }
                 : {}),
               ...props.components,
-            } as ReactSelectAsyncProps['components']
+            } as ReactSelectProps['components']
           }
           menuIsOpen={props.isReadOnly ? false : undefined}
           styles={
@@ -341,10 +390,10 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
                 isReadOnly: props.isReadOnly,
                 iconLeft: props.iconLeft,
                 isMulti: props.isMulti,
-                hasValue: !isEmpty(props.value),
+                hasValue: !isEmpty(selectedOptions),
               },
               theme
-            ) as ReactSelectAsyncProps['styles']
+            ) as ReactSelectProps['styles']
           }
           filterOption={props.filterOption}
           // react-select uses "id" (for the container) and "inputId" (for the input),
@@ -357,13 +406,14 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           isClearable={props.isReadOnly ? false : props.isClearable}
           isDisabled={props.isDisabled}
           isOptionDisabled={props.isOptionDisabled}
+          // @ts-ignore
+          isReadOnly={props.isReadOnly}
           isMulti={props.isMulti}
           isSearchable={props.isSearchable}
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
           name={props.name}
-          loadingMessage={loadingMessage}
           noOptionsMessage={
             props.noOptionsMessage ||
             (({ inputValue }) =>
@@ -374,54 +424,59 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
                   }))
           }
           onBlur={
-            props.onBlur
+            typeof props.onBlur === 'function'
               ? () => {
                   const event = {
                     target: {
                       name: (() => {
-                        if (!props.name) return undefined;
                         if (!props.isMulti) return props.name;
                         // We append the ".0" to make Formik set the touched
                         // state as an array instead of a boolean only.
                         // Otherwise the shapes would clash on submission, as
                         // Formik will create an array on submission anyways.
-                        return `${props.name}.0`;
+                        return props.name ? `${props.name}.0` : undefined;
                       })(),
                     },
                     persist: () => {},
                   };
-                  props.onBlur &&
-                    props.onBlur(
-                      event as FocusEvent<HTMLInputElement, Element>
-                    );
+                  props.onBlur && props.onBlur(event);
                 }
               : undefined
           }
-          onChange={(value, info) => {
-            let newValue = value;
-            if (props.isMulti && !newValue) {
-              newValue = [];
+          onChange={(nextSelectedOptions) => {
+            // nextSelectedOptions is either an array, or a single option, or null
+            // depending on whether we're in multi-mode or not (isMulti)
+            let value = null;
+
+            if (props.isMulti) {
+              if (nextSelectedOptions) {
+                value = (nextSelectedOptions as TOption[]).map(
+                  (option) => option.value
+                );
+              } else {
+                value = [];
+              }
+            } else if (nextSelectedOptions) {
+              value = (nextSelectedOptions as TOption).value;
             }
 
-            props.onChange(
-              {
-                target: { name: props.name, value: newValue },
+            props.onChange &&
+              props.onChange({
+                target: {
+                  name: props.name,
+                  value,
+                },
                 persist: () => {},
-              },
-              info
-            );
+              });
           }}
           onFocus={props.onFocus}
           onInputChange={props.onInputChange}
+          options={props.options}
           placeholder={placeholder}
           tabIndex={props.tabIndex}
           tabSelectsValue={props.tabSelectsValue}
-          value={props.value}
-          // Async react-select props
-          defaultOptions={props.defaultOptions}
-          loadOptions={props.loadOptions}
-          cacheOptions={props.cacheOptions}
-          // @ts-ignore
+          value={selectedOptions}
+          //@ts-ignore
           iconLeft={props.iconLeft}
         />
       </div>
@@ -429,20 +484,17 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
   );
 };
 
-// Formik will set the field to an array on submission, so we always have to
-// deal with an array. The touched state ends up being an empty array in case
-// values were removed only. So we have to treat any array we receive as
-// a signal of the field having been touched.
-AsyncSelectInput.isTouched = (touched: unknown) => Boolean(touched);
+SelectInput.displayName = 'SelectInput';
 
-AsyncSelectInput.displayName = 'AsyncSelectInput';
+// Both "true" and an empty array [] represent a touched state. The Boolean
+// conveniently handles both cases
+SelectInput.isTouched = (touched: boolean | unknown[]) => Boolean(touched);
 
-AsyncSelectInput.defaultProps = defaultProps;
+SelectInput.defaultProps = defaultProps;
 
-addStaticFields(AsyncSelectInput, {
+addStaticFields(SelectInput, {
   ...defaultComponents,
   ...customizedComponents,
-  isTouched: AsyncSelectInput.isTouched,
+  isTouched: SelectInput.isTouched,
 });
-
-export default AsyncSelectInput;
+export default SelectInput;

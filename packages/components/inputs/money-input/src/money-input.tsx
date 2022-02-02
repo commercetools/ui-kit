@@ -1,17 +1,18 @@
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, type ReactNode } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import has from 'lodash/has';
-import requiredIf from 'react-required-if';
-import Select, { components } from 'react-select';
+import Select, {
+  components,
+  type SingleValueProps,
+  type Props as ReactSelectProps,
+} from 'react-select';
 import { useIntl } from 'react-intl';
-import { css, useTheme } from '@emotion/react';
+import { css, useTheme, type Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
   warning,
   isNumberish,
-  SafeHTMLElement,
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
 import Tooltip from '@commercetools-uikit/tooltip';
@@ -34,15 +35,25 @@ const TooltipWrapper = styled.div`
   display: flex;
 `;
 
-const getPortalId = (id) => `portal-${id}`;
-const getPortalNode = (id) => document.querySelector(`#${getPortalId(id)}`);
+const getPortalId = (id?: string) => `portal-${id}`;
+const getPortalNode = (id?: string) =>
+  document.querySelector(`#${getPortalId(id)}`);
 
-const Portal = (props) => {
-  const domNode = getPortalNode(props.id);
-  return ReactDOM.createPortal(props.children, domNode);
+type TLabel = {
+  id: string;
+  children?: ReactNode;
+  isDisabled?: boolean;
 };
 
-const CurrencyLabel = (props) => (
+const Portal = (props: TLabel) => {
+  const domNode = getPortalNode(props.id);
+  if (domNode) {
+    return ReactDOM.createPortal(props.children, domNode);
+  }
+  return null;
+};
+
+const CurrencyLabel = (props: TLabel) => (
   <label htmlFor={props.id} css={getCurrencyLabelStyles()}>
     {props.children}
   </label>
@@ -50,12 +61,12 @@ const CurrencyLabel = (props) => (
 
 CurrencyLabel.displayName = 'CurrencyLabel';
 
-CurrencyLabel.propTypes = {
-  id: PropTypes.string,
-  children: PropTypes.node,
-};
+type TSingleValue = {
+  id?: string;
+  children?: ReactNode;
+} & SingleValueProps;
 
-const SingleValue = ({ id, ...props }) => (
+const SingleValue = ({ id, ...props }: TSingleValue) => (
   <components.SingleValue {...props}>
     <label htmlFor={id}>{props.children}</label>
   </components.SingleValue>
@@ -63,13 +74,24 @@ const SingleValue = ({ id, ...props }) => (
 
 SingleValue.displayName = 'SingleValue';
 
-SingleValue.propTypes = {
-  id: PropTypes.string,
-  children: PropTypes.node,
+type TCreateCurrencySelectStyles = (input: TInputProps, theme: Theme) => void;
+
+export type TInputProps = {
+  isDisabled?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  isReadOnly?: boolean;
+  hasFocus?: boolean;
+  menuPortalZIndex?: number;
+  theme?: Theme;
 };
 
+type TBase = {
+  backgroundColor?: string;
+  color?: string;
+};
 // overwrite styles of createSelectStyles
-const createCurrencySelectStyles = (
+const createCurrencySelectStyles: TCreateCurrencySelectStyles = (
   { hasWarning, hasError, isDisabled, isReadOnly, hasFocus, menuPortalZIndex },
   theme
 ) => {
@@ -83,7 +105,7 @@ const createCurrencySelectStyles = (
   );
   return {
     ...selectStyles,
-    control: (base, state) => ({
+    control: (base: TBase, state: ReactSelectProps) => ({
       ...selectStyles.control(base, state),
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
@@ -109,7 +131,7 @@ const createCurrencySelectStyles = (
         return base.backgroundColor;
       })(),
     }),
-    singleValue: (base) => ({
+    singleValue: (base: TBase) => ({
       ...base,
       marginLeft: 0,
       maxWidth: 'initial',
@@ -191,7 +213,7 @@ const createCurrencySelectStyles = (
 // This means the highest amount always wins. We do this by comparing the last
 // position of `.` and `,`. Whatever occurs later is used as the decimal
 // separator.
-export const parseRawAmountToNumber = (rawAmount, locale) => {
+export const parseRawAmountToNumber = (rawAmount: string, locale: string) => {
   let fractionsSeparator;
 
   if (locale) {
@@ -210,7 +232,7 @@ export const parseRawAmountToNumber = (rawAmount, locale) => {
     .replace(new RegExp(`[^0-9${fractionsSeparator}]`, 'g'), '') // we just keep the numbers and the fraction symbol
     .replace(fractionsSeparator, '.'); // then we change whatever `fractionsSeparator` was to `.` so we can parse it as float
 
-  return parseFloat(normalizedAmount, 10);
+  return parseFloat(normalizedAmount);
 };
 
 // Turns the user input into a value the MoneyInput can pass up through onChange
@@ -224,7 +246,14 @@ export const parseRawAmountToNumber = (rawAmount, locale) => {
 //  - no currency was selected
 //
 // This function expects the "amount" to be a trimmed value.
-export const createMoneyValue = (currencyCode, rawAmount, locale) => {
+
+type TCurrencyCode = keyof typeof currencies;
+
+export const createMoneyValue = (
+  currencyCode: TCurrencyCode,
+  rawAmount: string,
+  locale: string
+) => {
   if (!currencyCode) return null;
 
   const currency = currencies[currencyCode];
@@ -294,19 +323,31 @@ export const createMoneyValue = (currencyCode, rawAmount, locale) => {
   };
 };
 
-const getAmountAsNumberFromMoneyValue = (moneyValue) =>
+type TMoneyValue = {
+  type: string;
+  currencyCode: TCurrencyCode;
+  centAmount: number;
+  preciseAmount: number;
+  fractionDigits: number;
+};
+
+const getAmountAsNumberFromMoneyValue = (moneyValue: TMoneyValue) =>
   moneyValue.type === 'highPrecision'
     ? moneyValue.preciseAmount / 10 ** moneyValue.fractionDigits
     : moneyValue.centAmount /
       10 ** currencies[moneyValue.currencyCode].fractionDigits;
 
 // gets called with a string and should return a formatted string
-const formatAmount = (rawAmount, currencyCode, locale) => {
+const formatAmount = (
+  rawAmount: string,
+  currencyCode: TCurrencyCode,
+  locale: string
+) => {
   // fallback in case the user didn't enter an amount yet (or it's invalid)
-  const moneyValue = createMoneyValue(currencyCode, rawAmount, locale) || {
+  const moneyValue = (createMoneyValue(currencyCode, rawAmount, locale) || {
     currencyCode,
     centAmount: NaN,
-  };
+  }) as TMoneyValue;
 
   const amount = getAmountAsNumberFromMoneyValue(moneyValue);
 
@@ -319,17 +360,149 @@ const formatAmount = (rawAmount, currencyCode, locale) => {
     : amount.toLocaleString(locale, { minimumFractionDigits: fractionDigits });
 };
 
-const getAmountInputName = (name) => (name ? `${name}.amount` : undefined);
-const getCurrencyDropdownName = (name) =>
+const getAmountInputName = (name?: string) =>
+  name ? `${name}.amount` : undefined;
+const getCurrencyDropdownName = (name?: string) =>
   name ? `${name}.currencyCode` : undefined;
 
-const MoneyInput = (props) => {
+type TValue = {
+  amount: string;
+  currencyCode: TCurrencyCode;
+};
+
+type TEvent = {
+  target: {
+    id?: string;
+    name?: string;
+    value?: string | string[] | null;
+  };
+  persist?: () => void;
+};
+
+type TMoneyInputProps = {
+  /**
+   * Used as HTML id property. An id is auto-generated when it is not specified.
+   */
+  id?: string;
+  /**
+   * Used as HTML `autocomplete` property
+   */
+  autoComplete?: string;
+  /**
+   * The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).
+   */
+  name?: string;
+  /**
+   * Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator.
+   */
+  value: TValue;
+  /**
+   * List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.
+   */
+  currencies: string[];
+  /**
+   * Placeholder text for the input
+   */
+  placeholder?: string;
+  /**
+   * Called when input is blurred
+   */
+  onBlur?: (event: TEvent) => void;
+  /**
+   * Called when input is focused
+   */
+  onFocus?: (event: TEvent) => void;
+  /**
+   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
+   */
+  isDisabled?: boolean;
+  /**
+   * Indicates that the field is displaying read-only content
+   */
+  isReadOnly?: boolean;
+  /**
+   * Focus the input on initial render
+   */
+  isAutofocussed?: boolean;
+  /**
+   * Called with the event of the input or dropdown when either the currency or the amount have changed.
+   * <br />
+   * Signature: `(event) => void`
+   */
+  onChange: (event: TEvent) => void;
+  /**
+   * Dom element to portal the currency select menu to
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
+  /**
+   * z-index value for the currency select menu portal
+   */
+  menuPortalZIndex?: number;
+  /**
+   * whether the menu should block scroll while open
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  menuShouldBlockScroll: ReactSelectProps['menuShouldBlockScroll'];
+  /**
+   * Indicates that input has errors
+   */
+  hasError?: boolean;
+  /**
+   * Control to indicate on the input if there are selected values that are potentially invalid
+   */
+  hasWarning?: boolean;
+  /**
+   * Shows high precision badge in case current value uses high precision.
+   */
+  hasHighPrecisionBadge?: boolean;
+  /**
+   * Horizontal size limit of the input fields.
+   */
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+};
+
+const defaultProps: Pick<
+  TMoneyInputProps,
+  'currencies' | 'horizontalConstraint' | 'menuPortalZIndex'
+> = {
+  currencies: [],
+  horizontalConstraint: 'scale',
+  menuPortalZIndex: 1,
+};
+
+const MoneyInput = (props: TMoneyInputProps) => {
   const intl = useIntl();
   const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
   const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
 
-  const containerRef = useRef();
-  const amountInputRef = useRef();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const amountInputRef = useRef<HTMLInputElement>(null);
+
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'MoneyInput: "onChange" is required when is not read only.'
+    );
+  }
 
   const { onFocus } = props;
   const handleAmountFocus = useCallback(() => {
@@ -361,7 +534,6 @@ const MoneyInput = (props) => {
       if (String(formattedAmount) !== amount) {
         // We need to emit an event with the now formatted value
         const fakeEvent = {
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
           persist: () => {},
           target: {
             id: MoneyInput.getAmountInputId(props.id),
@@ -386,7 +558,6 @@ const MoneyInput = (props) => {
     (event) => {
       if (isNumberish(event.target.value)) {
         onChange({
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
           persist: () => {},
           target: {
             id: MoneyInput.getAmountInputId(props.id),
@@ -417,13 +588,12 @@ const MoneyInput = (props) => {
         // The user could be changing the currency before entering any amount,
         // or while the amount is invalid. In these cases, we don't attempt to
         // format the amount.
-        const nextAmount = isNaN(formattedAmount)
+        const nextAmount = isNaN(Number(formattedAmount))
           ? props.value.amount
           : formattedAmount;
 
         // change currency code
         const fakeCurrencyEvent = {
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
           persist: () => {},
           target: {
             id: MoneyInput.getCurrencyDropdownId(props.id),
@@ -436,7 +606,6 @@ const MoneyInput = (props) => {
         // change amount if necessary
         if (props.value.amount !== nextAmount) {
           onChange({
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
             persist: () => {},
             target: {
               id: MoneyInput.getAmountInputId(props.id),
@@ -446,7 +615,7 @@ const MoneyInput = (props) => {
           });
         }
 
-        amountInputRef.current.focus();
+        amountInputRef.current?.focus();
       }
     },
     [
@@ -522,7 +691,7 @@ const MoneyInput = (props) => {
       // is blurred
       if (
         typeof onBlur === 'function' &&
-        !containerRef.current.contains(event.relatedTarget)
+        !containerRef.current?.contains(event.relatedTarget)
       ) {
         onBlur({
           target: {
@@ -561,7 +730,7 @@ const MoneyInput = (props) => {
       >
         {hasNoCurrencies ? (
           <CurrencyLabel
-            id={MoneyInput.getAmountInputId(props.id)}
+            id={MoneyInput.getAmountInputId(props.id) as string}
             isDisabled={props.isDisabled}
           >
             {option && option.label}
@@ -573,22 +742,21 @@ const MoneyInput = (props) => {
             value={option}
             isDisabled={props.isDisabled}
             isSearchable={false}
-            components={{
-              // eslint-disable-next-line react/display-name
-              SingleValue: (innerProps) => (
-                <SingleValue {...innerProps} id={id} />
-              ),
-              // eslint-disable-next-line react/display-name
-              Input: (ownProps) => (
-                // eslint-disable-next-line react/prop-types
-                <components.Input {...ownProps} readOnly={props.isReadOnly} />
-              ),
-              DropdownIndicator,
-            }}
+            components={
+              {
+                SingleValue: (innerProps) => (
+                  <SingleValue {...innerProps} id={id} />
+                ),
+                Input: (ownProps) => (
+                  <components.Input {...ownProps} readOnly={props.isReadOnly} />
+                ),
+                DropdownIndicator,
+              } as ReactSelectProps['components']
+            }
             options={options}
             menuIsOpen={props.isReadOnly ? false : undefined}
             placeholder=""
-            styles={currencySelectStyles}
+            styles={currencySelectStyles as ReactSelectProps['styles']}
             onFocus={handleCurrencyFocus}
             menuPortalTarget={props.menuPortalTarget}
             menuShouldBlockScroll={props.menuShouldBlockScroll}
@@ -673,14 +841,14 @@ MoneyInput.getAmountInputId = getAmountInputName;
 
 MoneyInput.getCurrencyDropdownId = getCurrencyDropdownName;
 
-MoneyInput.convertToMoneyValue = (value, locale) =>
+MoneyInput.convertToMoneyValue = (value: TValue, locale: string) =>
   createMoneyValue(
     value.currencyCode,
     typeof value.amount === 'string' ? value.amount.trim() : '',
     locale
   );
 
-MoneyInput.parseMoneyValue = (moneyValue, locale) => {
+MoneyInput.parseMoneyValue = (moneyValue: TMoneyValue, locale: string) => {
   if (!moneyValue) return { currencyCode: '', amount: '' };
 
   warning(
@@ -722,12 +890,12 @@ MoneyInput.parseMoneyValue = (moneyValue, locale) => {
   return { amount, currencyCode: moneyValue.currencyCode };
 };
 
-MoneyInput.isEmpty = (formValue) =>
+MoneyInput.isEmpty = (formValue: TValue) =>
   !formValue ||
   formValue.amount.trim() === '' ||
   formValue.currencyCode.trim() === '';
 
-MoneyInput.isHighPrecision = (formValue, locale) => {
+MoneyInput.isHighPrecision = (formValue: TValue, locale: string) => {
   warning(
     !MoneyInput.isEmpty(formValue),
     'MoneyValue.isHighPrecision may not be called with an empty money value.'
@@ -736,114 +904,9 @@ MoneyInput.isHighPrecision = (formValue, locale) => {
   return moneyValue && moneyValue.type === 'highPrecision';
 };
 
-MoneyInput.isTouched = (touched) =>
+MoneyInput.isTouched = (touched: TValue) =>
   Boolean(touched && touched.currencyCode && touched.amount);
 
-MoneyInput.propTypes = {
-  /**
-   * Used as HTML id property. An id is auto-generated when it is not specified.
-   */
-  id: PropTypes.string,
-  /**
-   * Used as HTML `autocomplete` property
-   */
-  autoComplete: PropTypes.string,
-  /**
-   * The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).
-   */
-  name: PropTypes.string,
-  /**
-   * Value of the input. Consists of the currency code and an amount. `amount` is a string representing the amount. A dot has to be used as the decimal separator.
-   */
-  value: PropTypes.shape({
-    amount: PropTypes.string.isRequired,
-    currencyCode: PropTypes.string.isRequired,
-  }).isRequired,
-  /**
-   * List of possible currencies. When not provided or empty, the component renders a label with the value's currency instead of a dropdown.
-   */
-  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  /**
-   * Placeholder text for the input
-   */
-  placeholder: PropTypes.string,
-  /**
-   * Called when input is blurred
-   */
-  onBlur: PropTypes.func,
-  /**
-   * Called when input is focused
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Indicates that the field is displaying read-only content
-   */
-  isReadOnly: PropTypes.bool,
-  /**
-   * Focus the input on initial render
-   */
-  isAutofocussed: PropTypes.bool,
-  /**
-   * Called with the event of the input or dropdown when either the currency or the amount have changed.
-   * <br />
-   * Signature: `(event) => void`
-   */
-  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
-  /**
-   * Dom element to portal the currency select menu to
-   */
-  menuPortalTarget: PropTypes.instanceOf(SafeHTMLElement),
-  /**
-   * z-index value for the currency select menu portal
-   */
-  menuPortalZIndex: PropTypes.number,
-  /**
-   * whether the menu should block scroll while open
-   */
-  menuShouldBlockScroll: PropTypes.bool,
-  /**
-   * Indicates that input has errors
-   */
-  hasError: PropTypes.bool,
-  /**
-   * Control to indicate on the input if there are selected values that are potentially invalid
-   */
-  hasWarning: PropTypes.bool,
-  /**
-   * Shows high precision badge in case current value uses high precision.
-   */
-  hasHighPrecisionBadge: PropTypes.bool,
-  /**
-   * Horizontal size limit of the input fields.
-   */
-  horizontalConstraint: PropTypes.oneOf([
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-};
-
-MoneyInput.defaultProps = {
-  currencies: [],
-  horizontalConstraint: 'scale',
-  menuPortalZIndex: 1,
-};
+MoneyInput.defaultProps = defaultProps;
 
 export default MoneyInput;
