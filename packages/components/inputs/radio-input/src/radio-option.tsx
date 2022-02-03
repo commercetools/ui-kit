@@ -85,8 +85,11 @@ const Option = (props: TOptionProps) => {
         css={accessibleHiddenInputStyles}
         id={props.id}
         name={props.name}
-        // @ts-ignore
-        value={props.value}
+        value={
+          typeof props.value === 'boolean'
+            ? props.value.toString()
+            : props.value
+        }
         onChange={props.isReadOnly ? undefined : props.onChange}
         disabled={props.isDisabled}
         checked={props.isChecked}
