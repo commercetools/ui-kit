@@ -221,7 +221,12 @@ type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   menuShouldBlockScroll?: ReactSelectProps['menuShouldBlockScroll'];
-  // menuShouldScrollIntoView: PropTypes.bool,
+  /**
+   * Whether the menu should close after a value is selected. Defaults to `true`.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  closeMenuOnSelect?: ReactSelectProps['closeMenuOnSelect'];
   /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
@@ -413,6 +418,7 @@ const SelectInput = (props: TSelectInputProps) => {
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
+          closeMenuOnSelect={props.closeMenuOnSelect}
           name={props.name}
           noOptionsMessage={
             props.noOptionsMessage ||
