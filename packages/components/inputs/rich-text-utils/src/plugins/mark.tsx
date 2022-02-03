@@ -19,7 +19,7 @@ type TMark = {
 
 type TValue = {
   activeMarks: {
-    some: (s: (mark: TMark) => boolean) => void;
+    some: (ascertMarkType: (mark: TMark) => boolean) => void;
   };
 };
 

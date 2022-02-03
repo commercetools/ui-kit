@@ -2,38 +2,46 @@ import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import { ReactNode } from 'react';
 import { BLOCK_TAGS } from '../tags';
 
+type TBlocks = {
+  size: number;
+  some: (block: unknown) => boolean | void;
+  first: () => {
+    key: string;
+  };
+};
+
+type TDocument = {
+  getClosest: (
+    block: { key: unknown },
+    closest: (parent: { type: string }) => boolean
+  ) => void;
+  getParent: (parentParam: string) => {
+    type: string;
+  };
+};
+
+type TValue = {
+  blocks: TBlocks;
+  document: TDocument;
+  selection: {
+    isFocused: boolean;
+  };
+};
+
+type TWrapBlock = {
+  wrapBlock: (blockTag: string) => void;
+};
+
 type TEditor = {
   focus: () => void;
-  value: {
-    blocks: {
-      size: number;
-      some: (block: unknown) => boolean | void;
-      first: () => {
-        key: string;
-      };
+  value: TValue;
+  setBlocks: (blockTag: string) => {
+    unwrapBlock: (blockTag: string) => {
+      unwrapBlock: (blockTag: string) => void;
     };
-    document: {
-      getClosest: (
-        block: { key: unknown },
-        s: (parent: { type: TType }) => boolean
-      ) => void;
-      getParent: (x: string) => {
-        type: string;
-      };
-    };
-    selection: {
-      isFocused: boolean;
-    };
+    wrapBlock: (blockTag: string) => void;
   };
-  setBlocks: (x: string) => {
-    unwrapBlock: (y: string) => {
-      unwrapBlock: (z: string) => void;
-    };
-    wrapBlock: (y: string) => void;
-  };
-  unwrapBlock: (x: string) => {
-    wrapBlock: (y: string) => void;
-  };
+  unwrapBlock: (blockTag: string) => TWrapBlock;
 };
 
 type TType = {
@@ -61,7 +69,7 @@ const toggle = (editor: TEditor, typeName: string) => {
       return Boolean(
         editor.value.document.getClosest(
           block.key,
-          (parent: { type: unknown }) => {
+          (parent: { type: string }) => {
             return parent.type === typeName;
           }
         )

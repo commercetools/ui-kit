@@ -7,7 +7,7 @@ type TSize = {
 };
 
 type TGet = {
-  get: (s: string) => TSize;
+  get: (key: string) => TSize;
 };
 
 type TValue = {

@@ -37,14 +37,16 @@ type TEditor = {
   };
 };
 
+type TData = {
+  get: (key: string) => number;
+};
+
 type TRenderDecorationProps = {
   style: unknown;
   children: ReactNode;
   decoration: {
     type: string;
-    data: {
-      get: (s: string) => number;
-    };
+    data: TData;
   };
 };
 

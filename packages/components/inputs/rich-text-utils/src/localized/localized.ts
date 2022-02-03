@@ -4,7 +4,7 @@ import html from '../html';
 import isRichTextEmpty from '../is-empty';
 
 type TOmitEmptyTranslations = {
-  language: unknown;
+  language: string;
 };
 
 type TCreateLocalizedString = {
@@ -18,7 +18,10 @@ const isLocalizedHtmlValueEmpty = (value: unknown) =>
   !value || isRichTextEmpty(value);
 
 export const isEmpty = (
-  localizedHtmlValue: { [s: string]: unknown } | ArrayLike<unknown> | undefined
+  localizedHtmlValue:
+    | { [key: string]: unknown }
+    | ArrayLike<unknown>
+    | undefined
 ) => {
   if (!localizedHtmlValue) return true;
   return Object.values(localizedHtmlValue).every(isLocalizedHtmlValueEmpty);
