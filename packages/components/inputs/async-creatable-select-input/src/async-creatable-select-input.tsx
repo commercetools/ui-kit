@@ -203,6 +203,12 @@ type TAsyncCreatableSelectInputProps = {
    */
   menuShouldBlockScroll?: ReactSelectAsyncCreatableProps['menuShouldBlockScroll'];
   /**
+   * Whether the menu should close after a value is selected. Defaults to `true`.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  closeMenuOnSelect?: ReactSelectAsyncCreatableProps['closeMenuOnSelect'];
+  /**
    * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -406,6 +412,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}
+          closeMenuOnScroll={props.closeMenuOnSelect}
           name={props.name}
           noOptionsMessage={
             props.noOptionsMessage ||

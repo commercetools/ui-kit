@@ -126,6 +126,7 @@ storiesOf('Components|Inputs/SelectInputs', module)
                 isMulti={isMulti}
                 isSearchable={boolean('isSearchable', false)}
                 maxMenuHeight={number('maxMenuHeight', 220)}
+                closeMenuOnSelect={boolean('closeMenuOnSelect', true)}
                 name={text('name', 'form-field-name')}
                 onBlur={action('onBlur')}
                 onChange={(event, ...args) => {
