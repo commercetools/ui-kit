@@ -203,7 +203,7 @@ type TAsyncCreatableSelectInputProps = {
    */
   menuShouldBlockScroll?: ReactSelectAsyncCreatableProps['menuShouldBlockScroll'];
   /**
-   * Whether the menu should be closed after a value is selected. Defaults to `true`.
+   * Whether the menu should close after a value is selected. Defaults to `true`.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */

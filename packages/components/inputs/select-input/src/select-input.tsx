@@ -222,7 +222,7 @@ type TSelectInputProps = {
    */
   menuShouldBlockScroll?: ReactSelectProps['menuShouldBlockScroll'];
   /**
-   * whether the menu should close after a value is selected
+   * Whether the menu should close after a value is selected. Defaults to `true`.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */

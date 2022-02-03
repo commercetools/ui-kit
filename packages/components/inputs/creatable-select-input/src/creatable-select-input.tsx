@@ -201,7 +201,9 @@ type TCreatableSelectInputProps = {
    */
   menuShouldBlockScroll?: ReactSelectCreatableProps['menuShouldBlockScroll'];
   /**
-   * When set to false, the select menu will not be closed after an option is selected. By default, it is set to true.
+   * Whether the menu should close after a value is selected. Defaults to `true`.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
   closeMenuOnSelect?: ReactSelectCreatableProps['closeMenuOnSelect'];
   /**
