@@ -5,6 +5,8 @@ import {
   type ChangeEventHandler,
   type FocusEventHandler,
   type ReactElement,
+  type ReactNode,
+  isValidElement,
 } from 'react';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -43,7 +45,7 @@ export type TGroupProps = {
     | 'auto';
   direction?: keyof typeof directionWrapper;
   directionProps?: object;
-  children: ReactElement | ReactElement[];
+  children: ReactNode;
 };
 
 const defaultProps: Pick<
@@ -80,6 +82,7 @@ const Group = (props: TGroupProps) => {
     // NOTE: Allowing to intersperse other elements than `Option`.
     if (
       child &&
+      isValidElement(child) &&
       (child as TReactChild).type.displayName === Option.displayName
     ) {
       const clonedChild = cloneElement(child, {
