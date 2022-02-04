@@ -4,7 +4,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react';
-import { type GroupBase, type ActionMeta } from 'react-select';
+import type { GroupBase, ActionMeta } from 'react-select';
 import type { AsyncCreatableProps } from 'react-select/async-creatable';
 import {
   filterDataAttributes,
