@@ -1,4 +1,9 @@
-import { Component, isValidElement, ReactElement, type ReactNode } from 'react';
+import {
+  Component,
+  isValidElement,
+  type ReactElement,
+  type ReactNode,
+} from 'react';
 import { type GroupBase, type ActionMeta } from 'react-select';
 import type { AsyncCreatableProps } from 'react-select/async-creatable';
 import {
@@ -396,9 +401,7 @@ export default class AsyncCreatableSelectField extends Component<
         Array.isArray(this.props.value),
         'AsyncCreatableSelectField: `value` is expected to be an array of string when isMulti is true'
       );
-    }
 
-    if (this.props.isMulti) {
       warning(
         Array.isArray(this.props.touched),
         'AsyncCreatableSelectField: `touched` is expected to be an array of boolean when isMulti is true'
