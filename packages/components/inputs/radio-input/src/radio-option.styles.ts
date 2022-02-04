@@ -1,8 +1,14 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties } from '@commercetools-uikit/design-system';
+import { TOptionProps } from './radio-option';
 
-const LabelTextWrapper = styled.div`
+type TStylesProps = Pick<
+  TOptionProps,
+  'isDisabled' | 'hasError' | 'hasWarning' | 'isHovered' | 'isReadOnly'
+>;
+
+const LabelTextWrapper = styled.div<TStylesProps>`
   margin-left: ${customProperties.spacingS};
   font-size: 1rem;
   font-family: inherit;
@@ -12,7 +18,7 @@ const LabelTextWrapper = styled.div`
       : customProperties.fontColorForInput};
 `;
 
-const getSvgContainerBorderStroke = (props) => {
+const getSvgContainerBorderStroke = (props: TStylesProps) => {
   if (props.isDisabled) {
     return customProperties.borderColorForInputWhenDisabled;
   }
@@ -30,7 +36,8 @@ const getSvgContainerBorderStroke = (props) => {
   }
   return customProperties.borderColorForInput;
 };
-const getSvgContainerContentFill = (props) => {
+
+const getSvgContainerContentFill = (props: TStylesProps) => {
   if (props.isDisabled) {
     return customProperties.fontColorForInputWhenDisabled;
   }
@@ -45,7 +52,8 @@ const getSvgContainerContentFill = (props) => {
   }
   return customProperties.borderColorForInputWhenFocused;
 };
-const getContainerStyles = (props) => css`
+
+const getContainerStyles = (props: TOptionProps) => css`
   display: flex;
   align-items: center;
 
@@ -63,7 +71,7 @@ const getContainerStyles = (props) => css`
   }
 `;
 
-const getSvgLabelBorderStroke = (props) => {
+const getSvgLabelBorderStroke = (props: TStylesProps) => {
   if (props.isDisabled) {
     return customProperties.borderColorForInputWhenDisabled;
   }
@@ -78,7 +86,8 @@ const getSvgLabelBorderStroke = (props) => {
   }
   return customProperties.borderColorForInputWhenFocused;
 };
-const getLabelColor = (props) => {
+
+const getLabelColor = (props: TStylesProps) => {
   if (props.isDisabled) {
     return customProperties.fontColorForInputWhenDisabled;
   }
@@ -93,7 +102,7 @@ const getLabelColor = (props) => {
   }
   return customProperties.fontColorForInput;
 };
-const getLabelCursor = (props) => {
+const getLabelCursor = (props: TStylesProps) => {
   if (props.isDisabled) {
     return 'not-allowed';
   }
@@ -102,7 +111,8 @@ const getLabelCursor = (props) => {
   }
   return 'pointer';
 };
-const getLabelStyles = (props) => css`
+
+const getLabelStyles = (props: TStylesProps) => css`
   align-items: center;
   color: ${getLabelColor(props)};
   cursor: ${getLabelCursor(props)};
