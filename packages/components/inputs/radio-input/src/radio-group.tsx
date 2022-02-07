@@ -1,5 +1,13 @@
-import { useEffect, Children, cloneElement } from 'react';
-import PropTypes from 'prop-types';
+import {
+  useEffect,
+  Children,
+  cloneElement,
+  type ChangeEventHandler,
+  type FocusEventHandler,
+  type ReactElement,
+  type ReactNode,
+  isValidElement,
+} from 'react';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -11,11 +19,55 @@ const directionWrapper = {
   inline: Inline,
 };
 
-const Group = (props) => {
+export type TGroupProps = {
+  id?: string;
+  name?: string;
+  value: string | boolean;
+  onChange?: ChangeEventHandler;
+  onBlur?: FocusEventHandler;
+  onFocus?: FocusEventHandler;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  horizontalConstraint?:
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  direction?: keyof typeof directionWrapper;
+  directionProps?: object;
+  children: ReactNode;
+};
+
+const defaultProps: Pick<
+  TGroupProps,
+  'horizontalConstraint' | 'direction' | 'directionProps'
+> = {
+  horizontalConstraint: 'scale',
+  direction: 'stack',
+  directionProps: {
+    scale: 'm',
+  },
+};
+
+type TReactChild = {
+  type?: { displayName: string };
+} & ReactElement;
+
+const Group = (props: TGroupProps) => {
   useEffect(() => {
     // NOTE: We allow mixed children rendered as (e.g. spacers)
     // as a result we need to filter out children of the correct type.
-    const childrenAsArray = Children.toArray(props.children);
+    const childrenAsArray = Children.toArray(props.children) as TReactChild[];
     const optionChildrenAsArray = childrenAsArray.filter(
       (child) => child.type.displayName === Option.displayName
     );
@@ -28,7 +80,11 @@ const Group = (props) => {
 
   const optionElements = Children.map(props.children, (child, index) => {
     // NOTE: Allowing to intersperse other elements than `Option`.
-    if (child && child.type.displayName === Option.displayName) {
+    if (
+      child &&
+      isValidElement(child) &&
+      (child as TReactChild).type.displayName === Option.displayName
+    ) {
       const clonedChild = cloneElement(child, {
         id: props.id && `${props.id}-${index}`,
         name: props.name,
@@ -67,41 +123,7 @@ const Group = (props) => {
 };
 
 Group.displayName = 'RadioGroup';
-Group.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
-  onChange: PropTypes.func,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  horizontalConstraint: PropTypes.oneOf([
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-  direction: PropTypes.oneOf(Object.keys(directionWrapper)),
-  directionProps: PropTypes.object,
-  children: PropTypes.node.isRequired,
-};
-Group.defaultProps = {
-  horizontalConstraint: 'scale',
-  direction: 'stack',
-  directionProps: {
-    scale: 'm',
-  },
-};
+
+Group.defaultProps = defaultProps;
 
 export default Group;
