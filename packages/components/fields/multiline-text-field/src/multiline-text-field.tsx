@@ -71,20 +71,14 @@ export type TMultiTextFieldProps = {
   value: string;
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
-   * <br />
-   * Signature: `(event) => void`
    */
   onChange?: ChangeEventHandler;
   /**
    * Called when input is blurred
-   * <br />
-   * Signature: `(event) => void`
    */
   onBlur?: FocusEventHandler;
   /**
    * Called when input is focused
-   * <br />
-   * Signature: `(event) => void`
    */
   onFocus?: FocusEventHandler;
   /**
@@ -131,8 +125,6 @@ export type TMultiTextFieldProps = {
    * Function called when info button is pressed.
    * <br />
    * Info button will only be visible when this prop is passed.
-   * <br />
-   * Signature: `(event) => void`
    */
   onInfoButtonClick?: () => void;
   /**
