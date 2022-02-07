@@ -14,6 +14,14 @@ export type TTextInputProps = {
    */
   autoComplete?: string;
   /**
+   * a11y attribute to determine if input is valid/not
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * a11y attribute identifier that points to a field with error message
+   */
+  'aria-errormessage'?: string;
+  /**
    * `className` forwarded to the underlying `<input />`.
    */
   className?: string;
@@ -116,6 +124,12 @@ const TextInput = (props: TTextInputProps) => {
         /* ARIA */
         aria-readonly={props.isReadOnly}
         contentEditable={!props.isReadOnly}
+        {...(!props.isReadOnly
+          ? {
+              'aria-invalid': props['aria-invalid'],
+              'aria-errormessage': props['aria-errormessage'],
+            }
+          : {})}
       />
     </Constraints.Horizontal>
   );

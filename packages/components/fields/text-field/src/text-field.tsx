@@ -15,6 +15,7 @@ import {
   createSequentialId,
   getFieldId,
   warning,
+  randomString,
 } from '@commercetools-uikit/utils';
 import FieldErrors from '@commercetools-uikit/field-errors';
 
@@ -181,6 +182,8 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
     }
 
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const errorFieldId = randomString();
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Stack scale="xs">
@@ -209,8 +212,12 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
+            /* ARIA */
+            aria-invalid={hasError}
+            aria-errormessage={errorFieldId}
           />
           <FieldErrors
+            id={errorFieldId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
