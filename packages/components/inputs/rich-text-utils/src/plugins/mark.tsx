@@ -4,7 +4,7 @@ import memoize from 'lodash/memoize';
 import { ReactNode } from 'react';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
-type TOptions = {
+type TMarkPluginOptions = {
   hotkey: string;
   typeName: string;
   RenderMark: ReactNode;
@@ -46,15 +46,14 @@ const requiredOptions = [
   'RenderMark',
 ];
 
-const validate = (options: TOptions) => {
-  // eslint-disable-next-line consistent-return
+const validate = (options: TMarkPluginOptions) => {
   const missingRequiredOptions = requiredOptions.filter(
     (option) => !options[option]
   );
   return missingRequiredOptions;
 };
 
-const MarkPlugin = (options = {} as TOptions) => {
+const MarkPlugin = (options = {} as TMarkPluginOptions) => {
   const missingRequiredOptions = validate(options);
 
   warning(
@@ -68,7 +67,6 @@ const MarkPlugin = (options = {} as TOptions) => {
 
   return [
     {
-      // eslint-disable-next-line consistent-return
       onKeyDown(
         event: TEvent,
         editor: { toggleMark: (arg0: unknown) => void },
@@ -81,8 +79,7 @@ const MarkPlugin = (options = {} as TOptions) => {
         event.preventDefault();
         editor.toggleMark(options.typeName);
       },
-      //@ts-ignore
-      renderMark(props: TProps, editor: TEditor, next: () => ReactJSXElement) {
+      renderMark(props: TProps, next: () => ReactJSXElement) {
         const { children, mark, attributes } = props;
 
         switch (mark.type) {

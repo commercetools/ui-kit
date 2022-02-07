@@ -3,11 +3,11 @@ import uniq from 'lodash/uniq';
 import html from '../html';
 import isRichTextEmpty from '../is-empty';
 
-type TOmitEmptyTranslations = {
+type TLocalizedString = {
   language: string;
 };
 
-type TCreateLocalizedString = {
+type TTranslations = {
   [key: string]: string;
 };
 
@@ -27,9 +27,7 @@ export const isEmpty = (
   return Object.values(localizedHtmlValue).every(isLocalizedHtmlValueEmpty);
 };
 
-export const omitEmptyTranslations = (
-  localizedString: TOmitEmptyTranslations
-) => {
+export const omitEmptyTranslations = (localizedString: TLocalizedString) => {
   warning(
     typeof localizedString === 'object',
     'omitEmptyTranslations must be called with an object'
@@ -47,7 +45,7 @@ export const omitEmptyTranslations = (
 
 export const createLocalizedString = (
   languages: string[],
-  existingTranslations = {} as TCreateLocalizedString
+  existingTranslations = {} as TTranslations
 ) => {
   const mergedLanguages = existingTranslations
     ? uniq([...languages, ...Object.keys(existingTranslations)])

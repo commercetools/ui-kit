@@ -5,7 +5,7 @@ import MarkPlugin from './plugins/mark';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
 import PlaceholderPlugin from './plugins/placeholder';
 import { BLOCK_TAGS, MARK_TAGS } from './tags';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type TMap = {
   map: (node: ReactNode) => {
@@ -26,11 +26,8 @@ type TEditor = {
 
 type Props = {};
 
-// eslint-disable-next-line camelcase, react/display-name
 const RenderMark_Strong = (props: Props) => <strong {...props} />;
-// eslint-disable-next-line camelcase, react/display-name
 const RenderMark_Em = (props: Props) => <em {...props} />;
-// eslint-disable-next-line camelcase, react/display-name
 const RenderMark_U = (props: Props) => <u {...props} />;
 
 const plugins = [
@@ -57,7 +54,6 @@ const plugins = [
           hasOneBlock &&
           isParagraph;
 
-        // eslint-disable-next-line no-param-reassign
         editor.hasPlaceholder = shouldUsePlaceholder as boolean;
         return shouldUsePlaceholder;
       },

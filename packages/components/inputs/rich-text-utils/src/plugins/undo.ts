@@ -1,5 +1,4 @@
 import { KeyboardEvent } from 'react';
-//@ts-ignore
 import { isKeyHotkey } from 'is-hotkey';
 import memoize from 'lodash/memoize';
 import { type TEditor, type TOptions } from './redo';
@@ -25,7 +24,6 @@ const UndoPlugin = (options = {} as TOptions) => {
 
   return [
     {
-      // eslint-disable-next-line consistent-return
       onKeyDown(
         event: KeyboardEvent<HTMLInputElement | HTMLButtonElement>,
         editor: TExtendedEditor,

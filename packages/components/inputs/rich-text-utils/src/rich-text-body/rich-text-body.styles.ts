@@ -41,12 +41,6 @@ const getBackgroundColor = (props: Props) => {
       background-color: ${vars.backgroundColorForInputWhenDisabled};
     `;
   }
-  //Question: imported vars has no property with `backgroundColorForInputWhenReadonly` as key. Should this be defined?
-  // if (props.isReadOnly) {
-  //   return css`
-  //     background-color: ${vars.backgroundColorForInputWhenReadonly};
-  //   `;
-  // }
   return css`
     background-color: ${vars.backgroundColorForInput};
   `;

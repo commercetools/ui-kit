@@ -12,11 +12,9 @@ type TProps = {
   node: TType;
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const RenderBlockPlugin = () => {
   return {
-    //@ts-ignore
-    renderBlock(props: TProps, editor: unknown, next: () => ReactNode) {
+    renderBlock(props: TProps, next: () => ReactNode) {
       const { attributes, children, node } = props;
       switch (node.type) {
         case BLOCK_TAGS.pre:
@@ -54,8 +52,7 @@ export const RenderBlockPlugin = () => {
 
 export const RenderMarkPlugin = () => {
   return {
-    //@ts-ignore
-    renderMark(props: TProps, editor: unknown, next: () => ReactNode) {
+    renderMark(props: TProps, next: () => ReactNode) {
       const { children, mark, attributes } = props;
 
       switch (mark.type) {

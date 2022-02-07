@@ -43,7 +43,6 @@ const RedoPlugin = (options = {} as TOptions) => {
 
   return [
     {
-      // eslint-disable-next-line consistent-return
       onKeyDown(
         event: KeyboardEvent<HTMLInputElement | HTMLButtonElement>,
         editor: TEditor,

@@ -64,7 +64,7 @@ const Dropdown = (props: Props) => {
     <Downshift
       onChange={props.onChange}
       selectedItem={props.value}
-      itemToString={(headings: THeadings) => (headings ? headings?.label : '')}
+      itemToString={(headings: THeadings) => headings?.label || ''}
     >
       {({
         isOpen,
@@ -114,7 +114,7 @@ const Dropdown = (props: Props) => {
                       item,
                     });
                     const dropdownItemProps = itemProps;
-                    const isSelected = getIsSelected(props, item as TItem);
+                    const isSelected = getIsSelected(props, item);
 
                     return (
                       <DropdownItem
