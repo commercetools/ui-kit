@@ -12,6 +12,7 @@ import {
   filterDataAttributes,
   createSequentialId,
   warning,
+  randomString,
 } from '@commercetools-uikit/utils';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import Constraints from '@commercetools-uikit/constraints';
@@ -196,6 +197,8 @@ const PasswordField = (props: TPasswordField) => {
     );
   }
 
+  const errorFieldId = randomString();
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
@@ -241,8 +244,12 @@ const PasswordField = (props: TPasswordField) => {
           autoComplete={props.autoComplete}
           horizontalConstraint="scale"
           {...filterDataAttributes(props)}
+          /* ARIA */
+          aria-invalid={hasError}
+          aria-errormessage={errorFieldId}
         />
         <FieldErrors
+          id={errorFieldId}
           errors={props.errors}
           isVisible={hasError}
           renderError={props.renderError}
