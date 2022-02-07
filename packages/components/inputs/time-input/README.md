@@ -40,21 +40,41 @@ export default Example;
 
 ## Properties
 
-| Props                  | Type                                                                                               | Required | Default   | Description                                                                                                                                                                        |
-| ---------------------- | -------------------------------------------------------------------------------------------------- | :------: | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                   | `string`                                                                                           |          |           | Used as HTML id property. An id is auto-generated when it is not specified.                                                                                                        |
-| `horizontalConstraint` | `enum`<br/>Possible values:<br/>`3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                                         |
-| `name`                 | `string`                                                                                           |          |           | Used as HTML name of the input component.                                                                                                                                          |
-| `autoComplete`         | `string`                                                                                           |          |           | Used as HTML autocomplete of the input component.                                                                                                                                  |
-| `value`                | `string`                                                                                           |          |           | Value of the input                                                                                                                                                                 |
-| `onChange`             | `func`                                                                                             |    ✅    |           | Called with an event holding the new value.&#xA;<br/>&#xA;Required when input is not read only. Parent should pass it back as `value`-&#xA;<br />&#xA;Signature: `(event) => void` |
-| `onBlur`               | `func`                                                                                             |          |           | Called when input is blurred&#xA;<br/>&#xA;Signature: `(event) => void`                                                                                                            |
-| `onFocus`              | `func`                                                                                             |          |           | Called when input is focused&#xA;<br/>&#xA;Signature: `(event) => void`                                                                                                            |
-| `isAutofocussed`       | `bool`                                                                                             |          |           | Focus the input on initial render                                                                                                                                                  |
-| `isDisabled`           | `bool`                                                                                             |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                                     |
-| `placeholder`          | `string`                                                                                           |          |           | Placeholder text for the input                                                                                                                                                     |
-| `hasError`             | `bool`                                                                                             |          |           | Indicates if the input has invalid values                                                                                                                                          |
-| `isReadOnly`           | `bool`                                                                                             |          |           | Indicates that the field is displaying read-only content                                                                                                                           |
+| Props                  | Type                                                                                                     | Required | Default   | Description                                                                                                                                                                        |
+| ---------------------- | -------------------------------------------------------------------------------------------------------- | :------: | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                   | `string`                                                                                                 |          |           | Used as HTML id property. An id is auto-generated when it is not specified.                                                                                                        |
+| `horizontalConstraint` | `union`<br/>Possible values:<br/>`1,2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                                         |
+| `name`                 | `string`                                                                                                 |          |           | Used as HTML name of the input component.                                                                                                                                          |
+| `autoComplete`         | `string`                                                                                                 |          |           | Used as HTML autocomplete of the input component.                                                                                                                                  |
+| `value`                | `string`                                                                                                 |          |           | Value of the input                                                                                                                                                                 |
+| `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                                     |    ✅    |           | Called with an event holding the new value.&#xA;<br/>&#xA;Required when input is not read only. Parent should pass it back as `value`-&#xA;<br />&#xA;Signature: `(event) => void` |
+| `onBlur`               | `Function`<br/>[See signature.](#signature-onBlur)                                                       |          |           | Called when input is blurred&#xA;<br/>&#xA;Signature: `(event) => void`                                                                                                            |
+| `onFocus`              | `Function`<br/>[See signature.](#signature-onFocus)                                                      |          |           | Called when input is focused&#xA;<br/>&#xA;Signature: `(event) => void`                                                                                                            |
+| `isAutofocussed`       | `boolean`                                                                                                |          |           | Focus the input on initial render                                                                                                                                                  |
+| `isDisabled`           | `boolean`                                                                                                |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                                     |
+| `placeholder`          | `string`                                                                                                 |          |           | Placeholder text for the input                                                                                                                                                     |
+| `hasError`             | `boolean`                                                                                                |          |           | Indicates if the input has invalid values                                                                                                                                          |
+| `isReadOnly`           | `boolean`                                                                                                |          |           | Indicates that the field is displaying read-only content                                                                                                                           |
+
+## Signatures
+
+### Signature `onChange`
+
+```ts
+(event: string | unknown) => void
+```
+
+### Signature `onBlur`
+
+```ts
+(event: FocusEvent<HTMLInputElement>) => void
+```
+
+### Signature `onFocus`
+
+```ts
+() => void
+```
 
 ## `value`
 
