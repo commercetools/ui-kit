@@ -40,6 +40,7 @@ import { DropdownItem } from './dropdown.styles';
 import { MARK_TAGS, BLOCK_TAGS } from '../tags';
 import hasBlock from '../has-block';
 import messages from './messages';
+import { warning } from '@commercetools-uikit/utils';
 
 type TMoreStylesDropdownItem = {
   value?: string;
@@ -365,6 +366,13 @@ const RichTextEditorBody = forwardRef((props: TRichTextEditorBody, ref) => {
   const onToolbarMouseDown = useCallback((event) => {
     event.preventDefault();
   }, []);
+
+  if (props.showExpandIcon) {
+    warning(
+      typeof props.onClickExpand !== 'function',
+      'RichTextUtils: "onClickExpand" is required when showExpandIcon is true'
+    );
+  }
 
   return (
     <Container
