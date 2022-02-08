@@ -99,13 +99,13 @@ type TCreatableSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  'aria-label': ReactSelectCreatableProps['aria-label'];
+  'aria-label'?: ReactSelectCreatableProps['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
    * <br>
    * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  'aria-labelledby': ReactSelectCreatableProps['aria-labelledby'];
+  'aria-labelledby'?: ReactSelectCreatableProps['aria-labelledby'];
   /**
    * Focus the control when it is mounted
    */
@@ -243,7 +243,7 @@ type TCreatableSelectInputProps = {
   /**
    * Array of options that populate the select menu
    */
-  options: TOptions;
+  options?: TOptions;
   /**
    * Determines if option groups will be separated by a divider
    */
@@ -271,7 +271,7 @@ type TCreatableSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
-  value: ReactSelectCreatableProps['value'];
+  value?: ReactSelectCreatableProps['value'];
 
   // Creatable props
   /**
