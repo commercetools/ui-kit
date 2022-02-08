@@ -91,6 +91,7 @@
     "@testing-library/react-hooks": "7.0.2",
     "@types/is-hotkey": "^0.1.7",
     "@types/jest": "27.4.0",
+    "@types/slate-html-serializer": "^0.6.5",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
     "babel-jest": "27.4.6",

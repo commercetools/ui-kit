@@ -79,7 +79,7 @@ const MarkPlugin = (options = {} as TMarkPluginOptions) => {
         event.preventDefault();
         editor.toggleMark(options.typeName);
       },
-      renderMark(props: TProps, next: () => ReactJSXElement) {
+      renderMark(props: TProps, _editor: TEditor, next: () => ReactJSXElement) {
         const { children, mark, attributes } = props;
 
         switch (mark.type) {
