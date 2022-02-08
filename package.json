@@ -68,7 +68,7 @@
   "dependencies": {
     "@changesets/changelog-github": "0.4.2",
     "@changesets/cli": "2.20.0",
-    "@commercetools-frontend/babel-preset-mc-app": "20.12.3",
+    "@commercetools-frontend/babel-preset-mc-app": "21.0.0",
     "@commercetools-frontend/eslint-config-mc-app": "20.12.3",
     "@commercetools-local/generator-package-json": "*",
     "@commercetools-local/generator-readme": "*",
