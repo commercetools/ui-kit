@@ -67,11 +67,7 @@ const MarkPlugin = (options = {} as TMarkPluginOptions) => {
 
   return [
     {
-      onKeyDown(
-        event: TEvent,
-        editor: { toggleMark: (arg0: unknown) => void },
-        next: () => void
-      ): void {
+      onKeyDown(event: TEvent, editor: TEditor, next: () => void): void {
         if (!isHotKey(event as KeyboardEvent)) {
           return next();
         }
