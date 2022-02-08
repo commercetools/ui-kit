@@ -1,6 +1,8 @@
-import PropTypes from 'prop-types';
+/// <reference types="@emotion/react/types/css-prop" />
+import type { KeyboardEventHandler, RefObject } from 'react';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import type { TDateTimeInputProps } from './date-time-input';
 
 const getInputStyles = () => css`
   width: 100%;
@@ -18,7 +20,16 @@ const getInputStyles = () => css`
     background-color: ${vars.colorSurface};
   }
 `;
-const DateCalendarTimeInput = (props) => (
+
+type TDateCalendarTimeInput = {
+  timeInputRef: RefObject<HTMLInputElement>;
+  onKeyDown: KeyboardEventHandler<HTMLInputElement>;
+} & Pick<
+  TDateTimeInputProps,
+  'isDisabled' | 'onChange' | 'value' | 'placeholder'
+>;
+
+const DateCalendarTimeInput = (props: TDateCalendarTimeInput) => (
   <input
     disabled={props.isDisabled}
     ref={props.timeInputRef}
@@ -32,14 +43,5 @@ const DateCalendarTimeInput = (props) => (
 );
 
 DateCalendarTimeInput.displayName = 'DateCalendarTimeInput';
-
-DateCalendarTimeInput.propTypes = {
-  isDisabled: PropTypes.bool.isRequired,
-  timeInputRef: PropTypes.object.isRequired,
-  onKeyDown: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-};
 
 export default DateCalendarTimeInput;
