@@ -224,8 +224,6 @@ type TCreatableSelectInputProps = {
   onBlur?: (event: TEvent) => void;
   /**
    * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
-   * <br />
-   * Signature: `(event) => void`
    */
   onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
   /**
