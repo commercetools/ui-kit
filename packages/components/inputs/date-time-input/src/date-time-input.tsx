@@ -51,8 +51,10 @@ type TPreventDownshiftDefaultEvent = {
   nativeEvent?: {
     preventDownshiftDefault?: boolean;
   };
-} & FocusEvent<HTMLButtonElement> &
-  KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
+} & KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
+
+type TCreateBlurHandlerEvent = TPreventDownshiftDefaultEvent &
+  FocusEvent<HTMLButtonElement>;
 
 const preventDownshiftDefault = (event: TPreventDownshiftDefaultEvent) => {
   event.nativeEvent.preventDownshiftDefault = true;
@@ -62,7 +64,7 @@ const preventDownshiftDefault = (event: TPreventDownshiftDefaultEvent) => {
 // blurring the regular input/toggle button)
 const createBlurHandler =
   (timeInputRef: RefObject<HTMLInputElement>) =>
-  (event: TPreventDownshiftDefaultEvent) => {
+  (event: TCreateBlurHandlerEvent) => {
     event.persist();
     if (event.relatedTarget === timeInputRef.current) {
       preventDownshiftDefault(event);
@@ -115,7 +117,6 @@ export type TDateTimeInputProps = {
   /**
    * Called when the date changes. Called with an event containing an empty string (no value) or a string in this format: "YYYY-MM-DD".
    * <br />
-   * Signature: `(event) => void`
    */
   onChange: (event: TEvent) => void;
   /**
@@ -128,6 +129,7 @@ export type TDateTimeInputProps = {
   onBlur?: (event: TEvent) => void;
   /**
    * Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed.
+   * Get list of timezone with `moment.tz.names()` [See moment docs](https://momentjs.com/timezone/docs/#/data-loading/getting-zone-names/)
    */
   timeZone: string;
   /**
@@ -202,7 +204,7 @@ class DateTimeInput extends Component<
       (prevState) => ({
         calendarDate: today,
         highlightedIndex:
-          (prevState.suggestedItems as string[]).length +
+          (prevState.suggestedItems || []).length +
           getDateInMonth(today, this.props.timeZone) -
           1,
       }),
@@ -391,21 +393,15 @@ class DateTimeInput extends Component<
                       // @ts-ignore
                       if (isOpen) setHighlightedIndex(null);
                     },
-                    onKeyDown: (
-                      event: KeyboardEvent<HTMLButtonElement | HTMLInputElement>
-                    ) => {
+                    onKeyDown: (event: TPreventDownshiftDefaultEvent) => {
                       if (this.props.isReadOnly) {
-                        preventDownshiftDefault(
-                          event as TPreventDownshiftDefaultEvent
-                        );
+                        preventDownshiftDefault(event);
                         return;
                       }
                       // parse input when user presses enter on regular input,
                       // close menu and notify parent
                       if (event.key === 'Enter' && highlightedIndex === null) {
-                        preventDownshiftDefault(
-                          event as TPreventDownshiftDefaultEvent
-                        );
+                        preventDownshiftDefault(event);
 
                         const parsedDate = parseInputText(
                           inputValue as string,
@@ -425,9 +421,7 @@ class DateTimeInput extends Component<
                         ) {
                           // if it's the end of the month
                           // then bypass normal arrow navigation
-                          preventDownshiftDefault(
-                            event as TPreventDownshiftDefaultEvent
-                          );
+                          preventDownshiftDefault(event);
                           // then jump to start of next month
                           this.jumpMonths(1, 0);
                         }
@@ -441,10 +435,7 @@ class DateTimeInput extends Component<
                         if (Number(highlightedIndex) <= 0) {
                           // if it's the start of the month
                           // then bypass normal arrow navigation
-                          preventDownshiftDefault(
-                            event as TPreventDownshiftDefaultEvent
-                          );
-
+                          preventDownshiftDefault(event);
                           const numberOfDaysOfPrevMonth = getDaysInMonth(
                             previousDay,
                             this.props.timeZone
