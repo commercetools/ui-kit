@@ -571,10 +571,12 @@ const RichTextEditorBody = forwardRef((props: TRichTextEditorBody, ref) => {
   );
 });
 
-RichTextEditorBody.displayName = 'RichTextEditorBody';
-
-RichTextEditorBody.defaultProps = {
+const defaultProps: Pick<TRichTextEditorBody, 'styles'> = {
   styles: {},
 };
+
+RichTextEditorBody.displayName = 'RichTextEditorBody';
+
+RichTextEditorBody.defaultProps = defaultProps;
 
 export default RichTextEditorBody;
