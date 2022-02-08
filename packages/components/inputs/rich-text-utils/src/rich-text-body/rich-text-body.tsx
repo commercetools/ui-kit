@@ -369,7 +369,7 @@ const RichTextEditorBody = forwardRef((props: TRichTextEditorBody, ref) => {
 
   if (props.showExpandIcon) {
     warning(
-      typeof props.onClickExpand !== 'function',
+      typeof props.onClickExpand === 'function',
       'RichTextUtils: "onClickExpand" is required when showExpandIcon is true'
     );
   }
