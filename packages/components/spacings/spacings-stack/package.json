@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-spacings-stack.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
+    "@babel/runtime": "7.17.2",
+    "@babel/runtime-corejs3": "7.17.2",
     "@commercetools-uikit/design-system": "12.2.9",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
