@@ -73,7 +73,7 @@ type TCreatableSelectFieldProps = {
     | 'auto';
   /**
    * A map of errors. Error messages for known errors are rendered automatically.
-   * <br />
+   * <br>
    * Unknown errors will be forwarded to `renderError`
    */
   errors?: TFieldErrors;
@@ -176,7 +176,7 @@ type TCreatableSelectFieldProps = {
    */
   maxMenuHeight?: ReactSelectCreatableProps['maxMenuHeight'];
   /**
-   * 	Dom element to portal the select menu to
+   * Dom element to portal the select menu to
    * <br>
    * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
@@ -192,14 +192,14 @@ type TCreatableSelectFieldProps = {
    */
   menuShouldBlockScroll?: ReactSelectCreatableProps['menuShouldBlockScroll'];
   /**
-   * 	Name of the HTML Input (optional - without this, no input will be rendered)
+   * Name of the HTML Input (optional - without this, no input will be rendered)
    * <br>
    * [Props from React select was used](https://react-select.com/props#creatable-props)
    */
   name?: ReactSelectCreatableProps['name'];
   /**
    * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place).
-   * <br/>
+   * <br>
    * Gets called with `{ inputValue: String }`. `inputValue` will be an empty string when no search text is present.
    * <br>
    * [Props from React select was used](https://react-select.com/props#creatable-props)
@@ -211,7 +211,7 @@ type TCreatableSelectFieldProps = {
   onBlur?: (event: TEvent) => void;
   /**
    * Called with a fake event when value changes.
-   * <br />
+   * <br>
    * The event's `target.name` will be the name supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
    */
   onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
@@ -313,19 +313,19 @@ type TCreatableSelectFieldProps = {
   description?: string | ReactNode;
   /**
    * Function called when info button is pressed.
-   * <br />
+   * <br>
    * Info button will only be visible when this prop is passed.
    */
   onInfoButtonClick?: () => void;
   /**
    * Icon to be displayed beside the hint text.
-   * <br />
+   * <br>
    * Will only get rendered when `hint` is passed as well.
    */
   hintIcon?: ReactElement;
   /**
    * Badge to be displayed beside the label.
-   * <br />
+   * <br>
    * Might be used to display additional information about the content of the field (E.g verified email)
    */
   badge?: ReactNode;
