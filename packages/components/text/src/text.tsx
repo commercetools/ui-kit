@@ -13,7 +13,9 @@ import {
 } from './text.styles';
 
 type TBasicTextProps = {
-  intlMessage?: MessageDescriptor;
+  intlMessage?: MessageDescriptor & {
+    values: Record<string, React.ReactNode>;
+  };
   children?: ReactNode;
 };
 
