@@ -15,7 +15,7 @@ const initializeValue = (value: string) =>
   html.serialize(html.deserialize(value));
 
 const isLocalizedHtmlValueEmpty = (value: unknown) =>
-  !value || isRichTextEmpty(value);
+  !value || isRichTextEmpty(value as string);
 
 export const isEmpty = (
   localizedHtmlValue:

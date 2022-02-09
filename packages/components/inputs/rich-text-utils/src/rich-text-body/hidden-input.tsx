@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 
 type Props = {
@@ -39,13 +38,5 @@ const HiddenInput = (props: Props) => {
 };
 
 HiddenInput.displayName = 'HiddenInput';
-
-HiddenInput.propTypes = {
-  id: PropTypes.string,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  isFocused: PropTypes.bool.isRequired,
-  handleFocus: PropTypes.func,
-};
 
 export default HiddenInput;
