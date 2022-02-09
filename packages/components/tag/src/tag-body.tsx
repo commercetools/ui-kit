@@ -100,6 +100,7 @@ const getContentWrapperStyles = (props: TTagBodyProps, theme: Theme) => {
 
 const TagBody = (props: TTagBodyProps) => {
   const theme: Theme = useTheme();
+  const textTone = props.isDisabled ? 'secondary' : undefined;
   return (
     <Body
       to={props.to}
@@ -135,7 +136,7 @@ const TagBody = (props: TTagBodyProps) => {
       ]}
       onClick={props.isDisabled ? undefined : props.onClick}
     >
-      <Text.Detail>{props.children}</Text.Detail>
+      <Text.Detail tone={textTone}>{props.children}</Text.Detail>
     </Body>
   );
 };
