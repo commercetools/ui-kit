@@ -1,6 +1,6 @@
 import html from '../html';
 
-const isEmpty = (rawValue: unknown): boolean =>
+const isEmpty = (rawValue: string): boolean =>
   html.deserialize(rawValue).document.text === '';
 
 export default isEmpty;
