@@ -1,7 +1,4 @@
 import { useReducer, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
-import { oneLine } from 'common-tags';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/react';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -22,13 +19,139 @@ import {
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
+import { warning } from '@commercetools-uikit/utils';
 
-const expandedTranslationsReducer = (state, action) => {
+type TExpandedTranslationsReducerState = {
+  state?: {
+    [language: string]: string;
+  };
+};
+
+type TExpandedTranslationsReducerAction = {
+  type: string;
+  payload: string;
+};
+
+type TLocalizedMultilineTextInput = {
+  /**
+   * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`
+   */
+  id?: string;
+  /**
+   * Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`
+   */
+  name?: string;
+  /**
+   * Used as HTML `autocomplete` property
+   */
+  autoComplete?: string;
+  /**
+   * Values to use. Keyed by language, the values are the actual values, e.g. `{ en: 'Horse', de: 'Pferd' }`
+   * <br />
+   * The input doesn't accept a "languages" prop, instead all possible
+   * languages have to exist (with empty or filled strings) on the value:
+   * <br />   { en: 'foo', de: '', es: '' }
+   */
+  value: {
+    [key: string]: string;
+  };
+  /**
+   * Gets called when any input is changed. Is called with the change event of the changed input.
+   * <br />
+   * Signature: `(event) => void`
+   */
+  onChange?: () => void;
+  /**
+   * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
+   */
+  selectedLanguage: string;
+  /**
+   * Called when input is blurred
+   */
+  onBlur?: () => void;
+  /**
+   * Called when input is focused
+   */
+  onFocus?: () => void;
+  /**
+   * Expands input components holding multiline values instead of collpasing them by default.
+   */
+  defaultExpandMultilineText?: boolean;
+  /**
+   * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
+   */
+  hideLanguageExpansionControls?: boolean;
+  /**
+   * Controls whether one or all languages are visible by default. Pass `true` to show all languages by default.
+   */
+  defaultExpandLanguages?: boolean;
+
+  /**
+   * Sets the focus on the first input when `true` is passed.
+   */
+  isAutofocussed?: boolean;
+  /**
+   * Disables all input fields.
+   */
+  isDisabled?: boolean;
+  /**
+   * Disables all input fields and shows them in read-only mode.
+   */
+  isReadOnly: boolean;
+  /**
+   * Placeholders for each language. Object of the same shape as `value`.
+   */
+  placeholder?: {
+    [key: string]: string;
+  };
+  /**
+   * Horizontal size limit of the input fields.
+   */
+  horizontalConstraint?:
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  /**
+   * Will apply the error state to each input without showing any error message.
+   */
+  hasError?: boolean;
+  /**
+   * Will apply the warning state to each input without showing any error message.
+   */
+  hasWarning?: boolean;
+  /**
+   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
+   */
+  errors?: {
+    [key: string]: string;
+  };
+  /**
+   * Used to show warnings underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the warning to show for that key.
+   */
+  warnings?: {
+    [key: string]: string;
+  };
+};
+
+const expandedTranslationsReducer = (
+  state: TExpandedTranslationsReducerState,
+  action: TExpandedTranslationsReducerAction
+) => {
   switch (action.type) {
     case 'toggle':
       return {
         ...state,
-        [action.payload]: !state[action.payload],
+        [action.payload]: !state[action.payload as keyof typeof state],
       };
 
     case 'toggleAll': {
@@ -51,7 +174,7 @@ const expandedTranslationsReducer = (state, action) => {
 // can get quite confusing. We try to stick to expand/collapse for the
 // multiline inputs, while we use show/hide/open/close for the remaining
 // languages.
-const LocalizedMultilineTextInput = (props) => {
+const LocalizedMultilineTextInput = (props: TLocalizedMultilineTextInput) => {
   const intl = useIntl();
 
   const initialExpandedTranslationsState = Object.keys(props.value).reduce(
@@ -86,7 +209,7 @@ const LocalizedMultilineTextInput = (props) => {
     [expandedTranslationsDispatch]
   );
 
-  const languages = sortLanguages(
+  const languages: Array<string> = sortLanguages(
     props.selectedLanguage,
     Object.keys(props.value)
   );
@@ -109,6 +232,13 @@ const LocalizedMultilineTextInput = (props) => {
   const shouldRenderLanguagesButton =
     languages.length > 1 && !props.hideLanguageExpansionControls;
 
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'LocaliszedMultilineTextInput: "onChange" is required when isReadOnly is not true'
+    );
+  }
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
@@ -125,11 +255,15 @@ const LocalizedMultilineTextInput = (props) => {
               <TranslationInput
                 key={language}
                 autoComplete={props.autoComplete}
-                id={LocalizedMultilineTextInput.getId(props.id, language)}
+                id={LocalizedMultilineTextInput.getId(
+                  props.id,
+                  language as string
+                )}
                 name={LocalizedMultilineTextInput.getName(props.name, language)}
                 value={props.value[language]}
                 onChange={props.onChange}
                 language={language}
+                //@ts-ignore
                 isCollapsed={!expandedTranslationsState[language]}
                 onToggle={() => toggleLanguage(language)}
                 placeholder={
@@ -164,6 +298,7 @@ const LocalizedMultilineTextInput = (props) => {
           >
             <LocalizedInputToggle
               isOpen={areLanguagesOpened}
+              //@ts-ignore
               onClick={toggleLanguages}
               isDisabled={
                 areLanguagesOpened &&
@@ -184,122 +319,6 @@ LocalizedMultilineTextInput.displayName = 'LocalizedMultilineTextInput';
 
 LocalizedMultilineTextInput.RequiredValueErrorMessage =
   RequiredValueErrorMessage;
-
-LocalizedMultilineTextInput.propTypes = {
-  /**
-   * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`
-   */
-  id: PropTypes.string,
-  /**
-   * Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`
-   */
-  name: PropTypes.string,
-  /**
-   * Used as HTML `autocomplete` property
-   */
-  autoComplete: PropTypes.string,
-  /**
-   * Values to use. Keyed by language, the values are the actual values, e.g. `{ en: 'Horse', de: 'Pferd' }`
-   * <br />
-   * The input doesn't accept a "languages" prop, instead all possible
-   * languages have to exist (with empty or filled strings) on the value:
-   * <br />   { en: 'foo', de: '', es: '' }
-   */
-  value: PropTypes.objectOf(PropTypes.string).isRequired,
-  /**
-   * Gets called when any input is changed. Is called with the change event of the changed input.
-   * <br />
-   * Signature: `(event) => void`
-   */
-  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
-  /**
-   * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
-   */
-  selectedLanguage: PropTypes.string.isRequired,
-  /**
-   * Called when input is blurred
-   */
-  onBlur: PropTypes.func,
-  /**
-   * Called when input is focused
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Expands input components holding multiline values instead of collpasing them by default.
-   */
-  defaultExpandMultilineText: PropTypes.bool,
-  /**
-   * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
-   */
-  hideLanguageExpansionControls: PropTypes.bool,
-  /**
-   * Controls whether one or all languages are visible by default. Pass `true` to show all languages by default.
-   */
-  defaultExpandLanguages: (props, propName, componentName, ...rest) => {
-    if (
-      props.hideLanguageExpansionControls &&
-      typeof props[propName] === 'boolean'
-    ) {
-      throw new Error(
-        oneLine`
-          ${componentName}: "${propName}" does not have any effect when
-          "hideLanguageExpansionControls" is set.
-        `
-      );
-    }
-    return PropTypes.bool(props, propName, componentName, ...rest);
-  },
-  /**
-   * Sets the focus on the first input when `true` is passed.
-   */
-  isAutofocussed: PropTypes.bool,
-  /**
-   * Disables all input fields.
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Disables all input fields and shows them in read-only mode.
-   */
-  isReadOnly: PropTypes.bool,
-  /**
-   * Placeholders for each language. Object of the same shape as `value`.
-   */
-  placeholder: PropTypes.objectOf(PropTypes.string),
-  /**
-   * Horizontal size limit of the input fields.
-   */
-  horizontalConstraint: PropTypes.oneOf([
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-  /**
-   * Will apply the error state to each input without showing any error message.
-   */
-  hasError: PropTypes.bool,
-  /**
-   * Will apply the warning state to each input without showing any error message.
-   */
-  hasWarning: PropTypes.bool,
-  /**
-   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
-   */
-  errors: PropTypes.objectOf(PropTypes.node),
-  /**
-   * Used to show warnings underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the warning to show for that key.
-   */
-  warnings: PropTypes.objectOf(PropTypes.node),
-};
 
 LocalizedMultilineTextInput.getId = getId;
 
