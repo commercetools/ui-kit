@@ -14,7 +14,7 @@ import {
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
 
-type Props = {
+type TDropdownProps = {
   label: string;
   isMulti: boolean;
   value: string[] | string;
@@ -33,7 +33,7 @@ type TItem = {
   label: string;
 };
 
-const getIsSelected = (props: Props, item: TItem) =>
+const getIsSelected = (props: TDropdownProps, item: TItem) =>
   !props.isMulti
     ? item.value === (props.value as string)
     : (props.value as string[]) &&
@@ -43,7 +43,7 @@ const getIsSelected = (props: Props, item: TItem) =>
 
 const Label = styled.div;
 
-const Dropdown = (props: Props) => {
+const Dropdown = (props: TDropdownProps) => {
   const DropdownItem: FunctionComponent<{
     value: string | string[];
     isSelected: unknown;

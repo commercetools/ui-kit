@@ -1,15 +1,14 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import type { TRichTextEditorBody } from './rich-text-body';
 
-type Props = {
-  hasError?: boolean;
-  hasWarning?: boolean;
-  isReadOnly?: boolean;
-  isDisabled?: boolean;
-};
+type TRichTextBodyStylesProps = Pick<
+  TRichTextEditorBody,
+  'hasError' | 'isReadOnly' | 'hasWarning' | 'isReadOnly' | 'isDisabled'
+>;
 
-const getBorderColor = (props: Props) => {
+const getBorderColor = (props: TRichTextBodyStylesProps) => {
   if (props.isDisabled) {
     return css`
       border-color: ${vars.borderColorForInputWhenDisabled};
@@ -35,7 +34,7 @@ const getBorderColor = (props: Props) => {
   `;
 };
 
-const getBackgroundColor = (props: Props) => {
+const getBackgroundColor = (props: TRichTextBodyStylesProps) => {
   if (props.isDisabled) {
     return css`
       background-color: ${vars.backgroundColorForInputWhenDisabled};
@@ -88,7 +87,7 @@ export const Toolbar = styled.div`
   }
 `;
 
-const reset = (props: Props) => [
+const reset = (props: TRichTextBodyStylesProps) => [
   css`
     h1,
     h2,

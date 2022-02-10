@@ -5,7 +5,7 @@ type TType = {
   type: string;
 };
 
-type TProps = {
+type TRenderBlockPluginProps = {
   children: ReactNode;
   mark: TType;
   attributes: unknown;
@@ -14,7 +14,7 @@ type TProps = {
 
 export const RenderBlockPlugin = () => {
   return {
-    renderBlock(props: TProps, next: () => ReactNode) {
+    renderBlock(props: TRenderBlockPluginProps, next: () => ReactNode) {
       const { attributes, children, node } = props;
       switch (node.type) {
         case BLOCK_TAGS.pre:
@@ -52,7 +52,7 @@ export const RenderBlockPlugin = () => {
 
 export const RenderMarkPlugin = () => {
   return {
-    renderMark(props: TProps, next: () => ReactNode) {
+    renderMark(props: TRenderBlockPluginProps, next: () => ReactNode) {
       const { children, mark, attributes } = props;
 
       switch (mark.type) {

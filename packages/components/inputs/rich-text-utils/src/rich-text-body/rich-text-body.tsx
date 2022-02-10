@@ -77,7 +77,7 @@ type TRef = {
   containerRef?: LegacyRef<HTMLDivElement>;
 };
 
-type TRichTextEditorBody = {
+export type TRichTextEditorBody = {
   editor: TEditor;
   styles: {
     container?: string;
