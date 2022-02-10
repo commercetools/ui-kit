@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/icon-button",
   "description": "Icon buttons are icon-only buttons. They trigger an action when clicked (`onClick` prop). You must also pass a label for accessibility reasons.",
-  "version": "12.2.9",
+  "version": "13.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,12 +19,12 @@
   "module": "dist/commercetools-uikit-icon-button.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/accessible-button": "12.2.9",
-    "@commercetools-uikit/design-system": "12.2.9",
-    "@commercetools-uikit/spacings": "12.2.9",
-    "@commercetools-uikit/text": "12.2.9",
+    "@babel/runtime": "7.17.2",
+    "@babel/runtime-corejs3": "7.17.2",
+    "@commercetools-uikit/accessible-button": "13.0.0",
+    "@commercetools-uikit/design-system": "13.0.0",
+    "@commercetools-uikit/spacings": "13.0.0",
+    "@commercetools-uikit/text": "13.0.0",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",

@@ -1,5 +1,17 @@
 # @commercetools-local/generator-package-json
 
+## 2.0.11
+
+### Patch Changes
+
+- [#2087](https://github.com/commercetools/ui-kit/pull/2087) [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#2070](https://github.com/commercetools/ui-kit/pull/2070) [`482e977c7`](https://github.com/commercetools/ui-kit/commit/482e977c7f0cf3dcd342731c965e9016da5dc417) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#2066](https://github.com/commercetools/ui-kit/pull/2066) [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#2051](https://github.com/commercetools/ui-kit/pull/2051) [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
 ## 2.0.10
 
 ### Patch Changes

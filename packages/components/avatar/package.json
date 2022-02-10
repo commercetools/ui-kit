@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/avatar",
   "description": "A component for rendering profile images",
-  "version": "12.2.9",
+  "version": "13.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,9 +19,9 @@
   "module": "dist/commercetools-uikit-avatar.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/design-system": "12.2.9",
+    "@babel/runtime": "7.17.2",
+    "@babel/runtime-corejs3": "7.17.2",
+    "@commercetools-uikit/design-system": "13.0.0",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",

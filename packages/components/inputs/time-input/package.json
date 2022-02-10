@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/time-input",
   "description": "The TimeInput component allows the user to select a time.",
-  "version": "12.2.9",
+  "version": "13.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,15 +19,15 @@
   "module": "dist/commercetools-uikit-time-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/accessible-button": "12.2.9",
-    "@commercetools-uikit/constraints": "12.2.9",
-    "@commercetools-uikit/design-system": "12.2.9",
+    "@babel/runtime": "7.17.2",
+    "@babel/runtime-corejs3": "7.17.2",
+    "@commercetools-uikit/accessible-button": "13.0.0",
+    "@commercetools-uikit/constraints": "13.0.0",
+    "@commercetools-uikit/design-system": "13.0.0",
     "@commercetools-uikit/hooks": "12.2.9",
-    "@commercetools-uikit/icons": "12.2.9",
-    "@commercetools-uikit/input-utils": "12.2.9",
-    "@commercetools-uikit/spacings-inline": "12.2.9",
+    "@commercetools-uikit/icons": "13.0.0",
+    "@commercetools-uikit/input-utils": "13.0.0",
+    "@commercetools-uikit/spacings-inline": "13.0.0",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/is-prop-valid": "1.1.1",
     "@emotion/react": "^11.4.0",
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "react": "17.0.2",
-    "react-intl": "5.24.4"
+    "react-intl": "5.24.6"
   },
   "peerDependencies": {
     "react": "17.x",
