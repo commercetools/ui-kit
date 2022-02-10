@@ -1,5 +1,23 @@
 # @commercetools-uikit/date-field
 
+## 13.0.0
+
+### Patch Changes
+
+- [#2087](https://github.com/commercetools/ui-kit/pull/2087) [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#2051](https://github.com/commercetools/ui-kit/pull/2051) [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#2095](https://github.com/commercetools/ui-kit/pull/2095) [`1a31f7ec7`](https://github.com/commercetools/ui-kit/commit/1a31f7ec7f80570cec1e6c70dbf1ff8e7e35663d) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Migrate to typescript
+
+- Updated dependencies [[`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c), [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`010182aac`](https://github.com/commercetools/ui-kit/commit/010182aacd47f078d210b3b5f12b33094317d7c0), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e)]:
+  - @commercetools-uikit/field-errors@13.0.0
+  - @commercetools-uikit/date-input@13.0.0
+  - @commercetools-uikit/design-system@13.0.0
+  - @commercetools-uikit/constraints@13.0.0
+  - @commercetools-uikit/field-label@13.0.0
+  - @commercetools-uikit/spacings@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes
