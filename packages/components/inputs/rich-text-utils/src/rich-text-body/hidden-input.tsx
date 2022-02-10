@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 
-type Props = {
+type THiddenInputProps = {
   handleFocus: () => void;
   isFocused: boolean;
   id?: string;
@@ -9,7 +9,7 @@ type Props = {
   readOnly: boolean;
 };
 
-const HiddenInput = (props: Props) => {
+const HiddenInput = (props: THiddenInputProps) => {
   const { handleFocus } = props;
   const onFocus = useCallback(
     (event) => {

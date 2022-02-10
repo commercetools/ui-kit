@@ -1,7 +1,7 @@
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type TRichTextBodyButtonProps = {
   isDisabled?: boolean;
