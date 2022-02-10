@@ -1,5 +1,28 @@
 # @commercetools-uikit/fields
 
+## 13.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`9f2c68489`](https://github.com/commercetools/ui-kit/commit/9f2c68489bbbec8aa6d7dcc9c7c8548202efb9db), [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c), [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`43e46589e`](https://github.com/commercetools/ui-kit/commit/43e46589e69a8ee9205722995f1665ec01847e7d), [`5f416e619`](https://github.com/commercetools/ui-kit/commit/5f416e6194781bad0ee95c0c037052a806524524), [`34872bf79`](https://github.com/commercetools/ui-kit/commit/34872bf79805ca0b5adcc75a98157e7e6a514448), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e), [`1a31f7ec7`](https://github.com/commercetools/ui-kit/commit/1a31f7ec7f80570cec1e6c70dbf1ff8e7e35663d)]:
+  - @commercetools-uikit/async-creatable-select-field@13.0.0
+  - @commercetools-uikit/password-field@13.0.0
+  - @commercetools-uikit/async-select-field@13.0.0
+  - @commercetools-uikit/creatable-select-field@13.0.0
+  - @commercetools-uikit/date-field@13.0.0
+  - @commercetools-uikit/number-field@13.0.0
+  - @commercetools-uikit/text-field@13.0.0
+  - @commercetools-uikit/radio-field@13.0.0
+  - @commercetools-uikit/date-range-field@13.0.0
+  - @commercetools-uikit/date-time-field@13.0.0
+  - @commercetools-uikit/localized-multiline-text-field@13.0.0
+  - @commercetools-uikit/localized-text-field@13.0.0
+  - @commercetools-uikit/money-field@13.0.0
+  - @commercetools-uikit/multiline-text-field@13.0.0
+  - @commercetools-uikit/search-select-field@13.0.0
+  - @commercetools-uikit/select-field@13.0.0
+  - @commercetools-uikit/time-field@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes
