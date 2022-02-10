@@ -8,7 +8,7 @@ import {
 } from 'react';
 import type { DurationInputArg1, MomentInput } from 'moment';
 import Downshift from 'downshift';
-import { injectIntl } from 'react-intl';
+import { injectIntl, type WrappedComponentProps } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes, parseTime } from '@commercetools-uikit/utils';
 import {
@@ -79,20 +79,7 @@ type TEvent = {
   };
 };
 
-type TPlaceholder = {
-  id: string;
-  description: string;
-  defaultMessage: string;
-};
-
-type TIntl = {
-  locale: string;
-  formatMessage: (placeholder: TPlaceholder) => string;
-};
-
 export type TDateTimeInputProps = {
-  intl: TIntl;
-
   /**
    * Horizontal size limit of the input field.
    */
@@ -160,7 +147,7 @@ export type TDateTimeInputProps = {
    * Indicates the input field has a warning
    */
   hasWarning?: boolean;
-};
+} & WrappedComponentProps;
 
 type TDateTimeInputState = {
   calendarDate?: string;
@@ -577,5 +564,4 @@ class DateTimeInput extends Component<
   }
 }
 
-// @ts-ignore
 export default injectIntl(DateTimeInput);

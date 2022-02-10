@@ -50,7 +50,6 @@ export default Example;
 
 | Props                  | Type                                                                                         | Required | Default | Description                                                                                                                                                                                                                                                                        |
 | ---------------------- | -------------------------------------------------------------------------------------------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `intl`                 | `Object`<br/>[See signature.](#signature-intl)                                               |    ✅    |         |                                                                                                                                                                                                                                                                                    |
 | `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          |         | Horizontal size limit of the input field.                                                                                                                                                                                                                                          |
 | `value`                | `string`                                                                                     |    ✅    |         | The selected date, must either be an empty string or a date formatted in ISO 8601 (e.g. "2018-10-04T09:00:00.000Z").                                                                                                                                                               |
 | `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                         |    ✅    |         | Called when the date changes. Called with an event containing an empty string (no value) or a string in this format: "YYYY-MM-DD".&#xA;<br />                                                                                                                                      |
@@ -66,15 +65,6 @@ export default Example;
 | `hasWarning`           | `boolean`                                                                                    |          |         | Indicates the input field has a warning                                                                                                                                                                                                                                            |
 
 ## Signatures
-
-### Signature `intl`
-
-```ts
-{
-  locale: string;
-  formatMessage: (placeholder: TPlaceholder) => string;
-}
-```
 
 ### Signature `onChange`
 
