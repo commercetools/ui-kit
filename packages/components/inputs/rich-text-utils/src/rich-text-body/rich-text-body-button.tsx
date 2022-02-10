@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { type ReactNode } from 'react';
 
-type Props = {
+type TRichTextBodyButtonProps = {
   isDisabled?: boolean;
   label: string;
   isActive?: boolean;
@@ -14,12 +14,12 @@ type Props = {
 
 const propsToOmit = ['isActive', 'label', 'isDisabled', 'isReadOnly'];
 
-function getFillColor(props: Props) {
+function getFillColor(props: TRichTextBodyButtonProps) {
   if (props.isActive) return vars.colorSurface;
   return vars.colorSolid;
 }
 
-const RichTextBodyButton = (props: Props) => {
+const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
   const restOfProps = omit(props, propsToOmit);
 
   return (
