@@ -10,7 +10,11 @@ import type { AsyncProps } from 'react-select/async';
 import {
   filterDataAttributes,
   createSequentialId,
+<<<<<<< HEAD:packages/components/fields/search-select-field/src/search-select-field.tsx
   warning,
+=======
+  randomString,
+>>>>>>> 0cfb316ed (chore(search-select-field): add aria-invalid, aria-errormessage attributes):packages/components/fields/search-select-field/src/search-select-field.js
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
@@ -293,6 +297,7 @@ type TSearchSelectFieldProps = {
 const SearchSelectField = (props: TSearchSelectFieldProps) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
   const id = props.id || sequentialId();
+<<<<<<< HEAD:packages/components/fields/search-select-field/src/search-select-field.tsx
 
   if (props.hintIcon) {
     warning(
@@ -312,6 +317,9 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
       'SearchSelectField: `touched` is expected to be an array of boolean when isMulti is true'
     );
   }
+=======
+  const errorFieldId = randomString();
+>>>>>>> 0cfb316ed (chore(search-select-field): add aria-invalid, aria-errormessage attributes):packages/components/fields/search-select-field/src/search-select-field.js
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
@@ -331,7 +339,13 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           horizontalConstraint="scale"
           hasError={hasError}
           aria-label={props['aria-label']}
+<<<<<<< HEAD:packages/components/fields/search-select-field/src/search-select-field.tsx
           aria-labelledby={props['aria-labelledby?']}
+=======
+          aria-labelledby={props['aria-labelledby']}
+          aria-invalid={hasError}
+          aria-errormessage={errorFieldId}
+>>>>>>> 0cfb316ed (chore(search-select-field): add aria-invalid, aria-errormessage attributes):packages/components/fields/search-select-field/src/search-select-field.js
           isAutofocussed={props.isAutofocussed}
           backspaceRemovesValue={props.backspaceRemovesValue}
           components={props.components}
@@ -366,6 +380,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           optionType={props.optionType}
         />
         <FieldErrors
+          id={errorFieldId}
           errors={props.errors}
           isVisible={hasError}
           renderError={props.renderError}

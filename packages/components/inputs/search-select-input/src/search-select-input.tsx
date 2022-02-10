@@ -54,6 +54,14 @@ export type TSearchSelectInputProps = {
    */
   'aria-labelledby'?: ReactSelectAsyncProps['aria-labelledby'];
   /**
+   * a11y attribute to determine if input is valid/not
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * a11y attribute identifier that points to a field with error message
+   */
+  'aria-errormessage'?: string;
+  /**
    * The id of the search input. This forwarded as react-select's "inputId"
    * <br>
    * [Props from React select was used](https://react-select.com/props)
