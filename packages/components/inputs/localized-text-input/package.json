@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/localized-text-input",
   "description": "A controlled text input component for localized single-line strings with validation states.",
-  "version": "12.2.9",
+  "version": "13.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,19 +19,19 @@
   "module": "dist/commercetools-uikit-localized-text-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/constraints": "12.2.9",
-    "@commercetools-uikit/design-system": "12.2.9",
-    "@commercetools-uikit/flat-button": "12.2.9",
+    "@babel/runtime": "7.17.2",
+    "@babel/runtime-corejs3": "7.17.2",
+    "@commercetools-uikit/constraints": "13.0.0",
+    "@commercetools-uikit/design-system": "13.0.0",
+    "@commercetools-uikit/flat-button": "13.0.0",
     "@commercetools-uikit/hooks": "12.2.9",
-    "@commercetools-uikit/icons": "12.2.9",
-    "@commercetools-uikit/input-utils": "12.2.9",
+    "@commercetools-uikit/icons": "13.0.0",
+    "@commercetools-uikit/input-utils": "13.0.0",
     "@commercetools-uikit/localized-utils": "12.2.9",
-    "@commercetools-uikit/messages": "12.2.9",
-    "@commercetools-uikit/spacings-stack": "12.2.9",
-    "@commercetools-uikit/text": "12.2.9",
-    "@commercetools-uikit/text-input": "12.2.9",
+    "@commercetools-uikit/messages": "13.0.0",
+    "@commercetools-uikit/spacings-stack": "13.0.0",
+    "@commercetools-uikit/text": "13.0.0",
+    "@commercetools-uikit/text-input": "13.0.0",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "react": "17.0.2",
-    "react-intl": "5.24.4"
+    "react-intl": "5.24.6"
   },
   "peerDependencies": {
     "react": "17.x",
