@@ -1,5 +1,24 @@
 # @commercetools-uikit/search-select-input
 
+## 13.0.0
+
+### Minor Changes
+
+- [#2084](https://github.com/commercetools/ui-kit/pull/2084) [`2f96f8ff7`](https://github.com/commercetools/ui-kit/commit/2f96f8ff7c7b322992fe79f8231a5783df145cbb) Thanks [@parthikrb](https://github.com/parthikrb)! - Expose `closeMenuOnSelect` prop on all select input components. By default it closes the menu. When set to `false`, the menu stays open when options are selected.
+
+### Patch Changes
+
+- [#2081](https://github.com/commercetools/ui-kit/pull/2081) [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#2079](https://github.com/commercetools/ui-kit/pull/2079) [`a5600bb04`](https://github.com/commercetools/ui-kit/commit/a5600bb0447d02d457f304f81c68b6a672dbc188) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Migrate to typescript
+
+* Updated dependencies [[`a5600bb04`](https://github.com/commercetools/ui-kit/commit/a5600bb0447d02d457f304f81c68b6a672dbc188), [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c), [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`2f96f8ff7`](https://github.com/commercetools/ui-kit/commit/2f96f8ff7c7b322992fe79f8231a5783df145cbb), [`a5600bb04`](https://github.com/commercetools/ui-kit/commit/a5600bb0447d02d457f304f81c68b6a672dbc188), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e), [`9dfb10a43`](https://github.com/commercetools/ui-kit/commit/9dfb10a43b045060c2e7f4b3dccd09f26ca513eb)]:
+  - @commercetools-uikit/async-select-input@13.0.0
+  - @commercetools-uikit/select-utils@13.0.0
+  - @commercetools-uikit/design-system@13.0.0
+  - @commercetools-uikit/text@13.0.0
+  - @commercetools-uikit/spacings@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes
