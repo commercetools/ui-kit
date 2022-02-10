@@ -61,8 +61,6 @@ const PageSizeSelector = (props: TPageSizeSelectorProps) => {
   const options = mapRangeToListOfOptions(props.perPageRange);
   const hasValidPerPageOption = options.includes(props.perPage);
 
-  console.log('PageSizeSelector:', { props });
-
   warning(
     hasValidPerPageOption,
     `@commercetools-uikit/pagination: invalid page size ${

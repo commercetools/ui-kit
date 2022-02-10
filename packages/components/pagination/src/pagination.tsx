@@ -49,11 +49,6 @@ const Pagination = (props: TPaginationProps) => {
       ? props.totalItems - props.perPage * (props.page - 1)
       : props.perPage;
 
-  console.log(
-    'Pagination props:',
-    JSON.stringify({ ...props, totalPages, pageItems }, null, 2)
-  );
-
   return (
     <Spacings.Inline justifyContent="space-between">
       <div
