@@ -25,6 +25,14 @@ export type TMultiLineInputProps = {
   value: string;
   isOpen: boolean;
   onHeightChange?: (height: number, rowCount: number) => void;
+  /**
+   * a11y attribute to determine if input is valid/not
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * a11y attribute identifier that points to a field with error message
+   */
+  'aria-errormessage'?: string;
 };
 
 const MultilineInput = (props: TMultiLineInputProps) => {
@@ -75,6 +83,8 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       /* ARIA */
       aria-readonly={props.isReadOnly}
       aria-multiline="true"
+      aria-invalid={props['aria-invalid']}
+      aria-errormessage={props['aria-errormessage']}
       role="textbox"
       minRows={MIN_ROW_COUNT}
       maxRows={props.isOpen ? undefined : MIN_ROW_COUNT}

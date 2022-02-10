@@ -24,6 +24,14 @@ export type TMultilineTextInputProps = {
    */
   name?: string;
   /**
+   * a11y attribute to determine if input is valid/not
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * a11y attribute identifier that points to a field with error message
+   */
+  'aria-errormessage'?: string;
+  /**
    * Used as HTML `autocomplete` property
    */
   autoComplete?: string;
@@ -153,6 +161,9 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
           isAutofocussed={props.isAutofocussed}
           isOpen={isOpen}
           {...filterDataAttributes(props)}
+          /* ARIA */
+          aria-invalid={props['aria-invalid']}
+          aria-errormessage={props['aria-errormessage']}
         />
         {shouldRenderToggleButton && (
           <div
