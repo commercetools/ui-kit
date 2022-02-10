@@ -904,7 +904,7 @@ MoneyInput.isHighPrecision = (formValue: TValue, locale: string) => {
   return moneyValue && moneyValue.type === 'highPrecision';
 };
 
-MoneyInput.isTouched = (touched: TValue) =>
+MoneyInput.isTouched = (touched?: TValue) =>
   Boolean(touched && touched.currencyCode && touched.amount);
 
 MoneyInput.defaultProps = defaultProps;
