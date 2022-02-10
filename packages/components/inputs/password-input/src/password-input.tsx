@@ -130,12 +130,8 @@ const PasswordInput = (props: TPasswordInputProps) => {
         /* ARIA */
         aria-readonly={props.isReadOnly}
         contentEditable={!props.isReadOnly}
-        {...(!props.isReadOnly
-          ? {
-              'aria-invalid': props['aria-invalid'],
-              'aria-errormessage': props['aria-errormessage'],
-            }
-          : {})}
+        aria-invalid={props['aria-invalid']}
+        aria-errormessage={props['aria-errormessage']}
       />
     </Constraints.Horizontal>
   );
