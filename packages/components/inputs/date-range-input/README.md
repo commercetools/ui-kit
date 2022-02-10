@@ -47,7 +47,6 @@ export default Example;
 
 | Props                  | Type                                                                                         | Required | Default | Description                                                                                                                                                                                                   |
 | ---------------------- | -------------------------------------------------------------------------------------------- | :------: | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `intl`                 | `Object`<br/>[See signature.](#signature-intl)                                               |    ✅    |         |                                                                                                                                                                                                               |
 | `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          |         | Horizontal size limit of the input field.                                                                                                                                                                     |
 | `value`                | `Array: MomentInput[]`                                                                       |    ✅    |         | The selected date range, must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".                                                                                    |
 | `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                         |    ✅    |         | Called when the date range changes. Called with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".&#xA;<br />&#xA;Signature: `(event) => void` |
@@ -63,15 +62,6 @@ export default Example;
 | `hasWarning`           | `boolean`                                                                                    |          |         | Indicates the input field has warning                                                                                                                                                                         |
 
 ## Signatures
-
-### Signature `intl`
-
-```ts
-{
-  locale: string;
-  formatMessage: (message: MessageDescriptor) => void;
-}
-```
 
 ### Signature `onChange`
 
