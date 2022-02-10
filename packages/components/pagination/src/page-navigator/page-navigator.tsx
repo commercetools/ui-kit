@@ -12,9 +12,18 @@ import { isValid, normalizePageValue } from './utils';
 import messages from './messages';
 
 type TPageNavigatorProps = {
+  /**
+   * Total number of pages available
+   */
   totalPages: number;
+  /**
+   * The current page
+   */
   page: number;
-  onPageChange: (value: number) => void;
+  /**
+   * A callback function, called when the page is changed.
+   */
+  onPageChange: (newPerPage: number) => void;
 };
 
 const PageNavigator = (props: TPageNavigatorProps) => {

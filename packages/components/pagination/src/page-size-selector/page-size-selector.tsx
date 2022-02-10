@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
@@ -8,13 +7,47 @@ import { warning } from '@commercetools-uikit/utils';
 import Label from '@commercetools-uikit/label';
 import messages from './messages';
 
-const mapRangeToListOfOptions = (perPageRange) => {
+export enum PAGE_RANGE {
+  SMALL = 's',
+  MEDIUM = 'm',
+  LARGE = 'L',
+}
+
+type TPageSizeSelectorProps = {
+  /**
+   * Number of items per page, according to the pre-defined range values.
+   */
+  perPage: number;
+
+  /**
+   * Range of items per page.
+   * <br/>
+   * `SMALL: 20,50`
+   * <br/>
+   * `MEDIUM: 20,50,100`
+   * <br/>
+   * `LARGE: 200,500`
+   */
+  perPageRange: PAGE_RANGE;
+
+  /**
+   * A callback function, called when `perPage` is changed.
+   */
+  onPerPageChange: (value: number) => void;
+
+  /**
+   * Number of items in the current page
+   */
+  pageItems: number;
+};
+
+const mapRangeToListOfOptions = (perPageRange: PAGE_RANGE) => {
   switch (perPageRange) {
-    case 's':
+    case PAGE_RANGE.SMALL:
       return [20, 50];
-    case 'm':
+    case PAGE_RANGE.MEDIUM:
       return [20, 50, 100];
-    case 'l':
+    case PAGE_RANGE.LARGE:
       return [200, 500];
     default:
       throw new Error(
@@ -23,10 +56,12 @@ const mapRangeToListOfOptions = (perPageRange) => {
   }
 };
 
-const PageSizeSelector = (props) => {
+const PageSizeSelector = (props: TPageSizeSelectorProps) => {
   const [perPageSelectorId] = useState(uniqueId('per-page-selector-'));
   const options = mapRangeToListOfOptions(props.perPageRange);
   const hasValidPerPageOption = options.includes(props.perPage);
+
+  console.log('PageSizeSelector:', { props });
 
   warning(
     hasValidPerPageOption,
@@ -71,16 +106,12 @@ const PageSizeSelector = (props) => {
 };
 
 PageSizeSelector.displayName = 'PageSizeSelector';
-PageSizeSelector.propTypes = {
-  perPage: PropTypes.number,
-  perPageRange: PropTypes.oneOf(['s', 'm', 'l']),
-  onPerPageChange: PropTypes.func.isRequired,
-  pageItems: PropTypes.number.isRequired,
+
+const defaultProps: Pick<TPageSizeSelectorProps, 'perPage' | 'perPageRange'> = {
+  perPage: 20,
+  perPageRange: PAGE_RANGE.SMALL,
 };
 
-PageSizeSelector.defaultProps = {
-  perPage: 20,
-  perPageRange: 's',
-};
+PageSizeSelector.defaultProps = defaultProps;
 
 export default PageSizeSelector;
