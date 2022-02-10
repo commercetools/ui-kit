@@ -3,6 +3,7 @@ import { warning } from '@commercetools-uikit/utils';
 import memoize from 'lodash/memoize';
 import { ReactNode } from 'react';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+import type { TEditor, TMark } from '../editor.types';
 
 type TMarkPluginOptions = {
   hotkey: string;
@@ -11,21 +12,6 @@ type TMarkPluginOptions = {
   command: string;
   query: string;
   [option: string]: string | ReactNode;
-};
-
-type TMark = {
-  type: string;
-};
-
-type TValue = {
-  activeMarks: {
-    some: (ascertMarkType: (mark: TMark) => boolean) => void;
-  };
-};
-
-type TEditor = {
-  toggleMark: (s: unknown) => void;
-  value: TValue;
 };
 
 type TProps = {
@@ -73,7 +59,7 @@ const MarkPlugin = (options = {} as TMarkPluginOptions) => {
         }
 
         event.preventDefault();
-        editor.toggleMark(options.typeName);
+        editor.toggleMark!(options.typeName);
       },
       renderMark(props: TProps, _editor: TEditor, next: () => ReactJSXElement) {
         const { children, mark, attributes } = props;
@@ -92,7 +78,7 @@ const MarkPlugin = (options = {} as TMarkPluginOptions) => {
       },
       commands: {
         [options.command]: (editor: TEditor) =>
-          editor.toggleMark(options.typeName),
+          editor.toggleMark!(options.typeName),
       },
       queries: {
         [options.query]: (editor: TEditor) =>

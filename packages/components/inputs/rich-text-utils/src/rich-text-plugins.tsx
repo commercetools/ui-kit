@@ -5,24 +5,7 @@ import MarkPlugin from './plugins/mark';
 import { RenderMarkPlugin, RenderBlockPlugin } from './plugins';
 import PlaceholderPlugin from './plugins/placeholder';
 import { BLOCK_TAGS, MARK_TAGS } from './tags';
-import type { ReactNode } from 'react';
-
-type TMap = {
-  map: (node: ReactNode) => {
-    toArray: () => string[];
-  };
-};
-
-type TEditor = {
-  hasPlaceholder: boolean;
-  value: {
-    document: {
-      text: string;
-      nodes: TMap;
-    };
-    blocks: TMap;
-  };
-};
+import type { TEditor } from './editor.types';
 
 type Props = {};
 
@@ -37,8 +20,8 @@ const plugins = [
       shouldUsePlaceholder: (editor: TEditor) => {
         const isEditorEmpty = editor.value.document.text === '';
         const hasOneNode =
-          editor.value.document.nodes
-            .map((node: { text: string }) => node.text)
+          editor.value.document
+            .nodes!.map((node: { text: string }) => node.text)
             .toArray().length === 1;
         const blocks = editor.value.blocks
           .map((block: { type: unknown }) => block.type)

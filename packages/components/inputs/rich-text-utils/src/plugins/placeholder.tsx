@@ -3,6 +3,7 @@
 import { warning } from '@commercetools-uikit/utils';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import { type CSSProperties, ReactNode } from 'react';
+import type { TEditor, TNode } from '../editor.types';
 
 type TEditorQueryPredicate = string | (() => void);
 
@@ -20,26 +21,6 @@ type TDecoration = {
   };
   anchor: TDecorationNode;
   focus: TDecorationNode;
-};
-
-type TNodeTextsResult = [{ key: string; text: string }, string];
-
-type TNode = {
-  texts: (nodeParam?: Record<string, string>) => TNodeTextsResult[];
-};
-
-type TEditor = {
-  query: (
-    when: TEditorQueryPredicate,
-    node: TNode
-  ) => {
-    next: () => void;
-  };
-  props: {
-    options: {
-      placeholder: string;
-    };
-  };
 };
 
 type TRenderDecorationProps = {
@@ -88,7 +69,7 @@ function SlateReactPlaceholder(options = {} as TSlateReactPlaceholderOptions) {
     editor: TEditor,
     next: () => ReactJSXElement[]
   ) {
-    if (!editor.query(when, node)) {
+    if (!editor.query!(when, node)) {
       return next();
     }
 

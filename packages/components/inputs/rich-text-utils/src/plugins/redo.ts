@@ -1,30 +1,7 @@
 import { KeyboardEvent } from 'react';
 import { isKeyHotkey } from 'is-hotkey';
 import memoize from 'lodash/memoize';
-
-type TSize = {
-  size: number;
-};
-
-type TGet = {
-  get: (key: string) => TSize;
-};
-
-type TValue = {
-  data: TGet;
-  selection: { isFocused: boolean };
-};
-
-export type TEditor = {
-  value: TValue;
-  focus: () => void;
-  redo: () => void;
-  toggleRedo: () => void;
-};
-
-export type TOptions = {
-  hotkey: string;
-};
+import type { TEditor, TOptions } from '../editor.types';
 
 const memoizedIsHotkey = memoize(isKeyHotkey);
 
@@ -53,7 +30,7 @@ const RedoPlugin = (options = {} as TOptions) => {
         }
 
         event.preventDefault();
-        editor.toggleRedo();
+        editor.toggleRedo!();
       },
       queries: {
         hasRedos: (editor: TEditor) => hasRedos(editor),
@@ -64,7 +41,7 @@ const RedoPlugin = (options = {} as TOptions) => {
             editor.focus();
           }
           if (hasRedos(editor)) {
-            editor.redo();
+            editor.redo!();
           }
         },
       },

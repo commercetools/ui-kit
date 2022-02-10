@@ -1,48 +1,7 @@
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import { ReactNode } from 'react';
 import { BLOCK_TAGS } from '../tags';
-
-type TBlocks = {
-  size: number;
-  some: (block: unknown) => boolean | void;
-  first: () => {
-    key: string;
-  };
-};
-
-type TDocument = {
-  getClosest: (
-    block: { key: unknown },
-    closest: (parent: { type: string }) => boolean
-  ) => void;
-  getParent: (parentParam: string) => {
-    type: string;
-  };
-};
-
-type TValue = {
-  blocks: TBlocks;
-  document: TDocument;
-  selection: {
-    isFocused: boolean;
-  };
-};
-
-type TWrapBlock = {
-  wrapBlock: (blockTag: string) => void;
-};
-
-type TEditor = {
-  focus: () => void;
-  value: TValue;
-  setBlocks: (blockTag: string) => {
-    unwrapBlock: (blockTag: string) => {
-      unwrapBlock: (blockTag: string) => void;
-    };
-    wrapBlock: (blockTag: string) => void;
-  };
-  unwrapBlock: (blockTag: string) => TWrapBlock;
-};
+import type { TEditor } from '../editor.types';
 
 type TType = {
   type: string;
@@ -57,14 +16,14 @@ type TListPlugin = {
 const DEFAULT_NODE = BLOCK_TAGS.p;
 
 const hasBlock = (type: string, editor: TEditor) =>
-  editor.value.blocks.some((node: { type: string }) => {
+  editor.value.blocks.some!((node: { type: string }) => {
     return node.type === type;
   });
 
 const toggle = (editor: TEditor, typeName: string) => {
   // Handle the extra wrapping required for list buttons.
   const isList = hasBlock(BLOCK_TAGS.li, editor);
-  const isType = editor.value.blocks.some(
+  const isType = editor.value.blocks.some!(
     (block: { key: { key: unknown } }) => {
       return Boolean(
         editor.value.document.getClosest(
@@ -94,8 +53,8 @@ const toggle = (editor: TEditor, typeName: string) => {
 const query = (editor: TEditor, typeName: string) => {
   let isActive = hasBlock(typeName, editor);
 
-  if (editor.value.blocks.size > 0) {
-    const parent = editor.value.document.getParent(
+  if (editor.value.blocks.size! > 0) {
+    const parent = editor.value.document.getParent!(
       editor.value.blocks.first().key
     );
     isActive =

@@ -41,6 +41,7 @@ import { MARK_TAGS, BLOCK_TAGS } from '../tags';
 import hasBlock from '../has-block';
 import messages from './messages';
 import { warning } from '@commercetools-uikit/utils';
+import type { TEditor, TMark } from '../editor.types';
 
 type TMoreStylesDropdownItem = {
   value?: string;
@@ -74,62 +75,6 @@ type TNodeRefObject = {
 type TRef = {
   registerContentNode: TNodeRefObject;
   containerRef?: LegacyRef<HTMLDivElement>;
-};
-
-type TType = {
-  type: string;
-};
-
-type TEditor = {
-  value?: {
-    blocks: {
-      some: (block: unknown) => boolean | void;
-      first: () => {
-        type: string[];
-      };
-    };
-    document: {
-      getClosest: (
-        block: { key: unknown },
-        s: (parent: { type: TType }) => boolean
-      ) => void;
-      getParent: (x: string) => {
-        type: string;
-      };
-    };
-    selection: {
-      isFocused: boolean;
-    };
-    activeMarks: TMark[];
-  };
-  hasUndos: () => boolean;
-  hasRedos: () => boolean;
-  setBlocks: (s: string) => {
-    wrapBlock: (type: unknown) => void;
-    unwrapBlock: (s: string) => {
-      unwrapBlock: (s: string) => void;
-    };
-  };
-  unwrapBlock: (type: string) => {
-    wrapBlock: (type: string) => void;
-  };
-  toggleMark: (value: unknown) => void;
-  hasBoldMark: () => boolean;
-  toggleBoldMark: () => void;
-  hasItalicMark: () => boolean;
-  toggleItalicMark: () => boolean;
-  hasUnderlinedMark: () => boolean;
-  toggleUnderlinedMark: () => void;
-  hasNumberedListBlock: () => boolean;
-  toggleNumberedListBlock: () => void;
-  hasBulletedListBlock: () => boolean;
-  toggleBulletedListBlock: () => void;
-  toggleUndo: () => void;
-  toggleRedo: () => void;
-};
-
-type TMark = {
-  type: string;
 };
 
 type TRichTextEditorBody = {
@@ -303,11 +248,11 @@ const RichTextEditorBody = forwardRef((props: TRichTextEditorBody, ref) => {
       } else {
         // Handle the extra wrapping required for list buttons.
         const isList = hasBlock(BLOCK_TAGS.li, props.editor);
-        const isType = props.editor.value?.blocks.some(
+        const isType = props.editor.value?.blocks.some!(
           (block: { key: { key: unknown } }) => {
             return !!props.editor.value?.document.getClosest(
               block.key,
-              (parent) => parent.type === type
+              (parent: { type: string }) => parent.type === type
             );
           }
         );
@@ -331,14 +276,14 @@ const RichTextEditorBody = forwardRef((props: TRichTextEditorBody, ref) => {
 
   const onChangeMoreStyles = useCallback(
     (val) => {
-      props.editor.toggleMark(val.value);
+      props.editor.toggleMark!(val.value);
     },
     [props.editor]
   );
 
   const activeBlock =
-    (props.editor.value?.blocks.first() &&
-      props.editor.value?.blocks.first().type) ||
+    (props.editor.value?.blocks.first!() &&
+      props.editor.value?.blocks.first!().type) ||
     '';
 
   // so that we don't show our multi dropdown in an `indeterminate`
@@ -346,11 +291,11 @@ const RichTextEditorBody = forwardRef((props: TRichTextEditorBody, ref) => {
   let activeMoreStyleMarks: Array<unknown> = [];
 
   if (props.editor.value?.selection.isFocused) {
-    const activeMarks = Array.from(props.editor.value.activeMarks).map(
-      (mark) => {
-        return mark.type;
-      }
-    );
+    const activeMarks = Array.from(
+      props.editor.value.activeMarks as TMark[]
+    ).map((mark) => {
+      return mark.type;
+    });
 
     activeMoreStyleMarks = activeMarks.filter((activeMark) =>
       dropdownOptions.some(
@@ -386,7 +331,7 @@ const RichTextEditorBody = forwardRef((props: TRichTextEditorBody, ref) => {
         <ToolbarMainControls>
           <Dropdown
             label={intl.formatMessage(messages.styleDropdownLabel)}
-            value={activeBlock as string[]}
+            value={activeBlock}
             onChange={onClickBlock}
             options={styleDropdownOptions}
             components={{

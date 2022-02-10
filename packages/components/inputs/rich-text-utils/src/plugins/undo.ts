@@ -1,7 +1,7 @@
 import { KeyboardEvent } from 'react';
 import { isKeyHotkey } from 'is-hotkey';
 import memoize from 'lodash/memoize';
-import { type TEditor, type TOptions } from './redo';
+import type { TEditor, TOptions } from '../editor.types';
 
 type TExtendedEditor = TEditor & {
   undo: () => void;
