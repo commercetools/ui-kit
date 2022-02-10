@@ -198,6 +198,44 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
 };
 
 LocalizedInput.displayName = 'LocalizedInput';
+<<<<<<< HEAD:packages/components/inputs/localized-text-input/src/localized-text-input.tsx
+=======
+LocalizedInput.propTypes = {
+  /**
+   * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`. You can use the static `LocalizedTextInput.getId(idPrefix, language)` to create this id string, e.g. for labels.
+   */
+  id: PropTypes.string,
+  /**
+   * Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`
+   */
+  name: PropTypes.string,
+  /**
+   * a11y attribute to determine if input is valid/not
+   */
+  'aria-invalid': PropTypes.bool,
+  /**
+   * a11y attribute identifier that points to a field with error message
+   */
+  'aria-errormessage': PropTypes.string,
+  /**
+   * Used as HTML `autocomplete` property
+   */
+  autoComplete: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  /**
+   * Gets called when any input is changed. Is called with the change event of the changed input.
+   */
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
+  language: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  isAutofocussed: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  isReadOnly: PropTypes.bool,
+  hasError: PropTypes.bool,
+  placeholder: PropTypes.string,
+};
+>>>>>>> 8bd174f46 (chore(localized-text-field): add aria-invalid, aria-errormessage attributes):packages/components/inputs/localized-text-input/src/localized-text-input.js
 
 const RequiredValueErrorMessage = () => (
   <ErrorMessage>
@@ -290,6 +328,9 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                       props.hasError || (props.errors && props.errors[language])
                     )}
                     {...createLocalizedDataAttributes(props, language)}
+                    /* ARIA */
+                    aria-invalid={props['aria-invalid']}
+                    aria-errormessage={props['aria-errormessage']}
                   />
                   {props.errors && props.errors[language]}
                 </Stack>
@@ -314,6 +355,111 @@ LocalizedTextInput.displayName = 'LocalizedTextInput';
 
 LocalizedTextInput.RequiredValueErrorMessage = RequiredValueErrorMessage;
 
+<<<<<<< HEAD:packages/components/inputs/localized-text-input/src/localized-text-input.tsx
+=======
+LocalizedTextInput.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  /**
+   * a11y attribute to determine if input is valid/not
+   */
+  'aria-invalid': PropTypes.bool,
+  /**
+   * a11y attribute identifier that points to a field with error message
+   */
+  'aria-errormessage': PropTypes.string,
+  autoComplete: PropTypes.string,
+  // then input doesn't accept a "languages" prop, instead all possible
+  // languages have to exist (with empty or filled strings) on the value:
+  //   { en: 'foo', de: '', es: '' }
+  value: PropTypes.objectOf(PropTypes.string).isRequired,
+  /**
+   * Gets called when any input is changed. Is called with the change event of the changed input.
+   */
+  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
+  /**
+   * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
+   */
+  selectedLanguage: PropTypes.string.isRequired,
+  /**
+   * Called when any field is blurred. Is called with the `event` of that field.
+   */
+  onBlur: PropTypes.func,
+  /**
+   * Called when any field is focussed. Is called with the `event` of that field.
+   */
+  onFocus: PropTypes.func,
+  /**
+   * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
+   */
+  hideLanguageExpansionControls: PropTypes.bool,
+  /**
+   * Controls whether one or all languages are visible by default
+   */
+  defaultExpandLanguages: (props, propName, componentName, ...rest) => {
+    if (
+      props.hideLanguageExpansionControls &&
+      typeof props[propName] === 'boolean'
+    ) {
+      throw new Error(
+        oneLine`
+          ${componentName}: "${propName}" does not have any effect when
+          "hideLanguageExpansionControls" is set.
+        `
+      );
+    }
+    return PropTypes.bool(props, propName, componentName, ...rest);
+  },
+  /**
+   * Focus the input field on initial render
+   */
+  isAutofocussed: PropTypes.bool,
+  /**
+   * Disables all input fields.
+   */
+  isDisabled: PropTypes.bool,
+  /**
+   * Disables all input fields and shows them in read-only mode.
+   */
+  isReadOnly: PropTypes.bool,
+  /**
+   * Placeholders for each language. Object of the same shape as `value`.
+   */
+  placeholder: PropTypes.objectOf(PropTypes.string),
+  /**
+   * Horizontal size limit of the input fields.
+   */
+  horizontalConstraint: PropTypes.oneOf([
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    'scale',
+    'auto',
+  ]),
+  /**
+   * Will apply the error state to each input without showing any error message.
+   */
+  hasError: PropTypes.bool,
+  /**
+   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
+   */
+  errors: PropTypes.objectOf(PropTypes.node),
+};
+
+>>>>>>> 8bd174f46 (chore(localized-text-field): add aria-invalid, aria-errormessage attributes):packages/components/inputs/localized-text-input/src/localized-text-input.js
 LocalizedTextInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
