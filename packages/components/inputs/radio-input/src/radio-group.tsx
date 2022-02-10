@@ -46,6 +46,14 @@ export type TGroupProps = {
   direction?: keyof typeof directionWrapper;
   directionProps?: Partial<TStackProps>;
   children: ReactNode;
+  /**
+   * a11y attribute to determine if input is valid/not
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * a11y attribute identifier that points to a field with error message
+   */
+  'aria-errormessage'?: string;
 };
 
 const defaultProps: Pick<
@@ -104,7 +112,11 @@ const Group = (props: TGroupProps) => {
   });
   if (props.direction === 'inline') {
     return (
-      <div aria-labelledby={props.id}>
+      <div
+        aria-labelledby={props.id}
+        aria-invalid={props['aria-invalid']}
+        aria-errormessage={props['aria-errormessage']}
+      >
         <Inline {...props.directionProps} {...filterDataAttributes(props)}>
           {optionElements}
         </Inline>
@@ -112,7 +124,11 @@ const Group = (props: TGroupProps) => {
     );
   }
   return (
-    <div aria-labelledby={props.id}>
+    <div
+      aria-labelledby={props.id}
+      aria-invalid={props['aria-invalid']}
+      aria-errormessage={props['aria-errormessage']}
+    >
       <Constraints.Horizontal max={props.horizontalConstraint}>
         <Stack {...props.directionProps} {...filterDataAttributes(props)}>
           {optionElements}
