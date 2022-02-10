@@ -47,7 +47,9 @@ type TLabelProps = {
    * <br />
    * This is required when `children` is `undefined` and vice versa
    */
-  intlMessage?: MessageDescriptor;
+  intlMessage?: MessageDescriptor & {
+    values?: Record<string, React.ReactNode>;
+  };
   /**
    * Rendered as `children` to `Label`.
    * <br />

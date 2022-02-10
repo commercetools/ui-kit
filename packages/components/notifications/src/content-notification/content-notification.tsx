@@ -23,7 +23,9 @@ type TContentNotificationProps = {
    * <br />
    * Required if `children` is not provided.
    */
-  intlMessage?: MessageDescriptor;
+  intlMessage?: MessageDescriptor & {
+    values?: Record<string, React.ReactNode>;
+  };
 
   /**
    * The content of the notification.

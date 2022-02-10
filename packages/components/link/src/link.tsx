@@ -26,7 +26,9 @@ type TLinkProps = {
    * <br />
    * Required if `children` is not provided.
    */
-  intlMessage?: MessageDescriptor;
+  intlMessage?: MessageDescriptor & {
+    values?: Record<string, React.ReactNode>;
+  };
   /**
    * A flag to indicate if the Link points to an external source.
    * <bt />

@@ -14,7 +14,7 @@ import {
 
 type TBasicTextProps = {
   intlMessage?: MessageDescriptor & {
-    values: Record<string, React.ReactNode>;
+    values?: Record<string, React.ReactNode>;
   };
   children?: ReactNode;
 };
