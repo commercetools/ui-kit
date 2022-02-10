@@ -221,6 +221,7 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
     // didn't add an amount yet.
     const hasError =
       MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
+    const errorFieldId = sequentialId();
 
     warning(
       !has(this.props, 'isTouched'),
@@ -265,8 +266,11 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
             menuPortalZIndex={this.props.menuPortalZIndex}
             menuShouldBlockScroll={this.props.menuShouldBlockScroll}
             {...filterDataAttributes(this.props)}
+            aria-invalid={hasError}
+            aria-errormessage={errorFieldId}
           />
           <FieldErrors
+            id={errorFieldId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
