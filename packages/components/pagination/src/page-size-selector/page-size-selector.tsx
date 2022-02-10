@@ -7,11 +7,7 @@ import { warning } from '@commercetools-uikit/utils';
 import Label from '@commercetools-uikit/label';
 import messages from './messages';
 
-export enum PAGE_RANGE {
-  SMALL = 's',
-  MEDIUM = 'm',
-  LARGE = 'L',
-}
+export type PAGE_RANGE_SIZE = 's' | 'm' | 'l';
 
 type TPageSizeSelectorProps = {
   /**
@@ -28,7 +24,7 @@ type TPageSizeSelectorProps = {
    * <br/>
    * `LARGE: 200,500`
    */
-  perPageRange: PAGE_RANGE;
+  perPageRange: PAGE_RANGE_SIZE;
 
   /**
    * A callback function, called when `perPage` is changed.
@@ -41,13 +37,13 @@ type TPageSizeSelectorProps = {
   pageItems: number;
 };
 
-const mapRangeToListOfOptions = (perPageRange: PAGE_RANGE) => {
+const mapRangeToListOfOptions = (perPageRange: PAGE_RANGE_SIZE) => {
   switch (perPageRange) {
-    case PAGE_RANGE.SMALL:
+    case 's':
       return [20, 50];
-    case PAGE_RANGE.MEDIUM:
+    case 'm':
       return [20, 50, 100];
-    case PAGE_RANGE.LARGE:
+    case 'l':
       return [200, 500];
     default:
       throw new Error(
@@ -107,7 +103,7 @@ PageSizeSelector.displayName = 'PageSizeSelector';
 
 const defaultProps: Pick<TPageSizeSelectorProps, 'perPage' | 'perPageRange'> = {
   perPage: 20,
-  perPageRange: PAGE_RANGE.SMALL,
+  perPageRange: 's',
 };
 
 PageSizeSelector.defaultProps = defaultProps;
