@@ -10,11 +10,11 @@ import {
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
 
-type TTranslateInputStylesProps = {
+type TTranslationInputStylesProps = {
   isCollapsed?: boolean;
 };
 
-const getTextareaStyles = (props: TTranslateInputStylesProps) => {
+const getTextareaStyles = (props: TTranslationInputStylesProps) => {
   const baseStyles = [
     css`
       border-top-left-radius: 0 !important;
@@ -29,7 +29,7 @@ const getTextareaStyles = (props: TTranslateInputStylesProps) => {
 };
 
 const getLanguageLabelStyles = (
-  _props: TTranslateInputStylesProps,
+  _props: TTranslationInputStylesProps,
   theme: Theme
 ) => {
   const overwrittenVars = {

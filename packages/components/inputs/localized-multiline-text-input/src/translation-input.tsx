@@ -99,7 +99,7 @@ const TranslationInput = (props: TranslationInputProps) => {
       //
       // eslint-disable-next-line no-param-reassign
       event.target.language = props.language;
-      onChange!(event);
+      onChange && onChange(event);
     },
     [onChange, props.language]
   );
@@ -107,7 +107,7 @@ const TranslationInput = (props: TranslationInputProps) => {
   const { onFocus, onToggle } = props;
   const handleFocus = useCallback(() => {
     // Expand the input on focus
-    if (props.isCollapsed) onToggle!();
+    if (props.isCollapsed) onToggle && onToggle();
     if (onFocus) onFocus();
   }, [props.isCollapsed, onFocus, onToggle]);
 
@@ -157,7 +157,6 @@ const TranslationInput = (props: TranslationInputProps) => {
           </Text.Detail>
         </label>
         <MultilineInput
-          // theme={theme} - Question: property does not exist in compnent
           id={props.id}
           name={props.name}
           autoComplete={props.autoComplete}

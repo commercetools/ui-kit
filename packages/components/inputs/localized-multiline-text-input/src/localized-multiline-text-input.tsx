@@ -255,10 +255,7 @@ const LocalizedMultilineTextInput = (props: TLocalizedMultilineTextInput) => {
               <TranslationInput
                 key={language}
                 autoComplete={props.autoComplete}
-                id={LocalizedMultilineTextInput.getId(
-                  props.id,
-                  language as string
-                )}
+                id={LocalizedMultilineTextInput.getId(props.id, language)}
                 name={LocalizedMultilineTextInput.getName(props.name, language)}
                 value={props.value[language]}
                 onChange={props.onChange}
