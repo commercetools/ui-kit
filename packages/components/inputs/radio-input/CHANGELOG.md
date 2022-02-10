@@ -1,5 +1,23 @@
 # @commercetools-uikit/radio-input
 
+## 13.0.0
+
+### Major Changes
+
+- [#2085](https://github.com/commercetools/ui-kit/pull/2085) [`ebf1bf160`](https://github.com/commercetools/ui-kit/commit/ebf1bf16052604e551508ed049bd3952432029fe) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Migrate radio input to typescript
+
+### Patch Changes
+
+- [#2042](https://github.com/commercetools/ui-kit/pull/2042) [`db244f02f`](https://github.com/commercetools/ui-kit/commit/db244f02f56b194bcf0bbb762b9d85b1ea7cfb78) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade SVGR packages to v6
+
+- Updated dependencies [[`db244f02f`](https://github.com/commercetools/ui-kit/commit/db244f02f56b194bcf0bbb762b9d85b1ea7cfb78), [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c), [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e)]:
+  - @commercetools-uikit/icons@13.0.0
+  - @commercetools-uikit/input-utils@13.0.0
+  - @commercetools-uikit/design-system@13.0.0
+  - @commercetools-uikit/constraints@13.0.0
+  - @commercetools-uikit/spacings-inline@13.0.0
+  - @commercetools-uikit/spacings-stack@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes

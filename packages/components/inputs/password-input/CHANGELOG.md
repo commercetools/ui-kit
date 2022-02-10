@@ -1,5 +1,16 @@
 # @commercetools-uikit/password-input
 
+## 13.0.0
+
+### Patch Changes
+
+- [#2080](https://github.com/commercetools/ui-kit/pull/2080) [`5f416e619`](https://github.com/commercetools/ui-kit/commit/5f416e6194781bad0ee95c0c037052a806524524) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Remove unnecessary comment
+
+- Updated dependencies [[`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c), [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e)]:
+  - @commercetools-uikit/input-utils@13.0.0
+  - @commercetools-uikit/design-system@13.0.0
+  - @commercetools-uikit/constraints@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes
