@@ -46,6 +46,8 @@ const activationTypes = [
   Downshift.stateChangeTypes.clickItem,
 ];
 
+type TActivationTypes = typeof activationTypes[number];
+
 type TPreventDownshiftDefaultEvent = {
   relatedTarget?: unknown;
   nativeEvent?: {
@@ -250,8 +252,7 @@ class DateTimeInput extends Component<
           highlightedIndex={this.state.highlightedIndex}
           onChange={this.emit}
           stateReducer={(_, changes) => {
-            // @ts-ignore
-            if (activationTypes.includes(changes.type)) {
+            if (activationTypes.includes(changes.type as TActivationTypes)) {
               return { ...changes, isOpen: true };
             }
 
@@ -260,8 +261,9 @@ class DateTimeInput extends Component<
           onStateChange={(changes) => {
             this.setState(
               (prevState) => {
-                // @ts-ignore
-                if (activationTypes.includes(changes.type)) {
+                if (
+                  activationTypes.includes(changes.type as TActivationTypes)
+                ) {
                   return {
                     startDate: changes.isOpen ? prevState.startDate : null,
                     inputValue: changes.inputValue || prevState.inputValue,
@@ -314,8 +316,9 @@ class DateTimeInput extends Component<
                 return null;
               },
               () => {
-                // @ts-ignore
-                if (activationTypes.includes(changes.type)) {
+                if (
+                  activationTypes.includes(changes.type as TActivationTypes)
+                ) {
                   this.timeInputRef.current?.focus();
                   this.timeInputRef.current?.setSelectionRange(
                     0,

@@ -21,7 +21,7 @@ const getInputStyles = () => css`
   }
 `;
 
-type TDateCalendarTimeInput = {
+type TDateCalendarTimeInputProps = {
   timeInputRef: RefObject<HTMLInputElement>;
   onKeyDown: KeyboardEventHandler<HTMLInputElement>;
 } & Pick<
@@ -29,7 +29,7 @@ type TDateCalendarTimeInput = {
   'isDisabled' | 'onChange' | 'value' | 'placeholder'
 >;
 
-const DateCalendarTimeInput = (props: TDateCalendarTimeInput) => (
+const DateCalendarTimeInput = (props: TDateCalendarTimeInputProps) => (
   <input
     disabled={props.isDisabled}
     ref={props.timeInputRef}
