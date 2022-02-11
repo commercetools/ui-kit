@@ -99,7 +99,7 @@ type TLocalizedMultilineTextInputProps = {
   /**
    * Disables all input fields and shows them in read-only mode.
    */
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
   /**
    * Placeholders for each language. Object of the same shape as `value`.
    */
@@ -247,7 +247,7 @@ const LocalizedMultilineTextInput = (
 
   if (props.hideLanguageExpansionControls) {
     warning(
-      typeof props.defaultExpandLanguages === 'boolean',
+      typeof props.hideLanguageExpansionControls === 'boolean',
       'LocaliszedMultilineTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
     );
   }
