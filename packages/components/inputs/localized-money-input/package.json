@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/localized-money-input",
   "description": "A controlled input component for localized money values with validation states.",
-  "version": "12.2.9",
+  "version": "13.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,19 +19,19 @@
   "module": "dist/commercetools-uikit-localized-money-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/constraints": "12.2.9",
-    "@commercetools-uikit/design-system": "12.2.9",
-    "@commercetools-uikit/flat-button": "12.2.9",
+    "@babel/runtime": "7.17.2",
+    "@babel/runtime-corejs3": "7.17.2",
+    "@commercetools-uikit/constraints": "13.0.0",
+    "@commercetools-uikit/design-system": "13.0.0",
+    "@commercetools-uikit/flat-button": "13.0.0",
     "@commercetools-uikit/hooks": "12.2.9",
-    "@commercetools-uikit/icons": "12.2.9",
-    "@commercetools-uikit/input-utils": "12.2.9",
+    "@commercetools-uikit/icons": "13.0.0",
+    "@commercetools-uikit/input-utils": "13.0.0",
     "@commercetools-uikit/localized-utils": "12.2.9",
-    "@commercetools-uikit/money-input": "12.2.9",
-    "@commercetools-uikit/select-utils": "12.2.9",
-    "@commercetools-uikit/spacings-stack": "12.2.9",
-    "@commercetools-uikit/tooltip": "12.2.9",
+    "@commercetools-uikit/money-input": "13.0.0",
+    "@commercetools-uikit/select-utils": "13.0.0",
+    "@commercetools-uikit/spacings-stack": "13.0.0",
+    "@commercetools-uikit/tooltip": "13.0.0",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intl": "5.24.4"
+    "react-intl": "5.24.6"
   },
   "peerDependencies": {
     "react": "17.x",
