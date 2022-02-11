@@ -1,7 +1,4 @@
-import { useCallback } from 'react';
-import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
-import { oneLine } from 'common-tags';
+import { ReactNode, useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { css, useTheme } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
@@ -20,7 +17,7 @@ import {
   getId,
   getName,
 } from '@commercetools-uikit/localized-utils';
-import { createSequentialId } from '@commercetools-uikit/utils';
+import { createSequentialId, warning } from '@commercetools-uikit/utils';
 import TextInput from '@commercetools-uikit/text-input';
 import {
   LocalizedInputToggle,
@@ -31,9 +28,130 @@ import {
   getLanguageLabelStyles,
 } from './localized-text-input.styles';
 
+type TEvent = {
+  target: {
+    name?: string;
+    value?: unknown;
+  };
+};
+
+type TLocalizedTextInputProps = {
+  id?: string;
+  name?: string;
+  autoComplete?: string;
+  // then input doesn't accept a "languages" prop, instead all possible
+  // languages have to exist (with empty or filled strings) on the value:
+  //   { en: 'foo', de: '', es: '' }
+  value: {
+    [key: string]: string;
+  };
+  /**
+   * Gets called when any input is changed. Is called with the change event of the changed input.
+   */
+  onChange?: (event: TEvent) => void;
+  /**
+   * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
+   */
+  selectedLanguage: string;
+  /**
+   * Called when any field is blurred. Is called with the `event` of that field.
+   */
+  onBlur?: () => void;
+  /**
+   * Called when any field is focussed. Is called with the `event` of that field.
+   */
+  onFocus?: () => void;
+  /**
+   * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
+   */
+  hideLanguageExpansionControls?: boolean;
+  /**
+   * Controls whether one or all languages are visible by default
+   */
+  defaultExpandLanguages?: boolean;
+  /**
+   * Focus the input field on initial render
+   */
+  isAutofocussed?: boolean;
+  /**
+   * Disables all input fields.
+   */
+  isDisabled?: boolean;
+  /**
+   * Disables all input fields and shows them in read-only mode.
+   */
+  isReadOnly?: boolean;
+  /**
+   * Placeholders for each language. Object of the same shape as `value`.
+   */
+  placeholder: {
+    [key: string]: string;
+  };
+  /**
+   * Horizontal size limit of the input fields.
+   */
+  horizontalConstraint?:
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  /**
+   * Will apply the error state to each input without showing any error message.
+   */
+  hasError?: boolean;
+  /**
+   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
+   */
+  errors: {
+    [key: string]: ReactNode;
+  };
+};
+
+type TLocalizedInputProps = {
+  /**
+   * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`. You can use the static `LocalizedTextInput.getId(idPrefix, language)` to create this id string, e.g. for labels.
+   */
+  id?: string;
+  /**
+   * Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`
+   */
+  name?: string;
+  /**
+   * Used as HTML `autocomplete` property
+   */
+  autoComplete?: string;
+  value: string;
+  /**
+   * Gets called when any input is changed. Is called with the change event of the changed input.
+   */
+  onChange?: (event: TEvent) => void;
+  language: string;
+  onBlur?: () => void;
+  onFocus?: () => void;
+  isAutofocussed?: boolean;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  hasError?: boolean;
+  placeholder?: string;
+};
+
 const sequentialId = createSequentialId('localized-text-input-');
 
-const LocalizedInput = (props) => {
+const LocalizedInput = (props: TLocalizedInputProps) => {
   const { onChange } = props;
   const handleChange = useCallback(
     (event) => {
@@ -50,11 +168,18 @@ const LocalizedInput = (props) => {
       //
       // eslint-disable-next-line no-param-reassign
       event.target.language = props.language;
-      onChange(event);
+      onChange?.(event);
     },
     [props.language, onChange]
   );
   const theme = useTheme();
+
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'LocaliszedTextInput: "onChange" is required when isReadOnly is not true'
+    );
+  }
 
   return (
     <div
@@ -81,33 +206,6 @@ const LocalizedInput = (props) => {
 };
 
 LocalizedInput.displayName = 'LocalizedInput';
-LocalizedInput.propTypes = {
-  /**
-   * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`. You can use the static `LocalizedTextInput.getId(idPrefix, language)` to create this id string, e.g. for labels.
-   */
-  id: PropTypes.string,
-  /**
-   * Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`
-   */
-  name: PropTypes.string,
-  /**
-   * Used as HTML `autocomplete` property
-   */
-  autoComplete: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  /**
-   * Gets called when any input is changed. Is called with the change event of the changed input.
-   */
-  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
-  language: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  isAutofocussed: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  hasError: PropTypes.bool,
-  placeholder: PropTypes.string,
-};
 
 const RequiredValueErrorMessage = () => (
   <ErrorMessage>
@@ -117,7 +215,7 @@ const RequiredValueErrorMessage = () => (
 
 RequiredValueErrorMessage.displayName = 'RequiredValueErrorMessage';
 
-const LocalizedTextInput = (props) => {
+const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
   const defaultExpansionState =
     props.hideLanguageExpansionControls ||
     props.defaultExpandLanguages || // default to `false`, because useToggleState defaults to `true`
@@ -148,6 +246,20 @@ const LocalizedTextInput = (props) => {
 
   const shouldRenderLanguagesButton =
     languages.length > 1 && !props.hideLanguageExpansionControls;
+
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'LocaliszedTextInput: "onChange" is required when isReadOnly is not true'
+    );
+  }
+
+  if (props.hideLanguageExpansionControls) {
+    warning(
+      typeof props.hideLanguageExpansionControls === 'boolean',
+      'LocaliszedTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
+    );
+  }
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
@@ -191,6 +303,7 @@ const LocalizedTextInput = (props) => {
         {shouldRenderLanguagesButton && (
           <LocalizedInputToggle
             isOpen={areLanguagesExpanded}
+            // @ts-ignore
             onClick={toggleLanguages}
             isDisabled={areLanguagesExpanded && hasErrorInRemainingLanguages}
             remainingLocalizations={languages.length - 1}
@@ -204,100 +317,6 @@ const LocalizedTextInput = (props) => {
 LocalizedTextInput.displayName = 'LocalizedTextInput';
 
 LocalizedTextInput.RequiredValueErrorMessage = RequiredValueErrorMessage;
-
-LocalizedTextInput.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  autoComplete: PropTypes.string,
-  // then input doesn't accept a "languages" prop, instead all possible
-  // languages have to exist (with empty or filled strings) on the value:
-  //   { en: 'foo', de: '', es: '' }
-  value: PropTypes.objectOf(PropTypes.string).isRequired,
-  /**
-   * Gets called when any input is changed. Is called with the change event of the changed input.
-   */
-  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
-  /**
-   * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
-   */
-  selectedLanguage: PropTypes.string.isRequired,
-  /**
-   * Called when any field is blurred. Is called with the `event` of that field.
-   */
-  onBlur: PropTypes.func,
-  /**
-   * Called when any field is focussed. Is called with the `event` of that field.
-   */
-  onFocus: PropTypes.func,
-  /**
-   * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
-   */
-  hideLanguageExpansionControls: PropTypes.bool,
-  /**
-   * Controls whether one or all languages are visible by default
-   */
-  defaultExpandLanguages: (props, propName, componentName, ...rest) => {
-    if (
-      props.hideLanguageExpansionControls &&
-      typeof props[propName] === 'boolean'
-    ) {
-      throw new Error(
-        oneLine`
-          ${componentName}: "${propName}" does not have any effect when
-          "hideLanguageExpansionControls" is set.
-        `
-      );
-    }
-    return PropTypes.bool(props, propName, componentName, ...rest);
-  },
-  /**
-   * Focus the input field on initial render
-   */
-  isAutofocussed: PropTypes.bool,
-  /**
-   * Disables all input fields.
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Disables all input fields and shows them in read-only mode.
-   */
-  isReadOnly: PropTypes.bool,
-  /**
-   * Placeholders for each language. Object of the same shape as `value`.
-   */
-  placeholder: PropTypes.objectOf(PropTypes.string),
-  /**
-   * Horizontal size limit of the input fields.
-   */
-  horizontalConstraint: PropTypes.oneOf([
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-  /**
-   * Will apply the error state to each input without showing any error message.
-   */
-  hasError: PropTypes.bool,
-  /**
-   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
-   */
-  errors: PropTypes.objectOf(PropTypes.node),
-};
 
 LocalizedTextInput.defaultProps = {
   horizontalConstraint: 'scale',

@@ -1,8 +1,10 @@
-import { css } from '@emotion/react';
+import { css, type Theme } from '@emotion/react';
 import {
   customProperties as vars,
   designTokens,
 } from '@commercetools-uikit/design-system';
+
+type LocalizedTextInputStylesProps = {};
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -17,7 +19,10 @@ const getLocalizedInputStyles = () => [
   `,
 ];
 
-const getLanguageLabelStyles = (props, theme) => {
+const getLanguageLabelStyles = (
+  _props: LocalizedTextInputStylesProps,
+  theme: Theme
+) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
