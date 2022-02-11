@@ -21,10 +21,12 @@ import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 import { warning } from '@commercetools-uikit/utils';
 
+type TState = {
+  [key: string]: string;
+};
+
 type TExpandedTranslationsReducerState = {
-  state?: {
-    [language: string]: string;
-  };
+  state?: TState;
 };
 
 type TExpandedTranslationsReducerAction = {
@@ -189,10 +191,12 @@ const LocalizedMultilineTextInput = (
     {}
   );
 
-  const [expandedTranslationsState, expandedTranslationsDispatch] = useReducer(
-    expandedTranslationsReducer,
-    initialExpandedTranslationsState
-  );
+  const [expandedTranslationsState, expandedTranslationsDispatch] = useReducer<
+    (
+      prevState: TExpandedTranslationsReducerState,
+      action: TExpandedTranslationsReducerAction
+    ) => TState
+  >(expandedTranslationsReducer, initialExpandedTranslationsState);
 
   const defaultExpansionState =
     props.hideLanguageExpansionControls ||
@@ -241,6 +245,13 @@ const LocalizedMultilineTextInput = (
     );
   }
 
+  if (props.hideLanguageExpansionControls) {
+    warning(
+      typeof props.defaultExpandLanguages === 'boolean',
+      'LocaliszedMultilineTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
+    );
+  }
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
@@ -262,7 +273,6 @@ const LocalizedMultilineTextInput = (
                 value={props.value[language]}
                 onChange={props.onChange}
                 language={language}
-                //@ts-ignore
                 isCollapsed={!expandedTranslationsState[language]}
                 onToggle={() => toggleLanguage(language)}
                 placeholder={
@@ -297,7 +307,7 @@ const LocalizedMultilineTextInput = (
           >
             <LocalizedInputToggle
               isOpen={areLanguagesOpened}
-              //@ts-ignore
+              // @ts-ignore
               onClick={toggleLanguages}
               isDisabled={
                 areLanguagesOpened &&
