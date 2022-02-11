@@ -1,5 +1,24 @@
 # @commercetools-uikit/date-time-input
 
+## 13.0.0
+
+### Patch Changes
+
+- [#2081](https://github.com/commercetools/ui-kit/pull/2081) [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`35a13dfbb`](https://github.com/commercetools/ui-kit/commit/35a13dfbb879bec10a71a2d3905e0e6b1c9b614a), [`db244f02f`](https://github.com/commercetools/ui-kit/commit/db244f02f56b194bcf0bbb762b9d85b1ea7cfb78), [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c), [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`a5600bb04`](https://github.com/commercetools/ui-kit/commit/a5600bb0447d02d457f304f81c68b6a672dbc188), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e)]:
+  - @commercetools-uikit/calendar-utils@13.0.0
+  - @commercetools-uikit/icons@13.0.0
+  - @commercetools-uikit/select-utils@13.0.0
+  - @commercetools-uikit/design-system@13.0.0
+  - @commercetools-uikit/calendar-time-utils@13.0.0
+  - @commercetools-uikit/constraints@13.0.0
+  - @commercetools-uikit/accessible-button@13.0.0
+  - @commercetools-uikit/secondary-icon-button@13.0.0
+  - @commercetools-uikit/spacings-inline@13.0.0
+  - @commercetools-uikit/text@13.0.0
+  - @commercetools-uikit/tooltip@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes
