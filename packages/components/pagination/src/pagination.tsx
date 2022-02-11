@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import Spacings from '@commercetools-uikit/spacings';
 import PageNavigator from './page-navigator';
-import PageSizeSelector, { type PAGE_RANGE_SIZE } from './page-size-selector';
+import PageSizeSelector, { type TPageRangeSize } from './page-size-selector';
 
 type TPaginationProps = {
   /**
@@ -33,7 +33,7 @@ type TPaginationProps = {
    * <br/>
    * `l: 200,500`
    */
-  perPageRange: PAGE_RANGE_SIZE;
+  perPageRange: TPageRangeSize;
 
   /**
    * A callback function, called when `perPage` is changed.
@@ -80,6 +80,6 @@ const defaultProps = {
 };
 Pagination.defaultProps = defaultProps;
 
-export type { PAGE_RANGE_SIZE };
+export type { TPageRangeSize };
 
 export default Pagination;

@@ -1,1 +1,1 @@
-export { default, type PAGE_RANGE_SIZE } from './page-size-selector';
+export { default, type TPageRangeSize } from './page-size-selector';
