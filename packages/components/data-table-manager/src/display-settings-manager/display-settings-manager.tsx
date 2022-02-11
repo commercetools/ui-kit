@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import type { ChangeEventHandler, MouseEvent, KeyboardEvent } from 'react';
 import { useIntl } from 'react-intl';
 import FieldLabel from '@commercetools-uikit/field-label';
 import Grid from '@commercetools-uikit/grid';
@@ -15,7 +15,20 @@ import {
   DENSITY_COMPACT,
 } from './constants';
 
-const DensityManager = (props) => {
+export type TDensityManagerProps = {
+  isCondensed?: boolean;
+  isWrappingText?: boolean;
+  primaryButton?: JSX.Element;
+  secondaryButton?: JSX.Element;
+  onDensityDisplayChange: ChangeEventHandler<HTMLInputElement>;
+  onTextWrappingChange: ChangeEventHandler<HTMLInputElement>;
+  onClose: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
+  managerTheme?: 'light' | 'dark';
+};
+
+const DensityManager = (props: TDensityManagerProps) => {
   const intl = useIntl();
   const textWrappingOption = props.isWrappingText
     ? SHOW_HIDE_ON_DEMAND
@@ -98,19 +111,14 @@ const DensityManager = (props) => {
 };
 
 DensityManager.displayName = 'DensityManager';
-DensityManager.defaultProps = {
+
+const defaultProps: Pick<
+  TDensityManagerProps,
+  'isCondensed' | 'isWrappingText'
+> = {
   isCondensed: false,
   isWrappingText: false,
 };
-DensityManager.propTypes = {
-  isCondensed: PropTypes.bool,
-  isWrappingText: PropTypes.bool,
-  primaryButton: PropTypes.element,
-  secondaryButton: PropTypes.element,
-  onDensityDisplayChange: PropTypes.func.isRequired,
-  onTextWrappingChange: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  managerTheme: PropTypes.oneOf(['light', 'dark']),
-};
+DensityManager.defaultProps = defaultProps;
 
 export default DensityManager;

@@ -2462,6 +2462,8 @@ __metadata:
     "@commercetools-uikit/utils": 12.2.9
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
+    "@types/debounce-promise": ^3.1.4
+    "@types/react-beautiful-dnd": ^13.1.2
     debounce-promise: ^3.1.2
     formik: ^2.2.9
     lodash: 4.17.21
@@ -6011,6 +6013,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/debounce-promise@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "@types/debounce-promise@npm:3.1.4"
+  checksum: 8de5ec0eade0483569f01ffb8e5b59be3a295a577893c75abb8b5dcdcbde204ee8029edf874096f7105a4cdb46b0321de57b05ce730aa675ea20318d465fc9d7
+  languageName: node
+  linkType: hard
+
 "@types/dompurify@npm:^2.3.1":
   version: 2.3.3
   resolution: "@types/dompurify@npm:2.3.3"
@@ -6290,6 +6299,15 @@ __metadata:
   version: 15.7.4
   resolution: "@types/prop-types@npm:15.7.4"
   checksum: ef6e1899e59b876c273811b1bd845022fc66d5a3d11cb38a25b6c566b30514ae38fe20a40f67622f362a4f4f7f9224e22d8da101cff3d6e97e11d7b4c307cfc1
+  languageName: node
+  linkType: hard
+
+"@types/react-beautiful-dnd@npm:^13.1.2":
+  version: 13.1.2
+  resolution: "@types/react-beautiful-dnd@npm:13.1.2"
+  dependencies:
+    "@types/react": "*"
+  checksum: 28372854fcd4b7546aabe55ee6569da59fad10f117929cff8a9c6f928448e4dd08ed1139facca33232833b9de100edf017aab9a0ee34065f8fc0e2a7a1262b2c
   languageName: node
   linkType: hard
 
