@@ -4,6 +4,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react';
+import has from 'lodash/has';
 import { type Props as ReactSelectProps } from 'react-select';
 import {
   filterDataAttributes,
@@ -22,6 +23,11 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 type TFieldErrors = Record<string, boolean>;
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+
+type TTouched = {
+  amount?: boolean;
+  currencyCode?: boolean;
+};
 
 const sequentialId = createSequentialId('money-field-');
 
@@ -87,21 +93,13 @@ type TMoneyFieldProps = {
    * <br />
    * Errors will only be shown when the field was touched.
    */
-  touched?: TValue;
+  touched?: TTouched;
 
   // Some other fields use isTouched, but the check isn't as simple here.
   // isTouched accepts a boolean, whereas touched takes an object.
   // Maybe we should upgrade them all to just be "touched"?
   // eslint-disable-next-line react/no-unused-prop-types
   isTouched?: unknown;
-  // isTouched: (props, propName, componentName) => {
-  //   if (has(props, propName)) {
-  //     return new Error(
-  //       `Invalid prop \`${propName}\` supplied to \`${componentName}\`. Use \`touched\` instead.`
-  //     );
-  //   }
-  //   return undefined;
-  // },
 
   // MoneyInput
   /**
@@ -226,9 +224,10 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
       MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
 
     warning(
-      !this.props.isTouched,
+      !has(this.props, 'isTouched'),
       'MoneyField:  Invalid prop isTouched supplied to MoneyField. Use touched instead.'
     );
+
     if (this.props.hintIcon) {
       warning(
         typeof this.props.hint === 'string' ||
