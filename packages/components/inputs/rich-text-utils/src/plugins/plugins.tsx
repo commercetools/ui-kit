@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { BLOCK_TAGS, MARK_TAGS } from '../tags';
 
 type TType = {

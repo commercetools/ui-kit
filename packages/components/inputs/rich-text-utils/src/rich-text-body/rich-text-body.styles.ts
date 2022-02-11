@@ -5,7 +5,7 @@ import type { TRichTextEditorBody } from './rich-text-body';
 
 type TRichTextBodyStylesProps = Pick<
   TRichTextEditorBody,
-  'hasError' | 'isReadOnly' | 'hasWarning' | 'isReadOnly' | 'isDisabled'
+  'hasError' | 'isReadOnly' | 'hasWarning' | 'isDisabled'
 >;
 
 const getBorderColor = (props: TRichTextBodyStylesProps) => {
@@ -40,6 +40,15 @@ const getBackgroundColor = (props: TRichTextBodyStylesProps) => {
       background-color: ${vars.backgroundColorForInputWhenDisabled};
     `;
   }
+
+  /** `backgroundColorForInputWhenReadonly` does not exist on from
+   *  `@commercetools-uikit/design-system` where `vars` is coming from.
+   * Commenting it out for now */
+  // if (props.isReadOnly) {
+  //   return css`
+  //     background-color: ${vars.backgroundColorForInputWhenReadonly};
+  //   `;
+  // }
   return css`
     background-color: ${vars.backgroundColorForInput};
   `;

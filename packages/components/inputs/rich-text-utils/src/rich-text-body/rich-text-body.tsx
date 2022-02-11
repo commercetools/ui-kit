@@ -1,9 +1,9 @@
 import {
   forwardRef,
-  type ReactNode,
   useCallback,
-  LegacyRef,
-  CSSProperties,
+  type ReactNode,
+  type LegacyRef,
+  type CSSProperties,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
@@ -220,309 +220,313 @@ const createMoreStylesDropdownOptions = (intl: TStyleDropdownOptions) => {
   ];
 };
 
-const RichTextEditorBody = forwardRef((props: TRichTextEditorBody, ref) => {
-  const { registerContentNode, containerRef } = ref as unknown as TRef;
-  const intl = useIntl();
+const RichTextEditorBody = forwardRef<TRef, TRichTextEditorBody>(
+  (props, ref) => {
+    const { registerContentNode, containerRef } = ref as unknown as TRef;
+    const intl = useIntl();
 
-  const dropdownOptions = createMoreStylesDropdownOptions(intl);
-  const styleDropdownOptions = createStyleDropdownOptions(intl);
+    const dropdownOptions = createMoreStylesDropdownOptions(intl);
+    const styleDropdownOptions = createStyleDropdownOptions(intl);
 
-  const hasUndos = props.editor.hasUndos();
-  const hasRedos = props.editor.hasRedos();
+    const hasUndos = props.editor.hasUndos();
+    const hasRedos = props.editor.hasRedos();
 
-  const onClickBlock = useCallback(
-    ({ value: type }) => {
-      // Handle everything but list buttons.
-      if (type !== BLOCK_TAGS.ul && type !== BLOCK_TAGS.ol) {
-        const isActive = hasBlock(type, props.editor);
-        const isList = hasBlock(BLOCK_TAGS.li, props.editor);
+    const onClickBlock = useCallback(
+      ({ value: type }) => {
+        // Handle everything but list buttons.
+        if (type !== BLOCK_TAGS.ul && type !== BLOCK_TAGS.ol) {
+          const isActive = hasBlock(type, props.editor);
+          const isList = hasBlock(BLOCK_TAGS.li, props.editor);
 
-        if (isList) {
-          props.editor
-            .setBlocks(isActive ? DEFAULT_NODE : type)
-            .unwrapBlock(BLOCK_TAGS.ul)
-            .unwrapBlock(BLOCK_TAGS.ol);
-        } else {
-          props.editor.setBlocks(isActive ? DEFAULT_NODE : type);
-        }
-      } else {
-        // Handle the extra wrapping required for list buttons.
-        const isList = hasBlock(BLOCK_TAGS.li, props.editor);
-        const isType = props.editor.value?.blocks.some!(
-          (block: { key: { key: unknown } }) => {
-            return !!props.editor.value?.document.getClosest(
-              block.key,
-              (parent: { type: string }) => parent.type === type
-            );
+          if (isList) {
+            props.editor
+              .setBlocks(isActive ? DEFAULT_NODE : type)
+              .unwrapBlock(BLOCK_TAGS.ul)
+              .unwrapBlock(BLOCK_TAGS.ol);
+          } else {
+            props.editor.setBlocks(isActive ? DEFAULT_NODE : type);
           }
-        );
-
-        if (isList && isType) {
-          props.editor
-            .setBlocks(DEFAULT_NODE)
-            .unwrapBlock(BLOCK_TAGS.ul)
-            .unwrapBlock(BLOCK_TAGS.ol);
-        } else if (isList) {
-          props.editor
-            .unwrapBlock(type === BLOCK_TAGS.ul ? BLOCK_TAGS.ol : BLOCK_TAGS.ul)
-            .wrapBlock(type);
         } else {
-          props.editor.setBlocks(BLOCK_TAGS.li).wrapBlock(type);
-        }
-      }
-    },
-    [props.editor]
-  );
-
-  const onChangeMoreStyles = useCallback(
-    (val) => {
-      props.editor.toggleMark!(val.value);
-    },
-    [props.editor]
-  );
-
-  const activeBlock =
-    (props.editor.value?.blocks.first!() &&
-      props.editor.value?.blocks.first!().type) ||
-    '';
-
-  // so that we don't show our multi dropdown in an `indeterminate`
-  // while the component is not in focus
-  let activeMoreStyleMarks: Array<unknown> = [];
-
-  if (props.editor.value?.selection.isFocused) {
-    const activeMarks = Array.from(
-      props.editor.value.activeMarks as TMark[]
-    ).map((mark) => {
-      return mark.type;
-    });
-
-    activeMoreStyleMarks = activeMarks.filter((activeMark) =>
-      dropdownOptions.some(
-        (dropdownOption) => activeMark === dropdownOption.value
-      )
-    );
-  }
-
-  // https://codepen.io/mudassir0909/pen/eIHqB
-
-  // we prevent all our defined onClicks inside of the CalendarHeader
-  // from blurring our input.
-  const onToolbarMouseDown = useCallback((event) => {
-    event.preventDefault();
-  }, []);
-
-  if (props.showExpandIcon) {
-    warning(
-      typeof props.onClickExpand === 'function',
-      'RichTextUtils: "onClickExpand" is required when showExpandIcon is true'
-    );
-  }
-
-  return (
-    <Container
-      css={props.styles.container}
-      hasError={props.hasError}
-      hasWarning={props.hasWarning}
-      isReadOnly={props.isReadOnly}
-      isDisabled={props.isDisabled}
-    >
-      <Toolbar onMouseDown={onToolbarMouseDown}>
-        <ToolbarMainControls>
-          <Dropdown
-            label={intl.formatMessage(messages.styleDropdownLabel)}
-            value={activeBlock}
-            onChange={onClickBlock}
-            options={styleDropdownOptions}
-            components={{
-              Item: StylesDropdownItem,
-              Label: DropdownLabel,
-            }}
-            isDisabled={props.isDisabled}
-            isReadOnly={props.isReadOnly}
-          />
-          <Tooltip
-            title={intl.formatMessage(messages.boldButtonLabel)}
-            placement="bottom"
-            styles={tooltipStyles}
-          >
-            <Button
-              isActive={
-                props.editor.value?.selection.isFocused &&
-                props.editor.hasBoldMark()
-              }
-              isDisabled={props.isDisabled}
-              isReadOnly={props.isReadOnly}
-              label={intl.formatMessage(messages.boldButtonLabel)}
-              onClick={props.editor.toggleBoldMark}
-            >
-              <BoldIcon size="medium" />
-            </Button>
-          </Tooltip>
-          <Tooltip
-            title={intl.formatMessage(messages.italicButtonLabel)}
-            placement="bottom"
-            styles={tooltipStyles}
-          >
-            <Button
-              isActive={
-                props.editor.value?.selection.isFocused &&
-                props.editor.hasItalicMark()
-              }
-              isDisabled={props.isDisabled}
-              isReadOnly={props.isReadOnly}
-              label={intl.formatMessage(messages.italicButtonLabel)}
-              onClick={props.editor.toggleItalicMark}
-            >
-              <ItalicIcon size="medium" />
-            </Button>
-          </Tooltip>
-          <Tooltip
-            title={intl.formatMessage(messages.underlinedButtonLabel)}
-            placement="bottom"
-            styles={tooltipStyles}
-          >
-            <Button
-              isActive={
-                props.editor.value?.selection.isFocused &&
-                props.editor.hasUnderlinedMark()
-              }
-              isDisabled={props.isDisabled}
-              isReadOnly={props.isReadOnly}
-              label={intl.formatMessage(messages.underlinedButtonLabel)}
-              onClick={props.editor.toggleUnderlinedMark}
-            >
-              <UnderlineIcon size="medium" />
-            </Button>
-          </Tooltip>
-          <Dropdown
-            isMulti={true}
-            label={intl.formatMessage(messages.moreStylesDropdownLabel)}
-            options={dropdownOptions}
-            value={activeMoreStyleMarks as string[]}
-            onChange={onChangeMoreStyles}
-            isDisabled={props.isDisabled}
-            isReadOnly={props.isReadOnly}
-            components={{
-              Item: MoreStylesDropdownItem,
-              Label: MoreStylesDropdownLabel,
-            }}
-          />
-          <Divider />
-          <Tooltip
-            title={intl.formatMessage(messages.orderedListButtonLabel)}
-            placement="bottom"
-            styles={tooltipStyles}
-          >
-            <Button
-              isActive={
-                props.editor.value?.selection.isFocused &&
-                props.editor.hasNumberedListBlock()
-              }
-              isDisabled={props.isDisabled}
-              isReadOnly={props.isReadOnly}
-              label={intl.formatMessage(messages.orderedListButtonLabel)}
-              onClick={props.editor.toggleNumberedListBlock}
-            >
-              <OrderedListIcon size="medium" />
-            </Button>
-          </Tooltip>
-          <Tooltip
-            title={intl.formatMessage(messages.unorderedListButtonLabel)}
-            placement="bottom"
-            styles={tooltipStyles}
-          >
-            <Button
-              isActive={
-                props.editor.value?.selection.isFocused &&
-                props.editor.hasBulletedListBlock()
-              }
-              isDisabled={props.isDisabled}
-              isReadOnly={props.isReadOnly}
-              label={intl.formatMessage(messages.unorderedListButtonLabel)}
-              onClick={props.editor.toggleBulletedListBlock}
-            >
-              <UnorderedListIcon size="medium" />
-            </Button>
-          </Tooltip>
-        </ToolbarMainControls>
-        <ToolbarRightControls
-          css={css`
-            display: flex;
-            flex-wrap: wrap;
-
-            > * {
-              margin-left: 1px;
+          // Handle the extra wrapping required for list buttons.
+          const isList = hasBlock(BLOCK_TAGS.li, props.editor);
+          const isType = props.editor.value?.blocks.some!(
+            (block: { key: { key: unknown } }) => {
+              return !!props.editor.value?.document.getClosest(
+                block.key,
+                (parent: { type: string }) => parent.type === type
+              );
             }
-          `}
-        >
-          <Tooltip
-            title={intl.formatMessage(messages.undoButtonLabel)}
-            placement="bottom"
-            off={!hasUndos}
-          >
-            <Button
-              isActive={false}
-              label={intl.formatMessage(messages.undoButtonLabel)}
-              isDisabled={!hasUndos || props.isDisabled}
+          );
+
+          if (isList && isType) {
+            props.editor
+              .setBlocks(DEFAULT_NODE)
+              .unwrapBlock(BLOCK_TAGS.ul)
+              .unwrapBlock(BLOCK_TAGS.ol);
+          } else if (isList) {
+            props.editor
+              .unwrapBlock(
+                type === BLOCK_TAGS.ul ? BLOCK_TAGS.ol : BLOCK_TAGS.ul
+              )
+              .wrapBlock(type);
+          } else {
+            props.editor.setBlocks(BLOCK_TAGS.li).wrapBlock(type);
+          }
+        }
+      },
+      [props.editor]
+    );
+
+    const onChangeMoreStyles = useCallback(
+      (val) => {
+        props.editor.toggleMark?.(val.value);
+      },
+      [props.editor]
+    );
+
+    const activeBlock =
+      (props.editor.value?.blocks.first!() &&
+        props.editor.value?.blocks.first!().type) ||
+      '';
+
+    // so that we don't show our multi dropdown in an `indeterminate`
+    // while the component is not in focus
+    let activeMoreStyleMarks: Array<string> = [];
+
+    if (props.editor.value?.selection.isFocused) {
+      const activeMarks = Array.from(
+        props.editor.value.activeMarks as TMark[]
+      ).map((mark) => {
+        return mark.type;
+      });
+
+      activeMoreStyleMarks = activeMarks.filter((activeMark) =>
+        dropdownOptions.some(
+          (dropdownOption) => activeMark === dropdownOption.value
+        )
+      );
+    }
+
+    // https://codepen.io/mudassir0909/pen/eIHqB
+
+    // we prevent all our defined onClicks inside of the CalendarHeader
+    // from blurring our input.
+    const onToolbarMouseDown = useCallback((event) => {
+      event.preventDefault();
+    }, []);
+
+    if (props.showExpandIcon) {
+      warning(
+        typeof props.onClickExpand === 'function',
+        'RichTextUtils: "onClickExpand" is required when showExpandIcon is true'
+      );
+    }
+
+    return (
+      <Container
+        css={props.styles.container}
+        hasError={props.hasError}
+        hasWarning={props.hasWarning}
+        isReadOnly={props.isReadOnly}
+        isDisabled={props.isDisabled}
+      >
+        <Toolbar onMouseDown={onToolbarMouseDown}>
+          <ToolbarMainControls>
+            <Dropdown
+              label={intl.formatMessage(messages.styleDropdownLabel)}
+              value={activeBlock}
+              onChange={onClickBlock}
+              options={styleDropdownOptions}
+              components={{
+                Item: StylesDropdownItem,
+                Label: DropdownLabel,
+              }}
+              isDisabled={props.isDisabled}
               isReadOnly={props.isReadOnly}
-              onClick={props.editor.toggleUndo}
+            />
+            <Tooltip
+              title={intl.formatMessage(messages.boldButtonLabel)}
+              placement="bottom"
+              styles={tooltipStyles}
             >
-              <UndoIcon size="medium" />
-            </Button>
-          </Tooltip>
-          <Tooltip
-            title={intl.formatMessage(messages.redoButtonLabel)}
-            placement="bottom"
-            off={!hasRedos}
-          >
-            <Button
-              isActive={false}
-              label={intl.formatMessage(messages.redoButtonLabel)}
-              isDisabled={!hasRedos || props.isDisabled}
-              isReadOnly={props.isReadOnly}
-              onClick={props.editor.toggleRedo}
-            >
-              <RedoIcon size="medium" />
-            </Button>
-          </Tooltip>
-          {props.showExpandIcon && (
-            <>
-              <Divider />
-              <Tooltip
-                title={intl.formatMessage(messages.expandButtonLabel)}
-                placement="bottom-end"
+              <Button
+                isActive={
+                  props.editor.value?.selection.isFocused &&
+                  props.editor.hasBoldMark()
+                }
+                isDisabled={props.isDisabled}
+                isReadOnly={props.isReadOnly}
+                label={intl.formatMessage(messages.boldButtonLabel)}
+                onClick={props.editor.toggleBoldMark}
               >
-                <Button
-                  isActive={false}
-                  isDisabled={props.isDisabled}
-                  isReadOnly={props.isReadOnly}
-                  label={intl.formatMessage(messages.expandButtonLabel)}
-                  onClick={props.onClickExpand}
-                >
-                  <ExpandFullIcon size="medium" />
-                </Button>
-              </Tooltip>
-            </>
-          )}
-        </ToolbarRightControls>
-      </Toolbar>
-      <div style={props.containerStyles}>
-        <div ref={registerContentNode}>
-          <EditorContainer
-            hasError={props.hasError}
-            hasWarning={props.hasWarning}
-            isReadOnly={props.isReadOnly}
-            isDisabled={props.isDisabled}
-            ref={containerRef}
+                <BoldIcon size="medium" />
+              </Button>
+            </Tooltip>
+            <Tooltip
+              title={intl.formatMessage(messages.italicButtonLabel)}
+              placement="bottom"
+              styles={tooltipStyles}
+            >
+              <Button
+                isActive={
+                  props.editor.value?.selection.isFocused &&
+                  props.editor.hasItalicMark()
+                }
+                isDisabled={props.isDisabled}
+                isReadOnly={props.isReadOnly}
+                label={intl.formatMessage(messages.italicButtonLabel)}
+                onClick={props.editor.toggleItalicMark}
+              >
+                <ItalicIcon size="medium" />
+              </Button>
+            </Tooltip>
+            <Tooltip
+              title={intl.formatMessage(messages.underlinedButtonLabel)}
+              placement="bottom"
+              styles={tooltipStyles}
+            >
+              <Button
+                isActive={
+                  props.editor.value?.selection.isFocused &&
+                  props.editor.hasUnderlinedMark()
+                }
+                isDisabled={props.isDisabled}
+                isReadOnly={props.isReadOnly}
+                label={intl.formatMessage(messages.underlinedButtonLabel)}
+                onClick={props.editor.toggleUnderlinedMark}
+              >
+                <UnderlineIcon size="medium" />
+              </Button>
+            </Tooltip>
+            <Dropdown
+              isMulti={true}
+              label={intl.formatMessage(messages.moreStylesDropdownLabel)}
+              options={dropdownOptions}
+              value={activeMoreStyleMarks as string[]}
+              onChange={onChangeMoreStyles}
+              isDisabled={props.isDisabled}
+              isReadOnly={props.isReadOnly}
+              components={{
+                Item: MoreStylesDropdownItem,
+                Label: MoreStylesDropdownLabel,
+              }}
+            />
+            <Divider />
+            <Tooltip
+              title={intl.formatMessage(messages.orderedListButtonLabel)}
+              placement="bottom"
+              styles={tooltipStyles}
+            >
+              <Button
+                isActive={
+                  props.editor.value?.selection.isFocused &&
+                  props.editor.hasNumberedListBlock()
+                }
+                isDisabled={props.isDisabled}
+                isReadOnly={props.isReadOnly}
+                label={intl.formatMessage(messages.orderedListButtonLabel)}
+                onClick={props.editor.toggleNumberedListBlock}
+              >
+                <OrderedListIcon size="medium" />
+              </Button>
+            </Tooltip>
+            <Tooltip
+              title={intl.formatMessage(messages.unorderedListButtonLabel)}
+              placement="bottom"
+              styles={tooltipStyles}
+            >
+              <Button
+                isActive={
+                  props.editor.value?.selection.isFocused &&
+                  props.editor.hasBulletedListBlock()
+                }
+                isDisabled={props.isDisabled}
+                isReadOnly={props.isReadOnly}
+                label={intl.formatMessage(messages.unorderedListButtonLabel)}
+                onClick={props.editor.toggleBulletedListBlock}
+              >
+                <UnorderedListIcon size="medium" />
+              </Button>
+            </Tooltip>
+          </ToolbarMainControls>
+          <ToolbarRightControls
+            css={css`
+              display: flex;
+              flex-wrap: wrap;
+
+              > * {
+                margin-left: 1px;
+              }
+            `}
           >
-            {props.children}
-          </EditorContainer>
+            <Tooltip
+              title={intl.formatMessage(messages.undoButtonLabel)}
+              placement="bottom"
+              off={!hasUndos}
+            >
+              <Button
+                isActive={false}
+                label={intl.formatMessage(messages.undoButtonLabel)}
+                isDisabled={!hasUndos || props.isDisabled}
+                isReadOnly={props.isReadOnly}
+                onClick={props.editor.toggleUndo}
+              >
+                <UndoIcon size="medium" />
+              </Button>
+            </Tooltip>
+            <Tooltip
+              title={intl.formatMessage(messages.redoButtonLabel)}
+              placement="bottom"
+              off={!hasRedos}
+            >
+              <Button
+                isActive={false}
+                label={intl.formatMessage(messages.redoButtonLabel)}
+                isDisabled={!hasRedos || props.isDisabled}
+                isReadOnly={props.isReadOnly}
+                onClick={props.editor.toggleRedo}
+              >
+                <RedoIcon size="medium" />
+              </Button>
+            </Tooltip>
+            {props.showExpandIcon && (
+              <>
+                <Divider />
+                <Tooltip
+                  title={intl.formatMessage(messages.expandButtonLabel)}
+                  placement="bottom-end"
+                >
+                  <Button
+                    isActive={false}
+                    isDisabled={props.isDisabled}
+                    isReadOnly={props.isReadOnly}
+                    label={intl.formatMessage(messages.expandButtonLabel)}
+                    onClick={props.onClickExpand}
+                  >
+                    <ExpandFullIcon size="medium" />
+                  </Button>
+                </Tooltip>
+              </>
+            )}
+          </ToolbarRightControls>
+        </Toolbar>
+        <div style={props.containerStyles}>
+          <div ref={registerContentNode}>
+            <EditorContainer
+              hasError={props.hasError}
+              hasWarning={props.hasWarning}
+              isReadOnly={props.isReadOnly}
+              isDisabled={props.isDisabled}
+              ref={containerRef}
+            >
+              {props.children}
+            </EditorContainer>
+          </div>
         </div>
-      </div>
-    </Container>
-  );
-});
+      </Container>
+    );
+  }
+);
 
 const defaultProps: Pick<TRichTextEditorBody, 'styles'> = {
   styles: {},

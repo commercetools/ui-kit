@@ -1,8 +1,7 @@
 import { isKeyHotkey } from 'is-hotkey';
 import { warning } from '@commercetools-uikit/utils';
 import memoize from 'lodash/memoize';
-import { ReactNode } from 'react';
-import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+import type { ReactNode } from 'react';
 import type { TEditor, TMark } from '../editor.types';
 
 type TMarkPluginOptions = {
@@ -61,7 +60,7 @@ const MarkPlugin = (options = {} as TMarkPluginOptions) => {
         event.preventDefault();
         editor.toggleMark!(options.typeName);
       },
-      renderMark(props: TProps, _editor: TEditor, next: () => ReactJSXElement) {
+      renderMark(props: TProps, _editor: TEditor, next: () => JSX.Element) {
         const { children, mark, attributes } = props;
 
         switch (mark.type) {

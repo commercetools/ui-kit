@@ -1,7 +1,7 @@
 import Html, { type HtmlOptions } from 'slate-html-serializer';
 import flatMap from 'lodash/flatMap';
 import { MARK_TAGS, BLOCK_TAGS } from '../tags';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type TSerializeObject = {
   object: string;
@@ -33,7 +33,7 @@ const mapper = {
 
 const rules = [
   {
-    //@ts-ignore
+    //@ts-ignore - requires an additional return block which possibly serves no use.
     deserialize(
       el: HTMLElement,
       next: (arg0: NodeListOf<ChildNode>) => unknown
@@ -51,7 +51,7 @@ const rules = [
         };
       }
     },
-    //@ts-ignore
+    //@ts-ignore - requires an additional return block which possibly serves no use.
     serialize(obj: TSerializeObject, children: ReactNode) {
       if (obj.object === 'block') {
         switch (obj.type) {
@@ -88,7 +88,7 @@ const rules = [
 
   {
     // Special case for code blocks, which need to grab the nested childNodes.
-    //@ts-ignore
+    //@ts-ignore - requires an additional return block which possibly serves no use.
     deserialize(el: HTMLElement, next: (arg0: NodeListOf<ChildNode>) => void) {
       if (el.tagName.toLowerCase() === 'span') {
         const styleAttribute = el.getAttribute('style');
@@ -138,7 +138,7 @@ const rules = [
 
   // Add a new rule that handles marks...
   {
-    //@ts-ignore
+    //@ts-ignore - requires an additional return block which possibly serves no use.
     deserialize(el: HTMLElement, next: (arg0: NodeListOf<ChildNode>) => void) {
       const type =
         MARK_TAGS[el.tagName.toLowerCase() as keyof typeof MARK_TAGS];
@@ -150,7 +150,7 @@ const rules = [
         };
       }
     },
-    //@ts-ignore
+    //@ts-ignore - requires an additional return block which possibly serves no use.
     serialize(obj: TSerializeObject, children: ReactNode) {
       if (obj.object === 'mark') {
         switch (obj.type) {

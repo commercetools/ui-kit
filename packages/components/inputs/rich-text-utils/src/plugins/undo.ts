@@ -1,4 +1,4 @@
-import { KeyboardEvent } from 'react';
+import type { KeyboardEvent } from 'react';
 import { isKeyHotkey } from 'is-hotkey';
 import memoize from 'lodash/memoize';
 import type { TEditor, TOptions } from '../editor.types';

@@ -1,4 +1,3 @@
-import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import { ReactNode } from 'react';
 import { BLOCK_TAGS } from '../tags';
 import type { TEditor } from '../editor.types';
@@ -68,9 +67,8 @@ const ListPlugin = () => {
     {
       renderBlock(
         props: TListPlugin,
-        //@ts-ignore
-        editor: TEditor,
-        next: () => ReactJSXElement
+        _editor: TEditor,
+        next: () => JSX.Element
       ) {
         const { attributes, children, node } = props;
 

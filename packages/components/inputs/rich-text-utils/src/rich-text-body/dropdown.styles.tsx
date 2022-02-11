@@ -11,7 +11,7 @@ type TDropdownStylesProps = {
   isReadOnly?: boolean;
 };
 
-const DropdownItem = styled.button`
+const DropdownItem = styled.button<TDropdownStylesProps>`
   width: 100%;
   border: 0;
   font-size: 1rem;
@@ -19,7 +19,7 @@ const DropdownItem = styled.button`
   padding: ${vars.spacingXs} ${vars.spacingS};
   font-family: ${vars.fontFamilyDefault};
   display: block;
-  background-color: ${(props: TDropdownStylesProps) =>
+  background-color: ${(props) =>
     props.isSelected ? vars.colorAccent95 : vars.colorSurface};
 
   &:focus,

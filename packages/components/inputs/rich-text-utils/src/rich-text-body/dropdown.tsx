@@ -1,5 +1,5 @@
 /// <reference types="@emotion/react/types/css-prop" />
-import { ElementType, FunctionComponent } from 'react';
+import type { ElementType, FunctionComponent } from 'react';
 import DownshiftUntyped, {
   GetItemPropsOptions,
   GetToggleButtonPropsOptions,
@@ -33,6 +33,10 @@ type TItem = {
   label: string;
 };
 
+type THeadings = {
+  label?: string;
+};
+
 const getIsSelected = (props: TDropdownProps, item: TItem) =>
   !props.isMulti
     ? item.value === (props.value as string)
@@ -53,10 +57,6 @@ const Dropdown = (props: TDropdownProps) => {
     props.isMulti &&
     (props.value as unknown[]) &&
     (props.value as unknown[]).length > 0;
-
-  type THeadings = {
-    label?: string;
-  };
 
   const Downshift = DownshiftUntyped as ElementType;
 

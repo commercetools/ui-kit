@@ -1,8 +1,7 @@
 // copied from https://github.com/ianstormtaylor/slate/tree/master/packages/slate-react-placeholder/src
 // and modified to use editor's `options.placeholder` prop instead.
 import { warning } from '@commercetools-uikit/utils';
-import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
-import { type CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import type { TEditor, TNode } from '../editor.types';
 
 type TEditorQueryPredicate = string | (() => void);
@@ -67,7 +66,7 @@ function SlateReactPlaceholder(options = {} as TSlateReactPlaceholderOptions) {
   function decorateNode(
     node: TNode,
     editor: TEditor,
-    next: () => ReactJSXElement[]
+    next: () => JSX.Element[]
   ) {
     if (!editor.query!(when, node)) {
       return next();
@@ -106,7 +105,7 @@ function SlateReactPlaceholder(options = {} as TSlateReactPlaceholderOptions) {
   function renderDecoration(
     props: TRenderDecorationProps,
     editor: Pick<TEditor, 'props'>,
-    next: () => ReactJSXElement
+    next: () => JSX.Element
   ) {
     const { children, decoration: deco } = props;
 

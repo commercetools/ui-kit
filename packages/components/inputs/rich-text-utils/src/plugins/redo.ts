@@ -1,4 +1,4 @@
-import { KeyboardEvent } from 'react';
+import type { KeyboardEvent } from 'react';
 import { isKeyHotkey } from 'is-hotkey';
 import memoize from 'lodash/memoize';
 import type { TEditor, TOptions } from '../editor.types';
@@ -30,7 +30,7 @@ const RedoPlugin = (options = {} as TOptions) => {
         }
 
         event.preventDefault();
-        editor.toggleRedo!();
+        editor.toggleRedo?.();
       },
       queries: {
         hasRedos: (editor: TEditor) => hasRedos(editor),
@@ -41,7 +41,7 @@ const RedoPlugin = (options = {} as TOptions) => {
             editor.focus();
           }
           if (hasRedos(editor)) {
-            editor.redo!();
+            editor.redo?.();
           }
         },
       },
