@@ -14,9 +14,10 @@ import {
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
-import MoneyInput from '@commercetools-uikit/money-input';
+import MoneyInput, {
+  type TCurrencyCode,
+} from '@commercetools-uikit/money-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
-import currencies from './currencies.json';
 
 type TFieldErrors = Record<string, boolean>;
 
@@ -26,8 +27,6 @@ const sequentialId = createSequentialId('money-field-');
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
-
-type TCurrencyCode = keyof typeof currencies;
 
 type TValue = {
   amount: string;

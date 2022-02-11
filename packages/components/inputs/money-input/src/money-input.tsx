@@ -247,7 +247,7 @@ export const parseRawAmountToNumber = (rawAmount: string, locale: string) => {
 //
 // This function expects the "amount" to be a trimmed value.
 
-type TCurrencyCode = keyof typeof currencies;
+export type TCurrencyCode = keyof typeof currencies;
 
 export const createMoneyValue = (
   currencyCode: TCurrencyCode,
@@ -426,8 +426,6 @@ type TMoneyInputProps = {
   isAutofocussed?: boolean;
   /**
    * Called with the event of the input or dropdown when either the currency or the amount have changed.
-   * <br />
-   * Signature: `(event) => void`
    */
   onChange: (event: TEvent) => void;
   /**
