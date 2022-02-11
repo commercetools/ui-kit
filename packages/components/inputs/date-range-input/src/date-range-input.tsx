@@ -1,6 +1,6 @@
 import { createRef, Component, type KeyboardEvent } from 'react';
 import Downshift from 'downshift';
-import { injectIntl, type MessageDescriptor } from 'react-intl';
+import { injectIntl, type WrappedComponentProps } from 'react-intl';
 import type { DurationInputArg1, MomentInput } from 'moment';
 import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
@@ -106,11 +106,6 @@ const getRange = ({
   };
 };
 
-type TIntl = {
-  locale: string;
-  formatMessage: (message: MessageDescriptor) => void;
-};
-
 type TEvent = {
   target: {
     id?: string;
@@ -120,7 +115,6 @@ type TEvent = {
 };
 
 type TDateRangeCalendarProps = {
-  intl: TIntl;
   /**
    * Horizontal size limit of the input field.
    */
@@ -188,7 +182,7 @@ type TDateRangeCalendarProps = {
    * Indicates the input field has warning
    */
   hasWarning?: boolean;
-};
+} & WrappedComponentProps;
 
 type TDateRangeCalendarState = {
   calendarDate?: MomentInput;
@@ -604,5 +598,4 @@ class DateRangeCalendar extends Component<
   }
 }
 
-// @ts-ignore
 export default injectIntl(DateRangeCalendar);
