@@ -84,7 +84,7 @@ type TLocalizedTextInputProps = {
   /**
    * Placeholders for each language. Object of the same shape as `value`.
    */
-  placeholder: {
+  placeholder?: {
     [key: string]: string;
   };
   /**
@@ -116,7 +116,7 @@ type TLocalizedTextInputProps = {
   /**
    * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
    */
-  errors: {
+  errors?: {
     [key: string]: ReactNode;
   };
 };
