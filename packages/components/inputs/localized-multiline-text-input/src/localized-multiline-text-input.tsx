@@ -32,7 +32,7 @@ type TExpandedTranslationsReducerAction = {
   payload: string;
 };
 
-type TLocalizedMultilineTextInput = {
+type TLocalizedMultilineTextInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`
    */
@@ -174,7 +174,9 @@ const expandedTranslationsReducer = (
 // can get quite confusing. We try to stick to expand/collapse for the
 // multiline inputs, while we use show/hide/open/close for the remaining
 // languages.
-const LocalizedMultilineTextInput = (props: TLocalizedMultilineTextInput) => {
+const LocalizedMultilineTextInput = (
+  props: TLocalizedMultilineTextInputProps
+) => {
   const intl = useIntl();
 
   const initialExpandedTranslationsState = Object.keys(props.value).reduce(

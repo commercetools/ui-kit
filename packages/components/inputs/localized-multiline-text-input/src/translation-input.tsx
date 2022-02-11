@@ -1,4 +1,9 @@
-import { useState, useCallback, ChangeEventHandler, ReactNode } from 'react';
+import {
+  useState,
+  useCallback,
+  ChangeEventHandler,
+  type ReactNode,
+} from 'react';
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import FlatButton from '@commercetools-uikit/flat-button';
@@ -99,7 +104,7 @@ const TranslationInput = (props: TranslationInputProps) => {
       //
       // eslint-disable-next-line no-param-reassign
       event.target.language = props.language;
-      onChange && onChange(event);
+      onChange?.(event);
     },
     [onChange, props.language]
   );
@@ -107,7 +112,7 @@ const TranslationInput = (props: TranslationInputProps) => {
   const { onFocus, onToggle } = props;
   const handleFocus = useCallback(() => {
     // Expand the input on focus
-    if (props.isCollapsed) onToggle && onToggle();
+    if (props.isCollapsed) onToggle?.();
     if (onFocus) onFocus();
   }, [props.isCollapsed, onFocus, onToggle]);
 
