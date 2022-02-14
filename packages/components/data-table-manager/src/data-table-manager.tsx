@@ -1,4 +1,9 @@
-import { useMemo, cloneElement, type ReactNode } from 'react';
+import {
+  useMemo,
+  cloneElement,
+  type ReactNode,
+  type MouseEventHandler,
+} from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
   type TDataTableSettingsProps,
@@ -41,18 +46,14 @@ type TColumProps = {
 
   /**
    * A callback function, called when the header cell is clicked.
-   * <br>
-   * Signature: `(event) => void`
    */
-  onClick?: () => void; // TODO: Type args
+  onClick?: (event: MouseEventHandler) => void;
 
   /**
    * A callback function to render the content of cells under this column, overriding
    * the default `itemRenderer` prop of the table.
-   * <br>
-   * Signature: `(row: object, isRowCollapsed: boolean) => React.Node`
    */
-  renderItem?: () => void; // TODO: Type args
+  renderItem?: (row: ReactNode, isRowCollapsed: boolean) => ReactNode;
 
   /**
    * Use this prop to place an `Icon` or `IconButton` on the left of the column label.
@@ -133,10 +134,11 @@ type TDataTableManagerProps = {
 
   /**
    * A callback function, called when any of the properties of either display settings or column settings is modified.
-   * <br>
-   * Signature: `(action: string, nextValue: object) => void`
    */
-  onSettingsChange?: () => void; // TODO: Type args - PropTypes.func,
+  onSettingsChange?: (
+    settingName: string,
+    settingValue: boolean | string[]
+  ) => void;
 
   /**
    * A React node for rendering additional information within the table manager.

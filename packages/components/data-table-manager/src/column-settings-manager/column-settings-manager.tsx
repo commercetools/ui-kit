@@ -101,7 +101,7 @@ export const handleColumnsUpdate = (
     const columns = isSwap ? selectedColumns : availableColumns;
     const draggedColumn = columns.find(
       (col) => col.key === dragResult.draggableId
-    )!; // TODO: Does the dragResult column id will always exist in selectedColumns | availableColumns?
+    )!;
 
     // push the column in the new position
     onUpdateColumns([
