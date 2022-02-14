@@ -217,6 +217,11 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
     defaultExpansionState
   );
 
+  const onLocalizedInputToggle = useCallback(
+    () => toggleLanguages(),
+    [toggleLanguages]
+  );
+
   const languages = sortLanguages(
     props.selectedLanguage,
     Object.keys(props.value)
@@ -295,8 +300,7 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
         {shouldRenderLanguagesButton && (
           <LocalizedInputToggle
             isOpen={areLanguagesExpanded}
-            // @ts-ignore
-            onClick={toggleLanguages}
+            onClick={onLocalizedInputToggle}
             isDisabled={areLanguagesExpanded && hasErrorInRemainingLanguages}
             remainingLocalizations={languages.length - 1}
           />
