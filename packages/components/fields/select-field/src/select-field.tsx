@@ -1,4 +1,10 @@
-import { Component, isValidElement, ReactElement, type ReactNode } from 'react';
+import {
+  Component,
+  isValidElement,
+  type ReactElement,
+  type ReactNode,
+  type FocusEventHandler,
+} from 'react';
 import {
   createSequentialId,
   filterDataAttributes,
@@ -20,6 +26,9 @@ declare type TOptionObject = {
   options: TOption[];
 };
 declare type TOptions = TOption[] | TOptionObject[];
+type TEvent = {
+  target: unknown;
+};
 
 type TSelectFieldProps = {
   // SelectField
@@ -68,10 +77,14 @@ type TSelectFieldProps = {
   // SelectInput
   /**
    * Aria label (for assistive tech)
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
   'aria-label'?: ReactSelectProps['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
   'aria-labelledby'?: ReactSelectProps['aria-labelledby'];
   /**
@@ -90,6 +103,8 @@ type TSelectFieldProps = {
   };
   /**
    * Custom method to filter whether an option should be displayed in the menu
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
   filterOption?: ReactSelectProps['filterOption'];
   /**
@@ -110,6 +125,8 @@ type TSelectFieldProps = {
   isReadOnly?: boolean;
   /**
    * Override the built-in logic to detect whether an option is disabled
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
   isOptionDisabled?: ReactSelectProps['isOptionDisabled'];
   /**
@@ -144,38 +161,33 @@ type TSelectFieldProps = {
    * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with { inputValue: String }.
    * <br />
    * `inputValue` will be an empty string when no search text is present.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
   noOptionsMessage?: ReactSelectProps['noOptionsMessage'];
   /**
    * Handle blur events on the control
-   * <br />
-   * Signature: `(event) => void`
    */
   onBlur?: () => void;
   /**
    * Called with a fake event when value changes. The event's target.name will be the name supplied in props. The event's target.value will hold the value.
    * <br/>
    * The value will be the selected option, or an array of options in case isMulti is true.
-   * <br />
-   * Signature: `(event) => void`
    */
-  onChange?: () => void;
+  onChange?: (event?: TEvent) => void;
   /**
    * Handle focus events on the control
-   * <br />
-   * Signature: `(event) => void`
    */
-  onFocus?: () => void;
+  onFocus?: FocusEventHandler;
   /**
    * Handle change events on the input
    * <br />
-   * Signature: `(newValue, actionMeta) => void`
+   * [Props from React select was used](https://react-select.com/props)
    */
-  onInputChange?: () => void;
+  onInputChange?: ReactSelectProps['onInputChange'];
   /**
    * Array of options that populate the select menu
    */
-  // options?: OptionsOrGroups<unknown, GroupBase<unknown>> | boolean;
   options?: TOptions;
   showOptionGroupDivider?: boolean;
   /**
@@ -192,6 +204,8 @@ type TSelectFieldProps = {
   tabSelectsValue?: boolean;
   /**
    * The value of the select; reflected by the selected option
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
   value?: ReactSelectProps['value'];
 
@@ -229,9 +243,13 @@ type TSelectFieldProps = {
    */
   hasWarning?: boolean;
   /**
-   * 	Icon to display on the left of the placeholder text and selected value. Has no effect when isMulti is enabled.
+   * Icon to display on the left of the placeholder text and selected value. Has no effect when isMulti is enabled.
    */
   iconLeft?: ReactNode;
+  /**
+   * The value of the search input
+   * [Props from React select was used](https://react-select.com/props)
+   */
   inputValue?: ReactSelectProps['inputValue'];
 };
 
