@@ -5,6 +5,8 @@ import {
   type FocusEventHandler,
   type ReactElement,
   type ReactNode,
+  type MouseEvent,
+  type KeyboardEvent,
 } from 'react';
 import {
   createSequentialId,
@@ -13,7 +15,7 @@ import {
   warning,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import Stack from '@commercetools-uikit/spacings-stack';
+import Stack, { type TStackProps } from '@commercetools-uikit/spacings-stack';
 import FieldLabel from '@commercetools-uikit/field-label';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import RadioInput from '@commercetools-uikit/radio-input';
@@ -104,7 +106,7 @@ type TRadioFieldProps = {
   /**
    * Passes props of the `Spacings.Stack` or `Spacings.Inline`, dependeing on the chosen direction
    */
-  directionProps?: object;
+  directionProps?: Partial<TStackProps>;
   /**
    * At least one `RadioInput.Option` component or another node (mixed children are allowed)
    */
@@ -130,7 +132,9 @@ type TRadioFieldProps = {
    * <br />
    * Info button will only be visible when this prop is passed.
    */
-  onInfoButtonClick?: () => void;
+  onInfoButtonClick?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * Icon to be displayed beside the hint text.
    * <br />
