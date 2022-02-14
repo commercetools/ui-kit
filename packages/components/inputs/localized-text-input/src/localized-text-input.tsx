@@ -255,7 +255,7 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
 
   if (props.hideLanguageExpansionControls) {
     warning(
-      typeof props.defaultExpandLanguages === 'boolean',
+      typeof props.defaultExpandLanguages !== 'boolean',
       'LocalizedTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
     );
   }
