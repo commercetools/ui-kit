@@ -235,6 +235,11 @@ const LocalizedMultilineTextInput = (
     }
   }
 
+  const onLocalizedInputToggle = useCallback(
+    () => toggleLanguages(),
+    [toggleLanguages]
+  );
+
   const shouldRenderLanguagesButton =
     languages.length > 1 && !props.hideLanguageExpansionControls;
 
@@ -307,8 +312,7 @@ const LocalizedMultilineTextInput = (
           >
             <LocalizedInputToggle
               isOpen={areLanguagesOpened}
-              // @ts-ignore
-              onClick={toggleLanguages}
+              onClick={onLocalizedInputToggle}
               isDisabled={
                 areLanguagesOpened &&
                 Boolean(
