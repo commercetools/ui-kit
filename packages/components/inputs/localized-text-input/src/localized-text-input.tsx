@@ -1,4 +1,9 @@
-import { ReactNode, useCallback } from 'react';
+import {
+  type ReactNode,
+  type FocusEventHandler,
+  type ChangeEventHandler,
+  useCallback,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
 import { css, useTheme } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
@@ -28,27 +33,22 @@ import {
   getLanguageLabelStyles,
 } from './localized-text-input.styles';
 
-type TEvent = {
-  target: {
-    name?: string;
-    value?: unknown;
-  };
-};
-
 type TLocalizedTextInputProps = {
   id?: string;
   name?: string;
   autoComplete?: string;
-  // then input doesn't accept a "languages" prop, instead all possible
-  // languages have to exist (with empty or filled strings) on the value:
-  //   { en: 'foo', de: '', es: '' }
+  /**
+   *   then input doesn't accept a "languages" prop, instead all possible
+  languages have to exist (with empty or filled strings) on the value:
+    { en: 'foo', de: '', es: '' }
+   */
   value: {
     [key: string]: string;
   };
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
-  onChange?: (event: TEvent) => void;
+  onChange?: ChangeEventHandler;
   /**
    * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
    */
@@ -56,11 +56,11 @@ type TLocalizedTextInputProps = {
   /**
    * Called when any field is blurred. Is called with the `event` of that field.
    */
-  onBlur?: () => void;
+  onBlur?: FocusEventHandler;
   /**
    * Called when any field is focussed. Is called with the `event` of that field.
    */
-  onFocus?: () => void;
+  onFocus?: FocusEventHandler;
   /**
    * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
    */
@@ -138,10 +138,10 @@ type TLocalizedInputProps = {
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
-  onChange?: (event: TEvent) => void;
+  onChange?: ChangeEventHandler;
   language: string;
-  onBlur?: () => void;
-  onFocus?: () => void;
+  onBlur?: FocusEventHandler;
+  onFocus?: FocusEventHandler;
   isAutofocussed?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
@@ -166,7 +166,6 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
       // might clear it using the knob, and then we can't parse the language from
       // the input name anymore.
       //
-      // eslint-disable-next-line no-param-reassign
       event.target.language = props.language;
       onChange?.(event);
     },
@@ -250,14 +249,14 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
-      'LocaliszedTextInput: "onChange" is required when isReadOnly is not true'
+      'LocalizedTextInput: "onChange" is required when isReadOnly is not true'
     );
   }
 
   if (props.hideLanguageExpansionControls) {
     warning(
-      typeof props.hideLanguageExpansionControls === 'boolean',
-      'LocaliszedTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
+      typeof props.defaultExpandLanguages === 'boolean',
+      'LocalizedTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
     );
   }
 

@@ -4,8 +4,6 @@ import {
   designTokens,
 } from '@commercetools-uikit/design-system';
 
-type LocalizedTextInputStylesProps = {};
-
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
@@ -19,10 +17,7 @@ const getLocalizedInputStyles = () => [
   `,
 ];
 
-const getLanguageLabelStyles = (
-  _props: LocalizedTextInputStylesProps,
-  theme: Theme
-) => {
+const getLanguageLabelStyles = (_props: unknown, theme: Theme) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
