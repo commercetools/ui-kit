@@ -143,7 +143,7 @@ type TDataTableManagerProps = {
   /**
    * A React node for rendering additional information within the table manager.
    */
-  topBar?: ReactNode; // PropTypes.node,
+  topBar?: ReactNode;
 
   /**
    * Sets the background theme of the Card that contains the settings

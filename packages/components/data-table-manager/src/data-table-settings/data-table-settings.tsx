@@ -70,7 +70,7 @@ export type TColumnManagerProps = {
   /**
    * Set this to `true` to show a search input for the hidden columns panel.
    */
-  areHiddenColumnsSearchable?: boolean; // PropTypes.bool,
+  areHiddenColumnsSearchable?: boolean;
 
   /**
    * Set this to `false` to show the column settings panel option.
