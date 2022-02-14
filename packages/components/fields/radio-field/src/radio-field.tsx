@@ -104,7 +104,7 @@ type TRadioFieldProps = {
    */
   direction?: 'stack' | 'inline';
   /**
-   * Passes props of the `Spacings.Stack` or `Spacings.Inline`, dependeing on the chosen direction
+   * Passes props of the `Spacings.Stack` or `Spacings.Inline`, depending on the chosen direction
    */
   directionProps?: Partial<TStackProps>;
   /**

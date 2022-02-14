@@ -66,7 +66,7 @@ export default Example;
 | `isDisabled`           | `boolean`                                                                                 |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                                                                                                                                     |
 | `isReadOnly`           | `boolean`                                                                                 |          |           | Indicates that the field is displaying read-only content                                                                                                                                                                                                                           |
 | `direction`            | `union`<br/>Possible values:<br/>`'stack' , 'inline'`                                     |          |           | Rendering direction of the radio `RadioInput.Option`s                                                                                                                                                                                                                              |
-| `directionProps`       | `object`                                                                                  |          |           | Passes props of the `Spacings.Stack` or `Spacings.Inline`, dependeing on the chosen direction                                                                                                                                                                                      |
+| `directionProps`       | `Partial`                                                                                 |          |           | Passes props of the `Spacings.Stack` or `Spacings.Inline`, depending on the chosen direction                                                                                                                                                                                       |
 | `children`             | `ReactNode`                                                                               |    ✅    |           | At least one `RadioInput.Option` component or another node (mixed children are allowed)                                                                                                                                                                                            |
 | `title`                | `union`<br/>Possible values:<br/>`string , ReactNode`                                     |    ✅    |           | Title of the label                                                                                                                                                                                                                                                                 |
 | `hint`                 | `union`<br/>Possible values:<br/>`string , ReactNode`                                     |          |           | Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas description can describe it in more depth.&#xA;<br />&#xA;Can also receive a `hintIcon`. |
@@ -86,7 +86,9 @@ export default Example;
 ### Signature `onInfoButtonClick`
 
 ```ts
-() => void
+(
+  event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+) => void
 ```
 
 ## `data-*` props
