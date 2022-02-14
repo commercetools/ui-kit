@@ -1,5 +1,4 @@
 import {
-  type ReactNode,
   type FocusEventHandler,
   type ChangeEventHandler,
   useCallback,
@@ -42,9 +41,7 @@ type TLocalizedTextInputProps = {
   languages have to exist (with empty or filled strings) on the value:
     { en: 'foo', de: '', es: '' }
    */
-  value: {
-    [key: string]: string;
-  };
+  value: Record<string, string>;
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
@@ -84,9 +81,7 @@ type TLocalizedTextInputProps = {
   /**
    * Placeholders for each language. Object of the same shape as `value`.
    */
-  placeholder?: {
-    [key: string]: string;
-  };
+  placeholder?: Record<string, string>;
   /**
    * Horizontal size limit of the input fields.
    */
@@ -116,9 +111,7 @@ type TLocalizedTextInputProps = {
   /**
    * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
    */
-  errors?: {
-    [key: string]: ReactNode;
-  };
+  errors?: Record<string, string>;
 };
 
 type TLocalizedInputProps = {
