@@ -1,4 +1,9 @@
-import type { ChangeEventHandler, MouseEvent, KeyboardEvent } from 'react';
+import type {
+  ChangeEventHandler,
+  MouseEvent,
+  KeyboardEvent,
+  ReactElement,
+} from 'react';
 import { useIntl } from 'react-intl';
 import FieldLabel from '@commercetools-uikit/field-label';
 import Grid from '@commercetools-uikit/grid';
@@ -18,8 +23,8 @@ import {
 export type TDensityManagerProps = {
   isCondensed?: boolean;
   isWrappingText?: boolean;
-  primaryButton?: JSX.Element;
-  secondaryButton?: JSX.Element;
+  primaryButton?: ReactElement;
+  secondaryButton?: ReactElement;
   onDensityDisplayChange: ChangeEventHandler<HTMLInputElement>;
   onTextWrappingChange: ChangeEventHandler<HTMLInputElement>;
   onClose: (

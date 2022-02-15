@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import { useState, type ReactElement, type ReactNode } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { MessageDescriptor, useIntl } from 'react-intl';
 import styled from '@emotion/styled';
@@ -58,12 +58,12 @@ export type TDisplaySettingsProps = {
   /**
    * A React element to be rendered as the primary button, useful when the display settings work as a form.
    */
-  primaryButton?: JSX.Element;
+  primaryButton?: ReactElement;
 
   /**
    * A React element to be rendered as the secondary button, useful when the display settings work as a form.
    */
-  secondaryButton?: JSX.Element;
+  secondaryButton?: ReactElement;
 };
 
 export type TColumnManagerProps = {
@@ -102,12 +102,12 @@ export type TColumnManagerProps = {
   /**
    * A React element to be rendered as the primary button, useful when the column settings work as a form.
    */
-  primaryButton?: JSX.Element;
+  primaryButton?: ReactElement;
 
   /**
    * A React element to be rendered as the secondary button, useful when the column settings work as a form.
    */
-  secondaryButton?: JSX.Element;
+  secondaryButton?: ReactElement;
 };
 
 export type TDataTableSettingsProps = {

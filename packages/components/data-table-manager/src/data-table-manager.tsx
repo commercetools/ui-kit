@@ -1,6 +1,7 @@
 import {
   useMemo,
   cloneElement,
+  type ReactElement,
   type ReactNode,
   type MouseEventHandler,
 } from 'react';
@@ -120,7 +121,7 @@ type TDataTableManagerProps = {
    * <br>
    * Note that the child component will implicitly receive the props `columns` and `isCondensed` from the `<DataTableManager>`.
    */
-  children: JSX.Element;
+  children: ReactElement;
 
   /**
    * The managed display settings of the table.

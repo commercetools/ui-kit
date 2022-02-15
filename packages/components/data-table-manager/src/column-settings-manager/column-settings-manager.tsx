@@ -2,6 +2,7 @@ import {
   useMemo,
   useCallback,
   useState,
+  type ReactElement,
   type ReactNode,
   type MouseEvent,
   type KeyboardEvent,
@@ -43,8 +44,8 @@ type TColumnSettingsManagerProps = {
   onClose: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
-  primaryButton?: JSX.Element;
-  secondaryButton?: JSX.Element;
+  primaryButton?: ReactElement;
+  secondaryButton?: ReactElement;
   managerTheme?: 'light' | 'dark';
 };
 

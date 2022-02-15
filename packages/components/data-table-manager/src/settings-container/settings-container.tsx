@@ -1,4 +1,4 @@
-import type { ReactNode, MouseEvent, KeyboardEvent } from 'react';
+import type { KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
 import { useIntl, type MessageDescriptor } from 'react-intl';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
@@ -18,8 +18,8 @@ type TSettingsContainerProps = {
   onClose: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
-  primaryButton?: JSX.Element;
-  secondaryButton?: JSX.Element;
+  primaryButton?: ReactElement;
+  secondaryButton?: ReactElement;
   children: ReactNode;
   containerTheme?: 'light' | 'dark';
 };
