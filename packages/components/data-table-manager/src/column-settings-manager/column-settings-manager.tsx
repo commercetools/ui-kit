@@ -53,13 +53,6 @@ type TDroppableContainerProps = {
   isDragging: boolean;
 };
 
-// TODO: Very hacky solution.
-// searchHiddenColums is only required if areHiddenColumnsSearchable is true
-// but that callback is used in AsyncSelectInput.loadOptions which is required
-// That property (loadOptions) is passed to react-select AsyncSelect where it's
-// declared as optional
-const noSearch = () => Promise.resolve();
-
 const DroppableContainer = styled.div`
   width: 100%;
   position: relative;
@@ -211,7 +204,12 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
                   // loadOptions is used instead of onInputChange
                   // because the loading indicator is displayed
                   // only when loadOptions is invoked
-                  loadOptions={debounce(searchHiddenColumns ?? noSearch, 300)}
+                  // ts-ignore directive is used because 'searchHiddenColumns' only
+                  // exists when 'areHiddenColumnsSearchable' prop is true (otherwise
+                  // this block is not rendered) but the AsyncSelectInput component
+                  // requires the 'loadOptions' property
+                  // @ts-ignore
+                  loadOptions={debounce(searchHiddenColumns, 300)}
                   onInputChange={handleInputChange}
                   components={selectInputComponents}
                 />
