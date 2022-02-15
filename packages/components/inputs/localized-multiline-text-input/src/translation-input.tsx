@@ -1,7 +1,7 @@
 import {
   useState,
   useCallback,
-  ChangeEventHandler,
+  type ChangeEventHandler,
   type ReactNode,
 } from 'react';
 import { css, useTheme } from '@emotion/react';
