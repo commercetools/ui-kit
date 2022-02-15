@@ -51,21 +51,61 @@ declare type TMoneyValue = {
 };
 
 type TLocalizedMoneyInputProps = {
+  /**
+   * Used as HTML id property.
+   */
   id?: string;
+  /**
+   * The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`).
+   */
   name?: string;
-  // then input doesn't accept a "currencies" prop, instead all possible
-  // currencies have to exist (with empty or filled strings) on the value:
-  // { EUR: {amount: '12.00', currencyCode: 'EUR'}, USD: {amount: '', currencyCode: 'USD'}}
+  /**
+   * value of possible currency
+   * <br/>
+   *the input doesn't accept a "currencies" prop, instead all possible
+   *currencies have to exist (with empty or filled strings) on the value:
+   *{ EUR: {amount: '12.00', currencyCode: 'EUR'}, USD: {amount: '', currencyCode: 'USD'}}
+   */
   value: Record<string, TValue>;
+  /**
+   * Called with the event of the input.
+   */
   onChange?: ChangeEventHandler;
+  /**
+   * the currently selected currency
+   */
   selectedCurrency: string;
+  /**
+   * Called when input is blurred
+   */
   onBlur?: (event: TEvent) => void;
+  /**
+   * Called when input is focused
+   */
   onFocus?: FocusEventHandler;
+  /**
+   * Will hide the currency expansion controls when set to `true`. All currencies will be shown when set to `true`.
+   */
   hideCurrencyExpansionControls?: boolean;
+  /**
+   * Controls whether one or all currencirs are visible by default
+   */
   defaultExpandCurrencies?: boolean;
+  /**
+   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
+   */
   isDisabled?: boolean;
+  /**
+   * Indicates that the field is displaying read-only content
+   */
   isReadOnly?: boolean;
+  /**
+   * Placeholder text for the input
+   */
   placeholder?: Record<string, string>;
+  /**
+   * Horizontal size limit of the input fields.
+   */
   horizontalConstraint?:
     | 3
     | 4
@@ -83,26 +123,84 @@ type TLocalizedMoneyInputProps = {
     | 16
     | 'scale'
     | 'auto';
+  /**
+   * Indicates that input has errors
+   */
   hasError?: boolean;
+  /**
+   * Control to indicate on the input if there are values that are potentially invalid
+   */
   hasWarning?: boolean;
+  /**
+   * A map of errors. Error messages for known errors are rendered automatically.
+   * <br>
+   * Unknown errors will be forwarded to `renderError`
+   */
   errors?: Record<string, ReactNode>;
+  /**
+   * A map of warnings.
+   */
   warnings?: Record<string, ReactNode>;
 };
 
 type TLocalizedInputProps = {
+  /**
+   * Used as HTML id property.
+   */
   id?: string;
+  /**
+   * The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`).
+   */
   name?: string;
+  /**
+   * value of possible currency
+   */
   value: TValue;
+  /**
+   * Called with the event of the input.
+   */
   onChange?: ChangeEventHandler;
+  /**
+   * Called with the event of the input.
+   */
   currency: string;
+  /**
+   * Called when input is blurred
+   */
   onBlur?: (event: TEvent) => void;
+  /**
+   * Called when input is focused
+   */
   onFocus?: FocusEventHandler;
+  /**
+   * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
+   */
   isDisabled?: boolean;
+  /**
+   * Indicates that the field is displaying read-only content
+   */
   isReadOnly?: boolean;
+  /**
+   * Indicates that input has errors
+   */
   hasError?: boolean;
+  /**
+   * Control to indicate on the input if there are values that are potentially invalid
+   */
   hasWarning?: boolean;
+  /**
+   * Placeholder text for the input
+   */
   placeholder?: string;
+  /**
+   * A map of errors. Error messages for known errors are rendered automatically.
+   * <br>
+   * Unknown errors will be forwarded to `renderError`
+   */
   error?: ReactNode;
+  /**
+   * HTML node to display warning
+   */
   warning?: ReactNode;
   intl?: IntlShape;
 };
@@ -212,7 +310,7 @@ const LocalizedMoneyInput = (props: TLocalizedMoneyInputProps) => {
   }
 
   const currencies = sortCurrencies(
-    props.selectedCurrency!,
+    props.selectedCurrency,
     Object.keys(props.value)
   );
 
