@@ -28,10 +28,10 @@ type TEvent = {
   persist: () => void;
 };
 
-type TFieldError = Record<string, boolean>;
+type TFieldErrors = Record<string, boolean>;
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
-const hasErrors = (errors?: TFieldError) =>
+const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 const sequentialId = createSequentialId('async-select-field-');
 
@@ -242,7 +242,7 @@ type TSearchSelectFieldProps = {
    * <br />
    * Unknown errors will be forwarded to `renderError`
    */
-  errors?: TFieldError;
+  errors?: TFieldErrors;
   /**
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
@@ -259,15 +259,15 @@ type TSearchSelectFieldProps = {
   /**
    * Title of the label
    */
-  title: string | ReactNode;
+  title: ReactNode;
   /**
    * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas `description` can describe it in more depth. Can also receive a `hintIcon`.
    */
-  hint?: string | ReactNode;
+  hint?: ReactNode;
   /**
    * Provides a description for the title.
    */
-  description?: string | ReactNode;
+  description?: ReactNode;
   /**
    * Function called when info button is pressed.
    * <br />
