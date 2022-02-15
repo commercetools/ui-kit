@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import Stack from '@commercetools-uikit/spacings-stack';
+import Stack, { type TStackProps } from '@commercetools-uikit/spacings-stack';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Option from './radio-option';
 
@@ -44,7 +44,7 @@ export type TGroupProps = {
     | 'scale'
     | 'auto';
   direction?: keyof typeof directionWrapper;
-  directionProps?: object;
+  directionProps?: Partial<TStackProps>;
   children: ReactNode;
 };
 
