@@ -244,10 +244,12 @@ class DateTimeInput extends Component<
           // itemToString function.
           key={`${this.props.timeZone}:${this.props.intl.locale}`}
           inputId={this.props.id}
-          itemToString={createItemDateTimeToString(
-            this.props.intl.locale,
-            this.props.timeZone
-          )}
+          itemToString={
+            createItemDateTimeToString(
+              this.props.intl.locale,
+              this.props.timeZone
+            ) as (item: string | null) => string
+          }
           selectedItem={this.props.value === '' ? null : this.props.value}
           highlightedIndex={this.state.highlightedIndex}
           onChange={this.emit}
@@ -380,8 +382,7 @@ class DateTimeInput extends Component<
                     onMouseEnter: () => {
                       // we remove the highlight so that the user can use the
                       // arrow keys to move the cursor when hovering
-                      // @ts-ignore
-                      if (isOpen) setHighlightedIndex(null);
+                      if (isOpen) setHighlightedIndex(-1);
                     },
                     onKeyDown: (event: TPreventDownshiftDefaultEvent) => {
                       if (this.props.isReadOnly) {
@@ -518,8 +519,7 @@ class DateTimeInput extends Component<
                             disabled: this.props.isDisabled,
                             item,
                             onMouseOut: () => {
-                              // @ts-ignore
-                              setHighlightedIndex(null);
+                              setHighlightedIndex(-1);
                             },
                           })}
                           isHighlighted={
@@ -541,15 +541,13 @@ class DateTimeInput extends Component<
                       onChange={this.handleTimeChange}
                       onKeyDown={(event) => {
                         if (event.key === 'ArrowUp') {
-                          // @ts-ignore
-                          setHighlightedIndex(null);
+                          setHighlightedIndex(-1);
                           this.inputRef.current?.focus();
                           return;
                         }
 
                         if (event.key === 'Enter') {
-                          // @ts-ignore
-                          setHighlightedIndex(null);
+                          setHighlightedIndex(-1);
                           this.inputRef.current?.focus();
                           this.inputRef.current?.setSelectionRange(0, 100);
                           closeMenu();
