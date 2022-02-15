@@ -247,7 +247,7 @@ export const parseRawAmountToNumber = (rawAmount: string, locale: string) => {
 //
 // This function expects the "amount" to be a trimmed value.
 
-type TCurrencyCode = keyof typeof currencies;
+export type TCurrencyCode = keyof typeof currencies;
 
 export const createMoneyValue = (
   currencyCode: TCurrencyCode,

@@ -1,10 +1,16 @@
-import { useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { oneLine } from 'common-tags';
-import { useIntl } from 'react-intl';
+//@ts-nocheck - WIP: this will be taken off once a package having the exported TCurrencyCode is merged.
+import {
+  useCallback,
+  type FocusEventHandler,
+  type ChangeEventHandler,
+  type ReactNode,
+} from 'react';
+import { useIntl, type IntlShape } from 'react-intl';
 import { css } from '@emotion/react';
 import { useToggleState, useFieldId } from '@commercetools-uikit/hooks';
-import MoneyInput from '@commercetools-uikit/money-input';
+import MoneyInput, {
+  type TCurrencyCode,
+} from '@commercetools-uikit/money-input';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import { CoinsIcon } from '@commercetools-uikit/icons';
@@ -18,23 +24,105 @@ import {
 import {
   createSequentialId,
   filterDataAttributes,
+  warning,
 } from '@commercetools-uikit/utils';
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import messages from './messages';
+
+type TValue = {
+  amount: string;
+  currencyCode: TCurrencyCode;
+};
+
+type TEvent = {
+  target: {
+    id?: string;
+    name?: string;
+    value?: string | string[] | null;
+  };
+};
+
+declare type TMoneyValue = {
+  type: string;
+  currencyCode: TCurrencyCode;
+  centAmount: number;
+  preciseAmount: number;
+  fractionDigits: number;
+};
+
+type TLocalizedMoneyInputProps = {
+  id?: string;
+  name?: string;
+  // then input doesn't accept a "currencies" prop, instead all possible
+  // currencies have to exist (with empty or filled strings) on the value:
+  // { EUR: {amount: '12.00', currencyCode: 'EUR'}, USD: {amount: '', currencyCode: 'USD'}}
+  value: Record<string, TValue>;
+  onChange?: ChangeEventHandler;
+  selectedCurrency: string;
+  onBlur?: (event: TEvent) => void;
+  onFocus?: FocusEventHandler;
+  hideCurrencyExpansionControls?: boolean;
+  defaultExpandCurrencies?: boolean;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  placeholder?: Record<string, string>;
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  hasError?: boolean;
+  hasWarning?: boolean;
+  errors?: Record<string, ReactNode>;
+  warnings?: Record<string, ReactNode>;
+};
+
+type TLocalizedInputProps = {
+  id?: string;
+  name?: string;
+  value: TValue;
+  onChange?: ChangeEventHandler;
+  currency: string;
+  onBlur?: (event: TEvent) => void;
+  onFocus?: FocusEventHandler;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  placeholder?: string;
+  error?: ReactNode;
+  warning?: ReactNode;
+  intl?: IntlShape;
+};
 
 const sequentialId = createSequentialId('localized-money-input-');
 
 // sorts the currencies with the following priority:
 // - The selected currency is placed first (e.g EUR)
 // - All other currencies follow, sorted alphabetically as well
-export const sortCurrencies = (selectedCurrency, allCurrencies) => {
+export const sortCurrencies = (
+  selectedCurrency: string,
+  allCurrencies: string[]
+) => {
   const remainingCurrencies = allCurrencies.filter(
     (currency) => currency !== selectedCurrency
   );
   return [selectedCurrency, ...remainingCurrencies.sort()];
 };
 
-const LocalizedInput = (props) => {
+const LocalizedInput = (props: TLocalizedInputProps) => {
   const { onChange } = props;
   const handleChange = useCallback(
     (event) => {
@@ -49,9 +137,8 @@ const LocalizedInput = (props) => {
       // might clear it using the knob, and then we can't parse the currency from
       // the input name anymore.
       //
-      // eslint-disable-next-line no-param-reassign
       event.target.currency = props.currency;
-      onChange(event);
+      onChange?.(event);
     },
     [props.currency, onChange]
   );
@@ -65,7 +152,8 @@ const LocalizedInput = (props) => {
         `}
       >
         <MoneyInput
-          id={props.id}
+          menuShouldBlockScroll={undefined} //NB: had to add missing prop
+          id={props.id} //NB: Had to add missing prop - open for dicsussion
           name={props.name}
           value={props.value}
           onChange={handleChange}
@@ -87,27 +175,7 @@ const LocalizedInput = (props) => {
 
 LocalizedInput.displayName = 'LocalizedInput';
 
-LocalizedInput.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.shape({
-    amount: PropTypes.string.isRequired,
-    currencyCode: PropTypes.string.isRequired,
-  }).isRequired,
-  onChange: PropTypes.func,
-  currency: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  placeholder: PropTypes.string,
-  error: PropTypes.node,
-  warning: PropTypes.node,
-};
-
-const LocalizedMoneyInput = (props) => {
+const LocalizedMoneyInput = (props: TLocalizedMoneyInputProps) => {
   const intl = useIntl();
 
   const defaultExpansionState =
@@ -118,6 +186,11 @@ const LocalizedMoneyInput = (props) => {
 
   const [areCurrenciesExpanded, toggleCurrencies] = useToggleState(
     defaultExpansionState
+  );
+
+  const onLocalizedMoneyInputToggle = useCallback(
+    () => toggleCurrencies(),
+    [toggleCurrencies]
   );
 
   const id = useFieldId(props.id, sequentialId);
@@ -139,12 +212,19 @@ const LocalizedMoneyInput = (props) => {
   }
 
   const currencies = sortCurrencies(
-    props.selectedCurrency,
+    props.selectedCurrency!,
     Object.keys(props.value)
   );
 
   const shouldRenderCurrencyControl =
     currencies.length > 1 && !props.hideCurrencyExpansionControls;
+
+  if (props.hideCurrencyExpansionControls) {
+    warning(
+      typeof props.defaultExpandCurrencies !== 'boolean',
+      'LocaliszedMoneyInput: "defaultExpandCurrencies" does not have any effect when "hideCurrencyExpansionControls" is set.'
+    );
+  }
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
@@ -187,7 +267,7 @@ const LocalizedMoneyInput = (props) => {
         {shouldRenderCurrencyControl && (
           <LocalizedInputToggle
             icon={<CoinsIcon />}
-            onClick={toggleCurrencies}
+            onClick={onLocalizedMoneyInputToggle}
             isOpen={areCurrenciesExpanded}
             isDisabled={
               areCurrenciesExpanded &&
@@ -210,64 +290,6 @@ const LocalizedMoneyInput = (props) => {
 
 LocalizedMoneyInput.displayName = 'LocalizedMoneyInput';
 
-LocalizedMoneyInput.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  // then input doesn't accept a "currencies" prop, instead all possible
-  // currencies have to exist (with empty or filled strings) on the value:
-  // { EUR: {amount: '12.00', currencyCode: 'EUR'}, USD: {amount: '', currencyCode: 'USD'}}
-  value: PropTypes.objectOf(
-    PropTypes.shape({
-      amount: PropTypes.string.isRequired,
-      currencyCode: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  onChange: PropTypes.func,
-  selectedCurrency: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  hideCurrencyExpansionControls: PropTypes.bool,
-  defaultExpandCurrencies: (props, propName, componentName, ...rest) => {
-    if (
-      props.hideCurrencyExpansionControls &&
-      typeof props[propName] === 'boolean'
-    ) {
-      throw new Error(
-        oneLine`
-          ${componentName}: "${propName}" does not have any effect when
-          "hideCurrencyExpansionControls" is set.
-        `
-      );
-    }
-    return PropTypes.bool(props, propName, componentName, ...rest);
-  },
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  placeholder: PropTypes.objectOf(PropTypes.string),
-  horizontalConstraint: PropTypes.oneOf([
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  errors: PropTypes.objectOf(PropTypes.node),
-  warnings: PropTypes.objectOf(PropTypes.node),
-};
-
 LocalizedMoneyInput.getId = getId;
 
 LocalizedMoneyInput.getName = getName;
@@ -276,12 +298,15 @@ LocalizedMoneyInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-LocalizedMoneyInput.convertToMoneyValues = (values, locale) =>
+LocalizedMoneyInput.convertToMoneyValues = (values: TValue[], locale: string) =>
   Object.values(values).map((value) =>
     MoneyInput.convertToMoneyValue(value, locale)
   );
 
-LocalizedMoneyInput.parseMoneyValues = (moneyValues = [], locale) =>
+LocalizedMoneyInput.parseMoneyValues = (
+  moneyValues = [] as TMoneyValue[],
+  locale: string
+) =>
   moneyValues
     .map((value) => MoneyInput.parseMoneyValue(value, locale))
     .reduce(
@@ -292,12 +317,15 @@ LocalizedMoneyInput.parseMoneyValues = (moneyValues = [], locale) =>
       {}
     );
 
-LocalizedMoneyInput.getHighPrecisionCurrencies = (values, locale) =>
+LocalizedMoneyInput.getHighPrecisionCurrencies = (
+  values: Record<string, TValue>,
+  locale: string
+) =>
   Object.keys(values).filter((currencyCode) =>
     MoneyInput.isHighPrecision(values[currencyCode], locale)
   );
 
-LocalizedMoneyInput.getEmptyCurrencies = (values) =>
+LocalizedMoneyInput.getEmptyCurrencies = (values: Record<string, TValue>) =>
   Object.keys(values).filter((currencyCode) =>
     MoneyInput.isEmpty(values[currencyCode])
   );
