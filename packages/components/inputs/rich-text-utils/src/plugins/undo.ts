@@ -1,7 +1,7 @@
 import type { KeyboardEvent } from 'react';
 import { isKeyHotkey } from 'is-hotkey';
 import memoize from 'lodash/memoize';
-import type { TEditor, TOptions } from '../editor.types';
+import type { TEditor, THotKeyptions } from '../editor.types';
 
 type TExtendedEditor = TEditor & {
   undo: () => void;
@@ -18,7 +18,7 @@ const hasUndos = (editor: TExtendedEditor) => {
   return undos && undos.size > 1;
 };
 
-const UndoPlugin = (options = {} as TOptions) => {
+const UndoPlugin = (options = {} as THotKeyptions) => {
   const hotkey = options.hotkey || HOT_KEY;
   const isUndoHotkey = memoizedIsHotkey(hotkey);
 

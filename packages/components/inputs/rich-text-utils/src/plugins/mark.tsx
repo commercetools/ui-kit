@@ -13,7 +13,7 @@ type TMarkPluginOptions = {
   [option: string]: string | ReactNode;
 };
 
-type TProps = {
+type TRenderMarkProps = {
   children: ReactNode;
   mark: TMark;
   attributes: unknown;
@@ -60,7 +60,11 @@ const MarkPlugin = (options = {} as TMarkPluginOptions) => {
         event.preventDefault();
         editor.toggleMark!(options.typeName);
       },
-      renderMark(props: TProps, _editor: TEditor, next: () => JSX.Element) {
+      renderMark(
+        props: TRenderMarkProps,
+        _editor: TEditor,
+        next: () => JSX.Element
+      ) {
         const { children, mark, attributes } = props;
 
         switch (mark.type) {

@@ -3,13 +3,12 @@ import uniq from 'lodash/uniq';
 import html from '../html';
 import isRichTextEmpty from '../is-empty';
 
-type TLocalizedString = {
-  language: string;
-};
+type TLocalizedString = Record<string, string>;
+// type TLocalizedString = {
+//   language: string;
+// };
 
-type TTranslations = {
-  [key: string]: string;
-};
+type TTranslations = Record<string, string>;
 
 const initializeValue = (value: string) =>
   html.serialize(html.deserialize(value));

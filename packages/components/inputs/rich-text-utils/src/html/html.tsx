@@ -3,7 +3,7 @@ import flatMap from 'lodash/flatMap';
 import { MARK_TAGS, BLOCK_TAGS } from '../tags';
 import type { ReactNode } from 'react';
 
-type TSerializeObject = {
+type TSerializableObject = {
   object: string;
   type: string;
   data: {
@@ -52,7 +52,7 @@ const rules = [
       }
     },
     //@ts-ignore - requires an additional return block which possibly serves no use.
-    serialize(obj: TSerializeObject, children: ReactNode) {
+    serialize(obj: TSerializableObject, children: ReactNode) {
       if (obj.object === 'block') {
         switch (obj.type) {
           case 'code':
