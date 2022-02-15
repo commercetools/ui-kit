@@ -177,7 +177,7 @@ class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'RadioField: `onChange` is required when is not read only.'
+        'RadioField: `onChange` is required when it is not read only.'
       );
     }
 
