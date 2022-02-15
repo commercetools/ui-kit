@@ -62,7 +62,7 @@ type TSelectFieldProps = {
   };
   /**
    * This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
-   * <br />
+   * <br/>
    */
   renderError?: TErrorRenderer;
   /**
@@ -77,13 +77,13 @@ type TSelectFieldProps = {
   // SelectInput
   /**
    * Aria label (for assistive tech)
-   * <br>
+   * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
   'aria-label'?: ReactSelectProps['aria-label'];
   /**
    * HTML ID of an element that should be used as the label (for assistive tech)
-   * <br>
+   * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
   'aria-labelledby'?: ReactSelectProps['aria-labelledby'];
@@ -103,7 +103,7 @@ type TSelectFieldProps = {
   };
   /**
    * Custom method to filter whether an option should be displayed in the menu
-   * <br>
+   * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
   filterOption?: ReactSelectProps['filterOption'];
@@ -125,7 +125,7 @@ type TSelectFieldProps = {
   isReadOnly?: boolean;
   /**
    * Override the built-in logic to detect whether an option is disabled
-   * <br>
+   * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
   isOptionDisabled?: ReactSelectProps['isOptionDisabled'];
@@ -159,9 +159,9 @@ type TSelectFieldProps = {
   name?: string;
   /**
    * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with { inputValue: String }.
-   * <br />
+   * <br/>
    * `inputValue` will be an empty string when no search text is present.
-   * <br>
+   * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
   noOptionsMessage?: ReactSelectProps['noOptionsMessage'];
@@ -181,7 +181,7 @@ type TSelectFieldProps = {
   onFocus?: FocusEventHandler;
   /**
    * Handle change events on the input
-   * <br />
+   * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
   onInputChange?: ReactSelectProps['onInputChange'];
@@ -196,7 +196,7 @@ type TSelectFieldProps = {
   placeholder?: string;
   /**
    * Sets the tabIndex attribute on the input
-   *  <br>
+   *  <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
   tabIndex?: ReactSelectProps['tabIndex'];
@@ -206,7 +206,7 @@ type TSelectFieldProps = {
   tabSelectsValue?: boolean;
   /**
    * The value of the select; reflected by the selected option
-   * <br>
+   * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
   value?: ReactSelectProps['value'];
@@ -218,7 +218,7 @@ type TSelectFieldProps = {
   title: string | ReactNode;
   /**
    * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas description can describe it in more depth.
-   * <br />
+   * <br/>
    * Can also receive a hintIcon.
    */
   hint?: string | ReactNode;
@@ -228,7 +228,7 @@ type TSelectFieldProps = {
   description?: string | ReactNode;
   /**
    * Function called when info button is pressed.
-   * <br />
+   * <br/>
    * Info button will only be visible when this prop is passed.
    */
   onInfoButtonClick?: () => void;
@@ -250,6 +250,7 @@ type TSelectFieldProps = {
   iconLeft?: ReactNode;
   /**
    * The value of the search input
+   * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
   inputValue?: ReactSelectProps['inputValue'];
