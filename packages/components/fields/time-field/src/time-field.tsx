@@ -185,7 +185,7 @@ const hasErrors = (errors?: TFieldErrors) =>
 class TimeField extends Component<TTimeFieldProps, TTimeFieldState> {
   static displayName = 'TimeField';
 
-  static defaultProps = {
+  static defaultProps: Pick<TTimeFieldProps, 'horizontalConstraint'> = {
     horizontalConstraint: 'scale',
   };
 
