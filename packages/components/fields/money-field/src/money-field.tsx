@@ -98,7 +98,6 @@ type TMoneyFieldProps = {
   // Some other fields use isTouched, but the check isn't as simple here.
   // isTouched accepts a boolean, whereas touched takes an object.
   // Maybe we should upgrade them all to just be "touched"?
-  // eslint-disable-next-line react/no-unused-prop-types
   isTouched?: unknown;
 
   // MoneyInput
