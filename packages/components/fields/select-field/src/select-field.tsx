@@ -196,6 +196,8 @@ type TSelectFieldProps = {
   placeholder?: string;
   /**
    * Sets the tabIndex attribute on the input
+   *  <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
   tabIndex?: ReactSelectProps['tabIndex'];
   /**
