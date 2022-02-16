@@ -1,5 +1,15 @@
 # @commercetools-uikit/text-field
 
+## 13.0.1
+
+### Patch Changes
+
+- [#2113](https://github.com/commercetools/ui-kit/pull/2113) [`82787f794`](https://github.com/commercetools/ui-kit/commit/82787f7941f8cb88fb65922f03bb0e101ed43eef) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix 'hint' prop validation when also receiving 'hintIcon' prop
+
+- Updated dependencies [[`04ef35407`](https://github.com/commercetools/ui-kit/commit/04ef35407228bec666f500f7815d0fb33ca043e0)]:
+  - @commercetools-uikit/spacings-stack@13.0.1
+  - @commercetools-uikit/field-label@13.0.1
+
 ## 13.0.0
 
 ### Accidental release

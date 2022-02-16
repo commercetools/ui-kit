@@ -1,5 +1,0 @@
----
-'@commercetools-uikit/date-field': patch
----
-
-Fix 'hint' prop validation when also receiving 'hintIcon' prop
