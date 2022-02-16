@@ -1,10 +1,10 @@
 import {
   Component,
   isValidElement,
-  type FocusEventHandler,
   type ReactElement,
   type ReactNode,
 } from 'react';
+import type { MomentInput } from 'moment';
 import {
   filterDataAttributes,
   createSequentialId,
@@ -14,25 +14,26 @@ import {
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
-import DateInput from '@commercetools-uikit/date-input';
+import DateRangeInput from '@commercetools-uikit/date-range-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 
-const sequentialId = createSequentialId('date-field-');
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TFieldErrors = Record<string, boolean>;
-const hasErrors = (errors?: TFieldErrors) =>
-  errors && Object.values(errors).some(Boolean);
-
 type TEvent = {
   target: {
     id?: string;
     name?: string;
-    value?: string;
+    value?: MomentInput[];
   };
 };
 
-type TDateFieldProps = {
-  // DateField
+const sequentialId = createSequentialId('date-range-field-');
+
+const hasErrors = (errors?: TFieldErrors) =>
+  errors && Object.values(errors).some(Boolean);
+
+type TDateRangeFieldProps = {
+  // DateRangeField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
    */
@@ -73,19 +74,19 @@ type TDateFieldProps = {
    */
   touched?: boolean;
 
-  // DateInput
+  // DateRangeInput
   /**
    * Used as HTML name of the input component.
    */
   name?: string;
   /**
-   * Value of the input
+   * The selected date range. Must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".
    */
-  value: string;
+  value: string[];
   /**
-   * Called with an event containing the new value.
-   * This is always called with either an empty string or a valid date in the format of `YYYY-MM-DD`.
-   * <br/> Parent should pass it back as `value`.
+   * Called when the date range changes, with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".
+   * <br/>
+   * Required when input is not read only.
    */
   onChange: (event: TEvent) => void;
   /**
@@ -95,7 +96,7 @@ type TDateFieldProps = {
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: (event: TEvent) => void;
   /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
@@ -108,14 +109,6 @@ type TDateFieldProps = {
    * Placeholder text for the input
    */
   placeholder?: string;
-  /**
-   * A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
-   */
-  minValue?: string;
-  /**
-   *  A maximum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
-   */
-  maxValue?: string;
 
   // LabelField
   /**
@@ -150,12 +143,15 @@ type TDateFieldProps = {
   badge?: ReactNode;
 };
 
-type TDateFieldState = Pick<TDateFieldProps, 'id'>;
+type TDateRangeFieldState = Pick<TDateRangeFieldProps, 'id'>;
 
-class DateField extends Component<TDateFieldProps, TDateFieldState> {
-  static displayName = 'DateField';
+class DateRangeField extends Component<
+  TDateRangeFieldProps,
+  TDateRangeFieldState
+> {
+  static displayName = 'DateRangeField';
 
-  static defaultProps = {
+  static defaultProps: Pick<TDateRangeFieldProps, 'horizontalConstraint'> = {
     horizontalConstraint: 'scale',
   };
 
@@ -166,8 +162,8 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
   };
 
   static getDerivedStateFromProps = (
-    props: TDateFieldProps,
-    state: TDateFieldState
+    props: TDateRangeFieldProps,
+    state: TDateRangeFieldState
   ) => ({
     id: getFieldId(props, state, sequentialId),
   });
@@ -178,14 +174,14 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'DateField: `onChange` is required when field is not read only.'
+        'DateRangeField: `onChange` is required when field is not read only.'
       );
     }
 
     if (this.props.hintIcon) {
       warning(
         typeof this.props.hint === 'string' || isValidElement(this.props.hint),
-        'DateField: `hint` is required to be string or ReactNode if hintIcon is present'
+        'DateRangeField: `hint` is required to be string or ReactNode if hintIcon is present'
       );
     }
 
@@ -202,15 +198,13 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
             hasRequiredIndicator={this.props.isRequired}
             htmlFor={this.state.id}
           />
-          <DateInput
+          <DateRangeInput
             id={this.state.id}
             name={this.props.name}
             value={this.props.value}
-            onBlur={this.props.onBlur}
-            onFocus={this.props.onFocus}
-            minValue={this.props.minValue}
-            maxValue={this.props.maxValue}
             onChange={this.props.onChange}
+            onFocus={this.props.onFocus}
+            onBlur={this.props.onBlur}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasError={hasError}
@@ -229,4 +223,4 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
   }
 }
 
-export default DateField;
+export default DateRangeField;
