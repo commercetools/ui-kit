@@ -1,11 +1,11 @@
 import {
   Component,
-  FocusEventHandler,
   isValidElement,
-  ReactNode,
-  MouseEvent,
-  KeyboardEvent,
-  ReactElement,
+  type FocusEventHandler,
+  type ReactNode,
+  type MouseEvent,
+  type KeyboardEvent,
+  type ReactElement,
 } from 'react';
 import {
   filterDataAttributes,
