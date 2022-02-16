@@ -2,6 +2,10 @@
 
 ## 13.0.0
 
+### Accidental release
+
+This was an accidental major release without breaking changes. It however contains a bug in regards to `hint` and `hintIcon` props in some components. We recommend skipping this release while updating to `13.0.1`
+
 ### Patch Changes
 
 - [#2086](https://github.com/commercetools/ui-kit/pull/2086) [`9f2c68489`](https://github.com/commercetools/ui-kit/commit/9f2c68489bbbec8aa6d7dcc9c7c8548202efb9db) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Migrate to typescript
