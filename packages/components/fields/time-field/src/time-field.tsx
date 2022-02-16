@@ -111,8 +111,6 @@ type TTimeFieldProps = {
 
   /**
    * Called when input is focused
-   * <br/>
-   * Signature: `(event) => void`
    */
   onFocus?: (event: TEvent) => void;
 
