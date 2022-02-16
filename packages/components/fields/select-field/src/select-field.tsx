@@ -4,6 +4,8 @@ import {
   type ReactElement,
   type ReactNode,
   type FocusEventHandler,
+  type MouseEvent,
+  type KeyboardEvent,
 } from 'react';
 import {
   createSequentialId,
@@ -27,7 +29,11 @@ type TOptionObject = {
 };
 type TOptions = TOption[] | TOptionObject[];
 type TEvent = {
-  target: unknown;
+  target: {
+    name: ReactSelectProps['name'];
+    value?: string | string[] | null;
+  };
+  persist: () => void;
 };
 
 type TSelectFieldProps = {
@@ -97,10 +103,10 @@ type TSelectFieldProps = {
   backspaceRemovesValue?: boolean;
   /**
    * Map of components to overwrite the default ones, see what components you can override
+   * <br/>
+   * [Props from React select was used](https://react-select.com/props)
    */
-  components?: {
-    [key: string]: () => void;
-  };
+  components?: ReactSelectProps['components'];
   /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br/>
@@ -168,7 +174,7 @@ type TSelectFieldProps = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: () => void;
+  onBlur?: (event: TEvent) => void;
   /**
    * Called with a fake event when value changes. The event's target.name will be the name supplied in props. The event's target.value will hold the value.
    * <br/>
@@ -231,7 +237,9 @@ type TSelectFieldProps = {
    * <br/>
    * Info button will only be visible when this prop is passed.
    */
-  onInfoButtonClick?: () => void;
+  onInfoButtonClick?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * Icon to be displayed beside the hint text. Will only get rendered when hint is passed as well.
    */
