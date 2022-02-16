@@ -22,10 +22,10 @@ type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TOption = {
   value: string;
 };
-declare type TOptionObject = {
+type TOptionObject = {
   options: TOption[];
 };
-declare type TOptions = TOption[] | TOptionObject[];
+type TOptions = TOption[] | TOptionObject[];
 type TEvent = {
   target: unknown;
 };
