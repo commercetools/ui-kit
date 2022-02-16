@@ -1,6 +1,23 @@
 # @commercetools-uikit/date-range-field
 
+## 13.0.1
+
+### Patch Changes
+
+- [#2113](https://github.com/commercetools/ui-kit/pull/2113) [`82787f794`](https://github.com/commercetools/ui-kit/commit/82787f7941f8cb88fb65922f03bb0e101ed43eef) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix 'hint' prop validation when also receiving 'hintIcon' prop
+
+* [#2097](https://github.com/commercetools/ui-kit/pull/2097) [`99ee0836a`](https://github.com/commercetools/ui-kit/commit/99ee0836a9ac016b3071c85b21129f6ea0ed1c58) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Migrate to typescript
+
+* Updated dependencies [[`99ee0836a`](https://github.com/commercetools/ui-kit/commit/99ee0836a9ac016b3071c85b21129f6ea0ed1c58)]:
+  - @commercetools-uikit/date-range-input@13.0.1
+  - @commercetools-uikit/field-label@13.0.1
+  - @commercetools-uikit/spacings@13.0.1
+
 ## 13.0.0
+
+### Accidental release
+
+This was an accidental major release without breaking changes. It however contains a bug in regards to `hint` and `hintIcon` props in some components. We recommend skipping this release while updating to `13.0.1`
 
 ### Patch Changes
 

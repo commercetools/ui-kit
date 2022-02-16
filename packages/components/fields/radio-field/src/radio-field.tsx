@@ -1,38 +1,36 @@
 import {
   Component,
   isValidElement,
+  type ChangeEventHandler,
   type FocusEventHandler,
   type ReactElement,
   type ReactNode,
+  type MouseEvent,
+  type KeyboardEvent,
 } from 'react';
 import {
-  filterDataAttributes,
   createSequentialId,
+  filterDataAttributes,
   getFieldId,
   warning,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import Spacings from '@commercetools-uikit/spacings';
+import Stack, { type TStackProps } from '@commercetools-uikit/spacings-stack';
 import FieldLabel from '@commercetools-uikit/field-label';
-import DateInput from '@commercetools-uikit/date-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import RadioInput from '@commercetools-uikit/radio-input';
 
-const sequentialId = createSequentialId('date-field-');
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+
 type TFieldErrors = Record<string, boolean>;
+
+const sequentialId = createSequentialId('radio-field-');
+
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-type TEvent = {
-  target: {
-    id?: string;
-    name?: string;
-    value?: string;
-  };
-};
-
-type TDateFieldProps = {
-  // DateField
+type TRadioFieldProps = {
+  // RadioField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
    */
@@ -41,7 +39,6 @@ type TDateFieldProps = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint?:
-    | 6
     | 7
     | 8
     | 9
@@ -55,13 +52,13 @@ type TDateFieldProps = {
     | 'scale'
     | 'auto';
   /**
-   * A map of errors. Error messages for known errors are rendered automatically.
-   * <br />
-   * Unknown errors will be forwarded to `renderError`
+   * A map of errors. Error messages for known errors are rendered automatically. Unknown errors will be forwarded to `renderError`.
    */
   errors?: TFieldErrors;
   /**
-   * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
+   * Called with custom errors.
+   * <br/>
+   * This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
   /**
@@ -73,25 +70,23 @@ type TDateFieldProps = {
    */
   touched?: boolean;
 
-  // DateInput
+  // RadioInput
   /**
    * Used as HTML name of the input component.
    */
   name?: string;
   /**
-   * Value of the input
+   * Value of the input component.
    */
   value: string;
   /**
-   * Called with an event containing the new value.
-   * This is always called with either an empty string or a valid date in the format of `YYYY-MM-DD`.
-   * <br/> Parent should pass it back as `value`.
+   * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange: (event: TEvent) => void;
+  onChange?: ChangeEventHandler;
   /**
    * Called when input is blurred
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: FocusEventHandler;
   /**
    * Called when input is focused
    */
@@ -105,17 +100,17 @@ type TDateFieldProps = {
    */
   isReadOnly?: boolean;
   /**
-   * Placeholder text for the input
+   * Rendering direction of the radio `RadioInput.Option`s
    */
-  placeholder?: string;
+  direction?: 'stack' | 'inline';
   /**
-   * A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
+   * Passes props of the `Spacings.Stack` or `Spacings.Inline`, depending on the chosen direction
    */
-  minValue?: string;
+  directionProps?: Partial<TStackProps>;
   /**
-   *  A maximum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
+   * At least one `RadioInput.Option` component or another node (mixed children are allowed)
    */
-  maxValue?: string;
+  children: ReactNode;
 
   // LabelField
   /**
@@ -123,7 +118,9 @@ type TDateFieldProps = {
    */
   title: string | ReactNode;
   /**
-   * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas `description` can describe it in more depth. Can also receive a `hintIcon`.
+   * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas description can describe it in more depth.
+   * <br />
+   * Can also receive a `hintIcon`.
    */
   hint?: string | ReactNode;
   /**
@@ -135,7 +132,9 @@ type TDateFieldProps = {
    * <br />
    * Info button will only be visible when this prop is passed.
    */
-  onInfoButtonClick?: () => void;
+  onInfoButtonClick?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * Icon to be displayed beside the hint text.
    * <br />
@@ -150,10 +149,10 @@ type TDateFieldProps = {
   badge?: ReactNode;
 };
 
-type TDateFieldState = Pick<TDateFieldProps, 'id'>;
+type TRadioFieldStates = Pick<TRadioFieldProps, 'id'>;
 
-class DateField extends Component<TDateFieldProps, TDateFieldState> {
-  static displayName = 'DateField';
+class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
+  static displayName = 'RadioField';
 
   static defaultProps = {
     horizontalConstraint: 'scale',
@@ -166,8 +165,8 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
   };
 
   static getDerivedStateFromProps = (
-    props: TDateFieldProps,
-    state: TDateFieldState
+    props: TRadioFieldProps,
+    state: TRadioFieldStates
   ) => ({
     id: getFieldId(props, state, sequentialId),
   });
@@ -178,20 +177,20 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'DateField: `onChange` is required when field is not read only.'
+        'RadioField: `onChange` is required when it is not read only.'
       );
     }
 
     if (this.props.hintIcon) {
       warning(
         typeof this.props.hint === 'string' || isValidElement(this.props.hint),
-        'DateField: `hint` is required to be string or ReactNode if hintIcon is present'
+        'RadioField: `hint` is required to be string or ReactNode if hintIcon is present'
       );
     }
 
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
-        <Spacings.Stack scale="xs">
+        <Stack scale="xs">
           <FieldLabel
             title={this.props.title}
             hint={this.props.hint}
@@ -200,33 +199,34 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
             hintIcon={this.props.hintIcon}
             badge={this.props.badge}
             hasRequiredIndicator={this.props.isRequired}
-            htmlFor={this.state.id}
+            id={this.state.id}
           />
-          <DateInput
+          <RadioInput.Group
             id={this.state.id}
             name={this.props.name}
             value={this.props.value}
+            onChange={this.props.onChange}
             onBlur={this.props.onBlur}
             onFocus={this.props.onFocus}
-            minValue={this.props.minValue}
-            maxValue={this.props.maxValue}
-            onChange={this.props.onChange}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasError={hasError}
-            placeholder={this.props.placeholder}
-            horizontalConstraint="scale"
+            horizontalConstraint={this.props.horizontalConstraint}
+            direction={this.props.direction}
+            directionProps={this.props.directionProps}
             {...filterDataAttributes(this.props)}
-          />
+          >
+            {this.props.children}
+          </RadioInput.Group>
           <FieldErrors
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
           />
-        </Spacings.Stack>
+        </Stack>
       </Constraints.Horizontal>
     );
   }
 }
 
-export default DateField;
+export default RadioField;

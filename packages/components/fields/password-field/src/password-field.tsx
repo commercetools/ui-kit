@@ -191,7 +191,7 @@ const PasswordField = (props: TPasswordField) => {
 
   if (props.hintIcon) {
     warning(
-      typeof props.hint === 'string' || isValidElement(typeof props.hint),
+      typeof props.hint === 'string' || isValidElement(props.hint),
       'PasswordField: `hint` is required to be string or ReactNode if hintIcon is present'
     );
   }
