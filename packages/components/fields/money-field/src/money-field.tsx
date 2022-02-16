@@ -229,8 +229,7 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
 
     if (this.props.hintIcon) {
       warning(
-        typeof this.props.hint === 'string' ||
-          isValidElement(typeof this.props.hint),
+        typeof this.props.hint === 'string' || isValidElement(this.props.hint),
         'MoneyField: `hint` is required to be string or ReactNode if hintIcon is present'
       );
     }
