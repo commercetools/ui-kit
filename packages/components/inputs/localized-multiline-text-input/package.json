@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/localized-multiline-text-input",
   "description": "A controlled text input component for localized multi-line strings with validation states.",
-  "version": "13.0.0",
+  "version": "13.0.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "@commercetools-uikit/input-utils": "13.0.0",
     "@commercetools-uikit/localized-utils": "12.2.9",
     "@commercetools-uikit/messages": "13.0.0",
-    "@commercetools-uikit/spacings-stack": "13.0.0",
+    "@commercetools-uikit/spacings-stack": "13.0.1",
     "@commercetools-uikit/text": "13.0.0",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",

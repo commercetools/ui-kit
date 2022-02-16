@@ -1,5 +1,11 @@
 # @commercetools-uikit/time-input
 
+## 13.0.1
+
+### Patch Changes
+
+- [#2113](https://github.com/commercetools/ui-kit/pull/2113) [`82787f794`](https://github.com/commercetools/ui-kit/commit/82787f7941f8cb88fb65922f03bb0e101ed43eef) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - version file migrated to typscript
+
 ## 13.0.0
 
 ### Patch Changes
