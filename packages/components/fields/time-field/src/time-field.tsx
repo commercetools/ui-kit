@@ -34,7 +34,7 @@ type TTimeFieldProps = {
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
    */
-  id: string;
+  id?: string;
 
   /**
    * Horizontal size limit of the input fields.
