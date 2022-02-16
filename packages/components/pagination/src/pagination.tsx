@@ -74,7 +74,7 @@ const Pagination = (props: TPaginationProps) => {
 
 Pagination.displayName = 'Pagination';
 
-const defaultProps = {
+const defaultProps: Pick<TPaginationProps, 'perPage' | 'perPageRange'> = {
   perPage: 20,
   perPageRange: 's',
 };
