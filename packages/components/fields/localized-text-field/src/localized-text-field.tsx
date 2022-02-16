@@ -3,6 +3,8 @@ import {
   isValidElement,
   type ChangeEventHandler,
   type FocusEventHandler,
+  type KeyboardEvent,
+  type MouseEvent,
   type ReactElement,
   type ReactNode,
 } from 'react';
@@ -20,6 +22,7 @@ import FieldErrors, {
   type TFieldErrors,
 } from '@commercetools-uikit/field-errors';
 
+type TEvent = MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>;
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TLocalizedTextFieldProps = {
   // LocalizedTextField
@@ -143,7 +146,7 @@ type TLocalizedTextFieldProps = {
    * <br />
    * Info button will only be visible when this prop is passed.
    */
-  onInfoButtonClick?: () => void;
+  onInfoButtonClick?: (event: TEvent) => void;
   /**
    * Icon to be displayed beside the hint text.
    * <br />
