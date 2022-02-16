@@ -1,5 +1,16 @@
 # @commercetools-uikit/date-range-input
 
+## 13.0.1
+
+### Patch Changes
+
+- [#2097](https://github.com/commercetools/ui-kit/pull/2097) [`99ee0836a`](https://github.com/commercetools/ui-kit/commit/99ee0836a9ac016b3071c85b21129f6ea0ed1c58) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Update type for intl
+
+- Updated dependencies []:
+  - @commercetools-uikit/secondary-icon-button@13.0.1
+  - @commercetools-uikit/select-utils@13.0.1
+  - @commercetools-uikit/calendar-utils@13.0.1
+
 ## 13.0.0
 
 ### Patch Changes

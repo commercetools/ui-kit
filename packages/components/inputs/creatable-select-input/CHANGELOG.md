@@ -1,5 +1,15 @@
 # @commercetools-uikit/creatable-select-input
 
+## 13.0.1
+
+### Patch Changes
+
+- [#2094](https://github.com/commercetools/ui-kit/pull/2094) [`46a675a5b`](https://github.com/commercetools/ui-kit/commit/46a675a5b1c73e99e44272fbaacc01e3c6096884) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Update types
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings@13.0.1
+  - @commercetools-uikit/select-utils@13.0.1
+
 ## 13.0.0
 
 ### Minor Changes
