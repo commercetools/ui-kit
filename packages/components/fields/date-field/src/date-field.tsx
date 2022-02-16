@@ -184,8 +184,7 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
 
     if (this.props.hintIcon) {
       warning(
-        typeof this.props.hint === 'string' ||
-          isValidElement(typeof this.props.hint),
+        typeof this.props.hint === 'string' || isValidElement(this.props.hint),
         'DateField: `hint` is required to be string or ReactNode if hintIcon is present'
       );
     }

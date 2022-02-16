@@ -183,8 +183,7 @@ class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
 
     if (this.props.hintIcon) {
       warning(
-        typeof this.props.hint === 'string' ||
-          isValidElement(typeof this.props.hint),
+        typeof this.props.hint === 'string' || isValidElement(this.props.hint),
         'RadioField: `hint` is required to be string or ReactNode if hintIcon is present'
       );
     }
