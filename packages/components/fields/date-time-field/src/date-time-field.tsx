@@ -163,7 +163,7 @@ class DateTimeField extends Component<
 > {
   static displayName = 'DateTimeField';
 
-  static defaultProps = {
+  static defaultProps: Pick<TDateTimeFieldProps, 'horizontalConstraint'> = {
     horizontalConstraint: 'scale',
   };
 
