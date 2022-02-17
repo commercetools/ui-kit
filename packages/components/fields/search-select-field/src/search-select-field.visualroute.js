@@ -1,4 +1,4 @@
-import SearchSelectField from './search-select-field';
+import { SearchSelectField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
 const loadOptions = (input) =>
