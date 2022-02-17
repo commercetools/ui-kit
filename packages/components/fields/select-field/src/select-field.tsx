@@ -149,6 +149,8 @@ type TSelectFieldProps = {
   maxMenuHeight?: number;
   /**
    * Dom element to portal the select menu to
+   * <br/>
+   * [Props from React select was used](https://react-select.com/props)
    */
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
@@ -221,13 +223,13 @@ type TSelectFieldProps = {
   /**
    * Title of the label
    */
-  title: string | ReactNode;
+  title: ReactNode;
   /**
    * Hint for the label. Provides a supplementary but important information regarding the behaviour of the input (e.g warn about uniqueness of a field, when it can only be set once), whereas description can describe it in more depth.
    * <br/>
    * Can also receive a hintIcon.
    */
-  hint?: string | ReactNode;
+  hint?: ReactNode;
   /**
    * Provides a description for the title.
    */
