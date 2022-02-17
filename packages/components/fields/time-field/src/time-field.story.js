@@ -64,6 +64,7 @@ storiesOf('Components|Fields', module)
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
               isDisabled={boolean('isDisabled', false)}
+              isReadOnly={boolean('isReadOnly', false)}
               placeholder={placeholder === '' ? undefined : placeholder}
               title={text('title', 'Release Date')}
               hint={hint}
