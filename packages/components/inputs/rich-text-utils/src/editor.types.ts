@@ -65,7 +65,7 @@ export type TNode = {
   texts: (nodeParam?: Record<string, string>) => TNodeTextsResult[];
 };
 
-export type THotKeyptions = {
+export type THotKeyOptions = {
   hotkey: string;
 };
 

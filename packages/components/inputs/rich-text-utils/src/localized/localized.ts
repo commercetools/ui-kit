@@ -4,10 +4,6 @@ import html from '../html';
 import isRichTextEmpty from '../is-empty';
 
 type TLocalizedString = Record<string, string>;
-// type TLocalizedString = {
-//   language: string;
-// };
-
 type TTranslations = Record<string, string>;
 
 const initializeValue = (value: string) =>
