@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 import { useIntl } from 'react-intl';
 import uniqueId from 'lodash/uniqueId';
@@ -12,7 +11,22 @@ import Label from '@commercetools-uikit/label';
 import { isValid, normalizePageValue } from './utils';
 import messages from './messages';
 
-const PageNavigator = (props) => {
+type TPageNavigatorProps = {
+  /**
+   * Total number of pages available
+   */
+  totalPages: number;
+  /**
+   * The current page
+   */
+  page: number;
+  /**
+   * A callback function, called when the page is changed.
+   */
+  onPageChange: (newPerPage: number) => void;
+};
+
+const PageNavigator = (props: TPageNavigatorProps) => {
   const intl = useIntl();
 
   const [pageNumberInputId] = useState(uniqueId('page-number-'));
@@ -44,16 +58,18 @@ const PageNavigator = (props) => {
 
   const handlePrevPageChange = useCallback(() => {
     const previousPage = paginationForm.values.page - 1;
-    if (previousPage < 1) return;
-    paginationForm.setFieldValue('page', previousPage, true);
-    paginationForm.submitForm();
+    if (previousPage >= 1) {
+      paginationForm.setFieldValue('page', previousPage, true);
+      paginationForm.submitForm();
+    }
   }, [paginationForm]);
 
   const handleNextPageChange = useCallback(() => {
     const nextPage = paginationForm.values.page + 1;
-    if (nextPage > totalPages) return null;
-    paginationForm.setFieldValue('page', nextPage, true);
-    paginationForm.submitForm();
+    if (nextPage <= totalPages) {
+      paginationForm.setFieldValue('page', nextPage, true);
+      paginationForm.submitForm();
+    }
   }, [paginationForm, totalPages]);
 
   return (
@@ -74,10 +90,9 @@ const PageNavigator = (props) => {
             min={1}
             max={totalPages}
             onBlur={paginationForm.handleBlur}
-            onFocus={paginationForm.handleFocus}
             onChange={paginationForm.handleChange}
             isDisabled={isDisabled}
-            hasWarning={paginationForm.errors.page}
+            hasWarning={Boolean(paginationForm.errors.page)}
             horizontalConstraint={2}
           />
         </div>
@@ -101,10 +116,5 @@ const PageNavigator = (props) => {
 };
 
 PageNavigator.displayName = 'PageNavigator';
-PageNavigator.propTypes = {
-  totalPages: PropTypes.number.isRequired,
-  page: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-};
 
 export default PageNavigator;
