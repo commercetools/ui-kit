@@ -13,10 +13,7 @@ const isLocalizedHtmlValueEmpty = (value: unknown) =>
   !value || isRichTextEmpty(value as string);
 
 export const isEmpty = (
-  localizedHtmlValue:
-    | { [key: string]: unknown }
-    | ArrayLike<unknown>
-    | undefined
+  localizedHtmlValue: Record<string, unknown> | ArrayLike<unknown> | undefined
 ) => {
   if (!localizedHtmlValue) return true;
   return Object.values(localizedHtmlValue).every(isLocalizedHtmlValueEmpty);

@@ -1,7 +1,7 @@
 import type { KeyboardEvent } from 'react';
 import { isKeyHotkey } from 'is-hotkey';
 import memoize from 'lodash/memoize';
-import type { TEditor, THotKeyptions } from '../editor.types';
+import type { TEditor, THotKeyOptions } from '../editor.types';
 
 const memoizedIsHotkey = memoize(isKeyHotkey);
 
@@ -14,7 +14,7 @@ const hasRedos = (editor: TEditor) => {
   return redos && redos.size > 0;
 };
 
-const RedoPlugin = (options = {} as THotKeyptions) => {
+const RedoPlugin = (options = {} as THotKeyOptions) => {
   const hotkey = options.hotkey || HOT_KEY;
   const isRedoHotkey = memoizedIsHotkey(hotkey);
 
