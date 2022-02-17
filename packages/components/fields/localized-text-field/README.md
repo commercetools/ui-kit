@@ -54,7 +54,7 @@ export default Example;
 | `id`                            | `string`                                                                                     |          |           | Used as HTML id property. An id is auto-generated when it is not specified.                                                                                                                                                                                           |
 | `horizontalConstraint`          | `union`<br/>Possible values:<br/>`, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                                                                                                                            |
 | `errors`                        | `TFieldErrors`                                                                               |          |           | A map of errors. Error messages for known errors are rendered automatically.&#xA;<br />&#xA;Unknown errors will be forwarded to `renderError`                                                                                                                         |
-| `renderError`                   | `Function`<br/>[See signature.](#signature-renderError)                                      |          |           | Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.&#xA;<br />&#xA;Signature: `(key, error) => React.node`                                                              |
+| `renderError`                   | `Function`<br/>[See signature.](#signature-renderError)                                      |          |           | Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.                                                                                                                     |
 | `isRequired`                    | `boolean`                                                                                    |          |           | Indicates if the value is required. Shows an the "required asterisk" if so.                                                                                                                                                                                           |
 | `touched`                       | `boolean`                                                                                    |          |           | Indicates whether the field was touched. Errors will only be shown when the field was touched.                                                                                                                                                                        |
 | `autoComplete`                  | `string`                                                                                     |          |           | Used as HTML `autocomplete` of the input component. property                                                                                                                                                                                                          |
@@ -89,7 +89,7 @@ export default Example;
 ### Signature `onInfoButtonClick`
 
 ```ts
-() => void
+(event: TEvent) => void
 ```
 
 ## `data-*` props

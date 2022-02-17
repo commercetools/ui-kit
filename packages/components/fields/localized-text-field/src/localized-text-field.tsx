@@ -33,7 +33,7 @@ type TLocalizedTextFieldProps = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint:
+  horizontalConstraint?:
     | 6
     | 7
     | 8
