@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from 'react-intl';
 
-import { Children, ReactNode } from 'react';
+import { Children, type ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { warning } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
@@ -47,7 +47,9 @@ type TLabelProps = {
    * <br />
    * This is required when `children` is `undefined` and vice versa
    */
-  intlMessage?: MessageDescriptor;
+  intlMessage?: MessageDescriptor & {
+    values?: Record<string, ReactNode>;
+  };
   /**
    * Rendered as `children` to `Label`.
    * <br />
