@@ -233,7 +233,7 @@ type TSelectFieldProps = {
   /**
    * Provides a description for the title.
    */
-  description?: string | ReactNode;
+  description?: ReactNode;
   /**
    * Function called when info button is pressed.
    * <br/>
