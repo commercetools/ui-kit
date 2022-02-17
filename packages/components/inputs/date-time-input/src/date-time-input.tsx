@@ -1,7 +1,14 @@
-import { createRef, Component } from 'react';
-import PropTypes from 'prop-types';
+import {
+  createRef,
+  Component,
+  type FocusEventHandler,
+  type KeyboardEvent,
+  type RefObject,
+  type FocusEvent,
+} from 'react';
+import type { DurationInputArg1, MomentInput } from 'moment';
 import Downshift from 'downshift';
-import { injectIntl } from 'react-intl';
+import { injectIntl, type WrappedComponentProps } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
 import { filterDataAttributes, parseTime } from '@commercetools-uikit/utils';
 import {
@@ -39,99 +46,128 @@ const activationTypes = [
   Downshift.stateChangeTypes.clickItem,
 ];
 
-const preventDownshiftDefault = (event) => {
-  // eslint-disable-next-line no-param-reassign
+type TActivationTypes = typeof activationTypes[number];
+
+type TPreventDownshiftDefaultEvent = {
+  relatedTarget?: unknown;
+  nativeEvent?: {
+    preventDownshiftDefault?: boolean;
+  };
+} & KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
+
+type TCreateBlurHandlerEvent = TPreventDownshiftDefaultEvent &
+  FocusEvent<HTMLButtonElement>;
+
+const preventDownshiftDefault = (event: TPreventDownshiftDefaultEvent) => {
   event.nativeEvent.preventDownshiftDefault = true;
 };
 
 // This keeps the menu open when the user focuses the time input (thereby
 // blurring the regular input/toggle button)
-const createBlurHandler = (timeInputRef) => (event) => {
-  event.persist();
-  if (event.relatedTarget === timeInputRef.current) {
-    preventDownshiftDefault(event);
-  }
+const createBlurHandler =
+  (timeInputRef: RefObject<HTMLInputElement>) =>
+  (event: TCreateBlurHandlerEvent) => {
+    event.persist();
+    if (event.relatedTarget === timeInputRef.current) {
+      preventDownshiftDefault(event);
+    }
+  };
+
+type TEvent = {
+  target: {
+    id?: string;
+    name?: string;
+    value?: string;
+  };
 };
 
-class DateTimeInput extends Component {
-  static displayName = 'DateTimeInput';
-  static propTypes = {
-    intl: PropTypes.shape({
-      locale: PropTypes.string.isRequired,
-      formatMessage: PropTypes.func.isRequired,
-    }).isRequired,
+export type TDateTimeInputProps = {
+  /**
+   * Horizontal size limit of the input field.
+   */
+  horizontalConstraint?:
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  /**
+   * The selected date, must either be an empty string or a date formatted in ISO 8601 (e.g. "2018-10-04T09:00:00.000Z").
+   */
+  value: string;
+  /**
+   * Called when the date changes. Called with an event containing an empty string (no value) or a string in this format: "YYYY-MM-DD".
+   * <br />
+   */
+  onChange: (event: TEvent) => void;
+  /**
+   * Called when the date input gains focus.
+   */
+  onFocus?: FocusEventHandler;
+  /**
+   * Called when the date input loses focus.
+   */
+  onBlur?: (event: TEvent) => void;
+  /**
+   * Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed.
+   * Get list of timezone with `moment.tz.names()` [See moment docs](https://momentjs.com/timezone/docs/#/data-loading/getting-zone-names/)
+   */
+  timeZone: string;
+  /**
+   * Used as the HTML `id` attribute.
+   */
+  id?: string;
+  /**
+   * Used as the HTML `name` attribute.
+   */
+  name?: string;
+  /**
+   * Placeholder value to show in the input field
+   */
+  placeholder?: string;
+  /**
+   * Disables the date picker
+   */
+  isDisabled?: boolean;
+  /**
+   * Disables the date picker menu and sets the input field as read-only
+   */
+  isReadOnly?: boolean;
+  /**
+   * Indicates the input field has an error
+   */
+  hasError?: boolean;
+  /**
+   * Indicates the input field has a warning
+   */
+  hasWarning?: boolean;
+} & WrappedComponentProps;
 
-    /**
-     * Horizontal size limit of the input field.
-     */
-    horizontalConstraint: PropTypes.oneOf([
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      'scale',
-      'auto',
-    ]),
-    /**
-     * The selected date, must either be an empty string or a date formatted in ISO 8601 (e.g. "2018-10-04T09:00:00.000Z").
-     */
-    value: PropTypes.string.isRequired,
-    /**
-     * Called when the date changes. Called with an event containing an empty string (no value) or a string in this format: "YYYY-MM-DD".
-     * <br />
-     * Signature: `(event) => void`
-     */
-    onChange: PropTypes.func.isRequired,
-    /**
-     * Called when the date input gains focus.
-     */
-    onFocus: PropTypes.func,
-    /**
-     * Called when the date input loses focus.
-     */
-    onBlur: PropTypes.func,
-    /**
-     * Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed.
-     */
-    timeZone: PropTypes.string.isRequired,
-    /**
-     * Used as the HTML `id` attribute.
-     */
-    id: PropTypes.string,
-    /**
-     * Used as the HTML `name` attribute.
-     */
-    name: PropTypes.string,
-    /**
-     * Placeholder value to show in the input field
-     */
-    placeholder: PropTypes.string,
-    /**
-     * Disables the date picker
-     */
-    isDisabled: PropTypes.bool,
-    /**
-     * Disables the date picker menu and sets the input field as read-only
-     */
-    isReadOnly: PropTypes.bool,
-    /**
-     * Indicates the input field has an error
-     */
-    hasError: PropTypes.bool,
-    /**
-     * Indicates the input field has a warning
-     */
-    hasWarning: PropTypes.bool,
-  };
-  inputRef = createRef();
-  timeInputRef = createRef();
+type TDateTimeInputState = {
+  calendarDate?: string;
+  suggestedItems?: string[];
+  highlightedIndex?: number | null;
+  timeString?: string;
+  startDate?: MomentInput;
+  inputValue?: MomentInput;
+};
+
+class DateTimeInput extends Component<
+  TDateTimeInputProps,
+  TDateTimeInputState
+> {
+  static displayName = 'DateTimeInput';
+
+  inputRef = createRef<HTMLInputElement>();
+  timeInputRef = createRef<HTMLInputElement>();
   state = {
     calendarDate: getToday(this.props.timeZone),
     suggestedItems: [],
@@ -141,7 +177,7 @@ class DateTimeInput extends Component {
         : getDateInMonth(this.props.value, this.props.timeZone) - 1,
     timeString: '',
   };
-  jumpMonths = (amount, dayToHighlight = 0) => {
+  jumpMonths = (amount: DurationInputArg1, dayToHighlight = 0) => {
     this.setState((prevState) => {
       const nextDate = changeMonth(
         prevState.calendarDate,
@@ -157,11 +193,11 @@ class DateTimeInput extends Component {
       (prevState) => ({
         calendarDate: today,
         highlightedIndex:
-          prevState.suggestedItems.length +
+          (prevState.suggestedItems || []).length +
           getDateInMonth(today, this.props.timeZone) -
           1,
       }),
-      () => this.inputRef.current.focus()
+      () => this.inputRef.current?.focus()
     );
   };
   handleBlur = () => {
@@ -173,7 +209,7 @@ class DateTimeInput extends Component {
         },
       });
   };
-  handleTimeChange = (event) => {
+  handleTimeChange = (event: TEvent) => {
     const parsedTime = parseTime(event.target.value);
 
     this.setState({ timeString: event.target.value });
@@ -187,7 +223,7 @@ class DateTimeInput extends Component {
     }
     this.emit(date);
   };
-  emit = (value) =>
+  emit = (value: string | null) =>
     this.props.onChange({
       target: {
         id: this.props.id,
@@ -208,25 +244,28 @@ class DateTimeInput extends Component {
           // itemToString function.
           key={`${this.props.timeZone}:${this.props.intl.locale}`}
           inputId={this.props.id}
-          itemToString={createItemDateTimeToString(
-            this.props.intl.locale,
-            this.props.timeZone
-          )}
+          itemToString={
+            createItemDateTimeToString(
+              this.props.intl.locale,
+              this.props.timeZone
+            ) as (item: string | null) => string
+          }
           selectedItem={this.props.value === '' ? null : this.props.value}
           highlightedIndex={this.state.highlightedIndex}
           onChange={this.emit}
-          stateReducer={(state, changes) => {
-            if (activationTypes.includes(changes.type)) {
+          stateReducer={(_, changes) => {
+            if (activationTypes.includes(changes.type as TActivationTypes)) {
               return { ...changes, isOpen: true };
             }
 
             return changes;
           }}
           onStateChange={(changes) => {
-            /* eslint-disable no-prototype-builtins */
             this.setState(
               (prevState) => {
-                if (activationTypes.includes(changes.type)) {
+                if (
+                  activationTypes.includes(changes.type as TActivationTypes)
+                ) {
                   return {
                     startDate: changes.isOpen ? prevState.startDate : null,
                     inputValue: changes.inputValue || prevState.inputValue,
@@ -242,7 +281,7 @@ class DateTimeInput extends Component {
 
                 if (changes.hasOwnProperty('inputValue')) {
                   const suggestedItems = createSuggestedItems(
-                    changes.inputValue,
+                    changes.inputValue as string,
                     this.props.timeZone
                   );
                   return {
@@ -267,7 +306,9 @@ class DateTimeInput extends Component {
                     // ensure calendar always opens on selected item, or on
                     // current month when there is no selected item
                     calendarDate:
-                      this.props.value === '' ? getToday() : this.props.value,
+                      this.props.value === ''
+                        ? getToday(this.props.timeZone)
+                        : this.props.value,
                   };
                 }
 
@@ -277,16 +318,17 @@ class DateTimeInput extends Component {
                 return null;
               },
               () => {
-                if (activationTypes.includes(changes.type)) {
-                  this.timeInputRef.current.focus();
-                  this.timeInputRef.current.setSelectionRange(
+                if (
+                  activationTypes.includes(changes.type as TActivationTypes)
+                ) {
+                  this.timeInputRef.current?.focus();
+                  this.timeInputRef.current?.setSelectionRange(
                     0,
                     this.state.timeString.length
                   );
                 }
               }
             );
-            /* eslint-enable no-prototype-builtins */
           }}
         >
           {({
@@ -294,9 +336,7 @@ class DateTimeInput extends Component {
             getMenuProps,
             getItemProps,
             getToggleButtonProps,
-
             clearSelection,
-
             highlightedIndex,
             openMenu,
             closeMenu,
@@ -318,10 +358,10 @@ class DateTimeInput extends Component {
               this.props.intl.locale,
               this.props.timeZone
             );
-            const paddingDays = Array(paddingDayCount).fill();
+            const paddingDays = Array(paddingDayCount).fill(undefined);
 
             const weekdays = getWeekdayNames(this.props.intl.locale);
-            const today = getToday();
+            const today = getToday(this.props.timeZone);
 
             const isTimeInputVisible =
               Boolean(this.props.value) && this.props.value !== '';
@@ -342,9 +382,9 @@ class DateTimeInput extends Component {
                     onMouseEnter: () => {
                       // we remove the highlight so that the user can use the
                       // arrow keys to move the cursor when hovering
-                      if (isOpen) setHighlightedIndex(null);
+                      if (isOpen) setHighlightedIndex(-1);
                     },
-                    onKeyDown: (event) => {
+                    onKeyDown: (event: TPreventDownshiftDefaultEvent) => {
                       if (this.props.isReadOnly) {
                         preventDownshiftDefault(event);
                         return;
@@ -355,7 +395,7 @@ class DateTimeInput extends Component {
                         preventDownshiftDefault(event);
 
                         const parsedDate = parseInputText(
-                          inputValue,
+                          inputValue as string,
                           this.props.intl.locale,
                           this.props.timeZone
                         );
@@ -366,10 +406,13 @@ class DateTimeInput extends Component {
                       }
                       // ArrowDown
                       if (event.keyCode === 40) {
-                        if (highlightedIndex + 1 >= calendarItems.length) {
+                        if (
+                          Number(highlightedIndex) + 1 >=
+                          calendarItems.length
+                        ) {
                           // if it's the end of the month
                           // then bypass normal arrow navigation
-                          preventDownshiftDefault(event); // eslint-disable-line no-param-reassign
+                          preventDownshiftDefault(event);
                           // then jump to start of next month
                           this.jumpMonths(1, 0);
                         }
@@ -377,16 +420,17 @@ class DateTimeInput extends Component {
                       // ArrowUp
                       if (event.keyCode === 38) {
                         const previousDay = getPreviousDay(
-                          calendarItems[highlightedIndex]
+                          calendarItems[Number(highlightedIndex)]
                         );
 
-                        if (highlightedIndex <= 0) {
+                        if (Number(highlightedIndex) <= 0) {
                           // if it's the start of the month
                           // then bypass normal arrow navigation
-                          preventDownshiftDefault(event); // eslint-disable-line no-param-reassign
-
-                          const numberOfDaysOfPrevMonth =
-                            getDaysInMonth(previousDay);
+                          preventDownshiftDefault(event);
+                          const numberOfDaysOfPrevMonth = getDaysInMonth(
+                            previousDay,
+                            this.props.timeZone
+                          );
                           // then jump to the last day of the previous month
                           this.jumpMonths(-1, numberOfDaysOfPrevMonth - 1);
                         }
@@ -394,12 +438,12 @@ class DateTimeInput extends Component {
                     },
                     onClick: this.props.isReadOnly ? undefined : openMenu,
                     onBlur: createBlurHandler(this.timeInputRef),
-                    onChange: (event) => {
+                    onChange: (event: TEvent) => {
                       // keep timeInput and regular input in sync when user
                       // types into regular input
                       if (!isOpen) return;
 
-                      const time = event.target.value.split(' ')[1];
+                      const time = event.target.value?.split(' ')[1];
                       if (!time) return;
 
                       const parsedTime = parseTime(time);
@@ -464,7 +508,7 @@ class DateTimeInput extends Component {
                           {weekday}
                         </CalendarDay>
                       ))}
-                      {paddingDays.map((day, index) => (
+                      {paddingDays.map((_, index) => (
                         <CalendarDay key={index} type="spacing" />
                       ))}
                       {calendarItems.map((item, index) => (
@@ -475,7 +519,7 @@ class DateTimeInput extends Component {
                             disabled: this.props.isDisabled,
                             item,
                             onMouseOut: () => {
-                              setHighlightedIndex(null);
+                              setHighlightedIndex(-1);
                             },
                           })}
                           isHighlighted={
@@ -497,15 +541,15 @@ class DateTimeInput extends Component {
                       onChange={this.handleTimeChange}
                       onKeyDown={(event) => {
                         if (event.key === 'ArrowUp') {
-                          setHighlightedIndex(null);
-                          this.inputRef.current.focus();
+                          setHighlightedIndex(-1);
+                          this.inputRef.current?.focus();
                           return;
                         }
 
                         if (event.key === 'Enter') {
-                          setHighlightedIndex(null);
-                          this.inputRef.current.focus();
-                          this.inputRef.current.setSelectionRange(0, 100);
+                          setHighlightedIndex(-1);
+                          this.inputRef.current?.focus();
+                          this.inputRef.current?.setSelectionRange(0, 100);
                           closeMenu();
                         }
                       }}

@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, type Theme } from '@emotion/react';
 import {
   customProperties as vars,
   designTokens,
@@ -17,7 +17,7 @@ const getLocalizedInputStyles = () => [
   `,
 ];
 
-const getLanguageLabelStyles = (props, theme) => {
+const getLanguageLabelStyles = (_props: unknown, theme: Theme) => {
   const overwrittenVars = {
     ...vars,
     ...theme,

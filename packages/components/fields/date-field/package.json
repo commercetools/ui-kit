@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/date-field",
   "description": "A controlled date input component for single date, with validation states and a label.",
-  "version": "13.0.0",
+  "version": "13.0.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -22,11 +22,11 @@
     "@babel/runtime": "7.17.2",
     "@babel/runtime-corejs3": "7.17.2",
     "@commercetools-uikit/constraints": "13.0.0",
-    "@commercetools-uikit/date-input": "13.0.0",
+    "@commercetools-uikit/date-input": "13.0.1",
     "@commercetools-uikit/design-system": "13.0.0",
     "@commercetools-uikit/field-errors": "13.0.0",
-    "@commercetools-uikit/field-label": "13.0.0",
-    "@commercetools-uikit/spacings": "13.0.0",
+    "@commercetools-uikit/field-label": "13.0.1",
+    "@commercetools-uikit/spacings": "13.0.1",
     "@commercetools-uikit/utils": "12.2.9",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",

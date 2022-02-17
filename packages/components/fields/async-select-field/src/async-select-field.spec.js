@@ -139,6 +139,17 @@ describe('when `hint` is passed', () => {
   });
 });
 
+describe('when `hintIcon` is passed', () => {
+  it('should render hintIcon and hint', async () => {
+    const { findByText } = renderAsyncSelectField({
+      hintIcon: <span>icon hint</span>,
+      hint: <span>foo hint</span>,
+    });
+    expect(await findByText('icon hint')).toBeInTheDocument();
+    expect(await findByText('foo hint')).toBeInTheDocument();
+  });
+});
+
 describe('when `badge` is passed', () => {
   it('should render a badge', async () => {
     const { findByText } = renderAsyncSelectField({ badge: 'foo badge' });

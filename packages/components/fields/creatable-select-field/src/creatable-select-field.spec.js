@@ -127,6 +127,17 @@ describe('when `hint` is passed', () => {
   });
 });
 
+describe('when `hintIcon` is passed', () => {
+  it('should render hintIcon and hint', () => {
+    const { getByText } = renderCreatableSelectField({
+      hintIcon: <span>icon hint</span>,
+      hint: <span>foo hint</span>,
+    });
+    expect(getByText('icon hint')).toBeInTheDocument();
+    expect(getByText('foo hint')).toBeInTheDocument();
+  });
+});
+
 describe('when `badge` is passed', () => {
   it('should render a badge', () => {
     const { getByText } = renderCreatableSelectField({ badge: 'foo badge' });
