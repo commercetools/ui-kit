@@ -701,6 +701,7 @@ describe('MoneyInput', () => {
     render(<TestComponent isReadOnly={true} />);
     expect(screen.getByLabelText('Amount')).toHaveAttribute('readonly');
   });
+
   it('should render a readonly currency select when readonly', () => {
     render(<TestComponent isReadOnly={true} />);
     expect(screen.getByLabelText('EUR').inputMode).toBe('none');
@@ -721,6 +722,65 @@ describe('MoneyInput', () => {
       expect(input).toHaveFocus();
       expect(onFocus).toHaveBeenCalledWith({
         target: { id: 'some-id.amount', name: 'some-name.amount' },
+      });
+    });
+  });
+
+  describe('when no id is provided', () => {
+    it('should render with auto-generated ids', () => {
+      const { container } = render(<TestComponent id="" />);
+
+      expect(
+        container.querySelector('#money-input-1\\.currencyCode')
+      ).toBeInTheDocument();
+      expect(
+        container.querySelector('#money-input-1\\.amount')
+      ).toBeInTheDocument();
+    });
+
+    it('should trigger onChange in currency selector with auto-generated id', () => {
+      const onChange = jest.fn();
+
+      render(<TestComponent id="" onChange={onChange} />);
+
+      // open using keyboard
+      fireEvent.focus(screen.getByLabelText('EUR'));
+      fireEvent.keyDown(screen.getByLabelText('EUR'), { key: 'ArrowDown' });
+
+      // change currency to USD using keyboard
+      fireEvent.keyDown(screen.getByLabelText('EUR'), { key: 'ArrowDown' });
+      fireEvent.keyDown(screen.getByLabelText('EUR'), { key: 'Enter' });
+
+      // onChange should be called when changing the currency
+      expect(onChange).toHaveBeenCalledWith({
+        persist: expect.any(Function),
+        target: {
+          id: expect.stringMatching(/money-input-\d+\.currencyCode/),
+          name: 'some-name.currencyCode',
+          value: 'USD',
+        },
+      });
+    });
+
+    it('should trigger onChange in amount input with auto-generated id', () => {
+      const onChange = jest.fn();
+      const newAmountValue = '12';
+
+      const { container } = render(<TestComponent id="" onChange={onChange} />);
+
+      // We can't get the input id from the 'getAmountInputId' function when
+      // using auto-generated IDs because they are created at render time
+      fireEvent.change(container.querySelector('[name="some-name.amount"]'), {
+        target: { value: newAmountValue },
+      });
+
+      expect(onChange).toHaveBeenCalledWith({
+        persist: expect.any(Function),
+        target: {
+          id: expect.stringMatching(/money-input-\d+\.amount/),
+          name: 'some-name.amount',
+          value: newAmountValue,
+        },
       });
     });
   });
