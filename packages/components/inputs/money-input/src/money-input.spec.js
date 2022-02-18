@@ -738,6 +738,12 @@ describe('MoneyInput', () => {
       ).toBeInTheDocument();
     });
 
+    it('should render with auto-generated ids when currencies array is empty', () => {
+      render(<TestComponent id="" currencies={[]} />);
+      // Instead of a currency select element, a label with the default currency code is rendered
+      expect(screen.getByLabelText('EUR')).toBeInTheDocument();
+    });
+
     it('should trigger onChange in currency selector with auto-generated id', () => {
       const onChange = jest.fn();
 
