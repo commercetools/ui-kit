@@ -14,6 +14,7 @@ import {
   warning,
   isNumberish,
   filterDataAttributes,
+  createSequentialId,
 } from '@commercetools-uikit/utils';
 import Tooltip from '@commercetools-uikit/tooltip';
 import {
@@ -22,7 +23,7 @@ import {
 } from '@commercetools-uikit/select-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
-import { useToggleState } from '@commercetools-uikit/hooks';
+import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import currencies from './currencies.json';
 import {
   getHighPrecisionWrapperStyles,
@@ -34,6 +35,8 @@ import messages from './messages';
 const TooltipWrapper = styled.div`
   display: flex;
 `;
+
+const moneyInputSequentialId = createSequentialId('money-input-');
 
 const getPortalId = (id?: string) => `portal-${id}`;
 const getPortalNode = (id?: string) =>
@@ -497,6 +500,8 @@ const MoneyInput = (props: TMoneyInputProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const amountInputRef = useRef<HTMLInputElement>(null);
 
+  const moneyInputId = useFieldId(props.id, moneyInputSequentialId);
+
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
@@ -509,12 +514,12 @@ const MoneyInput = (props: TMoneyInputProps) => {
     if (onFocus)
       onFocus({
         target: {
-          id: MoneyInput.getAmountInputId(props.id),
+          id: MoneyInput.getAmountInputId(moneyInputId),
           name: getAmountInputName(props.name),
         },
       });
     toggleAmountHasFocus(true);
-  }, [toggleAmountHasFocus, onFocus, props.id, props.name]);
+  }, [toggleAmountHasFocus, onFocus, moneyInputId, props.name]);
 
   const { onChange } = props;
   const handleAmountBlur = useCallback(() => {
@@ -536,7 +541,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
         const fakeEvent = {
           persist: () => {},
           target: {
-            id: MoneyInput.getAmountInputId(props.id),
+            id: MoneyInput.getAmountInputId(moneyInputId),
             name: getAmountInputName(props.name),
             value: formattedAmount,
           },
@@ -547,7 +552,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
   }, [
     intl.locale,
     onChange,
-    props.id,
+    moneyInputId,
     props.name,
     props.value.amount,
     props.value.currencyCode,
@@ -560,14 +565,14 @@ const MoneyInput = (props: TMoneyInputProps) => {
         onChange({
           persist: () => {},
           target: {
-            id: MoneyInput.getAmountInputId(props.id),
+            id: MoneyInput.getAmountInputId(moneyInputId),
             name: getAmountInputName(props.name),
             value: event.target.value,
           },
         });
       }
     },
-    [onChange, props.id, props.name]
+    [onChange, moneyInputId, props.name]
   );
 
   const handleCurrencyChange = useCallback(
@@ -596,7 +601,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
         const fakeCurrencyEvent = {
           persist: () => {},
           target: {
-            id: MoneyInput.getCurrencyDropdownId(props.id),
+            id: MoneyInput.getCurrencyDropdownId(moneyInputId),
             name: getCurrencyDropdownName(props.name),
             value: currencyCode || '',
           },
@@ -608,7 +613,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
           onChange({
             persist: () => {},
             target: {
-              id: MoneyInput.getAmountInputId(props.id),
+              id: MoneyInput.getAmountInputId(moneyInputId),
               name: getAmountInputName(props.name),
               value: nextAmount,
             },
@@ -621,7 +626,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
     [
       intl.locale,
       onChange,
-      props.id,
+      moneyInputId,
       props.name,
       props.value.amount,
       props.value.currencyCode,
@@ -632,13 +637,13 @@ const MoneyInput = (props: TMoneyInputProps) => {
     if (onFocus)
       onFocus({
         target: {
-          id: MoneyInput.getCurrencyDropdownId(props.id),
+          id: MoneyInput.getCurrencyDropdownId(moneyInputId),
           name: getCurrencyDropdownName(props.name),
         },
       });
 
     toggleCurrencyHasFocus(true);
-  }, [onFocus, toggleCurrencyHasFocus, props.name, props.id]);
+  }, [onFocus, toggleCurrencyHasFocus, props.name, moneyInputId]);
 
   const handleCurrencyBlur = useCallback(() => {
     toggleCurrencyHasFocus(false);
@@ -678,8 +683,6 @@ const MoneyInput = (props: TMoneyInputProps) => {
     return null;
   })();
 
-  const id = MoneyInput.getCurrencyDropdownId(props.id);
-
   const isHighPrecision =
     !MoneyInput.isEmpty(props.value) &&
     MoneyInput.isHighPrecision(props.value, intl.locale);
@@ -695,19 +698,19 @@ const MoneyInput = (props: TMoneyInputProps) => {
       ) {
         onBlur({
           target: {
-            id: MoneyInput.getCurrencyDropdownId(props.id),
+            id: MoneyInput.getCurrencyDropdownId(moneyInputId),
             name: getCurrencyDropdownName(props.name),
           },
         });
         onBlur({
           target: {
-            id: MoneyInput.getAmountInputId(props.id),
+            id: MoneyInput.getAmountInputId(moneyInputId),
             name: getAmountInputName(props.name),
           },
         });
       }
     },
-    [onBlur, props.id, props.name]
+    [onBlur, moneyInputId, props.name]
   );
 
   const TooltipPortal = useCallback(
@@ -730,14 +733,14 @@ const MoneyInput = (props: TMoneyInputProps) => {
       >
         {hasNoCurrencies ? (
           <CurrencyLabel
-            id={MoneyInput.getAmountInputId(props.id) as string}
+            id={MoneyInput.getAmountInputId(moneyInputId) as string}
             isDisabled={props.isDisabled}
           >
             {option && option.label}
           </CurrencyLabel>
         ) : (
           <Select
-            inputId={id}
+            inputId={MoneyInput.getCurrencyDropdownId(moneyInputId)}
             name={getCurrencyDropdownName(props.name)}
             value={option}
             isDisabled={props.isDisabled}
@@ -745,7 +748,10 @@ const MoneyInput = (props: TMoneyInputProps) => {
             components={
               {
                 SingleValue: (innerProps) => (
-                  <SingleValue {...innerProps} id={id} />
+                  <SingleValue
+                    {...innerProps}
+                    id={MoneyInput.getCurrencyDropdownId(moneyInputId)}
+                  />
                 ),
                 Input: (ownProps) => (
                   <components.Input {...ownProps} readOnly={props.isReadOnly} />
@@ -773,7 +779,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
         >
           <input
             ref={amountInputRef}
-            id={MoneyInput.getAmountInputId(props.id)}
+            id={MoneyInput.getAmountInputId(moneyInputId)}
             autoComplete={props.autoComplete}
             name={getAmountInputName(props.name)}
             type="text"
