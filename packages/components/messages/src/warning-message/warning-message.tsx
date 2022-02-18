@@ -5,6 +5,7 @@ type TIntlMessageDescriptor = {
   id: string;
   description?: string | object;
   defaultMessage: string;
+  values?: Record<string, ReactNode>;
 };
 
 type TWarningMessageProps = {
