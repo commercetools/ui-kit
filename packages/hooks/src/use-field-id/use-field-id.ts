@@ -4,7 +4,7 @@ import { getFieldId } from '@commercetools-uikit/utils';
 type CreateIdFn = () => string;
 
 const useFieldId = (id: string | undefined, createIdFn: CreateIdFn): string => {
-  const [internalId, setId] = useState(id);
+  const [internalId, setId] = useState(id || createIdFn());
 
   useEffect(() => {
     const props = { id };
