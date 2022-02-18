@@ -152,7 +152,7 @@ type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  inputValue: ReactSelectProps['inputValue'];
+  inputValue?: ReactSelectProps['inputValue'];
   /**
    * The id to set on the SelectContainer component
    * This is forwarded as react-select's "id"
@@ -423,7 +423,7 @@ const SelectInput = (props: TSelectInputProps) => {
           noOptionsMessage={
             props.noOptionsMessage ||
             (({ inputValue }) =>
-              inputValue === ''
+              !inputValue || inputValue === ''
                 ? intl.formatMessage(messages.noOptionsMessageWithoutInputValue)
                 : intl.formatMessage(messages.noOptionsMessageWithInputValue, {
                     inputValue,
