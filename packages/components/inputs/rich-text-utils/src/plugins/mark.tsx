@@ -1,13 +1,13 @@
 import { isKeyHotkey } from 'is-hotkey';
 import { warning } from '@commercetools-uikit/utils';
 import memoize from 'lodash/memoize';
-import type { ReactNode } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import type { TEditor, TMark } from '../editor.types';
 
 type TMarkPluginOptions = {
   hotkey: string;
   typeName: string;
-  RenderMark: ReactNode;
+  RenderMark: ComponentType;
   command: string;
   query: string;
   [option: string]: string | ReactNode;
@@ -70,7 +70,6 @@ const MarkPlugin = (options: TMarkPluginOptions) => {
         switch (mark.type) {
           case options.typeName:
             return (
-              //@ts-ignore
               <options.RenderMark {...attributes}>
                 {children}
               </options.RenderMark>
