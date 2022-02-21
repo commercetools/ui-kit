@@ -1,5 +1,12 @@
 # @commercetools-uikit/spacings-inline
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/utils@13.0.2
+
 ## 13.0.0
 
 ### Patch Changes
