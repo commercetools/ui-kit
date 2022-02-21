@@ -15,7 +15,10 @@ class Story extends Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+    ]),
     id: PropTypes.string,
     options: PropTypes.array.isRequired,
   };
