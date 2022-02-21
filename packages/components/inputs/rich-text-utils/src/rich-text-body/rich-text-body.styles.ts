@@ -40,15 +40,6 @@ const getBackgroundColor = (props: TRichTextBodyStylesProps) => {
       background-color: ${vars.backgroundColorForInputWhenDisabled};
     `;
   }
-
-  /** `backgroundColorForInputWhenReadonly` does not exist on from
-   *  `@commercetools-uikit/design-system` where `vars` is coming from.
-   * Commenting it out for now */
-  // if (props.isReadOnly) {
-  //   return css`
-  //     background-color: ${vars.backgroundColorForInputWhenReadonly};
-  //   `;
-  // }
   return css`
     background-color: ${vars.backgroundColorForInput};
   `;
@@ -122,7 +113,7 @@ const reset = (props: TRichTextBodyStylesProps) => [
     `,
 ];
 
-export const EditorContainer = styled.div`
+export const EditorContainer = styled.div<TRichTextBodyStylesProps>`
   padding: 4px ${vars.spacingS};
   padding-top: 6px;
   border-radius: ${vars.borderRadiusForInput};
@@ -132,7 +123,7 @@ export const EditorContainer = styled.div`
   ${reset}
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<TRichTextBodyStylesProps>`
   border-radius: ${vars.borderRadiusForInput};
   border: 1px solid ${vars.borderColorForInput};
   transition: ${vars.transitionStandard};
