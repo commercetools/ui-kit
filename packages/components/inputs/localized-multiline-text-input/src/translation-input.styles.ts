@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, type Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
   customProperties as vars,
@@ -9,7 +9,12 @@ import {
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getTextareaStyles = (props) => {
+
+type TTranslationInputStylesProps = {
+  isCollapsed?: boolean;
+};
+
+const getTextareaStyles = (props: TTranslationInputStylesProps) => {
   const baseStyles = [
     css`
       border-top-left-radius: 0 !important;
@@ -23,7 +28,10 @@ const getTextareaStyles = (props) => {
   return baseStyles;
 };
 
-const getLanguageLabelStyles = (props, theme) => {
+const getLanguageLabelStyles = (
+  _props: TTranslationInputStylesProps,
+  theme: Theme
+) => {
   const overwrittenVars = {
     ...vars,
     ...theme,
