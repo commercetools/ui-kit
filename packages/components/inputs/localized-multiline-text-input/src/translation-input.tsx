@@ -29,6 +29,8 @@ type TEvent = {
 };
 
 type TranslationInputProps = {
+  'aria-invalid'?: boolean;
+  'aria-errormessage'?: string;
   onChange?: (event: TEvent) => void;
   language: string;
   onFocus?: () => void;
@@ -179,6 +181,9 @@ const TranslationInput = (props: TranslationInputProps) => {
           isAutofocussed={props.isAutofocussed}
           isOpen={!props.isCollapsed}
           {...filterDataAttributes(props)}
+          /* ARIA */
+          aria-invalid={props['aria-invalid']}
+          aria-errormessage={props['aria-errormessage']}
         />
       </div>
       <Row

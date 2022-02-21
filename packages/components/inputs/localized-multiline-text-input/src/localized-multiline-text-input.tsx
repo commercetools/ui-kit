@@ -48,6 +48,18 @@ type TLocalizedMultilineTextInputProps = {
    */
   autoComplete?: string;
   /**
+   * Indicate if the value entered in the input is invalid.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+   'aria-invalid'?: boolean;
+   /**
+    * HTML ID of an element containing an error message related to the input.
+    * <br>
+    * [Props from React select was used](https://react-select.com/props)
+    */
+   'aria-errormessage'?: string;
+  /**
    * Values to use. Keyed by language, the values are the actual values, e.g. `{ en: 'Horse', de: 'Pferd' }`
    * <br />
    * The input doesn't accept a "languages" prop, instead all possible
@@ -300,6 +312,9 @@ const LocalizedMultilineTextInput = (
                 error={props.errors && props.errors[language]}
                 hasLanguagesControl={hasLanguagesControl}
                 {...createLocalizedDataAttributes(props, language)}
+                /* ARIA */
+                aria-invalid={props['aria-invalid']}
+                aria-errormessage={props['aria-errormessage']}
               />
             );
           })}

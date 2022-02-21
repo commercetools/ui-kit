@@ -6,6 +6,7 @@ import {
   filterDataAttributes,
   getFieldId,
   createSequentialId,
+  randomString,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
@@ -200,6 +201,8 @@ class LocalizedMultilineTextField extends Component {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const errorFieldId = randomString();
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -235,8 +238,12 @@ class LocalizedMultilineTextField extends Component {
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
+            /* ARIA */
+            aria-invalid={hasError}
+            aria-errormessage={errorFieldId}
           />
           <FieldErrors
+            id={errorFieldId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
