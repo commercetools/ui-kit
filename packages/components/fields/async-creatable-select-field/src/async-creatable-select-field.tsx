@@ -11,6 +11,7 @@ import {
   getFieldId,
   createSequentialId,
   warning,
+  randomString,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
@@ -387,6 +388,7 @@ export default class AsyncCreatableSelectField extends Component<
     const hasError =
       AsyncCreatableSelectInput.isTouched(this.props.touched) &&
       hasErrors(this.props.errors);
+    const errorFieldId = randomString();
 
     if (this.props.hintIcon) {
       warning(
@@ -466,8 +468,12 @@ export default class AsyncCreatableSelectField extends Component<
             showOptionGroupDivider={this.props.showOptionGroupDivider}
             iconLeft={this.props.iconLeft}
             {...filterDataAttributes(this.props)}
+            /* ARIA */
+            aria-invalid={hasError}
+            aria-errormessage={errorFieldId}
           />
           <FieldErrors
+            id={errorFieldId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

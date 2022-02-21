@@ -109,6 +109,14 @@ type TAsyncCreatableSelectInputProps = {
    */
   'aria-labelledby'?: ReactSelectAsyncCreatableProps['aria-labelledby'];
   /**
+   * a11y attribute to determine if input is valid/not
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * a11y attribute identifier that points to a field with error message
+   */
+  'aria-errormessage'?: string;
+  /**
    * Focus the control when it is mounted
    */
   isAutofocussed?: boolean; // original: autoFocus
@@ -358,6 +366,8 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
         <AsyncCreatableSelect
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
+          aria-invalid={props['aria-invalid']}
+          aria-errormessage={props['aria-errormessage']}
           autoFocus={props.isAutofocussed}
           backspaceRemovesValue={
             props.isReadOnly ? false : props.backspaceRemovesValue
