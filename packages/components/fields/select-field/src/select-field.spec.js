@@ -178,3 +178,28 @@ describe('when field is touched and has errors', () => {
     });
   });
 });
+
+describe('when field is not touched', () => {
+  describe('when isMulti is false', () => {
+    it('should not render an error', () => {
+      const { queryByText } = renderSelectField({
+        touched: false,
+        isMulti: false,
+        value: ['1', '2', '3'],
+        errors: { missing: true },
+      });
+      expect(queryByText(/field is required/i)).not.toBeInTheDocument();
+    });
+  });
+  describe('when isMulti is true', () => {
+    it('should not render an error', () => {
+      const { queryByText } = renderSelectField({
+        touched: undefined,
+        isMulti: true,
+        value: ['1', '2', '3'],
+        errors: { missing: true },
+      });
+      expect(queryByText(/field is required/i)).not.toBeInTheDocument();
+    });
+  });
+});
