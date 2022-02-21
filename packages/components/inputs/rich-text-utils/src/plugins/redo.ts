@@ -14,7 +14,7 @@ const hasRedos = (editor: TEditor) => {
   return redos && redos.size > 0;
 };
 
-const RedoPlugin = (options = {} as THotKeyOptions) => {
+const RedoPlugin = (options: Partial<THotKeyOptions> = {}) => {
   const hotkey = options.hotkey || HOT_KEY;
   const isRedoHotkey = memoizedIsHotkey(hotkey);
 

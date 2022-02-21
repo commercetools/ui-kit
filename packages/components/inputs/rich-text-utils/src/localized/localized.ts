@@ -9,11 +9,11 @@ type TTranslations = Record<string, string>;
 const initializeValue = (value: string) =>
   html.serialize(html.deserialize(value));
 
-const isLocalizedHtmlValueEmpty = (value: unknown) =>
-  !value || isRichTextEmpty(value as string);
+const isLocalizedHtmlValueEmpty = (value?: string | null) =>
+  !value || isRichTextEmpty(value);
 
 export const isEmpty = (
-  localizedHtmlValue: Record<string, unknown> | ArrayLike<unknown> | undefined
+  localizedHtmlValue: Record<string, string | null | undefined> | undefined
 ) => {
   if (!localizedHtmlValue) return true;
   return Object.values(localizedHtmlValue).every(isLocalizedHtmlValueEmpty);
@@ -37,7 +37,7 @@ export const omitEmptyTranslations = (localizedString: TLocalizedString) => {
 
 export const createLocalizedString = (
   languages: string[],
-  existingTranslations = {} as TTranslations
+  existingTranslations: TTranslations = {}
 ) => {
   const mergedLanguages = existingTranslations
     ? uniq([...languages, ...Object.keys(existingTranslations)])

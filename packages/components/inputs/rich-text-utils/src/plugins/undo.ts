@@ -18,7 +18,7 @@ const hasUndos = (editor: TExtendedEditor) => {
   return undos && undos.size > 1;
 };
 
-const UndoPlugin = (options = {} as THotKeyOptions) => {
+const UndoPlugin = (options: Partial<THotKeyOptions> = {}) => {
   const hotkey = options.hotkey || HOT_KEY;
   const isUndoHotkey = memoizedIsHotkey(hotkey);
 

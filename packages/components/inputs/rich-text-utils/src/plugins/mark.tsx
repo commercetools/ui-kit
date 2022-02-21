@@ -31,14 +31,14 @@ const requiredOptions = [
   'RenderMark',
 ];
 
-const validate = (options: TMarkPluginOptions) => {
+const validate = (options?: TMarkPluginOptions) => {
   const missingRequiredOptions = requiredOptions.filter(
-    (option) => !options[option]
+    (option) => !options?.[option]
   );
   return missingRequiredOptions;
 };
 
-const MarkPlugin = (options = {} as TMarkPluginOptions) => {
+const MarkPlugin = (options: TMarkPluginOptions) => {
   const missingRequiredOptions = validate(options);
 
   warning(

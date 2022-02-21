@@ -45,12 +45,11 @@ let instanceCounter = 0;
  * @return {Object}
  */
 
-function SlateReactPlaceholder(options = {} as TSlateReactPlaceholderOptions) {
+function SlateReactPlaceholder(options: TSlateReactPlaceholderOptions) {
   const instanceId = instanceCounter++;
-  const { when, style = {} } = options;
 
   warning(
-    typeof when === 'string' || typeof when === 'function',
+    typeof options.when === 'string' || typeof options.when === 'function',
     'You must pass `SlateReactPlaceholder` an `options.when` query.'
   );
 
@@ -68,7 +67,7 @@ function SlateReactPlaceholder(options = {} as TSlateReactPlaceholderOptions) {
     editor: TEditor,
     next: () => JSX.Element[]
   ) {
-    if (!editor.query?.(when, node)) {
+    if (!editor.query?.(options.when, node)) {
       return next();
     }
 
@@ -119,7 +118,7 @@ function SlateReactPlaceholder(options = {} as TSlateReactPlaceholderOptions) {
         whiteSpace: 'nowrap',
         opacity: '0.333',
         verticalAlign: 'text-top',
-        ...style,
+        ...options.style,
       };
 
       return (

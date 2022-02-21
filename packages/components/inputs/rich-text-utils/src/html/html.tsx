@@ -1,4 +1,4 @@
-import Html, { type HtmlOptions } from 'slate-html-serializer';
+import Html from 'slate-html-serializer';
 import flatMap from 'lodash/flatMap';
 import { MARK_TAGS, BLOCK_TAGS } from '../tags';
 import type { ReactNode } from 'react';
@@ -11,7 +11,10 @@ type TSerializableObject = {
   };
 };
 
-const mapper = {
+type TAttributes = Record<string, string>;
+type TMapper = Record<string, TAttributes>;
+
+const mapper: TMapper = {
   'font-weight': {
     bold: 'strong',
   },
@@ -33,11 +36,7 @@ const mapper = {
 
 const rules = [
   {
-    //@ts-ignore - requires an additional return block which possibly serves no use.
-    deserialize(
-      el: HTMLElement,
-      next: (arg0: NodeListOf<ChildNode>) => unknown
-    ) {
+    deserialize(el: Element, next: (arg0: NodeListOf<ChildNode>) => unknown) {
       const type =
         BLOCK_TAGS[el.tagName.toLowerCase() as keyof typeof BLOCK_TAGS];
       if (type) {
@@ -50,8 +49,8 @@ const rules = [
           nodes: next(el.childNodes),
         };
       }
+      return;
     },
-    //@ts-ignore - requires an additional return block which possibly serves no use.
     serialize(obj: TSerializableObject, children: ReactNode) {
       if (obj.object === 'block') {
         switch (obj.type) {
@@ -83,13 +82,13 @@ const rules = [
             return <blockquote>{children}</blockquote>;
         }
       }
+      return;
     },
   },
 
   {
     // Special case for code blocks, which need to grab the nested childNodes.
-    //@ts-ignore - requires an additional return block which possibly serves no use.
-    deserialize(el: HTMLElement, next: (arg0: NodeListOf<ChildNode>) => void) {
+    deserialize(el: Element, next: (arg0: NodeListOf<ChildNode>) => void) {
       if (el.tagName.toLowerCase() === 'span') {
         const styleAttribute = el.getAttribute('style');
         let tagName = 'span';
@@ -101,14 +100,14 @@ const rules = [
 
             const [key, ...values] = split;
 
-            return values.map((value: string) => ({
+            return values.map<TAttributes>((value) => ({
               // always remove the : from the key
               [key.slice(0, -1)]: value,
             }));
           })
             .map((val) => {
               const [key, value] = Object.entries(val)[0];
-              return mapper[key as keyof typeof Object.keys]?.[value as string];
+              return mapper[key]?.[value];
             })
             .filter((val) => Boolean(val));
 
@@ -133,13 +132,13 @@ const rules = [
           nodes: next(el.childNodes),
         };
       }
+      return;
     },
   },
 
   // Add a new rule that handles marks...
   {
-    //@ts-ignore - requires an additional return block which possibly serves no use.
-    deserialize(el: HTMLElement, next: (arg0: NodeListOf<ChildNode>) => void) {
+    deserialize(el: Element, next: (arg0: NodeListOf<ChildNode>) => void) {
       const type =
         MARK_TAGS[el.tagName.toLowerCase() as keyof typeof MARK_TAGS];
       if (type) {
@@ -149,9 +148,9 @@ const rules = [
           nodes: next(el.childNodes),
         };
       }
+      return;
     },
-    //@ts-ignore - requires an additional return block which possibly serves no use.
-    serialize(obj: TSerializeObject, children: ReactNode) {
+    serialize(obj: TSerializableObject, children: ReactNode) {
       if (obj.object === 'mark') {
         switch (obj.type) {
           case 'span':
@@ -176,11 +175,12 @@ const rules = [
             );
         }
       }
+      return;
     },
   },
 ];
 
 // Create a new serializer instance with our `rules` from above.
-const html = new Html({ rules } as unknown as HtmlOptions);
+const html = new Html({ rules });
 
 export default html;

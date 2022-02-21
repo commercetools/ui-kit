@@ -30,14 +30,15 @@ const plugins = [
         const hasOneBlock = blocks.length === 1;
         const isParagraph = blocks[0] && blocks[0] === BLOCK_TAGS.p;
 
-        const shouldUsePlaceholder =
+        const shouldUsePlaceholder = Boolean(
           !editor.hasPlaceholder &&
-          isEditorEmpty &&
-          hasOneNode &&
-          hasOneBlock &&
-          isParagraph;
+            isEditorEmpty &&
+            hasOneNode &&
+            hasOneBlock &&
+            isParagraph
+        );
 
-        editor.hasPlaceholder = shouldUsePlaceholder as boolean;
+        editor.hasPlaceholder = shouldUsePlaceholder;
         return shouldUsePlaceholder;
       },
     },

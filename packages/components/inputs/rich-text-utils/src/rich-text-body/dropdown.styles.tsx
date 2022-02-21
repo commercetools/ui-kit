@@ -29,9 +29,7 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   }
 `;
 
-const getButtonStyles = (
-  props = { isStyleButton: true } as TDropdownStylesProps
-) => [
+const getButtonStyles = (props: TDropdownStylesProps) => [
   css`
     border: 0;
     font-family: ${vars.fontFamilyDefault};
