@@ -1,5 +1,15 @@
 # @commercetools-uikit/messages
 
+## 13.0.2
+
+### Patch Changes
+
+- [#2100](https://github.com/commercetools/ui-kit/pull/2100) [`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update intlMessage prop type to allow parameterized messages
+
+- Updated dependencies [[`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/text@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+
 ## 13.0.0
 
 ### Patch Changes
