@@ -1,12 +1,15 @@
-import { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
+import {
+  useState,
+  useCallback,
+  type ChangeEventHandler,
+  type ReactNode,
+} from 'react';
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { customProperties } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import {
@@ -18,6 +21,43 @@ import {
   getLanguageLabelStyles,
   ToggleButtonWrapper,
 } from './translation-input.styles';
+
+type TEvent = {
+  target: {
+    language: string;
+  };
+};
+
+type TranslationInputProps = {
+  onChange?: (event: TEvent) => void;
+  language: string;
+  onFocus?: () => void;
+  onToggle?: () => void;
+  isCollapsed?: boolean;
+  hasLanguagesControl?: boolean;
+  warning?: ReactNode;
+  error?: ReactNode;
+  id?: string;
+  name?: string;
+  autoComplete?: string;
+  value: string;
+  onBlur?: ChangeEventHandler<Element>;
+  isDisabled?: boolean;
+  placeholder?: string;
+  hasWarning?: boolean;
+  hasError?: boolean;
+  isReadOnly?: boolean;
+  isAutofocussed?: boolean;
+  intl: {
+    formatMessage: (messageObject: TMessagesMultilineInput) => string;
+  };
+};
+
+type TMessagesMultilineInput = {
+  id: string;
+  description: string;
+  defaultMessage: string;
+};
 
 const LeftColumn = styled.div`
   flex: 1;
@@ -35,7 +75,7 @@ const Row = styled.div`
   justify-content: flex-end;
 `;
 
-const TranslationInput = (props) => {
+const TranslationInput = (props: TranslationInputProps) => {
   const [contentRowCount, setContentRowCount] = useState(
     TranslationInput.MIN_ROW_COUNT
   );
@@ -64,7 +104,7 @@ const TranslationInput = (props) => {
       //
       // eslint-disable-next-line no-param-reassign
       event.target.language = props.language;
-      onChange(event);
+      onChange?.(event);
     },
     [onChange, props.language]
   );
@@ -72,7 +112,7 @@ const TranslationInput = (props) => {
   const { onFocus, onToggle } = props;
   const handleFocus = useCallback(() => {
     // Expand the input on focus
-    if (props.isCollapsed) onToggle();
+    if (props.isCollapsed) onToggle?.();
     if (onFocus) onFocus();
   }, [props.isCollapsed, onFocus, onToggle]);
 
@@ -97,6 +137,14 @@ const TranslationInput = (props) => {
     props.warning;
 
   const theme = useTheme();
+
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'LocaliszedMultilineTextInput: "onChange" is required when isReadOnly is not true'
+    );
+  }
+
   return (
     <Stack scale="xs">
       <div
@@ -114,7 +162,6 @@ const TranslationInput = (props) => {
           </Text.Detail>
         </label>
         <MultilineInput
-          theme={theme}
           id={props.id}
           name={props.name}
           autoComplete={props.autoComplete}
@@ -196,31 +243,6 @@ const TranslationInput = (props) => {
 };
 
 TranslationInput.displayName = 'TranslationInput';
-
-TranslationInput.propTypes = {
-  id: PropTypes.string,
-  autoComplete: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
-  language: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  isCollapsed: PropTypes.bool,
-  onToggle: PropTypes.func,
-  isAutofocussed: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  placeholder: PropTypes.string,
-  intl: PropTypes.shape({
-    formatMessage: PropTypes.func.isRequired,
-  }).isRequired,
-  error: PropTypes.node,
-  warning: PropTypes.node,
-  hasLanguagesControl: PropTypes.bool,
-};
 
 // The minimum ammount of rows the MultilineTextInput will show.
 // When the input is closed, this is used as the maximum row count as well
