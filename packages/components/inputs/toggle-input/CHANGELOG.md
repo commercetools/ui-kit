@@ -1,5 +1,14 @@
 # @commercetools-uikit/toggle-input
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`23fd9e859`](https://github.com/commercetools/ui-kit/commit/23fd9e859ac86dbe778100ddb10cb9464de53d0c), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/input-utils@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+
 ## 13.0.0
 
 ### Patch Changes

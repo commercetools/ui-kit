@@ -1,5 +1,11 @@
 # @commercetools-uikit/utils
 
+## 13.0.2
+
+### Patch Changes
+
+- [#2119](https://github.com/commercetools/ui-kit/pull/2119) [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
 ## 12.2.9
 
 ### Patch Changes

@@ -1,5 +1,19 @@
 # @commercetools-uikit/select-field
 
+## 13.0.2
+
+### Patch Changes
+
+- [#2108](https://github.com/commercetools/ui-kit/pull/2108) [`284a21d39`](https://github.com/commercetools/ui-kit/commit/284a21d39c1da9c753b57bb19f92cbbb08b51c9f) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Migrate select field to typescript
+
+- Updated dependencies [[`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/select-input@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/field-label@13.0.2
+  - @commercetools-uikit/field-errors@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings@13.0.2
+
 ## 13.0.1
 
 ### Patch Changes

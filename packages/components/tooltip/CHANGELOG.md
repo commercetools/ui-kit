@@ -1,5 +1,14 @@
 # @commercetools-uikit/tooltip
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`8b3110d97`](https://github.com/commercetools/ui-kit/commit/8b3110d97c0845bebe537f4d271e66ce04679922), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/hooks@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+
 ## 13.0.0
 
 ### Patch Changes
