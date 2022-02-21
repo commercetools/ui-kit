@@ -10,6 +10,7 @@ import {
   createSequentialId,
   getFieldId,
   warning,
+  randomString,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
@@ -174,6 +175,7 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const errorFieldId = randomString();
 
     if (!this.props.isReadOnly) {
       warning(
@@ -217,8 +219,12 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
+            /* ARIA */
+            aria-invalid={hasError}
+            aria-errormessage={errorFieldId}
           />
           <FieldErrors
+            id={errorFieldId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
