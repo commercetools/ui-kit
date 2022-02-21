@@ -137,6 +137,14 @@ type TDateRangeCalendarProps = {
    */
   value: MomentInput[];
   /**
+   * a11y attribute to determine if input is valid/not
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * a11y attribute identifier that points to a field with error message
+   */
+  'aria-errormessage'?: string;
+  /**
    * Called when the date range changes. Called with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".
    * <br />
    * Signature: `(event) => void`
@@ -436,6 +444,9 @@ class DateRangeCalendar extends Component<
                 <CalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
+                    /* ARIA */
+                    'aria-invalid': this.props['aria-invalid'],
+                    'aria-errormessage': this.props['aria-errormessage'],
                     // Unset the aria-labelledby as it interfers with the link
                     // between the <label for> and the <input id>.
                     'aria-labelledby': undefined,

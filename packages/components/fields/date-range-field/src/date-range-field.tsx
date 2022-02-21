@@ -170,6 +170,7 @@ class DateRangeField extends Component<
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const errorFieldId = sequentialId();
 
     if (!this.props.isReadOnly) {
       warning(
@@ -211,8 +212,11 @@ class DateRangeField extends Component<
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
+            aria-invalid={hasError}
+            aria-errormessage={errorFieldId}
           />
           <FieldErrors
+            id={errorFieldId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
