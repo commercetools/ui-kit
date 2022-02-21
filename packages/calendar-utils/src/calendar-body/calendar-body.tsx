@@ -43,6 +43,14 @@ export const ClearSection = (props: TClearSection) => {
 ClearSection.displayName = 'ClearSection';
 
 export type TInputProps = {
+  /**
+   * a11y attribute to determine if input is valid/not
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * a11y attribute identifier that points to a field with error message
+   */
+  'aria-errormessage'?: string;
   onBlur?: FocusEventHandler;
   onFocus?: FocusEventHandler;
   onKeyDown?: (

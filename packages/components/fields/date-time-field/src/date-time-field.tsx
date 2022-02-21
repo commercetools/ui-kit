@@ -196,6 +196,8 @@ class DateTimeField extends Component<
     }
 
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const errorFieldId = sequentialId();
+    
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -223,8 +225,11 @@ class DateTimeField extends Component<
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
+            aria-invalid={hasError}
+            aria-errormessage={errorFieldId}
           />
           <FieldErrors
+            id={errorFieldId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

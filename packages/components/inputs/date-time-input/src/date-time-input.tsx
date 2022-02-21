@@ -151,6 +151,7 @@ export type TDateTimeInputProps = {
   hasWarning?: boolean;
 } & WrappedComponentProps;
 
+<<<<<<< HEAD:packages/components/inputs/date-time-input/src/date-time-input.tsx
 type TDateTimeInputState = {
   calendarDate?: string;
   suggestedItems?: string[];
@@ -168,6 +169,87 @@ class DateTimeInput extends Component<
 
   inputRef = createRef<HTMLInputElement>();
   timeInputRef = createRef<HTMLInputElement>();
+=======
+    /**
+     * Horizontal size limit of the input field.
+     */
+    horizontalConstraint: PropTypes.oneOf([
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      'scale',
+      'auto',
+    ]),
+    /**
+     * The selected date, must either be an empty string or a date formatted in ISO 8601 (e.g. "2018-10-04T09:00:00.000Z").
+     */
+    value: PropTypes.string.isRequired,
+    /**
+     * a11y attribute to determine if input is valid/not
+     */
+    'aria-invalid': PropTypes.bool,
+    /**
+     * a11y attribute identifier that points to a field with error message
+     */
+    'aria-errormessage': PropTypes.string,
+    /**
+     * Called when the date changes. Called with an event containing an empty string (no value) or a string in this format: "YYYY-MM-DD".
+     * <br />
+     * Signature: `(event) => void`
+     */
+    onChange: PropTypes.func.isRequired,
+    /**
+     * Called when the date input gains focus.
+     */
+    onFocus: PropTypes.func,
+    /**
+     * Called when the date input loses focus.
+     */
+    onBlur: PropTypes.func,
+    /**
+     * Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed.
+     */
+    timeZone: PropTypes.string.isRequired,
+    /**
+     * Used as the HTML `id` attribute.
+     */
+    id: PropTypes.string,
+    /**
+     * Used as the HTML `name` attribute.
+     */
+    name: PropTypes.string,
+    /**
+     * Placeholder value to show in the input field
+     */
+    placeholder: PropTypes.string,
+    /**
+     * Disables the date picker
+     */
+    isDisabled: PropTypes.bool,
+    /**
+     * Disables the date picker menu and sets the input field as read-only
+     */
+    isReadOnly: PropTypes.bool,
+    /**
+     * Indicates the input field has an error
+     */
+    hasError: PropTypes.bool,
+    /**
+     * Indicates the input field has a warning
+     */
+    hasWarning: PropTypes.bool,
+  };
+  inputRef = createRef();
+  timeInputRef = createRef();
+>>>>>>> 914cd4f6c (chore(date-time-field): add aria-invalid, aria-errormessage attributes):packages/components/inputs/date-time-input/src/date-time-input.js
   state = {
     calendarDate: getToday(this.props.timeZone),
     suggestedItems: [],
@@ -371,6 +453,9 @@ class DateTimeInput extends Component<
                 <CalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
+                    /* ARIA */
+                    'aria-invalid': this.props['aria-invalid'],
+                    'aria-errormessage': this.props['aria-errormessage'],
                     // Unset the aria-labelledby as it interfers with the link
                     // between the <label for> and the <input id>.
                     'aria-labelledby': undefined,
