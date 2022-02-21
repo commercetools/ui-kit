@@ -249,7 +249,7 @@ const RichTextEditorBody = forwardRef<TRef, TRichTextEditorBody>(
         } else {
           // Handle the extra wrapping required for list buttons.
           const isList = hasBlock(BLOCK_TAGS.li, props.editor);
-          const isType = props.editor.value?.blocks.some!(
+          const isType = props.editor.value?.blocks.some(
             (block: { key: { key: unknown } }) => {
               return !!props.editor.value?.document.getClosest(
                 block.key,
@@ -284,10 +284,7 @@ const RichTextEditorBody = forwardRef<TRef, TRichTextEditorBody>(
       [props.editor]
     );
 
-    const activeBlock =
-      (props.editor.value?.blocks.first!() &&
-        props.editor.value?.blocks.first!().type) ||
-      '';
+    const activeBlock = props.editor.value?.blocks.first()?.type || '';
 
     // so that we don't show our multi dropdown in an `indeterminate`
     // while the component is not in focus

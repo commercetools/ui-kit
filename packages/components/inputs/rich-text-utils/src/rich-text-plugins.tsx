@@ -20,8 +20,8 @@ const plugins = [
       shouldUsePlaceholder: (editor: TEditor) => {
         const isEditorEmpty = editor.value.document.text === '';
         const hasOneNode =
-          editor.value.document
-            .nodes!.map((node: { text: string }) => node.text)
+          editor.value.document.nodes
+            ?.map((node: { text: string }) => node.text)
             .toArray().length === 1;
         const blocks = editor.value.blocks
           .map((block: { type: unknown }) => block.type)

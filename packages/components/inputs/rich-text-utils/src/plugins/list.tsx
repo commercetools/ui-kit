@@ -15,14 +15,14 @@ type TListPlugin = {
 const DEFAULT_NODE = BLOCK_TAGS.p;
 
 const hasBlock = (type: string, editor: TEditor) =>
-  editor.value.blocks.some!((node: { type: string }) => {
+  editor.value.blocks.some((node: { type: string }) => {
     return node.type === type;
   });
 
 const toggle = (editor: TEditor, typeName: string) => {
   // Handle the extra wrapping required for list buttons.
   const isList = hasBlock(BLOCK_TAGS.li, editor);
-  const isType = editor.value.blocks.some!(
+  const isType = editor.value.blocks.some(
     (block: { key: { key: unknown } }) => {
       return Boolean(
         editor.value.document.getClosest(
@@ -52,8 +52,11 @@ const toggle = (editor: TEditor, typeName: string) => {
 const query = (editor: TEditor, typeName: string) => {
   let isActive = hasBlock(typeName, editor);
 
-  if (editor.value.blocks.size! > 0) {
-    const parent = editor.value.document.getParent!(
+  if (
+    typeof editor.value.blocks.size === 'number' &&
+    editor.value.blocks.size > 0
+  ) {
+    const parent = editor.value.document.getParent?.(
       editor.value.blocks.first().key
     );
     isActive =

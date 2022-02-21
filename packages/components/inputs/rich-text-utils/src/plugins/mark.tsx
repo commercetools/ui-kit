@@ -58,7 +58,7 @@ const MarkPlugin = (options = {} as TMarkPluginOptions) => {
         }
 
         event.preventDefault();
-        editor.toggleMark!(options.typeName);
+        editor.toggleMark?.(options.typeName);
       },
       renderMark(
         props: TRenderMarkProps,
@@ -81,7 +81,7 @@ const MarkPlugin = (options = {} as TMarkPluginOptions) => {
       },
       commands: {
         [options.command]: (editor: TEditor) =>
-          editor.toggleMark!(options.typeName),
+          editor.toggleMark?.(options.typeName),
       },
       queries: {
         [options.query]: (editor: TEditor) =>

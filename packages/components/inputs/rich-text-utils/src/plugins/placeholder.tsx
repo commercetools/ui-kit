@@ -68,7 +68,7 @@ function SlateReactPlaceholder(options = {} as TSlateReactPlaceholderOptions) {
     editor: TEditor,
     next: () => JSX.Element[]
   ) {
-    if (!editor.query!(when, node)) {
+    if (!editor.query?.(when, node)) {
       return next();
     }
 
@@ -109,7 +109,7 @@ function SlateReactPlaceholder(options = {} as TSlateReactPlaceholderOptions) {
   ) {
     const { children, decoration: deco } = props;
 
-    if (deco.type === 'placeholder' && deco.data.get!('key') === instanceId) {
+    if (deco.type === 'placeholder' && deco.data.get?.('key') === instanceId) {
       const placeHolderStyle = {
         pointerEvents: 'none',
         display: 'inline-block',
