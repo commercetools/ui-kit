@@ -1,6 +1,6 @@
 import { useState, type ReactElement, type ReactNode } from 'react';
 import { warning } from '@commercetools-uikit/utils';
-import { MessageDescriptor, useIntl } from 'react-intl';
+import { useIntl, type MessageDescriptor } from 'react-intl';
 import styled from '@emotion/styled';
 import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
 import SelectInput from '@commercetools-uikit/select-input';
@@ -160,13 +160,13 @@ export const getDropdownOptions = ({
 ];
 
 export const getMappedColumns = (columns = [] as TColumnData[]) =>
-  columns.reduce(
+  columns.reduce<MappedColumns>(
     (mappedColumns, column) => ({
       ...mappedColumns,
       [column.key]: column,
     }),
     {}
-  ) as MappedColumns;
+  );
 
 export const getSelectedColumns = (
   mappedColumns: MappedColumns,
