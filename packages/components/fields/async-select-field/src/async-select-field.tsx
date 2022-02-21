@@ -334,6 +334,7 @@ export default class AsyncSelectField extends Component<
     const hasError =
       AsyncSelectInput.isTouched(this.props.touched) &&
       hasErrors(this.props.errors);
+    const errorFieldId = sequentialId();
 
     if (this.props.hintIcon) {
       warning(
@@ -372,6 +373,8 @@ export default class AsyncSelectField extends Component<
             hasError={hasError}
             aria-label={this.props['aria-label']}
             aria-labelledby={this.props['aria-labelledby']}
+            aria-invalid={hasError}
+            aria-errormessage={errorFieldId}
             isAutofocussed={this.props.isAutofocussed}
             backspaceRemovesValue={this.props.backspaceRemovesValue}
             components={this.props.components}
@@ -409,6 +412,7 @@ export default class AsyncSelectField extends Component<
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
+            id={errorFieldId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
