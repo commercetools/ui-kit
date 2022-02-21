@@ -1,5 +1,20 @@
 # @commercetools-uikit/money-input
 
+## 13.0.2
+
+### Patch Changes
+
+- [#2118](https://github.com/commercetools/ui-kit/pull/2118) [`8b3110d97`](https://github.com/commercetools/ui-kit/commit/8b3110d97c0845bebe537f4d271e66ce04679922) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fixed MoneyInput component HTML id auto-generation
+
+- Updated dependencies [[`23fd9e859`](https://github.com/commercetools/ui-kit/commit/23fd9e859ac86dbe778100ddb10cb9464de53d0c), [`8b3110d97`](https://github.com/commercetools/ui-kit/commit/8b3110d97c0845bebe537f4d271e66ce04679922), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/input-utils@13.0.2
+  - @commercetools-uikit/hooks@13.0.2
+  - @commercetools-uikit/icons@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/select-utils@13.0.2
+  - @commercetools-uikit/tooltip@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+
 ## 13.0.1
 
 ### Patch Changes

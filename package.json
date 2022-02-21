@@ -66,8 +66,8 @@
     ]
   },
   "dependencies": {
-    "@changesets/changelog-github": "0.4.2",
-    "@changesets/cli": "2.20.0",
+    "@changesets/changelog-github": "0.4.3",
+    "@changesets/cli": "2.21.0",
     "@commercetools-frontend/babel-preset-mc-app": "21.0.0",
     "@commercetools-frontend/eslint-config-mc-app": "20.12.3",
     "@commercetools-local/generator-package-json": "*",
@@ -97,7 +97,7 @@
     "babel-jest": "27.5.1",
     "babel-loader": "8.2.3",
     "babel-plugin-typescript-to-proptypes": "1.4.2",
-    "browserslist": "4.19.1",
+    "browserslist": "4.19.3",
     "bundlesize": "0.18.1",
     "colors": "1.4.0",
     "common-tags": "1.8.2",
@@ -143,7 +143,7 @@
     "replace": "1.2.1",
     "rimraf": "3.0.2",
     "shelljs": "0.8.5",
-    "stylelint": "14.5.0",
+    "stylelint": "14.5.1",
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-standard": "24.0.0",
     "stylelint-order": "4.1.0",
@@ -155,7 +155,7 @@
   "resolutions": {
     "@types/unist": "2.0.6",
     "@testing-library/dom": "8.11.3",
-    "core-js-compat": "3.21.0",
+    "core-js-compat": "3.21.1",
     "lodash": "4.17.21",
     "react": "17.0.2",
     "react-dom": "17.0.2",

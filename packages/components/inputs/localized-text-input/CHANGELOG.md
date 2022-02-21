@@ -1,5 +1,24 @@
 # @commercetools-uikit/localized-text-input
 
+## 13.0.2
+
+### Patch Changes
+
+- [#2104](https://github.com/commercetools/ui-kit/pull/2104) [`ab08ef7d4`](https://github.com/commercetools/ui-kit/commit/ab08ef7d43ce530aeeb01702f90e1660277825cb) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Migrate localized text input to typescript
+
+- Updated dependencies [[`23fd9e859`](https://github.com/commercetools/ui-kit/commit/23fd9e859ac86dbe778100ddb10cb9464de53d0c), [`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`8b3110d97`](https://github.com/commercetools/ui-kit/commit/8b3110d97c0845bebe537f4d271e66ce04679922), [`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/input-utils@13.0.2
+  - @commercetools-uikit/text@13.0.2
+  - @commercetools-uikit/hooks@13.0.2
+  - @commercetools-uikit/messages@13.0.2
+  - @commercetools-uikit/icons@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/text-input@13.0.2
+  - @commercetools-uikit/flat-button@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings-stack@13.0.2
+  - @commercetools-uikit/localized-utils@13.0.2
+
 ## 13.0.1
 
 ### Patch Changes
