@@ -6026,6 +6026,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/is-hotkey@npm:^0.1.7":
+  version: 0.1.7
+  resolution: "@types/is-hotkey@npm:0.1.7"
+  checksum: bce7c8874b30f346f20cf6cfcf4a10372962924f0e1b1a925a279004faeb276242ebfbfee47bd48df57e1021f2e3078c34e25837e226960c418d5f78f83dacea
+  languageName: node
+  linkType: hard
+
 "@types/istanbul-lib-coverage@npm:*, @types/istanbul-lib-coverage@npm:^2.0.0, @types/istanbul-lib-coverage@npm:^2.0.1":
   version: 2.0.4
   resolution: "@types/istanbul-lib-coverage@npm:2.0.4"
@@ -6313,6 +6320,26 @@ __metadata:
     "@types/glob": "*"
     "@types/node": "*"
   checksum: 559b81efba72f2b231485b26510aad68cccfe98dc74087d67dafd5511462997884db0ef18e0e56bf61a3a5789aa65a54dc04845a488bb0528d4a699e6151b99c
+  languageName: node
+  linkType: hard
+
+"@types/slate-html-serializer@npm:^0.6.5":
+  version: 0.6.5
+  resolution: "@types/slate-html-serializer@npm:0.6.5"
+  dependencies:
+    "@types/react": "*"
+    "@types/slate": "*"
+  checksum: 35382f8d65bafa807b79fa7ceb7abc215fe62791e57b7e3d711b7891afec9eb1fe334ce6057b85e61f988d239b1899b4a5be526351e89ec2f4b578d0098aac9f
+  languageName: node
+  linkType: hard
+
+"@types/slate@npm:*":
+  version: 0.47.11
+  resolution: "@types/slate@npm:0.47.11"
+  dependencies:
+    "@types/react": "*"
+    immutable: ^3.8.2
+  checksum: 57efee2f8cc5c90583b256f332e764f7977ade9aff596513d68f44958b3914763ff0a2e4f4fdf1726bebd4815cc2e16a81f052432450cae52373af5582889cb8
   languageName: node
   linkType: hard
 
@@ -12050,6 +12077,13 @@ __metadata:
   version: 4.0.0
   resolution: "immutable@npm:4.0.0"
   checksum: 4b5e9181e4d5fa06728a481835ec09c86367e5d03268666c95b522b7644ab891098022e4479a43c4c81a68f2ed82f10751ce5d33e208d7b873b6e7f9dfaf4d87
+  languageName: node
+  linkType: hard
+
+"immutable@npm:^3.8.2":
+  version: 3.8.2
+  resolution: "immutable@npm:3.8.2"
+  checksum: 41909b386950ff84ca3cfca77c74cfc87d225a914e98e6c57996fa81a328da61a7c32216d6d5abad40f54747ffdc5c4b02b102e6ad1a504c1752efde8041f964
   languageName: node
   linkType: hard
 
@@ -19317,7 +19351,9 @@ __metadata:
     "@testing-library/jest-dom": 5.16.2
     "@testing-library/react": 12.1.3
     "@testing-library/react-hooks": 7.0.2
+    "@types/is-hotkey": ^0.1.7
     "@types/jest": 27.4.0
+    "@types/slate-html-serializer": ^0.6.5
     "@typescript-eslint/eslint-plugin": 5.12.1
     "@typescript-eslint/parser": 5.12.1
     babel-jest: 27.5.1
