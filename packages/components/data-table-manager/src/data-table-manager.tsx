@@ -39,8 +39,6 @@ type TColumProps = {
    * For example, using `minmax` pairs (e.g. `minmax(200px, 400px)`), a combinations of
    * fraction values (`1fr`/`2fr`/etc), or fixed values such as `200px`.
    * By default, the column grows according to the content and respecting the total table available width.
-   *
-   * @@defaultValue@@: auto
    */
   width?: string;
 
@@ -78,8 +76,6 @@ type TColumProps = {
    * it can shrink until the column disappears completely.
    * By enforcing a minimum width for these columns, the table will respect them and grow horizontally,
    * adding scrollbars if needed.
-   *
-   * @@defaultValue@@: false
    */
   isTruncated?: boolean;
 
@@ -87,16 +83,12 @@ type TColumProps = {
    * Set this to `true` to show a sorting button, which calls `onSortChange` upon being clicked.
    * You should enable this flag for every column you want to be able to sort.
    * When at least one column is sortable, the table props `sortBy`, `sortDirection` and `onSortChange` should be provided.
-   *
-   * @@defaultValue@@: false
    */
   isSortable?: boolean;
 
   /**
    * Set this to `true` to prevent this column from being manually resized by dragging
    * the edge of the header with a mouse.
-   *
-   * @@defaultValue@@: false
    */
   disableResizing?: boolean;
 
@@ -104,8 +96,6 @@ type TColumProps = {
    * Set this to `true` to prevent click event propagation for this cell.
    * You might want this if you need the column to have its own call-to-action or input while
    * the row also has a defined `onRowClick`.
-   *
-   * @@defaultValue@@: false
    */
   shouldIgnoreRowClick?: boolean;
 };

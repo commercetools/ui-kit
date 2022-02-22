@@ -159,7 +159,7 @@ export const getDropdownOptions = ({
     : []),
 ];
 
-export const getMappedColumns = (columns = [] as TColumnData[]) =>
+export const getMappedColumns = (columns: TColumnData[] = []) =>
   columns.reduce<MappedColumns>(
     (mappedColumns, column) => ({
       ...mappedColumns,
@@ -170,7 +170,7 @@ export const getMappedColumns = (columns = [] as TColumnData[]) =>
 
 export const getSelectedColumns = (
   mappedColumns: MappedColumns,
-  visibleColumnsKeys = [] as string[]
+  visibleColumnsKeys: string[] = []
 ) => visibleColumnsKeys.map((columnKey) => mappedColumns[columnKey]);
 
 const DataTableSettings = (props: TDataTableSettingsProps) => {

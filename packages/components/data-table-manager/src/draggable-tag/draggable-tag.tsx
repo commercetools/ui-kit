@@ -18,7 +18,7 @@ type TDraggableTagProps = {
 };
 
 const DraggableTag = (props: TDraggableTagProps) => {
-  const handleRemoveColumn = () => props.onRemove!(props.index);
+  const handleRemoveColumn = () => props.onRemove?.(props.index);
 
   return (
     <Draggable
