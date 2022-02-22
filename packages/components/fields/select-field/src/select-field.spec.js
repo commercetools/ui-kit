@@ -15,7 +15,10 @@ class Story extends Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+    ]),
     id: PropTypes.string,
     options: PropTypes.array.isRequired,
   };
@@ -175,6 +178,31 @@ describe('when field is touched and has errors', () => {
         renderError: () => 'Custom error',
       });
       expect(getByText('Custom error')).toBeInTheDocument();
+    });
+  });
+});
+
+describe('when field is not touched', () => {
+  describe('when isMulti is false', () => {
+    it('should not render an error', () => {
+      const { queryByText } = renderSelectField({
+        touched: false,
+        isMulti: false,
+        value: ['1', '2', '3'],
+        errors: { missing: true },
+      });
+      expect(queryByText(/field is required/i)).not.toBeInTheDocument();
+    });
+  });
+  describe('when isMulti is true', () => {
+    it('should not render an error', () => {
+      const { queryByText } = renderSelectField({
+        touched: undefined,
+        isMulti: true,
+        value: ['1', '2', '3'],
+        errors: { missing: true },
+      });
+      expect(queryByText(/field is required/i)).not.toBeInTheDocument();
     });
   });
 });
