@@ -1,5 +1,28 @@
 # @commercetools-uikit/date-time-field
 
+## 13.0.2
+
+### Patch Changes
+
+- [#2115](https://github.com/commercetools/ui-kit/pull/2115) [`32695bf79`](https://github.com/commercetools/ui-kit/commit/32695bf79ab8b4454a1d0fce5ee1b95f847a1f7d) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Migrate to typescript
+
+- Updated dependencies [[`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/field-label@13.0.2
+  - @commercetools-uikit/date-time-input@13.0.2
+  - @commercetools-uikit/field-errors@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`945acbded`](https://github.com/commercetools/ui-kit/commit/945acbded4737fe195fad164c4f3be14251070bc)]:
+  - @commercetools-uikit/date-time-input@13.0.1
+  - @commercetools-uikit/field-label@13.0.1
+  - @commercetools-uikit/spacings@13.0.1
+
 ## 13.0.0
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/async-creatable-select-field",
   "description": "An input component with validation states and a label getting a selection from an asynchronously loaded list from the user, and where options can be created by the user.",
-  "version": "13.0.0",
+  "version": "13.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,13 +21,13 @@
   "dependencies": {
     "@babel/runtime": "7.17.2",
     "@babel/runtime-corejs3": "7.17.2",
-    "@commercetools-uikit/async-creatable-select-input": "13.0.0",
-    "@commercetools-uikit/constraints": "13.0.0",
+    "@commercetools-uikit/async-creatable-select-input": "13.0.2",
+    "@commercetools-uikit/constraints": "13.0.2",
     "@commercetools-uikit/design-system": "13.0.0",
-    "@commercetools-uikit/field-errors": "13.0.0",
-    "@commercetools-uikit/field-label": "13.0.0",
-    "@commercetools-uikit/spacings": "13.0.0",
-    "@commercetools-uikit/utils": "12.2.9",
+    "@commercetools-uikit/field-errors": "13.0.2",
+    "@commercetools-uikit/field-label": "13.0.2",
+    "@commercetools-uikit/spacings": "13.0.2",
+    "@commercetools-uikit/utils": "13.0.2",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "prop-types": "15.8.1",

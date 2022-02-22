@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/secondary-button",
   "description": "Secondary buttons are used in combination with a PrimaryButton and represent the secondary action.",
-  "version": "13.0.0",
+  "version": "13.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,11 +21,11 @@
   "dependencies": {
     "@babel/runtime": "7.17.2",
     "@babel/runtime-corejs3": "7.17.2",
-    "@commercetools-uikit/accessible-button": "13.0.0",
+    "@commercetools-uikit/accessible-button": "13.0.2",
     "@commercetools-uikit/design-system": "13.0.0",
-    "@commercetools-uikit/spacings-inline": "13.0.0",
-    "@commercetools-uikit/text": "13.0.0",
-    "@commercetools-uikit/utils": "12.2.9",
+    "@commercetools-uikit/spacings-inline": "13.0.2",
+    "@commercetools-uikit/text": "13.0.2",
+    "@commercetools-uikit/utils": "13.0.2",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "common-tags": "1.8.2",

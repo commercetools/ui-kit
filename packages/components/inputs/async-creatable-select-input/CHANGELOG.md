@@ -1,5 +1,28 @@
 # @commercetools-uikit/async-creatable-select-input
 
+## 13.0.2
+
+### Patch Changes
+
+- [#2119](https://github.com/commercetools/ui-kit/pull/2119) [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/text@13.0.2
+  - @commercetools-uikit/icons@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/select-utils@13.0.2
+  - @commercetools-uikit/loading-spinner@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings@13.0.1
+  - @commercetools-uikit/select-utils@13.0.1
+
 ## 13.0.0
 
 ### Minor Changes

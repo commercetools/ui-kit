@@ -1,5 +1,28 @@
 # @commercetools-uikit/radio-input
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`23fd9e859`](https://github.com/commercetools/ui-kit/commit/23fd9e859ac86dbe778100ddb10cb9464de53d0c), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/input-utils@13.0.2
+  - @commercetools-uikit/icons@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings-inline@13.0.2
+  - @commercetools-uikit/spacings-stack@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- [#2103](https://github.com/commercetools/ui-kit/pull/2103) [`04ef35407`](https://github.com/commercetools/ui-kit/commit/04ef35407228bec666f500f7815d0fb33ca043e0) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Use Props from stack for directionProps
+
+* [#2113](https://github.com/commercetools/ui-kit/pull/2113) [`82787f794`](https://github.com/commercetools/ui-kit/commit/82787f7941f8cb88fb65922f03bb0e101ed43eef) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - version file migrated to typescript
+
+* Updated dependencies [[`04ef35407`](https://github.com/commercetools/ui-kit/commit/04ef35407228bec666f500f7815d0fb33ca043e0)]:
+  - @commercetools-uikit/spacings-stack@13.0.1
+
 ## 13.0.0
 
 ### Major Changes

@@ -1,5 +1,35 @@
 # @commercetools-uikit/date-time-input
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`8b3110d97`](https://github.com/commercetools/ui-kit/commit/8b3110d97c0845bebe537f4d271e66ce04679922), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/text@13.0.2
+  - @commercetools-uikit/hooks@13.0.2
+  - @commercetools-uikit/icons@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/calendar-utils@13.0.2
+  - @commercetools-uikit/secondary-icon-button@13.0.2
+  - @commercetools-uikit/select-utils@13.0.2
+  - @commercetools-uikit/tooltip@13.0.2
+  - @commercetools-uikit/calendar-time-utils@13.0.2
+  - @commercetools-uikit/accessible-button@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings-inline@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- [#2092](https://github.com/commercetools/ui-kit/pull/2092) [`945acbded`](https://github.com/commercetools/ui-kit/commit/945acbded4737fe195fad164c4f3be14251070bc) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Migrate to typescript
+
+- Updated dependencies [[`945acbded`](https://github.com/commercetools/ui-kit/commit/945acbded4737fe195fad164c4f3be14251070bc)]:
+  - @commercetools-uikit/calendar-time-utils@13.0.1
+  - @commercetools-uikit/secondary-icon-button@13.0.1
+  - @commercetools-uikit/select-utils@13.0.1
+  - @commercetools-uikit/calendar-utils@13.0.1
+
 ## 13.0.0
 
 ### Patch Changes

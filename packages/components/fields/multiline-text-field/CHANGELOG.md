@@ -1,5 +1,28 @@
 # @commercetools-uikit/multiline-text-field
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/multiline-text-input@13.0.2
+  - @commercetools-uikit/field-label@13.0.2
+  - @commercetools-uikit/field-errors@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- [#2056](https://github.com/commercetools/ui-kit/pull/2056) [`3704da644`](https://github.com/commercetools/ui-kit/commit/3704da64487f52d50dd349799def35407ecadbff) Thanks [@ddouglasz](https://github.com/ddouglasz)! - migrate multiline-text-field to typescript
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@13.0.1
+  - @commercetools-uikit/multiline-text-input@13.0.1
+  - @commercetools-uikit/spacings@13.0.1
+
 ## 13.0.0
 
 ### Patch Changes

@@ -1,5 +1,26 @@
 # @commercetools-uikit/money-field
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`8b3110d97`](https://github.com/commercetools/ui-kit/commit/8b3110d97c0845bebe537f4d271e66ce04679922), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/money-input@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/field-label@13.0.2
+  - @commercetools-uikit/field-errors@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@13.0.1
+  - @commercetools-uikit/spacings@13.0.1
+  - @commercetools-uikit/money-input@13.0.1
+
 ## 13.0.0
 
 ### Patch Changes

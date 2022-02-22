@@ -1,5 +1,28 @@
 # @commercetools-uikit/time-field
 
+## 13.0.2
+
+### Patch Changes
+
+- [#2110](https://github.com/commercetools/ui-kit/pull/2110) [`0a693265a`](https://github.com/commercetools/ui-kit/commit/0a693265aa9913ca21ff145177beb92cd52c347d) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - TimeField component migrated to Typescript
+
+- Updated dependencies [[`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/time-input@13.0.2
+  - @commercetools-uikit/field-label@13.0.2
+  - @commercetools-uikit/field-errors@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings-stack@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`04ef35407`](https://github.com/commercetools/ui-kit/commit/04ef35407228bec666f500f7815d0fb33ca043e0), [`82787f794`](https://github.com/commercetools/ui-kit/commit/82787f7941f8cb88fb65922f03bb0e101ed43eef)]:
+  - @commercetools-uikit/spacings-stack@13.0.1
+  - @commercetools-uikit/time-input@13.0.1
+  - @commercetools-uikit/field-label@13.0.1
+
 ## 13.0.0
 
 ### Patch Changes

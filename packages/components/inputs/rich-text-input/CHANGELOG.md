@@ -1,5 +1,29 @@
 # @commercetools-uikit/rich-text-input
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`23fd9e859`](https://github.com/commercetools/ui-kit/commit/23fd9e859ac86dbe778100ddb10cb9464de53d0c), [`8b3110d97`](https://github.com/commercetools/ui-kit/commit/8b3110d97c0845bebe537f4d271e66ce04679922), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/input-utils@13.0.2
+  - @commercetools-uikit/hooks@13.0.2
+  - @commercetools-uikit/icons@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/rich-text-utils@13.0.2
+  - @commercetools-uikit/flat-button@13.0.2
+  - @commercetools-uikit/collapsible-motion@13.0.2
+  - @commercetools-uikit/tooltip@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings-inline@13.0.2
+  - @commercetools-uikit/spacings-stack@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`04ef35407`](https://github.com/commercetools/ui-kit/commit/04ef35407228bec666f500f7815d0fb33ca043e0)]:
+  - @commercetools-uikit/spacings-stack@13.0.1
+
 ## 13.0.0
 
 ### Patch Changes

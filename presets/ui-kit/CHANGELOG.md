@@ -1,5 +1,54 @@
 # @commercetools-frontend/ui-kit
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`8b3110d97`](https://github.com/commercetools/ui-kit/commit/8b3110d97c0845bebe537f4d271e66ce04679922), [`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d), [`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81), [`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6)]:
+  - @commercetools-uikit/text@13.0.2
+  - @commercetools-uikit/label@13.0.2
+  - @commercetools-uikit/hooks@13.0.2
+  - @commercetools-uikit/messages@13.0.2
+  - @commercetools-uikit/notifications@13.0.2
+  - @commercetools-uikit/icons@13.0.2
+  - @commercetools-uikit/link@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/pagination@13.0.2
+  - @commercetools-uikit/inputs@13.0.2
+  - @commercetools-uikit/fields@13.0.2
+  - @commercetools-uikit/collapsible-panel@13.0.2
+  - @commercetools-uikit/data-table-manager@13.0.2
+  - @commercetools-uikit/field-label@13.0.2
+  - @commercetools-uikit/loading-spinner@13.0.2
+  - @commercetools-uikit/primary-action-dropdown@13.0.2
+  - @commercetools-uikit/tag@13.0.2
+  - @commercetools-uikit/collapsible@13.0.2
+  - @commercetools-uikit/collapsible-motion@13.0.2
+  - @commercetools-uikit/data-table@13.0.2
+  - @commercetools-uikit/tooltip@13.0.2
+  - @commercetools-uikit/field-errors@13.0.2
+  - @commercetools-uikit/avatar@13.0.2
+  - @commercetools-uikit/card@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/buttons@13.0.2
+  - @commercetools-uikit/spacings@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/fields@13.0.1
+  - @commercetools-uikit/field-label@13.0.1
+  - @commercetools-uikit/spacings@13.0.1
+  - @commercetools-uikit/data-table-manager@13.0.1
+  - @commercetools-uikit/inputs@13.0.1
+  - @commercetools-uikit/collapsible-panel@13.0.1
+  - @commercetools-uikit/pagination@13.0.1
+  - @commercetools-uikit/buttons@13.0.1
+  - @commercetools-uikit/data-table@13.0.1
+  - @commercetools-uikit/primary-action-dropdown@13.0.1
+
 ## 13.0.0
 
 ### Patch Changes

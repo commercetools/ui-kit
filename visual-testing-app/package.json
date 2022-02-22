@@ -1,6 +1,6 @@
 {
   "name": "visual-testing-app",
-  "version": "10.19.26",
+  "version": "10.19.27",
   "description": "An app to facilitate visual testing",
   "private": true,
   "scripts": {
@@ -26,7 +26,7 @@
     "html-webpack-plugin": "5.5.0",
     "moment-locales-webpack-plugin": "1.2.0",
     "serve": "13.0.2",
-    "webpack": "5.68.0",
+    "webpack": "5.69.1",
     "webpack-cli": "4.9.2"
   }
 }

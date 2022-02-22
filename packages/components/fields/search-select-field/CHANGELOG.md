@@ -1,5 +1,28 @@
 # @commercetools-uikit/search-select-field
 
+## 13.0.2
+
+### Patch Changes
+
+- [#2109](https://github.com/commercetools/ui-kit/pull/2109) [`53e855933`](https://github.com/commercetools/ui-kit/commit/53e85593365fbe85938837122c1c4586c9147745) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Migrate to typescript
+
+- Updated dependencies [[`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/field-label@13.0.2
+  - @commercetools-uikit/search-select-input@13.0.2
+  - @commercetools-uikit/field-errors@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@13.0.1
+  - @commercetools-uikit/spacings@13.0.1
+  - @commercetools-uikit/search-select-input@13.0.1
+
 ## 13.0.0
 
 ### Patch Changes

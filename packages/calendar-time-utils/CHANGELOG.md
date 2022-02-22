@@ -1,5 +1,18 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/utils@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- [#2092](https://github.com/commercetools/ui-kit/pull/2092) [`945acbded`](https://github.com/commercetools/ui-kit/commit/945acbded4737fe195fad164c4f3be14251070bc) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Update argument type for createItemDateTimeToString
+
 ## 13.0.0
 
 ### Patch Changes

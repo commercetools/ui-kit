@@ -1,5 +1,28 @@
 # @commercetools-uikit/localized-text-field
 
+## 13.0.2
+
+### Patch Changes
+
+- [#2116](https://github.com/commercetools/ui-kit/pull/2116) [`b6778bd72`](https://github.com/commercetools/ui-kit/commit/b6778bd72d8c061c143bd0ddfd21e5d82c4a131a) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Migrate localized text field to typescript
+
+- Updated dependencies [[`ab08ef7d4`](https://github.com/commercetools/ui-kit/commit/ab08ef7d43ce530aeeb01702f90e1660277825cb), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/localized-text-input@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/field-label@13.0.2
+  - @commercetools-uikit/field-errors@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@13.0.1
+  - @commercetools-uikit/localized-text-input@13.0.1
+  - @commercetools-uikit/spacings@13.0.1
+
 ## 13.0.0
 
 ### Patch Changes

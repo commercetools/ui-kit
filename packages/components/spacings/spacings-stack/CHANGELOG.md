@@ -1,5 +1,18 @@
 # @commercetools-uikit/spacings-stack
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/utils@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- [#2103](https://github.com/commercetools/ui-kit/pull/2103) [`04ef35407`](https://github.com/commercetools/ui-kit/commit/04ef35407228bec666f500f7815d0fb33ca043e0) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Expose stack props
+
 ## 13.0.0
 
 ### Patch Changes

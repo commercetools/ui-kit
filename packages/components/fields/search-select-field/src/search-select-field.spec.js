@@ -195,3 +195,14 @@ describe('when field is touched and has errors', () => {
     });
   });
 });
+
+describe('when `hintIcon` is passed', () => {
+  it('should render hintIcon and hint', async () => {
+    const { findByText } = renderSearchSelectField({
+      hintIcon: <span>icon hint</span>,
+      hint: <span>foo hint</span>,
+    });
+    expect(await findByText('icon hint')).toBeInTheDocument();
+    expect(await findByText('foo hint')).toBeInTheDocument();
+  });
+});
