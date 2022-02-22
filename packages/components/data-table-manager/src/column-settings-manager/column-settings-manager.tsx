@@ -100,14 +100,16 @@ export const handleColumnsUpdate = (
     const columns = isSwap ? selectedColumns : availableColumns;
     const draggedColumn = columns.find(
       (col) => col.key === dragResult.draggableId
-    )!;
+    );
 
-    // push the column in the new position
-    onUpdateColumns([
-      ...items.slice(0, dragResult.destination.index),
-      draggedColumn,
-      ...items.slice(dragResult.destination.index),
-    ]);
+    // push the column in the new position if draggedColumn is found
+    if (draggedColumn) {
+      onUpdateColumns([
+        ...items.slice(0, dragResult.destination.index),
+        draggedColumn,
+        ...items.slice(dragResult.destination.index),
+      ]);
+    }
   }
 };
 
@@ -151,8 +153,8 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
     [props.availableColumns, props.selectedColumns]
   );
 
-  const handleDragEnd = useCallback(
-    (dragResult: DropResult) =>
+  const handleDragEnd = useCallback<(dragResult: DropResult) => void>(
+    (dragResult) =>
       handleColumnsUpdate(
         dragResult,
         props.onUpdateColumns,
@@ -163,8 +165,8 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
     [props.onUpdateColumns, props.selectedColumns, props.availableColumns]
   );
 
-  const handleInputChange = useCallback(
-    (inputValue: string) =>
+  const handleInputChange = useCallback<(inputValue: string) => void>(
+    (inputValue) =>
       // loadOptions is not invoked when input is empty
       !inputValue.length && searchHiddenColumns?.(inputValue),
     [searchHiddenColumns]
