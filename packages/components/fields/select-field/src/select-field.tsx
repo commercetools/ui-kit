@@ -310,13 +310,13 @@ export default class SelectField extends Component<TSelectFieldProps> {
       warning(
         Array.isArray(this.props.value) ||
           typeof this.props.value === 'undefined',
-        'SelectField: `value` is expected to be an array of string when isMulti is true'
+        `SelectField: "value" is expected to be an array of strings when "isMulti" is true, instead got ${this.props.value}.`
       );
 
       warning(
         Array.isArray(this.props.touched) ||
           typeof this.props.touched === 'undefined',
-        'SelectField: `touched` is expected to be an array of boolean when isMulti is true'
+        `SelectField: "touched" is expected to be an array of booleans when "isMulti" is true, instead got ${this.props.touched}.`
       );
     }
     return (
