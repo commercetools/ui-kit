@@ -1,5 +1,12 @@
 # @commercetools-uikit/localized-money-input
 
+## 13.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`e87b760f4`](https://github.com/commercetools/ui-kit/commit/e87b760f4dfff96f058baf8479af22dd44670f21)]:
+  - @commercetools-uikit/money-input@13.0.3
+
 ## 13.0.2
 
 ### Patch Changes
