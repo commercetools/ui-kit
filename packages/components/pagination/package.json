@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/pagination",
   "description": "Components for navigating through pages of items",
-  "version": "13.0.2",
+  "version": "13.0.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "@commercetools-uikit/label": "13.0.2",
     "@commercetools-uikit/number-input": "13.0.2",
     "@commercetools-uikit/secondary-icon-button": "13.0.2",
-    "@commercetools-uikit/select-input": "13.0.2",
+    "@commercetools-uikit/select-input": "13.0.3",
     "@commercetools-uikit/spacings": "13.0.2",
     "@commercetools-uikit/text": "13.0.2",
     "@commercetools-uikit/utils": "13.0.2",

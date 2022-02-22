@@ -1901,22 +1901,22 @@ __metadata:
     "@commercetools-uikit/collapsible-panel": 13.0.2
     "@commercetools-uikit/constraints": 13.0.2
     "@commercetools-uikit/data-table": 13.0.2
-    "@commercetools-uikit/data-table-manager": 13.0.2
+    "@commercetools-uikit/data-table-manager": 13.0.3
     "@commercetools-uikit/design-system": 13.0.0
     "@commercetools-uikit/field-errors": 13.0.2
     "@commercetools-uikit/field-label": 13.0.2
-    "@commercetools-uikit/fields": 13.0.2
+    "@commercetools-uikit/fields": 13.0.3
     "@commercetools-uikit/grid": 12.2.9
     "@commercetools-uikit/hooks": 13.0.2
-    "@commercetools-uikit/i18n": 12.2.9
+    "@commercetools-uikit/i18n": 13.0.3
     "@commercetools-uikit/icons": 13.0.2
-    "@commercetools-uikit/inputs": 13.0.2
+    "@commercetools-uikit/inputs": 13.0.3
     "@commercetools-uikit/label": 13.0.2
     "@commercetools-uikit/link": 13.0.2
     "@commercetools-uikit/loading-spinner": 13.0.2
     "@commercetools-uikit/messages": 13.0.2
     "@commercetools-uikit/notifications": 13.0.2
-    "@commercetools-uikit/pagination": 13.0.2
+    "@commercetools-uikit/pagination": 13.0.3
     "@commercetools-uikit/primary-action-dropdown": 13.0.2
     "@commercetools-uikit/spacings": 13.0.2
     "@commercetools-uikit/stamp": 13.0.0
@@ -2391,7 +2391,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/data-table-manager@13.0.2, @commercetools-uikit/data-table-manager@workspace:packages/components/data-table-manager":
+"@commercetools-uikit/data-table-manager@13.0.3, @commercetools-uikit/data-table-manager@workspace:packages/components/data-table-manager":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/data-table-manager@workspace:packages/components/data-table-manager"
   dependencies:
@@ -2411,7 +2411,7 @@ __metadata:
     "@commercetools-uikit/radio-input": 13.0.2
     "@commercetools-uikit/secondary-button": 13.0.2
     "@commercetools-uikit/secondary-icon-button": 13.0.2
-    "@commercetools-uikit/select-input": 13.0.2
+    "@commercetools-uikit/select-input": 13.0.3
     "@commercetools-uikit/spacings": 13.0.2
     "@commercetools-uikit/tag": 13.0.2
     "@commercetools-uikit/text": 13.0.2
@@ -2688,7 +2688,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/fields@13.0.2, @commercetools-uikit/fields@workspace:presets/fields":
+"@commercetools-uikit/fields@13.0.3, @commercetools-uikit/fields@workspace:presets/fields":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/fields@workspace:presets/fields"
   dependencies:
@@ -2700,15 +2700,15 @@ __metadata:
     "@commercetools-uikit/date-field": 13.0.2
     "@commercetools-uikit/date-range-field": 13.0.2
     "@commercetools-uikit/date-time-field": 13.0.2
-    "@commercetools-uikit/localized-multiline-text-field": 13.0.2
+    "@commercetools-uikit/localized-multiline-text-field": 13.0.3
     "@commercetools-uikit/localized-text-field": 13.0.2
-    "@commercetools-uikit/money-field": 13.0.2
+    "@commercetools-uikit/money-field": 13.0.3
     "@commercetools-uikit/multiline-text-field": 13.0.2
     "@commercetools-uikit/number-field": 13.0.2
     "@commercetools-uikit/password-field": 13.0.2
     "@commercetools-uikit/radio-field": 13.0.2
     "@commercetools-uikit/search-select-field": 13.0.2
-    "@commercetools-uikit/select-field": 13.0.2
+    "@commercetools-uikit/select-field": 13.0.3
     "@commercetools-uikit/text-field": 13.0.2
     "@commercetools-uikit/time-field": 13.0.2
     react: 17.0.2
@@ -2773,7 +2773,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/i18n@12.2.9, @commercetools-uikit/i18n@workspace:packages/i18n":
+"@commercetools-uikit/i18n@13.0.3, @commercetools-uikit/i18n@workspace:packages/i18n":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/i18n@workspace:packages/i18n"
   dependencies:
@@ -2846,7 +2846,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/inputs@13.0.2, @commercetools-uikit/inputs@workspace:presets/inputs":
+"@commercetools-uikit/inputs@13.0.3, @commercetools-uikit/inputs@workspace:presets/inputs":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/inputs@workspace:presets/inputs"
   dependencies:
@@ -2859,18 +2859,18 @@ __metadata:
     "@commercetools-uikit/date-input": 13.0.2
     "@commercetools-uikit/date-range-input": 13.0.2
     "@commercetools-uikit/date-time-input": 13.0.2
-    "@commercetools-uikit/localized-money-input": 13.0.2
-    "@commercetools-uikit/localized-multiline-text-input": 13.0.2
-    "@commercetools-uikit/localized-rich-text-input": 13.0.2
+    "@commercetools-uikit/localized-money-input": 13.0.3
+    "@commercetools-uikit/localized-multiline-text-input": 13.0.3
+    "@commercetools-uikit/localized-rich-text-input": 13.0.3
     "@commercetools-uikit/localized-text-input": 13.0.2
-    "@commercetools-uikit/money-input": 13.0.2
+    "@commercetools-uikit/money-input": 13.0.3
     "@commercetools-uikit/multiline-text-input": 13.0.2
     "@commercetools-uikit/number-input": 13.0.2
     "@commercetools-uikit/password-input": 13.0.2
     "@commercetools-uikit/radio-input": 13.0.2
-    "@commercetools-uikit/rich-text-input": 13.0.2
+    "@commercetools-uikit/rich-text-input": 13.0.3
     "@commercetools-uikit/search-select-input": 13.0.2
-    "@commercetools-uikit/select-input": 13.0.2
+    "@commercetools-uikit/select-input": 13.0.3
     "@commercetools-uikit/text-input": 13.0.2
     "@commercetools-uikit/time-input": 13.0.2
     "@commercetools-uikit/toggle-input": 13.0.2
@@ -2974,7 +2974,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/localized-money-input@13.0.2, @commercetools-uikit/localized-money-input@workspace:packages/components/inputs/localized-money-input":
+"@commercetools-uikit/localized-money-input@13.0.3, @commercetools-uikit/localized-money-input@workspace:packages/components/inputs/localized-money-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-money-input@workspace:packages/components/inputs/localized-money-input"
   dependencies:
@@ -2987,7 +2987,7 @@ __metadata:
     "@commercetools-uikit/icons": 13.0.2
     "@commercetools-uikit/input-utils": 13.0.2
     "@commercetools-uikit/localized-utils": 13.0.2
-    "@commercetools-uikit/money-input": 13.0.2
+    "@commercetools-uikit/money-input": 13.0.3
     "@commercetools-uikit/select-utils": 13.0.2
     "@commercetools-uikit/spacings-stack": 13.0.2
     "@commercetools-uikit/tooltip": 13.0.2
@@ -3008,7 +3008,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/localized-multiline-text-field@13.0.2, @commercetools-uikit/localized-multiline-text-field@workspace:packages/components/fields/localized-multiline-text-field":
+"@commercetools-uikit/localized-multiline-text-field@13.0.3, @commercetools-uikit/localized-multiline-text-field@workspace:packages/components/fields/localized-multiline-text-field":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-multiline-text-field@workspace:packages/components/fields/localized-multiline-text-field"
   dependencies:
@@ -3018,7 +3018,7 @@ __metadata:
     "@commercetools-uikit/design-system": 13.0.0
     "@commercetools-uikit/field-errors": 13.0.2
     "@commercetools-uikit/field-label": 13.0.2
-    "@commercetools-uikit/localized-multiline-text-input": 13.0.2
+    "@commercetools-uikit/localized-multiline-text-input": 13.0.3
     "@commercetools-uikit/spacings": 13.0.2
     "@commercetools-uikit/utils": 13.0.2
     "@emotion/react": ^11.4.0
@@ -3032,7 +3032,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/localized-multiline-text-input@13.0.2, @commercetools-uikit/localized-multiline-text-input@workspace:packages/components/inputs/localized-multiline-text-input":
+"@commercetools-uikit/localized-multiline-text-input@13.0.3, @commercetools-uikit/localized-multiline-text-input@workspace:packages/components/inputs/localized-multiline-text-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-multiline-text-input@workspace:packages/components/inputs/localized-multiline-text-input"
   dependencies:
@@ -3066,7 +3066,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/localized-rich-text-input@13.0.2, @commercetools-uikit/localized-rich-text-input@workspace:packages/components/inputs/localized-rich-text-input":
+"@commercetools-uikit/localized-rich-text-input@13.0.3, @commercetools-uikit/localized-rich-text-input@workspace:packages/components/inputs/localized-rich-text-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-rich-text-input@workspace:packages/components/inputs/localized-rich-text-input"
   dependencies:
@@ -3081,7 +3081,7 @@ __metadata:
     "@commercetools-uikit/input-utils": 13.0.2
     "@commercetools-uikit/localized-utils": 13.0.2
     "@commercetools-uikit/messages": 13.0.2
-    "@commercetools-uikit/rich-text-utils": 13.0.2
+    "@commercetools-uikit/rich-text-utils": 13.0.3
     "@commercetools-uikit/spacings-inline": 13.0.2
     "@commercetools-uikit/spacings-stack": 13.0.2
     "@commercetools-uikit/text": 13.0.2
@@ -3191,7 +3191,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/money-field@13.0.2, @commercetools-uikit/money-field@workspace:packages/components/fields/money-field":
+"@commercetools-uikit/money-field@13.0.3, @commercetools-uikit/money-field@workspace:packages/components/fields/money-field":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/money-field@workspace:packages/components/fields/money-field"
   dependencies:
@@ -3201,7 +3201,7 @@ __metadata:
     "@commercetools-uikit/design-system": 13.0.0
     "@commercetools-uikit/field-errors": 13.0.2
     "@commercetools-uikit/field-label": 13.0.2
-    "@commercetools-uikit/money-input": 13.0.2
+    "@commercetools-uikit/money-input": 13.0.3
     "@commercetools-uikit/spacings": 13.0.2
     "@commercetools-uikit/utils": 13.0.2
     "@emotion/react": ^11.4.0
@@ -3215,7 +3215,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/money-input@13.0.2, @commercetools-uikit/money-input@workspace:packages/components/inputs/money-input":
+"@commercetools-uikit/money-input@13.0.3, @commercetools-uikit/money-input@workspace:packages/components/inputs/money-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/money-input@workspace:packages/components/inputs/money-input"
   dependencies:
@@ -3360,7 +3360,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/pagination@13.0.2, @commercetools-uikit/pagination@workspace:packages/components/pagination":
+"@commercetools-uikit/pagination@13.0.3, @commercetools-uikit/pagination@workspace:packages/components/pagination":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/pagination@workspace:packages/components/pagination"
   dependencies:
@@ -3372,7 +3372,7 @@ __metadata:
     "@commercetools-uikit/label": 13.0.2
     "@commercetools-uikit/number-input": 13.0.2
     "@commercetools-uikit/secondary-icon-button": 13.0.2
-    "@commercetools-uikit/select-input": 13.0.2
+    "@commercetools-uikit/select-input": 13.0.3
     "@commercetools-uikit/spacings": 13.0.2
     "@commercetools-uikit/text": 13.0.2
     "@commercetools-uikit/utils": 13.0.2
@@ -3530,7 +3530,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/rich-text-input@13.0.2, @commercetools-uikit/rich-text-input@workspace:packages/components/inputs/rich-text-input":
+"@commercetools-uikit/rich-text-input@13.0.3, @commercetools-uikit/rich-text-input@workspace:packages/components/inputs/rich-text-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/rich-text-input@workspace:packages/components/inputs/rich-text-input"
   dependencies:
@@ -3543,7 +3543,7 @@ __metadata:
     "@commercetools-uikit/hooks": 13.0.2
     "@commercetools-uikit/icons": 13.0.2
     "@commercetools-uikit/input-utils": 13.0.2
-    "@commercetools-uikit/rich-text-utils": 13.0.2
+    "@commercetools-uikit/rich-text-utils": 13.0.3
     "@commercetools-uikit/spacings-inline": 13.0.2
     "@commercetools-uikit/spacings-stack": 13.0.2
     "@commercetools-uikit/tooltip": 13.0.2
@@ -3567,7 +3567,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/rich-text-utils@13.0.2, @commercetools-uikit/rich-text-utils@workspace:packages/components/inputs/rich-text-utils":
+"@commercetools-uikit/rich-text-utils@13.0.3, @commercetools-uikit/rich-text-utils@workspace:packages/components/inputs/rich-text-utils":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/rich-text-utils@workspace:packages/components/inputs/rich-text-utils"
   dependencies:
@@ -3691,7 +3691,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/select-field@13.0.2, @commercetools-uikit/select-field@workspace:packages/components/fields/select-field":
+"@commercetools-uikit/select-field@13.0.3, @commercetools-uikit/select-field@workspace:packages/components/fields/select-field":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/select-field@workspace:packages/components/fields/select-field"
   dependencies:
@@ -3701,7 +3701,7 @@ __metadata:
     "@commercetools-uikit/design-system": 13.0.0
     "@commercetools-uikit/field-errors": 13.0.2
     "@commercetools-uikit/field-label": 13.0.2
-    "@commercetools-uikit/select-input": 13.0.2
+    "@commercetools-uikit/select-input": 13.0.3
     "@commercetools-uikit/spacings": 13.0.2
     "@commercetools-uikit/utils": 13.0.2
     "@emotion/react": ^11.4.0
@@ -3714,7 +3714,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/select-input@13.0.2, @commercetools-uikit/select-input@workspace:packages/components/inputs/select-input":
+"@commercetools-uikit/select-input@13.0.3, @commercetools-uikit/select-input@workspace:packages/components/inputs/select-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/select-input@workspace:packages/components/inputs/select-input"
   dependencies:
