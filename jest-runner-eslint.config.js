@@ -8,8 +8,5 @@ module.exports = {
         { trailingComma: 'es5', singleQuote: true },
       ],
     },
-    resolvePluginsRelativeTo: require.resolve(
-      '@commercetools-frontend/eslint-config-mc-app'
-    ),
   },
 };
