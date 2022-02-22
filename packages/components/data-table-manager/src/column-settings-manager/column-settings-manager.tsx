@@ -53,12 +53,11 @@ type TDroppableContainerProps = {
   isDragging: boolean;
 };
 
-const DroppableContainer = styled.div`
+const DroppableContainer = styled.div<TDroppableContainerProps>`
   width: 100%;
   position: relative;
   max-width: ${vars.constraint10};
-  cursor: ${(props: TDroppableContainerProps) =>
-    props.isDragging ? 'grabbing' : 'auto'};
+  cursor: ${(props) => (props.isDragging ? 'grabbing' : 'auto')};
 `;
 
 export const handleColumnsUpdate = (
