@@ -1,5 +1,15 @@
 # @commercetools-uikit/tag
 
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d)]:
+  - @commercetools-uikit/text@13.0.2
+  - @commercetools-uikit/icons@13.0.2
+  - @commercetools-uikit/accessible-button@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+
 ## 13.0.0
 
 ### Patch Changes
