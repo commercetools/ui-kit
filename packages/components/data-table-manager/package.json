@@ -45,8 +45,7 @@
     "debounce-promise": "^3.1.2",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-beautiful-dnd": "13.1.0",
-    "react-required-if": "1.0.3"
+    "react-beautiful-dnd": "13.1.0"
   },
   "devDependencies": {
     "@types/debounce-promise": "^3.1.4",
