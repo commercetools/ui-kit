@@ -1,4 +1,3 @@
-//@ts-nocheck - WIP: this will be taken off once a package having the exported TCurrencyCode is merged.
 import {
   useCallback,
   type FocusEventHandler,
@@ -62,9 +61,9 @@ type TLocalizedMoneyInputProps = {
   /**
    * value of possible currency
    * <br/>
-   *the input doesn't accept a "currencies" prop, instead all possible
-   *currencies have to exist (with empty or filled strings) on the value:
-   *{ EUR: {amount: '12.00', currencyCode: 'EUR'}, USD: {amount: '', currencyCode: 'USD'}}
+   * the input doesn't accept a "currencies" prop, instead all possible
+   * currencies have to exist (with empty or filled strings) on the value:
+   * { EUR: {amount: '12.00', currencyCode: 'EUR'}, USD: {amount: '', currencyCode: 'USD'}}
    */
   value: Record<string, TValue>;
   /**
@@ -250,8 +249,7 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
         `}
       >
         <MoneyInput
-          menuShouldBlockScroll={undefined} //NB: had to add missing prop
-          id={props.id} //NB: Had to add missing prop - open for dicsussion
+          menuShouldBlockScroll={undefined}
           name={props.name}
           value={props.value}
           onChange={handleChange}
@@ -402,7 +400,7 @@ LocalizedMoneyInput.convertToMoneyValues = (values: TValue[], locale: string) =>
   );
 
 LocalizedMoneyInput.parseMoneyValues = (
-  moneyValues = [] as TMoneyValue[],
+  moneyValues: TMoneyValue[] = [],
   locale: string
 ) =>
   moneyValues
