@@ -446,7 +446,7 @@ type TMoneyInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  menuShouldBlockScroll: ReactSelectProps['menuShouldBlockScroll'];
+  menuShouldBlockScroll?: ReactSelectProps['menuShouldBlockScroll'];
   /**
    * Indicates that input has errors
    */

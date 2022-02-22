@@ -4,7 +4,7 @@ import {
   type ChangeEventHandler,
   type ReactNode,
 } from 'react';
-import { useIntl, type IntlShape } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { css } from '@emotion/react';
 import { useToggleState, useFieldId } from '@commercetools-uikit/hooks';
 import MoneyInput, {
@@ -201,7 +201,6 @@ type TLocalizedInputProps = {
    * HTML node to display warning
    */
   warning?: ReactNode;
-  intl?: IntlShape;
 };
 
 const sequentialId = createSequentialId('localized-money-input-');
@@ -249,7 +248,6 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
         `}
       >
         <MoneyInput
-          menuShouldBlockScroll={undefined}
           name={props.name}
           value={props.value}
           onChange={handleChange}
@@ -352,7 +350,6 @@ const LocalizedMoneyInput = (props: TLocalizedMoneyInputProps) => {
                   props.hasWarning ||
                     (props.warnings && props.warnings[currency])
                 )}
-                intl={intl}
                 warning={props.warnings && props.warnings[currency]}
                 error={props.errors && props.errors[currency]}
                 {...createLocalizedDataAttributes(props, currency)}
