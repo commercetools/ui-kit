@@ -4,6 +4,7 @@ import {
   type ReactNode,
   type LegacyRef,
   type CSSProperties,
+  type ElementType,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
@@ -146,7 +147,7 @@ const Item = styled.div`
 const StylesDropdownItem = (props: TStylesDropdownItem) => {
   const asProp = (Object.keys(BLOCK_TAGS).find(
     (key) => BLOCK_TAGS[key as keyof typeof BLOCK_TAGS] === props.value
-  ) || 'div') as React.ElementType;
+  ) || 'div') as ElementType;
 
   return (
     <DropdownItem {...props}>
