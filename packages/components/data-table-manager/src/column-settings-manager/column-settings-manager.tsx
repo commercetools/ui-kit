@@ -22,11 +22,17 @@ import {
   EyeIcon,
   SearchIcon,
 } from '@commercetools-uikit/icons';
+import { warning } from '@commercetools-uikit/utils';
 import DroppablePanel from '../droppable-panel';
 import SettingsContainer from '../settings-container';
 import messages from './messages';
 import { HIDDEN_COLUMNS_PANEL, SELECTED_COLUMNS_PANEL } from './constants';
-import { warning } from '@commercetools-uikit/utils';
+
+// 'searchHiddenColums' is only required if 'areHiddenColumnsSearchable' is true
+// but that callback is used in AsyncSelectInput.loadOptions which is required
+// That property (loadOptions) is passed to react-select AsyncSelect where it's
+// declared as optional
+const noSearch = () => Promise.resolve();
 
 type TColumnData = {
   key: string;
@@ -203,12 +209,7 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
                   // loadOptions is used instead of onInputChange
                   // because the loading indicator is displayed
                   // only when loadOptions is invoked
-                  // ts-ignore directive is used because 'searchHiddenColumns' only
-                  // exists when 'areHiddenColumnsSearchable' prop is true (otherwise
-                  // this block is not rendered) but the AsyncSelectInput component
-                  // requires the 'loadOptions' property
-                  // @ts-ignore
-                  loadOptions={debounce(searchHiddenColumns, 300)}
+                  loadOptions={debounce(searchHiddenColumns ?? noSearch, 300)}
                   onInputChange={handleInputChange}
                   components={selectInputComponents}
                 />
