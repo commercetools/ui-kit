@@ -10,6 +10,10 @@ import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
 
+interface TRow {
+  id: string;
+}
+
 type TColumProps = {
   /**
    * The unique key of the column that is used to identify your data type.
@@ -54,7 +58,7 @@ type TColumProps = {
    * A callback function to render the content of cells under this column, overriding
    * the default `itemRenderer` prop of the table.
    */
-  renderItem?: (row: ReactNode, isRowCollapsed: boolean) => ReactNode;
+  renderItem?: <T extends TRow>(row: T, isRowCollapsed: boolean) => ReactNode;
 
   /**
    * Use this prop to place an `Icon` or `IconButton` on the left of the column label.
