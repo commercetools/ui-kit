@@ -1,7 +1,13 @@
-import { forwardRef, useCallback } from 'react';
+import {
+  forwardRef,
+  useCallback,
+  type ReactNode,
+  type LegacyRef,
+  type CSSProperties,
+  type ElementType,
+} from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import requiredIf from 'react-required-if';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Tooltip from '@commercetools-uikit/tooltip';
@@ -35,11 +41,62 @@ import { DropdownItem } from './dropdown.styles';
 import { MARK_TAGS, BLOCK_TAGS } from '../tags';
 import hasBlock from '../has-block';
 import messages from './messages';
+import { warning } from '@commercetools-uikit/utils';
+import type { TEditor, TMark } from '../editor.types';
+
+type TMoreStylesDropdownItem = {
+  value?: string;
+  children?: ReactNode;
+};
+
+type TDropdownLabel = {
+  children?: ReactNode;
+};
+
+type TStylesDropdownItem = {
+  value?: string;
+  children?: ReactNode;
+  displayName?: string;
+};
+
+type TStyleDropdownOptionParagraph = {
+  id: string;
+  description: string;
+  defaultMessage: string;
+};
+
+type TStyleDropdownOptions = {
+  formatMessage: (message: TStyleDropdownOptionParagraph) => string;
+};
+
+type TNodeRefObject = {
+  clientHeight: number;
+} & LegacyRef<HTMLDivElement>;
+
+type TRichtTextEditorBodyRef = {
+  registerContentNode: TNodeRefObject;
+  containerRef?: LegacyRef<HTMLDivElement>;
+};
+
+export type TRichTextEditorBody = {
+  editor: TEditor;
+  styles: {
+    container?: string;
+  };
+  hasError?: boolean;
+  isReadOnly: boolean;
+  hasWarning?: boolean;
+  isDisabled?: boolean;
+  showExpandIcon: boolean;
+  onClickExpand?: () => boolean;
+  containerStyles: CSSProperties;
+  children: ReactNode;
+};
 
 const MoreStylesDropdownLabel = () => <MoreStylesIcon size="medium" />;
 MoreStylesDropdownLabel.displayName = 'MoreStylesDropdownLabel';
 
-const MoreStylesDropdownItem = (props) => {
+const MoreStylesDropdownItem = (props: TMoreStylesDropdownItem) => {
   let Icon;
   switch (props.value) {
     case 'subscript':
@@ -68,7 +125,7 @@ MoreStylesDropdownItem.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const DropdownLabel = (props) => {
+const DropdownLabel = (props: TDropdownLabel) => {
   return (
     <Inline scale="xs" alignItems="center" justifyContent="center">
       <span>{props.children}</span>
@@ -87,21 +144,16 @@ const Item = styled.div`
   text-align: left;
 `;
 
-const StylesDropdownItem = (props) => {
-  const as =
-    Object.keys(BLOCK_TAGS).find((key) => BLOCK_TAGS[key] === props.value) ||
-    'div';
+const StylesDropdownItem = (props: TStylesDropdownItem) => {
+  const asProp = (Object.keys(BLOCK_TAGS).find(
+    (key) => BLOCK_TAGS[key as keyof typeof BLOCK_TAGS] === props.value
+  ) || 'div') as ElementType;
 
   return (
     <DropdownItem {...props}>
-      <Item as={as}>{props.children}</Item>
+      <Item as={asProp}>{props.children}</Item>
     </DropdownItem>
   );
-};
-
-StylesDropdownItem.propTypes = {
-  children: PropTypes.node.isRequired,
-  value: PropTypes.string.isRequired,
 };
 
 StylesDropdownItem.displayName = 'StylesDropdownItem';
@@ -114,7 +166,7 @@ const tooltipStyles = {
   },
 };
 
-const createStyleDropdownOptions = (intl) => {
+const createStyleDropdownOptions = (intl: TStyleDropdownOptions) => {
   return [
     {
       label: intl.formatMessage(messages.styleDropdownOptionParagraph),
@@ -151,7 +203,7 @@ const createStyleDropdownOptions = (intl) => {
   ];
 };
 
-const createMoreStylesDropdownOptions = (intl) => {
+const createMoreStylesDropdownOptions = (intl: TStyleDropdownOptions) => {
   return [
     {
       label: intl.formatMessage(messages.moreStylesDropdownOptionStrikethrough),
@@ -168,8 +220,13 @@ const createMoreStylesDropdownOptions = (intl) => {
   ];
 };
 
-const RichTextEditorBody = forwardRef((props, ref) => {
-  const { registerContentNode, containerRef } = ref;
+const RichTextEditorBody = forwardRef<
+  TRichtTextEditorBodyRef,
+  TRichTextEditorBody
+>((props, ref) => {
+  // NOTE: the forwarded ref is an object of refs, thus making it a bit trickier to type.
+  const { registerContentNode, containerRef } =
+    ref as unknown as TRichtTextEditorBodyRef;
   const intl = useIntl();
 
   const dropdownOptions = createMoreStylesDropdownOptions(intl);
@@ -196,12 +253,14 @@ const RichTextEditorBody = forwardRef((props, ref) => {
       } else {
         // Handle the extra wrapping required for list buttons.
         const isList = hasBlock(BLOCK_TAGS.li, props.editor);
-        const isType = props.editor.value.blocks.some((block) => {
-          return !!props.editor.value.document.getClosest(
-            block.key,
-            (parent) => parent.type === type
-          );
-        });
+        const isType = props.editor.value?.blocks.some(
+          (block: { key: { key: unknown } }) => {
+            return !!props.editor.value?.document.getClosest(
+              block.key,
+              (parent: { type: string }) => parent.type === type
+            );
+          }
+        );
 
         if (isList && isType) {
           props.editor
@@ -222,24 +281,23 @@ const RichTextEditorBody = forwardRef((props, ref) => {
 
   const onChangeMoreStyles = useCallback(
     (val) => {
-      props.editor.toggleMark(val.value);
+      props.editor.toggleMark?.(val.value);
     },
     [props.editor]
   );
 
-  const activeBlock =
-    (props.editor.value.blocks.first() &&
-      props.editor.value.blocks.first().type) ||
-    '';
+  const activeBlock = props.editor.value?.blocks.first()?.type || '';
 
   // so that we don't show our multi dropdown in an `indeterminate`
   // while the component is not in focus
-  let activeMoreStyleMarks = [];
+  let activeMoreStyleMarks: Array<string> = [];
 
-  if (props.editor.value.selection.isFocused) {
-    const activeMarks = Array.from(props.editor.value.activeMarks).map(
-      (mark) => mark.type
-    );
+  if (props.editor.value?.selection.isFocused) {
+    const activeMarks = Array.from(
+      props.editor.value.activeMarks as TMark[]
+    ).map((mark) => {
+      return mark.type;
+    });
 
     activeMoreStyleMarks = activeMarks.filter((activeMark) =>
       dropdownOptions.some(
@@ -255,6 +313,13 @@ const RichTextEditorBody = forwardRef((props, ref) => {
   const onToolbarMouseDown = useCallback((event) => {
     event.preventDefault();
   }, []);
+
+  if (props.showExpandIcon) {
+    warning(
+      typeof props.onClickExpand === 'function',
+      'RichTextUtils: "onClickExpand" is required when showExpandIcon is true'
+    );
+  }
 
   return (
     <Container
@@ -285,7 +350,7 @@ const RichTextEditorBody = forwardRef((props, ref) => {
           >
             <Button
               isActive={
-                props.editor.value.selection.isFocused &&
+                props.editor.value?.selection.isFocused &&
                 props.editor.hasBoldMark()
               }
               isDisabled={props.isDisabled}
@@ -303,7 +368,7 @@ const RichTextEditorBody = forwardRef((props, ref) => {
           >
             <Button
               isActive={
-                props.editor.value.selection.isFocused &&
+                props.editor.value?.selection.isFocused &&
                 props.editor.hasItalicMark()
               }
               isDisabled={props.isDisabled}
@@ -321,7 +386,7 @@ const RichTextEditorBody = forwardRef((props, ref) => {
           >
             <Button
               isActive={
-                props.editor.value.selection.isFocused &&
+                props.editor.value?.selection.isFocused &&
                 props.editor.hasUnderlinedMark()
               }
               isDisabled={props.isDisabled}
@@ -353,7 +418,7 @@ const RichTextEditorBody = forwardRef((props, ref) => {
           >
             <Button
               isActive={
-                props.editor.value.selection.isFocused &&
+                props.editor.value?.selection.isFocused &&
                 props.editor.hasNumberedListBlock()
               }
               isDisabled={props.isDisabled}
@@ -371,7 +436,7 @@ const RichTextEditorBody = forwardRef((props, ref) => {
           >
             <Button
               isActive={
-                props.editor.value.selection.isFocused &&
+                props.editor.value?.selection.isFocused &&
                 props.editor.hasBulletedListBlock()
               }
               isDisabled={props.isDisabled}
@@ -461,22 +526,12 @@ const RichTextEditorBody = forwardRef((props, ref) => {
   );
 });
 
-RichTextEditorBody.displayName = 'RichTextEditorBody';
-RichTextEditorBody.propTypes = {
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  editor: PropTypes.any,
-  children: PropTypes.node,
-  containerStyles: PropTypes.any,
-  showExpandIcon: PropTypes.bool.isRequired,
-  onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
-  styles: PropTypes.any,
-};
-
-RichTextEditorBody.defaultProps = {
+const defaultProps: Pick<TRichTextEditorBody, 'styles'> = {
   styles: {},
 };
+
+RichTextEditorBody.displayName = 'RichTextEditorBody';
+
+RichTextEditorBody.defaultProps = defaultProps;
 
 export default RichTextEditorBody;

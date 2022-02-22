@@ -1,9 +1,20 @@
+import type { ReactNode } from 'react';
 import { BLOCK_TAGS, MARK_TAGS } from '../tags';
 
-// eslint-disable-next-line import/prefer-default-export
+type TType = {
+  type: string;
+};
+
+type TRenderBlockPluginProps = {
+  children: ReactNode;
+  mark: TType;
+  attributes: unknown;
+  node: TType;
+};
+
 export const RenderBlockPlugin = () => {
   return {
-    renderBlock(props, editor, next) {
+    renderBlock(props: TRenderBlockPluginProps, next: () => ReactNode) {
       const { attributes, children, node } = props;
       switch (node.type) {
         case BLOCK_TAGS.pre:
@@ -41,7 +52,7 @@ export const RenderBlockPlugin = () => {
 
 export const RenderMarkPlugin = () => {
   return {
-    renderMark(props, editor, next) {
+    renderMark(props: TRenderBlockPluginProps, next: () => ReactNode) {
       const { children, mark, attributes } = props;
 
       switch (mark.type) {

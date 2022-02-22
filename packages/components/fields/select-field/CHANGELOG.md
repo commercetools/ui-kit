@@ -1,5 +1,14 @@
 # @commercetools-uikit/select-field
 
+## 13.0.3
+
+### Patch Changes
+
+- [#2121](https://github.com/commercetools/ui-kit/pull/2121) [`5391caadd`](https://github.com/commercetools/ui-kit/commit/5391caaddebc5acf9b90842808fb0f8081b837e6) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fixed component props validation
+
+- Updated dependencies [[`5391caadd`](https://github.com/commercetools/ui-kit/commit/5391caaddebc5acf9b90842808fb0f8081b837e6)]:
+  - @commercetools-uikit/select-input@13.0.3
+
 ## 13.0.2
 
 ### Patch Changes

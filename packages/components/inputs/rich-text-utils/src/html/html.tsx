@@ -1,9 +1,20 @@
-/* eslint-disable consistent-return */
 import Html from 'slate-html-serializer';
 import flatMap from 'lodash/flatMap';
 import { MARK_TAGS, BLOCK_TAGS } from '../tags';
+import type { ReactNode } from 'react';
 
-const mapper = {
+type TSerializableObject = {
+  object: string;
+  type: string;
+  data: {
+    get: (arg0: string) => string | undefined;
+  };
+};
+
+type TAttributes = Record<string, string>;
+type TMapper = Record<string, TAttributes>;
+
+const mapper: TMapper = {
   'font-weight': {
     bold: 'strong',
   },
@@ -25,8 +36,9 @@ const mapper = {
 
 const rules = [
   {
-    deserialize(el, next) {
-      const type = BLOCK_TAGS[el.tagName.toLowerCase()];
+    deserialize(el: Element, next: (arg0: NodeListOf<ChildNode>) => unknown) {
+      const type =
+        BLOCK_TAGS[el.tagName.toLowerCase() as keyof typeof BLOCK_TAGS];
       if (type) {
         return {
           object: 'block',
@@ -37,10 +49,10 @@ const rules = [
           nodes: next(el.childNodes),
         };
       }
+      return;
     },
-    serialize(obj, children) {
+    serialize(obj: TSerializableObject, children: ReactNode) {
       if (obj.object === 'block') {
-        // eslint-disable-next-line default-case
         switch (obj.type) {
           case 'code':
             return (
@@ -70,12 +82,13 @@ const rules = [
             return <blockquote>{children}</blockquote>;
         }
       }
+      return;
     },
   },
 
   {
     // Special case for code blocks, which need to grab the nested childNodes.
-    deserialize(el, next) {
+    deserialize(el: Element, next: (arg0: NodeListOf<ChildNode>) => void) {
       if (el.tagName.toLowerCase() === 'span') {
         const styleAttribute = el.getAttribute('style');
         let tagName = 'span';
@@ -87,14 +100,14 @@ const rules = [
 
             const [key, ...values] = split;
 
-            return values.map((value) => ({
+            return values.map<TAttributes>((value) => ({
               // always remove the : from the key
               [key.slice(0, -1)]: value,
             }));
           })
             .map((val) => {
               const [key, value] = Object.entries(val)[0];
-              return mapper[key] && mapper[key][value];
+              return mapper[key]?.[value];
             })
             .filter((val) => Boolean(val));
 
@@ -103,7 +116,7 @@ const rules = [
           if (marks && marks.length > 0) {
             tagName = marks[0];
 
-            marks.forEach((mark) => {
+            marks.forEach((mark: string) => {
               deepestNode.removeChild(childNode);
               const newNode = document.createElement(mark);
               newNode.appendChild(childNode);
@@ -115,17 +128,19 @@ const rules = [
 
         return {
           object: 'mark',
-          type: MARK_TAGS[tagName],
+          type: MARK_TAGS[tagName as keyof typeof MARK_TAGS],
           nodes: next(el.childNodes),
         };
       }
+      return;
     },
   },
 
   // Add a new rule that handles marks...
   {
-    deserialize(el, next) {
-      const type = MARK_TAGS[el.tagName.toLowerCase()];
+    deserialize(el: Element, next: (arg0: NodeListOf<ChildNode>) => void) {
+      const type =
+        MARK_TAGS[el.tagName.toLowerCase() as keyof typeof MARK_TAGS];
       if (type) {
         return {
           object: 'mark',
@@ -133,10 +148,10 @@ const rules = [
           nodes: next(el.childNodes),
         };
       }
+      return;
     },
-    serialize(obj, children) {
+    serialize(obj: TSerializableObject, children: ReactNode) {
       if (obj.object === 'mark') {
-        // eslint-disable-next-line default-case
         switch (obj.type) {
           case 'span':
             return <span>{children}</span>;
@@ -160,6 +175,7 @@ const rules = [
             );
         }
       }
+      return;
     },
   },
 ];
