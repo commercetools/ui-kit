@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
+import type { KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
+import { useIntl, type MessageDescriptor } from 'react-intl';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
@@ -8,13 +8,29 @@ import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import { CloseIcon } from '@commercetools-uikit/icons';
 
+type TSettingsContainerProps = {
+  title: MessageDescriptor & {
+    values?: Record<string, React.ReactNode>;
+  };
+  closeButtonLabel: MessageDescriptor & {
+    values?: Record<string, React.ReactNode>;
+  };
+  onClose: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
+  primaryButton?: ReactElement;
+  secondaryButton?: ReactElement;
+  children: ReactNode;
+  containerTheme?: 'light' | 'dark';
+};
+
 const HeaderContainer = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-between;
 `;
 
-const SettingsContainer = (props) => {
+const SettingsContainer = (props: TSettingsContainerProps) => {
   const intl = useIntl();
 
   return (
@@ -52,23 +68,10 @@ const SettingsContainer = (props) => {
 };
 
 SettingsContainer.displayName = 'SettingsContainer';
-SettingsContainer.propTypes = {
-  title: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    defaultMessage: PropTypes.string.isRequired,
-  }).isRequired,
-  closeButtonLabel: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    defaultMessage: PropTypes.string.isRequired,
-  }).isRequired,
-  onClose: PropTypes.func.isRequired,
-  primaryButton: PropTypes.element,
-  secondaryButton: PropTypes.element,
-  children: PropTypes.node.isRequired,
-  containerTheme: PropTypes.oneOf(['light', 'dark']),
-};
-SettingsContainer.defaultProps = {
+
+const defaultProps: Pick<TSettingsContainerProps, 'containerTheme'> = {
   containerTheme: 'dark',
 };
+SettingsContainer.defaultProps = defaultProps;
 
 export default SettingsContainer;

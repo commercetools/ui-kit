@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import type { ReactNode } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
@@ -6,7 +6,21 @@ import DraggableTag from '../draggable-tag';
 import TagContainerEditable from './tag-container-editable';
 import messages from './messages';
 
-const DroppablePanel = (props) => {
+type TColumnData = {
+  key: string;
+  label: ReactNode;
+};
+
+type TDroppablePanelProps = {
+  droppableId: string;
+  noColumnsText: ReactNode;
+  columns: TColumnData[];
+  isSearchable?: boolean;
+  isDisabled?: boolean;
+  onRemove?: (columns: TColumnData[]) => void;
+};
+
+const DroppablePanel = (props: TDroppablePanelProps) => {
   return (
     <Droppable droppableId={props.droppableId}>
       {(provided) => (
@@ -28,7 +42,7 @@ const DroppablePanel = (props) => {
                   onRemove={
                     props.onRemove
                       ? () =>
-                          props.onRemove([
+                          props.onRemove!([
                             ...props.columns.slice(0, index),
                             ...props.columns.slice(index + 1),
                           ])
@@ -55,18 +69,5 @@ const DroppablePanel = (props) => {
 };
 
 DroppablePanel.displayName = 'DroppablePanel';
-DroppablePanel.propTypes = {
-  droppableId: PropTypes.string.isRequired,
-  noColumnsText: PropTypes.node.isRequired,
-  columns: PropTypes.arrayOf(
-    PropTypes.shape({
-      key: PropTypes.string.isRequired,
-      label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-    })
-  ),
-  isSearchable: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  onRemove: PropTypes.func,
-};
 
 export default DroppablePanel;
