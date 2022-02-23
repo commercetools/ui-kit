@@ -1,21 +1,39 @@
+import { ReactNode } from 'react';
 import { BLOCK_TAGS } from '../tags';
+import type { TEditor } from '../editor.types';
+
+type TType = {
+  type: string;
+};
+
+type TListPlugin = {
+  attributes: unknown;
+  children: ReactNode;
+  node: TType;
+};
 
 const DEFAULT_NODE = BLOCK_TAGS.p;
 
-const hasBlock = (type, editor) =>
-  editor.value.blocks.some((node) => node.type === type);
+const hasBlock = (type: string, editor: TEditor) =>
+  editor.value.blocks.some((node: { type: string }) => {
+    return node.type === type;
+  });
 
-const toggle = (editor, typeName) => {
+const toggle = (editor: TEditor, typeName: string) => {
   // Handle the extra wrapping required for list buttons.
   const isList = hasBlock(BLOCK_TAGS.li, editor);
-  const isType = editor.value.blocks.some((block) => {
-    return Boolean(
-      editor.value.document.getClosest(
-        block.key,
-        (parent) => parent.type === typeName
-      )
-    );
-  });
+  const isType = editor.value.blocks.some(
+    (block: { key: { key: unknown } }) => {
+      return Boolean(
+        editor.value.document.getClosest(
+          block.key,
+          (parent: { type: string }) => {
+            return parent.type === typeName;
+          }
+        )
+      );
+    }
+  );
 
   if (isList && isType) {
     editor
@@ -31,11 +49,14 @@ const toggle = (editor, typeName) => {
   }
 };
 
-const query = (editor, typeName) => {
+const query = (editor: TEditor, typeName: string) => {
   let isActive = hasBlock(typeName, editor);
 
-  if (editor.value.blocks.size > 0) {
-    const parent = editor.value.document.getParent(
+  if (
+    typeof editor.value.blocks.size === 'number' &&
+    editor.value.blocks.size > 0
+  ) {
+    const parent = editor.value.document.getParent?.(
       editor.value.blocks.first().key
     );
     isActive =
@@ -47,7 +68,11 @@ const query = (editor, typeName) => {
 const ListPlugin = () => {
   return [
     {
-      renderBlock(props, editor, next) {
+      renderBlock(
+        props: TListPlugin,
+        _editor: TEditor,
+        next: () => JSX.Element
+      ) {
         const { attributes, children, node } = props;
 
         switch (node.type) {
@@ -62,13 +87,13 @@ const ListPlugin = () => {
         }
       },
       commands: {
-        toggleBulletedListBlock: (editor) => {
+        toggleBulletedListBlock: (editor: TEditor) => {
           if (!editor.value.selection.isFocused) {
             editor.focus();
           }
           toggle(editor, BLOCK_TAGS.ul);
         },
-        toggleNumberedListBlock: (editor) => {
+        toggleNumberedListBlock: (editor: TEditor) => {
           if (!editor.value.selection.isFocused) {
             editor.focus();
           }
@@ -76,8 +101,8 @@ const ListPlugin = () => {
         },
       },
       queries: {
-        hasBulletedListBlock: (editor) => query(editor, BLOCK_TAGS.ul),
-        hasNumberedListBlock: (editor) => query(editor, BLOCK_TAGS.ol),
+        hasBulletedListBlock: (editor: TEditor) => query(editor, BLOCK_TAGS.ul),
+        hasNumberedListBlock: (editor: TEditor) => query(editor, BLOCK_TAGS.ol),
       },
     },
   ];

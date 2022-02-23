@@ -2,7 +2,16 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 
-const DropdownItem = styled.button`
+type TDropdownStylesProps = {
+  isSelected?: boolean;
+  isIndeterminate?: boolean;
+  isStyleButton?: boolean;
+  isOpen?: boolean;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+};
+
+const DropdownItem = styled.button<TDropdownStylesProps>`
   width: 100%;
   border: 0;
   font-size: 1rem;
@@ -20,7 +29,7 @@ const DropdownItem = styled.button`
   }
 `;
 
-const getButtonStyles = (props = { isStyleButton: true }) => [
+const getButtonStyles = (props: TDropdownStylesProps) => [
   css`
     border: 0;
     font-family: ${vars.fontFamilyDefault};

@@ -1,16 +1,25 @@
-import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import type { ReactNode } from 'react';
+
+type TRichTextBodyButtonProps = {
+  isDisabled?: boolean;
+  label: string;
+  isActive?: boolean;
+  isReadOnly?: boolean;
+  children: ReactNode;
+  onClick?: () => void;
+};
 
 const propsToOmit = ['isActive', 'label', 'isDisabled', 'isReadOnly'];
 
-function getFillColor(props) {
+function getFillColor(props: TRichTextBodyButtonProps) {
   if (props.isActive) return vars.colorSurface;
   return vars.colorSolid;
 }
 
-const RichTextBodyButton = (props) => {
+const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
   const restOfProps = omit(props, propsToOmit);
 
   return (
@@ -65,15 +74,6 @@ const RichTextBodyButton = (props) => {
       {props.children}
     </button>
   );
-};
-
-RichTextBodyButton.propTypes = {
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  onClick: PropTypes.func,
-  label: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
-  children: PropTypes.element.isRequired,
 };
 
 RichTextBodyButton.displayName = 'RichTextInputButton';

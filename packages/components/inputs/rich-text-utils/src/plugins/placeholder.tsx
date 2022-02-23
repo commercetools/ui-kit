@@ -1,6 +1,36 @@
 // copied from https://github.com/ianstormtaylor/slate/tree/master/packages/slate-react-placeholder/src
 // and modified to use editor's `options.placeholder` prop instead.
 import { warning } from '@commercetools-uikit/utils';
+import type { CSSProperties, ReactNode } from 'react';
+import type { TEditor, TNode } from '../editor.types';
+
+type TEditorQueryPredicate = string | (() => void);
+
+type TDecorationNode = {
+  key: string;
+  offset: number;
+  path: string;
+};
+
+type TDecoration = {
+  type: string;
+  data: {
+    key: number;
+    get?: (name: string) => number;
+  };
+  anchor: TDecorationNode;
+  focus: TDecorationNode;
+};
+
+type TRenderDecorationProps = {
+  children: ReactNode;
+  decoration: TDecoration;
+};
+
+type TSlateReactPlaceholderOptions = {
+  when: TEditorQueryPredicate;
+  style: CSSProperties;
+};
 
 /*
  * Instance counter to enable unique marks for multiple Placeholder instances.
@@ -15,13 +45,11 @@ let instanceCounter = 0;
  * @return {Object}
  */
 
-function SlateReactPlaceholder(options = {}) {
-  // eslint-disable-next-line no-plusplus
+function SlateReactPlaceholder(options: TSlateReactPlaceholderOptions) {
   const instanceId = instanceCounter++;
-  const { when, style = {} } = options;
 
   warning(
-    typeof when === 'string' || typeof when === 'function',
+    typeof options.when === 'string' || typeof options.when === 'function',
     'You must pass `SlateReactPlaceholder` an `options.when` query.'
   );
 
@@ -34,18 +62,23 @@ function SlateReactPlaceholder(options = {}) {
    * @return {Array}
    */
 
-  function decorateNode(node, editor, next) {
-    if (!editor.query(when, node)) {
+  function decorateNode(
+    node: TNode,
+    editor: TEditor,
+    next: () => JSX.Element[]
+  ) {
+    if (!editor.query?.(options.when, node)) {
       return next();
     }
 
     const others = next();
+
     const [first] = node.texts();
     const [last] = node.texts({ direction: 'backward' });
     const [firstNode, firstPath] = first;
     const [lastNode, lastPath] = last;
 
-    const decoration = {
+    const decoration: TDecoration = {
       type: 'placeholder',
       data: { key: instanceId },
       anchor: { key: firstNode.key, offset: 0, path: firstPath },
@@ -68,10 +101,14 @@ function SlateReactPlaceholder(options = {}) {
    * @return {Element}
    */
 
-  function renderDecoration(props, editor, next) {
+  function renderDecoration(
+    props: TRenderDecorationProps,
+    editor: Pick<TEditor, 'props'>,
+    next: () => JSX.Element
+  ) {
     const { children, decoration: deco } = props;
 
-    if (deco.type === 'placeholder' && deco.data.get('key') === instanceId) {
+    if (deco.type === 'placeholder' && deco.data.get?.('key') === instanceId) {
       const placeHolderStyle = {
         pointerEvents: 'none',
         display: 'inline-block',
@@ -81,12 +118,15 @@ function SlateReactPlaceholder(options = {}) {
         whiteSpace: 'nowrap',
         opacity: '0.333',
         verticalAlign: 'text-top',
-        ...style,
+        ...options.style,
       };
 
       return (
         <span>
-          <span contentEditable={false} style={placeHolderStyle}>
+          <span
+            contentEditable={false}
+            style={placeHolderStyle as CSSProperties}
+          >
             {editor.props.options.placeholder}
           </span>
           {children}

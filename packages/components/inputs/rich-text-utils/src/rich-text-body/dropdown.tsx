@@ -1,7 +1,11 @@
-import Downshift from 'downshift';
+/// <reference types="@emotion/react/types/css-prop" />
+import type { ElementType, FunctionComponent } from 'react';
+import DownshiftUntyped, {
+  GetItemPropsOptions,
+  GetToggleButtonPropsOptions,
+} from 'downshift';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import Tooltip from '@commercetools-uikit/tooltip';
 import Button from './rich-text-body-button';
 import {
@@ -10,26 +14,69 @@ import {
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
 
-const getIsSelected = (props, item) =>
+type TDropdownProps = {
+  label: string;
+  isMulti: boolean;
+  value: string[] | string;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  onChange?: (event?: unknown) => void;
+  components: {
+    Item: FunctionComponent<unknown>;
+    Label: FunctionComponent<unknown>;
+  };
+  options: Array<TItem>;
+};
+
+type TItem = {
+  value: string;
+  label: string;
+};
+
+type THeadings = {
+  label?: string;
+};
+
+const getIsSelected = (props: TDropdownProps, item: TItem) =>
   !props.isMulti
-    ? item.value === props.value
-    : props.value.find((selectedItem) => selectedItem === item.value);
+    ? item.value === (props.value as string)
+    : (props.value as string[]) &&
+      (props.value as string[]).find(
+        (selectedItem) => selectedItem === item.value
+      );
 
 const Label = styled.div;
 
-const Dropdown = (props) => {
-  const DropdownItem = props.components.Item;
+const Dropdown = (props: TDropdownProps) => {
+  const DropdownItem: FunctionComponent<{
+    value: string | string[];
+    isSelected: unknown;
+  }> = props.components.Item;
   const DropdownLabel = props.components.Label;
-  const isIndeterminate =
-    props.isMulti && props.value && props.value.length > 0;
+  const isIndeterminate: boolean =
+    props.isMulti &&
+    (props.value as unknown[]) &&
+    (props.value as unknown[]).length > 0;
+
+  const Downshift = DownshiftUntyped as ElementType;
 
   return (
     <Downshift
       onChange={props.onChange}
       selectedItem={props.value}
-      itemToString={(headings) => (headings ? headings.label : '')}
+      itemToString={(headings: THeadings) => headings?.label || ''}
     >
-      {({ isOpen, getToggleButtonProps, getItemProps }) => {
+      {({
+        isOpen,
+        getToggleButtonProps,
+        getItemProps,
+      }: {
+        isOpen: boolean;
+        getToggleButtonProps: (
+          options?: GetToggleButtonPropsOptions
+        ) => unknown;
+        getItemProps: (options: GetItemPropsOptions<unknown>) => unknown;
+      }) => {
         const toggleButtonProps = getToggleButtonProps();
 
         return (
@@ -38,7 +85,7 @@ const Dropdown = (props) => {
               title={props.label}
               placement="bottom"
               off={isOpen}
-              style={{ body: { zIndex: 9999 } }}
+              styles={{ body: { zIndex: 9999 } }}
             >
               <Button
                 {...toggleButtonProps}
@@ -61,7 +108,7 @@ const Dropdown = (props) => {
                 `}
               >
                 <DropdownContainer>
-                  {props.options.map((item, index) => {
+                  {props.options.map((item: TItem, index: number) => {
                     const itemProps = getItemProps({
                       index,
                       item,
@@ -98,28 +145,6 @@ Dropdown.defaultProps = {
     Label,
   },
   isMulti: false,
-};
-
-Dropdown.propTypes = {
-  label: PropTypes.string,
-  isMulti: PropTypes.bool,
-  value: (props, ...rest) =>
-    props.isMulti
-      ? PropTypes.arrayOf(PropTypes.string).isRequired(props, ...rest)
-      : PropTypes.string(props, ...rest),
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string,
-      value: PropTypes.string,
-    })
-  ).isRequired,
-  components: PropTypes.shape({
-    Item: PropTypes.elementType,
-    Label: PropTypes.elementType,
-  }),
-  onChange: PropTypes.func.isRequired,
 };
 
 export default Dropdown;

@@ -1,6 +1,25 @@
 import { isKeyHotkey } from 'is-hotkey';
 import { warning } from '@commercetools-uikit/utils';
 import memoize from 'lodash/memoize';
+import type { ComponentType, ReactNode } from 'react';
+import type { TEditor, TMark } from '../editor.types';
+
+type TMarkPluginOptions = {
+  hotkey: string;
+  typeName: string;
+  RenderMark: ComponentType;
+  command: string;
+  query: string;
+  [option: string]: string | ReactNode;
+};
+
+type TRenderMarkProps = {
+  children: ReactNode;
+  mark: TMark;
+  attributes: unknown;
+};
+
+type TEvent = { preventDefault: () => void };
 
 const memoizedIsHotkey = memoize(isKeyHotkey);
 
@@ -12,15 +31,14 @@ const requiredOptions = [
   'RenderMark',
 ];
 
-const validate = (options) => {
-  // eslint-disable-next-line consistent-return
+const validate = (options?: TMarkPluginOptions) => {
   const missingRequiredOptions = requiredOptions.filter(
-    (option) => !options[option]
+    (option) => !options?.[option]
   );
   return missingRequiredOptions;
 };
 
-const MarkPlugin = (options = {}) => {
+const MarkPlugin = (options: TMarkPluginOptions) => {
   const missingRequiredOptions = validate(options);
 
   warning(
@@ -34,16 +52,19 @@ const MarkPlugin = (options = {}) => {
 
   return [
     {
-      // eslint-disable-next-line consistent-return
-      onKeyDown(event, editor, next) {
-        if (!isHotKey(event)) {
+      onKeyDown(event: TEvent, editor: TEditor, next: () => void): void {
+        if (!isHotKey(event as KeyboardEvent)) {
           return next();
         }
 
         event.preventDefault();
-        editor.toggleMark(options.typeName);
+        editor.toggleMark?.(options.typeName);
       },
-      renderMark(props, editor, next) {
+      renderMark(
+        props: TRenderMarkProps,
+        _editor: TEditor,
+        next: () => JSX.Element
+      ) {
         const { children, mark, attributes } = props;
 
         switch (mark.type) {
@@ -58,12 +79,13 @@ const MarkPlugin = (options = {}) => {
         }
       },
       commands: {
-        [options.command]: (editor) => editor.toggleMark(options.typeName),
+        [options.command]: (editor: TEditor) =>
+          editor.toggleMark?.(options.typeName),
       },
       queries: {
-        [options.query]: (editor) =>
+        [options.query]: (editor: TEditor) =>
           editor.value.activeMarks.some(
-            (mark) => mark.type === options.typeName
+            (mark: TMark) => mark.type === options.typeName
           ),
       },
     },

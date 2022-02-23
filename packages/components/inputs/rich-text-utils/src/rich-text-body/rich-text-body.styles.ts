@@ -1,8 +1,14 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
+import type { TRichTextEditorBody } from './rich-text-body';
 
-const getBorderColor = (props) => {
+type TRichTextBodyStylesProps = Pick<
+  TRichTextEditorBody,
+  'hasError' | 'isReadOnly' | 'hasWarning' | 'isDisabled'
+>;
+
+const getBorderColor = (props: TRichTextBodyStylesProps) => {
   if (props.isDisabled) {
     return css`
       border-color: ${vars.borderColorForInputWhenDisabled};
@@ -28,15 +34,10 @@ const getBorderColor = (props) => {
   `;
 };
 
-const getBackgroundColor = (props) => {
+const getBackgroundColor = (props: TRichTextBodyStylesProps) => {
   if (props.isDisabled) {
     return css`
       background-color: ${vars.backgroundColorForInputWhenDisabled};
-    `;
-  }
-  if (props.isReadOnly) {
-    return css`
-      background-color: ${vars.backgroundColorForInputWhenReadonly};
     `;
   }
   return css`
@@ -86,7 +87,7 @@ export const Toolbar = styled.div`
   }
 `;
 
-const reset = (props) => [
+const reset = (props: TRichTextBodyStylesProps) => [
   css`
     h1,
     h2,
@@ -112,7 +113,7 @@ const reset = (props) => [
     `,
 ];
 
-export const EditorContainer = styled.div`
+export const EditorContainer = styled.div<TRichTextBodyStylesProps>`
   padding: 4px ${vars.spacingS};
   padding-top: 6px;
   border-radius: ${vars.borderRadiusForInput};
@@ -122,7 +123,7 @@ export const EditorContainer = styled.div`
   ${reset}
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<TRichTextBodyStylesProps>`
   border-radius: ${vars.borderRadiusForInput};
   border: 1px solid ${vars.borderColorForInput};
   transition: ${vars.transitionStandard};

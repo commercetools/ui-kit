@@ -1,5 +1,11 @@
 # @commercetools-uikit/i18n
 
+## 13.0.3
+
+### Patch Changes
+
+- [#2125](https://github.com/commercetools/ui-kit/pull/2125) [`70052159b`](https://github.com/commercetools/ui-kit/commit/70052159be32ed3904d3fa5efc65f6a60b20a8ac) Thanks [@emmenko](https://github.com/emmenko)! - Migrate to TypeScript
+
 ## 12.2.9
 
 ### Patch Changes

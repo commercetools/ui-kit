@@ -312,7 +312,7 @@ type TSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  value: ReactSelectProps['value'];
+  value?: ReactSelectProps['value'];
 };
 
 const defaultProps: Pick<
@@ -342,7 +342,7 @@ const SelectInput = (props: TSelectInputProps) => {
   );
 
   const selectedOptions = props.isMulti
-    ? (props.value as string[])
+    ? ((props.value || []) as string[])
         // Pass the options in the order selected by the use, so that the
         // sorting is not lost
         .map((value: string) =>

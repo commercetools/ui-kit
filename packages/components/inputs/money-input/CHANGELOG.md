@@ -1,5 +1,12 @@
 # @commercetools-uikit/money-input
 
+## 13.0.3
+
+### Patch Changes
+
+- [#2099](https://github.com/commercetools/ui-kit/pull/2099) [`e87b760f4`](https://github.com/commercetools/ui-kit/commit/e87b760f4dfff96f058baf8479af22dd44670f21) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Update isTouched type to be optional.
+  Expose TCurrencyCode type
+
 ## 13.0.2
 
 ### Patch Changes
