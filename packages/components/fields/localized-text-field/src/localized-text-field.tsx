@@ -162,6 +162,7 @@ type TLocalizedTextFieldProps = {
 type TLocalizedTextFieldSTate = Pick<TLocalizedTextFieldProps, 'id'>;
 
 const sequentialId = createSequentialId('localized-text-field-');
+const sequentialErrorsId = createSequentialId('localized-text-field-error-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -192,7 +193,6 @@ class LocalizedTextField extends Component<
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
-    const errorFieldId = sequentialId();
 
     if (this.props.hintIcon) {
       warning(
@@ -243,10 +243,10 @@ class LocalizedTextField extends Component<
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
-            aria-errormessage={errorFieldId}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
-            id={errorFieldId}
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

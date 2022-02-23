@@ -50,11 +50,11 @@ type TLocalizedMultilineTextInputProps = {
   /**
    * Indicate if the value entered in the input is invalid.
    */
-   'aria-invalid'?: boolean;
-   /**
-    * HTML ID of an element containing an error message related to the input.
-    */
-   'aria-errormessage'?: string;
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
   /**
    * Values to use. Keyed by language, the values are the actual values, e.g. `{ en: 'Horse', de: 'Pferd' }`
    * <br />

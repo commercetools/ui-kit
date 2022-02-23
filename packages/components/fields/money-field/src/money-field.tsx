@@ -30,6 +30,7 @@ type TTouched = {
 };
 
 const sequentialId = createSequentialId('money-field-');
+const sequentialErrorsId = createSequentialId('money-field-error-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -221,7 +222,6 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
     // didn't add an amount yet.
     const hasError =
       MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
-    const errorFieldId = sequentialId();
 
     warning(
       !has(this.props, 'isTouched'),
@@ -267,10 +267,10 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
             menuShouldBlockScroll={this.props.menuShouldBlockScroll}
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
-            aria-errormessage={errorFieldId}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
-            id={errorFieldId}
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

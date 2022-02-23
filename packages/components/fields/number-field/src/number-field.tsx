@@ -21,6 +21,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 import NumberInput from '@commercetools-uikit/number-input';
 
 const sequentialId = createSequentialId('number-field-');
+const sequentialErrorsId = createSequentialId('number-field-error-')();
 
 type TFieldErrors = Record<string, boolean>;
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
@@ -207,7 +208,6 @@ class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
     }
 
     const hasError = this.props.touched && hasErrors(this.props.errors);
-    const errorFieldId = sequentialId();
 
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
@@ -242,10 +242,10 @@ class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
             {...filterDataAttributes(this.props)}
             /* ARIA */
             aria-invalid={hasError}
-            aria-errormessage={errorFieldId}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
-            id={errorFieldId}
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

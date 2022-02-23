@@ -28,6 +28,7 @@ type TEvent = {
 };
 
 const sequentialId = createSequentialId('date-range-field-');
+const sequentialErrorsId = createSequentialId('date-range-field-error-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -170,7 +171,6 @@ class DateRangeField extends Component<
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
-    const errorFieldId = sequentialId();
 
     if (!this.props.isReadOnly) {
       warning(
@@ -213,10 +213,10 @@ class DateRangeField extends Component<
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
-            aria-errormessage={errorFieldId}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
-            id={errorFieldId}
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

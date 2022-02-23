@@ -39,6 +39,9 @@ type TEvent = {
 };
 
 const sequentialId = createSequentialId('creatable-select-field-');
+const sequentialErrorsId = createSequentialId(
+  'creatable-select-field-error-'
+)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -364,7 +367,6 @@ export default class CreatableSelectField extends Component<
     const hasError =
       CreatableSelectInput.isTouched(this.props.touched) &&
       hasErrors(this.props.errors);
-    const errorFieldId = sequentialId();
 
     if (this.props.hintIcon) {
       warning(
@@ -404,7 +406,7 @@ export default class CreatableSelectField extends Component<
             aria-label={this.props['aria-label']}
             aria-labelledby={this.props['aria-labelledby']}
             aria-invalid={hasError}
-            aria-errormessage={errorFieldId}
+            aria-errormessage={sequentialErrorsId}
             isAutofocussed={this.props.isAutofocussed}
             backspaceRemovesValue={this.props.backspaceRemovesValue}
             components={this.props.components}
@@ -444,7 +446,7 @@ export default class CreatableSelectField extends Component<
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
-            id={errorFieldId}
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

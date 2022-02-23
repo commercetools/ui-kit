@@ -25,6 +25,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 import messages from './messages';
 
 const sequentialId = createSequentialId('password-field-');
+const sequentialErrorsId = createSequentialId('password-field-error-')();
 
 type TPasswordFieldError = Record<string, boolean>;
 
@@ -196,8 +197,6 @@ const PasswordField = (props: TPasswordField) => {
     );
   }
 
-  const errorFieldId = sequentialId();
-
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
@@ -245,10 +244,10 @@ const PasswordField = (props: TPasswordField) => {
           {...filterDataAttributes(props)}
           /* ARIA */
           aria-invalid={hasError}
-          aria-errormessage={errorFieldId}
+          aria-errormessage={sequentialErrorsId}
         />
         <FieldErrors
-          id={errorFieldId}
+          id={sequentialErrorsId}
           errors={props.errors}
           isVisible={hasError}
           renderError={props.renderError}

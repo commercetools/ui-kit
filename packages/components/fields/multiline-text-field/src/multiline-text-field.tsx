@@ -146,6 +146,7 @@ type TState = {
 };
 
 const sequentialId = createSequentialId('multiline-text-field-');
+const sequentialErrorsId = createSequentialId('multiline-text-field-error-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -174,8 +175,7 @@ class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
-    const errorFieldId = sequentialId();
-    
+
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
@@ -219,10 +219,10 @@ class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
-            aria-errormessage={errorFieldId}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
-            id={errorFieldId}
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
