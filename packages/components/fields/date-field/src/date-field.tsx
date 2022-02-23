@@ -10,7 +10,6 @@ import {
   createSequentialId,
   getFieldId,
   warning,
-  randomString,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
@@ -175,7 +174,7 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
-    const errorFieldId = randomString();
+    const errorFieldId = sequentialId();
 
     if (!this.props.isReadOnly) {
       warning(

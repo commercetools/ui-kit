@@ -12,7 +12,6 @@ import {
   filterDataAttributes,
   createSequentialId,
   warning,
-  randomString,
 } from '@commercetools-uikit/utils';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import Constraints from '@commercetools-uikit/constraints';
@@ -197,7 +196,7 @@ const PasswordField = (props: TPasswordField) => {
     );
   }
 
-  const errorFieldId = randomString();
+  const errorFieldId = sequentialId();
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>

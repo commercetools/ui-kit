@@ -13,7 +13,6 @@ import {
   filterDataAttributes,
   getFieldId,
   warning,
-  randomString,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -208,7 +207,7 @@ class NumberField extends Component<TNumberFieldProps, TNumberFieldState> {
     }
 
     const hasError = this.props.touched && hasErrors(this.props.errors);
-    const errorFieldId = randomString();
+    const errorFieldId = sequentialId();
 
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
