@@ -1,8 +1,15 @@
-import { useMemo, useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
+import {
+  useMemo,
+  useCallback,
+  useState,
+  type ReactElement,
+  type ReactNode,
+  type MouseEvent,
+  type KeyboardEvent,
+  type Dispatch,
+} from 'react';
 import { useIntl } from 'react-intl';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, type DropResult } from 'react-beautiful-dnd';
 import debounce from 'debounce-promise';
 import differenceWith from 'lodash/differenceWith';
 import styled from '@emotion/styled';
@@ -15,12 +22,44 @@ import {
   EyeIcon,
   SearchIcon,
 } from '@commercetools-uikit/icons';
+import { warning } from '@commercetools-uikit/utils';
 import DroppablePanel from '../droppable-panel';
 import SettingsContainer from '../settings-container';
 import messages from './messages';
 import { HIDDEN_COLUMNS_PANEL, SELECTED_COLUMNS_PANEL } from './constants';
 
-const DroppableContainer = styled.div`
+// 'searchHiddenColums' is only required if 'areHiddenColumnsSearchable' is true
+// but that callback is used in AsyncSelectInput.loadOptions which is required
+// That property (loadOptions) is passed to react-select AsyncSelect where it's
+// declared as optional
+const noSearch = () => Promise.resolve();
+
+type TColumnData = {
+  key: string;
+  label: ReactNode;
+};
+
+type TColumnSettingsManagerProps = {
+  availableColumns: TColumnData[];
+  selectedColumns: TColumnData[];
+  onUpdateColumns: (updatedColums: TColumnData[]) => void;
+  areHiddenColumnsSearchable?: boolean;
+  searchHiddenColumns?: (searchTerm: string) => Promise<unknown>;
+  searchHiddenColumnsPlaceholder?: string;
+
+  onClose: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
+  primaryButton?: ReactElement;
+  secondaryButton?: ReactElement;
+  managerTheme?: 'light' | 'dark';
+};
+
+type TDroppableContainerProps = {
+  isDragging: boolean;
+};
+
+const DroppableContainer = styled.div<TDroppableContainerProps>`
   width: 100%;
   position: relative;
   max-width: ${vars.constraint10};
@@ -28,11 +67,11 @@ const DroppableContainer = styled.div`
 `;
 
 export const handleColumnsUpdate = (
-  dragResult,
-  onUpdateColumns,
-  selectedColumns,
-  availableColumns,
-  setIsDragging
+  dragResult: DropResult,
+  onUpdateColumns: TColumnSettingsManagerProps['onUpdateColumns'],
+  selectedColumns: TColumnSettingsManagerProps['selectedColumns'],
+  availableColumns: TColumnSettingsManagerProps['availableColumns'],
+  setIsDragging: Dispatch<boolean>
 ) => {
   setIsDragging(false);
   // Invalid drop destination, do nothing
@@ -63,18 +102,20 @@ export const handleColumnsUpdate = (
       (col) => col.key === dragResult.draggableId
     );
 
-    // push the column in the new position
-    onUpdateColumns([
-      ...items.slice(0, dragResult.destination.index),
-      draggedColumn,
-      ...items.slice(dragResult.destination.index),
-    ]);
+    // push the column in the new position if draggedColumn is found
+    if (draggedColumn) {
+      onUpdateColumns([
+        ...items.slice(0, dragResult.destination.index),
+        draggedColumn,
+        ...items.slice(dragResult.destination.index),
+      ]);
+    }
   }
 };
 
 const DropdownIndicator = () => (
   <Spacings.Inline alignItems="center">
-    <SearchIcon scale="medium" color="primary" />
+    <SearchIcon size="medium" color="primary" />
   </Spacings.Inline>
 );
 DropdownIndicator.displayName = 'DropdownIndicator';
@@ -86,7 +127,14 @@ const selectInputComponents = {
   DropdownIndicator,
 };
 
-export const ColumnSettingsManager = (props) => {
+export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
+  if (props.areHiddenColumnsSearchable) {
+    warning(
+      typeof props.searchHiddenColumns !== 'undefined',
+      'ui-kit/ColumnSettingsManager: "searchHiddenColumns" must be provided when "areHiddenColumnsSearchable" is true'
+    );
+  }
+
   const intl = useIntl();
   const [isDragging, setIsDragging] = useState(false);
   const { searchHiddenColumns } = props;
@@ -105,7 +153,7 @@ export const ColumnSettingsManager = (props) => {
     [props.availableColumns, props.selectedColumns]
   );
 
-  const handleDragEnd = useCallback(
+  const handleDragEnd = useCallback<(dragResult: DropResult) => void>(
     (dragResult) =>
       handleColumnsUpdate(
         dragResult,
@@ -117,10 +165,10 @@ export const ColumnSettingsManager = (props) => {
     [props.onUpdateColumns, props.selectedColumns, props.availableColumns]
   );
 
-  const handleInputChange = useCallback(
-    (input) =>
+  const handleInputChange = useCallback<(inputValue: string) => void>(
+    (inputValue) =>
       // loadOptions is not invoked when input is empty
-      !input.length && searchHiddenColumns(input),
+      !inputValue.length && searchHiddenColumns?.(inputValue),
     [searchHiddenColumns]
   );
 
@@ -163,7 +211,7 @@ export const ColumnSettingsManager = (props) => {
                   // loadOptions is used instead of onInputChange
                   // because the loading indicator is displayed
                   // only when loadOptions is invoked
-                  loadOptions={debounce(searchHiddenColumns, 300)}
+                  loadOptions={debounce(searchHiddenColumns ?? noSearch, 300)}
                   onInputChange={handleInputChange}
                   components={selectInputComponents}
                 />
@@ -210,36 +258,9 @@ export const ColumnSettingsManager = (props) => {
 
 ColumnSettingsManager.displayName = 'ColumnSettingsManager';
 
-ColumnSettingsManager.propTypes = {
-  availableColumns: PropTypes.arrayOf(
-    PropTypes.shape({
-      key: PropTypes.string.isRequired,
-      label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-    })
-  ).isRequired,
-  selectedColumns: PropTypes.arrayOf(
-    PropTypes.shape({
-      key: PropTypes.string.isRequired,
-      label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-    })
-  ).isRequired,
-  onUpdateColumns: PropTypes.func.isRequired,
-
-  areHiddenColumnsSearchable: PropTypes.bool,
-  searchHiddenColumns: requiredIf(
-    PropTypes.func,
-    (props) => props.areHiddenColumnsSearchable
-  ),
-  searchHiddenColumnsPlaceholder: PropTypes.string,
-
-  onClose: PropTypes.func,
-  primaryButton: PropTypes.element,
-  secondaryButton: PropTypes.element,
-  managerTheme: PropTypes.oneOf(['light', 'dark']),
-};
-
-ColumnSettingsManager.defaultProps = {
+const defaultProps: Pick<TColumnSettingsManagerProps, 'availableColumns'> = {
   availableColumns: [],
 };
+ColumnSettingsManager.defaultProps = defaultProps;
 
 export default ColumnSettingsManager;

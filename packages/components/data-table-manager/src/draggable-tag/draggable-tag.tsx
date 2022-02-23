@@ -1,12 +1,24 @@
-import PropTypes from 'prop-types';
+import type { ReactNode } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { DragIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
 import Tag from '@commercetools-uikit/tag';
 import DraggingContainer from './draggable-tag.styles';
 
-const DraggableTag = (props) => {
-  const handleRemoveColumn = () => props.onRemove(props.index);
+type TColumnData = {
+  key: string;
+  label: ReactNode;
+};
+
+type TDraggableTagProps = {
+  column: TColumnData;
+  index: number;
+  isDisabled?: boolean;
+  onRemove?: (index: number) => void;
+};
+
+const DraggableTag = (props: TDraggableTagProps) => {
+  const handleRemoveColumn = () => props.onRemove?.(props.index);
 
   return (
     <Draggable
@@ -32,7 +44,6 @@ const DraggableTag = (props) => {
                 </Spacings.Inline>
               </Tag>
             </DraggingContainer>
-            {provided.placeholder}
           </Spacings.Inset>
         );
       }}
@@ -41,14 +52,5 @@ const DraggableTag = (props) => {
 };
 
 DraggableTag.displayName = 'DraggableTag';
-DraggableTag.propTypes = {
-  column: PropTypes.shape({
-    key: PropTypes.string.isRequired,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  }).isRequired,
-  index: PropTypes.number.isRequired,
-  onRemove: PropTypes.func,
-  isDisabled: PropTypes.bool,
-};
 
 export default DraggableTag;
