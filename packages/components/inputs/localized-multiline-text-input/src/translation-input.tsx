@@ -29,7 +29,13 @@ type TEvent = {
 };
 
 type TranslationInputProps = {
+  /**
+   * Indicate if the value entered in the input is invalid.
+   */
   'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
   'aria-errormessage'?: string;
   onChange?: (event: TEvent) => void;
   language: string;

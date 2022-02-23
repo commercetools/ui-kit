@@ -103,11 +103,15 @@ type TSelectInputProps = {
    */
   'aria-labelledby'?: ReactSelectProps['aria-labelledby'];
   /**
-   * a11y attribute to determine if input is valid/not
+   * Indicate if the value entered in the input is invalid.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
   'aria-invalid'?: boolean;
   /**
-   * a11y attribute identifier that points to a field with error message
+   * HTML ID of an element containing an error message related to the input.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
    */
   'aria-errormessage'?: string;
   /**
