@@ -111,13 +111,13 @@ type TCreatableSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-invalid'?: boolean;
+  'aria-invalid'?: ReactSelectCreatableProps['aria-invalid'];
   /**
    * HTML ID of an element containing an error message related to the input.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-errormessage'?: string;
+  'aria-errormessage'?: ReactSelectCreatableProps['aria-errormessage'];
   /**
    * Focus the control when it is mounted
    */

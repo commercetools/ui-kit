@@ -103,13 +103,13 @@ type TAsyncSelectInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-invalid'?: boolean;
+  'aria-invalid'?: ReactSelectAsyncProps['aria-invalid'];
   /**
    * HTML ID of an element containing an error message related to the input.
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-errormessage'?: string;
+  'aria-errormessage'?: ReactSelectAsyncProps['aria-errormessage'];
   // renamed autoFocus of react-select
   /**
    * Focus the control when it is mounted
