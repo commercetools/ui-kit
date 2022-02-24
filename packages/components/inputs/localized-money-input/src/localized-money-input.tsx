@@ -41,7 +41,7 @@ type TEvent = {
   };
 };
 
-declare type TMoneyValue = {
+type TMoneyValue = {
   type: string;
   currencyCode: TCurrencyCode;
   centAmount: number;

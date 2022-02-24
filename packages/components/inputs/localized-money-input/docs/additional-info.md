@@ -247,8 +247,9 @@ return (
           errors={renderErrors(errors)}
           horizontalConstraint={10}
         />
-    &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
-  &lt;/form&gt;
-)}
-/> );
+        <button type="submit">Submit</button>
+      </form>
+    )}
+  />
+);
 ```
