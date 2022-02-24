@@ -1927,7 +1927,7 @@ __metadata:
     moment: 2.29.1
     moment-timezone: 0.5.34
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-router-dom: 5.3.0
   peerDependencies:
     moment: 2.x
@@ -2079,7 +2079,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-select: 5.2.2
   peerDependencies:
     react: 17.x
@@ -2131,7 +2131,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-select: 5.2.2
   peerDependencies:
     react: 17.x
@@ -2172,7 +2172,7 @@ __metadata:
     "@commercetools-uikit/secondary-button": 13.0.2
     "@commercetools-uikit/secondary-icon-button": 13.0.2
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -2215,7 +2215,7 @@ __metadata:
     moment: 2.29.1
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-select: 5.2.2
   peerDependencies:
     moment: 2.x
@@ -2382,7 +2382,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-select: 5.2.2
   peerDependencies:
     react: 17.x
@@ -2427,7 +2427,7 @@ __metadata:
     react: 17.0.2
     react-beautiful-dnd: 13.1.0
     react-dom: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
   peerDependencies:
     react: 17.x
     react-dom: 17.x
@@ -2508,7 +2508,7 @@ __metadata:
     moment: 2.29.1
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-is: 17.0.2
     react-required-if: 1.0.3
     warning: 4.0.3
@@ -2567,7 +2567,7 @@ __metadata:
     moment: 2.29.1
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-is: 17.0.2
     react-required-if: 1.0.3
     warning: 4.0.3
@@ -2627,7 +2627,7 @@ __metadata:
     moment: 2.29.1
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-is: 17.0.2
     react-required-if: 1.0.3
     warning: 4.0.3
@@ -2658,7 +2658,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -2713,7 +2713,7 @@ __metadata:
     "@commercetools-uikit/text-field": 13.0.2
     "@commercetools-uikit/time-field": 13.0.2
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -2838,7 +2838,7 @@ __metadata:
     "@emotion/react": ^11.4.0
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
     react-textarea-autosize: 8.3.3
   peerDependencies:
@@ -2876,7 +2876,7 @@ __metadata:
     "@commercetools-uikit/time-input": 13.0.2
     "@commercetools-uikit/toggle-input": 13.0.2
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -2898,7 +2898,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -2922,7 +2922,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -2948,7 +2948,7 @@ __metadata:
     history: 4.10.1
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -2999,7 +2999,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
     react-select: 5.2.2
   peerDependencies:
@@ -3056,7 +3056,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
     react-select: 5.2.2
     react-textarea-autosize: 8.3.3
@@ -3097,7 +3097,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
     react-textarea-autosize: 8.3.3
     slate: 0.47.9
@@ -3156,7 +3156,7 @@ __metadata:
     common-tags: 1.8.2
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3236,7 +3236,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
     react-select: 5.2.2
   peerDependencies:
@@ -3290,7 +3290,7 @@ __metadata:
     downshift: 6.1.7
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
     react-textarea-autosize: 8.3.3
   peerDependencies:
@@ -3312,7 +3312,7 @@ __metadata:
     common-tags: 1.8.2
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -3383,7 +3383,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -3411,7 +3411,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3557,7 +3557,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
     slate: 0.47.9
     slate-html-serializer: 0.8.13
@@ -3587,7 +3587,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
     slate-html-serializer: 0.8.13
   peerDependencies:
@@ -3636,7 +3636,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
   peerDependencies:
     react: 17.x
     react-dom: 17.x
@@ -3661,7 +3661,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-router-dom: 5.3.0
   peerDependencies:
     react: 17.x
@@ -3732,7 +3732,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-select: 5.2.2
   peerDependencies:
     react: 17.x
@@ -3757,7 +3757,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-select: 5.2.2
   peerDependencies:
     react: 17.x
@@ -3936,7 +3936,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
     warning: 4.0.3
   peerDependencies:
@@ -3987,7 +3987,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -16635,7 +16635,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-intl@npm:5.24.6":
+"react-intl@npm:^5.24.6":
   version: 5.24.6
   resolution: "react-intl@npm:5.24.6"
   dependencies:
@@ -19415,7 +19415,7 @@ __metadata:
     rcfile: 1.0.3
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-router-dom: 5.3.0
     react-test-renderer: 17.0.2
     react-value: 0.2.0
@@ -19940,7 +19940,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: 5.24.6
+    react-intl: ^5.24.6
     react-router: 5.2.1
     react-router-dom: 5.3.0
     serve: 13.0.2
