@@ -78,7 +78,7 @@ const Editor = (props: TEditorProps) => {
 
   const updateRenderToggleButton = useCallback(() => {
     const doesExceedCollapsedHeightLimit =
-      ref.current?.clientHeight ?? 0 > COLLAPSED_HEIGHT;
+      Number(ref.current?.clientHeight) > COLLAPSED_HEIGHT;
 
     if (doesExceedCollapsedHeightLimit && !renderToggleButton) {
       setRenderToggleButton(true);
