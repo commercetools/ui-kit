@@ -10,11 +10,11 @@ type TStylesProps = Pick<
   | 'hasWarning'
   | 'isHovered'
   | 'isReadOnly'
-  | 'textype'
+  | 'gridLabel'
 >;
 
 const LabelTextWrapper = styled.div<TStylesProps>`
-  grid-area: ${(props) => props.textype};
+  grid-area: ${(props) => props.gridLabel};
   margin-left: ${customProperties.spacingS};
   font-size: 1rem;
   font-family: inherit;

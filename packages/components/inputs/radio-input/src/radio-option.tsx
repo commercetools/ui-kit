@@ -37,7 +37,7 @@ export type TOptionProps = {
   children: string | ReactElement | (() => ReactElement);
   components?: TComponents;
   additionalContent?: ReactNode;
-  textype?: string;
+  gridLabel?: string;
   // Injected props from the parent Group component
   id?: string;
   name?: string;
@@ -110,11 +110,11 @@ const Option = (props: TOptionProps) => {
             <RadioOptionUncheckedIcon size="medium" />
           )}
         </div>
-        <LabelTextWrapper isDisabled={props.isDisabled} textype="label">
+        <LabelTextWrapper isDisabled={props.isDisabled} gridLabel="label">
           {props.children}
         </LabelTextWrapper>
         {props.additionalContent && (
-          <LabelTextWrapper isDisabled={props.isDisabled} textype="content">
+          <LabelTextWrapper isDisabled={props.isDisabled} gridLabel="content">
             {props.additionalContent}
           </LabelTextWrapper>
         )}
