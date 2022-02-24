@@ -33,8 +33,8 @@ type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
-const sequentialId = createSequentialId('async-select-field-');
-const sequentialErrorsId = createSequentialId('async-select-field-error-')();
+const sequentialId = createSequentialId('search-select-field-');
+const sequentialErrorsId = createSequentialId('search-select-field-error-')();
 
 type TSearchSelectFieldProps = {
   // SearchSelectField
