@@ -226,7 +226,7 @@ LocalizedMoneyInput.getEmptyCurrencies({
 
 ## Examples
 
-Here's an example of how `MoneyInput` would be used inside a form.
+Here's an example of how `LocalizedMoneyInput` would be used inside a form.
 
 ```jsx
 import { IntlProvider } from 'react-intl';
