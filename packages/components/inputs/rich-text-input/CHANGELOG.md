@@ -1,5 +1,12 @@
 # @commercetools-uikit/rich-text-input
 
+## 13.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`e7523deab`](https://github.com/commercetools/ui-kit/commit/e7523deabcf733815d6bf8bcfafdc35129c870c2)]:
+  - @commercetools-uikit/rich-text-utils@13.0.3
+
 ## 13.0.2
 
 ### Patch Changes

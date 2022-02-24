@@ -1,5 +1,11 @@
 # @commercetools-uikit/localized-multiline-text-input
 
+## 13.0.3
+
+### Patch Changes
+
+- [#2096](https://github.com/commercetools/ui-kit/pull/2096) [`767a441c5`](https://github.com/commercetools/ui-kit/commit/767a441c55801ea208f399973e9ad9ae151d2ac4) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Migrate localized multiline text input to typescript
+
 ## 13.0.2
 
 ### Patch Changes

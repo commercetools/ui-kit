@@ -1,5 +1,14 @@
 # @commercetools-uikit/fields
 
+## 13.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`e87b760f4`](https://github.com/commercetools/ui-kit/commit/e87b760f4dfff96f058baf8479af22dd44670f21), [`5391caadd`](https://github.com/commercetools/ui-kit/commit/5391caaddebc5acf9b90842808fb0f8081b837e6)]:
+  - @commercetools-uikit/money-field@13.0.3
+  - @commercetools-uikit/select-field@13.0.3
+  - @commercetools-uikit/localized-multiline-text-field@13.0.3
+
 ## 13.0.2
 
 ### Patch Changes

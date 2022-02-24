@@ -1,5 +1,16 @@
 # @commercetools-frontend/ui-kit
 
+## 13.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`70052159b`](https://github.com/commercetools/ui-kit/commit/70052159be32ed3904d3fa5efc65f6a60b20a8ac)]:
+  - @commercetools-uikit/i18n@13.0.3
+  - @commercetools-uikit/inputs@13.0.3
+  - @commercetools-uikit/fields@13.0.3
+  - @commercetools-uikit/data-table-manager@13.0.3
+  - @commercetools-uikit/pagination@13.0.3
+
 ## 13.0.2
 
 ### Patch Changes

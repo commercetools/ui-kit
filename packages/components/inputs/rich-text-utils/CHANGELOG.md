@@ -1,5 +1,11 @@
 # @commercetools-uikit/rich-text-utils
 
+## 13.0.3
+
+### Patch Changes
+
+- [#2072](https://github.com/commercetools/ui-kit/pull/2072) [`e7523deab`](https://github.com/commercetools/ui-kit/commit/e7523deabcf733815d6bf8bcfafdc35129c870c2) Thanks [@ddouglasz](https://github.com/ddouglasz)! - changes for rich text utils migration to typescript
+
 ## 13.0.2
 
 ### Patch Changes
