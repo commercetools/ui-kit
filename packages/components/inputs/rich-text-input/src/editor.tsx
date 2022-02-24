@@ -164,13 +164,13 @@ type TEditorOptionsProps = {
   };
 };
 
-type TRenderEditorProps = (
+type TRenderEditor = (
   props: TEditorProps & TEditorOptionsProps,
   editor: TSlateReactEditor,
   next: () => ReactElement
 ) => ReturnType<typeof Editor>;
 
-const renderEditor: TRenderEditorProps = (props, editor, next) => {
+const renderEditor: TRenderEditor = (props, editor, next) => {
   const internalId = `${props.id}__internal__id`;
 
   const children = cloneElement(next(), {
