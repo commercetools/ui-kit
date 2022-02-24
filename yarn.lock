@@ -2052,6 +2052,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -2105,6 +2106,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -2359,6 +2361,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -2456,6 +2459,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -2479,6 +2483,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -2538,6 +2543,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -2597,6 +2603,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3033,6 +3040,7 @@ __metadata:
     common-tags: 1.8.2
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3133,6 +3141,7 @@ __metadata:
     common-tags: 1.8.2
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3217,6 +3226,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3270,6 +3280,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3343,6 +3354,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3510,6 +3522,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3622,6 +3635,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3719,6 +3733,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3910,6 +3925,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
@@ -3973,6 +3989,7 @@ __metadata:
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1
     react: 17.0.2
+    react-intl: ^5.24.6
     react-required-if: 1.0.3
   peerDependencies:
     react: 17.x
