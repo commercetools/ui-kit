@@ -119,7 +119,7 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
 
   static displayName = 'RichTextInput';
   static isEmpty = isEmpty;
-  static isTouched = (touched?: boolean) => Boolean(touched);
+  static isTouched = (touched: boolean | unknown[]) => Boolean(touched);
 
   serializedValue = this.props.value;
   internalSlateValue = html.deserialize(this.props.value || '');
