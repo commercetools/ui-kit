@@ -20,17 +20,17 @@ import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { messagesMultilineInput } from '@commercetools-uikit/input-utils';
-import type { TEditor as TSlateReactEditor } from 'slate-react';
 import {
   RichTextBody,
   HiddenInput,
 } from '@commercetools-uikit/rich-text-utils';
 import { EditorWrapper } from './editor.styles';
+import type { TEditor } from './editor.types';
 
 const COLLAPSED_HEIGHT = 32;
 
 export type TEditorProps = {
-  editor: TSlateReactEditor;
+  editor: TEditor;
   id?: string;
   name?: string;
   placeholder?: string;
@@ -155,20 +155,20 @@ const Editor = (props: TEditorProps) => {
     </CollapsibleMotion>
   );
 };
-
-type TRenderEditor = (
+export type TEditorOptions = Pick<
+  TEditorProps,
+  | 'hasWarning'
+  | 'hasError'
+  | 'showExpandIcon'
+  | 'horizontalConstraint'
+  | 'defaultExpandMultilineText'
+  | 'onClickExpand'
+>;
+export type TRenderEditor = (
   props: TEditorProps & {
-    options: Pick<
-      TEditorProps,
-      | 'hasWarning'
-      | 'hasError'
-      | 'showExpandIcon'
-      | 'horizontalConstraint'
-      | 'defaultExpandMultilineText'
-      | 'onClickExpand'
-    >;
+    options: TEditorOptions;
   },
-  editor: TSlateReactEditor,
+  editor: TEditor,
   next: () => ReactElement
 ) => ReturnType<typeof Editor>;
 

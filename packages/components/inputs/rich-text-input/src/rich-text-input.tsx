@@ -1,5 +1,7 @@
 import { PureComponent, type FocusEvent } from 'react';
-import { Editor } from 'slate-react';
+// TODO: remove after upgrade of `slate-react` to the latest version
+// @ts-ignore
+import { Editor as SlateReactEditor } from 'slate-react';
 import pick from 'lodash/pick';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
@@ -7,7 +9,32 @@ import {
   html,
   isEmpty,
 } from '@commercetools-uikit/rich-text-utils';
-import renderEditor, { type TEditorProps } from './editor';
+import renderEditor, {
+  type TEditorProps,
+  type TRenderEditor,
+  type TEditorOptions,
+} from './editor';
+
+type TSlateReactEditorProps = {
+  autoFocus: TRichTextInputProps['isAutofocussed'];
+  id: TRichTextInputProps['id'];
+  name: TRichTextInputProps['name'];
+  onFocus: TEventHook<FocusEvent>;
+  onBlur: TEventHook<FocusEvent>;
+  disabled: TRichTextInputProps['isDisabled'];
+  readOnly: TRichTextInputProps['isReadOnly'];
+  value: ReturnType<typeof html.deserialize>;
+  options: TEditorOptions;
+  onChange: TOnChangeFn;
+  plugins: typeof richTextPlugins;
+  renderEditor: TRenderEditor;
+};
+
+// This is a temporary wrapper component helping to mitigate typing issues of `slate-react@0.22.10` package.
+// TODO: remove after upgrade of `slate-react` to the latest version
+const Editor = (props: TSlateReactEditorProps) => (
+  <SlateReactEditor {...props} />
+);
 
 type TBaseEvent = {
   target: {
@@ -26,7 +53,7 @@ type TFocusEvent = TBaseEvent;
 
 type TEventHook<T = Event> = (
   event: T,
-  editor: Editor,
+  editor: typeof Editor,
   next: () => unknown
 ) => unknown;
 
