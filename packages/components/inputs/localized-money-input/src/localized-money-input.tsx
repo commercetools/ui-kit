@@ -391,15 +391,18 @@ LocalizedMoneyInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-LocalizedMoneyInput.convertToMoneyValues = (values: TValue[], locale: string) =>
-  Object.values(values).map((value) =>
-    MoneyInput.convertToMoneyValue(value, locale)
+LocalizedMoneyInput.convertToMoneyValues = (
+  values: TValue[],
+  locale: string
+): TMoneyValue[] =>
+  Object.values(values).map(
+    (value) => MoneyInput.convertToMoneyValue(value, locale) as TMoneyValue
   );
 
 LocalizedMoneyInput.parseMoneyValues = (
   moneyValues: TMoneyValue[] = [],
   locale: string
-) =>
+): Record<TCurrencyCode, TValue> =>
   moneyValues
     .map((value) => MoneyInput.parseMoneyValue(value, locale))
     .reduce(
@@ -407,7 +410,7 @@ LocalizedMoneyInput.parseMoneyValues = (
         ...pairs,
         [value.currencyCode]: value,
       }),
-      {}
+      {} as Record<TCurrencyCode, TValue>
     );
 
 LocalizedMoneyInput.getHighPrecisionCurrencies = (
