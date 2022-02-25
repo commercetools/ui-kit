@@ -29,6 +29,14 @@ type TEvent = {
 };
 
 type TranslationInputProps = {
+  /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
   onChange?: (event: TEvent) => void;
   language: string;
   onFocus?: () => void;
@@ -179,6 +187,9 @@ const TranslationInput = (props: TranslationInputProps) => {
           isAutofocussed={props.isAutofocussed}
           isOpen={!props.isCollapsed}
           {...filterDataAttributes(props)}
+          /* ARIA */
+          aria-invalid={props['aria-invalid']}
+          aria-errormessage={props['aria-errormessage']}
         />
       </div>
       <Row

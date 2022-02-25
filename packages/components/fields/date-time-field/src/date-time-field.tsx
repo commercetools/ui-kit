@@ -24,6 +24,7 @@ type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TFieldErrors = Record<string, boolean>;
 
 const sequentialId = createSequentialId('date-time-field-');
+const sequentialErrorsId = createSequentialId('date-time-field-error-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -196,6 +197,7 @@ class DateTimeField extends Component<
     }
 
     const hasError = this.props.touched && hasErrors(this.props.errors);
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -223,8 +225,11 @@ class DateTimeField extends Component<
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
+            aria-invalid={hasError}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

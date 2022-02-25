@@ -392,6 +392,14 @@ type TMoneyInputProps = {
    */
   autoComplete?: string;
   /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
+  /**
    * The prefix used to create a HTML `name` property for the amount input field (`${name}.amount`) and the currency dropdown (`${name}.currencyCode`).
    */
   name?: string;
@@ -799,6 +807,9 @@ const MoneyInput = (props: TMoneyInputProps) => {
             readOnly={props.isReadOnly}
             autoFocus={props.isAutofocussed}
             {...filterDataAttributes(props)}
+            /* ARIA */
+            aria-invalid={props['aria-invalid']}
+            aria-errormessage={props['aria-errormessage']}
           />
           {props.hasHighPrecisionBadge && isHighPrecision && (
             <>

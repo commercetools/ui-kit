@@ -48,69 +48,27 @@ export default Example;
 
 ## Properties
 
-| Props                           | Type                                                                                                        | Required | Default   | Description                                                                                                                                                 |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------- | :------: | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                            | `string`                                                                                                    |          |           |                                                                                                                                                             |
-| `name`                          | `string`                                                                                                    |          |           |                                                                                                                                                             |
-| `autoComplete`                  | `string`                                                                                                    |          |           |                                                                                                                                                             |
-| `value`                         | `Object`<br/>[See signature.](#signature-value)                                                             |    ✅    |           |                                                                                                                                                             |
-| `onChange`                      | `Function`<br/>[See signature.](#signature-onChange)                                                        |          |           | Gets called when any input is changed. Is called with the change event of the changed input.                                                                |
-| `selectedLanguage`              | `string`                                                                                                    |    ✅    |           | Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.                                                                       |
-| `onBlur`                        | `Function`<br/>[See signature.](#signature-onBlur)                                                          |          |           | Called when any field is blurred. Is called with the `event` of that field.                                                                                 |
-| `onFocus`                       | `Function`<br/>[See signature.](#signature-onFocus)                                                         |          |           | Called when any field is focussed. Is called with the `event` of that field.                                                                                |
-| `hideLanguageExpansionControls` | `boolean`                                                                                                   |          |           | Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.                                               |
-| `defaultExpandLanguages`        | `boolean`                                                                                                   |          |           | Controls whether one or all languages are visible by default                                                                                                |
-| `isAutofocussed`                | `boolean`                                                                                                   |          |           | Focus the input field on initial render                                                                                                                     |
-| `isDisabled`                    | `boolean`                                                                                                   |          |           | Disables all input fields.                                                                                                                                  |
-| `isReadOnly`                    | `boolean`                                                                                                   |          |           | Disables all input fields and shows them in read-only mode.                                                                                                 |
-| `placeholder`                   | `Object`<br/>[See signature.](#signature-placeholder)                                                       |    ✅    |           | Placeholders for each language. Object of the same shape as `value`.                                                                                        |
-| `horizontalConstraint`          | `union`<br/>Possible values:<br/>`, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                  |
-| `hasError`                      | `boolean`                                                                                                   |          |           | Will apply the error state to each input without showing any error message.                                                                                 |
-| `errors`                        | `Object`<br/>[See signature.](#signature-errors)                                                            |    ✅    |           | Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key. |
-
-## Signatures
-
-### Signature `value`
-
-```ts
-{
-  [key: string]: string;
-}
-```
-
-### Signature `onChange`
-
-```ts
-(event: TEvent) => void
-```
-
-### Signature `onBlur`
-
-```ts
-() => void
-```
-
-### Signature `onFocus`
-
-```ts
-() => void
-```
-
-### Signature `placeholder`
-
-```ts
-{
-  [key: string]: string;
-}
-```
-
-### Signature `errors`
-
-```ts
-{
-  [key: string]: ReactNode;
-}
-```
+| Props                           | Type                                                                                                        | Required | Default   | Description                                                                                                                                                                   |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------- | :------: | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                            | `string`                                                                                                    |          |           |                                                                                                                                                                               |
+| `name`                          | `string`                                                                                                    |          |           |                                                                                                                                                                               |
+| `autoComplete`                  | `string`                                                                                                    |          |           |                                                                                                                                                                               |
+| `aria-invalid`                  | `boolean`                                                                                                   |          |           | Indicate if the value entered in the input is invalid.                                                                                                                        |
+| `aria-errormessage`             | `string`                                                                                                    |          |           | HTML ID of an element containing an error message related to the input.                                                                                                       |
+| `value`                         | `Record`                                                                                                    |    ✅    |           | then input doesn't accept a "languages" prop, instead all possible&#xA;languages have to exist (with empty or filled strings) on the value:&#xA;{ en: 'foo', de: '', es: '' } |
+| `onChange`                      | `ChangeEventHandler`                                                                                        |          |           | Gets called when any input is changed. Is called with the change event of the changed input.                                                                                  |
+| `selectedLanguage`              | `string`                                                                                                    |    ✅    |           | Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.                                                                                         |
+| `onBlur`                        | `FocusEventHandler`                                                                                         |          |           | Called when any field is blurred. Is called with the `event` of that field.                                                                                                   |
+| `onFocus`                       | `FocusEventHandler`                                                                                         |          |           | Called when any field is focussed. Is called with the `event` of that field.                                                                                                  |
+| `hideLanguageExpansionControls` | `boolean`                                                                                                   |          |           | Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.                                                                 |
+| `defaultExpandLanguages`        | `boolean`                                                                                                   |          |           | Controls whether one or all languages are visible by default                                                                                                                  |
+| `isAutofocussed`                | `boolean`                                                                                                   |          |           | Focus the input field on initial render                                                                                                                                       |
+| `isDisabled`                    | `boolean`                                                                                                   |          |           | Disables all input fields.                                                                                                                                                    |
+| `isReadOnly`                    | `boolean`                                                                                                   |          |           | Disables all input fields and shows them in read-only mode.                                                                                                                   |
+| `placeholder`                   | `Record`                                                                                                    |          |           | Placeholders for each language. Object of the same shape as `value`.                                                                                                          |
+| `horizontalConstraint`          | `union`<br/>Possible values:<br/>`, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                                    |
+| `hasError`                      | `boolean`                                                                                                   |          |           | Will apply the error state to each input without showing any error message.                                                                                                   |
+| `errors`                        | `Record`                                                                                                    |          |           | Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.                   |
 
 ## `data-*` props
 
