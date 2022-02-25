@@ -30,7 +30,8 @@
     "@emotion/styled": "^11.3.0",
     "common-tags": "1.8.2",
     "lodash": "4.17.21",
-    "prop-types": "15.8.1"
+    "prop-types": "15.8.1",
+    "react-intl": "^5.24.6"
   },
   "devDependencies": {
     "react": "17.0.2"
