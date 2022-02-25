@@ -113,7 +113,10 @@ const Editor = (props: TEditorProps) => {
         return (
           <Constraints.Horizontal max={props.horizontalConstraint}>
             <Stack scale="xs" alignItems="flex-end">
-              <EditorWrapper isDisabled={props.isDisabled}>
+              <EditorWrapper
+                isDisabled={props.isDisabled}
+                isReadOnly={props.isReadOnly}
+              >
                 <RichTextBody
                   ref={refObj as unknown as Ref<TRichtTextEditorBodyRef>}
                   hasError={props.hasError}
