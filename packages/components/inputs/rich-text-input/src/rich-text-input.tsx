@@ -16,16 +16,16 @@ import renderEditor, {
 } from './editor';
 
 type TSlateReactEditorProps = {
-  autoFocus: TRichTextInputProps['isAutofocussed'];
-  id: TRichTextInputProps['id'];
-  name: TRichTextInputProps['name'];
-  onFocus: TEventHook<FocusEvent>;
-  onBlur: TEventHook<FocusEvent>;
-  disabled: TRichTextInputProps['isDisabled'];
-  readOnly: TRichTextInputProps['isReadOnly'];
+  autoFocus?: TRichTextInputProps['isAutofocussed'];
+  id?: TRichTextInputProps['id'];
+  name?: TRichTextInputProps['name'];
+  onFocus?: TEventHook<FocusEvent>;
+  onBlur?: TEventHook<FocusEvent>;
+  disabled?: TRichTextInputProps['isDisabled'];
+  readOnly?: TRichTextInputProps['isReadOnly'];
   value: ReturnType<typeof html.deserialize>;
   options: TEditorOptions;
-  onChange: TOnChangeFn;
+  onChange?: TOnChangeFn;
   plugins: typeof richTextPlugins;
   renderEditor: TRenderEditor;
 };
