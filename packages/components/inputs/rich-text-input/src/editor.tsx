@@ -156,19 +156,18 @@ const Editor = (props: TEditorProps) => {
   );
 };
 
-type TEditorOptionsProps = {
-  options: {
-    hasWarning?: TEditorProps['hasWarning'];
-    hasError?: TEditorProps['hasError'];
-    showExpandIcon: TEditorProps['showExpandIcon'];
-    horizontalConstraint?: TEditorProps['horizontalConstraint'];
-    defaultExpandMultilineText?: TEditorProps['defaultExpandMultilineText'];
-    onClickExpand?: TEditorProps['onClickExpand'];
-  };
-};
-
 type TRenderEditor = (
-  props: TEditorProps & TEditorOptionsProps,
+  props: TEditorProps & {
+    options: Pick<
+      TEditorProps,
+      | 'hasWarning'
+      | 'hasError'
+      | 'showExpandIcon'
+      | 'horizontalConstraint'
+      | 'defaultExpandMultilineText'
+      | 'onClickExpand'
+    >;
+  },
   editor: TSlateReactEditor,
   next: () => ReactElement
 ) => ReturnType<typeof Editor>;
