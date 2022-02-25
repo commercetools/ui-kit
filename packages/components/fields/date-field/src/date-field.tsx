@@ -18,6 +18,8 @@ import DateInput from '@commercetools-uikit/date-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 
 const sequentialId = createSequentialId('date-field-');
+const sequentialErrorsId = createSequentialId('date-field-error-')();
+
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TFieldErrors = Record<string, boolean>;
 const hasErrors = (errors?: TFieldErrors) =>
@@ -217,8 +219,12 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
+            /* ARIA */
+            aria-invalid={hasError}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

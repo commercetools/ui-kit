@@ -14,6 +14,9 @@ import LocalizedMultilineTextInput from '@commercetools-uikit/localized-multilin
 import FieldErrors from '@commercetools-uikit/field-errors';
 
 const sequentialId = createSequentialId('localized-multiline-text-field-');
+const sequentialErrorsId = createSequentialId(
+  'localized-multiline-text-field-error-'
+)();
 
 const hasErrors = (errors) => errors && Object.values(errors).some(Boolean);
 
@@ -200,6 +203,7 @@ class LocalizedMultilineTextField extends Component {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -235,8 +239,12 @@ class LocalizedMultilineTextField extends Component {
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
+            /* ARIA */
+            aria-invalid={hasError}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

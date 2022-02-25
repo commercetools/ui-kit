@@ -25,6 +25,7 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 import messages from './messages';
 
 const sequentialId = createSequentialId('password-field-');
+const sequentialErrorsId = createSequentialId('password-field-error-')();
 
 type TPasswordFieldError = Record<string, boolean>;
 
@@ -241,8 +242,12 @@ const PasswordField = (props: TPasswordField) => {
           autoComplete={props.autoComplete}
           horizontalConstraint="scale"
           {...filterDataAttributes(props)}
+          /* ARIA */
+          aria-invalid={hasError}
+          aria-errormessage={sequentialErrorsId}
         />
         <FieldErrors
+          id={sequentialErrorsId}
           errors={props.errors}
           isVisible={hasError}
           renderError={props.renderError}

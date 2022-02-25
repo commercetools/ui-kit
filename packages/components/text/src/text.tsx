@@ -203,6 +203,7 @@ const Body = (props: TBodyProps) => {
 Body.displayName = 'TextBody';
 
 export type TDetailProps = {
+  id?: string;
   isBold?: boolean;
   isItalic?: boolean;
   as?: 'span' | 'small';
@@ -226,6 +227,7 @@ const Detail = (props: TDetailProps) => {
     const TextDetailElement = props.as;
     return (
       <TextDetailElement
+        id={props.id}
         css={detailStyles(props, theme)}
         title={props.title}
         {...filterDataAttributes(props)}

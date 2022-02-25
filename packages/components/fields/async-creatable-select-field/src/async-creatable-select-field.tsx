@@ -29,6 +29,9 @@ type TFieldErrors = Record<string, boolean>;
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
 const sequentialId = createSequentialId('async-creatable-select-field-');
+const sequentialErrorsId = createSequentialId(
+  'async-creatable-select-field-error-'
+)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -425,6 +428,8 @@ export default class AsyncCreatableSelectField extends Component<
             hasError={hasError}
             aria-label={this.props['aria-label']}
             aria-labelledby={this.props['aria-labelledby']}
+            aria-invalid={hasError}
+            aria-errormessage={sequentialErrorsId}
             isAutofocussed={this.props.isAutofocussed}
             backspaceRemovesValue={this.props.backspaceRemovesValue}
             components={this.props.components}
@@ -468,6 +473,7 @@ export default class AsyncCreatableSelectField extends Component<
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

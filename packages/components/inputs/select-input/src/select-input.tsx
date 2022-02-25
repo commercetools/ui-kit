@@ -103,6 +103,18 @@ type TSelectInputProps = {
    */
   'aria-labelledby'?: ReactSelectProps['aria-labelledby'];
   /**
+   * Indicate if the value entered in the input is invalid.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  'aria-invalid'?: ReactSelectProps['aria-invalid'];
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  'aria-errormessage'?: ReactSelectProps['aria-errormessage'];
+  /**
    * Focus the control when it is mounted
    */
   isAutofocussed?: boolean;
@@ -362,6 +374,8 @@ const SelectInput = (props: TSelectInputProps) => {
         <Select
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
+          aria-invalid={props['aria-invalid']}
+          aria-errormessage={props['aria-errormessage']}
           autoFocus={props.isAutofocussed}
           backspaceRemovesValue={
             props.isReadOnly ? false : props.backspaceRemovesValue

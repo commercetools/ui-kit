@@ -68,6 +68,12 @@ const TimeInputBody = (props: TTimeInputBodyProps) => {
           /* ARIA */
           aria-readonly={props.isReadOnly}
           contentEditable={!props.isReadOnly}
+          {...(!props.isReadOnly
+            ? {
+                'aria-invalid': props['aria-invalid'],
+                'aria-errormessage': props['aria-errormessage'],
+              }
+            : {})}
         />
 
         {!props.isDisabled && !props.isReadOnly && (

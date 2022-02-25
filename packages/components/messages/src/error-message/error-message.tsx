@@ -10,12 +10,14 @@ type TIntlMessageDescriptor = {
 };
 
 type TErrorMessageProps = {
+  id?: string;
   intlMessage?: TIntlMessageDescriptor;
   children?: ReactNode;
 };
 
 const ErrorMessage = (props: TErrorMessageProps) => (
   <Text.Detail
+    id={props.id}
     intlMessage={props.intlMessage}
     tone="negative"
     {...filterDataAttributes(props)}
