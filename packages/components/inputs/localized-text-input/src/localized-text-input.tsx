@@ -37,6 +37,14 @@ type TLocalizedTextInputProps = {
   name?: string;
   autoComplete?: string;
   /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
+  /**
    *   then input doesn't accept a "languages" prop, instead all possible
   languages have to exist (with empty or filled strings) on the value:
     { en: 'foo', de: '', es: '' }
@@ -290,6 +298,9 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                       props.hasError || (props.errors && props.errors[language])
                     )}
                     {...createLocalizedDataAttributes(props, language)}
+                    /* ARIA */
+                    aria-invalid={props['aria-invalid']}
+                    aria-errormessage={props['aria-errormessage']}
                   />
                   {props.errors && props.errors[language]}
                 </Stack>

@@ -54,6 +54,18 @@ export type TSearchSelectInputProps = {
    */
   'aria-labelledby'?: ReactSelectAsyncProps['aria-labelledby'];
   /**
+   * Indicate if the value entered in the input is invalid.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  'aria-invalid'?: ReactSelectAsyncProps['aria-invalid'];
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  'aria-errormessage'?: ReactSelectAsyncProps['aria-errormessage'];
+  /**
    * The id of the search input. This forwarded as react-select's "inputId"
    * <br>
    * [Props from React select was used](https://react-select.com/props)

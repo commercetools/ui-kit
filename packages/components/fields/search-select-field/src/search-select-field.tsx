@@ -33,7 +33,8 @@ type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
-const sequentialId = createSequentialId('async-select-field-');
+const sequentialId = createSequentialId('search-select-field-');
+const sequentialErrorsId = createSequentialId('search-select-field-error-')();
 
 type TSearchSelectFieldProps = {
   // SearchSelectField
@@ -332,6 +333,8 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           hasError={hasError}
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby?']}
+          aria-invalid={hasError}
+          aria-errormessage={sequentialErrorsId}
           isAutofocussed={props.isAutofocussed}
           backspaceRemovesValue={props.backspaceRemovesValue}
           components={props.components}
@@ -366,6 +369,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           optionType={props.optionType}
         />
         <FieldErrors
+          id={sequentialErrorsId}
           errors={props.errors}
           isVisible={hasError}
           renderError={props.renderError}
