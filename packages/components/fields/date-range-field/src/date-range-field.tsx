@@ -28,6 +28,7 @@ type TEvent = {
 };
 
 const sequentialId = createSequentialId('date-range-field-');
+const sequentialErrorsId = createSequentialId('date-range-field-error-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -211,8 +212,11 @@ class DateRangeField extends Component<
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
+            aria-invalid={hasError}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

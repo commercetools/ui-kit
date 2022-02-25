@@ -19,6 +19,7 @@ import {
 import FieldErrors from '@commercetools-uikit/field-errors';
 
 const sequentialId = createSequentialId('text-field-');
+const sequentialErrorsId = createSequentialId('text-field-error-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -181,6 +182,7 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
     }
 
     const hasError = this.props.touched && hasErrors(this.props.errors);
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Stack scale="xs">
@@ -209,8 +211,12 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
+            /* ARIA */
+            aria-invalid={hasError}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
+            id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}

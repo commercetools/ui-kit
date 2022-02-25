@@ -100,8 +100,8 @@ export default Example;
 
 ```ts
 {
-  amount?: boolean,
-  currencyCode?: boolean,
+  amount?: boolean;
+  currencyCode?: boolean;
 }
 ```
 

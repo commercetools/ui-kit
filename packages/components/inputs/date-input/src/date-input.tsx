@@ -94,6 +94,14 @@ type TDateInput = {
    */
   id?: string;
   /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
+  /**
    * Used as the HTML `name` attribute.
    */
   name?: string;
@@ -245,6 +253,9 @@ const DateInput = (props: TDateInput) => {
               <CalendarBody
                 inputRef={inputRef}
                 inputProps={getInputProps({
+                  /* ARIA */
+                  'aria-invalid': props['aria-invalid'],
+                  'aria-errormessage': props['aria-errormessage'],
                   // Unset the aria-labelledby as it interfers with the link
                   // between the <label for> and the <input id>.
                   'aria-labelledby': undefined,

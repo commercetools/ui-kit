@@ -83,6 +83,14 @@ type TEvent = {
 
 export type TDateTimeInputProps = {
   /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
+  /**
    * Horizontal size limit of the input field.
    */
   horizontalConstraint?:
@@ -371,6 +379,9 @@ class DateTimeInput extends Component<
                 <CalendarBody
                   inputRef={this.inputRef}
                   inputProps={getInputProps({
+                    /* ARIA */
+                    'aria-invalid': this.props['aria-invalid'],
+                    'aria-errormessage': this.props['aria-errormessage'],
                     // Unset the aria-labelledby as it interfers with the link
                     // between the <label for> and the <input id>.
                     'aria-labelledby': undefined,

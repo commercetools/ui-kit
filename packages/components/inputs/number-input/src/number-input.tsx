@@ -14,6 +14,14 @@ export type TNumberInputProps = {
    */
   name?: string;
   /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
+  /**
    * Used as HTML `autocomplete` of the input component. property
    */
   autoComplete?: string;
@@ -130,6 +138,8 @@ const NumberInput = (props: TNumberInputProps) => {
         /* ARIA */
         aria-readonly={props.isReadOnly}
         contentEditable={!props.isReadOnly}
+        aria-invalid={props['aria-invalid']}
+        aria-errormessage={props['aria-errormessage']}
       />
     </Constraints.Horizontal>
   );
