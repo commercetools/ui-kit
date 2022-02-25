@@ -27,6 +27,14 @@ export type TTimeInputProps = {
    */
   id?: string;
   /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
+  /**
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint?:
@@ -178,6 +186,9 @@ const TimeInput = (props: TTimeInputProps) => {
             : intl.formatMessage(messages.placeholder)
         }
         {...filterDataAttributes(props)}
+        /* ARIA */
+        aria-invalid={props['aria-invalid']}
+        aria-errormessage={props['aria-errormessage']}
       />
     </Constraints.Horizontal>
   );

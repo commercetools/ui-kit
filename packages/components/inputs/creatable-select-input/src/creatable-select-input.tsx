@@ -107,6 +107,18 @@ type TCreatableSelectInputProps = {
    */
   'aria-labelledby'?: ReactSelectCreatableProps['aria-labelledby'];
   /**
+   * Indicate if the value entered in the input is invalid.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  'aria-invalid'?: ReactSelectCreatableProps['aria-invalid'];
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  'aria-errormessage'?: ReactSelectCreatableProps['aria-errormessage'];
+  /**
    * Focus the control when it is mounted
    */
   isAutofocussed?: boolean; // original: autoFocus
@@ -340,6 +352,8 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
         <CreatableSelect
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
+          aria-invalid={props['aria-invalid']}
+          aria-errormessage={props['aria-errormessage']}
           autoFocus={props.isAutofocussed}
           backspaceRemovesValue={
             props.isReadOnly ? false : props.backspaceRemovesValue

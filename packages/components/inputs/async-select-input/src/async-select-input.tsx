@@ -98,6 +98,18 @@ type TAsyncSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   'aria-labelledby'?: ReactSelectAsyncProps['aria-labelledby'];
+  /**
+   * Indicate if the value entered in the input is invalid.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  'aria-invalid'?: ReactSelectAsyncProps['aria-invalid'];
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  'aria-errormessage'?: ReactSelectAsyncProps['aria-errormessage'];
   // renamed autoFocus of react-select
   /**
    * Focus the control when it is mounted
@@ -314,6 +326,8 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
         <AsyncSelect
           aria-label={props['aria-label']}
           aria-labelledby={props['aria-labelledby']}
+          aria-invalid={props['aria-invalid']}
+          aria-errormessage={props['aria-errormessage']}
           autoFocus={props.isAutofocussed}
           backspaceRemovesValue={
             props.isReadOnly ? false : props.backspaceRemovesValue
