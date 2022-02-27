@@ -5,16 +5,22 @@ import { TOptionProps } from './radio-option';
 
 type TStylesProps = Pick<
   TOptionProps,
-  | 'isDisabled'
-  | 'hasError'
-  | 'hasWarning'
-  | 'isHovered'
-  | 'isReadOnly'
-  | 'gridLabel'
+  'isDisabled' | 'hasError' | 'hasWarning' | 'isHovered' | 'isReadOnly'
 >;
 
 const LabelTextWrapper = styled.div<TStylesProps>`
-  grid-area: ${(props) => props.gridLabel};
+  grid-area: label;
+  margin-left: ${customProperties.spacingS};
+  font-size: 1rem;
+  font-family: inherit;
+  color: ${(props) =>
+    props.isDisabled
+      ? customProperties.fontColorForInputWhenDisabled
+      : customProperties.fontColorForInput};
+`;
+
+const AdditionalTextWrapper = styled.div<TStylesProps>`
+  grid-area: content;
   margin-left: ${customProperties.spacingS};
   font-size: 1rem;
   font-family: inherit;
@@ -147,4 +153,5 @@ export {
   getLabelStyles,
   LabelTextWrapper,
   RadioOptionsWrapper,
+  AdditionalTextWrapper,
 };

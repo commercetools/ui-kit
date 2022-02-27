@@ -19,7 +19,9 @@ import {
   getContainerStyles,
   LabelTextWrapper,
   RadioOptionsWrapper,
+  AdditionalTextWrapper,
 } from './radio-option.styles';
+import Spacings from '../../../../../presets/spacings';
 
 const Input = styled.input`
   &:focus + div > svg *[data-style='radio-option__border'] {
@@ -37,7 +39,6 @@ export type TOptionProps = {
   children: string | ReactElement | (() => ReactElement);
   components?: TComponents;
   additionalContent?: ReactNode;
-  gridLabel?: string;
   // Injected props from the parent Group component
   id?: string;
   name?: string;
@@ -110,13 +111,15 @@ const Option = (props: TOptionProps) => {
             <RadioOptionUncheckedIcon size="medium" />
           )}
         </div>
-        <LabelTextWrapper isDisabled={props.isDisabled} gridLabel="label">
+        <LabelTextWrapper isDisabled={props.isDisabled}>
           {props.children}
         </LabelTextWrapper>
         {props.additionalContent && (
-          <LabelTextWrapper isDisabled={props.isDisabled} gridLabel="content">
-            {props.additionalContent}
-          </LabelTextWrapper>
+          <AdditionalTextWrapper isDisabled={props.isDisabled}>
+            <Spacings.Inset scale="xs">
+              {props.additionalContent}
+            </Spacings.Inset>
+          </AdditionalTextWrapper>
         )}
       </RadioOptionsWrapper>
     </label>
