@@ -2,4 +2,4 @@
 '@commercetools-uikit/money-input': patch
 ---
 
-menuShouldBlockScroll should be optional prop
+The prop `menuShouldBlockScroll` is optional.

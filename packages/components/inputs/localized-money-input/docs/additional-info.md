@@ -96,9 +96,9 @@ LocalizedMoneyInput.getHighPrecisionCurrencies({
 
 ### `LocalizedMoneyInput.convertToMoneyValues`
 
-The convertToMoneyValues unction will turn a LocalizedMoneyInput value into array of [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to centPrecision or highPrecision types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency. If you want to forbid highPrecision, then the form's validation needs to add an error when it sees a highPrecision price. See example below.
+The convertToMoneyValues function will turn a `LocalizedMoneyInput` value into array of [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to `centPrecision` or `highPrecision` types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency. If you want to forbid `highPrecision`, then the form's validation needs to add an error when it sees a `highPrecision` price. See example below.
 
-Here are examples of centPrecision and highPrecision prices.
+Here are examples of `centPrecision` and `highPrecision` prices.
 
 ```js
 // 42.00 €
@@ -127,7 +127,11 @@ Here are examples of centPrecision and highPrecision prices.
 
 ### `LocalizedMoneyInput.parseMoneyValues`
 
-The parseMoneyValues function will turn a MoneyValue into a value the LocalizedMoneyInput component can handle ({ [currencyCode]: {currencyCode, amount} }).
+The `parseMoneyValues` function will turn a `MoneyValue` into a value the `LocalizedMoneyInput` component can handle.
+
+```js
+LocalizedMoneyInput.parseMoneyValues([{ currencyCode: 'EUR', centAmount: 10 }]);
+```
 
 ### `LocalizedMoneyInput.getEmptyCurrencies`
 
