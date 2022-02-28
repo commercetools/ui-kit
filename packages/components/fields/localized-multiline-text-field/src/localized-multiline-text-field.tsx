@@ -1,5 +1,6 @@
 import {
   Component,
+  isValidElement,
   type ReactNode,
   type ChangeEventHandler,
   type ReactElement,
@@ -8,6 +9,7 @@ import {
   filterDataAttributes,
   getFieldId,
   createSequentialId,
+  warning,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
@@ -204,6 +206,20 @@ class LocalizedMultilineTextField extends Component<
   });
 
   render() {
+    if (!this.props.isReadOnly) {
+      warning(
+        typeof this.props.onChange === 'function',
+        'LocalizedMultilineTextField: `onChange` is required when is not read only.'
+      );
+    }
+
+    if (this.props.hintIcon) {
+      warning(
+        typeof this.props.hint === 'string' || isValidElement(this.props.hint),
+        'LocalizedMultilineTextField: `hint` is required to be string or ReactNode if hintIcon is present'
+      );
+    }
+
     const hasError = this.props.touched && hasErrors(this.props.errors);
 
     return (

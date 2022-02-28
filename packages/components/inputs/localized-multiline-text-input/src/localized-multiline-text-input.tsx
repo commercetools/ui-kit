@@ -263,14 +263,14 @@ const LocalizedMultilineTextInput = (
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
-      'LocaliszedMultilineTextInput: "onChange" is required when isReadOnly is not true'
+      'LocalizedMultilineTextInput: "onChange" is required when isReadOnly is not true'
     );
   }
 
   if (props.hideLanguageExpansionControls) {
     warning(
       typeof props.hideLanguageExpansionControls === 'boolean',
-      'LocaliszedMultilineTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
+      'LocalizedMultilineTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
     );
   }
 
