@@ -67,7 +67,7 @@ export default Example;
 | `onChange`              | `Function`<br/>[See signature.](#signature-onChange)                                                  |    ✅    |           | Called with the event of the input or dropdown when either the currency or the amount have changed.                                                           |
 | `menuPortalTarget`      | `ReactSelectProps['menuPortalTarget']`                                                                |          |           | Dom element to portal the currency select menu to&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                             |
 | `menuPortalZIndex`      | `number`                                                                                              |          | `1`       | z-index value for the currency select menu portal                                                                                                             |
-| `menuShouldBlockScroll` | `ReactSelectProps['menuShouldBlockScroll']`                                                           |    ✅    |           | whether the menu should block scroll while open&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                               |
+| `menuShouldBlockScroll` | `ReactSelectProps['menuShouldBlockScroll']`                                                           |          |           | whether the menu should block scroll while open&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                               |
 | `hasError`              | `boolean`                                                                                             |          |           | Indicates that input has errors                                                                                                                               |
 | `hasWarning`            | `boolean`                                                                                             |          |           | Control to indicate on the input if there are selected values that are potentially invalid                                                                    |
 | `hasHighPrecisionBadge` | `boolean`                                                                                             |          |           | Shows high precision badge in case current value uses high precision.                                                                                         |
@@ -80,7 +80,7 @@ export default Example;
 ```ts
 {
   amount: string;
-  currencyCode: TCurrencyCode;
+  currencyCode: TCurrencyCode | '';
 }
 ```
 
@@ -106,7 +106,7 @@ export default Example;
 
 ### `MoneyInput.convertToMoneyValue`
 
-The `convertToMoneyValue` function will turn a MoneyInput value into a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to `centPrecision` or `highPrecision` types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency.
+The `convertToMoneyValue` function will turn a `MoneyInput` value into a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) the API can handle. It automatically converts to `centPrecision` or `highPrecision` types when the number of supplied fraction digits exceeds the number of fraction digits used by the currency.
 If you want to forbid `highPrecision`, then the form's validation needs to add an error when it sees a `highPrecision` price. See example below.
 
 Here are examples of `centPrecision` and `highPrecision` prices.
@@ -134,7 +134,7 @@ Here are examples of `centPrecision` and `highPrecision` prices.
 
 ### `MoneyInput.parseMoneyValue`
 
-The `parseMoneyValue` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the MoneyInput component can handle `({ amount, currencyCode })`.
+The `parseMoneyValue` function will turn a [`MoneyValue`](https://docs.commercetools.com/http-api-types#money) into a value the `MoneyInput` component can handle `({ amount, currencyCode })`.
 
 ### `MoneyInput.isEmpty`
 
