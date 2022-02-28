@@ -380,19 +380,18 @@ LocalizedMoneyInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-LocalizedMoneyInput.convertToMoneyValues = (values: TValue[], locale: string) =>
-  Object.values(values).reduce<TMoneyValue[]>((allMoneyValues, value) => {
-    const moneyValue = MoneyInput.convertToMoneyValue(value, locale);
-    if (moneyValue) {
-      return [...allMoneyValues, moneyValue];
-    }
-    return allMoneyValues;
-  }, []);
+LocalizedMoneyInput.convertToMoneyValues = (
+  values: TValue[],
+  locale: string
+): Array<TMoneyValue | null> =>
+  Object.values(values).map<TMoneyValue | null>((value) => {
+    return MoneyInput.convertToMoneyValue(value, locale);
+  });
 
 LocalizedMoneyInput.parseMoneyValues = (
   moneyValues: TMoneyValue[] = [],
   locale: string
-) =>
+): Record<TCurrencyCode, TValue> =>
   moneyValues.reduce<Record<TCurrencyCode, TValue>>((allValues, moneyValue) => {
     const value = MoneyInput.parseMoneyValue(moneyValue, locale);
     return {
@@ -404,7 +403,7 @@ LocalizedMoneyInput.parseMoneyValues = (
 LocalizedMoneyInput.getHighPrecisionCurrencies = (
   values: Record<TCurrencyCode, TValue>,
   locale: string
-) => {
+): TCurrencyCode[] => {
   const typedCurrencyCodes = Object.keys(values) as TCurrencyCode[];
   return typedCurrencyCodes.filter((currencyCode) =>
     MoneyInput.isHighPrecision(values[currencyCode], locale)
@@ -413,7 +412,7 @@ LocalizedMoneyInput.getHighPrecisionCurrencies = (
 
 LocalizedMoneyInput.getEmptyCurrencies = (
   values: Record<TCurrencyCode, TValue>
-) => {
+): TCurrencyCode[] => {
   const typedCurrencyCodes = Object.keys(values) as TCurrencyCode[];
   return typedCurrencyCodes.filter((currencyCode) =>
     MoneyInput.isEmpty(values[currencyCode])
