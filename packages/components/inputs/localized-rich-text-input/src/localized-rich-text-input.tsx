@@ -37,22 +37,64 @@ type TEvent = {
 };
 
 type TLocalizedRichTextInputProps = {
+  /**
+   * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en
+   */
   id?: string;
+  /**
+   * Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`
+   */
   name?: string;
   // then input doesn't accept a "languages" prop, instead all possible
   // languages have to exist (with empty or filled slate values) on the value:
   //   { en: slateValue, de: slateValue, es: slateValue }
+  /**
+   * Values to use. Keyed by language, the values are the actual values, e.g. `{ en: '<p>Horse</p>', de: '<p>Pferd</p>' }
+   */
   value: Record<string, string>;
+  /**
+   * Gets called when any input is changed. Is called with the change event of the changed input.
+   */
   onChange?: (event: TEvent) => void;
+  /**
+   * Specifies which language will be shown in case the `LocalizedRichTextInput` is collapsed.
+   */
   selectedLanguage: string;
+  /**
+   *Called when any field is blurred. Is called with the `event` of that field.
+   */
   onBlur?: (event: TEvent) => void;
+  /**
+   * Called when any field is focussed. Is called with the `event` of that field.
+   */
   onFocus?: (event: TEvent) => void;
+  /**
+   * Expands input components holding multiline values instead of collapsing them by default.
+   */
   defaultExpandMultilineText?: boolean;
+  /**
+   * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`
+   */
   hideLanguageExpansionControls?: boolean;
+  /**
+   * Controls whether one or all languages are visible by default. Pass `true` to show all languages by default.
+   */
   defaultExpandLanguages?: boolean;
+  /**
+   * Disables all input
+   */
   isDisabled?: boolean;
+  /**
+   * Disables all input fields and shows them in read-only mode.
+   */
   isReadOnly?: boolean;
+  /**
+   * Placeholders for each language. Object of the same shape as
+   */
   placeholder?: Record<string, string>;
+  /**
+   * Horizontal size limit of the input fields.
+   */
   horizontalConstraint?:
     | 7
     | 8
@@ -66,11 +108,29 @@ type TLocalizedRichTextInputProps = {
     | 16
     | 'scale'
     | 'auto';
+  /**
+   * Will apply the error state to each input without showing any error message.
+   */
   hasError?: boolean;
+  /**
+   * Will apply the warning state to each input without showing any warning message.
+   */
   hasWarning?: boolean;
+  /**
+   * Used to show errors underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the error to show for that key.
+   */
   errors?: TErrors;
+  /**
+   * Used to show warnings underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the warning to show for that key.
+   */
   warnings?: TWarnings;
+  /**
+   * Shows an `expand` icon in the toolbar
+   */
   showExpandIcon: boolean;
+  /**
+   * Called when the `expand` button is clicked
+   */
   onClickExpand?: () => boolean;
 };
 
