@@ -30,7 +30,6 @@
     "@commercetools-uikit/utils": "13.0.2",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "common-tags": "1.8.2",
     "prop-types": "15.8.1",
     "react-intl": "^5.24.6",
     "react-required-if": "1.0.3"
