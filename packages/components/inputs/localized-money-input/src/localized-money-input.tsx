@@ -411,7 +411,9 @@ LocalizedMoneyInput.getHighPrecisionCurrencies = (
   );
 };
 
-LocalizedMoneyInput.getEmptyCurrencies = (values: Record<string, TValue>) => {
+LocalizedMoneyInput.getEmptyCurrencies = (
+  values: Record<TCurrencyCode, TValue>
+) => {
   const typedCurrencyCodes = Object.keys(values) as TCurrencyCode[];
   return typedCurrencyCodes.filter((currencyCode) =>
     MoneyInput.isEmpty(values[currencyCode])
