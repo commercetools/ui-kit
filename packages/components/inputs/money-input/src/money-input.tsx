@@ -285,7 +285,7 @@ export const createMoneyValue = (
 
   warning(
     locale || currency.fractionDigits !== 0,
-    `A locale must be provided when currency has no fraction digits (${currencyCode})`
+    `MoneyInput: A locale must be provided when currency has no fraction digits (${currencyCode})`
   );
   const amountAsNumber = parseRawAmountToNumber(rawAmount, locale);
   if (isNaN(amountAsNumber)) return null;

@@ -305,7 +305,7 @@ const LocalizedMoneyInput = (props: TLocalizedMoneyInputProps) => {
   if (props.hideCurrencyExpansionControls) {
     warning(
       typeof props.defaultExpandCurrencies !== 'boolean',
-      'LocaliszedMoneyInput: "defaultExpandCurrencies" does not have any effect when "hideCurrencyExpansionControls" is set.'
+      'LocalizedMoneyInput: "defaultExpandCurrencies" does not have any effect when "hideCurrencyExpansionControls" is set.'
     );
   }
 

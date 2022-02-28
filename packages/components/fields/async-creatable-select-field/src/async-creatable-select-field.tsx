@@ -394,7 +394,7 @@ export default class AsyncCreatableSelectField extends Component<
     if (this.props.hintIcon) {
       warning(
         typeof this.props.hint === 'string' || isValidElement(this.props.hint),
-        'TextField: `hint` is required to be string or ReactNode if hintIcon is present'
+        'AsyncCreatableSelectField: `hint` is required to be string or ReactNode if hintIcon is present'
       );
     }
 

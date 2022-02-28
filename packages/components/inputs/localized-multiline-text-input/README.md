@@ -56,9 +56,9 @@ export default Example;
 | `aria-invalid`                  | `boolean`                                                                                    |          |           | Indicate if the value entered in the input is invalid.                                                                                                                                                                                                                                                     |
 | `aria-errormessage`             | `string`                                                                                     |          |           | HTML ID of an element containing an error message related to the input.                                                                                                                                                                                                                                    |
 | `value`                         | `Object`<br/>[See signature.](#signature-value)                                              |    ✅    |           | Values to use. Keyed by language, the values are the actual values, e.g. `{ en: 'Horse', de: 'Pferd' }`&#xA;<br />&#xA;The input doesn't accept a "languages" prop, instead all possible&#xA;languages have to exist (with empty or filled strings) on the value:&#xA;<br /> { en: 'foo', de: '', es: '' } |
-| `onChange`                      | `Function`<br/>[See signature.](#signature-onChange)                                         |          |           | Gets called when any input is changed. Is called with the change event of the changed input.&#xA;<br />&#xA;Signature: `(event) => void`                                                                                                                                                                   |
+| `onChange`                      | `Function`<br/>[See signature.](#signature-onChange)                                         |          |           | Gets called when any input is changed. Is called with the change event of the changed input.                                                                                                                                                                                                               |
 | `selectedLanguage`              | `string`                                                                                     |    ✅    |           | Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.                                                                                                                                                                                                                      |
-| `onBlur`                        | `Function`<br/>[See signature.](#signature-onBlur)                                           |          |           | Called when input is blurred                                                                                                                                                                                                                                                                               |
+| `onBlur`                        | `ChangeEventHandler`                                                                         |          |           | Called when input is blurred                                                                                                                                                                                                                                                                               |
 | `onFocus`                       | `Function`<br/>[See signature.](#signature-onFocus)                                          |          |           | Called when input is focused                                                                                                                                                                                                                                                                               |
 | `defaultExpandMultilineText`    | `boolean`                                                                                    |          |           | Expands input components holding multiline values instead of collpasing them by default.                                                                                                                                                                                                                   |
 | `hideLanguageExpansionControls` | `boolean`                                                                                    |          |           | Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.                                                                                                                                                                                              |
@@ -86,13 +86,7 @@ export default Example;
 ### Signature `onChange`
 
 ```ts
-() => void
-```
-
-### Signature `onBlur`
-
-```ts
-() => void
+(event: TEvent) => void
 ```
 
 ### Signature `onFocus`
@@ -113,7 +107,7 @@ export default Example;
 
 ```ts
 {
-  [key: string]: string;
+  [key: string]: ReactNode;
 }
 ```
 
@@ -121,7 +115,7 @@ export default Example;
 
 ```ts
 {
-  [key: string]: string;
+  [key: string]: ReactNode;
 }
 ```
 

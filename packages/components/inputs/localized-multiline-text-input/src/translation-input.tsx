@@ -149,7 +149,7 @@ const TranslationInput = (props: TranslationInputProps) => {
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
-      'LocaliszedMultilineTextInput: "onChange" is required when isReadOnly is not true'
+      'LocalizedMultilineTextInput/TranslationInput: "onChange" is required when isReadOnly is not true'
     );
   }
 

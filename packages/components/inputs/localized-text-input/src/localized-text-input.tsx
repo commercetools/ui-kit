@@ -177,7 +177,7 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
-      'LocaliszedTextInput: "onChange" is required when isReadOnly is not true'
+      'LocalizedTextInput: "onChange" is required when isReadOnly is not true'
     );
   }
 
