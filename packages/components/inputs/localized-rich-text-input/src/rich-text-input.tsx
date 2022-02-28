@@ -1,14 +1,60 @@
-/* eslint-disable react/prop-types */
-import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import { PureComponent, ReactNode } from 'react';
 import pick from 'lodash/pick';
-import requiredIf from 'react-required-if';
+import type { Value } from 'slate';
+// TODO: remove after upgrade of `slate-react` to the latest version
+// @ts-ignore
 import { Editor } from 'slate-react';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { richTextPlugins, html } from '@commercetools-uikit/rich-text-utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
+import {
+  richTextPlugins,
+  html,
+  TEditor,
+} from '@commercetools-uikit/rich-text-utils';
 import renderEditor from './editor';
 
-class RichTextInput extends PureComponent {
+type TEvent = {
+  target: {
+    id?: string;
+    name?: string;
+    language?: string;
+    value?: string;
+  };
+};
+
+type TRichTextInputProps = {
+  defaultExpandMultilineText?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  id?: string;
+  name?: string;
+  placeholder: string;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  onChange?: (event: TEvent) => void;
+  onBlur?: (event: TEvent) => void;
+  onFocus?: (event: TEvent) => void;
+  value: string;
+  showExpandIcon: boolean;
+  onClickExpand?: () => boolean;
+  hasLanguagesControl?: boolean;
+  language?: string;
+  isOpen?: boolean;
+  toggleLanguage?: (language: string) => void;
+  warning?: ReactNode;
+  error?: string;
+};
+
+class RichTextInput extends PureComponent<TRichTextInputProps> {
+  static defaultProps: Pick<
+    TRichTextInputProps,
+    'defaultExpandMultilineText' | 'placeholder'
+  > = {
+    defaultExpandMultilineText: false,
+    placeholder: '',
+  };
+
+  static displayName = 'RichTextInput';
+
   serializedValue = this.props.value || '';
   internalSlateValue = html.deserialize(this.props.value || '');
 
@@ -20,7 +66,7 @@ class RichTextInput extends PureComponent {
     }
   }
 
-  onValueChange = (event) => {
+  onValueChange = (event: { value: Value }) => {
     const serializedValue = html.serialize(event.value);
 
     // because we are not using setState, we need to make sure that
@@ -48,7 +94,7 @@ class RichTextInput extends PureComponent {
         },
       };
 
-      this.props.onChange(fakeEvent);
+      this.props.onChange?.(fakeEvent);
     }
 
     if (hasInternalSlateValueChanged && !hasSerializedValueChanged) {
@@ -60,7 +106,7 @@ class RichTextInput extends PureComponent {
   // this issue explains why we need to use next() + setTimeout
   // for calling our passed onBlur handler
   // https://github.com/ianstormtaylor/slate/issues/2434
-  onBlur = (event, editor, next) => {
+  onBlur = (_event: FocusEvent, _editor: TEditor, next: () => void) => {
     next();
 
     if (this.props.onBlur) {
@@ -70,11 +116,11 @@ class RichTextInput extends PureComponent {
           name: this.props.name,
         },
       };
-      setTimeout(() => this.props.onBlur(fakeEvent), 0);
+      setTimeout(() => this.props.onBlur?.(fakeEvent), 0);
     }
   };
 
-  onFocus = (event, editor, next) => {
+  onFocus = (_event: FocusEvent, _editor: TEditor, next: () => void) => {
     next();
     if (this.props.onFocus) {
       const fakeEvent = {
@@ -83,11 +129,25 @@ class RichTextInput extends PureComponent {
           name: this.props.name,
         },
       };
-      setTimeout(() => this.props.onFocus(fakeEvent), 0);
+      setTimeout(() => this.props.onFocus?.(fakeEvent), 0);
     }
   };
 
   render() {
+    if (!this.props.isReadOnly) {
+      warning(
+        typeof this.props.onChange === 'function',
+        'RichTextInput: `onChange` is required when field is not read only.'
+      );
+    }
+
+    if (this.props.showExpandIcon) {
+      warning(
+        typeof this.props.onClickExpand === 'function',
+        'RichTextInput: "onClickExpand" is required when showExpandIcon is true'
+      );
+    }
+
     return (
       <Editor
         {...filterDataAttributes(this.props)}
@@ -125,30 +185,5 @@ class RichTextInput extends PureComponent {
     );
   }
 }
-
-RichTextInput.defaultProps = {
-  defaultExpandMultilineText: false,
-  placeholder: '',
-};
-
-RichTextInput.displayName = 'RichTextInput';
-
-RichTextInput.propTypes = {
-  defaultExpandMultilineText: PropTypes.bool,
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  placeholder: PropTypes.string.isRequired,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  value: PropTypes.string.isRequired,
-  showExpandIcon: PropTypes.bool.isRequired,
-  onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
-  hasLanguagesControl: PropTypes.bool,
-};
 
 export default RichTextInput;

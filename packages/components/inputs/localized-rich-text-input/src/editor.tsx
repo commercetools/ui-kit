@@ -1,12 +1,21 @@
-import { useRef, useState, useCallback, useEffect, cloneElement } from 'react';
-import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
+import {
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+  cloneElement,
+  type ReactNode,
+  type ReactElement,
+  type LegacyRef,
+  type RefObject,
+  type Ref,
+} from 'react';
 import pick from 'lodash/pick';
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
 import { customProperties } from '@commercetools-uikit/design-system';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -17,6 +26,7 @@ import { messagesMultilineInput } from '@commercetools-uikit/input-utils';
 import {
   RichTextBody,
   HiddenInput,
+  TEditor,
 } from '@commercetools-uikit/rich-text-utils';
 import {
   EditorWrapper,
@@ -44,10 +54,45 @@ const Row = styled.div`
   justify-content: flex-end;
 `;
 
-const Editor = (props) => {
+export type TEditorProps = {
+  children: ReactNode;
+  id?: string;
+  isOpen: boolean;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  hasWarning?: boolean;
+  hasError?: boolean;
+  editor?: TEditor;
+  error?: ReactNode;
+  warning?: ReactNode;
+  defaultExpandMultilineText: boolean;
+  toggleLanguage: (language: string) => void;
+  language: string;
+  showExpandIcon: boolean;
+  onClickExpand?: () => boolean;
+  hasLanguagesControl?: boolean;
+};
+
+type TNodeRefObject = {
+  clientHeight: number;
+} & LegacyRef<HTMLDivElement>;
+
+type TRichTextEditorBodyRef = {
+  registerContentNode: TNodeRefObject;
+  containerRef: RefObject<HTMLDivElement>;
+};
+
+const Editor = (props: TEditorProps) => {
   const intl = useIntl();
-  const ref = useRef();
-  const prevIsFocused = usePrevious(props.editor.value.selection.isFocused);
+  const ref = useRef<HTMLDivElement>();
+  const prevIsFocused = usePrevious(props.editor?.value.selection.isFocused);
+
+  if (props.showExpandIcon) {
+    warning(
+      typeof props.onClickExpand === 'function',
+      'Editor: "onClickExpand" is required when showExpandIcon is true'
+    );
+  }
 
   const [renderToggleButton, setRenderToggleButton] = useState(false);
 
@@ -58,7 +103,7 @@ const Editor = (props) => {
 
   const updateRenderToggleButton = useCallback(() => {
     const doesExceedCollapsedHeightLimit =
-      ref.current.clientHeight > COLLAPSED_HEIGHT;
+      Number(ref.current?.clientHeight) > COLLAPSED_HEIGHT;
 
     if (doesExceedCollapsedHeightLimit && !renderToggleButton) {
       setRenderToggleButton(true);
@@ -70,12 +115,12 @@ const Editor = (props) => {
 
   useEffect(() => {
     updateRenderToggleButton();
-  }, [props.editor.value.document, updateRenderToggleButton]);
+  }, [props.editor?.value.document, updateRenderToggleButton]);
 
   // opens the input if it regains focus and it's closed
   if (
-    prevIsFocused !== props.editor.value.selection.isFocused &&
-    props.editor.value.selection.isFocused &&
+    prevIsFocused !== props.editor?.value.selection.isFocused &&
+    props.editor?.value.selection.isFocused &&
     !props.isOpen
   ) {
     onToggle();
@@ -95,6 +140,7 @@ const Editor = (props) => {
     props.warning;
 
   const theme = useTheme();
+
   return (
     <CollapsibleMotion
       minHeight={COLLAPSED_HEIGHT}
@@ -103,6 +149,11 @@ const Editor = (props) => {
       isDefaultClosed={!props.defaultExpandMultilineText}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
+        const refObj = {
+          containerRef: ref,
+          registerContentNode,
+        };
+
         return (
           <Stack scale="xs">
             <EditorWrapper
@@ -118,10 +169,7 @@ const Editor = (props) => {
               </EditorLanguageLabel>
 
               <RichTextBody
-                ref={{
-                  containerRef: ref,
-                  registerContentNode,
-                }}
+                ref={refObj as unknown as Ref<TRichTextEditorBodyRef>}
                 styles={{
                   container: css`
                     flex: auto;
@@ -130,12 +178,11 @@ const Editor = (props) => {
                     border-bottom-left-radius: 0;
                   `,
                 }}
-                isOpen={props.isOpen}
                 hasError={props.hasError}
                 isDisabled={props.isDisabled}
                 hasWarning={props.hasWarning}
-                isReadOnly={props.isReadOnly}
-                editor={props.editor}
+                isReadOnly={Boolean(props.isReadOnly)}
+                editor={props.editor as TEditor}
                 containerStyles={containerStyles}
                 showExpandIcon={props.showExpandIcon}
                 onClickExpand={props.onClickExpand}
@@ -211,8 +258,41 @@ const Editor = (props) => {
   );
 };
 
-// eslint-disable-next-line react/display-name
-const renderEditor = (props, editor, next) => {
+type TOptions = {
+  language: string;
+  error?: ReactNode;
+  warning?: ReactNode;
+  hasWarning?: boolean;
+  hasError?: boolean;
+  defaultExpandMultilineText: boolean;
+  toggleLanguage: (language: string) => void;
+  isOpen: boolean;
+  showExpandIcon: boolean;
+  onClickExpand?: () => boolean;
+  hasLanguagesControl?: boolean;
+};
+
+type TRenderEditorProps = {
+  id?: string;
+  name?: string;
+  disabled?: boolean;
+  readOnly?: boolean;
+  editor?: TEditor;
+  options: TOptions;
+};
+
+const renderEditor = (
+  props: TRenderEditorProps,
+  editor: TEditor,
+  next: () => ReactElement
+) => {
+  if (props.options.showExpandIcon) {
+    warning(
+      typeof props.options.onClickExpand === 'function',
+      'renderEditor: "onClickExpand" is required when showExpandIcon is true'
+    );
+  }
+
   const internalId = `${props.id}__internal__id`;
 
   const children = cloneElement(next(), {
@@ -239,13 +319,13 @@ const renderEditor = (props, editor, next) => {
     ...filterDataAttributes(props),
   };
 
-  const isFocused = props.editor.value.selection.isFocused;
+  const isFocused = props.editor?.value.selection.isFocused;
 
   return (
     <Editor editor={editor} {...passedProps}>
       {children}
       <HiddenInput
-        isFocused={isFocused}
+        isFocused={Boolean(isFocused)}
         handleFocus={editor.focus}
         disabled={props.disabled}
         readOnly={props.readOnly}
@@ -256,44 +336,5 @@ const renderEditor = (props, editor, next) => {
 };
 
 Editor.displayName = 'Editor';
-Editor.propTypes = {
-  children: PropTypes.node.isRequired,
-  id: PropTypes.string,
-  isOpen: PropTypes.bool.isRequired,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  hasError: PropTypes.bool,
-  editor: PropTypes.any,
-  error: PropTypes.node,
-  warning: PropTypes.node,
-  defaultExpandMultilineText: PropTypes.bool.isRequired,
-  toggleLanguage: PropTypes.func.isRequired,
-  language: PropTypes.string.isRequired,
-  showExpandIcon: PropTypes.bool.isRequired,
-  onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
-  hasLanguagesControl: PropTypes.bool,
-};
-
-renderEditor.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  editor: PropTypes.any,
-  options: PropTypes.shape({
-    language: PropTypes.string.isRequired,
-    error: PropTypes.node,
-    warning: PropTypes.node,
-    hasWarning: PropTypes.bool,
-    hasError: PropTypes.bool,
-    defaultExpandMultilineText: PropTypes.bool.isRequired,
-    toggleLanguage: PropTypes.func.isRequired,
-    isOpen: PropTypes.bool.isRequired,
-    showExpandIcon: PropTypes.bool.isRequired,
-    onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
-    hasLanguagesControl: PropTypes.bool,
-  }),
-};
 
 export default renderEditor;

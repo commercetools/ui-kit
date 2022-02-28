@@ -8,7 +8,7 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { css } from '@emotion/react';
+import { css, type SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import Tooltip from '@commercetools-uikit/tooltip';
 import { CaretDownIcon } from '@commercetools-uikit/icons';
@@ -80,8 +80,8 @@ type TRichtTextEditorBodyRef = {
 
 export type TRichTextEditorBody = {
   editor: TEditor;
-  styles?: {
-    container?: string;
+  styles: {
+    container?: SerializedStyles;
   };
   hasError?: boolean;
   isReadOnly: boolean;
