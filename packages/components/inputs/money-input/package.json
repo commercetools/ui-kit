@@ -33,7 +33,6 @@
     "@emotion/styled": "^11.3.0",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-required-if": "1.0.3",
     "react-select": "5.2.2"
   },
   "devDependencies": {

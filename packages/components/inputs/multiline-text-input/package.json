@@ -35,7 +35,6 @@
     "@emotion/styled": "^11.3.0",
     "downshift": "6.1.7",
     "prop-types": "15.8.1",
-    "react-required-if": "1.0.3",
     "react-textarea-autosize": "8.3.3"
   },
   "devDependencies": {
