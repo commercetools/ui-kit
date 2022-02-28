@@ -6,7 +6,7 @@ type THiddenInputProps = {
   isFocused: boolean;
   id?: string;
   disabled?: boolean;
-  readOnly: boolean;
+  readOnly?: boolean;
 };
 
 const HiddenInput = (props: THiddenInputProps) => {

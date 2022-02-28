@@ -1,7 +1,10 @@
-import { useReducer, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import requiredIf from 'react-required-if';
-import { oneLine } from 'common-tags';
+import {
+  useReducer,
+  useCallback,
+  type ReactNode,
+  type MouseEvent,
+  type KeyboardEvent,
+} from 'react';
 import { css } from '@emotion/react';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -17,10 +20,140 @@ import {
 } from '@commercetools-uikit/localized-utils';
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import { localized } from '@commercetools-uikit/rich-text-utils';
+import { warning } from '@commercetools-uikit/utils';
 import RichTextInput from './rich-text-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 
-const expandedTranslationsReducer = (state, action) => {
+type TErrors = Record<string, string>;
+type TWarnings = Record<string, ReactNode>;
+
+type TEvent = {
+  target: {
+    id?: string;
+    name?: string;
+    language?: string;
+    value?: string;
+  };
+};
+
+type TLocalizedRichTextInputProps = {
+  /**
+   * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en
+   */
+  id?: string;
+  /**
+   * Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`
+   */
+  name?: string;
+  // then input doesn't accept a "languages" prop, instead all possible
+  // languages have to exist (with empty or filled slate values) on the value:
+  //   { en: slateValue, de: slateValue, es: slateValue }
+  /**
+   * Values to use. Keyed by language, the values are the actual values, e.g. `{ en: '<p>Horse</p>', de: '<p>Pferd</p>' }
+   */
+  value: Record<string, string>;
+  /**
+   * Gets called when any input is changed. Is called with the change event of the changed input.
+   */
+  onChange?: (event: TEvent) => void;
+  /**
+   * Specifies which language will be shown in case the `LocalizedRichTextInput` is collapsed.
+   */
+  selectedLanguage: string;
+  /**
+   *Called when any field is blurred. Is called with the `event` of that field.
+   */
+  onBlur?: (event: TEvent) => void;
+  /**
+   * Called when any field is focussed. Is called with the `event` of that field.
+   */
+  onFocus?: (event: TEvent) => void;
+  /**
+   * Expands input components holding multiline values instead of collapsing them by default.
+   */
+  defaultExpandMultilineText?: boolean;
+  /**
+   * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`
+   */
+  hideLanguageExpansionControls?: boolean;
+  /**
+   * Controls whether one or all languages are visible by default. Pass `true` to show all languages by default.
+   */
+  defaultExpandLanguages?: boolean;
+  /**
+   * Disables all input
+   */
+  isDisabled?: boolean;
+  /**
+   * Disables all input fields and shows them in read-only mode.
+   */
+  isReadOnly?: boolean;
+  /**
+   * Placeholders for each language. Object of the same shape as
+   */
+  placeholder?: Record<string, string>;
+  /**
+   * Horizontal size limit of the input fields.
+   */
+  horizontalConstraint?:
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  /**
+   * Will apply the error state to each input without showing any error message.
+   */
+  hasError?: boolean;
+  /**
+   * Will apply the warning state to each input without showing any warning message.
+   */
+  hasWarning?: boolean;
+  /**
+   * Used to show errors underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the error to show for that key.
+   */
+  errors?: TErrors;
+  /**
+   * Used to show warnings underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the warning to show for that key.
+   */
+  warnings?: TWarnings;
+  /**
+   * Shows an `expand` icon in the toolbar
+   */
+  showExpandIcon: boolean;
+  /**
+   * Called when the `expand` button is clicked
+   */
+  onClickExpand?: () => boolean;
+};
+
+type TReducerState = {
+  [id: string]: boolean;
+};
+
+type TReducerAction =
+  | { type: 'toggle'; payload: string }
+  | { type: 'toggleAll'; payload: string };
+
+const defaultProps: Pick<
+  TLocalizedRichTextInputProps,
+  'horizontalConstraint' | 'showExpandIcon'
+> = {
+  horizontalConstraint: 'scale',
+  showExpandIcon: false,
+};
+
+const expandedTranslationsReducer = (
+  state: TReducerState,
+  action: TReducerAction
+) => {
   switch (action.type) {
     case 'toggle':
       return {
@@ -48,7 +181,28 @@ const expandedTranslationsReducer = (state, action) => {
 // can get quite confusing. We try to stick to expand/collapse for the
 // multiline inputs, while we use show/hide/open/close for the remaining
 // languages.
-const LocalizedRichTextInput = (props) => {
+const LocalizedRichTextInput = (props: TLocalizedRichTextInputProps) => {
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'LocalizedRichTextInput: `onChange` is required when input is not read only.'
+    );
+  }
+
+  if (props.showExpandIcon) {
+    warning(
+      typeof props.onClickExpand === 'function',
+      'LocalizedRichTextInput: "onClickExpand" is required when showExpandIcon is true'
+    );
+  }
+
+  if (props.hideLanguageExpansionControls) {
+    warning(
+      typeof props.defaultExpandLanguages !== 'boolean',
+      'LocalizedRichTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
+    );
+  }
+
   const initialExpandedTranslationsState = Object.keys(props.value).reduce(
     (translations, locale) => {
       return {
@@ -120,7 +274,6 @@ const LocalizedRichTextInput = (props) => {
             return (
               <RichTextInput
                 key={language}
-                autoComplete={props.autoComplete}
                 id={LocalizedRichTextInput.getId(props.id, language)}
                 name={LocalizedRichTextInput.getName(props.name, language)}
                 value={props.value[language]}
@@ -133,10 +286,8 @@ const LocalizedRichTextInput = (props) => {
                 }
                 onBlur={props.onBlur}
                 onFocus={props.onFocus}
-                isAutofocussed={index === 0 && props.isAutofocussed}
                 isDisabled={props.isDisabled}
                 isReadOnly={props.isReadOnly}
-                toggleLanguages={toggleLanguages}
                 hasError={Boolean(
                   props.hasError || (props.errors && props.errors[language])
                 )}
@@ -162,7 +313,14 @@ const LocalizedRichTextInput = (props) => {
           >
             <LocalizedInputToggle
               isOpen={areLanguagesOpened}
-              onClick={toggleLanguages}
+              onClick={
+                toggleLanguages as (
+                  event:
+                    | MouseEvent<HTMLButtonElement>
+                    | KeyboardEvent<HTMLButtonElement>
+                    | boolean
+                ) => void
+              }
               isDisabled={
                 areLanguagesOpened &&
                 Boolean(
@@ -182,68 +340,11 @@ LocalizedRichTextInput.displayName = 'LocalizedRichTextInput';
 
 LocalizedRichTextInput.RequiredValueErrorMessage = RequiredValueErrorMessage;
 
-LocalizedRichTextInput.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  autoComplete: PropTypes.string,
-  // then input doesn't accept a "languages" prop, instead all possible
-  // languages have to exist (with empty or filled slate values) on the value:
-  //   { en: slateValue, de: slateValue, es: slateValue }
-  value: PropTypes.objectOf(PropTypes.any).isRequired,
-  onChange: requiredIf(PropTypes.func, (props) => !props.isReadOnly),
-  selectedLanguage: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  defaultExpandMultilineText: PropTypes.bool,
-  hideLanguageExpansionControls: PropTypes.bool,
-  defaultExpandLanguages: (props, propName, componentName, ...rest) => {
-    if (
-      props.hideLanguageExpansionControls &&
-      typeof props[propName] === 'boolean'
-    ) {
-      throw new Error(
-        oneLine`
-          ${componentName}: "${propName}" does not have any effect when
-          "hideLanguageExpansionControls" is set.
-        `
-      );
-    }
-    return PropTypes.bool(props, propName, componentName, ...rest);
-  },
-  isAutofocussed: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  placeholder: PropTypes.objectOf(PropTypes.string),
-  horizontalConstraint: PropTypes.oneOf([
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-  hasError: PropTypes.bool,
-  hasWarning: PropTypes.bool,
-  errors: PropTypes.objectOf(PropTypes.node),
-  warnings: PropTypes.objectOf(PropTypes.node),
-  showExpandIcon: PropTypes.bool.isRequired,
-  onClickExpand: requiredIf(PropTypes.func, (props) => props.showExpandIcon),
-};
-
 LocalizedRichTextInput.getId = getId;
 
 LocalizedRichTextInput.getName = getName;
 
-LocalizedRichTextInput.defaultProps = {
-  horizontalConstraint: 'scale',
-  showExpandIcon: false,
-};
+LocalizedRichTextInput.defaultProps = defaultProps;
 
 LocalizedRichTextInput.createLocalizedString = localized.createLocalizedString;
 
