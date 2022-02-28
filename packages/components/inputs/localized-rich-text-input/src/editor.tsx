@@ -26,7 +26,7 @@ import { messagesMultilineInput } from '@commercetools-uikit/input-utils';
 import {
   RichTextBody,
   HiddenInput,
-  TEditor,
+  type TEditor,
 } from '@commercetools-uikit/rich-text-utils';
 import {
   EditorWrapper,
