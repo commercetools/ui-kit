@@ -21,7 +21,7 @@ import {
   RadioOptionsWrapper,
   AdditionalTextWrapper,
 } from './radio-option.styles';
-import Spacings from '../../../../../presets/spacings';
+import SpacingsInset from '@commercetools-uikit/spacings-inset';
 
 const Input = styled.input`
   &:focus + div > svg *[data-style='radio-option__border'] {
@@ -116,9 +116,7 @@ const Option = (props: TOptionProps) => {
         </LabelTextWrapper>
         {props.additionalContent && (
           <AdditionalTextWrapper isDisabled={props.isDisabled}>
-            <Spacings.Inset scale="xs">
-              {props.additionalContent}
-            </Spacings.Inset>
+            <SpacingsInset scale="xs">{props.additionalContent}</SpacingsInset>
           </AdditionalTextWrapper>
         )}
       </RadioOptionsWrapper>

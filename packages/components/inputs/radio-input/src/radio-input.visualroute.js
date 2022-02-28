@@ -164,5 +164,21 @@ export const component = () => (
         <RadioInput.Option value="oranges">{'Oranges'}</RadioInput.Option>
       </RadioInput.Group>
     </Spec>
+    <Spec label="when there is additional content">
+      <RadioInput.Group
+        name="fruits"
+        value="apples"
+        onChange={() => {}}
+        direction="stack"
+      >
+        <RadioInput.Option
+          value="apples"
+          additionalContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        >
+          {'Apples'}
+        </RadioInput.Option>
+        <RadioInput.Option value="oranges">{'Oranges'}</RadioInput.Option>
+      </RadioInput.Group>
+    </Spec>
   </Suite>
 );
