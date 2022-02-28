@@ -100,7 +100,6 @@
     "browserslist": "4.19.3",
     "bundlesize": "0.18.1",
     "colors": "1.4.0",
-    "common-tags": "1.8.2",
     "conventional-changelog-cli": "2.2.2",
     "cross-env": "7.0.3",
     "eslint": "8.9.0",
