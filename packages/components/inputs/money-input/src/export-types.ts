@@ -1,1 +1,1 @@
-export type { TCurrencyCode } from './money-input';
+export type { TCurrencyCode, TMoneyValue, TValue } from './money-input';
