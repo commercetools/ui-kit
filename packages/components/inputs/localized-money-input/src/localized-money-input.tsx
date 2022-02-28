@@ -9,6 +9,8 @@ import { css } from '@emotion/react';
 import { useToggleState, useFieldId } from '@commercetools-uikit/hooks';
 import MoneyInput, {
   type TCurrencyCode,
+  type TMoneyValue,
+  type TValue,
 } from '@commercetools-uikit/money-input';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -28,25 +30,12 @@ import {
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import messages from './messages';
 
-type TValue = {
-  amount: string;
-  currencyCode: TCurrencyCode;
-};
-
 type TEvent = {
   target: {
     id?: string;
     name?: string;
     value?: string | string[] | null;
   };
-};
-
-type TMoneyValue = {
-  type: string;
-  currencyCode: TCurrencyCode;
-  centAmount: number;
-  preciseAmount: number;
-  fractionDigits: number;
 };
 
 type TLocalizedMoneyInputProps = {
@@ -391,39 +380,42 @@ LocalizedMoneyInput.defaultProps = {
   horizontalConstraint: 'scale',
 };
 
-LocalizedMoneyInput.convertToMoneyValues = (
-  values: TValue[],
-  locale: string
-): TMoneyValue[] =>
-  Object.values(values).map(
-    (value) => MoneyInput.convertToMoneyValue(value, locale) as TMoneyValue
-  );
+LocalizedMoneyInput.convertToMoneyValues = (values: TValue[], locale: string) =>
+  Object.values(values).reduce<TMoneyValue[]>((allMoneyValues, value) => {
+    const moneyValue = MoneyInput.convertToMoneyValue(value, locale);
+    if (moneyValue) {
+      return [...allMoneyValues, moneyValue];
+    }
+    return allMoneyValues;
+  }, []);
 
 LocalizedMoneyInput.parseMoneyValues = (
   moneyValues: TMoneyValue[] = [],
   locale: string
-): Record<TCurrencyCode, TValue> =>
-  moneyValues
-    .map((value) => MoneyInput.parseMoneyValue(value, locale))
-    .reduce(
-      (pairs, value) => ({
-        ...pairs,
-        [value.currencyCode]: value,
-      }),
-      {} as Record<TCurrencyCode, TValue>
-    );
+) =>
+  moneyValues.reduce<Record<TCurrencyCode, TValue>>((allValues, moneyValue) => {
+    const value = MoneyInput.parseMoneyValue(moneyValue, locale);
+    return {
+      ...allValues,
+      [value.currencyCode]: value,
+    };
+  }, {} as Record<TCurrencyCode, TValue>);
 
 LocalizedMoneyInput.getHighPrecisionCurrencies = (
-  values: Record<string, TValue>,
+  values: Record<TCurrencyCode, TValue>,
   locale: string
-) =>
-  Object.keys(values).filter((currencyCode) =>
+) => {
+  const typedCurrencyCodes = Object.keys(values) as TCurrencyCode[];
+  return typedCurrencyCodes.filter((currencyCode) =>
     MoneyInput.isHighPrecision(values[currencyCode], locale)
   );
+};
 
-LocalizedMoneyInput.getEmptyCurrencies = (values: Record<string, TValue>) =>
-  Object.keys(values).filter((currencyCode) =>
+LocalizedMoneyInput.getEmptyCurrencies = (values: Record<string, TValue>) => {
+  const typedCurrencyCodes = Object.keys(values) as TCurrencyCode[];
+  return typedCurrencyCodes.filter((currencyCode) =>
     MoneyInput.isEmpty(values[currencyCode])
   );
+};
 
 export default LocalizedMoneyInput;

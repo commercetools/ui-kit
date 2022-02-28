@@ -152,35 +152,53 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = (
   };
 };
 
+export type TCurrencyCode = keyof typeof currencies;
+
+type TMoneyConditionalProps =
+  | { type: 'highPrecision'; preciseAmount: number }
+  | {
+      /**
+       * Usually either a `centPrecision` or a `highPrecision`.
+       */
+      type: 'centPrecision';
+      preciseAmount?: never;
+    };
+export type TMoneyValue = {
+  currencyCode: TCurrencyCode;
+  centAmount: number;
+  fractionDigits: number;
+} & TMoneyConditionalProps;
 // The MoneyInput component always operates on a value consisting of:
-//   { amount: String, currencyCode: String }
+// ```
+// { amount: String, currencyCode: String }
+// ```
 //
 // The amount may only use a dot as the decimal separator.
-// The currencyCode must be supported by the API.
+// The `currencyCode` must be supported by the API.
 //
-// The MoneyInput does not do any validation on its own. It only serves as a way
-// to get the amount and currencyCode input from the user. Validation is always
+// The `MoneyInput` does not do any validation on its own. It only serves as a way
+// to get the amount and `currencyCode` input from the user. Validation is always
 // up to the parent.
 //
-// The CTP API supports prices two types of prices: centPrecision and
-// highPrecision. The MoneyInput itself does not know about these. However,
-// it has two static methods defined (convertToMoneyValue and parseMoneyValue),
-// which can be used to convert between MoneyInput value and the MoneyValue
+// The CTP API supports two types of prices: `centPrecision` and `highPrecision`.
+// The `MoneyInput` itself does not know about these. However,
+// it has two static methods defined (`convertToMoneyValue` and `parseMoneyValue`),
+// which can be used to convert between `MoneyInput` value and the `MoneyValue`
 // supported by the API.
-// Some places in the API do not support highPrecision prices, but the
-// convertToMoneyValue will always return either a centPrecision or a
-// highPrecision price. It's up the MoneyInput's parent to show a validation
-// error in case a highPrecision price is used.
+// Some places in the API do not support `highPrecision` prices, but the
+// `convertToMoneyValue `will always return either a `centPrecision `or a
+// `highPrecision` price. It's up the `MoneyInput`'s parent to show a validation
+// error in case a `highPrecision` price is used.
 //
-// A value is considered as to have highPrecision when the number of supplied
+// A value is considered as to have `highPrecision` when the number of supplied
 // fraction digits exceed the number of fraction digits the currency uses. For
-// example, 42.00 € is always a centPrecision price, while 42.001 € is always a
-// highPrecision price. It is not possible to hae 42.00 € as a highPrecision
+// example, `EUR 42.00` is always a `centPrecision` price, while `EUR 42.001` is always a
+// `highPrecision` price. It is not possible to have `EUR 42.00` as a `highPrecision`
 // price.
 //
-// The first time the component renders, we want to try to show the centAmount
-// as a formatted number. To achieve this, the parseMoneyValue function can
-// be used to turn the API value into a value the MoneyInput understands.
+// The first time the component renders, we want to try to show the `centAmount`
+// as a formatted number. To achieve this, the `parseMoneyValue` function can
+// be used to turn the API value into a value the `MoneyInput` understands.
 // During this transformation, the money value will get formatted into "amount".
 //
 // When the user changes the value, we don't want to format again. We only format
@@ -188,16 +206,19 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = (
 // formatting would mess with the user's input.
 //
 //
-// A full example of an MoneyValue with centPrecision would be
+// A full example of an `MoneyValue` with `centPrecision` would be
+// ```
 // {
 //   "type": "centPrecision",
 //   "currencyCode": "EUR",
 //   "centAmount": 4200,
 //   "fractionDigits": 2
 // }
-// which equals 42.00 €
+// ```
+// which equals `EUR 42.00`.
 //
-// A full example of an MoneyValue with highPrecision would be
+// A full example of an `MoneyValue` with `highPrecision` would be
+// ```
 // {
 //  "type": "highPrecision",
 //  "currencyCode": "EUR",
@@ -205,7 +226,8 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = (
 //  "preciseAmount": 123456,
 //  "fractionDigits": 7
 // }
-// which equals 0.0123456 €
+// ```
+// which equals `EUR 0.0123456`
 
 // Parsing
 // Since most users are not careful about how they enter values, we will parse
@@ -214,8 +236,7 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = (
 // When a value is `1,000.00` we also parse it as `1000`.
 //
 // This means the highest amount always wins. We do this by comparing the last
-// position of `.` and `,`. Whatever occurs later is used as the decimal
-// separator.
+// position of `.` and `,`. Whatever occurs later is used as the decimal separator.
 export const parseRawAmountToNumber = (rawAmount: string, locale: string) => {
   let fractionsSeparator;
 
@@ -250,13 +271,11 @@ export const parseRawAmountToNumber = (rawAmount: string, locale: string) => {
 //
 // This function expects the "amount" to be a trimmed value.
 
-export type TCurrencyCode = keyof typeof currencies;
-
 export const createMoneyValue = (
-  currencyCode: TCurrencyCode,
   rawAmount: string,
-  locale: string
-) => {
+  locale: string,
+  currencyCode?: TCurrencyCode | ''
+): TMoneyValue | null => {
   if (!currencyCode) return null;
 
   const currency = currencies[currencyCode];
@@ -325,14 +344,12 @@ export const createMoneyValue = (
     fractionDigits: currency.fractionDigits,
   };
 };
-
-type TMoneyValue = {
-  type: string;
-  currencyCode: TCurrencyCode;
-  centAmount: number;
-  preciseAmount: number;
-  fractionDigits: number;
-};
+const createEmptyMoneyValue = (currencyCode: TCurrencyCode): TMoneyValue => ({
+  type: 'centPrecision',
+  currencyCode,
+  centAmount: NaN,
+  fractionDigits: 2,
+});
 
 const getAmountAsNumberFromMoneyValue = (moneyValue: TMoneyValue) =>
   moneyValue.type === 'highPrecision'
@@ -343,14 +360,13 @@ const getAmountAsNumberFromMoneyValue = (moneyValue: TMoneyValue) =>
 // gets called with a string and should return a formatted string
 const formatAmount = (
   rawAmount: string,
-  currencyCode: TCurrencyCode,
-  locale: string
+  locale: string,
+  currencyCode: TCurrencyCode
 ) => {
   // fallback in case the user didn't enter an amount yet (or it's invalid)
-  const moneyValue = (createMoneyValue(currencyCode, rawAmount, locale) || {
-    currencyCode,
-    centAmount: NaN,
-  }) as TMoneyValue;
+  const moneyValue =
+    createMoneyValue(rawAmount, locale, currencyCode) ||
+    createEmptyMoneyValue(currencyCode);
 
   const amount = getAmountAsNumberFromMoneyValue(moneyValue);
 
@@ -368,9 +384,9 @@ const getAmountInputName = (name?: string) =>
 const getCurrencyDropdownName = (name?: string) =>
   name ? `${name}.currencyCode` : undefined;
 
-type TValue = {
+export type TValue = {
   amount: string;
-  currencyCode: TCurrencyCode;
+  currencyCode: TCurrencyCode | '';
 };
 
 type TEvent = {
@@ -533,11 +549,15 @@ const MoneyInput = (props: TMoneyInputProps) => {
     toggleAmountHasFocus(false);
     // Skip formatting for empty value or when the input is used with an
     // unknown currency.
-    if (amount.length > 0 && currencies[props.value.currencyCode]) {
+    if (
+      amount.length > 0 &&
+      props.value.currencyCode &&
+      currencies[props.value.currencyCode]
+    ) {
       const formattedAmount = formatAmount(
         amount,
-        props.value.currencyCode,
-        intl.locale
+        intl.locale,
+        props.value.currencyCode
       );
 
       // When the user entered a value with centPrecision, we can format
@@ -593,8 +613,8 @@ const MoneyInput = (props: TMoneyInputProps) => {
         // be lost
         const formattedAmount = formatAmount(
           props.value.amount.trim(),
-          currencyCode,
-          intl.locale
+          intl.locale,
+          currencyCode
         );
         // The user could be changing the currency before entering any amount,
         // or while the amount is invalid. In these cases, we don't attempt to
@@ -858,12 +878,15 @@ MoneyInput.getCurrencyDropdownId = getCurrencyDropdownName;
 
 MoneyInput.convertToMoneyValue = (value: TValue, locale: string) =>
   createMoneyValue(
-    value.currencyCode,
     typeof value.amount === 'string' ? value.amount.trim() : '',
-    locale
+    locale,
+    value.currencyCode
   );
 
-MoneyInput.parseMoneyValue = (moneyValue: TMoneyValue, locale: string) => {
+MoneyInput.parseMoneyValue = (
+  moneyValue: TMoneyValue,
+  locale: string
+): TValue => {
   if (!moneyValue) return { currencyCode: '', amount: '' };
 
   warning(
@@ -898,8 +921,8 @@ MoneyInput.parseMoneyValue = (moneyValue: TMoneyValue, locale: string) => {
     getAmountAsNumberFromMoneyValue(moneyValue).toLocaleString(locale, {
       minimumFractionDigits: moneyValue.fractionDigits,
     }),
-    moneyValue.currencyCode,
-    locale
+    locale,
+    moneyValue.currencyCode
   );
 
   return { amount, currencyCode: moneyValue.currencyCode };
@@ -910,13 +933,13 @@ MoneyInput.isEmpty = (formValue: TValue) =>
   formValue.amount.trim() === '' ||
   formValue.currencyCode.trim() === '';
 
-MoneyInput.isHighPrecision = (formValue: TValue, locale: string) => {
+MoneyInput.isHighPrecision = (formValue: TValue, locale: string): boolean => {
   warning(
     !MoneyInput.isEmpty(formValue),
     'MoneyValue.isHighPrecision may not be called with an empty money value.'
   );
   const moneyValue = MoneyInput.convertToMoneyValue(formValue, locale);
-  return moneyValue && moneyValue.type === 'highPrecision';
+  return moneyValue?.type === 'highPrecision';
 };
 
 type TTouched = {
