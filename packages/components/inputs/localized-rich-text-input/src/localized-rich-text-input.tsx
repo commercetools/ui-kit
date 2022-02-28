@@ -1,4 +1,10 @@
-import { useReducer, useCallback, type ReactNode } from 'react';
+import {
+  useReducer,
+  useCallback,
+  type ReactNode,
+  type MouseEvent,
+  type KeyboardEvent,
+} from 'react';
 import { css } from '@emotion/react';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -247,11 +253,14 @@ const LocalizedRichTextInput = (props: TLocalizedRichTextInputProps) => {
           >
             <LocalizedInputToggle
               isOpen={areLanguagesOpened}
-              // ts-ignore was used because toggleLanguages and onClick parameter types are incompatible.
-              // onClick signature is (event: MouseEvent<HTMLButtonElement, MouseEvent> | KeyboardEvent<HTMLButtonElement>) => void
-              // while toggleLanguages signature is (forceIsToggled?: boolean | undefined) => void
-              // @ts-ignore
-              onClick={toggleLanguages}
+              onClick={
+                toggleLanguages as (
+                  event:
+                    | MouseEvent<HTMLButtonElement>
+                    | KeyboardEvent<HTMLButtonElement>
+                    | boolean
+                ) => void
+              }
               isDisabled={
                 areLanguagesOpened &&
                 Boolean(
