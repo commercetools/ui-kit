@@ -21,7 +21,7 @@ const LabelTextWrapper = styled.div<TStylesProps>`
 
 const AdditionalTextWrapper = styled.div<TStylesProps>`
   grid-area: content;
-  margin-left: ${customProperties.spacingS};
+  margin-left: ${customProperties.spacingXs};
   font-size: 1rem;
   font-family: inherit;
   color: ${(props) =>
