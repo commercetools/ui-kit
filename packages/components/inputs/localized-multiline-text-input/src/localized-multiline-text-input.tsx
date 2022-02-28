@@ -1,4 +1,9 @@
-import { useReducer, useCallback } from 'react';
+import {
+  useReducer,
+  useCallback,
+  type ReactNode,
+  type ChangeEventHandler,
+} from 'react';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/react';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -34,6 +39,12 @@ type TExpandedTranslationsReducerAction = {
   payload: string;
 };
 
+type TEvent = {
+  target: {
+    language: string;
+  };
+};
+
 type TLocalizedMultilineTextInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`
@@ -67,10 +78,8 @@ type TLocalizedMultilineTextInputProps = {
   };
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
-   * <br />
-   * Signature: `(event) => void`
    */
-  onChange?: () => void;
+  onChange?: (event: TEvent) => void;
   /**
    * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
    */
@@ -78,7 +87,7 @@ type TLocalizedMultilineTextInputProps = {
   /**
    * Called when input is blurred
    */
-  onBlur?: () => void;
+  onBlur?: ChangeEventHandler<Element>;
   /**
    * Called when input is focused
    */
@@ -143,13 +152,13 @@ type TLocalizedMultilineTextInputProps = {
    * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
    */
   errors?: {
-    [key: string]: string;
+    [key: string]: ReactNode;
   };
   /**
    * Used to show warnings underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the warning to show for that key.
    */
   warnings?: {
-    [key: string]: string;
+    [key: string]: ReactNode;
   };
 };
 
