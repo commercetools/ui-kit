@@ -80,7 +80,7 @@ type TRichtTextEditorBodyRef = {
 
 export type TRichTextEditorBody = {
   editor: TEditor;
-  styles: {
+  styles?: {
     container?: string;
   };
   hasError?: boolean;
@@ -323,7 +323,7 @@ const RichTextEditorBody = forwardRef<
 
   return (
     <Container
-      css={props.styles.container}
+      css={props.styles?.container}
       hasError={props.hasError}
       hasWarning={props.hasWarning}
       isReadOnly={props.isReadOnly}

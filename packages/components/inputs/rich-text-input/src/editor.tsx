@@ -1,5 +1,15 @@
-import { useRef, useState, useCallback, useEffect, cloneElement } from 'react';
-import PropTypes from 'prop-types';
+import {
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+  cloneElement,
+  type ReactNode,
+  type LegacyRef,
+  type RefObject,
+  type Ref,
+  type ReactElement,
+} from 'react';
 import { useIntl } from 'react-intl';
 import pick from 'lodash/pick';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
@@ -15,12 +25,52 @@ import {
   HiddenInput,
 } from '@commercetools-uikit/rich-text-utils';
 import { EditorWrapper } from './editor.styles';
+import type { TEditor } from './editor.types';
 
 const COLLAPSED_HEIGHT = 32;
 
-const Editor = (props) => {
+export type TEditorProps = {
+  editor: TEditor;
+  id?: string;
+  name?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  readOnly?: boolean;
+  horizontalConstraint?:
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  children?: ReactNode;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+  showExpandIcon: boolean;
+  onClickExpand?: () => boolean;
+  hasWarning?: boolean;
+  hasError?: boolean;
+  defaultExpandMultilineText?: boolean;
+};
+
+type TNodeRefObject = {
+  clientHeight: number;
+} & LegacyRef<HTMLDivElement>;
+
+type TRichtTextEditorBodyRef = {
+  registerContentNode: TNodeRefObject;
+  containerRef: RefObject<HTMLDivElement>;
+};
+
+const Editor = (props: TEditorProps) => {
   const intl = useIntl();
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
   const prevIsFocused = usePrevious(props.editor.value.selection.isFocused);
 
@@ -28,7 +78,7 @@ const Editor = (props) => {
 
   const updateRenderToggleButton = useCallback(() => {
     const doesExceedCollapsedHeightLimit =
-      ref.current.clientHeight > COLLAPSED_HEIGHT;
+      Number(ref.current?.clientHeight) > COLLAPSED_HEIGHT;
 
     if (doesExceedCollapsedHeightLimit && !renderToggleButton) {
       setRenderToggleButton(true);
@@ -56,6 +106,10 @@ const Editor = (props) => {
         ) {
           toggle();
         }
+        const refObj: TRichtTextEditorBodyRef = {
+          containerRef: ref,
+          registerContentNode,
+        };
         return (
           <Constraints.Horizontal max={props.horizontalConstraint}>
             <Stack scale="xs" alignItems="flex-end">
@@ -64,15 +118,12 @@ const Editor = (props) => {
                 isReadOnly={props.isReadOnly}
               >
                 <RichTextBody
-                  ref={{
-                    containerRef: ref,
-                    registerContentNode,
-                  }}
+                  ref={refObj as unknown as Ref<TRichtTextEditorBodyRef>}
                   hasError={props.hasError}
                   isDisabled={props.isDisabled}
                   hasWarning={props.hasWarning}
-                  isReadOnly={props.isReadOnly}
-                  showExpandIcon={props.showExpandIcon}
+                  isReadOnly={Boolean(props.isReadOnly)}
+                  showExpandIcon={Boolean(props.showExpandIcon)}
                   onClickExpand={props.onClickExpand}
                   editor={props.editor}
                   containerStyles={containerStyles}
@@ -81,7 +132,6 @@ const Editor = (props) => {
                 </RichTextBody>
               </EditorWrapper>
               {renderToggleButton && (
-                // <div>
                 <FlatButton
                   onClick={toggle}
                   label={
@@ -97,7 +147,6 @@ const Editor = (props) => {
                     )
                   }
                 />
-                // </div>
               )}
             </Stack>
           </Constraints.Horizontal>
@@ -106,9 +155,24 @@ const Editor = (props) => {
     </CollapsibleMotion>
   );
 };
+export type TEditorOptions = Pick<
+  TEditorProps,
+  | 'hasWarning'
+  | 'hasError'
+  | 'showExpandIcon'
+  | 'horizontalConstraint'
+  | 'defaultExpandMultilineText'
+  | 'onClickExpand'
+>;
+export type TRenderEditor = (
+  props: TEditorProps & {
+    options: TEditorOptions;
+  },
+  editor: TEditor,
+  next: () => ReactElement
+) => ReturnType<typeof Editor>;
 
-// eslint-disable-next-line react/display-name
-const renderEditor = (props, editor, next) => {
+const renderEditor: TRenderEditor = (props, editor, next) => {
   const internalId = `${props.id}__internal__id`;
 
   const children = cloneElement(next(), {
@@ -117,11 +181,11 @@ const renderEditor = (props, editor, next) => {
 
   const isFocused = props.editor.value.selection.isFocused;
 
-  const passedProps = {
+  const passedProps: Omit<TEditorProps, 'editor'> = {
     name: props.name,
     id: props.id,
-    isReadOnly: props.readOnly,
-    isDisabled: props.disabled,
+    isReadOnly: Boolean(props.readOnly),
+    isDisabled: Boolean(props.disabled),
     ...pick(props.options, [
       'horizontalConstraint',
       'defaultExpandMultilineText',
@@ -141,43 +205,12 @@ const renderEditor = (props, editor, next) => {
         handleFocus={editor.focus}
         id={props.id}
         disabled={props.disabled}
-        readOnly={props.readOnly}
+        readOnly={Boolean(props.readOnly)}
       />
     </Editor>
   );
 };
 
-const sharedProps = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  placeholder: PropTypes.string,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  horizontalConstraint: PropTypes.oneOf([
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    'scale',
-    'auto',
-  ]),
-};
-
 Editor.displayName = 'Editor';
-Editor.propTypes = { ...sharedProps, editor: PropTypes.any };
-
-renderEditor.propTypes = {
-  ...sharedProps,
-  options: PropTypes.shape({
-    hasWarning: PropTypes.bool,
-    hasError: PropTypes.bool,
-  }),
-};
 
 export default renderEditor;
