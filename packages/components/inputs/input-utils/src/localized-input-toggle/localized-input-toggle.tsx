@@ -9,7 +9,10 @@ export type TLocalizedInputToggleProps = {
   icon?: ReactElement;
   isOpen?: boolean;
   onClick: (
-    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+    event:
+      | MouseEvent<HTMLButtonElement>
+      | KeyboardEvent<HTMLButtonElement>
+      | boolean
   ) => void;
   isDisabled?: boolean;
   showMessage: string | MessageDescriptor;

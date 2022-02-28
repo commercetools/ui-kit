@@ -1,10 +1,10 @@
-/* eslint-disable import/prefer-default-export */
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
   customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
+import type { TEditorProps } from './editor';
 
 const EditorLanguageLabel = styled.label((props) => {
   const overwrittenVars = {
@@ -48,7 +48,9 @@ const EditorLanguageLabel = styled.label((props) => {
   `;
 });
 
-const EditorWrapper = styled.div`
+const EditorWrapper = styled.div<
+  Pick<TEditorProps, 'isDisabled' | 'isReadOnly'>
+>`
   width: 100%;
   position: relative;
   display: flex;
