@@ -247,6 +247,9 @@ const LocalizedRichTextInput = (props: TLocalizedRichTextInputProps) => {
           >
             <LocalizedInputToggle
               isOpen={areLanguagesOpened}
+              // ts-ignore was used because toggleLanguages and onClick parameter types are incompatible.
+              // onClick signature is (event: MouseEvent<HTMLButtonElement, MouseEvent> | KeyboardEvent<HTMLButtonElement>) => void
+              // while toggleLanguages signature is (forceIsToggled?: boolean | undefined) => void
               // @ts-ignore
               onClick={toggleLanguages}
               isDisabled={

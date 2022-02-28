@@ -1,4 +1,4 @@
-import { PureComponent, ReactNode } from 'react';
+import { PureComponent, type ReactNode } from 'react';
 import pick from 'lodash/pick';
 import type { Value } from 'slate';
 // TODO: remove after upgrade of `slate-react` to the latest version
@@ -8,7 +8,7 @@ import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   richTextPlugins,
   html,
-  TEditor,
+  type TEditor,
 } from '@commercetools-uikit/rich-text-utils';
 import renderEditor from './editor';
 
