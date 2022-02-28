@@ -1,13 +1,31 @@
 import { PureComponent, type ReactNode } from 'react';
 import pick from 'lodash/pick';
-import type { Value } from 'slate';
 // TODO: remove after upgrade of `slate-react` to the latest version
 // @ts-ignore
-import { Editor } from 'slate-react';
+import { Editor as SlateReactEditor } from 'slate-react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { richTextPlugins, html } from '@commercetools-uikit/rich-text-utils';
-import renderEditor from './editor';
-import type { TEditor } from './editor.types';
+import renderEditor, { TRenderEditorProps, TRenderEditor } from './editor';
+
+type TSlateReactEditorProps = {
+  id?: TRichTextInputProps['id'];
+  name?: TRichTextInputProps['name'];
+  onFocus?: TEventHook<FocusEvent>;
+  onBlur?: TEventHook<FocusEvent>;
+  disabled?: TRichTextInputProps['isDisabled'];
+  readOnly?: TRichTextInputProps['isReadOnly'];
+  value: ReturnType<typeof html.deserialize>;
+  options: TRenderEditorProps['options'];
+  onChange?: TOnChangeFn;
+  plugins: typeof richTextPlugins;
+  renderEditor: TRenderEditor;
+};
+
+// This is a temporary wrapper component helping to mitigate typing issues of `slate-react@0.22.10` package.
+// TODO: remove after upgrade of `slate-react` to the latest version
+const Editor = (props: TSlateReactEditorProps) => (
+  <SlateReactEditor {...props} />
+);
 
 type TEvent = {
   target: {
@@ -17,6 +35,17 @@ type TEvent = {
     value?: string;
   };
 };
+type TEventHook<T = Event> = (
+  event: T,
+  editor: typeof Editor,
+  next: () => unknown
+) => unknown;
+
+type TOnChangeParam = {
+  operations: unknown;
+  value: ReturnType<typeof html.deserialize>;
+};
+type TOnChangeFn = (change: TOnChangeParam) => unknown;
 
 type TRichTextInputProps = {
   defaultExpandMultilineText?: boolean;
@@ -34,9 +63,11 @@ type TRichTextInputProps = {
   showExpandIcon: boolean;
   onClickExpand?: () => boolean;
   hasLanguagesControl?: boolean;
-  language?: string;
-  isOpen?: boolean;
-  toggleLanguage?: (language: string) => void;
+
+  // Pass-through props
+  language: string;
+  isOpen: boolean;
+  toggleLanguage: (language: string) => void;
   warning?: ReactNode;
   error?: string;
 };
@@ -63,7 +94,7 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     }
   }
 
-  onValueChange = (event: { value: Value }) => {
+  onValueChange: TOnChangeFn = (event) => {
     const serializedValue = html.serialize(event.value);
 
     // because we are not using setState, we need to make sure that
@@ -103,7 +134,7 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
   // this issue explains why we need to use next() + setTimeout
   // for calling our passed onBlur handler
   // https://github.com/ianstormtaylor/slate/issues/2434
-  onBlur = (_event: FocusEvent, _editor: TEditor, next: () => void) => {
+  onBlur: TEventHook<FocusEvent> = (_event, _editor, next) => {
     next();
 
     if (this.props.onBlur) {
@@ -117,7 +148,7 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     }
   };
 
-  onFocus = (_event: FocusEvent, _editor: TEditor, next: () => void) => {
+  onFocus: TEventHook<FocusEvent> = (_event, _editor, next) => {
     next();
     if (this.props.onFocus) {
       const fakeEvent = {
@@ -158,9 +189,8 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
         // we can only pass this.props to the Editor that Slate understands without getting
         // warning in the console,
         // so instead we pass our extra this.props through this `options` prop.
-        options={{
-          hasLanguagesControl: this.props.hasLanguagesControl,
-          ...pick(this.props, [
+        options={
+          pick(this.props, [
             'language',
             'onToggle',
             'toggleLanguage',
@@ -173,8 +203,9 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
             'placeholder',
             'onClickExpand',
             'showExpandIcon',
-          ]),
-        }}
+            'hasLanguagesControl',
+          ]) as TRenderEditorProps['options']
+        }
         onChange={this.onValueChange}
         plugins={richTextPlugins}
         renderEditor={renderEditor}

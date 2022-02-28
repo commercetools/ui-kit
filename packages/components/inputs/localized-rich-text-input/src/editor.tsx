@@ -272,7 +272,7 @@ type TOptions = {
   hasLanguagesControl?: boolean;
 };
 
-type TRenderEditorProps = {
+export type TRenderEditorProps = {
   id?: string;
   name?: string;
   disabled?: boolean;
@@ -280,12 +280,13 @@ type TRenderEditorProps = {
   editor?: TEditor;
   options: TOptions;
 };
-
-const renderEditor = (
+export type TRenderEditor = (
   props: TRenderEditorProps,
   editor: TEditor,
   next: () => ReactElement
-) => {
+) => ReturnType<typeof Editor>;
+
+const renderEditor: TRenderEditor = (props, editor, next) => {
   if (props.options.showExpandIcon) {
     warning(
       typeof props.options.onClickExpand === 'function',

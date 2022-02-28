@@ -80,7 +80,7 @@ type TRichtTextEditorBodyRef = {
 
 export type TRichTextEditorBody = {
   editor: TEditor;
-  styles: {
+  styles?: {
     container?: SerializedStyles;
   };
   hasError?: boolean;
