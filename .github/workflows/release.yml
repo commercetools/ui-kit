@@ -20,7 +20,7 @@ jobs:
           token: ${{ secrets.RELEASE_GITHUB_TOKEN }}
 
       - name: Setup Node (uses version in .nvmrc)
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
 
