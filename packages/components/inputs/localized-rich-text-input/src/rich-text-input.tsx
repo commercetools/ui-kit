@@ -5,12 +5,9 @@ import type { Value } from 'slate';
 // @ts-ignore
 import { Editor } from 'slate-react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
-import {
-  richTextPlugins,
-  html,
-  type TEditor,
-} from '@commercetools-uikit/rich-text-utils';
+import { richTextPlugins, html } from '@commercetools-uikit/rich-text-utils';
 import renderEditor from './editor';
+import type { TEditor } from './editor.types';
 
 type TEvent = {
   target: {

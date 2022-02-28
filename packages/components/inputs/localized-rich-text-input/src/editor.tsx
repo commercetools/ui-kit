@@ -26,13 +26,13 @@ import { messagesMultilineInput } from '@commercetools-uikit/input-utils';
 import {
   RichTextBody,
   HiddenInput,
-  type TEditor,
 } from '@commercetools-uikit/rich-text-utils';
 import {
   EditorWrapper,
   EditorLanguageLabel,
   ToggleButtonWrapper,
 } from './editor.styles';
+import type { TEditor } from './editor.types';
 
 const COLLAPSED_HEIGHT = 32;
 
