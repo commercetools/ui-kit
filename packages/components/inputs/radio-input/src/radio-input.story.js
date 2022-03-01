@@ -73,6 +73,7 @@ storiesOf('Components|Inputs', module)
                 radioOption1
               )}
               isHovered={boolean('isHovered #1', false, radioOption1)}
+              additionalContent={text('additionalContent', '', radioOption1)}
             >
               <Spacings.Inline scale="xs" alignItems="center">
                 <div>{'🍎'}</div>
@@ -87,6 +88,7 @@ storiesOf('Components|Inputs', module)
                 radioOption2
               )}
               isHovered={boolean('isHovered #2', false, radioOption2)}
+              additionalContent={text('additionalContent', '', radioOption2)}
             >
               <Spacings.Inline scale="xs" alignItems="center">
                 <div>{'🍌'}</div>
@@ -101,11 +103,7 @@ storiesOf('Components|Inputs', module)
                 radioOption3
               )}
               isHovered={boolean('isHovered #3', false, radioOption3)}
-              additionalContent={text(
-                'additionalContent',
-                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
-                radioGroup
-              )}
+              additionalContent={text('additionalContent', '', radioOption3)}
             >
               <Spacings.Inline scale="xs" alignItems="center">
                 <div>{'🍍'}</div>
