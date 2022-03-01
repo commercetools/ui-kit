@@ -101,7 +101,11 @@ storiesOf('Components|Inputs', module)
                 radioOption3
               )}
               isHovered={boolean('isHovered #3', false, radioOption3)}
-              additionalContent="Lorem ipsum dolor sit amet, consetetur sadipscing elitr"
+              additionalContent={text(
+                'additionalContent',
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
+                radioGroup
+              )}
             >
               <Spacings.Inline scale="xs" alignItems="center">
                 <div>{'🍍'}</div>
