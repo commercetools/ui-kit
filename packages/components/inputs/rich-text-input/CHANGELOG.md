@@ -1,5 +1,20 @@
 # @commercetools-uikit/rich-text-input
 
+## 13.0.4
+
+### Patch Changes
+
+- [#2128](https://github.com/commercetools/ui-kit/pull/2128) [`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a) Thanks [@kark](https://github.com/kark)! - Upgrade of `react-intl` version to ^5.24.6 and addition of `react-intl` as a missing dependency
+
+* [#2129](https://github.com/commercetools/ui-kit/pull/2129) [`45facf8bf`](https://github.com/commercetools/ui-kit/commit/45facf8bfe31904b4b5e1763e8fb7f6d4e3714a3) Thanks [@kark](https://github.com/kark)! - Migrate to TypeScript
+
+- [#2134](https://github.com/commercetools/ui-kit/pull/2134) [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6) Thanks [@emmenko](https://github.com/emmenko)! - Clean up unused dependencies
+
+- Updated dependencies [[`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a), [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6), [`45facf8bf`](https://github.com/commercetools/ui-kit/commit/45facf8bfe31904b4b5e1763e8fb7f6d4e3714a3), [`ad53141d6`](https://github.com/commercetools/ui-kit/commit/ad53141d62b82dc2778a16494c5c4232083bad31)]:
+  - @commercetools-uikit/flat-button@13.0.4
+  - @commercetools-uikit/input-utils@13.0.4
+  - @commercetools-uikit/rich-text-utils@13.0.4
+
 ## 13.0.3
 
 ### Patch Changes

@@ -1,5 +1,31 @@
 # @commercetools-uikit/radio-input
 
+## 13.0.4
+
+### Patch Changes
+
+- [#2130](https://github.com/commercetools/ui-kit/pull/2130) [`ad188ab3c`](https://github.com/commercetools/ui-kit/commit/ad188ab3c4fdd59af06752d35694d3e76b661ebb) Thanks [@ddouglasz](https://github.com/ddouglasz)! - In case you need to render additional information to a radio option label, we recommend now to use a new prop `additionalContext` instead of rendering everything in the `<RadioOption>`'s `children`. This ensures that the radio input and the label are correctly aligned.
+  // Before
+  ```js
+  <RadioInput.Option>
+    <Spacings.Stack>
+      <Text.Body>The label<Text.Body>
+      <Text.Detail>Additional information</Text.Detail>
+    </Spacings.Stack>
+  </RadioInput.Option>
+  ```
+  // After
+  ```js
+  <RadioInput.Option additionalContent={<Text.Detail>Additional information</Text.Detail>}>
+    <Text.Body>The label<Text.Body>
+  </RadioInput.Option>
+  ```
+
+* [#2134](https://github.com/commercetools/ui-kit/pull/2134) [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6) Thanks [@emmenko](https://github.com/emmenko)! - Clean up unused dependencies
+
+* Updated dependencies [[`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a), [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6), [`ad53141d6`](https://github.com/commercetools/ui-kit/commit/ad53141d62b82dc2778a16494c5c4232083bad31)]:
+  - @commercetools-uikit/input-utils@13.0.4
+
 ## 13.0.2
 
 ### Patch Changes

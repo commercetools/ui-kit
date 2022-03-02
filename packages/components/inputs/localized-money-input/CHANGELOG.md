@@ -1,5 +1,21 @@
 # @commercetools-uikit/localized-money-input
 
+## 13.0.4
+
+### Patch Changes
+
+- [#2128](https://github.com/commercetools/ui-kit/pull/2128) [`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a) Thanks [@kark](https://github.com/kark)! - Upgrade of `react-intl` version to ^5.24.6 and addition of `react-intl` as a missing dependency
+
+* [#2111](https://github.com/commercetools/ui-kit/pull/2111) [`1ad78774d`](https://github.com/commercetools/ui-kit/commit/1ad78774d8bd7cd3c82ec3eb6f33ea95bab3cc16) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Migrate to typescript
+
+- [#2134](https://github.com/commercetools/ui-kit/pull/2134) [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6) Thanks [@emmenko](https://github.com/emmenko)! - Clean up unused dependencies
+
+- Updated dependencies [[`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a), [`1ad78774d`](https://github.com/commercetools/ui-kit/commit/1ad78774d8bd7cd3c82ec3eb6f33ea95bab3cc16), [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6), [`ad53141d6`](https://github.com/commercetools/ui-kit/commit/ad53141d62b82dc2778a16494c5c4232083bad31)]:
+  - @commercetools-uikit/flat-button@13.0.4
+  - @commercetools-uikit/input-utils@13.0.4
+  - @commercetools-uikit/money-input@13.0.4
+  - @commercetools-uikit/select-utils@13.0.4
+
 ## 13.0.3
 
 ### Patch Changes
