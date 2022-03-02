@@ -2,6 +2,7 @@ import {
   type ChangeEventHandler,
   type FocusEventHandler,
   type ReactElement,
+  type ReactNode,
   isValidElement,
 } from 'react';
 import styled from '@emotion/styled';
@@ -17,7 +18,10 @@ import {
   getLabelStyles,
   getContainerStyles,
   LabelTextWrapper,
+  RadioOptionsWrapper,
+  AdditionalTextWrapper,
 } from './radio-option.styles';
+import SpacingsInset from '@commercetools-uikit/spacings-inset';
 
 const Input = styled.input`
   &:focus + div > svg *[data-style='radio-option__border'] {
@@ -34,6 +38,7 @@ export type TOptionProps = {
   value: string | boolean;
   children: string | ReactElement | (() => ReactElement);
   components?: TComponents;
+  additionalContent?: ReactNode;
   // Injected props from the parent Group component
   id?: string;
   name?: string;
@@ -81,33 +86,40 @@ const Option = (props: TOptionProps) => {
       onBlur={props.onBlur}
       {...filterInvalidAttributes(labelProps)}
     >
-      <Input
-        css={accessibleHiddenInputStyles}
-        id={props.id}
-        name={props.name}
-        value={
-          typeof props.value === 'boolean'
-            ? props.value.toString()
-            : props.value
-        }
-        onChange={props.isReadOnly ? undefined : props.onChange}
-        disabled={props.isDisabled}
-        checked={props.isChecked}
-        type="radio"
-        readOnly={props.isReadOnly}
-        aria-readonly={props.isReadOnly}
-        {...filterDataAttributes(props)}
-      />
-      <div css={getContainerStyles(props)}>
-        {props.isChecked ? (
-          <RadioOptionCheckedIcon size="medium" />
-        ) : (
-          <RadioOptionUncheckedIcon size="medium" />
+      <RadioOptionsWrapper>
+        <Input
+          css={accessibleHiddenInputStyles}
+          id={props.id}
+          name={props.name}
+          value={
+            typeof props.value === 'boolean'
+              ? props.value.toString()
+              : props.value
+          }
+          onChange={props.isReadOnly ? undefined : props.onChange}
+          disabled={props.isDisabled}
+          checked={props.isChecked}
+          type="radio"
+          readOnly={props.isReadOnly}
+          aria-readonly={props.isReadOnly}
+          {...filterDataAttributes(props)}
+        />
+        <div css={getContainerStyles(props)}>
+          {props.isChecked ? (
+            <RadioOptionCheckedIcon size="medium" />
+          ) : (
+            <RadioOptionUncheckedIcon size="medium" />
+          )}
+        </div>
+        <LabelTextWrapper isDisabled={props.isDisabled}>
+          {props.children}
+        </LabelTextWrapper>
+        {props.additionalContent && (
+          <AdditionalTextWrapper isDisabled={props.isDisabled}>
+            <SpacingsInset scale="xs">{props.additionalContent}</SpacingsInset>
+          </AdditionalTextWrapper>
         )}
-      </div>
-      <LabelTextWrapper isDisabled={props.isDisabled}>
-        {props.children}
-      </LabelTextWrapper>
+      </RadioOptionsWrapper>
     </label>
   );
 };

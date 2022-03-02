@@ -9,6 +9,7 @@ type TStylesProps = Pick<
 >;
 
 const LabelTextWrapper = styled.div<TStylesProps>`
+  grid-area: label;
   margin-left: ${customProperties.spacingS};
   font-size: 1rem;
   font-family: inherit;
@@ -16,6 +17,26 @@ const LabelTextWrapper = styled.div<TStylesProps>`
     props.isDisabled
       ? customProperties.fontColorForInputWhenDisabled
       : customProperties.fontColorForInput};
+`;
+
+const AdditionalTextWrapper = styled.div<TStylesProps>`
+  grid-area: content;
+  margin-left: ${customProperties.spacingXs};
+  font-size: 1rem;
+  font-family: inherit;
+  color: ${(props) =>
+    props.isDisabled
+      ? customProperties.fontColorForInputWhenDisabled
+      : customProperties.fontColorForInput};
+`;
+
+const RadioOptionsWrapper = styled.div<TStylesProps>`
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'radio label'
+    '. content';
 `;
 
 const getSvgContainerBorderStroke = (props: TStylesProps) => {
@@ -56,7 +77,7 @@ const getSvgContainerContentFill = (props: TStylesProps) => {
 const getContainerStyles = (props: TOptionProps) => css`
   display: flex;
   align-items: center;
-
+  grid-area: radio;
   svg {
     fill: ${props.isDisabled
       ? customProperties.backgroundColorForInputWhenDisabled
@@ -127,4 +148,10 @@ const getLabelStyles = (props: TStylesProps) => css`
   }
 `;
 
-export { getContainerStyles, getLabelStyles, LabelTextWrapper };
+export {
+  getContainerStyles,
+  getLabelStyles,
+  LabelTextWrapper,
+  RadioOptionsWrapper,
+  AdditionalTextWrapper,
+};
