@@ -1,5 +1,11 @@
 # @commercetools-uikit/accessible-button
 
+## 13.0.4
+
+### Patch Changes
+
+- [#2134](https://github.com/commercetools/ui-kit/pull/2134) [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6) Thanks [@emmenko](https://github.com/emmenko)! - Clean up unused dependencies
+
 ## 13.0.2
 
 ### Patch Changes
