@@ -9,7 +9,7 @@
     "directory": "packages/components/collapsible"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-collapsible.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.17.2",
-    "@babel/runtime-corejs3": "7.17.2",
+    "@babel/runtime": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.2",
     "@commercetools-uikit/hooks": "13.0.2",
     "@commercetools-uikit/utils": "13.0.2",
     "@emotion/react": "^11.4.0",

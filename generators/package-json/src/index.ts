@@ -68,7 +68,7 @@ export const transformDocument = (
       directory: relativePackageFolderPath,
     },
     homepage: 'https://uikit.commercetools.com',
-    keywords: ['javascript', 'design system', 'react', 'uikit'],
+    keywords: ['javascript', 'typescript', 'design-system', 'react', 'uikit'],
     license: 'MIT',
     publishConfig: {
       access: 'public',
