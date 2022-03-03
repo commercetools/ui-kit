@@ -9,7 +9,7 @@
     "directory": "packages/components/inputs/number-input"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-number-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.17.2",
-    "@babel/runtime-corejs3": "7.17.2",
+    "@babel/runtime": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.2",
     "@commercetools-uikit/constraints": "13.0.2",
     "@commercetools-uikit/design-system": "13.0.0",
     "@commercetools-uikit/input-utils": "13.0.4",

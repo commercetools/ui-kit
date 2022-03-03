@@ -9,7 +9,7 @@
     "directory": "presets/ui-kit"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -22,8 +22,8 @@
     "copy-assets": "rm -rf i18n materials && mkdir -p i18n/data && cp -R ../../design-system/materials materials && cp -R ../../packages/i18n/data i18n/"
   },
   "dependencies": {
-    "@babel/runtime": "7.17.2",
-    "@babel/runtime-corejs3": "7.17.2",
+    "@babel/runtime": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.2",
     "@commercetools-uikit/accessible-hidden": "13.0.0",
     "@commercetools-uikit/avatar": "13.0.2",
     "@commercetools-uikit/buttons": "13.0.4",
