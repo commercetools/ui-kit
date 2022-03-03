@@ -93,4 +93,4 @@
 'visual-testing-app': major
 ---
 
-This release does not introduce any breaking changes but marks a new starting point with all packages having been migrated to TypeScript.
+This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
