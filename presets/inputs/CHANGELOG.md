@@ -1,5 +1,37 @@
 # @commercetools-uikit/inputs
 
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/async-creatable-select-input@14.0.0
+  - @commercetools-uikit/async-select-input@14.0.0
+  - @commercetools-uikit/checkbox-input@14.0.0
+  - @commercetools-uikit/creatable-select-input@14.0.0
+  - @commercetools-uikit/date-input@14.0.0
+  - @commercetools-uikit/date-range-input@14.0.0
+  - @commercetools-uikit/date-time-input@14.0.0
+  - @commercetools-uikit/localized-money-input@14.0.0
+  - @commercetools-uikit/localized-multiline-text-input@14.0.0
+  - @commercetools-uikit/localized-rich-text-input@14.0.0
+  - @commercetools-uikit/localized-text-input@14.0.0
+  - @commercetools-uikit/money-input@14.0.0
+  - @commercetools-uikit/multiline-text-input@14.0.0
+  - @commercetools-uikit/number-input@14.0.0
+  - @commercetools-uikit/password-input@14.0.0
+  - @commercetools-uikit/radio-input@14.0.0
+  - @commercetools-uikit/rich-text-input@14.0.0
+  - @commercetools-uikit/search-select-input@14.0.0
+  - @commercetools-uikit/select-input@14.0.0
+  - @commercetools-uikit/text-input@14.0.0
+  - @commercetools-uikit/time-input@14.0.0
+  - @commercetools-uikit/toggle-input@14.0.0
+
 ## 13.0.4
 
 ### Patch Changes

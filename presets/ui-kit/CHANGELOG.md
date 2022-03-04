@@ -1,5 +1,47 @@
 # @commercetools-frontend/ui-kit
 
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/design-system@14.0.0
+  - @commercetools-uikit/accessible-hidden@14.0.0
+  - @commercetools-uikit/avatar@14.0.0
+  - @commercetools-uikit/card@14.0.0
+  - @commercetools-uikit/collapsible@14.0.0
+  - @commercetools-uikit/collapsible-motion@14.0.0
+  - @commercetools-uikit/collapsible-panel@14.0.0
+  - @commercetools-uikit/constraints@14.0.0
+  - @commercetools-uikit/data-table@14.0.0
+  - @commercetools-uikit/data-table-manager@14.0.0
+  - @commercetools-uikit/field-errors@14.0.0
+  - @commercetools-uikit/field-label@14.0.0
+  - @commercetools-uikit/grid@14.0.0
+  - @commercetools-uikit/icons@14.0.0
+  - @commercetools-uikit/label@14.0.0
+  - @commercetools-uikit/link@14.0.0
+  - @commercetools-uikit/loading-spinner@14.0.0
+  - @commercetools-uikit/messages@14.0.0
+  - @commercetools-uikit/notifications@14.0.0
+  - @commercetools-uikit/pagination@14.0.0
+  - @commercetools-uikit/primary-action-dropdown@14.0.0
+  - @commercetools-uikit/stamp@14.0.0
+  - @commercetools-uikit/tag@14.0.0
+  - @commercetools-uikit/text@14.0.0
+  - @commercetools-uikit/tooltip@14.0.0
+  - @commercetools-uikit/hooks@14.0.0
+  - @commercetools-uikit/i18n@14.0.0
+  - @commercetools-uikit/utils@14.0.0
+  - @commercetools-uikit/buttons@14.0.0
+  - @commercetools-uikit/fields@14.0.0
+  - @commercetools-uikit/inputs@14.0.0
+  - @commercetools-uikit/spacings@14.0.0
+
 ## 13.0.4
 
 ### Patch Changes

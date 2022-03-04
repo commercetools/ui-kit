@@ -1,5 +1,32 @@
 # @commercetools-uikit/fields
 
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/async-creatable-select-field@14.0.0
+  - @commercetools-uikit/async-select-field@14.0.0
+  - @commercetools-uikit/creatable-select-field@14.0.0
+  - @commercetools-uikit/date-field@14.0.0
+  - @commercetools-uikit/date-range-field@14.0.0
+  - @commercetools-uikit/date-time-field@14.0.0
+  - @commercetools-uikit/localized-multiline-text-field@14.0.0
+  - @commercetools-uikit/localized-text-field@14.0.0
+  - @commercetools-uikit/money-field@14.0.0
+  - @commercetools-uikit/multiline-text-field@14.0.0
+  - @commercetools-uikit/number-field@14.0.0
+  - @commercetools-uikit/password-field@14.0.0
+  - @commercetools-uikit/radio-field@14.0.0
+  - @commercetools-uikit/search-select-field@14.0.0
+  - @commercetools-uikit/select-field@14.0.0
+  - @commercetools-uikit/text-field@14.0.0
+  - @commercetools-uikit/time-field@14.0.0
+
 ## 13.0.4
 
 ### Patch Changes
