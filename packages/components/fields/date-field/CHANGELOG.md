@@ -1,5 +1,22 @@
 # @commercetools-uikit/date-field
 
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/design-system@14.0.0
+  - @commercetools-uikit/constraints@14.0.0
+  - @commercetools-uikit/field-errors@14.0.0
+  - @commercetools-uikit/field-label@14.0.0
+  - @commercetools-uikit/date-input@14.0.0
+  - @commercetools-uikit/utils@14.0.0
+  - @commercetools-uikit/spacings@14.0.0
+
 ## 13.0.4
 
 ### Patch Changes
