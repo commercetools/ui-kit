@@ -17,3 +17,21 @@ Known error keys are:
 ## Main Functions and use cases are:
 
 - Input field for multi-line strings
+
+## Static methods
+
+### `MultilineTextField.toFieldErrors`
+
+Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+```ts
+type FormValues = {
+  myField: string;
+};
+
+<MultilineTextField
+  // ...
+  name="my-field"
+  errors={MultilineTextField.toFieldErrors<FormValues>(formik.errors).myField}
+/>;
+```

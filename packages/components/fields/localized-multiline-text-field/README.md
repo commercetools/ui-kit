@@ -144,3 +144,23 @@ When the `key` is known, and when the value is truthy, and when `renderError` re
 Known error keys are:
 
 - `missing`: tells the user that this field is required
+
+## Static methods
+
+### `LocalizedMultilineTextField.toFieldErrors`
+
+Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+```ts
+type FormValues = {
+  myField: string;
+};
+
+<LocalizedMultilineTextField
+  // ...
+  name="my-field"
+  errors={
+    LocalizedMultilineTextField.toFieldErrors<FormValues>(formik.errors).myField
+  }
+/>;
+```

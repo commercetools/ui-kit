@@ -157,3 +157,21 @@ Known error keys are:
 ## Main Functions and use cases are:
 
 - Getting monetary value input with a currency from users (with cent precision or high precision)
+
+## Static methods
+
+### `MoneyField.toFieldErrors`
+
+Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+```ts
+type FormValues = {
+  myField: string;
+};
+
+<MoneyField
+  // ...
+  name="my-field"
+  errors={MoneyField.toFieldErrors<FormValues>(formik.errors).myField}
+/>;
+```

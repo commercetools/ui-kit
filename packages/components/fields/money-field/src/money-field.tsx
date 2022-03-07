@@ -20,9 +20,12 @@ import MoneyInput, {
 } from '@commercetools-uikit/money-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 
-type TFieldErrors = Record<string, boolean>;
-
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+type TFieldErrors = Record<string, boolean>;
+// Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
+type TCustomFormErrors<Values> = {
+  [K in keyof Values]?: TFieldErrors;
+};
 
 type TTouched = {
   amount?: boolean;
@@ -215,6 +218,17 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
   ) => ({
     id: getFieldId(props, state, sequentialId),
   });
+
+  /**
+   * Use this function to convert the Formik `errors` object type to
+   * our custom field errors type.
+   * This is primarly useful when using TypeScript.
+   */
+  static toFieldErrors<FormValues>(
+    errors: unknown
+  ): TCustomFormErrors<FormValues> {
+    return errors as TCustomFormErrors<FormValues>;
+  }
 
   render() {
     // MoneyInput.isTouched() ensures both fields have been touched.

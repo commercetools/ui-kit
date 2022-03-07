@@ -18,12 +18,15 @@ import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import LocalizedTextInput from '@commercetools-uikit/localized-text-input';
-import FieldErrors, {
-  type TFieldErrors,
-} from '@commercetools-uikit/field-errors';
+import FieldErrors from '@commercetools-uikit/field-errors';
 
 type TEvent = MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>;
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+type TFieldErrors = Record<string, boolean>;
+// Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
+type TCustomFormErrors<Values> = {
+  [K in keyof Values]?: TFieldErrors;
+};
 type TLocalizedTextFieldProps = {
   // LocalizedTextField
   /**
@@ -190,6 +193,17 @@ class LocalizedTextField extends Component<
   ) => ({
     id: getFieldId(props, state, sequentialId),
   });
+
+  /**
+   * Use this function to convert the Formik `errors` object type to
+   * our custom field errors type.
+   * This is primarly useful when using TypeScript.
+   */
+  static toFieldErrors<FormValues>(
+    errors: unknown
+  ): TCustomFormErrors<FormValues> {
+    return errors as TCustomFormErrors<FormValues>;
+  }
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);

@@ -114,3 +114,21 @@ Known error keys are:
 ## Main Functions and use cases are:
 
 - Single option selection field in login forms
+
+## Static methods
+
+### `RadioField.toFieldErrors`
+
+Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+```ts
+type FormValues = {
+  myField: string;
+};
+
+<RadioField
+  // ...
+  name="my-field"
+  errors={RadioField.toFieldErrors<FormValues>(formik.errors).myField}
+/>;
+```
