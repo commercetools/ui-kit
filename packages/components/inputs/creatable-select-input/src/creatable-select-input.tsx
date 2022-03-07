@@ -9,10 +9,7 @@ import {
 } from 'react-select';
 import CreatableSelect, { type CreatableProps } from 'react-select/creatable';
 import Constraints from '@commercetools-uikit/constraints';
-import {
-  addStaticFields,
-  filterDataAttributes,
-} from '@commercetools-uikit/utils';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import {
   ClearIndicator,
   TagRemove,
@@ -485,19 +482,50 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
     </Constraints.Horizontal>
   );
 };
-
 CreatableSelectInput.displayName = 'CreatableSelectInput';
+CreatableSelectInput.defaultProps = defaultProps;
+
+/**
+ * Expose static helper methods.
+ */
 
 // Both "true" and an empty array [] represent a touched state. The Boolean
 // conveniently handles both cases
 CreatableSelectInput.isTouched = (touched: unknown) => Boolean(touched);
 
-CreatableSelectInput.defaultProps = defaultProps;
+/**
+ * Expose react-select components for customization purposes.
+ */
 
-addStaticFields(CreatableSelectInput, {
-  ...defaultComponents,
-  ...customizedComponents,
-  isTouched: CreatableSelectInput.isTouched,
-});
+// custom
+CreatableSelectInput.ClearIndicator = customizedComponents.ClearIndicator;
+CreatableSelectInput.Control = defaultComponents.Control;
+CreatableSelectInput.CrossIcon = defaultComponents.CrossIcon;
+CreatableSelectInput.DownChevron = defaultComponents.DownChevron;
+// custom
+CreatableSelectInput.DropdownIndicator = customizedComponents.DropdownIndicator;
+CreatableSelectInput.Group = defaultComponents.Group;
+CreatableSelectInput.GroupHeading = defaultComponents.GroupHeading;
+CreatableSelectInput.IndicatorSeparator = defaultComponents.IndicatorSeparator;
+CreatableSelectInput.IndicatorsContainer =
+  defaultComponents.IndicatorsContainer;
+CreatableSelectInput.Input = defaultComponents.Input;
+CreatableSelectInput.LoadingIndicator = defaultComponents.LoadingIndicator;
+CreatableSelectInput.LoadingMessage = defaultComponents.LoadingMessage;
+CreatableSelectInput.Menu = defaultComponents.Menu;
+CreatableSelectInput.MenuList = defaultComponents.MenuList;
+CreatableSelectInput.MenuPortal = defaultComponents.MenuPortal;
+CreatableSelectInput.MultiValue = defaultComponents.MultiValue;
+CreatableSelectInput.MultiValueContainer =
+  defaultComponents.MultiValueContainer;
+CreatableSelectInput.MultiValueLabel = defaultComponents.MultiValueLabel;
+// custom
+CreatableSelectInput.MultiValueRemove = customizedComponents.MultiValueRemove;
+CreatableSelectInput.NoOptionsMessage = defaultComponents.NoOptionsMessage;
+CreatableSelectInput.Option = defaultComponents.Option;
+CreatableSelectInput.Placeholder = defaultComponents.Placeholder;
+CreatableSelectInput.SelectContainer = defaultComponents.SelectContainer;
+CreatableSelectInput.SingleValue = defaultComponents.SingleValue;
+CreatableSelectInput.ValueContainer = defaultComponents.ValueContainer;
 
 export default CreatableSelectInput;

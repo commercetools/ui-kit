@@ -20,11 +20,7 @@ import {
   messages,
   createSelectStyles,
 } from '@commercetools-uikit/select-utils';
-import {
-  addStaticFields,
-  filterDataAttributes,
-  warning,
-} from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 
 const LoadingIndicator = () => <LoadingSpinner scale="s" />;
 LoadingIndicator.displayName = 'LoadingIndicator';
@@ -503,6 +499,12 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
     </Constraints.Horizontal>
   );
 };
+AsyncCreatableSelectInput.displayName = 'AsyncCreatableSelectInput';
+AsyncCreatableSelectInput.defaultProps = defaultProps;
+
+/**
+ * Expose static helper methods.
+ */
 
 // Formik will set the field to an array on submission, so we always have to
 // deal with an array. The touched state ends up being an empty array in case
@@ -510,14 +512,44 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
 // a signal of the field having been touched.
 AsyncCreatableSelectInput.isTouched = (touched: unknown) => Boolean(touched);
 
-AsyncCreatableSelectInput.displayName = 'AsyncCreatableSelectInput';
+/**
+ * Expose react-select components for customization purposes.
+ */
 
-AsyncCreatableSelectInput.defaultProps = defaultProps;
-
-addStaticFields(AsyncCreatableSelectInput, {
-  ...defaultComponents,
-  ...customizedComponents,
-  isTouched: AsyncCreatableSelectInput.isTouched,
-});
+// custom
+AsyncCreatableSelectInput.ClearIndicator = customizedComponents.ClearIndicator;
+AsyncCreatableSelectInput.Control = defaultComponents.Control;
+AsyncCreatableSelectInput.CrossIcon = defaultComponents.CrossIcon;
+AsyncCreatableSelectInput.DownChevron = defaultComponents.DownChevron;
+// custom
+AsyncCreatableSelectInput.DropdownIndicator =
+  customizedComponents.DropdownIndicator;
+AsyncCreatableSelectInput.Group = defaultComponents.Group;
+AsyncCreatableSelectInput.GroupHeading = defaultComponents.GroupHeading;
+AsyncCreatableSelectInput.IndicatorSeparator =
+  defaultComponents.IndicatorSeparator;
+AsyncCreatableSelectInput.IndicatorsContainer =
+  defaultComponents.IndicatorsContainer;
+AsyncCreatableSelectInput.Input = defaultComponents.Input;
+// custom
+AsyncCreatableSelectInput.LoadingIndicator =
+  customizedComponents.LoadingIndicator;
+AsyncCreatableSelectInput.LoadingMessage = defaultComponents.LoadingMessage;
+AsyncCreatableSelectInput.Menu = defaultComponents.Menu;
+AsyncCreatableSelectInput.MenuList = defaultComponents.MenuList;
+AsyncCreatableSelectInput.MenuPortal = defaultComponents.MenuPortal;
+AsyncCreatableSelectInput.MultiValue = defaultComponents.MultiValue;
+AsyncCreatableSelectInput.MultiValueContainer =
+  defaultComponents.MultiValueContainer;
+AsyncCreatableSelectInput.MultiValueLabel = defaultComponents.MultiValueLabel;
+// custom
+AsyncCreatableSelectInput.MultiValueRemove =
+  customizedComponents.MultiValueRemove;
+AsyncCreatableSelectInput.NoOptionsMessage = defaultComponents.NoOptionsMessage;
+AsyncCreatableSelectInput.Option = defaultComponents.Option;
+AsyncCreatableSelectInput.Placeholder = defaultComponents.Placeholder;
+AsyncCreatableSelectInput.SelectContainer = defaultComponents.SelectContainer;
+AsyncCreatableSelectInput.SingleValue = defaultComponents.SingleValue;
+AsyncCreatableSelectInput.ValueContainer = defaultComponents.ValueContainer;
 
 export default AsyncCreatableSelectInput;

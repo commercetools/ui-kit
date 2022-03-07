@@ -13,8 +13,7 @@ The options support a `isDisabled` property which will render the option with a 
 
 ### `isTouched(touched)`
 
-Expects to be called with an array or boolean.
-Returns `true` when truthy.
+Returns truthy value for the Formik `touched` value of this input field.
 
 ## Components
 
@@ -25,24 +24,24 @@ Components available as static exports are:
 
 - `ClearIndicator`
 - `Control`
-- `DropdownIndicator`
-- `DownChevron`
 - `CrossIcon`
+- `DownChevron`
+- `DropdownIndicator`
 - `Group`
 - `GroupHeading`
 - `IndicatorsContainer`
 - `IndicatorSeparator`
 - `Input`
 - `LoadingIndicator`
+- `LoadingMessage`
 - `Menu`
 - `MenuList`
 - `MenuPortal`
-- `LoadingMessage`
-- `NoOptionsMessage`
 - `MultiValue`
 - `MultiValueContainer`
 - `MultiValueLabel`
 - `MultiValueRemove`
+- `NoOptionsMessage`
 - `Option`
 - `Placeholder`
 - `SelectContainer`
