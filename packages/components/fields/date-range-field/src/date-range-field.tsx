@@ -19,6 +19,10 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TFieldErrors = Record<string, boolean>;
+// Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
+type TCustomFormErrors<Values> = {
+  [K in keyof Values]?: TFieldErrors;
+};
 type TEvent = {
   target: {
     id?: string;
@@ -168,6 +172,17 @@ class DateRangeField extends Component<
   ) => ({
     id: getFieldId(props, state, sequentialId),
   });
+
+  /**
+   * Use this function to convert the Formik `errors` object type to
+   * our custom field errors type.
+   * This is primarly useful when using TypeScript.
+   */
+  static toFieldErrors<FormValues>(
+    errors: unknown
+  ): TCustomFormErrors<FormValues> {
+    return errors as TCustomFormErrors<FormValues>;
+  }
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);

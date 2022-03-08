@@ -53,7 +53,7 @@ export default Example;
 | ------------------------------- | -------------------------------------------------------------------------------------------- | :------: | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`                            | `string`                                                                                     |          |           | Used as HTML id property. An id is auto-generated when it is not specified.                                                                                                                                                                                           |
 | `horizontalConstraint`          | `union`<br/>Possible values:<br/>`, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                                                                                                                            |
-| `errors`                        | `TFieldErrors`                                                                               |          |           | A map of errors. Error messages for known errors are rendered automatically.&#xA;<br />&#xA;Unknown errors will be forwarded to `renderError`                                                                                                                         |
+| `errors`                        | `Record`                                                                                     |          |           | A map of errors. Error messages for known errors are rendered automatically.&#xA;<br />&#xA;Unknown errors will be forwarded to `renderError`                                                                                                                         |
 | `renderError`                   | `Function`<br/>[See signature.](#signature-renderError)                                      |          |           | Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.                                                                                                                     |
 | `isRequired`                    | `boolean`                                                                                    |          |           | Indicates if the value is required. Shows an the "required asterisk" if so.                                                                                                                                                                                           |
 | `touched`                       | `boolean`                                                                                    |          |           | Indicates whether the field was touched. Errors will only be shown when the field was touched.                                                                                                                                                                        |
@@ -107,3 +107,21 @@ When the `key` is known, and when the value is truthy, and when `renderError` re
 Known error keys are:
 
 - `missing`: tells the user that this field is required
+
+## Static methods
+
+### `LocalizedTextField.toFieldErrors`
+
+Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+```ts
+type FormValues = {
+  myField: string;
+};
+
+<LocalizedTextField
+  // ...
+  name="my-field"
+  errors={LocalizedTextField.toFieldErrors<FormValues>(formik.errors).myField}
+/>;
+```

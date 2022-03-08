@@ -17,3 +17,21 @@ Known error keys are:
 ## Main Functions and use cases are:
 
 - Input field for a single date
+
+## Static methods
+
+### `TimeField.toFieldErrors`
+
+Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+```ts
+type FormValues = {
+  myField: string;
+};
+
+<TimeField
+  // ...
+  name="my-field"
+  errors={TimeField.toFieldErrors<FormValues>(formik.errors).myField}
+/>;
+```

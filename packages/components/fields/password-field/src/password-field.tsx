@@ -27,9 +27,13 @@ import messages from './messages';
 const sequentialId = createSequentialId('password-field-');
 const sequentialErrorsId = createSequentialId('password-field-error-')();
 
-type TPasswordFieldError = Record<string, boolean>;
+type TFieldErrors = Record<string, boolean>;
+// Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
+type TCustomFormErrors<Values> = {
+  [K in keyof Values]?: TFieldErrors;
+};
 
-const hasErrors = (errors?: TPasswordFieldError) =>
+const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
@@ -65,11 +69,9 @@ type TPasswordField = {
    * <br />
    * Unknown errors will be forwarded to `renderError`
    */
-  errors?: TPasswordFieldError;
+  errors?: TFieldErrors;
   /**
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
-   * <br />
-   * Signature: `(key, error) => React.node`
    */
   renderError?: TErrorRenderer;
   /**
@@ -92,20 +94,14 @@ type TPasswordField = {
   value: string;
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
-   * <br />
-   * Signature: `(event) => void`
    */
   onChange?: ChangeEventHandler;
   /**
    * Called when input is blurred
-   * <br />
-   * Signature: `(event) => void`
    */
   onBlur?: FocusEventHandler;
   /**
    * Called when input is focused
-   * <br />
-   * Signature: `(event) => void`
    */
   onFocus?: FocusEventHandler;
   /**
@@ -146,8 +142,6 @@ type TPasswordField = {
    * Function called when info button is pressed.
    * <br />
    * Info button will only be visible when this prop is passed.
-   * <br />
-   * Signature: `(event) => void`
    */
   onInfoButtonClick?: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
@@ -258,7 +252,16 @@ const PasswordField = (props: TPasswordField) => {
 };
 
 PasswordField.displayName = 'PasswordField';
-
 PasswordField.defaultProps = defaultProps;
+/**
+ * Use this function to convert the Formik `errors` object type to
+ * our custom field errors type.
+ * This is primarly useful when using TypeScript.
+ */
+PasswordField.toFieldErrors = function toFieldErrors<FormValues>(
+  errors: unknown
+): TCustomFormErrors<FormValues> {
+  return errors as TCustomFormErrors<FormValues>;
+};
 
 export default PasswordField;

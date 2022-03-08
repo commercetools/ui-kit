@@ -13,6 +13,7 @@ import {
   warning,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
+import { useFieldId } from '@commercetools-uikit/hooks';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import SearchSelectInput from '@commercetools-uikit/search-select-input';
@@ -28,8 +29,12 @@ type TEvent = {
   persist: () => void;
 };
 
-type TFieldErrors = Record<string, boolean>;
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+type TFieldErrors = Record<string, boolean>;
+// Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
+type TCustomFormErrors<Values> = {
+  [K in keyof Values]?: TFieldErrors;
+};
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -37,7 +42,6 @@ const sequentialId = createSequentialId('search-select-field-');
 const sequentialErrorsId = createSequentialId('search-select-field-error-')();
 
 type TSearchSelectFieldProps = {
-  // SearchSelectField
   /**
    *Horizontal size limit of the input fields.
    */
@@ -293,7 +297,7 @@ type TSearchSelectFieldProps = {
 
 const SearchSelectField = (props: TSearchSelectFieldProps) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
-  const id = props.id || sequentialId();
+  const id = useFieldId(props.id, sequentialId);
 
   if (props.hintIcon) {
     warning(
@@ -378,7 +382,16 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
     </Constraints.Horizontal>
   );
 };
-
 SearchSelectField.displayName = 'SearchSelectField';
+/**
+ * Use this function to convert the Formik `errors` object type to
+ * our custom field errors type.
+ * This is primarly useful when using TypeScript.
+ */
+SearchSelectField.toFieldErrors = function toFieldErrors<FormValues>(
+  errors: unknown
+): TCustomFormErrors<FormValues> {
+  return errors as TCustomFormErrors<FormValues>;
+};
 
 export default SearchSelectField;
