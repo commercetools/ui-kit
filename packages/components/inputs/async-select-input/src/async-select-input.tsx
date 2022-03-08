@@ -9,10 +9,7 @@ import {
   type OptionsOrGroups,
 } from 'react-select';
 import AsyncSelect, { type AsyncProps } from 'react-select/async';
-import {
-  addStaticFields,
-  filterDataAttributes,
-} from '@commercetools-uikit/utils';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import {
@@ -449,6 +446,12 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
     </Constraints.Horizontal>
   );
 };
+AsyncSelectInput.displayName = 'AsyncSelectInput';
+AsyncSelectInput.defaultProps = defaultProps;
+
+/**
+ * Expose static helper methods.
+ */
 
 // Formik will set the field to an array on submission, so we always have to
 // deal with an array. The touched state ends up being an empty array in case
@@ -456,14 +459,38 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
 // a signal of the field having been touched.
 AsyncSelectInput.isTouched = (touched: unknown) => Boolean(touched);
 
-AsyncSelectInput.displayName = 'AsyncSelectInput';
+/**
+ * Expose react-select components for customization purposes.
+ */
 
-AsyncSelectInput.defaultProps = defaultProps;
-
-addStaticFields(AsyncSelectInput, {
-  ...defaultComponents,
-  ...customizedComponents,
-  isTouched: AsyncSelectInput.isTouched,
-});
+// custom
+AsyncSelectInput.ClearIndicator = customizedComponents.ClearIndicator;
+AsyncSelectInput.Control = defaultComponents.Control;
+AsyncSelectInput.CrossIcon = defaultComponents.CrossIcon;
+AsyncSelectInput.DownChevron = defaultComponents.DownChevron;
+// custom
+AsyncSelectInput.DropdownIndicator = customizedComponents.DropdownIndicator;
+AsyncSelectInput.Group = defaultComponents.Group;
+AsyncSelectInput.GroupHeading = defaultComponents.GroupHeading;
+AsyncSelectInput.IndicatorSeparator = defaultComponents.IndicatorSeparator;
+AsyncSelectInput.IndicatorsContainer = defaultComponents.IndicatorsContainer;
+AsyncSelectInput.Input = defaultComponents.Input;
+// custom
+AsyncSelectInput.LoadingIndicator = customizedComponents.LoadingIndicator;
+AsyncSelectInput.LoadingMessage = defaultComponents.LoadingMessage;
+AsyncSelectInput.Menu = defaultComponents.Menu;
+AsyncSelectInput.MenuList = defaultComponents.MenuList;
+AsyncSelectInput.MenuPortal = defaultComponents.MenuPortal;
+AsyncSelectInput.MultiValue = defaultComponents.MultiValue;
+AsyncSelectInput.MultiValueContainer = defaultComponents.MultiValueContainer;
+AsyncSelectInput.MultiValueLabel = defaultComponents.MultiValueLabel;
+// custom
+AsyncSelectInput.MultiValueRemove = customizedComponents.MultiValueRemove;
+AsyncSelectInput.NoOptionsMessage = defaultComponents.NoOptionsMessage;
+AsyncSelectInput.Option = defaultComponents.Option;
+AsyncSelectInput.Placeholder = defaultComponents.Placeholder;
+AsyncSelectInput.SelectContainer = defaultComponents.SelectContainer;
+AsyncSelectInput.SingleValue = defaultComponents.SingleValue;
+AsyncSelectInput.ValueContainer = defaultComponents.ValueContainer;
 
 export default AsyncSelectInput;

@@ -17,10 +17,7 @@ import {
   createSelectStyles,
   messages,
 } from '@commercetools-uikit/select-utils';
-import {
-  addStaticFields,
-  filterDataAttributes,
-} from '@commercetools-uikit/utils';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 const customizedComponents = {
   DropdownIndicator,
@@ -505,16 +502,43 @@ const SelectInput = (props: TSelectInputProps) => {
 };
 
 SelectInput.displayName = 'SelectInput';
-
-// Both "true" and an empty array [] represent a touched state. The Boolean
-// conveniently handles both cases
-SelectInput.isTouched = (touched: boolean | unknown[]) => Boolean(touched);
-
 SelectInput.defaultProps = defaultProps;
 
-addStaticFields(SelectInput, {
-  ...defaultComponents,
-  ...customizedComponents,
-  isTouched: SelectInput.isTouched,
-});
+/**
+ * Expose static helper methods.
+ */
+
+// Both "true" and an empty array [] represent a touched state.
+SelectInput.isTouched = (touched: boolean | unknown[]) => Boolean(touched);
+
+/**
+ * Expose react-select components for customization purposes.
+ */
+
+SelectInput.ClearIndicator = customizedComponents.ClearIndicator;
+SelectInput.Control = defaultComponents.Control;
+SelectInput.CrossIcon = defaultComponents.CrossIcon;
+SelectInput.DownChevron = defaultComponents.DownChevron;
+SelectInput.DropdownIndicator = customizedComponents.DropdownIndicator;
+SelectInput.Group = defaultComponents.Group;
+SelectInput.GroupHeading = defaultComponents.GroupHeading;
+SelectInput.IndicatorSeparator = defaultComponents.IndicatorSeparator;
+SelectInput.IndicatorsContainer = defaultComponents.IndicatorsContainer;
+SelectInput.Input = defaultComponents.Input;
+SelectInput.LoadingIndicator = defaultComponents.LoadingIndicator;
+SelectInput.LoadingMessage = defaultComponents.LoadingMessage;
+SelectInput.Menu = defaultComponents.Menu;
+SelectInput.MenuList = defaultComponents.MenuList;
+SelectInput.MenuPortal = defaultComponents.MenuPortal;
+SelectInput.MultiValue = defaultComponents.MultiValue;
+SelectInput.MultiValueContainer = defaultComponents.MultiValueContainer;
+SelectInput.MultiValueLabel = defaultComponents.MultiValueLabel;
+SelectInput.MultiValueRemove = customizedComponents.MultiValueRemove;
+SelectInput.NoOptionsMessage = defaultComponents.NoOptionsMessage;
+SelectInput.Option = defaultComponents.Option;
+SelectInput.Placeholder = defaultComponents.Placeholder;
+SelectInput.SelectContainer = defaultComponents.SelectContainer;
+SelectInput.SingleValue = defaultComponents.SingleValue;
+SelectInput.ValueContainer = defaultComponents.ValueContainer;
+
 export default SelectInput;
