@@ -1,5 +1,20 @@
 # @commercetools-uikit/async-select-input
 
+## 14.0.1
+
+### Patch Changes
+
+- [#2140](https://github.com/commercetools/ui-kit/pull/2140) [`5a7573e6c`](https://github.com/commercetools/ui-kit/commit/5a7573e6cb3aeac51a5d95b41a2d91f39a82fc63) Thanks [@emmenko](https://github.com/emmenko)! - Explicitly expose `react-select` components as static properties so that type declarations are properly exposed as well.
+
+- Updated dependencies [[`5a7573e6c`](https://github.com/commercetools/ui-kit/commit/5a7573e6cb3aeac51a5d95b41a2d91f39a82fc63)]:
+  - @commercetools-uikit/utils@14.0.1
+  - @commercetools-uikit/constraints@14.0.1
+  - @commercetools-uikit/icons@14.0.1
+  - @commercetools-uikit/select-utils@14.0.1
+  - @commercetools-uikit/loading-spinner@14.0.1
+  - @commercetools-uikit/text@14.0.1
+  - @commercetools-uikit/spacings@14.0.1
+
 ## 14.0.0
 
 ### Major Changes

@@ -1,5 +1,38 @@
 # @commercetools-frontend/ui-kit
 
+## 14.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`5a7573e6c`](https://github.com/commercetools/ui-kit/commit/5a7573e6cb3aeac51a5d95b41a2d91f39a82fc63)]:
+  - @commercetools-uikit/utils@14.0.1
+  - @commercetools-uikit/inputs@14.0.1
+  - @commercetools-uikit/data-table-manager@14.0.1
+  - @commercetools-uikit/pagination@14.0.1
+  - @commercetools-uikit/avatar@14.0.1
+  - @commercetools-uikit/card@14.0.1
+  - @commercetools-uikit/collapsible@14.0.1
+  - @commercetools-uikit/collapsible-motion@14.0.1
+  - @commercetools-uikit/collapsible-panel@14.0.1
+  - @commercetools-uikit/constraints@14.0.1
+  - @commercetools-uikit/data-table@14.0.1
+  - @commercetools-uikit/field-label@14.0.1
+  - @commercetools-uikit/icons@14.0.1
+  - @commercetools-uikit/label@14.0.1
+  - @commercetools-uikit/link@14.0.1
+  - @commercetools-uikit/loading-spinner@14.0.1
+  - @commercetools-uikit/messages@14.0.1
+  - @commercetools-uikit/notifications@14.0.1
+  - @commercetools-uikit/primary-action-dropdown@14.0.1
+  - @commercetools-uikit/text@14.0.1
+  - @commercetools-uikit/tooltip@14.0.1
+  - @commercetools-uikit/hooks@14.0.1
+  - @commercetools-uikit/fields@14.0.1
+  - @commercetools-uikit/tag@14.0.1
+  - @commercetools-uikit/buttons@14.0.1
+  - @commercetools-uikit/field-errors@14.0.1
+  - @commercetools-uikit/spacings@14.0.1
+
 ## 14.0.0
 
 ### Major Changes

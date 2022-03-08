@@ -1,5 +1,33 @@
 # @commercetools-uikit/date-time-field
 
+## 14.0.1
+
+### Patch Changes
+
+- [#2141](https://github.com/commercetools/ui-kit/pull/2141) [`9060c8dc2`](https://github.com/commercetools/ui-kit/commit/9060c8dc2cb248099a7edb03d91af7518d2d3faa) Thanks [@emmenko](https://github.com/emmenko)! - Expose static method `toFieldErrors` for each `*Field` component.
+
+  Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+  ```ts
+  type FormValues = {
+    myField: string;
+  };
+
+  <TextField
+    // ...
+    name="my-field"
+    errors={TextField.toFieldErrors<FormValues>(formik.errors).myField}
+  />;
+  ```
+
+- Updated dependencies [[`5a7573e6c`](https://github.com/commercetools/ui-kit/commit/5a7573e6cb3aeac51a5d95b41a2d91f39a82fc63)]:
+  - @commercetools-uikit/utils@14.0.1
+  - @commercetools-uikit/constraints@14.0.1
+  - @commercetools-uikit/field-label@14.0.1
+  - @commercetools-uikit/date-time-input@14.0.1
+  - @commercetools-uikit/field-errors@14.0.1
+  - @commercetools-uikit/spacings@14.0.1
+
 ## 14.0.0
 
 ### Major Changes

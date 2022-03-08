@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/spacings-inset",
   "description": "An inset spacing component provides a consistent padding to the inner component.",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "@babel/runtime": "^7.17.2",
     "@babel/runtime-corejs3": "^7.17.2",
     "@commercetools-uikit/design-system": "14.0.0",
-    "@commercetools-uikit/utils": "14.0.0",
+    "@commercetools-uikit/utils": "14.0.1",
     "@emotion/react": "^11.4.0",
     "prop-types": "15.8.1"
   },

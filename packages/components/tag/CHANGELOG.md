@@ -1,5 +1,15 @@
 # @commercetools-uikit/tag
 
+## 14.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/accessible-button@14.0.1
+  - @commercetools-uikit/constraints@14.0.1
+  - @commercetools-uikit/icons@14.0.1
+  - @commercetools-uikit/text@14.0.1
+
 ## 14.0.0
 
 ### Major Changes
