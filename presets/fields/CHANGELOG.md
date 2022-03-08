@@ -1,5 +1,28 @@
 # @commercetools-uikit/fields
 
+## 14.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`9060c8dc2`](https://github.com/commercetools/ui-kit/commit/9060c8dc2cb248099a7edb03d91af7518d2d3faa)]:
+  - @commercetools-uikit/async-creatable-select-field@14.0.1
+  - @commercetools-uikit/async-select-field@14.0.1
+  - @commercetools-uikit/creatable-select-field@14.0.1
+  - @commercetools-uikit/date-field@14.0.1
+  - @commercetools-uikit/date-range-field@14.0.1
+  - @commercetools-uikit/date-time-field@14.0.1
+  - @commercetools-uikit/localized-multiline-text-field@14.0.1
+  - @commercetools-uikit/localized-text-field@14.0.1
+  - @commercetools-uikit/money-field@14.0.1
+  - @commercetools-uikit/multiline-text-field@14.0.1
+  - @commercetools-uikit/number-field@14.0.1
+  - @commercetools-uikit/password-field@14.0.1
+  - @commercetools-uikit/radio-field@14.0.1
+  - @commercetools-uikit/search-select-field@14.0.1
+  - @commercetools-uikit/select-field@14.0.1
+  - @commercetools-uikit/text-field@14.0.1
+  - @commercetools-uikit/time-field@14.0.1
+
 ## 14.0.0
 
 ### Major Changes
