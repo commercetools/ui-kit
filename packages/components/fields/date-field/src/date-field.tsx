@@ -30,7 +30,7 @@ type TCustomFormErrors<Values> = {
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -92,13 +92,14 @@ type TDateFieldProps = {
   /**
    * Called with an event containing the new value.
    * This is always called with either an empty string or a valid date in the format of `YYYY-MM-DD`.
-   * <br/> Parent should pass it back as `value`.
+   * <br/>
+   * Parent should pass it back as `value`.
    */
-  onChange: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Called when input is blurred
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called when input is focused
    */

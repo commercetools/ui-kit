@@ -1,4 +1,4 @@
-import { FocusEventHandler, ChangeEventHandler } from 'react';
+import { type FocusEventHandler, type ChangeEventHandler } from 'react';
 import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -36,15 +36,15 @@ export type TTextInputProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   /**
    * Called when input is blurred
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   /**
    * Focus the input on initial render
    */

@@ -89,7 +89,9 @@ export default Example;
 ### Signature `onInfoButtonClick`
 
 ```ts
-(event: TEvent) => void
+(
+  event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+) => void
 ```
 
 ## `data-*` props

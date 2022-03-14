@@ -32,8 +32,9 @@ const customizedComponents = {
   MultiValueRemove: TagRemove,
 };
 
-type TEvent = {
+type TCustomEvent = {
   target: {
+    id?: string;
     name?: string;
     value?: unknown;
   };
@@ -231,11 +232,11 @@ type TAsyncCreatableSelectInputProps = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
    */
-  onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
+  onChange?: (event: TCustomEvent, info: ActionMeta<unknown>) => void;
   /**
    * Handle focus events on the control
    * <br>
@@ -353,6 +354,13 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
 
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'AsyncCreatableSelectInput: `onChange` is required when input is not read only.'
+    );
+  }
+
   if (props.isMulti) {
     warning(
       Array.isArray(props.value),
@@ -438,6 +446,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
               ? () => {
                   const event = {
                     target: {
+                      id: props.id,
                       name: (() => {
                         if (!props.name) return undefined;
                         if (!props.isMulti) return props.name;
@@ -461,9 +470,9 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
             if (props.isMulti && !newValue) {
               newValue = [];
             }
-            props.onChange(
+            props.onChange?.(
               {
-                target: { name: props.name, value: newValue },
+                target: { id: props.id, name: props.name, value: newValue },
                 persist: () => {},
               },
               info

@@ -9,7 +9,7 @@ import {
 } from 'react-select';
 import CreatableSelect, { type CreatableProps } from 'react-select/creatable';
 import Constraints from '@commercetools-uikit/constraints';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   ClearIndicator,
   TagRemove,
@@ -31,8 +31,9 @@ type TValue = {
 
 type TOptions = TValue[] | { options: TValue[] }[];
 
-type TEvent = {
+type TCustomEvent = {
   target: {
+    id?: string;
     name?: string;
     value?: unknown;
   };
@@ -230,11 +231,11 @@ type TCreatableSelectInputProps = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
    */
-  onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
+  onChange?: (event: TCustomEvent, info: ActionMeta<unknown>) => void;
   /**
    * Handle focus events on the control
    * <br>
@@ -340,6 +341,13 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
   const intl = useIntl();
   const theme = useTheme();
 
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'CreatableSelectInput: `onChange` is required when input is not read only.'
+    );
+  }
+
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
 
@@ -422,6 +430,7 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
               ? () => {
                   const event = {
                     target: {
+                      id: props.id,
                       name: (() => {
                         if (!props.isMulti) return props.name;
                         // We append the ".0" to make Formik set the touched
@@ -447,9 +456,9 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
               newValue = [];
             }
 
-            props.onChange(
+            props.onChange?.(
               {
-                target: { name: props.name, value: newValue },
+                target: { id: props.id, name: props.name, value: newValue },
                 persist: () => {},
               },
               info

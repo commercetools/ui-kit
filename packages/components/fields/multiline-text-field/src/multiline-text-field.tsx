@@ -76,15 +76,15 @@ export type TMultiTextFieldProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLTextAreaElement>;
   /**
    * Called when input is blurred
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLTextAreaElement>;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLTextAreaElement>;
   /**
    * Focus the input on initial render
    */
@@ -194,7 +194,7 @@ class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'MultilineField: "onChange" is required when is not read only.'
+        'MultilineField: "onChange" is required when field is not read only.'
       );
     }
     if (this.props.hint) {

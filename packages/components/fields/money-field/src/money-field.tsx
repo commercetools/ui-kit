@@ -43,7 +43,7 @@ type TValue = {
   currencyCode: TCurrencyCode;
 };
 
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -128,11 +128,11 @@ type TMoneyFieldProps = {
   /**
    * Called when input is blurred
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called when input is focused
    */
-  onFocus?: (event: TEvent) => void;
+  onFocus?: (event: TCustomEvent) => void;
   /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
@@ -148,7 +148,7 @@ type TMoneyFieldProps = {
   /**
    * Called with the event of the input or dropdown when either the currency or the amount have changed.
    */
-  onChange: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Dom element to portal the currency select menu to
    * <br>
@@ -236,6 +236,13 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
     // didn't add an amount yet.
     const hasError =
       MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
+
+    if (!this.props.isReadOnly) {
+      warning(
+        typeof this.props.onChange === 'function',
+        'MoneyField: `onChange` is required when field is not read only.'
+      );
+    }
 
     warning(
       !has(this.props, 'isTouched'),

@@ -49,22 +49,14 @@ export default Example;
 | `name`                 | `string`                                                                                              |          |           | Used as HTML name of the input component.                                                      |
 | `autoComplete`         | `string`                                                                                              |          |           | Used as HTML autocomplete of the input component.                                              |
 | `value`                | `string`                                                                                              |          |           | Value of the input                                                                             |
-| `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                                  |    ✅    |           | Called with an event holding the new value.                                                    |
-| `onBlur`               | `FocusEventHandler`                                                                                   |          |           | Called when input is blurred&#xA;<br/>                                                         |
-| `onFocus`              | `FocusEventHandler`                                                                                   |          |           | Called when input is focused&#xA;<br/>&#xA;Signature: `(event) => void`                        |
+| `onChange`             | `ChangeEventHandler`                                                                                  |          |           | Called with an event holding the new value.                                                    |
+| `onBlur`               | `FocusEventHandler`                                                                                   |          |           | Called when input is blurred                                                                   |
+| `onFocus`              | `FocusEventHandler`                                                                                   |          |           | Called when input is focused                                                                   |
 | `isAutofocussed`       | `boolean`                                                                                             |          |           | Focus the input on initial render                                                              |
 | `isDisabled`           | `boolean`                                                                                             |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving). |
 | `placeholder`          | `string`                                                                                              |          |           | Placeholder text for the input                                                                 |
 | `hasError`             | `boolean`                                                                                             |          |           | Indicates if the input has invalid values                                                      |
 | `isReadOnly`           | `boolean`                                                                                             |          |           | Indicates that the field is displaying read-only content                                       |
-
-## Signatures
-
-### Signature `onChange`
-
-```ts
-(event: TEvent) => void
-```
 
 ## `value`
 

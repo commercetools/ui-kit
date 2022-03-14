@@ -35,9 +35,10 @@ type TOptionObject = {
 
 type TOptions = TOption[] | TOptionObject[];
 
-type TEvent = {
+type TCustomEvent = {
   target: {
-    name: ReactSelectProps['name'];
+    id?: ReactSelectProps['inputId'];
+    name?: ReactSelectProps['name'];
     value?: string | string[] | null;
   };
   persist: () => void;
@@ -138,8 +139,6 @@ type TSelectInputProps = {
   // escapeClearsValue: PropTypes.bool,
   /**
    * Custom method to filter whether an option should be displayed in the menu
-   * <br />
-   * Signature: `(option, rawInput) => boolean`
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
@@ -246,38 +245,28 @@ type TSelectInputProps = {
    * Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with { inputValue: String }.
    * <br />
    * `inputValue` will be an empty string when no search text is present.
-   * <br />
-   * Signature: `({ inputValue}) => string`
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   noOptionsMessage?: ReactSelectProps['noOptionsMessage'];
   /**
    * Handle blur events on the control
-   * <br />
-   * Signature: `(event) => void`
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called with a fake event when value changes. The event's target.name will be the name supplied in props. The event's target.value will hold the value.
    * <br/>
    * The value will be the selected option, or an array of options in case isMulti is true.
-   * <br />
-   * Signature: `(event) => void`
    */
-  onChange?: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Handle focus events on the control
-   * <br />
-   * Signature: `(event) => void`
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   onFocus?: ReactSelectProps['onFocus'];
   /**
    * Handle change events on the input
-   * <br />
-   * Signature: `(newValue, actionMeta) => void`
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
@@ -445,6 +434,7 @@ const SelectInput = (props: TSelectInputProps) => {
               ? () => {
                   const event = {
                     target: {
+                      id: props.id,
                       name: (() => {
                         if (!props.isMulti) return props.name;
                         // We append the ".0" to make Formik set the touched
@@ -480,6 +470,7 @@ const SelectInput = (props: TSelectInputProps) => {
             props.onChange &&
               props.onChange({
                 target: {
+                  id: props.id,
                   name: props.name,
                   value,
                 },
@@ -493,8 +484,6 @@ const SelectInput = (props: TSelectInputProps) => {
           tabIndex={props.tabIndex}
           tabSelectsValue={props.tabSelectsValue}
           value={selectedOptions}
-          //@ts-ignore
-          iconLeft={props.iconLeft}
         />
       </div>
     </Constraints.Horizontal>

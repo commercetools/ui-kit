@@ -55,7 +55,7 @@ export default Example;
 | `touched`              | `boolean`                                                                                    |          |           | Indicates whether the field was touched. Errors will only be shown when the field was touched.                                                                                                                                                                        |
 | `name`                 | `string`                                                                                     |          |           | Used as HTML name of the input component.                                                                                                                                                                                                                             |
 | `value`                | `Array: string[]`                                                                            |    ✅    |           | The selected date range. Must either be an empty array or an array of two strings holding dates formatted as "YYYY-MM-DD".                                                                                                                                            |
-| `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                         |    ✅    |           | Called when the date range changes, with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".&#xA;<br/>&#xA;Required when input is not read only.                                                        |
+| `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                         |          |           | Called when the date range changes, with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".&#xA;<br/>&#xA;Required when input is not read only.                                                        |
 | `onBlur`               | `Function`<br/>[See signature.](#signature-onBlur)                                           |          |           | Called when input is blurred                                                                                                                                                                                                                                          |
 | `onFocus`              | `Function`<br/>[See signature.](#signature-onFocus)                                          |          |           | Called when input is focused                                                                                                                                                                                                                                          |
 | `isDisabled`           | `boolean`                                                                                    |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                                                                                                                        |
@@ -79,19 +79,19 @@ export default Example;
 ### Signature `onChange`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onBlur`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onFocus`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onInfoButtonClick`

@@ -20,13 +20,15 @@ import FieldLabel from '@commercetools-uikit/field-label';
 import LocalizedTextInput from '@commercetools-uikit/localized-text-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 
-type TEvent = MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>;
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TFieldErrors = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
 };
+interface HTMLLocalizedInputElement extends HTMLInputElement {
+  language: string;
+}
 type TLocalizedTextFieldProps = {
   // LocalizedTextField
   /**
@@ -87,7 +89,7 @@ type TLocalizedTextFieldProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLLocalizedInputElement>;
   /**
    * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
    */
@@ -95,11 +97,11 @@ type TLocalizedTextFieldProps = {
   /**
    * Called when input is blurred
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   /**
    * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
    */
@@ -147,7 +149,9 @@ type TLocalizedTextFieldProps = {
    * <br />
    * Info button will only be visible when this prop is passed.
    */
-  onInfoButtonClick?: (event: TEvent) => void;
+  onInfoButtonClick?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
   /**
    * Icon to be displayed beside the hint text.
    * <br />

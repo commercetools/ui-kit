@@ -112,9 +112,6 @@ export const createItemDateTimeToString =
 export const createCalendarItems = (
   day: MomentInput,
   timeString: string,
-  // @deprecated
-  // @ts-ignore
-  intl,
   timeZone: string
 ) => {
   const parsedTime = parseTime(timeString);

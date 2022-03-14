@@ -76,19 +76,19 @@ export default Example;
 ### Signature `onChange`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onBlur`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onFocus`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onClickExpand`

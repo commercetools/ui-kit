@@ -32,6 +32,10 @@ import {
   getLanguageLabelStyles,
 } from './localized-text-input.styles';
 
+interface HTMLLocalizedInputElement extends HTMLInputElement {
+  language: string;
+}
+
 type TLocalizedTextInputProps = {
   id?: string;
   name?: string;
@@ -53,7 +57,7 @@ type TLocalizedTextInputProps = {
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLLocalizedInputElement>;
   /**
    * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
    */
@@ -61,11 +65,11 @@ type TLocalizedTextInputProps = {
   /**
    * Called when any field is blurred. Is called with the `event` of that field.
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /**
    * Called when any field is focussed. Is called with the `event` of that field.
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   /**
    * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
    */
@@ -139,10 +143,10 @@ type TLocalizedInputProps = {
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLLocalizedInputElement>;
   language: string;
-  onBlur?: FocusEventHandler;
-  onFocus?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   isAutofocussed?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;

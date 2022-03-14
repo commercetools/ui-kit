@@ -3,6 +3,7 @@ import {
   useCallback,
   type ReactNode,
   type ChangeEventHandler,
+  type FocusEventHandler,
 } from 'react';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/react';
@@ -39,11 +40,9 @@ type TExpandedTranslationsReducerAction = {
   payload: string;
 };
 
-type TEvent = {
-  target: {
-    language: string;
-  };
-};
+interface HTMLLocalizedTextAreaElement extends HTMLTextAreaElement {
+  language: string;
+}
 
 type TLocalizedMultilineTextInputProps = {
   /**
@@ -71,7 +70,8 @@ type TLocalizedMultilineTextInputProps = {
    * <br />
    * The input doesn't accept a "languages" prop, instead all possible
    * languages have to exist (with empty or filled strings) on the value:
-   * <br />   { en: 'foo', de: '', es: '' }
+   * <br />
+   * { en: 'foo', de: '', es: '' }
    */
   value: {
     [key: string]: string;
@@ -79,7 +79,7 @@ type TLocalizedMultilineTextInputProps = {
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
-  onChange?: (event: TEvent) => void;
+  onChange?: ChangeEventHandler<HTMLLocalizedTextAreaElement>;
   /**
    * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
    */
@@ -87,7 +87,7 @@ type TLocalizedMultilineTextInputProps = {
   /**
    * Called when input is blurred
    */
-  onBlur?: ChangeEventHandler<Element>;
+  onBlur?: FocusEventHandler<HTMLLocalizedTextAreaElement>;
   /**
    * Called when input is focused
    */

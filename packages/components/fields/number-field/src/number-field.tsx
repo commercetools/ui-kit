@@ -67,7 +67,6 @@ type TNumberFieldProps = {
   errors?: TFieldErrors;
   /**
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
-   * <br />
    */
   renderError?: TErrorRenderer;
   /**
@@ -94,19 +93,16 @@ type TNumberFieldProps = {
   autoComplete?: string;
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
-   * <br />
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   /**
    * Called when input is blurred
-   * <br />
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /**
    * Called when input is focused
-   * <br />
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   /**
    * Focus the input on initial render
    */
@@ -155,7 +151,6 @@ type TNumberFieldProps = {
    * Function called when info button is pressed.
    * <br />
    * Info button will only be visible when this prop is passed.
-   * <br />
    */
   onInfoButtonClick?: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>

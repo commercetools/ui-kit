@@ -19,8 +19,6 @@ type TRenderMarkProps = {
   attributes: unknown;
 };
 
-type TEvent = { preventDefault: () => void };
-
 const memoizedIsHotkey = memoize(isKeyHotkey);
 
 const requiredOptions = [
@@ -52,8 +50,8 @@ const MarkPlugin = (options: TMarkPluginOptions) => {
 
   return [
     {
-      onKeyDown(event: TEvent, editor: TEditor, next: () => void): void {
-        if (!isHotKey(event as KeyboardEvent)) {
+      onKeyDown(event: KeyboardEvent, editor: TEditor, next: () => void): void {
+        if (!isHotKey(event)) {
           return next();
         }
 

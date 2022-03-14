@@ -389,7 +389,7 @@ export type TValue = {
   currencyCode: TCurrencyCode | '';
 };
 
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -434,11 +434,11 @@ type TMoneyInputProps = {
   /**
    * Called when input is blurred
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called when input is focused
    */
-  onFocus?: (event: TEvent) => void;
+  onFocus?: (event: TCustomEvent) => void;
   /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
@@ -454,7 +454,7 @@ type TMoneyInputProps = {
   /**
    * Called with the event of the input or dropdown when either the currency or the amount have changed.
    */
-  onChange: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Dom element to portal the currency select menu to
    * <br>
@@ -572,7 +572,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
             value: formattedAmount,
           },
         };
-        onChange(fakeEvent);
+        onChange?.(fakeEvent);
       }
     }
   }, [
@@ -588,7 +588,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
   const handleAmountChange = useCallback(
     (event) => {
       if (isNumberish(event.target.value)) {
-        onChange({
+        onChange?.({
           persist: () => {},
           target: {
             id: MoneyInput.getAmountInputId(moneyInputId),
@@ -632,11 +632,11 @@ const MoneyInput = (props: TMoneyInputProps) => {
             value: currencyCode || '',
           },
         };
-        onChange(fakeCurrencyEvent);
+        onChange?.(fakeCurrencyEvent);
 
         // change amount if necessary
         if (props.value.amount !== nextAmount) {
-          onChange({
+          onChange?.({
             persist: () => {},
             target: {
               id: MoneyInput.getAmountInputId(moneyInputId),

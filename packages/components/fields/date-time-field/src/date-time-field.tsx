@@ -32,7 +32,7 @@ const sequentialErrorsId = createSequentialId('date-time-field-error-')();
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -96,11 +96,11 @@ type TDateTimeFieldProps = {
    * <br/>
    * Required when input is not read only. Parent should pass it back as `value`-
    */
-  onChange: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Called when input is blurred
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called when input is focused
    */
@@ -199,7 +199,7 @@ class DateTimeField extends Component<
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'DateTimeField: `onChange` is required when it is not read only.'
+        'DateTimeField: `onChange` is required when field is not read only.'
       );
     }
 

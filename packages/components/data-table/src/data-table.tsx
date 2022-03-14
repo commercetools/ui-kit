@@ -11,9 +11,9 @@ import { usePrevious } from '@commercetools-uikit/hooks';
 import {
   TableContainer,
   TableGrid,
-  Header,
-  Body,
-  Row,
+  TableHeader,
+  TableBody,
+  TableRow,
 } from './data-table.styles';
 import Footer from './footer';
 import HeaderCell from './header-cell';
@@ -87,8 +87,6 @@ export type TColumn<Row extends TRow = TRow> = {
    * For example, using `minmax` pairs (e.g. `minmax(200px, 400px)`), a combinations of
    * fraction values (`1fr`/`2fr`/etc), or fixed values such as `200px`.
    * By default, the column grows according to the content and respecting the total table available width.
-   *
-   * @@defaultValue@@: auto
    */
   width?: string;
   /**
@@ -97,15 +95,11 @@ export type TColumn<Row extends TRow = TRow> = {
   align?: 'left' | 'center' | 'right';
   /**
    * A callback function, called when the header cell is clicked.
-   * <br>
-   * Signature: `(event) => void`
    */
   onClick?: (event: MouseEventHandler) => void;
   /**
    * A callback function to render the content of cells under this column, overriding
    * the default `itemRenderer` prop of the table.
-   * <br>
-   * Signature: `(row: object, isRowCollapsed: boolean) => React.Node`
    */
   renderItem?: (row: Row, isRowCollapsed: boolean) => ReactNode;
   /**
@@ -125,31 +119,23 @@ export type TColumn<Row extends TRow = TRow> = {
    * it can shrink until the column disappears completely.
    * By enforcing a minimum width for these columns, the table will respect them and grow horizontally,
    * adding scrollbars if needed.
-   *
-   * @@defaultValue@@: false
    */
   isTruncated?: boolean;
   /**
    * Set this to `true` to show a sorting button, which calls `onSortChange` upon being clicked.
    * You should enable this flag for every column you want to be able to sort.
    * When at least one column is sortable, the table props `sortBy`, `sortDirection` and `onSortChange` should be provided.
-   *
-   * @@defaultValue@@: false
    */
   isSortable?: boolean;
   /**
    * Set this to `true` to prevent this column from being manually resized by dragging
    * the edge of the header with a mouse.
-   *
-   * @@defaultValue@@: false
    */
   disableResizing?: boolean;
   /**
    * Set this to `true` to prevent click event propagation for this cell.
    * You might want this if you need the column to have its own call-to-action or input while
    * the row also has a defined `onRowClick`.
-   *
-   * @@defaultValue@@: false
    */
   shouldIgnoreRowClick?: boolean;
 };
@@ -185,10 +171,8 @@ export type TDataTableProps<Row extends TRow = TRow> = {
   maxHeight?: number | string;
   /**
    * A callback function, called when a user clicks on a row.
-   * <br>
-   * Signature `(row: object, rowIndex: number, columnKey: string) => void`
    */
-  onRowClick?: (row: TRow, rowIndex: number, columnKey: string) => void;
+  onRowClick?: (row: Row, rowIndex: number, columnKey: string) => void;
   /**
    * Set this to `true` to reduce the paddings of all cells, allowing the table to display
    * more data in less space.
@@ -198,8 +182,6 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    * A callback function, called when a column has been resized.
    * Use this callback to get the resized column widths and save them, to be able to restore the
    * value once the user comes back to the page.
-   * <br>
-   * Signature: `([{key: string, width: number} ...]) => func()`
    */
   onColumnResized?: (args: TColumn<Row>[]) => void;
   /**
@@ -218,11 +200,9 @@ export type TDataTableProps<Row extends TRow = TRow> = {
   /**
    * The default function used to render the content of each item in a cell.
    * In case a column has its own `renderItem` render function, it will take precedence over this function.
-   * <br>
-   * Signature: `(item: object, column: object, isRowCollapsed: boolean) => React.Node`
    */
   itemRenderer: (
-    item: TRow,
+    item: Row,
     column: TColumn<Row>,
     isRowCollapsed: boolean
   ) => ReactNode;
@@ -247,8 +227,6 @@ export type TDataTableProps<Row extends TRow = TRow> = {
   /**
    * A callback function, called when a sortable column's header is clicked.
    * It's required when the `isSortable` flag is set on at least one column.
-   * <br>
-   * Signature: `(columnKey: string, sortDirection: string) => void`.
    */
   onSortChange?: (columnKey: string, sortDirection: 'asc' | 'desc') => void;
   /**
@@ -307,8 +285,8 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         resizedTotalWidth={resizedTotalWidth}
       >
         <ColumnResizingContext.Provider value={columnResizingReducer}>
-          <Header>
-            <Row>
+          <TableHeader>
+            <TableRow isRowClickable={false}>
               {props.columns.map((column) => (
                 <HeaderCell
                   key={column.key}
@@ -332,11 +310,11 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
                   {column.label}
                 </HeaderCell>
               ))}
-            </Row>
-          </Header>
-          <Body>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {props.rows.map((row, rowIndex) => (
-              <DataRow
+              <DataRow<Row>
                 {...props}
                 row={row}
                 key={row.id}
@@ -352,7 +330,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
                 )}
               />
             ))}
-          </Body>
+          </TableBody>
         </ColumnResizingContext.Provider>
       </TableGrid>
       {props.footer && (

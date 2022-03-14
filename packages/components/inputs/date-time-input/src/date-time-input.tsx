@@ -10,7 +10,11 @@ import type { DurationInputArg1, MomentInput } from 'moment';
 import Downshift from 'downshift';
 import { injectIntl, type WrappedComponentProps } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
-import { filterDataAttributes, parseTime } from '@commercetools-uikit/utils';
+import {
+  filterDataAttributes,
+  parseTime,
+  warning,
+} from '@commercetools-uikit/utils';
 import {
   changeTime,
   formatTime,
@@ -73,7 +77,7 @@ const createBlurHandler =
     }
   };
 
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -113,17 +117,16 @@ export type TDateTimeInputProps = {
   value: string;
   /**
    * Called when the date changes. Called with an event containing an empty string (no value) or a string in this format: "YYYY-MM-DD".
-   * <br />
    */
-  onChange: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Called when the date input gains focus.
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLDivElement>;
   /**
    * Called when the date input loses focus.
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed.
    * Get list of timezone with `moment.tz.names()` [See moment docs](https://momentjs.com/timezone/docs/#/data-loading/getting-zone-names/)
@@ -217,7 +220,7 @@ class DateTimeInput extends Component<
         },
       });
   };
-  handleTimeChange = (event: TEvent) => {
+  handleTimeChange = (event: TCustomEvent) => {
     const parsedTime = parseTime(event.target.value);
 
     this.setState({ timeString: event.target.value });
@@ -232,7 +235,7 @@ class DateTimeInput extends Component<
     this.emit(date);
   };
   emit = (value: string | null) =>
-    this.props.onChange({
+    this.props.onChange?.({
       target: {
         id: this.props.id,
         name: this.props.name,
@@ -242,6 +245,13 @@ class DateTimeInput extends Component<
       },
     });
   render() {
+    if (!this.props.isReadOnly) {
+      warning(
+        typeof this.props.onChange === 'function',
+        'DateTimeInput: `onChange` is required when input is not read only.'
+      );
+    }
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Downshift
@@ -357,7 +367,6 @@ class DateTimeInput extends Component<
             const calendarItems = createCalendarItems(
               this.state.calendarDate,
               this.state.timeString,
-              this.props.intl,
               this.props.timeZone
             );
 
@@ -416,7 +425,7 @@ class DateTimeInput extends Component<
                         closeMenu();
                       }
                       // ArrowDown
-                      if (event.keyCode === 40) {
+                      if (event.key === 'ArrowDown') {
                         if (
                           Number(highlightedIndex) + 1 >=
                           calendarItems.length
@@ -429,7 +438,7 @@ class DateTimeInput extends Component<
                         }
                       }
                       // ArrowUp
-                      if (event.keyCode === 38) {
+                      if (event.key === 'ArrowUp') {
                         const previousDay = getPreviousDay(
                           calendarItems[Number(highlightedIndex)]
                         );
@@ -449,7 +458,7 @@ class DateTimeInput extends Component<
                     },
                     onClick: this.props.isReadOnly ? undefined : openMenu,
                     onBlur: createBlurHandler(this.timeInputRef),
-                    onChange: (event: TEvent) => {
+                    onChange: (event: TCustomEvent) => {
                       // keep timeInput and regular input in sync when user
                       // types into regular input
                       if (!isOpen) return;

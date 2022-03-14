@@ -23,7 +23,7 @@ type TFieldErrors = Record<string, boolean>;
 type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
 };
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -93,15 +93,15 @@ type TDateRangeFieldProps = {
    * <br/>
    * Required when input is not read only.
    */
-  onChange: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Called when input is blurred
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called when input is focused
    */
-  onFocus?: (event: TEvent) => void;
+  onFocus?: (event: TCustomEvent) => void;
   /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */

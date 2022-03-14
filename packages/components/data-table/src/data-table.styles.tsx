@@ -4,13 +4,12 @@ import { customProperties as vars } from '@commercetools-uikit/design-system';
 import { RowExpandCollapseButton } from './cell.styles';
 import convertNumericDimensionToPixelValue from './utils/convert-numeric-dimension-to-pixel-value';
 import type { TDataTableProps } from './data-table';
-import type { TDataRow } from './data-row';
 
-type TGetClickableRowStyle = {
-  isRowClickable?: TDataRow['onRowClick'];
+type TGetClickableRowStyleProps = {
+  isRowClickable: boolean;
 };
 
-const getClickableRowStyle = (props: TGetClickableRowStyle) => {
+const getClickableRowStyle = (props: TGetClickableRowStyleProps) => {
   if (props.isRowClickable) {
     return css`
       cursor: pointer;
@@ -93,15 +92,15 @@ const TableGrid = styled.table<TTableGrid>`
   ${getDisabledSelfContainmentStyles}
 `;
 
-const Header = styled.thead`
+const TableHeader = styled.thead`
   display: contents;
 `;
 
-const Body = styled.tbody`
+const TableBody = styled.tbody`
   display: contents;
 `;
 
-const Row = styled.tr<TGetClickableRowStyle>`
+const TableRow = styled.tr<TGetClickableRowStyleProps>`
   display: contents;
   ${getClickableRowStyle}
   :hover, :focus-within {
@@ -111,4 +110,4 @@ const Row = styled.tr<TGetClickableRowStyle>`
   }
 `;
 
-export { TableContainer, TableGrid, Header, Body, Row };
+export { TableContainer, TableGrid, TableHeader, TableBody, TableRow };

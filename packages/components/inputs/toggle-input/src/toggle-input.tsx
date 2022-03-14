@@ -23,11 +23,11 @@ export type TToggleInputProps = {
   /**
    * The size of the ToggleInput component.
    */
-  size?: 'small' | 'big';
+  size: 'small' | 'big';
   /**
    * Disables the ToggleInput
    */
-  isDisabled?: boolean;
+  isDisabled: boolean;
   /**
    * Checks the ToggleInput
    */
@@ -45,9 +45,8 @@ export type TToggleInputProps = {
 
 type TStyledLabelProps = Pick<TToggleInputProps, 'isDisabled' | 'size'>;
 type TStyledSpanProps = Pick<TToggleInputProps, 'size'>;
-type TStyledInputProps = Pick<TToggleInputProps, 'size'>;
 
-const defaultProps: Pick<
+export const defaultProps: Pick<
   TToggleInputProps,
   'isDisabled' | 'isChecked' | 'size'
 > = {
@@ -117,17 +116,16 @@ const Span = styled.span<TStyledSpanProps>`
   }
 `;
 
-const Input = styled.input<TStyledInputProps>`
+const getInputStyles = (props: TToggleInputProps) => css`
   /* when checked */
   &:checked {
     + span::before {
       background: ${vars.colorPrimary};
     }
     & + span::after {
-      transform: ${(props: TStyledInputProps) =>
-        props.size === 'small'
-          ? 'translate(117%, -50%)'
-          : 'translate(127%, -50%)'};
+      transform: ${props.size === 'small'
+        ? 'translate(117%, -50%)'
+        : 'translate(127%, -50%)'};
     }
   }
 
@@ -161,17 +159,15 @@ const Input = styled.input<TStyledInputProps>`
 
 const ToggleInput = (props: TToggleInputProps) => (
   <Label htmlFor={props.id} size={props.size} isDisabled={props.isDisabled}>
-    <Input
-      css={accessibleHiddenInputStyles}
+    <input
+      type="checkbox"
+      css={[accessibleHiddenInputStyles, getInputStyles(props)]}
       id={props.id}
       name={props.name}
       onChange={props.onChange}
       disabled={props.isDisabled}
       checked={props.isChecked}
       value={props.value}
-      type="checkbox"
-      // @ts-ignore
-      size={props.size}
       {...filterDataAttributes(props)}
       {...filterAriaAttributes(props)}
     />

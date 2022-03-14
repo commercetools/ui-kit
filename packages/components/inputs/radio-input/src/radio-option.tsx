@@ -47,9 +47,9 @@ export type TOptionProps = {
   isReadOnly?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
-  onChange?: ChangeEventHandler;
-  onFocus?: FocusEventHandler;
-  onBlur?: FocusEventHandler;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onFocus?: FocusEventHandler<HTMLLabelElement>;
+  onBlur?: FocusEventHandler<HTMLLabelElement>;
 
   // This prop forces Radio.Option to be rendered in a hovered state (though isDisabled takes
   // precedence over that). We need that to address a use-case when hovering is comming
@@ -61,6 +61,13 @@ export type TOptionProps = {
 
 const Option = (props: TOptionProps) => {
   const labelProps = props.id ? { htmlFor: props.id } : {};
+
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'RadioOption: `onChange` is required when input is not read only.'
+    );
+  }
 
   if (props.components?.wrapper) {
     warning(

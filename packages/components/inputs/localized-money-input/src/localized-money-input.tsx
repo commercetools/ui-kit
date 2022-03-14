@@ -1,9 +1,4 @@
-import {
-  useCallback,
-  type FocusEventHandler,
-  type ChangeEventHandler,
-  type ReactNode,
-} from 'react';
+import { useCallback, type ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/react';
 import { useToggleState, useFieldId } from '@commercetools-uikit/hooks';
@@ -30,12 +25,13 @@ import {
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import messages from './messages';
 
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
     value?: string | string[] | null;
   };
+  persist?: () => void;
 };
 
 type TLocalizedMoneyInputProps = {
@@ -58,7 +54,7 @@ type TLocalizedMoneyInputProps = {
   /**
    * Called with the event of the input.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * the currently selected currency
    */
@@ -66,11 +62,11 @@ type TLocalizedMoneyInputProps = {
   /**
    * Called when input is blurred
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: (event: TCustomEvent) => void;
   /**
    * Will hide the currency expansion controls when set to `true`. All currencies will be shown when set to `true`.
    */
@@ -147,7 +143,7 @@ type TLocalizedInputProps = {
   /**
    * Called with the event of the input.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Called with the event of the input.
    */
@@ -155,11 +151,11 @@ type TLocalizedInputProps = {
   /**
    * Called when input is blurred
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: (event: TCustomEvent) => void;
   /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */

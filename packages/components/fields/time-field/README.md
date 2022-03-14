@@ -56,9 +56,9 @@ export default Example;
 | `name`                 | `string`                                                                                              |          |           | Used as HTML name of the input component.                                                                                                                                                                                                                             |
 | `autoComplete`         | `string`                                                                                              |          |           | Used as HTML autocomplete of the input component.                                                                                                                                                                                                                     |
 | `value`                | `string`                                                                                              |    ✅    |           | Value of the input                                                                                                                                                                                                                                                    |
-| `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                                  |    ✅    |           | Called with an event holding the new value.&#xA;<br/>&#xA;Required when input is not read only. Parent should pass it back as `value`-                                                                                                                                |
-| `onBlur`               | `Function`<br/>[See signature.](#signature-onBlur)                                                    |          |           | Called when input is blurred                                                                                                                                                                                                                                          |
-| `onFocus`              | `Function`<br/>[See signature.](#signature-onFocus)                                                   |          |           | Called when input is focused                                                                                                                                                                                                                                          |
+| `onChange`             | `ChangeEventHandler`                                                                                  |          |           | Called with an event holding the new value.                                                                                                                                                                                                                           |
+| `onBlur`               | `FocusEventHandler`                                                                                   |          |           | Called when input is blurred                                                                                                                                                                                                                                          |
+| `onFocus`              | `FocusEventHandler`                                                                                   |          |           | Called when input is focused                                                                                                                                                                                                                                          |
 | `isAutofocussed`       | `boolean`                                                                                             |          |           | Focus the input on initial render                                                                                                                                                                                                                                     |
 | `isDisabled`           | `boolean`                                                                                             |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                                                                                                                        |
 | `isReadOnly`           | `boolean`                                                                                             |          |           | Indicates that the input is read only (no changes allowed).                                                                                                                                                                                                           |
@@ -76,24 +76,6 @@ export default Example;
 
 ```ts
 (key: string, error?: boolean) => ReactNode;
-```
-
-### Signature `onChange`
-
-```ts
-(event: TEvent) => void
-```
-
-### Signature `onBlur`
-
-```ts
-(event: TEvent) => void
-```
-
-### Signature `onFocus`
-
-```ts
-(event: TEvent) => void
 ```
 
 ### Signature `onInfoButtonClick`

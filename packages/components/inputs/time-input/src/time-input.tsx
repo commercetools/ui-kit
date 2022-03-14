@@ -1,12 +1,20 @@
-import { type FocusEventHandler, useCallback } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type FocusEventHandler,
+  type ChangeEventHandler,
+} from 'react';
 import { useIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
 import {
   parseTime,
   filterDataAttributes,
   createSequentialId,
+  warning,
 } from '@commercetools-uikit/utils';
-import { useFieldId, usePrevious } from '@commercetools-uikit/hooks';
+import { useFieldId } from '@commercetools-uikit/hooks';
 import TimeInputBody from './time-input-body';
 import messages from './messages';
 
@@ -15,10 +23,6 @@ type ParsedTime = {
   minutes: number;
   seconds: number;
   milliseconds: number;
-};
-
-type TEvent = {
-  target: { id: string; name?: string; value: unknown };
 };
 
 export type TTimeInputProps = {
@@ -69,18 +73,15 @@ export type TTimeInputProps = {
   /**
    * Called with an event holding the new value.
    */
-  onChange: (event: TEvent) => void;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   /**
    * Called when input is blurred
-   * <br/>
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /**
    * Called when input is focused
-   * <br/>
-   * Signature: `(event) => void`
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   /**
    * Focus the input on initial render
    */
@@ -131,55 +132,68 @@ const hasMilliseconds = (parsedTime: {
 const TimeInput = (props: TTimeInputProps) => {
   const id = useFieldId(props.id, sequentialId);
   const intl = useIntl();
-  const prevLocale = usePrevious(intl.locale);
+  const element = useRef<HTMLInputElement>(null);
+  // Keep internal state to allow clearing the value manually (`onClear`).
+  const [controlledValue, setControlledValue] = useState(props.value);
 
-  const { name, value, onBlur, onChange } = props;
-
-  const emitChange = useCallback(
-    (nextValue) => {
-      const event = {
-        target: { id, name, value: nextValue },
-      };
-      onChange(event);
-    },
-    [id, name, onChange]
-  );
-
-  const handleBlur = useCallback(
-    (event) => {
-      // check formatting and reformat when necessary
-      const formattedTime = value && TimeInput.toLocaleTime(value, intl.locale);
-
-      if (formattedTime !== value) emitChange(formattedTime);
-
-      // forward the onBlur call
-      if (onBlur) onBlur(event);
-    },
-    [intl.locale, value, onBlur, emitChange]
-  );
-
-  const onClear = useCallback(() => emitChange(''), [emitChange]);
-
-  // if locale has changed
-  if (typeof prevLocale !== 'undefined' && prevLocale !== intl.locale) {
-    emitChange(TimeInput.toLocaleTime(value as string, intl.locale));
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'TimeInput: `onChange` is required when input is not read only.'
+    );
   }
+
+  const { onBlur, onChange } = props;
+
+  const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
+    (event) => {
+      const rawValue = event.target.value;
+      setControlledValue(rawValue);
+      const formattedValue = TimeInput.toLocaleTime(rawValue, intl.locale);
+      event.target.value = formattedValue;
+      onChange?.(event);
+    },
+    [intl.locale, onChange]
+  );
+
+  const handleBlur = useCallback<FocusEventHandler<HTMLInputElement>>(
+    (event) => {
+      const formattedValue = TimeInput.toLocaleTime(
+        event.target.value,
+        intl.locale
+      );
+      event.target.value = formattedValue;
+      onBlur?.(event);
+    },
+    [intl.locale, onBlur]
+  );
+
+  const handleClear = useCallback(() => {
+    setControlledValue('');
+    element.current?.dispatchEvent(new Event('change'));
+  }, []);
+
+  // if locale has changed trigger a new change event
+  useEffect(() => {
+    element.current?.dispatchEvent(new Event('change'));
+  }, [intl.locale]);
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <TimeInputBody
+        ref={element}
         id={id}
         name={props.name}
         autoComplete={props.autoComplete}
-        value={props.value}
-        onChange={props.onChange}
-        onFocus={props.onFocus}
+        value={controlledValue}
+        onChange={handleChange}
         onBlur={handleBlur}
+        onFocus={props.onFocus}
         isAutofocussed={props.isAutofocussed}
         isDisabled={props.isDisabled}
         hasError={props.hasError}
         isReadOnly={props.isReadOnly}
-        onClear={onClear}
+        onClear={handleClear}
         placeholder={
           typeof props.placeholder === 'string'
             ? props.placeholder
@@ -213,7 +227,7 @@ TimeInput.defaultProps = {
 // the 24h format is returned.
 //
 // Returns time in a format suitable for the locale.
-TimeInput.toLocaleTime = (time: string, locale: string) => {
+TimeInput.toLocaleTime = (time: string | undefined, locale: string) => {
   const parsedTime = parseTime(time);
   if (!parsedTime) return '';
 

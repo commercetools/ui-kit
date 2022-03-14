@@ -45,8 +45,6 @@ export type TSecondaryButtonProps<
   isDisabled?: boolean;
   /**
    * Handler when the button is clicked.
-   * <br />
-   * Signature: (event: MouseEvent<HTMLButtonElement) => void
    */
   onClick?: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>

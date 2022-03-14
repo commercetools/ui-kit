@@ -3,7 +3,6 @@ import {
   isValidElement,
   type ReactElement,
   type ReactNode,
-  type FocusEventHandler,
   type MouseEvent,
   type KeyboardEvent,
 } from 'react';
@@ -28,9 +27,10 @@ type TOptionObject = {
   options: TOption[];
 };
 type TOptions = TOption[] | TOptionObject[];
-type TEvent = {
+type TCustomEvent = {
   target: {
-    name: ReactSelectProps['name'];
+    id?: ReactSelectProps['inputId'];
+    name?: ReactSelectProps['name'];
     value?: string | string[] | null;
   };
   persist: () => void;
@@ -181,17 +181,19 @@ type TSelectFieldProps = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called with a fake event when value changes. The event's target.name will be the name supplied in props. The event's target.value will hold the value.
    * <br/>
    * The value will be the selected option, or an array of options in case isMulti is true.
    */
-  onChange?: (event?: TEvent) => void;
+  onChange?: (event?: TCustomEvent) => void;
   /**
    * Handle focus events on the control
+   * <br/>
+   * [Props from React select was used](https://react-select.com/props)
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: ReactSelectProps['onFocus'];
   /**
    * Handle change events on the input
    * <br/>
