@@ -158,10 +158,8 @@ const TimeInput = (props: TTimeInputProps) => {
 
   const handleBlur = useCallback<FocusEventHandler<HTMLInputElement>>(
     (event) => {
-      const formattedValue = TimeInput.toLocaleTime(
-        event.target.value,
-        intl.locale
-      );
+      const rawValue = event.target.value;
+      const formattedValue = TimeInput.toLocaleTime(rawValue, intl.locale);
       event.target.value = formattedValue;
       onBlur?.(event);
     },

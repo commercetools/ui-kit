@@ -1,30 +1,58 @@
-import { Fragment, cloneElement, ReactElement } from 'react';
+import { cloneElement, type ReactElement } from 'react';
 import { css } from '@emotion/react';
 import { customProperties } from '@commercetools-uikit/design-system';
 import {
   components as defaultComponents,
-  SingleValueProps,
-  PlaceholderProps,
+  type SingleValueProps,
+  type PlaceholderProps,
 } from 'react-select';
 
-export type TWrapperWithIconProps = {
-  type: string;
-  selectProps: TSelectProps;
-} & SingleValueProps &
-  PlaceholderProps;
+export type TSingleValueWrapperWithIconProps = {
+  type: 'singleValue';
+  selectProps?: TSelectProps;
+} & SingleValueProps;
+export type TPlaceholderWrapperWithIconProps = {
+  type: 'placeholder';
+  selectProps?: TSelectProps;
+} & PlaceholderProps;
+export type TWrapperWithIconProps<Type extends 'singleValue' | 'placeholder'> =
+  Type extends 'singleValue'
+    ? TSingleValueWrapperWithIconProps
+    : Type extends 'placeholder'
+    ? TPlaceholderWrapperWithIconProps
+    : never;
+export type TDefaultComponent<Type extends 'singleValue' | 'placeholder'> = (
+  props: Type extends 'singleValue'
+    ? SingleValueProps
+    : Type extends 'placeholder'
+    ? PlaceholderProps
+    : never
+) => JSX.Element;
 
-const getDefaultComponent = (type: TWrapperWithIconProps['type']) => {
-  if (type === 'singleValue') return defaultComponents.SingleValue;
-  if (type === 'placeholder') return defaultComponents.Placeholder;
-  return Fragment;
+const getDefaultComponent = <Type extends 'singleValue' | 'placeholder'>(
+  type: TWrapperWithIconProps<Type>['type']
+): TDefaultComponent<Type> | null => {
+  if (type === 'singleValue')
+    return defaultComponents.SingleValue as TDefaultComponent<Type>;
+  if (type === 'placeholder')
+    return defaultComponents.Placeholder as TDefaultComponent<Type>;
+  return null;
 };
 
 type TSelectProps = {
-  iconLeft: ReactElement;
+  iconLeft?: ReactElement;
 };
 
-const WrapperWithIcon = (props: TWrapperWithIconProps) => {
-  const Component = getDefaultComponent(props.type);
+const WrapperWithIcon = <Type extends 'singleValue' | 'placeholder'>(
+  props: TWrapperWithIconProps<Type>
+) => {
+  const DefaultComponent = getDefaultComponent<Type>(props.type);
+
+  if (!DefaultComponent) {
+    return null;
+  }
+
+  const { type, selectProps, ...forwardProps } = props;
 
   return (
     <>
@@ -41,7 +69,8 @@ const WrapperWithIcon = (props: TWrapperWithIconProps) => {
           customProperties.spacingXs};
         `}
       >
-        <Component {...props}>{props.children}</Component>
+        {/* @ts-ignore */}
+        <DefaultComponent {...forwardProps} />
       </span>
     </>
   );
@@ -51,15 +80,13 @@ WrapperWithIcon.displayName = 'WrapperWithIcon';
 
 export default WrapperWithIcon;
 
-/* eslint-disable react/display-name */
 const customComponents = {
-  SingleValue: (props: TWrapperWithIconProps) => (
-    <WrapperWithIcon {...props} type="singleValue" />
+  SingleValue: (props: TWrapperWithIconProps<'singleValue'>) => (
+    <WrapperWithIcon<'singleValue'> {...props} type="singleValue" />
   ),
-  Placeholder: (props: TWrapperWithIconProps) => (
-    <WrapperWithIcon {...props} type="placeholder" />
+  Placeholder: (props: TWrapperWithIconProps<'placeholder'>) => (
+    <WrapperWithIcon<'placeholder'> {...props} type="placeholder" />
   ),
 };
-/* eslint-enable react/display-name */
 
 export { customComponents };

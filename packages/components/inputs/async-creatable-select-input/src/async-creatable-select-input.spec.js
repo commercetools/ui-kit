@@ -163,6 +163,7 @@ describe('in single mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: { value: 'mango', label: 'Mango' },
         },
@@ -193,6 +194,7 @@ describe('in single mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: expect.objectContaining({ value: 'Orange', label: 'Orange' }),
         },
@@ -283,6 +285,7 @@ describe('in multi mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: [expect.objectContaining({ value: 'mango', label: 'Mango' })],
         },
@@ -296,6 +299,7 @@ describe('in multi mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: [
             expect.objectContaining(
@@ -345,6 +349,7 @@ describe('in multi mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: [
             expect.objectContaining({ value: 'Orange', label: 'Orange' }),
@@ -360,6 +365,7 @@ describe('in multi mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: [
             expect.objectContaining({ value: 'Orange', label: 'Orange' }),
@@ -381,6 +387,7 @@ describe('in multi mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: [],
         },
