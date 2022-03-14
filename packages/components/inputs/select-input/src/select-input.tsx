@@ -484,6 +484,7 @@ const SelectInput = (props: TSelectInputProps) => {
           tabIndex={props.tabIndex}
           tabSelectsValue={props.tabSelectsValue}
           value={selectedOptions}
+          iconLeft={props.iconLeft}
         />
       </div>
     </Constraints.Horizontal>

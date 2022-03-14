@@ -52,8 +52,6 @@ const WrapperWithIcon = <Type extends 'singleValue' | 'placeholder'>(
     return null;
   }
 
-  const { type, selectProps, ...forwardProps } = props;
-
   return (
     <>
       {props.selectProps.iconLeft &&
@@ -70,7 +68,7 @@ const WrapperWithIcon = <Type extends 'singleValue' | 'placeholder'>(
         `}
       >
         {/* @ts-ignore */}
-        <DefaultComponent {...forwardProps} />
+        <DefaultComponent {...props} />
       </span>
     </>
   );

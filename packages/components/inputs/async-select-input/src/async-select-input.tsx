@@ -450,6 +450,9 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           defaultOptions={props.defaultOptions}
           loadOptions={props.loadOptions}
           cacheOptions={props.cacheOptions}
+          // Extra props
+          // @ts-ignore: passed to the react-select components via `selectProps`.
+          iconLeft={props.iconLeft}
         />
       </div>
     </Constraints.Horizontal>
