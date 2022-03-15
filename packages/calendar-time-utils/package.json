@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/calendar-time-utils",
   "description": "Utilities to work with time values for a calendar.",
-  "version": "14.0.1",
+  "version": "14.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

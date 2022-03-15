@@ -1,5 +1,16 @@
 # @commercetools-uikit/localized-rich-text-input
 
+## 14.0.2
+
+### Patch Changes
+
+- [#2147](https://github.com/commercetools/ui-kit/pull/2147) [`419935d2d`](https://github.com/commercetools/ui-kit/commit/419935d2d819d477a936fc9cb2dc2f0e3e840cc3) Thanks [@emmenko](https://github.com/emmenko)! - Refine types for event handlers and other minor inconsistencies.
+
+- Updated dependencies [[`419935d2d`](https://github.com/commercetools/ui-kit/commit/419935d2d819d477a936fc9cb2dc2f0e3e840cc3)]:
+  - @commercetools-uikit/flat-button@14.0.2
+  - @commercetools-uikit/input-utils@14.0.2
+  - @commercetools-uikit/rich-text-utils@14.0.2
+
 ## 14.0.1
 
 ### Patch Changes

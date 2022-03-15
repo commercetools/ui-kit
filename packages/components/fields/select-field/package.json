@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/select-field",
   "description": "A controlled input component with validation states and a label getting a selection from the user.",
-  "version": "14.0.1",
+  "version": "14.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -24,8 +24,8 @@
     "@commercetools-uikit/constraints": "14.0.1",
     "@commercetools-uikit/design-system": "14.0.0",
     "@commercetools-uikit/field-errors": "14.0.1",
-    "@commercetools-uikit/field-label": "14.0.1",
-    "@commercetools-uikit/select-input": "14.0.1",
+    "@commercetools-uikit/field-label": "14.0.2",
+    "@commercetools-uikit/select-input": "14.0.2",
     "@commercetools-uikit/spacings": "14.0.1",
     "@commercetools-uikit/utils": "14.0.1",
     "@emotion/react": "^11.4.0",

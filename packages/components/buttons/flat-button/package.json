@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/flat-button",
   "description": "Flat buttons are minimal and a flat variation of primary and secondary buttons.",
-  "version": "14.0.1",
+  "version": "14.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
