@@ -1,4 +1,4 @@
-import { ChangeEventHandler, ReactNode } from 'react';
+import type { ChangeEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css, useTheme } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';

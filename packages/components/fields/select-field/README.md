@@ -78,7 +78,7 @@ export default Example;
 | `noOptionsMessage`       | `ReactSelectProps['noOptionsMessage']`                                                             |          |           | Can be used to render a custom value when there are no options (either because of no search results, or all options have been used, or there were none in the first place). Gets called with { inputValue: String }.&#xA;<br/>&#xA;`inputValue` will be an empty string when no search text is present.&#xA;<br/>&#xA;[Props from React select was used](https://react-select.com/props) |
 | `onBlur`                 | `Function`<br/>[See signature.](#signature-onBlur)                                                 |          |           | Handle blur events on the control                                                                                                                                                                                                                                                                                                                                                        |
 | `onChange`               | `Function`<br/>[See signature.](#signature-onChange)                                               |          |           | Called with a fake event when value changes. The event's target.name will be the name supplied in props. The event's target.value will hold the value.&#xA;<br/>&#xA;The value will be the selected option, or an array of options in case isMulti is true.                                                                                                                              |
-| `onFocus`                | `FocusEventHandler`                                                                                |          |           | Handle focus events on the control                                                                                                                                                                                                                                                                                                                                                       |
+| `onFocus`                | `ReactSelectProps['onFocus']`                                                                      |          |           | Handle focus events on the control&#xA;<br/>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                                      |
 | `onInputChange`          | `ReactSelectProps['onInputChange']`                                                                |          |           | Handle change events on the input&#xA;<br/>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                                       |
 | `options`                | `union`<br/>Possible values:<br/>`TOption[] , TOptionObject[]`                                     |          |           | Array of options that populate the select menu                                                                                                                                                                                                                                                                                                                                           |
 | `showOptionGroupDivider` | `boolean`                                                                                          |          |           |                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -115,13 +115,13 @@ export default Example;
 ### Signature `onBlur`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onChange`
 
 ```ts
-(event?: TEvent) => void
+(event?: TCustomEvent) => void
 ```
 
 ### Signature `onInfoButtonClick`

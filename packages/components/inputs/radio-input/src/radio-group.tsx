@@ -23,9 +23,9 @@ export type TGroupProps = {
   id?: string;
   name?: string;
   value: string | boolean;
-  onChange?: ChangeEventHandler;
-  onBlur?: FocusEventHandler;
-  onFocus?: FocusEventHandler;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onBlur?: FocusEventHandler<HTMLLabelElement>;
+  onFocus?: FocusEventHandler<HTMLLabelElement>;
   isDisabled?: boolean;
   isReadOnly?: boolean;
   hasError?: boolean;

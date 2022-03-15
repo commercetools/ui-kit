@@ -2,6 +2,7 @@ import {
   useState,
   useCallback,
   type ChangeEventHandler,
+  type FocusEventHandler,
   type ReactNode,
 } from 'react';
 import { css, useTheme } from '@emotion/react';
@@ -22,11 +23,9 @@ import {
   ToggleButtonWrapper,
 } from './translation-input.styles';
 
-type TEvent = {
-  target: {
-    language: string;
-  };
-};
+interface HTMLLocalizedTextAreaElement extends HTMLTextAreaElement {
+  language: string;
+}
 
 type TranslationInputProps = {
   /**
@@ -37,7 +36,7 @@ type TranslationInputProps = {
    * HTML ID of an element containing an error message related to the input.
    */
   'aria-errormessage'?: string;
-  onChange?: (event: TEvent) => void;
+  onChange?: ChangeEventHandler<HTMLLocalizedTextAreaElement>;
   language: string;
   onFocus?: () => void;
   onToggle?: () => void;
@@ -49,7 +48,7 @@ type TranslationInputProps = {
   name?: string;
   autoComplete?: string;
   value: string;
-  onBlur?: ChangeEventHandler<Element>;
+  onBlur?: FocusEventHandler<HTMLLocalizedTextAreaElement>;
   isDisabled?: boolean;
   placeholder?: string;
   hasWarning?: boolean;
@@ -97,7 +96,9 @@ const TranslationInput = (props: TranslationInputProps) => {
 
   const { onChange } = props;
 
-  const handleChange = useCallback(
+  const handleChange = useCallback<
+    ChangeEventHandler<HTMLLocalizedTextAreaElement>
+  >(
     (event) => {
       // We manipulate the event to add the language to the target.
       // That way the users of LocalizedTextInput's onChange can read
@@ -109,8 +110,6 @@ const TranslationInput = (props: TranslationInputProps) => {
       // We can't use this as we aren't guaranteed a name in the story as the user
       // might clear it using the knob, and then we can't parse the language from
       // the input name anymore.
-      //
-      // eslint-disable-next-line no-param-reassign
       event.target.language = props.language;
       onChange?.(event);
     },

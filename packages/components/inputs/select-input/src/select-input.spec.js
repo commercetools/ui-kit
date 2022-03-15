@@ -168,6 +168,7 @@ describe('in single mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: 'mango',
         },
@@ -274,6 +275,7 @@ describe('in multi mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: ['mango'],
         },
@@ -286,6 +288,7 @@ describe('in multi mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: ['mango', 'raspberry'],
         },
@@ -304,6 +307,7 @@ describe('in multi mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: [],
         },
@@ -324,6 +328,7 @@ describe('in multi mode', () => {
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
+          id: 'some-id',
           name: 'some-name',
           value: [],
         },

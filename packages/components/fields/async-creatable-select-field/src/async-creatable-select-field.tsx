@@ -39,8 +39,9 @@ const sequentialErrorsId = createSequentialId(
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-type TEvent = {
+type TCustomEvent = {
   target: {
+    id?: string;
     name?: string;
     value?: unknown;
   };
@@ -211,7 +212,7 @@ type TAsyncCreatableSelectFieldProps = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called with a fake event when value changes.
    * <br />
@@ -219,7 +220,7 @@ type TAsyncCreatableSelectFieldProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
+  onChange?: (event: TCustomEvent, info: ActionMeta<unknown>) => void;
   /**
    * Handle focus events on the control
    * <br>
@@ -404,6 +405,13 @@ export default class AsyncCreatableSelectField extends Component<
     const hasError =
       AsyncCreatableSelectInput.isTouched(this.props.touched) &&
       hasErrors(this.props.errors);
+
+    if (!this.props.isReadOnly) {
+      warning(
+        typeof this.props.onChange === 'function',
+        'AsyncCreatableSelectField: `onChange` is required when field is not read only.'
+      );
+    }
 
     if (this.props.hintIcon) {
       warning(

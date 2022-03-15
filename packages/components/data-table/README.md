@@ -66,17 +66,17 @@ export default Example;
 | `footer`                  | `ReactNode`                                                    |          |                                    | Element to render within the `tfoot` (footer) element of the table.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `maxWidth`                | `union`<br/>Possible values:<br/>`number , string`             |          |                                    | The max width (a number of pixels or a css value string with units) for which the table&#xA;is allowed to grow. If unset, the table will grow horizontally to fill its parent.                                                                                                                                                                                                                                                                                                                                                                    |
 | `maxHeight`               | `union`<br/>Possible values:<br/>`number , string`             |          |                                    | The max height (a number of pixels or a css value string with units) for which the table&#xA;is allowed to grow. If unset, the table will grow vertically to fill its parent.                                                                                                                                                                                                                                                                                                                                                                     |
-| `onRowClick`              | `Function`<br/>[See signature.](#signature-onRowClick)         |          |                                    | A callback function, called when a user clicks on a row.&#xA;<br>&#xA;Signature `(row: object, rowIndex: number, columnKey: string) => void`                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `onRowClick`              | `Function`<br/>[See signature.](#signature-onRowClick)         |          |                                    | A callback function, called when a user clicks on a row.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `isCondensed`             | `boolean`                                                      |          | `false`                            | Set this to `true` to reduce the paddings of all cells, allowing the table to display&#xA;more data in less space.                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| `onColumnResized`         | `Function`<br/>[See signature.](#signature-onColumnResized)    |          |                                    | A callback function, called when a column has been resized.&#xA;Use this callback to get the resized column widths and save them, to be able to restore the&#xA;value once the user comes back to the page.&#xA;<br>&#xA;Signature: `([{key: string, width: number} ...]) => func()`                                                                                                                                                                                                                                                              |
+| `onColumnResized`         | `Function`<br/>[See signature.](#signature-onColumnResized)    |          |                                    | A callback function, called when a column has been resized.&#xA;Use this callback to get the resized column widths and save them, to be able to restore the&#xA;value once the user comes back to the page.                                                                                                                                                                                                                                                                                                                                       |
 | `disableSelfContainment`  | `boolean`                                                      |          | `false`                            | Set this to `true` to take control of the containment of the table and doing it on a parent element.&#xA;This means that the table will grow in size without adding scrollbars on itself,&#xA;both vertically and horizontally and, as a consequence, the `maxHeight` and `maxWidth` props are ignored.&#xA;If you need to enforce these constraints, you must also apply them on the parent element.&#xA;Additionally, the sticky behaviour of the header will get fixed relatively to the closest&#xA;parent element with `position: relative`. |
 | `disableHeaderStickiness` | `boolean`                                                      |          |                                    | Set this to `true` to prevent the header from being sticky.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `itemRenderer`            | `Function`<br/>[See signature.](#signature-itemRenderer)       |          | `(row, column) => row[column.key]` | The default function used to render the content of each item in a cell.&#xA;In case a column has its own `renderItem` render function, it will take precedence over this function.&#xA;<br>&#xA;Signature: `(item: object, column: object, isRowCollapsed: boolean) => React.Node`                                                                                                                                                                                                                                                                |
+| `itemRenderer`            | `Function`<br/>[See signature.](#signature-itemRenderer)       |          | `(row, column) => row[column.key]` | The default function used to render the content of each item in a cell.&#xA;In case a column has its own `renderItem` render function, it will take precedence over this function.                                                                                                                                                                                                                                                                                                                                                                |
 | `wrapHeaderLabels`        | `boolean`                                                      |          | `true`                             | Set this to `false` to ensure that every column can render their label in one line.&#xA;By default the header cell grows in height in case the label does not fit in one line.                                                                                                                                                                                                                                                                                                                                                                    |
 | `verticalCellAlignment`   | `union`<br/>Possible values:<br/>`'top' , 'center' , 'bottom'` |          | `'top'`                            | The default cell vertical alignment of each row (not the table header).                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `horizontalCellAlignment` | `union`<br/>Possible values:<br/>`'left' , 'center' , 'right'` |          | `'left'`                           | The default cell horizontal alignment.&#xA;In case a column has its own `align` property, it will take precedence over this value.                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `sortedBy`                | `string`                                                       |          |                                    | The key of the column for which the data is currently sorted by.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `onSortChange`            | `Function`<br/>[See signature.](#signature-onSortChange)       |          |                                    | A callback function, called when a sortable column's header is clicked.&#xA;It's required when the `isSortable` flag is set on at least one column.&#xA;<br>&#xA;Signature: `(columnKey: string, sortDirection: string) => void`.                                                                                                                                                                                                                                                                                                                 |
+| `onSortChange`            | `Function`<br/>[See signature.](#signature-onSortChange)       |          |                                    | A callback function, called when a sortable column's header is clicked.&#xA;It's required when the `isSortable` flag is set on at least one column.                                                                                                                                                                                                                                                                                                                                                                                               |
 | `sortDirection`           | `union`<br/>Possible values:<br/>`'desc' , 'asc'`              |          |                                    | The sorting direction.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ## Signatures
@@ -107,8 +107,6 @@ export default Example;
    * For example, using `minmax` pairs (e.g. `minmax(200px, 400px)`), a combinations of
    * fraction values (`1fr`/`2fr`/etc), or fixed values such as `200px`.
    * By default, the column grows according to the content and respecting the total table available width.
-   *
-   * @@defaultValue@@: auto
    */
   width?: string;
   /**
@@ -117,15 +115,11 @@ export default Example;
   align?: 'left' | 'center' | 'right';
   /**
    * A callback function, called when the header cell is clicked.
-   * <br>
-   * Signature: `(event) => void`
    */
   onClick?: (event: MouseEventHandler) => void;
   /**
    * A callback function to render the content of cells under this column, overriding
    * the default `itemRenderer` prop of the table.
-   * <br>
-   * Signature: `(row: object, isRowCollapsed: boolean) => React.Node`
    */
   renderItem?: (row: Row, isRowCollapsed: boolean) => ReactNode;
   /**
@@ -145,31 +139,23 @@ export default Example;
    * it can shrink until the column disappears completely.
    * By enforcing a minimum width for these columns, the table will respect them and grow horizontally,
    * adding scrollbars if needed.
-   *
-   * @@defaultValue@@: false
    */
   isTruncated?: boolean;
   /**
    * Set this to `true` to show a sorting button, which calls `onSortChange` upon being clicked.
    * You should enable this flag for every column you want to be able to sort.
    * When at least one column is sortable, the table props `sortBy`, `sortDirection` and `onSortChange` should be provided.
-   *
-   * @@defaultValue@@: false
    */
   isSortable?: boolean;
   /**
    * Set this to `true` to prevent this column from being manually resized by dragging
    * the edge of the header with a mouse.
-   *
-   * @@defaultValue@@: false
    */
   disableResizing?: boolean;
   /**
    * Set this to `true` to prevent click event propagation for this cell.
    * You might want this if you need the column to have its own call-to-action or input while
    * the row also has a defined `onRowClick`.
-   *
-   * @@defaultValue@@: false
    */
   shouldIgnoreRowClick?: boolean;
 }
@@ -178,7 +164,7 @@ export default Example;
 ### Signature `onRowClick`
 
 ```ts
-(row: TRow, rowIndex: number, columnKey: string) => void
+(row: Row, rowIndex: number, columnKey: string) => void
 ```
 
 ### Signature `onColumnResized`
@@ -190,7 +176,7 @@ export default Example;
 ### Signature `itemRenderer`
 
 ```ts
-(item: TRow, column: TColumn<Row>, isRowCollapsed: boolean) => ReactNode;
+(item: Row, column: TColumn<Row>, isRowCollapsed: boolean) => ReactNode;
 ```
 
 ### Signature `onSortChange`

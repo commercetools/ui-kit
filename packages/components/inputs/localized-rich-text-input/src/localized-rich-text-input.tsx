@@ -27,7 +27,7 @@ import RequiredValueErrorMessage from './required-value-error-message';
 type TErrors = Record<string, string>;
 type TWarnings = Record<string, ReactNode>;
 
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -55,7 +55,7 @@ type TLocalizedRichTextInputProps = {
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
-  onChange?: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Specifies which language will be shown in case the `LocalizedRichTextInput` is collapsed.
    */
@@ -63,11 +63,11 @@ type TLocalizedRichTextInputProps = {
   /**
    *Called when any field is blurred. Is called with the `event` of that field.
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called when any field is focussed. Is called with the `event` of that field.
    */
-  onFocus?: (event: TEvent) => void;
+  onFocus?: (event: TCustomEvent) => void;
   /**
    * Expands input components holding multiline values instead of collapsing them by default.
    */

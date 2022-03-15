@@ -55,7 +55,7 @@ export default Example;
 | `touched`              | `boolean`                                                                                    |          |           | Indicates whether the field was touched. Errors will only be shown when the field was touched.                                                                                                                                                                        |
 | `name`                 | `string`                                                                                     |          |           | Used as HTML name of the input component.                                                                                                                                                                                                                             |
 | `value`                | `string`                                                                                     |    ✅    |           | Value of the input                                                                                                                                                                                                                                                    |
-| `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                         |    ✅    |           | Called with an event holding the new value.&#xA;<br/>&#xA;Required when input is not read only. Parent should pass it back as `value`-                                                                                                                                |
+| `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                         |          |           | Called with an event holding the new value.&#xA;<br/>&#xA;Required when input is not read only. Parent should pass it back as `value`-                                                                                                                                |
 | `onBlur`               | `Function`<br/>[See signature.](#signature-onBlur)                                           |          |           | Called when input is blurred                                                                                                                                                                                                                                          |
 | `onFocus`              | `FocusEventHandler`                                                                          |          |           | Called when input is focused                                                                                                                                                                                                                                          |
 | `isDisabled`           | `boolean`                                                                                    |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                                                                                                                        |
@@ -80,13 +80,13 @@ export default Example;
 ### Signature `onChange`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onBlur`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onInfoButtonClick`

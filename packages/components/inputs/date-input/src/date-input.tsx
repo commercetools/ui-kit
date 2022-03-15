@@ -9,7 +9,7 @@ import Downshift from 'downshift';
 import { useIntl } from 'react-intl';
 import type { DurationInputArg1 } from 'moment';
 import Constraints from '@commercetools-uikit/constraints';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   getDateInMonth,
   getToday,
@@ -45,7 +45,7 @@ const preventDownshiftDefault = (event: TDownshiftEvent) => {
   event.nativeEvent.preventDownshiftDefault = true;
 };
 
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -77,18 +77,16 @@ type TDateInput = {
   value: string;
   /**
    * Called when the date changes. Called with an event containing either an empty string (no value) or a string in this format: "YYYY-MM-DD".
-   * <br />
-   * Signature: `(event) => void`
    */
-  onChange: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Called when the date input gains focus.
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLDivElement>;
   /**
    * Called when the date input loses focus.
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Used as the HTML `id` attribute.
    */
@@ -144,10 +142,17 @@ const DateInput = (props: TDateInput) => {
   >(props.value === '' ? null : getDateInMonth(props.value) - 1);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'DateInput: `onChange` is required when input is not read only.'
+    );
+  }
+
   const { onChange } = props;
   const emit = useCallback(
     (value) =>
-      onChange({
+      onChange?.({
         target: {
           id: props.id,
           name: props.name,
@@ -279,7 +284,7 @@ const DateInput = (props: TDateInput) => {
                       clearSelection();
                     }
                     // ArrowDown
-                    if (event.keyCode === 40) {
+                    if (event.key === 'ArrowDown') {
                       const nextDayToHighlight = getNextDay(
                         calendarItems[Number(highlightedIndex)]
                       );
@@ -307,7 +312,7 @@ const DateInput = (props: TDateInput) => {
                       }
                     }
                     // ArrowUp
-                    if (event.keyCode === 38) {
+                    if (event.key === 'ArrowUp') {
                       const previousDay = getPreviousDay(
                         calendarItems[Number(highlightedIndex)]
                       );

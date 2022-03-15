@@ -1,7 +1,12 @@
 import TimeInput from './time-input';
 import { render, fireEvent } from '../../../../../test/test-utils';
 
-const baseProps = { value: '', onChange: () => {} };
+const baseProps = {
+  id: 'some-id',
+  name: 'some-name',
+  value: '',
+  onChange: () => {},
+};
 
 describe('TimeInput.to24h', () => {
   describe('when called with empty value', () => {
@@ -52,8 +57,11 @@ describe('TimeInput', () => {
   });
 
   it('should have an HTML name', () => {
-    const { container } = render(<TimeInput {...baseProps} name="foo" />);
-    expect(container.querySelector('input')).toHaveAttribute('name', 'foo');
+    const { container } = render(<TimeInput {...baseProps} />);
+    expect(container.querySelector('input')).toHaveAttribute(
+      'name',
+      'some-name'
+    );
   });
 
   it('should pass autocompomplete', () => {
@@ -72,22 +80,21 @@ describe('TimeInput', () => {
   });
 
   it('should call onChange when changing the value', () => {
-    const onChange = jest.fn((event) => {
-      expect(event.target.id).toEqual('some-id');
-      expect(event.target.name).toEqual('some-name');
-      expect(event.target.value).toEqual('foo');
-    });
+    const onChange = jest.fn();
     const { container } = render(
-      <TimeInput
-        {...baseProps}
-        id="some-id"
-        name="some-name"
-        onChange={onChange}
-      />
+      <TimeInput {...baseProps} onChange={onChange} />
     );
     const event = { target: { value: 'foo' } };
     fireEvent.change(container.querySelector('input'), event);
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        target: expect.objectContaining({
+          id: 'some-id',
+          name: 'some-name',
+          value: 'foo',
+        }),
+      })
+    );
   });
 
   it('should call onFocus when the input is focused', () => {
@@ -108,28 +115,30 @@ describe('TimeInput', () => {
   });
 
   it('should format the value when input is blurred on english locale', () => {
-    const onChange = jest.fn();
+    const onBlur = jest.fn();
     const { container } = render(
-      <TimeInput {...baseProps} onChange={onChange} value="2:3 AM" />
+      <TimeInput {...baseProps} onBlur={onBlur} value="2:3 AM" />
     );
 
     container.querySelector('input').focus();
     expect(container.querySelector('input')).toHaveFocus();
     container.querySelector('input').blur();
     expect(container.querySelector('input')).not.toHaveFocus();
-    expect(onChange).toHaveBeenCalledWith({
-      target: {
-        id: expect.stringMatching(/^time-input-/i),
-        name: undefined,
-        value: '2:03 AM',
-      },
-    });
+    expect(onBlur).toHaveBeenCalledWith(
+      expect.objectContaining({
+        target: expect.objectContaining({
+          id: 'some-id',
+          name: 'some-name',
+          value: '2:03 AM', // english format
+        }),
+      })
+    );
   });
 
   it('should format the value when input is blurred on german locale', () => {
-    const onChange = jest.fn();
+    const onBlur = jest.fn();
     const { container } = render(
-      <TimeInput {...baseProps} onChange={onChange} value="12:3" />,
+      <TimeInput {...baseProps} onBlur={onBlur} value="12:3" />,
       { locale: 'de' }
     );
 
@@ -137,13 +146,15 @@ describe('TimeInput', () => {
     expect(container.querySelector('input')).toHaveFocus();
     container.querySelector('input').blur();
     expect(container.querySelector('input')).not.toHaveFocus();
-    expect(onChange).toHaveBeenCalledWith({
-      target: {
-        id: expect.stringMatching(/^time-input-/i),
-        name: undefined,
-        value: '12:03',
-      },
-    });
+    expect(onBlur).toHaveBeenCalledWith(
+      expect.objectContaining({
+        target: expect.objectContaining({
+          id: 'some-id',
+          name: 'some-name',
+          value: '12:03', // german format
+        }),
+      })
+    );
   });
 
   it('should have focus automatically when isAutofocussed is passed', () => {

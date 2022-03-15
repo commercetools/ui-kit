@@ -85,15 +85,15 @@ type TRadioFieldProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   /**
    * Called when input is blurred
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLLabelElement>;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLLabelElement>;
   /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
@@ -191,7 +191,7 @@ class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'RadioField: `onChange` is required when it is not read only.'
+        'RadioField: `onChange` is required when field is not read only.'
       );
     }
 

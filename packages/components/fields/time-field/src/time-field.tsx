@@ -1,6 +1,8 @@
 import {
   Component,
   isValidElement,
+  type ChangeEventHandler,
+  type FocusEventHandler,
   type KeyboardEvent,
   type MouseEvent,
   type ReactElement,
@@ -17,15 +19,6 @@ import Stack from '@commercetools-uikit/spacings-stack';
 import FieldLabel from '@commercetools-uikit/field-label';
 import TimeInput from '@commercetools-uikit/time-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
-
-type TEvent = {
-  target: {
-    id?: string;
-    name?: string;
-    value?: unknown;
-  };
-  persist?: () => void;
-};
 
 type TFieldErrors = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
@@ -103,20 +96,16 @@ type TTimeFieldProps = {
 
   /**
    * Called with an event holding the new value.
-   * <br/>
-   * Required when input is not read only. Parent should pass it back as `value`-
    */
-  onChange: (event: TEvent) => void;
-
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   /**
    * Called when input is blurred
    */
-  onBlur?: (event: TEvent) => void;
-
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /**
    * Called when input is focused
    */
-  onFocus?: (event: TEvent) => void;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
 
   /**
    * Focus the input on initial render
@@ -221,7 +210,7 @@ class TimeField extends Component<TTimeFieldProps, TTimeFieldState> {
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'TimeField: `onChange` is required when is not read only.'
+        'TimeField: `onChange` is required when field is not read only.'
       );
     }
 

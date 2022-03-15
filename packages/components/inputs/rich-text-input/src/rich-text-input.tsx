@@ -238,7 +238,7 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'RichTextInput: "onChange" is required when field is not read only.'
+        'RichTextInput: "onChange" is required when input is not read only.'
       );
     }
     if (this.props.showExpandIcon) {

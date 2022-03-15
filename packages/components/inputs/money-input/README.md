@@ -64,7 +64,7 @@ export default Example;
 | `isDisabled`            | `boolean`                                                                                             |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).                                                                |
 | `isReadOnly`            | `boolean`                                                                                             |          |           | Indicates that the field is displaying read-only content                                                                                                      |
 | `isAutofocussed`        | `boolean`                                                                                             |          |           | Focus the input on initial render                                                                                                                             |
-| `onChange`              | `Function`<br/>[See signature.](#signature-onChange)                                                  |    ✅    |           | Called with the event of the input or dropdown when either the currency or the amount have changed.                                                           |
+| `onChange`              | `Function`<br/>[See signature.](#signature-onChange)                                                  |          |           | Called with the event of the input or dropdown when either the currency or the amount have changed.                                                           |
 | `menuPortalTarget`      | `ReactSelectProps['menuPortalTarget']`                                                                |          |           | Dom element to portal the currency select menu to&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                             |
 | `menuPortalZIndex`      | `number`                                                                                              |          | `1`       | z-index value for the currency select menu portal                                                                                                             |
 | `menuShouldBlockScroll` | `ReactSelectProps['menuShouldBlockScroll']`                                                           |          |           | whether the menu should block scroll while open&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                               |
@@ -87,19 +87,19 @@ export default Example;
 ### Signature `onBlur`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onFocus`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onChange`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ## Static methods

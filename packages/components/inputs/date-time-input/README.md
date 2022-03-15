@@ -54,7 +54,7 @@ export default Example;
 | `aria-errormessage`    | `string`                                                                                     |          |         | HTML ID of an element containing an error message related to the input.                                                                                                                                                                                                            |
 | `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          |         | Horizontal size limit of the input field.                                                                                                                                                                                                                                          |
 | `value`                | `string`                                                                                     |    ✅    |         | The selected date, must either be an empty string or a date formatted in ISO 8601 (e.g. "2018-10-04T09:00:00.000Z").                                                                                                                                                               |
-| `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                         |    ✅    |         | Called when the date changes. Called with an event containing an empty string (no value) or a string in this format: "YYYY-MM-DD".&#xA;<br />                                                                                                                                      |
+| `onChange`             | `Function`<br/>[See signature.](#signature-onChange)                                         |          |         | Called when the date changes. Called with an event containing an empty string (no value) or a string in this format: "YYYY-MM-DD".                                                                                                                                                 |
 | `onFocus`              | `FocusEventHandler`                                                                          |          |         | Called when the date input gains focus.                                                                                                                                                                                                                                            |
 | `onBlur`               | `Function`<br/>[See signature.](#signature-onBlur)                                           |          |         | Called when the date input loses focus.                                                                                                                                                                                                                                            |
 | `timeZone`             | `string`                                                                                     |    ✅    |         | Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed.&#xA;Get list of timezone with `moment.tz.names()` [See moment docs](https://momentjs.com/timezone/docs/#/data-loading/getting-zone-names/) |
@@ -71,13 +71,13 @@ export default Example;
 ### Signature `onChange`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onBlur`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### `props.timeZone`

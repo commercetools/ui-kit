@@ -49,8 +49,8 @@ const parseRangeText = (text: string, locale: string) => {
 };
 
 const isSameRange = (
-  a: TDateRangeCalendarProps['value'],
-  b: TDateRangeCalendarProps['value']
+  a: TDateRangeInputProps['value'],
+  b: TDateRangeInputProps['value']
 ) => {
   if (a.length !== b.length) return false;
   if (a.length === 0) return true;
@@ -106,7 +106,7 @@ const getRange = ({
   };
 };
 
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -114,7 +114,7 @@ type TEvent = {
   };
 };
 
-type TDateRangeCalendarProps = {
+type TDateRangeInputProps = {
   /**
    * Horizontal size limit of the input field.
    */
@@ -146,10 +146,8 @@ type TDateRangeCalendarProps = {
   'aria-errormessage'?: string;
   /**
    * Called when the date range changes. Called with an event containing either an empty array (no value) or an array holding two string in this format: "YYYY-MM-DD".
-   * <br />
-   * Signature: `(event) => void`
    */
-  onChange: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Allows the range to be cleared
    */
@@ -157,11 +155,11 @@ type TDateRangeCalendarProps = {
   /**
    * Called when the date input gains focus.
    */
-  onFocus?: (event: TEvent) => void;
+  onFocus?: (event: TCustomEvent) => void;
   /**
    * Called when the date input loses focus.
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Used as the HTML `id` attribute.
    */
@@ -192,7 +190,7 @@ type TDateRangeCalendarProps = {
   hasWarning?: boolean;
 } & WrappedComponentProps;
 
-type TDateRangeCalendarState = {
+type TDateRangeInputState = {
   calendarDate?: MomentInput;
   suggestedItems: MomentInput[];
   startDate?: MomentInput;
@@ -203,18 +201,18 @@ type TDateRangeCalendarState = {
   prevLocale?: string;
 };
 
-class DateRangeCalendar extends Component<
-  TDateRangeCalendarProps,
-  TDateRangeCalendarState
+class DateRangeInput extends Component<
+  TDateRangeInputProps,
+  TDateRangeInputState
 > {
-  static displayName = 'DateRangeCalendar';
-  static defaultProps: Pick<TDateRangeCalendarProps, 'isClearable'> = {
+  static displayName = 'DateRangeInput';
+  static defaultProps: Pick<TDateRangeInputProps, 'isClearable'> = {
     isClearable: true,
   };
   static isEmpty = (range: number[]) => range.length === 0;
   static getDerivedStateFromProps(
-    props: TDateRangeCalendarProps,
-    state: TDateRangeCalendarState
+    props: TDateRangeInputProps,
+    state: TDateRangeInputState
   ) {
     // We need to update the input value string in case so that is is formatted
     // according to the locale and holds the current value in case the value
@@ -228,7 +226,7 @@ class DateRangeCalendar extends Component<
     return {
       prevLocale: props.intl.locale,
       // This is not the input value but the actual value passed to
-      // DateRangeCalendar
+      // DateRangeInput
       prevValue: props.value,
       inputValue: formatRange(props.value, props.intl.locale),
     };
@@ -274,7 +272,7 @@ class DateRangeCalendar extends Component<
       });
   };
   emit = (unsortedRange: MomentInput[]) => {
-    this.props.onChange({
+    this.props.onChange?.({
       target: {
         id: this.props.id,
         name: this.props.name,
@@ -481,7 +479,7 @@ class DateRangeCalendar extends Component<
                         this.emit([]);
                       }
                       // ArrowDown
-                      if (event.keyCode === 40) {
+                      if (event.key === 'ArrowDown') {
                         if (
                           (highlightedIndex as number) + 1 >=
                           calendarItems.length
@@ -496,7 +494,7 @@ class DateRangeCalendar extends Component<
                         }
                       }
                       // ArrowUp
-                      if (event.keyCode === 38) {
+                      if (event.key === 'ArrowUp') {
                         const previousDay = getPreviousDay(
                           calendarItems[highlightedIndex as number]
                         );
@@ -609,4 +607,4 @@ class DateRangeCalendar extends Component<
   }
 }
 
-export default injectIntl(DateRangeCalendar);
+export default injectIntl(DateRangeInput);

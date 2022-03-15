@@ -111,7 +111,7 @@ export default Example;
 | `menuShouldBlockScroll`  | `boolean`                                                                                             |          |         | whether the menu should block scroll while open                                                                                                                                                                                                                                                                                                                             |
 | `showOptionGroupDivider` | `boolean`                                                                                             |          |         | Determines if option groups will be separated by a divider                                                                                                                                                                                                                                                                                                                  |
 | `onBlur`                 | `Function`<br/>[See signature.](#signature-onBlur)                                                    |          |         | Handle blur events on the control                                                                                                                                                                                                                                                                                                                                           |
-| `onChange`               | `Function`<br/>[See signature.](#signature-onChange)                                                  |    ✅    |         | Called with a fake event when value changes.&#xA;<br />&#xA;The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.                                                                                                      |
+| `onChange`               | `Function`<br/>[See signature.](#signature-onChange)                                                  |          |         | Called with a fake event when value changes.&#xA;<br />&#xA;The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.                                                                                                      |
 | `onFocus`                | `AsyncProps['onFocus']`                                                                               |          |         | Handle focus events on the control&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                          |
 | `onInputChange`          | `AsyncProps['onInputChange']`                                                                         |          |         | Handle change events on the input&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                           |
 | `tabSelectsValue`        | `AsyncProps['tabSelectsValue']`                                                                       |          |         | Select the currently focused option when the user presses tab&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                               |
@@ -136,13 +136,13 @@ export default Example;
 ### Signature `onBlur`
 
 ```ts
-(event: TEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onChange`
 
 ```ts
-(event: TEvent, info: ActionMeta<unknown>) => void
+(event: TCustomEvent, info: ActionMeta<unknown>) => void
 ```
 
 ### Signature `renderError`

@@ -27,7 +27,7 @@ const Editor = (props: TSlateReactEditorProps) => (
   <SlateReactEditor {...props} />
 );
 
-type TEvent = {
+type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -56,9 +56,9 @@ type TRichTextInputProps = {
   placeholder: string;
   isDisabled?: boolean;
   isReadOnly?: boolean;
-  onChange?: (event: TEvent) => void;
-  onBlur?: (event: TEvent) => void;
-  onFocus?: (event: TEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
+  onFocus?: (event: TCustomEvent) => void;
   value: string;
   showExpandIcon: boolean;
   onClickExpand?: () => boolean;
@@ -165,7 +165,7 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'RichTextInput: `onChange` is required when field is not read only.'
+        'RichTextInput: `onChange` is required when input is not read only.'
       );
     }
 

@@ -4,6 +4,7 @@ import {
   type ReactNode,
   type ChangeEventHandler,
   type ReactElement,
+  type FocusEventHandler,
 } from 'react';
 import {
   filterDataAttributes,
@@ -24,11 +25,9 @@ type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
 };
 
-type TEvent = {
-  target: {
-    language: string;
-  };
-};
+interface HTMLLocalizedTextAreaElement extends HTMLTextAreaElement {
+  language: string;
+}
 
 type TLocalizedMultilineTextFieldProps = {
   /**
@@ -85,7 +84,8 @@ type TLocalizedMultilineTextFieldProps = {
    * <br />
    * The input doesn't accept a "languages" prop, instead all possible
    * languages have to exist (with empty or filled strings) on the value:
-   * <br />   { en: 'foo', de: '', es: '' }
+   * <br />
+   * { en: 'foo', de: '', es: '' }
    */
   value: {
     [key: string]: string;
@@ -94,7 +94,7 @@ type TLocalizedMultilineTextFieldProps = {
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
-  onChange?: (event: TEvent) => void;
+  onChange?: ChangeEventHandler<HTMLLocalizedTextAreaElement>;
   /**
    * Specifies which language will be shown in case the `LocalizedTextInput` is collapsed.
    */
@@ -102,7 +102,7 @@ type TLocalizedMultilineTextFieldProps = {
   /**
    * Called when input is blurred
    */
-  onBlur?: ChangeEventHandler<Element>;
+  onBlur?: FocusEventHandler<HTMLLocalizedTextAreaElement>;
   /**
    * Called when input is focused
    */
@@ -225,7 +225,7 @@ class LocalizedMultilineTextField extends Component<
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'LocalizedMultilineTextField: `onChange` is required when is not read only.'
+        'LocalizedMultilineTextField: `onChange` is required when field is not read only.'
       );
     }
 

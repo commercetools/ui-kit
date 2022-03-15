@@ -34,8 +34,9 @@ type TValue = {
 };
 type TOptions = TValue[] | { options: TValue[] }[];
 
-type TEvent = {
+type TCustomEvent = {
   target: {
+    id?: string;
     name?: string;
     value?: unknown;
   };
@@ -215,13 +216,13 @@ type TCreatableSelectFieldProps = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called with a fake event when value changes.
    * <br>
    * The event's `target.name` will be the name supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
    */
-  onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
+  onChange?: (event: TCustomEvent, info: ActionMeta<unknown>) => void;
   /**
    * Handle focus events on the control
    * <br>
@@ -382,6 +383,13 @@ export default class CreatableSelectField extends Component<
     const hasError =
       CreatableSelectInput.isTouched(this.props.touched) &&
       hasErrors(this.props.errors);
+
+    if (!this.props.isReadOnly) {
+      warning(
+        typeof this.props.onChange === 'function',
+        'CreatableSelectField: `onChange` is required when field is not read only.'
+      );
+    }
 
     if (this.props.hintIcon) {
       warning(

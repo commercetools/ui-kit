@@ -18,9 +18,9 @@ export type TMultiLineInputProps = {
   isDisabled?: boolean;
   isReadOnly?: boolean;
   name?: string;
-  onBlur?: ChangeEventHandler;
-  onChange?: ChangeEventHandler;
-  onFocus?: ChangeEventHandler;
+  onBlur?: ChangeEventHandler<HTMLTextAreaElement>;
+  onChange?: ChangeEventHandler<HTMLTextAreaElement>;
+  onFocus?: ChangeEventHandler<HTMLTextAreaElement>;
   placeholder?: string;
   value: string;
   isOpen: boolean;

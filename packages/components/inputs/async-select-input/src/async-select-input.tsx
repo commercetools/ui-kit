@@ -9,7 +9,7 @@ import {
   type OptionsOrGroups,
 } from 'react-select';
 import AsyncSelect, { type AsyncProps } from 'react-select/async';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import {
@@ -31,9 +31,10 @@ const customizedComponents = {
   MultiValueRemove: TagRemove,
 };
 
-type TEvent = {
+type TCustomEvent = {
   target: {
-    name?: string;
+    id?: ReactSelectAsyncProps['inputId'];
+    name?: ReactSelectAsyncProps['name'];
     value?: unknown;
   };
   persist: () => void;
@@ -223,11 +224,11 @@ type TAsyncSelectInputProps = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called with a fake event when value changes. The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
    */
-  onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
+  onChange?: (event: TCustomEvent, info: ActionMeta<unknown>) => void;
   /**
    * Handle focus events on the control
    * <br>
@@ -309,14 +310,23 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
   const theme = useTheme();
   const intl = useIntl();
 
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'AsyncSelectInput: `onChange` is required when input is not read only.'
+    );
+  }
+
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
+
   const loadingMessage = () => {
     if (typeof props.loadingMessage === 'function') {
       return props.loadingMessage();
     }
     return props.loadingMessage || intl.formatMessage(messages.loadingOptions);
   };
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
@@ -396,6 +406,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               ? () => {
                   const event = {
                     target: {
+                      id: props.id,
                       name: (() => {
                         if (!props.name) return undefined;
                         if (!props.isMulti) return props.name;
@@ -421,9 +432,9 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               newValue = [];
             }
 
-            props.onChange(
+            props.onChange?.(
               {
-                target: { name: props.name, value: newValue },
+                target: { id: props.id, name: props.name, value: newValue },
                 persist: () => {},
               },
               info
@@ -439,7 +450,8 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           defaultOptions={props.defaultOptions}
           loadOptions={props.loadOptions}
           cacheOptions={props.cacheOptions}
-          // @ts-ignore
+          // Extra props
+          // @ts-ignore: passed to the react-select components via `selectProps`.
           iconLeft={props.iconLeft}
         />
       </div>

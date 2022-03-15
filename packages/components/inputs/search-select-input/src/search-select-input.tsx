@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 import type { ActionMeta, GroupBase, OptionProps } from 'react-select';
 import type { AsyncProps } from 'react-select/async';
 import AsyncSelectInput from '@commercetools-uikit/async-select-input';
+import { warning } from '@commercetools-uikit/utils';
 import {
   CustomSelectInputOption,
   SearchIconDropdownIndicator,
@@ -12,9 +13,10 @@ import { SearchSelectInputWrapper } from './search-select-input.styles';
 
 type ReactSelectAsyncProps = AsyncProps<unknown, boolean, GroupBase<unknown>>;
 
-type TEvent = {
+type TCustomEvent = {
   target: {
-    name?: string;
+    id?: ReactSelectAsyncProps['inputId'];
+    name?: ReactSelectAsyncProps['name'];
     value?: unknown;
   };
   persist: () => void;
@@ -196,15 +198,13 @@ export type TSearchSelectInputProps = {
   /**
    * Handle blur events on the control
    */
-  onBlur?: (event: TEvent) => void;
+  onBlur?: (event: TCustomEvent) => void;
   /**
    * Called with a fake event when value changes.
    * <br />
    * The event's `target.name` will be the `name` supplied in props. The event's `target.value` will hold the value. The value will be the selected option, or an array of options in case `isMulti` is `true`.
-   * <br />
-   * Signature: `(event, action) => void`
    */
-  onChange: (event: TEvent, info: ActionMeta<unknown>) => void;
+  onChange?: (event: TCustomEvent, info: ActionMeta<unknown>) => void;
   /**
    * Handle focus events on the control
    * <br>
@@ -272,13 +272,24 @@ const defaultProps: Pick<
 
 const SearchSelectInput = (props: TSearchSelectInputProps) => {
   const intl = useIntl();
+
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'SearchSelectInput: `onChange` is required when input is not read only.'
+    );
+  }
+
   const noOptionsMessage =
     props.noOptionsMessage ||
     (() => intl.formatMessage(messages.noOptionsMessage));
+
   const loadingMessage =
     props.loadingMessage || intl.formatMessage(messages.loadingOptionsMessage);
+
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholderMessage);
+
   const optionType = props.optionType;
 
   const components = useMemo(

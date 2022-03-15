@@ -66,7 +66,6 @@ type TTextFieldProps = {
   errors?: TFieldErrors;
   /**
    * This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
-   * <br />
    */
   renderError?: TErrorRenderer;
   /**
@@ -93,17 +92,16 @@ type TTextFieldProps = {
   value: string;
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
-   * <br />
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   /**
    * Called when input is blurred
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   /**
    * Focus the input on initial render
    */
@@ -185,7 +183,7 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'TextField: `onChange` is required when is not read only.'
+        'TextField: `onChange` is required when field is not read only.'
       );
     }
 

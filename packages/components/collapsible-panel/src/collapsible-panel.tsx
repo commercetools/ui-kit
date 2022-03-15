@@ -102,8 +102,6 @@ export type TCollapsiblePanel = {
    * function to be triggered whenever the user clicks the top area to collapse the panel's content
    * <br />
    * Becomes required when `isClosed` is passed.
-   * <br />
-   * Signature: `() => void`
    */
   onToggle?: () => void;
   /**
