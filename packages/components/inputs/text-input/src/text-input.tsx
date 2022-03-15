@@ -1,4 +1,4 @@
-import { type FocusEventHandler, type ChangeEventHandler } from 'react';
+import type { FocusEventHandler, ChangeEventHandler } from 'react';
 import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
