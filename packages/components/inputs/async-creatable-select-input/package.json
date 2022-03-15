@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/async-creatable-select-input",
   "description": "An input component getting a selection from an asynchronously loaded list from the user, and where options can be created by the user.",
-  "version": "14.0.1",
+  "version": "14.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

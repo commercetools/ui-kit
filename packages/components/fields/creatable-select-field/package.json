@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/creatable-select-field",
   "description": "A controlled input component with validation states and a label getting a selection from the user, and where options can also be created by the user.",
-  "version": "14.0.1",
+  "version": "14.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -22,10 +22,10 @@
     "@babel/runtime": "^7.17.2",
     "@babel/runtime-corejs3": "^7.17.2",
     "@commercetools-uikit/constraints": "14.0.1",
-    "@commercetools-uikit/creatable-select-input": "14.0.1",
+    "@commercetools-uikit/creatable-select-input": "14.0.2",
     "@commercetools-uikit/design-system": "14.0.0",
     "@commercetools-uikit/field-errors": "14.0.1",
-    "@commercetools-uikit/field-label": "14.0.1",
+    "@commercetools-uikit/field-label": "14.0.2",
     "@commercetools-uikit/spacings": "14.0.1",
     "@commercetools-uikit/utils": "14.0.1",
     "@emotion/react": "^11.4.0",

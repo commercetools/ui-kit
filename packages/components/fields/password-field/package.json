@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/password-field",
   "description": "A controlled text input component for passwords with validation states.",
-  "version": "14.0.1",
+  "version": "14.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -24,11 +24,11 @@
     "@commercetools-uikit/constraints": "14.0.1",
     "@commercetools-uikit/design-system": "14.0.0",
     "@commercetools-uikit/field-errors": "14.0.1",
-    "@commercetools-uikit/field-label": "14.0.1",
-    "@commercetools-uikit/flat-button": "14.0.1",
+    "@commercetools-uikit/field-label": "14.0.2",
+    "@commercetools-uikit/flat-button": "14.0.2",
     "@commercetools-uikit/hooks": "14.0.1",
     "@commercetools-uikit/icons": "14.0.1",
-    "@commercetools-uikit/password-input": "14.0.1",
+    "@commercetools-uikit/password-input": "14.0.2",
     "@commercetools-uikit/spacings-inline": "14.0.1",
     "@commercetools-uikit/spacings-stack": "14.0.1",
     "@commercetools-uikit/utils": "14.0.1",

@@ -1,5 +1,12 @@
 # @commercetools-uikit/primary-action-dropdown
 
+## 14.0.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/buttons@14.0.2
+
 ## 14.0.1
 
 ### Patch Changes
