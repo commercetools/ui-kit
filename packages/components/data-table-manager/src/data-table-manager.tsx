@@ -10,11 +10,11 @@ import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
 
-interface TRow {
+export interface TRow {
   id: string;
 }
 
-type TColumProps = {
+export type TColumProps = {
   /**
    * The unique key of the column that is used to identify your data type.
    * You can use this value to determine which value from a row item should be rendered.

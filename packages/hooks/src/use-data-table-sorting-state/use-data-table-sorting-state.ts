@@ -1,12 +1,12 @@
 import { useState, useCallback } from 'react';
 import isNil from 'lodash/isNil';
 
-type TSortDefinition = {
+export type TSortDefinition = {
   key: string;
   order: 'desc' | 'asc';
 };
 
-type TDataTableSortingState = {
+export type TDataTableSortingState = {
   value: TSortDefinition;
   onChange: (
     key: TSortDefinition['key'],
