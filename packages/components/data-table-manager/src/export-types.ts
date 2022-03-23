@@ -1,1 +1,1 @@
-export type { TRow, TColumProps } from './data-table-manager';
+export type { TRow, TColumnProps } from './data-table-manager';
