@@ -5,8 +5,8 @@ import { customProperties } from '@commercetools-uikit/design-system';
 import * as icons from '@commercetools-uikit/icons';
 import InlineSvg from '@commercetools-uikit/icons/inline-svg';
 import Text from '@commercetools-uikit/text';
+import Spacings from '@commercetools-uikit/spacings';
 import { Suite, Spec } from '../../../../test/percy';
-import { Spacings } from '../../../../presets/ui-kit';
 
 const IconList = styled.div`
   display: grid;
@@ -61,82 +61,80 @@ const renderIcon = (iconName, color, size) => {
 
 export const component = ({ themes }) => (
   <Switch>
+    <Route path={routePath} exact>
+      <ul>
+        {colors.map((color) => (
+          <li key={`${routePath}/${color}`}>
+            <a href={`${routePath}/${color}`}>{`${routePath}/${color}`}</a>
+          </li>
+        ))}
+        <li>
+          <a href={`${routePath}/theme`}>{`${routePath}/theme`}</a>
+        </li>
+        <li>
+          <a href={`${routePath}/inline-svg`}>{`${routePath}/inline-svg`}</a>
+        </li>
+      </ul>
+    </Route>
     {colors.map((color) => (
-      <Route
-        key={color}
-        path={`${routePath}/${color}`}
-        exact
-        render={() => (
-          <Suite>
-            {sizes.map((size) => (
-              <Spec
-                key={size}
-                label={`All Icons - Color: ${color} / Size: ${size}`}
-                omitPropsList
-              >
-                <IconList>
-                  {allIconNames.map((iconName) =>
-                    renderIcon(iconName, color, size)
-                  )}
-                </IconList>
-              </Spec>
-            ))}
-          </Suite>
-        )}
-      />
+      <Route key={color} path={`${routePath}/${color}`} exact>
+        <Suite>
+          {sizes.map((size) => (
+            <Spec
+              key={size}
+              label={`All Icons - Color: ${color} / Size: ${size}`}
+              omitPropsList
+            >
+              <IconList>
+                {allIconNames.map((iconName) =>
+                  renderIcon(iconName, color, size)
+                )}
+              </IconList>
+            </Spec>
+          ))}
+        </Suite>
+      </Route>
     ))}
-    <Route
-      exact
-      path={`${routePath}/theme`}
-      render={() => (
-        <Suite>
-          <ThemeProvider theme={themes.darkTheme}>
-            {colors.map((color) => (
-              <Spec
-                key={color}
-                label={`Themed Icons - Color: ${color}`}
-                omitPropsList
-              >
-                <IconList>{renderIcon('ClockIcon', color, 'big')}</IconList>
-              </Spec>
-            ))}
-          </ThemeProvider>
-        </Suite>
-      )}
-    />
-    <Route
-      exact
-      path={`${routePath}/inline-svg`}
-      render={() => (
-        <Suite>
-          <Spacings.Stack>
-            {sizes.map((size) => (
-              <Spec
-                key={size}
-                label={`Inline SVG - Size: ${size}`}
-                omitPropsList
-              >
-                <IconList>
-                  {colors.map((color) => (
-                    <div
-                      style={{
-                        height: '100%',
-                        backgroundColor:
-                          color === 'surface'
-                            ? customProperties.colorSolid
-                            : 'inherit',
-                      }}
-                      key={`${size}-${color}`}
-                    >
-                      <InlineSvg data={inlineSvg} color={color} size={size} />
-                    </div>
-                  ))}
-                </IconList>
-              </Spec>
-            ))}
-          </Spacings.Stack>
-        </Suite>
-      )}
-    />
+    <Route exact path={`${routePath}/theme`}>
+      <Suite>
+        <ThemeProvider theme={themes.darkTheme}>
+          {colors.map((color) => (
+            <Spec
+              key={color}
+              label={`Themed Icons - Color: ${color}`}
+              omitPropsList
+            >
+              <IconList>{renderIcon('ClockIcon', color, 'big')}</IconList>
+            </Spec>
+          ))}
+        </ThemeProvider>
+      </Suite>
+    </Route>
+    <Route exact path={`${routePath}/inline-svg`}>
+      <Suite>
+        <Spacings.Stack>
+          {sizes.map((size) => (
+            <Spec key={size} label={`Inline SVG - Size: ${size}`} omitPropsList>
+              <IconList>
+                {colors.map((color) => (
+                  <div
+                    style={{
+                      height: '100%',
+                      backgroundColor:
+                        color === 'surface'
+                          ? customProperties.colorSolid
+                          : 'inherit',
+                    }}
+                    key={`${size}-${color}`}
+                  >
+                    <InlineSvg data={inlineSvg} color={color} size={size} />
+                  </div>
+                ))}
+              </IconList>
+            </Spec>
+          ))}
+        </Spacings.Stack>
+      </Suite>
+    </Route>
   </Switch>
 );

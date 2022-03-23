@@ -46,13 +46,13 @@ yarn percy --reporters jest-silent-reporter
 yarn build:watch
 
 # now build the visual-testing-app
-yarn visual-testing-app:build:watch
+yarn visual-testing-app:build
 
 # serve the visual-testing-app (this starts a static file server)
 # you can make changes to the visual-testing-app or ui-kit and reload the page
 # to see changes.
-# you can now visit http://localhost:3001 to see what the components look like
-yarn visual-testing-app:serve
+# you can now visit http://localhost:3000 to see what the components look like
+yarn visual-testing-app:preview
 ```
 
 ### Running tests locally to debug snapshots
@@ -86,14 +86,17 @@ You'll notice that we're not serving `visual-testing-app` here. Puppeteer does t
 Builds the ui-kit. Since visual-regression-testing uses the final ui-kit bundle,
 you need to run this or `yarn build:watch` before starting the tests.
 
+#### `yarn visual-testing-app:start`
+
+This starts the visual-testing-application in development mode. It needs to be run before starting
+the visual regression tests.
+
 #### `yarn visual-testing-app:build`
 
 This builds the visual-testing-application. It needs to be run before starting
 the visual regression tests.
 
-You can also start it in watch mode using `yarn visual-testing-app:build:watch`.
-
-#### `yarn visual-testing-app:serve`
+#### `yarn visual-testing-app:preview`
 
 This command is useful for debugging tests locally. This serves the visual-testing-application, but you need to build it first using `yarn visual-testing-app:build`!
 

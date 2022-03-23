@@ -1,33 +1,44 @@
 # Visual Testing App
 
-This app is used for visual regression testing. You should not need to directly modify this package. The `src/App.js` file will generate react-router routes for every file in `src/components` that ends in `.visualroute.js`. These routes are then used by `jest-puppeteer` to run our visual regression tests using percy snapshots.
+This app is used for visual regression testing. You should not need to directly modify this package. The `src/App.jsx` file will generate react-router routes for every file in `src/components` that ends in `.visualroute.jsx`. These routes are then used by `jest-puppeteer` to run our visual regression tests using Percy snapshots.
 
-## Creating your first visual route.
+## Adding a new test
 
-Create a file ending in `.visualroute` that exports two named exports: `routePath` and `component`. After doing this, you can run `yarn visual-testing-app:build` and then `yarn visual-testing-app:serve` to navigate to your new route. Once you have verified that your route is working correctly, you can now write a visual regression test using puppeteer.
+Create a file ending in `.visualroute.jsx` that has two named exports: `routePath` and `component`. We recommend to add the file next to the component you are testing.
 
-## Starting the app
+Example:
 
-As the app uses the produced bundle of UI Kit, you need to continuously build the bundle using `yarn build:watch`.
+```jsx
+import { Avatar } from '@commercetools-frontend/ui-kit';
+import { Suite, Spec } from '../../../../test/percy';
 
-Then you can start the app in another terminal with `yarn visual-testing-app:build` and `yarn visual-testing-app:serve`.
+export const routePath = '/avatar';
 
-## Building the app
-
-You can build the visual testing app with the command `yarn visual-testing-app:build`.
-
-## Using `@commercetools-frontend/ui-kit` inside the app.
-
-This package (`@commercetools-frontend/ui-kit`) is aliased to `ui-kit` inside the app and files ending in `.visualroute`. So you can do the following to import from UI Kit:
-
-```js
-import {
-  PrimaryButton,
-  MoneyInput,
-  i18n,
-} from '@commercetools-frontend/ui-kit';
+export const component = () => (
+  <Suite>
+    <Spec label="when gravatar hash is known">
+      <Avatar
+        gravatarHash="205e460b479e2e5b48aec07710c08d50"
+        firstName="John"
+        lastName="Doe"
+        size="s"
+      />
+    </Spec>
+  </Suite>
+);
 ```
 
-## Does the visual testing app use the CJS or the ESM build?
+Note that we import the components using the main preset `@commercetools-frontend/ui-kit`. This is to ensure that the bundled packages work correctly.
+At the same time it also means that you need to build the packages before starting the visual testing application. From the workspace root, run `yarn build` or `yarn build:watch`.
 
-The app uses the ESM build (`dist/ui-kit.esm.js`).
+## Starting the visual testing application
+
+You can start the application in development mode with the command `yarn start`.
+
+The application main page shows a list of all available routes, so you can easily navigate to them.
+
+## Building the visual testing application
+
+You can also start the application in production mode. This is the preferred way to run the visual tests on CI.
+
+Build the application with `yarn build` and serve the production bundles with `yarn preview`.
