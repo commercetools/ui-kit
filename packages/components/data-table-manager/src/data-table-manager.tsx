@@ -14,7 +14,7 @@ export interface TRow {
   id: string;
 }
 
-export type TColumProps = {
+export type TColumnProps = {
   /**
    * The unique key of the column that is used to identify your data type.
    * You can use this value to determine which value from a row item should be rendered.
@@ -108,7 +108,7 @@ type TDataTableManagerProps = {
    * The list of columns to be rendered.
    * Each column can be customized (see properties below).
    */
-  columns: TColumProps[];
+  columns: TColumnProps[];
 
   /**
    * Any React node. Usually you want to render the `<DataTable>` component.
