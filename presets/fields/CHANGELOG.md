@@ -1,5 +1,21 @@
 # @commercetools-uikit/fields
 
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/password-field@14.0.3
+  - @commercetools-uikit/search-select-field@14.0.3
+  - @commercetools-uikit/date-field@14.0.3
+  - @commercetools-uikit/date-range-field@14.0.3
+  - @commercetools-uikit/date-time-field@14.0.3
+  - @commercetools-uikit/localized-multiline-text-field@14.0.3
+  - @commercetools-uikit/localized-text-field@14.0.3
+  - @commercetools-uikit/money-field@14.0.3
+  - @commercetools-uikit/multiline-text-field@14.0.3
+  - @commercetools-uikit/time-field@14.0.3
+
 ## 14.0.2
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @commercetools-uikit/data-table-manager
 
+## 14.0.3
+
+### Patch Changes
+
+- [#2154](https://github.com/commercetools/ui-kit/pull/2154) [`5a1d5f137`](https://github.com/commercetools/ui-kit/commit/5a1d5f1375aa2cb2ec366755cd370b781be585ef) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix name typo for `TColumnProps` type.
+
+* [#2149](https://github.com/commercetools/ui-kit/pull/2149) [`bd73c49fe`](https://github.com/commercetools/ui-kit/commit/bd73c49fea1b0c6fc93e8786facad5224898a7eb) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Export several Typescript types related to data tables.
+
+* Updated dependencies [[`bd73c49fe`](https://github.com/commercetools/ui-kit/commit/bd73c49fea1b0c6fc93e8786facad5224898a7eb)]:
+  - @commercetools-uikit/hooks@14.0.3
+  - @commercetools-uikit/collapsible-motion@14.0.3
+
 ## 14.0.2
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @commercetools-uikit/collapsible-panel
 
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/collapsible-motion@14.0.3
+
 ## 14.0.2
 
 ### Patch Changes
