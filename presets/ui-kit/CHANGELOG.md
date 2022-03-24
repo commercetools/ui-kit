@@ -1,5 +1,21 @@
 # @commercetools-frontend/ui-kit
 
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`5a1d5f137`](https://github.com/commercetools/ui-kit/commit/5a1d5f1375aa2cb2ec366755cd370b781be585ef), [`bd73c49fe`](https://github.com/commercetools/ui-kit/commit/bd73c49fea1b0c6fc93e8786facad5224898a7eb)]:
+  - @commercetools-uikit/data-table-manager@14.0.3
+  - @commercetools-uikit/data-table@14.0.3
+  - @commercetools-uikit/hooks@14.0.3
+  - @commercetools-uikit/collapsible@14.0.3
+  - @commercetools-uikit/collapsible-motion@14.0.3
+  - @commercetools-uikit/primary-action-dropdown@14.0.3
+  - @commercetools-uikit/tooltip@14.0.3
+  - @commercetools-uikit/collapsible-panel@14.0.3
+  - @commercetools-uikit/fields@14.0.3
+  - @commercetools-uikit/inputs@14.0.3
+
 ## 14.0.2
 
 ### Patch Changes
