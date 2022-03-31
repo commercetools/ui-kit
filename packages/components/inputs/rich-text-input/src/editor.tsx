@@ -12,7 +12,6 @@ import {
 } from 'react';
 import { useIntl } from 'react-intl';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
-// import { usePrevious } from '@commercetools-uikit/hooks';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
@@ -109,16 +108,6 @@ const Editor = (props: TEditorProps) => {
   const createEditorWithPlugins = pipe(withReact, withHistory);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const editor = useMemo(() => createEditorWithPlugins(createEditor()), []);
-  const isFocused = ReactEditor.isFocused(editor);
-
-  /* const onFocusHandler = props.onFocus;
-  useEffect(() => {
-    if (isFocused && onFocusHandler) {
-      onFocusHandler();
-    }
-  }, [isFocused, onFocusHandler]);
-
-  const prevIsFocused = usePrevious(ReactEditor.isFocused(editor)); */
 
   const [renderToggleButton, setRenderToggleButton] = useState(false);
 
@@ -152,10 +141,6 @@ const Editor = (props: TEditorProps) => {
       isDefaultClosed={!props.defaultExpandMultilineText}
     >
       {({ isOpen, toggle, containerStyles, registerContentNode }) => {
-        // opens the input if it regains focus and it's closed
-        /* if (prevIsFocused !== isFocused && isFocused && !isOpen) {
-          toggle();
-        } */
         const refObj: TRichtTextEditorBodyRef = {
           containerRef: ref,
           registerContentNode,
@@ -193,7 +178,12 @@ const Editor = (props: TEditorProps) => {
                       readOnly={props.isReadOnly}
                       disabled={props.isDisabled}
                       onBlur={props.onBlur}
-                      onFocus={props.onFocus}
+                      onFocus={(event) => {
+                        props.onFocus?.(event);
+                        // opens the input if it regains focus and it's closed
+                        if (!isOpen) toggle();
+                        ReactEditor.focus(editor);
+                      }}
                       onKeyDown={(event) => {
                         for (const hotkey in HOTKEYS) {
                           if (isHotkey(hotkey, event)) {
@@ -207,7 +197,7 @@ const Editor = (props: TEditorProps) => {
                     />
                     {props.children}
                     <HiddenInput
-                      isFocused={isFocused}
+                      isFocused={ReactEditor.isFocused(editor)}
                       handleFocus={() => {
                         ReactEditor.focus(editor);
                       }}

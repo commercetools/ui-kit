@@ -15,7 +15,6 @@ import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
 import { customProperties } from '@commercetools-uikit/design-system';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
-// import { usePrevious } from '@commercetools-uikit/hooks';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
@@ -125,8 +124,6 @@ const Editor = (props: TEditorProps) => {
   const createEditorWithPlugins = pipe(withReact, withHistory);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const editor = useMemo(() => createEditorWithPlugins(createEditor()), []);
-  const isFocused = ReactEditor.isFocused(editor);
-  // const prevIsFocused = usePrevious(ReactEditor.isFocused(editor));
 
   if (props.showExpandIcon) {
     warning(
@@ -165,15 +162,6 @@ const Editor = (props: TEditorProps) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.reset]);
-
-  // opens the input if it regains focus and it's closed
-  /* if (
-    prevIsFocused !== props.editor?.value.selection.isFocused &&
-    props.editor?.value.selection.isFocused &&
-    !props.isOpen
-  ) {
-    onToggle();
-  } */
 
   const shouldToggleButtonTakeSpace =
     /* - if hasLanguagesControl and there are no errors/warnings to display
@@ -247,7 +235,12 @@ const Editor = (props: TEditorProps) => {
                     placeholder={props.placeholder}
                     autoFocus={props.isAutofocused}
                     onBlur={props.onBlur}
-                    onFocus={props.onFocus}
+                    onFocus={(event) => {
+                      props.onFocus?.(event);
+                      // opens the input if it regains focus and it's closed
+                      if (!isOpen) toggle();
+                      ReactEditor.focus(editor);
+                    }}
                     readOnly={props.isReadOnly}
                     disabled={props.isDisabled}
                     onKeyDown={(event) => {
@@ -262,7 +255,7 @@ const Editor = (props: TEditorProps) => {
                   />
                   {props.children}
                   <HiddenInput
-                    isFocused={isFocused}
+                    isFocused={ReactEditor.isFocused(editor)}
                     handleFocus={() => {
                       ReactEditor.focus(editor);
                     }}

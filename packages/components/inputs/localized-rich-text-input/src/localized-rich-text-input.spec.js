@@ -1,5 +1,4 @@
-import { prettyDOM } from '@testing-library/react';
-import { screen, render, debug } from '../../../../../test/test-utils';
+import { screen, render } from '../../../../../test/test-utils';
 import LocalizedRichTextInput from './localized-rich-text-input';
 
 // mocks
