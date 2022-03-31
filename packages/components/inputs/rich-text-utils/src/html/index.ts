@@ -1,1 +1,1 @@
-export { default } from './html';
+export { default, type Deserialized } from './html';

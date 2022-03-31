@@ -39,7 +39,8 @@ const Example = () => (
       en: '',
       de: '',
     }}
-    onChange={(event) => console.log('event.target.value', event.target.value)}
+    onChange={(state) => console.log(state)}
+    selectedLanguage="en"
   />
 );
 
@@ -50,51 +51,37 @@ export default Example;
 
 | Props                           | Type                                                                                      | Required | Default   | Description                                                                                                                                                    |
 | ------------------------------- | ----------------------------------------------------------------------------------------- | :------: | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                            | `string`                                                                                  |          |           | Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. \`foo.en                            |
-| `name`                          | `string`                                                                                  |          |           | Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`           |
+| `id`                            | `TRichTextInputProps['id']`                                                               |          |           | Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. \`foo.en                            |
+| `name`                          | `TRichTextInputProps['name']`                                                             |          |           | Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`           |
 | `value`                         | `Record`                                                                                  |    ✅    |           | Values to use. Keyed by language, the values are the actual values, e.g. \`{ en: '<p>Horse</p>', de: '<p>Pferd</p>' }                                          |
-| `onChange`                      | `Function`<br/>[See signature.](#signature-onChange)                                      |          |           | Gets called when any input is changed. Is called with the change event of the changed input.                                                                   |
+| `onChange`                      | `Function`<br/>[See signature.](#signature-onChange)                                      |    ✅    |           | Gets called when any input is changed. Is called with the change event of the changed input.                                                                   |
 | `selectedLanguage`              | `string`                                                                                  |    ✅    |           | Specifies which language will be shown in case the `LocalizedRichTextInput` is collapsed.                                                                      |
-| `onBlur`                        | `Function`<br/>[See signature.](#signature-onBlur)                                        |          |           | Called when any field is blurred. Is called with the `event` of that field.                                                                                    |
-| `onFocus`                       | `Function`<br/>[See signature.](#signature-onFocus)                                       |          |           | Called when any field is focussed. Is called with the `event` of that field.                                                                                   |
-| `defaultExpandMultilineText`    | `boolean`                                                                                 |          |           | Expands input components holding multiline values instead of collapsing them by default.                                                                       |
+| `onBlur`                        | `TRichTextInputProps['onBlur']`                                                           |          |           | Called when any field is blurred. Is called with the `event` of that field.                                                                                    |
+| `onFocus`                       | `TRichTextInputProps['onFocus']`                                                          |          |           | Called when any field is focussed. Is called with the `event` of that field.                                                                                   |
+| `defaultExpandMultilineText`    | `TRichTextInputProps['defaultExpandMultilineText']`                                       |          |           | Expands input components holding multiline values instead of collapsing them by default.                                                                       |
 | `hideLanguageExpansionControls` | `boolean`                                                                                 |          |           | Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`                                                   |
-| `defaultExpandLanguages`        | `boolean`                                                                                 |          |           | Controls whether one or all languages are visible by default. Pass `true` to show all languages by default.                                                    |
-| `isDisabled`                    | `boolean`                                                                                 |          |           | Disables all input                                                                                                                                             |
-| `isReadOnly`                    | `boolean`                                                                                 |          |           | Disables all input fields and shows them in read-only mode.                                                                                                    |
+| `defaultExpandLanguages`        | `TRichTextInputProps['defaultExpandMultilineText']`                                       |          |           | Controls whether one or all languages are visible by default. Pass `true` to show all languages by default.                                                    |
+| `isDisabled`                    | `TRichTextInputProps['isDisabled']`                                                       |          |           | Disables all input                                                                                                                                             |
+| `isReadOnly`                    | `TRichTextInputProps['isReadOnly']`                                                       |          |           | Disables all input fields and shows them in read-only mode.                                                                                                    |
 | `placeholder`                   | `Record`                                                                                  |          |           | Placeholders for each language. Object of the same shape as                                                                                                    |
 | `horizontalConstraint`          | `union`<br/>Possible values:<br/>`, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                     |
-| `hasError`                      | `boolean`                                                                                 |          |           | Will apply the error state to each input without showing any error message.                                                                                    |
-| `hasWarning`                    | `boolean`                                                                                 |          |           | Will apply the warning state to each input without showing any warning message.                                                                                |
+| `hasError`                      | `TRichTextInputProps['hasError']`                                                         |          |           | Will apply the error state to each input without showing any error message.                                                                                    |
+| `hasWarning`                    | `TRichTextInputProps['hasWarning']`                                                       |          |           | Will apply the warning state to each input without showing any warning message.                                                                                |
 | `errors`                        | `Record`                                                                                  |          |           | Used to show errors underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the error to show for that key.     |
 | `warnings`                      | `Record`                                                                                  |          |           | Used to show warnings underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the warning to show for that key. |
-| `showExpandIcon`                | `boolean`                                                                                 |          | `false`   | Shows an `expand` icon in the toolbar                                                                                                                          |
-| `onClickExpand`                 | `Function`<br/>[See signature.](#signature-onClickExpand)                                 |          |           | Called when the `expand` button is clicked                                                                                                                     |
+| `showExpandIcon`                | `TRichTextInputProps['showExpandIcon']`                                                   |          | `false`   | Shows an `expand` icon in the toolbar                                                                                                                          |
+| `onClickExpand`                 | `TRichTextInputProps['onClickExpand']`                                                    |          |           | Called when the `expand` button is clicked                                                                                                                     |
+| `reset`                         | `TRichTextInputProps['reset']`                                                            |          |           | Indicates that the value of the input component should be reset                                                                                                |
+| `resetValue`                    | `TRichTextInputProps['resetValue']`                                                       |          |           | Value of the input component after reset                                                                                                                       |
 
 ## Signatures
 
 ### Signature `onChange`
 
 ```ts
-(event: TCustomEvent) => void
-```
-
-### Signature `onBlur`
-
-```ts
-(event: TCustomEvent) => void
-```
-
-### Signature `onFocus`
-
-```ts
-(event: TCustomEvent) => void
-```
-
-### Signature `onClickExpand`
-
-```ts
-() => boolean;
+(
+  language: string
+) => (state: ReturnType<typeof html.serialize>) => void
 ```
 
 ### Static Properties

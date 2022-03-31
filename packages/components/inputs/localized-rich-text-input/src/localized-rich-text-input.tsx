@@ -19,32 +19,23 @@ import {
   getName,
 } from '@commercetools-uikit/localized-utils';
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
-import { localized } from '@commercetools-uikit/rich-text-utils';
-import { warning } from '@commercetools-uikit/utils';
-import RichTextInput from './rich-text-input';
+import { localized, html } from '@commercetools-uikit/rich-text-utils';
+import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
+import RichTextInput, { type TRichTextInputProps } from './rich-text-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 
 type TErrors = Record<string, string>;
 type TWarnings = Record<string, ReactNode>;
 
-type TCustomEvent = {
-  target: {
-    id?: string;
-    name?: string;
-    language?: string;
-    value?: string;
-  };
-};
-
 type TLocalizedRichTextInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en
    */
-  id?: string;
+  id?: TRichTextInputProps['id'];
   /**
    * Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`
    */
-  name?: string;
+  name?: TRichTextInputProps['name'];
   // then input doesn't accept a "languages" prop, instead all possible
   // languages have to exist (with empty or filled slate values) on the value:
   //   { en: slateValue, de: slateValue, es: slateValue }
@@ -55,23 +46,25 @@ type TLocalizedRichTextInputProps = {
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
-  onChange?: (event: TCustomEvent) => void;
+  onChange: (
+    language: string
+  ) => (state: ReturnType<typeof html.serialize>) => void;
   /**
    * Specifies which language will be shown in case the `LocalizedRichTextInput` is collapsed.
    */
   selectedLanguage: string;
   /**
-   *Called when any field is blurred. Is called with the `event` of that field.
+   * Called when any field is blurred. Is called with the `event` of that field.
    */
-  onBlur?: (event: TCustomEvent) => void;
+  onBlur?: TRichTextInputProps['onBlur'];
   /**
    * Called when any field is focussed. Is called with the `event` of that field.
    */
-  onFocus?: (event: TCustomEvent) => void;
+  onFocus?: TRichTextInputProps['onFocus'];
   /**
    * Expands input components holding multiline values instead of collapsing them by default.
    */
-  defaultExpandMultilineText?: boolean;
+  defaultExpandMultilineText?: TRichTextInputProps['defaultExpandMultilineText'];
   /**
    * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`
    */
@@ -79,15 +72,15 @@ type TLocalizedRichTextInputProps = {
   /**
    * Controls whether one or all languages are visible by default. Pass `true` to show all languages by default.
    */
-  defaultExpandLanguages?: boolean;
+  defaultExpandLanguages?: TRichTextInputProps['defaultExpandMultilineText'];
   /**
    * Disables all input
    */
-  isDisabled?: boolean;
+  isDisabled?: TRichTextInputProps['isDisabled'];
   /**
    * Disables all input fields and shows them in read-only mode.
    */
-  isReadOnly?: boolean;
+  isReadOnly?: TRichTextInputProps['isReadOnly'];
   /**
    * Placeholders for each language. Object of the same shape as
    */
@@ -111,11 +104,11 @@ type TLocalizedRichTextInputProps = {
   /**
    * Will apply the error state to each input without showing any error message.
    */
-  hasError?: boolean;
+  hasError?: TRichTextInputProps['hasError'];
   /**
    * Will apply the warning state to each input without showing any warning message.
    */
-  hasWarning?: boolean;
+  hasWarning?: TRichTextInputProps['hasWarning'];
   /**
    * Used to show errors underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the error to show for that key.
    */
@@ -127,11 +120,19 @@ type TLocalizedRichTextInputProps = {
   /**
    * Shows an `expand` icon in the toolbar
    */
-  showExpandIcon: boolean;
+  showExpandIcon: TRichTextInputProps['showExpandIcon'];
   /**
    * Called when the `expand` button is clicked
    */
-  onClickExpand?: () => boolean;
+  onClickExpand?: TRichTextInputProps['onClickExpand'];
+  /**
+   * Indicates that the value of the input component should be reset
+   */
+  reset?: TRichTextInputProps['reset'];
+  /**
+   * Value of the input component after reset
+   */
+  resetValue?: TRichTextInputProps['resetValue'];
 };
 
 type TReducerState = {
@@ -273,11 +274,12 @@ const LocalizedRichTextInput = (props: TLocalizedRichTextInputProps) => {
 
             return (
               <RichTextInput
+                {...filterDataAttributes(props)}
                 key={language}
                 id={LocalizedRichTextInput.getId(props.id, language)}
                 name={LocalizedRichTextInput.getName(props.name, language)}
                 value={props.value[language]}
-                onChange={props.onChange}
+                onChange={props.onChange(language)}
                 language={language}
                 isOpen={expandedTranslationsState[language]}
                 toggleLanguage={toggleLanguage}
@@ -300,6 +302,8 @@ const LocalizedRichTextInput = (props: TLocalizedRichTextInputProps) => {
                 showExpandIcon={props.showExpandIcon}
                 onClickExpand={props.onClickExpand}
                 hasLanguagesControl={hasLanguagesControl}
+                reset={props.reset}
+                resetValue={props.resetValue}
                 {...createLocalizedDataAttributes(props, language)}
               />
             );

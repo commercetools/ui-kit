@@ -19,9 +19,8 @@ const initialValue = '<h1>H1 heading</h1>';
 const Input = (props) => {
   const [value, setValue] = useState(initialValue);
   const onChange = useCallback(
-    (event) => {
-      setValue(event.target.value);
-      action('onChange')(event);
+    (state) => {
+      setValue(state);
     },
     [setValue]
   );

@@ -37,14 +37,7 @@ const html = '<p>hello world</p>';
 
 const Example = (props) => {
   const [value, setValue] = React.useState(html);
-  return (
-    <RichTextInput
-      value={value}
-      onChange={(event) => {
-        setValue(event.target.value);
-      }}
-    />
-  );
+  return <RichTextInput value={value} onChange={setValue} />;
 };
 
 export default Example;
@@ -54,41 +47,31 @@ export default Example;
 
 | Props                        | Type                                                 | Required | Default   | Description                                                                                                               |
 | ---------------------------- | ---------------------------------------------------- | :------: | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `isAutofocussed`             | `boolean`                                            |          |           | Focus the control when it is mounted                                                                                      |
+| `isAutofocused`              | `TEditorProps['isAutofocused']`                      |          |           | Focus the control when it is mounted                                                                                      |
 | `defaultExpandMultilineText` | `TEditorProps['defaultExpandMultilineText']`         |          | `false`   | Expands multiline text input initially                                                                                    |
 | `hasError`                   | `TEditorProps['hasError']`                           |          |           | Indicates the input field has an error                                                                                    |
 | `hasWarning`                 | `TEditorProps['hasWarning']`                         |          |           | Indicates the input field has warning                                                                                     |
-| `id`                         | `string`                                             |          |           | Used as the HTML `id` attribute.                                                                                          |
-| `name`                       | `string`                                             |          |           | Used as the HTML `name` attribute.                                                                                        |
-| `placeholder`                | `string`                                             |          | `''`      | Placeholder value to show in the input field                                                                              |
+| `id`                         | `TEditorProps['id']`                                 |          |           | Used as the HTML `id` attribute.                                                                                          |
+| `name`                       | `TEditorProps['name']`                               |          |           | Used as the HTML `name` attribute.                                                                                        |
+| `placeholder`                | `TEditorProps['placeholder']`                        |          | `''`      | Placeholder value to show in the input field                                                                              |
 | `isDisabled`                 | `TEditorProps['isDisabled']`                         |          |           | Disables the rich text input                                                                                              |
 | `isReadOnly`                 | `TEditorProps['isReadOnly']`                         |          |           | Indicates that the rich text input is displaying read-only content                                                        |
 | `horizontalConstraint`       | `TEditorProps['horizontalConstraint']`               |          | `'scale'` | Horizontal size limit of the input fields                                                                                 |
 | `onChange`                   | `Function`<br/>[See signature.](#signature-onChange) |          |           | Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value. |
-| `onFocus`                    | `Function`<br/>[See signature.](#signature-onFocus)  |          |           | Called when input is focused                                                                                              |
-| `onBlur`                     | `Function`<br/>[See signature.](#signature-onBlur)   |          |           | Called when input is blurred                                                                                              |
+| `onFocus`                    | `TEditorProps['onFocus']`                            |          |           | Called when input is focused                                                                                              |
+| `onBlur`                     | `TEditorProps['onBlur']`                             |          |           | Called when input is blurred                                                                                              |
 | `value`                      | `string`                                             |          |           | Value of the input component.                                                                                             |
 | `showExpandIcon`             | `TEditorProps['showExpandIcon']`                     |          | `false`   | Indicates whether the expand icon should be visible                                                                       |
 | `onClickExpand`              | `TEditorProps['onClickExpand']`                      |          |           | Called when the `expand` button is clicked                                                                                |
+| `reset`                      | `TEditorProps['reset']`                              |          |           | Indicates that the value of the input component should be reset                                                           |
+| `resetValue`                 | `string`                                             |          | `''`      | Value of the input component after reset                                                                                  |
 
 ## Signatures
 
 ### Signature `onChange`
 
 ```ts
-(event: TChangeEvent) => void
-```
-
-### Signature `onFocus`
-
-```ts
-(event: TFocusEvent) => void
-```
-
-### Signature `onBlur`
-
-```ts
-(event: TFocusEvent) => void
+(state: ReturnType<typeof html.serialize>) => void
 ```
 
 ## Static methods

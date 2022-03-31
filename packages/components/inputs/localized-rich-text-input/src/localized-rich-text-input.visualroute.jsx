@@ -1,5 +1,5 @@
-import { Value } from 'react-value';
 import { Switch, Route } from 'react-router-dom';
+import { useState, useCallback } from 'react';
 import {
   LocalizedRichTextInput,
   ErrorMessage,
@@ -22,13 +22,14 @@ export const routePath = '/localized-rich-text-input';
 
 // this route will be used with puppeteer based testing.
 // eslint-disable-next-line react/prop-types
-const WrappedComponent = ({ onChange, value }) => {
-  const handleChange = (event) => {
-    onChange({
-      ...value,
-      [event.target.language]: event.target.value,
-    });
-  };
+const WrappedComponent = () => {
+  const [value, setValue] = useState(initialValue);
+  const handleChange = useCallback(
+    (language) => (languageNewState) => {
+      setValue((state) => ({ ...state, [language]: languageNewState }));
+    },
+    []
+  );
 
   return (
     <LocalizedRichTextInput
@@ -47,16 +48,7 @@ const InteractiveRoute = () => {
   return (
     <Suite>
       <Spec label="Interactive Rich Text" omitPropsList>
-        <Value
-          defaultValue={{
-            en: emptyValue,
-            de: emptyValue,
-            es: emptyValue,
-          }}
-          render={(value, onChange) => (
-            <WrappedComponent value={value} onChange={onChange} />
-          )}
-        />
+        <WrappedComponent />
       </Spec>
     </Suite>
   );
@@ -66,7 +58,7 @@ const DefaultRoute = () => (
   <Suite>
     <Spec label="minimal" omitPropsList>
       <LocalizedRichTextInput
-        onChange={() => {}}
+        onChange={() => () => {}}
         value={{
           en: emptyValue,
           de: emptyValue,
@@ -79,7 +71,7 @@ const DefaultRoute = () => (
     <Spec label="when multiline text is expanded by default" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         defaultExpandMultilineText={true}
@@ -91,7 +83,7 @@ const DefaultRoute = () => (
     >
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         defaultExpandMultilineText={true}
@@ -101,7 +93,7 @@ const DefaultRoute = () => (
     <Spec label="when language controls are hidden" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         hideLanguageExpansionControls={true}
@@ -110,7 +102,7 @@ const DefaultRoute = () => (
     <Spec label="when languages are opened by default" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         defaultExpandLanguages={true}
@@ -119,7 +111,7 @@ const DefaultRoute = () => (
     <Spec label="when read-only and open" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         isReadOnly={true}
@@ -129,7 +121,7 @@ const DefaultRoute = () => (
     <Spec label="when read-only and closed" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         isReadOnly={true}
@@ -138,7 +130,7 @@ const DefaultRoute = () => (
     <Spec label="when disabled and open" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         isDisabled={true}
@@ -148,7 +140,7 @@ const DefaultRoute = () => (
     <Spec label="when disabled and closed" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         isDisabled={true}
@@ -160,7 +152,7 @@ const DefaultRoute = () => (
     >
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         errors={{ en: <ErrorMessage>foo</ErrorMessage> }}
@@ -172,7 +164,7 @@ const DefaultRoute = () => (
     >
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         errors={{ de: <ErrorMessage>foo</ErrorMessage> }}
@@ -181,7 +173,7 @@ const DefaultRoute = () => (
     <Spec label="when there is a general error" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         hasError={true}
@@ -193,7 +185,7 @@ const DefaultRoute = () => (
     >
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         warnings={{ en: <WarningMessage>foo</WarningMessage> }}
@@ -205,7 +197,7 @@ const DefaultRoute = () => (
     >
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         warnings={{ de: <WarningMessage>foo</WarningMessage> }}
@@ -214,7 +206,7 @@ const DefaultRoute = () => (
     <Spec label="when there is a general warning" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         hasWarning={true}
@@ -223,7 +215,7 @@ const DefaultRoute = () => (
     <Spec label="when showExpandIcon is enabled" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         showExpandIcon={true}
@@ -233,7 +225,7 @@ const DefaultRoute = () => (
     <Spec label="when disabled" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         isDisabled={true}
@@ -243,7 +235,7 @@ const DefaultRoute = () => (
     <Spec label="when readonly" omitPropsList>
       <LocalizedRichTextInput
         value={initialValue}
-        onChange={() => {}}
+        onChange={() => () => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         isReadOnly={true}

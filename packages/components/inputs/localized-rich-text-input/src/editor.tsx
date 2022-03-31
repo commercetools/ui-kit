@@ -3,20 +3,19 @@ import {
   useState,
   useCallback,
   useEffect,
-  cloneElement,
+  useMemo,
   type ReactNode,
-  type ReactElement,
   type LegacyRef,
   type RefObject,
   type Ref,
+  type FocusEventHandler,
 } from 'react';
-import pick from 'lodash/pick';
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
 import { customProperties } from '@commercetools-uikit/design-system';
-import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
-import { usePrevious } from '@commercetools-uikit/hooks';
+import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
+// import { usePrevious } from '@commercetools-uikit/hooks';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
@@ -26,13 +25,35 @@ import { messagesMultilineInput } from '@commercetools-uikit/input-utils';
 import {
   RichTextBody,
   HiddenInput,
+  Element,
+  Leaf,
+  toggleMark,
+  resetEditor,
 } from '@commercetools-uikit/rich-text-utils';
+import {
+  Editable,
+  withReact,
+  Slate,
+  ReactEditor,
+  type RenderElementProps,
+  type RenderLeafProps,
+} from 'slate-react';
+import { createEditor, type Descendant } from 'slate';
+import { withHistory } from 'slate-history';
+import isHotkey from 'is-hotkey';
+import pipe from 'lodash/fp/pipe';
 import {
   EditorWrapper,
   EditorLanguageLabel,
   ToggleButtonWrapper,
 } from './editor.styles';
-import type { TEditor } from './editor.types';
+
+const HOTKEYS = {
+  'mod+b': 'bold',
+  'mod+i': 'italic',
+  'mod+u': 'underline',
+  'mod+`': 'code',
+};
 
 const COLLAPSED_HEIGHT = 32;
 
@@ -55,14 +76,14 @@ const Row = styled.div`
 `;
 
 export type TEditorProps = {
-  children: ReactNode;
+  children?: ReactNode;
+  name?: string;
   id?: string;
   isOpen: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
   hasWarning?: boolean;
   hasError?: boolean;
-  editor?: TEditor;
   error?: ReactNode;
   warning?: ReactNode;
   defaultExpandMultilineText: boolean;
@@ -71,6 +92,14 @@ export type TEditorProps = {
   showExpandIcon: boolean;
   onClickExpand?: () => boolean;
   hasLanguagesControl?: boolean;
+  value: Descendant[];
+  onChange: (state: Descendant[]) => void;
+  onFocus?: FocusEventHandler;
+  onBlur?: FocusEventHandler;
+  isAutofocused?: boolean;
+  placeholder?: string;
+  reset?: boolean;
+  resetValue: Descendant[];
 };
 
 type TNodeRefObject = {
@@ -85,7 +114,19 @@ type TRichTextEditorBodyRef = {
 const Editor = (props: TEditorProps) => {
   const intl = useIntl();
   const ref = useRef<HTMLDivElement>();
-  const prevIsFocused = usePrevious(props.editor?.value.selection.isFocused);
+  const renderElement = useCallback(
+    (props: RenderElementProps) => <Element {...props} />,
+    []
+  );
+  const renderLeaf = useCallback(
+    (props: RenderLeafProps) => <Leaf {...props} />,
+    []
+  );
+  const createEditorWithPlugins = pipe(withReact, withHistory);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const editor = useMemo(() => createEditorWithPlugins(createEditor()), []);
+  const isFocused = ReactEditor.isFocused(editor);
+  // const prevIsFocused = usePrevious(ReactEditor.isFocused(editor));
 
   if (props.showExpandIcon) {
     warning(
@@ -115,26 +156,33 @@ const Editor = (props: TEditorProps) => {
 
   useEffect(() => {
     updateRenderToggleButton();
-  }, [props.editor?.value.document, updateRenderToggleButton]);
+  }, [editor, updateRenderToggleButton]);
+
+  //resetting
+  useEffect(() => {
+    if (props.reset) {
+      resetEditor(editor, props.resetValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.reset]);
 
   // opens the input if it regains focus and it's closed
-  if (
+  /* if (
     prevIsFocused !== props.editor?.value.selection.isFocused &&
     props.editor?.value.selection.isFocused &&
     !props.isOpen
   ) {
     onToggle();
-  }
+  } */
 
   const shouldToggleButtonTakeSpace =
-    /*
-      - if hasLanguagesControl and there are no errors/warnings to display
+    /* - if hasLanguagesControl and there are no errors/warnings to display
       - then the toggleButton is absolutely positioned
       This is because the toggle button is placed next to the LocalizedInputToggle without being siblings in the DOM.
       If there is a error or warning showing,
       then it can be placed statically because it will then be a sibling to the error/warning message
-      and LocalizedInputToggle is placed below the errors/warnings.
-    */
+      and LocalizedInputToggle is placed below the errors/warnings. */
+
     (renderToggleButton && !props.hasLanguagesControl) ||
     props.error ||
     props.warning;
@@ -161,34 +209,69 @@ const Editor = (props: TEditorProps) => {
               isDisabled={props.isDisabled}
               isReadOnly={props.isReadOnly}
             >
-              <EditorLanguageLabel htmlFor={props.id} theme={theme}>
-                {/* FIXME: add proper tone for disabled when tones are refactored */}
-                <Text.Detail tone="secondary">
-                  {props.language.toUpperCase()}
-                </Text.Detail>
-              </EditorLanguageLabel>
-
-              <RichTextBody
-                ref={refObj as unknown as Ref<TRichTextEditorBodyRef>}
-                styles={{
-                  container: css`
-                    flex: auto;
-                    width: 0;
-                    border-top-left-radius: 0;
-                    border-bottom-left-radius: 0;
-                  `,
-                }}
-                hasError={props.hasError}
-                isDisabled={props.isDisabled}
-                hasWarning={props.hasWarning}
-                isReadOnly={Boolean(props.isReadOnly)}
-                editor={props.editor as TEditor}
-                containerStyles={containerStyles}
-                showExpandIcon={props.showExpandIcon}
-                onClickExpand={props.onClickExpand}
+              <Slate
+                editor={editor}
+                value={props.value}
+                onChange={props.onChange}
               >
-                {props.children}
-              </RichTextBody>
+                <EditorLanguageLabel htmlFor={props.id} theme={theme}>
+                  {/* FIXME: add proper tone for disabled when tones are refactored */}
+                  <Text.Detail tone="secondary">
+                    {props.language.toUpperCase()}
+                  </Text.Detail>
+                </EditorLanguageLabel>
+                <RichTextBody
+                  // @ts-ignore
+                  ref={refObj as unknown as Ref<TRichTextEditorBodyRef>}
+                  styles={{
+                    container: css`
+                      flex: auto;
+                      width: 0;
+                      border-top-left-radius: 0;
+                      border-bottom-left-radius: 0;
+                    `,
+                  }}
+                  hasError={props.hasError}
+                  isDisabled={props.isDisabled}
+                  hasWarning={props.hasWarning}
+                  isReadOnly={Boolean(props.isReadOnly)}
+                  showExpandIcon={Boolean(props.showExpandIcon)}
+                  onClickExpand={props.onClickExpand}
+                  containerStyles={containerStyles}
+                >
+                  <Editable
+                    {...filterDataAttributes(props)}
+                    name={props.name}
+                    renderElement={renderElement}
+                    renderLeaf={renderLeaf}
+                    placeholder={props.placeholder}
+                    autoFocus={props.isAutofocused}
+                    onBlur={props.onBlur}
+                    onFocus={props.onFocus}
+                    readOnly={props.isReadOnly}
+                    disabled={props.isDisabled}
+                    onKeyDown={(event) => {
+                      for (const hotkey in HOTKEYS) {
+                        if (isHotkey(hotkey, event)) {
+                          event.preventDefault();
+                          const mark = HOTKEYS[hotkey as keyof typeof HOTKEYS];
+                          toggleMark(editor, mark);
+                        }
+                      }
+                    }}
+                  />
+                  {props.children}
+                  <HiddenInput
+                    isFocused={isFocused}
+                    handleFocus={() => {
+                      ReactEditor.focus(editor);
+                    }}
+                    id={props.id}
+                    disabled={props.isDisabled}
+                    readOnly={props.isReadOnly}
+                  />
+                </RichTextBody>
+              </Slate>
             </EditorWrapper>
             <Row
               // NOTE: applying this style withing the `styled` component results in the production
@@ -257,85 +340,10 @@ const Editor = (props: TEditorProps) => {
     </CollapsibleMotion>
   );
 };
-
-type TOptions = {
-  language: string;
-  error?: ReactNode;
-  warning?: ReactNode;
-  hasWarning?: boolean;
-  hasError?: boolean;
-  defaultExpandMultilineText: boolean;
-  toggleLanguage: (language: string) => void;
-  isOpen: boolean;
-  showExpandIcon: boolean;
-  onClickExpand?: () => boolean;
-  hasLanguagesControl?: boolean;
-};
-
-export type TRenderEditorProps = {
-  id?: string;
-  name?: string;
-  disabled?: boolean;
-  readOnly?: boolean;
-  editor?: TEditor;
-  options: TOptions;
-};
-export type TRenderEditor = (
-  props: TRenderEditorProps,
-  editor: TEditor,
-  next: () => ReactElement
-) => ReturnType<typeof Editor>;
-
-const renderEditor: TRenderEditor = (props, editor, next) => {
-  if (props.options.showExpandIcon) {
-    warning(
-      typeof props.options.onClickExpand === 'function',
-      'renderEditor: "onClickExpand" is required when showExpandIcon is true'
-    );
-  }
-
-  const internalId = `${props.id}__internal__id`;
-
-  const children = cloneElement(next(), {
-    id: internalId,
-  });
-
-  const passedProps = {
-    id: props.id,
-    isDisabled: props.disabled,
-    isReadOnly: props.readOnly,
-    ...pick(props.options, [
-      'defaultExpandMultilineText',
-      'language',
-      'warning',
-      'error',
-      'hasWarning',
-      'hasError',
-      'toggleLanguage',
-      'isOpen',
-      'showExpandIcon',
-      'onClickExpand',
-      'hasLanguagesControl',
-    ]),
-    ...filterDataAttributes(props),
-  };
-
-  const isFocused = props.editor?.value.selection.isFocused;
-
-  return (
-    <Editor editor={editor} {...passedProps}>
-      {children}
-      <HiddenInput
-        isFocused={Boolean(isFocused)}
-        handleFocus={editor.focus}
-        disabled={props.disabled}
-        readOnly={props.readOnly}
-        id={props.id}
-      />
-    </Editor>
-  );
-};
-
 Editor.displayName = 'Editor';
+const defaultProps: Pick<TEditorProps, 'resetValue'> = {
+  resetValue: [],
+};
+Editor.defaultProps = defaultProps;
 
-export default renderEditor;
+export default Editor;

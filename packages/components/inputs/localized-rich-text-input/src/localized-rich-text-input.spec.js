@@ -1,4 +1,5 @@
-import { screen, render } from '../../../../../test/test-utils';
+import { prettyDOM } from '@testing-library/react';
+import { screen, render, debug } from '../../../../../test/test-utils';
 import LocalizedRichTextInput from './localized-rich-text-input';
 
 // mocks
@@ -10,7 +11,7 @@ const baseProps = {
   value: { en: initialValue, de: initialValue },
   id: 'rich-text-input',
   'data-testid': 'rich-text-data-test',
-  onChange: () => {},
+  onChange: () => () => {},
 };
 
 describe('LocalizedRichTextInput', () => {
@@ -112,12 +113,14 @@ describe('LocalizedRichTextInput', () => {
           />
         );
         screen.getByLabelText(/show all languages/i).click();
-        expect(
-          screen.getByTestId('rich-text-data-test-en')
-        ).not.toHaveAttribute('contenteditable');
-        expect(
-          screen.getByTestId('rich-text-data-test-de')
-        ).not.toHaveAttribute('contenteditable');
+        expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
+          'contenteditable',
+          'false'
+        );
+        expect(screen.getByTestId('rich-text-data-test-de')).toHaveAttribute(
+          'contenteditable',
+          'false'
+        );
       });
     });
     describe('when not expanded', () => {
@@ -129,9 +132,10 @@ describe('LocalizedRichTextInput', () => {
             isReadOnly={true}
           />
         );
-        expect(
-          screen.getByTestId('rich-text-data-test-en')
-        ).not.toHaveAttribute('contenteditable');
+        expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
+          'contenteditable',
+          'false'
+        );
       });
     });
   });

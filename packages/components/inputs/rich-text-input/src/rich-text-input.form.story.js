@@ -1,4 +1,6 @@
-import { Formik } from 'formik';
+/* eslint-disable react/prop-types, react/display-name */
+import { useState, useEffect } from 'react';
+import { Formik, useField } from 'formik';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty-es';
 import { action } from '@storybook/addon-actions';
@@ -14,6 +16,27 @@ import TextInput from '../../text-input';
 import TextField from '../../../fields/text-field';
 
 const initialValue = '';
+
+const RichTextFormikInput = (props) => {
+  const [field, meta, helpers] = useField(props.name);
+  const { value, touched } = meta;
+  const { setValue, setTouched } = helpers;
+
+  return (
+    <RichTextInput
+      id={props.name}
+      name={props.name}
+      value={value}
+      onChange={(state) => {
+        setValue(state);
+        setTouched(true);
+      }}
+      onBlur={props.onBlur}
+      hasError={props.hasError}
+      reset={props.reset}
+    />
+  );
+};
 
 storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)
@@ -31,6 +54,12 @@ storiesOf('Examples|Forms/Inputs', module)
       coverLetter: initialValue,
       aboutMe: initialValue,
     };
+    const [reset, setReset] = useState(false);
+    useEffect(() => {
+      if (reset) {
+        setReset(false);
+      }
+    }, [reset]);
 
     return (
       <Section>
@@ -83,17 +112,15 @@ storiesOf('Examples|Forms/Inputs', module)
               />
               <Spacings.Stack scale="s">
                 <FieldLabel title="Enter your cv" htmlFor="cv" />
-                <RichTextInput
-                  id="cv"
+                <RichTextFormikInput
                   name="cv"
-                  value={formik.values.cv}
-                  onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   hasError={
                     RichTextInput.isTouched(formik.touched.cv) &&
                     formik.errors.cv &&
                     formik.errors.cv.missing
                   }
+                  reset={reset}
                 />
               </Spacings.Stack>
               <Spacings.Stack scale="s">
@@ -101,37 +128,36 @@ storiesOf('Examples|Forms/Inputs', module)
                   title="Enter your cover letter"
                   htmlFor="coverLetter"
                 />
-                <RichTextInput
-                  id="coverLetter"
+                <RichTextFormikInput
                   name="coverLetter"
-                  value={formik.values.coverLetter}
-                  onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   hasError={
                     RichTextInput.isTouched(formik.touched.coverLetter) &&
                     formik.errors.coverLetter &&
                     formik.errors.coverLetter.missing
                   }
+                  reset={reset}
                 />
               </Spacings.Stack>
               <Spacings.Stack scale="s">
                 <FieldLabel title="Tell us about yourself" htmlFor="aboutMe" />
-                <RichTextInput
-                  id="aboutMe"
+                <RichTextFormikInput
                   name="aboutMe"
-                  value={formik.values.aboutMe}
-                  onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   hasError={
                     RichTextInput.isTouched(formik.touched.aboutMe) &&
                     formik.errors.aboutMe &&
                     formik.errors.aboutMe.missing
                   }
+                  reset={reset}
                 />
               </Spacings.Stack>
               <Spacings.Inline>
                 <SecondaryButton
-                  onClick={formik.handleReset}
+                  onClick={() => {
+                    formik.handleReset();
+                    setReset(true);
+                  }}
                   isDisabled={formik.isSubmitting}
                   label="Reset"
                 />

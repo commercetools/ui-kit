@@ -1,77 +1,21 @@
-import { PureComponent, type FocusEvent } from 'react';
-// TODO: remove after upgrade of `slate-react` to the latest version
-// @ts-ignore
-import { Editor as SlateReactEditor } from 'slate-react';
-import pick from 'lodash/pick';
+import { PureComponent } from 'react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
-  richTextPlugins,
   html,
   isEmpty,
+  validSlateStateAdapter,
 } from '@commercetools-uikit/rich-text-utils';
-import renderEditor, {
-  type TEditorProps,
-  type TRenderEditor,
-  type TEditorOptions,
-} from './editor';
-
-type TSlateReactEditorProps = {
-  autoFocus?: TRichTextInputProps['isAutofocussed'];
-  id?: TRichTextInputProps['id'];
-  name?: TRichTextInputProps['name'];
-  onFocus?: TEventHook<FocusEvent>;
-  onBlur?: TEventHook<FocusEvent>;
-  disabled?: TRichTextInputProps['isDisabled'];
-  readOnly?: TRichTextInputProps['isReadOnly'];
-  value: ReturnType<typeof html.deserialize>;
-  options: TEditorOptions;
-  onChange?: TOnChangeFn;
-  plugins: typeof richTextPlugins;
-  renderEditor: TRenderEditor;
-};
-
-// This is a temporary wrapper component helping to mitigate typing issues of `slate-react@0.22.10` package.
-// TODO: remove after upgrade of `slate-react` to the latest version
-const Editor = (props: TSlateReactEditorProps) => (
-  <SlateReactEditor {...props} />
-);
-
-type TBaseEvent = {
-  target: {
-    id?: string;
-    name?: string;
-  };
-};
-
-type TChangeEvent = {
-  target: TBaseEvent['target'] & {
-    value: string;
-  };
-};
-
-type TFocusEvent = TBaseEvent;
-
-type TEventHook<T = Event> = (
-  event: T,
-  editor: typeof Editor,
-  next: () => unknown
-) => unknown;
-
-type TOnChangeParam = {
-  operations: unknown;
-  value: ReturnType<typeof html.deserialize>;
-};
-type TOnChangeFn = (change: TOnChangeParam) => unknown;
+import Editor, { type TEditorProps } from './editor';
 
 export type TRichTextInputProps = {
   /**
    * Focus the control when it is mounted
    */
-  isAutofocussed?: boolean;
+  isAutofocused?: TEditorProps['isAutofocused'];
   /**
    * Expands multiline text input initially
    */
-  defaultExpandMultilineText?: TEditorProps['defaultExpandMultilineText'];
+  defaultExpandMultilineText: TEditorProps['defaultExpandMultilineText'];
   /**
    * Indicates the input field has an error
    */
@@ -83,15 +27,15 @@ export type TRichTextInputProps = {
   /**
    * Used as the HTML `id` attribute.
    */
-  id?: string;
+  id?: TEditorProps['id'];
   /**
    * Used as the HTML `name` attribute.
    */
-  name?: string;
+  name?: TEditorProps['name'];
   /**
    * Placeholder value to show in the input field
    */
-  placeholder: string;
+  placeholder: TEditorProps['placeholder'];
   /**
    * Disables the rich text input
    */
@@ -107,15 +51,15 @@ export type TRichTextInputProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange?: (event: TChangeEvent) => void;
+  onChange?: (state: ReturnType<typeof html.serialize>) => void;
   /**
    * Called when input is focused
    */
-  onFocus?: (event: TFocusEvent) => void;
+  onFocus?: TEditorProps['onFocus'];
   /**
    * Called when input is blurred
    */
-  onBlur?: (event: TFocusEvent) => void;
+  onBlur?: TEditorProps['onBlur'];
   /**
    * Value of the input component.
    */
@@ -128,6 +72,14 @@ export type TRichTextInputProps = {
    * Called when the `expand` button is clicked
    */
   onClickExpand?: TEditorProps['onClickExpand'];
+  /**
+   * Indicates that the value of the input component should be reset
+   */
+  reset?: TEditorProps['reset'];
+  /**
+   * Value of the input component after reset
+   */
+  resetValue: string;
 };
 
 class RichTextInput extends PureComponent<TRichTextInputProps> {
@@ -137,11 +89,13 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     | 'horizontalConstraint'
     | 'placeholder'
     | 'showExpandIcon'
+    | 'resetValue'
   > = {
     defaultExpandMultilineText: false,
     horizontalConstraint: 'scale',
     placeholder: '',
     showExpandIcon: false,
+    resetValue: '',
   };
 
   static displayName = 'RichTextInput';
@@ -149,7 +103,10 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
   static isTouched = (touched: boolean | unknown[]) => Boolean(touched);
 
   serializedValue = this.props.value;
-  internalSlateValue = html.deserialize(this.props.value || '');
+  internalSlateValue = validSlateStateAdapter(
+    html.deserialize(this.props.value || '')
+  );
+  resetValue = validSlateStateAdapter(html.deserialize(this.props.resetValue));
 
   componentDidUpdate() {
     // everytime we call `onChange`, we update `this.serializedValue`
@@ -162,75 +119,33 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     // this keeps the component in sync.
     if (this.props.value !== this.serializedValue) {
       const value = this.props.value || '';
-      this.internalSlateValue = html.deserialize(value);
+      this.internalSlateValue = validSlateStateAdapter(html.deserialize(value));
       this.serializedValue = value;
       this.forceUpdate();
     }
   }
 
-  onValueChange: TOnChangeFn = (event) => {
-    const serializedValue = html.serialize(event.value);
-
+  onValueChange = (state: Parameters<typeof html.serialize>[0]) => {
+    const serializedValue = html.serialize(state);
     // because we are not using setState, we need to make sure that
     // we perform an update when the slate value changes
     // as this can contain things like cursor location
     // in this case, the internalSlateValue would change
     // but the serializedValue would NOT change.
-    const hasInternalSlateValueChanged =
-      this.internalSlateValue !== event.value;
+    const hasInternalSlateValueChanged = this.internalSlateValue !== state;
 
     const hasSerializedValueChanged = serializedValue !== this.serializedValue;
-
-    this.internalSlateValue = event.value;
+    this.internalSlateValue = validSlateStateAdapter(state);
     this.serializedValue = serializedValue;
-
     // the consumer only cares about the serializedValue, so it doesn't make sense to call
     // onChange unless this value changes.
     if (hasSerializedValueChanged) {
-      const fakeEvent = {
-        target: {
-          id: this.props.id,
-          name: this.props.name,
-          value: serializedValue,
-        },
-      };
-
-      this.props.onChange?.(fakeEvent);
+      this.props.onChange?.(html.serialize(state));
     }
 
     if (hasInternalSlateValueChanged && !hasSerializedValueChanged) {
       // this way we force update if cursor or selection changes
       this.forceUpdate();
-    }
-  };
-
-  // this issue explains why we need to use next() + setTimeout
-  // for calling our passed onBlur handler
-  // https://github.com/ianstormtaylor/slate/issues/2434
-  onBlur: TEventHook<FocusEvent> = (_event, _editor, next) => {
-    next();
-
-    if (this.props.onBlur) {
-      const fakeEvent = {
-        target: {
-          id: this.props.id,
-          name: this.props.name,
-        },
-      };
-      setTimeout(() => this.props.onBlur?.(fakeEvent), 0);
-    }
-  };
-
-  onFocus: TEventHook<FocusEvent> = (_event, _editor, next) => {
-    next();
-    if (this.props.onFocus) {
-      const fakeEvent = {
-        target: {
-          id: this.props.id,
-          name: this.props.name,
-        },
-      };
-      setTimeout(() => this.props.onFocus?.(fakeEvent), 0);
     }
   };
 
@@ -250,29 +165,24 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     return (
       <Editor
         {...filterDataAttributes(this.props)}
-        autoFocus={this.props.isAutofocussed}
+        isAutofocused={this.props.isAutofocused}
         id={this.props.id}
         name={this.props.name}
-        onFocus={this.onFocus}
-        onBlur={this.onBlur}
-        disabled={this.props.isDisabled}
-        readOnly={this.props.isReadOnly || this.props.isDisabled}
+        onFocus={this.props.onFocus}
+        onBlur={this.props.onBlur}
+        isDisabled={this.props.isDisabled}
+        isReadOnly={this.props.isReadOnly || this.props.isDisabled}
         value={this.internalSlateValue}
-        // we can only pass this.props to the Editor that Slate understands without getting
-        // warning in the console,
-        // so instead we pass our extra this.props through this `options` prop.
-        options={pick(this.props, [
-          'horizontalConstraint',
-          'defaultExpandMultilineText',
-          'hasWarning',
-          'hasError',
-          'placeholder',
-          'showExpandIcon',
-          'onClickExpand',
-        ])}
         onChange={this.onValueChange}
-        plugins={richTextPlugins}
-        renderEditor={renderEditor}
+        horizontalConstraint={this.props.horizontalConstraint}
+        defaultExpandMultilineText={this.props.defaultExpandMultilineText}
+        hasWarning={this.props.hasWarning}
+        hasError={this.props.hasError}
+        placeholder={this.props.placeholder}
+        showExpandIcon={this.props.showExpandIcon}
+        onClickExpand={this.props.onClickExpand}
+        reset={this.props.reset}
+        resetValue={this.resetValue}
       />
     );
   }
