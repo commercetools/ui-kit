@@ -129,6 +129,17 @@ const hasMilliseconds = (parsedTime: {
   milliseconds: number;
 }) => parsedTime.milliseconds !== 0;
 
+// Calling `eventTarget.dispatchEvent` does not natively work in React.
+// Instead, we need to grab the element value setter, set the value, and dispatch a change event.
+const dispatchReactChangeEvent = (node: HTMLInputElement, value?: string) => {
+  const setValue = Object.getOwnPropertyDescriptor(
+    node.constructor.prototype,
+    'value'
+  )?.set;
+  setValue?.call(node, value);
+  node.dispatchEvent(new Event('change', { bubbles: true }));
+};
+
 const TimeInput = (props: TTimeInputProps) => {
   const id = useFieldId(props.id, sequentialId);
   const intl = useIntl();
@@ -168,12 +179,19 @@ const TimeInput = (props: TTimeInputProps) => {
 
   const handleClear = useCallback(() => {
     setControlledValue('');
-    element.current?.dispatchEvent(new Event('change'));
+
+    if (element.current) {
+      dispatchReactChangeEvent(element.current, '');
+    }
   }, []);
 
   // if locale has changed trigger a new change event
   useEffect(() => {
-    element.current?.dispatchEvent(new Event('change'));
+    if (element.current) {
+      dispatchReactChangeEvent(element.current, controlledValue);
+    }
+    // Only subscribe this effect to `intl.locale` changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [intl.locale]);
 
   return (

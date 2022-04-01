@@ -1,5 +1,5 @@
 import TimeInput from './time-input';
-import { render, fireEvent } from '../../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../../test/test-utils';
 
 const baseProps = {
   id: 'some-id',
@@ -92,6 +92,24 @@ describe('TimeInput', () => {
           id: 'some-id',
           name: 'some-name',
           value: 'foo',
+        }),
+      })
+    );
+  });
+
+  it('should call onChange when clearing the value', () => {
+    const onChange = jest.fn();
+    render(<TimeInput {...baseProps} value="foo" onChange={onChange} />);
+
+    const clearButton = screen.getByRole('button', { ariaLabel: 'clear' });
+    fireEvent.click(clearButton);
+
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        target: expect.objectContaining({
+          id: 'some-id',
+          name: 'some-name',
+          value: '',
         }),
       })
     );
