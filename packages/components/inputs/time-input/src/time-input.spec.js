@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
 import TimeInput from './time-input';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
 
@@ -5,7 +7,23 @@ const baseProps = {
   id: 'some-id',
   name: 'some-name',
   value: '',
-  onChange: () => {},
+  onChange: jest.fn(),
+};
+
+const TestComponent = (props) => {
+  const [time, setTime] = useState(props.value);
+
+  return (
+    <div>
+      <label htmlFor={props.id}>Input</label>
+      <TimeInput
+        {...props}
+        value={time}
+        onChange={(event) => setTime(event.target.value)}
+      />
+      <div>{time ? `Time: ${time}` : 'No time'}</div>
+    </div>
+  );
 };
 
 describe('TimeInput.to24h', () => {
@@ -75,44 +93,33 @@ describe('TimeInput', () => {
   });
 
   it('should forward the passed value', () => {
-    const { container } = render(<TimeInput {...baseProps} value="foo" />);
-    expect(container.querySelector('input')).toHaveAttribute('value', 'foo');
-  });
-
-  it('should call onChange when changing the value', () => {
-    const onChange = jest.fn();
-    const { container } = render(
-      <TimeInput {...baseProps} onChange={onChange} />
-    );
-    const event = { target: { value: 'foo' } };
-    fireEvent.change(container.querySelector('input'), event);
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({
-        target: expect.objectContaining({
-          id: 'some-id',
-          name: 'some-name',
-          value: 'foo',
-        }),
-      })
+    const { container } = render(<TimeInput {...baseProps} value="9:00 AM" />);
+    expect(container.querySelector('input')).toHaveAttribute(
+      'value',
+      '9:00 AM'
     );
   });
 
-  it('should call onChange when clearing the value', () => {
-    const onChange = jest.fn();
-    render(<TimeInput {...baseProps} value="foo" onChange={onChange} />);
+  it('should call onChange when changing the value', async () => {
+    render(<TestComponent {...baseProps} />);
+
+    await screen.findByText('No time');
+
+    const event = { target: { value: '9' } };
+    fireEvent.change(screen.getByLabelText('Input'), event);
+
+    await screen.findByText('Time: 9:00 AM');
+  });
+
+  it('should call onChange when clearing the value', async () => {
+    render(<TestComponent {...baseProps} value="9:00 AM" />);
+
+    await screen.findByText('Time: 9:00 AM');
 
     const clearButton = screen.getByRole('button', { ariaLabel: 'clear' });
     fireEvent.click(clearButton);
 
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({
-        target: expect.objectContaining({
-          id: 'some-id',
-          name: 'some-name',
-          value: '',
-        }),
-      })
-    );
+    await screen.findByText('No time');
   });
 
   it('should call onFocus when the input is focused', () => {
