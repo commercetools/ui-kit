@@ -15,7 +15,7 @@ export type TRichTextInputProps = {
   /**
    * Expands multiline text input initially
    */
-  defaultExpandMultilineText: TEditorProps['defaultExpandMultilineText'];
+  defaultExpandMultilineText?: TEditorProps['defaultExpandMultilineText'];
   /**
    * Indicates the input field has an error
    */
@@ -79,7 +79,7 @@ export type TRichTextInputProps = {
   /**
    * Value of the input component after reset
    */
-  resetValue: string;
+  resetValue?: string;
 };
 
 class RichTextInput extends PureComponent<TRichTextInputProps> {
@@ -106,7 +106,9 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
   internalSlateValue = validSlateStateAdapter(
     html.deserialize(this.props.value || '')
   );
-  resetValue = validSlateStateAdapter(html.deserialize(this.props.resetValue));
+  resetValue = validSlateStateAdapter(
+    html.deserialize(this.props.resetValue || '')
+  );
 
   componentDidUpdate() {
     // everytime we call `onChange`, we update `this.serializedValue`

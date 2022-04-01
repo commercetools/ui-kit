@@ -23,7 +23,7 @@ export type TRichTextInputProps = {
   onClickExpand?: TEditorProps['onClickExpand'];
   hasLanguagesControl?: TEditorProps['hasLanguagesControl'];
   reset?: TEditorProps['reset'];
-  resetValue: string;
+  resetValue?: string;
 
   // Pass-through props
   language: string;
@@ -50,7 +50,9 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     html.deserialize(this.props.value || '')
   );
 
-  resetValue = validSlateStateAdapter(html.deserialize(this.props.resetValue));
+  resetValue = validSlateStateAdapter(
+    html.deserialize(this.props.resetValue || '')
+  );
 
   componentDidUpdate() {
     if (this.props.value !== this.serializedValue) {

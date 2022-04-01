@@ -13,4 +13,5 @@ export {
   toggleBlock,
   validSlateStateAdapter,
   resetEditor,
+  focusAndGoToEnd,
 } from './slate-helpers';

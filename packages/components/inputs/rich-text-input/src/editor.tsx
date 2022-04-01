@@ -24,6 +24,7 @@ import {
   Leaf,
   toggleMark,
   resetEditor,
+  focusAndGoToEnd,
 } from '@commercetools-uikit/rich-text-utils';
 import {
   Editable,
@@ -181,8 +182,10 @@ const Editor = (props: TEditorProps) => {
                       onFocus={(event) => {
                         props.onFocus?.(event);
                         // opens the input if it regains focus and it's closed
-                        if (!isOpen) toggle();
-                        ReactEditor.focus(editor);
+                        if (!isOpen) {
+                          toggle();
+                          focusAndGoToEnd(editor);
+                        }
                       }}
                       onKeyDown={(event) => {
                         for (const hotkey in HOTKEYS) {
@@ -199,7 +202,7 @@ const Editor = (props: TEditorProps) => {
                     <HiddenInput
                       isFocused={ReactEditor.isFocused(editor)}
                       handleFocus={() => {
-                        ReactEditor.focus(editor);
+                        focusAndGoToEnd(editor);
                       }}
                       id={props.id}
                       disabled={props.isDisabled}

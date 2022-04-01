@@ -27,7 +27,7 @@ import RequiredValueErrorMessage from './required-value-error-message';
 type TErrors = Record<string, string>;
 type TWarnings = Record<string, ReactNode>;
 
-type TLocalizedRichTextInputProps = {
+export type TLocalizedRichTextInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en
    */
@@ -46,7 +46,7 @@ type TLocalizedRichTextInputProps = {
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
-  onChange: (
+  onChange?: (
     language: string
   ) => (state: ReturnType<typeof html.serialize>) => void;
   /**
@@ -279,7 +279,7 @@ const LocalizedRichTextInput = (props: TLocalizedRichTextInputProps) => {
                 id={LocalizedRichTextInput.getId(props.id, language)}
                 name={LocalizedRichTextInput.getName(props.name, language)}
                 value={props.value[language]}
-                onChange={props.onChange(language)}
+                onChange={props.onChange?.(language)}
                 language={language}
                 isOpen={expandedTranslationsState[language]}
                 toggleLanguage={toggleLanguage}

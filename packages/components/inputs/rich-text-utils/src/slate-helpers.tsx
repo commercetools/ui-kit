@@ -9,10 +9,11 @@ import {
   type Editor as TEditor,
   type Descendant,
 } from 'slate';
-import type {
+import {
   ReactEditor,
-  RenderElementProps,
-  RenderLeafProps,
+  type ReactEditor as TReactEditor,
+  type RenderElementProps,
+  type RenderLeafProps,
 } from 'slate-react';
 import type { HistoryEditor } from 'slate-history';
 import { BLOCK_TAGS, MARK_TAGS } from './tags';
@@ -40,7 +41,7 @@ type Format = typeof BLOCK_TAGS[keyof typeof BLOCK_TAGS] &
 // example: https://github.com/ianstormtaylor/slate/blob/main/packages/slate-react/src/custom-types.ts
 declare module 'slate' {
   interface CustomTypes {
-    Editor: BaseEditor & ReactEditor & HistoryEditor;
+    Editor: BaseEditor & TReactEditor & HistoryEditor;
     Element: CustomElement;
     Text: CustomText;
   }
@@ -219,6 +220,11 @@ const resetEditor = (editor: Editor, resetValue: Descendant[]) => {
   Transforms.unwrapNodes(editor, { at: [0] });
 };
 
+const focusAndGoToEnd = (editor: Editor) => {
+  ReactEditor.focus(editor);
+  Transforms.select(editor, Editor.end(editor, []));
+};
+
 export {
   Element,
   Leaf,
@@ -228,4 +234,5 @@ export {
   toggleBlock,
   validSlateStateAdapter,
   resetEditor,
+  focusAndGoToEnd,
 };
