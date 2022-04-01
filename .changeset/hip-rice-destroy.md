@@ -2,4 +2,4 @@
 '@commercetools-uikit/time-input': patch
 ---
 
-Fix dispatching a `change` event when clearing the input value.
+Fix regression of handling `change` events.
