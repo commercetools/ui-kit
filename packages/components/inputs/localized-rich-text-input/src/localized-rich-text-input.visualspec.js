@@ -1,5 +1,20 @@
 import percySnapshot from '@percy/puppeteer';
+import puppeteer from 'puppeteer';
 import { getDocument, queries } from 'pptr-testing-library';
+let browser;
+let page;
+
+jest.setTimeout(20000);
+
+beforeEach(async () => {
+  browser = await puppeteer.launch({
+    slowMo: 10,
+  });
+  page = await browser.newPage();
+});
+afterEach(async () => {
+  await browser.close();
+});
 
 describe('LocalizedRichTextInput', () => {
   const blur = async (element) => {
@@ -39,6 +54,8 @@ describe('LocalizedRichTextInput', () => {
     await page.goto(`${HOST}/localized-rich-text-input/interactive`);
     const doc = await getDocument(page);
     let input = await queries.findByTestId(doc, 'rich-text-data-test-en');
+
+    await input.focus();
 
     // make the text bold
     let boldButton = await queries.findByLabelText(doc, 'Bold');
@@ -110,5 +127,7 @@ describe('LocalizedRichTextInput', () => {
     // now type into the input
     const h1Text = 'Hello World';
     await input.type(h1Text);
+    numOfTags = await getNumberOfTags('h1');
+    expect(numOfTags).toEqual(1);
   });
 });

@@ -1,1 +1,1 @@
-export { default, type Deserialized } from './html';
+export { default, defaultSlateState, type Deserialized } from './html';

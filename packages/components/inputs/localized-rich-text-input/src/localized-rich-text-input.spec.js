@@ -10,7 +10,7 @@ const baseProps = {
   value: { en: initialValue, de: initialValue },
   id: 'rich-text-input',
   'data-testid': 'rich-text-data-test',
-  onChange: () => () => {},
+  onChange: () => {},
 };
 
 describe('LocalizedRichTextInput', () => {

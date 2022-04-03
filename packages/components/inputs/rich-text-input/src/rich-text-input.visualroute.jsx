@@ -22,8 +22,8 @@ const InteractiveRoute = () => {
   }, [setValue]);
 
   const onChange = useCallback(
-    (state) => {
-      setValue(state);
+    (event) => {
+      setValue(event.target.value);
     },
     [setValue]
   );

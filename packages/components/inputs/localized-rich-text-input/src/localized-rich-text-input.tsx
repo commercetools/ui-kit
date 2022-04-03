@@ -19,13 +19,21 @@ import {
   getName,
 } from '@commercetools-uikit/localized-utils';
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
-import { localized, html } from '@commercetools-uikit/rich-text-utils';
+import { localized } from '@commercetools-uikit/rich-text-utils';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import RichTextInput, { type TRichTextInputProps } from './rich-text-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 
 type TErrors = Record<string, string>;
 type TWarnings = Record<string, ReactNode>;
+type TCustomEvent = {
+  target: {
+    id?: string;
+    name?: string;
+    language?: string;
+    value?: string;
+  };
+};
 
 export type TLocalizedRichTextInputProps = {
   /**
@@ -46,9 +54,7 @@ export type TLocalizedRichTextInputProps = {
   /**
    * Gets called when any input is changed. Is called with the change event of the changed input.
    */
-  onChange?: (
-    language: string
-  ) => (state: ReturnType<typeof html.serialize>) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Specifies which language will be shown in case the `LocalizedRichTextInput` is collapsed.
    */
@@ -236,6 +242,19 @@ const LocalizedRichTextInput = (props: TLocalizedRichTextInputProps) => {
     [expandedTranslationsDispatch]
   );
 
+  const handleChange = useCallback(
+    (language: string) => (state: string) =>
+      props.onChange?.({
+        target: {
+          id: props.id,
+          name: props.name,
+          language,
+          value: state,
+        },
+      }),
+    [props]
+  );
+
   const languages = sortLanguages(
     props.selectedLanguage,
     Object.keys(props.value)
@@ -279,7 +298,7 @@ const LocalizedRichTextInput = (props: TLocalizedRichTextInputProps) => {
                 id={LocalizedRichTextInput.getId(props.id, language)}
                 name={LocalizedRichTextInput.getName(props.name, language)}
                 value={props.value[language]}
-                onChange={props.onChange?.(language)}
+                onChange={handleChange(language)}
                 language={language}
                 isOpen={expandedTranslationsState[language]}
                 toggleLanguage={toggleLanguage}

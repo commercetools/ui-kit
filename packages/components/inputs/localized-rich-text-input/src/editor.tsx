@@ -28,7 +28,7 @@ import {
   Leaf,
   toggleMark,
   resetEditor,
-  focusAndGoToEnd,
+  focusEditor,
 } from '@commercetools-uikit/rich-text-utils';
 import {
   Editable,
@@ -99,7 +99,7 @@ export type TEditorProps = {
   isAutofocused?: boolean;
   placeholder?: string;
   reset?: boolean;
-  resetValue: Descendant[];
+  resetValue?: Descendant[];
 };
 
 type TNodeRefObject = {
@@ -165,12 +165,14 @@ const Editor = (props: TEditorProps) => {
   }, [props.reset]);
 
   const shouldToggleButtonTakeSpace =
-    /* - if hasLanguagesControl and there are no errors/warnings to display
+    /* 
+      - if hasLanguagesControl and there are no errors/warnings to display
       - then the toggleButton is absolutely positioned
       This is because the toggle button is placed next to the LocalizedInputToggle without being siblings in the DOM.
       If there is a error or warning showing,
       then it can be placed statically because it will then be a sibling to the error/warning message
-      and LocalizedInputToggle is placed below the errors/warnings. */
+      and LocalizedInputToggle is placed below the errors/warnings. 
+    */
 
     (renderToggleButton && !props.hasLanguagesControl) ||
     props.error ||
@@ -241,7 +243,7 @@ const Editor = (props: TEditorProps) => {
                       // opens the input if it regains focus and it's closed
                       if (!isOpen) {
                         toggle();
-                        focusAndGoToEnd(editor);
+                        focusEditor(editor);
                       }
                     }}
                     readOnly={props.isReadOnly}
@@ -260,7 +262,7 @@ const Editor = (props: TEditorProps) => {
                   <HiddenInput
                     isFocused={ReactEditor.isFocused(editor)}
                     handleFocus={() => {
-                      focusAndGoToEnd(editor);
+                      focusEditor(editor);
                     }}
                     id={props.id}
                     disabled={props.isDisabled}
@@ -337,9 +339,5 @@ const Editor = (props: TEditorProps) => {
   );
 };
 Editor.displayName = 'Editor';
-const defaultProps: Pick<TEditorProps, 'resetValue'> = {
-  resetValue: [],
-};
-Editor.defaultProps = defaultProps;
 
 export default Editor;

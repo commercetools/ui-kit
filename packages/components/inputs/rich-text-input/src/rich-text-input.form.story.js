@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types, react/display-name */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Formik, useField } from 'formik';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty-es';
@@ -19,18 +19,26 @@ const initialValue = '';
 
 const RichTextFormikInput = (props) => {
   const [field, meta, helpers] = useField(props.name);
-  const { value, touched } = meta;
-  const { setValue, setTouched } = helpers;
+  const { value } = meta;
+  const { setValue } = helpers;
+
+  const onChange = useCallback(
+    (event) => {
+      {
+        console.log(event);
+        setValue(event.target.value);
+        action('onChange')(event);
+      }
+    },
+    [setValue]
+  );
 
   return (
     <RichTextInput
       id={props.name}
       name={props.name}
       value={value}
-      onChange={(state) => {
-        setValue(state);
-        setTouched(true);
-      }}
+      onChange={onChange}
       onBlur={props.onBlur}
       hasError={props.hasError}
       reset={props.reset}
@@ -73,6 +81,7 @@ storiesOf('Examples|Forms/Inputs', module)
               coverLetter: {},
               aboutMe: {},
             };
+
             if (RichTextInput.isEmpty(values.cv)) errors.cv.missing = true;
             if (RichTextInput.isEmpty(values.coverLetter))
               errors.coverLetter.missing = true;
@@ -117,8 +126,7 @@ storiesOf('Examples|Forms/Inputs', module)
                   onBlur={formik.handleBlur}
                   hasError={
                     RichTextInput.isTouched(formik.touched.cv) &&
-                    formik.errors.cv &&
-                    formik.errors.cv.missing
+                    formik.errors.cv?.missing
                   }
                   reset={reset}
                 />
@@ -133,8 +141,7 @@ storiesOf('Examples|Forms/Inputs', module)
                   onBlur={formik.handleBlur}
                   hasError={
                     RichTextInput.isTouched(formik.touched.coverLetter) &&
-                    formik.errors.coverLetter &&
-                    formik.errors.coverLetter.missing
+                    formik.errors.coverLetter?.missing
                   }
                   reset={reset}
                 />
@@ -146,8 +153,7 @@ storiesOf('Examples|Forms/Inputs', module)
                   onBlur={formik.handleBlur}
                   hasError={
                     RichTextInput.isTouched(formik.touched.aboutMe) &&
-                    formik.errors.aboutMe &&
-                    formik.errors.aboutMe.missing
+                    formik.errors.aboutMe?.missing
                   }
                   reset={reset}
                 />

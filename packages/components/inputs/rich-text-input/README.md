@@ -37,7 +37,14 @@ const html = '<p>hello world</p>';
 
 const Example = (props) => {
   const [value, setValue] = React.useState(html);
-  return <RichTextInput value={value} onChange={setValue} />;
+  return (
+    <RichTextInput
+      value={value}
+      onChange={(event) => {
+        setValue(event.target.value);
+      }}
+    />
+  );
 };
 
 export default Example;
@@ -64,14 +71,14 @@ export default Example;
 | `showExpandIcon`             | `TEditorProps['showExpandIcon']`                     |          | `false`   | Indicates whether the expand icon should be visible                                                                       |
 | `onClickExpand`              | `TEditorProps['onClickExpand']`                      |          |           | Called when the `expand` button is clicked                                                                                |
 | `reset`                      | `TEditorProps['reset']`                              |          |           | Indicates that the value of the input component should be reset                                                           |
-| `resetValue`                 | `string`                                             |          | `''`      | Value of the input component after reset                                                                                  |
+| `resetValue`                 | `string`                                             |          |           | Value of the input component after reset                                                                                  |
 
 ## Signatures
 
 ### Signature `onChange`
 
 ```ts
-(state: ReturnType<typeof html.serialize>) => void
+(event: TChangeEvent) => void
 ```
 
 ## Static methods

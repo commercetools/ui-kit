@@ -239,6 +239,10 @@ const deserialize = (html: Html) => {
   return deserializeElement(document.body);
 };
 
+export const defaultSlateState: Descendant[] = [
+  { type: 'paragraph', children: [{ text: '' }] },
+];
+
 const html = {
   serialize,
   deserialize,

@@ -6,6 +6,20 @@ import {
   validSlateStateAdapter,
 } from '@commercetools-uikit/rich-text-utils';
 import Editor, { type TEditorProps } from './editor';
+import type { Deserialized } from '../../rich-text-utils/src/html';
+
+type TBaseEvent = {
+  target: {
+    id?: string;
+    name?: string;
+  };
+};
+
+type TChangeEvent = {
+  target: TBaseEvent['target'] & {
+    value: string;
+  };
+};
 
 export type TRichTextInputProps = {
   /**
@@ -51,7 +65,7 @@ export type TRichTextInputProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange?: (state: ReturnType<typeof html.serialize>) => void;
+  onChange?: (event: TChangeEvent) => void;
   /**
    * Called when input is focused
    */
@@ -89,13 +103,11 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     | 'horizontalConstraint'
     | 'placeholder'
     | 'showExpandIcon'
-    | 'resetValue'
   > = {
     defaultExpandMultilineText: false,
     horizontalConstraint: 'scale',
     placeholder: '',
     showExpandIcon: false,
-    resetValue: '',
   };
 
   static displayName = 'RichTextInput';
@@ -127,7 +139,7 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     }
   }
 
-  onValueChange = (state: Parameters<typeof html.serialize>[0]) => {
+  onValueChange = (state: Deserialized | Deserialized[]) => {
     const serializedValue = html.serialize(state);
     // because we are not using setState, we need to make sure that
     // we perform an update when the slate value changes
@@ -142,7 +154,7 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     // the consumer only cares about the serializedValue, so it doesn't make sense to call
     // onChange unless this value changes.
     if (hasSerializedValueChanged) {
-      this.props.onChange?.(html.serialize(state));
+      this.props.onChange?.({ target: { value: html.serialize(state) } });
     }
 
     if (hasInternalSlateValueChanged && !hasSerializedValueChanged) {

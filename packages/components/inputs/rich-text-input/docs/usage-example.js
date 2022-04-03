@@ -5,7 +5,14 @@ const html = '<p>hello world</p>';
 
 const Example = (props) => {
   const [value, setValue] = React.useState(html);
-  return <RichTextInput value={value} onChange={setValue} />;
+  return (
+    <RichTextInput
+      value={value}
+      onChange={(event) => {
+        setValue(event.target.value);
+      }}
+    />
+  );
 };
 
 export default Example;

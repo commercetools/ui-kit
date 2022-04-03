@@ -39,7 +39,7 @@ const Example = () => (
       en: '',
       de: '',
     }}
-    onChange={(state) => console.log(state)}
+    onChange={(event) => console.log('event.target.value', event.target.value)}
     selectedLanguage="en"
   />
 );
@@ -54,7 +54,7 @@ export default Example;
 | `id`                            | `TRichTextInputProps['id']`                                                               |          |           | Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. \`foo.en                            |
 | `name`                          | `TRichTextInputProps['name']`                                                             |          |           | Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`           |
 | `value`                         | `Record`                                                                                  |    ✅    |           | Values to use. Keyed by language, the values are the actual values, e.g. \`{ en: '<p>Horse</p>', de: '<p>Pferd</p>' }                                          |
-| `onChange`                      | `Function`<br/>[See signature.](#signature-onChange)                                      |    ✅    |           | Gets called when any input is changed. Is called with the change event of the changed input.                                                                   |
+| `onChange`                      | `Function`<br/>[See signature.](#signature-onChange)                                      |          |           | Gets called when any input is changed. Is called with the change event of the changed input.                                                                   |
 | `selectedLanguage`              | `string`                                                                                  |    ✅    |           | Specifies which language will be shown in case the `LocalizedRichTextInput` is collapsed.                                                                      |
 | `onBlur`                        | `TRichTextInputProps['onBlur']`                                                           |          |           | Called when any field is blurred. Is called with the `event` of that field.                                                                                    |
 | `onFocus`                       | `TRichTextInputProps['onFocus']`                                                          |          |           | Called when any field is focussed. Is called with the `event` of that field.                                                                                   |
@@ -79,9 +79,7 @@ export default Example;
 ### Signature `onChange`
 
 ```ts
-(
-  language: string
-) => (state: ReturnType<typeof html.serialize>) => void
+(event: TCustomEvent) => void
 ```
 
 ### Static Properties

@@ -30,13 +30,13 @@ const StoryWrapper = (props) => {
     'nan-Hant-TW': initialValue,
   });
 
-  const onChange = useCallback(
-    (language) => (languageNewState) => {
-      setValue((state) => ({ ...state, [language]: languageNewState }));
-      action('onChange')(languageNewState);
-    },
-    []
-  );
+  const onChange = useCallback((event) => {
+    setValue({
+      ...value,
+      [event.target.language]: event.target.value,
+    });
+    action('onChange')(event);
+  }, []);
 
   const defaultExpandLanguages = boolean('defaultExpandLanguages', false);
   const defaultExpandMultilineText = boolean(

@@ -15,7 +15,7 @@ export type TRichTextInputProps = {
   placeholder: TEditorProps['placeholder'];
   isDisabled?: TEditorProps['isDisabled'];
   isReadOnly?: TEditorProps['isReadOnly'];
-  onChange?: (state: ReturnType<typeof html.serialize>) => void;
+  onChange?: (state: string) => void;
   onBlur?: TEditorProps['onBlur'];
   onFocus?: TEditorProps['onFocus'];
   value: string;
@@ -36,11 +36,10 @@ export type TRichTextInputProps = {
 class RichTextInput extends PureComponent<TRichTextInputProps> {
   static defaultProps: Pick<
     TRichTextInputProps,
-    'defaultExpandMultilineText' | 'placeholder' | 'resetValue'
+    'defaultExpandMultilineText' | 'placeholder'
   > = {
     defaultExpandMultilineText: false,
     placeholder: '',
-    resetValue: '',
   };
 
   static displayName = 'RichTextInput';

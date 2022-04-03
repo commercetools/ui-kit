@@ -1,5 +1,20 @@
 import percySnapshot from '@percy/puppeteer';
+import puppeteer from 'puppeteer';
 import { getDocument, queries } from 'pptr-testing-library';
+let browser;
+let page;
+
+jest.setTimeout(20000);
+
+beforeEach(async () => {
+  browser = await puppeteer.launch({
+    slowMo: 10,
+  });
+  page = await browser.newPage();
+});
+afterEach(async () => {
+  await browser.close();
+});
 
 describe('RichTextInput', () => {
   const blur = async (element) => {

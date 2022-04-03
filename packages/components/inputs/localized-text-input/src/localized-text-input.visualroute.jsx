@@ -18,14 +18,14 @@ export const component = ({ themes }) => (
     <Spec label="minimal">
       <LocalizedTextInput
         value={value}
-        onChange={() => () => {}}
+        onChange={() => {}}
         selectedLanguage="en"
       />
     </Spec>
     <Spec label="when languages are expanded by default">
       <LocalizedTextInput
         value={value}
-        onChange={() => () => {}}
+        onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         defaultExpandLanguages={true}
@@ -34,7 +34,7 @@ export const component = ({ themes }) => (
     <Spec label="when expansion controls are hidden">
       <LocalizedTextInput
         value={value}
-        onChange={() => () => {}}
+        onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         hideLanguageExpansionControls={true}
@@ -43,7 +43,7 @@ export const component = ({ themes }) => (
     <Spec label="when read-only and open">
       <LocalizedTextInput
         value={value}
-        onChange={() => () => {}}
+        onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         isReadOnly={true}
@@ -53,7 +53,7 @@ export const component = ({ themes }) => (
     <Spec label="when read-only and closed">
       <LocalizedTextInput
         value={value}
-        onChange={() => () => {}}
+        onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         isReadOnly={true}
@@ -62,7 +62,7 @@ export const component = ({ themes }) => (
     <Spec label="when disabled and open">
       <LocalizedTextInput
         value={value}
-        onChange={() => () => {}}
+        onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         isDisabled={true}
@@ -72,7 +72,7 @@ export const component = ({ themes }) => (
     <Spec label="when disabled and closed">
       <LocalizedTextInput
         value={value}
-        onChange={() => () => {}}
+        onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         isDisabled={true}
@@ -81,7 +81,7 @@ export const component = ({ themes }) => (
     <Spec label="when there is an error for a specific language (first one)">
       <LocalizedTextInput
         value={value}
-        onChange={() => () => {}}
+        onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         errors={{ en: <ErrorMessage>foo</ErrorMessage> }}
@@ -90,7 +90,7 @@ export const component = ({ themes }) => (
     <Spec label="when there is an error for a specific language (second one)">
       <LocalizedTextInput
         value={value}
-        onChange={() => () => {}}
+        onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         errors={{ de: <ErrorMessage>foo</ErrorMessage> }}
@@ -99,7 +99,7 @@ export const component = ({ themes }) => (
     <Spec label="when there is a general error">
       <LocalizedTextInput
         value={value}
-        onChange={() => () => {}}
+        onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
         hasError={true}
@@ -109,7 +109,7 @@ export const component = ({ themes }) => (
       <Spec label="with a custom (dark) theme" omitPropsList={true}>
         <LocalizedTextInput
           value={value}
-          onChange={() => () => {}}
+          onChange={() => {}}
           selectedLanguage="en"
           horizontalConstraint={7}
         />
