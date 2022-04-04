@@ -1,5 +1,11 @@
 # @commercetools-uikit/hooks
 
+## 14.0.3
+
+### Patch Changes
+
+- [#2149](https://github.com/commercetools/ui-kit/pull/2149) [`bd73c49fe`](https://github.com/commercetools/ui-kit/commit/bd73c49fea1b0c6fc93e8786facad5224898a7eb) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Export several Typescript types related to data tables.
+
 ## 14.0.1
 
 ### Patch Changes

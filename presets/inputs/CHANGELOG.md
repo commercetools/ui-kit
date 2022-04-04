@@ -1,5 +1,22 @@
 # @commercetools-uikit/inputs
 
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/date-input@14.0.3
+  - @commercetools-uikit/date-range-input@14.0.3
+  - @commercetools-uikit/date-time-input@14.0.3
+  - @commercetools-uikit/localized-money-input@14.0.3
+  - @commercetools-uikit/localized-multiline-text-input@14.0.3
+  - @commercetools-uikit/localized-rich-text-input@14.0.3
+  - @commercetools-uikit/localized-text-input@14.0.3
+  - @commercetools-uikit/money-input@14.0.3
+  - @commercetools-uikit/multiline-text-input@14.0.3
+  - @commercetools-uikit/rich-text-input@14.0.3
+  - @commercetools-uikit/time-input@14.0.3
+
 ## 14.0.2
 
 ### Patch Changes
