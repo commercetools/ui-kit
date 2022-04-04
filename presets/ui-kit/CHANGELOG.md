@@ -1,5 +1,13 @@
 # @commercetools-frontend/ui-kit
 
+## 14.0.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/inputs@14.0.4
+  - @commercetools-uikit/fields@14.0.4
+
 ## 14.0.3
 
 ### Patch Changes

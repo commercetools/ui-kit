@@ -1,5 +1,12 @@
 # @commercetools-uikit/fields
 
+## 14.0.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/time-field@14.0.4
+
 ## 14.0.3
 
 ### Patch Changes
