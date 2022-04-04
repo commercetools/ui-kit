@@ -1,5 +1,11 @@
 # @commercetools-uikit/time-input
 
+## 14.0.4
+
+### Patch Changes
+
+- [#2160](https://github.com/commercetools/ui-kit/pull/2160) [`209eb9a9c`](https://github.com/commercetools/ui-kit/commit/209eb9a9c226be080320607b4965e4d653d870d6) Thanks [@emmenko](https://github.com/emmenko)! - Fix regression of handling `change` events.
+
 ## 14.0.3
 
 ### Patch Changes
