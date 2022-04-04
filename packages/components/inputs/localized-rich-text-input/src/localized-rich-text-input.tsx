@@ -252,7 +252,8 @@ const LocalizedRichTextInput = (props: TLocalizedRichTextInputProps) => {
           value: state,
         },
       }),
-    [props]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [props.id, props.name, props.onChange]
   );
 
   const languages = sortLanguages(

@@ -111,17 +111,13 @@ type TRichTextEditorBodyRef = {
   containerRef: RefObject<HTMLDivElement>;
 };
 
+const renderElement = (props: RenderElementProps) => <Element {...props} />;
+const renderLeaf = (props: RenderLeafProps) => <Leaf {...props} />;
+
 const Editor = (props: TEditorProps) => {
   const intl = useIntl();
   const ref = useRef<HTMLDivElement>();
-  const renderElement = useCallback(
-    (props: RenderElementProps) => <Element {...props} />,
-    []
-  );
-  const renderLeaf = useCallback(
-    (props: RenderLeafProps) => <Leaf {...props} />,
-    []
-  );
+
   const createEditorWithPlugins = pipe(withReact, withHistory);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const editor = useMemo(() => createEditorWithPlugins(createEditor()), []);

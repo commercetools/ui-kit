@@ -3209,9 +3209,9 @@ __metadata:
     react: 17.0.2
     react-intl: ^5.24.6
     react-textarea-autosize: 8.3.3
-    slate: ^0.75.0
-    slate-history: ^0.66.0
-    slate-react: ^0.75.0
+    slate: 0.75.0
+    slate-history: 0.66.0
+    slate-react: 0.75.0
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -3661,9 +3661,9 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^5.24.6
-    slate: ^0.75.0
-    slate-history: ^0.66.0
-    slate-react: ^0.75.0
+    slate: 0.75.0
+    slate-history: 0.66.0
+    slate-react: 0.75.0
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -3684,19 +3684,19 @@ __metadata:
     "@commercetools-uikit/utils": 14.0.1
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    "@types/escape-html": ^1.0.1
+    "@types/escape-html": 1.0.1
     downshift: 6.1.7
-    escape-html: ^1.0.3
+    escape-html: 1.0.3
     is-hotkey: 0.2.0
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^5.24.6
-    slate: ^0.75.0
-    slate-history: ^0.66.0
-    slate-hyperscript: ^0.67.0
-    slate-react: ^0.75.0
-    style-to-object: ^0.3.0
+    slate: 0.75.0
+    slate-history: 0.66.0
+    slate-hyperscript: 0.67.0
+    slate-react: 0.75.0
+    style-to-object: 0.3.0
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -6031,7 +6031,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/escape-html@npm:^1.0.1":
+"@types/escape-html@npm:1.0.1":
   version: 1.0.1
   resolution: "@types/escape-html@npm:1.0.1"
   checksum: 141d6e44dd514b0bf8a1c5e7730d6b9fa291bb11a52bcc3434d269252b10622f52bd7458553efc2c95ca8341bafab836fe696f8fe72f82c5809204239b8ba791
@@ -9895,7 +9895,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"escape-html@npm:^1.0.3":
+"escape-html@npm:1.0.3":
   version: 1.0.3
   resolution: "escape-html@npm:1.0.3"
   checksum: 6213ca9ae00d0ab8bccb6d8d4e0a98e76237b2410302cf7df70aaa6591d509a2a37ce8998008cbecae8fc8ffaadf3fb0229535e6a145f3ce0b211d060decbb24
@@ -17283,7 +17283,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slate-history@npm:^0.66.0":
+"slate-history@npm:0.66.0":
   version: 0.66.0
   resolution: "slate-history@npm:0.66.0"
   dependencies:
@@ -17294,7 +17294,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slate-hyperscript@npm:^0.67.0":
+"slate-hyperscript@npm:0.67.0":
   version: 0.67.0
   resolution: "slate-hyperscript@npm:0.67.0"
   dependencies:
@@ -17305,7 +17305,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slate-react@npm:^0.75.0":
+"slate-react@npm:0.75.0":
   version: 0.75.0
   resolution: "slate-react@npm:0.75.0"
   dependencies:
@@ -17325,7 +17325,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slate@npm:^0.75.0":
+"slate@npm:0.75.0":
   version: 0.75.0
   resolution: "slate@npm:0.75.0"
   dependencies:
@@ -17910,7 +17910,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-to-object@npm:^0.3.0":
+"style-to-object@npm:0.3.0":
   version: 0.3.0
   resolution: "style-to-object@npm:0.3.0"
   dependencies:

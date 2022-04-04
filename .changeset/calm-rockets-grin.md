@@ -9,10 +9,13 @@ Replace `slate-html-serializer` with `slate-hyperscript`.
 
 #### Changes in `Slate` resulting in breaking changes of rich text input and localized rich text input
 External changes of the [0.67+ `Slate`'s](https://github.com/ianstormtaylor/slate/releases/tag/slate-react%400.67.0) `value` are not possible and editor resetting must take place internally, therefore `reset` and `resetValue` props were introduced. 
+
 #### Changes in rich text input props:
 ```diff
 export type TRichTextInputProps = {
     // ...
+-  isAutofocussed?: boolean; // please mind the typo in the old prop name
++  isAutofocused?: boolean;
 +  reset?: boolean;
 +  resetValue?: string; 
 ```

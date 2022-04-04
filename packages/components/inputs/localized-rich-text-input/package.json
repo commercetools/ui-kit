@@ -44,9 +44,9 @@
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
     "react-textarea-autosize": "8.3.3",
-    "slate": "^0.75.0",
-    "slate-history": "^0.66.0",
-    "slate-react": "^0.75.0"
+    "slate": "0.75.0",
+    "slate-history": "0.66.0",
+    "slate-react": "0.75.0"
   },
   "devDependencies": {
     "react": "17.0.2",
