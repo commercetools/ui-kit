@@ -2,7 +2,6 @@ import {
   useCallback,
   useEffect,
   useRef,
-  useState,
   type FocusEventHandler,
   type ChangeEventHandler,
 } from 'react';
@@ -129,12 +128,21 @@ const hasMilliseconds = (parsedTime: {
   milliseconds: number;
 }) => parsedTime.milliseconds !== 0;
 
+// Calling `eventTarget.dispatchEvent` does not natively work in React.
+// Instead, we need to grab the element value setter, set the value, and dispatch a change event.
+const dispatchReactChangeEvent = (node: HTMLInputElement, value?: string) => {
+  const setValue = Object.getOwnPropertyDescriptor(
+    node.constructor.prototype,
+    'value'
+  )?.set;
+  setValue?.call(node, value);
+  node.dispatchEvent(new Event('change', { bubbles: true }));
+};
+
 const TimeInput = (props: TTimeInputProps) => {
   const id = useFieldId(props.id, sequentialId);
   const intl = useIntl();
   const element = useRef<HTMLInputElement>(null);
-  // Keep internal state to allow clearing the value manually (`onClear`).
-  const [controlledValue, setControlledValue] = useState(props.value);
 
   if (!props.isReadOnly) {
     warning(
@@ -148,7 +156,6 @@ const TimeInput = (props: TTimeInputProps) => {
   const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (event) => {
       const rawValue = event.target.value;
-      setControlledValue(rawValue);
       const formattedValue = TimeInput.toLocaleTime(rawValue, intl.locale);
       event.target.value = formattedValue;
       onChange?.(event);
@@ -167,13 +174,18 @@ const TimeInput = (props: TTimeInputProps) => {
   );
 
   const handleClear = useCallback(() => {
-    setControlledValue('');
-    element.current?.dispatchEvent(new Event('change'));
+    if (element.current) {
+      dispatchReactChangeEvent(element.current, '');
+    }
   }, []);
 
   // if locale has changed trigger a new change event
   useEffect(() => {
-    element.current?.dispatchEvent(new Event('change'));
+    if (element.current) {
+      dispatchReactChangeEvent(element.current, props.value);
+    }
+    // Only subscribe this effect to `intl.locale` changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [intl.locale]);
 
   return (
@@ -183,7 +195,7 @@ const TimeInput = (props: TTimeInputProps) => {
         id={id}
         name={props.name}
         autoComplete={props.autoComplete}
-        value={controlledValue}
+        value={props.value}
         onChange={handleChange}
         onBlur={handleBlur}
         onFocus={props.onFocus}
