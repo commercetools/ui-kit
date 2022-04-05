@@ -1,4 +1,9 @@
-import { PureComponent, type ReactNode } from 'react';
+import {
+  PureComponent,
+  forwardRef,
+  type ReactNode,
+  type ForwardedRef,
+} from 'react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   html,
@@ -22,8 +27,7 @@ export type TRichTextInputProps = {
   showExpandIcon: TEditorProps['showExpandIcon'];
   onClickExpand?: TEditorProps['onClickExpand'];
   hasLanguagesControl?: TEditorProps['hasLanguagesControl'];
-  reset?: TEditorProps['reset'];
-  resetValue?: string;
+  parentRef?: ForwardedRef<unknown>;
 
   // Pass-through props
   language: string;
@@ -47,10 +51,6 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
   serializedValue = this.props.value || '';
   internalSlateValue = validSlateStateAdapter(
     html.deserialize(this.props.value || '')
-  );
-
-  resetValue = validSlateStateAdapter(
-    html.deserialize(this.props.resetValue || '')
   );
 
   componentDidUpdate() {
@@ -128,11 +128,15 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
         warning={this.props.warning}
         error={this.props.error}
         hasLanguagesControl={this.props.hasLanguagesControl}
-        reset={this.props.reset}
-        resetValue={this.resetValue}
+        ref={this.props.parentRef}
       />
     );
   }
 }
 
-export default RichTextInput;
+const RichTextInputWithRef = forwardRef((props: TRichTextInputProps, ref) => (
+  <RichTextInput parentRef={ref} {...props} />
+));
+RichTextInputWithRef.displayName = 'RichTextInputWithRef';
+
+export default RichTextInputWithRef;

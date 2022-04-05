@@ -4,6 +4,8 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useImperativeHandle,
+  forwardRef,
   type ReactNode,
   type LegacyRef,
   type RefObject,
@@ -98,8 +100,7 @@ export type TEditorProps = {
   onBlur?: FocusEventHandler;
   isAutofocused?: boolean;
   placeholder?: string;
-  reset?: boolean;
-  resetValue?: Descendant[];
+  ref?: Ref<unknown>;
 };
 
 type TNodeRefObject = {
@@ -114,7 +115,7 @@ type TRichTextEditorBodyRef = {
 const renderElement = (props: RenderElementProps) => <Element {...props} />;
 const renderLeaf = (props: RenderLeafProps) => <Leaf {...props} />;
 
-const Editor = (props: TEditorProps) => {
+const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
   const intl = useIntl();
   const ref = useRef<HTMLDivElement>();
 
@@ -152,13 +153,18 @@ const Editor = (props: TEditorProps) => {
     updateRenderToggleButton();
   }, [editor, updateRenderToggleButton]);
 
-  //resetting
-  useEffect(() => {
-    if (props.reset) {
-      resetEditor(editor, props.resetValue);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.reset]);
+  // resetting
+  const reset = useCallback(
+    (newValue: string) => {
+      resetEditor(editor, newValue);
+    },
+    [editor]
+  );
+  useImperativeHandle(forwardedRef, () => {
+    return {
+      reset,
+    };
+  });
 
   const shouldToggleButtonTakeSpace =
     /* 
@@ -333,7 +339,7 @@ const Editor = (props: TEditorProps) => {
       }}
     </CollapsibleMotion>
   );
-};
+});
 Editor.displayName = 'Editor';
 
 export default Editor;

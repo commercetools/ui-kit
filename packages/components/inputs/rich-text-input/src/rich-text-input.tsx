@@ -1,4 +1,10 @@
-import { PureComponent } from 'react';
+import {
+  PureComponent,
+  forwardRef,
+  type ForwardedRef,
+  type ForwardRefExoticComponent,
+  type RefAttributes,
+} from 'react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   html,
@@ -86,17 +92,11 @@ export type TRichTextInputProps = {
    * Called when the `expand` button is clicked
    */
   onClickExpand?: TEditorProps['onClickExpand'];
-  /**
-   * Indicates that the value of the input component should be reset
-   */
-  reset?: TEditorProps['reset'];
-  /**
-   * Value of the input component after reset
-   */
-  resetValue?: string;
 };
 
-class RichTextInput extends PureComponent<TRichTextInputProps> {
+class RichTextInput extends PureComponent<
+  TRichTextInputProps & { parentRef?: ForwardedRef<unknown> }
+> {
   static defaultProps: Pick<
     TRichTextInputProps,
     | 'defaultExpandMultilineText'
@@ -111,15 +111,10 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
   };
 
   static displayName = 'RichTextInput';
-  static isEmpty = isEmpty;
-  static isTouched = (touched: boolean | unknown[]) => Boolean(touched);
 
   serializedValue = this.props.value;
   internalSlateValue = validSlateStateAdapter(
     html.deserialize(this.props.value || '')
-  );
-  resetValue = validSlateStateAdapter(
-    html.deserialize(this.props.resetValue || '')
   );
 
   componentDidUpdate() {
@@ -195,11 +190,27 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
         placeholder={this.props.placeholder}
         showExpandIcon={this.props.showExpandIcon}
         onClickExpand={this.props.onClickExpand}
-        reset={this.props.reset}
-        resetValue={this.resetValue}
+        ref={this.props.parentRef}
       />
     );
   }
 }
 
-export default RichTextInput;
+type StaticProps = {
+  isEmpty: typeof isEmpty;
+  isTouched: typeof isTouched;
+};
+
+const isTouched = (touched: boolean | unknown[]) => Boolean(touched);
+
+const RichTextInputWithRef: ForwardRefExoticComponent<
+  TRichTextInputProps & RefAttributes<unknown>
+> &
+  Partial<StaticProps> = forwardRef((props: TRichTextInputProps, ref) => (
+  <RichTextInput parentRef={ref} {...props} />
+));
+RichTextInputWithRef.displayName = 'RichTextInputWithRef';
+RichTextInputWithRef.isEmpty = isEmpty;
+RichTextInputWithRef.isTouched = isTouched;
+
+export default RichTextInputWithRef;

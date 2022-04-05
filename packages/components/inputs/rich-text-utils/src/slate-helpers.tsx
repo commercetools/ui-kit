@@ -17,7 +17,7 @@ import {
 } from 'slate-react';
 import type { HistoryEditor } from 'slate-history';
 import { BLOCK_TAGS, MARK_TAGS } from './tags';
-import { defaultSlateState, type Deserialized } from './html';
+import html, { defaultSlateState, type Deserialized } from './html';
 
 type CustomElement = {
   type: Format;
@@ -211,13 +211,14 @@ const validSlateStateAdapter = (
   return defaultSlateState;
 };
 
-const resetEditor = (editor: Editor, resetValue?: Descendant[]) => {
+const resetEditor = (editor: Editor, resetValue?: string) => {
   const totalNodes = editor.children.length;
   Transforms.removeNodes(editor, {
     at: [0, totalNodes - 1],
   });
   if (resetValue) {
-    Transforms.insertNodes(editor, resetValue, { at: [0, totalNodes - 1] });
+    const newState = validSlateStateAdapter(html.deserialize(resetValue));
+    Transforms.insertNodes(editor, newState, { at: [0, totalNodes - 1] });
     Transforms.unwrapNodes(editor, { at: [0] });
   }
 };

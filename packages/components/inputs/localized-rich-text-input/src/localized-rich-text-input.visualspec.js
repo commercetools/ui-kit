@@ -8,7 +8,7 @@ jest.setTimeout(20000);
 
 beforeEach(async () => {
   browser = await puppeteer.launch({
-    slowMo: 10,
+    slowMo: 50,
   });
   page = await browser.newPage();
 });

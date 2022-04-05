@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types, react/display-name */
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef, forwardRef } from 'react';
 import { Formik, useField } from 'formik';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty-es';
@@ -17,7 +17,7 @@ import TextField from '../../../fields/text-field';
 
 const initialValue = '';
 
-const RichTextFormikInput = (props) => {
+const RichTextFormikInput = forwardRef((props, ref) => {
   const [field, meta, helpers] = useField(props.name);
   const { value } = meta;
   const { setValue } = helpers;
@@ -25,7 +25,6 @@ const RichTextFormikInput = (props) => {
   const onChange = useCallback(
     (event) => {
       {
-        console.log(event);
         setValue(event.target.value);
         action('onChange')(event);
       }
@@ -41,10 +40,10 @@ const RichTextFormikInput = (props) => {
       onChange={onChange}
       onBlur={props.onBlur}
       hasError={props.hasError}
-      reset={props.reset}
+      ref={ref}
     />
   );
-};
+});
 
 storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)
@@ -62,12 +61,12 @@ storiesOf('Examples|Forms/Inputs', module)
       coverLetter: initialValue,
       aboutMe: initialValue,
     };
-    const [reset, setReset] = useState(false);
-    useEffect(() => {
-      if (reset) {
-        setReset(false);
-      }
-    }, [reset]);
+    const refCv = useRef(null);
+    const refCoverLetter = useRef(null);
+    const refAboutMe = useRef(null);
+    const handleReset = useCallback((ref) => {
+      ref.current?.reset();
+    }, []);
 
     return (
       <Section>
@@ -128,7 +127,7 @@ storiesOf('Examples|Forms/Inputs', module)
                     RichTextInput.isTouched(formik.touched.cv) &&
                     formik.errors.cv?.missing
                   }
-                  reset={reset}
+                  ref={refCv}
                 />
               </Spacings.Stack>
               <Spacings.Stack scale="s">
@@ -143,7 +142,7 @@ storiesOf('Examples|Forms/Inputs', module)
                     RichTextInput.isTouched(formik.touched.coverLetter) &&
                     formik.errors.coverLetter?.missing
                   }
-                  reset={reset}
+                  ref={refCoverLetter}
                 />
               </Spacings.Stack>
               <Spacings.Stack scale="s">
@@ -155,14 +154,16 @@ storiesOf('Examples|Forms/Inputs', module)
                     RichTextInput.isTouched(formik.touched.aboutMe) &&
                     formik.errors.aboutMe?.missing
                   }
-                  reset={reset}
+                  ref={refAboutMe}
                 />
               </Spacings.Stack>
               <Spacings.Inline>
                 <SecondaryButton
                   onClick={() => {
                     formik.handleReset();
-                    setReset(true);
+                    handleReset(refCv);
+                    handleReset(refCoverLetter);
+                    handleReset(refAboutMe);
                   }}
                   isDisabled={formik.isSubmitting}
                   label="Reset"

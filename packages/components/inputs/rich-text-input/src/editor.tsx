@@ -4,6 +4,8 @@ import {
   useCallback,
   useMemo,
   useEffect,
+  useImperativeHandle,
+  forwardRef,
   type ReactNode,
   type LegacyRef,
   type RefObject,
@@ -82,8 +84,7 @@ export type TEditorProps = {
   onFocus?: FocusEventHandler;
   onBlur?: FocusEventHandler;
   isAutofocused?: boolean;
-  reset?: boolean;
-  resetValue: Descendant[];
+  ref?: Ref<unknown>;
 };
 
 type TNodeRefObject = {
@@ -98,7 +99,7 @@ type TRichtTextEditorBodyRef = {
 const renderElement = (props: RenderElementProps) => <Element {...props} />;
 const renderLeaf = (props: RenderLeafProps) => <Leaf {...props} />;
 
-const Editor = (props: TEditorProps) => {
+const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
   const intl = useIntl();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -125,12 +126,17 @@ const Editor = (props: TEditorProps) => {
   }, [editor, updateRenderToggleButton]);
 
   // resetting
-  useEffect(() => {
-    if (props.reset) {
-      resetEditor(editor, props.resetValue);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.reset]);
+  const reset = useCallback(
+    (newValue: string) => {
+      resetEditor(editor, newValue);
+    },
+    [editor]
+  );
+  useImperativeHandle(forwardedRef, () => {
+    return {
+      reset,
+    };
+  });
 
   return (
     <CollapsibleMotion
@@ -230,7 +236,7 @@ const Editor = (props: TEditorProps) => {
       }}
     </CollapsibleMotion>
   );
-};
+});
 Editor.displayName = 'Editor';
 
 export default Editor;

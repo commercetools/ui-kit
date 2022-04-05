@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { Switch, Route } from 'react-router';
 import { RichTextInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
@@ -16,10 +16,11 @@ export const routePath = '/rich-text-input';
 const InteractiveRoute = () => {
   const [value, setValue] = useState(emptyValue);
   const [reset, setReset] = useState(false);
+  const ref = useRef(null);
 
   const handleReset = useCallback(() => {
-    setReset(true);
-  }, [setValue]);
+    ref.current?.reset('<p><strong>Hello World</strong></p>');
+  }, []);
 
   const onChange = useCallback(
     (event) => {
@@ -27,12 +28,6 @@ const InteractiveRoute = () => {
     },
     [setValue]
   );
-
-  useEffect(() => {
-    if (reset) {
-      setReset(false);
-    }
-  }, [reset]);
 
   return (
     <Suite>
@@ -56,8 +51,7 @@ const InteractiveRoute = () => {
           onChange={onChange}
           value={value}
           horizontalConstraint={7}
-          reset={reset}
-          resetValue="<p><strong>Hello World</strong></p>"
+          ref={ref}
         />
       </Spec>
     </Suite>
