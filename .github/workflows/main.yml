@@ -37,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      - name: Check for unmet constraints (fix w/ "yarn constraints --fix")
+        run: yarn constraints
+
       - name: Building packages
         run: yarn build
 
