@@ -151,18 +151,7 @@ const TimeInput = (props: TTimeInputProps) => {
     );
   }
 
-  const { onBlur, onChange } = props;
-
-  const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
-    (event) => {
-      const rawValue = event.target.value;
-      const formattedValue = TimeInput.toLocaleTime(rawValue, intl.locale);
-      event.target.value = formattedValue;
-      onChange?.(event);
-    },
-    [intl.locale, onChange]
-  );
-
+  const { onBlur } = props;
   const handleBlur = useCallback<FocusEventHandler<HTMLInputElement>>(
     (event) => {
       const rawValue = event.target.value;
@@ -196,7 +185,7 @@ const TimeInput = (props: TTimeInputProps) => {
         name={props.name}
         autoComplete={props.autoComplete}
         value={props.value}
-        onChange={handleChange}
+        onChange={props.onChange}
         onBlur={handleBlur}
         onFocus={props.onFocus}
         isAutofocussed={props.isAutofocussed}
