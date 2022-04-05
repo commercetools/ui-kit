@@ -37,13 +37,19 @@ const html = '<p>hello world</p>';
 
 const Example = (props) => {
   const [value, setValue] = React.useState(html);
+  const handleChange = React.useCallback((event) => {
+    setValue(event.target.value);
+  }, []);
+  const ref = React.useRef(null);
+  const handleReset = React.useCallback(() => {
+    ref.current?.reset('<p>after reset</p>');
+  }, []);
+
   return (
-    <RichTextInput
-      value={value}
-      onChange={(event) => {
-        setValue(event.target.value);
-      }}
-    />
+    <>
+      <button onClick={handleReset}>Reset</button>
+      <RichTextInput value={value} onChange={handleChange} ref={ref} />
+    </>
   );
 };
 
@@ -70,8 +76,6 @@ export default Example;
 | `value`                      | `string`                                             |          |           | Value of the input component.                                                                                             |
 | `showExpandIcon`             | `TEditorProps['showExpandIcon']`                     |          | `false`   | Indicates whether the expand icon should be visible                                                                       |
 | `onClickExpand`              | `TEditorProps['onClickExpand']`                      |          |           | Called when the `expand` button is clicked                                                                                |
-| `reset`                      | `TEditorProps['reset']`                              |          |           | Indicates that the value of the input component should be reset                                                           |
-| `resetValue`                 | `string`                                             |          |           | Value of the input component after reset                                                                                  |
 
 ## Signatures
 

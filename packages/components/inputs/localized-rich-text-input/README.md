@@ -71,8 +71,6 @@ export default Example;
 | `warnings`                      | `Record`                                                                                  |          |           | Used to show warnings underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the warning to show for that key. |
 | `showExpandIcon`                | `TRichTextInputProps['showExpandIcon']`                                                   |          | `false`   | Shows an `expand` icon in the toolbar                                                                                                                          |
 | `onClickExpand`                 | `TRichTextInputProps['onClickExpand']`                                                    |          |           | Called when the `expand` button is clicked                                                                                                                     |
-| `reset`                         | `TRichTextInputProps['reset']`                                                            |          |           | Indicates that the value of the input component should be reset                                                                                                |
-| `resetValue`                    | `TRichTextInputProps['resetValue']`                                                       |          |           | Value of the input component after reset                                                                                                                       |
 
 ## Signatures
 
