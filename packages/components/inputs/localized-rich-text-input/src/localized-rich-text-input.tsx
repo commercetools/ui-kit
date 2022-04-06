@@ -234,11 +234,9 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
     const [expandedTranslationsState, expandedTranslationsDispatch] =
       useReducer(expandedTranslationsReducer, initialExpandedTranslationsState);
 
-    const defaultExpansionState =
-      props.hideLanguageExpansionControls ||
-      props.defaultExpandLanguages ||
-      // useToggleState's default is `true`, but we want `false`
-      false;
+    const defaultExpansionState = Boolean(
+      props.hideLanguageExpansionControls || props.defaultExpandLanguages
+    );
 
     const [areLanguagesOpened, toggleLanguages] = useToggleState(
       defaultExpansionState

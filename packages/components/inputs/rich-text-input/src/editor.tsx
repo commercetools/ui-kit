@@ -202,6 +202,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                             const mark =
                               HOTKEYS[hotkey as keyof typeof HOTKEYS];
                             toggleMark(editor, mark);
+                            break;
                           }
                         }
                       }}

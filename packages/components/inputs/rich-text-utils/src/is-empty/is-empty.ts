@@ -6,7 +6,7 @@ import {
 } from 'slate';
 import html from '../html';
 
-const isTextNodeNonEmpty = (node: TText) =>
+const isTextNodeNonEmpty = (node: TText | TElement) =>
   Text.isText(node) && node.text !== '';
 
 const isElementNodeNonEmpty = (node: TElement) =>
@@ -32,7 +32,7 @@ const isEmpty = (rawValue: string): boolean => {
           node.children.some((node) =>
             Text.isText(node)
               ? isTextNodeNonEmpty(node)
-              : isElementNodeNonEmpty(node as TElement)
+              : isElementNodeNonEmpty(node)
           )
         ) ||
         (Text.isText(node) && node.text === '')
