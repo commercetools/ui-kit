@@ -8,7 +8,7 @@ jest.setTimeout(20000);
 
 beforeEach(async () => {
   browser = await puppeteer.launch({
-    slowMo: 50, // Launching the browser in slow motion is necessary due to race conditions. Otherwise browser closes prematurely and tests fail.
+    slowMo: 10, // Launching the browser in slow motion is necessary due to race conditions. Otherwise browser closes prematurely and tests fail.
   });
   page = await browser.newPage();
 });

@@ -192,7 +192,7 @@ const isBlockActive = (editor: TEditor, format: Format) => {
 };
 
 /* 
-  Comes from slate's own implementation of rich text editor
+  From slate's own implementation of rich text editor
   https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L67:L99
  */
 const toggleBlock = (editor: TEditor, format: Format) => {

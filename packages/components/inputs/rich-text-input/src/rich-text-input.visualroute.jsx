@@ -14,7 +14,7 @@ export const routePath = '/rich-text-input';
 
 // this route will be used with puppeteer based testing.
 const InteractiveRoute = () => {
-  const [value, setValue] = useState(largeValue);
+  const [value, setValue] = useState(emptyValue);
   const [reset, setReset] = useState(false);
   const ref = useRef(null);
 
