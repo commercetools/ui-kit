@@ -49,6 +49,10 @@ declare module 'slate' {
 
 const LIST_TYPES = [BLOCK_TAGS.ol, BLOCK_TAGS.ul];
 
+/* 
+  From Slate's own implementation of rich text editor
+  https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L133:L179
+ */
 const Element = ({ attributes, children, element }: RenderElementProps) => {
   const style = { textAlign: element.align } as CSSProperties;
   switch (element.type) {
@@ -106,12 +110,6 @@ const Element = ({ attributes, children, element }: RenderElementProps) => {
           {children}
         </ol>
       );
-    case BLOCK_TAGS.p:
-      return (
-        <p style={style} {...attributes}>
-          {children}
-        </p>
-      );
     default:
       return (
         <p style={style} {...attributes}>
@@ -121,6 +119,10 @@ const Element = ({ attributes, children, element }: RenderElementProps) => {
   }
 };
 
+/* 
+  From Slate's own implementation of rich text editor
+  https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L181:L199
+ */
 const Leaf = ({ attributes, children, leaf }: RenderLeafProps) => {
   if (leaf.bold) {
     children = <strong>{children}</strong>;
@@ -147,11 +149,19 @@ const Leaf = ({ attributes, children, leaf }: RenderLeafProps) => {
   return <span {...attributes}>{children}</span>;
 };
 
+/* 
+  From Slate's own implementation of rich text editor
+  https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L128:L131
+ */
 const isMarkActive = (editor: TEditor, format: Format) => {
   const marks = Editor.marks(editor);
   return marks ? marks[format as keyof typeof marks] === true : false;
 };
 
+/* 
+  From Slate's own implementation of rich text editor
+  https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L101:L09
+ */
 const toggleMark = (editor: Editor, format: Format) => {
   const isActive = isMarkActive(editor, format);
 
@@ -162,6 +172,10 @@ const toggleMark = (editor: Editor, format: Format) => {
   }
 };
 
+/* 
+  From Slate's own implementation of rich text editor
+  https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L111:L126
+ */
 const isBlockActive = (editor: TEditor, format: Format) => {
   const { selection } = editor;
   if (!selection) return false;
@@ -177,6 +191,10 @@ const isBlockActive = (editor: TEditor, format: Format) => {
   return Boolean(match);
 };
 
+/* 
+  Comes from slate's own implementation of rich text editor
+  https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx#L67:L99
+ */
 const toggleBlock = (editor: TEditor, format: Format) => {
   const isActive = isBlockActive(editor, format);
   const isList = LIST_TYPES.includes(format);
@@ -212,15 +230,18 @@ const validSlateStateAdapter = (
 };
 
 const resetEditor = (editor: Editor, resetValue?: string) => {
-  const totalNodes = editor.children.length;
-  Transforms.removeNodes(editor, {
-    at: [0, totalNodes - 1],
+  const children = [...editor.children];
+  children.forEach((node) =>
+    editor.apply({ type: 'remove_node', path: [0], node })
+  );
+  const newState = resetValue
+    ? validSlateStateAdapter(html.deserialize(resetValue))
+    : defaultSlateState;
+  editor.apply({
+    type: 'insert_node',
+    path: [0],
+    node: newState[0],
   });
-  if (resetValue) {
-    const newState = validSlateStateAdapter(html.deserialize(resetValue));
-    Transforms.insertNodes(editor, newState, { at: [0, totalNodes - 1] });
-    Transforms.unwrapNodes(editor, { at: [0] });
-  }
 };
 
 const focusEditor = (editor: Editor) => {

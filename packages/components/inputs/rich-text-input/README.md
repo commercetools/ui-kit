@@ -58,24 +58,25 @@ export default Example;
 
 ## Properties
 
-| Props                        | Type                                                 | Required | Default   | Description                                                                                                               |
-| ---------------------------- | ---------------------------------------------------- | :------: | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `isAutofocused`              | `TEditorProps['isAutofocused']`                      |          |           | Focus the control when it is mounted                                                                                      |
-| `defaultExpandMultilineText` | `TEditorProps['defaultExpandMultilineText']`         |          | `false`   | Expands multiline text input initially                                                                                    |
-| `hasError`                   | `TEditorProps['hasError']`                           |          |           | Indicates the input field has an error                                                                                    |
-| `hasWarning`                 | `TEditorProps['hasWarning']`                         |          |           | Indicates the input field has warning                                                                                     |
-| `id`                         | `TEditorProps['id']`                                 |          |           | Used as the HTML `id` attribute.                                                                                          |
-| `name`                       | `TEditorProps['name']`                               |          |           | Used as the HTML `name` attribute.                                                                                        |
-| `placeholder`                | `TEditorProps['placeholder']`                        |          | `''`      | Placeholder value to show in the input field                                                                              |
-| `isDisabled`                 | `TEditorProps['isDisabled']`                         |          |           | Disables the rich text input                                                                                              |
-| `isReadOnly`                 | `TEditorProps['isReadOnly']`                         |          |           | Indicates that the rich text input is displaying read-only content                                                        |
-| `horizontalConstraint`       | `TEditorProps['horizontalConstraint']`               |          | `'scale'` | Horizontal size limit of the input fields                                                                                 |
-| `onChange`                   | `Function`<br/>[See signature.](#signature-onChange) |          |           | Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value. |
-| `onFocus`                    | `TEditorProps['onFocus']`                            |          |           | Called when input is focused                                                                                              |
-| `onBlur`                     | `TEditorProps['onBlur']`                             |          |           | Called when input is blurred                                                                                              |
-| `value`                      | `string`                                             |          |           | Value of the input component.                                                                                             |
-| `showExpandIcon`             | `TEditorProps['showExpandIcon']`                     |          | `false`   | Indicates whether the expand icon should be visible                                                                       |
-| `onClickExpand`              | `TEditorProps['onClickExpand']`                      |          |           | Called when the `expand` button is clicked                                                                                |
+| Props                        | Type                                                                                      | Required | Default   | Description                                                                                                               |
+| ---------------------------- | ----------------------------------------------------------------------------------------- | :------: | --------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `isAutofocussed`             | `boolean`                                                                                 |          |           | Focus the control when it is mounted                                                                                      |
+| `defaultExpandMultilineText` | `boolean`                                                                                 |          | `false`   | Expands multiline text input initially                                                                                    |
+| `hasError`                   | `boolean`                                                                                 |          |           | Indicates the input field has an error                                                                                    |
+| `hasWarning`                 | `boolean`                                                                                 |          |           | Indicates the input field has warning                                                                                     |
+| `id`                         | `string`                                                                                  |          |           | Used as the HTML `id` attribute.                                                                                          |
+| `name`                       | `string`                                                                                  |          |           | Used as the HTML `name` attribute.                                                                                        |
+| `placeholder`                | `string`                                                                                  |          | `''`      | Placeholder value to show in the input field                                                                              |
+| `isDisabled`                 | `boolean`                                                                                 |          |           | Disables the rich text input                                                                                              |
+| `isReadOnly`                 | `boolean`                                                                                 |          |           | Indicates that the rich text input is displaying read-only content                                                        |
+| `horizontalConstraint`       | `union`<br/>Possible values:<br/>`, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields                                                                                 |
+| `onChange`                   | `Function`<br/>[See signature.](#signature-onChange)                                      |          |           | Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value. |
+| `onFocus`                    | `FocusEventHandler`                                                                       |          |           | Called when input is focused                                                                                              |
+| `onBlur`                     | `FocusEventHandler`                                                                       |          |           | Called when input is blurred                                                                                              |
+| `value`                      | `string`                                                                                  |          |           | Value of the input component.                                                                                             |
+| `showExpandIcon`             | `boolean`                                                                                 |          | `false`   | Indicates whether the expand icon should be visible                                                                       |
+| `onClickExpand`              | `Function`<br/>[See signature.](#signature-onClickExpand)                                 |          |           | Called when the `expand` button is clicked                                                                                |
+| `parentRef`                  | `ForwardedRef`                                                                            |          |           |                                                                                                                           |
 
 ## Signatures
 
@@ -83,6 +84,12 @@ export default Example;
 
 ```ts
 (event: TChangeEvent) => void
+```
+
+### Signature `onClickExpand`
+
+```ts
+() => boolean;
 ```
 
 ## Static methods

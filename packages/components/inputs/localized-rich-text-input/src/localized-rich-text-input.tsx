@@ -7,6 +7,7 @@ import {
   type KeyboardEvent,
   type ForwardRefExoticComponent,
   type RefAttributes,
+  type FocusEventHandler,
 } from 'react';
 import { css } from '@emotion/react';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -24,7 +25,7 @@ import {
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import { localized } from '@commercetools-uikit/rich-text-utils';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
-import RichTextInput, { type TRichTextInputProps } from './rich-text-input';
+import RichTextInput from './rich-text-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 
 type TErrors = Record<string, string>;
@@ -42,11 +43,11 @@ export type TLocalizedRichTextInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en
    */
-  id?: TRichTextInputProps['id'];
+  id?: string;
   /**
    * Used as HTML `name` property for each input field. Each input field name will have the language as a suffix (`${namePrefix}.${lang}`), e.g. `foo.en`
    */
-  name?: TRichTextInputProps['name'];
+  name?: string;
   // then input doesn't accept a "languages" prop, instead all possible
   // languages have to exist (with empty or filled slate values) on the value:
   //   { en: slateValue, de: slateValue, es: slateValue }
@@ -65,15 +66,15 @@ export type TLocalizedRichTextInputProps = {
   /**
    * Called when any field is blurred. Is called with the `event` of that field.
    */
-  onBlur?: TRichTextInputProps['onBlur'];
+  onBlur?: FocusEventHandler<HTMLDivElement>;
   /**
    * Called when any field is focussed. Is called with the `event` of that field.
    */
-  onFocus?: TRichTextInputProps['onFocus'];
+  onFocus?: FocusEventHandler<HTMLDivElement>;
   /**
    * Expands input components holding multiline values instead of collapsing them by default.
    */
-  defaultExpandMultilineText?: TRichTextInputProps['defaultExpandMultilineText'];
+  defaultExpandMultilineText?: boolean;
   /**
    * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`
    */
@@ -81,15 +82,15 @@ export type TLocalizedRichTextInputProps = {
   /**
    * Controls whether one or all languages are visible by default. Pass `true` to show all languages by default.
    */
-  defaultExpandLanguages?: TRichTextInputProps['defaultExpandMultilineText'];
+  defaultExpandLanguages?: boolean;
   /**
    * Disables all input
    */
-  isDisabled?: TRichTextInputProps['isDisabled'];
+  isDisabled?: boolean;
   /**
    * Disables all input fields and shows them in read-only mode.
    */
-  isReadOnly?: TRichTextInputProps['isReadOnly'];
+  isReadOnly?: boolean;
   /**
    * Placeholders for each language. Object of the same shape as
    */
@@ -113,11 +114,11 @@ export type TLocalizedRichTextInputProps = {
   /**
    * Will apply the error state to each input without showing any error message.
    */
-  hasError?: TRichTextInputProps['hasError'];
+  hasError?: boolean;
   /**
    * Will apply the warning state to each input without showing any warning message.
    */
-  hasWarning?: TRichTextInputProps['hasWarning'];
+  hasWarning?: boolean;
   /**
    * Used to show errors underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the error to show for that key.
    */
@@ -129,13 +130,14 @@ export type TLocalizedRichTextInputProps = {
   /**
    * Shows an `expand` icon in the toolbar
    */
-  showExpandIcon: TRichTextInputProps['showExpandIcon'];
+  showExpandIcon: boolean;
   /**
    * Called when the `expand` button is clicked
    */
-  onClickExpand?: TRichTextInputProps['onClickExpand'];
+  onClickExpand?: () => boolean;
 };
 
+// When component is using `forwardRef` only `defaultProps` and `displayName` are recognized by default as static props
 type StaticProps = {
   RequiredValueErrorMessage: typeof RequiredValueErrorMessage;
   getId: typeof getId;

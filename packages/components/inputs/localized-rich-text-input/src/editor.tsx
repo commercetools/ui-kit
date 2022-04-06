@@ -96,8 +96,8 @@ export type TEditorProps = {
   hasLanguagesControl?: boolean;
   value: Descendant[];
   onChange: (state: Descendant[]) => void;
-  onFocus?: FocusEventHandler;
-  onBlur?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLDivElement>;
+  onBlur?: FocusEventHandler<HTMLDivElement>;
   isAutofocused?: boolean;
   placeholder?: string;
   ref?: Ref<unknown>;
@@ -160,6 +160,12 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
     },
     [editor]
   );
+  /* 
+  Resetting the editor requires access to `editor` object returned from `useSlate` hook.
+  Therefore, `reset` function is attached to the passed `ref` object via `useImperativeHandle` 
+  to be called from the parent component. 
+  e.g. <button onMouseDown={() => ref.current?.reset("<p><strong>Value after reset</strong></p>")}>Reset</button>
+  */
   useImperativeHandle(forwardedRef, () => {
     return {
       reset,

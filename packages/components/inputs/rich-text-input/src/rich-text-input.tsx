@@ -4,6 +4,7 @@ import {
   type ForwardedRef,
   type ForwardRefExoticComponent,
   type RefAttributes,
+  type FocusEventHandler,
 } from 'react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
@@ -11,7 +12,7 @@ import {
   isEmpty,
   validSlateStateAdapter,
 } from '@commercetools-uikit/rich-text-utils';
-import Editor, { type TEditorProps } from './editor';
+import Editor from './editor';
 import type { Deserialized } from '../../rich-text-utils/src/html';
 
 type TBaseEvent = {
@@ -31,43 +32,55 @@ export type TRichTextInputProps = {
   /**
    * Focus the control when it is mounted
    */
-  isAutofocused?: TEditorProps['isAutofocused'];
+  isAutofocussed?: boolean;
   /**
    * Expands multiline text input initially
    */
-  defaultExpandMultilineText?: TEditorProps['defaultExpandMultilineText'];
+  defaultExpandMultilineText?: boolean;
   /**
    * Indicates the input field has an error
    */
-  hasError?: TEditorProps['hasError'];
+  hasError?: boolean;
   /**
    * Indicates the input field has warning
    */
-  hasWarning?: TEditorProps['hasWarning'];
+  hasWarning?: boolean;
   /**
    * Used as the HTML `id` attribute.
    */
-  id?: TEditorProps['id'];
+  id?: string;
   /**
    * Used as the HTML `name` attribute.
    */
-  name?: TEditorProps['name'];
+  name?: string;
   /**
    * Placeholder value to show in the input field
    */
-  placeholder: TEditorProps['placeholder'];
+  placeholder: string;
   /**
    * Disables the rich text input
    */
-  isDisabled?: TEditorProps['isDisabled'];
+  isDisabled?: boolean;
   /**
    * Indicates that the rich text input is displaying read-only content
    */
-  isReadOnly?: TEditorProps['isReadOnly'];
+  isReadOnly?: boolean;
   /**
    * Horizontal size limit of the input fields
    */
-  horizontalConstraint?: TEditorProps['horizontalConstraint'];
+  horizontalConstraint?:
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
@@ -75,11 +88,11 @@ export type TRichTextInputProps = {
   /**
    * Called when input is focused
    */
-  onFocus?: TEditorProps['onFocus'];
+  onFocus?: FocusEventHandler<HTMLDivElement>;
   /**
    * Called when input is blurred
    */
-  onBlur?: TEditorProps['onBlur'];
+  onBlur?: FocusEventHandler<HTMLDivElement>;
   /**
    * Value of the input component.
    */
@@ -87,11 +100,11 @@ export type TRichTextInputProps = {
   /**
    * Indicates whether the expand icon should be visible
    */
-  showExpandIcon: TEditorProps['showExpandIcon'];
+  showExpandIcon: boolean;
   /**
    * Called when the `expand` button is clicked
    */
-  onClickExpand?: TEditorProps['onClickExpand'];
+  onClickExpand?: () => boolean;
 };
 
 class RichTextInput extends PureComponent<
@@ -174,7 +187,7 @@ class RichTextInput extends PureComponent<
     return (
       <Editor
         {...filterDataAttributes(this.props)}
-        isAutofocused={this.props.isAutofocused}
+        isAutofocused={this.props.isAutofocussed}
         id={this.props.id}
         name={this.props.name}
         onFocus={this.props.onFocus}
@@ -196,6 +209,7 @@ class RichTextInput extends PureComponent<
   }
 }
 
+// When component is using `forwardRef` only `defaultProps` and `displayName` are recognized by default as static props
 type StaticProps = {
   isEmpty: typeof isEmpty;
   isTouched: typeof isTouched;

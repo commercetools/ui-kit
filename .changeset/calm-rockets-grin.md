@@ -7,36 +7,31 @@
 Update `slate` and `slate-react` packages to most recent versions.
 Replace `slate-html-serializer` with `slate-hyperscript`.
 
-#### Changes in rich text input props:
-```diff
-export type TRichTextInputProps = {
-    // ...
--  isAutofocussed?: boolean; // please mind the typo in the old prop name
-+  isAutofocused?: boolean;
-```
+# Changes in the `<RichTextInput>` and `<LocalizedRichTextInput>` behavior
+Before, slate editor without any prior focus assumed that point [0,0] was selected. Formatting buttons toggling was possible but the results (formatting buttons' state change and content formatting) were not visible until the editor got focus.
 
-#### Resetting rich text input and localized rich text input
-External changes of the [0.67+ `Slate`'s](https://github.com/ianstormtaylor/slate/releases/tag/slate-react%400.67.0) `value` are not possible and editor resetting must take place internally. For that `ref` object have to be passed to `<RichTextEditor>` or `<LocalizedRichTextEditor>`. 
-Then in client code we may imperatively reset the editor:
+Currently editor has to explicitly receive focus to apply the initial selection and enable any formatting.
+
+# Migration guide
+The `<RichTextInput>` and `<LocalizedRichTextInput>` components now require to explicitly call a `reset` function when the form values need to be reset to their initial state.
+This `reset` function is attached to a `ref` object passed to the component.
 
 ```jsx
 const ref = useRef(null);
 
 const handleReset = useCallback(() => {
-    ref.current?.reset('<p><strong>Value after reset</strong></p>');
+  ref.current?.reset("<p><strong>Value after reset</strong></p>");
 }, []);
 
 return (
-    <>
-        <button onMouseDown={handleReset}>
-            Reset
-        </button>
-        <RichTextInput
-            // ...
-            ref={ref}
-        />
-    </>
-)
+  <>
+    <button onMouseDown={handleReset}>Reset</button>
+    <RichTextInput
+      // ...
+      ref={ref}
+    />
+  </>
+);
 ```
 
 

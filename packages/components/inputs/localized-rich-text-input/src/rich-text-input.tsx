@@ -11,7 +11,7 @@ import {
 } from '@commercetools-uikit/rich-text-utils';
 import Editor, { type TEditorProps } from './editor';
 
-export type TRichTextInputProps = {
+type TRichTextInputProps = {
   defaultExpandMultilineText: TEditorProps['defaultExpandMultilineText'];
   hasError?: TEditorProps['hasError'];
   hasWarning?: TEditorProps['hasWarning'];
