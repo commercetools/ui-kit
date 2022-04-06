@@ -2027,12 +2027,12 @@ __metadata:
     "@commercetools-uikit/design-system": 14.0.0
     "@commercetools-uikit/field-errors": 14.0.1
     "@commercetools-uikit/field-label": 14.0.2
-    "@commercetools-uikit/fields": 14.0.3
+    "@commercetools-uikit/fields": 14.0.5
     "@commercetools-uikit/grid": 14.0.0
     "@commercetools-uikit/hooks": 14.0.3
     "@commercetools-uikit/i18n": 14.0.0
     "@commercetools-uikit/icons": 14.0.1
-    "@commercetools-uikit/inputs": 14.0.3
+    "@commercetools-uikit/inputs": 14.0.5
     "@commercetools-uikit/label": 14.0.1
     "@commercetools-uikit/link": 14.0.1
     "@commercetools-uikit/loading-spinner": 14.0.1
@@ -2806,7 +2806,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/fields@14.0.3, @commercetools-uikit/fields@workspace:presets/fields":
+"@commercetools-uikit/fields@14.0.5, @commercetools-uikit/fields@workspace:presets/fields":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/fields@workspace:presets/fields"
   dependencies:
@@ -2828,7 +2828,7 @@ __metadata:
     "@commercetools-uikit/search-select-field": 14.0.3
     "@commercetools-uikit/select-field": 14.0.2
     "@commercetools-uikit/text-field": 14.0.2
-    "@commercetools-uikit/time-field": 14.0.3
+    "@commercetools-uikit/time-field": 14.0.5
     react: 17.0.2
     react-intl: ^5.24.6
     react-router-dom: 5.3.0
@@ -2963,7 +2963,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/inputs@14.0.3, @commercetools-uikit/inputs@workspace:presets/inputs":
+"@commercetools-uikit/inputs@14.0.5, @commercetools-uikit/inputs@workspace:presets/inputs":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/inputs@workspace:presets/inputs"
   dependencies:
@@ -2989,7 +2989,7 @@ __metadata:
     "@commercetools-uikit/search-select-input": 14.0.2
     "@commercetools-uikit/select-input": 14.0.2
     "@commercetools-uikit/text-input": 14.0.2
-    "@commercetools-uikit/time-input": 14.0.3
+    "@commercetools-uikit/time-input": 14.0.5
     "@commercetools-uikit/toggle-input": 14.0.2
     react: 17.0.2
     react-intl: ^5.24.6
@@ -4052,7 +4052,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/time-field@14.0.3, @commercetools-uikit/time-field@workspace:packages/components/fields/time-field":
+"@commercetools-uikit/time-field@14.0.5, @commercetools-uikit/time-field@workspace:packages/components/fields/time-field":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/time-field@workspace:packages/components/fields/time-field"
   dependencies:
@@ -4063,7 +4063,7 @@ __metadata:
     "@commercetools-uikit/field-errors": 14.0.1
     "@commercetools-uikit/field-label": 14.0.2
     "@commercetools-uikit/spacings-stack": 14.0.1
-    "@commercetools-uikit/time-input": 14.0.3
+    "@commercetools-uikit/time-input": 14.0.5
     "@commercetools-uikit/utils": 14.0.1
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
@@ -4075,7 +4075,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/time-input@14.0.3, @commercetools-uikit/time-input@workspace:packages/components/inputs/time-input":
+"@commercetools-uikit/time-input@14.0.5, @commercetools-uikit/time-input@workspace:packages/components/inputs/time-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/time-input@workspace:packages/components/inputs/time-input"
   dependencies:

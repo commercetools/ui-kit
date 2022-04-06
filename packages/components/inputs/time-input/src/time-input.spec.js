@@ -20,6 +20,7 @@ const TestComponent = (props) => {
         {...props}
         value={time}
         onChange={(event) => setTime(event.target.value)}
+        onBlur={(event) => setTime(event.target.value)}
       />
       <div>{time ? `Time: ${time}` : 'No time'}</div>
     </div>
@@ -108,7 +109,7 @@ describe('TimeInput', () => {
     const event = { target: { value: '9' } };
     fireEvent.change(screen.getByLabelText('Input'), event);
 
-    await screen.findByText('Time: 9:00 AM');
+    await screen.findByText('Time: 9');
   });
 
   it('should call onChange when clearing the value', async () => {
@@ -131,55 +132,38 @@ describe('TimeInput', () => {
     expect(container.querySelector('input')).toHaveFocus();
   });
 
-  it('should call onBlur when input loses focus', () => {
-    const { container } = render(<TimeInput {...baseProps} />);
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-    container.querySelector('input').blur();
-    expect(container.querySelector('input')).not.toHaveFocus();
+  it('should call onBlur when input loses focus and format the time (english format)', async () => {
+    render(<TestComponent {...baseProps} />, { locale: 'en' });
+
+    await screen.findByText('No time');
+
+    const event = { target: { value: '9' } };
+    fireEvent.change(screen.getByLabelText('Input'), event);
+
+    await screen.findByText('Time: 9');
+
+    fireEvent.blur(screen.getByLabelText('Input'));
+
+    await screen.findByText('Time: 9:00 AM'); // english format
+
+    expect(screen.queryByLabelText('Input')).not.toHaveFocus();
   });
 
-  it('should format the value when input is blurred on english locale', () => {
-    const onBlur = jest.fn();
-    const { container } = render(
-      <TimeInput {...baseProps} onBlur={onBlur} value="2:3 AM" />
-    );
+  it('should call onBlur when input loses focus and format the time (german format)', async () => {
+    render(<TestComponent {...baseProps} />, { locale: 'de' });
 
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-    container.querySelector('input').blur();
-    expect(container.querySelector('input')).not.toHaveFocus();
-    expect(onBlur).toHaveBeenCalledWith(
-      expect.objectContaining({
-        target: expect.objectContaining({
-          id: 'some-id',
-          name: 'some-name',
-          value: '2:03 AM', // english format
-        }),
-      })
-    );
-  });
+    await screen.findByText('No time');
 
-  it('should format the value when input is blurred on german locale', () => {
-    const onBlur = jest.fn();
-    const { container } = render(
-      <TimeInput {...baseProps} onBlur={onBlur} value="12:3" />,
-      { locale: 'de' }
-    );
+    const event = { target: { value: '12:3' } };
+    fireEvent.change(screen.getByLabelText('Input'), event);
 
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-    container.querySelector('input').blur();
-    expect(container.querySelector('input')).not.toHaveFocus();
-    expect(onBlur).toHaveBeenCalledWith(
-      expect.objectContaining({
-        target: expect.objectContaining({
-          id: 'some-id',
-          name: 'some-name',
-          value: '12:03', // german format
-        }),
-      })
-    );
+    await screen.findByText('Time: 12:3');
+
+    fireEvent.blur(screen.getByLabelText('Input'));
+
+    await screen.findByText('Time: 12:03'); // english format
+
+    expect(screen.queryByLabelText('Input')).not.toHaveFocus();
   });
 
   it('should have focus automatically when isAutofocussed is passed', () => {
