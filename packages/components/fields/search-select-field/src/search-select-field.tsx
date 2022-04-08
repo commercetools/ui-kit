@@ -321,7 +321,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
     );
 
     warning(
-      Array.isArray(props.touched),
+      typeof props.touched === 'undefined' || Array.isArray(props.touched),
       'SearchSelectField: `touched` is expected to be an array of boolean when isMulti is true'
     );
   }

@@ -427,7 +427,8 @@ export default class AsyncCreatableSelectField extends Component<
       );
 
       warning(
-        Array.isArray(this.props.touched),
+        typeof this.props.touched === 'undefined' ||
+          Array.isArray(this.props.touched),
         'AsyncCreatableSelectField: `touched` is expected to be an array of boolean when isMulti is true'
       );
     }
