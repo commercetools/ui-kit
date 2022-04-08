@@ -405,7 +405,8 @@ export default class CreatableSelectField extends Component<
       );
 
       warning(
-        Array.isArray(this.props.touched),
+        typeof this.props.touched === 'undefined' ||
+          Array.isArray(this.props.touched),
         'CreatableSelectField: `touched` is expected to be an array of boolean when isMulti is true'
       );
     }

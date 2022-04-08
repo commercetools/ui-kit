@@ -373,7 +373,8 @@ export default class AsyncSelectField extends Component<
       );
 
       warning(
-        Array.isArray(this.props.touched),
+        typeof this.props.touched === 'undefined' ||
+          Array.isArray(this.props.touched),
         'AsyncSelectField: `touched` is expected to be an array of boolean when isMulti is true'
       );
     }
