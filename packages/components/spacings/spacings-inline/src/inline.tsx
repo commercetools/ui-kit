@@ -8,8 +8,13 @@ export type TAlignItem =
   | 'flex-end'
   | 'center'
   | 'baseline'
-  // Deprecated
+  /**
+   * @deprecated Use `flex-start` instead.
+   */
   | 'flexStart'
+  /**
+   * @deprecated Use `flex-end` instead.
+   */
   | 'flexEnd';
 
 export type TJustifyContent =

@@ -10,14 +10,11 @@ import {
 } from 'react';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
-import Stack, { type TStackProps } from '@commercetools-uikit/spacings-stack';
-import Inline from '@commercetools-uikit/spacings-inline';
+import Stack from '@commercetools-uikit/spacings-stack';
+import Inline, {
+  type TInlineProps,
+} from '@commercetools-uikit/spacings-inline';
 import Option from './radio-option';
-
-const directionWrapper = {
-  stack: Stack,
-  inline: Inline,
-};
 
 export type TGroupProps = {
   id?: string;
@@ -30,7 +27,7 @@ export type TGroupProps = {
   isReadOnly?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
-  horizontalConstraint?:
+  horizontalConstraint:
     | 7
     | 8
     | 9
@@ -43,8 +40,12 @@ export type TGroupProps = {
     | 16
     | 'scale'
     | 'auto';
-  direction?: keyof typeof directionWrapper;
-  directionProps?: Partial<TStackProps>;
+  direction: 'stack' | 'inline';
+  directionProps: {
+    scale?: TInlineProps['scale'];
+    alignItems?: TInlineProps['alignItems'];
+    justifyContent?: TInlineProps['justifyContent'];
+  };
   children: ReactNode;
   /**
    * Indicate if the value entered in the input is invalid.
@@ -139,7 +140,6 @@ const Group = (props: TGroupProps) => {
 };
 
 Group.displayName = 'RadioGroup';
-
 Group.defaultProps = defaultProps;
 
 export default Group;
