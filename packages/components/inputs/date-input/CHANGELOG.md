@@ -1,5 +1,17 @@
 # @commercetools-uikit/date-input
 
+## 14.0.6
+
+### Patch Changes
+
+- [#2173](https://github.com/commercetools/ui-kit/pull/2173) [`42aa23d55`](https://github.com/commercetools/ui-kit/commit/42aa23d55ebce6f122092395f90fcf159f795eb1) Thanks [@renovate](https://github.com/apps/renovate)! - Update `moment` dependency to version 2.29.2
+
+- Updated dependencies [[`8f55409f3`](https://github.com/commercetools/ui-kit/commit/8f55409f3c15582a26380c32668a8e5d04260e88), [`42aa23d55`](https://github.com/commercetools/ui-kit/commit/42aa23d55ebce6f122092395f90fcf159f795eb1)]:
+  - @commercetools-uikit/spacings-inline@14.0.6
+  - @commercetools-uikit/calendar-utils@14.0.6
+  - @commercetools-uikit/secondary-icon-button@14.0.6
+  - @commercetools-uikit/select-utils@14.0.6
+
 ## 14.0.3
 
 ### Patch Changes

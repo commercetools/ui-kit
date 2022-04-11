@@ -1,5 +1,12 @@
 # @commercetools-uikit/input-utils
 
+## 14.0.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/flat-button@14.0.6
+
 ## 14.0.2
 
 ### Patch Changes

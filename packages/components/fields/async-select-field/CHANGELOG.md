@@ -1,5 +1,16 @@
 # @commercetools-uikit/async-select-field
 
+## 14.0.6
+
+### Patch Changes
+
+- [#2168](https://github.com/commercetools/ui-kit/pull/2168) [`a89046179`](https://github.com/commercetools/ui-kit/commit/a890461793759e48228e61e013077e08c63ad7c7) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fixes incorrect `touched` prop validation warnings in field components which also have `isMulti` prop.
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@14.0.6
+  - @commercetools-uikit/spacings@14.0.6
+  - @commercetools-uikit/async-select-input@14.0.6
+
 ## 14.0.2
 
 ### Patch Changes
