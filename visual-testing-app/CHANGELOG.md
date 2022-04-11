@@ -1,5 +1,11 @@
 # visual-testing-app
 
+## 11.0.1
+
+### Patch Changes
+
+- [#2173](https://github.com/commercetools/ui-kit/pull/2173) [`42aa23d55`](https://github.com/commercetools/ui-kit/commit/42aa23d55ebce6f122092395f90fcf159f795eb1) Thanks [@renovate](https://github.com/apps/renovate)! - Update `moment` dependency to version 2.29.2
+
 ## 11.0.0
 
 ### Major Changes
