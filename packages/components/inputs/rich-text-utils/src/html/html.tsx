@@ -193,14 +193,14 @@ const deserializeElement = (
     } else {
       attrs = Object.entries(styleObj || {}).reduce(
         (mappedAttrObj, [key, value]) => {
-          const values = value.split(' '); // to cover the case of space separated values e.g. `text-decoration-line: "underline line-through"`
+          const values = value.split(' '); // to cover the case of space-separated values e.g. `text-decoration-line: "underline line-through"`
 
           values.forEach((splittedValue) => {
-            if (mapper[key] && mapper[key][splittedValue]) {
+            if (mapper[key]?.[splittedValue]) {
               // checking if the parsed style attr value has representation in the mapper obj
               mappedAttrObj = {
-                ...mapper[key][splittedValue],
                 ...mappedAttrObj,
+                ...mapper[key][splittedValue],
               };
             }
           });

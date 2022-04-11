@@ -249,7 +249,7 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
       [expandedTranslationsDispatch]
     );
 
-    const handleChange = useCallback(
+    const createChangeHandler = useCallback(
       (language: string) => (state: string) =>
         props.onChange?.({
           target: {
@@ -306,7 +306,7 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
                   id={getId(props.id, language)}
                   name={getName(props.name, language)}
                   value={props.value[language]}
-                  onChange={handleChange(language)}
+                  onChange={createChangeHandler(language)}
                   language={language}
                   isOpen={expandedTranslationsState[language]}
                   toggleLanguage={toggleLanguage}

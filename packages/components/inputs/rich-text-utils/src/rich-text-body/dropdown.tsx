@@ -1,9 +1,6 @@
 /// <reference types="@emotion/react/types/css-prop" />
 import type { ElementType, FunctionComponent, ReactNode } from 'react';
-import DownshiftUntyped, {
-  GetItemPropsOptions,
-  GetToggleButtonPropsOptions,
-} from 'downshift';
+import DownshiftUntyped, { type ControllerStateAndHelpers } from 'downshift';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Tooltip from '@commercetools-uikit/tooltip';
@@ -43,12 +40,6 @@ type THeadings = {
 
 const Label = styled.div;
 
-type DownshiftRenderProps = {
-  isOpen: boolean;
-  getToggleButtonProps: (options?: GetToggleButtonPropsOptions) => unknown;
-  getItemProps: (options: GetItemPropsOptions<unknown>) => unknown;
-};
-
 const Dropdown = (props: TDropdownProps) => {
   const DropdownItem: FunctionComponent<{
     value: string;
@@ -71,7 +62,7 @@ const Dropdown = (props: TDropdownProps) => {
         isOpen,
         getToggleButtonProps,
         getItemProps,
-      }: DownshiftRenderProps) => {
+      }: ControllerStateAndHelpers<unknown>) => {
         const toggleButtonProps = getToggleButtonProps();
 
         return (

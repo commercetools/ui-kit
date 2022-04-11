@@ -29,10 +29,10 @@ const isEmpty = (rawValue: string): boolean => {
       (node) =>
         !(
           Element.isElement(node) &&
-          node.children.some((node) =>
-            Text.isText(node)
-              ? isTextNodeNonEmpty(node)
-              : isElementNodeNonEmpty(node)
+          node.children.some(
+            (childNode) =>
+              (Text.isText(childNode) && isTextNodeNonEmpty(childNode)) ||
+              (Element.isElement(childNode) && isElementNodeNonEmpty(childNode))
           )
         ) ||
         (Text.isText(node) && node.text === '')
