@@ -154,7 +154,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
   }, [editor, updateRenderToggleButton]);
 
   // resetting
-  const reset = useCallback(
+  const resetValue = useCallback(
     (newValue: string) => {
       resetEditor(editor, newValue);
     },
@@ -164,11 +164,11 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
   Resetting the editor requires access to `editor` object returned from `useSlate` hook.
   Therefore, `reset` function is attached to the passed `ref` object via `useImperativeHandle` 
   to be called from the parent component. 
-  e.g. <button onMouseDown={() => ref.current?.reset("<p><strong>Value after reset</strong></p>")}>Reset</button>
+  e.g. <button onMouseDown={() => ref.current?.resetValue("<p><strong>Value after reset</strong></p>")}>Reset</button>
   */
   useImperativeHandle(forwardedRef, () => {
     return {
-      reset,
+      resetValue,
     };
   });
 

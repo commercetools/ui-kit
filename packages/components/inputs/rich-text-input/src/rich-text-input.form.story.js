@@ -65,7 +65,7 @@ storiesOf('Examples|Forms/Inputs', module)
     const refCoverLetter = useRef(null);
     const refAboutMe = useRef(null);
     const handleReset = useCallback((ref) => {
-      ref.current?.reset();
+      ref.current?.resetValue();
     }, []);
 
     return (

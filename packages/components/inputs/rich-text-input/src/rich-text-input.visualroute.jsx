@@ -19,7 +19,7 @@ const InteractiveRoute = () => {
   const ref = useRef(null);
 
   const handleReset = useCallback(() => {
-    ref.current?.reset('<p><strong>Hello World</strong></p>');
+    ref.current?.resetValue('<p><strong>Hello World</strong></p>');
   }, []);
 
   const onChange = useCallback(

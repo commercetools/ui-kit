@@ -10,7 +10,7 @@ const Example = (props) => {
   }, []);
   const ref = React.useRef(null);
   const handleReset = React.useCallback(() => {
-    ref.current?.reset('<p>after reset</p>');
+    ref.current?.resetValue('<p>after reset</p>');
   }, []);
 
   return (
