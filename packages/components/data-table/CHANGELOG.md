@@ -1,5 +1,12 @@
 # @commercetools-uikit/data-table
 
+## 14.0.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/secondary-icon-button@14.0.6
+
 ## 14.0.3
 
 ### Patch Changes

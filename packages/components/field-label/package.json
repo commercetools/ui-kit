@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/field-label",
   "description": "The FieldLabel component represents the label for a field in a form.",
-  "version": "14.0.2",
+  "version": "14.0.6",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -22,11 +22,11 @@
     "@babel/runtime": "^7.17.2",
     "@babel/runtime-corejs3": "^7.17.2",
     "@commercetools-uikit/constraints": "14.0.1",
-    "@commercetools-uikit/icon-button": "14.0.2",
+    "@commercetools-uikit/icon-button": "14.0.6",
     "@commercetools-uikit/icons": "14.0.1",
     "@commercetools-uikit/label": "14.0.1",
-    "@commercetools-uikit/spacings-inline": "14.0.1",
-    "@commercetools-uikit/spacings-stack": "14.0.1",
+    "@commercetools-uikit/spacings-inline": "14.0.6",
+    "@commercetools-uikit/spacings-stack": "14.0.6",
     "@commercetools-uikit/text": "14.0.1",
     "@commercetools-uikit/utils": "14.0.1",
     "@emotion/react": "^11.4.0",

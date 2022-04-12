@@ -1,5 +1,12 @@
 # @commercetools-uikit/select-utils
 
+## 14.0.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings@14.0.6
+
 ## 14.0.1
 
 ### Patch Changes

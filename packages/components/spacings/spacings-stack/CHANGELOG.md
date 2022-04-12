@@ -1,5 +1,11 @@
 # @commercetools-uikit/spacings-stack
 
+## 14.0.6
+
+### Patch Changes
+
+- [#2170](https://github.com/commercetools/ui-kit/pull/2170) [`8f55409f3`](https://github.com/commercetools/ui-kit/commit/8f55409f3c15582a26380c32668a8e5d04260e88) Thanks [@emmenko](https://github.com/emmenko)! - Improve deprecation annotations
+
 ## 14.0.1
 
 ### Patch Changes
