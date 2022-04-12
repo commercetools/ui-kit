@@ -1,5 +1,15 @@
 # @commercetools-uikit/pagination
 
+## 14.0.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings@14.0.6
+  - @commercetools-uikit/secondary-icon-button@14.0.6
+  - @commercetools-uikit/number-input@14.0.6
+  - @commercetools-uikit/select-input@14.0.6
+
 ## 14.0.2
 
 ### Patch Changes

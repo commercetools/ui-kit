@@ -1,5 +1,12 @@
 # @commercetools-uikit/collapsible-panel
 
+## 14.0.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings@14.0.6
+
 ## 14.0.3
 
 ### Patch Changes

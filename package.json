@@ -119,7 +119,7 @@
     "jest-validate": "27.5.1",
     "jest-watch-typeahead": "1.0.0",
     "lint-staged": "12.3.4",
-    "moment": "2.29.1",
+    "moment": "2.29.2",
     "moment-timezone": "0.5.34",
     "mri": "1.2.0",
     "omit-empty-es": "1.1.3",
