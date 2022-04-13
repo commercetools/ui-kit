@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean, select, withKnobs } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
+import times from 'lodash/times';
 import DataTable from '@commercetools-uikit/data-table';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import { useRowSelection, useSorting } from '@commercetools-uikit/hooks';
@@ -119,7 +120,13 @@ const FooterSecondaryButton = () => (
   />
 );
 
-const initialColumnsState = [
+const initialHiddenColumns = times(15, (num) => ({
+  key: `extra_${num + 1}`,
+  label: `Extra ${num + 1}`,
+  renderItem: () => `Extra content ${num + 1}`,
+}));
+
+const initialVisibleColumns = [
   {
     key: 'name',
     label: 'Name',
@@ -150,13 +157,15 @@ const initialColumnsState = [
   },
 ];
 
+const initialColumnsState = [...initialVisibleColumns, ...initialHiddenColumns];
+
 storiesOf('Components|DataTable', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
   .add('DataTableManager', () => {
     const [tableData, setTableData] = useState({
       columns: initialColumnsState,
-      visibleColumnKeys: initialColumnsState.map(({ key }) => key),
+      visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
     });
 
     const [isCondensed, setIsCondensed] = useState(false);
@@ -263,7 +272,18 @@ storiesOf('Components|DataTable', module)
 
     const columnManager = {
       areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
-      searchHiddenColumns: () => {},
+      searchHiddenColumns: (searchTerm) => {
+        setTableData({
+          ...tableData,
+          columns: initialColumnsState.filter(
+            (column) =>
+              tableData.visibleColumnKeys.includes(column.key) ||
+              column.label
+                .toLocaleLowerCase()
+                .includes(searchTerm.toLocaleLowerCase())
+          ),
+        });
+      },
       disableColumnManager: boolean('disableColumnManager', false),
       visibleColumnKeys: tableData.visibleColumnKeys,
       hideableColumns: tableData.columns,
