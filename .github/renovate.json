@@ -18,6 +18,14 @@
       "updateTypes": ["minor", "patch"],
       "groupName": "all dependencies",
       "groupSlug": "all"
+    },
+    {
+      "matchPackageNames": ["html-loader"],
+      "allowedVersions": "<2.0.0"
+    },
+    {
+      "matchPackageNames": ["markdown-loader"],
+      "allowedVersions": "<8.0.0"
     }
   ],
   "lockFileMaintenance": {
