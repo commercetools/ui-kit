@@ -2,14 +2,16 @@
 '@commercetools-uikit/data-table-manager': patch
 ---
 
-Due to some dependencies updates (`react-select`) we SLIGHTLY updated the type for the prop `columnManager.searchHiddenColumns`.
-This props is used to provide a callback function which is called when the search input for the hidden columns panel changes.
-The change should not impact consumers as we are just relaxing the type.
+The return type of the `searchHiddenColumns` function has been refined after we noticed some inconsistencies.
 
-```
-// PREVIOUS DEFINITION
+```ts
+// Before
 searchHiddenColumns?: (searchTerm: string) => Promise<unknown>;
 
-// NEW DEFINITION
+// After
 searchHiddenColumns?: (searchTerm: string) => Promise<void> | void;
 ```
+
+This function is not meant to return any specific value but instead trigger some side effects (e.g. fetching data or updating some state) as a result of the user typing into the search input.
+
+Consumers should not be affected by this change.
