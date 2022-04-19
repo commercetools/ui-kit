@@ -32,7 +32,9 @@ import { HIDDEN_COLUMNS_PANEL, SELECTED_COLUMNS_PANEL } from './constants';
 // but that callback is used in AsyncSelectInput.loadOptions which is required
 // That property (loadOptions) is passed to react-select AsyncSelect where it's
 // declared as optional
-const noSearch = () => Promise.resolve();
+const noSearch = () => Promise.resolve([]);
+// 'onChange' prop in AsyncSelectInput is required but not needed here
+const voidChangeHandler = () => undefined;
 
 type TColumnData = {
   key: string;
@@ -44,7 +46,7 @@ type TColumnSettingsManagerProps = {
   selectedColumns: TColumnData[];
   onUpdateColumns: (updatedColums: TColumnData[]) => void;
   areHiddenColumnsSearchable?: boolean;
-  searchHiddenColumns?: (searchTerm: string) => Promise<unknown>;
+  searchHiddenColumns?: (searchTerm: string) => Promise<void> | void;
   searchHiddenColumnsPlaceholder?: string;
 
   onClose: (
@@ -165,11 +167,13 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
     [props.onUpdateColumns, props.selectedColumns, props.availableColumns]
   );
 
-  const handleInputChange = useCallback<(inputValue: string) => void>(
-    (inputValue) =>
-      // loadOptions is not invoked when input is empty
-      !inputValue.length && searchHiddenColumns?.(inputValue),
+  const debouncedSearchHiddenColumns = useMemo(
+    () => debounce(searchHiddenColumns ?? noSearch, 300),
     [searchHiddenColumns]
+  );
+  const handleInputChange = useCallback<(inputValue: string) => void>(
+    (inputValue) => debouncedSearchHiddenColumns(inputValue),
+    [debouncedSearchHiddenColumns]
   );
 
   return (
@@ -202,16 +206,8 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
                         placeholder: props.searchHiddenColumnsPlaceholder,
                       }
                     : undefined)}
-                  cacheOptions={false}
-                  onChange={() => {
-                    // to avoid prop-types error
-                    // as `onChange` is a required prop in
-                    // `AsyncSelectInput`
-                  }}
-                  // loadOptions is used instead of onInputChange
-                  // because the loading indicator is displayed
-                  // only when loadOptions is invoked
-                  loadOptions={debounce(searchHiddenColumns ?? noSearch, 300)}
+                  onChange={voidChangeHandler}
+                  loadOptions={noSearch}
                   onInputChange={handleInputChange}
                   components={selectInputComponents}
                 />

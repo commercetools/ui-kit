@@ -92,7 +92,7 @@ export type TColumnManagerProps = {
   /**
    * A callback function, called when the search input for the hidden columns panel changes.
    */
-  searchHiddenColumns?: (searchTerm: string) => Promise<unknown>;
+  searchHiddenColumns?: (searchTerm: string) => Promise<void> | void;
 
   /**
    * Placeholder value of the search input for the hidden columns panel.

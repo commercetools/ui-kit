@@ -26,6 +26,10 @@
     {
       "matchPackageNames": ["markdown-loader"],
       "allowedVersions": "<8.0.0"
+    },
+    {
+      "matchPackageNames": ["@percy/puppeteer"],
+      "allowedVersions": "<=2.0.0"
     }
   ],
   "lockFileMaintenance": {

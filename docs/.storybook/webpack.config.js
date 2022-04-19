@@ -68,10 +68,7 @@ module.exports = ({ config }) => {
     },
     {
       test: /\.yaml$/,
-      use: [
-        { loader: require.resolve('json-loader') },
-        { loader: require.resolve('yaml-loader') },
-      ],
+      use: [{ loader: require.resolve('yaml-loader') }],
     },
     // Fix for react-intl
     // https://github.com/formatjs/formatjs/issues/143#issuecomment-518774786
