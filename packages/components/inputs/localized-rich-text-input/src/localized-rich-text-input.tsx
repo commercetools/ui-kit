@@ -1,9 +1,13 @@
 import {
   useReducer,
   useCallback,
+  forwardRef,
   type ReactNode,
   type MouseEvent,
   type KeyboardEvent,
+  type ForwardRefExoticComponent,
+  type RefAttributes,
+  type FocusEventHandler,
 } from 'react';
 import { css } from '@emotion/react';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -20,13 +24,12 @@ import {
 } from '@commercetools-uikit/localized-utils';
 import { LocalizedInputToggle } from '@commercetools-uikit/input-utils';
 import { localized } from '@commercetools-uikit/rich-text-utils';
-import { warning } from '@commercetools-uikit/utils';
+import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import RichTextInput from './rich-text-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 
 type TErrors = Record<string, string>;
 type TWarnings = Record<string, ReactNode>;
-
 type TCustomEvent = {
   target: {
     id?: string;
@@ -36,7 +39,7 @@ type TCustomEvent = {
   };
 };
 
-type TLocalizedRichTextInputProps = {
+export type TLocalizedRichTextInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en
    */
@@ -61,13 +64,13 @@ type TLocalizedRichTextInputProps = {
    */
   selectedLanguage: string;
   /**
-   *Called when any field is blurred. Is called with the `event` of that field.
+   * Called when any field is blurred. Is called with the `event` of that field.
    */
-  onBlur?: (event: TCustomEvent) => void;
+  onBlur?: FocusEventHandler<HTMLDivElement>;
   /**
    * Called when any field is focussed. Is called with the `event` of that field.
    */
-  onFocus?: (event: TCustomEvent) => void;
+  onFocus?: FocusEventHandler<HTMLDivElement>;
   /**
    * Expands input components holding multiline values instead of collapsing them by default.
    */
@@ -134,6 +137,17 @@ type TLocalizedRichTextInputProps = {
   onClickExpand?: () => boolean;
 };
 
+// When component is using `forwardRef` only `defaultProps` and `displayName` are recognized by default as static props
+type StaticProps = {
+  RequiredValueErrorMessage: typeof RequiredValueErrorMessage;
+  getId: typeof getId;
+  getName: typeof getName;
+  createLocalizedString: typeof localized.createLocalizedString;
+  isEmpty: typeof localized.isEmpty;
+  omitEmptyTranslations: typeof localized.omitEmptyTranslations;
+  isTouched: typeof isTouched;
+};
+
 type TReducerState = {
   [id: string]: boolean;
 };
@@ -181,160 +195,181 @@ const expandedTranslationsReducer = (
 // can get quite confusing. We try to stick to expand/collapse for the
 // multiline inputs, while we use show/hide/open/close for the remaining
 // languages.
-const LocalizedRichTextInput = (props: TLocalizedRichTextInputProps) => {
-  if (!props.isReadOnly) {
-    warning(
-      typeof props.onChange === 'function',
-      'LocalizedRichTextInput: `onChange` is required when input is not read only.'
-    );
-  }
-
-  if (props.showExpandIcon) {
-    warning(
-      typeof props.onClickExpand === 'function',
-      'LocalizedRichTextInput: "onClickExpand" is required when showExpandIcon is true'
-    );
-  }
-
-  if (props.hideLanguageExpansionControls) {
-    warning(
-      typeof props.defaultExpandLanguages !== 'boolean',
-      'LocalizedRichTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
-    );
-  }
-
-  const initialExpandedTranslationsState = Object.keys(props.value).reduce(
-    (translations, locale) => {
-      return {
-        [locale]: Boolean(props.defaultExpandMultilineText),
-        ...translations,
-      };
-    },
-    {}
-  );
-
-  const [expandedTranslationsState, expandedTranslationsDispatch] = useReducer(
-    expandedTranslationsReducer,
-    initialExpandedTranslationsState
-  );
-
-  const defaultExpansionState =
-    props.hideLanguageExpansionControls ||
-    props.defaultExpandLanguages ||
-    // useToggleState's default is `true`, but we want `false`
-    false;
-
-  const [areLanguagesOpened, toggleLanguages] = useToggleState(
-    defaultExpansionState
-  );
-
-  const toggleLanguage = useCallback(
-    (language) => {
-      expandedTranslationsDispatch({ type: 'toggle', payload: language });
-    },
-    [expandedTranslationsDispatch]
-  );
-
-  const languages = sortLanguages(
-    props.selectedLanguage,
-    Object.keys(props.value)
-  );
-
-  const hasErrorInRemainingLanguages =
-    props.hasError ||
-    getHasErrorOnRemainingLanguages(props.errors, props.selectedLanguage);
-
-  const hasWarningInRemainingLanguages =
-    props.hasWarning ||
-    getHasWarningOnRemainingLanguages(props.warnings, props.selectedLanguage);
-
-  if (hasErrorInRemainingLanguages || hasWarningInRemainingLanguages) {
-    if (!areLanguagesOpened) {
-      // this update within render replaces the old `getDerivedStateFromProps` functionality
-      // https://reactjs.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops
-      toggleLanguages();
+const LocalizedRichTextInput: ForwardRefExoticComponent<
+  TLocalizedRichTextInputProps & RefAttributes<unknown>
+> &
+  Partial<StaticProps> = forwardRef(
+  (props: TLocalizedRichTextInputProps, ref) => {
+    if (!props.isReadOnly) {
+      warning(
+        typeof props.onChange === 'function',
+        'LocalizedRichTextInput: `onChange` is required when input is not read only.'
+      );
     }
-  }
 
-  const shouldRenderLanguagesControl =
-    languages.length > 1 && !props.hideLanguageExpansionControls;
+    if (props.showExpandIcon) {
+      warning(
+        typeof props.onClickExpand === 'function',
+        'LocalizedRichTextInput: "onClickExpand" is required when showExpandIcon is true'
+      );
+    }
 
-  return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
-      <Stack scale="xs">
-        <Stack>
-          {languages.map((language, index) => {
-            const isFirstLanguage = index === 0;
-            if (!isFirstLanguage && !areLanguagesOpened) return null;
-            const isLastLanguage = index === languages.length - 1;
+    if (props.hideLanguageExpansionControls) {
+      warning(
+        typeof props.defaultExpandLanguages !== 'boolean',
+        'LocalizedRichTextInput: "defaultExpandLanguages" does not have any effect when "hideLanguageExpansionControls" is set.'
+      );
+    }
 
-            const hasLanguagesControl =
-              (isFirstLanguage && !areLanguagesOpened) || isLastLanguage;
+    const initialExpandedTranslationsState = Object.keys(props.value).reduce(
+      (translations, locale) => {
+        return {
+          [locale]: Boolean(props.defaultExpandMultilineText),
+          ...translations,
+        };
+      },
+      {}
+    );
 
-            return (
-              <RichTextInput
-                key={language}
-                id={LocalizedRichTextInput.getId(props.id, language)}
-                name={LocalizedRichTextInput.getName(props.name, language)}
-                value={props.value[language]}
-                onChange={props.onChange}
-                language={language}
-                isOpen={expandedTranslationsState[language]}
-                toggleLanguage={toggleLanguage}
-                placeholder={
-                  props.placeholder ? props.placeholder[language] : undefined
+    const [expandedTranslationsState, expandedTranslationsDispatch] =
+      useReducer(expandedTranslationsReducer, initialExpandedTranslationsState);
+
+    const defaultExpansionState = Boolean(
+      props.hideLanguageExpansionControls || props.defaultExpandLanguages
+    );
+
+    const [areLanguagesOpened, toggleLanguages] = useToggleState(
+      defaultExpansionState
+    );
+
+    const toggleLanguage = useCallback(
+      (language) => {
+        expandedTranslationsDispatch({ type: 'toggle', payload: language });
+      },
+      [expandedTranslationsDispatch]
+    );
+
+    const createChangeHandler = useCallback(
+      (language: string) => (state: string) =>
+        props.onChange?.({
+          target: {
+            id: props.id,
+            name: props.name,
+            language,
+            value: state,
+          },
+        }),
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [props.id, props.name, props.onChange]
+    );
+
+    const languages = sortLanguages(
+      props.selectedLanguage,
+      Object.keys(props.value)
+    );
+
+    const hasErrorInRemainingLanguages =
+      props.hasError ||
+      getHasErrorOnRemainingLanguages(props.errors, props.selectedLanguage);
+
+    const hasWarningInRemainingLanguages =
+      props.hasWarning ||
+      getHasWarningOnRemainingLanguages(props.warnings, props.selectedLanguage);
+
+    if (hasErrorInRemainingLanguages || hasWarningInRemainingLanguages) {
+      if (!areLanguagesOpened) {
+        // this update within render replaces the old `getDerivedStateFromProps` functionality
+        // https://reactjs.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops
+        toggleLanguages();
+      }
+    }
+
+    const shouldRenderLanguagesControl =
+      languages.length > 1 && !props.hideLanguageExpansionControls;
+
+    return (
+      <Constraints.Horizontal max={props.horizontalConstraint}>
+        <Stack scale="xs">
+          <Stack>
+            {languages.map((language, index) => {
+              const isFirstLanguage = index === 0;
+              if (!isFirstLanguage && !areLanguagesOpened) return null;
+              const isLastLanguage = index === languages.length - 1;
+
+              const hasLanguagesControl =
+                (isFirstLanguage && !areLanguagesOpened) || isLastLanguage;
+
+              return (
+                <RichTextInput
+                  {...filterDataAttributes(props)}
+                  key={language}
+                  id={getId(props.id, language)}
+                  name={getName(props.name, language)}
+                  value={props.value[language]}
+                  onChange={createChangeHandler(language)}
+                  language={language}
+                  isOpen={expandedTranslationsState[language]}
+                  toggleLanguage={toggleLanguage}
+                  placeholder={
+                    props.placeholder ? props.placeholder[language] : undefined
+                  }
+                  onBlur={props.onBlur}
+                  onFocus={props.onFocus}
+                  isDisabled={props.isDisabled}
+                  isReadOnly={props.isReadOnly}
+                  hasError={Boolean(
+                    props.hasError || (props.errors && props.errors[language])
+                  )}
+                  hasWarning={Boolean(
+                    props.hasWarning ||
+                      (props.warnings && props.warnings[language])
+                  )}
+                  warning={props.warnings && props.warnings[language]}
+                  error={props.errors && props.errors[language]}
+                  showExpandIcon={props.showExpandIcon}
+                  onClickExpand={props.onClickExpand}
+                  hasLanguagesControl={hasLanguagesControl}
+                  defaultExpandMultilineText={Boolean(
+                    props.defaultExpandMultilineText
+                  )}
+                  ref={ref}
+                  {...createLocalizedDataAttributes(props, language)}
+                />
+              );
+            })}
+          </Stack>
+          {shouldRenderLanguagesControl && (
+            <div
+              css={css`
+                align-self: flex-start;
+              `}
+            >
+              <LocalizedInputToggle
+                isOpen={areLanguagesOpened}
+                onClick={
+                  toggleLanguages as (
+                    event:
+                      | MouseEvent<HTMLButtonElement>
+                      | KeyboardEvent<HTMLButtonElement>
+                      | boolean
+                  ) => void
                 }
-                onBlur={props.onBlur}
-                onFocus={props.onFocus}
-                isDisabled={props.isDisabled}
-                isReadOnly={props.isReadOnly}
-                hasError={Boolean(
-                  props.hasError || (props.errors && props.errors[language])
-                )}
-                hasWarning={Boolean(
-                  props.hasWarning ||
-                    (props.warnings && props.warnings[language])
-                )}
-                warning={props.warnings && props.warnings[language]}
-                error={props.errors && props.errors[language]}
-                showExpandIcon={props.showExpandIcon}
-                onClickExpand={props.onClickExpand}
-                hasLanguagesControl={hasLanguagesControl}
-                {...createLocalizedDataAttributes(props, language)}
+                isDisabled={
+                  areLanguagesOpened &&
+                  Boolean(
+                    hasErrorInRemainingLanguages ||
+                      hasWarningInRemainingLanguages
+                  )
+                }
+                remainingLocalizations={languages.length - 1}
               />
-            );
-          })}
+            </div>
+          )}
         </Stack>
-        {shouldRenderLanguagesControl && (
-          <div
-            css={css`
-              align-self: flex-start;
-            `}
-          >
-            <LocalizedInputToggle
-              isOpen={areLanguagesOpened}
-              onClick={
-                toggleLanguages as (
-                  event:
-                    | MouseEvent<HTMLButtonElement>
-                    | KeyboardEvent<HTMLButtonElement>
-                    | boolean
-                ) => void
-              }
-              isDisabled={
-                areLanguagesOpened &&
-                Boolean(
-                  hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
-                )
-              }
-              remainingLocalizations={languages.length - 1}
-            />
-          </div>
-        )}
-      </Stack>
-    </Constraints.Horizontal>
-  );
-};
+      </Constraints.Horizontal>
+    );
+  }
+);
 
 LocalizedRichTextInput.displayName = 'LocalizedRichTextInput';
 

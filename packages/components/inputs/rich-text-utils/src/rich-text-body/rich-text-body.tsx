@@ -6,7 +6,8 @@ import {
   type CSSProperties,
   type ElementType,
 } from 'react';
-import PropTypes from 'prop-types';
+import { warning } from '@commercetools-uikit/utils';
+import { useSlate } from 'slate-react';
 import { useIntl } from 'react-intl';
 import { css, type SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -39,17 +40,18 @@ import Divider from './divider';
 import Dropdown from './dropdown';
 import { DropdownItem } from './dropdown.styles';
 import { MARK_TAGS, BLOCK_TAGS } from '../tags';
-import hasBlock from '../has-block';
 import messages from './messages';
-import { warning } from '@commercetools-uikit/utils';
-import type { TEditor, TMark } from '../editor.types';
+import { MarkButton, BlockButton } from './slate-buttons';
+import {
+  toggleBlock,
+  toggleMark,
+  isMarkActive,
+  isBlockActive,
+} from '../slate-helpers';
+import type { TDropdownLabel } from './dropdown';
 
 type TMoreStylesDropdownItem = {
   value?: string;
-  children?: ReactNode;
-};
-
-type TDropdownLabel = {
   children?: ReactNode;
 };
 
@@ -73,13 +75,12 @@ type TNodeRefObject = {
   clientHeight: number;
 } & LegacyRef<HTMLDivElement>;
 
-type TRichtTextEditorBodyRef = {
+export type TRichtTextEditorBodyRef = {
   registerContentNode: TNodeRefObject;
   containerRef?: LegacyRef<HTMLDivElement>;
 };
 
 export type TRichTextEditorBody = {
-  editor: TEditor;
   styles?: {
     container?: SerializedStyles;
   };
@@ -99,10 +100,10 @@ MoreStylesDropdownLabel.displayName = 'MoreStylesDropdownLabel';
 const MoreStylesDropdownItem = (props: TMoreStylesDropdownItem) => {
   let Icon;
   switch (props.value) {
-    case 'subscript':
+    case MARK_TAGS.sub:
       Icon = SubscriptIcon;
       break;
-    case 'strikethrough':
+    case MARK_TAGS.del:
       Icon = StrikethroughIcon;
       break;
     default:
@@ -120,10 +121,6 @@ const MoreStylesDropdownItem = (props: TMoreStylesDropdownItem) => {
 };
 
 MoreStylesDropdownItem.displayName = 'MoreStylesDropdownItem';
-MoreStylesDropdownItem.propTypes = {
-  value: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-};
 
 const DropdownLabel = (props: TDropdownLabel) => {
   return (
@@ -135,9 +132,6 @@ const DropdownLabel = (props: TDropdownLabel) => {
 };
 
 DropdownLabel.displayName = 'DropdownLabel';
-DropdownLabel.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 const Item = styled.div`
   margin: 0;
@@ -157,8 +151,6 @@ const StylesDropdownItem = (props: TStylesDropdownItem) => {
 };
 
 StylesDropdownItem.displayName = 'StylesDropdownItem';
-
-const DEFAULT_NODE = BLOCK_TAGS.p;
 
 const tooltipStyles = {
   body: {
@@ -228,88 +220,39 @@ const RichTextEditorBody = forwardRef<
   const { registerContentNode, containerRef } =
     ref as unknown as TRichtTextEditorBodyRef;
   const intl = useIntl();
+  const editor = useSlate();
 
   const dropdownOptions = createMoreStylesDropdownOptions(intl);
   const styleDropdownOptions = createStyleDropdownOptions(intl);
 
-  const hasUndos = props.editor.hasUndos();
-  const hasRedos = props.editor.hasRedos();
+  const hasUndos = editor.history.undos.length > 0;
+  const hasRedos = editor.history.redos.length > 0;
 
   const onClickBlock = useCallback(
-    ({ value: type }) => {
-      // Handle everything but list buttons.
-      if (type !== BLOCK_TAGS.ul && type !== BLOCK_TAGS.ol) {
-        const isActive = hasBlock(type, props.editor);
-        const isList = hasBlock(BLOCK_TAGS.li, props.editor);
-
-        if (isList) {
-          props.editor
-            .setBlocks(isActive ? DEFAULT_NODE : type)
-            .unwrapBlock(BLOCK_TAGS.ul)
-            .unwrapBlock(BLOCK_TAGS.ol);
-        } else {
-          props.editor.setBlocks(isActive ? DEFAULT_NODE : type);
-        }
-      } else {
-        // Handle the extra wrapping required for list buttons.
-        const isList = hasBlock(BLOCK_TAGS.li, props.editor);
-        const isType = props.editor.value?.blocks.some(
-          (block: { key: { key: unknown } }) => {
-            return !!props.editor.value?.document.getClosest(
-              block.key,
-              (parent: { type: string }) => parent.type === type
-            );
-          }
-        );
-
-        if (isList && isType) {
-          props.editor
-            .setBlocks(DEFAULT_NODE)
-            .unwrapBlock(BLOCK_TAGS.ul)
-            .unwrapBlock(BLOCK_TAGS.ol);
-        } else if (isList) {
-          props.editor
-            .unwrapBlock(type === BLOCK_TAGS.ul ? BLOCK_TAGS.ol : BLOCK_TAGS.ul)
-            .wrapBlock(type);
-        } else {
-          props.editor.setBlocks(BLOCK_TAGS.li).wrapBlock(type);
-        }
-      }
+    ({ value: format }) => {
+      toggleBlock(editor, format);
     },
-    [props.editor]
+    [editor]
   );
-
-  const onChangeMoreStyles = useCallback(
-    (val) => {
-      props.editor.toggleMark?.(val.value);
+  const onClickMoreStyleMark = useCallback(
+    ({ value: format }) => {
+      toggleMark(editor, format);
     },
-    [props.editor]
+    [editor]
   );
-
-  const activeBlock = props.editor.value?.blocks.first()?.type || '';
-
-  // so that we don't show our multi dropdown in an `indeterminate`
-  // while the component is not in focus
-  let activeMoreStyleMarks: Array<string> = [];
-
-  if (props.editor.value?.selection.isFocused) {
-    const activeMarks = Array.from(
-      props.editor.value.activeMarks as TMark[]
-    ).map((mark) => {
-      return mark.type;
-    });
-
-    activeMoreStyleMarks = activeMarks.filter((activeMark) =>
-      dropdownOptions.some(
-        (dropdownOption) => activeMark === dropdownOption.value
-      )
-    );
-  }
+  const getIsMoreStyleMarkItemSelected = useCallback(
+    ({ value: format }) => isMarkActive(editor, format),
+    [editor]
+  );
+  const getIsBlockItemSelected = useCallback(
+    ({ value: format }) => isBlockActive(editor, format),
+    [editor]
+  );
 
   // https://codepen.io/mudassir0909/pen/eIHqB
-
   // we prevent all our defined onClicks inside of the CalendarHeader
   // from blurring our input.
+
   const onToolbarMouseDown = useCallback((event) => {
     event.preventDefault();
   }, []);
@@ -333,7 +276,6 @@ const RichTextEditorBody = forwardRef<
         <ToolbarMainControls>
           <Dropdown
             label={intl.formatMessage(messages.styleDropdownLabel)}
-            value={activeBlock}
             onChange={onClickBlock}
             options={styleDropdownOptions}
             components={{
@@ -342,73 +284,62 @@ const RichTextEditorBody = forwardRef<
             }}
             isDisabled={props.isDisabled}
             isReadOnly={props.isReadOnly}
+            getIsItemSelected={getIsBlockItemSelected}
           />
           <Tooltip
             title={intl.formatMessage(messages.boldButtonLabel)}
             placement="bottom"
             styles={tooltipStyles}
           >
-            <Button
-              isActive={
-                props.editor.value?.selection.isFocused &&
-                props.editor.hasBoldMark()
-              }
+            <MarkButton
               isDisabled={props.isDisabled}
               isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.boldButtonLabel)}
-              onClick={props.editor.toggleBoldMark}
+              format={MARK_TAGS.strong}
             >
               <BoldIcon size="medium" />
-            </Button>
+            </MarkButton>
           </Tooltip>
           <Tooltip
             title={intl.formatMessage(messages.italicButtonLabel)}
             placement="bottom"
             styles={tooltipStyles}
           >
-            <Button
-              isActive={
-                props.editor.value?.selection.isFocused &&
-                props.editor.hasItalicMark()
-              }
+            <MarkButton
               isDisabled={props.isDisabled}
               isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.italicButtonLabel)}
-              onClick={props.editor.toggleItalicMark}
+              format={MARK_TAGS.em}
             >
               <ItalicIcon size="medium" />
-            </Button>
+            </MarkButton>
           </Tooltip>
           <Tooltip
             title={intl.formatMessage(messages.underlinedButtonLabel)}
             placement="bottom"
             styles={tooltipStyles}
           >
-            <Button
-              isActive={
-                props.editor.value?.selection.isFocused &&
-                props.editor.hasUnderlinedMark()
-              }
+            <MarkButton
               isDisabled={props.isDisabled}
               isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.underlinedButtonLabel)}
-              onClick={props.editor.toggleUnderlinedMark}
+              format={MARK_TAGS.u}
             >
               <UnderlineIcon size="medium" />
-            </Button>
+            </MarkButton>
           </Tooltip>
           <Dropdown
             isMulti={true}
             label={intl.formatMessage(messages.moreStylesDropdownLabel)}
             options={dropdownOptions}
-            value={activeMoreStyleMarks}
-            onChange={onChangeMoreStyles}
+            onChange={onClickMoreStyleMark}
             isDisabled={props.isDisabled}
             isReadOnly={props.isReadOnly}
             components={{
               Item: MoreStylesDropdownItem,
               Label: MoreStylesDropdownLabel,
             }}
+            getIsItemSelected={getIsMoreStyleMarkItemSelected}
           />
           <Divider />
           <Tooltip
@@ -416,36 +347,28 @@ const RichTextEditorBody = forwardRef<
             placement="bottom"
             styles={tooltipStyles}
           >
-            <Button
-              isActive={
-                props.editor.value?.selection.isFocused &&
-                props.editor.hasNumberedListBlock()
-              }
+            <BlockButton
               isDisabled={props.isDisabled}
               isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.orderedListButtonLabel)}
-              onClick={props.editor.toggleNumberedListBlock}
+              format={BLOCK_TAGS.ol}
             >
               <OrderedListIcon size="medium" />
-            </Button>
+            </BlockButton>
           </Tooltip>
           <Tooltip
             title={intl.formatMessage(messages.unorderedListButtonLabel)}
             placement="bottom"
             styles={tooltipStyles}
           >
-            <Button
-              isActive={
-                props.editor.value?.selection.isFocused &&
-                props.editor.hasBulletedListBlock()
-              }
+            <BlockButton
               isDisabled={props.isDisabled}
               isReadOnly={props.isReadOnly}
               label={intl.formatMessage(messages.unorderedListButtonLabel)}
-              onClick={props.editor.toggleBulletedListBlock}
+              format={BLOCK_TAGS.ul}
             >
               <UnorderedListIcon size="medium" />
-            </Button>
+            </BlockButton>
           </Tooltip>
         </ToolbarMainControls>
         <ToolbarRightControls
@@ -468,7 +391,7 @@ const RichTextEditorBody = forwardRef<
               label={intl.formatMessage(messages.undoButtonLabel)}
               isDisabled={!hasUndos || props.isDisabled}
               isReadOnly={props.isReadOnly}
-              onClick={props.editor.toggleUndo}
+              onClick={editor.undo}
             >
               <UndoIcon size="medium" />
             </Button>
@@ -483,7 +406,7 @@ const RichTextEditorBody = forwardRef<
               label={intl.formatMessage(messages.redoButtonLabel)}
               isDisabled={!hasRedos || props.isDisabled}
               isReadOnly={props.isReadOnly}
-              onClick={props.editor.toggleRedo}
+              onClick={editor.redo}
             >
               <RedoIcon size="medium" />
             </Button>

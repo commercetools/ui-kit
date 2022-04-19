@@ -40,9 +40,9 @@
     "is-hotkey": "0.2.0",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "slate": "0.47.9",
-    "slate-html-serializer": "0.8.13",
-    "slate-react": "0.22.10"
+    "slate": "0.75.0",
+    "slate-history": "0.66.0",
+    "slate-react": "0.75.0"
   },
   "devDependencies": {
     "react": "17.0.2",

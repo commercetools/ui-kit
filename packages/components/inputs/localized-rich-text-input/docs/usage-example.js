@@ -7,6 +7,7 @@ const Example = () => (
       de: '',
     }}
     onChange={(event) => console.log('event.target.value', event.target.value)}
+    selectedLanguage="en"
   />
 );
 

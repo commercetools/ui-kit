@@ -7,7 +7,7 @@ import {
 const emptyValue = '<p></p>';
 
 describe('createLocalizedString', () => {
-  describe('when existingTranslations is null', () => {
+  describe('when existingTranslations is not passed', () => {
     it('should properly initializeValue', () => {
       expect(createLocalizedString(['en', 'de'])).toEqual({
         en: emptyValue,
@@ -15,7 +15,7 @@ describe('createLocalizedString', () => {
       });
     });
   });
-  describe('when one existingTranslation is null', () => {
+  describe('when one existingTranslation is not passed', () => {
     it('should properly initializeValue', () => {
       expect(
         createLocalizedString(['en', 'de'], { en: 'hello world' })

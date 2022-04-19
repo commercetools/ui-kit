@@ -5,13 +5,19 @@ const html = '<p>hello world</p>';
 
 const Example = (props) => {
   const [value, setValue] = React.useState(html);
+  const handleChange = React.useCallback((event) => {
+    setValue(event.target.value);
+  }, []);
+  const ref = React.useRef(null);
+  const handleReset = React.useCallback(() => {
+    ref.current?.resetValue('<p>after reset</p>');
+  }, []);
+
   return (
-    <RichTextInput
-      value={value}
-      onChange={(event) => {
-        setValue(event.target.value);
-      }}
-    />
+    <>
+      <button onClick={handleReset}>Reset</button>
+      <RichTextInput value={value} onChange={handleChange} ref={ref} />
+    </>
   );
 };
 

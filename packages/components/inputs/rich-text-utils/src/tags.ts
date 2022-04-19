@@ -16,7 +16,7 @@ export const BLOCK_TAGS = {
 export const MARK_TAGS = {
   em: 'italic',
   strong: 'bold',
-  u: 'underlined',
+  u: 'underline',
   sup: 'superscript',
   sub: 'subscript',
   del: 'strikethrough',
