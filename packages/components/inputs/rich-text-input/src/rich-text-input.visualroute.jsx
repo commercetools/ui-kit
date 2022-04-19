@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Switch, Route } from 'react-router';
 import { RichTextInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
@@ -15,14 +15,19 @@ export const routePath = '/rich-text-input';
 // this route will be used with puppeteer based testing.
 const InteractiveRoute = () => {
   const [value, setValue] = useState(emptyValue);
+  const [reset, setReset] = useState(false);
+  const ref = useRef(null);
 
   const handleReset = useCallback(() => {
-    setValue('<p><strong>Hello World</strong></p>');
-  }, [setValue]);
+    ref.current?.resetValue('<p><strong>Hello World</strong></p>');
+  }, []);
 
-  const onChange = (event) => {
-    setValue(event.target.value);
-  };
+  const onChange = useCallback(
+    (event) => {
+      setValue(event.target.value);
+    },
+    [setValue]
+  );
 
   return (
     <Suite>
@@ -46,6 +51,7 @@ const InteractiveRoute = () => {
           onChange={onChange}
           value={value}
           horizontalConstraint={7}
+          ref={ref}
         />
       </Spec>
     </Suite>

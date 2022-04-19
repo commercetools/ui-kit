@@ -1,7 +1,7 @@
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
-import type { ReactNode } from 'react';
+import type { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 
 type TRichTextBodyButtonProps = {
   isDisabled?: boolean;
@@ -9,7 +9,9 @@ type TRichTextBodyButtonProps = {
   isActive?: boolean;
   isReadOnly?: boolean;
   children: ReactNode;
-  onClick?: () => void;
+  onClick?: (
+    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+  ) => void;
 };
 
 const propsToOmit = ['isActive', 'label', 'isDisabled', 'isReadOnly'];

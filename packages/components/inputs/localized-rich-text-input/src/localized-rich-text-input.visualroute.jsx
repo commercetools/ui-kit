@@ -1,5 +1,5 @@
-import { Value } from 'react-value';
 import { Switch, Route } from 'react-router-dom';
+import { useState, useCallback } from 'react';
 import {
   LocalizedRichTextInput,
   ErrorMessage,
@@ -22,13 +22,20 @@ export const routePath = '/localized-rich-text-input';
 
 // this route will be used with puppeteer based testing.
 // eslint-disable-next-line react/prop-types
-const WrappedComponent = ({ onChange, value }) => {
-  const handleChange = (event) => {
-    onChange({
-      ...value,
-      [event.target.language]: event.target.value,
-    });
-  };
+const WrappedComponent = () => {
+  const [value, setValue] = useState({
+    en: emptyValue,
+    de: emptyValue,
+    es: emptyValue,
+  });
+  const handleChange = useCallback(
+    (event) =>
+      setValue({
+        ...value,
+        [event.target.language]: event.target.value,
+      }),
+    []
+  );
 
   return (
     <LocalizedRichTextInput
@@ -47,16 +54,7 @@ const InteractiveRoute = () => {
   return (
     <Suite>
       <Spec label="Interactive Rich Text" omitPropsList>
-        <Value
-          defaultValue={{
-            en: emptyValue,
-            de: emptyValue,
-            es: emptyValue,
-          }}
-          render={(value, onChange) => (
-            <WrappedComponent value={value} onChange={onChange} />
-          )}
-        />
+        <WrappedComponent />
       </Spec>
     </Suite>
   );

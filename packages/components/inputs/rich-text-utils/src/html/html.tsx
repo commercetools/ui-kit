@@ -1,186 +1,251 @@
-import Html from 'slate-html-serializer';
-import flatMap from 'lodash/flatMap';
-import { MARK_TAGS, BLOCK_TAGS } from '../tags';
-import type { ReactNode } from 'react';
+import escapeHtml from 'escape-html';
+import {
+  Text,
+  type Descendant,
+  type Node as TNode,
+  type Element as TElement,
+  type Text as TText,
+} from 'slate';
+import { jsx } from 'slate-hyperscript';
+import parse from 'style-to-object';
+import isEmpty from 'lodash/isEmpty';
 
-type TSerializableObject = {
-  object: string;
-  type: string;
-  data: {
-    get: (arg0: string) => string | undefined;
-  };
+type Html = string;
+
+const serializeNode = (node: TNode): Html => {
+  if (Text.isText(node)) {
+    let string = escapeHtml(node.text);
+    if (node.bold) {
+      string = `<strong>${string}</strong>`;
+    }
+    if (node.code) {
+      string = `<code>${string}</code>`;
+    }
+    if (node.italic) {
+      string = `<em>${string}</em>`;
+    }
+    if (node.underline) {
+      string = `<u>${string}</u>`;
+    }
+    if (node.superscript) {
+      string = `<sup>${string}</sup>`;
+    }
+    if (node.subscript) {
+      string = `<sub>${string}</sub>`;
+    }
+    if (node.strikethrough) {
+      string = `<del>${string}</del>`;
+    }
+    return string;
+  }
+
+  const children = node.children.map(serializeNode).join('');
+
+  switch ((node as TElement).type) {
+    case 'block-quote':
+      return `<blockquote>${children}</blockquote>`;
+    case 'paragraph':
+      return `<p>${children}</p>`;
+    case 'code':
+      return `<pre>
+            <code>${children}</code>
+          </pre>`;
+    case 'span':
+      return `<span>${children}</span>`;
+    case 'bulleted-list':
+      return `<ul>${children}</ul>`;
+    case 'numbered-list':
+      return `<ol>${children}</ol>`;
+    case 'list-item':
+      return `<li>${children}</li>`;
+    case 'heading-one':
+      return `<h1>${children}</h1>`;
+    case 'heading-two':
+      return `<h2>${children}</h2>`;
+    case 'heading-three':
+      return `<h3>${children}</h3>`;
+    case 'heading-four':
+      return `<h4}>${children}</h4>`;
+    case 'heading-five':
+      return `<h5>${children}</h5>`;
+    default:
+      return children;
+  }
 };
 
-type TAttributes = Record<string, string>;
-type TMapper = Record<string, TAttributes>;
+const wrapWithParaghraph = (content = '') => `<p>${content}</p>`;
 
+const serializeSingle = (value: Deserialized): Html => {
+  if (value === null) return wrapWithParaghraph();
+  return serializeNode(value);
+};
+
+const serialize = (value: Deserialized | Deserialized[]): Html => {
+  let outputHtml = '';
+  if (value === null || !Array.isArray(value)) {
+    outputHtml = serializeSingle(value);
+  } else {
+    outputHtml = value.map((node) => serializeSingle(node)).join('');
+  }
+  return outputHtml.length > 0 ? outputHtml : wrapWithParaghraph(outputHtml);
+};
+
+const ELEMENT_TAGS = {
+  BLOCKQUOTE: () => ({ type: 'quote' }),
+  H1: () => ({ type: 'heading-one' }),
+  H2: () => ({ type: 'heading-two' }),
+  H3: () => ({ type: 'heading-three' }),
+  H4: () => ({ type: 'heading-four' }),
+  H5: () => ({ type: 'heading-five' }),
+  H6: () => ({ type: 'heading-six' }),
+  LI: () => ({ type: 'list-item' }),
+  OL: () => ({ type: 'numbered-list' }),
+  P: () => ({ type: 'paragraph' }),
+  PRE: () => ({ type: 'code' }),
+  UL: () => ({ type: 'bulleted-list' }),
+};
+
+const TEXT_TAGS = {
+  CODE: () => ({ code: true }),
+  DEL: () => ({ strikethrough: true }),
+  EM: () => ({ italic: true }),
+  I: () => ({ italic: true }),
+  S: () => ({ strikethrough: true }),
+  STRONG: () => ({ bold: true }),
+  U: () => ({ underline: true }),
+};
+
+type TAttributes = Record<string, boolean>;
+type TMapper = Record<string, Record<string, TAttributes>>;
 const mapper: TMapper = {
   'font-weight': {
-    bold: 'strong',
+    bold: { bold: true },
   },
   'text-decoration-line': {
-    underline: 'u',
-    'line-through': 'del',
+    underline: { underline: true },
+    'line-through': { strikethrough: true },
   },
   'text-decoration': {
-    underline: 'u',
+    underline: { underline: true },
   },
   'font-style': {
-    italic: 'em',
+    italic: { italic: true },
   },
   'vertical-align': {
-    sub: 'sub',
-    super: 'sup',
+    sup: { superscript: true },
+    sub: { subscript: true },
   },
 };
 
-const rules = [
-  {
-    deserialize(el: Element, next: (arg0: NodeListOf<ChildNode>) => unknown) {
-      const type =
-        BLOCK_TAGS[el.tagName.toLowerCase() as keyof typeof BLOCK_TAGS];
-      if (type) {
-        return {
-          object: 'block',
-          type,
-          data: {
-            className: el.getAttribute('class'),
-          },
-          nodes: next(el.childNodes),
-        };
+const wrapWithParagraphIfRootElement = (
+  el: HTMLElement | ChildNode,
+  textContent: TElement | TText
+) =>
+  el.parentNode?.nodeName === 'BODY' // root element, because body is eventually turned to React fragment
+    ? jsx('element', { type: 'paragraph' }, textContent)
+    : textContent;
+
+export type Deserialized = Descendant | null;
+
+const deserializeElement = (
+  el: HTMLElement | ChildNode
+): Deserialized | Deserialized[] => {
+  // https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType#value
+  if (el.nodeType === 3) {
+    return wrapWithParagraphIfRootElement(el, { text: el.textContent || '' }); // for root TEXT_NODE -> wrap with <p>
+  } else if (el.nodeType !== 1) {
+    return null; // for non-ELEMENT_NODE
+  }
+
+  const { nodeName } = el;
+  let parent = el;
+
+  if (
+    nodeName === 'PRE' &&
+    el.childNodes[0] &&
+    el.childNodes[0].nodeName === 'CODE'
+  ) {
+    parent = el.childNodes[0];
+  }
+  let children: Deserialized[] = Array.from(parent.childNodes)
+    .map(deserializeElement)
+    .flat();
+
+  if (children.length === 0) {
+    children = [{ text: '' }];
+  }
+
+  if (el.nodeName === 'BODY') {
+    return jsx('fragment', {}, children);
+  }
+
+  if (el.nodeName === 'SPAN') {
+    let attrs = {};
+    const styleStr = (el as HTMLElement).getAttribute('style');
+    const styleObj = parse(styleStr || '');
+
+    if (isEmpty(styleObj)) {
+      // if no style attrs -> just use `span`
+      return wrapWithParagraphIfRootElement(
+        el,
+        jsx('element', { type: 'span' }, children)
+      );
+    } else {
+      attrs = Object.entries(styleObj || {}).reduce(
+        (mappedAttrObj, [key, value]) => {
+          const values = value.split(' '); // to cover the case of space-separated values e.g. `text-decoration-line: "underline line-through"`
+
+          values.forEach((splittedValue) => {
+            if (mapper[key]?.[splittedValue]) {
+              // checking if the parsed style attr value has representation in the mapper obj
+              mappedAttrObj = {
+                ...mappedAttrObj,
+                ...mapper[key][splittedValue],
+              };
+            }
+          });
+          return mappedAttrObj;
+        },
+        {}
+      );
+      if (isEmpty(attrs)) {
+        // if all style attr values are irrelevant -> just use `span`
+        return wrapWithParagraphIfRootElement(
+          el,
+          jsx('element', { type: 'span' }, children)
+        );
       }
-      return;
-    },
-    serialize(obj: TSerializableObject, children: ReactNode) {
-      if (obj.object === 'block') {
-        switch (obj.type) {
-          case 'code':
-            return (
-              <pre>
-                <code>{children}</code>
-              </pre>
-            );
-          case 'bulleted-list':
-            return <ul>{children}</ul>;
-          case 'numbered-list':
-            return <ol>{children}</ol>;
-          case 'list-item':
-            return <li>{children}</li>;
-          case 'paragraph':
-            return <p className={obj.data.get('className')}>{children}</p>;
-          case 'heading-one':
-            return <h1 className={obj.data.get('className')}>{children}</h1>;
-          case 'heading-two':
-            return <h2 className={obj.data.get('className')}>{children}</h2>;
-          case 'heading-three':
-            return <h3 className={obj.data.get('className')}>{children}</h3>;
-          case 'heading-four':
-            return <h4 className={obj.data.get('className')}>{children}</h4>;
-          case 'heading-five':
-            return <h5 className={obj.data.get('className')}>{children}</h5>;
-          case 'block-quote':
-            return <blockquote>{children}</blockquote>;
-        }
-      }
-      return;
-    },
-  },
+      return wrapWithParagraphIfRootElement(el, jsx('text', attrs, children));
+    }
+  }
 
-  {
-    // Special case for code blocks, which need to grab the nested childNodes.
-    deserialize(el: Element, next: (arg0: NodeListOf<ChildNode>) => void) {
-      if (el.tagName.toLowerCase() === 'span') {
-        const styleAttribute = el.getAttribute('style');
-        let tagName = 'span';
-        const childNode = el.childNodes[0];
+  if (ELEMENT_TAGS[nodeName as keyof typeof ELEMENT_TAGS]) {
+    const attrs = ELEMENT_TAGS[nodeName as keyof typeof ELEMENT_TAGS]();
+    return jsx('element', attrs, children);
+  }
 
-        if (styleAttribute) {
-          const marks = flatMap(styleAttribute.split(';'), (val) => {
-            const split = val.trim().split(' ');
+  if (TEXT_TAGS[nodeName as keyof typeof TEXT_TAGS]) {
+    const attrs = TEXT_TAGS[nodeName as keyof typeof TEXT_TAGS]();
+    return children.map((child) => jsx('text', attrs, child));
+  }
 
-            const [key, ...values] = split;
+  return children;
+};
+const deserialize = (html: Html) => {
+  const document = new DOMParser().parseFromString(
+    html || '<p></p>',
+    'text/html'
+  );
+  return deserializeElement(document.body);
+};
 
-            return values.map<TAttributes>((value) => ({
-              // always remove the : from the key
-              [key.slice(0, -1)]: value,
-            }));
-          })
-            .map((val) => {
-              const [key, value] = Object.entries(val)[0];
-              return mapper[key]?.[value];
-            })
-            .filter((val) => Boolean(val));
-
-          let deepestNode = el;
-
-          if (marks && marks.length > 0) {
-            tagName = marks[0];
-
-            marks.forEach((mark: string) => {
-              deepestNode.removeChild(childNode);
-              const newNode = document.createElement(mark);
-              newNode.appendChild(childNode);
-              deepestNode.appendChild(newNode);
-              deepestNode = newNode;
-            });
-          }
-        }
-
-        return {
-          object: 'mark',
-          type: MARK_TAGS[tagName as keyof typeof MARK_TAGS],
-          nodes: next(el.childNodes),
-        };
-      }
-      return;
-    },
-  },
-
-  // Add a new rule that handles marks...
-  {
-    deserialize(el: Element, next: (arg0: NodeListOf<ChildNode>) => void) {
-      const type =
-        MARK_TAGS[el.tagName.toLowerCase() as keyof typeof MARK_TAGS];
-      if (type) {
-        return {
-          object: 'mark',
-          type,
-          nodes: next(el.childNodes),
-        };
-      }
-      return;
-    },
-    serialize(obj: TSerializableObject, children: ReactNode) {
-      if (obj.object === 'mark') {
-        switch (obj.type) {
-          case 'span':
-            return <span>{children}</span>;
-          case 'bold':
-            return <strong>{children}</strong>;
-          case 'italic':
-            return <em>{children}</em>;
-          case 'underlined':
-            return <u>{children}</u>;
-          case 'superscript':
-            return <sup>{children}</sup>;
-          case 'subscript':
-            return <sub>{children}</sub>;
-          case 'strikethrough':
-            return <del>{children}</del>;
-          case 'code':
-            return (
-              <pre>
-                <code>{children}</code>
-              </pre>
-            );
-        }
-      }
-      return;
-    },
-  },
+export const defaultSlateState: Descendant[] = [
+  { type: 'paragraph', children: [{ text: '' }] },
 ];
 
-// Create a new serializer instance with our `rules` from above.
-const html = new Html({ rules });
+const html = {
+  serialize,
+  deserialize,
+};
 
 export default html;

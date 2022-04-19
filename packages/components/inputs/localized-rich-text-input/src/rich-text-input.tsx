@@ -1,68 +1,33 @@
-import { PureComponent, type ReactNode } from 'react';
-import pick from 'lodash/pick';
-// TODO: remove after upgrade of `slate-react` to the latest version
-// @ts-ignore
-import { Editor as SlateReactEditor } from 'slate-react';
+import {
+  PureComponent,
+  forwardRef,
+  type ReactNode,
+  type ForwardedRef,
+} from 'react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
-import { richTextPlugins, html } from '@commercetools-uikit/rich-text-utils';
-import renderEditor, { TRenderEditorProps, TRenderEditor } from './editor';
-
-type TSlateReactEditorProps = {
-  id?: TRichTextInputProps['id'];
-  name?: TRichTextInputProps['name'];
-  onFocus?: TEventHook<FocusEvent>;
-  onBlur?: TEventHook<FocusEvent>;
-  disabled?: TRichTextInputProps['isDisabled'];
-  readOnly?: TRichTextInputProps['isReadOnly'];
-  value: ReturnType<typeof html.deserialize>;
-  options: TRenderEditorProps['options'];
-  onChange?: TOnChangeFn;
-  plugins: typeof richTextPlugins;
-  renderEditor: TRenderEditor;
-};
-
-// This is a temporary wrapper component helping to mitigate typing issues of `slate-react@0.22.10` package.
-// TODO: remove after upgrade of `slate-react` to the latest version
-const Editor = (props: TSlateReactEditorProps) => (
-  <SlateReactEditor {...props} />
-);
-
-type TCustomEvent = {
-  target: {
-    id?: string;
-    name?: string;
-    language?: string;
-    value?: string;
-  };
-};
-type TEventHook<T = Event> = (
-  event: T,
-  editor: typeof Editor,
-  next: () => unknown
-) => unknown;
-
-type TOnChangeParam = {
-  operations: unknown;
-  value: ReturnType<typeof html.deserialize>;
-};
-type TOnChangeFn = (change: TOnChangeParam) => unknown;
+import {
+  html,
+  validSlateStateAdapter,
+} from '@commercetools-uikit/rich-text-utils';
+import Editor, { type TEditorProps } from './editor';
 
 type TRichTextInputProps = {
-  defaultExpandMultilineText?: boolean;
-  hasError?: boolean;
-  hasWarning?: boolean;
-  id?: string;
+  defaultExpandMultilineText: TEditorProps['defaultExpandMultilineText'];
+  hasError?: TEditorProps['hasError'];
+  hasWarning?: TEditorProps['hasWarning'];
+  id?: TEditorProps['id'];
   name?: string;
-  placeholder: string;
-  isDisabled?: boolean;
-  isReadOnly?: boolean;
-  onChange?: (event: TCustomEvent) => void;
-  onBlur?: (event: TCustomEvent) => void;
-  onFocus?: (event: TCustomEvent) => void;
+  placeholder: TEditorProps['placeholder'];
+  isDisabled?: TEditorProps['isDisabled'];
+  isReadOnly?: TEditorProps['isReadOnly'];
+  onChange?: (state: string) => void;
+  onBlur?: TEditorProps['onBlur'];
+  onFocus?: TEditorProps['onFocus'];
   value: string;
-  showExpandIcon: boolean;
-  onClickExpand?: () => boolean;
-  hasLanguagesControl?: boolean;
+  showExpandIcon: TEditorProps['showExpandIcon'];
+  onClickExpand?: TEditorProps['onClickExpand'];
+  hasLanguagesControl?: TEditorProps['hasLanguagesControl'];
+  parentRef?: ForwardedRef<unknown>;
 
   // Pass-through props
   language: string;
@@ -84,80 +49,44 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
   static displayName = 'RichTextInput';
 
   serializedValue = this.props.value || '';
-  internalSlateValue = html.deserialize(this.props.value || '');
+  internalSlateValue = validSlateStateAdapter(
+    html.deserialize(this.props.value || '')
+  );
 
   componentDidUpdate() {
     if (this.props.value !== this.serializedValue) {
-      this.internalSlateValue = html.deserialize(this.props.value);
+      this.internalSlateValue = validSlateStateAdapter(
+        html.deserialize(this.props.value)
+      );
       this.serializedValue = this.props.value;
       this.forceUpdate();
     }
   }
 
-  onValueChange: TOnChangeFn = (event) => {
-    const serializedValue = html.serialize(event.value);
+  onValueChange = (state: Parameters<typeof html.serialize>[0]) => {
+    const serializedValue = html.serialize(state);
 
     // because we are not using setState, we need to make sure that
     // we perform an update when the slate value changes
     // as this can contain things like cursor location
     // in this case, the internalSlateValue would change
     // but the serializedValue would NOT change.
-    const hasInternalSlateValueChanged =
-      this.internalSlateValue !== event.value;
+    const hasInternalSlateValueChanged = this.internalSlateValue !== state;
 
     const hasSerializedValueChanged = serializedValue !== this.serializedValue;
 
-    this.internalSlateValue = event.value;
+    this.internalSlateValue = validSlateStateAdapter(state);
     this.serializedValue = serializedValue;
 
     // the consumer only cares about the serializedValue, so it doesn't make sense to call
     // onChange unless this value changes.
     if (hasSerializedValueChanged) {
-      const fakeEvent = {
-        target: {
-          id: this.props.id,
-          name: this.props.name,
-          language: this.props.language,
-          value: serializedValue,
-        },
-      };
-
-      this.props.onChange?.(fakeEvent);
+      this.props.onChange?.(html.serialize(state));
     }
 
     if (hasInternalSlateValueChanged && !hasSerializedValueChanged) {
       // this way we force update if cursor or selection changes
       this.forceUpdate();
-    }
-  };
-
-  // this issue explains why we need to use next() + setTimeout
-  // for calling our passed onBlur handler
-  // https://github.com/ianstormtaylor/slate/issues/2434
-  onBlur: TEventHook<FocusEvent> = (_event, _editor, next) => {
-    next();
-
-    if (this.props.onBlur) {
-      const fakeEvent = {
-        target: {
-          id: this.props.id,
-          name: this.props.name,
-        },
-      };
-      setTimeout(() => this.props.onBlur?.(fakeEvent), 0);
-    }
-  };
-
-  onFocus: TEventHook<FocusEvent> = (_event, _editor, next) => {
-    next();
-    if (this.props.onFocus) {
-      const fakeEvent = {
-        target: {
-          id: this.props.id,
-          name: this.props.name,
-        },
-      };
-      setTimeout(() => this.props.onFocus?.(fakeEvent), 0);
     }
   };
 
@@ -179,39 +108,35 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
     return (
       <Editor
         {...filterDataAttributes(this.props)}
-        id={this.props.id}
         name={this.props.name}
-        disabled={this.props.isDisabled}
-        readOnly={this.props.isReadOnly || this.props.isDisabled}
-        value={this.internalSlateValue}
-        onFocus={this.onFocus}
-        onBlur={this.onBlur}
-        // we can only pass this.props to the Editor that Slate understands without getting
-        // warning in the console,
-        // so instead we pass our extra this.props through this `options` prop.
-        options={
-          pick(this.props, [
-            'language',
-            'onToggle',
-            'toggleLanguage',
-            'isOpen',
-            'warning',
-            'error',
-            'defaultExpandMultilineText',
-            'hasWarning',
-            'hasError',
-            'placeholder',
-            'onClickExpand',
-            'showExpandIcon',
-            'hasLanguagesControl',
-          ]) as TRenderEditorProps['options']
-        }
+        isReadOnly={this.props.isReadOnly || this.props.isDisabled}
         onChange={this.onValueChange}
-        plugins={richTextPlugins}
-        renderEditor={renderEditor}
+        id={this.props.id}
+        value={this.internalSlateValue}
+        onFocus={this.props.onFocus}
+        onBlur={this.props.onBlur}
+        isDisabled={this.props.isDisabled}
+        defaultExpandMultilineText={this.props.defaultExpandMultilineText}
+        hasWarning={this.props.hasWarning}
+        hasError={this.props.hasError}
+        placeholder={this.props.placeholder}
+        showExpandIcon={this.props.showExpandIcon}
+        onClickExpand={this.props.onClickExpand}
+        language={this.props.language}
+        toggleLanguage={this.props.toggleLanguage}
+        isOpen={this.props.isOpen}
+        warning={this.props.warning}
+        error={this.props.error}
+        hasLanguagesControl={this.props.hasLanguagesControl}
+        ref={this.props.parentRef}
       />
     );
   }
 }
 
-export default RichTextInput;
+const RichTextInputWithRef = forwardRef((props: TRichTextInputProps, ref) => (
+  <RichTextInput parentRef={ref} {...props} />
+));
+RichTextInputWithRef.displayName = 'RichTextInputWithRef';
+
+export default RichTextInputWithRef;

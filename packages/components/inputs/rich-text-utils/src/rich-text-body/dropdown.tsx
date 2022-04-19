@@ -1,9 +1,6 @@
 /// <reference types="@emotion/react/types/css-prop" />
-import type { ElementType, FunctionComponent } from 'react';
-import DownshiftUntyped, {
-  GetItemPropsOptions,
-  GetToggleButtonPropsOptions,
-} from 'downshift';
+import type { ElementType, FunctionComponent, ReactNode } from 'react';
+import DownshiftUntyped, { type ControllerStateAndHelpers } from 'downshift';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Tooltip from '@commercetools-uikit/tooltip';
@@ -14,18 +11,22 @@ import {
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
 
+export type TDropdownLabel = {
+  children: ReactNode;
+};
+
 type TDropdownProps = {
   label: string;
   isMulti: boolean;
-  value: string[] | string;
   isDisabled?: boolean;
   isReadOnly?: boolean;
-  onChange?: (event?: unknown) => void;
+  onChange?: ({ value }: TItem) => void;
   components: {
     Item: FunctionComponent<unknown>;
-    Label: FunctionComponent<unknown>;
+    Label: FunctionComponent<TDropdownLabel>;
   };
   options: Array<TItem>;
+  getIsItemSelected: ({ value }: TItem) => boolean;
 };
 
 type TItem = {
@@ -37,46 +38,31 @@ type THeadings = {
   label?: string;
 };
 
-const getIsSelected = (props: TDropdownProps, item: TItem) =>
-  !props.isMulti
-    ? item.value === (props.value as string)
-    : (props.value as string[]) &&
-      (props.value as string[]).find(
-        (selectedItem) => selectedItem === item.value
-      );
-
 const Label = styled.div;
 
 const Dropdown = (props: TDropdownProps) => {
   const DropdownItem: FunctionComponent<{
-    value: string | string[];
-    isSelected: unknown;
+    value: string;
+    isSelected: boolean;
   }> = props.components.Item;
   const DropdownLabel = props.components.Label;
-  const isIndeterminate: boolean =
+
+  const isIndeterminate =
     props.isMulti &&
-    (props.value as unknown[]) &&
-    (props.value as unknown[]).length > 0;
+    props.options.some((item) => props.getIsItemSelected(item) === true);
 
   const Downshift = DownshiftUntyped as ElementType;
 
   return (
     <Downshift
       onChange={props.onChange}
-      selectedItem={props.value}
       itemToString={(headings: THeadings) => headings?.label || ''}
     >
       {({
         isOpen,
         getToggleButtonProps,
         getItemProps,
-      }: {
-        isOpen: boolean;
-        getToggleButtonProps: (
-          options?: GetToggleButtonPropsOptions
-        ) => unknown;
-        getItemProps: (options: GetItemPropsOptions<unknown>) => unknown;
-      }) => {
+      }: ControllerStateAndHelpers<unknown>) => {
         const toggleButtonProps = getToggleButtonProps();
 
         return (
@@ -108,20 +94,19 @@ const Dropdown = (props: TDropdownProps) => {
                 `}
               >
                 <DropdownContainer>
-                  {props.options.map((item: TItem, index: number) => {
+                  {props.options.map((item, index) => {
                     const itemProps = getItemProps({
                       index,
                       item,
                     });
                     const dropdownItemProps = itemProps;
-                    const isSelected = getIsSelected(props, item);
 
                     return (
                       <DropdownItem
                         {...dropdownItemProps}
                         key={index}
                         value={item.value}
-                        isSelected={isSelected}
+                        isSelected={props.getIsItemSelected(item)}
                       >
                         {item.label}
                       </DropdownItem>

@@ -112,12 +112,14 @@ describe('LocalizedRichTextInput', () => {
           />
         );
         screen.getByLabelText(/show all languages/i).click();
-        expect(
-          screen.getByTestId('rich-text-data-test-en')
-        ).not.toHaveAttribute('contenteditable');
-        expect(
-          screen.getByTestId('rich-text-data-test-de')
-        ).not.toHaveAttribute('contenteditable');
+        expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
+          'contenteditable',
+          'false'
+        );
+        expect(screen.getByTestId('rich-text-data-test-de')).toHaveAttribute(
+          'contenteditable',
+          'false'
+        );
       });
     });
     describe('when not expanded', () => {
@@ -129,9 +131,10 @@ describe('LocalizedRichTextInput', () => {
             isReadOnly={true}
           />
         );
-        expect(
-          screen.getByTestId('rich-text-data-test-en')
-        ).not.toHaveAttribute('contenteditable');
+        expect(screen.getByTestId('rich-text-data-test-en')).toHaveAttribute(
+          'contenteditable',
+          'false'
+        );
       });
     });
   });
