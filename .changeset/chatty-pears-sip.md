@@ -2,7 +2,6 @@
 '@commercetools-local/generator-package-json': patch
 '@commercetools-local/generator-readme': patch
 '@commercetools-uikit/calendar-utils': patch
-'@commercetools-uikit/data-table-manager': patch
 '@commercetools-uikit/icons': patch
 '@commercetools-uikit/async-creatable-select-input': patch
 '@commercetools-uikit/async-select-input': patch
