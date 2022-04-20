@@ -59,7 +59,8 @@ jobs:
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@v1.2.2
+        # uses: changesets/action@v1.2.2
+        uses: emmenko/changesets-action@nm-fix-body-max-length
         with:
           commit: 'ci(changesets): version packages'
           publish: yarn changeset publish
