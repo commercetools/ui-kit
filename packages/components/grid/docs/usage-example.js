@@ -3,7 +3,7 @@ import Grid from '@commercetools-uikit/grid';
 /**
  * We also recommend having a look at the [Grid story examples](https://uikit.commercetools.com/?path=/story/examples-components-grid--with-fixed-columns)
  * to see more detailed examples of common use cases of the CSS Grid layout.
- */
+ **/
 const Example = () => (
   <Grid
     gridGap="16px"
