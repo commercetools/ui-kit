@@ -1,5 +1,48 @@
 # @commercetools-uikit/data-table-manager
 
+## 15.0.0
+
+### Patch Changes
+
+- [#2131](https://github.com/commercetools/ui-kit/pull/2131) [`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d) Thanks [@renovate](https://github.com/apps/renovate)! - The return type of the `searchHiddenColumns` function has been refined after we noticed some inconsistencies.
+
+  ```ts
+  // Before
+  searchHiddenColumns?: (searchTerm: string) => Promise<unknown>;
+
+  // After
+  searchHiddenColumns?: (searchTerm: string) => Promise<void> | void;
+  ```
+
+  This function is not meant to return any specific value but instead trigger some side effects (e.g. fetching data or updating some state) as a result of the user typing into the search input.
+
+  Consumers should not be affected by this change.
+
+* [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+* Updated dependencies [[`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d), [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/icons@15.0.0
+  - @commercetools-uikit/async-select-input@15.0.0
+  - @commercetools-uikit/select-input@15.0.0
+  - @commercetools-uikit/hooks@15.0.0
+  - @commercetools-uikit/design-system@15.0.0
+  - @commercetools-uikit/accessible-hidden@15.0.0
+  - @commercetools-uikit/accessible-button@15.0.0
+  - @commercetools-uikit/primary-button@15.0.0
+  - @commercetools-uikit/secondary-button@15.0.0
+  - @commercetools-uikit/secondary-icon-button@15.0.0
+  - @commercetools-uikit/card@15.0.0
+  - @commercetools-uikit/collapsible-motion@15.0.0
+  - @commercetools-uikit/field-label@15.0.0
+  - @commercetools-uikit/grid@15.0.0
+  - @commercetools-uikit/radio-input@15.0.0
+  - @commercetools-uikit/tag@15.0.0
+  - @commercetools-uikit/text@15.0.0
+  - @commercetools-uikit/utils@15.0.0
+  - @commercetools-uikit/spacings@15.0.0
+
 ## 14.0.6
 
 ### Patch Changes

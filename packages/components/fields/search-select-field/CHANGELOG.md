@@ -1,5 +1,25 @@
 # @commercetools-uikit/search-select-field
 
+## 15.0.0
+
+### Patch Changes
+
+- [#2183](https://github.com/commercetools/ui-kit/pull/2183) [`e1fbc341e`](https://github.com/commercetools/ui-kit/commit/e1fbc341ea94eb8418b088b35e0cd025d6cca50e) Thanks [@emmenko](https://github.com/emmenko)! - Fix typo in prop `aria-labelledby`
+
+* [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+* Updated dependencies [[`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d), [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/hooks@15.0.0
+  - @commercetools-uikit/design-system@15.0.0
+  - @commercetools-uikit/constraints@15.0.0
+  - @commercetools-uikit/field-errors@15.0.0
+  - @commercetools-uikit/field-label@15.0.0
+  - @commercetools-uikit/search-select-input@15.0.0
+  - @commercetools-uikit/utils@15.0.0
+  - @commercetools-uikit/spacings@15.0.0
+
 ## 14.0.6
 
 ### Patch Changes

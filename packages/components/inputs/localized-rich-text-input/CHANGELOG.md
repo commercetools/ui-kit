@@ -1,5 +1,61 @@
 # @commercetools-uikit/localized-rich-text-input
 
+## 15.0.0
+
+### Major Changes
+
+- [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - This release contains some breaking changes to the following components, due to upgrading the internal `slate` libraries for rich-text editor functionality:
+
+  - `<RichTextInput>`
+  - `<LocalizedRichTextInput>`
+
+  > All other components do not have any breaking changes.
+
+  # Breaking changes
+
+  The change affects the way the editor is able to reset the `value`. This is usually relevant when using the components within a form and the user wants to reset the form to its initial state.
+
+  Previously the richt-text editor was working in a controlled way. This allowed the `value` passed to the input components to be used by the editor as-is. So if the user resets the form, the new value will be displayed.
+
+  Now the richt-text editor works in an uncontrolled way, meaning that it keeps its own state of the value and the `value` passed to the input components is used as the initial value. Therefore, if the user resets the form, the new value passed to the input won't do anything.
+
+  Instead, the reset functionality needs to be explicitly triggered using a dedicated function. To enable this, you need to use a `ref` object and pass it to the input component. The `ref` object will then contain the `resetValue` function that can be used to trigger the editor reset.
+
+  ```jsx
+  const ref = useRef(null);
+  const handleReset = useCallback(() => {
+    ref.current?.resetValue('<p><strong>Value after reset</strong></p>');
+  }, []);
+  return (
+    <>
+      <button onMouseDown={handleReset}>Reset</button>
+      <RichTextInput
+        // ...
+        ref={ref}
+      />
+    </>
+  );
+  ```
+
+### Patch Changes
+
+- Updated dependencies [[`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4), [`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d), [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/rich-text-utils@15.0.0
+  - @commercetools-uikit/icons@15.0.0
+  - @commercetools-uikit/hooks@15.0.0
+  - @commercetools-uikit/design-system@15.0.0
+  - @commercetools-uikit/flat-button@15.0.0
+  - @commercetools-uikit/collapsible-motion@15.0.0
+  - @commercetools-uikit/constraints@15.0.0
+  - @commercetools-uikit/input-utils@15.0.0
+  - @commercetools-uikit/messages@15.0.0
+  - @commercetools-uikit/spacings-inline@15.0.0
+  - @commercetools-uikit/spacings-stack@15.0.0
+  - @commercetools-uikit/text@15.0.0
+  - @commercetools-uikit/tooltip@15.0.0
+  - @commercetools-uikit/localized-utils@15.0.0
+  - @commercetools-uikit/utils@15.0.0
+
 ## 14.0.6
 
 ### Patch Changes
