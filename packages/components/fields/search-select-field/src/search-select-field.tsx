@@ -74,7 +74,7 @@ type TSearchSelectFieldProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  'aria-labelledby?': ReactSelectAsyncProps['aria-labelledby'];
+  'aria-labelledby'?: ReactSelectAsyncProps['aria-labelledby'];
   /**
    * The id of the search input. This forwarded as react-select's "inputId"
    * <br>
@@ -344,7 +344,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           horizontalConstraint="scale"
           hasError={hasError}
           aria-label={props['aria-label']}
-          aria-labelledby={props['aria-labelledby?']}
+          aria-labelledby={props['aria-labelledby']}
           aria-invalid={hasError}
           aria-errormessage={sequentialErrorsId}
           isAutofocussed={props.isAutofocussed}
