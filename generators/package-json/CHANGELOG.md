@@ -1,5 +1,16 @@
 # @commercetools-local/generator-package-json
 
+## 3.0.1
+
+### Patch Changes
+
+- [#2131](https://github.com/commercetools/ui-kit/pull/2131) [`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
+* [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+
 ## 3.0.0
 
 ### Major Changes

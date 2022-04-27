@@ -1,5 +1,47 @@
 # @commercetools-frontend/ui-kit
 
+## 15.0.0
+
+### Patch Changes
+
+- [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+- Updated dependencies [[`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d), [`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d), [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/icons@15.0.0
+  - @commercetools-uikit/hooks@15.0.0
+  - @commercetools-uikit/data-table-manager@15.0.0
+  - @commercetools-uikit/design-system@15.0.0
+  - @commercetools-uikit/accessible-hidden@15.0.0
+  - @commercetools-uikit/avatar@15.0.0
+  - @commercetools-uikit/card@15.0.0
+  - @commercetools-uikit/collapsible@15.0.0
+  - @commercetools-uikit/collapsible-motion@15.0.0
+  - @commercetools-uikit/collapsible-panel@15.0.0
+  - @commercetools-uikit/constraints@15.0.0
+  - @commercetools-uikit/data-table@15.0.0
+  - @commercetools-uikit/field-errors@15.0.0
+  - @commercetools-uikit/field-label@15.0.0
+  - @commercetools-uikit/grid@15.0.0
+  - @commercetools-uikit/label@15.0.0
+  - @commercetools-uikit/link@15.0.0
+  - @commercetools-uikit/loading-spinner@15.0.0
+  - @commercetools-uikit/messages@15.0.0
+  - @commercetools-uikit/notifications@15.0.0
+  - @commercetools-uikit/pagination@15.0.0
+  - @commercetools-uikit/primary-action-dropdown@15.0.0
+  - @commercetools-uikit/stamp@15.0.0
+  - @commercetools-uikit/tag@15.0.0
+  - @commercetools-uikit/text@15.0.0
+  - @commercetools-uikit/tooltip@15.0.0
+  - @commercetools-uikit/i18n@15.0.0
+  - @commercetools-uikit/utils@15.0.0
+  - @commercetools-uikit/buttons@15.0.0
+  - @commercetools-uikit/fields@15.0.0
+  - @commercetools-uikit/inputs@15.0.0
+  - @commercetools-uikit/spacings@15.0.0
+
 ## 14.0.6
 
 ### Patch Changes
