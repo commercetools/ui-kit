@@ -28,14 +28,12 @@ const WrappedComponent = () => {
     de: emptyValue,
     es: emptyValue,
   });
-  const handleChange = useCallback(
-    (event) =>
-      setValue({
-        ...value,
-        [event.target.language]: event.target.value,
-      }),
-    []
-  );
+  const handleChange = useCallback((event) => {
+    setValue({
+      ...value,
+      [event.target.language]: event.target.value,
+    });
+  }, []);
 
   return (
     <LocalizedRichTextInput

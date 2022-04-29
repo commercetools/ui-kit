@@ -250,15 +250,16 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
     );
 
     const createChangeHandler = useCallback(
-      (language: string) => (state: string) =>
+      (language: string) => (state: string) => {
         props.onChange?.({
           target: {
-            id: props.id,
-            name: props.name,
+            id: props?.id ? `${props.id}.${language}` : '',
+            name: props?.name ? `${props.name}.${language}` : '',
             language,
             value: state,
           },
-        }),
+        });
+      },
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [props.id, props.name, props.onChange]
     );
