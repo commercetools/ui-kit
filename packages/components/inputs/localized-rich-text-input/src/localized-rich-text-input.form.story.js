@@ -52,12 +52,11 @@ storiesOf('Examples|Forms/Inputs', module)
               aboutMe: {},
             };
 
-            if (LocalizedRichTextInput.isEmpty(values.aboutMe))
-              errors.aboutMe.missing = true;
-            if (TextInput.isEmpty(values.firstName))
-              errors.firstName.missing = true;
-            if (TextInput.isEmpty(values.lastName))
-              errors.lastName.missing = true;
+            errors.aboutMe.missing = LocalizedRichTextInput.isEmpty(
+              values.aboutMe
+            );
+            errors.firstName.missing = TextInput.isEmpty(values.firstName);
+            errors.lastName.missing = TextInput.isEmpty(values.lastName);
             return omitEmpty(errors);
           }}
           onSubmit={(values, formik, ...rest) => {
