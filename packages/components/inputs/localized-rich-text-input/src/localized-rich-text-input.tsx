@@ -2,12 +2,15 @@ import {
   useReducer,
   useCallback,
   forwardRef,
+  useRef,
+  useImperativeHandle,
   type ReactNode,
   type MouseEvent,
   type KeyboardEvent,
   type ForwardRefExoticComponent,
   type RefAttributes,
   type FocusEventHandler,
+  type MutableRefObject,
 } from 'react';
 import { css } from '@emotion/react';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -156,6 +159,10 @@ type TReducerAction =
   | { type: 'toggle'; payload: string }
   | { type: 'toggleAll'; payload: string };
 
+type RefWithImperativeResetHandler = MutableRefObject<unknown> & {
+  resetValue: (newValue: string | Record<string, string>) => void;
+};
+
 const defaultProps: Pick<
   TLocalizedRichTextInputProps,
   'horizontalConstraint' | 'showExpandIcon'
@@ -285,6 +292,23 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
       }
     }
 
+    const langRefs = useRef<RefWithImperativeResetHandler[]>([]);
+
+    const resetValue = useCallback(
+      (newValue: string | Record<string, string>) => {
+        langRefs.current.forEach((langRef) => {
+          langRef.resetValue(newValue);
+        });
+      },
+      []
+    );
+
+    useImperativeHandle(ref, () => {
+      return {
+        resetValue,
+      };
+    });
+
     const shouldRenderLanguagesControl =
       languages.length > 1 && !props.hideLanguageExpansionControls;
 
@@ -333,7 +357,9 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
                   defaultExpandMultilineText={Boolean(
                     props.defaultExpandMultilineText
                   )}
-                  ref={ref}
+                  ref={(el: RefWithImperativeResetHandler) =>
+                    (langRefs.current[index] = el)
+                  }
                   {...createLocalizedDataAttributes(props, language)}
                 />
               );

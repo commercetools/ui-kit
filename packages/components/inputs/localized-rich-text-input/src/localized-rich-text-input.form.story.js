@@ -38,7 +38,7 @@ storiesOf('Examples|Forms/Inputs', module)
     };
     const refAboutMe = useRef(null);
     const handleReset = useCallback((ref) => {
-      ref.current?.resetValue();
+      ref.current?.resetValue(initialLocalizedValue);
     }, []);
 
     return (
