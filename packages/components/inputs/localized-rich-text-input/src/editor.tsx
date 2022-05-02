@@ -155,10 +155,15 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
 
   // resetting
   const resetValue = useCallback(
-    (newValue: string) => {
-      resetEditor(editor, newValue);
+    (newValue: string | Record<string, string>) => {
+      const newStringValue =
+        typeof newValue === 'string'
+          ? newValue
+          : newValue?.[props.language] ?? '';
+
+      resetEditor(editor, newStringValue);
     },
-    [editor]
+    [editor, props.language]
   );
   /* 
   Resetting the editor requires access to `editor` object returned from `useSlate` hook.

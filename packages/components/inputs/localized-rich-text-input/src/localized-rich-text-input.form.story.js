@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types, react/display-name */
-import { useCallback, useRef, forwardRef } from 'react';
-import { Formik, useField } from 'formik';
+import { useCallback, useRef } from 'react';
+import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty-es';
 import { action } from '@storybook/addon-actions';
@@ -11,37 +11,16 @@ import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import FormikBox from '../../../../../docs/.storybook/decorators/formik-box';
 import Readme from '../README.md';
-import RichTextInput from './rich-text-input';
+import LocalizedRichTextInput from './localized-rich-text-input';
 import TextInput from '../../text-input';
 import TextField from '../../../fields/text-field';
 
 const initialValue = '';
-
-const RichTextFormikInput = forwardRef((props, ref) => {
-  const [field, meta, helpers] = useField(props.name);
-  const { value } = meta;
-  const { setValue } = helpers;
-
-  const onChange = useCallback(
-    (event) => {
-      setValue(event.target.value);
-      action('onChange')(event);
-    },
-    [setValue]
-  );
-
-  return (
-    <RichTextInput
-      id={props.name}
-      name={props.name}
-      value={value}
-      onChange={onChange}
-      onBlur={props.onBlur}
-      hasError={props.hasError}
-      ref={ref}
-    />
-  );
-});
+const initialLocalizedValue = {
+  en: initialValue,
+  de: initialValue,
+  'nan-Hant-TW': initialValue,
+};
 
 storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)
@@ -51,19 +30,15 @@ storiesOf('Examples|Forms/Inputs', module)
       sidebar: Readme,
     },
   })
-  .add('RichTextInput', () => {
+  .add('LocalizedRichTextInput', () => {
     const initialValues = {
       firstName: '',
       lastName: '',
-      cv: initialValue,
-      coverLetter: initialValue,
-      aboutMe: initialValue,
+      aboutMe: initialLocalizedValue,
     };
-    const refCv = useRef(null);
-    const refCoverLetter = useRef(null);
     const refAboutMe = useRef(null);
     const handleReset = useCallback((ref) => {
-      ref.current?.resetValue();
+      ref.current?.resetValue(initialLocalizedValue);
     }, []);
 
     return (
@@ -74,25 +49,18 @@ storiesOf('Examples|Forms/Inputs', module)
             const errors = {
               firstName: {},
               lastName: {},
-              cv: {},
-              coverLetter: {},
               aboutMe: {},
             };
 
-            if (RichTextInput.isEmpty(values.cv)) errors.cv.missing = true;
-            if (RichTextInput.isEmpty(values.coverLetter))
-              errors.coverLetter.missing = true;
-            if (RichTextInput.isEmpty(values.aboutMe))
-              errors.aboutMe.missing = true;
-            if (TextInput.isEmpty(values.firstName))
-              errors.firstName.missing = true;
-            if (TextInput.isEmpty(values.lastName))
-              errors.lastName.missing = true;
+            errors.aboutMe.missing = LocalizedRichTextInput.isEmpty(
+              values.aboutMe
+            );
+            errors.firstName.missing = TextInput.isEmpty(values.firstName);
+            errors.lastName.missing = TextInput.isEmpty(values.lastName);
             return omitEmpty(errors);
           }}
           onSubmit={(values, formik, ...rest) => {
             action('onSubmit')(values, formik, ...rest);
-            formik.resetForm({ values: initialValues });
           }}
           render={(formik) => (
             <Spacings.Stack scale="l">
@@ -117,51 +85,31 @@ storiesOf('Examples|Forms/Inputs', module)
                 errors={formik.errors.lastName}
               />
               <Spacings.Stack scale="s">
-                <FieldLabel title="Enter your cv" htmlFor="cv" />
-                <RichTextFormikInput
-                  name="cv"
-                  onBlur={formik.handleBlur}
-                  hasError={
-                    RichTextInput.isTouched(formik.touched.cv) &&
-                    formik.errors.cv?.missing
-                  }
-                  ref={refCv}
-                />
-              </Spacings.Stack>
-              <Spacings.Stack scale="s">
-                <FieldLabel
-                  title="Enter your cover letter"
-                  htmlFor="coverLetter"
-                />
-                <RichTextFormikInput
-                  name="coverLetter"
-                  onBlur={formik.handleBlur}
-                  hasError={
-                    RichTextInput.isTouched(formik.touched.coverLetter) &&
-                    formik.errors.coverLetter?.missing
-                  }
-                  ref={refCoverLetter}
-                />
-              </Spacings.Stack>
-              <Spacings.Stack scale="s">
                 <FieldLabel title="Tell us about yourself" htmlFor="aboutMe" />
-                <RichTextFormikInput
+                <LocalizedRichTextInput
                   name="aboutMe"
+                  id="aboutMe"
                   onBlur={formik.handleBlur}
                   hasError={
-                    RichTextInput.isTouched(formik.touched.aboutMe) &&
+                    LocalizedRichTextInput.isTouched(formik.touched.aboutMe) &&
                     formik.errors.aboutMe?.missing
                   }
                   ref={refAboutMe}
+                  selectedLanguage="en"
+                  value={formik.values.aboutMe}
+                  onChange={formik.handleChange}
+                  isDisabled={formik.isSubmitting}
+                  touched={formik.touched.firstName}
+                  errors={formik.errors.firstName}
+                  defaultExpandMultilineText={true}
+                  defaultExpandLanguages={true}
                 />
               </Spacings.Stack>
               <Spacings.Inline>
                 <SecondaryButton
                   onClick={() => {
-                    formik.handleReset();
-                    handleReset(refCv);
-                    handleReset(refCoverLetter);
                     handleReset(refAboutMe);
+                    formik.handleReset();
                   }}
                   isDisabled={formik.isSubmitting}
                   label="Reset"
