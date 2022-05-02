@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/inputs",
   "description": "A preset of all the UI-Kit inputs components.",
-  "version": "15.0.0",
+  "version": "15.0.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
     "@commercetools-uikit/date-time-input": "15.0.0",
     "@commercetools-uikit/localized-money-input": "15.0.0",
     "@commercetools-uikit/localized-multiline-text-input": "15.0.0",
-    "@commercetools-uikit/localized-rich-text-input": "15.0.0",
+    "@commercetools-uikit/localized-rich-text-input": "15.0.1",
     "@commercetools-uikit/localized-text-input": "15.0.0",
     "@commercetools-uikit/money-input": "15.0.0",
     "@commercetools-uikit/multiline-text-input": "15.0.0",

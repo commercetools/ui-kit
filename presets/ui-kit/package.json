@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-frontend/ui-kit",
   "description": "A preset of all the UI-Kit components.",
-  "version": "15.0.0",
+  "version": "15.0.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
     "@commercetools-uikit/hooks": "15.0.0",
     "@commercetools-uikit/i18n": "15.0.0",
     "@commercetools-uikit/icons": "15.0.0",
-    "@commercetools-uikit/inputs": "15.0.0",
+    "@commercetools-uikit/inputs": "15.0.1",
     "@commercetools-uikit/label": "15.0.0",
     "@commercetools-uikit/link": "15.0.0",
     "@commercetools-uikit/loading-spinner": "15.0.0",
