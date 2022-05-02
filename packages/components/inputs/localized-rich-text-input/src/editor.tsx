@@ -159,9 +159,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
       const newStringValue =
         typeof newValue === 'string'
           ? newValue
-          : newValue?.[props.language]
-          ? newValue[props.language]
-          : '';
+          : newValue?.[props.language] ?? '';
 
       resetEditor(editor, newStringValue);
     },

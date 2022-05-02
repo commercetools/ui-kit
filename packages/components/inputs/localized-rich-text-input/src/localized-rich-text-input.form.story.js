@@ -62,7 +62,6 @@ storiesOf('Examples|Forms/Inputs', module)
           }}
           onSubmit={(values, formik, ...rest) => {
             action('onSubmit')(values, formik, ...rest);
-            formik.resetForm({ values: initialValues });
           }}
           render={(formik) => (
             <Spacings.Stack scale="l">

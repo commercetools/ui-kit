@@ -292,7 +292,9 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
       }
     }
 
-    const langRefs = useRef<RefWithImperativeResetHandler[]>([]);
+    const langRefs = useRef<Map<string, RefWithImperativeResetHandler>>(
+      new Map()
+    );
 
     const resetValue = useCallback(
       (newValue: string | Record<string, string>) => {
@@ -358,7 +360,7 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
                     props.defaultExpandMultilineText
                   )}
                   ref={(el: RefWithImperativeResetHandler) =>
-                    (langRefs.current[index] = el)
+                    langRefs.current.set(language, el)
                   }
                   {...createLocalizedDataAttributes(props, language)}
                 />
