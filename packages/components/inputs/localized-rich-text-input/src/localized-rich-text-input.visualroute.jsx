@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, forwardRef } from 'react';
 import {
   LocalizedRichTextInput,
   ErrorMessage,
@@ -22,18 +22,22 @@ export const routePath = '/localized-rich-text-input';
 
 // this route will be used with puppeteer based testing.
 // eslint-disable-next-line react/prop-types
-const WrappedComponent = () => {
+// eslint-disable-next-line react/display-name
+const WrappedComponent = forwardRef((props, ref) => {
   const [value, setValue] = useState({
     en: emptyValue,
     de: emptyValue,
     es: emptyValue,
   });
-  const handleChange = useCallback((event) => {
-    setValue({
-      ...value,
-      [event.target.language]: event.target.value,
-    });
-  }, []);
+  const handleChange = useCallback(
+    (event) => {
+      setValue({
+        ...value,
+        [event.target.language]: event.target.value,
+      });
+    },
+    [value]
+  );
 
   return (
     <LocalizedRichTextInput
@@ -44,15 +48,32 @@ const WrappedComponent = () => {
       value={value}
       selectedLanguage="en"
       horizontalConstraint={7}
+      ref={ref}
     />
   );
-};
+});
 
 const InteractiveRoute = () => {
+  const ref = useRef(null);
+  const handleReset = useCallback(() => {
+    ref.current?.resetValue(initialValue);
+  }, []);
   return (
     <Suite>
       <Spec label="Interactive Rich Text" omitPropsList>
-        <WrappedComponent />
+        <div>
+          <label htmlFor="reset-button">Reset value to lorem ipsum</label>
+          <button
+            onMouseDown={(event) => {
+              event.preventDefault();
+              handleReset();
+            }}
+            id="reset-button"
+          >
+            Reset
+          </button>
+        </div>
+        <WrappedComponent ref={ref} />
       </Spec>
     </Suite>
   );

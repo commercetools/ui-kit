@@ -129,5 +129,19 @@ describe('LocalizedRichTextInput', () => {
     await input.type(h1Text);
     numOfTags = await getNumberOfTags('h1');
     expect(numOfTags).toEqual(1);
+
+    // reset the input
+    const resetButton = await queries.findByLabelText(
+      doc,
+      'Reset value to lorem ipsum'
+    );
+    await resetButton.click();
+    numOfTags = await getNumberOfTags('h1');
+    expect(numOfTags).toEqual(0);
+    const allLorem = await queries.findAllByText(
+      doc,
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+    );
+    expect(allLorem.length).toBe(3);
   });
 });
