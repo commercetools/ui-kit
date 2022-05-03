@@ -1,5 +1,5 @@
 // Reference: https://momentjs.com/docs/#/displaying/format/
-enum FormatToken {
+export enum FormatToken {
   D = 'D', // NUMERIC_SINGLE_DAY
   DD = 'DD', // NUMERIC_TWO_DIGITS_DAY
   M = 'M', // NUMERIC_SINGLE_MONTH
@@ -15,11 +15,11 @@ enum FormatToken {
   A = 'A', // PERIOD - https://unicode.org/reports/tr35/tr35-6.html#Date_Format_Patterns
 }
 
-type TLocaleDateFormatMapping = {
+export type TLocaleDateFormatMapping = {
   [key in FormatToken]?: string;
 };
 
-type TLocalizedDateFormatMapping = {
+export type TLocalizedDateFormatMapping = {
   [locale: string]: TLocaleDateFormatMapping;
 };
 

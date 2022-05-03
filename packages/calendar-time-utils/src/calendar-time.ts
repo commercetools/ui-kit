@@ -166,15 +166,26 @@ export const parseInputText = (
 
 export const getLocalizedDateFormatPattern = (
   locale: string,
-  formatType: 'short' | 'long' = 'short'
+  formatType: 'date' | 'time' | 'full' = 'date'
 ) => {
   // References:
   //  https://momentjs.com/docs/#/i18n/locale-data/
   //  https://momentjs.com/docs/#/displaying/ ("Localized formats" section)
   const localeData = moment().locale(locale).localeData();
-  const localizedFormat = `${localeData.longDateFormat('L')}${
-    formatType === 'long' ? ' - ' + localeData.longDateFormat('LT') : ''
-  }`;
+  let localizedFormat = '';
+  switch (formatType) {
+    case 'date':
+      localizedFormat = localeData.longDateFormat('L');
+      break;
+    case 'time':
+      localizedFormat = localeData.longDateFormat('LT');
+      break;
+    case 'full':
+      localizedFormat = `${localeData.longDateFormat(
+        'L'
+      )} - ${localeData.longDateFormat('LT')}`;
+      break;
+  }
   const [languageCode] = locale.split('-');
   const localeMappings = Object.entries(
     DATE_FORMAT_LOCALIZED_MAPPINGS[locale] ||
