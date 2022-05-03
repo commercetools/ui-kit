@@ -2061,7 +2061,7 @@ __metadata:
     "@commercetools-uikit/hooks": 15.0.0
     "@commercetools-uikit/i18n": 15.0.0
     "@commercetools-uikit/icons": 15.0.0
-    "@commercetools-uikit/inputs": 15.0.0
+    "@commercetools-uikit/inputs": 15.0.1
     "@commercetools-uikit/label": 15.0.0
     "@commercetools-uikit/link": 15.0.0
     "@commercetools-uikit/loading-spinner": 15.0.0
@@ -2992,7 +2992,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/inputs@15.0.0, @commercetools-uikit/inputs@workspace:presets/inputs":
+"@commercetools-uikit/inputs@15.0.1, @commercetools-uikit/inputs@workspace:presets/inputs":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/inputs@workspace:presets/inputs"
   dependencies:
@@ -3007,7 +3007,7 @@ __metadata:
     "@commercetools-uikit/date-time-input": 15.0.0
     "@commercetools-uikit/localized-money-input": 15.0.0
     "@commercetools-uikit/localized-multiline-text-input": 15.0.0
-    "@commercetools-uikit/localized-rich-text-input": 15.0.0
+    "@commercetools-uikit/localized-rich-text-input": 15.0.1
     "@commercetools-uikit/localized-text-input": 15.0.0
     "@commercetools-uikit/money-input": 15.0.0
     "@commercetools-uikit/multiline-text-input": 15.0.0
@@ -3207,7 +3207,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/localized-rich-text-input@15.0.0, @commercetools-uikit/localized-rich-text-input@workspace:packages/components/inputs/localized-rich-text-input":
+"@commercetools-uikit/localized-rich-text-input@15.0.1, @commercetools-uikit/localized-rich-text-input@workspace:packages/components/inputs/localized-rich-text-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-rich-text-input@workspace:packages/components/inputs/localized-rich-text-input"
   dependencies:
