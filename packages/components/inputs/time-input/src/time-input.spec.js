@@ -1,7 +1,31 @@
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
 import TimeInput from './time-input';
-import { render, fireEvent } from '../../../../../test/test-utils';
+import { screen, render, fireEvent } from '../../../../../test/test-utils';
 
-const baseProps = { value: '', onChange: () => {} };
+const baseProps = {
+  id: 'some-id',
+  name: 'some-name',
+  value: '',
+  onChange: jest.fn(),
+};
+
+const TestComponent = (props) => {
+  const [time, setTime] = useState(props.value);
+
+  return (
+    <div>
+      <label htmlFor={props.id}>Input</label>
+      <TimeInput
+        {...props}
+        value={time}
+        onChange={(event) => setTime(event.target.value)}
+        onBlur={(event) => setTime(event.target.value)}
+      />
+      <div>{time ? `Time: ${time}` : 'No time'}</div>
+    </div>
+  );
+};
 
 describe('TimeInput.to24h', () => {
   describe('when called with empty value', () => {
@@ -52,8 +76,11 @@ describe('TimeInput', () => {
   });
 
   it('should have an HTML name', () => {
-    const { container } = render(<TimeInput {...baseProps} name="foo" />);
-    expect(container.querySelector('input')).toHaveAttribute('name', 'foo');
+    const { container } = render(<TimeInput {...baseProps} />);
+    expect(container.querySelector('input')).toHaveAttribute(
+      'name',
+      'some-name'
+    );
   });
 
   it('should pass autocompomplete', () => {
@@ -67,27 +94,33 @@ describe('TimeInput', () => {
   });
 
   it('should forward the passed value', () => {
-    const { container } = render(<TimeInput {...baseProps} value="foo" />);
-    expect(container.querySelector('input')).toHaveAttribute('value', 'foo');
+    const { container } = render(<TimeInput {...baseProps} value="9:00 AM" />);
+    expect(container.querySelector('input')).toHaveAttribute(
+      'value',
+      '9:00 AM'
+    );
   });
 
-  it('should call onChange when changing the value', () => {
-    const onChange = jest.fn((event) => {
-      expect(event.target.id).toEqual('some-id');
-      expect(event.target.name).toEqual('some-name');
-      expect(event.target.value).toEqual('foo');
-    });
-    const { container } = render(
-      <TimeInput
-        {...baseProps}
-        id="some-id"
-        name="some-name"
-        onChange={onChange}
-      />
-    );
-    const event = { target: { value: 'foo' } };
-    fireEvent.change(container.querySelector('input'), event);
-    expect(onChange).toHaveBeenCalled();
+  it('should call onChange when changing the value', async () => {
+    render(<TestComponent {...baseProps} />);
+
+    await screen.findByText('No time');
+
+    const event = { target: { value: '9' } };
+    fireEvent.change(screen.getByLabelText('Input'), event);
+
+    await screen.findByText('Time: 9');
+  });
+
+  it('should call onChange when clearing the value', async () => {
+    render(<TestComponent {...baseProps} value="9:00 AM" />);
+
+    await screen.findByText('Time: 9:00 AM');
+
+    const clearButton = screen.getByRole('button', { ariaLabel: 'clear' });
+    fireEvent.click(clearButton);
+
+    await screen.findByText('No time');
   });
 
   it('should call onFocus when the input is focused', () => {
@@ -99,51 +132,38 @@ describe('TimeInput', () => {
     expect(container.querySelector('input')).toHaveFocus();
   });
 
-  it('should call onBlur when input loses focus', () => {
-    const { container } = render(<TimeInput {...baseProps} />);
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-    container.querySelector('input').blur();
-    expect(container.querySelector('input')).not.toHaveFocus();
+  it('should call onBlur when input loses focus and format the time (english format)', async () => {
+    render(<TestComponent {...baseProps} />, { locale: 'en' });
+
+    await screen.findByText('No time');
+
+    const event = { target: { value: '9' } };
+    fireEvent.change(screen.getByLabelText('Input'), event);
+
+    await screen.findByText('Time: 9');
+
+    fireEvent.blur(screen.getByLabelText('Input'));
+
+    await screen.findByText('Time: 9:00 AM'); // english format
+
+    expect(screen.queryByLabelText('Input')).not.toHaveFocus();
   });
 
-  it('should format the value when input is blurred on english locale', () => {
-    const onChange = jest.fn();
-    const { container } = render(
-      <TimeInput {...baseProps} onChange={onChange} value="2:3 AM" />
-    );
+  it('should call onBlur when input loses focus and format the time (german format)', async () => {
+    render(<TestComponent {...baseProps} />, { locale: 'de' });
 
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-    container.querySelector('input').blur();
-    expect(container.querySelector('input')).not.toHaveFocus();
-    expect(onChange).toHaveBeenCalledWith({
-      target: {
-        id: expect.stringMatching(/^time-input-/i),
-        name: undefined,
-        value: '2:03 AM',
-      },
-    });
-  });
+    await screen.findByText('No time');
 
-  it('should format the value when input is blurred on german locale', () => {
-    const onChange = jest.fn();
-    const { container } = render(
-      <TimeInput {...baseProps} onChange={onChange} value="12:3" />,
-      { locale: 'de' }
-    );
+    const event = { target: { value: '12:3' } };
+    fireEvent.change(screen.getByLabelText('Input'), event);
 
-    container.querySelector('input').focus();
-    expect(container.querySelector('input')).toHaveFocus();
-    container.querySelector('input').blur();
-    expect(container.querySelector('input')).not.toHaveFocus();
-    expect(onChange).toHaveBeenCalledWith({
-      target: {
-        id: expect.stringMatching(/^time-input-/i),
-        name: undefined,
-        value: '12:03',
-      },
-    });
+    await screen.findByText('Time: 12:3');
+
+    fireEvent.blur(screen.getByLabelText('Input'));
+
+    await screen.findByText('Time: 12:03'); // english format
+
+    expect(screen.queryByLabelText('Input')).not.toHaveFocus();
   });
 
   it('should have focus automatically when isAutofocussed is passed', () => {

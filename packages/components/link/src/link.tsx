@@ -1,7 +1,7 @@
 import type { LocationDescriptor } from 'history';
 import type { Theme } from '@emotion/react';
 import type { MessageDescriptor } from 'react-intl';
-import { Children, ReactNode } from 'react';
+import { Children, type ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css, useTheme } from '@emotion/react';
@@ -26,7 +26,9 @@ type TLinkProps = {
    * <br />
    * Required if `children` is not provided.
    */
-  intlMessage?: MessageDescriptor;
+  intlMessage?: MessageDescriptor & {
+    values?: Record<string, ReactNode>;
+  };
   /**
    * A flag to indicate if the Link points to an external source.
    * <bt />

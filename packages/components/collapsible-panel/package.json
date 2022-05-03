@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/collapsible-panel",
   "description": "A panel to collapse and expand your content.",
-  "version": "12.2.9",
+  "version": "15.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
     "directory": "packages/components/collapsible-panel"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,20 +19,21 @@
   "module": "dist/commercetools-uikit-collapsible-panel.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/accessible-button": "12.2.9",
-    "@commercetools-uikit/collapsible-motion": "12.2.9",
-    "@commercetools-uikit/constraints": "12.2.9",
-    "@commercetools-uikit/design-system": "12.2.9",
-    "@commercetools-uikit/icons": "12.2.9",
-    "@commercetools-uikit/spacings": "12.2.9",
-    "@commercetools-uikit/text": "12.2.9",
-    "@commercetools-uikit/utils": "12.2.9",
+    "@babel/runtime": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.2",
+    "@commercetools-uikit/accessible-button": "15.0.0",
+    "@commercetools-uikit/collapsible-motion": "15.0.0",
+    "@commercetools-uikit/constraints": "15.0.0",
+    "@commercetools-uikit/design-system": "15.0.0",
+    "@commercetools-uikit/icons": "15.0.0",
+    "@commercetools-uikit/spacings": "15.0.0",
+    "@commercetools-uikit/text": "15.0.0",
+    "@commercetools-uikit/utils": "15.0.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "lodash": "4.17.21",
-    "prop-types": "15.8.1"
+    "prop-types": "15.8.1",
+    "react-intl": "^5.24.6"
   },
   "devDependencies": {
     "react": "17.0.2"

@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node (uses version in .nvmrc)
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
 
@@ -27,7 +27,7 @@ jobs:
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock', 'patches/*.patch') }}
@@ -36,6 +36,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
+
+      - name: Check for unmet constraints (fix w/ "yarn constraints --fix")
+        run: yarn constraints
 
       - name: Building packages
         run: yarn build

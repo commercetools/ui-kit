@@ -1,9 +1,8 @@
 import {
   useState,
   useCallback,
-  ChangeEventHandler,
-  FocusEventHandler,
-  FocusEvent,
+  type ChangeEventHandler,
+  type FocusEventHandler,
 } from 'react';
 import { useIntl } from 'react-intl';
 import { css } from '@emotion/react';
@@ -24,6 +23,14 @@ export type TMultilineTextInputProps = {
    */
   name?: string;
   /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
+  /**
    * Used as HTML `autocomplete` property
    */
   autoComplete?: string;
@@ -38,15 +45,15 @@ export type TMultilineTextInputProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLTextAreaElement>;
   /**
    * Called when input is blurred
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLTextAreaElement>;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLTextAreaElement>;
   /**
    * Focus the input on initial render
    */
@@ -111,8 +118,8 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
   const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
 
   const { onFocus } = props;
-  const handleFocus = useCallback<FocusEventHandler>(
-    (event: FocusEvent) => {
+  const handleFocus = useCallback<FocusEventHandler<HTMLTextAreaElement>>(
+    (event) => {
       if (!isOpen) toggle(true);
       if (onFocus) onFocus(event);
     },
@@ -153,6 +160,9 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
           isAutofocussed={props.isAutofocussed}
           isOpen={isOpen}
           {...filterDataAttributes(props)}
+          /* ARIA */
+          aria-invalid={props['aria-invalid']}
+          aria-errormessage={props['aria-errormessage']}
         />
         {shouldRenderToggleButton && (
           <div

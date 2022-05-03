@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/time-field",
   "description": "A controlled date input component for single date.",
-  "version": "12.2.9",
+  "version": "15.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
     "directory": "packages/components/fields/time-field"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,19 +19,19 @@
   "module": "dist/commercetools-uikit-time-field.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/constraints": "12.2.9",
-    "@commercetools-uikit/design-system": "12.2.9",
-    "@commercetools-uikit/field-errors": "12.2.9",
-    "@commercetools-uikit/field-label": "12.2.9",
-    "@commercetools-uikit/spacings-stack": "12.2.9",
-    "@commercetools-uikit/time-input": "12.2.9",
-    "@commercetools-uikit/utils": "12.2.9",
+    "@babel/runtime": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.2",
+    "@commercetools-uikit/constraints": "15.0.0",
+    "@commercetools-uikit/design-system": "15.0.0",
+    "@commercetools-uikit/field-errors": "15.0.0",
+    "@commercetools-uikit/field-label": "15.0.0",
+    "@commercetools-uikit/spacings-stack": "15.0.0",
+    "@commercetools-uikit/time-input": "15.0.0",
+    "@commercetools-uikit/utils": "15.0.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "prop-types": "15.8.1",
-    "react-required-if": "1.0.3"
+    "react-intl": "^5.24.6"
   },
   "devDependencies": {
     "react": "17.0.2"

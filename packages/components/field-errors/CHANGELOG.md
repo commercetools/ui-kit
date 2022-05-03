@@ -1,5 +1,67 @@
 # @commercetools-uikit/field-errors
 
+## 15.0.0
+
+### Patch Changes
+
+- [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+- Updated dependencies [[`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/messages@15.0.0
+
+## 14.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@14.0.1
+
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/messages@14.0.0
+
+## 13.0.4
+
+### Patch Changes
+
+- [#2128](https://github.com/commercetools/ui-kit/pull/2128) [`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a) Thanks [@kark](https://github.com/kark)! - Upgrade of `react-intl` version to ^5.24.6 and addition of `react-intl` as a missing dependency
+
+* [#2122](https://github.com/commercetools/ui-kit/pull/2122) [`ad53141d6`](https://github.com/commercetools/ui-kit/commit/ad53141d62b82dc2778a16494c5c4232083bad31) Thanks [@codeshifu](https://github.com/codeshifu)! - Add support for `aria-invalid` and `aria-errormessage` to fields and inputs components
+
+* Updated dependencies [[`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a)]:
+  - @commercetools-uikit/messages@13.0.4
+
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6)]:
+  - @commercetools-uikit/messages@13.0.2
+
+## 13.0.0
+
+### Patch Changes
+
+- [#2081](https://github.com/commercetools/ui-kit/pull/2081) [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#2087](https://github.com/commercetools/ui-kit/pull/2087) [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#2066](https://github.com/commercetools/ui-kit/pull/2066) [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#2051](https://github.com/commercetools/ui-kit/pull/2051) [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* Updated dependencies []:
+  - @commercetools-uikit/messages@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes

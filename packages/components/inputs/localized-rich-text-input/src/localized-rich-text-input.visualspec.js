@@ -1,5 +1,20 @@
 import percySnapshot from '@percy/puppeteer';
+import puppeteer from 'puppeteer';
 import { getDocument, queries } from 'pptr-testing-library';
+let browser;
+let page;
+
+jest.setTimeout(20000);
+
+beforeEach(async () => {
+  browser = await puppeteer.launch({
+    slowMo: 10, // Launching the browser in slow motion is necessary due to race conditions. Otherwise browser closes prematurely and tests fail.
+  });
+  page = await browser.newPage();
+});
+afterEach(async () => {
+  await browser.close();
+});
 
 describe('LocalizedRichTextInput', () => {
   const blur = async (element) => {
@@ -39,6 +54,8 @@ describe('LocalizedRichTextInput', () => {
     await page.goto(`${HOST}/localized-rich-text-input/interactive`);
     const doc = await getDocument(page);
     let input = await queries.findByTestId(doc, 'rich-text-data-test-en');
+
+    await input.focus();
 
     // make the text bold
     let boldButton = await queries.findByLabelText(doc, 'Bold');
@@ -110,5 +127,21 @@ describe('LocalizedRichTextInput', () => {
     // now type into the input
     const h1Text = 'Hello World';
     await input.type(h1Text);
+    numOfTags = await getNumberOfTags('h1');
+    expect(numOfTags).toEqual(1);
+
+    // reset the input
+    const resetButton = await queries.findByLabelText(
+      doc,
+      'Reset value to lorem ipsum'
+    );
+    await resetButton.click();
+    numOfTags = await getNumberOfTags('h1');
+    expect(numOfTags).toEqual(0);
+    const allLorem = await queries.findAllByText(
+      doc,
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+    );
+    expect(allLorem.length).toBe(3);
   });
 });

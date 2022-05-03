@@ -10,6 +10,6 @@ module.exports = {
     '^.+\\.[t|j]sx?$': 'babel-jest',
   },
   globals: {
-    HOST: 'http://localhost:3001',
+    HOST: 'http://localhost:3000',
   },
 };

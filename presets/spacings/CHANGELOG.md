@@ -1,5 +1,78 @@
 # @commercetools-uikit/spacings
 
+## 15.0.0
+
+### Patch Changes
+
+- [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+- Updated dependencies [[`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/spacings-inline@15.0.0
+  - @commercetools-uikit/spacings-inset@15.0.0
+  - @commercetools-uikit/spacings-inset-squish@15.0.0
+  - @commercetools-uikit/spacings-stack@15.0.0
+
+## 14.0.6
+
+### Patch Changes
+
+- Updated dependencies [[`8f55409f3`](https://github.com/commercetools/ui-kit/commit/8f55409f3c15582a26380c32668a8e5d04260e88)]:
+  - @commercetools-uikit/spacings-inline@14.0.6
+  - @commercetools-uikit/spacings-stack@14.0.6
+
+## 14.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings-inline@14.0.1
+  - @commercetools-uikit/spacings-inset@14.0.1
+  - @commercetools-uikit/spacings-inset-squish@14.0.1
+  - @commercetools-uikit/spacings-stack@14.0.1
+
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/spacings-inline@14.0.0
+  - @commercetools-uikit/spacings-inset@14.0.0
+  - @commercetools-uikit/spacings-inset-squish@14.0.0
+  - @commercetools-uikit/spacings-stack@14.0.0
+
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings-inline@13.0.2
+  - @commercetools-uikit/spacings-inset@13.0.2
+  - @commercetools-uikit/spacings-inset-squish@13.0.2
+  - @commercetools-uikit/spacings-stack@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`04ef35407`](https://github.com/commercetools/ui-kit/commit/04ef35407228bec666f500f7815d0fb33ca043e0)]:
+  - @commercetools-uikit/spacings-stack@13.0.1
+
+## 13.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings-inline@13.0.0
+  - @commercetools-uikit/spacings-inset@13.0.0
+  - @commercetools-uikit/spacings-inset-squish@13.0.0
+  - @commercetools-uikit/spacings-stack@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes

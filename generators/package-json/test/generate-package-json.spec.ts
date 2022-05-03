@@ -46,7 +46,8 @@ describe('when package.json is NOT private', () => {
         "homepage": "https://uikit.commercetools.com",
         "keywords": Array [
           "javascript",
-          "design system",
+          "typescript",
+          "design-system",
           "react",
           "uikit",
         ],

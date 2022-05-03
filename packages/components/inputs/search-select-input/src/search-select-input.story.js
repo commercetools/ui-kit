@@ -91,6 +91,7 @@ class SearchSelectInputStory extends Component {
                   noOptionsMessage={() => noOptionsMessage}
                   loadingMessage={loadingMessage}
                   maxMenuHeight={number('maxMenuHeight', 220)}
+                  closeMenuOnSelect={boolean('closeMenuOnSelect', true)}
                   name={text('name', 'form-field-name')}
                   onBlur={action('onBlur')}
                   onChange={(event, info) => {

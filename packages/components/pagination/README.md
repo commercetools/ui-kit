@@ -49,11 +49,25 @@ export default Example;
 
 ## Properties
 
-| Props             | Type                                            | Required | Default | Description                                                                                                                                               |
-| ----------------- | ----------------------------------------------- | :------: | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `totalItems`      | `number`                                        |    ✅    |         | Total number of items across all pages                                                                                                                    |
-| `page`            | `number`                                        |    ✅    |         | The current page                                                                                                                                          |
-| `onPageChange`    | `func`                                          |    ✅    |         | A callback function, called when the page is changed.&#xA;<br/>&#xA;Signature: `(page: number) => void`&#xA;<br/>&#xA;Signature: `(page: number) => void` |
-| `perPage`         | `number`                                        |          | `20`    | Number of items per page, according to the pre-defined range values.                                                                                      |
-| `perPageRange`    | `enum`<br/>Possible values:<br/>`'s', 'm', 'l'` |          | `'s'`   | Range of items per page.&#xA;<br/>&#xA;`s: 20,50`&#xA;<br/>&#xA;`m: 20,50,100`&#xA;<br/>&#xA;`l: 200,500`                                                 |
-| `onPerPageChange` | `func`                                          |    ✅    |         | A callback function, called when `perPage` is changed.&#xA;<br/>&#xA;Signature: `(nextPerPage: number) => void`                                           |
+| Props             | Type                                                        | Required | Default | Description                                                                                               |
+| ----------------- | ----------------------------------------------------------- | :------: | ------- | --------------------------------------------------------------------------------------------------------- |
+| `totalItems`      | `number`                                                    |    ✅    |         | Total number of items across all pages                                                                    |
+| `page`            | `number`                                                    |    ✅    |         | The current page                                                                                          |
+| `onPageChange`    | `Function`<br/>[See signature.](#signature-onPageChange)    |    ✅    |         | A callback function, called when the page is changed.                                                     |
+| `perPage`         | `number`                                                    |          | `20`    | Number of items per page, according to the pre-defined range values.                                      |
+| `perPageRange`    | `TPageRangeSize`                                            |          | `'s'`   | Range of items per page.&#xA;<br/>&#xA;`s: 20,50`&#xA;<br/>&#xA;`m: 20,50,100`&#xA;<br/>&#xA;`l: 200,500` |
+| `onPerPageChange` | `Function`<br/>[See signature.](#signature-onPerPageChange) |    ✅    |         | A callback function, called when `perPage` is changed.                                                    |
+
+## Signatures
+
+### Signature `onPageChange`
+
+```ts
+(newPage: number) => void
+```
+
+### Signature `onPerPageChange`
+
+```ts
+(newPerPage: number) => void
+```

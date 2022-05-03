@@ -14,7 +14,7 @@ import Readme from '../README.md';
 
 // Create our initial value...
 
-const initialValue = '<h1>H1 heading</h1>';
+const initialValue = '<h1>H1 <u>heading</u></h1>';
 
 const Input = (props) => {
   const [value, setValue] = useState(initialValue);

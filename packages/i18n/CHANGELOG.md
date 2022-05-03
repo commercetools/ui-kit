@@ -1,5 +1,26 @@
 # @commercetools-uikit/i18n
 
+## 15.0.0
+
+### Patch Changes
+
+- [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+## 13.0.3
+
+### Patch Changes
+
+- [#2125](https://github.com/commercetools/ui-kit/pull/2125) [`70052159b`](https://github.com/commercetools/ui-kit/commit/70052159be32ed3904d3fa5efc65f6a60b20a8ac) Thanks [@emmenko](https://github.com/emmenko)! - Migrate to TypeScript
+
 ## 12.2.9
 
 ### Patch Changes

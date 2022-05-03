@@ -1,5 +1,68 @@
 # @commercetools-uikit/label
 
+## 15.0.0
+
+### Patch Changes
+
+- [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+- Updated dependencies [[`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/design-system@15.0.0
+  - @commercetools-uikit/text@15.0.0
+  - @commercetools-uikit/utils@15.0.0
+
+## 14.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`5a7573e6c`](https://github.com/commercetools/ui-kit/commit/5a7573e6cb3aeac51a5d95b41a2d91f39a82fc63)]:
+  - @commercetools-uikit/utils@14.0.1
+  - @commercetools-uikit/text@14.0.1
+
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/design-system@14.0.0
+  - @commercetools-uikit/text@14.0.0
+  - @commercetools-uikit/utils@14.0.0
+
+## 13.0.4
+
+### Patch Changes
+
+- [#2128](https://github.com/commercetools/ui-kit/pull/2128) [`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a) Thanks [@kark](https://github.com/kark)! - Upgrade of `react-intl` version to ^5.24.6 and addition of `react-intl` as a missing dependency
+
+- Updated dependencies [[`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a), [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6)]:
+  - @commercetools-uikit/text@13.0.4
+
+## 13.0.2
+
+### Patch Changes
+
+- [#2100](https://github.com/commercetools/ui-kit/pull/2100) [`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update intlMessage prop type to allow parameterized messages
+
+- Updated dependencies [[`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/text@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+
+## 13.0.0
+
+### Patch Changes
+
+- [#2081](https://github.com/commercetools/ui-kit/pull/2081) [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e)]:
+  - @commercetools-uikit/design-system@13.0.0
+  - @commercetools-uikit/text@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes

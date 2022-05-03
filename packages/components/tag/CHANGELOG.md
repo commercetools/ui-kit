@@ -1,5 +1,78 @@
 # @commercetools-uikit/tag
 
+## 15.0.0
+
+### Patch Changes
+
+- [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+- Updated dependencies [[`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d), [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/icons@15.0.0
+  - @commercetools-uikit/design-system@15.0.0
+  - @commercetools-uikit/accessible-button@15.0.0
+  - @commercetools-uikit/constraints@15.0.0
+  - @commercetools-uikit/text@15.0.0
+
+## 14.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/accessible-button@14.0.1
+  - @commercetools-uikit/constraints@14.0.1
+  - @commercetools-uikit/icons@14.0.1
+  - @commercetools-uikit/text@14.0.1
+
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/design-system@14.0.0
+  - @commercetools-uikit/accessible-button@14.0.0
+  - @commercetools-uikit/constraints@14.0.0
+  - @commercetools-uikit/icons@14.0.0
+  - @commercetools-uikit/text@14.0.0
+
+## 13.0.4
+
+### Patch Changes
+
+- [#2128](https://github.com/commercetools/ui-kit/pull/2128) [`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a) Thanks [@kark](https://github.com/kark)! - Upgrade of `react-intl` version to ^5.24.6 and addition of `react-intl` as a missing dependency
+
+- Updated dependencies [[`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a), [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6)]:
+  - @commercetools-uikit/text@13.0.4
+  - @commercetools-uikit/accessible-button@13.0.4
+
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`6ad44a1ec`](https://github.com/commercetools/ui-kit/commit/6ad44a1ec108bf5a1be577aca706fc40748e5bb6), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d)]:
+  - @commercetools-uikit/text@13.0.2
+  - @commercetools-uikit/icons@13.0.2
+  - @commercetools-uikit/accessible-button@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+
+## 13.0.0
+
+### Patch Changes
+
+- [#2091](https://github.com/commercetools/ui-kit/pull/2091) [`c6554f57b`](https://github.com/commercetools/ui-kit/commit/c6554f57b7c61262485c21650b470f96e0b641ee) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix Tag component text color when disabled
+
+- Updated dependencies [[`db244f02f`](https://github.com/commercetools/ui-kit/commit/db244f02f56b194bcf0bbb762b9d85b1ea7cfb78), [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c), [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e)]:
+  - @commercetools-uikit/icons@13.0.0
+  - @commercetools-uikit/design-system@13.0.0
+  - @commercetools-uikit/constraints@13.0.0
+  - @commercetools-uikit/accessible-button@13.0.0
+  - @commercetools-uikit/text@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes

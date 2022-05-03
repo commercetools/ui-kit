@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/time-input",
   "description": "The TimeInput component allows the user to select a time.",
-  "version": "12.2.9",
+  "version": "15.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
     "directory": "packages/components/inputs/time-input"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,25 +19,24 @@
   "module": "dist/commercetools-uikit-time-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/accessible-button": "12.2.9",
-    "@commercetools-uikit/constraints": "12.2.9",
-    "@commercetools-uikit/design-system": "12.2.9",
-    "@commercetools-uikit/hooks": "12.2.9",
-    "@commercetools-uikit/icons": "12.2.9",
-    "@commercetools-uikit/input-utils": "12.2.9",
-    "@commercetools-uikit/spacings-inline": "12.2.9",
-    "@commercetools-uikit/utils": "12.2.9",
-    "@emotion/is-prop-valid": "1.1.1",
+    "@babel/runtime": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.2",
+    "@commercetools-uikit/accessible-button": "15.0.0",
+    "@commercetools-uikit/constraints": "15.0.0",
+    "@commercetools-uikit/design-system": "15.0.0",
+    "@commercetools-uikit/hooks": "15.0.0",
+    "@commercetools-uikit/icons": "15.0.0",
+    "@commercetools-uikit/input-utils": "15.0.0",
+    "@commercetools-uikit/spacings-inline": "15.0.0",
+    "@commercetools-uikit/utils": "15.0.0",
+    "@emotion/is-prop-valid": "1.1.2",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "prop-types": "15.8.1",
-    "react-required-if": "1.0.3"
+    "prop-types": "15.8.1"
   },
   "devDependencies": {
     "react": "17.0.2",
-    "react-intl": "5.24.3"
+    "react-intl": "^5.24.6"
   },
   "peerDependencies": {
     "react": "17.x",

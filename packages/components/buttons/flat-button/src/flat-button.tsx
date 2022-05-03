@@ -44,8 +44,6 @@ export type TFlatButtonProps<
   label: string;
   /**
    * Handler when the button is clicked.
-   * <br />
-   * Signature: (event: MouseEvent<HTMLButtonElement) => void
    */
   onClick?: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>

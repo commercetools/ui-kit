@@ -1,10 +1,10 @@
 import {
   useCallback,
-  LegacyRef,
-  FocusEventHandler,
-  KeyboardEvent,
+  type LegacyRef,
+  type FocusEventHandler,
+  type KeyboardEvent,
 } from 'react';
-import { Theme, useTheme } from '@emotion/react';
+import { type Theme, useTheme } from '@emotion/react';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -43,6 +43,14 @@ export const ClearSection = (props: TClearSection) => {
 ClearSection.displayName = 'ClearSection';
 
 export type TInputProps = {
+  /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
   onBlur?: FocusEventHandler;
   onFocus?: FocusEventHandler;
   onKeyDown?: (

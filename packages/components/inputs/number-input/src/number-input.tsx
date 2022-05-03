@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FocusEventHandler } from 'react';
+import type { ChangeEventHandler, FocusEventHandler } from 'react';
 import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -13,6 +13,14 @@ export type TNumberInputProps = {
    * Used as HTML name of the input component. property
    */
   name?: string;
+  /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
   /**
    * Used as HTML `autocomplete` of the input component. property
    */
@@ -42,15 +50,15 @@ export type TNumberInputProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   /**
    * Called when input is blurred
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   /**
    * Focus the input on initial render
    */
@@ -130,6 +138,8 @@ const NumberInput = (props: TNumberInputProps) => {
         /* ARIA */
         aria-readonly={props.isReadOnly}
         contentEditable={!props.isReadOnly}
+        aria-invalid={props['aria-invalid']}
+        aria-errormessage={props['aria-errormessage']}
       />
     </Constraints.Horizontal>
   );

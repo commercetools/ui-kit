@@ -14,6 +14,8 @@
 
 > If you are building **Custom Applications** for the Merchant Center, be sure to check out our [documentation](https://docs.commercetools.com/custom-applications)
 
+> Interactive documentation of UI Kit components can be found in our [Storybook](https://uikit.commercetools.com/?path=/story/introduction--getting-started)
+
 # Getting started
 
 The UI Kit is a set of React components that follows commercetools [Design System](#design-system).

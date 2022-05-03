@@ -57,7 +57,7 @@ describe('html', () => {
             '<span style="font-weight: bold; text-decoration: underline;">hello</span>';
 
           expect(html.serialize(html.deserialize(htmlValue))).toEqual(
-            '<p><strong><u>hello</u></strong></p>'
+            '<p><u><strong>hello</strong></u></p>'
           );
         });
       });
@@ -67,7 +67,7 @@ describe('html', () => {
             '<span style="font-weight: bold; font-style: italic; text-decoration: underline;">hello</span>';
 
           expect(html.serialize(html.deserialize(htmlValue))).toEqual(
-            '<p><strong><em><u>hello</u></em></strong></p>'
+            '<p><u><em><strong>hello</strong></em></u></p>'
           );
         });
       });
@@ -77,7 +77,7 @@ describe('html', () => {
             '<span style="font-weight: bold; font-style: italic; text-decoration-line: underline line-through;">hello</span>';
 
           expect(html.serialize(html.deserialize(htmlValue))).toEqual(
-            '<p><strong><em><u><del>hello</del></u></em></strong></p>'
+            '<p><del><u><em><strong>hello</strong></em></u></del></p>'
           );
         });
       });
@@ -96,7 +96,7 @@ describe('html', () => {
             '<span style="font-weight: bold"><span style="font-style: italic;">hello</span></span>';
 
           expect(html.serialize(html.deserialize(htmlValue))).toEqual(
-            '<p><strong><em>hello</em></strong></p>'
+            '<p><em><strong>hello</strong></em></p>'
           );
         });
       });

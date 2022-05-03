@@ -1,4 +1,4 @@
-import { FocusEventHandler, ChangeEventHandler } from 'react';
+import type { FocusEventHandler, ChangeEventHandler } from 'react';
 import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -14,6 +14,14 @@ export type TTextInputProps = {
    */
   autoComplete?: string;
   /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
+  /**
    * `className` forwarded to the underlying `<input />`.
    */
   className?: string;
@@ -28,15 +36,15 @@ export type TTextInputProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange?: ChangeEventHandler;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   /**
    * Called when input is blurred
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /**
    * Called when input is focused
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   /**
    * Focus the input on initial render
    */
@@ -116,6 +124,8 @@ const TextInput = (props: TTextInputProps) => {
         /* ARIA */
         aria-readonly={props.isReadOnly}
         contentEditable={!props.isReadOnly}
+        aria-invalid={props['aria-invalid']}
+        aria-errormessage={props['aria-errormessage']}
       />
     </Constraints.Horizontal>
   );

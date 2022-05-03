@@ -27,6 +27,15 @@ import RadioInput from '@commercetools-uikit/radio-input';
       Banana
     </Spacings.Inline>
   </RadioInput.Option>
+  <RadioInput.Option
+    value="pineapple"
+    additionalContent='Lorem ipsum dolor sit amet, consetetur sadipscing elitr'
+  >
+    <Spacings.Inline alignItems="center">
+      <div>🍍</div>
+      Pineapple
+    </Spacings.Inline>
+  </RadioInput.Option>
 </RadioInput.Group>
 ```
 
@@ -61,6 +70,7 @@ import RadioInput from '@commercetools-uikit/radio-input';
 | `isDisabled`         | `bool`                |    -     | -      | `false` | Radio `RadioInput.Option` automatically gets the `isDisabled` state passed to the `RadioInput.Group` component. Only in cases where you would need to force the `disabled` state of one of the `RadioInput.Option`s, you can pass this prop which will take precedence over the one passed to the `RadioInput.Group` component.                          |
 | `isHovered`          | `bool`                |    -     | -      | `false` | Forces `RadioInput.Option` to be rendered in a hovered state. That's needed for cases when hovered appearance should be triggered by the parent component and not the `RadioInput.Option` itself. An `RadioInput.Option` is capable of handling it's own hovering without the need to pass this prop.                                                    |
 | `components.wrapper` | `function`            |    -     | -      | -       | Pass a function that receives one argument and returns a react element. The function will be called by passing the `RadioInput.Option` as an argument and the resulting react element will be rendered. This can be used to add a controlled `ToolTip` around individual `RadioInput.Option`s.                                                           |
+| `additionalContent`  | `node`                |    -     | -      | -       | Pass any react component or a string to describe what the additional content on `RadioInput.Option` should represent. This is useful when radio option has additional children that need to be rendered as contents on the `RadioInput.Option`.                                                                                                          |
 
 ## Invariants
 

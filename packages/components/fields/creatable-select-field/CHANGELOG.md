@@ -1,5 +1,150 @@
 # @commercetools-uikit/creatable-select-field
 
+## 15.0.0
+
+### Patch Changes
+
+- [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+- Updated dependencies [[`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d), [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/creatable-select-input@15.0.0
+  - @commercetools-uikit/design-system@15.0.0
+  - @commercetools-uikit/constraints@15.0.0
+  - @commercetools-uikit/field-errors@15.0.0
+  - @commercetools-uikit/field-label@15.0.0
+  - @commercetools-uikit/utils@15.0.0
+  - @commercetools-uikit/spacings@15.0.0
+
+## 14.0.6
+
+### Patch Changes
+
+- [#2168](https://github.com/commercetools/ui-kit/pull/2168) [`a89046179`](https://github.com/commercetools/ui-kit/commit/a890461793759e48228e61e013077e08c63ad7c7) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fixes incorrect `touched` prop validation warnings in field components which also have `isMulti` prop.
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@14.0.6
+  - @commercetools-uikit/spacings@14.0.6
+  - @commercetools-uikit/creatable-select-input@14.0.6
+
+## 14.0.2
+
+### Patch Changes
+
+- [#2147](https://github.com/commercetools/ui-kit/pull/2147) [`419935d2d`](https://github.com/commercetools/ui-kit/commit/419935d2d819d477a936fc9cb2dc2f0e3e840cc3) Thanks [@emmenko](https://github.com/emmenko)! - Refine types for event handlers and other minor inconsistencies.
+
+- Updated dependencies [[`419935d2d`](https://github.com/commercetools/ui-kit/commit/419935d2d819d477a936fc9cb2dc2f0e3e840cc3)]:
+  - @commercetools-uikit/creatable-select-input@14.0.2
+  - @commercetools-uikit/field-label@14.0.2
+
+## 14.0.1
+
+### Patch Changes
+
+- [#2141](https://github.com/commercetools/ui-kit/pull/2141) [`9060c8dc2`](https://github.com/commercetools/ui-kit/commit/9060c8dc2cb248099a7edb03d91af7518d2d3faa) Thanks [@emmenko](https://github.com/emmenko)! - Expose static method `toFieldErrors` for each `*Field` component.
+
+  Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+  ```ts
+  type FormValues = {
+    myField: string;
+  };
+
+  <TextField
+    // ...
+    name="my-field"
+    errors={TextField.toFieldErrors<FormValues>(formik.errors).myField}
+  />;
+  ```
+
+- Updated dependencies [[`5a7573e6c`](https://github.com/commercetools/ui-kit/commit/5a7573e6cb3aeac51a5d95b41a2d91f39a82fc63)]:
+  - @commercetools-uikit/creatable-select-input@14.0.1
+  - @commercetools-uikit/utils@14.0.1
+  - @commercetools-uikit/constraints@14.0.1
+  - @commercetools-uikit/field-label@14.0.1
+  - @commercetools-uikit/field-errors@14.0.1
+  - @commercetools-uikit/spacings@14.0.1
+
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/design-system@14.0.0
+  - @commercetools-uikit/constraints@14.0.0
+  - @commercetools-uikit/field-errors@14.0.0
+  - @commercetools-uikit/field-label@14.0.0
+  - @commercetools-uikit/creatable-select-input@14.0.0
+  - @commercetools-uikit/utils@14.0.0
+  - @commercetools-uikit/spacings@14.0.0
+
+## 13.0.4
+
+### Patch Changes
+
+- [#2128](https://github.com/commercetools/ui-kit/pull/2128) [`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a) Thanks [@kark](https://github.com/kark)! - Upgrade of `react-intl` version to ^5.24.6 and addition of `react-intl` as a missing dependency
+
+* [#2134](https://github.com/commercetools/ui-kit/pull/2134) [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6) Thanks [@emmenko](https://github.com/emmenko)! - Clean up unused dependencies
+
+- [#2122](https://github.com/commercetools/ui-kit/pull/2122) [`ad53141d6`](https://github.com/commercetools/ui-kit/commit/ad53141d62b82dc2778a16494c5c4232083bad31) Thanks [@codeshifu](https://github.com/codeshifu)! - Add support for `aria-invalid` and `aria-errormessage` to fields and inputs components
+
+- Updated dependencies [[`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a), [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6), [`ad53141d6`](https://github.com/commercetools/ui-kit/commit/ad53141d62b82dc2778a16494c5c4232083bad31)]:
+  - @commercetools-uikit/field-label@13.0.4
+  - @commercetools-uikit/field-errors@13.0.4
+  - @commercetools-uikit/creatable-select-input@13.0.4
+
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/field-label@13.0.2
+  - @commercetools-uikit/creatable-select-input@13.0.2
+  - @commercetools-uikit/field-errors@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- [#2094](https://github.com/commercetools/ui-kit/pull/2094) [`46a675a5b`](https://github.com/commercetools/ui-kit/commit/46a675a5b1c73e99e44272fbaacc01e3c6096884) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Migrate to typescript
+
+* [#2113](https://github.com/commercetools/ui-kit/pull/2113) [`82787f794`](https://github.com/commercetools/ui-kit/commit/82787f7941f8cb88fb65922f03bb0e101ed43eef) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix 'hint' prop validation when also receiving 'hintIcon' prop
+
+* Updated dependencies [[`46a675a5b`](https://github.com/commercetools/ui-kit/commit/46a675a5b1c73e99e44272fbaacc01e3c6096884)]:
+  - @commercetools-uikit/creatable-select-input@13.0.1
+  - @commercetools-uikit/field-label@13.0.1
+  - @commercetools-uikit/spacings@13.0.1
+
+## 13.0.0
+
+### Accidental release
+
+This was an accidental major release without breaking changes. It however contains a bug in regards to `hint` and `hintIcon` props in some components. We recommend skipping this release while updating to `13.0.1`
+
+### Patch Changes
+
+- [#2087](https://github.com/commercetools/ui-kit/pull/2087) [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#2066](https://github.com/commercetools/ui-kit/pull/2066) [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- [#2051](https://github.com/commercetools/ui-kit/pull/2051) [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`379a2a941`](https://github.com/commercetools/ui-kit/commit/379a2a941d21f33d739c11154fe92290eb756eec), [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c), [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`2f96f8ff7`](https://github.com/commercetools/ui-kit/commit/2f96f8ff7c7b322992fe79f8231a5783df145cbb), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e)]:
+  - @commercetools-uikit/creatable-select-input@13.0.0
+  - @commercetools-uikit/field-errors@13.0.0
+  - @commercetools-uikit/design-system@13.0.0
+  - @commercetools-uikit/constraints@13.0.0
+  - @commercetools-uikit/field-label@13.0.0
+  - @commercetools-uikit/spacings@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes

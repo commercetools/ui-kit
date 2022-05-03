@@ -107,15 +107,12 @@ export const getCalendarDayLabel = (day: MomentInput, timeZone: string) =>
   moment.tz(day, timeZone).format('D');
 
 export const createItemDateTimeToString =
-  (locale: string, timeZone: string) => (item: string) =>
+  (locale: string, timeZone: string) => (item: string | null) =>
     item ? formatDate(item, locale, timeZone) : '';
 
 export const createCalendarItems = (
   day: MomentInput,
   timeString: string,
-  // @deprecated
-  // @ts-ignore
-  intl,
   timeZone: string
 ) => {
   const parsedTime = parseTime(timeString);

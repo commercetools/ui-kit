@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           # Pass a personal access token (using our `ct-release-bot` account) to be able to trigger
           # other workflows
@@ -20,7 +20,7 @@ jobs:
           token: ${{ secrets.RELEASE_GITHUB_TOKEN }}
 
       - name: Setup Node (uses version in .nvmrc)
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
 
@@ -28,7 +28,7 @@ jobs:
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock', 'patches/*.patch') }}
@@ -59,7 +59,8 @@ jobs:
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@v1.2.0
+        # uses: changesets/action@v1.2.2
+        uses: emmenko/changesets-action@nm-fix-body-max-length-dist
         with:
           commit: 'ci(changesets): version packages'
           publish: yarn changeset publish

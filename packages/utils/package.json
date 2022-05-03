@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/utils",
   "description": "A collection of utilities shared across the other packages.",
-  "version": "12.2.9",
+  "version": "15.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
     "directory": "packages/utils"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,9 +19,9 @@
   "module": "dist/commercetools-uikit-utils.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@emotion/is-prop-valid": "1.1.1",
+    "@babel/runtime": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.2",
+    "@emotion/is-prop-valid": "1.1.2",
     "@types/warning": "^3.0.0",
     "warning": "4.0.3"
   }

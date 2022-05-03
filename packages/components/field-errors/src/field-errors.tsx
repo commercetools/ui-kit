@@ -10,6 +10,10 @@ type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 export type TFieldErrors = Record<string, boolean>;
 export type TFieldErrorsProps = {
   /**
+   * ID of the error field.
+   */
+  id?: string;
+  /**
    * List of errors. Only entries with truthy values will count as active errors.
    */
   errors?: TFieldErrors;
@@ -47,7 +51,11 @@ const FieldErrors = (props: TFieldErrorsProps) => {
           // Render a custom error if one was provided.
           // Custom errors take precedence over the default errors
           if (errorElement)
-            return <ErrorMessage key={key}>{errorElement}</ErrorMessage>;
+            return (
+              <ErrorMessage key={key} id={props.id}>
+                {errorElement}
+              </ErrorMessage>
+            );
 
           const defaultErrorElement = props.renderDefaultError
             ? props.renderDefaultError(key, error)
@@ -55,24 +63,28 @@ const FieldErrors = (props: TFieldErrorsProps) => {
           // Render a default error if one was provided.
           // Default errors take precedence over the known errors
           if (defaultErrorElement)
-            return <ErrorMessage key={key}>{defaultErrorElement}</ErrorMessage>;
+            return (
+              <ErrorMessage key={key} id={props.id}>
+                {defaultErrorElement}
+              </ErrorMessage>
+            );
 
           // Try to see if we know this error and render that error instead then
           if (key === FieldErrors.errorTypes.MISSING)
             return (
-              <ErrorMessage key={key}>
+              <ErrorMessage key={key} id={props.id}>
                 <FormattedMessage {...messages.missingRequiredField} />
               </ErrorMessage>
             );
           if (key === FieldErrors.errorTypes.NEGATIVE)
             return (
-              <ErrorMessage key={key}>
+              <ErrorMessage key={key} id={props.id}>
                 <FormattedMessage {...messages.invalidNegativeNumber} />
               </ErrorMessage>
             );
           if (key === FieldErrors.errorTypes.FRACTIONS)
             return (
-              <ErrorMessage key={key}>
+              <ErrorMessage key={key} id={props.id}>
                 <FormattedMessage {...messages.invalidFractionalNumber} />
               </ErrorMessage>
             );

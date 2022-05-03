@@ -1,5 +1,58 @@
 # visual-testing-app
 
+## 11.0.2
+
+### Patch Changes
+
+- [#2131](https://github.com/commercetools/ui-kit/pull/2131) [`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
+* [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+* Updated dependencies [[`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/design-system@15.0.0
+
+## 11.0.1
+
+### Patch Changes
+
+- [#2173](https://github.com/commercetools/ui-kit/pull/2173) [`42aa23d55`](https://github.com/commercetools/ui-kit/commit/42aa23d55ebce6f122092395f90fcf159f795eb1) Thanks [@renovate](https://github.com/apps/renovate)! - Update `moment` dependency to version 2.29.2
+
+## 11.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/design-system@14.0.0
+
+## 10.19.28
+
+### Patch Changes
+
+- [#2128](https://github.com/commercetools/ui-kit/pull/2128) [`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a) Thanks [@kark](https://github.com/kark)! - Upgrade of `react-intl` version to ^5.24.6 and addition of `react-intl` as a missing dependency
+
+## 10.19.27
+
+### Patch Changes
+
+- [#2105](https://github.com/commercetools/ui-kit/pull/2105) [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+* [#2119](https://github.com/commercetools/ui-kit/pull/2119) [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+## 10.19.26
+
+### Patch Changes
+
+- [#2070](https://github.com/commercetools/ui-kit/pull/2070) [`482e977c7`](https://github.com/commercetools/ui-kit/commit/482e977c7f0cf3dcd342731c965e9016da5dc417) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e)]:
+  - @commercetools-uikit/design-system@13.0.0
+
 ## 10.19.25
 
 ### Patch Changes

@@ -1,5 +1,32 @@
 # @commercetools-uikit/utils
 
+## 15.0.0
+
+### Patch Changes
+
+- [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - Alignment of versions across packages related to the major release of:
+  - '@commercetools-uikit/localized-rich-text-input'
+  - '@commercetools-uikit/rich-text-input'
+  - '@commercetools-uikit/rich-text-utils'
+
+## 14.0.1
+
+### Patch Changes
+
+- [#2140](https://github.com/commercetools/ui-kit/pull/2140) [`5a7573e6c`](https://github.com/commercetools/ui-kit/commit/5a7573e6cb3aeac51a5d95b41a2d91f39a82fc63) Thanks [@emmenko](https://github.com/emmenko)! - Explicitly expose `react-select` components as static properties so that type declarations are properly exposed as well.
+
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+## 13.0.2
+
+### Patch Changes
+
+- [#2119](https://github.com/commercetools/ui-kit/pull/2119) [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
 ## 12.2.9
 
 ### Patch Changes

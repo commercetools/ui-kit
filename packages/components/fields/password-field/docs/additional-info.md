@@ -17,3 +17,21 @@ Known error keys are:
 ## Main Functions and use cases are:
 
 - Password field in login forms
+
+## Static methods
+
+### `PasswordField.toFieldErrors`
+
+Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+```ts
+type FormValues = {
+  myField: string;
+};
+
+<PasswordField
+  // ...
+  name="my-field"
+  errors={PasswordField.toFieldErrors<FormValues>(formik.errors).myField}
+/>;
+```

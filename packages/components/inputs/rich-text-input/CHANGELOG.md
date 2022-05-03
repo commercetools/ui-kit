@@ -1,5 +1,193 @@
 # @commercetools-uikit/rich-text-input
 
+## 15.0.0
+
+### Major Changes
+
+- [#2159](https://github.com/commercetools/ui-kit/pull/2159) [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4) Thanks [@kark](https://github.com/kark)! - This release contains some breaking changes to the following components, due to upgrading the internal `slate` libraries for rich-text editor functionality:
+
+  - `<RichTextInput>`
+  - `<LocalizedRichTextInput>`
+
+  > All other components do not have any breaking changes.
+
+  # Breaking changes
+
+  The change affects the way the editor is able to reset the `value`. This is usually relevant when using the components within a form and the user wants to reset the form to its initial state.
+
+  Previously the richt-text editor was working in a controlled way. This allowed the `value` passed to the input components to be used by the editor as-is. So if the user resets the form, the new value will be displayed.
+
+  Now the richt-text editor works in an uncontrolled way, meaning that it keeps its own state of the value and the `value` passed to the input components is used as the initial value. Therefore, if the user resets the form, the new value passed to the input won't do anything.
+
+  Instead, the reset functionality needs to be explicitly triggered using a dedicated function. To enable this, you need to use a `ref` object and pass it to the input component. The `ref` object will then contain the `resetValue` function that can be used to trigger the editor reset.
+
+  ```jsx
+  const ref = useRef(null);
+  const handleReset = useCallback(() => {
+    ref.current?.resetValue('<p><strong>Value after reset</strong></p>');
+  }, []);
+  return (
+    <>
+      <button onMouseDown={handleReset}>Reset</button>
+      <RichTextInput
+        // ...
+        ref={ref}
+      />
+    </>
+  );
+  ```
+
+### Patch Changes
+
+- Updated dependencies [[`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4), [`ac66de3d8`](https://github.com/commercetools/ui-kit/commit/ac66de3d875497f8afc0248cc5f0e89f67dbf42d), [`648c6a917`](https://github.com/commercetools/ui-kit/commit/648c6a917be3fe528b57eb5f0d6439ca745a2ec4)]:
+  - @commercetools-uikit/rich-text-utils@15.0.0
+  - @commercetools-uikit/icons@15.0.0
+  - @commercetools-uikit/hooks@15.0.0
+  - @commercetools-uikit/design-system@15.0.0
+  - @commercetools-uikit/flat-button@15.0.0
+  - @commercetools-uikit/collapsible-motion@15.0.0
+  - @commercetools-uikit/constraints@15.0.0
+  - @commercetools-uikit/input-utils@15.0.0
+  - @commercetools-uikit/spacings-inline@15.0.0
+  - @commercetools-uikit/spacings-stack@15.0.0
+  - @commercetools-uikit/tooltip@15.0.0
+  - @commercetools-uikit/utils@15.0.0
+
+## 14.0.6
+
+### Patch Changes
+
+- Updated dependencies [[`8f55409f3`](https://github.com/commercetools/ui-kit/commit/8f55409f3c15582a26380c32668a8e5d04260e88)]:
+  - @commercetools-uikit/spacings-inline@14.0.6
+  - @commercetools-uikit/spacings-stack@14.0.6
+  - @commercetools-uikit/flat-button@14.0.6
+  - @commercetools-uikit/rich-text-utils@14.0.6
+  - @commercetools-uikit/input-utils@14.0.6
+
+## 14.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`bd73c49fe`](https://github.com/commercetools/ui-kit/commit/bd73c49fea1b0c6fc93e8786facad5224898a7eb)]:
+  - @commercetools-uikit/hooks@14.0.3
+  - @commercetools-uikit/collapsible-motion@14.0.3
+  - @commercetools-uikit/tooltip@14.0.3
+  - @commercetools-uikit/rich-text-utils@14.0.3
+
+## 14.0.2
+
+### Patch Changes
+
+- [#2147](https://github.com/commercetools/ui-kit/pull/2147) [`419935d2d`](https://github.com/commercetools/ui-kit/commit/419935d2d819d477a936fc9cb2dc2f0e3e840cc3) Thanks [@emmenko](https://github.com/emmenko)! - Refine types for event handlers and other minor inconsistencies.
+
+- Updated dependencies [[`419935d2d`](https://github.com/commercetools/ui-kit/commit/419935d2d819d477a936fc9cb2dc2f0e3e840cc3)]:
+  - @commercetools-uikit/flat-button@14.0.2
+  - @commercetools-uikit/input-utils@14.0.2
+  - @commercetools-uikit/rich-text-utils@14.0.2
+
+## 14.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`5a7573e6c`](https://github.com/commercetools/ui-kit/commit/5a7573e6cb3aeac51a5d95b41a2d91f39a82fc63)]:
+  - @commercetools-uikit/utils@14.0.1
+  - @commercetools-uikit/flat-button@14.0.1
+  - @commercetools-uikit/collapsible-motion@14.0.1
+  - @commercetools-uikit/constraints@14.0.1
+  - @commercetools-uikit/icons@14.0.1
+  - @commercetools-uikit/input-utils@14.0.1
+  - @commercetools-uikit/rich-text-utils@14.0.1
+  - @commercetools-uikit/spacings-inline@14.0.1
+  - @commercetools-uikit/spacings-stack@14.0.1
+  - @commercetools-uikit/tooltip@14.0.1
+  - @commercetools-uikit/hooks@14.0.1
+
+## 14.0.0
+
+### Major Changes
+
+- [#2136](https://github.com/commercetools/ui-kit/pull/2136) [`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df) Thanks [@emmenko](https://github.com/emmenko)! - This release does not introduce any breaking changes but intends to homogenize versions across all packages with the migration to TypeScript being completed. Having similar versions across packages should ease maintenance and updating from now on.
+
+### Patch Changes
+
+- Updated dependencies [[`df772ffea`](https://github.com/commercetools/ui-kit/commit/df772ffea1f3cfe2439d40ca539ea7e7c0eb83df)]:
+  - @commercetools-uikit/design-system@14.0.0
+  - @commercetools-uikit/flat-button@14.0.0
+  - @commercetools-uikit/collapsible-motion@14.0.0
+  - @commercetools-uikit/constraints@14.0.0
+  - @commercetools-uikit/icons@14.0.0
+  - @commercetools-uikit/input-utils@14.0.0
+  - @commercetools-uikit/rich-text-utils@14.0.0
+  - @commercetools-uikit/spacings-inline@14.0.0
+  - @commercetools-uikit/spacings-stack@14.0.0
+  - @commercetools-uikit/tooltip@14.0.0
+  - @commercetools-uikit/hooks@14.0.0
+  - @commercetools-uikit/utils@14.0.0
+
+## 13.0.4
+
+### Patch Changes
+
+- [#2128](https://github.com/commercetools/ui-kit/pull/2128) [`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a) Thanks [@kark](https://github.com/kark)! - Upgrade of `react-intl` version to ^5.24.6 and addition of `react-intl` as a missing dependency
+
+* [#2129](https://github.com/commercetools/ui-kit/pull/2129) [`45facf8bf`](https://github.com/commercetools/ui-kit/commit/45facf8bfe31904b4b5e1763e8fb7f6d4e3714a3) Thanks [@kark](https://github.com/kark)! - Migrate to TypeScript
+
+- [#2134](https://github.com/commercetools/ui-kit/pull/2134) [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6) Thanks [@emmenko](https://github.com/emmenko)! - Clean up unused dependencies
+
+- Updated dependencies [[`f1fdf4468`](https://github.com/commercetools/ui-kit/commit/f1fdf44682ab75a30faa853d8130291c0f58080a), [`574046010`](https://github.com/commercetools/ui-kit/commit/574046010955267c579cde54afd08b8b5f0eecf6), [`45facf8bf`](https://github.com/commercetools/ui-kit/commit/45facf8bfe31904b4b5e1763e8fb7f6d4e3714a3), [`ad53141d6`](https://github.com/commercetools/ui-kit/commit/ad53141d62b82dc2778a16494c5c4232083bad31)]:
+  - @commercetools-uikit/flat-button@13.0.4
+  - @commercetools-uikit/input-utils@13.0.4
+  - @commercetools-uikit/rich-text-utils@13.0.4
+
+## 13.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`e7523deab`](https://github.com/commercetools/ui-kit/commit/e7523deabcf733815d6bf8bcfafdc35129c870c2)]:
+  - @commercetools-uikit/rich-text-utils@13.0.3
+
+## 13.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`23fd9e859`](https://github.com/commercetools/ui-kit/commit/23fd9e859ac86dbe778100ddb10cb9464de53d0c), [`8b3110d97`](https://github.com/commercetools/ui-kit/commit/8b3110d97c0845bebe537f4d271e66ce04679922), [`2cb468897`](https://github.com/commercetools/ui-kit/commit/2cb4688977f60e130adfa8fdf438f550de17724d), [`694de78b7`](https://github.com/commercetools/ui-kit/commit/694de78b71c4beb1962a7d7c72f1cb6fa98f1d81)]:
+  - @commercetools-uikit/input-utils@13.0.2
+  - @commercetools-uikit/hooks@13.0.2
+  - @commercetools-uikit/icons@13.0.2
+  - @commercetools-uikit/utils@13.0.2
+  - @commercetools-uikit/rich-text-utils@13.0.2
+  - @commercetools-uikit/flat-button@13.0.2
+  - @commercetools-uikit/collapsible-motion@13.0.2
+  - @commercetools-uikit/tooltip@13.0.2
+  - @commercetools-uikit/constraints@13.0.2
+  - @commercetools-uikit/spacings-inline@13.0.2
+  - @commercetools-uikit/spacings-stack@13.0.2
+
+## 13.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`04ef35407`](https://github.com/commercetools/ui-kit/commit/04ef35407228bec666f500f7815d0fb33ca043e0)]:
+  - @commercetools-uikit/spacings-stack@13.0.1
+
+## 13.0.0
+
+### Patch Changes
+
+- [#2081](https://github.com/commercetools/ui-kit/pull/2081) [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+- Updated dependencies [[`db244f02f`](https://github.com/commercetools/ui-kit/commit/db244f02f56b194bcf0bbb762b9d85b1ea7cfb78), [`769f6307f`](https://github.com/commercetools/ui-kit/commit/769f6307f1a4f73a51c30e0ec7314b57ec8e589c), [`c85238dc2`](https://github.com/commercetools/ui-kit/commit/c85238dc222227b9fb71ecd87ef6e7a09cc206a1), [`2dd7de3e1`](https://github.com/commercetools/ui-kit/commit/2dd7de3e182bfd17d3a1c742b2dd3640abc40de8), [`aae43623f`](https://github.com/commercetools/ui-kit/commit/aae43623f54fc9f9f5dd19c40f836024a187f43e)]:
+  - @commercetools-uikit/icons@13.0.0
+  - @commercetools-uikit/rich-text-utils@13.0.0
+  - @commercetools-uikit/input-utils@13.0.0
+  - @commercetools-uikit/design-system@13.0.0
+  - @commercetools-uikit/collapsible-motion@13.0.0
+  - @commercetools-uikit/constraints@13.0.0
+  - @commercetools-uikit/flat-button@13.0.0
+  - @commercetools-uikit/spacings-inline@13.0.0
+  - @commercetools-uikit/spacings-stack@13.0.0
+  - @commercetools-uikit/tooltip@13.0.0
+
 ## 12.2.9
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/link",
   "description": "Links are used either to link to other UI routes, or to link to external pages. This component is a very thin wrapper over either a React Router Link, or a normal HTML <a> tag.",
-  "version": "12.2.9",
+  "version": "15.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
     "directory": "packages/components/link"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,12 +19,12 @@
   "module": "dist/commercetools-uikit-link.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/design-system": "12.2.9",
-    "@commercetools-uikit/icons": "12.2.9",
-    "@commercetools-uikit/spacings-inline": "12.2.9",
-    "@commercetools-uikit/utils": "12.2.9",
+    "@babel/runtime": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.2",
+    "@commercetools-uikit/design-system": "15.0.0",
+    "@commercetools-uikit/icons": "15.0.0",
+    "@commercetools-uikit/spacings-inline": "15.0.0",
+    "@commercetools-uikit/utils": "15.0.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@types/history": "^4.7.8",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "react": "17.0.2",
-    "react-intl": "5.24.3",
+    "react-intl": "^5.24.6",
     "react-router-dom": "5.3.0"
   },
   "peerDependencies": {

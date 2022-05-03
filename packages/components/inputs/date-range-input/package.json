@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/date-range-input",
   "description": "The `DateRangeInput` component allows the user to select a date range.",
-  "version": "12.2.9",
+  "version": "15.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
     "directory": "packages/components/inputs/date-range-input"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,33 +19,31 @@
   "module": "dist/commercetools-uikit-date-range-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/accessible-button": "12.2.9",
-    "@commercetools-uikit/calendar-utils": "12.2.9",
-    "@commercetools-uikit/constraints": "12.2.9",
-    "@commercetools-uikit/design-system": "12.2.9",
-    "@commercetools-uikit/hooks": "12.2.9",
-    "@commercetools-uikit/icons": "12.2.9",
-    "@commercetools-uikit/secondary-icon-button": "12.2.9",
-    "@commercetools-uikit/select-utils": "12.2.9",
-    "@commercetools-uikit/spacings-inline": "12.2.9",
-    "@commercetools-uikit/text": "12.2.9",
-    "@commercetools-uikit/tooltip": "12.2.9",
-    "@commercetools-uikit/utils": "12.2.9",
+    "@babel/runtime": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.2",
+    "@commercetools-uikit/accessible-button": "15.0.0",
+    "@commercetools-uikit/calendar-utils": "15.0.0",
+    "@commercetools-uikit/constraints": "15.0.0",
+    "@commercetools-uikit/design-system": "15.0.0",
+    "@commercetools-uikit/hooks": "15.0.0",
+    "@commercetools-uikit/icons": "15.0.0",
+    "@commercetools-uikit/secondary-icon-button": "15.0.0",
+    "@commercetools-uikit/select-utils": "15.0.0",
+    "@commercetools-uikit/spacings-inline": "15.0.0",
+    "@commercetools-uikit/text": "15.0.0",
+    "@commercetools-uikit/tooltip": "15.0.0",
+    "@commercetools-uikit/utils": "15.0.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "common-tags": "1.8.2",
     "downshift": "6.1.7",
     "prop-types": "15.8.1",
     "react-is": "17.0.2",
-    "react-required-if": "1.0.3",
     "warning": "4.0.3"
   },
   "devDependencies": {
-    "moment": "2.29.1",
+    "moment": "2.29.2",
     "react": "17.0.2",
-    "react-intl": "5.24.3"
+    "react-intl": "^5.24.6"
   },
   "peerDependencies": {
     "moment": "2.x",

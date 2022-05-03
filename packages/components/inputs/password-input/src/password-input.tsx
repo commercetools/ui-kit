@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FocusEventHandler } from 'react';
+import type { ChangeEventHandler, FocusEventHandler } from 'react';
 import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -14,6 +14,14 @@ export type TPasswordInputProps = {
    */
   name?: string;
   /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
+  /**
    * Value of the input component.
    */
   value: string;
@@ -24,17 +32,16 @@ export type TPasswordInputProps = {
   /**
    * Called with an event containing the new value. Required when input is not read only. Parent should pass it back as value.
    */
-  onChange?: ChangeEventHandler;
-  //requiredIf(PropTypes.func, (props) => !props.isReadOnly),
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   /**
    * Called when input is blurred.
    */
-  onBlur?: FocusEventHandler;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /**
    *
    * Called when input is focused.
    */
-  onFocus?: FocusEventHandler;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   /**
    * Focus the input on initial render.
    */
@@ -123,6 +130,8 @@ const PasswordInput = (props: TPasswordInputProps) => {
         /* ARIA */
         aria-readonly={props.isReadOnly}
         contentEditable={!props.isReadOnly}
+        aria-invalid={props['aria-invalid']}
+        aria-errormessage={props['aria-errormessage']}
       />
     </Constraints.Horizontal>
   );

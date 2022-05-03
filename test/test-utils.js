@@ -25,7 +25,7 @@ const getMessagesForLocale = (locale) => {
 const customRender = (
   node,
   {
-    locale = 'en', // react-router
+    locale = 'en',
     route = '/',
     history = createMemoryHistory({ initialEntries: [route] }),
     ...rtlOptions

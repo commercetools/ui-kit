@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/money-input",
   "description": "A controlled input component for money values with validation states.",
-  "version": "12.2.9",
+  "version": "15.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
     "directory": "packages/components/inputs/money-input"
   },
   "homepage": "https://uikit.commercetools.com",
-  "keywords": ["javascript", "design system", "react", "uikit"],
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,27 +19,26 @@
   "module": "dist/commercetools-uikit-money-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "7.16.7",
-    "@babel/runtime-corejs3": "7.16.8",
-    "@commercetools-uikit/constraints": "12.2.9",
-    "@commercetools-uikit/design-system": "12.2.9",
-    "@commercetools-uikit/hooks": "12.2.9",
-    "@commercetools-uikit/icons": "12.2.9",
-    "@commercetools-uikit/input-utils": "12.2.9",
-    "@commercetools-uikit/select-utils": "12.2.9",
-    "@commercetools-uikit/tooltip": "12.2.9",
-    "@commercetools-uikit/utils": "12.2.9",
+    "@babel/runtime": "^7.17.2",
+    "@babel/runtime-corejs3": "^7.17.2",
+    "@commercetools-uikit/constraints": "15.0.0",
+    "@commercetools-uikit/design-system": "15.0.0",
+    "@commercetools-uikit/hooks": "15.0.0",
+    "@commercetools-uikit/icons": "15.0.0",
+    "@commercetools-uikit/input-utils": "15.0.0",
+    "@commercetools-uikit/select-utils": "15.0.0",
+    "@commercetools-uikit/tooltip": "15.0.0",
+    "@commercetools-uikit/utils": "15.0.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-required-if": "1.0.3",
-    "react-select": "5.2.2"
+    "react-select": "5.3.0"
   },
   "devDependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intl": "5.24.3"
+    "react-intl": "^5.24.6"
   },
   "peerDependencies": {
     "react": "17.x",

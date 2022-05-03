@@ -1,4 +1,6 @@
-import { Formik } from 'formik';
+/* eslint-disable react/prop-types, react/display-name */
+import { useCallback, useRef, forwardRef } from 'react';
+import { Formik, useField } from 'formik';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty-es';
 import { action } from '@storybook/addon-actions';
@@ -14,6 +16,32 @@ import TextInput from '../../text-input';
 import TextField from '../../../fields/text-field';
 
 const initialValue = '';
+
+const RichTextFormikInput = forwardRef((props, ref) => {
+  const [field, meta, helpers] = useField(props.name);
+  const { value } = meta;
+  const { setValue } = helpers;
+
+  const onChange = useCallback(
+    (event) => {
+      setValue(event.target.value);
+      action('onChange')(event);
+    },
+    [setValue]
+  );
+
+  return (
+    <RichTextInput
+      id={props.name}
+      name={props.name}
+      value={value}
+      onChange={onChange}
+      onBlur={props.onBlur}
+      hasError={props.hasError}
+      ref={ref}
+    />
+  );
+});
 
 storiesOf('Examples|Forms/Inputs', module)
   .addDecorator(withKnobs)
@@ -31,6 +59,12 @@ storiesOf('Examples|Forms/Inputs', module)
       coverLetter: initialValue,
       aboutMe: initialValue,
     };
+    const refCv = useRef(null);
+    const refCoverLetter = useRef(null);
+    const refAboutMe = useRef(null);
+    const handleReset = useCallback((ref) => {
+      ref.current?.resetValue();
+    }, []);
 
     return (
       <Section>
@@ -44,6 +78,7 @@ storiesOf('Examples|Forms/Inputs', module)
               coverLetter: {},
               aboutMe: {},
             };
+
             if (RichTextInput.isEmpty(values.cv)) errors.cv.missing = true;
             if (RichTextInput.isEmpty(values.coverLetter))
               errors.coverLetter.missing = true;
@@ -83,17 +118,14 @@ storiesOf('Examples|Forms/Inputs', module)
               />
               <Spacings.Stack scale="s">
                 <FieldLabel title="Enter your cv" htmlFor="cv" />
-                <RichTextInput
-                  id="cv"
+                <RichTextFormikInput
                   name="cv"
-                  value={formik.values.cv}
-                  onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   hasError={
                     RichTextInput.isTouched(formik.touched.cv) &&
-                    formik.errors.cv &&
-                    formik.errors.cv.missing
+                    formik.errors.cv?.missing
                   }
+                  ref={refCv}
                 />
               </Spacings.Stack>
               <Spacings.Stack scale="s">
@@ -101,37 +133,36 @@ storiesOf('Examples|Forms/Inputs', module)
                   title="Enter your cover letter"
                   htmlFor="coverLetter"
                 />
-                <RichTextInput
-                  id="coverLetter"
+                <RichTextFormikInput
                   name="coverLetter"
-                  value={formik.values.coverLetter}
-                  onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   hasError={
                     RichTextInput.isTouched(formik.touched.coverLetter) &&
-                    formik.errors.coverLetter &&
-                    formik.errors.coverLetter.missing
+                    formik.errors.coverLetter?.missing
                   }
+                  ref={refCoverLetter}
                 />
               </Spacings.Stack>
               <Spacings.Stack scale="s">
                 <FieldLabel title="Tell us about yourself" htmlFor="aboutMe" />
-                <RichTextInput
-                  id="aboutMe"
+                <RichTextFormikInput
                   name="aboutMe"
-                  value={formik.values.aboutMe}
-                  onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   hasError={
                     RichTextInput.isTouched(formik.touched.aboutMe) &&
-                    formik.errors.aboutMe &&
-                    formik.errors.aboutMe.missing
+                    formik.errors.aboutMe?.missing
                   }
+                  ref={refAboutMe}
                 />
               </Spacings.Stack>
               <Spacings.Inline>
                 <SecondaryButton
-                  onClick={formik.handleReset}
+                  onClick={() => {
+                    formik.handleReset();
+                    handleReset(refCv);
+                    handleReset(refCoverLetter);
+                    handleReset(refAboutMe);
+                  }}
                   isDisabled={formik.isSubmitting}
                   label="Reset"
                 />

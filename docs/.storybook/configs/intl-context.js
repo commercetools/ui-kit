@@ -1,17 +1,24 @@
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
-import * as messages from '../../../packages/i18n';
 
-const locales = Object.keys(messages);
+const locales = ['en', 'de', 'es', 'fr-FR', 'ja', 'zh-CN'];
 
-const slugifyLocale = (locale) => {
+const getMessagesForLocale = (locale) => {
   switch (locale) {
-    case 'frFR':
-      return 'fr-FR';
-    case 'zhCN':
-      return 'zh-CN';
+    case 'en':
+      return require('../../../packages/i18n/data/en.json');
+    case 'es':
+      return require('../../../packages/i18n/data/es.json');
+    case 'de':
+      return require('../../../packages/i18n/data/de.json');
+    case 'fr-FR':
+      return require('../../../packages/i18n/data/fr-FR.json');
+    case 'zh-CN':
+      return require('../../../packages/i18n/data/zh-CN.json');
+    case 'ja':
+      return require('../../../packages/i18n/data/ja.json');
     default:
-      return locale;
+      throw new Error(`Unable to load messages for locale ${locale}.`);
   }
 };
 
@@ -23,9 +30,9 @@ const namifyLocale = (locale) => {
       return 'Español';
     case 'de':
       return 'Deutsch';
-    case 'frFR':
+    case 'fr-FR':
       return 'Français';
-    case 'zhCN':
+    case 'zh-CN':
       return '简化字';
     case 'ja':
       return '日本人';
@@ -36,8 +43,9 @@ const namifyLocale = (locale) => {
 
 const IntlWrapper = (props) => {
   const locale = props.locale;
+  const messages = getMessagesForLocale(locale);
   return (
-    <IntlProvider locale={slugifyLocale(locale)} messages={messages[locale]}>
+    <IntlProvider locale={locale} messages={messages}>
       {props.children}
     </IntlProvider>
   );

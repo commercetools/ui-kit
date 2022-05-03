@@ -18,13 +18,21 @@ export type TMultiLineInputProps = {
   isDisabled?: boolean;
   isReadOnly?: boolean;
   name?: string;
-  onBlur?: ChangeEventHandler;
-  onChange?: ChangeEventHandler;
-  onFocus?: ChangeEventHandler;
+  onBlur?: ChangeEventHandler<HTMLTextAreaElement>;
+  onChange?: ChangeEventHandler<HTMLTextAreaElement>;
+  onFocus?: ChangeEventHandler<HTMLTextAreaElement>;
   placeholder?: string;
   value: string;
   isOpen: boolean;
   onHeightChange?: (height: number, rowCount: number) => void;
+  /**
+   * Indicate if the value entered in the input is invalid.
+   */
+  'aria-invalid'?: boolean;
+  /**
+   * HTML ID of an element containing an error message related to the input.
+   */
+  'aria-errormessage'?: string;
 };
 
 const MultilineInput = (props: TMultiLineInputProps) => {
@@ -75,6 +83,8 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       /* ARIA */
       aria-readonly={props.isReadOnly}
       aria-multiline="true"
+      aria-invalid={props['aria-invalid']}
+      aria-errormessage={props['aria-errormessage']}
       role="textbox"
       minRows={MIN_ROW_COUNT}
       maxRows={props.isOpen ? undefined : MIN_ROW_COUNT}

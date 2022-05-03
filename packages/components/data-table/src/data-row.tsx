@@ -1,5 +1,5 @@
-import { useContext, useState, useEffect } from 'react';
-import { Row } from './data-table.styles';
+import { useContext, useState, useEffect, type ReactNode } from 'react';
+import { TableRow } from './data-table.styles';
 import DataCell from './cell';
 import { TColumn, TRow, TDataTableProps } from './data-table';
 
@@ -8,17 +8,22 @@ import ColumnResizingContext from './column-resizing-context';
 export type TDataRow<Row extends TRow = TRow> = {
   row: Row;
   rowIndex: number;
-  columns: TColumn[];
+  columns: TColumn<Row>[];
   shouldClipContent: boolean;
   shouldRenderBottomBorder: boolean;
 } & Pick<
-  TDataTableProps,
+  TDataTableProps<Row>,
   | 'onRowClick'
   | 'isCondensed'
   | 'verticalCellAlignment'
   | 'horizontalCellAlignment'
   | 'itemRenderer'
 >;
+
+const defaultItemRenderer = (row: TRow, column: TColumn): ReactNode => {
+  // @ts-ignore
+  return row[column.key];
+};
 
 const defaultProps: Pick<
   TDataRow,
@@ -34,8 +39,7 @@ const defaultProps: Pick<
   verticalCellAlignment: 'top',
   horizontalCellAlignment: 'left',
   shouldRenderBottomBorder: true,
-  // @ts-ignore
-  itemRenderer: (row, column) => row[column.key],
+  itemRenderer: defaultItemRenderer,
 };
 
 type TColumnResizingContext = {
@@ -70,7 +74,7 @@ const DataRow = <Row extends TRow = TRow>(props: TDataRow<Row>) => {
   ) => rowHasTruncatedColumn && totalColumnsLength - 1 === currentColumnIndex;
 
   return (
-    <Row isRowClickable={props.onRowClick}>
+    <TableRow isRowClickable={Boolean(props.onRowClick)}>
       {props.columns.map((column, columnIndex) => (
         <DataCell
           key={`${props.row.id}-${column.key}`}
@@ -101,7 +105,7 @@ const DataRow = <Row extends TRow = TRow>(props: TDataRow<Row>) => {
             : props.itemRenderer(props.row, column, isRowCollapsed)}
         </DataCell>
       ))}
-    </Row>
+    </TableRow>
   );
 };
 
