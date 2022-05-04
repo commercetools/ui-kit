@@ -27,7 +27,7 @@ import {
   CalendarContent,
   CalendarDay,
 } from '@commercetools-uikit/calendar-utils';
-import { getLocalizedDateFormatPattern } from '@commercetools-uikit/calendar-time-utils';
+import { getLocalizedDateTimeFormatPattern } from '@commercetools-uikit/calendar-time-utils';
 
 type TPreventDownshiftDefaultEvent = {
   nativeEvent: { preventDownshiftDefault: boolean };
@@ -452,9 +452,9 @@ class DateRangeInput extends Component<
                     placeholder:
                       typeof this.props.placeholder === 'string'
                         ? this.props.placeholder
-                        : `${getLocalizedDateFormatPattern(
+                        : `${getLocalizedDateTimeFormatPattern(
                             this.props.intl.locale
-                          )} - ${getLocalizedDateFormatPattern(
+                          )} - ${getLocalizedDateTimeFormatPattern(
                             this.props.intl.locale
                           )}`,
                     onMouseEnter: () => {

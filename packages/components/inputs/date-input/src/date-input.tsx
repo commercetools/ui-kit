@@ -33,7 +33,7 @@ import {
   CalendarContent,
   CalendarDay,
 } from '@commercetools-uikit/calendar-utils';
-import { getLocalizedDateFormatPattern } from '@commercetools-uikit/calendar-time-utils';
+import { getLocalizedDateTimeFormatPattern } from '@commercetools-uikit/calendar-time-utils';
 
 type TDownshiftEvent = {
   nativeEvent: {
@@ -268,7 +268,7 @@ const DateInput = (props: TDateInput) => {
                   placeholder:
                     typeof props.placeholder === 'string'
                       ? props.placeholder
-                      : getLocalizedDateFormatPattern(intl.locale),
+                      : getLocalizedDateTimeFormatPattern(intl.locale),
                   onMouseEnter: () => {
                     // we remove the highlight so that the user can use the
                     // arrow keys to move the cursor when hovering

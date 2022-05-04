@@ -24,7 +24,7 @@ import {
   getPaddingDayCount,
   getWeekdayNames,
   getStartOf,
-  getLocalizedDateFormatPattern,
+  getLocalizedDateTimeFormatPattern,
   getMonthCalendarLabel,
   getYearCalendarLabel,
   isSameDay,
@@ -398,7 +398,7 @@ class DateTimeInput extends Component<
                     placeholder:
                       typeof this.props.placeholder === 'string'
                         ? this.props.placeholder
-                        : getLocalizedDateFormatPattern(
+                        : getLocalizedDateTimeFormatPattern(
                             this.props.intl.locale,
                             'full'
                           ),
@@ -557,7 +557,7 @@ class DateTimeInput extends Component<
                     <TimeInput
                       isDisabled={!isTimeInputVisible}
                       timeInputRef={this.timeInputRef}
-                      placeholder={getLocalizedDateFormatPattern(
+                      placeholder={getLocalizedDateTimeFormatPattern(
                         this.props.intl.locale,
                         'time'
                       )}
