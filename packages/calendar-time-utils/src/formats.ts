@@ -23,6 +23,11 @@ export type TLocalizedDateFormatMapping = {
   [locale: string]: TLocaleDateFormatMapping;
 };
 
+// Here is where we translate from the standard characters used in the pattern
+// (calculated in the moment.js library) to the characters used in the locale
+// We just need to provide the translation for the characters that are different
+// For instance, in english we don't need to translate date characters as
+// they are the same as the pattern characters
 export const DATE_FORMAT_LOCALIZED_MAPPINGS: TLocalizedDateFormatMapping = {
   en: {
     // MM/DD/YYYY - h:mm A -> MM/DD/YYYY - HH:mm AM/PM

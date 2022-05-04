@@ -1,6 +1,6 @@
-import { getLocalizedDateFormatPattern } from './calendar-time';
+import { getLocalizedDateTimeFormatPattern } from './calendar-time';
 
-describe('getLocalizedDateFormatPattern', () => {
+describe('getLocalizedDateTimeFormatPattern', () => {
   const DATE_LOCALIZED_FORMATS = {
     de: 'TT.MM.JJJJ',
     en: 'MM/DD/YYYY',
@@ -39,7 +39,7 @@ describe('getLocalizedDateFormatPattern', () => {
 
   const checkLocales = (mockFormats, formatType) => {
     Object.entries(mockFormats).forEach(([locale, expectedFormat]) => {
-      expect(getLocalizedDateFormatPattern(locale, formatType)).toBe(
+      expect(getLocalizedDateTimeFormatPattern(locale, formatType)).toBe(
         expectedFormat
       );
     });

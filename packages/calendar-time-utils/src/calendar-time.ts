@@ -164,10 +164,16 @@ export const parseInputText = (
   return '';
 };
 
-export const getLocalizedDateFormatPattern = (
+const localizedDateFormatPatternCache = new Map<string, string>();
+export const getLocalizedDateTimeFormatPattern = (
   locale: string,
   formatType: 'date' | 'time' | 'full' = 'date'
-) => {
+): string => {
+  const key = `${locale}::${formatType}`;
+  if (localizedDateFormatPatternCache.has(key)) {
+    return localizedDateFormatPatternCache.get(key)!;
+  }
+
   // References:
   //  https://momentjs.com/docs/#/i18n/locale-data/
   //  https://momentjs.com/docs/#/displaying/ ("Localized formats" section)
@@ -186,6 +192,9 @@ export const getLocalizedDateFormatPattern = (
       )} - ${localeData.longDateFormat('LT')}`;
       break;
   }
+
+  // We try to get the localization both with the whole locale (e.g. 'en-GB')
+  // and the generic language code (e.g. 'en').
   const [languageCode] = locale.split('-');
   const localeMappings = Object.entries(
     DATE_FORMAT_LOCALIZED_MAPPINGS[locale] ||
@@ -193,11 +202,18 @@ export const getLocalizedDateFormatPattern = (
       {}
   );
 
+  // In case we don't have a translation for the locale, we fallback to the
+  // pattern from the moment locale data.
+  let pattern = localizedFormat;
   if (localeMappings && localeMappings.length > 0) {
-    return localeMappings.reduce((localizedPattern, [token, mappedValue]) => {
-      return localizedPattern.replace(token, mappedValue);
-    }, localizedFormat);
-  } else {
-    return localizedFormat;
+    pattern = localeMappings.reduce(
+      (localizedPattern, [token, mappedValue]) => {
+        return localizedPattern.replace(token, mappedValue);
+      },
+      localizedFormat
+    );
   }
+
+  localizedDateFormatPatternCache.set(key, pattern);
+  return pattern;
 };
