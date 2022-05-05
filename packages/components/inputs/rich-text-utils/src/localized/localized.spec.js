@@ -4,7 +4,7 @@ import {
   omitEmptyTranslations,
 } from './localized';
 
-const emptyValue = '<p></p>';
+const emptyValue = '';
 
 describe('createLocalizedString', () => {
   describe('when existingTranslations is not passed', () => {
