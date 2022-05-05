@@ -5,7 +5,7 @@
 Added a new function to calculate localized date/time patterns.
 
 Examples:
-```
+```js
 import { getLocalizedDateTimeFormatPattern } from '@commercetools-uikit/calendar-time-utils';
 
 getLocalizedDateTimeFormatPattern('en', 'date');

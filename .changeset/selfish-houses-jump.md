@@ -4,4 +4,4 @@
 '@commercetools-uikit/date-time-input': patch
 ---
 
-Updated packages to use localized placeholders for date/time inputs.
+Updated package to use localized placeholders for date/time inputs.
