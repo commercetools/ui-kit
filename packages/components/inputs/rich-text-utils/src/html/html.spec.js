@@ -7,10 +7,10 @@ global.window = dom.window;
 
 describe('html', () => {
   describe('deserialize', () => {
-    describe('with empty value', () => {
-      it('should return same value', () => {
+    describe('with empty paragraph', () => {
+      it('should return empty string', () => {
         const htmlValue = '<p></p>';
-        expect(html.serialize(html.deserialize(htmlValue))).toEqual(htmlValue);
+        expect(html.serialize(html.deserialize(htmlValue))).toEqual('');
       });
     });
     describe('with inline span styles', () => {
