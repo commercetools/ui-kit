@@ -68,4 +68,14 @@ describe('getLocalizedDateTimeFormatPattern', () => {
       checkLocales(FULL_LOCALIZED_FORMATS, 'full');
     });
   });
+
+  describe('when passing an unknown format type', () => {
+    it('should throw and error', () => {
+      expect(() =>
+        getLocalizedDateTimeFormatPattern('en', 'unknownFormatType')
+      ).toThrowError(
+        "CalendarTime.getLocalizedDateTimeFormatPattern: Unknown format type 'unknownFormatType'"
+      );
+    });
+  });
 });

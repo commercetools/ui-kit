@@ -191,6 +191,10 @@ export const getLocalizedDateTimeFormatPattern = (
         'L'
       )} - ${localeData.longDateFormat('LT')}`;
       break;
+    default:
+      throw new Error(
+        `CalendarTime.getLocalizedDateTimeFormatPattern: Unknown format type '${formatType}'`
+      );
   }
 
   // We try to get the localization both with the whole locale (e.g. 'en-GB')
