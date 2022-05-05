@@ -4,48 +4,21 @@ import {
   Transforms,
   Element as SlateElement,
   Text,
-  type BaseEditor,
-  type BaseText,
   type Editor as TEditor,
   type Descendant,
 } from 'slate';
 import {
   ReactEditor,
-  type ReactEditor as TReactEditor,
   type RenderElementProps,
   type RenderLeafProps,
 } from 'slate-react';
-import type { HistoryEditor } from 'slate-history';
-import { BLOCK_TAGS, MARK_TAGS } from './tags';
-import html, { defaultSlateState, type Deserialized } from './html';
-
-type CustomElement = {
-  type: Format;
-  children: CustomText[];
-  align?: string;
-};
-type CustomText = BaseText & {
-  bold?: boolean;
-  code?: string;
-  italic?: string;
-  underline?: string;
-  superscript?: string;
-  subscript?: string;
-  strikethrough?: string;
-};
-type Format = typeof BLOCK_TAGS[keyof typeof BLOCK_TAGS] &
-  typeof MARK_TAGS[keyof typeof MARK_TAGS];
-
-// Slate's way of providing custom type annotations comes down to extending `CustomTypes` interface
-// more: https://docs.slatejs.org/concepts/12-typescript
-// example: https://github.com/ianstormtaylor/slate/blob/main/packages/slate-react/src/custom-types.ts
-declare module 'slate' {
-  interface CustomTypes {
-    Editor: BaseEditor & TReactEditor & HistoryEditor;
-    Element: CustomElement;
-    Text: CustomText;
-  }
-}
+import { BLOCK_TAGS } from './tags';
+import html, {
+  defaultSlateState,
+  type Deserialized,
+  type Format,
+  type CustomElement,
+} from './html';
 
 const LIST_TYPES = [BLOCK_TAGS.ol, BLOCK_TAGS.ul];
 

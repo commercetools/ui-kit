@@ -1,16 +1,50 @@
 import escapeHtml from 'escape-html';
 import {
   Text,
+  Element as SlateElement,
   type Descendant,
   type Node as TNode,
   type Element as TElement,
   type Text as TText,
+  type BaseEditor,
+  type BaseText,
 } from 'slate';
+import { type ReactEditor as TReactEditor } from 'slate-react';
 import { jsx } from 'slate-hyperscript';
 import parse from 'style-to-object';
 import isEmpty from 'lodash/isEmpty';
+import type { HistoryEditor } from 'slate-history';
+import { BLOCK_TAGS, MARK_TAGS } from '../tags';
 
 type Html = string;
+
+export type CustomElement = {
+  type: Format;
+  children: CustomText[];
+  align?: string;
+};
+type CustomText = BaseText & {
+  bold?: boolean;
+  code?: string;
+  italic?: string;
+  underline?: string;
+  superscript?: string;
+  subscript?: string;
+  strikethrough?: string;
+};
+export type Format = typeof BLOCK_TAGS[keyof typeof BLOCK_TAGS] &
+  typeof MARK_TAGS[keyof typeof MARK_TAGS];
+
+// Slate's way of providing custom type annotations comes down to extending `CustomTypes` interface
+// more: https://docs.slatejs.org/concepts/12-typescript
+// example: https://github.com/ianstormtaylor/slate/blob/main/packages/slate-react/src/custom-types.ts
+declare module 'slate' {
+  interface CustomTypes {
+    Editor: BaseEditor & TReactEditor & HistoryEditor;
+    Element: CustomElement;
+    Text: CustomText;
+  }
+}
 
 const serializeNode = (node: TNode): Html => {
   if (Text.isText(node)) {
@@ -73,10 +107,14 @@ const serializeNode = (node: TNode): Html => {
   }
 };
 
-const wrapWithParaghraph = (content = '') => `<p>${content}</p>`;
+const isEmptyParagraph = (value: Deserialized): boolean =>
+  SlateElement.isElement(value) &&
+  value.type === 'paragraph' &&
+  value.children.length === 1 &&
+  value.children[0].text === '';
 
 const serializeSingle = (value: Deserialized): Html => {
-  if (value === null) return wrapWithParaghraph();
+  if (value === null || isEmptyParagraph(value)) return '';
   return serializeNode(value);
 };
 
@@ -87,7 +125,7 @@ const serialize = (value: Deserialized | Deserialized[]): Html => {
   } else {
     outputHtml = value.map((node) => serializeSingle(node)).join('');
   }
-  return outputHtml.length > 0 ? outputHtml : wrapWithParaghraph(outputHtml);
+  return outputHtml;
 };
 
 const ELEMENT_TAGS = {
