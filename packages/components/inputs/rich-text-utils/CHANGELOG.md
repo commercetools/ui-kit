@@ -1,5 +1,11 @@
 # @commercetools-uikit/rich-text-utils
 
+## 15.0.2
+
+### Patch Changes
+
+- [#2192](https://github.com/commercetools/ui-kit/pull/2192) [`adfe97fcd`](https://github.com/commercetools/ui-kit/commit/adfe97fcdeaa13f700196d5a23a62a0c4c9c28ad) Thanks [@kark](https://github.com/kark)! - Refactor html `serialize` method to make rich text inputs work properly with Formik. After changes if no text is entered the input should return empty string instead of string containing empty paragraph ('<p></p>') that was returned previously.
+
 ## 15.0.0
 
 ### Major Changes

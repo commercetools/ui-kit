@@ -2148,12 +2148,12 @@ __metadata:
     "@commercetools-uikit/design-system": 15.0.0
     "@commercetools-uikit/field-errors": 15.0.0
     "@commercetools-uikit/field-label": 15.0.0
-    "@commercetools-uikit/fields": 15.0.0
+    "@commercetools-uikit/fields": 15.0.2
     "@commercetools-uikit/grid": 15.0.0
     "@commercetools-uikit/hooks": 15.0.0
     "@commercetools-uikit/i18n": 15.0.0
     "@commercetools-uikit/icons": 15.0.0
-    "@commercetools-uikit/inputs": 15.0.1
+    "@commercetools-uikit/inputs": 15.0.2
     "@commercetools-uikit/label": 15.0.0
     "@commercetools-uikit/link": 15.0.0
     "@commercetools-uikit/loading-spinner": 15.0.0
@@ -2423,7 +2423,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/calendar-time-utils@15.0.0, @commercetools-uikit/calendar-time-utils@workspace:packages/calendar-time-utils":
+"@commercetools-uikit/calendar-time-utils@15.0.2, @commercetools-uikit/calendar-time-utils@workspace:packages/calendar-time-utils":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/calendar-time-utils@workspace:packages/calendar-time-utils"
   dependencies:
@@ -2704,14 +2704,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/date-field@15.0.0, @commercetools-uikit/date-field@workspace:packages/components/fields/date-field":
+"@commercetools-uikit/date-field@15.0.2, @commercetools-uikit/date-field@workspace:packages/components/fields/date-field":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-field@workspace:packages/components/fields/date-field"
   dependencies:
     "@babel/runtime": ^7.17.2
     "@babel/runtime-corejs3": ^7.17.2
     "@commercetools-uikit/constraints": 15.0.0
-    "@commercetools-uikit/date-input": 15.0.0
+    "@commercetools-uikit/date-input": 15.0.2
     "@commercetools-uikit/design-system": 15.0.0
     "@commercetools-uikit/field-errors": 15.0.0
     "@commercetools-uikit/field-label": 15.0.0
@@ -2727,14 +2727,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/date-input@15.0.0, @commercetools-uikit/date-input@workspace:packages/components/inputs/date-input":
+"@commercetools-uikit/date-input@15.0.2, @commercetools-uikit/date-input@workspace:packages/components/inputs/date-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-input@workspace:packages/components/inputs/date-input"
   dependencies:
     "@babel/runtime": ^7.17.2
     "@babel/runtime-corejs3": ^7.17.2
     "@commercetools-uikit/accessible-button": 15.0.0
-    "@commercetools-uikit/calendar-time-utils": 15.0.0
+    "@commercetools-uikit/calendar-time-utils": 15.0.2
     "@commercetools-uikit/calendar-utils": 15.0.0
     "@commercetools-uikit/constraints": 15.0.0
     "@commercetools-uikit/design-system": 15.0.0
@@ -2762,14 +2762,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/date-range-field@15.0.0, @commercetools-uikit/date-range-field@workspace:packages/components/fields/date-range-field":
+"@commercetools-uikit/date-range-field@15.0.2, @commercetools-uikit/date-range-field@workspace:packages/components/fields/date-range-field":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-range-field@workspace:packages/components/fields/date-range-field"
   dependencies:
     "@babel/runtime": ^7.17.2
     "@babel/runtime-corejs3": ^7.17.2
     "@commercetools-uikit/constraints": 15.0.0
-    "@commercetools-uikit/date-range-input": 15.0.0
+    "@commercetools-uikit/date-range-input": 15.0.2
     "@commercetools-uikit/design-system": 15.0.0
     "@commercetools-uikit/field-errors": 15.0.0
     "@commercetools-uikit/field-label": 15.0.0
@@ -2785,14 +2785,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/date-range-input@15.0.0, @commercetools-uikit/date-range-input@workspace:packages/components/inputs/date-range-input":
+"@commercetools-uikit/date-range-input@15.0.2, @commercetools-uikit/date-range-input@workspace:packages/components/inputs/date-range-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-range-input@workspace:packages/components/inputs/date-range-input"
   dependencies:
     "@babel/runtime": ^7.17.2
     "@babel/runtime-corejs3": ^7.17.2
     "@commercetools-uikit/accessible-button": 15.0.0
-    "@commercetools-uikit/calendar-time-utils": 15.0.0
+    "@commercetools-uikit/calendar-time-utils": 15.0.2
     "@commercetools-uikit/calendar-utils": 15.0.0
     "@commercetools-uikit/constraints": 15.0.0
     "@commercetools-uikit/design-system": 15.0.0
@@ -2820,14 +2820,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/date-time-field@15.0.0, @commercetools-uikit/date-time-field@workspace:packages/components/fields/date-time-field":
+"@commercetools-uikit/date-time-field@15.0.2, @commercetools-uikit/date-time-field@workspace:packages/components/fields/date-time-field":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-time-field@workspace:packages/components/fields/date-time-field"
   dependencies:
     "@babel/runtime": ^7.17.2
     "@babel/runtime-corejs3": ^7.17.2
     "@commercetools-uikit/constraints": 15.0.0
-    "@commercetools-uikit/date-time-input": 15.0.0
+    "@commercetools-uikit/date-time-input": 15.0.2
     "@commercetools-uikit/design-system": 15.0.0
     "@commercetools-uikit/field-errors": 15.0.0
     "@commercetools-uikit/field-label": 15.0.0
@@ -2843,14 +2843,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/date-time-input@15.0.0, @commercetools-uikit/date-time-input@workspace:packages/components/inputs/date-time-input":
+"@commercetools-uikit/date-time-input@15.0.2, @commercetools-uikit/date-time-input@workspace:packages/components/inputs/date-time-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/date-time-input@workspace:packages/components/inputs/date-time-input"
   dependencies:
     "@babel/runtime": ^7.17.2
     "@babel/runtime-corejs3": ^7.17.2
     "@commercetools-uikit/accessible-button": 15.0.0
-    "@commercetools-uikit/calendar-time-utils": 15.0.0
+    "@commercetools-uikit/calendar-time-utils": 15.0.2
     "@commercetools-uikit/calendar-utils": 15.0.0
     "@commercetools-uikit/constraints": 15.0.0
     "@commercetools-uikit/design-system": 15.0.0
@@ -2929,7 +2929,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/fields@15.0.0, @commercetools-uikit/fields@workspace:presets/fields":
+"@commercetools-uikit/fields@15.0.2, @commercetools-uikit/fields@workspace:presets/fields":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/fields@workspace:presets/fields"
   dependencies:
@@ -2938,9 +2938,9 @@ __metadata:
     "@commercetools-uikit/async-creatable-select-field": 15.0.0
     "@commercetools-uikit/async-select-field": 15.0.0
     "@commercetools-uikit/creatable-select-field": 15.0.0
-    "@commercetools-uikit/date-field": 15.0.0
-    "@commercetools-uikit/date-range-field": 15.0.0
-    "@commercetools-uikit/date-time-field": 15.0.0
+    "@commercetools-uikit/date-field": 15.0.2
+    "@commercetools-uikit/date-range-field": 15.0.2
+    "@commercetools-uikit/date-time-field": 15.0.2
     "@commercetools-uikit/localized-multiline-text-field": 15.0.0
     "@commercetools-uikit/localized-text-field": 15.0.0
     "@commercetools-uikit/money-field": 15.0.0
@@ -3086,7 +3086,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/inputs@15.0.1, @commercetools-uikit/inputs@workspace:presets/inputs":
+"@commercetools-uikit/inputs@15.0.2, @commercetools-uikit/inputs@workspace:presets/inputs":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/inputs@workspace:presets/inputs"
   dependencies:
@@ -3096,19 +3096,19 @@ __metadata:
     "@commercetools-uikit/async-select-input": 15.0.0
     "@commercetools-uikit/checkbox-input": 15.0.0
     "@commercetools-uikit/creatable-select-input": 15.0.0
-    "@commercetools-uikit/date-input": 15.0.0
-    "@commercetools-uikit/date-range-input": 15.0.0
-    "@commercetools-uikit/date-time-input": 15.0.0
+    "@commercetools-uikit/date-input": 15.0.2
+    "@commercetools-uikit/date-range-input": 15.0.2
+    "@commercetools-uikit/date-time-input": 15.0.2
     "@commercetools-uikit/localized-money-input": 15.0.0
     "@commercetools-uikit/localized-multiline-text-input": 15.0.0
-    "@commercetools-uikit/localized-rich-text-input": 15.0.1
+    "@commercetools-uikit/localized-rich-text-input": 15.0.2
     "@commercetools-uikit/localized-text-input": 15.0.0
     "@commercetools-uikit/money-input": 15.0.0
     "@commercetools-uikit/multiline-text-input": 15.0.0
     "@commercetools-uikit/number-input": 15.0.0
     "@commercetools-uikit/password-input": 15.0.0
     "@commercetools-uikit/radio-input": 15.0.0
-    "@commercetools-uikit/rich-text-input": 15.0.0
+    "@commercetools-uikit/rich-text-input": 15.0.2
     "@commercetools-uikit/search-select-input": 15.0.0
     "@commercetools-uikit/select-input": 15.0.0
     "@commercetools-uikit/text-input": 15.0.0
@@ -3301,7 +3301,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/localized-rich-text-input@15.0.1, @commercetools-uikit/localized-rich-text-input@workspace:packages/components/inputs/localized-rich-text-input":
+"@commercetools-uikit/localized-rich-text-input@15.0.2, @commercetools-uikit/localized-rich-text-input@workspace:packages/components/inputs/localized-rich-text-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/localized-rich-text-input@workspace:packages/components/inputs/localized-rich-text-input"
   dependencies:
@@ -3316,7 +3316,7 @@ __metadata:
     "@commercetools-uikit/input-utils": 15.0.0
     "@commercetools-uikit/localized-utils": 15.0.0
     "@commercetools-uikit/messages": 15.0.0
-    "@commercetools-uikit/rich-text-utils": 15.0.0
+    "@commercetools-uikit/rich-text-utils": 15.0.2
     "@commercetools-uikit/spacings-inline": 15.0.0
     "@commercetools-uikit/spacings-stack": 15.0.0
     "@commercetools-uikit/text": 15.0.0
@@ -3757,7 +3757,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/rich-text-input@15.0.0, @commercetools-uikit/rich-text-input@workspace:packages/components/inputs/rich-text-input":
+"@commercetools-uikit/rich-text-input@15.0.2, @commercetools-uikit/rich-text-input@workspace:packages/components/inputs/rich-text-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/rich-text-input@workspace:packages/components/inputs/rich-text-input"
   dependencies:
@@ -3770,7 +3770,7 @@ __metadata:
     "@commercetools-uikit/hooks": 15.0.0
     "@commercetools-uikit/icons": 15.0.0
     "@commercetools-uikit/input-utils": 15.0.0
-    "@commercetools-uikit/rich-text-utils": 15.0.0
+    "@commercetools-uikit/rich-text-utils": 15.0.2
     "@commercetools-uikit/spacings-inline": 15.0.0
     "@commercetools-uikit/spacings-stack": 15.0.0
     "@commercetools-uikit/tooltip": 15.0.0
@@ -3793,7 +3793,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/rich-text-utils@15.0.0, @commercetools-uikit/rich-text-utils@workspace:packages/components/inputs/rich-text-utils":
+"@commercetools-uikit/rich-text-utils@15.0.2, @commercetools-uikit/rich-text-utils@workspace:packages/components/inputs/rich-text-utils":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/rich-text-utils@workspace:packages/components/inputs/rich-text-utils"
   dependencies:
