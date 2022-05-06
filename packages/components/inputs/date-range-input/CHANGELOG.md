@@ -1,5 +1,14 @@
 # @commercetools-uikit/date-range-input
 
+## 15.0.2
+
+### Patch Changes
+
+- [#2190](https://github.com/commercetools/ui-kit/pull/2190) [`2e2adf659`](https://github.com/commercetools/ui-kit/commit/2e2adf659a91d384ad0ead6c47565c25a8adf3a4) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix placeholders formats for date/time inputs based on the user's locale.
+
+- Updated dependencies [[`2e2adf659`](https://github.com/commercetools/ui-kit/commit/2e2adf659a91d384ad0ead6c47565c25a8adf3a4)]:
+  - @commercetools-uikit/calendar-time-utils@15.0.2
+
 ## 15.0.0
 
 ### Patch Changes

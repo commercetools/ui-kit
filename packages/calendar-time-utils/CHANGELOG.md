@@ -1,5 +1,38 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 15.0.2
+
+### Patch Changes
+
+- [#2190](https://github.com/commercetools/ui-kit/pull/2190) [`2e2adf659`](https://github.com/commercetools/ui-kit/commit/2e2adf659a91d384ad0ead6c47565c25a8adf3a4) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Added a new function to calculate localized date/time patterns.
+
+  Examples:
+
+  ```js
+  import { getLocalizedDateTimeFormatPattern } from '@commercetools-uikit/calendar-time-utils';
+
+  getLocalizedDateTimeFormatPattern('en', 'date');
+  // MM/DD/YYYY
+
+  getLocalizedDateTimeFormatPattern('en-GB', 'date');
+  // DD/MM/YYYY
+
+  getLocalizedDateTimeFormatPattern('de', 'date');
+  // TT.MM.JJJJ
+
+  getLocalizedDateTimeFormatPattern('en', 'time');
+  // HH:mm AM/PM
+
+  getLocalizedDateTimeFormatPattern('de', 'time');
+  // SS:mm
+
+  getLocalizedDateTimeFormatPattern('en', 'full');
+  // MM/DD/YYYY - HH:mm AM/PM
+
+  getLocalizedDateTimeFormatPattern('de', 'full');
+  // TT.MM.JJJJ - SS:mm
+  ```
+
 ## 15.0.0
 
 ### Patch Changes

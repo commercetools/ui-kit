@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/fields",
   "description": "A preset of all the UI-Kit fields components.",
-  "version": "15.0.0",
+  "version": "15.0.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -24,9 +24,9 @@
     "@commercetools-uikit/async-creatable-select-field": "15.0.0",
     "@commercetools-uikit/async-select-field": "15.0.0",
     "@commercetools-uikit/creatable-select-field": "15.0.0",
-    "@commercetools-uikit/date-field": "15.0.0",
-    "@commercetools-uikit/date-range-field": "15.0.0",
-    "@commercetools-uikit/date-time-field": "15.0.0",
+    "@commercetools-uikit/date-field": "15.0.2",
+    "@commercetools-uikit/date-range-field": "15.0.2",
+    "@commercetools-uikit/date-time-field": "15.0.2",
     "@commercetools-uikit/localized-multiline-text-field": "15.0.0",
     "@commercetools-uikit/localized-text-field": "15.0.0",
     "@commercetools-uikit/money-field": "15.0.0",
