@@ -8,6 +8,7 @@ import moment, {
   LocaleSpecifier,
 } from 'moment-timezone';
 import { parseTime } from '@commercetools-uikit/utils';
+import { DATE_FORMAT_LOCALIZED_MAPPINGS } from './formats';
 
 type ParsedTime = {
   hours: number;
@@ -161,4 +162,62 @@ export const parseInputText = (
     return date.toISOString();
   }
   return '';
+};
+
+const localizedDateFormatPatternCache = new Map<string, string>();
+export const getLocalizedDateTimeFormatPattern = (
+  locale: string,
+  formatType: 'date' | 'time' | 'full' = 'date'
+): string => {
+  const key = `${locale}::${formatType}`;
+  if (localizedDateFormatPatternCache.has(key)) {
+    return localizedDateFormatPatternCache.get(key)!;
+  }
+
+  // References:
+  //  https://momentjs.com/docs/#/i18n/locale-data/
+  //  https://momentjs.com/docs/#/displaying/ ("Localized formats" section)
+  const localeData = moment().locale(locale).localeData();
+  let localizedFormat = '';
+  switch (formatType) {
+    case 'date':
+      localizedFormat = localeData.longDateFormat('L');
+      break;
+    case 'time':
+      localizedFormat = localeData.longDateFormat('LT');
+      break;
+    case 'full':
+      localizedFormat = `${localeData.longDateFormat(
+        'L'
+      )} - ${localeData.longDateFormat('LT')}`;
+      break;
+    default:
+      throw new Error(
+        `CalendarTime.getLocalizedDateTimeFormatPattern: Unknown format type '${formatType}'`
+      );
+  }
+
+  // We try to get the localization both with the whole locale (e.g. 'en-GB')
+  // and the generic language code (e.g. 'en').
+  const [languageCode] = locale.split('-');
+  const localeMappings = Object.entries(
+    DATE_FORMAT_LOCALIZED_MAPPINGS[locale] ||
+      DATE_FORMAT_LOCALIZED_MAPPINGS[languageCode] ||
+      {}
+  );
+
+  // In case we don't have a translation for the locale, we fallback to the
+  // pattern from the moment locale data.
+  let pattern = localizedFormat;
+  if (localeMappings && localeMappings.length > 0) {
+    pattern = localeMappings.reduce(
+      (localizedPattern, [token, mappedValue]) => {
+        return localizedPattern.replace(token, mappedValue);
+      },
+      localizedFormat
+    );
+  }
+
+  localizedDateFormatPatternCache.set(key, pattern);
+  return pattern;
 };

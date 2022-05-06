@@ -24,6 +24,7 @@ import {
   getPaddingDayCount,
   getWeekdayNames,
   getStartOf,
+  getLocalizedDateTimeFormatPattern,
   getMonthCalendarLabel,
   getYearCalendarLabel,
   isSameDay,
@@ -43,7 +44,6 @@ import {
   CalendarDay,
 } from '@commercetools-uikit/calendar-utils';
 import TimeInput from './time-input';
-import messages from './messages';
 
 const activationTypes = [
   Downshift.stateChangeTypes.keyDownEnter,
@@ -398,7 +398,10 @@ class DateTimeInput extends Component<
                     placeholder:
                       typeof this.props.placeholder === 'string'
                         ? this.props.placeholder
-                        : this.props.intl.formatMessage(messages.placeholder),
+                        : getLocalizedDateTimeFormatPattern(
+                            this.props.intl.locale,
+                            'full'
+                          ),
                     onMouseEnter: () => {
                       // we remove the highlight so that the user can use the
                       // arrow keys to move the cursor when hovering
@@ -554,8 +557,9 @@ class DateTimeInput extends Component<
                     <TimeInput
                       isDisabled={!isTimeInputVisible}
                       timeInputRef={this.timeInputRef}
-                      placeholder={this.props.intl.formatMessage(
-                        messages.timePlaceholder
+                      placeholder={getLocalizedDateTimeFormatPattern(
+                        this.props.intl.locale,
+                        'time'
                       )}
                       value={this.state.timeString}
                       onChange={this.handleTimeChange}

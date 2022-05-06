@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 
-const locales = ['en', 'de', 'es', 'fr-FR', 'ja', 'zh-CN'];
+const locales = ['en', 'en-GB', 'de', 'es', 'fr-FR', 'ja', 'zh-CN'];
 
 const getMessagesForLocale = (locale) => {
   switch (locale) {
-    case 'en':
+    case 'en': // This is american english
+      return require('../../../packages/i18n/data/en.json');
+    case 'en-GB':
       return require('../../../packages/i18n/data/en.json');
     case 'es':
       return require('../../../packages/i18n/data/es.json');
@@ -25,7 +27,9 @@ const getMessagesForLocale = (locale) => {
 const namifyLocale = (locale) => {
   switch (locale) {
     case 'en':
-      return 'English';
+      return 'English (US)';
+    case 'en-GB':
+      return 'English (British)';
     case 'es':
       return 'Español';
     case 'de':

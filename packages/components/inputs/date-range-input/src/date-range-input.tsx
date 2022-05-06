@@ -27,7 +27,7 @@ import {
   CalendarContent,
   CalendarDay,
 } from '@commercetools-uikit/calendar-utils';
-import messages from './messages';
+import { getLocalizedDateTimeFormatPattern } from '@commercetools-uikit/calendar-time-utils';
 
 type TPreventDownshiftDefaultEvent = {
   nativeEvent: { preventDownshiftDefault: boolean };
@@ -452,7 +452,11 @@ class DateRangeInput extends Component<
                     placeholder:
                       typeof this.props.placeholder === 'string'
                         ? this.props.placeholder
-                        : this.props.intl.formatMessage(messages.placeholder),
+                        : `${getLocalizedDateTimeFormatPattern(
+                            this.props.intl.locale
+                          )} - ${getLocalizedDateTimeFormatPattern(
+                            this.props.intl.locale
+                          )}`,
                     onMouseEnter: () => {
                       // we remove the highlight so that the user can use the
                       // arrow keys to move the cursor when hovering
