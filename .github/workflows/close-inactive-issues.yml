@@ -1,0 +1,24 @@
+name: Close inactive issues
+on:
+  schedule:
+    - cron: "30 1 * * *"
+
+jobs:
+  close-issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/stale@v3
+        with:
+          any-of-labels: "⌛ Status: Waiting for Customer"
+          start-date: "2022-04-06 00:00:00.000"
+          debug-only: true
+          days-before-issue-stale: 14
+          days-before-issue-close: 14
+          stale-issue-label: "stale"
+          stale-issue-message: "This issue has been marked as 'stale' due to its inactivity for the last 14 days. Please, add a new comment to keep the conversation going; otherwise, the issue will be closed in two weeks."
+          close-issue-message: "This issue has been closed due to its inactivity for the last month. Please, feel free to reopen it and add a new comment in case you think the problem has not been resolved."
+          days-before-pr-stale: -1
+          days-before-pr-close: -1
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
