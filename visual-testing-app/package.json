@@ -12,17 +12,17 @@
     "@commercetools-uikit/design-system": "15.0.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "moment": "2.29.2",
+    "moment": "2.29.3",
     "moment-timezone": "0.5.34",
     "prop-types": "15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-intl": "^5.24.6",
-    "react-router": "5.2.1",
-    "react-router-dom": "5.3.0"
+    "react-router": "5.3.1",
+    "react-router-dom": "5.3.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "1.3.0",
-    "vite": "2.9.1"
+    "@vitejs/plugin-react": "1.3.2",
+    "vite": "2.9.7"
   }
 }

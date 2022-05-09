@@ -32,7 +32,7 @@
     "@commercetools-uikit/utils": "15.0.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@types/escape-html": "1.0.1",
+    "@types/escape-html": "1.0.2",
     "downshift": "6.1.7",
     "escape-html": "1.0.3",
     "is-hotkey": "0.2.0",
@@ -40,7 +40,7 @@
     "prop-types": "15.8.1",
     "slate": "0.75.0",
     "slate-history": "0.66.0",
-    "slate-hyperscript": "0.67.0",
+    "slate-hyperscript": "0.77.0",
     "slate-react": "0.75.0",
     "style-to-object": "0.3.0"
   },
