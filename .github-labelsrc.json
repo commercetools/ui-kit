@@ -1,5 +1,11 @@
 [
   {
+    "id": 4077473362,
+    "name": "⌛ Status: Waiting for Customer",
+    "color": "000000",
+    "description": "Waiting for the answer from customer"
+  },
+  {
     "id": 1045018569,
     "name": "⛑ Type: Refactoring",
     "color": "58ce3d",
