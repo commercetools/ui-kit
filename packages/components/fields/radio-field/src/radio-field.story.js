@@ -111,7 +111,7 @@ storiesOf('Components|Fields', module)
               >
                 <Spacings.Inline scale="xs" alignItems="center">
                   <div>{'🍎'}</div>
-                  {text('label #1', 'Apple', radioOption1)}
+                  <div>{text('label #1', 'Apple', radioOption1)}</div>
                 </Spacings.Inline>
               </RadioInput.Option>
               <RadioInput.Option
@@ -126,7 +126,7 @@ storiesOf('Components|Fields', module)
               >
                 <Spacings.Inline scale="xs" alignItems="center">
                   <div>{'🍌'}</div>
-                  {text('label #2', 'Banana', radioOption2)}
+                  <div>{text('label #2', 'Banana', radioOption2)}</div>
                 </Spacings.Inline>
               </RadioInput.Option>
               <RadioInput.Option
@@ -141,7 +141,7 @@ storiesOf('Components|Fields', module)
               >
                 <Spacings.Inline scale="xs" alignItems="center">
                   <div>{'🍍'}</div>
-                  {text('label #3', 'Pineapple', radioOption3)}
+                  <div>{text('label #3', 'Pineapple', radioOption3)}</div>
                 </Spacings.Inline>
               </RadioInput.Option>
             </RadioField>
