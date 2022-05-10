@@ -2,4 +2,4 @@
 '@commercetools-uikit/radio-field': patch
 ---
 
-Add Radio Field to docs
+Add Radio Field to storybook
