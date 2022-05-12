@@ -35,13 +35,15 @@ describe('LocalizedRichTextInput', () => {
     }, input);
   };
 
-  const getNumberOfTags = async (tagName) => {
-    // eslint-disable-next-line no-shadow
-    const numberOfTags = await page.evaluate((tagName) => {
-      return document.querySelectorAll(tagName).length;
-    }, tagName);
-
-    return numberOfTags;
+  const waitForNumberOfTags = (tagName, count) => {
+    return page.waitForFunction(
+      (_tagName, _count) => {
+        return document.querySelectorAll(_tagName).length === _count;
+      },
+      { timeout: 5000 },
+      tagName,
+      count
+    );
   };
 
   it('Default', async () => {
@@ -65,9 +67,7 @@ describe('LocalizedRichTextInput', () => {
     await queries.findByText(doc, 'Hello world');
 
     // check that there is now a strong tag in the document.
-    let numOfTags = await getNumberOfTags('strong');
-
-    expect(numOfTags).toEqual(1);
+    await waitForNumberOfTags('strong', 1);
 
     // select the text
     await selectAllText(input);
@@ -75,8 +75,7 @@ describe('LocalizedRichTextInput', () => {
     await boldButton.click();
 
     // check there are no strong tags in the document.
-    numOfTags = await getNumberOfTags('strong');
-    expect(numOfTags).toEqual(0);
+    await waitForNumberOfTags('strong', 0);
 
     await input.press('Backspace');
 
@@ -92,6 +91,7 @@ describe('LocalizedRichTextInput', () => {
 
     // switch to german input
     input = await queries.findByTestId(doc, 'rich-text-data-test-de');
+    await input.focus();
 
     boldButton = boldButtons[1];
 
@@ -100,7 +100,7 @@ describe('LocalizedRichTextInput', () => {
     await input.type('Hello world');
 
     // check that there is now a strong tag in the document.
-    numOfTags = await getNumberOfTags('strong');
+    await waitForNumberOfTags('strong', 1);
 
     // now back to English
     input = await queries.findByTestId(doc, 'rich-text-data-test-en');
@@ -127,8 +127,7 @@ describe('LocalizedRichTextInput', () => {
     // now type into the input
     const h1Text = 'Hello World';
     await input.type(h1Text);
-    numOfTags = await getNumberOfTags('h1');
-    expect(numOfTags).toEqual(1);
+    await waitForNumberOfTags('h1', 1);
 
     // reset the input
     const resetButton = await queries.findByLabelText(
@@ -136,8 +135,7 @@ describe('LocalizedRichTextInput', () => {
       'Reset value to lorem ipsum'
     );
     await resetButton.click();
-    numOfTags = await getNumberOfTags('h1');
-    expect(numOfTags).toEqual(0);
+    await waitForNumberOfTags('h1', 0);
     const allLorem = await queries.findAllByText(
       doc,
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
