@@ -4,8 +4,7 @@ import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
 import * as icons from '@commercetools-uikit/icons';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
-import ViewSwitcher from './view-switcher';
-import ViewSwitcherButton from './view-switcher-button';
+import ViewSwitcher from '.';
 
 const viewSwitcher = 'View Switcher';
 
@@ -21,7 +20,7 @@ storiesOf('Components|ViewSwitcher', module)
   .add('ViewSwitcher', () => {
     return (
       <Section>
-        <ViewSwitcher
+        <ViewSwitcher.Group
           isCondensed={boolean('isCondensed', false, viewSwitcher)}
           defaultSelected="Button #3"
         >
@@ -30,7 +29,7 @@ storiesOf('Components|ViewSwitcher', module)
             const viewSwitcherButton = `Button #${i}`;
 
             return (
-              <ViewSwitcherButton
+              <ViewSwitcher.Button
                 key={i}
                 isDisabled={boolean('isDisabled', false, viewSwitcherButton)}
                 value={viewSwitcherButton}
@@ -46,10 +45,10 @@ storiesOf('Components|ViewSwitcher', module)
                 )}
               >
                 {text('children', `View #${i}`, viewSwitcherButton)}
-              </ViewSwitcherButton>
+              </ViewSwitcher.Button>
             );
           })}
-        </ViewSwitcher>
+        </ViewSwitcher.Group>
       </Section>
     );
   });

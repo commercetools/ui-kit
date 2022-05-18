@@ -4,6 +4,7 @@ import {
   cloneElement,
   useState,
   useEffect,
+  type ReactNode,
   type ReactElement,
 } from 'react';
 import { css } from '@emotion/react';
@@ -15,9 +16,21 @@ type TReactChild = {
 } & ReactElement;
 
 export type TViewSwitcherProps = {
+  /**
+   * Indicates that the view switcher can be reduced to save space
+   */
   isCondensed?: boolean;
-  children: TReactChild[];
+  /**
+   * Pass one or more `ViewSwitcher.Button` components
+   */
+  children: ReactNode;
+  /**
+   * Will be triggered whenever a `ViewSwitcher.Button` is clicked. Called with the ViewSwitcherButton value
+   */
   onChange?: (value: string) => void;
+  /**
+   * Indicates the default selected button
+   */
   defaultSelected: string;
 };
 
@@ -42,7 +55,7 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
     if (
       child &&
       isValidElement(child) &&
-      child.type.displayName === ViewSwitcherButton.displayName
+      (child as TReactChild).type.displayName === ViewSwitcherButton.displayName
     ) {
       const clonedChild = cloneElement(child, {
         onClick: () => {
@@ -53,7 +66,8 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
         isCondensed: props.isCondensed,
         isActive: selectedButton === child.props.value,
         isFirstButton: index === 0,
-        isLastButton: index === (props.children.length ?? 1) - 1,
+        isLastButton:
+          index === ((props.children as TReactChild[]).length ?? 1) - 1,
       });
       return clonedChild;
     }
