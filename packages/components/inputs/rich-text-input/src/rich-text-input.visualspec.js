@@ -34,13 +34,15 @@ describe('RichTextInput', () => {
     }, input);
   };
 
-  const getNumberOfTags = async (tagName) => {
-    // eslint-disable-next-line no-shadow
-    const numberOfTags = await page.evaluate((tagName) => {
-      return document.querySelectorAll(tagName).length;
-    }, tagName);
-
-    return numberOfTags;
+  const waitForNumberOfTags = (tagName, count) => {
+    return page.waitForFunction(
+      (_tagName, _count) => {
+        return document.querySelectorAll(_tagName).length === _count;
+      },
+      { timeout: 5000 },
+      tagName,
+      count
+    );
   };
 
   it('Default', async () => {
@@ -66,9 +68,7 @@ describe('RichTextInput', () => {
       await queries.findByText(doc, 'Hello world');
 
       // check that there is now a strong tag in the document.
-      let numOfTags = await getNumberOfTags('strong');
-
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('strong', 1);
 
       // select the text
       await selectAllText(input);
@@ -76,8 +76,7 @@ describe('RichTextInput', () => {
       await boldButton.click();
 
       // check there are no strong tags in the document.
-      numOfTags = await getNumberOfTags('strong');
-      expect(numOfTags).toEqual(0);
+      await waitForNumberOfTags('strong', 0);
 
       await input.press('Backspace');
 
@@ -92,15 +91,13 @@ describe('RichTextInput', () => {
       await italicButton.click();
 
       // check there are italic tags in the document.
-      numOfTags = await getNumberOfTags('em');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('em', 1);
 
       // click italic button to remove it
       await italicButton.click();
 
       // check that the italic tags have been removed.
-      numOfTags = await getNumberOfTags('em');
-      expect(numOfTags).toEqual(0);
+      await waitForNumberOfTags('em', 0);
 
       await selectAllText(input);
       await input.press('Backspace');
@@ -115,8 +112,7 @@ describe('RichTextInput', () => {
       await underlineButton.click();
 
       // check there are italic tags in the document.
-      numOfTags = await getNumberOfTags('u');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('u', 1);
 
       await queries.findByText(doc, 'Underlined text!');
 
@@ -124,8 +120,7 @@ describe('RichTextInput', () => {
       await underlineButton.click();
 
       // check that the italic tags have been removed.
-      numOfTags = await getNumberOfTags('u');
-      expect(numOfTags).toEqual(0);
+      await waitForNumberOfTags('u', 0);
 
       // multi select marks
 
@@ -151,8 +146,7 @@ describe('RichTextInput', () => {
       await strikethroughButton.click();
 
       // check there are del tags in the document.
-      numOfTags = await getNumberOfTags('del');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('del', 1);
 
       // remove the mark
       await moreStylesButton.click();
@@ -163,8 +157,7 @@ describe('RichTextInput', () => {
       await strikethroughButton.click();
 
       // check there are del tags in the document.
-      numOfTags = await getNumberOfTags('del');
-      expect(numOfTags).toEqual(0);
+      await waitForNumberOfTags('del', 0);
 
       await selectAllText(input);
       await input.press('Backspace');
@@ -182,8 +175,7 @@ describe('RichTextInput', () => {
       await superscriptButton.click();
 
       // check there are sup tags in the document.
-      numOfTags = await getNumberOfTags('sup');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('sup', 1);
 
       // remove the mark
       await moreStylesButton.click();
@@ -193,8 +185,7 @@ describe('RichTextInput', () => {
       await superscriptButton.click();
 
       // check there are no del tags in the document.
-      numOfTags = await getNumberOfTags('sup');
-      expect(numOfTags).toEqual(0);
+      await waitForNumberOfTags('sup', 0);
 
       // apply subscript to the selection
 
@@ -204,8 +195,7 @@ describe('RichTextInput', () => {
       await subscriptButton.click();
 
       // check there are sub tags in the document.
-      numOfTags = await getNumberOfTags('sub');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('sub', 1);
 
       // remove subscript now
 
@@ -214,8 +204,7 @@ describe('RichTextInput', () => {
       await subscriptButton.click();
 
       // check there are no sub tags in the document.
-      numOfTags = await getNumberOfTags('sub');
-      expect(numOfTags).toEqual(0);
+      await waitForNumberOfTags('sub', 0);
     });
 
     it('undo and redo', async () => {
@@ -237,23 +226,20 @@ describe('RichTextInput', () => {
       await boldButton.click();
 
       // bold should be applied
-      let numOfTags = await getNumberOfTags('strong');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('strong', 1);
 
       const undoButton = await queries.findByLabelText(doc, 'Undo');
       await undoButton.click();
 
       // bold should be removed
-      numOfTags = await getNumberOfTags('strong');
-      expect(numOfTags).toEqual(0);
+      await waitForNumberOfTags('strong', 0);
 
       // now we can try redoing it
       const redoButton = await queries.findByLabelText(doc, 'Redo');
       await redoButton.click();
 
       // bold should be added again
-      numOfTags = await getNumberOfTags('strong');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('strong', 1);
 
       /* with text */
 
@@ -297,8 +283,7 @@ describe('RichTextInput', () => {
       await queries.findByText(doc, h1Text);
 
       // h1 should be in document
-      let numOfTags = await getNumberOfTags('h1');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('h1', 1);
 
       // now, let's change back to h3
       await selectAllText(input);
@@ -311,12 +296,10 @@ describe('RichTextInput', () => {
       await h3Button.click();
 
       // h1 should not be in document
-      numOfTags = await getNumberOfTags('h1');
-      expect(numOfTags).toEqual(0);
+      await waitForNumberOfTags('h1', 0);
 
       // h3 should be in document
-      numOfTags = await getNumberOfTags('h3');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('h3', 1);
 
       // now change back to paragraph (the default)
 
@@ -331,8 +314,7 @@ describe('RichTextInput', () => {
       await paragraphbutton.click();
 
       // h3 should not be in document
-      numOfTags = await getNumberOfTags('h3');
-      expect(numOfTags).toEqual(0);
+      await waitForNumberOfTags('h3', 0);
     });
 
     it('apply lists', async () => {
@@ -360,16 +342,12 @@ describe('RichTextInput', () => {
       await input.type('Item 2');
 
       // ul should be in the document
-      let numOfTags = await getNumberOfTags('ul');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('ul', 1);
 
       // two li tags should be in the document
-
-      numOfTags = await getNumberOfTags('li');
-      expect(numOfTags).toEqual(2);
+      await waitForNumberOfTags('li', 2);
 
       // now switch to an ordered list
-
       await selectAllText(input);
       const orderedListButton = await queries.findByLabelText(
         doc,
@@ -378,17 +356,13 @@ describe('RichTextInput', () => {
       await orderedListButton.click();
 
       // ul should not be in the document
-      numOfTags = await getNumberOfTags('ul');
-      expect(numOfTags).toEqual(0);
+      await waitForNumberOfTags('ul', 0);
 
       // ol should be in the document
-      numOfTags = await getNumberOfTags('ol');
-      expect(numOfTags).toEqual(1);
+      await waitForNumberOfTags('ol', 1);
 
       // two li tags should still be in the document
-
-      numOfTags = await getNumberOfTags('li');
-      expect(numOfTags).toEqual(2);
+      await waitForNumberOfTags('li', 2);
     });
   });
 });
