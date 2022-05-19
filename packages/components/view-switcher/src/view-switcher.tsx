@@ -47,7 +47,7 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
 
     warning(
       optionChildrenAsArray.length > 0,
-      'ViewSwitcher must contain at least one ViewSwitcherButton'
+      'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
     );
   }, [props.children]);
 
@@ -57,14 +57,19 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
       isValidElement(child) &&
       (child as TReactChild).type.displayName === ViewSwitcherButton.displayName
     ) {
+      const isButtonActive = selectedButton === child.props.value;
       const clonedChild = cloneElement(child, {
         onClick: () => {
           setSelectedButton(child.props.value);
-          props.onChange && props.onChange(child.props.value);
-          child.props.onClick && child.props.onClick();
+          if (child.props.onClick && !isButtonActive) {
+            child.props.onClick(child.props.value);
+          }
+          if (props.onChange && !isButtonActive) {
+            props.onChange(child.props.value);
+          }
         },
         isCondensed: props.isCondensed,
-        isActive: selectedButton === child.props.value,
+        isActive: isButtonActive,
         isFirstButton: index === 0,
         isLastButton:
           index === ((props.children as TReactChild[]).length ?? 1) - 1,

@@ -24,8 +24,8 @@ storiesOf('Components|ViewSwitcher', module)
           isCondensed={boolean('isCondensed', false, viewSwitcher)}
           defaultSelected="Button #3"
         >
-          {[...Array(4).keys()].map((num) => {
-            const i = num + 1;
+          {[...Array(4).keys()].map((j) => {
+            const i = j + 1;
             const viewSwitcherButton = `Button #${i}`;
 
             return (

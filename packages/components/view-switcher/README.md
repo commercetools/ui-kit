@@ -101,9 +101,7 @@ export default Example;
 ### Signature `onClick`
 
 ```ts
-(
-  event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
-) => void
+(value: string) => void
 ```
 
 ## Invariants
