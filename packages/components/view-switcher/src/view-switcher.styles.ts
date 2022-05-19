@@ -19,11 +19,11 @@ const getSizeStyles = (
 };
 
 const getButtonStyles = (
-  isDisabled?: boolean,
-  isActive?: boolean,
+  isDisabled?: TViewSwitcherButtonProps['isDisabled'],
+  isActive?: TViewSwitcherButtonProps['isActive'],
   isCondensed?: TViewSwitcherButtonProps['isCondensed'],
-  isFirstButton?: boolean,
-  isLastButton?: boolean
+  isFirstButton?: TViewSwitcherButtonProps['isFirstButton'],
+  isLastButton?: TViewSwitcherButtonProps['isLastButton']
 ) => {
   const borderRadius = `${isFirstButton ? vars.borderRadius6 : '0'} ${
     isLastButton ? `${vars.borderRadius6} ${vars.borderRadius6}` : '0 0'
