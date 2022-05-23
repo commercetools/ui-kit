@@ -25,7 +25,7 @@ export type TViewSwitcherProps = {
    */
   children: ReactNode;
   /**
-   * Will be triggered whenever a `ViewSwitcher.Button` is clicked. Called with the ViewSwitcherButton value
+   * Will be triggered whenever a `ViewSwitcher.Button` is selected. Called with the ViewSwitcherButton value
    */
   onChange?: (value: string) => void;
   /**

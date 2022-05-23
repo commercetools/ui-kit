@@ -72,7 +72,7 @@ describe('rendering', () => {
     expect(handleChange).not.toHaveBeenCalled();
   });
 
-  it('should mark button as selected', () => {
+  it('should call onChange by the selected button', () => {
     const handleChange = jest.fn();
     render(
       <Group
@@ -138,7 +138,7 @@ describe('warnings', () => {
   beforeEach(() => {
     props = createGroupTestProps(0);
   });
-  it('should warn when there are no view switcher button in the group', () => {
+  it('should warn when there are no view switcher buttons in the group', () => {
     render(<Group {...props} />);
     expect(warning).toHaveBeenCalledWith(
       false,
