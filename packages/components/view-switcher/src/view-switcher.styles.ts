@@ -18,7 +18,7 @@ const getSizeStyles = (
   `;
 };
 
-const getButtonStyles = (
+export const getButtonStyles = (
   isDisabled?: TViewSwitcherButtonProps['isDisabled'],
   isActive?: TViewSwitcherButtonProps['isActive'],
   isCondensed?: TViewSwitcherButtonProps['isCondensed'],
@@ -29,46 +29,35 @@ const getButtonStyles = (
     isLastButton ? `${vars.borderRadius6} ${vars.borderRadius6}` : '0 0'
   } ${isFirstButton ? vars.borderRadius6 : '0'}`;
 
-  const baseStyles = css`
-    align-items: center;
-    color: ${vars.colorSolid};
-    transition: background-color ${vars.transitionLinear80Ms};
-    font-size: ${vars.fontSizeDefault};
-    border-radius: ${borderRadius};
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24),
-      0 -1px 1px 0 rgba(0, 0, 0, 0.12);
-    &:focus {
-      border: ${vars.borderRadius1} solid ${vars.colorInfo};
-    }
-    &:hover {
-      background-color: ${vars.colorNeutral90};
-    }
-    &:active {
-      background-color: ${vars.colorNeutral95};
-    }
-    ${getSizeStyles(isCondensed)}
-  `;
-  // "disabled" takes precedence over "active"
-  if (isDisabled) {
-    return [
-      baseStyles,
-      css`
-        background-color: ${vars.colorAccent98};
-        color: ${vars.colorNeutral60};
-      `,
-    ];
-  }
-  if (isActive) {
-    return [
-      baseStyles,
+  return [
+    css`
+      align-items: center;
+      color: ${vars.colorSolid};
+      transition: background-color ${vars.transitionLinear80Ms};
+      font-size: ${vars.fontSizeDefault};
+      border-radius: ${borderRadius};
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24),
+        0 -1px 1px 0 rgba(0, 0, 0, 0.12);
+      &:focus {
+        border: ${vars.borderRadius1} solid ${vars.colorInfo};
+      }
+      &:hover {
+        background-color: ${vars.colorNeutral90};
+      }
+      &:active {
+        background-color: ${vars.colorNeutral95};
+      }
+      ${getSizeStyles(isCondensed)}
+    `,
+    isActive &&
       css`
         background-color: ${vars.colorNeutral95};
         box-shadow: ${vars.shadow9};
       `,
-    ];
-  }
-
-  return baseStyles;
+    isDisabled &&
+      css`
+        background-color: ${vars.colorAccent98};
+        color: ${vars.colorNeutral60};
+      `,
+  ];
 };
-
-export { getButtonStyles };
