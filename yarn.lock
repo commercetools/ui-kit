@@ -2167,6 +2167,7 @@ __metadata:
     "@commercetools-uikit/text": 15.0.0
     "@commercetools-uikit/tooltip": 15.0.0
     "@commercetools-uikit/utils": 15.0.0
+    "@commercetools-uikit/view-switcher": 15.0.0
     moment: 2.29.3
     moment-timezone: 0.5.34
     react: 17.0.2
@@ -4277,7 +4278,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/view-switcher@workspace:packages/components/view-switcher":
+"@commercetools-uikit/view-switcher@15.0.0, @commercetools-uikit/view-switcher@workspace:packages/components/view-switcher":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/view-switcher@workspace:packages/components/view-switcher"
   dependencies:
