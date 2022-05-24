@@ -5,6 +5,8 @@ import {
 } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
+export const routePath = '/view-switcher';
+
 export const component = () => (
   <Suite>
     <Spec label="with View 1 button selected">
