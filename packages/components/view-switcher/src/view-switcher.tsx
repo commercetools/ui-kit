@@ -3,7 +3,6 @@ import {
   isValidElement,
   cloneElement,
   useState,
-  useEffect,
   type ReactNode,
   type ReactElement,
 } from 'react';
@@ -39,17 +38,10 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
     props.defaultSelected
   );
 
-  useEffect(() => {
-    const childrenAsArray = Children.toArray(props.children) as TReactChild[];
-    const optionChildrenAsArray = childrenAsArray.filter(
-      (child) => child.type.displayName === ViewSwitcherButton.displayName
-    );
-
-    warning(
-      optionChildrenAsArray.length > 0,
-      'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
-    );
-  }, [props.children]);
+  warning(
+    (props.children as TReactChild[]).length > 0,
+    'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
+  );
 
   const viewSwitcherElements = Children.map(props.children, (child, index) => {
     if (
@@ -61,11 +53,9 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
       const clonedChild = cloneElement(child, {
         onClick: () => {
           setSelectedButton(child.props.value);
-          if (child.props.onClick && !isButtonActive) {
-            child.props.onClick(child.props.value);
-          }
-          if (props.onChange && !isButtonActive) {
-            props.onChange(child.props.value);
+          if (!isButtonActive) {
+            child.props.onClick?.(child.props.value);
+            props.onChange?.(child.props.value);
           }
         },
         isCondensed: props.isCondensed,

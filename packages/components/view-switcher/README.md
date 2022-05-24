@@ -8,10 +8,6 @@ ViewSwitchers allow users to toggle between two or more different views of the s
 
 ViewSwitchers are frequently used to let users toggle between different formatting's, like with a grid view and a table view.
 
-They are also often used to narrow content groups.
-
-For example, use a content switcher if you have a list, such as “Import-results” and you want to divide it into views such as “All”, “Failed”, and “Success”.
-
 ## When not to use
 
 Do not use the ViewSwitcher as Tabs
