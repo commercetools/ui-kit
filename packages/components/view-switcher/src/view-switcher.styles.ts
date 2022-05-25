@@ -38,9 +38,6 @@ export const getButtonStyles = (
       border-radius: ${borderRadius};
       box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24),
         0 -1px 1px 0 rgba(0, 0, 0, 0.12);
-      &:focus {
-        border: ${vars.borderRadius1} solid ${vars.colorInfo};
-      }
       &:hover {
         background-color: ${vars.colorNeutral90};
       }
