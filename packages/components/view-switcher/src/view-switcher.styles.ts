@@ -58,6 +58,9 @@ export const getButtonStyles = (
       css`
         background-color: ${vars.colorAccent98};
         color: ${vars.colorNeutral60};
+        &:hover {
+          background-color: ${vars.colorAccent98};
+        }
       `,
   ];
 };
