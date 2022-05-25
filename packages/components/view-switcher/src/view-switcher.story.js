@@ -27,22 +27,21 @@ storiesOf('Components|ViewSwitcher', module)
           {[...Array(4).keys()].map((j) => {
             const i = j + 1;
             const viewSwitcherButton = `Button #${i}`;
+            const selectedIcon = select(
+              'icon',
+              ['', ...iconNames],
+              '',
+              viewSwitcherButton
+            );
 
             return (
               <ViewSwitcher.Button
                 key={i}
                 isDisabled={boolean('isDisabled', false, viewSwitcherButton)}
                 value={viewSwitcherButton}
-                icon={createElement(
-                  icons[
-                    select(
-                      'icon',
-                      iconNames,
-                      iconNames[iconNames.length - 1],
-                      viewSwitcherButton
-                    )
-                  ]
-                )}
+                {...(selectedIcon
+                  ? { icon: createElement(icons[selectedIcon]) }
+                  : {})}
               >
                 {text('children', `View #${i}`, viewSwitcherButton)}
               </ViewSwitcher.Button>
