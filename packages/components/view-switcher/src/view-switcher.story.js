@@ -8,7 +8,6 @@ import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import ViewSwitcher from '.';
 
-const viewSwitcher = 'View Switcher';
 const BUTTONS_COUNT = 4;
 const DEFAULT_BUTTON_ICON = 'WorldIcon';
 
@@ -24,7 +23,6 @@ storiesOf('Components|ViewSwitcher', module)
     },
   })
   .add('ViewSwitcher', () => {
-    console.log({ CHANGE });
     // Reference: https://github.com/storybookjs/storybook/issues/3855#issuecomment-638245040
     const channel = addons.getChannel();
     channel.addListener(CHANGE, (event) => {
@@ -44,7 +42,7 @@ storiesOf('Components|ViewSwitcher', module)
     return (
       <Section allowIcons={allowIcons}>
         <ViewSwitcher.Group
-          isCondensed={boolean('isCondensed', false, viewSwitcher)}
+          isCondensed={boolean('isCondensed', false)}
           defaultSelected="Button #3"
         >
           {Array(BUTTONS_COUNT)
