@@ -196,7 +196,7 @@ type TAsyncSelectInputProps = {
   /**
    * z-index value for the menu portal
    */
-  menuPortalZIndex: number;
+  menuPortalZIndex?: number;
   /**
    * whether the menu should block scroll while open
    * <br>
