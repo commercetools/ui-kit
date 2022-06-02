@@ -169,6 +169,7 @@ type TTimeFieldProps = {
 type TTimeFieldState = Pick<TTimeFieldProps, 'id'>;
 
 const sequentialId = createSequentialId('time-field-');
+const sequentialErrorsId = createSequentialId('time-field-error-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -249,6 +250,9 @@ class TimeField extends Component<TTimeFieldProps, TTimeFieldState> {
             horizontalConstraint="scale"
             isReadOnly={this.props.isReadOnly}
             {...filterDataAttributes(this.props)}
+            /* ARIA */
+            aria-invalid={hasError}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
             errors={this.props.errors}
