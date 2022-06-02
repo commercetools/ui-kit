@@ -178,21 +178,27 @@ describe('when showing an info button', () => {
 describe('when field is touched and has errors', () => {
   describe('when field empty', () => {
     it('should render a default error', () => {
-      const { getByText } = renderRadioField({
+      const { container, getByText } = renderRadioField({
         touched: true,
         errors: { missing: true },
       });
       expect(getByText(/field is required/i)).toBeInTheDocument();
+      expect(
+        container.querySelector('[aria-invalid="true"]')
+      ).toBeInTheDocument();
     });
   });
   describe('when there is a custom error', () => {
     it('should render the custom error message', () => {
-      const { getByText } = renderRadioField({
+      const { container, getByText } = renderRadioField({
         touched: true,
         errors: { custom: true },
         renderError: () => 'Custom error',
       });
       expect(getByText('Custom error')).toBeInTheDocument();
+      expect(
+        container.querySelector('[aria-invalid="true"]')
+      ).toBeInTheDocument();
     });
   });
 });
