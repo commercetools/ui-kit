@@ -1,14 +1,11 @@
-import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
-import * as icons from '@commercetools-uikit/icons';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import ViewSwitcher from '.';
 
-const viewSwitcher = 'View Switcher';
+const KNOB_GROUP_NAME = 'View Switcher';
 
-const iconNames = Object.keys(icons);
 storiesOf('Components|ViewSwitcher', module)
   .addDecorator(withKnobs)
   .addParameters({
@@ -17,33 +14,23 @@ storiesOf('Components|ViewSwitcher', module)
       sidebar: Readme,
     },
   })
-  .add('ViewSwitcher', () => {
+  .add('ViewSwitcher (without icons)', () => {
     return (
       <Section>
         <ViewSwitcher.Group
-          isCondensed={boolean('isCondensed', false, viewSwitcher)}
-          defaultSelected="Button #3"
+          isCondensed={boolean('isCondensed', false, KNOB_GROUP_NAME)}
+          defaultSelected="Button 3"
         >
           {[...Array(4).keys()].map((j) => {
             const i = j + 1;
-            const viewSwitcherButton = `Button #${i}`;
-            const selectedIcon = select(
-              'icon',
-              ['', ...iconNames],
-              '',
-              viewSwitcherButton
-            );
-
+            const viewSwitcherButton = `Button ${i}`;
             return (
               <ViewSwitcher.Button
                 key={i}
                 isDisabled={boolean('isDisabled', false, viewSwitcherButton)}
                 value={viewSwitcherButton}
-                {...(selectedIcon
-                  ? { icon: createElement(icons[selectedIcon]) }
-                  : {})}
               >
-                {text('children', `View #${i}`, viewSwitcherButton)}
+                {text('children', `View ${i}`, viewSwitcherButton)}
               </ViewSwitcher.Button>
             );
           })}
