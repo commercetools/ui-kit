@@ -2,6 +2,7 @@ import {
   ViewSwitcher,
   CubeIcon,
   InformationIcon,
+  WorldIcon,
 } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
@@ -31,6 +32,7 @@ export const component = () => (
       <ViewSwitcher.Group defaultSelected="view-1" isCondensed>
         <ViewSwitcher.Button value="view-1">View 1</ViewSwitcher.Button>
         <ViewSwitcher.Button value="view-2">View 2</ViewSwitcher.Button>
+        <ViewSwitcher.Button value="view-3">View 3</ViewSwitcher.Button>
       </ViewSwitcher.Group>
     </Spec>
 
@@ -41,6 +43,9 @@ export const component = () => (
         </ViewSwitcher.Button>
         <ViewSwitcher.Button value="view-2" icon={<CubeIcon />}>
           View 2
+        </ViewSwitcher.Button>
+        <ViewSwitcher.Button value="view-3" icon={<WorldIcon />}>
+          View 3
         </ViewSwitcher.Button>
       </ViewSwitcher.Group>
     </Spec>
@@ -53,6 +58,9 @@ export const component = () => (
         <ViewSwitcher.Button value="view-2" icon={<CubeIcon />}>
           View 2
         </ViewSwitcher.Button>
+        <ViewSwitcher.Button value="view-3" icon={<WorldIcon />}>
+          View 3
+        </ViewSwitcher.Button>
       </ViewSwitcher.Group>
     </Spec>
 
@@ -63,6 +71,9 @@ export const component = () => (
         </ViewSwitcher.Button>
         <ViewSwitcher.Button value="view-2" isDisabled icon={<CubeIcon />}>
           View 2
+        </ViewSwitcher.Button>
+        <ViewSwitcher.Button value="view-3" icon={<WorldIcon />}>
+          View 3
         </ViewSwitcher.Button>
       </ViewSwitcher.Group>
     </Spec>
