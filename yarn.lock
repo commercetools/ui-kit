@@ -2167,6 +2167,7 @@ __metadata:
     "@commercetools-uikit/text": 15.0.0
     "@commercetools-uikit/tooltip": 15.0.0
     "@commercetools-uikit/utils": 15.0.0
+    "@commercetools-uikit/view-switcher": 15.0.0
     moment: 2.29.3
     moment-timezone: 0.5.34
     react: 17.0.2
@@ -4274,6 +4275,24 @@ __metadata:
     "@emotion/is-prop-valid": 1.1.2
     "@types/warning": ^3.0.0
     warning: 4.0.3
+  languageName: unknown
+  linkType: soft
+
+"@commercetools-uikit/view-switcher@15.0.0, @commercetools-uikit/view-switcher@workspace:packages/components/view-switcher":
+  version: 0.0.0-use.local
+  resolution: "@commercetools-uikit/view-switcher@workspace:packages/components/view-switcher"
+  dependencies:
+    "@babel/runtime": ^7.17.2
+    "@babel/runtime-corejs3": ^7.17.2
+    "@commercetools-uikit/accessible-button": 15.0.0
+    "@commercetools-uikit/design-system": 15.0.0
+    "@commercetools-uikit/utils": 15.0.0
+    "@emotion/react": ^11.4.0
+    "@emotion/styled": ^11.3.0
+    prop-types: 15.8.1
+    react: 17.0.2
+  peerDependencies:
+    react: 17.x
   languageName: unknown
   linkType: soft
 

@@ -55,7 +55,8 @@
     "@commercetools-uikit/tag": "15.0.0",
     "@commercetools-uikit/text": "15.0.0",
     "@commercetools-uikit/tooltip": "15.0.0",
-    "@commercetools-uikit/utils": "15.0.0"
+    "@commercetools-uikit/utils": "15.0.0",
+    "@commercetools-uikit/view-switcher": "15.0.0"
   },
   "devDependencies": {
     "moment": "2.29.3",
