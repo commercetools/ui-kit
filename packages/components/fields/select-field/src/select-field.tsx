@@ -276,6 +276,7 @@ type TSelectFieldProps = {
 type TFieldState = Pick<TSelectFieldProps, 'id'>;
 
 const sequentialId = createSequentialId('select-field-');
+const sequentialErrorsId = createSequentialId('select-field-error-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -386,6 +387,9 @@ export default class SelectField extends Component<TSelectFieldProps> {
             iconLeft={this.props.iconLeft}
             inputValue={this.props.inputValue}
             {...filterDataAttributes(this.props)}
+            /* ARIA */
+            aria-invalid={hasError}
+            aria-errormessage={sequentialErrorsId}
           />
           <FieldErrors
             errors={this.props.errors}

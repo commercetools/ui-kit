@@ -28,6 +28,7 @@ type TCustomFormErrors<Values> = {
 };
 
 const sequentialId = createSequentialId('radio-field-');
+const sequentialErrorsId = createSequentialId('radio-field-error-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
@@ -229,6 +230,9 @@ class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
             direction={this.props.direction}
             directionProps={this.props.directionProps}
             {...filterDataAttributes(this.props)}
+            /* ARIA */
+            aria-invalid={hasError}
+            aria-errormessage={sequentialErrorsId}
           >
             {this.props.children}
           </RadioInput.Group>

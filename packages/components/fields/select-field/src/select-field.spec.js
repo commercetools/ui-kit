@@ -163,20 +163,22 @@ describe('when showing an info button', () => {
 describe('when field is touched and has errors', () => {
   describe('when field empty', () => {
     it('should render a default error', () => {
-      const { getByText } = renderSelectField({
+      const { getByText, getByLabelText } = renderSelectField({
         touched: true,
         errors: { missing: true },
       });
+      expect(getByLabelText('SelectField')).toBeInvalid();
       expect(getByText(/field is required/i)).toBeInTheDocument();
     });
   });
   describe('when there is a custom error', () => {
     it('should render the custom error message', () => {
-      const { getByText } = renderSelectField({
+      const { getByText, getByLabelText } = renderSelectField({
         touched: true,
         errors: { custom: true },
         renderError: () => 'Custom error',
       });
+      expect(getByLabelText('SelectField')).toBeInvalid();
       expect(getByText('Custom error')).toBeInTheDocument();
     });
   });
@@ -185,23 +187,25 @@ describe('when field is touched and has errors', () => {
 describe('when field is not touched', () => {
   describe('when isMulti is false', () => {
     it('should not render an error', () => {
-      const { queryByText } = renderSelectField({
+      const { queryByText, getByLabelText } = renderSelectField({
         touched: false,
         isMulti: false,
         value: ['1', '2', '3'],
         errors: { missing: true },
       });
+      expect(getByLabelText('SelectField')).toBeValid();
       expect(queryByText(/field is required/i)).not.toBeInTheDocument();
     });
   });
   describe('when isMulti is true', () => {
     it('should not render an error', () => {
-      const { queryByText } = renderSelectField({
+      const { queryByText, getByLabelText } = renderSelectField({
         touched: undefined,
         isMulti: true,
         value: ['1', '2', '3'],
         errors: { missing: true },
       });
+      expect(getByLabelText('SelectField')).toBeValid();
       expect(queryByText(/field is required/i)).not.toBeInTheDocument();
     });
   });
