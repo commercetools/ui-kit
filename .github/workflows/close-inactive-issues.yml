@@ -13,7 +13,6 @@ jobs:
         with:
           any-of-labels: "⌛ Status: Waiting for Customer"
           start-date: "2022-04-06 00:00:00.000"
-          debug-only: true
           days-before-issue-stale: 14
           days-before-issue-close: 14
           stale-issue-label: "stale"
