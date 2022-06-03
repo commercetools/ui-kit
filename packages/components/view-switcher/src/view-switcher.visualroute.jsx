@@ -9,7 +9,7 @@ export const routePath = '/view-switcher';
 
 export const component = () => (
   <Suite>
-    <Spec label="with View 1 button selected">
+    <Spec label="with a button selected">
       <ViewSwitcher.Group defaultSelected="view-1">
         <ViewSwitcher.Button value="view-1">View 1</ViewSwitcher.Button>
         <ViewSwitcher.Button value="view-2">View 2</ViewSwitcher.Button>
@@ -17,7 +17,7 @@ export const component = () => (
       </ViewSwitcher.Group>
     </Spec>
 
-    <Spec label="with View 1 button disabled and view 2 button selected">
+    <Spec label="with a button disabled and a button selected">
       <ViewSwitcher.Group defaultSelected="view-2">
         <ViewSwitcher.Button value="view-1" isDisabled>
           View 1
@@ -27,7 +27,7 @@ export const component = () => (
       </ViewSwitcher.Group>
     </Spec>
 
-    <Spec label="with buttons condensed">
+    <Spec label="with condensed version">
       <ViewSwitcher.Group defaultSelected="view-1" isCondensed>
         <ViewSwitcher.Button value="view-1">View 1</ViewSwitcher.Button>
         <ViewSwitcher.Button value="view-2">View 2</ViewSwitcher.Button>
@@ -40,6 +40,28 @@ export const component = () => (
           View 1
         </ViewSwitcher.Button>
         <ViewSwitcher.Button value="view-2" icon={<CubeIcon />}>
+          View 2
+        </ViewSwitcher.Button>
+      </ViewSwitcher.Group>
+    </Spec>
+
+    <Spec label="with icon buttons and condensed version">
+      <ViewSwitcher.Group defaultSelected="view-1" isCondensed>
+        <ViewSwitcher.Button value="view-1" icon={<InformationIcon />}>
+          View 1
+        </ViewSwitcher.Button>
+        <ViewSwitcher.Button value="view-2" icon={<CubeIcon />}>
+          View 2
+        </ViewSwitcher.Button>
+      </ViewSwitcher.Group>
+    </Spec>
+
+    <Spec label="with icon buttons, condensed version and a disabled button">
+      <ViewSwitcher.Group defaultSelected="view-1" isCondensed>
+        <ViewSwitcher.Button value="view-1" icon={<InformationIcon />}>
+          View 1
+        </ViewSwitcher.Button>
+        <ViewSwitcher.Button value="view-2" isDisabled icon={<CubeIcon />}>
           View 2
         </ViewSwitcher.Button>
       </ViewSwitcher.Group>
