@@ -88,7 +88,7 @@
     "@svgr/plugin-svgo": "6.2.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "12.1.5",
-    "@testing-library/react-hooks": "7.0.2",
+    "@testing-library/react-hooks": "8.0.0",
     "@types/is-hotkey": "^0.1.7",
     "@types/jest": "27.5.1",
     "@typescript-eslint/eslint-plugin": "5.27.0",
