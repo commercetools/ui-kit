@@ -40,6 +40,7 @@ export { default as DataTableManager } from '@commercetools-uikit/data-table-man
 export { default as Tag } from '@commercetools-uikit/tag';
 export { default as Tooltip } from '@commercetools-uikit/tooltip';
 export { default as Text } from '@commercetools-uikit/text';
+export { default as ViewSwitcher } from '@commercetools-uikit/view-switcher';
 
 // Expose certain useful hooks
 export {
