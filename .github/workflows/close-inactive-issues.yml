@@ -20,4 +20,5 @@ jobs:
           close-issue-message: "This issue has been closed due to its inactivity for the last month. Please, feel free to reopen it and add a new comment in case you think the problem has not been resolved."
           days-before-pr-stale: -1
           days-before-pr-close: -1
+          operations-per-run: 50
           repo-token: ${{ secrets.GITHUB_TOKEN }}
