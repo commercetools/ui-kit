@@ -9,7 +9,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/stale@v3
+      - uses: actions/stale@v5
         with:
           any-of-labels: "⌛ Status: Waiting for Customer"
           start-date: "2022-04-06 00:00:00.000"
@@ -20,4 +20,5 @@ jobs:
           close-issue-message: "This issue has been closed due to its inactivity for the last month. Please, feel free to reopen it and add a new comment in case you think the problem has not been resolved."
           days-before-pr-stale: -1
           days-before-pr-close: -1
+          operations-per-run: 50
           repo-token: ${{ secrets.GITHUB_TOKEN }}
