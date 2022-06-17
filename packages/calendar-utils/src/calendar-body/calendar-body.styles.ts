@@ -173,6 +173,7 @@ const getInputContainerStyles = (
     display: flex;
     font-size: ${vars.fontSizeDefault};
     font-family: inherit;
+    min-width: ${vars.constraint5};
     transition: border-color ${vars.transitionStandard},
       box-shadow ${vars.transitionStandard};
 

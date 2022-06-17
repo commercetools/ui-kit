@@ -31,6 +31,7 @@ export default class CalendarMenu extends Component<TCalendarMenu> {
             box-sizing: border-box;
             width: 100%;
             background-color: ${vars.colorSurface};
+            min-width: ${vars.constraint5};
             z-index: 99999; /* copied from flatpickr */
           `,
           !hasFooter &&
