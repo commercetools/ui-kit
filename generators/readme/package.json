@@ -17,7 +17,7 @@
     "@types/lodash": "4.14.182",
     "@types/mdast": "3.0.10",
     "@types/mri": "1.1.1",
-    "@types/node": "16.11.38",
+    "@types/node": "16.11.41",
     "@types/shelljs": "0.8.11",
     "@types/unist": "2.0.6",
     "@types/vfile": "4.0.0",
@@ -26,7 +26,7 @@
     "lodash": "4.17.21",
     "mri": "1.2.0",
     "rcfile": "1.0.3",
-    "react-docgen": "5.4.1",
+    "react-docgen": "5.4.2",
     "remark-gfm": "1.0.0",
     "remark-mdx": "1.6.22",
     "remark-parse": "9.0.0",
@@ -39,9 +39,9 @@
     "vfile-reporter": "6.0.2"
   },
   "devDependencies": {
-    "prettier": "2.6.2",
-    "ts-node": "10.8.0",
-    "typescript": "4.7.2"
+    "prettier": "2.7.1",
+    "ts-node": "10.8.1",
+    "typescript": "4.7.3"
   },
   "peerDependencies": {
     "prettier": "2.x",
