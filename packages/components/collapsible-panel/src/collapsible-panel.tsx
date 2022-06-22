@@ -25,7 +25,10 @@ import CollapsiblePanelHeader from './collapsible-panel-header';
 
 const HeaderContainer = styled(AccessibleButton)``;
 
-const sequentialId = createSequentialId('panel-content-');
+const panelButtonSequentialId = createSequentialId('collapsible-panel-button-');
+const panelContentSequentialId = createSequentialId(
+  'collapsible-panel-content-'
+);
 
 export type TCollapsiblePanel = {
   /**
@@ -144,7 +147,8 @@ const defaultProps: Pick<
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = (props: TCollapsiblePanel) => {
-  const panelContentId = useFieldId(props.id, sequentialId);
+  const panelButtonId = useFieldId(props.id, panelButtonSequentialId);
+  const panelContentId = useFieldId(undefined, panelContentSequentialId);
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
@@ -196,7 +200,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                 getHeaderContainerStyles(props, isOpen),
                 getThemeStyle(props.theme),
               ]}
-              id={props.id}
+              id={panelButtonId}
               label=""
               onClick={props.isDisabled ? undefined : toggle}
               isDisabled={props.isDisabled}
@@ -246,7 +250,9 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                 <Spacings.Inset scale={scale}>
                   <SectionContent
                     id={panelContentId}
-                    aria-hidden={isOpen ? 'false' : 'true'}
+                    role="region"
+                    aria-labelledby={panelButtonId}
+                    hidden={isOpen}
                   >
                     {props.children}
                   </SectionContent>
@@ -260,7 +266,10 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
   );
 };
 
-CollapsiblePanel.getPanelContentId = sequentialId;
+/**
+ * @deprecated This function is no longer supported.
+ */
+CollapsiblePanel.getPanelContentId = () => '';
 CollapsiblePanel.displayName = 'CollapsiblePanel';
 CollapsiblePanel.defaultProps = defaultProps;
 CollapsiblePanel.Header = CollapsiblePanelHeader;
