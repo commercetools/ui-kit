@@ -1,9 +1,13 @@
 import { ReactNode } from 'react';
 import isNil from 'lodash/isNil';
-import uniqueId from 'lodash/uniqueId';
 import styled from '@emotion/styled';
-import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
+import {
+  createSequentialId,
+  filterDataAttributes,
+  warning,
+} from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
+import { useFieldId } from '@commercetools-uikit/hooks';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
@@ -21,8 +25,7 @@ import CollapsiblePanelHeader from './collapsible-panel-header';
 
 const HeaderContainer = styled(AccessibleButton)``;
 
-const panelContentIdPrefix = 'panel-content-';
-const getPanelContentId = (id?: string) => panelContentIdPrefix + id;
+const sequentialId = createSequentialId('panel-content-');
 
 export type TCollapsiblePanel = {
   /**
@@ -125,14 +128,12 @@ export type TCollapsiblePanel = {
 
 const defaultProps: Pick<
   TCollapsiblePanel,
-  | 'id'
   | 'theme'
   | 'condensed'
   | 'isDisabled'
   | 'headerControlsAlignment'
   | 'horizontalConstraint'
 > = {
-  id: uniqueId(),
   theme: 'dark',
   condensed: false,
   isDisabled: false,
@@ -143,7 +144,7 @@ const defaultProps: Pick<
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = (props: TCollapsiblePanel) => {
-  const panelContentId = getPanelContentId(props.id);
+  const panelContentId = useFieldId(props.id, sequentialId);
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
@@ -259,7 +260,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
   );
 };
 
-CollapsiblePanel.getPanelContentId = getPanelContentId;
+CollapsiblePanel.getPanelContentId = sequentialId;
 CollapsiblePanel.displayName = 'CollapsiblePanel';
 CollapsiblePanel.defaultProps = defaultProps;
 CollapsiblePanel.Header = CollapsiblePanelHeader;

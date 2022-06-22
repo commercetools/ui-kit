@@ -25,6 +25,7 @@
     "@commercetools-uikit/collapsible-motion": "15.0.0",
     "@commercetools-uikit/constraints": "15.0.0",
     "@commercetools-uikit/design-system": "15.0.0",
+    "@commercetools-uikit/hooks": "15.0.0",
     "@commercetools-uikit/icons": "15.0.0",
     "@commercetools-uikit/spacings": "15.0.0",
     "@commercetools-uikit/text": "15.0.0",
