@@ -206,16 +206,16 @@ describe('aria attributes', () => {
   });
 
   describe('content', () => {
-    it('should have aria-hidden true when panel is closed', () => {
+    it('should have hidden attribute when panel is closed', () => {
       const { panelContent } = renderPanel({ isClosed: true });
 
-      expect(panelContent).not.toHaveAttribute('hidden');
+      expect(panelContent).toHaveAttribute('hidden');
     });
 
-    it('should have aria-hidden false when panel is open', () => {
+    it('should not have aria attribute when panel is open', () => {
       const { panelContent } = renderPanel({ isClosed: false });
 
-      expect(panelContent).toHaveAttribute('hidden');
+      expect(panelContent).not.toHaveAttribute('hidden');
     });
   });
 });

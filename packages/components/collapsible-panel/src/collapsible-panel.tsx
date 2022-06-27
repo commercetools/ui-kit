@@ -252,7 +252,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                     id={panelContentId}
                     role="region"
                     aria-labelledby={panelButtonId}
-                    hidden={isOpen}
+                    hidden={!isOpen}
                   >
                     {props.children}
                   </SectionContent>
