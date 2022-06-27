@@ -212,7 +212,7 @@ describe('aria attributes', () => {
       expect(panelContent).toHaveAttribute('hidden');
     });
 
-    it('should not have aria attribute when panel is open', () => {
+    it('should not have hidden attribute when panel is open', () => {
       const { panelContent } = renderPanel({ isClosed: false });
 
       expect(panelContent).not.toHaveAttribute('hidden');
