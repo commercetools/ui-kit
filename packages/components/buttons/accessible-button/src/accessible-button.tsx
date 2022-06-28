@@ -91,7 +91,7 @@ const defaultProps: Pick<
 };
 
 const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
-  (props, ref) => {
+  (props: TAccessibleButtonProps, ref) => {
     warning(
       props.as ? isValidElementType(props.as) : true,
       `ui-kit/AccessibleButton: "as" must be a valid element type.`
