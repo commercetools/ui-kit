@@ -7,7 +7,7 @@
     }
   ],
   "commit": false,
-  "linked": [
+  "fixed": [
     [
       "@commercetools-frontend/*",
       "@commercetools-uikit/*"
