@@ -3,6 +3,10 @@ name: Bug report
 about: Create a report to help us improve
 ---
 
+<!---
+Before you submit, please search open/closed github issues and discussions since someone might have asked something similar before.
+-->
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
