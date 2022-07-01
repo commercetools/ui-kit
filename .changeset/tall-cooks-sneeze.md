@@ -2,4 +2,4 @@
 '@commercetools-uikit/select-utils': patch
 ---
 
-ClearIndicator component accessibility improvements
+`<ClearIndicator>` component accessibility improvements
