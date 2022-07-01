@@ -324,7 +324,7 @@ describe('in multi mode', () => {
       const input = getByLabelText('Fruit');
       fireEvent.focus(input);
       const deleteButton = getByTitle('Clear');
-      fireEvent.mouseDown(deleteButton);
+      fireEvent.click(deleteButton);
       expect(onChange).toHaveBeenCalledWith({
         persist: expect.any(Function),
         target: {
