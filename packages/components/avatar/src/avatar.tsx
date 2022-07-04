@@ -28,9 +28,7 @@ export type TAvatarProps = {
 export type TGravatarImgProps = Pick<
   TAvatarProps,
   'gravatarHash' | 'isHighlighted' | 'size'
-> & {
-  altText?: string;
-};
+>;
 
 export type TInitialsProps = Pick<
   TAvatarProps,
@@ -94,7 +92,11 @@ const GravatarImg = (props: TGravatarImgProps) => (
       `${createGravatarImgUrl(props.gravatarHash, props.size)} 1x`,
       `${createGravatarImgUrl(props.gravatarHash, props.size, 2)} 2x`,
     ].join(',')}
-    alt={props.altText}
+    /**
+     * Based on https://www.w3.org/WAI/tutorials/images/decision-tree/:
+     * image contributes meaning to the current page or context and it shows content that is redundant to real text nearby
+     */
+    alt=""
   />
 );
 GravatarImg.displayName = 'GravatarImg';
@@ -138,10 +140,6 @@ const Avatar = (props: TAvatarProps) => (
       gravatarHash={props.gravatarHash}
       size={props.size}
       isHighlighted={props.isHighlighted}
-      altText={getInitialsFromName({
-        firstName: props.firstName,
-        lastName: props.lastName,
-      })}
     />
     <Initials
       size={props.size}
