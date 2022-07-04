@@ -5,7 +5,7 @@
 
 ## Description
 
-A React component that you can use to wrap your buttons in an accessibile \<button/> element.
+A React component that you can use to wrap your buttons in an accessible \<button/> element.
 
 ## Installation
 
@@ -58,7 +58,6 @@ export default Example;
 | `className`        | `string`                                                         |          |            | Allow to override the styles by passing a `className` prop.&#xA;<br/>&#xA;Custom styles can also be passed using the [`css` prop from emotion](https://emotion.sh/docs/css-prop#style-precedence). |
 | `onClick`          | `Function`<br/>[See signature.](#signature-onClick)              |          |            | Event handler when the button is clicked, or the user presses `ENTER` or `SPACE`.                                                                                                                  |
 | `buttonAttributes` | `Record`                                                         |          | `{}`       | Any HTML attributes to be forwarded to the HTML element.                                                                                                                                           |
-| `ref`              | `ForwardedRef`                                                   |          |            |                                                                                                                                                                                                    |
 
 ## Signatures
 

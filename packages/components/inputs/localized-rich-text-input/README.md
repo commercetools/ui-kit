@@ -56,8 +56,8 @@ export default Example;
 | `value`                         | `Record`                                                                                  |    ✅    |           | Values to use. Keyed by language, the values are the actual values, e.g. \`{ en: '<p>Horse</p>', de: '<p>Pferd</p>' }                                          |
 | `onChange`                      | `Function`<br/>[See signature.](#signature-onChange)                                      |          |           | Gets called when any input is changed. Is called with the change event of the changed input.                                                                   |
 | `selectedLanguage`              | `string`                                                                                  |    ✅    |           | Specifies which language will be shown in case the `LocalizedRichTextInput` is collapsed.                                                                      |
-| `onBlur`                        | `Function`<br/>[See signature.](#signature-onBlur)                                        |          |           | Called when any field is blurred. Is called with the `event` of that field.                                                                                    |
-| `onFocus`                       | `Function`<br/>[See signature.](#signature-onFocus)                                       |          |           | Called when any field is focussed. Is called with the `event` of that field.                                                                                   |
+| `onBlur`                        | `FocusEventHandler`                                                                       |          |           | Called when any field is blurred. Is called with the `event` of that field.                                                                                    |
+| `onFocus`                       | `FocusEventHandler`                                                                       |          |           | Called when any field is focussed. Is called with the `event` of that field.                                                                                   |
 | `defaultExpandMultilineText`    | `boolean`                                                                                 |          |           | Expands input components holding multiline values instead of collapsing them by default.                                                                       |
 | `hideLanguageExpansionControls` | `boolean`                                                                                 |          |           | Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`                                                   |
 | `defaultExpandLanguages`        | `boolean`                                                                                 |          |           | Controls whether one or all languages are visible by default. Pass `true` to show all languages by default.                                                    |
@@ -75,18 +75,6 @@ export default Example;
 ## Signatures
 
 ### Signature `onChange`
-
-```ts
-(event: TCustomEvent) => void
-```
-
-### Signature `onBlur`
-
-```ts
-(event: TCustomEvent) => void
-```
-
-### Signature `onFocus`
 
 ```ts
 (event: TCustomEvent) => void
