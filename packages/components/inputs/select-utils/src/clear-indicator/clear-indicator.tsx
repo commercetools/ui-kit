@@ -18,7 +18,7 @@ const ClearIndicator = (props: TClearIndicator) => {
   const intl = useIntl();
   const {
     getStyles,
-    innerProps: { ref, ...restInnerProps },
+    innerProps: { ref, onMouseDown, ...restInnerProps },
   } = props;
   return (
     <button
@@ -37,6 +37,10 @@ const ClearIndicator = (props: TClearIndicator) => {
       style={getStyles('clearIndicator', props) as CSSProperties}
       title={intl.formatMessage(messages.clearButtonLabel)}
       aria-label={intl.formatMessage(messages.clearButtonLabel)}
+      // overriding the default `aria-hidden` prop value to make the component accessible by keyboard - https://github.com/JedWatson/react-select/issues/4793
+      aria-hidden={false}
+      // only onMouseDown and onTouchEnd event handlers are passed by `react-select` to the component by default, which makes it not accessible by keyboard
+      onClick={onMouseDown}
     >
       <CloseIcon color="solid" size="medium" />
     </button>
