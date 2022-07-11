@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { ThemeProvider } from '@emotion/react';
-import { customProperties } from '../../../design-system';
+import {
+  customProperties,
+  ThemeProvider as CssVariablesThemeProvider,
+  useTheme,
+} from '../../../design-system';
 
 const darkTheme = {
   colorSolid: customProperties.colorSurface,
@@ -9,9 +14,24 @@ const darkTheme = {
 
 const defaultTheme = customProperties;
 
-const ThemeWrapper = (props) => (
-  <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
-);
+const ThemeToggler = (props) => {
+  const { changeTheme } = useTheme();
+
+  useEffect(() => {
+    changeTheme(props.theme);
+  });
+
+  return <></>;
+};
+
+const ThemeWrapper = (props) => {
+  return (
+    <CssVariablesThemeProvider>
+      <ThemeToggler theme={props.name} />
+      <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
+    </CssVariablesThemeProvider>
+  );
+};
 
 ThemeWrapper.propTypes = {
   theme: PropTypes.any,
@@ -20,12 +40,12 @@ ThemeWrapper.propTypes = {
 const themeParams = [
   {
     name: 'Default Theme',
-    props: { theme: defaultTheme },
+    props: { name: 'default', theme: defaultTheme },
     default: true,
   },
   {
     name: 'Dark Theme (experimental)',
-    props: { theme: darkTheme },
+    props: { name: 'dark', theme: darkTheme },
   },
 ];
 
