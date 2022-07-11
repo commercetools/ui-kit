@@ -1,5 +1,30 @@
 # @commercetools-uikit/localized-rich-text-input
 
+## 15.1.0
+
+### Patch Changes
+
+- [#2196](https://github.com/commercetools/ui-kit/pull/2196) [`d4144ff93`](https://github.com/commercetools/ui-kit/commit/d4144ff931b85b16e01aaa5e69fecc2a53511b40) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Updated visual regressiont test to make it more robust in CI
+
+* [#2199](https://github.com/commercetools/ui-kit/pull/2199) [`d57c0035e`](https://github.com/commercetools/ui-kit/commit/d57c0035e5d599226d4101bb8cfe07626d2028b7) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
+* Updated dependencies [[`6cdd80024`](https://github.com/commercetools/ui-kit/commit/6cdd80024436755b68544992af1f8361cc7ff52a), [`0a1bf50fe`](https://github.com/commercetools/ui-kit/commit/0a1bf50fe1850264a383eb8cd0baba81786c239b), [`d57c0035e`](https://github.com/commercetools/ui-kit/commit/d57c0035e5d599226d4101bb8cfe07626d2028b7)]:
+  - @commercetools-uikit/utils@15.1.0
+  - @commercetools-uikit/rich-text-utils@15.1.0
+  - @commercetools-uikit/icons@15.1.0
+  - @commercetools-uikit/input-utils@15.1.0
+  - @commercetools-uikit/flat-button@15.1.0
+  - @commercetools-uikit/collapsible-motion@15.1.0
+  - @commercetools-uikit/constraints@15.1.0
+  - @commercetools-uikit/messages@15.1.0
+  - @commercetools-uikit/spacings-inline@15.1.0
+  - @commercetools-uikit/spacings-stack@15.1.0
+  - @commercetools-uikit/text@15.1.0
+  - @commercetools-uikit/tooltip@15.1.0
+  - @commercetools-uikit/hooks@15.1.0
+  - @commercetools-uikit/localized-utils@15.1.0
+  - @commercetools-uikit/design-system@15.1.0
+
 ## 15.0.2
 
 ### Patch Changes

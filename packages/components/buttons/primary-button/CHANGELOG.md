@@ -1,5 +1,16 @@
 # @commercetools-uikit/primary-button
 
+## 15.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`6cdd80024`](https://github.com/commercetools/ui-kit/commit/6cdd80024436755b68544992af1f8361cc7ff52a)]:
+  - @commercetools-uikit/utils@15.1.0
+  - @commercetools-uikit/accessible-button@15.1.0
+  - @commercetools-uikit/spacings-inline@15.1.0
+  - @commercetools-uikit/text@15.1.0
+  - @commercetools-uikit/design-system@15.1.0
+
 ## 15.0.0
 
 ### Patch Changes

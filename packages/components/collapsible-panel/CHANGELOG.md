@@ -1,5 +1,24 @@
 # @commercetools-uikit/collapsible-panel
 
+## 15.1.0
+
+### Patch Changes
+
+- [#2218](https://github.com/commercetools/ui-kit/pull/2218) [`84e45e061`](https://github.com/commercetools/ui-kit/commit/84e45e0619e96b6c585c8f1f048a0025400881e6) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix auto ID generation.
+
+  There was an issue when using several `CollapsiblePanel` components in the same view and relying on them to auto generate the IDs used for the rendered HTML resulting in the same ID value for all the components.
+
+- Updated dependencies [[`6cdd80024`](https://github.com/commercetools/ui-kit/commit/6cdd80024436755b68544992af1f8361cc7ff52a), [`d57c0035e`](https://github.com/commercetools/ui-kit/commit/d57c0035e5d599226d4101bb8cfe07626d2028b7)]:
+  - @commercetools-uikit/utils@15.1.0
+  - @commercetools-uikit/icons@15.1.0
+  - @commercetools-uikit/accessible-button@15.1.0
+  - @commercetools-uikit/collapsible-motion@15.1.0
+  - @commercetools-uikit/constraints@15.1.0
+  - @commercetools-uikit/text@15.1.0
+  - @commercetools-uikit/hooks@15.1.0
+  - @commercetools-uikit/spacings@15.1.0
+  - @commercetools-uikit/design-system@15.1.0
+
 ## 15.0.0
 
 ### Patch Changes
