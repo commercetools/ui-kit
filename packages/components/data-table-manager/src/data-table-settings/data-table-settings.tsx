@@ -125,7 +125,7 @@ export type TDataTableSettingsProps = {
 because the input is always empty, and therefore doesn't take any space by itself
 but we want to keep enough space for the placeholder to be readable */
 const SelectContainer = styled.div`
-  width: ${customProperties.constraint4};
+  min-width: ${customProperties.constraint4};
 `;
 
 const TopBarContainer = styled.div`
