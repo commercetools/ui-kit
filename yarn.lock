@@ -4253,6 +4253,10 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.17.2
     "@babel/runtime-corejs3": ^7.17.2
+    "@emotion/react": ^11.4.0
+    lodash: 4.17.21
+    prop-types: 15.8.1
+    react: 17.0.2
   languageName: unknown
   linkType: soft
 
