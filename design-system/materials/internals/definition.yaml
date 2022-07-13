@@ -29,7 +29,7 @@ choiceGroupsPerTheme:
     colors:
       label: Colors
       prefix: color
-      description: All colors in the light theme
+      description: All colors in the system
       choices:
         color-primary: '#00b39e'
         color-primary-25: 'hsl(172.9608938547486, 100%, 25%)'
@@ -145,7 +145,7 @@ choiceGroupsPerTheme:
     colors:
       label: Colors
       prefix: color
-      description: All colors in the dark theme
+      description: All colors in the system
       choices:
         color-primary: 'yellow'
         color-primary-25: 'olive'
