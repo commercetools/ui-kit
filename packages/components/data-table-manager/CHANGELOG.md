@@ -1,5 +1,32 @@
 # @commercetools-uikit/data-table-manager
 
+## 15.1.0
+
+### Patch Changes
+
+- [#2226](https://github.com/commercetools/ui-kit/pull/2226) [`c59679e5b`](https://github.com/commercetools/ui-kit/commit/c59679e5b26c1a66d022d432e00351bcd7260b99) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Updated `DataTableManager` settings selector to keep same height for long placeholders (eg: german)
+
+- Updated dependencies [[`6cdd80024`](https://github.com/commercetools/ui-kit/commit/6cdd80024436755b68544992af1f8361cc7ff52a), [`0a1bf50fe`](https://github.com/commercetools/ui-kit/commit/0a1bf50fe1850264a383eb8cd0baba81786c239b), [`d57c0035e`](https://github.com/commercetools/ui-kit/commit/d57c0035e5d599226d4101bb8cfe07626d2028b7)]:
+  - @commercetools-uikit/utils@15.1.0
+  - @commercetools-uikit/select-input@15.1.0
+  - @commercetools-uikit/secondary-button@15.1.0
+  - @commercetools-uikit/async-select-input@15.1.0
+  - @commercetools-uikit/tag@15.1.0
+  - @commercetools-uikit/icons@15.1.0
+  - @commercetools-uikit/accessible-button@15.1.0
+  - @commercetools-uikit/primary-button@15.1.0
+  - @commercetools-uikit/secondary-icon-button@15.1.0
+  - @commercetools-uikit/card@15.1.0
+  - @commercetools-uikit/collapsible-motion@15.1.0
+  - @commercetools-uikit/field-label@15.1.0
+  - @commercetools-uikit/radio-input@15.1.0
+  - @commercetools-uikit/text@15.1.0
+  - @commercetools-uikit/hooks@15.1.0
+  - @commercetools-uikit/spacings@15.1.0
+  - @commercetools-uikit/design-system@15.1.0
+  - @commercetools-uikit/accessible-hidden@15.1.0
+  - @commercetools-uikit/grid@15.1.0
+
 ## 15.0.0
 
 ### Patch Changes

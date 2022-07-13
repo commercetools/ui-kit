@@ -1,5 +1,12 @@
 # @commercetools-uikit/stamp
 
+## 15.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.1.0
+
 ## 15.0.0
 
 ### Patch Changes

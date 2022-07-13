@@ -1,5 +1,15 @@
 # @commercetools-uikit/avatar
 
+## 15.1.0
+
+### Patch Changes
+
+- [#2224](https://github.com/commercetools/ui-kit/pull/2224) [`110d898f3`](https://github.com/commercetools/ui-kit/commit/110d898f3967190ea51e81c5d793b4b3507d5b0e) Thanks [@kark](https://github.com/kark)! - `<Avatar>` component accessibility improvements
+
+- Updated dependencies [[`6cdd80024`](https://github.com/commercetools/ui-kit/commit/6cdd80024436755b68544992af1f8361cc7ff52a)]:
+  - @commercetools-uikit/utils@15.1.0
+  - @commercetools-uikit/design-system@15.1.0
+
 ## 15.0.0
 
 ### Patch Changes

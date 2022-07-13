@@ -1,5 +1,20 @@
 # @commercetools-uikit/time-field
 
+## 15.1.0
+
+### Patch Changes
+
+- [#2206](https://github.com/commercetools/ui-kit/pull/2206) [`2af26198e`](https://github.com/commercetools/ui-kit/commit/2af26198e792661ef81e253b4e3bab1f6abd3f55) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Added missing `aria-invalid` and `aria-errormessage` attributes
+
+- Updated dependencies [[`6cdd80024`](https://github.com/commercetools/ui-kit/commit/6cdd80024436755b68544992af1f8361cc7ff52a)]:
+  - @commercetools-uikit/utils@15.1.0
+  - @commercetools-uikit/time-input@15.1.0
+  - @commercetools-uikit/constraints@15.1.0
+  - @commercetools-uikit/field-label@15.1.0
+  - @commercetools-uikit/spacings-stack@15.1.0
+  - @commercetools-uikit/field-errors@15.1.0
+  - @commercetools-uikit/design-system@15.1.0
+
 ## 15.0.0
 
 ### Patch Changes

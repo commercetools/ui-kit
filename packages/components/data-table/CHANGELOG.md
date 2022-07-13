@@ -1,5 +1,19 @@
 # @commercetools-uikit/data-table
 
+## 15.1.0
+
+### Patch Changes
+
+- [#2176](https://github.com/commercetools/ui-kit/pull/2176) [`7e980820a`](https://github.com/commercetools/ui-kit/commit/7e980820ae447bd96cbbc366ab5ed48a6f10f8d1) Thanks [@renovate](https://github.com/apps/renovate)! - Update `@testing-library/react-hooks` package to version `8.0.0`.
+
+- Updated dependencies [[`6cdd80024`](https://github.com/commercetools/ui-kit/commit/6cdd80024436755b68544992af1f8361cc7ff52a), [`d57c0035e`](https://github.com/commercetools/ui-kit/commit/d57c0035e5d599226d4101bb8cfe07626d2028b7)]:
+  - @commercetools-uikit/utils@15.1.0
+  - @commercetools-uikit/icons@15.1.0
+  - @commercetools-uikit/accessible-button@15.1.0
+  - @commercetools-uikit/secondary-icon-button@15.1.0
+  - @commercetools-uikit/hooks@15.1.0
+  - @commercetools-uikit/design-system@15.1.0
+
 ## 15.0.0
 
 ### Patch Changes
