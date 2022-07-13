@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import TextInput from '@commercetools-uikit/text-input';
+import mergeWith from 'lodash/mergeWith';
 import customProperties from '../custom-properties.json';
 import Readme from './TOKENS.md';
 import definition from './definition.yaml';
 import deprecatedTokens from './deprecated-tokens';
+
+const allThemesNames = Object.keys(definition.choiceGroupsPerTheme);
 
 const getIsDeprecated = (token) => deprecatedTokens.includes(token);
 
@@ -56,8 +59,8 @@ const Description = styled.p`
 const DeprecationBadge = () => <b style={{ color: 'orange' }}>DEPRECATED</b>;
 DeprecationBadge.displayName = 'DeprecationBadge';
 
-const getChoiceValue = (choiceName) => {
-  const choice = Object.values(definition.choiceGroups)
+const getChoiceValue = (choiceName, theme = 'default') => {
+  const choice = Object.values(definition.choiceGroupsPerTheme[theme])
     .map((choiceGroup) => choiceGroup.choices)
     .find((choices) => choices[choiceName]);
   if (!choice)
@@ -98,25 +101,55 @@ const filterComponentGroupsGroupValues = (componentGroups, searchText) =>
         state.description.toLowerCase().includes(searchText.toLowerCase()))
   );
 
+const getDefaultThemeChoiceGroupProperty = (choiceGroup, property) =>
+  definition.choiceGroupsPerTheme.default[choiceGroup][property];
+
 const ChoiceGroup = (props) => {
-  const choices = filterChoiceGroupValues(
-    props.choiceGroup.choices,
-    props.searchText
+  const choices = Object.entries(definition.choiceGroupsPerTheme).reduce(
+    (acc, [theme, themeChoices]) => {
+      const filteredThemeChoices = Object.fromEntries(
+        filterChoiceGroupValues(
+          themeChoices[props.choiceGroup].choices,
+          props.searchText
+        )
+      );
+      const filteredThemeChoicesNames = Object.keys(filteredThemeChoices);
+
+      return mergeWith(
+        acc,
+        ...filteredThemeChoicesNames.map((name) => ({
+          [name]: { [theme]: filteredThemeChoices[name] },
+        }))
+      );
+    },
+    {}
   );
+
   return (
-    <GroupStyle isVisible={choices.length > 0}>
-      <a id={`choice-${props.choiceGroup.prefix}`} />
-      <h3>{props.choiceGroup.label}</h3>
-      {props.choiceGroup.description && <p>{props.choiceGroup.description}</p>}
+    <GroupStyle isVisible={Object.values(choices).length > 0}>
+      <a
+        id={`choice-${getDefaultThemeChoiceGroupProperty(
+          props.choiceGroup,
+          'prefix'
+        )}`}
+      />
+      <h3>{getDefaultThemeChoiceGroupProperty(props.choiceGroup, 'label')}</h3>
+      {getDefaultThemeChoiceGroupProperty(props.choiceGroup, 'description') && (
+        <p>
+          {getDefaultThemeChoiceGroupProperty(props.choiceGroup, 'description')}
+        </p>
+      )}
       <Table>
         <thead>
           <tr>
             <TokenRow>Token</TokenRow>
-            <td>Example</td>
+            {allThemesNames.map((theme) => {
+              return <td key={theme}>{theme}</td>;
+            })}
           </tr>
         </thead>
         <tbody>
-          {choices.map(([name, value]) => (
+          {Object.entries(choices).map(([name, values]) => (
             <tr key={name}>
               <td>
                 <>
@@ -124,7 +157,9 @@ const ChoiceGroup = (props) => {
                   {getIsDeprecated(name) && <DeprecationBadge />}
                 </>
               </td>
-              <td>{props.renderSample(value, name)}</td>
+              {Object.entries(values).map(([theme, value]) => (
+                <td key={theme}>{props.renderSample(value)}</td>
+              ))}
             </tr>
           ))}
         </tbody>
@@ -161,7 +196,9 @@ const DecisionGroup = (props) => {
           <tr>
             <TokenRow>Token</TokenRow>
             <td>Choice</td>
-            <td>Example</td>
+            {allThemesNames.map((theme) => {
+              return <td key={theme}>{theme}</td>;
+            })}
           </tr>
         </thead>
         <tbody>
@@ -175,9 +212,16 @@ const DecisionGroup = (props) => {
               <td>
                 <Token>{decision.choice}</Token>
               </td>
-              <td>
-                {props.renderSample(getChoiceValue(decision.choice), name)}
-              </td>
+              {allThemesNames.map((theme) => {
+                return (
+                  <td key={theme}>
+                    {props.renderSample(
+                      getChoiceValue(decision.choice, theme),
+                      name
+                    )}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>
@@ -355,7 +399,7 @@ class Story extends Component {
               Choices
             </a>
             <ul>
-              {Object.entries(definition.choiceGroups).map(
+              {Object.entries(definition.choiceGroupsPerTheme.default).map(
                 ([key, choiceGroup]) =>
                   filterChoiceGroupValues(
                     choiceGroup.choices,
@@ -455,7 +499,7 @@ class Story extends Component {
           tokens.
         </p>
         <ChoiceGroup
-          choiceGroup={definition.choiceGroups.colors}
+          choiceGroup="colors"
           searchText={this.state.searchText}
           renderSample={(value) => (
             <>
@@ -464,7 +508,7 @@ class Story extends Component {
           )}
         />
         <ChoiceGroup
-          choiceGroup={definition.choiceGroups.borderRadiuses}
+          choiceGroup="borderRadiuses"
           searchText={this.state.searchText}
           renderSample={(value) => (
             <>
@@ -473,7 +517,7 @@ class Story extends Component {
           )}
         />
         <ChoiceGroup
-          choiceGroup={definition.choiceGroups.shadows}
+          choiceGroup="shadows"
           searchText={this.state.searchText}
           renderSample={(value) => (
             <>
@@ -482,11 +526,11 @@ class Story extends Component {
           )}
         />
         <ChoiceGroup
-          choiceGroup={definition.choiceGroups.constraints}
+          choiceGroup="constraints"
           searchText={this.state.searchText}
         />
         <ChoiceGroup
-          choiceGroup={definition.choiceGroups.spacings}
+          choiceGroup="spacings"
           searchText={this.state.searchText}
           renderSample={(value) => (
             <>
@@ -495,11 +539,11 @@ class Story extends Component {
           )}
         />
         <ChoiceGroup
-          choiceGroup={definition.choiceGroups.transitions}
+          choiceGroup="transitions"
           searchText={this.state.searchText}
         />
         <ChoiceGroup
-          choiceGroup={definition.choiceGroups.breakpoints}
+          choiceGroup="breakpoints"
           searchText={this.state.searchText}
         />
 
