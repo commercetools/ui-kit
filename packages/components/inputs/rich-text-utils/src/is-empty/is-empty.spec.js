@@ -11,12 +11,12 @@ describe('isEmpty', () => {
       expect(isEmpty('<h1></h1><ul><li></li></ul>')).toBeTruthy();
     });
   });
-  describe('when empty but has empty html tags', () => {
+  describe('when not empty', () => {
     it('should indicate that the value is not empty', () => {
       expect(isEmpty('<ol><li><em>Not empty</em></li></ol>')).toBeFalsy();
     });
   });
-  describe('when not empty', () => {
+  describe('when not empty and with malformed markup', () => {
     it('should indicate that the value is not empty', () => {
       expect(isEmpty('<H1>Okay</h1>')).toBeFalsy();
     });
