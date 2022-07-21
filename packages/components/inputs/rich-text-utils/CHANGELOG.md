@@ -1,5 +1,19 @@
 # @commercetools-uikit/rich-text-utils
 
+## 15.1.1
+
+### Patch Changes
+
+- [#2235](https://github.com/commercetools/ui-kit/pull/2235) [`facba33b7`](https://github.com/commercetools/ui-kit/commit/facba33b74715f7026b3ae2cc5f8512f1cddad7d) Thanks [@kark](https://github.com/kark)! - Fix `deserializeElement` function to cover deserialization of nested html markup
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.1.1
+  - @commercetools-uikit/icons@15.1.1
+  - @commercetools-uikit/input-utils@15.1.1
+  - @commercetools-uikit/spacings-inline@15.1.1
+  - @commercetools-uikit/tooltip@15.1.1
+  - @commercetools-uikit/utils@15.1.1
+
 ## 15.1.0
 
 ### Patch Changes
