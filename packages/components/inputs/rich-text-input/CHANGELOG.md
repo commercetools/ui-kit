@@ -1,5 +1,23 @@
 # @commercetools-uikit/rich-text-input
 
+## 15.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`facba33b7`](https://github.com/commercetools/ui-kit/commit/facba33b74715f7026b3ae2cc5f8512f1cddad7d)]:
+  - @commercetools-uikit/rich-text-utils@15.1.1
+  - @commercetools-uikit/design-system@15.1.1
+  - @commercetools-uikit/flat-button@15.1.1
+  - @commercetools-uikit/collapsible-motion@15.1.1
+  - @commercetools-uikit/constraints@15.1.1
+  - @commercetools-uikit/icons@15.1.1
+  - @commercetools-uikit/input-utils@15.1.1
+  - @commercetools-uikit/spacings-inline@15.1.1
+  - @commercetools-uikit/spacings-stack@15.1.1
+  - @commercetools-uikit/tooltip@15.1.1
+  - @commercetools-uikit/hooks@15.1.1
+  - @commercetools-uikit/utils@15.1.1
+
 ## 15.1.0
 
 ### Patch Changes

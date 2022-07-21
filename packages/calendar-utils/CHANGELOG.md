@@ -1,5 +1,23 @@
 # @commercetools-uikit/calendar-utils
 
+## 15.1.1
+
+### Patch Changes
+
+- [#2231](https://github.com/commercetools/ui-kit/pull/2231) [`02a6c6ba2`](https://github.com/commercetools/ui-kit/commit/02a6c6ba28924fbfe658b0846600b2970f9e0b4b) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Updated `moment` dependency
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.1.1
+  - @commercetools-uikit/accessible-button@15.1.1
+  - @commercetools-uikit/secondary-icon-button@15.1.1
+  - @commercetools-uikit/icons@15.1.1
+  - @commercetools-uikit/input-utils@15.1.1
+  - @commercetools-uikit/spacings-inline@15.1.1
+  - @commercetools-uikit/text@15.1.1
+  - @commercetools-uikit/tooltip@15.1.1
+  - @commercetools-uikit/hooks@15.1.1
+  - @commercetools-uikit/utils@15.1.1
+
 ## 15.1.0
 
 ### Patch Changes
