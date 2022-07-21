@@ -177,7 +177,7 @@ const mapper: TMapper = {
 
 const wrapWithParagraphIfRootElement = (
   el: HTMLElement | ChildNode,
-  textContent: TElement | TText
+  textContent: TElement | TText | (TElement | TText)[]
 ) =>
   el.parentNode?.nodeName === 'BODY' // root element, because body is eventually turned to React fragment
     ? jsx('element', { type: 'paragraph' }, textContent)
@@ -253,7 +253,15 @@ const deserializeElement = (
           jsx('element', { type: 'span' }, children)
         );
       }
-      return wrapWithParagraphIfRootElement(el, jsx('text', attrs, children));
+      return wrapWithParagraphIfRootElement(
+        el,
+        // children mapping to cover nested elements within text e.g. <span>Some <span>text</span></span>
+        children.map((child) =>
+          Text.isText(child)
+            ? jsx('text', attrs, child)
+            : jsx('element', attrs, child)
+        )
+      );
     }
   }
 
