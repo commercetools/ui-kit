@@ -1,5 +1,22 @@
 # @commercetools-uikit/password-field
 
+## 15.1.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.1.2
+  - @commercetools-uikit/flat-button@15.1.2
+  - @commercetools-uikit/constraints@15.1.2
+  - @commercetools-uikit/field-errors@15.1.2
+  - @commercetools-uikit/field-label@15.1.2
+  - @commercetools-uikit/icons@15.1.2
+  - @commercetools-uikit/password-input@15.1.2
+  - @commercetools-uikit/spacings-inline@15.1.2
+  - @commercetools-uikit/spacings-stack@15.1.2
+  - @commercetools-uikit/hooks@15.1.2
+  - @commercetools-uikit/utils@15.1.2
+
 ## 15.1.1
 
 ### Patch Changes

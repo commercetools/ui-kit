@@ -1,5 +1,30 @@
 # @commercetools-uikit/data-table-manager
 
+## 15.1.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.1.2
+  - @commercetools-uikit/accessible-hidden@15.1.2
+  - @commercetools-uikit/accessible-button@15.1.2
+  - @commercetools-uikit/primary-button@15.1.2
+  - @commercetools-uikit/secondary-button@15.1.2
+  - @commercetools-uikit/secondary-icon-button@15.1.2
+  - @commercetools-uikit/card@15.1.2
+  - @commercetools-uikit/collapsible-motion@15.1.2
+  - @commercetools-uikit/field-label@15.1.2
+  - @commercetools-uikit/grid@15.1.2
+  - @commercetools-uikit/icons@15.1.2
+  - @commercetools-uikit/async-select-input@15.1.2
+  - @commercetools-uikit/radio-input@15.1.2
+  - @commercetools-uikit/select-input@15.1.2
+  - @commercetools-uikit/tag@15.1.2
+  - @commercetools-uikit/text@15.1.2
+  - @commercetools-uikit/hooks@15.1.2
+  - @commercetools-uikit/utils@15.1.2
+  - @commercetools-uikit/spacings@15.1.2
+
 ## 15.1.1
 
 ### Patch Changes
