@@ -175,12 +175,16 @@ const mapper: TMapper = {
   },
 };
 
+const wrapWithParagraph = (
+  textContent: TElement | TText | (TElement | TText)[]
+) => jsx('element', { type: 'paragraph' }, textContent);
+
 const wrapWithParagraphIfRootElement = (
   el: HTMLElement | ChildNode,
   textContent: TElement | TText | (TElement | TText)[]
 ) =>
   el.parentNode?.nodeName === 'BODY' // root element, because body is eventually turned to React fragment
-    ? jsx('element', { type: 'paragraph' }, textContent)
+    ? wrapWithParagraph(textContent)
     : textContent;
 
 export type Deserialized = Descendant | null;
@@ -275,7 +279,10 @@ const deserializeElement = (
     return children.map((child) => jsx('text', attrs, child));
   }
 
-  return children;
+  // each non-empty text node must be wrapped with a paragraph
+  return children.map((child) =>
+    Text.isText(child) && child.text ? wrapWithParagraph(child) : child
+  );
 };
 const deserialize = (html: Html) => {
   const document = new DOMParser().parseFromString(
