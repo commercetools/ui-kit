@@ -16,6 +16,15 @@ const initialValue = {
   es: lorem,
 };
 
+const complexMarkup =
+  '<ol><li><span style="font-weight: bold; font-family: &quot;Comic Sans MS&quot;;">Computermouse for <span style="text-decoration-line: underline;">controlling</span></span></li></ol><span><table class="table table-bordered"><tbody><tr><td>hello</td></tr><tr><td><p>world<img src="https://www.rollingstone.com/wp-content/uploads/2019/01/shutterstock_10010937aj.jpg" style="width: 100%; float: right;" class="pull-right img-circle"></p></td></tr></tbody></table></span><ol><li><span style="font-weight: bold; font-family: &quot;Comic Sans MS&quot;;">';
+
+const initialValueWithComplexMarkup = {
+  en: complexMarkup,
+  de: complexMarkup,
+  es: complexMarkup,
+};
+
 const emptyValue = '';
 
 export const routePath = '/localized-rich-text-input';
@@ -265,6 +274,15 @@ const DefaultRoute = () => (
         horizontalConstraint={7}
         isReadOnly={true}
         onClickExpand={() => {}}
+      />
+    </Spec>
+    <Spec label="with complex markup" omitPropsList>
+      <LocalizedRichTextInput
+        onChange={() => {}}
+        value={initialValueWithComplexMarkup}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        defaultExpandMultilineText={true}
       />
     </Spec>
   </Suite>
