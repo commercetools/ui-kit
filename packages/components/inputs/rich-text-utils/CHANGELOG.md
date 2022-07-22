@@ -1,5 +1,19 @@
 # @commercetools-uikit/rich-text-utils
 
+## 15.1.2
+
+### Patch Changes
+
+- [#2236](https://github.com/commercetools/ui-kit/pull/2236) [`a7ae18d40`](https://github.com/commercetools/ui-kit/commit/a7ae18d40246921c7d2be5cbb49288b56bc8e788) Thanks [@kark](https://github.com/kark)! - Fix `deserializeElement` function by wrapping each resulting non-empty child text node with a paragraph
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.1.2
+  - @commercetools-uikit/icons@15.1.2
+  - @commercetools-uikit/input-utils@15.1.2
+  - @commercetools-uikit/spacings-inline@15.1.2
+  - @commercetools-uikit/tooltip@15.1.2
+  - @commercetools-uikit/utils@15.1.2
+
 ## 15.1.1
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @commercetools-uikit/select-utils
 
+## 15.1.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.1.2
+  - @commercetools-uikit/accessible-button@15.1.2
+  - @commercetools-uikit/icons@15.1.2
+  - @commercetools-uikit/text@15.1.2
+  - @commercetools-uikit/utils@15.1.2
+  - @commercetools-uikit/spacings@15.1.2
+
 ## 15.1.1
 
 ### Patch Changes
