@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
 import Group from './view-switcher';
@@ -131,6 +132,34 @@ describe('rendering', () => {
     screen.getByLabelText('Test Button 1').click();
     expect(handleClick).not.toHaveBeenCalled();
   });
+
+  it('should be controlled when selectedValue is passed', () => {
+    const handleClick = jest.fn();
+    function TestComponent() {
+      const [seletedValue, setSelectedValue] = useState('test-button-1');
+
+      return (
+        <Group selectedValue={seletedValue} onChange={setSelectedValue}>
+          <Button value="test-button-1" onClick={handleClick}>
+            Test Button 1
+          </Button>
+          <Button value="test-button-2" onClick={handleClick}>
+            Test Button 2
+          </Button>
+        </Group>
+      );
+    }
+    render(<TestComponent />);
+
+    screen.getByLabelText('Test Button 1').click();
+    expect(handleClick).not.toHaveBeenCalled();
+
+    screen.getByLabelText('Test Button 2').click();
+    expect(handleClick).toHaveBeenCalled();
+
+    screen.getByLabelText('Test Button 2').click();
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe('warnings', () => {
@@ -140,6 +169,17 @@ describe('warnings', () => {
   });
   it('should warn when there are no view switcher buttons in the group', () => {
     render(<Group {...props} />);
+    expect(warning).toHaveBeenCalledWith(
+      false,
+      'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
+    );
+  });
+  it('should warn when value is passed but no onChange', () => {
+    render(
+      <Group selectedValue="test-button-1">
+        <Button value="test-button-1">Test Button 1</Button>
+      </Group>
+    );
     expect(warning).toHaveBeenCalledWith(
       false,
       'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'

@@ -25,12 +25,12 @@ import Label from '@commercetools-uikit/label';
 ## Properties
 
 | Props                        | Type           | Required | Values                    | Default | Description                                                                                                     |
-| ---------------------------- | -------------- | :------: | ------------------------- | ------- | --------------------------------------------------------------------------------------------------------------- |
+| ---------------------------- | -------------- | :------: | ------------------------- | ------- | --------------------------------------------------------------------------------------------------------------- | --- |
 | `tone`                       | `string`       |    -     | `['primary', 'inverted']` | \_      | Indicates the tone to be applied to the label                                                                   |
 | `children`                   | `node`         | ✅ (\*)  | -                         | -       | Value of the label                                                                                              |
 | `intlMessage`                | `intl message` | ✅ (\*)  | -                         | -       | An intl message object that will be rendered with `FormattedMessage`                                            |
 | `isBold`                     | `bool`         |    -     | -                         | `false` | Indicates if the label title should be in bold text                                                             |
-| `isRequiredIndicatorVisible` | `bool`         |    -     | -                         | `false` | Indicates if the labeled field is required in a form                                                            |  |
+| `isRequiredIndicatorVisible` | `bool`         |    -     | -                         | `false` | Indicates if the labeled field is required in a form                                                            |     |
 | `htmlFor`                    | `string`       |    -     | -                         | -       | The `for` HTML attribute, used to reference form elements with the related attribute `id` or `aria-labelledby`. |
 | `id`                         | `string`       |    -     | -                         | -       | The `id` HTML attribute, used to reference non-form elements with the related attribute `aria-labelledby`.      |
 

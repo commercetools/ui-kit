@@ -43,14 +43,14 @@ yarn add react
 npm --save install react
 ```
 
-## Usage
+## Uncontrolled usage
 
 ```jsx
 import ViewSwitcher from '@commercetools-uikit/view-switcher';
 
-const Example = () => (
+const UncontrolledExample = () => (
   <ViewSwitcher.Group
-    defaultSelected="Button 2"
+    defaultSelected="button 2"
     onChange={(value) => console.log(value)}
   >
     <ViewSwitcher.Button isDisabled value="button 1">
@@ -61,19 +61,47 @@ const Example = () => (
   </ViewSwitcher.Group>
 );
 
-export default Example;
+export default UncontrolledExample;
+```
+
+## Controlled usage
+
+```jsx
+import { useState } from 'react';
+import ViewSwitcher from '@commercetools-uikit/view-switcher';
+
+const UncontrolledExample = () => {
+  const [seletedValue, setSelectedValue] = useState('button 1');
+
+  return (
+    <ViewSwitcher.Group
+      selectedValue={seletedValue}
+      onChange={setSelectedValue}
+    >
+      >
+      <ViewSwitcher.Button isDisabled value="button 1">
+        View 1
+      </ViewSwitcher.Button>
+      <ViewSwitcher.Button value="button 2">View 2</ViewSwitcher.Button>
+      <ViewSwitcher.Button value="button 3">View 3</ViewSwitcher.Button>
+    </ViewSwitcher.Group>
+  );
+};
+
+export default UncontrolledExample;
 ```
 
 ## Properties
 
 ### ViewSwitcher.Group
 
-| Props             | Type                                                 | Required | Default | Description                                                                                             |
-| ----------------- | ---------------------------------------------------- | :------: | ------- | ------------------------------------------------------------------------------------------------------- |
-| `isCondensed`     | `boolean`                                            |          |         | Indicates that the view switcher can be reduced to save space                                           |
-| `children`        | `ReactNode`                                          |    ✅    |         | Pass one or more `ViewSwitcher.Button` components                                                       |
-| `onChange`        | `Function`<br/>[See signature.](#signature-onChange) |          |         | Will be triggered whenever a `ViewSwitcher.Button` is clicked. Called with the ViewSwitcherButton value |
-| `defaultSelected` | `string`                                             |    ✅    |         | Indicates the default selected button                                                                   |
+| Props             | Type                                                 | Required | Default | Description                                                                                                                                                               |
+| ----------------- | ---------------------------------------------------- | :------: | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `isCondensed`     | `boolean`                                            |          |         | Indicates that the view switcher can be reduced to save space.                                                                                                            |
+| `children`        | `ReactNode`                                          |    ✅    |         | Pass one or more `ViewSwitcher.Button` components.                                                                                                                        |
+| `onChange`        | `Function`<br/>[See signature.](#signature-onChange) |          |         | Will be triggered whenever a `ViewSwitcher.Button` is clicked. Called with the ViewSwitcherButton value. This function is only required when the component is controlled. |
+| `defaultSelected` | `string`                                             |    ✅    |         | Passing this prop makes the component an uncontrolled component. Indicates the default selected button.                                                                   |
+| `selectedValue`   | `string`                                             |    ✅    |         | Passing this prop makes the component an controlled component. Controlled components also require to pass a `onChange` callback function.                                 |
 
 ## Signatures
 
