@@ -253,7 +253,7 @@ export const themes = {
   },
 } as const;
 
-export default {
+const customProperties = {
   colorPrimary: 'var(--color-primary, #00b39e)',
   colorPrimary25: 'var(--color-primary-25, hsl(172.9608938547486, 100%, 25%))',
   colorPrimary40: 'var(--color-primary-40, hsl(172.9608938547486, 100%, 40%))',
@@ -402,3 +402,23 @@ export default {
   sizeHeightTag: 'var(--size-height-tag, 26px)',
   standardInputHeight: 'var(--standard-input-height, 32px)',
 } as const;
+
+let _canUseCssVars: Boolean | null = null;
+const canUseCssVars = (): Boolean => {
+  if (_canUseCssVars === null) {
+    _canUseCssVars = Boolean(
+      document.querySelector('meta[name="ui-kit-vrt-environment"]')
+    );
+  }
+  return _canUseCssVars;
+};
+const proxyHandler = {
+  get: (
+    target: typeof customProperties,
+    name: keyof typeof customProperties
+  ) => {
+    return canUseCssVars() ? themes.default[name] : target[name];
+  },
+};
+
+export default new Proxy(customProperties, proxyHandler);
