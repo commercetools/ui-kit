@@ -180,7 +180,7 @@ describe('warnings', () => {
       'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
     );
   });
-  it('should warn when value is passed but no onChange', () => {
+  it('should warn when selectedValue is passed but no onChange', () => {
     render(
       <Group selectedValue="test-button-1">
         <Button value="test-button-1">Test Button 1</Button>
