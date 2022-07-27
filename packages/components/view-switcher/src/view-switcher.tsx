@@ -6,6 +6,7 @@ import {
   type ReactNode,
   type ReactElement,
 } from 'react';
+import isNil from 'lodash/isNil';
 import { css } from '@emotion/react';
 import ViewSwitcherButton from './view-switcher-button';
 import { warning } from '@commercetools-uikit/utils';
@@ -16,26 +17,51 @@ type TReactChild = {
 
 export type TViewSwitcherProps = {
   /**
-   * Indicates that the view switcher can be reduced to save space
+   * Indicates that the view switcher can be reduced to save space.
    */
   isCondensed?: boolean;
   /**
-   * Pass one or more `ViewSwitcher.Button` components
+   * Pass one or more `ViewSwitcher.Button` components.
    */
   children: ReactNode;
   /**
-   * Will be triggered whenever a `ViewSwitcher.Button` is selected. Called with the ViewSwitcherButton value
+   * Will be triggered whenever a `ViewSwitcher.Button` is selected. Called with the ViewSwitcherButton value.
+   * This function is only required when the component is controlled.
    */
   onChange?: (value: string) => void;
   /**
-   * Indicates the default selected button
+   * Passing this prop makes the component an uncontrolled component.
+   * Indicates the default selected button it is only used to as an initial state once, when the component mounts.
    */
-  defaultSelected: string;
+  defaultSelected?: string;
+  /**
+   * Passing this prop makes the component an controlled component.
+   * Controlled components also require to pass a `onChange` callback function.
+   */
+  selectedValue?: string;
 };
 
 const ViewSwitcher = (props: TViewSwitcherProps) => {
-  const [selectedButton, setSelectedButton] = useState<string>(
+  const isControlledComponent = !isNil(props.selectedValue);
+  const hasOnChange = !isNil(props.onChange);
+  /**
+   * This internal state is only used when the component is uncontrolled ("defaultSelected" is passed).
+   * When controlled ("selectedValue") the state will not be updated or used.
+   */
+  const [selectedButton, setSelectedButton] = useState<string | undefined>(
     props.defaultSelected
+  );
+
+  if (isControlledComponent) {
+    warning(
+      hasOnChange,
+      `ui-kit/ViewSwitcher: missing required prop "onChange" when using the "value" prop (controlled component).`
+    );
+  }
+
+  warning(
+    !props.selectedValue || !props.defaultSelected,
+    `ui-kit/ViewSwitcher: passed both "selectedValue" (uncontrolled component) prop and "defaultSelected" (uncontrolled component). Please pass only one as the component can only be either controlled or uncontrolled.`
   );
 
   warning(
@@ -49,10 +75,15 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
       isValidElement(child) &&
       (child as TReactChild).type.displayName === ViewSwitcherButton.displayName
     ) {
-      const isButtonActive = selectedButton === child.props.value;
+      const isButtonActive =
+        (isControlledComponent ? props.selectedValue : selectedButton) ===
+        child.props.value;
       const clonedChild = cloneElement(child, {
         onClick: () => {
-          setSelectedButton(child.props.value);
+          if (!isControlledComponent) {
+            setSelectedButton(child.props.value);
+          }
+
           if (!isButtonActive) {
             child.props.onClick?.(child.props.value);
             props.onChange?.(child.props.value);

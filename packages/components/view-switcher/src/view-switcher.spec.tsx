@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
-import Group from './view-switcher';
+import Group, { type TViewSwitcherProps } from './view-switcher';
 import Button from './view-switcher-button';
 
 jest.mock('@commercetools-uikit/utils', () => ({
@@ -8,13 +9,16 @@ jest.mock('@commercetools-uikit/utils', () => ({
   warning: jest.fn(),
 }));
 
-const createButtonTestProps = (index) => ({
+const createButtonTestProps = (index: number) => ({
   value: `test-button-${index}`,
   children: `test button ${index}`,
   isDisabled: false,
 });
 
-const createGroupTestProps = (numberOfChildren = 3, custom) => {
+const createGroupTestProps = (
+  numberOfChildren = 3,
+  custom: Partial<TViewSwitcherProps> = {}
+): TViewSwitcherProps => {
   const buttonChildren = [...Array(numberOfChildren).keys()].map((i) => (
     <Button key={i} {...createButtonTestProps(i)} />
   ));
@@ -27,7 +31,7 @@ const createGroupTestProps = (numberOfChildren = 3, custom) => {
 };
 
 describe('rendering', () => {
-  let props;
+  let props: TViewSwitcherProps;
   beforeEach(() => {
     props = createGroupTestProps(3);
   });
@@ -131,10 +135,41 @@ describe('rendering', () => {
     screen.getByLabelText('Test Button 1').click();
     expect(handleClick).not.toHaveBeenCalled();
   });
+
+  it('should be controlled when selectedValue is passed', () => {
+    const handleClick = jest.fn();
+    function TestComponent(props: { defaultSelected: string }) {
+      const [seletedValue, setSelectedValue] = useState(props.defaultSelected);
+
+      return (
+        <Group selectedValue={seletedValue} onChange={setSelectedValue}>
+          <Button value="test-button-1" onClick={handleClick}>
+            Test Button 1
+          </Button>
+          <Button value="test-button-2" onClick={handleClick}>
+            Test Button 2
+          </Button>
+        </Group>
+      );
+    }
+    render(<TestComponent defaultSelected="test-button-1" />);
+
+    // test-button-1 is already active so onClick is not called.
+    screen.getByLabelText('Test Button 1').click();
+    expect(handleClick).not.toHaveBeenCalled();
+
+    // test-button-2 is not active so onClick is called.
+    screen.getByLabelText('Test Button 2').click();
+    expect(handleClick).toHaveBeenCalled();
+
+    // test-button-2 is now active so onClick is not called again.
+    screen.getByLabelText('Test Button 2').click();
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe('warnings', () => {
-  let props;
+  let props: TViewSwitcherProps;
   beforeEach(() => {
     props = createGroupTestProps(0);
   });
@@ -143,6 +178,28 @@ describe('warnings', () => {
     expect(warning).toHaveBeenCalledWith(
       false,
       'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
+    );
+  });
+  it('should warn when selectedValue is passed but no onChange', () => {
+    render(
+      <Group selectedValue="test-button-1">
+        <Button value="test-button-1">Test Button 1</Button>
+      </Group>
+    );
+    expect(warning).toHaveBeenCalledWith(
+      false,
+      'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
+    );
+  });
+  it('should warn when both defaultSelected and selectedValue as passed', () => {
+    render(
+      <Group selectedValue="test-button-1" defaultSelected="test-button-1">
+        <Button value="test-button-1">Test Button 1</Button>
+      </Group>
+    );
+    expect(warning).toHaveBeenCalledWith(
+      false,
+      'ui-kit/ViewSwitcher: passed both "selectedValue" (uncontrolled component) prop and "defaultSelected" (uncontrolled component). Please pass only one as the component can only be either controlled or uncontrolled.'
     );
   });
 });

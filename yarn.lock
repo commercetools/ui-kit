@@ -4291,6 +4291,7 @@ __metadata:
     "@commercetools-uikit/utils": 15.1.2
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
+    lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
   peerDependencies:
