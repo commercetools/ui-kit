@@ -44,6 +44,10 @@ export type TViewSwitcherProps = {
 const ViewSwitcher = (props: TViewSwitcherProps) => {
   const isControlledComponent = !isNil(props.selectedValue);
   const hasOnChange = !isNil(props.onChange);
+  /**
+   * This internal state is only used when the component is uncontrolled ("defaultSelected" is passed).
+   * When controlled ("selectedValue") the state will not be updated or used.
+   */
   const [selectedButton, setSelectedButton] = useState<string | undefined>(
     props.defaultSelected
   );
