@@ -1,13 +1,14 @@
 ---
-"@commercetools-uikit/label": patch
 "@commercetools-uikit/view-switcher": minor
 ---
 
-Add supported for usage as controlled component to `ViewSwitcher`.
+Add support for using the `<ViewSwitcher>` component in a controlled mode.
 
-You can now pass a `props` called `selecetedValue` which allows you to control the state of the active button externally. This can be useful when the `ViewSwicher` is used in for instance combination with routing where the active button is part of the URL.
+To make the component controlled you need to pass a prop `selectedValue` and `onChange` to the `<ViewSwitcher.Group>` component.
 
-Here is an example of using the `selectedValue` prop using `useState`:
+When the component is controlled, the parent must handle the state updates. This can be useful when the state is maintained for example in the URL.
+
+See example usage:
 
 ```jsx
 const ControlledExample = () => {

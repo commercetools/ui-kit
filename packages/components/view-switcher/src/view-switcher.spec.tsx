@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
-import Group from './view-switcher';
+import Group, { type TViewSwitcherProps } from './view-switcher';
 import Button from './view-switcher-button';
 
 jest.mock('@commercetools-uikit/utils', () => ({
@@ -10,13 +9,16 @@ jest.mock('@commercetools-uikit/utils', () => ({
   warning: jest.fn(),
 }));
 
-const createButtonTestProps = (index) => ({
+const createButtonTestProps = (index: number) => ({
   value: `test-button-${index}`,
   children: `test button ${index}`,
   isDisabled: false,
 });
 
-const createGroupTestProps = (numberOfChildren = 3, custom) => {
+const createGroupTestProps = (
+  numberOfChildren = 3,
+  custom: Partial<TViewSwitcherProps> = {}
+): TViewSwitcherProps => {
   const buttonChildren = [...Array(numberOfChildren).keys()].map((i) => (
     <Button key={i} {...createButtonTestProps(i)} />
   ));
@@ -29,7 +31,7 @@ const createGroupTestProps = (numberOfChildren = 3, custom) => {
 };
 
 describe('rendering', () => {
-  let props;
+  let props: TViewSwitcherProps;
   beforeEach(() => {
     props = createGroupTestProps(3);
   });
@@ -136,15 +138,11 @@ describe('rendering', () => {
 
   it('should be controlled when selectedValue is passed', () => {
     const handleClick = jest.fn();
-    function TestComponent(props) {
-      const [seletedValue, setSelectedValue] = useState(props.selectedValue);
+    function TestComponent(props: { defaultSelected: string }) {
+      const [seletedValue, setSelectedValue] = useState(props.defaultSelected);
 
       return (
-        <Group
-          selectedValue={seletedValue}
-          defaultSelected={props.defaultSelected}
-          onChange={setSelectedValue}
-        >
+        <Group selectedValue={seletedValue} onChange={setSelectedValue}>
           <Button value="test-button-1" onClick={handleClick}>
             Test Button 1
           </Button>
@@ -154,15 +152,7 @@ describe('rendering', () => {
         </Group>
       );
     }
-    TestComponent.defaultProps = {
-      selectedValue: 'test-button-1',
-      defaultSelected: undefined,
-    };
-    TestComponent.propTypes = {
-      selectedValue: PropTypes.string,
-      defaultSelected: PropTypes.string,
-    };
-    render(<TestComponent defaultSelected="test-button-2" />);
+    render(<TestComponent defaultSelected="test-button-1" />);
 
     // test-button-1 is already active so onClick is not called.
     screen.getByLabelText('Test Button 1').click();
@@ -175,15 +165,11 @@ describe('rendering', () => {
     // test-button-2 is now active so onClick is not called again.
     screen.getByLabelText('Test Button 2').click();
     expect(handleClick).toHaveBeenCalledTimes(1);
-
-    // selectedValue has precedence over defaultSelected and onClick is called.
-    screen.getByLabelText('Test Button 1').click();
-    expect(handleClick).toHaveBeenCalledTimes(2);
   });
 });
 
 describe('warnings', () => {
-  let props;
+  let props: TViewSwitcherProps;
   beforeEach(() => {
     props = createGroupTestProps(0);
   });
