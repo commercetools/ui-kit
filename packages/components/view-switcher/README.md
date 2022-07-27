@@ -70,7 +70,7 @@ export default UncontrolledExample;
 import { useState } from 'react';
 import ViewSwitcher from '@commercetools-uikit/view-switcher';
 
-const UncontrolledExample = () => {
+const ControlledExample = () => {
   const [seletedValue, setSelectedValue] = useState('button 1');
 
   return (
@@ -88,7 +88,7 @@ const UncontrolledExample = () => {
   );
 };
 
-export default UncontrolledExample;
+export default ControlledExample;
 ```
 
 ## Properties
