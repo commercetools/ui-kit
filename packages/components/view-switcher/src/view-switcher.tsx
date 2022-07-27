@@ -56,6 +56,11 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
   }
 
   warning(
+    !props.selectedValue || !props.defaultSelected,
+    `ui-kit/ViewSwitcher: passed both "selectedValue" (uncontrolled component) prop and "defaultSelected" (uncontrolled component). Please pass only one as the component can only be either controlled or uncontrolled.`
+  );
+
+  warning(
     (props.children as TReactChild[]).length > 0,
     'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
   );

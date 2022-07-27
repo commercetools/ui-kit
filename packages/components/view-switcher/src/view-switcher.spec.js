@@ -185,4 +185,15 @@ describe('warnings', () => {
       'ViewSwitcher.Group must contain at least one ViewSwitcher.Button'
     );
   });
+  it('should warn when both defaultSelected and selectedValue as passed', () => {
+    render(
+      <Group selectedValue="test-button-1" defaultSelected="test-button-1">
+        <Button value="test-button-1">Test Button 1</Button>
+      </Group>
+    );
+    expect(warning).toHaveBeenCalledWith(
+      false,
+      'ui-kit/ViewSwitcher: passed both "selectedValue" (uncontrolled component) prop and "defaultSelected" (uncontrolled component). Please pass only one as the component can only be either controlled or uncontrolled.'
+    );
+  });
 });
