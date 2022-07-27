@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
 import Group from './view-switcher';
@@ -135,11 +136,15 @@ describe('rendering', () => {
 
   it('should be controlled when selectedValue is passed', () => {
     const handleClick = jest.fn();
-    function TestComponent() {
-      const [seletedValue, setSelectedValue] = useState('test-button-1');
+    function TestComponent(props) {
+      const [seletedValue, setSelectedValue] = useState(props.selectedValue);
 
       return (
-        <Group selectedValue={seletedValue} onChange={setSelectedValue}>
+        <Group
+          selectedValue={seletedValue}
+          defaultSelected={props.defaultSelected}
+          onChange={setSelectedValue}
+        >
           <Button value="test-button-1" onClick={handleClick}>
             Test Button 1
           </Button>
@@ -149,16 +154,31 @@ describe('rendering', () => {
         </Group>
       );
     }
-    render(<TestComponent />);
+    TestComponent.defaultProps = {
+      selectedValue: 'test-button-1',
+      defaultSelected: undefined,
+    };
+    TestComponent.propTypes = {
+      selectedValue: PropTypes.string,
+      defaultSelected: PropTypes.string,
+    };
+    render(<TestComponent defaultSelected="test-button-2" />);
 
+    // test-button-1 is already active so onClick is not called.
     screen.getByLabelText('Test Button 1').click();
     expect(handleClick).not.toHaveBeenCalled();
 
+    // test-button-2 is not active so onClick is called.
     screen.getByLabelText('Test Button 2').click();
     expect(handleClick).toHaveBeenCalled();
 
+    // test-button-2 is now active so onClick is not called again.
     screen.getByLabelText('Test Button 2').click();
     expect(handleClick).toHaveBeenCalledTimes(1);
+
+    // selectedValue has precedence over defaultSelected and onClick is called.
+    screen.getByLabelText('Test Button 1').click();
+    expect(handleClick).toHaveBeenCalledTimes(2);
   });
 });
 
