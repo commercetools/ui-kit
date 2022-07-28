@@ -151,7 +151,28 @@ const printCustomProperties = (data) => {
 */
 export const themes = ${JSON.stringify(themes, null, 2)} as const;
 
-export default ${JSON.stringify(variables, null, 2)} as const;
+const customProperties = ${JSON.stringify(variables, null, 2)} as const;
+
+let _canUseCssVars: Boolean | null = null;
+const canUseCssVars = (): Boolean => {
+  if (_canUseCssVars === null) {
+    _canUseCssVars =
+      !Boolean(document.querySelector('meta[name="ui-kit-vrt-environment"]'));
+  }
+  return _canUseCssVars;
+};
+const proxyHandler = {
+  get: (
+    target: typeof customProperties,
+    name: keyof typeof customProperties
+  ) => {
+    return canUseCssVars()
+    ? target[name]
+    : themes.default[name];
+  },
+};
+
+export default new Proxy(customProperties, proxyHandler);
 `;
 };
 
