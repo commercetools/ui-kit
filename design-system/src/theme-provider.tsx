@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from 'react';
 import kebabCase from 'lodash/kebabCase';
+import isEmpty from 'lodash/isEmpty';
 import { warning } from '@commercetools-uikit/utils';
 import { themes } from './custom-properties';
 
@@ -62,9 +63,9 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
 const useTheme = () => {
   const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
+
+  warning(!isEmpty(context), `useTheme must be used within a ThemeProvider`);
+
   return context;
 };
 
