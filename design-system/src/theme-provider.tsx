@@ -1,15 +1,14 @@
 import {
   createContext,
   useLayoutEffect,
-  useRef,
   useState,
   useMemo,
   useContext,
   useCallback,
   type ReactNode,
-  type LegacyRef,
 } from 'react';
 import kebabCase from 'lodash/kebabCase';
+import { warning } from '@commercetools-uikit/utils';
 import { themes } from './custom-properties';
 
 type ThemeName = keyof typeof themes;
@@ -28,23 +27,27 @@ type ThemeProviderProps = {
 };
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-  const root = useRef<HTMLDivElement>();
+  const root = document.querySelector(':root') as HTMLElement;
   const [theme, setTheme] = useState<ThemeName>('default');
 
   const changeTheme = useCallback((newTheme: string) => {
-    if (allThemesNames.some((themeName) => themeName === newTheme)) {
-      setTheme(newTheme as ThemeName);
-    } else {
-      setTheme('default');
-    }
+    const isNewThemeValid = allThemesNames.some(
+      (themeName) => themeName === newTheme
+    );
+
+    setTheme(isNewThemeValid ? (newTheme as ThemeName) : 'default');
+    warning(
+      isNewThemeValid,
+      `ThemeProvider: the specified theme '${newTheme}' is not supported.`
+    );
   }, []);
 
   useLayoutEffect(() => {
     const vars = toVars(themes[theme]);
     Object.entries(vars).forEach(([key, value]) => {
-      root.current?.style.setProperty(key, value);
+      root?.style.setProperty(key, value);
     });
-  }, [theme]);
+  }, [theme, root?.style]);
 
   const value = useMemo(() => {
     return { theme, changeTheme };
@@ -52,7 +55,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
   return (
     <ThemeContext.Provider value={value}>
-      <div ref={root as LegacyRef<HTMLDivElement>}>{props.children}</div>
+      {props.children}
     </ThemeContext.Provider>
   );
 };
