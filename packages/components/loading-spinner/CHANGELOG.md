@@ -1,5 +1,15 @@
 # @commercetools-uikit/loading-spinner
 
+## 15.2.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.2.0
+  - @commercetools-uikit/spacings-inline@15.2.0
+  - @commercetools-uikit/text@15.2.0
+  - @commercetools-uikit/utils@15.2.0
+
 ## 15.1.2
 
 ### Patch Changes

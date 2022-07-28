@@ -1,5 +1,7 @@
 # @commercetools-uikit/design-system
 
+## 15.2.0
+
 ## 15.1.2
 
 ## 15.1.1
