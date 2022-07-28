@@ -157,7 +157,7 @@ let _canUseCssVars: Boolean | null = null;
 const canUseCssVars = (): Boolean => {
   if (_canUseCssVars === null) {
     _canUseCssVars =
-      Boolean(document.querySelector('meta[name="ui-kit-vrt-environment"]'));
+      !Boolean(document.querySelector('meta[name="ui-kit-vrt-environment"]'));
   }
   return _canUseCssVars;
 };
@@ -167,8 +167,8 @@ const proxyHandler = {
     name: keyof typeof customProperties
   ) => {
     return canUseCssVars()
-      ? themes.default[name]
-      : target[name];
+    ? target[name]
+    : themes.default[name];
   },
 };
 
