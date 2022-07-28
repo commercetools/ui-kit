@@ -34,7 +34,7 @@
     "react-intl": "^5.24.6"
   },
   "devDependencies": {
-    "@testing-library/react-hooks": "8.0.0",
+    "@testing-library/react-hooks": "8.0.1",
     "formik": "^2.2.9",
     "react": "17.0.2"
   },
