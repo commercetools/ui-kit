@@ -1,5 +1,18 @@
 # @commercetools-uikit/date-time-field
 
+## 15.2.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/date-time-input@15.2.0
+  - @commercetools-uikit/field-label@15.2.0
+  - @commercetools-uikit/design-system@15.2.0
+  - @commercetools-uikit/constraints@15.2.0
+  - @commercetools-uikit/field-errors@15.2.0
+  - @commercetools-uikit/utils@15.2.0
+  - @commercetools-uikit/spacings@15.2.0
+
 ## 15.1.2
 
 ### Patch Changes
