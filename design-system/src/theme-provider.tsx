@@ -25,22 +25,30 @@ const toVars = (obj: Record<string, string>) =>
 
 type ThemeProviderProps = {
   children: ReactNode;
+  theme?: string;
+};
+
+const validateTheme = (themeName?: string): ThemeName => {
+  if (!themeName) {
+    return 'default';
+  }
+  const isNewThemeValid = allThemesNames.includes(themeName);
+  if (isNewThemeValid) {
+    return themeName as ThemeName;
+  }
+  warning(
+    isNewThemeValid,
+    `ThemeProvider: the specified theme '${themeName}' is not supported.`
+  );
+  return 'default';
 };
 
 const ThemeProvider = (props: ThemeProviderProps) => {
   const root = document.querySelector(':root') as HTMLElement;
-  const [theme, setTheme] = useState<ThemeName>('default');
+  const [theme, setTheme] = useState<ThemeName>(validateTheme(props?.theme));
 
   const changeTheme = useCallback((newTheme: string) => {
-    const isNewThemeValid = allThemesNames.some(
-      (themeName) => themeName === newTheme
-    );
-
-    setTheme(isNewThemeValid ? (newTheme as ThemeName) : 'default');
-    warning(
-      isNewThemeValid,
-      `ThemeProvider: the specified theme '${newTheme}' is not supported.`
-    );
+    setTheme(validateTheme(newTheme));
   }, []);
 
   useLayoutEffect(() => {
