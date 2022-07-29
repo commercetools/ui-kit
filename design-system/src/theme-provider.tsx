@@ -5,16 +5,17 @@ import {
   useMemo,
   useContext,
   useCallback,
+  useRef,
   type ReactNode,
 } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isEmpty from 'lodash/isEmpty';
 import { warning } from '@commercetools-uikit/utils';
-import { themes } from './custom-properties';
+import { themes, themesNames } from './custom-properties';
 
 type ThemeName = keyof typeof themes;
 
-const allThemesNames = Object.keys(themes);
+const allThemesNames = Object.keys(themesNames);
 
 const ThemeContext = createContext({});
 
@@ -36,15 +37,16 @@ const validateTheme = (themeName?: string): ThemeName => {
   if (isNewThemeValid) {
     return themeName as ThemeName;
   }
-  warning(
-    isNewThemeValid,
-    `ThemeProvider: the specified theme '${themeName}' is not supported.`
-  );
+  if (!isNewThemeValid) {
+    console.warn(
+      `ThemeProvider: the specified theme '${themeName}' is not supported.`
+    );
+  }
   return 'default';
 };
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-  const root = document.querySelector(':root') as HTMLElement;
+  const root = useRef<HTMLElement>(document.querySelector(':root'));
   const [theme, setTheme] = useState<ThemeName>(validateTheme(props?.theme));
 
   const changeTheme = useCallback((newTheme: string) => {
@@ -54,9 +56,9 @@ const ThemeProvider = (props: ThemeProviderProps) => {
   useLayoutEffect(() => {
     const vars = toVars(themes[theme]);
     Object.entries(vars).forEach(([key, value]) => {
-      root?.style.setProperty(key, value);
+      root.current?.style.setProperty(key, value);
     });
-  }, [theme, root?.style]);
+  }, [theme]);
 
   const value = useMemo(() => {
     return { theme, changeTheme };
