@@ -151,6 +151,14 @@ const printCustomProperties = (data) => {
 */
 export const themes = ${JSON.stringify(themes, null, 2)} as const;
 
+export const themesNames = ${JSON.stringify(
+    Object.fromEntries(
+      allThemesNames.map((themeName) => [themeName, themeName])
+    ),
+    null,
+    2
+  )} as const; 
+
 const customProperties = ${JSON.stringify(variables, null, 2)} as const;
 
 let _canUseCssVars: Boolean | null = null;
