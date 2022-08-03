@@ -50,14 +50,6 @@ export const DATE_FORMAT_LOCALIZED_MAPPINGS: TLocalizedDateFormatMapping = {
     [formatToken.DD]: 'JJ',
     [formatToken.YYYY]: 'AAAA',
   },
-  ja: {
-    // YYYY/MM/DD - HH:mm -> 年/月/日 - 午前/午後 時:分
-    [formatToken.HH]: '午前/午後 時',
-    [formatToken.mm]: '分',
-    [formatToken.DD]: '日',
-    [formatToken.MM]: '月',
-    [formatToken.YYYY]: '年',
-  },
   'zh-CN': {
     // YYYY/MM/DD - HH:mm -> 年/月/日 - 小时：分钟
     [formatToken.HH]: '小时',
