@@ -51,6 +51,13 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
   const changeTheme = useCallback((newTheme: string) => {
     setTheme(validateTheme(newTheme));
+
+    // We need to update the meta element right away so then the render phase kicks in,
+    // the children will be rendered with the correct theme.
+    // (This is only needed for visual regression testing with Percy)
+    document
+      .querySelector('[name="ui-kit-vrt-environment"]')
+      ?.setAttribute('content', validateTheme(newTheme));
   }, []);
 
   useLayoutEffect(() => {

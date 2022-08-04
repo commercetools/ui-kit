@@ -157,9 +157,11 @@ export const themesNames = ${JSON.stringify(
     ),
     null,
     2
-  )} as const; 
+  )} as const;
 
 const customProperties = ${JSON.stringify(variables, null, 2)} as const;
+
+type ThemeName = keyof typeof themes;
 
 let _canUseCssVars: Boolean | null = null;
 const canUseCssVars = (): Boolean => {
@@ -169,14 +171,18 @@ const canUseCssVars = (): Boolean => {
   }
   return _canUseCssVars;
 };
+const getCurrentTheme = () =>
+  document.querySelector<HTMLElement>('meta[name="ui-kit-vrt-environment"]')?.getAttribute('content') as ThemeName || 'default';
+
 const proxyHandler = {
   get: (
     target: typeof customProperties,
     name: keyof typeof customProperties
   ) => {
-    return canUseCssVars()
-    ? target[name]
-    : themes.default[name];
+    if (canUseCssVars()) {
+      return target[name];
+    }
+    return themes[getCurrentTheme()][name];
   },
 };
 
