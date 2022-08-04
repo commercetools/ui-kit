@@ -13,7 +13,7 @@ const sourceFolders = [
 module.exports = ({ config }) => {
   config.plugins.push(
     new MomentLocalesPlugin({
-      localesToKeep: ['de', 'es', 'fr', 'zh-cn', 'ja', 'en-gb'],
+      localesToKeep: ['de', 'es', 'fr', 'zh-cn', 'en-gb'],
     })
   );
 
