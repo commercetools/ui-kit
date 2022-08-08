@@ -129,21 +129,21 @@ export const themes = {
     standardInputHeight: '32px',
   },
   dark: {
-    colorPrimary: 'yellow',
+    colorPrimary: 'darkblue',
     colorPrimary25: 'olive',
     colorPrimary40: 'maroon',
     colorPrimary85: 'green',
     colorPrimary95: 'lime',
-    colorAccent: 'navy',
+    colorAccent: 'blueviolet',
     colorAccent30: 'teal',
     colorAccent40: 'antiquewhite',
     colorAccent95: 'aquamarine',
     colorAccent98: 'fuchsia',
     colorNeutral: 'beige',
     colorNeutral60: 'chocolate',
-    colorNeutral90: 'blueviolet',
+    colorNeutral90: 'aliceblue',
     colorNeutral95: 'crimson',
-    colorInfo: 'darkblue',
+    colorInfo: 'yellow',
     colorInfo85: 'darkorange',
     colorInfo95: 'darkred',
     colorWarning: 'darksalmon',
@@ -213,18 +213,18 @@ export const themes = {
     backgroundColorForInput: 'lightgreen',
     backgroundColorForInputWhenSelected: 'aquamarine',
     backgroundColorForInputWhenDisabled: 'fuchsia',
-    backgroundColorForInputWhenHovered: 'blueviolet',
+    backgroundColorForInputWhenHovered: 'aliceblue',
     backgroundColorForTag: 'crimson',
     backgroundColorForTagWarning: 'darkviolet',
     borderColorForInput: 'chocolate',
-    borderColorForInputWhenFocused: 'yellow',
+    borderColorForInputWhenFocused: 'darkblue',
     borderColorForInputWhenDisabled: 'beige',
     borderColorForInputWhenReadonly: 'beige',
     borderColorForInputWhenError: 'gold',
     borderColorForInputWhenWarning: 'darksalmon',
     borderColorForTag: 'chocolate',
     borderColorForTagWarning: 'darksalmon',
-    borderColorForTagWhenFocused: 'yellow',
+    borderColorForTagWhenFocused: 'darkblue',
     borderRadiusForInput: '6px',
     borderRadiusForTag: '2px',
     fontColorForInput: 'indianred',
@@ -408,6 +408,8 @@ const customProperties = {
   standardInputHeight: 'var(--standard-input-height, 32px)',
 } as const;
 
+type ThemeName = keyof typeof themes;
+
 let _canUseCssVars: Boolean | null = null;
 const canUseCssVars = (): Boolean => {
   if (_canUseCssVars === null) {
@@ -417,12 +419,20 @@ const canUseCssVars = (): Boolean => {
   }
   return _canUseCssVars;
 };
+const getCurrentTheme = () =>
+  (document
+    .querySelector<HTMLElement>('meta[name="ui-kit-vrt-environment"]')
+    ?.getAttribute('content') as ThemeName) || 'default';
+
 const proxyHandler = {
   get: (
     target: typeof customProperties,
     name: keyof typeof customProperties
   ) => {
-    return canUseCssVars() ? target[name] : themes.default[name];
+    if (canUseCssVars()) {
+      return target[name];
+    }
+    return themes[getCurrentTheme()][name];
   },
 };
 
