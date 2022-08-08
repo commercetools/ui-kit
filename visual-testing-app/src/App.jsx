@@ -15,8 +15,14 @@ const darkTheme = {
 const pkgComponentsModules = import.meta.globEager(
   '../../packages/**/*.visualroute.jsx'
 );
+const designSystemComponentsModules = import.meta.globEager(
+  '../../design-system/**/*.visualroute.jsx'
+);
 
-const allUniqueRouteComponents = Object.values(pkgComponentsModules).reduce(
+const allUniqueRouteComponents = Object.values({
+  ...pkgComponentsModules,
+  ...designSystemComponentsModules
+}).reduce(
   (allComponents, RouteComponent) => {
     // trim leading slash
     const label = RouteComponent.routePath.substring(1);
