@@ -61,7 +61,9 @@ const Example = () => (
 export default Example;
 ```
 
-## Properties
+## DataTableManager
+
+### Properties
 
 | Props              | Type                                                             | Required | Default | Description                                                                                                                                                                                                                                                                                                       |
 | ------------------ | ---------------------------------------------------------------- | :------: | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -73,9 +75,9 @@ export default Example;
 | `topBar`           | `ReactNode`                                                      |          |         | A React node for rendering additional information within the table manager.                                                                                                                                                                                                                                       |
 | `managerTheme`     | `union`<br/>Possible values:<br/>`'light' , 'dark'`              |          |         | Sets the background theme of the Card that contains the settings                                                                                                                                                                                                                                                  |
 
-## Signatures
+### Signatures
 
-### Signature `columns`
+#### Signature `columns`
 
 ```ts
 {
@@ -165,7 +167,7 @@ export default Example;
 }
 ```
 
-### Signature `displaySettings`
+#### Signature `displaySettings`
 
 ```ts
 {
@@ -205,7 +207,7 @@ export default Example;
 }
 ```
 
-### Signature `columnManager`
+#### Signature `columnManager`
 
 ```ts
 {
@@ -253,11 +255,122 @@ export default Example;
 }
 ```
 
-### Signature `onSettingsChange`
+#### Signature `onSettingsChange`
 
 ```ts
 (
   settingName: string,
   settingValue: boolean | string[]
 ) => void
+```
+
+## DataTableSettings
+
+### Properties
+
+| Props              | Type                                                         | Required | Default | Description                                                                                                       |
+| ------------------ | ------------------------------------------------------------ | :------: | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| `topBar`           | `ReactNode`                                                  |          |         | A React node for rendering additional information within the table manager.                                       |
+| `onSettingsChange` | `Function`<br/>[See signature.](#signature-onSettingsChange) |          |         | A callback function, called when any of the properties of either display settings or column settings is modified. |
+| `displaySettings`  | `Object`<br/>[See signature.](#signature-displaySettings)    |          |         | The managed display settings of the table.                                                                        |
+| `columnManager`    | `Object`<br/>[See signature.](#signature-columnManager)      |          |         | The managed column settings of the table.                                                                         |
+| `managerTheme`     | `union`<br/>Possible values:<br/>`'light' , 'dark'`          |          |         | Sets the background theme of the Card that contains the settings                                                  |
+
+### Signatures
+
+#### Signature `onSettingsChange`
+
+```ts
+(
+  settingName: string,
+  settingValue: boolean | string[]
+) => void
+```
+
+#### Signature `displaySettings`
+
+```ts
+{
+  /**
+   * Set this flag to `false` to show the display settings panel option.
+   *
+   * @@defaultValue@@: true
+   */
+  disableDisplaySettings?: boolean;
+
+  /**
+   * Set this to `true` to reduce the paddings of all cells, allowing the table to display
+   * more data in less space.
+   *
+   * @@defaultValue@@: false
+   */
+  isCondensed?: boolean;
+
+  /**
+   * Set this to `true` to allow text in a cell to wrap.
+   * <br>
+   * This is required if `disableDisplaySettings` is set to `false`.
+   *
+   * @@defaultValue@@: false
+   */
+  isWrappingText?: boolean;
+
+  /**
+   * A React element to be rendered as the primary button, useful when the display settings work as a form.
+   */
+  primaryButton?: ReactElement;
+
+  /**
+   * A React element to be rendered as the secondary button, useful when the display settings work as a form.
+   */
+  secondaryButton?: ReactElement;
+}
+```
+
+#### Signature `columnManager`
+
+```ts
+{
+  /**
+   * Set this to `true` to show a search input for the hidden columns panel.
+   */
+  areHiddenColumnsSearchable?: boolean;
+
+  /**
+   * Set this to `false` to show the column settings panel option.
+   *
+   * @@defaultValue@@: true
+   */
+  disableColumnManager?: boolean;
+
+  /**
+   * The keys of the visible columns.
+   */
+  visibleColumnKeys: string[];
+
+  /**
+   * The keys of the visible columns.
+   */
+  hideableColumns?: TColumnData[];
+
+  /**
+   * A callback function, called when the search input for the hidden columns panel changes.
+   */
+  searchHiddenColumns?: (searchTerm: string) => Promise<void> | void;
+
+  /**
+   * Placeholder value of the search input for the hidden columns panel.
+   */
+  searchHiddenColumnsPlaceholder?: string;
+
+  /**
+   * A React element to be rendered as the primary button, useful when the column settings work as a form.
+   */
+  primaryButton?: ReactElement;
+
+  /**
+   * A React element to be rendered as the secondary button, useful when the column settings work as a form.
+   */
+  secondaryButton?: ReactElement;
+}
 ```

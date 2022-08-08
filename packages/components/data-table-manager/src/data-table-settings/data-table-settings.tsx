@@ -111,13 +111,28 @@ export type TColumnManagerProps = {
 };
 
 export type TDataTableSettingsProps = {
+  /**
+   * A React node for rendering additional information within the table manager.
+   */
   topBar?: ReactNode;
+  /**
+   * A callback function, called when any of the properties of either display settings or column settings is modified.
+   */
   onSettingsChange?: (
     settingName: string,
     settingValue: boolean | string[]
   ) => void;
+  /**
+   * The managed display settings of the table.
+   */
   displaySettings?: TDisplaySettingsProps;
+  /**
+   * The managed column settings of the table.
+   */
   columnManager?: TColumnManagerProps;
+  /**
+   * Sets the background theme of the Card that contains the settings
+   */
   managerTheme?: 'light' | 'dark';
 };
 

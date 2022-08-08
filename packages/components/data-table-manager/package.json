@@ -59,5 +59,11 @@
     "react": "17.x",
     "react-dom": "17.x",
     "react-intl": "5.x"
+  },
+  "readme": {
+    "componentPaths": [
+      "./src/data-table-manager.tsx",
+      "./src/data-table-settings/data-table-settings.tsx"
+    ]
   }
 }
