@@ -1,16 +1,18 @@
 import { useTheme, customProperties } from '@commercetools-uikit/design-system';
 import { useLayoutEffect } from 'react';
-import { Suite, Spec } from '../../test/percy';
+import { Suite, Spec, SpecThemeSwitcher } from '../../test/percy';
 
 export const routePath = '/theme-provider';
 
 const DummyComponent = () => (
-    <h1 style={{
-      color: customProperties.colorPrimary,
-    }}>
-      Title with default theme <i>colorPrimary</i> design token
-    </h1>
-  );
+  <h1
+    style={{
+      color: customProperties.colorSurface,
+    }}
+  >
+    Title with default theme <i>colorPrimary</i> design token
+  </h1>
+);
 
 const DarkThemedComponent = () => {
   const { changeTheme } = useTheme();
@@ -18,7 +20,7 @@ const DarkThemedComponent = () => {
     changeTheme('dark');
   }, [changeTheme]);
 
-  return (<DummyComponent />);
+  return <DummyComponent />;
 };
 
 export const component = () => (
@@ -29,6 +31,12 @@ export const component = () => (
 
     <Spec label="use dark theme">
       <DarkThemedComponent />
+    </Spec>
+
+    <Spec label="use dark theme for theming children">
+      <SpecThemeSwitcher theme="dark">
+        <DummyComponent />
+      </SpecThemeSwitcher>
     </Spec>
   </Suite>
 );
