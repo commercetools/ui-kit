@@ -1,11 +1,10 @@
-import { ThemeProvider } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 import { FlatButton, InformationIcon } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
 export const routePath = '/flat-button';
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="regular">
       <FlatButton tone="primary" label="A label text" onClick={() => {}} />
@@ -43,26 +42,28 @@ export const component = ({ themes }) => (
         icon={<InformationIcon />}
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="inverted" listPropsOfNestedChild>
-        <ThemeProvider theme={vars}>
-          <FlatButton
-            tone="inverted"
-            label="A label text"
-            onClick={() => {}}
-            icon={<InformationIcon />}
-          />
-        </ThemeProvider>
-      </Spec>
-      <Spec label="secondary in dark theme">
+    <Spec label="inverted" theme="vrtDark">
+      <FlatButton
+        tone="inverted"
+        label="A label text"
+        onClick={() => {}}
+        icon={<InformationIcon />}
+      />
+    </Spec>
+    <Spec
+      label="secondary in dark theme"
+      theme="vrtDark"
+      listPropsOfNestedChild
+    >
+      <ThemeProvider scope="local" theme="vrtDark">
         <FlatButton
           tone="secondary"
           label="A label text"
           onClick={() => {}}
           icon={<InformationIcon />}
         />
-      </Spec>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Spec>
     <Spec
       label="as anchor, with a multiline text and icon left"
       listPropsOfNestedChild

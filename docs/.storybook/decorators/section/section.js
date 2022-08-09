@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 const Section = (props) => {
-  const theme = useTheme();
   return (
     <div
       css={css`
-        background-color: ${theme.colorSurface};
+        background-color: ${customProperties.colorSurface};
         padding: 16px;
       `}
     >

@@ -1,12 +1,12 @@
 import { Label } from '@commercetools-frontend/ui-kit';
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/label';
 
 const intlMessage = { id: 'input-label', defaultMessage: 'Hello' };
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="minimal">
       <Label>Hello</Label>
@@ -19,13 +19,11 @@ export const component = ({ themes }) => (
         Hello
       </Label>
     </Spec>
-    <ThemeProvider theme={{ ...themes.darkTheme, colorSurface: 'purple' }}>
-      <Spec label="when inverted" listPropsOfNestedChild={true}>
-        <ThemeProvider theme={themes.darkTheme}>
-          <Label tone="inverted">Hello</Label>
-        </ThemeProvider>
-      </Spec>
-    </ThemeProvider>
+    <Spec label="when inverted" theme="vrtDark" listPropsOfNestedChild>
+      <ThemeProvider scope="local" theme="vrtDark">
+        <Label tone="inverted">Hello</Label>;
+      </ThemeProvider>
+    </Spec>
     <Spec label="intlMessage">
       <Label intlMessage={intlMessage} />
     </Spec>

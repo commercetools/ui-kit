@@ -1,4 +1,3 @@
-import type { Theme } from '@emotion/react';
 import {
   MouseEvent,
   KeyboardEvent,
@@ -7,9 +6,9 @@ import {
   ComponentPropsWithRef,
   cloneElement,
 } from 'react';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import omit from 'lodash/omit';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
@@ -17,9 +16,8 @@ import { getTextColor, getButtonIconColor } from './flat-button.styles';
 
 const propsToOmit = ['type'];
 
-export type TExtendedTheme = Theme & {
-  [key: string]: string;
-};
+export type CustomProperties = typeof customProperties;
+
 export type TFlatButtonProps<
   TStringOrComponent extends ElementType = 'button'
 > = {
@@ -117,12 +115,6 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
     disabled: props.isDisabled,
   };
 
-  const theme = useTheme();
-  const overwrittenVars: TExtendedTheme = {
-    ...vars,
-    ...theme,
-  };
-
   return (
     <AccessibleButton
       as={props.as}
@@ -140,19 +132,19 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
 
         span {
           color: ${props.isDisabled
-            ? overwrittenVars.colorNeutral
-            : getTextColor(props.tone, false, overwrittenVars)};
+            ? customProperties.colorNeutral
+            : getTextColor(props.tone, false, customProperties)};
         }
 
         svg * {
           fill: ${props.isDisabled
-            ? overwrittenVars.colorNeutral
-            : getTextColor(props.tone, false, overwrittenVars)};
+            ? customProperties.colorNeutral
+            : getTextColor(props.tone, false, customProperties)};
         }
 
         * + span,
         * + svg {
-          margin-left: ${vars.spacingXs};
+          margin-left: ${customProperties.spacingXs};
         }
 
         ${!props.isDisabled
@@ -160,10 +152,10 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
             &:hover,
             &:focus {
               span {
-                color: ${getTextColor(props.tone, true, overwrittenVars)};
+                color: ${getTextColor(props.tone, true, customProperties)};
               }
               svg * {
-                fill: ${getTextColor(props.tone, true, overwrittenVars)};
+                fill: ${getTextColor(props.tone, true, customProperties)};
               }
             }`
           : ''}

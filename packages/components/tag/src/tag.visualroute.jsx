@@ -1,5 +1,5 @@
-import { ThemeProvider } from '@emotion/react';
 import { Tag } from '@commercetools-frontend/ui-kit';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../../../test/percy';
 
 const longText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et
@@ -13,7 +13,7 @@ export const routePath = '/tag';
 
 const basePropsToList = ['type', 'horizontalConstraint', 'isDisabled'];
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="Normal">
       <Tag type="normal">Tag</Tag>
@@ -70,13 +70,13 @@ export const component = ({ themes }) => (
         {longText}
       </Tag>
     </Spec>
-    <ThemeProvider
-      theme={{ ...themes.darkTheme, colorNeutral95: 'rgba(0,0,0,0.05)' }}
-    >
-      <Spec label="with dark theme">
-        <Tag type="normal">Tag</Tag>
-      </Spec>
-    </ThemeProvider>
+
+    <Spec label="with dark theme" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtDark">
+        <Tag type="normal">Tag</Tag>;
+      </ThemeProvider>
+    </Spec>
+
     <Spec label="Normal - with to" propsToList={[...basePropsToList, 'to']}>
       <Tag type="normal" to="foo/bar">
         Tag
@@ -167,17 +167,17 @@ export const component = ({ themes }) => (
         {longText}
       </Tag>
     </Spec>
-    <ThemeProvider
-      theme={{ ...themes.darkTheme, colorNeutral95: 'rgba(0,0,0,0.05)' }}
+
+    <Spec
+      label="Dark theme - with to"
+      propsToList={[...basePropsToList, 'to']}
+      theme="vrtDark"
     >
-      <Spec
-        label="Dark theme - with to"
-        propsToList={[...basePropsToList, 'to']}
-      >
+      <ThemeProvider scope="local" theme="vrtDark">
         <Tag type="normal" to="foo/bar">
           Tag
         </Tag>
-      </Spec>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Spec>
   </Suite>
 );

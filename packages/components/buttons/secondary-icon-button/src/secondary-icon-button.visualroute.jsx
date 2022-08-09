@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 import {
   InformationIcon,
   SecondaryIconButton,
@@ -7,7 +7,7 @@ import { Suite, Spec } from '../../../../../test/percy';
 
 export const routePath = '/secondary-icon-button';
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="regular">
       <SecondaryIconButton
@@ -24,15 +24,19 @@ export const component = ({ themes }) => (
         isDisabled={true}
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (dark) theme">
+    <Spec
+      label="with custom (dark) theme"
+      theme="vrtDark"
+      listPropsOfNestedChild
+    >
+      <ThemeProvider scope="local" theme="vrtDark">
         <SecondaryIconButton
           icon={<InformationIcon />}
           label="A label text"
           onClick={() => {}}
         />
-      </Spec>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Spec>
     <Spec label="color - solid">
       <SecondaryIconButton
         icon={<InformationIcon />}

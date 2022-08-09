@@ -12,7 +12,7 @@ import {
   type Ref,
   type FocusEventHandler,
 } from 'react';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
 import { customProperties } from '@commercetools-uikit/design-system';
@@ -191,8 +191,6 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
     props.error ||
     props.warning;
 
-  const theme = useTheme();
-
   return (
     <CollapsibleMotion
       minHeight={COLLAPSED_HEIGHT}
@@ -218,7 +216,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                 value={props.value}
                 onChange={props.onChange}
               >
-                <EditorLanguageLabel htmlFor={props.id} theme={theme}>
+                <EditorLanguageLabel htmlFor={props.id}>
                   {/* FIXME: add proper tone for disabled when tones are refactored */}
                   <Text.Detail tone="secondary">
                     {props.language.toUpperCase()}

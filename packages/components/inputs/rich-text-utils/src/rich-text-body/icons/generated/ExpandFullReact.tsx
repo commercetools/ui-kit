@@ -3,9 +3,8 @@
 // Original SVG file: src/rich-text-body/icons/svg/expand-full.react.svg
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { Theme } from '@emotion/react';
 import { warning } from '@commercetools-uikit/utils';
-import { css, ClassNames, useTheme } from '@emotion/react';
+import { css, ClassNames } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 export type Props = {
   color?:
@@ -72,42 +71,41 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const getColor = (color: Props['color'], theme: Theme) => {
+const getColor = (color: Props['color']) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme };
   let iconColor;
 
   switch (color) {
     case 'solid':
-      iconColor = overwrittenVars.colorSolid;
+      iconColor = vars.colorSolid;
       break;
 
     case 'neutral60':
-      iconColor = overwrittenVars.colorNeutral60;
+      iconColor = vars.colorNeutral60;
       break;
 
     case 'surface':
-      iconColor = overwrittenVars.colorSurface;
+      iconColor = vars.colorSurface;
       break;
 
     case 'info':
-      iconColor = overwrittenVars.colorInfo;
+      iconColor = vars.colorInfo;
       break;
 
     case 'primary':
-      iconColor = overwrittenVars.colorPrimary;
+      iconColor = vars.colorPrimary;
       break;
 
     case 'primary40':
-      iconColor = overwrittenVars.colorPrimary40;
+      iconColor = vars.colorPrimary40;
       break;
 
     case 'warning':
-      iconColor = overwrittenVars.colorWarning;
+      iconColor = vars.colorWarning;
       break;
 
     case 'error':
-      iconColor = overwrittenVars.colorError;
+      iconColor = vars.colorError;
       break;
 
     default:
@@ -125,9 +123,9 @@ const getColor = (color: Props['color'], theme: Theme) => {
   return iconColor;
 };
 
-export const getIconStyles = (props: Props, theme: Theme) => css`
+export const getIconStyles = (props: Props) => css`
   *:not([fill='none']) {
-    fill: ${getColor(props.color, theme)};
+    fill: ${getColor(props.color)};
   }
   &,
   image {
@@ -154,19 +152,13 @@ const SvgExpandFull = (props: SVGProps) => (
 
 SvgExpandFull.displayName = 'SvgExpandFull';
 
-const ExpandFullIcon = (props: Props) => {
-  const theme = useTheme();
-  return (
-    <ClassNames>
-      {({ css: createClass }) => (
-        <SvgExpandFull
-          {...props}
-          className={createClass(getIconStyles(props, theme))}
-        />
-      )}
-    </ClassNames>
-  );
-};
+const ExpandFullIcon = (props: Props) => (
+  <ClassNames>
+    {({ css: createClass }) => (
+      <SvgExpandFull {...props} className={createClass(getIconStyles(props))} />
+    )}
+  </ClassNames>
+);
 
 ExpandFullIcon.displayName = 'ExpandFullIcon';
 export default ExpandFullIcon;

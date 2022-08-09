@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import { ThemeProvider } from '@emotion/react';
 import {
   customProperties,
   themesNames,
-  ThemeProvider as CssVariablesThemeProvider,
+  ThemeProvider,
   useTheme,
 } from '../../../design-system';
 
@@ -29,10 +28,10 @@ const ThemeToggler = (props) => {
 
 const ThemeWrapper = (props) => {
   return (
-    <CssVariablesThemeProvider theme={defaultThemeName}>
+    <ThemeProvider theme={defaultThemeName}>
       <ThemeToggler theme={props.name} />
-      <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
-    </CssVariablesThemeProvider>
+      {props.children}
+    </ThemeProvider>
   );
 };
 

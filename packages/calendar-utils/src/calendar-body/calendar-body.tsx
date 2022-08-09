@@ -4,7 +4,7 @@ import {
   type FocusEventHandler,
   type KeyboardEvent,
 } from 'react';
-import { type Theme, useTheme } from '@emotion/react';
+import type { Theme } from '@emotion/react';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -21,17 +21,16 @@ export type TClearSection = {
   hasError?: boolean;
   hasWarning?: boolean;
   onClear?: () => void;
+  /** @deprecated */
   theme?: Theme;
   isFocused?: boolean;
   isOpen?: boolean;
 };
 
 export const ClearSection = (props: TClearSection) => {
-  const theme = useTheme();
-
   return (
     <AccessibleButton
-      css={getClearSectionStyles(theme)}
+      css={getClearSectionStyles()}
       label="clear"
       onClick={props.onClear}
       aria-label="clear"
@@ -74,6 +73,7 @@ export type TCalendarBody = {
   hasError?: boolean;
   onClear?: () => void;
   placeholder?: string;
+  /** @deprecated */
   theme?: Theme;
 };
 
@@ -83,7 +83,6 @@ const defaultProps: Pick<TCalendarBody, 'isClearable'> = {
 
 export const CalendarBody = (props: TCalendarBody) => {
   const [isFocused, toggleIsFocused] = useToggleState(false);
-  const theme = useTheme();
 
   const onInputFocus = props.inputProps?.onFocus;
 
@@ -129,13 +128,13 @@ export const CalendarBody = (props: TCalendarBody) => {
 
   return (
     <Inline alignItems="center">
-      <div css={getInputContainerStyles(props, { isFocused }, theme)}>
+      <div css={getInputContainerStyles(props, { isFocused })}>
         <input
           ref={props.inputRef}
           {...props.inputProps}
           disabled={props.isDisabled}
           readOnly={props.isReadOnly}
-          css={getDateTimeInputStyles(props, theme)}
+          css={getDateTimeInputStyles(props)}
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
           aria-readonly={props.isReadOnly}
@@ -151,7 +150,7 @@ export const CalendarBody = (props: TCalendarBody) => {
         )}
         <button
           type="button"
-          css={getCalendarIconContainerStyles(props, { isFocused }, theme)}
+          css={getCalendarIconContainerStyles(props, { isFocused })}
           {...props.toggleButtonProps}
           onFocus={handleToggleFocus}
           onBlur={handleToggleBlur}

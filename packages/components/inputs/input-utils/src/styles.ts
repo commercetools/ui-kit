@@ -1,13 +1,8 @@
-import type { Theme } from '@emotion/react';
 import { css } from '@emotion/react';
 import {
   customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
-
-type TExtendedTheme = {
-  [key: string]: string;
-} & Theme;
 
 type TInputProps = {
   isDisabled?: boolean;
@@ -18,7 +13,10 @@ type TInputProps = {
   readOnly?: boolean;
 };
 
-const getInputBorderColor = (vars: TExtendedTheme, props: TInputProps) => {
+const getInputBorderColor = (
+  vars: typeof customProperties,
+  props: TInputProps
+) => {
   if (props.isDisabled || props.disabled) {
     return vars[designTokens.borderColorForInputWhenDisabled];
   }
@@ -34,7 +32,10 @@ const getInputBorderColor = (vars: TExtendedTheme, props: TInputProps) => {
   return vars[designTokens.borderColorForInput];
 };
 
-const getInputFontColor = (vars: TExtendedTheme, props: TInputProps) => {
+const getInputFontColor = (
+  vars: typeof customProperties,
+  props: TInputProps
+) => {
   if (props.isDisabled || props.disabled) {
     return vars[designTokens.fontColorForInputWhenDisabled];
   }
@@ -50,50 +51,48 @@ const getInputFontColor = (vars: TExtendedTheme, props: TInputProps) => {
   return vars[designTokens.fontColorForInput];
 };
 
-const getInputStyles = (props: TInputProps, theme?: Theme) => {
-  const vars: TExtendedTheme = {
-    ...customProperties,
-    ...theme,
-  };
-
+const getInputStyles = (props: TInputProps) => {
   return css`
     appearance: none;
     background-color: ${props.isDisabled || props.disabled
-      ? vars[designTokens.backgroundColorForInputWhenDisabled]
-      : vars[designTokens.backgroundColorForInput]};
-    border: 1px solid ${getInputBorderColor(vars, props)};
-    border-radius: ${vars[designTokens.borderRadiusForInput]};
+      ? customProperties[designTokens.backgroundColorForInputWhenDisabled]
+      : customProperties[designTokens.backgroundColorForInput]};
+    border: 1px solid ${getInputBorderColor(customProperties, props)};
+    border-radius: ${customProperties[designTokens.borderRadiusForInput]};
     box-sizing: border-box;
-    color: ${getInputFontColor(vars, props)};
+    color: ${getInputFontColor(customProperties, props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     display: flex;
     flex: 1;
     font-family: inherit;
-    font-size: ${vars[designTokens.fontSizeForInput]};
-    height: ${vars.sizeHeightInput};
-    min-height: ${vars.sizeHeightInput};
+    font-size: ${customProperties[designTokens.fontSizeForInput]};
+    height: ${customProperties.sizeHeightInput};
+    min-height: ${customProperties.sizeHeightInput};
     opacity: ${props.isDisabled || props.disabled
       ? '1'
       : 'unset'}; /* fix for mobile safari */
     outline: none;
     overflow: hidden;
-    padding: 0 ${vars.spacingS};
-    transition: border-color ${vars.transitionStandard},
-      background-color ${vars.transitionStandard},
-      color ${vars.transitionStandard}, box-shadow ${vars.transitionStandard};
+    padding: 0 ${customProperties.spacingS};
+    transition: border-color ${customProperties.transitionStandard},
+      background-color ${customProperties.transitionStandard},
+      color ${customProperties.transitionStandard},
+      box-shadow ${customProperties.transitionStandard};
     width: 100%;
 
     &::placeholder {
-      color: ${vars[designTokens.placeholderFontColorForInput]};
+      color: ${customProperties[designTokens.placeholderFontColorForInput]};
     }
     :active,
     :focus,
     :hover:not(:disabled):not(:read-only) {
-      border-color: ${vars[designTokens.borderColorForInputWhenFocused]};
+      border-color: ${customProperties[
+        designTokens.borderColorForInputWhenFocused
+      ]};
     }
     :focus {
       box-shadow: inset 0 0 0 2px
-        ${vars[designTokens.borderColorForInputWhenFocused]};
+        ${customProperties[designTokens.borderColorForInputWhenFocused]};
     }
   `;
 };

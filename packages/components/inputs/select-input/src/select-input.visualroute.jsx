@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Route, Switch } from 'react-router-dom';
-import { ThemeProvider } from '@emotion/react';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
+import { useTheme } from '@commercetools-uikit/design-system';
+import { useLayoutEffect } from 'react';
 import { Suite, Spec } from '../../../../../test/percy';
 import { WorldIcon } from '../../../icons';
 
@@ -29,6 +30,22 @@ const optionsWithGroups = [
 const value = 'one';
 
 export const routePath = '/select-input';
+
+const DarkSelectInput = (props) => {
+  const { changeTheme } = useTheme();
+  useLayoutEffect(() => {
+    changeTheme('vrtDark');
+  }, [changeTheme]);
+
+  return (
+    <SelectInput
+      value={value}
+      onChange={() => {}}
+      options={options}
+      horizontalConstraint={7}
+    />
+  );
+};
 
 const DefaultRoute = ({ themes }) => (
   <Suite>
@@ -114,16 +131,9 @@ const DefaultRoute = ({ themes }) => (
         horizontalConstraint={7}
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (dark) theme">
-        <SelectInput
-          value={value}
-          onChange={() => {}}
-          options={options}
-          horizontalConstraint={7}
-        />
-      </Spec>
-    </ThemeProvider>
+    <Spec label="with custom (dark) theme" theme="vrtDark">
+      <DarkSelectInput />
+    </Spec>
     <Spec label="when read-only">
       <SelectInput
         value={value}
@@ -178,10 +188,15 @@ const OpenRoute = () => (
   </Suite>
 );
 
-const OpenRouteDarkTheme = ({ themes }) => (
-  <Suite>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (dark) theme">
+const OpenRouteDarkTheme = ({ themes }) => {
+  const { changeTheme } = useTheme();
+  useLayoutEffect(() => {
+    changeTheme('vrtDark');
+  }, [changeTheme]);
+
+  return (
+    <Suite>
+      <Spec label="with custom (dark) theme" theme="vrtDark">
         <SelectInput
           id="select-input"
           value={value}
@@ -190,9 +205,9 @@ const OpenRouteDarkTheme = ({ themes }) => (
           horizontalConstraint={7}
         />
       </Spec>
-    </ThemeProvider>
-  </Suite>
-);
+    </Suite>
+  );
+};
 
 const OpenRouteWithOptionGroups = () => (
   <Suite>
@@ -223,12 +238,12 @@ const OpenRouteWithOptionGroupsAndDivider = () => (
   </Suite>
 );
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Switch>
     <Route path={`${routePath}/open`} component={OpenRoute} />
     <Route
       path={`${routePath}/open-dark`}
-      render={() => <OpenRouteDarkTheme themes={themes} />}
+      render={() => <OpenRouteDarkTheme />}
     />
     <Route
       path={`${routePath}/open-with-option-groups`}

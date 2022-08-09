@@ -1,6 +1,6 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import { customProperties as vars } from '@commercetools-uikit/design-system';
 import {
   createSequentialId,
@@ -118,7 +118,6 @@ const CheckboxInput = (props: TCheckboxProps) => {
   // We generate an id in case no id is provided by the parent to attach the
   // label to the input component.
   const id = props.id || sequentialId();
-  const theme = useTheme();
   return (
     <Label
       htmlFor={id}
@@ -139,7 +138,7 @@ const CheckboxInput = (props: TCheckboxProps) => {
         {...filterDataAttributes(props)}
         {...filterAriaAttributes(props)}
       />
-      <div css={getCheckboxWrapperStyles(props, theme)}>
+      <div css={getCheckboxWrapperStyles(props)}>
         {(() => {
           if (props.isIndeterminate) return <IndeterminateIcon size="medium" />;
           if (props.isChecked) return <CheckedIcon size="medium" />;
