@@ -4,7 +4,7 @@ import {
   useCallback,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -176,7 +176,6 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
     },
     [props.language, onChange]
   );
-  const theme = useTheme();
 
   if (!props.isReadOnly) {
     warning(
@@ -194,7 +193,7 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
         display: flex;
       `}
     >
-      <label htmlFor={props.id} css={getLanguageLabelStyles(props, theme)}>
+      <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
         {/* FIXME: add proper tone for disabled when tones are refactored */}
         <Text.Detail tone="secondary">
           {props.language.toUpperCase()}

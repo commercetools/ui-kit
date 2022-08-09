@@ -1,4 +1,4 @@
-import { css, type Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 import {
   customProperties as vars,
   designTokens,
@@ -17,30 +17,18 @@ const getLocalizedInputStyles = () => [
   `,
 ];
 
-const getLanguageLabelStyles = (_props: unknown, theme: Theme) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const getLanguageLabelStyles = (_props: unknown) => {
   return css`
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
     box-sizing: border-box;
-    color: ${overwrittenVars[designTokens.fontColorForInputWhenDisabled]};
+    color: ${vars[designTokens.fontColorForInputWhenDisabled]};
     height: ${vars.sizeHeightInput};
     line-height: ${vars.sizeHeightInput};
-    background-color: ${overwrittenVars[
-      designTokens.backgroundColorForInputWhenDisabled
-    ]};
-    border-top-left-radius: ${overwrittenVars[
-      designTokens.borderRadiusForInput
-    ]};
-    border-bottom-left-radius: ${overwrittenVars[
-      designTokens.borderRadiusForInput
-    ]};
-    border: 1px ${overwrittenVars[designTokens.borderColorForInputWhenDisabled]}
-      solid;
+    background-color: ${vars[designTokens.backgroundColorForInputWhenDisabled]};
+    border-top-left-radius: ${vars[designTokens.borderRadiusForInput]};
+    border-bottom-left-radius: ${vars[designTokens.borderRadiusForInput]};
+    border: 1px ${vars[designTokens.borderColorForInputWhenDisabled]} solid;
     padding: 0 ${vars.spacingS};
     transition: border-color ${vars.transitionStandard},
       background-color ${vars.transitionStandard},

@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
-import { ThemeProvider } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import {
+  customProperties,
+  ThemeProvider,
+} from '@commercetools-uikit/design-system';
 import * as icons from '@commercetools-uikit/icons';
 import InlineSvg from '@commercetools-uikit/icons/inline-svg';
 import Text from '@commercetools-uikit/text';
@@ -59,7 +61,7 @@ const renderIcon = (iconName, color, size) => {
   );
 };
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Switch>
     <Route path={routePath} exact>
       <ul>
@@ -97,17 +99,18 @@ export const component = ({ themes }) => (
     ))}
     <Route exact path={`${routePath}/theme`}>
       <Suite>
-        <ThemeProvider theme={themes.darkTheme}>
-          {colors.map((color) => (
-            <Spec
-              key={color}
-              label={`Themed Icons - Color: ${color}`}
-              omitPropsList
-            >
+        {colors.map((color) => (
+          <Spec
+            key={color}
+            label={`Themed Icons - Color: ${color}`}
+            theme="vrtDark"
+            omitPropsList
+          >
+            <ThemeProvider scope="local" theme="vrtDark">
               <IconList>{renderIcon('ClockIcon', color, 'big')}</IconList>
-            </Spec>
-          ))}
-        </ThemeProvider>
+            </ThemeProvider>
+          </Spec>
+        ))}
       </Suite>
     </Route>
     <Route exact path={`${routePath}/inline-svg`}>

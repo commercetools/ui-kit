@@ -1,4 +1,4 @@
-import type { TFlatButtonProps, TExtendedTheme } from './flat-button';
+import type { TFlatButtonProps, CustomProperties } from './flat-button';
 
 export const getButtonIconColor = (
   props: Pick<TFlatButtonProps, 'isDisabled' | 'tone'>
@@ -13,17 +13,17 @@ export const getButtonIconColor = (
 export const getTextColor = (
   tone: TFlatButtonProps['tone'],
   isHover: boolean = false,
-  overwrittenVars: TExtendedTheme
+  customProperties: CustomProperties
 ): string => {
   switch (tone) {
     case 'primary':
       return isHover
-        ? overwrittenVars.colorPrimary25
-        : overwrittenVars.colorPrimary;
+        ? customProperties.colorPrimary25
+        : customProperties.colorPrimary;
     case 'secondary':
-      return overwrittenVars.colorSolid;
+      return customProperties.colorSolid;
     case 'inverted':
-      return overwrittenVars.fontColorForTextWhenInverted;
+      return customProperties.fontColorForTextWhenInverted;
     default:
       return 'inherit';
   }

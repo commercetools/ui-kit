@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
-import { useTheme } from '@emotion/react';
 import {
   components as defaultComponents,
   type ActionMeta,
@@ -349,7 +348,6 @@ const defaultProps: Pick<
 
 const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
   const intl = useIntl();
-  const theme = useTheme();
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
@@ -399,20 +397,17 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
           }
           menuIsOpen={props.isReadOnly ? false : undefined}
           styles={
-            createSelectStyles(
-              {
-                hasWarning: props.hasWarning,
-                hasError: props.hasError,
-                showOptionGroupDivider: props.showOptionGroupDivider,
-                menuPortalZIndex: props.menuPortalZIndex,
-                isDisabled: props.isDisabled,
-                isReadOnly: props.isReadOnly,
-                iconLeft: props.iconLeft,
-                isMulti: props.isMulti,
-                hasValue: !isEmpty(props.value),
-              },
-              theme
-            ) as ReactSelectAsyncCreatableProps['styles']
+            createSelectStyles({
+              hasWarning: props.hasWarning,
+              hasError: props.hasError,
+              showOptionGroupDivider: props.showOptionGroupDivider,
+              menuPortalZIndex: props.menuPortalZIndex,
+              isDisabled: props.isDisabled,
+              isReadOnly: props.isReadOnly,
+              iconLeft: props.iconLeft,
+              isMulti: props.isMulti,
+              hasValue: !isEmpty(props.value),
+            }) as ReactSelectAsyncCreatableProps['styles']
           }
           filterOption={props.filterOption}
           // react-select uses "id" (for the container) and "inputId" (for the input),

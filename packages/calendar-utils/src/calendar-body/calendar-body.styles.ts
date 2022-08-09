@@ -1,4 +1,4 @@
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 import { customProperties } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 import type { TCalendarBody } from './calendar-body';
@@ -7,179 +7,148 @@ import type { TCalendarBody } from './calendar-body';
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getClearSectionStyles = (theme: Theme) => {
-  const vars = {
-    ...customProperties,
-    ...theme,
-  };
-
+const getClearSectionStyles = () => {
   return css`
     align-items: center;
     box-sizing: border-box;
     display: flex;
-    margin-right: ${vars.spacingXs};
+    margin-right: ${customProperties.spacingXs};
     cursor: pointer;
-    transition: color ${vars.transitionStandard},
-      border-color ${vars.transitionStandard};
+    transition: color ${customProperties.transitionStandard},
+      border-color ${customProperties.transitionStandard};
 
     &:hover svg * {
-      fill: ${vars.colorWarning};
+      fill: ${customProperties.colorWarning};
     }
   `;
-};
-
-type TExtendedTheme = Theme & {
-  [key: string]: string;
 };
 
 type TState = {
   isFocused: boolean;
 };
 
-const getIconBorderColor = (
-  vars: TExtendedTheme,
-  props: TCalendarBody,
-  state: TState
-) => {
+const getIconBorderColor = (props: TCalendarBody, state: TState) => {
   if (props.isDisabled) {
-    return vars.borderColorForInputWhenDisabled;
+    return customProperties.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.borderColorForInputWhenError;
+    return customProperties.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return vars.borderColorForInputWhenWarning;
+    return customProperties.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return vars.borderColorForInputWhenReadonly;
+    return customProperties.borderColorForInputWhenReadonly;
   }
   if (props.isOpen || state.isFocused) {
-    return vars.borderColorForInputWhenFocused;
+    return customProperties.borderColorForInputWhenFocused;
   }
-  return vars.borderColorForInput;
+  return customProperties.borderColorForInput;
 };
 
-const getIconFontColor = (vars: TExtendedTheme, props: TCalendarBody) => {
+const getIconFontColor = (props: TCalendarBody) => {
   if (props.isDisabled) {
-    return vars.fontColorForInputWhenDisabled;
+    return customProperties.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.fontColorForInputWhenError;
+    return customProperties.fontColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return vars.fontColorForInputWhenWarning;
+    return customProperties.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return vars.fontColorForInputWhenReadonly;
+    return customProperties.fontColorForInputWhenReadonly;
   }
   return 'initial';
 };
 
 const getCalendarIconContainerStyles = (
   props: TCalendarBody,
-  state: TState,
-  theme: Theme
+  state: TState
 ) => {
-  const vars = {
-    ...customProperties,
-    ...theme,
-  };
-
   return css`
     align-items: center;
     box-sizing: border-box;
     background: none;
     border: 0;
-    border-left: 1px solid ${vars.borderColorForInput};
-    border-top-right-radius: ${vars.borderRadiusForInput};
-    border-bottom-right-radius: ${vars.borderRadiusForInput};
-    border-color: ${getIconBorderColor(vars, props, state)};
-    color: ${getIconFontColor(vars, props)};
+    border-left: 1px solid ${customProperties.borderColorForInput};
+    border-top-right-radius: ${customProperties.borderRadiusForInput};
+    border-bottom-right-radius: ${customProperties.borderRadiusForInput};
+    border-color: ${getIconBorderColor(props, state)};
+    color: ${getIconFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     height: 100%;
     display: flex;
-    padding: ${vars.spacingXs};
+    padding: ${customProperties.spacingXs};
     outline: 0;
-    transition: color ${vars.transitionStandard},
-      border-color ${vars.transitionStandard};
+    transition: color ${customProperties.transitionStandard},
+      border-color ${customProperties.transitionStandard};
     &:active,
     &:hover:not(:disabled)&:not(:read-only),
     &:focus {
-      border-color: ${vars.borderColorForInputWhenFocused};
+      border-color: ${customProperties.borderColorForInputWhenFocused};
     }
   `;
 };
 
-const getInputBorderColor = (
-  vars: TExtendedTheme,
-  props: TCalendarBody,
-  state: TState
-) => {
+const getInputBorderColor = (props: TCalendarBody, state: TState) => {
   if (props.isDisabled) {
-    return vars.borderColorForInputWhenDisabled;
+    return customProperties.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.borderColorForInputWhenError;
+    return customProperties.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return vars.borderColorForInputWhenWarning;
+    return customProperties.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return vars.borderColorForInputWhenReadonly;
+    return customProperties.borderColorForInputWhenReadonly;
   }
   if ((props.isOpen || state.isFocused) && !props.isReadOnly) {
-    return vars.borderColorForInputWhenFocused;
+    return customProperties.borderColorForInputWhenFocused;
   }
-  return vars.borderColorForInput;
+  return customProperties.borderColorForInput;
 };
-const getInputFontColor = (vars: TExtendedTheme, props: TCalendarBody) => {
+const getInputFontColor = (props: TCalendarBody) => {
   if (props.isDisabled) {
-    return vars.fontColorForInputWhenDisabled;
+    return customProperties.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.fontColorForInputWhenError;
+    return customProperties.fontColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return vars.fontColorForInputWhenWarning;
+    return customProperties.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return vars.fontColorForInputWhenReadonly;
+    return customProperties.fontColorForInputWhenReadonly;
   }
-  return vars.fontColorForInput;
+  return customProperties.fontColorForInput;
 };
-const getInputContainerStyles = (
-  props: TCalendarBody,
-  state: TState,
-  theme: Theme
-) => {
-  const vars = {
-    ...customProperties,
-    ...theme,
-  };
-
+const getInputContainerStyles = (props: TCalendarBody, state: TState) => {
   return css`
     appearance: none;
     background-color: ${props.isDisabled
-      ? vars.backgroundColorForInputWhenDisabled
-      : vars.backgroundColorForInput};
-    border: 1px solid ${getInputBorderColor(vars, props, state)};
-    border-radius: ${vars.borderRadiusForInput};
+      ? customProperties.backgroundColorForInputWhenDisabled
+      : customProperties.backgroundColorForInput};
+    border: 1px solid ${getInputBorderColor(props, state)};
+    border-radius: ${customProperties.borderRadiusForInput};
     box-sizing: border-box;
-    color: ${getInputFontColor(vars, props)};
+    color: ${getInputFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     width: 100%;
-    height: ${vars.sizeHeightInput};
+    height: ${customProperties.sizeHeightInput};
     align-items: center;
     display: flex;
-    font-size: ${vars.fontSizeDefault};
+    font-size: ${customProperties.fontSizeDefault};
     font-family: inherit;
-    min-width: ${vars.constraint5};
-    transition: border-color ${vars.transitionStandard},
-      box-shadow ${vars.transitionStandard};
+    min-width: ${customProperties.constraint5};
+    transition: border-color ${customProperties.transitionStandard},
+      box-shadow ${customProperties.transitionStandard};
 
     &:focus-within {
-      border-color: ${vars.borderColorForInputWhenFocused};
-      box-shadow: inset 0 0 0 2px ${vars.borderColorForInputWhenFocused};
+      border-color: ${customProperties.borderColorForInputWhenFocused};
+      box-shadow: inset 0 0 0 2px
+        ${customProperties.borderColorForInputWhenFocused};
     }
     &:focus,
     &:hover {
@@ -189,14 +158,14 @@ const getInputContainerStyles = (
       props.isReadOnly ||
       ((props.isOpen || state.isFocused) && !props.isReadOnly)
         ? ''
-        : vars.borderColorForInputWhenFocused};
+        : customProperties.borderColorForInputWhenFocused};
     }
   `;
 };
 
-const getDateTimeInputStyles = (props: TCalendarBody, theme: Theme) => {
+const getDateTimeInputStyles = (props: TCalendarBody) => {
   const baseStyles = [
-    getInputStyles(props, theme),
+    getInputStyles(props),
     css`
       border: none;
       background: none;

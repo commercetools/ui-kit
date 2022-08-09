@@ -1,5 +1,5 @@
-import { ThemeProvider } from '@emotion/react';
 import { NumberInput } from '@commercetools-frontend/ui-kit';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../../../../test/percy';
 
 const value = '18';
@@ -7,7 +7,7 @@ const value = '18';
 export const routePath = '/number-input';
 
 // eslint-disable-next-line react/prop-types
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="minimal">
       <NumberInput value={value} onChange={() => {}} horizontalConstraint={7} />
@@ -61,14 +61,14 @@ export const component = ({ themes }) => (
         hasWarning={true}
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (inverted) theme">
+    <Spec label="with custom (inverted) theme" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtDark">
         <NumberInput
           value={value}
           onChange={() => {}}
           horizontalConstraint={7}
         />
-      </Spec>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Spec>
   </Suite>
 );

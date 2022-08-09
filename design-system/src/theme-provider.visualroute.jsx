@@ -1,4 +1,8 @@
-import { ThemeProvider, useTheme, customProperties } from '@commercetools-uikit/design-system';
+import {
+  ThemeProvider,
+  useTheme,
+  customProperties,
+} from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../test/percy';
 
 export const routePath = '/theme-provider';

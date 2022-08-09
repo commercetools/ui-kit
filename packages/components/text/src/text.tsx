@@ -2,7 +2,6 @@ import type { MessageDescriptor } from 'react-intl';
 
 import { Children, ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   bodyStyles,
@@ -78,8 +77,6 @@ export type THeadlineProps = {
   TBasicHeadlineProps;
 
 const Headline = (props: THeadlineProps) => {
-  const theme = useTheme();
-
   warnIfMissingTitle(props, 'TextHeadline');
   warnIfMissingContent(props, 'TextHeadline');
 
@@ -93,7 +90,7 @@ const Headline = (props: THeadlineProps) => {
   }
   return (
     <HeadlineElement
-      css={headlineStyles(props, theme)}
+      css={headlineStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -112,8 +109,6 @@ export type TSubheadlineProps = {
   TBasicHeadlineProps;
 
 const Subheadline = (props: TSubheadlineProps) => {
-  const theme = useTheme();
-
   warnIfMissingTitle(props, 'TextSubheadline');
   warnIfMissingContent(props, 'TextSubheadline');
 
@@ -129,7 +124,7 @@ const Subheadline = (props: TSubheadlineProps) => {
   return (
     <SubheadlineElement
       title={props.title}
-      css={subheadlineStyles(props, theme)}
+      css={subheadlineStyles(props)}
       {...filterDataAttributes(props)}
     >
       <Text intlMessage={props.intlMessage}>{props.children}</Text>
@@ -141,12 +136,11 @@ Subheadline.displayName = 'TextSubheadline';
 export type TWrapProps = TBasicTextProps & TBasicHeadlineProps;
 
 const Wrap = (props: TWrapProps) => {
-  const theme = useTheme();
   warnIfMissingTitle(props, 'TextWrap');
   warnIfMissingContent(props, 'TextWrap');
   return (
     <div
-      css={wrapStyles(theme)}
+      css={wrapStyles()}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -172,8 +166,6 @@ export type TBodyProps = {
   TBasicHeadlineProps;
 
 const Body = (props: TBodyProps) => {
-  const theme = useTheme();
-
   warnIfMissingTitle(props, 'TextBody');
   warnIfMissingContent(props, 'TextBody');
 
@@ -181,7 +173,7 @@ const Body = (props: TBodyProps) => {
     const BodyElement = props.as;
     return (
       <BodyElement
-        css={bodyStyles(props, theme)}
+        css={bodyStyles(props)}
         title={props.title}
         {...filterDataAttributes(props)}
       >
@@ -192,7 +184,7 @@ const Body = (props: TBodyProps) => {
 
   return (
     <p
-      css={bodyStyles(props, theme)}
+      css={bodyStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
     >
@@ -220,7 +212,6 @@ export type TDetailProps = {
   TBasicHeadlineProps;
 
 const Detail = (props: TDetailProps) => {
-  const theme = useTheme();
   warnIfMissingTitle(props, 'TextDetail');
   warnIfMissingContent(props, 'TextDetail');
   if (props.as) {
@@ -228,7 +219,7 @@ const Detail = (props: TDetailProps) => {
     return (
       <TextDetailElement
         id={props.id}
-        css={detailStyles(props, theme)}
+        css={detailStyles(props)}
         title={props.title}
         {...filterDataAttributes(props)}
       >
@@ -239,7 +230,7 @@ const Detail = (props: TDetailProps) => {
 
   return (
     <div
-      css={detailStyles(props, theme)}
+      css={detailStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
     >

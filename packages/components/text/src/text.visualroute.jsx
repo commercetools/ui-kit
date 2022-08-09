@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { ThemeProvider } from '@emotion/react';
 import { Text } from '@commercetools-frontend/ui-kit';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../../../test/percy';
 
 const NarrowBox = styled.div`
@@ -11,7 +11,7 @@ const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
 
 export const routePath = '/text';
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="Headline - h1">
       <Text.Headline as="h1">{'Title H1'}</Text.Headline>
@@ -108,11 +108,11 @@ export const component = ({ themes }) => (
       <Text.Body tone="negative">Body text negative</Text.Body>
     </Spec>
     <NarrowBox>
-      <ThemeProvider theme={themes.darkTheme}>
-        <Spec label="Body - tone - inverted">
-          <Text.Body tone="inverted">Body text inverted</Text.Body>
-        </Spec>
-      </ThemeProvider>
+      <Spec label="Body - tone - inverted" theme="vrtDark">
+        <ThemeProvider scope="local" theme="vrtDark">
+          <Text.Body tone="inverted">Body text inverted</Text.Body>;
+        </ThemeProvider>
+      </Spec>
     </NarrowBox>
     <NarrowBox>
       <Spec label="Body - truncate">
@@ -150,11 +150,11 @@ export const component = ({ themes }) => (
       <Text.Detail tone="negative">Detail text negative</Text.Detail>
     </Spec>
     <NarrowBox>
-      <ThemeProvider theme={themes.darkTheme}>
-        <Spec label="Detail - tone - inverted">
-          <Text.Detail tone="inverted">Detail text inverted</Text.Detail>
-        </Spec>
-      </ThemeProvider>
+      <Spec label="Detail - tone - inverted">
+        <ThemeProvider scope="local" theme="vrtDark">
+          <Text.Detail tone="inverted">Detail text inverted</Text.Detail>;
+        </ThemeProvider>
+      </Spec>
     </NarrowBox>
     <NarrowBox>
       <Spec label="Detail - truncate">
@@ -193,25 +193,36 @@ export const component = ({ themes }) => (
     <Spec label="Detail (intl message)">
       <Text.Detail intlMessage={intlMessage} />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="Headline (dark theme)">
-        <Text.Headline as="h1">Dark theme</Text.Headline>
-      </Spec>
-      <Spec label="Subheadline (dark theme)">
-        <Text.Subheadline as="h4">Dark theme</Text.Subheadline>
-      </Spec>
-      <Spec label="Body (dark theme)">
-        <Text.Body>Dark theme</Text.Body>
-      </Spec>
-      <Spec label="Body as span element (dark theme)">
-        <Text.Body as="span">Dark theme</Text.Body>
-      </Spec>
-      <Spec label="Detail (dark theme)">
-        <Text.Detail>Dark theme</Text.Detail>
-      </Spec>
-      <Spec label="Wrap (dark theme)">
-        <Text.Wrap>Dark theme</Text.Wrap>
-      </Spec>
-    </ThemeProvider>
+
+    <Spec label="Headline (dark theme)" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtDark">
+        <Text.Headline as="h1">Dark theme</Text.Headline>;
+      </ThemeProvider>
+    </Spec>
+    <Spec label="Subheadline (dark theme)" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtDark">
+        <Text.Subheadline as="h4">Dark theme</Text.Subheadline>;
+      </ThemeProvider>
+    </Spec>
+    <Spec label="Body (dark theme)" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtDark">
+        <Text.Body>Dark theme</Text.Body>;
+      </ThemeProvider>
+    </Spec>
+    <Spec label="Body as span element (dark theme)" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtDark">
+        <Text.Body as="span">Dark theme</Text.Body>;
+      </ThemeProvider>
+    </Spec>
+    <Spec label="Detail (dark theme)" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtDark">
+        <Text.Detail>Dark theme</Text.Detail>;
+      </ThemeProvider>
+    </Spec>
+    <Spec label="Wrap (dark theme)" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtDark">
+        <Text.Wrap>Dark theme</Text.Wrap>;
+      </ThemeProvider>
+    </Spec>
   </Suite>
 );

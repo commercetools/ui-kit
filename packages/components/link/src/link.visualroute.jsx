@@ -1,17 +1,17 @@
 import { Link } from '@commercetools-frontend/ui-kit';
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/link';
 
 const intlMessage = { id: 'link', defaultMessage: 'Link' };
 
-const purpleTheme = {
+/* const purpleTheme = {
   colorPrimary: 'purple',
   colorPrimary25: 'deeppurple',
-};
+}; */
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="regular">
       <Link to="/">A label text</Link>
@@ -21,20 +21,20 @@ export const component = ({ themes }) => (
         A label text
       </Link>
     </Spec>
-    <ThemeProvider theme={purpleTheme}>
+    {/* <ThemeProvider theme={purpleTheme}>
       <Spec label="with custom theme">
         <Link to="/">A label text</Link>
       </Spec>
-    </ThemeProvider>
+    </ThemeProvider> */}
     <Spec label="intlMessage">
       <Link to="/" intlMessage={intlMessage} />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="tone - inverted">
+    <Spec label="tone - inverted" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtDark">
         <Link to="/" tone="inverted">
           An inverted label text
         </Link>
-      </Spec>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Spec>
   </Suite>
 );
