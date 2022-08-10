@@ -326,8 +326,8 @@ const normalizeReactProps = (
   return { [normalizedPropName]: componentPropsInfo };
 };
 
-const createSignatureLinkSuffix = (order = 0) => {
-  if (order === 0) return '';
+const createSignatureLinkSuffix = (order?: number) => {
+  if (!order) return ''; // empty string returned if readme is generated for one component, and in case of zero-indexed component when readme generated for multiple components
   return `-${order}`;
 };
 
