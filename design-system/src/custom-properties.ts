@@ -408,32 +408,4 @@ const customProperties = {
   standardInputHeight: 'var(--standard-input-height, 32px)',
 } as const;
 
-type ThemeName = keyof typeof themes;
-
-let _canUseCssVars: Boolean | null = null;
-const canUseCssVars = (): Boolean => {
-  if (_canUseCssVars === null) {
-    _canUseCssVars = !Boolean(
-      document.querySelector('meta[name="ui-kit-vrt-environment"]')
-    );
-  }
-  return _canUseCssVars;
-};
-const getCurrentTheme = () =>
-  (document
-    .querySelector<HTMLElement>('meta[name="ui-kit-vrt-environment"]')
-    ?.getAttribute('content') as ThemeName) || 'default';
-
-const proxyHandler = {
-  get: (
-    target: typeof customProperties,
-    name: keyof typeof customProperties
-  ) => {
-    if (canUseCssVars()) {
-      return target[name];
-    }
-    return themes[getCurrentTheme()][name];
-  },
-};
-
-export default new Proxy(customProperties, proxyHandler);
+export default customProperties;
