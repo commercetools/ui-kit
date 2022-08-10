@@ -268,13 +268,13 @@ export default Example;
 
 ### Properties
 
-| Props              | Type                                                         | Required | Default | Description                                                                                                       |
-| ------------------ | ------------------------------------------------------------ | :------: | ------- | ----------------------------------------------------------------------------------------------------------------- |
-| `topBar`           | `ReactNode`                                                  |          |         | A React node for rendering additional information within the table manager.                                       |
-| `onSettingsChange` | `Function`<br/>[See signature.](#signature-onSettingsChange) |          |         | A callback function, called when any of the properties of either display settings or column settings is modified. |
-| `displaySettings`  | `Object`<br/>[See signature.](#signature-displaySettings)    |          |         | The managed display settings of the table.                                                                        |
-| `columnManager`    | `Object`<br/>[See signature.](#signature-columnManager)      |          |         | The managed column settings of the table.                                                                         |
-| `managerTheme`     | `union`<br/>Possible values:<br/>`'light' , 'dark'`          |          |         | Sets the background theme of the Card that contains the settings                                                  |
+| Props              | Type                                                           | Required | Default | Description                                                                                                       |
+| ------------------ | -------------------------------------------------------------- | :------: | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| `topBar`           | `ReactNode`                                                    |          |         | A React node for rendering additional information within the table manager.                                       |
+| `onSettingsChange` | `Function`<br/>[See signature.](#signature-onSettingsChange-1) |          |         | A callback function, called when any of the properties of either display settings or column settings is modified. |
+| `displaySettings`  | `Object`<br/>[See signature.](#signature-displaySettings-1)    |          |         | The managed display settings of the table.                                                                        |
+| `columnManager`    | `Object`<br/>[See signature.](#signature-columnManager-1)      |          |         | The managed column settings of the table.                                                                         |
+| `managerTheme`     | `union`<br/>Possible values:<br/>`'light' , 'dark'`            |          |         | Sets the background theme of the Card that contains the settings                                                  |
 
 ### Signatures
 

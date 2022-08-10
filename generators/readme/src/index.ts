@@ -325,9 +325,19 @@ const normalizeReactProps = (
   }
   return { [normalizedPropName]: componentPropsInfo };
 };
+
+const createSignatureLinkSuffix = (order = 0) => {
+  if (order === 0) return '';
+  return `-${order}`;
+};
+
 const parsePropTypesToMarkdown = (
   componentPath: string,
-  options: { isTsx: boolean; hasManyComponents: boolean }
+  options: {
+    isTsx: boolean;
+    hasManyComponents: boolean;
+    order?: number;
+  }
 ): (PhrasingContent | BlockContent)[] => {
   const result = reactDocgen.parse(
     fs.readFileSync(componentPath, { encoding: 'utf8' }),
@@ -356,7 +366,6 @@ const parsePropTypesToMarkdown = (
   );
 
   const signatures: (PhrasingContent | BlockContent)[] = [];
-
   const tableBody = Object.entries(normalizedReactProps).map(
     ([propName, propInfo]) => {
       let propTypeNode: PhrasingContent[];
@@ -369,7 +378,12 @@ const parsePropTypesToMarkdown = (
                 propTypeNode = [
                   inlineCode('Object'),
                   html('<br/>'),
-                  link(`#signature-${propName}`, 'See signature.'),
+                  link(
+                    `#signature-${propName}${createSignatureLinkSuffix(
+                      options.order
+                    )}`,
+                    'See signature.'
+                  ),
                 ];
                 signatures.push(
                   ...[
@@ -387,7 +401,12 @@ const parsePropTypesToMarkdown = (
                 propTypeNode = [
                   inlineCode('Function'),
                   html('<br/>'),
-                  link(`#signature-${propName}`, 'See signature.'),
+                  link(
+                    `#signature-${propName}${createSignatureLinkSuffix(
+                      options.order
+                    )}`,
+                    'See signature.'
+                  ),
                 ];
                 signatures.push(
                   ...[
@@ -416,7 +435,12 @@ const parsePropTypesToMarkdown = (
               propTypeNode = [
                 inlineCode(`Array: ${propInfoType.raw.replace('\n', '')}`),
                 html('<br/>'),
-                link(`#signature-${propName}`, 'See signature.'),
+                link(
+                  `#signature-${propName}${createSignatureLinkSuffix(
+                    options.order
+                  )}`,
+                  'See signature.'
+                ),
               ];
               signatures.push(
                 ...[
@@ -470,7 +494,12 @@ const parsePropTypesToMarkdown = (
               ...(possibleSignatures.length > 0
                 ? [
                     html('<br/>'),
-                    link(`#signature-${propName}`, 'See signature.'),
+                    link(
+                      `#signature-${propName}${createSignatureLinkSuffix(
+                        options.order
+                      )}`,
+                      'See signature.'
+                    ),
                   ]
                 : []),
             ];
@@ -659,7 +688,7 @@ function readmeTransformer(packageFolderPath: string) {
 
       ...(hasCustomComponentsPath
         ? // Render components in a group, otherwise omit the nested heading.
-          paths.componentPaths.flatMap((componentPath) => {
+          paths.componentPaths.flatMap((componentPath, index) => {
             const [componentName] = path
               .basename(componentPath)
               .split(isTsx ? '.tsx' : '.js');
@@ -670,6 +699,7 @@ function readmeTransformer(packageFolderPath: string) {
               ...parsePropTypesToMarkdown(componentPath, {
                 isTsx,
                 hasManyComponents: true,
+                order: index,
               }),
             ];
           })
