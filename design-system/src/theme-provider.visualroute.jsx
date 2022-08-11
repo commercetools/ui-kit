@@ -1,17 +1,20 @@
-import { ThemeProvider, customProperties } from '@commercetools-uikit/design-system';
+import { ThemeProvider, useTheme, customProperties } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../test/percy';
 
 export const routePath = '/theme-provider';
 
-const DummyComponent = () => (
-  <h1
-    style={{
-      color: customProperties.colorPrimary,
-    }}
-  >
-    Title with default theme <i>colorPrimary</i> design token
-  </h1>
-);
+const DummyComponent = () => {
+  const { theme } = useTheme();
+  return (
+    <h1
+      style={{
+        color: customProperties.colorPrimary,
+      }}
+    >
+      Title with {theme} theme <i>colorPrimary</i> design token
+    </h1>
+  );
+};
 
 export const component = () => (
   <Suite>
