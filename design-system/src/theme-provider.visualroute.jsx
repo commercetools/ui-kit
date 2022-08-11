@@ -1,34 +1,45 @@
-import { useTheme, customProperties } from '@commercetools-uikit/design-system';
-import { useLayoutEffect } from 'react';
+import { ThemeProvider, useTheme, customProperties } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../test/percy';
 
 export const routePath = '/theme-provider';
 
-const DummyComponent = () => (
-    <h1 style={{
-      color: customProperties.colorPrimary,
-    }}>
-      Title with default theme <i>colorPrimary</i> design token
+const DummyComponent = () => {
+  const { theme } = useTheme();
+  return (
+    <h1
+      style={{
+        color: customProperties.colorPrimary,
+      }}
+    >
+      Title with {theme} theme <i>colorPrimary</i> design token
     </h1>
   );
-
-const DarkThemedComponent = () => {
-  const { changeTheme } = useTheme();
-  useLayoutEffect(() => {
-    changeTheme('dark');
-  }, [changeTheme]);
-
-  return (<DummyComponent />);
 };
 
 export const component = () => (
   <Suite>
     <Spec label="use default theme">
-      <DummyComponent />
+      <ThemeProvider scope="local">
+        <DummyComponent />
+      </ThemeProvider>
     </Spec>
 
     <Spec label="use dark theme">
-      <DarkThemedComponent />
+      <ThemeProvider scope="local" theme="dark">
+        <DummyComponent />
+      </ThemeProvider>
+    </Spec>
+
+    <Spec label="repeat default theme">
+      <ThemeProvider scope="local">
+        <DummyComponent />
+      </ThemeProvider>
+    </Spec>
+
+    <Spec label="repeat dark theme">
+      <ThemeProvider scope="local" theme="dark">
+        <DummyComponent />
+      </ThemeProvider>
     </Spec>
   </Suite>
 );
