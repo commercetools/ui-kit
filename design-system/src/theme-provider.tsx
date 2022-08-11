@@ -17,7 +17,15 @@ type ThemeName = keyof typeof themes;
 
 const allThemesNames = Object.keys(themesNames);
 
-const ThemeContext = createContext({});
+type TThemeContext = {
+  theme: ThemeName;
+  changeTheme: (newTheme: string) => void;
+};
+
+const ThemeContext = createContext<TThemeContext>({
+  theme: themesNames.default,
+  changeTheme: () => {},
+});
 
 const toVars = (obj: Record<string, string>) =>
   Object.fromEntries(
@@ -27,6 +35,7 @@ const toVars = (obj: Record<string, string>) =>
 type ThemeProviderProps = {
   children: ReactNode;
   theme?: string;
+  scope?: 'global' | 'local';
 };
 
 const validateTheme = (themeName?: string): ThemeName => {
@@ -47,25 +56,21 @@ const validateTheme = (themeName?: string): ThemeName => {
 
 const ThemeProvider = (props: ThemeProviderProps) => {
   const root = useRef<HTMLElement>(document.querySelector(':root'));
+  const localScopeElement = useRef<HTMLDivElement>(null);
   const [theme, setTheme] = useState<ThemeName>(validateTheme(props?.theme));
 
   const changeTheme = useCallback((newTheme: string) => {
     setTheme(validateTheme(newTheme));
-
-    // We need to update the meta element right away so then the render phase kicks in,
-    // the children will be rendered with the correct theme.
-    // (This is only needed for visual regression testing with Percy)
-    document
-      .querySelector('[name="ui-kit-vrt-environment"]')
-      ?.setAttribute('content', validateTheme(newTheme));
   }, []);
 
   useLayoutEffect(() => {
     const vars = toVars(themes[theme]);
+    const targetElement =
+      props.scope === 'local' ? localScopeElement.current : root.current;
     Object.entries(vars).forEach(([key, value]) => {
-      root.current?.style.setProperty(key, value);
+      targetElement?.style.setProperty(key, value);
     });
-  }, [theme]);
+  }, [theme, props.scope]);
 
   const value = useMemo(() => {
     return { theme, changeTheme };
@@ -73,7 +78,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
   return (
     <ThemeContext.Provider value={value}>
-      {props.children}
+      <div ref={localScopeElement}>{props.children}</div>
     </ThemeContext.Provider>
   );
 };
