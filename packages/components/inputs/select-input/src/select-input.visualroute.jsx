@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Route, Switch } from 'react-router-dom';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
-import { useTheme } from '@commercetools-uikit/design-system';
-import { useLayoutEffect } from 'react';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../../../../test/percy';
 import { WorldIcon } from '../../../icons';
 
@@ -31,23 +30,7 @@ const value = 'one';
 
 export const routePath = '/select-input';
 
-const DarkSelectInput = (props) => {
-  const { changeTheme } = useTheme();
-  useLayoutEffect(() => {
-    changeTheme('vrtDark');
-  }, [changeTheme]);
-
-  return (
-    <SelectInput
-      value={value}
-      onChange={() => {}}
-      options={options}
-      horizontalConstraint={7}
-    />
-  );
-};
-
-const DefaultRoute = ({ themes }) => (
+const DefaultRoute = () => (
   <Suite>
     <Spec label="minimal">
       <SelectInput
@@ -131,8 +114,19 @@ const DefaultRoute = ({ themes }) => (
         horizontalConstraint={7}
       />
     </Spec>
-    <Spec label="with custom (dark) theme" theme="vrtDark">
-      <DarkSelectInput />
+    <Spec
+      label="with custom (dark) theme"
+      theme="vrtDark"
+      listPropsOfNestedChild
+    >
+      <ThemeProvider scope="local" theme="vrtDark">
+        <SelectInput
+          value={value}
+          onChange={() => {}}
+          options={options}
+          horizontalConstraint={7}
+        />
+      </ThemeProvider>
     </Spec>
     <Spec label="when read-only">
       <SelectInput
@@ -188,22 +182,23 @@ const OpenRoute = () => (
   </Suite>
 );
 
-const OpenRouteDarkTheme = ({ themes }) => {
-  const { changeTheme } = useTheme();
-  useLayoutEffect(() => {
-    changeTheme('vrtDark');
-  }, [changeTheme]);
-
+const OpenRouteDarkTheme = () => {
   return (
     <Suite>
-      <Spec label="with custom (dark) theme" theme="vrtDark">
-        <SelectInput
-          id="select-input"
-          value={value}
-          onChange={() => {}}
-          options={longOptions}
-          horizontalConstraint={7}
-        />
+      <Spec
+        label="with custom (dark) theme"
+        theme="vrtDark"
+        listPropsOfNestedChild
+      >
+        <ThemeProvider scope="local" theme="vrtDark">
+          <SelectInput
+            id="select-input"
+            value={value}
+            onChange={() => {}}
+            options={longOptions}
+            horizontalConstraint={7}
+          />
+        </ThemeProvider>
       </Spec>
     </Suite>
   );
@@ -253,6 +248,6 @@ export const component = () => (
       path={`${routePath}/open-with-option-groups-and-divider`}
       component={OpenRouteWithOptionGroupsAndDivider}
     />
-    <Route path={routePath} render={() => <DefaultRoute themes={themes} />} />
+    <Route path={routePath} render={() => <DefaultRoute />} />
   </Switch>
 );

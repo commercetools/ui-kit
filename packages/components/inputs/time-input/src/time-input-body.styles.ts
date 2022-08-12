@@ -22,35 +22,29 @@ const getClearSectionStyles = () => {
   `;
 };
 
-const getClockIconContainerColor = (
-  vars: typeof customProperties,
-  props: TTimeInputProps
-) => {
+const getClockIconContainerColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return vars.borderColorForInputWhenDisabled;
+    return customProperties.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.borderColorForInputWhenError;
+    return customProperties.borderColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return vars.borderColorForInputWhenReadonly;
+    return customProperties.borderColorForInputWhenReadonly;
   }
-  return vars.borderColorForInput;
+  return customProperties.borderColorForInput;
 };
-const getClockIconContainerFontColor = (
-  vars: typeof customProperties,
-  props: TTimeInputProps
-) => {
+const getClockIconContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return vars.fontColorForInputWhenDisabled;
+    return customProperties.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.fontColorForInputWhenError;
+    return customProperties.fontColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return vars.fontColorForInputWhenReadonly;
+    return customProperties.fontColorForInputWhenReadonly;
   }
-  return vars.fontColorForInput;
+  return customProperties.fontColorForInput;
 };
 const getClockIconContainerStyles = (props: TTimeInputProps) => {
   return css`
@@ -64,8 +58,8 @@ const getClockIconContainerStyles = (props: TTimeInputProps) => {
     border-left: 1px solid ${customProperties.borderColorForInput};
     border-top-right-radius: ${customProperties.borderRadiusForInput};
     border-bottom-right-radius: ${customProperties.borderRadiusForInput};
-    border-color: ${getClockIconContainerColor(customProperties, props)};
-    color: ${getClockIconContainerFontColor(customProperties, props)};
+    border-color: ${getClockIconContainerColor(props)};
+    color: ${getClockIconContainerFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     height: 100%;
     display: flex;
@@ -80,35 +74,29 @@ const getClockIconContainerStyles = (props: TTimeInputProps) => {
   `;
 };
 
-const getInputContainerBorderColor = (
-  vars: typeof customProperties,
-  props: TTimeInputProps
-) => {
+const getInputContainerBorderColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return vars.borderColorForInputWhenDisabled;
+    return customProperties.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.borderColorForInputWhenError;
+    return customProperties.borderColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return vars.borderColorForInputWhenReadonly;
+    return customProperties.borderColorForInputWhenReadonly;
   }
-  return vars.borderColorForInput;
+  return customProperties.borderColorForInput;
 };
-const getInputContainerFontColor = (
-  vars: typeof customProperties,
-  props: TTimeInputProps
-) => {
+const getInputContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return vars.fontColorForInputWhenDisabled;
+    return customProperties.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.fontColorForInputWhenError;
+    return customProperties.fontColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return vars.fontColorForInputWhenReadonly;
+    return customProperties.fontColorForInputWhenReadonly;
   }
-  return vars.fontColorForInput;
+  return customProperties.fontColorForInput;
 };
 const getInputContainerStyles = (props: TTimeInputProps) => {
   return css`
@@ -116,10 +104,10 @@ const getInputContainerStyles = (props: TTimeInputProps) => {
     background-color: ${props.isDisabled
       ? customProperties.backgroundColorForInputWhenDisabled
       : customProperties.backgroundColorForInput};
-    border: 1px solid ${getInputContainerBorderColor(customProperties, props)};
+    border: 1px solid ${getInputContainerBorderColor(props)};
     border-radius: ${customProperties.borderRadiusForInput};
     box-sizing: border-box;
-    color: ${getInputContainerFontColor(customProperties, props)};
+    color: ${getInputContainerFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     width: 100%;
     height: ${customProperties.sizeHeightInput};

@@ -6,11 +6,6 @@ export const routePath = '/link';
 
 const intlMessage = { id: 'link', defaultMessage: 'Link' };
 
-/* const purpleTheme = {
-  colorPrimary: 'purple',
-  colorPrimary25: 'deeppurple',
-}; */
-
 export const component = () => (
   <Suite>
     <Spec label="regular">
@@ -21,20 +16,18 @@ export const component = () => (
         A label text
       </Link>
     </Spec>
-    {/* <ThemeProvider theme={purpleTheme}>
-      <Spec label="with custom theme">
+    <Spec label="with custom theme" listPropsOfNestedChild>
+      <ThemeProvider scope="local" theme="vrtDark">
         <Link to="/">A label text</Link>
-      </Spec>
-    </ThemeProvider> */}
+      </ThemeProvider>
+    </Spec>
     <Spec label="intlMessage">
       <Link to="/" intlMessage={intlMessage} />
     </Spec>
     <Spec label="tone - inverted" theme="vrtDark">
-      <ThemeProvider scope="local" theme="vrtDark">
-        <Link to="/" tone="inverted">
-          An inverted label text
-        </Link>
-      </ThemeProvider>
+      <Link to="/" tone="inverted">
+        An inverted label text
+      </Link>
     </Spec>
   </Suite>
 );

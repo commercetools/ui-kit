@@ -261,7 +261,7 @@ export const themes = {
     colorAccent30: 'hsl(195, 35.2941176471%, 30%)',
     colorAccent40: 'hsl(195, 35.2941176471%, 40%)',
     colorAccent95: 'hsl(195, 35.2941176471%, 95%)',
-    colorAccent98: 'hsl(195, 35.2941176471%, 98%)',
+    colorAccent98: 'rgba(0,0,0,0.98)',
     colorNeutral: 'rgba(255,255,255,0.60)',
     colorNeutral60: 'rgba(255,255,255,0.60)',
     colorNeutral90: 'hsl(0, 0%, 90%)',
@@ -335,7 +335,7 @@ export const themes = {
     breakPointJumbodesktop: '1920px',
     backgroundColorForInput: 'black',
     backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
-    backgroundColorForInputWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
+    backgroundColorForInputWhenDisabled: 'rgba(0,0,0,0.98)',
     backgroundColorForInputWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:

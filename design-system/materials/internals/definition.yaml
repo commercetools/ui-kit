@@ -272,7 +272,7 @@ choiceGroupsPerTheme:
         color-accent-30: 'hsl(195, 35.2941176471%, 30%)'
         color-accent-40: 'hsl(195, 35.2941176471%, 40%)'
         color-accent-95: 'hsl(195, 35.2941176471%, 95%)'
-        color-accent-98: 'hsl(195, 35.2941176471%, 98%)'
+        color-accent-98: 'rgba(0,0,0,0.98)'
         color-neutral: 'rgba(255,255,255,0.60)'
         color-neutral-60: 'rgba(255,255,255,0.60)'
         color-neutral-90: 'hsl(0, 0%, 90%)'

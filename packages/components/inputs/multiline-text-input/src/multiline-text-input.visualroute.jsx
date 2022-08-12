@@ -92,7 +92,11 @@ export const component = () => (
       />
     </Spec>
 
-    <Spec label="with custom (inverted) theme" theme="vrtDark">
+    <Spec
+      label="with custom (inverted) theme"
+      theme="vrtDark"
+      listPropsOfNestedChild
+    >
       <ThemeProvider scope="local" theme="vrtDark">
         <MultilineTextInput
           value={value}

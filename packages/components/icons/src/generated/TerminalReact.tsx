@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { warning } from '@commercetools-uikit/utils';
 import { css, ClassNames } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 export type Props = {
   color?:
     | 'solid'
@@ -77,35 +77,35 @@ const getColor = (color: Props['color']) => {
 
   switch (color) {
     case 'solid':
-      iconColor = vars.colorSolid;
+      iconColor = customProperties.colorSolid;
       break;
 
     case 'neutral60':
-      iconColor = vars.colorNeutral60;
+      iconColor = customProperties.colorNeutral60;
       break;
 
     case 'surface':
-      iconColor = vars.colorSurface;
+      iconColor = customProperties.colorSurface;
       break;
 
     case 'info':
-      iconColor = vars.colorInfo;
+      iconColor = customProperties.colorInfo;
       break;
 
     case 'primary':
-      iconColor = vars.colorPrimary;
+      iconColor = customProperties.colorPrimary;
       break;
 
     case 'primary40':
-      iconColor = vars.colorPrimary40;
+      iconColor = customProperties.colorPrimary40;
       break;
 
     case 'warning':
-      iconColor = vars.colorWarning;
+      iconColor = customProperties.colorWarning;
       break;
 
     case 'error':
-      iconColor = vars.colorError;
+      iconColor = customProperties.colorError;
       break;
 
     default:
