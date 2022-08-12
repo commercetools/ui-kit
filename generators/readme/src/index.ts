@@ -326,8 +326,23 @@ const normalizeReactProps = (
   return { [normalizedPropName]: componentPropsInfo };
 };
 
-const createSignatureLinkSuffix = (order?: number) => {
-  if (!order) return ''; // empty string returned if readme is generated for one component, and in case of zero-indexed component when readme generated for multiple components
+// global variable containing `normalizedReactProps` objects keyed by `componentPath`
+const normalizedReactPropsArray: Record<
+  string,
+  Record<string, ReactComponentProps>
+>[] = [];
+
+const createSignatureLinkSuffix = (propName: string, componentPath: string) => {
+  const order = normalizedReactPropsArray
+    .filter(
+      (normalizedReactProps) =>
+        Object.values(normalizedReactProps)[0]?.[propName]
+    )
+    .findIndex(
+      (normalizedReactProps) =>
+        Object.keys(normalizedReactProps)[0] === componentPath
+    );
+  if (!order) return '';
   return `-${order}`;
 };
 
@@ -336,7 +351,6 @@ const parsePropTypesToMarkdown = (
   options: {
     isTsx: boolean;
     hasManyComponents: boolean;
-    order?: number;
   }
 ): (PhrasingContent | BlockContent)[] => {
   const result = reactDocgen.parse(
@@ -365,6 +379,8 @@ const parsePropTypesToMarkdown = (
     {} as ReactAPI['props']
   );
 
+  normalizedReactPropsArray.push({ [componentPath]: normalizedReactProps });
+
   const signatures: (PhrasingContent | BlockContent)[] = [];
   const tableBody = Object.entries(normalizedReactProps).map(
     ([propName, propInfo]) => {
@@ -380,7 +396,8 @@ const parsePropTypesToMarkdown = (
                   html('<br/>'),
                   link(
                     `#signature-${propName}${createSignatureLinkSuffix(
-                      options.order
+                      propName,
+                      componentPath
                     )}`,
                     'See signature.'
                   ),
@@ -403,7 +420,8 @@ const parsePropTypesToMarkdown = (
                   html('<br/>'),
                   link(
                     `#signature-${propName}${createSignatureLinkSuffix(
-                      options.order
+                      propName,
+                      componentPath
                     )}`,
                     'See signature.'
                   ),
@@ -437,7 +455,8 @@ const parsePropTypesToMarkdown = (
                 html('<br/>'),
                 link(
                   `#signature-${propName}${createSignatureLinkSuffix(
-                    options.order
+                    propName,
+                    componentPath
                   )}`,
                   'See signature.'
                 ),
@@ -496,7 +515,8 @@ const parsePropTypesToMarkdown = (
                     html('<br/>'),
                     link(
                       `#signature-${propName}${createSignatureLinkSuffix(
-                        options.order
+                        propName,
+                        componentPath
                       )}`,
                       'See signature.'
                     ),
@@ -688,7 +708,7 @@ function readmeTransformer(packageFolderPath: string) {
 
       ...(hasCustomComponentsPath
         ? // Render components in a group, otherwise omit the nested heading.
-          paths.componentPaths.flatMap((componentPath, index) => {
+          paths.componentPaths.flatMap((componentPath) => {
             const [componentName] = path
               .basename(componentPath)
               .split(isTsx ? '.tsx' : '.js');
@@ -699,7 +719,6 @@ function readmeTransformer(packageFolderPath: string) {
               ...parsePropTypesToMarkdown(componentPath, {
                 isTsx,
                 hasManyComponents: true,
-                order: index,
               }),
             ];
           })
