@@ -108,9 +108,13 @@ export const component = () => (
       <Text.Body tone="negative">Body text negative</Text.Body>
     </Spec>
     <NarrowBox>
-      <Spec label="Body - tone - inverted" theme="vrtDark">
+      <Spec
+        label="Body - tone - inverted"
+        theme="vrtDark"
+        listPropsOfNestedChild
+      >
         <ThemeProvider scope="local" theme="vrtDark">
-          <Text.Body tone="inverted">Body text inverted</Text.Body>;
+          <Text.Body tone="inverted">Body text inverted</Text.Body>
         </ThemeProvider>
       </Spec>
     </NarrowBox>
@@ -150,9 +154,13 @@ export const component = () => (
       <Text.Detail tone="negative">Detail text negative</Text.Detail>
     </Spec>
     <NarrowBox>
-      <Spec label="Detail - tone - inverted">
+      <Spec
+        label="Detail - tone - inverted"
+        theme="vrtDark"
+        listPropsOfNestedChild
+      >
         <ThemeProvider scope="local" theme="vrtDark">
-          <Text.Detail tone="inverted">Detail text inverted</Text.Detail>;
+          <Text.Detail tone="inverted">Detail text inverted</Text.Detail>
         </ThemeProvider>
       </Spec>
     </NarrowBox>
@@ -194,34 +202,42 @@ export const component = () => (
       <Text.Detail intlMessage={intlMessage} />
     </Spec>
 
-    <Spec label="Headline (dark theme)" theme="vrtDark">
+    <Spec label="Headline (dark theme)" theme="vrtDark" listPropsOfNestedChild>
       <ThemeProvider scope="local" theme="vrtDark">
-        <Text.Headline as="h1">Dark theme</Text.Headline>;
+        <Text.Headline as="h1">Dark theme</Text.Headline>
       </ThemeProvider>
     </Spec>
-    <Spec label="Subheadline (dark theme)" theme="vrtDark">
+    <Spec
+      label="Subheadline (dark theme)"
+      theme="vrtDark"
+      listPropsOfNestedChild
+    >
       <ThemeProvider scope="local" theme="vrtDark">
-        <Text.Subheadline as="h4">Dark theme</Text.Subheadline>;
+        <Text.Subheadline as="h4">Dark theme</Text.Subheadline>
       </ThemeProvider>
     </Spec>
-    <Spec label="Body (dark theme)" theme="vrtDark">
+    <Spec label="Body (dark theme)" theme="vrtDark" listPropsOfNestedChild>
       <ThemeProvider scope="local" theme="vrtDark">
-        <Text.Body>Dark theme</Text.Body>;
+        <Text.Body>Dark theme</Text.Body>
       </ThemeProvider>
     </Spec>
-    <Spec label="Body as span element (dark theme)" theme="vrtDark">
+    <Spec
+      label="Body as span element (dark theme)"
+      theme="vrtDark"
+      listPropsOfNestedChild
+    >
       <ThemeProvider scope="local" theme="vrtDark">
-        <Text.Body as="span">Dark theme</Text.Body>;
+        <Text.Body as="span">Dark theme</Text.Body>
       </ThemeProvider>
     </Spec>
-    <Spec label="Detail (dark theme)" theme="vrtDark">
+    <Spec label="Detail (dark theme)" theme="vrtDark" listPropsOfNestedChild>
       <ThemeProvider scope="local" theme="vrtDark">
-        <Text.Detail>Dark theme</Text.Detail>;
+        <Text.Detail>Dark theme</Text.Detail>
       </ThemeProvider>
     </Spec>
-    <Spec label="Wrap (dark theme)" theme="vrtDark">
+    <Spec label="Wrap (dark theme)" theme="vrtDark" listPropsOfNestedChild>
       <ThemeProvider scope="local" theme="vrtDark">
-        <Text.Wrap>Dark theme</Text.Wrap>;
+        <Text.Wrap>Dark theme</Text.Wrap>
       </ThemeProvider>
     </Spec>
   </Suite>

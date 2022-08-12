@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import {
-  customProperties as vars,
+  customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
@@ -35,15 +35,18 @@ const getClickableContentWrapperStyles = (type: TTagBodyProps['type']) => {
     : [
         css`
           &:hover {
-            border-color: ${vars[designTokens.borderColorForTagWhenFocused]};
+            border-color: ${customProperties[
+              designTokens.borderColorForTagWhenFocused
+            ]};
           }
         `,
       ];
 };
 
 const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
-  if (isDisabled) return vars[designTokens.fontColorForTagWhenDisabled];
-  return vars[designTokens.fontColorForTag];
+  if (isDisabled)
+    return customProperties[designTokens.fontColorForTagWhenDisabled];
+  return customProperties[designTokens.fontColorForTag];
 };
 
 const getContentWrapperStyles = (props: TTagBodyProps) => {
@@ -52,8 +55,8 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    border-radius: ${vars[designTokens.borderRadiusForTag]};
-    padding: 5px ${vars.spacingS};
+    border-radius: ${customProperties[designTokens.borderRadiusForTag]};
+    padding: 5px ${customProperties.spacingS};
     white-space: normal;
     text-align: left;
     min-width: 0;
@@ -62,8 +65,8 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     border-style: solid;
     border-width: 1px;
     border-color: ${props.type === 'warning'
-      ? vars[designTokens.borderColorForTagWarning]
-      : vars[designTokens.borderColorForTag]};
+      ? customProperties[designTokens.borderColorForTagWarning]
+      : customProperties[designTokens.borderColorForTag]};
 
     /* fixing things for IE11 ... */
     width: 100%;
@@ -84,7 +87,7 @@ const TagBody = (props: TTagBodyProps) => {
         getContentWrapperStyles(props),
         Boolean(props.onRemove) &&
           css`
-            padding-right: ${vars.spacingS};
+            padding-right: ${customProperties.spacingS};
             border-right: 0;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
@@ -96,12 +99,12 @@ const TagBody = (props: TTagBodyProps) => {
           Boolean(props.onClick) &&
           css`
             &:hover {
-              box-shadow: ${vars.shadowBoxTagWhenHovered};
+              box-shadow: ${customProperties.shadowBoxTagWhenHovered};
               &::after {
                 position: absolute;
                 right: -1px;
                 content: '';
-                background-color: ${vars.borderColorForTagWhenFocused};
+                background-color: ${customProperties.borderColorForTagWhenFocused};
                 width: 1px;
                 height: 100%;
               }

@@ -155,7 +155,7 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <Spec label="with custom theme" theme="vrtDark">
+    <Spec label="with custom theme" theme="vrtDark" listPropsOfNestedChild>
       <ThemeProvider scope="local" theme="vrtDark">
         <LocalizedMultilineTextInput
           value={value}

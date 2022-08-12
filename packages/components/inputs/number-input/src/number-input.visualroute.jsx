@@ -61,7 +61,11 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <Spec label="with custom (inverted) theme" theme="vrtDark">
+    <Spec
+      label="with custom (inverted) theme"
+      theme="vrtDark"
+      listPropsOfNestedChild
+    >
       <ThemeProvider scope="local" theme="vrtDark">
         <NumberInput
           value={value}

@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '../styles';
 import type { TMultiLineInputProps } from './multiline-input';
 
@@ -14,7 +14,7 @@ const getTextareaStyles = (props: TMultiLineInputProps) => {
   const baseStyles = [
     getInputStyles(props),
     css`
-      padding: ${vars.spacingXs} ${vars.spacingS};
+      padding: ${customProperties.spacingXs} ${customProperties.spacingS};
       line-height: ${sizeInputLineHeight};
       flex: auto;
       word-break: break-word;

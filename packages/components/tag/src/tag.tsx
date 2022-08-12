@@ -4,7 +4,7 @@ import { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 import { css, type SerializedStyles } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import {
-  customProperties as vars,
+  customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
@@ -91,8 +91,8 @@ const Tag = (props: TTagProps) => {
           min-width: 0;
           display: flex;
           background-color: ${props.type === 'warning'
-            ? vars[designTokens.backgroundColorForTagWarning]
-            : vars[designTokens.backgroundColorForTag]};
+            ? customProperties[designTokens.backgroundColorForTagWarning]
+            : customProperties[designTokens.backgroundColorForTag]};
         `}
       >
         <TagBody
@@ -114,11 +114,12 @@ const Tag = (props: TTagProps) => {
             css={[
               css`
                 border-color: ${props.type === 'warning'
-                  ? vars[designTokens.borderColorForTagWarning]
-                  : vars[designTokens.borderColorForTag]};
-                padding: 0 ${vars.spacingXs};
-                border-radius: 0 ${vars[designTokens.borderRadiusForTag]}
-                  ${vars[designTokens.borderRadiusForTag]} 0;
+                  ? customProperties[designTokens.borderColorForTagWarning]
+                  : customProperties[designTokens.borderColorForTag]};
+                padding: 0 ${customProperties.spacingXs};
+                border-radius: 0
+                  ${customProperties[designTokens.borderRadiusForTag]}
+                  ${customProperties[designTokens.borderRadiusForTag]} 0;
                 display: flex;
                 align-items: center;
                 background: inherit;
@@ -126,17 +127,23 @@ const Tag = (props: TTagProps) => {
                 border-width: 1px 1px 1px 1px;
                 :not(:disabled)&:hover,
                 :not(:disabled)&:focus {
-                  border-color: ${vars[designTokens.borderColorForTagWarning]};
+                  border-color: ${customProperties[
+                    designTokens.borderColorForTagWarning
+                  ]};
 
                   > svg * {
-                    fill: ${vars[designTokens.borderColorForTagWarning]};
+                    fill: ${customProperties[
+                      designTokens.borderColorForTagWarning
+                    ]};
                   }
                 }
                 > svg * {
-                  fill: ${vars[designTokens.fontColorForTag]};
+                  fill: ${customProperties[designTokens.fontColorForTag]};
                 }
                 &:disabled > svg * {
-                  fill: ${vars[designTokens.fontColorForTagWhenDisabled]};
+                  fill: ${customProperties[
+                    designTokens.fontColorForTagWhenDisabled
+                  ]};
                 }
               `,
             ]}
