@@ -49,8 +49,16 @@ const PropValue = styled.span`
 `;
 
 const Box = styled.div`
-  background-color: ${(props) =>
-    props.theme === 'vrtDark' ? 'black' : customProperties.colorSurface};
+  background-color: ${(props) => {
+    switch (props.theme) {
+      case 'vrtDark':
+        return 'black';
+      case 'vrtPurple':
+        return 'purple';
+      default:
+        return customProperties.colorSurface;
+    }
+  }};
 `;
 
 const Pill = (props) => {

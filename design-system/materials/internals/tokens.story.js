@@ -9,7 +9,14 @@ import Readme from './TOKENS.md';
 import definition from './definition.yaml';
 import deprecatedTokens from './deprecated-tokens';
 
-const allThemesNames = Object.keys(definition.choiceGroupsPerTheme);
+const irrelevantThemesPatterns = ['vrt'];
+
+const removeIrrelevantThemes = (theme) =>
+  irrelevantThemesPatterns.every((pattern) => !theme.startsWith(pattern));
+
+const allThemesNames = Object.keys(definition.choiceGroupsPerTheme).filter(
+  removeIrrelevantThemes
+);
 
 const getIsDeprecated = (token) => deprecatedTokens.includes(token);
 
@@ -105,8 +112,9 @@ const getDefaultThemeChoiceGroupProperty = (choiceGroup, property) =>
   definition.choiceGroupsPerTheme.default[choiceGroup][property];
 
 const ChoiceGroup = (props) => {
-  const choices = Object.entries(definition.choiceGroupsPerTheme).reduce(
-    (acc, [theme, themeChoices]) => {
+  const choices = Object.entries(definition.choiceGroupsPerTheme)
+    .filter(([theme]) => removeIrrelevantThemes(theme))
+    .reduce((acc, [theme, themeChoices]) => {
       const filteredThemeChoices = Object.fromEntries(
         filterChoiceGroupValues(
           themeChoices[props.choiceGroup].choices,
@@ -121,12 +129,10 @@ const ChoiceGroup = (props) => {
           [name]: { [theme]: filteredThemeChoices[name] },
         }))
       );
-    },
-    {}
-  );
+    }, {});
 
   return (
-    <GroupStyle isVisible={Object.values(choices).length > 0}>
+    <GroupStyle isVisible={Object.entries(choices).length > 0}>
       <a
         id={`choice-${getDefaultThemeChoiceGroupProperty(
           props.choiceGroup,
