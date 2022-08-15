@@ -12,7 +12,7 @@ import {
 import { isValidElementType } from 'react-is';
 import omit from 'lodash/omit';
 import { filterAriaAttributes, warning } from '@commercetools-uikit/utils';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { normalizedButtonStyles } from './accessible-button.styles';
@@ -160,7 +160,7 @@ const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
         css={css`
           ${normalizedButtonStyles}
           display: inline-flex;
-          font-size: ${vars.fontSizeDefault};
+          font-size: ${customProperties.fontSizeDefault};
           cursor: ${props.isDisabled ? 'not-allowed' : 'pointer'};
           &:disabled {
             cursor: not-allowed;

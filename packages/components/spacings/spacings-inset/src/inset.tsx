@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
@@ -8,15 +8,15 @@ export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
 const getPadding = (scale?: TScale) => {
   switch (scale) {
     case 'xs':
-      return vars.spacingXs;
+      return customProperties.spacingXs;
     case 's':
-      return vars.spacingS;
+      return customProperties.spacingS;
     case 'm':
-      return vars.spacingM;
+      return customProperties.spacingM;
     case 'l':
-      return vars.spacingL;
+      return customProperties.spacingL;
     case 'xl':
-      return vars.spacingXl;
+      return customProperties.spacingXl;
     default:
       return 0;
   }

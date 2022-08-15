@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import {
   filterDataAttributes,
   filterAriaAttributes,
@@ -58,12 +58,12 @@ export const defaultProps: Pick<
 const labelSizeStyles = (props: TStyledLabelProps) => {
   if (props.size === 'small')
     return css`
-      height: calc(${vars.standardInputHeight} / 2);
-      width: calc(${vars.standardInputHeight});
+      height: calc(${customProperties.standardInputHeight} / 2);
+      width: calc(${customProperties.standardInputHeight});
     `;
   return css`
-    height: calc(${vars.standardInputHeight});
-    width: calc(${vars.standardInputHeight} * 2);
+    height: calc(${customProperties.standardInputHeight});
+    width: calc(${customProperties.standardInputHeight} * 2);
   `;
 };
 
@@ -75,7 +75,7 @@ const Label = styled.label<TStyledLabelProps>`
   ${labelSizeStyles}
 
   &:focus-within {
-    outline: auto 2px ${vars.borderColorForInputWhenFocused};
+    outline: auto 2px ${customProperties.borderColorForInputWhenFocused};
     outline-offset: 3px;
   }
 `;
@@ -85,8 +85,8 @@ const Span = styled.span<TStyledSpanProps>`
 
   &::before {
     border-radius: 16px;
-    box-shadow: ${vars.shadow9};
-    background-color: ${vars.colorNeutral60};
+    box-shadow: ${customProperties.shadow9};
+    background-color: ${customProperties.colorNeutral60};
     left: 0;
     top: 50%;
     transition: background 0.2s ease-in-out;
@@ -108,8 +108,8 @@ const Span = styled.span<TStyledSpanProps>`
       props.size === 'small' ? thumbSmallSize : thumbBigSize};
     width: ${(props) =>
       props.size === 'small' ? thumbSmallSize : thumbBigSize};
-    background-color: ${vars.colorSurface};
-    box-shadow: ${vars.shadow7};
+    background-color: ${customProperties.colorSurface};
+    box-shadow: ${customProperties.shadow7};
     border-radius: 50%;
     z-index: 1;
     transition: transform 0.2s ease, background 0.2s ease;
@@ -120,7 +120,7 @@ const getInputStyles = (props: TToggleInputProps) => css`
   /* when checked */
   &:checked {
     + span::before {
-      background: ${vars.colorPrimary};
+      background: ${customProperties.colorPrimary};
     }
     & + span::after {
       transform: ${props.size === 'small'
@@ -132,11 +132,11 @@ const getInputStyles = (props: TToggleInputProps) => css`
   /* when disabled */
   &:disabled {
     & + span::before {
-      background: ${vars.colorNeutral};
+      background: ${customProperties.colorNeutral};
       box-shadow: none;
     }
     & + span::after {
-      background: ${vars.colorAccent95};
+      background: ${customProperties.colorAccent95};
       box-shadow: none;
     }
   }
@@ -144,16 +144,16 @@ const getInputStyles = (props: TToggleInputProps) => css`
   /* when disabled and checked */
   &:disabled&:checked {
     & + span::before {
-      background: ${vars.colorPrimary25};
+      background: ${customProperties.colorPrimary25};
     }
     & + span::after {
-      background: ${vars.colorNeutral};
+      background: ${customProperties.colorNeutral};
     }
   }
 
   :not(:disabled)&:hover + span::after,
   :not(:disabled)&:focus + span::after {
-    box-shadow: ${vars.shadow16};
+    box-shadow: ${customProperties.shadow16};
   }
 `;
 

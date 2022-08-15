@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 type TCalendarDay = {
   children?: ReactNode;
@@ -20,47 +20,47 @@ const getStyles = (props: TCalendarDay) => {
   if (!['heading', 'spacing'].includes(props.type || '')) {
     styles.push(css`
       text-align: center;
-      padding: ${vars.spacingS} 0;
+      padding: ${customProperties.spacingS} 0;
       cursor: default;
-      border-radius: ${vars.borderRadius4};
+      border-radius: ${customProperties.borderRadius4};
     `);
   }
   if (['heading', 'spacing'].includes(props.type || '')) {
     styles.push(css`
       text-align: center;
-      padding: ${vars.spacingS} 0;
+      padding: ${customProperties.spacingS} 0;
       cursor: default;
-      color: ${vars.colorNeutral60};
+      color: ${customProperties.colorNeutral60};
     `);
   }
   if (props.isHighlighted) {
     styles.push(
       css`
-        background-color: ${vars.colorNeutral90};
+        background-color: ${customProperties.colorNeutral90};
       `
     );
   }
   if (props.isSelected) {
     styles.push(
       css`
-        background-color: ${vars.colorPrimary};
-        color: ${vars.colorSurface};
+        background-color: ${customProperties.colorPrimary};
+        color: ${customProperties.colorSurface};
       `
     );
   }
   if (props.isRangeStart || props.isRangeEnd) {
     styles.push(
       css`
-        background-color: ${vars.colorPrimary40};
-        color: ${vars.colorSurface};
+        background-color: ${customProperties.colorPrimary40};
+        color: ${customProperties.colorSurface};
       `
     );
   }
   if (props.isRangeBetween) {
     styles.push(
       css`
-        background-color: ${vars.colorNeutral90};
-        color: ${vars.fontColorForInput};
+        background-color: ${customProperties.colorNeutral90};
+        color: ${customProperties.fontColorForInput};
       `
     );
   }
@@ -71,14 +71,14 @@ const getStyles = (props: TCalendarDay) => {
     props.isToday
   ) {
     styles.push(css`
-      color: ${vars.colorInfo};
+      color: ${customProperties.colorInfo};
       font-weight: bold;
     `);
   }
 
   if (props.disabled) {
     styles.push(css`
-      color: ${vars.fontColorForInputWhenDisabled};
+      color: ${customProperties.fontColorForInputWhenDisabled};
       cursor: not-allowed;
     `);
   }

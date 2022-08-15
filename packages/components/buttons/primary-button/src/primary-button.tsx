@@ -9,7 +9,7 @@ import {
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import Inline from '@commercetools-uikit/spacings-inline';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getButtonStyles } from './primary-button.styles';
@@ -110,7 +110,7 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
         {Boolean(props.iconLeft) && (
           <span
             css={css`
-              margin: 0 ${vars.spacingXs} 0 0;
+              margin: 0 ${customProperties.spacingXs} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;

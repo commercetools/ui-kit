@@ -9,7 +9,7 @@ import Select, {
 import { useIntl } from 'react-intl';
 import { css, type Theme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import {
   warning,
   isNumberish,
@@ -118,13 +118,13 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
       minWidth: '72px',
       borderColor: (() => {
         if (isDisabled)
-          return `${vars.borderColorForInputWhenDisabled} !important`;
-        if (hasError) return vars.borderColorForInputWhenError;
-        if (hasWarning) return vars.borderColorForInputWhenWarning;
-        if (hasFocus) return vars.borderColorForInputWhenFocused;
+          return `${customProperties.borderColorForInputWhenDisabled} !important`;
+        if (hasError) return customProperties.borderColorForInputWhenError;
+        if (hasWarning) return customProperties.borderColorForInputWhenWarning;
+        if (hasFocus) return customProperties.borderColorForInputWhenFocused;
         if (isReadOnly)
-          return `${vars.borderColorForInputWhenReadonly} !important`;
-        return vars.borderColorForInput;
+          return `${customProperties.borderColorForInputWhenReadonly} !important`;
+        return customProperties.borderColorForInput;
       })(),
       cursor: (() => {
         if (isDisabled) return 'not-allowed';
@@ -132,7 +132,7 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
         return 'pointer';
       })(),
       backgroundColor: (() => {
-        if (isReadOnly) return vars.backgroundColorForInput;
+        if (isReadOnly) return customProperties.backgroundColorForInput;
         return base.backgroundColor;
       })(),
     }),
@@ -141,15 +141,15 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
       marginLeft: 0,
       maxWidth: 'initial',
       color: (() => {
-        if (isDisabled) return vars.fontColorForInputWhenDisabled;
-        if (hasError) return vars.fontColorForInputWhenError;
-        if (hasWarning) return vars.fontColorForInputWhenWarning;
-        if (isReadOnly) return vars.fontColorForInputWhenReadonly;
+        if (isDisabled) return customProperties.fontColorForInputWhenDisabled;
+        if (hasError) return customProperties.fontColorForInputWhenError;
+        if (hasWarning) return customProperties.fontColorForInputWhenWarning;
+        if (isReadOnly) return customProperties.fontColorForInputWhenReadonly;
         return base.color;
       })(),
     }),
     dropdownIndicator: () => ({
-      fill: isReadOnly ? vars.fontColorForInputWhenReadonly : '',
+      fill: isReadOnly ? customProperties.fontColorForInputWhenReadonly : '',
     }),
   };
 };
@@ -815,7 +815,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
               props.hasHighPrecisionBadge &&
                 isHighPrecision &&
                 css`
-                  padding-right: ${vars.spacingL};
+                  padding-right: ${customProperties.spacingL};
                 `,
             ]}
             placeholder={props.placeholder}
@@ -846,7 +846,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
                   // so that the tooltip is flush with the component
                   styles={{
                     body: {
-                      margin: `${vars.spacingS} -${vars.spacingXs} ${vars.spacingS} 0`,
+                      margin: `${customProperties.spacingS} -${customProperties.spacingXs} ${customProperties.spacingS} 0`,
                     },
                   }}
                   title={intl.formatMessage(messages.highPrecision)}
