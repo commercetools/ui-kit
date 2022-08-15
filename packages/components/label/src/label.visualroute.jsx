@@ -19,7 +19,7 @@ export const component = () => (
         Hello
       </Label>
     </Spec>
-    <Spec label="when inverted" theme="vrtDark" listPropsOfNestedChild>
+    <Spec label="when inverted" theme="vrtPurple" listPropsOfNestedChild>
       <ThemeProvider scope="local" theme="vrtDark">
         <Label tone="inverted">Hello</Label>
       </ThemeProvider>

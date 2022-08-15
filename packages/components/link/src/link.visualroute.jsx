@@ -17,7 +17,7 @@ export const component = () => (
       </Link>
     </Spec>
     <Spec label="with custom theme" listPropsOfNestedChild>
-      <ThemeProvider scope="local" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtLink">
         <Link to="/">A label text</Link>
       </ThemeProvider>
     </Spec>

@@ -72,7 +72,7 @@ export const component = () => (
     </Spec>
 
     <Spec label="with dark theme" theme="vrtDark" listPropsOfNestedChild>
-      <ThemeProvider scope="local" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtTag">
         <Tag type="normal">Tag</Tag>
       </ThemeProvider>
     </Spec>
@@ -174,7 +174,7 @@ export const component = () => (
       theme="vrtDark"
       listPropsOfNestedChild
     >
-      <ThemeProvider scope="local" theme="vrtDark">
+      <ThemeProvider scope="local" theme="vrtTag">
         <Tag type="normal" to="foo/bar">
           Tag
         </Tag>
