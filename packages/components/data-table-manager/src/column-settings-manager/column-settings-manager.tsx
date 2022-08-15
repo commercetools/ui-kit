@@ -13,7 +13,7 @@ import { DragDropContext, type DropResult } from 'react-beautiful-dnd';
 import debounce from 'debounce-promise';
 import differenceWith from 'lodash/differenceWith';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import AsyncSelectInput from '@commercetools-uikit/async-select-input';
 import FieldLabel from '@commercetools-uikit/field-label';
 import Spacings from '@commercetools-uikit/spacings';
@@ -64,7 +64,7 @@ type TDroppableContainerProps = {
 const DroppableContainer = styled.div<TDroppableContainerProps>`
   width: 100%;
   position: relative;
-  max-width: ${vars.constraint10};
+  max-width: ${customProperties.constraint10};
   cursor: ${(props) => (props.isDragging ? 'grabbing' : 'auto')};
 `;
 

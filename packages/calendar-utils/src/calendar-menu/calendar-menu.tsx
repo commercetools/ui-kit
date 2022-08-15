@@ -1,6 +1,6 @@
 import { Component, ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 type TCalendarMenu = {
   children: ReactNode;
@@ -21,17 +21,17 @@ export default class CalendarMenu extends Component<TCalendarMenu> {
         css={[
           css`
             overflow-y: scroll;
-            color: ${vars.colorSolid};
+            color: ${customProperties.colorSolid};
             font-family: inherit;
-            border: 1px solid ${vars.borderColorForInputWhenFocused};
-            border-radius: ${vars.borderRadiusForInput};
-            margin-top: ${vars.spacingXs};
-            font-size: ${vars.fontSizeDefault};
+            border: 1px solid ${customProperties.borderColorForInputWhenFocused};
+            border-radius: ${customProperties.borderRadiusForInput};
+            margin-top: ${customProperties.spacingXs};
+            font-size: ${customProperties.fontSizeDefault};
             position: absolute;
             box-sizing: border-box;
             width: 100%;
-            background-color: ${vars.colorSurface};
-            min-width: ${vars.constraint5};
+            background-color: ${customProperties.colorSurface};
+            min-width: ${customProperties.constraint5};
             z-index: 99999; /* copied from flatpickr */
           `,
           !hasFooter &&
@@ -40,11 +40,11 @@ export default class CalendarMenu extends Component<TCalendarMenu> {
             `,
           hasError &&
             css`
-              border-color: ${vars.borderColorForInputWhenError};
+              border-color: ${customProperties.borderColorForInputWhenError};
             `,
           hasWarning &&
             css`
-              border-color: ${vars.borderColorForInputWhenWarning};
+              border-color: ${customProperties.borderColorForInputWhenWarning};
             `,
         ]}
       >

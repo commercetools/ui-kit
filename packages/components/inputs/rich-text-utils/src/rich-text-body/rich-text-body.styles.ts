@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import type { TRichTextEditorBody } from './rich-text-body';
 
 type TRichTextBodyStylesProps = Pick<
@@ -11,37 +11,37 @@ type TRichTextBodyStylesProps = Pick<
 const getBorderColor = (props: TRichTextBodyStylesProps) => {
   if (props.isDisabled) {
     return css`
-      border-color: ${vars.borderColorForInputWhenDisabled};
+      border-color: ${customProperties.borderColorForInputWhenDisabled};
     `;
   }
   if (props.hasError) {
     return css`
-      border-color: ${vars.borderColorForInputWhenError};
+      border-color: ${customProperties.borderColorForInputWhenError};
     `;
   }
   if (props.hasWarning) {
     return css`
-      border-color: ${vars.borderColorForInputWhenWarning};
+      border-color: ${customProperties.borderColorForInputWhenWarning};
     `;
   }
   if (props.isReadOnly) {
     return css`
-      border-color: ${vars.borderColorForInputWhenReadonly};
+      border-color: ${customProperties.borderColorForInputWhenReadonly};
     `;
   }
   return css`
-    border-color: ${vars.borderColorForInput};
+    border-color: ${customProperties.borderColorForInput};
   `;
 };
 
 const getBackgroundColor = (props: TRichTextBodyStylesProps) => {
   if (props.isDisabled) {
     return css`
-      background-color: ${vars.backgroundColorForInputWhenDisabled};
+      background-color: ${customProperties.backgroundColorForInputWhenDisabled};
     `;
   }
   return css`
-    background-color: ${vars.backgroundColorForInput};
+    background-color: ${customProperties.backgroundColorForInput};
   `;
 };
 
@@ -61,11 +61,12 @@ export const ToolbarRightControls = styled.div``;
 export const Toolbar = styled.div`
   display: flex;
   flex-wrap: wrap;
-  font-family: ${vars.fontFamilyDefault};
-  border-radius: ${vars.borderRadiusForInput};
+  font-family: ${customProperties.fontFamilyDefault};
+  border-radius: ${customProperties.borderRadiusForInput};
   border-bottom: 0;
-  padding: ${vars.spacingXs} calc(${vars.spacingS} - 1px);
-  padding-left: calc(${vars.spacingXs} - 1px);
+  padding: ${customProperties.spacingXs}
+    calc(${customProperties.spacingS} - 1px);
+  padding-left: calc(${customProperties.spacingXs} - 1px);
   align-items: flex-start;
   align-content: stretch;
 
@@ -74,9 +75,9 @@ export const Toolbar = styled.div`
   &::after {
     position: absolute;
     content: '';
-    width: calc(100% - ${vars.spacingS});
+    width: calc(100% - ${customProperties.spacingS});
     height: 1px;
-    background: ${vars.colorNeutral};
+    background: ${customProperties.colorNeutral};
     left: 50%;
     transform: translateX(-50%);
     bottom: -1px;
@@ -104,29 +105,29 @@ const reset = (props: TRichTextBodyStylesProps) => [
   `,
   props.isReadOnly &&
     css`
-      color: ${vars.fontColorForInputWhenReadonly};
+      color: ${customProperties.fontColorForInputWhenReadonly};
     `,
 
   props.isDisabled &&
     css`
-      color: ${vars.fontColorForInputWhenDisabled};
+      color: ${customProperties.fontColorForInputWhenDisabled};
     `,
 ];
 
 export const EditorContainer = styled.div<TRichTextBodyStylesProps>`
-  padding: 4px ${vars.spacingS};
+  padding: 4px ${customProperties.spacingS};
   padding-top: 6px;
-  border-radius: ${vars.borderRadiusForInput};
-  font-family: ${vars.fontFamilyDefault};
+  border-radius: ${customProperties.borderRadiusForInput};
+  font-family: ${customProperties.fontFamilyDefault};
   ${getBorderColor}
   overflow-y: scroll;
   ${reset}
 `;
 
 export const Container = styled.div<TRichTextBodyStylesProps>`
-  border-radius: ${vars.borderRadiusForInput};
-  border: 1px solid ${vars.borderColorForInput};
-  transition: ${vars.transitionStandard};
+  border-radius: ${customProperties.borderRadiusForInput};
+  border: 1px solid ${customProperties.borderColorForInput};
+  transition: ${customProperties.transitionStandard};
   ${getBorderColor}
   ${getBackgroundColor}
   pointer-events: ${(props) =>
@@ -134,29 +135,31 @@ export const Container = styled.div<TRichTextBodyStylesProps>`
   position: relative;
 
   &:hover {
-    border-color: ${vars.borderColorForInputWhenFocused};
+    border-color: ${customProperties.borderColorForInputWhenFocused};
   }
   &:focus {
     outline: none;
-    box-shadow: inset 0 0 0 2px ${vars.borderColorForInputWhenFocused};
+    box-shadow: inset 0 0 0 2px
+      ${customProperties.borderColorForInputWhenFocused};
   }
 
   ${Toolbar} {
-    border-radius: ${vars.borderRadiusForInput};
+    border-radius: ${customProperties.borderRadiusForInput};
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-color: ${vars.borderColorForInput};
+    border-color: ${customProperties.borderColorForInput};
   }
 
   &:focus-within {
-    border-color: ${vars.borderColorForInputWhenFocused};
-    box-shadow: inset 0 0 0 2px ${vars.borderColorForInputWhenFocused};
+    border-color: ${customProperties.borderColorForInputWhenFocused};
+    box-shadow: inset 0 0 0 2px
+      ${customProperties.borderColorForInputWhenFocused};
     ${Toolbar} {
-      border-color: ${vars.borderColorForInputWhenFocused};
+      border-color: ${customProperties.borderColorForInputWhenFocused};
     }
 
     ${EditorContainer} {
-      border-color: ${vars.borderColorForInputWhenFocused};
+      border-color: ${customProperties.borderColorForInputWhenFocused};
     }
   }
 `;

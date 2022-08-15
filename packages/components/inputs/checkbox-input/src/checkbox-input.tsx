@@ -1,7 +1,7 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import {
   createSequentialId,
   filterDataAttributes,
@@ -84,7 +84,7 @@ const hoverStyles = (props: TLabelProps) => {
   if (!props.hasError && !props.readOnly && !props.disabled) {
     return css`
       &:hover svg *[data-style='checkbox__border'] {
-        stroke: ${vars.borderColorForInputWhenFocused};
+        stroke: ${customProperties.borderColorForInputWhenFocused};
       }
     `;
   }
@@ -92,9 +92,9 @@ const hoverStyles = (props: TLabelProps) => {
 };
 
 const LabelTextWrapper = styled.div`
-  margin-left: ${vars.spacingS};
+  margin-left: ${customProperties.spacingS};
   outline: none;
-  border-radius: ${vars.borderRadiusForTag};
+  border-radius: ${customProperties.borderRadiusForTag};
 `;
 
 const Label = styled.label<TLabelProps>`
@@ -110,7 +110,7 @@ const Label = styled.label<TLabelProps>`
   ${hoverStyles}
 
   &:focus-within div {
-    box-shadow: 0 0 0 2px ${vars.borderColorForInputWhenFocused};
+    box-shadow: 0 0 0 2px ${customProperties.borderColorForInputWhenFocused};
   }
 `;
 

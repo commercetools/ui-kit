@@ -1,22 +1,22 @@
 /* eslint-disable import/prefer-default-export */
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import type { TPrimaryButtonProps } from './primary-button';
 
 const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
   switch (size) {
     case 'small':
       return css`
-        border-radius: ${vars.borderRadius4};
-        padding: 0 ${vars.spacingS} 0 ${vars.spacingS};
-        height: ${vars.smallButtonHeight};
+        border-radius: ${customProperties.borderRadius4};
+        padding: 0 ${customProperties.spacingS} 0 ${customProperties.spacingS};
+        height: ${customProperties.smallButtonHeight};
       `;
 
     case 'big':
       return css`
-        padding: 0 ${vars.spacingM} 0 ${vars.spacingM};
-        height: ${vars.bigButtonHeight};
-        border-radius: ${vars.borderRadius6};
+        padding: 0 ${customProperties.spacingM} 0 ${customProperties.spacingM};
+        height: ${customProperties.bigButtonHeight};
+        border-radius: ${customProperties.borderRadius6};
       `;
 
     default:
@@ -32,9 +32,9 @@ const getButtonStyles = (
 ) => {
   const baseStyles = css`
     align-items: center;
-    color: ${vars.colorSurface};
-    transition: background-color ${vars.transitionLinear80Ms};
-    font-size: ${vars.fontSizeDefault};
+    color: ${customProperties.colorSurface};
+    transition: background-color ${customProperties.transitionLinear80Ms};
+    font-size: ${customProperties.fontSizeDefault};
     ${getSizeStyles(size)}
   `;
   // "disabled" takes precendece over "active"
@@ -45,9 +45,9 @@ const getButtonStyles = (
         &,
         &:active,
         &:hover {
-          background-color: ${vars.colorAccent98};
-          color: ${vars.colorNeutral60};
-          box-shadow: 0 0 0 1px ${vars.colorNeutral} inset;
+          background-color: ${customProperties.colorAccent98};
+          color: ${customProperties.colorNeutral60};
+          box-shadow: 0 0 0 1px ${customProperties.colorNeutral} inset;
         }
       `,
     ];
@@ -56,10 +56,10 @@ const getButtonStyles = (
     const baseActiveStyles = [
       baseStyles,
       css`
-        box-shadow: ${vars.shadow9};
+        box-shadow: ${customProperties.shadow9};
         &:hover,
         &:focus {
-          box-shadow: ${vars.shadow8};
+          box-shadow: ${customProperties.shadow8};
         }
       `,
     ];
@@ -68,13 +68,13 @@ const getButtonStyles = (
         return [
           baseActiveStyles,
           css`
-            background-color: ${vars.colorPrimary};
+            background-color: ${customProperties.colorPrimary};
             &:focus,
             &:hover {
-              background-color: ${vars.colorPrimary25};
+              background-color: ${customProperties.colorPrimary25};
             }
             &:active {
-              background-color: ${vars.colorPrimary};
+              background-color: ${customProperties.colorPrimary};
             }
           `,
         ];
@@ -82,13 +82,13 @@ const getButtonStyles = (
         return [
           baseActiveStyles,
           css`
-            background-color: ${vars.colorWarning};
+            background-color: ${customProperties.colorWarning};
             &:focus,
             &:hover {
-              background-color: ${vars.colorWarning};
+              background-color: ${customProperties.colorWarning};
             }
             &:active {
-              background-color: ${vars.colorWarning};
+              background-color: ${customProperties.colorWarning};
             }
           `,
         ];
@@ -99,13 +99,13 @@ const getButtonStyles = (
   const baseDefaultStyles = [
     baseStyles,
     css`
-      box-shadow: ${vars.shadow7};
+      box-shadow: ${customProperties.shadow7};
       &:hover,
       &:focus {
-        box-shadow: ${vars.shadow8};
+        box-shadow: ${customProperties.shadow8};
       }
       &:active {
-        box-shadow: ${vars.shadow9};
+        box-shadow: ${customProperties.shadow9};
       }
     `,
   ];
@@ -114,13 +114,13 @@ const getButtonStyles = (
       return [
         baseDefaultStyles,
         css`
-          background-color: ${vars.colorPrimary};
+          background-color: ${customProperties.colorPrimary};
           &:focus,
           &:hover {
-            background-color: ${vars.colorPrimary25};
+            background-color: ${customProperties.colorPrimary25};
           }
           &:active {
-            background-color: ${vars.colorPrimary};
+            background-color: ${customProperties.colorPrimary};
           }
         `,
       ];
@@ -128,13 +128,13 @@ const getButtonStyles = (
       return [
         baseDefaultStyles,
         css`
-          background-color: ${vars.colorWarning};
+          background-color: ${customProperties.colorWarning};
           &:focus,
           &:hover {
-            background-color: ${vars.colorPrimary25};
+            background-color: ${customProperties.colorPrimary25};
           }
           &:active {
-            background-color: ${vars.colorWarning};
+            background-color: ${customProperties.colorWarning};
           }
         `,
       ];

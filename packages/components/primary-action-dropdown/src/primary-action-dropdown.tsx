@@ -14,7 +14,7 @@ import {
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { warning } from '@commercetools-uikit/utils';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
@@ -24,28 +24,28 @@ const getButtonStyles = (isDisabled: boolean) => {
   const baseButtonStyles = css`
     display: flex;
     align-items: center;
-    height: ${vars.bigButtonHeight};
+    height: ${customProperties.bigButtonHeight};
   `;
   if (isDisabled) {
     return [
       baseButtonStyles,
       css`
         box-shadow: none;
-        background-color: ${vars.colorAccent98};
+        background-color: ${customProperties.colorAccent98};
       `,
     ];
   }
   return [
     baseButtonStyles,
     css`
-      background-color: ${vars.colorSurface};
-      box-shadow: ${vars.shadow7};
+      background-color: ${customProperties.colorSurface};
+      box-shadow: ${customProperties.shadow7};
       &:hover {
-        box-shadow: ${vars.shadow8};
+        box-shadow: ${customProperties.shadow8};
       }
       &:active {
-        box-shadow: ${vars.shadow9};
-        background-color: ${vars.colorNeutral95};
+        box-shadow: ${customProperties.shadow9};
+        background-color: ${customProperties.colorNeutral95};
       }
     `,
   ];
@@ -74,14 +74,15 @@ const DropdownHead = (props: TDropdownHead) => (
       css={[
         ...getButtonStyles(props.isDisabled),
         css`
-          padding: 0 ${vars.spacingS};
-          border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
+          padding: 0 ${customProperties.spacingS};
+          border-radius: ${customProperties.borderRadius6} 0 0
+            ${customProperties.borderRadius6};
         `,
       ]}
     >
       <span
         css={css`
-          margin: 0 ${vars.spacingXs} 0 0;
+          margin: 0 ${customProperties.spacingXs} 0 0;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -94,7 +95,7 @@ const DropdownHead = (props: TDropdownHead) => (
       </span>
       <span
         css={css`
-          margin: 0 ${vars.spacingXs} 0 0;
+          margin: 0 ${customProperties.spacingXs} 0 0;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -126,9 +127,10 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
       css={[
         ...getButtonStyles(props.isDisabled),
         css`
-          padding: 0 ${vars.spacingXs};
-          border-left: 1px solid ${vars.colorNeutral};
-          border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
+          padding: 0 ${customProperties.spacingXs};
+          border-left: 1px solid ${customProperties.colorNeutral};
+          border-radius: 0 ${customProperties.borderRadius6}
+            ${customProperties.borderRadius6} 0;
         `,
       ]}
     >
@@ -168,11 +170,11 @@ const Options = styled.div`
   position: absolute;
   z-index: 5;
   width: 100%;
-  top: calc(${vars.spacingS} + ${vars.bigButtonHeight});
+  top: calc(${customProperties.spacingS} + ${customProperties.bigButtonHeight});
   left: 0;
-  border: 1px solid ${vars.colorNeutral};
-  border-radius: ${vars.borderRadius6};
-  box-shadow: ${vars.shadow1};
+  border: 1px solid ${customProperties.colorNeutral};
+  border-radius: ${customProperties.borderRadius6};
+  box-shadow: ${customProperties.shadow1};
 `;
 
 /*

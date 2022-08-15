@@ -1,23 +1,23 @@
 /// <reference types="@emotion/react/types/css-prop" />
 import type { KeyboardEventHandler, RefObject } from 'react';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import type { TDateTimeInputProps } from './date-time-input';
 
 const getInputStyles = () => css`
   width: 100%;
   text-align: center;
   border: 0;
-  border-top: 1px solid ${vars.colorNeutral90};
+  border-top: 1px solid ${customProperties.colorNeutral90};
   padding: 10px 0;
   outline: 0;
-  font-size: ${vars.fontSizeDefault};
-  margin-top: ${vars.spacingS};
-  color: ${vars.colorSolid};
+  font-size: ${customProperties.fontSizeDefault};
+  margin-top: ${customProperties.spacingS};
+  color: ${customProperties.colorSolid};
 
   :disabled {
     /* Fixes background color in Firefox */
-    background-color: ${vars.colorSurface};
+    background-color: ${customProperties.colorSurface};
   }
 `;
 

@@ -1,6 +1,6 @@
 import type { MouseEvent } from 'react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 type TColumnResizer = {
   onMouseDown?: (event: MouseEvent) => void;
@@ -10,7 +10,7 @@ type TColumnResizer = {
 const ResizerIndicator = styled.div<TColumnResizer>`
   height: 100%;
   width: 3px;
-  background: ${vars.colorInfo};
+  background: ${customProperties.colorInfo};
   visibility: hidden;
   cursor: col-resize;
 
