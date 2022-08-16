@@ -326,13 +326,16 @@ const normalizeReactProps = (
   return { [normalizedPropName]: componentPropsInfo };
 };
 
-// global variable containing `normalizedReactProps` objects keyed by `componentPath`
-const normalizedReactPropsArray: Record<
+type NormalizedReactPropsArray = Record<
   string,
   Record<string, ReactComponentProps>
->[] = [];
+>[];
 
-const createSignatureLinkSuffix = (propName: string, componentPath: string) => {
+const createSignatureLinkSuffix = (
+  propName: string,
+  componentPath: string,
+  normalizedReactPropsArray: NormalizedReactPropsArray
+) => {
   const order = normalizedReactPropsArray
     .filter(
       (normalizedReactProps) =>
@@ -348,6 +351,7 @@ const createSignatureLinkSuffix = (propName: string, componentPath: string) => {
 
 const parsePropTypesToMarkdown = (
   componentPath: string,
+  normalizedReactPropsArray: NormalizedReactPropsArray,
   options: {
     isTsx: boolean;
     hasManyComponents: boolean;
@@ -395,9 +399,10 @@ const parsePropTypesToMarkdown = (
                   inlineCode('Object'),
                   html('<br/>'),
                   link(
-                    `#signature-${propName}${createSignatureLinkSuffix(
+                    `#signature-${propName.toLowerCase()}${createSignatureLinkSuffix(
                       propName,
-                      componentPath
+                      componentPath,
+                      normalizedReactPropsArray
                     )}`,
                     'See signature.'
                   ),
@@ -419,9 +424,10 @@ const parsePropTypesToMarkdown = (
                   inlineCode('Function'),
                   html('<br/>'),
                   link(
-                    `#signature-${propName}${createSignatureLinkSuffix(
+                    `#signature-${propName.toLowerCase()}${createSignatureLinkSuffix(
                       propName,
-                      componentPath
+                      componentPath,
+                      normalizedReactPropsArray
                     )}`,
                     'See signature.'
                   ),
@@ -454,9 +460,10 @@ const parsePropTypesToMarkdown = (
                 inlineCode(`Array: ${propInfoType.raw.replace('\n', '')}`),
                 html('<br/>'),
                 link(
-                  `#signature-${propName}${createSignatureLinkSuffix(
+                  `#signature-${propName.toLowerCase()}${createSignatureLinkSuffix(
                     propName,
-                    componentPath
+                    componentPath,
+                    normalizedReactPropsArray
                   )}`,
                   'See signature.'
                 ),
@@ -514,9 +521,10 @@ const parsePropTypesToMarkdown = (
                 ? [
                     html('<br/>'),
                     link(
-                      `#signature-${propName}${createSignatureLinkSuffix(
+                      `#signature-${propName.toLowerCase()}${createSignatureLinkSuffix(
                         propName,
-                        componentPath
+                        componentPath,
+                        normalizedReactPropsArray
                       )}`,
                       'See signature.'
                     ),
@@ -640,6 +648,7 @@ function readmeTransformer(packageFolderPath: string) {
     version: parsedPackageJson.version,
     peerDependencies: parsedPackageJson.peerDependencies,
   };
+  const normalizedReactPropsArray: NormalizedReactPropsArray = [];
 
   const isTsx = fs.existsSync(path.join(packageFolderPath, 'src/index.ts'));
 
@@ -716,19 +725,27 @@ function readmeTransformer(packageFolderPath: string) {
               heading(2, upperFirst(camelcase(componentName))),
               // Describe the component's properties
               heading(3, 'Properties'),
-              ...parsePropTypesToMarkdown(componentPath, {
-                isTsx,
-                hasManyComponents: true,
-              }),
+              ...parsePropTypesToMarkdown(
+                componentPath,
+                normalizedReactPropsArray,
+                {
+                  isTsx,
+                  hasManyComponents: true,
+                }
+              ),
             ];
           })
         : [
             // Describe the component's properties
             heading(2, 'Properties'),
-            ...parsePropTypesToMarkdown(defaultComponentPath, {
-              isTsx,
-              hasManyComponents: false,
-            }),
+            ...parsePropTypesToMarkdown(
+              defaultComponentPath,
+              normalizedReactPropsArray,
+              {
+                isTsx,
+                hasManyComponents: false,
+              }
+            ),
           ]),
 
       // Additional information (can be anything, there is no pre-defined structure here)

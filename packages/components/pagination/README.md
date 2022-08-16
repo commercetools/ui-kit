@@ -53,10 +53,10 @@ export default Example;
 | ----------------- | ----------------------------------------------------------- | :------: | ------- | --------------------------------------------------------------------------------------------------------- |
 | `totalItems`      | `number`                                                    |    ✅    |         | Total number of items across all pages                                                                    |
 | `page`            | `number`                                                    |    ✅    |         | The current page                                                                                          |
-| `onPageChange`    | `Function`<br/>[See signature.](#signature-onPageChange)    |    ✅    |         | A callback function, called when the page is changed.                                                     |
+| `onPageChange`    | `Function`<br/>[See signature.](#signature-onpagechange)    |    ✅    |         | A callback function, called when the page is changed.                                                     |
 | `perPage`         | `number`                                                    |          | `20`    | Number of items per page, according to the pre-defined range values.                                      |
 | `perPageRange`    | `TPageRangeSize`                                            |          | `'s'`   | Range of items per page.&#xA;<br/>&#xA;`s: 20,50`&#xA;<br/>&#xA;`m: 20,50,100`&#xA;<br/>&#xA;`l: 200,500` |
-| `onPerPageChange` | `Function`<br/>[See signature.](#signature-onPerPageChange) |    ✅    |         | A callback function, called when `perPage` is changed.                                                    |
+| `onPerPageChange` | `Function`<br/>[See signature.](#signature-onperpagechange) |    ✅    |         | A callback function, called when `perPage` is changed.                                                    |
 
 ## Signatures
 

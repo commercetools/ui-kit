@@ -151,7 +151,7 @@ describe('generate README (for TS file)', () => {
       | - | - | :-: | - | - |
       | \`name\` | \`string\` | ✅ | | The name of a Justice League member. |
       | \`identity\` | \`Object\`<br/>[See signature.](#signature-identity) | ✅ | | The real identity of this Justice League member, if known. |
-      | \`onClick\` | \`Function\`<br/>[See signature.](#signature-onClick) | | | A callback function, called when the component is clicked. |
+      | \`onClick\` | \`Function\`<br/>[See signature.](#signature-onclick) | | | A callback function, called when the component is clicked. |
       | \`abilities\` | \`Array: Ability[]\`<br/>[See signature.](#signature-abilities) | ✅ | | List the abilities of this Justice League member. |
       | \`aliases\` | \`Array: string[]\` | ✅ | | List the aliases of this Justice League member. |
       | \`movies\` | \`union\`<br/>Possible values:<br/>\`string , Movie\`<br/>[See signature.](#signature-movies) | ✅ | | The list of movies where this Justice League member appears in.&#xA;It can either be just the name of the movie or a more detailed&#xA;information about the movie. |
