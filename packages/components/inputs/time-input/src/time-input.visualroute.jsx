@@ -1,4 +1,5 @@
 import { TimeInput } from '@commercetools-frontend/ui-kit';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../../../../test/percy';
 
 const value = '3:00 PM';
@@ -43,7 +44,9 @@ export const component = () => (
       />
     </Spec>
     <Spec label="with custom (inverted) theme" theme="vrtDark">
-      <TimeInput value={value} onChange={() => {}} horizontalConstraint={7} />
+      <ThemeProvider scope="local" theme="vrtDark">
+        <TimeInput value={value} onChange={() => {}} horizontalConstraint={7} />
+      </ThemeProvider>
     </Spec>
   </Suite>
 );
