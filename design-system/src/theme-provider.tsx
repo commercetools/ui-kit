@@ -54,8 +54,13 @@ const validateTheme = (themeName?: string): ThemeName => {
   return 'default';
 };
 
+// used to cover SSR builds (for instance in Gatsby)
+const isBrowser = typeof window !== 'undefined';
+
 const ThemeProvider = (props: ThemeProviderProps) => {
-  const root = useRef<HTMLElement>(document.querySelector(':root'));
+  const root = useRef<HTMLElement>(
+    isBrowser ? document.querySelector(':root') : null
+  );
   const localScopeElement = useRef<HTMLDivElement>(null);
   const [theme, setTheme] = useState<ThemeName>(validateTheme(props?.theme));
 
