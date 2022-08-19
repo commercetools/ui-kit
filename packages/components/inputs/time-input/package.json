@@ -29,7 +29,7 @@
     "@commercetools-uikit/input-utils": "15.2.0",
     "@commercetools-uikit/spacings-inline": "15.2.0",
     "@commercetools-uikit/utils": "15.2.0",
-    "@emotion/is-prop-valid": "1.1.3",
+    "@emotion/is-prop-valid": "1.2.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "prop-types": "15.8.1"
