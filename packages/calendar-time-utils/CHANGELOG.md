@@ -1,5 +1,14 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 15.2.1
+
+### Patch Changes
+
+- [#2248](https://github.com/commercetools/ui-kit/pull/2248) [`cf1480158`](https://github.com/commercetools/ui-kit/commit/cf1480158a65d8447361d1d3c8ab847dba64b691) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - remove japanese locale support
+
+- Updated dependencies [[`83e33a84c`](https://github.com/commercetools/ui-kit/commit/83e33a84c861ef3cab2eca4333f11cd414546c2b)]:
+  - @commercetools-uikit/utils@15.2.1
+
 ## 15.2.0
 
 ### Patch Changes

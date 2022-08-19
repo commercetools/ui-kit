@@ -1,5 +1,7 @@
 # @commercetools-uikit/grid
 
+## 15.2.1
+
 ## 15.2.0
 
 ## 15.1.2
