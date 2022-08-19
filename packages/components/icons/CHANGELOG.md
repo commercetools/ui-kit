@@ -1,5 +1,15 @@
 # @commercetools-uikit/icons
 
+## 15.2.1
+
+### Patch Changes
+
+- [#2245](https://github.com/commercetools/ui-kit/pull/2245) [`83e33a84c`](https://github.com/commercetools/ui-kit/commit/83e33a84c861ef3cab2eca4333f11cd414546c2b) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
+- Updated dependencies [[`83e33a84c`](https://github.com/commercetools/ui-kit/commit/83e33a84c861ef3cab2eca4333f11cd414546c2b)]:
+  - @commercetools-uikit/utils@15.2.1
+  - @commercetools-uikit/design-system@15.2.1
+
 ## 15.2.0
 
 ### Patch Changes

@@ -1,5 +1,21 @@
 # @commercetools-uikit/i18n
 
+## 15.2.1
+
+### Patch Changes
+
+- [#2250](https://github.com/commercetools/ui-kit/pull/2250) [`ec8c93c49`](https://github.com/commercetools/ui-kit/commit/ec8c93c49e037b1dcdc2dacceb3e70f3b2051dc0) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Removed unnecessary messages in english language.
+
+* [#2253](https://github.com/commercetools/ui-kit/pull/2253) [`485a136af`](https://github.com/commercetools/ui-kit/commit/485a136af6a4c35c2a20006be27cda8d056aa3a8) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Removed unnecessary messages in french language.
+
+- [#2254](https://github.com/commercetools/ui-kit/pull/2254) [`9d67df880`](https://github.com/commercetools/ui-kit/commit/9d67df8805cbc75ac66c18607bbc3fd11afd6c4e) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Removed unnecessary messages in chinese language.
+
+* [#2248](https://github.com/commercetools/ui-kit/pull/2248) [`cf1480158`](https://github.com/commercetools/ui-kit/commit/cf1480158a65d8447361d1d3c8ab847dba64b691) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - remove japanese locale support
+
+- [#2249](https://github.com/commercetools/ui-kit/pull/2249) [`4a2374dd3`](https://github.com/commercetools/ui-kit/commit/4a2374dd3000db5b981d42e151c855f0d7f6188b) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Removed unnecessary messages in 'de'.
+
+* [#2251](https://github.com/commercetools/ui-kit/pull/2251) [`2586e36fd`](https://github.com/commercetools/ui-kit/commit/2586e36fdd0669d7c644f57372362710af56f314) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Removed unnecessary messages in spanish language.
+
 ## 15.2.0
 
 ## 15.1.2

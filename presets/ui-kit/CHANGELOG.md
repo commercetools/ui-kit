@@ -1,5 +1,44 @@
 # @commercetools-frontend/ui-kit
 
+## 15.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`ec8c93c49`](https://github.com/commercetools/ui-kit/commit/ec8c93c49e037b1dcdc2dacceb3e70f3b2051dc0), [`485a136af`](https://github.com/commercetools/ui-kit/commit/485a136af6a4c35c2a20006be27cda8d056aa3a8), [`9d67df880`](https://github.com/commercetools/ui-kit/commit/9d67df8805cbc75ac66c18607bbc3fd11afd6c4e), [`cf1480158`](https://github.com/commercetools/ui-kit/commit/cf1480158a65d8447361d1d3c8ab847dba64b691), [`4a2374dd3`](https://github.com/commercetools/ui-kit/commit/4a2374dd3000db5b981d42e151c855f0d7f6188b), [`2586e36fd`](https://github.com/commercetools/ui-kit/commit/2586e36fdd0669d7c644f57372362710af56f314), [`83e33a84c`](https://github.com/commercetools/ui-kit/commit/83e33a84c861ef3cab2eca4333f11cd414546c2b)]:
+  - @commercetools-uikit/i18n@15.2.1
+  - @commercetools-uikit/icons@15.2.1
+  - @commercetools-uikit/utils@15.2.1
+  - @commercetools-uikit/collapsible-panel@15.2.1
+  - @commercetools-uikit/data-table@15.2.1
+  - @commercetools-uikit/data-table-manager@15.2.1
+  - @commercetools-uikit/field-label@15.2.1
+  - @commercetools-uikit/link@15.2.1
+  - @commercetools-uikit/notifications@15.2.1
+  - @commercetools-uikit/pagination@15.2.1
+  - @commercetools-uikit/primary-action-dropdown@15.2.1
+  - @commercetools-uikit/tag@15.2.1
+  - @commercetools-uikit/inputs@15.2.1
+  - @commercetools-uikit/avatar@15.2.1
+  - @commercetools-uikit/card@15.2.1
+  - @commercetools-uikit/collapsible@15.2.1
+  - @commercetools-uikit/collapsible-motion@15.2.1
+  - @commercetools-uikit/constraints@15.2.1
+  - @commercetools-uikit/label@15.2.1
+  - @commercetools-uikit/loading-spinner@15.2.1
+  - @commercetools-uikit/messages@15.2.1
+  - @commercetools-uikit/text@15.2.1
+  - @commercetools-uikit/tooltip@15.2.1
+  - @commercetools-uikit/view-switcher@15.2.1
+  - @commercetools-uikit/hooks@15.2.1
+  - @commercetools-uikit/fields@15.2.1
+  - @commercetools-uikit/buttons@15.2.1
+  - @commercetools-uikit/field-errors@15.2.1
+  - @commercetools-uikit/spacings@15.2.1
+  - @commercetools-uikit/design-system@15.2.1
+  - @commercetools-uikit/accessible-hidden@15.2.1
+  - @commercetools-uikit/grid@15.2.1
+  - @commercetools-uikit/stamp@15.2.1
+
 ## 15.2.0
 
 ### Patch Changes
