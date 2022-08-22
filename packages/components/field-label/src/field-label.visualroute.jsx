@@ -61,7 +61,7 @@ export const component = () => (
         horizontalConstraint={7}
       />
     </Spec>
-    <Spec label="with inverted tone" omitPropsList theme="vrtDark">
+    <Spec label="with inverted tone" omitPropsList backgroundColor="black">
       <FieldLabel
         title="Hello"
         description="description"

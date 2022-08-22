@@ -75,7 +75,7 @@ export const component = () => (
     </Spec>
     <Spec
       label="with custom (inverted) theme"
-      theme="vrtDark"
+      backgroundColor="black"
       listPropsOfNestedChild
     >
       <ThemeProvider scope="local" theme="vrtDark">

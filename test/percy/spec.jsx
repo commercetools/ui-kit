@@ -49,15 +49,8 @@ const PropValue = styled.span`
 `;
 
 const Box = styled.div`
-  background-color: ${(props) => {
-    switch (props.theme) {
-      case 'vrtDark':
-        return 'black';
-      case 'vrtPurple':
-        return 'purple';
-      default:
-        return customProperties.colorSurface;
-    }
+  background-color: ${(props) =>
+    props.backgroundColor ?? customProperties.colorSurface};
   }};
 `;
 
@@ -128,7 +121,7 @@ const Spec = (props) => {
           {props.children}
         </Props>
       )}
-      <Box theme={props.theme}>{props.children}</Box>
+      <Box backgroundColor={props.backgroundColor}>{props.children}</Box>
     </SpecContainer>
   );
 };
@@ -139,7 +132,7 @@ Spec.propTypes = {
   listPropsOfNestedChild: PropTypes.bool,
   propsToList: PropTypes.arrayOf(PropTypes.string),
   omitPropsList: PropTypes.bool,
-  theme: PropTypes.string,
+  backgroundColor: PropTypes.string,
 };
 
 Spec.defaultProps = {

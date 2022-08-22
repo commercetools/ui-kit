@@ -103,7 +103,7 @@ export const component = () => (
           <Spec
             key={color}
             label={`Themed Icons - Color: ${color}`}
-            theme="vrtDark"
+            backgroundColor="black"
             omitPropsList
           >
             <ThemeProvider scope="local" theme="vrtDark">
