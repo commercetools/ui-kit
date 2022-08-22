@@ -124,7 +124,7 @@ export const component = () => (
 
     <Spec
       label="with custom (dark) theme"
-      theme="vrtDark"
+      backgroundColor="black"
       listPropsOfNestedChild
     >
       <ThemeProvider scope="local" theme="vrtDark">
@@ -135,7 +135,7 @@ export const component = () => (
     </Spec>
     <Spec
       label="with custom (dark) theme checked"
-      theme="vrtDark"
+      backgroundColor="black"
       listPropsOfNestedChild
     >
       <ThemeProvider scope="local" theme="vrtDark">

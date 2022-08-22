@@ -9,10 +9,10 @@ import Readme from './TOKENS.md';
 import definition from './definition.yaml';
 import deprecatedTokens from './deprecated-tokens';
 
-const irrelevantThemesPatterns = ['vrt'];
+const irrelevantThemes = ['vrtDark'];
 
 const removeIrrelevantThemes = (theme) =>
-  irrelevantThemesPatterns.every((pattern) => !theme.startsWith(pattern));
+  irrelevantThemes.every((irrelevantTheme) => theme !== irrelevantTheme);
 
 const allThemesNames = Object.keys(definition.choiceGroupsPerTheme).filter(
   removeIrrelevantThemes

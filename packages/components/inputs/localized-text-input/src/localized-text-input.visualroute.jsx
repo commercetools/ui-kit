@@ -109,7 +109,7 @@ export const component = () => (
     <Spec
       label="with a custom (dark) theme"
       omitPropsList={true}
-      theme="vrtDark"
+      backgroundColor="black"
     >
       <ThemeProvider scope="local" theme="vrtDark">
         <LocalizedTextInput

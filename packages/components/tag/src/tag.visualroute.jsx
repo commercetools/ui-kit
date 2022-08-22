@@ -71,12 +71,6 @@ export const component = () => (
       </Tag>
     </Spec>
 
-    <Spec label="with dark theme" theme="vrtDark" listPropsOfNestedChild>
-      <ThemeProvider scope="local" theme="vrtTag">
-        <Tag type="normal">Tag</Tag>
-      </ThemeProvider>
-    </Spec>
-
     <Spec label="Normal - with to" propsToList={[...basePropsToList, 'to']}>
       <Tag type="normal" to="foo/bar">
         Tag
@@ -171,7 +165,7 @@ export const component = () => (
     <Spec
       label="Dark theme - with to"
       propsToList={[...basePropsToList, 'to']}
-      theme="vrtDark"
+      backgroundColor="black"
       listPropsOfNestedChild
     >
       <ThemeProvider scope="local" theme="vrtTag">

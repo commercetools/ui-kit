@@ -43,7 +43,7 @@ export const component = () => (
         isReadOnly={true}
       />
     </Spec>
-    <Spec label="with custom (inverted) theme" theme="vrtDark">
+    <Spec label="with custom (inverted) theme" backgroundColor="black">
       <ThemeProvider scope="local" theme="vrtDark">
         <TimeInput value={value} onChange={() => {}} horizontalConstraint={7} />
       </ThemeProvider>

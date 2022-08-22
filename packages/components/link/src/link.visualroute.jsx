@@ -16,15 +16,10 @@ export const component = () => (
         A label text
       </Link>
     </Spec>
-    <Spec label="with custom theme" listPropsOfNestedChild>
-      <ThemeProvider scope="local" theme="vrtLink">
-        <Link to="/">A label text</Link>
-      </ThemeProvider>
-    </Spec>
     <Spec label="intlMessage">
       <Link to="/" intlMessage={intlMessage} />
     </Spec>
-    <Spec label="tone - inverted" theme="vrtDark">
+    <Spec label="tone - inverted" backgroundColor="black">
       <Link to="/" tone="inverted">
         An inverted label text
       </Link>

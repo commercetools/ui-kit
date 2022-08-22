@@ -42,7 +42,7 @@ export const component = () => (
         icon={<InformationIcon />}
       />
     </Spec>
-    <Spec label="inverted" theme="vrtDark">
+    <Spec label="inverted" backgroundColor="black">
       <FlatButton
         tone="inverted"
         label="A label text"
@@ -52,7 +52,7 @@ export const component = () => (
     </Spec>
     <Spec
       label="secondary in dark theme"
-      theme="vrtDark"
+      backgroundColor="black"
       listPropsOfNestedChild
     >
       <ThemeProvider scope="local" theme="vrtDark">

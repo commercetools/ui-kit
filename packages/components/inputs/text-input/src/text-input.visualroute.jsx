@@ -87,18 +87,5 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <Spec
-      label="with custom theme (custom fontSize and error color)"
-      listPropsOfNestedChild
-    >
-      <ThemeProvider scope="local" theme="vrtTextInput">
-        <TextInput
-          value={value}
-          onChange={() => {}}
-          horizontalConstraint={7}
-          hasError={true}
-        />
-      </ThemeProvider>
-    </Spec>
   </Suite>
 );
