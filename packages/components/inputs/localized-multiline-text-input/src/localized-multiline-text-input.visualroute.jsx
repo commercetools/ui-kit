@@ -3,8 +3,7 @@ import {
   ErrorMessage,
   WarningMessage,
 } from '@commercetools-frontend/ui-kit';
-import { ThemeProvider } from '@commercetools-uikit/design-system';
-import { Suite, Spec } from '../../../../../test/percy';
+import { Suite, Spec, DarkThemeProvider } from '../../../../../test/percy';
 
 const lorem =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
@@ -160,13 +159,13 @@ export const component = () => (
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <ThemeProvider scope="local" theme="vrtDark">
+      <DarkThemeProvider>
         <LocalizedMultilineTextInput
           value={value}
           onChange={() => {}}
           selectedLanguage="en"
         />
-      </ThemeProvider>
+      </DarkThemeProvider>
     </Spec>
   </Suite>
 );

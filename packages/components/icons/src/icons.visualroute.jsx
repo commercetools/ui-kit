@@ -1,14 +1,11 @@
 import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
-import {
-  customProperties,
-  ThemeProvider,
-} from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import * as icons from '@commercetools-uikit/icons';
 import InlineSvg from '@commercetools-uikit/icons/inline-svg';
 import Text from '@commercetools-uikit/text';
 import Spacings from '@commercetools-uikit/spacings';
-import { Suite, Spec } from '../../../../test/percy';
+import { Suite, Spec, DarkThemeProvider } from '../../../../test/percy';
 
 const IconList = styled.div`
   display: grid;
@@ -106,9 +103,9 @@ export const component = () => (
             backgroundColor="black"
             omitPropsList
           >
-            <ThemeProvider scope="local" theme="vrtDark">
+            <DarkThemeProvider>
               <IconList>{renderIcon('ClockIcon', color, 'big')}</IconList>
-            </ThemeProvider>
+            </DarkThemeProvider>
           </Spec>
         ))}
       </Suite>

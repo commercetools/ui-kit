@@ -1,6 +1,5 @@
 import { PasswordInput } from '@commercetools-frontend/ui-kit';
-import { ThemeProvider } from '@commercetools-uikit/design-system';
-import { Suite, Spec } from '../../../../../test/percy';
+import { Suite, Spec, DarkThemeProvider } from '../../../../../test/percy';
 
 const value = 'hello world how are you?';
 
@@ -78,13 +77,13 @@ export const component = () => (
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <ThemeProvider scope="local" theme="vrtDark">
+      <DarkThemeProvider>
         <PasswordInput
           value={value}
           onChange={() => {}}
           horizontalConstraint={7}
         />
-      </ThemeProvider>
+      </DarkThemeProvider>
     </Spec>
   </Suite>
 );

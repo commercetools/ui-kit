@@ -3,7 +3,7 @@ import {
   InformationIcon,
   SecondaryIconButton,
 } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec } from '../../../../../test/percy';
+import { Suite, Spec, DarkThemeProvider } from '../../../../../test/percy';
 
 export const routePath = '/secondary-icon-button';
 
@@ -29,13 +29,13 @@ export const component = () => (
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <ThemeProvider scope="local" theme="vrtDark">
+      <DarkThemeProvider>
         <SecondaryIconButton
           icon={<InformationIcon />}
           label="A label text"
           onClick={() => {}}
         />
-      </ThemeProvider>
+      </DarkThemeProvider>
     </Spec>
     <Spec label="color - solid">
       <SecondaryIconButton
