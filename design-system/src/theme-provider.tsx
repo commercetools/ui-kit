@@ -36,6 +36,7 @@ type ThemeProviderProps = {
   children: ReactNode;
   theme?: string;
   scope?: 'global' | 'local';
+  customPropertiesOverrides: Record<string, string>;
 };
 
 const validateTheme = (themeName?: string): ThemeName => {
@@ -69,13 +70,17 @@ const ThemeProvider = (props: ThemeProviderProps) => {
   }, []);
 
   useLayoutEffect(() => {
-    const vars = toVars(themes[theme]);
+    const vars = toVars(
+      props.customPropertiesOverrides
+        ? { ...themes[theme], ...props.customPropertiesOverrides }
+        : themes[theme]
+    );
     const targetElement =
       props.scope === 'local' ? localScopeElement.current : root.current;
     Object.entries(vars).forEach(([key, value]) => {
       targetElement?.style.setProperty(key, value);
     });
-  }, [theme, props.scope]);
+  }, [theme, props.scope, props.customPropertiesOverrides]);
 
   const value = useMemo(() => {
     return { theme, changeTheme };
