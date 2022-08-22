@@ -1,5 +1,5 @@
 import { TimeInput } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, DarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
 
 const value = '3:00 PM';
 
@@ -43,9 +43,9 @@ export const component = () => (
       />
     </Spec>
     <Spec label="with custom (inverted) theme" backgroundColor="black">
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <TimeInput value={value} onChange={() => {}} horizontalConstraint={7} />
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
   </Suite>
 );

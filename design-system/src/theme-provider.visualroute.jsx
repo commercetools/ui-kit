@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import {
   ThemeProvider,
   useTheme,
@@ -5,9 +6,28 @@ import {
 } from '@commercetools-uikit/design-system';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
-import { Suite, Spec } from '../../test/percy';
+import { Suite, Spec, LocalDarkThemeProvider } from '../../test/percy';
 
 export const routePath = '/theme-provider';
+
+const LocalThemeProvider = (props) => {
+  const ref = useRef(null);
+
+  return (
+    <div ref={ref}>
+      <ThemeProvider
+        ref={ref}
+        customPropertiesOverrides={props.customPropertiesOverrides}
+      >
+        {props.children}
+      </ThemeProvider>
+    </div>
+  );
+};
+LocalThemeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+  customPropertiesOverrides: PropTypes.object,
+};
 
 const DummyComponent = (props) => {
   const { theme } = useTheme();
@@ -16,12 +36,14 @@ const DummyComponent = (props) => {
       style={{
         color: props.color
           ? `var(--${kebabCase(props.color)})`
-          : customProperties.colorPrimary,
+          : customProperties.colorSolid,
+        backgroundColor: customProperties.colorSurface,
+        margin: 0,
       }}
     >
       {props.title ?? (
         <>
-          Title with {theme} theme <i>colorPrimary</i> design token
+          Title with {theme} theme <i>colorSolid</i> design token
         </>
       )}
     </h1>
@@ -29,66 +51,62 @@ const DummyComponent = (props) => {
 };
 DummyComponent.propTypes = {
   color: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 export const component = () => (
   <Suite>
     <Spec label="use default theme">
-      <ThemeProvider scope="local">
+      <LocalThemeProvider>
         <DummyComponent />
-      </ThemeProvider>
+      </LocalThemeProvider>
     </Spec>
 
     <Spec label="use dark theme">
-      <ThemeProvider scope="local" theme="dark">
+      <LocalDarkThemeProvider theme="dark">
         <DummyComponent />
-      </ThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
 
     <Spec label="repeat default theme">
-      <ThemeProvider scope="local">
+      <LocalThemeProvider>
         <DummyComponent />
-      </ThemeProvider>
+      </LocalThemeProvider>
     </Spec>
 
     <Spec label="repeat dark theme">
-      <ThemeProvider scope="local" theme="dark">
+      <LocalDarkThemeProvider theme="dark">
         <DummyComponent />
-      </ThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
 
     <Spec label="overridden default theme">
-      <ThemeProvider
-        scope="local"
-        theme="default"
-        customPropertiesOverrides={{ colorPrimary: 'red' }}
-      >
-        <DummyComponent />
-      </ThemeProvider>
+      <LocalThemeProvider customPropertiesOverrides={{ colorSolid: 'red' }}>
+        <DummyComponent
+          title={
+            <>
+              Title with overridden <i>colorSolid</i> design token
+            </>
+          }
+        />
+      </LocalThemeProvider>
     </Spec>
 
     <Spec label="custom property with double hyphen and kebab-case naming added to default theme">
-      <ThemeProvider
-        scope="local"
-        theme="default"
+      <LocalThemeProvider
         customPropertiesOverrides={{ '--custom-color': 'blue' }}
       >
         <DummyComponent
           color="--custom-color"
           title="Title with custom color"
         />
-      </ThemeProvider>
+      </LocalThemeProvider>
     </Spec>
 
     <Spec label="custom property with camelCase naming added to default theme">
-      <ThemeProvider
-        scope="local"
-        theme="default"
-        customPropertiesOverrides={{ customColor: 'tomato' }}
-      >
+      <LocalThemeProvider customPropertiesOverrides={{ customColor: 'tomato' }}>
         <DummyComponent color="customColor" title="Title with custom color" />
-      </ThemeProvider>
+      </LocalThemeProvider>
     </Spec>
   </Suite>
 );

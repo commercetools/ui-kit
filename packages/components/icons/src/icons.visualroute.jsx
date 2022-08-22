@@ -5,7 +5,7 @@ import * as icons from '@commercetools-uikit/icons';
 import InlineSvg from '@commercetools-uikit/icons/inline-svg';
 import Text from '@commercetools-uikit/text';
 import Spacings from '@commercetools-uikit/spacings';
-import { Suite, Spec, DarkThemeProvider } from '../../../../test/percy';
+import { Suite, Spec, LocalDarkThemeProvider } from '../../../../test/percy';
 
 const IconList = styled.div`
   display: grid;
@@ -103,9 +103,9 @@ export const component = () => (
             backgroundColor="black"
             omitPropsList
           >
-            <DarkThemeProvider>
+            <LocalDarkThemeProvider>
               <IconList>{renderIcon('ClockIcon', color, 'big')}</IconList>
-            </DarkThemeProvider>
+            </LocalDarkThemeProvider>
           </Spec>
         ))}
       </Suite>
