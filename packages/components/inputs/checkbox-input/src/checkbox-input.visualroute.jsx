@@ -1,6 +1,5 @@
 import { CheckboxInput } from '@commercetools-frontend/ui-kit';
-import { ThemeProvider } from '@commercetools-uikit/design-system';
-import { Suite, Spec } from '../../../../../test/percy';
+import { Suite, Spec, DarkThemeProvider } from '../../../../../test/percy';
 
 export const routePath = '/checkbox-input';
 
@@ -127,22 +126,22 @@ export const component = () => (
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <ThemeProvider scope="local" theme="vrtDark">
+      <DarkThemeProvider>
         <CheckboxInput onChange={() => {}} value="value">
           I want kale
         </CheckboxInput>
-      </ThemeProvider>
+      </DarkThemeProvider>
     </Spec>
     <Spec
       label="with custom (dark) theme checked"
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <ThemeProvider scope="local" theme="vrtDark">
+      <DarkThemeProvider>
         <CheckboxInput onChange={() => {}} value="value" isChecked={true}>
           I want pizza
         </CheckboxInput>
-      </ThemeProvider>
+      </DarkThemeProvider>
     </Spec>
   </Suite>
 );

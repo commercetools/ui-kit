@@ -1,6 +1,5 @@
-import { ThemeProvider } from '@commercetools-uikit/design-system';
 import { FlatButton, InformationIcon } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec } from '../../../../../test/percy';
+import { Suite, Spec, DarkThemeProvider } from '../../../../../test/percy';
 
 export const routePath = '/flat-button';
 
@@ -55,14 +54,14 @@ export const component = () => (
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <ThemeProvider scope="local" theme="vrtDark">
+      <DarkThemeProvider>
         <FlatButton
           tone="secondary"
           label="A label text"
           onClick={() => {}}
           icon={<InformationIcon />}
         />
-      </ThemeProvider>
+      </DarkThemeProvider>
     </Spec>
     <Spec
       label="as anchor, with a multiline text and icon left"
