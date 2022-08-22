@@ -2,7 +2,7 @@ import {
   LocalizedTextInput,
   ErrorMessage,
 } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, DarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
 
 const value = {
   en: 'hello world',
@@ -110,14 +110,14 @@ export const component = () => (
       omitPropsList={true}
       backgroundColor="black"
     >
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <LocalizedTextInput
           value={value}
           onChange={() => {}}
           selectedLanguage="en"
           horizontalConstraint={7}
         />
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
   </Suite>
 );

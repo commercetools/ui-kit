@@ -1,5 +1,5 @@
 import { Label } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, DarkThemeProvider } from '../../../../test/percy';
+import { Suite, Spec, LocalDarkThemeProvider } from '../../../../test/percy';
 
 export const routePath = '/label';
 
@@ -19,9 +19,9 @@ export const component = () => (
       </Label>
     </Spec>
     <Spec label="when inverted" backgroundColor="purple" listPropsOfNestedChild>
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <Label tone="inverted">Hello</Label>
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
     <Spec label="intlMessage">
       <Label intlMessage={intlMessage} />

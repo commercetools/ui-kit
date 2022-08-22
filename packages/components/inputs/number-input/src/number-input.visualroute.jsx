@@ -1,5 +1,5 @@
 import { NumberInput } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, DarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
 
 const value = '18';
 
@@ -65,13 +65,13 @@ export const component = () => (
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <NumberInput
           value={value}
           onChange={() => {}}
           horizontalConstraint={7}
         />
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
   </Suite>
 );

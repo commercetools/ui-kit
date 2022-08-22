@@ -1,9 +1,8 @@
-import { ThemeProvider } from '@commercetools-uikit/design-system';
 import {
   InformationIcon,
   SecondaryIconButton,
 } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, DarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
 
 export const routePath = '/secondary-icon-button';
 
@@ -29,13 +28,13 @@ export const component = () => (
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <SecondaryIconButton
           icon={<InformationIcon />}
           label="A label text"
           onClick={() => {}}
         />
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
     <Spec label="color - solid">
       <SecondaryIconButton

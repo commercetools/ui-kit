@@ -161,18 +161,5 @@ export const component = () => (
         {longText}
       </Tag>
     </Spec>
-
-    <Spec
-      label="Dark theme - with to"
-      propsToList={[...basePropsToList, 'to']}
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <ThemeProvider scope="local" theme="vrtTag">
-        <Tag type="normal" to="foo/bar">
-          Tag
-        </Tag>
-      </ThemeProvider>
-    </Spec>
   </Suite>
 );

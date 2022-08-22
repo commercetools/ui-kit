@@ -1,12 +1,14 @@
 import {
+  forwardRef,
   createContext,
-  useLayoutEffect,
+  useEffect,
   useState,
   useMemo,
   useContext,
   useCallback,
   useRef,
   type ReactNode,
+  type MutableRefObject,
 } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isEmpty from 'lodash/isEmpty';
@@ -35,7 +37,6 @@ const toVars = (obj: Record<string, string>) =>
 type ThemeProviderProps = {
   children: ReactNode;
   theme?: string;
-  scope?: 'global' | 'local';
   customPropertiesOverrides: Record<string, string>;
 };
 
@@ -58,29 +59,33 @@ const validateTheme = (themeName?: string): ThemeName => {
 // used to cover SSR builds (for instance in Gatsby)
 const isBrowser = typeof window !== 'undefined';
 
-const ThemeProvider = (props: ThemeProviderProps) => {
-  const root = useRef<HTMLElement>(
-    isBrowser ? document.querySelector(':root') : null
+const ThemeProvider = forwardRef<
+  MutableRefObject<HTMLDivElement>,
+  ThemeProviderProps
+>((props, ref) => {
+  const rootRef = useRef<HTMLElement>(
+    isBrowser ? document.querySelector<HTMLElement>(':root') : null
   );
-  const localScopeElement = useRef<HTMLDivElement>(null);
   const [theme, setTheme] = useState<ThemeName>(validateTheme(props?.theme));
 
   const changeTheme = useCallback((newTheme: string) => {
     setTheme(validateTheme(newTheme));
   }, []);
 
-  useLayoutEffect(() => {
+  const localRef = ref as unknown as MutableRefObject<HTMLDivElement>;
+
+  useEffect(() => {
+    const targetRef = localRef?.current ? localRef.current : rootRef?.current;
     const vars = toVars(
       props.customPropertiesOverrides
         ? { ...themes[theme], ...props.customPropertiesOverrides }
         : themes[theme]
     );
-    const targetElement =
-      props.scope === 'local' ? localScopeElement.current : root.current;
+
     Object.entries(vars).forEach(([key, value]) => {
-      targetElement?.style.setProperty(key, value);
+      targetRef?.style.setProperty(key, value);
     });
-  }, [theme, props.scope, props.customPropertiesOverrides]);
+  }, [theme, props.customPropertiesOverrides, localRef]);
 
   const value = useMemo(() => {
     return { theme, changeTheme };
@@ -88,10 +93,11 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
   return (
     <ThemeContext.Provider value={value}>
-      <div ref={localScopeElement}>{props.children}</div>
+      {props.children}
     </ThemeContext.Provider>
   );
-};
+});
+ThemeProvider.displayName = 'ThemeProvider';
 
 const useTheme = () => {
   const context = useContext(ThemeContext);

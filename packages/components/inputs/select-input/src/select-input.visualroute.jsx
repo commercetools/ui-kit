@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Route, Switch } from 'react-router-dom';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, DarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
 import { WorldIcon } from '../../../icons';
 
 const defaultOptions = [
@@ -118,14 +118,14 @@ const DefaultRoute = () => (
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <SelectInput
           value={value}
           onChange={() => {}}
           options={options}
           horizontalConstraint={7}
         />
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
     <Spec label="when read-only">
       <SelectInput
@@ -189,7 +189,7 @@ const OpenRouteDarkTheme = () => {
         backgroundColor="black"
         listPropsOfNestedChild
       >
-        <DarkThemeProvider>
+        <LocalDarkThemeProvider>
           <SelectInput
             id="select-input"
             value={value}
@@ -197,7 +197,7 @@ const OpenRouteDarkTheme = () => {
             options={longOptions}
             horizontalConstraint={7}
           />
-        </DarkThemeProvider>
+        </LocalDarkThemeProvider>
       </Spec>
     </Suite>
   );

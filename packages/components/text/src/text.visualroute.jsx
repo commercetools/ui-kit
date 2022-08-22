@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Text } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, DarkThemeProvider } from '../../../../test/percy';
+import { Suite, Spec, LocalDarkThemeProvider } from '../../../../test/percy';
 
 const NarrowBox = styled.div`
   width: 200px;
@@ -112,9 +112,9 @@ export const component = () => (
         backgroundColor="black"
         listPropsOfNestedChild
       >
-        <DarkThemeProvider>
+        <LocalDarkThemeProvider>
           <Text.Body tone="inverted">Body text inverted</Text.Body>
-        </DarkThemeProvider>
+        </LocalDarkThemeProvider>
       </Spec>
     </NarrowBox>
     <NarrowBox>
@@ -158,9 +158,9 @@ export const component = () => (
         backgroundColor="black"
         listPropsOfNestedChild
       >
-        <DarkThemeProvider>
+        <LocalDarkThemeProvider>
           <Text.Detail tone="inverted">Detail text inverted</Text.Detail>
-        </DarkThemeProvider>
+        </LocalDarkThemeProvider>
       </Spec>
     </NarrowBox>
     <NarrowBox>
@@ -206,54 +206,54 @@ export const component = () => (
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <Text.Headline as="h1">Dark theme</Text.Headline>
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
     <Spec
       label="Subheadline (dark theme)"
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <Text.Subheadline as="h4">Dark theme</Text.Subheadline>
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
     <Spec
       label="Body (dark theme)"
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <Text.Body>Dark theme</Text.Body>
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
     <Spec
       label="Body as span element (dark theme)"
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <Text.Body as="span">Dark theme</Text.Body>
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
     <Spec
       label="Detail (dark theme)"
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <Text.Detail>Dark theme</Text.Detail>
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
     <Spec
       label="Wrap (dark theme)"
       backgroundColor="black"
       listPropsOfNestedChild
     >
-      <DarkThemeProvider>
+      <LocalDarkThemeProvider>
         <Text.Wrap>Dark theme</Text.Wrap>
-      </DarkThemeProvider>
+      </LocalDarkThemeProvider>
     </Spec>
   </Suite>
 );
