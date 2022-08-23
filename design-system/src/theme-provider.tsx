@@ -8,10 +8,11 @@ import {
   useCallback,
   useRef,
   type ReactNode,
-  type MutableRefObject,
+  type RefObject,
 } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isEmpty from 'lodash/isEmpty';
+import isObject from 'lodash/isObject';
 import { warning } from '@commercetools-uikit/utils';
 import { themes, themesNames } from './custom-properties';
 
@@ -37,7 +38,7 @@ const toVars = (obj: Record<string, string>) =>
 type ThemeProviderProps = {
   children: ReactNode;
   theme?: string;
-  customPropertiesOverrides: Record<string, string>;
+  customPropertiesOverrides?: Record<string, string>;
 };
 
 const validateTheme = (themeName?: string): ThemeName => {
@@ -59,44 +60,46 @@ const validateTheme = (themeName?: string): ThemeName => {
 // used to cover SSR builds (for instance in Gatsby)
 const isBrowser = typeof window !== 'undefined';
 
-const ThemeProvider = forwardRef<
-  MutableRefObject<HTMLDivElement>,
-  ThemeProviderProps
->((props, ref) => {
-  const rootRef = useRef<HTMLElement>(
-    isBrowser ? document.querySelector<HTMLElement>(':root') : null
-  );
-  const [theme, setTheme] = useState<ThemeName>(validateTheme(props?.theme));
-
-  const changeTheme = useCallback((newTheme: string) => {
-    setTheme(validateTheme(newTheme));
-  }, []);
-
-  const localRef = ref as unknown as MutableRefObject<HTMLDivElement>;
-
-  useEffect(() => {
-    const targetRef = localRef?.current ? localRef.current : rootRef?.current;
-    const vars = toVars(
-      props.customPropertiesOverrides
-        ? { ...themes[theme], ...props.customPropertiesOverrides }
-        : themes[theme]
+const ThemeProvider = forwardRef<HTMLDivElement, ThemeProviderProps>(
+  (props, ref) => {
+    const rootRef = useRef<HTMLElement>(
+      isBrowser ? document.querySelector<HTMLElement>(':root') : null
     );
+    const [theme, setTheme] = useState<ThemeName>(validateTheme(props?.theme));
 
-    Object.entries(vars).forEach(([key, value]) => {
-      targetRef?.style.setProperty(key, value);
-    });
-  }, [theme, props.customPropertiesOverrides, localRef]);
+    const changeTheme = useCallback((newTheme: string) => {
+      setTheme(validateTheme(newTheme));
+    }, []);
 
-  const value = useMemo(() => {
-    return { theme, changeTheme };
-  }, [theme, changeTheme]);
+    const localRef = ref as unknown as RefObject<HTMLDivElement>;
 
-  return (
-    <ThemeContext.Provider value={value}>
-      {props.children}
-    </ThemeContext.Provider>
-  );
-});
+    useEffect(() => {
+      const targetElement = localRef?.current
+        ? localRef.current
+        : rootRef?.current;
+      const vars = toVars(
+        props.customPropertiesOverrides &&
+          isObject(props.customPropertiesOverrides)
+          ? { ...themes[theme], ...props.customPropertiesOverrides }
+          : themes[theme]
+      );
+
+      Object.entries(vars).forEach(([key, value]) => {
+        targetElement?.style.setProperty(key, value);
+      });
+    }, [theme, props.customPropertiesOverrides, localRef]);
+
+    const value = useMemo(() => {
+      return { theme, changeTheme };
+    }, [theme, changeTheme]);
+
+    return (
+      <ThemeContext.Provider value={value}>
+        {props.children}
+      </ThemeContext.Provider>
+    );
+  }
+);
 ThemeProvider.displayName = 'ThemeProvider';
 
 const useTheme = () => {

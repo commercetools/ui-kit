@@ -1,33 +1,14 @@
-import { useRef } from 'react';
-import {
-  ThemeProvider,
-  useTheme,
-  customProperties,
-} from '@commercetools-uikit/design-system';
+import { useTheme, customProperties } from '@commercetools-uikit/design-system';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
-import { Suite, Spec, LocalDarkThemeProvider } from '../../test/percy';
+import {
+  Suite,
+  Spec,
+  LocalDarkThemeProvider,
+  LocalThemeProvider,
+} from '../../test/percy';
 
 export const routePath = '/theme-provider';
-
-const LocalThemeProvider = (props) => {
-  const ref = useRef(null);
-
-  return (
-    <div ref={ref}>
-      <ThemeProvider
-        ref={ref}
-        customPropertiesOverrides={props.customPropertiesOverrides}
-      >
-        {props.children}
-      </ThemeProvider>
-    </div>
-  );
-};
-LocalThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  customPropertiesOverrides: PropTypes.object,
-};
 
 const DummyComponent = (props) => {
   const { theme } = useTheme();
