@@ -126,7 +126,7 @@ const ChoiceGroup = (props) => {
   );
 
   return (
-    <GroupStyle isVisible={Object.entries(choices).length > 0}>
+    <GroupStyle isVisible={Object.values(choices).length > 0}>
       <a
         id={`choice-${getDefaultThemeChoiceGroupProperty(
           props.choiceGroup,

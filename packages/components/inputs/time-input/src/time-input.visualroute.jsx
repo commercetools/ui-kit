@@ -42,7 +42,11 @@ export const component = () => (
         isReadOnly={true}
       />
     </Spec>
-    <Spec label="with custom (inverted) theme" backgroundColor="black">
+    <Spec
+      label="with custom (inverted) theme"
+      backgroundColor="black"
+      listPropsOfNestedChild
+    >
       <LocalDarkThemeProvider>
         <TimeInput value={value} onChange={() => {}} horizontalConstraint={7} />
       </LocalDarkThemeProvider>
