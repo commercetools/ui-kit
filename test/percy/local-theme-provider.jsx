@@ -6,13 +6,19 @@ import { useFieldId } from '@commercetools-uikit/hooks';
 const sequentialId = createSequentialId('local-theme-provider-');
 
 export const LocalThemeProvider = (props) => {
-  const id = useFieldId(undefined, sequentialId);
+  const id = useFieldId(props.parentId, sequentialId);
+  let parentSelector;
+  if (props.parentSelector) {
+    parentSelector = props.parentSelector;
+  } else {
+    parentSelector = () => document.getElementById(id);
+  }
   return (
     <div id={id}>
       <ThemeProvider
         theme={props.theme}
         themeOverrides={props.themeOverrides}
-        parentSelector={() => document.getElementById(id)}
+        parentSelector={parentSelector}
       />
       {props.children}
     </div>
@@ -22,6 +28,8 @@ LocalThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
   themeOverrides: PropTypes.object,
   theme: PropTypes.string,
+  parentId: PropTypes.string,
+  parentSelector: PropTypes.func,
 };
 
 const darkTheme = {
@@ -33,10 +41,18 @@ const darkTheme = {
 };
 
 export const LocalDarkThemeProvider = (props) => (
-  <LocalThemeProvider theme="dark" themeOverrides={darkTheme}>
+  <LocalThemeProvider
+    theme={props.theme}
+    themeOverrides={darkTheme}
+    parentId={props.parentId}
+    parentSelector={props.parentSelector}
+  >
     {props.children}
   </LocalThemeProvider>
 );
 LocalDarkThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  theme: PropTypes.string,
+  parentId: PropTypes.string,
+  parentSelector: PropTypes.func,
 };
