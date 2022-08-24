@@ -154,18 +154,5 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <Spec
-      label="with custom theme"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <LocalizedMultilineTextInput
-          value={value}
-          onChange={() => {}}
-          selectedLanguage="en"
-        />
-      </LocalDarkThemeProvider>
-    </Spec>
   </Suite>
 );

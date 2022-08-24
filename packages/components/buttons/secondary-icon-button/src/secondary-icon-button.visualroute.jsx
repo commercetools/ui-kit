@@ -23,19 +23,6 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
-    <Spec
-      label="with custom (dark) theme"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <SecondaryIconButton
-          icon={<InformationIcon />}
-          label="A label text"
-          onClick={() => {}}
-        />
-      </LocalDarkThemeProvider>
-    </Spec>
     <Spec label="color - solid">
       <SecondaryIconButton
         icon={<InformationIcon />}

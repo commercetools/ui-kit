@@ -50,20 +50,6 @@ export const component = () => (
       />
     </Spec>
     <Spec
-      label="secondary in dark theme"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <FlatButton
-          tone="secondary"
-          label="A label text"
-          onClick={() => {}}
-          icon={<InformationIcon />}
-        />
-      </LocalDarkThemeProvider>
-    </Spec>
-    <Spec
       label="as anchor, with a multiline text and icon left"
       listPropsOfNestedChild
     >

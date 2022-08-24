@@ -60,18 +60,5 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <Spec
-      label="with custom (inverted) theme"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <NumberInput
-          value={value}
-          onChange={() => {}}
-          horizontalConstraint={7}
-        />
-      </LocalDarkThemeProvider>
-    </Spec>
   </Suite>
 );

@@ -90,19 +90,5 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
-
-    <Spec
-      label="with custom (inverted) theme"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <MultilineTextInput
-          value={value}
-          onChange={() => {}}
-          horizontalConstraint={7}
-        />
-      </LocalDarkThemeProvider>
-    </Spec>
   </Suite>
 );

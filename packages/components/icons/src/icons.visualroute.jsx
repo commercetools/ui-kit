@@ -94,22 +94,6 @@ export const component = () => (
         </Suite>
       </Route>
     ))}
-    <Route exact path={`${routePath}/theme`}>
-      <Suite>
-        {colors.map((color) => (
-          <Spec
-            key={color}
-            label={`Themed Icons - Color: ${color}`}
-            backgroundColor="black"
-            omitPropsList
-          >
-            <LocalDarkThemeProvider>
-              <IconList>{renderIcon('ClockIcon', color, 'big')}</IconList>
-            </LocalDarkThemeProvider>
-          </Spec>
-        ))}
-      </Suite>
-    </Route>
     <Route exact path={`${routePath}/inline-svg`}>
       <Suite>
         <Spacings.Stack>

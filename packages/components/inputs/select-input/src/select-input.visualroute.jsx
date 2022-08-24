@@ -113,20 +113,6 @@ const DefaultRoute = () => (
         horizontalConstraint={7}
       />
     </Spec>
-    <Spec
-      label="with custom (dark) theme"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <SelectInput
-          value={value}
-          onChange={() => {}}
-          options={options}
-          horizontalConstraint={7}
-        />
-      </LocalDarkThemeProvider>
-    </Spec>
     <Spec label="when read-only">
       <SelectInput
         value={value}
@@ -181,28 +167,6 @@ const OpenRoute = () => (
   </Suite>
 );
 
-const OpenRouteDarkTheme = () => {
-  return (
-    <Suite>
-      <Spec
-        label="with custom (dark) theme"
-        backgroundColor="black"
-        listPropsOfNestedChild
-      >
-        <LocalDarkThemeProvider>
-          <SelectInput
-            id="select-input"
-            value={value}
-            onChange={() => {}}
-            options={longOptions}
-            horizontalConstraint={7}
-          />
-        </LocalDarkThemeProvider>
-      </Spec>
-    </Suite>
-  );
-};
-
 const OpenRouteWithOptionGroups = () => (
   <Suite>
     <Spec label="option group with no divider">
@@ -235,10 +199,6 @@ const OpenRouteWithOptionGroupsAndDivider = () => (
 export const component = () => (
   <Switch>
     <Route path={`${routePath}/open`} component={OpenRoute} />
-    <Route
-      path={`${routePath}/open-dark`}
-      render={() => <OpenRouteDarkTheme />}
-    />
     <Route
       path={`${routePath}/open-with-option-groups`}
       component={OpenRouteWithOptionGroups}
