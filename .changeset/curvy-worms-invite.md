@@ -2,4 +2,4 @@
 '@commercetools-uikit/accessible-button': patch
 ---
 
-keep role attribute of the accessibility button even when disabled
+fix a bug with accessibility attributes when using the `as` property
