@@ -20,7 +20,7 @@ const ThemeToggler = (props) => {
   const { changeTheme } = useTheme();
 
   useEffect(() => {
-    changeTheme(props.theme);
+    changeTheme({ newTheme: props.theme });
   });
 
   return <></>;
@@ -28,10 +28,11 @@ const ThemeToggler = (props) => {
 
 const ThemeWrapper = (props) => {
   return (
-    <ThemeProvider theme={defaultThemeName}>
+    <>
+      <ThemeProvider theme={defaultThemeName} />
       <ThemeToggler theme={props.name} />
       {props.children}
-    </ThemeProvider>
+    </>
   );
 };
 

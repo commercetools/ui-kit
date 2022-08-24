@@ -62,7 +62,7 @@ export const component = () => (
     </Spec>
 
     <Spec label="overridden default theme">
-      <LocalThemeProvider customPropertiesOverrides={{ colorSolid: 'red' }}>
+      <LocalThemeProvider themeOverrides={{ colorSolid: 'red' }}>
         <DummyComponent
           title={
             <>
@@ -74,9 +74,7 @@ export const component = () => (
     </Spec>
 
     <Spec label="custom property with double hyphen and kebab-case naming added to default theme">
-      <LocalThemeProvider
-        customPropertiesOverrides={{ '--custom-color': 'blue' }}
-      >
+      <LocalThemeProvider themeOverrides={{ '--custom-color': 'blue' }}>
         <DummyComponent
           color="--custom-color"
           title="Title with custom color"
@@ -85,7 +83,7 @@ export const component = () => (
     </Spec>
 
     <Spec label="custom property with camelCase naming added to default theme">
-      <LocalThemeProvider customPropertiesOverrides={{ customColor: 'tomato' }}>
+      <LocalThemeProvider themeOverrides={{ customColor: 'tomato' }}>
         <DummyComponent color="customColor" title="Title with custom color" />
       </LocalThemeProvider>
     </Spec>
