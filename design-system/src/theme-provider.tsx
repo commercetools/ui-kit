@@ -1,6 +1,7 @@
-import { useLayoutEffect, useMemo } from 'react';
+import { useLayoutEffect, useMemo, useState, useCallback } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
+import merge from 'lodash/merge';
 import { themes, themesNames } from './custom-properties';
 
 type ThemeName = keyof typeof themes;
@@ -31,12 +32,12 @@ const validateTheme = (themeName?: string): ThemeName => {
 // used to cover SSR builds (for instance in Gatsby)
 const isBrowser = typeof window !== 'undefined';
 
-const defaultParentSelector = () =>
-  document.querySelector(':root') as HTMLElement;
+const defaultParentSelector = (): HTMLElement | null =>
+  document.querySelector(':root');
 
 type TChangeTheme = {
   newTheme?: string;
-  parentSelector: () => HTMLElement | null;
+  parentSelector: typeof defaultParentSelector;
   themeOverrides?: Record<string, string>;
 };
 
@@ -50,7 +51,7 @@ const changeTheme = ({
   target?.setAttribute('data-theme', validTheme);
   const vars = toVars(
     themeOverrides && isObject(themeOverrides)
-      ? { ...themes[validTheme], ...themeOverrides }
+      ? merge(themes[validTheme], themeOverrides)
       : themes[validTheme]
   );
 
@@ -62,31 +63,40 @@ const changeTheme = ({
 type ThemeProviderProps = {
   theme?: string;
   themeOverrides?: Record<string, string>;
-  parentSelector: () => HTMLElement | null;
+  parentSelector: typeof defaultParentSelector;
 };
 
 const ThemeProvider = (props: ThemeProviderProps) => {
+  const parentSelector = useCallback(
+    () => props.parentSelector(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
   useLayoutEffect(() => {
     changeTheme({
       newTheme: props.theme,
-      parentSelector: props.parentSelector,
+      parentSelector,
       themeOverrides: props.themeOverrides,
     });
-  }, [props.theme, props.themeOverrides, props.parentSelector]);
+  }, [props.theme, props.themeOverrides, parentSelector]);
 
   return <></>;
 };
 ThemeProvider.displayName = 'ThemeProvider';
 ThemeProvider.defaultProps = {
-  parentSelector: () => document.querySelector(':root') as HTMLElement,
+  parentSelector: defaultParentSelector,
 };
 
-// TODO: refactor - accept param to provide local theme
-const useTheme = () => {
-  const theme = defaultParentSelector().dataset.theme;
+const useTheme = (parentSelector = defaultParentSelector) => {
+  const [theme, setTheme] = useState<string | null | undefined>(null);
+
+  useLayoutEffect(() => {
+    setTheme(isBrowser ? parentSelector()?.dataset.theme : null);
+  });
+
   return useMemo(() => {
     return { theme, changeTheme };
-  }, [theme, changeTheme]);
+  }, [theme]);
 };
 
 export { ThemeProvider, useTheme };
