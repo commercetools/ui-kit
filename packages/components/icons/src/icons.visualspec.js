@@ -25,11 +25,6 @@ describe('Icons', () => {
       })
     );
   });
-  it('Theme', async () => {
-    await page.goto(`${HOST}/icons/theme`);
-    await expect(page).toMatch('Themed Icons');
-    await percySnapshot(page, `Icons - Dark theme`);
-  });
   it('Inline SVG', async () => {
     await page.goto(`${HOST}/icons/inline-svg`);
     await expect(page).toMatch('Inline SVG');

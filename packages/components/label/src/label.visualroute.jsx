@@ -18,11 +18,6 @@ export const component = () => (
         Hello
       </Label>
     </Spec>
-    <Spec label="when inverted" backgroundColor="purple" listPropsOfNestedChild>
-      <LocalDarkThemeProvider>
-        <Label tone="inverted">Hello</Label>
-      </LocalDarkThemeProvider>
-    </Spec>
     <Spec label="intlMessage">
       <Label intlMessage={intlMessage} />
     </Spec>

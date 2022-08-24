@@ -120,28 +120,5 @@ export const component = () => (
         I want mezcal with a worm
       </CheckboxInput>
     </Spec>
-
-    <Spec
-      label="with custom (dark) theme"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <CheckboxInput onChange={() => {}} value="value">
-          I want kale
-        </CheckboxInput>
-      </LocalDarkThemeProvider>
-    </Spec>
-    <Spec
-      label="with custom (dark) theme checked"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <CheckboxInput onChange={() => {}} value="value" isChecked={true}>
-          I want pizza
-        </CheckboxInput>
-      </LocalDarkThemeProvider>
-    </Spec>
   </Suite>
 );

@@ -107,17 +107,6 @@ export const component = () => (
       <Text.Body tone="negative">Body text negative</Text.Body>
     </Spec>
     <NarrowBox>
-      <Spec
-        label="Body - tone - inverted"
-        backgroundColor="black"
-        listPropsOfNestedChild
-      >
-        <LocalDarkThemeProvider>
-          <Text.Body tone="inverted">Body text inverted</Text.Body>
-        </LocalDarkThemeProvider>
-      </Spec>
-    </NarrowBox>
-    <NarrowBox>
       <Spec label="Body - truncate">
         <Text.Body truncate={true}>
           A longer body text that needs to be truncated.
@@ -152,17 +141,6 @@ export const component = () => (
     <Spec label="Detail - tone - negative">
       <Text.Detail tone="negative">Detail text negative</Text.Detail>
     </Spec>
-    <NarrowBox>
-      <Spec
-        label="Detail - tone - inverted"
-        backgroundColor="black"
-        listPropsOfNestedChild
-      >
-        <LocalDarkThemeProvider>
-          <Text.Detail tone="inverted">Detail text inverted</Text.Detail>
-        </LocalDarkThemeProvider>
-      </Spec>
-    </NarrowBox>
     <NarrowBox>
       <Spec label="Detail - truncate">
         <Text.Detail truncate={true}>
@@ -199,61 +177,6 @@ export const component = () => (
     </Spec>
     <Spec label="Detail (intl message)">
       <Text.Detail intlMessage={intlMessage} />
-    </Spec>
-
-    <Spec
-      label="Headline (dark theme)"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <Text.Headline as="h1">Dark theme</Text.Headline>
-      </LocalDarkThemeProvider>
-    </Spec>
-    <Spec
-      label="Subheadline (dark theme)"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <Text.Subheadline as="h4">Dark theme</Text.Subheadline>
-      </LocalDarkThemeProvider>
-    </Spec>
-    <Spec
-      label="Body (dark theme)"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <Text.Body>Dark theme</Text.Body>
-      </LocalDarkThemeProvider>
-    </Spec>
-    <Spec
-      label="Body as span element (dark theme)"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <Text.Body as="span">Dark theme</Text.Body>
-      </LocalDarkThemeProvider>
-    </Spec>
-    <Spec
-      label="Detail (dark theme)"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <Text.Detail>Dark theme</Text.Detail>
-      </LocalDarkThemeProvider>
-    </Spec>
-    <Spec
-      label="Wrap (dark theme)"
-      backgroundColor="black"
-      listPropsOfNestedChild
-    >
-      <LocalDarkThemeProvider>
-        <Text.Wrap>Dark theme</Text.Wrap>
-      </LocalDarkThemeProvider>
     </Spec>
   </Suite>
 );

@@ -104,20 +104,5 @@ export const component = () => (
         hasError={true}
       />
     </Spec>
-
-    <Spec
-      label="with a custom (dark) theme"
-      omitPropsList={true}
-      backgroundColor="black"
-    >
-      <LocalDarkThemeProvider>
-        <LocalizedTextInput
-          value={value}
-          onChange={() => {}}
-          selectedLanguage="en"
-          horizontalConstraint={7}
-        />
-      </LocalDarkThemeProvider>
-    </Spec>
   </Suite>
 );
