@@ -1,25 +1,26 @@
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from '@commercetools-uikit/design-system';
+import { createSequentialId } from '@commercetools-uikit/utils';
+import { useFieldId } from '@commercetools-uikit/hooks';
+
+const sequentialId = createSequentialId('local-theme-provider-');
 
 export const LocalThemeProvider = (props) => {
-  const ref = useRef(null);
-
+  const id = useFieldId(undefined, sequentialId);
   return (
-    <div ref={ref}>
+    <div id={id}>
       <ThemeProvider
-        ref={ref}
         theme={props.theme}
-        customPropertiesOverrides={props.customPropertiesOverrides}
-      >
-        {props.children}
-      </ThemeProvider>
+        themeOverrides={props.themeOverrides}
+        parentSelector={() => document.getElementById(id)}
+      />
+      {props.children}
     </div>
   );
 };
 LocalThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  customPropertiesOverrides: PropTypes.object,
+  themeOverrides: PropTypes.object,
   theme: PropTypes.string,
 };
 
@@ -32,11 +33,10 @@ const darkTheme = {
 };
 
 export const LocalDarkThemeProvider = (props) => (
-  <LocalThemeProvider theme={props.theme} customPropertiesOverrides={darkTheme}>
+  <LocalThemeProvider theme="dark" themeOverrides={darkTheme}>
     {props.children}
   </LocalThemeProvider>
 );
 LocalDarkThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  theme: PropTypes.string,
 };

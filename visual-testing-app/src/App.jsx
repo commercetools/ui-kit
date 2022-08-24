@@ -27,7 +27,8 @@ const allSortedComponents = Object.keys(allUniqueRouteComponents)
   .map((key) => allUniqueRouteComponents[key]);
 
 const App = () => (
-  <ThemeProvider>
+  <>
+    <ThemeProvider />
     <Router>
       <Switch>
         <Route
@@ -64,7 +65,7 @@ const App = () => (
         />
       </Switch>
     </Router>
-  </ThemeProvider>
+  </>
 );
 
 export default App;
