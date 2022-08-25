@@ -23,7 +23,7 @@ const ThemeToggler = (props) => {
     changeTheme({ newTheme: props.theme });
   });
 
-  return <></>;
+  return null;
 };
 
 const ThemeWrapper = (props) => {

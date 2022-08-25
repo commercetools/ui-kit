@@ -80,7 +80,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     });
   }, [props.theme, props.themeOverrides, parentSelector]);
 
-  return <></>;
+  return null;
 };
 ThemeProvider.displayName = 'ThemeProvider';
 ThemeProvider.defaultProps = {
@@ -89,10 +89,15 @@ ThemeProvider.defaultProps = {
 
 const useTheme = (parentSelector = defaultParentSelector) => {
   const [theme, setTheme] = useState<string | null | undefined>(null);
+  const memoizedParentSelector = useCallback(
+    () => parentSelector(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   useLayoutEffect(() => {
-    setTheme(isBrowser ? parentSelector()?.dataset.theme : null);
-  });
+    setTheme(isBrowser ? memoizedParentSelector()?.dataset.theme : null);
+  }, [memoizedParentSelector]);
 
   return useMemo(() => {
     return { theme, changeTheme };
