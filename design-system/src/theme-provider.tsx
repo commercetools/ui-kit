@@ -1,33 +1,17 @@
-import { useLayoutEffect, useMemo, useState, useCallback } from 'react';
+import { useLayoutEffect, useMemo, useState, useRef } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import { themes, themesNames } from './custom-properties';
 
-type ThemeName = keyof typeof themes;
-
 const allThemesNames = Object.keys(themesNames);
+
+type ThemeName = keyof typeof themes;
 
 const toVars = (obj: Record<string, string>) =>
   Object.fromEntries(
     Object.entries(obj).map(([key, value]) => [`--${kebabCase(key)}`, value])
   );
-
-const validateTheme = (themeName?: string): ThemeName => {
-  if (!themeName) {
-    return 'default';
-  }
-  const isNewThemeValid = allThemesNames.includes(themeName);
-  if (isNewThemeValid) {
-    return themeName as ThemeName;
-  }
-  if (!isNewThemeValid) {
-    console.warn(
-      `ThemeProvider: the specified theme '${themeName}' is not supported.`
-    );
-  }
-  return 'default';
-};
 
 // used to cover SSR builds (for instance in Gatsby)
 const isBrowser = typeof window !== 'undefined';
@@ -47,8 +31,19 @@ const changeTheme = ({
   themeOverrides,
 }: TChangeTheme): void => {
   const target = isBrowser ? parentSelector() : null;
-  const validTheme = validateTheme(newTheme);
-  target?.setAttribute('data-theme', validTheme);
+
+  // With no target we can't change themes
+  if (!target) return;
+
+  const validTheme = (
+    allThemesNames.includes(newTheme || 'default') ? newTheme! : 'default'
+  ) as ThemeName;
+  if (newTheme !== validTheme) {
+    console.warn(
+      `ThemeProvider: the specified theme '${newTheme}' is not supported.`
+    );
+  }
+
   const vars = toVars(
     themeOverrides && isObject(themeOverrides)
       ? merge(themes[validTheme], themeOverrides)
@@ -56,29 +51,26 @@ const changeTheme = ({
   );
 
   Object.entries(vars).forEach(([key, value]) => {
-    target?.style.setProperty(key, value);
+    target.style.setProperty(key, value);
   });
+  target.dataset.theme = validTheme;
 };
 
 type ThemeProviderProps = {
+  parentSelector: typeof defaultParentSelector;
   theme?: string;
   themeOverrides?: Record<string, string>;
-  parentSelector: typeof defaultParentSelector;
 };
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-  const parentSelector = useCallback(
-    () => props.parentSelector(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+  const parentSelectorRef = useRef(props.parentSelector);
   useLayoutEffect(() => {
     changeTheme({
       newTheme: props.theme,
-      parentSelector,
+      parentSelector: parentSelectorRef.current,
       themeOverrides: props.themeOverrides,
     });
-  }, [props.theme, props.themeOverrides, parentSelector]);
+  }, [props.theme, props.themeOverrides]);
 
   return null;
 };
@@ -88,19 +80,26 @@ ThemeProvider.defaultProps = {
 };
 
 const useTheme = (parentSelector = defaultParentSelector) => {
-  const [theme, setTheme] = useState<string | null | undefined>(null);
-  const memoizedParentSelector = useCallback(
-    () => parentSelector(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+  const [theme, setTheme] = useState<string>(
+    parentSelector()?.dataset.theme || 'default'
+  );
+  const parentSelectorRef = useRef(parentSelector);
+
+  // So consumers don't have to provide 'parentSelector' again as
+  // they already provided it in the hook call
+  const updateTheme = useRef(
+    ({ newTheme, themeOverrides }: Omit<TChangeTheme, 'parentSelector'>) => {
+      changeTheme({
+        newTheme,
+        parentSelector: parentSelectorRef.current,
+        themeOverrides,
+      });
+      setTheme(newTheme || 'default');
+    }
   );
 
-  useLayoutEffect(() => {
-    setTheme(isBrowser ? memoizedParentSelector()?.dataset.theme : null);
-  }, [memoizedParentSelector]);
-
   return useMemo(() => {
-    return { theme, changeTheme };
+    return { theme, changeTheme: updateTheme.current };
   }, [theme]);
 };
 
