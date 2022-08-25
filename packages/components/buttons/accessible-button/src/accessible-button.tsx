@@ -142,7 +142,7 @@ const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
       buttonProps = {
         type: props.type,
       };
-    } else if (!props.isDisabled) {
+    } else {
       buttonProps = {
         role: 'button',
         tabIndex: '0',

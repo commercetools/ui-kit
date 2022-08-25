@@ -102,5 +102,16 @@ describe('rendering', () => {
         '0'
       );
     });
+    it('should render a div element with accessibility attributes when disabled', () => {
+      render(<AccessibleButton {...props} as="div" isDisabled={true} />);
+      expect(screen.getByLabelText('test-button')).toHaveAttribute(
+        'role',
+        'button'
+      );
+      expect(screen.getByLabelText('test-button')).toHaveAttribute(
+        'tabindex',
+        '0'
+      );
+    });
   });
 });
