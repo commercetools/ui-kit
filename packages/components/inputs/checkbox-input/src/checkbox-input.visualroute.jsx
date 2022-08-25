@@ -1,5 +1,5 @@
 import { CheckboxInput } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 export const routePath = '/checkbox-input';
 

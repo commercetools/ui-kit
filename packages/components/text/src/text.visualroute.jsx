@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Text } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, LocalDarkThemeProvider } from '../../../../test/percy';
+import { Suite, Spec } from '../../../../test/percy';
 
 const NarrowBox = styled.div`
   width: 200px;

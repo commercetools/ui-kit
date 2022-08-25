@@ -1,5 +1,5 @@
 import { TimeInput } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const value = '3:00 PM';
 
