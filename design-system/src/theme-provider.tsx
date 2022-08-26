@@ -34,16 +34,16 @@ const changeTheme = ({
 
   // With no target we can't change themes
   if (!target) return;
-
+  const theme = newTheme ?? 'default';
   const validTheme = (
-    allThemesNames.includes(newTheme || 'default') ? newTheme! : 'default'
+    allThemesNames.includes(theme) ? theme : 'default'
   ) as ThemeName;
-  if (newTheme !== validTheme) {
+  if (newTheme !== undefined && newTheme !== validTheme) {
     console.warn(
       `ThemeProvider: the specified theme '${newTheme}' is not supported.`
     );
   }
-
+  console.log('changeTheme running', newTheme, theme, parentSelector);
   const vars = toVars(
     themeOverrides && isObject(themeOverrides)
       ? merge(themes[validTheme], themeOverrides)
@@ -64,6 +64,9 @@ type ThemeProviderProps = {
 
 const ThemeProvider = (props: ThemeProviderProps) => {
   const parentSelectorRef = useRef(props.parentSelector);
+  /* useLayoutEffect(() => {
+    parentSelectorRef.current = props.parentSelector;
+  }); */
   useLayoutEffect(() => {
     changeTheme({
       newTheme: props.theme,
@@ -85,6 +88,10 @@ const useTheme = (parentSelector = defaultParentSelector) => {
   );
   const parentSelectorRef = useRef(parentSelector);
 
+  /* useLayoutEffect(() => {
+    parentSelectorRef.current = parentSelector;
+  });
+ */
   // So consumers don't have to provide 'parentSelector' again as
   // they already provided it in the hook call
   const updateTheme = useRef(

@@ -10,6 +10,19 @@ import {
 
 export const routePath = '/theme-provider';
 
+const ThemeSwitcher = () => {
+  const { changeTheme, theme } = useTheme();
+  return (
+    <button
+      onClick={() =>
+        changeTheme({ newTheme: theme === 'default' ? 'dark' : 'default' })
+      }
+    >
+      Change theme
+    </button>
+  );
+};
+
 const parentSelector = (id) => () => document.getElementById(id);
 
 const DummyComponent = (props) => {
@@ -41,6 +54,7 @@ DummyComponent.propTypes = {
 
 export const component = () => (
   <Suite>
+    <ThemeSwitcher />
     <Spec label="use global default theme">
       <DummyComponent />
     </Spec>
