@@ -36,7 +36,7 @@ const changeTheme = ({
   if (!target) return;
 
   const validTheme = (
-    allThemesNames.includes(newTheme || 'default') ? newTheme! : 'default'
+    allThemesNames.includes(newTheme || '') ? newTheme! : 'default'
   ) as ThemeName;
   if (newTheme !== validTheme) {
     console.warn(
