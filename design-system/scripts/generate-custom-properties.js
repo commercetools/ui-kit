@@ -31,29 +31,35 @@ const allThemesNames = Object.keys(definitions.choiceGroupsPerTheme);
 const tokens = {};
 const designTokens = {};
 
-Object.entries(definitions.choiceGroupsPerTheme).forEach(
-  ([themeName, themeChoiceGroups]) => {
-    if (!tokens[themeName]) {
-      tokens[themeName] = {};
-    }
-    Object.values(themeChoiceGroups).forEach((themeChoiceGroup) => {
-      Object.entries(themeChoiceGroup.choices).forEach(([key, value]) => {
-        if (tokens[themeName][key])
-          endProgram(`Token "${key} already exists!"`);
+const defaultTheme = definitions.choiceGroupsPerTheme.default;
 
-        if (key !== key.toLowerCase())
-          endProgram(`Tokens "${key}" must be lower case`);
-
-        if (!key.startsWith(themeChoiceGroup.prefix))
-          endProgram(
-            `Expected token "${key}" to start with "${themeChoiceGroup.prefix}" as it is an "${themeChoiceGroup.label}" attribute.`
-          );
-
-        tokens[themeName][key] = value;
-      });
-    });
+Object.keys(definitions.choiceGroupsPerTheme).forEach((themeName) => {
+  if (!tokens[themeName]) {
+    tokens[themeName] = {};
   }
-);
+  Object.entries(defaultTheme).forEach(
+    ([themeChoiceGroupName, themeChoiceGroup]) => {
+      Object.entries(defaultTheme[themeChoiceGroupName].choices).forEach(
+        ([key, value]) => {
+          if (tokens[themeName][key])
+            endProgram(`Token "${key} already exists!"`);
+
+          if (key !== key.toLowerCase())
+            endProgram(`Tokens "${key}" must be lower case`);
+
+          if (!key.startsWith(themeChoiceGroup.prefix))
+            endProgram(
+              `Expected token "${key}" to start with "${themeChoiceGroup.prefix}" as it is an "${themeChoiceGroup.label}" attribute.`
+            );
+
+          tokens[themeName][key] =
+            definitions.choiceGroupsPerTheme[themeName]?.[themeChoiceGroupName]
+              ?.choices?.[key] ?? value;
+        }
+      );
+    }
+  );
+});
 
 allThemesNames.forEach((themeName) => {
   Object.values(definitions.decisionGroups).forEach((decisionGroup) => {
@@ -64,7 +70,7 @@ allThemesNames.forEach((themeName) => {
       if (!decision.choice) {
         endProgram(`You forgot to specify a choice for ${decision}`);
       }
-      if (!tokens[themeName][decision.choice]) {
+      if (!tokens.default[decision.choice]) {
         endProgram(`Choice called "${decision.choice}" was not found!`);
       }
       // TODO parse token name and warn when invalid name was given and token
@@ -91,9 +97,9 @@ allThemesNames.forEach((themeName) => {
           `Token "${key}" does not follow <attribute>-for-<component-group>-when-<state>-on-dark naming scheme! Tokens not following this scheme must use "deprecated" flag.`
         );
       }
-
-      designTokens[key] = decision.choice;
-      tokens[themeName][key] = tokens[themeName][decision.choice];
+      if (themeName === 'default') designTokens[key] = decision.choice;
+      tokens[themeName][key] =
+        tokens[themeName][decision.choice] ?? tokens.default[decision.choice];
     });
   });
 });
