@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import TextInput from '@commercetools-uikit/text-input';
-import mergeWith from 'lodash/mergeWith';
+import merge from 'lodash/merge';
+import cloneDeep from 'lodash/cloneDeep';
 import customProperties from '../custom-properties.json';
 import Readme from './TOKENS.md';
 import definition from './definition.yaml';
@@ -59,13 +60,27 @@ const Description = styled.p`
 const DeprecationBadge = () => <b style={{ color: 'orange' }}>DEPRECATED</b>;
 DeprecationBadge.displayName = 'DeprecationBadge';
 
-const getChoiceValue = (choiceName, theme = 'default') => {
-  const choice = Object.values(definition.choiceGroupsPerTheme[theme])
+const getThemeChoiceByName = (theme, choiceName) =>
+  Object.values(theme)
     .map((choiceGroup) => choiceGroup.choices)
     .find((choices) => choices[choiceName]);
-  if (!choice)
+
+const getChoiceValue = (choiceName, theme) => {
+  const defaultChoice = getThemeChoiceByName(
+    definition.choiceGroupsPerTheme.default,
+    choiceName
+  );
+
+  const themeChoice = getThemeChoiceByName(
+    definition.choiceGroupsPerTheme[theme],
+    choiceName
+  );
+
+  if (!defaultChoice)
     throw new Error(`Tried to get value of non-existant choice ${choiceName}`);
-  return choice ? choice[choiceName] : undefined;
+  return defaultChoice
+    ? themeChoice?.[choiceName] ?? defaultChoice[choiceName]
+    : undefined;
 };
 
 const filterChoiceGroupValues = (choices, searchText) =>
@@ -107,15 +122,18 @@ const getDefaultThemeChoiceGroupProperty = (choiceGroup, property) =>
 const ChoiceGroup = (props) => {
   const choices = Object.entries(definition.choiceGroupsPerTheme).reduce(
     (acc, [theme, themeChoices]) => {
+      const defaultTheme = cloneDeep(definition.choiceGroupsPerTheme.default);
+      // default theme is used as a blueprint
+      const themeChoicesBasedOnDefaultTheme = merge(defaultTheme, themeChoices);
       const filteredThemeChoices = Object.fromEntries(
         filterChoiceGroupValues(
-          themeChoices[props.choiceGroup].choices,
+          themeChoicesBasedOnDefaultTheme[props.choiceGroup].choices,
           props.searchText
         )
       );
       const filteredThemeChoicesNames = Object.keys(filteredThemeChoices);
 
-      return mergeWith(
+      return merge(
         acc,
         ...filteredThemeChoicesNames.map((name) => ({
           [name]: { [theme]: filteredThemeChoices[name] },

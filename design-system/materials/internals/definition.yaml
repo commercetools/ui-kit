@@ -143,119 +143,15 @@ choiceGroupsPerTheme:
 
   dark:
     colors:
-      label: Colors
-      prefix: color
-      description: All colors in the system
       choices:
         color-primary: 'darkblue'
         color-primary-25: 'olive'
-        color-primary-40: 'maroon'
-        color-primary-85: 'green'
-        color-primary-95: 'lime'
-        color-accent: 'blueviolet'
-        color-accent-30: 'teal'
-        color-accent-40: 'antiquewhite'
-        color-accent-95: 'aquamarine'
-        color-accent-98: 'fuchsia'
-        color-neutral: 'beige'
         color-neutral-60: 'chocolate'
-        color-neutral-90: 'aliceblue'
-        color-neutral-95: 'crimson'
-        color-info: 'yellow'
-        color-info-85: 'darkorange'
-        color-info-95: 'darkred'
-        color-warning: 'darksalmon'
-        color-warning-95: 'darkviolet'
-        color-error: 'gold'
-        color-error-95: 'honeydew'
-        color-solid: 'indianred'
-        color-surface: 'lightgreen'
+        color-error: 'tomato'
 
     borderRadiuses:
-      label: Border Radiuses
-      prefix: border-radius
       choices:
-        border-radius-1: 1px
-        border-radius-2: 2px
-        border-radius-4: 4px
-        border-radius-6: 6px
-        border-radius-20: 20px
-    fontFamilies:
-      label: Font families
-      prefix: font-family
-      choices:
-        font-family-body: "'Open Sans', sans-serif"
-    fontSizes:
-      label: Font sizes
-      prefix: font-size
-      choices:
-        font-size-m: '1rem'
-    shadows:
-      label: Shadows
-      prefix: shadow
-      choices:
-        shadow-1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
-        shadow-2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)'
-        shadow-3: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)'
-        shadow-4: '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)'
-        shadow-5: '0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)'
-        shadow-6: '0 -1px 2px 0 rgba(0, 0, 0, 0.2)'
-        shadow-7: '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)'
-        shadow-8: '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)'
-        shadow-9: 'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)'
-        shadow-10: '0 0 0 1px rgba(224, 230, 237, 0.5)'
-        shadow-11: '0 1px 0.5px rgba(0, 0, 0, 0.24), 0 -1px 0.75px rgba(0, 0, 0, 0.12)'
-        shadow-12: '0 0 1px rgba(0, 0, 0, 0.25)'
-        shadow-13: '0 0 1px rgba(0, 0, 0, 0.25)'
-        shadow-14: '0 0 0.5px rgba(0, 0, 0, 0.1)'
-        shadow-15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)'
-        shadow-16: '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)'
-    constraints:
-      label: Constraints
-      prefix: constraint
-      choices:
-        constraint-scale: 100%
-        constraint-1: 42px
-        constraint-2: 84px
-        constraint-3: 142px
-        constraint-4: 184px
-        constraint-5: 242px
-        constraint-6: 284px
-        constraint-7: 342px
-        constraint-8: 384px
-        constraint-9: 442px
-        constraint-10: 484px
-        constraint-11: 542px
-        constraint-12: 584px
-        constraint-13: 642px
-        constraint-14: 684px
-        constraint-15: 742px
-        constraint-16: 784px
-    spacings:
-      label: Spacings
-      prefix: spacing
-      choices:
-        spacing-xs: 4px
-        spacing-s: 8px
-        spacing-m: 16px
-        spacing-l: 24px
-        spacing-xl: 32px
-    transitions:
-      label: Transitions
-      prefix: transition
-      choices:
-        transition-linear-80ms: '80ms linear'
-        transition-easeinout-150ms: '150ms ease-in-out'
-        transition-standard: '200ms ease'
-    breakpoints:
-      label: Breakpoints
-      prefix: break-point
-      choices:
-        break-point-mobile: 768px
-        break-point-desktop: 1024px
-        break-point-biggerdesktop: 1280px
-        break-point-giantdesktop: 1680px
-        break-point-jumbodesktop: 1920px
+        border-radius-1: 100px
 
 states:
   active: 'Trigged while the user is currently interacting with the element'
