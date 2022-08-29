@@ -2,7 +2,7 @@ import {
   LocalizedTextInput,
   ErrorMessage,
 } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const value = {
   en: 'hello world',

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Route, Switch } from 'react-router-dom';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 import { WorldIcon } from '../../../icons';
 
 const defaultOptions = [
