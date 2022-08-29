@@ -2,6 +2,7 @@ import { useLayoutEffect, useMemo, useState, useCallback } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
+import cloneDeep from 'lodash/cloneDeep';
 import { themes, themesNames } from './custom-properties';
 
 type ThemeName = keyof typeof themes;
@@ -51,7 +52,7 @@ const changeTheme = ({
   target?.setAttribute('data-theme', validTheme);
   const vars = toVars(
     themeOverrides && isObject(themeOverrides)
-      ? merge(themes[validTheme], themeOverrides)
+      ? merge(cloneDeep(themes[validTheme]), themeOverrides)
       : themes[validTheme]
   );
 
