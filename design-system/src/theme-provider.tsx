@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useState, useRef } from 'react';
+import { useLayoutEffect, useMemo, useState, useRef, useEffect } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
@@ -53,6 +53,7 @@ const changeTheme = ({
   Object.entries(vars).forEach(([key, value]) => {
     target.style.setProperty(key, value);
   });
+  // Object.assign(target.style, vars);
   target.dataset.theme = validTheme;
 };
 
@@ -80,10 +81,14 @@ ThemeProvider.defaultProps = {
 };
 
 const useTheme = (parentSelector = defaultParentSelector) => {
-  const [theme, setTheme] = useState<string>(
-    parentSelector()?.dataset.theme || 'default'
-  );
+  const [theme, setTheme] = useState<string>('default');
   const parentSelectorRef = useRef(parentSelector);
+
+  // If we use 'useLayoutEffect' here, we would be trying to read the
+  // data attribute before it gets set from the effect in the ThemeProvider
+  useEffect(() => {
+    setTheme(parentSelectorRef.current()?.dataset.theme || 'default');
+  }, []);
 
   // So consumers don't have to provide 'parentSelector' again as
   // they already provided it in the hook call
