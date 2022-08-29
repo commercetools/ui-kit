@@ -2,6 +2,7 @@ import { useLayoutEffect, useMemo, useState, useRef, useEffect } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
+import cloneDeep from 'lodash/cloneDeep';
 import { themes, themesNames } from './custom-properties';
 
 const allThemesNames = Object.keys(themesNames);
@@ -19,17 +20,17 @@ const isBrowser = typeof window !== 'undefined';
 const defaultParentSelector = (): HTMLElement | null =>
   document.querySelector(':root');
 
-type TChangeTheme = {
+type TApplyTheme = {
   newTheme?: string;
   parentSelector: typeof defaultParentSelector;
   themeOverrides?: Record<string, string>;
 };
 
-const changeTheme = ({
+const applyTheme = ({
   newTheme,
   parentSelector = defaultParentSelector,
   themeOverrides,
-}: TChangeTheme): void => {
+}: TApplyTheme): void => {
   const target = isBrowser ? parentSelector() : null;
 
   // With no target we can't change themes
@@ -46,7 +47,7 @@ const changeTheme = ({
 
   const vars = toVars(
     themeOverrides && isObject(themeOverrides)
-      ? merge(themes[validTheme], themeOverrides)
+      ? merge(cloneDeep(themes[validTheme]), themeOverrides)
       : themes[validTheme]
   );
 
@@ -66,7 +67,7 @@ type ThemeProviderProps = {
 const ThemeProvider = (props: ThemeProviderProps) => {
   const parentSelectorRef = useRef(props.parentSelector);
   useLayoutEffect(() => {
-    changeTheme({
+    applyTheme({
       newTheme: props.theme,
       parentSelector: parentSelectorRef.current,
       themeOverrides: props.themeOverrides,
@@ -93,8 +94,8 @@ const useTheme = (parentSelector = defaultParentSelector) => {
   // So consumers don't have to provide 'parentSelector' again as
   // they already provided it in the hook call
   const updateTheme = useRef(
-    ({ newTheme, themeOverrides }: Omit<TChangeTheme, 'parentSelector'>) => {
-      changeTheme({
+    ({ newTheme, themeOverrides }: Omit<TApplyTheme, 'parentSelector'>) => {
+      applyTheme({
         newTheme,
         parentSelector: parentSelectorRef.current,
         themeOverrides,
@@ -104,7 +105,7 @@ const useTheme = (parentSelector = defaultParentSelector) => {
   );
 
   return useMemo(() => {
-    return { theme, changeTheme: updateTheme.current };
+    return { theme, applyTheme: updateTheme.current };
   }, [theme]);
 };
 

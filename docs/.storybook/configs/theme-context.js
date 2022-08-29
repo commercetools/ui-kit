@@ -11,16 +11,16 @@ const defaultThemeName = themesNames.default;
 
 const defaultTheme = customProperties;
 
-const darkTheme = {
-  colorSolid: customProperties.colorSurface,
-  colorSurface: customProperties.colorSolid,
+const customTheme = {
+  colorSolid: '#fff',
+  colorSurface: '#1a1a1a',
 };
 
 const ThemeToggler = (props) => {
-  const { changeTheme } = useTheme();
+  const { applyTheme } = useTheme();
 
   useEffect(() => {
-    changeTheme({ newTheme: props.theme });
+    applyTheme({ newTheme: props.name, themeOverrides: props.theme });
   });
 
   return null;
@@ -30,7 +30,7 @@ const ThemeWrapper = (props) => {
   return (
     <>
       <ThemeProvider theme={defaultThemeName} />
-      <ThemeToggler theme={props.name} />
+      <ThemeToggler {...props} />
       {props.children}
     </>
   );
@@ -46,12 +46,10 @@ const themeParams = [
     props: { name: 'default', theme: defaultTheme },
   },
   {
-    name: 'Dark Theme (experimental)',
-    props: { name: 'dark', theme: darkTheme },
+    name: 'Custom Theme',
+    props: { name: 'default', theme: customTheme },
   },
-].map((theme) =>
-  theme.props.name === defaultThemeName ? { ...theme, default: true } : theme
-);
+];
 
 const themeContext = {
   icon: 'box', // a icon displayed in the Storybook toolbar to control contextual props
