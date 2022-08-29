@@ -100,30 +100,16 @@ export const component = () => (
       </LocalThemeProvider>
     </Spec>
 
-    <Spec label="custom css variable added to default theme">
+    <Spec label="custom property added to default theme">
       <LocalThemeProvider
-        themeOverrides={{ '--custom-color': 'blue' }}
+        themeOverrides={{ customColor: 'tomato' }}
         parentId="local-6"
         parentSelector={parentSelector('local-6')}
       >
         <DummyComponent
-          color="--custom-color"
-          title="Title with custom color"
-          parentId="local-6"
-        />
-      </LocalThemeProvider>
-    </Spec>
-
-    <Spec label="custom property with camelCase naming added to default theme">
-      <LocalThemeProvider
-        themeOverrides={{ customColor: 'tomato' }}
-        parentId="local-7"
-        parentSelector={parentSelector('local-7')}
-      >
-        <DummyComponent
           color="customColor"
           title="Title with custom color"
-          parentId="local-7"
+          parentId="local-6"
         />
       </LocalThemeProvider>
     </Spec>
