@@ -36,17 +36,17 @@ const isBrowser = typeof window !== 'undefined';
 const defaultParentSelector = (): HTMLElement | null =>
   document.querySelector(':root');
 
-type TChangeTheme = {
+type TApplyTheme = {
   newTheme?: string;
   parentSelector: typeof defaultParentSelector;
   themeOverrides?: Record<string, string>;
 };
 
-const changeTheme = ({
+const applyTheme = ({
   newTheme,
   parentSelector = defaultParentSelector,
   themeOverrides,
-}: TChangeTheme): void => {
+}: TApplyTheme): void => {
   const target = isBrowser ? parentSelector() : null;
   const validTheme = validateTheme(newTheme);
   target?.setAttribute('data-theme', validTheme);
@@ -74,7 +74,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     []
   );
   useLayoutEffect(() => {
-    changeTheme({
+    applyTheme({
       newTheme: props.theme,
       parentSelector,
       themeOverrides: props.themeOverrides,
@@ -101,7 +101,7 @@ const useTheme = (parentSelector = defaultParentSelector) => {
   }, [memoizedParentSelector]);
 
   return useMemo(() => {
-    return { theme, changeTheme };
+    return { theme, applyTheme };
   }, [theme]);
 };
 

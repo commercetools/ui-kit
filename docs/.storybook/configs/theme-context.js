@@ -17,10 +17,10 @@ const darkTheme = {
 };
 
 const ThemeToggler = (props) => {
-  const { changeTheme } = useTheme();
+  const { applyTheme } = useTheme();
 
   useEffect(() => {
-    changeTheme({ newTheme: props.theme });
+    applyTheme({ newTheme: props.theme });
   });
 
   return null;
