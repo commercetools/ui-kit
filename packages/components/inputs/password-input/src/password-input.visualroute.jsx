@@ -1,5 +1,5 @@
 import { PasswordInput } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 const value = 'hello world how are you?';
 

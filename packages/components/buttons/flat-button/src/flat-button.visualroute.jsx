@@ -1,5 +1,5 @@
 import { FlatButton, InformationIcon } from '@commercetools-frontend/ui-kit';
-import { Suite, Spec, LocalDarkThemeProvider } from '../../../../../test/percy';
+import { Suite, Spec } from '../../../../../test/percy';
 
 export const routePath = '/flat-button';
 
