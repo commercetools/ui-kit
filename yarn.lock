@@ -20254,6 +20254,7 @@ __metadata:
     "@percy/puppeteer": 2.0.0
     "@preconstruct/cli": 2.2.1
     "@stylelint/postcss-css-in-js": ^0.38.0
+    "@svgr/babel-plugin-svg-dynamic-title": ^6.3.1
     "@svgr/cli": 6.3.1
     "@svgr/plugin-jsx": 6.3.1
     "@svgr/plugin-svgo": 6.3.1
