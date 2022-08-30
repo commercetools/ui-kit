@@ -1,10 +1,10 @@
 import type { LocationDescriptor } from 'history';
 
 import { ReactNode, MouseEvent, KeyboardEvent } from 'react';
-import { css, SerializedStyles, useTheme } from '@emotion/react';
+import { css, type SerializedStyles } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import {
-  customProperties as vars,
+  customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
@@ -79,11 +79,6 @@ const defaultProps: Pick<
 const Tag = (props: TTagProps) => {
   const linkProps =
     props.to && !props.isDisabled ? { as: Link, to: props.to } : {};
-  const theme = useTheme();
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <div
@@ -96,8 +91,8 @@ const Tag = (props: TTagProps) => {
           min-width: 0;
           display: flex;
           background-color: ${props.type === 'warning'
-            ? overwrittenVars[designTokens.backgroundColorForTagWarning]
-            : overwrittenVars[designTokens.backgroundColorForTag]};
+            ? customProperties[designTokens.backgroundColorForTagWarning]
+            : customProperties[designTokens.backgroundColorForTag]};
         `}
       >
         <TagBody
@@ -119,12 +114,12 @@ const Tag = (props: TTagProps) => {
             css={[
               css`
                 border-color: ${props.type === 'warning'
-                  ? overwrittenVars[designTokens.borderColorForTagWarning]
-                  : overwrittenVars[designTokens.borderColorForTag]};
-                padding: 0 ${vars.spacingXs};
+                  ? customProperties[designTokens.borderColorForTagWarning]
+                  : customProperties[designTokens.borderColorForTag]};
+                padding: 0 ${customProperties.spacingXs};
                 border-radius: 0
-                  ${overwrittenVars[designTokens.borderRadiusForTag]}
-                  ${overwrittenVars[designTokens.borderRadiusForTag]} 0;
+                  ${customProperties[designTokens.borderRadiusForTag]}
+                  ${customProperties[designTokens.borderRadiusForTag]} 0;
                 display: flex;
                 align-items: center;
                 background: inherit;
@@ -132,21 +127,21 @@ const Tag = (props: TTagProps) => {
                 border-width: 1px 1px 1px 1px;
                 :not(:disabled)&:hover,
                 :not(:disabled)&:focus {
-                  border-color: ${overwrittenVars[
+                  border-color: ${customProperties[
                     designTokens.borderColorForTagWarning
                   ]};
 
                   > svg * {
-                    fill: ${overwrittenVars[
+                    fill: ${customProperties[
                       designTokens.borderColorForTagWarning
                     ]};
                   }
                 }
                 > svg * {
-                  fill: ${overwrittenVars[designTokens.fontColorForTag]};
+                  fill: ${customProperties[designTokens.fontColorForTag]};
                 }
                 &:disabled > svg * {
-                  fill: ${overwrittenVars[
+                  fill: ${customProperties[
                     designTokens.fontColorForTagWhenDisabled
                   ]};
                 }

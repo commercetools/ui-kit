@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import {
   AngleLeftIcon,
@@ -43,9 +43,9 @@ const CalendarHeader = (props: TCalendarHeader) => {
       css={css`
         display: flex;
         padding: 10px 2% 6px;
-        margin-bottom: ${vars.spacingXs};
+        margin-bottom: ${customProperties.spacingXs};
         justify-content: space-between;
-        border-bottom: 1px solid ${vars.colorNeutral90};
+        border-bottom: 1px solid ${customProperties.colorNeutral90};
       `}
     >
       <Inline scale="xs" alignItems="center">

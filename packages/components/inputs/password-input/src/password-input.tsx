@@ -1,5 +1,4 @@
 import type { ChangeEventHandler, FocusEventHandler } from 'react';
-import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
@@ -103,7 +102,6 @@ const defaultProps: Pick<
 };
 
 const PasswordInput = (props: TPasswordInputProps) => {
-  const theme = useTheme();
   if (!props.isReadOnly) {
     warning(
       Boolean(props.onChange),
@@ -123,7 +121,7 @@ const PasswordInput = (props: TPasswordInputProps) => {
         disabled={props.isDisabled}
         placeholder={props.placeholder}
         autoComplete={props.autoComplete}
-        css={getInputStyles(props, theme)}
+        css={getInputStyles(props)}
         readOnly={props.isReadOnly}
         autoFocus={props.isAutofocussed}
         {...filterDataAttributes(props)}

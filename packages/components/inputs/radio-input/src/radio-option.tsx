@@ -6,7 +6,7 @@ import {
   isValidElement,
 } from 'react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import {
   filterDataAttributes,
   filterInvalidAttributes,
@@ -25,7 +25,7 @@ import SpacingsInset from '@commercetools-uikit/spacings-inset';
 
 const Input = styled.input`
   &:focus + div > svg *[data-style='radio-option__border'] {
-    stroke: ${vars.borderColorForInputWhenFocused};
+    stroke: ${customProperties.borderColorForInputWhenFocused};
   }
 `;
 

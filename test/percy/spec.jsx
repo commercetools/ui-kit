@@ -1,12 +1,8 @@
 import { Children, isValidElement } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import pick from 'lodash/pick';
 import { customProperties } from '../../design-system';
-
-const getThemedProperty = (name) => (props) =>
-  props.theme[name] || customProperties[name];
 
 const SpecContainer = styled.div`
   display: flex;
@@ -53,7 +49,9 @@ const PropValue = styled.span`
 `;
 
 const Box = styled.div`
-  background-color: ${getThemedProperty('colorSurface')};
+  background-color: ${(props) =>
+    props.backgroundColor ?? customProperties.colorSurface};
+  }};
 `;
 
 const Pill = (props) => {
@@ -112,7 +110,6 @@ Props.propTypes = {
 };
 
 const Spec = (props) => {
-  const theme = useTheme();
   return (
     <SpecContainer>
       <Label>{props.label}</Label>
@@ -124,7 +121,7 @@ const Spec = (props) => {
           {props.children}
         </Props>
       )}
-      <Box theme={theme}>{props.children}</Box>
+      <Box backgroundColor={props.backgroundColor}>{props.children}</Box>
     </SpecContainer>
   );
 };
@@ -135,6 +132,7 @@ Spec.propTypes = {
   listPropsOfNestedChild: PropTypes.bool,
   propsToList: PropTypes.arrayOf(PropTypes.string),
   omitPropsList: PropTypes.bool,
+  backgroundColor: PropTypes.string,
 };
 
 Spec.defaultProps = {

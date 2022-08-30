@@ -1,4 +1,3 @@
-import type { Theme } from '@emotion/react';
 import type {
   TBodyProps,
   THeadlineProps,
@@ -7,16 +6,11 @@ import type {
 } from './text';
 
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 
-const getBaseStyles = (theme: Theme) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const getBaseStyles = () => {
   return `
-   color: ${overwrittenVars.colorSolid};
+   color: ${customProperties.colorSolid};
 `;
 };
 
@@ -34,26 +28,22 @@ const italic = `
   font-style: italic;
 `;
 
-const getTone = (tone: string, theme: Theme) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
+const getTone = (tone: string) => {
   switch (tone) {
     case 'information':
-      return `color: ${overwrittenVars.colorInfo};`;
+      return `color: ${customProperties.colorInfo};`;
     case 'secondary':
-      return `color: ${overwrittenVars.colorNeutral60};`;
+      return `color: ${customProperties.colorNeutral60};`;
     case 'positive':
-      return `color: ${overwrittenVars.colorPrimary25};`;
+      return `color: ${customProperties.colorPrimary25};`;
     case 'primary':
-      return `color: ${overwrittenVars.colorPrimary};`;
+      return `color: ${customProperties.colorPrimary};`;
     case 'negative':
-      return `color: ${overwrittenVars.colorError};`;
+      return `color: ${customProperties.colorError};`;
     case 'inverted':
-      return `color: ${overwrittenVars.colorSurface};`;
+      return `color: ${customProperties.colorSurface};`;
     case 'warning':
-      return `color: ${overwrittenVars.colorWarning};`;
+      return `color: ${customProperties.colorWarning};`;
     default:
       return ``;
   }
@@ -76,48 +66,45 @@ const getElementFontSize = (elementType?: string) => {
   }
 };
 
-export const bodyStyles = (props: TBodyProps, theme: Theme) => css`
-  ${getBaseStyles(theme)}
+export const bodyStyles = (props: TBodyProps) => css`
+  ${getBaseStyles()}
   margin: 0;
   font-size: 1rem;
   ${props.isBold && bold}
   ${props.isItalic && italic}
-  ${props.tone && getTone(props.tone, theme)}
+  ${props.tone && getTone(props.tone)}
   ${props.truncate && truncate}
 `;
 
-export const headlineStyles = (props: THeadlineProps, theme: Theme) => css`
-  ${getBaseStyles(theme)}
+export const headlineStyles = (props: THeadlineProps) => css`
+  ${getBaseStyles()}
   margin: 0;
   font-size: ${getElementFontSize(props.as)};
   font-weight: 300;
   ${props.truncate && truncate}
 `;
 
-export const subheadlineStyles = (
-  props: TSubheadlineProps,
-  theme: Theme
-) => css`
-  ${getBaseStyles(theme)}
+export const subheadlineStyles = (props: TSubheadlineProps) => css`
+  ${getBaseStyles()}
   margin: 0;
   font-size: ${getElementFontSize(props.as)};
   font-weight: normal;
   ${props.truncate && truncate}
   ${props.isBold && bold}
-  ${props.tone && getTone(props.tone, theme)}
+  ${props.tone && getTone(props.tone)}
 `;
 
-export const wrapStyles = (theme: Theme) => css`
-  ${getBaseStyles(theme)}
+export const wrapStyles = () => css`
+  ${getBaseStyles()}
   font-size: 1rem;
   white-space: pre-wrap;
 `;
 
-export const detailStyles = (props: TDetailProps, theme: Theme) => css`
-  ${getBaseStyles(theme)}
+export const detailStyles = (props: TDetailProps) => css`
+  ${getBaseStyles()}
   font-size: 0.9231rem;
   ${props.isBold && bold}
   ${props.isItalic && italic}
-  ${props.tone && getTone(props.tone, theme)}
+  ${props.tone && getTone(props.tone)}
   ${props.truncate && truncate}
 `;

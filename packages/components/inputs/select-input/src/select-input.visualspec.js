@@ -13,12 +13,6 @@ describe('SelectInput', () => {
     await expect(page).toMatch('One');
     await percySnapshot(page, 'SelectInput - open - without option groups');
   });
-  it('Open - dark', async () => {
-    await page.goto(`${HOST}/select-input/open-dark`);
-    await page.click('#select-input');
-    await expect(page).toMatch('One');
-    await percySnapshot(page, 'SelectInput - open - with custom (dark) theme');
-  });
   it('Open with option groups', async () => {
     await page.goto(`${HOST}/select-input/open-with-option-groups`);
     await page.click('#select-input');

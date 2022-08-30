@@ -1,4 +1,3 @@
-import { ThemeProvider } from '@emotion/react';
 import {
   LocalizedMultilineTextInput,
   ErrorMessage,
@@ -17,7 +16,7 @@ const value = {
 
 export const routePath = '/localized-multiline-text-input';
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="minimal">
       <LocalizedMultilineTextInput
@@ -155,14 +154,5 @@ export const component = ({ themes }) => (
         hasWarning={true}
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom theme">
-        <LocalizedMultilineTextInput
-          value={value}
-          onChange={() => {}}
-          selectedLanguage="en"
-        />
-      </Spec>
-    </ThemeProvider>
   </Suite>
 );

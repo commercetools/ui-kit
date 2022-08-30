@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Route, Switch } from 'react-router-dom';
-import { ThemeProvider } from '@emotion/react';
 import { SelectInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 import { WorldIcon } from '../../../icons';
@@ -30,7 +29,7 @@ const value = 'one';
 
 export const routePath = '/select-input';
 
-const DefaultRoute = ({ themes }) => (
+const DefaultRoute = () => (
   <Suite>
     <Spec label="minimal">
       <SelectInput
@@ -114,16 +113,6 @@ const DefaultRoute = ({ themes }) => (
         horizontalConstraint={7}
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (dark) theme">
-        <SelectInput
-          value={value}
-          onChange={() => {}}
-          options={options}
-          horizontalConstraint={7}
-        />
-      </Spec>
-    </ThemeProvider>
     <Spec label="when read-only">
       <SelectInput
         value={value}
@@ -178,22 +167,6 @@ const OpenRoute = () => (
   </Suite>
 );
 
-const OpenRouteDarkTheme = ({ themes }) => (
-  <Suite>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (dark) theme">
-        <SelectInput
-          id="select-input"
-          value={value}
-          onChange={() => {}}
-          options={longOptions}
-          horizontalConstraint={7}
-        />
-      </Spec>
-    </ThemeProvider>
-  </Suite>
-);
-
 const OpenRouteWithOptionGroups = () => (
   <Suite>
     <Spec label="option group with no divider">
@@ -223,13 +196,9 @@ const OpenRouteWithOptionGroupsAndDivider = () => (
   </Suite>
 );
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Switch>
     <Route path={`${routePath}/open`} component={OpenRoute} />
-    <Route
-      path={`${routePath}/open-dark`}
-      render={() => <OpenRouteDarkTheme themes={themes} />}
-    />
     <Route
       path={`${routePath}/open-with-option-groups`}
       component={OpenRouteWithOptionGroups}
@@ -238,6 +207,6 @@ export const component = ({ themes }) => (
       path={`${routePath}/open-with-option-groups-and-divider`}
       component={OpenRouteWithOptionGroupsAndDivider}
     />
-    <Route path={routePath} render={() => <DefaultRoute themes={themes} />} />
+    <Route path={routePath} render={() => <DefaultRoute />} />
   </Switch>
 );

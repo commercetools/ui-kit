@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import type { TTooltipProps } from './tooltip';
 
 const getOffsetMargin = ({ placement }: { placement: string }) => {
@@ -8,10 +8,10 @@ const getOffsetMargin = ({ placement }: { placement: string }) => {
   switch (position) {
     case 'left':
     case 'right':
-      return `0 ${vars.spacingXs}`;
+      return `0 ${customProperties.spacingXs}`;
     case 'top':
     case 'bottom':
-      return `${vars.spacingXs} 0`;
+      return `${customProperties.spacingXs} 0`;
     default:
       return '';
   }
@@ -19,14 +19,14 @@ const getOffsetMargin = ({ placement }: { placement: string }) => {
 
 export const Body = styled.div`
   font-family: inherit;
-  border-radius: ${vars.borderRadius6};
-  padding: ${vars.spacingXs} ${vars.spacingS};
+  border-radius: ${customProperties.borderRadius6};
+  padding: ${customProperties.spacingXs} ${customProperties.spacingS};
   border: 'none';
-  box-shadow: ${vars.shadow15};
+  box-shadow: ${customProperties.shadow15};
   font-size: 0.857rem;
   opacity: 0.95;
-  color: ${vars.colorSurface};
-  background-color: ${vars.colorAccent};
+  color: ${customProperties.colorSurface};
+  background-color: ${customProperties.colorAccent};
 `;
 
 // here we use object styles so we can spread these
@@ -44,7 +44,9 @@ export const getBodyStyles = ({
   return {
     fontFamily: 'inherit',
     margin: `${getOffsetMargin({ placement })} !important`,
-    maxWidth: (vars as Record<string, string>)[`constraint${constraint}`],
+    maxWidth: (customProperties as Record<string, string>)[
+      `constraint${constraint}`
+    ],
     // so hovering over the tooltip when the tooltip overlaps the component
     pointerEvents: 'none',
     width: constraint === 'auto' ? 'auto' : undefined,

@@ -1,6 +1,9 @@
-import { css, type Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import {
+  customProperties,
+  designTokens,
+} from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 import { type TTimeInputProps } from './time-input';
 
@@ -8,162 +11,131 @@ import { type TTimeInputProps } from './time-input';
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getClearSectionStyles = (theme: Theme) => {
-  const overwrittenVars = {
-    ...customProperties,
-    ...theme,
-  };
-
+const getClearSectionStyles = () => {
   return css`
     align-items: center;
     box-sizing: border-box;
     display: flex;
-    margin: ${overwrittenVars.spacingXs};
+    margin: ${customProperties.spacingXs};
     cursor: pointer;
 
     &:hover svg * {
-      fill: ${overwrittenVars.colorWarning};
+      fill: ${customProperties.colorWarning};
     }
   `;
 };
 
-type TExtendedTheme = Theme & {
-  [key: string]: string;
-};
-
-const getClockIconContainerColor = (
-  vars: TExtendedTheme,
-  props: TTimeInputProps
-) => {
+const getClockIconContainerColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return vars.borderColorForInputWhenDisabled;
+    return customProperties.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.borderColorForInputWhenError;
+    return customProperties.borderColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return vars.borderColorForInputWhenReadonly;
+    return customProperties.borderColorForInputWhenReadonly;
   }
-  return vars.borderColorForInput;
+  return customProperties.borderColorForInput;
 };
-const getClockIconContainerFontColor = (
-  vars: TExtendedTheme,
-  props: TTimeInputProps
-) => {
+const getClockIconContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return vars.fontColorForInputWhenDisabled;
+    return customProperties.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.fontColorForInputWhenError;
+    return customProperties.fontColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return vars.fontColorForInputWhenReadonly;
+    return customProperties.fontColorForInputWhenReadonly;
   }
-  return vars.fontColorForInput;
+  return customProperties.fontColorForInput;
 };
-const getClockIconContainerStyles = (props: TTimeInputProps, theme: Theme) => {
-  const overwrittenVars = {
-    ...customProperties,
-    ...theme,
-  };
-
+const getClockIconContainerStyles = (props: TTimeInputProps) => {
   return css`
     align-items: center;
     box-sizing: border-box;
     background: none;
     background-color: ${props.isDisabled
-      ? overwrittenVars.backgroundColorForInputWhenDisabled
+      ? customProperties.backgroundColorForInputWhenDisabled
       : 'none'};
     border: 0;
-    border-left: 1px solid ${overwrittenVars.borderColorForInput};
-    border-top-right-radius: ${overwrittenVars.borderRadiusForInput};
-    border-bottom-right-radius: ${overwrittenVars.borderRadiusForInput};
-    border-color: ${getClockIconContainerColor(overwrittenVars, props)};
-    color: ${getClockIconContainerFontColor(overwrittenVars, props)};
+    border-left: 1px solid ${customProperties.borderColorForInput};
+    border-top-right-radius: ${customProperties.borderRadiusForInput};
+    border-bottom-right-radius: ${customProperties.borderRadiusForInput};
+    border-color: ${getClockIconContainerColor(props)};
+    color: ${getClockIconContainerFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     height: 100%;
     display: flex;
-    padding: ${overwrittenVars.spacingXs};
+    padding: ${customProperties.spacingXs};
     outline: 0;
-    transition: color ${overwrittenVars.transitionStandard},
-      border-color ${overwrittenVars.transitionStandard};
+    transition: color ${customProperties.transitionStandard},
+      border-color ${customProperties.transitionStandard};
     &:hover:not(:disabled):not(:read-only),
     &:focus {
-      border-color: ${overwrittenVars.borderColorForInputWhenFocused};
+      border-color: ${customProperties.borderColorForInputWhenFocused};
     }
   `;
 };
 
-const getInputContainerBorderColor = (
-  vars: TExtendedTheme,
-  props: TTimeInputProps
-) => {
+const getInputContainerBorderColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return vars.borderColorForInputWhenDisabled;
+    return customProperties.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.borderColorForInputWhenError;
+    return customProperties.borderColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return vars.borderColorForInputWhenReadonly;
+    return customProperties.borderColorForInputWhenReadonly;
   }
-  return vars.borderColorForInput;
+  return customProperties.borderColorForInput;
 };
-const getInputContainerFontColor = (
-  vars: TExtendedTheme,
-  props: TTimeInputProps
-) => {
+const getInputContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return vars.fontColorForInputWhenDisabled;
+    return customProperties.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars.fontColorForInputWhenError;
+    return customProperties.fontColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return vars.fontColorForInputWhenReadonly;
+    return customProperties.fontColorForInputWhenReadonly;
   }
-  return vars.fontColorForInput;
+  return customProperties.fontColorForInput;
 };
-const getInputContainerStyles = (props: TTimeInputProps, theme: Theme) => {
-  const overwrittenVars = {
-    ...customProperties,
-    ...theme,
-  };
-
+const getInputContainerStyles = (props: TTimeInputProps) => {
   return css`
     appearance: none;
     background-color: ${props.isDisabled
-      ? overwrittenVars.backgroundColorForInputWhenDisabled
-      : overwrittenVars.backgroundColorForInput};
-    border: 1px solid ${getInputContainerBorderColor(overwrittenVars, props)};
-    border-radius: ${overwrittenVars.borderRadiusForInput};
+      ? customProperties[designTokens.backgroundColorForInputWhenDisabled]
+      : customProperties[designTokens.backgroundColorForInput]};
+    border: 1px solid ${getInputContainerBorderColor(props)};
+    border-radius: ${customProperties.borderRadiusForInput};
     box-sizing: border-box;
-    color: ${getInputContainerFontColor(overwrittenVars, props)};
+    color: ${getInputContainerFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     width: 100%;
-    height: ${overwrittenVars.sizeHeightInput};
+    height: ${customProperties.sizeHeightInput};
     align-items: center;
     display: flex;
-    font-size: ${overwrittenVars.fontSizeDefault};
+    font-size: ${customProperties.fontSizeDefault};
     font-family: inherit;
-    transition: border-color ${overwrittenVars.transitionStandard},
-      box-shadow ${overwrittenVars.transitionStandard};
+    transition: border-color ${customProperties.transitionStandard},
+      box-shadow ${customProperties.transitionStandard};
 
     svg {
       fill: ${props.isReadOnly
-        ? overwrittenVars.fontColorForInputWhenReadonly
+        ? customProperties.fontColorForInputWhenReadonly
         : 'inherit'};
     }
 
     &:focus-within {
-      border-color: ${overwrittenVars.borderColorForInputWhenFocused};
+      border-color: ${customProperties.borderColorForInputWhenFocused};
       box-shadow: inset 0 0 0 2px
-        ${overwrittenVars.borderColorForInputWhenFocused};
+        ${customProperties.borderColorForInputWhenFocused};
     }
 
     :hover:not(:disabled):not(:read-only),
     :focus {
-      border-color: ${overwrittenVars.borderColorForInputWhenFocused};
+      border-color: ${customProperties.borderColorForInputWhenFocused};
     }
   `;
 };

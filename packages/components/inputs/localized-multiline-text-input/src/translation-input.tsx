@@ -5,7 +5,7 @@ import {
   type FocusEventHandler,
   type ReactNode,
 } from 'react';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { AngleUpIcon } from '@commercetools-uikit/icons';
@@ -143,8 +143,6 @@ const TranslationInput = (props: TranslationInputProps) => {
     props.error ||
     props.warning;
 
-  const theme = useTheme();
-
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
@@ -162,7 +160,7 @@ const TranslationInput = (props: TranslationInputProps) => {
           display: flex;
         `}
       >
-        <label htmlFor={props.id} css={getLanguageLabelStyles(props, theme)}>
+        <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
           {/* FIXME: add proper tone for disabled when tones are refactored */}
           <Text.Detail tone="secondary">
             {props.language.toUpperCase()}

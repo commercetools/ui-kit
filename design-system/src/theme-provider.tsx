@@ -1,94 +1,108 @@
-import {
-  createContext,
-  useLayoutEffect,
-  useState,
-  useMemo,
-  useContext,
-  useCallback,
-  useRef,
-  type ReactNode,
-} from 'react';
+import { useLayoutEffect, useMemo, useState, useRef, useEffect } from 'react';
 import kebabCase from 'lodash/kebabCase';
-import isEmpty from 'lodash/isEmpty';
-import { warning } from '@commercetools-uikit/utils';
+import isObject from 'lodash/isObject';
+import merge from 'lodash/merge';
 import { themes, themesNames } from './custom-properties';
-
-type ThemeName = keyof typeof themes;
 
 const allThemesNames = Object.keys(themesNames);
 
-type TThemeContext = {
-  theme: ThemeName;
-  changeTheme: (newTheme: string) => void;
-};
-
-const ThemeContext = createContext<TThemeContext>({
-  theme: themesNames.default,
-  changeTheme: () => {},
-});
+type ThemeName = keyof typeof themes;
 
 const toVars = (obj: Record<string, string>) =>
   Object.fromEntries(
     Object.entries(obj).map(([key, value]) => [`--${kebabCase(key)}`, value])
   );
 
-type ThemeProviderProps = {
-  children: ReactNode;
-  theme?: string;
-  scope?: 'global' | 'local';
+// used to cover SSR builds (for instance in Gatsby)
+const isBrowser = typeof window !== 'undefined';
+
+const defaultParentSelector = (): HTMLElement | null =>
+  document.querySelector(':root');
+
+type TApplyTheme = {
+  newTheme?: string;
+  parentSelector: typeof defaultParentSelector;
+  themeOverrides?: Record<string, string>;
 };
 
-const validateTheme = (themeName?: string): ThemeName => {
-  if (!themeName) {
-    return 'default';
-  }
-  const isNewThemeValid = allThemesNames.includes(themeName);
-  if (isNewThemeValid) {
-    return themeName as ThemeName;
-  }
-  if (!isNewThemeValid) {
+const applyTheme = ({
+  newTheme,
+  parentSelector = defaultParentSelector,
+  themeOverrides,
+}: TApplyTheme): void => {
+  const target = isBrowser ? parentSelector() : null;
+
+  // With no target we can't change themes
+  if (!target) return;
+
+  const validTheme = (
+    allThemesNames.includes(newTheme || '') ? newTheme! : 'default'
+  ) as ThemeName;
+  if (newTheme && newTheme !== validTheme) {
     console.warn(
-      `ThemeProvider: the specified theme '${themeName}' is not supported.`
+      `ThemeProvider: the specified theme '${newTheme}' is not supported.`
     );
   }
-  return 'default';
+
+  const vars = toVars(
+    themeOverrides && isObject(themeOverrides)
+      ? merge({}, themes[validTheme], themeOverrides)
+      : themes[validTheme]
+  );
+
+  Object.entries(vars).forEach(([key, value]) => {
+    target.style.setProperty(key, value);
+  });
+  target.setAttribute('data-theme', validTheme);
+};
+
+type ThemeProviderProps = {
+  parentSelector: typeof defaultParentSelector;
+  theme?: string;
+  themeOverrides?: Record<string, string>;
 };
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-  const root = useRef<HTMLElement>(document.querySelector(':root'));
-  const localScopeElement = useRef<HTMLDivElement>(null);
-  const [theme, setTheme] = useState<ThemeName>(validateTheme(props?.theme));
-
-  const changeTheme = useCallback((newTheme: string) => {
-    setTheme(validateTheme(newTheme));
-  }, []);
-
+  const parentSelectorRef = useRef(props.parentSelector);
   useLayoutEffect(() => {
-    const vars = toVars(themes[theme]);
-    const targetElement =
-      props.scope === 'local' ? localScopeElement.current : root.current;
-    Object.entries(vars).forEach(([key, value]) => {
-      targetElement?.style.setProperty(key, value);
+    applyTheme({
+      newTheme: props.theme,
+      parentSelector: parentSelectorRef.current,
+      themeOverrides: props.themeOverrides,
     });
-  }, [theme, props.scope]);
+  }, [props.theme, props.themeOverrides]);
 
-  const value = useMemo(() => {
-    return { theme, changeTheme };
-  }, [theme, changeTheme]);
-
-  return (
-    <ThemeContext.Provider value={value}>
-      <div ref={localScopeElement}>{props.children}</div>
-    </ThemeContext.Provider>
-  );
+  return null;
+};
+ThemeProvider.defaultProps = {
+  parentSelector: defaultParentSelector,
 };
 
-const useTheme = () => {
-  const context = useContext(ThemeContext);
+const useTheme = (parentSelector = defaultParentSelector) => {
+  const [theme, setTheme] = useState<string>('default');
+  const parentSelectorRef = useRef(parentSelector);
 
-  warning(!isEmpty(context), `useTheme must be used within a ThemeProvider`);
+  // If we use 'useLayoutEffect' here, we would be trying to read the
+  // data attribute before it gets set from the effect in the ThemeProvider
+  useEffect(() => {
+    setTheme(parentSelectorRef.current()?.dataset.theme || 'default');
+  }, []);
 
-  return context;
+  // So consumers don't have to provide 'parentSelector' again as
+  // they already provided it in the hook call
+  const updateTheme = useRef(
+    ({ newTheme, themeOverrides }: Omit<TApplyTheme, 'parentSelector'>) => {
+      applyTheme({
+        newTheme,
+        parentSelector: parentSelectorRef.current,
+        themeOverrides,
+      });
+      setTheme(newTheme || 'default');
+    }
+  );
+  return useMemo(() => {
+    return { theme, applyTheme: updateTheme.current };
+  }, [theme]);
 };
 
 export { ThemeProvider, useTheme };

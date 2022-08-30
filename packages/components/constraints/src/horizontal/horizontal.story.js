@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 import Horizontal from './horizontal';
 import { getAcceptedMaxPropValues, getMaxPropTokenValue } from '../helpers';
@@ -11,9 +11,9 @@ const ColouredRow = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: ${vars.borderRadius6};
-  color: ${vars.colorSurface};
-  background-color: ${vars.colorPrimary};
+  border-radius: ${customProperties.borderRadius6};
+  color: ${customProperties.colorSurface};
+  background-color: ${customProperties.colorPrimary};
 `;
 
 const Stack = styled.div`
@@ -24,7 +24,7 @@ const Stack = styled.div`
 
 const Wrapper = styled.div`
   position: relative;
-  padding-top: ${vars.spacingXl};
+  padding-top: ${customProperties.spacingXl};
 `;
 
 const ColumnsContainer = styled.div`
@@ -36,8 +36,8 @@ const ColumnsContainer = styled.div`
 `;
 const Column = styled.div`
   display: inline-block;
-  width: ${vars.constraint2};
-  margin-right: ${vars.spacingM};
+  width: ${customProperties.constraint2};
+  margin-right: ${customProperties.spacingM};
   height: 100%;
   text-align: center;
   background-color: rgba(241, 109, 14, 0.3);

@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
-import { useTheme } from '@emotion/react';
 import {
   components as defaultComponents,
   type GroupBase,
@@ -339,7 +338,6 @@ const defaultProps: Pick<
 
 const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
   const intl = useIntl();
-  const theme = useTheme();
 
   if (!props.isReadOnly) {
     warning(
@@ -383,20 +381,17 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
           }
           menuIsOpen={props.isReadOnly ? false : undefined}
           styles={
-            createSelectStyles(
-              {
-                hasWarning: props.hasWarning,
-                hasError: props.hasError,
-                showOptionGroupDivider: props.showOptionGroupDivider,
-                menuPortalZIndex: props.menuPortalZIndex,
-                isDisabled: props.isDisabled,
-                isReadOnly: props.isReadOnly,
-                iconLeft: props.iconLeft,
-                isMulti: props.isMulti,
-                hasValue: !isEmpty(props.value),
-              },
-              theme
-            ) as ReactSelectCreatableProps['styles']
+            createSelectStyles({
+              hasWarning: props.hasWarning,
+              hasError: props.hasError,
+              showOptionGroupDivider: props.showOptionGroupDivider,
+              menuPortalZIndex: props.menuPortalZIndex,
+              isDisabled: props.isDisabled,
+              isReadOnly: props.isReadOnly,
+              iconLeft: props.iconLeft,
+              isMulti: props.isMulti,
+              hasValue: !isEmpty(props.value),
+            }) as ReactSelectCreatableProps['styles']
           }
           filterOption={props.filterOption}
           // react-select uses "id" (for the container) and "inputId" (for the input),

@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import { ThemeProvider } from '@emotion/react';
 import {
   customProperties,
   themesNames,
-  ThemeProvider as CssVariablesThemeProvider,
+  ThemeProvider,
   useTheme,
 } from '../../../design-system';
 
@@ -12,27 +11,28 @@ const defaultThemeName = themesNames.default;
 
 const defaultTheme = customProperties;
 
-const darkTheme = {
-  colorSolid: customProperties.colorSurface,
-  colorSurface: customProperties.colorSolid,
+const customTheme = {
+  colorSolid: '#fff',
+  colorSurface: '#1a1a1a',
 };
 
 const ThemeToggler = (props) => {
-  const { changeTheme } = useTheme();
+  const { applyTheme } = useTheme();
 
   useEffect(() => {
-    changeTheme(props.theme);
+    applyTheme({ newTheme: props.name, themeOverrides: props.theme });
   });
 
-  return <></>;
+  return null;
 };
 
 const ThemeWrapper = (props) => {
   return (
-    <CssVariablesThemeProvider theme={defaultThemeName}>
-      <ThemeToggler theme={props.name} />
-      <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
-    </CssVariablesThemeProvider>
+    <>
+      <ThemeProvider theme={defaultThemeName} />
+      <ThemeToggler {...props} />
+      {props.children}
+    </>
   );
 };
 
@@ -46,12 +46,10 @@ const themeParams = [
     props: { name: 'default', theme: defaultTheme },
   },
   {
-    name: 'Dark Theme (experimental)',
-    props: { name: 'dark', theme: darkTheme },
+    name: 'Custom Theme',
+    props: { name: 'default', theme: customTheme },
   },
-].map((theme) =>
-  theme.props.name === defaultThemeName ? { ...theme, default: true } : theme
-);
+];
 
 const themeContext = {
   icon: 'box', // a icon displayed in the Storybook toolbar to control contextual props

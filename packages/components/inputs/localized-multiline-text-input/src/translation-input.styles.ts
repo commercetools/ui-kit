@@ -1,7 +1,7 @@
-import { css, type Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import {
-  customProperties as vars,
+  customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
 
@@ -28,35 +28,30 @@ const getTextareaStyles = (props: TTranslationInputStylesProps) => {
   return baseStyles;
 };
 
-const getLanguageLabelStyles = (
-  _props: TTranslationInputStylesProps,
-  theme: Theme
-) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
   return css`
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
-    color: ${overwrittenVars[designTokens.fontColorForInputWhenDisabled]};
-    line-height: calc(${vars.sizeHeightInput} - 2 * ${vars.borderRadius1});
-    background-color: ${overwrittenVars[
+    color: ${customProperties[designTokens.fontColorForInputWhenDisabled]};
+    line-height: calc(
+      ${customProperties.sizeHeightInput} - 2 *
+        ${customProperties.borderRadius1}
+    );
+    background-color: ${customProperties[
       designTokens.backgroundColorForInputWhenDisabled
     ]};
-    border-top-left-radius: ${overwrittenVars[
+    border-top-left-radius: ${customProperties[
       designTokens.borderRadiusForInput
     ]};
-    border-bottom-left-radius: ${overwrittenVars[
+    border-bottom-left-radius: ${customProperties[
       designTokens.borderRadiusForInput
     ]};
-    border: 1px ${overwrittenVars[designTokens.borderColorForInputWhenDisabled]}
-      solid;
-    padding: 0 ${vars.spacingS};
-    transition: border-color ${vars.transitionStandard},
-      background-color ${vars.transitionStandard},
-      color ${vars.transitionStandard};
+    border: 1px
+      ${customProperties[designTokens.borderColorForInputWhenDisabled]} solid;
+    padding: 0 ${customProperties.spacingS};
+    transition: border-color ${customProperties.transitionStandard},
+      background-color ${customProperties.transitionStandard},
+      color ${customProperties.transitionStandard};
     border-right: 0;
     box-shadow: none;
     appearance: none;

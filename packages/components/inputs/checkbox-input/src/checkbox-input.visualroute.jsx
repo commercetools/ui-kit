@@ -1,10 +1,9 @@
-import { ThemeProvider } from '@emotion/react';
 import { CheckboxInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
 export const routePath = '/checkbox-input';
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="when default">
       <CheckboxInput onChange={() => {}} value="value">
@@ -121,17 +120,5 @@ export const component = ({ themes }) => (
         I want mezcal with a worm
       </CheckboxInput>
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (dark) theme">
-        <CheckboxInput onChange={() => {}} value="value">
-          I want kale
-        </CheckboxInput>
-      </Spec>
-      <Spec label="with custom (dark) theme checked">
-        <CheckboxInput onChange={() => {}} value="value" isChecked={true}>
-          I want pizza
-        </CheckboxInput>
-      </Spec>
-    </ThemeProvider>
   </Suite>
 );

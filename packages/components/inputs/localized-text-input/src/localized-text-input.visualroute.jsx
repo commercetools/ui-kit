@@ -2,7 +2,6 @@ import {
   LocalizedTextInput,
   ErrorMessage,
 } from '@commercetools-frontend/ui-kit';
-import { ThemeProvider } from '@emotion/react';
 import { Suite, Spec } from '../../../../../test/percy';
 
 const value = {
@@ -13,7 +12,7 @@ const value = {
 
 export const routePath = '/localized-text-input';
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="minimal">
       <LocalizedTextInput
@@ -105,15 +104,5 @@ export const component = ({ themes }) => (
         hasError={true}
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with a custom (dark) theme" omitPropsList={true}>
-        <LocalizedTextInput
-          value={value}
-          onChange={() => {}}
-          selectedLanguage="en"
-          horizontalConstraint={7}
-        />
-      </Spec>
-    </ThemeProvider>
   </Suite>
 );

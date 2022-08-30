@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 type TDropdownStylesProps = {
   isSelected?: boolean;
@@ -16,67 +16,69 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   border: 0;
   font-size: 1rem;
   cursor: pointer;
-  padding: ${vars.spacingXs} ${vars.spacingS};
-  font-family: ${vars.fontFamilyDefault};
+  padding: ${customProperties.spacingXs} ${customProperties.spacingS};
+  font-family: ${customProperties.fontFamilyDefault};
   display: block;
   background-color: ${(props) =>
-    props.isSelected ? vars.colorAccent95 : vars.colorSurface};
+    props.isSelected
+      ? customProperties.colorAccent95
+      : customProperties.colorSurface};
 
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${vars.colorNeutral90};
+    background-color: ${customProperties.colorNeutral90};
   }
 `;
 
 const getButtonStyles = (props: TDropdownStylesProps) => [
   css`
     border: 0;
-    font-family: ${vars.fontFamilyDefault};
-    border-radius: ${vars.borderRadius4};
+    font-family: ${customProperties.fontFamilyDefault};
+    border-radius: ${customProperties.borderRadius4};
     cursor: pointer;
-    font-size: ${vars.fontSizeForInput};
-    color: ${vars.colorSolid};
+    font-size: ${customProperties.fontSizeForInput};
+    color: ${customProperties.colorSolid};
     display: flex;
     justify-content: center;
     align-items: center;
     padding: ${props.isStyleButton
-      ? `calc(${vars.spacingXs} - 1px) ${vars.spacingS}`
-      : vars.spacingXs};
+      ? `calc(${customProperties.spacingXs} - 1px) ${customProperties.spacingS}`
+      : customProperties.spacingXs};
 
     &:hover {
-      background-color: ${vars.colorNeutral90};
+      background-color: ${customProperties.colorNeutral90};
     }
   `,
   props.isIndeterminate &&
     css`
-      background-color: ${vars.colorAccent95};
+      background-color: ${customProperties.colorAccent95};
     `,
   props.isOpen &&
     css`
       &:not(:hover) {
-        background-color: ${vars.colorAccent30};
-        color: ${vars.colorSurface};
+        background-color: ${customProperties.colorAccent30};
+        color: ${customProperties.colorSurface};
 
         svg {
-          fill: ${vars.colorSurface};
+          fill: ${customProperties.colorSurface};
         }
       }
     `,
   props.isReadOnly &&
     css`
-      color: ${vars.colorNeutral60};
+      color: ${customProperties.colorNeutral60};
 
       svg {
-        fill: ${vars.colorNeutral60};
+        fill: ${customProperties.colorNeutral60};
       }
     `,
   props.isDisabled &&
     css`
-      color: ${vars.colorNeutral60};
+      color: ${customProperties.colorNeutral60};
 
       svg {
-        fill: ${vars.colorNeutral60};
+        fill: ${customProperties.colorNeutral60};
       }
     `,
 ];
@@ -84,16 +86,16 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
 const DropdownContainer = styled.div`
   position: absolute;
   cursor: pointer;
-  font-size: ${vars.fontSizeForInput};
-  top: ${vars.spacingXs};
-  margin-top: ${vars.spacingXs};
+  font-size: ${customProperties.fontSizeForInput};
+  top: ${customProperties.spacingXs};
+  margin-top: ${customProperties.spacingXs};
   left: 0;
   white-space: nowrap;
-  background: ${vars.colorSurface};
+  background: ${customProperties.colorSurface};
   overflow: hidden;
   z-index: 9999;
-  border: 1px solid ${vars.colorPrimary};
-  border-radius: ${vars.borderRadius6};
+  border: 1px solid ${customProperties.colorPrimary};
+  border-radius: ${customProperties.borderRadius6};
 `;
 
 export { DropdownContainer, DropdownItem, getButtonStyles };

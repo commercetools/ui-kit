@@ -3,7 +3,7 @@ import type { Props } from '../templates/icon.styles';
 import { cloneElement, isValidElement, ReactElement, useMemo } from 'react';
 import DOMPurify from 'dompurify';
 import convert from 'react-from-dom';
-import { useTheme, ClassNames } from '@emotion/react';
+import { ClassNames } from '@emotion/react';
 import { canUseDOM } from '@commercetools-uikit/utils';
 import { getIconStyles } from '../templates/icon.styles';
 
@@ -12,7 +12,6 @@ type InlineSvgProps = Props & {
 };
 
 const InlineSvg = (props: InlineSvgProps) => {
-  const theme = useTheme();
   const sanitized = useMemo(() => {
     if (!canUseDOM) {
       return props.data;
@@ -32,7 +31,7 @@ const InlineSvg = (props: InlineSvgProps) => {
       <ClassNames>
         {({ css }) =>
           cloneElement(svgElement, {
-            className: css(getIconStyles(props, theme)),
+            className: css(getIconStyles(props)),
           })
         }
       </ClassNames>

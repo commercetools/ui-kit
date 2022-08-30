@@ -5,7 +5,6 @@ import {
   ReactElement,
   ComponentPropsWithRef,
 } from 'react';
-import { useTheme } from '@emotion/react';
 import omit from 'lodash/omit';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
@@ -65,7 +64,6 @@ const SecondaryIconButton = <TStringOrComponent extends ElementType = 'button'>(
     // we fall back to `isDisabled`
     disabled: props.isDisabled,
   };
-  const theme = useTheme();
   return (
     <AccessibleButton
       as={props.as}
@@ -74,7 +72,7 @@ const SecondaryIconButton = <TStringOrComponent extends ElementType = 'button'>(
       label={props.label}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
-      css={getBaseStyles(props, theme)}
+      css={getBaseStyles(props)}
     >
       {props.icon}
     </AccessibleButton>

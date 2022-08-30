@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
-import { useTheme } from '@emotion/react';
 import has from 'lodash/has';
 import flatMap from 'lodash/flatMap';
 import Select, {
@@ -323,7 +322,6 @@ const defaultProps: Pick<
 
 const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
-  const theme = useTheme();
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
@@ -385,20 +383,17 @@ const SelectInput = (props: TSelectInputProps) => {
           }
           menuIsOpen={props.isReadOnly ? false : undefined}
           styles={
-            createSelectStyles(
-              {
-                hasWarning: props.hasWarning,
-                hasError: props.hasError,
-                showOptionGroupDivider: props.showOptionGroupDivider,
-                menuPortalZIndex: props.menuPortalZIndex,
-                isDisabled: props.isDisabled,
-                isReadOnly: props.isReadOnly,
-                iconLeft: props.iconLeft,
-                isMulti: props.isMulti,
-                hasValue: !isEmpty(selectedOptions),
-              },
-              theme
-            ) as ReactSelectProps['styles']
+            createSelectStyles({
+              hasWarning: props.hasWarning,
+              hasError: props.hasError,
+              showOptionGroupDivider: props.showOptionGroupDivider,
+              menuPortalZIndex: props.menuPortalZIndex,
+              isDisabled: props.isDisabled,
+              isReadOnly: props.isReadOnly,
+              iconLeft: props.iconLeft,
+              isMulti: props.isMulti,
+              hasValue: !isEmpty(selectedOptions),
+            }) as ReactSelectProps['styles']
           }
           filterOption={props.filterOption}
           // react-select uses "id" (for the container) and "inputId" (for the input),

@@ -1,5 +1,4 @@
 import { MultilineTextInput } from '@commercetools-frontend/ui-kit';
-import { ThemeProvider } from '@emotion/react';
 import { Suite, Spec } from '../../../../../test/percy';
 
 const value =
@@ -7,7 +6,7 @@ const value =
 
 export const routePath = '/multiline-text-input';
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="minimal">
       <MultilineTextInput
@@ -91,14 +90,5 @@ export const component = ({ themes }) => (
         isDisabled={true}
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (inverted) theme">
-        <MultilineTextInput
-          value={value}
-          onChange={() => {}}
-          horizontalConstraint={7}
-        />
-      </Spec>
-    </ThemeProvider>
   </Suite>
 );
