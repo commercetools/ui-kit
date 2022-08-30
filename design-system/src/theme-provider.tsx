@@ -48,6 +48,7 @@ const applyTheme = ({
   themeOverrides,
 }: TApplyTheme): void => {
   const target = isBrowser ? parentSelector() : null;
+
   const validTheme = validateTheme(newTheme);
   target?.setAttribute('data-theme', validTheme);
   const vars = toVars(
