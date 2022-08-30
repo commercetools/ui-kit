@@ -1,5 +1,20 @@
 import percySnapshot from '@percy/puppeteer';
 import { getDocument, queries } from 'pptr-testing-library';
+import puppeteer from 'puppeteer';
+let browser;
+let page;
+
+jest.setTimeout(20000);
+
+beforeEach(async () => {
+  browser = await puppeteer.launch({
+    slowMo: 10, // Launching the browser in slow motion is necessary due to race conditions. Otherwise browser closes prematurely and tests fail.
+  });
+  page = await browser.newPage();
+});
+afterEach(async () => {
+  await browser.close();
+});
 
 describe('ThemeProvider', () => {
   it('Default', async () => {
