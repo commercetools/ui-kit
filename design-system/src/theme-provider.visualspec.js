@@ -1,5 +1,5 @@
 import percySnapshot from '@percy/puppeteer';
-import { getDocument, queries } from 'pptr-testing-library';
+import { getDocument, queries, waitFor } from 'pptr-testing-library';
 
 describe('ThemeProvider', () => {
   it('Default', async () => {
@@ -21,8 +21,9 @@ describe('Interactive', () => {
     );
 
     await globalThemeChangeButton.click();
-
-    await percySnapshot(page, 'ThemeProvider - after global theme change');
+    await waitFor(async () => {
+      await percySnapshot(page, 'ThemeProvider - after global theme change');
+    });
 
     // change local theme
     const localThemeChangeButton = await queries.findByText(
@@ -30,7 +31,8 @@ describe('Interactive', () => {
       'change local theme'
     );
     await localThemeChangeButton.click();
-
-    await percySnapshot(page, 'ThemeProvider - after local theme change');
+    await waitFor(async () => {
+      await percySnapshot(page, 'ThemeProvider - after local theme change');
+    });
   });
 });

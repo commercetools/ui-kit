@@ -71,4 +71,4 @@ const customProperties = {
 }
 ```
 
-When accessing CSS variables using the `var()` function [fallback values](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties#custom_property_fallback_values) are provided, therefore lack of `<ThemeProvider>` component in the React component tree does not introduce any visual changes.
+When accessing CSS variables using the `var()` function, [fallback values](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties#custom_property_fallback_values) are provided, therefore lack of `<ThemeProvider>` component in the React component tree does not introduce any visual changes.
