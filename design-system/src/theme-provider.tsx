@@ -90,7 +90,7 @@ const useTheme = (parentSelector = defaultParentSelector) => {
 
   // So consumers don't have to provide 'parentSelector' again as
   // they already provided it in the hook call
-  /* const updateTheme = useRef(
+  const updateTheme = useRef(
     ({ newTheme, themeOverrides }: Omit<TApplyTheme, 'parentSelector'>) => {
       applyTheme({
         newTheme,
@@ -99,9 +99,9 @@ const useTheme = (parentSelector = defaultParentSelector) => {
       });
       setTheme(newTheme || 'default');
     }
-  ); */
+  );
   return useMemo(() => {
-    return { theme, applyTheme };
+    return { theme, applyTheme: updateTheme.current };
   }, [theme]);
 };
 
