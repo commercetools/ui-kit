@@ -131,8 +131,10 @@ describe('ThemeProvider', () => {
 
   it('should add custom color to local theme css properties', async () => {
     const { container } = render(<TestComponentWithThemeProvider />);
+    const globalThemeProvider = document.body;
     const localThemeProvider = container.querySelector('#localParent');
     expect(localThemeProvider).not.toHaveStyle(`--custom-color: #BADA55`);
+    expect(globalThemeProvider).not.toHaveStyle(`--custom-color: #BADA55`);
 
     // local theme change
     fireEvent.click(
@@ -143,6 +145,7 @@ describe('ThemeProvider', () => {
 
     await waitFor(() => {
       expect(localThemeProvider).toHaveStyle(`--custom-color: #BADA55`);
+      expect(globalThemeProvider).not.toHaveStyle(`--custom-color: #BADA55`);
     });
   });
 });
