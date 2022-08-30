@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "resolveJsonModule": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveSymlinks": true,
+    "pretty": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "stripInternal": true,
+    "target": "ES2019",
+    "allowJs": true,
+    "typeRoots": ["@types", "node_modules/@types"],
+    "skipLibCheck": true
+  },
+  "files": [
+    "/Users/kacperbartoszkarzywiec/Projects/commercetools/ui-kit/design-system/src/custom-properties.ts",
+    "/Users/kacperbartoszkarzywiec/Projects/commercetools/ui-kit/design-system/src/theme-provider.tsx"
+  ],
+  "include": []
+}

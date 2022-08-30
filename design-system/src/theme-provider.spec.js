@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-wait-for-multiple-assertions */
 import { useTheme, customProperties } from '@commercetools-uikit/design-system';
 import PropTypes from 'prop-types';
 import { screen, render, fireEvent, waitFor } from '../../test/test-utils';
@@ -32,6 +33,7 @@ const TestComponentWithThemeProvider = () => {
               colorSolid: 'red',
               colorSurface: 'yellow',
             },
+            newTheme: 'dark',
             parentSelector: globalParentSelector,
           });
         }}
@@ -46,6 +48,7 @@ const TestComponentWithThemeProvider = () => {
               colorSurface: 'tomato',
               customColor: '#BADA55',
             },
+            newTheme: 'dark',
             parentSelector: localParentSelector,
           });
         }}
@@ -63,16 +66,18 @@ const TestComponentWithThemeProvider = () => {
 };
 
 describe('ThemeProvider', () => {
-  it('should change `--color-solid` and `--color-surface` values of global test provider after global theme switch button click', async () => {
+  it('should change `--color-solid` and `--color-surface` values and `data-theme` of global test provider after global theme switch button click', async () => {
     const { container } = render(<TestComponentWithThemeProvider />);
     const globalThemeProvider = document.body;
     const localThemeProvider = container.querySelector('#localParent');
     expect(globalThemeProvider).toHaveStyle(
       `--color-solid: #1a1a1a; --color-surface: #fff;`
     );
+    expect(globalThemeProvider).toHaveAttribute('data-theme', 'default');
     expect(localThemeProvider).toHaveStyle(
       `--color-solid: #1a1a1a; --color-surface: #fff;`
     );
+    expect(localThemeProvider).toHaveAttribute('data-theme', 'default');
 
     // global theme change
     fireEvent.click(
@@ -85,22 +90,25 @@ describe('ThemeProvider', () => {
       expect(globalThemeProvider).toHaveStyle(
         `--color-solid: red; --color-surface: yellow;`
       );
-      // eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
+      expect(globalThemeProvider).toHaveAttribute('data-theme', 'dark');
       expect(localThemeProvider).toHaveStyle(
         `--color-solid: #1a1a1a; --color-surface: #fff;`
       );
+      expect(localThemeProvider).toHaveAttribute('data-theme', 'default');
     });
   });
-  it('should change `--color-solid` and `--color-surface` values of local test provider after local theme switch button click', async () => {
+  it('should change `--color-solid` and `--color-surface` values and `data-theme` of local test provider after local theme switch button click', async () => {
     const { container } = render(<TestComponentWithThemeProvider />);
     const globalThemeProvider = document.body;
     const localThemeProvider = container.querySelector('#localParent');
     expect(globalThemeProvider).toHaveStyle(
       `--color-solid: #1a1a1a; --color-surface: #fff;`
     );
+    expect(globalThemeProvider).toHaveAttribute('data-theme', 'default');
     expect(localThemeProvider).toHaveStyle(
       `--color-solid: #1a1a1a; --color-surface: #fff;`
     );
+    expect(localThemeProvider).toHaveAttribute('data-theme', 'default');
 
     // local theme change
     fireEvent.click(
@@ -113,10 +121,12 @@ describe('ThemeProvider', () => {
       expect(globalThemeProvider).toHaveStyle(
         `--color-solid: #1a1a1a; --color-surface: #fff;`
       );
+      expect(globalThemeProvider).toHaveAttribute('data-theme', 'default');
       // eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
       expect(localThemeProvider).toHaveStyle(
         `--color-solid: green; --color-surface: tomato;`
       );
+      expect(localThemeProvider).toHaveAttribute('data-theme', 'dark');
     });
   });
 

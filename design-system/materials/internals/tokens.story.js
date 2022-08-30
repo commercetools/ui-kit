@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import TextInput from '@commercetools-uikit/text-input';
 import merge from 'lodash/merge';
-import cloneDeep from 'lodash/cloneDeep';
 import customProperties from '../custom-properties.json';
 import Readme from './TOKENS.md';
 import definition from './definition.yaml';
@@ -122,9 +121,12 @@ const getDefaultThemeChoiceGroupProperty = (choiceGroup, property) =>
 const ChoiceGroup = (props) => {
   const choices = Object.entries(definition.choiceGroupsPerTheme).reduce(
     (acc, [theme, themeChoices]) => {
-      const defaultTheme = cloneDeep(definition.choiceGroupsPerTheme.default);
       // default theme is used as a blueprint
-      const themeChoicesBasedOnDefaultTheme = merge(defaultTheme, themeChoices);
+      const themeChoicesBasedOnDefaultTheme = merge(
+        {},
+        definition.choiceGroupsPerTheme.default,
+        themeChoices
+      );
       const filteredThemeChoices = Object.fromEntries(
         filterChoiceGroupValues(
           themeChoicesBasedOnDefaultTheme[props.choiceGroup].choices,
