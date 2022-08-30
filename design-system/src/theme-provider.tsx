@@ -39,7 +39,7 @@ const applyTheme = ({
   const validTheme = (
     allThemesNames.includes(newTheme || '') ? newTheme! : 'default'
   ) as ThemeName;
-  if (newTheme !== validTheme) {
+  if (newTheme && newTheme !== validTheme) {
     console.warn(
       `ThemeProvider: the specified theme '${newTheme}' is not supported.`
     );
@@ -54,7 +54,6 @@ const applyTheme = ({
   Object.entries(vars).forEach(([key, value]) => {
     target.style.setProperty(key, value);
   });
-  // Object.assign(target.style, vars);
   target.dataset.theme = validTheme;
 };
 
