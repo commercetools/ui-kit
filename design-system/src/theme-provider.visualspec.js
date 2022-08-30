@@ -1,20 +1,5 @@
 import percySnapshot from '@percy/puppeteer';
 import { getDocument, queries } from 'pptr-testing-library';
-import puppeteer from 'puppeteer';
-let browser;
-let page;
-
-jest.setTimeout(20000);
-
-beforeEach(async () => {
-  browser = await puppeteer.launch({
-    slowMo: 10, // Launching the browser in slow motion is necessary due to race conditions. Otherwise browser closes prematurely and tests fail.
-  });
-  page = await browser.newPage();
-});
-afterEach(async () => {
-  await browser.close();
-});
 
 describe('ThemeProvider', () => {
   it('Default', async () => {
@@ -25,7 +10,7 @@ describe('ThemeProvider', () => {
 });
 
 describe('Interactive', () => {
-  it('changes global theme not changing scoped themes', async () => {
+  it('applies changes to global and local theme provider', async () => {
     await page.goto(`${HOST}/theme-provider/interactive`);
     const doc = await getDocument(page);
 
@@ -34,6 +19,7 @@ describe('Interactive', () => {
       doc,
       'change global theme'
     );
+
     await globalThemeChangeButton.click();
 
     await percySnapshot(page, 'ThemeProvider - after global theme change');

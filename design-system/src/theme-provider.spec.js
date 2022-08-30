@@ -122,7 +122,6 @@ describe('ThemeProvider', () => {
         `--color-solid: #1a1a1a; --color-surface: #fff;`
       );
       expect(globalThemeProvider).toHaveAttribute('data-theme', 'default');
-      // eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
       expect(localThemeProvider).toHaveStyle(
         `--color-solid: green; --color-surface: tomato;`
       );
