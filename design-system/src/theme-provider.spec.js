@@ -23,18 +23,18 @@ const globalParentSelector = () => document.body;
 const localParentSelector = () => document.getElementById('localParent');
 
 const TestComponentWithThemeProvider = () => {
-  const { applyTheme } = useTheme();
+  const { applyTheme: applyGlobalTheme } = useTheme(globalParentSelector);
+  const { applyTheme: applyLocalTheme } = useTheme(localParentSelector);
   return (
     <>
       <button
         onClick={() => {
-          applyTheme({
+          applyGlobalTheme({
             themeOverrides: {
               colorSolid: 'red',
               colorSurface: 'yellow',
             },
             newTheme: 'dark',
-            parentSelector: globalParentSelector,
           });
         }}
       >
@@ -42,14 +42,13 @@ const TestComponentWithThemeProvider = () => {
       </button>
       <button
         onClick={() => {
-          applyTheme({
+          applyLocalTheme({
             themeOverrides: {
               colorSolid: 'green',
               colorSurface: 'tomato',
               customColor: '#BADA55',
             },
             newTheme: 'dark',
-            parentSelector: localParentSelector,
           });
         }}
       >

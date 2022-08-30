@@ -135,12 +135,13 @@ TestComponent.propTypes = {
 const localThemeParentSelector = () => document.getElementById('local');
 
 const InteractiveRoute = () => {
-  const { applyTheme } = useTheme();
+  const { applyTheme: applyGlobalTheme } = useTheme();
+  const { applyTheme: applyLocalTheme } = useTheme(localThemeParentSelector);
   return (
     <>
       <button
         onClick={() => {
-          applyTheme({
+          applyGlobalTheme({
             newTheme: 'dark',
             themeOverrides: {
               colorSolid: 'red',
@@ -154,10 +155,9 @@ const InteractiveRoute = () => {
       </button>
       <button
         onClick={() => {
-          applyTheme({
+          applyLocalTheme({
             newTheme: 'dark',
             themeOverrides: { colorSolid: 'green', colorSurface: 'tomato' },
-            parentSelector: localThemeParentSelector,
           });
         }}
       >
