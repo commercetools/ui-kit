@@ -1,4 +1,5 @@
 import { useTheme, customProperties } from '@commercetools-uikit/design-system';
+import { Switch, Route } from 'react-router';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import {
@@ -7,6 +8,7 @@ import {
   LocalDarkThemeProvider,
   LocalThemeProvider,
 } from '../../test/percy';
+import { ThemeProvider } from './theme-provider';
 
 export const routePath = '/theme-provider';
 
@@ -39,7 +41,7 @@ DummyComponent.propTypes = {
   parentId: PropTypes.string,
 };
 
-export const component = () => (
+const DefaultRoute = () => (
   <Suite>
     <Spec label="use global default theme">
       <DummyComponent />
@@ -114,4 +116,64 @@ export const component = () => (
       </LocalThemeProvider>
     </Spec>
   </Suite>
+);
+
+const TestComponent = (props) => (
+  <div
+    style={{
+      color: customProperties.colorSolid,
+      backgroundColor: customProperties.colorSurface,
+    }}
+  >
+    {props.text}
+  </div>
+);
+TestComponent.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+const localThemeParentSelector = () => document.getElementById('local');
+
+const InteractiveRoute = () => {
+  const { applyTheme } = useTheme();
+  return (
+    <>
+      <button
+        onClick={() => {
+          applyTheme({
+            themeOverrides: {
+              colorSolid: 'red',
+              colorSurface: 'yellow',
+              customColor: '#BADA55',
+            },
+          });
+        }}
+      >
+        change global theme
+      </button>
+      <button
+        onClick={() => {
+          applyTheme({
+            themeOverrides: { colorSolid: 'green', colorSurface: 'tomato' },
+            parentSelector: localThemeParentSelector,
+          });
+        }}
+      >
+        change local theme
+      </button>
+      <ThemeProvider />
+      <TestComponent text="global" />
+      <div id="local">
+        <ThemeProvider parentSelector={localThemeParentSelector} />
+        <TestComponent text="local" />
+      </div>
+    </>
+  );
+};
+
+export const component = () => (
+  <Switch>
+    <Route path={`${routePath}/interactive`} component={InteractiveRoute} />
+    <Route path={routePath} component={DefaultRoute} />
+  </Switch>
 );
