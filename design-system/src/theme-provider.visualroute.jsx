@@ -141,6 +141,7 @@ const InteractiveRoute = () => {
       <button
         onClick={() => {
           applyTheme({
+            newTheme: 'dark',
             themeOverrides: {
               colorSolid: 'red',
               colorSurface: 'yellow',
@@ -154,6 +155,7 @@ const InteractiveRoute = () => {
       <button
         onClick={() => {
           applyTheme({
+            newTheme: 'dark',
             themeOverrides: { colorSolid: 'green', colorSurface: 'tomato' },
             parentSelector: localThemeParentSelector,
           });

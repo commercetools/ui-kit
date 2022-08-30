@@ -2,7 +2,6 @@ import { useLayoutEffect, useMemo, useState, useRef, useEffect } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
-import cloneDeep from 'lodash/cloneDeep';
 import { themes, themesNames } from './custom-properties';
 
 const allThemesNames = Object.keys(themesNames);
@@ -47,14 +46,14 @@ const applyTheme = ({
 
   const vars = toVars(
     themeOverrides && isObject(themeOverrides)
-      ? merge(cloneDeep(themes[validTheme]), themeOverrides)
+      ? merge({}, themes[validTheme], themeOverrides)
       : themes[validTheme]
   );
 
   Object.entries(vars).forEach(([key, value]) => {
     target.style.setProperty(key, value);
   });
-  target.dataset.theme = validTheme;
+  target.setAttribute('data-theme', validTheme);
 };
 
 type ThemeProviderProps = {
@@ -75,7 +74,6 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
   return null;
 };
-ThemeProvider.displayName = 'ThemeProvider';
 ThemeProvider.defaultProps = {
   parentSelector: defaultParentSelector,
 };
@@ -92,7 +90,7 @@ const useTheme = (parentSelector = defaultParentSelector) => {
 
   // So consumers don't have to provide 'parentSelector' again as
   // they already provided it in the hook call
-  const updateTheme = useRef(
+  /* const updateTheme = useRef(
     ({ newTheme, themeOverrides }: Omit<TApplyTheme, 'parentSelector'>) => {
       applyTheme({
         newTheme,
@@ -101,10 +99,9 @@ const useTheme = (parentSelector = defaultParentSelector) => {
       });
       setTheme(newTheme || 'default');
     }
-  );
-
+  ); */
   return useMemo(() => {
-    return { theme, applyTheme: updateTheme.current };
+    return { theme, applyTheme };
   }, [theme]);
 };
 

@@ -14,8 +14,6 @@ describe('Interactive', () => {
     await page.goto(`${HOST}/theme-provider/interactive`);
     const doc = await getDocument(page);
 
-    await percySnapshot(page, 'ThemeProvider - before theme change');
-
     // change global theme
     const globalThemeChangeButton = await queries.findByText(
       doc,
