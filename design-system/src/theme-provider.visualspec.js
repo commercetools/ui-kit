@@ -21,7 +21,7 @@ describe('Interactive', () => {
     );
 
     await globalThemeChangeButton.click();
-    await page.waitForSelector('[data-theme="dark"]');
+    await page.waitForSelector('html[data-theme="dark"]');
     await percySnapshot(page, 'ThemeProvider - after global theme change');
 
     // change local theme
@@ -30,7 +30,7 @@ describe('Interactive', () => {
       'change local theme'
     );
     await localThemeChangeButton.click();
-    await page.waitForSelector('[data-theme="dark"]');
+    await page.waitForSelector('#local[data-theme="dark"]');
     await percySnapshot(page, 'ThemeProvider - after local theme change');
   });
 });
