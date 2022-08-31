@@ -46,7 +46,7 @@ const applyTheme = ({
 
   const vars = toVars(
     themeOverrides && isObject(themeOverrides)
-      ? merge({}, themes[validTheme], themeOverrides)
+      ? merge({}, themes.default, themes[validTheme], themeOverrides)
       : themes[validTheme]
   );
 
