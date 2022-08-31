@@ -4,10 +4,7 @@ import {
   customProperties,
   themesNames,
   ThemeProvider,
-  useTheme,
 } from '../../../design-system';
-
-const defaultThemeName = themesNames.default;
 
 const defaultTheme = customProperties;
 
@@ -16,21 +13,13 @@ const customTheme = {
   colorSurface: '#1a1a1a',
 };
 
-const ThemeToggler = (props) => {
-  const { applyTheme } = useTheme();
-
-  useEffect(() => {
-    applyTheme({ newTheme: props.name, themeOverrides: props.theme });
-  });
-
-  return null;
-};
-
 const ThemeWrapper = (props) => {
   return (
     <>
-      <ThemeProvider theme={defaultThemeName} />
-      <ThemeToggler {...props} />
+      <ThemeProvider
+        theme={props.themeName}
+        themeOverrides={props.themeOverrides}
+      />
       {props.children}
     </>
   );
@@ -43,11 +32,11 @@ ThemeWrapper.propTypes = {
 const themeParams = [
   {
     name: 'Default Theme',
-    props: { name: 'default', theme: defaultTheme },
+    props: { themeName: 'default', themeOverrides: defaultTheme },
   },
   {
     name: 'Custom Theme',
-    props: { name: 'default', theme: customTheme },
+    props: { themeName: 'default', themeOverrides: customTheme },
   },
 ];
 
