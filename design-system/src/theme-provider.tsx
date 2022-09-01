@@ -88,21 +88,7 @@ const useTheme = (parentSelector = defaultParentSelector) => {
     setTheme(parentSelectorRef.current()?.dataset.theme || 'default');
   }, []);
 
-  // So consumers don't have to provide 'parentSelector' again as
-  // they already provided it in the hook call
-  const updateTheme = useRef(
-    ({ newTheme, themeOverrides }: Omit<TApplyTheme, 'parentSelector'>) => {
-      applyTheme({
-        newTheme,
-        parentSelector: parentSelectorRef.current,
-        themeOverrides,
-      });
-      setTheme(newTheme || 'default');
-    }
-  );
-  return useMemo(() => {
-    return { theme, applyTheme: updateTheme.current };
-  }, [theme]);
+  return useMemo(() => theme, [theme]);
 };
 
 export { ThemeProvider, useTheme };

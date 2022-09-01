@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTheme, customProperties } from '@commercetools-uikit/design-system';
 import { Switch, Route } from 'react-router';
 import kebabCase from 'lodash/kebabCase';
@@ -15,7 +16,7 @@ export const routePath = '/theme-provider';
 const parentSelector = (id) => () => document.getElementById(id);
 
 const DummyComponent = (props) => {
-  const { theme } = useTheme(parentSelector(props.parentId));
+  const theme = useTheme(parentSelector(props.parentId));
 
   return (
     <h1
@@ -135,15 +136,16 @@ TestComponent.propTypes = {
 const localThemeParentSelector = () => document.getElementById('local');
 
 const InteractiveRoute = () => {
-  const { applyTheme: applyGlobalTheme } = useTheme();
-  const { applyTheme: applyLocalTheme } = useTheme(localThemeParentSelector);
+  const [globalTheme, setGlobalTheme] = useState({ name: 'default', overrides: {} });
+  const [localTheme, setLocalTheme] = useState({ name: 'default', overrides: {} });
+
   return (
     <>
       <button
         onClick={() => {
-          applyGlobalTheme({
-            newTheme: 'dark',
-            themeOverrides: {
+          setGlobalTheme({
+            name: 'dark',
+            overrides: {
               colorSolid: 'red',
               colorSurface: 'yellow',
               customColor: '#BADA55',
@@ -155,18 +157,24 @@ const InteractiveRoute = () => {
       </button>
       <button
         onClick={() => {
-          applyLocalTheme({
-            newTheme: 'dark',
-            themeOverrides: { colorSolid: 'green', colorSurface: 'tomato' },
+          setLocalTheme({
+            name: 'dark',
+            overrides: { colorSolid: 'green', colorSurface: 'tomato' },
           });
         }}
       >
         change local theme
       </button>
-      <ThemeProvider />
+      <ThemeProvider
+        theme={globalTheme.name}
+        themeOverrides={globalTheme.overrides}
+      />
       <TestComponent text="global" />
       <div id="local">
-        <ThemeProvider parentSelector={localThemeParentSelector} />
+        <ThemeProvider
+          theme={localTheme.name}
+          themeOverrides={localTheme.overrides}
+          parentSelector={localThemeParentSelector} />
         <TestComponent text="local" />
       </div>
     </>
