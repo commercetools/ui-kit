@@ -14,23 +14,27 @@ describe('Interactive', () => {
     await page.goto(`${HOST}/theme-provider/interactive`);
     const doc = await getDocument(page);
 
+    // page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+
     // change global theme
-    const globalThemeChangeButton = await queries.findByText(
+    const globalThemeChangeButton = await queries.getByText(
       doc,
       'change global theme'
     );
 
     await globalThemeChangeButton.click();
     await page.waitForSelector('html[data-theme="dark"]');
+    await page.waitForTimeout(1000);
     await percySnapshot(page, 'ThemeProvider - after global theme change');
 
     // change local theme
-    const localThemeChangeButton = await queries.findByText(
+    const localThemeChangeButton = await queries.getByText(
       doc,
       'change local theme'
     );
     await localThemeChangeButton.click();
     await page.waitForSelector('#local[data-theme="dark"]');
+    await page.waitForTimeout(1000);
     await percySnapshot(page, 'ThemeProvider - after local theme change');
   });
 });
