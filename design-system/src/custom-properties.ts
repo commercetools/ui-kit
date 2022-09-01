@@ -132,6 +132,8 @@ export const themes = {
     colorPrimary: '#f78d26',
     colorSolid: '#fff',
     colorSurface: '#1a1a1a',
+    backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
+    backgroundColorForTagWarning: 'hsl(0, 0%, 95%)',
   },
 } as const;
 

@@ -26,17 +26,17 @@ const TOKEN_REGEX =
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);
-const allThemesNames = Object.keys(definitions.choiceGroupsPerTheme);
+const allThemesNames = Object.keys(definitions.choiceGroupsByTheme);
 
 const tokens = {};
 const designTokens = {};
 
-Object.keys(definitions.choiceGroupsPerTheme).forEach((themeName) => {
+Object.keys(definitions.choiceGroupsByTheme).forEach((themeName) => {
   if (!tokens[themeName]) {
     tokens[themeName] = {};
   }
 
-  Object.values(definitions.choiceGroupsPerTheme[themeName]).forEach(
+  Object.values(definitions.choiceGroupsByTheme[themeName]).forEach(
     (themeChoiceGroup) => {
       Object.entries(themeChoiceGroup.choices).forEach(([key, value]) => {
         if (tokens[themeName][key])
@@ -55,44 +55,60 @@ Object.keys(definitions.choiceGroupsPerTheme).forEach((themeName) => {
   );
 });
 
-// Copy the semantic design tokens (only needed for default theme)
-Object.values(definitions.decisionGroups).forEach((decisionGroup) => {
-  Object.entries(decisionGroup.decisions).forEach(([key, decision]) => {
-    if (tokens.default[key]) endProgram(`Token "${key} already exists!"`);
-    if (key !== key.toLowerCase())
-      endProgram(`Tokens "${key}" must be lower case`);
-    if (!decision.choice) {
-      endProgram(`You forgot to specify a choice for ${decision}`);
-    }
-    if (!tokens.default[decision.choice]) {
-      endProgram(`Choice called "${decision.choice}" was not found!`);
-    }
-    // TODO parse token name and warn when invalid name was given and token
-    // is not deprecated
+// Copy the semantic design tokens
+Object.entries(definitions.decisionGroupsByTheme).forEach(
+  ([themeName, decisionGroups]) => {
+    Object.values(decisionGroups).forEach((decisionGroup) => {
+      Object.entries(decisionGroup.decisions).forEach(([key, decision]) => {
+        if (tokens[themeName][key])
+          endProgram(`Token "${key} already exists!"`);
+        if (key !== key.toLowerCase())
+          endProgram(`Tokens "${key}" must be lower case`);
+        if (!decision.choice) {
+          endProgram(`You forgot to specify a choice for ${decision}`);
+        }
+        if (
+          !tokens[themeName][decision.choice] &&
+          !tokens.default[decision.choice]
+        ) {
+          endProgram(`Choice called "${decision.choice}" was not found!`);
+        }
+        // TODO parse token name and warn when invalid name was given and token
+        // is not deprecated
 
-    const match = key.match(TOKEN_REGEX);
+        const match = key.match(TOKEN_REGEX);
 
-    if (match) {
-      const componentGroup = match[2];
-      const state = match[3];
+        if (match) {
+          const componentGroup = match[2];
+          const state = match[3];
 
-      if (componentGroup && !supportedComponentGroups.includes(componentGroup))
-        endProgram(
-          `Token "${key}" uses unsupported component group "${componentGroup}"!`
-        );
+          if (
+            componentGroup &&
+            !supportedComponentGroups.includes(componentGroup)
+          )
+            endProgram(
+              `Token "${key}" uses unsupported component group "${componentGroup}"!`
+            );
 
-      if (state && !supportedStates.includes(state))
-        endProgram(`Token "${key}" uses unsupported state "${state}"!`);
-    } else if (!decision.deprecated) {
-      endProgram(
-        `Token "${key}" does not follow <attribute>-for-<component-group>-when-<state>-on-dark naming scheme! Tokens not following this scheme must use "deprecated" flag.`
-      );
-    }
+          if (state && !supportedStates.includes(state))
+            endProgram(`Token "${key}" uses unsupported state "${state}"!`);
+        } else if (!decision.deprecated) {
+          endProgram(
+            `Token "${key}" does not follow <attribute>-for-<component-group>-when-<state>-on-dark naming scheme! Tokens not following this scheme must use "deprecated" flag.`
+          );
+        }
 
-    designTokens[key] = decision.choice;
-    tokens.default[key] = tokens.default[decision.choice];
-  });
-});
+        if (themeName === 'default') {
+          // TODO: Should we create themed versions of the design tokens file (design-tokens.ts)?
+          // What do we need this file for?
+          designTokens[key] = decision.choice;
+        }
+        tokens[themeName][key] =
+          tokens[themeName][decision.choice] || tokens.default[decision.choice];
+      });
+    });
+  }
+);
 
 // Copy over plain tokens (only needed in default theme)
 Object.entries(definitions.plainTokens).forEach(([key, value]) => {
