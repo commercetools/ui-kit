@@ -1,5 +1,6 @@
 /* eslint-disable testing-library/no-wait-for-multiple-assertions */
-import { useTheme, customProperties } from '@commercetools-uikit/design-system';
+import { useState } from 'react';
+import { customProperties } from '@commercetools-uikit/design-system';
 import PropTypes from 'prop-types';
 import { screen, render, fireEvent, waitFor } from '../../test/test-utils';
 import { ThemeProvider } from './theme-provider';
@@ -23,18 +24,25 @@ const globalParentSelector = () => document.body;
 const localParentSelector = () => document.getElementById('localParent');
 
 const TestComponentWithThemeProvider = () => {
-  const { applyTheme: applyGlobalTheme } = useTheme(globalParentSelector);
-  const { applyTheme: applyLocalTheme } = useTheme(localParentSelector);
+  const [globalTheme, setGlobalTheme] = useState({
+    name: 'default',
+    overrides: {},
+  });
+  const [localTheme, setLocalTheme] = useState({
+    name: 'default',
+    overrides: {},
+  });
+
   return (
     <>
       <button
         onClick={() => {
-          applyGlobalTheme({
-            themeOverrides: {
+          setGlobalTheme({
+            name: 'dark',
+            overrides: {
               colorSolid: 'red',
               colorSurface: 'yellow',
             },
-            newTheme: 'dark',
           });
         }}
       >
@@ -42,22 +50,30 @@ const TestComponentWithThemeProvider = () => {
       </button>
       <button
         onClick={() => {
-          applyLocalTheme({
-            themeOverrides: {
+          setLocalTheme({
+            name: 'dark',
+            overrides: {
               colorSolid: 'green',
               colorSurface: 'tomato',
               customColor: '#BADA55',
             },
-            newTheme: 'dark',
           });
         }}
       >
         change local theme
       </button>
-      <ThemeProvider parentSelector={globalParentSelector} />
+      <ThemeProvider
+        theme={globalTheme.name}
+        themeOverrides={globalTheme.overrides}
+        parentSelector={globalParentSelector}
+      />
       <TestComponent text="global" />
       <div id="localParent">
-        <ThemeProvider parentSelector={localParentSelector} />
+        <ThemeProvider
+          theme={localTheme.name}
+          themeOverrides={localTheme.overrides}
+          parentSelector={localParentSelector}
+        />
         <TestComponent text="local" />
       </div>
     </>
