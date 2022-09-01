@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useState, useRef, useEffect } from 'react';
+import { useLayoutEffect, useState, useRef, useEffect } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
@@ -88,7 +88,7 @@ const useTheme = (parentSelector = defaultParentSelector) => {
     setTheme(parentSelectorRef.current()?.dataset.theme || 'default');
   }, []);
 
-  return useMemo(() => theme, [theme]);
+  return theme;
 };
 
 export { ThemeProvider, useTheme };
