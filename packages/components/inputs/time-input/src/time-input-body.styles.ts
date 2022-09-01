@@ -1,9 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import {
-  customProperties,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 import { type TTimeInputProps } from './time-input';
 
@@ -105,8 +102,8 @@ const getInputContainerStyles = (props: TTimeInputProps) => {
   return css`
     appearance: none;
     background-color: ${props.isDisabled
-      ? customProperties[designTokens.backgroundColorForInputWhenDisabled]
-      : customProperties[designTokens.backgroundColorForInput]};
+      ? customProperties.backgroundColorForInputWhenDisabled
+      : customProperties.backgroundColorForInput};
     border: 1px solid ${getInputContainerBorderColor(props)};
     border-radius: ${customProperties.borderRadiusForInput};
     box-sizing: border-box;

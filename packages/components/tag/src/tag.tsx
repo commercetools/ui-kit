@@ -3,10 +3,7 @@ import type { LocationDescriptor } from 'history';
 import { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 import { css, type SerializedStyles } from '@emotion/react';
 import { Link } from 'react-router-dom';
-import {
-  customProperties,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
@@ -91,8 +88,8 @@ const Tag = (props: TTagProps) => {
           min-width: 0;
           display: flex;
           background-color: ${props.type === 'warning'
-            ? customProperties[designTokens.backgroundColorForTagWarning]
-            : customProperties[designTokens.backgroundColorForTag]};
+            ? customProperties.backgroundColorForTagWarning
+            : customProperties.backgroundColorForTag};
         `}
       >
         <TagBody
@@ -114,12 +111,11 @@ const Tag = (props: TTagProps) => {
             css={[
               css`
                 border-color: ${props.type === 'warning'
-                  ? customProperties[designTokens.borderColorForTagWarning]
-                  : customProperties[designTokens.borderColorForTag]};
+                  ? customProperties.borderColorForTagWarning
+                  : customProperties.borderColorForTag};
                 padding: 0 ${customProperties.spacingXs};
-                border-radius: 0
-                  ${customProperties[designTokens.borderRadiusForTag]}
-                  ${customProperties[designTokens.borderRadiusForTag]} 0;
+                border-radius: 0 ${customProperties.borderRadiusForTag}
+                  ${customProperties.borderRadiusForTag} 0;
                 display: flex;
                 align-items: center;
                 background: inherit;
@@ -127,23 +123,17 @@ const Tag = (props: TTagProps) => {
                 border-width: 1px 1px 1px 1px;
                 :not(:disabled)&:hover,
                 :not(:disabled)&:focus {
-                  border-color: ${customProperties[
-                    designTokens.borderColorForTagWarning
-                  ]};
+                  border-color: ${customProperties.borderColorForTagWarning};
 
                   > svg * {
-                    fill: ${customProperties[
-                      designTokens.borderColorForTagWarning
-                    ]};
+                    fill: ${customProperties.borderColorForTagWarning};
                   }
                 }
                 > svg * {
-                  fill: ${customProperties[designTokens.fontColorForTag]};
+                  fill: ${customProperties.fontColorForTag};
                 }
                 &:disabled > svg * {
-                  fill: ${customProperties[
-                    designTokens.fontColorForTagWhenDisabled
-                  ]};
+                  fill: ${customProperties.fontColorForTagWhenDisabled};
                 }
               `,
             ]}
