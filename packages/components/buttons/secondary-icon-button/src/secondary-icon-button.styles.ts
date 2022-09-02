@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TSecondaryButtonProps } from './secondary-icon-button';
 
 const getDisabledStyle = () => {
   /* By using the css 'disabled' selector directly, we don't need additional logic to check the isDisabled prop */
   return css`
     &:disabled svg {
-      fill: ${customProperties.colorNeutral60};
+      fill: ${designTokens.colorNeutral60};
     }
   `;
 };
@@ -16,27 +16,27 @@ const getColorStyle = (props: Pick<TSecondaryButtonProps, 'color'>) => {
     case 'solid':
       return css`
         & svg {
-          fill: ${customProperties.colorSolid};
+          fill: ${designTokens.colorSolid};
         }
         &:focus,
         &:hover svg {
-          fill: ${customProperties.colorPrimary};
+          fill: ${designTokens.colorPrimary};
         }
       `;
     case 'primary':
       return css`
         & svg {
-          fill: ${customProperties.colorPrimary};
+          fill: ${designTokens.colorPrimary};
         }
         &:focus,
         &:hover svg {
-          fill: ${customProperties.colorPrimary25};
+          fill: ${designTokens.colorPrimary25};
         }
       `;
     default:
       return css`
         svg {
-          fill: ${customProperties.colorSolid};
+          fill: ${designTokens.colorSolid};
         }
       `;
   }

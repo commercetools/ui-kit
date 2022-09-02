@@ -1,16 +1,16 @@
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TCheckboxProps } from './checkbox-input';
 
 const getSvgBorderStroke = (props: TCheckboxProps) => {
   if (props.isDisabled) {
-    return customProperties.borderColorForInputWhenDisabled;
+    return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.borderColorForInputWhenError;
+    return designTokens.borderColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return customProperties.borderColorForInputWhenReadonly;
+    return designTokens.borderColorForInputWhenReadonly;
   }
   if (
     props.isHovered &&
@@ -18,22 +18,22 @@ const getSvgBorderStroke = (props: TCheckboxProps) => {
     !props.isDisabled &&
     !props.hasError
   ) {
-    return customProperties.borderColorForInputWhenFocused;
+    return designTokens.borderColorForInputWhenFocused;
   }
-  return customProperties.borderColorForInput;
+  return designTokens.borderColorForInput;
 };
 
 const getSvgContentFill = (props: TCheckboxProps) => {
   if (props.isDisabled) {
-    return customProperties.fontColorForInputWhenDisabled;
+    return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.fontColorForInputWhenError;
+    return designTokens.fontColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return customProperties.fontColorForInputWhenReadonly;
+    return designTokens.fontColorForInputWhenReadonly;
   }
-  return customProperties.borderColorForInputWhenFocused;
+  return designTokens.borderColorForInputWhenFocused;
 };
 
 const getCheckboxWrapperStyles = (props: TCheckboxProps) => {
@@ -47,7 +47,7 @@ const getCheckboxWrapperStyles = (props: TCheckboxProps) => {
     align-items: center;
     svg *[data-style='checkbox__border'] {
       stroke: ${getSvgBorderStroke(props)};
-      fill: ${customProperties.backgroundColorForInput};
+      fill: ${designTokens.backgroundColorForInput};
     }
     svg *[data-style='checkbox__content'] {
       fill: ${getSvgContentFill(props)};

@@ -6,11 +6,11 @@ import type {
 } from './text';
 
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 const getBaseStyles = () => {
   return `
-   color: ${customProperties.colorSolid};
+   color: ${designTokens.colorSolid};
 `;
 };
 
@@ -31,19 +31,19 @@ const italic = `
 const getTone = (tone: string) => {
   switch (tone) {
     case 'information':
-      return `color: ${customProperties.colorInfo};`;
+      return `color: ${designTokens.colorInfo};`;
     case 'secondary':
-      return `color: ${customProperties.colorNeutral60};`;
+      return `color: ${designTokens.colorNeutral60};`;
     case 'positive':
-      return `color: ${customProperties.colorPrimary25};`;
+      return `color: ${designTokens.colorPrimary25};`;
     case 'primary':
-      return `color: ${customProperties.colorPrimary};`;
+      return `color: ${designTokens.colorPrimary};`;
     case 'negative':
-      return `color: ${customProperties.colorError};`;
+      return `color: ${designTokens.colorError};`;
     case 'inverted':
-      return `color: ${customProperties.colorSurface};`;
+      return `color: ${designTokens.colorSurface};`;
     case 'warning':
-      return `color: ${customProperties.colorWarning};`;
+      return `color: ${designTokens.colorWarning};`;
     default:
       return ``;
   }

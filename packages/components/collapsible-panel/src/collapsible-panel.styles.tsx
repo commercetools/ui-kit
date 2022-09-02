@@ -1,16 +1,16 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TCollapsiblePanel } from './collapsible-panel';
 
 function getThemeStyle(theme?: TCollapsiblePanel['theme']) {
   if (theme === 'light') {
     return css`
-      background-color: ${customProperties.colorSurface};
+      background-color: ${designTokens.colorSurface};
     `;
   }
   return css`
-    background-color: ${customProperties.colorNeutral95};
+    background-color: ${designTokens.colorNeutral95};
   `;
 }
 
@@ -23,8 +23,8 @@ const getHeaderContainerStyles = (
 ) => {
   const baseStyles = css`
     position: relative;
-    border-top-left-radius: ${customProperties.borderRadius6};
-    border-top-right-radius: ${customProperties.borderRadius6};
+    border-top-left-radius: ${designTokens.borderRadius6};
+    border-top-right-radius: ${designTokens.borderRadius6};
     display: flex;
     flex: 1;
     align-items: center;
@@ -33,8 +33,8 @@ const getHeaderContainerStyles = (
       ? 'flex-start'
       : 'space-between'};
     padding: ${props.condensed
-      ? `${customProperties.spacingXs} ${customProperties.spacingS}`
-      : `${customProperties.spacingS} ${customProperties.spacingM}`};
+      ? `${designTokens.spacingXs} ${designTokens.spacingS}`
+      : `${designTokens.spacingS} ${designTokens.spacingM}`};
   `;
 
   return [
@@ -49,13 +49,13 @@ const getHeaderContainerStyles = (
         z-index: 1;
         position: sticky;
         top: 0;
-        border-top-right-radius: ${customProperties.borderRadius6};
-        border-top-left-radius: ${customProperties.borderRadius6};
+        border-top-right-radius: ${designTokens.borderRadius6};
+        border-top-left-radius: ${designTokens.borderRadius6};
       `,
     !props.condensed &&
       // To understand why this min-height see: https://github.com/commercetools/ui-kit/pull/616
       css`
-        min-height: ${customProperties.bigButtonHeight};
+        min-height: ${designTokens.bigButtonHeight};
         box-sizing: content-box; /* makes the padding extend beyond the min-height */
       `,
   ];
@@ -63,19 +63,19 @@ const getHeaderContainerStyles = (
 
 const baseContainerStyles = css`
   position: relative;
-  min-width: ${customProperties.constraint6};
+  min-width: ${designTokens.constraint6};
   padding: 0;
   display: flex;
   flex-direction: column;
-  box-shadow: ${customProperties.shadow1};
-  border-radius: ${customProperties.borderRadius6};
-  color: ${customProperties.colorSolid};
+  box-shadow: ${designTokens.shadow1};
+  border-radius: ${designTokens.borderRadius6};
+  color: ${designTokens.colorSolid};
   font-family: inherit;
-  font-size: ${customProperties.fontSizeDefault};
+  font-size: ${designTokens.fontSizeDefault};
 `;
 
 const HeaderControlsWrapper = styled.div`
-  margin-left: ${customProperties.spacingM};
+  margin-left: ${designTokens.spacingM};
   display: flex;
   align-items: center;
 
@@ -91,7 +91,7 @@ const SectionContent = styled.div`
 `;
 
 const SectionWrapper = styled.div`
-  border-top: 1px solid ${customProperties.colorNeutral60};
+  border-top: 1px solid ${designTokens.colorNeutral60};
 `;
 
 export {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTheme, customProperties } from '@commercetools-uikit/design-system';
+import { useTheme, designTokens } from '@commercetools-uikit/design-system';
 import { Switch, Route } from 'react-router';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
@@ -23,8 +23,8 @@ const DummyComponent = (props) => {
       style={{
         color: props.color
           ? `var(--${kebabCase(props.color)})`
-          : customProperties.colorSolid,
-        backgroundColor: customProperties.colorSurface,
+          : designTokens.colorSolid,
+        backgroundColor: designTokens.colorSurface,
         margin: 0,
       }}
     >
@@ -122,8 +122,8 @@ const DefaultRoute = () => (
 const TestComponent = (props) => (
   <div
     style={{
-      color: customProperties.colorSolid,
-      backgroundColor: customProperties.colorSurface,
+      color: designTokens.colorSolid,
+      backgroundColor: designTokens.colorSurface,
     }}
   >
     {props.text}

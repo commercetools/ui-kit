@@ -1,6 +1,6 @@
 import { cloneElement, type ReactElement } from 'react';
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import {
   components as defaultComponents,
   type SingleValueProps,
@@ -63,8 +63,7 @@ const WrapperWithIcon = <Type extends 'singleValue' | 'placeholder'>(
         // the icon has a fixed size of 24px (== SpacingsXl), therefore we can use a fixed margin
         // spacingsXs is the margin between the icon and value
         css={css`
-          margin-left: ${customProperties.spacingXl +
-          customProperties.spacingXs};
+          margin-left: ${designTokens.spacingXl + designTokens.spacingXs};
         `}
       >
         {/* @ts-ignore */}

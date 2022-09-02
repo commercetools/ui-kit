@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TViewSwitcherButtonProps } from './view-switcher-button';
 
 const getSizeStyles = (
@@ -7,14 +7,14 @@ const getSizeStyles = (
 ) => {
   if (isCondensed) {
     return css`
-      padding: 0 ${customProperties.spacingS} 0 ${customProperties.spacingS};
-      height: ${customProperties.smallButtonHeight};
+      padding: 0 ${designTokens.spacingS} 0 ${designTokens.spacingS};
+      height: ${designTokens.smallButtonHeight};
     `;
   }
 
   return css`
-    padding: 0 ${customProperties.spacingM} 0 ${customProperties.spacingM};
-    height: ${customProperties.bigButtonHeight};
+    padding: 0 ${designTokens.spacingM} 0 ${designTokens.spacingM};
+    height: ${designTokens.bigButtonHeight};
   `;
 };
 
@@ -25,42 +25,40 @@ export const getButtonStyles = (
   isFirstButton?: TViewSwitcherButtonProps['isFirstButton'],
   isLastButton?: TViewSwitcherButtonProps['isLastButton']
 ) => {
-  const borderRadius = `${
-    isFirstButton ? customProperties.borderRadius6 : '0'
-  } ${
+  const borderRadius = `${isFirstButton ? designTokens.borderRadius6 : '0'} ${
     isLastButton
-      ? `${customProperties.borderRadius6} ${customProperties.borderRadius6}`
+      ? `${designTokens.borderRadius6} ${designTokens.borderRadius6}`
       : '0 0'
-  } ${isFirstButton ? customProperties.borderRadius6 : '0'}`;
+  } ${isFirstButton ? designTokens.borderRadius6 : '0'}`;
 
   return [
     css`
       align-items: center;
-      color: ${customProperties.colorSolid};
-      transition: background-color ${customProperties.transitionLinear80Ms};
-      font-size: ${customProperties.fontSizeDefault};
+      color: ${designTokens.colorSolid};
+      transition: background-color ${designTokens.transitionLinear80Ms};
+      font-size: ${designTokens.fontSizeDefault};
       border-radius: ${borderRadius};
       box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24),
         0 -1px 1px 0 rgba(0, 0, 0, 0.12);
       &:hover {
-        background-color: ${customProperties.colorNeutral90};
+        background-color: ${designTokens.colorNeutral90};
       }
       &:active {
-        background-color: ${customProperties.colorNeutral95};
+        background-color: ${designTokens.colorNeutral95};
       }
       ${getSizeStyles(isCondensed)}
     `,
     isActive &&
       css`
-        background-color: ${customProperties.colorNeutral95};
-        box-shadow: ${customProperties.shadow9};
+        background-color: ${designTokens.colorNeutral95};
+        box-shadow: ${designTokens.shadow9};
       `,
     isDisabled &&
       css`
-        background-color: ${customProperties.colorAccent98};
-        color: ${customProperties.colorNeutral60};
+        background-color: ${designTokens.colorAccent98};
+        color: ${designTokens.colorNeutral60};
         &:hover {
-          background-color: ${customProperties.colorAccent98};
+          background-color: ${designTokens.colorAccent98};
         }
       `,
   ];

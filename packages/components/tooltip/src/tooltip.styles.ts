@@ -1,17 +1,19 @@
 import { CSSProperties } from 'react';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TTooltipProps } from './tooltip';
+
+type TDesignTokenName = keyof typeof designTokens;
 
 const getOffsetMargin = ({ placement }: { placement: string }) => {
   const position = (placement && placement.split('-')[0]) || '';
   switch (position) {
     case 'left':
     case 'right':
-      return `0 ${customProperties.spacingXs}`;
+      return `0 ${designTokens.spacingXs}`;
     case 'top':
     case 'bottom':
-      return `${customProperties.spacingXs} 0`;
+      return `${designTokens.spacingXs} 0`;
     default:
       return '';
   }
@@ -19,14 +21,14 @@ const getOffsetMargin = ({ placement }: { placement: string }) => {
 
 export const Body = styled.div`
   font-family: inherit;
-  border-radius: ${customProperties.borderRadius6};
-  padding: ${customProperties.spacingXs} ${customProperties.spacingS};
+  border-radius: ${designTokens.borderRadius6};
+  padding: ${designTokens.spacingXs} ${designTokens.spacingS};
   border: 'none';
-  box-shadow: ${customProperties.shadow15};
+  box-shadow: ${designTokens.shadow15};
   font-size: 0.857rem;
   opacity: 0.95;
-  color: ${customProperties.colorSurface};
-  background-color: ${customProperties.colorAccent};
+  color: ${designTokens.colorSurface};
+  background-color: ${designTokens.colorAccent};
 `;
 
 // here we use object styles so we can spread these
@@ -44,9 +46,7 @@ export const getBodyStyles = ({
   return {
     fontFamily: 'inherit',
     margin: `${getOffsetMargin({ placement })} !important`,
-    maxWidth: (customProperties as Record<string, string>)[
-      `constraint${constraint}`
-    ],
+    maxWidth: designTokens[`constraint${constraint}` as TDesignTokenName],
     // so hovering over the tooltip when the tooltip overlaps the component
     pointerEvents: 'none',
     width: constraint === 'auto' ? 'auto' : undefined,

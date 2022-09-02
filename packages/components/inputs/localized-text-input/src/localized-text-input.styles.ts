@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -19,17 +19,17 @@ const getLanguageLabelStyles = (_props: unknown) => {
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
     box-sizing: border-box;
-    color: ${customProperties.fontColorForInputWhenDisabled};
-    height: ${customProperties.sizeHeightInput};
-    line-height: ${customProperties.sizeHeightInput};
-    background-color: ${customProperties.backgroundColorForInputWhenDisabled};
-    border-top-left-radius: ${customProperties.borderRadiusForInput};
-    border-bottom-left-radius: ${customProperties.borderRadiusForInput};
-    border: 1px ${customProperties.borderColorForInputWhenDisabled} solid;
-    padding: 0 ${customProperties.spacingS};
-    transition: border-color ${customProperties.transitionStandard},
-      background-color ${customProperties.transitionStandard},
-      color ${customProperties.transitionStandard};
+    color: ${designTokens.fontColorForInputWhenDisabled};
+    height: ${designTokens.sizeHeightInput};
+    line-height: ${designTokens.sizeHeightInput};
+    background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+    border-top-left-radius: ${designTokens.borderRadiusForInput};
+    border-bottom-left-radius: ${designTokens.borderRadiusForInput};
+    border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
+    padding: 0 ${designTokens.spacingS};
+    transition: border-color ${designTokens.transitionStandard},
+      background-color ${designTokens.transitionStandard},
+      color ${designTokens.transitionStandard};
     border-right: 0;
     box-shadow: none;
     appearance: none;

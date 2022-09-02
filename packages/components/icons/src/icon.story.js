@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Grid from '@commercetools-uikit/grid';
 import Spacings from '@commercetools-uikit/spacings';
 import {
@@ -130,11 +130,11 @@ const InlineSvgPage = (props) => {
               style={{
                 height: '100%',
                 backgroundColor:
-                  color === 'surface' ? customProperties.colorSolid : 'inherit',
+                  color === 'surface' ? designTokens.colorSolid : 'inherit',
               }}
             >
               <Grid
-                gridGap={customProperties.spacingS}
+                gridGap={designTokens.spacingS}
                 gridAutoColumns="1fr"
                 gridTemplateColumns={`repeat(${colorValues.length}, 1fr)`}
                 alignItems="center"

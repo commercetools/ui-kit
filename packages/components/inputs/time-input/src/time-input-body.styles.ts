@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 import { type TTimeInputProps } from './time-input';
 
@@ -13,38 +13,38 @@ const getClearSectionStyles = () => {
     align-items: center;
     box-sizing: border-box;
     display: flex;
-    margin: ${customProperties.spacingXs};
+    margin: ${designTokens.spacingXs};
     cursor: pointer;
 
     &:hover svg * {
-      fill: ${customProperties.colorWarning};
+      fill: ${designTokens.colorWarning};
     }
   `;
 };
 
 const getClockIconContainerColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return customProperties.borderColorForInputWhenDisabled;
+    return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.borderColorForInputWhenError;
+    return designTokens.borderColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return customProperties.borderColorForInputWhenReadonly;
+    return designTokens.borderColorForInputWhenReadonly;
   }
-  return customProperties.borderColorForInput;
+  return designTokens.borderColorForInput;
 };
 const getClockIconContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return customProperties.fontColorForInputWhenDisabled;
+    return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.fontColorForInputWhenError;
+    return designTokens.fontColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return customProperties.fontColorForInputWhenReadonly;
+    return designTokens.fontColorForInputWhenReadonly;
   }
-  return customProperties.fontColorForInput;
+  return designTokens.fontColorForInput;
 };
 const getClockIconContainerStyles = (props: TTimeInputProps) => {
   return css`
@@ -52,87 +52,86 @@ const getClockIconContainerStyles = (props: TTimeInputProps) => {
     box-sizing: border-box;
     background: none;
     background-color: ${props.isDisabled
-      ? customProperties.backgroundColorForInputWhenDisabled
+      ? designTokens.backgroundColorForInputWhenDisabled
       : 'none'};
     border: 0;
-    border-left: 1px solid ${customProperties.borderColorForInput};
-    border-top-right-radius: ${customProperties.borderRadiusForInput};
-    border-bottom-right-radius: ${customProperties.borderRadiusForInput};
+    border-left: 1px solid ${designTokens.borderColorForInput};
+    border-top-right-radius: ${designTokens.borderRadiusForInput};
+    border-bottom-right-radius: ${designTokens.borderRadiusForInput};
     border-color: ${getClockIconContainerColor(props)};
     color: ${getClockIconContainerFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     height: 100%;
     display: flex;
-    padding: ${customProperties.spacingXs};
+    padding: ${designTokens.spacingXs};
     outline: 0;
-    transition: color ${customProperties.transitionStandard},
-      border-color ${customProperties.transitionStandard};
+    transition: color ${designTokens.transitionStandard},
+      border-color ${designTokens.transitionStandard};
     &:hover:not(:disabled):not(:read-only),
     &:focus {
-      border-color: ${customProperties.borderColorForInputWhenFocused};
+      border-color: ${designTokens.borderColorForInputWhenFocused};
     }
   `;
 };
 
 const getInputContainerBorderColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return customProperties.borderColorForInputWhenDisabled;
+    return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.borderColorForInputWhenError;
+    return designTokens.borderColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return customProperties.borderColorForInputWhenReadonly;
+    return designTokens.borderColorForInputWhenReadonly;
   }
-  return customProperties.borderColorForInput;
+  return designTokens.borderColorForInput;
 };
 const getInputContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
-    return customProperties.fontColorForInputWhenDisabled;
+    return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.fontColorForInputWhenError;
+    return designTokens.fontColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return customProperties.fontColorForInputWhenReadonly;
+    return designTokens.fontColorForInputWhenReadonly;
   }
-  return customProperties.fontColorForInput;
+  return designTokens.fontColorForInput;
 };
 const getInputContainerStyles = (props: TTimeInputProps) => {
   return css`
     appearance: none;
     background-color: ${props.isDisabled
-      ? customProperties.backgroundColorForInputWhenDisabled
-      : customProperties.backgroundColorForInput};
+      ? designTokens.backgroundColorForInputWhenDisabled
+      : designTokens.backgroundColorForInput};
     border: 1px solid ${getInputContainerBorderColor(props)};
-    border-radius: ${customProperties.borderRadiusForInput};
+    border-radius: ${designTokens.borderRadiusForInput};
     box-sizing: border-box;
     color: ${getInputContainerFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     width: 100%;
-    height: ${customProperties.sizeHeightInput};
+    height: ${designTokens.sizeHeightInput};
     align-items: center;
     display: flex;
-    font-size: ${customProperties.fontSizeDefault};
+    font-size: ${designTokens.fontSizeDefault};
     font-family: inherit;
-    transition: border-color ${customProperties.transitionStandard},
-      box-shadow ${customProperties.transitionStandard};
+    transition: border-color ${designTokens.transitionStandard},
+      box-shadow ${designTokens.transitionStandard};
 
     svg {
       fill: ${props.isReadOnly
-        ? customProperties.fontColorForInputWhenReadonly
+        ? designTokens.fontColorForInputWhenReadonly
         : 'inherit'};
     }
 
     &:focus-within {
-      border-color: ${customProperties.borderColorForInputWhenFocused};
-      box-shadow: inset 0 0 0 2px
-        ${customProperties.borderColorForInputWhenFocused};
+      border-color: ${designTokens.borderColorForInputWhenFocused};
+      box-shadow: inset 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
     }
 
     :hover:not(:disabled):not(:read-only),
     :focus {
-      border-color: ${customProperties.borderColorForInputWhenFocused};
+      border-color: ${designTokens.borderColorForInputWhenFocused};
     }
   `;
 };
@@ -159,7 +158,7 @@ const StyledInputContainer = styled.div`
     ${StyledClockIconContainer},
     &:focus-within
     ${StyledClockIconContainer} {
-    border-color: ${customProperties.borderColorForInputWhenFocused};
+    border-color: ${designTokens.borderColorForInputWhenFocused};
   }
 `;
 

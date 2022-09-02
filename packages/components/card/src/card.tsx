@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Inset from '@commercetools-uikit/spacings-inset';
 
@@ -34,13 +34,11 @@ const Card = (props: TCardProps) => (
       box-sizing: border-box;
       width: 100%;
       font-size: 1rem;
-      box-shadow: ${props.type === 'raised'
-        ? customProperties.shadow1
-        : 'none'};
-      border-radius: ${customProperties.borderRadius6};
+      box-shadow: ${props.type === 'raised' ? designTokens.shadow1 : 'none'};
+      border-radius: ${designTokens.borderRadius6};
       background: ${props.theme === 'dark'
-        ? customProperties.colorNeutral95
-        : customProperties.colorSurface};
+        ? designTokens.colorNeutral95
+        : designTokens.colorSurface};
     `}
     // Allow to override the styles by passing a `className` prop.
     // Custom styles can also be passed using the `css` prop from emotion.

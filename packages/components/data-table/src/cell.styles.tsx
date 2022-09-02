@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import type { TDataCell } from './cell';
 
@@ -17,10 +17,10 @@ type TCellInner = {
 const getPaddingStyle = (props: TCellInner) => {
   if (props.isCondensed)
     return css`
-      padding: ${customProperties.spacingS};
+      padding: ${designTokens.spacingS};
     `;
   return css`
-    padding: ${customProperties.spacingM};
+    padding: ${designTokens.spacingM};
   `;
 };
 
@@ -125,10 +125,10 @@ type TBaseCell = {
 const BaseCell = styled.td<TBaseCell>`
   position: relative;
   display: flex;
-  background-color: ${customProperties.colorSurface};
+  background-color: ${designTokens.colorSurface};
   border-bottom: ${(props) =>
     props.shouldRenderBottomBorder
-      ? `1px solid ${customProperties.colorNeutral90};`
+      ? `1px solid ${designTokens.colorNeutral90};`
       : 'none'};
   ${(props) =>
     props.shouldClipContent
@@ -155,9 +155,9 @@ const BaseFooterCell = styled.td<TBaseFooterCell>`
   left: 0;
   bottom: 0;
   grid-column: 1 / ${(props) => props.numberOfColumns};
-  background-color: ${customProperties.colorSurface};
-  border-bottom: 1px solid ${customProperties.colorNeutral90};
-  border-top: 1px solid ${customProperties.colorNeutral90};
+  background-color: ${designTokens.colorSurface};
+  border-bottom: 1px solid ${designTokens.colorNeutral90};
+  border-top: 1px solid ${designTokens.colorNeutral90};
 
   /* makes the footer top border overlap the border of the last data row: */
   margin-top: -1px;

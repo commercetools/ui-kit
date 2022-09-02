@@ -1,7 +1,7 @@
 import type { TAlignItem, TProps, TScale } from './inline';
 
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 // @TODO remove this when we deprecate `flexStart`/`flexEnd`
 const getAlignItem = (alignment?: TAlignItem) => {
@@ -18,15 +18,15 @@ const getAlignItem = (alignment?: TAlignItem) => {
 const getMargin = (scale?: TScale): string | number => {
   switch (scale) {
     case 'xs':
-      return customProperties.spacingXs;
+      return designTokens.spacingXs;
     case 's':
-      return customProperties.spacingS;
+      return designTokens.spacingS;
     case 'm':
-      return customProperties.spacingM;
+      return designTokens.spacingM;
     case 'l':
-      return customProperties.spacingL;
+      return designTokens.spacingL;
     case 'xl':
-      return customProperties.spacingXl;
+      return designTokens.spacingXl;
     default:
       return 0;
   }

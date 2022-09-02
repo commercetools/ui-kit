@@ -11,7 +11,7 @@ import FlatButton from '@commercetools-uikit/flat-button';
 import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import {
   MultilineInput,
@@ -229,7 +229,7 @@ const TranslationInput = (props: TranslationInputProps) => {
                       position: absolute;
                       top: 0;
                       right: 0;
-                      margin-top: ${customProperties.spacingXs};
+                      margin-top: ${designTokens.spacingXs};
                     `,
                 ]}
               >

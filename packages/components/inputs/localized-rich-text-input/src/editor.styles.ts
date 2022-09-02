@@ -1,23 +1,23 @@
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TEditorProps } from './editor';
 
 const EditorLanguageLabel = styled.label`
   /* avoid wrapping label onto new lines */
   white-space: nowrap;
   flex: 0;
-  color: ${customProperties.fontColorForInputWhenDisabled};
+  color: ${designTokens.fontColorForInputWhenDisabled};
   line-height: calc(
-    ${customProperties.sizeHeightInput} - 2 * ${customProperties.borderRadius1}
+    ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
   );
-  background-color: ${customProperties.backgroundColorForInputWhenDisabled};
-  border-top-left-radius: ${customProperties.borderRadiusForInput};
-  border-bottom-left-radius: ${customProperties.borderRadiusForInput};
-  border: 1px ${customProperties.borderColorForInputWhenDisabled} solid;
-  padding: 0 ${customProperties.spacingS};
-  transition: border-color ${customProperties.transitionStandard},
-    background-color ${customProperties.transitionStandard},
-    color ${customProperties.transitionStandard};
+  background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+  border-top-left-radius: ${designTokens.borderRadiusForInput};
+  border-bottom-left-radius: ${designTokens.borderRadiusForInput};
+  border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
+  padding: 0 ${designTokens.spacingS};
+  transition: border-color ${designTokens.transitionStandard},
+    background-color ${designTokens.transitionStandard},
+    color ${designTokens.transitionStandard};
   border-right: 0;
   box-shadow: none;
   appearance: none;

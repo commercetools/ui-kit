@@ -1,22 +1,22 @@
 /* eslint-disable import/prefer-default-export */
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TPrimaryButtonProps } from './primary-button';
 
 const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
   switch (size) {
     case 'small':
       return css`
-        border-radius: ${customProperties.borderRadius4};
-        padding: 0 ${customProperties.spacingS} 0 ${customProperties.spacingS};
-        height: ${customProperties.smallButtonHeight};
+        border-radius: ${designTokens.borderRadius4};
+        padding: 0 ${designTokens.spacingS} 0 ${designTokens.spacingS};
+        height: ${designTokens.smallButtonHeight};
       `;
 
     case 'big':
       return css`
-        padding: 0 ${customProperties.spacingM} 0 ${customProperties.spacingM};
-        height: ${customProperties.bigButtonHeight};
-        border-radius: ${customProperties.borderRadius6};
+        padding: 0 ${designTokens.spacingM} 0 ${designTokens.spacingM};
+        height: ${designTokens.bigButtonHeight};
+        border-radius: ${designTokens.borderRadius6};
       `;
 
     default:
@@ -32,9 +32,9 @@ const getButtonStyles = (
 ) => {
   const baseStyles = css`
     align-items: center;
-    color: ${customProperties.colorSurface};
-    transition: background-color ${customProperties.transitionLinear80Ms};
-    font-size: ${customProperties.fontSizeDefault};
+    color: ${designTokens.colorSurface};
+    transition: background-color ${designTokens.transitionLinear80Ms};
+    font-size: ${designTokens.fontSizeDefault};
     ${getSizeStyles(size)}
   `;
   // "disabled" takes precendece over "active"
@@ -45,9 +45,9 @@ const getButtonStyles = (
         &,
         &:active,
         &:hover {
-          background-color: ${customProperties.colorAccent98};
-          color: ${customProperties.colorNeutral60};
-          box-shadow: 0 0 0 1px ${customProperties.colorNeutral} inset;
+          background-color: ${designTokens.colorAccent98};
+          color: ${designTokens.colorNeutral60};
+          box-shadow: 0 0 0 1px ${designTokens.colorNeutral} inset;
         }
       `,
     ];
@@ -56,10 +56,10 @@ const getButtonStyles = (
     const baseActiveStyles = [
       baseStyles,
       css`
-        box-shadow: ${customProperties.shadow9};
+        box-shadow: ${designTokens.shadow9};
         &:hover,
         &:focus {
-          box-shadow: ${customProperties.shadow8};
+          box-shadow: ${designTokens.shadow8};
         }
       `,
     ];
@@ -68,13 +68,13 @@ const getButtonStyles = (
         return [
           baseActiveStyles,
           css`
-            background-color: ${customProperties.colorPrimary};
+            background-color: ${designTokens.colorPrimary};
             &:focus,
             &:hover {
-              background-color: ${customProperties.colorPrimary25};
+              background-color: ${designTokens.colorPrimary25};
             }
             &:active {
-              background-color: ${customProperties.colorPrimary};
+              background-color: ${designTokens.colorPrimary};
             }
           `,
         ];
@@ -82,13 +82,13 @@ const getButtonStyles = (
         return [
           baseActiveStyles,
           css`
-            background-color: ${customProperties.colorWarning};
+            background-color: ${designTokens.colorWarning};
             &:focus,
             &:hover {
-              background-color: ${customProperties.colorWarning};
+              background-color: ${designTokens.colorWarning};
             }
             &:active {
-              background-color: ${customProperties.colorWarning};
+              background-color: ${designTokens.colorWarning};
             }
           `,
         ];
@@ -99,13 +99,13 @@ const getButtonStyles = (
   const baseDefaultStyles = [
     baseStyles,
     css`
-      box-shadow: ${customProperties.shadow7};
+      box-shadow: ${designTokens.shadow7};
       &:hover,
       &:focus {
-        box-shadow: ${customProperties.shadow8};
+        box-shadow: ${designTokens.shadow8};
       }
       &:active {
-        box-shadow: ${customProperties.shadow9};
+        box-shadow: ${designTokens.shadow9};
       }
     `,
   ];
@@ -114,13 +114,13 @@ const getButtonStyles = (
       return [
         baseDefaultStyles,
         css`
-          background-color: ${customProperties.colorPrimary};
+          background-color: ${designTokens.colorPrimary};
           &:focus,
           &:hover {
-            background-color: ${customProperties.colorPrimary25};
+            background-color: ${designTokens.colorPrimary25};
           }
           &:active {
-            background-color: ${customProperties.colorPrimary};
+            background-color: ${designTokens.colorPrimary};
           }
         `,
       ];
@@ -128,13 +128,13 @@ const getButtonStyles = (
       return [
         baseDefaultStyles,
         css`
-          background-color: ${customProperties.colorWarning};
+          background-color: ${designTokens.colorWarning};
           &:focus,
           &:hover {
-            background-color: ${customProperties.colorPrimary25};
+            background-color: ${designTokens.colorPrimary25};
           }
           &:active {
-            background-color: ${customProperties.colorWarning};
+            background-color: ${designTokens.colorWarning};
           }
         `,
       ];

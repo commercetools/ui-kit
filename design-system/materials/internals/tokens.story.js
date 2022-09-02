@@ -4,7 +4,8 @@ import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import TextInput from '@commercetools-uikit/text-input';
 import merge from 'lodash/merge';
-import customProperties from '../custom-properties.json';
+// import customProperties from '../custom-properties.json';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Readme from './TOKENS.md';
 import definition from './definition.yaml';
 import deprecatedTokens from './deprecated-tokens';
@@ -34,8 +35,8 @@ const Table = styled.table`
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
-  font-family: ${customProperties['--font-family-default']};
-  color: ${customProperties['--color-solid']};
+  font-family: ${designTokens.fontFamilyDefault};
+  color: ${designTokens.colorSolid}
   margin: 10px;
   > * + * {
     margin: 16px 0 0 0;
@@ -207,6 +208,7 @@ ChoiceGroup.defaultProps = {
 };
 
 const DecisionGroup = (props) => {
+  console.log('DecisionGroup#', { props });
   const decisions = filterDecisionGroupValues(
     props.decisionGroup.decisions,
     props.searchText
@@ -259,7 +261,10 @@ DecisionGroup.propTypes = {
   decisionGroup: PropTypes.shape({
     label: PropTypes.string.isRequired,
     prefix: PropTypes.string.isRequired,
-    decisions: PropTypes.objectOf(PropTypes.string),
+    decisions: PropTypes.shape({
+      choice: PropTypes.string.isRequired,
+      description: PropTypes.string,
+    }),
   }).isRequired,
   renderSample: PropTypes.func.isRequired,
 };

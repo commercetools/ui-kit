@@ -1,6 +1,6 @@
 /* eslint-disable testing-library/no-wait-for-multiple-assertions */
 import { useState } from 'react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import PropTypes from 'prop-types';
 import { screen, render, fireEvent, waitFor } from '../../test/test-utils';
 import { ThemeProvider } from './theme-provider';
@@ -8,8 +8,8 @@ import { ThemeProvider } from './theme-provider';
 const TestComponent = (props) => (
   <div
     style={{
-      color: customProperties.colorSolid,
-      backgroundColor: customProperties.colorSurface,
+      color: designTokens.colorSolid,
+      backgroundColor: designTokens.colorSurface,
     }}
     data-testid={props.text}
   >

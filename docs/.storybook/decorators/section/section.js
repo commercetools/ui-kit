@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 const Section = (props) => {
   return (
     <div
       css={css`
-        background-color: ${customProperties.colorSurface};
+        background-color: ${designTokens.colorSurface};
         padding: 16px;
       `}
     >

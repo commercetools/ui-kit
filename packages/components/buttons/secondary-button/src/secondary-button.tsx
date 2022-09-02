@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { Link } from 'react-router-dom';
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
@@ -114,18 +114,18 @@ export const SecondaryButton = <
     css`
       display: flex;
       align-items: center;
-      padding: 0 ${customProperties.spacingM};
-      height: ${customProperties.bigButtonHeight};
+      padding: 0 ${designTokens.spacingM};
+      height: ${designTokens.bigButtonHeight};
     `,
     css`
       display: inline-flex;
-      background-color: ${customProperties.colorSurface};
-      border-radius: ${customProperties.borderRadius6};
-      box-shadow: ${customProperties.shadow7};
-      color: ${customProperties.colorSolid};
-      font-size: ${customProperties.fontSizeDefault};
-      transition: background-color ${customProperties.transitionLinear80Ms},
-        box-shadow ${customProperties.transitionEaseinout150Ms};
+      background-color: ${designTokens.colorSurface};
+      border-radius: ${designTokens.borderRadius6};
+      box-shadow: ${designTokens.shadow7};
+      color: ${designTokens.colorSolid};
+      font-size: ${designTokens.fontSizeDefault};
+      transition: background-color ${designTokens.transitionLinear80Ms},
+        box-shadow ${designTokens.transitionEaseinout150Ms};
     `,
     getStateStyles(props.isDisabled, isActive, props.theme),
     getThemeStyles(props.theme),
@@ -147,7 +147,7 @@ export const SecondaryButton = <
         {Boolean(props.iconLeft) && (
           <span
             css={css`
-              margin: 0 ${customProperties.spacingXs} 0 0;
+              margin: 0 ${designTokens.spacingXs} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;

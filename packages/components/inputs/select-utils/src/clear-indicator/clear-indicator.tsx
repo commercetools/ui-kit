@@ -2,7 +2,7 @@ import type { CSSProperties, LegacyRef } from 'react';
 import type { ClearIndicatorProps } from 'react-select';
 import { css } from '@emotion/react';
 import { useIntl } from 'react-intl';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
 
@@ -31,7 +31,7 @@ const ClearIndicator = (props: TClearIndicator) => {
         box-sizing: border-box;
         text-decoration: none;
         :hover svg * {
-          fill: ${customProperties.colorWarning};
+          fill: ${designTokens.colorWarning};
         }
       `}
       style={getStyles('clearIndicator', props) as CSSProperties}

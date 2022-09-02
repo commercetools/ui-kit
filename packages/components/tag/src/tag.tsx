@@ -3,7 +3,7 @@ import type { LocationDescriptor } from 'history';
 import { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 import { css, type SerializedStyles } from '@emotion/react';
 import { Link } from 'react-router-dom';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
@@ -88,8 +88,8 @@ const Tag = (props: TTagProps) => {
           min-width: 0;
           display: flex;
           background-color: ${props.type === 'warning'
-            ? customProperties.backgroundColorForTagWarning
-            : customProperties.backgroundColorForTag};
+            ? designTokens.backgroundColorForTagWarning
+            : designTokens.backgroundColorForTag};
         `}
       >
         <TagBody
@@ -111,11 +111,11 @@ const Tag = (props: TTagProps) => {
             css={[
               css`
                 border-color: ${props.type === 'warning'
-                  ? customProperties.borderColorForTagWarning
-                  : customProperties.borderColorForTag};
-                padding: 0 ${customProperties.spacingXs};
-                border-radius: 0 ${customProperties.borderRadiusForTag}
-                  ${customProperties.borderRadiusForTag} 0;
+                  ? designTokens.borderColorForTagWarning
+                  : designTokens.borderColorForTag};
+                padding: 0 ${designTokens.spacingXs};
+                border-radius: 0 ${designTokens.borderRadiusForTag}
+                  ${designTokens.borderRadiusForTag} 0;
                 display: flex;
                 align-items: center;
                 background: inherit;
@@ -123,17 +123,17 @@ const Tag = (props: TTagProps) => {
                 border-width: 1px 1px 1px 1px;
                 :not(:disabled)&:hover,
                 :not(:disabled)&:focus {
-                  border-color: ${customProperties.borderColorForTagWarning};
+                  border-color: ${designTokens.borderColorForTagWarning};
 
                   > svg * {
-                    fill: ${customProperties.borderColorForTagWarning};
+                    fill: ${designTokens.borderColorForTagWarning};
                   }
                 }
                 > svg * {
-                  fill: ${customProperties.fontColorForTag};
+                  fill: ${designTokens.fontColorForTag};
                 }
                 &:disabled > svg * {
-                  fill: ${customProperties.fontColorForTagWhenDisabled};
+                  fill: ${designTokens.fontColorForTagWhenDisabled};
                 }
               `,
             ]}

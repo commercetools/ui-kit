@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TSearchSelectInputProps } from './search-select-input';
 
 const SearchSelectInputWrapper = styled.div<
@@ -15,7 +15,7 @@ const SearchSelectInputWrapper = styled.div<
         div[class$='indicatorContainer' i] {
           cursor: pointer;
           svg * {
-            fill: ${customProperties.colorSolid};
+            fill: ${designTokens.colorSolid};
           }
         }
       }`

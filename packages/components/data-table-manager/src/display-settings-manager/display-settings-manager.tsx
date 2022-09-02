@@ -10,7 +10,7 @@ import Grid from '@commercetools-uikit/grid';
 import RadioInput from '@commercetools-uikit/radio-input';
 import Spacings from '@commercetools-uikit/spacings';
 import AccessibleHiden from '@commercetools-uikit/accessible-hidden';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import SettingsContainer from '../settings-container';
 import messages from './messages';
 import {
@@ -52,7 +52,7 @@ const DensityManager = (props: TDensityManagerProps) => {
       containerTheme={props.managerTheme}
     >
       <Grid
-        gridGap={customProperties.spacingM}
+        gridGap={designTokens.spacingM}
         gridTemplateColumns="repeat(2, 1fr)"
       >
         <Grid.Item>

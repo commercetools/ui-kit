@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 type TInputProps = {
   isDisabled?: boolean;
@@ -12,76 +12,75 @@ type TInputProps = {
 
 const getInputBorderColor = (props: TInputProps) => {
   if (props.isDisabled || props.disabled) {
-    return customProperties.borderColorForInputWhenDisabled;
+    return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.borderColorForInputWhenError;
+    return designTokens.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return customProperties.borderColorForInputWhenWarning;
+    return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly || props.readOnly) {
-    return customProperties.borderColorForInputWhenReadonly;
+    return designTokens.borderColorForInputWhenReadonly;
   }
-  return customProperties.borderColorForInput;
+  return designTokens.borderColorForInput;
 };
 
 const getInputFontColor = (props: TInputProps) => {
   if (props.isDisabled || props.disabled) {
-    return customProperties.fontColorForInputWhenDisabled;
+    return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.fontColorForInputWhenError;
+    return designTokens.fontColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return customProperties.fontColorForInputWhenWarning;
+    return designTokens.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly || props.readOnly) {
-    return customProperties.fontColorForInputWhenReadonly;
+    return designTokens.fontColorForInputWhenReadonly;
   }
-  return customProperties.fontColorForInput;
+  return designTokens.fontColorForInput;
 };
 
 const getInputStyles = (props: TInputProps) => {
   return css`
     appearance: none;
     background-color: ${props.isDisabled || props.disabled
-      ? customProperties.backgroundColorForInputWhenDisabled
-      : customProperties.backgroundColorForInput};
+      ? designTokens.backgroundColorForInputWhenDisabled
+      : designTokens.backgroundColorForInput};
     border: 1px solid ${getInputBorderColor(props)};
-    border-radius: ${customProperties.borderRadiusForInput};
+    border-radius: ${designTokens.borderRadiusForInput};
     box-sizing: border-box;
     color: ${getInputFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     display: flex;
     flex: 1;
     font-family: inherit;
-    font-size: ${customProperties.fontSizeForInput};
-    height: ${customProperties.sizeHeightInput};
-    min-height: ${customProperties.sizeHeightInput};
+    font-size: ${designTokens.fontSizeForInput};
+    height: ${designTokens.sizeHeightInput};
+    min-height: ${designTokens.sizeHeightInput};
     opacity: ${props.isDisabled || props.disabled
       ? '1'
       : 'unset'}; /* fix for mobile safari */
     outline: none;
     overflow: hidden;
-    padding: 0 ${customProperties.spacingS};
-    transition: border-color ${customProperties.transitionStandard},
-      background-color ${customProperties.transitionStandard},
-      color ${customProperties.transitionStandard},
-      box-shadow ${customProperties.transitionStandard};
+    padding: 0 ${designTokens.spacingS};
+    transition: border-color ${designTokens.transitionStandard},
+      background-color ${designTokens.transitionStandard},
+      color ${designTokens.transitionStandard},
+      box-shadow ${designTokens.transitionStandard};
     width: 100%;
 
     &::placeholder {
-      color: ${customProperties.placeholderFontColorForInput};
+      color: ${designTokens.placeholderFontColorForInput};
     }
     :active,
     :focus,
     :hover:not(:disabled):not(:read-only) {
-      border-color: ${customProperties.borderColorForInputWhenFocused};
+      border-color: ${designTokens.borderColorForInputWhenFocused};
     }
     :focus {
-      box-shadow: inset 0 0 0 2px
-        ${customProperties.borderColorForInputWhenFocused};
+      box-shadow: inset 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
     }
   `;
 };
