@@ -19,7 +19,7 @@
   "module": "dist/commercetools-uikit-design-system.esm.js",
   "files": ["dist", "materials"],
   "scripts": {
-    "build:tokens": "node ./scripts/generate-custom-properties.js",
+    "build:tokens": "node ./scripts/generate-design-tokens.js",
     "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn build:tokens'"
   },
   "dependencies": {

@@ -3,10 +3,7 @@ import type { TTagProps } from './tag';
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import {
-  customProperties,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { Link } from 'react-router-dom';
 
@@ -35,18 +32,15 @@ const getClickableContentWrapperStyles = (type: TTagBodyProps['type']) => {
     : [
         css`
           &:hover {
-            border-color: ${customProperties[
-              designTokens.borderColorForTagWhenFocused
-            ]};
+            border-color: ${customProperties.borderColorForTagWhenFocused};
           }
         `,
       ];
 };
 
 const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
-  if (isDisabled)
-    return customProperties[designTokens.fontColorForTagWhenDisabled];
-  return customProperties[designTokens.fontColorForTag];
+  if (isDisabled) return customProperties.fontColorForTagWhenDisabled;
+  return customProperties.fontColorForTag;
 };
 
 const getContentWrapperStyles = (props: TTagBodyProps) => {
@@ -55,7 +49,7 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    border-radius: ${customProperties[designTokens.borderRadiusForTag]};
+    border-radius: ${customProperties.borderRadiusForTag};
     padding: 5px ${customProperties.spacingS};
     white-space: normal;
     text-align: left;
@@ -65,8 +59,8 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     border-style: solid;
     border-width: 1px;
     border-color: ${props.type === 'warning'
-      ? customProperties[designTokens.borderColorForTagWarning]
-      : customProperties[designTokens.borderColorForTag]};
+      ? customProperties.borderColorForTagWarning
+      : customProperties.borderColorForTag};
 
     /* fixing things for IE11 ... */
     width: 100%;

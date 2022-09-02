@@ -18,13 +18,13 @@
 # Storybook at uikit.commercetools.com.
 #
 #
-# Run "node scripts/generate-custom-properties" to generate `materials/custom-properties`
+# Run "node scripts/generate-design-tokens" to generate `materials/design-tokens`
 # files in different format (css, json, js, ...).
 #
 # The names of decisions in this file need to follow this format:
 #   <attribute>-for-<component-group>-when-<state>-
 
-choiceGroupsPerTheme:
+choiceGroupsByTheme:
   default:
     colors:
       label: Colors
@@ -179,134 +179,149 @@ componentGroups:
   text:
     description: 'Text elements'
 
-decisionGroups:
-  backgroundColors:
-    label: Background Colors
-    prefix: background-color
-    decisions:
-      background-color-for-input:
-        description: ''
-        choice: color-surface
-      background-color-for-input-when-selected:
-        description: ''
-        choice: color-accent-95
-      background-color-for-input-when-disabled:
-        description: ''
-        choice: color-accent-98
-      background-color-for-input-when-hovered:
-        description: ''
-        choice: color-neutral-90
-      background-color-for-tag:
-        description: ''
-        choice: color-neutral-95
-      background-color-for-tag-warning:
-        description: ''
-        choice: color-warning-95
+decisionGroupsByTheme:
+  default:
+    backgroundColors:
+      label: Background Colors
+      prefix: background-color
+      decisions:
+        background-color-for-input:
+          description: ''
+          choice: color-surface
+        background-color-for-input-when-selected:
+          description: ''
+          choice: color-accent-95
+        background-color-for-input-when-disabled:
+          description: ''
+          choice: color-accent-98
+        background-color-for-input-when-hovered:
+          description: ''
+          choice: color-neutral-90
+        background-color-for-tag:
+          description: ''
+          choice: color-neutral-95
+        background-color-for-tag-warning:
+          description: ''
+          choice: color-warning-95
 
-  borderColors:
-    label: Border Colors
-    prefix: border-color
-    decisions:
-      border-color-for-input:
-        description: ''
-        choice: color-neutral-60
-      border-color-for-input-when-focused:
-        description: ''
-        choice: color-primary
-      border-color-for-input-when-disabled:
-        description: ''
-        choice: color-neutral
-      border-color-for-input-when-readonly:
-        description: ''
-        choice: color-neutral
-      border-color-for-input-when-error:
-        description: ''
-        choice: color-error
-      border-color-for-input-when-warning:
-        description: ''
-        choice: color-warning
-      border-color-for-tag:
-        description: ''
-        choice: color-neutral-60
-      border-color-for-tag-warning:
-        description: ''
-        choice: color-warning
-      border-color-for-tag-when-focused:
-        description: ''
-        choice: color-primary
+    borderColors:
+      label: Border Colors
+      prefix: border-color
+      decisions:
+        border-color-for-input:
+          description: ''
+          choice: color-neutral-60
+        border-color-for-input-when-focused:
+          description: ''
+          choice: color-primary
+        border-color-for-input-when-disabled:
+          description: ''
+          choice: color-neutral
+        border-color-for-input-when-readonly:
+          description: ''
+          choice: color-neutral
+        border-color-for-input-when-error:
+          description: ''
+          choice: color-error
+        border-color-for-input-when-warning:
+          description: ''
+          choice: color-warning
+        border-color-for-tag:
+          description: ''
+          choice: color-neutral-60
+        border-color-for-tag-warning:
+          description: ''
+          choice: color-warning
+        border-color-for-tag-when-focused:
+          description: ''
+          choice: color-primary
 
-  borderRadiuses:
-    label: Border Radius
-    prefix: border-radius
-    decisions:
-      border-radius-for-input:
-        description: ''
-        choice: border-radius-6
-      border-radius-for-tag:
-        description: ''
-        choice: border-radius-2
-  # We don't have font families in choices yet, so we can't have decisions for
-  # them
+    borderRadiuses:
+      label: Border Radius
+      prefix: border-radius
+      decisions:
+        border-radius-for-input:
+          description: ''
+          choice: border-radius-6
+        border-radius-for-tag:
+          description: ''
+          choice: border-radius-2
+    # We don't have font families in choices yet, so we can't have decisions for
+    # them
 
-  fontColors:
-    label: Font Colors
-    prefix: font-color
-    decisions:
-      font-color-for-input:
-        description: ''
-        choice: color-solid
-      font-color-for-input-when-disabled:
-        description: ''
-        choice: color-neutral-60
-      font-color-for-input-when-error:
-        description: ''
-        choice: color-error
-      font-color-for-input-when-readonly:
-        description: ''
-        choice: color-neutral-60
-      font-color-for-input-when-warning:
-        description: ''
-        choice: color-warning
-      font-color-for-tag:
-        description: ''
-        choice: color-solid
-      font-color-for-tag-when-disabled:
-        description: ''
-        choice: color-neutral-60
-      font-color-for-text-when-inverted:
-        description: ''
-        choice: color-surface
+    fontColors:
+      label: Font Colors
+      prefix: font-color
+      decisions:
+        font-color-for-input:
+          description: ''
+          choice: color-solid
+        font-color-for-input-when-disabled:
+          description: ''
+          choice: color-neutral-60
+        font-color-for-input-when-error:
+          description: ''
+          choice: color-error
+        font-color-for-input-when-readonly:
+          description: ''
+          choice: color-neutral-60
+        font-color-for-input-when-warning:
+          description: ''
+          choice: color-warning
+        font-color-for-tag:
+          description: ''
+          choice: color-solid
+        font-color-for-tag-when-disabled:
+          description: ''
+          choice: color-neutral-60
+        font-color-for-text-when-inverted:
+          description: ''
+          choice: color-surface
 
-  fontFamily:
-    label: Font family
-    prefix: font-family
-    decisions:
-      font-family:
-        description: ''
-        choice: font-family-body
-  placeholderFontColors:
-    label: Placeholder font colors
-    prefix: placeholder-font-color
-    decisions:
-      placeholder-font-color-for-input:
-        description: ''
-        choice: color-neutral-60
+    fontFamily:
+      label: Font family
+      prefix: font-family
+      decisions:
+        font-family:
+          description: ''
+          choice: font-family-body
 
-  fontSizes:
-    label: Font Sizes
-    prefix: font-size
-    decisions:
-      font-size-for-input:
-        description: ''
-        choice: font-size-m
-  shadows:
-    label: Shadows
-    prefix: shadow
-    decisions:
-      shadow-box-tag-when-hovered:
-        description: ''
-        deprecated: true
-        choice: shadow-1
+    placeholderFontColors:
+      label: Placeholder font colors
+      prefix: placeholder-font-color
+      decisions:
+        placeholder-font-color-for-input:
+          description: ''
+          choice: color-neutral-60
+
+    fontSizes:
+      label: Font Sizes
+      prefix: font-size
+      decisions:
+        font-size-for-input:
+          description: ''
+          choice: font-size-m
+
+    shadows:
+      label: Shadows
+      prefix: shadow
+      decisions:
+        shadow-box-tag-when-hovered:
+          description: ''
+          deprecated: true
+          choice: shadow-1
+
+  dark:
+    backgroundColors:
+      label: Background Colors
+      prefix: background-color
+      decisions:
+        background-color-for-tag:
+          description: ''
+          choice: color-warning-95
+        background-color-for-tag-warning:
+          description: ''
+          choice: color-neutral-95
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.

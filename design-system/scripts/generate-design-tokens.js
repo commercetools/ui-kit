@@ -26,20 +26,19 @@ const TOKEN_REGEX =
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);
-const allThemesNames = Object.keys(definitions.choiceGroupsPerTheme);
+const allThemesNames = Object.keys(definitions.choiceGroupsByTheme);
 
-const tokens = {};
 const designTokens = {};
 
-Object.keys(definitions.choiceGroupsPerTheme).forEach((themeName) => {
-  if (!tokens[themeName]) {
-    tokens[themeName] = {};
+Object.keys(definitions.choiceGroupsByTheme).forEach((themeName) => {
+  if (!designTokens[themeName]) {
+    designTokens[themeName] = {};
   }
 
-  Object.values(definitions.choiceGroupsPerTheme[themeName]).forEach(
+  Object.values(definitions.choiceGroupsByTheme[themeName]).forEach(
     (themeChoiceGroup) => {
       Object.entries(themeChoiceGroup.choices).forEach(([key, value]) => {
-        if (tokens[themeName][key])
+        if (designTokens[themeName][key])
           endProgram(`Token "${key} already exists!"`);
 
         if (key !== key.toLowerCase())
@@ -49,56 +48,69 @@ Object.keys(definitions.choiceGroupsPerTheme).forEach((themeName) => {
           endProgram(
             `Expected token "${key}" to start with "${themeChoiceGroup.prefix}" as it is an "${themeChoiceGroup.label}" attribute.`
           );
-        tokens[themeName][key] = value;
+        designTokens[themeName][key] = value;
       });
     }
   );
 });
 
-// Copy the semantic design tokens (only needed for default theme)
-Object.values(definitions.decisionGroups).forEach((decisionGroup) => {
-  Object.entries(decisionGroup.decisions).forEach(([key, decision]) => {
-    if (tokens.default[key]) endProgram(`Token "${key} already exists!"`);
-    if (key !== key.toLowerCase())
-      endProgram(`Tokens "${key}" must be lower case`);
-    if (!decision.choice) {
-      endProgram(`You forgot to specify a choice for ${decision}`);
-    }
-    if (!tokens.default[decision.choice]) {
-      endProgram(`Choice called "${decision.choice}" was not found!`);
-    }
-    // TODO parse token name and warn when invalid name was given and token
-    // is not deprecated
+// Copy the semantic design tokens
+Object.entries(definitions.decisionGroupsByTheme).forEach(
+  ([themeName, decisionGroups]) => {
+    Object.values(decisionGroups).forEach((decisionGroup) => {
+      Object.entries(decisionGroup.decisions).forEach(([key, decision]) => {
+        if (designTokens[themeName][key])
+          endProgram(`Token "${key} already exists!"`);
+        if (key !== key.toLowerCase())
+          endProgram(`Tokens "${key}" must be lower case`);
+        if (!decision.choice) {
+          endProgram(`You forgot to specify a choice for ${decision}`);
+        }
+        if (
+          !designTokens[themeName][decision.choice] &&
+          !designTokens.default[decision.choice]
+        ) {
+          endProgram(`Choice called "${decision.choice}" was not found!`);
+        }
+        // TODO parse token name and warn when invalid name was given and token
+        // is not deprecated
 
-    const match = key.match(TOKEN_REGEX);
+        const match = key.match(TOKEN_REGEX);
 
-    if (match) {
-      const componentGroup = match[2];
-      const state = match[3];
+        if (match) {
+          const componentGroup = match[2];
+          const state = match[3];
 
-      if (componentGroup && !supportedComponentGroups.includes(componentGroup))
-        endProgram(
-          `Token "${key}" uses unsupported component group "${componentGroup}"!`
-        );
+          if (
+            componentGroup &&
+            !supportedComponentGroups.includes(componentGroup)
+          )
+            endProgram(
+              `Token "${key}" uses unsupported component group "${componentGroup}"!`
+            );
 
-      if (state && !supportedStates.includes(state))
-        endProgram(`Token "${key}" uses unsupported state "${state}"!`);
-    } else if (!decision.deprecated) {
-      endProgram(
-        `Token "${key}" does not follow <attribute>-for-<component-group>-when-<state>-on-dark naming scheme! Tokens not following this scheme must use "deprecated" flag.`
-      );
-    }
+          if (state && !supportedStates.includes(state))
+            endProgram(`Token "${key}" uses unsupported state "${state}"!`);
+        } else if (!decision.deprecated) {
+          endProgram(
+            `Token "${key}" does not follow <attribute>-for-<component-group>-when-<state>-on-dark naming scheme! Tokens not following this scheme must use "deprecated" flag.`
+          );
+        }
 
-    designTokens[key] = decision.choice;
-    tokens.default[key] = tokens.default[decision.choice];
-  });
-});
+        designTokens[themeName][key] =
+          designTokens[themeName][decision.choice] ||
+          designTokens.default[decision.choice];
+      });
+    });
+  }
+);
 
 // Copy over plain tokens (only needed in default theme)
 Object.entries(definitions.plainTokens).forEach(([key, value]) => {
-  if (tokens.default[key]) endProgram(`Token called "${key} already exists!"`);
+  if (designTokens.default[key])
+    endProgram(`Token called "${key} already exists!"`);
 
-  tokens.default[key] = value;
+  designTokens.default[key] = value;
 });
 
 // Write files
@@ -113,7 +125,7 @@ const printJson = (data) =>
     )
   );
 
-const printCustomProperties = (data) => {
+const printDesignTokens = (data) => {
   const themes = Object.fromEntries(
     Object.entries(data).map(([themeKey, themeValues]) => {
       return [
@@ -137,7 +149,7 @@ const printCustomProperties = (data) => {
   return `
 /*
   THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
-  This file is created by the 'scripts/generate-custom-properties.js' script.
+  This file is created by the 'scripts/generate-design-tokens.js' script.
   The variables should be updated in 'materials/internals/definition.yaml'.
 */
 export const themes = ${JSON.stringify(themes, null, 2)} as const;
@@ -150,29 +162,9 @@ export const themesNames = ${JSON.stringify(
     2
   )} as const;
 
-const customProperties = ${JSON.stringify(variables, null, 2)} as const;
+const designTokens = ${JSON.stringify(variables, null, 2)} as const;
 
-export default customProperties;
-`;
-};
-
-const printDesignTokens = (data) => {
-  const designTokens = Object.fromEntries(
-    Object.entries(data).map(([key, value]) => [
-      camelCase(key),
-      camelCase(value),
-    ])
-  );
-
-  return `
-/*
-  THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
-
-  This file is created by the 'scripts/generate-custom-properties.js' script.
-  The variables should be updated in 'materials/internals/definition.yaml'.
-*/
-
-export default ${JSON.stringify(designTokens, null, 2)} as const;
+export default designTokens;
 `;
 };
 
@@ -180,7 +172,7 @@ const printCss = (data) => `
 /*
   THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
 
-  This file is created by the 'scripts/generate-custom-properties.js' script.
+  This file is created by the 'scripts/generate-design-tokens.js' script.
   The variables should be updated in 'materials/internals/definition.yaml'.
 */
 
@@ -192,18 +184,20 @@ const printCss = (data) => `
 `;
 
 // Generates `custom-properties.json` only for the default theme
+// This file is now deprecated and will be remove in the future
 fs.writeFileSync(
   path.join(__dirname, '../materials/custom-properties.json'),
-  prettier.format(printJson(tokens), {
+  prettier.format(printJson(designTokens), {
     ...prettierConfig,
     parser: 'json',
   })
 );
 
 // Generates `custom-properties.css` only for the default theme
+// This file is now deprecated and will be remove in the future
 fs.writeFileSync(
   path.join(__dirname, '../materials/custom-properties.css'),
-  prettier.format(printCss(tokens), {
+  prettier.format(printCss(designTokens), {
     ...prettierConfig,
     parser: 'css',
   })
@@ -212,14 +206,6 @@ fs.writeFileSync(
 fs.writeFileSync(
   path.join(__dirname, '../src/design-tokens.ts'),
   prettier.format(printDesignTokens(designTokens), {
-    ...prettierConfig,
-    parser: 'typescript',
-  })
-);
-
-fs.writeFileSync(
-  path.join(__dirname, '../src/custom-properties.ts'),
-  prettier.format(printCustomProperties(tokens), {
     ...prettierConfig,
     parser: 'typescript',
   })
