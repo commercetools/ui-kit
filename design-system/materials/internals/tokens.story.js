@@ -9,7 +9,11 @@ import Readme from './TOKENS.md';
 import definition from './definition.yaml';
 import deprecatedTokens from './deprecated-tokens';
 
-const allThemesNames = Object.keys(definition.choiceGroupsByTheme);
+const choiceGroupsByTheme =
+  process.env.NODE_ENV !== 'production'
+    ? definition.choiceGroupsByTheme
+    : { default: definition.choiceGroupsByTheme.default };
+const allThemesNames = Object.keys(choiceGroupsByTheme);
 
 const getIsDeprecated = (token) => deprecatedTokens.includes(token);
 
@@ -66,12 +70,12 @@ const getThemeChoiceByName = (theme, choiceName) =>
 
 const getChoiceValue = (choiceName, theme) => {
   const defaultChoice = getThemeChoiceByName(
-    definition.choiceGroupsByTheme.default,
+    choiceGroupsByTheme.default,
     choiceName
   );
 
   const themeChoice = getThemeChoiceByName(
-    definition.choiceGroupsByTheme[theme],
+    choiceGroupsByTheme[theme],
     choiceName
   );
 
@@ -116,15 +120,15 @@ const filterComponentGroupsGroupValues = (componentGroups, searchText) =>
   );
 
 const getDefaultThemeChoiceGroupProperty = (choiceGroup, property) =>
-  definition.choiceGroupsByTheme.default[choiceGroup][property];
+  choiceGroupsByTheme.default[choiceGroup][property];
 
 const ChoiceGroup = (props) => {
-  const choices = Object.entries(definition.choiceGroupsByTheme).reduce(
+  const choices = Object.entries(choiceGroupsByTheme).reduce(
     (acc, [theme, themeChoices]) => {
       // default theme is used as a blueprint
       const themeChoicesBasedOnDefaultTheme = merge(
         {},
-        definition.choiceGroupsByTheme.default,
+        choiceGroupsByTheme.default,
         themeChoices
       );
       const filteredThemeChoices = Object.fromEntries(
@@ -419,7 +423,7 @@ class Story extends Component {
               Choices
             </a>
             <ul>
-              {Object.entries(definition.choiceGroupsByTheme.default).map(
+              {Object.entries(choiceGroupsByTheme.default).map(
                 ([key, choiceGroup]) =>
                   filterChoiceGroupValues(
                     choiceGroup.choices,
