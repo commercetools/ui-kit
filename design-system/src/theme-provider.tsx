@@ -2,7 +2,7 @@ import { useLayoutEffect, useState, useRef, useEffect } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
-import { themes, themesNames } from './custom-properties';
+import { themes, themesNames } from './design-tokens';
 
 const allThemesNames = Object.keys(themesNames);
 

@@ -18,7 +18,7 @@
 # Storybook at uikit.commercetools.com.
 #
 #
-# Run "node scripts/generate-custom-properties" to generate `materials/custom-properties`
+# Run "node scripts/generate-design-tokens" to generate `materials/design-tokens`
 # files in different format (css, json, js, ...).
 #
 # The names of decisions in this file need to follow this format:
