@@ -136,13 +136,20 @@ TestComponent.propTypes = {
 const localThemeParentSelector = () => document.getElementById('local');
 
 const InteractiveRoute = () => {
-  const [globalTheme, setGlobalTheme] = useState({ name: 'default', overrides: {} });
-  const [localTheme, setLocalTheme] = useState({ name: 'default', overrides: {} });
+  const [globalTheme, setGlobalTheme] = useState({
+    name: 'default',
+    overrides: {},
+  });
+  const [localTheme, setLocalTheme] = useState({
+    name: 'default',
+    overrides: {},
+  });
 
   return (
     <>
       <button
-        onClick={() => {
+        onClick={(event) => {
+          event.preventDefault();
           setGlobalTheme({
             name: 'dark',
             overrides: {
@@ -156,7 +163,8 @@ const InteractiveRoute = () => {
         change global theme
       </button>
       <button
-        onClick={() => {
+        onClick={(event) => {
+          event.preventDefault();
           setLocalTheme({
             name: 'dark',
             overrides: { colorSolid: 'green', colorSurface: 'tomato' },
@@ -174,7 +182,8 @@ const InteractiveRoute = () => {
         <ThemeProvider
           theme={localTheme.name}
           themeOverrides={localTheme.overrides}
-          parentSelector={localThemeParentSelector} />
+          parentSelector={localThemeParentSelector}
+        />
         <TestComponent text="local" />
       </div>
     </>
