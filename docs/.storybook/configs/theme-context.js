@@ -1,10 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import {
-  customProperties,
-  themesNames,
-  ThemeProvider,
-} from '../../../design-system';
+import { customProperties, ThemeProvider } from '../../../design-system';
 
 const defaultTheme = customProperties;
 

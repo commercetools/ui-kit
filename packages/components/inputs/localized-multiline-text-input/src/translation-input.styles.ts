@@ -1,9 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import {
-  customProperties,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -32,22 +29,15 @@ const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
   return css`
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
-    color: ${customProperties[designTokens.fontColorForInputWhenDisabled]};
+    color: ${customProperties.fontColorForInputWhenDisabled};
     line-height: calc(
       ${customProperties.sizeHeightInput} - 2 *
         ${customProperties.borderRadius1}
     );
-    background-color: ${customProperties[
-      designTokens.backgroundColorForInputWhenDisabled
-    ]};
-    border-top-left-radius: ${customProperties[
-      designTokens.borderRadiusForInput
-    ]};
-    border-bottom-left-radius: ${customProperties[
-      designTokens.borderRadiusForInput
-    ]};
-    border: 1px
-      ${customProperties[designTokens.borderColorForInputWhenDisabled]} solid;
+    background-color: ${customProperties.backgroundColorForInputWhenDisabled};
+    border-top-left-radius: ${customProperties.borderRadiusForInput};
+    border-bottom-left-radius: ${customProperties.borderRadiusForInput};
+    border: 1px ${customProperties.borderColorForInputWhenDisabled} solid;
     padding: 0 ${customProperties.spacingS};
     transition: border-color ${customProperties.transitionStandard},
       background-color ${customProperties.transitionStandard},

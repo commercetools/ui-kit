@@ -1,29 +1,19 @@
 import styled from '@emotion/styled';
-import {
-  customProperties,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 import type { TEditorProps } from './editor';
 
 const EditorLanguageLabel = styled.label`
   /* avoid wrapping label onto new lines */
   white-space: nowrap;
   flex: 0;
-  color: ${customProperties[designTokens.fontColorForInputWhenDisabled]};
+  color: ${customProperties.fontColorForInputWhenDisabled};
   line-height: calc(
     ${customProperties.sizeHeightInput} - 2 * ${customProperties.borderRadius1}
   );
-  background-color: ${customProperties[
-    designTokens.backgroundColorForInputWhenDisabled
-  ]};
-  border-top-left-radius: ${customProperties[
-    designTokens.borderRadiusForInput
-  ]};
-  border-bottom-left-radius: ${customProperties[
-    designTokens.borderRadiusForInput
-  ]};
-  border: 1px ${customProperties[designTokens.borderColorForInputWhenDisabled]}
-    solid;
+  background-color: ${customProperties.backgroundColorForInputWhenDisabled};
+  border-top-left-radius: ${customProperties.borderRadiusForInput};
+  border-bottom-left-radius: ${customProperties.borderRadiusForInput};
+  border: 1px ${customProperties.borderColorForInputWhenDisabled} solid;
   padding: 0 ${customProperties.spacingS};
   transition: border-color ${customProperties.transitionStandard},
     background-color ${customProperties.transitionStandard},

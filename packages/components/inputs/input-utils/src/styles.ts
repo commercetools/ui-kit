@@ -1,8 +1,5 @@
 import { css } from '@emotion/react';
-import {
-  customProperties,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { customProperties } from '@commercetools-uikit/design-system';
 
 type TInputProps = {
   isDisabled?: boolean;
@@ -13,59 +10,53 @@ type TInputProps = {
   readOnly?: boolean;
 };
 
-const getInputBorderColor = (
-  vars: typeof customProperties,
-  props: TInputProps
-) => {
+const getInputBorderColor = (props: TInputProps) => {
   if (props.isDisabled || props.disabled) {
-    return vars[designTokens.borderColorForInputWhenDisabled];
+    return customProperties.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars[designTokens.borderColorForInputWhenError];
+    return customProperties.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return vars[designTokens.borderColorForInputWhenWarning];
+    return customProperties.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly || props.readOnly) {
-    return vars[designTokens.borderColorForInputWhenReadonly];
+    return customProperties.borderColorForInputWhenReadonly;
   }
-  return vars[designTokens.borderColorForInput];
+  return customProperties.borderColorForInput;
 };
 
-const getInputFontColor = (
-  vars: typeof customProperties,
-  props: TInputProps
-) => {
+const getInputFontColor = (props: TInputProps) => {
   if (props.isDisabled || props.disabled) {
-    return vars[designTokens.fontColorForInputWhenDisabled];
+    return customProperties.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars[designTokens.fontColorForInputWhenError];
+    return customProperties.fontColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return vars[designTokens.fontColorForInputWhenWarning];
+    return customProperties.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly || props.readOnly) {
-    return vars[designTokens.fontColorForInputWhenReadonly];
+    return customProperties.fontColorForInputWhenReadonly;
   }
-  return vars[designTokens.fontColorForInput];
+  return customProperties.fontColorForInput;
 };
 
 const getInputStyles = (props: TInputProps) => {
   return css`
     appearance: none;
     background-color: ${props.isDisabled || props.disabled
-      ? customProperties[designTokens.backgroundColorForInputWhenDisabled]
-      : customProperties[designTokens.backgroundColorForInput]};
-    border: 1px solid ${getInputBorderColor(customProperties, props)};
-    border-radius: ${customProperties[designTokens.borderRadiusForInput]};
+      ? customProperties.backgroundColorForInputWhenDisabled
+      : customProperties.backgroundColorForInput};
+    border: 1px solid ${getInputBorderColor(props)};
+    border-radius: ${customProperties.borderRadiusForInput};
     box-sizing: border-box;
-    color: ${getInputFontColor(customProperties, props)};
+    color: ${getInputFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     display: flex;
     flex: 1;
     font-family: inherit;
-    font-size: ${customProperties[designTokens.fontSizeForInput]};
+    font-size: ${customProperties.fontSizeForInput};
     height: ${customProperties.sizeHeightInput};
     min-height: ${customProperties.sizeHeightInput};
     opacity: ${props.isDisabled || props.disabled
@@ -81,18 +72,16 @@ const getInputStyles = (props: TInputProps) => {
     width: 100%;
 
     &::placeholder {
-      color: ${customProperties[designTokens.placeholderFontColorForInput]};
+      color: ${customProperties.placeholderFontColorForInput};
     }
     :active,
     :focus,
     :hover:not(:disabled):not(:read-only) {
-      border-color: ${customProperties[
-        designTokens.borderColorForInputWhenFocused
-      ]};
+      border-color: ${customProperties.borderColorForInputWhenFocused};
     }
     :focus {
       box-shadow: inset 0 0 0 2px
-        ${customProperties[designTokens.borderColorForInputWhenFocused]};
+        ${customProperties.borderColorForInputWhenFocused};
     }
   `;
 };
