@@ -2,6 +2,7 @@ import { useLayoutEffect, useState, useRef, useEffect } from 'react';
 import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
+import isEqual from 'lodash/isEqual';
 import { themes, themesNames } from './design-tokens';
 
 const allThemesNames = Object.keys(themesNames);
@@ -64,12 +65,26 @@ type ThemeProviderProps = {
 
 const ThemeProvider = (props: ThemeProviderProps) => {
   const parentSelectorRef = useRef(props.parentSelector);
+  const themeRef = useRef<string>();
+  const themeOverridesRef = useRef<Record<string, string>>();
+
   useLayoutEffect(() => {
-    applyTheme({
-      newTheme: props.theme,
-      parentSelector: parentSelectorRef.current,
-      themeOverrides: props.themeOverrides,
-    });
+    // We want to make sure we don't really apply the change when the props
+    // provided include a new object with the same theme overrides
+    // (eg: users providing an inline object as prop to the ThemeProvider)
+    if (
+      themeRef.current !== props.theme ||
+      !isEqual(themeOverridesRef.current, props.themeOverrides)
+    ) {
+      themeRef.current = props.theme;
+      themeOverridesRef.current = props.themeOverrides;
+
+      applyTheme({
+        newTheme: props.theme,
+        parentSelector: parentSelectorRef.current,
+        themeOverrides: props.themeOverrides,
+      });
+    }
   }, [props.theme, props.themeOverrides]);
 
   return null;
