@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import TextInput from '@commercetools-uikit/text-input';
 import merge from 'lodash/merge';
-// import customProperties from '../custom-properties.json';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Readme from './TOKENS.md';
 import definition from './definition.yaml';
@@ -208,7 +207,6 @@ ChoiceGroup.defaultProps = {
 };
 
 const DecisionGroup = (props) => {
-  console.log('DecisionGroup#', { props });
   const decisions = filterDecisionGroupValues(
     props.decisionGroup.decisions,
     props.searchText
