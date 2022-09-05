@@ -5,7 +5,11 @@ type TDesignTokenName = keyof typeof designTokens;
 // `null` is derived from `getMaxPropEquivalent`
 const getMaxPropTokenValue = (max: number | string | null) => {
   if (!max) return null;
-  return designTokens[`constraint${max}` as TDesignTokenName];
+  const tokenName = `constraint${max}`;
+  if (tokenName in designTokens) {
+    return designTokens[tokenName as TDesignTokenName];
+  }
+  return null;
 };
 
 // Generates an array of accepted values for the max prop, given a min and max

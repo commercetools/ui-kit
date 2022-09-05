@@ -43,10 +43,14 @@ export const getBodyStyles = ({
   placement: string;
   customStyles?: CSSProperties;
 }): CSSProperties => {
+  const constraintTokenName = `constraint${constraint}`;
   return {
     fontFamily: 'inherit',
     margin: `${getOffsetMargin({ placement })} !important`,
-    maxWidth: designTokens[`constraint${constraint}` as TDesignTokenName],
+    maxWidth:
+      constraintTokenName in designTokens
+        ? designTokens[constraintTokenName as TDesignTokenName]
+        : 'auto',
     // so hovering over the tooltip when the tooltip overlaps the component
     pointerEvents: 'none',
     width: constraint === 'auto' ? 'auto' : undefined,
