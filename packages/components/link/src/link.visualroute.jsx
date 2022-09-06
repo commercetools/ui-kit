@@ -1,5 +1,4 @@
 import { Link } from '@commercetools-frontend/ui-kit';
-import { ThemeProvider } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/link';
