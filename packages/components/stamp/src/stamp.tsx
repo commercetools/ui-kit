@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 type Tone =
   | 'critical'
@@ -33,10 +33,10 @@ export const availableTones: Tone[] = [
 const getPaddingStyle = (props: Props) => {
   if (props.isCondensed)
     return css`
-      padding: 1px ${customProperties.spacingXs};
+      padding: 1px ${designTokens.spacingXs};
     `;
   return css`
-    padding: ${customProperties.spacingXs} ${customProperties.spacingS};
+    padding: ${designTokens.spacingXs} ${designTokens.spacingS};
   `;
 };
 
@@ -44,38 +44,38 @@ const getToneStyles = (props: Props) => {
   switch (props.tone) {
     case 'critical': {
       return css`
-        background-color: ${customProperties.colorError95};
-        border: 1px solid ${customProperties.colorError};
+        background-color: ${designTokens.colorError95};
+        border: 1px solid ${designTokens.colorError};
       `;
     }
     case 'warning': {
       return css`
-        background-color: ${customProperties.colorWarning95};
-        border: 1px solid ${customProperties.colorWarning};
+        background-color: ${designTokens.colorWarning95};
+        border: 1px solid ${designTokens.colorWarning};
       `;
     }
     case 'positive': {
       return css`
-        background-color: ${customProperties.colorPrimary85};
-        border: 1px solid ${customProperties.colorPrimary40};
+        background-color: ${designTokens.colorPrimary85};
+        border: 1px solid ${designTokens.colorPrimary40};
       `;
     }
     case 'information': {
       return css`
-        background-color: ${customProperties.colorInfo95};
-        border: 1px solid ${customProperties.colorInfo};
+        background-color: ${designTokens.colorInfo95};
+        border: 1px solid ${designTokens.colorInfo};
       `;
     }
     case 'primary': {
       return css`
-        background-color: ${customProperties.colorPrimary95};
-        border: 1px solid ${customProperties.colorPrimary25};
+        background-color: ${designTokens.colorPrimary95};
+        border: 1px solid ${designTokens.colorPrimary25};
       `;
     }
     case 'secondary': {
       return css`
-        background-color: ${customProperties.colorNeutral90};
-        border: 1px solid ${customProperties.colorNeutral60};
+        background-color: ${designTokens.colorNeutral90};
+        border: 1px solid ${designTokens.colorNeutral60};
       `;
     }
     default:
@@ -85,9 +85,9 @@ const getToneStyles = (props: Props) => {
 
 const getStampStyles = (_props: Props) => {
   return css`
-    color: ${customProperties.colorSolid};
-    font-size: ${customProperties.fontSizeDefault};
-    border-radius: ${customProperties.borderRadius2};
+    color: ${designTokens.colorSolid};
+    font-size: ${designTokens.fontSizeDefault};
+    border-radius: ${designTokens.borderRadius2};
   `;
 };
 

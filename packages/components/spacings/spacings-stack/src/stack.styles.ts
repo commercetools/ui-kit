@@ -1,7 +1,7 @@
 import type { TAlignItem, TScale, TProps } from './stack';
 
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 const getAlignItem = (alignment?: TAlignItem) => {
   switch (alignment) {
@@ -17,15 +17,15 @@ const getAlignItem = (alignment?: TAlignItem) => {
 const getMargin = (scale?: TScale) => {
   switch (scale) {
     case 'xs':
-      return customProperties.spacingXs;
+      return designTokens.spacingXs;
     case 's':
-      return customProperties.spacingS;
+      return designTokens.spacingS;
     case 'm':
-      return customProperties.spacingM;
+      return designTokens.spacingM;
     case 'l':
-      return customProperties.spacingL;
+      return designTokens.spacingL;
     case 'xl':
-      return customProperties.spacingXl;
+      return designTokens.spacingXl;
     default:
       return 0;
   }

@@ -2,7 +2,7 @@
 import { warning } from '@commercetools-uikit/utils';
 // @ts-ignore
 import { css, ClassNames } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 export type Props = {
   color?:
@@ -59,28 +59,28 @@ const getColor = (color: Props['color']) => {
   let iconColor;
   switch (color) {
     case 'solid':
-      iconColor = customProperties.colorSolid;
+      iconColor = designTokens.colorSolid;
       break;
     case 'neutral60':
-      iconColor = customProperties.colorNeutral60;
+      iconColor = designTokens.colorNeutral60;
       break;
     case 'surface':
-      iconColor = customProperties.colorSurface;
+      iconColor = designTokens.colorSurface;
       break;
     case 'info':
-      iconColor = customProperties.colorInfo;
+      iconColor = designTokens.colorInfo;
       break;
     case 'primary':
-      iconColor = customProperties.colorPrimary;
+      iconColor = designTokens.colorPrimary;
       break;
     case 'primary40':
-      iconColor = customProperties.colorPrimary40;
+      iconColor = designTokens.colorPrimary40;
       break;
     case 'warning':
-      iconColor = customProperties.colorWarning;
+      iconColor = designTokens.colorWarning;
       break;
     case 'error':
-      iconColor = customProperties.colorError;
+      iconColor = designTokens.colorError;
       break;
     default:
       break;

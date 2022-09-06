@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 
 const sizeIconContainer = '22px';
@@ -24,8 +24,8 @@ type THeaderIcon = {
 const HeaderIcon = (props: THeaderIcon) => {
   const backgroundColor =
     props.tone === 'urgent'
-      ? customProperties.colorWarning
-      : customProperties.colorSurface;
+      ? designTokens.colorWarning
+      : designTokens.colorSurface;
   return (
     <div
       css={[
@@ -41,15 +41,15 @@ const HeaderIcon = (props: THeaderIcon) => {
             : sizeIconContainer};
           border-radius: 50%;
           flex-shrink: 0;
-          box-shadow: ${customProperties.shadow7};
+          box-shadow: ${designTokens.shadow7};
           background-color: ${backgroundColor};
           border: 1px solid ${backgroundColor};
         `,
         props.isDisabled &&
           css`
             box-shadow: none;
-            border: 1px solid ${customProperties.colorNeutral};
-            background-color: ${customProperties.colorAccent98};
+            border: 1px solid ${designTokens.colorNeutral};
+            background-color: ${designTokens.colorAccent98};
           `,
       ]}
     >

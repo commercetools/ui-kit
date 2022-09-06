@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Grid from '@commercetools-uikit/grid';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/grid';
@@ -15,7 +15,7 @@ const Placeholder = styled.div`
   background-color: pink;
   padding: 16px;
   font-size: 16px;
-  font-family: ${customProperties.fontFamilyDefault};
+  font-family: ${designTokens.fontFamilyDefault};
 `;
 
 export const component = () => (

@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 export type TAvatarProps = {
@@ -120,10 +120,10 @@ const Avatar = (props: TAvatarProps) => (
   <div
     css={css`
       align-items: center;
-      background-color: ${customProperties.colorNeutral60};
+      background-color: ${designTokens.colorNeutral60};
       border-radius: 100%;
-      font-size: ${customProperties.fontSizeDefault};
-      color: ${customProperties.colorSurface};
+      font-size: ${designTokens.fontSizeDefault};
+      color: ${designTokens.colorSurface};
       display: flex;
       justify-content: center;
       overflow: hidden;
@@ -133,7 +133,7 @@ const Avatar = (props: TAvatarProps) => (
       width: ${avatarSizes[props.size].width};
 
       ${props.isHighlighted
-        ? `background-color: ${customProperties.colorNeutral};`
+        ? `background-color: ${designTokens.colorNeutral};`
         : ''}
     `}
     {...filterDataAttributes(props)}

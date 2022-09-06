@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 const Divider = styled.span`
   width: 1px;
-  height: ${customProperties.spacingL};
-  background: ${customProperties.colorNeutral};
-  margin: 0 ${customProperties.spacingXs};
+  height: ${designTokens.spacingL};
+  background: ${designTokens.colorNeutral};
+  margin: 0 ${designTokens.spacingXs};
 `;
 
 export default Divider;

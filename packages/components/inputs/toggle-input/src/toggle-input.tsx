@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import {
   filterDataAttributes,
   filterAriaAttributes,
@@ -58,12 +58,12 @@ export const defaultProps: Pick<
 const labelSizeStyles = (props: TStyledLabelProps) => {
   if (props.size === 'small')
     return css`
-      height: calc(${customProperties.standardInputHeight} / 2);
-      width: calc(${customProperties.standardInputHeight});
+      height: calc(${designTokens.standardInputHeight} / 2);
+      width: calc(${designTokens.standardInputHeight});
     `;
   return css`
-    height: calc(${customProperties.standardInputHeight});
-    width: calc(${customProperties.standardInputHeight} * 2);
+    height: calc(${designTokens.standardInputHeight});
+    width: calc(${designTokens.standardInputHeight} * 2);
   `;
 };
 
@@ -75,7 +75,7 @@ const Label = styled.label<TStyledLabelProps>`
   ${labelSizeStyles}
 
   &:focus-within {
-    outline: auto 2px ${customProperties.borderColorForInputWhenFocused};
+    outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
     outline-offset: 3px;
   }
 `;
@@ -85,8 +85,8 @@ const Span = styled.span<TStyledSpanProps>`
 
   &::before {
     border-radius: 16px;
-    box-shadow: ${customProperties.shadow9};
-    background-color: ${customProperties.colorNeutral60};
+    box-shadow: ${designTokens.shadow9};
+    background-color: ${designTokens.colorNeutral60};
     left: 0;
     top: 50%;
     transition: background 0.2s ease-in-out;
@@ -108,8 +108,8 @@ const Span = styled.span<TStyledSpanProps>`
       props.size === 'small' ? thumbSmallSize : thumbBigSize};
     width: ${(props) =>
       props.size === 'small' ? thumbSmallSize : thumbBigSize};
-    background-color: ${customProperties.colorSurface};
-    box-shadow: ${customProperties.shadow7};
+    background-color: ${designTokens.colorSurface};
+    box-shadow: ${designTokens.shadow7};
     border-radius: 50%;
     z-index: 1;
     transition: transform 0.2s ease, background 0.2s ease;
@@ -120,7 +120,7 @@ const getInputStyles = (props: TToggleInputProps) => css`
   /* when checked */
   &:checked {
     + span::before {
-      background: ${customProperties.colorPrimary};
+      background: ${designTokens.colorPrimary};
     }
     & + span::after {
       transform: ${props.size === 'small'
@@ -132,11 +132,11 @@ const getInputStyles = (props: TToggleInputProps) => css`
   /* when disabled */
   &:disabled {
     & + span::before {
-      background: ${customProperties.colorNeutral};
+      background: ${designTokens.colorNeutral};
       box-shadow: none;
     }
     & + span::after {
-      background: ${customProperties.colorAccent95};
+      background: ${designTokens.colorAccent95};
       box-shadow: none;
     }
   }
@@ -144,16 +144,16 @@ const getInputStyles = (props: TToggleInputProps) => css`
   /* when disabled and checked */
   &:disabled&:checked {
     & + span::before {
-      background: ${customProperties.colorPrimary25};
+      background: ${designTokens.colorPrimary25};
     }
     & + span::after {
-      background: ${customProperties.colorNeutral};
+      background: ${designTokens.colorNeutral};
     }
   }
 
   :not(:disabled)&:hover + span::after,
   :not(:disabled)&:focus + span::after {
-    box-shadow: ${customProperties.shadow16};
+    box-shadow: ${designTokens.shadow16};
   }
 `;
 

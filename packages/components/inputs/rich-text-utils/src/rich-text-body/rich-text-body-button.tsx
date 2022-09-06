@@ -1,6 +1,6 @@
 import omit from 'lodash/omit';
 import { css } from '@emotion/react';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 
 type TRichTextBodyButtonProps = {
@@ -17,8 +17,8 @@ type TRichTextBodyButtonProps = {
 const propsToOmit = ['isActive', 'label', 'isDisabled', 'isReadOnly'];
 
 function getFillColor(props: TRichTextBodyButtonProps) {
-  if (props.isActive) return customProperties.colorSurface;
-  return customProperties.colorSolid;
+  if (props.isActive) return designTokens.colorSurface;
+  return designTokens.colorSolid;
 }
 
 const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
@@ -37,13 +37,13 @@ const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
           border: 0;
           cursor: pointer;
           background: ${props.isActive
-            ? customProperties.colorAccent30
+            ? designTokens.colorAccent30
             : 'transparent'};
           display: flex;
           justify-content: center;
           align-items: center;
-          border-radius: ${customProperties.spacingXs};
-          padding: ${customProperties.spacingXs};
+          border-radius: ${designTokens.spacingXs};
+          padding: ${designTokens.spacingXs};
 
           &:focus {
             outline: none;
@@ -52,8 +52,8 @@ const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
           &:hover,
           &:focus {
             background: ${props.isActive
-              ? customProperties.colorAccent30
-              : customProperties.colorNeutral90};
+              ? designTokens.colorAccent30
+              : designTokens.colorNeutral90};
           }
 
           svg {
@@ -63,14 +63,14 @@ const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
           &:disabled {
             pointer-events: none;
             svg {
-              fill: ${customProperties.colorNeutral60};
+              fill: ${designTokens.colorNeutral60};
             }
           }
         `,
         props.isReadOnly &&
           css`
             svg {
-              fill: ${customProperties.colorNeutral60};
+              fill: ${designTokens.colorNeutral60};
             }
           `,
       ]}

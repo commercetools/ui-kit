@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback, ChangeEventHandler } from 'react';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 import {
   filterAriaAttributes,
@@ -10,7 +10,7 @@ import type { TCheckboxProps } from './checkbox-input';
 
 const Input = styled.input`
   &:focus + div > svg *[data-style='checkbox__border'] {
-    stroke: ${customProperties.borderColorForInputWhenFocused};
+    stroke: ${designTokens.borderColorForInputWhenFocused};
   }
 `;
 

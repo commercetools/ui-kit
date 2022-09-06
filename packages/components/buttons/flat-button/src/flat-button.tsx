@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { css } from '@emotion/react';
 import omit from 'lodash/omit';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
@@ -16,7 +16,7 @@ import { getTextColor, getButtonIconColor } from './flat-button.styles';
 
 const propsToOmit = ['type'];
 
-export type CustomProperties = typeof customProperties;
+export type TDesignTokens = typeof designTokens;
 
 export type TFlatButtonProps<
   TStringOrComponent extends ElementType = 'button'
@@ -132,19 +132,19 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
 
         span {
           color: ${props.isDisabled
-            ? customProperties.colorNeutral
-            : getTextColor(props.tone, false, customProperties)};
+            ? designTokens.colorNeutral
+            : getTextColor(props.tone, false, designTokens)};
         }
 
         svg * {
           fill: ${props.isDisabled
-            ? customProperties.colorNeutral
-            : getTextColor(props.tone, false, customProperties)};
+            ? designTokens.colorNeutral
+            : getTextColor(props.tone, false, designTokens)};
         }
 
         * + span,
         * + svg {
-          margin-left: ${customProperties.spacingXs};
+          margin-left: ${designTokens.spacingXs};
         }
 
         ${!props.isDisabled
@@ -152,10 +152,10 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
             &:hover,
             &:focus {
               span {
-                color: ${getTextColor(props.tone, true, customProperties)};
+                color: ${getTextColor(props.tone, true, designTokens)};
               }
               svg * {
-                fill: ${getTextColor(props.tone, true, customProperties)};
+                fill: ${getTextColor(props.tone, true, designTokens)};
               }
             }`
           : ''}

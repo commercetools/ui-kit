@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { customProperties, ThemeProvider } from '../../../design-system';
+import { designTokens, ThemeProvider } from '../../../design-system';
 
-const defaultTheme = customProperties;
+const defaultTheme = designTokens;
 
 const customTheme = {
   colorSolid: '#fff',

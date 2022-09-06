@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import * as icons from '@commercetools-uikit/icons';
 import InlineSvg from '@commercetools-uikit/icons/inline-svg';
 import Text from '@commercetools-uikit/text';
@@ -106,7 +106,7 @@ export const component = () => (
                       height: '100%',
                       backgroundColor:
                         color === 'surface'
-                          ? customProperties.colorSolid
+                          ? designTokens.colorSolid
                           : 'inherit',
                     }}
                     key={`${size}-${color}`}

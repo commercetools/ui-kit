@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import { ExternalLinkIcon } from '@commercetools-uikit/icons';
 
@@ -70,10 +70,10 @@ const defaultProps: Pick<TLinkProps, 'tone' | 'isExternal'> = {
 
 const getTextColorValue = (tone: TLinkProps['tone'] = 'primary') => {
   if (tone === 'primary') {
-    return customProperties.colorPrimary;
+    return designTokens.colorPrimary;
   }
 
-  return customProperties.fontColorForTextWhenInverted;
+  return designTokens.fontColorForTextWhenInverted;
 };
 const getIconColorValue = (
   tone: TLinkProps['tone'] = 'primary'
@@ -86,10 +86,10 @@ const getIconColorValue = (
 };
 const getActiveColorValue = (tone: string = 'primary') => {
   if (tone === 'primary') {
-    return customProperties.colorPrimary25;
+    return designTokens.colorPrimary25;
   }
 
-  return customProperties.fontColorForTextWhenInverted;
+  return designTokens.fontColorForTextWhenInverted;
 };
 
 const getLinkStyles = (props: TLinkProps) => {
@@ -99,7 +99,7 @@ const getLinkStyles = (props: TLinkProps) => {
   return css`
     font-family: inherit;
     color: ${color};
-    font-size: ${customProperties.fontSizeDefault};
+    font-size: ${designTokens.fontSizeDefault};
     &:hover,
     &:focus,
     &:active {
@@ -111,7 +111,7 @@ const getLinkStyles = (props: TLinkProps) => {
 
 const Wrapper = styled.span`
   > svg {
-    margin: 0 0 0 ${customProperties.spacingXs} !important;
+    margin: 0 0 0 ${designTokens.spacingXs} !important;
     vertical-align: bottom;
   }
 `;
