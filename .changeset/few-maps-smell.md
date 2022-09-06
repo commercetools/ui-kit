@@ -1,56 +1,58 @@
 ---
 '@commercetools-uikit/design-system': minor
-'@commercetools-uikit/calendar-utils': patch
-'@commercetools-uikit/avatar': patch
-'@commercetools-uikit/accessible-button': patch
-'@commercetools-uikit/flat-button': patch
-'@commercetools-uikit/icon-button': patch
-'@commercetools-uikit/link-button': patch
-'@commercetools-uikit/primary-button': patch
-'@commercetools-uikit/secondary-button': patch
-'@commercetools-uikit/secondary-icon-button': patch
-'@commercetools-uikit/card': patch
-'@commercetools-uikit/collapsible-panel': patch
-'@commercetools-uikit/constraints': patch
-'@commercetools-uikit/data-table': patch
-'@commercetools-uikit/data-table-manager': patch
-'@commercetools-uikit/field-label': patch
-'@commercetools-uikit/icons': patch
-'@commercetools-uikit/async-creatable-select-input': patch
-'@commercetools-uikit/async-select-input': patch
-'@commercetools-uikit/checkbox-input': patch
-'@commercetools-uikit/creatable-select-input': patch
-'@commercetools-uikit/date-time-input': patch
-'@commercetools-uikit/input-utils': patch
-'@commercetools-uikit/localized-multiline-text-input': patch
-'@commercetools-uikit/localized-rich-text-input': patch
-'@commercetools-uikit/localized-text-input': patch
-'@commercetools-uikit/money-input': patch
-'@commercetools-uikit/multiline-text-input': patch
-'@commercetools-uikit/number-input': patch
-'@commercetools-uikit/password-input': patch
-'@commercetools-uikit/radio-input': patch
-'@commercetools-uikit/rich-text-utils': patch
-'@commercetools-uikit/search-select-input': patch
-'@commercetools-uikit/select-input': patch
-'@commercetools-uikit/select-utils': patch
-'@commercetools-uikit/text-input': patch
-'@commercetools-uikit/time-input': patch
-'@commercetools-uikit/toggle-input': patch
-'@commercetools-uikit/label': patch
-'@commercetools-uikit/link': patch
-'@commercetools-uikit/loading-spinner': patch
-'@commercetools-uikit/notifications': patch
-'@commercetools-uikit/primary-action-dropdown': patch
-'@commercetools-uikit/spacings-inline': patch
-'@commercetools-uikit/spacings-inset': patch
-'@commercetools-uikit/spacings-inset-squish': patch
-'@commercetools-uikit/spacings-stack': patch
-'@commercetools-uikit/stamp': patch
-'@commercetools-uikit/tag': patch
-'@commercetools-uikit/text': patch
-'@commercetools-uikit/tooltip': patch
-'@commercetools-uikit/view-switcher': patch
+'@commercetools-uikit/calendar-utils': minor
+'@commercetools-uikit/avatar': minor
+'@commercetools-uikit/accessible-button': minor
+'@commercetools-uikit/flat-button': minor
+'@commercetools-uikit/icon-button': minor
+'@commercetools-uikit/link-button': minor
+'@commercetools-uikit/primary-button': minor
+'@commercetools-uikit/secondary-button': minor
+'@commercetools-uikit/secondary-icon-button': minor
+'@commercetools-uikit/card': minor
+'@commercetools-uikit/collapsible-panel': minor
+'@commercetools-uikit/constraints': minor
+'@commercetools-uikit/data-table': minor
+'@commercetools-uikit/data-table-manager': minor
+'@commercetools-uikit/field-label': minor
+'@commercetools-uikit/grid': minor
+'@commercetools-uikit/icons': minor
+'@commercetools-uikit/async-creatable-select-input': minor
+'@commercetools-uikit/async-select-input': minor
+'@commercetools-uikit/checkbox-input': minor
+'@commercetools-uikit/creatable-select-input': minor
+'@commercetools-uikit/date-time-input': minor
+'@commercetools-uikit/input-utils': minor
+'@commercetools-uikit/localized-multiline-text-input': minor
+'@commercetools-uikit/localized-rich-text-input': minor
+'@commercetools-uikit/localized-text-input': minor
+'@commercetools-uikit/money-input': minor
+'@commercetools-uikit/multiline-text-input': minor
+'@commercetools-uikit/number-input': minor
+'@commercetools-uikit/password-input': minor
+'@commercetools-uikit/radio-input': minor
+'@commercetools-uikit/rich-text-utils': minor
+'@commercetools-uikit/search-select-input': minor
+'@commercetools-uikit/select-input': minor
+'@commercetools-uikit/select-utils': minor
+'@commercetools-uikit/text-input': minor
+'@commercetools-uikit/time-input': minor
+'@commercetools-uikit/toggle-input': minor
+'@commercetools-uikit/label': minor
+'@commercetools-uikit/link': minor
+'@commercetools-uikit/loading-spinner': minor
+'@commercetools-uikit/notifications': minor
+'@commercetools-uikit/primary-action-dropdown': minor
+'@commercetools-uikit/spacings-inline': minor
+'@commercetools-uikit/spacings-inset': minor
+'@commercetools-uikit/spacings-inset-squish': minor
+'@commercetools-uikit/spacings-stack': minor
+'@commercetools-uikit/stamp': minor
+'@commercetools-uikit/tag': minor
+'@commercetools-uikit/text': minor
+'@commercetools-uikit/tooltip': minor
+'@commercetools-uikit/view-switcher': minor
+'@commercetools-frontend/ui-kit': minor
 'visual-testing-app': minor
 ---
 
@@ -63,12 +65,14 @@ The theming implementation consists of 2 key parts:
 <html data-theme="default" style="--color-primary:#00b39e”>
 ```
 
-- `customProperties` as well as `designTokens` objects exporteded from the `@commercetools-uikit/design-system` package make the components in the ui-kit refer to CSS variables values rather than use fixed values, for instance:
+- `designTokens` object exporteded from the `@commercetools-uikit/design-system` package make the components using design tokens refer to CSS variables values rather than use fixed values, for instance:
 ```ts
-const customProperties = {
+const designTokens = {
   colorPrimary: 'var(--color-primary, #00b39e)',
   …
 }
 ```
 
 When accessing CSS variables using the `var()` function, [fallback values](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties#custom_property_fallback_values) are provided, therefore lack of `<ThemeProvider>` component in the React component tree does not introduce any visual changes.
+
+`customProperties` object exporteded from the `@commercetools-uikit/design-system` is now deprecated (although still exported for backwards compatibility). It is advised to use the `designTokens` object instead.
