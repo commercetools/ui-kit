@@ -27,6 +27,7 @@ const customizedComponents = {
 
 type TOption = {
   value: string;
+  label: string;
 };
 
 type TOptionObject = {
