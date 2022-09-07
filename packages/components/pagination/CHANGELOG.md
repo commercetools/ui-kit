@@ -1,5 +1,21 @@
 # @commercetools-uikit/pagination
 
+## 15.2.2
+
+### Patch Changes
+
+- Updated dependencies [[`36243b437`](https://github.com/commercetools/ui-kit/commit/36243b43779700a28fb597085d83f8da9940c5d4)]:
+  - @commercetools-uikit/select-input@15.2.2
+  - @commercetools-uikit/secondary-icon-button@15.2.2
+  - @commercetools-uikit/number-input@15.2.2
+  - @commercetools-uikit/design-system@15.2.2
+  - @commercetools-uikit/constraints@15.2.2
+  - @commercetools-uikit/icons@15.2.2
+  - @commercetools-uikit/label@15.2.2
+  - @commercetools-uikit/text@15.2.2
+  - @commercetools-uikit/utils@15.2.2
+  - @commercetools-uikit/spacings@15.2.2
+
 ## 15.2.1
 
 ### Patch Changes
