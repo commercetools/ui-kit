@@ -1,5 +1,14 @@
 # visual-testing-app
 
+## 11.0.8
+
+### Patch Changes
+
+- [#2267](https://github.com/commercetools/ui-kit/pull/2267) [`e3b726cc7`](https://github.com/commercetools/ui-kit/commit/e3b726cc7684e6a4da0fdd251b6b0ee8ffda7815) Thanks [@renovate](https://github.com/apps/renovate)! - Security patch of `moment-timezone`
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.2.2
+
 ## 11.0.7
 
 ### Patch Changes

@@ -1,5 +1,7 @@
 # @commercetools-uikit/utils
 
+## 15.2.2
+
 ## 15.2.1
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @commercetools-uikit/checkbox-input
 
+## 15.2.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-utils@15.2.2
+  - @commercetools-uikit/input-utils@15.2.2
+  - @commercetools-uikit/design-system@15.2.2
+  - @commercetools-uikit/icons@15.2.2
+  - @commercetools-uikit/text@15.2.2
+  - @commercetools-uikit/utils@15.2.2
+
 ## 15.2.1
 
 ### Patch Changes

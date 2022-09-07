@@ -1,5 +1,19 @@
 # @commercetools-uikit/time-input
 
+## 15.2.2
+
+### Patch Changes
+
+- Updated dependencies [[`f467406e1`](https://github.com/commercetools/ui-kit/commit/f467406e13d30a6fe983a1e493df5bf5dfd23105)]:
+  - @commercetools-uikit/accessible-button@15.2.2
+  - @commercetools-uikit/input-utils@15.2.2
+  - @commercetools-uikit/design-system@15.2.2
+  - @commercetools-uikit/constraints@15.2.2
+  - @commercetools-uikit/icons@15.2.2
+  - @commercetools-uikit/spacings-inline@15.2.2
+  - @commercetools-uikit/hooks@15.2.2
+  - @commercetools-uikit/utils@15.2.2
+
 ## 15.2.1
 
 ### Patch Changes
