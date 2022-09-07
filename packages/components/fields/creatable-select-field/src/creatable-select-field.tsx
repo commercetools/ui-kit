@@ -31,6 +31,7 @@ type TCustomFormErrors<Values> = {
 };
 type TValue = {
   value: string;
+  label: string;
 };
 type TOptions = TValue[] | { options: TValue[] }[];
 
