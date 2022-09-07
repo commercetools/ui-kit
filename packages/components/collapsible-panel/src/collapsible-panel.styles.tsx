@@ -33,7 +33,7 @@ const getHeaderContainerStyles = (
       ? 'flex-start'
       : 'space-between'};
     padding: ${props.condensed
-      ? `${vars.spacingXs} ${vars.spacingS}`
+      ? `${vars.spacingS} ${vars.spacingS}`
       : `${vars.spacingS} ${vars.spacingM}`};
   `;
 
