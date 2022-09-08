@@ -22,7 +22,7 @@ import type { Props as ReactSelectProps } from 'react-select';
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TOption = {
   value: string;
-  label: ReactNode;
+  label?: ReactNode;
 };
 type TOptionObject = {
   options: TOption[];
