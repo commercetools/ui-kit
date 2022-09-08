@@ -27,7 +27,7 @@ const customizedComponents = {
 
 type TOption = {
   value: string;
-  label: string;
+  label: ReactNode;
 };
 
 type TOptionObject = {
