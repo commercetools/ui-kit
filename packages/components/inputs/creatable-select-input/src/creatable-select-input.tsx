@@ -27,7 +27,7 @@ const customizedComponents = {
 
 type TValue = {
   value: string;
-  label: ReactNode;
+  label?: ReactNode;
 };
 
 type TOptions = TValue[] | { options: TValue[] }[];
