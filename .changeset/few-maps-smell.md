@@ -56,23 +56,6 @@
 'visual-testing-app': minor
 ---
 
-Introduce theming support to ui-kit components based on the use of **CSS custom properties** (sometimes referred to as **CSS variables** or **cascading variables**).
-
-The theming implementation consists of 2 key parts:
-
-- `<ThemeProvider>` component from `@commercetools-uikit/design-system` added to the React component hierarchy will be responsible for declaring CSS custom properties and `data-theme` attribute (by default) in the `:root` element. For instance:
-```html
-<html data-theme="default" style="--color-primary:#00b39e”>
-```
-
-- `designTokens` object exporteded from the `@commercetools-uikit/design-system` package make the components using design tokens refer to CSS variables values rather than use fixed values, for instance:
-```ts
-const designTokens = {
-  colorPrimary: 'var(--color-primary, #00b39e)',
-  …
-}
-```
-
-When accessing CSS variables using the `var()` function, [fallback values](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties#custom_property_fallback_values) are provided, therefore lack of `<ThemeProvider>` component in the React component tree does not introduce any visual changes.
+Refactor UI kit components and `@commercetools-uikit/design-system` package for future theming support.
 
 `customProperties` object exporteded from the `@commercetools-uikit/design-system` is now deprecated (although still exported for backwards compatibility). It is advised to use the `designTokens` object instead.

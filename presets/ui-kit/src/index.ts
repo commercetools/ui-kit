@@ -52,6 +52,7 @@ export {
 } from '@commercetools-uikit/hooks';
 
 export {
+  /** @deprecated use `designTokens` instead */
   customProperties,
   designTokens,
 } from '@commercetools-uikit/design-system';
