@@ -25,7 +25,6 @@
   "dependencies": {
     "@babel/runtime": "^7.17.2",
     "@babel/runtime-corejs3": "^7.17.2",
-    "@commercetools-uikit/utils": "15.2.2",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
     "react": "17.0.2"
