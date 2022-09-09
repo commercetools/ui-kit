@@ -1,5 +1,20 @@
 # @commercetools-uikit/creatable-select-field
 
+## 15.2.2
+
+### Patch Changes
+
+- [#2278](https://github.com/commercetools/ui-kit/pull/2278) [`36243b437`](https://github.com/commercetools/ui-kit/commit/36243b43779700a28fb597085d83f8da9940c5d4) Thanks [@kark](https://github.com/kark)! - Add missing `label` property to `options` prop type
+
+- Updated dependencies [[`36243b437`](https://github.com/commercetools/ui-kit/commit/36243b43779700a28fb597085d83f8da9940c5d4)]:
+  - @commercetools-uikit/creatable-select-input@15.2.2
+  - @commercetools-uikit/field-label@15.2.2
+  - @commercetools-uikit/design-system@15.2.2
+  - @commercetools-uikit/constraints@15.2.2
+  - @commercetools-uikit/field-errors@15.2.2
+  - @commercetools-uikit/utils@15.2.2
+  - @commercetools-uikit/spacings@15.2.2
+
 ## 15.2.1
 
 ### Patch Changes

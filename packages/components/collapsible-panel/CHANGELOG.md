@@ -1,5 +1,22 @@
 # @commercetools-uikit/collapsible-panel
 
+## 15.2.2
+
+### Patch Changes
+
+- [#2276](https://github.com/commercetools/ui-kit/pull/2276) [`57b188b85`](https://github.com/commercetools/ui-kit/commit/57b188b85bbf35914abc18c852ef0169e7d752f0) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update `CollapsiblePanel` header vertical padding in collapsed mode (`4px` -> `8px`).
+
+- Updated dependencies [[`f467406e1`](https://github.com/commercetools/ui-kit/commit/f467406e13d30a6fe983a1e493df5bf5dfd23105)]:
+  - @commercetools-uikit/accessible-button@15.2.2
+  - @commercetools-uikit/design-system@15.2.2
+  - @commercetools-uikit/collapsible-motion@15.2.2
+  - @commercetools-uikit/constraints@15.2.2
+  - @commercetools-uikit/icons@15.2.2
+  - @commercetools-uikit/text@15.2.2
+  - @commercetools-uikit/hooks@15.2.2
+  - @commercetools-uikit/utils@15.2.2
+  - @commercetools-uikit/spacings@15.2.2
+
 ## 15.2.1
 
 ### Patch Changes

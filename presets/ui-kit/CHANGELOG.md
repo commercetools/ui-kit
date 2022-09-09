@@ -1,5 +1,46 @@
 # @commercetools-frontend/ui-kit
 
+## 15.2.2
+
+### Patch Changes
+
+- [#2267](https://github.com/commercetools/ui-kit/pull/2267) [`e3b726cc7`](https://github.com/commercetools/ui-kit/commit/e3b726cc7684e6a4da0fdd251b6b0ee8ffda7815) Thanks [@renovate](https://github.com/apps/renovate)! - Security patch of `moment-timezone`
+
+- Updated dependencies [[`57b188b85`](https://github.com/commercetools/ui-kit/commit/57b188b85bbf35914abc18c852ef0169e7d752f0)]:
+  - @commercetools-uikit/collapsible-panel@15.2.2
+  - @commercetools-uikit/data-table@15.2.2
+  - @commercetools-uikit/data-table-manager@15.2.2
+  - @commercetools-uikit/primary-action-dropdown@15.2.2
+  - @commercetools-uikit/tag@15.2.2
+  - @commercetools-uikit/view-switcher@15.2.2
+  - @commercetools-uikit/buttons@15.2.2
+  - @commercetools-uikit/fields@15.2.2
+  - @commercetools-uikit/inputs@15.2.2
+  - @commercetools-uikit/pagination@15.2.2
+  - @commercetools-uikit/field-label@15.2.2
+  - @commercetools-uikit/design-system@15.2.2
+  - @commercetools-uikit/accessible-hidden@15.2.2
+  - @commercetools-uikit/avatar@15.2.2
+  - @commercetools-uikit/card@15.2.2
+  - @commercetools-uikit/collapsible@15.2.2
+  - @commercetools-uikit/collapsible-motion@15.2.2
+  - @commercetools-uikit/constraints@15.2.2
+  - @commercetools-uikit/field-errors@15.2.2
+  - @commercetools-uikit/grid@15.2.2
+  - @commercetools-uikit/icons@15.2.2
+  - @commercetools-uikit/label@15.2.2
+  - @commercetools-uikit/link@15.2.2
+  - @commercetools-uikit/loading-spinner@15.2.2
+  - @commercetools-uikit/messages@15.2.2
+  - @commercetools-uikit/notifications@15.2.2
+  - @commercetools-uikit/stamp@15.2.2
+  - @commercetools-uikit/text@15.2.2
+  - @commercetools-uikit/tooltip@15.2.2
+  - @commercetools-uikit/hooks@15.2.2
+  - @commercetools-uikit/i18n@15.2.2
+  - @commercetools-uikit/utils@15.2.2
+  - @commercetools-uikit/spacings@15.2.2
+
 ## 15.2.1
 
 ### Patch Changes

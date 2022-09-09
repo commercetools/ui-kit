@@ -1,5 +1,15 @@
 # @commercetools-uikit/number-input
 
+## 15.2.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/input-utils@15.2.2
+  - @commercetools-uikit/design-system@15.2.2
+  - @commercetools-uikit/constraints@15.2.2
+  - @commercetools-uikit/utils@15.2.2
+
 ## 15.2.1
 
 ### Patch Changes
