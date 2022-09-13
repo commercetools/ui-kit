@@ -181,7 +181,7 @@ const initialColumnsState = [
       <IconButton
         icon={<InformationIcon />}
         label="Custom Column Information"
-        size="medium"
+        size="small"
         onClick={() =>
           alert(
             'This Column can be customized using the controls at the bottom of this page!'
