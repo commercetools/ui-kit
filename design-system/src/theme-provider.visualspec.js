@@ -22,7 +22,8 @@ describe('Interactive', () => {
 
     await globalThemeChangeButton.click();
     await page.waitForSelector('[data-theme="dark"]');
-    await percySnapshot(page, 'ThemeProvider - after global theme change');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'ThemeProvider - after global theme change');
 
     // change local theme
     const localThemeChangeButton = await queries.findByText(
@@ -31,6 +32,7 @@ describe('Interactive', () => {
     );
     await localThemeChangeButton.click();
     await page.waitForSelector('[data-theme="dark"]');
-    await percySnapshot(page, 'ThemeProvider - after local theme change');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'ThemeProvider - after local theme change');
   });
 });

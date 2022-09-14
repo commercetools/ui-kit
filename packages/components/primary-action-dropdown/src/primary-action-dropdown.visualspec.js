@@ -15,6 +15,7 @@ describe('PrimaryActionDropdown', () => {
     const doc = await getDocument(page);
     const dropdowns = await queries.findAllByLabelText(doc, 'Open Dropdown');
     await dropdowns[0].click();
-    await percySnapshot(page, 'PrimaryActionDropdown - Open');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'PrimaryActionDropdown - Open');
   });
 });

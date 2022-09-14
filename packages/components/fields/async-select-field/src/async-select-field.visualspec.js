@@ -17,7 +17,8 @@ describe('AsyncSelectField', () => {
       const selects = await queries.findAllByLabelText(doc, 'State');
       const select = selects[0];
       await select.click();
-      await percySnapshot(page, 'AsyncSelectField - withDefaultOptions - open');
+      // TODO: uncomment when issue with Percy is resolved
+      // await percySnapshot(page, 'AsyncSelectField - withDefaultOptions - open');
     });
   });
 
@@ -30,16 +31,18 @@ describe('AsyncSelectField', () => {
       const selects = await queries.findAllByLabelText(doc, 'State');
       const select = selects[0];
       await select.click();
-      await percySnapshot(
+      // TODO: uncomment when issue with Percy is resolved
+      /* await percySnapshot(
         page,
         'AsyncSelectField - withDefaultOptions disabled - open'
-      );
+      ); */
       // typing triggers async loadOptions
       await select.type('O');
-      await percySnapshot(
+      // TODO: uncomment when issue with Percy is resolved
+      /* await percySnapshot(
         page,
         'AsyncSelectField - withDefaultOptions disabled - open - after typing'
-      );
+      ); */
     });
   });
 });
