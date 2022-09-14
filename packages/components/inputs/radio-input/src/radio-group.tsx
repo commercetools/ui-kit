@@ -94,7 +94,7 @@ const Group = (props: TGroupProps) => {
       isValidElement(child) &&
       (child as TReactChild).type.displayName === Option.displayName
     ) {
-      const clonedChild = cloneElement(child, {
+      const clonedChild = cloneElement(child as TReactChild, {
         id: props.id && `${props.id}-${index}`,
         name: props.name,
         isChecked: props.value === child.props.value,

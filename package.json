@@ -40,7 +40,6 @@
     "labels:sync": "github-labels sync",
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
-  "packageManager": "yarn@3.2.3",
   "workspaces": [
     "design-system",
     "generators/*",
@@ -151,14 +150,22 @@
     "typescript": "4.8.3"
   },
   "resolutions": {
+    "@babel/preset-env": "^7.18.6",
+    "@formatjs/ecma402-abstract": "^1.11.8",
+    "@jest/types": "27.5.1",
+    "@types/eslint": "^8.2.2",
+    "@types/react": "17.0.49",
+    "@types/react-dom": "17.0.17",
+    "@types/react-router": "5.1.18",
     "@types/unist": "2.0.6",
-    "@testing-library/dom": "8.17.1",
-    "core-js-compat": "3.25.0",
-    "lodash": "4.17.21",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-test-renderer": "17.0.2",
-    "@emotion/react": "11.10.4",
-    "moment": "2.29.4"
-  }
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "core-js-compat": "^3.23.4"
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=6",
+    "yarn": ">=3"
+  },
+  "packageManager": "yarn@3.2.3"
 }

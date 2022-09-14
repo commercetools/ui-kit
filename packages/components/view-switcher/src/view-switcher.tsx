@@ -78,7 +78,7 @@ const ViewSwitcher = (props: TViewSwitcherProps) => {
       const isButtonActive =
         (isControlledComponent ? props.selectedValue : selectedButton) ===
         child.props.value;
-      const clonedChild = cloneElement(child, {
+      const clonedChild = cloneElement(child as TReactChild, {
         onClick: () => {
           if (!isControlledComponent) {
             setSelectedButton(child.props.value);
