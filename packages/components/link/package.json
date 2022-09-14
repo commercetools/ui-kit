@@ -19,22 +19,22 @@
   "module": "dist/commercetools-uikit-link.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.17.2",
-    "@babel/runtime-corejs3": "^7.17.2",
+    "@babel/runtime": "^7.19.0",
+    "@babel/runtime-corejs3": "^7.19.1",
     "@commercetools-uikit/design-system": "15.2.2",
     "@commercetools-uikit/icons": "15.2.2",
     "@commercetools-uikit/spacings-inline": "15.2.2",
     "@commercetools-uikit/utils": "15.2.2",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
-    "@types/history": "^4.7.8",
-    "@types/react-router-dom": "^5.1.7",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@types/history": "^4.7.11",
+    "@types/react-router-dom": "^5.3.3",
     "history": "4.10.1",
     "prop-types": "15.8.1"
   },
   "devDependencies": {
     "react": "17.0.2",
-    "react-intl": "^5.24.6",
+    "react-intl": "^5.25.1",
     "react-router-dom": "5.3.3"
   },
   "peerDependencies": {

@@ -25,13 +25,13 @@
     "generate-icons": "svgr -d src/generated --typescript -- src/svg"
   },
   "dependencies": {
-    "@babel/runtime": "^7.17.2",
-    "@babel/runtime-corejs3": "^7.17.2",
+    "@babel/runtime": "^7.19.0",
+    "@babel/runtime-corejs3": "^7.19.1",
     "@commercetools-uikit/design-system": "15.2.2",
     "@commercetools-uikit/utils": "15.2.2",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
-    "@types/dompurify": "^2.3.1",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@types/dompurify": "^2.3.4",
     "dompurify": "2.4.0",
     "prop-types": "15.8.1",
     "react-from-dom": "0.6.2"

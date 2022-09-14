@@ -22,8 +22,8 @@
     "copy-assets": "rm -rf i18n materials && mkdir -p i18n/data && cp -R ../../design-system/materials materials && cp -R ../../packages/i18n/data i18n/"
   },
   "dependencies": {
-    "@babel/runtime": "^7.17.2",
-    "@babel/runtime-corejs3": "^7.17.2",
+    "@babel/runtime": "^7.19.0",
+    "@babel/runtime-corejs3": "^7.19.1",
     "@commercetools-uikit/accessible-hidden": "15.2.2",
     "@commercetools-uikit/avatar": "15.2.2",
     "@commercetools-uikit/buttons": "15.2.2",
@@ -62,7 +62,7 @@
     "moment": "2.29.4",
     "moment-timezone": "0.5.37",
     "react": "17.0.2",
-    "react-intl": "^5.24.6",
+    "react-intl": "^5.25.1",
     "react-router-dom": "5.3.3"
   },
   "peerDependencies": {

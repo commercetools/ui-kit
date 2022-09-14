@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { customProperties } from '@commercetools-uikit/design-system';
@@ -10,8 +9,9 @@ const darkTheme = {
   colorNeutral: 'rgba(255,255,255,0.60)',
   colorAccent98: 'rgba(0,0,0,0.98)',
 };
-const pkgComponentsModules = import.meta.globEager(
-  '../../packages/**/*.visualroute.jsx'
+const pkgComponentsModules = import.meta.glob(
+  '../../packages/**/*.visualroute.jsx',
+  { eager: true }
 );
 
 const allUniqueRouteComponents = Object.values(pkgComponentsModules).reduce(
