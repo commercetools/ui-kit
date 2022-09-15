@@ -6211,18 +6211,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@percy/puppeteer@npm:2.0.2":
-  version: 2.0.2
-  resolution: "@percy/puppeteer@npm:2.0.2"
+"@percy/puppeteer@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@percy/puppeteer@npm:2.0.0"
   dependencies:
-    "@percy/sdk-utils": ^1.0.0
+    "@percy/sdk-utils": ^1.0.0-beta.32
   peerDependencies:
     puppeteer: ">=1"
-  checksum: 953f951c2601a2290d138bc27167be7234d998cf060a337363e538805be10066ea4890f1edf6779235353240821ad5ae70890d5da4d450cd27e80befc68c9749
+  checksum: 6041289d06eb1c237f15c38e1cacd46e614be76202c27593e7b03cb3f828d9b31c6530f8f83a5d10c2fe05a059632896c69626f5bd6238b56c710b7612703806
   languageName: node
   linkType: hard
 
-"@percy/sdk-utils@npm:^1.0.0":
+"@percy/sdk-utils@npm:^1.0.0-beta.32":
   version: 1.10.2
   resolution: "@percy/sdk-utils@npm:1.10.2"
   checksum: 91cc6863db3f92bbddd0f6540d9edc72486d2eaa9baa2f39049a0b194d5d68e57c5e20274ba7e282095a4bbde0aa3d6d6e926419d0048db6730947b32d0aeea7
@@ -20169,7 +20169,7 @@ __metadata:
     "@manypkg/cli": 0.19.1
     "@manypkg/get-packages": 1.1.3
     "@percy/cli": 1.10.2
-    "@percy/puppeteer": 2.0.2
+    "@percy/puppeteer": 2.0.0
     "@preconstruct/cli": 2.2.1
     "@stylelint/postcss-css-in-js": ^0.38.0
     "@svgr/cli": 6.3.1
