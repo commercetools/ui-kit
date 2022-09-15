@@ -1,5 +1,21 @@
 # @commercetools-uikit/data-table
 
+## 15.2.3
+
+### Patch Changes
+
+- [#2285](https://github.com/commercetools/ui-kit/pull/2285) [`ee4d75201`](https://github.com/commercetools/ui-kit/commit/ee4d7520190dcfd939ea5a979a3bd8cc92c20c94) Thanks [@emmenko](https://github.com/emmenko)! - Update some dependencies
+
+- [#2284](https://github.com/commercetools/ui-kit/pull/2284) [`7554064de`](https://github.com/commercetools/ui-kit/commit/7554064de044f25f7effbc68ebcaa62f3e6ca278) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Fix position of header cell icon to the right of the text.
+
+- Updated dependencies [[`ee4d75201`](https://github.com/commercetools/ui-kit/commit/ee4d7520190dcfd939ea5a979a3bd8cc92c20c94)]:
+  - @commercetools-uikit/design-system@15.2.3
+  - @commercetools-uikit/accessible-button@15.2.3
+  - @commercetools-uikit/secondary-icon-button@15.2.3
+  - @commercetools-uikit/icons@15.2.3
+  - @commercetools-uikit/hooks@15.2.3
+  - @commercetools-uikit/utils@15.2.3
+
 ## 15.2.2
 
 ### Patch Changes
