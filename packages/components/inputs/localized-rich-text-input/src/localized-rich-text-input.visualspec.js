@@ -40,7 +40,7 @@ describe('LocalizedRichTextInput', () => {
       (_tagName, _count) => {
         return document.querySelectorAll(_tagName).length === _count;
       },
-      { timeout: 5000 },
+      { timeout: 10000 },
       tagName,
       count
     );

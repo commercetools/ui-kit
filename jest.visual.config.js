@@ -1,7 +1,7 @@
 process.env.ENABLE_NEW_JSX_TRANSFORM = 'true';
 
 /**
- * @type {import('@jest/types').Config.ProjectConfig}
+ * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
   preset: 'jest-puppeteer',
@@ -12,5 +12,6 @@ module.exports = {
   globals: {
     HOST: 'http://localhost:3000',
   },
+  testTimeout: 10000,
   watchPlugins: ['jest-watch-typeahead/filename'],
 };
