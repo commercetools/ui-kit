@@ -160,10 +160,10 @@ const HeaderCell = (props: THeaderCell) => {
         horizontalCellAlignment={props.horizontalCellAlignment}
         {...sortableHeaderProps}
       >
+        <HeaderLabelWrapper>{props.children}</HeaderLabelWrapper>
         {props.iconComponent && (
           <HeaderIconWrapper>{props.iconComponent}</HeaderIconWrapper>
         )}
-        <HeaderLabelWrapper>{props.children}</HeaderLabelWrapper>
         {props.isSortable && (
           <>
             {/** conditional rendering of one of the icons at a time is handled by CSS. Checkout cell.styles */}
