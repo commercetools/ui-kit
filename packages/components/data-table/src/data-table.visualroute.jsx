@@ -578,7 +578,7 @@ export const component = () => (
               <IconButton
                 icon={<InformationIcon />}
                 label="Country Info"
-                size="medium"
+                size="small"
                 onClick={() => null}
               />
             ),
@@ -618,7 +618,7 @@ export const component = () => (
               <IconButton
                 icon={<InformationIcon />}
                 label="Country Info"
-                size="medium"
+                size="small"
                 onClick={() => null}
               />
             ),
