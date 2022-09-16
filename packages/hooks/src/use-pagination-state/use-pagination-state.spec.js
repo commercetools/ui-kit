@@ -1,5 +1,5 @@
-import { render, fireEvent, screen } from '@testing-library/react';
 import { Spacings, PrimaryButton } from '@commercetools-frontend/ui-kit';
+import { render, fireEvent, screen } from '../../../../test/test-utils';
 import usePaginationState from './use-pagination-state';
 
 const TestComponent = () => {

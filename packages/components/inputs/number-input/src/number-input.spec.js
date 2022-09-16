@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '../../../../../test/test-utils';
 import NumberInput from './number-input';
 
 const baseProps = { value: '', onChange: () => {} };
