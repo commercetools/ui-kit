@@ -35,7 +35,12 @@ const customRender = (
     <IntlProvider locale={locale} messages={getMessagesForLocale(locale)}>
       <Router history={history}>{node}</Router>
     </IntlProvider>,
-    rtlOptions
+    {
+      ...rtlOptions,
+      // TODO: remove once we upgrade to React v18!
+      // https://github.com/testing-library/react-testing-library/releases/tag/v13.0.0
+      legacyRoot: true,
+    }
   ),
   // adding `history` to the returned utilities to allow us
   // to reference it in our tests (just try to avoid using
