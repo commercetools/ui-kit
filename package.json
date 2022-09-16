@@ -74,7 +74,7 @@
     "@commercetools/github-labels": "1.1.0",
     "@commitlint/cli": "17.1.2",
     "@commitlint/config-conventional": "17.1.0",
-    "@formatjs/cli": "4.8.4",
+    "@formatjs/cli": "5.1.0",
     "@formatjs/intl-relativetimeformat": "10.0.1",
     "@manypkg/cli": "0.19.1",
     "@manypkg/get-packages": "1.1.3",
