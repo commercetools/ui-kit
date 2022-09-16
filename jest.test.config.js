@@ -4,7 +4,7 @@ process.env.ENABLE_NEW_JSX_TRANSFORM = 'true';
 const rootPath = process.cwd();
 
 /**
- * @type {import('@jest/types').Config.ProjectConfig}
+ * @type {import('jest').Config}
  */
 module.exports = {
   displayName: 'test',
@@ -32,9 +32,11 @@ module.exports = {
   clearMocks: true,
   rootDir: rootPath,
   setupFiles: ['<rootDir>/test/setup-tests.js', 'jest-localstorage-mock'],
-  setupFilesAfterEnv: ['<rootDir>/scripts/setup-test-framework.js'],
+  setupFilesAfterEnv: ['<rootDir>/test/setup-test-framework.js'],
   testEnvironment: 'jsdom',
-  testURL: 'https://mc.commercetools.com/',
+  testEnvironmentOptions: {
+    url: 'https://mc.europe-west1.gcp.commercetools.com',
+  },
   testPathIgnorePatterns: ['generators', '/node_modules/'],
   testRegex: '\\.spec\\.[j|t]sx?$',
   moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx'],

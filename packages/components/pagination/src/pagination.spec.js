@@ -137,7 +137,7 @@ describe('validation', () => {
         />
       )
     ).toThrowErrorMatchingInlineSnapshot(
-      `"Invalid page range \\"wrong\\", expected one of \\"s,m,l\\"."`
+      `"Invalid page range "wrong", expected one of "s,m,l"."`
     );
   });
   describe.each`

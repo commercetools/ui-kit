@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { TextEncoder, TextDecoder } from 'util';
 import colors from 'colors/safe';
 
 global.window.app = {
@@ -18,6 +19,18 @@ if (global.document) {
     },
   });
 }
+
+// Fix missing globals when `jsdom` is used in a test environment.
+// See https://github.com/jsdom/jsdom/issues/2524#issuecomment-1108991178.
+// Also https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom.
+Object.defineProperty(window, 'TextEncoder', {
+  writable: true,
+  value: TextEncoder,
+});
+Object.defineProperty(window, 'TextDecoder', {
+  writable: true,
+  value: TextDecoder,
+});
 
 const silenceConsoleWarnings = [];
 const notThrowWarnings = [];

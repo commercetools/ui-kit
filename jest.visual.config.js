@@ -1,7 +1,7 @@
 process.env.ENABLE_NEW_JSX_TRANSFORM = 'true';
 
 /**
- * @type {import('@jest/types').Config.ProjectConfig}
+ * @type {import('jest').Config}
  */
 module.exports = {
   preset: 'jest-puppeteer',
