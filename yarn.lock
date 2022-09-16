@@ -2535,9 +2535,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-frontend/babel-preset-mc-app@npm:21.14.2, @commercetools-frontend/babel-preset-mc-app@npm:^21.14.2":
-  version: 21.14.2
-  resolution: "@commercetools-frontend/babel-preset-mc-app@npm:21.14.2"
+"@commercetools-frontend/babel-preset-mc-app@npm:21.14.3, @commercetools-frontend/babel-preset-mc-app@npm:^21.14.3":
+  version: 21.14.3
+  resolution: "@commercetools-frontend/babel-preset-mc-app@npm:21.14.3"
   dependencies:
     "@babel/core": ^7.19.0
     "@babel/plugin-proposal-class-properties": ^7.18.6
@@ -2564,17 +2564,17 @@ __metadata:
     babel-plugin-preval: ^5.1.0
     babel-plugin-transform-react-remove-prop-types: ^0.4.24
     core-js: ^3.25.1
-  checksum: af6a1f1969f03b6e837163e9d970f4322159df447649727998f2ebd0ab62561691326d51c2dbde2621e26cd5412228e79ad20743d3bd52dd619b6959777744e8
+  checksum: 704f577147c0ea4fdd4a2ddd480a10e48dfbf868ebe45be62320dab3ce9fbdb3d609f60e21c10feda3f3665f47475c2ccb230d6430f01b892f653498cd6d333e
   languageName: node
   linkType: hard
 
-"@commercetools-frontend/eslint-config-mc-app@npm:21.14.2":
-  version: 21.14.2
-  resolution: "@commercetools-frontend/eslint-config-mc-app@npm:21.14.2"
+"@commercetools-frontend/eslint-config-mc-app@npm:21.14.3":
+  version: 21.14.3
+  resolution: "@commercetools-frontend/eslint-config-mc-app@npm:21.14.3"
   dependencies:
     "@babel/core": ^7.19.0
     "@babel/eslint-parser": ^7.18.9
-    "@commercetools-frontend/babel-preset-mc-app": ^21.14.2
+    "@commercetools-frontend/babel-preset-mc-app": ^21.14.3
     "@rushstack/eslint-patch": ^1.1.4
     "@typescript-eslint/eslint-plugin": ^5.37.0
     "@typescript-eslint/parser": ^5.37.0
@@ -2592,7 +2592,7 @@ __metadata:
     eslint-plugin-testing-library: ^5.6.4
   peerDependencies:
     eslint: 8.x
-  checksum: b057bd9446830f5ab408d28c5ed71eff337edf0c3f5c3bd86ad5d5c09105b93579e5b54f63c22ef9d32458fd6475c77899b700ba6eaa008f791db992db253283
+  checksum: 60e202c9ee53ee87263ca6440ccd1bfa1a5f7fda17659b8d4b179afb7592647f70b400c09131a88f36587c1356d8e82244fcc68818445e6677dc79c509a12390
   languageName: node
   linkType: hard
 
@@ -3138,7 +3138,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-beautiful-dnd: 13.1.0
+    react-beautiful-dnd: 13.1.1
     react-dom: 17.0.2
     react-intl: ^5.25.1
   peerDependencies:
@@ -3217,7 +3217,7 @@ __metadata:
     "@commercetools-uikit/utils": 15.2.3
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    downshift: 6.1.9
+    downshift: 6.1.10
     moment: 2.29.4
     prop-types: 15.8.1
     react: 17.0.2
@@ -3275,7 +3275,7 @@ __metadata:
     "@commercetools-uikit/utils": 15.2.3
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    downshift: 6.1.9
+    downshift: 6.1.10
     moment: 2.29.4
     prop-types: 15.8.1
     react: 17.0.2
@@ -3333,7 +3333,7 @@ __metadata:
     "@commercetools-uikit/utils": 15.2.3
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    downshift: 6.1.9
+    downshift: 6.1.10
     moment: 2.29.4
     prop-types: 15.8.1
     react: 17.0.2
@@ -3793,7 +3793,7 @@ __metadata:
     "@commercetools-uikit/utils": 15.2.3
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    downshift: 6.1.9
+    downshift: 6.1.10
     immutable: 4.1.0
     is-hotkey: 0.2.0
     lodash: 4.17.21
@@ -3985,7 +3985,7 @@ __metadata:
     "@commercetools-uikit/utils": 15.2.3
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    downshift: 6.1.9
+    downshift: 6.1.10
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^5.25.1
@@ -4246,7 +4246,7 @@ __metadata:
     "@commercetools-uikit/utils": 15.2.3
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    downshift: 6.1.9
+    downshift: 6.1.10
     immutable: 4.1.0
     is-hotkey: 0.2.0
     lodash: 4.17.21
@@ -4277,7 +4277,7 @@ __metadata:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     "@types/escape-html": 1.0.2
-    downshift: 6.1.9
+    downshift: 6.1.10
     escape-html: 1.0.3
     is-hotkey: 0.2.0
     lodash: 4.17.21
@@ -5575,17 +5575,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/console@npm:^28.0.2":
-  version: 28.0.2
-  resolution: "@jest/console@npm:28.0.2"
+"@jest/console@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "@jest/console@npm:29.0.3"
   dependencies:
-    "@jest/types": ^28.0.2
+    "@jest/types": ^29.0.3
     "@types/node": "*"
     chalk: ^4.0.0
-    jest-message-util: ^28.0.2
-    jest-util: ^28.0.2
+    jest-message-util: ^29.0.3
+    jest-util: ^29.0.3
     slash: ^3.0.0
-  checksum: d2be8ad54dfa58b9c566380689c55e9b7bbda6d9293d39709d69c28b7904d264959bdfa1c71c90e2cba76105a59ea3e4648295b8f379a176c6b1c89c495c2882
+  checksum: 1c5f092082c45c5c35ea51e7c75f4ce06a9b4350e44e0d3aa6c586c469a687fb095ab2601f196f147cccd1c4b5cbf4adc885ae83c8af42dfeee5aa518fa0968e
   languageName: node
   linkType: hard
 
@@ -5705,12 +5705,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/schemas@npm:^28.0.2":
-  version: 28.0.2
-  resolution: "@jest/schemas@npm:28.0.2"
+"@jest/schemas@npm:^29.0.0":
+  version: 29.0.0
+  resolution: "@jest/schemas@npm:29.0.0"
   dependencies:
-    "@sinclair/typebox": ^0.23.3
-  checksum: 6a177e97b112c99f377697fe803a34f4489b92cd07949876250c69edc9029c7cbda771fcbb03caebd20ffbcfa89b9c22b4dc9d1e9a7fbc9873185459b48ba780
+    "@sinclair/typebox": ^0.24.1
+  checksum: 41355c78f09eb1097e57a3c5d0ca11c9099e235e01ea5fa4e3953562a79a6a9296c1d300f1ba50ca75236048829e056b00685cd2f1ff8285e56fd2ce01249acb
   languageName: node
   linkType: hard
 
@@ -5737,15 +5737,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/test-result@npm:^28.0.2":
-  version: 28.0.2
-  resolution: "@jest/test-result@npm:28.0.2"
+"@jest/test-result@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "@jest/test-result@npm:29.0.3"
   dependencies:
-    "@jest/console": ^28.0.2
-    "@jest/types": ^28.0.2
+    "@jest/console": ^29.0.3
+    "@jest/types": ^29.0.3
     "@types/istanbul-lib-coverage": ^2.0.0
     collect-v8-coverage: ^1.0.0
-  checksum: 4ba2a618e223496f7a8efabc2fc5411ea51675052043df61df8462031130ca3a6e12903033343ce24559b060ed2576eae8ca3a4f8f81d50b7b18846fa57c36d4
+  checksum: 9cb76090b2b49cc19f95c51e3593085ab88b2d9539f9c15b1e7919f770aaee75376b453f30a14f2034a5cb25fa8e14f5fcc422f05954dbdb0873220576d9c9a0
   languageName: node
   linkType: hard
 
@@ -6123,117 +6123,128 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@percy/cli-build@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/cli-build@npm:1.8.1"
+"@percy/cli-app@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/cli-app@npm:1.10.2"
   dependencies:
-    "@percy/cli-command": 1.8.1
-  checksum: 1d00f9363b887e21bc634ddd26006f1786af756a49f55be888af4f11fdc076903ed950a7bba4859e948d8d390f815a53804963c9728236d337cf72f073c34816
+    "@percy/cli-command": 1.10.2
+    "@percy/cli-exec": 1.10.2
+  checksum: b0bbbddec42f99e4783eec54b44d1c81a159aaee0a6a840bd4118cad7f6237c614191303973d8a2d73656fe0bce2f3b63a76443e96803707f754df027e547696
   languageName: node
   linkType: hard
 
-"@percy/cli-command@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/cli-command@npm:1.8.1"
+"@percy/cli-build@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/cli-build@npm:1.10.2"
   dependencies:
-    "@percy/config": 1.8.1
-    "@percy/core": 1.8.1
-    "@percy/logger": 1.8.1
+    "@percy/cli-command": 1.10.2
+  checksum: f5ac91772d4932940b504a7313191666d642caae25b8209d0f8845d803527ec4738b909f43f0a4df3beda57bc706bfc3c3ef4ec731be234857c296416c957e4a
+  languageName: node
+  linkType: hard
+
+"@percy/cli-command@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/cli-command@npm:1.10.2"
+  dependencies:
+    "@percy/config": 1.10.2
+    "@percy/core": 1.10.2
+    "@percy/logger": 1.10.2
   bin:
     percy-cli-readme: bin/readme.js
-  checksum: 408218617c53f7596a3b2e9b3b9da13de10e89bfac62b2a24d162248bbf3939857c4c2f7f942c28d5650d1b76e3e386969014082f4fa3af63b892fe7c5a986d9
+  checksum: 696e47411ad72de3b249bdc714d98620976aa174787786028aa420beac6f6c15c19c9e250a89b65446a85aaad7d8126d2bf25394099b96d293eee8782c79313d
   languageName: node
   linkType: hard
 
-"@percy/cli-config@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/cli-config@npm:1.8.1"
+"@percy/cli-config@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/cli-config@npm:1.10.2"
   dependencies:
-    "@percy/cli-command": 1.8.1
-  checksum: c258fcdd1fbd958e093af46c2bd1334d84d9d755d31c2c84eb7d058639745576015dc252392254529c753d3d3adba76413c1094f9897b4d4d9ef11b30bbccaf0
+    "@percy/cli-command": 1.10.2
+  checksum: 235b6f64569855fc363655b3e10bcdd5dbde23030866f74043b3b67023653e435b5ab37cc2c0f522150919f62d98eb4a658df8d840e3d978ba3ac03ce4e09dac
   languageName: node
   linkType: hard
 
-"@percy/cli-exec@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/cli-exec@npm:1.8.1"
+"@percy/cli-exec@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/cli-exec@npm:1.10.2"
   dependencies:
-    "@percy/cli-command": 1.8.1
+    "@percy/cli-command": 1.10.2
     cross-spawn: ^7.0.3
     which: ^2.0.2
-  checksum: 10cb4aae2ef59ac40f333816c989e332da3898d634026ddcbd0c8905558e0e344e4080792e9dd5b5ddd701470ce04acf4d90389f29fbcea66c5d762964357938
+  checksum: 7a3b4f3292a17bf385c178c88d505f09dd1688ff80324d3d0f18a77ab1fe617fddb32ab7163cd80a1fbc49264532a4a56fdc460d91855aba2a9b27d93062a0fd
   languageName: node
   linkType: hard
 
-"@percy/cli-snapshot@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/cli-snapshot@npm:1.8.1"
+"@percy/cli-snapshot@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/cli-snapshot@npm:1.10.2"
   dependencies:
-    "@percy/cli-command": 1.8.1
+    "@percy/cli-command": 1.10.2
     yaml: ^2.0.0
-  checksum: 44215a8dc2f2ed48b33eccc469f982c896f821eb712dccb0f8ba1b64fdcdb2b27c06e5a88724e7cfdf748ef18a49f69cbcd666713ed1a18f903250799d180bc9
+  checksum: 9c1649193acb9fff61a384d3df9fa474a8fe96f25427e10e4f1e954415291ce752e4931ab4f65dccff99e1d02497d8ebf532d670c3f703b2ea6441dc946e838e
   languageName: node
   linkType: hard
 
-"@percy/cli-upload@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/cli-upload@npm:1.8.1"
+"@percy/cli-upload@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/cli-upload@npm:1.10.2"
   dependencies:
-    "@percy/cli-command": 1.8.1
+    "@percy/cli-command": 1.10.2
     fast-glob: ^3.2.11
     image-size: ^1.0.0
-  checksum: 88199aaed2d2f9547be5f5cec72d4c81e97cc853b774f543d647b6068d58373906e2f834586cf27d3f13dd7c6e64ede1b347c06e044ca2cd1458a868a43e92be
+  checksum: 032646d26bbea480abe0114a0fc45faecfcd314ceab09b352280c2a02b5ce97f9aa3f39882e85ad514a5f53abb1d5dd158703ede831c31951f33a2b28be470c7
   languageName: node
   linkType: hard
 
-"@percy/cli@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/cli@npm:1.8.1"
+"@percy/cli@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/cli@npm:1.10.2"
   dependencies:
-    "@percy/cli-build": 1.8.1
-    "@percy/cli-command": 1.8.1
-    "@percy/cli-config": 1.8.1
-    "@percy/cli-exec": 1.8.1
-    "@percy/cli-snapshot": 1.8.1
-    "@percy/cli-upload": 1.8.1
-    "@percy/client": 1.8.1
-    "@percy/logger": 1.8.1
+    "@percy/cli-app": 1.10.2
+    "@percy/cli-build": 1.10.2
+    "@percy/cli-command": 1.10.2
+    "@percy/cli-config": 1.10.2
+    "@percy/cli-exec": 1.10.2
+    "@percy/cli-snapshot": 1.10.2
+    "@percy/cli-upload": 1.10.2
+    "@percy/client": 1.10.2
+    "@percy/logger": 1.10.2
   bin:
     percy: bin/run.cjs
-  checksum: 111d06136bf2307bbfababd9eb60d45f677aadfa87d2b972aac9ddb0d60a76762ebbbc14a7fd4649321dc74cdb4186894b198f3e33babc65881049282594d6f0
+  checksum: 1d75dc9115daa502cfafc6581241d75ebda1691c50eb4f3b88214f6a6fd925d424d6b56c4dd33a569036ef330f1f79ac2469cb5b86fc91c77eb70651c3072d36
   languageName: node
   linkType: hard
 
-"@percy/client@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/client@npm:1.8.1"
+"@percy/client@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/client@npm:1.10.2"
   dependencies:
-    "@percy/env": 1.8.1
-    "@percy/logger": 1.8.1
-  checksum: d89e60d36ca7bfff088adf22da1b22a959acf845718ebf21dc1f5d0ac7274d1aafc732cb93e192ca3ac8748220b5e9d6d800c6a8ec4d0a625e2f00298aa6a014
+    "@percy/env": 1.10.2
+    "@percy/logger": 1.10.2
+  checksum: 023bda9547eb2a262422a046508bdd718968576892ceac690070b62757c9d738bce4c8a48c93eb2e0564c1ecbfaa0260bb599ad388a034de30c9d4387baacf25
   languageName: node
   linkType: hard
 
-"@percy/config@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/config@npm:1.8.1"
+"@percy/config@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/config@npm:1.10.2"
   dependencies:
-    "@percy/logger": 1.8.1
+    "@percy/logger": 1.10.2
     ajv: ^8.6.2
     cosmiconfig: ^7.0.0
     yaml: ^2.0.0
-  checksum: 421e04fcb2340ebfe1be068a5fc0473581f91b700d58a40ae5d8e95b5a9efbf8fbba224c488319820b519680419296bb9a2fce582dd8ac8d2844f6757cf906e1
+  checksum: f464a34f2ae335e0c2f3072e82d9ab2cc7b58351d72bcc9beef459b159318b7793690102bf15b1a9e95f9e952c1228469829a9d78a3c56acc90e33024b5496fd
   languageName: node
   linkType: hard
 
-"@percy/core@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/core@npm:1.8.1"
+"@percy/core@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/core@npm:1.10.2"
   dependencies:
-    "@percy/client": 1.8.1
-    "@percy/config": 1.8.1
-    "@percy/dom": 1.8.1
-    "@percy/logger": 1.8.1
+    "@percy/client": 1.10.2
+    "@percy/config": 1.10.2
+    "@percy/dom": 1.10.2
+    "@percy/logger": 1.10.2
     content-disposition: ^0.5.4
     cross-spawn: ^7.0.3
     extract-zip: ^2.0.1
@@ -6243,55 +6254,46 @@ __metadata:
     path-to-regexp: ^6.2.0
     rimraf: ^3.0.2
     ws: ^8.0.0
-  checksum: 6fd0214f43c04848f755bc07aff00a89d1372d6ada65a2e77ff0091a00bfe482ea713a04f4367eb204ade114926ac73009a0192b2cb92128ff68fe847f0d1642
+  checksum: 14f64bb40bbe7bebdc4403e343e78ba49b8a021034bb8f357dca3aa03483f4d8869347fb8ae43b6133f9a7658de601d423ad250d1dc238b7cc52611bff87875b
   languageName: node
   linkType: hard
 
-"@percy/dom@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/dom@npm:1.8.1"
-  checksum: c64966f76e159a46bbd22df0d32dd26e27d496c2f10db7e89881253a9a8b6a7c9e1ef8d964d720d3305582324a16d97b2bd1297eafe74d280ab6148f72e64dae
+"@percy/dom@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/dom@npm:1.10.2"
+  checksum: f215bb23463ba8bc77129fc8cc1631bc78dbd8f51a1d74655c736b89d08f8c67222bc18fb056fa89b862a13be9447f8e18bebf65186dc25fb48a2e2be31dfb56
   languageName: node
   linkType: hard
 
-"@percy/env@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/env@npm:1.8.1"
-  checksum: 9f25fec2e79815d579edd98407653d69447bbd3f6f4451356b70c08e7d04b4a0190eeb5d5e45521b4b8eb9d3bb382d8fd4db4b1d43e5f460a00caab8e7c07de9
+"@percy/env@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/env@npm:1.10.2"
+  checksum: 44de98d21b08cfaf8897a9016c490d0e8fde760b1c193abcacc28c6a5ded5a3420e006a0afbd509026ea4dd62c4c93b9013e4041fa3d20b769551943775945d5
   languageName: node
   linkType: hard
 
-"@percy/logger@npm:1.0.0-beta.75":
-  version: 1.0.0-beta.75
-  resolution: "@percy/logger@npm:1.0.0-beta.75"
-  checksum: 47d56e37bc921f20d544261ec9531f49a6261626115bda550aa29466edf1bfe953b1d238be1d4fbdebc452faa6205b1d4e4276d1a67d5d32bb66c64b0ad0017f
+"@percy/logger@npm:1.10.2":
+  version: 1.10.2
+  resolution: "@percy/logger@npm:1.10.2"
+  checksum: 430ef643e96dbac25c25d290cee943a9ef27b2562f1daa0cd56036873e47db15613aca1f75aef0492093eff44db242a18001442c4ff2bcecba1c9edfdf8dd614
   languageName: node
   linkType: hard
 
-"@percy/logger@npm:1.8.1":
-  version: 1.8.1
-  resolution: "@percy/logger@npm:1.8.1"
-  checksum: cf26248b9d99bb3d33832ea4e1ddbaa84df8b29f4c02d314beda79018fe0e9d0ee0f3c8431c70ace5984fad23a663aeb56cbd675dd6c942e95cd957e2bb9c7fc
-  languageName: node
-  linkType: hard
-
-"@percy/puppeteer@npm:2.0.0":
-  version: 2.0.0
-  resolution: "@percy/puppeteer@npm:2.0.0"
+"@percy/puppeteer@npm:2.0.2":
+  version: 2.0.2
+  resolution: "@percy/puppeteer@npm:2.0.2"
   dependencies:
-    "@percy/sdk-utils": ^1.0.0-beta.32
+    "@percy/sdk-utils": ^1.0.0
   peerDependencies:
     puppeteer: ">=1"
-  checksum: 6041289d06eb1c237f15c38e1cacd46e614be76202c27593e7b03cb3f828d9b31c6530f8f83a5d10c2fe05a059632896c69626f5bd6238b56c710b7612703806
+  checksum: 953f951c2601a2290d138bc27167be7234d998cf060a337363e538805be10066ea4890f1edf6779235353240821ad5ae70890d5da4d450cd27e80befc68c9749
   languageName: node
   linkType: hard
 
-"@percy/sdk-utils@npm:^1.0.0-beta.32":
-  version: 1.0.0-beta.75
-  resolution: "@percy/sdk-utils@npm:1.0.0-beta.75"
-  dependencies:
-    "@percy/logger": 1.0.0-beta.75
-  checksum: 66981ba23b124b1353f630010ca485c11a603d9b713d572f22a77a4aca9cc1b05f5bb9100ac0c90540b2a65c2690d5c504a6535acc1b43e52c1d686680a6188f
+"@percy/sdk-utils@npm:^1.0.0":
+  version: 1.10.2
+  resolution: "@percy/sdk-utils@npm:1.10.2"
+  checksum: 91cc6863db3f92bbddd0f6540d9edc72486d2eaa9baa2f39049a0b194d5d68e57c5e20274ba7e282095a4bbde0aa3d6d6e926419d0048db6730947b32d0aeea7
   languageName: node
   linkType: hard
 
@@ -6492,10 +6494,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sinclair/typebox@npm:^0.23.3":
-  version: 0.23.5
-  resolution: "@sinclair/typebox@npm:0.23.5"
-  checksum: c96056d35d9cb862aeb635ff8873e2e7633e668dd544e162aee2690a82c970d0b3f90aa2b3501fe374dfa8e792388559a3e3a86712b23ebaef10061add534f47
+"@sinclair/typebox@npm:^0.24.1":
+  version: 0.24.41
+  resolution: "@sinclair/typebox@npm:0.24.41"
+  checksum: eb9861ad7bc5a29d5a6be27732757210edfcfa73fca386e303b0363af31c7ad16ebad75cf0c3fdf6444663dda5884ba0de333fc7a8ab8680c1c01e1e91089c1d
   languageName: node
   linkType: hard
 
@@ -9426,10 +9428,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colord@npm:^2.9.2":
-  version: 2.9.2
-  resolution: "colord@npm:2.9.2"
-  checksum: 2aa6a9b3abbce74ba3c563886cfeb433ea0d7df5ad6f4a560005eddab1ddf7c0fc98f39b09b599767a19c86dd3837b77f66f036e479515d4b17347006dbd6d9f
+"colord@npm:^2.9.3":
+  version: 2.9.3
+  resolution: "colord@npm:2.9.3"
+  checksum: 95d909bfbcfd8d5605cbb5af56f2d1ce2b323990258fd7c0d2eb0e6d3bb177254d7fb8213758db56bb4ede708964f78c6b992b326615f81a18a6aaf11d64c650
   languageName: node
   linkType: hard
 
@@ -10610,9 +10612,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"downshift@npm:6.1.9":
-  version: 6.1.9
-  resolution: "downshift@npm:6.1.9"
+"downshift@npm:6.1.10":
+  version: 6.1.10
+  resolution: "downshift@npm:6.1.10"
   dependencies:
     "@babel/runtime": ^7.14.8
     compute-scroll-into-view: ^1.0.17
@@ -10621,7 +10623,7 @@ __metadata:
     tslib: ^2.3.0
   peerDependencies:
     react: ">=16.12.0"
-  checksum: 5b888b6ebd2083334758d49e9e7b669eb8d0475273cdb5af2aa5f8c363b62f56c79aeca43758c99642056e94f68cbd8086f79a0a96726b3e8b8726cb24fd1d1b
+  checksum: c0c1555fc0db4efcf8d5bc0120d6f340523ab5025ffb3811fc25b1fd680ae9efda8764aacca8f7dc646c28ba7f9b154ae6b9da0232b476fa57477c7e388eb3be
   languageName: node
   linkType: hard
 
@@ -14148,10 +14150,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-localstorage-mock@npm:2.4.21":
-  version: 2.4.21
-  resolution: "jest-localstorage-mock@npm:2.4.21"
-  checksum: f838fbfde323a3be694bdda670612530e48c3013bed8a4e4fd2f9b06335274aff9ff4863eda8117ffed8a53928df67790c5f2a2a274cae3bdc93993b1689bfc3
+"jest-localstorage-mock@npm:2.4.22":
+  version: 2.4.22
+  resolution: "jest-localstorage-mock@npm:2.4.22"
+  checksum: 34459a58e3851c353ba1e7df0b585451191bc9b81b17f441f27f1cd3287b539f797387e9608b7ee5d9ab6154a0ddf1244ff80d04d4f98c14cbe7bef4df47517a
   languageName: node
   linkType: hard
 
@@ -14184,20 +14186,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-message-util@npm:^28.0.2":
-  version: 28.0.2
-  resolution: "jest-message-util@npm:28.0.2"
+"jest-message-util@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "jest-message-util@npm:29.0.3"
   dependencies:
     "@babel/code-frame": ^7.12.13
-    "@jest/types": ^28.0.2
+    "@jest/types": ^29.0.3
     "@types/stack-utils": ^2.0.0
     chalk: ^4.0.0
     graceful-fs: ^4.2.9
     micromatch: ^4.0.4
-    pretty-format: ^28.0.2
+    pretty-format: ^29.0.3
     slash: ^3.0.0
     stack-utils: ^2.0.3
-  checksum: 61a180667fe5c00551b1e0cb8ee09a4844bbdebb6940e3810aad5fac9bc647862572dedf20c8cf77b9643679d4947b0452d8e3afcef7e3b4139997447384facc
+  checksum: 04bee1fee10106f4eb875092e5d06187930d44050a4f99e7aa1d1e42768b18d6d9e5439623d9242202942deb8a1eec08359e0cd19a43ae505d96aeaf243a3f8d
   languageName: node
   linkType: hard
 
@@ -14242,10 +14244,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-regex-util@npm:^28.0.0":
-  version: 28.0.2
-  resolution: "jest-regex-util@npm:28.0.2"
-  checksum: 0ea8c5c82ec88bc85e273c0ec82e0c0f35f7a1e2d055070e50f0cc2a2177f848eec55f73e37ae0d045c3db5014c42b2f90ac62c1ab3fdb354d2abd66a9e08add
+"jest-regex-util@npm:^29.0.0":
+  version: 29.0.0
+  resolution: "jest-regex-util@npm:29.0.0"
+  checksum: dce16394c357213008e6f84f2288f77c64bba59b7cb48ea614e85c5aae036a7e46dbfd1f45aa08180b7e7c576102bf4f8f0ff8bc60fb9721fb80874adc3ae0ea
   languageName: node
   linkType: hard
 
@@ -14278,9 +14280,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-runner-eslint@npm:1.0.1":
-  version: 1.0.1
-  resolution: "jest-runner-eslint@npm:1.0.1"
+"jest-runner-eslint@npm:1.1.0":
+  version: 1.1.0
+  resolution: "jest-runner-eslint@npm:1.1.0"
   dependencies:
     chalk: ^3.0.0
     cosmiconfig: ^6.0.0
@@ -14288,8 +14290,8 @@ __metadata:
     dot-prop: ^5.3.0
   peerDependencies:
     eslint: ^6 || ^7 || ^8
-    jest: ^25.1 || ^26 || ^27 || ^28
-  checksum: 409d76526765d49d3b5ee7a536012956677707c486265214ade165b777f0160d514ece253dc376dbf4e106c11af010a459011340d7b5d29dd24363ecd083f52b
+    jest: ^25.1 || ^26 || ^27 || ^28 || ^29
+  checksum: c4b2da40666c8cc1a7e9dbd1ac73a74bc2af6c3dd598b3a0bac224cffac6fb677d31082f14987982b3fb06b5c41602dbe31fe6beb107da4b3c1c17eb324d4907
   languageName: node
   linkType: hard
 
@@ -14442,17 +14444,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-util@npm:^28.0.2":
-  version: 28.0.2
-  resolution: "jest-util@npm:28.0.2"
+"jest-util@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "jest-util@npm:29.0.3"
   dependencies:
-    "@jest/types": ^28.0.2
+    "@jest/types": ^29.0.3
     "@types/node": "*"
     chalk: ^4.0.0
     ci-info: ^3.2.0
     graceful-fs: ^4.2.9
     picomatch: ^2.2.3
-  checksum: 3e50e73c93c36ebc378c22b47ba02bf0bbe093266553956a8186e2670080c125d9419b1efeadb4ce59561c28d2df9af15fa19e1fdb9c0b4c3a3fe7c2f0af51a7
+  checksum: 39c31e75ba5bcb4c3ccdf0895f9fdbb83f839c432e7c6639a688beb414d681b5d50282da017c723ea1f2a7033e74a4938fd33dcff231c3e90f903173919991d5
   languageName: node
   linkType: hard
 
@@ -14470,20 +14472,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-watch-typeahead@npm:2.0.0":
-  version: 2.0.0
-  resolution: "jest-watch-typeahead@npm:2.0.0"
+"jest-watch-typeahead@npm:2.2.0":
+  version: 2.2.0
+  resolution: "jest-watch-typeahead@npm:2.2.0"
   dependencies:
     ansi-escapes: ^5.0.0
     chalk: ^4.0.0
-    jest-regex-util: ^28.0.0
-    jest-watcher: ^28.0.0
+    jest-regex-util: ^29.0.0
+    jest-watcher: ^29.0.0
     slash: ^4.0.0
     string-length: ^5.0.1
     strip-ansi: ^7.0.1
   peerDependencies:
-    jest: ^27.0.0 || ^28.0.0
-  checksum: c25fa793e56e0a316642a714c960b29359ddc1ce3f621ffb8a42a3ccfffb67c57223597e2fb387d5f49e2b93a22fc1f4b54e900e4fa80eca6602f70a30c22ffb
+    jest: ^27.0.0 || ^28.0.0 || ^29.0.0
+  checksum: 78e387597263283e2e0ed3bc8580591a8af8cae392d548a9ab116c766afe4b636a7c129b3dec07d5db3cbf0936fcd2c474870dce8a711754ea20616f17d97035
   languageName: node
   linkType: hard
 
@@ -14502,19 +14504,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-watcher@npm:^28.0.0":
-  version: 28.0.2
-  resolution: "jest-watcher@npm:28.0.2"
+"jest-watcher@npm:^29.0.0":
+  version: 29.0.3
+  resolution: "jest-watcher@npm:29.0.3"
   dependencies:
-    "@jest/test-result": ^28.0.2
-    "@jest/types": ^28.0.2
+    "@jest/test-result": ^29.0.3
+    "@jest/types": ^29.0.3
     "@types/node": "*"
     ansi-escapes: ^4.2.1
     chalk: ^4.0.0
     emittery: ^0.10.2
-    jest-util: ^28.0.2
+    jest-util: ^29.0.3
     string-length: ^4.0.1
-  checksum: 11ee5ad02d4427eb290406c59615afa009125ae21ff0c1ad9c4e094270f3ec89535caa1bcfc72883251eacfccc29d3c9eb63da26d4525d82a014bd8d7c2bfdd9
+  checksum: d585b9dda467d08946357c8ed1f971f15a302f958ccd3f6e2e59df5da245edca91cd4a72329d0126de8ac5793567965e4be1e555c4e40ecadb4f8f14306441bb
   languageName: node
   linkType: hard
 
@@ -17318,15 +17320,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^28.0.2":
-  version: 28.0.2
-  resolution: "pretty-format@npm:28.0.2"
+"pretty-format@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "pretty-format@npm:29.0.3"
   dependencies:
-    "@jest/schemas": ^28.0.2
-    ansi-regex: ^5.0.1
+    "@jest/schemas": ^29.0.0
     ansi-styles: ^5.0.0
     react-is: ^18.0.0
-  checksum: 785ce1928f17de0e250496e0413fb9ad883a4d5ebb6e9b346f3094140eb2af096770de8b6d3b8adffc0e9692d031d62a603c851e9f3b81b2670a086ad256ad77
+  checksum: 239aa73b09919b195353e62530908b43883af66e3ba8ecb5fda77578b20f297fd774fcf53abbedcb6cfff72521e8a220052a49e6a0e29418082d06386da27bac
   languageName: node
   linkType: hard
 
@@ -17538,9 +17539,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-beautiful-dnd@npm:13.1.0":
-  version: 13.1.0
-  resolution: "react-beautiful-dnd@npm:13.1.0"
+"react-beautiful-dnd@npm:13.1.1":
+  version: 13.1.1
+  resolution: "react-beautiful-dnd@npm:13.1.1"
   dependencies:
     "@babel/runtime": ^7.9.2
     css-box-model: ^1.2.0
@@ -17550,9 +17551,9 @@ __metadata:
     redux: ^4.0.4
     use-memo-one: ^1.1.1
   peerDependencies:
-    react: ^16.8.5 || ^17.0.0
-    react-dom: ^16.8.5 || ^17.0.0
-  checksum: 12b7e9fbe872783e0f899e03f2e80deee085aa1e2cec3d556c1d06bdbafbda7a3c9cf7a3a6b26544617eb2e50d0e3518001bd8300370704bf5a8c9c21f54ec90
+    react: ^16.8.5 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.5 || ^17.0.0 || ^18.0.0
+  checksum: 5f90f7c0ab77a14dfcd496cbd94bbde457612f380c6fc815f3bba7b52effd75132948fcaa661a902a184bb1e6ae5896dcf5b0c77c4ddf809a2c65288f3eed5a7
   languageName: node
   linkType: hard
 
@@ -19420,13 +19421,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:14.10.0":
-  version: 14.10.0
-  resolution: "stylelint@npm:14.10.0"
+"stylelint@npm:14.11.0":
+  version: 14.11.0
+  resolution: "stylelint@npm:14.11.0"
   dependencies:
     "@csstools/selector-specificity": ^2.0.2
     balanced-match: ^2.0.0
-    colord: ^2.9.2
+    colord: ^2.9.3
     cosmiconfig: ^7.0.1
     css-functions-list: ^3.1.0
     debug: ^4.3.4
@@ -19461,10 +19462,10 @@ __metadata:
     svg-tags: ^1.0.0
     table: ^6.8.0
     v8-compile-cache: ^2.3.0
-    write-file-atomic: ^4.0.1
+    write-file-atomic: ^4.0.2
   bin:
     stylelint: bin/stylelint.js
-  checksum: e0c9f80064e02fdca253001650506d1ddc89bcfbbc86b2245ed90faa03ec4616239e179000c5fd288f6cae079463b2b724790872cf78fbeb08a68803eaf465fd
+  checksum: 23fe2cb55453551f004b01a732e0aff82d8d98d0ac1f4c95c1d605f0fbd0f09d9079fc8d07c9da2796d6287985167a6c59791d7b1af2c4e8a1caa08dd591b980
   languageName: node
   linkType: hard
 
@@ -20263,8 +20264,8 @@ __metadata:
   dependencies:
     "@changesets/changelog-github": 0.4.6
     "@changesets/cli": 2.24.4
-    "@commercetools-frontend/babel-preset-mc-app": 21.14.2
-    "@commercetools-frontend/eslint-config-mc-app": 21.14.2
+    "@commercetools-frontend/babel-preset-mc-app": 21.14.3
+    "@commercetools-frontend/eslint-config-mc-app": 21.14.3
     "@commercetools-local/generator-package-json": "*"
     "@commercetools-local/generator-readme": "*"
     "@commercetools/github-labels": 1.1.0
@@ -20274,8 +20275,8 @@ __metadata:
     "@formatjs/intl-relativetimeformat": 10.0.1
     "@manypkg/cli": 0.19.1
     "@manypkg/get-packages": 1.1.3
-    "@percy/cli": 1.8.1
-    "@percy/puppeteer": 2.0.0
+    "@percy/cli": 1.10.2
+    "@percy/puppeteer": 2.0.2
     "@preconstruct/cli": 2.2.1
     "@stylelint/postcss-css-in-js": ^0.38.0
     "@svgr/cli": 6.3.1
@@ -20306,13 +20307,13 @@ __metadata:
     identity-obj-proxy: 3.0.0
     intl-pluralrules: 1.3.1
     jest: 27.5.1
-    jest-localstorage-mock: 2.4.21
+    jest-localstorage-mock: 2.4.22
     jest-puppeteer: 6.1.1
-    jest-runner-eslint: 1.0.1
+    jest-runner-eslint: 1.1.0
     jest-runner-stylelint: 2.3.7
     jest-silent-reporter: 0.5.0
     jest-validate: 27.5.1
-    jest-watch-typeahead: 2.0.0
+    jest-watch-typeahead: 2.2.0
     lint-staged: 13.0.3
     moment: 2.29.4
     moment-timezone: 0.5.37
@@ -20336,7 +20337,7 @@ __metadata:
     replace: 1.2.1
     rimraf: 3.0.2
     shelljs: 0.8.5
-    stylelint: 14.10.0
+    stylelint: 14.11.0
     stylelint-config-prettier: 9.0.3
     stylelint-config-standard: 26.0.0
     stylelint-order: 5.0.0
@@ -21187,13 +21188,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"write-file-atomic@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "write-file-atomic@npm:4.0.1"
+"write-file-atomic@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "write-file-atomic@npm:4.0.2"
   dependencies:
     imurmurhash: ^0.1.4
     signal-exit: ^3.0.7
-  checksum: 8f780232533ca6223c63c9b9c01c4386ca8c625ebe5017a9ed17d037aec19462ae17109e0aa155bff5966ee4ae7a27b67a99f55caf3f32ffd84155e9da3929fc
+  checksum: 5da60bd4eeeb935eec97ead3df6e28e5917a6bd317478e4a85a5285e8480b8ed96032bbcc6ecd07b236142a24f3ca871c924ec4a6575e623ec1b11bf8c1c253c
   languageName: node
   linkType: hard
 
