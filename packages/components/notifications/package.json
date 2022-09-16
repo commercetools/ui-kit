@@ -24,7 +24,7 @@
     "@commercetools-uikit/design-system": "15.2.3",
     "@commercetools-uikit/icons": "15.2.3",
     "@commercetools-uikit/utils": "15.2.3",
-    "@emotion/react": "^11.4.0",
+    "@emotion/react": "^11.10.4",
     "prop-types": "15.8.1"
   },
   "devDependencies": {

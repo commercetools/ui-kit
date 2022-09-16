@@ -24,8 +24,8 @@
     "@commercetools-uikit/design-system": "15.2.3",
     "@commercetools-uikit/spacings-inset": "15.2.3",
     "@commercetools-uikit/utils": "15.2.3",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "prop-types": "15.8.1"
   },
   "devDependencies": {

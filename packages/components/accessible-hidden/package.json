@@ -21,7 +21,7 @@
   "dependencies": {
     "@babel/runtime": "^7.19.0",
     "@babel/runtime-corejs3": "^7.19.1",
-    "@emotion/react": "^11.4.0",
+    "@emotion/react": "^11.10.4",
     "prop-types": "15.8.1"
   },
   "devDependencies": {

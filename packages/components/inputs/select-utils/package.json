@@ -27,8 +27,8 @@
     "@commercetools-uikit/spacings": "15.2.3",
     "@commercetools-uikit/text": "15.2.3",
     "@commercetools-uikit/utils": "15.2.3",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
     "react-select": "5.4.0"
