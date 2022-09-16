@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('PasswordField', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/password-field`);
+    await page.goto(`${globalThis.HOST}/password-field`);
   });
 
   it('Default', async () => {

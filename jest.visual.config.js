@@ -12,4 +12,6 @@ module.exports = {
   globals: {
     HOST: 'http://localhost:3000',
   },
+  setupFiles: ['<rootDir>/test/setup-globals.js'],
+  watchPlugins: ['jest-watch-typeahead/filename'],
 };

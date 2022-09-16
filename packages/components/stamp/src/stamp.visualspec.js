@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('Stamp', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/stamp`);
+    await page.goto(`${globalThis.HOST}/stamp`);
   });
 
   it('Default', async () => {

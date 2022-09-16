@@ -46,14 +46,14 @@ describe('RichTextInput', () => {
   };
 
   it('Default', async () => {
-    await page.goto(`${HOST}/rich-text-input`);
+    await page.goto(`${globalThis.HOST}/rich-text-input`);
     await expect(page).toMatch('minimal');
     await percySnapshot(page, 'RichTextInput');
   });
 
   describe('Interactive', () => {
     it('apply bold, italic, underline, strikethrough, superscript, subscript', async () => {
-      await page.goto(`${HOST}/rich-text-input/interactive`);
+      await page.goto(`${globalThis.HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
       const input = await queries.findByTestId(doc, 'rich-text');
 
@@ -208,7 +208,7 @@ describe('RichTextInput', () => {
     });
 
     it('undo and redo', async () => {
-      await page.goto(`${HOST}/rich-text-input/interactive`);
+      await page.goto(`${globalThis.HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
       const input = await queries.findByTestId(doc, 'rich-text');
 
@@ -254,7 +254,7 @@ describe('RichTextInput', () => {
     });
 
     it('apply text styles', async () => {
-      await page.goto(`${HOST}/rich-text-input/interactive`);
+      await page.goto(`${globalThis.HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
       const input = await queries.findByTestId(doc, 'rich-text');
 
@@ -318,7 +318,7 @@ describe('RichTextInput', () => {
     });
 
     it('apply lists', async () => {
-      await page.goto(`${HOST}/rich-text-input/interactive`);
+      await page.goto(`${globalThis.HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
       const input = await queries.findByTestId(doc, 'rich-text');
 

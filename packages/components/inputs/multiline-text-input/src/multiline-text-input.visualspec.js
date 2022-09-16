@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('MultilineTextInput', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/multiline-text-input`);
+    await page.goto(`${globalThis.HOST}/multiline-text-input`);
   });
 
   it('Default', async () => {

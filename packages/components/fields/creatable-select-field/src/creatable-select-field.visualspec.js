@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('CreatableSelectField', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/creatable-select-field`);
+    await page.goto(`${globalThis.HOST}/creatable-select-field`);
   });
 
   it('Default', async () => {

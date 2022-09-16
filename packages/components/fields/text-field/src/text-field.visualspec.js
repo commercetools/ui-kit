@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('TextField', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/text-field`);
+    await page.goto(`${globalThis.HOST}/text-field`);
   });
 
   it('Default', async () => {

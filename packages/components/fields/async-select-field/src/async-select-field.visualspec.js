@@ -3,7 +3,7 @@ import { getDocument, queries } from 'pptr-testing-library';
 
 describe('AsyncSelectField', () => {
   it('Default', async () => {
-    await page.goto(`${HOST}/async-select-field`);
+    await page.goto(`${globalThis.HOST}/async-select-field`);
     const doc = await getDocument(page);
     const selects = await queries.findAllByLabelText(doc, 'State');
     await expect(selects).toBeTruthy();
@@ -12,7 +12,7 @@ describe('AsyncSelectField', () => {
 
   describe('with defaultOptions', () => {
     it('Open', async () => {
-      await page.goto(`${HOST}/async-select-field/interaction`);
+      await page.goto(`${globalThis.HOST}/async-select-field/interaction`);
       const doc = await getDocument(page);
       const selects = await queries.findAllByLabelText(doc, 'State');
       const select = selects[0];
@@ -24,7 +24,7 @@ describe('AsyncSelectField', () => {
   describe('without defaultOptions', () => {
     it('Open', async () => {
       await page.goto(
-        `${HOST}/async-select-field/interaction/without-default-options`
+        `${globalThis.HOST}/async-select-field/interaction/without-default-options`
       );
       const doc = await getDocument(page);
       const selects = await queries.findAllByLabelText(doc, 'State');

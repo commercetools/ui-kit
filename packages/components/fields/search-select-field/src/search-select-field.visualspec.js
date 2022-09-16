@@ -3,7 +3,7 @@ import { getDocument, queries } from 'pptr-testing-library';
 
 describe('SearchSelectField', () => {
   it('Default', async () => {
-    await page.goto(`${HOST}/search-select-field`);
+    await page.goto(`${globalThis.HOST}/search-select-field`);
     const doc = await getDocument(page);
     const selects = await queries.findAllByLabelText(doc, 'State');
     await expect(selects).toBeTruthy();
@@ -11,7 +11,7 @@ describe('SearchSelectField', () => {
   });
 
   it('Open', async () => {
-    await page.goto(`${HOST}/search-select-field`);
+    await page.goto(`${globalThis.HOST}/search-select-field`);
     const doc = await getDocument(page);
     const selects = await queries.findAllByLabelText(doc, 'State');
     const select = selects[0];

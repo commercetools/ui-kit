@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('DateField', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/date-field`);
+    await page.goto(`${globalThis.HOST}/date-field`);
   });
 
   it('DateField', async () => {

@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('Constraints.Horizontal', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/constraints-horizontal`);
+    await page.goto(`${globalThis.HOST}/constraints-horizontal`);
   });
 
   it('Default', async () => {

@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('ViewSwitcher', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/view-switcher`);
+    await page.goto(`${globalThis.HOST}/view-switcher`);
   });
 
   it('Default', async () => {
