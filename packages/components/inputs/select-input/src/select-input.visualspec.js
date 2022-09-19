@@ -11,7 +11,8 @@ describe('SelectInput', () => {
     await page.goto(`${globalThis.HOST}/select-input/open`);
     await page.click('#select-input');
     await expect(page).toMatch('One');
-    await percySnapshot(page, 'SelectInput - open - without option groups');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'SelectInput - open - without option groups');
   });
   it('Open - dark', async () => {
     await page.goto(`${globalThis.HOST}/select-input/open-dark`);
