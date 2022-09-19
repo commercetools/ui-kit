@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('MoneyField', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/money-field`);
+    await page.goto(`${globalThis.HOST}/money-field`);
   });
 
   it('Default', async () => {

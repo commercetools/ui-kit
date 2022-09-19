@@ -3,7 +3,7 @@ import { getDocument, queries } from 'pptr-testing-library';
 
 describe('AsyncCreatableSelectField', () => {
   it('Default', async () => {
-    await page.goto(`${HOST}/async-creatable-select-field`);
+    await page.goto(`${globalThis.HOST}/async-creatable-select-field`);
     const doc = await getDocument(page);
     const select = await queries.findAllByLabelText(doc, 'State');
     await expect(select).toBeTruthy();
@@ -11,7 +11,9 @@ describe('AsyncCreatableSelectField', () => {
   });
   describe('with defaultOptions', () => {
     it('When open', async () => {
-      await page.goto(`${HOST}/async-creatable-select-field/interaction`);
+      await page.goto(
+        `${globalThis.HOST}/async-creatable-select-field/interaction`
+      );
       const doc = await getDocument(page);
       const selects = await queries.findAllByLabelText(doc, 'State');
       const select = selects[0];
@@ -22,7 +24,7 @@ describe('AsyncCreatableSelectField', () => {
   describe('without defaultOptions', () => {
     it('When open', async () => {
       await page.goto(
-        `${HOST}/async-creatable-select-field/interaction/without-default-options`
+        `${globalThis.HOST}/async-creatable-select-field/interaction/without-default-options`
       );
       const doc = await getDocument(page);
       const selects = await queries.findAllByLabelText(doc, 'State');

@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('SecondaryIconButton', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/secondary-icon-button`);
+    await page.goto(`${globalThis.HOST}/secondary-icon-button`);
   });
 
   it('Default', async () => {

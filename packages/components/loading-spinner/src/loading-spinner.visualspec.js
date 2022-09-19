@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('LoadingSpinner', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/loading-spinner`);
+    await page.goto(`${globalThis.HOST}/loading-spinner`);
     await page.waitForTimeout(1001);
   });
 
