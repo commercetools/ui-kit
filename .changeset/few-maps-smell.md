@@ -56,6 +56,8 @@
 'visual-testing-app': minor
 ---
 
-Refactor UI kit components and `@commercetools-uikit/design-system` package for future theming support.
+Prepare theming support in our design system.
 
-`customProperties` object exporteded from the `@commercetools-uikit/design-system` is now deprecated (although still exported for backwards compatibility). It is advised to use the `designTokens` object instead.
+This is an internal change to restructure how we define and use design tokens, in particular by relying on CSS variables. Consumers are not affected by any of these changes.
+
+Note that the `customProperties` object exported from the `@commercetools-uikit/design-system` package is now deprecated (although still exported for backwards compatibility) in favour of the `designTokens` object.
