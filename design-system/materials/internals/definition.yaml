@@ -141,7 +141,7 @@ choiceGroupsByTheme:
         break-point-giantdesktop: 1680px
         break-point-jumbodesktop: 1920px
 
-  dark:
+  test:
     colors:
       label: Colors
       prefix: color
@@ -311,7 +311,7 @@ decisionGroupsByTheme:
           deprecated: true
           choice: shadow-1
 
-  dark:
+  test:
     backgroundColors:
       label: Background Colors
       prefix: background-color

@@ -128,7 +128,7 @@ export const themes = {
     sizeHeightTag: '26px',
     standardInputHeight: '32px',
   },
-  dark: {
+  test: {
     colorPrimary: '#f78d26',
     colorSolid: '#fff',
     colorSurface: '#1a1a1a',
@@ -139,7 +139,7 @@ export const themes = {
 
 export const themesNames = {
   default: 'default',
-  dark: 'dark',
+  test: 'test',
 } as const;
 
 const designTokens = {

@@ -93,8 +93,11 @@ Object.entries(definitions.decisionGroupsByTheme).forEach(
             endProgram(`Token "${key}" uses unsupported state "${state}"!`);
         } else if (!decision.deprecated) {
           endProgram(
-            `Token "${key}" does not follow <attribute>-for-<component-group>-when-<state>-on-dark naming scheme! Tokens not following this scheme must use "deprecated" flag.`
+            `Token "${key}" does not follow <attribute>-for-<component-group>-when-<state>-on-<theme> naming scheme! Tokens not following this scheme must use "deprecated" flag.`
           );
+        }
+        if (!designTokens[themeName]) {
+          designTokens[themeName] = {};
         }
 
         designTokens[themeName][key] =

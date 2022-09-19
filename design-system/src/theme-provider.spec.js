@@ -38,7 +38,7 @@ const TestComponentWithThemeProvider = () => {
       <button
         onClick={() => {
           setGlobalTheme({
-            name: 'dark',
+            name: 'test',
             overrides: {
               colorSolid: 'red',
               colorSurface: 'yellow',
@@ -51,7 +51,7 @@ const TestComponentWithThemeProvider = () => {
       <button
         onClick={() => {
           setLocalTheme({
-            name: 'dark',
+            name: 'test',
             overrides: {
               colorSolid: 'green',
               colorSurface: 'tomato',
@@ -105,7 +105,7 @@ describe('ThemeProvider', () => {
       expect(globalThemeProvider).toHaveStyle(
         `--color-solid: red; --color-surface: yellow;`
       );
-      expect(globalThemeProvider).toHaveAttribute('data-theme', 'dark');
+      expect(globalThemeProvider).toHaveAttribute('data-theme', 'test');
       expect(localThemeProvider).toHaveStyle(
         `--color-solid: #1a1a1a; --color-surface: #fff;`
       );
@@ -140,7 +140,7 @@ describe('ThemeProvider', () => {
       expect(localThemeProvider).toHaveStyle(
         `--color-solid: green; --color-surface: tomato;`
       );
-      expect(localThemeProvider).toHaveAttribute('data-theme', 'dark');
+      expect(localThemeProvider).toHaveAttribute('data-theme', 'test');
     });
   });
 
