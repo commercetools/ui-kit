@@ -3,7 +3,7 @@ import { getDocument, queries } from 'pptr-testing-library';
 
 describe('ThemeProvider', () => {
   it('Default', async () => {
-    await page.goto(`${HOST}/theme-provider`);
+    await page.goto(`${globalThis.HOST}/theme-provider`);
     await expect(page).toMatch('use global default theme');
     await percySnapshot(page, 'ThemeProvider');
   });
@@ -11,7 +11,7 @@ describe('ThemeProvider', () => {
 
 describe('Interactive', () => {
   it('applies changes to global and local theme provider', async () => {
-    await page.goto(`${HOST}/theme-provider/interactive`);
+    await page.goto(`${globalThis.HOST}/theme-provider/interactive`);
     const doc = await getDocument(page);
 
     // change global theme
@@ -21,7 +21,7 @@ describe('Interactive', () => {
     );
 
     await globalThemeChangeButton.click();
-    await page.waitForSelector('[data-theme="dark"]');
+    await page.waitForSelector('[data-theme="test"]');
     // TODO: uncomment when issue with Percy is resolved
     // await percySnapshot(page, 'ThemeProvider - after global theme change');
 
@@ -31,7 +31,7 @@ describe('Interactive', () => {
       'change local theme'
     );
     await localThemeChangeButton.click();
-    await page.waitForSelector('[data-theme="dark"]');
+    await page.waitForSelector('[data-theme="test"]');
     // TODO: uncomment when issue with Percy is resolved
     // await percySnapshot(page, 'ThemeProvider - after local theme change');
   });

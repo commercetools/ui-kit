@@ -144,7 +144,7 @@ const InteractiveRoute = () => {
       <button
         onClick={() => {
           setGlobalTheme({
-            name: 'dark',
+            name: 'test',
             overrides: {
               colorSolid: 'red',
               colorSurface: 'yellow',
@@ -158,7 +158,7 @@ const InteractiveRoute = () => {
       <button
         onClick={() => {
           setLocalTheme({
-            name: 'dark',
+            name: 'test',
             overrides: { colorSolid: 'green', colorSurface: 'tomato' },
           });
         }}
