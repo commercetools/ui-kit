@@ -3,12 +3,12 @@ import { getDocument, queries } from 'pptr-testing-library';
 
 describe('DateInput', () => {
   it('Default', async () => {
-    await page.goto(`${HOST}/date-input`);
+    await page.goto(`${globalThis.HOST}/date-input`);
     await expect(page).toMatch('minimal');
     await percySnapshot(page, 'DateInput');
   });
   it('Open', async () => {
-    await page.goto(`${HOST}/date-input-open`);
+    await page.goto(`${globalThis.HOST}/date-input-open`);
     await page.click('#date-input');
     await expect(page).toMatch('November');
     // TODO: uncomment when issue with Percy is resolved

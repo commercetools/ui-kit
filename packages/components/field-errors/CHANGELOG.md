@@ -1,5 +1,14 @@
 # @commercetools-uikit/field-errors
 
+## 15.2.3
+
+### Patch Changes
+
+- [#2285](https://github.com/commercetools/ui-kit/pull/2285) [`ee4d75201`](https://github.com/commercetools/ui-kit/commit/ee4d7520190dcfd939ea5a979a3bd8cc92c20c94) Thanks [@emmenko](https://github.com/emmenko)! - Update some dependencies
+
+- Updated dependencies [[`ee4d75201`](https://github.com/commercetools/ui-kit/commit/ee4d7520190dcfd939ea5a979a3bd8cc92c20c94)]:
+  - @commercetools-uikit/messages@15.2.3
+
 ## 15.2.2
 
 ### Patch Changes

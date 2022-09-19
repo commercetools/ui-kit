@@ -39,14 +39,14 @@ describe('RichTextInput', () => {
       (_tagName, _count) => {
         return document.querySelectorAll(_tagName).length === _count;
       },
-      { timeout: 5000 },
+      { timeout: 10000 },
       tagName,
       count
     );
   };
 
   it('Default', async () => {
-    await page.goto(`${HOST}/rich-text-input`);
+    await page.goto(`${globalThis.HOST}/rich-text-input`);
     await expect(page).toMatch('minimal');
     // TODO: uncomment when issue with Percy is resolved
     // await percySnapshot(page, 'RichTextInput');
@@ -54,7 +54,7 @@ describe('RichTextInput', () => {
 
   describe('Interactive', () => {
     it('apply bold, italic, underline, strikethrough, superscript, subscript', async () => {
-      await page.goto(`${HOST}/rich-text-input/interactive`);
+      await page.goto(`${globalThis.HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
       const input = await queries.findByTestId(doc, 'rich-text');
 
@@ -210,7 +210,7 @@ describe('RichTextInput', () => {
     });
 
     it('undo and redo', async () => {
-      await page.goto(`${HOST}/rich-text-input/interactive`);
+      await page.goto(`${globalThis.HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
       const input = await queries.findByTestId(doc, 'rich-text');
 
@@ -256,7 +256,7 @@ describe('RichTextInput', () => {
     });
 
     it('apply text styles', async () => {
-      await page.goto(`${HOST}/rich-text-input/interactive`);
+      await page.goto(`${globalThis.HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
       const input = await queries.findByTestId(doc, 'rich-text');
 
@@ -321,7 +321,7 @@ describe('RichTextInput', () => {
     });
 
     it('apply lists', async () => {
-      await page.goto(`${HOST}/rich-text-input/interactive`);
+      await page.goto(`${globalThis.HOST}/rich-text-input/interactive`);
       const doc = await getDocument(page);
       const input = await queries.findByTestId(doc, 'rich-text');
 

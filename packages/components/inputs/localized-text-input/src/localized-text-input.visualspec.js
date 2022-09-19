@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('LocalizedTextInput', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/localized-text-input`);
+    await page.goto(`${globalThis.HOST}/localized-text-input`);
   });
 
   it('Default', async () => {

@@ -47,13 +47,13 @@ describe('LocalizedRichTextInput', () => {
   };
 
   it('Default', async () => {
-    await page.goto(`${HOST}/localized-rich-text-input`);
+    await page.goto(`${globalThis.HOST}/localized-rich-text-input`);
     await expect(page).toMatch('minimal');
     await percySnapshot(page, 'LocalizedRichTextInput');
   });
 
   it('Interactive', async () => {
-    await page.goto(`${HOST}/localized-rich-text-input/interactive`);
+    await page.goto(`${globalThis.HOST}/localized-rich-text-input/interactive`);
     const doc = await getDocument(page);
     let input = await queries.findByTestId(doc, 'rich-text-data-test-en');
 

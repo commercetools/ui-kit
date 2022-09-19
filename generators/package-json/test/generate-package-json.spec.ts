@@ -40,11 +40,11 @@ describe('when package.json is NOT private', () => {
       options
     );
     expect(content).toMatchInlineSnapshot(`
-      Object {
+      {
         "bugs": "https://github.com/commercetools/ui-kit/issues",
         "description": "Render an Avenger",
         "homepage": "https://uikit.commercetools.com",
-        "keywords": Array [
+        "keywords": [
           "javascript",
           "typescript",
           "design-system",
@@ -55,18 +55,18 @@ describe('when package.json is NOT private', () => {
         "main": "dist/avenger.cjs.js",
         "module": "dist/avenger.esm.js",
         "name": "@commercetools-uikit/avenger",
-        "peerDependencies": Object {
+        "peerDependencies": {
           "react": "16.8.x",
         },
-        "publishConfig": Object {
+        "publishConfig": {
           "access": "public",
         },
-        "readme": Object {
-          "componentPaths": Array [
+        "readme": {
+          "componentPaths": [
             "./src/avenger.js",
           ],
         },
-        "repository": Object {
+        "repository": {
           "directory": "packages/avenger",
           "type": "git",
           "url": "https://github.com/commercetools/ui-kit.git",

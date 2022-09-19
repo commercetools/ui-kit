@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/input-utils",
   "description": "Utilities for working with input components.",
-  "version": "15.2.2",
+  "version": "15.2.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,19 +19,19 @@
   "module": "dist/commercetools-uikit-input-utils.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.17.2",
-    "@babel/runtime-corejs3": "^7.17.2",
-    "@commercetools-uikit/design-system": "15.2.2",
-    "@commercetools-uikit/flat-button": "15.2.2",
-    "@commercetools-uikit/icons": "15.2.2",
-    "@commercetools-uikit/utils": "15.2.2",
+    "@babel/runtime": "^7.19.0",
+    "@babel/runtime-corejs3": "^7.19.1",
+    "@commercetools-uikit/design-system": "15.2.3",
+    "@commercetools-uikit/flat-button": "15.2.3",
+    "@commercetools-uikit/icons": "15.2.3",
+    "@commercetools-uikit/utils": "15.2.3",
     "@emotion/react": "^11.4.0",
     "prop-types": "15.8.1",
     "react-textarea-autosize": "8.3.4"
   },
   "devDependencies": {
     "react": "17.0.2",
-    "react-intl": "^5.24.6"
+    "react-intl": "^5.25.1"
   },
   "peerDependencies": {
     "react": "17.x",

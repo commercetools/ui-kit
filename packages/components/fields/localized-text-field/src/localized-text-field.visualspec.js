@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('LocalizedTextField', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/localized-text-field`);
+    await page.goto(`${globalThis.HOST}/localized-text-field`);
   });
 
   it('Default', async () => {

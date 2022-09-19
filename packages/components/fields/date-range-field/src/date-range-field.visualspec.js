@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('DateRangeField', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/date-range-field`);
+    await page.goto(`${globalThis.HOST}/date-range-field`);
   });
 
   it('Default', async () => {

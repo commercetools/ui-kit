@@ -30,6 +30,7 @@ module.exports = {
       globals: {
         page: true,
         HOST: true,
+        globalThis: true,
       },
     },
     {

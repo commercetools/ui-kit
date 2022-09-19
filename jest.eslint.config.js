@@ -1,5 +1,5 @@
 /**
- * @type {import('@jest/types').Config.ProjectConfig}
+ * @type {import('jest').Config}
  */
 module.exports = {
   runner: 'jest-runner-eslint',

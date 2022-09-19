@@ -31,7 +31,7 @@ if (!info) {
 }
 
 /**
- * @type {import('@jest/types').Config.ProjectConfig}
+ * @type {import('jest').Config}
  */
 module.exports = {
   displayName: 'bundle',
@@ -45,7 +45,9 @@ module.exports = {
   rootDir: rootPath,
   setupFiles: ['<rootDir>/test/setup-tests.js', 'jest-localstorage-mock'],
   testEnvironment: 'jsdom',
-  testURL: 'https://mc.commercetools.com/',
+  testEnvironmentOptions: {
+    url: 'https://mc.europe-west1.gcp.commercetools.com',
+  },
   testPathIgnorePatterns: ['node_modules'],
   testRegex: '\\.bundlespec\\.js$',
   transform: {

@@ -125,8 +125,8 @@ const HeaderIconWrapper = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-right: ${designTokens.spacingS};
-  padding: ${designTokens.spacingXs} 0;
+  margin-left: ${designTokens.spacingS};
+  padding: 0 ${designTokens.spacingXs};
 `;
 
 export {

@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('Toggle', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/toggle`);
+    await page.goto(`${globalThis.HOST}/toggle`);
   });
 
   it('Default', async () => {

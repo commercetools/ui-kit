@@ -3,7 +3,7 @@ import { getDocument, queries } from 'pptr-testing-library';
 
 describe('SecondaryButton', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/secondary-button`);
+    await page.goto(`${globalThis.HOST}/secondary-button`);
   });
 
   it('Default', async () => {

@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('MoneyInput', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/money-input`);
+    await page.goto(`${globalThis.HOST}/money-input`);
   });
 
   it('Default', async () => {

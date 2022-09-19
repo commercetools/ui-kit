@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('CheckboxInput', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/checkbox-input`);
+    await page.goto(`${globalThis.HOST}/checkbox-input`);
   });
 
   it('CheckboxInput', async () => {

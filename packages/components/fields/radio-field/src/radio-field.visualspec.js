@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('RadioField', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/radio-field`);
+    await page.goto(`${globalThis.HOST}/radio-field`);
   });
 
   it('Default', async () => {

@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('DataTable', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/data-table`);
+    await page.goto(`${globalThis.HOST}/data-table`);
   });
 
   it('Default', async () => {

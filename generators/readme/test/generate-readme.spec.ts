@@ -59,7 +59,7 @@ describe('generate README (for JS file)', () => {
       \`\`\`jsx
       import Avenger from '@commercetools-uikit/avenger';
 
-      const Example = () => <Avenger name=\\"Dr. Strange\\" />;
+      const Example = () => <Avenger name="Dr. Strange" />;
 
       export default Example;
 
@@ -91,7 +91,7 @@ describe('generate README (for JS file)', () => {
 
       ## More information
 
-      This section should come AFTER the \\"Properties\\".
+      This section should come AFTER the "Properties".
       "
     `);
   }, 10000);
@@ -139,7 +139,7 @@ describe('generate README (for TS file)', () => {
       \`\`\`jsx
       import JusticeLeague from '@commercetools-uikit/justice-league';
 
-      const Example = () => <JusticeLeague name=\\"Batman\\" />;
+      const Example = () => <JusticeLeague name="Batman" />;
 
       export default Example;
 

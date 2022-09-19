@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('IconButton', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/icon-button`);
+    await page.goto(`${globalThis.HOST}/icon-button`);
   });
 
   it('Default', async () => {

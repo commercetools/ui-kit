@@ -3,7 +3,7 @@ import { getDocument, queries } from 'pptr-testing-library';
 
 describe('LocalizedMoneyInput', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/localized-money-input`);
+    await page.goto(`${globalThis.HOST}/localized-money-input`);
   });
 
   it('Default', async () => {

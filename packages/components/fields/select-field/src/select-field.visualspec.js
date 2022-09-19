@@ -2,7 +2,7 @@ import percySnapshot from '@percy/puppeteer';
 
 describe('SelectField', () => {
   beforeAll(async () => {
-    await page.goto(`${HOST}/select-field`);
+    await page.goto(`${globalThis.HOST}/select-field`);
   });
 
   it('Default', async () => {
