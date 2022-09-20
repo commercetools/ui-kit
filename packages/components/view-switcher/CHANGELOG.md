@@ -1,5 +1,16 @@
 # @commercetools-uikit/view-switcher
 
+## 15.2.4
+
+### Patch Changes
+
+- [#2293](https://github.com/commercetools/ui-kit/pull/2293) [`61794582e`](https://github.com/commercetools/ui-kit/commit/61794582e58b068e3cce3dda371be51938c133dc) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Fix ViewSwitcher background color
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.2.4
+  - @commercetools-uikit/accessible-button@15.2.4
+  - @commercetools-uikit/utils@15.2.4
+
 ## 15.2.3
 
 ### Patch Changes
