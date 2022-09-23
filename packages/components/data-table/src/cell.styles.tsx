@@ -29,20 +29,17 @@ const getHorizontalAlignmentStyle = (props: TCellInner) => {
     return css`
       text-align: center;
       justify-self: center;
-      justify-content: center;
     `;
   }
   if (props.horizontalCellAlignment === 'right') {
     return css`
       text-align: right;
       justify-self: flex-end;
-      justify-content: end;
     `;
   }
   return css`
     text-align: left;
     justify-self: flex-start;
-    jusify-content: start;
   `;
 };
 
