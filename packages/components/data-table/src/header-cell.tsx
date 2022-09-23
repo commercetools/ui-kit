@@ -9,7 +9,6 @@ import {
   HeaderCellInner,
   HeaderIconWrapper,
   HeaderLabelWrapper,
-  HeaderContentWrapper,
 } from './header-cell.styles';
 import Resizer from './column-resizer';
 import ColumnResizingContext from './column-resizing-context';
