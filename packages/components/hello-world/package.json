@@ -1,0 +1,27 @@
+{
+  "name": "@commercetools-uikit/hello-world",
+  "description": "Hello World",
+  "version": "15.0.0",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/hello-world"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "main": "dist/commercetools-uikit-hello-world.cjs.js",
+  "module": "dist/commercetools-uikit-hello-world.esm.js",
+  "files": ["dist"],
+  "devDependencies": {
+    "react": "17.0.2"
+  },
+  "peerDependencies": {
+    "react": "17.x"
+  }
+}
