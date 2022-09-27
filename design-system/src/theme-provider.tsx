@@ -65,7 +65,7 @@ type ThemeProviderProps = {
 
 const ThemeProvider = (props: ThemeProviderProps) => {
   const parentSelectorRef = useRef(props.parentSelector);
-  const themeRef = useRef<string>();
+  const themeNameRef = useRef<string>();
   const themeOverridesRef = useRef<Record<string, string>>();
 
   useLayoutEffect(() => {
@@ -73,10 +73,10 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     // provided include a new object with the same theme overrides
     // (eg: users providing an inline object as prop to the ThemeProvider)
     if (
-      themeRef.current !== props.theme ||
+      themeNameRef.current !== props.theme ||
       !isEqual(themeOverridesRef.current, props.themeOverrides)
     ) {
-      themeRef.current = props.theme;
+      themeNameRef.current = props.theme;
       themeOverridesRef.current = props.themeOverrides;
 
       applyTheme({
