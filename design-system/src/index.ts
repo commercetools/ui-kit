@@ -3,7 +3,6 @@ export {
   /** @deprecated use `designTokens` instead */
   default as customProperties,
   themes,
-  themesNames,
 } from './design-tokens';
 export { ThemeProvider, useTheme } from './theme-provider';
 

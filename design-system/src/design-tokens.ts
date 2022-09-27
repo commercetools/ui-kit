@@ -137,11 +137,6 @@ export const themes = {
   },
 } as const;
 
-export const themesNames = {
-  default: 'default',
-  test: 'test',
-} as const;
-
 const designTokens = {
   colorPrimary: 'var(--color-primary, #00b39e)',
   colorPrimary25: 'var(--color-primary-25, hsl(172.9608938547486, 100%, 25%))',

@@ -26,7 +26,6 @@ const TOKEN_REGEX =
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);
-const allThemesNames = Object.keys(definitions.choiceGroupsByTheme);
 
 const designTokens = {};
 
@@ -156,14 +155,6 @@ const printDesignTokens = (data) => {
   The variables should be updated in 'materials/internals/definition.yaml'.
 */
 export const themes = ${JSON.stringify(themes, null, 2)} as const;
-
-export const themesNames = ${JSON.stringify(
-    Object.fromEntries(
-      allThemesNames.map((themeName) => [themeName, themeName])
-    ),
-    null,
-    2
-  )} as const;
 
 const designTokens = ${JSON.stringify(variables, null, 2)} as const;
 

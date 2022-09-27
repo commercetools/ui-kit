@@ -3,9 +3,9 @@ import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import isEqual from 'lodash/isEqual';
-import { themes, themesNames } from './design-tokens';
+import { themes } from './design-tokens';
 
-const allThemesNames = Object.keys(themesNames);
+const allThemesNames = Object.keys(themes);
 
 type ThemeName = keyof typeof themes;
 
