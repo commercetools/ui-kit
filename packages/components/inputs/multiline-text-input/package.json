@@ -33,7 +33,7 @@
     "@commercetools-uikit/utils": "15.2.3",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "downshift": "6.1.9",
+    "downshift": "6.1.11",
     "prop-types": "15.8.1",
     "react-textarea-autosize": "8.3.4"
   },
