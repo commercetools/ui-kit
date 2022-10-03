@@ -4,6 +4,7 @@ process.env.ENABLE_NEW_JSX_TRANSFORM = 'true';
  * @type {import('jest').Config}
  */
 module.exports = {
+  testTimeout: 60000,
   preset: 'jest-puppeteer',
   testRegex: './*\\.visualspec\\.js$',
   transform: {

@@ -65,6 +65,7 @@
     ]
   },
   "dependencies": {
+    "@applitools/eyes-puppeteer": "1.11.1",
     "@changesets/changelog-github": "0.4.6",
     "@changesets/cli": "2.24.4",
     "@commercetools-frontend/babel-preset-mc-app": "21.14.3",
