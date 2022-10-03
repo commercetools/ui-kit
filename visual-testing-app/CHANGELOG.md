@@ -1,5 +1,14 @@
 # visual-testing-app
 
+## 11.0.10
+
+### Patch Changes
+
+- [#2291](https://github.com/commercetools/ui-kit/pull/2291) [`a7be1415d`](https://github.com/commercetools/ui-kit/commit/a7be1415d0381e0fe5148ee72b8f0c88713dacbd) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.2.4
+
 ## 11.0.9
 
 ### Patch Changes

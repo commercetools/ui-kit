@@ -1,5 +1,18 @@
 # @commercetools-uikit/date-field
 
+## 15.2.4
+
+### Patch Changes
+
+- Updated dependencies [[`a7be1415d`](https://github.com/commercetools/ui-kit/commit/a7be1415d0381e0fe5148ee72b8f0c88713dacbd)]:
+  - @commercetools-uikit/date-input@15.2.4
+  - @commercetools-uikit/design-system@15.2.4
+  - @commercetools-uikit/constraints@15.2.4
+  - @commercetools-uikit/field-errors@15.2.4
+  - @commercetools-uikit/field-label@15.2.4
+  - @commercetools-uikit/utils@15.2.4
+  - @commercetools-uikit/spacings@15.2.4
+
 ## 15.2.3
 
 ### Patch Changes
