@@ -1,5 +1,5 @@
 import { warning } from '@commercetools-uikit/utils';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 import type { TIconButtonProps } from './icon-button';
 
@@ -39,9 +39,9 @@ const getStateStyles = (
 ) => {
   if (isDisabled) {
     const disabledStyle = css`
-      background-color: ${vars.colorAccent98};
-      border-color: ${vars.colorNeutral};
-      color: ${vars.colorNeutral60};
+      background-color: ${designTokens.colorAccent98};
+      border-color: ${designTokens.colorNeutral};
+      color: ${designTokens.colorNeutral60};
       box-shadow: none;
     `;
     switch (theme) {
@@ -50,8 +50,8 @@ const getStateStyles = (
           disabledStyle,
           css`
             &:hover {
-              border-color: ${vars.colorInfo85};
-              background-color: ${vars.colorInfo85};
+              border-color: ${designTokens.colorInfo85};
+              background-color: ${designTokens.colorInfo85};
             }
           `,
         ];
@@ -60,8 +60,8 @@ const getStateStyles = (
           disabledStyle,
           css`
             &:hover {
-              border-color: ${vars.colorPrimary85};
-              background-color: ${vars.colorPrimary85};
+              border-color: ${designTokens.colorPrimary85};
+              background-color: ${designTokens.colorPrimary85};
             }
           `,
         ];
@@ -71,13 +71,13 @@ const getStateStyles = (
   }
   if (isActive) {
     const activeStyle = css`
-      box-shadow: ${vars.shadow9};
-      background-color: ${vars.colorSurface};
-      border-color: ${vars.colorSurface};
+      box-shadow: ${designTokens.shadow9};
+      background-color: ${designTokens.colorSurface};
+      border-color: ${designTokens.colorSurface};
       &:hover {
-        box-shadow: ${vars.shadow9};
-        background-color: ${vars.colorNeutral95};
-        border-color: ${vars.colorNeutral95};
+        box-shadow: ${designTokens.shadow9};
+        background-color: ${designTokens.colorNeutral95};
+        border-color: ${designTokens.colorNeutral95};
       }
     `;
     switch (theme) {
@@ -88,18 +88,18 @@ const getStateStyles = (
             // When the button is active and somehow is disabled it should have
             // a different color to indicate that it's active but can't receive any actions
             css`
-              background-color: ${vars.colorInfo85};
-              border-color: ${vars.colorInfo85};
-              color: ${vars.colorSurface};
-              box-shadow: ${vars.shadow9};
+              background-color: ${designTokens.colorInfo85};
+              border-color: ${designTokens.colorInfo85};
+              color: ${designTokens.colorSurface};
+              box-shadow: ${designTokens.shadow9};
             `,
           css`
-            background-color: ${vars.colorInfo};
-            border-color: ${vars.colorInfo};
-            color: ${vars.colorSurface};
+            background-color: ${designTokens.colorInfo};
+            border-color: ${designTokens.colorInfo};
+            color: ${designTokens.colorSurface};
             &:hover {
-              background-color: ${vars.colorInfo85};
-              border-color: ${vars.colorInfo85};
+              background-color: ${designTokens.colorInfo85};
+              border-color: ${designTokens.colorInfo85};
             }
           `,
         ];
@@ -110,18 +110,18 @@ const getStateStyles = (
           // a different color to indicate that it's active but can't receive any actions
           isDisabled &&
             css`
-              background-color: ${vars.colorPrimary85};
-              border-color: ${vars.colorPrimary85};
-              color: ${vars.colorSurface};
-              box-shadow: ${vars.shadow9};
+              background-color: ${designTokens.colorPrimary85};
+              border-color: ${designTokens.colorPrimary85};
+              color: ${designTokens.colorSurface};
+              box-shadow: ${designTokens.shadow9};
             `,
 
           css`
-            background-color: ${vars.colorPrimary};
-            color: ${vars.colorSurface};
+            background-color: ${designTokens.colorPrimary};
+            color: ${designTokens.colorSurface};
             &:hover {
-              background-color: ${vars.colorPrimary85};
-              border-color: ${vars.colorPrimary85};
+              background-color: ${designTokens.colorPrimary85};
+              border-color: ${designTokens.colorPrimary85};
             }
           `,
         ];
@@ -131,12 +131,12 @@ const getStateStyles = (
   }
   return css`
     &:hover {
-      box-shadow: ${vars.shadow8};
+      box-shadow: ${designTokens.shadow8};
     }
     &:active {
-      box-shadow: ${vars.shadow9};
-      background-color: ${vars.colorSurface};
-      border-color: ${vars.colorSurface};
+      box-shadow: ${designTokens.shadow9};
+      background-color: ${designTokens.colorSurface};
+      border-color: ${designTokens.colorSurface};
     }
   `;
 };
@@ -154,15 +154,15 @@ const getShapeStyles = (
       switch (size) {
         case 'small':
           return css`
-            border-radius: ${vars.borderRadius2};
+            border-radius: ${designTokens.borderRadius2};
           `;
         case 'medium':
           return css`
-            border-radius: ${vars.borderRadius4};
+            border-radius: ${designTokens.borderRadius4};
           `;
         case 'big':
           return css`
-            border-radius: ${vars.borderRadius6};
+            border-radius: ${designTokens.borderRadius6};
           `;
         default:
           return css``;
@@ -201,17 +201,17 @@ const getThemeStyles = (theme: TIconButtonProps['theme']) => {
     case 'primary':
       return css`
         &:hover {
-          background-color: ${vars.colorPrimary};
-          border-color: ${vars.colorPrimary};
-          color: ${vars.colorSurface};
+          background-color: ${designTokens.colorPrimary};
+          border-color: ${designTokens.colorPrimary};
+          color: ${designTokens.colorSurface};
         }
       `;
     case 'info':
       return css`
         &:hover {
-          background-color: ${vars.colorInfo};
-          border-color: ${vars.colorInfo};
-          color: ${vars.colorSurface};
+          background-color: ${designTokens.colorInfo};
+          border-color: ${designTokens.colorInfo};
+          color: ${designTokens.colorSurface};
         }
       `;
     default: {
@@ -233,7 +233,7 @@ const getHoverStyles = (
   return css`
     &:hover {
       * {
-        fill: ${vars.colorSurface};
+        fill: ${designTokens.colorSurface};
       }
     }
   `;

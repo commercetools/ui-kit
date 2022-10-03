@@ -12,10 +12,10 @@ import {
   type Ref,
   type FocusEventHandler,
 } from 'react';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -165,10 +165,10 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
     },
     [editor, props.language]
   );
-  /* 
+  /*
   Resetting the editor requires access to `editor` object returned from `useSlate` hook.
-  Therefore, `reset` function is attached to the passed `ref` object via `useImperativeHandle` 
-  to be called from the parent component. 
+  Therefore, `reset` function is attached to the passed `ref` object via `useImperativeHandle`
+  to be called from the parent component.
   e.g. <button onMouseDown={() => ref.current?.resetValue("<p><strong>Value after reset</strong></p>")}>Reset</button>
   */
   useImperativeHandle(forwardedRef, () => {
@@ -178,20 +178,18 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
   });
 
   const shouldToggleButtonTakeSpace =
-    /* 
+    /*
       - if hasLanguagesControl and there are no errors/warnings to display
       - then the toggleButton is absolutely positioned
       This is because the toggle button is placed next to the LocalizedInputToggle without being siblings in the DOM.
       If there is a error or warning showing,
       then it can be placed statically because it will then be a sibling to the error/warning message
-      and LocalizedInputToggle is placed below the errors/warnings. 
+      and LocalizedInputToggle is placed below the errors/warnings.
     */
 
     (renderToggleButton && !props.hasLanguagesControl) ||
     props.error ||
     props.warning;
-
-  const theme = useTheme();
 
   return (
     <CollapsibleMotion
@@ -218,7 +216,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                 value={props.value}
                 onChange={props.onChange}
               >
-                <EditorLanguageLabel htmlFor={props.id} theme={theme}>
+                <EditorLanguageLabel htmlFor={props.id}>
                   {/* FIXME: add proper tone for disabled when tones are refactored */}
                   <Text.Detail tone="secondary">
                     {props.language.toUpperCase()}
@@ -323,7 +321,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                           position: absolute;
                           top: 0;
                           right: 0;
-                          margin-top: ${customProperties.spacingXs};
+                          margin-top: ${designTokens.spacingXs};
                         `,
                     ]}
                   >

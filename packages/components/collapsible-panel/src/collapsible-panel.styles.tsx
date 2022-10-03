@@ -1,16 +1,16 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TCollapsiblePanel } from './collapsible-panel';
 
 function getThemeStyle(theme?: TCollapsiblePanel['theme']) {
   if (theme === 'light') {
     return css`
-      background-color: ${vars.colorSurface};
+      background-color: ${designTokens.colorSurface};
     `;
   }
   return css`
-    background-color: ${vars.colorNeutral95};
+    background-color: ${designTokens.colorNeutral95};
   `;
 }
 
@@ -23,8 +23,8 @@ const getHeaderContainerStyles = (
 ) => {
   const baseStyles = css`
     position: relative;
-    border-top-left-radius: ${vars.borderRadius6};
-    border-top-right-radius: ${vars.borderRadius6};
+    border-top-left-radius: ${designTokens.borderRadius6};
+    border-top-right-radius: ${designTokens.borderRadius6};
     display: flex;
     flex: 1;
     align-items: center;
@@ -33,8 +33,8 @@ const getHeaderContainerStyles = (
       ? 'flex-start'
       : 'space-between'};
     padding: ${props.condensed
-      ? `${vars.spacingS}`
-      : `${vars.spacingS} ${vars.spacingM}`};
+      ? `${designTokens.spacingS}`
+      : `${designTokens.spacingS} ${designTokens.spacingM}`};
   `;
 
   return [
@@ -49,13 +49,13 @@ const getHeaderContainerStyles = (
         z-index: 1;
         position: sticky;
         top: 0;
-        border-top-right-radius: ${vars.borderRadius6};
-        border-top-left-radius: ${vars.borderRadius6};
+        border-top-right-radius: ${designTokens.borderRadius6};
+        border-top-left-radius: ${designTokens.borderRadius6};
       `,
     !props.condensed &&
       // To understand why this min-height see: https://github.com/commercetools/ui-kit/pull/616
       css`
-        min-height: ${vars.bigButtonHeight};
+        min-height: ${designTokens.bigButtonHeight};
         box-sizing: content-box; /* makes the padding extend beyond the min-height */
       `,
   ];
@@ -63,19 +63,19 @@ const getHeaderContainerStyles = (
 
 const baseContainerStyles = css`
   position: relative;
-  min-width: ${vars.constraint6};
+  min-width: ${designTokens.constraint6};
   padding: 0;
   display: flex;
   flex-direction: column;
-  box-shadow: ${vars.shadow1};
-  border-radius: ${vars.borderRadius6};
-  color: ${vars.colorSolid};
+  box-shadow: ${designTokens.shadow1};
+  border-radius: ${designTokens.borderRadius6};
+  color: ${designTokens.colorSolid};
   font-family: inherit;
-  font-size: ${vars.fontSizeDefault};
+  font-size: ${designTokens.fontSizeDefault};
 `;
 
 const HeaderControlsWrapper = styled.div`
-  margin-left: ${vars.spacingM};
+  margin-left: ${designTokens.spacingM};
   display: flex;
   align-items: center;
 
@@ -91,7 +91,7 @@ const SectionContent = styled.div`
 `;
 
 const SectionWrapper = styled.div`
-  border-top: 1px solid ${vars.colorNeutral60};
+  border-top: 1px solid ${designTokens.colorNeutral60};
 `;
 
 export {

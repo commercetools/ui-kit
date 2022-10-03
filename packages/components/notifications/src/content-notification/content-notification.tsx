@@ -3,7 +3,7 @@ import type { MessageDescriptor } from 'react-intl';
 import { Children, ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import {
   ErrorIcon,
   WarningIcon,
@@ -60,13 +60,13 @@ const warnIfMissingContent = (props: TContentNotificationProps) => {
 const getIconContainerBackgroundColour = (props: TContentNotificationProps) => {
   switch (props.type) {
     case 'error':
-      return vars.colorError;
+      return designTokens.colorError;
     case 'info':
-      return vars.colorInfo;
+      return designTokens.colorInfo;
     case 'warning':
-      return vars.colorWarning;
+      return designTokens.colorWarning;
     case 'success':
-      return vars.colorPrimary;
+      return designTokens.colorPrimary;
     default:
       return '';
   }
@@ -93,9 +93,10 @@ const NotificationIcon = (props: TContentNotificationProps) => {
       css={css`
         display: flex;
         align-items: center;
-        border-radius: ${vars.borderRadius6} 0 0 ${vars.borderRadius6};
+        border-radius: ${designTokens.borderRadius6} 0 0
+          ${designTokens.borderRadius6};
         border-width: 0;
-        padding: ${vars.spacingS} ${vars.spacingM};
+        padding: ${designTokens.spacingS} ${designTokens.spacingM};
         background-color: ${getIconContainerBackgroundColour(props)};
         svg {
           margin: 0 -3px;
@@ -111,13 +112,13 @@ NotificationIcon.displayName = 'NotificationIcon';
 const getContentBorderColor = (props: TContentNotificationProps) => {
   switch (props.type) {
     case 'error':
-      return vars.colorError;
+      return designTokens.colorError;
     case 'info':
-      return vars.colorInfo;
+      return designTokens.colorInfo;
     case 'warning':
-      return vars.colorWarning;
+      return designTokens.colorWarning;
     case 'success':
-      return vars.colorPrimary;
+      return designTokens.colorPrimary;
     default:
       return '';
   }
@@ -135,8 +136,8 @@ const ContentNotification = (props: TContentNotificationProps) => {
         text-align: left;
         word-break: break-word;
         hyphens: auto;
-        font-size: ${vars.fontSizeDefault};
-        color: ${vars.colorSolid};
+        font-size: ${designTokens.fontSizeDefault};
+        color: ${designTokens.colorSolid};
         font-family: inherit;
       `}
     >
@@ -146,9 +147,10 @@ const ContentNotification = (props: TContentNotificationProps) => {
           flex-grow: 1;
           display: flex;
           align-items: center;
-          padding: ${vars.spacingS};
-          background: ${vars.colorSurface};
-          border-radius: 0 ${vars.borderRadius6} ${vars.borderRadius6} 0;
+          padding: ${designTokens.spacingS};
+          background: ${designTokens.colorSurface};
+          border-radius: 0 ${designTokens.borderRadius6}
+            ${designTokens.borderRadius6} 0;
           border-width: 1px;
           border-style: solid;
           border-color: ${getContentBorderColor(props)};

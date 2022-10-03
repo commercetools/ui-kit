@@ -8,11 +8,7 @@
   Always check all affected components when making changes here!
 */
 import { ReactNode } from 'react';
-import {
-  customProperties as vars,
-  designTokens,
-} from '@commercetools-uikit/design-system';
-import { Theme } from '@emotion/react';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 type TProps = {
   isDisabled?: boolean;
@@ -43,136 +39,103 @@ type TState = {
   isSelected?: boolean;
 };
 
-const controlStyles =
-  (props: TProps, theme: Theme) => (base: TBase, state: TState) => {
-    const overwrittenVars = {
-      ...vars,
-      ...theme,
-    };
-
-    return {
-      ...base,
-      fontSize: overwrittenVars[designTokens.fontSizeForInput],
-      backgroundColor: props.isDisabled
-        ? overwrittenVars[designTokens.backgroundColorForInputWhenDisabled]
-        : overwrittenVars[designTokens.backgroundColorForInput],
-      borderColor: (() => {
-        if (props.isDisabled)
-          return overwrittenVars[designTokens.borderColorForInputWhenDisabled];
-        if (state.isFocused)
-          return overwrittenVars[designTokens.borderColorForInputWhenFocused];
-        if (props.hasError)
-          return overwrittenVars[designTokens.borderColorForInputWhenError];
-        if (props.hasWarning)
-          return overwrittenVars[designTokens.borderColorForInputWhenWarning];
-        if (props.isReadOnly)
-          return overwrittenVars[designTokens.borderColorForInputWhenReadonly];
-        return overwrittenVars[designTokens.borderColorForInput];
-      })(),
-      borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
-      minHeight: overwrittenVars.sizeHeightInput,
-      cursor: (() => {
-        if (props.isDisabled) return 'not-allowed';
-        if (props.isReadOnly) return 'default';
-        return 'pointer';
-      })(),
-      padding: `0 ${overwrittenVars.spacingS}`,
-      transition: `border-color ${overwrittenVars.transitionStandard},
-    box-shadow ${overwrittenVars.transitionStandard}`,
-      outline: 0,
-      boxShadow: 'none',
-
-      '&:focus-within': {
-        boxShadow: (() => {
-          if (!props.isDisabled)
-            return `inset 0 0 0 2px ${
-              overwrittenVars[designTokens.borderColorForInputWhenFocused]
-            }`;
-          return null;
-        })(),
-        borderColor: (() => {
-          if (!props.isDisabled)
-            return overwrittenVars[designTokens.borderColorForInputWhenFocused];
-          return null;
-        })(),
-      },
-
-      '&:hover': {
-        borderColor: (() => {
-          if (!props.isDisabled && !props.isReadOnly)
-            return overwrittenVars[designTokens.borderColorForInputWhenFocused];
-          return null;
-        })(),
-      },
-      pointerEvents: 'auto',
-      color:
-        props.isDisabled || props.isReadOnly
-          ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
-          : base.fontColorForInput,
-    };
-  };
-
-const menuStyles = (props: TProps, theme: Theme) => (base: TBase) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
-    border: `1px ${
-      overwrittenVars[designTokens.borderColorForInputWhenFocused]
-    } solid`,
-    borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
-    backgroundColor: overwrittenVars[designTokens.backgroundColorForInput],
-    boxShadow: overwrittenVars.shadow7,
-    fontSize: overwrittenVars[designTokens.fontSizeForInput],
-    fontFamily: 'inherit',
-    margin: `${overwrittenVars.spacingXs} 0 0 0`,
+    fontSize: designTokens.fontSizeForInput,
+    backgroundColor: props.isDisabled
+      ? designTokens.backgroundColorForInputWhenDisabled
+      : designTokens.backgroundColorForInput,
     borderColor: (() => {
-      if (props.hasError)
-        return overwrittenVars[designTokens.borderColorForInputWhenError];
-      if (props.hasWarning)
-        return overwrittenVars[designTokens.borderColorForInputWhenWarning];
+      if (props.isDisabled) return designTokens.borderColorForInputWhenDisabled;
+      if (state.isFocused) return designTokens.borderColorForInputWhenFocused;
+      if (props.hasError) return designTokens.borderColorForInputWhenError;
+      if (props.hasWarning) return designTokens.borderColorForInputWhenWarning;
+      if (props.isReadOnly) return designTokens.borderColorForInputWhenReadonly;
+      return designTokens.borderColorForInput;
+    })(),
+    borderRadius: designTokens.borderRadiusForInput,
+    minHeight: designTokens.sizeHeightInput,
+    cursor: (() => {
+      if (props.isDisabled) return 'not-allowed';
+      if (props.isReadOnly) return 'default';
+      return 'pointer';
+    })(),
+    padding: `0 ${designTokens.spacingS}`,
+    transition: `border-color ${designTokens.transitionStandard},
+    box-shadow ${designTokens.transitionStandard}`,
+    outline: 0,
+    boxShadow: 'none',
+
+    '&:focus-within': {
+      boxShadow: (() => {
+        if (!props.isDisabled)
+          return `inset 0 0 0 2px ${designTokens.borderColorForInputWhenFocused}`;
+        return null;
+      })(),
+      borderColor: (() => {
+        if (!props.isDisabled)
+          return designTokens.borderColorForInputWhenFocused;
+        return null;
+      })(),
+    },
+
+    '&:hover': {
+      borderColor: (() => {
+        if (!props.isDisabled && !props.isReadOnly)
+          return designTokens.borderColorForInputWhenFocused;
+        return null;
+      })(),
+    },
+    pointerEvents: 'auto',
+    color:
+      props.isDisabled || props.isReadOnly
+        ? designTokens.fontColorForInputWhenDisabled
+        : base.fontColorForInput,
+  };
+};
+
+const menuStyles = (props: TProps) => (base: TBase) => {
+  return {
+    ...base,
+    border: `1px ${designTokens.borderColorForInputWhenFocused} solid`,
+    borderRadius: designTokens.borderRadiusForInput,
+    backgroundColor: designTokens.backgroundColorForInput,
+    boxShadow: designTokens.shadow7,
+    fontSize: designTokens.fontSizeForInput,
+    fontFamily: 'inherit',
+    margin: `${designTokens.spacingXs} 0 0 0`,
+    borderColor: (() => {
+      if (props.hasError) return designTokens.borderColorForInputWhenError;
+      if (props.hasWarning) return designTokens.borderColorForInputWhenWarning;
       return base.borderColorForInput;
     })(),
   };
 };
 
-const indicatorSeparatorStyles = (theme: Theme) => (base: TBase) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const indicatorSeparatorStyles = () => (base: TBase) => {
   return {
     ...base,
     display: 'none',
     margin: '0',
     padding: '0',
-    marginLeft: overwrittenVars.spacingXs,
+    marginLeft: designTokens.spacingXs,
   };
 };
 
-const dropdownIndicatorStyles =
-  (props: TProps, theme: Theme) => (base: TBase) => {
-    const overwrittenVars = {
-      ...vars,
-      ...theme,
-    };
-
-    return {
-      ...base,
-      color: overwrittenVars[designTokens.fontColorForInput],
-      margin: '0',
-      padding: '0',
-      marginLeft: overwrittenVars.spacingXs,
-      fill:
-        props.isDisabled || props.isReadOnly
-          ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
-          : base.fontColorForInput,
-    };
+const dropdownIndicatorStyles = (props: TProps) => (base: TBase) => {
+  return {
+    ...base,
+    color: designTokens.fontColorForInput,
+    margin: '0',
+    padding: '0',
+    marginLeft: designTokens.spacingXs,
+    fill:
+      props.isDisabled || props.isReadOnly
+        ? designTokens.fontColorForInputWhenDisabled
+        : base.fontColorForInput,
   };
+};
 
 const clearIndicatorStyles = () => (base: TBase) => ({
   ...base,
@@ -180,88 +143,62 @@ const clearIndicatorStyles = () => (base: TBase) => ({
   padding: 0,
 });
 
-const menuListStyles = (theme: Theme) => (base: TBase) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const menuListStyles = () => (base: TBase) => {
   return {
     ...base,
     padding: '0',
-    borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
-    backgroundColor: overwrittenVars[designTokens.backgroundColorForInput],
+    borderRadius: designTokens.borderRadiusForInput,
+    backgroundColor: designTokens.backgroundColorForInput,
   };
 };
 
-const optionStyles = (theme: Theme) => (base: TBase, state: TState) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const optionStyles = () => (base: TBase, state: TState) => {
   return {
     ...base,
-    transition: `border-color ${overwrittenVars.transitionStandard},
-      background-color ${overwrittenVars.transitionStandard},
-      color ${overwrittenVars.transitionStandard}`,
-    paddingLeft: overwrittenVars.spacingS,
-    paddingRight: overwrittenVars.spacingS,
+    transition: `border-color ${designTokens.transitionStandard},
+      background-color ${designTokens.transitionStandard},
+      color ${designTokens.transitionStandard}`,
+    paddingLeft: designTokens.spacingS,
+    paddingRight: designTokens.spacingS,
     color: (() => {
-      if (!state.isDisabled)
-        return overwrittenVars[designTokens.fontColorForInput];
-      if (state.isSelected)
-        return overwrittenVars[designTokens.fontColorForInput];
+      if (!state.isDisabled) return designTokens.fontColorForInput;
+      if (state.isSelected) return designTokens.fontColorForInput;
       return base.color;
     })(),
     backgroundColor: (() => {
       if (state.isSelected)
-        return overwrittenVars[
-          designTokens.backgroundColorForInputWhenSelected
-        ];
+        return designTokens.backgroundColorForInputWhenSelected;
       if (state.isFocused)
-        return overwrittenVars[designTokens.backgroundColorForInputWhenHovered];
+        return designTokens.backgroundColorForInputWhenHovered;
       return base.backgroundColor;
     })(),
 
     '&:active': {
       color: (() => {
-        if (!state.isDisabled)
-          return overwrittenVars[designTokens.fontColorForInput];
+        if (!state.isDisabled) return designTokens.fontColorForInput;
         return base.color;
       })(),
-      backgroundColor:
-        overwrittenVars[designTokens.backgroundColorForInputWhenSelected],
+      backgroundColor: designTokens.backgroundColorForInputWhenSelected,
     },
   };
 };
 
-const placeholderStyles = (props: TProps, theme: Theme) => (base: TBase) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const placeholderStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    color: overwrittenVars[designTokens.placeholderFontColorForInput],
+    color: designTokens.placeholderFontColorForInput,
     width: '100%',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
     fill:
       props.isDisabled || props.isReadOnly
-        ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
+        ? designTokens.fontColorForInputWhenDisabled
         : base.fontColorForInput,
   };
 };
 
-const valueContainerStyles = (props: TProps, theme: Theme) => (base: TBase) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const valueContainerStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
     padding: '0',
@@ -276,81 +213,61 @@ const valueContainerStyles = (props: TProps, theme: Theme) => (base: TBase) => {
         : 'grid',
     fill:
       props.isDisabled || props.isReadOnly
-        ? overwrittenVars[designTokens.fontColorForInputWhenDisabled]
+        ? designTokens.fontColorForInputWhenDisabled
         : base.fontColorForInput,
   };
 };
 
-const singleValueStyles = (props: TProps, theme: Theme) => (base: TBase) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const singleValueStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
     color: (() => {
       if (props.isDisabled) {
-        return overwrittenVars[designTokens.fontColorForInputWhenDisabled];
+        return designTokens.fontColorForInputWhenDisabled;
       }
       if (props.isReadOnly) {
-        return overwrittenVars[designTokens.fontColorForInputWhenReadonly];
+        return designTokens.fontColorForInputWhenReadonly;
       }
-      return overwrittenVars[designTokens.fontColorForInput];
+      return designTokens.fontColorForInput;
     })(),
   };
 };
 
-const groupStyles = (props: TProps, theme: Theme) => (base: TBase) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const groupStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
     padding: 0,
     '&:not(:first-of-type)': {
       borderTop: props.showOptionGroupDivider
-        ? `1px solid ${overwrittenVars.colorNeutral}`
+        ? `1px solid ${designTokens.colorNeutral}`
         : base.borderTop,
     },
   };
 };
 
-const groupHeadingStyles = (theme: Theme) => (base: TBase) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const groupHeadingStyles = () => (base: TBase) => {
   return {
     ...base,
-    color: overwrittenVars[designTokens.fontColorForInputWhenReadonly],
-    fontSize: overwrittenVars.fontSizeSmall,
+    color: designTokens.fontColorForInputWhenReadonly,
+    fontSize: designTokens.fontSizeSmall,
     textTransform: 'none',
     fontWeight: 'bold',
-    margin: `0 ${overwrittenVars.spacingXs}`,
-    padding: `${overwrittenVars.spacingS} ${overwrittenVars.spacingXs}`,
+    margin: `0 ${designTokens.spacingXs}`,
+    padding: `${designTokens.spacingS} ${designTokens.spacingXs}`,
     '&:empty': {
       padding: 0,
     },
   };
 };
 
-const containerStyles = (theme: Theme) => (base: TBase, state: TState) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const containerStyles = () => (base: TBase, state: TState) => {
   return {
     ...base,
     fontFamily: 'inherit',
-    minHeight: overwrittenVars.sizeHeightInput,
-    borderRadius: overwrittenVars[designTokens.borderRadiusForInput],
+    minHeight: designTokens.sizeHeightInput,
+    borderRadius: designTokens.borderRadiusForInput,
     borderColor: state.isFocused
-      ? overwrittenVars[designTokens.borderColorForInputWhenFocused]
+      ? designTokens.borderColorForInputWhenFocused
       : base.borderColor,
 
     boxShadow: state.isFocused ? 'none' : base.boxShadow,
@@ -368,105 +285,85 @@ const menuPortalStyles = (props: TProps) => (base: TBase) => ({
   zIndex: props.menuPortalZIndex,
 });
 
-const multiValueStyles = (theme: Theme) => (base: TBase) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const multiValueStyles = () => (base: TBase) => {
   return {
     ...base,
-    height: vars.sizeHeightTag,
-    backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
+    height: designTokens.sizeHeightTag,
+    backgroundColor: designTokens.backgroundColorForTag,
     padding: '0',
   };
 };
 
-const multiValueLabelStyles =
-  (props: TProps, theme: Theme) => (base: TBase) => {
-    const overwrittenVars = {
-      ...vars,
-      ...theme,
-    };
+const multiValueLabelStyles = (props: TProps) => (base: TBase) => {
+  return {
+    ...base,
+    fontSize: designTokens.fontSizeSmall,
+    color: (() => {
+      if (props.isDisabled) return designTokens.fontColorForInputWhenDisabled;
+      if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
+      return base.color;
+    })(),
+    padding: `${designTokens.spacingXs} ${designTokens.spacingS}`,
+    borderRadius: `${designTokens.borderRadiusForTag} 0 0 ${designTokens.borderRadiusForTag}`,
+    border: `1px ${designTokens.borderColorForTag} solid`,
+    borderWidth: '1px 0 1px 1px',
 
-    return {
-      ...base,
-      fontSize: vars.fontSizeSmall,
-      color: (() => {
-        if (props.isDisabled)
-          return overwrittenVars[designTokens.fontColorForInputWhenDisabled];
-        if (props.isReadOnly)
-          return overwrittenVars[designTokens.fontColorForInputWhenReadonly];
-        return base.color;
-      })(),
-      padding: `${overwrittenVars.spacingXs} ${overwrittenVars.spacingS}`,
-      borderRadius: `${overwrittenVars.borderRadiusForTag} 0 0 ${overwrittenVars.borderRadiusForTag}`,
-      border: `1px ${overwrittenVars[designTokens.borderColorForTag]} solid`,
-      borderWidth: '1px 0 1px 1px',
-
-      '&:last-child': {
-        borderRadius: overwrittenVars.borderRadiusForTag,
-        borderWidth: '1px',
-      },
-    };
+    '&:last-child': {
+      borderRadius: designTokens.borderRadiusForTag,
+      borderWidth: '1px',
+    },
   };
+};
 
 const multiValueRemoveStyles =
-  (props: TProps, theme: Theme) => (base: TBase, state: TState) => {
-    const overwrittenVars = {
-      ...vars,
-      ...theme,
-    };
-
+  (props: TProps) => (base: TBase, state: TState) => {
     return {
       ...base,
-      borderColor: overwrittenVars[designTokens.borderColorForTag],
-      padding: `0 ${overwrittenVars.spacingXs}`,
-      borderRadius: `0 ${overwrittenVars[designTokens.borderRadiusForTag]} ${
-        overwrittenVars[designTokens.borderRadiusForTag]
-      } 0`,
+      borderColor: designTokens.borderColorForTag,
+      padding: `0 ${designTokens.spacingXs}`,
+      borderRadius: `0 ${designTokens.borderRadiusForTag} ${designTokens.borderRadiusForTag} 0`,
       borderStyle: 'solid',
       borderWidth: '1px',
       pointerEvents:
         state.isDisabled || props.isReadOnly ? 'none' : base.pointerEvents,
-      backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
+      backgroundColor: designTokens.backgroundColorForTag,
 
       'svg *': {
         fill: props.isReadOnly
-          ? overwrittenVars[designTokens.fontColorForInputWhenReadonly]
+          ? designTokens.fontColorForInputWhenReadonly
           : '',
       },
 
       '&:hover, &:focus': {
-        borderColor: overwrittenVars.borderColorForTagWarning,
-        backgroundColor: overwrittenVars[designTokens.backgroundColorForTag],
+        borderColor: designTokens.borderColorForTagWarning,
+        backgroundColor: designTokens.backgroundColorForTag,
 
         'svg *': {
-          fill: overwrittenVars[designTokens.borderColorForTagWarning],
+          fill: designTokens.borderColorForTagWarning,
         },
       },
     };
   };
 
-export default function createSelectStyles(props: TProps, theme: Theme) {
+export default function createSelectStyles(props: TProps) {
   return {
-    control: controlStyles(props, theme),
-    menu: menuStyles(props, theme),
-    indicatorSeparator: indicatorSeparatorStyles(theme),
-    dropdownIndicator: dropdownIndicatorStyles(props, theme),
+    control: controlStyles(props),
+    menu: menuStyles(props),
+    indicatorSeparator: indicatorSeparatorStyles(),
+    dropdownIndicator: dropdownIndicatorStyles(props),
     clearIndicator: clearIndicatorStyles(),
-    menuList: menuListStyles(theme),
+    menuList: menuListStyles(),
     menuPortal: menuPortalStyles(props),
-    multiValue: multiValueStyles(theme),
-    multiValueLabel: multiValueLabelStyles(props, theme),
-    multiValueRemove: multiValueRemoveStyles(props, theme),
+    multiValue: multiValueStyles(),
+    multiValueLabel: multiValueLabelStyles(props),
+    multiValueRemove: multiValueRemoveStyles(props),
     indicatorsContainer: indicatorsContainerStyles(),
-    option: optionStyles(theme),
-    placeholder: placeholderStyles(props, theme),
-    valueContainer: valueContainerStyles(props, theme),
-    singleValue: singleValueStyles(props, theme),
-    group: groupStyles(props, theme),
-    groupHeading: groupHeadingStyles(theme),
-    container: containerStyles(theme),
+    option: optionStyles(),
+    placeholder: placeholderStyles(props),
+    valueContainer: valueContainerStyles(props),
+    singleValue: singleValueStyles(props),
+    group: groupStyles(props),
+    groupHeading: groupHeadingStyles(),
+    container: containerStyles(),
   };
 }

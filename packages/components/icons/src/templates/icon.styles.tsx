@@ -1,10 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { Theme } from '@emotion/react';
-
 import { warning } from '@commercetools-uikit/utils';
 // @ts-ignore
-import { css, ClassNames, useTheme } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { css, ClassNames } from '@emotion/react';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 export type Props = {
   color?:
@@ -55,35 +53,34 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const getColor = (color: Props['color'], theme: Theme) => {
+const getColor = (color: Props['color']) => {
   if (!color) return 'inherit';
 
-  const overwrittenVars = { ...vars, ...theme };
   let iconColor;
   switch (color) {
     case 'solid':
-      iconColor = overwrittenVars.colorSolid;
+      iconColor = designTokens.colorSolid;
       break;
     case 'neutral60':
-      iconColor = overwrittenVars.colorNeutral60;
+      iconColor = designTokens.colorNeutral60;
       break;
     case 'surface':
-      iconColor = overwrittenVars.colorSurface;
+      iconColor = designTokens.colorSurface;
       break;
     case 'info':
-      iconColor = overwrittenVars.colorInfo;
+      iconColor = designTokens.colorInfo;
       break;
     case 'primary':
-      iconColor = overwrittenVars.colorPrimary;
+      iconColor = designTokens.colorPrimary;
       break;
     case 'primary40':
-      iconColor = overwrittenVars.colorPrimary40;
+      iconColor = designTokens.colorPrimary40;
       break;
     case 'warning':
-      iconColor = overwrittenVars.colorWarning;
+      iconColor = designTokens.colorWarning;
       break;
     case 'error':
-      iconColor = overwrittenVars.colorError;
+      iconColor = designTokens.colorError;
       break;
     default:
       break;
@@ -101,9 +98,9 @@ const getColor = (color: Props['color'], theme: Theme) => {
 };
 
 // @ts-ignore
-export const getIconStyles = (props: Props, theme: Theme) => css`
+export const getIconStyles = (props: Props) => css`
   *:not([fill='none']) {
-    fill: ${getColor(props.color, theme)};
+    fill: ${getColor(props.color)};
   }
   &,
   image {

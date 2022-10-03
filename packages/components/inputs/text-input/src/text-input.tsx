@@ -1,5 +1,4 @@
 import type { FocusEventHandler, ChangeEventHandler } from 'react';
-import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
@@ -93,7 +92,6 @@ const defaultProps: Pick<TTextInputProps, 'horizontalConstraint'> = {
 };
 
 const TextInput = (props: TTextInputProps) => {
-  const theme = useTheme();
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
@@ -115,7 +113,7 @@ const TextInput = (props: TTextInputProps) => {
         readOnly={props.isReadOnly}
         autoFocus={props.isAutofocussed}
         autoComplete={props.autoComplete}
-        css={getInputStyles(props, theme)}
+        css={getInputStyles(props)}
         // Allow to override the styles by passing a `className` prop.
         // Custom styles can also be passed using the `css` prop from emotion.
         // https://emotion.sh/docs/css-prop#style-precedence

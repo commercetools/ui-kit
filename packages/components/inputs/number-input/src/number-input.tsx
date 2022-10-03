@@ -1,5 +1,4 @@
 import type { ChangeEventHandler, FocusEventHandler } from 'react';
-import { useTheme } from '@emotion/react';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
@@ -108,7 +107,6 @@ const defaultProps: Pick<TNumberInputProps, 'horizontalConstraint'> = {
 };
 
 const NumberInput = (props: TNumberInputProps) => {
-  const theme = useTheme();
   if (!props.isReadOnly) {
     warning(
       Boolean(props.onChange),
@@ -131,7 +129,7 @@ const NumberInput = (props: TNumberInputProps) => {
         onFocus={props.onFocus}
         disabled={props.isDisabled}
         placeholder={props.placeholder}
-        css={getInputStyles(props, theme)}
+        css={getInputStyles(props)}
         readOnly={props.isReadOnly}
         autoFocus={props.isAutofocussed}
         {...filterDataAttributes(props)}

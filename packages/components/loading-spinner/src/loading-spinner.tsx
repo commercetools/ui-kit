@@ -1,6 +1,6 @@
 import { ReactNode, useState, useEffect } from 'react';
 import { css, keyframes } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import Inline from '@commercetools-uikit/spacings-inline';
 
@@ -78,7 +78,7 @@ const LoadingSpinner = (props: TLoadingSpinnerProps) => {
         >
           <path
             css={css`
-              fill: ${vars.colorAccent};
+              fill: ${designTokens.colorAccent};
               opacity: 0.2;
             `}
             d={circlePath}
@@ -86,7 +86,7 @@ const LoadingSpinner = (props: TLoadingSpinnerProps) => {
           <path
             css={css`
               animation: ${spin} 0.5s infinite linear;
-              fill: ${vars.colorAccent};
+              fill: ${designTokens.colorAccent};
               transform-origin: ${positionOrigin} ${positionOrigin} 0;
             `}
             d={pointerPath}

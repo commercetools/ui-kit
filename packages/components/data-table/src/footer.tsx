@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { getPaddingStyle, getHorizontalAlignmentStyle } from './cell.styles';
 
 type TFooter = {
@@ -19,9 +19,9 @@ const Footer = styled.div<TFooter>`
   display: block;
   ${getPaddingStyle}
   ${getHorizontalAlignmentStyle}
-  background-color: ${vars.colorSurface};
-  border-top: 1px solid ${vars.colorNeutral90};
-  border-bottom: 1px solid ${vars.colorNeutral90};
+  background-color: ${designTokens.colorSurface};
+  border-top: 1px solid ${designTokens.colorNeutral90};
+  border-bottom: 1px solid ${designTokens.colorNeutral90};
   ${(props) =>
     props.resizedTotalWidth ? `max-width: ${props.resizedTotalWidth}px;` : ''}
 `;

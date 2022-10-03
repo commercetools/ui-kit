@@ -1,4 +1,3 @@
-import { ThemeProvider } from '@emotion/react';
 import { Tag } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
@@ -13,7 +12,7 @@ export const routePath = '/tag';
 
 const basePropsToList = ['type', 'horizontalConstraint', 'isDisabled'];
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="Normal">
       <Tag type="normal">Tag</Tag>
@@ -70,13 +69,7 @@ export const component = ({ themes }) => (
         {longText}
       </Tag>
     </Spec>
-    <ThemeProvider
-      theme={{ ...themes.darkTheme, colorNeutral95: 'rgba(0,0,0,0.05)' }}
-    >
-      <Spec label="with dark theme">
-        <Tag type="normal">Tag</Tag>
-      </Spec>
-    </ThemeProvider>
+
     <Spec label="Normal - with to" propsToList={[...basePropsToList, 'to']}>
       <Tag type="normal" to="foo/bar">
         Tag
@@ -167,17 +160,5 @@ export const component = ({ themes }) => (
         {longText}
       </Tag>
     </Spec>
-    <ThemeProvider
-      theme={{ ...themes.darkTheme, colorNeutral95: 'rgba(0,0,0,0.05)' }}
-    >
-      <Spec
-        label="Dark theme - with to"
-        propsToList={[...basePropsToList, 'to']}
-      >
-        <Tag type="normal" to="foo/bar">
-          Tag
-        </Tag>
-      </Spec>
-    </ThemeProvider>
   </Suite>
 );

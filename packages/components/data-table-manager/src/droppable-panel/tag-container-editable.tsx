@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 const TagContainerEditable = styled.div`
-  background-color: ${vars.backgroundColorForInput};
-  border: ${vars.borderRadius1} solid ${vars.colorNeutral60};
-  border-radius: ${vars.borderRadius6};
-  padding: ${vars.spacingS};
-  height: ${vars.constraint7};
+  background-color: ${designTokens.backgroundColorForInput};
+  border: ${designTokens.borderRadius1} solid ${designTokens.colorNeutral60};
+  border-radius: ${designTokens.borderRadius6};
+  padding: ${designTokens.spacingS};
+  height: ${designTokens.constraint7};
   overflow: auto;
 `;
 

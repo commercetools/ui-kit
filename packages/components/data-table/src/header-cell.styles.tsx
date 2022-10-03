@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { getCellInnerStyles } from './cell.styles';
 import type { THeaderCell } from './header-cell';
 
@@ -13,7 +13,7 @@ const getButtonStyle = () => css`
   text-decoration: none;
   color: inherit;
   font: inherit;
-  font-size: ${vars.fontSizeDefault};
+  font-size: ${designTokens.fontSizeDefault};
   font-family: inherit;
 `;
 
@@ -37,7 +37,7 @@ const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
 
   svg[data-icon-state='inactive'],
   svg[data-icon-state='active'] {
-    margin-left: ${vars.spacingS};
+    margin-left: ${designTokens.spacingS};
     flex-shrink: 0;
   }
   svg[data-icon-state='inactive'] {
@@ -55,7 +55,7 @@ const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
     svg[data-icon-state='active'] {
       display: inline-block;
       * {
-        fill: ${vars.colorNeutral};
+        fill: ${designTokens.colorNeutral};
       }
     }
   }
@@ -71,7 +71,9 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  padding: 0 ${(props) => (props.isCondensed ? vars.spacingS : vars.spacingM)};
+  padding: 0
+    ${(props) =>
+      props.isCondensed ? designTokens.spacingS : designTokens.spacingM};
 
   ${getCellInnerStyles}
   ${(props) => (props.isSortable ? getSortableHeaderStyles(props) : '')};
@@ -84,8 +86,8 @@ type TBaseHeaderCell = {
   shouldClipContent?: boolean;
 };
 const BaseHeaderCell = styled.th<TBaseHeaderCell>`
-  color: ${vars.colorSurface};
-  background-color: ${vars.colorAccent};
+  color: ${designTokens.colorSurface};
+  background-color: ${designTokens.colorAccent};
 
   position: ${(props) =>
     props.disableHeaderStickiness ? 'relative' : 'sticky'};
@@ -97,7 +99,7 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   font-weight: normal;
 
   /* right border that doesn't count towards the column width */
-  box-shadow: inset -1px 0 ${vars.colorNeutral90};
+  box-shadow: inset -1px 0 ${designTokens.colorNeutral90};
 
   /* this ensures that, when dragging this header's column resizer
      it remains above the rest of the headers, preventing accidental hovers/flickering */
@@ -115,7 +117,7 @@ const HeaderLabelWrapper = styled.div`
   /* ensure height stays the same even if label is empty
      1.4em = default line-height */
   min-height: 1.4em;
-  margin: ${vars.spacingS} 0;
+  margin: ${designTokens.spacingS} 0;
   flex: 1;
 `;
 
@@ -123,8 +125,8 @@ const HeaderIconWrapper = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: ${vars.spacingS};
-  padding: 0 ${vars.spacingXs};
+  margin-left: ${designTokens.spacingS};
+  padding: 0 ${designTokens.spacingXs};
 `;
 
 export {

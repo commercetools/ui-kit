@@ -1,13 +1,9 @@
-import type { Theme } from '@emotion/react';
 import type { TTagProps } from './tag';
 
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { css, useTheme } from '@emotion/react';
-import {
-  customProperties as vars,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { css } from '@emotion/react';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { Link } from 'react-router-dom';
 
@@ -30,54 +26,31 @@ const defaultProps: Pick<TTagProps, 'type' | 'isDisabled'> = {
 type TBody = Pick<TTagBodyProps, 'to' | 'as'>;
 const Body = styled.div<TBody>``;
 
-const getClickableContentWrapperStyles = (
-  type: TTagBodyProps['type'],
-  theme: Theme
-) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const getClickableContentWrapperStyles = (type: TTagBodyProps['type']) => {
   return type === 'warning'
     ? []
     : [
         css`
           &:hover {
-            border-color: ${overwrittenVars[
-              designTokens.borderColorForTagWhenFocused
-            ]};
+            border-color: ${designTokens.borderColorForTagWhenFocused};
           }
         `,
       ];
 };
 
-const getTextDetailColor = (
-  isDisabled: TTagBodyProps['isDisabled'],
-  theme: Theme
-) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-  if (isDisabled)
-    return overwrittenVars[designTokens.fontColorForTagWhenDisabled];
-  return overwrittenVars[designTokens.fontColorForTag];
+const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
+  if (isDisabled) return designTokens.fontColorForTagWhenDisabled;
+  return designTokens.fontColorForTag;
 };
 
-const getContentWrapperStyles = (props: TTagBodyProps, theme: Theme) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const getContentWrapperStyles = (props: TTagBodyProps) => {
   return css`
     position: relative;
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    border-radius: ${overwrittenVars[designTokens.borderRadiusForTag]};
-    padding: 5px ${vars.spacingS};
+    border-radius: ${designTokens.borderRadiusForTag};
+    padding: 5px ${designTokens.spacingS};
     white-space: normal;
     text-align: left;
     min-width: 0;
@@ -86,47 +59,46 @@ const getContentWrapperStyles = (props: TTagBodyProps, theme: Theme) => {
     border-style: solid;
     border-width: 1px;
     border-color: ${props.type === 'warning'
-      ? overwrittenVars[designTokens.borderColorForTagWarning]
-      : overwrittenVars[designTokens.borderColorForTag]};
+      ? designTokens.borderColorForTagWarning
+      : designTokens.borderColorForTag};
 
     /* fixing things for IE11 ... */
     width: 100%;
 
     small {
-      color: ${getTextDetailColor(props.isDisabled, theme)};
+      color: ${getTextDetailColor(props.isDisabled)};
     }
   `;
 };
 
 const TagBody = (props: TTagBodyProps) => {
-  const theme: Theme = useTheme();
   const textTone = props.isDisabled ? 'secondary' : undefined;
   return (
     <Body
       to={props.to}
       as={props.as}
       css={[
-        getContentWrapperStyles(props, theme),
+        getContentWrapperStyles(props),
         Boolean(props.onRemove) &&
           css`
-            padding-right: ${vars.spacingS};
+            padding-right: ${designTokens.spacingS};
             border-right: 0;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
           `,
         !props.isDisabled &&
           Boolean(props.onClick) &&
-          getClickableContentWrapperStyles(props.type, theme),
+          getClickableContentWrapperStyles(props.type),
         !props.isDisabled &&
           Boolean(props.onClick) &&
           css`
             &:hover {
-              box-shadow: ${vars.shadowBoxTagWhenHovered};
+              box-shadow: ${designTokens.shadowBoxTagWhenHovered};
               &::after {
                 position: absolute;
                 right: -1px;
                 content: '';
-                background-color: ${vars.borderColorForTagWhenFocused};
+                background-color: ${designTokens.borderColorForTagWhenFocused};
                 width: 1px;
                 height: 100%;
               }

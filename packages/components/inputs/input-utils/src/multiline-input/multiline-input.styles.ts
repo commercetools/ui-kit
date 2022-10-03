@@ -1,6 +1,5 @@
-import type { Theme } from '@emotion/react';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '../styles';
 import type { TMultiLineInputProps } from './multiline-input';
 
@@ -11,11 +10,11 @@ const sizeInputLineHeight = '22px';
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
 // how you can interact with the field is controlled separately by the props, this only influences visuals
-const getTextareaStyles = (props: TMultiLineInputProps, theme: Theme) => {
+const getTextareaStyles = (props: TMultiLineInputProps) => {
   const baseStyles = [
-    getInputStyles(props, theme),
+    getInputStyles(props),
     css`
-      padding: ${vars.spacingXs} ${vars.spacingS};
+      padding: ${designTokens.spacingXs} ${designTokens.spacingS};
       line-height: ${sizeInputLineHeight};
       flex: auto;
       word-break: break-word;

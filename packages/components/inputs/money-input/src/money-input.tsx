@@ -7,9 +7,9 @@ import Select, {
   type Props as ReactSelectProps,
 } from 'react-select';
 import { useIntl } from 'react-intl';
-import { css, useTheme, type Theme } from '@emotion/react';
+import { css, type Theme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import {
   warning,
   isNumberish,
@@ -77,7 +77,7 @@ const SingleValue = ({ id, ...props }: TSingleValue) => (
 
 SingleValue.displayName = 'SingleValue';
 
-type TCreateCurrencySelectStyles = (input: TInputProps, theme: Theme) => void;
+type TCreateCurrencySelectStyles = (input: TInputProps) => void;
 
 export type TInputProps = {
   isDisabled?: boolean;
@@ -86,6 +86,7 @@ export type TInputProps = {
   isReadOnly?: boolean;
   hasFocus?: boolean;
   menuPortalZIndex?: number;
+  /** @deprecated */
   theme?: Theme;
 };
 
@@ -94,18 +95,19 @@ type TBase = {
   color?: string;
 };
 // overwrite styles of createSelectStyles
-const createCurrencySelectStyles: TCreateCurrencySelectStyles = (
-  { hasWarning, hasError, isDisabled, isReadOnly, hasFocus, menuPortalZIndex },
-  theme
-) => {
-  const selectStyles = createSelectStyles(
-    {
-      hasWarning,
-      hasError,
-      menuPortalZIndex,
-    },
-    theme
-  );
+const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
+  hasWarning,
+  hasError,
+  isDisabled,
+  isReadOnly,
+  hasFocus,
+  menuPortalZIndex,
+}) => {
+  const selectStyles = createSelectStyles({
+    hasWarning,
+    hasError,
+    menuPortalZIndex,
+  });
   return {
     ...selectStyles,
     control: (base: TBase, state: ReactSelectProps) => ({
@@ -116,13 +118,13 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = (
       minWidth: '72px',
       borderColor: (() => {
         if (isDisabled)
-          return `${vars.borderColorForInputWhenDisabled} !important`;
-        if (hasError) return vars.borderColorForInputWhenError;
-        if (hasWarning) return vars.borderColorForInputWhenWarning;
-        if (hasFocus) return vars.borderColorForInputWhenFocused;
+          return `${designTokens.borderColorForInputWhenDisabled} !important`;
+        if (hasError) return designTokens.borderColorForInputWhenError;
+        if (hasWarning) return designTokens.borderColorForInputWhenWarning;
+        if (hasFocus) return designTokens.borderColorForInputWhenFocused;
         if (isReadOnly)
-          return `${vars.borderColorForInputWhenReadonly} !important`;
-        return vars.borderColorForInput;
+          return `${designTokens.borderColorForInputWhenReadonly} !important`;
+        return designTokens.borderColorForInput;
       })(),
       cursor: (() => {
         if (isDisabled) return 'not-allowed';
@@ -130,7 +132,7 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = (
         return 'pointer';
       })(),
       backgroundColor: (() => {
-        if (isReadOnly) return vars.backgroundColorForInput;
+        if (isReadOnly) return designTokens.backgroundColorForInput;
         return base.backgroundColor;
       })(),
     }),
@@ -139,15 +141,15 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = (
       marginLeft: 0,
       maxWidth: 'initial',
       color: (() => {
-        if (isDisabled) return vars.fontColorForInputWhenDisabled;
-        if (hasError) return vars.fontColorForInputWhenError;
-        if (hasWarning) return vars.fontColorForInputWhenWarning;
-        if (isReadOnly) return vars.fontColorForInputWhenReadonly;
+        if (isDisabled) return designTokens.fontColorForInputWhenDisabled;
+        if (hasError) return designTokens.fontColorForInputWhenError;
+        if (hasWarning) return designTokens.fontColorForInputWhenWarning;
+        if (isReadOnly) return designTokens.fontColorForInputWhenReadonly;
         return base.color;
       })(),
     }),
     dropdownIndicator: () => ({
-      fill: isReadOnly ? vars.fontColorForInputWhenReadonly : '',
+      fill: isReadOnly ? designTokens.fontColorForInputWhenReadonly : '',
     }),
   };
 };
@@ -677,18 +679,14 @@ const MoneyInput = (props: TMoneyInputProps) => {
 
   const hasNoCurrencies = props.currencies.length === 0;
   const hasFocus = currencyHasFocus || amountHasFocus;
-  const theme = useTheme();
-  const currencySelectStyles = createCurrencySelectStyles(
-    {
-      hasWarning: props.hasWarning,
-      hasError: props.hasError,
-      isDisabled: props.isDisabled,
-      isReadOnly: props.isReadOnly,
-      hasFocus,
-      menuPortalZIndex: props.menuPortalZIndex,
-    },
-    theme
-  );
+  const currencySelectStyles = createCurrencySelectStyles({
+    hasWarning: props.hasWarning,
+    hasError: props.hasError,
+    isDisabled: props.isDisabled,
+    isReadOnly: props.isReadOnly,
+    hasFocus,
+    menuPortalZIndex: props.menuPortalZIndex,
+  });
   const options = props.currencies.map((currencyCode) => ({
     label: currencyCode,
     value: currencyCode,
@@ -817,7 +815,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
               props.hasHighPrecisionBadge &&
                 isHighPrecision &&
                 css`
-                  padding-right: ${vars.spacingL};
+                  padding-right: ${designTokens.spacingL};
                 `,
             ]}
             placeholder={props.placeholder}
@@ -848,7 +846,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
                   // so that the tooltip is flush with the component
                   styles={{
                     body: {
-                      margin: `${vars.spacingS} -${vars.spacingXs} ${vars.spacingS} 0`,
+                      margin: `${designTokens.spacingS} -${designTokens.spacingXs} ${designTokens.spacingS} 0`,
                     },
                   }}
                   title={intl.formatMessage(messages.highPrecision)}

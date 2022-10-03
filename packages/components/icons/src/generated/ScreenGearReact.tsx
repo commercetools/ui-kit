@@ -3,10 +3,9 @@
 // Original SVG file: src/svg/screen-gear.react.svg
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { Theme } from '@emotion/react';
 import { warning } from '@commercetools-uikit/utils';
-import { css, ClassNames, useTheme } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { css, ClassNames } from '@emotion/react';
+import { designTokens } from '@commercetools-uikit/design-system';
 export type Props = {
   color?:
     | 'solid'
@@ -72,42 +71,41 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const getColor = (color: Props['color'], theme: Theme) => {
+const getColor = (color: Props['color']) => {
   if (!color) return 'inherit';
-  const overwrittenVars = { ...vars, ...theme };
   let iconColor;
 
   switch (color) {
     case 'solid':
-      iconColor = overwrittenVars.colorSolid;
+      iconColor = designTokens.colorSolid;
       break;
 
     case 'neutral60':
-      iconColor = overwrittenVars.colorNeutral60;
+      iconColor = designTokens.colorNeutral60;
       break;
 
     case 'surface':
-      iconColor = overwrittenVars.colorSurface;
+      iconColor = designTokens.colorSurface;
       break;
 
     case 'info':
-      iconColor = overwrittenVars.colorInfo;
+      iconColor = designTokens.colorInfo;
       break;
 
     case 'primary':
-      iconColor = overwrittenVars.colorPrimary;
+      iconColor = designTokens.colorPrimary;
       break;
 
     case 'primary40':
-      iconColor = overwrittenVars.colorPrimary40;
+      iconColor = designTokens.colorPrimary40;
       break;
 
     case 'warning':
-      iconColor = overwrittenVars.colorWarning;
+      iconColor = designTokens.colorWarning;
       break;
 
     case 'error':
-      iconColor = overwrittenVars.colorError;
+      iconColor = designTokens.colorError;
       break;
 
     default:
@@ -125,9 +123,9 @@ const getColor = (color: Props['color'], theme: Theme) => {
   return iconColor;
 };
 
-export const getIconStyles = (props: Props, theme: Theme) => css`
+export const getIconStyles = (props: Props) => css`
   *:not([fill='none']) {
-    fill: ${getColor(props.color, theme)};
+    fill: ${getColor(props.color)};
   }
   &,
   image {
@@ -153,19 +151,13 @@ const SvgScreenGear = (props: SVGProps) => (
 
 SvgScreenGear.displayName = 'SvgScreenGear';
 
-const ScreenGearIcon = (props: Props) => {
-  const theme = useTheme();
-  return (
-    <ClassNames>
-      {({ css: createClass }) => (
-        <SvgScreenGear
-          {...props}
-          className={createClass(getIconStyles(props, theme))}
-        />
-      )}
-    </ClassNames>
-  );
-};
+const ScreenGearIcon = (props: Props) => (
+  <ClassNames>
+    {({ css: createClass }) => (
+      <SvgScreenGear {...props} className={createClass(getIconStyles(props))} />
+    )}
+  </ClassNames>
+);
 
 ScreenGearIcon.displayName = 'ScreenGearIcon';
 export default ScreenGearIcon;

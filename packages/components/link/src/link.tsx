@@ -1,18 +1,13 @@
 import type { LocationDescriptor } from 'history';
-import type { Theme } from '@emotion/react';
 import type { MessageDescriptor } from 'react-intl';
 import { Children, type ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { Link as ReactRouterLink } from 'react-router-dom';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import { ExternalLinkIcon } from '@commercetools-uikit/icons';
-
-type TExtendedTheme = Theme & {
-  [key: string]: string;
-};
 
 type TLinkProps = {
   /**
@@ -73,15 +68,12 @@ const defaultProps: Pick<TLinkProps, 'tone' | 'isExternal'> = {
   isExternal: false,
 };
 
-const getTextColorValue = (
-  tone: TLinkProps['tone'] = 'primary',
-  overwrittenVars: TExtendedTheme
-) => {
+const getTextColorValue = (tone: TLinkProps['tone'] = 'primary') => {
   if (tone === 'primary') {
-    return overwrittenVars.colorPrimary;
+    return designTokens.colorPrimary;
   }
 
-  return overwrittenVars.fontColorForTextWhenInverted;
+  return designTokens.fontColorForTextWhenInverted;
 };
 const getIconColorValue = (
   tone: TLinkProps['tone'] = 'primary'
@@ -92,30 +84,22 @@ const getIconColorValue = (
 
   return tone;
 };
-const getActiveColorValue = (
-  tone: string = 'primary',
-  overwrittenVars: TExtendedTheme
-) => {
+const getActiveColorValue = (tone: string = 'primary') => {
   if (tone === 'primary') {
-    return overwrittenVars.colorPrimary25;
+    return designTokens.colorPrimary25;
   }
 
-  return overwrittenVars.fontColorForTextWhenInverted;
+  return designTokens.fontColorForTextWhenInverted;
 };
 
-const getLinkStyles = (props: TLinkProps, theme: Theme) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
-  const color = getTextColorValue(props.tone, overwrittenVars);
-  const hoverColor = getActiveColorValue(props.tone, overwrittenVars);
+const getLinkStyles = (props: TLinkProps) => {
+  const color = getTextColorValue(props.tone);
+  const hoverColor = getActiveColorValue(props.tone);
 
   return css`
     font-family: inherit;
     color: ${color};
-    font-size: ${overwrittenVars.fontSizeDefault};
+    font-size: ${designTokens.fontSizeDefault};
     &:hover,
     &:focus,
     &:active {
@@ -127,14 +111,12 @@ const getLinkStyles = (props: TLinkProps, theme: Theme) => {
 
 const Wrapper = styled.span`
   > svg {
-    margin: 0 0 0 ${vars.spacingXs} !important;
+    margin: 0 0 0 ${designTokens.spacingXs} !important;
     vertical-align: bottom;
   }
 `;
 
 const Link = (props: TLinkProps) => {
-  const theme = useTheme();
-
   const remainingProps = filterInvalidAttributes(props);
 
   // `filterInvalidAttributes` strips off `intlMessage` and `children`
@@ -149,7 +131,7 @@ const Link = (props: TLinkProps) => {
     return (
       <Wrapper>
         <a
-          css={getLinkStyles(props, theme)}
+          css={getLinkStyles(props)}
           href={props.to}
           target="_blank"
           rel="noopener noreferrer"
@@ -173,7 +155,7 @@ const Link = (props: TLinkProps) => {
 
   return (
     <ReactRouterLink
-      css={getLinkStyles(props, theme)}
+      css={getLinkStyles(props)}
       to={props.to}
       {...remainingProps}
     >

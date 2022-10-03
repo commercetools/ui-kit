@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { RowExpandCollapseButton } from './cell.styles';
 import convertNumericDimensionToPixelValue from './utils/convert-numeric-dimension-to-pixel-value';
 import type { TDataTableProps } from './data-table';
@@ -14,7 +14,7 @@ const getClickableRowStyle = (props: TGetClickableRowStyleProps) => {
     return css`
       cursor: pointer;
       &:hover td {
-        background: ${vars.backgroundColorForInputWhenHovered};
+        background: ${designTokens.backgroundColorForInputWhenHovered};
       }
     `;
   }

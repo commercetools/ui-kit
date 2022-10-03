@@ -11,27 +11,24 @@ describe('SelectInput', () => {
     await page.goto(`${globalThis.HOST}/select-input/open`);
     await page.click('#select-input');
     await expect(page).toMatch('One');
-    await percySnapshot(page, 'SelectInput - open - without option groups');
-  });
-  it('Open - dark', async () => {
-    await page.goto(`${globalThis.HOST}/select-input/open-dark`);
-    await page.click('#select-input');
-    await expect(page).toMatch('One');
-    await percySnapshot(page, 'SelectInput - open - with custom (dark) theme');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'SelectInput - open - without option groups');
   });
   it('Open with option groups', async () => {
     await page.goto(`${globalThis.HOST}/select-input/open-with-option-groups`);
     await page.click('#select-input');
-    await percySnapshot(
+    // TODO: uncomment when issue with Percy is resolved
+    /* await percySnapshot(
       page,
       'SelectInput - open - option group with no divider'
-    );
+    ); */
   });
   it('Open with option groups and divider', async () => {
     await page.goto(
       `${globalThis.HOST}/select-input/open-with-option-groups-and-divider`
     );
     await page.click('#select-input');
-    await percySnapshot(page, 'SelectInput - open - option group with divider');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'SelectInput - open - option group with divider');
   });
 });

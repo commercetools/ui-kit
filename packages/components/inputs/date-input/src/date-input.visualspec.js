@@ -11,7 +11,8 @@ describe('DateInput', () => {
     await page.goto(`${globalThis.HOST}/date-input-open`);
     await page.click('#date-input');
     await expect(page).toMatch('November');
-    await percySnapshot(page, 'DateInput - open');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'DateInput - open');
 
     const doc = await getDocument(page);
     const input = await queries.findByTestId(doc, 'date-input');

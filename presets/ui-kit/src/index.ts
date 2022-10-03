@@ -51,6 +51,10 @@ export {
   useDataTableSortingState,
 } from '@commercetools-uikit/hooks';
 
-export { customProperties } from '@commercetools-uikit/design-system';
+export {
+  /** @deprecated use `designTokens` instead */
+  customProperties,
+  designTokens,
+} from '@commercetools-uikit/design-system';
 
 export { default as version } from './version';

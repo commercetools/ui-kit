@@ -1,4 +1,3 @@
-import { ThemeProvider } from '@emotion/react';
 import {
   InformationIcon,
   SecondaryIconButton,
@@ -7,7 +6,7 @@ import { Suite, Spec } from '../../../../../test/percy';
 
 export const routePath = '/secondary-icon-button';
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="regular">
       <SecondaryIconButton
@@ -24,15 +23,6 @@ export const component = ({ themes }) => (
         isDisabled={true}
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (dark) theme">
-        <SecondaryIconButton
-          icon={<InformationIcon />}
-          label="A label text"
-          onClick={() => {}}
-        />
-      </Spec>
-    </ThemeProvider>
     <Spec label="color - solid">
       <SecondaryIconButton
         icon={<InformationIcon />}

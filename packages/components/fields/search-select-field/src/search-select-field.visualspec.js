@@ -16,6 +16,7 @@ describe('SearchSelectField', () => {
     const selects = await queries.findAllByLabelText(doc, 'State');
     const select = selects[0];
     await select.click();
-    await percySnapshot(page, 'SearchSelectField - open');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'SearchSelectField - open');
   });
 });

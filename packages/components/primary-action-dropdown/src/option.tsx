@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 type TOption = {
   /**
@@ -32,21 +32,23 @@ const Option = (props: TOption) => (
         display: block;
         text-align: left;
         width: 100%;
-        padding: ${vars.spacingS};
-        background-color: ${vars.colorSurface};
+        padding: ${designTokens.spacingS};
+        background-color: ${designTokens.colorSurface};
         &:first-of-type {
-          border-radius: ${vars.borderRadius6} ${vars.borderRadius6} 0 0;
+          border-radius: ${designTokens.borderRadius6}
+            ${designTokens.borderRadius6} 0 0;
         }
         &:last-of-type {
-          border-radius: 0 0 ${vars.borderRadius6} ${vars.borderRadius6};
+          border-radius: 0 0 ${designTokens.borderRadius6}
+            ${designTokens.borderRadius6};
         }
         &:hover {
-          background-color: ${vars.colorNeutral95};
+          background-color: ${designTokens.colorNeutral95};
         }
       `,
       props.isDisabled &&
         css`
-          color: ${vars.colorNeutral};
+          color: ${designTokens.colorNeutral};
         `,
     ]}
   >

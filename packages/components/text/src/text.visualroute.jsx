@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { ThemeProvider } from '@emotion/react';
 import { Text } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
@@ -11,7 +10,7 @@ const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
 
 export const routePath = '/text';
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="Headline - h1">
       <Text.Headline as="h1">{'Title H1'}</Text.Headline>
@@ -108,13 +107,6 @@ export const component = ({ themes }) => (
       <Text.Body tone="negative">Body text negative</Text.Body>
     </Spec>
     <NarrowBox>
-      <ThemeProvider theme={themes.darkTheme}>
-        <Spec label="Body - tone - inverted">
-          <Text.Body tone="inverted">Body text inverted</Text.Body>
-        </Spec>
-      </ThemeProvider>
-    </NarrowBox>
-    <NarrowBox>
       <Spec label="Body - truncate">
         <Text.Body truncate={true}>
           A longer body text that needs to be truncated.
@@ -149,13 +141,6 @@ export const component = ({ themes }) => (
     <Spec label="Detail - tone - negative">
       <Text.Detail tone="negative">Detail text negative</Text.Detail>
     </Spec>
-    <NarrowBox>
-      <ThemeProvider theme={themes.darkTheme}>
-        <Spec label="Detail - tone - inverted">
-          <Text.Detail tone="inverted">Detail text inverted</Text.Detail>
-        </Spec>
-      </ThemeProvider>
-    </NarrowBox>
     <NarrowBox>
       <Spec label="Detail - truncate">
         <Text.Detail truncate={true}>
@@ -193,25 +178,5 @@ export const component = ({ themes }) => (
     <Spec label="Detail (intl message)">
       <Text.Detail intlMessage={intlMessage} />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="Headline (dark theme)">
-        <Text.Headline as="h1">Dark theme</Text.Headline>
-      </Spec>
-      <Spec label="Subheadline (dark theme)">
-        <Text.Subheadline as="h4">Dark theme</Text.Subheadline>
-      </Spec>
-      <Spec label="Body (dark theme)">
-        <Text.Body>Dark theme</Text.Body>
-      </Spec>
-      <Spec label="Body as span element (dark theme)">
-        <Text.Body as="span">Dark theme</Text.Body>
-      </Spec>
-      <Spec label="Detail (dark theme)">
-        <Text.Detail>Dark theme</Text.Detail>
-      </Spec>
-      <Spec label="Wrap (dark theme)">
-        <Text.Wrap>Dark theme</Text.Wrap>
-      </Spec>
-    </ThemeProvider>
   </Suite>
 );

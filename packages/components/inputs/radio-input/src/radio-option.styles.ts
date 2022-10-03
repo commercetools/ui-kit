@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { TOptionProps } from './radio-option';
 
 type TStylesProps = Pick<
@@ -10,24 +10,24 @@ type TStylesProps = Pick<
 
 const LabelTextWrapper = styled.div<TStylesProps>`
   grid-area: label;
-  margin-left: ${customProperties.spacingS};
+  margin-left: ${designTokens.spacingS};
   font-size: 1rem;
   font-family: inherit;
   color: ${(props) =>
     props.isDisabled
-      ? customProperties.fontColorForInputWhenDisabled
-      : customProperties.fontColorForInput};
+      ? designTokens.fontColorForInputWhenDisabled
+      : designTokens.fontColorForInput};
 `;
 
 const AdditionalTextWrapper = styled.div<TStylesProps>`
   grid-area: content;
-  margin-left: ${customProperties.spacingXs};
+  margin-left: ${designTokens.spacingXs};
   font-size: 1rem;
   font-family: inherit;
   color: ${(props) =>
     props.isDisabled
-      ? customProperties.fontColorForInputWhenDisabled
-      : customProperties.fontColorForInput};
+      ? designTokens.fontColorForInputWhenDisabled
+      : designTokens.fontColorForInput};
 `;
 
 const RadioOptionsWrapper = styled.div<TStylesProps>`
@@ -41,37 +41,37 @@ const RadioOptionsWrapper = styled.div<TStylesProps>`
 
 const getSvgContainerBorderStroke = (props: TStylesProps) => {
   if (props.isDisabled) {
-    return customProperties.borderColorForInputWhenDisabled;
+    return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.borderColorForInputWhenError;
+    return designTokens.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return customProperties.borderColorForInputWhenWarning;
+    return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isHovered && !props.isDisabled) {
-    return customProperties.borderColorForInputWhenFocused;
+    return designTokens.borderColorForInputWhenFocused;
   }
   if (props.isReadOnly) {
-    return customProperties.borderColorForInputWhenReadonly;
+    return designTokens.borderColorForInputWhenReadonly;
   }
-  return customProperties.borderColorForInput;
+  return designTokens.borderColorForInput;
 };
 
 const getSvgContainerContentFill = (props: TStylesProps) => {
   if (props.isDisabled) {
-    return customProperties.fontColorForInputWhenDisabled;
+    return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.fontColorForInputWhenError;
+    return designTokens.fontColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return customProperties.fontColorForInputWhenWarning;
+    return designTokens.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return customProperties.fontColorForInputWhenReadonly;
+    return designTokens.fontColorForInputWhenReadonly;
   }
-  return customProperties.borderColorForInputWhenFocused;
+  return designTokens.borderColorForInputWhenFocused;
 };
 
 const getContainerStyles = (props: TOptionProps) => css`
@@ -80,8 +80,8 @@ const getContainerStyles = (props: TOptionProps) => css`
   grid-area: radio;
   svg {
     fill: ${props.isDisabled
-      ? customProperties.backgroundColorForInputWhenDisabled
-      : customProperties.backgroundColorForInput};
+      ? designTokens.backgroundColorForInputWhenDisabled
+      : designTokens.backgroundColorForInput};
   }
 
   svg *[data-style='radio-option__border'] {
@@ -94,34 +94,34 @@ const getContainerStyles = (props: TOptionProps) => css`
 
 const getSvgLabelBorderStroke = (props: TStylesProps) => {
   if (props.isDisabled) {
-    return customProperties.borderColorForInputWhenDisabled;
+    return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.borderColorForInputWhenError;
+    return designTokens.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return customProperties.borderColorForInputWhenWarning;
+    return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return customProperties.borderColorForInputWhenReadonly;
+    return designTokens.borderColorForInputWhenReadonly;
   }
-  return customProperties.borderColorForInputWhenFocused;
+  return designTokens.borderColorForInputWhenFocused;
 };
 
 const getLabelColor = (props: TStylesProps) => {
   if (props.isDisabled) {
-    return customProperties.fontColorForInputWhenDisabled;
+    return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return customProperties.fontColorForInputWhenError;
+    return designTokens.fontColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return customProperties.fontColorForInputWhenWarning;
+    return designTokens.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return customProperties.fontColorForInputWhenReadonly;
+    return designTokens.fontColorForInputWhenReadonly;
   }
-  return customProperties.fontColorForInput;
+  return designTokens.fontColorForInput;
 };
 const getLabelCursor = (props: TStylesProps) => {
   if (props.isDisabled) {
@@ -143,7 +143,7 @@ const getLabelStyles = (props: TStylesProps) => css`
     stroke: ${getSvgLabelBorderStroke(props)};
   }
   :focus-within ${LabelTextWrapper} {
-    outline: auto 2px ${customProperties.borderColorForInputWhenFocused};
+    outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
     outline-offset: 3px;
   }
 `;

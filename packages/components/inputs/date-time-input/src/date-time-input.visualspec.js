@@ -10,6 +10,7 @@ describe('DateTimeInput', () => {
     await page.goto(`${globalThis.HOST}/date-time-input-open`);
     await page.click('#date-time-input');
     await expect(page).toMatch('November');
-    await percySnapshot(page, 'DateTimeInput - open');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'DateTimeInput - open');
   });
 });

@@ -1,13 +1,5 @@
-import type { Theme } from '@emotion/react';
 import { css } from '@emotion/react';
-import {
-  customProperties,
-  designTokens,
-} from '@commercetools-uikit/design-system';
-
-type TExtendedTheme = {
-  [key: string]: string;
-} & Theme;
+import { designTokens } from '@commercetools-uikit/design-system';
 
 type TInputProps = {
   isDisabled?: boolean;
@@ -18,82 +10,77 @@ type TInputProps = {
   readOnly?: boolean;
 };
 
-const getInputBorderColor = (vars: TExtendedTheme, props: TInputProps) => {
+const getInputBorderColor = (props: TInputProps) => {
   if (props.isDisabled || props.disabled) {
-    return vars[designTokens.borderColorForInputWhenDisabled];
+    return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars[designTokens.borderColorForInputWhenError];
+    return designTokens.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return vars[designTokens.borderColorForInputWhenWarning];
+    return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly || props.readOnly) {
-    return vars[designTokens.borderColorForInputWhenReadonly];
+    return designTokens.borderColorForInputWhenReadonly;
   }
-  return vars[designTokens.borderColorForInput];
+  return designTokens.borderColorForInput;
 };
 
-const getInputFontColor = (vars: TExtendedTheme, props: TInputProps) => {
+const getInputFontColor = (props: TInputProps) => {
   if (props.isDisabled || props.disabled) {
-    return vars[designTokens.fontColorForInputWhenDisabled];
+    return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars[designTokens.fontColorForInputWhenError];
+    return designTokens.fontColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return vars[designTokens.fontColorForInputWhenWarning];
+    return designTokens.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly || props.readOnly) {
-    return vars[designTokens.fontColorForInputWhenReadonly];
+    return designTokens.fontColorForInputWhenReadonly;
   }
-  return vars[designTokens.fontColorForInput];
+  return designTokens.fontColorForInput;
 };
 
-const getInputStyles = (props: TInputProps, theme?: Theme) => {
-  const vars: TExtendedTheme = {
-    ...customProperties,
-    ...theme,
-  };
-
+const getInputStyles = (props: TInputProps) => {
   return css`
     appearance: none;
     background-color: ${props.isDisabled || props.disabled
-      ? vars[designTokens.backgroundColorForInputWhenDisabled]
-      : vars[designTokens.backgroundColorForInput]};
-    border: 1px solid ${getInputBorderColor(vars, props)};
-    border-radius: ${vars[designTokens.borderRadiusForInput]};
+      ? designTokens.backgroundColorForInputWhenDisabled
+      : designTokens.backgroundColorForInput};
+    border: 1px solid ${getInputBorderColor(props)};
+    border-radius: ${designTokens.borderRadiusForInput};
     box-sizing: border-box;
-    color: ${getInputFontColor(vars, props)};
+    color: ${getInputFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     display: flex;
     flex: 1;
     font-family: inherit;
-    font-size: ${vars[designTokens.fontSizeForInput]};
-    height: ${vars.sizeHeightInput};
-    min-height: ${vars.sizeHeightInput};
+    font-size: ${designTokens.fontSizeForInput};
+    height: ${designTokens.sizeHeightInput};
+    min-height: ${designTokens.sizeHeightInput};
     opacity: ${props.isDisabled || props.disabled
       ? '1'
       : 'unset'}; /* fix for mobile safari */
     outline: none;
     overflow: hidden;
-    padding: 0 ${vars.spacingS};
-    transition: border-color ${vars.transitionStandard},
-      background-color ${vars.transitionStandard},
-      color ${vars.transitionStandard}, box-shadow ${vars.transitionStandard};
+    padding: 0 ${designTokens.spacingS};
+    transition: border-color ${designTokens.transitionStandard},
+      background-color ${designTokens.transitionStandard},
+      color ${designTokens.transitionStandard},
+      box-shadow ${designTokens.transitionStandard};
     width: 100%;
 
     &::placeholder {
-      color: ${vars[designTokens.placeholderFontColorForInput]};
+      color: ${designTokens.placeholderFontColorForInput};
     }
     :active,
     :focus,
     :hover:not(:disabled):not(:read-only) {
-      border-color: ${vars[designTokens.borderColorForInputWhenFocused]};
+      border-color: ${designTokens.borderColorForInputWhenFocused};
     }
     :focus {
-      box-shadow: inset 0 0 0 2px
-        ${vars[designTokens.borderColorForInputWhenFocused]};
+      box-shadow: inset 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
     }
   `;
 };

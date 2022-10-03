@@ -19,11 +19,14 @@
   "module": "dist/commercetools-uikit-design-system.esm.js",
   "files": ["dist", "materials"],
   "scripts": {
-    "build:tokens": "node ./scripts/generate-custom-properties.js",
+    "build:tokens": "node ./scripts/generate-design-tokens.js",
     "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn build:tokens'"
   },
   "dependencies": {
     "@babel/runtime": "^7.19.0",
-    "@babel/runtime-corejs3": "^7.19.1"
+    "@babel/runtime-corejs3": "^7.19.1",
+    "lodash": "4.17.21",
+    "prop-types": "15.8.1",
+    "react": "17.0.2"
   }
 }

@@ -1,8 +1,6 @@
-import type { Theme } from '@emotion/react';
-
-import { ReactNode } from 'react';
-import { css, useTheme } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import type { ReactNode } from 'react';
+import { css } from '@emotion/react';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 type Tone =
   | 'critical'
@@ -35,51 +33,49 @@ export const availableTones: Tone[] = [
 const getPaddingStyle = (props: Props) => {
   if (props.isCondensed)
     return css`
-      padding: 1px ${vars.spacingXs};
+      padding: 1px ${designTokens.spacingXs};
     `;
   return css`
-    padding: ${vars.spacingXs} ${vars.spacingS};
+    padding: ${designTokens.spacingXs} ${designTokens.spacingS};
   `;
 };
 
-const getToneStyles = (props: Props, theme: Theme) => {
-  const overwrittenVars = { ...vars, ...theme };
-
+const getToneStyles = (props: Props) => {
   switch (props.tone) {
     case 'critical': {
       return css`
-        background-color: ${overwrittenVars.colorError95};
-        border: 1px solid ${overwrittenVars.colorError};
+        background-color: ${designTokens.colorError95};
+        border: 1px solid ${designTokens.colorError};
       `;
     }
     case 'warning': {
       return css`
-        background-color: ${overwrittenVars.colorWarning95};
-        border: 1px solid ${overwrittenVars.colorWarning};
+        background-color: ${designTokens.colorWarning95};
+        border: 1px solid ${designTokens.colorWarning};
       `;
     }
     case 'positive': {
       return css`
-        background-color: ${overwrittenVars.colorPrimary85};
-        border: 1px solid ${overwrittenVars.colorPrimary40};
+        background-color: ${designTokens.colorPrimary85};
+        border: 1px solid ${designTokens.colorPrimary40};
       `;
     }
     case 'information': {
       return css`
-        background-color: ${overwrittenVars.colorInfo95};
-        border: 1px solid ${overwrittenVars.colorInfo};
+        background-color: ${designTokens.colorInfo95};
+        border: 1px solid ${designTokens.colorInfo};
       `;
     }
     case 'primary': {
       return css`
-        background-color: ${overwrittenVars.colorPrimary95};
-        border: 1px solid ${overwrittenVars.colorPrimary25};
+        background-color: ${designTokens.colorPrimary95};
+        border: 1px solid ${designTokens.colorPrimary25};
       `;
     }
     case 'secondary': {
       return css`
-        background-color: ${overwrittenVars.colorNeutral90};
-        border: 1px solid ${overwrittenVars.colorNeutral60};
+        background-color: ${designTokens.colorNeutral90};
+        border: 1px solid ${designTokens.colorNeutral60};
       `;
     }
     default:
@@ -87,23 +83,20 @@ const getToneStyles = (props: Props, theme: Theme) => {
   }
 };
 
-const getStampStyles = (_props: Props, theme: Theme) => {
-  const overwrittenVars = { ...vars, ...theme };
-
+const getStampStyles = (_props: Props) => {
   return css`
-    color: ${overwrittenVars.colorSolid};
-    font-size: ${overwrittenVars.fontSizeDefault};
-    border-radius: ${overwrittenVars.borderRadius2};
+    color: ${designTokens.colorSolid};
+    font-size: ${designTokens.fontSizeDefault};
+    border-radius: ${designTokens.borderRadius2};
   `;
 };
 
 const Stamp = (props: Props) => {
-  const theme = useTheme();
   return (
     <div
       css={[
-        getStampStyles(props, theme),
-        getToneStyles(props, theme),
+        getStampStyles(props),
+        getToneStyles(props),
         getPaddingStyle(props),
       ]}
     >

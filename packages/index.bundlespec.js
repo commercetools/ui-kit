@@ -1,8 +1,17 @@
-import { customProperties, version } from '@commercetools-frontend/ui-kit';
+import {
+  customProperties,
+  designTokens,
+  version,
+} from '@commercetools-frontend/ui-kit';
 
 describe('exports', () => {
+  // This field has been deprecated
   it('should export custom-properties', () => {
     expect(customProperties).toBeTruthy();
+  });
+
+  it('should export design-tokens', () => {
+    expect(designTokens).toBeTruthy();
   });
 
   describe('version', () => {

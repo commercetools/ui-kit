@@ -5,13 +5,13 @@ import {
   type FocusEventHandler,
   type ReactNode,
 } from 'react';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import {
   MultilineInput,
@@ -143,8 +143,6 @@ const TranslationInput = (props: TranslationInputProps) => {
     props.error ||
     props.warning;
 
-  const theme = useTheme();
-
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
@@ -162,7 +160,7 @@ const TranslationInput = (props: TranslationInputProps) => {
           display: flex;
         `}
       >
-        <label htmlFor={props.id} css={getLanguageLabelStyles(props, theme)}>
+        <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
           {/* FIXME: add proper tone for disabled when tones are refactored */}
           <Text.Detail tone="secondary">
             {props.language.toUpperCase()}
@@ -231,7 +229,7 @@ const TranslationInput = (props: TranslationInputProps) => {
                       position: absolute;
                       top: 0;
                       right: 0;
-                      margin-top: ${customProperties.spacingXs};
+                      margin-top: ${designTokens.spacingXs};
                     `,
                 ]}
               >

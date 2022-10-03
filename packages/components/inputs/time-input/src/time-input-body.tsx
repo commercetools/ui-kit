@@ -1,5 +1,4 @@
 import { forwardRef, type KeyboardEvent, type MouseEvent } from 'react';
-import { useTheme } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
@@ -31,10 +30,9 @@ type TClearSectionProps = {
 };
 
 export const ClearSection = (props: TClearSectionProps) => {
-  const theme = useTheme();
   return (
     <AccessibleButton
-      css={getClearSectionStyles(theme)}
+      css={getClearSectionStyles()}
       label="clear"
       aria-label="clear"
       onClick={props.onClear}
@@ -48,10 +46,9 @@ ClearSection.displayName = 'ClearSection';
 
 const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
   (props, ref) => {
-    const theme = useTheme();
     return (
       <Inline alignItems="center">
-        <StyledInputContainer css={getInputContainerStyles(props, theme)}>
+        <StyledInputContainer css={getInputContainerStyles(props)}>
           <input
             ref={ref}
             css={getTimeInputStyles(props)}
@@ -87,7 +84,7 @@ const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
             />
           )}
           <StyledClockIconContainer
-            css={getClockIconContainerStyles(props, theme)}
+            css={getClockIconContainerStyles(props)}
             htmlFor={props.id}
             data-toggle
           >

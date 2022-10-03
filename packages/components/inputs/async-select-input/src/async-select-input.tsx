@@ -1,7 +1,6 @@
 import type { ReactNode, FocusEvent } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
-import { useTheme } from '@emotion/react';
 import {
   components as defaultComponents,
   type ActionMeta,
@@ -307,7 +306,6 @@ const defaultProps: Pick<
 };
 
 const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
-  const theme = useTheme();
   const intl = useIntl();
 
   if (!props.isReadOnly) {
@@ -358,20 +356,17 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           }
           menuIsOpen={props.isReadOnly ? false : undefined}
           styles={
-            createSelectStyles(
-              {
-                hasWarning: props.hasWarning,
-                hasError: props.hasError,
-                showOptionGroupDivider: props.showOptionGroupDivider,
-                menuPortalZIndex: props.menuPortalZIndex,
-                isDisabled: props.isDisabled,
-                isReadOnly: props.isReadOnly,
-                iconLeft: props.iconLeft,
-                isMulti: props.isMulti,
-                hasValue: !isEmpty(props.value),
-              },
-              theme
-            ) as ReactSelectAsyncProps['styles']
+            createSelectStyles({
+              hasWarning: props.hasWarning,
+              hasError: props.hasError,
+              showOptionGroupDivider: props.showOptionGroupDivider,
+              menuPortalZIndex: props.menuPortalZIndex,
+              isDisabled: props.isDisabled,
+              isReadOnly: props.isReadOnly,
+              iconLeft: props.iconLeft,
+              isMulti: props.isMulti,
+              hasValue: !isEmpty(props.value),
+            }) as ReactSelectAsyncProps['styles']
           }
           filterOption={props.filterOption}
           // react-select uses "id" (for the container) and "inputId" (for the input),

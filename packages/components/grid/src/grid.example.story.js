@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, number } from '@storybook/addon-knobs/react';
 import styled from '@emotion/styled';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import Section from '../../../../docs/.storybook/decorators/section';
@@ -16,7 +16,7 @@ const Placeholder = styled.div`
   align-items: center;
   justify-content: center;
   background-color: pink;
-  padding: ${customProperties.spacingM};
+  padding: ${designTokens.spacingM};
 `;
 
 const renderGridElements = () => {

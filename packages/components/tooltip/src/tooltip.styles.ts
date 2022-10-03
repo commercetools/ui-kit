@@ -1,17 +1,19 @@
 import { CSSProperties } from 'react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TTooltipProps } from './tooltip';
+
+type TDesignTokenName = keyof typeof designTokens;
 
 const getOffsetMargin = ({ placement }: { placement: string }) => {
   const position = (placement && placement.split('-')[0]) || '';
   switch (position) {
     case 'left':
     case 'right':
-      return `0 ${vars.spacingXs}`;
+      return `0 ${designTokens.spacingXs}`;
     case 'top':
     case 'bottom':
-      return `${vars.spacingXs} 0`;
+      return `${designTokens.spacingXs} 0`;
     default:
       return '';
   }
@@ -19,14 +21,14 @@ const getOffsetMargin = ({ placement }: { placement: string }) => {
 
 export const Body = styled.div`
   font-family: inherit;
-  border-radius: ${vars.borderRadius6};
-  padding: ${vars.spacingXs} ${vars.spacingS};
+  border-radius: ${designTokens.borderRadius6};
+  padding: ${designTokens.spacingXs} ${designTokens.spacingS};
   border: 'none';
-  box-shadow: ${vars.shadow15};
+  box-shadow: ${designTokens.shadow15};
   font-size: 0.857rem;
   opacity: 0.95;
-  color: ${vars.colorSurface};
-  background-color: ${vars.colorAccent};
+  color: ${designTokens.colorSurface};
+  background-color: ${designTokens.colorAccent};
 `;
 
 // here we use object styles so we can spread these
@@ -41,10 +43,14 @@ export const getBodyStyles = ({
   placement: string;
   customStyles?: CSSProperties;
 }): CSSProperties => {
+  const constraintTokenName = `constraint${constraint}`;
   return {
     fontFamily: 'inherit',
     margin: `${getOffsetMargin({ placement })} !important`,
-    maxWidth: (vars as Record<string, string>)[`constraint${constraint}`],
+    maxWidth:
+      constraintTokenName in designTokens
+        ? designTokens[constraintTokenName as TDesignTokenName]
+        : 'auto',
     // so hovering over the tooltip when the tooltip overlaps the component
     pointerEvents: 'none',
     width: constraint === 'auto' ? 'auto' : undefined,

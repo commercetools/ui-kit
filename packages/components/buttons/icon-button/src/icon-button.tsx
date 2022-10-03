@@ -7,7 +7,7 @@ import {
   cloneElement,
 } from 'react';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
@@ -119,11 +119,11 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid ${vars.colorSurface};
-          background-color: ${vars.colorSurface};
-          box-shadow: ${vars.shadow7};
-          color: ${vars.colorSolid};
-          transition: background-color ${vars.transitionLinear80Ms},
+          border: 1px solid ${designTokens.colorSurface};
+          background-color: ${designTokens.colorSurface};
+          box-shadow: ${designTokens.shadow7};
+          color: ${designTokens.colorSolid};
+          transition: background-color ${designTokens.transitionLinear80Ms},
             box-shadow 150ms ease-in-out;
         `,
         getStateStyles(props.isDisabled, isActive, props.theme),

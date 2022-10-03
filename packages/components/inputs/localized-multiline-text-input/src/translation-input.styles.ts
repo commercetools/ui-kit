@@ -1,9 +1,6 @@
-import { css, type Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import {
-  customProperties as vars,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -28,35 +25,22 @@ const getTextareaStyles = (props: TTranslationInputStylesProps) => {
   return baseStyles;
 };
 
-const getLanguageLabelStyles = (
-  _props: TTranslationInputStylesProps,
-  theme: Theme
-) => {
-  const overwrittenVars = {
-    ...vars,
-    ...theme,
-  };
-
+const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
   return css`
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
-    color: ${overwrittenVars[designTokens.fontColorForInputWhenDisabled]};
-    line-height: calc(${vars.sizeHeightInput} - 2 * ${vars.borderRadius1});
-    background-color: ${overwrittenVars[
-      designTokens.backgroundColorForInputWhenDisabled
-    ]};
-    border-top-left-radius: ${overwrittenVars[
-      designTokens.borderRadiusForInput
-    ]};
-    border-bottom-left-radius: ${overwrittenVars[
-      designTokens.borderRadiusForInput
-    ]};
-    border: 1px ${overwrittenVars[designTokens.borderColorForInputWhenDisabled]}
-      solid;
-    padding: 0 ${vars.spacingS};
-    transition: border-color ${vars.transitionStandard},
-      background-color ${vars.transitionStandard},
-      color ${vars.transitionStandard};
+    color: ${designTokens.fontColorForInputWhenDisabled};
+    line-height: calc(
+      ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
+    );
+    background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+    border-top-left-radius: ${designTokens.borderRadiusForInput};
+    border-bottom-left-radius: ${designTokens.borderRadiusForInput};
+    border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
+    padding: 0 ${designTokens.spacingS};
+    transition: border-color ${designTokens.transitionStandard},
+      background-color ${designTokens.transitionStandard},
+      color ${designTokens.transitionStandard};
     border-right: 0;
     box-shadow: none;
     appearance: none;

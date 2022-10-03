@@ -1,12 +1,8 @@
 import { Children, isValidElement } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import pick from 'lodash/pick';
-import { customProperties } from '../../design-system';
-
-const getThemedProperty = (name) => (props) =>
-  props.theme[name] || customProperties[name];
+import { designTokens } from '../../design-system';
 
 const SpecContainer = styled.div`
   display: flex;
@@ -20,40 +16,42 @@ const SpecContainer = styled.div`
 `;
 
 const Label = styled.div`
-  font-family: ${customProperties.fontFamilyDefault};
+  font-family: ${designTokens.fontFamilyDefault};
   font-weight: bold;
   box-sizing: border-box;
   background-color: #774caf;
   padding: 5px;
-  color: ${customProperties.colorSurface};
-  font-size: ${customProperties.fontSizeDefault};
+  color: ${designTokens.colorSurface};
+  font-size: ${designTokens.fontSizeDefault};
 `;
 
 const PropList = styled.div`
-  font-family: ${customProperties.fontFamilyDefault};
+  font-family: ${designTokens.fontFamilyDefault};
   background-color: #894ac3;
   padding: 5px;
   box-sizing: border-box;
   font-size: 8pt;
   font-family: monospace;
-  color: ${customProperties.colorSurface};
+  color: ${designTokens.colorSurface};
 `;
 
 const PropLabel = styled.span`
   font-weight: bold;
-  padding: 0 ${customProperties.spacingXs};
+  padding: 0 ${designTokens.spacingXs};
   min-width: 140px;
   display: inline-block;
   box-sizing: border-box;
 `;
 
 const PropValue = styled.span`
-  padding: 0 ${customProperties.spacingXs};
+  padding: 0 ${designTokens.spacingXs};
   box-sizing: border-box;
 `;
 
 const Box = styled.div`
-  background-color: ${getThemedProperty('colorSurface')};
+  background-color: ${(props) =>
+    props.backgroundColor ?? designTokens.colorSurface};
+  }};
 `;
 
 const Pill = (props) => {
@@ -112,7 +110,6 @@ Props.propTypes = {
 };
 
 const Spec = (props) => {
-  const theme = useTheme();
   return (
     <SpecContainer>
       <Label>{props.label}</Label>
@@ -124,7 +121,7 @@ const Spec = (props) => {
           {props.children}
         </Props>
       )}
-      <Box theme={theme}>{props.children}</Box>
+      <Box backgroundColor={props.backgroundColor}>{props.children}</Box>
     </SpecContainer>
   );
 };
@@ -135,6 +132,7 @@ Spec.propTypes = {
   listPropsOfNestedChild: PropTypes.bool,
   propsToList: PropTypes.arrayOf(PropTypes.string),
   omitPropsList: PropTypes.bool,
+  backgroundColor: PropTypes.string,
 };
 
 Spec.defaultProps = {

@@ -1,24 +1,16 @@
-import type { Theme } from '@emotion/react';
 import { css } from '@emotion/react';
-import {
-  customProperties,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TCheckboxProps } from './checkbox-input';
 
-type TExtendedTheme = Theme & {
-  [key: string]: string;
-};
-
-const getSvgBorderStroke = (vars: TExtendedTheme, props: TCheckboxProps) => {
+const getSvgBorderStroke = (props: TCheckboxProps) => {
   if (props.isDisabled) {
-    return vars[designTokens.borderColorForInputWhenDisabled];
+    return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars[designTokens.borderColorForInputWhenError];
+    return designTokens.borderColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return vars[designTokens.borderColorForInputWhenReadonly];
+    return designTokens.borderColorForInputWhenReadonly;
   }
   if (
     props.isHovered &&
@@ -26,29 +18,25 @@ const getSvgBorderStroke = (vars: TExtendedTheme, props: TCheckboxProps) => {
     !props.isDisabled &&
     !props.hasError
   ) {
-    return vars[designTokens.borderColorForInputWhenFocused];
+    return designTokens.borderColorForInputWhenFocused;
   }
-  return vars[designTokens.borderColorForInput];
+  return designTokens.borderColorForInput;
 };
 
-const getSvgContentFill = (vars: TExtendedTheme, props: TCheckboxProps) => {
+const getSvgContentFill = (props: TCheckboxProps) => {
   if (props.isDisabled) {
-    return vars[designTokens.fontColorForInputWhenDisabled];
+    return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return vars[designTokens.fontColorForInputWhenError];
+    return designTokens.fontColorForInputWhenError;
   }
   if (props.isReadOnly) {
-    return vars[designTokens.fontColorForInputWhenReadonly];
+    return designTokens.fontColorForInputWhenReadonly;
   }
-  return vars[designTokens.borderColorForInputWhenFocused];
+  return designTokens.borderColorForInputWhenFocused;
 };
 
-const getCheckboxWrapperStyles = (props: TCheckboxProps, theme: Theme) => {
-  const overwrittenVars = {
-    ...customProperties,
-    ...theme,
-  };
+const getCheckboxWrapperStyles = (props: TCheckboxProps) => {
   /* resets from createStyledIcon styles */
   return css`
     * {
@@ -58,11 +46,11 @@ const getCheckboxWrapperStyles = (props: TCheckboxProps, theme: Theme) => {
     display: flex;
     align-items: center;
     svg *[data-style='checkbox__border'] {
-      stroke: ${getSvgBorderStroke(overwrittenVars, props)};
-      fill: ${overwrittenVars[designTokens.backgroundColorForInput]};
+      stroke: ${getSvgBorderStroke(props)};
+      fill: ${designTokens.backgroundColorForInput};
     }
     svg *[data-style='checkbox__content'] {
-      fill: ${getSvgContentFill(overwrittenVars, props)};
+      fill: ${getSvgContentFill(props)};
     }
   `;
 };

@@ -118,7 +118,8 @@ describe('LocalizedRichTextInput', () => {
     await styleMenuButton.click();
 
     await queries.findByText(doc, 'Headline H1');
-    await percySnapshot(page, 'LocalizedRichTextInput - style menu open');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'LocalizedRichTextInput - style menu open');
 
     // then click on the H1 button
     const h1Button = await queries.findByText(doc, 'Headline H1');

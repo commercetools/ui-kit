@@ -1,17 +1,24 @@
 import PropTypes from 'prop-types';
-import { ThemeProvider } from '@emotion/react';
-import { customProperties } from '../../../design-system';
+import { designTokens, ThemeProvider } from '../../../design-system';
 
-const darkTheme = {
-  colorSolid: customProperties.colorSurface,
-  colorSurface: customProperties.colorSolid,
+const defaultTheme = designTokens;
+
+const customTheme = {
+  colorSolid: '#fff',
+  colorSurface: '#1a1a1a',
 };
 
-const defaultTheme = customProperties;
-
-const ThemeWrapper = (props) => (
-  <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
-);
+const ThemeWrapper = (props) => {
+  return (
+    <>
+      <ThemeProvider
+        theme={props.themeName}
+        themeOverrides={props.themeOverrides}
+      />
+      {props.children}
+    </>
+  );
+};
 
 ThemeWrapper.propTypes = {
   theme: PropTypes.any,
@@ -20,12 +27,11 @@ ThemeWrapper.propTypes = {
 const themeParams = [
   {
     name: 'Default Theme',
-    props: { theme: defaultTheme },
-    default: true,
+    props: { themeName: 'default', themeOverrides: defaultTheme },
   },
   {
-    name: 'Dark Theme (experimental)',
-    props: { theme: darkTheme },
+    name: 'Custom Theme',
+    props: { themeName: 'default', themeOverrides: customTheme },
   },
 ];
 

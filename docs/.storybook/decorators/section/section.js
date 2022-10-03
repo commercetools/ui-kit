@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 const Section = (props) => {
-  const theme = useTheme();
   return (
     <div
       css={css`
-        background-color: ${theme.colorSurface};
+        background-color: ${designTokens.colorSurface};
         padding: 16px;
       `}
     >

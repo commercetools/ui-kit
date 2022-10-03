@@ -18,127 +18,138 @@
 # Storybook at uikit.commercetools.com.
 #
 #
-# Run "node scripts/generate-custom-properties" to generate `materials/custom-properties`
+# Run "node scripts/generate-design-tokens" to generate `materials/design-tokens`
 # files in different format (css, json, js, ...).
 #
 # The names of decisions in this file need to follow this format:
 #   <attribute>-for-<component-group>-when-<state>-
 
-choiceGroups:
-  colors:
-    label: Colors
-    prefix: color
-    description: All colors in the system
-    choices:
-      color-primary: '#00b39e'
-      color-primary-25: 'hsl(172.9608938547486, 100%, 25%)'
-      color-primary-40: 'hsl(172.9608938547486, 100%, 40%)'
-      color-primary-85: 'hsl(172.9608938547486, 100%, 85%)'
-      color-primary-95: 'hsl(172.9608938547486, 100%, 95%)'
-      color-accent: '#213c45'
-      color-accent-30: 'hsl(195, 35.2941176471%, 30%)'
-      color-accent-40: 'hsl(195, 35.2941176471%, 40%)'
-      color-accent-95: 'hsl(195, 35.2941176471%, 95%)'
-      color-accent-98: 'hsl(195, 35.2941176471%, 98%)'
-      color-neutral: '#ccc'
-      color-neutral-60: 'hsl(0, 0%, 60%)'
-      color-neutral-90: 'hsl(0, 0%, 90%)'
-      color-neutral-95: 'hsl(0, 0%, 95%)'
-      color-info: '#078cdf'
-      color-info-85: 'hsl(203.05555555555554, 93.9130434783%, 85%)'
-      color-info-95: 'hsl(203.05555555555554, 93.9130434783%, 95%)'
-      color-warning: '#f16d0e'
-      color-warning-95: 'hsl(25.110132158590307, 89.0196078431%, 95%)'
-      color-error: '#e60050'
-      color-error-95: 'hsl(339.1304347826087, 100%, 95%)'
-      color-solid: '#1a1a1a'
-      color-surface: '#fff'
+choiceGroupsByTheme:
+  default:
+    colors:
+      label: Colors
+      prefix: color
+      description: All colors in the system
+      choices:
+        color-primary: '#00b39e'
+        color-primary-25: 'hsl(172.9608938547486, 100%, 25%)'
+        color-primary-40: 'hsl(172.9608938547486, 100%, 40%)'
+        color-primary-85: 'hsl(172.9608938547486, 100%, 85%)'
+        color-primary-95: 'hsl(172.9608938547486, 100%, 95%)'
+        color-accent: '#213c45'
+        color-accent-30: 'hsl(195, 35.2941176471%, 30%)'
+        color-accent-40: 'hsl(195, 35.2941176471%, 40%)'
+        color-accent-95: 'hsl(195, 35.2941176471%, 95%)'
+        color-accent-98: 'hsl(195, 35.2941176471%, 98%)'
+        color-neutral: '#ccc'
+        color-neutral-60: 'hsl(0, 0%, 60%)'
+        color-neutral-90: 'hsl(0, 0%, 90%)'
+        color-neutral-95: 'hsl(0, 0%, 95%)'
+        color-info: '#078cdf'
+        color-info-85: 'hsl(203.05555555555554, 93.9130434783%, 85%)'
+        color-info-95: 'hsl(203.05555555555554, 93.9130434783%, 95%)'
+        color-warning: '#f16d0e'
+        color-warning-95: 'hsl(25.110132158590307, 89.0196078431%, 95%)'
+        color-error: '#e60050'
+        color-error-95: 'hsl(339.1304347826087, 100%, 95%)'
+        color-solid: '#1a1a1a'
+        color-surface: '#fff'
 
-  borderRadiuses:
-    label: Border Radiuses
-    prefix: border-radius
-    choices:
-      border-radius-1: 1px
-      border-radius-2: 2px
-      border-radius-4: 4px
-      border-radius-6: 6px
-      border-radius-20: 20px
-  fontFamilies:
-    label: Font families
-    prefix: font-family
-    choices:
-      font-family-body: "'Open Sans', sans-serif"
-  fontSizes:
-    label: Font sizes
-    prefix: font-size
-    choices:
-      font-size-m: '1rem'
-  shadows:
-    label: Shadows
-    prefix: shadow
-    choices:
-      shadow-1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
-      shadow-2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)'
-      shadow-3: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)'
-      shadow-4: '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)'
-      shadow-5: '0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)'
-      shadow-6: '0 -1px 2px 0 rgba(0, 0, 0, 0.2)'
-      shadow-7: '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)'
-      shadow-8: '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)'
-      shadow-9: 'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)'
-      shadow-10: '0 0 0 1px rgba(224, 230, 237, 0.5)'
-      shadow-11: '0 1px 0.5px rgba(0, 0, 0, 0.24), 0 -1px 0.75px rgba(0, 0, 0, 0.12)'
-      shadow-12: '0 0 1px rgba(0, 0, 0, 0.25)'
-      shadow-13: '0 0 1px rgba(0, 0, 0, 0.25)'
-      shadow-14: '0 0 0.5px rgba(0, 0, 0, 0.1)'
-      shadow-15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)'
-      shadow-16: '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)'
-  constraints:
-    label: Constraints
-    prefix: constraint
-    choices:
-      constraint-scale: 100%
-      constraint-1: 42px
-      constraint-2: 84px
-      constraint-3: 142px
-      constraint-4: 184px
-      constraint-5: 242px
-      constraint-6: 284px
-      constraint-7: 342px
-      constraint-8: 384px
-      constraint-9: 442px
-      constraint-10: 484px
-      constraint-11: 542px
-      constraint-12: 584px
-      constraint-13: 642px
-      constraint-14: 684px
-      constraint-15: 742px
-      constraint-16: 784px
-  spacings:
-    label: Spacings
-    prefix: spacing
-    choices:
-      spacing-xs: 4px
-      spacing-s: 8px
-      spacing-m: 16px
-      spacing-l: 24px
-      spacing-xl: 32px
-  transitions:
-    label: Transitions
-    prefix: transition
-    choices:
-      transition-linear-80ms: '80ms linear'
-      transition-easeinout-150ms: '150ms ease-in-out'
-      transition-standard: '200ms ease'
-  breakpoints:
-    label: Breakpoints
-    prefix: break-point
-    choices:
-      break-point-mobile: 768px
-      break-point-desktop: 1024px
-      break-point-biggerdesktop: 1280px
-      break-point-giantdesktop: 1680px
-      break-point-jumbodesktop: 1920px
+    borderRadiuses:
+      label: Border Radiuses
+      prefix: border-radius
+      choices:
+        border-radius-1: 1px
+        border-radius-2: 2px
+        border-radius-4: 4px
+        border-radius-6: 6px
+        border-radius-20: 20px
+    fontFamilies:
+      label: Font families
+      prefix: font-family
+      choices:
+        font-family-body: "'Open Sans', sans-serif"
+    fontSizes:
+      label: Font sizes
+      prefix: font-size
+      choices:
+        font-size-m: '1rem'
+    shadows:
+      label: Shadows
+      prefix: shadow
+      choices:
+        shadow-1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
+        shadow-2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)'
+        shadow-3: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)'
+        shadow-4: '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)'
+        shadow-5: '0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)'
+        shadow-6: '0 -1px 2px 0 rgba(0, 0, 0, 0.2)'
+        shadow-7: '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)'
+        shadow-8: '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)'
+        shadow-9: 'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)'
+        shadow-10: '0 0 0 1px rgba(224, 230, 237, 0.5)'
+        shadow-11: '0 1px 0.5px rgba(0, 0, 0, 0.24), 0 -1px 0.75px rgba(0, 0, 0, 0.12)'
+        shadow-12: '0 0 1px rgba(0, 0, 0, 0.25)'
+        shadow-13: '0 0 1px rgba(0, 0, 0, 0.25)'
+        shadow-14: '0 0 0.5px rgba(0, 0, 0, 0.1)'
+        shadow-15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)'
+        shadow-16: '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)'
+    constraints:
+      label: Constraints
+      prefix: constraint
+      choices:
+        constraint-scale: 100%
+        constraint-1: 42px
+        constraint-2: 84px
+        constraint-3: 142px
+        constraint-4: 184px
+        constraint-5: 242px
+        constraint-6: 284px
+        constraint-7: 342px
+        constraint-8: 384px
+        constraint-9: 442px
+        constraint-10: 484px
+        constraint-11: 542px
+        constraint-12: 584px
+        constraint-13: 642px
+        constraint-14: 684px
+        constraint-15: 742px
+        constraint-16: 784px
+    spacings:
+      label: Spacings
+      prefix: spacing
+      choices:
+        spacing-xs: 4px
+        spacing-s: 8px
+        spacing-m: 16px
+        spacing-l: 24px
+        spacing-xl: 32px
+    transitions:
+      label: Transitions
+      prefix: transition
+      choices:
+        transition-linear-80ms: '80ms linear'
+        transition-easeinout-150ms: '150ms ease-in-out'
+        transition-standard: '200ms ease'
+    breakpoints:
+      label: Breakpoints
+      prefix: break-point
+      choices:
+        break-point-mobile: 768px
+        break-point-desktop: 1024px
+        break-point-biggerdesktop: 1280px
+        break-point-giantdesktop: 1680px
+        break-point-jumbodesktop: 1920px
+
+  test:
+    colors:
+      label: Colors
+      prefix: color
+      description: Dark theme colors overwrite
+      choices:
+        color-primary: '#f78d26'
+        color-solid: '#fff'
+        color-surface: '#1a1a1a'
 
 states:
   active: 'Trigged while the user is currently interacting with the element'
@@ -168,134 +179,149 @@ componentGroups:
   text:
     description: 'Text elements'
 
-decisionGroups:
-  backgroundColors:
-    label: Background Colors
-    prefix: background-color
-    decisions:
-      background-color-for-input:
-        description: ''
-        choice: color-surface
-      background-color-for-input-when-selected:
-        description: ''
-        choice: color-accent-95
-      background-color-for-input-when-disabled:
-        description: ''
-        choice: color-accent-98
-      background-color-for-input-when-hovered:
-        description: ''
-        choice: color-neutral-90
-      background-color-for-tag:
-        description: ''
-        choice: color-neutral-95
-      background-color-for-tag-warning:
-        description: ''
-        choice: color-warning-95
+decisionGroupsByTheme:
+  default:
+    backgroundColors:
+      label: Background Colors
+      prefix: background-color
+      decisions:
+        background-color-for-input:
+          description: ''
+          choice: color-surface
+        background-color-for-input-when-selected:
+          description: ''
+          choice: color-accent-95
+        background-color-for-input-when-disabled:
+          description: ''
+          choice: color-accent-98
+        background-color-for-input-when-hovered:
+          description: ''
+          choice: color-neutral-90
+        background-color-for-tag:
+          description: ''
+          choice: color-neutral-95
+        background-color-for-tag-warning:
+          description: ''
+          choice: color-warning-95
 
-  borderColors:
-    label: Border Colors
-    prefix: border-color
-    decisions:
-      border-color-for-input:
-        description: ''
-        choice: color-neutral-60
-      border-color-for-input-when-focused:
-        description: ''
-        choice: color-primary
-      border-color-for-input-when-disabled:
-        description: ''
-        choice: color-neutral
-      border-color-for-input-when-readonly:
-        description: ''
-        choice: color-neutral
-      border-color-for-input-when-error:
-        description: ''
-        choice: color-error
-      border-color-for-input-when-warning:
-        description: ''
-        choice: color-warning
-      border-color-for-tag:
-        description: ''
-        choice: color-neutral-60
-      border-color-for-tag-warning:
-        description: ''
-        choice: color-warning
-      border-color-for-tag-when-focused:
-        description: ''
-        choice: color-primary
+    borderColors:
+      label: Border Colors
+      prefix: border-color
+      decisions:
+        border-color-for-input:
+          description: ''
+          choice: color-neutral-60
+        border-color-for-input-when-focused:
+          description: ''
+          choice: color-primary
+        border-color-for-input-when-disabled:
+          description: ''
+          choice: color-neutral
+        border-color-for-input-when-readonly:
+          description: ''
+          choice: color-neutral
+        border-color-for-input-when-error:
+          description: ''
+          choice: color-error
+        border-color-for-input-when-warning:
+          description: ''
+          choice: color-warning
+        border-color-for-tag:
+          description: ''
+          choice: color-neutral-60
+        border-color-for-tag-warning:
+          description: ''
+          choice: color-warning
+        border-color-for-tag-when-focused:
+          description: ''
+          choice: color-primary
 
-  borderRadiuses:
-    label: Border Radius
-    prefix: border-radius
-    decisions:
-      border-radius-for-input:
-        description: ''
-        choice: border-radius-6
-      border-radius-for-tag:
-        description: ''
-        choice: border-radius-2
-  # We don't have font families in choices yet, so we can't have decisions for
-  # them
+    borderRadiuses:
+      label: Border Radius
+      prefix: border-radius
+      decisions:
+        border-radius-for-input:
+          description: ''
+          choice: border-radius-6
+        border-radius-for-tag:
+          description: ''
+          choice: border-radius-2
+    # We don't have font families in choices yet, so we can't have decisions for
+    # them
 
-  fontColors:
-    label: Font Colors
-    prefix: font-color
-    decisions:
-      font-color-for-input:
-        description: ''
-        choice: color-solid
-      font-color-for-input-when-disabled:
-        description: ''
-        choice: color-neutral-60
-      font-color-for-input-when-error:
-        description: ''
-        choice: color-error
-      font-color-for-input-when-readonly:
-        description: ''
-        choice: color-neutral-60
-      font-color-for-input-when-warning:
-        description: ''
-        choice: color-warning
-      font-color-for-tag:
-        description: ''
-        choice: color-solid
-      font-color-for-tag-when-disabled:
-        description: ''
-        choice: color-neutral-60
-      font-color-for-text-when-inverted:
-        description: ''
-        choice: color-surface
+    fontColors:
+      label: Font Colors
+      prefix: font-color
+      decisions:
+        font-color-for-input:
+          description: ''
+          choice: color-solid
+        font-color-for-input-when-disabled:
+          description: ''
+          choice: color-neutral-60
+        font-color-for-input-when-error:
+          description: ''
+          choice: color-error
+        font-color-for-input-when-readonly:
+          description: ''
+          choice: color-neutral-60
+        font-color-for-input-when-warning:
+          description: ''
+          choice: color-warning
+        font-color-for-tag:
+          description: ''
+          choice: color-solid
+        font-color-for-tag-when-disabled:
+          description: ''
+          choice: color-neutral-60
+        font-color-for-text-when-inverted:
+          description: ''
+          choice: color-surface
 
-  fontFamily:
-    label: Font family
-    prefix: font-family
-    decisions:
-      font-family:
-        description: ''
-        choice: font-family-body
-  placeholderFontColors:
-    label: Placeholder font colors
-    prefix: placeholder-font-color
-    decisions:
-      placeholder-font-color-for-input:
-        description: ''
-        choice: color-neutral-60
+    fontFamily:
+      label: Font family
+      prefix: font-family
+      decisions:
+        font-family:
+          description: ''
+          choice: font-family-body
 
-  fontSizes:
-    label: Font Sizes
-    prefix: font-size
-    decisions:
-      font-size-for-input:
-        description: ''
-        choice: font-size-m
-  shadows:
-    label: Shadows
-    prefix: shadow
-    decisions:
-      shadow-box-tag-when-hovered:
-        description: ''
-        deprecated: true
-        choice: shadow-1
+    placeholderFontColors:
+      label: Placeholder font colors
+      prefix: placeholder-font-color
+      decisions:
+        placeholder-font-color-for-input:
+          description: ''
+          choice: color-neutral-60
+
+    fontSizes:
+      label: Font Sizes
+      prefix: font-size
+      decisions:
+        font-size-for-input:
+          description: ''
+          choice: font-size-m
+
+    shadows:
+      label: Shadows
+      prefix: shadow
+      decisions:
+        shadow-box-tag-when-hovered:
+          description: ''
+          deprecated: true
+          choice: shadow-1
+
+  test:
+    backgroundColors:
+      label: Background Colors
+      prefix: background-color
+      decisions:
+        background-color-for-tag:
+          description: ''
+          choice: color-warning-95
+        background-color-for-tag-warning:
+          description: ''
+          choice: color-neutral-95
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.

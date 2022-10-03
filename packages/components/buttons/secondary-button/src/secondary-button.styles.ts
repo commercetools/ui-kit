@@ -2,7 +2,7 @@ import type { Theme } from '@emotion/react';
 
 import { warning } from '@commercetools-uikit/utils';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 const getStateStyles = (
   isDisabled: boolean,
@@ -11,18 +11,18 @@ const getStateStyles = (
 ) => {
   if (isDisabled) {
     const baseDisabledStyles = css`
-      box-shadow: 0 0 0 1px ${vars.colorNeutral} inset;
-      background-color: ${vars.colorAccent98};
-      color: ${vars.colorNeutral60};
+      box-shadow: 0 0 0 1px ${designTokens.colorNeutral} inset;
+      background-color: ${designTokens.colorAccent98};
+      color: ${designTokens.colorNeutral60};
     `;
     switch (theme) {
       case 'info':
         return [
           baseDisabledStyles,
           css`
-            color: ${vars.colorNeutral60};
+            color: ${designTokens.colorNeutral60};
           `,
-          isActive && `color: ${vars.colorInfo};`,
+          isActive && `color: ${designTokens.colorInfo};`,
         ];
       default:
         return baseDisabledStyles;
@@ -31,18 +31,18 @@ const getStateStyles = (
   if (isActive) {
     const baseActiveStyles = [
       css`
-        box-shadow: ${vars.shadow9};
-        background-color: ${vars.colorSurface};
+        box-shadow: ${designTokens.shadow9};
+        background-color: ${designTokens.colorSurface};
         &:focus,
         &:hover {
-          background-color: ${vars.colorNeutral95};
+          background-color: ${designTokens.colorNeutral95};
         }
       `,
       isDisabled &&
         css`
-          box-shadow: 0 0 0 1px ${vars.colorNeutral} inset;
-          background-color: ${vars.colorAccent98};
-          color: ${vars.colorNeutral60};
+          box-shadow: 0 0 0 1px ${designTokens.colorNeutral} inset;
+          background-color: ${designTokens.colorAccent98};
+          color: ${designTokens.colorNeutral60};
         `,
     ];
     switch (theme) {
@@ -50,7 +50,7 @@ const getStateStyles = (
         return [
           baseActiveStyles,
           css`
-            color: ${vars.colorInfo};
+            color: ${designTokens.colorInfo};
           `,
         ];
       default:
@@ -60,11 +60,11 @@ const getStateStyles = (
   return css`
     &:focus,
     &:hover {
-      box-shadow: ${vars.shadow8};
+      box-shadow: ${designTokens.shadow8};
     }
     &:active {
-      box-shadow: ${vars.shadow9};
-      background-color: ${vars.colorSurface};
+      box-shadow: ${designTokens.shadow9};
+      background-color: ${designTokens.colorSurface};
     }
   `;
 };
@@ -79,10 +79,10 @@ const getThemeStyles = (theme: Theme) => {
       return css`
         &:focus,
         &:hover {
-          color: ${vars.colorInfo};
+          color: ${designTokens.colorInfo};
 
           * {
-            fill: ${vars.colorInfo};
+            fill: ${designTokens.colorInfo};
           }
         }
       `;
@@ -94,11 +94,11 @@ const getThemeStyles = (theme: Theme) => {
       return css`
         &:focus,
         &:hover {
-          box-shadow: ${vars.shadow8};
+          box-shadow: ${designTokens.shadow8};
         }
         &:active {
-          box-shadow: ${vars.shadow9};
-          background-color: ${vars.colorSurface};
+          box-shadow: ${designTokens.shadow9};
+          background-color: ${designTokens.colorSurface};
         }
       `;
     }

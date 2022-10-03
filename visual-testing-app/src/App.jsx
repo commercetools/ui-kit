@@ -1,39 +1,34 @@
-import { Component } from 'react';
-import { ThemeProvider } from '@emotion/react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { customProperties } from '@commercetools-uikit/design-system';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 
-const darkTheme = {
-  colorSurface: 'black',
-  colorSolid: 'white',
-  colorNeutral60: 'rgba(255,255,255,0.60)',
-  colorNeutral: 'rgba(255,255,255,0.60)',
-  colorAccent98: 'rgba(0,0,0,0.98)',
-};
 const pkgComponentsModules = import.meta.globEager(
   '../../packages/**/*.visualroute.jsx'
 );
-
-const allUniqueRouteComponents = Object.values(pkgComponentsModules).reduce(
-  (allComponents, RouteComponent) => {
-    // trim leading slash
-    const label = RouteComponent.routePath.substring(1);
-    if (allComponents[label]) {
-      // eslint-disable-next-line no-console
-      console.error(`Duplicate route generated for: /${label}`);
-    }
-    // eslint-disable-next-line no-param-reassign
-    allComponents[label] = RouteComponent;
-    return allComponents;
-  },
-  {}
+const designSystemComponentsModules = import.meta.globEager(
+  '../../design-system/**/*.visualroute.jsx'
 );
+
+const allUniqueRouteComponents = Object.values({
+  ...pkgComponentsModules,
+  ...designSystemComponentsModules,
+}).reduce((allComponents, RouteComponent) => {
+  // trim leading slash
+  const label = RouteComponent.routePath.substring(1);
+  if (allComponents[label]) {
+    // eslint-disable-next-line no-console
+    console.error(`Duplicate route generated for: /${label}`);
+  }
+  // eslint-disable-next-line no-param-reassign
+  allComponents[label] = RouteComponent;
+  return allComponents;
+}, {});
 const allSortedComponents = Object.keys(allUniqueRouteComponents)
   .sort()
   .map((key) => allUniqueRouteComponents[key]);
 
 const App = () => (
-  <ThemeProvider theme={customProperties}>
+  <>
+    <ThemeProvider />
     <Router>
       <Switch>
         <Route
@@ -57,7 +52,7 @@ const App = () => (
             key={Component.routePath}
             path={Component.routePath}
             // eslint-disable-next-line react/jsx-pascal-case
-            render={() => <Component.component themes={{ darkTheme }} />}
+            render={() => <Component.component />}
           />
         ))}
         <Route
@@ -70,7 +65,7 @@ const App = () => (
         />
       </Switch>
     </Router>
-  </ThemeProvider>
+  </>
 );
 
 export default App;

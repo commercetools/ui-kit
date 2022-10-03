@@ -1,52 +1,33 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import {
-  customProperties,
-  designTokens,
-} from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TEditorProps } from './editor';
 
-const EditorLanguageLabel = styled.label((props) => {
-  const overwrittenVars = {
-    ...customProperties,
-    ...props.theme,
-  };
+const EditorLanguageLabel = styled.label`
+  /* avoid wrapping label onto new lines */
+  white-space: nowrap;
+  flex: 0;
+  color: ${designTokens.fontColorForInputWhenDisabled};
+  line-height: calc(
+    ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
+  );
+  background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+  border-top-left-radius: ${designTokens.borderRadiusForInput};
+  border-bottom-left-radius: ${designTokens.borderRadiusForInput};
+  border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
+  padding: 0 ${designTokens.spacingS};
+  transition: border-color ${designTokens.transitionStandard},
+    background-color ${designTokens.transitionStandard},
+    color ${designTokens.transitionStandard};
+  border-right: 0;
+  box-shadow: none;
+  appearance: none;
 
-  return css`
-    /* avoid wrapping label onto new lines */
-    white-space: nowrap;
-    flex: 0;
-    color: ${overwrittenVars[designTokens.fontColorForInputWhenDisabled]};
-    line-height: calc(
-      ${customProperties.sizeHeightInput} - 2 *
-        ${customProperties.borderRadius1}
-    );
-    background-color: ${overwrittenVars[
-      designTokens.backgroundColorForInputWhenDisabled
-    ]};
-    border-top-left-radius: ${overwrittenVars[
-      designTokens.borderRadiusForInput
-    ]};
-    border-bottom-left-radius: ${overwrittenVars[
-      designTokens.borderRadiusForInput
-    ]};
-    border: 1px ${overwrittenVars[designTokens.borderColorForInputWhenDisabled]}
-      solid;
-    padding: 0 ${customProperties.spacingS};
-    transition: border-color ${customProperties.transitionStandard},
-      background-color ${customProperties.transitionStandard},
-      color ${customProperties.transitionStandard};
-    border-right: 0;
-    box-shadow: none;
-    appearance: none;
-
-    /* cursor should be inherited from parent,
+  /* cursor should be inherited from parent,
     * GIVEN parent has 'not-allowed' cursor
     * THEN the language label should also have that (instead of label's default cursor)
     */
-    cursor: inherit;
-  `;
-});
+  cursor: inherit;
+`;
 
 const EditorWrapper = styled.div<
   Pick<TEditorProps, 'isDisabled' | 'isReadOnly'>

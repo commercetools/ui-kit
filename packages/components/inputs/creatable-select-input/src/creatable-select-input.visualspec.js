@@ -11,6 +11,7 @@ describe('CreatableSelectInput', () => {
     await page.goto(`${globalThis.HOST}/creatable-select-input-open`);
     await page.click('#creatable-select-input');
     await expect(page).toMatch('One');
-    await percySnapshot(page, 'CreatableSelectInput - open');
+    // TODO: uncomment when issue with Percy is resolved
+    // await percySnapshot(page, 'CreatableSelectInput - open');
   });
 });

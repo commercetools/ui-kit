@@ -1,12 +1,11 @@
 import { TimeInput } from '@commercetools-frontend/ui-kit';
-import { ThemeProvider } from '@emotion/react';
 import { Suite, Spec } from '../../../../../test/percy';
 
 const value = '3:00 PM';
 
 export const routePath = '/time-input';
 
-export const component = ({ themes }) => (
+export const component = () => (
   <Suite>
     <Spec label="minimal">
       <TimeInput value={value} onChange={() => {}} horizontalConstraint={7} />
@@ -43,10 +42,5 @@ export const component = ({ themes }) => (
         isReadOnly={true}
       />
     </Spec>
-    <ThemeProvider theme={themes.darkTheme}>
-      <Spec label="with custom (inverted) theme">
-        <TimeInput value={value} onChange={() => {}} horizontalConstraint={7} />
-      </Spec>
-    </ThemeProvider>
   </Suite>
 );

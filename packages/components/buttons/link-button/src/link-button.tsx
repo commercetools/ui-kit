@@ -4,7 +4,7 @@ import { cloneElement, ReactElement, useEffect } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import {
   warnDeprecatedComponent,
   filterInvalidAttributes,
@@ -51,11 +51,11 @@ const hoverStyles = css`
   &:focus,
   &:active {
     span {
-      color: ${vars.colorPrimary25};
+      color: ${designTokens.colorPrimary25};
     }
 
     svg * {
-      fill: ${vars.colorPrimary25};
+      fill: ${designTokens.colorPrimary25};
     }
   }
 `;
@@ -74,7 +74,7 @@ const StyledExternalLink = styled.a<
 
   span {
     color: ${(props) =>
-      props.isDisabled ? vars.colorNeutral : vars.colorPrimary};
+      props.isDisabled ? designTokens.colorNeutral : designTokens.colorPrimary};
   }
 
   cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};

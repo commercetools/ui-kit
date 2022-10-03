@@ -1,69 +1,56 @@
-import type { Theme } from '@emotion/react';
 import { css } from '@emotion/react';
-import { customProperties as vars } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { TSecondaryButtonProps } from './secondary-icon-button';
 
-type TExtendedTheme = {
-  [key: string]: string;
-} & Theme;
-
-const getDisabledStyle = (overwrittenVars: TExtendedTheme) => {
+const getDisabledStyle = () => {
   /* By using the css 'disabled' selector directly, we don't need additional logic to check the isDisabled prop */
   return css`
     &:disabled svg {
-      fill: ${overwrittenVars.colorNeutral60};
+      fill: ${designTokens.colorNeutral60};
     }
   `;
 };
 
-const getColorStyle = (
-  props: Pick<TSecondaryButtonProps, 'color'>,
-  overwrittenVars: TExtendedTheme
-) => {
+const getColorStyle = (props: Pick<TSecondaryButtonProps, 'color'>) => {
   switch (props.color) {
     case 'solid':
       return css`
         & svg {
-          fill: ${overwrittenVars.colorSolid};
+          fill: ${designTokens.colorSolid};
         }
         &:focus,
         &:hover svg {
-          fill: ${overwrittenVars.colorPrimary};
+          fill: ${designTokens.colorPrimary};
         }
       `;
     case 'primary':
       return css`
         & svg {
-          fill: ${overwrittenVars.colorPrimary};
+          fill: ${designTokens.colorPrimary};
         }
         &:focus,
         &:hover svg {
-          fill: ${overwrittenVars.colorPrimary25};
+          fill: ${designTokens.colorPrimary25};
         }
       `;
     default:
       return css`
         svg {
-          fill: ${overwrittenVars.colorSolid};
+          fill: ${designTokens.colorSolid};
         }
       `;
   }
 };
 
-const getBaseStyles = (props: TSecondaryButtonProps, theme: Theme) => {
-  const overwrittenVars: TExtendedTheme = {
-    ...vars,
-    ...theme,
-  };
-
+const getBaseStyles = (props: TSecondaryButtonProps) => {
   return [
     css`
       display: inline-flex;
       align-items: center;
       justify-content: center;
     `,
-    getColorStyle(props, overwrittenVars),
-    getDisabledStyle(overwrittenVars),
+    getColorStyle(props),
+    getDisabledStyle(),
   ];
 };
 
