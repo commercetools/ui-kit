@@ -1,5 +1,7 @@
 # @commercetools-uikit/grid
 
+## 15.2.4
+
 ## 15.2.3
 
 ### Patch Changes
