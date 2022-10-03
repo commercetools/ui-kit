@@ -1,5 +1,38 @@
 # @commercetools-uikit/data-table-manager
 
+## 15.3.0
+
+### Minor Changes
+
+- [#2227](https://github.com/commercetools/ui-kit/pull/2227) [`ab2f6e14d`](https://github.com/commercetools/ui-kit/commit/ab2f6e14d492db3f9d0985831b402e61d69684da) Thanks [@kark](https://github.com/kark)! - Prepare theming support in our design system.
+
+  This is an internal change to restructure how we define and use design tokens, in particular by relying on CSS variables. Consumers are not affected by any of these changes.
+
+  Note that the `customProperties` object exported from the `@commercetools-uikit/design-system` package is now deprecated (although still exported for backwards compatibility) in favour of the `designTokens` object.
+
+### Patch Changes
+
+- Updated dependencies [[`ab2f6e14d`](https://github.com/commercetools/ui-kit/commit/ab2f6e14d492db3f9d0985831b402e61d69684da)]:
+  - @commercetools-uikit/design-system@15.3.0
+  - @commercetools-uikit/accessible-button@15.3.0
+  - @commercetools-uikit/primary-button@15.3.0
+  - @commercetools-uikit/secondary-button@15.3.0
+  - @commercetools-uikit/secondary-icon-button@15.3.0
+  - @commercetools-uikit/card@15.3.0
+  - @commercetools-uikit/field-label@15.3.0
+  - @commercetools-uikit/grid@15.3.0
+  - @commercetools-uikit/icons@15.3.0
+  - @commercetools-uikit/async-select-input@15.3.0
+  - @commercetools-uikit/radio-input@15.3.0
+  - @commercetools-uikit/select-input@15.3.0
+  - @commercetools-uikit/tag@15.3.0
+  - @commercetools-uikit/text@15.3.0
+  - @commercetools-uikit/spacings@15.3.0
+  - @commercetools-uikit/accessible-hidden@15.3.0
+  - @commercetools-uikit/collapsible-motion@15.3.0
+  - @commercetools-uikit/hooks@15.3.0
+  - @commercetools-uikit/utils@15.3.0
+
 ## 15.2.4
 
 ### Patch Changes
