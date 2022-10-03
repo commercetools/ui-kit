@@ -1,5 +1,23 @@
 # @commercetools-uikit/localized-money-input
 
+## 15.3.0
+
+### Patch Changes
+
+- Updated dependencies [[`ab2f6e14d`](https://github.com/commercetools/ui-kit/commit/ab2f6e14d492db3f9d0985831b402e61d69684da)]:
+  - @commercetools-uikit/design-system@15.3.0
+  - @commercetools-uikit/flat-button@15.3.0
+  - @commercetools-uikit/constraints@15.3.0
+  - @commercetools-uikit/icons@15.3.0
+  - @commercetools-uikit/input-utils@15.3.0
+  - @commercetools-uikit/money-input@15.3.0
+  - @commercetools-uikit/select-utils@15.3.0
+  - @commercetools-uikit/spacings-stack@15.3.0
+  - @commercetools-uikit/tooltip@15.3.0
+  - @commercetools-uikit/hooks@15.3.0
+  - @commercetools-uikit/localized-utils@15.3.0
+  - @commercetools-uikit/utils@15.3.0
+
 ## 15.2.4
 
 ### Patch Changes
