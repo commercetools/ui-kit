@@ -154,7 +154,10 @@ storiesOf('Components|Inputs/SelectInputs', module)
           />
         </Section>
         <Section>
-          <LinkTo kind="Examples|Forms/Inputs" story="CreatableSelectInput">
+          <LinkTo
+            kind="Examples/Forms/Inputs/SelectInputs"
+            story="CreatableSelectInput"
+          >
             See form example
           </LinkTo>
         </Section>
