@@ -71,7 +71,9 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  padding: 0 ${(props) => (props.isCondensed ? designTokens.spacingS : designTokens.spacingM)};
+  padding: 0
+    ${(props) =>
+      props.isCondensed ? designTokens.spacingS : designTokens.spacingM};
 
   ${getCellInnerStyles}
   ${(props) => (props.isSortable ? getSortableHeaderStyles(props) : '')};
