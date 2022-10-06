@@ -225,12 +225,7 @@ const DateInput = (props: TDateInput) => {
               setSuggestedItems([]);
               setHighlightedIndex(null);
             }
-          }
-
-          if (
-            changes.hasOwnProperty('highlightedIndex') &&
-            changes.highlightedIndex
-          ) {
+          } else if (changes.hasOwnProperty('highlightedIndex')) {
             setHighlightedIndex(changes.highlightedIndex);
           }
         }}
