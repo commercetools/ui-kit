@@ -145,7 +145,7 @@ const DateInput = (props: TDateInput) => {
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
-      'DateInput: `onChange` is required when input isnot read only.'
+      'DateInput: `onChange` is required when input is not read only.'
     );
   }
 
