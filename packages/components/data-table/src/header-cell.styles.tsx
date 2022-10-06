@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { designTokens } from '@commercetools-uikit/design-system';
 import { getCellInnerStyles } from './cell.styles';
+import { designTokens } from '@commercetools-uikit/design-system';
 import type { THeaderCell } from './header-cell';
 
 const getButtonStyle = () => css`
@@ -126,7 +126,7 @@ const HeaderIconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-left: ${designTokens.spacingS};
-  padding: 0 ${designTokens.spacingXs};
+  vertical-align: middle;
 `;
 
 export {
