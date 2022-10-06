@@ -89,7 +89,7 @@ storiesOf('Components|Grid', module)
                 'In the Knobs section on the right panel, you can see all the supported CSS Grid properties, both for the parent container and for the children elements (items).'
               }
             </Text.Body>
-            <LinkTo kind="Examples|Components/Grid" story="Grid layouts">
+            <LinkTo kind="Examples/Components/Grid" story="With-fixed-columns">
               <Text.Body tone="primary">
                 {
                   'Check out the Grid examples to build some basic grid layouts!'
