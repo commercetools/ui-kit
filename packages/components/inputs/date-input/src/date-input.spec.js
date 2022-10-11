@@ -204,14 +204,17 @@ describe('date picker keyboard navigation', () => {
         { onChange },
         { locale: 'en' }
       );
+
       const date = '12/12/2022';
+
       fireEvent.click(getByLabelText('Date'));
+
       // Simulate the fired event for every character typed into the input field.
-      date.split('').forEach((char, i) => {
+      for (let i in date) {
         fireEvent.change(getByLabelText('Date'), {
-          target: { value: date.substring(0, i + 1) },
+          target: { value: date.slice(0, i + 1) },
         });
-      });
+      }
       fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
       fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
       fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
