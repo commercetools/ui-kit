@@ -200,10 +200,7 @@ describe('date picker keyboard navigation', () => {
   describe('Accept all valid date inputs', () => {
     it('should select date, for any valid day, month or year', () => {
       const onChange = jest.fn();
-      const { getByLabelText } = renderDateInput(
-        { onChange },
-        { locale: 'en' }
-      );
+      const { getByLabelText } = renderDateInput({ onChange });
 
       const date = '12/12/2022';
 
