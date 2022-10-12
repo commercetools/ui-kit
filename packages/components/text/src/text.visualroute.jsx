@@ -130,7 +130,7 @@ export const component = () => (
       <Text.Detail isItalic={true}>Detail text italic</Text.Detail>
     </Spec>
     <Spec label="Detail - strikethrough">
-      <Text.Body isStrikethrough={true}>Detail text strikethrough</Text.Body>
+      <Text.Detail isStrikethrough={true}>Detail text strikethrough</Text.Detail>
     </Spec>
     <Spec label="Detail - tone - primary">
       <Text.Detail tone="primary">Detail text primary</Text.Detail>
