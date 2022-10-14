@@ -113,6 +113,7 @@ export { default as TagMultiIcon } from './TagMultiReact';
 export { default as TagStackedIcon } from './TagStackedReact';
 export { default as TagIcon } from './TagReact';
 export { default as TerminalIcon } from './TerminalReact';
+export { default as ToggleOnIconIcon } from './ToggleOnIconReact';
 export { default as ToggleOnIcon } from './ToggleOnReact';
 export { default as TreeStructureIcon } from './TreeStructureReact';
 export { default as TruckIcon } from './TruckReact';
