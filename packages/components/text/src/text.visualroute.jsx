@@ -91,6 +91,9 @@ export const component = () => (
     <Spec label="Body - italic">
       <Text.Body isItalic={true}>Body text italic</Text.Body>
     </Spec>
+    <Spec label="Body - strikethrough">
+      <Text.Body isStrikethrough={true}>Body text strikethrough</Text.Body>
+    </Spec>
     <Spec label="Body - tone - primary">
       <Text.Body tone="primary">Body text primary</Text.Body>
     </Spec>
@@ -125,6 +128,9 @@ export const component = () => (
     </Spec>
     <Spec label="Detail - italic">
       <Text.Detail isItalic={true}>Detail text italic</Text.Detail>
+    </Spec>
+    <Spec label="Detail - strikethrough">
+      <Text.Detail isStrikethrough={true}>Detail text strikethrough</Text.Detail>
     </Spec>
     <Spec label="Detail - tone - primary">
       <Text.Detail tone="primary">Detail text primary</Text.Detail>

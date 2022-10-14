@@ -73,6 +73,7 @@ storiesOf('Basics|Typography/Text', module)
         })}
         isBold={boolean('bold', false)}
         isItalic={boolean('italic', false)}
+        isStrikethrough={boolean('strikethrough', false)}
         tone={select('Text tone', {
           none: null,
           primary: 'primary',
@@ -98,6 +99,7 @@ storiesOf('Basics|Typography/Text', module)
         })}
         isBold={boolean('bold', false)}
         isItalic={boolean('italic', false)}
+        isStrikethrough={boolean('strikethrough', false)}
         tone={select('Text tone', {
           none: null,
           primary: 'primary',
