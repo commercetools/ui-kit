@@ -10286,10 +10286,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"devtools-protocol@npm:0.0.1019158":
-  version: 0.0.1019158
-  resolution: "devtools-protocol@npm:0.0.1019158"
-  checksum: 3b40771d231597dea5d502e708ac1ea1225214d4e007e12f7f82fb1966b76d9980665481f8495df444e3632d86b0361e2625502b5ef918884a4ed7fe57518723
+"devtools-protocol@npm:0.0.1045489":
+  version: 0.0.1045489
+  resolution: "devtools-protocol@npm:0.0.1045489"
+  checksum: 670b2ecc8e890358b08da3095b4c927ffc5ef846a39e1526ff99aecaa623b339450dfe308e421e64bf94308441832b8e9497ebda97fb02266fef3f455286742f
   languageName: node
   linkType: hard
 
@@ -16895,7 +16895,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pkg-dir@npm:4.2.0, pkg-dir@npm:^4.1.0, pkg-dir@npm:^4.2.0":
+"pkg-dir@npm:^4.1.0, pkg-dir@npm:^4.2.0":
   version: 4.2.0
   resolution: "pkg-dir@npm:4.2.0"
   dependencies:
@@ -17235,23 +17235,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"puppeteer@npm:15.5.0":
-  version: 15.5.0
-  resolution: "puppeteer@npm:15.5.0"
+"puppeteer-core@npm:18.2.1":
+  version: 18.2.1
+  resolution: "puppeteer-core@npm:18.2.1"
   dependencies:
     cross-fetch: 3.1.5
     debug: 4.3.4
-    devtools-protocol: 0.0.1019158
+    devtools-protocol: 0.0.1045489
     extract-zip: 2.0.1
     https-proxy-agent: 5.0.1
-    pkg-dir: 4.2.0
-    progress: 2.0.3
     proxy-from-env: 1.1.0
     rimraf: 3.0.2
     tar-fs: 2.1.1
     unbzip2-stream: 1.4.3
-    ws: 8.8.0
-  checksum: 2bc9e230b397f6b0c42eb5ba4e9179879b3d52f64d767a0bffbb266ecd5f8268ee982fd643c09362e29248e8f9566607c128bf7f60ec625b7605c9e609871788
+    ws: 8.9.0
+  checksum: 27ed65a7335ee3f4356425ebe4bbb5202f7b39493398643554a12b981922b2243dc331d9a478215706b79696bcf391637dd5e5405d60aff6ba8f94f0c3fea742
+  languageName: node
+  linkType: hard
+
+"puppeteer@npm:18.2.1":
+  version: 18.2.1
+  resolution: "puppeteer@npm:18.2.1"
+  dependencies:
+    https-proxy-agent: 5.0.1
+    progress: 2.0.3
+    proxy-from-env: 1.1.0
+    puppeteer-core: 18.2.1
+  checksum: 58ba8c7abd82071dc12e280622fa352a8ac253375a514c7a3527b468672a4ccdfe20b37aa09498774da2f0666bcdd9a47838c6661de483a3d6e10b47ef666113
   languageName: node
   linkType: hard
 
@@ -20129,7 +20139,7 @@ __metadata:
     postcss-value-parser: 4.2.0
     pptr-testing-library: 0.7.0
     prettier: 2.7.1
-    puppeteer: 15.5.0
+    puppeteer: 18.2.1
     qs: 6.11.0
     rcfile: 1.0.3
     react: 17.0.2
@@ -21007,9 +21017,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:8.8.0":
-  version: 8.8.0
-  resolution: "ws@npm:8.8.0"
+"ws@npm:8.9.0":
+  version: 8.9.0
+  resolution: "ws@npm:8.9.0"
   peerDependencies:
     bufferutil: ^4.0.1
     utf-8-validate: ^5.0.2
@@ -21018,7 +21028,7 @@ __metadata:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 6ceed1ca1cb800ef60c7fc8346c7d5d73d73be754228eb958765abf5d714519338efa20ffe674167039486eb3a813aae5a497f8d319e16b4d96216a31df5bd95
+  checksum: 23aa0f021b2eb65c108ec4c3e08c0d81ba01f82b500432dfe327fd6be36079c1d81fdb0eac6464d2a0eb49904d34a9ab8c59619d673fa07b8346f83aeb0cbf12
   languageName: node
   linkType: hard
 
