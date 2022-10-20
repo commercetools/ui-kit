@@ -28,6 +28,10 @@ const italic = `
   font-style: italic;
 `;
 
+const strikethrough = `
+  text-decoration: line-through;
+`;
+
 const getTone = (tone: string) => {
   switch (tone) {
     case 'information':
@@ -72,6 +76,7 @@ export const bodyStyles = (props: TBodyProps) => css`
   font-size: 1rem;
   ${props.isBold && bold}
   ${props.isItalic && italic}
+  ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
   ${props.truncate && truncate}
 `;
@@ -105,6 +110,7 @@ export const detailStyles = (props: TDetailProps) => css`
   font-size: 0.9231rem;
   ${props.isBold && bold}
   ${props.isItalic && italic}
+  ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
   ${props.truncate && truncate}
 `;

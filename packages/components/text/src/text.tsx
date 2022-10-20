@@ -154,6 +154,7 @@ export type TBodyProps = {
   as?: 'span' | 'p';
   isBold?: boolean;
   isItalic?: boolean;
+  isStrikethrough?: boolean;
   tone?:
     | 'primary'
     | 'secondary'
@@ -198,6 +199,7 @@ export type TDetailProps = {
   id?: string;
   isBold?: boolean;
   isItalic?: boolean;
+  isStrikethrough?: boolean;
   as?: 'span' | 'small';
   tone?:
     | 'primary'
