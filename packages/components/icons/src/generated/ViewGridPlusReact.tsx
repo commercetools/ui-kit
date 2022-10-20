@@ -140,6 +140,7 @@ const SvgViewGridPlus = (props: SVGProps) => (
     height={24}
     viewBox="0 0 25 24"
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
     {...props}
   >
     <g fill="#1A1A1A" fillRule="nonzero">

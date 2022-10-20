@@ -140,6 +140,7 @@ const SvgTagStacked = (props: SVGProps) => (
     width={24}
     height={24}
     viewBox="0 0 24 24"
+    role="img"
     {...props}
   >
     <path
