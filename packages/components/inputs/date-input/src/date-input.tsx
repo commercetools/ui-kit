@@ -225,9 +225,12 @@ const DateInput = (props: TDateInput) => {
               setSuggestedItems([]);
               setHighlightedIndex(null);
             }
-          }
-
-          if (changes.hasOwnProperty('highlightedIndex')) {
+            /**
+             * Asides the inputValue, we also have other ways to enter calendar inputs like the mouse move event to enter calender values.
+             * We check the downshift changes property to be sure it has highlightedIndex That is not null before updating it,
+             * otherwise it may override the initially set highlightedIndex from the inputValue and set it to null.
+             */
+          } else if (changes.hasOwnProperty('highlightedIndex')) {
             setHighlightedIndex(changes.highlightedIndex);
           }
         }}

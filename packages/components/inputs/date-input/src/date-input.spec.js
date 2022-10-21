@@ -197,4 +197,27 @@ describe('date picker keyboard navigation', () => {
       expect(screen.queryByText('August')).not.toBeInTheDocument();
     });
   });
+  describe('Accept all valid date inputs', () => {
+    it('should select date, for any valid day, month or year', () => {
+      const onChange = jest.fn();
+      const { getByLabelText } = renderDateInput({ onChange });
+
+      const date = '12/12/2022';
+
+      fireEvent.click(getByLabelText('Date'));
+
+      // Simulate the fired event for every character typed into the input field.
+      for (let i in date) {
+        fireEvent.change(getByLabelText('Date'), {
+          target: { value: date.slice(0, i + 1) },
+        });
+      }
+      fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
+      fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+      fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
+      expect(onChange).toHaveBeenCalledWith({
+        target: { id: 'date-input', name: undefined, value: '2022-12-12' },
+      });
+    });
+  });
 });
