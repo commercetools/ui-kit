@@ -128,7 +128,10 @@ export const themes = {
     fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTextWhenInverted: '#fff',
     fontFamily: "'Open Sans', sans-serif",
+    heightForButtonAsBig: '32px',
+    heightForButtonAsSmall: '24px',
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
+    fontSizeForButton: '1rem',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.25rem',
@@ -170,6 +173,9 @@ export const themes = {
     colorSurface: '#1a1a1a',
     backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForTagWarning: 'hsl(0, 0%, 95%)',
+    fontSizeForButton: '0.875rem',
+    heightForButtonAsBig: '40px',
+    heightForButtonAsSmall: '32px',
   },
 } as const;
 
@@ -321,8 +327,11 @@ const designTokens = {
   fontColorForTextWhenInverted:
     'var(--font-color-for-text-when-inverted, #fff)',
   fontFamily: "var(--font-family, 'Open Sans', sans-serif)",
+  heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
+  heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
+  fontSizeForButton: 'var(--font-size-for-button, 1rem)',
   fontSizeForInput: 'var(--font-size-for-input, 1rem)',
   fontSizeForTextAsH1: 'var(--font-size-for-text-as-h-1, 1.5rem)',
   fontSizeForTextAsH2: 'var(--font-size-for-text-as-h-2, 1.25rem)',

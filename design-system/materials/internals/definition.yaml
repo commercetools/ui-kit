@@ -208,8 +208,14 @@ variants:
     description: 'Body text element'
   detail:
     description: 'Detail text element'
+  small:
+    description: 'To differentiate component small size'
+  big:
+    description: 'To differentiate component big size'
 
 componentGroups:
+  button:
+    description: 'Button elements'
   input:
     description: 'Input elements'
   tag:
@@ -326,6 +332,17 @@ decisionGroupsByTheme:
           description: ''
           choice: font-family-body
 
+    heights:
+      label: Height
+      prefix: height
+      decisions:
+        height-for-button-as-big:
+          description: ''
+          choice: '32px'
+        height-for-button-as-small:
+          description: ''
+          choice: '24px'
+
     placeholderFontColors:
       label: Placeholder font colors
       prefix: placeholder-font-color
@@ -338,6 +355,9 @@ decisionGroupsByTheme:
       label: Font Sizes
       prefix: font-size
       decisions:
+        font-size-for-button:
+          description: ''
+          choice: font-size-30
         font-size-for-input:
           description: ''
           choice: font-size-m
@@ -435,6 +455,26 @@ decisionGroupsByTheme:
         background-color-for-tag-warning:
           description: ''
           choice: color-neutral-95
+
+    fontSizes:
+      label: Font Sizes
+      prefix: font-size
+      decisions:
+        font-size-for-button:
+          description: ''
+          choice: font-size-20
+
+    heights:
+      label: Height
+      prefix: height
+      decisions:
+        height-for-button-as-big:
+          description: ''
+          choice: '40px'
+        # TODO: We're missing this value from UX team (this is a placeholder)
+        height-for-button-as-small:
+          description: ''
+          choice: '32px'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
