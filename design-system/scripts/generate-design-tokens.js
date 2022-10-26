@@ -22,10 +22,11 @@ const endProgram = (message) => {
 };
 
 const TOKEN_REGEX =
-  /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-on-([\w-]+?))?$/i;
+  /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-on-([\w-]+?))?(?:-variant-([\w-]+?))?$/i;
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);
+const supportedVariants = Object.keys(definitions.variants);
 
 const designTokens = {};
 
@@ -79,6 +80,7 @@ Object.entries(definitions.decisionGroupsByTheme).forEach(
         if (match) {
           const componentGroup = match[2];
           const state = match[3];
+          const variant = match[4];
 
           if (
             componentGroup &&
@@ -90,6 +92,9 @@ Object.entries(definitions.decisionGroupsByTheme).forEach(
 
           if (state && !supportedStates.includes(state))
             endProgram(`Token "${key}" uses unsupported state "${state}"!`);
+
+          if (variant && !supportedVariants.includes(variant))
+            endProgram(`Token "${key}" uses unsupported variant "${variant}"!`);
         } else if (!decision.deprecated) {
           endProgram(
             `Token "${key}" does not follow <attribute>-for-<component-group>-when-<state>-on-<theme> naming scheme! Tokens not following this scheme must use "deprecated" flag.`
