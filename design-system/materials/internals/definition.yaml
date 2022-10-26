@@ -91,12 +91,12 @@ choiceGroupsByTheme:
       label: Line heights
       prefix: line-height
       choices:
-        line-height-10: '2.125rem'
-        line-height-20: '1.75rem'
-        line-height-30: '1.625rem'
-        line-height-40: '1.5rem'
-        line-height-50: '1.375rem'
-        line-height-60: '1.25rem'
+        line-height-10: '1.25rem'
+        line-height-20: '1.375rem'
+        line-height-30: '1.5rem'
+        line-height-40: '1.625rem'
+        line-height-50: '1.75rem'
+        line-height-60: '2.125rem'
     shadows:
       label: Shadows
       prefix: shadow
@@ -341,9 +341,79 @@ decisionGroupsByTheme:
         font-size-for-input:
           description: ''
           choice: font-size-m
-        font-size-for-text-variant-h1:
+        font-size-for-text-as-h1:
+          description: ''
+          choice: font-size-60
+        font-size-for-text-as-h2:
           description: ''
           choice: font-size-50
+        font-size-for-text-as-h3:
+          description: ''
+          choice: font-size-40
+        font-size-for-text-as-h4:
+          description: ''
+          choice: font-size-30
+        font-size-for-text-as-h5:
+          description: ''
+          choice: font-size-30
+        font-size-for-text-as-body:
+          description: ''
+          choice: font-size-30
+        font-size-for-text-as-detail:
+          description: ''
+          choice: font-size-10
+
+    lineHeights:
+      label: Line Heights
+      prefix: line-height
+      decisions:
+        line-height-for-text-as-h1:
+          description: ''
+          choice: line-height-60
+        line-height-for-text-as-h2:
+          description: ''
+          choice: line-height-50
+        line-height-for-text-as-h3:
+          description: ''
+          choice: line-height-30
+        line-height-for-text-as-h4:
+          description: ''
+          choice: line-height-20
+        line-height-for-text-as-h5:
+          description: ''
+          choice: line-height-20
+        line-height-for-text-as-body:
+          description: ''
+          choice: line-height-40
+        line-height-for-text-as-detail:
+          description: ''
+          choice: line-height-10
+
+    fontWeight:
+      label: Font Weights
+      prefix: font-weight
+      decisions:
+        font-weight-for-text-as-h1:
+          description: ''
+          choice: font-weight-600
+        font-weight-for-text-as-h2:
+          description: ''
+          choice: font-weight-500
+        font-weight-for-text-as-h3:
+          description: ''
+          choice: font-weight-500
+        font-weight-for-text-as-h4:
+          description: ''
+          choice: font-weight-500
+        font-weight-for-text-as-h5:
+          description: ''
+          choice: font-weight-500
+        font-weight-for-text-as-body:
+          description: ''
+          choice: font-weight-400
+        font-weight-for-text-as-detail:
+          description: ''
+          choice: font-weight-400
 
     shadows:
       label: Shadows

@@ -22,7 +22,7 @@ const endProgram = (message) => {
 };
 
 const TOKEN_REGEX =
-  /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-on-([\w-]+?))?(?:-variant-([\w-]+?))?$/i;
+  /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-as-([\w-]+?))?$/i;
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);
