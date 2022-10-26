@@ -23,6 +23,10 @@ const endProgram = (message) => {
 
 const TOKEN_REGEX =
   /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-as-([\w-]+?))?$/i;
+const ALLOWED_CSS_VALUES_IN_CHOICES = /px/;
+
+const isAllowedCssChoice = (choice) =>
+  choice.match(ALLOWED_CSS_VALUES_IN_CHOICES) !== null;
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);
@@ -68,7 +72,8 @@ Object.entries(definitions.decisionGroupsByTheme).forEach(
         }
         if (
           !designTokens[themeName][decision.choice] &&
-          !designTokens.default[decision.choice]
+          !designTokens.default[decision.choice] &&
+          !isAllowedCssChoice(decision.choice)
         ) {
           endProgram(`Choice called "${decision.choice}" was not found!`);
         }
@@ -104,9 +109,10 @@ Object.entries(definitions.decisionGroupsByTheme).forEach(
           designTokens[themeName] = {};
         }
 
-        designTokens[themeName][key] =
-          designTokens[themeName][decision.choice] ||
-          designTokens.default[decision.choice];
+        designTokens[themeName][key] = isAllowedCssChoice(decision.choice)
+          ? decision.choice
+          : designTokens[themeName][decision.choice] ||
+            designTokens.default[decision.choice];
       });
     });
   }
