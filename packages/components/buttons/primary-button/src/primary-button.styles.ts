@@ -9,13 +9,13 @@ const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
       return css`
         border-radius: ${designTokens.borderRadius4};
         padding: 0 ${designTokens.spacingS} 0 ${designTokens.spacingS};
-        height: ${designTokens.smallButtonHeight};
+        height: ${designTokens.heightForButtonAsSmall};
       `;
 
     case 'big':
       return css`
         padding: 0 ${designTokens.spacingM} 0 ${designTokens.spacingM};
-        height: ${designTokens.bigButtonHeight};
+        height: ${designTokens.heightForButtonAsBig};
         border-radius: ${designTokens.borderRadius6};
       `;
 
