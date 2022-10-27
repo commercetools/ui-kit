@@ -1,20 +1,10 @@
 import PropTypes from 'prop-types';
 import { designTokens, ThemeProvider } from '../../../design-system';
 
-const defaultTheme = designTokens;
-
-const customTheme = {
-  colorSolid: '#fff',
-  colorSurface: '#1a1a1a',
-};
-
 const ThemeWrapper = (props) => {
   return (
     <>
-      <ThemeProvider
-        theme={props.themeName}
-        themeOverrides={props.themeOverrides}
-      />
+      <ThemeProvider theme={props.themeName} />
       {props.children}
     </>
   );
@@ -27,11 +17,11 @@ ThemeWrapper.propTypes = {
 const themeParams = [
   {
     name: 'Default Theme',
-    props: { themeName: 'default', themeOverrides: defaultTheme },
+    props: { themeName: 'default' },
   },
   {
     name: 'Custom Theme',
-    props: { themeName: 'default', themeOverrides: customTheme },
+    props: { themeName: 'test' },
   },
 ];
 
