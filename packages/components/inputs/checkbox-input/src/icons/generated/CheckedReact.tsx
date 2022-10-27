@@ -143,7 +143,7 @@ const SvgChecked = (props: SVGProps) => (
     {...props}
   >
     <g transform="translate(0 -1)" fillRule="evenodd">
-      <rect fill="#FFF" y={1} width={16} height={16} rx={4} />
+      <rect y={1} width={16} height={16} rx={4} />
       <g transform="translate(0 .5)">
         <rect
           data-style="checkbox__border"
@@ -157,7 +157,6 @@ const SvgChecked = (props: SVGProps) => (
         <path
           data-style="checkbox__content"
           d="M12.918 3.759a.497.497 0 0 0-.7 0L6.011 9.966a.497.497 0 0 1-.7 0L3.78 8.438a.497.497 0 0 0-.699 0l-.938.938a.497.497 0 0 0 0 .7l3.167 3.165a.497.497 0 0 0 .7 0l7.845-7.845a.496.496 0 0 0 0-.7l-.938-.937z"
-          fill="#20AD92"
           fillRule="nonzero"
         />
       </g>

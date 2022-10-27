@@ -149,11 +149,7 @@ const SvgUnorderedList = (props: SVGProps) => (
         id="unordered-list_react_svg__a"
       />
     </defs>
-    <use
-      fill="#1A1A1A"
-      xlinkHref="#unordered-list_react_svg__a"
-      fillRule="evenodd"
-    />
+    <use xlinkHref="#unordered-list_react_svg__a" fillRule="evenodd" />
   </svg>
 );
 

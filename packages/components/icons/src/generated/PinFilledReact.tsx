@@ -139,14 +139,10 @@ const SvgPinFilled = (props: SVGProps) => (
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <path
-      d="m16 12 2 2v2h-5v6l-1 1-1-1v-6H6v-2l2-2V5H7V3h10v2h-1v7Z"
-      fill="#000"
-    />
+    <path d="m16 12 2 2v2h-5v6l-1 1-1-1v-6H6v-2l2-2V5H7V3h10v2h-1v7Z" />
   </svg>
 );
 

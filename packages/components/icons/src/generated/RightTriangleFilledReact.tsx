@@ -142,7 +142,7 @@ const SvgRightTriangleFilled = (props: SVGProps) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <path d="M8 0v8H0z" fill="#1A1A1A" fillRule="evenodd" />
+    <path d="M8 0v8H0z" fillRule="evenodd" />
   </svg>
 );
 
