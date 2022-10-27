@@ -27,6 +27,8 @@ export const themes = {
     colorError: '#e60050',
     colorError95: 'hsl(339.1304347826087, 100%, 95%)',
     colorSolid: '#1a1a1a',
+    colorSolid90: 'hsla(0, 0%, 10%, .9)',
+    colorSolid95: 'hsla(0, 0%, 10%, .95)',
     colorSurface: '#fff',
     borderRadius1: '1px',
     borderRadius2: '2px',
@@ -44,12 +46,14 @@ export const themes = {
     fontWeight400: '400',
     fontWeight500: '500',
     fontWeight600: '600',
+    fontWeight700: '700',
     lineHeight10: '1.25rem',
     lineHeight20: '1.375rem',
     lineHeight30: '1.5rem',
     lineHeight40: '1.625rem',
     lineHeight50: '1.75rem',
     lineHeight60: '2.125rem',
+    shadow0: 'none',
     shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     shadow2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
     shadow3: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
@@ -101,6 +105,7 @@ export const themes = {
     breakPointBiggerdesktop: '1280px',
     breakPointGiantdesktop: '1680px',
     breakPointJumbodesktop: '1920px',
+    backgroundColorForButtonWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForInput: '#fff',
     backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInputWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
@@ -108,6 +113,9 @@ export const themes = {
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
+    borderForButtonAsSecondary: 'none',
+    borderForButtonWhenHoveredAsSecondary: 'none',
+    borderForButtonWhenActiveAsSecondary: 'none',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -117,6 +125,8 @@ export const themes = {
     borderColorForTag: 'hsl(0, 0%, 60%)',
     borderColorForTagWarning: '#f16d0e',
     borderColorForTagWhenFocused: '#00b39e',
+    borderRadiusForButtonAsBig: '6px',
+    borderRadiusForButtonAsSmall: '4px',
     borderRadiusForInput: '6px',
     borderRadiusForTag: '2px',
     fontColorForInput: '#1a1a1a',
@@ -154,6 +164,14 @@ export const themes = {
     fontWeightForTextAsH5: '500',
     fontWeightForTextAsBody: '400',
     fontWeightForTextAsDetail: '400',
+    fontWeightForButton: '400',
+    shadowForButton:
+      '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+    shadowForButtonWhenFocused:
+      '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
+    shadowForButtonWhenActive:
+      'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
+    shadowForButtonWhenDisabled: '0 0 0 1px #ccc inset',
     shadowBoxTagWhenHovered:
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     bigButtonHeight: '32px',
@@ -168,14 +186,23 @@ export const themes = {
     standardInputHeight: '32px',
   },
   test: {
-    colorPrimary: '#f78d26',
-    colorSolid: '#fff',
-    colorSurface: '#1a1a1a',
+    colorPrimary: '#00b39e',
+    backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForTagWarning: 'hsl(0, 0%, 95%)',
-    fontSizeForButton: '0.875rem',
+    borderForButtonAsSecondary: '1px solid hsla(0, 0%, 81%, .60)',
+    borderForButtonWhenHoveredAsSecondary: '1px solid hsla(0, 0%, 81%, .80)',
+    borderForButtonWhenActiveAsSecondary: '1px solid hsla(0, 0%, 81%)',
+    borderRadiusForButtonAsBig: '4px',
+    borderRadiusForButtonAsSmall: '2px',
+    fontSizeForButton: '1.125rem',
+    fontWeightForButton: '600',
     heightForButtonAsBig: '40px',
     heightForButtonAsSmall: '32px',
+    shadowForButton: 'none',
+    shadowForButtonWhenFocused: 'none',
+    shadowForButtonWhenActive: 'none',
+    shadowForButtonWhenDisabled: 'none',
   },
 } as const;
 
@@ -205,6 +232,8 @@ const designTokens = {
   colorError: 'var(--color-error, #e60050)',
   colorError95: 'var(--color-error-95, hsl(339.1304347826087, 100%, 95%))',
   colorSolid: 'var(--color-solid, #1a1a1a)',
+  colorSolid90: 'var(--color-solid-90, hsla(0, 0%, 10%, .9))',
+  colorSolid95: 'var(--color-solid-95, hsla(0, 0%, 10%, .95))',
   colorSurface: 'var(--color-surface, #fff)',
   borderRadius1: 'var(--border-radius-1, 1px)',
   borderRadius2: 'var(--border-radius-2, 2px)',
@@ -222,12 +251,14 @@ const designTokens = {
   fontWeight400: 'var(--font-weight-400, 400)',
   fontWeight500: 'var(--font-weight-500, 500)',
   fontWeight600: 'var(--font-weight-600, 600)',
+  fontWeight700: 'var(--font-weight-700, 700)',
   lineHeight10: 'var(--line-height-10, 1.25rem)',
   lineHeight20: 'var(--line-height-20, 1.375rem)',
   lineHeight30: 'var(--line-height-30, 1.5rem)',
   lineHeight40: 'var(--line-height-40, 1.625rem)',
   lineHeight50: 'var(--line-height-50, 1.75rem)',
   lineHeight60: 'var(--line-height-60, 2.125rem)',
+  shadow0: 'var(--shadow-0, none)',
   shadow1:
     'var(--shadow-1, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   shadow2:
@@ -286,6 +317,8 @@ const designTokens = {
   breakPointBiggerdesktop: 'var(--break-point-biggerdesktop, 1280px)',
   breakPointGiantdesktop: 'var(--break-point-giantdesktop, 1680px)',
   breakPointJumbodesktop: 'var(--break-point-jumbodesktop, 1920px)',
+  backgroundColorForButtonWhenDisabled:
+    'var(--background-color-for-button-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForInput: 'var(--background-color-for-input, #fff)',
   backgroundColorForInputWhenSelected:
     'var(--background-color-for-input-when-selected, hsl(195, 35.2941176471%, 95%))',
@@ -296,6 +329,11 @@ const designTokens = {
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
+  borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
+  borderForButtonWhenHoveredAsSecondary:
+    'var(--border-for-button-when-hovered-as-secondary, none)',
+  borderForButtonWhenActiveAsSecondary:
+    'var(--border-for-button-when-active-as-secondary, none)',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -311,6 +349,8 @@ const designTokens = {
   borderColorForTagWarning: 'var(--border-color-for-tag-warning, #f16d0e)',
   borderColorForTagWhenFocused:
     'var(--border-color-for-tag-when-focused, #00b39e)',
+  borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
+  borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForInput: 'var(--border-radius-for-input, 6px)',
   borderRadiusForTag: 'var(--border-radius-for-tag, 2px)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
@@ -354,6 +394,15 @@ const designTokens = {
   fontWeightForTextAsH5: 'var(--font-weight-for-text-as-h-5, 500)',
   fontWeightForTextAsBody: 'var(--font-weight-for-text-as-body, 400)',
   fontWeightForTextAsDetail: 'var(--font-weight-for-text-as-detail, 400)',
+  fontWeightForButton: 'var(--font-weight-for-button, 400)',
+  shadowForButton:
+    'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+  shadowForButtonWhenFocused:
+    'var(--shadow-for-button-when-focused, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
+  shadowForButtonWhenActive:
+    'var(--shadow-for-button-when-active, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
+  shadowForButtonWhenDisabled:
+    'var(--shadow-for-button-when-disabled, 0 0 0 1px #ccc inset)',
   shadowBoxTagWhenHovered:
     'var(--shadow-box-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   bigButtonHeight: 'var(--big-button-height, 32px)',

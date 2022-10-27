@@ -28,6 +28,8 @@
   --color-error: #e60050;
   --color-error-95: hsl(339.1304347826087, 100%, 95%);
   --color-solid: #1a1a1a;
+  --color-solid-90: hsla(0, 0%, 10%, 0.9);
+  --color-solid-95: hsla(0, 0%, 10%, 0.95);
   --color-surface: #fff;
   --border-radius-1: 1px;
   --border-radius-2: 2px;
@@ -45,12 +47,14 @@
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
+  --font-weight-700: 700;
   --line-height-10: 1.25rem;
   --line-height-20: 1.375rem;
   --line-height-30: 1.5rem;
   --line-height-40: 1.625rem;
   --line-height-50: 1.75rem;
   --line-height-60: 2.125rem;
+  --shadow-0: none;
   --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   --shadow-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   --shadow-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -102,6 +106,7 @@
   --break-point-biggerdesktop: 1280px;
   --break-point-giantdesktop: 1680px;
   --break-point-jumbodesktop: 1920px;
+  --background-color-for-button-when-disabled: hsl(195, 35.2941176471%, 98%);
   --background-color-for-input: #fff;
   --background-color-for-input-when-selected: hsl(195, 35.2941176471%, 95%);
   --background-color-for-input-when-disabled: hsl(195, 35.2941176471%, 98%);
@@ -112,6 +117,9 @@
     89.0196078431%,
     95%
   );
+  --border-for-button-as-secondary: none;
+  --border-for-button-when-hovered-as-secondary: none;
+  --border-for-button-when-active-as-secondary: none;
   --border-color-for-input: hsl(0, 0%, 60%);
   --border-color-for-input-when-focused: #00b39e;
   --border-color-for-input-when-disabled: #ccc;
@@ -121,6 +129,8 @@
   --border-color-for-tag: hsl(0, 0%, 60%);
   --border-color-for-tag-warning: #f16d0e;
   --border-color-for-tag-when-focused: #00b39e;
+  --border-radius-for-button-as-big: 6px;
+  --border-radius-for-button-as-small: 4px;
   --border-radius-for-input: 6px;
   --border-radius-for-tag: 2px;
   --font-color-for-input: #1a1a1a;
@@ -158,6 +168,15 @@
   --font-weight-for-text-as-h5: 500;
   --font-weight-for-text-as-body: 400;
   --font-weight-for-text-as-detail: 400;
+  --font-weight-for-button: 400;
+  --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px 0 rgba(0, 0, 0, 0.24);
+  --shadow-for-button-when-active: inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1),
+    inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2),
+    inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25);
+  --shadow-for-button-when-disabled: 0 0 0 1px #ccc inset;
   --shadow-box-tag-when-hovered: 0 1px 3px rgba(0, 0, 0, 0.12),
     0 1px 2px rgba(0, 0, 0, 0.24);
   --big-button-height: 32px;

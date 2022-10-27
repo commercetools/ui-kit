@@ -23,7 +23,7 @@ const endProgram = (message) => {
 
 const TOKEN_REGEX =
   /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-as-([\w-]+?))?$/i;
-const ALLOWED_CSS_VALUES_IN_CHOICES = /px/;
+const ALLOWED_CSS_VALUES_IN_CHOICES = /px|none|hsla/;
 
 const isAllowedCssChoice = (choice) =>
   choice.match(ALLOWED_CSS_VALUES_IN_CHOICES) !== null;
