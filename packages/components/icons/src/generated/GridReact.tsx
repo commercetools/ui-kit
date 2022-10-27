@@ -136,18 +136,17 @@ export const getIconStyles = (props: Props) => css`
 
 const SvgGrid = (props: SVGProps) => (
   <svg
-    width={18}
-    height={17}
-    viewBox="0 0 18 17"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g fillRule="evenodd">
-      <path
-        fill="#1A1A1A"
-        d="M0 .5h7.5v3H0zM10.5.5H18v3h-7.5zM0 5h7.5v3H0zM10.5 5H18v3h-7.5zM0 9.5h7.5v3H0zM10.5 9.5H18v3h-7.5zM0 14h7.5v3H0zM10.5 14H18v3h-7.5z"
-      />
-    </g>
+    <path
+      d="M4 22c-.55 0-1.02-.196-1.412-.587A1.927 1.927 0 0 1 2 20V4c0-.55.196-1.021.588-1.413A1.925 1.925 0 0 1 4 2h16c.55 0 1.021.196 1.413.587.391.392.587.863.587 1.413v16c0 .55-.196 1.021-.587 1.413A1.928 1.928 0 0 1 20 22H4Zm0-6v4h4v-4H4Zm6 0v4h4v-4h-4Zm6 4h4v-4h-4v4ZM4 14h4v-4H4v4Zm6 0h4v-4h-4v4Zm6 0h4v-4h-4v4ZM8 4H4v4h4V4Zm2 4h4V4h-4v4Zm6 0h4V4h-4v4Z"
+      fill="#000"
+    />
   </svg>
 );
 

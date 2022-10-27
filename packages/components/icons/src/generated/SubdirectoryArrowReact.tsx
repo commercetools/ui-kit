@@ -136,24 +136,16 @@ export const getIconStyles = (props: Props) => css`
 
 const SvgSubdirectoryArrow = (props: SVGProps) => (
   <svg
-    width={11}
-    height={18}
-    viewBox="0 0 11 18"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
     {...props}
   >
-    <defs>
-      <path
-        d="M16.404 17v-1.625c0-.102.04-.19.118-.264a.394.394 0 0 1 .28-.111c.107 0 .2.037.279.111l2.78 2.625a.351.351 0 0 1 0 .527l-2.78 2.626a.393.393 0 0 1-.28.111.393.393 0 0 1-.279-.111.35.35 0 0 1-.118-.264V19H10a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v13h5.404Z"
-        id="subdirectory-arrow_react_svg__a"
-      />
-    </defs>
-    <use
-      fill="#1A1A1A"
-      xlinkHref="#subdirectory-arrow_react_svg__a"
-      transform="translate(-9 -3)"
-      fillRule="evenodd"
+    <path
+      d="M13.3 20.275c-.183-.2-.28-.433-.288-.7a.918.918 0 0 1 .288-.7L16.175 16H6a.968.968 0 0 1-.713-.288A.967.967 0 0 1 5 15V5a.97.97 0 0 1 .287-.713A.97.97 0 0 1 6 4a.97.97 0 0 1 .713.287A.97.97 0 0 1 7 5v9h9.175l-2.9-2.9a.976.976 0 0 1-.287-.688.928.928 0 0 1 .287-.712c.2-.2.438-.296.713-.288.275.009.512.105.712.288l4.6 4.6c.1.1.171.208.213.325.041.117.062.242.062.375s-.02.258-.062.375a.883.883 0 0 1-.213.325l-4.6 4.6a.932.932 0 0 1-.687.275.974.974 0 0 1-.713-.3Z"
+      fill="#000"
     />
   </svg>
 );
