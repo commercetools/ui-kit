@@ -11,8 +11,9 @@ const getStateStyles = (
 ) => {
   if (isDisabled) {
     const baseDisabledStyles = css`
-      box-shadow: 0 0 0 1px ${designTokens.colorNeutral} inset;
-      background-color: ${designTokens.colorAccent98};
+      box-shadow: ${designTokens.shadowForButtonWhenDisabled};
+      background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
+      border: none;
       color: ${designTokens.colorNeutral60};
     `;
     switch (theme) {
@@ -31,7 +32,8 @@ const getStateStyles = (
   if (isActive) {
     const baseActiveStyles = [
       css`
-        box-shadow: ${designTokens.shadow9};
+        border: ${designTokens.borderForButtonWhenActiveAsSecondary};
+        box-shadow: ${designTokens.shadowForButtonWhenActive};
         background-color: ${designTokens.colorSurface};
         &:focus,
         &:hover {
@@ -40,7 +42,8 @@ const getStateStyles = (
       `,
       isDisabled &&
         css`
-          box-shadow: 0 0 0 1px ${designTokens.colorNeutral} inset;
+          border: none;
+          box-shadow: ${designTokens.shadowForButtonWhenDisabled};
           background-color: ${designTokens.colorAccent98};
           color: ${designTokens.colorNeutral60};
         `,
@@ -60,10 +63,12 @@ const getStateStyles = (
   return css`
     &:focus,
     &:hover {
-      box-shadow: ${designTokens.shadow8};
+      border: ${designTokens.borderForButtonWhenHoveredAsSecondary};
+      box-shadow: ${designTokens.shadowForButtonWhenFocused};
     }
     &:active {
-      box-shadow: ${designTokens.shadow9};
+      border: ${designTokens.borderForButtonWhenActiveAsSecondary};
+      box-shadow: ${designTokens.shadowForButtonWhenActive};
       background-color: ${designTokens.colorSurface};
     }
   `;
@@ -94,10 +99,10 @@ const getThemeStyles = (theme: Theme) => {
       return css`
         &:focus,
         &:hover {
-          box-shadow: ${designTokens.shadow8};
+          box-shadow: ${designTokens.shadowForButtonWhenFocused};
         }
         &:active {
-          box-shadow: ${designTokens.shadow9};
+          box-shadow: ${designTokens.shadowForButtonWhenActive};
           background-color: ${designTokens.colorSurface};
         }
       `;
