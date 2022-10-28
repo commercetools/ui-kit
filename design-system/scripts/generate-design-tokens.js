@@ -21,8 +21,8 @@ const endProgram = (message) => {
   process.exit(1);
 };
 
-const TOKEN_REGEX =
-  /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-as-([\w-]+?))?$/i;
+// const TOKEN_REGEX =
+//   /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-as-([\w-]+?))?$/i;
 const ALLOWED_CSS_VALUES_IN_CHOICES = /px|none|hsla/;
 
 const isAllowedCssChoice = (choice) =>
@@ -33,6 +33,96 @@ const supportedComponentGroups = Object.keys(definitions.componentGroups);
 const supportedVariants = Object.keys(definitions.variants);
 
 const designTokens = {};
+
+/*
+  Allowed patterns with examples:
+    - <attribute>-for-<component-group>
+      + background-color-for-tag
+    - <attribute>-for-<component-group>-when-<state>-
+      + background-color-for-button-when-disabled
+    - <attribute>-for-<component-group>-as-<state>-
+      + border-radius-for-button-as-big
+    - <attribute>-for-<component-group>-as-<state>-when-<state>
+      + border-for-button-as-secondary-when-hovered
+    - <attribute>-for-<component-group>-as-<state>-as-<state>-
+      + border-radius-for-button-as-icon-as-small
+    - <attribute>-for-<component-group>-as-<state>-as-<state>-when-<state>-
+      + border-radius-for-button-as-icon-as-small-when-disabled
+*/
+function parseToken(token) {
+  const parts = token.split('-');
+  let partType = 'cssRule';
+  let newVariant = false;
+  return parts.reduce(
+    (agg, part) => {
+      if (['for', 'as', 'when'].includes(part)) {
+        partType = part;
+        if (part === 'as') newVariant = true;
+        return agg;
+      }
+
+      if (partType === 'for') {
+        agg.componentGroup = `${agg.componentGroup}${
+          !!agg.componentGroup ? '-' : ''
+        }${part}`;
+      } else if (partType === 'when') {
+        agg.state = `${agg.state}${!!agg.state ? '-' : ''}${part}`;
+      } else if (partType === 'as') {
+        if (newVariant) {
+          agg.variants.push(part);
+          newVariant = false;
+        } else {
+          const lastIndex = agg.variants.length - 1;
+          agg.variants[lastIndex] = `${agg.variants[lastIndex]}-${part}`;
+        }
+      } else {
+        agg.cssRule = `${agg.cssRule}${!!agg.cssRule ? '-' : ''}${part}`;
+      }
+
+      return agg;
+    },
+    {
+      cssRule: '',
+      componentGroup: '',
+      variants: [],
+      state: '',
+    }
+  );
+}
+
+/*
+  We make sure the order of the token parts is
+    1. component group
+    2. variants
+    3. state
+
+  Eg: <attribute>-for-<component-group>-as-<state>-when-<state>
+*/
+function isValidTokenName(tokenName, tokenParts) {
+  const componentGroupIndex = tokenName.indexOf(tokenParts.componentGroup);
+  const variantsIndexes = tokenParts.variants.map((variant) =>
+    tokenName.indexOf(variant)
+  );
+  const stateIndex = tokenName.indexOf(tokenParts.state) || Number.MAX_VALUE;
+
+  console.log({
+    tokenName,
+    componentGroupIndex,
+    variantsIndexes,
+    stateIndex,
+    len: variantsIndexes.length === 0,
+  });
+
+  return (
+    (variantsIndexes.length === 0 ||
+      variantsIndexes.every(
+        (variantIndex) => variantIndex > componentGroupIndex
+      )) &&
+    componentGroupIndex < stateIndex &&
+    (variantsIndexes.length === 0 ||
+      variantsIndexes.every((variantIndex) => variantIndex < stateIndex))
+  );
+}
 
 Object.keys(definitions.choiceGroupsByTheme).forEach((themeName) => {
   if (!designTokens[themeName]) {
@@ -77,34 +167,44 @@ Object.entries(definitions.decisionGroupsByTheme).forEach(
         ) {
           endProgram(`Choice called "${decision.choice}" was not found!`);
         }
-        // TODO parse token name and warn when invalid name was given and token
-        // is not deprecated
 
-        const match = key.match(TOKEN_REGEX);
+        const tokenParts = parseToken(key);
 
-        if (match) {
-          const componentGroup = match[2];
-          const state = match[3];
-          const variant = match[4];
-
-          if (
-            componentGroup &&
-            !supportedComponentGroups.includes(componentGroup)
-          )
-            endProgram(
-              `Token "${key}" uses unsupported component group "${componentGroup}"!`
-            );
-
-          if (state && !supportedStates.includes(state))
-            endProgram(`Token "${key}" uses unsupported state "${state}"!`);
-
-          if (variant && !supportedVariants.includes(variant))
-            endProgram(`Token "${key}" uses unsupported variant "${variant}"!`);
-        } else if (!decision.deprecated) {
+        if (
+          tokenParts.componentGroup &&
+          !supportedComponentGroups.includes(tokenParts.componentGroup)
+        )
           endProgram(
-            `Token "${key}" does not follow <attribute>-for-<component-group>-when-<state>-on-<theme> naming scheme! Tokens not following this scheme must use "deprecated" flag.`
+            `Token "${key}" uses unsupported component group "${tokenParts.componentGroup}"!`
+          );
+
+        if (tokenParts.state && !supportedStates.includes(tokenParts.state))
+          endProgram(
+            `Token "${key}" uses unsupported state "${tokenParts.state}"!`
+          );
+
+        const invalidVariants = tokenParts.variants.find(
+          (variant) => !supportedVariants.includes(variant)
+        );
+        if (invalidVariants?.length > 0)
+          endProgram(
+            `Token "${key}" uses unsupported variants "${invalidVariants}"!`
+          );
+
+        console.log({
+          componentGroup: tokenParts.componentGroup,
+          deprecated: !decision.deprecated,
+        });
+        if (
+          tokenParts.componentGroup &&
+          !decision.deprecated &&
+          !isValidTokenName(key, tokenParts)
+        ) {
+          endProgram(
+            `Token "${key}" does not follow <attribute>-for-<component-group>-as-<variant>-when-<state> naming scheme! Tokens not following this scheme must use "deprecated" flag.`
           );
         }
+
         if (!designTokens[themeName]) {
           designTokens[themeName] = {};
         }
