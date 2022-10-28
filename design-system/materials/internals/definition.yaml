@@ -210,10 +210,14 @@ variants:
     description: 'Body text element'
   detail:
     description: 'Detail text element'
+  icon:
+    description: 'Icon'
   extra-small:
     description: 'To differentiate component extra small size'
   small:
     description: 'To differentiate component small size'
+  medium:
+    description: 'To differentiate component medium size'
   big:
     description: 'To differentiate component big size'
   primary:
@@ -266,9 +270,9 @@ decisionGroupsByTheme:
       decisions:
         border-for-button-as-secondary:
           choice: 'none'
-        border-for-button-when-hovered-as-secondary:
+        border-for-button-as-secondary-when-hovered:
           choice: 'none'
-        border-for-button-when-active-as-secondary:
+        border-for-button-as-secondary-when-active:
           choice: 'none'
 
     borderColors:
@@ -362,11 +366,15 @@ decisionGroupsByTheme:
       prefix: height
       decisions:
         height-for-button-as-big:
-          description: ''
           choice: '32px'
         height-for-button-as-small:
-          description: ''
           choice: '24px'
+        height-for-button-as-icon-as-big:
+          choice: '32px'
+        height-for-button-as-icon-as-medium:
+          choice: '24px'
+        height-for-button-as-icon-as-small:
+          choice: '16px'
 
     placeholderFontColors:
       label: Placeholder font colors
@@ -470,6 +478,8 @@ decisionGroupsByTheme:
           choice: shadow-7
         shadow-for-button-when-focused:
           choice: shadow-8
+        shadow-for-button-when-hovered:
+          choice: shadow-8
         shadow-for-button-when-active:
           choice: shadow-9
         shadow-for-button-when-disabled:
@@ -500,11 +510,9 @@ decisionGroupsByTheme:
       decisions:
         border-for-button-as-secondary:
           choice: '1px solid hsla(0, 0%, 81%, .60)'
-        # TODO: It would be better to have the name ordered like this:
-        #   border-for-button-as-secondary-when-hovered
-        border-for-button-when-hovered-as-secondary:
+        border-for-button-as-secondary-when-hovered:
           choice: '1px solid hsla(0, 0%, 81%, .80)'
-        border-for-button-when-active-as-secondary:
+        border-for-button-as-secondary-when-active:
           choice: '1px solid hsla(0, 0%, 81%)'
 
     borderRadiuses:
@@ -538,12 +546,18 @@ decisionGroupsByTheme:
       prefix: height
       decisions:
         height-for-button-as-big:
-          description: ''
           choice: '40px'
         # TODO: We're missing this value from UX team (this is a placeholder)
         height-for-button-as-small:
-          description: ''
           choice: '32px'
+        height-for-button-as-icon-as-big:
+          choice: '40px'
+        # TODO: We're missing this value from UX team (this is a placeholder)
+        height-for-button-as-icon-as-medium:
+          choice: '32px'
+        # TODO: We're missing this value from UX team (this is a placeholder)
+        height-for-button-as-icon-as-small:
+          choice: '24px'
 
     shadows:
       label: Shadows
@@ -552,6 +566,8 @@ decisionGroupsByTheme:
         shadow-for-button:
           choice: shadow-0
         shadow-for-button-when-focused:
+          choice: shadow-0
+        shadow-for-button-when-hovered:
           choice: shadow-0
         shadow-for-button-when-active:
           choice: shadow-0

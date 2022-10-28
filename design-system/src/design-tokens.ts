@@ -114,8 +114,8 @@ export const themes = {
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
     borderForButtonAsSecondary: 'none',
-    borderForButtonWhenHoveredAsSecondary: 'none',
-    borderForButtonWhenActiveAsSecondary: 'none',
+    borderForButtonAsSecondaryWhenHovered: 'none',
+    borderForButtonAsSecondaryWhenActive: 'none',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -140,6 +140,9 @@ export const themes = {
     fontFamily: "'Open Sans', sans-serif",
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
+    heightForButtonAsIconAsBig: '32px',
+    heightForButtonAsIconAsMedium: '24px',
+    heightForButtonAsIconAsSmall: '16px',
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
     fontSizeForButton: '1rem',
     fontSizeForInput: '1rem',
@@ -169,6 +172,8 @@ export const themes = {
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
       '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
+    shadowForButtonWhenHovered:
+      '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenActive:
       'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
     shadowForButtonWhenDisabled: '0 0 0 1px #ccc inset',
@@ -191,16 +196,20 @@ export const themes = {
     backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForTagWarning: 'hsl(0, 0%, 95%)',
     borderForButtonAsSecondary: '1px solid hsla(0, 0%, 81%, .60)',
-    borderForButtonWhenHoveredAsSecondary: '1px solid hsla(0, 0%, 81%, .80)',
-    borderForButtonWhenActiveAsSecondary: '1px solid hsla(0, 0%, 81%)',
+    borderForButtonAsSecondaryWhenHovered: '1px solid hsla(0, 0%, 81%, .80)',
+    borderForButtonAsSecondaryWhenActive: '1px solid hsla(0, 0%, 81%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '2px',
     fontSizeForButton: '1.125rem',
     fontWeightForButton: '600',
     heightForButtonAsBig: '40px',
     heightForButtonAsSmall: '32px',
+    heightForButtonAsIconAsBig: '40px',
+    heightForButtonAsIconAsMedium: '32px',
+    heightForButtonAsIconAsSmall: '24px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
+    shadowForButtonWhenHovered: 'none',
     shadowForButtonWhenActive: 'none',
     shadowForButtonWhenDisabled: 'none',
   },
@@ -330,10 +339,10 @@ const designTokens = {
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
-  borderForButtonWhenHoveredAsSecondary:
-    'var(--border-for-button-when-hovered-as-secondary, none)',
-  borderForButtonWhenActiveAsSecondary:
-    'var(--border-for-button-when-active-as-secondary, none)',
+  borderForButtonAsSecondaryWhenHovered:
+    'var(--border-for-button-as-secondary-when-hovered, none)',
+  borderForButtonAsSecondaryWhenActive:
+    'var(--border-for-button-as-secondary-when-active, none)',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -369,6 +378,11 @@ const designTokens = {
   fontFamily: "var(--font-family, 'Open Sans', sans-serif)",
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
+  heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
+  heightForButtonAsIconAsMedium:
+    'var(--height-for-button-as-icon-as-medium, 24px)',
+  heightForButtonAsIconAsSmall:
+    'var(--height-for-button-as-icon-as-small, 16px)',
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
   fontSizeForButton: 'var(--font-size-for-button, 1rem)',
@@ -399,6 +413,8 @@ const designTokens = {
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:
     'var(--shadow-for-button-when-focused, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
+  shadowForButtonWhenHovered:
+    'var(--shadow-for-button-when-hovered, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenActive:
     'var(--shadow-for-button-when-active, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
   shadowForButtonWhenDisabled:
