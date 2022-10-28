@@ -121,7 +121,7 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
           justify-content: center;
           border: 1px solid ${designTokens.colorSurface};
           background-color: ${designTokens.colorSurface};
-          box-shadow: ${designTokens.shadow7};
+          box-shadow: ${designTokens.shadowForButton};
           color: ${designTokens.colorSolid};
           transition: background-color ${designTokens.transitionLinear80Ms},
             box-shadow 150ms ease-in-out;

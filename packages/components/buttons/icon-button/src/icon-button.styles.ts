@@ -71,11 +71,11 @@ const getStateStyles = (
   }
   if (isActive) {
     const activeStyle = css`
-      box-shadow: ${designTokens.shadow9};
+      box-shadow: ${designTokens.shadowForButtonWhenActive};
       background-color: ${designTokens.colorSurface};
       border-color: ${designTokens.colorSurface};
       &:hover {
-        box-shadow: ${designTokens.shadow9};
+        box-shadow: ${designTokens.shadowForButtonWhenActive};
         background-color: ${designTokens.colorNeutral95};
         border-color: ${designTokens.colorNeutral95};
       }
@@ -91,7 +91,7 @@ const getStateStyles = (
               background-color: ${designTokens.colorInfo85};
               border-color: ${designTokens.colorInfo85};
               color: ${designTokens.colorSurface};
-              box-shadow: ${designTokens.shadow9};
+              box-shadow: ${designTokens.shadowForButtonWhenActive};
             `,
           css`
             background-color: ${designTokens.colorInfo};
@@ -113,7 +113,7 @@ const getStateStyles = (
               background-color: ${designTokens.colorPrimary85};
               border-color: ${designTokens.colorPrimary85};
               color: ${designTokens.colorSurface};
-              box-shadow: ${designTokens.shadow9};
+              box-shadow: ${designTokens.shadowForButtonWhenActive};
             `,
 
           css`
@@ -131,10 +131,10 @@ const getStateStyles = (
   }
   return css`
     &:hover {
-      box-shadow: ${designTokens.shadow8};
+      box-shadow: ${designTokens.shadowForButtonWhenHovered};
     }
     &:active {
-      box-shadow: ${designTokens.shadow9};
+      box-shadow: ${designTokens.shadowForButtonWhenActive};
       background-color: ${designTokens.colorSurface};
       border-color: ${designTokens.colorSurface};
     }

@@ -32,7 +32,7 @@ const getStateStyles = (
   if (isActive) {
     const baseActiveStyles = [
       css`
-        border: ${designTokens.borderForButtonWhenActiveAsSecondary};
+        border: ${designTokens.borderForButtonAsSecondaryWhenActive};
         box-shadow: ${designTokens.shadowForButtonWhenActive};
         background-color: ${designTokens.colorSurface};
         &:focus,
@@ -63,11 +63,11 @@ const getStateStyles = (
   return css`
     &:focus,
     &:hover {
-      border: ${designTokens.borderForButtonWhenHoveredAsSecondary};
+      border: ${designTokens.borderForButtonAsSecondaryWhenHovered};
       box-shadow: ${designTokens.shadowForButtonWhenFocused};
     }
     &:active {
-      border: ${designTokens.borderForButtonWhenActiveAsSecondary};
+      border: ${designTokens.borderForButtonAsSecondaryWhenActive};
       box-shadow: ${designTokens.shadowForButtonWhenActive};
       background-color: ${designTokens.colorSurface};
     }
