@@ -40,13 +40,6 @@ const getStateStyles = (
           background-color: ${designTokens.colorNeutral95};
         }
       `,
-      isDisabled &&
-        css`
-          border: none;
-          box-shadow: ${designTokens.shadowForButtonWhenDisabled};
-          background-color: ${designTokens.colorAccent98};
-          color: ${designTokens.colorNeutral60};
-        `,
     ];
     switch (theme) {
       case 'info':
