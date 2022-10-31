@@ -183,10 +183,6 @@ Object.entries(definitions.decisionGroupsByTheme).forEach(
             `Token "${key}" uses unsupported variants "${invalidVariants}"!`
           );
 
-        console.log({
-          componentGroup: tokenParts.componentGroup,
-          deprecated: !decision.deprecated,
-        });
         if (
           tokenParts.componentGroup &&
           !decision.deprecated &&
@@ -307,3 +303,5 @@ fs.writeFileSync(
     parser: 'typescript',
   })
 );
+
+console.log('\nDesign tokens built!\n');
