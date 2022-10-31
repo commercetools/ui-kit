@@ -93,7 +93,7 @@ function parseToken(token) {
 /*
   We make sure the order of the token parts is
     1. component group
-    2. variants
+    2. variants (might have several of this)
     3. state
 
   Eg: <attribute>-for-<component-group>-as-<state>-when-<state>
@@ -104,14 +104,6 @@ function isValidTokenName(tokenName, tokenParts) {
     tokenName.indexOf(variant)
   );
   const stateIndex = tokenName.indexOf(tokenParts.state) || Number.MAX_VALUE;
-
-  console.log({
-    tokenName,
-    componentGroupIndex,
-    variantsIndexes,
-    stateIndex,
-    len: variantsIndexes.length === 0,
-  });
 
   return (
     (variantsIndexes.length === 0 ||

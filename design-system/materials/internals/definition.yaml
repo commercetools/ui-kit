@@ -306,6 +306,10 @@ decisionGroupsByTheme:
         border-color-for-tag-when-focused:
           description: ''
           choice: color-primary
+        border-color-for-button-as-icon:
+          choice: color-surface
+        border-color-for-button-as-icon-when-disabled:
+          choice: color-neutral
 
     borderRadiuses:
       label: Border Radius
@@ -315,6 +319,12 @@ decisionGroupsByTheme:
           choice: border-radius-6
         border-radius-for-button-as-small:
           choice: border-radius-4
+        border-radius-for-button-as-icon-as-big:
+          choice: border-radius-6
+        border-radius-for-button-as-icon-as-medium:
+          choice: border-radius-4
+        border-radius-for-button-as-icon-as-small:
+          choice: border-radius-2
         border-radius-for-input:
           description: ''
           choice: border-radius-6
@@ -515,6 +525,15 @@ decisionGroupsByTheme:
         border-for-button-as-secondary-when-active:
           choice: '1px solid hsla(0, 0%, 81%)'
 
+    borderColors:
+      label: Border Colors
+      prefix: border-color
+      decisions:
+        border-color-for-button-as-icon:
+          choice: 'hsla(0, 0%, 81%, .60)'
+        border-color-for-button-as-icon-when-disabled:
+          choice: color-surface
+
     borderRadiuses:
       label: Border radiuses
       prefix: border-radius
@@ -523,6 +542,14 @@ decisionGroupsByTheme:
           choice: border-radius-4
         # TODO: We don't have the right value from UX yet. This one is a placeholder
         border-radius-for-button-as-small:
+          choice: border-radius-2
+        border-radius-for-button-as-icon-as-big:
+          choice: border-radius-4
+        # TODO: We don't have the right value from UX yet. This one is a placeholder
+        border-radius-for-button-as-icon-as-medium:
+          choice: border-radius-4
+        # TODO: We don't have the right value from UX yet. This one is a placeholder
+        border-radius-for-button-as-icon-as-small:
           choice: border-radius-2
 
     fontSizes:
