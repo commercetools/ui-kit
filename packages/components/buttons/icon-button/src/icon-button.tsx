@@ -119,17 +119,17 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid ${designTokens.colorSurface};
+          border: 1px solid ${designTokens.borderColorForButtonAsIcon};
           background-color: ${designTokens.colorSurface};
           box-shadow: ${designTokens.shadowForButton};
           color: ${designTokens.colorSolid};
           transition: background-color ${designTokens.transitionLinear80Ms},
             box-shadow 150ms ease-in-out;
         `,
+        getThemeStyles(props.theme),
         getStateStyles(props.isDisabled, isActive, props.theme),
         getShapeStyles(props.shape, props.size),
         getSizeStyles(props.size),
-        getThemeStyles(props.theme),
         getHoverStyles(props.isDisabled, props.theme),
       ]}
     >

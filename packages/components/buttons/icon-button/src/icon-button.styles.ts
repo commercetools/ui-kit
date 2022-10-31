@@ -3,12 +3,6 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 import type { TIconButtonProps } from './icon-button';
 
-const buttonSizes = {
-  small: '16px',
-  medium: '24px',
-  big: '32px',
-};
-
 // Gets the color which the icon should have based on context of button's state/cursor behavior
 const getIconThemeColor = (
   props: Pick<
@@ -39,8 +33,8 @@ const getStateStyles = (
 ) => {
   if (isDisabled) {
     const disabledStyle = css`
-      background-color: ${designTokens.colorAccent98};
-      border-color: ${designTokens.colorNeutral};
+      background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
+      border-color: ${designTokens.borderColorForButtonAsIconWhenDisabled};
       color: ${designTokens.colorNeutral60};
       box-shadow: none;
     `;
@@ -73,7 +67,7 @@ const getStateStyles = (
     const activeStyle = css`
       box-shadow: ${designTokens.shadowForButtonWhenActive};
       background-color: ${designTokens.colorSurface};
-      border-color: ${designTokens.colorSurface};
+      border-color: ${designTokens.borderColorForButtonAsIcon};
       &:hover {
         box-shadow: ${designTokens.shadowForButtonWhenActive};
         background-color: ${designTokens.colorNeutral95};
@@ -84,15 +78,6 @@ const getStateStyles = (
       case 'info':
         return [
           activeStyle,
-          isDisabled &&
-            // When the button is active and somehow is disabled it should have
-            // a different color to indicate that it's active but can't receive any actions
-            css`
-              background-color: ${designTokens.colorInfo85};
-              border-color: ${designTokens.colorInfo85};
-              color: ${designTokens.colorSurface};
-              box-shadow: ${designTokens.shadowForButtonWhenActive};
-            `,
           css`
             background-color: ${designTokens.colorInfo};
             border-color: ${designTokens.colorInfo};
@@ -106,16 +91,6 @@ const getStateStyles = (
       case 'primary':
         return [
           activeStyle,
-          // When the button is active and somehow is disabled it should have
-          // a different color to indicate that it's active but can't receive any actions
-          isDisabled &&
-            css`
-              background-color: ${designTokens.colorPrimary85};
-              border-color: ${designTokens.colorPrimary85};
-              color: ${designTokens.colorSurface};
-              box-shadow: ${designTokens.shadowForButtonWhenActive};
-            `,
-
           css`
             background-color: ${designTokens.colorPrimary};
             color: ${designTokens.colorSurface};
@@ -154,15 +129,15 @@ const getShapeStyles = (
       switch (size) {
         case 'small':
           return css`
-            border-radius: ${designTokens.borderRadius2};
+            border-radius: ${designTokens.borderRadiusForButtonAsIconAsSmall};
           `;
         case 'medium':
           return css`
-            border-radius: ${designTokens.borderRadius4};
+            border-radius: ${designTokens.borderRadiusForButtonAsIconAsMedium};
           `;
         case 'big':
           return css`
-            border-radius: ${designTokens.borderRadius6};
+            border-radius: ${designTokens.borderRadiusForButtonAsIconAsBig};
           `;
         default:
           return css``;
@@ -175,18 +150,18 @@ const getSizeStyles = (size: TIconButtonProps['size']) => {
   switch (size) {
     case 'small':
       return css`
-        height: ${buttonSizes.small};
-        width: ${buttonSizes.small};
+        height: ${designTokens.heightForButtonAsIconAsSmall};
+        width: ${designTokens.heightForButtonAsIconAsSmall};
       `;
     case 'medium':
       return css`
-        height: ${buttonSizes.medium};
-        width: ${buttonSizes.medium};
+        height: ${designTokens.heightForButtonAsIconAsMedium};
+        width: ${designTokens.heightForButtonAsIconAsMedium};
       `;
     case 'big':
       return css`
-        height: ${buttonSizes.big};
-        width: ${buttonSizes.big};
+        height: ${designTokens.heightForButtonAsIconAsBig};
+        width: ${designTokens.heightForButtonAsIconAsBig};
       `;
     default:
       return css``;
