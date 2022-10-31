@@ -21,8 +21,6 @@ const endProgram = (message) => {
   process.exit(1);
 };
 
-// const TOKEN_REGEX =
-//   /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-as-([\w-]+?))?$/i;
 const ALLOWED_CSS_VALUES_IN_CHOICES = /px|none|hsla/;
 
 const isAllowedCssChoice = (choice) =>
