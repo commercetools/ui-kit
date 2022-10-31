@@ -493,8 +493,7 @@ decisionGroupsByTheme:
         shadow-for-button-when-active:
           choice: shadow-9
         shadow-for-button-when-disabled:
-          # TODO: color token: var(--color-neutral)
-          choice: '0 0 0 1px #ccc inset'
+          choice: '0 0 0 1px var(--color-neutral) inset'
         shadow-box-tag-when-hovered:
           description: ''
           deprecated: true

@@ -181,7 +181,7 @@ export const themes = {
       '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenActive:
       'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
-    shadowForButtonWhenDisabled: '0 0 0 1px #ccc inset',
+    shadowForButtonWhenDisabled: '0 0 0 1px var(--color-neutral) inset',
     shadowBoxTagWhenHovered:
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     bigButtonHeight: '32px',
@@ -437,7 +437,7 @@ const designTokens = {
   shadowForButtonWhenActive:
     'var(--shadow-for-button-when-active, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
   shadowForButtonWhenDisabled:
-    'var(--shadow-for-button-when-disabled, 0 0 0 1px #ccc inset)',
+    'var(--shadow-for-button-when-disabled, 0 0 0 1px var(--color-neutral) inset)',
   shadowBoxTagWhenHovered:
     'var(--shadow-box-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   bigButtonHeight: 'var(--big-button-height, 32px)',
