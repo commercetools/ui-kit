@@ -121,7 +121,7 @@ export const SecondaryButton = <
       display: inline-flex;
       background-color: ${designTokens.colorSurface};
       border: ${designTokens.borderForButtonAsSecondary};
-      border-radius: ${designTokens.borderRadius6};
+      border-radius: ${designTokens.borderRadiusForButtonAsBig};
       box-shadow: ${designTokens.shadowForButton};
       color: ${designTokens.colorSolid};
       font-size: ${designTokens.fontSizeDefault};
