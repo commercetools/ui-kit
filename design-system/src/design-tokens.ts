@@ -182,6 +182,7 @@ export const themes = {
     shadowForButtonWhenActive:
       'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
     shadowForButtonWhenDisabled: '0 0 0 1px var(--color-neutral) inset',
+    shadowForCardWhenRaised: '0 1px 2px rgb(25 40 81 / 5%)',
     shadowBoxTagWhenHovered:
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     bigButtonHeight: '32px',
@@ -438,6 +439,8 @@ const designTokens = {
     'var(--shadow-for-button-when-active, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
   shadowForButtonWhenDisabled:
     'var(--shadow-for-button-when-disabled, 0 0 0 1px var(--color-neutral) inset)',
+  shadowForCardWhenRaised:
+    'var(--shadow-for-card-when-raised, 0 1px 2px rgb(25 40 81 / 5%))',
   shadowBoxTagWhenHovered:
     'var(--shadow-box-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   bigButtonHeight: 'var(--big-button-height, 32px)',

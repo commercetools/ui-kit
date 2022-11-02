@@ -194,6 +194,8 @@ states:
     description: 'When the element is selected'
   inverted:
     description: 'When the element has inverted colors'
+  raised:
+    description: 'When the element is raised'
 
 variants:
   h1:
@@ -234,6 +236,8 @@ componentGroups:
     description: 'Tag elements with type warning'
   text:
     description: 'Text elements'
+  card:
+    description: 'Card element'
 
 decisionGroupsByTheme:
   default:
@@ -492,6 +496,8 @@ decisionGroupsByTheme:
           choice: shadow-9
         shadow-for-button-when-disabled:
           choice: '0 0 0 1px var(--color-neutral) inset'
+        shadow-for-card-when-raised:
+          choice: '0 1px 2px rgb(25 40 81 / 5%)'
         shadow-box-tag-when-hovered:
           description: ''
           deprecated: true
