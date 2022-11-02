@@ -223,6 +223,7 @@ export const themes = {
     shadowForButtonWhenHovered: 'none',
     shadowForButtonWhenActive: 'none',
     shadowForButtonWhenDisabled: 'none',
+    shadowForCardWhenRaised: 'none',
   },
 } as const;
 

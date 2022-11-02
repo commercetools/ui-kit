@@ -603,6 +603,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         shadow-for-button-when-disabled:
           choice: shadow-0
+        shadow-for-card-when-raised:
+          choice: 'none'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
