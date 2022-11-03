@@ -128,8 +128,8 @@ export const SecondaryButton = <
       transition: background-color ${designTokens.transitionLinear80Ms},
         box-shadow ${designTokens.transitionEaseinout150Ms};
     `,
-    getStateStyles(props.isDisabled, isActive, props.theme),
     getThemeStyles(props.theme),
+    getStateStyles(props.isDisabled, isActive, props.theme),
   ];
 
   return (

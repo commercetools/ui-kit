@@ -10,24 +10,20 @@ const getStateStyles = (
   theme: Theme
 ) => {
   if (isDisabled) {
-    const baseDisabledStyles = css`
+    return css`
       box-shadow: ${designTokens.shadowForButtonWhenDisabled};
       background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
       border: none;
       color: ${designTokens.colorNeutral60};
+      &:focus,
+      &:hover {
+        color: ${designTokens.colorNeutral60};
+
+        * {
+          fill: ${designTokens.colorNeutral60};
+        }
+      }
     `;
-    switch (theme) {
-      case 'info':
-        return [
-          baseDisabledStyles,
-          css`
-            color: ${designTokens.colorNeutral60};
-          `,
-          isActive && `color: ${designTokens.colorInfo};`,
-        ];
-      default:
-        return baseDisabledStyles;
-    }
   }
   if (isActive) {
     const baseActiveStyles = [
@@ -37,7 +33,7 @@ const getStateStyles = (
         background-color: ${designTokens.colorSurface};
         &:focus,
         &:hover {
-          background-color: ${designTokens.colorNeutral95};
+          background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenActive};
         }
       `,
     ];
@@ -59,10 +55,13 @@ const getStateStyles = (
       border: ${designTokens.borderForButtonAsSecondaryWhenHovered};
       box-shadow: ${designTokens.shadowForButtonWhenFocused};
     }
+    &:hover {
+      background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenHovered};
+    }
     &:active {
       border: ${designTokens.borderForButtonAsSecondaryWhenActive};
       box-shadow: ${designTokens.shadowForButtonWhenActive};
-      background-color: ${designTokens.colorSurface};
+      background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenActive};
     }
   `;
 };
@@ -93,10 +92,11 @@ const getThemeStyles = (theme: Theme) => {
         &:focus,
         &:hover {
           box-shadow: ${designTokens.shadowForButtonWhenFocused};
+          background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenHovered};
         }
         &:active {
           box-shadow: ${designTokens.shadowForButtonWhenActive};
-          background-color: ${designTokens.colorSurface};
+          background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenActive};
         }
       `;
     }
