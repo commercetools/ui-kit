@@ -18,6 +18,8 @@ export const themes = {
     colorAccent95: 'hsl(195, 35.2941176471%, 95%)',
     colorAccent98: 'hsl(195, 35.2941176471%, 98%)',
     colorNeutral: '#ccc',
+    colorNeutral05: 'hsl(0deg 0% 80% / 5%)',
+    colorNeutral10: 'hsl(0deg 0% 80% / 10%)',
     colorNeutral60: 'hsl(0, 0%, 60%)',
     colorNeutral90: 'hsl(0, 0%, 90%)',
     colorNeutral95: 'hsl(0, 0%, 95%)',
@@ -113,6 +115,8 @@ export const themes = {
     backgroundColorForButtonAsPrimaryWhenActive: '#00b39e',
     backgroundColorForButtonAsPrimaryWhenHovered:
       'hsl(172.9608938547486, 100%, 25%)',
+    backgroundColorForButtonAsSecondaryWhenActive: '#fff',
+    backgroundColorForButtonAsSecondaryWhenHovered: '#fff',
     backgroundColorForButtonAsUrgentWhenActive: '#f16d0e',
     backgroundColorForButtonAsUrgentWhenHovered:
       'hsl(25.110132158590307, 89.0196078431%, 25%)',
@@ -210,6 +214,8 @@ export const themes = {
     colorPrimary: '#00b39e',
     backgroundColorForButtonAsPrimaryWhenActive: 'hsla(173, 100%, 35%, 0.90)',
     backgroundColorForButtonAsPrimaryWhenHovered: 'hsla(173, 100%, 35%, 0.95)',
+    backgroundColorForButtonAsSecondaryWhenActive: 'hsl(0deg 0% 80% / 10%)',
+    backgroundColorForButtonAsSecondaryWhenHovered: 'hsl(0deg 0% 80% / 5%)',
     backgroundColorForButtonAsUrgentWhenActive: 'hsla(25, 89%, 50%, 90%)',
     backgroundColorForButtonAsUrgentWhenHovered: 'hsla(25, 89%, 50%, 95%)',
     backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
@@ -254,6 +260,8 @@ const designTokens = {
   colorAccent95: 'var(--color-accent-95, hsl(195, 35.2941176471%, 95%))',
   colorAccent98: 'var(--color-accent-98, hsl(195, 35.2941176471%, 98%))',
   colorNeutral: 'var(--color-neutral, #ccc)',
+  colorNeutral05: 'var(--color-neutral-05, hsl(0deg 0% 80% / 5%))',
+  colorNeutral10: 'var(--color-neutral-10, hsl(0deg 0% 80% / 10%))',
   colorNeutral60: 'var(--color-neutral-60, hsl(0, 0%, 60%))',
   colorNeutral90: 'var(--color-neutral-90, hsl(0, 0%, 90%))',
   colorNeutral95: 'var(--color-neutral-95, hsl(0, 0%, 95%))',
@@ -361,6 +369,10 @@ const designTokens = {
     'var(--background-color-for-button-as-primary-when-active, #00b39e)',
   backgroundColorForButtonAsPrimaryWhenHovered:
     'var(--background-color-for-button-as-primary-when-hovered, hsl(172.9608938547486, 100%, 25%))',
+  backgroundColorForButtonAsSecondaryWhenActive:
+    'var(--background-color-for-button-as-secondary-when-active, #fff)',
+  backgroundColorForButtonAsSecondaryWhenHovered:
+    'var(--background-color-for-button-as-secondary-when-hovered, #fff)',
   backgroundColorForButtonAsUrgentWhenActive:
     'var(--background-color-for-button-as-urgent-when-active, #f16d0e)',
   backgroundColorForButtonAsUrgentWhenHovered:

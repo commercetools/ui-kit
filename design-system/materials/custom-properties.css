@@ -19,6 +19,8 @@
   --color-accent-95: hsl(195, 35.2941176471%, 95%);
   --color-accent-98: hsl(195, 35.2941176471%, 98%);
   --color-neutral: #ccc;
+  --color-neutral-05: hsl(0deg 0% 80% / 5%);
+  --color-neutral-10: hsl(0deg 0% 80% / 10%);
   --color-neutral-60: hsl(0, 0%, 60%);
   --color-neutral-90: hsl(0, 0%, 90%);
   --color-neutral-95: hsl(0, 0%, 95%);
@@ -117,6 +119,8 @@
     100%,
     25%
   );
+  --background-color-for-button-as-secondary-when-active: #fff;
+  --background-color-for-button-as-secondary-when-hovered: #fff;
   --background-color-for-button-as-urgent-when-active: #f16d0e;
   --background-color-for-button-as-urgent-when-hovered: hsl(
     25.110132158590307,

@@ -44,6 +44,8 @@ choiceGroupsByTheme:
         color-accent-95: 'hsl(195, 35.2941176471%, 95%)'
         color-accent-98: 'hsl(195, 35.2941176471%, 98%)'
         color-neutral: '#ccc'
+        color-neutral-05: 'hsl(0deg 0% 80% / 5%)'
+        color-neutral-10: 'hsl(0deg 0% 80% / 10%)'
         color-neutral-60: 'hsl(0, 0%, 60%)'
         color-neutral-90: 'hsl(0, 0%, 90%)'
         color-neutral-95: 'hsl(0, 0%, 95%)'
@@ -252,6 +254,10 @@ decisionGroupsByTheme:
           choice: color-primary
         background-color-for-button-as-primary-when-hovered:
           choice: color-primary-25
+        background-color-for-button-as-secondary-when-active:
+          choice: color-surface
+        background-color-for-button-as-secondary-when-hovered:
+          choice: color-surface
         background-color-for-button-as-urgent-when-active:
           choice: color-warning
         background-color-for-button-as-urgent-when-hovered:
@@ -521,6 +527,10 @@ decisionGroupsByTheme:
           choice: color-primary-op-90
         background-color-for-button-as-primary-when-hovered:
           choice: color-primary-op-95
+        background-color-for-button-as-secondary-when-active:
+          choice: color-neutral-10
+        background-color-for-button-as-secondary-when-hovered:
+          choice: color-neutral-05
         background-color-for-button-as-urgent-when-active:
           choice: color-warning-op-90
         background-color-for-button-as-urgent-when-hovered:
