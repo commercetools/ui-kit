@@ -312,6 +312,8 @@ decisionGroupsByTheme:
           choice: color-surface
         border-color-for-button-as-icon-when-disabled:
           choice: color-neutral
+        border-color-for-card-when-raised:
+          choice: color-neutral-90
 
     borderRadiuses:
       label: Border Radius
@@ -333,6 +335,8 @@ decisionGroupsByTheme:
         border-radius-for-tag:
           description: ''
           choice: border-radius-2
+        border-radius-for-card:
+          choice: border-radius-4
     # We don't have font families in choices yet, so we can't have decisions for
     # them
 

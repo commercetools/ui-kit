@@ -127,6 +127,7 @@ export const themes = {
     borderColorForTagWhenFocused: '#00b39e',
     borderColorForButtonAsIcon: '#fff',
     borderColorForButtonAsIconWhenDisabled: '#ccc',
+    borderColorForCardWhenRaised: 'hsl(0, 0%, 90%)',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -134,6 +135,7 @@ export const themes = {
     borderRadiusForButtonAsIconAsSmall: '2px',
     borderRadiusForInput: '6px',
     borderRadiusForTag: '2px',
+    borderRadiusForCard: '4px',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForInputWhenError: '#e60050',
@@ -373,6 +375,8 @@ const designTokens = {
   borderColorForButtonAsIcon: 'var(--border-color-for-button-as-icon, #fff)',
   borderColorForButtonAsIconWhenDisabled:
     'var(--border-color-for-button-as-icon-when-disabled, #ccc)',
+  borderColorForCardWhenRaised:
+    'var(--border-color-for-card-when-raised, hsl(0, 0%, 90%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -383,6 +387,7 @@ const designTokens = {
     'var(--border-radius-for-button-as-icon-as-small, 2px)',
   borderRadiusForInput: 'var(--border-radius-for-input, 6px)',
   borderRadiusForTag: 'var(--border-radius-for-tag, 2px)',
+  borderRadiusForCard: 'var(--border-radius-for-card, 4px)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
     'var(--font-color-for-input-when-disabled, hsl(0, 0%, 60%))',
