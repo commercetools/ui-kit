@@ -22,7 +22,7 @@
 # files in different format (css, json, js, ...).
 #
 # The names of decisions in this file need to follow this format:
-#   <attribute>-for-<component-group>-when-<state>-
+#   <attribute>-for-<component-group>-as-<variant>-when-<state>
 
 choiceGroupsByTheme:
   default:
@@ -73,15 +73,14 @@ choiceGroupsByTheme:
       label: Font sizes
       prefix: font-size
       choices:
-        font-size-m: '1rem'
         font-size-10: '0.75rem'
         font-size-20: '0.875rem'
         font-size-30: '1rem'
         font-size-40: '1.125rem'
         font-size-50: '1.25rem'
         font-size-60: '1.5rem'
-    fontWeight:
-      label: Font weight
+    fontWeights:
+      label: Font weights
       prefix: font-weight
       choices:
         font-weight-400: '400'
@@ -340,10 +339,10 @@ decisionGroupsByTheme:
       decisions:
         font-size-for-input:
           description: ''
-          choice: font-size-m
+          choice: font-size-30
         font-size-for-text-as-h1:
           description: ''
-          choice: font-size-60
+          choice: font-size-50
         font-size-for-text-as-h2:
           description: ''
           choice: font-size-50
@@ -369,7 +368,7 @@ decisionGroupsByTheme:
       decisions:
         line-height-for-text-as-h1:
           description: ''
-          choice: line-height-60
+          choice: line-height-50
         line-height-for-text-as-h2:
           description: ''
           choice: line-height-50
@@ -389,13 +388,13 @@ decisionGroupsByTheme:
           description: ''
           choice: line-height-10
 
-    fontWeight:
+    fontWeights:
       label: Font Weights
       prefix: font-weight
       decisions:
         font-weight-for-text-as-h1:
           description: ''
-          choice: font-weight-600
+          choice: font-weight-500
         font-weight-for-text-as-h2:
           description: ''
           choice: font-weight-500
@@ -448,6 +447,7 @@ decisionGroupsByTheme:
 # break. Upgrading those parts is not something the ui-kit teams can do on their
 # own so we kept the old tokens around even though proper shadow tokens exist).
 plainTokens:
+  font-size-m: '1rem'
   big-button-height: 32px
   small-button-height: 24px
   size-height-input: 32px
