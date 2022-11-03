@@ -21,16 +21,19 @@ const endProgram = (message) => {
   process.exit(1);
 };
 
-const ALLOWED_CSS_VALUES_IN_CHOICES = /px|none|hsla/;
+const ALLOWED_KEYWORDS_VALUES_IN_CHOICES = /px|none|hsla/;
 
 const isAllowedCssChoice = (choice) =>
-  choice.match(ALLOWED_CSS_VALUES_IN_CHOICES) !== null;
+  choice.match(ALLOWED_KEYWORDS_VALUES_IN_CHOICES) !== null;
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);
 const supportedVariants = Object.keys(definitions.variants || {});
 
 const designTokens = {};
+
+const combineTokenParts = (currentPart, newPart) =>
+  `${currentPart}${currentPart.length > 0 ? '-' : ''}${newPart}`;
 
 /*
   Allowed patterns with examples:
@@ -49,38 +52,44 @@ const designTokens = {};
 */
 function parseToken(token) {
   const parts = token.split('-');
-  let partType = 'cssRule';
+  let partType = 'cssProperty';
   let newVariant = false;
   return parts.reduce(
-    (agg, part) => {
+    (tokenParts, part) => {
       if (['for', 'as', 'when'].includes(part)) {
         partType = part;
         if (part === 'as') newVariant = true;
-        return agg;
+        return tokenParts;
       }
 
       if (partType === 'for') {
-        agg.componentGroup = `${agg.componentGroup}${
-          !!agg.componentGroup ? '-' : ''
-        }${part}`;
+        tokenParts.componentGroup = combineTokenParts(
+          tokenParts.componentGroup,
+          part
+        );
       } else if (partType === 'when') {
-        agg.state = `${agg.state}${!!agg.state ? '-' : ''}${part}`;
+        tokenParts.state = combineTokenParts(tokenParts.state, part);
       } else if (partType === 'as') {
         if (newVariant) {
-          agg.variants.push(part);
+          tokenParts.variants.push(part);
           newVariant = false;
         } else {
-          const lastIndex = agg.variants.length - 1;
-          agg.variants[lastIndex] = `${agg.variants[lastIndex]}-${part}`;
+          const lastIndex = tokenParts.variants.length - 1;
+          tokenParts.variants[
+            lastIndex
+          ] = `${tokenParts.variants[lastIndex]}-${part}`;
         }
       } else {
-        agg.cssRule = `${agg.cssRule}${!!agg.cssRule ? '-' : ''}${part}`;
+        tokenParts.cssProperty = combineTokenParts(
+          tokenParts.cssProperty,
+          part
+        );
       }
 
-      return agg;
+      return tokenParts;
     },
     {
-      cssRule: '',
+      cssProperty: '',
       componentGroup: '',
       variants: [],
       state: '',
