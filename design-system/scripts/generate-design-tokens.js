@@ -38,13 +38,13 @@ const designTokens = {};
       + background-color-for-tag
     - <attribute>-for-<component-group>-when-<state>-
       + background-color-for-button-when-disabled
-    - <attribute>-for-<component-group>-as-<state>-
+    - <attribute>-for-<component-group>-as-<variant>-
       + border-radius-for-button-as-big
-    - <attribute>-for-<component-group>-as-<state>-when-<state>
-      + border-for-button-as-secondary-when-hovered
-    - <attribute>-for-<component-group>-as-<state>-as-<state>-
-      + border-radius-for-button-as-icon-as-small
-    - <attribute>-for-<component-group>-as-<state>-as-<state>-when-<state>-
+    - <attribute>-for-<component-group>-as-<variant>-when-<state>
+    + border-for-button-as-secondary-when-hovered
+    - <attribute>-for-<component-group>-as-<variant>-as-<variant>-
+    + border-radius-for-button-as-icon-as-small
+    - <attribute>-for-<component-group>-as-<variant>-as-<variant>-when-<state>-
       + border-radius-for-button-as-icon-as-small-when-disabled
 */
 function parseToken(token) {
@@ -94,7 +94,7 @@ function parseToken(token) {
     2. variants (might have several of this)
     3. state
 
-  Eg: <attribute>-for-<component-group>-as-<state>-when-<state>
+  Eg: <attribute>-for-<component-group>-as-<variant>-when-<state>
 */
 function isValidTokenName(tokenName, tokenParts) {
   const componentGroupIndex = tokenName.indexOf(tokenParts.componentGroup);
