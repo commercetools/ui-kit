@@ -67,13 +67,10 @@ const getButtonStyles = (
         return [
           baseActiveStyles,
           css`
-            background-color: ${designTokens.colorPrimary};
+            background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenActive};
             &:focus,
             &:hover {
-              background-color: ${designTokens.colorPrimary25};
-            }
-            &:active {
-              background-color: ${designTokens.colorPrimary};
+              background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenHovered};
             }
           `,
         ];
@@ -81,13 +78,10 @@ const getButtonStyles = (
         return [
           baseActiveStyles,
           css`
-            background-color: ${designTokens.colorWarning};
+            background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenActive};
             &:focus,
             &:hover {
-              background-color: ${designTokens.colorWarning};
-            }
-            &:active {
-              background-color: ${designTokens.colorWarning};
+              background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenHovered};
             }
           `,
         ];
@@ -116,10 +110,10 @@ const getButtonStyles = (
           background-color: ${designTokens.colorPrimary};
           &:focus,
           &:hover {
-            background-color: ${designTokens.colorPrimary25};
+            background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenHovered};
           }
           &:active {
-            background-color: ${designTokens.colorPrimary};
+            background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenActive};
           }
         `,
       ];
@@ -130,10 +124,10 @@ const getButtonStyles = (
           background-color: ${designTokens.colorWarning};
           &:focus,
           &:hover {
-            background-color: ${designTokens.colorPrimary25};
+            background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenHovered};
           }
           &:active {
-            background-color: ${designTokens.colorWarning};
+            background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenActive};
           }
         `,
       ];
