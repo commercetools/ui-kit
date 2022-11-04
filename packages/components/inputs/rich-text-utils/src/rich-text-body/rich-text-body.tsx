@@ -126,7 +126,7 @@ const DropdownLabel = (props: TDropdownLabel) => {
   return (
     <Inline scale="xs" alignItems="center" justifyContent="center">
       <span>{props.children}</span>
-      <CaretDownIcon size="small" />
+      <CaretDownIcon />
     </Inline>
   );
 };
