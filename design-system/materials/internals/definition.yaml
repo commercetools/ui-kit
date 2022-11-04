@@ -313,7 +313,7 @@ decisionGroupsByTheme:
         border-color-for-button-as-icon-when-disabled:
           choice: color-neutral
         border-color-for-card-when-raised:
-          choice: none
+          choice: 'none'
 
     borderRadiuses:
       label: Border Radius
