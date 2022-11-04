@@ -26,6 +26,7 @@ export const themes = {
     colorInfo: '#078cdf',
     colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
     colorInfo95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
+    colorInfoOp90: 'hsl(203deg 94% 45% / 90%)',
     colorWarning: '#f16d0e',
     colorWarning25: 'hsl(25.110132158590307, 89.0196078431%, 25%)',
     colorWarning95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
@@ -112,9 +113,15 @@ export const themes = {
     breakPointBiggerdesktop: '1280px',
     breakPointGiantdesktop: '1680px',
     breakPointJumbodesktop: '1920px',
+    backgroundColorForButtonWhenActive: '#fff',
+    backgroundColorForButtonWhenHovered: '#fff',
     backgroundColorForButtonAsPrimaryWhenActive: '#00b39e',
     backgroundColorForButtonAsPrimaryWhenHovered:
       'hsl(172.9608938547486, 100%, 25%)',
+    backgroundColorForButtonAsIconAsPrimaryWhenActive: '#00b39e',
+    backgroundColorForButtonAsIconAsPrimaryWhenHovered: '#00b39e',
+    backgroundColorForButtonAsIconAsInfoWhenActive: '#078cdf',
+    backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
     backgroundColorForButtonAsSecondaryWhenActive: '#fff',
     backgroundColorForButtonAsSecondaryWhenHovered: '#fff',
     backgroundColorForButtonAsUrgentWhenActive: '#f16d0e',
@@ -141,6 +148,8 @@ export const themes = {
     borderColorForTagWarning: '#f16d0e',
     borderColorForTagWhenFocused: '#00b39e',
     borderColorForButtonAsIcon: '#fff',
+    borderColorForButtonAsIconAsInfo: '#078cdf',
+    borderColorForButtonAsIconAsPrimary: '#00b39e',
     borderColorForButtonAsIconWhenDisabled: '#ccc',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
@@ -212,8 +221,15 @@ export const themes = {
   },
   test: {
     colorPrimary: '#00b39e',
+    backgroundColorForButtonWhenActive: 'hsla(0, 0%, 10%, .10)',
+    backgroundColorForButtonWhenHovered: 'hsla(0, 0%, 10%, .05)',
     backgroundColorForButtonAsPrimaryWhenActive: 'hsla(173, 100%, 35%, 0.90)',
     backgroundColorForButtonAsPrimaryWhenHovered: 'hsla(173, 100%, 35%, 0.95)',
+    backgroundColorForButtonAsIconAsPrimaryWhenActive:
+      'hsla(173, 100%, 35%, 0.90)',
+    backgroundColorForButtonAsIconAsPrimaryWhenHovered: '#00b39e',
+    backgroundColorForButtonAsIconAsInfoWhenActive: 'hsl(203deg 94% 45% / 90%)',
+    backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
     backgroundColorForButtonAsSecondaryWhenActive: 'hsl(0deg 0% 80% / 10%)',
     backgroundColorForButtonAsSecondaryWhenHovered: 'hsl(0deg 0% 80% / 5%)',
     backgroundColorForButtonAsUrgentWhenActive: 'hsla(25, 89%, 50%, 90%)',
@@ -225,6 +241,8 @@ export const themes = {
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
     borderColorForButtonAsIcon: '#ccc',
+    borderColorForButtonAsIconAsInfo: '#ccc',
+    borderColorForButtonAsIconAsPrimary: '#ccc',
     borderColorForButtonAsIconWhenDisabled: '#fff',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
@@ -270,6 +288,7 @@ const designTokens = {
     'var(--color-info-85, hsl(203.05555555555554, 93.9130434783%, 85%))',
   colorInfo95:
     'var(--color-info-95, hsl(203.05555555555554, 93.9130434783%, 95%))',
+  colorInfoOp90: 'var(--color-info-op-90, hsl(203deg 94% 45% / 90%))',
   colorWarning: 'var(--color-warning, #f16d0e)',
   colorWarning25:
     'var(--color-warning-25, hsl(25.110132158590307, 89.0196078431%, 25%))',
@@ -365,10 +384,22 @@ const designTokens = {
   breakPointBiggerdesktop: 'var(--break-point-biggerdesktop, 1280px)',
   breakPointGiantdesktop: 'var(--break-point-giantdesktop, 1680px)',
   breakPointJumbodesktop: 'var(--break-point-jumbodesktop, 1920px)',
+  backgroundColorForButtonWhenActive:
+    'var(--background-color-for-button-when-active, #fff)',
+  backgroundColorForButtonWhenHovered:
+    'var(--background-color-for-button-when-hovered, #fff)',
   backgroundColorForButtonAsPrimaryWhenActive:
     'var(--background-color-for-button-as-primary-when-active, #00b39e)',
   backgroundColorForButtonAsPrimaryWhenHovered:
     'var(--background-color-for-button-as-primary-when-hovered, hsl(172.9608938547486, 100%, 25%))',
+  backgroundColorForButtonAsIconAsPrimaryWhenActive:
+    'var(--background-color-for-button-as-icon-as-primary-when-active, #00b39e)',
+  backgroundColorForButtonAsIconAsPrimaryWhenHovered:
+    'var(--background-color-for-button-as-icon-as-primary-when-hovered, #00b39e)',
+  backgroundColorForButtonAsIconAsInfoWhenActive:
+    'var(--background-color-for-button-as-icon-as-info-when-active, #078cdf)',
+  backgroundColorForButtonAsIconAsInfoWhenHovered:
+    'var(--background-color-for-button-as-icon-as-info-when-hovered, #078cdf)',
   backgroundColorForButtonAsSecondaryWhenActive:
     'var(--background-color-for-button-as-secondary-when-active, #fff)',
   backgroundColorForButtonAsSecondaryWhenHovered:
@@ -410,6 +441,10 @@ const designTokens = {
   borderColorForTagWhenFocused:
     'var(--border-color-for-tag-when-focused, #00b39e)',
   borderColorForButtonAsIcon: 'var(--border-color-for-button-as-icon, #fff)',
+  borderColorForButtonAsIconAsInfo:
+    'var(--border-color-for-button-as-icon-as-info, #078cdf)',
+  borderColorForButtonAsIconAsPrimary:
+    'var(--border-color-for-button-as-icon-as-primary, #00b39e)',
   borderColorForButtonAsIconWhenDisabled:
     'var(--border-color-for-button-as-icon-when-disabled, #ccc)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
