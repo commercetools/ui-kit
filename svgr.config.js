@@ -91,7 +91,7 @@ module.exports = {
       },
       {
         name: 'removeAttrs',
-        params: { attrs: 'fill' },
+        params: { attrs: 'svg:fill:((?!^none$).)*' },
       },
       'prefixIds',
     ],

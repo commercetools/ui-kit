@@ -149,7 +149,7 @@ const SvgUndo = (props: SVGProps) => (
         id="undo_react_svg__a"
       />
     </defs>
-    <use xlinkHref="#undo_react_svg__a" fillRule="evenodd" />
+    <use fill="#1A1A1A" xlinkHref="#undo_react_svg__a" fillRule="evenodd" />
   </svg>
 );
 

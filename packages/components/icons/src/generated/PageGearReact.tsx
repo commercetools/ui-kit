@@ -149,7 +149,11 @@ const SvgPageGear = (props: SVGProps) => (
         id="page-gear_react_svg__a"
       />
     </defs>
-    <use xlinkHref="#page-gear_react_svg__a" fillRule="evenodd" />
+    <use
+      fill="#1A1A1A"
+      xlinkHref="#page-gear_react_svg__a"
+      fillRule="evenodd"
+    />
   </svg>
 );
 

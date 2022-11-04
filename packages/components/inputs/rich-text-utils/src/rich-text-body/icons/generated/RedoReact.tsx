@@ -150,6 +150,7 @@ const SvgRedo = (props: SVGProps) => (
       />
     </defs>
     <use
+      fill="#1A1A1A"
       xlinkHref="#redo_react_svg__a"
       transform="matrix(-1 0 0 1 24 0)"
       fillRule="evenodd"

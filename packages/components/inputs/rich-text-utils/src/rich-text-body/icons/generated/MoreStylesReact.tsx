@@ -149,7 +149,11 @@ const SvgMoreStyles = (props: SVGProps) => (
         id="more-styles_react_svg__a"
       />
     </defs>
-    <use xlinkHref="#more-styles_react_svg__a" fillRule="evenodd" />
+    <use
+      fill="#1A1A1A"
+      xlinkHref="#more-styles_react_svg__a"
+      fillRule="evenodd"
+    />
   </svg>
 );
 
