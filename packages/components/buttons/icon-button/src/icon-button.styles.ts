@@ -32,47 +32,21 @@ const getStateStyles = (
   theme: TIconButtonProps['theme']
 ) => {
   if (isDisabled) {
-    const disabledStyle = css`
-      background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
-      border-color: ${designTokens.borderColorForButtonAsIconWhenDisabled};
-      color: ${designTokens.colorNeutral60};
-      box-shadow: none;
+    return css`
+      &,
+      &:hover {
+        background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
+        border-color: ${designTokens.borderColorForButtonAsIconWhenDisabled};
+        color: ${designTokens.colorNeutral60};
+        box-shadow: none;
+      }
     `;
-    switch (theme) {
-      case 'info':
-        return [
-          disabledStyle,
-          css`
-            &:hover {
-              border-color: ${designTokens.colorInfo85};
-              background-color: ${designTokens.colorInfo85};
-            }
-          `,
-        ];
-      case 'primary':
-        return [
-          disabledStyle,
-          css`
-            &:hover {
-              border-color: ${designTokens.colorPrimary85};
-              background-color: ${designTokens.colorPrimary85};
-            }
-          `,
-        ];
-      default:
-        return disabledStyle;
-    }
   }
   if (isActive) {
     const activeStyle = css`
       box-shadow: ${designTokens.shadowForButtonWhenActive};
       background-color: ${designTokens.colorSurface};
       border-color: ${designTokens.borderColorForButtonAsIcon};
-      &:hover {
-        box-shadow: ${designTokens.shadowForButtonWhenActive};
-        background-color: ${designTokens.colorNeutral95};
-        border-color: ${designTokens.colorNeutral95};
-      }
     `;
     switch (theme) {
       case 'info':
@@ -82,10 +56,6 @@ const getStateStyles = (
             background-color: ${designTokens.colorInfo};
             border-color: ${designTokens.colorInfo};
             color: ${designTokens.colorSurface};
-            &:hover {
-              background-color: ${designTokens.colorInfo85};
-              border-color: ${designTokens.colorInfo85};
-            }
           `,
         ];
       case 'primary':
@@ -94,26 +64,14 @@ const getStateStyles = (
           css`
             background-color: ${designTokens.colorPrimary};
             color: ${designTokens.colorSurface};
-            &:hover {
-              background-color: ${designTokens.colorPrimary85};
-              border-color: ${designTokens.colorPrimary85};
-            }
           `,
         ];
       default:
         return activeStyle;
     }
   }
-  return css`
-    &:hover {
-      box-shadow: ${designTokens.shadowForButtonWhenHovered};
-    }
-    &:active {
-      box-shadow: ${designTokens.shadowForButtonWhenActive};
-      background-color: ${designTokens.colorSurface};
-      border-color: ${designTokens.colorSurface};
-    }
-  `;
+
+  return css``;
 };
 
 const getShapeStyles = (
@@ -168,14 +126,30 @@ const getSizeStyles = (size: TIconButtonProps['size']) => {
   }
 };
 const getThemeStyles = (theme: TIconButtonProps['theme']) => {
-  if (!theme) return css``;
-
-  if (theme === 'default') return css``;
+  if (!theme || theme === 'default') {
+    return css`
+      &:hover {
+        box-shadow: ${designTokens.shadowForButtonWhenHovered};
+      }
+      &:active {
+        box-shadow: ${designTokens.shadowForButtonWhenActive};
+        background-color: ${designTokens.colorSurface};
+        border-color: ${designTokens.colorSurface};
+      }
+    `;
+  }
 
   switch (theme) {
     case 'primary':
       return css`
         &:hover {
+          box-shadow: ${designTokens.shadowForButtonWhenHovered};
+        }
+        &:active {
+          box-shadow: ${designTokens.shadowForButtonWhenActive};
+        }
+        &:hover,
+        &:active {
           background-color: ${designTokens.colorPrimary};
           border-color: ${designTokens.colorPrimary};
           color: ${designTokens.colorSurface};
@@ -184,6 +158,13 @@ const getThemeStyles = (theme: TIconButtonProps['theme']) => {
     case 'info':
       return css`
         &:hover {
+          box-shadow: ${designTokens.shadowForButtonWhenHovered};
+        }
+        &:active {
+          box-shadow: ${designTokens.shadowForButtonWhenActive};
+        }
+        &:hover,
+        &:active {
           background-color: ${designTokens.colorInfo};
           border-color: ${designTokens.colorInfo};
           color: ${designTokens.colorSurface};
