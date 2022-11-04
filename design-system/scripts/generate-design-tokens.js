@@ -21,16 +21,19 @@ const endProgram = (message) => {
   process.exit(1);
 };
 
-const ALLOWED_CSS_VALUES_IN_CHOICES = /px|none|hsla/;
+const ALLOWED_KEYWORDS_VALUES_IN_CHOICES = /px|none|hsla/;
 
 const isAllowedCssChoice = (choice) =>
-  choice.match(ALLOWED_CSS_VALUES_IN_CHOICES) !== null;
+  choice.match(ALLOWED_KEYWORDS_VALUES_IN_CHOICES) !== null;
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);
-const supportedVariants = Object.keys(definitions.variants);
+const supportedVariants = Object.keys(definitions.variants || {});
 
 const designTokens = {};
+
+const combineTokenParts = (currentPart, newPart) =>
+  `${currentPart}${currentPart.length > 0 ? '-' : ''}${newPart}`;
 
 /*
   Allowed patterns with examples:
@@ -38,49 +41,55 @@ const designTokens = {};
       + background-color-for-tag
     - <attribute>-for-<component-group>-when-<state>-
       + background-color-for-button-when-disabled
-    - <attribute>-for-<component-group>-as-<state>-
+    - <attribute>-for-<component-group>-as-<variant>-
       + border-radius-for-button-as-big
-    - <attribute>-for-<component-group>-as-<state>-when-<state>
-      + border-for-button-as-secondary-when-hovered
-    - <attribute>-for-<component-group>-as-<state>-as-<state>-
-      + border-radius-for-button-as-icon-as-small
-    - <attribute>-for-<component-group>-as-<state>-as-<state>-when-<state>-
+    - <attribute>-for-<component-group>-as-<variant>-when-<state>
+    + border-for-button-as-secondary-when-hovered
+    - <attribute>-for-<component-group>-as-<variant>-as-<variant>-
+    + border-radius-for-button-as-icon-as-small
+    - <attribute>-for-<component-group>-as-<variant>-as-<variant>-when-<state>-
       + border-radius-for-button-as-icon-as-small-when-disabled
 */
 function parseToken(token) {
   const parts = token.split('-');
-  let partType = 'cssRule';
+  let partType = 'cssProperty';
   let newVariant = false;
   return parts.reduce(
-    (agg, part) => {
+    (tokenParts, part) => {
       if (['for', 'as', 'when'].includes(part)) {
         partType = part;
         if (part === 'as') newVariant = true;
-        return agg;
+        return tokenParts;
       }
 
       if (partType === 'for') {
-        agg.componentGroup = `${agg.componentGroup}${
-          !!agg.componentGroup ? '-' : ''
-        }${part}`;
+        tokenParts.componentGroup = combineTokenParts(
+          tokenParts.componentGroup,
+          part
+        );
       } else if (partType === 'when') {
-        agg.state = `${agg.state}${!!agg.state ? '-' : ''}${part}`;
+        tokenParts.state = combineTokenParts(tokenParts.state, part);
       } else if (partType === 'as') {
         if (newVariant) {
-          agg.variants.push(part);
+          tokenParts.variants.push(part);
           newVariant = false;
         } else {
-          const lastIndex = agg.variants.length - 1;
-          agg.variants[lastIndex] = `${agg.variants[lastIndex]}-${part}`;
+          const lastIndex = tokenParts.variants.length - 1;
+          tokenParts.variants[
+            lastIndex
+          ] = `${tokenParts.variants[lastIndex]}-${part}`;
         }
       } else {
-        agg.cssRule = `${agg.cssRule}${!!agg.cssRule ? '-' : ''}${part}`;
+        tokenParts.cssProperty = combineTokenParts(
+          tokenParts.cssProperty,
+          part
+        );
       }
 
-      return agg;
+      return tokenParts;
     },
     {
-      cssRule: '',
+      cssProperty: '',
       componentGroup: '',
       variants: [],
       state: '',
@@ -94,7 +103,7 @@ function parseToken(token) {
     2. variants (might have several of this)
     3. state
 
-  Eg: <attribute>-for-<component-group>-as-<state>-when-<state>
+  Eg: <attribute>-for-<component-group>-as-<variant>-when-<state>
 */
 function isValidTokenName(tokenName, tokenParts) {
   const componentGroupIndex = tokenName.indexOf(tokenParts.componentGroup);
