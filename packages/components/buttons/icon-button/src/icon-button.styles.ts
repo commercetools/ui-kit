@@ -26,54 +26,6 @@ const getIconThemeColor = (
   return props.icon?.props.theme;
 };
 
-const getStateStyles = (
-  isDisabled: TIconButtonProps['isDisabled'],
-  isActive: boolean,
-  theme: TIconButtonProps['theme']
-) => {
-  if (isDisabled) {
-    return css`
-      &,
-      &:hover {
-        background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
-        border-color: ${designTokens.borderColorForButtonAsIconWhenDisabled};
-        color: ${designTokens.colorNeutral60};
-        box-shadow: none;
-      }
-    `;
-  }
-  if (isActive) {
-    const activeStyle = css`
-      box-shadow: ${designTokens.shadowForButtonWhenActive};
-      background-color: ${designTokens.colorSurface};
-      border-color: ${designTokens.borderColorForButtonAsIcon};
-    `;
-    switch (theme) {
-      case 'info':
-        return [
-          activeStyle,
-          css`
-            background-color: ${designTokens.colorInfo};
-            border-color: ${designTokens.colorInfo};
-            color: ${designTokens.colorSurface};
-          `,
-        ];
-      case 'primary':
-        return [
-          activeStyle,
-          css`
-            background-color: ${designTokens.colorPrimary};
-            color: ${designTokens.colorSurface};
-          `,
-        ];
-      default:
-        return activeStyle;
-    }
-  }
-
-  return css``;
-};
-
 const getShapeStyles = (
   shape: TIconButtonProps['shape'],
   size: TIconButtonProps['size']
@@ -125,16 +77,35 @@ const getSizeStyles = (size: TIconButtonProps['size']) => {
       return css``;
   }
 };
-const getThemeStyles = (theme: TIconButtonProps['theme']) => {
+
+const getBaseStyles = (
+  theme: TIconButtonProps['theme'],
+  isDisabled: TIconButtonProps['isDisabled'],
+  isActive: boolean
+) => {
+  if (isDisabled) {
+    return css`
+      &,
+      &:hover {
+        background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
+        border-color: ${designTokens.borderColorForButtonAsIconWhenDisabled};
+        color: ${designTokens.colorNeutral60};
+        box-shadow: none;
+      }
+    `;
+  }
+
   if (!theme || theme === 'default') {
     return css`
       &:hover {
+        background-color: ${designTokens.backgroundColorForButtonWhenHovered};
         box-shadow: ${designTokens.shadowForButtonWhenHovered};
       }
+      ${isActive ? '&,' : ''}
       &:active {
+        background-color: ${designTokens.backgroundColorForButtonWhenActive};
         box-shadow: ${designTokens.shadowForButtonWhenActive};
-        background-color: ${designTokens.colorSurface};
-        border-color: ${designTokens.colorSurface};
+        border-color: ${designTokens.borderColorForButtonAsIcon};
       }
     `;
   }
@@ -143,31 +114,37 @@ const getThemeStyles = (theme: TIconButtonProps['theme']) => {
     case 'primary':
       return css`
         &:hover {
+          background-color: ${designTokens.backgroundColorForButtonAsIconAsPrimaryWhenHovered};
           box-shadow: ${designTokens.shadowForButtonWhenHovered};
         }
+        ${isActive ? '&,' : ''}
         &:active {
+          background-color: ${designTokens.backgroundColorForButtonAsIconAsPrimaryWhenActive};
           box-shadow: ${designTokens.shadowForButtonWhenActive};
         }
+        ${isActive ? '&,' : ''}
         &:hover,
         &:active {
-          background-color: ${designTokens.colorPrimary};
           border-color: ${designTokens.colorPrimary};
-          color: ${designTokens.colorSurface};
+          border-color: ${designTokens.borderColorForButtonAsIconAsPrimary};
         }
       `;
     case 'info':
       return css`
         &:hover {
+          background-color: ${designTokens.backgroundColorForButtonAsIconAsInfoWhenHovered};
           box-shadow: ${designTokens.shadowForButtonWhenHovered};
         }
+        ${isActive ? '&,' : ''}
         &:active {
+          background-color: ${designTokens.backgroundColorForButtonAsIconAsInfoWhenActive};
           box-shadow: ${designTokens.shadowForButtonWhenActive};
         }
+        ${isActive ? '&,' : ''}
         &:hover,
         &:active {
-          background-color: ${designTokens.colorInfo};
           border-color: ${designTokens.colorInfo};
-          color: ${designTokens.colorSurface};
+          border-color: ${designTokens.borderColorForButtonAsIconAsInfo};
         }
       `;
     default: {
@@ -196,10 +173,9 @@ const getHoverStyles = (
 };
 
 export {
-  getStateStyles,
   getHoverStyles,
   getShapeStyles,
   getSizeStyles,
-  getThemeStyles,
+  getBaseStyles,
   getIconThemeColor,
 };
