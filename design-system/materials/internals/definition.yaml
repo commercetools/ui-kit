@@ -313,7 +313,7 @@ decisionGroupsByTheme:
         border-color-for-button-as-icon-when-disabled:
           choice: color-neutral
         border-color-for-card-when-raised:
-          choice: color-neutral-90
+          choice: none
 
     borderRadiuses:
       label: Border Radius
@@ -336,7 +336,7 @@ decisionGroupsByTheme:
           description: ''
           choice: border-radius-2
         border-radius-for-card:
-          choice: border-radius-4
+          choice: border-radius-6
     # We don't have font families in choices yet, so we can't have decisions for
     # them
 
@@ -500,12 +500,12 @@ decisionGroupsByTheme:
           choice: shadow-9
         shadow-for-button-when-disabled:
           choice: '0 0 0 1px var(--color-neutral) inset'
-        shadow-for-card-when-raised:
-          choice: '0 1px 2px rgb(25 40 81 / 5%)'
         shadow-box-tag-when-hovered:
           description: ''
           deprecated: true
           choice: shadow-1
+        shadow-for-card-when-raised:
+          choice: 'none'
 
   test:
     backgroundColors:
@@ -540,6 +540,8 @@ decisionGroupsByTheme:
           choice: 'hsla(0, 0%, 81%, .60)'
         border-color-for-button-as-icon-when-disabled:
           choice: color-surface
+        border-color-for-card-when-raised:
+          choice: color-neutral-90
 
     borderRadiuses:
       label: Border radiuses
@@ -558,6 +560,8 @@ decisionGroupsByTheme:
         # TODO: We don't have the right value from UX yet. This one is a placeholder
         border-radius-for-button-as-icon-as-small:
           choice: border-radius-2
+        border-radius-for-card:
+          choice: border-radius-4
 
     fontSizes:
       label: Font Sizes
@@ -608,7 +612,7 @@ decisionGroupsByTheme:
         shadow-for-button-when-disabled:
           choice: shadow-0
         shadow-for-card-when-raised:
-          choice: 'none'
+          choice: '0 1px 2px rgb(25 40 81 / 5%)'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
