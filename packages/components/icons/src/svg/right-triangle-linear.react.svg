@@ -1,13 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>Component / icon / 12px / triangle-corner / linear</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Table-compact-truncation-v3" stroke="none" stroke-width="1"  fill-rule="evenodd">
-        <g id="Component-/-icon-/-12px-/-triangle-corner-/-linear" transform="translate(-2.000000, -2.000000)" fill="#1A1A1A">
-            <g id="Combined-Shape">
-                <path d="M10,2 L10,10 L2,10 L10,2 Z M9,4.28704834 L4.24713135,9 L9,9 L9,4.28704834 Z"></path>
-            </g>
-        </g>
-    </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.57488 20.5H20.4749V5.60003L5.57488 20.5ZM3.77488 22C3.44155 22 3.21238 21.8459 3.08738 21.5375C2.96238 21.2292 3.01655 20.9584 3.24988 20.725L20.6999 3.27503C20.9332 3.04169 21.204 2.98753 21.5124 3.11253C21.8207 3.23753 21.9749 3.46669 21.9749 3.80003V21.25C21.9749 21.4667 21.904 21.6459 21.7624 21.7875C21.6207 21.9292 21.4415 22 21.2249 22H3.77488Z" fill="black"/>
 </svg>
