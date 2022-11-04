@@ -21,13 +21,107 @@ const endProgram = (message) => {
   process.exit(1);
 };
 
-const TOKEN_REGEX =
-  /^(\w+(?:-\w+)(?:-\w+)?)(?:-for-(\w+(?:-\w+)?))?(?:-when-([\w-]+?))?(?:-on-([\w-]+?))?$/i;
+const ALLOWED_KEYWORDS_VALUES_IN_CHOICES = /px|none|hsla/;
+
+const isAllowedCssChoice = (choice) =>
+  choice.match(ALLOWED_KEYWORDS_VALUES_IN_CHOICES) !== null;
 
 const supportedStates = Object.keys(definitions.states);
 const supportedComponentGroups = Object.keys(definitions.componentGroups);
+const supportedVariants = Object.keys(definitions.variants || {});
 
 const designTokens = {};
+
+const combineTokenParts = (currentPart, newPart) =>
+  `${currentPart}${currentPart.length > 0 ? '-' : ''}${newPart}`;
+
+/*
+  Allowed patterns with examples:
+    - <attribute>-for-<component-group>
+      + background-color-for-tag
+    - <attribute>-for-<component-group>-when-<state>-
+      + background-color-for-button-when-disabled
+    - <attribute>-for-<component-group>-as-<variant>-
+      + border-radius-for-button-as-big
+    - <attribute>-for-<component-group>-as-<variant>-when-<state>
+    + border-for-button-as-secondary-when-hovered
+    - <attribute>-for-<component-group>-as-<variant>-as-<variant>-
+    + border-radius-for-button-as-icon-as-small
+    - <attribute>-for-<component-group>-as-<variant>-as-<variant>-when-<state>-
+      + border-radius-for-button-as-icon-as-small-when-disabled
+*/
+function parseToken(token) {
+  const parts = token.split('-');
+  let partType = 'cssProperty';
+  let newVariant = false;
+  return parts.reduce(
+    (tokenParts, part) => {
+      if (['for', 'as', 'when'].includes(part)) {
+        partType = part;
+        if (part === 'as') newVariant = true;
+        return tokenParts;
+      }
+
+      if (partType === 'for') {
+        tokenParts.componentGroup = combineTokenParts(
+          tokenParts.componentGroup,
+          part
+        );
+      } else if (partType === 'when') {
+        tokenParts.state = combineTokenParts(tokenParts.state, part);
+      } else if (partType === 'as') {
+        if (newVariant) {
+          tokenParts.variants.push(part);
+          newVariant = false;
+        } else {
+          const lastIndex = tokenParts.variants.length - 1;
+          tokenParts.variants[
+            lastIndex
+          ] = `${tokenParts.variants[lastIndex]}-${part}`;
+        }
+      } else {
+        tokenParts.cssProperty = combineTokenParts(
+          tokenParts.cssProperty,
+          part
+        );
+      }
+
+      return tokenParts;
+    },
+    {
+      cssProperty: '',
+      componentGroup: '',
+      variants: [],
+      state: '',
+    }
+  );
+}
+
+/*
+  We make sure the order of the token parts is
+    1. component group
+    2. variants (might have several of this)
+    3. state
+
+  Eg: <attribute>-for-<component-group>-as-<variant>-when-<state>
+*/
+function isValidTokenName(tokenName, tokenParts) {
+  const componentGroupIndex = tokenName.indexOf(tokenParts.componentGroup);
+  const variantsIndexes = tokenParts.variants.map((variant) =>
+    tokenName.indexOf(variant)
+  );
+  const stateIndex = tokenName.indexOf(tokenParts.state) || Number.MAX_VALUE;
+
+  return (
+    (variantsIndexes.length === 0 ||
+      variantsIndexes.every(
+        (variantIndex) => variantIndex > componentGroupIndex
+      )) &&
+    componentGroupIndex < stateIndex &&
+    (variantsIndexes.length === 0 ||
+      variantsIndexes.every((variantIndex) => variantIndex < stateIndex))
+  );
+}
 
 Object.keys(definitions.choiceGroupsByTheme).forEach((themeName) => {
   if (!designTokens[themeName]) {
@@ -67,41 +161,53 @@ Object.entries(definitions.decisionGroupsByTheme).forEach(
         }
         if (
           !designTokens[themeName][decision.choice] &&
-          !designTokens.default[decision.choice]
+          !designTokens.default[decision.choice] &&
+          !isAllowedCssChoice(decision.choice)
         ) {
           endProgram(`Choice called "${decision.choice}" was not found!`);
         }
-        // TODO parse token name and warn when invalid name was given and token
-        // is not deprecated
 
-        const match = key.match(TOKEN_REGEX);
+        const tokenParts = parseToken(key);
 
-        if (match) {
-          const componentGroup = match[2];
-          const state = match[3];
-
-          if (
-            componentGroup &&
-            !supportedComponentGroups.includes(componentGroup)
-          )
-            endProgram(
-              `Token "${key}" uses unsupported component group "${componentGroup}"!`
-            );
-
-          if (state && !supportedStates.includes(state))
-            endProgram(`Token "${key}" uses unsupported state "${state}"!`);
-        } else if (!decision.deprecated) {
+        if (
+          tokenParts.componentGroup &&
+          !supportedComponentGroups.includes(tokenParts.componentGroup)
+        )
           endProgram(
-            `Token "${key}" does not follow <attribute>-for-<component-group>-when-<state>-on-<theme> naming scheme! Tokens not following this scheme must use "deprecated" flag.`
+            `Token "${key}" uses unsupported component group "${tokenParts.componentGroup}"!`
+          );
+
+        if (tokenParts.state && !supportedStates.includes(tokenParts.state))
+          endProgram(
+            `Token "${key}" uses unsupported state "${tokenParts.state}"!`
+          );
+
+        const invalidVariants = tokenParts.variants.find(
+          (variant) => !supportedVariants.includes(variant)
+        );
+        if (invalidVariants?.length > 0)
+          endProgram(
+            `Token "${key}" uses unsupported variants "${invalidVariants}"!`
+          );
+
+        if (
+          tokenParts.componentGroup &&
+          !decision.deprecated &&
+          !isValidTokenName(key, tokenParts)
+        ) {
+          endProgram(
+            `Token "${key}" does not follow <attribute>-for-<component-group>-as-<variant>-when-<state> naming scheme! Tokens not following this scheme must use "deprecated" flag.`
           );
         }
+
         if (!designTokens[themeName]) {
           designTokens[themeName] = {};
         }
 
-        designTokens[themeName][key] =
-          designTokens[themeName][decision.choice] ||
-          designTokens.default[decision.choice];
+        designTokens[themeName][key] = isAllowedCssChoice(decision.choice)
+          ? decision.choice
+          : designTokens[themeName][decision.choice] ||
+            designTokens.default[decision.choice];
       });
     });
   }
@@ -204,3 +310,5 @@ fs.writeFileSync(
     parser: 'typescript',
   })
 );
+
+console.log('\nDesign tokens built!\n');
