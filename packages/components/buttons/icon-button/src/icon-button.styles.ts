@@ -26,96 +26,6 @@ const getIconThemeColor = (
   return props.icon?.props.theme;
 };
 
-const getStateStyles = (
-  isDisabled: TIconButtonProps['isDisabled'],
-  isActive: boolean,
-  theme: TIconButtonProps['theme']
-) => {
-  if (isDisabled) {
-    const disabledStyle = css`
-      background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
-      border-color: ${designTokens.borderColorForButtonAsIconWhenDisabled};
-      color: ${designTokens.colorNeutral60};
-      box-shadow: none;
-    `;
-    switch (theme) {
-      case 'info':
-        return [
-          disabledStyle,
-          css`
-            &:hover {
-              border-color: ${designTokens.colorInfo85};
-              background-color: ${designTokens.colorInfo85};
-            }
-          `,
-        ];
-      case 'primary':
-        return [
-          disabledStyle,
-          css`
-            &:hover {
-              border-color: ${designTokens.colorPrimary85};
-              background-color: ${designTokens.colorPrimary85};
-            }
-          `,
-        ];
-      default:
-        return disabledStyle;
-    }
-  }
-  if (isActive) {
-    const activeStyle = css`
-      box-shadow: ${designTokens.shadowForButtonWhenActive};
-      background-color: ${designTokens.colorSurface};
-      border-color: ${designTokens.borderColorForButtonAsIcon};
-      &:hover {
-        box-shadow: ${designTokens.shadowForButtonWhenActive};
-        background-color: ${designTokens.colorNeutral95};
-        border-color: ${designTokens.colorNeutral95};
-      }
-    `;
-    switch (theme) {
-      case 'info':
-        return [
-          activeStyle,
-          css`
-            background-color: ${designTokens.colorInfo};
-            border-color: ${designTokens.colorInfo};
-            color: ${designTokens.colorSurface};
-            &:hover {
-              background-color: ${designTokens.colorInfo85};
-              border-color: ${designTokens.colorInfo85};
-            }
-          `,
-        ];
-      case 'primary':
-        return [
-          activeStyle,
-          css`
-            background-color: ${designTokens.colorPrimary};
-            color: ${designTokens.colorSurface};
-            &:hover {
-              background-color: ${designTokens.colorPrimary85};
-              border-color: ${designTokens.colorPrimary85};
-            }
-          `,
-        ];
-      default:
-        return activeStyle;
-    }
-  }
-  return css`
-    &:hover {
-      box-shadow: ${designTokens.shadowForButtonWhenHovered};
-    }
-    &:active {
-      box-shadow: ${designTokens.shadowForButtonWhenActive};
-      background-color: ${designTokens.colorSurface};
-      border-color: ${designTokens.colorSurface};
-    }
-  `;
-};
-
 const getShapeStyles = (
   shape: TIconButtonProps['shape'],
   size: TIconButtonProps['size']
@@ -167,26 +77,74 @@ const getSizeStyles = (size: TIconButtonProps['size']) => {
       return css``;
   }
 };
-const getThemeStyles = (theme: TIconButtonProps['theme']) => {
-  if (!theme) return css``;
 
-  if (theme === 'default') return css``;
+const getBaseStyles = (
+  theme: TIconButtonProps['theme'],
+  isDisabled: TIconButtonProps['isDisabled'],
+  isActive: boolean
+) => {
+  if (isDisabled) {
+    return css`
+      &,
+      &:hover {
+        background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
+        border-color: ${designTokens.borderColorForButtonAsIconWhenDisabled};
+        color: ${designTokens.colorNeutral60};
+        box-shadow: none;
+      }
+    `;
+  }
+
+  if (!theme || theme === 'default') {
+    return css`
+      &:hover {
+        background-color: ${designTokens.backgroundColorForButtonWhenHovered};
+        box-shadow: ${designTokens.shadowForButtonWhenHovered};
+      }
+      ${isActive ? '&,' : ''}
+      &:active {
+        background-color: ${designTokens.backgroundColorForButtonWhenActive};
+        box-shadow: ${designTokens.shadowForButtonWhenActive};
+        border-color: ${designTokens.borderColorForButtonAsIcon};
+      }
+    `;
+  }
 
   switch (theme) {
     case 'primary':
       return css`
         &:hover {
-          background-color: ${designTokens.colorPrimary};
+          background-color: ${designTokens.backgroundColorForButtonAsIconAsPrimaryWhenHovered};
+          box-shadow: ${designTokens.shadowForButtonWhenHovered};
+        }
+        ${isActive ? '&,' : ''}
+        &:active {
+          background-color: ${designTokens.backgroundColorForButtonAsIconAsPrimaryWhenActive};
+          box-shadow: ${designTokens.shadowForButtonWhenActive};
+        }
+        ${isActive ? '&,' : ''}
+        &:hover,
+        &:active {
           border-color: ${designTokens.colorPrimary};
-          color: ${designTokens.colorSurface};
+          border-color: ${designTokens.borderColorForButtonAsIconAsPrimary};
         }
       `;
     case 'info':
       return css`
         &:hover {
-          background-color: ${designTokens.colorInfo};
+          background-color: ${designTokens.backgroundColorForButtonAsIconAsInfoWhenHovered};
+          box-shadow: ${designTokens.shadowForButtonWhenHovered};
+        }
+        ${isActive ? '&,' : ''}
+        &:active {
+          background-color: ${designTokens.backgroundColorForButtonAsIconAsInfoWhenActive};
+          box-shadow: ${designTokens.shadowForButtonWhenActive};
+        }
+        ${isActive ? '&,' : ''}
+        &:hover,
+        &:active {
           border-color: ${designTokens.colorInfo};
-          color: ${designTokens.colorSurface};
+          border-color: ${designTokens.borderColorForButtonAsIconAsInfo};
         }
       `;
     default: {
@@ -215,10 +173,9 @@ const getHoverStyles = (
 };
 
 export {
-  getStateStyles,
   getHoverStyles,
   getShapeStyles,
   getSizeStyles,
-  getThemeStyles,
+  getBaseStyles,
   getIconThemeColor,
 };

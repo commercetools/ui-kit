@@ -161,7 +161,6 @@ const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
           ${normalizedButtonStyles}
           display: inline-flex;
           font-size: ${designTokens.fontSizeForButton};
-          /* TODO: We need to know if we want the same weight for primary, secondary and flat buttons */
           font-weight: ${designTokens.fontWeightForButton};
           cursor: ${props.isDisabled ? 'not-allowed' : 'pointer'};
           &:disabled {
