@@ -84,7 +84,7 @@ export const bodyStyles = (props: TBodyProps) => css`
 export const headlineStyles = (props: THeadlineProps) => css`
   ${getBaseStyles()}
   margin: 0;
-  font-size: ${getElementFontSize(props.as)}
+  font-size: ${getElementFontSize(props.as)};
   font-weight: 300;
   ${props.truncate && truncate}
 `;
