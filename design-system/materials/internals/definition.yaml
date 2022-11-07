@@ -313,7 +313,7 @@ decisionGroupsByTheme:
         border-color-for-button-as-icon-when-disabled:
           choice: color-neutral
         border-color-for-card-when-raised:
-          choice: 'none'
+          choice: color-surface
 
     borderRadiuses:
       label: Border Radius
@@ -505,7 +505,7 @@ decisionGroupsByTheme:
           deprecated: true
           choice: shadow-1
         shadow-for-card-when-raised:
-          choice: 'none'
+          choice: shadow-1
 
   test:
     backgroundColors:
