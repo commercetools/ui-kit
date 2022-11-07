@@ -67,7 +67,7 @@ type ThemeProviderProps = {
 };
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-  const themeName = props.theme || 'default'; // Use 'default' theme is none is provided
+  const themeName = props.theme || 'default'; // Use 'default' theme if none is provided
   const parentSelectorRef = useRef(props.parentSelector);
   const themeNameRef = useRef<string>();
   const themeOverridesRef = useRef<Record<string, string>>();
