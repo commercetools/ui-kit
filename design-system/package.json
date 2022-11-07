@@ -25,6 +25,8 @@
   "dependencies": {
     "@babel/runtime": "^7.19.0",
     "@babel/runtime-corejs3": "^7.19.1",
+    "@fontsource/open-sans": "^4.5.13",
+    "inter-ui": "^3.19.3",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
     "react": "17.0.2"

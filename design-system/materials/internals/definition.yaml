@@ -69,6 +69,7 @@ choiceGroupsByTheme:
       prefix: font-family
       choices:
         font-family-body: "'Open Sans', sans-serif"
+        font-family-variable-body: "'Open SansVariable', sans-serif"
     fontSizes:
       label: Font sizes
       prefix: font-size
@@ -150,6 +151,12 @@ choiceGroupsByTheme:
         color-primary: '#f78d26'
         color-solid: '#fff'
         color-surface: '#1a1a1a'
+    fontFamilies:
+      label: Font families
+      prefix: font-family
+      choices:
+        font-family-body: "'Inter', system-ui"
+        font-family-variable-body: "'Inter var', system-ui"
 
 states:
   active: 'Trigged while the user is currently interacting with the element'
@@ -285,6 +292,9 @@ decisionGroupsByTheme:
         font-family:
           description: ''
           choice: font-family-body
+        font-family-variable:
+          description: ''
+          choice: font-family-variable-body
 
     placeholderFontColors:
       label: Placeholder font colors
