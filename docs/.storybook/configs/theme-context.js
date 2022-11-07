@@ -20,7 +20,7 @@ const themeParams = [
     props: { themeName: 'default' },
   },
   {
-    name: 'Custom Theme',
+    name: 'Test Theme',
     props: { themeName: 'test' },
   },
 ];
