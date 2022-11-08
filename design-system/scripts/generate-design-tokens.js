@@ -21,7 +21,7 @@ const endProgram = (message) => {
   process.exit(1);
 };
 
-const ALLOWED_KEYWORDS_VALUES_IN_CHOICES = /px|none|hsl/;
+const ALLOWED_KEYWORDS_VALUES_IN_CHOICES = /px|none|hsl|(#[A-Za-z0-9]{6})/;
 
 const isAllowedCssChoice = (choice) =>
   choice.match(ALLOWED_KEYWORDS_VALUES_IN_CHOICES) !== null;

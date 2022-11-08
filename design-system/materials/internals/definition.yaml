@@ -446,21 +446,21 @@ decisionGroupsByTheme:
         background-color-for-button-when-hovered:
           choice: color-solid-05
         background-color-for-button-as-primary-when-active:
-          choice: 'hsl(173deg 100% 35% / 90%)'
+          choice: '#15A390' # color-primary with 10% black opacity
         background-color-for-button-as-primary-when-hovered:
-          choice: 'hsl(173deg 100% 35% / 95%)'
+          choice: '#17AB97' # color-primary with 5% black opacity
         background-color-for-button-as-icon-as-primary-when-active:
-          choice: 'hsl(173deg 100% 35% / 90%)'
+          choice: '#15A390'
         background-color-for-button-as-icon-as-primary-when-hovered:
           choice: color-primary
         background-color-for-button-as-icon-as-info-when-active:
-          choice: 'hsl(203deg 94% 45% / 90%)'
+          choice: '#057FCC' # color-info with 10% black opacity
         background-color-for-button-as-icon-as-info-when-hovered:
           choice: color-info
         background-color-for-button-as-urgent-when-active:
-          choice: 'hsl(25deg 89% 50% / 90%)'
+          choice: '#DC630A' # color-warning with 10% black opacity
         background-color-for-button-as-urgent-when-hovered:
-          choice: 'hsl(25deg 89% 50% / 95%)'
+          choice: '#E7680D' # color-warning with 5% black opacity
         background-color-for-button-when-disabled:
           choice: color-neutral-95
         background-color-for-tag:
