@@ -1,6 +1,11 @@
 import type { LocationDescriptor } from 'history';
 import type { MessageDescriptor } from 'react-intl';
-import { Children, type ReactNode } from 'react';
+import {
+  Children,
+  type ReactNode,
+  type MouseEvent,
+  type KeyboardEvent,
+} from 'react';
 import styled from '@emotion/styled';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
@@ -38,6 +43,13 @@ type TLinkProps = {
    * Color of the link
    */
   tone?: 'primary' | 'inverted';
+
+  /**
+   * Handler when the link is clicked.
+   */
+  onClick?: (
+    event: MouseEvent<HTMLLinkElement> | KeyboardEvent<HTMLLinkElement>
+  ) => void;
 };
 type TIconColor = 'primary' | 'surface';
 
