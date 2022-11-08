@@ -12,7 +12,6 @@ html,
 body {
   color: var(--color-solid);
   font-family: var(--font-family);
-  font-size: 13px;
 }
 
 @supports (font-variation-settings: normal) {
