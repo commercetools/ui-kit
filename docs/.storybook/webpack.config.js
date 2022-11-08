@@ -67,9 +67,15 @@ module.exports = ({ config }) => {
     },
     {
       test: /\.css$/,
+      sideEffects: true,
       use: [
-        { loader: require.resolve('style-loader') },
-        { loader: require.resolve('css-loader') },
+        require.resolve('style-loader'),
+        {
+          loader: require.resolve('css-loader'),
+          options: {
+            importLoaders: 1,
+          },
+        },
       ],
     },
     {
@@ -77,9 +83,8 @@ module.exports = ({ config }) => {
       use: [
         {
           loader: require.resolve('file-loader'),
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'fonts/',
+          query: {
+            name: 'static/media/[name].[hash:8].[ext]',
           },
         },
       ],
