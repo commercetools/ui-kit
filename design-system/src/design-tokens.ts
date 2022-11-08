@@ -240,7 +240,7 @@ export const themes = {
     shadowForButtonWhenHovered: 'none',
     shadowForButtonWhenActive: 'none',
     shadowForButtonWhenDisabled: 'none',
-    shadowForCardWhenRaised: '0 1px 2px rgb(25 40 81 / 5%)',
+    shadowForCardWhenRaised: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
   },
 } as const;
 

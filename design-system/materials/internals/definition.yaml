@@ -581,7 +581,7 @@ decisionGroupsByTheme:
         shadow-for-button-when-disabled:
           choice: shadow-0
         shadow-for-card-when-raised:
-          choice: '0 1px 2px rgb(25 40 81 / 5%)'
+          choice: '0 1px 5px 0 rgba(0, 0, 0, 0.05)'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
