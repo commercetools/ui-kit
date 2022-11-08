@@ -1,4 +1,5 @@
 const path = require('path');
+const { DefinePlugin } = require('webpack');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 const sourceFolders = [
@@ -11,6 +12,12 @@ const sourceFolders = [
 ];
 
 module.exports = ({ config }) => {
+  config.plugins.push(
+    new DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.VERCEL_ENV': JSON.stringify(process.env.VERCEL_ENV),
+    })
+  );
   config.plugins.push(
     new MomentLocalesPlugin({
       localesToKeep: ['de', 'es', 'fr', 'zh-cn', 'en-gb'],
