@@ -99,8 +99,6 @@
   "--background-color-for-button-as-icon-as-primary-when-hovered": "#00b39e",
   "--background-color-for-button-as-icon-as-info-when-active": "#078cdf",
   "--background-color-for-button-as-icon-as-info-when-hovered": "#078cdf",
-  "--background-color-for-button-as-secondary-when-active": "#fff",
-  "--background-color-for-button-as-secondary-when-hovered": "#fff",
   "--background-color-for-button-as-urgent-when-active": "#f16d0e",
   "--background-color-for-button-as-urgent-when-hovered": "hsl(25.110132158590307, 89.0196078431%, 25%)",
   "--background-color-for-button-when-disabled": "hsl(195, 35.2941176471%, 98%)",

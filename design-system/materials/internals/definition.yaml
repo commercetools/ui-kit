@@ -240,10 +240,6 @@ decisionGroupsByTheme:
           choice: color-info
         background-color-for-button-as-icon-as-info-when-hovered:
           choice: color-info
-        background-color-for-button-as-secondary-when-active:
-          choice: color-surface
-        background-color-for-button-as-secondary-when-hovered:
-          choice: color-surface
         background-color-for-button-as-urgent-when-active:
           choice: color-warning
         background-color-for-button-as-urgent-when-hovered:
@@ -461,10 +457,6 @@ decisionGroupsByTheme:
           choice: 'hsl(203deg 94% 45% / 90%)'
         background-color-for-button-as-icon-as-info-when-hovered:
           choice: color-info
-        background-color-for-button-as-secondary-when-active:
-          choice: color-neutral-10
-        background-color-for-button-as-secondary-when-hovered:
-          choice: color-neutral-05
         background-color-for-button-as-urgent-when-active:
           choice: 'hsl(25deg 89% 50% / 90%)'
         background-color-for-button-as-urgent-when-hovered:

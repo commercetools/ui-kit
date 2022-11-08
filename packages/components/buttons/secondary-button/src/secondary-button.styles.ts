@@ -33,7 +33,7 @@ const getStateStyles = (
         background-color: ${designTokens.colorSurface};
         &:focus,
         &:hover {
-          background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenActive};
+          background-color: ${designTokens.backgroundColorForButtonWhenActive};
         }
       `,
     ];
@@ -56,12 +56,12 @@ const getStateStyles = (
       box-shadow: ${designTokens.shadowForButtonWhenFocused};
     }
     &:hover {
-      background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenHovered};
+      background-color: ${designTokens.backgroundColorForButtonWhenHovered};
     }
     &:active {
       border: ${designTokens.borderForButtonAsSecondaryWhenActive};
       box-shadow: ${designTokens.shadowForButtonWhenActive};
-      background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenActive};
+      background-color: ${designTokens.backgroundColorForButtonWhenActive};
     }
   `;
 };
@@ -92,11 +92,11 @@ const getThemeStyles = (theme: Theme) => {
         &:focus,
         &:hover {
           box-shadow: ${designTokens.shadowForButtonWhenFocused};
-          background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenHovered};
+          background-color: ${designTokens.backgroundColorForButtonWhenHovered};
         }
         &:active {
           box-shadow: ${designTokens.shadowForButtonWhenActive};
-          background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenActive};
+          background-color: ${designTokens.backgroundColorForButtonWhenActive};
         }
       `;
     }

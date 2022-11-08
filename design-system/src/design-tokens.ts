@@ -111,8 +111,6 @@ export const themes = {
     backgroundColorForButtonAsIconAsPrimaryWhenHovered: '#00b39e',
     backgroundColorForButtonAsIconAsInfoWhenActive: '#078cdf',
     backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
-    backgroundColorForButtonAsSecondaryWhenActive: '#fff',
-    backgroundColorForButtonAsSecondaryWhenHovered: '#fff',
     backgroundColorForButtonAsUrgentWhenActive: '#f16d0e',
     backgroundColorForButtonAsUrgentWhenHovered:
       'hsl(25.110132158590307, 89.0196078431%, 25%)',
@@ -198,8 +196,6 @@ export const themes = {
     backgroundColorForButtonAsIconAsPrimaryWhenHovered: '#00b39e',
     backgroundColorForButtonAsIconAsInfoWhenActive: 'hsl(203deg 94% 45% / 90%)',
     backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
-    backgroundColorForButtonAsSecondaryWhenActive: 'hsl(0deg 0% 80% / 10%)',
-    backgroundColorForButtonAsSecondaryWhenHovered: 'hsl(0deg 0% 80% / 5%)',
     backgroundColorForButtonAsUrgentWhenActive: 'hsl(25deg 89% 50% / 90%)',
     backgroundColorForButtonAsUrgentWhenHovered: 'hsl(25deg 89% 50% / 95%)',
     backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
@@ -357,10 +353,6 @@ const designTokens = {
     'var(--background-color-for-button-as-icon-as-info-when-active, #078cdf)',
   backgroundColorForButtonAsIconAsInfoWhenHovered:
     'var(--background-color-for-button-as-icon-as-info-when-hovered, #078cdf)',
-  backgroundColorForButtonAsSecondaryWhenActive:
-    'var(--background-color-for-button-as-secondary-when-active, #fff)',
-  backgroundColorForButtonAsSecondaryWhenHovered:
-    'var(--background-color-for-button-as-secondary-when-hovered, #fff)',
   backgroundColorForButtonAsUrgentWhenActive:
     'var(--background-color-for-button-as-urgent-when-active, #f16d0e)',
   backgroundColorForButtonAsUrgentWhenHovered:
