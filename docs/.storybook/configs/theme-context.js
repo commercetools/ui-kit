@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
-import { designTokens, ThemeProvider } from '../../../design-system';
+import {
+  designTokens,
+  ThemeProvider,
+} from '@commercetools-uikit/design-system';
 
 const defaultTheme = designTokens;
 
@@ -27,11 +30,11 @@ ThemeWrapper.propTypes = {
 const themeParams = [
   {
     name: 'Default Theme',
-    props: { themeName: 'default', themeOverrides: defaultTheme },
+    props: { themeName: 'default' },
   },
   {
     name: 'Custom Theme',
-    props: { themeName: 'default', themeOverrides: customTheme },
+    props: { themeName: 'default' },
   },
 ];
 

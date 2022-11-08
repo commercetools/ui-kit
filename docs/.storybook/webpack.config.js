@@ -58,6 +58,25 @@ module.exports = ({ config }) => {
         },
       ],
     },
+    {
+      test: /\.css$/,
+      use: [
+        { loader: require.resolve('style-loader') },
+        { loader: require.resolve('css-loader') },
+      ],
+    },
+    {
+      test: /\.(woff(2)?)(.*)$/,
+      use: [
+        {
+          loader: require.resolve('file-loader'),
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/',
+          },
+        },
+      ],
+    },
     // Storybook uses a plugin to load and render markdown files.
     {
       test: /\.md$/,
