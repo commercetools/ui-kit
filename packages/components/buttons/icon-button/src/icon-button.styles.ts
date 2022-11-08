@@ -125,7 +125,6 @@ const getBaseStyles = (
         ${isActive ? '&,' : ''}
         &:hover,
         &:active {
-          border-color: ${designTokens.colorPrimary};
           border-color: ${designTokens.borderColorForButtonAsIconAsPrimary};
         }
       `;
@@ -143,7 +142,6 @@ const getBaseStyles = (
         ${isActive ? '&,' : ''}
         &:hover,
         &:active {
-          border-color: ${designTokens.colorInfo};
           border-color: ${designTokens.borderColorForButtonAsIconAsInfo};
         }
       `;
