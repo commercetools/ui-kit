@@ -1,12 +1,5 @@
 import PropTypes from 'prop-types';
-import { designTokens, ThemeProvider } from '../../../design-system';
-
-const defaultTheme = designTokens;
-
-const customTheme = {
-  colorSolid: '#fff',
-  colorSurface: '#1a1a1a',
-};
+import { ThemeProvider } from '../../../design-system';
 
 const ThemeWrapper = (props) => {
   return (
@@ -27,11 +20,11 @@ ThemeWrapper.propTypes = {
 const themeParams = [
   {
     name: 'Default Theme',
-    props: { themeName: 'default', themeOverrides: defaultTheme },
+    props: { themeName: 'default' },
   },
   {
-    name: 'Custom Theme',
-    props: { themeName: 'default', themeOverrides: customTheme },
+    name: 'Test Theme',
+    props: { themeName: 'test' },
   },
 ];
 
@@ -42,7 +35,8 @@ const themeContext = {
   params: themeParams,
   options: {
     deep: true, // pass the `props` deeply into all wrapping components
-    disable: false, // disable this contextual environment completely
+    // Disable only in the main production environment.
+    disable: process.env.VERCEL_ENV === 'production', // disable this contextual environment completely
     cancelable: false, // allow this contextual environment to be opt-out optionally in toolbar
   },
 };

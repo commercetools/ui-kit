@@ -48,7 +48,7 @@ const applyTheme = ({
   const vars = toVars(
     themeOverrides && isObject(themeOverrides)
       ? merge({}, themes.default, themes[validTheme], themeOverrides)
-      : themes[validTheme]
+      : merge({}, themes.default, themes[validTheme])
   );
 
   Object.entries(vars).forEach(([key, value]) => {
@@ -59,7 +59,7 @@ const applyTheme = ({
 
 type ThemeProviderProps = {
   parentSelector: typeof defaultParentSelector;
-  theme?: string;
+  theme: string;
   themeOverrides?: Record<string, string>;
 };
 
@@ -91,6 +91,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 };
 ThemeProvider.defaultProps = {
   parentSelector: defaultParentSelector,
+  theme: 'default',
 };
 
 const useTheme = (parentSelector = defaultParentSelector) => {
