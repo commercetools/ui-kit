@@ -19,6 +19,13 @@ describe('rendering', () => {
       const link = screen.getByText('Link');
       expect(link).toBeInTheDocument();
     });
+    it('should call "onClick" when link is clicked', () => {
+      const onClickMock = jest.fn();
+      const linkProps = { ...props, onClick: onClickMock };
+      render(<Link {...linkProps}>Link</Link>);
+      screen.getByText('Link').click();
+      expect(onClickMock).toHaveBeenCalled();
+    });
   });
   describe('when rendering an external link', () => {
     beforeEach(() => {
@@ -27,11 +34,18 @@ describe('rendering', () => {
         isFoo: 'bar',
       });
     });
-    it('should render a react router link', () => {
+    it('should render a native link', () => {
       render(<Link {...props}>Link</Link>);
       const link = screen.getByText('Link');
       expect(link).toBeInTheDocument();
       expect(link).toHaveProperty('href', props.to);
+    });
+    it('should call "onClick" when link is clicked', () => {
+      const onClickMock = jest.fn();
+      const linkProps = { ...props, onClick: onClickMock };
+      render(<Link {...linkProps}>Link</Link>);
+      screen.getByText('Link').click();
+      expect(onClickMock).toHaveBeenCalled();
     });
   });
   describe('when rendering a translated link', () => {

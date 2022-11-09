@@ -51,3 +51,14 @@ export default Example;
 | `isExternal`  | `boolean`                                                      |          | `false`     | A flag to indicate if the Link points to an external source.&#xA;<bt />&#xA;If `true`, a regular `<a>` is rendered instead of the default `react-router`s `<Link />` |
 | `to`          | `union`<br/>Possible values:<br/>`string , LocationDescriptor` |    ✅    |             | The URL that the Link should point to.                                                                                                                               |
 | `tone`        | `union`<br/>Possible values:<br/>`'primary' , 'inverted'`      |          | `'primary'` | Color of the link                                                                                                                                                    |
+| `onClick`     | `Function`<br/>[See signature.](#signature-onClick)            |          |             | Handler when the link is clicked.                                                                                                                                    |
+
+## Signatures
+
+### Signature `onClick`
+
+```ts
+(
+  event: MouseEvent<HTMLLinkElement> | KeyboardEvent<HTMLLinkElement>
+) => void
+```
