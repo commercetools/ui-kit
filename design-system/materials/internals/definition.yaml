@@ -288,6 +288,8 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-button-as-secondary-when-active:
           choice: 'none'
+        border-for-card-when-raised:
+          choice: 'none'
 
     borderColors:
       label: Border Colors
@@ -328,8 +330,6 @@ decisionGroupsByTheme:
           choice: color-primary
         border-color-for-button-as-icon-when-disabled:
           choice: color-neutral
-        border-color-for-card-when-raised:
-          choice: color-surface
 
     borderRadiuses:
       label: Border Radius
@@ -503,6 +503,8 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral)'
         border-for-button-as-secondary-when-active:
           choice: '1px solid var(--color-neutral)'
+        border-for-card-when-raised:
+          choice: '1px solid var(--color-neutral-90)'
 
     borderColors:
       label: Border Colors

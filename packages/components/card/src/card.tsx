@@ -38,8 +38,8 @@ const Card = (props: TCardProps) => (
         ? designTokens.shadowForCardWhenRaised
         : 'none'};
       border-radius: ${designTokens.borderRadiusForCard};
-      border-color: ${props.type === 'raised'
-        ? designTokens.borderColorForCardWhenRaised
+      border: ${props.type === 'raised'
+        ? designTokens.borderForCardWhenRaised
         : 'none'};
       background: ${props.theme === 'dark'
         ? designTokens.colorNeutral95

@@ -132,6 +132,7 @@ export const themes = {
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
+    borderForCardWhenRaised: 'none',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -145,7 +146,6 @@ export const themes = {
     borderColorForButtonAsIconAsInfo: '#078cdf',
     borderColorForButtonAsIconAsPrimary: '#00b39e',
     borderColorForButtonAsIconWhenDisabled: '#ccc',
-    borderColorForCardWhenRaised: '#fff',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -217,6 +217,7 @@ export const themes = {
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
+    borderForCardWhenRaised: '1px solid var(--color-neutral-90)',
     borderColorForButtonAsIcon: '#ccc',
     borderColorForButtonAsIconAsInfo: '#ccc',
     borderColorForButtonAsIconAsPrimary: '#ccc',
@@ -399,6 +400,7 @@ const designTokens = {
     'var(--border-for-button-as-secondary-when-hovered, none)',
   borderForButtonAsSecondaryWhenActive:
     'var(--border-for-button-as-secondary-when-active, none)',
+  borderForCardWhenRaised: 'var(--border-for-card-when-raised, none)',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -421,8 +423,6 @@ const designTokens = {
     'var(--border-color-for-button-as-icon-as-primary, #00b39e)',
   borderColorForButtonAsIconWhenDisabled:
     'var(--border-color-for-button-as-icon-when-disabled, #ccc)',
-  borderColorForCardWhenRaised:
-    'var(--border-color-for-card-when-raised, #fff)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
