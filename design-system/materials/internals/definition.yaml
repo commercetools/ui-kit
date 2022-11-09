@@ -79,13 +79,18 @@ choiceGroupsByTheme:
         font-size-40: '1.125rem'
         font-size-50: '1.25rem'
         font-size-60: '1.5rem'
+        font-size-13: '0.813rem'
+        font-size-32: '2rem'
+
     fontWeights:
       label: Font weights
       prefix: font-weight
       choices:
+        font-weight-300: '300'
         font-weight-400: '400'
         font-weight-500: '500'
         font-weight-600: '600'
+
     lineHeights:
       label: Line heights
       prefix: line-height
@@ -96,6 +101,11 @@ choiceGroupsByTheme:
         line-height-40: '1.625rem'
         line-height-50: '1.75rem'
         line-height-60: '2.125rem'
+        line-height-17: '1.063rem'
+        line-height-18: '1.125rem'
+        line-height-27: '1.688rem'
+        line-height-33: '2.063rem'
+        line-height-43: '2.688rem'
     shadows:
       label: Shadows
       prefix: shadow
@@ -170,8 +180,6 @@ choiceGroupsByTheme:
       description: Dark theme colors overwrite
       choices:
         color-primary: '#f78d26'
-        color-solid: '#fff'
-        color-surface: '#1a1a1a'
 
 states:
   active: 'Trigged while the user is currently interacting with the element'
@@ -342,6 +350,108 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-text-as-h1:
           description: ''
+          choice: font-size-32
+        font-size-for-text-as-h2:
+          description: ''
+          choice: font-size-60
+        font-size-for-text-as-h3:
+          description: ''
+          choice: font-size-50
+        font-size-for-text-as-h4:
+          description: ''
+          choice: font-size-30
+        font-size-for-text-as-h5:
+          description: ''
+          choice: font-size-20
+        font-size-for-text-as-body:
+          description: ''
+          choice: font-size-13
+        font-size-for-text-as-detail:
+          description: ''
+          choice: font-size-10
+
+    lineHeights:
+      label: Line Heights
+      prefix: line-height
+      decisions:
+        line-height-for-text-as-h1:
+          description: ''
+          choice: line-height-43
+        line-height-for-text-as-h2:
+          description: ''
+          choice: line-height-33
+        line-height-for-text-as-h3:
+          description: ''
+          choice: line-height-27
+        line-height-for-text-as-h4:
+          description: ''
+          choice: line-height-18
+        line-height-for-text-as-h5:
+          description: ''
+          choice: line-height-18
+        line-height-for-text-as-body:
+          description: ''
+          choice: line-height-18
+        line-height-for-text-as-detail:
+          description: ''
+          choice: line-height-17
+
+    fontWeights:
+      label: Font Weights
+      prefix: font-weight
+      decisions:
+        font-weight-for-text-as-h1:
+          description: ''
+          choice: font-weight-300
+        font-weight-for-text-as-h2:
+          description: ''
+          choice: font-weight-300
+        font-weight-for-text-as-h3:
+          description: ''
+          choice: font-weight-300
+        font-weight-for-text-as-h4:
+          description: ''
+          choice: font-weight-400
+        font-weight-for-text-as-h5:
+          description: ''
+          choice: font-weight-400
+        font-weight-for-text-as-body:
+          description: ''
+          choice: font-weight-400
+        font-weight-for-text-as-detail:
+          description: ''
+          choice: font-weight-400
+
+    shadows:
+      label: Shadows
+      prefix: shadow
+      decisions:
+        shadow-box-tag-when-hovered:
+          description: ''
+          deprecated: true
+          choice: shadow-1
+
+  test:
+    backgroundColors:
+      label: Background Colors
+      prefix: background-color
+      decisions:
+        background-color-for-tag:
+          description: ''
+          choice: color-warning-95
+        background-color-for-tag-warning:
+          description: ''
+          choice: color-neutral-95
+
+    fontSizes:
+      label: Font Sizes
+      prefix: font-size
+      decisions:
+        font-size-for-input:
+          description: ''
+          choice: font-size-30
+        font-size-for-text-as-h1:
+          description: ''
           choice: font-size-50
         font-size-for-text-as-h2:
           description: ''
@@ -413,27 +523,6 @@ decisionGroupsByTheme:
         font-weight-for-text-as-detail:
           description: ''
           choice: font-weight-400
-
-    shadows:
-      label: Shadows
-      prefix: shadow
-      decisions:
-        shadow-box-tag-when-hovered:
-          description: ''
-          deprecated: true
-          choice: shadow-1
-
-  test:
-    backgroundColors:
-      label: Background Colors
-      prefix: background-color
-      decisions:
-        background-color-for-tag:
-          description: ''
-          choice: color-warning-95
-        background-color-for-tag-warning:
-          description: ''
-          choice: color-neutral-95
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
