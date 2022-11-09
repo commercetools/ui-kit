@@ -16,7 +16,7 @@ const SpecContainer = styled.div`
 `;
 
 const Label = styled.div`
-  font-family: ${designTokens.fontFamilyDefault};
+  font-family: ${designTokens.fontFamilyBody};
   font-weight: bold;
   box-sizing: border-box;
   background-color: #774caf;
@@ -26,7 +26,7 @@ const Label = styled.div`
 `;
 
 const PropList = styled.div`
-  font-family: ${designTokens.fontFamilyDefault};
+  font-family: ${designTokens.fontFamilyBody};
   background-color: #894ac3;
   padding: 5px;
   box-sizing: border-box;
