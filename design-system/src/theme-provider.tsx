@@ -46,9 +46,12 @@ const applyTheme = ({
   }
 
   const vars = toVars(
-    themeOverrides && isObject(themeOverrides)
-      ? merge({}, themes.default, themes[validTheme], themeOverrides)
-      : merge({}, themes.default, themes[validTheme])
+    merge(
+      {},
+      themes.default,
+      themes[validTheme],
+      isObject(themeOverrides) ? themeOverrides : {}
+    )
   );
 
   Object.entries(vars).forEach(([key, value]) => {

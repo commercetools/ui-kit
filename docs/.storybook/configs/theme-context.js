@@ -4,10 +4,7 @@ import { ThemeProvider } from '../../../design-system';
 const ThemeWrapper = (props) => {
   return (
     <>
-      <ThemeProvider
-        theme={props.themeName}
-        themeOverrides={props.themeOverrides}
-      />
+      <ThemeProvider theme={props.themeName} />
       {props.children}
     </>
   );
