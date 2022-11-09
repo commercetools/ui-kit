@@ -34,6 +34,7 @@ export const themes = {
     borderRadius6: '6px',
     borderRadius20: '20px',
     fontFamilyBody: "'Open Sans', sans-serif",
+    fontFamilyVariableBody: "'Open SansVariable', sans-serif",
     fontSizeM: '1rem',
     shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     shadow2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
@@ -104,6 +105,7 @@ export const themes = {
     borderColorForTagWhenFocused: '#00b39e',
     borderRadiusForInput: '6px',
     borderRadiusForTag: '2px',
+    fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForInputWhenError: '#e60050',
@@ -113,6 +115,7 @@ export const themes = {
     fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTextWhenInverted: '#fff',
     fontFamily: "'Open Sans', sans-serif",
+    fontFamilyVariable: "'Open SansVariable', sans-serif",
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
     fontSizeForInput: '1rem',
     shadowBoxTagWhenHovered:
@@ -132,6 +135,8 @@ export const themes = {
     colorPrimary: '#f78d26',
     colorSolid: '#fff',
     colorSurface: '#1a1a1a',
+    fontFamilyBody: "'Inter', system-ui",
+    fontFamilyVariableBody: "'Inter var', system-ui",
     backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForTagWarning: 'hsl(0, 0%, 95%)',
   },
@@ -170,6 +175,8 @@ const designTokens = {
   borderRadius6: 'var(--border-radius-6, 6px)',
   borderRadius20: 'var(--border-radius-20, 20px)',
   fontFamilyBody: "var(--font-family-body, 'Open Sans', sans-serif)",
+  fontFamilyVariableBody:
+    "var(--font-family-variable-body, 'Open SansVariable', sans-serif)",
   fontSizeM: 'var(--font-size-m, 1rem)',
   shadow1:
     'var(--shadow-1, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
@@ -256,6 +263,7 @@ const designTokens = {
     'var(--border-color-for-tag-when-focused, #00b39e)',
   borderRadiusForInput: 'var(--border-radius-for-input, 6px)',
   borderRadiusForTag: 'var(--border-radius-for-tag, 2px)',
+  fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
     'var(--font-color-for-input-when-disabled, hsl(0, 0%, 60%))',
@@ -270,6 +278,8 @@ const designTokens = {
   fontColorForTextWhenInverted:
     'var(--font-color-for-text-when-inverted, #fff)',
   fontFamily: "var(--font-family, 'Open Sans', sans-serif)",
+  fontFamilyVariable:
+    "var(--font-family-variable, 'Open SansVariable', sans-serif)",
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
   fontSizeForInput: 'var(--font-size-for-input, 1rem)',
