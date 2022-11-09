@@ -79,8 +79,9 @@ choiceGroupsByTheme:
         font-size-40: '1.125rem'
         font-size-50: '1.25rem'
         font-size-60: '1.5rem'
-        font-size-13: '0.813rem'
-        font-size-32: '2rem'
+        # These font sizes will be removed when we replace the default theme.
+        font-size-15: '0.813rem'
+        font-size-70: '2rem'
 
     fontWeights:
       label: Font weights
@@ -101,11 +102,12 @@ choiceGroupsByTheme:
         line-height-40: '1.625rem'
         line-height-50: '1.75rem'
         line-height-60: '2.125rem'
-        line-height-17: '1.063rem'
-        line-height-18: '1.125rem'
-        line-height-27: '1.688rem'
-        line-height-33: '2.063rem'
-        line-height-43: '2.688rem'
+        # These line-heights will be removed when we replace the default theme.
+        line-height-3: '1.063rem'
+        line-height-6: '1.125rem'
+        line-height-45: '1.688rem'
+        line-height-55: '2.063rem'
+        line-height-70: '2.688rem'
     shadows:
       label: Shadows
       prefix: shadow
@@ -350,7 +352,7 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-text-as-h1:
           description: ''
-          choice: font-size-32
+          choice: font-size-70
         font-size-for-text-as-h2:
           description: ''
           choice: font-size-60
@@ -365,7 +367,7 @@ decisionGroupsByTheme:
           choice: font-size-20
         font-size-for-text-as-body:
           description: ''
-          choice: font-size-13
+          choice: font-size-15
         font-size-for-text-as-detail:
           description: ''
           choice: font-size-10
@@ -376,25 +378,25 @@ decisionGroupsByTheme:
       decisions:
         line-height-for-text-as-h1:
           description: ''
-          choice: line-height-43
+          choice: line-height-70
         line-height-for-text-as-h2:
           description: ''
-          choice: line-height-33
+          choice: line-height-55
         line-height-for-text-as-h3:
           description: ''
-          choice: line-height-27
+          choice: line-height-45
         line-height-for-text-as-h4:
           description: ''
-          choice: line-height-18
+          choice: line-height-6
         line-height-for-text-as-h5:
           description: ''
-          choice: line-height-18
+          choice: line-height-6
         line-height-for-text-as-body:
           description: ''
-          choice: line-height-18
+          choice: line-height-6
         line-height-for-text-as-detail:
           description: ''
-          choice: line-height-17
+          choice: line-height-3
 
     fontWeights:
       label: Font Weights
