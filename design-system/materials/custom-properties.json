@@ -132,6 +132,7 @@
   "--font-size-for-text-as-h5": "0.875rem",
   "--font-size-for-text-as-body": "0.813rem",
   "--font-size-for-text-as-detail": "0.75rem",
+  "--font-size-for-link": "1rem",
   "--line-height-for-text-as-h1": "2.688rem",
   "--line-height-for-text-as-h2": "2.063rem",
   "--line-height-for-text-as-h3": "1.688rem",

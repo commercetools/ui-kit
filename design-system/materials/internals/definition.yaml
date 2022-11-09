@@ -181,7 +181,7 @@ choiceGroupsByTheme:
       prefix: color
       description: Dark theme colors overwrite
       choices:
-        color-primary: '#f78d26'
+        color-primary: '#00b39e'
 
 states:
   active: 'Trigged while the user is currently interacting with the element'
@@ -227,6 +227,8 @@ componentGroups:
     description: 'Tag elements with type warning'
   text:
     description: 'Text elements'
+  link:
+    description: 'Link elements'
 
 decisionGroupsByTheme:
   default:
@@ -371,6 +373,9 @@ decisionGroupsByTheme:
         font-size-for-text-as-detail:
           description: ''
           choice: font-size-10
+        font-size-for-link:
+          description: ''
+          choice: font-size-30
 
     lineHeights:
       label: Line Heights
@@ -473,6 +478,9 @@ decisionGroupsByTheme:
         font-size-for-text-as-detail:
           description: ''
           choice: font-size-10
+        font-size-for-link:
+          description: ''
+          choice: 'inherit'
 
     lineHeights:
       label: Line Heights
