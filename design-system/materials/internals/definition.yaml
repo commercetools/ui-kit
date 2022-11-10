@@ -22,7 +22,12 @@
 # files in different format (css, json, js, ...).
 #
 # The names of decisions in this file need to follow this format:
+#   <attribute>-for-<component-group>
+#   <attribute>-for-<component-group>-as-<variant>
+#   <attribute>-for-<component-group>-when-<state>-
 #   <attribute>-for-<component-group>-as-<variant>-when-<state>
+#   <attribute>-for-<component-group>-as-<variant>-as-<variant>-
+#   <attribute>-for-<component-group>-as-<variant>-as-<variant>-when-<state>-
 
 choiceGroupsByTheme:
   default:
