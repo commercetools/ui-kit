@@ -37,7 +37,7 @@
   "devDependencies": {
     "@commercetools-frontend/babel-preset-mc-app": "21.14.3",
     "prismjs": "1.29.0",
-    "webpack": "5.74.0"
+    "webpack": "4.46.0"
   },
   "peerDependencies": {
     "prismjs": "1.29.0"

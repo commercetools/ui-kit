@@ -62,7 +62,7 @@ const applyTheme = ({
 
 type ThemeProviderProps = {
   parentSelector: typeof defaultParentSelector;
-  theme?: string;
+  theme: string;
   themeOverrides?: Record<string, string>;
 };
 
@@ -95,6 +95,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 };
 ThemeProvider.defaultProps = {
   parentSelector: defaultParentSelector,
+  theme: 'default',
 };
 
 const useTheme = (parentSelector = defaultParentSelector) => {
