@@ -136,6 +136,7 @@ export const themes = {
     fontColorForTextWhenInverted: '#fff',
     fontFamily: "'Open Sans', sans-serif",
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
+    fontSizeBorBody: '13px',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '2rem',
     fontSizeForTextAsH2: '1.5rem',
@@ -176,6 +177,7 @@ export const themes = {
     colorPrimary: '#f78d26',
     backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForTagWarning: 'hsl(0, 0%, 95%)',
+    fontSizeBorBody: '16px',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.25rem',
     fontSizeForTextAsH2: '1.25rem',
@@ -358,6 +360,7 @@ const designTokens = {
   fontFamily: "var(--font-family, 'Open Sans', sans-serif)",
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
+  fontSizeBorBody: 'var(--font-size-bor-body, 13px)',
   fontSizeForInput: 'var(--font-size-for-input, 1rem)',
   fontSizeForTextAsH1: 'var(--font-size-for-text-as-h-1, 2rem)',
   fontSizeForTextAsH2: 'var(--font-size-for-text-as-h-2, 1.5rem)',
