@@ -68,8 +68,8 @@ choiceGroupsByTheme:
       label: Font families
       prefix: font-family
       choices:
-        font-family-body: "'Open Sans', sans-serif"
-        font-family-variable-body: "'Open SansVariable', sans-serif"
+        font-family: "'Open Sans', sans-serif"
+        font-family-variable: "'Open SansVariable', sans-serif"
     fontSizes:
       label: Font sizes
       prefix: font-size
@@ -155,8 +155,8 @@ choiceGroupsByTheme:
       label: Font families
       prefix: font-family
       choices:
-        font-family-body: "'Inter', system-ui"
-        font-family-variable-body: "'Inter var', system-ui"
+        font-family: "'Inter', system-ui"
+        font-family-variable: "'Inter var', system-ui"
 
 states:
   active: 'Trigged while the user is currently interacting with the element'
@@ -287,17 +287,6 @@ decisionGroupsByTheme:
         font-color-for-text-when-inverted:
           description: ''
           choice: color-surface
-
-    fontFamily:
-      label: Font family
-      prefix: font-family
-      decisions:
-        font-family:
-          description: ''
-          choice: font-family-body
-        font-family-variable:
-          description: ''
-          choice: font-family-variable-body
 
     placeholderFontColors:
       label: Placeholder font colors
