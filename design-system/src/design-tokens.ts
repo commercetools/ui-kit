@@ -125,6 +125,7 @@ export const themes = {
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
+    borderForCardWhenRaised: 'none',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -145,6 +146,7 @@ export const themes = {
     borderRadiusForButtonAsIconAsSmall: '2px',
     borderRadiusForInput: '6px',
     borderRadiusForTag: '2px',
+    borderRadiusForCard: '6px',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForInputWhenError: '#e60050',
@@ -173,6 +175,8 @@ export const themes = {
       'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
     shadowForButtonWhenDisabled: '0 0 0 1px var(--color-neutral) inset',
     shadowBoxTagWhenHovered:
+      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+    shadowForCardWhenRaised:
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     bigButtonHeight: '32px',
     smallButtonHeight: '24px',
@@ -203,15 +207,18 @@ export const themes = {
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
+    borderForCardWhenRaised: '1px solid var(--color-neutral-90)',
     borderColorForButtonAsIcon: '#ccc',
     borderColorForButtonAsIconAsInfo: '#ccc',
     borderColorForButtonAsIconAsPrimary: '#ccc',
     borderColorForButtonAsIconWhenDisabled: '#fff',
+    borderColorForCardWhenRaised: 'hsl(0, 0%, 90%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
     borderRadiusForButtonAsIconAsMedium: '4px',
     borderRadiusForButtonAsIconAsSmall: '2px',
+    borderRadiusForCard: '4px',
     fontSizeForButton: '1.125rem',
     fontWeightForButton: '500',
     heightForButtonAsBig: '40px',
@@ -224,6 +231,7 @@ export const themes = {
     shadowForButtonWhenHovered: 'none',
     shadowForButtonWhenActive: 'none',
     shadowForButtonWhenDisabled: 'none',
+    shadowForCardWhenRaised: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
   },
 } as const;
 
@@ -373,6 +381,7 @@ const designTokens = {
     'var(--border-for-button-as-secondary-when-hovered, none)',
   borderForButtonAsSecondaryWhenActive:
     'var(--border-for-button-as-secondary-when-active, none)',
+  borderForCardWhenRaised: 'var(--border-for-card-when-raised, none)',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -405,6 +414,7 @@ const designTokens = {
     'var(--border-radius-for-button-as-icon-as-small, 2px)',
   borderRadiusForInput: 'var(--border-radius-for-input, 6px)',
   borderRadiusForTag: 'var(--border-radius-for-tag, 2px)',
+  borderRadiusForCard: 'var(--border-radius-for-card, 6px)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
     'var(--font-color-for-input-when-disabled, hsl(0, 0%, 60%))',
@@ -443,6 +453,8 @@ const designTokens = {
     'var(--shadow-for-button-when-disabled, 0 0 0 1px var(--color-neutral) inset)',
   shadowBoxTagWhenHovered:
     'var(--shadow-box-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
+  shadowForCardWhenRaised:
+    'var(--shadow-for-card-when-raised, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',
   sizeHeightInput: 'var(--size-height-input, 32px)',

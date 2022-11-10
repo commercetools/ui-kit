@@ -187,6 +187,8 @@ states:
     description: 'When the element is selected'
   inverted:
     description: 'When the element has inverted colors'
+  raised:
+    description: 'When the element is raised'
 
 variants:
   icon:
@@ -217,6 +219,8 @@ componentGroups:
     description: 'Tag elements with type warning'
   text:
     description: 'Text elements'
+  card:
+    description: 'Card element'
 
 decisionGroupsByTheme:
   default:
@@ -274,6 +278,8 @@ decisionGroupsByTheme:
         border-for-button-as-secondary-when-hovered:
           choice: 'none'
         border-for-button-as-secondary-when-active:
+          choice: 'none'
+        border-for-card-when-raised:
           choice: 'none'
 
     borderColors:
@@ -336,6 +342,8 @@ decisionGroupsByTheme:
         border-radius-for-tag:
           description: ''
           choice: border-radius-2
+        border-radius-for-card:
+          choice: border-radius-6
     # We don't have font families in choices yet, so we can't have decisions for
     # them
 
@@ -435,6 +443,8 @@ decisionGroupsByTheme:
           description: ''
           deprecated: true
           choice: shadow-1
+        shadow-for-card-when-raised:
+          choice: shadow-1
 
   test:
     backgroundColors:
@@ -480,6 +490,8 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral)'
         border-for-button-as-secondary-when-active:
           choice: '1px solid var(--color-neutral)'
+        border-for-card-when-raised:
+          choice: '1px solid var(--color-neutral-90)'
 
     borderColors:
       label: Border Colors
@@ -493,6 +505,8 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-button-as-icon-when-disabled:
           choice: color-surface
+        border-color-for-card-when-raised:
+          choice: color-neutral-90
 
     borderRadiuses:
       label: Border radiuses
@@ -508,6 +522,8 @@ decisionGroupsByTheme:
           choice: border-radius-4
         border-radius-for-button-as-icon-as-small:
           choice: border-radius-2
+        border-radius-for-card:
+          choice: border-radius-4
 
     fontSizes:
       label: Font Sizes
@@ -553,6 +569,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         shadow-for-button-when-disabled:
           choice: shadow-0
+        shadow-for-card-when-raised:
+          choice: '0 1px 5px 0 rgba(0, 0, 0, 0.05)'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
