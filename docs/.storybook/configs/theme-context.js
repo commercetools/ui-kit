@@ -32,7 +32,8 @@ const themeContext = {
   params: themeParams,
   options: {
     deep: true, // pass the `props` deeply into all wrapping components
-    disable: false, // disable this contextual environment completely
+    // Disable only in the main production environment.
+    disable: process.env.VERCEL_ENV === 'production', // disable this contextual environment completely
     cancelable: false, // allow this contextual environment to be opt-out optionally in toolbar
   },
 };
