@@ -1,5 +1,5 @@
 ---
-'@commercetools-uikit/text': major
+'@commercetools-uikit/text': minor
 ---
 
-Introduced a new prop 'isStrikethrough' for body and detail text components when needing a strikethrought text
+Add new prop 'isStrikethrough' for `<Text.Body>` and `<Text.Detail>` components.
