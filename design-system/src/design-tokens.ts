@@ -34,7 +34,6 @@ export const themes = {
     borderRadius6: '6px',
     borderRadius20: '20px',
     fontFamily: "'Open Sans', sans-serif",
-    fontFamilyVariable: "'Open SansVariable', sans-serif",
     fontSizeM: '1rem',
     shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     shadow2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
@@ -134,7 +133,6 @@ export const themes = {
     colorSolid: '#fff',
     colorSurface: '#1a1a1a',
     fontFamily: "'Inter', system-ui",
-    fontFamilyVariable: "'Inter var', system-ui",
     backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForTagWarning: 'hsl(0, 0%, 95%)',
   },
@@ -173,8 +171,6 @@ const designTokens = {
   borderRadius6: 'var(--border-radius-6, 6px)',
   borderRadius20: 'var(--border-radius-20, 20px)',
   fontFamily: "var(--font-family, 'Open Sans', sans-serif)",
-  fontFamilyVariable:
-    "var(--font-family-variable, 'Open SansVariable', sans-serif)",
   fontSizeM: 'var(--font-size-m, 1rem)',
   shadow1:
     'var(--shadow-1, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',

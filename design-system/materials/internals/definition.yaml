@@ -69,7 +69,6 @@ choiceGroupsByTheme:
       prefix: font-family
       choices:
         font-family: "'Open Sans', sans-serif"
-        font-family-variable: "'Open SansVariable', sans-serif"
     fontSizes:
       label: Font sizes
       prefix: font-size
@@ -156,7 +155,6 @@ choiceGroupsByTheme:
       prefix: font-family
       choices:
         font-family: "'Inter', system-ui"
-        font-family-variable: "'Inter var', system-ui"
 
 states:
   active: 'Trigged while the user is currently interacting with the element'
