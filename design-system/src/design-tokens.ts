@@ -35,6 +35,7 @@ export const themes = {
     borderRadius20: '20px',
     fontFamilyBody: "'Open Sans', sans-serif",
     fontSizeM: '1rem',
+    fontSize30: '1rem',
     shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     shadow2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
     shadow3: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
@@ -115,6 +116,7 @@ export const themes = {
     fontFamily: "'Open Sans', sans-serif",
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
     fontSizeForInput: '1rem',
+    fontSizeForLink: '1rem',
     shadowBoxTagWhenHovered:
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     bigButtonHeight: '32px',
@@ -129,11 +131,10 @@ export const themes = {
     standardInputHeight: '32px',
   },
   test: {
-    colorPrimary: '#f78d26',
-    colorSolid: '#fff',
-    colorSurface: '#1a1a1a',
+    colorPrimary: '#00b39e',
     backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForTagWarning: 'hsl(0, 0%, 95%)',
+    fontSizeForLink: 'inherit',
   },
 } as const;
 
@@ -171,6 +172,7 @@ const designTokens = {
   borderRadius20: 'var(--border-radius-20, 20px)',
   fontFamilyBody: "var(--font-family-body, 'Open Sans', sans-serif)",
   fontSizeM: 'var(--font-size-m, 1rem)',
+  fontSize30: 'var(--font-size-30, 1rem)',
   shadow1:
     'var(--shadow-1, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   shadow2:
@@ -273,6 +275,7 @@ const designTokens = {
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
   fontSizeForInput: 'var(--font-size-for-input, 1rem)',
+  fontSizeForLink: 'var(--font-size-for-link, 1rem)',
   shadowBoxTagWhenHovered:
     'var(--shadow-box-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   bigButtonHeight: 'var(--big-button-height, 32px)',
