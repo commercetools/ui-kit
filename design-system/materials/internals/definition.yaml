@@ -353,6 +353,8 @@ decisionGroupsByTheme:
       label: Font Sizes
       prefix: font-size
       decisions:
+        font-size-bor-body:
+          choice: '13px'
         font-size-for-input:
           description: ''
           choice: font-size-30
@@ -455,6 +457,8 @@ decisionGroupsByTheme:
       label: Font Sizes
       prefix: font-size
       decisions:
+        font-size-bor-body:
+          choice: '16px'
         font-size-for-input:
           description: ''
           choice: font-size-30
