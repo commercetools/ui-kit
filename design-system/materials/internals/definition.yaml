@@ -233,6 +233,8 @@ componentGroups:
     description: 'Tag elements with type warning'
   text:
     description: 'Text elements'
+  body:
+    description: 'Document body element'
 
 decisionGroupsByTheme:
   default:
@@ -353,8 +355,6 @@ decisionGroupsByTheme:
       label: Font Sizes
       prefix: font-size
       decisions:
-        font-size-bor-body:
-          choice: '13px'
         font-size-for-input:
           description: ''
           choice: font-size-30
@@ -379,6 +379,9 @@ decisionGroupsByTheme:
         font-size-for-text-as-detail:
           description: ''
           choice: font-size-10
+        font-size-for-body:
+          description: ''
+          choice: '13px'
 
     lineHeights:
       label: Line Heights
@@ -457,8 +460,6 @@ decisionGroupsByTheme:
       label: Font Sizes
       prefix: font-size
       decisions:
-        font-size-bor-body:
-          choice: '16px'
         font-size-for-input:
           description: ''
           choice: font-size-30
@@ -483,6 +484,9 @@ decisionGroupsByTheme:
         font-size-for-text-as-detail:
           description: ''
           choice: font-size-20
+        font-size-for-body:
+          description: ''
+          choice: '16px'
 
     lineHeights:
       label: Line Heights
