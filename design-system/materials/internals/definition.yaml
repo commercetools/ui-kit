@@ -47,6 +47,7 @@ choiceGroupsByTheme:
         color-accent-95: 'hsl(195, 35.2941176471%, 95%)'
         color-accent-98: 'hsl(195, 35.2941176471%, 98%)'
         color-neutral: '#ccc'
+        color-neutral-40: 'hsl(0, 0%, 40%)'
         color-neutral-60: 'hsl(0, 0%, 60%)'
         color-neutral-90: 'hsl(0, 0%, 90%)'
         color-neutral-95: 'hsl(0, 0%, 95%)'
@@ -477,7 +478,7 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-text-as-detail:
           description: ''
-          choice: font-size-10
+          choice: font-size-20
 
     lineHeights:
       label: Line Heights
@@ -503,7 +504,7 @@ decisionGroupsByTheme:
           choice: line-height-40
         line-height-for-text-as-detail:
           description: ''
-          choice: line-height-10
+          choice: line-height-20
 
     fontWeights:
       label: Font Weights

@@ -37,7 +37,7 @@ const getTone = (tone: string) => {
     case 'information':
       return `color: ${designTokens.colorInfo};`;
     case 'secondary':
-      return `color: ${designTokens.colorNeutral60};`;
+      return `color: ${designTokens.colorNeutral40};`;
     case 'positive':
       return `color: ${designTokens.colorPrimary25};`;
     case 'primary':
@@ -66,7 +66,7 @@ const getElementFontSize = (elementType?: string) => {
     case 'h5':
       return designTokens.fontSizeForTextAsH5;
     default:
-      return '';
+      return '1rem';
   }
 };
 
@@ -83,7 +83,7 @@ const getElementLineHeight = (elementType?: string) => {
     case 'h5':
       return designTokens.lineHeightForTextAsH5;
     default:
-      return '';
+      return '1.625rem';
   }
 };
 
@@ -100,7 +100,7 @@ const getElementFontWeight = (elementType?: string) => {
     case 'h5':
       return designTokens.fontWeightForTextAsH5;
     default:
-      return '';
+      return '400';
   }
 };
 
