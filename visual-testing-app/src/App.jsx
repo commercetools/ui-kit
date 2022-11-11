@@ -1,3 +1,4 @@
+import './globals.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@commercetools-uikit/design-system';
 
