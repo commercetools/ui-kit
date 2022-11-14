@@ -140,6 +140,7 @@ const SvgLock = (props: SVGProps) => (
     height={24}
     viewBox="0 0 87 118"
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
     {...props}
   >
     <path
