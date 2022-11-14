@@ -140,6 +140,7 @@ const SvgCheckThin = (props: SVGProps) => (
     height={24}
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
     {...props}
   >
     <path d="m20.28 4.363 1.471 1.262L9.053 20.524 2.238 12.64l1.523-1.337 5.292 6.172" />

@@ -33,7 +33,7 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@types/escape-html": "1.0.2",
-    "downshift": "6.1.11",
+    "downshift": "6.1.12",
     "escape-html": "1.0.3",
     "is-hotkey": "0.2.0",
     "lodash": "4.17.21",
