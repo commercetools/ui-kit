@@ -67,7 +67,6 @@ type ThemeProviderProps = {
 };
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-  const themeName = props.theme || 'default'; // Use 'default' theme if none is provided
   const parentSelectorRef = useRef(props.parentSelector);
   const themeNameRef = useRef<string>();
   const themeOverridesRef = useRef<Record<string, string>>();
@@ -77,19 +76,19 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     // provided include a new object with the same theme overrides
     // (eg: users providing an inline object as prop to the ThemeProvider)
     if (
-      themeNameRef.current !== themeName ||
+      themeNameRef.current !== props.theme ||
       !isEqual(themeOverridesRef.current, props.themeOverrides)
     ) {
-      themeNameRef.current = themeName;
+      themeNameRef.current = props.theme;
       themeOverridesRef.current = props.themeOverrides;
 
       applyTheme({
-        newTheme: themeName,
+        newTheme: props.theme,
         parentSelector: parentSelectorRef.current,
         themeOverrides: props.themeOverrides,
       });
     }
-  }, [themeName, props.themeOverrides]);
+  }, [props.theme, props.themeOverrides]);
 
   return null;
 };
