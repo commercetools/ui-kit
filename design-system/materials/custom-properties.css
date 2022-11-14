@@ -34,7 +34,7 @@
   --border-radius-4: 4px;
   --border-radius-6: 6px;
   --border-radius-20: 20px;
-  --font-family-body: 'Open Sans', sans-serif;
+  --font-family: 'Open Sans', sans-serif;
   --font-size-m: 1rem;
   --font-size-30: 1rem;
   --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -109,6 +109,7 @@
   --border-color-for-tag-when-focused: #00b39e;
   --border-radius-for-input: 6px;
   --border-radius-for-tag: 2px;
+  --font-color-for-text: #1a1a1a;
   --font-color-for-input: #1a1a1a;
   --font-color-for-input-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-input-when-error: #e60050;
@@ -117,7 +118,6 @@
   --font-color-for-tag: #1a1a1a;
   --font-color-for-tag-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-text-when-inverted: #fff;
-  --font-family: 'Open Sans', sans-serif;
   --placeholder-font-color-for-input: hsl(0, 0%, 60%);
   --font-size-for-input: 1rem;
   --font-size-for-link: 1rem;
