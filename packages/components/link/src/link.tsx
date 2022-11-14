@@ -111,7 +111,7 @@ const getLinkStyles = (props: TLinkProps) => {
   return css`
     font-family: inherit;
     color: ${color};
-    font-size: ${designTokens.fontSizeDefault};
+    font-size: ${designTokens.fontSizeForLink};
     &:hover,
     &:focus,
     &:active {

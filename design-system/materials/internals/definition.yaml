@@ -74,6 +74,7 @@ choiceGroupsByTheme:
       prefix: font-size
       choices:
         font-size-m: '1rem'
+        font-size-30: '1rem'
     shadows:
       label: Shadows
       prefix: shadow
@@ -183,6 +184,8 @@ componentGroups:
     description: 'Tag elements with type warning'
   text:
     description: 'Text elements'
+  link:
+    description: 'Link elements'
 
 decisionGroupsByTheme:
   default:
@@ -301,6 +304,9 @@ decisionGroupsByTheme:
         font-size-for-input:
           description: ''
           choice: font-size-m
+        font-size-for-link:
+          description: ''
+          choice: font-size-30
 
     shadows:
       label: Shadows
@@ -323,6 +329,13 @@ decisionGroupsByTheme:
           description: ''
           choice: color-neutral-95
 
+    fontSizes:
+      label: Font Sizes
+      prefix: font-size
+      decisions:
+        font-size-for-link:
+          description: ''
+          choice: 'inherit'
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
 # But since we have not yet introduced alternatives for them it's still okay to
