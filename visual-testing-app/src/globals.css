@@ -2,8 +2,6 @@
 
 html,
 body {
-  color: var(--font-color-for-text);
-  font-family: var(--font-family);
   font-size: var(--font-size-for-body);
   height: 100vh;
 }

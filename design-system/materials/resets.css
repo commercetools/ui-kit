@@ -6,6 +6,8 @@
 
 html,
 body {
+  color: var(--font-color-for-text);
+  font-family: var(--font-family);
   margin: 0;
   padding: 0;
 }
@@ -35,6 +37,5 @@ a {
 }
 
 p {
-  color: var(--font-color-for-text);
   margin: 0;
 }
