@@ -141,7 +141,6 @@ const SvgPlugin = (props: SVGProps) => (
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
     role="img"
     {...props}
   >
