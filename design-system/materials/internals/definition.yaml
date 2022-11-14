@@ -73,7 +73,7 @@ choiceGroupsByTheme:
       label: Font families
       prefix: font-family
       choices:
-        font-family-body: "'Open Sans', sans-serif"
+        font-family: "'Open Sans', sans-serif"
     fontSizes:
       label: Font sizes
       prefix: font-size
@@ -168,6 +168,11 @@ choiceGroupsByTheme:
       description: Dark theme colors overwrite
       choices:
         color-primary: '#00b39e'
+    fontFamilies:
+      label: Font families
+      prefix: font-family
+      choices:
+        font-family: "'Inter', system-ui"
 
 states:
   active: 'Trigged while the user is currently interacting with the element'
@@ -351,6 +356,9 @@ decisionGroupsByTheme:
       label: Font Colors
       prefix: font-color
       decisions:
+        font-color-for-text:
+          description: ''
+          choice: color-solid
         font-color-for-input:
           description: ''
           choice: color-solid
@@ -375,14 +383,6 @@ decisionGroupsByTheme:
         font-color-for-text-when-inverted:
           description: ''
           choice: color-surface
-
-    fontFamily:
-      label: Font family
-      prefix: font-family
-      decisions:
-        font-family:
-          description: ''
-          choice: font-family-body
 
     heights:
       label: Height
