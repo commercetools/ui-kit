@@ -1,9 +1,9 @@
 ---
-'@commercetools-uikit/design-system': minor
-'@commercetools-uikit/accessible-button': minor
-'@commercetools-uikit/icon-button': minor
-'@commercetools-uikit/primary-button': minor
-'@commercetools-uikit/secondary-button': minor
+'@commercetools-uikit/design-system': patch
+'@commercetools-uikit/accessible-button': patch
+'@commercetools-uikit/icon-button': patch
+'@commercetools-uikit/primary-button': patch
+'@commercetools-uikit/secondary-button': patch
 ---
 
 Add new design tokens to buttons components.
