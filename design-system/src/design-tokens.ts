@@ -164,6 +164,7 @@ export const themes = {
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
     fontSizeForButton: '1rem',
     fontSizeForInput: '1rem',
+    fontSizeForLink: '1rem',
     fontWeightForButton: '400',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
@@ -221,6 +222,7 @@ export const themes = {
     borderRadiusForButtonAsIconAsSmall: '2px',
     borderRadiusForCard: '4px',
     fontSizeForButton: '1.125rem',
+    fontSizeForLink: 'inherit',
     fontWeightForButton: '500',
     heightForButtonAsBig: '40px',
     heightForButtonAsSmall: '32px',
@@ -441,6 +443,7 @@ const designTokens = {
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
   fontSizeForButton: 'var(--font-size-for-button, 1rem)',
   fontSizeForInput: 'var(--font-size-for-input, 1rem)',
+  fontSizeForLink: 'var(--font-size-for-link, 1rem)',
   fontWeightForButton: 'var(--font-weight-for-button, 400)',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',

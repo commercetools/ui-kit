@@ -226,6 +226,8 @@ componentGroups:
     description: 'Text elements'
   card:
     description: 'Card element'
+  link:
+    description: 'Link elements'
 
 decisionGroupsByTheme:
   default:
@@ -417,6 +419,9 @@ decisionGroupsByTheme:
         font-size-for-input:
           description: ''
           choice: font-size-m
+        font-size-for-link:
+          description: ''
+          choice: font-size-30
 
     fontWeight:
       label: Font Weights
@@ -532,6 +537,9 @@ decisionGroupsByTheme:
         font-size-for-button:
           description: ''
           choice: font-size-40
+        font-size-for-link:
+          description: ''
+          choice: 'inherit'
 
     fontWeight:
       label: Font Weights
