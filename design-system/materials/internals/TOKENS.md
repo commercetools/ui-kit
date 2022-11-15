@@ -17,8 +17,7 @@ The tokens give semantic meaning to our plain palette of choices..
   - [Aspect: Component Group](#aspect-component-group)
   - [Aspect: State](#aspect-state)
     - [`active` vs `focused`](#active-vs-focused)
-  - [Aspect: Modifier](#aspect-modifier)
-    - [on-dark](#on-dark)
+  - [Aspect: Variant](#aspect-variant)
 
 ## What are Choices, Decisions and Design Tokens?
 
@@ -110,7 +109,7 @@ _This short [article](https://techpinions.com/snippet-design-is-the-difference-b
 ## Token Structure
 
 Our design tokens aim to be human-readable and easy to comprehend. We settled on
-a format which contains separator words (`for`, `when` and `on`) to help distinguish
+a format which contains separator words (`for`, `when` and `as`) to help distinguish
 between the different aspects of a design token.
 
 <img src="https://pbs.twimg.com/media/DsD1XN-XgAAb9lx.jpg" alt="token-structure" width="552" />
@@ -137,10 +136,10 @@ More specific tokens can be introduced
 --font-color-when-disabled
 ```
 
-...or for a specific **modifier**
+...or for a specific **variant**
 
 ```
---font-color-on-dark
+--font-size-for-text-as-h1
 ```
 
 This leads us to four different aspects of a design token:
@@ -148,7 +147,7 @@ This leads us to four different aspects of a design token:
 - Property
 - Component Group
 - State
-- Modifier
+- Variant
 
 Example:
 
@@ -207,11 +206,7 @@ In other words: An element in `active` state must also be in the `focused` state
 
 _This explanation was taken from https://stackoverflow.com/a/1678020 and modified slightly._
 
-### Aspect: Modifier
+### Aspect: Variant
 
-Some elements need to look different in certain situations. Modifiers allow us to
+Some elements have different variants such as `text` has a variant of `h1` or `body`. Variants allow us to
 represent that information in the design token.
-
-#### `on-dark`
-
-Usually a light background is assumed for elements. We use `on-dark` to allow using a different value in situations where the component needs to be used on a dark background.

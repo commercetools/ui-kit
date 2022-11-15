@@ -11,12 +11,11 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
-  getStateStyles,
   getShapeStyles,
   getSizeStyles,
-  getThemeStyles,
-  getHoverStyles,
+  getBaseStyles,
   getIconThemeColor,
+  getHoverStyles,
 } from './icon-button.styles';
 
 export type TIconButtonProps<
@@ -119,17 +118,16 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid ${designTokens.colorSurface};
+          border: 1px solid ${designTokens.borderColorForButtonAsIcon};
           background-color: ${designTokens.colorSurface};
-          box-shadow: ${designTokens.shadow7};
+          box-shadow: ${designTokens.shadowForButton};
           color: ${designTokens.colorSolid};
           transition: background-color ${designTokens.transitionLinear80Ms},
             box-shadow 150ms ease-in-out;
         `,
-        getStateStyles(props.isDisabled, isActive, props.theme),
+        getBaseStyles(props.theme, props.isDisabled, isActive),
         getShapeStyles(props.shape, props.size),
         getSizeStyles(props.size),
-        getThemeStyles(props.theme),
         getHoverStyles(props.isDisabled, props.theme),
       ]}
     >

@@ -10,40 +10,32 @@ const getStateStyles = (
   theme: Theme
 ) => {
   if (isDisabled) {
-    const baseDisabledStyles = css`
-      box-shadow: 0 0 0 1px ${designTokens.colorNeutral} inset;
-      background-color: ${designTokens.colorAccent98};
+    return css`
+      box-shadow: ${designTokens.shadowForButtonWhenDisabled};
+      background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
+      border: none;
       color: ${designTokens.colorNeutral60};
+      &:focus,
+      &:hover {
+        color: ${designTokens.colorNeutral60};
+
+        * {
+          fill: ${designTokens.colorNeutral60};
+        }
+      }
     `;
-    switch (theme) {
-      case 'info':
-        return [
-          baseDisabledStyles,
-          css`
-            color: ${designTokens.colorNeutral60};
-          `,
-          isActive && `color: ${designTokens.colorInfo};`,
-        ];
-      default:
-        return baseDisabledStyles;
-    }
   }
   if (isActive) {
     const baseActiveStyles = [
       css`
-        box-shadow: ${designTokens.shadow9};
+        border: ${designTokens.borderForButtonAsSecondaryWhenActive};
+        box-shadow: ${designTokens.shadowForButtonWhenActive};
         background-color: ${designTokens.colorSurface};
         &:focus,
         &:hover {
-          background-color: ${designTokens.colorNeutral95};
+          background-color: ${designTokens.backgroundColorForButtonWhenActive};
         }
       `,
-      isDisabled &&
-        css`
-          box-shadow: 0 0 0 1px ${designTokens.colorNeutral} inset;
-          background-color: ${designTokens.colorAccent98};
-          color: ${designTokens.colorNeutral60};
-        `,
     ];
     switch (theme) {
       case 'info':
@@ -60,11 +52,16 @@ const getStateStyles = (
   return css`
     &:focus,
     &:hover {
-      box-shadow: ${designTokens.shadow8};
+      border: ${designTokens.borderForButtonAsSecondaryWhenHovered};
+      box-shadow: ${designTokens.shadowForButtonWhenFocused};
+    }
+    &:hover {
+      background-color: ${designTokens.backgroundColorForButtonWhenHovered};
     }
     &:active {
-      box-shadow: ${designTokens.shadow9};
-      background-color: ${designTokens.colorSurface};
+      border: ${designTokens.borderForButtonAsSecondaryWhenActive};
+      box-shadow: ${designTokens.shadowForButtonWhenActive};
+      background-color: ${designTokens.backgroundColorForButtonWhenActive};
     }
   `;
 };
@@ -94,11 +91,12 @@ const getThemeStyles = (theme: Theme) => {
       return css`
         &:focus,
         &:hover {
-          box-shadow: ${designTokens.shadow8};
+          box-shadow: ${designTokens.shadowForButtonWhenFocused};
+          background-color: ${designTokens.backgroundColorForButtonWhenHovered};
         }
         &:active {
-          box-shadow: ${designTokens.shadow9};
-          background-color: ${designTokens.colorSurface};
+          box-shadow: ${designTokens.shadowForButtonWhenActive};
+          background-color: ${designTokens.backgroundColorForButtonWhenActive};
         }
       `;
     }
