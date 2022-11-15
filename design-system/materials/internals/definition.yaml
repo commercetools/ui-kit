@@ -90,9 +90,13 @@ choiceGroupsByTheme:
         font-size-40: '1.125rem'
         font-size-50: '1.25rem'
         font-size-60: '1.5rem'
-        # These font sizes will be removed when we replace the default theme.
-        font-size-15: '0.813rem'
-        font-size-70: '2rem'
+        # These font sizes are in rems based on a root font-size of 13px and they will be removed when we replace the default theme.
+        font-size-15: '0.923rem'
+        font-size-35: '1.077rem'
+        font-size-45: '1.231rem'
+        font-size-63: '1.538rem'
+        font-size-66: '1.846rem'
+        font-size-70: '2.462rem'
 
     fontWeights:
       label: Font weights
@@ -114,12 +118,13 @@ choiceGroupsByTheme:
         line-height-40: '1.625rem'
         line-height-50: '1.75rem'
         line-height-60: '2.125rem'
-        # These line-heights will be removed when we replace the default theme.
-        line-height-3: '1.063rem'
-        line-height-6: '1.125rem'
-        line-height-45: '1.688rem'
-        line-height-55: '2.063rem'
-        line-height-70: '2.688rem'
+        # These line heights are in rems based on a root font-size of 13px and they will be removed when we replace the default theme.
+        line-height-15: '1.308rem'
+        line-height-25: '1.385rem'
+        line-height-55: '2.077rem'
+        line-height-65: '2.538rem'
+        line-height-70: '3.308rem'
+
     shadows:
       label: Shadows
       prefix: shadow
@@ -467,28 +472,25 @@ decisionGroupsByTheme:
           choice: font-size-70
         font-size-for-text-as-h2:
           description: ''
-          choice: font-size-60
+          choice: font-size-66
         font-size-for-text-as-h3:
           description: ''
-          choice: font-size-50
+          choice: font-size-63
         font-size-for-text-as-h4:
           description: ''
-          choice: font-size-30
+          choice: font-size-45
         font-size-for-text-as-h5:
           description: ''
-          choice: font-size-20
+          choice: font-size-35
         font-size-for-text-as-body:
           description: ''
-          choice: font-size-15
+          choice: font-size-30
         font-size-for-text-as-detail:
           description: ''
-          choice: font-size-10
+          choice: font-size-15
         font-size-for-body:
           description: ''
           choice: '13px'
-        font-size-for-link:
-          description: ''
-          choice: font-size-30
 
     lineHeights:
       label: Line Heights
@@ -499,22 +501,22 @@ decisionGroupsByTheme:
           choice: line-height-70
         line-height-for-text-as-h2:
           description: ''
-          choice: line-height-55
+          choice: line-height-65
         line-height-for-text-as-h3:
           description: ''
-          choice: line-height-45
+          choice: line-height-55
         line-height-for-text-as-h4:
           description: ''
-          choice: line-height-6
+          choice: line-height-25
         line-height-for-text-as-h5:
           description: ''
-          choice: line-height-6
+          choice: line-height-25
         line-height-for-text-as-body:
           description: ''
-          choice: line-height-6
+          choice: line-height-25
         line-height-for-text-as-detail:
           description: ''
-          choice: line-height-3
+          choice: line-height-15
 
     fontWeights:
       label: Font Weights
