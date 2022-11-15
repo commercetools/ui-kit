@@ -491,6 +491,9 @@ decisionGroupsByTheme:
         font-size-for-body:
           description: ''
           choice: '13px'
+        font-size-for-link:
+          description: ''
+          choice: font-size-30
 
     lineHeights:
       label: Line Heights
