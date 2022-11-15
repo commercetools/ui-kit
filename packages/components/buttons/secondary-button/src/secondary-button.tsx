@@ -115,20 +115,21 @@ export const SecondaryButton = <
       display: flex;
       align-items: center;
       padding: 0 ${designTokens.spacingM};
-      height: ${designTokens.bigButtonHeight};
+      height: ${designTokens.heightForButtonAsBig};
     `,
     css`
       display: inline-flex;
       background-color: ${designTokens.colorSurface};
-      border-radius: ${designTokens.borderRadius6};
-      box-shadow: ${designTokens.shadow7};
+      border: ${designTokens.borderForButtonAsSecondary};
+      border-radius: ${designTokens.borderRadiusForButtonAsBig};
+      box-shadow: ${designTokens.shadowForButton};
       color: ${designTokens.colorSolid};
       font-size: ${designTokens.fontSizeDefault};
       transition: background-color ${designTokens.transitionLinear80Ms},
         box-shadow ${designTokens.transitionEaseinout150Ms};
     `,
-    getStateStyles(props.isDisabled, isActive, props.theme),
     getThemeStyles(props.theme),
+    getStateStyles(props.isDisabled, isActive, props.theme),
   ];
 
   return (

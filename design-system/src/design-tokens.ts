@@ -16,6 +16,8 @@ export const themes = {
     colorAccent95: 'hsl(195, 35.2941176471%, 95%)',
     colorAccent98: 'hsl(195, 35.2941176471%, 98%)',
     colorNeutral: '#ccc',
+    colorNeutral05: 'hsl(0deg 0% 80% / 5%)',
+    colorNeutral10: 'hsl(0deg 0% 80% / 10%)',
     colorNeutral60: 'hsl(0, 0%, 60%)',
     colorNeutral90: 'hsl(0, 0%, 90%)',
     colorNeutral95: 'hsl(0, 0%, 95%)',
@@ -23,10 +25,13 @@ export const themes = {
     colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
     colorInfo95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
     colorWarning: '#f16d0e',
+    colorWarning25: 'hsl(25.110132158590307, 89.0196078431%, 25%)',
     colorWarning95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     colorError: '#e60050',
     colorError95: 'hsl(339.1304347826087, 100%, 95%)',
     colorSolid: '#1a1a1a',
+    colorSolid05: 'hsl(0deg 0% 10% / 5%)',
+    colorSolid10: 'hsl(0deg 0% 10% / 10%)',
     colorSurface: '#fff',
     borderRadius1: '1px',
     borderRadius2: '2px',
@@ -35,7 +40,17 @@ export const themes = {
     borderRadius20: '20px',
     fontFamily: "'Open Sans', sans-serif",
     fontSizeM: '1rem',
+    fontSize10: '0.75rem',
+    fontSize20: '0.875rem',
     fontSize30: '1rem',
+    fontSize40: '1.125rem',
+    fontSize50: '1.25rem',
+    fontSize60: '1.5rem',
+    fontWeight400: '400',
+    fontWeight500: '500',
+    fontWeight600: '600',
+    fontWeight700: '700',
+    shadow0: 'none',
     shadow1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     shadow2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
     shadow3: '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)',
@@ -87,6 +102,19 @@ export const themes = {
     breakPointBiggerdesktop: '1280px',
     breakPointGiantdesktop: '1680px',
     breakPointJumbodesktop: '1920px',
+    backgroundColorForButtonWhenActive: '#fff',
+    backgroundColorForButtonWhenHovered: '#fff',
+    backgroundColorForButtonAsPrimaryWhenActive: '#00b39e',
+    backgroundColorForButtonAsPrimaryWhenHovered:
+      'hsl(172.9608938547486, 100%, 25%)',
+    backgroundColorForButtonAsIconAsPrimaryWhenActive: '#00b39e',
+    backgroundColorForButtonAsIconAsPrimaryWhenHovered: '#00b39e',
+    backgroundColorForButtonAsIconAsInfoWhenActive: '#078cdf',
+    backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
+    backgroundColorForButtonAsUrgentWhenActive: '#f16d0e',
+    backgroundColorForButtonAsUrgentWhenHovered:
+      'hsl(25.110132158590307, 89.0196078431%, 25%)',
+    backgroundColorForButtonWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForInput: '#fff',
     backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInputWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
@@ -94,6 +122,10 @@ export const themes = {
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
+    borderForButtonAsSecondary: 'none',
+    borderForButtonAsSecondaryWhenHovered: 'none',
+    borderForButtonAsSecondaryWhenActive: 'none',
+    borderForCardWhenRaised: 'none',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -103,8 +135,18 @@ export const themes = {
     borderColorForTag: 'hsl(0, 0%, 60%)',
     borderColorForTagWarning: '#f16d0e',
     borderColorForTagWhenFocused: '#00b39e',
+    borderColorForButtonAsIcon: '#fff',
+    borderColorForButtonAsIconAsInfo: '#078cdf',
+    borderColorForButtonAsIconAsPrimary: '#00b39e',
+    borderColorForButtonAsIconWhenDisabled: '#ccc',
+    borderRadiusForButtonAsBig: '6px',
+    borderRadiusForButtonAsSmall: '4px',
+    borderRadiusForButtonAsIconAsBig: '6px',
+    borderRadiusForButtonAsIconAsMedium: '4px',
+    borderRadiusForButtonAsIconAsSmall: '2px',
     borderRadiusForInput: '6px',
     borderRadiusForTag: '2px',
+    borderRadiusForCard: '6px',
     fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
@@ -114,10 +156,28 @@ export const themes = {
     fontColorForTag: '#1a1a1a',
     fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTextWhenInverted: '#fff',
+    heightForButtonAsBig: '32px',
+    heightForButtonAsSmall: '24px',
+    heightForButtonAsIconAsBig: '32px',
+    heightForButtonAsIconAsMedium: '24px',
+    heightForButtonAsIconAsSmall: '16px',
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
+    fontSizeForButton: '1rem',
     fontSizeForInput: '1rem',
     fontSizeForLink: '1rem',
+    fontWeightForButton: '400',
+    shadowForButton:
+      '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+    shadowForButtonWhenFocused:
+      '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
+    shadowForButtonWhenHovered:
+      '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
+    shadowForButtonWhenActive:
+      'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
+    shadowForButtonWhenDisabled: '0 0 0 1px var(--color-neutral) inset',
     shadowBoxTagWhenHovered:
+      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+    shadowForCardWhenRaised:
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     bigButtonHeight: '32px',
     smallButtonHeight: '24px',
@@ -131,13 +191,50 @@ export const themes = {
     standardInputHeight: '32px',
   },
   test: {
-    colorPrimary: '#f78d26',
-    colorSolid: '#fff',
-    colorSurface: '#1a1a1a',
+    colorPrimary: '#00b39e',
     fontFamily: "'Inter', system-ui",
+    backgroundColorForButtonWhenActive: 'hsl(0deg 0% 10% / 10%)',
+    backgroundColorForButtonWhenHovered: 'hsl(0deg 0% 10% / 5%)',
+    backgroundColorForButtonAsPrimaryWhenActive: '#15A390',
+    backgroundColorForButtonAsPrimaryWhenHovered: '#17AB97',
+    backgroundColorForButtonAsIconAsPrimaryWhenActive: '#15A390',
+    backgroundColorForButtonAsIconAsPrimaryWhenHovered: '#00b39e',
+    backgroundColorForButtonAsIconAsInfoWhenActive: '#057FCC',
+    backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
+    backgroundColorForButtonAsUrgentWhenActive: '#DC630A',
+    backgroundColorForButtonAsUrgentWhenHovered: '#E7680D',
+    backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForTagWarning: 'hsl(0, 0%, 95%)',
+    borderForButtonAsSecondary: '1px solid var(--color-neutral)',
+    borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
+    borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
+    borderForCardWhenRaised: '1px solid var(--color-neutral-90)',
+    borderColorForButtonAsIcon: '#ccc',
+    borderColorForButtonAsIconAsInfo: '#ccc',
+    borderColorForButtonAsIconAsPrimary: '#ccc',
+    borderColorForButtonAsIconWhenDisabled: '#fff',
+    borderColorForCardWhenRaised: 'hsl(0, 0%, 90%)',
+    borderRadiusForButtonAsBig: '4px',
+    borderRadiusForButtonAsSmall: '4px',
+    borderRadiusForButtonAsIconAsBig: '4px',
+    borderRadiusForButtonAsIconAsMedium: '4px',
+    borderRadiusForButtonAsIconAsSmall: '2px',
+    borderRadiusForCard: '4px',
+    fontSizeForButton: '1.125rem',
     fontSizeForLink: 'inherit',
+    fontWeightForButton: '500',
+    heightForButtonAsBig: '40px',
+    heightForButtonAsSmall: '32px',
+    heightForButtonAsIconAsBig: '40px',
+    heightForButtonAsIconAsMedium: '32px',
+    heightForButtonAsIconAsSmall: '16px',
+    shadowForButton: 'none',
+    shadowForButtonWhenFocused: 'none',
+    shadowForButtonWhenHovered: 'none',
+    shadowForButtonWhenActive: 'none',
+    shadowForButtonWhenDisabled: 'none',
+    shadowForCardWhenRaised: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
   },
 } as const;
 
@@ -153,6 +250,8 @@ const designTokens = {
   colorAccent95: 'var(--color-accent-95, hsl(195, 35.2941176471%, 95%))',
   colorAccent98: 'var(--color-accent-98, hsl(195, 35.2941176471%, 98%))',
   colorNeutral: 'var(--color-neutral, #ccc)',
+  colorNeutral05: 'var(--color-neutral-05, hsl(0deg 0% 80% / 5%))',
+  colorNeutral10: 'var(--color-neutral-10, hsl(0deg 0% 80% / 10%))',
   colorNeutral60: 'var(--color-neutral-60, hsl(0, 0%, 60%))',
   colorNeutral90: 'var(--color-neutral-90, hsl(0, 0%, 90%))',
   colorNeutral95: 'var(--color-neutral-95, hsl(0, 0%, 95%))',
@@ -162,11 +261,15 @@ const designTokens = {
   colorInfo95:
     'var(--color-info-95, hsl(203.05555555555554, 93.9130434783%, 95%))',
   colorWarning: 'var(--color-warning, #f16d0e)',
+  colorWarning25:
+    'var(--color-warning-25, hsl(25.110132158590307, 89.0196078431%, 25%))',
   colorWarning95:
     'var(--color-warning-95, hsl(25.110132158590307, 89.0196078431%, 95%))',
   colorError: 'var(--color-error, #e60050)',
   colorError95: 'var(--color-error-95, hsl(339.1304347826087, 100%, 95%))',
   colorSolid: 'var(--color-solid, #1a1a1a)',
+  colorSolid05: 'var(--color-solid-05, hsl(0deg 0% 10% / 5%))',
+  colorSolid10: 'var(--color-solid-10, hsl(0deg 0% 10% / 10%))',
   colorSurface: 'var(--color-surface, #fff)',
   borderRadius1: 'var(--border-radius-1, 1px)',
   borderRadius2: 'var(--border-radius-2, 2px)',
@@ -175,7 +278,17 @@ const designTokens = {
   borderRadius20: 'var(--border-radius-20, 20px)',
   fontFamily: "var(--font-family, 'Open Sans', sans-serif)",
   fontSizeM: 'var(--font-size-m, 1rem)',
+  fontSize10: 'var(--font-size-10, 0.75rem)',
+  fontSize20: 'var(--font-size-20, 0.875rem)',
   fontSize30: 'var(--font-size-30, 1rem)',
+  fontSize40: 'var(--font-size-40, 1.125rem)',
+  fontSize50: 'var(--font-size-50, 1.25rem)',
+  fontSize60: 'var(--font-size-60, 1.5rem)',
+  fontWeight400: 'var(--font-weight-400, 400)',
+  fontWeight500: 'var(--font-weight-500, 500)',
+  fontWeight600: 'var(--font-weight-600, 600)',
+  fontWeight700: 'var(--font-weight-700, 700)',
+  shadow0: 'var(--shadow-0, none)',
   shadow1:
     'var(--shadow-1, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   shadow2:
@@ -234,6 +347,28 @@ const designTokens = {
   breakPointBiggerdesktop: 'var(--break-point-biggerdesktop, 1280px)',
   breakPointGiantdesktop: 'var(--break-point-giantdesktop, 1680px)',
   breakPointJumbodesktop: 'var(--break-point-jumbodesktop, 1920px)',
+  backgroundColorForButtonWhenActive:
+    'var(--background-color-for-button-when-active, #fff)',
+  backgroundColorForButtonWhenHovered:
+    'var(--background-color-for-button-when-hovered, #fff)',
+  backgroundColorForButtonAsPrimaryWhenActive:
+    'var(--background-color-for-button-as-primary-when-active, #00b39e)',
+  backgroundColorForButtonAsPrimaryWhenHovered:
+    'var(--background-color-for-button-as-primary-when-hovered, hsl(172.9608938547486, 100%, 25%))',
+  backgroundColorForButtonAsIconAsPrimaryWhenActive:
+    'var(--background-color-for-button-as-icon-as-primary-when-active, #00b39e)',
+  backgroundColorForButtonAsIconAsPrimaryWhenHovered:
+    'var(--background-color-for-button-as-icon-as-primary-when-hovered, #00b39e)',
+  backgroundColorForButtonAsIconAsInfoWhenActive:
+    'var(--background-color-for-button-as-icon-as-info-when-active, #078cdf)',
+  backgroundColorForButtonAsIconAsInfoWhenHovered:
+    'var(--background-color-for-button-as-icon-as-info-when-hovered, #078cdf)',
+  backgroundColorForButtonAsUrgentWhenActive:
+    'var(--background-color-for-button-as-urgent-when-active, #f16d0e)',
+  backgroundColorForButtonAsUrgentWhenHovered:
+    'var(--background-color-for-button-as-urgent-when-hovered, hsl(25.110132158590307, 89.0196078431%, 25%))',
+  backgroundColorForButtonWhenDisabled:
+    'var(--background-color-for-button-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForInput: 'var(--background-color-for-input, #fff)',
   backgroundColorForInputWhenSelected:
     'var(--background-color-for-input-when-selected, hsl(195, 35.2941176471%, 95%))',
@@ -244,6 +379,12 @@ const designTokens = {
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
+  borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
+  borderForButtonAsSecondaryWhenHovered:
+    'var(--border-for-button-as-secondary-when-hovered, none)',
+  borderForButtonAsSecondaryWhenActive:
+    'var(--border-for-button-as-secondary-when-active, none)',
+  borderForCardWhenRaised: 'var(--border-for-card-when-raised, none)',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -259,8 +400,24 @@ const designTokens = {
   borderColorForTagWarning: 'var(--border-color-for-tag-warning, #f16d0e)',
   borderColorForTagWhenFocused:
     'var(--border-color-for-tag-when-focused, #00b39e)',
+  borderColorForButtonAsIcon: 'var(--border-color-for-button-as-icon, #fff)',
+  borderColorForButtonAsIconAsInfo:
+    'var(--border-color-for-button-as-icon-as-info, #078cdf)',
+  borderColorForButtonAsIconAsPrimary:
+    'var(--border-color-for-button-as-icon-as-primary, #00b39e)',
+  borderColorForButtonAsIconWhenDisabled:
+    'var(--border-color-for-button-as-icon-when-disabled, #ccc)',
+  borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
+  borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
+  borderRadiusForButtonAsIconAsBig:
+    'var(--border-radius-for-button-as-icon-as-big, 6px)',
+  borderRadiusForButtonAsIconAsMedium:
+    'var(--border-radius-for-button-as-icon-as-medium, 4px)',
+  borderRadiusForButtonAsIconAsSmall:
+    'var(--border-radius-for-button-as-icon-as-small, 2px)',
   borderRadiusForInput: 'var(--border-radius-for-input, 6px)',
   borderRadiusForTag: 'var(--border-radius-for-tag, 2px)',
+  borderRadiusForCard: 'var(--border-radius-for-card, 6px)',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
@@ -275,12 +432,33 @@ const designTokens = {
     'var(--font-color-for-tag-when-disabled, hsl(0, 0%, 60%))',
   fontColorForTextWhenInverted:
     'var(--font-color-for-text-when-inverted, #fff)',
+  heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
+  heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
+  heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
+  heightForButtonAsIconAsMedium:
+    'var(--height-for-button-as-icon-as-medium, 24px)',
+  heightForButtonAsIconAsSmall:
+    'var(--height-for-button-as-icon-as-small, 16px)',
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
+  fontSizeForButton: 'var(--font-size-for-button, 1rem)',
   fontSizeForInput: 'var(--font-size-for-input, 1rem)',
   fontSizeForLink: 'var(--font-size-for-link, 1rem)',
+  fontWeightForButton: 'var(--font-weight-for-button, 400)',
+  shadowForButton:
+    'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+  shadowForButtonWhenFocused:
+    'var(--shadow-for-button-when-focused, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
+  shadowForButtonWhenHovered:
+    'var(--shadow-for-button-when-hovered, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
+  shadowForButtonWhenActive:
+    'var(--shadow-for-button-when-active, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
+  shadowForButtonWhenDisabled:
+    'var(--shadow-for-button-when-disabled, 0 0 0 1px var(--color-neutral) inset)',
   shadowBoxTagWhenHovered:
     'var(--shadow-box-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
+  shadowForCardWhenRaised:
+    'var(--shadow-for-card-when-raised, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',
   sizeHeightInput: 'var(--size-height-input, 32px)',
