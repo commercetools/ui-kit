@@ -35,7 +35,7 @@ function transformTokensToCssVarsValues(
     borderRadius4: 'var(--border-radius-4, 4px)',
   }
 */
-function transformTokensToCssVarsDefinitions(
+function transformTokensToCssVarsReferences(
   tokens: Record<string, string>,
   { includeDefaultValue } = { includeDefaultValue: true }
 ): Record<string, string> {
@@ -47,4 +47,4 @@ function transformTokensToCssVarsDefinitions(
   );
 }
 
-export { transformTokensToCssVarsValues, transformTokensToCssVarsDefinitions };
+export { transformTokensToCssVarsValues, transformTokensToCssVarsReferences };

@@ -1,6 +1,6 @@
 import {
   transformTokensToCssVarsValues,
-  transformTokensToCssVarsDefinitions,
+  transformTokensToCssVarsReferences,
 } from './utils';
 
 describe('Utils', () => {
@@ -26,10 +26,10 @@ describe('Utils', () => {
     });
   });
 
-  describe('transformTokensToCssVarsDefinitions', () => {
+  describe('transformTokensToCssVarsReferences', () => {
     describe('with includeDefaultValue default value (true)', () => {
       it('should transform tokens to css var definitions', () => {
-        const transformed = transformTokensToCssVarsDefinitions(tokens);
+        const transformed = transformTokensToCssVarsReferences(tokens);
 
         expect(transformed).toMatchInlineSnapshot(`
           {
@@ -44,7 +44,7 @@ describe('Utils', () => {
 
     describe('with includeDefaultValue default value set to false', () => {
       it('should transform tokens to css var definitions', () => {
-        const transformed = transformTokensToCssVarsDefinitions(tokens, {
+        const transformed = transformTokensToCssVarsReferences(tokens, {
           includeDefaultValue: false,
         });
 
