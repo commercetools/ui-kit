@@ -83,7 +83,7 @@ const getElementLineHeight = (elementType?: string) => {
     case 'h5':
       return designTokens.lineHeightForTextAsH5;
     default:
-      return '1.625rem';
+      return designTokens.lineHeight40;
   }
 };
 
@@ -100,7 +100,7 @@ const getElementFontWeight = (elementType?: string) => {
     case 'h5':
       return designTokens.fontWeightForTextAsH5;
     default:
-      return '400';
+      return 'normal';
   }
 };
 
