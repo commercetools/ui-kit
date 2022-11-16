@@ -79,8 +79,6 @@ const getChoiceValue = (choiceName, theme) => {
     choiceName
   );
 
-  if (!defaultChoice)
-    throw new Error(`Tried to get value of non-existant choice ${choiceName}`);
   return defaultChoice
     ? themeChoice?.[choiceName] ?? defaultChoice[choiceName]
     : undefined;
@@ -518,6 +516,20 @@ class Story extends Component {
               }}
             >
               Component Groups
+            </a>
+          </li>
+          <li>
+            <a
+              href="#variants"
+              onClick={(event) => {
+                event.preventDefault();
+                window.scrollTo(
+                  0,
+                  document.getElementById('variants').offsetTop
+                );
+              }}
+            >
+              Variants
             </a>
           </li>
           <li>
