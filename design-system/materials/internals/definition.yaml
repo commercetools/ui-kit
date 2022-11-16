@@ -22,7 +22,12 @@
 # files in different format (css, json, js, ...).
 #
 # The names of decisions in this file need to follow this format:
+#   <attribute>-for-<component-group>
+#   <attribute>-for-<component-group>-as-<variant>
 #   <attribute>-for-<component-group>-when-<state>-
+#   <attribute>-for-<component-group>-as-<variant>-when-<state>
+#   <attribute>-for-<component-group>-as-<variant>-as-<variant>-
+#   <attribute>-for-<component-group>-as-<variant>-as-<variant>-when-<state>-
 
 choiceGroupsByTheme:
   default:
@@ -44,6 +49,7 @@ choiceGroupsByTheme:
         color-neutral: '#ccc'
         color-neutral-05: 'hsl(0deg 0% 80% / 5%)'
         color-neutral-10: 'hsl(0deg 0% 80% / 10%)'
+        color-neutral-40: 'hsl(0, 0%, 40%)'
         color-neutral-60: 'hsl(0, 0%, 60%)'
         color-neutral-90: 'hsl(0, 0%, 90%)'
         color-neutral-95: 'hsl(0, 0%, 95%)'
@@ -78,21 +84,41 @@ choiceGroupsByTheme:
       label: Font sizes
       prefix: font-size
       choices:
-        font-size-m: '1rem'
         font-size-10: '0.75rem'
         font-size-20: '0.875rem'
         font-size-30: '1rem'
         font-size-40: '1.125rem'
         font-size-50: '1.25rem'
         font-size-60: '1.5rem'
-    fontWeight:
-      label: Font weight
+        # These font sizes are in rems based on a root font-size of 13px and they will be removed when we replace the default theme.
+        font-size-15: '0.923rem'
+        font-size-35: '1.077rem'
+        font-size-45: '1.231rem'
+        font-size-63: '1.538rem'
+        font-size-66: '1.846rem'
+        font-size-70: '2.462rem'
+
+    fontWeights:
+      label: Font weights
       prefix: font-weight
       choices:
+        font-weight-300: '300'
         font-weight-400: '400'
         font-weight-500: '500'
         font-weight-600: '600'
         font-weight-700: '700'
+
+    lineHeights:
+      label: Line heights
+      prefix: line-height
+      choices:
+        line-height-10: '1.25rem'
+        line-height-20: '1.375rem'
+        line-height-30: '1.5rem'
+        line-height-40: '1.625rem'
+        line-height-50: '1.75rem'
+        line-height-60: '2.125rem'
+
     shadows:
       label: Shadows
       prefix: shadow
@@ -196,6 +222,20 @@ states:
     description: 'When the element is raised'
 
 variants:
+  h1:
+    description: 'H1 text element'
+  h2:
+    description: 'H2 text element'
+  h3:
+    description: 'H3 text element'
+  h4:
+    description: 'H4 text element'
+  h5:
+    description: 'H5 text element'
+  body:
+    description: 'Body text element'
+  detail:
+    description: 'Detail text element'
   icon:
     description: 'Icon'
   small:
@@ -224,6 +264,8 @@ componentGroups:
     description: 'Tag elements with type warning'
   text:
     description: 'Text elements'
+  body:
+    description: 'Document body element'
   card:
     description: 'Card element'
   link:
@@ -418,15 +460,86 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-input:
           description: ''
-          choice: font-size-m
+          choice: font-size-30
+        font-size-for-text-as-h1:
+          description: ''
+          choice: font-size-70
+        font-size-for-text-as-h2:
+          description: ''
+          choice: font-size-66
+        font-size-for-text-as-h3:
+          description: ''
+          choice: font-size-63
+        font-size-for-text-as-h4:
+          description: ''
+          choice: font-size-45
+        font-size-for-text-as-h5:
+          description: ''
+          choice: font-size-35
+        font-size-for-text-as-body:
+          description: ''
+          choice: font-size-30
+        font-size-for-text-as-detail:
+          description: ''
+          choice: font-size-15
+        font-size-for-body:
+          description: ''
+          choice: '13px'
         font-size-for-link:
           description: ''
           choice: font-size-30
 
-    fontWeight:
+    lineHeights:
+      label: Line Heights
+      prefix: line-height
+      decisions:
+        line-height-for-text-as-h1:
+          description: ''
+          choice: 'inherit'
+        line-height-for-text-as-h2:
+          description: ''
+          choice: 'inherit'
+        line-height-for-text-as-h3:
+          description: ''
+          choice: 'inherit'
+        line-height-for-text-as-h4:
+          description: ''
+          choice: 'inherit'
+        line-height-for-text-as-h5:
+          description: ''
+          choice: 'inherit'
+        line-height-for-text-as-body:
+          description: ''
+          choice: 'inherit'
+        line-height-for-text-as-detail:
+          description: ''
+          choice: 'inherit'
+
+    fontWeights:
       label: Font Weights
       prefix: font-weight
       decisions:
+        font-weight-for-text-as-h1:
+          description: ''
+          choice: font-weight-300
+        font-weight-for-text-as-h2:
+          description: ''
+          choice: font-weight-300
+        font-weight-for-text-as-h3:
+          description: ''
+          choice: font-weight-300
+        font-weight-for-text-as-h4:
+          description: ''
+          choice: font-weight-400
+        font-weight-for-text-as-h5:
+          description: ''
+          choice: font-weight-400
+        font-weight-for-text-as-body:
+          description: ''
+          choice: font-weight-400
+        font-weight-for-text-as-detail:
+          description: ''
+          choice: font-weight-400
         font-weight-for-button:
           choice: font-weight-400
 
@@ -534,6 +647,33 @@ decisionGroupsByTheme:
       label: Font Sizes
       prefix: font-size
       decisions:
+        font-size-for-input:
+          description: ''
+          choice: font-size-30
+        font-size-for-text-as-h1:
+          description: ''
+          choice: font-size-50
+        font-size-for-text-as-h2:
+          description: ''
+          choice: font-size-50
+        font-size-for-text-as-h3:
+          description: ''
+          choice: font-size-40
+        font-size-for-text-as-h4:
+          description: ''
+          choice: font-size-30
+        font-size-for-text-as-h5:
+          description: ''
+          choice: font-size-30
+        font-size-for-text-as-body:
+          description: ''
+          choice: font-size-30
+        font-size-for-text-as-detail:
+          description: ''
+          choice: font-size-20
+        font-size-for-body:
+          description: ''
+          choice: '16px'
         font-size-for-button:
           description: ''
           choice: font-size-40
@@ -541,10 +681,57 @@ decisionGroupsByTheme:
           description: ''
           choice: 'inherit'
 
-    fontWeight:
+    lineHeights:
+      label: Line Heights
+      prefix: line-height
+      decisions:
+        line-height-for-text-as-h1:
+          description: ''
+          choice: line-height-50
+        line-height-for-text-as-h2:
+          description: ''
+          choice: line-height-50
+        line-height-for-text-as-h3:
+          description: ''
+          choice: line-height-30
+        line-height-for-text-as-h4:
+          description: ''
+          choice: line-height-20
+        line-height-for-text-as-h5:
+          description: ''
+          choice: line-height-20
+        line-height-for-text-as-body:
+          description: ''
+          choice: line-height-40
+        line-height-for-text-as-detail:
+          description: ''
+          choice: line-height-20
+
+    fontWeights:
       label: Font Weights
       prefix: font-weight
       decisions:
+        font-weight-for-text-as-h1:
+          description: ''
+          choice: font-weight-500
+        font-weight-for-text-as-h2:
+          description: ''
+          choice: font-weight-500
+        font-weight-for-text-as-h3:
+          description: ''
+          choice: font-weight-500
+        font-weight-for-text-as-h4:
+          description: ''
+          choice: font-weight-500
+        font-weight-for-text-as-h5:
+          description: ''
+          choice: font-weight-500
+        font-weight-for-text-as-body:
+          description: ''
+          choice: font-weight-400
+        font-weight-for-text-as-detail:
+          description: ''
+          choice: font-weight-400
         font-weight-for-button:
           choice: font-weight-500
 
@@ -592,6 +779,7 @@ decisionGroupsByTheme:
 # break. Upgrading those parts is not something the ui-kit teams can do on their
 # own so we kept the old tokens around even though proper shadow tokens exist).
 plainTokens:
+  font-size-m: '1rem'
   big-button-height: 32px
   small-button-height: 24px
   size-height-input: 32px
