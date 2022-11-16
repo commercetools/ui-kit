@@ -118,12 +118,6 @@ choiceGroupsByTheme:
         line-height-40: '1.625rem'
         line-height-50: '1.75rem'
         line-height-60: '2.125rem'
-        # These line heights are in rems based on a root font-size of 13px and they will be removed when we replace the default theme.
-        line-height-15: '1.308rem'
-        line-height-25: '1.385rem'
-        line-height-55: '2.077rem'
-        line-height-65: '2.538rem'
-        line-height-70: '3.308rem'
 
     shadows:
       label: Shadows
@@ -501,25 +495,25 @@ decisionGroupsByTheme:
       decisions:
         line-height-for-text-as-h1:
           description: ''
-          choice: line-height-70
+          choice: 'normal'
         line-height-for-text-as-h2:
           description: ''
-          choice: line-height-65
+          choice: 'normal'
         line-height-for-text-as-h3:
           description: ''
-          choice: line-height-55
+          choice: 'normal'
         line-height-for-text-as-h4:
           description: ''
-          choice: line-height-25
+          choice: 'normal'
         line-height-for-text-as-h5:
           description: ''
-          choice: line-height-25
+          choice: 'normal'
         line-height-for-text-as-body:
           description: ''
-          choice: line-height-25
+          choice: 'normal'
         line-height-for-text-as-detail:
           description: ''
-          choice: line-height-15
+          choice: 'normal'
 
     fontWeights:
       label: Font Weights

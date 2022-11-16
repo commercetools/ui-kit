@@ -130,6 +130,7 @@ export const subheadlineStyles = (props: TSubheadlineProps) => css`
   ${getBaseStyles()}
   margin: 0;
   font-size: ${getElementFontSize(props.as)};
+  line-height: ${getElementLineHeight(props.as)};
   font-weight: ${getElementFontWeight(props.as)};
   ${props.truncate && truncate}
   ${props.isBold && bold}
