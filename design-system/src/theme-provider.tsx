@@ -1,18 +1,13 @@
 import { useLayoutEffect, useState, useRef, useEffect } from 'react';
-import kebabCase from 'lodash/kebabCase';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import isEqual from 'lodash/isEqual';
 import { themes } from './design-tokens';
+import { transformTokensToCssVarsValues } from './utils';
 
 const allThemesNames = Object.keys(themes);
 
 type ThemeName = keyof typeof themes;
-
-const toVars = (obj: Record<string, string>) =>
-  Object.fromEntries(
-    Object.entries(obj).map(([key, value]) => [`--${kebabCase(key)}`, value])
-  );
 
 // used to cover SSR builds (for instance in Gatsby)
 const isBrowser = typeof window !== 'undefined';
@@ -45,7 +40,7 @@ const applyTheme = ({
     );
   }
 
-  const vars = toVars(
+  const vars = transformTokensToCssVarsValues(
     merge(
       {},
       themes.default,
