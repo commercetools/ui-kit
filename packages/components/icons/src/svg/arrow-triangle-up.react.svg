@@ -1,3 +1,16 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M9.42501 14C8.97501 14 8.66268 13.7957 8.48801 13.387C8.31268 12.979 8.38335 12.6167 8.70001 12.3L11.3 9.70002C11.4 9.60002 11.5083 9.52503 11.625 9.47503C11.7417 9.42503 11.8667 9.40002 12 9.40002C12.1333 9.40002 12.2583 9.42503 12.375 9.47503C12.4917 9.52503 12.6 9.60002 12.7 9.70002L15.3 12.3C15.6167 12.6167 15.6873 12.979 15.512 13.387C15.3373 13.7957 15.025 14 14.575 14H9.42501Z" fill="black"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow-triangle-up</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="MC-icon-set" transform="translate(-168.000000, -1032.000000)" fill="#000000">
+            <g id="Directions" transform="translate(24.000000, 888.000000)">
+                <g id="Arrow-Triangle-Up" transform="translate(144.000000, 144.000000)">
+                    <path d="M12 4l9 15H3" />
+                </g>
+            </g>
+        </g>
+    </g>
 </svg>
