@@ -79,8 +79,6 @@ const getChoiceValue = (choiceName, theme) => {
     choiceName
   );
 
-  if (!defaultChoice)
-    throw new Error(`Tried to get value of non-existant choice ${choiceName}`);
   return defaultChoice
     ? themeChoice?.[choiceName] ?? defaultChoice[choiceName]
     : undefined;
@@ -113,6 +111,14 @@ const filterStatesGroupValues = (states, searchText) =>
 
 const filterComponentGroupsGroupValues = (componentGroups, searchText) =>
   Object.entries(componentGroups).filter(
+    ([key, state]) =>
+      key.toLowerCase().includes(searchText.toLowerCase()) ||
+      (state.description &&
+        state.description.toLowerCase().includes(searchText.toLowerCase()))
+  );
+
+const filterVariantsGroupValues = (variants, searchText) =>
+  Object.entries(variants).filter(
     ([key, state]) =>
       key.toLowerCase().includes(searchText.toLowerCase()) ||
       (state.description &&
@@ -342,6 +348,41 @@ ComponentGroupsGroup.propTypes = {
   }).isRequired,
 };
 
+const VariantsGroup = (props) => {
+  const variants = filterVariantsGroupValues(props.states, props.searchText);
+  return (
+    <GroupStyle isVisible={variants.length > 0}>
+      <Table>
+        <thead>
+          <tr>
+            <TokenRow>State</TokenRow>
+            <td>Description</td>
+          </tr>
+        </thead>
+        <tbody>
+          {variants.map(([name, variant]) => (
+            <tr key={name}>
+              <td>
+                <Token>{name}</Token>
+                {variant.deprecated && <DeprecationBadge />}
+              </td>
+              <td>{variant.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </GroupStyle>
+  );
+};
+VariantsGroup.displayName = 'VariantsGroup';
+VariantsGroup.propTypes = {
+  searchText: PropTypes.string.isRequired,
+  states: PropTypes.shape({
+    decisions: PropTypes.objectOf(PropTypes.string),
+    description: PropTypes.string,
+  }).isRequired,
+};
+
 const ColorSample = styled.div`
   width: 30px;
   height: 30px;
@@ -478,6 +519,20 @@ class Story extends Component {
             </a>
           </li>
           <li>
+            <a
+              href="#variants"
+              onClick={(event) => {
+                event.preventDefault();
+                window.scrollTo(
+                  0,
+                  document.getElementById('variants').offsetTop
+                );
+              }}
+            >
+              Variants
+            </a>
+          </li>
+          <li>
             {' '}
             <a
               href="#decisions"
@@ -583,6 +638,12 @@ class Story extends Component {
         <h2 id="component-groups">Component Groups</h2>
         <ComponentGroupsGroup
           states={definition.componentGroups}
+          searchText={this.state.searchText}
+        />
+
+        <h2 id="variants">Variants</h2>
+        <VariantsGroup
+          states={definition.variants}
           searchText={this.state.searchText}
         />
 

@@ -109,10 +109,28 @@ _This short [article](https://techpinions.com/snippet-design-is-the-difference-b
 ## Token Structure
 
 Our design tokens aim to be human-readable and easy to comprehend. We settled on
-a format which contains separator words (`for`, `when` and `as`) to help distinguish
+a format which contains separator words (**`for`, `when` and `as`**) to help distinguish
 between the different aspects of a design token.
 
-<img src="https://pbs.twimg.com/media/DsD1XN-XgAAb9lx.jpg" alt="token-structure" width="552" />
+Each token should follow this schema:
+
+1. component group
+2. variant (optional and multiple of them can be applied)
+3. state (optional)
+
+```
+<attribute>-for-<component-group>-as-<variant>-when-<state>
+```
+
+**Examples:**
+
+```
+-- background-color-for-tag
+-- font-color-for-button-when-disabled
+-- font-size-for-text-as-body-as-small
+-- border-for-button-as-secondary-when-hovered
+-- border-radius-for-button-as-icon-as-small-when-disabled
+```
 
 ## Aspects
 

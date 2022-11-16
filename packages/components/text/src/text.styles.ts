@@ -37,7 +37,7 @@ const getTone = (tone: string) => {
     case 'information':
       return `color: ${designTokens.colorInfo};`;
     case 'secondary':
-      return `color: ${designTokens.colorNeutral60};`;
+      return `color: ${designTokens.colorNeutral40};`;
     case 'positive':
       return `color: ${designTokens.colorPrimary25};`;
     case 'primary':
@@ -56,24 +56,60 @@ const getTone = (tone: string) => {
 const getElementFontSize = (elementType?: string) => {
   switch (elementType) {
     case 'h1':
-      return '2.4615rem';
+      return designTokens.fontSizeForTextAsH1;
     case 'h2':
-      return '1.8462rem';
+      return designTokens.fontSizeForTextAsH2;
     case 'h3':
-      return '1.5385rem';
+      return designTokens.fontSizeForTextAsH3;
     case 'h4':
-      return '1.2308rem';
+      return designTokens.fontSizeForTextAsH4;
     case 'h5':
-      return '1.0769rem';
+      return designTokens.fontSizeForTextAsH5;
     default:
-      return '';
+      return '1rem';
+  }
+};
+
+const getElementLineHeight = (elementType?: string) => {
+  switch (elementType) {
+    case 'h1':
+      return designTokens.lineHeightForTextAsH1;
+    case 'h2':
+      return designTokens.lineHeightForTextAsH2;
+    case 'h3':
+      return designTokens.lineHeightForTextAsH3;
+    case 'h4':
+      return designTokens.lineHeightForTextAsH4;
+    case 'h5':
+      return designTokens.lineHeightForTextAsH5;
+    default:
+      return designTokens.lineHeight40;
+  }
+};
+
+const getElementFontWeight = (elementType?: string) => {
+  switch (elementType) {
+    case 'h1':
+      return designTokens.fontWeightForTextAsH1;
+    case 'h2':
+      return designTokens.fontWeightForTextAsH2;
+    case 'h3':
+      return designTokens.fontWeightForTextAsH3;
+    case 'h4':
+      return designTokens.fontWeightForTextAsH4;
+    case 'h5':
+      return designTokens.fontWeightForTextAsH5;
+    default:
+      return 'normal';
   }
 };
 
 export const bodyStyles = (props: TBodyProps) => css`
   ${getBaseStyles()}
   margin: 0;
-  font-size: 1rem;
+  font-size: ${designTokens.fontSizeForTextAsBody};
+  line-height: ${designTokens.lineHeightForTextAsBody};
+  font-weight: ${designTokens.fontWeightForTextAsBody};
   ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
@@ -85,7 +121,8 @@ export const headlineStyles = (props: THeadlineProps) => css`
   ${getBaseStyles()}
   margin: 0;
   font-size: ${getElementFontSize(props.as)};
-  font-weight: 300;
+  line-height: ${getElementLineHeight(props.as)};
+  font-weight: ${getElementFontWeight(props.as)};
   ${props.truncate && truncate}
 `;
 
@@ -93,7 +130,8 @@ export const subheadlineStyles = (props: TSubheadlineProps) => css`
   ${getBaseStyles()}
   margin: 0;
   font-size: ${getElementFontSize(props.as)};
-  font-weight: normal;
+  line-height: ${getElementLineHeight(props.as)};
+  font-weight: ${getElementFontWeight(props.as)};
   ${props.truncate && truncate}
   ${props.isBold && bold}
   ${props.tone && getTone(props.tone)}
@@ -107,7 +145,9 @@ export const wrapStyles = () => css`
 
 export const detailStyles = (props: TDetailProps) => css`
   ${getBaseStyles()}
-  font-size: 0.9231rem;
+  font-size: ${designTokens.fontSizeForTextAsDetail};
+  line-height: ${designTokens.lineHeightForTextAsDetail};
+  font-weight: ${designTokens.fontWeightForTextAsDetail};
   ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
