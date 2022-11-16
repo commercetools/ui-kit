@@ -91,12 +91,12 @@ choiceGroupsByTheme:
         font-size-50: '1.25rem'
         font-size-60: '1.5rem'
         # These font sizes are in rems based on a root font-size of 13px and they will be removed when we replace the default theme.
-        font-size-15: '0.923rem'
-        font-size-35: '1.077rem'
-        font-size-45: '1.231rem'
-        font-size-63: '1.538rem'
-        font-size-66: '1.846rem'
-        font-size-70: '2.462rem'
+        font-size-15: '0.9231rem'
+        font-size-35: '1.0769rem'
+        font-size-45: '1.2308rem'
+        font-size-63: '1.5385rem'
+        font-size-66: '1.8462rem'
+        font-size-70: '2.4615rem'
 
     fontWeights:
       label: Font weights
@@ -676,7 +676,7 @@ decisionGroupsByTheme:
           choice: '16px'
         font-size-for-button:
           description: ''
-          choice: font-size-40
+          choice: font-size-20
         font-size-for-link:
           description: ''
           choice: 'inherit'

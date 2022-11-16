@@ -124,7 +124,6 @@ export const SecondaryButton = <
       border-radius: ${designTokens.borderRadiusForButtonAsBig};
       box-shadow: ${designTokens.shadowForButton};
       color: ${designTokens.colorSolid};
-      font-size: ${designTokens.fontSizeDefault};
       transition: background-color ${designTokens.transitionLinear80Ms},
         box-shadow ${designTokens.transitionEaseinout150Ms};
     `,
