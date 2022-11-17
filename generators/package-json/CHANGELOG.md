@@ -1,5 +1,13 @@
 # @commercetools-local/generator-package-json
 
+## 3.0.6
+
+### Patch Changes
+
+- [#2298](https://github.com/commercetools/ui-kit/pull/2298) [`fa4a08876`](https://github.com/commercetools/ui-kit/commit/fa4a08876b44060ef5e0d517946c9c8e47e666f5) Thanks [@renovate](https://github.com/apps/renovate)! - Update jest typescript definitions dependency
+
+- [#2295](https://github.com/commercetools/ui-kit/pull/2295) [`eac22c534`](https://github.com/commercetools/ui-kit/commit/eac22c534576c3bf0e97c248f1d975b83a1e2b70) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
 ## 3.0.5
 
 ### Patch Changes

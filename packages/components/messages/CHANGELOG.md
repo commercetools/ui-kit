@@ -1,5 +1,15 @@
 # @commercetools-uikit/messages
 
+## 15.4.0
+
+### Patch Changes
+
+- [#2298](https://github.com/commercetools/ui-kit/pull/2298) [`fa4a08876`](https://github.com/commercetools/ui-kit/commit/fa4a08876b44060ef5e0d517946c9c8e47e666f5) Thanks [@renovate](https://github.com/apps/renovate)! - Update jest typescript definitions dependency
+
+- Updated dependencies [[`fa4a08876`](https://github.com/commercetools/ui-kit/commit/fa4a08876b44060ef5e0d517946c9c8e47e666f5), [`7f5efe9b6`](https://github.com/commercetools/ui-kit/commit/7f5efe9b67a70c8b6b25831a9b4c9d151ee6ffb5)]:
+  - @commercetools-uikit/text@15.4.0
+  - @commercetools-uikit/utils@15.4.0
+
 ## 15.3.0
 
 ### Patch Changes

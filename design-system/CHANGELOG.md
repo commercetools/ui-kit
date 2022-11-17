@@ -1,5 +1,65 @@
 # @commercetools-uikit/design-system
 
+## 15.4.0
+
+### Minor Changes
+
+- [#2331](https://github.com/commercetools/ui-kit/pull/2331) [`7371c4aea`](https://github.com/commercetools/ui-kit/commit/7371c4aeabaefbe79ae5eb24e0030da7fac63924) Thanks [@emmenko](https://github.com/emmenko)! - Expose global reset styles from `/materials` entry point.
+
+  ```js
+  import '@commercetools-uikit/design-system/materials/resets.css';
+  ```
+
+### Patch Changes
+
+- [#2332](https://github.com/commercetools/ui-kit/pull/2332) [`3aeff799e`](https://github.com/commercetools/ui-kit/commit/3aeff799e9abcf3b7e4ffde42b14edabffec0cbf) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - New helper functions to transform from design tokens to CSS vars.
+
+  Let's say we have an object with design tokens data like this:
+
+  ```
+  {
+    colorPrimary: '#00b39e',
+  }
+  ```
+
+  We can transform the object to use CSS var names keys:
+
+  ```
+  transformTokensToCssVarsValues(tokens);
+
+  // Output
+  {
+    '--color-primary': '#00b39e',
+  }
+  ```
+
+  We can also tranform the object to use CSS var references values:
+
+  ```
+  transformTokensToCssVarsReferences(tokens);
+
+  // Output
+  {
+    'colorPrimary': 'var(--color-primary, #00b39e)',
+  }
+  ```
+
+- [#2298](https://github.com/commercetools/ui-kit/pull/2298) [`fa4a08876`](https://github.com/commercetools/ui-kit/commit/fa4a08876b44060ef5e0d517946c9c8e47e666f5) Thanks [@renovate](https://github.com/apps/renovate)! - Update jest typescript definitions dependency
+
+- [#2319](https://github.com/commercetools/ui-kit/pull/2319) [`662dd50b5`](https://github.com/commercetools/ui-kit/commit/662dd50b55f7927d9872799ea0fce85c3fa06d15) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Add new design tokens for card component.
+
+- [#2319](https://github.com/commercetools/ui-kit/pull/2319) [`662dd50b5`](https://github.com/commercetools/ui-kit/commit/662dd50b55f7927d9872799ea0fce85c3fa06d15) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Add new design tokens to buttons components.
+
+- [#2336](https://github.com/commercetools/ui-kit/pull/2336) [`98b44f160`](https://github.com/commercetools/ui-kit/commit/98b44f160176f208fd74347667eaa4ee3ec3e985) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Design tokens adjustments.
+
+- [#2326](https://github.com/commercetools/ui-kit/pull/2326) [`20fb4adf6`](https://github.com/commercetools/ui-kit/commit/20fb4adf6ee8d3cd6007362ffcba15f2594510f7) Thanks [@emmenko](https://github.com/emmenko)! - Define tokens for font families
+
+- [#2327](https://github.com/commercetools/ui-kit/pull/2327) [`574389e46`](https://github.com/commercetools/ui-kit/commit/574389e46b20267a0779cdedd44d360cd30483a6) Thanks [@emmenko](https://github.com/emmenko)! - Assign default theme, fix themes merging.
+
+- [#2330](https://github.com/commercetools/ui-kit/pull/2330) [`573671542`](https://github.com/commercetools/ui-kit/commit/573671542d87c5ff67c34ed00773c5636691f2d7) Thanks [@chloe0592](https://github.com/chloe0592)! - Add new design token for the `Link` component.
+
+- [#2334](https://github.com/commercetools/ui-kit/pull/2334) [`81cf09def`](https://github.com/commercetools/ui-kit/commit/81cf09def6f792df0b2d24d8a0ee0075ffb75c75) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix font size design token values used for Buttons in the default theme
+
 ## 15.3.0
 
 ### Minor Changes

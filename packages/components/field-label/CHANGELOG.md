@@ -1,5 +1,21 @@
 # @commercetools-uikit/field-label
 
+## 15.4.0
+
+### Patch Changes
+
+- [#2298](https://github.com/commercetools/ui-kit/pull/2298) [`fa4a08876`](https://github.com/commercetools/ui-kit/commit/fa4a08876b44060ef5e0d517946c9c8e47e666f5) Thanks [@renovate](https://github.com/apps/renovate)! - Update jest typescript definitions dependency
+
+- Updated dependencies [[`fa4a08876`](https://github.com/commercetools/ui-kit/commit/fa4a08876b44060ef5e0d517946c9c8e47e666f5), [`662dd50b5`](https://github.com/commercetools/ui-kit/commit/662dd50b55f7927d9872799ea0fce85c3fa06d15), [`eac22c534`](https://github.com/commercetools/ui-kit/commit/eac22c534576c3bf0e97c248f1d975b83a1e2b70), [`eac22c534`](https://github.com/commercetools/ui-kit/commit/eac22c534576c3bf0e97c248f1d975b83a1e2b70), [`7f5efe9b6`](https://github.com/commercetools/ui-kit/commit/7f5efe9b67a70c8b6b25831a9b4c9d151ee6ffb5)]:
+  - @commercetools-uikit/icon-button@15.4.0
+  - @commercetools-uikit/constraints@15.4.0
+  - @commercetools-uikit/icons@15.4.0
+  - @commercetools-uikit/label@15.4.0
+  - @commercetools-uikit/spacings-inline@15.4.0
+  - @commercetools-uikit/spacings-stack@15.4.0
+  - @commercetools-uikit/text@15.4.0
+  - @commercetools-uikit/utils@15.4.0
+
 ## 15.3.0
 
 ### Minor Changes
