@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  color: var(--font-color-for-text);
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease-in;
+}
+
+p {
+  margin: 0;
+}
