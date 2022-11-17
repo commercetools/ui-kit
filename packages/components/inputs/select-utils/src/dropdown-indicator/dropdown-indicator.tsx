@@ -5,7 +5,7 @@ const DropdownIndicator = (props: DropdownIndicatorProps) => (
   <components.DropdownIndicator {...props}>
     {/* FIXME: add proper tone when tones are refactored */}
     <CaretDownIcon
-      color={props.isDisabled ? 'neutral60' : 'solid'}
+      color={props.isDisabled ? 'neutral60' : undefined}
       size="small"
     />
   </components.DropdownIndicator>
