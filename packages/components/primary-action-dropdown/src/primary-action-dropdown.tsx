@@ -156,6 +156,7 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
           ),
           {
             color: props.isDisabled ? 'neutral60' : 'solid',
+            size: 'small',
           }
         )}
       </div>
