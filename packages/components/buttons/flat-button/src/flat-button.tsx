@@ -10,7 +10,6 @@ import { css } from '@emotion/react';
 import omit from 'lodash/omit';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
-import Text from '@commercetools-uikit/text';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getTextColor, getButtonIconColor } from './flat-button.styles';
 
@@ -165,7 +164,7 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
       {props.icon && props.iconPosition === 'left' && (
         <ButtonIcon<TStringOrComponent> {...props} />
       )}
-      <Text.Body as="span">{props.label}</Text.Body>
+      <span>{props.label}</span>
       {props.icon && props.iconPosition === 'right' && (
         <ButtonIcon<TStringOrComponent> {...props} />
       )}
