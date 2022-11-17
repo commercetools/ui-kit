@@ -1,5 +1,15 @@
 # @commercetools-uikit/collapsible
 
+## 15.4.0
+
+### Patch Changes
+
+- [#2298](https://github.com/commercetools/ui-kit/pull/2298) [`fa4a08876`](https://github.com/commercetools/ui-kit/commit/fa4a08876b44060ef5e0d517946c9c8e47e666f5) Thanks [@renovate](https://github.com/apps/renovate)! - Update jest typescript definitions dependency
+
+- Updated dependencies [[`fa4a08876`](https://github.com/commercetools/ui-kit/commit/fa4a08876b44060ef5e0d517946c9c8e47e666f5)]:
+  - @commercetools-uikit/hooks@15.4.0
+  - @commercetools-uikit/utils@15.4.0
+
 ## 15.3.0
 
 ### Patch Changes

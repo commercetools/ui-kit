@@ -1,5 +1,21 @@
 # @commercetools-uikit/search-select-field
 
+## 15.4.0
+
+### Patch Changes
+
+- [#2298](https://github.com/commercetools/ui-kit/pull/2298) [`fa4a08876`](https://github.com/commercetools/ui-kit/commit/fa4a08876b44060ef5e0d517946c9c8e47e666f5) Thanks [@renovate](https://github.com/apps/renovate)! - Update jest typescript definitions dependency
+
+- Updated dependencies [[`3aeff799e`](https://github.com/commercetools/ui-kit/commit/3aeff799e9abcf3b7e4ffde42b14edabffec0cbf), [`fa4a08876`](https://github.com/commercetools/ui-kit/commit/fa4a08876b44060ef5e0d517946c9c8e47e666f5), [`662dd50b5`](https://github.com/commercetools/ui-kit/commit/662dd50b55f7927d9872799ea0fce85c3fa06d15), [`662dd50b5`](https://github.com/commercetools/ui-kit/commit/662dd50b55f7927d9872799ea0fce85c3fa06d15), [`98b44f160`](https://github.com/commercetools/ui-kit/commit/98b44f160176f208fd74347667eaa4ee3ec3e985), [`7371c4aea`](https://github.com/commercetools/ui-kit/commit/7371c4aeabaefbe79ae5eb24e0030da7fac63924), [`20fb4adf6`](https://github.com/commercetools/ui-kit/commit/20fb4adf6ee8d3cd6007362ffcba15f2594510f7), [`574389e46`](https://github.com/commercetools/ui-kit/commit/574389e46b20267a0779cdedd44d360cd30483a6), [`573671542`](https://github.com/commercetools/ui-kit/commit/573671542d87c5ff67c34ed00773c5636691f2d7), [`81cf09def`](https://github.com/commercetools/ui-kit/commit/81cf09def6f792df0b2d24d8a0ee0075ffb75c75)]:
+  - @commercetools-uikit/design-system@15.4.0
+  - @commercetools-uikit/constraints@15.4.0
+  - @commercetools-uikit/field-errors@15.4.0
+  - @commercetools-uikit/field-label@15.4.0
+  - @commercetools-uikit/search-select-input@15.4.0
+  - @commercetools-uikit/hooks@15.4.0
+  - @commercetools-uikit/utils@15.4.0
+  - @commercetools-uikit/spacings@15.4.0
+
 ## 15.3.0
 
 ### Patch Changes
