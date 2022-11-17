@@ -1,3 +1,4 @@
+import '@commercetools-uikit/design-system/materials/resets.css';
 import { addParameters, configure, addDecorator } from '@storybook/react';
 import { withContexts } from '@storybook/addon-contexts/react';
 import { addReadme } from 'storybook-readme';
