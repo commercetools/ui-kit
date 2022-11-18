@@ -1,5 +1,21 @@
 # @commercetools-uikit/select-utils
 
+## 15.5.0
+
+### Minor Changes
+
+- [#2318](https://github.com/commercetools/ui-kit/pull/2318) [`35511ff35`](https://github.com/commercetools/ui-kit/commit/35511ff35c3e8a9857be9948a14fd50393daa1c1) Thanks [@kark](https://github.com/kark)! - Use new icons
+
+### Patch Changes
+
+- Updated dependencies [[`35511ff35`](https://github.com/commercetools/ui-kit/commit/35511ff35c3e8a9857be9948a14fd50393daa1c1)]:
+  - @commercetools-uikit/icons@15.5.0
+  - @commercetools-uikit/design-system@15.5.0
+  - @commercetools-uikit/accessible-button@15.5.0
+  - @commercetools-uikit/text@15.5.0
+  - @commercetools-uikit/utils@15.5.0
+  - @commercetools-uikit/spacings@15.5.0
+
 ## 15.4.0
 
 ### Patch Changes

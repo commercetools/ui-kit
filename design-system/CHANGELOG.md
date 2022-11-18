@@ -1,5 +1,7 @@
 # @commercetools-uikit/design-system
 
+## 15.5.0
+
 ## 15.4.0
 
 ### Minor Changes

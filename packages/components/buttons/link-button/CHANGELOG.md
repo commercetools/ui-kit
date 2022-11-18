@@ -1,5 +1,16 @@
 # @commercetools-uikit/link-button
 
+## 15.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.5.0
+  - @commercetools-uikit/accessible-button@15.5.0
+  - @commercetools-uikit/spacings-inline@15.5.0
+  - @commercetools-uikit/text@15.5.0
+  - @commercetools-uikit/utils@15.5.0
+
 ## 15.4.0
 
 ### Patch Changes

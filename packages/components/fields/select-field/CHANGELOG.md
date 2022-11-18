@@ -1,5 +1,18 @@
 # @commercetools-uikit/select-field
 
+## 15.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@15.5.0
+  - @commercetools-uikit/select-input@15.5.0
+  - @commercetools-uikit/design-system@15.5.0
+  - @commercetools-uikit/constraints@15.5.0
+  - @commercetools-uikit/field-errors@15.5.0
+  - @commercetools-uikit/utils@15.5.0
+  - @commercetools-uikit/spacings@15.5.0
+
 ## 15.4.0
 
 ### Patch Changes
