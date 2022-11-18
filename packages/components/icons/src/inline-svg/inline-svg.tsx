@@ -1,6 +1,11 @@
 import type { Props } from '../templates/icon.styles';
 
-import { cloneElement, isValidElement, ReactElement, useMemo } from 'react';
+import {
+  cloneElement,
+  isValidElement,
+  useMemo,
+  type ReactElement,
+} from 'react';
 import DOMPurify from 'dompurify';
 import convert from 'react-from-dom';
 import { ClassNames } from '@emotion/react';
@@ -18,11 +23,12 @@ const InlineSvg = (props: InlineSvgProps) => {
     }
     return DOMPurify.sanitize(props.data, {
       USE_PROFILES: { svg: true },
+      RETURN_DOM: true,
       FORBID_ATTR: [
         // To avoid injection by using `style="filter:url(\"data:image/svg+xml,<svg`
         'style',
       ],
-    });
+    }).innerHTML;
   }, [props.data]);
   const svgElement = useStringToReactElement(sanitized);
 

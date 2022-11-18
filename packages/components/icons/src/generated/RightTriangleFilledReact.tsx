@@ -136,14 +136,14 @@ export const getIconStyles = (props: Props) => css`
 
 const SvgRightTriangleFilled = (props: SVGProps) => (
   <svg
-    width={8}
-    height={8}
-    viewBox="0 0 8 8"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     {...props}
   >
-    <path d="M8 0v8H0z" fill="#1A1A1A" fillRule="evenodd" />
+    <path d="M3.825 22c-.333 0-.563-.154-.688-.462-.125-.309-.07-.58.163-.813l17.45-17.45c.233-.233.504-.287.812-.162.309.125.463.354.463.687v17.45a.728.728 0 0 1-.75.75H3.825Z" />
   </svg>
 );
 

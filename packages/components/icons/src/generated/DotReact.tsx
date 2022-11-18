@@ -136,20 +136,14 @@ export const getIconStyles = (props: Props) => css`
 
 const SvgDot = (props: SVGProps) => (
   <svg
-    width={18}
-    height={18}
-    viewBox="0 0 18 18"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     {...props}
   >
-    <circle
-      cx={106}
-      cy={18}
-      r={9}
-      transform="translate(-97 -9)"
-      fillRule="evenodd"
-    />
+    <path d="M12 22q-2.075 0-3.9-.788-1.825-.787-3.175-2.137-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175 1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138 1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175-1.35 1.35-3.175 2.137Q14.075 22 12 22Z" />
   </svg>
 );
 

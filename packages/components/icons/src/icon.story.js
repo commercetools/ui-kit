@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs/react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Grid from '@commercetools-uikit/grid';
 import Spacings from '@commercetools-uikit/spacings';
@@ -17,6 +18,15 @@ import Readme from '../README.md';
 import xssFixtures from './fixtures/xss';
 import InlineSvg from './inline-svg';
 import * as icons from '.';
+
+const DEPRECATED_ICONS_NAMES = [
+  'ArrowTriangleDownIcon',
+  'ArrowTriangleUpIcon',
+  'AngleThinLeftIcon',
+  'AngleThinRightIcon',
+  'CubeIcon',
+  'CubesIcon',
+];
 
 const IconList = styled.div`
   display: grid;
@@ -34,6 +44,22 @@ const IconItem = styled.div`
 const IconContainer = styled.div`
   margin: 16px 0;
 `;
+
+const LegacyBadge = () => (
+  <span
+    css={css`
+      color: ${designTokens.colorSolid};
+      background-color: ${designTokens.colorWarning95};
+      border: 1px solid ${designTokens.colorWarning};
+      border-radius: ${designTokens.borderRadius2};
+      font-size: ${designTokens.fontSizeSmall};
+      margin-top: ${designTokens.spacingXs};
+      padding: 0 ${designTokens.spacingXs};
+    `}
+  >
+    Legacy
+  </span>
+);
 
 const iconNames = Object.keys(icons);
 
@@ -187,49 +213,59 @@ storiesOf('Components|Icons', module)
     },
   })
   .add('All Icons', () => (
-    <IconList>
-      {Object.values(icons).map((Icon, index) => {
-        const sizeValue = select(
-          'size',
-          ['small', 'medium', 'big', 'scale'],
-          'big'
-        );
-        const containerWidth =
-          sizeValue === 'scale'
-            ? {
-                width: `${select(
-                  'container width',
-                  ['100', '200', '300', '400'],
-                  '100'
-                )}px`,
-              }
-            : {};
-        return (
-          <IconItem key={index}>
-            <IconContainer style={containerWidth}>
-              <Icon
-                size={sizeValue}
-                color={select(
-                  'color',
-                  [
-                    'solid',
-                    'neutral60',
-                    'surface',
-                    'info',
-                    'primary',
-                    'primary40',
-                    'warning',
-                    'error',
-                  ],
-                  'solid'
-                )}
-              />
-            </IconContainer>
-            <Text.Body>{iconNames[index]}</Text.Body>
-          </IconItem>
-        );
-      })}
-    </IconList>
+    <Spacings.Stack scale="m">
+      <Text.Body isItalic>
+        Icons marked with the <LegacyBadge /> label are not supported anymore.
+        <br />
+        They will be removed in the future.
+      </Text.Body>
+      <IconList>
+        {Object.values(icons).map((Icon, index) => {
+          const sizeValue = select(
+            'size',
+            ['small', 'medium', 'big', 'scale'],
+            'big'
+          );
+          const containerWidth =
+            sizeValue === 'scale'
+              ? {
+                  width: `${select(
+                    'container width',
+                    ['100', '200', '300', '400'],
+                    '100'
+                  )}px`,
+                }
+              : {};
+          return (
+            <IconItem key={index}>
+              <IconContainer style={containerWidth}>
+                <Icon
+                  size={sizeValue}
+                  color={select(
+                    'color',
+                    [
+                      'solid',
+                      'neutral60',
+                      'surface',
+                      'info',
+                      'primary',
+                      'primary40',
+                      'warning',
+                      'error',
+                    ],
+                    'solid'
+                  )}
+                />
+              </IconContainer>
+              <Text.Body>{iconNames[index]}</Text.Body>
+              {DEPRECATED_ICONS_NAMES.includes(iconNames[index]) ? (
+                <LegacyBadge />
+              ) : null}
+            </IconItem>
+          );
+        })}
+      </IconList>
+    </Spacings.Stack>
   ))
   .add('Inline SVG', () => (
     <Section>
