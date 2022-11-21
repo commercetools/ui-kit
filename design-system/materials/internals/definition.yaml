@@ -687,10 +687,10 @@ decisionGroupsByTheme:
       decisions:
         line-height-for-text-as-h1:
           description: ''
-          choice: line-height-50
+          choice: line-height-60
         line-height-for-text-as-h2:
           description: ''
-          choice: line-height-50
+          choice: line-height-60
         line-height-for-text-as-h3:
           description: ''
           choice: line-height-30
@@ -713,10 +713,10 @@ decisionGroupsByTheme:
       decisions:
         font-weight-for-text-as-h1:
           description: ''
-          choice: font-weight-500
+          choice: font-weight-600
         font-weight-for-text-as-h2:
           description: ''
-          choice: font-weight-500
+          choice: font-weight-600
         font-weight-for-text-as-h3:
           description: ''
           choice: font-weight-500
