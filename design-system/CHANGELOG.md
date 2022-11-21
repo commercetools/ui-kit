@@ -1,5 +1,11 @@
 # @commercetools-uikit/design-system
 
+## 15.5.1
+
+### Patch Changes
+
+- [#2340](https://github.com/commercetools/ui-kit/pull/2340) [`5ad5f2f6e`](https://github.com/commercetools/ui-kit/commit/5ad5f2f6ec2ff17b7663823cb14c98cb5221c567) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix `Typography` headings design tokens.
+
 ## 15.5.0
 
 ## 15.4.0
