@@ -201,6 +201,8 @@ export const themes = {
     fontWeightForTextAsBody: '400',
     fontWeightForTextAsDetail: '400',
     fontWeightForButton: '400',
+    paddingForStamp: 'var(--spacing-xs) var(--spacing-s)',
+    paddingForTag: '5px var(--spacing-s)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -288,6 +290,8 @@ export const themes = {
     heightForButtonAsIconAsBig: '40px',
     heightForButtonAsIconAsMedium: '32px',
     heightForButtonAsIconAsSmall: '16px',
+    paddingForStamp: 'var(--spacing-xs) 12px',
+    paddingForTag: '5px 12px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -539,6 +543,9 @@ const designTokens = {
   fontWeightForTextAsBody: 'var(--font-weight-for-text-as-body, 400)',
   fontWeightForTextAsDetail: 'var(--font-weight-for-text-as-detail, 400)',
   fontWeightForButton: 'var(--font-weight-for-button, 400)',
+  paddingForStamp:
+    'var(--padding-for-stamp, var(--spacing-xs) var(--spacing-s))',
+  paddingForTag: 'var(--padding-for-tag, 5px var(--spacing-s))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

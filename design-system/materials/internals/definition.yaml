@@ -270,6 +270,8 @@ componentGroups:
     description: 'Card element'
   link:
     description: 'Link elements'
+  stamp:
+    description: 'Stamp elements'
 
 decisionGroupsByTheme:
   default:
@@ -543,6 +545,15 @@ decisionGroupsByTheme:
         font-weight-for-button:
           choice: font-weight-400
 
+    paddings:
+      label: Paddings
+      prefix: padding
+      decisions:
+        padding-for-stamp:
+          choice: 'var(--spacing-xs) var(--spacing-s)'
+        padding-for-tag:
+          choice: '5px var(--spacing-s)'
+
     shadows:
       label: Shadows
       prefix: shadow
@@ -749,6 +760,16 @@ decisionGroupsByTheme:
           choice: '32px'
         height-for-button-as-icon-as-small:
           choice: '16px'
+
+    paddings:
+      label: Paddings
+      prefix: padding
+      decisions:
+        # 12px is not part of the spacing scale. It is specific to this component
+        padding-for-stamp:
+          choice: 'var(--spacing-xs) 12px'
+        padding-for-tag:
+          choice: '5px 12px'
 
     shadows:
       label: Shadows

@@ -187,6 +187,8 @@
   "--font-weight-for-text-as-body": "400",
   "--font-weight-for-text-as-detail": "400",
   "--font-weight-for-button": "400",
+  "--padding-for-stamp": "var(--spacing-xs) var(--spacing-s)",
+  "--padding-for-tag": "5px var(--spacing-s)",
   "--shadow-for-button": "0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)",
   "--shadow-for-button-when-focused": "0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)",
   "--shadow-for-button-when-hovered": "0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)",
