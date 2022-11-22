@@ -50,7 +50,7 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     box-sizing: border-box;
     align-items: center;
     border-radius: ${designTokens.borderRadiusForTag};
-    padding: 5px ${designTokens.spacingS};
+    padding: ${designTokens.paddingForTag};
     white-space: normal;
     text-align: left;
     min-width: 0;
