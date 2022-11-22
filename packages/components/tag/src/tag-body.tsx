@@ -98,7 +98,6 @@ const TagBody = (props: TTagBodyProps) => {
                 position: absolute;
                 right: -1px;
                 content: '';
-                background-color: ${designTokens.borderColorForTagWhenFocused};
                 background-color: ${props.type === 'warning'
                   ? designTokens.borderColorForTagWarning
                   : designTokens.borderColorForTagWhenFocused};
