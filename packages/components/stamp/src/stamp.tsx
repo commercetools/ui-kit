@@ -36,7 +36,7 @@ const getPaddingStyle = (props: Props) => {
       padding: 1px ${designTokens.spacingXs};
     `;
   return css`
-    padding: ${designTokens.spacingXs} ${designTokens.spacingS};
+    padding: ${designTokens.paddingForStamp};
   `;
 };
 
