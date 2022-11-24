@@ -9,7 +9,7 @@ import Readme from '../README.md';
 import Card from './card';
 
 const themes = ['light', 'dark'];
-const insetScaleValues = ['none', 's', 'm'];
+const insetScaleValues = ['none', 's', 'm', 'l', 'xl'];
 const content =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dictum varius duis at consectetur lorem donec.';
 

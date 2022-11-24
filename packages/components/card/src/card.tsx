@@ -12,7 +12,7 @@ type TCardProps = {
   /**
    * Determines the spacing (padding) that the content should have from the card borders. In case there is no space needed, you can pass `none`.
    */
-  insetScale: 'none' | 's' | 'm';
+  insetScale: 'none' | 's' | 'm' | 'l' | 'xl';
   /**
    * Determines the background color of the card.
    */
