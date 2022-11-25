@@ -7,13 +7,13 @@ const getSizeStyles = (
 ) => {
   if (isCondensed) {
     return css`
-      padding: 0 ${designTokens.spacingS} 0 ${designTokens.spacingS};
+      padding: 0 ${designTokens.spacing20} 0 ${designTokens.spacing20};
       height: ${designTokens.smallButtonHeight};
     `;
   }
 
   return css`
-    padding: 0 ${designTokens.spacingM} 0 ${designTokens.spacingM};
+    padding: 0 ${designTokens.spacing30} 0 ${designTokens.spacing30};
     height: ${designTokens.bigButtonHeight};
   `;
 };

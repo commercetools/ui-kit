@@ -10,10 +10,10 @@ const getOffsetMargin = ({ placement }: { placement: string }) => {
   switch (position) {
     case 'left':
     case 'right':
-      return `0 ${designTokens.spacingXs}`;
+      return `0 ${designTokens.spacing10}`;
     case 'top':
     case 'bottom':
-      return `${designTokens.spacingXs} 0`;
+      return `${designTokens.spacing10} 0`;
     default:
       return '';
   }
@@ -22,7 +22,7 @@ const getOffsetMargin = ({ placement }: { placement: string }) => {
 export const Body = styled.div`
   font-family: inherit;
   border-radius: ${designTokens.borderRadius6};
-  padding: ${designTokens.spacingXs} ${designTokens.spacingS};
+  padding: ${designTokens.spacing10} ${designTokens.spacing20};
   border: 'none';
   box-shadow: ${designTokens.shadow15};
   font-size: 0.857rem;

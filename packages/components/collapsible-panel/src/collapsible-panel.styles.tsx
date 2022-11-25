@@ -33,8 +33,8 @@ const getHeaderContainerStyles = (
       ? 'flex-start'
       : 'space-between'};
     padding: ${props.condensed
-      ? `${designTokens.spacingS}`
-      : `${designTokens.spacingS} ${designTokens.spacingM}`};
+      ? `${designTokens.spacing20}`
+      : `${designTokens.spacing20} ${designTokens.spacing30}`};
   `;
 
   return [
@@ -75,7 +75,7 @@ const baseContainerStyles = css`
 `;
 
 const HeaderControlsWrapper = styled.div`
-  margin-left: ${designTokens.spacingM};
+  margin-left: ${designTokens.spacing30};
   display: flex;
   align-items: center;
 

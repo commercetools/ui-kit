@@ -14,7 +14,7 @@ const EditorLanguageLabel = styled.label`
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
   border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
-  padding: 0 ${designTokens.spacingS};
+  padding: 0 ${designTokens.spacing20};
   transition: border-color ${designTokens.transitionStandard},
     background-color ${designTokens.transitionStandard},
     color ${designTokens.transitionStandard};

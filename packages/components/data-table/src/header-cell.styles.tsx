@@ -37,7 +37,7 @@ const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
 
   svg[data-icon-state='inactive'],
   svg[data-icon-state='active'] {
-    margin-left: ${designTokens.spacingS};
+    margin-left: ${designTokens.spacing20};
     flex-shrink: 0;
   }
   svg[data-icon-state='inactive'] {
@@ -73,7 +73,7 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
   justify-content: space-between;
   padding: 0
     ${(props) =>
-      props.isCondensed ? designTokens.spacingS : designTokens.spacingM};
+      props.isCondensed ? designTokens.spacing20 : designTokens.spacing30};
 
   ${getCellInnerStyles}
   ${(props) => (props.isSortable ? getSortableHeaderStyles(props) : '')};
@@ -117,7 +117,7 @@ const HeaderLabelWrapper = styled.div`
   /* ensure height stays the same even if label is empty
      1.4em = default line-height */
   min-height: 1.4em;
-  margin: ${designTokens.spacingS} 0;
+  margin: ${designTokens.spacing20} 0;
   flex: 1;
 `;
 
@@ -125,7 +125,7 @@ const HeaderIconWrapper = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: ${designTokens.spacingS};
+  margin-left: ${designTokens.spacing20};
   vertical-align: middle;
 `;
 

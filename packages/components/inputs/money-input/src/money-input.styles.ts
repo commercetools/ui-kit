@@ -11,7 +11,7 @@ const getCurrencyLabelStyles = () => css`
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
   border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
   border-right: 0;
-  padding: 0 ${designTokens.spacingS};
+  padding: 0 ${designTokens.spacing20};
   align-items: center;
   font-size: ${designTokens.fontSizeForInput};
   box-sizing: border-box;
@@ -43,7 +43,7 @@ const getHighPrecisionWrapperStyles = ({
   position: absolute;
   top: 0;
   right: 0;
-  margin-right: ${designTokens.spacingXs};
+  margin-right: ${designTokens.spacing10};
   height: 100%;
   display: flex;
   align-items: center;

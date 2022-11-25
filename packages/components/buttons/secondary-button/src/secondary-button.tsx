@@ -114,7 +114,7 @@ export const SecondaryButton = <
     css`
       display: flex;
       align-items: center;
-      padding: 0 ${designTokens.spacingM};
+      padding: 0 ${designTokens.spacing30};
       height: ${designTokens.heightForButtonAsBig};
     `,
     css`
@@ -147,7 +147,7 @@ export const SecondaryButton = <
         {Boolean(props.iconLeft) && (
           <span
             css={css`
-              margin: 0 ${designTokens.spacingXs} 0 0;
+              margin: 0 ${designTokens.spacing10} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;

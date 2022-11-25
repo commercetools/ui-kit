@@ -16,7 +16,7 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   border: 0;
   font-size: 1rem;
   cursor: pointer;
-  padding: ${designTokens.spacingXs} ${designTokens.spacingS};
+  padding: ${designTokens.spacing10} ${designTokens.spacing20};
   font-family: ${designTokens.fontFamilyDefault};
   display: block;
   background-color: ${(props) =>
@@ -41,8 +41,8 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
     justify-content: center;
     align-items: center;
     padding: ${props.isStyleButton
-      ? `calc(${designTokens.spacingXs} - 1px) ${designTokens.spacingS}`
-      : designTokens.spacingXs};
+      ? `calc(${designTokens.spacing10} - 1px) ${designTokens.spacing20}`
+      : designTokens.spacing10};
 
     &:hover {
       background-color: ${designTokens.colorNeutral90};
@@ -85,8 +85,8 @@ const DropdownContainer = styled.div`
   position: absolute;
   cursor: pointer;
   font-size: ${designTokens.fontSizeForInput};
-  top: ${designTokens.spacingXs};
-  margin-top: ${designTokens.spacingXs};
+  top: ${designTokens.spacing10};
+  margin-top: ${designTokens.spacing10};
   left: 0;
   white-space: nowrap;
   background: ${designTokens.colorSurface};

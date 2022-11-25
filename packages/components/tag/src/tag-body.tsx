@@ -81,7 +81,7 @@ const TagBody = (props: TTagBodyProps) => {
         getContentWrapperStyles(props),
         Boolean(props.onRemove) &&
           css`
-            padding-right: ${designTokens.spacingS};
+            padding-right: ${designTokens.spacing20};
             border-right: 0;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;

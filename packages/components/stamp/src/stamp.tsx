@@ -33,7 +33,7 @@ export const availableTones: Tone[] = [
 const getPaddingStyle = (props: Props) => {
   if (props.isCondensed)
     return css`
-      padding: 1px ${designTokens.spacingXs};
+      padding: 1px ${designTokens.spacing10};
     `;
   return css`
     padding: ${designTokens.paddingForStamp};
