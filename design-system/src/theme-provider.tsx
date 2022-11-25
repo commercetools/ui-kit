@@ -106,3 +106,4 @@ const useTheme = (parentSelector = defaultParentSelector) => {
 };
 
 export { ThemeProvider, useTheme };
+export type { ThemeName };
