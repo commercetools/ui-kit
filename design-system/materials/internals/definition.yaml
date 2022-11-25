@@ -165,11 +165,20 @@ choiceGroupsByTheme:
       label: Spacings
       prefix: spacing
       choices:
+        # Legacy deprecated tokens
         spacing-xs: 4px
         spacing-s: 8px
         spacing-m: 16px
         spacing-l: 24px
         spacing-xl: 32px
+        # New tokens
+        spacing-10: 4px
+        spacing-20: 8px
+        spacing-30: 16px
+        spacing-40: 24px
+        spacing-50: 32px
+        spacing-60: 48px
+        spacing-70: 64px
     transitions:
       label: Transitions
       prefix: transition

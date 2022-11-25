@@ -18,15 +18,19 @@ const getAlignItem = (alignment?: TAlignItem) => {
 const getMargin = (scale?: TScale): string | number => {
   switch (scale) {
     case 'xs':
-      return designTokens.spacingXs;
+      return designTokens.spacing10;
     case 's':
-      return designTokens.spacingS;
+      return designTokens.spacing20;
     case 'm':
-      return designTokens.spacingM;
+      return designTokens.spacing30;
     case 'l':
-      return designTokens.spacingL;
+      return designTokens.spacing40;
     case 'xl':
-      return designTokens.spacingXl;
+      return designTokens.spacing50;
+    case 'xxl':
+      return designTokens.spacing60;
+    case 'xxxl':
+      return designTokens.spacing70;
     default:
       return 0;
   }
