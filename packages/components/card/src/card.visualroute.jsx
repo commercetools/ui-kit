@@ -88,5 +88,15 @@ export const component = () => (
         {text}
       </WrappedCard>
     </Spec>
+    <Spec label="Type - Raised, Theme - Light, InsetScale - L">
+      <WrappedCard type="raised" theme="light" insetScale="l">
+        {text}
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Raised, Theme - Light, InsetScale - XL">
+      <WrappedCard type="raised" theme="light" insetScale="xl">
+        {text}
+      </WrappedCard>
+    </Spec>
   </Suite>
 );

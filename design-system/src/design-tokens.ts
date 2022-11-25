@@ -249,8 +249,6 @@ export const themes = {
     backgroundColorForButtonAsUrgentWhenActive: '#DC630A',
     backgroundColorForButtonAsUrgentWhenHovered: '#E7680D',
     backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
-    backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
-    backgroundColorForTagWarning: 'hsl(0, 0%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
