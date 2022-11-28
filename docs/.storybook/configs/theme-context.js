@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ThemeProvider } from '../../../design-system';
+import { ThemeProvider } from '@commercetools-uikit/design-system';
 
 const ThemeWrapper = (props) => {
   return (
@@ -39,5 +39,19 @@ const themeContext = {
     cancelable: false, // allow this contextual environment to be opt-out optionally in toolbar
   },
 };
+
+// export const globalTypes = {
+//   theme: {
+//     name: 'Theme',
+//     description: 'UI Theme',
+//     defaultValue: 'default',
+//     toolbar: {
+//       icon: 'circlehollow',
+//       items: ['default', 'test'],
+//       // showName: true,
+//       // dynamicTitle: true
+//     }
+//   }
+// };
 
 export default themeContext;

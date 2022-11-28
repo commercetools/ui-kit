@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text } from '@storybook/addon-knobs/react';
+import { withKnobs, text } from '@storybook/addon-knobs';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import Section from '../../../../docs/.storybook/decorators/section';

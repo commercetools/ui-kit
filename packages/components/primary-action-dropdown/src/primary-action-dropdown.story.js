@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 import Section from '../../../../docs/.storybook/decorators/section';
 import { BoxIcon, BrainIcon, FlameIcon } from '../../icons';
 import Readme from '../README.md';

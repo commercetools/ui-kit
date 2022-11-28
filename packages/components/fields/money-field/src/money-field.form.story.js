@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty-es';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, select } from '@storybook/addon-knobs/react';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
 import { injectIntl } from 'react-intl';
 import Spacings from '@commercetools-uikit/spacings';

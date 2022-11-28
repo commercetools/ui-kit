@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
+import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
 import { action } from '@storybook/addon-actions';
 import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';

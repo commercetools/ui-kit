@@ -9,7 +9,7 @@ import {
   text,
   select,
   object,
-} from '@storybook/addon-knobs/react';
+} from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
 import { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
 import Readme from '../README.md';

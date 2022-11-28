@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
 import { Value } from 'react-value';
 import Spacings from '@commercetools-uikit/spacings';

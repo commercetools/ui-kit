@@ -9,7 +9,7 @@ import {
   select,
   object,
   number,
-} from '@storybook/addon-knobs/react';
+} from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
 import { SELECT_DROPDOWN_OPTION_TYPES } from '../../../inputs/select-utils';
 import Section from '../../../../../docs/.storybook/decorators/section';

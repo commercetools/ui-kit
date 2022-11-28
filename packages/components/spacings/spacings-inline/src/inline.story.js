@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select } from '@storybook/addon-knobs/react';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import styled from '@emotion/styled';
 import Text from '../../../text';
 import Inset from '../../spacings-inset';

@@ -3,7 +3,7 @@
 import { useState, useCallback } from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
 import Spacings from '@commercetools-uikit/spacings';

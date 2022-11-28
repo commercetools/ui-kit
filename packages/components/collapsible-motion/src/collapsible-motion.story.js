@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, number, boolean } from '@storybook/addon-knobs/react';
+import { withKnobs, number, boolean } from '@storybook/addon-knobs';
 import { Spacings } from '@commercetools-frontend/ui-kit';
 import CollapsibleMotion from './collapsible-motion';
 import Readme from '../README.md';

@@ -7,7 +7,7 @@ import {
   text,
   select,
   number,
-} from '@storybook/addon-knobs/react';
+} from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
 import { PrimaryButton } from '@commercetools-uikit/buttons';
 import Section from '../../../../docs/.storybook/decorators/section';

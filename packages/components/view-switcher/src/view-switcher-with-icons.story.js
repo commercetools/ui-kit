@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, boolean, text } from '@storybook/addon-knobs/react';
+import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import * as icons from '@commercetools-uikit/icons';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';

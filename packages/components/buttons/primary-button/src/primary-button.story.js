@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import * as icons from '@commercetools-uikit/icons';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';

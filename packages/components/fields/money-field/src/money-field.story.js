@@ -7,7 +7,7 @@ import {
   text,
   select,
   object,
-} from '@storybook/addon-knobs/react';
+} from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
 import { injectIntl } from 'react-intl';
 import Section from '../../../../../docs/.storybook/decorators/section';

@@ -8,7 +8,7 @@ import {
   text,
   select,
   number,
-} from '@storybook/addon-knobs/react';
+} from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import LinkTo from '@storybook/addon-links/react';

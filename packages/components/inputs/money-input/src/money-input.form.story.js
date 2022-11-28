@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { injectIntl } from 'react-intl';
-import { withKnobs, number } from '@storybook/addon-knobs/react';
+import { withKnobs, number } from '@storybook/addon-knobs';
 import omitEmpty from 'omit-empty-es';
 import Spacings from '@commercetools-uikit/spacings';
 import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';

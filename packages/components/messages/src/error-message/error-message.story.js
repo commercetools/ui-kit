@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text } from '@storybook/addon-knobs/react';
+import { withKnobs, text } from '@storybook/addon-knobs';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../../README.md';
 import ErrorMessage from './error-message';

@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, number } from '@storybook/addon-knobs/react';
+import { withKnobs, select, number } from '@storybook/addon-knobs';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Spacings from '@commercetools-uikit/spacings';

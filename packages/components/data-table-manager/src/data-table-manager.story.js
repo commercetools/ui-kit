@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, boolean, select, withKnobs } from '@storybook/addon-knobs/react';
+import { text, boolean, select, withKnobs } from '@storybook/addon-knobs';
 import withReadme from 'storybook-readme/with-readme';
 import times from 'lodash/times';
 import DataTable from '@commercetools-uikit/data-table';

@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';

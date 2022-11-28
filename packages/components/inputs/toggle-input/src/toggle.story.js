@@ -1,6 +1,6 @@
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';

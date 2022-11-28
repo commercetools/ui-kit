@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select } from '@storybook/addon-knobs/react';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';

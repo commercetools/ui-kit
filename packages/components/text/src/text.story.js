@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Text from './text';
 import Readme from '../README.md';
