@@ -261,6 +261,8 @@ variants:
     description: 'To differentiate component urgent type'
   info:
     description: 'To differentiate component info type'
+  condensed:
+    description: 'Elements with a compact style'
 
 componentGroups:
   button:
@@ -499,6 +501,8 @@ decisionGroupsByTheme:
         font-size-for-link:
           description: ''
           choice: font-size-30
+        font-size-for-stamp:
+          choice: font-size-30
 
     lineHeights:
       label: Line Heights
@@ -559,9 +563,11 @@ decisionGroupsByTheme:
       prefix: padding
       decisions:
         padding-for-stamp:
-          choice: 'var(--spacing-xs) var(--spacing-s)'
+          choice: 'var(--spacing-10) var(--spacing-20)'
+        padding-for-stamp-as-condensed:
+          choice: '1px var(--spacing-10)'
         padding-for-tag:
-          choice: '5px var(--spacing-s)'
+          choice: '5px var(--spacing-20)'
 
     shadows:
       label: Shadows
@@ -694,6 +700,8 @@ decisionGroupsByTheme:
         font-size-for-link:
           description: ''
           choice: 'inherit'
+        font-size-for-stamp:
+          choice: font-size-20
 
     lineHeights:
       label: Line Heights
@@ -768,11 +776,12 @@ decisionGroupsByTheme:
       label: Paddings
       prefix: padding
       decisions:
-        # 12px is not part of the spacing scale. It is specific to this component
         padding-for-stamp:
-          choice: 'var(--spacing-xs) 12px'
-        padding-for-tag:
           choice: '5px 12px'
+        padding-for-stamp-as-condensed:
+          choice: '1px var(--spacing-20)'
+        padding-for-tag:
+          choice: '3px 12px'
 
     shadows:
       label: Shadows
