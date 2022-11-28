@@ -3,7 +3,7 @@ import type { TTagProps } from './tag';
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { Link } from 'react-router-dom';
 
@@ -72,7 +72,10 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
 };
 
 const TagBody = (props: TTagBodyProps) => {
+  const currentTheme = useTheme();
   const textTone = props.isDisabled ? 'secondary' : undefined;
+  const TextComponent = currentTheme === 'default' ? Text.Detail : Text.Body;
+
   return (
     <Body
       to={props.to}
@@ -81,7 +84,6 @@ const TagBody = (props: TTagBodyProps) => {
         getContentWrapperStyles(props),
         Boolean(props.onRemove) &&
           css`
-            padding-right: ${designTokens.spacingS};
             border-right: 0;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
@@ -110,7 +112,7 @@ const TagBody = (props: TTagBodyProps) => {
       ]}
       onClick={props.isDisabled ? undefined : props.onClick}
     >
-      <Text.Detail tone={textTone}>{props.children}</Text.Detail>
+      <TextComponent tone={textTone}>{props.children}</TextComponent>
     </Body>
   );
 };
