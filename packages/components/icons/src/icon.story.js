@@ -53,8 +53,8 @@ const LegacyBadge = () => (
       border: 1px solid ${designTokens.colorWarning};
       border-radius: ${designTokens.borderRadius2};
       font-size: ${designTokens.fontSizeSmall};
-      margin-top: ${designTokens.spacingXs};
-      padding: 0 ${designTokens.spacingXs};
+      margin-top: ${designTokens.spacing10};
+      padding: 0 ${designTokens.spacing10};
     `}
   >
     Legacy
@@ -160,7 +160,7 @@ const InlineSvgPage = (props) => {
               }}
             >
               <Grid
-                gridGap={designTokens.spacingS}
+                gridGap={designTokens.spacing20}
                 gridAutoColumns="1fr"
                 gridTemplateColumns={`repeat(${colorValues.length}, 1fr)`}
                 alignItems="center"

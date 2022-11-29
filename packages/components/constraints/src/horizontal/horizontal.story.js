@@ -24,7 +24,7 @@ const Stack = styled.div`
 
 const Wrapper = styled.div`
   position: relative;
-  padding-top: ${designTokens.spacingXl};
+  padding-top: ${designTokens.spacing50};
 `;
 
 const ColumnsContainer = styled.div`
@@ -37,7 +37,7 @@ const ColumnsContainer = styled.div`
 const Column = styled.div`
   display: inline-block;
   width: ${designTokens.constraint2};
-  margin-right: ${designTokens.spacingM};
+  margin-right: ${designTokens.spacing30};
   height: 100%;
   text-align: center;
   background-color: rgba(241, 109, 14, 0.3);
