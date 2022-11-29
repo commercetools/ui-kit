@@ -1,5 +1,4 @@
 ---
-'@commercetools-uikit/design-system': minor
 '@commercetools-uikit/spacings-inline': minor
 '@commercetools-uikit/spacings-stack': minor
 ---
