@@ -3,7 +3,7 @@ import type { TTagProps } from './tag';
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { Link } from 'react-router-dom';
 
@@ -72,7 +72,12 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
 };
 
 const TagBody = (props: TTagBodyProps) => {
+  const currentTheme = useTheme();
   const textTone = props.isDisabled ? 'secondary' : undefined;
+  // TODO: This is a temporary solution due to theme migration. After the new
+  // theme is published, we must remove this and just use the `Text.Body` component
+  const TextComponent = currentTheme === 'default' ? Text.Detail : Text.Body;
+
   return (
     <Body
       to={props.to}
@@ -81,7 +86,6 @@ const TagBody = (props: TTagBodyProps) => {
         getContentWrapperStyles(props),
         Boolean(props.onRemove) &&
           css`
-            padding-right: ${designTokens.spacing20};
             border-right: 0;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
@@ -98,7 +102,9 @@ const TagBody = (props: TTagBodyProps) => {
                 position: absolute;
                 right: -1px;
                 content: '';
-                background-color: ${designTokens.borderColorForTagWhenFocused};
+                background-color: ${props.type === 'warning'
+                  ? designTokens.borderColorForTagWarning
+                  : designTokens.borderColorForTagWhenFocused};
                 width: 1px;
                 height: 100%;
               }
@@ -108,7 +114,7 @@ const TagBody = (props: TTagBodyProps) => {
       ]}
       onClick={props.isDisabled ? undefined : props.onClick}
     >
-      <Text.Detail tone={textTone}>{props.children}</Text.Detail>
+      <TextComponent tone={textTone}>{props.children}</TextComponent>
     </Body>
   );
 };

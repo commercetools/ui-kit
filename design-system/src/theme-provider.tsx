@@ -92,14 +92,16 @@ ThemeProvider.defaultProps = {
   theme: 'default',
 };
 
-const useTheme = (parentSelector = defaultParentSelector) => {
-  const [theme, setTheme] = useState<string>('default');
+const useTheme = (parentSelector = defaultParentSelector): ThemeName => {
+  const [theme, setTheme] = useState<ThemeName>('default');
   const parentSelectorRef = useRef(parentSelector);
 
   // If we use 'useLayoutEffect' here, we would be trying to read the
   // data attribute before it gets set from the effect in the ThemeProvider
   useEffect(() => {
-    setTheme(parentSelectorRef.current()?.dataset.theme || 'default');
+    setTheme(
+      (parentSelectorRef.current()?.dataset.theme as ThemeName) || 'default'
+    );
   }, []);
 
   return theme;
