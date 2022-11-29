@@ -93,7 +93,7 @@ const getInputStyles = (props: TInputProps) => {
     :focus {
       box-shadow: inset 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
       border: ${designTokens.borderWidthForInputWhenFocused} solid
-        ${getInputBorderColor(props)};
+        ${designTokens.borderColorForInputWhenFocused};
     }
   `;
 };
