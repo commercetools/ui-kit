@@ -458,7 +458,7 @@ decisionGroupsByTheme:
           choice: color-error
         font-color-for-input-when-readonly:
           description: ''
-          choice: color-neutral-60
+          choice: color-neutral-40
         font-color-for-input-when-warning:
           description: ''
           choice: color-warning
@@ -732,6 +732,8 @@ decisionGroupsByTheme:
           choice: border-radius-2
         border-radius-for-card:
           choice: border-radius-4
+        border-radius-for-input:
+          choice: border-radius-4
 
     fontColors:
       label: Font Colors
@@ -746,8 +748,6 @@ decisionGroupsByTheme:
       label: Border width
       prefix: border-width
       decisions:
-        border-width-for-input:
-          choice: '1px'
         border-width-for-input-when-warning:
           choice: '2px'
         border-width-for-input-when-error:
