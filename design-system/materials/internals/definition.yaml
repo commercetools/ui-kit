@@ -777,11 +777,11 @@ decisionGroupsByTheme:
       prefix: padding
       decisions:
         padding-for-stamp:
-          choice: '5px 12px'
+          choice: '4px 12px'
         padding-for-stamp-as-condensed:
-          choice: '1px var(--spacing-20)'
+          choice: '0 var(--spacing-20)'
         padding-for-tag:
-          choice: '3px 12px'
+          choice: '2px 12px'
 
     shadows:
       label: Shadows
