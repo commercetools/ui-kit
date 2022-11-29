@@ -182,6 +182,10 @@
   --border-radius-for-input: 6px;
   --border-radius-for-tag: 2px;
   --border-radius-for-card: 6px;
+  --border-width-for-input: 1px;
+  --border-width-for-input-when-warning: 1px;
+  --border-width-for-input-when-error: 1px;
+  --border-width-for-input-when-focused: 1px;
   --font-color-for-text: #1a1a1a;
   --font-color-for-input: #1a1a1a;
   --font-color-for-input-when-disabled: hsl(0, 0%, 60%);
@@ -197,6 +201,7 @@
   --height-for-button-as-icon-as-big: 32px;
   --height-for-button-as-icon-as-medium: 24px;
   --height-for-button-as-icon-as-small: 16px;
+  --height-for-input: 32px;
   --placeholder-font-color-for-input: hsl(0, 0%, 60%);
   --font-size-for-button: 1rem;
   --font-size-for-input: 1rem;
