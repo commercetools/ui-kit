@@ -92,19 +92,47 @@ ThemeProvider.defaultProps = {
   theme: 'default',
 };
 
-const useTheme = (parentSelector = defaultParentSelector): ThemeName => {
+type TUseThemeResult = {
+  currentTheme: ThemeName;
+};
+const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
   const [theme, setTheme] = useState<ThemeName>('default');
   const parentSelectorRef = useRef(parentSelector);
+  const observerRef = useRef(
+    new MutationObserver((mutationList, _observer) => {
+      // Since we are only observing the theme DOM node for changes in its
+      // `data-theme` attribute (configured below when calling `observe` function),
+      // we will receive a single element in the list
+      setTheme(
+        (mutationList[0].target as HTMLElement).dataset.theme as ThemeName
+      );
+    })
+  );
 
   // If we use 'useLayoutEffect' here, we would be trying to read the
   // data attribute before it gets set from the effect in the ThemeProvider
   useEffect(() => {
-    setTheme(
-      (parentSelectorRef.current()?.dataset.theme as ThemeName) || 'default'
-    );
+    const themeDomNode = parentSelectorRef.current();
+    const observer = observerRef.current;
+
+    if (themeDomNode) {
+      // We need to read the current theme after the provider is rendered
+      // to have the actual selected theme (calulated client-side) in the
+      // hook local state
+      setTheme((themeDomNode.dataset.theme as ThemeName) || 'default');
+
+      // We observe the theme DOM node for changes in its `data-theme`
+      // attribute, which is the one we update in the `applyTheme` function
+      observer.observe(themeDomNode, {
+        attributes: true,
+        attributeFilter: ['data-theme'],
+      });
+    }
+
+    return () => observer.disconnect();
   }, []);
 
-  return theme;
+  return { currentTheme: theme };
 };
 
 export { ThemeProvider, useTheme };

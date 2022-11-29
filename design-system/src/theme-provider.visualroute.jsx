@@ -16,7 +16,7 @@ export const routePath = '/theme-provider';
 const parentSelector = (id) => () => document.getElementById(id);
 
 const DummyComponent = (props) => {
-  const theme = useTheme(parentSelector(props.parentId));
+  const { currentTheme } = useTheme(parentSelector(props.parentId));
 
   return (
     <h1
@@ -30,7 +30,7 @@ const DummyComponent = (props) => {
     >
       {props.title ?? (
         <>
-          Title with {theme} theme <i>colorSolid</i> design token
+          Title with {currentTheme} theme <i>colorSolid</i> design token
         </>
       )}
     </h1>

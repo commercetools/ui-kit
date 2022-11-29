@@ -72,7 +72,7 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
 };
 
 const TagBody = (props: TTagBodyProps) => {
-  const currentTheme = useTheme();
+  const { currentTheme } = useTheme();
   const textTone = props.isDisabled ? 'secondary' : undefined;
   // TODO: This is a temporary solution due to theme migration. After the new
   // theme is published, we must remove this and just use the `Text.Body` component
