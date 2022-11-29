@@ -13,7 +13,7 @@ const getButtonStyle = () => css`
   text-decoration: none;
   color: inherit;
   font: inherit;
-  font-size: ${designTokens.fontSizeDefault};
+  font-size: ${designTokens.fontSizeForTable};
   font-family: inherit;
 `;
 
@@ -46,6 +46,10 @@ const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
   svg[data-icon-state='active'] {
     display: ${props.isActive ? 'inline-block' : 'none'};
   }
+  /* for cases where svgs have a predefined fill */
+  svg * {
+    fill: ${designTokens.fontColorForTableHeader} !important;
+  }
 
   :hover,
   :focus {
@@ -54,9 +58,6 @@ const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
     }
     svg[data-icon-state='active'] {
       display: inline-block;
-      * {
-        fill: ${designTokens.colorNeutral};
-      }
     }
   }
 `;
@@ -73,7 +74,9 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
   justify-content: space-between;
   padding: 0
     ${(props) =>
-      props.isCondensed ? designTokens.spacing20 : designTokens.spacing30};
+      props.isCondensed
+        ? designTokens.paddingHorizontalForTableHeaderAsCondensed
+        : designTokens.paddingHorizontalForTableHeader};
 
   ${getCellInnerStyles}
   ${(props) => (props.isSortable ? getSortableHeaderStyles(props) : '')};
@@ -84,10 +87,11 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
 type TBaseHeaderCell = {
   disableHeaderStickiness?: boolean;
   shouldClipContent?: boolean;
+  isCondensed?: boolean;
 };
 const BaseHeaderCell = styled.th<TBaseHeaderCell>`
-  color: ${designTokens.colorSurface};
-  background-color: ${designTokens.colorAccent};
+  color: ${designTokens.fontColorForTableHeader};
+  background-color: ${designTokens.backgroundColorForTableHeader};
 
   position: ${(props) =>
     props.disableHeaderStickiness ? 'relative' : 'sticky'};
@@ -96,28 +100,72 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
 
   /* remove user-agent styles */
   padding: 0;
-  font-weight: normal;
+  font-weight: ${designTokens.fontWeightForTableHeader};
+  font-size: ${designTokens.fontSizeForTable};
 
   /* right border that doesn't count towards the column width */
-  box-shadow: inset -1px 0 ${designTokens.colorNeutral90};
+  box-shadow: inset -1px 0 ${designTokens.borderColorForTableHeader};
 
   /* this ensures that, when dragging this header's column resizer
-     it remains above the rest of the headers, preventing accidental hovers/flickering */
+  it remains above the rest of the headers, preventing accidental hovers/flickering */
   :hover,
   :active {
     z-index: 2;
   }
-
+  /* column divider showing up on hover  */
+  :not(:first-of-type):hover,
+  :not(:first-of-type):active {
+    :after {
+      content: '';
+      position: absolute;
+      height: calc(
+        100% - 2 *
+          ${(props) =>
+            props.isCondensed
+              ? designTokens.marginVerticalForTableHeaderAsCondensed
+              : designTokens.marginVerticalForTableHeader}
+      );
+      width: 1px;
+      background-color: ${designTokens.borderColorForTableHeaderWhenHovered};
+      top: ${(props) =>
+        props.isCondensed
+          ? designTokens.marginVerticalForTableHeaderAsCondensed
+          : designTokens.marginVerticalForTableHeader};
+      right: 0;
+      z-index: -1;
+    }
+  }
+  /**
+   * header row bottom border:
+   * - not using "border-bottom" since it stands out in front of the resize indicator and counts towards the row height
+   * - not using "box-shadow" since it's already used for the column divider
+   */
+  :before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: ${designTokens.borderColorForTableHeaderAsBottom};
+  }
   ${HeaderCellInner} {
     ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
   }
 `;
 
-const HeaderLabelWrapper = styled.div`
+type THeaderLabelWrapper = Pick<THeaderCell, 'isCondensed'>;
+
+const HeaderLabelWrapper = styled.div<THeaderLabelWrapper>`
   /* ensure height stays the same even if label is empty
      1.4em = default line-height */
   min-height: 1.4em;
-  margin: ${designTokens.spacing20} 0;
+  margin: ${(props) =>
+      props.isCondensed
+        ? designTokens.marginVerticalForTableHeaderAsCondensed
+        : designTokens.marginVerticalForTableHeader}
+    0;
   flex: 1;
 `;
 

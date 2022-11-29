@@ -146,6 +146,8 @@
   --background-color-for-input-when-selected: hsl(195, 35.2941176471%, 95%);
   --background-color-for-input-when-disabled: hsl(195, 35.2941176471%, 98%);
   --background-color-for-input-when-hovered: hsl(0, 0%, 90%);
+  --background-color-for-table-cell-when-hovered: hsl(0, 0%, 90%);
+  --background-color-for-table-header: #213c45;
   --background-color-for-tag: hsl(0, 0%, 95%);
   --background-color-for-tag-warning: hsl(
     25.110132158590307,
@@ -169,6 +171,9 @@
   --border-color-for-button-as-icon-as-info: #078cdf;
   --border-color-for-button-as-icon-as-primary: #00b39e;
   --border-color-for-button-as-icon-when-disabled: #ccc;
+  --border-color-for-table-header: #ccc;
+  --border-color-for-table-header-when-hovered: #ccc;
+  --border-color-for-table-header-as-bottom: #213c45;
   --border-radius-for-button-as-big: 6px;
   --border-radius-for-button-as-small: 4px;
   --border-radius-for-button-as-icon-as-big: 6px;
@@ -186,6 +191,7 @@
   --font-color-for-tag: #1a1a1a;
   --font-color-for-tag-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-text-when-inverted: #fff;
+  --font-color-for-table-header: #fff;
   --height-for-button-as-big: 32px;
   --height-for-button-as-small: 24px;
   --height-for-button-as-icon-as-big: 32px;
@@ -204,6 +210,7 @@
   --font-size-for-body: 13px;
   --font-size-for-link: 1rem;
   --font-size-for-stamp: 1rem;
+  --font-size-for-table: 1rem;
   --line-height-for-text-as-h1: inherit;
   --line-height-for-text-as-h2: inherit;
   --line-height-for-text-as-h3: inherit;
@@ -219,9 +226,16 @@
   --font-weight-for-text-as-body: 400;
   --font-weight-for-text-as-detail: 400;
   --font-weight-for-button: 400;
+  --font-weight-for-table-header: 400;
+  --margin-vertical-for-table-header: 8px;
+  --margin-vertical-for-table-header-as-condensed: 8px;
   --padding-for-stamp: var(--spacing-10) var(--spacing-20);
   --padding-for-stamp-as-condensed: 1px var(--spacing-10);
   --padding-for-tag: 5px var(--spacing-20);
+  --padding-horizontal-for-table-header: 16px;
+  --padding-horizontal-for-table-header-as-condensed: 8px;
+  --padding-horizontal-for-table-cell: 16px;
+  --padding-horizontal-for-table-cell-as-condensed: 8px;
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),

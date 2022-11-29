@@ -17,10 +17,10 @@ type TCellInner = {
 const getPaddingStyle = (props: TCellInner) => {
   if (props.isCondensed)
     return css`
-      padding: ${designTokens.spacing20};
+      padding: ${designTokens.paddingHorizontalForTableCellAsCondensed};
     `;
   return css`
-    padding: ${designTokens.spacing30};
+    padding: ${designTokens.paddingHorizontalForTableCell};
   `;
 };
 
@@ -130,6 +130,7 @@ const BaseCell = styled.td<TBaseCell>`
     props.shouldRenderBottomBorder
       ? `1px solid ${designTokens.colorNeutral90};`
       : 'none'};
+  font-size: ${designTokens.fontSizeForTable};
   ${(props) =>
     props.shouldClipContent
       ? css`
