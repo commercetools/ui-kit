@@ -17,7 +17,7 @@ export type TAlignItem =
    */
   | 'flexEnd';
 
-export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
+export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 
 export type TProps = {
   scale: TScale;

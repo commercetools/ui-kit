@@ -108,6 +108,13 @@
   --spacing-m: 16px;
   --spacing-l: 24px;
   --spacing-xl: 32px;
+  --spacing-10: 4px;
+  --spacing-20: 8px;
+  --spacing-30: 16px;
+  --spacing-40: 24px;
+  --spacing-50: 32px;
+  --spacing-60: 48px;
+  --spacing-70: 64px;
   --transition-linear-80ms: 80ms linear;
   --transition-easeinout-150ms: 150ms ease-in-out;
   --transition-standard: 200ms ease;
@@ -196,6 +203,7 @@
   --font-size-for-text-as-detail: 0.9231rem;
   --font-size-for-body: 13px;
   --font-size-for-link: 1rem;
+  --font-size-for-stamp: 1rem;
   --line-height-for-text-as-h1: inherit;
   --line-height-for-text-as-h2: inherit;
   --line-height-for-text-as-h3: inherit;
@@ -211,6 +219,9 @@
   --font-weight-for-text-as-body: 400;
   --font-weight-for-text-as-detail: 400;
   --font-weight-for-button: 400;
+  --padding-for-stamp: var(--spacing-10) var(--spacing-20);
+  --padding-for-stamp-as-condensed: 1px var(--spacing-10);
+  --padding-for-tag: 5px var(--spacing-20);
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),

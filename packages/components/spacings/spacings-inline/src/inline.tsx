@@ -25,7 +25,7 @@ export type TJustifyContent =
   | 'space-around'
   | 'space-evenly';
 
-export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
+export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 
 export type TProps = {
   scale: TScale;

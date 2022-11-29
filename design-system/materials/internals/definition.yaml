@@ -165,11 +165,20 @@ choiceGroupsByTheme:
       label: Spacings
       prefix: spacing
       choices:
+        # Legacy deprecated tokens
         spacing-xs: 4px
         spacing-s: 8px
         spacing-m: 16px
         spacing-l: 24px
         spacing-xl: 32px
+        # New tokens
+        spacing-10: 4px
+        spacing-20: 8px
+        spacing-30: 16px
+        spacing-40: 24px
+        spacing-50: 32px
+        spacing-60: 48px
+        spacing-70: 64px
     transitions:
       label: Transitions
       prefix: transition
@@ -252,6 +261,8 @@ variants:
     description: 'To differentiate component urgent type'
   info:
     description: 'To differentiate component info type'
+  condensed:
+    description: 'Elements with a compact style'
 
 componentGroups:
   button:
@@ -270,6 +281,8 @@ componentGroups:
     description: 'Card element'
   link:
     description: 'Link elements'
+  stamp:
+    description: 'Stamp elements'
 
 decisionGroupsByTheme:
   default:
@@ -488,6 +501,8 @@ decisionGroupsByTheme:
         font-size-for-link:
           description: ''
           choice: font-size-30
+        font-size-for-stamp:
+          choice: font-size-30
 
     lineHeights:
       label: Line Heights
@@ -542,6 +557,17 @@ decisionGroupsByTheme:
           choice: font-weight-400
         font-weight-for-button:
           choice: font-weight-400
+
+    paddings:
+      label: Paddings
+      prefix: padding
+      decisions:
+        padding-for-stamp:
+          choice: 'var(--spacing-10) var(--spacing-20)'
+        padding-for-stamp-as-condensed:
+          choice: '1px var(--spacing-10)'
+        padding-for-tag:
+          choice: '5px var(--spacing-20)'
 
     shadows:
       label: Shadows
@@ -674,6 +700,8 @@ decisionGroupsByTheme:
         font-size-for-link:
           description: ''
           choice: 'inherit'
+        font-size-for-stamp:
+          choice: font-size-20
 
     lineHeights:
       label: Line Heights
@@ -743,6 +771,17 @@ decisionGroupsByTheme:
           choice: '32px'
         height-for-button-as-icon-as-small:
           choice: '16px'
+
+    paddings:
+      label: Paddings
+      prefix: padding
+      decisions:
+        padding-for-stamp:
+          choice: '4px 12px'
+        padding-for-stamp-as-condensed:
+          choice: '0 var(--spacing-20)'
+        padding-for-tag:
+          choice: '2px 12px'
 
     shadows:
       label: Shadows
