@@ -75,8 +75,8 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
   padding: 0
     ${(props) =>
       props.isCondensed
-        ? designTokens.paddingHorizontalForTableHeaderAsCondensed
-        : designTokens.paddingHorizontalForTableHeader};
+        ? designTokens.paddingForTableHeaderAsCondensed
+        : designTokens.paddingForTableHeader};
 
   ${getCellInnerStyles}
   ${(props) => (props.isSortable ? getSortableHeaderStyles(props) : '')};
@@ -122,15 +122,15 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
         100% - 2 *
           ${(props) =>
             props.isCondensed
-              ? designTokens.marginVerticalForTableHeaderAsCondensed
-              : designTokens.marginVerticalForTableHeader}
+              ? designTokens.marginForTableHeaderAsCondensed
+              : designTokens.marginForTableHeader}
       );
       width: 1px;
       background-color: ${designTokens.borderColorForTableHeaderWhenHovered};
       top: ${(props) =>
         props.isCondensed
-          ? designTokens.marginVerticalForTableHeaderAsCondensed
-          : designTokens.marginVerticalForTableHeader};
+          ? designTokens.marginForTableHeaderAsCondensed
+          : designTokens.marginForTableHeader};
       right: 0;
       z-index: -1;
     }
@@ -163,8 +163,8 @@ const HeaderLabelWrapper = styled.div<THeaderLabelWrapper>`
   min-height: 1.4em;
   margin: ${(props) =>
       props.isCondensed
-        ? designTokens.marginVerticalForTableHeaderAsCondensed
-        : designTokens.marginVerticalForTableHeader}
+        ? designTokens.marginForTableHeaderAsCondensed
+        : designTokens.marginForTableHeader}
     0;
   flex: 1;
 `;

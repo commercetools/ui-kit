@@ -17,10 +17,10 @@ type TCellInner = {
 const getPaddingStyle = (props: TCellInner) => {
   if (props.isCondensed)
     return css`
-      padding: ${designTokens.paddingHorizontalForTableCellAsCondensed};
+      padding: ${designTokens.paddingForTableCellAsCondensed};
     `;
   return css`
-    padding: ${designTokens.paddingHorizontalForTableCell};
+    padding: ${designTokens.paddingForTableCell};
   `;
 };
 

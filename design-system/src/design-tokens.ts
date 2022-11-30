@@ -217,15 +217,15 @@ export const themes = {
     fontWeightForTextAsDetail: '400',
     fontWeightForButton: '400',
     fontWeightForTableHeader: '400',
-    marginVerticalForTableHeader: '8px',
-    marginVerticalForTableHeaderAsCondensed: '8px',
+    marginForTableHeader: '8px',
+    marginForTableHeaderAsCondensed: '8px',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
-    paddingHorizontalForTableHeader: '16px',
-    paddingHorizontalForTableHeaderAsCondensed: '8px',
-    paddingHorizontalForTableCell: '16px',
-    paddingHorizontalForTableCellAsCondensed: '8px',
+    paddingForTableHeader: '16px',
+    paddingForTableHeaderAsCondensed: '8px',
+    paddingForTableCell: '16px',
+    paddingForTableCellAsCondensed: '8px',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -320,15 +320,15 @@ export const themes = {
     heightForButtonAsIconAsBig: '40px',
     heightForButtonAsIconAsMedium: '32px',
     heightForButtonAsIconAsSmall: '16px',
-    marginVerticalForTableHeader: '16px',
-    marginVerticalForTableHeaderAsCondensed: '8px',
+    marginForTableHeader: '16px',
+    marginForTableHeaderAsCondensed: '8px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
-    paddingHorizontalForTableHeader: '24px',
-    paddingHorizontalForTableHeaderAsCondensed: '24px',
-    paddingHorizontalForTableCell: '24px',
-    paddingHorizontalForTableCellAsCondensed: '24px',
+    paddingForTableHeader: '24px',
+    paddingForTableHeaderAsCondensed: '24px',
+    paddingForTableCell: '24px',
+    paddingForTableCellAsCondensed: '24px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -600,22 +600,20 @@ const designTokens = {
   fontWeightForTextAsDetail: 'var(--font-weight-for-text-as-detail, 400)',
   fontWeightForButton: 'var(--font-weight-for-button, 400)',
   fontWeightForTableHeader: 'var(--font-weight-for-table-header, 400)',
-  marginVerticalForTableHeader: 'var(--margin-vertical-for-table-header, 8px)',
-  marginVerticalForTableHeaderAsCondensed:
-    'var(--margin-vertical-for-table-header-as-condensed, 8px)',
+  marginForTableHeader: 'var(--margin-for-table-header, 8px)',
+  marginForTableHeaderAsCondensed:
+    'var(--margin-for-table-header-as-condensed, 8px)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
     'var(--padding-for-stamp-as-condensed, 1px var(--spacing-10))',
   paddingForTag: 'var(--padding-for-tag, 5px var(--spacing-20))',
-  paddingHorizontalForTableHeader:
-    'var(--padding-horizontal-for-table-header, 16px)',
-  paddingHorizontalForTableHeaderAsCondensed:
-    'var(--padding-horizontal-for-table-header-as-condensed, 8px)',
-  paddingHorizontalForTableCell:
-    'var(--padding-horizontal-for-table-cell, 16px)',
-  paddingHorizontalForTableCellAsCondensed:
-    'var(--padding-horizontal-for-table-cell-as-condensed, 8px)',
+  paddingForTableHeader: 'var(--padding-for-table-header, 16px)',
+  paddingForTableHeaderAsCondensed:
+    'var(--padding-for-table-header-as-condensed, 8px)',
+  paddingForTableCell: 'var(--padding-for-table-cell, 16px)',
+  paddingForTableCellAsCondensed:
+    'var(--padding-for-table-cell-as-condensed, 8px)',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

@@ -586,9 +586,9 @@ decisionGroupsByTheme:
       label: Margins
       prefix: margin
       decisions:
-        margin-vertical-for-table-header:
+        margin-for-table-header:
           choice: spacing-20
-        margin-vertical-for-table-header-as-condensed:
+        margin-for-table-header-as-condensed:
           choice: spacing-20
 
     paddings:
@@ -601,13 +601,13 @@ decisionGroupsByTheme:
           choice: '1px var(--spacing-10)'
         padding-for-tag:
           choice: '5px var(--spacing-20)'
-        padding-horizontal-for-table-header:
+        padding-for-table-header:
           choice: spacing-30
-        padding-horizontal-for-table-header-as-condensed:
+        padding-for-table-header-as-condensed:
           choice: spacing-20
-        padding-horizontal-for-table-cell:
+        padding-for-table-cell:
           choice: spacing-30
-        padding-horizontal-for-table-cell-as-condensed:
+        padding-for-table-cell-as-condensed:
           choice: spacing-20
 
     shadows:
@@ -838,9 +838,9 @@ decisionGroupsByTheme:
       label: Margins
       prefix: margin
       decisions:
-        margin-vertical-for-table-header:
+        margin-for-table-header:
           choice: spacing-30
-        margin-vertical-for-table-header-as-condensed:
+        margin-for-table-header-as-condensed:
           choice: spacing-20
 
     paddings:
@@ -853,13 +853,13 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-20)'
         padding-for-tag:
           choice: '2px 12px'
-        padding-horizontal-for-table-header:
+        padding-for-table-header:
           choice: spacing-40
-        padding-horizontal-for-table-header-as-condensed:
+        padding-for-table-header-as-condensed:
           choice: spacing-40
-        padding-horizontal-for-table-cell:
+        padding-for-table-cell:
           choice: spacing-40
-        padding-horizontal-for-table-cell-as-condensed:
+        padding-for-table-cell-as-condensed:
           choice: spacing-40
 
     shadows:
