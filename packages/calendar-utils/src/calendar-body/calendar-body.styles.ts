@@ -12,7 +12,7 @@ const getClearSectionStyles = () => {
     align-items: center;
     box-sizing: border-box;
     display: flex;
-    margin-right: ${designTokens.spacingXs};
+    margin-right: ${designTokens.spacing10};
     cursor: pointer;
     transition: color ${designTokens.transitionStandard},
       border-color ${designTokens.transitionStandard};
@@ -79,7 +79,7 @@ const getCalendarIconContainerStyles = (
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     height: 100%;
     display: flex;
-    padding: ${designTokens.spacingXs};
+    padding: ${designTokens.spacing10};
     outline: 0;
     transition: color ${designTokens.transitionStandard},
       border-color ${designTokens.transitionStandard};

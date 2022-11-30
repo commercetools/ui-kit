@@ -17,10 +17,10 @@ type TCellInner = {
 const getPaddingStyle = (props: TCellInner) => {
   if (props.isCondensed)
     return css`
-      padding: ${designTokens.spacingS};
+      padding: ${designTokens.spacing20};
     `;
   return css`
-    padding: ${designTokens.spacingM};
+    padding: ${designTokens.spacing30};
   `;
 };
 

@@ -13,7 +13,7 @@ const getClearSectionStyles = () => {
     align-items: center;
     box-sizing: border-box;
     display: flex;
-    margin: ${designTokens.spacingXs};
+    margin: ${designTokens.spacing10};
     cursor: pointer;
 
     &:hover svg * {
@@ -63,7 +63,7 @@ const getClockIconContainerStyles = (props: TTimeInputProps) => {
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     height: 100%;
     display: flex;
-    padding: ${designTokens.spacingXs};
+    padding: ${designTokens.spacing10};
     outline: 0;
     transition: color ${designTokens.transitionStandard},
       border-color ${designTokens.transitionStandard};

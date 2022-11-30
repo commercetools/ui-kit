@@ -43,7 +43,7 @@ const CalendarHeader = (props: TCalendarHeader) => {
       css={css`
         display: flex;
         padding: 10px 2% 6px;
-        margin-bottom: ${designTokens.spacingXs};
+        margin-bottom: ${designTokens.spacing10};
         justify-content: space-between;
         border-bottom: 1px solid ${designTokens.colorNeutral90};
       `}

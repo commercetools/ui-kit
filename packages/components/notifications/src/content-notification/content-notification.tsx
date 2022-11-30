@@ -96,7 +96,7 @@ const NotificationIcon = (props: TContentNotificationProps) => {
         border-radius: ${designTokens.borderRadius6} 0 0
           ${designTokens.borderRadius6};
         border-width: 0;
-        padding: ${designTokens.spacingS} ${designTokens.spacingM};
+        padding: ${designTokens.spacing20} ${designTokens.spacing30};
         background-color: ${getIconContainerBackgroundColour(props)};
         svg {
           margin: 0 -3px;
@@ -147,7 +147,7 @@ const ContentNotification = (props: TContentNotificationProps) => {
           flex-grow: 1;
           display: flex;
           align-items: center;
-          padding: ${designTokens.spacingS};
+          padding: ${designTokens.spacing20};
           background: ${designTokens.colorSurface};
           border-radius: 0 ${designTokens.borderRadius6}
             ${designTokens.borderRadius6} 0;

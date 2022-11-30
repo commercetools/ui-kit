@@ -12,11 +12,11 @@ type TProps = {
 const getPadding = (scale?: TScale) => {
   switch (scale) {
     case 's':
-      return `${designTokens.spacingXs} ${designTokens.spacingS}`;
+      return `${designTokens.spacing10} ${designTokens.spacing20}`;
     case 'm':
-      return `${designTokens.spacingS} ${designTokens.spacingM}`;
+      return `${designTokens.spacing20} ${designTokens.spacing30}`;
     case 'l':
-      return `${designTokens.spacingM} ${designTokens.spacingXl}`;
+      return `${designTokens.spacing30} ${designTokens.spacing50}`;
     default:
       return 0;
   }

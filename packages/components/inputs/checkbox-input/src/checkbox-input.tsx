@@ -92,7 +92,7 @@ const hoverStyles = (props: TLabelProps) => {
 };
 
 const LabelTextWrapper = styled.div`
-  margin-left: ${designTokens.spacingS};
+  margin-left: ${designTokens.spacing20};
   outline: none;
   border-radius: ${designTokens.borderRadiusForTag};
 `;

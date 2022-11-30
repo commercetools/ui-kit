@@ -64,8 +64,8 @@ export const Toolbar = styled.div`
   font-family: ${designTokens.fontFamilyDefault};
   border-radius: ${designTokens.borderRadiusForInput};
   border-bottom: 0;
-  padding: ${designTokens.spacingXs} calc(${designTokens.spacingS} - 1px);
-  padding-left: calc(${designTokens.spacingXs} - 1px);
+  padding: ${designTokens.spacing10} calc(${designTokens.spacing20} - 1px);
+  padding-left: calc(${designTokens.spacing10} - 1px);
   align-items: flex-start;
   align-content: stretch;
 
@@ -74,7 +74,7 @@ export const Toolbar = styled.div`
   &::after {
     position: absolute;
     content: '';
-    width: calc(100% - ${designTokens.spacingS});
+    width: calc(100% - ${designTokens.spacing20});
     height: 1px;
     background: ${designTokens.colorNeutral};
     left: 50%;
@@ -114,7 +114,7 @@ const reset = (props: TRichTextBodyStylesProps) => [
 ];
 
 export const EditorContainer = styled.div<TRichTextBodyStylesProps>`
-  padding: 4px ${designTokens.spacingS};
+  padding: 4px ${designTokens.spacing20};
   padding-top: 6px;
   border-radius: ${designTokens.borderRadiusForInput};
   font-family: ${designTokens.fontFamilyDefault};

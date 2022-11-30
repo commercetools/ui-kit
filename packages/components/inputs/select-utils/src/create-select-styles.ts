@@ -61,7 +61,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       if (props.isReadOnly) return 'default';
       return 'pointer';
     })(),
-    padding: `0 ${designTokens.spacingS}`,
+    padding: `0 ${designTokens.spacing20}`,
     transition: `border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard}`,
     outline: 0,
@@ -104,7 +104,7 @@ const menuStyles = (props: TProps) => (base: TBase) => {
     boxShadow: designTokens.shadow7,
     fontSize: designTokens.fontSizeForInput,
     fontFamily: 'inherit',
-    margin: `${designTokens.spacingXs} 0 0 0`,
+    margin: `${designTokens.spacing10} 0 0 0`,
     borderColor: (() => {
       if (props.hasError) return designTokens.borderColorForInputWhenError;
       if (props.hasWarning) return designTokens.borderColorForInputWhenWarning;
@@ -119,7 +119,7 @@ const indicatorSeparatorStyles = () => (base: TBase) => {
     display: 'none',
     margin: '0',
     padding: '0',
-    marginLeft: designTokens.spacingXs,
+    marginLeft: designTokens.spacing10,
   };
 };
 
@@ -129,7 +129,7 @@ const dropdownIndicatorStyles = (props: TProps) => (base: TBase) => {
     color: designTokens.fontColorForInput,
     margin: '0',
     padding: '0',
-    marginLeft: designTokens.spacingXs,
+    marginLeft: designTokens.spacing10,
     fill:
       props.isDisabled || props.isReadOnly
         ? designTokens.fontColorForInputWhenDisabled
@@ -158,8 +158,8 @@ const optionStyles = () => (base: TBase, state: TState) => {
     transition: `border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard}`,
-    paddingLeft: designTokens.spacingS,
-    paddingRight: designTokens.spacingS,
+    paddingLeft: designTokens.spacing20,
+    paddingRight: designTokens.spacing20,
     color: (() => {
       if (!state.isDisabled) return designTokens.fontColorForInput;
       if (state.isSelected) return designTokens.fontColorForInput;
@@ -252,8 +252,8 @@ const groupHeadingStyles = () => (base: TBase) => {
     fontSize: designTokens.fontSizeSmall,
     textTransform: 'none',
     fontWeight: 'bold',
-    margin: `0 ${designTokens.spacingXs}`,
-    padding: `${designTokens.spacingS} ${designTokens.spacingXs}`,
+    margin: `0 ${designTokens.spacing10}`,
+    padding: `${designTokens.spacing20} ${designTokens.spacing10}`,
     '&:empty': {
       padding: 0,
     },
@@ -303,7 +303,7 @@ const multiValueLabelStyles = (props: TProps) => (base: TBase) => {
       if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
       return base.color;
     })(),
-    padding: `${designTokens.spacingXs} ${designTokens.spacingS}`,
+    padding: `${designTokens.spacing10} ${designTokens.spacing20}`,
     borderRadius: `${designTokens.borderRadiusForTag} 0 0 ${designTokens.borderRadiusForTag}`,
     border: `1px ${designTokens.borderColorForTag} solid`,
     borderWidth: '1px 0 1px 1px',
@@ -320,7 +320,7 @@ const multiValueRemoveStyles =
     return {
       ...base,
       borderColor: designTokens.borderColorForTag,
-      padding: `0 ${designTokens.spacingXs}`,
+      padding: `0 ${designTokens.spacing10}`,
       borderRadius: `0 ${designTokens.borderRadiusForTag} ${designTokens.borderRadiusForTag} 0`,
       borderStyle: 'solid',
       borderWidth: '1px',
