@@ -508,7 +508,7 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-input:
           description: ''
-          choice: font-size-35
+          choice: font-size-15
         font-size-for-text-as-h1:
           description: ''
           choice: font-size-70
