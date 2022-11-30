@@ -88,7 +88,6 @@ const HeaderCellWrapper = (
       data-id={props.columnKey}
       shouldClipContent={shouldClipContent}
       disableHeaderStickiness={props.disableHeaderStickiness}
-      isCondensed={props.isCondensed}
     >
       {props.children}
       {!props.disableResizing && <Resizer onMouseDown={onStartResizing} />}

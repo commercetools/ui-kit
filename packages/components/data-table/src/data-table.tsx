@@ -286,7 +286,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
       >
         <ColumnResizingContext.Provider value={columnResizingReducer}>
           <TableHeader>
-            <TableRow isRowClickable={false}>
+            <TableRow isRowClickable={false} isCondensed={props.isCondensed}>
               {props.columns.map((column) => (
                 <HeaderCell
                   key={column.key}

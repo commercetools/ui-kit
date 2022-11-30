@@ -87,7 +87,6 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
 type TBaseHeaderCell = {
   disableHeaderStickiness?: boolean;
   shouldClipContent?: boolean;
-  isCondensed?: boolean;
 };
 const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   color: ${designTokens.fontColorForTableHeader};
@@ -111,29 +110,6 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   :hover,
   :active {
     z-index: 2;
-  }
-  /* column divider showing up on hover  */
-  :not(:first-of-type):hover,
-  :not(:first-of-type):active {
-    :after {
-      content: '';
-      position: absolute;
-      height: calc(
-        100% - 2 *
-          ${(props) =>
-            props.isCondensed
-              ? designTokens.marginForTableHeaderAsCondensed
-              : designTokens.marginForTableHeader}
-      );
-      width: 1px;
-      background-color: ${designTokens.borderColorForTableHeaderWhenHovered};
-      top: ${(props) =>
-        props.isCondensed
-          ? designTokens.marginForTableHeaderAsCondensed
-          : designTokens.marginForTableHeader};
-      right: 0;
-      z-index: -1;
-    }
   }
   /**
    * header row bottom border:
