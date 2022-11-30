@@ -815,7 +815,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
               props.hasHighPrecisionBadge &&
                 isHighPrecision &&
                 css`
-                  padding-right: ${designTokens.spacingL};
+                  padding-right: ${designTokens.spacing40};
                 `,
             ]}
             placeholder={props.placeholder}
@@ -846,7 +846,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
                   // so that the tooltip is flush with the component
                   styles={{
                     body: {
-                      margin: `${designTokens.spacingS} -${designTokens.spacingXs} ${designTokens.spacingS} 0`,
+                      margin: `${designTokens.spacing20} -${designTokens.spacing10} ${designTokens.spacing20} 0`,
                     },
                   }}
                   title={intl.formatMessage(messages.highPrecision)}

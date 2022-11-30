@@ -64,7 +64,7 @@ const getInputStyles = (props: TInputProps) => {
       : 'unset'}; /* fix for mobile safari */
     outline: none;
     overflow: hidden;
-    padding: 0 ${designTokens.spacingS};
+    padding: 0 ${designTokens.spacing20};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard},

@@ -5,7 +5,7 @@ const TagContainerEditable = styled.div`
   background-color: ${designTokens.backgroundColorForInput};
   border: ${designTokens.borderRadius1} solid ${designTokens.colorNeutral60};
   border-radius: ${designTokens.borderRadius6};
-  padding: ${designTokens.spacingS};
+  padding: ${designTokens.spacing20};
   height: ${designTokens.constraint7};
   overflow: auto;
 `;

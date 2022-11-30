@@ -16,7 +16,7 @@ const Placeholder = styled.div`
   align-items: center;
   justify-content: center;
   background-color: pink;
-  padding: ${designTokens.spacingM};
+  padding: ${designTokens.spacing30};
 `;
 
 const renderGridElements = () => {

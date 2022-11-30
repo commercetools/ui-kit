@@ -143,7 +143,7 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
 
         * + span,
         * + svg {
-          margin-left: ${designTokens.spacingXs};
+          margin-left: ${designTokens.spacing10};
         }
 
         ${!props.isDisabled

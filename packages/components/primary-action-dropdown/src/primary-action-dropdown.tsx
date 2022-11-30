@@ -74,7 +74,7 @@ const DropdownHead = (props: TDropdownHead) => (
       css={[
         ...getButtonStyles(props.isDisabled),
         css`
-          padding: 0 ${designTokens.spacingS};
+          padding: 0 ${designTokens.spacing20};
           border-radius: ${designTokens.borderRadius6} 0 0
             ${designTokens.borderRadius6};
         `,
@@ -82,7 +82,7 @@ const DropdownHead = (props: TDropdownHead) => (
     >
       <span
         css={css`
-          margin: 0 ${designTokens.spacingXs} 0 0;
+          margin: 0 ${designTokens.spacing10} 0 0;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -95,7 +95,7 @@ const DropdownHead = (props: TDropdownHead) => (
       </span>
       <span
         css={css`
-          margin: 0 ${designTokens.spacingXs} 0 0;
+          margin: 0 ${designTokens.spacing10} 0 0;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -127,7 +127,7 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
       css={[
         ...getButtonStyles(props.isDisabled),
         css`
-          padding: 0 ${designTokens.spacingXs};
+          padding: 0 ${designTokens.spacing10};
           border-left: 1px solid ${designTokens.colorNeutral};
           border-radius: 0 ${designTokens.borderRadius6}
             ${designTokens.borderRadius6} 0;
@@ -170,7 +170,7 @@ const Options = styled.div`
   position: absolute;
   z-index: 5;
   width: 100%;
-  top: calc(${designTokens.spacingS} + ${designTokens.bigButtonHeight});
+  top: calc(${designTokens.spacing20} + ${designTokens.bigButtonHeight});
   left: 0;
   border: 1px solid ${designTokens.colorNeutral};
   border-radius: ${designTokens.borderRadius6};

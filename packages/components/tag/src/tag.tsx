@@ -113,7 +113,7 @@ const Tag = (props: TTagProps) => {
                 border-color: ${props.type === 'warning'
                   ? designTokens.borderColorForTagWarning
                   : designTokens.borderColorForTag};
-                padding: 0 ${designTokens.spacingXs};
+                padding: 0 ${designTokens.spacing10};
                 border-radius: 0 ${designTokens.borderRadiusForTag}
                   ${designTokens.borderRadiusForTag} 0;
                 display: flex;
