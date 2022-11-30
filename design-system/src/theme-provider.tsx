@@ -117,7 +117,7 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
 
     if (themeDomNode) {
       // We need to read the current theme after the provider is rendered
-      // to have the actual selected theme (calulated client-side) in the
+      // to have the actual selected theme (calculated client-side) in the
       // hook local state
       setTheme((themeDomNode.dataset.theme as ThemeName) || 'default');
 
