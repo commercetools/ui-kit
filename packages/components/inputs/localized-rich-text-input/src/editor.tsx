@@ -321,7 +321,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                           position: absolute;
                           top: 0;
                           right: 0;
-                          margin-top: ${designTokens.spacingXs};
+                          margin-top: ${designTokens.spacing10};
                         `,
                     ]}
                   >

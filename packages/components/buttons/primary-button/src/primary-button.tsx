@@ -110,7 +110,7 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
         {Boolean(props.iconLeft) && (
           <span
             css={css`
-              margin: 0 ${designTokens.spacingXs} 0 0;
+              margin: 0 ${designTokens.spacing10} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;

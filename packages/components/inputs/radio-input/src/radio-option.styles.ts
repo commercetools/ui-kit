@@ -10,7 +10,7 @@ type TStylesProps = Pick<
 
 const LabelTextWrapper = styled.div<TStylesProps>`
   grid-area: label;
-  margin-left: ${designTokens.spacingS};
+  margin-left: ${designTokens.spacing20};
   font-size: 1rem;
   font-family: inherit;
   color: ${(props) =>
@@ -21,7 +21,7 @@ const LabelTextWrapper = styled.div<TStylesProps>`
 
 const AdditionalTextWrapper = styled.div<TStylesProps>`
   grid-area: content;
-  margin-left: ${designTokens.spacingXs};
+  margin-left: ${designTokens.spacing10};
   font-size: 1rem;
   font-family: inherit;
   color: ${(props) =>

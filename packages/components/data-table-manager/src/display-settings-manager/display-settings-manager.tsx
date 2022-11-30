@@ -52,7 +52,7 @@ const DensityManager = (props: TDensityManagerProps) => {
       containerTheme={props.managerTheme}
     >
       <Grid
-        gridGap={designTokens.spacingM}
+        gridGap={designTokens.spacing30}
         gridTemplateColumns="repeat(2, 1fr)"
       >
         <Grid.Item>

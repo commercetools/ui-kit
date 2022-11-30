@@ -8,15 +8,15 @@ export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
 const getPadding = (scale?: TScale) => {
   switch (scale) {
     case 'xs':
-      return designTokens.spacingXs;
+      return designTokens.spacing10;
     case 's':
-      return designTokens.spacingS;
+      return designTokens.spacing20;
     case 'm':
-      return designTokens.spacingM;
+      return designTokens.spacing30;
     case 'l':
-      return designTokens.spacingL;
+      return designTokens.spacing40;
     case 'xl':
-      return designTokens.spacingXl;
+      return designTokens.spacing50;
     default:
       return 0;
   }
