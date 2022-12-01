@@ -47,7 +47,7 @@ const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
     display: ${props.isActive ? 'inline-block' : 'none'};
   }
   /* for cases where svgs have a predefined fill */
-  svg * {
+  > svg * {
     fill: ${designTokens.fontColorForTableHeader} !important;
   }
 

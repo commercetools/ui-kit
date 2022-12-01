@@ -3,4 +3,4 @@
 '@commercetools-uikit/data-table': patch
 ---
 
-Fix `<DataTable>` component design tokens
+Adding new design tokens to `<DataTable>` component
