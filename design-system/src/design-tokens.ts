@@ -182,7 +182,7 @@ export const themes = {
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForInputWhenError: '#e60050',
-    fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
+    fontColorForInputWhenReadonly: 'hsl(0, 0%, 60%)',
     fontColorForInputWhenWarning: '#f16d0e',
     fontColorForTag: '#1a1a1a',
     fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
@@ -329,7 +329,7 @@ export const themes = {
     fontWeightForTextAsDetail: '400',
     fontWeightForButton: '500',
     fontWeightForTableHeader: '600',
-    fontColorForInputWhenReadonly: 'hsl(0, 0%, 60%)',
+    fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
     heightForButtonAsBig: '40px',
     heightForButtonAsSmall: '32px',
     heightForButtonAsIconAsBig: '40px',
@@ -578,7 +578,7 @@ const designTokens = {
     'var(--font-color-for-input-when-disabled, hsl(0, 0%, 60%))',
   fontColorForInputWhenError: 'var(--font-color-for-input-when-error, #e60050)',
   fontColorForInputWhenReadonly:
-    'var(--font-color-for-input-when-readonly, hsl(0, 0%, 40%))',
+    'var(--font-color-for-input-when-readonly, hsl(0, 0%, 60%))',
   fontColorForInputWhenWarning:
     'var(--font-color-for-input-when-warning, #f16d0e)',
   fontColorForTag: 'var(--font-color-for-tag, #1a1a1a)',
