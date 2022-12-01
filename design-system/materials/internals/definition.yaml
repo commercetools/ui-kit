@@ -624,6 +624,8 @@ decisionGroupsByTheme:
           choice: spacing-30
         padding-for-table-cell-as-condensed:
           choice: spacing-20
+        padding-for-input:
+          choice: 'spacing-20'
 
     shadows:
       label: Shadows
@@ -897,6 +899,8 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-30) var(--spacing-40)'
         padding-for-table-cell-as-condensed:
           choice: 'var(--spacing-20) var(--spacing-40)'
+        padding-for-input:
+          choice: 'spacing-30'
 
     shadows:
       label: Shadows

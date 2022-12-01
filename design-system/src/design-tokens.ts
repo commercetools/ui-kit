@@ -231,6 +231,7 @@ export const themes = {
     paddingForTableHeaderAsCondensed: '8px',
     paddingForTableCell: '16px',
     paddingForTableCellAsCondensed: '8px',
+    paddingForInput: '8px',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -342,6 +343,7 @@ export const themes = {
     paddingForTableCell: 'var(--spacing-30) var(--spacing-40)',
     paddingForTableCellAsCondensed: 'var(--spacing-20) var(--spacing-40)',
     heightForInput: '40px',
+    paddingForInput: '16px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -633,6 +635,7 @@ const designTokens = {
   paddingForTableCell: 'var(--padding-for-table-cell, 16px)',
   paddingForTableCellAsCondensed:
     'var(--padding-for-table-cell-as-condensed, 8px)',
+  paddingForInput: 'var(--padding-for-input, 8px)',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:
