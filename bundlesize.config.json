@@ -3,6 +3,10 @@
     {
       "path": "packages/**/dist/*.cjs.prod.js",
       "maxSize": "50 kB"
+    },
+    {
+      "path": "packages/**/dist/commercetools-uikit-icons.cjs.prod.js",
+      "maxSize": "60 kB"
     }
   ]
 }
