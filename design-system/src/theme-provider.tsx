@@ -93,7 +93,7 @@ ThemeProvider.defaultProps = {
 };
 
 type TUseThemeResult = {
-  currentTheme: ThemeName;
+  theme: ThemeName;
 };
 const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
   const [theme, setTheme] = useState<ThemeName>('default');
@@ -135,7 +135,7 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
     return () => observer.disconnect();
   }, []);
 
-  return { currentTheme: theme };
+  return { theme };
 };
 
 export { ThemeProvider, useTheme };
