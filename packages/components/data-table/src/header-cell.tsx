@@ -39,7 +39,6 @@ const HeaderCellWrapper = (
     | 'disableResizing'
     | 'disableHeaderStickiness'
     | 'onColumnResized'
-    | 'isCondensed'
   >
 ) => {
   const columnResizingReducer = useContext(
@@ -154,7 +153,6 @@ const HeaderCell = (props: THeaderCell) => {
       onColumnResized={props.onColumnResized}
       disableResizing={props.disableResizing}
       disableHeaderStickiness={props.disableHeaderStickiness}
-      isCondensed={props.isCondensed}
     >
       <HeaderCellInner
         shouldWrap={props.shouldWrap}
@@ -162,7 +160,7 @@ const HeaderCell = (props: THeaderCell) => {
         horizontalCellAlignment={props.horizontalCellAlignment}
         {...sortableHeaderProps}
       >
-        <HeaderLabelWrapper isCondensed={props.isCondensed}>
+        <HeaderLabelWrapper>
           {props.children}
           {props.iconComponent && (
             <HeaderIconWrapper>{props.iconComponent}</HeaderIconWrapper>

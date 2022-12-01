@@ -588,7 +588,7 @@ decisionGroupsByTheme:
       decisions:
         margin-for-table-header:
           choice: spacing-20
-        margin-for-table-header-as-condensed:
+        margin-for-table-as-condensed:
           choice: spacing-20
 
     paddings:
@@ -693,9 +693,9 @@ decisionGroupsByTheme:
         border-color-for-table-header:
           choice: color-surface
         border-color-for-table-header-when-hovered:
-          choice: color-neutral
+          choice: color-neutral-90
         border-color-for-table-header-as-bottom:
-          choice: color-neutral
+          choice: color-neutral-90
 
     borderRadiuses:
       label: Border radiuses
@@ -840,7 +840,7 @@ decisionGroupsByTheme:
       decisions:
         margin-for-table-header:
           choice: spacing-30
-        margin-for-table-header-as-condensed:
+        margin-for-table-cell-as-condensed:
           choice: spacing-20
 
     paddings:
@@ -858,9 +858,9 @@ decisionGroupsByTheme:
         padding-for-table-header-as-condensed:
           choice: spacing-40
         padding-for-table-cell:
-          choice: spacing-40
+          choice: 'var(--spacing-30) var(--spacing-40)'
         padding-for-table-cell-as-condensed:
-          choice: spacing-40
+          choice: 'var(--spacing-20) var(--spacing-40)'
 
     shadows:
       label: Shadows

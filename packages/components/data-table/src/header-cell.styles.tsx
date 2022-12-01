@@ -131,17 +131,11 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   }
 `;
 
-type THeaderLabelWrapper = Pick<THeaderCell, 'isCondensed'>;
-
-const HeaderLabelWrapper = styled.div<THeaderLabelWrapper>`
+const HeaderLabelWrapper = styled.div`
   /* ensure height stays the same even if label is empty
      1.4em = default line-height */
   min-height: 1.4em;
-  margin: ${(props) =>
-      props.isCondensed
-        ? designTokens.marginForTableHeaderAsCondensed
-        : designTokens.marginForTableHeader}
-    0;
+  margin: ${designTokens.marginForTableHeader} 0;
   flex: 1;
 `;
 

@@ -228,7 +228,7 @@
   --font-weight-for-button: 400;
   --font-weight-for-table-header: 400;
   --margin-for-table-header: 8px;
-  --margin-for-table-header-as-condensed: 8px;
+  --margin-for-table-as-condensed: 8px;
   --padding-for-stamp: var(--spacing-10) var(--spacing-20);
   --padding-for-stamp-as-condensed: 1px var(--spacing-10);
   --padding-for-tag: 5px var(--spacing-20);

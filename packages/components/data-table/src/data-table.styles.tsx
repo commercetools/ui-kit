@@ -7,7 +7,6 @@ import type { TDataTableProps } from './data-table';
 
 type TGetClickableRowStyleProps = {
   isRowClickable: boolean;
-  isCondensed?: boolean;
 };
 
 const getClickableRowStyle = (props: TGetClickableRowStyleProps) => {
@@ -113,19 +112,10 @@ const TableRow = styled.tr<TGetClickableRowStyleProps>`
     th:not(:first-of-type):after {
       content: '';
       position: absolute;
-      height: calc(
-        100% - 2 *
-          ${(props) =>
-            props.isCondensed
-              ? designTokens.marginForTableHeaderAsCondensed
-              : designTokens.marginForTableHeader}
-      );
+      height: calc(100% - 2 * ${designTokens.marginForTableHeader});
       width: 1px;
       background-color: ${designTokens.borderColorForTableHeaderWhenHovered};
-      top: ${(props) =>
-        props.isCondensed
-          ? designTokens.marginForTableHeaderAsCondensed
-          : designTokens.marginForTableHeader};
+      top: ${designTokens.marginForTableHeader};
       right: 0;
       z-index: -1;
     }
