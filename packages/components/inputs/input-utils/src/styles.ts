@@ -59,7 +59,7 @@ const getInputStyles = (props: TInputProps) => {
       ? designTokens.backgroundColorForInputWhenDisabled
       : designTokens.backgroundColorForInput};
     border: ${getInputBorderWidth(props)} solid ${getInputBorderColor(props)};
-    border-radius: ${designTokens.borderRadius4};
+    border-radius: ${designTokens.borderRadiusForInput};
     box-sizing: border-box;
     color: ${getInputFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
