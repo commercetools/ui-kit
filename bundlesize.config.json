@@ -1,12 +1,12 @@
 {
   "files": [
     {
-      "path": "packages/**/dist/*.cjs.prod.js",
-      "maxSize": "50 kB"
+      "path": "packages/**/icons/dist/*.cjs.prod.js",
+      "maxSize": "60 kB"
     },
     {
-      "path": "packages/components/icons/dist/*.cjs.prod.js",
-      "maxSize": "60 kB"
+      "path": "packages/**/!(icons)/dist/*.cjs.prod.js",
+      "maxSize": "50 kB"
     }
   ]
 }
