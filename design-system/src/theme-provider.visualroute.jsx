@@ -19,7 +19,7 @@ const DummyComponent = (props) => {
   const { currentTheme } = useTheme(
     props.parentId
       ? parentSelector(props.parentId)
-      : () => document.documentElement
+      : undefined
   );
 
   return (

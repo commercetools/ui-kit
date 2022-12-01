@@ -119,7 +119,10 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
       // We need to read the current theme after the provider is rendered
       // to have the actual selected theme (calculated client-side) in the
       // hook local state
-      setTheme((themeDomNode.dataset.theme as ThemeName) || 'default');
+      const nextTheme = themeDomNode.dataset.theme as ThemeName;
+      if (nextTheme) {
+        setTheme(nextTheme);
+      }
 
       // We observe the theme DOM node for changes in its `data-theme`
       // attribute, which is the one we update in the `applyTheme` function
