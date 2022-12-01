@@ -75,6 +75,14 @@ choiceGroupsByTheme:
         border-radius-4: 4px
         border-radius-6: 6px
         border-radius-20: 20px
+
+    borderWidths:
+      label: Border Widths
+      prefix: border-width
+      choices:
+        border-width-1: 1px
+        border-width-2: 2px
+
     fontFamilies:
       label: Font families
       prefix: font-family
@@ -432,13 +440,13 @@ decisionGroupsByTheme:
       prefix: border-width
       decisions:
         border-width-for-input:
-          choice: '1px'
+          choice: border-width-1
         border-width-for-input-when-warning:
-          choice: '1px'
+          choice: border-width-1
         border-width-for-input-when-error:
-          choice: '1px'
+          choice: border-width-1
         border-width-for-input-when-focused:
-          choice: '1px'
+          choice: border-width-1
 
     fontColors:
       label: Font Colors
@@ -751,11 +759,11 @@ decisionGroupsByTheme:
       prefix: border-width
       decisions:
         border-width-for-input-when-warning:
-          choice: '2px'
+          choice: border-width-2
         border-width-for-input-when-error:
-          choice: '2px'
+          choice: border-width-2
         border-width-for-input-when-focused:
-          choice: '2px'
+          choice: border-width-2
 
     fontSizes:
       label: Font Sizes
