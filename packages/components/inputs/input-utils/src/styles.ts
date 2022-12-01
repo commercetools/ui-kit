@@ -87,13 +87,14 @@ const getInputStyles = (props: TInputProps) => {
     :active,
     :focus,
     :hover:not(:disabled):not(:read-only) {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
+      border-color: ${designTokens.borderColorForInputWhenHovered};
       background-color: ${designTokens.backgroundColorForInputWhenHovered};
     }
     :focus {
-      box-shadow: inset 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
+      box-shadow: ${designTokens.shadowForInputWhenFocused};
       border: ${designTokens.borderWidthForInputWhenFocused} solid
         ${designTokens.borderColorForInputWhenFocused};
+      background-color: ${designTokens.backgroundColorForInputWhenFocused};
     }
   `;
 };

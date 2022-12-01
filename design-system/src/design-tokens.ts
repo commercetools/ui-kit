@@ -143,6 +143,7 @@ export const themes = {
     backgroundColorForInputWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForTableHeader: '#213c45',
+    backgroundColorForInputWhenFocused: 'hsl(0, 0%, 90%)',
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
@@ -156,6 +157,7 @@ export const themes = {
     borderColorForInputWhenReadonly: '#ccc',
     borderColorForInputWhenError: '#e60050',
     borderColorForInputWhenWarning: '#f16d0e',
+    borderColorForInputWhenHovered: '#00b39e',
     borderColorForTag: 'hsl(0, 0%, 60%)',
     borderColorForTagWarning: '#f16d0e',
     borderColorForTagWhenFocused: '#00b39e',
@@ -247,6 +249,7 @@ export const themes = {
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     shadowForCardWhenRaised:
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+    shadowForInputWhenFocused: 'inset 0 0 0 2px var(--color-primary)',
     fontSizeM: '1rem',
     bigButtonHeight: '32px',
     smallButtonHeight: '24px',
@@ -276,11 +279,15 @@ export const themes = {
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForTableHeader: '#fff',
     backgroundColorForInputWhenHovered: 'hsl(0, 0%, 95%)',
+    backgroundColorForInputWhenFocused: '#fff',
+    backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
     borderForCardWhenRaised: '1px solid var(--color-neutral-90)',
     borderColorForInput: 'hsl(0, 0%, 90%)',
+    borderColorForInputWhenDisabled: 'hsl(0, 0%, 90%)',
+    borderColorForInputWhenHovered: 'hsl(0, 0%, 90%)',
     borderColorForButtonAsIcon: '#ccc',
     borderColorForButtonAsIconAsInfo: '#ccc',
     borderColorForButtonAsIconAsPrimary: '#ccc',
@@ -352,6 +359,7 @@ export const themes = {
     shadowForButtonWhenActive: 'none',
     shadowForButtonWhenDisabled: 'none',
     shadowForCardWhenRaised: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
+    shadowForInputWhenFocused: 'none',
   },
 } as const;
 
@@ -519,6 +527,8 @@ const designTokens = {
     'var(--background-color-for-table-cell-when-hovered, hsl(0, 0%, 90%))',
   backgroundColorForTableHeader:
     'var(--background-color-for-table-header, #213c45)',
+  backgroundColorForInputWhenFocused:
+    'var(--background-color-for-input-when-focused, hsl(0, 0%, 90%))',
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
@@ -539,6 +549,8 @@ const designTokens = {
     'var(--border-color-for-input-when-error, #e60050)',
   borderColorForInputWhenWarning:
     'var(--border-color-for-input-when-warning, #f16d0e)',
+  borderColorForInputWhenHovered:
+    'var(--border-color-for-input-when-hovered, #00b39e)',
   borderColorForTag: 'var(--border-color-for-tag, hsl(0, 0%, 60%))',
   borderColorForTagWarning: 'var(--border-color-for-tag-warning, #f16d0e)',
   borderColorForTagWhenFocused:
@@ -654,6 +666,8 @@ const designTokens = {
     'var(--shadow-box-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   shadowForCardWhenRaised:
     'var(--shadow-for-card-when-raised, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
+  shadowForInputWhenFocused:
+    'var(--shadow-for-input-when-focused, inset 0 0 0 2px var(--color-primary))',
   fontSizeM: 'var(--font-size-m, 1rem)',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',
