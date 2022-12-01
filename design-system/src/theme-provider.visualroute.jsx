@@ -16,7 +16,11 @@ export const routePath = '/theme-provider';
 const parentSelector = (id) => () => document.getElementById(id);
 
 const DummyComponent = (props) => {
-  const theme = useTheme(parentSelector(props.parentId));
+  const { theme } = useTheme(
+    props.parentId
+      ? parentSelector(props.parentId)
+      : undefined
+  );
 
   return (
     <h1
