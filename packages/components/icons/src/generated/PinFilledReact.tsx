@@ -143,7 +143,7 @@ const SvgPinFilled = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="m16 12 2 2v2h-5v6l-1 1-1-1v-6H6v-2l2-2V5H7V3h10v2h-1v7Z" />
+    <path d="m16 11.1 1.8 1.8v1.8h-4.5v5.4l-.9.9-.9-.9v-5.4H7v-1.8l1.8-1.8V4.8h-.9V3h9v1.8H16v6.3Z" />
   </svg>
 );
 
