@@ -14,7 +14,7 @@ const getClickableRowStyle = (props: TGetClickableRowStyleProps) => {
     return css`
       cursor: pointer;
       &:hover td {
-        background: ${designTokens.backgroundColorForInputWhenHovered};
+        background: ${designTokens.backgroundColorForTableCellWhenHovered};
       }
     `;
   }
@@ -106,6 +106,18 @@ const TableRow = styled.tr<TGetClickableRowStyleProps>`
   :hover, :focus-within {
     ${RowExpandCollapseButton} {
       opacity: 1;
+    }
+
+    /* column divider showing up on hover  */
+    th:not(:first-of-type):after {
+      content: '';
+      position: absolute;
+      height: calc(100% - 2 * ${designTokens.marginForTableHeader});
+      width: 1px;
+      background-color: ${designTokens.borderColorForTableHeaderWhenHovered};
+      top: ${designTokens.marginForTableHeader};
+      right: 0;
+      z-index: -1;
     }
   }
 `;
