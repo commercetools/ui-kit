@@ -1,5 +1,21 @@
 # @commercetools-uikit/design-system
 
+## 15.6.0
+
+### Minor Changes
+
+- [#2343](https://github.com/commercetools/ui-kit/pull/2343) [`456712a7c`](https://github.com/commercetools/ui-kit/commit/456712a7cb697fde97422a2ebedaefa81f69f948) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Add new design tokens related to spacing components, `Stamp` and `Tag`.
+
+### Patch Changes
+
+- [#2349](https://github.com/commercetools/ui-kit/pull/2349) [`70dcbf909`](https://github.com/commercetools/ui-kit/commit/70dcbf9093a96251149f960f68d67dfee28aaea0) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix `useTheme` hook to keep the returned current selected theme name in sync with the provider.
+
+- [#2348](https://github.com/commercetools/ui-kit/pull/2348) [`9340db5e2`](https://github.com/commercetools/ui-kit/commit/9340db5e268fd83d478c1419361b1719800fd4cd) Thanks [@kark](https://github.com/kark)! - Adding new design tokens to `<DataTable>` component
+
+- [#2342](https://github.com/commercetools/ui-kit/pull/2342) [`ecd88cf12`](https://github.com/commercetools/ui-kit/commit/ecd88cf12d8d4d5324c9a0cb8f126ba130b9652a) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix `Tag` component design tokens
+
+- [#2346](https://github.com/commercetools/ui-kit/pull/2346) [`f33e1107a`](https://github.com/commercetools/ui-kit/commit/f33e1107a0e0cb3eb12fbcfeec848db00e1334b4) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Internal refactor to migrate spacing design tokens naming.
+
 ## 15.5.1
 
 ### Patch Changes
