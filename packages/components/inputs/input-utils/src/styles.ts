@@ -86,7 +86,7 @@ const getInputStyles = (props: TInputProps) => {
     }
     :active,
     :focus,
-    :hover:not(:disabled):not(:read-only) {
+    :hover:not(:disabled):not(:read-only):not(:focus) {
       border-color: ${designTokens.borderColorForInputWhenHovered};
       background-color: ${designTokens.backgroundColorForInputWhenHovered};
     }

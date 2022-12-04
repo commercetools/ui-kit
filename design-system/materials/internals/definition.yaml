@@ -943,7 +943,7 @@ decisionGroupsByTheme:
         shadow-for-card-when-raised:
           choice: '0 1px 5px 0 rgba(0, 0, 0, 0.05)'
         shadow-for-input-when-focused:
-          choice: none
+          choice: shadow-0
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
