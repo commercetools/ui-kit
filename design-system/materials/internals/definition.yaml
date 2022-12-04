@@ -291,6 +291,10 @@ componentGroups:
     description: 'Table header elements'
   table-cell:
     description: 'Table cell elements'
+  collapsible-panel-header:
+    description: 'collapsible panel header elements'
+  collapsible-panel-content:
+    description: 'collapsible panel content elements'
 
 decisionGroupsByTheme:
   default:
@@ -342,6 +346,10 @@ decisionGroupsByTheme:
         background-color-for-tag-warning:
           description: ''
           choice: color-warning-95
+        background-color-for-collapsible-panel-header:
+          choice: color-neutral-95
+        background-color-for-collapsible-panel-header-as-condensed:
+          choice: color-neutral-95
 
     borders:
       label: Borders
@@ -401,6 +409,8 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-table-header-as-bottom:
           choice: color-accent
+        border-color-for-collapsible-panel-header:
+          choice: color-solid
 
     borderRadiuses:
       label: Border Radius
@@ -609,6 +619,14 @@ decisionGroupsByTheme:
           choice: spacing-30
         padding-for-table-cell-as-condensed:
           choice: spacing-20
+        padding-for-collapsible-panel-header:
+          choice: 'var(--spacing-20) var(--spacing-30)'
+        padding-for-collapsible-panel-header-as-condensed:
+          choice: 'var(--spacing-20) var(--spacing-20)'
+        padding-for-collapsible-panel-content:
+          choice: 'var(--spacing-20)'
+        padding-for-collapsible-panel-content-as-condensed:
+          choice: 'var(--spacing-20)'
 
     shadows:
       label: Shadows
@@ -662,6 +680,8 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-table-header:
           choice: color-surface
+        background-color-for-collapsible-panel-header-as-condensed:
+          choice: color-surface
 
     borders:
       label: Borders
@@ -695,6 +715,8 @@ decisionGroupsByTheme:
         border-color-for-table-header-when-hovered:
           choice: color-neutral-90
         border-color-for-table-header-as-bottom:
+          choice: color-neutral-90
+        border-color-for-collapsible-panel-header:
           choice: color-neutral-90
 
     borderRadiuses:
@@ -861,6 +883,14 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-30) var(--spacing-40)'
         padding-for-table-cell-as-condensed:
           choice: 'var(--spacing-20) var(--spacing-40)'
+        padding-for-collapsible-panel-header:
+          choice: 'var(--spacing-30) 0'
+        padding-for-collapsible-panel-header-as-condensed:
+          choice: 'var(--spacing-20) 0'
+        padding-for-collapsible-panel-content:
+          choice: 'var(--spacing-l) 0 var(--spacing-70) 28px'
+        padding-for-collapsible-panel-content-as-condensed:
+          choice: 'var(--spacing-l) 0 var(--spacing-70) 28px'
 
     shadows:
       label: Shadows

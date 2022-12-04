@@ -3,14 +3,17 @@ import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TCollapsiblePanel } from './collapsible-panel';
 
-function getThemeStyle(theme?: TCollapsiblePanel['theme']) {
+function getThemeStyle(
+  theme?: TCollapsiblePanel['theme'],
+  changeBackgroundColor = true
+) {
   if (theme === 'light') {
     return css`
-      background-color: ${designTokens.colorSurface};
+      background-color: ${changeBackgroundColor && designTokens.colorSurface};
     `;
   }
   return css`
-    background-color: ${designTokens.colorNeutral95};
+    background-color: ${changeBackgroundColor && designTokens.colorNeutral95};
   `;
 }
 
@@ -22,6 +25,9 @@ const getHeaderContainerStyles = (
   isOpen: boolean
 ) => {
   const baseStyles = css`
+    background-color: ${designTokens.backgroundColorForCollapsiblePanelHeaderAsCondensed};
+    border-bottom: 1px solid
+      ${designTokens.borderColorForCollapsiblePanelHeader};
     position: relative;
     border-top-left-radius: ${designTokens.borderRadius6};
     border-top-right-radius: ${designTokens.borderRadius6};
@@ -33,10 +39,9 @@ const getHeaderContainerStyles = (
       ? 'flex-start'
       : 'space-between'};
     padding: ${props.condensed
-      ? `${designTokens.spacing20}`
-      : `${designTokens.spacing20} ${designTokens.spacing30}`};
+      ? `${designTokens.paddingForCollapsiblePanelHeaderAsCondensed}`
+      : `${designTokens.paddingForCollapsiblePanelHeader}`};
   `;
-
   return [
     baseStyles,
     props.isDisabled &&
@@ -90,6 +95,17 @@ const SectionContent = styled.div`
   align-items: flex-start;
 `;
 
+const getSectionContentStyles = (
+  props: Pick<
+    TCollapsiblePanel,
+    'headerControlsAlignment' | 'condensed' | 'isDisabled' | 'isSticky'
+  >
+) => styled.div`
+  padding: ${props.condensed
+    ? designTokens.paddingForCollapsiblePanelContentAsCondensed
+    : designTokens.paddingForCollapsiblePanelContent};
+`;
+
 const SectionWrapper = styled.div`
   border-top: 1px solid ${designTokens.colorNeutral60};
 `;
@@ -97,6 +113,7 @@ const SectionWrapper = styled.div`
 export {
   baseContainerStyles,
   getHeaderContainerStyles,
+  getSectionContentStyles,
   getThemeStyle,
   SectionContent,
   SectionWrapper,

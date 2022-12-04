@@ -20,6 +20,7 @@ import {
   HeaderControlsWrapper,
   SectionWrapper,
   SectionContent,
+  getSectionContentStyles,
 } from './collapsible-panel.styles';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 
@@ -198,7 +199,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               as="div"
               css={[
                 getHeaderContainerStyles(props, isOpen),
-                getThemeStyle(props.theme),
+                getThemeStyle(props.theme, false),
               ]}
               id={panelButtonId}
               label=""
@@ -253,6 +254,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                     role="region"
                     aria-labelledby={panelButtonId}
                     hidden={!isOpen}
+                    css={[getSectionContentStyles(props)]}
                   >
                     {props.children}
                   </SectionContent>
