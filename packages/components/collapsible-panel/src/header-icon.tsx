@@ -10,7 +10,7 @@ const getArrowColor = ({
   isDisabled,
 }: Pick<THeaderIcon, 'isDisabled' | 'tone'>) => {
   if (isDisabled) return 'neutral60';
-  if (tone === 'urgent') return 'surface';
+  if (tone === 'urgent') return 'warning';
   return 'solid';
 };
 
