@@ -347,9 +347,9 @@ decisionGroupsByTheme:
           description: ''
           choice: color-warning-95
         background-color-for-collapsible-panel-header:
-          choice: color-neutral-95
+          choice: color-surface
         background-color-for-collapsible-panel-header-as-condensed:
-          choice: color-neutral-95
+          choice: color-surface
 
     borders:
       label: Borders

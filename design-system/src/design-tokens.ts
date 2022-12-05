@@ -144,8 +144,8 @@ export const themes = {
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
-    backgroundColorForCollapsiblePanelHeader: 'hsl(0, 0%, 95%)',
-    backgroundColorForCollapsiblePanelHeaderAsCondensed: 'hsl(0, 0%, 95%)',
+    backgroundColorForCollapsiblePanelHeader: '#fff',
+    backgroundColorForCollapsiblePanelHeaderAsCondensed: '#fff',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
@@ -230,8 +230,7 @@ export const themes = {
     paddingForTableCell: '16px',
     paddingForTableCellAsCondensed: '8px',
     paddingForCollapsiblePanelHeader: 'var(--spacing-20) var(--spacing-30)',
-    paddingForCollapsiblePanelHeaderAsCondensed:
-      'var(--spacing-20) var(--spacing-20)',
+    paddingForCollapsiblePanelHeaderAsCondensed: 'var(--spacing-20)',
     paddingForCollapsiblePanelContent: 'var(--spacing-20)',
     paddingForCollapsiblePanelContentAsCondensed: 'var(--spacing-20)',
     shadowForButton:
@@ -521,9 +520,9 @@ const designTokens = {
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
   backgroundColorForCollapsiblePanelHeader:
-    'var(--background-color-for-collapsible-panel-header, hsl(0, 0%, 95%))',
+    'var(--background-color-for-collapsible-panel-header, #fff)',
   backgroundColorForCollapsiblePanelHeaderAsCondensed:
-    'var(--background-color-for-collapsible-panel-header-as-condensed, hsl(0, 0%, 95%))',
+    'var(--background-color-for-collapsible-panel-header-as-condensed, #fff)',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',
@@ -639,7 +638,7 @@ const designTokens = {
   paddingForCollapsiblePanelHeader:
     'var(--padding-for-collapsible-panel-header, var(--spacing-20) var(--spacing-30))',
   paddingForCollapsiblePanelHeaderAsCondensed:
-    'var(--padding-for-collapsible-panel-header-as-condensed, var(--spacing-20) var(--spacing-20))',
+    'var(--padding-for-collapsible-panel-header-as-condensed, var(--spacing-20))',
   paddingForCollapsiblePanelContent:
     'var(--padding-for-collapsible-panel-content, var(--spacing-20))',
   paddingForCollapsiblePanelContentAsCondensed:

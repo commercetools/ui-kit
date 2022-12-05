@@ -25,7 +25,7 @@ const getHeaderContainerStyles = (
   isOpen: boolean
 ) => {
   const baseStyles = css`
-    background-color: ${designTokens.backgroundColorForCollapsiblePanelHeaderAsCondensed};
+    background-color: ${designTokens.backgroundColorForCollapsiblePanelHeader};
     border-bottom: 1px solid
       ${designTokens.borderColorForCollapsiblePanelHeader};
     position: relative;

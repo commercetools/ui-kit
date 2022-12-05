@@ -23,6 +23,7 @@ import {
   getSectionContentStyles,
 } from './collapsible-panel.styles';
 import CollapsiblePanelHeader from './collapsible-panel-header';
+import { useTheme } from '@commercetools-uikit/design-system';
 
 const HeaderContainer = styled(AccessibleButton)``;
 
@@ -148,6 +149,8 @@ const defaultProps: Pick<
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = (props: TCollapsiblePanel) => {
+  const { theme } = useTheme();
+
   const panelButtonId = useFieldId(props.id, panelButtonSequentialId);
   const panelContentId = useFieldId(undefined, panelContentSequentialId);
   // Pass only `data-*` props
@@ -179,6 +182,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
       `Invalid prop \`onToggle\` supplied to \`CollapsiblePanel\`. \`onToggle\` does not have any effect when the component is uncontrolled.`
     );
   }
+  console.log(theme === 'default');
 
   return (
     <CollapsibleMotion
@@ -199,7 +203,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               as="div"
               css={[
                 getHeaderContainerStyles(props, isOpen),
-                getThemeStyle(props.theme, false),
+                getThemeStyle(props.theme, theme === 'default'),
               ]}
               id={panelButtonId}
               label=""
