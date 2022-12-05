@@ -622,7 +622,7 @@ decisionGroupsByTheme:
         padding-for-collapsible-panel-header:
           choice: 'var(--spacing-20) var(--spacing-30)'
         padding-for-collapsible-panel-header-as-condensed:
-          choice: 'var(--spacing-20) var(--spacing-20)'
+          choice: 'var(--spacing-20)'
         padding-for-collapsible-panel-content:
           choice: 'var(--spacing-20)'
         padding-for-collapsible-panel-content-as-condensed:
@@ -679,6 +679,8 @@ decisionGroupsByTheme:
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-95
         background-color-for-table-header:
+          choice: color-surface
+        background-color-for-collapsible-panel-header:
           choice: color-surface
         background-color-for-collapsible-panel-header-as-condensed:
           choice: color-surface

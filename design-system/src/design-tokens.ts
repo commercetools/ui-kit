@@ -275,6 +275,7 @@ export const themes = {
     backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForTableHeader: '#fff',
+    backgroundColorForCollapsiblePanelHeader: '#fff',
     backgroundColorForCollapsiblePanelHeaderAsCondensed: '#fff',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
