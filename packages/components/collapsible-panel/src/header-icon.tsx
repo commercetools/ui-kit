@@ -22,10 +22,6 @@ type THeaderIcon = {
 };
 
 const HeaderIcon = (props: THeaderIcon) => {
-  const backgroundColor =
-    props.tone === 'urgent'
-      ? designTokens.colorWarning
-      : designTokens.colorSurface;
   return (
     <div
       css={[
@@ -39,11 +35,7 @@ const HeaderIcon = (props: THeaderIcon) => {
           width: ${props.size === 'small'
             ? sizeIconContainerSmall
             : sizeIconContainer};
-          border-radius: 50%;
           flex-shrink: 0;
-          box-shadow: ${designTokens.shadow7};
-          background-color: ${backgroundColor};
-          border: 1px solid ${backgroundColor};
         `,
         props.isDisabled &&
           css`
