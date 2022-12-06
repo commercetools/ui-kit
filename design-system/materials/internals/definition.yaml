@@ -346,7 +346,7 @@ decisionGroupsByTheme:
           choice: color-accent
         background-color-for-input-when-focused:
           description: ''
-          choice: color-neutral-90
+          choice: color-surface
         background-color-for-tag:
           description: ''
           choice: color-neutral-95
@@ -441,7 +441,7 @@ decisionGroupsByTheme:
     # We don't have font families in choices yet, so we can't have decisions for
     # them
 
-    borderWidth:
+    borderWidths:
       label: Border width
       prefix: border-width
       decisions:
@@ -703,8 +703,6 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-input-when-hovered:
           choice: color-neutral-95
-        background-color-for-input-when-focused:
-          choice: color-surface
         background-color-for-input-when-disabled:
           choice: color-neutral-95
 
@@ -777,17 +775,6 @@ decisionGroupsByTheme:
           choice: color-neutral-40
         font-color-for-input-when-readonly:
           choice: color-neutral-40
-
-    borderWidth:
-      label: Border width
-      prefix: border-width
-      decisions:
-        border-width-for-input-when-warning:
-          choice: border-width-1
-        border-width-for-input-when-error:
-          choice: border-width-1
-        border-width-for-input-when-focused:
-          choice: border-width-1
 
     fontSizes:
       label: Font Sizes

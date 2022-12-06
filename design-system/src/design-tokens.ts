@@ -143,7 +143,7 @@ export const themes = {
     backgroundColorForInputWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForTableHeader: '#213c45',
-    backgroundColorForInputWhenFocused: 'hsl(0, 0%, 90%)',
+    backgroundColorForInputWhenFocused: '#fff',
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
@@ -282,7 +282,6 @@ export const themes = {
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForTableHeader: '#fff',
     backgroundColorForInputWhenHovered: 'hsl(0, 0%, 95%)',
-    backgroundColorForInputWhenFocused: '#fff',
     backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
@@ -309,9 +308,6 @@ export const themes = {
     borderRadiusForInput: '4px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
-    borderWidthForInputWhenWarning: '1px',
-    borderWidthForInputWhenError: '1px',
-    borderWidthForInputWhenFocused: '1px',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.5rem',
@@ -535,7 +531,7 @@ const designTokens = {
   backgroundColorForTableHeader:
     'var(--background-color-for-table-header, #213c45)',
   backgroundColorForInputWhenFocused:
-    'var(--background-color-for-input-when-focused, hsl(0, 0%, 90%))',
+    'var(--background-color-for-input-when-focused, #fff)',
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',

@@ -150,7 +150,7 @@
   --background-color-for-input-when-hovered: hsl(0, 0%, 90%);
   --background-color-for-table-cell-when-hovered: hsl(0, 0%, 90%);
   --background-color-for-table-header: #213c45;
-  --background-color-for-input-when-focused: hsl(0, 0%, 90%);
+  --background-color-for-input-when-focused: #fff;
   --background-color-for-tag: hsl(0, 0%, 95%);
   --background-color-for-tag-warning: hsl(
     25.110132158590307,
