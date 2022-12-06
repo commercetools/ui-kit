@@ -150,7 +150,6 @@ const defaultProps: Pick<
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = (props: TCollapsiblePanel) => {
   const { theme } = useTheme();
-
   const panelButtonId = useFieldId(props.id, panelButtonSequentialId);
   const panelContentId = useFieldId(undefined, panelContentSequentialId);
   // Pass only `data-*` props
@@ -182,7 +181,6 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
       `Invalid prop \`onToggle\` supplied to \`CollapsiblePanel\`. \`onToggle\` does not have any effect when the component is uncontrolled.`
     );
   }
-  console.log(theme === 'default');
 
   return (
     <CollapsibleMotion
