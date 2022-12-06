@@ -10,7 +10,10 @@ type TInputProps = {
   readOnly?: boolean;
 };
 
-const getInputBorderColor = (props: TInputProps) => {
+const getInputBorderColor = (
+  props: TInputProps,
+  defaultBorderColor: string = designTokens.borderColorForInput
+) => {
   if (props.isDisabled || props.disabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
@@ -23,7 +26,7 @@ const getInputBorderColor = (props: TInputProps) => {
   if (props.isReadOnly || props.readOnly) {
     return designTokens.borderColorForInputWhenReadonly;
   }
-  return designTokens.borderColorForInput;
+  return defaultBorderColor;
 };
 
 const getInputFontColor = (props: TInputProps) => {
@@ -52,6 +55,16 @@ const getInputBorderWidth = (props: TInputProps) => {
   return designTokens.borderWidthForInput;
 };
 
+const getInputBoxShadow = (props: TInputProps) => {
+  if (props.hasError) {
+    return designTokens.shadowForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.shadowForInputWhenWarning;
+  }
+  return designTokens.shadowForInput;
+};
+
 const getInputStyles = (props: TInputProps) => {
   return css`
     appearance: none;
@@ -61,6 +74,7 @@ const getInputStyles = (props: TInputProps) => {
     border: ${getInputBorderWidth(props)} solid ${getInputBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-sizing: border-box;
+    box-shadow: ${getInputBoxShadow(props)};
     color: ${getInputFontColor(props)};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     display: flex;
@@ -87,7 +101,10 @@ const getInputStyles = (props: TInputProps) => {
     :active,
     :focus,
     :hover:not(:disabled):not(:read-only):not(:focus) {
-      border-color: ${designTokens.borderColorForInputWhenHovered};
+      border-color: ${getInputBorderColor(
+        props,
+        designTokens.borderColorForInputWhenHovered
+      )};
       background-color: ${designTokens.backgroundColorForInputWhenHovered};
     }
     :focus {
