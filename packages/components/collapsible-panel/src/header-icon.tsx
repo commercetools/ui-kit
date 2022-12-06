@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
-import { useTheme } from '@commercetools-uikit/design-system';
 
 const sizeIconContainer = '22px';
 const sizeIconContainerSmall = '14px';
