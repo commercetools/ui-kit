@@ -1,17 +1,33 @@
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
+import { useTheme } from '@commercetools-uikit/design-system';
 
 const sizeIconContainer = '22px';
 const sizeIconContainerSmall = '14px';
 
-const getArrowColor = ({
-  tone,
-  isDisabled,
-}: Pick<THeaderIcon, 'isDisabled' | 'tone'>) => {
+const getArrowColor = (
+  { tone, isDisabled }: Pick<THeaderIcon, 'isDisabled' | 'tone'>,
+  theme: 'default' | 'test'
+) => {
   if (isDisabled) return 'neutral60';
-  if (tone === 'urgent') return 'warning';
+  if (tone === 'urgent') {
+    if (theme === 'default') {
+      return 'surface';
+    } else {
+      return 'warning';
+    }
+  }
+
   return 'solid';
+};
+
+const checkIfTestOrDefault = (
+  theme?: 'default' | 'test',
+  cssValue?: string
+) => {
+  if (theme === 'test') return null;
+  return cssValue;
 };
 
 type THeaderIcon = {
@@ -22,6 +38,11 @@ type THeaderIcon = {
 };
 
 const HeaderIcon = (props: THeaderIcon) => {
+  const { theme } = useTheme();
+  const backgroundColor =
+    props.tone === 'urgent' && theme === 'default'
+      ? designTokens.colorWarning
+      : designTokens.colorSurface;
   return (
     <div
       css={[
@@ -35,7 +56,12 @@ const HeaderIcon = (props: THeaderIcon) => {
           width: ${props.size === 'small'
             ? sizeIconContainerSmall
             : sizeIconContainer};
-          flex-shrink: 0;
+
+          border-radius: ${checkIfTestOrDefault(theme, '50%')};
+          flex-shrink: ${checkIfTestOrDefault(theme, '0')};
+          box-shadow: ${checkIfTestOrDefault(theme, designTokens.shadow7)};
+          background-color: ${checkIfTestOrDefault(theme, backgroundColor)};
+          border: ${checkIfTestOrDefault(theme, backgroundColor)};
         `,
         props.isDisabled &&
           css`
@@ -47,18 +73,24 @@ const HeaderIcon = (props: THeaderIcon) => {
     >
       {props.isClosed ? (
         <AngleRightIcon
-          color={getArrowColor({
-            tone: props.tone,
-            isDisabled: props.isDisabled,
-          })}
+          color={getArrowColor(
+            {
+              tone: props.tone,
+              isDisabled: props.isDisabled,
+            },
+            theme
+          )}
           size={props.size}
         />
       ) : (
         <AngleDownIcon
-          color={getArrowColor({
-            tone: props.tone,
-            isDisabled: props.isDisabled,
-          })}
+          color={getArrowColor(
+            {
+              tone: props.tone,
+              isDisabled: props.isDisabled,
+            },
+            theme
+          )}
           size={props.size}
         />
       )}
