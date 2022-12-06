@@ -148,7 +148,6 @@
   "--border-color-for-button-as-icon-as-primary": "#00b39e",
   "--border-color-for-button-as-icon-when-disabled": "#ccc",
   "--border-color-for-table-header": "#ccc",
-  "--border-color-for-table-header-when-hovered": "#ccc",
   "--border-color-for-table-header-as-bottom": "#213c45",
   "--border-radius-for-button-as-big": "6px",
   "--border-radius-for-button-as-small": "4px",
