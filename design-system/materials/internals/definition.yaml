@@ -339,7 +339,7 @@ decisionGroupsByTheme:
           choice: color-accent-98
         background-color-for-input-when-hovered:
           description: ''
-          choice: color-neutral-90
+          choice: color-surface
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-90
         background-color-for-table-header:
