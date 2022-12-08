@@ -1,5 +1,9 @@
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import {
+  designTokens,
+  useTheme,
+  type ThemeName,
+} from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 
 const sizeIconContainer = '24px';
@@ -7,7 +11,7 @@ const sizeIconContainerSmall = '14px';
 
 const getArrowColor = (
   { tone, isDisabled }: Pick<THeaderIcon, 'isDisabled' | 'tone'>,
-  theme: 'default' | 'test'
+  theme: ThemeName
 ) => {
   if (isDisabled) return 'neutral60';
   if (tone === 'urgent') {

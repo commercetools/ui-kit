@@ -22,6 +22,7 @@ import {
   SectionContent,
   getSectionWrapperStyles,
   getSectionContentStyles,
+  getBaseContainerStyles,
 } from './collapsible-panel.styles';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 import { useTheme } from '@commercetools-uikit/design-system';
@@ -192,7 +193,11 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
         <Constraints.Horizontal max={props.horizontalConstraint}>
           <div
-            css={[baseContainerStyles, getThemeStyle(props.theme)]}
+            css={[
+              baseContainerStyles,
+              getThemeStyle(props.theme),
+              getBaseContainerStyles(theme),
+            ]}
             // Allow to override the styles by passing a `className` prop.
             // Custom styles can also be passed using the `css` prop from emotion.
             // https://emotion.sh/docs/css-prop#style-precedence
