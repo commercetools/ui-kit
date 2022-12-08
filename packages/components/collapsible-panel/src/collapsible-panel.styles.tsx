@@ -119,10 +119,10 @@ const getSectionWrapperStyles = (
       ? `calc(${sizeIconContainerSmall} - 8px + 8px)`
       : `calc(${sizeIconContainer} - 16px + 8px)`
   }`;
-  if (theme !== 'default') {
-    return style;
+  if (theme === 'default') {
+    return null;
   }
-  return null;
+  return style;
 };
 
 const SectionWrapper = styled.div``;
