@@ -131,7 +131,6 @@
   "--background-color-for-tag": "hsl(0, 0%, 95%)",
   "--background-color-for-tag-warning": "hsl(25.110132158590307, 89.0196078431%, 95%)",
   "--background-color-for-collapsible-panel-header": "#fff",
-  "--background-color-for-collapsible-panel-header-as-condensed": "#fff",
   "--border-for-button-as-secondary": "none",
   "--border-for-button-as-secondary-when-hovered": "none",
   "--border-for-button-as-secondary-when-active": "none",

@@ -20,6 +20,7 @@ import {
   HeaderControlsWrapper,
   SectionWrapper,
   SectionContent,
+  getSectionWrapperStyles,
   getSectionContentStyles,
 } from './collapsible-panel.styles';
 import CollapsiblePanelHeader from './collapsible-panel-header';
@@ -244,7 +245,10 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               )}
             </HeaderContainer>
             <div style={containerStyles}>
-              <SectionWrapper ref={registerContentNode}>
+              <SectionWrapper
+                ref={registerContentNode}
+                css={[getSectionWrapperStyles(props, theme)]}
+              >
                 {props.description && (
                   <Spacings.Inset scale={scale}>
                     <Text.Detail>{props.description}</Text.Detail>

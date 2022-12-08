@@ -3,6 +3,9 @@ import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TCollapsiblePanel } from './collapsible-panel';
 
+const sizeIconContainer = '24px';
+const sizeIconContainerSmall = '14px';
+
 function getThemeStyle(
   theme?: TCollapsiblePanel['theme'],
   changeBackgroundColor = true
@@ -106,15 +109,30 @@ const getSectionContentStyles = (
     : designTokens.paddingForCollapsiblePanelContent};
 `;
 
-const SectionWrapper = styled.div`
-  border-top: 1px solid ${designTokens.colorNeutral60};
-`;
+//Calculation takes into account Spacing.Inset(default: 16px and condensed: 8px) padding and the Headline padding-left(8px) to align content with Headline
+const getSectionWrapperStyles = (
+  props: Pick<TCollapsiblePanel, 'condensed'>,
+  theme: 'default' | 'test'
+) => {
+  const style = `padding-left: ${
+    props.condensed
+      ? `calc(${sizeIconContainerSmall} - 8px + 8px)`
+      : `calc(${sizeIconContainer} - 16px + 8px)`
+  }`;
+  if (theme !== 'default') {
+    return style;
+  }
+  return null;
+};
+
+const SectionWrapper = styled.div``;
 
 export {
   baseContainerStyles,
   getHeaderContainerStyles,
   getSectionContentStyles,
   getThemeStyle,
+  getSectionWrapperStyles,
   SectionContent,
   SectionWrapper,
   HeaderControlsWrapper,

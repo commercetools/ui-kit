@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 
-const sizeIconContainer = '22px';
+const sizeIconContainer = '24px';
 const sizeIconContainerSmall = '14px';
 
 const getArrowColor = (
@@ -21,10 +21,7 @@ const getArrowColor = (
   return 'solid';
 };
 
-const checkIfTestOrDefault = (
-  theme?: 'default' | 'test',
-  cssValue?: string
-) => {
+const getThemeStyles = (theme?: 'default' | 'test', cssValue?: string) => {
   if (theme === 'test') return null;
   return cssValue;
 };
@@ -56,11 +53,11 @@ const HeaderIcon = (props: THeaderIcon) => {
             ? sizeIconContainerSmall
             : sizeIconContainer};
 
-          border-radius: ${checkIfTestOrDefault(theme, '50%')};
-          flex-shrink: ${checkIfTestOrDefault(theme, '0')};
-          box-shadow: ${checkIfTestOrDefault(theme, designTokens.shadow7)};
-          background-color: ${checkIfTestOrDefault(theme, backgroundColor)};
-          border: ${checkIfTestOrDefault(theme, backgroundColor)};
+          border-radius: ${getThemeStyles(theme, '50%')};
+          flex-shrink: ${getThemeStyles(theme, '0')};
+          box-shadow: ${getThemeStyles(theme, designTokens.shadow7)};
+          background-color: ${getThemeStyles(theme, backgroundColor)};
+          border: ${getThemeStyles(theme, backgroundColor)};
         `,
         props.isDisabled &&
           css`

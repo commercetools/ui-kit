@@ -145,7 +145,6 @@ export const themes = {
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForCollapsiblePanelHeader: '#fff',
-    backgroundColorForCollapsiblePanelHeaderAsCondensed: '#fff',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
@@ -274,8 +273,6 @@ export const themes = {
     backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForTableHeader: '#fff',
-    backgroundColorForCollapsiblePanelHeader: '#fff',
-    backgroundColorForCollapsiblePanelHeaderAsCondensed: '#fff',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -342,9 +339,9 @@ export const themes = {
     paddingForCollapsiblePanelHeader: 'var(--spacing-30) 0',
     paddingForCollapsiblePanelHeaderAsCondensed: 'var(--spacing-20) 0',
     paddingForCollapsiblePanelContent:
-      'var(--spacing-l) 0 var(--spacing-70) 28px',
+      'var(--spacing-l) 0 var(--spacing-70) 30px',
     paddingForCollapsiblePanelContentAsCondensed:
-      'var(--spacing-l) 0 var(--spacing-70) 28px',
+      'var(--spacing-l) 0 var(--spacing-70) 16px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -521,8 +518,6 @@ const designTokens = {
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
   backgroundColorForCollapsiblePanelHeader:
     'var(--background-color-for-collapsible-panel-header, #fff)',
-  backgroundColorForCollapsiblePanelHeaderAsCondensed:
-    'var(--background-color-for-collapsible-panel-header-as-condensed, #fff)',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',

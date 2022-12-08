@@ -348,8 +348,6 @@ decisionGroupsByTheme:
           choice: color-warning-95
         background-color-for-collapsible-panel-header:
           choice: color-surface
-        background-color-for-collapsible-panel-header-as-condensed:
-          choice: color-surface
 
     borders:
       label: Borders
@@ -680,10 +678,6 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-table-header:
           choice: color-surface
-        background-color-for-collapsible-panel-header:
-          choice: color-surface
-        background-color-for-collapsible-panel-header-as-condensed:
-          choice: color-surface
 
     borders:
       label: Borders
@@ -890,9 +884,9 @@ decisionGroupsByTheme:
         padding-for-collapsible-panel-header-as-condensed:
           choice: 'var(--spacing-20) 0'
         padding-for-collapsible-panel-content:
-          choice: 'var(--spacing-l) 0 var(--spacing-70) 28px'
+          choice: 'var(--spacing-40) 0 var(--spacing-70) 30px'
         padding-for-collapsible-panel-content-as-condensed:
-          choice: 'var(--spacing-l) 0 var(--spacing-70) 28px'
+          choice: 'var(--spacing-40) 0 var(--spacing-70) 16px'
 
     shadows:
       label: Shadows
