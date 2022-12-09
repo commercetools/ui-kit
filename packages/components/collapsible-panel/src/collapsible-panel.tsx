@@ -25,8 +25,7 @@ import {
   getBaseContainerStyles,
 } from './collapsible-panel.styles';
 import CollapsiblePanelHeader from './collapsible-panel-header';
-import { useTheme } from '@commercetools-uikit/design-system';
-
+import { ThemeName, useTheme } from '@commercetools-uikit/design-system';
 const HeaderContainer = styled(AccessibleButton)``;
 
 const panelButtonSequentialId = createSequentialId('collapsible-panel-button-');
@@ -148,6 +147,33 @@ const defaultProps: Pick<
   horizontalConstraint: 'scale',
 };
 
+const HeadLineText = (
+  theme: ThemeName,
+  props: Pick<TCollapsiblePanel, 'condensed' | 'header'>
+) => {
+  if (theme === 'default') {
+    return props.condensed ? (
+      <Text.Detail as="span" isBold truncate>
+        {props.header}
+      </Text.Detail>
+    ) : (
+      <Text.Subheadline as="h4" truncate>
+        {props.header}
+      </Text.Subheadline>
+    );
+  } else {
+    return props.condensed ? (
+      <Text.Subheadline as="h4" truncate>
+        {props.header}
+      </Text.Subheadline>
+    ) : (
+      <Text.Headline as="h2" truncate>
+        {props.header}
+      </Text.Headline>
+    );
+  }
+};
+
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = (props: TCollapsiblePanel) => {
@@ -227,13 +253,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                   />
                 )}
                 <Spacings.Inline alignItems="center" scale={scale}>
-                  {props.condensed ? (
-                    <Text.Detail as="span" isBold truncate>
-                      {props.header}
-                    </Text.Detail>
-                  ) : (
-                    props.header
-                  )}
+                  {HeadLineText(theme, props)}
                   {props.secondaryHeader && (
                     <Text.Detail tone="secondary" truncate={true}>
                       {props.secondaryHeader}
