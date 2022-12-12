@@ -14,7 +14,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Label from '@commercetools-uikit/label';
-import { useTheme } from '@commercetools-uikit/design-system';
+import { useTheme, ThemeName } from '@commercetools-uikit/design-system';
 
 export type TFieldLabelProps = {
   /**
@@ -81,17 +81,15 @@ export type TFieldLabelProps = {
     | 'auto';
 };
 
+const getInfoTextTone = (theme: ThemeName, tone?: TFieldLabelProps['tone']) => {
+  if (theme === 'default') {
+    return tone;
+  }
+  return 'secondary';
+};
+
 const FieldLabel = (props: TFieldLabelProps) => {
   const { theme } = useTheme();
-
-  const getInfoTextTone = (
-    { tone }: Pick<TFieldLabelProps, 'tone'>,
-    theme: 'default' | 'test'
-  ) => {
-    if (theme === 'default') {
-      return tone;
-    } else return 'secondary';
-  };
 
   if (props.hintIcon) {
     warning(
@@ -142,7 +140,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
               </Inline>
             )}
             {props.hint && (
-              <Text.Detail tone={getInfoTextTone({ tone: props.tone }, theme)}>
+              <Text.Detail tone={getInfoTextTone(theme, props.tone)}>
                 {props.hint}
               </Text.Detail>
             )}
@@ -150,7 +148,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
         )}
         {props.description && (
           <Text.Wrap>
-            <Text.Detail tone={getInfoTextTone({ tone: props.tone }, theme)}>
+            <Text.Detail tone={getInfoTextTone(theme, props.tone)}>
               {props.description}
             </Text.Detail>
           </Text.Wrap>
