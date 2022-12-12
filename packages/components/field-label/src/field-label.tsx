@@ -106,7 +106,10 @@ const FieldLabel = (props: TFieldLabelProps) => {
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
-        <Inline alignItems="flexStart" scale="xs">
+        <Inline
+          alignItems={theme === 'default' ? 'flexStart' : 'center'}
+          scale="xs"
+        >
           <Text.Wrap>
             <Label
               isBold={theme === 'default' ? true : false}
@@ -129,7 +132,10 @@ const FieldLabel = (props: TFieldLabelProps) => {
         </Inline>
 
         {props.hint && (
-          <Inline alignItems="flexStart" scale="xs">
+          <Inline
+            alignItems={theme === 'default' ? 'flexStart' : 'center'}
+            scale="xs"
+          >
             {props.hintIcon && (
               <Inline>
                 {cloneElement(props.hintIcon, {
