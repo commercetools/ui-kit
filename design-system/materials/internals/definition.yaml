@@ -412,8 +412,6 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-table-header:
           choice: color-neutral
-        border-color-for-table-header-when-hovered:
-          choice: color-neutral
         border-color-for-table-header-as-bottom:
           choice: color-accent
 
@@ -746,8 +744,6 @@ decisionGroupsByTheme:
           choice: color-neutral-90
         border-color-for-table-header:
           choice: color-surface
-        border-color-for-table-header-when-hovered:
-          choice: color-neutral-90
         border-color-for-table-header-as-bottom:
           choice: color-neutral-90
 

@@ -167,7 +167,6 @@ export const themes = {
     borderColorForButtonAsIconAsPrimary: '#00b39e',
     borderColorForButtonAsIconWhenDisabled: '#ccc',
     borderColorForTableHeader: '#ccc',
-    borderColorForTableHeaderWhenHovered: '#ccc',
     borderColorForTableHeaderAsBottom: '#213c45',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
@@ -299,7 +298,6 @@ export const themes = {
     borderColorForButtonAsIconWhenDisabled: '#fff',
     borderColorForCardWhenRaised: 'hsl(0, 0%, 90%)',
     borderColorForTableHeader: '#fff',
-    borderColorForTableHeaderWhenHovered: 'hsl(0, 0%, 90%)',
     borderColorForTableHeaderAsBottom: 'hsl(0, 0%, 90%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
@@ -569,8 +567,6 @@ const designTokens = {
   borderColorForButtonAsIconWhenDisabled:
     'var(--border-color-for-button-as-icon-when-disabled, #ccc)',
   borderColorForTableHeader: 'var(--border-color-for-table-header, #ccc)',
-  borderColorForTableHeaderWhenHovered:
-    'var(--border-color-for-table-header-when-hovered, #ccc)',
   borderColorForTableHeaderAsBottom:
     'var(--border-color-for-table-header-as-bottom, #213c45)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',

@@ -114,7 +114,7 @@ const TableRow = styled.tr<TGetClickableRowStyleProps>`
       position: absolute;
       height: calc(100% - 2 * ${designTokens.marginForTableHeader});
       width: 1px;
-      background-color: ${designTokens.borderColorForTableHeaderWhenHovered};
+      background-color: ${designTokens.colorNeutral};
       top: ${designTokens.marginForTableHeader};
       right: 0;
       z-index: -1;
