@@ -293,8 +293,10 @@ componentGroups:
     description: 'Table cell elements'
   collapsible-panel-header:
     description: 'collapsible panel header elements'
-  collapsible-panel-content:
-    description: 'collapsible panel content elements'
+  collapsible-panel-section-wrapper:
+    description: 'collapsible panel section wrapper elements'
+  collapsible-panel-section-description:
+    description: 'collapsible panel section description elements'
 
 decisionGroupsByTheme:
   default:
@@ -346,8 +348,6 @@ decisionGroupsByTheme:
         background-color-for-tag-warning:
           description: ''
           choice: color-warning-95
-        background-color-for-collapsible-panel-header:
-          choice: color-surface
 
     borders:
       label: Borders
@@ -406,7 +406,7 @@ decisionGroupsByTheme:
         border-color-for-table-header-as-bottom:
           choice: color-accent
         border-color-for-collapsible-panel-header:
-          choice: color-solid
+          choice: color-neutral-60
 
     borderRadiuses:
       label: Border Radius
@@ -618,11 +618,11 @@ decisionGroupsByTheme:
         padding-for-collapsible-panel-header:
           choice: 'var(--spacing-20) var(--spacing-30)'
         padding-for-collapsible-panel-header-as-condensed:
-          choice: 'var(--spacing-20)'
-        padding-for-collapsible-panel-content:
-          choice: 'var(--spacing-20)'
-        padding-for-collapsible-panel-content-as-condensed:
-          choice: 'var(--spacing-20)'
+          choice: spacing-20
+        padding-for-collapsible-panel-section-wrapper:
+          choice: spacing-30
+        padding-for-collapsible-panel-section-description:
+          choice: '0 0 var(--spacing-50)'
 
     shadows:
       label: Shadows
@@ -879,10 +879,10 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-30) 0'
         padding-for-collapsible-panel-header-as-condensed:
           choice: 'var(--spacing-20) 0'
-        padding-for-collapsible-panel-content:
-          choice: 'var(--spacing-40) 0 var(--spacing-70) 30px'
-        padding-for-collapsible-panel-content-as-condensed:
-          choice: 'var(--spacing-40) 0 var(--spacing-70) 16px'
+        padding-for-collapsible-panel-section-wrapper:
+          choice: 'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-40) + var(--spacing-10))'
+        padding-for-collapsible-panel-section-description:
+          choice: '0 0 var(--spacing-40)'
 
     shadows:
       label: Shadows

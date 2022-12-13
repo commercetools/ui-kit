@@ -144,7 +144,6 @@ export const themes = {
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
-    backgroundColorForCollapsiblePanelHeader: '#fff',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
@@ -164,7 +163,7 @@ export const themes = {
     borderColorForButtonAsIconWhenDisabled: '#ccc',
     borderColorForTableHeader: '#ccc',
     borderColorForTableHeaderAsBottom: '#213c45',
-    borderColorForCollapsiblePanelHeader: '#1a1a1a',
+    borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 60%)',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -228,9 +227,9 @@ export const themes = {
     paddingForTableCell: '16px',
     paddingForTableCellAsCondensed: '8px',
     paddingForCollapsiblePanelHeader: 'var(--spacing-20) var(--spacing-30)',
-    paddingForCollapsiblePanelHeaderAsCondensed: 'var(--spacing-20)',
-    paddingForCollapsiblePanelContent: 'var(--spacing-20)',
-    paddingForCollapsiblePanelContentAsCondensed: 'var(--spacing-20)',
+    paddingForCollapsiblePanelHeaderAsCondensed: '8px',
+    paddingForCollapsiblePanelSectionWrapper: '16px',
+    paddingForCollapsiblePanelSectionDescription: '0 0 var(--spacing-50)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -336,10 +335,9 @@ export const themes = {
     paddingForTableCellAsCondensed: 'var(--spacing-20) var(--spacing-40)',
     paddingForCollapsiblePanelHeader: 'var(--spacing-30) 0',
     paddingForCollapsiblePanelHeaderAsCondensed: 'var(--spacing-20) 0',
-    paddingForCollapsiblePanelContent:
-      'var(--spacing-l) 0 var(--spacing-70) 30px',
-    paddingForCollapsiblePanelContentAsCondensed:
-      'var(--spacing-l) 0 var(--spacing-70) 16px',
+    paddingForCollapsiblePanelSectionWrapper:
+      'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-40) + var(--spacing-10))',
+    paddingForCollapsiblePanelSectionDescription: '0 0 var(--spacing-40)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -514,8 +512,6 @@ const designTokens = {
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
-  backgroundColorForCollapsiblePanelHeader:
-    'var(--background-color-for-collapsible-panel-header, #fff)',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',
@@ -548,7 +544,7 @@ const designTokens = {
   borderColorForTableHeaderAsBottom:
     'var(--border-color-for-table-header-as-bottom, #213c45)',
   borderColorForCollapsiblePanelHeader:
-    'var(--border-color-for-collapsible-panel-header, #1a1a1a)',
+    'var(--border-color-for-collapsible-panel-header, hsl(0, 0%, 60%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -629,11 +625,11 @@ const designTokens = {
   paddingForCollapsiblePanelHeader:
     'var(--padding-for-collapsible-panel-header, var(--spacing-20) var(--spacing-30))',
   paddingForCollapsiblePanelHeaderAsCondensed:
-    'var(--padding-for-collapsible-panel-header-as-condensed, var(--spacing-20))',
-  paddingForCollapsiblePanelContent:
-    'var(--padding-for-collapsible-panel-content, var(--spacing-20))',
-  paddingForCollapsiblePanelContentAsCondensed:
-    'var(--padding-for-collapsible-panel-content-as-condensed, var(--spacing-20))',
+    'var(--padding-for-collapsible-panel-header-as-condensed, 8px)',
+  paddingForCollapsiblePanelSectionWrapper:
+    'var(--padding-for-collapsible-panel-section-wrapper, 16px)',
+  paddingForCollapsiblePanelSectionDescription:
+    'var(--padding-for-collapsible-panel-section-description, 0 0 var(--spacing-50))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:
