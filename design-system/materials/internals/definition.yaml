@@ -627,8 +627,12 @@ decisionGroupsByTheme:
           choice: spacing-20
         padding-for-collapsible-panel-section-wrapper:
           choice: spacing-30
+        padding-for-collapsible-panel-section-wrapper-as-condensed:
+          choice: spacing-20
         padding-for-collapsible-panel-section-description:
           choice: '0 0 var(--spacing-50)'
+        padding-for-collapsible-panel-section-description-as-condensed:
+          choice: '0 0 var(--spacing-30)'
 
     shadows:
       label: Shadows
@@ -891,7 +895,11 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-20) 0'
         padding-for-collapsible-panel-section-wrapper:
           choice: 'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-40) + var(--spacing-10))'
+        padding-for-collapsible-panel-section-wrapper-as-condensed:
+          choice: 'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-40) + var(--spacing-10))'
         padding-for-collapsible-panel-section-description:
+          choice: '0 0 var(--spacing-40)'
+        padding-for-collapsible-panel-section-description-as-condensed:
           choice: '0 0 var(--spacing-40)'
 
     shadows:

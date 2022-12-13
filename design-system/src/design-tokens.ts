@@ -233,7 +233,10 @@ export const themes = {
     paddingForCollapsiblePanelHeader: 'var(--spacing-20) var(--spacing-30)',
     paddingForCollapsiblePanelHeaderAsCondensed: '8px',
     paddingForCollapsiblePanelSectionWrapper: '16px',
+    paddingForCollapsiblePanelSectionWrapperAsCondensed: '8px',
     paddingForCollapsiblePanelSectionDescription: '0 0 var(--spacing-50)',
+    paddingForCollapsiblePanelSectionDescriptionAsCondensed:
+      '0 0 var(--spacing-30)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -343,7 +346,11 @@ export const themes = {
     paddingForCollapsiblePanelHeaderAsCondensed: 'var(--spacing-20) 0',
     paddingForCollapsiblePanelSectionWrapper:
       'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-40) + var(--spacing-10))',
+    paddingForCollapsiblePanelSectionWrapperAsCondensed:
+      'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-40) + var(--spacing-10))',
     paddingForCollapsiblePanelSectionDescription: '0 0 var(--spacing-40)',
+    paddingForCollapsiblePanelSectionDescriptionAsCondensed:
+      '0 0 var(--spacing-40)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -638,8 +645,12 @@ const designTokens = {
     'var(--padding-for-collapsible-panel-header-as-condensed, 8px)',
   paddingForCollapsiblePanelSectionWrapper:
     'var(--padding-for-collapsible-panel-section-wrapper, 16px)',
+  paddingForCollapsiblePanelSectionWrapperAsCondensed:
+    'var(--padding-for-collapsible-panel-section-wrapper-as-condensed, 8px)',
   paddingForCollapsiblePanelSectionDescription:
     'var(--padding-for-collapsible-panel-section-description, 0 0 var(--spacing-50))',
+  paddingForCollapsiblePanelSectionDescriptionAsCondensed:
+    'var(--padding-for-collapsible-panel-section-description-as-condensed, 0 0 var(--spacing-30))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

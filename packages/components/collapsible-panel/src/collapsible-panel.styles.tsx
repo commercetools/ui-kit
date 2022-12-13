@@ -105,12 +105,18 @@ const SectionContent = styled.div<Pick<TCollapsiblePanel, 'condensed'>>`
   align-items: flex-start;
 `;
 
-const SectionDescriptionWrapper = styled('div')`
-  padding: ${designTokens.paddingForCollapsiblePanelSectionDescription};
+const SectionDescriptionWrapper = styled('div')<{ condensed?: boolean }>`
+  padding: ${({ condensed }) =>
+    condensed
+      ? designTokens.paddingForCollapsiblePanelSectionDescriptionAsCondensed
+      : designTokens.paddingForCollapsiblePanelSectionDescription};
 `;
 
-const SectionWrapper = styled.div<{ uiKitTheme: ThemeName }>`
-  padding: ${designTokens.paddingForCollapsiblePanelSectionWrapper};
+const SectionWrapper = styled.div<{ condensed?: boolean }>`
+  padding: ${({ condensed }) =>
+    condensed
+      ? designTokens.paddingForCollapsiblePanelSectionWrapperAsCondensed
+      : designTokens.paddingForCollapsiblePanelSectionWrapper};
 `;
 
 export {

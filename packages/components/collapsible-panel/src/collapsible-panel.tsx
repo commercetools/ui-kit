@@ -269,9 +269,12 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               )}
             </HeaderContainer>
             <div style={containerStyles}>
-              <SectionWrapper ref={registerContentNode} uiKitTheme={theme}>
+              <SectionWrapper
+                ref={registerContentNode}
+                condensed={props.condensed}
+              >
                 {props.description && (
-                  <SectionDescriptionWrapper>
+                  <SectionDescriptionWrapper condensed={props.condensed}>
                     <Text.Detail
                       tone={theme === 'default' ? undefined : 'secondary'}
                     >

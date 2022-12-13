@@ -246,7 +246,10 @@
   --padding-for-collapsible-panel-header: var(--spacing-20) var(--spacing-30);
   --padding-for-collapsible-panel-header-as-condensed: 8px;
   --padding-for-collapsible-panel-section-wrapper: 16px;
+  --padding-for-collapsible-panel-section-wrapper-as-condensed: 8px;
   --padding-for-collapsible-panel-section-description: 0 0 var(--spacing-50);
+  --padding-for-collapsible-panel-section-description-as-condensed: 0 0
+    var(--spacing-30);
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),
