@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import {
   useMemo,
   useCallback,
@@ -13,7 +14,7 @@ import { DragDropContext, type DropResult } from 'react-beautiful-dnd';
 import debounce from 'debounce-promise';
 import differenceWith from 'lodash/differenceWith';
 import styled from '@emotion/styled';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import AsyncSelectInput from '@commercetools-uikit/async-select-input';
 import FieldLabel from '@commercetools-uikit/field-label';
 import Spacings from '@commercetools-uikit/spacings';
@@ -138,8 +139,12 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
   }
 
   const intl = useIntl();
+  const { theme } = useTheme();
   const [isDragging, setIsDragging] = useState(false);
   const { searchHiddenColumns } = props;
+  const listTitleMarginBottom = theme === 'default' ? 's' : 'm';
+  const iconsSize = theme === 'default' ? 'medium' : 'big';
+  const iconsMargin = theme === 'default' ? 'xs' : 's';
 
   const handleDragStart = () => {
     setIsDragging(true);
@@ -191,9 +196,9 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
             isDragging={isDragging}
             aria-labelledby="hidden-columns"
           >
-            <Spacings.Stack>
-              <Spacings.Inline scale="xs" alignItems="center">
-                <EyeCrossedIcon size="medium" />
+            <Spacings.Stack scale={listTitleMarginBottom}>
+              <Spacings.Inline scale={iconsMargin} alignItems="center">
+                <EyeCrossedIcon size={iconsSize} />
                 <FieldLabel
                   id="hidden-columns"
                   title={intl.formatMessage(messages.hiddenColumns)}
@@ -227,7 +232,7 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
             isDragging={isDragging}
             aria-labelledby="visible-columns"
           >
-            <Spacings.Stack>
+            <Spacings.Stack scale={listTitleMarginBottom}>
               <Spacings.Inline scale="xs" alignItems="center">
                 <EyeIcon size="medium" />
                 <FieldLabel

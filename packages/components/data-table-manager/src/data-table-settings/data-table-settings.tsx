@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import { useState, type ReactElement, type ReactNode } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { useIntl, type MessageDescriptor } from 'react-intl';
@@ -6,7 +7,7 @@ import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
 import SelectInput from '@commercetools-uikit/select-input';
 import { TableIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
 import DisplaySettingsManager, {
   DENSITY_COMPACT,
@@ -188,6 +189,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   );
 
   const intl = useIntl();
+  const { theme } = useTheme();
   const [openedPanelId, setOpenedPanelId] = useState<string | null | undefined>(
     null
   );
@@ -218,6 +220,8 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
 
   const handleSettingsPanelChange = () => setOpenedPanelId(null);
 
+  const iconColor = theme === 'default' ? undefined : 'neutral60';
+
   return (
     <Spacings.Stack>
       <Spacings.Inline justifyContent="space-between" alignItems="center">
@@ -237,7 +241,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
               placeholder={intl.formatMessage(messages.placeholder)}
               onChange={handleDropdownChange}
               options={dropdownOptions}
-              iconLeft={<TableIcon />}
+              iconLeft={<TableIcon color={iconColor} />}
             />
           </SelectContainer>
         )}

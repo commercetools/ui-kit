@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import {
   useMemo,
   cloneElement,
@@ -5,6 +6,7 @@ import {
   type ReactNode,
   type MouseEventHandler,
 } from 'react';
+import { useTheme } from '@commercetools-uikit/design-system';
 import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
   type TDataTableSettingsProps,
@@ -147,11 +149,13 @@ type TDataTableManagerProps = {
 };
 
 const DataTableManager = (props: TDataTableManagerProps) => {
+  const { theme } = useTheme();
   const areDisplaySettingsEnabled = Boolean(
     props.displaySettings && !props.displaySettings.disableDisplaySettings
   );
   const isWrappingText =
     areDisplaySettingsEnabled && props.displaySettings!.isWrappingText;
+  const managerTheme = theme === 'default' ? props.managerTheme : 'light';
 
   const columns = useMemo(
     () =>
@@ -171,7 +175,7 @@ const DataTableManager = (props: TDataTableManagerProps) => {
         onSettingsChange={props.onSettingsChange}
         columnManager={props.columnManager}
         displaySettings={props.displaySettings}
-        managerTheme={props.managerTheme}
+        managerTheme={managerTheme}
       />
       {cloneElement(props.children, {
         columns,

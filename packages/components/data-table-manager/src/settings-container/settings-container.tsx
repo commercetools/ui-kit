@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import type { KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
 import { useIntl, type MessageDescriptor } from 'react-intl';
 import styled from '@emotion/styled';
@@ -7,6 +8,7 @@ import Card from '@commercetools-uikit/card';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import { CloseIcon } from '@commercetools-uikit/icons';
+import { useTheme } from '@commercetools-uikit/design-system';
 
 type TSettingsContainerProps = {
   title: MessageDescriptor & {
@@ -32,12 +34,15 @@ const HeaderContainer = styled.div`
 
 const SettingsContainer = (props: TSettingsContainerProps) => {
   const intl = useIntl();
+  const { theme } = useTheme();
+  const cardType = theme === 'default' ? 'flat' : 'raised';
+  const headerMarginBottom = theme === 'default' ? 'xs' : 'xl';
 
   return (
     <CollapsibleMotion isDefaultClosed={false}>
       {({ registerContentNode, containerStyles }) => (
-        <Card type="flat" theme={props.containerTheme}>
-          <Spacings.Stack scale="xs">
+        <Card type={cardType} theme={props.containerTheme}>
+          <Spacings.Stack scale={headerMarginBottom}>
             <HeaderContainer>
               <Text.Headline as="h3" intlMessage={props.title} />
               <AccessibleButton
