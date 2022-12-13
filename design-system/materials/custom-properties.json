@@ -133,6 +133,7 @@
   "--background-color-for-table-header": "#213c45",
   "--background-color-for-tag": "hsl(0, 0%, 95%)",
   "--background-color-for-tag-warning": "hsl(25.110132158590307, 89.0196078431%, 95%)",
+  "--background-color-for-select-input-option-when-hovered": "hsl(0, 0%, 90%)",
   "--border-for-button-as-secondary": "none",
   "--border-for-button-as-secondary-when-hovered": "none",
   "--border-for-button-as-secondary-when-active": "none",

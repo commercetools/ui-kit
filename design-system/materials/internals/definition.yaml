@@ -299,6 +299,10 @@ componentGroups:
     description: 'Table header elements'
   table-cell:
     description: 'Table cell elements'
+  select-input:
+    description: 'Select input elements'
+  select-input-option:
+    description: 'Select input option elements'
 
 decisionGroupsByTheme:
   default:
@@ -353,6 +357,9 @@ decisionGroupsByTheme:
         background-color-for-tag-warning:
           description: ''
           choice: color-warning-95
+        background-color-for-select-input-option-when-hovered:
+          description: ''
+          choice: color-neutral-90
 
     borders:
       label: Borders
