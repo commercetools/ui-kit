@@ -112,7 +112,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
         >
           <Text.Wrap>
             <Label
-              isBold={theme === 'default' ? true : false}
+              isBold={theme === 'default'}
               isRequiredIndicatorVisible={props.hasRequiredIndicator}
               tone={props.tone}
               id={props.id}
