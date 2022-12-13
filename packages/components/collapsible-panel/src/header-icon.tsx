@@ -66,8 +66,9 @@ const HeaderIcon = (props: THeaderIcon) => {
         props.isDisabled &&
           css`
             box-shadow: none;
-            border: 1px solid ${designTokens.colorNeutral};
-            background-color: ${designTokens.colorAccent98};
+            border: 1px solid
+              ${designTokens.borderForCollapsiblePanelHeaderIconWhenDisabled};
+            background-color: ${designTokens.backgroundColorForCollapsiblePanelHeaderIconWhenDisabled};
           `,
       ]}
     >

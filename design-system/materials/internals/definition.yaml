@@ -297,6 +297,8 @@ componentGroups:
     description: 'collapsible panel section wrapper elements'
   collapsible-panel-section-description:
     description: 'collapsible panel section description elements'
+  collapsible-panel-header-icon:
+    description: 'collapsible panel header icon elements'
 
 decisionGroupsByTheme:
   default:
@@ -348,6 +350,8 @@ decisionGroupsByTheme:
         background-color-for-tag-warning:
           description: ''
           choice: color-warning-95
+        background-color-for-collapsible-panel-header-icon-when-disabled:
+          choice: color-accent-98
 
     borders:
       label: Borders
@@ -361,6 +365,8 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-card-when-raised:
           choice: 'none'
+        border-for-collapsible-panel-header-icon-when-disabled:
+          choice: '1px solid var(--color-neutral)'
 
     borderColors:
       label: Border Colors
@@ -676,6 +682,8 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-table-header:
           choice: color-surface
+        background-color-for-collapsible-panel-header-icon-when-disabled:
+          choice: color-surface
 
     borders:
       label: Borders
@@ -689,6 +697,8 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral)'
         border-for-card-when-raised:
           choice: '1px solid var(--color-neutral-90)'
+        border-for-collapsible-panel-header-icon-when-disabled:
+          choice: 'none'
 
     borderColors:
       label: Border Colors

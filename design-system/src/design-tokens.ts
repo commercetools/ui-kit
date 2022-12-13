@@ -144,10 +144,14 @@ export const themes = {
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
+    backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
+      'hsl(195, 35.2941176471%, 98%)',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
     borderForCardWhenRaised: 'none',
+    borderForCollapsiblePanelHeaderIconWhenDisabled:
+      '1px solid var(--color-neutral)',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -271,10 +275,12 @@ export const themes = {
     backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForTableHeader: '#fff',
+    backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
     borderForCardWhenRaised: '1px solid var(--color-neutral-90)',
+    borderForCollapsiblePanelHeaderIconWhenDisabled: 'none',
     borderColorForButtonAsIcon: '#ccc',
     borderColorForButtonAsIconAsInfo: '#ccc',
     borderColorForButtonAsIconAsPrimary: '#ccc',
@@ -512,12 +518,16 @@ const designTokens = {
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
+  backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
+    'var(--background-color-for-collapsible-panel-header-icon-when-disabled, hsl(195, 35.2941176471%, 98%))',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',
   borderForButtonAsSecondaryWhenActive:
     'var(--border-for-button-as-secondary-when-active, none)',
   borderForCardWhenRaised: 'var(--border-for-card-when-raised, none)',
+  borderForCollapsiblePanelHeaderIconWhenDisabled:
+    'var(--border-for-collapsible-panel-header-icon-when-disabled, 1px solid var(--color-neutral))',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
