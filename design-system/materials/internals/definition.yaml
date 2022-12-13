@@ -65,7 +65,6 @@ choiceGroupsByTheme:
         color-solid-05: 'hsl(0deg 0% 10% / 5%)'
         color-solid-10: 'hsl(0deg 0% 10% / 10%)'
         color-surface: '#fff'
-        color-transparent: 'transparent'
 
     borderRadiuses:
       label: Border Radiuses
@@ -340,10 +339,10 @@ decisionGroupsByTheme:
           choice: color-accent-98
         background-color-for-input-when-hovered:
           description: ''
-          choice: color-transparent
+          choice: 'unset'
         background-color-for-input-when-focused:
           description: ''
-          choice: color-transparent
+          choice: 'unset'
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-90
         background-color-for-table-header:

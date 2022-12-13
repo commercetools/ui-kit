@@ -34,7 +34,6 @@ export const themes = {
     colorSolid05: 'hsl(0deg 0% 10% / 5%)',
     colorSolid10: 'hsl(0deg 0% 10% / 10%)',
     colorSurface: '#fff',
-    colorTransparent: 'transparent',
     borderRadius1: '1px',
     borderRadius2: '2px',
     borderRadius4: '4px',
@@ -141,8 +140,8 @@ export const themes = {
     backgroundColorForInput: '#fff',
     backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInputWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
-    backgroundColorForInputWhenHovered: 'color-transparent',
-    backgroundColorForInputWhenFocused: 'color-transparent',
+    backgroundColorForInputWhenHovered: 'unset',
+    backgroundColorForInputWhenFocused: 'unset',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForTableHeader: '#213c45',
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
@@ -400,7 +399,6 @@ const designTokens = {
   colorSolid05: 'var(--color-solid-05, hsl(0deg 0% 10% / 5%))',
   colorSolid10: 'var(--color-solid-10, hsl(0deg 0% 10% / 10%))',
   colorSurface: 'var(--color-surface, #fff)',
-  colorTransparent: 'var(--color-transparent, transparent)',
   borderRadius1: 'var(--border-radius-1, 1px)',
   borderRadius2: 'var(--border-radius-2, 2px)',
   borderRadius4: 'var(--border-radius-4, 4px)',
@@ -526,9 +524,9 @@ const designTokens = {
   backgroundColorForInputWhenDisabled:
     'var(--background-color-for-input-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForInputWhenHovered:
-    'var(--background-color-for-input-when-hovered, color-transparent)',
+    'var(--background-color-for-input-when-hovered, unset)',
   backgroundColorForInputWhenFocused:
-    'var(--background-color-for-input-when-focused, color-transparent)',
+    'var(--background-color-for-input-when-focused, unset)',
   backgroundColorForTableCellWhenHovered:
     'var(--background-color-for-table-cell-when-hovered, hsl(0, 0%, 90%))',
   backgroundColorForTableHeader:
