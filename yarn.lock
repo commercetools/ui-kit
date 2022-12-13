@@ -3378,6 +3378,7 @@ __metadata:
     "@babel/runtime": ^7.19.0
     "@babel/runtime-corejs3": ^7.19.1
     "@commercetools-uikit/constraints": 15.6.0
+    "@commercetools-uikit/design-system": 15.6.0
     "@commercetools-uikit/icon-button": 15.6.0
     "@commercetools-uikit/icons": 15.6.0
     "@commercetools-uikit/label": 15.6.0
