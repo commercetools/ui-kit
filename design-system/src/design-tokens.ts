@@ -163,6 +163,7 @@ export const themes = {
     borderColorForButtonAsIconWhenDisabled: '#ccc',
     borderColorForTableHeader: '#ccc',
     borderColorForTableHeaderAsBottom: '#213c45',
+    borderColorForTableManagerDroppableList: 'hsl(0, 0%, 60%)',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -171,6 +172,7 @@ export const themes = {
     borderRadiusForInput: '6px',
     borderRadiusForTag: '2px',
     borderRadiusForCard: '6px',
+    borderRadiusForTableManagerDroppableList: '6px',
     fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
@@ -225,6 +227,7 @@ export const themes = {
     paddingForTableHeaderAsCondensed: '8px',
     paddingForTableCell: '16px',
     paddingForTableCellAsCondensed: '8px',
+    paddingForTableManagerDroppableList: '8px',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -277,12 +280,14 @@ export const themes = {
     borderColorForCardWhenRaised: 'hsl(0, 0%, 90%)',
     borderColorForTableHeader: '#fff',
     borderColorForTableHeaderAsBottom: 'hsl(0, 0%, 90%)',
+    borderColorForTableManagerDroppableList: '#ccc',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
     borderRadiusForButtonAsIconAsMedium: '4px',
     borderRadiusForButtonAsIconAsSmall: '2px',
     borderRadiusForCard: '4px',
+    borderRadiusForTableManagerDroppableList: '4px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
@@ -327,6 +332,7 @@ export const themes = {
     paddingForTableHeaderAsCondensed: '24px',
     paddingForTableCell: 'var(--spacing-30) var(--spacing-40)',
     paddingForTableCellAsCondensed: 'var(--spacing-20) var(--spacing-40)',
+    paddingForTableManagerDroppableList: '16px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -532,6 +538,8 @@ const designTokens = {
   borderColorForTableHeader: 'var(--border-color-for-table-header, #ccc)',
   borderColorForTableHeaderAsBottom:
     'var(--border-color-for-table-header-as-bottom, #213c45)',
+  borderColorForTableManagerDroppableList:
+    'var(--border-color-for-table-manager-droppable-list, hsl(0, 0%, 60%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -543,6 +551,8 @@ const designTokens = {
   borderRadiusForInput: 'var(--border-radius-for-input, 6px)',
   borderRadiusForTag: 'var(--border-radius-for-tag, 2px)',
   borderRadiusForCard: 'var(--border-radius-for-card, 6px)',
+  borderRadiusForTableManagerDroppableList:
+    'var(--border-radius-for-table-manager-droppable-list, 6px)',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
@@ -609,6 +619,8 @@ const designTokens = {
   paddingForTableCell: 'var(--padding-for-table-cell, 16px)',
   paddingForTableCellAsCondensed:
     'var(--padding-for-table-cell-as-condensed, 8px)',
+  paddingForTableManagerDroppableList:
+    'var(--padding-for-table-manager-droppable-list, 8px)',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

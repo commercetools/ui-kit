@@ -291,6 +291,8 @@ componentGroups:
     description: 'Table header elements'
   table-cell:
     description: 'Table cell elements'
+  table-manager-droppable-list:
+    description: 'Table manager droppable list elements'
 
 decisionGroupsByTheme:
   default:
@@ -399,6 +401,8 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-table-header-as-bottom:
           choice: color-accent
+        border-color-for-table-manager-droppable-list:
+          choice: color-neutral-60
 
     borderRadiuses:
       label: Border Radius
@@ -422,8 +426,8 @@ decisionGroupsByTheme:
           choice: border-radius-2
         border-radius-for-card:
           choice: border-radius-6
-    # We don't have font families in choices yet, so we can't have decisions for
-    # them
+        border-radius-for-table-manager-droppable-list:
+          choice: border-radius-6
 
     fontColors:
       label: Font Colors
@@ -607,6 +611,8 @@ decisionGroupsByTheme:
           choice: spacing-30
         padding-for-table-cell-as-condensed:
           choice: spacing-20
+        padding-for-table-manager-droppable-list:
+          choice: spacing-20
 
     shadows:
       label: Shadows
@@ -692,6 +698,8 @@ decisionGroupsByTheme:
           choice: color-surface
         border-color-for-table-header-as-bottom:
           choice: color-neutral-90
+        border-color-for-table-manager-droppable-list:
+          choice: color-neutral
 
     borderRadiuses:
       label: Border radiuses
@@ -708,6 +716,8 @@ decisionGroupsByTheme:
         border-radius-for-button-as-icon-as-small:
           choice: border-radius-2
         border-radius-for-card:
+          choice: border-radius-4
+        border-radius-for-table-manager-droppable-list:
           choice: border-radius-4
 
     fontColors:
@@ -857,6 +867,8 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-30) var(--spacing-40)'
         padding-for-table-cell-as-condensed:
           choice: 'var(--spacing-20) var(--spacing-40)'
+        padding-for-table-manager-droppable-list:
+          choice: spacing-30
 
     shadows:
       label: Shadows
