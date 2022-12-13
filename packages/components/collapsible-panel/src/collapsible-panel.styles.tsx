@@ -6,20 +6,14 @@ import {
 } from '@commercetools-uikit/design-system';
 import type { TCollapsiblePanel } from './collapsible-panel';
 
-const sizeIconContainer = '24px';
-const sizeIconContainerSmall = '14px';
-
-function getThemeStyle(
-  theme?: TCollapsiblePanel['theme'],
-  changeBackgroundColor = true
-) {
+function getThemeStyle(theme?: TCollapsiblePanel['theme']) {
   if (theme === 'light') {
     return css`
-      background-color: ${changeBackgroundColor && designTokens.colorSurface};
+      background-color: ${designTokens.colorSurface};
     `;
   }
   return css`
-    background-color: ${changeBackgroundColor && designTokens.colorNeutral95};
+    background-color: ${designTokens.colorNeutral95};
   `;
 }
 
@@ -27,13 +21,14 @@ const getHeaderContainerStyles = (
   props: Pick<
     TCollapsiblePanel,
     'headerControlsAlignment' | 'condensed' | 'isDisabled' | 'isSticky'
-  >,
+  > & { uiKitTheme: ThemeName },
   isOpen: boolean
 ) => {
   const baseStyles = css`
-    background-color: ${designTokens.backgroundColorForCollapsiblePanelHeader};
-    border-bottom: 1px solid
-      ${designTokens.borderColorForCollapsiblePanelHeader};
+    background-color: ${designTokens.colorSurface};
+    border-bottom: ${isOpen || props.uiKitTheme !== 'default'
+      ? '1px solid ' + designTokens.borderColorForCollapsiblePanelHeader
+      : 'none'};
     position: relative;
     border-top-left-radius: ${designTokens.borderRadius6};
     border-top-right-radius: ${designTokens.borderRadius6};
@@ -103,50 +98,28 @@ const HeaderControlsWrapper = styled.div`
   cursor: auto;
 `;
 
-const SectionContent = styled.div`
+const SectionContent = styled.div<Pick<TCollapsiblePanel, 'condensed'>>`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
 `;
 
-const getSectionContentStyles = (
-  props: Pick<
-    TCollapsiblePanel,
-    'headerControlsAlignment' | 'condensed' | 'isDisabled' | 'isSticky'
-  >
-) => styled.div`
-  padding: ${props.condensed
-    ? designTokens.paddingForCollapsiblePanelContentAsCondensed
-    : designTokens.paddingForCollapsiblePanelContent};
+const SectionDescriptionWrapper = styled('div')`
+  padding: ${designTokens.paddingForCollapsiblePanelSectionDescription};
 `;
 
-//Calculation takes into account Spacing.Inset(default: 16px and condensed: 8px) padding and the Headline padding-left(8px) to align content with Headline
-const getSectionWrapperStyles = (
-  props: Pick<TCollapsiblePanel, 'condensed'>,
-  theme: ThemeName
-) => {
-  const style = `padding-left: ${
-    props.condensed
-      ? `calc(${sizeIconContainerSmall} - 8px + 8px)`
-      : `calc(${sizeIconContainer} - 16px + 8px)`
-  }`;
-  if (theme === 'default') {
-    return null;
-  }
-  return style;
-};
-
-const SectionWrapper = styled.div``;
+const SectionWrapper = styled.div<{ uiKitTheme: ThemeName }>`
+  padding: ${designTokens.paddingForCollapsiblePanelSectionWrapper};
+`;
 
 export {
   baseContainerStyles,
   getHeaderContainerStyles,
-  getSectionContentStyles,
   getThemeStyle,
-  getSectionWrapperStyles,
   getBaseContainerStyles,
   SectionContent,
+  SectionDescriptionWrapper,
   SectionWrapper,
   HeaderControlsWrapper,
 };

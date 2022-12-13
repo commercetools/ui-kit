@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import { ReactNode } from 'react';
 import isNil from 'lodash/isNil';
 import styled from '@emotion/styled';
@@ -20,9 +21,8 @@ import {
   HeaderControlsWrapper,
   SectionWrapper,
   SectionContent,
-  getSectionWrapperStyles,
-  getSectionContentStyles,
   getBaseContainerStyles,
+  SectionDescriptionWrapper,
 } from './collapsible-panel.styles';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 import { ThemeName, useTheme } from '@commercetools-uikit/design-system';
@@ -151,25 +151,21 @@ const HeadLineText = (
   theme: ThemeName,
   props: Pick<TCollapsiblePanel, 'condensed' | 'header'>
 ) => {
+  if (!props.condensed) {
+    return props.header;
+  }
+
   if (theme === 'default') {
-    return props.condensed ? (
+    return (
       <Text.Detail as="span" isBold truncate>
         {props.header}
       </Text.Detail>
-    ) : (
-      <Text.Subheadline as="h4" truncate>
-        {props.header}
-      </Text.Subheadline>
     );
   } else {
-    return props.condensed ? (
+    return (
       <Text.Subheadline as="h4" truncate>
         {props.header}
       </Text.Subheadline>
-    ) : (
-      <Text.Headline as="h2" truncate>
-        {props.header}
-      </Text.Headline>
     );
   }
 };
@@ -221,7 +217,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
           <div
             css={[
               baseContainerStyles,
-              getThemeStyle(props.theme),
+              getThemeStyle(theme === 'default' ? props.theme : 'light'),
               getBaseContainerStyles(theme),
             ]}
             // Allow to override the styles by passing a `className` prop.
@@ -232,8 +228,11 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
             <HeaderContainer
               as="div"
               css={[
-                getHeaderContainerStyles(props, isOpen),
-                getThemeStyle(props.theme, theme === 'default'),
+                getHeaderContainerStyles(
+                  { ...props, uiKitTheme: theme },
+                  isOpen
+                ),
+                getThemeStyle(theme === 'default' ? props.theme : 'light'),
               ]}
               id={panelButtonId}
               label=""
@@ -270,26 +269,27 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               )}
             </HeaderContainer>
             <div style={containerStyles}>
-              <SectionWrapper
-                ref={registerContentNode}
-                css={[getSectionWrapperStyles(props, theme)]}
-              >
+              <SectionWrapper ref={registerContentNode} uiKitTheme={theme}>
                 {props.description && (
-                  <Spacings.Inset scale={scale}>
-                    <Text.Detail>{props.description}</Text.Detail>
-                  </Spacings.Inset>
+                  <SectionDescriptionWrapper>
+                    <Text.Detail
+                      tone={theme === 'default' ? undefined : 'secondary'}
+                    >
+                      {props.description}
+                    </Text.Detail>
+                  </SectionDescriptionWrapper>
                 )}
-                <Spacings.Inset scale={scale}>
+                <Spacings.Stack scale={scale}>
                   <SectionContent
                     id={panelContentId}
                     role="region"
                     aria-labelledby={panelButtonId}
                     hidden={!isOpen}
-                    css={[getSectionContentStyles(props)]}
+                    condensed={props.condensed}
                   >
                     {props.children}
                   </SectionContent>
-                </Spacings.Inset>
+                </Spacings.Stack>
               </SectionWrapper>
             </div>
           </div>
