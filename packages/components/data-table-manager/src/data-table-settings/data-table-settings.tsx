@@ -223,7 +223,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   const iconColor = theme === 'default' ? undefined : 'neutral60';
 
   return (
-    <Spacings.Stack>
+    <Spacings.Stack scale={theme === 'default' ? 's' : 'xs'}>
       <Spacings.Inline justifyContent="space-between" alignItems="center">
         <TopBarContainer>{props.topBar}</TopBarContainer>
         {dropdownOptions.length > 0 && (
