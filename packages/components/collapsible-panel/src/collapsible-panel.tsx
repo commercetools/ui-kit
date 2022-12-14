@@ -148,14 +148,13 @@ const defaultProps: Pick<
 };
 
 const HeadLineText = (
-  theme: ThemeName,
-  props: Pick<TCollapsiblePanel, 'condensed' | 'header'>
+  props: Pick<TCollapsiblePanel, 'condensed' | 'header'> & { theme: ThemeName }
 ) => {
   if (!props.condensed) {
-    return props.header;
+    return <>{props.header}</>;
   }
 
-  if (theme === 'default') {
+  if (props.theme === 'default') {
     return (
       <Text.Detail as="span" isBold truncate>
         {props.header}
@@ -257,7 +256,11 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                   />
                 )}
                 <Spacings.Inline alignItems="center" scale={scale}>
-                  {HeadLineText(theme, props)}
+                  <HeadLineText
+                    header={props.header}
+                    condensed={props.condensed}
+                    theme={theme}
+                  />
                   {props.secondaryHeader && (
                     <Text.Detail tone="secondary" truncate={true}>
                       {props.secondaryHeader}
