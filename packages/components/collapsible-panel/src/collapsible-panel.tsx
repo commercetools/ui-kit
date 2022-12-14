@@ -25,7 +25,7 @@ import {
   SectionDescriptionWrapper,
 } from './collapsible-panel.styles';
 import CollapsiblePanelHeader from './collapsible-panel-header';
-import { ThemeName, useTheme } from '@commercetools-uikit/design-system';
+import { type ThemeName, useTheme } from '@commercetools-uikit/design-system';
 const HeaderContainer = styled(AccessibleButton)``;
 
 const panelButtonSequentialId = createSequentialId('collapsible-panel-button-');
@@ -179,6 +179,8 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
+  const iconSize =
+    theme === 'default' ? (props.condensed ? 'small' : 'medium') : 'medium';
 
   const isClosedAndIsDefaultClosed =
     !isNil(props.isClosed) && !isNil(props.isDefaultClosed);
@@ -242,13 +244,16 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               aria-controls={panelContentId}
               aria-expanded={isOpen ? 'true' : 'false'}
             >
-              <Spacings.Inline alignItems="center" scale="s">
+              <Spacings.Inline
+                alignItems="center"
+                scale={theme === 'default' ? 's' : 'xs'}
+              >
                 {!props.hideExpansionControls && (
                   <HeaderIcon
                     isClosed={!isOpen}
                     isDisabled={props.isDisabled || false}
                     tone={props.tone}
-                    size={props.condensed ? 'small' : 'medium'}
+                    size={iconSize}
                   />
                 )}
                 <Spacings.Inline alignItems="center" scale={scale}>
@@ -288,7 +293,6 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                     role="region"
                     aria-labelledby={panelButtonId}
                     hidden={!isOpen}
-                    condensed={props.condensed}
                   >
                     {props.children}
                   </SectionContent>

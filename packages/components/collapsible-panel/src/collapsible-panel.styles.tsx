@@ -98,14 +98,14 @@ const HeaderControlsWrapper = styled.div`
   cursor: auto;
 `;
 
-const SectionContent = styled.div<Pick<TCollapsiblePanel, 'condensed'>>`
+const SectionContent = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
 `;
 
-const SectionDescriptionWrapper = styled('div')<{ condensed?: boolean }>`
+const SectionDescriptionWrapper = styled.div<{ condensed?: boolean }>`
   padding: ${({ condensed }) =>
     condensed
       ? designTokens.paddingForCollapsiblePanelSectionDescriptionAsCondensed
