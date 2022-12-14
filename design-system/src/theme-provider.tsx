@@ -92,10 +92,7 @@ ThemeProvider.defaultProps = {
   theme: 'default',
 };
 
-type TUseThemeResult = {
-  theme: ThemeName;
-};
-const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
+const useTheme = (parentSelector = defaultParentSelector) => {
   const [theme, setTheme] = useState<ThemeName>('default');
   const parentSelectorRef = useRef(parentSelector);
   const observerRef = useRef(
@@ -108,6 +105,13 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
       );
     })
   );
+  const themedValue = <
+    Old extends string | undefined,
+    New extends string | undefined
+  >(
+    defaultThemeValue: Old,
+    newThemeValue: New
+  ) => (theme === 'default' ? defaultThemeValue : newThemeValue);
 
   // If we use 'useLayoutEffect' here, we would be trying to read the
   // data attribute before it gets set from the effect in the ThemeProvider
@@ -135,7 +139,7 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
     return () => observer.disconnect();
   }, []);
 
-  return { theme };
+  return { theme, themedValue };
 };
 
 export { ThemeProvider, useTheme };
