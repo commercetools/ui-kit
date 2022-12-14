@@ -8,6 +8,8 @@ import RequiredIndicator from './required-indicator';
 import { useTheme, designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 
+// TODO: @redesign cleanup
+
 type TLabelProps = {
   /**
    * The `id` HTML attribute, used to reference non-form elements with the related attribute `aria-labelledby`.

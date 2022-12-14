@@ -16,6 +16,8 @@ import Inline from '@commercetools-uikit/spacings-inline';
 import Label from '@commercetools-uikit/label';
 import { useTheme } from '@commercetools-uikit/design-system';
 
+// TODO: @redesign cleanup
+
 export type TFieldLabelProps = {
   /**
    * Title of the label
