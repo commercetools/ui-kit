@@ -65,7 +65,6 @@ choiceGroupsByTheme:
         color-solid-05: 'hsl(0deg 0% 10% / 5%)'
         color-solid-10: 'hsl(0deg 0% 10% / 10%)'
         color-surface: '#fff'
-
     borderRadiuses:
       label: Border Radiuses
       prefix: border-radius
@@ -97,7 +96,12 @@ choiceGroupsByTheme:
         font-size-63: '1.5385rem'
         font-size-66: '1.8462rem'
         font-size-70: '2.4615rem'
-
+    fontStyles:
+      label: Font styles
+      prefix: font-style
+      choices:
+        font-style-italic: 'italic'
+        font-style-normal: 'normal'
     fontWeights:
       label: Font weights
       prefix: font-weight
@@ -107,7 +111,6 @@ choiceGroupsByTheme:
         font-weight-500: '500'
         font-weight-600: '600'
         font-weight-700: '700'
-
     lineHeights:
       label: Line heights
       prefix: line-height
@@ -118,7 +121,6 @@ choiceGroupsByTheme:
         line-height-40: '1.625rem'
         line-height-50: '1.75rem'
         line-height-60: '2.125rem'
-
     shadows:
       label: Shadows
       prefix: shadow
@@ -291,6 +293,8 @@ componentGroups:
     description: 'Table header elements'
   table-cell:
     description: 'Table cell elements'
+  required-indicator:
+    description: 'Indicator elements'
 
 decisionGroupsByTheme:
   default:
@@ -523,6 +527,14 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-table:
           choice: font-size-30
+
+    fontStyles:
+      label: Font Styles
+      prefix: font-style
+      decisions:
+        font-style-for-required-indicator:
+          description: ''
+          choice: font-style-italic
 
     lineHeights:
       label: Line Heights
@@ -758,6 +770,14 @@ decisionGroupsByTheme:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
+
+    fontStyles:
+      label: Font Styles
+      prefix: font-style
+      decisions:
+        font-style-for-required-indicator:
+          description: ''
+          choice: font-style-normal
 
     lineHeights:
       label: Line Heights
