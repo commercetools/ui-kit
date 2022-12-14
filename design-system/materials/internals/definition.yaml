@@ -75,6 +75,14 @@ choiceGroupsByTheme:
         border-radius-4: 4px
         border-radius-6: 6px
         border-radius-20: 20px
+
+    borderWidths:
+      label: Border Widths
+      prefix: border-width
+      choices:
+        border-width-1: 1px
+        border-width-2: 2px
+
     fontFamilies:
       label: Font families
       prefix: font-family
@@ -299,6 +307,10 @@ componentGroups:
     description: 'collapsible panel section description elements'
   collapsible-panel-header-icon:
     description: 'collapsible panel header icon elements'
+  select-input:
+    description: 'Select input elements'
+  select-input-option:
+    description: 'Select input option elements'
 
 decisionGroupsByTheme:
   default:
@@ -339,7 +351,10 @@ decisionGroupsByTheme:
           choice: color-accent-98
         background-color-for-input-when-hovered:
           description: ''
-          choice: color-neutral-90
+          choice: 'unset'
+        background-color-for-input-when-focused:
+          description: ''
+          choice: 'unset'
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-90
         background-color-for-table-header:
@@ -352,6 +367,9 @@ decisionGroupsByTheme:
           choice: color-warning-95
         background-color-for-collapsible-panel-header-icon-when-disabled:
           choice: color-accent-98
+        background-color-for-select-input-option-when-hovered:
+          description: ''
+          choice: color-neutral-90
 
     borders:
       label: Borders
@@ -390,6 +408,9 @@ decisionGroupsByTheme:
         border-color-for-input-when-warning:
           description: ''
           choice: color-warning
+        border-color-for-input-when-hovered:
+          description: ''
+          choice: color-primary
         border-color-for-tag:
           description: ''
           choice: color-neutral-60
@@ -439,6 +460,19 @@ decisionGroupsByTheme:
     # We don't have font families in choices yet, so we can't have decisions for
     # them
 
+    borderWidths:
+      label: Border width
+      prefix: border-width
+      decisions:
+        border-width-for-input:
+          choice: border-width-1
+        border-width-for-input-when-warning:
+          choice: border-width-1
+        border-width-for-input-when-error:
+          choice: border-width-1
+        border-width-for-input-when-focused:
+          choice: border-width-1
+
     fontColors:
       label: Font Colors
       prefix: font-color
@@ -487,6 +521,8 @@ decisionGroupsByTheme:
           choice: '24px'
         height-for-button-as-icon-as-small:
           choice: '16px'
+        height-for-input:
+          choice: '32px'
 
     placeholderFontColors:
       label: Placeholder font colors
@@ -633,6 +669,8 @@ decisionGroupsByTheme:
           choice: '0 0 var(--spacing-50)'
         padding-for-collapsible-panel-section-description-as-condensed:
           choice: '0 0 var(--spacing-30)'
+        padding-for-input:
+          choice: spacing-20
 
     shadows:
       label: Shadows
@@ -654,6 +692,14 @@ decisionGroupsByTheme:
           choice: shadow-1
         shadow-for-card-when-raised:
           choice: shadow-1
+        shadow-for-input:
+          choice: shadow-0
+        shadow-for-input-when-focused:
+          choice: 'inset 0 0 0 2px var(--color-primary)'
+        shadow-for-input-when-error:
+          choice: shadow-0
+        shadow-for-input-when-warning:
+          choice: shadow-0
 
   test:
     backgroundColors:
@@ -688,6 +734,10 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-collapsible-panel-header-icon-when-disabled:
           choice: color-surface
+        background-color-for-input-when-hovered:
+          choice: color-neutral-95
+        background-color-for-input-when-disabled:
+          choice: color-neutral-95
 
     borders:
       label: Borders
@@ -708,6 +758,16 @@ decisionGroupsByTheme:
       label: Border Colors
       prefix: border-color
       decisions:
+        border-color-for-input:
+          choice: color-neutral
+        border-color-for-input-when-disabled:
+          choice: color-neutral
+        border-color-for-input-when-hovered:
+          choice: color-neutral
+        border-color-for-input-when-readonly:
+          choice: color-neutral-90
+        border-color-for-input-when-focused:
+          choice: color-primary
         border-color-for-button-as-icon:
           choice: color-neutral
         border-color-for-button-as-icon-as-info:
@@ -741,12 +801,16 @@ decisionGroupsByTheme:
           choice: border-radius-2
         border-radius-for-card:
           choice: border-radius-4
+        border-radius-for-input:
+          choice: border-radius-4
 
     fontColors:
       label: Font Colors
       prefix: font-color
       decisions:
         font-color-for-table-header:
+          choice: color-neutral-40
+        font-color-for-input-when-readonly:
           choice: color-neutral-40
 
     fontSizes:
@@ -861,6 +925,8 @@ decisionGroupsByTheme:
           choice: '32px'
         height-for-button-as-icon-as-small:
           choice: '16px'
+        height-for-input:
+          choice: '40px'
 
     margins:
       label: Margins
@@ -901,6 +967,8 @@ decisionGroupsByTheme:
           choice: '0 0 var(--spacing-40)'
         padding-for-collapsible-panel-section-description-as-condensed:
           choice: '0 0 var(--spacing-40)'
+        padding-for-input:
+          choice: 'spacing-30'
 
     shadows:
       label: Shadows
@@ -917,7 +985,15 @@ decisionGroupsByTheme:
         shadow-for-button-when-disabled:
           choice: shadow-0
         shadow-for-card-when-raised:
-          choice: '0 1px 5px 0 rgba(0, 0, 0, 0.05)'
+          choice: shadow-0
+        shadow-for-input:
+          choice: shadow-0
+        shadow-for-input-when-focused:
+          choice: 'inset 0 0 0 1px var(--color-primary)'
+        shadow-for-input-when-error:
+          choice: 'inset 0 0 0 1px var(--color-error)'
+        shadow-for-input-when-warning:
+          choice: 'inset 0 0 0 1px var(--color-warning)'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.

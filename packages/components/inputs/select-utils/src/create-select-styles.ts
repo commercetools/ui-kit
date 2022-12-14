@@ -169,7 +169,7 @@ const optionStyles = () => (base: TBase, state: TState) => {
       if (state.isSelected)
         return designTokens.backgroundColorForInputWhenSelected;
       if (state.isFocused)
-        return designTokens.backgroundColorForInputWhenHovered;
+        return designTokens.backgroundColorForSelectInputOptionWhenHovered;
       return base.backgroundColor;
     })(),
 
