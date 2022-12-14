@@ -40,6 +40,8 @@
   --border-radius-4: 4px;
   --border-radius-6: 6px;
   --border-radius-20: 20px;
+  --border-width-1: 1px;
+  --border-width-2: 2px;
   --font-family: 'Open Sans', sans-serif;
   --font-size-10: 0.75rem;
   --font-size-20: 0.875rem;
@@ -145,7 +147,8 @@
   --background-color-for-input: #fff;
   --background-color-for-input-when-selected: hsl(195, 35.2941176471%, 95%);
   --background-color-for-input-when-disabled: hsl(195, 35.2941176471%, 98%);
-  --background-color-for-input-when-hovered: hsl(0, 0%, 90%);
+  --background-color-for-input-when-hovered: unset;
+  --background-color-for-input-when-focused: unset;
   --background-color-for-table-cell-when-hovered: hsl(0, 0%, 90%);
   --background-color-for-table-header: #213c45;
   --background-color-for-tag: hsl(0, 0%, 95%);
@@ -154,6 +157,7 @@
     89.0196078431%,
     95%
   );
+  --background-color-for-select-input-option-when-hovered: hsl(0, 0%, 90%);
   --border-for-button-as-secondary: none;
   --border-for-button-as-secondary-when-hovered: none;
   --border-for-button-as-secondary-when-active: none;
@@ -164,6 +168,7 @@
   --border-color-for-input-when-readonly: #ccc;
   --border-color-for-input-when-error: #e60050;
   --border-color-for-input-when-warning: #f16d0e;
+  --border-color-for-input-when-hovered: #00b39e;
   --border-color-for-tag: hsl(0, 0%, 60%);
   --border-color-for-tag-warning: #f16d0e;
   --border-color-for-tag-when-focused: #00b39e;
@@ -181,6 +186,10 @@
   --border-radius-for-input: 6px;
   --border-radius-for-tag: 2px;
   --border-radius-for-card: 6px;
+  --border-width-for-input: 1px;
+  --border-width-for-input-when-warning: 1px;
+  --border-width-for-input-when-error: 1px;
+  --border-width-for-input-when-focused: 1px;
   --font-color-for-text: #1a1a1a;
   --font-color-for-input: #1a1a1a;
   --font-color-for-input-when-disabled: hsl(0, 0%, 60%);
@@ -196,6 +205,7 @@
   --height-for-button-as-icon-as-big: 32px;
   --height-for-button-as-icon-as-medium: 24px;
   --height-for-button-as-icon-as-small: 16px;
+  --height-for-input: 32px;
   --placeholder-font-color-for-input: hsl(0, 0%, 60%);
   --font-size-for-button: 1rem;
   --font-size-for-input: 1rem;
@@ -235,6 +245,7 @@
   --padding-for-table-header-as-condensed: 8px;
   --padding-for-table-cell: 16px;
   --padding-for-table-cell-as-condensed: 8px;
+  --padding-for-input: 8px;
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),
@@ -249,6 +260,10 @@
     0 1px 2px rgba(0, 0, 0, 0.24);
   --shadow-for-card-when-raised: 0 1px 3px rgba(0, 0, 0, 0.12),
     0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-for-input: none;
+  --shadow-for-input-when-focused: inset 0 0 0 2px var(--color-primary);
+  --shadow-for-input-when-error: none;
+  --shadow-for-input-when-warning: none;
   --font-size-m: 1rem;
   --big-button-height: 32px;
   --small-button-height: 24px;
