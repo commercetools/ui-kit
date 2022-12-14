@@ -149,13 +149,12 @@ type TDataTableManagerProps = {
 };
 
 const DataTableManager = (props: TDataTableManagerProps) => {
-  const { theme } = useTheme();
+  const { themedValue } = useTheme();
   const areDisplaySettingsEnabled = Boolean(
     props.displaySettings && !props.displaySettings.disableDisplaySettings
   );
   const isWrappingText =
     areDisplaySettingsEnabled && props.displaySettings!.isWrappingText;
-  const managerTheme = theme === 'default' ? props.managerTheme : 'light';
 
   const columns = useMemo(
     () =>
@@ -175,7 +174,7 @@ const DataTableManager = (props: TDataTableManagerProps) => {
         onSettingsChange={props.onSettingsChange}
         columnManager={props.columnManager}
         displaySettings={props.displaySettings}
-        managerTheme={managerTheme}
+        managerTheme={themedValue(props.managerTheme, 'light')}
       />
       {cloneElement(props.children, {
         columns,

@@ -139,12 +139,9 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
   }
 
   const intl = useIntl();
-  const { theme } = useTheme();
+  const { themedValue } = useTheme();
   const [isDragging, setIsDragging] = useState(false);
   const { searchHiddenColumns } = props;
-  const listTitleMarginBottom = theme === 'default' ? 's' : 'm';
-  const iconsSize = theme === 'default' ? 'medium' : 'big';
-  const iconsMargin = theme === 'default' ? 'xs' : 's';
 
   const handleDragStart = () => {
     setIsDragging(true);
@@ -196,9 +193,12 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
             isDragging={isDragging}
             aria-labelledby="hidden-columns"
           >
-            <Spacings.Stack scale={listTitleMarginBottom}>
-              <Spacings.Inline scale={iconsMargin} alignItems="center">
-                <EyeCrossedIcon size={iconsSize} />
+            <Spacings.Stack scale={themedValue('s', 'm')}>
+              <Spacings.Inline
+                scale={themedValue('xs', 's')}
+                alignItems="center"
+              >
+                <EyeCrossedIcon size={themedValue('medium', 'big')} />
                 <FieldLabel
                   id="hidden-columns"
                   title={intl.formatMessage(messages.hiddenColumns)}
@@ -232,7 +232,7 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
             isDragging={isDragging}
             aria-labelledby="visible-columns"
           >
-            <Spacings.Stack scale={listTitleMarginBottom}>
+            <Spacings.Stack scale={themedValue('s', 'm')}>
               <Spacings.Inline scale="xs" alignItems="center">
                 <EyeIcon size="medium" />
                 <FieldLabel

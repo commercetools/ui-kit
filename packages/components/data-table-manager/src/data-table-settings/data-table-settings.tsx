@@ -189,7 +189,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   );
 
   const intl = useIntl();
-  const { theme } = useTheme();
+  const { themedValue } = useTheme();
   const [openedPanelId, setOpenedPanelId] = useState<string | null | undefined>(
     null
   );
@@ -220,10 +220,8 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
 
   const handleSettingsPanelChange = () => setOpenedPanelId(null);
 
-  const iconColor = theme === 'default' ? undefined : 'neutral60';
-
   return (
-    <Spacings.Stack scale={theme === 'default' ? 's' : 'xs'}>
+    <Spacings.Stack scale={themedValue('s', 'xs')}>
       <Spacings.Inline justifyContent="space-between" alignItems="center">
         <TopBarContainer>{props.topBar}</TopBarContainer>
         {dropdownOptions.length > 0 && (
@@ -241,7 +239,9 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
               placeholder={intl.formatMessage(messages.placeholder)}
               onChange={handleDropdownChange}
               options={dropdownOptions}
-              iconLeft={<TableIcon color={iconColor} />}
+              iconLeft={
+                <TableIcon color={themedValue(undefined, 'neutral60')} />
+              }
             />
           </SelectContainer>
         )}

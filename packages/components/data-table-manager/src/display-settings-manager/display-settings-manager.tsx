@@ -36,14 +36,14 @@ export type TDensityManagerProps = {
 
 const DensityManager = (props: TDensityManagerProps) => {
   const intl = useIntl();
-  const { theme } = useTheme();
+  const { themedValue } = useTheme();
   const textWrappingOption = props.isWrappingText
     ? SHOW_HIDE_ON_DEMAND
     : WRAPPED_TEXT_VISIBLE;
   const densityDisplayOption = props.isCondensed
     ? DENSITY_COMPACT
     : DENSITY_DEFAULT;
-  const columnStackScale = theme === 'default' ? 's' : 'l';
+  const columnStackScale = themedValue('s', 'l');
 
   return (
     <SettingsContainer

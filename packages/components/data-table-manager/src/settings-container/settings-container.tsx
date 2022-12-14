@@ -34,15 +34,13 @@ const HeaderContainer = styled.div`
 
 const SettingsContainer = (props: TSettingsContainerProps) => {
   const intl = useIntl();
-  const { theme } = useTheme();
-  const cardType = theme === 'default' ? 'flat' : 'raised';
-  const headerMarginBottom = theme === 'default' ? 'xs' : 'xl';
+  const { themedValue } = useTheme();
 
   return (
     <CollapsibleMotion isDefaultClosed={false}>
       {({ registerContentNode, containerStyles }) => (
-        <Card type={cardType} theme={props.containerTheme}>
-          <Spacings.Stack scale={headerMarginBottom}>
+        <Card type={themedValue('flat', 'raised')} theme={props.containerTheme}>
+          <Spacings.Stack scale={themedValue('xs', 'xl')}>
             <HeaderContainer>
               <Text.Headline as="h3" intlMessage={props.title} />
               <AccessibleButton
