@@ -1,4 +1,10 @@
-import { useLayoutEffect, useState, useRef, useEffect } from 'react';
+import {
+  useLayoutEffect,
+  useState,
+  useRef,
+  useEffect,
+  type ReactNode,
+} from 'react';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import isEqual from 'lodash/isEqual';
@@ -92,10 +98,7 @@ ThemeProvider.defaultProps = {
   theme: 'default',
 };
 
-type TUseThemeResult = {
-  theme: ThemeName;
-};
-const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
+const useTheme = (parentSelector = defaultParentSelector) => {
   const [theme, setTheme] = useState<ThemeName>('default');
   const parentSelectorRef = useRef(parentSelector);
   const observerRef = useRef(
@@ -108,6 +111,14 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
       );
     })
   );
+
+  const themedValue = <
+    Old extends string | ReactNode | undefined,
+    New extends string | ReactNode | undefined
+  >(
+    defaultThemeValue: Old,
+    newThemeValue: New
+  ) => (theme === 'default' ? defaultThemeValue : newThemeValue);
 
   // If we use 'useLayoutEffect' here, we would be trying to read the
   // data attribute before it gets set from the effect in the ThemeProvider
@@ -135,7 +146,11 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
     return () => observer.disconnect();
   }, []);
 
-  return { theme };
+  return {
+    theme,
+    themedValue,
+    isNewTheme: theme === 'test',
+  };
 };
 
 export { ThemeProvider, useTheme };
