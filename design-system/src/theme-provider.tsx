@@ -146,7 +146,11 @@ const useTheme = (parentSelector = defaultParentSelector) => {
     return () => observer.disconnect();
   }, []);
 
-  return { theme, themedValue };
+  return {
+    theme,
+    themedValue,
+    isNewTheme: theme === 'test',
+  };
 };
 
 export { ThemeProvider, useTheme };
