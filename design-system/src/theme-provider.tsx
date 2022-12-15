@@ -1,4 +1,10 @@
-import { useLayoutEffect, useState, useRef, useEffect } from 'react';
+import {
+  useLayoutEffect,
+  useState,
+  useRef,
+  useEffect,
+  type ReactNode,
+} from 'react';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import isEqual from 'lodash/isEqual';
@@ -105,9 +111,10 @@ const useTheme = (parentSelector = defaultParentSelector) => {
       );
     })
   );
+
   const themedValue = <
-    Old extends string | undefined,
-    New extends string | undefined
+    Old extends string | ReactNode | undefined,
+    New extends string | ReactNode | undefined
   >(
     defaultThemeValue: Old,
     newThemeValue: New
@@ -139,7 +146,11 @@ const useTheme = (parentSelector = defaultParentSelector) => {
     return () => observer.disconnect();
   }, []);
 
-  return { theme, themedValue };
+  return {
+    theme,
+    themedValue,
+    isNewTheme: theme === 'test',
+  };
 };
 
 export { ThemeProvider, useTheme };
