@@ -25,7 +25,7 @@ import {
   SectionDescriptionWrapper,
 } from './collapsible-panel.styles';
 import CollapsiblePanelHeader from './collapsible-panel-header';
-import { type ThemeName, useTheme } from '@commercetools-uikit/design-system';
+import { useTheme } from '@commercetools-uikit/design-system';
 const HeaderContainer = styled(AccessibleButton)``;
 
 const panelButtonSequentialId = createSequentialId('collapsible-panel-button-');
@@ -148,23 +148,25 @@ const defaultProps: Pick<
 };
 
 const HeadLineText = (
-  props: Pick<TCollapsiblePanel, 'condensed' | 'header'> & { theme: ThemeName }
+  props: Pick<TCollapsiblePanel, 'condensed' | 'header'> & {
+    isNewTheme: boolean;
+  }
 ) => {
   if (!props.condensed) {
     return <>{props.header}</>;
   }
 
-  if (props.theme === 'default') {
-    return (
-      <Text.Detail as="span" isBold truncate>
-        {props.header}
-      </Text.Detail>
-    );
-  } else {
+  if (props.isNewTheme) {
     return (
       <Text.Subheadline as="h4" truncate>
         {props.header}
       </Text.Subheadline>
+    );
+  } else {
+    return (
+      <Text.Detail as="span" isBold truncate>
+        {props.header}
+      </Text.Detail>
     );
   }
 };
@@ -172,13 +174,13 @@ const HeadLineText = (
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = (props: TCollapsiblePanel) => {
-  const { theme, themedValue } = useTheme();
+  const { isNewTheme, themedValue } = useTheme();
   const panelButtonId = useFieldId(props.id, panelButtonSequentialId);
   const panelContentId = useFieldId(undefined, panelContentSequentialId);
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
-  const iconSize = themedValue(props.condensed ? 'small' : 'medium', 'medium');
+  const iconSize = themedValue(props.condensed ? 'small' : 'medium', 'big');
 
   const isClosedAndIsDefaultClosed =
     !isNil(props.isClosed) && !isNil(props.isDefaultClosed);
@@ -218,7 +220,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
             css={[
               baseContainerStyles,
               getThemeStyle(themedValue(props.theme, 'light')),
-              getBaseContainerStyles(theme),
+              getBaseContainerStyles(isNewTheme),
             ]}
             // Allow to override the styles by passing a `className` prop.
             // Custom styles can also be passed using the `css` prop from emotion.
@@ -228,10 +230,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
             <HeaderContainer
               as="div"
               css={[
-                getHeaderContainerStyles(
-                  { ...props, uiKitTheme: theme },
-                  isOpen
-                ),
+                getHeaderContainerStyles({ ...props, isNewTheme }, isOpen),
                 getThemeStyle(themedValue(props.theme, 'light')),
               ]}
               id={panelButtonId}
@@ -258,7 +257,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                   <HeadLineText
                     header={props.header}
                     condensed={props.condensed}
-                    theme={theme}
+                    isNewTheme={isNewTheme}
                   />
                   {props.secondaryHeader && (
                     <Text.Detail tone="secondary" truncate={true}>
@@ -277,8 +276,11 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
             </HeaderContainer>
             <div style={containerStyles}>
               <SectionWrapper
+                // @ts-ignore
                 ref={registerContentNode}
                 condensed={props.condensed}
+                isExpandControlHidden={props.hideExpansionControls}
+                isNewTheme={isNewTheme}
               >
                 {props.description && (
                   <SectionDescriptionWrapper condensed={props.condensed}>
