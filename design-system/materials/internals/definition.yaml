@@ -301,6 +301,10 @@ componentGroups:
     description: 'Table cell elements'
   table-manager-droppable-list:
     description: 'Table manager droppable list elements'
+  table-manager-settings-panel:
+    description: 'Table manager settings panel elements'
+  table-manager-draggable-tag:
+    description: 'Table manager settings draggable tag elements'
   select-input:
     description: 'Select input elements'
   select-input-option:
@@ -649,8 +653,12 @@ decisionGroupsByTheme:
           choice: spacing-20
         padding-for-table-manager-droppable-list:
           choice: spacing-20
+        padding-for-table-manager-settings-panel:
+          choice: spacing-30
+        padding-for-table-manager-draggable-tag:
+          choice: spacing-10
         padding-for-input:
-          choice: 'spacing-20'
+          choice: spacing-20
 
     shadows:
       label: Shadows
@@ -935,6 +943,10 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-20) var(--spacing-40)'
         padding-for-table-manager-droppable-list:
           choice: spacing-30
+        padding-for-table-manager-settings-panel:
+          choice: 'var(--spacing-40) var(--spacing-50)'
+        padding-for-table-manager-draggable-tag:
+          choice: 'var(--spacing-10) 0'
         padding-for-input:
           choice: spacing-30
 

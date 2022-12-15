@@ -224,6 +224,8 @@
   "--padding-for-table-cell": "16px",
   "--padding-for-table-cell-as-condensed": "8px",
   "--padding-for-table-manager-droppable-list": "8px",
+  "--padding-for-table-manager-settings-panel": "16px",
+  "--padding-for-table-manager-draggable-tag": "4px",
   "--padding-for-input": "8px",
   "--shadow-for-button": "0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)",
   "--shadow-for-button-when-focused": "0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)",

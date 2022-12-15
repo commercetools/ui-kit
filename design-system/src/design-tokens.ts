@@ -238,6 +238,8 @@ export const themes = {
     paddingForTableCell: '16px',
     paddingForTableCellAsCondensed: '8px',
     paddingForTableManagerDroppableList: '8px',
+    paddingForTableManagerSettingsPanel: '16px',
+    paddingForTableManagerDraggableTag: '4px',
     paddingForInput: '8px',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
@@ -358,6 +360,8 @@ export const themes = {
     paddingForTableCell: 'var(--spacing-30) var(--spacing-40)',
     paddingForTableCellAsCondensed: 'var(--spacing-20) var(--spacing-40)',
     paddingForTableManagerDroppableList: '16px',
+    paddingForTableManagerSettingsPanel: 'var(--spacing-40) var(--spacing-50)',
+    paddingForTableManagerDraggableTag: 'var(--spacing-10) 0',
     paddingForInput: '16px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
@@ -666,6 +670,10 @@ const designTokens = {
     'var(--padding-for-table-cell-as-condensed, 8px)',
   paddingForTableManagerDroppableList:
     'var(--padding-for-table-manager-droppable-list, 8px)',
+  paddingForTableManagerSettingsPanel:
+    'var(--padding-for-table-manager-settings-panel, 16px)',
+  paddingForTableManagerDraggableTag:
+    'var(--padding-for-table-manager-draggable-tag, 4px)',
   paddingForInput: 'var(--padding-for-input, 8px)',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
