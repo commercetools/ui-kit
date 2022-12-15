@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import type { TTagProps } from './tag';
 
 import { ReactNode } from 'react';
@@ -72,11 +73,9 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
 };
 
 const TagBody = (props: TTagBodyProps) => {
-  const { theme } = useTheme();
+  const { themedValue } = useTheme();
   const textTone = props.isDisabled ? 'secondary' : undefined;
-  // TODO: This is a temporary solution due to theme migration. After the new
-  // theme is published, we must remove this and just use the `Text.Body` component
-  const TextComponent = theme === 'default' ? Text.Detail : Text.Body;
+  const TextComponent = themedValue(Text.Detail, Text.Body);
 
   return (
     <Body
