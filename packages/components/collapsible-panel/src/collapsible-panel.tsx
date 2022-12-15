@@ -172,14 +172,13 @@ const HeadLineText = (
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = (props: TCollapsiblePanel) => {
-  const { theme } = useTheme();
+  const { theme, themedValue } = useTheme();
   const panelButtonId = useFieldId(props.id, panelButtonSequentialId);
   const panelContentId = useFieldId(undefined, panelContentSequentialId);
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
-  const iconSize =
-    theme === 'default' ? (props.condensed ? 'small' : 'medium') : 'medium';
+  const iconSize = themedValue(props.condensed ? 'small' : 'medium', 'medium');
 
   const isClosedAndIsDefaultClosed =
     !isNil(props.isClosed) && !isNil(props.isDefaultClosed);
@@ -218,7 +217,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
           <div
             css={[
               baseContainerStyles,
-              getThemeStyle(theme === 'default' ? props.theme : 'light'),
+              getThemeStyle(themedValue(props.theme, 'light')),
               getBaseContainerStyles(theme),
             ]}
             // Allow to override the styles by passing a `className` prop.
@@ -233,7 +232,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                   { ...props, uiKitTheme: theme },
                   isOpen
                 ),
-                getThemeStyle(theme === 'default' ? props.theme : 'light'),
+                getThemeStyle(themedValue(props.theme, 'light')),
               ]}
               id={panelButtonId}
               label=""
@@ -245,7 +244,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
             >
               <Spacings.Inline
                 alignItems="center"
-                scale={theme === 'default' ? 's' : 'xs'}
+                scale={themedValue('s', 'xs')}
               >
                 {!props.hideExpansionControls && (
                   <HeaderIcon
@@ -283,9 +282,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               >
                 {props.description && (
                   <SectionDescriptionWrapper condensed={props.condensed}>
-                    <Text.Detail
-                      tone={theme === 'default' ? undefined : 'secondary'}
-                    >
+                    <Text.Detail tone={themedValue(undefined, 'secondary')}>
                       {props.description}
                     </Text.Detail>
                   </SectionDescriptionWrapper>

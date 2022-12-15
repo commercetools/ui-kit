@@ -7,20 +7,20 @@ type TCollapsiblePanelHeader = {
   children: ReactNode;
 };
 const CollapsiblePanelHeader = (props: TCollapsiblePanelHeader) => {
-  const { theme } = useTheme();
+  const { isNewTheme } = useTheme();
 
-  if (theme === 'default') {
+  if (isNewTheme) {
     return (
-      <Text.Subheadline as="h4" isBold={true} truncate={true}>
+      <Text.Headline as="h2" truncate={true}>
         {props.children}
-      </Text.Subheadline>
+      </Text.Headline>
     );
   }
 
   return (
-    <Text.Headline as="h2" truncate={true}>
+    <Text.Subheadline as="h4" isBold={true} truncate={true}>
       {props.children}
-    </Text.Headline>
+    </Text.Subheadline>
   );
 };
 

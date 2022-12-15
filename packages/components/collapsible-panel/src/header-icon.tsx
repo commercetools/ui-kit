@@ -29,9 +29,9 @@ type THeaderIcon = {
 };
 
 const HeaderIcon = (props: THeaderIcon) => {
-  const { theme } = useTheme();
+  const { theme, isNewTheme } = useTheme();
   const backgroundColor =
-    props.tone === 'urgent' && theme === 'default'
+    props.tone === 'urgent' && !isNewTheme
       ? designTokens.colorWarning
       : designTokens.colorSurface;
   return (
@@ -48,7 +48,7 @@ const HeaderIcon = (props: THeaderIcon) => {
             ? sizeIconContainerSmall
             : sizeIconContainer};
         `,
-        theme === 'default' &&
+        !isNewTheme &&
           css`
             border-radius: 50%;
             flex-shrink: 0;

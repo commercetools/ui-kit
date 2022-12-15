@@ -2,9 +2,9 @@
 
 set -e
 
-yarn generate-icons
+# yarn generate-icons
 yarn design-tokens:build
-yarn compile-intl
+# yarn compile-intl
 
 yarn preconstruct build
 
