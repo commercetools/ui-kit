@@ -965,7 +965,7 @@ decisionGroupsByTheme:
         shadow-for-button-when-disabled:
           choice: shadow-0
         shadow-for-card-when-raised:
-          choice: shadow-0
+          choice: '0 1px 5px 0 rgba(0, 0, 0, 0.05)'
         shadow-for-input:
           choice: shadow-0
         shadow-for-input-when-focused:
