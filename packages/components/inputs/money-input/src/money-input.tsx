@@ -116,6 +116,7 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
       borderBottomRightRadius: '0',
       borderRight: '0',
       minWidth: '72px',
+      height: '100%',
       borderColor: (() => {
         if (isDisabled)
           return `${designTokens.borderColorForInputWhenDisabled} !important`;
