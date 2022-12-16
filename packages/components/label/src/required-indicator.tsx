@@ -5,6 +5,8 @@ const RequiredIndicator = () => (
   <em
     css={css`
       color: ${designTokens.colorWarning};
+      font-style: normal;
+      margin-left: 2px;
     `}
   >
     {'*'}
