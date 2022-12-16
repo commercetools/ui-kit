@@ -41,15 +41,16 @@ const HeaderIcon = (props: THeaderIcon) => {
           display: flex;
           align-items: center;
           justify-content: center;
-          height: ${props.size === 'small'
-            ? sizeIconContainerSmall
-            : sizeIconContainer};
-          width: ${props.size === 'small'
-            ? sizeIconContainerSmall
-            : sizeIconContainer};
         `,
         !isNewTheme &&
           css`
+            height: ${props.size === 'small'
+              ? sizeIconContainerSmall
+              : sizeIconContainer};
+            width: ${props.size === 'small'
+              ? sizeIconContainerSmall
+              : sizeIconContainer};
+
             border-radius: 50%;
             flex-shrink: 0;
             box-shadow: ${designTokens.shadow7};

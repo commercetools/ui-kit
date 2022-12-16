@@ -180,7 +180,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
-  const iconSize = themedValue(props.condensed ? 'small' : 'medium', 'big');
+  const iconSize = themedValue(props.condensed ? 'small' : 'medium', 'medium');
 
   const isClosedAndIsDefaultClosed =
     !isNil(props.isClosed) && !isNil(props.isDefaultClosed);
