@@ -188,7 +188,7 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
       containerTheme={props.managerTheme}
     >
       <DragDropContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-        <Spacings.Inline scale="m">
+        <Spacings.Inline scale={themedValue('m', 'l')}>
           <DroppableContainer
             isDragging={isDragging}
             aria-labelledby="hidden-columns"
