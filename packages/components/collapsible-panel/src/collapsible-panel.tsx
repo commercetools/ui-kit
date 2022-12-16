@@ -253,7 +253,10 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                     size={iconSize}
                   />
                 )}
-                <Spacings.Inline alignItems="center" scale={scale}>
+                <Spacings.Inline
+                  alignItems={themedValue('center', 'baseline')}
+                  scale={scale}
+                >
                   <HeadLineText
                     header={props.header}
                     condensed={props.condensed}
