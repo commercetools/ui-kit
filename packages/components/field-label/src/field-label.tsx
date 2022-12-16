@@ -14,6 +14,9 @@ import Constraints from '@commercetools-uikit/constraints';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Label from '@commercetools-uikit/label';
+import { useTheme } from '@commercetools-uikit/design-system';
+
+// TODO: @redesign cleanup
 
 export type TFieldLabelProps = {
   /**
@@ -81,6 +84,8 @@ export type TFieldLabelProps = {
 };
 
 const FieldLabel = (props: TFieldLabelProps) => {
+  const { theme } = useTheme();
+
   if (props.hintIcon) {
     warning(
       props.hintIcon.props.size === undefined,
@@ -96,10 +101,13 @@ const FieldLabel = (props: TFieldLabelProps) => {
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Stack scale="xs">
-        <Inline alignItems="flexStart" scale="xs">
+        <Inline
+          alignItems={theme === 'default' ? 'flexStart' : 'center'}
+          scale="xs"
+        >
           <Text.Wrap>
             <Label
-              isBold={true}
+              isBold={theme === 'default'}
               isRequiredIndicatorVisible={props.hasRequiredIndicator}
               tone={props.tone}
               id={props.id}
@@ -119,7 +127,10 @@ const FieldLabel = (props: TFieldLabelProps) => {
         </Inline>
 
         {props.hint && (
-          <Inline alignItems="flexStart" scale="xs">
+          <Inline
+            alignItems={theme === 'default' ? 'flexStart' : 'center'}
+            scale="xs"
+          >
             {props.hintIcon && (
               <Inline>
                 {cloneElement(props.hintIcon, {
@@ -130,13 +141,19 @@ const FieldLabel = (props: TFieldLabelProps) => {
               </Inline>
             )}
             {props.hint && (
-              <Text.Detail tone={props.tone}>{props.hint}</Text.Detail>
+              <Text.Detail
+                tone={theme === 'default' ? props.tone : 'secondary'}
+              >
+                {props.hint}
+              </Text.Detail>
             )}
           </Inline>
         )}
         {props.description && (
           <Text.Wrap>
-            <Text.Detail tone={props.tone}>{props.description}</Text.Detail>
+            <Text.Detail tone={theme === 'default' ? props.tone : 'secondary'}>
+              {props.description}
+            </Text.Detail>
           </Text.Wrap>
         )}
 
