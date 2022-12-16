@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import { ReactNode } from 'react';
 import isNil from 'lodash/isNil';
 import styled from '@emotion/styled';
@@ -20,9 +21,11 @@ import {
   HeaderControlsWrapper,
   SectionWrapper,
   SectionContent,
+  getBaseContainerStyles,
+  SectionDescriptionWrapper,
 } from './collapsible-panel.styles';
 import CollapsiblePanelHeader from './collapsible-panel-header';
-
+import { useTheme } from '@commercetools-uikit/design-system';
 const HeaderContainer = styled(AccessibleButton)``;
 
 const panelButtonSequentialId = createSequentialId('collapsible-panel-button-');
@@ -144,14 +147,40 @@ const defaultProps: Pick<
   horizontalConstraint: 'scale',
 };
 
+const HeadLineText = (
+  props: Pick<TCollapsiblePanel, 'condensed' | 'header'> & {
+    isNewTheme: boolean;
+  }
+) => {
+  if (!props.condensed) {
+    return <>{props.header}</>;
+  }
+
+  if (props.isNewTheme) {
+    return (
+      <Text.Subheadline as="h4" truncate>
+        {props.header}
+      </Text.Subheadline>
+    );
+  } else {
+    return (
+      <Text.Detail as="span" isBold truncate>
+        {props.header}
+      </Text.Detail>
+    );
+  }
+};
+
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = (props: TCollapsiblePanel) => {
+  const { isNewTheme, themedValue } = useTheme();
   const panelButtonId = useFieldId(props.id, panelButtonSequentialId);
   const panelContentId = useFieldId(undefined, panelContentSequentialId);
   // Pass only `data-*` props
   const dataProps = filterDataAttributes(props);
   const scale = props.condensed ? 's' : 'm';
+  const iconSize = themedValue(props.condensed ? 'small' : 'medium', 'medium');
 
   const isClosedAndIsDefaultClosed =
     !isNil(props.isClosed) && !isNil(props.isDefaultClosed);
@@ -188,7 +217,11 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
         <Constraints.Horizontal max={props.horizontalConstraint}>
           <div
-            css={[baseContainerStyles, getThemeStyle(props.theme)]}
+            css={[
+              baseContainerStyles,
+              getThemeStyle(themedValue(props.theme, 'light')),
+              getBaseContainerStyles(isNewTheme),
+            ]}
             // Allow to override the styles by passing a `className` prop.
             // Custom styles can also be passed using the `css` prop from emotion.
             // https://emotion.sh/docs/css-prop#style-precedence
@@ -197,8 +230,8 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
             <HeaderContainer
               as="div"
               css={[
-                getHeaderContainerStyles(props, isOpen),
-                getThemeStyle(props.theme),
+                getHeaderContainerStyles({ ...props, isNewTheme }, isOpen),
+                getThemeStyle(themedValue(props.theme, 'light')),
               ]}
               id={panelButtonId}
               label=""
@@ -208,23 +241,27 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               aria-controls={panelContentId}
               aria-expanded={isOpen ? 'true' : 'false'}
             >
-              <Spacings.Inline alignItems="center" scale="s">
+              <Spacings.Inline
+                alignItems="center"
+                scale={themedValue('s', 'xs')}
+              >
                 {!props.hideExpansionControls && (
                   <HeaderIcon
                     isClosed={!isOpen}
                     isDisabled={props.isDisabled || false}
                     tone={props.tone}
-                    size={props.condensed ? 'small' : 'medium'}
+                    size={iconSize}
                   />
                 )}
-                <Spacings.Inline alignItems="center" scale={scale}>
-                  {props.condensed ? (
-                    <Text.Detail as="span" isBold truncate>
-                      {props.header}
-                    </Text.Detail>
-                  ) : (
-                    props.header
-                  )}
+                <Spacings.Inline
+                  alignItems={themedValue('center', 'baseline')}
+                  scale={scale}
+                >
+                  <HeadLineText
+                    header={props.header}
+                    condensed={props.condensed}
+                    isNewTheme={isNewTheme}
+                  />
                   {props.secondaryHeader && (
                     <Text.Detail tone="secondary" truncate={true}>
                       {props.secondaryHeader}
@@ -241,13 +278,21 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               )}
             </HeaderContainer>
             <div style={containerStyles}>
-              <SectionWrapper ref={registerContentNode}>
+              <SectionWrapper
+                // @ts-ignore
+                ref={registerContentNode}
+                condensed={props.condensed}
+                isExpandControlHidden={props.hideExpansionControls}
+                isNewTheme={isNewTheme}
+              >
                 {props.description && (
-                  <Spacings.Inset scale={scale}>
-                    <Text.Detail>{props.description}</Text.Detail>
-                  </Spacings.Inset>
+                  <SectionDescriptionWrapper condensed={props.condensed}>
+                    <Text.Detail tone={themedValue(undefined, 'secondary')}>
+                      {props.description}
+                    </Text.Detail>
+                  </SectionDescriptionWrapper>
                 )}
-                <Spacings.Inset scale={scale}>
+                <Spacings.Stack scale={scale}>
                   <SectionContent
                     id={panelContentId}
                     role="region"
@@ -256,7 +301,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                   >
                     {props.children}
                   </SectionContent>
-                </Spacings.Inset>
+                </Spacings.Stack>
               </SectionWrapper>
             </div>
           </div>

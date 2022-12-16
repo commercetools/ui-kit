@@ -1,16 +1,23 @@
+// TODO: @redesign cleanup
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
+import {
+  designTokens,
+  useTheme,
+  type ThemeName,
+} from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 
-const sizeIconContainer = '22px';
+const sizeIconContainer = '24px';
 const sizeIconContainerSmall = '14px';
 
 const getArrowColor = ({
   tone,
   isDisabled,
-}: Pick<THeaderIcon, 'isDisabled' | 'tone'>) => {
+  theme,
+}: Pick<THeaderIcon, 'isDisabled' | 'tone'> & { theme: ThemeName }) => {
   if (isDisabled) return 'neutral60';
-  if (tone === 'urgent') return 'surface';
+  if (tone === 'urgent') return theme === 'default' ? 'surface' : 'warning';
+
   return 'solid';
 };
 
@@ -22,8 +29,9 @@ type THeaderIcon = {
 };
 
 const HeaderIcon = (props: THeaderIcon) => {
+  const { theme, isNewTheme } = useTheme();
   const backgroundColor =
-    props.tone === 'urgent'
+    props.tone === 'urgent' && !isNewTheme
       ? designTokens.colorWarning
       : designTokens.colorSurface;
   return (
@@ -33,23 +41,28 @@ const HeaderIcon = (props: THeaderIcon) => {
           display: flex;
           align-items: center;
           justify-content: center;
-          height: ${props.size === 'small'
-            ? sizeIconContainerSmall
-            : sizeIconContainer};
-          width: ${props.size === 'small'
-            ? sizeIconContainerSmall
-            : sizeIconContainer};
-          border-radius: 50%;
-          flex-shrink: 0;
-          box-shadow: ${designTokens.shadow7};
-          background-color: ${backgroundColor};
-          border: 1px solid ${backgroundColor};
         `,
+        !isNewTheme &&
+          css`
+            height: ${props.size === 'small'
+              ? sizeIconContainerSmall
+              : sizeIconContainer};
+            width: ${props.size === 'small'
+              ? sizeIconContainerSmall
+              : sizeIconContainer};
+
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: ${designTokens.shadow7};
+            background-color: ${backgroundColor};
+            border: ${backgroundColor};
+          `,
         props.isDisabled &&
           css`
             box-shadow: none;
-            border: 1px solid ${designTokens.colorNeutral};
-            background-color: ${designTokens.colorAccent98};
+            border: 1px solid
+              ${designTokens.borderForCollapsiblePanelHeaderIconWhenDisabled};
+            background-color: ${designTokens.backgroundColorForCollapsiblePanelHeaderIconWhenDisabled};
           `,
       ]}
     >
@@ -58,6 +71,7 @@ const HeaderIcon = (props: THeaderIcon) => {
           color={getArrowColor({
             tone: props.tone,
             isDisabled: props.isDisabled,
+            theme,
           })}
           size={props.size}
         />
@@ -66,6 +80,7 @@ const HeaderIcon = (props: THeaderIcon) => {
           color={getArrowColor({
             tone: props.tone,
             isDisabled: props.isDisabled,
+            theme,
           })}
           size={props.size}
         />

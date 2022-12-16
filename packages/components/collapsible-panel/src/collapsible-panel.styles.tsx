@@ -1,3 +1,4 @@
+import { forwardRef, type ReactNode } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -18,10 +19,14 @@ const getHeaderContainerStyles = (
   props: Pick<
     TCollapsiblePanel,
     'headerControlsAlignment' | 'condensed' | 'isDisabled' | 'isSticky'
-  >,
+  > & { isNewTheme: boolean },
   isOpen: boolean
 ) => {
   const baseStyles = css`
+    background-color: ${designTokens.colorSurface};
+    border-bottom: ${isOpen || props.isNewTheme
+      ? '1px solid ' + designTokens.borderColorForCollapsiblePanelHeader
+      : 'none'};
     position: relative;
     border-top-left-radius: ${designTokens.borderRadius6};
     border-top-right-radius: ${designTokens.borderRadius6};
@@ -33,10 +38,9 @@ const getHeaderContainerStyles = (
       ? 'flex-start'
       : 'space-between'};
     padding: ${props.condensed
-      ? `${designTokens.spacing20}`
-      : `${designTokens.spacing20} ${designTokens.spacing30}`};
+      ? `${designTokens.paddingForCollapsiblePanelHeaderAsCondensed}`
+      : `${designTokens.paddingForCollapsiblePanelHeader}`};
   `;
-
   return [
     baseStyles,
     props.isDisabled &&
@@ -67,12 +71,18 @@ const baseContainerStyles = css`
   padding: 0;
   display: flex;
   flex-direction: column;
-  box-shadow: ${designTokens.shadow1};
-  border-radius: ${designTokens.borderRadius6};
   color: ${designTokens.colorSolid};
   font-family: inherit;
   font-size: ${designTokens.fontSizeDefault};
 `;
+
+const getBaseContainerStyles = (isNewTheme: boolean) =>
+  !isNewTheme
+    ? css`
+        box-shadow: ${designTokens.shadow1};
+        border-radius: ${designTokens.borderRadius6};
+      `
+    : undefined;
 
 const HeaderControlsWrapper = styled.div`
   margin-left: ${designTokens.spacing30};
@@ -90,15 +100,49 @@ const SectionContent = styled.div`
   align-items: flex-start;
 `;
 
-const SectionWrapper = styled.div`
-  border-top: 1px solid ${designTokens.colorNeutral60};
+const SectionDescriptionWrapper = styled.div<{ condensed?: boolean }>`
+  padding: ${({ condensed }) =>
+    condensed
+      ? designTokens.paddingForCollapsiblePanelSectionDescriptionAsCondensed
+      : designTokens.paddingForCollapsiblePanelSectionDescription};
 `;
+
+type TSectionWrapper = {
+  condensed?: boolean;
+  isExpandControlHidden?: boolean;
+  isNewTheme: boolean;
+  children: ReactNode;
+};
+const SectionWrapper = forwardRef<HTMLDivElement, TSectionWrapper>(
+  (props, ref) => {
+    return (
+      <div
+        ref={ref}
+        css={[
+          `
+          padding: ${
+            props.condensed
+              ? designTokens.paddingForCollapsiblePanelSectionWrapperAsCondensed
+              : designTokens.paddingForCollapsiblePanelSectionWrapper
+          };
+        `,
+          props.isNewTheme && props.isExpandControlHidden && 'padding-left: 0;',
+        ]}
+      >
+        {props.children}
+      </div>
+    );
+  }
+);
+SectionWrapper.displayName = 'SectionWrapper';
 
 export {
   baseContainerStyles,
   getHeaderContainerStyles,
   getThemeStyle,
+  getBaseContainerStyles,
   SectionContent,
+  SectionDescriptionWrapper,
   SectionWrapper,
   HeaderControlsWrapper,
 };
