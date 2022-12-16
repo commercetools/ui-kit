@@ -299,6 +299,14 @@ componentGroups:
     description: 'Table header elements'
   table-cell:
     description: 'Table cell elements'
+  collapsible-panel-header:
+    description: 'collapsible panel header elements'
+  collapsible-panel-section-wrapper:
+    description: 'collapsible panel section wrapper elements'
+  collapsible-panel-section-description:
+    description: 'collapsible panel section description elements'
+  collapsible-panel-header-icon:
+    description: 'collapsible panel header icon elements'
   select-input:
     description: 'Select input elements'
   select-input-option:
@@ -357,6 +365,8 @@ decisionGroupsByTheme:
         background-color-for-tag-warning:
           description: ''
           choice: color-warning-95
+        background-color-for-collapsible-panel-header-icon-when-disabled:
+          choice: color-accent-98
         background-color-for-select-input-option-when-hovered:
           description: ''
           choice: color-neutral-90
@@ -373,6 +383,8 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-card-when-raised:
           choice: 'none'
+        border-for-collapsible-panel-header-icon-when-disabled:
+          choice: '1px solid var(--color-neutral)'
 
     borderColors:
       label: Border Colors
@@ -420,6 +432,8 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-table-header-as-bottom:
           choice: color-accent
+        border-color-for-collapsible-panel-header:
+          choice: color-neutral-60
 
     borderRadiuses:
       label: Border Radius
@@ -643,8 +657,20 @@ decisionGroupsByTheme:
           choice: spacing-30
         padding-for-table-cell-as-condensed:
           choice: spacing-20
+        padding-for-collapsible-panel-header:
+          choice: 'var(--spacing-20) var(--spacing-30)'
+        padding-for-collapsible-panel-header-as-condensed:
+          choice: spacing-20
+        padding-for-collapsible-panel-section-wrapper:
+          choice: spacing-30
+        padding-for-collapsible-panel-section-wrapper-as-condensed:
+          choice: spacing-20
+        padding-for-collapsible-panel-section-description:
+          choice: '0 0 var(--spacing-50)'
+        padding-for-collapsible-panel-section-description-as-condensed:
+          choice: '0 0 var(--spacing-30)'
         padding-for-input:
-          choice: 'spacing-20'
+          choice: spacing-20
 
     shadows:
       label: Shadows
@@ -706,6 +732,8 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-table-header:
           choice: color-surface
+        background-color-for-collapsible-panel-header-icon-when-disabled:
+          choice: color-surface
         background-color-for-input-when-hovered:
           choice: color-neutral-95
         background-color-for-input-when-disabled:
@@ -723,6 +751,8 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral)'
         border-for-card-when-raised:
           choice: '1px solid var(--color-neutral-90)'
+        border-for-collapsible-panel-header-icon-when-disabled:
+          choice: 'none'
 
     borderColors:
       label: Border Colors
@@ -751,6 +781,8 @@ decisionGroupsByTheme:
         border-color-for-table-header:
           choice: color-surface
         border-color-for-table-header-as-bottom:
+          choice: color-neutral-90
+        border-color-for-collapsible-panel-header:
           choice: color-neutral-90
 
     borderRadiuses:
@@ -923,6 +955,18 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-30) var(--spacing-40)'
         padding-for-table-cell-as-condensed:
           choice: 'var(--spacing-20) var(--spacing-40)'
+        padding-for-collapsible-panel-header:
+          choice: 'var(--spacing-30) 0'
+        padding-for-collapsible-panel-header-as-condensed:
+          choice: 'var(--spacing-20) 0'
+        padding-for-collapsible-panel-section-wrapper:
+          choice: 'var(--spacing-50) 0 var(--spacing-70) calc(var(--spacing-30) + var(--spacing-10))'
+        padding-for-collapsible-panel-section-wrapper-as-condensed:
+          choice: 'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-30) + var(--spacing-10))'
+        padding-for-collapsible-panel-section-description:
+          choice: '0 0 var(--spacing-40)'
+        padding-for-collapsible-panel-section-description-as-condensed:
+          choice: '0 0 var(--spacing-40)'
         padding-for-input:
           choice: 'spacing-30'
 

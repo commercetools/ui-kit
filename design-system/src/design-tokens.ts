@@ -147,11 +147,15 @@ export const themes = {
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
+    backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
+      'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 90%)',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
     borderForCardWhenRaised: 'none',
+    borderForCollapsiblePanelHeaderIconWhenDisabled:
+      '1px solid var(--color-neutral)',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -168,6 +172,7 @@ export const themes = {
     borderColorForButtonAsIconWhenDisabled: '#ccc',
     borderColorForTableHeader: '#ccc',
     borderColorForTableHeaderAsBottom: '#213c45',
+    borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 60%)',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -235,6 +240,13 @@ export const themes = {
     paddingForTableHeaderAsCondensed: '8px',
     paddingForTableCell: '16px',
     paddingForTableCellAsCondensed: '8px',
+    paddingForCollapsiblePanelHeader: 'var(--spacing-20) var(--spacing-30)',
+    paddingForCollapsiblePanelHeaderAsCondensed: '8px',
+    paddingForCollapsiblePanelSectionWrapper: '16px',
+    paddingForCollapsiblePanelSectionWrapperAsCondensed: '8px',
+    paddingForCollapsiblePanelSectionDescription: '0 0 var(--spacing-50)',
+    paddingForCollapsiblePanelSectionDescriptionAsCondensed:
+      '0 0 var(--spacing-30)',
     paddingForInput: '8px',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
@@ -281,12 +293,14 @@ export const themes = {
     backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForTableHeader: '#fff',
+    backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
     backgroundColorForInputWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
     borderForCardWhenRaised: '1px solid var(--color-neutral-90)',
+    borderForCollapsiblePanelHeaderIconWhenDisabled: 'none',
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
@@ -299,6 +313,7 @@ export const themes = {
     borderColorForCardWhenRaised: 'hsl(0, 0%, 90%)',
     borderColorForTableHeader: '#fff',
     borderColorForTableHeaderAsBottom: 'hsl(0, 0%, 90%)',
+    borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 90%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -352,6 +367,15 @@ export const themes = {
     paddingForTableHeaderAsCondensed: '24px',
     paddingForTableCell: 'var(--spacing-30) var(--spacing-40)',
     paddingForTableCellAsCondensed: 'var(--spacing-20) var(--spacing-40)',
+    paddingForCollapsiblePanelHeader: 'var(--spacing-30) 0',
+    paddingForCollapsiblePanelHeaderAsCondensed: 'var(--spacing-20) 0',
+    paddingForCollapsiblePanelSectionWrapper:
+      'var(--spacing-50) 0 var(--spacing-70) calc(var(--spacing-30) + var(--spacing-10))',
+    paddingForCollapsiblePanelSectionWrapperAsCondensed:
+      'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-30) + var(--spacing-10))',
+    paddingForCollapsiblePanelSectionDescription: '0 0 var(--spacing-40)',
+    paddingForCollapsiblePanelSectionDescriptionAsCondensed:
+      '0 0 var(--spacing-40)',
     paddingForInput: '16px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
@@ -535,6 +559,8 @@ const designTokens = {
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
+  backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
+    'var(--background-color-for-collapsible-panel-header-icon-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForSelectInputOptionWhenHovered:
     'var(--background-color-for-select-input-option-when-hovered, hsl(0, 0%, 90%))',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
@@ -543,6 +569,8 @@ const designTokens = {
   borderForButtonAsSecondaryWhenActive:
     'var(--border-for-button-as-secondary-when-active, none)',
   borderForCardWhenRaised: 'var(--border-for-card-when-raised, none)',
+  borderForCollapsiblePanelHeaderIconWhenDisabled:
+    'var(--border-for-collapsible-panel-header-icon-when-disabled, 1px solid var(--color-neutral))',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -570,6 +598,8 @@ const designTokens = {
   borderColorForTableHeader: 'var(--border-color-for-table-header, #ccc)',
   borderColorForTableHeaderAsBottom:
     'var(--border-color-for-table-header-as-bottom, #213c45)',
+  borderColorForCollapsiblePanelHeader:
+    'var(--border-color-for-collapsible-panel-header, hsl(0, 0%, 60%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -654,6 +684,18 @@ const designTokens = {
   paddingForTableCell: 'var(--padding-for-table-cell, 16px)',
   paddingForTableCellAsCondensed:
     'var(--padding-for-table-cell-as-condensed, 8px)',
+  paddingForCollapsiblePanelHeader:
+    'var(--padding-for-collapsible-panel-header, var(--spacing-20) var(--spacing-30))',
+  paddingForCollapsiblePanelHeaderAsCondensed:
+    'var(--padding-for-collapsible-panel-header-as-condensed, 8px)',
+  paddingForCollapsiblePanelSectionWrapper:
+    'var(--padding-for-collapsible-panel-section-wrapper, 16px)',
+  paddingForCollapsiblePanelSectionWrapperAsCondensed:
+    'var(--padding-for-collapsible-panel-section-wrapper-as-condensed, 8px)',
+  paddingForCollapsiblePanelSectionDescription:
+    'var(--padding-for-collapsible-panel-section-description, 0 0 var(--spacing-50))',
+  paddingForCollapsiblePanelSectionDescriptionAsCondensed:
+    'var(--padding-for-collapsible-panel-section-description-as-condensed, 0 0 var(--spacing-30))',
   paddingForInput: 'var(--padding-for-input, 8px)',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',

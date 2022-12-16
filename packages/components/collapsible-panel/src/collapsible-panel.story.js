@@ -37,7 +37,11 @@ storiesOf('Components|Panels', module)
           theme={select('theme', ['dark', 'light'])}
           condensed={condensed}
           secondaryHeader={text('secondaryHeader', 'Subtitle')}
-          headerControlsAlignment={select('size', ['left', 'right'], 'right')}
+          headerControlsAlignment={select(
+            'controlsAlignment',
+            ['left', 'right'],
+            'right'
+          )}
           horizontalConstraint={select(
             'horizontalConstraint',
             Constraints.getAcceptedMaxPropValues(6),
