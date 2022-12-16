@@ -1,5 +1,17 @@
 # @commercetools-uikit/design-system
 
+## 15.7.0
+
+### Minor Changes
+
+- [#2361](https://github.com/commercetools/ui-kit/pull/2361) [`5ba1b2bb4`](https://github.com/commercetools/ui-kit/commit/5ba1b2bb486e94981da3a226a72a23957402c3f5) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Added internal temporary helper to `useTheme` hook which will help with new theme migration
+
+### Patch Changes
+
+- [#2347](https://github.com/commercetools/ui-kit/pull/2347) [`42d9ea5a2`](https://github.com/commercetools/ui-kit/commit/42d9ea5a251c1fac374c819f17438fbaa254260b) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Add new tokens for `<TextInput>` component
+
+- [#2355](https://github.com/commercetools/ui-kit/pull/2355) [`8f467aa28`](https://github.com/commercetools/ui-kit/commit/8f467aa283c5888aa55755a2b3e2c549c0d4222a) Thanks [@kark](https://github.com/kark)! - Fix `<DataTable>` column separator color in the new theme
+
 ## 15.6.0
 
 ### Minor Changes

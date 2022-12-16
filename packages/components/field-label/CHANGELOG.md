@@ -1,5 +1,22 @@
 # @commercetools-uikit/field-label
 
+## 15.7.0
+
+### Patch Changes
+
+- [#2356](https://github.com/commercetools/ui-kit/pull/2356) [`3e428cc31`](https://github.com/commercetools/ui-kit/commit/3e428cc31173ac8404bde93b73ff0484ff0330cf) Thanks [@chloe0592](https://github.com/chloe0592)! - Updated `Label` and `FieldLabel` components to new design
+
+- Updated dependencies [[`42d9ea5a2`](https://github.com/commercetools/ui-kit/commit/42d9ea5a251c1fac374c819f17438fbaa254260b), [`3e428cc31`](https://github.com/commercetools/ui-kit/commit/3e428cc31173ac8404bde93b73ff0484ff0330cf), [`5ba1b2bb4`](https://github.com/commercetools/ui-kit/commit/5ba1b2bb486e94981da3a226a72a23957402c3f5), [`8f467aa28`](https://github.com/commercetools/ui-kit/commit/8f467aa283c5888aa55755a2b3e2c549c0d4222a), [`cace41fd4`](https://github.com/commercetools/ui-kit/commit/cace41fd4667d2aec659c7c3284ff806dac3b455)]:
+  - @commercetools-uikit/design-system@15.7.0
+  - @commercetools-uikit/label@15.7.0
+  - @commercetools-uikit/icons@15.7.0
+  - @commercetools-uikit/icon-button@15.7.0
+  - @commercetools-uikit/constraints@15.7.0
+  - @commercetools-uikit/spacings-inline@15.7.0
+  - @commercetools-uikit/spacings-stack@15.7.0
+  - @commercetools-uikit/text@15.7.0
+  - @commercetools-uikit/utils@15.7.0
+
 ## 15.6.0
 
 ### Patch Changes
