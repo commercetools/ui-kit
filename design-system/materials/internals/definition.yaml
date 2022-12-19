@@ -321,6 +321,8 @@ componentGroups:
     description: 'Multiline input elements'
   localized-rich-text-input-label:
     description: 'Localized rich text input label elements'
+  localized-multiline-text-input-label:
+    description: 'Localized multiline text input label elements'
 
 decisionGroupsByTheme:
   default:
@@ -693,6 +695,8 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-10) var(--spacing-20)'
         padding-for-localized-rich-text-input-label:
           choice: '0 var(--spacing-20)'
+        padding-for-localized-multiline-text-input-label:
+          choice: '0 var(--spacing-20)'
 
     shadows:
       label: Shadows
@@ -1004,6 +1008,8 @@ decisionGroupsByTheme:
         padding-for-multiline-input:
           choice: spacing-20
         padding-for-localized-rich-text-input-label:
+          choice: spacing-20
+        padding-for-localized-multiline-text-input-label:
           choice: spacing-20
 
     shadows:
