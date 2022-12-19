@@ -27,20 +27,17 @@ const getTextareaStyles = (props: TTranslationInputStylesProps) => {
 
 const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
   return css`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
     color: ${designTokens.fontColorForInputWhenDisabled};
     line-height: calc(
-      ${designTokens.fontSizeForInput} - 2 * ${designTokens.borderRadius1}
+      ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
     );
     background-color: ${designTokens.backgroundColorForInputWhenDisabled};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
     border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
-    padding: 0 ${designTokens.spacing20};
+    padding: ${designTokens.paddingForLocalizedMultilineTextInputLabel};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};
