@@ -25,6 +25,7 @@
     "@commercetools-uikit/constraints": "15.8.0",
     "@commercetools-uikit/design-system": "15.8.0",
     "@commercetools-uikit/icons": "15.8.0",
+    "@commercetools-uikit/spacings": "15.8.0",
     "@commercetools-uikit/text": "15.8.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
