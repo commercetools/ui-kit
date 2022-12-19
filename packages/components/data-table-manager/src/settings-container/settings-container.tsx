@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import type { KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
 import { useIntl, type MessageDescriptor } from 'react-intl';
 import styled from '@emotion/styled';
@@ -7,6 +8,7 @@ import Card from '@commercetools-uikit/card';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import { CloseIcon } from '@commercetools-uikit/icons';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 
 type TSettingsContainerProps = {
   title: MessageDescriptor & {
@@ -30,37 +32,51 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
 `;
 
+const CardContentWrapper = styled.div`
+  padding: ${designTokens.paddingForTableManagerSettingsPanel};
+`;
+
 const SettingsContainer = (props: TSettingsContainerProps) => {
   const intl = useIntl();
+  const { themedValue } = useTheme();
 
   return (
     <CollapsibleMotion isDefaultClosed={false}>
       {({ registerContentNode, containerStyles }) => (
-        <Card type="flat" theme={props.containerTheme}>
-          <Spacings.Stack scale="xs">
-            <HeaderContainer>
-              <Text.Headline as="h3" intlMessage={props.title} />
-              <AccessibleButton
-                onClick={props.onClose}
-                label={intl.formatMessage(props.closeButtonLabel)}
-              >
-                <CloseIcon size="medium" />
-              </AccessibleButton>
-            </HeaderContainer>
-            <Spacings.Stack scale="xs">
-              <Spacings.Inset scale="s">
-                <div style={containerStyles}>
-                  <div ref={registerContentNode}>{props.children}</div>
-                </div>
-              </Spacings.Inset>
-              {(props.secondaryButton || props.primaryButton) && (
-                <Spacings.Inline justifyContent="flex-end">
-                  {props.secondaryButton}
-                  {props.primaryButton}
-                </Spacings.Inline>
-              )}
+        <Card
+          type={themedValue('flat', 'raised')}
+          insetScale="none"
+          theme={props.containerTheme}
+        >
+          <CardContentWrapper>
+            <Spacings.Stack scale={themedValue('xs', 'xl')}>
+              <HeaderContainer>
+                <Text.Headline
+                  as={themedValue('h3', 'h2')}
+                  intlMessage={props.title}
+                />
+                <AccessibleButton
+                  onClick={props.onClose}
+                  label={intl.formatMessage(props.closeButtonLabel)}
+                >
+                  <CloseIcon size="medium" />
+                </AccessibleButton>
+              </HeaderContainer>
+              <Spacings.Stack scale={themedValue('xs', 'l')}>
+                <Spacings.Inset scale="s">
+                  <div style={containerStyles}>
+                    <div ref={registerContentNode}>{props.children}</div>
+                  </div>
+                </Spacings.Inset>
+                {(props.secondaryButton || props.primaryButton) && (
+                  <Spacings.Inline justifyContent="flex-end">
+                    {props.secondaryButton}
+                    {props.primaryButton}
+                  </Spacings.Inline>
+                )}
+              </Spacings.Stack>
             </Spacings.Stack>
-          </Spacings.Stack>
+          </CardContentWrapper>
         </Card>
       )}
     </CollapsibleMotion>

@@ -172,6 +172,7 @@ export const themes = {
     borderColorForButtonAsIconWhenDisabled: '#ccc',
     borderColorForTableHeader: '#ccc',
     borderColorForTableHeaderAsBottom: '#213c45',
+    borderColorForTableManagerDroppableList: 'hsl(0, 0%, 60%)',
     borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 60%)',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
@@ -181,6 +182,7 @@ export const themes = {
     borderRadiusForInput: '6px',
     borderRadiusForTag: '2px',
     borderRadiusForCard: '6px',
+    borderRadiusForTableManagerDroppableList: '6px',
     borderWidthForInput: '1px',
     borderWidthForInputWhenWarning: '1px',
     borderWidthForInputWhenError: '1px',
@@ -240,6 +242,9 @@ export const themes = {
     paddingForTableHeaderAsCondensed: '8px',
     paddingForTableCell: '16px',
     paddingForTableCellAsCondensed: '8px',
+    paddingForTableManagerDroppableList: '8px',
+    paddingForTableManagerSettingsPanel: '16px',
+    paddingForTableManagerDraggableTag: '4px',
     paddingForCollapsiblePanelHeader: 'var(--spacing-20) var(--spacing-30)',
     paddingForCollapsiblePanelHeaderAsCondensed: '8px',
     paddingForCollapsiblePanelSectionWrapper: '16px',
@@ -313,6 +318,7 @@ export const themes = {
     borderColorForCardWhenRaised: 'hsl(0, 0%, 90%)',
     borderColorForTableHeader: '#fff',
     borderColorForTableHeaderAsBottom: 'hsl(0, 0%, 90%)',
+    borderColorForTableManagerDroppableList: '#ccc',
     borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 90%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
@@ -320,6 +326,7 @@ export const themes = {
     borderRadiusForButtonAsIconAsMedium: '4px',
     borderRadiusForButtonAsIconAsSmall: '2px',
     borderRadiusForCard: '4px',
+    borderRadiusForTableManagerDroppableList: '4px',
     borderRadiusForInput: '4px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
@@ -367,6 +374,9 @@ export const themes = {
     paddingForTableHeaderAsCondensed: '24px',
     paddingForTableCell: 'var(--spacing-30) var(--spacing-40)',
     paddingForTableCellAsCondensed: 'var(--spacing-20) var(--spacing-40)',
+    paddingForTableManagerDroppableList: '16px',
+    paddingForTableManagerSettingsPanel: 'var(--spacing-40) var(--spacing-50)',
+    paddingForTableManagerDraggableTag: 'var(--spacing-10) 0',
     paddingForCollapsiblePanelHeader: 'var(--spacing-30) 0',
     paddingForCollapsiblePanelHeaderAsCondensed: 'var(--spacing-20) 0',
     paddingForCollapsiblePanelSectionWrapper:
@@ -382,7 +392,7 @@ export const themes = {
     shadowForButtonWhenHovered: 'none',
     shadowForButtonWhenActive: 'none',
     shadowForButtonWhenDisabled: 'none',
-    shadowForCardWhenRaised: 'none',
+    shadowForCardWhenRaised: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
     shadowForInput: 'none',
     shadowForInputWhenFocused: 'inset 0 0 0 1px var(--color-primary)',
     shadowForInputWhenError: 'inset 0 0 0 1px var(--color-error)',
@@ -598,6 +608,8 @@ const designTokens = {
   borderColorForTableHeader: 'var(--border-color-for-table-header, #ccc)',
   borderColorForTableHeaderAsBottom:
     'var(--border-color-for-table-header-as-bottom, #213c45)',
+  borderColorForTableManagerDroppableList:
+    'var(--border-color-for-table-manager-droppable-list, hsl(0, 0%, 60%))',
   borderColorForCollapsiblePanelHeader:
     'var(--border-color-for-collapsible-panel-header, hsl(0, 0%, 60%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
@@ -611,6 +623,8 @@ const designTokens = {
   borderRadiusForInput: 'var(--border-radius-for-input, 6px)',
   borderRadiusForTag: 'var(--border-radius-for-tag, 2px)',
   borderRadiusForCard: 'var(--border-radius-for-card, 6px)',
+  borderRadiusForTableManagerDroppableList:
+    'var(--border-radius-for-table-manager-droppable-list, 6px)',
   borderWidthForInput: 'var(--border-width-for-input, 1px)',
   borderWidthForInputWhenWarning:
     'var(--border-width-for-input-when-warning, 1px)',
@@ -684,6 +698,12 @@ const designTokens = {
   paddingForTableCell: 'var(--padding-for-table-cell, 16px)',
   paddingForTableCellAsCondensed:
     'var(--padding-for-table-cell-as-condensed, 8px)',
+  paddingForTableManagerDroppableList:
+    'var(--padding-for-table-manager-droppable-list, 8px)',
+  paddingForTableManagerSettingsPanel:
+    'var(--padding-for-table-manager-settings-panel, 16px)',
+  paddingForTableManagerDraggableTag:
+    'var(--padding-for-table-manager-draggable-tag, 4px)',
   paddingForCollapsiblePanelHeader:
     'var(--padding-for-collapsible-panel-header, var(--spacing-20) var(--spacing-30))',
   paddingForCollapsiblePanelHeaderAsCondensed:

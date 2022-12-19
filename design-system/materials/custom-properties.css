@@ -185,6 +185,7 @@
   --border-color-for-button-as-icon-when-disabled: #ccc;
   --border-color-for-table-header: #ccc;
   --border-color-for-table-header-as-bottom: #213c45;
+  --border-color-for-table-manager-droppable-list: hsl(0, 0%, 60%);
   --border-color-for-collapsible-panel-header: hsl(0, 0%, 60%);
   --border-radius-for-button-as-big: 6px;
   --border-radius-for-button-as-small: 4px;
@@ -194,6 +195,7 @@
   --border-radius-for-input: 6px;
   --border-radius-for-tag: 2px;
   --border-radius-for-card: 6px;
+  --border-radius-for-table-manager-droppable-list: 6px;
   --border-width-for-input: 1px;
   --border-width-for-input-when-warning: 1px;
   --border-width-for-input-when-error: 1px;
@@ -253,6 +255,9 @@
   --padding-for-table-header-as-condensed: 8px;
   --padding-for-table-cell: 16px;
   --padding-for-table-cell-as-condensed: 8px;
+  --padding-for-table-manager-droppable-list: 8px;
+  --padding-for-table-manager-settings-panel: 16px;
+  --padding-for-table-manager-draggable-tag: 4px;
   --padding-for-collapsible-panel-header: var(--spacing-20) var(--spacing-30);
   --padding-for-collapsible-panel-header-as-condensed: 8px;
   --padding-for-collapsible-panel-section-wrapper: 16px;

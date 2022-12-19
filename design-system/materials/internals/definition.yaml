@@ -299,6 +299,12 @@ componentGroups:
     description: 'Table header elements'
   table-cell:
     description: 'Table cell elements'
+  table-manager-droppable-list:
+    description: 'Table manager droppable list elements'
+  table-manager-settings-panel:
+    description: 'Table manager settings panel elements'
+  table-manager-draggable-tag:
+    description: 'Table manager settings draggable tag elements'
   collapsible-panel-header:
     description: 'collapsible panel header elements'
   collapsible-panel-section-wrapper:
@@ -432,6 +438,8 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-table-header-as-bottom:
           choice: color-accent
+        border-color-for-table-manager-droppable-list:
+          choice: color-neutral-60
         border-color-for-collapsible-panel-header:
           choice: color-neutral-60
 
@@ -457,8 +465,8 @@ decisionGroupsByTheme:
           choice: border-radius-2
         border-radius-for-card:
           choice: border-radius-6
-    # We don't have font families in choices yet, so we can't have decisions for
-    # them
+        border-radius-for-table-manager-droppable-list:
+          choice: border-radius-6
 
     borderWidths:
       label: Border width
@@ -657,6 +665,12 @@ decisionGroupsByTheme:
           choice: spacing-30
         padding-for-table-cell-as-condensed:
           choice: spacing-20
+        padding-for-table-manager-droppable-list:
+          choice: spacing-20
+        padding-for-table-manager-settings-panel:
+          choice: spacing-30
+        padding-for-table-manager-draggable-tag:
+          choice: spacing-10
         padding-for-collapsible-panel-header:
           choice: 'var(--spacing-20) var(--spacing-30)'
         padding-for-collapsible-panel-header-as-condensed:
@@ -782,6 +796,8 @@ decisionGroupsByTheme:
           choice: color-surface
         border-color-for-table-header-as-bottom:
           choice: color-neutral-90
+        border-color-for-table-manager-droppable-list:
+          choice: color-neutral
         border-color-for-collapsible-panel-header:
           choice: color-neutral-90
 
@@ -800,6 +816,8 @@ decisionGroupsByTheme:
         border-radius-for-button-as-icon-as-small:
           choice: border-radius-2
         border-radius-for-card:
+          choice: border-radius-4
+        border-radius-for-table-manager-droppable-list:
           choice: border-radius-4
         border-radius-for-input:
           choice: border-radius-4
@@ -955,6 +973,12 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-30) var(--spacing-40)'
         padding-for-table-cell-as-condensed:
           choice: 'var(--spacing-20) var(--spacing-40)'
+        padding-for-table-manager-droppable-list:
+          choice: spacing-30
+        padding-for-table-manager-settings-panel:
+          choice: 'var(--spacing-40) var(--spacing-50)'
+        padding-for-table-manager-draggable-tag:
+          choice: 'var(--spacing-10) 0'
         padding-for-collapsible-panel-header:
           choice: 'var(--spacing-30) 0'
         padding-for-collapsible-panel-header-as-condensed:
@@ -968,7 +992,7 @@ decisionGroupsByTheme:
         padding-for-collapsible-panel-section-description-as-condensed:
           choice: '0 0 var(--spacing-40)'
         padding-for-input:
-          choice: 'spacing-30'
+          choice: spacing-30
 
     shadows:
       label: Shadows
@@ -985,7 +1009,7 @@ decisionGroupsByTheme:
         shadow-for-button-when-disabled:
           choice: shadow-0
         shadow-for-card-when-raised:
-          choice: shadow-0
+          choice: '0 1px 5px 0 rgba(0, 0, 0, 0.05)'
         shadow-for-input:
           choice: shadow-0
         shadow-for-input-when-focused:
