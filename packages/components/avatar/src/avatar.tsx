@@ -1,5 +1,6 @@
+// TODO: @redesign cleanup
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 export type TAvatarProps = {
@@ -36,9 +37,18 @@ export type TInitialsProps = Pick<
 >;
 
 const avatarSizes = {
-  s: { width: '26px', fontSize: '1em' },
-  m: { width: '48px', fontSize: '1.5em' },
-  l: { width: '100px', fontSize: '3em' },
+  s: {
+    width: '26px',
+    fontSize: designTokens.fontSizeForAvatarAsSmall,
+  },
+  m: {
+    width: designTokens.widthForAvatarAsMedium,
+    fontSize: designTokens.fontSizeForAvatarAsMedium,
+  },
+  l: {
+    width: '100px',
+    fontSize: designTokens.fontSizeForAvatarAsBig,
+  },
 };
 
 const defaultProps: Pick<
@@ -116,40 +126,51 @@ const Initials = (props: TInitialsProps) => (
 );
 Initials.displayName = 'Initials';
 
-const Avatar = (props: TAvatarProps) => (
-  <div
-    css={css`
-      align-items: center;
-      background-color: ${designTokens.colorNeutral60};
-      border-radius: 100%;
-      font-size: ${designTokens.fontSizeDefault};
-      color: ${designTokens.colorSurface};
-      display: flex;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
+const Avatar = (props: TAvatarProps) => {
+  const { theme } = useTheme();
 
-      height: ${avatarSizes[props.size].width};
-      width: ${avatarSizes[props.size].width};
+  return (
+    <div
+      css={css`
+        align-items: center;
+        background-color: ${designTokens.backgroundColorForAvatar};
+        border-radius: 100%;
+        font-size: ${designTokens.fontSizeDefault};
+        color: ${designTokens.colorSurface};
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
 
-      ${props.isHighlighted
-        ? `background-color: ${designTokens.colorNeutral};`
-        : ''}
-    `}
-    {...filterDataAttributes(props)}
-  >
-    <GravatarImg
-      gravatarHash={props.gravatarHash}
-      size={props.size}
-      isHighlighted={props.isHighlighted}
-    />
-    <Initials
-      size={props.size}
-      firstName={props.firstName}
-      lastName={props.lastName}
-    />
-  </div>
-);
+        height: ${avatarSizes[props.size].width};
+        width: ${avatarSizes[props.size].width};
+
+        ${props.isHighlighted
+          ? `background-color: ${designTokens.colorNeutral};`
+          : ''}
+
+        ${theme !== 'default' &&
+        !props.isHighlighted &&
+        `&:hover {
+          background-color: ${designTokens.colorAccent30};
+        }`}
+      `}
+      {...filterDataAttributes(props)}
+    >
+      <GravatarImg
+        gravatarHash={props.gravatarHash}
+        size={props.size}
+        isHighlighted={props.isHighlighted}
+      />
+      <Initials
+        size={props.size}
+        firstName={props.firstName}
+        lastName={props.lastName}
+      />
+    </div>
+  );
+};
+
 Avatar.displayName = 'Avatar';
 Avatar.defaultProps = defaultProps;
 

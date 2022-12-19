@@ -49,6 +49,8 @@
   --font-size-40: 1.125rem;
   --font-size-50: 1.25rem;
   --font-size-60: 1.5rem;
+  --font-size-80: 2.5rem;
+  --font-size-90: 3rem;
   --font-size-15: 0.9231rem;
   --font-size-35: 1.0769rem;
   --font-size-45: 1.2308rem;
@@ -158,6 +160,7 @@
     95%
   );
   --background-color-for-select-input-option-when-hovered: hsl(0, 0%, 90%);
+  --background-color-for-avatar: hsl(0, 0%, 60%);
   --border-for-button-as-secondary: none;
   --border-for-button-as-secondary-when-hovered: none;
   --border-for-button-as-secondary-when-active: none;
@@ -206,6 +209,7 @@
   --height-for-button-as-icon-as-medium: 24px;
   --height-for-button-as-icon-as-small: 16px;
   --height-for-input: 32px;
+  --width-for-avatar-as-medium: 48px;
   --placeholder-font-color-for-input: hsl(0, 0%, 60%);
   --font-size-for-button: 1rem;
   --font-size-for-input: 1rem;
@@ -220,6 +224,9 @@
   --font-size-for-link: 1rem;
   --font-size-for-stamp: 1rem;
   --font-size-for-table: 1rem;
+  --font-size-for-avatar-as-small: 1rem;
+  --font-size-for-avatar-as-medium: 1.5rem;
+  --font-size-for-avatar-as-big: 3rem;
   --line-height-for-text-as-h1: inherit;
   --line-height-for-text-as-h2: inherit;
   --line-height-for-text-as-h3: inherit;
