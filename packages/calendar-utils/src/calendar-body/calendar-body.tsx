@@ -5,6 +5,7 @@ import {
   type KeyboardEvent,
 } from 'react';
 import type { Theme } from '@emotion/react';
+import { useTheme } from '@commercetools-uikit/design-system';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -35,7 +36,7 @@ export const ClearSection = (props: TClearSection) => {
       onClick={props.onClear}
       aria-label="clear"
     >
-      <CloseIcon size="medium" color="solid" />
+      <CloseIcon size="medium" />
     </AccessibleButton>
   );
 };
@@ -83,6 +84,7 @@ const defaultProps: Pick<TCalendarBody, 'isClearable'> = {
 
 export const CalendarBody = (props: TCalendarBody) => {
   const [isFocused, toggleIsFocused] = useToggleState(false);
+  const { isNewTheme } = useTheme();
 
   const onInputFocus = props.inputProps?.onFocus;
 
@@ -128,7 +130,7 @@ export const CalendarBody = (props: TCalendarBody) => {
 
   return (
     <Inline alignItems="center">
-      <div css={getInputContainerStyles(props, { isFocused })}>
+      <div css={getInputContainerStyles(props, { isFocused }, isNewTheme)}>
         <input
           ref={props.inputRef}
           {...props.inputProps}
@@ -150,7 +152,7 @@ export const CalendarBody = (props: TCalendarBody) => {
         )}
         <button
           type="button"
-          css={getCalendarIconContainerStyles(props, { isFocused })}
+          css={getCalendarIconContainerStyles(props, { isFocused }, isNewTheme)}
           {...props.toggleButtonProps}
           onFocus={handleToggleFocus}
           onBlur={handleToggleBlur}
@@ -160,9 +162,13 @@ export const CalendarBody = (props: TCalendarBody) => {
           tabIndex={-1}
         >
           {props.icon === 'clock' ? (
-            <ClockIcon color={disabledOrReadOnly ? 'neutral60' : 'solid'} />
+            <ClockIcon
+              color={disabledOrReadOnly || isNewTheme ? 'neutral60' : 'solid'}
+            />
           ) : (
-            <CalendarIcon color={disabledOrReadOnly ? 'neutral60' : 'solid'} />
+            <CalendarIcon
+              color={disabledOrReadOnly || isNewTheme ? 'neutral60' : 'solid'}
+            />
           )}
         </button>
       </div>
