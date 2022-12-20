@@ -1,5 +1,21 @@
 # @commercetools-uikit/money-input
 
+## 15.8.0
+
+### Patch Changes
+
+- [#2362](https://github.com/commercetools/ui-kit/pull/2362) [`daa0fff04`](https://github.com/commercetools/ui-kit/commit/daa0fff0470bd3f1531b2a8daaef12d6859ee27e) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix currency selector height in the new theme
+
+- Updated dependencies [[`806754794`](https://github.com/commercetools/ui-kit/commit/806754794ba1afd0c43370da125d6b4163123814), [`9701afa72`](https://github.com/commercetools/ui-kit/commit/9701afa729b83e5ee0064d0fc12ca73c59c91813)]:
+  - @commercetools-uikit/design-system@15.8.0
+  - @commercetools-uikit/constraints@15.8.0
+  - @commercetools-uikit/icons@15.8.0
+  - @commercetools-uikit/input-utils@15.8.0
+  - @commercetools-uikit/select-utils@15.8.0
+  - @commercetools-uikit/tooltip@15.8.0
+  - @commercetools-uikit/hooks@15.8.0
+  - @commercetools-uikit/utils@15.8.0
+
 ## 15.7.0
 
 ### Patch Changes
