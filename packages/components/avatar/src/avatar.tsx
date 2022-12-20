@@ -127,7 +127,7 @@ const Initials = (props: TInitialsProps) => (
 Initials.displayName = 'Initials';
 
 const Avatar = (props: TAvatarProps) => {
-  const { theme } = useTheme();
+  const { isNewTheme } = useTheme();
 
   return (
     <div
@@ -149,7 +149,7 @@ const Avatar = (props: TAvatarProps) => {
           ? `background-color: ${designTokens.colorNeutral};`
           : ''}
 
-        ${theme !== 'default' &&
+        ${isNewTheme &&
         !props.isHighlighted &&
         `&:hover {
           background-color: ${designTokens.colorAccent30};
