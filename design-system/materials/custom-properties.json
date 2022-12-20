@@ -138,6 +138,7 @@
   "--background-color-for-tag-warning": "hsl(25.110132158590307, 89.0196078431%, 95%)",
   "--background-color-for-select-input-option-when-hovered": "hsl(0, 0%, 90%)",
   "--background-color-for-avatar": "hsl(0, 0%, 60%)",
+  "--background-color-for-avatar-when-highlighted": "#ccc",
   "--border-for-button-as-secondary": "none",
   "--border-for-button-as-secondary-when-hovered": "none",
   "--border-for-button-as-secondary-when-active": "none",

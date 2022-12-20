@@ -240,6 +240,8 @@ states:
     description: 'When the element has inverted colors'
   raised:
     description: 'When the element is raised'
+  highlighted:
+    description: 'When the element is highlighted'
 
 variants:
   h1:
@@ -368,6 +370,9 @@ decisionGroupsByTheme:
         background-color-for-avatar:
           description: ''
           choice: color-neutral-60
+        background-color-for-avatar-when-highlighted:
+          description: ''
+          choice: color-neutral
 
     borders:
       label: Borders
@@ -734,6 +739,9 @@ decisionGroupsByTheme:
         background-color-for-avatar:
           description: ''
           choice: color-accent
+        background-color-for-avatar-when-highlighted:
+          description: ''
+          choice: color-accent-30
 
     borders:
       label: Borders

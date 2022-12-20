@@ -1,6 +1,5 @@
-// TODO: @redesign cleanup
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 export type TAvatarProps = {
@@ -126,50 +125,40 @@ const Initials = (props: TInitialsProps) => (
 );
 Initials.displayName = 'Initials';
 
-const Avatar = (props: TAvatarProps) => {
-  const { isNewTheme } = useTheme();
+const Avatar = (props: TAvatarProps) => (
+  <div
+    css={css`
+      align-items: center;
+      background-color: ${designTokens.backgroundColorForAvatar};
+      border-radius: 100%;
+      font-size: ${designTokens.fontSizeDefault};
+      color: ${designTokens.colorSurface};
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
 
-  return (
-    <div
-      css={css`
-        align-items: center;
-        background-color: ${designTokens.backgroundColorForAvatar};
-        border-radius: 100%;
-        font-size: ${designTokens.fontSizeDefault};
-        color: ${designTokens.colorSurface};
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
+      height: ${avatarSizes[props.size].width};
+      width: ${avatarSizes[props.size].width};
 
-        height: ${avatarSizes[props.size].width};
-        width: ${avatarSizes[props.size].width};
-
-        ${props.isHighlighted
-          ? `background-color: ${designTokens.colorNeutral};`
-          : ''}
-
-        ${isNewTheme &&
-        !props.isHighlighted &&
-        `&:hover {
-          background-color: ${designTokens.colorAccent30};
-        }`}
-      `}
-      {...filterDataAttributes(props)}
-    >
-      <GravatarImg
-        gravatarHash={props.gravatarHash}
-        size={props.size}
-        isHighlighted={props.isHighlighted}
-      />
-      <Initials
-        size={props.size}
-        firstName={props.firstName}
-        lastName={props.lastName}
-      />
-    </div>
-  );
-};
+      ${props.isHighlighted
+        ? `background-color: ${designTokens.backgroundColorForAvatarWhenHighlighted};`
+        : ''}
+    `}
+    {...filterDataAttributes(props)}
+  >
+    <GravatarImg
+      gravatarHash={props.gravatarHash}
+      size={props.size}
+      isHighlighted={props.isHighlighted}
+    />
+    <Initials
+      size={props.size}
+      firstName={props.firstName}
+      lastName={props.lastName}
+    />
+  </div>
+);
 
 Avatar.displayName = 'Avatar';
 Avatar.defaultProps = defaultProps;
