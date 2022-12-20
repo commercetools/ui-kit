@@ -230,6 +230,8 @@
   --font-size-for-link: 1rem;
   --font-size-for-stamp: 1rem;
   --font-size-for-table: 1rem;
+  --icon-color-for-datetime-input-icon: #1a1a1a;
+  --icon-color-for-datetime-input-icon-when-hovered: #f16d0e;
   --line-height-for-text-as-h1: inherit;
   --line-height-for-text-as-h2: inherit;
   --line-height-for-text-as-h3: inherit;

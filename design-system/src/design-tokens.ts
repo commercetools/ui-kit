@@ -217,6 +217,8 @@ export const themes = {
     fontSizeForLink: '1rem',
     fontSizeForStamp: '1rem',
     fontSizeForTable: '1rem',
+    iconColorForDatetimeInputIcon: '#1a1a1a',
+    iconColorForDatetimeInputIconWhenHovered: '#f16d0e',
     lineHeightForTextAsH1: 'inherit',
     lineHeightForTextAsH2: 'inherit',
     lineHeightForTextAsH3: 'inherit',
@@ -365,6 +367,8 @@ export const themes = {
     heightForButtonAsIconAsMedium: '32px',
     heightForButtonAsIconAsSmall: '16px',
     heightForInput: '40px',
+    iconColorForDatetimeInputIcon: 'hsl(0, 0%, 40%)',
+    iconColorForDatetimeInputIconWhenHovered: '#e60050',
     marginForTableHeader: '16px',
     marginForTableCellAsCondensed: '8px',
     paddingForStamp: '4px 12px',
@@ -669,6 +673,10 @@ const designTokens = {
   fontSizeForLink: 'var(--font-size-for-link, 1rem)',
   fontSizeForStamp: 'var(--font-size-for-stamp, 1rem)',
   fontSizeForTable: 'var(--font-size-for-table, 1rem)',
+  iconColorForDatetimeInputIcon:
+    'var(--icon-color-for-datetime-input-icon, #1a1a1a)',
+  iconColorForDatetimeInputIconWhenHovered:
+    'var(--icon-color-for-datetime-input-icon-when-hovered, #f16d0e)',
   lineHeightForTextAsH1: 'var(--line-height-for-text-as-h-1, inherit)',
   lineHeightForTextAsH2: 'var(--line-height-for-text-as-h-2, inherit)',
   lineHeightForTextAsH3: 'var(--line-height-for-text-as-h-3, inherit)',
