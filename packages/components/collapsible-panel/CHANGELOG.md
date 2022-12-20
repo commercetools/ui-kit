@@ -1,5 +1,22 @@
 # @commercetools-uikit/collapsible-panel
 
+## 15.8.0
+
+### Patch Changes
+
+- [#2354](https://github.com/commercetools/ui-kit/pull/2354) [`9701afa72`](https://github.com/commercetools/ui-kit/commit/9701afa729b83e5ee0064d0fc12ca73c59c91813) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Add new design tokens for collapsible panel component.
+
+- Updated dependencies [[`806754794`](https://github.com/commercetools/ui-kit/commit/806754794ba1afd0c43370da125d6b4163123814), [`9701afa72`](https://github.com/commercetools/ui-kit/commit/9701afa729b83e5ee0064d0fc12ca73c59c91813)]:
+  - @commercetools-uikit/design-system@15.8.0
+  - @commercetools-uikit/accessible-button@15.8.0
+  - @commercetools-uikit/constraints@15.8.0
+  - @commercetools-uikit/icons@15.8.0
+  - @commercetools-uikit/text@15.8.0
+  - @commercetools-uikit/spacings@15.8.0
+  - @commercetools-uikit/collapsible-motion@15.8.0
+  - @commercetools-uikit/hooks@15.8.0
+  - @commercetools-uikit/utils@15.8.0
+
 ## 15.7.0
 
 ### Patch Changes

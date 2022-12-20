@@ -1,5 +1,34 @@
 # @commercetools-uikit/data-table-manager
 
+## 15.8.0
+
+### Minor Changes
+
+- [#2359](https://github.com/commercetools/ui-kit/pull/2359) [`806754794`](https://github.com/commercetools/ui-kit/commit/806754794ba1afd0c43370da125d6b4163123814) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Adapt component styles for the upcoming new theme
+
+### Patch Changes
+
+- Updated dependencies [[`806754794`](https://github.com/commercetools/ui-kit/commit/806754794ba1afd0c43370da125d6b4163123814), [`9701afa72`](https://github.com/commercetools/ui-kit/commit/9701afa729b83e5ee0064d0fc12ca73c59c91813)]:
+  - @commercetools-uikit/design-system@15.8.0
+  - @commercetools-uikit/accessible-button@15.8.0
+  - @commercetools-uikit/primary-button@15.8.0
+  - @commercetools-uikit/secondary-button@15.8.0
+  - @commercetools-uikit/secondary-icon-button@15.8.0
+  - @commercetools-uikit/card@15.8.0
+  - @commercetools-uikit/field-label@15.8.0
+  - @commercetools-uikit/icons@15.8.0
+  - @commercetools-uikit/async-select-input@15.8.0
+  - @commercetools-uikit/radio-input@15.8.0
+  - @commercetools-uikit/select-input@15.8.0
+  - @commercetools-uikit/tag@15.8.0
+  - @commercetools-uikit/text@15.8.0
+  - @commercetools-uikit/spacings@15.8.0
+  - @commercetools-uikit/accessible-hidden@15.8.0
+  - @commercetools-uikit/collapsible-motion@15.8.0
+  - @commercetools-uikit/grid@15.8.0
+  - @commercetools-uikit/hooks@15.8.0
+  - @commercetools-uikit/utils@15.8.0
+
 ## 15.7.0
 
 ### Patch Changes
