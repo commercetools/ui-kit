@@ -3,6 +3,7 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
+import { useTheme } from '@commercetools-uikit/design-system';
 import {
   getClearSectionStyles,
   getClockIconContainerStyles,
@@ -46,9 +47,10 @@ ClearSection.displayName = 'ClearSection';
 
 const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
   (props, ref) => {
+    const { isNewTheme } = useTheme();
     return (
       <Inline alignItems="center">
-        <StyledInputContainer css={getInputContainerStyles(props)}>
+        <StyledInputContainer css={getInputContainerStyles(props, isNewTheme)}>
           <input
             ref={ref}
             css={getTimeInputStyles(props)}
@@ -84,13 +86,15 @@ const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
             />
           )}
           <StyledClockIconContainer
-            css={getClockIconContainerStyles(props)}
+            css={getClockIconContainerStyles(props, isNewTheme)}
             htmlFor={props.id}
             data-toggle
           >
             <ClockIcon
               color={
-                props.isDisabled || props.isReadOnly ? 'neutral60' : 'solid'
+                props.isDisabled || props.isReadOnly || isNewTheme
+                  ? 'neutral60'
+                  : 'solid'
               }
             />
           </StyledClockIconContainer>
