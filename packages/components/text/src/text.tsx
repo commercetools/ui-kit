@@ -11,7 +11,6 @@ import {
   subheadlineStyles,
   wrapStyles,
 } from './text.styles';
-import { useTheme } from '@commercetools-uikit/design-system';
 
 type TBasicTextProps = {
   intlMessage?: MessageDescriptor & {
@@ -223,16 +222,15 @@ export type TDetailProps = {
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
-const Detail = (props: TDetailProps & { isNewTheme?: boolean }) => {
+const Detail = (props: TDetailProps) => {
   warnIfMissingTitle(props, 'TextDetail');
   warnIfMissingContent(props, 'TextDetail');
-  const { isNewTheme } = useTheme();
   if (props.as) {
     const TextDetailElement = props.as;
     return (
       <TextDetailElement
         id={props.id}
-        css={detailStyles({ ...props, isNewTheme })}
+        css={detailStyles(props)}
         title={props.title}
         {...filterDataAttributes(props)}
       >
@@ -243,7 +241,7 @@ const Detail = (props: TDetailProps & { isNewTheme?: boolean }) => {
 
   return (
     <div
-      css={detailStyles({ ...props, isNewTheme })}
+      css={detailStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
     >

@@ -145,9 +145,7 @@ export const wrapStyles = () => css`
   white-space: pre-wrap;
 `;
 
-export const detailStyles = (
-  props: TDetailProps & { isNewTheme: boolean }
-) => css`
+export const detailStyles = (props: TDetailProps) => css`
   ${getBaseStyles()}
   font-size: ${designTokens.fontSizeForTextAsDetail};
   line-height: ${designTokens.lineHeightForTextAsDetail};
