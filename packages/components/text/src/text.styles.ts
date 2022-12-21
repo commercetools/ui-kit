@@ -34,7 +34,6 @@ const strikethrough = `
 `;
 
 const getTone = (tone: string, isNewTheme?: boolean) => {
-  console.log({ isNewTheme });
   switch (tone) {
     case 'information':
       return `color: ${isNewTheme && designTokens.colorInfo};`;
