@@ -223,7 +223,7 @@ export type TDetailProps = {
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
-const Detail = (props: TDetailProps & { isNewTheme: boolean }) => {
+const Detail = (props: TDetailProps & { isNewTheme?: boolean }) => {
   warnIfMissingTitle(props, 'TextDetail');
   warnIfMissingContent(props, 'TextDetail');
   const { isNewTheme } = useTheme();
