@@ -80,7 +80,7 @@ const getClockIconContainerStyles = (
     `,
     !isNewTheme &&
       css`
-        border-left: 1px solid ${designTokens.borderColorForInput};
+        border-left: 1px solid;
       `,
   ];
 };
