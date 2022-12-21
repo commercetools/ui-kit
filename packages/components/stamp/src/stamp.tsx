@@ -47,54 +47,42 @@ const getToneStyles = (props: Props & { isNewTheme: boolean }) => {
       return css`
         background-color: ${designTokens.colorError95};
         border: 1px solid
-          ${props.isNewTheme
-            ? designTokens.borderForStampWhenError
-            : designTokens.colorError};
+          ${props.isNewTheme && designTokens.borderForStampWhenError};
       `;
     }
     case 'warning': {
       return css`
         background-color: ${designTokens.colorWarning95};
         border: 1px solid
-          ${props.isNewTheme
-            ? designTokens.borderForStampWhenWarning
-            : designTokens.colorWarning};
+          ${props.isNewTheme && designTokens.borderForStampWhenWarning};
       `;
     }
     case 'positive': {
       return css`
         background-color: ${designTokens.colorPrimary85};
         border: 1px solid
-          ${props.isNewTheme
-            ? designTokens.borderForStampAsPositive
-            : designTokens.colorPrimary40};
+          ${props.isNewTheme && designTokens.borderForStampAsPositive};
       `;
     }
     case 'information': {
       return css`
         background-color: ${designTokens.colorInfo95};
         border: 1px solid
-          ${props.isNewTheme
-            ? designTokens.borderForStampAsInformation
-            : designTokens.colorInfo};
+          ${props.isNewTheme && designTokens.borderForStampAsInformation};
       `;
     }
     case 'primary': {
       return css`
         background-color: ${designTokens.colorPrimary95};
         border: 1px solid
-          ${props.isNewTheme
-            ? designTokens.borderForStampAsPrimary
-            : designTokens.colorPrimary25};
+          ${props.isNewTheme && designTokens.borderForStampAsPrimary};
       `;
     }
     case 'secondary': {
       return css`
         background-color: ${designTokens.colorNeutral90};
         border: 1px solid
-          ${props.isNewTheme
-            ? designTokens.borderForStampAsSecondary
-            : designTokens.colorNeutral60};
+          ${props.isNewTheme && designTokens.borderForStampAsSecondary};
       `;
     }
     default:

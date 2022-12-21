@@ -32,11 +32,11 @@ storiesOf('Components|Stamps', module)
               <Stamp tone={tone} isCondensed={boolean('isCondensed', false)}>
                 <SpacingsInline alignItems="center">
                   <Icon size="medium" />
-                  <Text.Detail>{'Hello'}</Text.Detail>
+                  <Text.Detail tone={tone}>{'Hello'}</Text.Detail>
                 </SpacingsInline>
               </Stamp>
               <Stamp tone={tone} isCondensed={boolean('isCondensed', false)}>
-                <Text.Detail>{`tone="${tone}"`}</Text.Detail>
+                <Text.Detail tone={tone}>{`tone="${tone}"`}</Text.Detail>
               </Stamp>
             </SpacingsInline>
           );

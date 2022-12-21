@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import type {
   TBodyProps,
   THeadlineProps,
@@ -32,24 +33,25 @@ const strikethrough = `
   text-decoration: line-through;
 `;
 
-const getTone = (tone: string) => {
+const getTone = (tone: string, isNewTheme?: boolean) => {
+  console.log({ isNewTheme });
   switch (tone) {
     case 'information':
-      return `color: ${designTokens.colorInfo};`;
+      return `color: ${isNewTheme && designTokens.colorInfo};`;
     case 'secondary':
-      return `color: ${designTokens.colorNeutral40};`;
+      return `color: ${isNewTheme && designTokens.colorNeutral40};`;
     case 'positive':
-      return `color: ${designTokens.colorPrimary25};`;
+      return `color: ${isNewTheme && designTokens.colorPrimary25};`;
     case 'primary':
-      return `color: ${designTokens.colorPrimary};`;
+      return `color: ${isNewTheme && designTokens.colorPrimary};`;
     case 'negative':
-      return `color: ${designTokens.colorError};`;
+      return `color: ${isNewTheme && designTokens.colorError};`;
     case 'inverted':
-      return `color: ${designTokens.colorSurface};`;
+      return `color: ${isNewTheme && designTokens.colorSurface};`;
     case 'warning':
-      return `color: ${designTokens.colorWarning};`;
+      return `color: ${isNewTheme && designTokens.colorWarning};`;
     case 'critical':
-      return `color: ${designTokens.colorError40};`;
+      return `color: ${isNewTheme && designTokens.colorError40};`;
     default:
       return ``;
   }
@@ -145,7 +147,9 @@ export const wrapStyles = () => css`
   white-space: pre-wrap;
 `;
 
-export const detailStyles = (props: TDetailProps) => css`
+export const detailStyles = (
+  props: TDetailProps & { isNewTheme: boolean }
+) => css`
   ${getBaseStyles()}
   font-size: ${designTokens.fontSizeForTextAsDetail};
   line-height: ${designTokens.lineHeightForTextAsDetail};
@@ -153,6 +157,6 @@ export const detailStyles = (props: TDetailProps) => css`
   ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
-  ${props.tone && getTone(props.tone)}
+  ${props.tone && getTone(props.tone, props.isNewTheme)}
   ${props.truncate && truncate}
 `;

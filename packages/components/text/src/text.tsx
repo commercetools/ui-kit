@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import type { MessageDescriptor } from 'react-intl';
 
 import { Children, ReactNode } from 'react';
@@ -10,6 +11,7 @@ import {
   subheadlineStyles,
   wrapStyles,
 } from './text.styles';
+import { useTheme } from '@commercetools-uikit/design-system';
 
 type TBasicTextProps = {
   intlMessage?: MessageDescriptor & {
@@ -104,7 +106,13 @@ export type TSubheadlineProps = {
   as?: 'h4' | 'h5';
   truncate?: boolean;
   isBold?: boolean;
-  tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
+  tone?:
+    | 'primary'
+    | 'secondary'
+    | 'information'
+    | 'positive'
+    | 'negative'
+    | 'critical';
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -161,7 +169,8 @@ export type TBodyProps = {
     | 'information'
     | 'positive'
     | 'negative'
-    | 'inverted';
+    | 'inverted'
+    | 'critical';
   truncate?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
@@ -208,20 +217,22 @@ export type TDetailProps = {
     | 'positive'
     | 'negative'
     | 'warning'
-    | 'inverted';
+    | 'inverted'
+    | 'critical';
   truncate?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
-const Detail = (props: TDetailProps) => {
+const Detail = (props: TDetailProps & { isNewTheme: boolean }) => {
   warnIfMissingTitle(props, 'TextDetail');
   warnIfMissingContent(props, 'TextDetail');
+  const { isNewTheme } = useTheme();
   if (props.as) {
     const TextDetailElement = props.as;
     return (
       <TextDetailElement
         id={props.id}
-        css={detailStyles(props)}
+        css={detailStyles({ ...props, isNewTheme })}
         title={props.title}
         {...filterDataAttributes(props)}
       >
@@ -232,7 +243,7 @@ const Detail = (props: TDetailProps) => {
 
   return (
     <div
-      css={detailStyles(props)}
+      css={detailStyles({ ...props, isNewTheme })}
       title={props.title}
       {...filterDataAttributes(props)}
     >
