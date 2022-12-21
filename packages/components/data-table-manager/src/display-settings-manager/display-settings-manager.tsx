@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import type {
   ChangeEventHandler,
   MouseEvent,
@@ -9,8 +10,8 @@ import FieldLabel from '@commercetools-uikit/field-label';
 import Grid from '@commercetools-uikit/grid';
 import RadioInput from '@commercetools-uikit/radio-input';
 import Spacings from '@commercetools-uikit/spacings';
-import AccessibleHiden from '@commercetools-uikit/accessible-hidden';
-import { designTokens } from '@commercetools-uikit/design-system';
+import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import SettingsContainer from '../settings-container';
 import messages from './messages';
 import {
@@ -35,12 +36,14 @@ export type TDensityManagerProps = {
 
 const DensityManager = (props: TDensityManagerProps) => {
   const intl = useIntl();
+  const { themedValue } = useTheme();
   const textWrappingOption = props.isWrappingText
     ? SHOW_HIDE_ON_DEMAND
     : WRAPPED_TEXT_VISIBLE;
   const densityDisplayOption = props.isCondensed
     ? DENSITY_COMPACT
     : DENSITY_DEFAULT;
+  const columnStackScale = themedValue('s', 'l');
 
   return (
     <SettingsContainer
@@ -56,18 +59,18 @@ const DensityManager = (props: TDensityManagerProps) => {
         gridTemplateColumns="repeat(2, 1fr)"
       >
         <Grid.Item>
-          <Spacings.Stack scale="s">
+          <Spacings.Stack scale={columnStackScale}>
             <FieldLabel
               title={intl.formatMessage(messages.textWrappingSubtitle)}
             />
-            <AccessibleHiden>
+            <AccessibleHidden>
               <label htmlFor="text-wrapping-0">
                 Select radio option: display full text
               </label>
               <label htmlFor="text-wrapping-1">
                 Select radio option: display full previews
               </label>
-            </AccessibleHiden>
+            </AccessibleHidden>
             <RadioInput.Group
               id="text-wrapping"
               name="text-wrapping"
@@ -86,18 +89,18 @@ const DensityManager = (props: TDensityManagerProps) => {
           </Spacings.Stack>
         </Grid.Item>
         <Grid.Item>
-          <Spacings.Stack scale="s">
+          <Spacings.Stack scale={columnStackScale}>
             <FieldLabel
               title={intl.formatMessage(messages.densityDisplaySubtitle)}
             />
-            <AccessibleHiden>
+            <AccessibleHidden>
               <label htmlFor="density-display-0">
                 Select radio option: density default
               </label>
               <label htmlFor="density-display-1">
                 Select radio option: density compact
               </label>
-            </AccessibleHiden>
+            </AccessibleHidden>
             <RadioInput.Group
               id="density-display"
               name="density-display"

@@ -150,6 +150,8 @@ export const themes = {
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
+    backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
+      'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForAvatar: 'hsl(0, 0%, 60%)',
     backgroundColorForAvatarWhenHighlighted: '#ccc',
@@ -157,6 +159,8 @@ export const themes = {
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
     borderForCardWhenRaised: 'none',
+    borderForCollapsiblePanelHeaderIconWhenDisabled:
+      '1px solid var(--color-neutral)',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -173,6 +177,8 @@ export const themes = {
     borderColorForButtonAsIconWhenDisabled: '#ccc',
     borderColorForTableHeader: '#ccc',
     borderColorForTableHeaderAsBottom: '#213c45',
+    borderColorForTableManagerDroppableList: 'hsl(0, 0%, 60%)',
+    borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 60%)',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -181,6 +187,7 @@ export const themes = {
     borderRadiusForInput: '6px',
     borderRadiusForTag: '2px',
     borderRadiusForCard: '6px',
+    borderRadiusForTableManagerDroppableList: '6px',
     borderWidthForInput: '1px',
     borderWidthForInputWhenWarning: '1px',
     borderWidthForInputWhenError: '1px',
@@ -244,7 +251,20 @@ export const themes = {
     paddingForTableHeaderAsCondensed: '8px',
     paddingForTableCell: '16px',
     paddingForTableCellAsCondensed: '8px',
+    paddingForTableManagerDroppableList: '8px',
+    paddingForTableManagerSettingsPanel: '16px',
+    paddingForTableManagerDraggableTag: '4px',
+    paddingForCollapsiblePanelHeader: 'var(--spacing-20) var(--spacing-30)',
+    paddingForCollapsiblePanelHeaderAsCondensed: '8px',
+    paddingForCollapsiblePanelSectionWrapper: '16px',
+    paddingForCollapsiblePanelSectionWrapperAsCondensed: '8px',
+    paddingForCollapsiblePanelSectionDescription: '0 0 var(--spacing-50)',
+    paddingForCollapsiblePanelSectionDescriptionAsCondensed:
+      '0 0 var(--spacing-30)',
     paddingForInput: '8px',
+    paddingForMultilineInput: 'var(--spacing-10) var(--spacing-20)',
+    paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
+    paddingForLocalizedMultilineTextInputLabel: '0 var(--spacing-20)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -290,6 +310,7 @@ export const themes = {
     backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForTableHeader: '#fff',
+    backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
     backgroundColorForInputWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForAvatar: '#213c45',
@@ -298,6 +319,7 @@ export const themes = {
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
     borderForCardWhenRaised: '1px solid var(--color-neutral-90)',
+    borderForCollapsiblePanelHeaderIconWhenDisabled: 'none',
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
@@ -310,12 +332,15 @@ export const themes = {
     borderColorForCardWhenRaised: 'hsl(0, 0%, 90%)',
     borderColorForTableHeader: '#fff',
     borderColorForTableHeaderAsBottom: 'hsl(0, 0%, 90%)',
+    borderColorForTableManagerDroppableList: '#ccc',
+    borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 90%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
     borderRadiusForButtonAsIconAsMedium: '4px',
     borderRadiusForButtonAsIconAsSmall: '2px',
     borderRadiusForCard: '4px',
+    borderRadiusForTableManagerDroppableList: '4px',
     borderRadiusForInput: '4px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
@@ -367,13 +392,28 @@ export const themes = {
     paddingForTableHeaderAsCondensed: '24px',
     paddingForTableCell: 'var(--spacing-30) var(--spacing-40)',
     paddingForTableCellAsCondensed: 'var(--spacing-20) var(--spacing-40)',
+    paddingForTableManagerDroppableList: '16px',
+    paddingForTableManagerSettingsPanel: 'var(--spacing-40) var(--spacing-50)',
+    paddingForTableManagerDraggableTag: 'var(--spacing-10) 0',
+    paddingForCollapsiblePanelHeader: 'var(--spacing-30) 0',
+    paddingForCollapsiblePanelHeaderAsCondensed: 'var(--spacing-20) 0',
+    paddingForCollapsiblePanelSectionWrapper:
+      'var(--spacing-50) 0 var(--spacing-70) calc(var(--spacing-30) + var(--spacing-10))',
+    paddingForCollapsiblePanelSectionWrapperAsCondensed:
+      'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-30) + var(--spacing-10))',
+    paddingForCollapsiblePanelSectionDescription: '0 0 var(--spacing-40)',
+    paddingForCollapsiblePanelSectionDescriptionAsCondensed:
+      '0 0 var(--spacing-40)',
     paddingForInput: '16px',
+    paddingForMultilineInput: '8px',
+    paddingForLocalizedRichTextInputLabel: '8px',
+    paddingForLocalizedMultilineTextInputLabel: '8px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
     shadowForButtonWhenActive: 'none',
     shadowForButtonWhenDisabled: 'none',
-    shadowForCardWhenRaised: 'none',
+    shadowForCardWhenRaised: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
     shadowForInput: 'none',
     shadowForInputWhenFocused: 'inset 0 0 0 1px var(--color-primary)',
     shadowForInputWhenError: 'inset 0 0 0 1px var(--color-error)',
@@ -553,6 +593,8 @@ const designTokens = {
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
+  backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
+    'var(--background-color-for-collapsible-panel-header-icon-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForSelectInputOptionWhenHovered:
     'var(--background-color-for-select-input-option-when-hovered, hsl(0, 0%, 90%))',
   backgroundColorForAvatar:
@@ -565,6 +607,8 @@ const designTokens = {
   borderForButtonAsSecondaryWhenActive:
     'var(--border-for-button-as-secondary-when-active, none)',
   borderForCardWhenRaised: 'var(--border-for-card-when-raised, none)',
+  borderForCollapsiblePanelHeaderIconWhenDisabled:
+    'var(--border-for-collapsible-panel-header-icon-when-disabled, 1px solid var(--color-neutral))',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -592,6 +636,10 @@ const designTokens = {
   borderColorForTableHeader: 'var(--border-color-for-table-header, #ccc)',
   borderColorForTableHeaderAsBottom:
     'var(--border-color-for-table-header-as-bottom, #213c45)',
+  borderColorForTableManagerDroppableList:
+    'var(--border-color-for-table-manager-droppable-list, hsl(0, 0%, 60%))',
+  borderColorForCollapsiblePanelHeader:
+    'var(--border-color-for-collapsible-panel-header, hsl(0, 0%, 60%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -603,6 +651,8 @@ const designTokens = {
   borderRadiusForInput: 'var(--border-radius-for-input, 6px)',
   borderRadiusForTag: 'var(--border-radius-for-tag, 2px)',
   borderRadiusForCard: 'var(--border-radius-for-card, 6px)',
+  borderRadiusForTableManagerDroppableList:
+    'var(--border-radius-for-table-manager-droppable-list, 6px)',
   borderWidthForInput: 'var(--border-width-for-input, 1px)',
   borderWidthForInputWhenWarning:
     'var(--border-width-for-input-when-warning, 1px)',
@@ -680,7 +730,31 @@ const designTokens = {
   paddingForTableCell: 'var(--padding-for-table-cell, 16px)',
   paddingForTableCellAsCondensed:
     'var(--padding-for-table-cell-as-condensed, 8px)',
+  paddingForTableManagerDroppableList:
+    'var(--padding-for-table-manager-droppable-list, 8px)',
+  paddingForTableManagerSettingsPanel:
+    'var(--padding-for-table-manager-settings-panel, 16px)',
+  paddingForTableManagerDraggableTag:
+    'var(--padding-for-table-manager-draggable-tag, 4px)',
+  paddingForCollapsiblePanelHeader:
+    'var(--padding-for-collapsible-panel-header, var(--spacing-20) var(--spacing-30))',
+  paddingForCollapsiblePanelHeaderAsCondensed:
+    'var(--padding-for-collapsible-panel-header-as-condensed, 8px)',
+  paddingForCollapsiblePanelSectionWrapper:
+    'var(--padding-for-collapsible-panel-section-wrapper, 16px)',
+  paddingForCollapsiblePanelSectionWrapperAsCondensed:
+    'var(--padding-for-collapsible-panel-section-wrapper-as-condensed, 8px)',
+  paddingForCollapsiblePanelSectionDescription:
+    'var(--padding-for-collapsible-panel-section-description, 0 0 var(--spacing-50))',
+  paddingForCollapsiblePanelSectionDescriptionAsCondensed:
+    'var(--padding-for-collapsible-panel-section-description-as-condensed, 0 0 var(--spacing-30))',
   paddingForInput: 'var(--padding-for-input, 8px)',
+  paddingForMultilineInput:
+    'var(--padding-for-multiline-input, var(--spacing-10) var(--spacing-20))',
+  paddingForLocalizedRichTextInputLabel:
+    'var(--padding-for-localized-rich-text-input-label, 0 var(--spacing-20))',
+  paddingForLocalizedMultilineTextInputLabel:
+    'var(--padding-for-localized-multiline-text-input-label, 0 var(--spacing-20))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

@@ -16,12 +16,14 @@ const getLocalizedInputStyles = () => [
 
 const getLanguageLabelStyles = (_props: unknown) => {
   return css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
     box-sizing: border-box;
     color: ${designTokens.fontColorForInputWhenDisabled};
-    height: ${designTokens.sizeHeightInput};
-    line-height: ${designTokens.sizeHeightInput};
+    height: ${designTokens.heightForInput};
     background-color: ${designTokens.backgroundColorForInputWhenDisabled};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};

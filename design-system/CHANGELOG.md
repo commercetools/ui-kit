@@ -1,5 +1,28 @@
 # @commercetools-uikit/design-system
 
+## 15.8.0
+
+### Minor Changes
+
+- [#2359](https://github.com/commercetools/ui-kit/pull/2359) [`806754794`](https://github.com/commercetools/ui-kit/commit/806754794ba1afd0c43370da125d6b4163123814) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Added new design tokens for `DataTableManager` so it supports the new upcoming theme.
+  fix `Card` component shadow when _raised_ in the new theme.
+
+### Patch Changes
+
+- [#2354](https://github.com/commercetools/ui-kit/pull/2354) [`9701afa72`](https://github.com/commercetools/ui-kit/commit/9701afa729b83e5ee0064d0fc12ca73c59c91813) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Add new design tokens for collapsible panel component.
+
+## 15.7.0
+
+### Minor Changes
+
+- [#2361](https://github.com/commercetools/ui-kit/pull/2361) [`5ba1b2bb4`](https://github.com/commercetools/ui-kit/commit/5ba1b2bb486e94981da3a226a72a23957402c3f5) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Added internal temporary helper to `useTheme` hook which will help with new theme migration
+
+### Patch Changes
+
+- [#2347](https://github.com/commercetools/ui-kit/pull/2347) [`42d9ea5a2`](https://github.com/commercetools/ui-kit/commit/42d9ea5a251c1fac374c819f17438fbaa254260b) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Add new tokens for `<TextInput>` component
+
+- [#2355](https://github.com/commercetools/ui-kit/pull/2355) [`8f467aa28`](https://github.com/commercetools/ui-kit/commit/8f467aa283c5888aa55755a2b3e2c549c0d4222a) Thanks [@kark](https://github.com/kark)! - Fix `<DataTable>` column separator color in the new theme
+
 ## 15.6.0
 
 ### Minor Changes

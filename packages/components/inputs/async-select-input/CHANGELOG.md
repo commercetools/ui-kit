@@ -1,5 +1,33 @@
 # @commercetools-uikit/async-select-input
 
+## 15.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`806754794`](https://github.com/commercetools/ui-kit/commit/806754794ba1afd0c43370da125d6b4163123814), [`9701afa72`](https://github.com/commercetools/ui-kit/commit/9701afa729b83e5ee0064d0fc12ca73c59c91813)]:
+  - @commercetools-uikit/design-system@15.8.0
+  - @commercetools-uikit/constraints@15.8.0
+  - @commercetools-uikit/icons@15.8.0
+  - @commercetools-uikit/select-utils@15.8.0
+  - @commercetools-uikit/loading-spinner@15.8.0
+  - @commercetools-uikit/text@15.8.0
+  - @commercetools-uikit/spacings@15.8.0
+  - @commercetools-uikit/utils@15.8.0
+
+## 15.7.0
+
+### Patch Changes
+
+- Updated dependencies [[`42d9ea5a2`](https://github.com/commercetools/ui-kit/commit/42d9ea5a251c1fac374c819f17438fbaa254260b), [`5ba1b2bb4`](https://github.com/commercetools/ui-kit/commit/5ba1b2bb486e94981da3a226a72a23957402c3f5), [`8f467aa28`](https://github.com/commercetools/ui-kit/commit/8f467aa283c5888aa55755a2b3e2c549c0d4222a), [`cace41fd4`](https://github.com/commercetools/ui-kit/commit/cace41fd4667d2aec659c7c3284ff806dac3b455)]:
+  - @commercetools-uikit/design-system@15.7.0
+  - @commercetools-uikit/icons@15.7.0
+  - @commercetools-uikit/constraints@15.7.0
+  - @commercetools-uikit/select-utils@15.7.0
+  - @commercetools-uikit/loading-spinner@15.7.0
+  - @commercetools-uikit/text@15.7.0
+  - @commercetools-uikit/spacings@15.7.0
+  - @commercetools-uikit/utils@15.7.0
+
 ## 15.6.0
 
 ### Patch Changes
