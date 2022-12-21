@@ -27,6 +27,10 @@ export type TTagProps = {
    */
   isDisabled?: boolean;
   /**
+   * Adds the draggable icon on the left side.
+   */
+  isDraggable?: boolean;
+  /**
    * Called when remove button is clicked.
    */
   onRemove?: (
@@ -66,10 +70,11 @@ export type TTagProps = {
 
 const defaultProps: Pick<
   TTagProps,
-  'type' | 'isDisabled' | 'horizontalConstraint'
+  'type' | 'isDisabled' | 'isDraggable' | 'horizontalConstraint'
 > = {
   type: 'normal',
   isDisabled: false,
+  isDraggable: false,
   horizontalConstraint: 'scale',
 };
 
@@ -99,6 +104,7 @@ const Tag = (props: TTagProps) => {
           onClick={props.onClick}
           onRemove={props.onRemove}
           isDisabled={props.isDisabled}
+          isDraggable={props.isDraggable}
         >
           {props.children}
         </TagBody>

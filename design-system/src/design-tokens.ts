@@ -255,6 +255,9 @@ export const themes = {
     paddingForCollapsiblePanelSectionDescriptionAsCondensed:
       '0 0 var(--spacing-30)',
     paddingForInput: '8px',
+    paddingForMultilineInput: 'var(--spacing-10) var(--spacing-20)',
+    paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
+    paddingForLocalizedMultilineTextInputLabel: '0 var(--spacing-20)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -391,6 +394,9 @@ export const themes = {
     paddingForCollapsiblePanelSectionDescriptionAsCondensed:
       '0 0 var(--spacing-40)',
     paddingForInput: '16px',
+    paddingForMultilineInput: '8px',
+    paddingForLocalizedRichTextInputLabel: '8px',
+    paddingForLocalizedMultilineTextInputLabel: '8px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -725,6 +731,12 @@ const designTokens = {
   paddingForCollapsiblePanelSectionDescriptionAsCondensed:
     'var(--padding-for-collapsible-panel-section-description-as-condensed, 0 0 var(--spacing-30))',
   paddingForInput: 'var(--padding-for-input, 8px)',
+  paddingForMultilineInput:
+    'var(--padding-for-multiline-input, var(--spacing-10) var(--spacing-20))',
+  paddingForLocalizedRichTextInputLabel:
+    'var(--padding-for-localized-rich-text-input-label, 0 var(--spacing-20))',
+  paddingForLocalizedMultilineTextInputLabel:
+    'var(--padding-for-localized-multiline-text-input-label, 0 var(--spacing-20))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

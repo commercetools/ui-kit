@@ -64,6 +64,21 @@ describe('when disabled', () => {
   });
 });
 
+describe('when draggable', () => {
+  it('should render drag icon', () => {
+    render(<Tag isDraggable>Bread</Tag>);
+    expect(screen.getByTestId('drag-icon')).toBeInTheDocument();
+  });
+  it('should not render drag icon when disabled', () => {
+    render(
+      <Tag isDraggable isDisabled>
+        Bread
+      </Tag>
+    );
+    expect(screen.queryByTestId('drag-icon')).not.toBeInTheDocument();
+  });
+});
+
 describe('when `to` is set', () => {
   it('should redirect when clicked', () => {
     const { history } = render(<Tag to="/foo">Bread</Tag>);

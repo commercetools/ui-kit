@@ -4,9 +4,11 @@ import type { TTagProps } from './tag';
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import { Link } from 'react-router-dom';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
-import { Link } from 'react-router-dom';
+import { DragIcon } from '@commercetools-uikit/icons';
+import Spacings from '@commercetools-uikit/spacings';
 
 export type TTagBodyProps = {
   to?: TTagProps['to'];
@@ -15,13 +17,15 @@ export type TTagBodyProps = {
   onClick?: TTagProps['onClick'];
   onRemove?: TTagProps['onRemove'];
   isDisabled?: boolean;
+  isDraggable?: boolean;
   children: ReactNode;
   styles?: TTagProps['styles'];
 };
 
-const defaultProps: Pick<TTagProps, 'type' | 'isDisabled'> = {
+const defaultProps: Pick<TTagProps, 'type' | 'isDisabled' | 'isDraggable'> = {
   type: 'normal',
   isDisabled: false,
+  isDraggable: false,
 };
 
 type TBody = Pick<TTagBodyProps, 'to' | 'as'>;
@@ -113,7 +117,12 @@ const TagBody = (props: TTagBodyProps) => {
       ]}
       onClick={props.isDisabled ? undefined : props.onClick}
     >
-      <TextComponent tone={textTone}>{props.children}</TextComponent>
+      <Spacings.Inline scale="s" alignItems="center">
+        {props.isDraggable && !props.isDisabled ? (
+          <DragIcon data-testid="drag-icon" size="medium" />
+        ) : null}
+        <TextComponent tone={textTone}>{props.children}</TextComponent>
+      </Spacings.Inline>
     </Body>
   );
 };

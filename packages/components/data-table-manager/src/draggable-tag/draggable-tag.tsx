@@ -1,9 +1,7 @@
 import type { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { Draggable } from 'react-beautiful-dnd';
-import { DragIcon } from '@commercetools-uikit/icons';
 import { designTokens } from '@commercetools-uikit/design-system';
-import Spacings from '@commercetools-uikit/spacings';
 import Tag from '@commercetools-uikit/tag';
 import DraggingContainer from './draggable-tag.styles';
 
@@ -43,11 +41,9 @@ const DraggableTag = (props: TDraggableTagProps) => {
               <Tag
                 onRemove={props.onRemove ? handleRemoveColumn : undefined}
                 isDisabled={props.isDisabled}
+                isDraggable
               >
-                <Spacings.Inline alignItems="center">
-                  <DragIcon data-testid="drag-icon" size="medium" />
-                  {props.column.label}
-                </Spacings.Inline>
+                {props.column.label}
               </Tag>
             </DraggingContainer>
           </DraggableTagWrapper>
