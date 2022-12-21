@@ -142,10 +142,17 @@ const getInputContainerStyles = (
           : 'inherit'};
       }
 
+      &:hover {
+        background-color: ${designTokens.backgroundColorForInputWhenHovered};
+      }
+
       &:focus-within {
         border-color: ${designTokens.borderColorForInputWhenFocused};
         box-shadow: inset 0 0 0 2px
           ${designTokens.borderColorForInputWhenFocused};
+        &:hover {
+          background-color: unset;
+        }
       }
 
       &:focus {
@@ -164,12 +171,6 @@ const getInputContainerStyles = (
           &:focus-within
           ${StyledClockIconContainer} {
           border-color: ${designTokens.borderColorForInputWhenFocused};
-        }
-      `,
-    isNewTheme &&
-      css`
-        &:hover {
-          background-color: ${designTokens.backgroundColorForInputWhenHovered};
         }
       `,
     isNewTheme &&
