@@ -95,7 +95,7 @@ const getCalendarIconContainerStyles = (
     `,
     !isNewTheme &&
       css`
-        border-left: 1px solid ${designTokens.borderColorForInput};
+        border-left: 1px solid ${getIconBorderColor(props, state)};
       `,
   ];
 };
@@ -180,7 +180,9 @@ const getInputContainerStyles = (
     `,
     !isNewTheme &&
       css`
-        &:hover {
+        &:hover,
+        &:hover > button,
+        &:focus > button {
           border-color: ${props.isDisabled ||
           props.hasError ||
           props.hasWarning ||
