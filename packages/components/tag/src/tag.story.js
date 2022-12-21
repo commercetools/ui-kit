@@ -13,6 +13,7 @@ const Story = () => (
       type={select('type', ['normal', 'warning'], 'normal')}
       to={select('to', { '/foo': '/foo', Null: null }, '/foo')}
       isDisabled={boolean('isDisabled', false)}
+      isDraggable={boolean('isDraggable', false)}
       onClick={boolean('onClick', false) ? action('onClick') : undefined}
       horizontalConstraint={select(
         'horizontalConstraint',
