@@ -159,10 +159,16 @@ const getInputContainerStyles = (
       transition: border-color ${designTokens.transitionStandard},
         box-shadow ${designTokens.transitionStandard};
 
+      &:hover:not(:focus) {
+        background-color: ${designTokens.backgroundColorForInputWhenHovered};
+      }
       &:focus-within {
         border-color: ${designTokens.borderColorForInputWhenFocused};
         box-shadow: inset 0 0 0 2px
           ${designTokens.borderColorForInputWhenFocused};
+        &:hover {
+          background-color: unset;
+        }
       }
       &:focus {
         border-color: ${props.isDisabled ||
@@ -172,10 +178,6 @@ const getInputContainerStyles = (
         ((props.isOpen || state.isFocused) && !props.isReadOnly)
           ? ''
           : designTokens.borderColorForInputWhenFocused};
-      }
-      // &:hover:not(:has(input:focus)) {
-      &:hover:not(:focus) {
-        background-color: ${designTokens.backgroundColorForInputWhenHovered};
       }
     `,
     !isNewTheme &&
