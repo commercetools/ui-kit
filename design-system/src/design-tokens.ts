@@ -165,12 +165,6 @@ export const themes = {
     borderForCardWhenRaised: 'none',
     borderForCollapsiblePanelHeaderIconWhenDisabled:
       '1px solid var(--color-neutral)',
-    borderForStampWhenError: '#e60050',
-    borderForStampWhenWarning: '#f16d0e',
-    borderForStampAsPositive: 'hsl(172.9608938547486, 100%, 40%)',
-    borderForStampAsInformation: '#078cdf',
-    borderForStampAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
-    borderForStampAsSecondary: 'hsl(0, 0%, 60%)',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -189,6 +183,12 @@ export const themes = {
     borderColorForTableHeaderAsBottom: '#213c45',
     borderColorForTableManagerDroppableList: 'hsl(0, 0%, 60%)',
     borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 60%)',
+    borderColorForStampWhenError: '#e60050',
+    borderColorForStampWhenWarning: '#f16d0e',
+    borderColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 40%)',
+    borderColorForStampAsInformation: '#078cdf',
+    borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
+    borderColorForStampAsSecondary: 'hsl(0, 0%, 60%)',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -334,12 +334,6 @@ export const themes = {
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
     borderForCardWhenRaised: '1px solid var(--color-neutral-90)',
     borderForCollapsiblePanelHeaderIconWhenDisabled: 'none',
-    borderForStampWhenError: 'hsl(339.1304347826087, 100%, 85%)',
-    borderForStampWhenWarning: 'hsl(25.110132158590307, 89.0196078431%, 85%)',
-    borderForStampAsPositive: 'hsl(172.9608938547486, 100%, 85%)',
-    borderForStampAsInformation: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
-    borderForStampAsPrimary: 'hsl(172.9608938547486, 100%, 85%)',
-    borderForStampAsSecondary: 'hsl(0, 0%, 85%)',
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
@@ -354,6 +348,14 @@ export const themes = {
     borderColorForTableHeaderAsBottom: 'hsl(0, 0%, 90%)',
     borderColorForTableManagerDroppableList: '#ccc',
     borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 90%)',
+    borderColorForStampWhenError: 'hsl(339.1304347826087, 100%, 85%)',
+    borderColorForStampWhenWarning:
+      'hsl(25.110132158590307, 89.0196078431%, 85%)',
+    borderColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 85%)',
+    borderColorForStampAsInformation:
+      'hsl(203.05555555555554, 93.9130434783%, 85%)',
+    borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 85%)',
+    borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -638,16 +640,6 @@ const designTokens = {
   borderForCardWhenRaised: 'var(--border-for-card-when-raised, none)',
   borderForCollapsiblePanelHeaderIconWhenDisabled:
     'var(--border-for-collapsible-panel-header-icon-when-disabled, 1px solid var(--color-neutral))',
-  borderForStampWhenError: 'var(--border-for-stamp-when-error, #e60050)',
-  borderForStampWhenWarning: 'var(--border-for-stamp-when-warning, #f16d0e)',
-  borderForStampAsPositive:
-    'var(--border-for-stamp-as-positive, hsl(172.9608938547486, 100%, 40%))',
-  borderForStampAsInformation:
-    'var(--border-for-stamp-as-information, #078cdf)',
-  borderForStampAsPrimary:
-    'var(--border-for-stamp-as-primary, hsl(172.9608938547486, 100%, 25%))',
-  borderForStampAsSecondary:
-    'var(--border-for-stamp-as-secondary, hsl(0, 0%, 60%))',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -679,6 +671,18 @@ const designTokens = {
     'var(--border-color-for-table-manager-droppable-list, hsl(0, 0%, 60%))',
   borderColorForCollapsiblePanelHeader:
     'var(--border-color-for-collapsible-panel-header, hsl(0, 0%, 60%))',
+  borderColorForStampWhenError:
+    'var(--border-color-for-stamp-when-error, #e60050)',
+  borderColorForStampWhenWarning:
+    'var(--border-color-for-stamp-when-warning, #f16d0e)',
+  borderColorForStampAsPositive:
+    'var(--border-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 40%))',
+  borderColorForStampAsInformation:
+    'var(--border-color-for-stamp-as-information, #078cdf)',
+  borderColorForStampAsPrimary:
+    'var(--border-color-for-stamp-as-primary, hsl(172.9608938547486, 100%, 25%))',
+  borderColorForStampAsSecondary:
+    'var(--border-color-for-stamp-as-secondary, hsl(0, 0%, 60%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:

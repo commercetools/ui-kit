@@ -1,7 +1,6 @@
-// TODO: @redesign cleanup
 import type { ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 type Tone =
   | 'critical'
@@ -46,43 +45,37 @@ const getToneStyles = (props: Props & { isNewTheme: boolean }) => {
     case 'critical': {
       return css`
         background-color: ${designTokens.colorError95};
-        border: 1px solid
-          ${props.isNewTheme && designTokens.borderForStampWhenError};
+        border: 1px solid ${designTokens.borderColorForStampWhenError};
       `;
     }
     case 'warning': {
       return css`
         background-color: ${designTokens.colorWarning95};
-        border: 1px solid
-          ${props.isNewTheme && designTokens.borderForStampWhenWarning};
+        border: 1px solid ${designTokens.borderColorForStampWhenWarning};
       `;
     }
     case 'positive': {
       return css`
         background-color: ${designTokens.colorPrimary85};
-        border: 1px solid
-          ${props.isNewTheme && designTokens.borderForStampAsPositive};
+        border: 1px solid ${designTokens.borderColorForStampAsPositive};
       `;
     }
     case 'information': {
       return css`
         background-color: ${designTokens.colorInfo95};
-        border: 1px solid
-          ${props.isNewTheme && designTokens.borderForStampAsInformation};
+        border: 1px solid ${designTokens.borderColorForStampAsInformation};
       `;
     }
     case 'primary': {
       return css`
         background-color: ${designTokens.colorPrimary95};
-        border: 1px solid
-          ${props.isNewTheme && designTokens.borderForStampAsPrimary};
+        border: 1px solid ${designTokens.borderColorForStampAsPrimary};
       `;
     }
     case 'secondary': {
       return css`
         background-color: ${designTokens.colorNeutral90};
-        border: 1px solid
-          ${props.isNewTheme && designTokens.borderForStampAsSecondary};
+        border: 1px solid ${designTokens.borderColorForStampAsSecondary};
       `;
     }
     default:
@@ -90,23 +83,20 @@ const getToneStyles = (props: Props & { isNewTheme: boolean }) => {
   }
 };
 
-const getStampStyles = (props: Props & { isNewTheme: boolean }) => {
+const getStampStyles = (_props: Props) => {
   return css`
     color: ${designTokens.colorSolid};
     font-size: ${designTokens.fontSizeForStamp};
-    border-radius: ${props.isNewTheme
-      ? designTokens.borderRadiusForStamp
-      : designTokens.borderRadius2};
+    border-radius: ${designTokens.borderRadiusForStamp};
   `;
 };
 
 const Stamp = (props: Props & { isNewTheme: boolean }) => {
-  const { isNewTheme } = useTheme();
   return (
     <div
       css={[
-        getStampStyles({ ...props, isNewTheme }),
-        getToneStyles({ ...props, isNewTheme }),
+        getStampStyles(props),
+        getToneStyles(props),
         getPaddingStyle(props),
       ]}
     >

@@ -422,18 +422,6 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-collapsible-panel-header-icon-when-disabled:
           choice: '1px solid var(--color-neutral)'
-        border-for-stamp-when-error:
-          choice: color-error
-        border-for-stamp-when-warning:
-          choice: color-warning
-        border-for-stamp-as-positive:
-          choice: color-primary-40
-        border-for-stamp-as-information:
-          choice: color-info
-        border-for-stamp-as-primary:
-          choice: color-primary-25
-        border-for-stamp-as-secondary:
-          choice: color-neutral-60
 
     borderColors:
       label: Border Colors
@@ -484,6 +472,18 @@ decisionGroupsByTheme:
         border-color-for-table-manager-droppable-list:
           choice: color-neutral-60
         border-color-for-collapsible-panel-header:
+          choice: color-neutral-60
+        border-color-for-stamp-when-error:
+          choice: color-error
+        border-color-for-stamp-when-warning:
+          choice: color-warning
+        border-color-for-stamp-as-positive:
+          choice: color-primary-40
+        border-color-for-stamp-as-information:
+          choice: color-info
+        border-color-for-stamp-as-primary:
+          choice: color-primary-25
+        border-color-for-stamp-as-secondary:
           choice: color-neutral-60
 
     borderRadiuses:
@@ -853,18 +853,6 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral-90)'
         border-for-collapsible-panel-header-icon-when-disabled:
           choice: 'none'
-        border-for-stamp-when-error:
-          choice: color-error-85
-        border-for-stamp-when-warning:
-          choice: color-warning-85
-        border-for-stamp-as-positive:
-          choice: color-primary-85
-        border-for-stamp-as-information:
-          choice: color-info-85
-        border-for-stamp-as-primary:
-          choice: color-primary-85
-        border-for-stamp-as-secondary:
-          choice: color-neutral-85
 
     borderColors:
       label: Border Colors
@@ -898,6 +886,18 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-collapsible-panel-header:
           choice: color-neutral-90
+        border-color-for-stamp-when-error:
+          choice: color-error-85
+        border-color-for-stamp-when-warning:
+          choice: color-warning-85
+        border-color-for-stamp-as-positive:
+          choice: color-primary-85
+        border-color-for-stamp-as-information:
+          choice: color-info-85
+        border-color-for-stamp-as-primary:
+          choice: color-primary-85
+        border-color-for-stamp-as-secondary:
+          choice: color-neutral-85
 
     borderRadiuses:
       label: Border radiuses

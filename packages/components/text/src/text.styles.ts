@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import type {
   TBodyProps,
   THeadlineProps,
@@ -33,24 +32,24 @@ const strikethrough = `
   text-decoration: line-through;
 `;
 
-const getTone = (tone: string, isNewTheme?: boolean) => {
+const getTone = (tone: string) => {
   switch (tone) {
     case 'information':
-      return `color: ${isNewTheme && designTokens.colorInfo};`;
+      return `color: ${designTokens.colorInfo};`;
     case 'secondary':
-      return `color: ${isNewTheme && designTokens.colorNeutral40};`;
+      return `color: ${designTokens.colorNeutral40};`;
     case 'positive':
-      return `color: ${isNewTheme && designTokens.colorPrimary25};`;
+      return `color: ${designTokens.colorPrimary25};`;
     case 'primary':
-      return `color: ${isNewTheme && designTokens.colorPrimary};`;
+      return `color: ${designTokens.colorPrimary};`;
     case 'negative':
-      return `color: ${isNewTheme && designTokens.colorError};`;
+      return `color: ${designTokens.colorError};`;
     case 'inverted':
-      return `color: ${isNewTheme && designTokens.colorSurface};`;
+      return `color: ${designTokens.colorSurface};`;
     case 'warning':
-      return `color: ${isNewTheme && designTokens.colorWarning};`;
+      return `color: ${designTokens.colorWarning};`;
     case 'critical':
-      return `color: ${isNewTheme && designTokens.colorError40};`;
+      return `color: ${designTokens.colorError40};`;
     default:
       return ``;
   }
@@ -156,6 +155,6 @@ export const detailStyles = (
   ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
-  ${props.tone && getTone(props.tone, props.isNewTheme)}
+  ${props.tone && getTone(props.tone)}
   ${props.truncate && truncate}
 `;
