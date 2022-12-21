@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import { forwardRef, type KeyboardEvent, type MouseEvent } from 'react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
