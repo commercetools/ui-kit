@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import type { MessageDescriptor } from 'react-intl';
 
 import { Children, ReactNode } from 'react';
