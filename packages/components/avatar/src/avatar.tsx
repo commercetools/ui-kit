@@ -36,9 +36,18 @@ export type TInitialsProps = Pick<
 >;
 
 const avatarSizes = {
-  s: { width: '26px', fontSize: '1em' },
-  m: { width: '48px', fontSize: '1.5em' },
-  l: { width: '100px', fontSize: '3em' },
+  s: {
+    width: '26px',
+    fontSize: designTokens.fontSizeForAvatarAsSmall,
+  },
+  m: {
+    width: designTokens.widthForAvatarAsMedium,
+    fontSize: designTokens.fontSizeForAvatarAsMedium,
+  },
+  l: {
+    width: '100px',
+    fontSize: designTokens.fontSizeForAvatarAsBig,
+  },
 };
 
 const defaultProps: Pick<
@@ -120,7 +129,7 @@ const Avatar = (props: TAvatarProps) => (
   <div
     css={css`
       align-items: center;
-      background-color: ${designTokens.colorNeutral60};
+      background-color: ${designTokens.backgroundColorForAvatar};
       border-radius: 100%;
       font-size: ${designTokens.fontSizeDefault};
       color: ${designTokens.colorSurface};
@@ -133,7 +142,7 @@ const Avatar = (props: TAvatarProps) => (
       width: ${avatarSizes[props.size].width};
 
       ${props.isHighlighted
-        ? `background-color: ${designTokens.colorNeutral};`
+        ? `background-color: ${designTokens.backgroundColorForAvatarWhenHighlighted};`
         : ''}
     `}
     {...filterDataAttributes(props)}
@@ -150,6 +159,7 @@ const Avatar = (props: TAvatarProps) => (
     />
   </div>
 );
+
 Avatar.displayName = 'Avatar';
 Avatar.defaultProps = defaultProps;
 
