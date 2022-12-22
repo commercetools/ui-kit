@@ -42,8 +42,11 @@ choiceGroupsByTheme:
         color-primary-85: 'hsl(172.9608938547486, 100%, 85%)'
         color-primary-95: 'hsl(172.9608938547486, 100%, 95%)'
         color-accent: '#213c45'
+        color-accent-10: 'hsl(195, 35.2941176471%, 10%)'
+        color-accent-20: 'hsl(195, 35.2941176471%, 20%)'
         color-accent-30: 'hsl(195, 35.2941176471%, 30%)'
         color-accent-40: 'hsl(195, 35.2941176471%, 40%)'
+        color-accent-90: 'hsl(195, 35.2941176471%, 90%)'
         color-accent-95: 'hsl(195, 35.2941176471%, 95%)'
         color-accent-98: 'hsl(195, 35.2941176471%, 98%)'
         color-neutral: '#ccc'
@@ -134,6 +137,7 @@ choiceGroupsByTheme:
       label: Shadows
       prefix: shadow
       choices:
+        # Legacy shadows
         shadow-0: 'none'
         shadow-1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
         shadow-2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)'
@@ -151,6 +155,10 @@ choiceGroupsByTheme:
         shadow-14: '0 0 0.5px rgba(0, 0, 0, 0.1)'
         shadow-15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)'
         shadow-16: '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)'
+        # New shadows
+        shadow-overlay-5: '0 1px 5px 0 rgb(0 0 0 / 5%)'
+        shadow-overlay-15: '0 2px 5px 0 rgb(0 0 0 / 15%)'
+        shadow-raised-25: '0 0 2px 0 rgb(0 0 0 / 25%)'
     constraints:
       label: Constraints
       prefix: constraint
@@ -1072,7 +1080,7 @@ decisionGroupsByTheme:
         shadow-for-button-when-disabled:
           choice: shadow-0
         shadow-for-card-when-raised:
-          choice: '0 1px 5px 0 rgba(0, 0, 0, 0.05)'
+          choice: shadow-overlay-5
         shadow-for-input:
           choice: shadow-0
         shadow-for-input-when-focused:
