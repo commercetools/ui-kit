@@ -17,8 +17,11 @@ const getClearSectionStyles = () => {
     transition: color ${designTokens.transitionStandard},
       border-color ${designTokens.transitionStandard};
 
+    & svg *:not([fill='none']) {
+      fill: ${designTokens.iconColorForDatetimeInputIcon};
+    }
     &:hover svg * {
-      fill: ${designTokens.colorWarning};
+      fill: ${designTokens.iconColorForDatetimeInputIconWhenHovered};
     }
   `;
 };
@@ -64,31 +67,37 @@ const getIconFontColor = (props: TCalendarBody) => {
 
 const getCalendarIconContainerStyles = (
   props: TCalendarBody,
-  state: TState
+  state: TState,
+  isNewTheme: boolean
 ) => {
-  return css`
-    align-items: center;
-    box-sizing: border-box;
-    background: none;
-    border: 0;
-    border-left: 1px solid ${designTokens.borderColorForInput};
-    border-top-right-radius: ${designTokens.borderRadiusForInput};
-    border-bottom-right-radius: ${designTokens.borderRadiusForInput};
-    border-color: ${getIconBorderColor(props, state)};
-    color: ${getIconFontColor(props)};
-    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-    height: 100%;
-    display: flex;
-    padding: ${designTokens.spacing10};
-    outline: 0;
-    transition: color ${designTokens.transitionStandard},
-      border-color ${designTokens.transitionStandard};
-    &:active,
-    &:hover:not(:disabled)&:not(:read-only),
-    &:focus {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-    }
-  `;
+  return [
+    css`
+      align-items: center;
+      box-sizing: border-box;
+      background: none;
+      border: 0;
+      border-top-right-radius: ${designTokens.borderRadiusForInput};
+      border-bottom-right-radius: ${designTokens.borderRadiusForInput};
+      border-color: ${getIconBorderColor(props, state)};
+      color: ${getIconFontColor(props)};
+      cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
+      height: 100%;
+      display: flex;
+      padding: ${designTokens.spacing10};
+      outline: 0;
+      transition: color ${designTokens.transitionStandard},
+        border-color ${designTokens.transitionStandard};
+      &:active,
+      &:hover:not(:disabled)&:not(:read-only),
+      &:focus {
+        border-color: ${designTokens.borderColorForInputWhenFocused};
+      }
+    `,
+    !isNewTheme &&
+      css`
+        border-left: 1px solid ${getIconBorderColor(props, state)};
+      `,
+  ];
 };
 
 const getInputBorderColor = (props: TCalendarBody, state: TState) => {
@@ -124,42 +133,73 @@ const getInputFontColor = (props: TCalendarBody) => {
   }
   return designTokens.fontColorForInput;
 };
-const getInputContainerStyles = (props: TCalendarBody, state: TState) => {
-  return css`
-    appearance: none;
-    background-color: ${props.isDisabled
-      ? designTokens.backgroundColorForInputWhenDisabled
-      : designTokens.backgroundColorForInput};
-    border: 1px solid ${getInputBorderColor(props, state)};
-    border-radius: ${designTokens.borderRadiusForInput};
-    box-sizing: border-box;
-    color: ${getInputFontColor(props)};
-    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-    width: 100%;
-    height: ${designTokens.sizeHeightInput};
-    align-items: center;
-    display: flex;
-    font-size: ${designTokens.fontSizeDefault};
-    font-family: inherit;
-    min-width: ${designTokens.constraint5};
-    transition: border-color ${designTokens.transitionStandard},
-      box-shadow ${designTokens.transitionStandard};
+const getInputContainerStyles = (
+  props: TCalendarBody,
+  state: TState,
+  isNewTheme: boolean
+) => {
+  return [
+    css`
+      appearance: none;
+      background-color: ${props.isDisabled
+        ? designTokens.backgroundColorForInputWhenDisabled
+        : designTokens.backgroundColorForInput};
+      border: 1px solid ${getInputBorderColor(props, state)};
+      border-radius: ${designTokens.borderRadiusForInput};
+      box-sizing: border-box;
+      color: ${getInputFontColor(props)};
+      cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
+      width: 100%;
+      height: ${designTokens.heightForInput};
+      align-items: center;
+      display: flex;
+      font-size: ${designTokens.fontSizeForInput};
+      font-family: inherit;
+      min-width: ${designTokens.constraint5};
+      transition: border-color ${designTokens.transitionStandard},
+        box-shadow ${designTokens.transitionStandard};
 
-    &:focus-within {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-      box-shadow: inset 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
-    }
-    &:focus,
-    &:hover {
-      border-color: ${props.isDisabled ||
-      props.hasError ||
-      props.hasWarning ||
-      props.isReadOnly ||
-      ((props.isOpen || state.isFocused) && !props.isReadOnly)
-        ? ''
-        : designTokens.borderColorForInputWhenFocused};
-    }
-  `;
+      &:hover:not(:focus) {
+        background-color: ${designTokens.backgroundColorForInputWhenHovered};
+      }
+      &:focus-within {
+        border-color: ${designTokens.borderColorForInputWhenFocused};
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+          ${designTokens.borderColorForInputWhenFocused};
+        &:hover {
+          background-color: unset;
+        }
+      }
+      &:focus {
+        border-color: ${props.isDisabled ||
+        props.hasError ||
+        props.hasWarning ||
+        props.isReadOnly ||
+        ((props.isOpen || state.isFocused) && !props.isReadOnly)
+          ? ''
+          : designTokens.borderColorForInputWhenFocused};
+      }
+    `,
+    !isNewTheme &&
+      css`
+        &:hover,
+        &:hover > button,
+        &:focus > button {
+          border-color: ${props.isDisabled ||
+          props.hasError ||
+          props.hasWarning ||
+          props.isReadOnly ||
+          ((props.isOpen || state.isFocused) && !props.isReadOnly)
+            ? ''
+            : designTokens.borderColorForInputWhenFocused};
+        }
+      `,
+    isNewTheme &&
+      (props.hasError || props.hasWarning) &&
+      css`
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered};
+      `,
+  ];
 };
 
 const getDateTimeInputStyles = (props: TCalendarBody) => {
@@ -168,8 +208,12 @@ const getDateTimeInputStyles = (props: TCalendarBody) => {
     css`
       border: none;
       background: none;
+      &,
       &:focus {
         box-shadow: none;
+      }
+      &:hover:not(:focus) {
+        background-color: unset !important;
       }
     `,
   ];
