@@ -192,6 +192,7 @@ export const themes = {
     borderWidthForInputWhenWarning: '1px',
     borderWidthForInputWhenError: '1px',
     borderWidthForInputWhenFocused: '1px',
+    boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 2px',
     fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
@@ -344,6 +345,7 @@ export const themes = {
     borderRadiusForCard: '4px',
     borderRadiusForTableManagerDroppableList: '4px',
     borderRadiusForInput: '4px',
+    boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
     fontSizeForInput: '1rem',
@@ -663,6 +665,8 @@ const designTokens = {
   borderWidthForInputWhenError: 'var(--border-width-for-input-when-error, 1px)',
   borderWidthForInputWhenFocused:
     'var(--border-width-for-input-when-focused, 1px)',
+  boxShadowForDatetimeInputWhenHovered:
+    'var(--box-shadow-for-datetime-input-when-hovered, inset 0 0 0 2px)',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:

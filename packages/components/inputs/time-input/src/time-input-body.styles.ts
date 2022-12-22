@@ -148,7 +148,7 @@ const getInputContainerStyles = (
 
       &:focus-within {
         border-color: ${designTokens.borderColorForInputWhenFocused};
-        box-shadow: inset 0 0 0 2px
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
           ${designTokens.borderColorForInputWhenFocused};
         &:hover {
           background-color: unset;
@@ -176,7 +176,7 @@ const getInputContainerStyles = (
     isNewTheme &&
       props.hasError &&
       css`
-        box-shadow: inset 0 0 0 2px;
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered};
       `,
   ];
 };

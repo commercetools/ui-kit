@@ -205,6 +205,7 @@
   --border-width-for-input-when-warning: 1px;
   --border-width-for-input-when-error: 1px;
   --border-width-for-input-when-focused: 1px;
+  --box-shadow-for-datetime-input-when-hovered: inset 0 0 0 2px;
   --font-color-for-text: #1a1a1a;
   --font-color-for-input: #1a1a1a;
   --font-color-for-input-when-disabled: hsl(0, 0%, 60%);

@@ -322,6 +322,8 @@ componentGroups:
     description: 'Select input elements'
   select-input-option:
     description: 'Select input option elements'
+  datetime-input:
+    description: 'Date time input elements'
   datetime-input-icon:
     description: 'Date time input icon elements'
   avatar:
@@ -501,6 +503,13 @@ decisionGroupsByTheme:
           choice: border-width-1
         border-width-for-input-when-focused:
           choice: border-width-1
+
+    boxShadows:
+      label: Box shadows
+      prefix: box-shadow
+      decisions:
+        box-shadow-for-datetime-input-when-hovered:
+          choice: 'inset 0 0 0 2px'
 
     fontColors:
       label: Font Colors
@@ -876,6 +885,13 @@ decisionGroupsByTheme:
           choice: border-radius-4
         border-radius-for-input:
           choice: border-radius-4
+
+    boxShadows:
+      label: Box shadows
+      prefix: box-shadow
+      decisions:
+        box-shadow-for-datetime-input-when-hovered:
+          choice: 'inset 0 0 0 1px'
 
     fontColors:
       label: Font Colors
