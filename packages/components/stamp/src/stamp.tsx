@@ -40,7 +40,7 @@ const getPaddingStyle = (props: Props) => {
   `;
 };
 
-const getToneStyles = (props: Props & { isNewTheme: boolean }) => {
+const getToneStyles = (props: Props) => {
   switch (props.tone) {
     case 'critical': {
       return css`
@@ -91,7 +91,7 @@ const getStampStyles = (_props: Props) => {
   `;
 };
 
-const Stamp = (props: Props & { isNewTheme: boolean }) => {
+const Stamp = (props: Props) => {
   return (
     <div
       css={[
