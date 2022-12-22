@@ -16,7 +16,7 @@ const getRandomIndex = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
 const iconColorsMap = {
-  seconday: 'neutral60',
+  secondary: 'neutral60',
   primary: 'primary40',
   information: 'info',
   positive: 'primary',
