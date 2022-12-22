@@ -887,7 +887,7 @@ decisionGroupsByTheme:
           choice: font-size-60
         font-size-for-text-as-h2:
           description: ''
-          choice: font-size-60
+          choice: font-size-50
         font-size-for-text-as-h3:
           description: ''
           choice: font-size-40
@@ -932,7 +932,7 @@ decisionGroupsByTheme:
           choice: line-height-60
         line-height-for-text-as-h2:
           description: ''
-          choice: line-height-60
+          choice: line-height-50
         line-height-for-text-as-h3:
           description: ''
           choice: line-height-30
@@ -958,7 +958,7 @@ decisionGroupsByTheme:
           choice: font-weight-600
         font-weight-for-text-as-h2:
           description: ''
-          choice: font-weight-600
+          choice: font-weight-500
         font-weight-for-text-as-h3:
           description: ''
           choice: font-weight-500
