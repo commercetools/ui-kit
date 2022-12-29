@@ -232,6 +232,7 @@
   --border-color-for-table-header-as-bottom: #213c45;
   --border-color-for-table-manager-droppable-list: hsl(0, 0%, 60%);
   --border-color-for-collapsible-panel-header: hsl(0, 0%, 60%);
+  --border-color-for-select-input-menu: #00b39e;
   --border-color-for-stamp-when-error: #e60050;
   --border-color-for-stamp-when-warning: #f16d0e;
   --border-color-for-stamp-as-positive: hsl(172.9608938547486, 100%, 40%);
@@ -344,6 +345,7 @@
   --margin-for-table-header: 8px;
   --margin-for-table-as-condensed: 8px;
   --margin-for-view-switcher-icon: 0 var(--spacing-10) 0 0;
+  --margin-for-group-heading-select-input-options: 4px;
   --padding-for-stamp: var(--spacing-10) var(--spacing-20);
   --padding-for-stamp-as-condensed: 1px var(--spacing-10);
   --padding-for-tag: 5px var(--spacing-20);
@@ -372,6 +374,11 @@
     var(--spacing-20);
   --padding-for-content-notification: var(--spacing-20);
   --padding-for-content-notification-icon: var(--spacing-20) var(--spacing-30);
+  --padding-left-for-select-input-options: 8px;
+  --padding-right-for-select-input-options: 8px;
+  --padding-top-for-select-input-options: 4px;
+  --padding-bottom-for-select-input-options: 4px;
+  --padding-for-group-heading-select-input-options: 4px;
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),
@@ -392,6 +399,8 @@
   --shadow-for-input-when-warning: none;
   --shadow-for-tooltip: 0 2px 2px rgba(0, 0, 0, 0.24),
     0 1px 4.75px rgba(0, 0, 0, 0.12);
+  --shadow-for-select-input-menu: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --font-size-m: 1rem;
   --big-button-height: 32px;
   --small-button-height: 24px;

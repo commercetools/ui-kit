@@ -98,10 +98,10 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
 const menuStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    border: `1px ${designTokens.borderColorForInputWhenFocused} solid`,
+    border: `1px ${designTokens.borderColorForSelectInputMenu} solid`,
     borderRadius: designTokens.borderRadiusForInput,
     backgroundColor: designTokens.backgroundColorForInput,
-    boxShadow: designTokens.shadow7,
+    boxShadow: designTokens.shadowForSelectInputMenu,
     fontSize: designTokens.fontSizeForInput,
     fontFamily: 'inherit',
     margin: `${designTokens.spacing10} 0 0 0`,
@@ -133,7 +133,7 @@ const dropdownIndicatorStyles = (props: TProps) => (base: TBase) => {
     fill:
       props.isDisabled || props.isReadOnly
         ? designTokens.fontColorForInputWhenDisabled
-        : base.fontColorForInput,
+        : designTokens.fontColorForSelectInputIcon,
   };
 };
 
@@ -158,8 +158,10 @@ const optionStyles = () => (base: TBase, state: TState) => {
     transition: `border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard}`,
-    paddingLeft: designTokens.spacing20,
-    paddingRight: designTokens.spacing20,
+    paddingLeft: designTokens.paddingLeftForSelectInputOptions,
+    paddingRight: designTokens.paddingRightForSelectInputOptions,
+    paddingTop: `${designTokens.paddingTopForSelectInputOptions}`,
+    paddingBottom: `${designTokens.paddingBottomForSelectInputOptions}`,
     color: (() => {
       if (!state.isDisabled) return designTokens.fontColorForInput;
       if (state.isSelected) return designTokens.fontColorForInput;
@@ -252,8 +254,8 @@ const groupHeadingStyles = () => (base: TBase) => {
     fontSize: designTokens.fontSizeSmall,
     textTransform: 'none',
     fontWeight: 'bold',
-    margin: `0 ${designTokens.spacing10}`,
-    padding: `${designTokens.spacing20} ${designTokens.spacing10}`,
+    margin: `0 ${designTokens.marginForGroupHeadingSelectInputOptions}`,
+    padding: `${designTokens.spacing20} ${designTokens.paddingForGroupHeadingSelectInputOptions}`,
     '&:empty': {
       padding: 0,
     },

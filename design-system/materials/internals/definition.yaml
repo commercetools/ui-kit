@@ -368,6 +368,18 @@ componentGroups:
     description: 'Content notification elements'
   content-notification-icon:
     description: 'Content notification icon elements'
+  select-input-icon:
+    description: 'Select input icon elements'
+  clear-input-icon:
+    description: 'clear input icon elements'
+  search-input-icon:
+    description: 'search input icon elements'
+  select-input-menu:
+    description: 'select input menu elements'
+  select-input-options:
+    description: 'select input options element'
+  group-heading-select-input-options:
+    description: 'group heading select input options element'
 
 decisionGroupsByTheme:
   default:
@@ -538,6 +550,8 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         border-color-for-collapsible-panel-header:
           choice: color-neutral-60
+        border-color-for-select-input-menu:
+          choice: color-primary
         border-color-for-stamp-when-error:
           choice: color-error
         border-color-for-stamp-when-warning:
@@ -849,6 +863,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-for-view-switcher-icon:
           choice: '0 var(--spacing-10) 0 0'
+        margin-for-group-heading-select-input-options:
+          choice: spacing-10
 
     paddings:
       label: Paddings
@@ -906,6 +922,16 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-20)'
         padding-for-content-notification-icon:
           choice: 'var(--spacing-20) var(--spacing-30)'
+        padding-left-for-select-input-options:
+          choice: spacing-20
+        padding-right-for-select-input-options:
+          choice: spacing-20
+        padding-top-for-select-input-options:
+          choice: spacing-10
+        padding-bottom-for-select-input-options:
+          choice: spacing-10
+        padding-for-group-heading-select-input-options:
+          choice: spacing-10
 
     shadows:
       label: Shadows
@@ -937,6 +963,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         shadow-for-tooltip:
           choice: shadow-15
+        shadow-for-select-input-menu:
+          choice: shadow-7
 
   test:
     backgroundColors:
@@ -1062,6 +1090,8 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-collapsible-panel-header:
           choice: color-neutral-90
+        border-color-for-select-input-menu:
+          choice: color-surface
         border-color-for-stamp-when-error:
           choice: color-error-85
         border-color-for-stamp-when-warning:
@@ -1164,6 +1194,16 @@ decisionGroupsByTheme:
           choice: color-primary
         font-color-for-content-notification-icon-when-info:
           choice: color-info
+        font-color-for-select-input-icon:
+          choice: color-neutral-60
+        font-color-for-clear-input-icon-when-hovered:
+          choice: color-error
+        font-color-for-clear-input-icon:
+          choice: color-neutral-40
+        font-color-for-search-input-icon:
+          choice: color-neutral-60
+        font-color-for-search-input-icon-when-hovered:
+          choice: color-primary
 
     fontSizes:
       label: Font Sizes
@@ -1320,6 +1360,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-for-view-switcher-icon:
           choice: '0 var(--spacing-20) 0 0'
+        margin-for-group-heading-select-input-options:
+          choice: spacing-20
 
     paddings:
       label: Paddings
@@ -1377,6 +1419,16 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-20) var(--spacing-30) var(--spacing-20) var(--spacing-20)'
         padding-for-content-notification-icon:
           choice: 'var(--spacing-20) 0 var(--spacing-20) var(--spacing-30)'
+        padding-left-for-select-input-options:
+          choice: spacing-30
+        padding-right-for-select-input-options:
+          choice: spacing-30
+        padding-top-for-select-input-options:
+          choice: spacing-10
+        padding-bottom-for-select-input-options:
+          choice: spacing-10
+        padding-for-group-heading-select-input-options:
+          choice: spacing-20
 
     shadows:
       label: Shadows
@@ -1404,6 +1456,8 @@ decisionGroupsByTheme:
           choice: 'inset 0 0 0 1px var(--color-warning)'
         shadow-for-tooltip:
           choice: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)'
+        shadow-for-select-input-menu:
+          choice: '0 2px 5px 0px rgba(0, 0, 0, 0.15)'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
