@@ -330,6 +330,10 @@ componentGroups:
     description: 'Select input elements'
   select-input-option:
     description: 'Select input option elements'
+  datetime-input:
+    description: 'Date time input elements'
+  datetime-input-icon:
+    description: 'Date time input icon elements'
   avatar:
     description: 'Avatar elements'
   multiline-input:
@@ -508,6 +512,13 @@ decisionGroupsByTheme:
         border-width-for-input-when-focused:
           choice: border-width-1
 
+    boxShadows:
+      label: Box shadows
+      prefix: box-shadow
+      decisions:
+        box-shadow-for-datetime-input-when-hovered:
+          choice: 'inset 0 0 0 2px'
+
     fontColors:
       label: Font Colors
       prefix: font-color
@@ -621,6 +632,15 @@ decisionGroupsByTheme:
           choice: font-size-60
         font-size-for-avatar-as-big:
           choice: font-size-78
+
+    iconColors:
+      label: Icon colors
+      prefix: icon-color
+      decisions:
+        icon-color-for-datetime-input-icon:
+          choice: color-solid
+        icon-color-for-datetime-input-icon-when-hovered:
+          choice: color-warning
 
     lineHeights:
       label: Line Heights
@@ -874,6 +894,13 @@ decisionGroupsByTheme:
         border-radius-for-input:
           choice: border-radius-4
 
+    boxShadows:
+      label: Box shadows
+      prefix: box-shadow
+      decisions:
+        box-shadow-for-datetime-input-when-hovered:
+          choice: 'inset 0 0 0 1px'
+
     fontColors:
       label: Font Colors
       prefix: font-color
@@ -1003,6 +1030,15 @@ decisionGroupsByTheme:
           choice: '16px'
         height-for-input:
           choice: '40px'
+
+    iconColors:
+      label: Icon colors
+      prefix: icon-color
+      decisions:
+        icon-color-for-datetime-input-icon:
+          choice: color-neutral-40
+        icon-color-for-datetime-input-icon-when-hovered:
+          choice: color-error
 
     widths:
       label: Width

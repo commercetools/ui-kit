@@ -16,8 +16,11 @@ const getClearSectionStyles = () => {
     margin: ${designTokens.spacing10};
     cursor: pointer;
 
+    & svg *:not([fill='none']) {
+      fill: ${designTokens.iconColorForDatetimeInputIcon};
+    }
     &:hover svg * {
-      fill: ${designTokens.colorWarning};
+      fill: ${designTokens.iconColorForDatetimeInputIconWhenHovered};
     }
   `;
 };
@@ -46,32 +49,40 @@ const getClockIconContainerFontColor = (props: TTimeInputProps) => {
   }
   return designTokens.fontColorForInput;
 };
-const getClockIconContainerStyles = (props: TTimeInputProps) => {
-  return css`
-    align-items: center;
-    box-sizing: border-box;
-    background: none;
-    background-color: ${props.isDisabled
-      ? designTokens.backgroundColorForInputWhenDisabled
-      : 'none'};
-    border: 0;
-    border-left: 1px solid ${designTokens.borderColorForInput};
-    border-top-right-radius: ${designTokens.borderRadiusForInput};
-    border-bottom-right-radius: ${designTokens.borderRadiusForInput};
-    border-color: ${getClockIconContainerColor(props)};
-    color: ${getClockIconContainerFontColor(props)};
-    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-    height: 100%;
-    display: flex;
-    padding: ${designTokens.spacing10};
-    outline: 0;
-    transition: color ${designTokens.transitionStandard},
-      border-color ${designTokens.transitionStandard};
-    &:hover:not(:disabled):not(:read-only),
-    &:focus {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-    }
-  `;
+const getClockIconContainerStyles = (
+  props: TTimeInputProps,
+  isNewTheme: boolean
+) => {
+  return [
+    css`
+      align-items: center;
+      box-sizing: border-box;
+      background: none;
+      background-color: ${props.isDisabled
+        ? designTokens.backgroundColorForInputWhenDisabled
+        : 'none'};
+      border: 0;
+      border-top-right-radius: ${designTokens.borderRadiusForInput};
+      border-bottom-right-radius: ${designTokens.borderRadiusForInput};
+      border-color: ${getClockIconContainerColor(props)};
+      color: ${getClockIconContainerFontColor(props)};
+      cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
+      height: 100%;
+      display: flex;
+      padding: ${designTokens.spacing10};
+      outline: 0;
+      transition: color ${designTokens.transitionStandard},
+        border-color ${designTokens.transitionStandard};
+      &:hover:not(:disabled):not(:read-only),
+      &:focus {
+        border-color: ${designTokens.borderColorForInputWhenFocused};
+      }
+    `,
+    !isNewTheme &&
+      css`
+        border-left: 1px solid ${getClockIconContainerColor(props)};
+      `,
+  ];
 };
 
 const getInputContainerBorderColor = (props: TTimeInputProps) => {
@@ -98,42 +109,76 @@ const getInputContainerFontColor = (props: TTimeInputProps) => {
   }
   return designTokens.fontColorForInput;
 };
-const getInputContainerStyles = (props: TTimeInputProps) => {
-  return css`
-    appearance: none;
-    background-color: ${props.isDisabled
-      ? designTokens.backgroundColorForInputWhenDisabled
-      : designTokens.backgroundColorForInput};
-    border: 1px solid ${getInputContainerBorderColor(props)};
-    border-radius: ${designTokens.borderRadiusForInput};
-    box-sizing: border-box;
-    color: ${getInputContainerFontColor(props)};
-    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-    width: 100%;
-    height: ${designTokens.sizeHeightInput};
-    align-items: center;
-    display: flex;
-    font-size: ${designTokens.fontSizeDefault};
-    font-family: inherit;
-    transition: border-color ${designTokens.transitionStandard},
-      box-shadow ${designTokens.transitionStandard};
 
-    svg {
-      fill: ${props.isReadOnly
-        ? designTokens.fontColorForInputWhenReadonly
-        : 'inherit'};
-    }
+// This styled component is only useful because it's referenced in the styles below
+const StyledClockIconContainer = styled.label``;
+const getInputContainerStyles = (
+  props: TTimeInputProps,
+  isNewTheme: boolean
+) => {
+  return [
+    css`
+      appearance: none;
+      background-color: ${props.isDisabled
+        ? designTokens.backgroundColorForInputWhenDisabled
+        : designTokens.backgroundColorForInput};
+      border: 1px solid ${getInputContainerBorderColor(props)};
+      border-radius: ${designTokens.borderRadiusForInput};
+      box-sizing: border-box;
+      color: ${getInputContainerFontColor(props)};
+      cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
+      width: 100%;
+      height: ${designTokens.heightForInput};
+      align-items: center;
+      display: flex;
+      font-size: ${designTokens.fontSizeForInput};
+      font-family: inherit;
+      transition: border-color ${designTokens.transitionStandard},
+        box-shadow ${designTokens.transitionStandard};
 
-    &:focus-within {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-      box-shadow: inset 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
-    }
+      svg {
+        fill: ${props.isReadOnly
+          ? designTokens.fontColorForInputWhenReadonly
+          : 'inherit'};
+      }
 
-    :hover:not(:disabled):not(:read-only),
-    :focus {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-    }
-  `;
+      &:hover {
+        background-color: ${designTokens.backgroundColorForInputWhenHovered};
+      }
+
+      &:focus-within {
+        border-color: ${designTokens.borderColorForInputWhenFocused};
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+          ${designTokens.borderColorForInputWhenFocused};
+        &:hover {
+          background-color: unset;
+        }
+      }
+
+      &:focus {
+        border-color: ${designTokens.borderColorForInputWhenFocused};
+      }
+    `,
+    !isNewTheme &&
+      css`
+        :hover:not(:disabled):not(:read-only) {
+          border-color: ${designTokens.borderColorForInputWhenFocused};
+        }
+
+        &:hover,
+        &:hover
+          ${StyledClockIconContainer},
+          &:focus-within
+          ${StyledClockIconContainer} {
+          border-color: ${designTokens.borderColorForInputWhenFocused};
+        }
+      `,
+    isNewTheme &&
+      props.hasError &&
+      css`
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered};
+      `,
+  ];
 };
 const getTimeInputStyles = (props: TTimeInputProps) => {
   const baseStyles = [
@@ -141,26 +186,19 @@ const getTimeInputStyles = (props: TTimeInputProps) => {
     css`
       border: none;
       background: none;
+      &,
       &:focus {
         box-shadow: none;
+      }
+      &:hover {
+        background-color: transparent !important;
       }
     `,
   ];
   return baseStyles;
 };
 
-// This styled component is only useful because it's referenced in the `StyledInputContainer`.
-const StyledClockIconContainer = styled.label``;
-
-const StyledInputContainer = styled.div`
-  &:hover,
-  &:hover
-    ${StyledClockIconContainer},
-    &:focus-within
-    ${StyledClockIconContainer} {
-    border-color: ${designTokens.borderColorForInputWhenFocused};
-  }
-`;
+const StyledInputContainer = styled.div``;
 
 export {
   getClearSectionStyles,

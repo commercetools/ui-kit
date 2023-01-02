@@ -198,6 +198,7 @@ export const themes = {
     borderWidthForInputWhenWarning: '1px',
     borderWidthForInputWhenError: '1px',
     borderWidthForInputWhenFocused: '1px',
+    boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 2px',
     fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
@@ -232,6 +233,8 @@ export const themes = {
     fontSizeForAvatarAsSmall: '1rem',
     fontSizeForAvatarAsMedium: '1.5rem',
     fontSizeForAvatarAsBig: '3rem',
+    iconColorForDatetimeInputIcon: '#1a1a1a',
+    iconColorForDatetimeInputIconWhenHovered: '#f16d0e',
     lineHeightForTextAsH1: 'inherit',
     lineHeightForTextAsH2: 'inherit',
     lineHeightForTextAsH3: 'inherit',
@@ -348,6 +351,7 @@ export const themes = {
     borderRadiusForCard: '4px',
     borderRadiusForTableManagerDroppableList: '4px',
     borderRadiusForInput: '4px',
+    boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
     fontSizeForInput: '1rem',
@@ -388,6 +392,8 @@ export const themes = {
     heightForButtonAsIconAsMedium: '32px',
     heightForButtonAsIconAsSmall: '16px',
     heightForInput: '40px',
+    iconColorForDatetimeInputIcon: 'hsl(0, 0%, 40%)',
+    iconColorForDatetimeInputIconWhenHovered: '#e60050',
     widthForAvatarAsMedium: '40px',
     marginForTableHeader: '16px',
     marginForTableCellAsCondensed: '8px',
@@ -671,6 +677,8 @@ const designTokens = {
   borderWidthForInputWhenError: 'var(--border-width-for-input-when-error, 1px)',
   borderWidthForInputWhenFocused:
     'var(--border-width-for-input-when-focused, 1px)',
+  boxShadowForDatetimeInputWhenHovered:
+    'var(--box-shadow-for-datetime-input-when-hovered, inset 0 0 0 2px)',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
@@ -713,6 +721,10 @@ const designTokens = {
   fontSizeForAvatarAsSmall: 'var(--font-size-for-avatar-as-small, 1rem)',
   fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1.5rem)',
   fontSizeForAvatarAsBig: 'var(--font-size-for-avatar-as-big, 3rem)',
+  iconColorForDatetimeInputIcon:
+    'var(--icon-color-for-datetime-input-icon, #1a1a1a)',
+  iconColorForDatetimeInputIconWhenHovered:
+    'var(--icon-color-for-datetime-input-icon-when-hovered, #f16d0e)',
   lineHeightForTextAsH1: 'var(--line-height-for-text-as-h-1, inherit)',
   lineHeightForTextAsH2: 'var(--line-height-for-text-as-h-2, inherit)',
   lineHeightForTextAsH3: 'var(--line-height-for-text-as-h-3, inherit)',
