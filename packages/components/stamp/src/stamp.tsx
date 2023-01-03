@@ -1,6 +1,7 @@
+// TODO: @redesign cleanup
 import type { ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 
 type Tone =
   | 'critical'
@@ -20,6 +21,7 @@ type Props = {
    */
   isCondensed: boolean;
   children: ReactNode;
+  overrideTextColor?: boolean;
 };
 
 export const availableTones: Tone[] = [
@@ -46,36 +48,72 @@ const getToneStyles = (props: Props) => {
       return css`
         background-color: ${designTokens.colorError95};
         border: 1px solid ${designTokens.borderColorForStampWhenError};
+        &,
+        & * {
+          color: ${props.overrideTextColor
+            ? designTokens.colorError40 + '!important'
+            : 'inherit'};
+        }
       `;
     }
     case 'warning': {
       return css`
         background-color: ${designTokens.colorWarning95};
         border: 1px solid ${designTokens.borderColorForStampWhenWarning};
+        &,
+        & * {
+          color: ${props.overrideTextColor
+            ? designTokens.colorWarning40 + '!important'
+            : 'inherit'};
+        }
       `;
     }
     case 'positive': {
       return css`
-        background-color: ${designTokens.colorPrimary85};
+        background-color: ${designTokens.colorPrimary95};
         border: 1px solid ${designTokens.borderColorForStampAsPositive};
+        &,
+        & * {
+          color: ${props.overrideTextColor
+            ? designTokens.colorPrimary25 + '!important'
+            : 'inherit'};
+        }
       `;
     }
     case 'information': {
       return css`
         background-color: ${designTokens.colorInfo95};
         border: 1px solid ${designTokens.borderColorForStampAsInformation};
+        &,
+        & * {
+          color: ${props.overrideTextColor
+            ? designTokens.colorInfo40 + '!important'
+            : 'inherit'};
+        }
       `;
     }
     case 'primary': {
       return css`
         background-color: ${designTokens.colorPrimary95};
         border: 1px solid ${designTokens.borderColorForStampAsPrimary};
+        &,
+        & * {
+          color: ${props.overrideTextColor
+            ? designTokens.colorPrimary25 + '!important'
+            : 'inherit'};
+        }
       `;
     }
     case 'secondary': {
       return css`
-        background-color: ${designTokens.colorNeutral90};
+        background-color: ${designTokens.colorNeutral95};
         border: 1px solid ${designTokens.borderColorForStampAsSecondary};
+        &,
+        & * {
+          color: ${props.overrideTextColor
+            ? designTokens.colorNeutral60 + '!important'
+            : 'inherit'};
+        }
       `;
     }
     default:
@@ -83,20 +121,23 @@ const getToneStyles = (props: Props) => {
   }
 };
 
-const getStampStyles = (_props: Props) => {
+const getStampStyles = (props: Props) => {
   return css`
-    color: ${designTokens.colorSolid};
+    color: ${props.overrideTextColor ? 'inherit' : designTokens.colorSolid};
     font-size: ${designTokens.fontSizeForStamp};
     border-radius: ${designTokens.borderRadiusForStamp};
   `;
 };
 
 const Stamp = (props: Props) => {
+  const { themedValue } = useTheme();
+  const overrideTextColor = props.overrideTextColor ?? themedValue(false, true);
+
   return (
     <div
       css={[
-        getStampStyles(props),
-        getToneStyles(props),
+        getStampStyles({ ...props, overrideTextColor }),
+        getToneStyles({ ...props, overrideTextColor }),
         getPaddingStyle(props),
       ]}
     >

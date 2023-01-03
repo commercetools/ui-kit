@@ -24,10 +24,12 @@ export const themes = {
     colorNeutral95: 'hsl(0, 0%, 95%)',
     colorNeutral85: 'hsl(0, 0%, 85%)',
     colorInfo: '#078cdf',
+    colorInfo40: 'hsl(203.05555555555554, 93.9130434783%, 40%)',
     colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
     colorInfo95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
     colorWarning: '#f16d0e',
     colorWarning25: 'hsl(25.110132158590307, 89.0196078431%, 25%)',
+    colorWarning40: 'hsl(25.110132158590307, 89.0196078431%, 40%)',
     colorWarning85: 'hsl(25.110132158590307, 89.0196078431%, 85%)',
     colorWarning95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     colorError: '#e60050',
@@ -364,8 +366,8 @@ export const themes = {
     borderRadiusForCard: '4px',
     borderRadiusForTableManagerDroppableList: '4px',
     borderRadiusForInput: '4px',
-    boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     borderRadiusForStamp: '20px',
+    boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
     fontSizeForInput: '1rem',
@@ -467,6 +469,8 @@ const designTokens = {
   colorNeutral95: 'var(--color-neutral-95, hsl(0, 0%, 95%))',
   colorNeutral85: 'var(--color-neutral-85, hsl(0, 0%, 85%))',
   colorInfo: 'var(--color-info, #078cdf)',
+  colorInfo40:
+    'var(--color-info-40, hsl(203.05555555555554, 93.9130434783%, 40%))',
   colorInfo85:
     'var(--color-info-85, hsl(203.05555555555554, 93.9130434783%, 85%))',
   colorInfo95:
@@ -474,6 +478,8 @@ const designTokens = {
   colorWarning: 'var(--color-warning, #f16d0e)',
   colorWarning25:
     'var(--color-warning-25, hsl(25.110132158590307, 89.0196078431%, 25%))',
+  colorWarning40:
+    'var(--color-warning-40, hsl(25.110132158590307, 89.0196078431%, 40%))',
   colorWarning85:
     'var(--color-warning-85, hsl(25.110132158590307, 89.0196078431%, 85%))',
   colorWarning95:

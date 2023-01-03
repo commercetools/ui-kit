@@ -47,15 +47,11 @@ storiesOf('Components|Stamps', module)
                       color={themedValue(undefined, iconColorsMap[tone])}
                       size="medium"
                     />
-                    <Text.Detail tone={themedValue(undefined, tone)}>
-                      {'Hello'}
-                    </Text.Detail>
+                    <Text.Detail>{'Hello'}</Text.Detail>
                   </SpacingsInline>
                 </Stamp>
                 <Stamp tone={tone} isCondensed={boolean('isCondensed', false)}>
-                  <Text.Detail
-                    tone={themedValue(undefined, tone)}
-                  >{`tone="${tone}"`}</Text.Detail>
+                  <Text.Detail>{`tone="${tone}"`}</Text.Detail>
                 </Stamp>
               </SpacingsInline>
             );
