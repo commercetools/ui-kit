@@ -196,6 +196,7 @@ export const themes = {
     borderColorForStampAsInformation: '#078cdf',
     borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
     borderColorForStampAsSecondary: 'hsl(0, 0%, 60%)',
+    borderColorForLocalizedMultilineTextInputLabel: '#ccc',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -705,6 +706,8 @@ const designTokens = {
     'var(--border-color-for-stamp-as-primary, hsl(172.9608938547486, 100%, 25%))',
   borderColorForStampAsSecondary:
     'var(--border-color-for-stamp-as-secondary, hsl(0, 0%, 60%))',
+  borderColorForLocalizedMultilineTextInputLabel:
+    'var(--border-color-for-localized-multiline-text-input-label, #ccc)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:

@@ -178,6 +178,7 @@
   "--border-color-for-stamp-as-information": "#078cdf",
   "--border-color-for-stamp-as-primary": "hsl(172.9608938547486, 100%, 25%)",
   "--border-color-for-stamp-as-secondary": "hsl(0, 0%, 60%)",
+  "--border-color-for-localized-multiline-text-input-label": "#ccc",
   "--border-radius-for-button-as-big": "6px",
   "--border-radius-for-button-as-small": "4px",
   "--border-radius-for-button-as-icon-as-big": "6px",

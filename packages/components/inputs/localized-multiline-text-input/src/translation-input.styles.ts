@@ -45,7 +45,8 @@ const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
     background-color: ${getLanguageLabelBackgroundColor(_props)};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-    border: 1px ${designTokens.borderColorForInput} solid;
+    border: 1px ${designTokens.borderColorForLocalizedMultilineTextInputLabel}
+      solid;
     padding: ${designTokens.paddingForLocalizedMultilineTextInputLabel};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},

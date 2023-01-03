@@ -496,6 +496,8 @@ decisionGroupsByTheme:
           choice: color-primary-25
         border-color-for-stamp-as-secondary:
           choice: color-neutral-60
+        border-color-for-localized-multiline-text-input-label:
+          choice: color-neutral
 
     borderRadiuses:
       label: Border Radius
