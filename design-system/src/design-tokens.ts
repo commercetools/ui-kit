@@ -445,7 +445,7 @@ export const themes = {
     paddingForInput: '16px',
     paddingForMultilineInput: '8px',
     paddingForLocalizedRichTextInputLabel: '8px',
-    paddingForLocalizedMultilineTextInputLabel: '0 12px',
+    paddingForLocalizedMultilineTextInputLabel: 'var(--spacing-20) 12px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',

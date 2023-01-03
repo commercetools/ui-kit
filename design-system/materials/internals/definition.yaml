@@ -1147,7 +1147,7 @@ decisionGroupsByTheme:
         padding-for-localized-rich-text-input-label:
           choice: spacing-20
         padding-for-localized-multiline-text-input-label:
-          choice: '0 12px'
+          choice: 'var(--spacing-20) 12px'
     shadows:
       label: Shadows
       prefix: shadow

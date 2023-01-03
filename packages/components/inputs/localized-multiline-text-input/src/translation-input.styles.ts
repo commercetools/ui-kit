@@ -38,8 +38,6 @@ const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
   return css`
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
-    display: flex;
-    align-items: center;
     color: ${designTokens.fontColorForLocalizedMultilineTextInputLabel};
     line-height: calc(
       ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
