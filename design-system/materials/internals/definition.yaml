@@ -412,6 +412,12 @@ decisionGroupsByTheme:
         background-color-for-stamp-as-positive:
           description: ''
           choice: color-primary-85
+        background-color-for-localized-multiline-text-input-label:
+          description: ''
+          choice: color-accent-98
+        background-color-for-localized-multiline-text-input-label-when-disabled:
+          description: ''
+          choice: color-accent-98
 
     borders:
       label: Borders
@@ -571,6 +577,8 @@ decisionGroupsByTheme:
           choice: color-surface
         font-color-for-table-header:
           choice: color-surface
+        font-color-for-localized-multiline-text-input-label:
+          choice: color-neutral-60
 
     heights:
       label: Height
@@ -846,6 +854,10 @@ decisionGroupsByTheme:
         background-color-for-stamp-as-positive:
           description: ''
           choice: color-primary-95
+        background-color-for-localized-multiline-text-input-label:
+          choice: color-surface
+        background-color-for-localized-multiline-text-input-label-when-disabled:
+          choice: color-neutral-95
 
     borders:
       label: Borders
@@ -1135,8 +1147,7 @@ decisionGroupsByTheme:
         padding-for-localized-rich-text-input-label:
           choice: spacing-20
         padding-for-localized-multiline-text-input-label:
-          choice: spacing-20
-
+          choice: '0 12px'
     shadows:
       label: Shadows
       prefix: shadow
