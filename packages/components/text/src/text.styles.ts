@@ -48,6 +48,8 @@ const getTone = (tone: string) => {
       return `color: ${designTokens.colorSurface};`;
     case 'warning':
       return `color: ${designTokens.colorWarning};`;
+    case 'critical':
+      return `color: ${designTokens.colorError40};`;
     default:
       return ``;
   }

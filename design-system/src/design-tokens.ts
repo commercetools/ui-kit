@@ -22,13 +22,19 @@ export const themes = {
     colorNeutral60: 'hsl(0, 0%, 60%)',
     colorNeutral90: 'hsl(0, 0%, 90%)',
     colorNeutral95: 'hsl(0, 0%, 95%)',
+    colorNeutral85: 'hsl(0, 0%, 85%)',
     colorInfo: '#078cdf',
+    colorInfo40: 'hsl(203.05555555555554, 93.9130434783%, 40%)',
     colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
     colorInfo95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
     colorWarning: '#f16d0e',
     colorWarning25: 'hsl(25.110132158590307, 89.0196078431%, 25%)',
+    colorWarning40: 'hsl(25.110132158590307, 89.0196078431%, 40%)',
+    colorWarning85: 'hsl(25.110132158590307, 89.0196078431%, 85%)',
     colorWarning95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     colorError: '#e60050',
+    colorError40: 'hsl(339.1304347826087, 100%, 40%)',
+    colorError85: 'hsl(339.1304347826087, 100%, 85%)',
     colorError95: 'hsl(339.1304347826087, 100%, 95%)',
     colorSolid: '#1a1a1a',
     colorSolid05: 'hsl(0deg 0% 10% / 5%)',
@@ -155,6 +161,7 @@ export const themes = {
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForAvatar: 'hsl(0, 0%, 60%)',
     backgroundColorForAvatarWhenHighlighted: '#ccc',
+    backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 85%)',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
@@ -179,6 +186,12 @@ export const themes = {
     borderColorForTableHeaderAsBottom: '#213c45',
     borderColorForTableManagerDroppableList: 'hsl(0, 0%, 60%)',
     borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 60%)',
+    borderColorForStampWhenError: '#e60050',
+    borderColorForStampWhenWarning: '#f16d0e',
+    borderColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 40%)',
+    borderColorForStampAsInformation: '#078cdf',
+    borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
+    borderColorForStampAsSecondary: 'hsl(0, 0%, 60%)',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -188,6 +201,7 @@ export const themes = {
     borderRadiusForTag: '2px',
     borderRadiusForCard: '6px',
     borderRadiusForTableManagerDroppableList: '6px',
+    borderRadiusForStamp: '2px',
     borderWidthForInput: '1px',
     borderWidthForInputWhenWarning: '1px',
     borderWidthForInputWhenError: '1px',
@@ -318,6 +332,7 @@ export const themes = {
     backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForAvatar: '#213c45',
     backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
+    backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -337,6 +352,14 @@ export const themes = {
     borderColorForTableHeaderAsBottom: 'hsl(0, 0%, 90%)',
     borderColorForTableManagerDroppableList: '#ccc',
     borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 90%)',
+    borderColorForStampWhenError: 'hsl(339.1304347826087, 100%, 85%)',
+    borderColorForStampWhenWarning:
+      'hsl(25.110132158590307, 89.0196078431%, 85%)',
+    borderColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 85%)',
+    borderColorForStampAsInformation:
+      'hsl(203.05555555555554, 93.9130434783%, 85%)',
+    borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 85%)',
+    borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -345,6 +368,7 @@ export const themes = {
     borderRadiusForCard: '4px',
     borderRadiusForTableManagerDroppableList: '4px',
     borderRadiusForInput: '4px',
+    borderRadiusForStamp: '20px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
@@ -445,7 +469,10 @@ const designTokens = {
   colorNeutral60: 'var(--color-neutral-60, hsl(0, 0%, 60%))',
   colorNeutral90: 'var(--color-neutral-90, hsl(0, 0%, 90%))',
   colorNeutral95: 'var(--color-neutral-95, hsl(0, 0%, 95%))',
+  colorNeutral85: 'var(--color-neutral-85, hsl(0, 0%, 85%))',
   colorInfo: 'var(--color-info, #078cdf)',
+  colorInfo40:
+    'var(--color-info-40, hsl(203.05555555555554, 93.9130434783%, 40%))',
   colorInfo85:
     'var(--color-info-85, hsl(203.05555555555554, 93.9130434783%, 85%))',
   colorInfo95:
@@ -453,9 +480,15 @@ const designTokens = {
   colorWarning: 'var(--color-warning, #f16d0e)',
   colorWarning25:
     'var(--color-warning-25, hsl(25.110132158590307, 89.0196078431%, 25%))',
+  colorWarning40:
+    'var(--color-warning-40, hsl(25.110132158590307, 89.0196078431%, 40%))',
+  colorWarning85:
+    'var(--color-warning-85, hsl(25.110132158590307, 89.0196078431%, 85%))',
   colorWarning95:
     'var(--color-warning-95, hsl(25.110132158590307, 89.0196078431%, 95%))',
   colorError: 'var(--color-error, #e60050)',
+  colorError40: 'var(--color-error-40, hsl(339.1304347826087, 100%, 40%))',
+  colorError85: 'var(--color-error-85, hsl(339.1304347826087, 100%, 85%))',
   colorError95: 'var(--color-error-95, hsl(339.1304347826087, 100%, 95%))',
   colorSolid: 'var(--color-solid, #1a1a1a)',
   colorSolid05: 'var(--color-solid-05, hsl(0deg 0% 10% / 5%))',
@@ -607,6 +640,8 @@ const designTokens = {
     'var(--background-color-for-avatar, hsl(0, 0%, 60%))',
   backgroundColorForAvatarWhenHighlighted:
     'var(--background-color-for-avatar-when-highlighted, #ccc)',
+  backgroundColorForStampAsPositive:
+    'var(--background-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 85%))',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',
@@ -646,6 +681,18 @@ const designTokens = {
     'var(--border-color-for-table-manager-droppable-list, hsl(0, 0%, 60%))',
   borderColorForCollapsiblePanelHeader:
     'var(--border-color-for-collapsible-panel-header, hsl(0, 0%, 60%))',
+  borderColorForStampWhenError:
+    'var(--border-color-for-stamp-when-error, #e60050)',
+  borderColorForStampWhenWarning:
+    'var(--border-color-for-stamp-when-warning, #f16d0e)',
+  borderColorForStampAsPositive:
+    'var(--border-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 40%))',
+  borderColorForStampAsInformation:
+    'var(--border-color-for-stamp-as-information, #078cdf)',
+  borderColorForStampAsPrimary:
+    'var(--border-color-for-stamp-as-primary, hsl(172.9608938547486, 100%, 25%))',
+  borderColorForStampAsSecondary:
+    'var(--border-color-for-stamp-as-secondary, hsl(0, 0%, 60%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -659,6 +706,7 @@ const designTokens = {
   borderRadiusForCard: 'var(--border-radius-for-card, 6px)',
   borderRadiusForTableManagerDroppableList:
     'var(--border-radius-for-table-manager-droppable-list, 6px)',
+  borderRadiusForStamp: 'var(--border-radius-for-stamp, 2px)',
   borderWidthForInput: 'var(--border-width-for-input, 1px)',
   borderWidthForInputWhenWarning:
     'var(--border-width-for-input-when-warning, 1px)',

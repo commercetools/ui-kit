@@ -104,7 +104,13 @@ export type TSubheadlineProps = {
   as?: 'h4' | 'h5';
   truncate?: boolean;
   isBold?: boolean;
-  tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
+  tone?:
+    | 'primary'
+    | 'secondary'
+    | 'information'
+    | 'positive'
+    | 'negative'
+    | 'critical';
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -161,7 +167,8 @@ export type TBodyProps = {
     | 'information'
     | 'positive'
     | 'negative'
-    | 'inverted';
+    | 'inverted'
+    | 'critical';
   truncate?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
@@ -208,7 +215,8 @@ export type TDetailProps = {
     | 'positive'
     | 'negative'
     | 'warning'
-    | 'inverted';
+    | 'inverted'
+    | 'critical';
   truncate?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
