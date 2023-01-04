@@ -498,6 +498,8 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         border-color-for-localized-multiline-text-input-label:
           choice: color-neutral
+        border-color-for-localized-multiline-text-input-label-when-readonly:
+          choice: color-neutral
 
     borderRadiuses:
       label: Border Radius
@@ -661,6 +663,8 @@ decisionGroupsByTheme:
           choice: font-size-60
         font-size-for-avatar-as-big:
           choice: font-size-78
+        font-size-for-localized-multiline-text-input-label:
+          choice: font-size-30
 
     iconColors:
       label: Icon colors
@@ -920,6 +924,8 @@ decisionGroupsByTheme:
           choice: color-primary-85
         border-color-for-stamp-as-secondary:
           choice: color-neutral-85
+        border-color-for-localized-multiline-text-input-label-when-readonly:
+          choice: color-neutral-90
 
     borderRadiuses:
       label: Border radiuses
@@ -1149,7 +1155,7 @@ decisionGroupsByTheme:
         padding-for-localized-rich-text-input-label:
           choice: spacing-20
         padding-for-localized-multiline-text-input-label:
-          choice: 'var(--spacing-20) 12px'
+          choice: '0 12px'
     shadows:
       label: Shadows
       prefix: shadow

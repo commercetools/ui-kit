@@ -197,6 +197,7 @@ export const themes = {
     borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
     borderColorForStampAsSecondary: 'hsl(0, 0%, 60%)',
     borderColorForLocalizedMultilineTextInputLabel: '#ccc',
+    borderColorForLocalizedMultilineTextInputLabelWhenReadonly: '#ccc',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -247,6 +248,7 @@ export const themes = {
     fontSizeForAvatarAsSmall: '1rem',
     fontSizeForAvatarAsMedium: '1.5rem',
     fontSizeForAvatarAsBig: '3rem',
+    fontSizeForLocalizedMultilineTextInputLabel: '1rem',
     iconColorForDatetimeInputIcon: '#1a1a1a',
     iconColorForDatetimeInputIconWhenHovered: '#f16d0e',
     lineHeightForTextAsH1: 'inherit',
@@ -369,6 +371,8 @@ export const themes = {
       'hsl(203.05555555555554, 93.9130434783%, 85%)',
     borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 85%)',
     borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
+    borderColorForLocalizedMultilineTextInputLabelWhenReadonly:
+      'hsl(0, 0%, 90%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -446,7 +450,7 @@ export const themes = {
     paddingForInput: '16px',
     paddingForMultilineInput: '8px',
     paddingForLocalizedRichTextInputLabel: '8px',
-    paddingForLocalizedMultilineTextInputLabel: 'var(--spacing-20) 12px',
+    paddingForLocalizedMultilineTextInputLabel: '0 12px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -708,6 +712,8 @@ const designTokens = {
     'var(--border-color-for-stamp-as-secondary, hsl(0, 0%, 60%))',
   borderColorForLocalizedMultilineTextInputLabel:
     'var(--border-color-for-localized-multiline-text-input-label, #ccc)',
+  borderColorForLocalizedMultilineTextInputLabelWhenReadonly:
+    'var(--border-color-for-localized-multiline-text-input-label-when-readonly, #ccc)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -774,6 +780,8 @@ const designTokens = {
   fontSizeForAvatarAsSmall: 'var(--font-size-for-avatar-as-small, 1rem)',
   fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1.5rem)',
   fontSizeForAvatarAsBig: 'var(--font-size-for-avatar-as-big, 3rem)',
+  fontSizeForLocalizedMultilineTextInputLabel:
+    'var(--font-size-for-localized-multiline-text-input-label, 1rem)',
   iconColorForDatetimeInputIcon:
     'var(--icon-color-for-datetime-input-icon, #1a1a1a)',
   iconColorForDatetimeInputIconWhenHovered:

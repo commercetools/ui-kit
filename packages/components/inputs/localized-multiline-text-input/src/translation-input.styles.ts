@@ -10,6 +10,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 type TTranslationInputStylesProps = {
   isCollapsed?: boolean;
   isDisabled?: boolean;
+  isReadOnly?: boolean;
 };
 
 const getTextareaStyles = (props: TTranslationInputStylesProps) => {
@@ -26,13 +27,15 @@ const getTextareaStyles = (props: TTranslationInputStylesProps) => {
   return baseStyles;
 };
 
-const getLanguageLabelBackgroundColor = (
-  props: TTranslationInputStylesProps
-) => {
-  if (props.isDisabled)
-    return designTokens.backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled;
-  return designTokens.backgroundColorForLocalizedMultilineTextInputLabel;
-};
+const getLanguageLabelBackgroundColor = (props: TTranslationInputStylesProps) =>
+  props.isDisabled
+    ? designTokens.backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled
+    : designTokens.backgroundColorForLocalizedMultilineTextInputLabel;
+
+const getLanguageLabelBorderColor = (props: TTranslationInputStylesProps) =>
+  props.isReadOnly
+    ? designTokens.borderColorForLocalizedMultilineTextInputLabelWhenReadonly
+    : designTokens.borderColorForLocalizedMultilineTextInputLabel;
 
 const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
   return css`
@@ -40,14 +43,14 @@ const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
     flex: 1 0 auto;
     color: ${designTokens.fontColorForLocalizedMultilineTextInputLabel};
     line-height: calc(
-      ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
+      ${designTokens.heightForInput} - 2 * ${designTokens.borderRadius1}
     );
     background-color: ${getLanguageLabelBackgroundColor(_props)};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-    border: 1px ${designTokens.borderColorForLocalizedMultilineTextInputLabel}
-      solid;
+    border: 1px ${getLanguageLabelBorderColor(_props)} solid;
     padding: ${designTokens.paddingForLocalizedMultilineTextInputLabel};
+    font-size: ${designTokens.fontSizeForLocalizedMultilineTextInputLabel};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};
