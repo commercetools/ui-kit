@@ -248,7 +248,7 @@ export const themes = {
     fontSizeForAvatarAsSmall: '1rem',
     fontSizeForAvatarAsMedium: '1.5rem',
     fontSizeForAvatarAsBig: '3rem',
-    fontSizeForLocalizedMultilineTextInputLabel: '1rem',
+    fontSizeForLocalizedMultilineTextInputLabel: '0.9231rem',
     iconColorForDatetimeInputIcon: '#1a1a1a',
     iconColorForDatetimeInputIconWhenHovered: '#f16d0e',
     lineHeightForTextAsH1: 'inherit',
@@ -401,6 +401,7 @@ export const themes = {
     fontSizeForAvatarAsSmall: '0.875rem',
     fontSizeForAvatarAsMedium: '1rem',
     fontSizeForAvatarAsBig: '2.5rem',
+    fontSizeForLocalizedMultilineTextInputLabel: '1rem',
     lineHeightForTextAsH1: '2.125rem',
     lineHeightForTextAsH2: '1.75rem',
     lineHeightForTextAsH3: '1.5rem',
@@ -781,7 +782,7 @@ const designTokens = {
   fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1.5rem)',
   fontSizeForAvatarAsBig: 'var(--font-size-for-avatar-as-big, 3rem)',
   fontSizeForLocalizedMultilineTextInputLabel:
-    'var(--font-size-for-localized-multiline-text-input-label, 1rem)',
+    'var(--font-size-for-localized-multiline-text-input-label, 0.9231rem)',
   iconColorForDatetimeInputIcon:
     'var(--icon-color-for-datetime-input-icon, #1a1a1a)',
   iconColorForDatetimeInputIconWhenHovered:

@@ -664,7 +664,7 @@ decisionGroupsByTheme:
         font-size-for-avatar-as-big:
           choice: font-size-78
         font-size-for-localized-multiline-text-input-label:
-          choice: font-size-30
+          choice: font-size-15
 
     iconColors:
       label: Icon colors
@@ -1013,6 +1013,8 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-avatar-as-big:
           choice: font-size-80
+        font-size-for-localized-multiline-text-input-label:
+          choice: font-size-30
 
     lineHeights:
       label: Line Heights

@@ -267,7 +267,7 @@
   --font-size-for-avatar-as-small: 1rem;
   --font-size-for-avatar-as-medium: 1.5rem;
   --font-size-for-avatar-as-big: 3rem;
-  --font-size-for-localized-multiline-text-input-label: 1rem;
+  --font-size-for-localized-multiline-text-input-label: 0.9231rem;
   --icon-color-for-datetime-input-icon: #1a1a1a;
   --icon-color-for-datetime-input-icon-when-hovered: #f16d0e;
   --line-height-for-text-as-h1: inherit;
