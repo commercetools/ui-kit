@@ -409,6 +409,9 @@ decisionGroupsByTheme:
         background-color-for-avatar-when-highlighted:
           description: ''
           choice: color-neutral
+        background-color-for-stamp-as-positive:
+          description: ''
+          choice: color-primary-85
 
     borders:
       label: Borders
@@ -840,6 +843,9 @@ decisionGroupsByTheme:
         background-color-for-avatar-when-highlighted:
           description: ''
           choice: color-accent-30
+        background-color-for-stamp-as-positive:
+          description: ''
+          choice: color-primary-95
 
     borders:
       label: Borders

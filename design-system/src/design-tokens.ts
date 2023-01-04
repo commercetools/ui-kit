@@ -161,6 +161,7 @@ export const themes = {
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForAvatar: 'hsl(0, 0%, 60%)',
     backgroundColorForAvatarWhenHighlighted: '#ccc',
+    backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 85%)',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
@@ -331,6 +332,7 @@ export const themes = {
     backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForAvatar: '#213c45',
     backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
+    backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -638,6 +640,8 @@ const designTokens = {
     'var(--background-color-for-avatar, hsl(0, 0%, 60%))',
   backgroundColorForAvatarWhenHighlighted:
     'var(--background-color-for-avatar-when-highlighted, #ccc)',
+  backgroundColorForStampAsPositive:
+    'var(--background-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 85%))',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',

@@ -70,7 +70,7 @@ const getToneStyles = (props: Props) => {
     }
     case 'positive': {
       return css`
-        background-color: ${designTokens.colorPrimary95};
+        background-color: ${designTokens.backgroundColorForStampAsPositive};
         border: 1px solid ${designTokens.borderColorForStampAsPositive};
         &,
         & * {

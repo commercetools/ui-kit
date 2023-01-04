@@ -174,6 +174,7 @@
   --background-color-for-select-input-option-when-hovered: hsl(0, 0%, 90%);
   --background-color-for-avatar: hsl(0, 0%, 60%);
   --background-color-for-avatar-when-highlighted: #ccc;
+  --background-color-for-stamp-as-positive: hsl(172.9608938547486, 100%, 85%);
   --border-for-button-as-secondary: none;
   --border-for-button-as-secondary-when-hovered: none;
   --border-for-button-as-secondary-when-active: none;
