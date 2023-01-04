@@ -111,7 +111,7 @@ const getToneStyles = (props: Props) => {
         &,
         & * {
           color: ${props.overrideTextColor
-            ? designTokens.colorNeutral60 + '!important'
+            ? designTokens.colorNeutral40 + '!important'
             : 'inherit'};
         }
       `;
