@@ -9,6 +9,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 export type Props = {
   color?:
     | 'solid'
+    | 'neutral40'
     | 'neutral60'
     | 'surface'
     | 'info'
@@ -78,6 +79,10 @@ const getColor = (color: Props['color']) => {
   switch (color) {
     case 'solid':
       iconColor = designTokens.colorSolid;
+      break;
+
+    case 'neutral40':
+      iconColor = designTokens.colorNeutral40;
       break;
 
     case 'neutral60':

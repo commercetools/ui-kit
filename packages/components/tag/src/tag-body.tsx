@@ -45,16 +45,17 @@ const getClickableContentWrapperStyles = (type: TTagBodyProps['type']) => {
 
 const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
   if (isDisabled) return designTokens.fontColorForTagWhenDisabled;
-  return designTokens.fontColorForTag;
+  return designTokens.colorSolid;
 };
 
-const getContentWrapperStyles = (props: TTagBodyProps) => {
+const GetContentWrapperStyles = (props: TTagBodyProps) => {
+  const { isNewTheme } = useTheme();
   return css`
     position: relative;
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    border-radius: ${designTokens.borderRadiusForTag};
+    border-radius: ${designTokens.borderRadius2};
     padding: ${designTokens.paddingForTag};
     white-space: normal;
     text-align: left;
@@ -64,7 +65,7 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     border-style: solid;
     border-width: 1px;
     border-color: ${props.type === 'warning'
-      ? designTokens.borderColorForTagWarning
+      ? designTokens.colorWarning
       : designTokens.borderColorForTag};
 
     /* fixing things for IE11 ... */
@@ -73,11 +74,19 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     small {
       color: ${getTextDetailColor(props.isDisabled)};
     }
+
+    ${props.isDisabled &&
+    isNewTheme &&
+    `
+      * {
+        color: ${designTokens.colorNeutral60} !important;
+      }
+    `}
   `;
 };
 
 const TagBody = (props: TTagBodyProps) => {
-  const { themedValue } = useTheme();
+  const { themedValue, isNewTheme } = useTheme();
   const textTone = props.isDisabled ? 'secondary' : undefined;
   const TextComponent = themedValue(Text.Detail, Text.Body);
 
@@ -86,10 +95,10 @@ const TagBody = (props: TTagBodyProps) => {
       to={props.to}
       as={props.as}
       css={[
-        getContentWrapperStyles(props),
+        GetContentWrapperStyles(props),
         Boolean(props.onRemove) &&
           css`
-            border-right: 0;
+            border-right: ${!(props.isDisabled && isNewTheme) && '0'};
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
           `,
@@ -106,7 +115,7 @@ const TagBody = (props: TTagBodyProps) => {
                 right: -1px;
                 content: '';
                 background-color: ${props.type === 'warning'
-                  ? designTokens.borderColorForTagWarning
+                  ? designTokens.colorWarning
                   : designTokens.borderColorForTagWhenFocused};
                 width: 1px;
                 height: 100%;
@@ -119,7 +128,11 @@ const TagBody = (props: TTagBodyProps) => {
     >
       <Spacings.Inline scale="s" alignItems="center">
         {props.isDraggable && !props.isDisabled ? (
-          <DragIcon data-testid="drag-icon" size="medium" />
+          <DragIcon
+            data-testid="drag-icon"
+            size="medium"
+            color={themedValue('solid', 'neutral40')}
+          />
         ) : null}
         <TextComponent tone={textTone}>{props.children}</TextComponent>
       </Spacings.Inline>

@@ -204,6 +204,7 @@
   --border-color-for-tag: hsl(0, 0%, 60%);
   --border-color-for-tag-warning: #f16d0e;
   --border-color-for-tag-when-focused: #00b39e;
+  --border-color-for-tag-when-hovered: #f16d0e;
   --border-color-for-button-as-icon: #fff;
   --border-color-for-button-as-icon-as-info: #078cdf;
   --border-color-for-button-as-icon-as-primary: #00b39e;
@@ -234,6 +235,7 @@
   --border-width-for-input-when-warning: 1px;
   --border-width-for-input-when-error: 1px;
   --border-width-for-input-when-focused: 1px;
+  --border-width-for-tag: 1px;
   --box-shadow-for-datetime-input-when-hovered: inset 0 0 0 2px;
   --font-color-for-text: #1a1a1a;
   --font-color-for-input: #1a1a1a;
@@ -241,7 +243,8 @@
   --font-color-for-input-when-error: #e60050;
   --font-color-for-input-when-readonly: hsl(0, 0%, 60%);
   --font-color-for-input-when-warning: #f16d0e;
-  --font-color-for-tag: #1a1a1a;
+  --font-color-for-tag-remove-icon: #1a1a1a;
+  --font-color-for-tag-remove-icon-when-hovered: #f16d0e;
   --font-color-for-tag-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-text-when-inverted: #fff;
   --font-color-for-table-header: #fff;

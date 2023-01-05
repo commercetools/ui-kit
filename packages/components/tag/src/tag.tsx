@@ -1,9 +1,9 @@
+// TODO: @redesign cleanup
 import type { LocationDescriptor } from 'history';
-
 import { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 import { css, type SerializedStyles } from '@emotion/react';
 import { Link } from 'react-router-dom';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
@@ -79,6 +79,7 @@ const defaultProps: Pick<
 };
 
 const Tag = (props: TTagProps) => {
+  const { isNewTheme } = useTheme();
   const linkProps =
     props.to && !props.isDisabled ? { as: Link, to: props.to } : {};
   return (
@@ -109,7 +110,7 @@ const Tag = (props: TTagProps) => {
           {props.children}
         </TagBody>
 
-        {Boolean(props.onRemove) && (
+        {Boolean(props.onRemove) && !(isNewTheme && props.isDisabled) && (
           <AccessibleButton
             label="Remove"
             isDisabled={props.isDisabled}
@@ -117,7 +118,7 @@ const Tag = (props: TTagProps) => {
             css={[
               css`
                 border-color: ${props.type === 'warning'
-                  ? designTokens.borderColorForTagWarning
+                  ? designTokens.colorWarning
                   : designTokens.borderColorForTag};
                 padding: 0 ${designTokens.spacing10};
                 border-radius: 0 ${designTokens.borderRadiusForTag}
@@ -126,20 +127,22 @@ const Tag = (props: TTagProps) => {
                 align-items: center;
                 background: inherit;
                 border-style: solid;
-                border-width: 1px 1px 1px 1px;
+                border-width: ${designTokens.borderWidthForTag};
                 :not(:disabled)&:hover,
                 :not(:disabled)&:focus {
-                  border-color: ${designTokens.borderColorForTagWarning};
+                  border-color: ${props.type === 'warning'
+                    ? designTokens.colorWarning
+                    : designTokens.borderColorForTagWhenHovered};
 
                   > svg * {
-                    fill: ${designTokens.borderColorForTagWarning};
+                    fill: ${designTokens.fontColorForTagRemoveIconWhenHovered} !important;
                   }
                 }
                 > svg * {
-                  fill: ${designTokens.fontColorForTag};
+                  fill: ${designTokens.fontColorForTagRemoveIcon} !important;
                 }
                 &:disabled > svg * {
-                  fill: ${designTokens.fontColorForTagWhenDisabled};
+                  fill: ${designTokens.fontColorForTagWhenDisabled} !important;
                 }
               `,
             ]}
