@@ -37,7 +37,7 @@ const getLanguageLabelBorderColor = (props: TTranslationInputStylesProps) =>
     ? designTokens.borderColorForLocalizedMultilineTextInputLabelWhenReadonly
     : designTokens.borderColorForLocalizedMultilineTextInputLabel;
 
-const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
+const getLanguageLabelStyles = (props: TTranslationInputStylesProps) => {
   return css`
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
@@ -45,10 +45,10 @@ const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
     line-height: calc(
       ${designTokens.heightForInput} - 2 * ${designTokens.borderRadius1}
     );
-    background-color: ${getLanguageLabelBackgroundColor(_props)};
+    background-color: ${getLanguageLabelBackgroundColor(props)};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-    border: 1px ${getLanguageLabelBorderColor(_props)} solid;
+    border: 1px ${getLanguageLabelBorderColor(props)} solid;
     padding: ${designTokens.paddingForLocalizedMultilineTextInputLabel};
     font-size: ${designTokens.fontSizeForLocalizedMultilineTextInputLabel};
     transition: border-color ${designTokens.transitionStandard},
