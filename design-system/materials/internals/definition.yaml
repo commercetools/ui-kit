@@ -54,9 +54,10 @@ choiceGroupsByTheme:
         color-neutral-10: 'hsl(0deg 0% 80% / 10%)'
         color-neutral-40: 'hsl(0, 0%, 40%)'
         color-neutral-60: 'hsl(0, 0%, 60%)'
+        color-neutral-85: 'hsl(0, 0%, 85%)'
         color-neutral-90: 'hsl(0, 0%, 90%)'
         color-neutral-95: 'hsl(0, 0%, 95%)'
-        color-neutral-85: 'hsl(0, 0%, 85%)'
+        color-neutral-98: 'hsl(0, 0%, 98%)'
         color-info: '#078cdf'
         color-info-40: 'hsl(203.05555555555554, 93.9130434783%, 40%)'
         color-info-85: 'hsl(203.05555555555554, 93.9130434783%, 85%)'
@@ -424,6 +425,9 @@ decisionGroupsByTheme:
         background-color-for-input-when-focused:
           description: ''
           choice: color-surface
+        background-color-for-input-when-readonly:
+          description: ''
+          choice: color-surface
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-90
         background-color-for-table-header:
@@ -623,6 +627,7 @@ decisionGroupsByTheme:
         border-width-for-input-when-focused:
           choice: border-width-1
         border-width-for-tag:
+        border-width-for-select-input:
           choice: border-width-1
         border-width-for-content-notification-icon:
           choice: '0px'
@@ -639,6 +644,8 @@ decisionGroupsByTheme:
           choice: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)
         box-shadow-for-view-switcher-when-selected:
           choice: shadow-9
+        box-shadow-for-select-input-when-focused:
+          choice: 'inset 0 0 0 2px'
 
     fontColors:
       label: Font Colors
@@ -865,6 +872,8 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-10) 0 0'
         margin-for-group-heading-select-input-options:
           choice: spacing-10
+        margin-for-select-input-icon:
+          choice: spacing-10
 
     paddings:
       label: Paddings
@@ -1000,7 +1009,7 @@ decisionGroupsByTheme:
         background-color-for-collapsible-panel-header-icon-when-disabled:
           choice: color-surface
         background-color-for-input-when-hovered:
-          choice: color-neutral-95
+          choice: color-neutral-98
         background-color-for-input-when-disabled:
           choice: color-neutral-95
         background-color-for-avatar:
@@ -1023,6 +1032,8 @@ decisionGroupsByTheme:
         background-color-for-view-switcher-when-selected:
           choice: color-neutral-95
         background-color-for-view-switcher-when-hovered:
+        background-color-for-input-when-readonly:
+          description: ''
           choice: color-neutral-95
         background-color-for-content-notification-when-error:
           choice: color-error-95
@@ -1069,7 +1080,7 @@ decisionGroupsByTheme:
         border-color-for-input-when-hovered:
           choice: color-neutral
         border-color-for-input-when-readonly:
-          choice: color-neutral-90
+          choice: 'none'
         border-color-for-input-when-focused:
           choice: color-primary
         border-color-for-button-as-icon:
@@ -1158,6 +1169,8 @@ decisionGroupsByTheme:
           choice: border-width-1
         border-left-width-for-content-notification:
           choice: '0px'
+        border-width-for-select-input:
+          choice: border-width-2
 
     boxShadows:
       label: Box shadows
@@ -1169,6 +1182,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         box-shadow-for-view-switcher-when-selected:
           choice: shadow-0
+        box-shadow-for-select-input-when-focused:
+          choice: 'inset 0 0 0 1px'
 
     fontColors:
       label: Font Colors
@@ -1361,6 +1376,8 @@ decisionGroupsByTheme:
         margin-for-view-switcher-icon:
           choice: '0 var(--spacing-20) 0 0'
         margin-for-group-heading-select-input-options:
+          choice: spacing-20
+        margin-for-select-input-icon:
           choice: spacing-20
 
     paddings:

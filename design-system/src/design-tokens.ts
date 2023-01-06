@@ -23,9 +23,10 @@ export const themes = {
     colorNeutral10: 'hsl(0deg 0% 80% / 10%)',
     colorNeutral40: 'hsl(0, 0%, 40%)',
     colorNeutral60: 'hsl(0, 0%, 60%)',
+    colorNeutral85: 'hsl(0, 0%, 85%)',
     colorNeutral90: 'hsl(0, 0%, 90%)',
     colorNeutral95: 'hsl(0, 0%, 95%)',
-    colorNeutral85: 'hsl(0, 0%, 85%)',
+    colorNeutral98: 'hsl(0, 0%, 98%)',
     colorInfo: '#078cdf',
     colorInfo40: 'hsl(203.05555555555554, 93.9130434783%, 40%)',
     colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
@@ -155,6 +156,7 @@ export const themes = {
     backgroundColorForInputWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForInputWhenHovered: '#fff',
     backgroundColorForInputWhenFocused: '#fff',
+    backgroundColorForInputWhenReadonly: '#fff',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForTableHeader: '#213c45',
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
@@ -244,11 +246,13 @@ export const themes = {
     borderWidthForTag: '1px',
     borderWidthForContentNotificationIcon: '0px',
     borderLeftWidthForContentNotification: '1px',
+    borderWidthForSelectInput: '1px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 2px',
     boxShadowForViewSwitcher:
       '0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)',
     boxShadowForViewSwitcherWhenSelected:
       'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
+    boxShadowForSelectInputWhenFocused: 'inset 0 0 0 2px',
     fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
@@ -322,6 +326,7 @@ export const themes = {
     marginForTableAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-10) 0 0',
     marginForGroupHeadingSelectInputOptions: '4px',
+    marginForSelectInputIcon: '4px',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -405,7 +410,7 @@ export const themes = {
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForTableHeader: '#fff',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
-    backgroundColorForInputWhenHovered: 'hsl(0, 0%, 95%)',
+    backgroundColorForInputWhenHovered: 'hsl(0, 0%, 98%)',
     backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForAvatar: '#213c45',
     backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
@@ -433,6 +438,7 @@ export const themes = {
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForContentNotificationIconWhenSuccess:
       'hsl(172.9608938547486, 100%, 95%)',
+    backgroundColorForInputWhenReadonly: 'hsl(0, 0%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -442,7 +448,7 @@ export const themes = {
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
-    borderColorForInputWhenReadonly: 'hsl(0, 0%, 90%)',
+    borderColorForInputWhenReadonly: 'none',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForButtonAsIcon: '#ccc',
     borderColorForButtonAsIconAsInfo: '#ccc',
@@ -491,9 +497,11 @@ export const themes = {
     borderWidthForTag: '1px 1px 1px 0',
     borderWidthForContentNotificationIcon: '1px',
     borderLeftWidthForContentNotification: '0px',
+    borderWidthForSelectInput: '2px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     boxShadowForViewSwitcher: 'none',
     boxShadowForViewSwitcherWhenSelected: 'none',
+    boxShadowForSelectInputWhenFocused: 'inset 0 0 0 1px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
     fontColorForTagRemoveIcon: 'hsl(0, 0%, 40%)',
@@ -558,6 +566,7 @@ export const themes = {
     marginForTableCellAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-20) 0 0',
     marginForGroupHeadingSelectInputOptions: '8px',
+    marginForSelectInputIcon: '8px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -628,9 +637,10 @@ const designTokens = {
   colorNeutral10: 'var(--color-neutral-10, hsl(0deg 0% 80% / 10%))',
   colorNeutral40: 'var(--color-neutral-40, hsl(0, 0%, 40%))',
   colorNeutral60: 'var(--color-neutral-60, hsl(0, 0%, 60%))',
+  colorNeutral85: 'var(--color-neutral-85, hsl(0, 0%, 85%))',
   colorNeutral90: 'var(--color-neutral-90, hsl(0, 0%, 90%))',
   colorNeutral95: 'var(--color-neutral-95, hsl(0, 0%, 95%))',
-  colorNeutral85: 'var(--color-neutral-85, hsl(0, 0%, 85%))',
+  colorNeutral98: 'var(--color-neutral-98, hsl(0, 0%, 98%))',
   colorInfo: 'var(--color-info, #078cdf)',
   colorInfo40:
     'var(--color-info-40, hsl(203.05555555555554, 93.9130434783%, 40%))',
@@ -787,6 +797,8 @@ const designTokens = {
     'var(--background-color-for-input-when-hovered, #fff)',
   backgroundColorForInputWhenFocused:
     'var(--background-color-for-input-when-focused, #fff)',
+  backgroundColorForInputWhenReadonly:
+    'var(--background-color-for-input-when-readonly, #fff)',
   backgroundColorForTableCellWhenHovered:
     'var(--background-color-for-table-cell-when-hovered, hsl(0, 0%, 90%))',
   backgroundColorForTableHeader:
@@ -931,12 +943,15 @@ const designTokens = {
     'var(--border-width-for-content-notification-icon, 0px)',
   borderLeftWidthForContentNotification:
     'var(--border-left-width-for-content-notification, 1px)',
+  borderWidthForSelectInput: 'var(--border-width-for-select-input, 1px)',
   boxShadowForDatetimeInputWhenHovered:
     'var(--box-shadow-for-datetime-input-when-hovered, inset 0 0 0 2px)',
   boxShadowForViewSwitcher:
     'var(--box-shadow-for-view-switcher, 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12))',
   boxShadowForViewSwitcherWhenSelected:
     'var(--box-shadow-for-view-switcher-when-selected, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
+  boxShadowForSelectInputWhenFocused:
+    'var(--box-shadow-for-select-input-when-focused, inset 0 0 0 2px)',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
@@ -1034,6 +1049,7 @@ const designTokens = {
     'var(--margin-for-view-switcher-icon, 0 var(--spacing-10) 0 0)',
   marginForGroupHeadingSelectInputOptions:
     'var(--margin-for-group-heading-select-input-options, 4px)',
+  marginForSelectInputIcon: 'var(--margin-for-select-input-icon, 4px)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
