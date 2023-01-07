@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
@@ -20,6 +21,7 @@ import {
   createSelectStyles,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
+import { useTheme } from '@commercetools-uikit/design-system';
 
 const LoadingIndicator = () => <LoadingSpinner scale="s" />;
 LoadingIndicator.displayName = 'LoadingIndicator';
@@ -348,6 +350,7 @@ const defaultProps: Pick<
 
 const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
   const intl = useIntl();
+  const { isNewTheme } = useTheme();
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
@@ -407,6 +410,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
+              isNewTheme,
             }) as ReactSelectAsyncCreatableProps['styles']
           }
           filterOption={props.filterOption}
