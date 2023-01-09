@@ -12,7 +12,6 @@ import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { designTokens } from '@commercetools-uikit/design-system';
-import Text from '@commercetools-uikit/text';
 import {
   MultilineInput,
   messagesMultilineInput,
@@ -161,10 +160,7 @@ const TranslationInput = (props: TranslationInputProps) => {
         `}
       >
         <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
-          {/* FIXME: add proper tone for disabled when tones are refactored */}
-          <Text.Detail tone="secondary">
-            {props.language.toUpperCase()}
-          </Text.Detail>
+          <span>{props.language.toUpperCase()}</span>
         </label>
         <MultilineInput
           id={props.id}
