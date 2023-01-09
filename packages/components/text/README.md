@@ -132,17 +132,18 @@ import Text from '@commercetools-uikit/text';
 
 ### Properties
 
-| Props             | Type             | Required | Values                                                                        | Default |                                                                        |
-| ----------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
-| `as`              | `string`         |    -     | `['small', 'span']` `[^]`                                                     | `false` |                                                                        |
-| `isBold`          | `Boolean`        |    -     | -                                                                             | `false` |                                                                        |
-| `isItalic`        | `Boolean`        |    -     | -                                                                             | `false` |                                                                        |
-| `isStrikethrough` | `Boolean`        |    -     | -                                                                             | `false` |                                                                        |
-| `tone`            | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'warning'']` | -       |                                                                        |
-| `children`        | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |                                                                        |
-| `intlMessage`     | `intl message`   | ✅ (\*)  | -                                                                             | -       | An `intl` message object that will be rendered with `FormattedMessage` |
-| `title`           | `String`         |    -     | -                                                                             | -       |                                                                        |
-| `truncate`        | `Bool`           |    -     | -                                                                             | `false` |                                                                        |
+| Props             | Type             | Required | Values                                                                        | Default |                                                                                    |
+| ----------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------- |
+| `as`              | `string`         |    -     | `['small', 'span']` `[^]`                                                     | `false` |                                                                                    |
+| `isBold`          | `Boolean`        |    -     | -                                                                             | `false` |                                                                                    |
+| `isItalic`        | `Boolean`        |    -     | -                                                                             | `false` |                                                                                    |
+| `isStrikethrough` | `Boolean`        |    -     | -                                                                             | `false` |                                                                                    |
+| `tone`            | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative', 'warning'']` | -       |                                                                                    |
+| `children`        | `PropTypes.node` | ✅ (\*)  | -                                                                             | -       |                                                                                    |
+| `intlMessage`     | `intl message`   | ✅ (\*)  | -                                                                             | -       | An `intl` message object that will be rendered with `FormattedMessage`             |
+| `title`           | `String`         |    -     | -                                                                             | -       |                                                                                    |
+| `truncate`        | `Bool`           |    -     | -                                                                             | `false` |                                                                                    |
+| `aria-labelledby` | `String`         |    -     | -                                                                             | -       | HTML ID of an element containing the label for the text rendered in this component |
 
 > `*`: `children` is required only if `intlMessage` is not provided.
 > `[^]`: Use `as` prop to render an inline element.

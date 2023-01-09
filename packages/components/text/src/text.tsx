@@ -218,6 +218,7 @@ export type TDetailProps = {
     | 'inverted'
     | 'critical';
   truncate?: boolean;
+  'aria-labelledby'?: string;
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -231,6 +232,7 @@ const Detail = (props: TDetailProps) => {
         id={props.id}
         css={detailStyles(props)}
         title={props.title}
+        aria-labelledby={props['aria-labelledby']}
         {...filterDataAttributes(props)}
       >
         <Text intlMessage={props.intlMessage}>{props.children}</Text>
@@ -242,6 +244,7 @@ const Detail = (props: TDetailProps) => {
     <div
       css={detailStyles(props)}
       title={props.title}
+      aria-labelledby={props['aria-labelledby']}
       {...filterDataAttributes(props)}
     >
       <Text intlMessage={props.intlMessage}>{props.children}</Text>
