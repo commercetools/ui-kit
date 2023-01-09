@@ -259,6 +259,7 @@
   "--font-color-for-select-input-icon": "#1a1a1a",
   "--font-color-for-search-input-icon": "#1a1a1a",
   "--font-color-for-search-input-icon-when-hovered": "#1a1a1a",
+  "--font-color-for-localized-multiline-text-input-label": "hsl(0, 0%, 60%)",
   "--height-for-button-as-big": "32px",
   "--height-for-button-as-small": "24px",
   "--height-for-button-as-icon-as-big": "32px",

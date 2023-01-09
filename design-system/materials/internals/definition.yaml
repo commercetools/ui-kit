@@ -716,6 +716,8 @@ decisionGroupsByTheme:
           choice: color-solid
         font-color-for-search-input-icon-when-hovered:
           choice: color-solid
+        font-color-for-localized-multiline-text-input-label:
+          choice: color-neutral-60
 
     heights:
       label: Height
