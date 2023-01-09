@@ -303,6 +303,8 @@
   --font-color-for-clear-input-icon: #1a1a1a;
   --font-color-for-clear-input-icon-when-hovered: #f16d0e;
   --font-color-for-select-input-icon: #1a1a1a;
+  --font-color-for-search-input-icon: #1a1a1a;
+  --font-color-for-search-input-icon-when-hovered: #1a1a1a;
   --height-for-button-as-big: 32px;
   --height-for-button-as-small: 24px;
   --height-for-button-as-icon-as-big: 32px;

@@ -712,6 +712,10 @@ decisionGroupsByTheme:
           choice: color-surface
         font-color-for-content-notification-icon-when-info:
           choice: color-surface
+        font-color-for-search-input-icon:
+          choice: color-solid
+        font-color-for-search-input-icon-when-hovered:
+          choice: color-solid
 
     heights:
       label: Height

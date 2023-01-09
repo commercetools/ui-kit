@@ -279,6 +279,8 @@ export const themes = {
     fontColorForClearInputIcon: '#1a1a1a',
     fontColorForClearInputIconWhenHovered: '#f16d0e',
     fontColorForSelectInputIcon: '#1a1a1a',
+    fontColorForSearchInputIcon: '#1a1a1a',
+    fontColorForSearchInputIconWhenHovered: '#1a1a1a',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -1000,6 +1002,10 @@ const designTokens = {
     'var(--font-color-for-clear-input-icon-when-hovered, #f16d0e)',
   fontColorForSelectInputIcon:
     'var(--font-color-for-select-input-icon, #1a1a1a)',
+  fontColorForSearchInputIcon:
+    'var(--font-color-for-search-input-icon, #1a1a1a)',
+  fontColorForSearchInputIconWhenHovered:
+    'var(--font-color-for-search-input-icon-when-hovered, #1a1a1a)',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
