@@ -134,20 +134,19 @@ const indicatorSeparatorStyles = () => (base: TBase) => {
   };
 };
 
-const dropdownIndicatorStyles =
-  (props: TProps & { isNewTheme: boolean }) => (base: TBase) => {
-    return {
-      ...base,
-      color: designTokens.fontColorForInput,
-      margin: '0',
-      padding: '0',
-      marginLeft: designTokens.marginForSelectInputIcon,
-      fill:
-        props.isDisabled || props.isReadOnly
-          ? designTokens.fontColorForInputWhenDisabled
-          : designTokens.fontColorForSelectInputIcon,
-    };
+const dropdownIndicatorStyles = (props: TProps) => (base: TBase) => {
+  return {
+    ...base,
+    color: designTokens.fontColorForInput,
+    margin: '0',
+    padding: '0',
+    marginLeft: designTokens.marginForSelectInputIcon,
+    fill:
+      props.isDisabled || props.isReadOnly
+        ? designTokens.fontColorForInputWhenDisabled
+        : designTokens.fontColorForSelectInputIcon,
   };
+};
 
 const clearIndicatorStyles = () => (base: TBase) => ({
   ...base,

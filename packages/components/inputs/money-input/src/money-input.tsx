@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import { useRef, useCallback, type ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
@@ -9,7 +10,7 @@ import Select, {
 import { useIntl } from 'react-intl';
 import { css, type Theme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import {
   warning,
   isNumberish,
@@ -77,7 +78,9 @@ const SingleValue = ({ id, ...props }: TSingleValue) => (
 
 SingleValue.displayName = 'SingleValue';
 
-type TCreateCurrencySelectStyles = (input: TInputProps) => void;
+type TCreateCurrencySelectStyles = (
+  input: TInputProps & { isNewTheme: boolean }
+) => void;
 
 export type TInputProps = {
   isDisabled?: boolean;
@@ -102,11 +105,13 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
   isReadOnly,
   hasFocus,
   menuPortalZIndex,
+  isNewTheme,
 }) => {
   const selectStyles = createSelectStyles({
     hasWarning,
     hasError,
     menuPortalZIndex,
+    isNewTheme,
   });
   return {
     ...selectStyles,
@@ -521,6 +526,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
   const intl = useIntl();
   const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
   const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
+  const { isNewTheme } = useTheme();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const amountInputRef = useRef<HTMLInputElement>(null);
@@ -687,6 +693,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
     isReadOnly: props.isReadOnly,
     hasFocus,
     menuPortalZIndex: props.menuPortalZIndex,
+    isNewTheme,
   });
   const options = props.currencies.map((currencyCode) => ({
     label: currencyCode,

@@ -9,7 +9,6 @@ const getCurrencyLabelStyles = () => css`
   background-color: ${designTokens.backgroundColorForInputWhenDisabled};
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-  border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
   border-right: 0;
   padding: 0 ${designTokens.spacing20};
   align-items: center;
