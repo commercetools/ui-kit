@@ -87,10 +87,11 @@ const Headline = (props: THeadlineProps) => {
       false,
       'ui-kit/Text: You attempt to render a TextHeadline without specifying `as` prop.'
     );
+
     return (
-      <Text id={props.id} intlMessage={props.intlMessage}>
-        {props.children}
-      </Text>
+      <span id={props.id}>
+        <Text intlMessage={props.intlMessage}>{props.children}</Text>
+      </span>
     );
   }
   return (

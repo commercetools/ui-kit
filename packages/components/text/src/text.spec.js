@@ -324,7 +324,9 @@ describe('<Detail>', () => {
 
       render(
         <div>
-          <span id={labelId}>{labelText}</span>
+          <Text.Headline as="h2" id={labelId}>
+            {labelText}
+          </Text.Headline>
           <Text.Detail aria-labelledby={labelId}>{textContent}</Text.Detail>
         </div>
       );
