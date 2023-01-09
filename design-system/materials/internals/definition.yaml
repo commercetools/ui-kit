@@ -56,13 +56,19 @@ choiceGroupsByTheme:
         color-neutral-60: 'hsl(0, 0%, 60%)'
         color-neutral-90: 'hsl(0, 0%, 90%)'
         color-neutral-95: 'hsl(0, 0%, 95%)'
+        color-neutral-85: 'hsl(0, 0%, 85%)'
         color-info: '#078cdf'
+        color-info-40: 'hsl(203.05555555555554, 93.9130434783%, 40%)'
         color-info-85: 'hsl(203.05555555555554, 93.9130434783%, 85%)'
         color-info-95: 'hsl(203.05555555555554, 93.9130434783%, 95%)'
         color-warning: '#f16d0e'
         color-warning-25: 'hsl(25.110132158590307, 89.0196078431%, 25%)'
+        color-warning-40: 'hsl(25.110132158590307, 89.0196078431%, 40%)'
+        color-warning-85: 'hsl(25.110132158590307, 89.0196078431%, 85%)'
         color-warning-95: 'hsl(25.110132158590307, 89.0196078431%, 95%)'
         color-error: '#e60050'
+        color-error-40: 'hsl(339.1304347826087, 100%, 40%)'
+        color-error-85: 'hsl(339.1304347826087, 100%, 85%)'
         color-error-95: 'hsl(339.1304347826087, 100%, 95%)'
         color-solid: '#1a1a1a'
         color-solid-05: 'hsl(0deg 0% 10% / 5%)'
@@ -286,6 +292,10 @@ variants:
     description: 'Elements with a compact style'
   bottom:
     description: 'To differentiate component bottom style'
+  positive:
+    description: 'To differentiate component positive style'
+  information:
+    description: 'To differentiate component information style'
 
 componentGroups:
   button:
@@ -407,6 +417,9 @@ decisionGroupsByTheme:
         background-color-for-avatar-when-highlighted:
           description: ''
           choice: color-neutral
+        background-color-for-stamp-as-positive:
+          description: ''
+          choice: color-primary-85
 
     borders:
       label: Borders
@@ -473,6 +486,18 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         border-color-for-collapsible-panel-header:
           choice: color-neutral-60
+        border-color-for-stamp-when-error:
+          choice: color-error
+        border-color-for-stamp-when-warning:
+          choice: color-warning
+        border-color-for-stamp-as-positive:
+          choice: color-primary-40
+        border-color-for-stamp-as-information:
+          choice: color-info
+        border-color-for-stamp-as-primary:
+          choice: color-primary-25
+        border-color-for-stamp-as-secondary:
+          choice: color-neutral-60
 
     borderRadiuses:
       label: Border Radius
@@ -498,6 +523,8 @@ decisionGroupsByTheme:
           choice: border-radius-6
         border-radius-for-table-manager-droppable-list:
           choice: border-radius-6
+        border-radius-for-stamp:
+          choice: border-radius-2
 
     borderWidths:
       label: Border width
@@ -824,6 +851,9 @@ decisionGroupsByTheme:
         background-color-for-avatar-when-highlighted:
           description: ''
           choice: color-accent-30
+        background-color-for-stamp-as-positive:
+          description: ''
+          choice: color-primary-95
 
     borders:
       label: Borders
@@ -872,6 +902,18 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-collapsible-panel-header:
           choice: color-neutral-90
+        border-color-for-stamp-when-error:
+          choice: color-error-85
+        border-color-for-stamp-when-warning:
+          choice: color-warning-85
+        border-color-for-stamp-as-positive:
+          choice: color-primary-85
+        border-color-for-stamp-as-information:
+          choice: color-info-85
+        border-color-for-stamp-as-primary:
+          choice: color-primary-85
+        border-color-for-stamp-as-secondary:
+          choice: color-neutral-85
 
     borderRadiuses:
       label: Border radiuses
@@ -893,6 +935,8 @@ decisionGroupsByTheme:
           choice: border-radius-4
         border-radius-for-input:
           choice: border-radius-4
+        border-radius-for-stamp:
+          choice: border-radius-20
 
     boxShadows:
       label: Box shadows
