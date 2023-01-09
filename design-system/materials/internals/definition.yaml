@@ -696,6 +696,11 @@ decisionGroupsByTheme:
         font-color-for-view-switcher-when-disabled:
           choice: color-neutral-60
         font-color-for-view-switcher-when-selected:
+        font-color-for-clear-input-icon:
+          choice: color-solid
+        font-color-for-clear-input-icon-when-hovered:
+          choice: color-warning
+        font-color-for-select-input-icon:
           choice: color-solid
         font-color-for-content-notification:
           choice: color-solid
