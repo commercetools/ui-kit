@@ -62,7 +62,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     borderWidth: (() => {
       if (props.hasError) return designTokens.borderWidthForSelectInput;
       if (props.hasWarning) return designTokens.borderWidthForSelectInput;
-      return;
+      return '1px';
     })(),
     borderRadius: designTokens.borderRadiusForInput,
     minHeight: designTokens.heightForInput,
