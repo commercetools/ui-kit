@@ -6,7 +6,6 @@ import {
   type FocusEventHandler,
 } from 'react';
 import { useIntl } from 'react-intl';
-import { css } from '@emotion/react';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -325,23 +324,17 @@ const LocalizedMultilineTextInput = (
           })}
         </Stack>
         {shouldRenderLanguagesButton && (
-          <div
-            css={css`
-              align-self: flex-start;
-            `}
-          >
-            <LocalizedInputToggle
-              isOpen={areLanguagesOpened}
-              onClick={onLocalizedInputToggle}
-              isDisabled={
-                areLanguagesOpened &&
-                Boolean(
-                  hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
-                )
-              }
-              remainingLocalizations={languages.length - 1}
-            />
-          </div>
+          <LocalizedInputToggle
+            isOpen={areLanguagesOpened}
+            onClick={onLocalizedInputToggle}
+            isDisabled={
+              areLanguagesOpened &&
+              Boolean(
+                hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
+              )
+            }
+            remainingLocalizations={languages.length - 1}
+          />
         )}
       </Stack>
     </Constraints.Horizontal>

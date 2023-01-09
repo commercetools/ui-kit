@@ -9,6 +9,8 @@ import { designTokens } from '@commercetools-uikit/design-system';
 
 type TTranslationInputStylesProps = {
   isCollapsed?: boolean;
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
 };
 
 const getTextareaStyles = (props: TTranslationInputStylesProps) => {
@@ -25,19 +27,30 @@ const getTextareaStyles = (props: TTranslationInputStylesProps) => {
   return baseStyles;
 };
 
-const getLanguageLabelStyles = (_props: TTranslationInputStylesProps) => {
+const getLanguageLabelBackgroundColor = (props: TTranslationInputStylesProps) =>
+  props.isDisabled
+    ? designTokens.backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled
+    : designTokens.backgroundColorForLocalizedMultilineTextInputLabel;
+
+const getLanguageLabelBorderColor = (props: TTranslationInputStylesProps) =>
+  props.isReadOnly
+    ? designTokens.borderColorForLocalizedMultilineTextInputLabelWhenReadonly
+    : designTokens.borderColorForLocalizedMultilineTextInputLabel;
+
+const getLanguageLabelStyles = (props: TTranslationInputStylesProps) => {
   return css`
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
-    color: ${designTokens.fontColorForInputWhenDisabled};
+    color: ${designTokens.fontColorForLocalizedMultilineTextInputLabel};
     line-height: calc(
-      ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
+      ${designTokens.heightForInput} - 2 * ${designTokens.borderRadius1}
     );
-    background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+    background-color: ${getLanguageLabelBackgroundColor(props)};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-    border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
+    border: 1px ${getLanguageLabelBorderColor(props)} solid;
     padding: ${designTokens.paddingForLocalizedMultilineTextInputLabel};
+    font-size: ${designTokens.fontSizeForLocalizedMultilineTextInputLabel};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};

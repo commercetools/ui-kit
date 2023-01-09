@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import type { MessageDescriptor } from 'react-intl';
 import { MouseEvent, KeyboardEvent, ReactElement } from 'react';
 import { useIntl } from 'react-intl';
@@ -38,12 +39,18 @@ const LocalizedInputToggle = (props: TLocalizedInputToggleProps) => {
           remainingLanguages: props.remainingLocalizations,
         });
   return (
-    <FlatButton
-      icon={props.icon ? props.icon : <WorldIcon />}
-      label={label}
-      onClick={props.onClick}
-      isDisabled={props.isDisabled}
-    />
+    <div
+      css={css`
+        align-self: flex-start;
+      `}
+    >
+      <FlatButton
+        icon={props.icon ? props.icon : <WorldIcon />}
+        label={label}
+        onClick={props.onClick}
+        isDisabled={props.isDisabled}
+      />
+    </div>
   );
 };
 

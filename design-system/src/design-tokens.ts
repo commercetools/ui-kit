@@ -162,6 +162,10 @@ export const themes = {
     backgroundColorForAvatar: 'hsl(0, 0%, 60%)',
     backgroundColorForAvatarWhenHighlighted: '#ccc',
     backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 85%)',
+    backgroundColorForLocalizedMultilineTextInputLabel:
+      'hsl(195, 35.2941176471%, 98%)',
+    backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
+      'hsl(195, 35.2941176471%, 98%)',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
@@ -192,6 +196,8 @@ export const themes = {
     borderColorForStampAsInformation: '#078cdf',
     borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
     borderColorForStampAsSecondary: 'hsl(0, 0%, 60%)',
+    borderColorForLocalizedMultilineTextInputLabel: '#ccc',
+    borderColorForLocalizedMultilineTextInputLabelWhenReadonly: '#ccc',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -217,6 +223,7 @@ export const themes = {
     fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTextWhenInverted: '#fff',
     fontColorForTableHeader: '#fff',
+    fontColorForLocalizedMultilineTextInputLabel: 'hsl(0, 0%, 60%)',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -241,6 +248,7 @@ export const themes = {
     fontSizeForAvatarAsSmall: '1rem',
     fontSizeForAvatarAsMedium: '1.5rem',
     fontSizeForAvatarAsBig: '3rem',
+    fontSizeForLocalizedMultilineTextInputLabel: '0.9231rem',
     iconColorForDatetimeInputIcon: '#1a1a1a',
     iconColorForDatetimeInputIconWhenHovered: '#f16d0e',
     lineHeightForTextAsH1: 'inherit',
@@ -333,6 +341,9 @@ export const themes = {
     backgroundColorForAvatar: '#213c45',
     backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
     backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 95%)',
+    backgroundColorForLocalizedMultilineTextInputLabel: '#fff',
+    backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
+      'hsl(0, 0%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -360,6 +371,8 @@ export const themes = {
       'hsl(203.05555555555554, 93.9130434783%, 85%)',
     borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 85%)',
     borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
+    borderColorForLocalizedMultilineTextInputLabelWhenReadonly:
+      'hsl(0, 0%, 90%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -388,6 +401,7 @@ export const themes = {
     fontSizeForAvatarAsSmall: '0.875rem',
     fontSizeForAvatarAsMedium: '1rem',
     fontSizeForAvatarAsBig: '2.5rem',
+    fontSizeForLocalizedMultilineTextInputLabel: '1rem',
     lineHeightForTextAsH1: '2.125rem',
     lineHeightForTextAsH2: '1.75rem',
     lineHeightForTextAsH3: '1.5rem',
@@ -437,7 +451,7 @@ export const themes = {
     paddingForInput: '16px',
     paddingForMultilineInput: '8px',
     paddingForLocalizedRichTextInputLabel: '8px',
-    paddingForLocalizedMultilineTextInputLabel: '8px',
+    paddingForLocalizedMultilineTextInputLabel: '0 12px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -642,6 +656,10 @@ const designTokens = {
     'var(--background-color-for-avatar-when-highlighted, #ccc)',
   backgroundColorForStampAsPositive:
     'var(--background-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 85%))',
+  backgroundColorForLocalizedMultilineTextInputLabel:
+    'var(--background-color-for-localized-multiline-text-input-label, hsl(195, 35.2941176471%, 98%))',
+  backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
+    'var(--background-color-for-localized-multiline-text-input-label-when-disabled, hsl(195, 35.2941176471%, 98%))',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',
@@ -693,6 +711,10 @@ const designTokens = {
     'var(--border-color-for-stamp-as-primary, hsl(172.9608938547486, 100%, 25%))',
   borderColorForStampAsSecondary:
     'var(--border-color-for-stamp-as-secondary, hsl(0, 0%, 60%))',
+  borderColorForLocalizedMultilineTextInputLabel:
+    'var(--border-color-for-localized-multiline-text-input-label, #ccc)',
+  borderColorForLocalizedMultilineTextInputLabelWhenReadonly:
+    'var(--border-color-for-localized-multiline-text-input-label-when-readonly, #ccc)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -730,6 +752,8 @@ const designTokens = {
   fontColorForTextWhenInverted:
     'var(--font-color-for-text-when-inverted, #fff)',
   fontColorForTableHeader: 'var(--font-color-for-table-header, #fff)',
+  fontColorForLocalizedMultilineTextInputLabel:
+    'var(--font-color-for-localized-multiline-text-input-label, hsl(0, 0%, 60%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
@@ -757,6 +781,8 @@ const designTokens = {
   fontSizeForAvatarAsSmall: 'var(--font-size-for-avatar-as-small, 1rem)',
   fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1.5rem)',
   fontSizeForAvatarAsBig: 'var(--font-size-for-avatar-as-big, 3rem)',
+  fontSizeForLocalizedMultilineTextInputLabel:
+    'var(--font-size-for-localized-multiline-text-input-label, 0.9231rem)',
   iconColorForDatetimeInputIcon:
     'var(--icon-color-for-datetime-input-icon, #1a1a1a)',
   iconColorForDatetimeInputIconWhenHovered:
