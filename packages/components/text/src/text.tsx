@@ -12,6 +12,7 @@ import {
 } from './text.styles';
 
 type TBasicTextProps = {
+  id?: string;
   intlMessage?: MessageDescriptor & {
     values?: Record<string, React.ReactNode>;
   };
@@ -86,10 +87,15 @@ const Headline = (props: THeadlineProps) => {
       false,
       'ui-kit/Text: You attempt to render a TextHeadline without specifying `as` prop.'
     );
-    return <Text intlMessage={props.intlMessage}>{props.children}</Text>;
+    return (
+      <Text id={props.id} intlMessage={props.intlMessage}>
+        {props.children}
+      </Text>
+    );
   }
   return (
     <HeadlineElement
+      id={props.id}
       css={headlineStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
@@ -124,11 +130,16 @@ const Subheadline = (props: TSubheadlineProps) => {
       false,
       'ui-kit/Text: You attempt to render TextSubheadline without specifying `as` prop.'
     );
-    return <Text intlMessage={props.intlMessage}>{props.children}</Text>;
+    return (
+      <Text id={props.id} intlMessage={props.intlMessage}>
+        {props.children}
+      </Text>
+    );
   }
 
   return (
     <SubheadlineElement
+      id={props.id}
       title={props.title}
       css={subheadlineStyles(props)}
       {...filterDataAttributes(props)}
@@ -146,6 +157,7 @@ const Wrap = (props: TWrapProps) => {
   warnIfMissingContent(props, 'TextWrap');
   return (
     <div
+      id={props.id}
       css={wrapStyles()}
       title={props.title}
       {...filterDataAttributes(props)}
@@ -181,6 +193,7 @@ const Body = (props: TBodyProps) => {
     const BodyElement = props.as;
     return (
       <BodyElement
+        id={props.id}
         css={bodyStyles(props)}
         title={props.title}
         {...filterDataAttributes(props)}
@@ -192,6 +205,7 @@ const Body = (props: TBodyProps) => {
 
   return (
     <p
+      id={props.id}
       css={bodyStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
@@ -203,7 +217,6 @@ const Body = (props: TBodyProps) => {
 Body.displayName = 'TextBody';
 
 export type TDetailProps = {
-  id?: string;
   isBold?: boolean;
   isItalic?: boolean;
   isStrikethrough?: boolean;

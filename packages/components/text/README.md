@@ -23,6 +23,7 @@ import Text from '@commercetools-uikit/text';
 | `as`          | `String`         |    ✅    | `['h1', 'h2', 'h3']` | -       | -                                                                      |
 | `children`    | `PropTypes.node` | ✅ (\*)  | -                    | -       | -                                                                      |
 | `intlMessage` | `intl message`   | ✅ (\*)  | -                    | -       | An `intl` message object that will be rendered with `FormattedMessage` |
+| `id`          | `String`         |    -     | -                    | -       | Used as HTML id property                                               |
 | `title`       | `String`         |    -     | -                    | -       | Text to show in a tooltip on hover over the element                    |
 | `truncate`    | `Bool`           |    -     | -                    | `false` | Option for truncate content in case the screen has small width         |
 
@@ -51,6 +52,7 @@ import Text from '@commercetools-uikit/text';
 | Props         | Type             | Required | Values                                                            | Default |                                                                        |
 | ------------- | ---------------- | :------: | ----------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
 | `as`          | `String`         |    ✅    | `['h4', 'h5']`                                                    | -       |                                                                        |
+| `id`          | `String`         |    -     | -                                                                 | -       | Used as HTML id property                                               |
 | `isBold`      | `Boolean`        |    -     | -                                                                 | `false` |                                                                        |
 | `tone`        | `String`         |    -     | `['primary', 'secondary', 'information', 'positive', 'negative']` | -       |                                                                        |
 | `children`    | `PropTypes.node` | ✅ (\*)  | -                                                                 | -       |                                                                        |
@@ -99,6 +101,7 @@ import Text from '@commercetools-uikit/text';
 | Props             | Type             | Required | Values                                                                        | Default |                                                                        |
 | ----------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
 | `as`              | `String`         |    -     | `['p', 'span']`                                                               | -       |                                                                        |
+| `id`              | `String`         |    -     | -                                                                             | -       | Used as HTML id property                                               |
 | `isBold`          | `Boolean`        |    -     | -                                                                             | `false` |                                                                        |
 | `isItalic`        | `Boolean`        |    -     | -                                                                             | `false` |                                                                        |
 | `isStrikethrough` | `Boolean`        |    -     | -                                                                             | `false` |                                                                        |
@@ -135,6 +138,7 @@ import Text from '@commercetools-uikit/text';
 | Props             | Type             | Required | Values                                                                        | Default |                                                                                    |
 | ----------------- | ---------------- | :------: | ----------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------- |
 | `as`              | `string`         |    -     | `['small', 'span']` `[^]`                                                     | `false` |                                                                                    |
+| `id`              | `String`         |    -     | -                                                                             | -       | Used as HTML id property                                                           |
 | `isBold`          | `Boolean`        |    -     | -                                                                             | `false` |                                                                                    |
 | `isItalic`        | `Boolean`        |    -     | -                                                                             | `false` |                                                                                    |
 | `isStrikethrough` | `Boolean`        |    -     | -                                                                             | `false` |                                                                                    |
