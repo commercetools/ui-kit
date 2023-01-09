@@ -196,6 +196,7 @@ export const themes = {
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenReadonly: '#ccc',
+    borderColorForSelectInputWhenReadonly: '#ccc',
     borderColorForInputWhenError: '#e60050',
     borderColorForInputWhenWarning: '#f16d0e',
     borderColorForInputWhenHovered: '#00b39e',
@@ -448,7 +449,7 @@ export const themes = {
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
-    borderColorForInputWhenReadonly: 'none',
+    borderColorForInputWhenReadonly: 'hsl(0, 0%, 90%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForButtonAsIcon: '#ccc',
     borderColorForButtonAsIconAsInfo: '#ccc',
@@ -480,6 +481,7 @@ export const themes = {
       'hsl(25.110132158590307, 89.0196078431%, 85%)',
     borderColorForContentNotificationWhenSuccess:
       'hsl(172.9608938547486, 100%, 85%)',
+    borderColorForSelectInputWhenReadonly: 'none',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -861,6 +863,8 @@ const designTokens = {
     'var(--border-color-for-input-when-disabled, #ccc)',
   borderColorForInputWhenReadonly:
     'var(--border-color-for-input-when-readonly, #ccc)',
+  borderColorForSelectInputWhenReadonly:
+    'var(--border-color-for-select-input-when-readonly, #ccc)',
   borderColorForInputWhenError:
     'var(--border-color-for-input-when-error, #e60050)',
   borderColorForInputWhenWarning:

@@ -518,6 +518,9 @@ decisionGroupsByTheme:
         border-color-for-input-when-readonly:
           description: ''
           choice: color-neutral
+        border-color-for-select-input-when-readonly:
+          description: ''
+          choice: color-neutral
         border-color-for-input-when-error:
           description: ''
           choice: color-error
@@ -1080,7 +1083,7 @@ decisionGroupsByTheme:
         border-color-for-input-when-hovered:
           choice: color-neutral
         border-color-for-input-when-readonly:
-          choice: 'none'
+          choice: color-neutral-90
         border-color-for-input-when-focused:
           choice: color-primary
         border-color-for-button-as-icon:
@@ -1129,6 +1132,8 @@ decisionGroupsByTheme:
           choice: color-warning-85
         border-color-for-content-notification-when-success:
           choice: color-primary-85
+        border-color-for-select-input-when-readonly:
+          choice: 'none'
 
     borderRadiuses:
       label: Border radiuses

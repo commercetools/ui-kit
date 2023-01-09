@@ -178,6 +178,7 @@
   "--border-color-for-input-when-focused": "#00b39e",
   "--border-color-for-input-when-disabled": "#ccc",
   "--border-color-for-input-when-readonly": "#ccc",
+  "--border-color-for-select-input-when-readonly": "#ccc",
   "--border-color-for-input-when-error": "#e60050",
   "--border-color-for-input-when-warning": "#f16d0e",
   "--border-color-for-input-when-hovered": "#00b39e",

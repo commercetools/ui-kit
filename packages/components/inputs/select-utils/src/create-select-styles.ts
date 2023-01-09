@@ -56,7 +56,8 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       if (state.isFocused) return designTokens.borderColorForInputWhenFocused;
       if (props.hasError) return designTokens.borderColorForInputWhenError;
       if (props.hasWarning) return designTokens.borderColorForInputWhenWarning;
-      if (props.isReadOnly) return designTokens.borderColorForInputWhenReadonly;
+      if (props.isReadOnly)
+        return designTokens.borderColorForSelectInputWhenReadonly;
       return designTokens.borderColorForInput;
     })(),
     borderWidth: (() => {
