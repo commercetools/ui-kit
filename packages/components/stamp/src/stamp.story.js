@@ -47,11 +47,15 @@ storiesOf('Components|Stamps', module)
                       color={themedValue(undefined, iconColorsMap[tone])}
                       size="medium"
                     />
-                    <Text.Detail>{'Hello'}</Text.Detail>
+                    <Text.Detail tone={themedValue('', 'inherit')}>
+                      {'Hello'}
+                    </Text.Detail>
                   </SpacingsInline>
                 </Stamp>
                 <Stamp tone={tone} isCondensed={boolean('isCondensed', false)}>
-                  <Text.Detail>{`tone="${tone}"`}</Text.Detail>
+                  <Text.Detail
+                    tone={themedValue('', 'inherit')}
+                  >{`tone="${tone}"`}</Text.Detail>
                 </Stamp>
               </SpacingsInline>
             );

@@ -1,7 +1,6 @@
-// TODO: @redesign cleanup
 import type { ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 type Tone =
   | 'critical'
@@ -21,7 +20,6 @@ type Props = {
    */
   isCondensed: boolean;
   children: ReactNode;
-  overrideTextColor?: boolean;
 };
 
 export const availableTones: Tone[] = [
@@ -32,6 +30,40 @@ export const availableTones: Tone[] = [
   'primary',
   'secondary',
 ];
+
+const tonesStylesMap = {
+  critical: {
+    backgroundColor: designTokens.colorError95,
+    borderColor: designTokens.borderColorForStampWhenError,
+    color: designTokens.colorError40,
+  },
+  warning: {
+    backgroundColor: designTokens.colorWarning95,
+    borderColor: designTokens.borderColorForStampWhenWarning,
+    color: designTokens.colorWarning40,
+  },
+  positive: {
+    backgroundColor: designTokens.backgroundColorForStampAsPositive,
+    borderColor: designTokens.borderColorForStampAsPositive,
+    color: designTokens.colorPrimary25,
+  },
+  information: {
+    backgroundColor: designTokens.colorInfo95,
+    borderColor: designTokens.borderColorForStampAsInformation,
+    color: designTokens.colorInfo40,
+  },
+  primary: {
+    backgroundColor: designTokens.colorPrimary95,
+    borderColor: designTokens.borderColorForStampAsPrimary,
+    color: designTokens.colorPrimary25,
+  },
+  secondary: {
+    backgroundColor: designTokens.colorNeutral95,
+    borderColor: designTokens.borderColorForStampAsSecondary,
+    color: designTokens.colorNeutral40,
+  },
+};
+
 const getPaddingStyle = (props: Props) => {
   if (props.isCondensed)
     return css`
@@ -43,108 +75,32 @@ const getPaddingStyle = (props: Props) => {
 };
 
 const getToneStyles = (props: Props) => {
-  switch (props.tone) {
-    case 'critical': {
-      return css`
-        background-color: ${designTokens.colorError95};
-        border: 1px solid ${designTokens.borderColorForStampWhenError};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorError40 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    case 'warning': {
-      return css`
-        background-color: ${designTokens.colorWarning95};
-        border: 1px solid ${designTokens.borderColorForStampWhenWarning};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorWarning40 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    case 'positive': {
-      return css`
-        background-color: ${designTokens.backgroundColorForStampAsPositive};
-        border: 1px solid ${designTokens.borderColorForStampAsPositive};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorPrimary25 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    case 'information': {
-      return css`
-        background-color: ${designTokens.colorInfo95};
-        border: 1px solid ${designTokens.borderColorForStampAsInformation};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorInfo40 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    case 'primary': {
-      return css`
-        background-color: ${designTokens.colorPrimary95};
-        border: 1px solid ${designTokens.borderColorForStampAsPrimary};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorPrimary25 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    case 'secondary': {
-      return css`
-        background-color: ${designTokens.colorNeutral95};
-        border: 1px solid ${designTokens.borderColorForStampAsSecondary};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorNeutral40 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    default:
-      return css``;
+  if (!props.tone || !tonesStylesMap[props.tone]) {
+    return css``;
   }
+
+  const toneStyles = tonesStylesMap[props.tone || ''];
+  return css`
+    background-color: ${toneStyles.backgroundColor};
+    border: 1px solid ${toneStyles.borderColor};
+    color: ${toneStyles.color};
+  `;
 };
 
-const getStampStyles = (props: Props) => {
+const getStampStyles = () => {
   return css`
-    color: ${props.overrideTextColor ? 'inherit' : designTokens.colorSolid};
+    color: ${designTokens.colorSolid};
     font-size: ${designTokens.fontSizeForStamp};
     border-radius: ${designTokens.borderRadiusForStamp};
   `;
 };
 
-const Stamp = (props: Props) => {
-  const { themedValue } = useTheme();
-  const overrideTextColor = props.overrideTextColor ?? themedValue(false, true);
+const Stamp = (props: Props) => (
+  <div css={[getStampStyles(), getToneStyles(props), getPaddingStyle(props)]}>
+    {props.children}
+  </div>
+);
 
-  return (
-    <div
-      css={[
-        getStampStyles({ ...props, overrideTextColor }),
-        getToneStyles({ ...props, overrideTextColor }),
-        getPaddingStyle(props),
-      ]}
-    >
-      {props.children}
-    </div>
-  );
-};
 const defaultProps: Pick<Props, 'isCondensed'> = {
   isCondensed: false,
 };
