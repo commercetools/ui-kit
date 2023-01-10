@@ -143,7 +143,6 @@ choiceGroupsByTheme:
       label: Shadows
       prefix: shadow
       choices:
-        # Legacy shadows
         shadow-0: 'none'
         shadow-1: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
         shadow-2: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)'
@@ -161,10 +160,6 @@ choiceGroupsByTheme:
         shadow-14: '0 0 0.5px rgba(0, 0, 0, 0.1)'
         shadow-15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)'
         shadow-16: '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)'
-        # New shadows
-        shadow-overlay-5: '0 1px 5px 0 rgb(0 0 0 / 5%)'
-        shadow-overlay-15: '0 2px 5px 0 rgb(0 0 0 / 15%)'
-        shadow-raised-25: '0 0 2px 0 rgb(0 0 0 / 25%)'
     constraints:
       label: Constraints
       prefix: constraint
@@ -1181,7 +1176,7 @@ decisionGroupsByTheme:
         shadow-for-button-when-disabled:
           choice: shadow-0
         shadow-for-card-when-raised:
-          choice: shadow-overlay-5
+          choice: '0 1px 5px 0 rgba(0, 0, 0, 0.05)'
         shadow-for-input:
           choice: shadow-0
         shadow-for-input-when-focused:

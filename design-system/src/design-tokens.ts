@@ -99,9 +99,6 @@ export const themes = {
     shadow15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
     shadow16:
       '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)',
-    shadowOverlay5: '0 1px 5px 0 rgb(0 0 0 / 5%)',
-    shadowOverlay15: '0 2px 5px 0 rgb(0 0 0 / 15%)',
-    shadowRaised25: '0 0 2px 0 rgb(0 0 0 / 25%)',
     constraintScale: '100%',
     constraint1: '42px',
     constraint2: '84px',
@@ -463,7 +460,7 @@ export const themes = {
     shadowForButtonWhenHovered: 'none',
     shadowForButtonWhenActive: 'none',
     shadowForButtonWhenDisabled: 'none',
-    shadowForCardWhenRaised: '0 1px 5px 0 rgb(0 0 0 / 5%)',
+    shadowForCardWhenRaised: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
     shadowForInput: 'none',
     shadowForInputWhenFocused: 'inset 0 0 0 1px var(--color-primary)',
     shadowForInputWhenError: 'inset 0 0 0 1px var(--color-error)',
@@ -579,9 +576,6 @@ const designTokens = {
     'var(--shadow-15, 0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12))',
   shadow16:
     'var(--shadow-16, 0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25))',
-  shadowOverlay5: 'var(--shadow-overlay-5, 0 1px 5px 0 rgb(0 0 0 / 5%))',
-  shadowOverlay15: 'var(--shadow-overlay-15, 0 2px 5px 0 rgb(0 0 0 / 15%))',
-  shadowRaised25: 'var(--shadow-raised-25, 0 0 2px 0 rgb(0 0 0 / 25%))',
   constraintScale: 'var(--constraint-scale, 100%)',
   constraint1: 'var(--constraint-1, 42px)',
   constraint2: 'var(--constraint-2, 84px)',
