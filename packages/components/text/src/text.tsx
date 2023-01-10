@@ -11,6 +11,15 @@ import {
   wrapStyles,
 } from './text.styles';
 
+type Tone =
+  | 'primary'
+  | 'secondary'
+  | 'information'
+  | 'positive'
+  | 'negative'
+  | 'critical'
+  | 'inherit';
+
 type TBasicTextProps = {
   id?: string;
   intlMessage?: MessageDescriptor & {
@@ -111,13 +120,7 @@ export type TSubheadlineProps = {
   as?: 'h4' | 'h5';
   truncate?: boolean;
   isBold?: boolean;
-  tone?:
-    | 'primary'
-    | 'secondary'
-    | 'information'
-    | 'positive'
-    | 'negative'
-    | 'critical';
+  tone?: Tone;
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -174,14 +177,7 @@ export type TBodyProps = {
   isBold?: boolean;
   isItalic?: boolean;
   isStrikethrough?: boolean;
-  tone?:
-    | 'primary'
-    | 'secondary'
-    | 'information'
-    | 'positive'
-    | 'negative'
-    | 'inverted'
-    | 'critical';
+  tone?: Tone | 'inverted';
   truncate?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
@@ -222,15 +218,7 @@ export type TDetailProps = {
   isItalic?: boolean;
   isStrikethrough?: boolean;
   as?: 'span' | 'small';
-  tone?:
-    | 'primary'
-    | 'secondary'
-    | 'information'
-    | 'positive'
-    | 'negative'
-    | 'warning'
-    | 'inverted'
-    | 'critical';
+  tone?: Tone | 'warning' | 'inverted';
   truncate?: boolean;
   'aria-labelledby'?: string;
 } & TBasicTextProps &
