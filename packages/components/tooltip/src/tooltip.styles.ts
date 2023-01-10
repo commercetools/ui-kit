@@ -54,7 +54,7 @@ export const getBodyStyles = ({
     // so hovering over the tooltip when the tooltip overlaps the component
     pointerEvents: 'none',
     width: constraint === 'auto' ? 'auto' : undefined,
-    zIndex: 1,
+    zIndex: 1000,
     ...customStyles,
   };
 };
