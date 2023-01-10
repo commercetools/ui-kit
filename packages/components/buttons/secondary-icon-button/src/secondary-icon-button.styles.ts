@@ -1,3 +1,4 @@
+import type { ElementType } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TSecondaryButtonProps } from './secondary-icon-button';
@@ -42,7 +43,9 @@ const getColorStyle = (props: Pick<TSecondaryButtonProps, 'color'>) => {
   }
 };
 
-const getBaseStyles = (props: TSecondaryButtonProps) => {
+const getBaseStyles = <TStringOrComponent extends ElementType = 'button'>(
+  props: TSecondaryButtonProps<TStringOrComponent>
+) => {
   return [
     css`
       display: inline-flex;
