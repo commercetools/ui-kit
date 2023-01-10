@@ -12,7 +12,6 @@ import {
   type FocusEventHandler,
   type MutableRefObject,
 } from 'react';
-import { css } from '@emotion/react';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -368,31 +367,24 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
             })}
           </Stack>
           {shouldRenderLanguagesControl && (
-            <div
-              css={css`
-                align-self: flex-start;
-              `}
-            >
-              <LocalizedInputToggle
-                isOpen={areLanguagesOpened}
-                onClick={
-                  toggleLanguages as (
-                    event:
-                      | MouseEvent<HTMLButtonElement>
-                      | KeyboardEvent<HTMLButtonElement>
-                      | boolean
-                  ) => void
-                }
-                isDisabled={
-                  areLanguagesOpened &&
-                  Boolean(
-                    hasErrorInRemainingLanguages ||
-                      hasWarningInRemainingLanguages
-                  )
-                }
-                remainingLocalizations={languages.length - 1}
-              />
-            </div>
+            <LocalizedInputToggle
+              isOpen={areLanguagesOpened}
+              onClick={
+                toggleLanguages as (
+                  event:
+                    | MouseEvent<HTMLButtonElement>
+                    | KeyboardEvent<HTMLButtonElement>
+                    | boolean
+                ) => void
+              }
+              isDisabled={
+                areLanguagesOpened &&
+                Boolean(
+                  hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
+                )
+              }
+              remainingLocalizations={languages.length - 1}
+            />
           )}
         </Stack>
       </Constraints.Horizontal>
