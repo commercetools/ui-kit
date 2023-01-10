@@ -315,4 +315,23 @@ describe('<Detail>', () => {
       );
     });
   });
+
+  describe('when aria-labelledby attribute is provided', () => {
+    it('should use the attribute and link the text to the label', () => {
+      const labelId = 'text-detail-label';
+      const labelText = 'Number of projects:';
+      const textContent = '23';
+
+      render(
+        <div>
+          <Text.Headline as="h2" id={labelId}>
+            {labelText}
+          </Text.Headline>
+          <Text.Detail aria-labelledby={labelId}>{textContent}</Text.Detail>
+        </div>
+      );
+
+      expect(screen.getByLabelText(labelText)).toHaveTextContent(textContent);
+    });
+  });
 });
