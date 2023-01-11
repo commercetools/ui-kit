@@ -76,10 +76,7 @@ const defaultProps: Pick<
 };
 
 const ButtonIcon = <TStringOrComponent extends ElementType = 'button'>(
-  props: Pick<
-    TFlatButtonProps<TStringOrComponent>,
-    'as' | 'isDisabled' | 'tone' | 'icon'
-  >
+  props: TFlatButtonProps<TStringOrComponent>
 ) => {
   if (!props.icon) return null;
   const iconColor = getButtonIconColor(props);

@@ -13,7 +13,7 @@ type SelectDropdownOptionTypesKeys = keyof typeof SELECT_DROPDOWN_OPTION_TYPES;
 type TProps = {
   data?: TData;
   noValueFallback?: string;
-  optionType?: typeof SELECT_DROPDOWN_OPTION_TYPES[SelectDropdownOptionTypesKeys];
+  optionType?: (typeof SELECT_DROPDOWN_OPTION_TYPES)[SelectDropdownOptionTypesKeys];
 } & OptionProps;
 
 export const MultiplePropertiesSelectInputOption = (props: TProps) => {

@@ -32,8 +32,8 @@ type CustomText = BaseText & {
   subscript?: string;
   strikethrough?: string;
 };
-export type Format = typeof BLOCK_TAGS[keyof typeof BLOCK_TAGS] &
-  typeof MARK_TAGS[keyof typeof MARK_TAGS];
+export type Format = (typeof BLOCK_TAGS)[keyof typeof BLOCK_TAGS] &
+  (typeof MARK_TAGS)[keyof typeof MARK_TAGS];
 
 // Slate's way of providing custom type annotations comes down to extending `CustomTypes` interface
 // more: https://docs.slatejs.org/concepts/12-typescript
