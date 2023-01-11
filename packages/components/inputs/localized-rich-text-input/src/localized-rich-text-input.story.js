@@ -20,23 +20,22 @@ import LocalizedRichTextInput from './localized-rich-text-input';
 const initialValue = '';
 
 const StoryWrapper = (props) => {
-  const onClickExpand = useCallback(() => {
-    alert('expand');
-  }, []);
-
   const [value, setValue] = useState({
     en: initialValue,
     de: initialValue,
     'nan-Hant-TW': initialValue,
   });
 
-  const onChange = useCallback((event) => {
-    setValue({
-      ...value,
-      [event.target.language]: event.target.value,
-    });
-    action('onChange')(event);
-  }, []);
+  const onChange = useCallback(
+    (event) => {
+      setValue({
+        ...value,
+        [event.target.language]: event.target.value,
+      });
+      action('onChange')(event);
+    },
+    [value]
+  );
 
   const defaultExpandLanguages = boolean('defaultExpandLanguages', false);
   const defaultExpandMultilineText = boolean(
