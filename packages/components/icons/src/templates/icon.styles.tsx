@@ -7,14 +7,14 @@ import { designTokens } from '@commercetools-uikit/design-system';
 export type Props = {
   color?:
     | 'solid'
-    | 'neutral40'
     | 'neutral60'
     | 'surface'
     | 'info'
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'inherit';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & { className: string };
@@ -62,8 +62,8 @@ const getColor = (color: Props['color']) => {
     case 'solid':
       iconColor = designTokens.colorSolid;
       break;
-    case 'neutral40':
-      iconColor = designTokens.colorNeutral40;
+    case 'inherit':
+      iconColor = designTokens.colorInherit;
       break;
     case 'neutral60':
       iconColor = designTokens.colorNeutral60;
@@ -95,7 +95,7 @@ const getColor = (color: Props['color']) => {
       color,
       `ui-kit/Icon: the specified color '${color}' is not supported.`
     );
-    return 'inherit';
+    return designTokens.colorInherit;
   }
 
   return iconColor;
