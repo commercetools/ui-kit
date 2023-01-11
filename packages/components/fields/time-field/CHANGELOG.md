@@ -1,5 +1,18 @@
 # @commercetools-uikit/time-field
 
+## 15.9.0
+
+### Patch Changes
+
+- Updated dependencies [[`0276b8dbc`](https://github.com/commercetools/ui-kit/commit/0276b8dbc5778ec6e37922835448d76ae314332e), [`3647dbbc0`](https://github.com/commercetools/ui-kit/commit/3647dbbc0fd00b51536474631e8dcb15795e69ff), [`f2171bf37`](https://github.com/commercetools/ui-kit/commit/f2171bf373a1e001f20f8ef59286d126af508808), [`ae3c97a59`](https://github.com/commercetools/ui-kit/commit/ae3c97a59c9b63a77ea006ad3022399642b7ac20), [`251e3bc4e`](https://github.com/commercetools/ui-kit/commit/251e3bc4e1b4496c02721f986a05b4fa86596610), [`825788e93`](https://github.com/commercetools/ui-kit/commit/825788e934a73f722c04eb0784c7e13199bd23d7), [`0276b8dbc`](https://github.com/commercetools/ui-kit/commit/0276b8dbc5778ec6e37922835448d76ae314332e), [`e8fdf8925`](https://github.com/commercetools/ui-kit/commit/e8fdf8925e75214ad3c07f12d8ac218a64e3818d)]:
+  - @commercetools-uikit/time-input@15.9.0
+  - @commercetools-uikit/design-system@15.9.0
+  - @commercetools-uikit/constraints@15.9.0
+  - @commercetools-uikit/field-label@15.9.0
+  - @commercetools-uikit/spacings-stack@15.9.0
+  - @commercetools-uikit/field-errors@15.9.0
+  - @commercetools-uikit/utils@15.9.0
+
 ## 15.8.0
 
 ### Patch Changes
