@@ -21,8 +21,9 @@ type Props = {
    */
   isCondensed: boolean;
   children: ReactNode;
-  overrideTextColor?: boolean;
 };
+
+type StylesFunctionParams = Props & { overrideTextColor?: boolean };
 
 export const availableTones: Tone[] = [
   'critical',
@@ -32,7 +33,7 @@ export const availableTones: Tone[] = [
   'primary',
   'secondary',
 ];
-const getPaddingStyle = (props: Props) => {
+const getPaddingStyle = (props: StylesFunctionParams) => {
   if (props.isCondensed)
     return css`
       padding: ${designTokens.paddingForStampAsCondensed};
@@ -42,7 +43,7 @@ const getPaddingStyle = (props: Props) => {
   `;
 };
 
-const getToneStyles = (props: Props) => {
+const getToneStyles = (props: StylesFunctionParams) => {
   switch (props.tone) {
     case 'critical': {
       return css`
@@ -121,7 +122,7 @@ const getToneStyles = (props: Props) => {
   }
 };
 
-const getStampStyles = (props: Props) => {
+const getStampStyles = (props: StylesFunctionParams) => {
   return css`
     color: ${props.overrideTextColor ? 'inherit' : designTokens.colorSolid};
     font-size: ${designTokens.fontSizeForStamp};
@@ -131,7 +132,7 @@ const getStampStyles = (props: Props) => {
 
 const Stamp = (props: Props) => {
   const { themedValue } = useTheme();
-  const overrideTextColor = props.overrideTextColor ?? themedValue(false, true);
+  const overrideTextColor = themedValue(false, true);
 
   return (
     <div
