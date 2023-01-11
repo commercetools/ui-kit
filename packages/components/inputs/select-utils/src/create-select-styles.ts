@@ -72,7 +72,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       if (props.isReadOnly) return 'default';
       return 'pointer';
     })(),
-    padding: `0 ${designTokens.spacing20}`,
+    padding: `0 ${designTokens.paddingForInput}`,
     transition: `border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard}`,
     outline: 0,
@@ -193,7 +193,7 @@ const optionStyles = () => (base: TBase, state: TState) => {
         if (!state.isDisabled) return designTokens.fontColorForInput;
         return base.color;
       })(),
-      backgroundColor: designTokens.backgroundColorForInputWhenSelected,
+      backgroundColor: designTokens.backgroundColorForInputWhenActive,
     },
   };
 };
@@ -229,7 +229,7 @@ const valueContainerStyles = (props: TProps) => (base: TBase) => {
     fill:
       props.isDisabled || props.isReadOnly
         ? designTokens.fontColorForInputWhenDisabled
-        : base.fontColorForInput,
+        : designTokens.fontColorForSelectInputIcon,
   };
 };
 
@@ -267,11 +267,11 @@ const groupHeadingStyles = () => (base: TBase) => {
     fontSize: designTokens.fontSizeSmall,
     textTransform: 'none',
     fontWeight: 'bold',
-    margin: `0 ${designTokens.marginForGroupHeadingSelectInputOptions}`,
     padding: `${designTokens.spacing20} ${designTokens.paddingForGroupHeadingSelectInputOptions}`,
     '&:empty': {
       padding: 0,
     },
+    borderBottom: `1px solid ${designTokens.borderColorForGroupHeadingSelectInputOptions}`,
   };
 };
 

@@ -484,6 +484,9 @@ decisionGroupsByTheme:
           choice: color-warning
         background-color-for-content-notification-icon-when-success:
           choice: color-primary
+        background-color-for-input-when-active:
+          description: ''
+          choice: color-accent-95
 
     borders:
       label: Borders
@@ -583,6 +586,8 @@ decisionGroupsByTheme:
           choice: color-warning
         border-color-for-content-notification-when-success:
           choice: color-primary
+        border-color-for-group-heading-select-input-options:
+          choice: 'none'
 
     borderRadiuses:
       label: Border Radius
@@ -716,8 +721,6 @@ decisionGroupsByTheme:
           choice: color-solid
         font-color-for-search-input-icon-when-hovered:
           choice: color-solid
-        font-color-for-localized-multiline-text-input-label:
-          choice: color-neutral-60
 
     heights:
       label: Height
@@ -954,7 +957,7 @@ decisionGroupsByTheme:
         padding-bottom-for-select-input-options:
           choice: spacing-10
         padding-for-group-heading-select-input-options:
-          choice: spacing-10
+          choice: spacing-20
 
     shadows:
       label: Shadows
@@ -1065,6 +1068,12 @@ decisionGroupsByTheme:
           choice: color-warning-95
         background-color-for-content-notification-icon-when-success:
           choice: color-primary-95
+        background-color-for-select-input-option-when-hovered:
+          description: ''
+          choice: color-accent-98
+        background-color-for-input-when-active:
+          description: ''
+          choice: color-info-95
 
     borders:
       label: Borders
@@ -1145,6 +1154,8 @@ decisionGroupsByTheme:
           choice: color-primary-85
         border-color-for-select-input-when-readonly:
           choice: 'none'
+        border-color-for-group-heading-select-input-options:
+          choice: color-neutral-90
 
     borderRadiuses:
       label: Border radiuses
@@ -1457,11 +1468,11 @@ decisionGroupsByTheme:
         padding-right-for-select-input-options:
           choice: spacing-30
         padding-top-for-select-input-options:
-          choice: spacing-10
-        padding-bottom-for-select-input-options:
-          choice: spacing-10
-        padding-for-group-heading-select-input-options:
           choice: spacing-20
+        padding-bottom-for-select-input-options:
+          choice: spacing-20
+        padding-for-group-heading-select-input-options:
+          choice: spacing-30
 
     shadows:
       label: Shadows

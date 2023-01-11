@@ -185,6 +185,7 @@ export const themes = {
     backgroundColorForContentNotificationIconWhenInfo: '#078cdf',
     backgroundColorForContentNotificationIconWhenWarning: '#f16d0e',
     backgroundColorForContentNotificationIconWhenSuccess: '#00b39e',
+    backgroundColorForInputWhenActive: 'hsl(195, 35.2941176471%, 95%)',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
@@ -225,6 +226,7 @@ export const themes = {
     borderColorForContentNotificationWhenInfo: '#078cdf',
     borderColorForContentNotificationWhenWarning: '#f16d0e',
     borderColorForContentNotificationWhenSuccess: '#00b39e',
+    borderColorForGroupHeadingSelectInputOptions: 'none',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -281,7 +283,6 @@ export const themes = {
     fontColorForSelectInputIcon: '#1a1a1a',
     fontColorForSearchInputIcon: '#1a1a1a',
     fontColorForSearchInputIconWhenHovered: '#1a1a1a',
-    fontColorForLocalizedMultilineTextInputLabel: 'hsl(0, 0%, 60%)',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -366,7 +367,7 @@ export const themes = {
     paddingRightForSelectInputOptions: '8px',
     paddingTopForSelectInputOptions: '4px',
     paddingBottomForSelectInputOptions: '4px',
-    paddingForGroupHeadingSelectInputOptions: '4px',
+    paddingForGroupHeadingSelectInputOptions: '8px',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -446,6 +447,10 @@ export const themes = {
     backgroundColorForContentNotificationIconWhenSuccess:
       'hsl(172.9608938547486, 100%, 95%)',
     backgroundColorForInputWhenReadonly: 'hsl(0, 0%, 95%)',
+    backgroundColorForSelectInputOptionWhenHovered:
+      'hsl(195, 35.2941176471%, 98%)',
+    backgroundColorForInputWhenActive:
+      'hsl(203.05555555555554, 93.9130434783%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -488,6 +493,7 @@ export const themes = {
     borderColorForContentNotificationWhenSuccess:
       'hsl(172.9608938547486, 100%, 85%)',
     borderColorForSelectInputWhenReadonly: 'none',
+    borderColorForGroupHeadingSelectInputOptions: 'hsl(0, 0%, 90%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -608,9 +614,9 @@ export const themes = {
       'var(--spacing-20) 0 var(--spacing-20) var(--spacing-30)',
     paddingLeftForSelectInputOptions: '16px',
     paddingRightForSelectInputOptions: '16px',
-    paddingTopForSelectInputOptions: '4px',
-    paddingBottomForSelectInputOptions: '4px',
-    paddingForGroupHeadingSelectInputOptions: '8px',
+    paddingTopForSelectInputOptions: '8px',
+    paddingBottomForSelectInputOptions: '8px',
+    paddingForGroupHeadingSelectInputOptions: '16px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -853,6 +859,8 @@ const designTokens = {
     'var(--background-color-for-content-notification-icon-when-warning, #f16d0e)',
   backgroundColorForContentNotificationIconWhenSuccess:
     'var(--background-color-for-content-notification-icon-when-success, #00b39e)',
+  backgroundColorForInputWhenActive:
+    'var(--background-color-for-input-when-active, hsl(195, 35.2941176471%, 95%))',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',
@@ -923,6 +931,8 @@ const designTokens = {
     'var(--border-color-for-content-notification-when-warning, #f16d0e)',
   borderColorForContentNotificationWhenSuccess:
     'var(--border-color-for-content-notification-when-success, #00b39e)',
+  borderColorForGroupHeadingSelectInputOptions:
+    'var(--border-color-for-group-heading-select-input-options, none)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -1007,8 +1017,6 @@ const designTokens = {
     'var(--font-color-for-search-input-icon, #1a1a1a)',
   fontColorForSearchInputIconWhenHovered:
     'var(--font-color-for-search-input-icon-when-hovered, #1a1a1a)',
-  fontColorForLocalizedMultilineTextInputLabel:
-    'var(--font-color-for-localized-multiline-text-input-label, hsl(0, 0%, 60%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
@@ -1128,7 +1136,7 @@ const designTokens = {
   paddingBottomForSelectInputOptions:
     'var(--padding-bottom-for-select-input-options, 4px)',
   paddingForGroupHeadingSelectInputOptions:
-    'var(--padding-for-group-heading-select-input-options, 4px)',
+    'var(--padding-for-group-heading-select-input-options, 8px)',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

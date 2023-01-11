@@ -208,6 +208,7 @@
   --background-color-for-content-notification-icon-when-info: #078cdf;
   --background-color-for-content-notification-icon-when-warning: #f16d0e;
   --background-color-for-content-notification-icon-when-success: #00b39e;
+  --background-color-for-input-when-active: hsl(195, 35.2941176471%, 95%);
   --border-for-button-as-secondary: none;
   --border-for-button-as-secondary-when-hovered: none;
   --border-for-button-as-secondary-when-active: none;
@@ -248,6 +249,7 @@
   --border-color-for-content-notification-when-info: #078cdf;
   --border-color-for-content-notification-when-warning: #f16d0e;
   --border-color-for-content-notification-when-success: #00b39e;
+  --border-color-for-group-heading-select-input-options: none;
   --border-radius-for-button-as-big: 6px;
   --border-radius-for-button-as-small: 4px;
   --border-radius-for-button-as-icon-as-big: 6px;
@@ -390,7 +392,7 @@
   --padding-right-for-select-input-options: 8px;
   --padding-top-for-select-input-options: 4px;
   --padding-bottom-for-select-input-options: 4px;
-  --padding-for-group-heading-select-input-options: 4px;
+  --padding-for-group-heading-select-input-options: 8px;
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),
