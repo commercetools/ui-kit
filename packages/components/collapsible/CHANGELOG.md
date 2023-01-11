@@ -1,5 +1,13 @@
 # @commercetools-uikit/collapsible
 
+## 15.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.9.0
+  - @commercetools-uikit/utils@15.9.0
+
 ## 15.8.0
 
 ### Patch Changes
