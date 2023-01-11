@@ -1,5 +1,25 @@
 # @commercetools-uikit/design-system
 
+## 15.9.0
+
+### Minor Changes
+
+- [#2368](https://github.com/commercetools/ui-kit/pull/2368) [`0276b8dbc`](https://github.com/commercetools/ui-kit/commit/0276b8dbc5778ec6e37922835448d76ae314332e) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - New design tokens for date & time input components.
+
+### Patch Changes
+
+- [#2370](https://github.com/commercetools/ui-kit/pull/2370) [`3647dbbc0`](https://github.com/commercetools/ui-kit/commit/3647dbbc0fd00b51536474631e8dcb15795e69ff) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Add new design tokens for stamp component.
+
+- [#2372](https://github.com/commercetools/ui-kit/pull/2372) [`f2171bf37`](https://github.com/commercetools/ui-kit/commit/f2171bf373a1e001f20f8ef59286d126af508808) Thanks [@emmenko](https://github.com/emmenko)! - Add new design tokens for color accent
+
+- [#2366](https://github.com/commercetools/ui-kit/pull/2366) [`ae3c97a59`](https://github.com/commercetools/ui-kit/commit/ae3c97a59c9b63a77ea006ad3022399642b7ac20) Thanks [@chloe0592](https://github.com/chloe0592)! - Updating design tokens for `avatar` component
+
+- [#2371](https://github.com/commercetools/ui-kit/pull/2371) [`251e3bc4e`](https://github.com/commercetools/ui-kit/commit/251e3bc4e1b4496c02721f986a05b4fa86596610) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update design tokens for `Text.Headline` component when used as an H2 element.
+
+- [#2367](https://github.com/commercetools/ui-kit/pull/2367) [`825788e93`](https://github.com/commercetools/ui-kit/commit/825788e934a73f722c04eb0784c7e13199bd23d7) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Added new design tokens to fix input components issues in new theme.
+
+- [#2374](https://github.com/commercetools/ui-kit/pull/2374) [`e8fdf8925`](https://github.com/commercetools/ui-kit/commit/e8fdf8925e75214ad3c07f12d8ac218a64e3818d) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Update design tokens related to the LocalizedMultilineInput component for the new theme
+
 ## 15.8.0
 
 ### Minor Changes
