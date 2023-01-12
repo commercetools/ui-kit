@@ -245,6 +245,7 @@
   --font-color-for-input-when-readonly: hsl(0, 0%, 60%);
   --font-color-for-input-when-warning: #f16d0e;
   --font-color-for-tag-remove-icon: #1a1a1a;
+  --font-color-for-tag-drag-icon: #1a1a1a;
   --font-color-for-tag-remove-icon-when-hovered: #f16d0e;
   --font-color-for-tag-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-text-when-inverted: #fff;

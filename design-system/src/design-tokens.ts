@@ -226,6 +226,7 @@ export const themes = {
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 60%)',
     fontColorForInputWhenWarning: '#f16d0e',
     fontColorForTagRemoveIcon: '#1a1a1a',
+    fontColorForTagDragIcon: '#1a1a1a',
     fontColorForTagRemoveIconWhenHovered: '#f16d0e',
     fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTextWhenInverted: '#fff',
@@ -396,6 +397,7 @@ export const themes = {
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
     fontColorForTagRemoveIcon: 'hsl(0, 0%, 40%)',
+    fontColorForTagDragIcon: 'hsl(0, 0%, 40%)',
     fontColorForTagRemoveIconWhenHovered: '#e60050',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
@@ -766,6 +768,7 @@ const designTokens = {
   fontColorForInputWhenWarning:
     'var(--font-color-for-input-when-warning, #f16d0e)',
   fontColorForTagRemoveIcon: 'var(--font-color-for-tag-remove-icon, #1a1a1a)',
+  fontColorForTagDragIcon: 'var(--font-color-for-tag-drag-icon, #1a1a1a)',
   fontColorForTagRemoveIconWhenHovered:
     'var(--font-color-for-tag-remove-icon-when-hovered, #f16d0e)',
   fontColorForTagWhenDisabled:

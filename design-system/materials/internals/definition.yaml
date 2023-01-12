@@ -302,6 +302,8 @@ componentGroups:
     description: 'Tag elements'
   tag-remove-icon:
     description: 'Tag remove icon elements'
+  tag-drag-icon:
+    description: 'Tag drag icon elements'
   tag-warning:
     description: 'Tag elements with type warning'
   text:
@@ -581,6 +583,9 @@ decisionGroupsByTheme:
           description: ''
           choice: color-warning
         font-color-for-tag-remove-icon:
+          description: ''
+          choice: color-solid
+        font-color-for-tag-drag-icon:
           description: ''
           choice: color-solid
         font-color-for-tag-remove-icon-when-hovered:
@@ -991,10 +996,10 @@ decisionGroupsByTheme:
         font-color-for-input-when-readonly:
           choice: color-neutral-40
         font-color-for-tag-remove-icon:
-          description: ''
+          choice: color-neutral-40
+        font-color-for-tag-drag-icon:
           choice: color-neutral-40
         font-color-for-tag-remove-icon-when-hovered:
-          description: ''
           choice: color-error
 
     fontSizes:

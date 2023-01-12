@@ -9,6 +9,7 @@ import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { DragIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 
 export type TTagBodyProps = {
   to?: TTagProps['to'];
@@ -128,11 +129,23 @@ const TagBody = (props: TTagBodyProps) => {
     >
       <Spacings.Inline scale="s" alignItems="center">
         {props.isDraggable && !props.isDisabled ? (
-          <DragIcon
-            data-testid="drag-icon"
-            size="medium"
-            color={themedValue('solid', 'neutral40')}
-          />
+          <AccessibleButton
+            label="Drag"
+            isDisabled={props.isDisabled}
+            css={[
+              css`
+                > svg * {
+                  fill: ${designTokens.fontColorForTagDragIcon} !important;
+                }
+              `,
+            ]}
+          >
+            <DragIcon
+              data-testid="drag-icon"
+              size="medium"
+              color={themedValue('solid', 'inherit')}
+            />
+          </AccessibleButton>
         ) : null}
         <TextComponent tone={textTone}>{props.children}</TextComponent>
       </Spacings.Inline>
