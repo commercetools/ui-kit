@@ -6,7 +6,7 @@ const Section = (props) => {
   return (
     <div
       css={css`
-        background-color: ${designTokens.colorSurface};
+        background-color: ${props.backgroundColor || designTokens.colorSurface};
         padding: 16px;
       `}
     >
@@ -15,6 +15,9 @@ const Section = (props) => {
   );
 };
 
-Section.propTypes = { children: PropTypes.node.isRequired };
+Section.propTypes = {
+  children: PropTypes.node.isRequired,
+  backgroundColor: PropTypes.string,
+};
 
 export default Section;
