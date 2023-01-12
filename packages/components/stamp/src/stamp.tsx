@@ -1,7 +1,10 @@
 // TODO: @redesign cleanup
-import type { ReactNode } from 'react';
+import { cloneElement, ReactElement, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { FormattedMessage, MessageDescriptor } from 'react-intl';
+import Text from '../../text';
+import SpacingsInline from '../../spacings/spacings-inline';
 
 type Tone =
   | 'critical'
@@ -21,9 +24,23 @@ type Props = {
    */
   isCondensed: boolean;
   children: ReactNode;
+  icon?: ReactElement;
+  message: MessageDescriptor & {
+    values?: Record<string, ReactNode>;
+  };
+  iconSize?: string;
 };
 
 type StylesFunctionParams = Props & { overrideTextColor?: boolean };
+
+const iconColorsMap = {
+  secondary: 'neutral60',
+  primary: 'primary40',
+  information: 'info',
+  positive: 'primary',
+  warning: 'warning',
+  critical: 'error',
+};
 
 export const availableTones: Tone[] = [
   'critical',
@@ -133,8 +150,29 @@ const getStampStyles = (props: StylesFunctionParams) => {
 const Stamp = (props: Props) => {
   const { themedValue } = useTheme();
   const overrideTextColor = themedValue(false, true);
+  const Icon =
+    props.icon &&
+    cloneElement(props.icon, {
+      size: 'medium',
+      color: props.tone ? iconColorsMap[props.tone] : null,
+    });
 
-  return (
+  return props.children ? (
+    <>
+      <div
+        css={[
+          getStampStyles({ ...props, overrideTextColor }),
+          getToneStyles({ ...props, overrideTextColor }),
+          getPaddingStyle(props),
+        ]}
+      >
+        {props.children}
+      </div>
+      {console.warn(
+        'Please pass messages or icons as inline props, this method will be deprecated soon. for more information, see documentation: https://uikit.commercetools.com/?path=/story/components-stamps--stamp'
+      )}
+    </>
+  ) : (
     <div
       css={[
         getStampStyles({ ...props, overrideTextColor }),
@@ -142,7 +180,12 @@ const Stamp = (props: Props) => {
         getPaddingStyle(props),
       ]}
     >
-      {props.children}
+      <SpacingsInline alignItems="center">
+        {Icon}
+        <Text.Detail tone={themedValue(undefined, 'inherit')}>
+          <FormattedMessage {...props.message} />
+        </Text.Detail>
+      </SpacingsInline>
     </div>
   );
 };
