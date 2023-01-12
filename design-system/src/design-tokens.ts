@@ -368,6 +368,7 @@ export const themes = {
     paddingTopForSelectInputOptions: '4px',
     paddingBottomForSelectInputOptions: '4px',
     paddingForGroupHeadingSelectInputOptions: '8px',
+    paddingForSelectInputMenu: 'inherit',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -617,6 +618,7 @@ export const themes = {
     paddingTopForSelectInputOptions: '8px',
     paddingBottomForSelectInputOptions: '8px',
     paddingForGroupHeadingSelectInputOptions: '16px',
+    paddingForSelectInputMenu: 'var(--spacing-10) 0',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -1137,6 +1139,7 @@ const designTokens = {
     'var(--padding-bottom-for-select-input-options, 4px)',
   paddingForGroupHeadingSelectInputOptions:
     'var(--padding-for-group-heading-select-input-options, 8px)',
+  paddingForSelectInputMenu: 'var(--padding-for-select-input-menu, inherit)',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

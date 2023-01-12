@@ -958,6 +958,8 @@ decisionGroupsByTheme:
           choice: spacing-10
         padding-for-group-heading-select-input-options:
           choice: spacing-20
+        padding-for-select-input-menu:
+          choice: 'inherit'
 
     shadows:
       label: Shadows
@@ -1473,6 +1475,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         padding-for-group-heading-select-input-options:
           choice: spacing-30
+        padding-for-select-input-menu:
+          choice: 'var(--spacing-10) 0'
 
     shadows:
       label: Shadows

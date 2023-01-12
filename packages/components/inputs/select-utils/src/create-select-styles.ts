@@ -159,7 +159,7 @@ const clearIndicatorStyles = () => (base: TBase) => ({
 const menuListStyles = () => (base: TBase) => {
   return {
     ...base,
-    padding: '0',
+    padding: designTokens.paddingForSelectInputMenu,
     borderRadius: designTokens.borderRadiusForInput,
     backgroundColor: designTokens.backgroundColorForInput,
   };
