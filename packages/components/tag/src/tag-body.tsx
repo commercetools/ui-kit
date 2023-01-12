@@ -88,7 +88,7 @@ const GetContentWrapperStyles = (props: TTagBodyProps) => {
 
 const TagBody = (props: TTagBodyProps) => {
   const { themedValue, isNewTheme } = useTheme();
-  const textTone = props.isDisabled ? 'secondary' : undefined;
+  const textTone = props.isDisabled ? 'secondary' : 'inherit';
   const TextComponent = themedValue(Text.Detail, Text.Body);
 
   return (

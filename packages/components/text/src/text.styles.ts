@@ -50,6 +50,8 @@ const getTone = (tone: string) => {
       return `color: ${designTokens.colorWarning};`;
     case 'critical':
       return `color: ${designTokens.colorError40};`;
+    case 'inherit':
+      return 'color: inherit;';
     default:
       return ``;
   }
