@@ -68,6 +68,7 @@ const GetContentWrapperStyles = (props: TTagBodyProps) => {
     border-color: ${props.type === 'warning'
       ? designTokens.colorWarning
       : designTokens.borderColorForTag};
+    color: ${designTokens.fontColorForTag};
 
     /* fixing things for IE11 ... */
     width: 100%;

@@ -225,6 +225,7 @@ export const themes = {
     fontColorForInputWhenError: '#e60050',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 60%)',
     fontColorForInputWhenWarning: '#f16d0e',
+    fontColorForTag: '#1a1a1a',
     fontColorForTagRemoveIcon: '#1a1a1a',
     fontColorForTagDragIcon: '#1a1a1a',
     fontColorForTagRemoveIconWhenHovered: '#f16d0e',
@@ -298,6 +299,7 @@ export const themes = {
     paddingForMultilineInput: 'var(--spacing-10) var(--spacing-20)',
     paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
     paddingForLocalizedMultilineTextInputLabel: '0 var(--spacing-20)',
+    paddingForTagRemoveIcon: '0 var(--spacing-10)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -466,6 +468,7 @@ export const themes = {
     paddingForMultilineInput: '8px',
     paddingForLocalizedRichTextInputLabel: '8px',
     paddingForLocalizedMultilineTextInputLabel: '0 12px',
+    paddingForTagRemoveIcon: '0 12px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -767,6 +770,7 @@ const designTokens = {
     'var(--font-color-for-input-when-readonly, hsl(0, 0%, 60%))',
   fontColorForInputWhenWarning:
     'var(--font-color-for-input-when-warning, #f16d0e)',
+  fontColorForTag: 'var(--font-color-for-tag, #1a1a1a)',
   fontColorForTagRemoveIcon: 'var(--font-color-for-tag-remove-icon, #1a1a1a)',
   fontColorForTagDragIcon: 'var(--font-color-for-tag-drag-icon, #1a1a1a)',
   fontColorForTagRemoveIconWhenHovered:
@@ -865,6 +869,8 @@ const designTokens = {
     'var(--padding-for-localized-rich-text-input-label, 0 var(--spacing-20))',
   paddingForLocalizedMultilineTextInputLabel:
     'var(--padding-for-localized-multiline-text-input-label, 0 var(--spacing-20))',
+  paddingForTagRemoveIcon:
+    'var(--padding-for-tag-remove-icon, 0 var(--spacing-10))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

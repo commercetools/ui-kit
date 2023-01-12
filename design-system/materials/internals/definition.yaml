@@ -582,6 +582,9 @@ decisionGroupsByTheme:
         font-color-for-input-when-warning:
           description: ''
           choice: color-warning
+        font-color-for-tag:
+          description: ''
+          choice: color-solid
         font-color-for-tag-remove-icon:
           description: ''
           choice: color-solid
@@ -802,6 +805,8 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-20)'
         padding-for-localized-multiline-text-input-label:
           choice: '0 var(--spacing-20)'
+        padding-for-tag-remove-icon:
+          choice: '0 var(--spacing-10)'
 
     shadows:
       label: Shadows
@@ -1194,6 +1199,9 @@ decisionGroupsByTheme:
           choice: spacing-20
         padding-for-localized-multiline-text-input-label:
           choice: '0 12px'
+        padding-for-tag-remove-icon:
+          choice: '0 12px'
+
     shadows:
       label: Shadows
       prefix: shadow
