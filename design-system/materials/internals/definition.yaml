@@ -1155,7 +1155,7 @@ decisionGroupsByTheme:
         border-color-for-content-notification-when-success:
           choice: color-primary-85
         border-color-for-select-input-when-readonly:
-          choice: 'none'
+          choice: 'color-neutral-95'
         border-color-for-group-heading-select-input-options:
           choice: color-neutral-90
 
