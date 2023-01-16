@@ -49,8 +49,7 @@ const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
   return designTokens.colorSolid;
 };
 
-const GetContentWrapperStyles = (props: TTagBodyProps) => {
-  const { isNewTheme } = useTheme();
+const getContentWrapperStyles = (props: TTagBodyProps, isNewTheme: boolean) => {
   return css`
     position: relative;
     display: flex;
@@ -97,7 +96,7 @@ const TagBody = (props: TTagBodyProps) => {
       to={props.to}
       as={props.as}
       css={[
-        GetContentWrapperStyles(props),
+        getContentWrapperStyles(props, isNewTheme),
         Boolean(props.onRemove) &&
           css`
             border-right: ${!(props.isDisabled && isNewTheme) && '0'};
@@ -144,7 +143,7 @@ const TagBody = (props: TTagBodyProps) => {
             <DragIcon
               data-testid="drag-icon"
               size="medium"
-              color={themedValue('solid', 'inherit')}
+              color={themedValue('solid', undefined)}
             />
           </AccessibleButton>
         ) : null}
