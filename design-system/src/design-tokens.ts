@@ -152,8 +152,8 @@ export const themes = {
     backgroundColorForInput: '#fff',
     backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInputWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
-    backgroundColorForInputWhenHovered: 'unset',
-    backgroundColorForInputWhenFocused: 'unset',
+    backgroundColorForInputWhenHovered: '#fff',
+    backgroundColorForInputWhenFocused: '#fff',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForTableHeader: '#213c45',
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
@@ -655,9 +655,9 @@ const designTokens = {
   backgroundColorForInputWhenDisabled:
     'var(--background-color-for-input-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForInputWhenHovered:
-    'var(--background-color-for-input-when-hovered, unset)',
+    'var(--background-color-for-input-when-hovered, #fff)',
   backgroundColorForInputWhenFocused:
-    'var(--background-color-for-input-when-focused, unset)',
+    'var(--background-color-for-input-when-focused, #fff)',
   backgroundColorForTableCellWhenHovered:
     'var(--background-color-for-table-cell-when-hovered, hsl(0, 0%, 90%))',
   backgroundColorForTableHeader:

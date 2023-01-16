@@ -391,10 +391,10 @@ decisionGroupsByTheme:
           choice: color-accent-98
         background-color-for-input-when-hovered:
           description: ''
-          choice: 'unset'
+          choice: color-surface
         background-color-for-input-when-focused:
           description: ''
-          choice: 'unset'
+          choice: color-surface
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-90
         background-color-for-table-header:
