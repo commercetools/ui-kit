@@ -137,7 +137,7 @@ const Tag = (props: TTagProps) => {
                   fill: ${designTokens.fontColorForTagRemoveIconWhenHovered};
                 }
                 fill: ${designTokens.fontColorForTagRemoveIcon};
-                &:disabled > {
+                &:disabled {
                   fill: ${designTokens.fontColorForTagWhenDisabled};
                 }
               `,
