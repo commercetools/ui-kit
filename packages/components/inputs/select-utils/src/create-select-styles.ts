@@ -118,8 +118,10 @@ const menuStyles = (props: TProps) => (base: TBase) => {
     fontFamily: 'inherit',
     margin: `${designTokens.spacing10} 0 0 0`,
     borderColor: (() => {
-      if (props.hasError) return designTokens.borderColorForInputWhenError;
-      if (props.hasWarning) return designTokens.borderColorForInputWhenWarning;
+      if (props.hasError)
+        return designTokens.borderColorForSelectInputMenuWhenError;
+      if (props.hasWarning)
+        return designTokens.borderColorForSelectInputMenuWhenWarning;
       return base.borderColorForInput;
     })(),
   };
@@ -142,10 +144,14 @@ const dropdownIndicatorStyles = (props: TProps) => (base: TBase) => {
     margin: '0',
     padding: '0',
     marginLeft: designTokens.marginForSelectInputIcon,
-    fill:
-      props.isDisabled || props.isReadOnly
-        ? designTokens.fontColorForInputWhenDisabled
-        : designTokens.fontColorForSelectInputIcon,
+    fill: (() => {
+      if (props.isDisabled || props.isReadOnly)
+        return designTokens.fontColorForInputWhenDisabled;
+      if (props.hasError) return designTokens.fontColorForSelectInputWhenError;
+      if (props.hasWarning)
+        return designTokens.fontColorForSelectInputWhenWarning;
+      return designTokens.fontColorForSelectInputIcon;
+    })(),
   };
 };
 
@@ -201,7 +207,12 @@ const optionStyles = () => (base: TBase, state: TState) => {
 const placeholderStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    color: designTokens.placeholderFontColorForInput,
+    color: (() => {
+      if (props.hasError) return designTokens.fontColorForSelectInputWhenError;
+      if (props.hasWarning)
+        return designTokens.fontColorForSelectInputWhenWarning;
+      return designTokens.placeholderFontColorForInput;
+    })(),
     width: '100%',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
@@ -254,7 +265,7 @@ const groupStyles = (props: TProps) => (base: TBase) => {
     padding: 0,
     '&:not(:first-of-type)': {
       borderTop: props.showOptionGroupDivider
-        ? `1px solid ${designTokens.colorNeutral}`
+        ? `1px solid ${designTokens.borderColorForGroupHeadingSelectInputOptions}`
         : base.borderTop,
     },
   };
@@ -271,7 +282,6 @@ const groupHeadingStyles = () => (base: TBase) => {
     '&:empty': {
       padding: 0,
     },
-    borderBottom: `1px solid ${designTokens.borderColorForGroupHeadingSelectInputOptions}`,
   };
 };
 

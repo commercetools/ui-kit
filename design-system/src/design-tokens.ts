@@ -227,6 +227,8 @@ export const themes = {
     borderColorForContentNotificationWhenWarning: '#f16d0e',
     borderColorForContentNotificationWhenSuccess: '#00b39e',
     borderColorForGroupHeadingSelectInputOptions: 'none',
+    borderColorForSelectInputMenuWhenWarning: '#f16d0e',
+    borderColorForSelectInputMenuWhenError: '#e60050',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -283,6 +285,9 @@ export const themes = {
     fontColorForSelectInputIcon: '#1a1a1a',
     fontColorForSearchInputIcon: '#1a1a1a',
     fontColorForSearchInputIconWhenHovered: '#1a1a1a',
+    fontColorForLocalizedMultilineTextInputLabel: 'hsl(0, 0%, 60%)',
+    fontColorForSelectInputWhenError: 'hsl(0, 0%, 60%)',
+    fontColorForSelectInputWhenWarning: 'hsl(0, 0%, 60%)',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -335,6 +340,7 @@ export const themes = {
     marginForViewSwitcherIcon: '0 var(--spacing-10) 0 0',
     marginForGroupHeadingSelectInputOptions: '4px',
     marginForSelectInputIcon: '4px',
+    marginLeftForSelectInputIcon: 'inherit',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -448,8 +454,7 @@ export const themes = {
     backgroundColorForContentNotificationIconWhenSuccess:
       'hsl(172.9608938547486, 100%, 95%)',
     backgroundColorForInputWhenReadonly: 'hsl(0, 0%, 95%)',
-    backgroundColorForSelectInputOptionWhenHovered:
-      'hsl(195, 35.2941176471%, 98%)',
+    backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 98%)',
     backgroundColorForInputWhenActive:
       'hsl(203.05555555555554, 93.9130434783%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
@@ -495,6 +500,8 @@ export const themes = {
       'hsl(172.9608938547486, 100%, 85%)',
     borderColorForSelectInputWhenReadonly: 'none',
     borderColorForGroupHeadingSelectInputOptions: 'hsl(0, 0%, 90%)',
+    borderColorForSelectInputMenuWhenWarning: '#fff',
+    borderColorForSelectInputMenuWhenError: '#fff',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -532,6 +539,8 @@ export const themes = {
     fontColorForClearInputIcon: 'hsl(0, 0%, 40%)',
     fontColorForSearchInputIcon: 'hsl(0, 0%, 60%)',
     fontColorForSearchInputIconWhenHovered: '#00b39e',
+    fontColorForSelectInputWhenError: '#e60050',
+    fontColorForSelectInputWhenWarning: '#f16d0e',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.25rem',
@@ -582,6 +591,7 @@ export const themes = {
     marginForViewSwitcherIcon: '0 var(--spacing-20) 0 0',
     marginForGroupHeadingSelectInputOptions: '8px',
     marginForSelectInputIcon: '8px',
+    marginLeftForSelectInputIcon: 'var(--spacing-20)',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -934,7 +944,11 @@ const designTokens = {
   borderColorForContentNotificationWhenSuccess:
     'var(--border-color-for-content-notification-when-success, #00b39e)',
   borderColorForGroupHeadingSelectInputOptions:
-    'var(--border-color-for-group-heading-select-input-options, none)',
+    'var(--border-color-for-group-heading-select-input-options, #ccc)',
+  borderColorForSelectInputMenuWhenWarning:
+    'var(--border-color-for-select-input-menu-when-warning, #f16d0e)',
+  borderColorForSelectInputMenuWhenError:
+    'var(--border-color-for-select-input-menu-when-error, #e60050)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -1019,6 +1033,10 @@ const designTokens = {
     'var(--font-color-for-search-input-icon, #1a1a1a)',
   fontColorForSearchInputIconWhenHovered:
     'var(--font-color-for-search-input-icon-when-hovered, #1a1a1a)',
+  fontColorForSelectInputWhenError:
+    'var(--font-color-for-select-input-when-error, hsl(0, 0%, 60%))',
+  fontColorForSelectInputWhenWarning:
+    'var(--font-color-for-select-input-when-warning, hsl(0, 0%, 60%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
@@ -1081,6 +1099,8 @@ const designTokens = {
   marginForGroupHeadingSelectInputOptions:
     'var(--margin-for-group-heading-select-input-options, 4px)',
   marginForSelectInputIcon: 'var(--margin-for-select-input-icon, 4px)',
+  marginLeftForSelectInputIcon:
+    'var(--margin-left-for-select-input-icon, inherit)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:

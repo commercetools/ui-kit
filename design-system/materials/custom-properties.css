@@ -250,6 +250,9 @@
   --border-color-for-content-notification-when-warning: #f16d0e;
   --border-color-for-content-notification-when-success: #00b39e;
   --border-color-for-group-heading-select-input-options: none;
+  --border-color-for-group-heading-select-input-options: #ccc;
+  --border-color-for-select-input-menu-when-warning: #f16d0e;
+  --border-color-for-select-input-menu-when-error: #e60050;
   --border-radius-for-button-as-big: 6px;
   --border-radius-for-button-as-small: 4px;
   --border-radius-for-button-as-icon-as-big: 6px;
@@ -308,6 +311,8 @@
   --font-color-for-search-input-icon: #1a1a1a;
   --font-color-for-search-input-icon-when-hovered: #1a1a1a;
   --font-color-for-localized-multiline-text-input-label: hsl(0, 0%, 60%);
+  --font-color-for-select-input-when-error: hsl(0, 0%, 60%);
+  --font-color-for-select-input-when-warning: hsl(0, 0%, 60%);
   --height-for-button-as-big: 32px;
   --height-for-button-as-small: 24px;
   --height-for-button-as-icon-as-big: 32px;
@@ -360,6 +365,7 @@
   --margin-for-view-switcher-icon: 0 var(--spacing-10) 0 0;
   --margin-for-group-heading-select-input-options: 4px;
   --margin-for-select-input-icon: 4px;
+  --margin-left-for-select-input-icon: inherit;
   --padding-for-stamp: var(--spacing-10) var(--spacing-20);
   --padding-for-stamp-as-condensed: 1px var(--spacing-10);
   --padding-for-tag: 5px var(--spacing-20);
