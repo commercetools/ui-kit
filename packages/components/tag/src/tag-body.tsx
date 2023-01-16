@@ -9,7 +9,6 @@ import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { DragIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
-import AccessibleButton from '@commercetools-uikit/accessible-button';
 
 export type TTagBodyProps = {
   to?: TTagProps['to'];
@@ -68,6 +67,7 @@ const getContentWrapperStyles = (props: TTagBodyProps, isNewTheme: boolean) => {
       ? designTokens.colorWarning
       : designTokens.borderColorForTag};
     color: ${designTokens.fontColorForTag};
+    fill: ${designTokens.fontColorForTagDragIcon};
 
     /* fixing things for IE11 ... */
     width: 100%;
@@ -129,23 +129,11 @@ const TagBody = (props: TTagBodyProps) => {
     >
       <Spacings.Inline scale="s" alignItems="center">
         {props.isDraggable && !props.isDisabled ? (
-          <AccessibleButton
-            label="Drag"
-            isDisabled={props.isDisabled}
-            css={[
-              css`
-                > svg * {
-                  fill: ${designTokens.fontColorForTagDragIcon} !important;
-                }
-              `,
-            ]}
-          >
-            <DragIcon
-              data-testid="drag-icon"
-              size="medium"
-              color={themedValue('solid', undefined)}
-            />
-          </AccessibleButton>
+          <DragIcon
+            data-testid="drag-icon"
+            size="medium"
+            color={themedValue('solid', undefined)}
+          />
         ) : null}
         <TextComponent tone={textTone}>{props.children}</TextComponent>
       </Spacings.Inline>

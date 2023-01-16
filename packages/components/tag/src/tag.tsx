@@ -134,15 +134,11 @@ const Tag = (props: TTagProps) => {
                     ? designTokens.colorWarning
                     : designTokens.borderColorForTagWhenHovered};
 
-                  > svg * {
-                    fill: ${designTokens.fontColorForTagRemoveIconWhenHovered} !important;
-                  }
+                  fill: ${designTokens.fontColorForTagRemoveIconWhenHovered};
                 }
-                > svg * {
-                  fill: ${designTokens.fontColorForTagRemoveIcon} !important;
-                }
-                &:disabled > svg * {
-                  fill: ${designTokens.fontColorForTagWhenDisabled} !important;
+                fill: ${designTokens.fontColorForTagRemoveIcon};
+                &:disabled > {
+                  fill: ${designTokens.fontColorForTagWhenDisabled};
                 }
               `,
             ]}
