@@ -585,13 +585,10 @@ decisionGroupsByTheme:
           description: ''
           choice: color-solid
         font-color-for-tag-remove-icon:
-          description: ''
           choice: color-solid
         font-color-for-tag-drag-icon:
-          description: ''
           choice: color-solid
         font-color-for-tag-remove-icon-when-hovered:
-          description: ''
           choice: color-warning
         font-color-for-tag-when-disabled:
           description: ''
@@ -949,7 +946,6 @@ decisionGroupsByTheme:
         border-color-for-localized-multiline-text-input-label-when-readonly:
           choice: color-neutral-90
         border-color-for-tag:
-          description: ''
           choice: color-neutral
         border-color-for-tag-when-hovered:
           choice: color-neutral
