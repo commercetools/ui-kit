@@ -311,8 +311,8 @@
   --font-color-for-search-input-icon: #1a1a1a;
   --font-color-for-search-input-icon-when-hovered: #1a1a1a;
   --font-color-for-localized-multiline-text-input-label: hsl(0, 0%, 60%);
-  --font-color-for-select-input-when-error: hsl(0, 0%, 60%);
-  --font-color-for-select-input-when-warning: hsl(0, 0%, 60%);
+  --font-color-for-select-input-when-error: #1a1a1a;
+  --font-color-for-select-input-when-warning: #1a1a1a;
   --height-for-button-as-big: 32px;
   --height-for-button-as-small: 24px;
   --height-for-button-as-icon-as-big: 32px;

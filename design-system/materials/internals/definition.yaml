@@ -726,9 +726,9 @@ decisionGroupsByTheme:
         font-color-for-search-input-icon-when-hovered:
           choice: color-solid
         font-color-for-select-input-when-error:
-          choice: color-neutral-60
+          choice: color-solid
         font-color-for-select-input-when-warning:
-          choice: color-neutral-60
+          choice: color-solid
 
     heights:
       label: Height
