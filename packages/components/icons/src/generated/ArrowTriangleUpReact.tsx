@@ -119,6 +119,7 @@ const SvgArrowTriangleUp = (props: SVGProps) => (
     height={24}
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
     {...props}
   >
     <path d="m12 4 9 15H3" fillRule="evenodd" />

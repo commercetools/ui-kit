@@ -119,6 +119,7 @@ const SvgExternalLink = (props: SVGProps) => (
     height={24}
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
     {...props}
   >
     <path d="M5 21c-.55 0-1.021-.196-1.413-.587A1.928 1.928 0 0 1 3 19V5c0-.55.196-1.021.587-1.413A1.928 1.928 0 0 1 5 3h7v2H5v14h14v-7h2v7c0 .55-.196 1.021-.587 1.413A1.928 1.928 0 0 1 19 21H5Zm4.7-5.3-1.4-1.4L17.6 5H14V3h7v7h-2V6.4l-9.3 9.3Z" />

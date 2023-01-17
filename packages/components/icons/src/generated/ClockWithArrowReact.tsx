@@ -119,6 +119,7 @@ const SvgClockWithArrow = (props: SVGProps) => (
     height={32}
     viewBox="0 0 33 32"
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
     {...props}
   >
     <path
