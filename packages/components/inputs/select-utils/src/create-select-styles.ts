@@ -147,9 +147,10 @@ const dropdownIndicatorStyles = (props: TProps) => (base: TBase) => {
     fill: (() => {
       if (props.isDisabled || props.isReadOnly)
         return designTokens.fontColorForInputWhenDisabled;
-      if (props.hasError) return designTokens.fontColorForSelectInputWhenError;
+      if (props.hasError)
+        return designTokens.fontColorForSelectInputIconWhenError;
       if (props.hasWarning)
-        return designTokens.fontColorForSelectInputWhenWarning;
+        return designTokens.fontColorForSelectInputIconWhenWarning;
       return designTokens.fontColorForSelectInputIcon;
     })(),
   };

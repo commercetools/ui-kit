@@ -286,8 +286,10 @@ export const themes = {
     fontColorForSearchInputIcon: '#1a1a1a',
     fontColorForSearchInputIconWhenHovered: '#1a1a1a',
     fontColorForLocalizedMultilineTextInputLabel: 'hsl(0, 0%, 60%)',
-    fontColorForSelectInputWhenError: '#1a1a1a',
-    fontColorForSelectInputWhenWarning: '#1a1a1a',
+    fontColorForSelectInputWhenError: 'hsl(0, 0%, 60%)',
+    fontColorForSelectInputWhenWarning: 'hsl(0, 0%, 60%)',
+    fontColorForSelectInputIconWhenError: '#1a1a1a',
+    fontColorForSelectInputIconWhenWarning: '#1a1a1a',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -541,6 +543,8 @@ export const themes = {
     fontColorForSearchInputIconWhenHovered: '#00b39e',
     fontColorForSelectInputWhenError: '#e60050',
     fontColorForSelectInputWhenWarning: '#f16d0e',
+    fontColorForSelectInputIconWhenError: '#e60050',
+    fontColorForSelectInputIconWhenWarning: '#f16d0e',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.25rem',
@@ -1034,9 +1038,13 @@ const designTokens = {
   fontColorForSearchInputIconWhenHovered:
     'var(--font-color-for-search-input-icon-when-hovered, #1a1a1a)',
   fontColorForSelectInputWhenError:
-    'var(--font-color-for-select-input-when-error, #1a1a1a)',
+    'var(--font-color-for-select-input-when-error, hsl(0, 0%, 60%))',
   fontColorForSelectInputWhenWarning:
-    'var(--font-color-for-select-input-when-warning, #1a1a1a)',
+    'var(--font-color-for-select-input-when-warning, hsl(0, 0%, 60%))',
+  fontColorForSelectInputIconWhenError:
+    'var(--font-color-for-select-input-icon-when-error, #1a1a1a)',
+  fontColorForSelectInputIconWhenWarning:
+    'var(--font-color-for-select-input-icon-when-warning, #1a1a1a)',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
