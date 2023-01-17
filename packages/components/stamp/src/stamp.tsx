@@ -2,9 +2,10 @@
 import { cloneElement, ReactElement, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
-import { FormattedMessage, MessageDescriptor } from 'react-intl';
+import { MessageDescriptor } from 'react-intl';
 import Text from '../../text';
 import SpacingsInline from '../../spacings/spacings-inline';
+import { ErrorIcon } from '../../icons';
 
 type Tone =
   | 'critical'
@@ -25,10 +26,9 @@ type Props = {
   isCondensed: boolean;
   children: ReactNode;
   icon?: ReactElement;
-  message: MessageDescriptor & {
+  message?: MessageDescriptor & {
     values?: Record<string, ReactNode>;
   };
-  iconSize?: string;
 };
 
 type StylesFunctionParams = Props & { overrideTextColor?: boolean };
@@ -157,7 +157,53 @@ const Stamp = (props: Props) => {
       color: props.tone ? iconColorsMap[props.tone] : null,
     });
 
-  return props.children ? (
+  if (props.message && props.children) {
+    return (
+      <div
+        css={css`
+          fill: ${designTokens.colorError};
+          color: ${designTokens.colorError};
+        `}
+      >
+        <SpacingsInline alignItems="center">
+          <ErrorIcon />
+          <Text.Detail tone={'critical'}>
+            You cannot use inline prop and children prop at the same time. See{' '}
+            <a
+              css={css`
+                color: ${designTokens.colorError};
+                text-decoration: underline;
+              `}
+              href="/?path=/story/components-stamps--stamp"
+            >
+              documentation
+            </a>{' '}
+            for usage.
+          </Text.Detail>
+        </SpacingsInline>
+      </div>
+    );
+  }
+  if (props.message) {
+    return (
+      <div
+        css={[
+          getStampStyles({ ...props, overrideTextColor }),
+          getToneStyles({ ...props, overrideTextColor }),
+          getPaddingStyle(props),
+        ]}
+      >
+        <SpacingsInline alignItems="center">
+          {Icon}
+          <Text.Detail
+            tone={themedValue(undefined, 'inherit')}
+            intlMessage={props.message}
+          />
+        </SpacingsInline>
+      </div>
+    );
+  }
+  return (
     <>
       <div
         css={[
@@ -172,21 +218,6 @@ const Stamp = (props: Props) => {
         'Please pass messages or icons as inline props, this method will be deprecated soon. for more information, see documentation: https://uikit.commercetools.com/?path=/story/components-stamps--stamp'
       )}
     </>
-  ) : (
-    <div
-      css={[
-        getStampStyles({ ...props, overrideTextColor }),
-        getToneStyles({ ...props, overrideTextColor }),
-        getPaddingStyle(props),
-      ]}
-    >
-      <SpacingsInline alignItems="center">
-        {Icon}
-        <Text.Detail tone={themedValue(undefined, 'inherit')}>
-          <FormattedMessage {...props.message} />
-        </Text.Detail>
-      </SpacingsInline>
-    </div>
   );
 };
 const defaultProps: Pick<Props, 'isCondensed'> = {
