@@ -214,7 +214,7 @@ const Stamp = (props: Props) => {
       >
         {props.children}
       </div>
-      {console.warn(
+      {console.log(
         'Please pass messages or icons as inline props, this method will be deprecated soon. for more information, see documentation: https://uikit.commercetools.com/?path=/story/components-stamps--stamp'
       )}
     </>
