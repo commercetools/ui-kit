@@ -42,7 +42,7 @@
     "slate-history": "0.86.0",
     "slate-hyperscript": "0.77.0",
     "slate-react": "0.75.0",
-    "style-to-object": "0.4.0"
+    "style-to-object": "0.4.1"
   },
   "devDependencies": {
     "react": "17.0.2",
