@@ -3,9 +3,9 @@ import { cloneElement, ReactElement, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import { MessageDescriptor } from 'react-intl';
-import Text from '../../text';
-import SpacingsInline from '../../spacings/spacings-inline';
-import { ErrorIcon } from '../../icons';
+import Text from '@commercetools-uikit/text';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { ErrorIcon } from '@commercetools-uikit/icons';
 
 type Tone =
   | 'critical'
