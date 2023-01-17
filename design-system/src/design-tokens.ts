@@ -185,6 +185,7 @@ export const themes = {
     borderColorForTag: 'hsl(0, 0%, 60%)',
     borderColorForTagWarning: '#f16d0e',
     borderColorForTagWhenFocused: '#00b39e',
+    borderColorForTagWhenHovered: '#f16d0e',
     borderColorForButtonAsIcon: '#fff',
     borderColorForButtonAsIconAsInfo: '#078cdf',
     borderColorForButtonAsIconAsPrimary: '#00b39e',
@@ -215,6 +216,7 @@ export const themes = {
     borderWidthForInputWhenWarning: '1px',
     borderWidthForInputWhenError: '1px',
     borderWidthForInputWhenFocused: '1px',
+    borderWidthForTag: '1px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 2px',
     fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
@@ -223,6 +225,9 @@ export const themes = {
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 60%)',
     fontColorForInputWhenWarning: '#f16d0e',
     fontColorForTag: '#1a1a1a',
+    fontColorForTagRemoveIcon: '#1a1a1a',
+    fontColorForTagDragIcon: '#1a1a1a',
+    fontColorForTagRemoveIconWhenHovered: '#f16d0e',
     fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTextWhenInverted: '#fff',
     fontColorForTableHeader: '#fff',
@@ -293,6 +298,7 @@ export const themes = {
     paddingForMultilineInput: 'var(--spacing-10) var(--spacing-20)',
     paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
     paddingForLocalizedMultilineTextInputLabel: '0 var(--spacing-20)',
+    paddingForTagRemoveIcon: '0 var(--spacing-10)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -376,6 +382,8 @@ export const themes = {
     borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
     borderColorForLocalizedMultilineTextInputLabelWhenReadonly:
       'hsl(0, 0%, 90%)',
+    borderColorForTag: '#ccc',
+    borderColorForTagWhenHovered: '#ccc',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -385,9 +393,13 @@ export const themes = {
     borderRadiusForTableManagerDroppableList: '4px',
     borderRadiusForInput: '4px',
     borderRadiusForStamp: '20px',
+    borderWidthForTag: '1px 1px 1px 0',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
+    fontColorForTagRemoveIcon: 'hsl(0, 0%, 40%)',
+    fontColorForTagDragIcon: 'hsl(0, 0%, 40%)',
+    fontColorForTagRemoveIconWhenHovered: '#e60050',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.25rem',
@@ -455,6 +467,7 @@ export const themes = {
     paddingForMultilineInput: '8px',
     paddingForLocalizedRichTextInputLabel: '8px',
     paddingForLocalizedMultilineTextInputLabel: '0 12px',
+    paddingForTagRemoveIcon: '0 12px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -691,6 +704,8 @@ const designTokens = {
   borderColorForTagWarning: 'var(--border-color-for-tag-warning, #f16d0e)',
   borderColorForTagWhenFocused:
     'var(--border-color-for-tag-when-focused, #00b39e)',
+  borderColorForTagWhenHovered:
+    'var(--border-color-for-tag-when-hovered, #f16d0e)',
   borderColorForButtonAsIcon: 'var(--border-color-for-button-as-icon, #fff)',
   borderColorForButtonAsIconAsInfo:
     'var(--border-color-for-button-as-icon-as-info, #078cdf)',
@@ -741,6 +756,7 @@ const designTokens = {
   borderWidthForInputWhenError: 'var(--border-width-for-input-when-error, 1px)',
   borderWidthForInputWhenFocused:
     'var(--border-width-for-input-when-focused, 1px)',
+  borderWidthForTag: 'var(--border-width-for-tag, 1px)',
   boxShadowForDatetimeInputWhenHovered:
     'var(--box-shadow-for-datetime-input-when-hovered, inset 0 0 0 2px)',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
@@ -753,6 +769,10 @@ const designTokens = {
   fontColorForInputWhenWarning:
     'var(--font-color-for-input-when-warning, #f16d0e)',
   fontColorForTag: 'var(--font-color-for-tag, #1a1a1a)',
+  fontColorForTagRemoveIcon: 'var(--font-color-for-tag-remove-icon, #1a1a1a)',
+  fontColorForTagDragIcon: 'var(--font-color-for-tag-drag-icon, #1a1a1a)',
+  fontColorForTagRemoveIconWhenHovered:
+    'var(--font-color-for-tag-remove-icon-when-hovered, #f16d0e)',
   fontColorForTagWhenDisabled:
     'var(--font-color-for-tag-when-disabled, hsl(0, 0%, 60%))',
   fontColorForTextWhenInverted:
@@ -847,6 +867,8 @@ const designTokens = {
     'var(--padding-for-localized-rich-text-input-label, 0 var(--spacing-20))',
   paddingForLocalizedMultilineTextInputLabel:
     'var(--padding-for-localized-multiline-text-input-label, 0 var(--spacing-20))',
+  paddingForTagRemoveIcon:
+    'var(--padding-for-tag-remove-icon, 0 var(--spacing-10))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

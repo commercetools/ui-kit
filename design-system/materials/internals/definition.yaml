@@ -299,6 +299,10 @@ componentGroups:
     description: 'Input elements'
   tag:
     description: 'Tag elements'
+  tag-remove-icon:
+    description: 'Tag remove icon elements'
+  tag-drag-icon:
+    description: 'Tag drag icon elements'
   tag-warning:
     description: 'Tag elements with type warning'
   text:
@@ -471,6 +475,8 @@ decisionGroupsByTheme:
         border-color-for-tag-when-focused:
           description: ''
           choice: color-primary
+        border-color-for-tag-when-hovered:
+          choice: color-warning
         border-color-for-button-as-icon:
           choice: color-surface
         border-color-for-button-as-icon-as-info:
@@ -543,6 +549,8 @@ decisionGroupsByTheme:
           choice: border-width-1
         border-width-for-input-when-focused:
           choice: border-width-1
+        border-width-for-tag:
+          choice: border-width-1
 
     boxShadows:
       label: Box shadows
@@ -576,6 +584,12 @@ decisionGroupsByTheme:
         font-color-for-tag:
           description: ''
           choice: color-solid
+        font-color-for-tag-remove-icon:
+          choice: color-solid
+        font-color-for-tag-drag-icon:
+          choice: color-solid
+        font-color-for-tag-remove-icon-when-hovered:
+          choice: color-warning
         font-color-for-tag-when-disabled:
           description: ''
           choice: color-neutral-60
@@ -787,6 +801,8 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-20)'
         padding-for-localized-multiline-text-input-label:
           choice: '0 var(--spacing-20)'
+        padding-for-tag-remove-icon:
+          choice: '0 var(--spacing-10)'
 
     shadows:
       label: Shadows
@@ -929,6 +945,10 @@ decisionGroupsByTheme:
           choice: color-neutral-85
         border-color-for-localized-multiline-text-input-label-when-readonly:
           choice: color-neutral-90
+        border-color-for-tag:
+          choice: color-neutral
+        border-color-for-tag-when-hovered:
+          choice: color-neutral
 
     borderRadiuses:
       label: Border radiuses
@@ -953,6 +973,13 @@ decisionGroupsByTheme:
         border-radius-for-stamp:
           choice: border-radius-20
 
+    borderWidths:
+      label: Border width
+      prefix: border-width
+      decisions:
+        border-width-for-tag:
+          choice: '1px 1px 1px 0'
+
     boxShadows:
       label: Box shadows
       prefix: box-shadow
@@ -968,6 +995,12 @@ decisionGroupsByTheme:
           choice: color-neutral-40
         font-color-for-input-when-readonly:
           choice: color-neutral-40
+        font-color-for-tag-remove-icon:
+          choice: color-neutral-40
+        font-color-for-tag-drag-icon:
+          choice: color-neutral-40
+        font-color-for-tag-remove-icon-when-hovered:
+          choice: color-error
 
     fontSizes:
       label: Font Sizes
@@ -1161,6 +1194,9 @@ decisionGroupsByTheme:
           choice: spacing-20
         padding-for-localized-multiline-text-input-label:
           choice: '0 12px'
+        padding-for-tag-remove-icon:
+          choice: '0 12px'
+
     shadows:
       label: Shadows
       prefix: shadow
