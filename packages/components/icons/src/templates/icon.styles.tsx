@@ -13,7 +13,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'inherit';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & { className: string };
@@ -61,6 +62,9 @@ const getColor = (color: Props['color']) => {
     case 'solid':
       iconColor = designTokens.colorSolid;
       break;
+    case 'inherit':
+      iconColor = designTokens.colorInherit;
+      break;
     case 'neutral60':
       iconColor = designTokens.colorNeutral60;
       break;
@@ -91,7 +95,7 @@ const getColor = (color: Props['color']) => {
       color,
       `ui-kit/Icon: the specified color '${color}' is not supported.`
     );
-    return 'inherit';
+    return designTokens.colorInherit;
   }
 
   return iconColor;
