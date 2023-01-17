@@ -92,6 +92,8 @@ module.exports = {
       'prefixIds',
     ],
   },
+  svgProps: { role: 'img' },
+  typescript: true,
   // same as the rollup plugin
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
   indexTemplate,
