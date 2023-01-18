@@ -39,14 +39,13 @@ const ViewSwitcherButton = (props: TViewSwitcherButtonProps) => (
     {props.icon && (
       <span
         css={css`
-          margin: 0 ${designTokens.spacing10} 0 0;
+          margin: ${designTokens.marginForViewSwitcherIcon};
           display: flex;
           align-items: center;
           justify-content: center;
         `}
       >
         {cloneElement(props.icon, {
-          color: props.isDisabled ? 'neutral60' : 'colorSolid',
           size: props.isCondensed ? 'medium' : 'big',
         })}
       </span>
