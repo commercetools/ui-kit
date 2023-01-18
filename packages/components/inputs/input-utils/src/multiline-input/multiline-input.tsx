@@ -72,8 +72,6 @@ const MultilineInput = (props: TMultiLineInputProps) => {
     );
   }
 
-  console.log('MultilineInput#', { isOpen: props.isOpen });
-
   return (
     <TextareaAutosize
       ref={ref}
