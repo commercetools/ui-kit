@@ -179,6 +179,7 @@ export const themes = {
     borderForCardWhenRaised: 'none',
     borderForCollapsiblePanelHeaderIconWhenDisabled:
       '1px solid var(--color-neutral)',
+    borderForViewSwitcher: 'none',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -223,6 +224,10 @@ export const themes = {
     borderWidthForInputWhenFocused: '1px',
     borderWidthForTag: '1px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 2px',
+    boxShadowForViewSwitcher:
+      '0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)',
+    boxShadowForViewSwitcherWhenSelected:
+      'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
     fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
@@ -379,6 +384,7 @@ export const themes = {
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
     borderForCardWhenRaised: '1px solid var(--color-neutral-90)',
     borderForCollapsiblePanelHeaderIconWhenDisabled: 'none',
+    borderForViewSwitcher: '1px solid var(--color-neutral)',
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
@@ -417,6 +423,8 @@ export const themes = {
     borderRadiusForViewSwitcher: '4px',
     borderWidthForTag: '1px 1px 1px 0',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
+    boxShadowForViewSwitcher: 'none',
+    boxShadowForViewSwitcherWhenSelected: 'none',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
     fontColorForTagRemoveIcon: 'hsl(0, 0%, 40%)',
@@ -724,6 +732,7 @@ const designTokens = {
   borderForCardWhenRaised: 'var(--border-for-card-when-raised, none)',
   borderForCollapsiblePanelHeaderIconWhenDisabled:
     'var(--border-for-collapsible-panel-header-icon-when-disabled, 1px solid var(--color-neutral))',
+  borderForViewSwitcher: 'var(--border-for-view-switcher, none)',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -797,6 +806,10 @@ const designTokens = {
   borderWidthForTag: 'var(--border-width-for-tag, 1px)',
   boxShadowForDatetimeInputWhenHovered:
     'var(--box-shadow-for-datetime-input-when-hovered, inset 0 0 0 2px)',
+  boxShadowForViewSwitcher:
+    'var(--box-shadow-for-view-switcher, 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12))',
+  boxShadowForViewSwitcherWhenSelected:
+    'var(--box-shadow-for-view-switcher-when-selected, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:

@@ -48,9 +48,10 @@ export const getButtonStyles = (
       fill: ${fontColor};
       transition: background-color ${designTokens.transitionLinear80Ms};
       font-size: ${designTokens.fontSizeDefault};
+      border: ${designTokens.borderForViewSwitcher};
+      border-left: ${isFirstButton ? designTokens.borderForViewSwitcher : '0'};
       border-radius: ${borderRadius};
-      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24),
-        0 -1px 1px 0 rgba(0, 0, 0, 0.12);
+      box-shadow: ${designTokens.boxShadowForViewSwitcher};
       background-color: ${designTokens.colorSurface};
       &:hover {
         background-color: ${designTokens.backgroundColorForViewSwitcherWhenHovered};
@@ -63,12 +64,12 @@ export const getButtonStyles = (
     isActive &&
       css`
         background-color: ${designTokens.backgroundColorForViewSwitcherWhenSelected};
-        box-shadow: ${designTokens.shadow9};
+        box-shadow: ${designTokens.boxShadowForViewSwitcherWhenSelected};
       `,
     isDisabled &&
       css`
         background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
-        color: ${designTokens.colorNeutral60};
+        color: ${designTokens.fontColorForViewSwitcherWhenDisabled};
         &:hover {
           background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
         }
