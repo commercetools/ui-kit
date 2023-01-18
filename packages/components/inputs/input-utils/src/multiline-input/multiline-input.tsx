@@ -62,7 +62,6 @@ const MultilineInput = (props: TMultiLineInputProps) => {
     setIsRendered(true);
   }, []);
   if (!isRendered) {
-    console.log('MultilineInput# Not rendering yet');
     return null;
   }
 
