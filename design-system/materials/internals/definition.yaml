@@ -351,6 +351,8 @@ componentGroups:
     description: 'Localized rich text input label elements'
   localized-multiline-text-input-label:
     description: 'Localized multiline text input label elements'
+  tooltip:
+    description: 'Tooltip elements'
 
 decisionGroupsByTheme:
   default:
@@ -425,6 +427,8 @@ decisionGroupsByTheme:
         background-color-for-localized-multiline-text-input-label-when-disabled:
           description: ''
           choice: color-accent-98
+        background-color-for-tooltip:
+          choice: color-accent
 
     borders:
       label: Borders
@@ -803,6 +807,8 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-20)'
         padding-for-tag-remove-icon:
           choice: '0 var(--spacing-10)'
+        padding-for-tooltip:
+          choice: 'var(--spacing-10) var(--spacing-20)'
 
     shadows:
       label: Shadows
@@ -832,6 +838,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         shadow-for-input-when-warning:
           choice: shadow-0
+        shadow-for-tooltip:
+          choice: shadow-15
 
   test:
     backgroundColors:
@@ -883,6 +891,8 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-localized-multiline-text-input-label-when-disabled:
           choice: color-neutral-95
+        background-color-for-tooltip:
+          choice: color-accent-10
 
     borders:
       label: Borders
@@ -1196,6 +1206,8 @@ decisionGroupsByTheme:
           choice: '0 12px'
         padding-for-tag-remove-icon:
           choice: '0 12px'
+        padding-for-tooltip:
+          choice: 'var(--spacing-20) 12px'
 
     shadows:
       label: Shadows
@@ -1221,6 +1233,8 @@ decisionGroupsByTheme:
           choice: 'inset 0 0 0 1px var(--color-error)'
         shadow-for-input-when-warning:
           choice: 'inset 0 0 0 1px var(--color-warning)'
+        shadow-for-tooltip:
+          choice: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.

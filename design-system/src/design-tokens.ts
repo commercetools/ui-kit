@@ -169,6 +169,7 @@ export const themes = {
       'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
       'hsl(195, 35.2941176471%, 98%)',
+    backgroundColorForTooltip: '#213c45',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
@@ -299,6 +300,7 @@ export const themes = {
     paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
     paddingForLocalizedMultilineTextInputLabel: '0 var(--spacing-20)',
     paddingForTagRemoveIcon: '0 var(--spacing-10)',
+    paddingForTooltip: 'var(--spacing-10) var(--spacing-20)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -316,6 +318,8 @@ export const themes = {
     shadowForInputWhenFocused: 'inset 0 0 0 2px var(--color-primary)',
     shadowForInputWhenError: 'none',
     shadowForInputWhenWarning: 'none',
+    shadowForTooltip:
+      '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
     fontSizeM: '1rem',
     bigButtonHeight: '32px',
     smallButtonHeight: '24px',
@@ -353,6 +357,7 @@ export const themes = {
     backgroundColorForLocalizedMultilineTextInputLabel: '#fff',
     backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
       'hsl(0, 0%, 95%)',
+    backgroundColorForTooltip: 'hsl(195, 35.2941176471%, 10%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -468,6 +473,7 @@ export const themes = {
     paddingForLocalizedRichTextInputLabel: '8px',
     paddingForLocalizedMultilineTextInputLabel: '0 12px',
     paddingForTagRemoveIcon: '0 12px',
+    paddingForTooltip: 'var(--spacing-20) 12px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -478,6 +484,7 @@ export const themes = {
     shadowForInputWhenFocused: 'inset 0 0 0 1px var(--color-primary)',
     shadowForInputWhenError: 'inset 0 0 0 1px var(--color-error)',
     shadowForInputWhenWarning: 'inset 0 0 0 1px var(--color-warning)',
+    shadowForTooltip: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)',
   },
 } as const;
 
@@ -679,6 +686,7 @@ const designTokens = {
     'var(--background-color-for-localized-multiline-text-input-label, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
     'var(--background-color-for-localized-multiline-text-input-label-when-disabled, hsl(195, 35.2941176471%, 98%))',
+  backgroundColorForTooltip: 'var(--background-color-for-tooltip, #213c45)',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',
@@ -869,6 +877,8 @@ const designTokens = {
     'var(--padding-for-localized-multiline-text-input-label, 0 var(--spacing-20))',
   paddingForTagRemoveIcon:
     'var(--padding-for-tag-remove-icon, 0 var(--spacing-10))',
+  paddingForTooltip:
+    'var(--padding-for-tooltip, var(--spacing-10) var(--spacing-20))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:
@@ -888,6 +898,8 @@ const designTokens = {
     'var(--shadow-for-input-when-focused, inset 0 0 0 2px var(--color-primary))',
   shadowForInputWhenError: 'var(--shadow-for-input-when-error, none)',
   shadowForInputWhenWarning: 'var(--shadow-for-input-when-warning, none)',
+  shadowForTooltip:
+    'var(--shadow-for-tooltip, 0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12))',
   fontSizeM: 'var(--font-size-m, 1rem)',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',

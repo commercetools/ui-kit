@@ -22,13 +22,13 @@ const getOffsetMargin = ({ placement }: { placement: string }) => {
 export const Body = styled.div`
   font-family: inherit;
   border-radius: ${designTokens.borderRadius6};
-  padding: ${designTokens.spacing10} ${designTokens.spacing20};
-  border: 'none';
-  box-shadow: ${designTokens.shadow15};
-  font-size: 0.857rem;
+  padding: ${designTokens.paddingForTooltip};
+  border: none;
+  box-shadow: ${designTokens.shadowForTooltip};
+  font-size: ${designTokens.fontSize20};
   opacity: 0.95;
   color: ${designTokens.colorSurface};
-  background-color: ${designTokens.colorAccent};
+  background-color: ${designTokens.backgroundColorForTooltip};
 `;
 
 // here we use object styles so we can spread these
