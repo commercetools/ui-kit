@@ -7,13 +7,13 @@ const getSizeStyles = (
 ) => {
   if (isCondensed) {
     return css`
-      padding: 0 ${designTokens.spacing20} 0 ${designTokens.spacing20};
+      padding: ${designTokens.paddingForViewSwitcherWhenCondensed};
       height: ${designTokens.heightForViewSwitcherWhenCondensed};
     `;
   }
 
   return css`
-    padding: 0 ${designTokens.spacing30} 0 ${designTokens.spacing30};
+    padding: ${designTokens.paddingForViewSwitcher};
     height: ${designTokens.heightForViewSwitcher};
   `;
 };

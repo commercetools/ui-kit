@@ -1043,9 +1043,9 @@ decisionGroupsByTheme:
         box-shadow-for-datetime-input-when-hovered:
           choice: 'inset 0 0 0 1px'
         box-shadow-for-view-switcher:
-          choice: 'none'
+          choice: shadow-0
         box-shadow-for-view-switcher-when-selected:
-          choice: 'none'
+          choice: shadow-0
 
     fontColors:
       label: Font Colors

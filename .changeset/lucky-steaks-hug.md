@@ -3,4 +3,4 @@
 '@commercetools-uikit/tag': patch
 ---
 
-Add new theme tokens for Tag component
+Add and use new theme tokens for Tag component
