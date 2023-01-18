@@ -1,5 +1,7 @@
+// TODO: @redesign cleanup
 import { useState, useCallback } from 'react';
 import uniqueId from 'lodash/uniqueId';
+import { useTheme } from '@commercetools-uikit/design-system';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import Constraints from '@commercetools-uikit/constraints';
@@ -56,6 +58,7 @@ const PageSizeSelector = (props: TPageSizeSelectorProps) => {
   const [perPageSelectorId] = useState(uniqueId('per-page-selector-'));
   const options = mapRangeToListOfOptions(props.perPageRange);
   const hasValidPerPageOption = options.includes(props.perPage);
+  const { themedValue } = useTheme();
 
   warning(
     hasValidPerPageOption,
@@ -94,6 +97,7 @@ const PageSizeSelector = (props: TPageSizeSelectorProps) => {
             count: props.pageItems,
           },
         }}
+        isBold={themedValue(true, false)}
       />
     </Spacings.Inline>
   );
