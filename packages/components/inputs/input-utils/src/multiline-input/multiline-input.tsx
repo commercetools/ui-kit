@@ -1,4 +1,10 @@
-import { useRef, useCallback, ChangeEventHandler } from 'react';
+import {
+  useRef,
+  useCallback,
+  ChangeEventHandler,
+  useState,
+  useLayoutEffect,
+} from 'react';
 import TextareaAutosize, {
   TextareaHeightChangeMeta,
 } from 'react-textarea-autosize';
@@ -51,12 +57,23 @@ const MultilineInput = (props: TMultiLineInputProps) => {
     [ref, onHeightChange]
   );
 
+  const [isRendered, setIsRendered] = useState(false);
+  useLayoutEffect(() => {
+    setIsRendered(true);
+  }, []);
+  if (!isRendered) {
+    console.log('MultilineInput# Not rendering yet');
+    return null;
+  }
+
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
       'MultilineInput: "onChange" is required when is not read only.'
     );
   }
+
+  console.log('MultilineInput#', { isOpen: props.isOpen });
 
   return (
     <TextareaAutosize
