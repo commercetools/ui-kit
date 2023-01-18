@@ -33,6 +33,7 @@ const PageNavigator = (props: TPageNavigatorProps) => {
   const { themedValue } = useTheme();
 
   const [pageNumberInputId] = useState(uniqueId('page-number-'));
+  const TotalPagesCountComponent = themedValue(Text.Body, Label);
 
   const paginationForm = useFormik({
     initialValues: { page: props.page },
@@ -84,11 +85,7 @@ const PageNavigator = (props: TPageNavigatorProps) => {
           isDisabled={isPreviousDisabled || isDisabled}
           icon={<AngleLeftIcon />}
         />
-        <Label
-          htmlFor={pageNumberInputId}
-          intlMessage={messages.page}
-          isBold={themedValue(true, false)}
-        />
+        <Label htmlFor={pageNumberInputId} intlMessage={messages.page} />
         <div>
           <NumberInput
             name="page"
@@ -103,7 +100,7 @@ const PageNavigator = (props: TPageNavigatorProps) => {
             horizontalConstraint={2}
           />
         </div>
-        <Text.Body
+        <TotalPagesCountComponent
           intlMessage={{
             ...messages.pageCount,
             values: {
