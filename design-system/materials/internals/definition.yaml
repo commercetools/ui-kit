@@ -358,7 +358,7 @@ componentGroups:
   view-switcher:
     description: 'View switcher elements'
   view-switcher-icon:
-    description: 'View switcher elements'
+    description: 'View switcher icon elements'
 
 decisionGroupsByTheme:
   default:
