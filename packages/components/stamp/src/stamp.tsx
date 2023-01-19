@@ -1,11 +1,11 @@
 // TODO: @redesign cleanup
-import { cloneElement, ReactElement, ReactNode } from 'react';
+import { cloneElement, type ReactElement, type ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
-import { MessageDescriptor } from 'react-intl';
+import type { MessageDescriptor } from 'react-intl';
 import Text from '@commercetools-uikit/text';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import { ErrorIcon } from '@commercetools-uikit/icons';
+import { warning } from '@commercetools-uikit/utils';
 
 type Tone =
   | 'critical'
@@ -33,13 +33,43 @@ type Props = {
 
 type StylesFunctionParams = Props & { overrideTextColor?: boolean };
 
-const iconColorsMap = {
-  secondary: 'neutral60',
-  primary: 'primary40',
-  information: 'info',
-  positive: 'primary',
-  warning: 'warning',
-  critical: 'error',
+const tonesStylesMap = {
+  critical: {
+    backgroundColor: designTokens.colorError95,
+    borderColor: designTokens.borderColorForStampWhenError,
+    color: designTokens.colorError40,
+    iconTone: 'error',
+  },
+  warning: {
+    backgroundColor: designTokens.colorWarning95,
+    borderColor: designTokens.borderColorForStampWhenWarning,
+    color: designTokens.colorWarning40,
+    iconTone: 'warning',
+  },
+  positive: {
+    backgroundColor: designTokens.backgroundColorForStampAsPositive,
+    borderColor: designTokens.borderColorForStampAsPositive,
+    color: designTokens.colorPrimary25,
+    iconTone: 'primary',
+  },
+  information: {
+    backgroundColor: designTokens.colorInfo95,
+    borderColor: designTokens.borderColorForStampAsInformation,
+    color: designTokens.colorInfo40,
+    iconTone: 'info',
+  },
+  primary: {
+    backgroundColor: designTokens.colorPrimary95,
+    borderColor: designTokens.borderColorForStampAsPrimary,
+    color: designTokens.colorPrimary25,
+    iconTone: 'primary40',
+  },
+  secondary: {
+    backgroundColor: designTokens.colorNeutral95,
+    borderColor: designTokens.borderColorForStampAsSecondary,
+    color: designTokens.colorNeutral40,
+    iconTone: 'neutral60',
+  },
 };
 
 export const availableTones: Tone[] = [
@@ -61,82 +91,19 @@ const getPaddingStyle = (props: StylesFunctionParams) => {
 };
 
 const getToneStyles = (props: StylesFunctionParams) => {
-  switch (props.tone) {
-    case 'critical': {
-      return css`
-        background-color: ${designTokens.colorError95};
-        border: 1px solid ${designTokens.borderColorForStampWhenError};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorError40 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    case 'warning': {
-      return css`
-        background-color: ${designTokens.colorWarning95};
-        border: 1px solid ${designTokens.borderColorForStampWhenWarning};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorWarning40 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    case 'positive': {
-      return css`
-        background-color: ${designTokens.backgroundColorForStampAsPositive};
-        border: 1px solid ${designTokens.borderColorForStampAsPositive};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorPrimary25 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    case 'information': {
-      return css`
-        background-color: ${designTokens.colorInfo95};
-        border: 1px solid ${designTokens.borderColorForStampAsInformation};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorInfo40 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    case 'primary': {
-      return css`
-        background-color: ${designTokens.colorPrimary95};
-        border: 1px solid ${designTokens.borderColorForStampAsPrimary};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorPrimary25 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    case 'secondary': {
-      return css`
-        background-color: ${designTokens.colorNeutral95};
-        border: 1px solid ${designTokens.borderColorForStampAsSecondary};
-        &,
-        & * {
-          color: ${props.overrideTextColor
-            ? designTokens.colorNeutral40 + '!important'
-            : 'inherit'};
-        }
-      `;
-    }
-    default:
-      return css``;
+  if (!props.tone || !tonesStylesMap[props.tone]) {
+    return css``;
   }
+
+  const toneStyles = tonesStylesMap[props.tone || ''];
+  return css`
+    background-color: ${toneStyles.backgroundColor};
+    border: 1px solid ${toneStyles.borderColor};
+    &,
+    & * {
+      color: ${props.overrideTextColor ? toneStyles.color : 'inherit'};
+    }
+  `;
 };
 
 const getStampStyles = (props: StylesFunctionParams) => {
@@ -150,38 +117,19 @@ const getStampStyles = (props: StylesFunctionParams) => {
 const Stamp = (props: Props) => {
   const { themedValue } = useTheme();
   const overrideTextColor = themedValue(false, true);
+  const iconTone = props.tone ? tonesStylesMap[props.tone].iconTone : '';
+  console.log({ iconTone });
   const Icon =
     props.icon &&
     cloneElement(props.icon, {
       size: 'medium',
-      color: props.tone ? iconColorsMap[props.tone] : null,
+      color: overrideTextColor ? iconTone : 'inherit',
     });
 
   if (props.message && props.children) {
-    return (
-      <div
-        css={css`
-          fill: ${designTokens.colorError};
-          color: ${designTokens.colorError};
-        `}
-      >
-        <SpacingsInline alignItems="center">
-          <ErrorIcon />
-          <Text.Detail tone={'critical'}>
-            You cannot use inline prop and children prop at the same time. See{' '}
-            <a
-              css={css`
-                color: ${designTokens.colorError};
-                text-decoration: underline;
-              `}
-              href="/?path=/story/components-stamps--stamp"
-            >
-              documentation
-            </a>{' '}
-            for usage.
-          </Text.Detail>
-        </SpacingsInline>
-      </div>
+    warning(
+      !props.message && !props.children,
+      'Stamp: `children` prop is ignored as `message` was provided and it has more priority'
     );
   }
   if (props.message) {
@@ -214,7 +162,7 @@ const Stamp = (props: Props) => {
       >
         {props.children}
       </div>
-      {console.log(
+      {console.warn(
         'Please pass messages or icons as inline props, this method will be deprecated soon. for more information, see documentation: https://uikit.commercetools.com/?path=/story/components-stamps--stamp'
       )}
     </>
