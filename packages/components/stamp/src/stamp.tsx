@@ -31,9 +31,16 @@ type Props = {
   };
 };
 
+type toneStylesProperties = {
+  backgroundColor: string;
+  borderColor: string;
+  color: string;
+  iconTone: string;
+};
+
 type StylesFunctionParams = Props & { overrideTextColor?: boolean };
 
-const tonesStylesMap = {
+const tonesStylesMap: Record<Tone, toneStylesProperties> = {
   critical: {
     backgroundColor: designTokens.colorError95,
     borderColor: designTokens.borderColorForStampWhenError,
@@ -95,7 +102,7 @@ const getToneStyles = (props: StylesFunctionParams) => {
     return css``;
   }
 
-  const toneStyles = tonesStylesMap[props.tone || ''];
+  const toneStyles = tonesStylesMap[props.tone];
   return css`
     background-color: ${toneStyles.backgroundColor};
     border: 1px solid ${toneStyles.borderColor};
@@ -118,7 +125,6 @@ const Stamp = (props: Props) => {
   const { themedValue } = useTheme();
   const overrideTextColor = themedValue(false, true);
   const iconTone = props.tone ? tonesStylesMap[props.tone].iconTone : '';
-  console.log({ iconTone });
   const Icon =
     props.icon &&
     cloneElement(props.icon, {
@@ -130,6 +136,12 @@ const Stamp = (props: Props) => {
     warning(
       !props.message && !props.children,
       'Stamp: `children` prop is ignored as `message` was provided and it has more priority'
+    );
+  }
+  if (props.children) {
+    warning(
+      !props.children,
+      'Stamp: Please pass messages or icons as inline props, this method will be deprecated soon. for more information, see documentation: https://uikit.commercetools.com/?path=/story/components-stamps--stamp'
     );
   }
   if (props.message) {
@@ -162,9 +174,6 @@ const Stamp = (props: Props) => {
       >
         {props.children}
       </div>
-      {console.warn(
-        'Please pass messages or icons as inline props, this method will be deprecated soon. for more information, see documentation: https://uikit.commercetools.com/?path=/story/components-stamps--stamp'
-      )}
     </>
   );
 };
