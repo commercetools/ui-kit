@@ -435,6 +435,8 @@ decisionGroupsByTheme:
           choice: color-accent-98
         background-color-for-tooltip:
           choice: color-accent
+        background-color-for-view-switcher:
+          choice: color-surface
         background-color-for-view-switcher-when-disabled:
           choice: color-accent-98
         background-color-for-view-switcher-when-selected:
@@ -706,6 +708,8 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-stamp:
           choice: font-size-30
+        font-size-for-view-switcher:
+          choice: font-size-30
         font-size-for-table:
           choice: font-size-30
         font-size-for-avatar-as-small:
@@ -930,7 +934,7 @@ decisionGroupsByTheme:
         background-color-for-tooltip:
           choice: color-accent-10
         background-color-for-view-switcher-when-disabled:
-          choice: color-neutral-95
+          choice: color-surface
         background-color-for-view-switcher-when-selected:
           choice: color-neutral-95
         background-color-for-view-switcher-when-hovered:
@@ -1102,6 +1106,8 @@ decisionGroupsByTheme:
           description: ''
           choice: 'inherit'
         font-size-for-stamp:
+          choice: font-size-20
+        font-size-for-view-switcher:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20

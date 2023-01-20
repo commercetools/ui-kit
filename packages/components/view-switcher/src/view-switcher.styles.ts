@@ -52,7 +52,7 @@ export const getButtonStyles = (
       border-left: ${isFirstButton ? designTokens.borderForViewSwitcher : '0'};
       border-radius: ${borderRadius};
       box-shadow: ${designTokens.boxShadowForViewSwitcher};
-      background-color: ${designTokens.colorSurface};
+      background-color: ${designTokens.backgroundColorForViewSwitcher};
       &:hover {
         background-color: ${designTokens.backgroundColorForViewSwitcherWhenHovered};
       }
@@ -61,11 +61,6 @@ export const getButtonStyles = (
       }
       ${getSizeStyles(isCondensed)}
     `,
-    isActive &&
-      css`
-        background-color: ${designTokens.backgroundColorForViewSwitcherWhenSelected};
-        box-shadow: ${designTokens.boxShadowForViewSwitcherWhenSelected};
-      `,
     isDisabled &&
       css`
         background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
@@ -73,6 +68,11 @@ export const getButtonStyles = (
         &:hover {
           background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
         }
+      `,
+    isActive &&
+      css`
+        background-color: ${designTokens.backgroundColorForViewSwitcherWhenSelected};
+        box-shadow: ${designTokens.boxShadowForViewSwitcherWhenSelected};
       `,
   ];
 };

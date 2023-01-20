@@ -189,6 +189,7 @@
     98%
   );
   --background-color-for-tooltip: #213c45;
+  --background-color-for-view-switcher: #fff;
   --background-color-for-view-switcher-when-disabled: hsl(
     195,
     35.2941176471%,
@@ -291,6 +292,7 @@
   --font-size-for-body: 13px;
   --font-size-for-link: 1rem;
   --font-size-for-stamp: 1rem;
+  --font-size-for-view-switcher: 1rem;
   --font-size-for-table: 1rem;
   --font-size-for-avatar-as-small: 1rem;
   --font-size-for-avatar-as-medium: 1.5rem;

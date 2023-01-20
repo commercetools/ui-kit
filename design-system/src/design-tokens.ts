@@ -170,6 +170,7 @@ export const themes = {
     backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
       'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForTooltip: '#213c45',
+    backgroundColorForViewSwitcher: '#fff',
     backgroundColorForViewSwitcherWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForViewSwitcherWhenSelected: 'hsl(0, 0%, 95%)',
     backgroundColorForViewSwitcherWhenHovered: 'hsl(0, 0%, 90%)',
@@ -267,6 +268,7 @@ export const themes = {
     fontSizeForBody: '13px',
     fontSizeForLink: '1rem',
     fontSizeForStamp: '1rem',
+    fontSizeForViewSwitcher: '1rem',
     fontSizeForTable: '1rem',
     fontSizeForAvatarAsSmall: '1rem',
     fontSizeForAvatarAsMedium: '1.5rem',
@@ -376,7 +378,7 @@ export const themes = {
     backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
       'hsl(0, 0%, 95%)',
     backgroundColorForTooltip: 'hsl(195, 35.2941176471%, 10%)',
-    backgroundColorForViewSwitcherWhenDisabled: 'hsl(0, 0%, 95%)',
+    backgroundColorForViewSwitcherWhenDisabled: '#fff',
     backgroundColorForViewSwitcherWhenSelected: 'hsl(0, 0%, 95%)',
     backgroundColorForViewSwitcherWhenHovered: 'hsl(0, 0%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
@@ -443,6 +445,7 @@ export const themes = {
     fontSizeForButton: '0.875rem',
     fontSizeForLink: 'inherit',
     fontSizeForStamp: '0.875rem',
+    fontSizeForViewSwitcher: '0.875rem',
     fontSizeForTable: '0.875rem',
     fontSizeForAvatarAsSmall: '0.875rem',
     fontSizeForAvatarAsMedium: '1rem',
@@ -718,6 +721,8 @@ const designTokens = {
   backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
     'var(--background-color-for-localized-multiline-text-input-label-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForTooltip: 'var(--background-color-for-tooltip, #213c45)',
+  backgroundColorForViewSwitcher:
+    'var(--background-color-for-view-switcher, #fff)',
   backgroundColorForViewSwitcherWhenDisabled:
     'var(--background-color-for-view-switcher-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForViewSwitcherWhenSelected:
@@ -862,6 +867,7 @@ const designTokens = {
   fontSizeForBody: 'var(--font-size-for-body, 13px)',
   fontSizeForLink: 'var(--font-size-for-link, 1rem)',
   fontSizeForStamp: 'var(--font-size-for-stamp, 1rem)',
+  fontSizeForViewSwitcher: 'var(--font-size-for-view-switcher, 1rem)',
   fontSizeForTable: 'var(--font-size-for-table, 1rem)',
   fontSizeForAvatarAsSmall: 'var(--font-size-for-avatar-as-small, 1rem)',
   fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1.5rem)',
