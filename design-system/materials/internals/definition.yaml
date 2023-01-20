@@ -639,6 +639,7 @@ decisionGroupsByTheme:
         border-width-for-input-when-focused:
           choice: border-width-1
         border-width-for-tag:
+          choice: border-width-1
         border-width-for-select-input:
           choice: border-width-1
         border-width-for-content-notification-icon:

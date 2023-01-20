@@ -285,7 +285,6 @@ export const themes = {
     fontColorForSelectInputIcon: '#1a1a1a',
     fontColorForSearchInputIcon: '#1a1a1a',
     fontColorForSearchInputIconWhenHovered: '#1a1a1a',
-    fontColorForLocalizedMultilineTextInputLabel: 'hsl(0, 0%, 60%)',
     fontColorForSelectInputWhenError: 'hsl(0, 0%, 60%)',
     fontColorForSelectInputWhenWarning: 'hsl(0, 0%, 60%)',
     fontColorForSelectInputIconWhenError: '#1a1a1a',
