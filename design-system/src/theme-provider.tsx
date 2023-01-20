@@ -4,6 +4,7 @@ import {
   useRef,
   useEffect,
   type ReactNode,
+  type JSXElementConstructor,
 } from 'react';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
@@ -98,7 +99,18 @@ ThemeProvider.defaultProps = {
   theme: 'default',
 };
 
-const useTheme = (parentSelector = defaultParentSelector) => {
+type TUseThemeResult = {
+  theme: ThemeName;
+  themedValue: <
+    Old extends string | ReactNode | undefined,
+    New extends string | ReactNode | undefined
+  >(
+    defaultThemeValue: Old,
+    newThemeValue: New
+  ) => Old | New;
+  isNewTheme: boolean;
+};
+const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
   const [theme, setTheme] = useState<ThemeName>('default');
   const parentSelectorRef = useRef(parentSelector);
   const observerRef = useRef(
@@ -112,12 +124,9 @@ const useTheme = (parentSelector = defaultParentSelector) => {
     })
   );
 
-  const themedValue = <
-    Old extends string | ReactNode | undefined,
-    New extends string | ReactNode | undefined
-  >(
-    defaultThemeValue: Old,
-    newThemeValue: New
+  const themedValue: TUseThemeResult['themedValue'] = (
+    defaultThemeValue,
+    newThemeValue
   ) => (theme === 'default' ? defaultThemeValue : newThemeValue);
 
   // If we use 'useLayoutEffect' here, we would be trying to read the
@@ -153,5 +162,15 @@ const useTheme = (parentSelector = defaultParentSelector) => {
   };
 };
 
-export { ThemeProvider, useTheme };
+const withThemeContext = (
+  WrappedComponent: JSXElementConstructor<TUseThemeResult>
+) => {
+  // eslint-disable-next-line react/display-name
+  return (props: Record<string, unknown>) => {
+    const themeUtilties = useTheme();
+    return <WrappedComponent {...props} {...themeUtilties} />;
+  };
+};
+
+export { ThemeProvider, useTheme, withThemeContext };
 export type { ThemeName };
