@@ -1,9 +1,9 @@
 /* eslint-disable testing-library/no-wait-for-multiple-assertions */
-import { useState } from 'react';
+import { Component, useState } from 'react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import PropTypes from 'prop-types';
 import { screen, render, fireEvent, waitFor } from '../../test/test-utils';
-import { ThemeProvider } from './theme-provider';
+import { ThemeProvider, withThemeContext } from './theme-provider';
 
 const TestComponent = (props) => (
   <div
@@ -162,5 +162,32 @@ describe('ThemeProvider', () => {
       expect(localThemeProvider).toHaveStyle(`--custom-color: #BADA55`);
       expect(globalThemeProvider).not.toHaveStyle(`--custom-color: #BADA55`);
     });
+  });
+
+  it('should render a class component wrapped in themed HOC', () => {
+    class DummyComponent extends Component {
+      render() {
+        return (
+          <div>
+            {/* eslint-disable-next-line react/prop-types */}
+            <p>Current theme is: {this.props.theme}</p>
+            {/* eslint-disable-next-line react/prop-types */}
+            <p>Themed value: {this.props.themedValue('foo', 'bar')}</p>
+          </div>
+        );
+      }
+    }
+
+    const WrappedComponent = withThemeContext(DummyComponent);
+
+    render(
+      <>
+        <ThemeProvider theme="test" />
+        <WrappedComponent />
+      </>
+    );
+
+    screen.getByText('Current theme is: test');
+    screen.getByText('Themed value: bar');
   });
 });
