@@ -34,7 +34,8 @@ type Props = {
 type toneStylesCssProperties = {
   backgroundColor: string;
   borderColor: string;
-  color: string;
+  fontColor: string;
+  iconColor: string;
 };
 
 type StylesFunctionParams = Props & { overrideTextColor?: boolean };
@@ -43,32 +44,38 @@ const tonesStylesMap: Record<Tone, toneStylesCssProperties> = {
   critical: {
     backgroundColor: designTokens.colorError95,
     borderColor: designTokens.borderColorForStampWhenError,
-    color: designTokens.colorError40,
+    fontColor: designTokens.colorError40,
+    iconColor: 'error',
   },
   warning: {
     backgroundColor: designTokens.colorWarning95,
     borderColor: designTokens.borderColorForStampWhenWarning,
-    color: designTokens.colorWarning40,
+    fontColor: designTokens.colorWarning40,
+    iconColor: 'warning',
   },
   positive: {
     backgroundColor: designTokens.backgroundColorForStampAsPositive,
     borderColor: designTokens.borderColorForStampAsPositive,
-    color: designTokens.colorPrimary25,
+    fontColor: designTokens.colorPrimary25,
+    iconColor: 'primary',
   },
   information: {
     backgroundColor: designTokens.colorInfo95,
     borderColor: designTokens.borderColorForStampAsInformation,
-    color: designTokens.colorInfo40,
+    fontColor: designTokens.colorInfo40,
+    iconColor: 'info',
   },
   primary: {
     backgroundColor: designTokens.colorPrimary95,
     borderColor: designTokens.borderColorForStampAsPrimary,
-    color: designTokens.colorPrimary25,
+    fontColor: designTokens.colorPrimary25,
+    iconColor: 'primary40',
   },
   secondary: {
     backgroundColor: designTokens.colorNeutral95,
     borderColor: designTokens.borderColorForStampAsSecondary,
-    color: designTokens.colorNeutral40,
+    fontColor: designTokens.colorNeutral40,
+    iconColor: 'neutral60',
   },
 };
 
@@ -90,26 +97,16 @@ const getPaddingStyle = (props: StylesFunctionParams) => {
   `;
 };
 
-const getIconColor = (props: Props, overrideTextColor: boolean) => {
+const getIconColor = (
+  props: StylesFunctionParams,
+  overrideTextColor: boolean
+) => {
   if (!overrideTextColor) {
     return 'inherit';
   }
-  switch (props.tone) {
-    case 'secondary':
-      return 'neutral60';
-    case 'primary':
-      return 'primary40';
-    case 'information':
-      return 'info';
-    case 'positive':
-      return 'primary';
-    case 'warning':
-      return 'warning';
-    case 'critical':
-      return 'error';
-    default:
-      return '';
-  }
+
+  const toneStyles = props.tone && tonesStylesMap[props.tone];
+  return toneStyles ? toneStyles.iconColor : '';
 };
 
 const getToneStyles = (props: StylesFunctionParams) => {
@@ -123,7 +120,7 @@ const getToneStyles = (props: StylesFunctionParams) => {
     border: 1px solid ${toneStyles.borderColor};
     &,
     & * {
-      color: ${props.overrideTextColor ? toneStyles.color : 'inherit'};
+      color: ${props.overrideTextColor ? toneStyles.fontColor : 'inherit'};
     }
   `;
 };
@@ -131,6 +128,7 @@ const getToneStyles = (props: StylesFunctionParams) => {
 const getStampStyles = (props: StylesFunctionParams) => {
   return css`
     color: ${props.overrideTextColor ? 'inherit' : designTokens.colorSolid};
+    display: inline-block;
     font-size: ${designTokens.fontSizeForStamp};
     border-radius: ${designTokens.borderRadiusForStamp};
   `;
@@ -151,15 +149,15 @@ const Stamp = (props: Props) => {
     'Stamp: Please pass messages or icons as inline props, this method will be deprecated soon. For more information, see documentation: https://uikit.commercetools.com/?path=/story/components-stamps--stamp'
   );
 
-  if (props.message) {
-    return (
-      <div
-        css={[
-          getStampStyles({ ...props, overrideTextColor }),
-          getToneStyles({ ...props, overrideTextColor }),
-          getPaddingStyle(props),
-        ]}
-      >
+  return (
+    <div
+      css={[
+        getStampStyles({ ...props, overrideTextColor }),
+        getToneStyles({ ...props, overrideTextColor }),
+        getPaddingStyle(props),
+      ]}
+    >
+      {Boolean(props.message) ? (
         <SpacingsInline alignItems="center">
           {Icon}
           <Text.Detail
@@ -167,21 +165,10 @@ const Stamp = (props: Props) => {
             intlMessage={props.message}
           />
         </SpacingsInline>
-      </div>
-    );
-  }
-  return (
-    <>
-      <div
-        css={[
-          getStampStyles({ ...props, overrideTextColor }),
-          getToneStyles({ ...props, overrideTextColor }),
-          getPaddingStyle(props),
-        ]}
-      >
-        {props.children}
-      </div>
-    </>
+      ) : (
+        props.children
+      )}
+    </div>
   );
 };
 const defaultProps: Pick<Props, 'isCondensed'> = {

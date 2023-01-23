@@ -22,6 +22,9 @@
     "@babel/runtime": "^7.19.0",
     "@babel/runtime-corejs3": "^7.19.1",
     "@commercetools-uikit/design-system": "15.10.0",
+    "@commercetools-uikit/spacings-inline": "15.10.0",
+    "@commercetools-uikit/text": "15.10.0",
+    "@commercetools-uikit/utils": "15.10.0",
     "@emotion/react": "^11.4.0",
     "prop-types": "15.8.1"
   },
