@@ -251,6 +251,8 @@ states:
     description: 'When the element is raised'
   highlighted:
     description: 'When the element is highlighted'
+  condensed:
+    description: 'When the element is condensed'
 
 variants:
   h1:
@@ -353,6 +355,10 @@ componentGroups:
     description: 'Localized multiline text input label elements'
   tooltip:
     description: 'Tooltip elements'
+  view-switcher:
+    description: 'View switcher elements'
+  view-switcher-icon:
+    description: 'View switcher icon elements'
 
 decisionGroupsByTheme:
   default:
@@ -429,6 +435,14 @@ decisionGroupsByTheme:
           choice: color-accent-98
         background-color-for-tooltip:
           choice: color-accent
+        background-color-for-view-switcher:
+          choice: color-surface
+        background-color-for-view-switcher-when-disabled:
+          choice: color-accent-98
+        background-color-for-view-switcher-when-selected:
+          choice: color-neutral-95
+        background-color-for-view-switcher-when-hovered:
+          choice: color-neutral-90
 
     borders:
       label: Borders
@@ -444,6 +458,8 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-collapsible-panel-header-icon-when-disabled:
           choice: '1px solid var(--color-neutral)'
+        border-for-view-switcher:
+          choice: 'none'
 
     borderColors:
       label: Border Colors
@@ -540,6 +556,8 @@ decisionGroupsByTheme:
           choice: border-radius-6
         border-radius-for-stamp:
           choice: border-radius-2
+        border-radius-for-view-switcher:
+          choice: border-radius-6
 
     borderWidths:
       label: Border width
@@ -562,6 +580,10 @@ decisionGroupsByTheme:
       decisions:
         box-shadow-for-datetime-input-when-hovered:
           choice: 'inset 0 0 0 2px'
+        box-shadow-for-view-switcher:
+          choice: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)
+        box-shadow-for-view-switcher-when-selected:
+          choice: shadow-9
 
     fontColors:
       label: Font Colors
@@ -604,6 +626,12 @@ decisionGroupsByTheme:
           choice: color-surface
         font-color-for-localized-multiline-text-input-label:
           choice: color-neutral-60
+        font-color-for-view-switcher:
+          choice: color-solid
+        font-color-for-view-switcher-when-disabled:
+          choice: color-neutral-60
+        font-color-for-view-switcher-when-selected:
+          choice: color-solid
 
     heights:
       label: Height
@@ -621,6 +649,10 @@ decisionGroupsByTheme:
           choice: '16px'
         height-for-input:
           choice: '32px'
+        height-for-view-switcher:
+          choice: '32px'
+        height-for-view-switcher-when-condensed:
+          choice: '24px'
 
     widths:
       label: Width
@@ -675,6 +707,8 @@ decisionGroupsByTheme:
           description: ''
           choice: font-size-30
         font-size-for-stamp:
+          choice: font-size-30
+        font-size-for-view-switcher:
           choice: font-size-30
         font-size-for-table:
           choice: font-size-30
@@ -760,6 +794,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-for-table-as-condensed:
           choice: spacing-20
+        margin-for-view-switcher-icon:
+          choice: '0 var(--spacing-10) 0 0'
 
     paddings:
       label: Paddings
@@ -809,6 +845,10 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-10)'
         padding-for-tooltip:
           choice: 'var(--spacing-10) var(--spacing-20)'
+        padding-for-view-switcher:
+          choice: '0 var(--spacing-30) 0 var(--spacing-30)'
+        padding-for-view-switcher-when-condensed:
+          choice: '0 var(--spacing-20) 0 var(--spacing-20)'
 
     shadows:
       label: Shadows
@@ -893,6 +933,12 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-tooltip:
           choice: color-accent-10
+        background-color-for-view-switcher-when-disabled:
+          choice: color-surface
+        background-color-for-view-switcher-when-selected:
+          choice: color-neutral-95
+        background-color-for-view-switcher-when-hovered:
+          choice: color-neutral-95
 
     borders:
       label: Borders
@@ -908,6 +954,8 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral-90)'
         border-for-collapsible-panel-header-icon-when-disabled:
           choice: 'none'
+        border-for-view-switcher:
+          choice: '1px solid var(--color-neutral)'
 
     borderColors:
       label: Border Colors
@@ -982,6 +1030,8 @@ decisionGroupsByTheme:
           choice: border-radius-4
         border-radius-for-stamp:
           choice: border-radius-20
+        border-radius-for-view-switcher:
+          choice: border-radius-4
 
     borderWidths:
       label: Border width
@@ -996,6 +1046,10 @@ decisionGroupsByTheme:
       decisions:
         box-shadow-for-datetime-input-when-hovered:
           choice: 'inset 0 0 0 1px'
+        box-shadow-for-view-switcher:
+          choice: shadow-0
+        box-shadow-for-view-switcher-when-selected:
+          choice: shadow-0
 
     fontColors:
       label: Font Colors
@@ -1011,6 +1065,8 @@ decisionGroupsByTheme:
           choice: color-neutral-40
         font-color-for-tag-remove-icon-when-hovered:
           choice: color-error
+        font-color-for-view-switcher:
+          choice: color-neutral-40
 
     fontSizes:
       label: Font Sizes
@@ -1050,6 +1106,8 @@ decisionGroupsByTheme:
           description: ''
           choice: 'inherit'
         font-size-for-stamp:
+          choice: font-size-20
+        font-size-for-view-switcher:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
@@ -1134,6 +1192,10 @@ decisionGroupsByTheme:
           choice: '16px'
         height-for-input:
           choice: '40px'
+        height-for-view-switcher:
+          choice: '40px'
+        height-for-view-switcher-when-condensed:
+          choice: '32px'
 
     iconColors:
       label: Icon colors
@@ -1159,6 +1221,8 @@ decisionGroupsByTheme:
           choice: spacing-30
         margin-for-table-cell-as-condensed:
           choice: spacing-20
+        margin-for-view-switcher-icon:
+          choice: '0 var(--spacing-20) 0 0'
 
     paddings:
       label: Paddings
@@ -1208,6 +1272,10 @@ decisionGroupsByTheme:
           choice: '0 12px'
         padding-for-tooltip:
           choice: 'var(--spacing-20) 12px'
+        padding-for-view-switcher:
+          choice: '0 var(--spacing-30) 0 var(--spacing-30)'
+        padding-for-view-switcher-when-condensed:
+          choice: '0 12px 0 12px'
 
     shadows:
       label: Shadows
