@@ -706,6 +706,7 @@ decisionGroupsByTheme:
         font-color-for-view-switcher-when-disabled:
           choice: color-neutral-60
         font-color-for-view-switcher-when-selected:
+          choice: color-solid
         font-color-for-clear-input-icon:
           choice: color-solid
         font-color-for-clear-input-icon-when-hovered:
@@ -1066,6 +1067,7 @@ decisionGroupsByTheme:
         background-color-for-view-switcher-when-selected:
           choice: color-neutral-95
         background-color-for-view-switcher-when-hovered:
+          choice: color-neutral-95
         background-color-for-input-when-readonly:
           description: ''
           choice: color-neutral-95
