@@ -97,7 +97,11 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
           return designTokens.borderColorForInputWhenHovered;
         return null;
       })(),
-      backgroundColor: designTokens.backgroundColorForInputWhenHovered,
+      backgroundColor: (() => {
+        if (!props.isDisabled && !props.isReadOnly)
+          return designTokens.backgroundColorForInputWhenHovered;
+        return null;
+      })(),
     },
     pointerEvents: 'auto',
     color:
