@@ -41,18 +41,23 @@ storiesOf('Components|Stamps', module)
             const Icon = icons[iconNames[iconIndex]];
             return (
               <SpacingsInline key={tone} alignItems="center">
-                <Stamp tone={tone} isCondensed={boolean('isCondensed', false)}>
-                  <SpacingsInline alignItems="center">
+                <Stamp
+                  tone={tone}
+                  isCondensed={boolean('isCondensed', false)}
+                  icon={
                     <Icon
                       color={themedValue(undefined, iconColorsMap[tone])}
                       size="medium"
                     />
-                    <Text.Detail>{'Hello'}</Text.Detail>
-                  </SpacingsInline>
-                </Stamp>
-                <Stamp tone={tone} isCondensed={boolean('isCondensed', false)}>
-                  <Text.Detail>{`tone="${tone}"`}</Text.Detail>
-                </Stamp>
+                  }
+                  message={{ id: tone, defaultMessage: 'Hello' }}
+                />
+                <Stamp
+                  tone={tone}
+                  isCondensed={boolean('isCondensed', false)}
+                  message={{ id: tone, defaultMessage: tone }}
+                  icon={<Icon />}
+                />
               </SpacingsInline>
             );
           })}

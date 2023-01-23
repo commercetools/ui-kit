@@ -146,18 +146,11 @@ const Stamp = (props: Props) => {
       color: getIconColor(props, overrideTextColor),
     });
 
-  if (props.message && props.children) {
-    warning(
-      !props.message && !props.children,
-      'Stamp: `children` prop is ignored as `message` was provided and it has more priority'
-    );
-  }
-  if (props.children) {
-    warning(
-      !props.children,
-      'Stamp: Please pass messages or icons as inline props, this method will be deprecated soon. For more information, see documentation: https://uikit.commercetools.com/?path=/story/components-stamps--stamp'
-    );
-  }
+  warning(
+    !props.children,
+    'Stamp: Please pass messages or icons as inline props, this method will be deprecated soon. For more information, see documentation: https://uikit.commercetools.com/?path=/story/components-stamps--stamp'
+  );
+
   if (props.message) {
     return (
       <div
