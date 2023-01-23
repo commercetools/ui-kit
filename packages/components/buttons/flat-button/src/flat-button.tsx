@@ -30,7 +30,7 @@ export type TFlatButtonProps<
   /**
    * Indicates the color scheme of the button.
    */
-  tone?: 'primary' | 'secondary' | 'inverted';
+  tone?: 'primary' | 'secondary' | 'inverted' | 'critical';
   /**
    * Used as the HTML `type` attribute.
    */
