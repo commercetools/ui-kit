@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/select-input",
   "description": "An input component getting a selection from the user.",
-  "version": "15.9.0",
+  "version": "15.10.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,11 +21,11 @@
   "dependencies": {
     "@babel/runtime": "^7.19.0",
     "@babel/runtime-corejs3": "^7.19.1",
-    "@commercetools-uikit/constraints": "15.9.0",
-    "@commercetools-uikit/design-system": "15.9.0",
-    "@commercetools-uikit/icons": "15.9.0",
-    "@commercetools-uikit/select-utils": "15.9.0",
-    "@commercetools-uikit/utils": "15.9.0",
+    "@commercetools-uikit/constraints": "15.10.0",
+    "@commercetools-uikit/design-system": "15.10.0",
+    "@commercetools-uikit/icons": "15.10.0",
+    "@commercetools-uikit/select-utils": "15.10.0",
+    "@commercetools-uikit/utils": "15.10.0",
     "@emotion/is-prop-valid": "1.2.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",

@@ -1,5 +1,19 @@
 # @commercetools-uikit/tag
 
+## 15.10.0
+
+### Patch Changes
+
+- [#2375](https://github.com/commercetools/ui-kit/pull/2375) [`2937a74d0`](https://github.com/commercetools/ui-kit/commit/2937a74d0d5f669e8cc74af571b330bac6a038ee) Thanks [@chloe0592](https://github.com/chloe0592)! - Add new theme tokens for Tag component
+
+- Updated dependencies [[`1926e229d`](https://github.com/commercetools/ui-kit/commit/1926e229da10a13be9f9e8b9da9331418f0c7e39), [`2937a74d0`](https://github.com/commercetools/ui-kit/commit/2937a74d0d5f669e8cc74af571b330bac6a038ee), [`ff410e358`](https://github.com/commercetools/ui-kit/commit/ff410e358dcce1eb0c30a873969765c9adadcbd3), [`64aab564d`](https://github.com/commercetools/ui-kit/commit/64aab564d2e66ecf7841b8e4b0cdb2d357d54ff6), [`6e67212b4`](https://github.com/commercetools/ui-kit/commit/6e67212b43fa066b4cffbb2dcbbe2e65f14b38a7), [`2937a74d0`](https://github.com/commercetools/ui-kit/commit/2937a74d0d5f669e8cc74af571b330bac6a038ee), [`6d4075b75`](https://github.com/commercetools/ui-kit/commit/6d4075b754029eda6b54d2b9a2845fbddbb6faa7)]:
+  - @commercetools-uikit/design-system@15.10.0
+  - @commercetools-uikit/icons@15.10.0
+  - @commercetools-uikit/text@15.10.0
+  - @commercetools-uikit/accessible-button@15.10.0
+  - @commercetools-uikit/constraints@15.10.0
+  - @commercetools-uikit/spacings@15.10.0
+
 ## 15.9.0
 
 ### Patch Changes
