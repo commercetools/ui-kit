@@ -24,7 +24,7 @@ type Props = {
    * If `true`, renders a condensed version of the stamp.
    */
   isCondensed: boolean;
-  children: ReactNode;
+  children?: ReactNode;
   icon?: ReactElement;
   message?: MessageDescriptor & {
     values?: Record<string, ReactNode>;
