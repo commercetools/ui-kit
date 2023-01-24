@@ -219,8 +219,8 @@ describe('warnings', () => {
       </Group>
     );
     expect(warning).toHaveBeenCalledWith(
-      true,
-      'uikit/ViewSwitcherButton: You need to provide at least the children to render inside the button or an icon at least.'
+      false,
+      'uikit/ViewSwitcherButton: You need to provide at least the `children` to render inside the button or an `icon`.'
     );
   });
   it('should warn when a button is used only with an icon and no label', () => {
@@ -230,8 +230,8 @@ describe('warnings', () => {
       </Group>
     );
     expect(warning).toHaveBeenCalledWith(
-      true,
-      'uikit/ViewSwitcherButton: You need to provide a label when rendering only an icon within the button.'
+      false,
+      'uikit/ViewSwitcherButton: You need to provide a `label` when rendering only an `icon` within the button.'
     );
   });
 });

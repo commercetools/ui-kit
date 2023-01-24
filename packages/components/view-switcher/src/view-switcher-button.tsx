@@ -27,12 +27,12 @@ export type TViewSwitcherButtonProps = {
 
 const ViewSwitcherButton = (props: TViewSwitcherButtonProps) => {
   warning(
-    props.children || props.icon,
+    Boolean(props.children || props.icon),
     'uikit/ViewSwitcherButton: You need to provide at least the `children` to render inside the button or an `icon`.'
   );
 
   warning(
-    props.label || props.children,
+    Boolean(props.label || props.children),
     'uikit/ViewSwitcherButton: You need to provide a `label` when rendering only an `icon` within the button.'
   );
 
