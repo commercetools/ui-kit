@@ -46,6 +46,16 @@ describe('rendering', () => {
     expect(button2).toBeEnabled();
   });
 
+  it('should run only icon buttons', () => {
+    render(
+      <Group defaultSelected="test-button-1">
+        <Button value="test-button-1" icon={<i>Icon</i>} />
+      </Group>
+    );
+    const icon = screen.getByText('Icon');
+    expect(icon).toBeInTheDocument();
+  });
+
   it('should render disabled button', () => {
     render(
       <Group {...props}>
@@ -200,6 +210,28 @@ describe('warnings', () => {
     expect(warning).toHaveBeenCalledWith(
       false,
       'ui-kit/ViewSwitcher: passed both "selectedValue" (uncontrolled component) prop and "defaultSelected" (uncontrolled component). Please pass only one as the component can only be either controlled or uncontrolled.'
+    );
+  });
+  it('should warn when a button is used with no children and no icon', () => {
+    render(
+      <Group defaultSelected="test-button-1">
+        <Button value="test-button-1" />
+      </Group>
+    );
+    expect(warning).toHaveBeenCalledWith(
+      true,
+      'uikit/ViewSwitcherButton: You need to provide at least the children to render inside the button or an icon at least.'
+    );
+  });
+  it('should warn when a button is used only with an icon and no label', () => {
+    render(
+      <Group defaultSelected="test-button-1">
+        <Button value="test-button-1" icon={<i>Icon</i>} />
+      </Group>
+    );
+    expect(warning).toHaveBeenCalledWith(
+      true,
+      'uikit/ViewSwitcherButton: You need to provide a label when rendering only an icon within the button.'
     );
   });
 });
