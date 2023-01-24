@@ -44,9 +44,10 @@ export default Example;
 
 ## Properties
 
-| Props               | Type                                                                                                          | Required | Default | Description                                                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------------------------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `tone`              | `union`<br/>Possible values:<br/>`, 'critical', 'warning', 'positive', 'information', 'primary', 'secondary'` |          |         | Indicates the color scheme of stamp                                                                                    |
-| `isCondensed`       | `boolean`                                                                                                     |          | `false` | If `true`, renders a condensed version of the stamp.                                                                   |
-| `children`          | `ReactNode`                                                                                                   |    ✅    |         |                                                                                                                        |
-| `overrideTextColor` | `boolean`                                                                                                     |          | `false` | If true, the css text color for any child of the Stamp component will be overriden by the one set from the Stamp prop. |
+| Props         | Type                                                                                                          | Required | Default         | Description                                          |
+| ------------- | ------------------------------------------------------------------------------------------------------------- | :------: | --------------- | ---------------------------------------------------- |
+| `tone`        | `union`<br/>Possible values:<br/>`, 'critical', 'warning', 'positive', 'information', 'primary', 'secondary'` |          | `'information'` | Indicates the color scheme of stamp                  |
+| `isCondensed` | `boolean`                                                                                                     |          | `false`         | If `true`, renders a condensed version of the stamp. |
+| `children`    | `ReactNode`                                                                                                   |          |                 |                                                      |
+| `icon`        | `ReactElement`                                                                                                |          |                 |                                                      |
+| `message`     | `intersection`                                                                                                |          |                 |                                                      |

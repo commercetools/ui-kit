@@ -185,8 +185,9 @@ const Stamp = (props: Props) => {
     </div>
   );
 };
-const defaultProps: Pick<Props, 'isCondensed'> = {
+const defaultProps: Pick<Props, 'isCondensed' | 'tone'> = {
   isCondensed: false,
+  tone: 'information',
 };
 Stamp.displayName = 'Stamp';
 Stamp.defaultProps = defaultProps;
