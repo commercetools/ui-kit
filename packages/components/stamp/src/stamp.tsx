@@ -31,50 +31,64 @@ type Props = {
   };
 };
 
-type toneStylesCssProperties = {
-  backgroundColor: string;
-  borderColor: string;
-  fontColor: string;
+type ToneRelatedProps = {
+  styles: {
+    backgroundColor: string;
+    borderColor: string;
+    color: string;
+  };
   iconColor: string;
 };
 
 type StylesFunctionParams = Props & { overrideTextColor?: boolean };
 
-const tonesStylesMap: Record<Tone, toneStylesCssProperties> = {
+const tonesPropsMap: Record<Tone, ToneRelatedProps> = {
   critical: {
-    backgroundColor: designTokens.colorError95,
-    borderColor: designTokens.borderColorForStampWhenError,
-    fontColor: designTokens.colorError40,
+    styles: {
+      backgroundColor: designTokens.colorError95,
+      borderColor: designTokens.borderColorForStampWhenError,
+      color: designTokens.colorError40,
+    },
     iconColor: 'error',
   },
   warning: {
-    backgroundColor: designTokens.colorWarning95,
-    borderColor: designTokens.borderColorForStampWhenWarning,
-    fontColor: designTokens.colorWarning40,
+    styles: {
+      backgroundColor: designTokens.colorWarning95,
+      borderColor: designTokens.borderColorForStampWhenWarning,
+      color: designTokens.colorWarning40,
+    },
     iconColor: 'warning',
   },
   positive: {
-    backgroundColor: designTokens.backgroundColorForStampAsPositive,
-    borderColor: designTokens.borderColorForStampAsPositive,
-    fontColor: designTokens.colorPrimary25,
+    styles: {
+      backgroundColor: designTokens.backgroundColorForStampAsPositive,
+      borderColor: designTokens.borderColorForStampAsPositive,
+      color: designTokens.colorPrimary25,
+    },
     iconColor: 'primary',
   },
   information: {
-    backgroundColor: designTokens.colorInfo95,
-    borderColor: designTokens.borderColorForStampAsInformation,
-    fontColor: designTokens.colorInfo40,
+    styles: {
+      backgroundColor: designTokens.colorInfo95,
+      borderColor: designTokens.borderColorForStampAsInformation,
+      color: designTokens.colorInfo40,
+    },
     iconColor: 'info',
   },
   primary: {
-    backgroundColor: designTokens.colorPrimary95,
-    borderColor: designTokens.borderColorForStampAsPrimary,
-    fontColor: designTokens.colorPrimary25,
+    styles: {
+      backgroundColor: designTokens.colorPrimary95,
+      borderColor: designTokens.borderColorForStampAsPrimary,
+      color: designTokens.colorPrimary25,
+    },
     iconColor: 'primary40',
   },
   secondary: {
-    backgroundColor: designTokens.colorNeutral95,
-    borderColor: designTokens.borderColorForStampAsSecondary,
-    fontColor: designTokens.colorNeutral40,
+    styles: {
+      backgroundColor: designTokens.colorNeutral95,
+      borderColor: designTokens.borderColorForStampAsSecondary,
+      color: designTokens.colorNeutral40,
+    },
     iconColor: 'neutral60',
   },
 };
@@ -105,22 +119,22 @@ const getIconColor = (
     return 'inherit';
   }
 
-  const toneStyles = props.tone && tonesStylesMap[props.tone];
-  return toneStyles ? toneStyles.iconColor : '';
+  const toneProps = props.tone && tonesPropsMap[props.tone];
+  return toneProps ? toneProps.iconColor : '';
 };
 
 const getToneStyles = (props: StylesFunctionParams) => {
-  if (!props.tone || !tonesStylesMap[props.tone]) {
+  if (!props.tone || !tonesPropsMap[props.tone]) {
     return css``;
   }
 
-  const toneStyles = tonesStylesMap[props.tone];
+  const toneProps = tonesPropsMap[props.tone];
   return css`
-    background-color: ${toneStyles.backgroundColor};
-    border: 1px solid ${toneStyles.borderColor};
+    background-color: ${toneProps.styles.backgroundColor};
+    border: 1px solid ${toneProps.styles.borderColor};
     &,
     & * {
-      color: ${props.overrideTextColor ? toneStyles.fontColor : 'inherit'};
+      color: ${props.overrideTextColor ? toneProps.styles.color : 'inherit'};
     }
   `;
 };
