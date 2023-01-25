@@ -52,7 +52,9 @@ const ViewSwitcherButton = (props: TViewSwitcherButtonProps) => {
       {props.icon && (
         <span
           css={css`
-            margin: ${designTokens.marginForViewSwitcherIcon};
+            margin: ${props.children
+              ? designTokens.marginForViewSwitcherIcon
+              : '0'};
             display: flex;
             align-items: center;
             justify-content: center;
