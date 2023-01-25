@@ -36,6 +36,7 @@ export const themes = {
     colorWarning85: 'hsl(25.110132158590307, 89.0196078431%, 85%)',
     colorWarning95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     colorError: '#e60050',
+    colorError25: 'hsl(339.1304347826087, 100%, 25%)',
     colorError40: 'hsl(339.1304347826087, 100%, 40%)',
     colorError85: 'hsl(339.1304347826087, 100%, 85%)',
     colorError95: 'hsl(339.1304347826087, 100%, 95%)',
@@ -561,6 +562,7 @@ const designTokens = {
   colorWarning95:
     'var(--color-warning-95, hsl(25.110132158590307, 89.0196078431%, 95%))',
   colorError: 'var(--color-error, #e60050)',
+  colorError25: 'var(--color-error-25, hsl(339.1304347826087, 100%, 25%))',
   colorError40: 'var(--color-error-40, hsl(339.1304347826087, 100%, 40%))',
   colorError85: 'var(--color-error-85, hsl(339.1304347826087, 100%, 85%))',
   colorError95: 'var(--color-error-95, hsl(339.1304347826087, 100%, 95%))',
