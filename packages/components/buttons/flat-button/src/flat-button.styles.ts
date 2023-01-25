@@ -7,6 +7,7 @@ export const getButtonIconColor = (
   else if (props.tone === 'primary') return 'primary';
   else if (props.tone === 'secondary') return 'solid';
   else if (props.tone === 'inverted') return 'surface';
+  else if (props.tone === 'critical') return 'error';
   return 'solid';
 };
 
@@ -22,6 +23,8 @@ export const getTextColor = (
       return designTokens.colorSolid;
     case 'inverted':
       return designTokens.fontColorForTextWhenInverted;
+    case 'critical':
+      return isHover ? designTokens.colorError25 : designTokens.colorError;
     default:
       return 'inherit';
   }
