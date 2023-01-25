@@ -36,7 +36,15 @@ export const component = () => (
       </ViewSwitcher.Group>
     </Spec>
 
-    <Spec label="with icon buttons">
+    <Spec label="with icon only buttons">
+      <ViewSwitcher.Group defaultSelected="view-1">
+        <ViewSwitcher.Button value="view-1" icon={<InformationIcon />} />
+        <ViewSwitcher.Button value="view-2" icon={<CubeIcon />} />
+        <ViewSwitcher.Button value="view-3" icon={<WorldIcon />} />
+      </ViewSwitcher.Group>
+    </Spec>
+
+    <Spec label="with icon and text buttons">
       <ViewSwitcher.Group defaultSelected="view-1">
         <ViewSwitcher.Button value="view-1" icon={<InformationIcon />}>
           View 1
