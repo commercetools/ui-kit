@@ -2,7 +2,6 @@
 import { cloneElement, type ReactElement, type ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
-import type { MessageDescriptor } from 'react-intl';
 import Text from '@commercetools-uikit/text';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { warning } from '@commercetools-uikit/utils';
@@ -27,9 +26,6 @@ type Props = {
   children?: ReactNode;
   icon?: ReactElement;
   label?: string;
-  intlMessage?: MessageDescriptor & {
-    values?: Record<string, ReactNode>;
-  };
 };
 
 type ToneRelatedProps = {
@@ -161,25 +157,8 @@ const Stamp = (props: Props) => {
 
   warning(
     !props.children,
-    'Stamp: The `children` prop has been deprecated. Please use the `intlMessage` and `icon` prop to render the content.'
+    'Stamp: The `children` prop has been deprecated. Please use the `label` and `icon` prop to render the content.'
   );
-
-  const getStampText = (props: Props) => {
-    if (props.intlMessage)
-      return (
-        <Text.Detail
-          tone={themedValue(undefined, 'inherit')}
-          intlMessage={props.intlMessage}
-        />
-      );
-    if (props.label)
-      return (
-        <Text.Detail tone={themedValue(undefined, 'inherit')}>
-          {props.label}
-        </Text.Detail>
-      );
-    return props.children;
-  };
 
   return (
     <div
@@ -191,7 +170,13 @@ const Stamp = (props: Props) => {
     >
       <SpacingsInline alignItems="center">
         {Icon}
-        {getStampText(props)}
+        {props.label ? (
+          <Text.Detail tone={themedValue(undefined, 'inherit')}>
+            {props.label}
+          </Text.Detail>
+        ) : (
+          props.children
+        )}
       </SpacingsInline>
     </div>
   );

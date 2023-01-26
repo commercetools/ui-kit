@@ -37,7 +37,7 @@ storiesOf('Components|Stamps', module)
               <Stamp
                 tone={tone}
                 isCondensed={boolean('isCondensed', false)}
-                intlMessage={{ id: tone, defaultMessage: `tone="${tone}"` }}
+                label={`tone="${tone}"`}
               />
             </SpacingsInline>
           );
