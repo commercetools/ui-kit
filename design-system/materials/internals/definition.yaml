@@ -426,7 +426,6 @@ decisionGroupsByTheme:
           description: ''
           choice: color-surface
         background-color-for-input-when-readonly:
-          description: ''
           choice: color-surface
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-90
@@ -521,9 +520,6 @@ decisionGroupsByTheme:
         border-color-for-input-when-readonly:
           description: ''
           choice: color-neutral
-        border-color-for-select-input-when-readonly:
-          description: ''
-          choice: color-neutral
         border-color-for-input-when-error:
           description: ''
           choice: color-error
@@ -560,8 +556,6 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         border-color-for-collapsible-panel-header:
           choice: color-neutral-60
-        border-color-for-select-input-menu:
-          choice: color-primary
         border-color-for-stamp-when-error:
           choice: color-error
         border-color-for-stamp-when-warning:
@@ -587,7 +581,11 @@ decisionGroupsByTheme:
         border-color-for-content-notification-when-success:
           choice: color-primary
         border-color-for-group-heading-select-input-options:
-          choice: 'color-neutral'
+          choice: color-neutral
+        border-color-for-select-input-menu:
+          choice: color-primary
+        border-color-for-select-input-when-readonly:
+          choice: color-neutral
         border-color-for-select-input-menu-when-warning:
           choice: color-warning
         border-color-for-select-input-menu-when-error:
@@ -711,8 +709,6 @@ decisionGroupsByTheme:
           choice: color-solid
         font-color-for-clear-input-icon-when-hovered:
           choice: color-warning
-        font-color-for-select-input-icon:
-          choice: color-solid
         font-color-for-content-notification:
           choice: color-solid
         font-color-for-content-notification-icon-when-error:
@@ -726,6 +722,8 @@ decisionGroupsByTheme:
         font-color-for-search-input-icon:
           choice: color-solid
         font-color-for-search-input-icon-when-hovered:
+          choice: color-solid
+        font-color-for-select-input-icon:
           choice: color-solid
         font-color-for-select-input-when-error:
           choice: color-neutral-60
@@ -1047,6 +1045,10 @@ decisionGroupsByTheme:
           choice: color-neutral-98
         background-color-for-input-when-disabled:
           choice: color-neutral-95
+        background-color-for-input-when-active:
+          choice: color-info-95
+        background-color-for-input-when-readonly:
+          choice: color-neutral-95
         background-color-for-avatar:
           description: ''
           choice: color-accent
@@ -1068,9 +1070,6 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-view-switcher-when-hovered:
           choice: color-neutral-95
-        background-color-for-input-when-readonly:
-          description: ''
-          choice: color-neutral-95
         background-color-for-content-notification-when-error:
           choice: color-error-95
         background-color-for-content-notification-when-info:
@@ -1088,11 +1087,7 @@ decisionGroupsByTheme:
         background-color-for-content-notification-icon-when-success:
           choice: color-primary-95
         background-color-for-select-input-option-when-hovered:
-          description: ''
           choice: color-neutral-98
-        background-color-for-input-when-active:
-          description: ''
-          choice: color-info-95
 
     borders:
       label: Borders
@@ -1143,8 +1138,6 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-collapsible-panel-header:
           choice: color-neutral-90
-        border-color-for-select-input-menu:
-          choice: color-surface
         border-color-for-stamp-when-error:
           choice: color-error-85
         border-color-for-stamp-when-warning:
@@ -1171,14 +1164,16 @@ decisionGroupsByTheme:
           choice: color-warning-85
         border-color-for-content-notification-when-success:
           choice: color-primary-85
-        border-color-for-select-input-when-readonly:
-          choice: 'color-neutral-95'
         border-color-for-group-heading-select-input-options:
           choice: color-neutral-90
+        border-color-for-select-input-menu:
+          choice: color-surface
+        border-color-for-select-input-when-readonly:
+          choice: color-neutral-95
         border-color-for-select-input-menu-when-warning:
-          choice: 'color-surface'
+          choice: color-surface
         border-color-for-select-input-menu-when-error:
-          choice: 'color-surface'
+          choice: color-surface
 
     borderRadiuses:
       label: Border radiuses
@@ -1259,8 +1254,6 @@ decisionGroupsByTheme:
           choice: color-primary
         font-color-for-content-notification-icon-when-info:
           choice: color-info
-        font-color-for-select-input-icon:
-          choice: color-neutral-60
         font-color-for-clear-input-icon-when-hovered:
           choice: color-error
         font-color-for-clear-input-icon:
@@ -1269,6 +1262,8 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         font-color-for-search-input-icon-when-hovered:
           choice: color-primary
+        font-color-for-select-input-icon:
+          choice: color-neutral-60
         font-color-for-select-input-when-error:
           choice: color-error
         font-color-for-select-input-when-warning:
@@ -1438,7 +1433,7 @@ decisionGroupsByTheme:
         margin-for-select-input-icon:
           choice: spacing-20
         margin-left-for-select-input-icon:
-          choice: var(--spacing-20)
+          choice: spacing-20
 
     paddings:
       label: Paddings

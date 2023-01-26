@@ -61,8 +61,8 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       return designTokens.borderColorForInput;
     })(),
     borderWidth: (() => {
-      if (props.hasError) return designTokens.borderWidthForSelectInput;
-      if (props.hasWarning) return designTokens.borderWidthForSelectInput;
+      if (props.hasWarning || props.hasError)
+        return designTokens.borderWidthForSelectInput;
       return '1px';
     })(),
     borderRadius: designTokens.borderRadiusForInput,
@@ -184,8 +184,8 @@ const optionStyles = () => (base: TBase, state: TState) => {
       color ${designTokens.transitionStandard}`,
     paddingLeft: designTokens.paddingLeftForSelectInputOptions,
     paddingRight: designTokens.paddingRightForSelectInputOptions,
-    paddingTop: `${designTokens.paddingTopForSelectInputOptions}`,
-    paddingBottom: `${designTokens.paddingBottomForSelectInputOptions}`,
+    paddingTop: designTokens.paddingTopForSelectInputOptions,
+    paddingBottom: designTokens.paddingBottomForSelectInputOptions,
     color: (() => {
       if (!state.isDisabled) return designTokens.fontColorForInput;
       if (state.isSelected) return designTokens.fontColorForInput;
@@ -322,7 +322,9 @@ const multiValueStyles =
       height: designTokens.sizeHeightTag,
       backgroundColor: designTokens.backgroundColorForTag,
       padding: '0',
-      border: props.isNewTheme && `1px solid ${designTokens.colorNeutral85}`,
+      border: props.isNewTheme
+        ? `1px solid ${designTokens.colorNeutral85}`
+        : 'none',
     };
   };
 
@@ -357,8 +359,8 @@ const multiValueRemoveStyles =
       borderColor: designTokens.borderColorForTag,
       padding: `0 ${designTokens.spacing10}`,
       borderRadius: `0 ${designTokens.borderRadiusForTag} ${designTokens.borderRadiusForTag} 0`,
-      borderStyle: !props.isNewTheme && 'solid',
-      borderWidth: !props.isNewTheme && designTokens.borderWidth1,
+      borderStyle: !props.isNewTheme ? 'solid' : 'none',
+      borderWidth: !props.isNewTheme ? designTokens.borderWidth1 : '0',
       pointerEvents:
         state.isDisabled || props.isReadOnly ? 'none' : base.pointerEvents,
       backgroundColor: designTokens.backgroundColorForTag,
