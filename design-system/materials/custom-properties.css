@@ -198,6 +198,14 @@
   );
   --background-color-for-view-switcher-when-selected: hsl(0, 0%, 95%);
   --background-color-for-view-switcher-when-hovered: hsl(0, 0%, 90%);
+  --background-color-for-content-notification-when-error: #fff;
+  --background-color-for-content-notification-when-info: #fff;
+  --background-color-for-content-notification-when-warning: #fff;
+  --background-color-for-content-notification-when-success: #fff;
+  --background-color-for-content-notification-icon-when-error: #e60050;
+  --background-color-for-content-notification-icon-when-info: #078cdf;
+  --background-color-for-content-notification-icon-when-warning: #f16d0e;
+  --background-color-for-content-notification-icon-when-success: #00b39e;
   --border-for-button-as-secondary: none;
   --border-for-button-as-secondary-when-hovered: none;
   --border-for-button-as-secondary-when-active: none;
@@ -232,6 +240,10 @@
   --border-color-for-stamp-as-secondary: hsl(0, 0%, 60%);
   --border-color-for-localized-multiline-text-input-label: #ccc;
   --border-color-for-localized-multiline-text-input-label-when-readonly: #ccc;
+  --border-color-for-content-notification-when-error: #e60050;
+  --border-color-for-content-notification-when-info: #078cdf;
+  --border-color-for-content-notification-when-warning: #f16d0e;
+  --border-color-for-content-notification-when-success: #00b39e;
   --border-radius-for-button-as-big: 6px;
   --border-radius-for-button-as-small: 4px;
   --border-radius-for-button-as-icon-as-big: 6px;
@@ -243,11 +255,17 @@
   --border-radius-for-table-manager-droppable-list: 6px;
   --border-radius-for-stamp: 2px;
   --border-radius-for-view-switcher: 6px;
+  --border-radius-for-content-notification: 0 var(--border-radius-6)
+    var(--border-radius-6) 0;
+  --border-radius-for-content-notification-icon: var(--border-radius-6) 0 0
+    var(--border-radius-6);
   --border-width-for-input: 1px;
   --border-width-for-input-when-warning: 1px;
   --border-width-for-input-when-error: 1px;
   --border-width-for-input-when-focused: 1px;
   --border-width-for-tag: 1px;
+  --border-width-for-content-notification-icon: 0px;
+  --border-left-width-for-content-notification: 1px;
   --box-shadow-for-datetime-input-when-hovered: inset 0 0 0 2px;
   --box-shadow-for-view-switcher: 0 1px 1px 0 rgba(0, 0, 0, 0.24),
     0 -1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -271,6 +289,14 @@
   --font-color-for-view-switcher: #1a1a1a;
   --font-color-for-view-switcher-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-view-switcher-when-selected: #1a1a1a;
+  --font-color-for-content-notification-when-error: #1a1a1a;
+  --font-color-for-content-notification-when-warning: #1a1a1a;
+  --font-color-for-content-notification-when-success: #1a1a1a;
+  --font-color-for-content-notification-when-info: #1a1a1a;
+  --font-color-for-content-notification-icon-when-error: #fff;
+  --font-color-for-content-notification-icon-when-warning: #fff;
+  --font-color-for-content-notification-icon-when-success: #fff;
+  --font-color-for-content-notification-icon-when-info: #fff;
   --height-for-button-as-big: 32px;
   --height-for-button-as-small: 24px;
   --height-for-button-as-icon-as-big: 32px;
@@ -299,6 +325,7 @@
   --font-size-for-avatar-as-medium: 1.5rem;
   --font-size-for-avatar-as-big: 3rem;
   --font-size-for-localized-multiline-text-input-label: 0.9231rem;
+  --font-size-for-content-notification: 1rem;
   --icon-color-for-datetime-input-icon: #1a1a1a;
   --icon-color-for-datetime-input-icon-when-hovered: #f16d0e;
   --line-height-for-text-as-h1: inherit;
@@ -346,6 +373,8 @@
   --padding-for-view-switcher: 0 var(--spacing-30) 0 var(--spacing-30);
   --padding-for-view-switcher-when-condensed: 0 var(--spacing-20) 0
     var(--spacing-20);
+  --padding-for-content-notification: var(--spacing-20);
+  --padding-for-content-notification-icon: var(--spacing-20) var(--spacing-30);
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),

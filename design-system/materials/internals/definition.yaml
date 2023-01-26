@@ -240,8 +240,12 @@ states:
     description: 'When the element is currently selected to receive input'
   readonly:
     description: 'When the element can not be modified'
+  info:
+    description: 'When the element has an info state'
   warning:
-    description: 'When the element has slightly wrong input'
+    description: 'When the element shows a warning state'
+  success:
+    description: 'When the element has a successful state'
   error:
     description: 'When the element has invalid input'
   selected:
@@ -360,6 +364,10 @@ componentGroups:
     description: 'View switcher elements'
   view-switcher-icon:
     description: 'View switcher icon elements'
+  content-notification:
+    description: 'Content notification elements'
+  content-notification-icon:
+    description: 'Content notification icon elements'
 
 decisionGroupsByTheme:
   default:
@@ -444,6 +452,22 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-view-switcher-when-hovered:
           choice: color-neutral-90
+        background-color-for-content-notification-when-error:
+          choice: color-surface
+        background-color-for-content-notification-when-info:
+          choice: color-surface
+        background-color-for-content-notification-when-warning:
+          choice: color-surface
+        background-color-for-content-notification-when-success:
+          choice: color-surface
+        background-color-for-content-notification-icon-when-error:
+          choice: color-error
+        background-color-for-content-notification-icon-when-info:
+          choice: color-info
+        background-color-for-content-notification-icon-when-warning:
+          choice: color-warning
+        background-color-for-content-notification-icon-when-success:
+          choice: color-primary
 
     borders:
       label: Borders
@@ -530,6 +554,14 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-localized-multiline-text-input-label-when-readonly:
           choice: color-neutral
+        border-color-for-content-notification-when-error:
+          choice: color-error
+        border-color-for-content-notification-when-info:
+          choice: color-info
+        border-color-for-content-notification-when-warning:
+          choice: color-warning
+        border-color-for-content-notification-when-success:
+          choice: color-primary
 
     borderRadiuses:
       label: Border Radius
@@ -559,6 +591,10 @@ decisionGroupsByTheme:
           choice: border-radius-2
         border-radius-for-view-switcher:
           choice: border-radius-6
+        border-radius-for-content-notification:
+          choice: '0 var(--border-radius-6) var(--border-radius-6) 0'
+        border-radius-for-content-notification-icon:
+          choice: 'var(--border-radius-6) 0 0 var(--border-radius-6)'
 
     borderWidths:
       label: Border width
@@ -573,6 +609,10 @@ decisionGroupsByTheme:
         border-width-for-input-when-focused:
           choice: border-width-1
         border-width-for-tag:
+          choice: border-width-1
+        border-width-for-content-notification-icon:
+          choice: '0px'
+        border-left-width-for-content-notification:
           choice: border-width-1
 
     boxShadows:
@@ -633,6 +673,22 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         font-color-for-view-switcher-when-selected:
           choice: color-solid
+        font-color-for-content-notification-when-error:
+          choice: color-solid
+        font-color-for-content-notification-when-warning:
+          choice: color-solid
+        font-color-for-content-notification-when-success:
+          choice: color-solid
+        font-color-for-content-notification-when-info:
+          choice: color-solid
+        font-color-for-content-notification-icon-when-error:
+          choice: color-surface
+        font-color-for-content-notification-icon-when-warning:
+          choice: color-surface
+        font-color-for-content-notification-icon-when-success:
+          choice: color-surface
+        font-color-for-content-notification-icon-when-info:
+          choice: color-surface
 
     heights:
       label: Height
@@ -721,6 +777,8 @@ decisionGroupsByTheme:
           choice: font-size-78
         font-size-for-localized-multiline-text-input-label:
           choice: font-size-15
+        font-size-for-content-notification:
+          choice: font-size-30
 
     iconColors:
       label: Icon colors
@@ -850,6 +908,10 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-30) 0 var(--spacing-30)'
         padding-for-view-switcher-when-condensed:
           choice: '0 var(--spacing-20) 0 var(--spacing-20)'
+        padding-for-content-notification:
+          choice: 'var(--spacing-20)'
+        padding-for-content-notification-icon:
+          choice: 'var(--spacing-20) var(--spacing-30)'
 
     shadows:
       label: Shadows
@@ -940,6 +1002,22 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-view-switcher-when-hovered:
           choice: color-neutral-95
+        background-color-for-content-notification-when-error:
+          choice: color-error-95
+        background-color-for-content-notification-when-info:
+          choice: color-info-95
+        background-color-for-content-notification-when-warning:
+          choice: color-warning-95
+        background-color-for-content-notification-when-success:
+          choice: color-primary-95
+        background-color-for-content-notification-icon-when-error:
+          choice: color-error-95
+        background-color-for-content-notification-icon-when-info:
+          choice: color-info-95
+        background-color-for-content-notification-icon-when-warning:
+          choice: color-warning-95
+        background-color-for-content-notification-icon-when-success:
+          choice: color-primary-95
 
     borders:
       label: Borders
@@ -1008,6 +1086,14 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-tag-when-hovered:
           choice: color-neutral
+        border-color-for-content-notification-when-error:
+          choice: color-error-85
+        border-color-for-content-notification-when-info:
+          choice: color-info-85
+        border-color-for-content-notification-when-warning:
+          choice: color-warning-85
+        border-color-for-content-notification-when-success:
+          choice: color-primary-85
 
     borderRadiuses:
       label: Border radiuses
@@ -1033,6 +1119,10 @@ decisionGroupsByTheme:
           choice: border-radius-20
         border-radius-for-view-switcher:
           choice: border-radius-4
+        border-radius-for-content-notification:
+          choice: '0 var(--border-radius-4) var(--border-radius-4) 0'
+        border-radius-for-content-notification-icon:
+          choice: 'var(--border-radius-4) 0 0 var(--border-radius-4)'
 
     borderWidths:
       label: Border width
@@ -1040,6 +1130,10 @@ decisionGroupsByTheme:
       decisions:
         border-width-for-tag:
           choice: '1px 1px 1px 0'
+        border-width-for-content-notification-icon:
+          choice: border-width-1
+        border-left-width-for-content-notification:
+          choice: '0px'
 
     boxShadows:
       label: Box shadows
@@ -1068,6 +1162,22 @@ decisionGroupsByTheme:
           choice: color-error
         font-color-for-view-switcher:
           choice: color-neutral-40
+        font-color-for-content-notification-when-error:
+          choice: color-error
+        font-color-for-content-notification-when-warning:
+          choice: color-warning
+        font-color-for-content-notification-when-success:
+          choice: color-primary
+        font-color-for-content-notification-when-info:
+          choice: color-info
+        font-color-for-content-notification-icon-when-error:
+          choice: color-error
+        font-color-for-content-notification-icon-when-warning:
+          choice: color-warning
+        font-color-for-content-notification-icon-when-success:
+          choice: color-primary
+        font-color-for-content-notification-icon-when-info:
+          choice: color-info
 
     fontSizes:
       label: Font Sizes
@@ -1277,6 +1387,10 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-30) 0 var(--spacing-30)'
         padding-for-view-switcher-when-condensed:
           choice: '0 12px 0 12px'
+        padding-for-content-notification:
+          choice: 'var(--spacing-20) var(--spacing-30) var(--spacing-20) var(--spacing-20)'
+        padding-for-content-notification-icon:
+          choice: 'var(--spacing-20) 0 var(--spacing-20) var(--spacing-30)'
 
     shadows:
       label: Shadows
