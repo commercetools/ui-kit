@@ -381,6 +381,10 @@ componentGroups:
     description: 'select input options element'
   group-heading-select-input-options:
     description: 'group heading select input options element'
+  money-input-currency-dropdown:
+    description: 'Money input currency dropdown elements'
+  money-input-currency-dropdown-indicator:
+    description: 'Money Input Dropdown indicator elements'
 
 decisionGroupsByTheme:
   default:
@@ -731,6 +735,7 @@ decisionGroupsByTheme:
         font-color-for-select-input-icon-when-error:
           choice: color-solid
         font-color-for-select-input-icon-when-warning:
+        font-color-for-money-input-currency-dropdown-indicator:
           choice: color-solid
 
     heights:
@@ -760,6 +765,13 @@ decisionGroupsByTheme:
       decisions:
         width-for-avatar-as-medium:
           choice: '48px'
+
+    minwidths:
+      label: Width
+      prefix: width
+      decisions:
+        min-width-for-money-input-currency-dropdown:
+          choice: '72px'
 
     placeholderFontColors:
       label: Placeholder font colors
@@ -973,6 +985,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         padding-for-select-input-menu:
           choice: 'inherit'
+        padding-for-money-input-currency-dropdown:
+          choice: '0 var(--spacing-20)'
 
     shadows:
       label: Shadows
@@ -1271,6 +1285,8 @@ decisionGroupsByTheme:
           choice: color-error
         font-color-for-select-input-icon-when-warning:
           choice: color-warning
+        font-color-for-money-input-currency-dropdown-indicator:
+          choice: color-neutral-40
 
     fontSizes:
       label: Font Sizes
@@ -1417,6 +1433,13 @@ decisionGroupsByTheme:
         width-for-avatar-as-medium:
           choice: '40px'
 
+    minwidths:
+      label: Width
+      prefix: width
+      decisions:
+        min-width-for-money-input-currency-dropdown:
+          choice: '80px'
+
     margins:
       label: Margins
       prefix: margin
@@ -1502,6 +1525,8 @@ decisionGroupsByTheme:
           choice: spacing-30
         padding-for-select-input-menu:
           choice: 'var(--spacing-10) 0'
+        padding-for-money-input-currency-dropdown:
+          choice: '0 12px'
 
     shadows:
       label: Shadows

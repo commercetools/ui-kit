@@ -117,10 +117,11 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
     ...selectStyles,
     control: (base: TBase, state: ReactSelectProps) => ({
       ...selectStyles.control(base, state),
+      padding: designTokens.paddingForMoneyInputCurrencyDropdown,
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
       borderRight: '0',
-      minWidth: '72px',
+      minWidth: designTokens.minWidthForMoneyInputCurrencyDropdown,
       height: '100%',
       borderColor: (() => {
         if (isDisabled)
@@ -141,6 +142,9 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
         if (isReadOnly) return designTokens.backgroundColorForInput;
         return base.backgroundColor;
       })(),
+      '&:hover': {
+        backgroundColor: designTokens.backgroundColorForInputWhenHovered,
+      },
     }),
     singleValue: (base: TBase) => ({
       ...base,
@@ -155,7 +159,9 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
       })(),
     }),
     dropdownIndicator: () => ({
-      fill: isReadOnly ? designTokens.fontColorForInputWhenReadonly : '',
+      fill: isReadOnly
+        ? designTokens.fontColorForInputWhenReadonly
+        : designTokens.fontColorForMoneyInputCurrencyDropdownIndicator,
     }),
   };
 };

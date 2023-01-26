@@ -11,10 +11,14 @@ const getCurrencyLabelStyles = () => css`
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
   border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
   border-right: 0;
-  padding: 0 ${designTokens.spacing20};
+  padding: ${designTokens.paddingForMoneyInputCurrencyDropdown};
   align-items: center;
   font-size: ${designTokens.fontSizeForInput};
   box-sizing: border-box;
+
+  &:hover {
+    background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+  }
 `;
 
 type TGetAmountInputStyles = {
