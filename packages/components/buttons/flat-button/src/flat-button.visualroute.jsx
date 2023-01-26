@@ -41,6 +41,14 @@ export const component = () => (
         icon={<InformationIcon />}
       />
     </Spec>
+    <Spec label="critical">
+      <FlatButton
+        tone="critical"
+        label="A label text"
+        onClick={() => {}}
+        icon={<InformationIcon />}
+      />
+    </Spec>
     <Spec label="inverted" backgroundColor="black">
       <FlatButton
         tone="inverted"

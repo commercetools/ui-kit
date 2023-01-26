@@ -1,5 +1,12 @@
 # @commercetools-uikit/hooks
 
+## 15.10.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@15.10.0
+
 ## 15.9.0
 
 ### Patch Changes
