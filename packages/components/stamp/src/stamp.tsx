@@ -26,7 +26,8 @@ type Props = {
   isCondensed: boolean;
   children?: ReactNode;
   icon?: ReactElement;
-  message?: MessageDescriptor & {
+  label?: string;
+  intlMessage?: MessageDescriptor & {
     values?: Record<string, ReactNode>;
   };
 };
@@ -160,8 +161,25 @@ const Stamp = (props: Props) => {
 
   warning(
     !props.children,
-    'Stamp: Please pass messages or icons as inline props, this method will be deprecated soon. For more information, see documentation: https://uikit.commercetools.com/?path=/story/components-stamps--stamp'
+    'Stamp: The `children` prop has been deprecated. Please use the `intlMessage` and `icon` prop to render the content.'
   );
+
+  const getStampText = (props: Props) => {
+    if (props.intlMessage)
+      return (
+        <Text.Detail
+          tone={themedValue(undefined, 'inherit')}
+          intlMessage={props.intlMessage}
+        />
+      );
+    if (props.label)
+      return (
+        <Text.Detail tone={themedValue(undefined, 'inherit')}>
+          {props.label}
+        </Text.Detail>
+      );
+    return props.children;
+  };
 
   return (
     <div
@@ -171,17 +189,10 @@ const Stamp = (props: Props) => {
         getPaddingStyle(props),
       ]}
     >
-      {Boolean(props.message) ? (
-        <SpacingsInline alignItems="center">
-          {Icon}
-          <Text.Detail
-            tone={themedValue(undefined, 'inherit')}
-            intlMessage={props.message}
-          />
-        </SpacingsInline>
-      ) : (
-        props.children
-      )}
+      <SpacingsInline alignItems="center">
+        {Icon}
+        {getStampText(props)}
+      </SpacingsInline>
     </div>
   );
 };

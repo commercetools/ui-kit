@@ -32,12 +32,12 @@ storiesOf('Components|Stamps', module)
                 tone={tone}
                 isCondensed={boolean('isCondensed', false)}
                 icon={<Icon />}
-                message={{ id: tone, defaultMessage: 'Hello' }}
+                label="Hello"
               />
               <Stamp
                 tone={tone}
                 isCondensed={boolean('isCondensed', false)}
-                message={{ id: tone, defaultMessage: `tone="${tone}"` }}
+                intlMessage={{ id: tone, defaultMessage: `tone="${tone}"` }}
               />
             </SpacingsInline>
           );
