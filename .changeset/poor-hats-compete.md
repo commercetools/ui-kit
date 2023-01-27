@@ -4,4 +4,9 @@
 '@commercetools-uikit/select-utils': patch
 ---
 
-Add new design tokens for search select input component.
+Add new design tokens for the selectInput components:
+-  AsyncCreatableSelectInput
+-  AsyncSelectInput
+-  CreatableSelectInput
+-  SearchSelectInput
+-  SelectInput

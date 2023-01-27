@@ -259,6 +259,9 @@ const singleValueStyles = (props: TProps) => (base: TBase) => {
       if (props.isReadOnly) {
         return designTokens.fontColorForInputWhenReadonly;
       }
+      if (props.hasError) return designTokens.fontColorForSelectInputWhenError;
+      if (props.hasWarning)
+        return designTokens.fontColorForSelectInputWhenWarning;
       return designTokens.fontColorForInput;
     })(),
   };
