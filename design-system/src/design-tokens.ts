@@ -265,10 +265,7 @@ export const themes = {
     fontColorForViewSwitcher: '#1a1a1a',
     fontColorForViewSwitcherWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForViewSwitcherWhenSelected: '#1a1a1a',
-    fontColorForContentNotificationWhenError: '#1a1a1a',
-    fontColorForContentNotificationWhenWarning: '#1a1a1a',
-    fontColorForContentNotificationWhenSuccess: '#1a1a1a',
-    fontColorForContentNotificationWhenInfo: '#1a1a1a',
+    fontColorForContentNotification: '#1a1a1a',
     fontColorForContentNotificationIconWhenError: '#fff',
     fontColorForContentNotificationIconWhenWarning: '#fff',
     fontColorForContentNotificationIconWhenSuccess: '#fff',
@@ -493,10 +490,6 @@ export const themes = {
     fontColorForTagDragIcon: 'hsl(0, 0%, 40%)',
     fontColorForTagRemoveIconWhenHovered: '#e60050',
     fontColorForViewSwitcher: 'hsl(0, 0%, 40%)',
-    fontColorForContentNotificationWhenError: '#e60050',
-    fontColorForContentNotificationWhenWarning: '#f16d0e',
-    fontColorForContentNotificationWhenSuccess: '#00b39e',
-    fontColorForContentNotificationWhenInfo: '#078cdf',
     fontColorForContentNotificationIconWhenError: '#e60050',
     fontColorForContentNotificationIconWhenWarning: '#f16d0e',
     fontColorForContentNotificationIconWhenSuccess: '#00b39e',
@@ -946,14 +939,8 @@ const designTokens = {
     'var(--font-color-for-view-switcher-when-disabled, hsl(0, 0%, 60%))',
   fontColorForViewSwitcherWhenSelected:
     'var(--font-color-for-view-switcher-when-selected, #1a1a1a)',
-  fontColorForContentNotificationWhenError:
-    'var(--font-color-for-content-notification-when-error, #1a1a1a)',
-  fontColorForContentNotificationWhenWarning:
-    'var(--font-color-for-content-notification-when-warning, #1a1a1a)',
-  fontColorForContentNotificationWhenSuccess:
-    'var(--font-color-for-content-notification-when-success, #1a1a1a)',
-  fontColorForContentNotificationWhenInfo:
-    'var(--font-color-for-content-notification-when-info, #1a1a1a)',
+  fontColorForContentNotification:
+    'var(--font-color-for-content-notification, #1a1a1a)',
   fontColorForContentNotificationIconWhenError:
     'var(--font-color-for-content-notification-icon-when-error, #fff)',
   fontColorForContentNotificationIconWhenWarning:

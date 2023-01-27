@@ -171,21 +171,6 @@ const getContainerBackgroundColor = (props: TContentNotificationProps) => {
   }
 };
 
-const getFontColor = (props: TContentNotificationProps) => {
-  switch (props.type) {
-    case 'error':
-      return designTokens.fontColorForContentNotificationWhenError;
-    case 'info':
-      return designTokens.fontColorForContentNotificationWhenInfo;
-    case 'warning':
-      return designTokens.fontColorForContentNotificationWhenWarning;
-    case 'success':
-      return designTokens.fontColorForContentNotificationWhenSuccess;
-    default:
-      return '';
-  }
-};
-
 const ContentNotification = (props: TContentNotificationProps) => {
   warnIfMissingContent(props);
 
@@ -199,7 +184,7 @@ const ContentNotification = (props: TContentNotificationProps) => {
         word-break: break-word;
         hyphens: auto;
         font-size: ${designTokens.fontSizeForContentNotification};
-        color: ${getFontColor(props)};
+        color: ${designTokens.fontColorForContentNotification};
         font-family: inherit;
       `}
     >

@@ -673,13 +673,7 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         font-color-for-view-switcher-when-selected:
           choice: color-solid
-        font-color-for-content-notification-when-error:
-          choice: color-solid
-        font-color-for-content-notification-when-warning:
-          choice: color-solid
-        font-color-for-content-notification-when-success:
-          choice: color-solid
-        font-color-for-content-notification-when-info:
+        font-color-for-content-notification:
           choice: color-solid
         font-color-for-content-notification-icon-when-error:
           choice: color-surface
@@ -1162,14 +1156,6 @@ decisionGroupsByTheme:
           choice: color-error
         font-color-for-view-switcher:
           choice: color-neutral-40
-        font-color-for-content-notification-when-error:
-          choice: color-error
-        font-color-for-content-notification-when-warning:
-          choice: color-warning
-        font-color-for-content-notification-when-success:
-          choice: color-primary
-        font-color-for-content-notification-when-info:
-          choice: color-info
         font-color-for-content-notification-icon-when-error:
           choice: color-error
         font-color-for-content-notification-icon-when-warning:
