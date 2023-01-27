@@ -50,5 +50,4 @@ export default Example;
 | `isCondensed` | `boolean`                                                                                                     |          | `false`         | If `true`, renders a condensed version of the stamp. |
 | `children`    | `ReactNode`                                                                                                   |          |                 |                                                      |
 | `icon`        | `ReactElement`                                                                                                |          |                 |                                                      |
-| `label`       | `string`                                                                                                      |          |                 | used as an alternative to `intlMessage` prop         |
-| `intlMessage` | `intersection`                                                                                                |          |                 |                                                      |
+| `label`       | `string`                                                                                                      |          |                 |                                                      |
