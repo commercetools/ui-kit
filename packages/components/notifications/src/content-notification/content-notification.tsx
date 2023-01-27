@@ -156,7 +156,7 @@ const getContentBorderColor = (props: TContentNotificationProps) => {
   }
 };
 
-const getContainerBackgroundColour = (props: TContentNotificationProps) => {
+const getContainerBackgroundColor = (props: TContentNotificationProps) => {
   switch (props.type) {
     case 'error':
       return designTokens.backgroundColorForContentNotificationWhenError;
@@ -210,7 +210,7 @@ const ContentNotification = (props: TContentNotificationProps) => {
           display: flex;
           align-items: center;
           padding: ${designTokens.paddingForContentNotification};
-          background-color: ${getContainerBackgroundColour(props)};
+          background-color: ${getContainerBackgroundColor(props)};
           border-radius: ${designTokens.borderRadiusForContentNotification};
           border-width: 1px;
           border-style: solid;
