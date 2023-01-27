@@ -67,6 +67,7 @@ choiceGroupsByTheme:
         color-warning-85: 'hsl(25.110132158590307, 89.0196078431%, 85%)'
         color-warning-95: 'hsl(25.110132158590307, 89.0196078431%, 95%)'
         color-error: '#e60050'
+        color-error-25: 'hsl(339.1304347826087, 100%, 25%)'
         color-error-40: 'hsl(339.1304347826087, 100%, 40%)'
         color-error-85: 'hsl(339.1304347826087, 100%, 85%)'
         color-error-95: 'hsl(339.1304347826087, 100%, 95%)'
@@ -239,8 +240,12 @@ states:
     description: 'When the element is currently selected to receive input'
   readonly:
     description: 'When the element can not be modified'
+  info:
+    description: 'When the element has an info state'
   warning:
-    description: 'When the element has slightly wrong input'
+    description: 'When the element shows a warning state'
+  success:
+    description: 'When the element has a successful state'
   error:
     description: 'When the element has invalid input'
   selected:
@@ -251,6 +256,8 @@ states:
     description: 'When the element is raised'
   highlighted:
     description: 'When the element is highlighted'
+  condensed:
+    description: 'When the element is condensed'
 
 variants:
   h1:
@@ -351,6 +358,16 @@ componentGroups:
     description: 'Localized rich text input label elements'
   localized-multiline-text-input-label:
     description: 'Localized multiline text input label elements'
+  tooltip:
+    description: 'Tooltip elements'
+  view-switcher:
+    description: 'View switcher elements'
+  view-switcher-icon:
+    description: 'View switcher icon elements'
+  content-notification:
+    description: 'Content notification elements'
+  content-notification-icon:
+    description: 'Content notification icon elements'
 
 decisionGroupsByTheme:
   default:
@@ -425,6 +442,32 @@ decisionGroupsByTheme:
         background-color-for-localized-multiline-text-input-label-when-disabled:
           description: ''
           choice: color-accent-98
+        background-color-for-tooltip:
+          choice: color-accent
+        background-color-for-view-switcher:
+          choice: color-surface
+        background-color-for-view-switcher-when-disabled:
+          choice: color-accent-98
+        background-color-for-view-switcher-when-selected:
+          choice: color-neutral-95
+        background-color-for-view-switcher-when-hovered:
+          choice: color-neutral-90
+        background-color-for-content-notification-when-error:
+          choice: color-surface
+        background-color-for-content-notification-when-info:
+          choice: color-surface
+        background-color-for-content-notification-when-warning:
+          choice: color-surface
+        background-color-for-content-notification-when-success:
+          choice: color-surface
+        background-color-for-content-notification-icon-when-error:
+          choice: color-error
+        background-color-for-content-notification-icon-when-info:
+          choice: color-info
+        background-color-for-content-notification-icon-when-warning:
+          choice: color-warning
+        background-color-for-content-notification-icon-when-success:
+          choice: color-primary
 
     borders:
       label: Borders
@@ -440,6 +483,8 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-collapsible-panel-header-icon-when-disabled:
           choice: '1px solid var(--color-neutral)'
+        border-for-view-switcher:
+          choice: 'none'
 
     borderColors:
       label: Border Colors
@@ -509,6 +554,14 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-localized-multiline-text-input-label-when-readonly:
           choice: color-neutral
+        border-color-for-content-notification-when-error:
+          choice: color-error
+        border-color-for-content-notification-when-info:
+          choice: color-info
+        border-color-for-content-notification-when-warning:
+          choice: color-warning
+        border-color-for-content-notification-when-success:
+          choice: color-primary
 
     borderRadiuses:
       label: Border Radius
@@ -536,6 +589,12 @@ decisionGroupsByTheme:
           choice: border-radius-6
         border-radius-for-stamp:
           choice: border-radius-2
+        border-radius-for-view-switcher:
+          choice: border-radius-6
+        border-radius-for-content-notification:
+          choice: '0 var(--border-radius-6) var(--border-radius-6) 0'
+        border-radius-for-content-notification-icon:
+          choice: 'var(--border-radius-6) 0 0 var(--border-radius-6)'
 
     borderWidths:
       label: Border width
@@ -551,6 +610,10 @@ decisionGroupsByTheme:
           choice: border-width-1
         border-width-for-tag:
           choice: border-width-1
+        border-width-for-content-notification-icon:
+          choice: '0px'
+        border-left-width-for-content-notification:
+          choice: border-width-1
 
     boxShadows:
       label: Box shadows
@@ -558,6 +621,10 @@ decisionGroupsByTheme:
       decisions:
         box-shadow-for-datetime-input-when-hovered:
           choice: 'inset 0 0 0 2px'
+        box-shadow-for-view-switcher:
+          choice: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)
+        box-shadow-for-view-switcher-when-selected:
+          choice: shadow-9
 
     fontColors:
       label: Font Colors
@@ -600,6 +667,22 @@ decisionGroupsByTheme:
           choice: color-surface
         font-color-for-localized-multiline-text-input-label:
           choice: color-neutral-60
+        font-color-for-view-switcher:
+          choice: color-solid
+        font-color-for-view-switcher-when-disabled:
+          choice: color-neutral-60
+        font-color-for-view-switcher-when-selected:
+          choice: color-solid
+        font-color-for-content-notification:
+          choice: color-solid
+        font-color-for-content-notification-icon-when-error:
+          choice: color-surface
+        font-color-for-content-notification-icon-when-warning:
+          choice: color-surface
+        font-color-for-content-notification-icon-when-success:
+          choice: color-surface
+        font-color-for-content-notification-icon-when-info:
+          choice: color-surface
 
     heights:
       label: Height
@@ -617,6 +700,10 @@ decisionGroupsByTheme:
           choice: '16px'
         height-for-input:
           choice: '32px'
+        height-for-view-switcher:
+          choice: '32px'
+        height-for-view-switcher-when-condensed:
+          choice: '24px'
 
     widths:
       label: Width
@@ -672,6 +759,8 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-stamp:
           choice: font-size-30
+        font-size-for-view-switcher:
+          choice: font-size-30
         font-size-for-table:
           choice: font-size-30
         font-size-for-avatar-as-small:
@@ -682,6 +771,8 @@ decisionGroupsByTheme:
           choice: font-size-78
         font-size-for-localized-multiline-text-input-label:
           choice: font-size-15
+        font-size-for-content-notification:
+          choice: font-size-30
 
     iconColors:
       label: Icon colors
@@ -756,6 +847,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-for-table-as-condensed:
           choice: spacing-20
+        margin-for-view-switcher-icon:
+          choice: '0 var(--spacing-10) 0 0'
 
     paddings:
       label: Paddings
@@ -803,6 +896,16 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-20)'
         padding-for-tag-remove-icon:
           choice: '0 var(--spacing-10)'
+        padding-for-tooltip:
+          choice: 'var(--spacing-10) var(--spacing-20)'
+        padding-for-view-switcher:
+          choice: '0 var(--spacing-30) 0 var(--spacing-30)'
+        padding-for-view-switcher-when-condensed:
+          choice: '0 var(--spacing-20) 0 var(--spacing-20)'
+        padding-for-content-notification:
+          choice: 'var(--spacing-20)'
+        padding-for-content-notification-icon:
+          choice: 'var(--spacing-20) var(--spacing-30)'
 
     shadows:
       label: Shadows
@@ -832,6 +935,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         shadow-for-input-when-warning:
           choice: shadow-0
+        shadow-for-tooltip:
+          choice: shadow-15
 
   test:
     backgroundColors:
@@ -883,6 +988,30 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-localized-multiline-text-input-label-when-disabled:
           choice: color-neutral-95
+        background-color-for-tooltip:
+          choice: color-accent-10
+        background-color-for-view-switcher-when-disabled:
+          choice: color-surface
+        background-color-for-view-switcher-when-selected:
+          choice: color-neutral-95
+        background-color-for-view-switcher-when-hovered:
+          choice: color-neutral-95
+        background-color-for-content-notification-when-error:
+          choice: color-error-95
+        background-color-for-content-notification-when-info:
+          choice: color-info-95
+        background-color-for-content-notification-when-warning:
+          choice: color-warning-95
+        background-color-for-content-notification-when-success:
+          choice: color-primary-95
+        background-color-for-content-notification-icon-when-error:
+          choice: color-error-95
+        background-color-for-content-notification-icon-when-info:
+          choice: color-info-95
+        background-color-for-content-notification-icon-when-warning:
+          choice: color-warning-95
+        background-color-for-content-notification-icon-when-success:
+          choice: color-primary-95
 
     borders:
       label: Borders
@@ -898,6 +1027,8 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral-90)'
         border-for-collapsible-panel-header-icon-when-disabled:
           choice: 'none'
+        border-for-view-switcher:
+          choice: '1px solid var(--color-neutral)'
 
     borderColors:
       label: Border Colors
@@ -949,6 +1080,14 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-tag-when-hovered:
           choice: color-neutral
+        border-color-for-content-notification-when-error:
+          choice: color-error-85
+        border-color-for-content-notification-when-info:
+          choice: color-info-85
+        border-color-for-content-notification-when-warning:
+          choice: color-warning-85
+        border-color-for-content-notification-when-success:
+          choice: color-primary-85
 
     borderRadiuses:
       label: Border radiuses
@@ -972,6 +1111,12 @@ decisionGroupsByTheme:
           choice: border-radius-4
         border-radius-for-stamp:
           choice: border-radius-20
+        border-radius-for-view-switcher:
+          choice: border-radius-4
+        border-radius-for-content-notification:
+          choice: '0 var(--border-radius-4) var(--border-radius-4) 0'
+        border-radius-for-content-notification-icon:
+          choice: 'var(--border-radius-4) 0 0 var(--border-radius-4)'
 
     borderWidths:
       label: Border width
@@ -979,6 +1124,10 @@ decisionGroupsByTheme:
       decisions:
         border-width-for-tag:
           choice: '1px 1px 1px 0'
+        border-width-for-content-notification-icon:
+          choice: border-width-1
+        border-left-width-for-content-notification:
+          choice: '0px'
 
     boxShadows:
       label: Box shadows
@@ -986,6 +1135,10 @@ decisionGroupsByTheme:
       decisions:
         box-shadow-for-datetime-input-when-hovered:
           choice: 'inset 0 0 0 1px'
+        box-shadow-for-view-switcher:
+          choice: shadow-0
+        box-shadow-for-view-switcher-when-selected:
+          choice: shadow-0
 
     fontColors:
       label: Font Colors
@@ -1001,6 +1154,16 @@ decisionGroupsByTheme:
           choice: color-neutral-40
         font-color-for-tag-remove-icon-when-hovered:
           choice: color-error
+        font-color-for-view-switcher:
+          choice: color-neutral-40
+        font-color-for-content-notification-icon-when-error:
+          choice: color-error
+        font-color-for-content-notification-icon-when-warning:
+          choice: color-warning
+        font-color-for-content-notification-icon-when-success:
+          choice: color-primary
+        font-color-for-content-notification-icon-when-info:
+          choice: color-info
 
     fontSizes:
       label: Font Sizes
@@ -1040,6 +1203,8 @@ decisionGroupsByTheme:
           description: ''
           choice: 'inherit'
         font-size-for-stamp:
+          choice: font-size-20
+        font-size-for-view-switcher:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
@@ -1124,6 +1289,10 @@ decisionGroupsByTheme:
           choice: '16px'
         height-for-input:
           choice: '40px'
+        height-for-view-switcher:
+          choice: '40px'
+        height-for-view-switcher-when-condensed:
+          choice: '32px'
 
     iconColors:
       label: Icon colors
@@ -1149,6 +1318,8 @@ decisionGroupsByTheme:
           choice: spacing-30
         margin-for-table-cell-as-condensed:
           choice: spacing-20
+        margin-for-view-switcher-icon:
+          choice: '0 var(--spacing-20) 0 0'
 
     paddings:
       label: Paddings
@@ -1196,6 +1367,16 @@ decisionGroupsByTheme:
           choice: '0 12px'
         padding-for-tag-remove-icon:
           choice: '0 12px'
+        padding-for-tooltip:
+          choice: 'var(--spacing-20) 12px'
+        padding-for-view-switcher:
+          choice: '0 var(--spacing-30) 0 var(--spacing-30)'
+        padding-for-view-switcher-when-condensed:
+          choice: '0 12px 0 12px'
+        padding-for-content-notification:
+          choice: 'var(--spacing-20) var(--spacing-30) var(--spacing-20) var(--spacing-20)'
+        padding-for-content-notification-icon:
+          choice: 'var(--spacing-20) 0 var(--spacing-20) var(--spacing-30)'
 
     shadows:
       label: Shadows
@@ -1221,6 +1402,8 @@ decisionGroupsByTheme:
           choice: 'inset 0 0 0 1px var(--color-error)'
         shadow-for-input-when-warning:
           choice: 'inset 0 0 0 1px var(--color-warning)'
+        shadow-for-tooltip:
+          choice: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.

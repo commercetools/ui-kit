@@ -1,7 +1,9 @@
+// TODO: @redesign cleanup
 import { useState, useCallback } from 'react';
 import { useFormik } from 'formik';
 import { useIntl } from 'react-intl';
 import uniqueId from 'lodash/uniqueId';
+import { useTheme } from '@commercetools-uikit/design-system';
 import { AngleLeftIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 import NumberInput from '@commercetools-uikit/number-input';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
@@ -28,8 +30,10 @@ type TPageNavigatorProps = {
 
 const PageNavigator = (props: TPageNavigatorProps) => {
   const intl = useIntl();
+  const { themedValue } = useTheme();
 
   const [pageNumberInputId] = useState(uniqueId('page-number-'));
+  const TotalPagesCountComponent = themedValue(Text.Body, Label);
 
   const paginationForm = useFormik({
     initialValues: { page: props.page },
@@ -96,7 +100,7 @@ const PageNavigator = (props: TPageNavigatorProps) => {
             horizontalConstraint={2}
           />
         </div>
-        <Text.Body
+        <TotalPagesCountComponent
           intlMessage={{
             ...messages.pageCount,
             values: {

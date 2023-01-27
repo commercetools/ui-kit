@@ -7,15 +7,21 @@ const getSizeStyles = (
 ) => {
   if (isCondensed) {
     return css`
-      padding: 0 ${designTokens.spacing20} 0 ${designTokens.spacing20};
-      height: ${designTokens.smallButtonHeight};
+      padding: ${designTokens.paddingForViewSwitcherWhenCondensed};
+      height: ${designTokens.heightForViewSwitcherWhenCondensed};
     `;
   }
 
   return css`
-    padding: 0 ${designTokens.spacing30} 0 ${designTokens.spacing30};
-    height: ${designTokens.bigButtonHeight};
+    padding: ${designTokens.paddingForViewSwitcher};
+    height: ${designTokens.heightForViewSwitcher};
   `;
+};
+
+const getFontColor = (isDisabled?: boolean, isActive?: boolean) => {
+  if (isDisabled) return designTokens.fontColorForViewSwitcherWhenDisabled;
+  if (isActive) return designTokens.fontColorForViewSwitcherWhenSelected;
+  return designTokens.fontColorForViewSwitcher;
 };
 
 export const getButtonStyles = (
@@ -25,42 +31,48 @@ export const getButtonStyles = (
   isFirstButton?: TViewSwitcherButtonProps['isFirstButton'],
   isLastButton?: TViewSwitcherButtonProps['isLastButton']
 ) => {
-  const borderRadius = `${isFirstButton ? designTokens.borderRadius6 : '0'} ${
+  const borderRadius = `${
+    isFirstButton ? designTokens.borderRadiusForViewSwitcher : '0'
+  } ${
     isLastButton
-      ? `${designTokens.borderRadius6} ${designTokens.borderRadius6}`
+      ? `${designTokens.borderRadiusForViewSwitcher} ${designTokens.borderRadiusForViewSwitcher}`
       : '0 0'
-  } ${isFirstButton ? designTokens.borderRadius6 : '0'}`;
+  } ${isFirstButton ? designTokens.borderRadiusForViewSwitcher : '0'}`;
+
+  const fontColor = getFontColor(isDisabled, isActive);
 
   return [
     css`
       align-items: center;
-      color: ${designTokens.colorSolid};
+      color: ${fontColor};
+      fill: ${fontColor};
       transition: background-color ${designTokens.transitionLinear80Ms};
       font-size: ${designTokens.fontSizeDefault};
+      border: ${designTokens.borderForViewSwitcher};
+      border-left: ${isFirstButton ? designTokens.borderForViewSwitcher : '0'};
       border-radius: ${borderRadius};
-      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24),
-        0 -1px 1px 0 rgba(0, 0, 0, 0.12);
-      background-color: ${designTokens.colorSurface};
+      box-shadow: ${designTokens.boxShadowForViewSwitcher};
+      background-color: ${designTokens.backgroundColorForViewSwitcher};
       &:hover {
-        background-color: ${designTokens.colorNeutral90};
+        background-color: ${designTokens.backgroundColorForViewSwitcherWhenHovered};
       }
       &:active {
-        background-color: ${designTokens.colorNeutral95};
+        background-color: ${designTokens.backgroundColorForViewSwitcherWhenSelected};
       }
       ${getSizeStyles(isCondensed)}
     `,
-    isActive &&
-      css`
-        background-color: ${designTokens.colorNeutral95};
-        box-shadow: ${designTokens.shadow9};
-      `,
     isDisabled &&
       css`
-        background-color: ${designTokens.colorAccent98};
-        color: ${designTokens.colorNeutral60};
+        background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
+        color: ${designTokens.fontColorForViewSwitcherWhenDisabled};
         &:hover {
-          background-color: ${designTokens.colorAccent98};
+          background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
         }
+      `,
+    isActive &&
+      css`
+        background-color: ${designTokens.backgroundColorForViewSwitcherWhenSelected};
+        box-shadow: ${designTokens.boxShadowForViewSwitcherWhenSelected};
       `,
   ];
 };

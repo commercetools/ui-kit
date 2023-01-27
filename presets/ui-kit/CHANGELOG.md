@@ -1,5 +1,44 @@
 # @commercetools-frontend/ui-kit
 
+## 15.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`1926e229d`](https://github.com/commercetools/ui-kit/commit/1926e229da10a13be9f9e8b9da9331418f0c7e39), [`2937a74d0`](https://github.com/commercetools/ui-kit/commit/2937a74d0d5f669e8cc74af571b330bac6a038ee), [`ff410e358`](https://github.com/commercetools/ui-kit/commit/ff410e358dcce1eb0c30a873969765c9adadcbd3), [`64aab564d`](https://github.com/commercetools/ui-kit/commit/64aab564d2e66ecf7841b8e4b0cdb2d357d54ff6), [`6e67212b4`](https://github.com/commercetools/ui-kit/commit/6e67212b43fa066b4cffbb2dcbbe2e65f14b38a7), [`2937a74d0`](https://github.com/commercetools/ui-kit/commit/2937a74d0d5f669e8cc74af571b330bac6a038ee), [`6d4075b75`](https://github.com/commercetools/ui-kit/commit/6d4075b754029eda6b54d2b9a2845fbddbb6faa7), [`64faf3830`](https://github.com/commercetools/ui-kit/commit/64faf38302d5219c26fe2f228a1d9e899e4a3161)]:
+  - @commercetools-uikit/tooltip@15.10.0
+  - @commercetools-uikit/design-system@15.10.0
+  - @commercetools-uikit/tag@15.10.0
+  - @commercetools-uikit/icons@15.10.0
+  - @commercetools-uikit/text@15.10.0
+  - @commercetools-uikit/view-switcher@15.10.0
+  - @commercetools-uikit/pagination@15.10.0
+  - @commercetools-uikit/avatar@15.10.0
+  - @commercetools-uikit/card@15.10.0
+  - @commercetools-uikit/collapsible-panel@15.10.0
+  - @commercetools-uikit/constraints@15.10.0
+  - @commercetools-uikit/data-table@15.10.0
+  - @commercetools-uikit/data-table-manager@15.10.0
+  - @commercetools-uikit/field-label@15.10.0
+  - @commercetools-uikit/label@15.10.0
+  - @commercetools-uikit/link@15.10.0
+  - @commercetools-uikit/loading-spinner@15.10.0
+  - @commercetools-uikit/notifications@15.10.0
+  - @commercetools-uikit/primary-action-dropdown@15.10.0
+  - @commercetools-uikit/stamp@15.10.0
+  - @commercetools-uikit/buttons@15.10.0
+  - @commercetools-uikit/inputs@15.10.0
+  - @commercetools-uikit/messages@15.10.0
+  - @commercetools-uikit/fields@15.10.0
+  - @commercetools-uikit/spacings@15.10.0
+  - @commercetools-uikit/field-errors@15.10.0
+  - @commercetools-uikit/accessible-hidden@15.10.0
+  - @commercetools-uikit/collapsible@15.10.0
+  - @commercetools-uikit/collapsible-motion@15.10.0
+  - @commercetools-uikit/grid@15.10.0
+  - @commercetools-uikit/hooks@15.10.0
+  - @commercetools-uikit/i18n@15.10.0
+  - @commercetools-uikit/utils@15.10.0
+
 ## 15.9.0
 
 ### Patch Changes
