@@ -215,7 +215,7 @@ const ContentNotification = (props: TContentNotificationProps) => {
           border-width: 1px;
           border-style: solid;
           border-color: ${getContentBorderColor(props)};
-          border-left: ${designTokens.borderLeftWidthForContentNotification};
+          border-left-width: ${designTokens.borderLeftWidthForContentNotification};
         `}
       >
         {props.intlMessage ? (
