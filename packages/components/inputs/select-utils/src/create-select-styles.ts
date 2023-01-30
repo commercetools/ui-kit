@@ -63,7 +63,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     borderWidth: (() => {
       if (props.hasWarning || props.hasError)
         return designTokens.borderWidthForSelectInput;
-      return '1px';
+      return designTokens.borderWidth1;
     })(),
     borderRadius: designTokens.borderRadiusForInput,
     minHeight: designTokens.heightForInput,
@@ -347,7 +347,7 @@ const multiValueLabelStyles =
 
       '&:last-child': {
         borderRadius: designTokens.borderRadiusForTag,
-        borderWidth: '1px',
+        borderWidth: designTokens.borderWidth1,
       },
     };
   };
@@ -376,7 +376,7 @@ const multiValueRemoveStyles =
         backgroundColor: designTokens.backgroundColorForTag,
 
         'svg *': {
-          fill: designTokens.borderColorForTagWarning,
+          fill: designTokens.fontColorForClearInputIconWhenHovered,
         },
       },
     };
