@@ -1,5 +1,19 @@
 # @commercetools-uikit/view-switcher
 
+## 15.11.0
+
+### Patch Changes
+
+- [#2394](https://github.com/commercetools/ui-kit/pull/2394) [`5531d20ca`](https://github.com/commercetools/ui-kit/commit/5531d20cac0dbcc624ab6cdfa4b69ede701bcd42) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update `ViewSwitcher.Button` component to allow using it without text and just an icon.
+
+  Its `children` prop is now optional.
+  It also has a new optional property called `label` to be used in this use case to have an accessible label for the button.
+
+- Updated dependencies [[`5a4670f37`](https://github.com/commercetools/ui-kit/commit/5a4670f3777a77fa43ca2067f61e5063f6eb34fa), [`a527b20f3`](https://github.com/commercetools/ui-kit/commit/a527b20f3fbbf2aafd4f4c36d24f901ef53763d3), [`6fe1cc47f`](https://github.com/commercetools/ui-kit/commit/6fe1cc47f5c45389d9f497267bc860223c81589b)]:
+  - @commercetools-uikit/design-system@15.11.0
+  - @commercetools-uikit/accessible-button@15.11.0
+  - @commercetools-uikit/utils@15.11.0
+
 ## 15.10.0
 
 ### Patch Changes

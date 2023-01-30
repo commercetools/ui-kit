@@ -1,5 +1,24 @@
 # @commercetools-uikit/design-system
 
+## 15.11.0
+
+### Minor Changes
+
+- [#2392](https://github.com/commercetools/ui-kit/pull/2392) [`5a4670f37`](https://github.com/commercetools/ui-kit/commit/5a4670f3777a77fa43ca2067f61e5063f6eb34fa) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Include new design token for an error color variation (`color-error-25`).
+
+### Patch Changes
+
+- [#2373](https://github.com/commercetools/ui-kit/pull/2373) [`a527b20f3`](https://github.com/commercetools/ui-kit/commit/a527b20f3fbbf2aafd4f4c36d24f901ef53763d3) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Add new design tokens for the selectInput components:
+
+  - AsyncCreatableSelectInput
+  - AsyncSelectInput
+  - CreatableSelectInput
+  - SearchSelectInput
+  - SelectInput
+  - MoneyInput
+
+- [#2396](https://github.com/commercetools/ui-kit/pull/2396) [`6fe1cc47f`](https://github.com/commercetools/ui-kit/commit/6fe1cc47f5c45389d9f497267bc860223c81589b) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Add tokens for content-notification component new design
+
 ## 15.10.0
 
 ### Minor Changes

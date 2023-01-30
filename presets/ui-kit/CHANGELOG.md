@@ -1,5 +1,44 @@
 # @commercetools-frontend/ui-kit
 
+## 15.11.0
+
+### Patch Changes
+
+- Updated dependencies [[`5a4670f37`](https://github.com/commercetools/ui-kit/commit/5a4670f3777a77fa43ca2067f61e5063f6eb34fa), [`a527b20f3`](https://github.com/commercetools/ui-kit/commit/a527b20f3fbbf2aafd4f4c36d24f901ef53763d3), [`6fe1cc47f`](https://github.com/commercetools/ui-kit/commit/6fe1cc47f5c45389d9f497267bc860223c81589b), [`5531d20ca`](https://github.com/commercetools/ui-kit/commit/5531d20cac0dbcc624ab6cdfa4b69ede701bcd42)]:
+  - @commercetools-uikit/design-system@15.11.0
+  - @commercetools-uikit/notifications@15.11.0
+  - @commercetools-uikit/view-switcher@15.11.0
+  - @commercetools-uikit/avatar@15.11.0
+  - @commercetools-uikit/card@15.11.0
+  - @commercetools-uikit/collapsible-panel@15.11.0
+  - @commercetools-uikit/constraints@15.11.0
+  - @commercetools-uikit/data-table@15.11.0
+  - @commercetools-uikit/data-table-manager@15.11.0
+  - @commercetools-uikit/field-label@15.11.0
+  - @commercetools-uikit/icons@15.11.0
+  - @commercetools-uikit/label@15.11.0
+  - @commercetools-uikit/link@15.11.0
+  - @commercetools-uikit/loading-spinner@15.11.0
+  - @commercetools-uikit/pagination@15.11.0
+  - @commercetools-uikit/primary-action-dropdown@15.11.0
+  - @commercetools-uikit/stamp@15.11.0
+  - @commercetools-uikit/tag@15.11.0
+  - @commercetools-uikit/text@15.11.0
+  - @commercetools-uikit/tooltip@15.11.0
+  - @commercetools-uikit/buttons@15.11.0
+  - @commercetools-uikit/inputs@15.11.0
+  - @commercetools-uikit/fields@15.11.0
+  - @commercetools-uikit/spacings@15.11.0
+  - @commercetools-uikit/messages@15.11.0
+  - @commercetools-uikit/field-errors@15.11.0
+  - @commercetools-uikit/accessible-hidden@15.11.0
+  - @commercetools-uikit/collapsible@15.11.0
+  - @commercetools-uikit/collapsible-motion@15.11.0
+  - @commercetools-uikit/grid@15.11.0
+  - @commercetools-uikit/hooks@15.11.0
+  - @commercetools-uikit/i18n@15.11.0
+  - @commercetools-uikit/utils@15.11.0
+
 ## 15.10.0
 
 ### Patch Changes
