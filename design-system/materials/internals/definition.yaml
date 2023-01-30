@@ -725,9 +725,9 @@ decisionGroupsByTheme:
         font-color-for-select-input-icon:
           choice: color-solid
         font-color-for-select-input-when-error:
-          choice: color-neutral-60
+          choice: color-solid
         font-color-for-select-input-when-warning:
-          choice: color-neutral-60
+          choice: color-solid
         font-color-for-select-input-icon-when-error:
           choice: color-solid
         font-color-for-select-input-icon-when-warning:
