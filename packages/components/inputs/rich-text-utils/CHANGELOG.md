@@ -1,5 +1,19 @@
 # @commercetools-uikit/rich-text-utils
 
+## 15.11.0
+
+### Patch Changes
+
+- [#2385](https://github.com/commercetools/ui-kit/pull/2385) [`0decd18dd`](https://github.com/commercetools/ui-kit/commit/0decd18dda4aa45982e94e4dee7c8a12820e79e6) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+- Updated dependencies [[`5a4670f37`](https://github.com/commercetools/ui-kit/commit/5a4670f3777a77fa43ca2067f61e5063f6eb34fa), [`a527b20f3`](https://github.com/commercetools/ui-kit/commit/a527b20f3fbbf2aafd4f4c36d24f901ef53763d3), [`6fe1cc47f`](https://github.com/commercetools/ui-kit/commit/6fe1cc47f5c45389d9f497267bc860223c81589b)]:
+  - @commercetools-uikit/design-system@15.11.0
+  - @commercetools-uikit/icons@15.11.0
+  - @commercetools-uikit/input-utils@15.11.0
+  - @commercetools-uikit/spacings-inline@15.11.0
+  - @commercetools-uikit/tooltip@15.11.0
+  - @commercetools-uikit/utils@15.11.0
+
 ## 15.10.0
 
 ### Patch Changes
