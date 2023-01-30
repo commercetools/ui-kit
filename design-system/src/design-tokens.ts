@@ -23,9 +23,10 @@ export const themes = {
     colorNeutral10: 'hsl(0deg 0% 80% / 10%)',
     colorNeutral40: 'hsl(0, 0%, 40%)',
     colorNeutral60: 'hsl(0, 0%, 60%)',
+    colorNeutral85: 'hsl(0, 0%, 85%)',
     colorNeutral90: 'hsl(0, 0%, 90%)',
     colorNeutral95: 'hsl(0, 0%, 95%)',
-    colorNeutral85: 'hsl(0, 0%, 85%)',
+    colorNeutral98: 'hsl(0, 0%, 98%)',
     colorInfo: '#078cdf',
     colorInfo40: 'hsl(203.05555555555554, 93.9130434783%, 40%)',
     colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
@@ -155,6 +156,8 @@ export const themes = {
     backgroundColorForInputWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForInputWhenHovered: '#fff',
     backgroundColorForInputWhenFocused: '#fff',
+    backgroundColorForInputWhenReadonly: '#fff',
+    backgroundColorForInputWhenActive: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 90%)',
     backgroundColorForTableHeader: '#213c45',
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
@@ -221,6 +224,11 @@ export const themes = {
     borderColorForContentNotificationWhenInfo: '#078cdf',
     borderColorForContentNotificationWhenWarning: '#f16d0e',
     borderColorForContentNotificationWhenSuccess: '#00b39e',
+    borderColorForGroupHeadingSelectInputOptions: '#ccc',
+    borderColorForSelectInputMenu: '#00b39e',
+    borderColorForSelectInputWhenReadonly: '#ccc',
+    borderColorForSelectInputMenuWhenWarning: '#f16d0e',
+    borderColorForSelectInputMenuWhenError: '#e60050',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -241,6 +249,7 @@ export const themes = {
     borderWidthForInputWhenError: '1px',
     borderWidthForInputWhenFocused: '1px',
     borderWidthForTag: '1px',
+    borderWidthForSelectInput: '1px',
     borderWidthForContentNotificationIcon: '0px',
     borderLeftWidthForContentNotification: '1px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 2px',
@@ -248,6 +257,7 @@ export const themes = {
       '0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)',
     boxShadowForViewSwitcherWhenSelected:
       'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
+    boxShadowForSelectInputWhenFocused: 'inset 0 0 0 2px',
     fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
@@ -265,11 +275,20 @@ export const themes = {
     fontColorForViewSwitcher: '#1a1a1a',
     fontColorForViewSwitcherWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForViewSwitcherWhenSelected: '#1a1a1a',
+    fontColorForClearInputIcon: '#1a1a1a',
+    fontColorForClearInputIconWhenHovered: '#f16d0e',
     fontColorForContentNotification: '#1a1a1a',
     fontColorForContentNotificationIconWhenError: '#fff',
     fontColorForContentNotificationIconWhenWarning: '#fff',
     fontColorForContentNotificationIconWhenSuccess: '#fff',
     fontColorForContentNotificationIconWhenInfo: '#fff',
+    fontColorForSearchInputIcon: '#1a1a1a',
+    fontColorForSearchInputIconWhenHovered: '#1a1a1a',
+    fontColorForSelectInputIcon: '#1a1a1a',
+    fontColorForSelectInputWhenError: '#1a1a1a',
+    fontColorForSelectInputWhenWarning: '#1a1a1a',
+    fontColorForSelectInputIconWhenError: '#1a1a1a',
+    fontColorForSelectInputIconWhenWarning: '#1a1a1a',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -320,6 +339,9 @@ export const themes = {
     marginForTableHeader: '8px',
     marginForTableAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-10) 0 0',
+    marginForGroupHeadingSelectInputOptions: '4px',
+    marginForSelectInputIcon: '4px',
+    marginLeftForSelectInputIcon: 'inherit',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -348,6 +370,12 @@ export const themes = {
       '0 var(--spacing-20) 0 var(--spacing-20)',
     paddingForContentNotification: 'var(--spacing-20)',
     paddingForContentNotificationIcon: 'var(--spacing-20) var(--spacing-30)',
+    paddingLeftForSelectInputOptions: '8px',
+    paddingRightForSelectInputOptions: '8px',
+    paddingTopForSelectInputOptions: '4px',
+    paddingBottomForSelectInputOptions: '4px',
+    paddingForGroupHeadingSelectInputOptions: '8px',
+    paddingForSelectInputMenu: 'inherit',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -367,6 +395,8 @@ export const themes = {
     shadowForInputWhenWarning: 'none',
     shadowForTooltip:
       '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
+    shadowForSelectInputMenu:
+      '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     fontSizeM: '1rem',
     bigButtonHeight: '32px',
     smallButtonHeight: '24px',
@@ -396,8 +426,11 @@ export const themes = {
     backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForTableHeader: '#fff',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
-    backgroundColorForInputWhenHovered: 'hsl(0, 0%, 95%)',
+    backgroundColorForInputWhenHovered: 'hsl(0, 0%, 98%)',
     backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
+    backgroundColorForInputWhenActive:
+      'hsl(203.05555555555554, 93.9130434783%, 95%)',
+    backgroundColorForInputWhenReadonly: 'hsl(0, 0%, 95%)',
     backgroundColorForAvatar: '#213c45',
     backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
     backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 95%)',
@@ -424,6 +457,7 @@ export const themes = {
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForContentNotificationIconWhenSuccess:
       'hsl(172.9608938547486, 100%, 95%)',
+    backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 98%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -464,6 +498,11 @@ export const themes = {
       'hsl(25.110132158590307, 89.0196078431%, 85%)',
     borderColorForContentNotificationWhenSuccess:
       'hsl(172.9608938547486, 100%, 85%)',
+    borderColorForGroupHeadingSelectInputOptions: 'hsl(0, 0%, 90%)',
+    borderColorForSelectInputMenu: '#fff',
+    borderColorForSelectInputWhenReadonly: 'hsl(0, 0%, 95%)',
+    borderColorForSelectInputMenuWhenWarning: '#fff',
+    borderColorForSelectInputMenuWhenError: '#fff',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -481,9 +520,11 @@ export const themes = {
     borderWidthForTag: '1px 1px 1px 0',
     borderWidthForContentNotificationIcon: '1px',
     borderLeftWidthForContentNotification: '0px',
+    borderWidthForSelectInput: '2px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     boxShadowForViewSwitcher: 'none',
     boxShadowForViewSwitcherWhenSelected: 'none',
+    boxShadowForSelectInputWhenFocused: 'inset 0 0 0 1px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
     fontColorForTagRemoveIcon: 'hsl(0, 0%, 40%)',
@@ -494,6 +535,15 @@ export const themes = {
     fontColorForContentNotificationIconWhenWarning: '#f16d0e',
     fontColorForContentNotificationIconWhenSuccess: '#00b39e',
     fontColorForContentNotificationIconWhenInfo: '#078cdf',
+    fontColorForClearInputIconWhenHovered: '#e60050',
+    fontColorForClearInputIcon: 'hsl(0, 0%, 40%)',
+    fontColorForSearchInputIcon: 'hsl(0, 0%, 60%)',
+    fontColorForSearchInputIconWhenHovered: '#00b39e',
+    fontColorForSelectInputIcon: 'hsl(0, 0%, 60%)',
+    fontColorForSelectInputWhenError: '#e60050',
+    fontColorForSelectInputWhenWarning: '#f16d0e',
+    fontColorForSelectInputIconWhenError: '#e60050',
+    fontColorForSelectInputIconWhenWarning: '#f16d0e',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.25rem',
@@ -542,6 +592,9 @@ export const themes = {
     marginForTableHeader: '16px',
     marginForTableCellAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-20) 0 0',
+    marginForGroupHeadingSelectInputOptions: '8px',
+    marginForSelectInputIcon: '8px',
+    marginLeftForSelectInputIcon: '8px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -573,6 +626,12 @@ export const themes = {
       'var(--spacing-20) var(--spacing-30) var(--spacing-20) var(--spacing-20)',
     paddingForContentNotificationIcon:
       'var(--spacing-20) 0 var(--spacing-20) var(--spacing-30)',
+    paddingLeftForSelectInputOptions: '16px',
+    paddingRightForSelectInputOptions: '16px',
+    paddingTopForSelectInputOptions: '8px',
+    paddingBottomForSelectInputOptions: '8px',
+    paddingForGroupHeadingSelectInputOptions: '16px',
+    paddingForSelectInputMenu: 'var(--spacing-10) 0',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -584,6 +643,7 @@ export const themes = {
     shadowForInputWhenError: 'inset 0 0 0 1px var(--color-error)',
     shadowForInputWhenWarning: 'inset 0 0 0 1px var(--color-warning)',
     shadowForTooltip: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)',
+    shadowForSelectInputMenu: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
   },
 } as const;
 
@@ -606,9 +666,10 @@ const designTokens = {
   colorNeutral10: 'var(--color-neutral-10, hsl(0deg 0% 80% / 10%))',
   colorNeutral40: 'var(--color-neutral-40, hsl(0, 0%, 40%))',
   colorNeutral60: 'var(--color-neutral-60, hsl(0, 0%, 60%))',
+  colorNeutral85: 'var(--color-neutral-85, hsl(0, 0%, 85%))',
   colorNeutral90: 'var(--color-neutral-90, hsl(0, 0%, 90%))',
   colorNeutral95: 'var(--color-neutral-95, hsl(0, 0%, 95%))',
-  colorNeutral85: 'var(--color-neutral-85, hsl(0, 0%, 85%))',
+  colorNeutral98: 'var(--color-neutral-98, hsl(0, 0%, 98%))',
   colorInfo: 'var(--color-info, #078cdf)',
   colorInfo40:
     'var(--color-info-40, hsl(203.05555555555554, 93.9130434783%, 40%))',
@@ -765,6 +826,10 @@ const designTokens = {
     'var(--background-color-for-input-when-hovered, #fff)',
   backgroundColorForInputWhenFocused:
     'var(--background-color-for-input-when-focused, #fff)',
+  backgroundColorForInputWhenReadonly:
+    'var(--background-color-for-input-when-readonly, #fff)',
+  backgroundColorForInputWhenActive:
+    'var(--background-color-for-input-when-active, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForTableCellWhenHovered:
     'var(--background-color-for-table-cell-when-hovered, hsl(0, 0%, 90%))',
   backgroundColorForTableHeader:
@@ -877,6 +942,16 @@ const designTokens = {
     'var(--border-color-for-content-notification-when-warning, #f16d0e)',
   borderColorForContentNotificationWhenSuccess:
     'var(--border-color-for-content-notification-when-success, #00b39e)',
+  borderColorForGroupHeadingSelectInputOptions:
+    'var(--border-color-for-group-heading-select-input-options, #ccc)',
+  borderColorForSelectInputMenu:
+    'var(--border-color-for-select-input-menu, #00b39e)',
+  borderColorForSelectInputWhenReadonly:
+    'var(--border-color-for-select-input-when-readonly, #ccc)',
+  borderColorForSelectInputMenuWhenWarning:
+    'var(--border-color-for-select-input-menu-when-warning, #f16d0e)',
+  borderColorForSelectInputMenuWhenError:
+    'var(--border-color-for-select-input-menu-when-error, #e60050)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -903,6 +978,7 @@ const designTokens = {
   borderWidthForInputWhenFocused:
     'var(--border-width-for-input-when-focused, 1px)',
   borderWidthForTag: 'var(--border-width-for-tag, 1px)',
+  borderWidthForSelectInput: 'var(--border-width-for-select-input, 1px)',
   borderWidthForContentNotificationIcon:
     'var(--border-width-for-content-notification-icon, 0px)',
   borderLeftWidthForContentNotification:
@@ -913,6 +989,8 @@ const designTokens = {
     'var(--box-shadow-for-view-switcher, 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12))',
   boxShadowForViewSwitcherWhenSelected:
     'var(--box-shadow-for-view-switcher-when-selected, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
+  boxShadowForSelectInputWhenFocused:
+    'var(--box-shadow-for-select-input-when-focused, inset 0 0 0 2px)',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
@@ -939,6 +1017,9 @@ const designTokens = {
     'var(--font-color-for-view-switcher-when-disabled, hsl(0, 0%, 60%))',
   fontColorForViewSwitcherWhenSelected:
     'var(--font-color-for-view-switcher-when-selected, #1a1a1a)',
+  fontColorForClearInputIcon: 'var(--font-color-for-clear-input-icon, #1a1a1a)',
+  fontColorForClearInputIconWhenHovered:
+    'var(--font-color-for-clear-input-icon-when-hovered, #f16d0e)',
   fontColorForContentNotification:
     'var(--font-color-for-content-notification, #1a1a1a)',
   fontColorForContentNotificationIconWhenError:
@@ -949,6 +1030,20 @@ const designTokens = {
     'var(--font-color-for-content-notification-icon-when-success, #fff)',
   fontColorForContentNotificationIconWhenInfo:
     'var(--font-color-for-content-notification-icon-when-info, #fff)',
+  fontColorForSearchInputIcon:
+    'var(--font-color-for-search-input-icon, #1a1a1a)',
+  fontColorForSearchInputIconWhenHovered:
+    'var(--font-color-for-search-input-icon-when-hovered, #1a1a1a)',
+  fontColorForSelectInputIcon:
+    'var(--font-color-for-select-input-icon, #1a1a1a)',
+  fontColorForSelectInputWhenError:
+    'var(--font-color-for-select-input-when-error, #1a1a1a)',
+  fontColorForSelectInputWhenWarning:
+    'var(--font-color-for-select-input-when-warning, #1a1a1a)',
+  fontColorForSelectInputIconWhenError:
+    'var(--font-color-for-select-input-icon-when-error, #1a1a1a)',
+  fontColorForSelectInputIconWhenWarning:
+    'var(--font-color-for-select-input-icon-when-warning, #1a1a1a)',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
@@ -1008,6 +1103,11 @@ const designTokens = {
   marginForTableAsCondensed: 'var(--margin-for-table-as-condensed, 8px)',
   marginForViewSwitcherIcon:
     'var(--margin-for-view-switcher-icon, 0 var(--spacing-10) 0 0)',
+  marginForGroupHeadingSelectInputOptions:
+    'var(--margin-for-group-heading-select-input-options, 4px)',
+  marginForSelectInputIcon: 'var(--margin-for-select-input-icon, 4px)',
+  marginLeftForSelectInputIcon:
+    'var(--margin-left-for-select-input-icon, inherit)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
@@ -1056,6 +1156,17 @@ const designTokens = {
     'var(--padding-for-content-notification, var(--spacing-20))',
   paddingForContentNotificationIcon:
     'var(--padding-for-content-notification-icon, var(--spacing-20) var(--spacing-30))',
+  paddingLeftForSelectInputOptions:
+    'var(--padding-left-for-select-input-options, 8px)',
+  paddingRightForSelectInputOptions:
+    'var(--padding-right-for-select-input-options, 8px)',
+  paddingTopForSelectInputOptions:
+    'var(--padding-top-for-select-input-options, 4px)',
+  paddingBottomForSelectInputOptions:
+    'var(--padding-bottom-for-select-input-options, 4px)',
+  paddingForGroupHeadingSelectInputOptions:
+    'var(--padding-for-group-heading-select-input-options, 8px)',
+  paddingForSelectInputMenu: 'var(--padding-for-select-input-menu, inherit)',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:
@@ -1077,6 +1188,8 @@ const designTokens = {
   shadowForInputWhenWarning: 'var(--shadow-for-input-when-warning, none)',
   shadowForTooltip:
     'var(--shadow-for-tooltip, 0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12))',
+  shadowForSelectInputMenu:
+    'var(--shadow-for-select-input-menu, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   fontSizeM: 'var(--font-size-m, 1rem)',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',

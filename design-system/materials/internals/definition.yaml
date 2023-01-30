@@ -54,9 +54,10 @@ choiceGroupsByTheme:
         color-neutral-10: 'hsl(0deg 0% 80% / 10%)'
         color-neutral-40: 'hsl(0, 0%, 40%)'
         color-neutral-60: 'hsl(0, 0%, 60%)'
+        color-neutral-85: 'hsl(0, 0%, 85%)'
         color-neutral-90: 'hsl(0, 0%, 90%)'
         color-neutral-95: 'hsl(0, 0%, 95%)'
-        color-neutral-85: 'hsl(0, 0%, 85%)'
+        color-neutral-98: 'hsl(0, 0%, 98%)'
         color-info: '#078cdf'
         color-info-40: 'hsl(203.05555555555554, 93.9130434783%, 40%)'
         color-info-85: 'hsl(203.05555555555554, 93.9130434783%, 85%)'
@@ -368,6 +369,18 @@ componentGroups:
     description: 'Content notification elements'
   content-notification-icon:
     description: 'Content notification icon elements'
+  select-input-icon:
+    description: 'Select input icon elements'
+  clear-input-icon:
+    description: 'clear input icon elements'
+  search-input-icon:
+    description: 'search input icon elements'
+  select-input-menu:
+    description: 'select input menu elements'
+  select-input-options:
+    description: 'select input options element'
+  group-heading-select-input-options:
+    description: 'group heading select input options element'
 
 decisionGroupsByTheme:
   default:
@@ -412,6 +425,10 @@ decisionGroupsByTheme:
         background-color-for-input-when-focused:
           description: ''
           choice: color-surface
+        background-color-for-input-when-readonly:
+          choice: color-surface
+        background-color-for-input-when-active:
+          choice: color-accent-95
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-90
         background-color-for-table-header:
@@ -562,6 +579,16 @@ decisionGroupsByTheme:
           choice: color-warning
         border-color-for-content-notification-when-success:
           choice: color-primary
+        border-color-for-group-heading-select-input-options:
+          choice: color-neutral
+        border-color-for-select-input-menu:
+          choice: color-primary
+        border-color-for-select-input-when-readonly:
+          choice: color-neutral
+        border-color-for-select-input-menu-when-warning:
+          choice: color-warning
+        border-color-for-select-input-menu-when-error:
+          choice: color-error
 
     borderRadiuses:
       label: Border Radius
@@ -610,6 +637,8 @@ decisionGroupsByTheme:
           choice: border-width-1
         border-width-for-tag:
           choice: border-width-1
+        border-width-for-select-input:
+          choice: border-width-1
         border-width-for-content-notification-icon:
           choice: '0px'
         border-left-width-for-content-notification:
@@ -625,6 +654,8 @@ decisionGroupsByTheme:
           choice: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)
         box-shadow-for-view-switcher-when-selected:
           choice: shadow-9
+        box-shadow-for-select-input-when-focused:
+          choice: 'inset 0 0 0 2px'
 
     fontColors:
       label: Font Colors
@@ -673,6 +704,10 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         font-color-for-view-switcher-when-selected:
           choice: color-solid
+        font-color-for-clear-input-icon:
+          choice: color-solid
+        font-color-for-clear-input-icon-when-hovered:
+          choice: color-warning
         font-color-for-content-notification:
           choice: color-solid
         font-color-for-content-notification-icon-when-error:
@@ -683,6 +718,20 @@ decisionGroupsByTheme:
           choice: color-surface
         font-color-for-content-notification-icon-when-info:
           choice: color-surface
+        font-color-for-search-input-icon:
+          choice: color-solid
+        font-color-for-search-input-icon-when-hovered:
+          choice: color-solid
+        font-color-for-select-input-icon:
+          choice: color-solid
+        font-color-for-select-input-when-error:
+          choice: color-solid
+        font-color-for-select-input-when-warning:
+          choice: color-solid
+        font-color-for-select-input-icon-when-error:
+          choice: color-solid
+        font-color-for-select-input-icon-when-warning:
+          choice: color-solid
 
     heights:
       label: Height
@@ -849,6 +898,12 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-for-view-switcher-icon:
           choice: '0 var(--spacing-10) 0 0'
+        margin-for-group-heading-select-input-options:
+          choice: spacing-10
+        margin-for-select-input-icon:
+          choice: spacing-10
+        margin-left-for-select-input-icon:
+          choice: 'inherit'
 
     paddings:
       label: Paddings
@@ -906,6 +961,18 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-20)'
         padding-for-content-notification-icon:
           choice: 'var(--spacing-20) var(--spacing-30)'
+        padding-left-for-select-input-options:
+          choice: spacing-20
+        padding-right-for-select-input-options:
+          choice: spacing-20
+        padding-top-for-select-input-options:
+          choice: spacing-10
+        padding-bottom-for-select-input-options:
+          choice: spacing-10
+        padding-for-group-heading-select-input-options:
+          choice: spacing-20
+        padding-for-select-input-menu:
+          choice: 'inherit'
 
     shadows:
       label: Shadows
@@ -937,6 +1004,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         shadow-for-tooltip:
           choice: shadow-15
+        shadow-for-select-input-menu:
+          choice: shadow-7
 
   test:
     backgroundColors:
@@ -972,8 +1041,12 @@ decisionGroupsByTheme:
         background-color-for-collapsible-panel-header-icon-when-disabled:
           choice: color-surface
         background-color-for-input-when-hovered:
-          choice: color-neutral-95
+          choice: color-neutral-98
         background-color-for-input-when-disabled:
+          choice: color-neutral-95
+        background-color-for-input-when-active:
+          choice: color-info-95
+        background-color-for-input-when-readonly:
           choice: color-neutral-95
         background-color-for-avatar:
           description: ''
@@ -1012,6 +1085,8 @@ decisionGroupsByTheme:
           choice: color-warning-95
         background-color-for-content-notification-icon-when-success:
           choice: color-primary-95
+        background-color-for-select-input-option-when-hovered:
+          choice: color-neutral-98
 
     borders:
       label: Borders
@@ -1088,6 +1163,16 @@ decisionGroupsByTheme:
           choice: color-warning-85
         border-color-for-content-notification-when-success:
           choice: color-primary-85
+        border-color-for-group-heading-select-input-options:
+          choice: color-neutral-90
+        border-color-for-select-input-menu:
+          choice: color-surface
+        border-color-for-select-input-when-readonly:
+          choice: color-neutral-95
+        border-color-for-select-input-menu-when-warning:
+          choice: color-surface
+        border-color-for-select-input-menu-when-error:
+          choice: color-surface
 
     borderRadiuses:
       label: Border radiuses
@@ -1128,6 +1213,8 @@ decisionGroupsByTheme:
           choice: border-width-1
         border-left-width-for-content-notification:
           choice: '0px'
+        border-width-for-select-input:
+          choice: border-width-2
 
     boxShadows:
       label: Box shadows
@@ -1139,6 +1226,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         box-shadow-for-view-switcher-when-selected:
           choice: shadow-0
+        box-shadow-for-select-input-when-focused:
+          choice: 'inset 0 0 0 1px'
 
     fontColors:
       label: Font Colors
@@ -1164,6 +1253,24 @@ decisionGroupsByTheme:
           choice: color-primary
         font-color-for-content-notification-icon-when-info:
           choice: color-info
+        font-color-for-clear-input-icon-when-hovered:
+          choice: color-error
+        font-color-for-clear-input-icon:
+          choice: color-neutral-40
+        font-color-for-search-input-icon:
+          choice: color-neutral-60
+        font-color-for-search-input-icon-when-hovered:
+          choice: color-primary
+        font-color-for-select-input-icon:
+          choice: color-neutral-60
+        font-color-for-select-input-when-error:
+          choice: color-error
+        font-color-for-select-input-when-warning:
+          choice: color-warning
+        font-color-for-select-input-icon-when-error:
+          choice: color-error
+        font-color-for-select-input-icon-when-warning:
+          choice: color-warning
 
     fontSizes:
       label: Font Sizes
@@ -1320,6 +1427,12 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-for-view-switcher-icon:
           choice: '0 var(--spacing-20) 0 0'
+        margin-for-group-heading-select-input-options:
+          choice: spacing-20
+        margin-for-select-input-icon:
+          choice: spacing-20
+        margin-left-for-select-input-icon:
+          choice: spacing-20
 
     paddings:
       label: Paddings
@@ -1377,6 +1490,18 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-20) var(--spacing-30) var(--spacing-20) var(--spacing-20)'
         padding-for-content-notification-icon:
           choice: 'var(--spacing-20) 0 var(--spacing-20) var(--spacing-30)'
+        padding-left-for-select-input-options:
+          choice: spacing-30
+        padding-right-for-select-input-options:
+          choice: spacing-30
+        padding-top-for-select-input-options:
+          choice: spacing-20
+        padding-bottom-for-select-input-options:
+          choice: spacing-20
+        padding-for-group-heading-select-input-options:
+          choice: spacing-30
+        padding-for-select-input-menu:
+          choice: 'var(--spacing-10) 0'
 
     shadows:
       label: Shadows
@@ -1404,6 +1529,8 @@ decisionGroupsByTheme:
           choice: 'inset 0 0 0 1px var(--color-warning)'
         shadow-for-tooltip:
           choice: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)'
+        shadow-for-select-input-menu:
+          choice: '0 2px 5px 0px rgba(0, 0, 0, 0.15)'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
