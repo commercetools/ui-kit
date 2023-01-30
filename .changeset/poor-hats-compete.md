@@ -10,3 +10,4 @@ Add new design tokens for the selectInput components:
 -  CreatableSelectInput
 -  SearchSelectInput
 -  SelectInput
+-  MoneyInput
