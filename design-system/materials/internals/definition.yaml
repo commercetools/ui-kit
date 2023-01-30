@@ -735,6 +735,7 @@ decisionGroupsByTheme:
         font-color-for-select-input-icon-when-error:
           choice: color-solid
         font-color-for-select-input-icon-when-warning:
+          choice: color-solid
         font-color-for-money-input-currency-dropdown-indicator:
           choice: color-solid
 
