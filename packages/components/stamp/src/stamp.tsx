@@ -22,8 +22,18 @@ type Props = {
    * If `true`, renders a condensed version of the stamp.
    */
   isCondensed: boolean;
+  /**
+   * Content to render within the stamp.
+   * This property has been **deprecated** in favor of `label`.
+   */
   children?: ReactNode;
+  /**
+   * Icon to render beside (left) the stamp text.
+   */
   icon?: ReactElement;
+  /**
+   * Text to render within the stamp.
+   */
   label?: string;
 };
 
