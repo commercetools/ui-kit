@@ -1,5 +1,17 @@
 # @commercetools-uikit/stamp
 
+## 15.11.1
+
+### Patch Changes
+
+- [#2404](https://github.com/commercetools/ui-kit/pull/2404) [`3aedce114`](https://github.com/commercetools/ui-kit/commit/3aedce11458c182c6f47ba7c34a791001c63c657) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Remove warning which throws an error in local development
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.11.1
+  - @commercetools-uikit/spacings-inline@15.11.1
+  - @commercetools-uikit/text@15.11.1
+  - @commercetools-uikit/utils@15.11.1
+
 ## 15.11.0
 
 ### Patch Changes
