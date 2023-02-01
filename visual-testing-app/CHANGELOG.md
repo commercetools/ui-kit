@@ -1,5 +1,12 @@
 # visual-testing-app
 
+## 11.1.10
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.11.1
+
 ## 11.1.9
 
 ### Patch Changes
