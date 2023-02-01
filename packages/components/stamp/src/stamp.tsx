@@ -4,7 +4,6 @@ import { css } from '@emotion/react';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
-import { warning } from '@commercetools-uikit/utils';
 
 type Tone =
   | 'critical'
@@ -154,11 +153,6 @@ const Stamp = (props: Props) => {
       size: 'medium',
       color: getIconColor(props, overrideTextColor),
     });
-
-  warning(
-    !props.children,
-    'Stamp: The `children` prop has been deprecated. Please use the `label` and `icon` prop to render the content.'
-  );
 
   return (
     <div
