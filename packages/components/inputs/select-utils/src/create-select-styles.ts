@@ -60,11 +60,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
         return designTokens.borderColorForSelectInputWhenReadonly;
       return designTokens.borderColorForInput;
     })(),
-    borderWidth: (() => {
-      if (props.hasWarning || props.hasError)
-        return designTokens.borderWidthForSelectInput;
-      return designTokens.borderWidth1;
-    })(),
+    borderWidth: designTokens.borderWidth1,
     borderRadius: designTokens.borderRadiusForInput,
     minHeight: designTokens.heightForInput,
     cursor: (() => {
@@ -76,7 +72,13 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     transition: `border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard}`,
     outline: 0,
-    boxShadow: 'none',
+    boxShadow: (() => {
+      if (props.hasWarning)
+        return `${designTokens.boxShadowForSelectInput} ${designTokens.borderColorForInputWhenWarning}`;
+      if (props.hasError)
+        return `${designTokens.boxShadowForSelectInput} ${designTokens.borderColorForInputWhenError}`;
+      return;
+    })(),
 
     '&:focus-within': {
       boxShadow: (() => {

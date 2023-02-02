@@ -40,6 +40,11 @@ const getBackgroundColor = (props: TRichTextBodyStylesProps) => {
       background-color: ${designTokens.backgroundColorForInputWhenDisabled};
     `;
   }
+  if (props.isReadOnly) {
+    return css`
+      background-color: ${designTokens.backgroundColorForInputWhenReadonly};
+    `;
+  }
   return css`
     background-color: ${designTokens.backgroundColorForInput};
   `;
@@ -135,6 +140,7 @@ export const Container = styled.div<TRichTextBodyStylesProps>`
 
   &:hover {
     border-color: ${designTokens.borderColorForInputWhenFocused};
+    background-color: ${designTokens.backgroundColorForInputWhenHovered};
   }
   &:focus {
     outline: none;

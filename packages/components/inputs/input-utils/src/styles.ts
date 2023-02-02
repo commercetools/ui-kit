@@ -65,12 +65,17 @@ const getInputBoxShadow = (props: TInputProps) => {
   return designTokens.shadowForInput;
 };
 
+const getInputBackgroundColor = (props: TInputProps) => {
+  if (props.isDisabled || props.disabled)
+    return designTokens.backgroundColorForInputWhenDisabled;
+  if (props.isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
+  return designTokens.backgroundColorForInput;
+};
+
 const getInputStyles = (props: TInputProps) => {
   return css`
     appearance: none;
-    background-color: ${props.isDisabled || props.disabled
-      ? designTokens.backgroundColorForInputWhenDisabled
-      : designTokens.backgroundColorForInput};
+    background-color: ${getInputBackgroundColor(props)};
     border: ${getInputBorderWidth(props)} solid ${getInputBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-sizing: border-box;

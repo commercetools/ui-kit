@@ -27,14 +27,17 @@ const getTextareaStyles = (props: TTranslationInputStylesProps) => {
   return baseStyles;
 };
 
-const getLanguageLabelBackgroundColor = (props: TTranslationInputStylesProps) =>
-  props.isDisabled
-    ? designTokens.backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled
-    : designTokens.backgroundColorForLocalizedMultilineTextInputLabel;
-
+const getLanguageLabelBackgroundColor = (
+  props: TTranslationInputStylesProps
+) => {
+  if (props.isDisabled)
+    return designTokens.backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled;
+  if (props.isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
+  return designTokens.backgroundColorForLocalizedMultilineTextInputLabel;
+};
 const getLanguageLabelBorderColor = (props: TTranslationInputStylesProps) =>
   props.isReadOnly
-    ? designTokens.borderColorForLocalizedMultilineTextInputLabelWhenReadonly
+    ? designTokens.borderColorForInputWhenReadonly
     : designTokens.borderColorForLocalizedMultilineTextInputLabel;
 
 const getLanguageLabelStyles = (props: TTranslationInputStylesProps) => {
@@ -54,7 +57,10 @@ const getLanguageLabelStyles = (props: TTranslationInputStylesProps) => {
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};
-    border-right: 0;
+    border-right: ${props.isReadOnly
+      ? `1px ${designTokens.colorSurface} solid`
+      : `1px ${designTokens.borderColorForInputWhenReadonly} solid`};
+    border-right-style: inset;
     box-shadow: none;
     appearance: none;
   `;

@@ -3,15 +3,20 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 import type { TInputProps } from './money-input';
 
-const getCurrencyLabelStyles = () => css`
+const getCurrencyLabelStyles = (props: TInputProps) => css`
   display: flex;
   color: ${designTokens.fontColorForInputWhenDisabled};
   background-color: ${designTokens.backgroundColorForInputWhenDisabled};
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-  border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
   border-right: 0;
   padding: ${designTokens.paddingForMoneyInputCurrencyDropdown};
+  border: 1px
+    ${props.isReadOnly
+      ? designTokens.borderColorForInputWhenReadonly
+      : designTokens.borderColorForInputWhenDisabled}
+    solid;
+  border-right: 0;
   align-items: center;
   font-size: ${designTokens.fontSizeForInput};
   box-sizing: border-box;

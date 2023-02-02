@@ -660,6 +660,8 @@ decisionGroupsByTheme:
           choice: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)
         box-shadow-for-view-switcher-when-selected:
           choice: shadow-9
+        box-shadow-for-select-input:
+          choice: shadow-0
         box-shadow-for-select-input-when-focused:
           choice: 'inset 0 0 0 2px'
 
@@ -1135,7 +1137,7 @@ decisionGroupsByTheme:
         border-color-for-input-when-hovered:
           choice: color-neutral
         border-color-for-input-when-readonly:
-          choice: color-neutral-90
+          choice: color-neutral-95
         border-color-for-input-when-focused:
           choice: color-primary
         border-color-for-button-as-icon:
@@ -1245,6 +1247,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         box-shadow-for-view-switcher-when-selected:
           choice: shadow-0
+        box-shadow-for-select-input:
+          choice: 'inset 0 0 0 1px'
         box-shadow-for-select-input-when-focused:
           choice: 'inset 0 0 0 1px'
 

@@ -133,6 +133,12 @@ const getInputFontColor = (props: TCalendarBody) => {
   }
   return designTokens.fontColorForInput;
 };
+const getInputBackgroundColor = (props: TCalendarBody) => {
+  if (props.isDisabled) return designTokens.backgroundColorForInputWhenDisabled;
+  if (props.isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
+  return designTokens.backgroundColorForInput;
+};
+
 const getInputContainerStyles = (
   props: TCalendarBody,
   state: TState,
@@ -141,9 +147,7 @@ const getInputContainerStyles = (
   return [
     css`
       appearance: none;
-      background-color: ${props.isDisabled
-        ? designTokens.backgroundColorForInputWhenDisabled
-        : designTokens.backgroundColorForInput};
+      background-color: ${getInputBackgroundColor(props)};
       border: 1px solid ${getInputBorderColor(props, state)};
       border-radius: ${designTokens.borderRadiusForInput};
       box-sizing: border-box;

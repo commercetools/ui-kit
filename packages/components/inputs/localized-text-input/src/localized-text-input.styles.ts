@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-
+import type { TLocalizedInputProps } from './localized-text-input';
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
 // * a readonly-field cannot be changed, but it might be relevant for validation, so error and warning are checked first
@@ -14,7 +14,7 @@ const getLocalizedInputStyles = () => [
   `,
 ];
 
-const getLanguageLabelStyles = (_props: unknown) => {
+const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
   return css`
     display: flex;
     flex-direction: column;
@@ -27,12 +27,18 @@ const getLanguageLabelStyles = (_props: unknown) => {
     background-color: ${designTokens.backgroundColorForInputWhenDisabled};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-    border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
+    border: 1px
+      ${props.isReadOnly
+        ? designTokens.borderColorForInputWhenReadonly
+        : designTokens.borderColorForInputWhenDisabled}
+      solid;
+    border-right: ${props.isReadOnly
+      ? `1px ${designTokens.colorSurface} solid`
+      : `1px ${designTokens.borderColorForInputWhenReadonly} solid`};
     padding: 0 ${designTokens.spacing20};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};
-    border-right: 0;
     box-shadow: none;
     appearance: none;
   `;

@@ -257,6 +257,7 @@ export const themes = {
       '0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)',
     boxShadowForViewSwitcherWhenSelected:
       'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
+    boxShadowForSelectInput: 'none',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 2px',
     fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
@@ -471,7 +472,7 @@ export const themes = {
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
-    borderColorForInputWhenReadonly: 'hsl(0, 0%, 90%)',
+    borderColorForInputWhenReadonly: 'hsl(0, 0%, 95%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForButtonAsIcon: '#ccc',
     borderColorForButtonAsIconAsInfo: '#ccc',
@@ -528,6 +529,7 @@ export const themes = {
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     boxShadowForViewSwitcher: 'none',
     boxShadowForViewSwitcherWhenSelected: 'none',
+    boxShadowForSelectInput: 'inset 0 0 0 1px',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 1px',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
@@ -997,6 +999,7 @@ const designTokens = {
     'var(--box-shadow-for-view-switcher, 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12))',
   boxShadowForViewSwitcherWhenSelected:
     'var(--box-shadow-for-view-switcher-when-selected, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
+  boxShadowForSelectInput: 'var(--box-shadow-for-select-input, none)',
   boxShadowForSelectInputWhenFocused:
     'var(--box-shadow-for-select-input-when-focused, inset 0 0 0 2px)',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',

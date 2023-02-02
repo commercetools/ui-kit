@@ -49,6 +49,11 @@ const getClockIconContainerFontColor = (props: TTimeInputProps) => {
   }
   return designTokens.fontColorForInput;
 };
+const getClockIconContainerBackgroundColor = (props: TTimeInputProps) => {
+  if (props.isDisabled) return designTokens.backgroundColorForInputWhenDisabled;
+  if (props.isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
+  return 'none';
+};
 const getClockIconContainerStyles = (
   props: TTimeInputProps,
   isNewTheme: boolean
@@ -58,9 +63,7 @@ const getClockIconContainerStyles = (
       align-items: center;
       box-sizing: border-box;
       background: none;
-      background-color: ${props.isDisabled
-        ? designTokens.backgroundColorForInputWhenDisabled
-        : 'none'};
+      background-color: ${getClockIconContainerBackgroundColor(props)};
       border: 0;
       border-top-right-radius: ${designTokens.borderRadiusForInput};
       border-bottom-right-radius: ${designTokens.borderRadiusForInput};
@@ -73,6 +76,9 @@ const getClockIconContainerStyles = (
       outline: 0;
       transition: color ${designTokens.transitionStandard},
         border-color ${designTokens.transitionStandard};
+      border-left: ${props.isReadOnly
+        ? `1px ${designTokens.colorSurface} solid`
+        : `1px ${designTokens.borderColorForInputWhenReadonly} solid`};
       &:hover:not(:disabled):not(:read-only),
       &:focus {
         border-color: ${designTokens.borderColorForInputWhenFocused};
@@ -109,6 +115,11 @@ const getInputContainerFontColor = (props: TTimeInputProps) => {
   }
   return designTokens.fontColorForInput;
 };
+const getInputContainerBackgroundColor = (props: TTimeInputProps) => {
+  if (props.isDisabled) return designTokens.backgroundColorForInputWhenDisabled;
+  if (props.isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
+  return designTokens.backgroundColorForInput;
+};
 
 // This styled component is only useful because it's referenced in the styles below
 const StyledClockIconContainer = styled.label``;
@@ -119,9 +130,7 @@ const getInputContainerStyles = (
   return [
     css`
       appearance: none;
-      background-color: ${props.isDisabled
-        ? designTokens.backgroundColorForInputWhenDisabled
-        : designTokens.backgroundColorForInput};
+      background-color: ${getInputContainerBackgroundColor(props)};
       border: 1px solid ${getInputContainerBorderColor(props)};
       border-radius: ${designTokens.borderRadiusForInput};
       box-sizing: border-box;

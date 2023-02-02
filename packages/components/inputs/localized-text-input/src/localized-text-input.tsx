@@ -126,7 +126,7 @@ type TLocalizedTextInputProps = {
   errors?: Record<string, string>;
 };
 
-type TLocalizedInputProps = {
+export type TLocalizedInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`. You can use the static `LocalizedTextInput.getId(idPrefix, language)` to create this id string, e.g. for labels.
    */
