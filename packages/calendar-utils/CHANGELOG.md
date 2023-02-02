@@ -1,5 +1,23 @@
 # @commercetools-uikit/calendar-utils
 
+## 15.11.2
+
+### Patch Changes
+
+- [#2408](https://github.com/commercetools/ui-kit/pull/2408) [`279792d46`](https://github.com/commercetools/ui-kit/commit/279792d461eacaba1901e9065dff36995f24bd9c) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix input element CSS styling issues when hovered or focused
+
+- Updated dependencies []:
+  - @commercetools-uikit/input-utils@15.11.2
+  - @commercetools-uikit/design-system@15.11.2
+  - @commercetools-uikit/accessible-button@15.11.2
+  - @commercetools-uikit/secondary-icon-button@15.11.2
+  - @commercetools-uikit/icons@15.11.2
+  - @commercetools-uikit/spacings-inline@15.11.2
+  - @commercetools-uikit/text@15.11.2
+  - @commercetools-uikit/tooltip@15.11.2
+  - @commercetools-uikit/hooks@15.11.2
+  - @commercetools-uikit/utils@15.11.2
+
 ## 15.11.1
 
 ### Patch Changes
