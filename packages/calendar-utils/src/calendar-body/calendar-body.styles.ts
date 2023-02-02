@@ -167,7 +167,7 @@ const getInputContainerStyles = (
         box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
           ${designTokens.borderColorForInputWhenFocused};
         &:hover {
-          background-color: unset;
+          background-color: ${designTokens.colorSurface};
         }
       }
       &:focus {
@@ -207,13 +207,10 @@ const getDateTimeInputStyles = (props: TCalendarBody) => {
     getInputStyles(props),
     css`
       border: none;
-      background: none;
+      background: none !important;
       &,
       &:focus {
         box-shadow: none;
-      }
-      &:hover:not(:focus) {
-        background-color: unset !important;
       }
     `,
   ];

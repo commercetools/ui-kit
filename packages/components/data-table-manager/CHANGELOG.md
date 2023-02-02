@@ -1,5 +1,80 @@
 # @commercetools-uikit/data-table-manager
 
+## 15.11.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/radio-input@15.11.2
+  - @commercetools-uikit/design-system@15.11.2
+  - @commercetools-uikit/accessible-hidden@15.11.2
+  - @commercetools-uikit/accessible-button@15.11.2
+  - @commercetools-uikit/primary-button@15.11.2
+  - @commercetools-uikit/secondary-button@15.11.2
+  - @commercetools-uikit/secondary-icon-button@15.11.2
+  - @commercetools-uikit/card@15.11.2
+  - @commercetools-uikit/collapsible-motion@15.11.2
+  - @commercetools-uikit/field-label@15.11.2
+  - @commercetools-uikit/grid@15.11.2
+  - @commercetools-uikit/icons@15.11.2
+  - @commercetools-uikit/async-select-input@15.11.2
+  - @commercetools-uikit/select-input@15.11.2
+  - @commercetools-uikit/tag@15.11.2
+  - @commercetools-uikit/text@15.11.2
+  - @commercetools-uikit/hooks@15.11.2
+  - @commercetools-uikit/utils@15.11.2
+  - @commercetools-uikit/spacings@15.11.2
+
+## 15.11.1
+
+### Patch Changes
+
+- Updated dependencies [[`59a0ba7e1`](https://github.com/commercetools/ui-kit/commit/59a0ba7e128484acfa4d2f7f43791e81274670fb)]:
+  - @commercetools-uikit/icons@15.11.1
+  - @commercetools-uikit/field-label@15.11.1
+  - @commercetools-uikit/async-select-input@15.11.1
+  - @commercetools-uikit/radio-input@15.11.1
+  - @commercetools-uikit/select-input@15.11.1
+  - @commercetools-uikit/tag@15.11.1
+  - @commercetools-uikit/design-system@15.11.1
+  - @commercetools-uikit/accessible-hidden@15.11.1
+  - @commercetools-uikit/accessible-button@15.11.1
+  - @commercetools-uikit/primary-button@15.11.1
+  - @commercetools-uikit/secondary-button@15.11.1
+  - @commercetools-uikit/secondary-icon-button@15.11.1
+  - @commercetools-uikit/card@15.11.1
+  - @commercetools-uikit/collapsible-motion@15.11.1
+  - @commercetools-uikit/grid@15.11.1
+  - @commercetools-uikit/text@15.11.1
+  - @commercetools-uikit/hooks@15.11.1
+  - @commercetools-uikit/utils@15.11.1
+  - @commercetools-uikit/spacings@15.11.1
+
+## 15.11.0
+
+### Patch Changes
+
+- Updated dependencies [[`5a4670f37`](https://github.com/commercetools/ui-kit/commit/5a4670f3777a77fa43ca2067f61e5063f6eb34fa), [`a527b20f3`](https://github.com/commercetools/ui-kit/commit/a527b20f3fbbf2aafd4f4c36d24f901ef53763d3), [`6fe1cc47f`](https://github.com/commercetools/ui-kit/commit/6fe1cc47f5c45389d9f497267bc860223c81589b)]:
+  - @commercetools-uikit/design-system@15.11.0
+  - @commercetools-uikit/accessible-button@15.11.0
+  - @commercetools-uikit/primary-button@15.11.0
+  - @commercetools-uikit/secondary-button@15.11.0
+  - @commercetools-uikit/secondary-icon-button@15.11.0
+  - @commercetools-uikit/card@15.11.0
+  - @commercetools-uikit/field-label@15.11.0
+  - @commercetools-uikit/icons@15.11.0
+  - @commercetools-uikit/async-select-input@15.11.0
+  - @commercetools-uikit/radio-input@15.11.0
+  - @commercetools-uikit/select-input@15.11.0
+  - @commercetools-uikit/tag@15.11.0
+  - @commercetools-uikit/text@15.11.0
+  - @commercetools-uikit/spacings@15.11.0
+  - @commercetools-uikit/accessible-hidden@15.11.0
+  - @commercetools-uikit/collapsible-motion@15.11.0
+  - @commercetools-uikit/grid@15.11.0
+  - @commercetools-uikit/hooks@15.11.0
+  - @commercetools-uikit/utils@15.11.0
+
 ## 15.10.0
 
 ### Patch Changes

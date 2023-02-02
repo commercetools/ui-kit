@@ -1,5 +1,62 @@
 # @commercetools-uikit/date-range-input
 
+## 15.11.2
+
+### Patch Changes
+
+- Updated dependencies [[`279792d46`](https://github.com/commercetools/ui-kit/commit/279792d461eacaba1901e9065dff36995f24bd9c)]:
+  - @commercetools-uikit/calendar-utils@15.11.2
+  - @commercetools-uikit/design-system@15.11.2
+  - @commercetools-uikit/calendar-time-utils@15.11.2
+  - @commercetools-uikit/accessible-button@15.11.2
+  - @commercetools-uikit/secondary-icon-button@15.11.2
+  - @commercetools-uikit/constraints@15.11.2
+  - @commercetools-uikit/icons@15.11.2
+  - @commercetools-uikit/select-utils@15.11.2
+  - @commercetools-uikit/spacings-inline@15.11.2
+  - @commercetools-uikit/text@15.11.2
+  - @commercetools-uikit/tooltip@15.11.2
+  - @commercetools-uikit/hooks@15.11.2
+  - @commercetools-uikit/utils@15.11.2
+
+## 15.11.1
+
+### Patch Changes
+
+- Updated dependencies [[`59a0ba7e1`](https://github.com/commercetools/ui-kit/commit/59a0ba7e128484acfa4d2f7f43791e81274670fb)]:
+  - @commercetools-uikit/icons@15.11.1
+  - @commercetools-uikit/calendar-utils@15.11.1
+  - @commercetools-uikit/select-utils@15.11.1
+  - @commercetools-uikit/design-system@15.11.1
+  - @commercetools-uikit/calendar-time-utils@15.11.1
+  - @commercetools-uikit/accessible-button@15.11.1
+  - @commercetools-uikit/secondary-icon-button@15.11.1
+  - @commercetools-uikit/constraints@15.11.1
+  - @commercetools-uikit/spacings-inline@15.11.1
+  - @commercetools-uikit/text@15.11.1
+  - @commercetools-uikit/tooltip@15.11.1
+  - @commercetools-uikit/hooks@15.11.1
+  - @commercetools-uikit/utils@15.11.1
+
+## 15.11.0
+
+### Patch Changes
+
+- Updated dependencies [[`5a4670f37`](https://github.com/commercetools/ui-kit/commit/5a4670f3777a77fa43ca2067f61e5063f6eb34fa), [`a527b20f3`](https://github.com/commercetools/ui-kit/commit/a527b20f3fbbf2aafd4f4c36d24f901ef53763d3), [`6fe1cc47f`](https://github.com/commercetools/ui-kit/commit/6fe1cc47f5c45389d9f497267bc860223c81589b)]:
+  - @commercetools-uikit/design-system@15.11.0
+  - @commercetools-uikit/select-utils@15.11.0
+  - @commercetools-uikit/calendar-utils@15.11.0
+  - @commercetools-uikit/accessible-button@15.11.0
+  - @commercetools-uikit/secondary-icon-button@15.11.0
+  - @commercetools-uikit/constraints@15.11.0
+  - @commercetools-uikit/icons@15.11.0
+  - @commercetools-uikit/spacings-inline@15.11.0
+  - @commercetools-uikit/text@15.11.0
+  - @commercetools-uikit/tooltip@15.11.0
+  - @commercetools-uikit/calendar-time-utils@15.11.0
+  - @commercetools-uikit/hooks@15.11.0
+  - @commercetools-uikit/utils@15.11.0
+
 ## 15.10.0
 
 ### Patch Changes
