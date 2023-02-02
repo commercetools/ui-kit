@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/i18n",
   "description": "All translation messages from the UI-Kit components.",
-  "version": "15.11.1",
+  "version": "15.11.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

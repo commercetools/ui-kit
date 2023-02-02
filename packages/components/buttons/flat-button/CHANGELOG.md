@@ -1,5 +1,18 @@
 # @commercetools-uikit/flat-button
 
+## 15.11.2
+
+### Patch Changes
+
+- [#2405](https://github.com/commercetools/ui-kit/pull/2405) [`3d5fcc5a6`](https://github.com/commercetools/ui-kit/commit/3d5fcc5a6d23165497c55e8de0fe17bc23940836) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - README updated.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.11.2
+  - @commercetools-uikit/accessible-button@15.11.2
+  - @commercetools-uikit/spacings-inline@15.11.2
+  - @commercetools-uikit/text@15.11.2
+  - @commercetools-uikit/utils@15.11.2
+
 ## 15.11.1
 
 ### Patch Changes

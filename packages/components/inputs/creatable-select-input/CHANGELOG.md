@@ -1,5 +1,18 @@
 # @commercetools-uikit/creatable-select-input
 
+## 15.11.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.11.2
+  - @commercetools-uikit/constraints@15.11.2
+  - @commercetools-uikit/icons@15.11.2
+  - @commercetools-uikit/select-utils@15.11.2
+  - @commercetools-uikit/text@15.11.2
+  - @commercetools-uikit/utils@15.11.2
+  - @commercetools-uikit/spacings@15.11.2
+
 ## 15.11.1
 
 ### Patch Changes
