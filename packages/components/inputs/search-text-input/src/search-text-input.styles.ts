@@ -74,6 +74,26 @@ const getSearchTextInputButtonStyles = (props: TInputProps) => css`
     box-shadow ${designTokens.transitionStandard};
 `;
 
+const getClearIconButtonStyles = (props: TInputProps) => [
+  getSearchTextInputButtonStyles(props),
+  css`
+    fill: ${designTokens.fontColorForClearInputIcon};
+    &:hover {
+      fill: ${designTokens.fontColorForClearInputIconWhenHovered};
+    }
+  `,
+];
+
+const getSearchIconButtonStyles = (props: TInputProps) => [
+  getSearchTextInputButtonStyles(props),
+  css`
+    fill: ${designTokens.fontColorForSearchInputIcon};
+    &:hover {
+      fill: ${designTokens.fontColorForSearchInputIconWhenHovered};
+    }
+  `,
+];
+
 const getSearchTextInputContainerStyles = (props: TInputProps) => [
   css`
     display: flex;
@@ -107,6 +127,7 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
 
 export {
   getSearchTextInputStyles,
-  getSearchTextInputButtonStyles,
   getSearchTextInputContainerStyles,
+  getClearIconButtonStyles,
+  getSearchIconButtonStyles,
 };

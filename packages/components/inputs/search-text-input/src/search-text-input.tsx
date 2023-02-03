@@ -3,11 +3,14 @@ import {
   ChangeEventHandler,
   MouseEvent,
   KeyboardEvent,
+  useState,
+  ChangeEvent,
 } from 'react';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
-import { SearchIcon } from '@commercetools-uikit/icons';
+import { SearchIcon, CloseIcon } from '@commercetools-uikit/icons';
 import {
-  getSearchTextInputButtonStyles,
+  getClearIconButtonStyles,
+  getSearchIconButtonStyles,
   getSearchTextInputContainerStyles,
   getSearchTextInputStyles,
 } from './search-text-input.styles';
@@ -54,11 +57,13 @@ export type SearchTextInputProps = {
    */
   onFocus?: FocusEventHandler<HTMLInputElement>;
   /**
-   * Handler when the button is clicked.
+   * Handler when the search button is clicked.
    */
-  onClick?: (
-    event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
-  ) => void;
+  onSubmit?: (searchValue: string) => void;
+  /**
+   * Handler when the clear button is clicked.
+   */
+  onReset?: () => void;
   /**
    * Focus the input on initial render
    */
@@ -103,14 +108,39 @@ export type SearchTextInputProps = {
 };
 
 const SearchTextInput = (props: SearchTextInputProps) => {
+  const [searchValue, setSearchValue] = useState(props.value || '');
+
+  const handleClear = () => {
+    setSearchValue('');
+    if (props.onReset) {
+      props.onReset();
+    }
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+    if (props.onChange) {
+      props.onChange(event);
+    }
+  };
+
+  const handleSubmit = (
+    event: KeyboardEvent<HTMLButtonElement> | MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+    if (props.onSubmit) {
+      props.onSubmit(searchValue);
+    }
+  };
+
   return (
     <div css={getSearchTextInputContainerStyles(props)}>
       <input
         id={props.id}
         name={props.name}
         type="text"
-        value={props.value}
-        onChange={props.onChange}
+        value={searchValue}
+        onChange={handleChange}
         onBlur={props.onBlur}
         onFocus={props.onFocus}
         disabled={props.isDisabled}
@@ -124,11 +154,19 @@ const SearchTextInput = (props: SearchTextInputProps) => {
         aria-errormessage={props['aria-errormessage']}
         css={getSearchTextInputStyles(props)}
       />
+      {searchValue && (
+        <SecondaryIconButton
+          icon={<CloseIcon size="medium" />}
+          label={'clear-button'}
+          onClick={handleClear}
+          css={getClearIconButtonStyles(props)}
+        />
+      )}
       <SecondaryIconButton
         icon={<SearchIcon />}
         label={'search-button'}
-        onClick={props.onClick}
-        css={getSearchTextInputButtonStyles(props)}
+        onClick={handleSubmit}
+        css={getSearchIconButtonStyles(props)}
       />
     </div>
   );
