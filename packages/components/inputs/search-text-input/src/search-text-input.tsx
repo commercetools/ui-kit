@@ -1,13 +1,15 @@
 import {
-  FocusEventHandler,
-  ChangeEventHandler,
-  MouseEvent,
-  KeyboardEvent,
+  type FocusEventHandler,
+  type ChangeEventHandler,
+  type MouseEvent,
+  type KeyboardEvent,
+  type ChangeEvent,
   useState,
-  ChangeEvent,
 } from 'react';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import Constraints from '@commercetools-uikit/constraints';
 import { SearchIcon, CloseIcon } from '@commercetools-uikit/icons';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   getClearIconButtonStyles,
   getSearchIconButtonStyles,
@@ -33,11 +35,7 @@ export type SearchTextInputProps = {
    */
   'aria-errormessage'?: string;
   /**
-   * `className` forwarded to the underlying `<input />`.
-   */
-  className?: string;
-  /**
-   * Used as HTML name of the input component. property
+   * Used as HTML name of the input component. property.
    */
   name?: string;
   /**
@@ -59,11 +57,11 @@ export type SearchTextInputProps = {
   /**
    * Handler when the search button is clicked.
    */
-  onSubmit?: (searchValue: string) => void;
+  onSubmit: (searchValue: string) => void;
   /**
    * Handler when the clear button is clicked.
    */
-  onReset?: () => void;
+  onReset: () => void;
   /**
    * Focus the input on initial render
    */
@@ -107,7 +105,18 @@ export type SearchTextInputProps = {
     | 'auto';
 };
 
+const defaultProps: Pick<SearchTextInputProps, 'horizontalConstraint'> = {
+  horizontalConstraint: 'scale',
+};
+
 const SearchTextInput = (props: SearchTextInputProps) => {
+  if (!props.isReadOnly) {
+    warning(
+      typeof props.onChange === 'function',
+      'TextInput: `onChange` is required when is not read only.'
+    );
+  }
+
   const [searchValue, setSearchValue] = useState(props.value || '');
 
   const handleClear = () => {
@@ -134,42 +143,50 @@ const SearchTextInput = (props: SearchTextInputProps) => {
   };
 
   return (
-    <div css={getSearchTextInputContainerStyles(props)}>
-      <input
-        id={props.id}
-        name={props.name}
-        type="text"
-        value={searchValue}
-        onChange={handleChange}
-        onBlur={props.onBlur}
-        onFocus={props.onFocus}
-        disabled={props.isDisabled}
-        placeholder={props.placeholder}
-        readOnly={props.isReadOnly}
-        autoFocus={props.isAutofocussed}
-        autoComplete={props.autoComplete}
-        aria-readonly={props.isReadOnly}
-        contentEditable={!props.isReadOnly}
-        aria-invalid={props['aria-invalid']}
-        aria-errormessage={props['aria-errormessage']}
-        css={getSearchTextInputStyles(props)}
-      />
-      {searchValue && (
-        <SecondaryIconButton
-          icon={<CloseIcon size="medium" />}
-          label={'clear-button'}
-          onClick={handleClear}
-          css={getClearIconButtonStyles(props)}
+    <Constraints.Horizontal max={props.horizontalConstraint}>
+      <div css={getSearchTextInputContainerStyles(props)}>
+        <input
+          id={props.id}
+          name={props.name}
+          type="text"
+          value={searchValue}
+          onChange={handleChange}
+          onBlur={props.onBlur}
+          onFocus={props.onFocus}
+          disabled={props.isDisabled}
+          placeholder={props.placeholder}
+          readOnly={props.isReadOnly}
+          autoFocus={props.isAutofocussed}
+          autoComplete={props.autoComplete}
+          aria-readonly={props.isReadOnly}
+          contentEditable={!props.isReadOnly}
+          aria-invalid={props['aria-invalid']}
+          aria-errormessage={props['aria-errormessage']}
+          css={getSearchTextInputStyles(props)}
+          {...filterDataAttributes(props)}
         />
-      )}
-      <SecondaryIconButton
-        icon={<SearchIcon />}
-        label={'search-button'}
-        onClick={handleSubmit}
-        css={getSearchIconButtonStyles(props)}
-      />
-    </div>
+        {searchValue && (
+          <SecondaryIconButton
+            icon={<CloseIcon size="medium" />}
+            label={'clear-button'}
+            onClick={handleClear}
+            css={getClearIconButtonStyles(props)}
+          />
+        )}
+        <SecondaryIconButton
+          icon={<SearchIcon />}
+          label={'search-button'}
+          onClick={handleSubmit}
+          css={getSearchIconButtonStyles(props)}
+        />
+      </div>
+    </Constraints.Horizontal>
   );
 };
+
+SearchTextInput.displayName = 'SearchTextInput';
+SearchTextInput.defaultProps = defaultProps;
+SearchTextInput.isEmpty = (value: SearchTextInputProps['value']) =>
+  !value || value.trim().length === 0;
 
 export default SearchTextInput;
