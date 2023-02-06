@@ -385,6 +385,8 @@ componentGroups:
     description: 'Money input currency dropdown elements'
   money-input-currency-dropdown-indicator:
     description: 'Money Input Dropdown indicator elements'
+  money-input-precision-badge:
+    description: 'Money input precision badge elements'
 
 decisionGroupsByTheme:
   default:
@@ -917,6 +919,8 @@ decisionGroupsByTheme:
           choice: spacing-10
         margin-left-for-select-input-icon:
           choice: 'inherit'
+        margin-right-for-money-input-precision-badge:
+          choice: spacing-10
 
     paddings:
       label: Paddings
@@ -1457,6 +1461,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-left-for-select-input-icon:
           choice: spacing-20
+        margin-right-for-money-input-precision-badge:
+          choice: spacing-30
 
     paddings:
       label: Paddings

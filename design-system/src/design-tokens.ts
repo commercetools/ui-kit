@@ -344,6 +344,7 @@ export const themes = {
     marginForGroupHeadingSelectInputOptions: '4px',
     marginForSelectInputIcon: '4px',
     marginLeftForSelectInputIcon: 'inherit',
+    marginRightForMoneyInputPrecisionBadge: '4px',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -600,6 +601,7 @@ export const themes = {
     marginForGroupHeadingSelectInputOptions: '8px',
     marginForSelectInputIcon: '8px',
     marginLeftForSelectInputIcon: '8px',
+    marginRightForMoneyInputPrecisionBadge: '16px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -1118,6 +1120,8 @@ const designTokens = {
   marginForSelectInputIcon: 'var(--margin-for-select-input-icon, 4px)',
   marginLeftForSelectInputIcon:
     'var(--margin-left-for-select-input-icon, inherit)',
+  marginRightForMoneyInputPrecisionBadge:
+    'var(--margin-right-for-money-input-precision-badge, 4px)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:

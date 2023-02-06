@@ -368,6 +368,7 @@
   --margin-for-group-heading-select-input-options: 4px;
   --margin-for-select-input-icon: 4px;
   --margin-left-for-select-input-icon: inherit;
+  --margin-right-for-money-input-precision-badge: 4px;
   --padding-for-stamp: var(--spacing-10) var(--spacing-20);
   --padding-for-stamp-as-condensed: 1px var(--spacing-10);
   --padding-for-tag: 5px var(--spacing-20);

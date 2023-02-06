@@ -79,7 +79,11 @@ const SingleValue = ({ id, ...props }: TSingleValue) => (
 SingleValue.displayName = 'SingleValue';
 
 type TCreateCurrencySelectStyles = (
-  input: TInputProps & { isNewTheme: boolean }
+  input: TInputProps & {
+    isNewTheme: boolean;
+    amountHasFocus?: boolean;
+    currencyHasFocus?: boolean;
+  }
 ) => void;
 
 export type TInputProps = {
@@ -87,7 +91,6 @@ export type TInputProps = {
   hasError?: boolean;
   hasWarning?: boolean;
   isReadOnly?: boolean;
-  hasFocus?: boolean;
   menuPortalZIndex?: number;
   /** @deprecated */
   theme?: Theme;
@@ -103,9 +106,10 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
   hasError,
   isDisabled,
   isReadOnly,
-  hasFocus,
   menuPortalZIndex,
   isNewTheme,
+  amountHasFocus,
+  currencyHasFocus,
 }) => {
   const selectStyles = createSelectStyles({
     hasWarning,
@@ -128,8 +132,12 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
           return `${designTokens.borderColorForInputWhenDisabled} !important`;
         if (hasError) return designTokens.borderColorForInputWhenError;
         if (hasWarning) return designTokens.borderColorForInputWhenWarning;
-        if (hasFocus && !isNewTheme)
+        if (amountHasFocus && !isNewTheme) {
           return designTokens.borderColorForInputWhenFocused;
+        }
+        if (currencyHasFocus) {
+          return designTokens.borderColorForInputWhenFocused;
+        }
         if (isReadOnly)
           return `${designTokens.borderColorForInputWhenReadonly} !important`;
         return designTokens.borderColorForInput;
@@ -698,9 +706,10 @@ const MoneyInput = (props: TMoneyInputProps) => {
     hasError: props.hasError,
     isDisabled: props.isDisabled,
     isReadOnly: props.isReadOnly,
-    hasFocus,
     menuPortalZIndex: props.menuPortalZIndex,
     isNewTheme,
+    amountHasFocus,
+    currencyHasFocus,
   });
   const options = props.currencies.map((currencyCode) => ({
     label: currencyCode,

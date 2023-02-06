@@ -47,7 +47,7 @@ const getHighPrecisionWrapperStyles = ({
   position: absolute;
   top: 0;
   right: 0;
-  margin-right: ${designTokens.spacing10};
+  margin-right: ${designTokens.marginRightForMoneyInputPrecisionBadge};
   height: 100%;
   display: flex;
   align-items: center;
