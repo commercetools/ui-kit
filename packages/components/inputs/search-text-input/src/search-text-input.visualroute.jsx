@@ -1,4 +1,4 @@
-import { TextInput } from '@commercetools-frontend/ui-kit';
+import { SearchTextInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
 const value = 'hello world how are you?';
@@ -8,80 +8,104 @@ export const routePath = '/search-text-input';
 export const component = () => (
   <Suite>
     <Spec label="minimal">
-      <TextInput value={value} onChange={() => {}} horizontalConstraint={7} />
+      <SearchTextInput
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
+      />
     </Spec>
     <Spec label="when disabled">
-      <TextInput
+      <SearchTextInput
         isDisabled={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
       />
     </Spec>
     <Spec label="when read-only">
-      <TextInput
+      <SearchTextInput
         isReadOnly={true}
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
       />
     </Spec>
     <Spec label="when placeholder is visible">
-      <TextInput
+      <SearchTextInput
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
         horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
       />
     </Spec>
     <Spec label="when placeholder is visible and input is disabled">
-      <TextInput
+      <SearchTextInput
         isDisabled={true}
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
         horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
       />
     </Spec>
     <Spec label="with error">
-      <TextInput
+      <SearchTextInput
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
         hasError={true}
       />
     </Spec>
     <Spec label="with warning">
-      <TextInput
+      <SearchTextInput
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
         hasWarning={true}
       />
     </Spec>
     <Spec label="with error and warning">
-      <TextInput
+      <SearchTextInput
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
         hasError={true}
         hasWarning={true}
       />
     </Spec>
     <Spec label="when disabled with error">
-      <TextInput
+      <SearchTextInput
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
         isDisabled={true}
         hasError={true}
       />
     </Spec>
     <Spec label="when disabled with warning">
-      <TextInput
+      <SearchTextInput
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
         isDisabled={true}
         hasWarning={true}
       />

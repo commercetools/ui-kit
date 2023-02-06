@@ -1,6 +1,6 @@
 import percySnapshot from '@percy/puppeteer';
 
-describe('TextInput', () => {
+describe('SearchTextInput', () => {
   beforeAll(async () => {
     await page.goto(`${globalThis.HOST}/search-text-input`);
   });
