@@ -4464,7 +4464,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/search-text-input@workspace:packages/components/inputs/search-text-input":
+"@commercetools-uikit/search-text-input@15.11.0, @commercetools-uikit/search-text-input@workspace:packages/components/inputs/search-text-input":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/search-text-input@workspace:packages/components/inputs/search-text-input"
   dependencies:
@@ -4476,6 +4476,7 @@ __metadata:
     "@commercetools-uikit/input-utils": 15.11.0
     "@commercetools-uikit/secondary-icon-button": 15.11.0
     "@commercetools-uikit/text-input": 15.11.0
+    "@commercetools-uikit/utils": 15.11.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     prop-types: 15.8.1

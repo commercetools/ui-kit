@@ -17,7 +17,7 @@ import {
   getSearchTextInputStyles,
 } from './search-text-input.styles';
 
-export type SearchTextInputProps = {
+export type TSearchTextInputProps = {
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
    */
@@ -105,11 +105,11 @@ export type SearchTextInputProps = {
     | 'auto';
 };
 
-const defaultProps: Pick<SearchTextInputProps, 'horizontalConstraint'> = {
+const defaultProps: Pick<TSearchTextInputProps, 'horizontalConstraint'> = {
   horizontalConstraint: 'scale',
 };
 
-const SearchTextInput = (props: SearchTextInputProps) => {
+const SearchTextInput = (props: TSearchTextInputProps) => {
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
@@ -186,7 +186,7 @@ const SearchTextInput = (props: SearchTextInputProps) => {
 
 SearchTextInput.displayName = 'SearchTextInput';
 SearchTextInput.defaultProps = defaultProps;
-SearchTextInput.isEmpty = (value: SearchTextInputProps['value']) =>
+SearchTextInput.isEmpty = (value: TSearchTextInputProps['value']) =>
   !value || value.trim().length === 0;
 
 export default SearchTextInput;
