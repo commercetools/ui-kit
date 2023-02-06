@@ -128,7 +128,8 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
           return `${designTokens.borderColorForInputWhenDisabled} !important`;
         if (hasError) return designTokens.borderColorForInputWhenError;
         if (hasWarning) return designTokens.borderColorForInputWhenWarning;
-        if (hasFocus) return designTokens.borderColorForInputWhenFocused;
+        if (hasFocus && !isNewTheme)
+          return designTokens.borderColorForInputWhenFocused;
         if (isReadOnly)
           return `${designTokens.borderColorForInputWhenReadonly} !important`;
         return designTokens.borderColorForInput;
@@ -830,6 +831,11 @@ const MoneyInput = (props: TMoneyInputProps) => {
                 isHighPrecision &&
                 css`
                   padding-right: ${designTokens.spacing40};
+                `,
+              currencyHasFocus &&
+                isNewTheme &&
+                css`
+                  border-left-color: ${designTokens.borderColorForInputWhenFocused};
                 `,
             ]}
             placeholder={props.placeholder}
