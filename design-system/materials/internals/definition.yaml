@@ -769,7 +769,7 @@ decisionGroupsByTheme:
         width-for-avatar-as-medium:
           choice: '48px'
 
-    minwidths:
+    minWidths:
       label: Width
       prefix: width
       decisions:
@@ -1438,7 +1438,7 @@ decisionGroupsByTheme:
         width-for-avatar-as-medium:
           choice: '40px'
 
-    minwidths:
+    minWidths:
       label: Width
       prefix: width
       decisions:
@@ -1462,7 +1462,7 @@ decisionGroupsByTheme:
         margin-left-for-select-input-icon:
           choice: spacing-20
         margin-right-for-money-input-precision-badge:
-          choice: spacing-30
+          choice: '12px'
 
     paddings:
       label: Paddings

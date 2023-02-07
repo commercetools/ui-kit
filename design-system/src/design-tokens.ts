@@ -601,7 +601,7 @@ export const themes = {
     marginForGroupHeadingSelectInputOptions: '8px',
     marginForSelectInputIcon: '8px',
     marginLeftForSelectInputIcon: '8px',
-    marginRightForMoneyInputPrecisionBadge: '16px',
+    marginRightForMoneyInputPrecisionBadge: '12px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
