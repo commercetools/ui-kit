@@ -381,6 +381,12 @@ componentGroups:
     description: 'select input options element'
   group-heading-select-input-options:
     description: 'group heading select input options element'
+  money-input-currency-dropdown:
+    description: 'Money input currency dropdown elements'
+  money-input-currency-dropdown-indicator:
+    description: 'Money Input Dropdown indicator elements'
+  money-input-precision-badge:
+    description: 'Money input precision badge elements'
 
 decisionGroupsByTheme:
   default:
@@ -732,6 +738,8 @@ decisionGroupsByTheme:
           choice: color-solid
         font-color-for-select-input-icon-when-warning:
           choice: color-solid
+        font-color-for-money-input-currency-dropdown-indicator:
+          choice: color-solid
 
     heights:
       label: Height
@@ -760,6 +768,13 @@ decisionGroupsByTheme:
       decisions:
         width-for-avatar-as-medium:
           choice: '48px'
+
+    minWidths:
+      label: Min width
+      prefix: min-width
+      decisions:
+        min-width-for-money-input-currency-dropdown:
+          choice: '72px'
 
     placeholderFontColors:
       label: Placeholder font colors
@@ -904,6 +919,8 @@ decisionGroupsByTheme:
           choice: spacing-10
         margin-left-for-select-input-icon:
           choice: 'inherit'
+        margin-right-for-money-input-precision-badge:
+          choice: spacing-10
 
     paddings:
       label: Paddings
@@ -973,6 +990,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         padding-for-select-input-menu:
           choice: 'inherit'
+        padding-for-money-input-currency-dropdown:
+          choice: '0 var(--spacing-20)'
 
     shadows:
       label: Shadows
@@ -1271,6 +1290,8 @@ decisionGroupsByTheme:
           choice: color-error
         font-color-for-select-input-icon-when-warning:
           choice: color-warning
+        font-color-for-money-input-currency-dropdown-indicator:
+          choice: color-neutral-40
 
     fontSizes:
       label: Font Sizes
@@ -1417,6 +1438,13 @@ decisionGroupsByTheme:
         width-for-avatar-as-medium:
           choice: '40px'
 
+    minWidths:
+      label: Min width
+      prefix: min-width
+      decisions:
+        min-width-for-money-input-currency-dropdown:
+          choice: '80px'
+
     margins:
       label: Margins
       prefix: margin
@@ -1433,6 +1461,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-left-for-select-input-icon:
           choice: spacing-20
+        margin-right-for-money-input-precision-badge:
+          choice: '12px'
 
     paddings:
       label: Paddings
@@ -1502,6 +1532,8 @@ decisionGroupsByTheme:
           choice: spacing-30
         padding-for-select-input-menu:
           choice: 'var(--spacing-10) 0'
+        padding-for-money-input-currency-dropdown:
+          choice: '0 12px'
 
     shadows:
       label: Shadows

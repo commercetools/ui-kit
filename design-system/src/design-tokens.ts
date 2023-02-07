@@ -289,6 +289,7 @@ export const themes = {
     fontColorForSelectInputWhenWarning: '#1a1a1a',
     fontColorForSelectInputIconWhenError: '#1a1a1a',
     fontColorForSelectInputIconWhenWarning: '#1a1a1a',
+    fontColorForMoneyInputCurrencyDropdownIndicator: '#1a1a1a',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -298,6 +299,7 @@ export const themes = {
     heightForViewSwitcher: '32px',
     heightForViewSwitcherWhenCondensed: '24px',
     widthForAvatarAsMedium: '48px',
+    minWidthForMoneyInputCurrencyDropdown: '72px',
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
     fontSizeForButton: '1rem',
     fontSizeForInput: '1rem',
@@ -342,6 +344,7 @@ export const themes = {
     marginForGroupHeadingSelectInputOptions: '4px',
     marginForSelectInputIcon: '4px',
     marginLeftForSelectInputIcon: 'inherit',
+    marginRightForMoneyInputPrecisionBadge: '4px',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -376,6 +379,7 @@ export const themes = {
     paddingBottomForSelectInputOptions: '4px',
     paddingForGroupHeadingSelectInputOptions: '8px',
     paddingForSelectInputMenu: 'inherit',
+    paddingForMoneyInputCurrencyDropdown: '0 var(--spacing-20)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -544,6 +548,7 @@ export const themes = {
     fontColorForSelectInputWhenWarning: '#f16d0e',
     fontColorForSelectInputIconWhenError: '#e60050',
     fontColorForSelectInputIconWhenWarning: '#f16d0e',
+    fontColorForMoneyInputCurrencyDropdownIndicator: 'hsl(0, 0%, 40%)',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.25rem',
@@ -589,12 +594,14 @@ export const themes = {
     iconColorForDatetimeInputIcon: 'hsl(0, 0%, 40%)',
     iconColorForDatetimeInputIconWhenHovered: '#e60050',
     widthForAvatarAsMedium: '40px',
+    minWidthForMoneyInputCurrencyDropdown: '80px',
     marginForTableHeader: '16px',
     marginForTableCellAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-20) 0 0',
     marginForGroupHeadingSelectInputOptions: '8px',
     marginForSelectInputIcon: '8px',
     marginLeftForSelectInputIcon: '8px',
+    marginRightForMoneyInputPrecisionBadge: '12px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -632,6 +639,7 @@ export const themes = {
     paddingBottomForSelectInputOptions: '8px',
     paddingForGroupHeadingSelectInputOptions: '16px',
     paddingForSelectInputMenu: 'var(--spacing-10) 0',
+    paddingForMoneyInputCurrencyDropdown: '0 12px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -1044,6 +1052,8 @@ const designTokens = {
     'var(--font-color-for-select-input-icon-when-error, #1a1a1a)',
   fontColorForSelectInputIconWhenWarning:
     'var(--font-color-for-select-input-icon-when-warning, #1a1a1a)',
+  fontColorForMoneyInputCurrencyDropdownIndicator:
+    'var(--font-color-for-money-input-currency-dropdown-indicator, #1a1a1a)',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
@@ -1056,6 +1066,8 @@ const designTokens = {
   heightForViewSwitcherWhenCondensed:
     'var(--height-for-view-switcher-when-condensed, 24px)',
   widthForAvatarAsMedium: 'var(--width-for-avatar-as-medium, 48px)',
+  minWidthForMoneyInputCurrencyDropdown:
+    'var(--min-width-for-money-input-currency-dropdown, 72px)',
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
   fontSizeForButton: 'var(--font-size-for-button, 1rem)',
@@ -1108,6 +1120,8 @@ const designTokens = {
   marginForSelectInputIcon: 'var(--margin-for-select-input-icon, 4px)',
   marginLeftForSelectInputIcon:
     'var(--margin-left-for-select-input-icon, inherit)',
+  marginRightForMoneyInputPrecisionBadge:
+    'var(--margin-right-for-money-input-precision-badge, 4px)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
@@ -1167,6 +1181,8 @@ const designTokens = {
   paddingForGroupHeadingSelectInputOptions:
     'var(--padding-for-group-heading-select-input-options, 8px)',
   paddingForSelectInputMenu: 'var(--padding-for-select-input-menu, inherit)',
+  paddingForMoneyInputCurrencyDropdown:
+    'var(--padding-for-money-input-currency-dropdown, 0 var(--spacing-20))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:
