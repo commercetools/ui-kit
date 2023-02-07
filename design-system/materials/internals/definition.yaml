@@ -770,7 +770,7 @@ decisionGroupsByTheme:
           choice: '48px'
 
     minWidths:
-      label: Min Width
+      label: Min width
       prefix: min-width
       decisions:
         min-width-for-money-input-currency-dropdown:
