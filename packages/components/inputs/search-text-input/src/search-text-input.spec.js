@@ -31,7 +31,7 @@ describe('SearchTextInput', () => {
     expect(container.querySelector('input')).toHaveAttribute('data-foo', 'bar');
   });
 
-  it('should render a number input', () => {
+  it('should render input with empty value', () => {
     const { container } = render(<SearchTextInput {...baseProps} />);
     expect(container.querySelector('input')).toHaveAttribute('type', 'text');
   });
