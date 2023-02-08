@@ -1,5 +1,5 @@
-# @commercetools-uikit/view-switcher
+# @commercetools-uikit/search-text-input
 
-## 15.11.0
+## 15.11.2
 
 ### Patch Changes
