@@ -3,4 +3,4 @@
 '@commercetools-uikit/inputs': minor
 ---
 
-Add SearchTextInput component to ui-kit
+Add [SearchTextInput](https://uikit.commercetools.com/?path=/story/components-inputs--searchtextinput) component to ui-kit
