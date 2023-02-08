@@ -26,7 +26,6 @@
     "@commercetools-uikit/icons": "15.11.2",
     "@commercetools-uikit/input-utils": "15.11.2",
     "@commercetools-uikit/secondary-icon-button": "15.11.2",
-    "@commercetools-uikit/text-input": "15.11.2",
     "@commercetools-uikit/utils": "15.11.2",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",

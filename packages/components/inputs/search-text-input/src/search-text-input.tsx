@@ -78,11 +78,20 @@ export type TSearchTextInputProps = {
    * Indicates if the input has invalid values
    */
   hasError?: boolean;
+  /**
+   * Indicates if the input has warning values
+   */
   hasWarning?: boolean;
   /**
    * Placeholder text for the input
    */
   placeholder?: string;
+  /**
+   * Indicates if the input should be cleared when the clear button is clicked.
+   * Defaults to true.
+   *
+   */
+  isClearable?: boolean;
   /**
    * Horizontal size limit of the input fields.
    */
@@ -105,8 +114,12 @@ export type TSearchTextInputProps = {
     | 'auto';
 };
 
-const defaultProps: Pick<TSearchTextInputProps, 'horizontalConstraint'> = {
+const defaultProps: Pick<
+  TSearchTextInputProps,
+  'horizontalConstraint' | 'isClearable'
+> = {
   horizontalConstraint: 'scale',
+  isClearable: true,
 };
 
 const SearchTextInput = (props: TSearchTextInputProps) => {
@@ -165,14 +178,17 @@ const SearchTextInput = (props: TSearchTextInputProps) => {
           css={getSearchTextInputStyles(props)}
           {...filterDataAttributes(props)}
         />
-        {searchValue && (
-          <SecondaryIconButton
-            icon={<CloseIcon size="medium" />}
-            label={'clear-button'}
-            onClick={handleClear}
-            css={getClearIconButtonStyles(props)}
-          />
-        )}
+        {props.isClearable &&
+          searchValue &&
+          !props.isDisabled &&
+          !props.isReadOnly && (
+            <SecondaryIconButton
+              icon={<CloseIcon size="medium" />}
+              label={'clear-button'}
+              onClick={handleClear}
+              css={getClearIconButtonStyles(props)}
+            />
+          )}
         <SecondaryIconButton
           icon={<SearchIcon />}
           label={'search-button'}

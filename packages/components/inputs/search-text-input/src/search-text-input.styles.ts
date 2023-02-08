@@ -9,7 +9,10 @@ type TInputProps = {
   isReadOnly?: boolean;
 };
 
-const getInputContainerBorderColor = (props: TInputProps) => {
+const getInputContainerBorderColor = (
+  props: TInputProps,
+  defaultColor: string = designTokens.borderColorForInput
+) => {
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
@@ -22,7 +25,7 @@ const getInputContainerBorderColor = (props: TInputProps) => {
   if (props.isReadOnly) {
     return designTokens.borderColorForInputWhenReadonly;
   }
-  return designTokens.borderColorForInput;
+  return defaultColor;
 };
 
 const getInputBoxShadow = (props: TInputProps) => {
@@ -33,13 +36,6 @@ const getInputBoxShadow = (props: TInputProps) => {
     return designTokens.shadowForInputWhenWarning;
   }
   return designTokens.shadowForInput;
-};
-
-const getIconColor = (props: TInputProps) => {
-  if (props.isDisabled || props.isReadOnly) {
-    return designTokens.fontColorForInputWhenDisabled;
-  }
-  return designTokens.fontColorForInput;
 };
 
 const getSearchTextInputStyles = (props: TInputProps) => [
@@ -58,7 +54,7 @@ const getSearchTextInputStyles = (props: TInputProps) => [
   `,
 ];
 
-const getSearchTextInputButtonStyles = (props: TInputProps) => css`
+const getButtonStyles = () => css`
   border: none;
   background: none;
   height: 100%;
@@ -66,33 +62,59 @@ const getSearchTextInputButtonStyles = (props: TInputProps) => css`
   border-bottom-right-radius: ${designTokens.borderRadiusForInput};
   border-left: none;
   align-items: center;
-  padding-right: ${designTokens.paddingForInput};
-  fill: ${getIconColor(props)};
   transition: border-color ${designTokens.transitionStandard},
     background-color ${designTokens.transitionStandard};
   transition: border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard};
 `;
 
+const getIconColor = (props: TInputProps, defaultColor: string) => {
+  if (props.isDisabled) {
+    return designTokens.fontColorForInputWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.fontColorForInputWhenReadonly;
+  }
+  return defaultColor;
+};
+
 const getClearIconButtonStyles = (props: TInputProps) => [
-  getSearchTextInputButtonStyles(props),
+  getButtonStyles(),
   css`
-    fill: ${designTokens.fontColorForClearInputIcon};
+    margin-right: ${designTokens.marginRightForClearInputIcon};
+    fill: ${getIconColor(props, designTokens.fontColorForClearInputIcon)};
     &:hover {
-      fill: ${designTokens.fontColorForClearInputIconWhenHovered};
+      fill: ${getIconColor(
+        props,
+        designTokens.fontColorForClearInputIconWhenHovered
+      )};
     }
   `,
 ];
 
 const getSearchIconButtonStyles = (props: TInputProps) => [
-  getSearchTextInputButtonStyles(props),
+  getButtonStyles(),
   css`
-    fill: ${designTokens.fontColorForSearchInputIcon};
+    margin-right: ${designTokens.marginRightForSearchInputIcon};
+    fill: ${getIconColor(props, designTokens.fontColorForSearchInputIcon)};
     &:hover {
-      fill: ${designTokens.fontColorForSearchInputIconWhenHovered};
+      fill: ${getIconColor(
+        props,
+        designTokens.fontColorForSearchInputIconWhenHovered
+      )};
     }
   `,
 ];
+
+const getBackgroundWhenHovered = (props: TInputProps) => {
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForInputWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForInput;
+  }
+  return designTokens.backgroundColorForInputWhenHovered;
+};
 
 const getSearchTextInputContainerStyles = (props: TInputProps) => [
   css`
@@ -107,7 +129,11 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
     height: ${designTokens.heightForInput};
     box-sizing: border-box;
     &:hover {
-      background-color: ${designTokens.backgroundColorForInputWhenHovered};
+      border-color: ${getInputContainerBorderColor(
+        props,
+        designTokens.borderColorForInputWhenHovered
+      )};
+      background-color: ${getBackgroundWhenHovered(props)};
     }
 
     &:focus-within {

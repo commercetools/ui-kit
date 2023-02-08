@@ -41,6 +41,7 @@ storiesOf('Components|Inputs', module)
               isAutofocussed={boolean('isAutofocussed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
+              isClearable={boolean('isClearable', true)}
               hasError={boolean('hasError', false)}
               hasWarning={boolean('hasWarning', false)}
               placeholder={text('placeholder', 'Placeholder')}
