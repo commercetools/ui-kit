@@ -95,12 +95,12 @@ export type TFieldLabelProps = {
   those props, so if we change that, we will need to adjust this as well.
 */
 const LabelRowWrapper = styled.div`
-  & > span,
-  & > div > div {
+  & [data-key='field-label-hint-wrapper'],
+  & [data-key='field-label-description-wrapper'] {
     margin-top: ${designTokens.spacing10};
   }
-  & > span:empty,
-  & > div > div:empty {
+  & [data-key='field-label-hint-wrapper']:empty,
+  & [data-key='field-label-description-wrapper']:empty {
     margin-top: 0;
   }
 `;
@@ -154,7 +154,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
             scale="xs"
           >
             {props.hintIcon && (
-              <Inline>
+              <Inline data-key="field-label-hint-wrapper">
                 {cloneElement(props.hintIcon, {
                   // FIXME: add proper tone when tones are refactored
                   size: 'medium',
@@ -165,6 +165,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
             {props.hint && (
               <Text.Detail
                 tone={theme === 'default' ? props.tone : 'secondary'}
+                data-key="field-label-hint-wrapper"
               >
                 {props.hint}
               </Text.Detail>
@@ -175,7 +176,10 @@ const FieldLabel = (props: TFieldLabelProps) => {
       {props.description && (
         <LabelRowWrapper>
           <Text.Wrap>
-            <Text.Detail tone={theme === 'default' ? props.tone : 'secondary'}>
+            <Text.Detail
+              tone={theme === 'default' ? props.tone : 'secondary'}
+              data-key="field-label-description-wrapper"
+            >
               {props.description}
             </Text.Detail>
           </Text.Wrap>
