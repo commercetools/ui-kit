@@ -125,7 +125,7 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
       padding: designTokens.paddingForMoneyInputCurrencyDropdown,
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
-      borderRight: '0',
+      borderRight: 0,
       minWidth: designTokens.minWidthForMoneyInputCurrencyDropdown,
       height: '100%',
       borderColor: (() => {

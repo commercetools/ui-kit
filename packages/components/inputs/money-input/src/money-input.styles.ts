@@ -9,21 +9,16 @@ const getCurrencyLabelStyles = (props: TInputProps) => css`
   background-color: ${designTokens.backgroundColorForInputWhenDisabled};
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-  border-right: 0;
-  padding: ${designTokens.paddingForMoneyInputCurrencyDropdown};
   border: 1px
     ${props.isReadOnly
       ? designTokens.borderColorForInputWhenReadonly
       : designTokens.borderColorForInputWhenDisabled}
     solid;
   border-right: 0;
+  padding: 0 ${designTokens.spacing20};
   align-items: center;
   font-size: ${designTokens.fontSizeForInput};
   box-sizing: border-box;
-
-  &:hover {
-    background-color: ${designTokens.backgroundColorForInputWhenDisabled};
-  }
 `;
 
 type TGetAmountInputStyles = {
@@ -35,6 +30,9 @@ const getAmountInputStyles = (props: TGetAmountInputStyles) => [
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     margin-left: 0;
+    border-left: ${props.isReadOnly
+      ? `1px ${designTokens.borderColorForInputWhenReadonly} solid`
+      : `1px ${designTokens.borderColorForInput} solid`};
 
     &::placeholder {
       color: ${designTokens.placeholderFontColorForInput};

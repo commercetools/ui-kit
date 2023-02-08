@@ -2,7 +2,16 @@ import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TEditorProps } from './editor';
 
-const EditorLanguageLabel = styled.label<Pick<TEditorProps, 'isReadOnly'>>`
+const getEditorBorderColor = (
+  props: Pick<TEditorProps, 'isReadOnly' | 'isDisabled'>
+) => {
+  if (props.isDisabled) return designTokens.borderColorForInputWhenDisabled;
+  if (props.isReadOnly) return designTokens.borderColorForInputWhenReadonly;
+  return designTokens.borderColorForInput;
+};
+const EditorLanguageLabel = styled.label<
+  Pick<TEditorProps, 'isReadOnly' | 'isDisabled'>
+>`
   /* avoid wrapping label onto new lines */
   white-space: nowrap;
   flex: 0;
@@ -11,18 +20,10 @@ const EditorLanguageLabel = styled.label<Pick<TEditorProps, 'isReadOnly'>>`
     ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
   );
   background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+  border: 1px ${(props) => getEditorBorderColor(props)} solid;
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-  border: 1px
-    ${(props) =>
-      props.isReadOnly
-        ? designTokens.borderColorForInputWhenReadonly
-        : designTokens.borderColorForInputWhenDisabled}
-    solid;
-  border-right: ${(props) =>
-    props.isReadOnly
-      ? `1px ${designTokens.colorSurface} solid`
-      : `1px ${designTokens.borderColorForInputWhenReadonly} solid`};
+  border-right: 0;
   padding: ${designTokens.paddingForLocalizedRichTextInputLabel};
   transition: border-color ${designTokens.transitionStandard},
     background-color ${designTokens.transitionStandard},

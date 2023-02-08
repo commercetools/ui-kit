@@ -32,9 +32,7 @@ const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
         ? designTokens.borderColorForInputWhenReadonly
         : designTokens.borderColorForInputWhenDisabled}
       solid;
-    border-right: ${props.isReadOnly
-      ? `1px ${designTokens.colorSurface} solid`
-      : `1px ${designTokens.borderColorForInputWhenReadonly} solid`};
+    border-right: 0;
     padding: 0 ${designTokens.spacing20};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},

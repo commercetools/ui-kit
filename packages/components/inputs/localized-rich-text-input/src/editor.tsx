@@ -219,6 +219,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                 <EditorLanguageLabel
                   htmlFor={props.id}
                   isReadOnly={props.isReadOnly}
+                  isDisabled={props.isDisabled}
                 >
                   {/* FIXME: add proper tone for disabled when tones are refactored */}
                   <Text.Detail tone="secondary">
