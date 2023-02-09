@@ -371,6 +371,8 @@ componentGroups:
     description: 'Content notification icon elements'
   select-input-icon:
     description: 'Select input icon elements'
+  select-input-tag:
+    description: 'Select input inner tag elements'
   clear-input-icon:
     description: 'clear input icon elements'
   search-input-icon:
@@ -390,6 +392,13 @@ componentGroups:
 
 decisionGroupsByTheme:
   default:
+    alignItems:
+      label: Flex align items
+      prefix: align-items
+      decisions:
+        align-items-for-select-input-tag:
+          choice: 'unset'
+
     backgroundColors:
       label: Background Colors
       prefix: background-color
@@ -507,6 +516,8 @@ decisionGroupsByTheme:
         border-for-collapsible-panel-header-icon-when-disabled:
           choice: '1px solid var(--color-neutral)'
         border-for-view-switcher:
+          choice: 'none'
+        border-for-select-input-tag:
           choice: 'none'
 
     borderColors:
@@ -761,6 +772,8 @@ decisionGroupsByTheme:
           choice: '32px'
         height-for-view-switcher-when-condensed:
           choice: '24px'
+        height-for-select-input-tag:
+          choice: '26px'
 
     widths:
       label: Width
@@ -837,6 +850,8 @@ decisionGroupsByTheme:
           choice: font-size-15
         font-size-for-content-notification:
           choice: font-size-30
+        font-size-for-select-input-tag:
+          choice: font-size-15
 
     iconColors:
       label: Icon colors
@@ -1027,6 +1042,13 @@ decisionGroupsByTheme:
           choice: shadow-7
 
   test:
+    alignItems:
+      label: Flex align items
+      prefix: align-items
+      decisions:
+        align-items-for-select-input-tag:
+          choice: 'center'
+
     backgroundColors:
       label: Background Colors
       prefix: background-color
@@ -1123,6 +1145,8 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-view-switcher:
           choice: '1px solid var(--color-neutral)'
+        border-for-select-input-tag:
+          choice: '1px solid var(--color-neutral-85)'
 
     borderColors:
       label: Border Colors
@@ -1344,6 +1368,8 @@ decisionGroupsByTheme:
           choice: font-size-80
         font-size-for-localized-multiline-text-input-label:
           choice: font-size-30
+        font-size-for-select-input-tag:
+          choice: font-size-30
 
     lineHeights:
       label: Line Heights
@@ -1420,6 +1446,8 @@ decisionGroupsByTheme:
         height-for-view-switcher:
           choice: '40px'
         height-for-view-switcher-when-condensed:
+          choice: '32px'
+        height-for-select-input-tag:
           choice: '32px'
 
     iconColors:
