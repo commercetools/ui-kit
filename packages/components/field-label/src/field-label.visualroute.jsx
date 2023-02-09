@@ -3,9 +3,15 @@ import {
   WarningIcon,
   FlatButton,
 } from '@commercetools-frontend/ui-kit';
+import styled from '@emotion/styled';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/field-label';
+
+const BorderedBox = styled.div`
+  border: 1px solid red;
+`;
+const NonRenderingComponent = () => null;
 
 export const component = () => (
   <Suite>
@@ -68,6 +74,14 @@ export const component = () => (
         hasRequiredIndicator={true}
         tone="inverted"
       />
+    </Spec>
+    <Spec label="with react component description which renders nothing">
+      <BorderedBox>
+        <FieldLabel
+          title="Hello"
+          description={<NonRenderingComponent />}
+        />
+      </BorderedBox>
     </Spec>
   </Suite>
 );

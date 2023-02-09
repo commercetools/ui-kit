@@ -7,14 +7,14 @@ import {
 } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import IconButton from '@commercetools-uikit/icon-button';
 import { InformationIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';
 import Constraints from '@commercetools-uikit/constraints';
-import Stack from '@commercetools-uikit/spacings-stack';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Label from '@commercetools-uikit/label';
-import { useTheme } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 
 // TODO: @redesign cleanup
 
@@ -83,6 +83,28 @@ export type TFieldLabelProps = {
     | 'auto';
 };
 
+/*
+  This is needed to deal with every FieldLabel row vertical spacing
+  when provided `hint` or `description` is a React component which
+  might render nothing.
+  Previously we were using the `Stack` component but, as we are wrapping
+  those props values with some elements, `Stack` was including some vertical
+  spacing even when the received values did not render anything.
+
+  The implementation is tightly coupled to how we currently wrap
+  those props, so if we change that, we will need to adjust this as well.
+*/
+const LabelRowWrapper = styled.div`
+  & [data-key='field-label-hint-wrapper'],
+  & [data-key='field-label-description-wrapper'] {
+    margin-top: ${designTokens.spacing10} !important;
+  }
+  & [data-key='field-label-hint-wrapper']:empty,
+  & [data-key='field-label-description-wrapper']:empty {
+    margin-top: 0 !important;
+  }
+`;
+
 const FieldLabel = (props: TFieldLabelProps) => {
   const { theme } = useTheme();
 
@@ -100,39 +122,39 @@ const FieldLabel = (props: TFieldLabelProps) => {
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
-      <Stack scale="xs">
-        <Inline
-          alignItems={theme === 'default' ? 'flexStart' : 'center'}
-          scale="xs"
-        >
-          <Text.Wrap>
-            <Label
-              isBold={theme === 'default'}
-              isRequiredIndicatorVisible={props.hasRequiredIndicator}
-              tone={props.tone}
-              id={props.id}
-              htmlFor={props.htmlFor}
-            >
-              {props.title}
-            </Label>
-          </Text.Wrap>
-          {props.onInfoButtonClick && (
-            <IconButton
-              label="More Info"
-              icon={<InformationIcon size="medium" />}
-              size="small"
-              onClick={props.onInfoButtonClick}
-            />
-          )}
-        </Inline>
+      <Inline
+        alignItems={theme === 'default' ? 'flexStart' : 'center'}
+        scale="xs"
+      >
+        <Text.Wrap>
+          <Label
+            isBold={theme === 'default'}
+            isRequiredIndicatorVisible={props.hasRequiredIndicator}
+            tone={props.tone}
+            id={props.id}
+            htmlFor={props.htmlFor}
+          >
+            {props.title}
+          </Label>
+        </Text.Wrap>
+        {props.onInfoButtonClick && (
+          <IconButton
+            label="More Info"
+            icon={<InformationIcon size="medium" />}
+            size="small"
+            onClick={props.onInfoButtonClick}
+          />
+        )}
+      </Inline>
 
-        {props.hint && (
+      {props.hint && (
+        <LabelRowWrapper>
           <Inline
             alignItems={theme === 'default' ? 'flexStart' : 'center'}
             scale="xs"
           >
             {props.hintIcon && (
-              <Inline>
+              <Inline data-key="field-label-hint-wrapper">
                 {cloneElement(props.hintIcon, {
                   // FIXME: add proper tone when tones are refactored
                   size: 'medium',
@@ -143,31 +165,37 @@ const FieldLabel = (props: TFieldLabelProps) => {
             {props.hint && (
               <Text.Detail
                 tone={theme === 'default' ? props.tone : 'secondary'}
+                data-key="field-label-hint-wrapper"
               >
                 {props.hint}
               </Text.Detail>
             )}
           </Inline>
-        )}
-        {props.description && (
+        </LabelRowWrapper>
+      )}
+      {props.description && (
+        <LabelRowWrapper>
           <Text.Wrap>
-            <Text.Detail tone={theme === 'default' ? props.tone : 'secondary'}>
+            <Text.Detail
+              tone={theme === 'default' ? props.tone : 'secondary'}
+              data-key="field-label-description-wrapper"
+            >
               {props.description}
             </Text.Detail>
           </Text.Wrap>
-        )}
+        </LabelRowWrapper>
+      )}
 
-        {props.badge && (
-          <div
-            css={css`
-              display: flex;
-              justify-content: flex-end;
-            `}
-          >
-            {props.badge}
-          </div>
-        )}
-      </Stack>
+      {props.badge && (
+        <div
+          css={css`
+            display: flex;
+            justify-content: flex-end;
+          `}
+        >
+          {props.badge}
+        </div>
+      )}
     </Constraints.Horizontal>
   );
 };
