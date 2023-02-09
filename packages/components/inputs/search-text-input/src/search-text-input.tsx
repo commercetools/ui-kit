@@ -35,7 +35,7 @@ export type TSearchTextInputProps = {
    */
   'aria-errormessage'?: string;
   /**
-   * Used as HTML name of the input component. property.
+   * Used as HTML name of the input component property.
    */
   name?: string;
   /**
