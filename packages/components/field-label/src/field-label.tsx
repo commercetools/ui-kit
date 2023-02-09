@@ -101,7 +101,7 @@ const LabelRowWrapper = styled.div`
   }
   & [data-key='field-label-hint-wrapper']:empty,
   & [data-key='field-label-description-wrapper']:empty {
-    margin-top: 0;
+    margin-top: 0 !important;
   }
 `;
 
