@@ -97,7 +97,7 @@ export type TFieldLabelProps = {
 const LabelRowWrapper = styled.div`
   & [data-key='field-label-hint-wrapper'],
   & [data-key='field-label-description-wrapper'] {
-    margin-top: ${designTokens.spacing10};
+    margin-top: ${designTokens.spacing10} !important;
   }
   & [data-key='field-label-hint-wrapper']:empty,
   & [data-key='field-label-description-wrapper']:empty {
