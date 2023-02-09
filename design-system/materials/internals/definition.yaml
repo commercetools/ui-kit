@@ -738,7 +738,7 @@ decisionGroupsByTheme:
         font-color-for-search-input-icon:
           choice: color-solid
         font-color-for-search-input-icon-when-hovered:
-          choice: color-solid
+          choice: color-primary
         font-color-for-select-input-icon:
           choice: color-solid
         font-color-for-select-input-when-error:
@@ -751,6 +751,8 @@ decisionGroupsByTheme:
           choice: color-solid
         font-color-for-money-input-currency-dropdown-indicator:
           choice: color-solid
+        font-color-for-search-input-icon-when-readonly:
+          choice: color-neutral-60
 
     heights:
       label: Height
@@ -935,6 +937,10 @@ decisionGroupsByTheme:
         margin-left-for-select-input-icon:
           choice: 'inherit'
         margin-right-for-money-input-precision-badge:
+          choice: spacing-10
+        margin-right-for-search-input-icon:
+          choice: spacing-20
+        margin-right-for-clear-input-icon:
           choice: spacing-10
 
     paddings:
@@ -1302,8 +1308,6 @@ decisionGroupsByTheme:
           choice: color-neutral-40
         font-color-for-search-input-icon:
           choice: color-neutral-60
-        font-color-for-search-input-icon-when-hovered:
-          choice: color-primary
         font-color-for-select-input-icon:
           choice: color-neutral-60
         font-color-for-select-input-when-error:
@@ -1491,6 +1495,10 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-right-for-money-input-precision-badge:
           choice: '12px'
+        margin-right-for-search-input-icon:
+          choice: '12px'
+        margin-right-for-clear-input-icon:
+          choice: spacing-20
 
     paddings:
       label: Paddings

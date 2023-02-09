@@ -285,13 +285,14 @@ export const themes = {
     fontColorForContentNotificationIconWhenSuccess: '#fff',
     fontColorForContentNotificationIconWhenInfo: '#fff',
     fontColorForSearchInputIcon: '#1a1a1a',
-    fontColorForSearchInputIconWhenHovered: '#1a1a1a',
+    fontColorForSearchInputIconWhenHovered: '#00b39e',
     fontColorForSelectInputIcon: '#1a1a1a',
     fontColorForSelectInputWhenError: '#1a1a1a',
     fontColorForSelectInputWhenWarning: '#1a1a1a',
     fontColorForSelectInputIconWhenError: '#1a1a1a',
     fontColorForSelectInputIconWhenWarning: '#1a1a1a',
     fontColorForMoneyInputCurrencyDropdownIndicator: '#1a1a1a',
+    fontColorForSearchInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -349,6 +350,8 @@ export const themes = {
     marginForSelectInputIcon: '4px',
     marginLeftForSelectInputIcon: 'inherit',
     marginRightForMoneyInputPrecisionBadge: '4px',
+    marginRightForSearchInputIcon: '8px',
+    marginRightForClearInputIcon: '4px',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -548,7 +551,6 @@ export const themes = {
     fontColorForClearInputIconWhenHovered: '#e60050',
     fontColorForClearInputIcon: 'hsl(0, 0%, 40%)',
     fontColorForSearchInputIcon: 'hsl(0, 0%, 60%)',
-    fontColorForSearchInputIconWhenHovered: '#00b39e',
     fontColorForSelectInputIcon: 'hsl(0, 0%, 60%)',
     fontColorForSelectInputWhenError: '#e60050',
     fontColorForSelectInputWhenWarning: '#f16d0e',
@@ -610,6 +612,8 @@ export const themes = {
     marginForSelectInputIcon: '8px',
     marginLeftForSelectInputIcon: '8px',
     marginRightForMoneyInputPrecisionBadge: '12px',
+    marginRightForSearchInputIcon: '12px',
+    marginRightForClearInputIcon: '8px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -1051,7 +1055,7 @@ const designTokens = {
   fontColorForSearchInputIcon:
     'var(--font-color-for-search-input-icon, #1a1a1a)',
   fontColorForSearchInputIconWhenHovered:
-    'var(--font-color-for-search-input-icon-when-hovered, #1a1a1a)',
+    'var(--font-color-for-search-input-icon-when-hovered, #00b39e)',
   fontColorForSelectInputIcon:
     'var(--font-color-for-select-input-icon, #1a1a1a)',
   fontColorForSelectInputWhenError:
@@ -1064,6 +1068,8 @@ const designTokens = {
     'var(--font-color-for-select-input-icon-when-warning, #1a1a1a)',
   fontColorForMoneyInputCurrencyDropdownIndicator:
     'var(--font-color-for-money-input-currency-dropdown-indicator, #1a1a1a)',
+  fontColorForSearchInputIconWhenReadonly:
+    'var(--font-color-for-search-input-icon-when-readonly, hsl(0, 0%, 60%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
@@ -1134,6 +1140,9 @@ const designTokens = {
     'var(--margin-left-for-select-input-icon, inherit)',
   marginRightForMoneyInputPrecisionBadge:
     'var(--margin-right-for-money-input-precision-badge, 4px)',
+  marginRightForSearchInputIcon:
+    'var(--margin-right-for-search-input-icon, 8px)',
+  marginRightForClearInputIcon: 'var(--margin-right-for-clear-input-icon, 4px)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
