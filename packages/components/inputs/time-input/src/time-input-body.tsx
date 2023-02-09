@@ -78,7 +78,7 @@ const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
               : {})}
           />
 
-          {!props.isDisabled && !props.isReadOnly && (
+          {!props.isDisabled && !props.isReadOnly && Boolean(props.value) && (
             <ClearSection
               isDisabled={props.isDisabled}
               hasError={props.hasError}
