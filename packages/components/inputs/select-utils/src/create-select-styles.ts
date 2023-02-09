@@ -315,24 +315,23 @@ const menuPortalStyles = (props: TProps) => (base: TBase) => ({
   zIndex: props.menuPortalZIndex,
 });
 
-const multiValueStyles =
-  (props: TProps & { isNewTheme: boolean }) => (base: TBase) => {
-    return {
-      ...base,
-      height: designTokens.sizeHeightTag,
-      backgroundColor: designTokens.backgroundColorForTag,
-      padding: '0',
-      border: props.isNewTheme
-        ? `1px solid ${designTokens.colorNeutral85}`
-        : 'none',
-    };
+const multiValueStyles = () => (base: TBase) => {
+  return {
+    ...base,
+    display: 'flex',
+    alignItems: designTokens.alignItemsForSelectInputTag,
+    height: designTokens.heightForSelectInputTag,
+    backgroundColor: designTokens.backgroundColorForTag,
+    padding: '0',
+    border: designTokens.borderForSelectInputTag,
   };
+};
 
 const multiValueLabelStyles =
   (props: TProps & { isNewTheme: boolean }) => (base: TBase) => {
     return {
       ...base,
-      fontSize: designTokens.fontSizeSmall,
+      fontSize: designTokens.fontSizeForSelectInputTag,
       color: (() => {
         if (props.isDisabled) return designTokens.fontColorForInputWhenDisabled;
         if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
@@ -393,7 +392,7 @@ export default function createSelectStyles(
     clearIndicator: clearIndicatorStyles(),
     menuList: menuListStyles(),
     menuPortal: menuPortalStyles(props),
-    multiValue: multiValueStyles(props),
+    multiValue: multiValueStyles(),
     multiValueLabel: multiValueLabelStyles(props),
     multiValueRemove: multiValueRemoveStyles(props),
     indicatorsContainer: indicatorsContainerStyles(),
