@@ -73,7 +73,7 @@ const getIconColor = (props: TInputProps, defaultColor: string) => {
     return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.fontColorForInputWhenReadonly;
+    return designTokens.fontColorForSearchInputIconWhenReadonly;
   }
   return defaultColor;
 };

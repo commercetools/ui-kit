@@ -314,6 +314,7 @@
   --font-color-for-select-input-icon-when-error: #1a1a1a;
   --font-color-for-select-input-icon-when-warning: #1a1a1a;
   --font-color-for-money-input-currency-dropdown-indicator: #1a1a1a;
+  --font-color-for-search-input-icon-when-readonly: hsl(0, 0%, 60%);
   --height-for-button-as-big: 32px;
   --height-for-button-as-small: 24px;
   --height-for-button-as-icon-as-big: 32px;

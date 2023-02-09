@@ -290,6 +290,7 @@ export const themes = {
     fontColorForSelectInputIconWhenError: '#1a1a1a',
     fontColorForSelectInputIconWhenWarning: '#1a1a1a',
     fontColorForMoneyInputCurrencyDropdownIndicator: '#1a1a1a',
+    fontColorForSearchInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -1057,6 +1058,8 @@ const designTokens = {
     'var(--font-color-for-select-input-icon-when-warning, #1a1a1a)',
   fontColorForMoneyInputCurrencyDropdownIndicator:
     'var(--font-color-for-money-input-currency-dropdown-indicator, #1a1a1a)',
+  fontColorForSearchInputIconWhenReadonly:
+    'var(--font-color-for-search-input-icon-when-readonly, hsl(0, 0%, 60%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
