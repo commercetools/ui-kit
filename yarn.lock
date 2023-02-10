@@ -3470,6 +3470,7 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.19.0
     "@babel/runtime-corejs3": ^7.19.1
+    "@commercetools-uikit/hooks": 15.11.2
     "@emotion/react": ^11.4.0
     lodash: 4.17.21
     nodemon: ^2.0.20
@@ -3599,7 +3600,9 @@ __metadata:
     "@babel/runtime-corejs3": ^7.19.1
     "@commercetools-uikit/utils": 15.11.2
     "@testing-library/react": 12.1.5
+    "@types/raf-schd": ^4.0.1
     lodash: 4.17.21
+    raf-schd: ^4.0.3
     react: 17.0.2
   peerDependencies:
     react: 17.x
@@ -7384,6 +7387,13 @@ __metadata:
   version: 15.7.4
   resolution: "@types/prop-types@npm:15.7.4"
   checksum: ef6e1899e59b876c273811b1bd845022fc66d5a3d11cb38a25b6c566b30514ae38fe20a40f67622f362a4f4f7f9224e22d8da101cff3d6e97e11d7b4c307cfc1
+  languageName: node
+  linkType: hard
+
+"@types/raf-schd@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@types/raf-schd@npm:4.0.1"
+  checksum: 0babaa85541aadc6e5f8aa64ec79cd68bf67ea56abb7610c8daf3ca5f4b1a75d12e4e147a0b5434938a4031650ebddc733021ec4e7db4f11f7955390ec32c917
   languageName: node
   linkType: hard
 
@@ -17187,7 +17197,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"raf-schd@npm:^4.0.2":
+"raf-schd@npm:^4.0.2, raf-schd@npm:^4.0.3":
   version: 4.0.3
   resolution: "raf-schd@npm:4.0.3"
   checksum: 45514041c5ad31fa96aef3bb3c572a843b92da2f2cd1cb4a47c9ad58e48761d3a4126e18daa32b2bfa0bc2551a42d8f324a0e40e536cb656969929602b4e8b58
