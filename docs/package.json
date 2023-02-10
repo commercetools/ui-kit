@@ -37,7 +37,7 @@
     "yaml-loader": "0.8.0"
   },
   "devDependencies": {
-    "@commercetools-frontend/babel-preset-mc-app": "21.23.1",
+    "@commercetools-frontend/babel-preset-mc-app": "21.23.6",
     "prismjs": "1.29.0",
     "webpack": "4.46.0"
   },
