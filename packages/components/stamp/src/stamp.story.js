@@ -1,28 +1,17 @@
-// TODO: @redesign cleanup
 import { storiesOf } from '@storybook/react';
 import { boolean, withKnobs } from '@storybook/addon-knobs';
 import Section from '../../../../docs/.storybook/decorators/section';
-import Text from '../../text';
 import SpacingsStack from '../../spacings/spacings-stack';
 import SpacingsInline from '../../spacings/spacings-inline';
 import * as icons from '../../icons';
 import Stamp, { availableTones } from './stamp';
 import Readme from '../README.md';
-import { useTheme } from '@commercetools-uikit/design-system';
 
 const iconNames = Object.keys(icons);
 const numberOfIcons = iconNames.length;
 const getRandomIndex = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
-const iconColorsMap = {
-  secondary: 'neutral60',
-  primary: 'primary40',
-  information: 'info',
-  positive: 'primary',
-  warning: 'warning',
-  critical: 'error',
-};
 storiesOf('Components|Stamps', module)
   .addParameters({
     readme: {
@@ -31,32 +20,28 @@ storiesOf('Components|Stamps', module)
     },
   })
   .addDecorator(withKnobs)
-  .add('Stamp', () => {
-    const { themedValue } = useTheme();
-    return (
-      <Section>
-        <SpacingsStack>
-          {availableTones.map((tone) => {
-            const iconIndex = getRandomIndex(0, numberOfIcons);
-            const Icon = icons[iconNames[iconIndex]];
-            return (
-              <SpacingsInline key={tone} alignItems="center">
-                <Stamp tone={tone} isCondensed={boolean('isCondensed', false)}>
-                  <SpacingsInline alignItems="center">
-                    <Icon
-                      color={themedValue(undefined, iconColorsMap[tone])}
-                      size="medium"
-                    />
-                    <Text.Detail>{'Hello'}</Text.Detail>
-                  </SpacingsInline>
-                </Stamp>
-                <Stamp tone={tone} isCondensed={boolean('isCondensed', false)}>
-                  <Text.Detail>{`tone="${tone}"`}</Text.Detail>
-                </Stamp>
-              </SpacingsInline>
-            );
-          })}
-        </SpacingsStack>
-      </Section>
-    );
-  });
+  .add('Stamp', () => (
+    <Section>
+      <SpacingsStack>
+        {availableTones.map((tone) => {
+          const iconIndex = getRandomIndex(0, numberOfIcons);
+          const Icon = icons[iconNames[iconIndex]];
+          return (
+            <SpacingsInline key={tone} alignItems="center">
+              <Stamp
+                tone={tone}
+                isCondensed={boolean('isCondensed', false)}
+                icon={<Icon />}
+                label="Hello"
+              />
+              <Stamp
+                tone={tone}
+                isCondensed={boolean('isCondensed', false)}
+                label={`tone="${tone}"`}
+              />
+            </SpacingsInline>
+          );
+        })}
+      </SpacingsStack>
+    </Section>
+  ));

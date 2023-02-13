@@ -1,5 +1,74 @@
 # @commercetools-uikit/fields
 
+## 15.11.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/time-field@15.11.2
+  - @commercetools-uikit/password-field@15.11.2
+  - @commercetools-uikit/date-field@15.11.2
+  - @commercetools-uikit/date-range-field@15.11.2
+  - @commercetools-uikit/date-time-field@15.11.2
+  - @commercetools-uikit/localized-multiline-text-field@15.11.2
+  - @commercetools-uikit/localized-text-field@15.11.2
+  - @commercetools-uikit/multiline-text-field@15.11.2
+  - @commercetools-uikit/money-field@15.11.2
+  - @commercetools-uikit/number-field@15.11.2
+  - @commercetools-uikit/radio-field@15.11.2
+  - @commercetools-uikit/text-field@15.11.2
+  - @commercetools-uikit/async-creatable-select-field@15.11.2
+  - @commercetools-uikit/async-select-field@15.11.2
+  - @commercetools-uikit/creatable-select-field@15.11.2
+  - @commercetools-uikit/search-select-field@15.11.2
+  - @commercetools-uikit/select-field@15.11.2
+
+## 15.11.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/password-field@15.11.1
+  - @commercetools-uikit/async-creatable-select-field@15.11.1
+  - @commercetools-uikit/async-select-field@15.11.1
+  - @commercetools-uikit/creatable-select-field@15.11.1
+  - @commercetools-uikit/date-field@15.11.1
+  - @commercetools-uikit/date-range-field@15.11.1
+  - @commercetools-uikit/date-time-field@15.11.1
+  - @commercetools-uikit/localized-multiline-text-field@15.11.1
+  - @commercetools-uikit/localized-text-field@15.11.1
+  - @commercetools-uikit/money-field@15.11.1
+  - @commercetools-uikit/multiline-text-field@15.11.1
+  - @commercetools-uikit/number-field@15.11.1
+  - @commercetools-uikit/radio-field@15.11.1
+  - @commercetools-uikit/search-select-field@15.11.1
+  - @commercetools-uikit/select-field@15.11.1
+  - @commercetools-uikit/text-field@15.11.1
+  - @commercetools-uikit/time-field@15.11.1
+
+## 15.11.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@15.11.0
+  - @commercetools-uikit/async-select-field@15.11.0
+  - @commercetools-uikit/creatable-select-field@15.11.0
+  - @commercetools-uikit/date-field@15.11.0
+  - @commercetools-uikit/date-range-field@15.11.0
+  - @commercetools-uikit/date-time-field@15.11.0
+  - @commercetools-uikit/localized-multiline-text-field@15.11.0
+  - @commercetools-uikit/localized-text-field@15.11.0
+  - @commercetools-uikit/money-field@15.11.0
+  - @commercetools-uikit/multiline-text-field@15.11.0
+  - @commercetools-uikit/number-field@15.11.0
+  - @commercetools-uikit/password-field@15.11.0
+  - @commercetools-uikit/radio-field@15.11.0
+  - @commercetools-uikit/search-select-field@15.11.0
+  - @commercetools-uikit/select-field@15.11.0
+  - @commercetools-uikit/text-field@15.11.0
+  - @commercetools-uikit/time-field@15.11.0
+
 ## 15.10.0
 
 ### Patch Changes

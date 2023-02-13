@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
@@ -17,6 +18,7 @@ import {
   messages,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { useTheme } from '@commercetools-uikit/design-system';
 
 const customizedComponents = {
   DropdownIndicator,
@@ -323,6 +325,7 @@ const defaultProps: Pick<
 
 const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
+  const { isNewTheme } = useTheme();
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
@@ -394,6 +397,7 @@ const SelectInput = (props: TSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
+              isNewTheme,
             }) as ReactSelectProps['styles']
           }
           filterOption={props.filterOption}

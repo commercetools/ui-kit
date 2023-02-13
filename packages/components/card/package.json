@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/card",
   "description": "Cards are used to display content and actions on a single topic.",
-  "version": "15.10.0",
+  "version": "15.11.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,9 +21,9 @@
   "dependencies": {
     "@babel/runtime": "^7.19.0",
     "@babel/runtime-corejs3": "^7.19.1",
-    "@commercetools-uikit/design-system": "15.10.0",
-    "@commercetools-uikit/spacings-inset": "15.10.0",
-    "@commercetools-uikit/utils": "15.10.0",
+    "@commercetools-uikit/design-system": "15.11.2",
+    "@commercetools-uikit/spacings-inset": "15.11.2",
+    "@commercetools-uikit/utils": "15.11.2",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "prop-types": "15.8.1"

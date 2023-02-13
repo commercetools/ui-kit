@@ -1,5 +1,44 @@
 # @commercetools-uikit/flat-button
 
+## 15.11.2
+
+### Patch Changes
+
+- [#2405](https://github.com/commercetools/ui-kit/pull/2405) [`3d5fcc5a6`](https://github.com/commercetools/ui-kit/commit/3d5fcc5a6d23165497c55e8de0fe17bc23940836) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - README updated.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.11.2
+  - @commercetools-uikit/accessible-button@15.11.2
+  - @commercetools-uikit/spacings-inline@15.11.2
+  - @commercetools-uikit/text@15.11.2
+  - @commercetools-uikit/utils@15.11.2
+
+## 15.11.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.11.1
+  - @commercetools-uikit/accessible-button@15.11.1
+  - @commercetools-uikit/spacings-inline@15.11.1
+  - @commercetools-uikit/text@15.11.1
+  - @commercetools-uikit/utils@15.11.1
+
+## 15.11.0
+
+### Minor Changes
+
+- [#2392](https://github.com/commercetools/ui-kit/pull/2392) [`5a4670f37`](https://github.com/commercetools/ui-kit/commit/5a4670f3777a77fa43ca2067f61e5063f6eb34fa) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Add new available value for the `tone` property: `critical`.
+
+### Patch Changes
+
+- Updated dependencies [[`5a4670f37`](https://github.com/commercetools/ui-kit/commit/5a4670f3777a77fa43ca2067f61e5063f6eb34fa), [`a527b20f3`](https://github.com/commercetools/ui-kit/commit/a527b20f3fbbf2aafd4f4c36d24f901ef53763d3), [`6fe1cc47f`](https://github.com/commercetools/ui-kit/commit/6fe1cc47f5c45389d9f497267bc860223c81589b)]:
+  - @commercetools-uikit/design-system@15.11.0
+  - @commercetools-uikit/accessible-button@15.11.0
+  - @commercetools-uikit/spacings-inline@15.11.0
+  - @commercetools-uikit/text@15.11.0
+  - @commercetools-uikit/utils@15.11.0
+
 ## 15.10.0
 
 ### Patch Changes

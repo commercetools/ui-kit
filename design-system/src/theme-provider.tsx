@@ -5,10 +5,12 @@ import {
   useEffect,
   type ReactNode,
   type JSXElementConstructor,
+  useCallback,
 } from 'react';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import isEqual from 'lodash/isEqual';
+import { useMutationObserver } from '@commercetools-uikit/hooks';
 import { themes } from './design-tokens';
 import { transformTokensToCssVarsValues } from './utils';
 
@@ -113,16 +115,18 @@ type TUseThemeResult = {
 const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
   const [theme, setTheme] = useState<ThemeName>('default');
   const parentSelectorRef = useRef(parentSelector);
-  const observerRef = useRef(
-    new MutationObserver((mutationList, _observer) => {
-      // Since we are only observing the theme DOM node for changes in its
-      // `data-theme` attribute (configured below when calling `observe` function),
-      // we will receive a single element in the list
-      setTheme(
-        (mutationList[0].target as HTMLElement).dataset.theme as ThemeName
-      );
-    })
-  );
+
+  const mutationChangeCallback = useCallback((mutationList) => {
+    // We expect only a single element in the mutation list as we configured the
+    // observer to only listen to `data-theme` changes.
+    const [mutationEvent] = mutationList;
+    setTheme((mutationEvent.target as HTMLElement).dataset.theme as ThemeName);
+  }, []);
+
+  useMutationObserver(parentSelector(), mutationChangeCallback, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
 
   const themedValue: TUseThemeResult['themedValue'] = (
     defaultThemeValue,
@@ -132,27 +136,13 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
   // If we use 'useLayoutEffect' here, we would be trying to read the
   // data attribute before it gets set from the effect in the ThemeProvider
   useEffect(() => {
-    const themeDomNode = parentSelectorRef.current();
-    const observer = observerRef.current;
-
-    if (themeDomNode) {
-      // We need to read the current theme after the provider is rendered
-      // to have the actual selected theme (calculated client-side) in the
-      // hook local state
-      const nextTheme = themeDomNode.dataset.theme as ThemeName;
-      if (nextTheme) {
-        setTheme(nextTheme);
-      }
-
-      // We observe the theme DOM node for changes in its `data-theme`
-      // attribute, which is the one we update in the `applyTheme` function
-      observer.observe(themeDomNode, {
-        attributes: true,
-        attributeFilter: ['data-theme'],
-      });
+    // We need to read the current theme after the provider is rendered
+    // to have the actual selected theme (calculated client-side) in the
+    // hook local state
+    const nextTheme = parentSelectorRef.current()?.dataset.theme as ThemeName;
+    if (nextTheme) {
+      setTheme(nextTheme);
     }
-
-    return () => observer.disconnect();
   }, []);
 
   return {

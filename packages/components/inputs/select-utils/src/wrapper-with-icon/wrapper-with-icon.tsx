@@ -63,7 +63,7 @@ const WrapperWithIcon = <Type extends 'singleValue' | 'placeholder'>(
         // the icon has a fixed size of 24px (== SpacingsXl), therefore we can use a fixed margin
         // spacingsXs is the margin between the icon and value
         css={css`
-          margin-left: ${designTokens.spacing50 + designTokens.spacing10};
+          margin-left: ${designTokens.marginLeftForSelectInputIcon};
         `}
       >
         {/* @ts-ignore */}

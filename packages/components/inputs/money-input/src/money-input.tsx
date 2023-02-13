@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import { useRef, useCallback, type ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import has from 'lodash/has';
@@ -9,7 +10,7 @@ import Select, {
 import { useIntl } from 'react-intl';
 import { css, type Theme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import {
   warning,
   isNumberish,
@@ -77,14 +78,19 @@ const SingleValue = ({ id, ...props }: TSingleValue) => (
 
 SingleValue.displayName = 'SingleValue';
 
-type TCreateCurrencySelectStyles = (input: TInputProps) => void;
+type TCreateCurrencySelectStyles = (
+  input: TInputProps & {
+    isNewTheme: boolean;
+    amountHasFocus?: boolean;
+    currencyHasFocus?: boolean;
+  }
+) => void;
 
 export type TInputProps = {
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
   isReadOnly?: boolean;
-  hasFocus?: boolean;
   menuPortalZIndex?: number;
   /** @deprecated */
   theme?: Theme;
@@ -100,29 +106,38 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
   hasError,
   isDisabled,
   isReadOnly,
-  hasFocus,
   menuPortalZIndex,
+  isNewTheme,
+  amountHasFocus,
+  currencyHasFocus,
 }) => {
   const selectStyles = createSelectStyles({
     hasWarning,
     hasError,
     menuPortalZIndex,
+    isNewTheme,
   });
   return {
     ...selectStyles,
     control: (base: TBase, state: ReactSelectProps) => ({
       ...selectStyles.control(base, state),
+      padding: designTokens.paddingForMoneyInputCurrencyDropdown,
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
       borderRight: '0',
-      minWidth: '72px',
+      minWidth: designTokens.minWidthForMoneyInputCurrencyDropdown,
       height: '100%',
       borderColor: (() => {
         if (isDisabled)
           return `${designTokens.borderColorForInputWhenDisabled} !important`;
         if (hasError) return designTokens.borderColorForInputWhenError;
         if (hasWarning) return designTokens.borderColorForInputWhenWarning;
-        if (hasFocus) return designTokens.borderColorForInputWhenFocused;
+        if (amountHasFocus && !isNewTheme) {
+          return designTokens.borderColorForInputWhenFocused;
+        }
+        if (currencyHasFocus) {
+          return designTokens.borderColorForInputWhenFocused;
+        }
         if (isReadOnly)
           return `${designTokens.borderColorForInputWhenReadonly} !important`;
         return designTokens.borderColorForInput;
@@ -136,6 +151,9 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
         if (isReadOnly) return designTokens.backgroundColorForInput;
         return base.backgroundColor;
       })(),
+      '&:hover': {
+        backgroundColor: designTokens.backgroundColorForInputWhenHovered,
+      },
     }),
     singleValue: (base: TBase) => ({
       ...base,
@@ -150,7 +168,9 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
       })(),
     }),
     dropdownIndicator: () => ({
-      fill: isReadOnly ? designTokens.fontColorForInputWhenReadonly : '',
+      fill: isReadOnly
+        ? designTokens.fontColorForInputWhenReadonly
+        : designTokens.fontColorForMoneyInputCurrencyDropdownIndicator,
     }),
   };
 };
@@ -521,6 +541,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
   const intl = useIntl();
   const [currencyHasFocus, toggleCurrencyHasFocus] = useToggleState(false);
   const [amountHasFocus, toggleAmountHasFocus] = useToggleState(false);
+  const { isNewTheme } = useTheme();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const amountInputRef = useRef<HTMLInputElement>(null);
@@ -685,8 +706,10 @@ const MoneyInput = (props: TMoneyInputProps) => {
     hasError: props.hasError,
     isDisabled: props.isDisabled,
     isReadOnly: props.isReadOnly,
-    hasFocus,
     menuPortalZIndex: props.menuPortalZIndex,
+    isNewTheme,
+    amountHasFocus,
+    currencyHasFocus,
   });
   const options = props.currencies.map((currencyCode) => ({
     label: currencyCode,
@@ -817,6 +840,11 @@ const MoneyInput = (props: TMoneyInputProps) => {
                 isHighPrecision &&
                 css`
                   padding-right: ${designTokens.spacing40};
+                `,
+              currencyHasFocus &&
+                isNewTheme &&
+                css`
+                  border-left-color: ${designTokens.borderColorForInputWhenFocused};
                 `,
             ]}
             placeholder={props.placeholder}

@@ -151,7 +151,7 @@ const getInputContainerStyles = (
         box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
           ${designTokens.borderColorForInputWhenFocused};
         &:hover {
-          background-color: unset;
+          background-color: ${designTokens.colorSurface};
         }
       }
 
@@ -190,6 +190,7 @@ const getTimeInputStyles = (props: TTimeInputProps) => {
       &:focus {
         box-shadow: none;
       }
+      &:focus,
       &:hover {
         background-color: transparent !important;
       }

@@ -3081,9 +3081,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commercetools-frontend/babel-preset-mc-app@npm:21.21.2":
-  version: 21.21.2
-  resolution: "@commercetools-frontend/babel-preset-mc-app@npm:21.21.2"
+"@commercetools-frontend/babel-preset-mc-app@npm:21.23.6":
+  version: 21.23.6
+  resolution: "@commercetools-frontend/babel-preset-mc-app@npm:21.23.6"
   dependencies:
     "@babel/core": ^7.19.0
     "@babel/plugin-proposal-class-properties": ^7.18.6
@@ -3110,7 +3110,7 @@ __metadata:
     babel-plugin-preval: ^5.1.0
     babel-plugin-transform-react-remove-prop-types: ^0.4.24
     core-js: ^3.25.1
-  checksum: c3fb5ef87fd753178f70ec0bf17bfccd2d98a7c4589a7b79e8dbdf5b3ffa5fbc6504b15fdd30a4f46454fc170b154686896e57772fd770cd46142ec9d669741f
+  checksum: a987660b9bcb0128895fcad250217e966e769ba637c356f18e805fab8d1fa16a61d85bfa6b374228b269877e6a63e4d65d016f9276e3b60a612cfb7c0db550e9
   languageName: node
   linkType: hard
 
@@ -3119,7 +3119,7 @@ __metadata:
   resolution: "@commercetools-local/docs@workspace:."
   dependencies:
     "@babel/core": 7.20.12
-    "@commercetools-frontend/babel-preset-mc-app": 21.21.2
+    "@commercetools-frontend/babel-preset-mc-app": 21.23.6
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     "@manypkg/get-packages": 1.1.3
