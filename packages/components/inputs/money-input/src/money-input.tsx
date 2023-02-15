@@ -58,7 +58,7 @@ const Portal = (props: TLabel) => {
 };
 
 const CurrencyLabel = (props: TLabel) => (
-  <label htmlFor={props.id} css={getCurrencyLabelStyles()}>
+  <label htmlFor={props.id} css={getCurrencyLabelStyles(props)}>
     {props.children}
   </label>
 );
@@ -116,6 +116,8 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
     hasError,
     menuPortalZIndex,
     isNewTheme,
+    isReadOnly,
+    isDisabled,
   });
   return {
     ...selectStyles,
@@ -148,10 +150,10 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
         return 'pointer';
       })(),
       backgroundColor: (() => {
-        if (isReadOnly) return designTokens.backgroundColorForInput;
+        if (isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
         return base.backgroundColor;
       })(),
-      '&:hover': {
+      '&:hover:not(:read-only):not(:disabled)': {
         backgroundColor: designTokens.backgroundColorForInputWhenHovered,
       },
     }),

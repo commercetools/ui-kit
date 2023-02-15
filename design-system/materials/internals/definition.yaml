@@ -1165,7 +1165,7 @@ decisionGroupsByTheme:
         border-color-for-input-when-hovered:
           choice: color-neutral
         border-color-for-input-when-readonly:
-          choice: color-neutral-90
+          choice: color-surface
         border-color-for-input-when-focused:
           choice: color-primary
         border-color-for-button-as-icon:

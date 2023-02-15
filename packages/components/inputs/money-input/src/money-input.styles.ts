@@ -3,9 +3,10 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 import type { TInputProps } from './money-input';
 
-const getCurrencyLabelStyles = () => css`
+const getCurrencyLabelStyles = (props: TInputProps) => css`
   display: flex;
   color: ${designTokens.fontColorForInputWhenDisabled};
+  cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
   background-color: ${designTokens.backgroundColorForInputWhenDisabled};
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
@@ -18,6 +19,9 @@ const getCurrencyLabelStyles = () => css`
 
   &:hover {
     background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+  }
+  &:focus-within: {
+    border-width: 1px;
   }
 `;
 

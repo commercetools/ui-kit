@@ -111,7 +111,7 @@ const getBackgroundWhenHovered = (props: TInputProps) => {
     return designTokens.backgroundColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.backgroundColorForInput;
+    return designTokens.backgroundColorForInputWhenReadonly;
   }
   return designTokens.backgroundColorForInputWhenHovered;
 };

@@ -40,6 +40,22 @@ type TState = {
   isSelected?: boolean;
 };
 
+const getControlBorderColor = (props: TProps, defaultColor: string) => {
+  if (props.isDisabled) {
+    return designTokens.borderColorForInputWhenDisabled;
+  }
+  if (props.hasError) {
+    return designTokens.borderColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.borderColorForInputWhenWarning;
+  }
+  if (props.isReadOnly) {
+    return designTokens.borderColorForInputWhenReadonly;
+  }
+  return defaultColor;
+};
+
 const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
@@ -92,11 +108,10 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     },
 
     '&:hover': {
-      borderColor: (() => {
-        if (!props.isDisabled && !props.isReadOnly)
-          return designTokens.borderColorForInputWhenHovered;
-        return null;
-      })(),
+      borderColor: getControlBorderColor(
+        props,
+        designTokens.borderColorForInputWhenHovered
+      ),
       backgroundColor: (() => {
         if (!props.isDisabled && !props.isReadOnly)
           return designTokens.backgroundColorForInputWhenHovered;
