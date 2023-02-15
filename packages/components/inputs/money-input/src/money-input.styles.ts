@@ -10,7 +10,10 @@ const getCurrencyLabelStyles = (props: TInputProps) => css`
   background-color: ${designTokens.backgroundColorForInputWhenDisabled};
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-  border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
+  border: 1px solid
+    ${props.isReadOnly
+      ? designTokens.borderColorForInputWhenReadonly
+      : designTokens.borderColorForInputWhenDisabled};
   border-right: 0;
   padding: ${designTokens.paddingForMoneyInputCurrencyDropdown};
   align-items: center;

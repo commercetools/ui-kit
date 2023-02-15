@@ -172,6 +172,8 @@ export const themes = {
     backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 85%)',
     backgroundColorForLocalizedMultilineTextInputLabel:
       'hsl(195, 35.2941176471%, 98%)',
+    backgroundColorForLocalizedMultilineTextInputLabelWhenReadonly:
+      'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
       'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForTooltip: '#213c45',
@@ -447,6 +449,8 @@ export const themes = {
     backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
     backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 95%)',
     backgroundColorForLocalizedMultilineTextInputLabel: '#fff',
+    backgroundColorForLocalizedMultilineTextInputLabelWhenReadonly:
+      'hsl(0, 0%, 95%)',
     backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
       'hsl(0, 0%, 95%)',
     backgroundColorForTooltip: 'hsl(195, 35.2941176471%, 10%)',
@@ -499,8 +503,7 @@ export const themes = {
       'hsl(203.05555555555554, 93.9130434783%, 85%)',
     borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 85%)',
     borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
-    borderColorForLocalizedMultilineTextInputLabelWhenReadonly:
-      'hsl(0, 0%, 90%)',
+    borderColorForLocalizedMultilineTextInputLabelWhenReadonly: '#fff',
     borderColorForTag: '#ccc',
     borderColorForTagWhenHovered: '#ccc',
     borderColorForContentNotificationWhenError:
@@ -870,6 +873,8 @@ const designTokens = {
     'var(--background-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 85%))',
   backgroundColorForLocalizedMultilineTextInputLabel:
     'var(--background-color-for-localized-multiline-text-input-label, hsl(195, 35.2941176471%, 98%))',
+  backgroundColorForLocalizedMultilineTextInputLabelWhenReadonly:
+    'var(--background-color-for-localized-multiline-text-input-label-when-readonly, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
     'var(--background-color-for-localized-multiline-text-input-label-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForTooltip: 'var(--background-color-for-tooltip, #213c45)',

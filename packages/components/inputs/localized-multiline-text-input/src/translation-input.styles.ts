@@ -27,10 +27,17 @@ const getTextareaStyles = (props: TTranslationInputStylesProps) => {
   return baseStyles;
 };
 
-const getLanguageLabelBackgroundColor = (props: TTranslationInputStylesProps) =>
-  props.isDisabled
-    ? designTokens.backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled
-    : designTokens.backgroundColorForLocalizedMultilineTextInputLabel;
+const getLanguageLabelBackgroundColor = (
+  props: TTranslationInputStylesProps
+) => {
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForLocalizedMultilineTextInputLabelWhenReadonly;
+  }
+  return designTokens.backgroundColorForLocalizedMultilineTextInputLabel;
+};
 
 const getLanguageLabelBorderColor = (props: TTranslationInputStylesProps) =>
   props.isReadOnly

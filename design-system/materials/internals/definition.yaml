@@ -469,10 +469,10 @@ decisionGroupsByTheme:
           description: ''
           choice: color-primary-85
         background-color-for-localized-multiline-text-input-label:
-          description: ''
           choice: color-accent-98
+        background-color-for-localized-multiline-text-input-label-when-readonly:
+          choice: color-accent-95
         background-color-for-localized-multiline-text-input-label-when-disabled:
-          description: ''
           choice: color-accent-98
         background-color-for-tooltip:
           choice: color-accent
@@ -1106,6 +1106,8 @@ decisionGroupsByTheme:
           choice: color-primary-95
         background-color-for-localized-multiline-text-input-label:
           choice: color-surface
+        background-color-for-localized-multiline-text-input-label-when-readonly:
+          choice: color-neutral-95
         background-color-for-localized-multiline-text-input-label-when-disabled:
           choice: color-neutral-95
         background-color-for-tooltip:
@@ -1199,7 +1201,7 @@ decisionGroupsByTheme:
         border-color-for-stamp-as-secondary:
           choice: color-neutral-85
         border-color-for-localized-multiline-text-input-label-when-readonly:
-          choice: color-neutral-90
+          choice: color-surface
         border-color-for-tag:
           choice: color-neutral
         border-color-for-tag-when-hovered:

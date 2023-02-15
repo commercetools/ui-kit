@@ -2,7 +2,17 @@ import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TEditorProps } from './editor';
 
-const EditorLanguageLabel = styled.label`
+const getEditorLanguageLabelBorderColor = (props: TEditorLanguageLabelProps) =>
+  `1px solid ${
+    props.isReadOnly
+      ? designTokens.borderColorForInputWhenReadonly
+      : designTokens.borderColorForInputWhenDisabled
+  }`;
+
+type TEditorLanguageLabelProps = {
+  isReadOnly?: boolean;
+};
+const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   /* avoid wrapping label onto new lines */
   white-space: nowrap;
   flex: 0;
@@ -13,7 +23,7 @@ const EditorLanguageLabel = styled.label`
   background-color: ${designTokens.backgroundColorForInputWhenDisabled};
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-  border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
+  border: ${(props) => getEditorLanguageLabelBorderColor(props)};
   padding: ${designTokens.paddingForLocalizedRichTextInputLabel};
   transition: border-color ${designTokens.transitionStandard},
     background-color ${designTokens.transitionStandard},

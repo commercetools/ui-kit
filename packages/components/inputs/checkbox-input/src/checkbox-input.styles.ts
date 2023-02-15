@@ -3,7 +3,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import type { TCheckboxProps } from './checkbox-input';
 
 const getSvgBorderStroke = (props: TCheckboxProps) => {
-  if (props.isDisabled) {
+  if (props.isDisabled || props.isReadOnly) {
     return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {

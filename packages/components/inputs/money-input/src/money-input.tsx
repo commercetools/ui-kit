@@ -47,6 +47,7 @@ type TLabel = {
   id: string;
   children?: ReactNode;
   isDisabled?: boolean;
+  isReadOnly?: boolean;
 };
 
 const Portal = (props: TLabel) => {
@@ -785,6 +786,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
           <CurrencyLabel
             id={MoneyInput.getAmountInputId(moneyInputId) as string}
             isDisabled={props.isDisabled}
+            isReadOnly={props.isReadOnly}
           >
             {option && option.label}
           </CurrencyLabel>

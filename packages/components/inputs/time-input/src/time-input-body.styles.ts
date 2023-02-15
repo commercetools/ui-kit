@@ -97,6 +97,7 @@ const getInputContainerBorderColor = (props: TTimeInputProps) => {
   }
   return designTokens.borderColorForInput;
 };
+
 const getInputContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
     return designTokens.fontColorForInputWhenDisabled;
@@ -108,6 +109,16 @@ const getInputContainerFontColor = (props: TTimeInputProps) => {
     return designTokens.fontColorForInputWhenReadonly;
   }
   return designTokens.fontColorForInput;
+};
+
+const getInputContainerBackgroundColor = (props: TTimeInputProps) => {
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForInputWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForInputWhenReadonly;
+  }
+  return designTokens.backgroundColorForInput;
 };
 
 // This styled component is only useful because it's referenced in the styles below
@@ -122,6 +133,7 @@ const getInputContainerStyles = (
       background-color: ${props.isDisabled
         ? designTokens.backgroundColorForInputWhenDisabled
         : designTokens.backgroundColorForInput};
+      background-color: ${getInputContainerBackgroundColor(props)};
       border: 1px solid ${getInputContainerBorderColor(props)};
       border-radius: ${designTokens.borderRadiusForInput};
       box-sizing: border-box;
@@ -142,7 +154,7 @@ const getInputContainerStyles = (
           : 'inherit'};
       }
 
-      &:hover {
+      &:hover:not(:read-only):not(:disabled) {
         background-color: ${designTokens.backgroundColorForInputWhenHovered};
       }
 

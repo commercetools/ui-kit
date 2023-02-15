@@ -188,6 +188,11 @@
     35.2941176471%,
     98%
   );
+  --background-color-for-localized-multiline-text-input-label-when-readonly: hsl(
+    195,
+    35.2941176471%,
+    95%
+  );
   --background-color-for-localized-multiline-text-input-label-when-disabled: hsl(
     195,
     35.2941176471%,

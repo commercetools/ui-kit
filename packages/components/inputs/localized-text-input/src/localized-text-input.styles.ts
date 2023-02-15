@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
+import { TLocalizedInputProps } from './localized-text-input';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -14,7 +15,7 @@ const getLocalizedInputStyles = () => [
   `,
 ];
 
-const getLanguageLabelStyles = (_props: unknown) => {
+const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
   return css`
     display: flex;
     flex-direction: column;
@@ -27,7 +28,10 @@ const getLanguageLabelStyles = (_props: unknown) => {
     background-color: ${designTokens.backgroundColorForInputWhenDisabled};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-    border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
+    border: 1px solid
+      ${props.isReadOnly
+        ? designTokens.colorSurface
+        : designTokens.borderColorForInputWhenDisabled};
     padding: 0 ${designTokens.spacing20};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},

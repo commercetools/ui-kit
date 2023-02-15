@@ -106,14 +106,14 @@ const getSearchIconButtonStyles = (props: TInputProps) => [
   `,
 ];
 
-const getBackgroundWhenHovered = (props: TInputProps) => {
+const getTextInputContainerBackgroundColor = (props: TInputProps) => {
   if (props.isDisabled) {
     return designTokens.backgroundColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
     return designTokens.backgroundColorForInputWhenReadonly;
   }
-  return designTokens.backgroundColorForInputWhenHovered;
+  return designTokens.backgroundColorForInput;
 };
 
 const getSearchTextInputContainerStyles = (props: TInputProps) => [
@@ -123,6 +123,7 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
     background-color: ${props.isDisabled
       ? designTokens.backgroundColorForInputWhenDisabled
       : designTokens.backgroundColorForInput};
+    background-color: ${getTextInputContainerBackgroundColor(props)};
     border: 1px solid ${getInputContainerBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-shadow: ${getInputBoxShadow(props)};
@@ -133,7 +134,9 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
         props,
         designTokens.borderColorForInputWhenHovered
       )};
-      background-color: ${getBackgroundWhenHovered(props)};
+    }
+    &:hover:not(:read-only):not(:disabled) {
+      background-color: ${designTokens.backgroundColorForInputWhenHovered};
     }
 
     &:focus-within {

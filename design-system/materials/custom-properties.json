@@ -156,6 +156,7 @@
   "--background-color-for-avatar-when-highlighted": "#ccc",
   "--background-color-for-stamp-as-positive": "hsl(172.9608938547486, 100%, 85%)",
   "--background-color-for-localized-multiline-text-input-label": "hsl(195, 35.2941176471%, 98%)",
+  "--background-color-for-localized-multiline-text-input-label-when-readonly": "hsl(195, 35.2941176471%, 95%)",
   "--background-color-for-localized-multiline-text-input-label-when-disabled": "hsl(195, 35.2941176471%, 98%)",
   "--background-color-for-tooltip": "#213c45",
   "--background-color-for-view-switcher": "#fff",
