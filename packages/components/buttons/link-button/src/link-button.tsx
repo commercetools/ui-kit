@@ -1,12 +1,12 @@
 import type { LocationDescriptor } from 'history';
 
-import { cloneElement, ReactElement, useEffect } from 'react';
+import { cloneElement, ReactElement } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import {
-  warnDeprecatedComponent,
+  useWarnDeprecatedComponent,
   filterInvalidAttributes,
 } from '@commercetools-uikit/utils';
 import Inline from '@commercetools-uikit/spacings-inline';
@@ -99,9 +99,7 @@ const LinkBody = (
 LinkBody.displayName = 'LinkBody';
 
 const LinkButton = (props: TLinkButtonProps) => {
-  useEffect(() => {
-    warnDeprecatedComponent('LinkButton');
-  }, []);
+  useWarnDeprecatedComponent('LinkButton');
   const remainingProps = filterInvalidAttributes(props);
 
   if (props.isExternal) {

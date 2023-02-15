@@ -1,10 +1,14 @@
-import warning from 'warning';
+import { warning, useWarning } from './warning';
 
-export default function warnDeprecatedComponent(
+const getMessage = (componentName: string, additionalMessage: string) =>
+  `"${componentName}" has been deprecated and will be removed in the next major version. ${additionalMessage}`;
+
+export const warnDeprecatedComponent = (
   componentName: string,
   additionalMessage = ''
-): void {
-  const message = `"${componentName}" has been deprecated and will be removed in the next major version.${additionalMessage}`;
+): void => warning(false, getMessage(componentName, additionalMessage));
 
-  warning(false, message);
-}
+export const useWarnDeprecatedComponent = (
+  componentName: string,
+  additionalMessage = ''
+): void => useWarning(false, getMessage(componentName, additionalMessage));
