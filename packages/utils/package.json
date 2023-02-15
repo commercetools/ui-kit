@@ -19,8 +19,8 @@
   "module": "dist/commercetools-uikit-utils.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
-    "@babel/runtime-corejs3": "^7.19.1",
+    "@babel/runtime": "^7.20.13",
+    "@babel/runtime-corejs3": "^7.20.13",
     "@emotion/is-prop-valid": "1.2.0",
     "@types/warning": "^3.0.0",
     "warning": "4.0.3"

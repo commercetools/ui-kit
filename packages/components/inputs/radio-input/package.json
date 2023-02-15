@@ -22,8 +22,8 @@
     "generate-icons": "svgr -d src/icons/generated --typescript -- src/icons/svg"
   },
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
-    "@babel/runtime-corejs3": "^7.19.1",
+    "@babel/runtime": "^7.20.13",
+    "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/constraints": "15.11.2",
     "@commercetools-uikit/design-system": "15.11.2",
     "@commercetools-uikit/icons": "15.11.2",
@@ -32,8 +32,8 @@
     "@commercetools-uikit/spacings-inset": "15.11.2",
     "@commercetools-uikit/spacings-stack": "15.11.2",
     "@commercetools-uikit/utils": "15.11.2",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "prop-types": "15.8.1",
     "react-is": "17.0.2"
   },
