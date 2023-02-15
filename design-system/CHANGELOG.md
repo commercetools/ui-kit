@@ -1,5 +1,20 @@
 # @commercetools-uikit/design-system
 
+## 15.12.0
+
+### Patch Changes
+
+- [#2419](https://github.com/commercetools/ui-kit/pull/2419) [`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies
+
+- [#2351](https://github.com/commercetools/ui-kit/pull/2351) [`6e0ade9bb`](https://github.com/commercetools/ui-kit/commit/6e0ade9bb909e09bb40e7804b88e06f2f8f7e6d0) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Use SSR compatible mutation observer
+
+- [#2418](https://github.com/commercetools/ui-kit/pull/2418) [`d57bb956d`](https://github.com/commercetools/ui-kit/commit/d57bb956d529ddc8f328e3189901b680f6d2b296) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Add new design tokens for select inputs tags
+
+- [#2397](https://github.com/commercetools/ui-kit/pull/2397) [`b1a12348e`](https://github.com/commercetools/ui-kit/commit/b1a12348e79188cc62e3ac5d7fb6c7f464f34dec) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Add tokens for money input component new design
+
+- Updated dependencies [[`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f), [`6e0ade9bb`](https://github.com/commercetools/ui-kit/commit/6e0ade9bb909e09bb40e7804b88e06f2f8f7e6d0)]:
+  - @commercetools-uikit/hooks@15.12.0
+
 ## 15.11.2
 
 ## 15.11.1

@@ -1,5 +1,24 @@
 # @commercetools-uikit/localized-multiline-text-input
 
+## 15.12.0
+
+### Patch Changes
+
+- [#2419](https://github.com/commercetools/ui-kit/pull/2419) [`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies
+
+- Updated dependencies [[`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f), [`6e0ade9bb`](https://github.com/commercetools/ui-kit/commit/6e0ade9bb909e09bb40e7804b88e06f2f8f7e6d0), [`d57bb956d`](https://github.com/commercetools/ui-kit/commit/d57bb956d529ddc8f328e3189901b680f6d2b296), [`6e0ade9bb`](https://github.com/commercetools/ui-kit/commit/6e0ade9bb909e09bb40e7804b88e06f2f8f7e6d0), [`b1a12348e`](https://github.com/commercetools/ui-kit/commit/b1a12348e79188cc62e3ac5d7fb6c7f464f34dec)]:
+  - @commercetools-uikit/spacings-stack@15.12.0
+  - @commercetools-uikit/flat-button@15.12.0
+  - @commercetools-uikit/input-utils@15.12.0
+  - @commercetools-uikit/constraints@15.12.0
+  - @commercetools-uikit/messages@15.12.0
+  - @commercetools-uikit/icons@15.12.0
+  - @commercetools-uikit/text@15.12.0
+  - @commercetools-uikit/localized-utils@15.12.0
+  - @commercetools-uikit/hooks@15.12.0
+  - @commercetools-uikit/utils@15.12.0
+  - @commercetools-uikit/design-system@15.12.0
+
 ## 15.11.2
 
 ### Patch Changes
