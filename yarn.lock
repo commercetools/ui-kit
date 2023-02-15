@@ -5257,19 +5257,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/cache@npm:^11.10.0":
-  version: 11.10.1
-  resolution: "@emotion/cache@npm:11.10.1"
-  dependencies:
-    "@emotion/memoize": ^0.8.0
-    "@emotion/sheet": ^1.2.0
-    "@emotion/utils": ^1.2.0
-    "@emotion/weak-memoize": ^0.3.0
-    stylis: 4.0.13
-  checksum: 950203c5a447c107a189042178fdf43b2e699f579e2d7cd9f39cb99ee2b1f20d84bb1ed653d2737a1adb79756c1f747783875ee76ccb547357f5aa9cd5ce63ee
-  languageName: node
-  linkType: hard
-
 "@emotion/cache@npm:^11.10.5":
   version: 11.10.5
   resolution: "@emotion/cache@npm:11.10.5"
@@ -5326,7 +5313,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:^11.10.5":
+"@emotion/react@npm:^11.10.5, @emotion/react@npm:^11.8.1":
   version: 11.10.5
   resolution: "@emotion/react@npm:11.10.5"
   dependencies:
@@ -5347,30 +5334,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 32b67b28e9b6d6c53b970072680697f04c2521441050bdeb19a1a7f0164af549b4dad39ff375eda1b6a3cf1cc86ba2c6fa55460ec040e6ebbca3e9ec58353cf7
-  languageName: node
-  linkType: hard
-
-"@emotion/react@npm:^11.8.1":
-  version: 11.10.4
-  resolution: "@emotion/react@npm:11.10.4"
-  dependencies:
-    "@babel/runtime": ^7.18.3
-    "@emotion/babel-plugin": ^11.10.0
-    "@emotion/cache": ^11.10.0
-    "@emotion/serialize": ^1.1.0
-    "@emotion/use-insertion-effect-with-fallbacks": ^1.0.0
-    "@emotion/utils": ^1.2.0
-    "@emotion/weak-memoize": ^0.3.0
-    hoist-non-react-statics: ^3.3.1
-  peerDependencies:
-    "@babel/core": ^7.0.0
-    react: ">=16.8.0"
-  peerDependenciesMeta:
-    "@babel/core":
-      optional: true
-    "@types/react":
-      optional: true
-  checksum: 7555f6a1840c71d841386be2ec98ebfd6399923bd6a61247c7b07283f9a056f57e83c4fdd9ea7a7fcc3d88e5e04bb03168b4f0557934bcd501c88af4db16e1e0
   languageName: node
   linkType: hard
 
@@ -5404,13 +5367,6 @@ __metadata:
   version: 1.1.0
   resolution: "@emotion/sheet@npm:1.1.0"
   checksum: a4b74e16a8fea1157413efe4904f5f679d724323cb605d66d20a0b98744422f5d411fca927ceb52e4de454a0a819c5273ca9496db9f011b4ecd17b9f1b212007
-  languageName: node
-  linkType: hard
-
-"@emotion/sheet@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "@emotion/sheet@npm:1.2.0"
-  checksum: b3771e47963d36c179f9a1119055d7e5d18e2718e73ebe2b4b1c56f4bbf4ea6b12c50bbc52cd502f03f7981beb2fbb3fee2638b6f5ef6c5f223b06f8bf88ec7b
   languageName: node
   linkType: hard
 
