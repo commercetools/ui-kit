@@ -183,17 +183,13 @@
   --background-color-for-avatar: hsl(0, 0%, 60%);
   --background-color-for-avatar-when-highlighted: #ccc;
   --background-color-for-stamp-as-positive: hsl(172.9608938547486, 100%, 85%);
-  --background-color-for-localized-multiline-text-input-label: hsl(
-    195,
-    35.2941176471%,
-    98%
-  );
-  --background-color-for-localized-multiline-text-input-label-when-readonly: hsl(
+  --background-color-for-localized-input-label: hsl(195, 35.2941176471%, 98%);
+  --background-color-for-localized-input-label-when-readonly: hsl(
     195,
     35.2941176471%,
     95%
   );
-  --background-color-for-localized-multiline-text-input-label-when-disabled: hsl(
+  --background-color-for-localized-input-label-when-disabled: hsl(
     195,
     35.2941176471%,
     98%
@@ -248,8 +244,8 @@
   --border-color-for-stamp-as-information: #078cdf;
   --border-color-for-stamp-as-primary: hsl(172.9608938547486, 100%, 25%);
   --border-color-for-stamp-as-secondary: hsl(0, 0%, 60%);
-  --border-color-for-localized-multiline-text-input-label: #ccc;
-  --border-color-for-localized-multiline-text-input-label-when-readonly: #ccc;
+  --border-color-for-localized-input-label: #ccc;
+  --border-color-for-localized-input-label-when-readonly: #ccc;
   --border-color-for-content-notification-when-error: #e60050;
   --border-color-for-content-notification-when-info: #078cdf;
   --border-color-for-content-notification-when-warning: #f16d0e;
@@ -302,7 +298,7 @@
   --font-color-for-tag-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-text-when-inverted: #fff;
   --font-color-for-table-header: #fff;
-  --font-color-for-localized-multiline-text-input-label: hsl(0, 0%, 60%);
+  --font-color-for-localized-input-label: hsl(0, 0%, 60%);
   --font-color-for-view-switcher: #1a1a1a;
   --font-color-for-view-switcher-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-view-switcher-when-selected: #1a1a1a;
@@ -351,7 +347,7 @@
   --font-size-for-avatar-as-small: 1rem;
   --font-size-for-avatar-as-medium: 1.5rem;
   --font-size-for-avatar-as-big: 3rem;
-  --font-size-for-localized-multiline-text-input-label: 0.9231rem;
+  --font-size-for-localized-input-label: 1rem;
   --font-size-for-content-notification: 1rem;
   --font-size-for-select-input-tag: 0.9231rem;
   --icon-color-for-datetime-input-icon: #1a1a1a;
@@ -401,7 +397,7 @@
   --padding-for-input: 8px;
   --padding-for-multiline-input: var(--spacing-10) var(--spacing-20);
   --padding-for-localized-rich-text-input-label: 0 var(--spacing-20);
-  --padding-for-localized-multiline-text-input-label: 0 var(--spacing-20);
+  --padding-for-localized-input-label: 0 var(--spacing-20);
   --padding-for-tag-remove-icon: 0 var(--spacing-10);
   --padding-for-tooltip: var(--spacing-10) var(--spacing-20);
   --padding-for-view-switcher: 0 var(--spacing-30) 0 var(--spacing-30);
