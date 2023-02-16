@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import type { ChangeEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -121,7 +122,7 @@ const getTextColor = (props: TLabelProps) => {
 
 const LabelTextWrapper = styled.div<TLabelProps>`
   margin-left: calc(
-    ${designTokens.spacing20} - ${designTokens.borderForCheckboxInputIcon}
+    ${designTokens.spacing20} - ${designTokens.borderWidthForCheckboxInputIcon}
   );
   outline: none;
   border-radius: ${designTokens.borderRadiusForTag};

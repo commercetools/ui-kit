@@ -200,7 +200,6 @@ export const themes = {
       '1px solid var(--color-neutral)',
     borderForViewSwitcher: 'none',
     borderForSelectInputTag: 'none',
-    borderForCheckboxInputIcon: '1px',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -497,7 +496,6 @@ export const themes = {
     borderForCollapsiblePanelHeaderIconWhenDisabled: 'none',
     borderForViewSwitcher: '1px solid var(--color-neutral)',
     borderForSelectInputTag: '1px solid var(--color-neutral-85)',
-    borderForCheckboxInputIcon: '1px',
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
@@ -947,7 +945,6 @@ const designTokens = {
     'var(--border-for-collapsible-panel-header-icon-when-disabled, 1px solid var(--color-neutral))',
   borderForViewSwitcher: 'var(--border-for-view-switcher, none)',
   borderForSelectInputTag: 'var(--border-for-select-input-tag, none)',
-  borderForCheckboxInputIcon: 'var(--border-for-checkbox-input-icon, 1px)',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',

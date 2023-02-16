@@ -223,7 +223,6 @@
     var(--color-neutral);
   --border-for-view-switcher: none;
   --border-for-select-input-tag: none;
-  --border-for-checkbox-input-icon: 1px;
   --border-color-for-input: hsl(0, 0%, 60%);
   --border-color-for-input-when-focused: #00b39e;
   --border-color-for-input-when-disabled: #ccc;

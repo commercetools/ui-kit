@@ -533,8 +533,6 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-select-input-tag:
           choice: 'none'
-        border-for-checkbox-input-icon:
-          choice: '1px'
 
     borderColors:
       label: Border Colors
@@ -1197,8 +1195,6 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral)'
         border-for-select-input-tag:
           choice: '1px solid var(--color-neutral-85)'
-        border-for-checkbox-input-icon:
-          choice: '1px'
 
     borderColors:
       label: Border Colors
