@@ -9,7 +9,6 @@ import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
-import Text from '@commercetools-uikit/text';
 import {
   sortLanguages,
   createLocalizedDataAttributes,
@@ -194,10 +193,7 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
       `}
     >
       <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
-        {/* FIXME: add proper tone for disabled when tones are refactored */}
-        <Text.Detail tone="secondary">
-          {props.language.toUpperCase()}
-        </Text.Detail>
+        {props.language.toUpperCase()}
       </label>
       <TextInput
         {...props}

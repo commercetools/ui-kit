@@ -3,11 +3,21 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 import type { TInputProps } from './money-input';
 
+const getLanguageLabelBackgroundColor = (props: TInputProps) => {
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForLocalizedInputLabelWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForLocalizedInputLabelWhenReadonly;
+  }
+  return designTokens.backgroundColorForLocalizedInputLabel;
+};
+
 const getCurrencyLabelStyles = (props: TInputProps) => css`
   display: flex;
   color: ${designTokens.fontColorForInputWhenDisabled};
   cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-  background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+  background-color: ${getLanguageLabelBackgroundColor(props)};
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
   border: 1px solid
@@ -17,12 +27,9 @@ const getCurrencyLabelStyles = (props: TInputProps) => css`
   border-right: 0;
   padding: ${designTokens.paddingForMoneyInputCurrencyDropdown};
   align-items: center;
-  font-size: ${designTokens.fontSizeForInput};
+  font-size: ${designTokens.fontSizeForLocalizedInputLabel};
   box-sizing: border-box;
 
-  &:hover {
-    background-color: ${designTokens.backgroundColorForInputWhenDisabled};
-  }
   &:focus-within: {
     border-width: 1px;
   }

@@ -15,6 +15,16 @@ const getLocalizedInputStyles = () => [
   `,
 ];
 
+const getLanguageLabelBackgroundColor = (props: TLocalizedInputProps) => {
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForLocalizedInputLabelWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForLocalizedInputLabelWhenReadonly;
+  }
+  return designTokens.backgroundColorForLocalizedInputLabel;
+};
+
 const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
   return css`
     display: flex;
@@ -23,16 +33,18 @@ const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
     box-sizing: border-box;
-    color: ${designTokens.fontColorForInputWhenDisabled};
+    color: ${designTokens.fontColorForLocalizedInputLabel};
+    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     height: ${designTokens.heightForInput};
-    background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+    font-size: ${designTokens.fontSizeForLocalizedInputLabel};
+    background-color: ${getLanguageLabelBackgroundColor(props)};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
     border: 1px solid
       ${props.isReadOnly
         ? designTokens.colorSurface
         : designTokens.borderColorForInputWhenDisabled};
-    padding: 0 ${designTokens.spacing20};
+    padding: ${designTokens.paddingForLocalizedInputLabel};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};

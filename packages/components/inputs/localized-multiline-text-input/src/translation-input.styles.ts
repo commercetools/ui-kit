@@ -31,24 +31,25 @@ const getLanguageLabelBackgroundColor = (
   props: TTranslationInputStylesProps
 ) => {
   if (props.isDisabled) {
-    return designTokens.backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled;
+    return designTokens.backgroundColorForLocalizedInputLabelWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.backgroundColorForLocalizedMultilineTextInputLabelWhenReadonly;
+    return designTokens.backgroundColorForLocalizedInputLabelWhenReadonly;
   }
-  return designTokens.backgroundColorForLocalizedMultilineTextInputLabel;
+  return designTokens.backgroundColorForLocalizedInputLabel;
 };
 
 const getLanguageLabelBorderColor = (props: TTranslationInputStylesProps) =>
   props.isReadOnly
-    ? designTokens.borderColorForLocalizedMultilineTextInputLabelWhenReadonly
-    : designTokens.borderColorForLocalizedMultilineTextInputLabel;
+    ? designTokens.borderColorForLocalizedInputLabelWhenReadonly
+    : designTokens.borderColorForLocalizedInputLabel;
 
 const getLanguageLabelStyles = (props: TTranslationInputStylesProps) => {
   return css`
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
-    color: ${designTokens.fontColorForLocalizedMultilineTextInputLabel};
+    color: ${designTokens.fontColorForLocalizedInputLabel};
+    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     line-height: calc(
       ${designTokens.heightForInput} - 2 * ${designTokens.borderRadius1}
     );
@@ -56,8 +57,8 @@ const getLanguageLabelStyles = (props: TTranslationInputStylesProps) => {
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
     border: 1px ${getLanguageLabelBorderColor(props)} solid;
-    padding: ${designTokens.paddingForLocalizedMultilineTextInputLabel};
-    font-size: ${designTokens.fontSizeForLocalizedMultilineTextInputLabel};
+    padding: ${designTokens.paddingForLocalizedInputLabel};
+    font-size: ${designTokens.fontSizeForLocalizedInputLabel};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};
