@@ -1,5 +1,20 @@
 # @commercetools-uikit/async-creatable-select-field
 
+## 15.12.0
+
+### Patch Changes
+
+- [#2419](https://github.com/commercetools/ui-kit/pull/2419) [`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies
+
+- Updated dependencies [[`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f), [`6e0ade9bb`](https://github.com/commercetools/ui-kit/commit/6e0ade9bb909e09bb40e7804b88e06f2f8f7e6d0), [`d57bb956d`](https://github.com/commercetools/ui-kit/commit/d57bb956d529ddc8f328e3189901b680f6d2b296), [`b1a12348e`](https://github.com/commercetools/ui-kit/commit/b1a12348e79188cc62e3ac5d7fb6c7f464f34dec), [`4856981b3`](https://github.com/commercetools/ui-kit/commit/4856981b342beefe118a54938dfa450d45a87dc9)]:
+  - @commercetools-uikit/async-creatable-select-input@15.12.0
+  - @commercetools-uikit/field-errors@15.12.0
+  - @commercetools-uikit/constraints@15.12.0
+  - @commercetools-uikit/field-label@15.12.0
+  - @commercetools-uikit/spacings@15.12.0
+  - @commercetools-uikit/utils@15.12.0
+  - @commercetools-uikit/design-system@15.12.0
+
 ## 15.11.2
 
 ### Patch Changes
