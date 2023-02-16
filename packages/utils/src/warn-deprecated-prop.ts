@@ -5,7 +5,9 @@ const getMessage = (
   componentName: string,
   additionalMessage = ''
 ) =>
-  `"${propName}" property of "${componentName}" component has been deprecated and will be removed in the next major version. ${additionalMessage}`;
+  `"${propName}" property of "${componentName}" component has been deprecated and will be removed in the next major version.${
+    additionalMessage ? ' ' + additionalMessage : ''
+  }`;
 
 export const warnDeprecatedProp = (
   condition: boolean,

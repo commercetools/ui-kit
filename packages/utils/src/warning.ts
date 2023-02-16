@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import tinyWarning from 'tiny-warning';
 
 // To avoid getting the following error, we type the entire function.
 //   "Assertions require every name in the call target to be declared with an explicit type annotation."
@@ -20,10 +19,11 @@ export const warning: TWarningFunction = (
   message,
   prefix = 'Warning'
 ) => {
-  if (isProduction) {
+  if (isProduction || condition) {
     return;
   }
-  tinyWarning(condition, `${prefix}: ${message}`);
+
+  console.warn(`${prefix}: ${message}`);
 };
 
 export const useWarning = (condition: boolean, message: string) => {

@@ -169,7 +169,7 @@ const Stamp = (props: Props) => {
     !Boolean(props.children),
     'children',
     'Stamp',
-    'Please use `label` and `icon` properties instead'
+    'Please use `label` and `icon` properties instead.'
   );
 
   return (

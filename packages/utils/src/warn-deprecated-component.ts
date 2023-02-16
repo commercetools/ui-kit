@@ -1,7 +1,9 @@
 import { warning, useWarning } from './warning';
 
 const getMessage = (componentName: string, additionalMessage: string) =>
-  `"${componentName}" has been deprecated and will be removed in the next major version. ${additionalMessage}`;
+  `"${componentName}" has been deprecated and will be removed in the next major version.${
+    additionalMessage ? ' ' + additionalMessage : ''
+  }`;
 
 export const warnDeprecatedComponent = (
   componentName: string,
