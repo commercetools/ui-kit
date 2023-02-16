@@ -330,6 +330,7 @@ export const themes = {
     heightForRadioInputOptionWhenChecked: '8px',
     widthForAvatarAsMedium: '48px',
     minWidthForMoneyInputCurrencyDropdown: '72px',
+    minWidthForSelectableSelectInputDropdown: '72px',
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
     fontSizeForButton: '1rem',
     fontSizeForInput: '1rem',
@@ -414,6 +415,7 @@ export const themes = {
     paddingForGroupHeadingSelectInputOptions: '8px',
     paddingForSelectInputMenu: 'inherit',
     paddingForMoneyInputCurrencyDropdown: '0 var(--spacing-20)',
+    paddingForSelectableSelectInputDropdown: '0 var(--spacing-20)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -654,6 +656,7 @@ export const themes = {
     iconColorForDatetimeInputIconWhenHovered: '#e60050',
     widthForAvatarAsMedium: '40px',
     minWidthForMoneyInputCurrencyDropdown: '80px',
+    minWidthForSelectableSelectInputDropdown: '80px',
     marginForTableHeader: '16px',
     marginForTableCellAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-20) 0 0',
@@ -702,6 +705,7 @@ export const themes = {
     paddingForGroupHeadingSelectInputOptions: '16px',
     paddingForSelectInputMenu: 'var(--spacing-10) 0',
     paddingForMoneyInputCurrencyDropdown: '0 12px',
+    paddingForSelectableSelectInputDropdown: '0 var(--spacing-20)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -1184,6 +1188,8 @@ const designTokens = {
   widthForAvatarAsMedium: 'var(--width-for-avatar-as-medium, 48px)',
   minWidthForMoneyInputCurrencyDropdown:
     'var(--min-width-for-money-input-currency-dropdown, 72px)',
+  minWidthForSelectableSelectInputDropdown:
+    'var(--min-width-for-selectable-select-input-dropdown, 72px)',
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
   fontSizeForButton: 'var(--font-size-for-button, 1rem)',
@@ -1304,6 +1310,8 @@ const designTokens = {
   paddingForSelectInputMenu: 'var(--padding-for-select-input-menu, inherit)',
   paddingForMoneyInputCurrencyDropdown:
     'var(--padding-for-money-input-currency-dropdown, 0 var(--spacing-20))',
+  paddingForSelectableSelectInputDropdown:
+    'var(--padding-for-selectable-select-input-dropdown, 0 var(--spacing-20))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

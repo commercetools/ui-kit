@@ -401,6 +401,8 @@ componentGroups:
     description: 'Radio input label elements'
   radio-input-option:
     description: 'Radio input option elements'
+  selectable-select-input-dropdown:
+    description: 'Selectable select input dropdown elements'
 
 decisionGroupsByTheme:
   default:
@@ -854,6 +856,8 @@ decisionGroupsByTheme:
       decisions:
         min-width-for-money-input-currency-dropdown:
           choice: '72px'
+        min-width-for-selectable-select-input-dropdown:
+          choice: '72px'
 
     placeholderFontColors:
       label: Placeholder font colors
@@ -1078,6 +1082,8 @@ decisionGroupsByTheme:
         padding-for-select-input-menu:
           choice: 'inherit'
         padding-for-money-input-currency-dropdown:
+          choice: '0 var(--spacing-20)'
+        padding-for-selectable-select-input-dropdown:
           choice: '0 var(--spacing-20)'
 
     shadows:
@@ -1586,6 +1592,8 @@ decisionGroupsByTheme:
       decisions:
         min-width-for-money-input-currency-dropdown:
           choice: '80px'
+        min-width-for-selectable-select-input-dropdown:
+          choice: '80px'
 
     margins:
       label: Margins
@@ -1682,6 +1690,8 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-10) 0'
         padding-for-money-input-currency-dropdown:
           choice: '0 12px'
+        padding-for-selectable-select-input-dropdown:
+          choice: '0 var(--spacing-20)'
 
     shadows:
       label: Shadows
