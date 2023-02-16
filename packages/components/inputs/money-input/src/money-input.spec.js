@@ -55,6 +55,12 @@ class TestComponent extends Component {
   }
 }
 
+const consoleWarnMock = jest.fn();
+beforeEach(() => {
+  consoleWarnMock.mockClear();
+  console.warn = consoleWarnMock;
+});
+
 describe('MoneyInput.getCurrencyDropdownId', () => {
   describe('when an id is passed', () => {
     it('should return the created it', () => {
@@ -95,11 +101,10 @@ describe('MoneyInput.convertToMoneyValue', () => {
     });
   });
   describe('when a currency with no fractions digits is used and locale is not passed', () => {
-    it('should throw error that locale is required', () => {
-      expect(() =>
-        MoneyInput.convertToMoneyValue({ currencyCode: 'JPY', amount: '1' })
-      ).toThrow(
-        'A locale must be provided when currency has no fraction digits (JPY)'
+    it('should warn that locale is required', () => {
+      MoneyInput.convertToMoneyValue({ currencyCode: 'JPY', amount: '1' });
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput: A locale must be provided when currency has no fraction digits (JPY)'
       );
     });
   });
@@ -229,22 +234,24 @@ describe('MoneyInput.parseMoneyValue', () => {
     it('should throw', () => {
       expect(() =>
         MoneyInput.parseMoneyValue({ centAmount: 10 }, 'en')
-      ).toThrow(
-        'MoneyInput.parseMoneyValue: Value must contain "currencyCode"'
+      ).toThrow();
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: Value must contain "currencyCode"'
       );
     });
   });
   describe('when called with a centPrecision money missing centAmount', () => {
-    it('should throw', () => {
-      expect(() =>
-        MoneyInput.parseMoneyValue(
-          {
-            type: 'centPrecision',
-            currencyCode: 'EUR',
-          },
-          'en'
-        )
-      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    it('should warn', () => {
+      MoneyInput.parseMoneyValue(
+        {
+          type: 'centPrecision',
+          currencyCode: 'EUR',
+        },
+        'en'
+      );
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: Value must contain "amount"'
+      );
     });
   });
   describe('when called with a centPrecision money using an unknown currenyCode', () => {
@@ -257,50 +264,52 @@ describe('MoneyInput.parseMoneyValue', () => {
           },
           'en'
         )
-      ).toThrow(
-        'MoneyInput.parseMoneyValue: Value must use known currency code'
+      ).toThrow();
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: Value must use known currency code'
       );
     });
   });
   describe('when called with a highPrecision money missing fractionDigits', () => {
-    it('should throw', () => {
-      expect(() =>
-        MoneyInput.parseMoneyValue(
-          {
-            type: 'highPrecision',
-            currencyCode: 'EUR',
-            preciseAmount: 3,
-          },
-          'en'
-        )
-      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    it('should warn', () => {
+      MoneyInput.parseMoneyValue(
+        {
+          type: 'highPrecision',
+          currencyCode: 'EUR',
+          preciseAmount: 3,
+        },
+        'en'
+      );
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: Value must contain "amount"'
+      );
     });
   });
   describe('when called with a highPrecision money missing preciseAmount', () => {
-    it('should throw', () => {
-      expect(() =>
-        MoneyInput.parseMoneyValue(
-          {
-            type: 'highPrecision',
-            currencyCode: 'EUR',
-            fractionDigits: 2,
-          },
-          'en'
-        )
-      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    it('should warn', () => {
+      MoneyInput.parseMoneyValue(
+        {
+          type: 'highPrecision',
+          currencyCode: 'EUR',
+          fractionDigits: 2,
+        },
+        'en'
+      );
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: Value must contain "amount"'
+      );
     });
   });
   describe('when called without a locale', () => {
-    it('should throw', () => {
-      expect(() =>
-        MoneyInput.parseMoneyValue({
-          type: 'centPrecision',
-          centAmount: 1234,
-          currencyCode: 'EUR',
-          fractionDigits: 2,
-        })
-      ).toThrow(
-        'MoneyInput.parseMoneyValue: A locale must be passed as the second argument'
+    it('should warn', () => {
+      MoneyInput.parseMoneyValue({
+        type: 'centPrecision',
+        centAmount: 1234,
+        currencyCode: 'EUR',
+        fractionDigits: 2,
+      });
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: A locale must be passed as the second argument'
       );
     });
   });
@@ -416,18 +425,18 @@ describe('MoneyInput.isHighPrecision', () => {
     });
   });
   describe('when called with an empty money value', () => {
-    it('should throw', () => {
-      expect(() =>
-        MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' })
-      ).toThrow();
+    it('should warn', () => {
+      MoneyInput.isHighPrecision({ amount: '', currencyCode: 'EUR' });
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyValue.isHighPrecision may not be called with an empty money value.'
+      );
     });
   });
   describe('when a currency with no fractions digits is used and locale is not passed', () => {
-    it('should throw error that locale is required', () => {
-      expect(() =>
-        MoneyInput.isHighPrecision({ amount: '1', currencyCode: 'JPY' })
-      ).toThrow(
-        'A locale must be provided when currency has no fraction digits (JPY)'
+    it('should warn that locale is required', () => {
+      MoneyInput.isHighPrecision({ amount: '1', currencyCode: 'JPY' });
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput: A locale must be provided when currency has no fraction digits (JPY)'
       );
     });
   });

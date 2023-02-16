@@ -9,6 +9,12 @@ const createTestProps = (custom) => ({
   ...custom,
 });
 
+const consoleWarnMock = jest.fn();
+beforeEach(() => {
+  consoleWarnMock.mockClear();
+  console.warn = consoleWarnMock;
+});
+
 it('should render a page-size selector and a page navigator', async () => {
   render(<Pagination {...createTestProps()} />);
 
@@ -151,25 +157,19 @@ describe('validation', () => {
   `(
     'when page size range is "$perPageRange" and page size is $invalidSize',
     ({ perPageRange, invalidSize }) => {
-      it('should throw an error', async () => {
+      it('should warn', async () => {
         const onPerPageChange = jest.fn();
-        console.error = jest.fn();
-        expect(() =>
-          render(
-            <Pagination
-              {...createTestProps({
-                onPerPageChange,
-                perPageRange,
-                perPage: invalidSize,
-              })}
-            />
-          )
-        ).toThrowError(
-          expect.objectContaining({
-            message: expect.stringContaining(
-              `Warning: @commercetools-uikit/pagination: invalid page size ${invalidSize}`
-            ),
-          })
+        render(
+          <Pagination
+            {...createTestProps({
+              onPerPageChange,
+              perPageRange,
+              perPage: invalidSize,
+            })}
+          />
+        );
+        expect(consoleWarnMock).toHaveBeenCalledWith(
+          `Warning: @commercetools-uikit/pagination: invalid page size ${invalidSize}. It must be one of the values of the selected range in "20,50".`
         );
       });
     }
@@ -186,20 +186,18 @@ describe('validation', () => {
   `(
     'when per page range is "$perPageRange" and perPage is "$perPage"',
     ({ perPageRange, perPage }) => {
-      it('should not throw an error', async () => {
+      it('should not log any warning', async () => {
         const onPerPageChange = jest.fn();
-        console.error = jest.fn();
-        expect(() =>
-          render(
-            <Pagination
-              {...createTestProps({
-                perPage,
-                onPerPageChange,
-                perPageRange,
-              })}
-            />
-          )
-        ).not.toThrow();
+        render(
+          <Pagination
+            {...createTestProps({
+              perPage,
+              onPerPageChange,
+              perPageRange,
+            })}
+          />
+        );
+        expect(consoleWarnMock).not.toHaveBeenCalled();
       });
     }
   );

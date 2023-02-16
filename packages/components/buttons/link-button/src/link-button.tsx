@@ -1,12 +1,12 @@
 import type { LocationDescriptor } from 'history';
 
-import { cloneElement, ReactElement, useEffect } from 'react';
+import { cloneElement, ReactElement } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import {
-  warnDeprecatedComponent,
+  useWarnDeprecatedComponent,
   filterInvalidAttributes,
 } from '@commercetools-uikit/utils';
 import Inline from '@commercetools-uikit/spacings-inline';
@@ -61,7 +61,7 @@ const hoverStyles = css`
 `;
 
 const StyledExternalLink = styled.a<
-  Pick<TLinkButtonProps, 'to' | 'isDisabled'>
+  Pick<TLinkButtonProps, 'to'> & { disabled?: boolean }
 >`
   display: inline-flex;
   align-items: center;
@@ -74,22 +74,22 @@ const StyledExternalLink = styled.a<
 
   span {
     color: ${(props) =>
-      props.isDisabled ? designTokens.colorNeutral : designTokens.colorPrimary};
+      props.disabled ? designTokens.colorNeutral : designTokens.colorPrimary};
   }
 
-  cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 
-  ${(props) => !props.isDisabled && hoverStyles}
+  ${(props) => !props.disabled && hoverStyles}
 `;
 
 const LinkBody = (
-  props: Pick<TLinkButtonProps, 'iconLeft' | 'label' | 'isDisabled'>
+  props: Pick<TLinkButtonProps, 'iconLeft' | 'label'> & { disabled?: boolean }
 ) => (
   <Inline scale="xs" alignItems="center">
     {props.iconLeft
       ? cloneElement(props.iconLeft, {
           size: 'medium',
-          color: props.isDisabled ? 'neutral60' : 'primary',
+          color: props.disabled ? 'neutral60' : 'primary',
         })
       : null}
     <Text.Body as="span">{props.label}</Text.Body>
@@ -99,9 +99,7 @@ const LinkBody = (
 LinkBody.displayName = 'LinkBody';
 
 const LinkButton = (props: TLinkButtonProps) => {
-  useEffect(() => {
-    warnDeprecatedComponent('LinkButton');
-  }, []);
+  useWarnDeprecatedComponent('LinkButton');
   const remainingProps = filterInvalidAttributes(props);
 
   if (props.isExternal) {
@@ -117,14 +115,14 @@ const LinkButton = (props: TLinkButtonProps) => {
         onClick={
           props.isDisabled ? (event) => event.preventDefault() : undefined
         }
-        isDisabled={props.isDisabled}
+        disabled={props.isDisabled}
         data-track-component="LinkButton"
         aria-label={props.label}
         {...remainingProps}
       >
         <LinkBody
           iconLeft={props.iconLeft}
-          isDisabled={props.isDisabled}
+          disabled={props.isDisabled}
           label={props.label}
         />
       </StyledExternalLink>
@@ -135,7 +133,7 @@ const LinkButton = (props: TLinkButtonProps) => {
     <StyledExternalLink
       as={ReactRouterLink}
       to={props.to}
-      isDisabled={props.isDisabled}
+      disabled={props.isDisabled}
       onClick={props.isDisabled ? (event) => event.preventDefault() : undefined}
       data-track-component="LinkButton"
       aria-label={props.label}
@@ -143,7 +141,7 @@ const LinkButton = (props: TLinkButtonProps) => {
     >
       <LinkBody
         iconLeft={props.iconLeft}
-        isDisabled={props.isDisabled}
+        disabled={props.isDisabled}
         label={props.label}
       />
     </StyledExternalLink>
