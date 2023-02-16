@@ -17,24 +17,18 @@ const createTestProps = (custom) => ({
 describe('rendering', () => {
   /* eslint-disable no-console */
   let props;
-  let log;
+  const consoleWarnMock = jest.fn();
   beforeEach(() => {
     props = createTestProps();
-    log = console.error;
-    console.error = jest.fn();
-  });
-
-  afterEach(() => {
-    console.error = log;
+    consoleWarnMock.mockClear();
+    console.warn = consoleWarnMock;
   });
 
   it('should warn', () => {
     render(<LinkButton {...props} />);
 
-    expect(console.error).toHaveBeenCalledWith(
-      expect.stringMatching(
-        'Warning: "LinkButton" has been deprecated and will be removed in the next major version.'
-      )
+    expect(consoleWarnMock).toHaveBeenCalledWith(
+      'Warning: "LinkButton" has been deprecated and will be removed in the next major version.'
     );
   });
 
