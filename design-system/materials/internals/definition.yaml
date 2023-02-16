@@ -623,13 +623,13 @@ decisionGroupsByTheme:
         border-color-for-select-input-menu-when-error:
           choice: color-error
         border-color-for-checkbox-input-icon:
-          choice: color-neutral
+          choice: color-neutral-60
         border-color-for-checkbox-input-icon-when-disabled:
           choice: color-neutral
         border-color-for-checkbox-input-icon-when-readonly:
           choice: color-neutral
         border-color-for-checkbox-input-icon-when-error:
-          choice: color-neutral
+          choice: color-error
 
     borderRadiuses:
       label: Border Radius
@@ -782,11 +782,11 @@ decisionGroupsByTheme:
         font-color-for-checkbox-input-label:
           choice: color-solid
         font-color-for-checkbox-input-label-when-error:
-          choice: color-solid
+          choice: color-error
         font-color-for-checkbox-input-label-when-disabled:
-          choice: color-solid
+          choice: color-neutral-40
         font-color-for-checkbox-input-label-when-readonly:
-          choice: color-solid
+          choice: color-neutral-40
 
     heights:
       label: Height

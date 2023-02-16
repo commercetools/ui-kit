@@ -237,10 +237,10 @@ export const themes = {
     borderColorForSelectInputWhenReadonly: '#ccc',
     borderColorForSelectInputMenuWhenWarning: '#f16d0e',
     borderColorForSelectInputMenuWhenError: '#e60050',
-    borderColorForCheckboxInputIcon: '#ccc',
+    borderColorForCheckboxInputIcon: 'hsl(0, 0%, 60%)',
     borderColorForCheckboxInputIconWhenDisabled: '#ccc',
     borderColorForCheckboxInputIconWhenReadonly: '#ccc',
-    borderColorForCheckboxInputIconWhenError: '#ccc',
+    borderColorForCheckboxInputIconWhenError: '#e60050',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -305,9 +305,9 @@ export const themes = {
     fontColorForMoneyInputCurrencyDropdownIndicator: '#1a1a1a',
     fontColorForSearchInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
     fontColorForCheckboxInputLabel: '#1a1a1a',
-    fontColorForCheckboxInputLabelWhenError: '#1a1a1a',
-    fontColorForCheckboxInputLabelWhenDisabled: '#1a1a1a',
-    fontColorForCheckboxInputLabelWhenReadonly: '#1a1a1a',
+    fontColorForCheckboxInputLabelWhenError: '#e60050',
+    fontColorForCheckboxInputLabelWhenDisabled: 'hsl(0, 0%, 40%)',
+    fontColorForCheckboxInputLabelWhenReadonly: 'hsl(0, 0%, 40%)',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -1016,13 +1016,13 @@ const designTokens = {
   borderColorForSelectInputMenuWhenError:
     'var(--border-color-for-select-input-menu-when-error, #e60050)',
   borderColorForCheckboxInputIcon:
-    'var(--border-color-for-checkbox-input-icon, #ccc)',
+    'var(--border-color-for-checkbox-input-icon, hsl(0, 0%, 60%))',
   borderColorForCheckboxInputIconWhenDisabled:
     'var(--border-color-for-checkbox-input-icon-when-disabled, #ccc)',
   borderColorForCheckboxInputIconWhenReadonly:
     'var(--border-color-for-checkbox-input-icon-when-readonly, #ccc)',
   borderColorForCheckboxInputIconWhenError:
-    'var(--border-color-for-checkbox-input-icon-when-error, #ccc)',
+    'var(--border-color-for-checkbox-input-icon-when-error, #e60050)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -1124,11 +1124,11 @@ const designTokens = {
   fontColorForCheckboxInputLabel:
     'var(--font-color-for-checkbox-input-label, #1a1a1a)',
   fontColorForCheckboxInputLabelWhenError:
-    'var(--font-color-for-checkbox-input-label-when-error, #1a1a1a)',
+    'var(--font-color-for-checkbox-input-label-when-error, #e60050)',
   fontColorForCheckboxInputLabelWhenDisabled:
-    'var(--font-color-for-checkbox-input-label-when-disabled, #1a1a1a)',
+    'var(--font-color-for-checkbox-input-label-when-disabled, hsl(0, 0%, 40%))',
   fontColorForCheckboxInputLabelWhenReadonly:
-    'var(--font-color-for-checkbox-input-label-when-readonly, #1a1a1a)',
+    'var(--font-color-for-checkbox-input-label-when-readonly, hsl(0, 0%, 40%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',

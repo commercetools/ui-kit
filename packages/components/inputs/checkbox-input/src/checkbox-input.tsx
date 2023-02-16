@@ -149,6 +149,11 @@ const Label = styled.label<TLabelProps>`
 
 const CheckboxIcon = (props: TLabelProps) => {
   const { isNewTheme, themedValue } = useTheme();
+  const isDefaultState = !(
+    props.hasError ||
+    props.isDisabled ||
+    props.isReadOnly
+  );
   return (
     <div
       css={css`
@@ -187,6 +192,22 @@ const CheckboxIcon = (props: TLabelProps) => {
       `,
           !isNewTheme &&
             css`
+              svg > path[fill] {
+                fill: ${getTextColor(props)};
+              }
+              svg > path[stroke] {
+                stroke: ${getTextColor(props)};
+              }
+            `,
+          !isNewTheme &&
+            isDefaultState &&
+            css`
+              svg > path[fill] {
+                fill: ${designTokens.colorPrimary};
+              }
+              svg > path[stroke] {
+                stroke: ${designTokens.colorPrimary};
+              }
               &:hover {
                 border-color: ${designTokens.colorPrimary};
               }
