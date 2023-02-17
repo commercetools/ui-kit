@@ -856,8 +856,6 @@ decisionGroupsByTheme:
       decisions:
         min-width-for-money-input-currency-dropdown:
           choice: '72px'
-        min-width-for-selectable-select-input-dropdown:
-          choice: '72px'
 
     placeholderFontColors:
       label: Placeholder font colors
@@ -1591,8 +1589,6 @@ decisionGroupsByTheme:
       prefix: min-width
       decisions:
         min-width-for-money-input-currency-dropdown:
-          choice: '80px'
-        min-width-for-selectable-select-input-dropdown:
           choice: '80px'
 
     margins:

@@ -330,7 +330,6 @@ export const themes = {
     heightForRadioInputOptionWhenChecked: '8px',
     widthForAvatarAsMedium: '48px',
     minWidthForMoneyInputCurrencyDropdown: '72px',
-    minWidthForSelectableSelectInputDropdown: '72px',
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
     fontSizeForButton: '1rem',
     fontSizeForInput: '1rem',
@@ -656,7 +655,6 @@ export const themes = {
     iconColorForDatetimeInputIconWhenHovered: '#e60050',
     widthForAvatarAsMedium: '40px',
     minWidthForMoneyInputCurrencyDropdown: '80px',
-    minWidthForSelectableSelectInputDropdown: '80px',
     marginForTableHeader: '16px',
     marginForTableCellAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-20) 0 0',
@@ -1188,8 +1186,6 @@ const designTokens = {
   widthForAvatarAsMedium: 'var(--width-for-avatar-as-medium, 48px)',
   minWidthForMoneyInputCurrencyDropdown:
     'var(--min-width-for-money-input-currency-dropdown, 72px)',
-  minWidthForSelectableSelectInputDropdown:
-    'var(--min-width-for-selectable-select-input-dropdown, 72px)',
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
   fontSizeForButton: 'var(--font-size-for-button, 1rem)',

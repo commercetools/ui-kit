@@ -308,7 +308,6 @@
   "--height-for-radio-input-option-when-checked": "8px",
   "--width-for-avatar-as-medium": "48px",
   "--min-width-for-money-input-currency-dropdown": "72px",
-  "--min-width-for-selectable-select-input-dropdown": "72px",
   "--placeholder-font-color-for-input": "hsl(0, 0%, 60%)",
   "--font-size-for-button": "1rem",
   "--font-size-for-input": "1rem",
