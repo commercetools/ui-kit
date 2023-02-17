@@ -396,6 +396,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             /* ARIA */
             aria-invalid={props['aria-invalid']}
             aria-errormessage={props['aria-errormessage']}
+            data-testid="selectable-input"
           />
           {props.isClearable &&
             searchValue &&

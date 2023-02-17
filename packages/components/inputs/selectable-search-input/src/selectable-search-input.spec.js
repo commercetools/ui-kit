@@ -201,11 +201,11 @@ describe('SelectableSearchInput', () => {
     const onChange = jest.fn((event) => {
       expect(event.target.id).toEqual('some-id.textInput');
       expect(event.target.name).toEqual('some-name.textInput');
-      expect(event.target.value).toEqual('foo');
+      expect(event.target.value).toEqual('avengers');
     });
     const onSubmit = jest.fn();
 
-    render(
+    const { container } = render(
       <TestComponent
         id="some-id"
         name="some-name"
@@ -213,13 +213,14 @@ describe('SelectableSearchInput', () => {
         onSubmit={onSubmit}
       />
     );
-    const event = { target: { value: 'foo' } };
-    fireEvent.change(screen.getByLabelText('test-label'), event);
+    const event = { target: { value: 'avengers' } };
+
+    fireEvent.change(screen.getByTestId('selectable-input'), event);
     expect(onChange).toHaveBeenCalled();
 
     const submitButton = screen.getByLabelText('search-button');
     fireEvent.click(submitButton);
-    expect(onSubmit).toHaveBeenCalledWith('foo');
+    expect(onSubmit).toHaveBeenCalledWith('avengers');
   });
 
   it('should call the passed onReset function', () => {
@@ -227,10 +228,10 @@ describe('SelectableSearchInput', () => {
 
     const { container } = render(<TestComponent onReset={onReset} />);
 
-    const event = { target: { value: 'foo' } };
-    const textInput = screen.getByLabelText('test-label');
+    const event = { target: { value: 'hello' } };
+    const textInput = screen.getByTestId('selectable-input');
     fireEvent.change(textInput, event);
-    expect(textInput).toHaveAttribute('value', 'foo');
+    expect(textInput).toHaveAttribute('value', 'hello');
     const clearButton = screen.getByLabelText('clear-button');
     fireEvent.click(clearButton);
     expect(onReset).toHaveBeenCalledWith();
