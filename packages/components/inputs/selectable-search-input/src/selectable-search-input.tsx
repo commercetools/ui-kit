@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import {
   type MouseEvent,
   type KeyboardEvent,
@@ -5,6 +6,7 @@ import {
   type ReactNode,
   useState,
   useCallback,
+  useRef,
 } from 'react';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Constraints from '@commercetools-uikit/constraints';
@@ -104,7 +106,7 @@ export type TSelectableSearchInputProps = {
   /**
    * Handler when the clear button is clicked.
    */
-  onReset: () => void;
+  onReset?: () => void;
   /**
    * Focus the input on initial render
    */
@@ -207,14 +209,19 @@ export type TSelectableSearchInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   closeMenuOnSelect?: ReactSelectProps['closeMenuOnSelect'];
+  /**
+   * Horizontal size limit for the dropdown menu.
+   */
+  menuHorizontalConstraint?: 3 | 4 | 5;
 };
 
 const defaultProps: Pick<
   TSelectableSearchInputProps,
-  'horizontalConstraint' | 'isClearable'
+  'horizontalConstraint' | 'isClearable' | 'menuHorizontalConstraint'
 > = {
   horizontalConstraint: 'scale',
   isClearable: true,
+  menuHorizontalConstraint: 3,
 };
 
 const selectableSearchInputSequentialId = createSequentialId(
@@ -225,6 +232,9 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const [textInputHasFocus, toggleTextInputHasFocus] = useToggleState(false);
   const [dropdownHasFocus, toggleDropdownHasFocus] = useToggleState(false);
   const [searchValue, setSearchValue] = useState(props.value.textValue || '');
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textInputRef = useRef<HTMLInputElement>(null);
+
   const { isNewTheme } = useTheme();
 
   const selectablSearchInputId = useFieldId(
@@ -289,20 +299,72 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     }
   };
 
+  const dropdownName = getDropdownName(props.name);
+  const dropdownId = SelectableSearchInput.getDropdownId(
+    selectablSearchInputId
+  );
+
+  const handleDropdownFocus = useCallback(() => {
+    if (props.onFocus)
+      props.onFocus({
+        target: {
+          id: dropdownId,
+          name: dropdownName,
+        },
+      });
+    toggleDropdownHasFocus(true);
+  }, [props.onFocus, toggleDropdownHasFocus, dropdownName, dropdownId]);
+
+  const handleDropdownBlur = useCallback(() => {
+    console.log('eyy???>>>>>>>');
+    toggleDropdownHasFocus(false);
+  }, [toggleDropdownHasFocus]);
+
+  const handleContainerBlur = useCallback(
+    (event) => {
+      // ensures that both fields are marked as touched when one of them
+      // is blurred
+      if (
+        typeof props.onBlur === 'function' &&
+        !containerRef.current?.contains(event.relatedTarget)
+      ) {
+        props.onBlur({
+          target: {
+            id: SelectableSearchInput.getDropdownId(selectablSearchInputId),
+            name: getDropdownName(props.name),
+          },
+        });
+        props.onBlur({
+          target: {
+            id: SelectableSearchInput.getTextInputId(selectablSearchInputId),
+            name: getTextInputName(props.name),
+          },
+        });
+      }
+    },
+    [props.onBlur, selectablSearchInputId, props.name]
+  );
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
-      <Container>
-        <SelectableSelect
-          dropdownId={SelectableSearchInput.getDropdownId(
-            selectablSearchInputId
-          )}
-          dropdownName={getDropdownName(props.name)}
-          textInputHasFocus={textInputHasFocus}
-          dropdownHasFocus={dropdownHasFocus}
-          toggleDropdownHasFocus={toggleDropdownHasFocus}
-          isNewTheme={isNewTheme}
-          {...props}
-        />
+      <Container
+        ref={containerRef}
+        onBlur={handleContainerBlur}
+        data-testid="selectable-search-input-container"
+      >
+        <Constraints.Horizontal max={props.menuHorizontalConstraint}>
+          <SelectableSelect
+            {...props}
+            id={SelectableSearchInput.getDropdownId(selectablSearchInputId)}
+            name={getDropdownName(props.name)}
+            textInputHasFocus={textInputHasFocus}
+            dropdownHasFocus={dropdownHasFocus}
+            handleDropdownFocus={handleDropdownFocus}
+            handleDropdownBlur={handleDropdownBlur}
+            isNewTheme={isNewTheme}
+            textInputRef={textInputRef}
+          />
+        </Constraints.Horizontal>
         <div
           css={[
             getSelectableSearchInputContainerStyles(props),
@@ -314,6 +376,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
           ]}
         >
           <input
+            ref={textInputRef}
             id={SelectableSearchInput.getTextInputId(selectablSearchInputId)}
             name={getTextInputName(props.name)}
             type="text"

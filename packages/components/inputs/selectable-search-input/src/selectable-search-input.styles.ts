@@ -51,6 +51,7 @@ const getSelectableSearchInputStyles = (props: TInputProps) => [
     &:hover {
       background-color: transparent !important;
     }
+    width: 100%;
   `,
 ];
 
@@ -131,6 +132,7 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     margin-left: 0;
+    width: 100%;
 
     &::placeholder {
       color: ${designTokens.placeholderFontColorForInput};

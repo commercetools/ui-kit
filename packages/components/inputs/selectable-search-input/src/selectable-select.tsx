@@ -4,6 +4,7 @@ import { useIntl } from 'react-intl';
 
 import Select, {
   components,
+  SingleValueProps,
   type Props as ReactSelectProps,
 } from 'react-select';
 import {
@@ -12,7 +13,7 @@ import {
   messages,
 } from '@commercetools-uikit/select-utils';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
-import { useCallback } from 'react';
+import { ReactNode, useCallback } from 'react';
 import {
   TSelectableSearchInputProps,
   TOption,
@@ -34,6 +35,17 @@ type TCreateSelectableSelectStyles = {
   dropdownHasFocus?: boolean;
   textInputHasFocus?: boolean;
 };
+
+type TSingleValue = {
+  id?: string;
+  children?: ReactNode;
+} & SingleValueProps;
+
+const SingleValue = ({ id, ...props }: TSingleValue) => (
+  <components.SingleValue {...props}>
+    <label htmlFor={id}>{props.children}</label>
+  </components.SingleValue>
+);
 
 const createSelectableSelectStyles = ({
   hasWarning,
@@ -60,7 +72,6 @@ const createSelectableSelectStyles = ({
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
       borderRight: '0',
-      minWidth: designTokens.minWidthForSelectableSelectInputDropdown,
       height: '100%',
       borderColor: (() => {
         if (isDisabled)
@@ -77,6 +88,18 @@ const createSelectableSelectStyles = ({
           return `${designTokens.borderColorForInputWhenReadonly} !important`;
         return designTokens.borderColorForInput;
       })(),
+      cursor: (() => {
+        if (isDisabled) return 'not-allowed';
+        if (isReadOnly) return `default`;
+        return 'pointer';
+      })(),
+      backgroundColor: (() => {
+        if (isReadOnly) return designTokens.backgroundColorForInput;
+        return base.backgroundColor;
+      })(),
+      '&:hover': {
+        backgroundColor: designTokens.backgroundColorForInputWhenHovered,
+      },
     }),
     dropdownIndicator: () => ({
       fill: isReadOnly
@@ -89,10 +112,10 @@ const createSelectableSelectStyles = ({
 type TSelectableSelect = {
   textInputHasFocus: boolean;
   dropdownHasFocus: boolean;
-  toggleDropdownHasFocus: (value: boolean) => void;
   isNewTheme: boolean;
-  dropdownId?: string;
-  dropdownName?: string;
+  handleDropdownFocus: () => void;
+  handleDropdownBlur: () => void;
+  textInputRef: React.RefObject<HTMLInputElement>;
 } & TSelectableSearchInputProps;
 
 const SelectableSelect = (props: TSelectableSelect) => {
@@ -110,38 +133,46 @@ const SelectableSelect = (props: TSelectableSelect) => {
         (option as TOption).value === props.value.dropdownValue
     ) || null;
 
-  const handleDropdownFocus = useCallback(() => {
-    if (props.onFocus)
-      props.onFocus({
-        target: {
-          id: props.id,
-          name: props.dropdownName,
-        },
-      });
-    props.toggleDropdownHasFocus(true);
-  }, [props.toggleDropdownHasFocus]);
+  const dropdownStyles = createSelectableSelectStyles({
+    hasWarning: props.hasWarning,
+    hasError: props.hasError,
+    isDisabled: props.isDisabled,
+    isReadOnly: props.isReadOnly,
+    menuPortalZIndex: props.menuPortalZIndex,
+    isNewTheme,
+    dropdownHasFocus: props.dropdownHasFocus,
+    textInputHasFocus: props.textInputHasFocus,
+  }) as ReactSelectProps['styles'];
 
-  const handleDropdownBlur = useCallback(() => {
-    if (props.onBlur)
-      props.onBlur({
-        target: {
-          id: props.id,
-          name: props.dropdownName,
-        },
-      });
-    props.toggleDropdownHasFocus(false);
-  }, [props.toggleDropdownHasFocus]);
+  const handleDropdownChange = useCallback(
+    (nextSelectedOptions) => {
+      if (props.onChange) {
+        props.onChange({
+          target: {
+            id: props.id,
+            name: props.name,
+            value: (nextSelectedOptions as TOption).value,
+          },
+        });
+      }
+      props.textInputRef.current?.focus();
+    },
+    [props.onChange, props.id, props.name, props.textInputRef]
+  );
 
   return (
     <Select
-      inputId={props.dropdownId}
-      name={props.dropdownName}
+      inputId={props.id}
+      name={props.name}
       value={selectedOptions}
       isDisabled={props.isDisabled}
       isSearchable={props.IsMenuSearchable}
       maxMenuHeight={props.maxMenuHeight}
       closeMenuOnSelect={props.closeMenuOnSelect}
       components={{
+        SingleValue: (innerProps) => (
+          <SingleValue {...innerProps} id={props.id} />
+        ),
         Input: (ownProps) => (
           <components.Input {...ownProps} readOnly={props.isReadOnly} />
         ),
@@ -150,32 +181,12 @@ const SelectableSelect = (props: TSelectableSelect) => {
       options={props.menuOptions}
       menuIsOpen={props.isReadOnly ? false : undefined}
       placeholder=""
-      styles={
-        createSelectableSelectStyles({
-          hasWarning: props.hasWarning,
-          hasError: props.hasError,
-          isDisabled: props.isDisabled,
-          isReadOnly: props.isReadOnly,
-          menuPortalZIndex: props.menuPortalZIndex,
-          isNewTheme,
-          dropdownHasFocus: props.dropdownHasFocus,
-          textInputHasFocus: props.textInputHasFocus,
-        }) as ReactSelectProps['styles']
-      }
-      onFocus={handleDropdownFocus}
+      styles={dropdownStyles}
+      onFocus={props.handleDropdownFocus}
       menuPortalTarget={props.menuPortalTarget}
       menuShouldBlockScroll={props.menuShouldBlockScroll}
-      onBlur={handleDropdownBlur}
-      onChange={(nextSelectedOptions) => {
-        props.onChange &&
-          props.onChange({
-            target: {
-              id: props.id,
-              name: props.dropdownName,
-              value: (nextSelectedOptions as TOption).value,
-            },
-          });
-      }}
+      onBlur={props.handleDropdownBlur}
+      onChange={handleDropdownChange}
       onInputChange={props.onMenuInputChange}
       data-testid="selectable-search-dropdown"
       noOptionsMessage={

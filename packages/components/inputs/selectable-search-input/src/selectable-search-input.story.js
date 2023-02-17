@@ -128,7 +128,7 @@ storiesOf('Components|Inputs', module)
           horizontalConstraint={select(
             'horizontalConstraint',
             Constraints.getAcceptedMaxPropValues(3),
-            7
+            16
           )}
           menuOptions={menuOptions}
         />
