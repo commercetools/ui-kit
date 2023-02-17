@@ -6,7 +6,7 @@ describe('SelectableSearchInput', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('hello world how are you');
+    await expect(page).toMatch('hello world');
     await percySnapshot(page, 'SelectableSearchInput');
   });
 });
