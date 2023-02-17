@@ -2,4 +2,4 @@
 '@commercetools-uikit/selectable-search-input': minor
 ---
 
-Implement Selectable Search Input
+Add [SelectableSearchInput](https://uikit.commercetools.com/?path=/story/components-inputs--selectablesearchinput) component to ui-kit.
