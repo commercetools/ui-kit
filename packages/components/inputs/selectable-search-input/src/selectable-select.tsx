@@ -122,7 +122,7 @@ const SelectableSelect = (props: TSelectableSelect) => {
   const intl = useIntl();
   const { isNewTheme } = useTheme();
 
-  const optionsWithoutGroups = flatMap(props.menuOptions, (option) =>
+  const optionsWithoutGroups = flatMap(props.options, (option) =>
     has(option, 'value') ? option : (option as TOptionObject).options
   );
 
@@ -178,7 +178,7 @@ const SelectableSelect = (props: TSelectableSelect) => {
         ),
         DropdownIndicator,
       }}
-      options={props.menuOptions}
+      options={props.options}
       menuIsOpen={props.isReadOnly ? false : undefined}
       placeholder=""
       styles={dropdownStyles}

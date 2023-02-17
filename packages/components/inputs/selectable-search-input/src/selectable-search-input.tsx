@@ -160,7 +160,7 @@ export type TSelectableSearchInputProps = {
   /**
    * Array of options that populate the select menu
    */
-  menuOptions: TOption[] | TOptionObject[];
+  options: TOption[] | TOptionObject[];
   /**
    * z-index value for the menu portal
    */

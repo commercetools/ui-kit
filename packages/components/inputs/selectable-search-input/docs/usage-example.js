@@ -1,4 +1,4 @@
-import SelectableSearchInput from '@commercetools-uikit/search-text-input';
+import SelectableSearchInput from '@commercetools-uikit/selectable-search-input';
 
 const Example = () => (
   <SelectableSearchInput

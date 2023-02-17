@@ -3,7 +3,10 @@ import { Suite, Spec } from '../../../../../test/percy';
 
 export const routePath = '/selectable-search-input';
 
-const value = 'hello world how are you?';
+const value = {
+  textValue: 'hello world',
+  dropdownValue: 'one',
+};
 const options = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },
@@ -15,9 +18,10 @@ export const component = () => (
       <SelectableSearchInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint={7}
+        horizontalConstraint={16}
         onSubmit={() => {}}
         onReset={() => {}}
+        options={options}
       />
     </Spec>
     <Spec label="when disabled">
@@ -25,9 +29,10 @@ export const component = () => (
         isDisabled={true}
         value={value}
         onChange={() => {}}
-        horizontalConstraint={7}
+        horizontalConstraint={16}
         onSubmit={() => {}}
         onReset={() => {}}
+        options={options}
       />
     </Spec>
     <Spec label="when read-only">
@@ -35,9 +40,10 @@ export const component = () => (
         isReadOnly={true}
         value={value}
         onChange={() => {}}
-        horizontalConstraint={7}
+        horizontalConstraint={16}
         onSubmit={() => {}}
         onReset={() => {}}
+        options={options}
       />
     </Spec>
     <Spec label="when placeholder is visible">
@@ -45,9 +51,10 @@ export const component = () => (
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
-        horizontalConstraint={7}
+        horizontalConstraint={16}
         onSubmit={() => {}}
         onReset={() => {}}
+        options={options}
       />
     </Spec>
     <Spec label="when placeholder is visible and input is disabled">
@@ -56,18 +63,20 @@ export const component = () => (
         value=""
         placeholder="Enter a text"
         onChange={() => {}}
-        horizontalConstraint={7}
+        horizontalConstraint={16}
         onSubmit={() => {}}
         onReset={() => {}}
+        options={options}
       />
     </Spec>
     <Spec label="with error">
       <SelectableSearchInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint={7}
+        horizontalConstraint={16}
         onSubmit={() => {}}
         onReset={() => {}}
+        options={options}
         hasError={true}
       />
     </Spec>
@@ -75,9 +84,10 @@ export const component = () => (
       <SelectableSearchInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint={7}
+        horizontalConstraint={16}
         onSubmit={() => {}}
         onReset={() => {}}
+        options={options}
         hasWarning={true}
       />
     </Spec>
@@ -85,9 +95,10 @@ export const component = () => (
       <SelectableSearchInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint={7}
+        horizontalConstraint={16}
         onSubmit={() => {}}
         onReset={() => {}}
+        options={options}
         hasError={true}
         hasWarning={true}
       />
@@ -96,9 +107,10 @@ export const component = () => (
       <SelectableSearchInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint={7}
+        horizontalConstraint={16}
         onSubmit={() => {}}
         onReset={() => {}}
+        options={options}
         isDisabled={true}
         hasError={true}
       />
@@ -107,11 +119,24 @@ export const component = () => (
       <SelectableSearchInput
         value={value}
         onChange={() => {}}
-        horizontalConstraint={7}
+        horizontalConstraint={16}
         onSubmit={() => {}}
         onReset={() => {}}
+        options={options}
         isDisabled={true}
         hasWarning={true}
+      />
+    </Spec>
+    <Spec label="when isClearable is false">
+      <SelectableSearchInput
+        isReadOnly={true}
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={16}
+        onSubmit={() => {}}
+        onReset={() => {}}
+        options={options}
+        isClearable={false}
       />
     </Spec>
   </Suite>

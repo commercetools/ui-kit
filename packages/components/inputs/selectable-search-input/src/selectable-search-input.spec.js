@@ -33,7 +33,7 @@ TestComponent.defaultProps = {
     textValue: 'test-value',
     dropdownValue: 'foo',
   },
-  menuOptions: [
+  options: [
     { value: 'foo', label: 'Foo' },
     { value: 'bar', label: 'Bar' },
     { value: 'baz', label: 'Baz' },

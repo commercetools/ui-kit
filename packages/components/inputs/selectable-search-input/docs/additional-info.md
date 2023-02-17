@@ -16,4 +16,4 @@ SelectableSearchInput.isEmpty('tree'); // -> false
 
 ## Main Functions and use cases are:
 
-- Input field for single-line strings. Used for search.
+- Input field for single-line strings. Used for selectable search.
