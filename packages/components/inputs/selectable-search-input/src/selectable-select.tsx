@@ -166,7 +166,7 @@ const SelectableSelect = (props: TSelectableSelect) => {
       name={props.name}
       value={selectedOptions}
       isDisabled={props.isDisabled}
-      isSearchable={props.IsMenuSearchable}
+      isSearchable={props.isMenuSearchable}
       maxMenuHeight={props.maxMenuHeight}
       closeMenuOnSelect={props.closeMenuOnSelect}
       components={{

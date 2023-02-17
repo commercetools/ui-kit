@@ -196,7 +196,7 @@ export type TSelectableSearchInputProps = {
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
-  IsMenuSearchable?: ReactSelectProps['isSearchable'];
+  isMenuSearchable?: ReactSelectProps['isSearchable'];
   /**
    * Maximum height of the menu before scrolling
    * <br>
