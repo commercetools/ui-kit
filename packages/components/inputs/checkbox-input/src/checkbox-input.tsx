@@ -165,7 +165,9 @@ const CheckboxIcon = (props: TLabelProps) => {
         justify-content: center;
         border-radius: ${designTokens.borderRadius6};
         &:hover {
-          background-color: ${designTokens.backgroundColorForCheckboxInputIconWhenHovered};
+          background-color: ${props.isDisabled || props.isReadOnly
+            ? 'unset'
+            : designTokens.backgroundColorForCheckboxInputIconWhenHovered};
         }
       `}
     >
