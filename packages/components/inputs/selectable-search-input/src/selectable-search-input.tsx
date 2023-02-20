@@ -298,7 +298,10 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   };
 
   const handleSubmit = (
-    event: KeyboardEvent<HTMLButtonElement> | MouseEvent<HTMLButtonElement>
+    event:
+      | KeyboardEvent<HTMLButtonElement>
+      | MouseEvent<HTMLButtonElement>
+      | KeyboardEvent<HTMLInputElement>
   ) => {
     event.preventDefault();
     if (props.onSubmit) {
@@ -408,6 +411,11 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             aria-invalid={props['aria-invalid']}
             aria-errormessage={props['aria-errormessage']}
             data-testid="selectable-input"
+            onKeyDown={(event) => {
+              if (!props.isReadOnly && event.key === 'Enter') {
+                handleSubmit(event);
+              }
+            }}
           />
           {props.isClearable &&
             searchValue &&
