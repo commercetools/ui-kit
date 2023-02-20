@@ -151,13 +151,9 @@ const Label = styled.label<TLabelProps>`
 
 const CheckboxIcon = (props: TLabelProps) => {
   const { isNewTheme, themedValue } = useTheme();
-  const isDefaultState = !(
-    props.hasError ||
-    props.isDisabled ||
-    props.isReadOnly
-  );
-  const canShowHoverEffect =
-    props.isHovered && !(props.isDisabled || props.isReadOnly);
+  const isDisabledOrReadOnlyState = props.isDisabled || props.isReadOnly;
+  const isDefaultState = !(props.hasError || isDisabledOrReadOnlyState);
+  const canForcedHoverEffect = props.isHovered && !isDisabledOrReadOnlyState;
   return (
     <div
       css={[
@@ -169,12 +165,12 @@ const CheckboxIcon = (props: TLabelProps) => {
           justify-content: center;
           border-radius: ${designTokens.borderRadius6};
           &:hover {
-            background-color: ${canShowHoverEffect
-              ? designTokens.backgroundColorForCheckboxInputIconWhenHovered
-              : 'unset'};
+            background-color: ${isDisabledOrReadOnlyState
+              ? 'unset'
+              : designTokens.backgroundColorForCheckboxInputIconWhenHovered};
           }
         `,
-        canShowHoverEffect &&
+        canForcedHoverEffect &&
           css`
             background-color: ${designTokens.backgroundColorForCheckboxInputIconWhenHovered};
           `,
@@ -221,11 +217,13 @@ const CheckboxIcon = (props: TLabelProps) => {
                 stroke: ${designTokens.colorPrimary};
               }
               &:hover {
-                border-color: ${designTokens.colorPrimary};
+                border-color: ${isDisabledOrReadOnlyState
+                  ? 'unset'
+                  : designTokens.colorPrimary};
               }
             `,
           !isNewTheme &&
-            canShowHoverEffect &&
+            canForcedHoverEffect &&
             css`
               border-color: ${designTokens.colorPrimary};
             `,
