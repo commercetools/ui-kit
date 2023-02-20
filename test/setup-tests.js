@@ -33,7 +33,9 @@ Object.defineProperty(window, 'TextDecoder', {
 });
 
 const silenceConsoleWarnings = [];
-const notThrowWarnings = [];
+const notThrowWarnings = [
+  /"children" property of "Stamp" component has been deprecated/,
+];
 
 const shouldSilenceWarnings = (...messages) =>
   silenceConsoleWarnings.some((msgRegex) =>

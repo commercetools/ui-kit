@@ -3,6 +3,12 @@ import NumberInput from './number-input';
 
 const baseProps = { value: '', onChange: () => {} };
 
+const consoleWarnMock = jest.fn();
+beforeEach(() => {
+  consoleWarnMock.mockClear();
+  console.warn = consoleWarnMock;
+});
+
 describe('NumberInput.toFormValue', () => {
   describe('when called with a number', () => {
     it('should return that number', () => {
@@ -55,11 +61,30 @@ describe('NumberInput.hasFractionDigits', () => {
     });
   });
   describe('when called with invalid number', () => {
-    it('should throw', () => {
-      expect(() => NumberInput.hasFractionDigits()).toThrow();
-      expect(() => NumberInput.hasFractionDigits(NaN)).toThrow();
-      expect(() => NumberInput.hasFractionDigits('foo')).toThrow();
-      expect(() => NumberInput.hasFractionDigits('3..')).toThrow();
+    it('should warn', () => {
+      NumberInput.hasFractionDigits();
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: NumberInput.hasFractionDigits may only be called with valid numbers (either as string or number).'
+      );
+      consoleWarnMock.mockClear();
+
+      NumberInput.hasFractionDigits(NaN);
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: NumberInput.hasFractionDigits may only be called with valid numbers (either as string or number).'
+      );
+      consoleWarnMock.mockClear();
+
+      NumberInput.hasFractionDigits('foo');
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: NumberInput.hasFractionDigits may only be called with valid numbers (either as string or number).'
+      );
+      consoleWarnMock.mockClear();
+
+      NumberInput.hasFractionDigits('3..');
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: NumberInput.hasFractionDigits may only be called with valid numbers (either as string or number).'
+      );
+      consoleWarnMock.mockClear();
     });
   });
 });

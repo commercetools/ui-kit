@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/spacings",
   "description": "A preset of all the UI-Kit spacings components.",
-  "version": "15.11.2",
+  "version": "15.12.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,12 +19,12 @@
   "module": "dist/commercetools-uikit-spacings.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
-    "@babel/runtime-corejs3": "^7.19.1",
-    "@commercetools-uikit/spacings-inline": "15.11.2",
-    "@commercetools-uikit/spacings-inset": "15.11.2",
-    "@commercetools-uikit/spacings-inset-squish": "15.11.2",
-    "@commercetools-uikit/spacings-stack": "15.11.2"
+    "@babel/runtime": "^7.20.13",
+    "@babel/runtime-corejs3": "^7.20.13",
+    "@commercetools-uikit/spacings-inline": "15.12.0",
+    "@commercetools-uikit/spacings-inset": "15.12.0",
+    "@commercetools-uikit/spacings-inset-squish": "15.12.0",
+    "@commercetools-uikit/spacings-stack": "15.12.0"
   },
   "devDependencies": {
     "react": "17.0.2"
