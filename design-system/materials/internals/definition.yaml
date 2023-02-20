@@ -403,6 +403,8 @@ componentGroups:
     description: 'Radio input option elements'
   selectable-select-input-dropdown:
     description: 'Selectable select input dropdown elements'
+  selectable-search-input-dropdown:
+    description: 'Selectable search input dropdown elements'
 
 decisionGroupsByTheme:
   default:
@@ -1081,7 +1083,7 @@ decisionGroupsByTheme:
           choice: 'inherit'
         padding-for-money-input-currency-dropdown:
           choice: '0 var(--spacing-20)'
-        padding-for-selectable-select-input-dropdown:
+        padding-for-selectable-search-input-dropdown:
           choice: '0 var(--spacing-20)'
 
     shadows:
@@ -1686,7 +1688,7 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-10) 0'
         padding-for-money-input-currency-dropdown:
           choice: '0 12px'
-        padding-for-selectable-select-input-dropdown:
+        padding-for-selectable-search-input-dropdown:
           choice: '0 var(--spacing-20)'
 
     shadows:

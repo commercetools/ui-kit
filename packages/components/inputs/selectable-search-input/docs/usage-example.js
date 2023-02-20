@@ -6,6 +6,10 @@ const Example = () => (
     onChange={(event) => alert(event.target.value)}
     onSubmit={(val) => alert(val)}
     onReset={() => alert('reset')}
+    options={[
+      { value: 'one', label: 'One' },
+      { value: 'two', label: 'Two' },
+    ]}
   />
 );
 

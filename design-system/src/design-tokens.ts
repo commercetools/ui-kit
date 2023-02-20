@@ -414,7 +414,7 @@ export const themes = {
     paddingForGroupHeadingSelectInputOptions: '8px',
     paddingForSelectInputMenu: 'inherit',
     paddingForMoneyInputCurrencyDropdown: '0 var(--spacing-20)',
-    paddingForSelectableSelectInputDropdown: '0 var(--spacing-20)',
+    paddingForSelectableSearchInputDropdown: '0 var(--spacing-20)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -703,7 +703,7 @@ export const themes = {
     paddingForGroupHeadingSelectInputOptions: '16px',
     paddingForSelectInputMenu: 'var(--spacing-10) 0',
     paddingForMoneyInputCurrencyDropdown: '0 12px',
-    paddingForSelectableSelectInputDropdown: '0 var(--spacing-20)',
+    paddingForSelectableSearchInputDropdown: '0 var(--spacing-20)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -1306,8 +1306,8 @@ const designTokens = {
   paddingForSelectInputMenu: 'var(--padding-for-select-input-menu, inherit)',
   paddingForMoneyInputCurrencyDropdown:
     'var(--padding-for-money-input-currency-dropdown, 0 var(--spacing-20))',
-  paddingForSelectableSelectInputDropdown:
-    'var(--padding-for-selectable-select-input-dropdown, 0 var(--spacing-20))',
+  paddingForSelectableSearchInputDropdown:
+    'var(--padding-for-selectable-search-input-dropdown, 0 var(--spacing-20))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

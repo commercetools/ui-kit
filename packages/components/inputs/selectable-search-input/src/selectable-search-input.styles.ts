@@ -67,6 +67,7 @@ const getButtonStyles = () => css`
     background-color ${designTokens.transitionStandard};
   transition: border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard};
+  margin-right: ${designTokens.marginRightForClearInputIcon};
 `;
 
 const getIconColor = (props: TInputProps, defaultColor: string) => {
@@ -82,7 +83,6 @@ const getIconColor = (props: TInputProps, defaultColor: string) => {
 const getClearIconButtonStyles = (props: TInputProps) => [
   getButtonStyles(),
   css`
-    margin-right: ${designTokens.marginRightForClearInputIcon};
     fill: ${getIconColor(props, designTokens.fontColorForClearInputIcon)};
     &:hover {
       fill: ${getIconColor(

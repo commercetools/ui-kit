@@ -8,6 +8,8 @@ import {
   useCallback,
   useRef,
 } from 'react';
+import has from 'lodash/has';
+import flatMap from 'lodash/flatMap';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Constraints from '@commercetools-uikit/constraints';
 import { SearchIcon, CloseIcon } from '@commercetools-uikit/icons';
@@ -102,7 +104,7 @@ export type TSelectableSearchInputProps = {
   /**
    * Handler when the search button is clicked.
    */
-  onSubmit: (searchValue: string) => void;
+  onSubmit: (value: TValue) => void;
   /**
    * Handler when the clear button is clicked.
    */
@@ -213,15 +215,23 @@ export type TSelectableSearchInputProps = {
    * Horizontal size limit for the dropdown menu.
    */
   menuHorizontalConstraint?: 3 | 4 | 5;
+  /**
+   * Show submit button in the input
+   */
+  showSubmitButton?: boolean;
 };
 
 const defaultProps: Pick<
   TSelectableSearchInputProps,
-  'horizontalConstraint' | 'isClearable' | 'menuHorizontalConstraint'
+  | 'horizontalConstraint'
+  | 'isClearable'
+  | 'menuHorizontalConstraint'
+  | 'showSubmitButton'
 > = {
   horizontalConstraint: 'scale',
   isClearable: true,
   menuHorizontalConstraint: 3,
+  showSubmitButton: true,
 };
 
 const selectableSearchInputSequentialId = createSequentialId(
@@ -237,6 +247,16 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
 
   const { isNewTheme } = useTheme();
 
+  const optionsWithoutGroups = flatMap(props.options, (option) =>
+    has(option, 'value') ? option : (option as TOptionObject).options
+  );
+
+  const selectedOption = optionsWithoutGroups.find(
+    (option) =>
+      has(option, 'value') &&
+      (option as TOption).value === props.value.dropdownValue
+  ) as TOption;
+
   const selectablSearchInputId = useFieldId(
     props.id,
     selectableSearchInputSequentialId
@@ -250,24 +270,26 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   }
 
   const handleTextInputFocus = useCallback(() => {
-    if (props.onFocus)
+    if (props.onFocus) {
       props.onFocus({
         target: {
           id: SelectableSearchInput.getTextInputId(selectablSearchInputId),
           name: getTextInputName(props.name),
         },
       });
+    }
     toggleTextInputHasFocus(true);
   }, [textInputHasFocus, props.onFocus, selectablSearchInputId, props.name]);
 
   const handleTextInputBlur = useCallback(() => {
-    if (props.onBlur)
+    if (props.onBlur) {
       props.onBlur({
         target: {
           id: SelectableSearchInput.getTextInputId(selectablSearchInputId),
           name: getTextInputName(props.name),
         },
       });
+    }
     toggleTextInputHasFocus(false);
   }, [textInputHasFocus, props.onBlur, selectablSearchInputId, props.name]);
 
@@ -280,7 +302,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    props.onChange &&
+    if (props.onChange) {
       props.onChange({
         target: {
           id: SelectableSearchInput.getTextInputId(selectablSearchInputId),
@@ -288,6 +310,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
           value: event.target.value,
         },
       });
+    }
   };
 
   const handleSubmit = (
@@ -295,7 +318,10 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   ) => {
     event.preventDefault();
     if (props.onSubmit) {
-      props.onSubmit(searchValue);
+      props.onSubmit({
+        textValue: searchValue,
+        dropdownValue: selectedOption?.value,
+      });
     }
   };
 
@@ -305,18 +331,18 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   );
 
   const handleDropdownFocus = useCallback(() => {
-    if (props.onFocus)
+    if (props.onFocus) {
       props.onFocus({
         target: {
           id: dropdownId,
           name: dropdownName,
         },
       });
+    }
     toggleDropdownHasFocus(true);
   }, [props.onFocus, toggleDropdownHasFocus, dropdownName, dropdownId]);
 
   const handleDropdownBlur = useCallback(() => {
-    console.log('eyy???>>>>>>>');
     toggleDropdownHasFocus(false);
   }, [toggleDropdownHasFocus]);
 
@@ -363,6 +389,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             handleDropdownBlur={handleDropdownBlur}
             isNewTheme={isNewTheme}
             textInputRef={textInputRef}
+            selectedOption={selectedOption}
           />
         </Constraints.Horizontal>
         <div
@@ -409,12 +436,14 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
                 css={getClearIconButtonStyles(props)}
               />
             )}
-          <SecondaryIconButton
-            icon={<SearchIcon />}
-            label={'search-button'}
-            onClick={handleSubmit}
-            css={getSearchIconButtonStyles(props)}
-          />
+          {props.showSubmitButton && (
+            <SecondaryIconButton
+              icon={<SearchIcon />}
+              label={'search-button'}
+              onClick={handleSubmit}
+              css={getSearchIconButtonStyles(props)}
+            />
+          )}
         </div>
       </Container>
     </Constraints.Horizontal>
@@ -425,10 +454,7 @@ SelectableSearchInput.displayName = 'SelectableSearchInput';
 SelectableSearchInput.defaultProps = defaultProps;
 SelectableSearchInput.isEmpty = (
   formValue: TSelectableSearchInputProps['value']
-) =>
-  !formValue ||
-  formValue.textValue.trim() === '' ||
-  formValue.dropdownValue === '';
+) => !formValue || formValue.textValue.trim() === '';
 SelectableSearchInput.getTextInputId = getTextInputName;
 SelectableSearchInput.getDropdownId = getDropdownName;
 

@@ -1,10 +1,7 @@
-import has from 'lodash/has';
-import flatMap from 'lodash/flatMap';
 import { useIntl } from 'react-intl';
-
 import Select, {
   components,
-  SingleValueProps,
+  type SingleValueProps,
   type Props as ReactSelectProps,
 } from 'react-select';
 import {
@@ -13,11 +10,10 @@ import {
   messages,
 } from '@commercetools-uikit/select-utils';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
-import { ReactNode, useCallback } from 'react';
-import {
+import { type ReactNode, useCallback } from 'react';
+import type {
   TSelectableSearchInputProps,
   TOption,
-  TOptionObject,
 } from './selectable-search-input';
 
 type TBase = {
@@ -68,7 +64,7 @@ const createSelectableSelectStyles = ({
     ...selectStyles,
     control: (base: TBase, state: ReactSelectProps) => ({
       ...selectStyles.control(base, state),
-      padding: designTokens.paddingForSelectableSelectInputDropdown,
+      padding: designTokens.paddingForSelectableSearchInputDropdown,
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
       borderRight: '0',
@@ -116,22 +112,12 @@ type TSelectableSelect = {
   handleDropdownFocus: () => void;
   handleDropdownBlur: () => void;
   textInputRef: React.RefObject<HTMLInputElement>;
+  selectedOption: TOption;
 } & TSelectableSearchInputProps;
 
 const SelectableSelect = (props: TSelectableSelect) => {
   const intl = useIntl();
   const { isNewTheme } = useTheme();
-
-  const optionsWithoutGroups = flatMap(props.options, (option) =>
-    has(option, 'value') ? option : (option as TOptionObject).options
-  );
-
-  const selectedOptions =
-    optionsWithoutGroups.find(
-      (option) =>
-        has(option, 'value') &&
-        (option as TOption).value === props.value.dropdownValue
-    ) || null;
 
   const dropdownStyles = createSelectableSelectStyles({
     hasWarning: props.hasWarning,
@@ -164,7 +150,7 @@ const SelectableSelect = (props: TSelectableSelect) => {
     <Select
       inputId={props.id}
       name={props.name}
-      value={selectedOptions}
+      value={props.selectedOption}
       isDisabled={props.isDisabled}
       isSearchable={props.isMenuSearchable}
       maxMenuHeight={props.maxMenuHeight}

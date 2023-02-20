@@ -17,7 +17,7 @@ storiesOf('Components|Inputs', module)
     },
   })
   .add('SelectableSearchInput', () => {
-    const menuOptions = [
+    const options = [
       {
         label: 'Animals 1',
         options: [
@@ -122,6 +122,7 @@ storiesOf('Components|Inputs', module)
           isDisabled={boolean('isDisabled', false)}
           isReadOnly={boolean('isReadOnly', false)}
           isClearable={boolean('isClearable', true)}
+          showSubmitButton={boolean('showSubmitButton', true)}
           hasError={boolean('hasError', false)}
           hasWarning={boolean('hasWarning', false)}
           placeholder={text('placeholder', 'Placeholder')}
@@ -130,7 +131,10 @@ storiesOf('Components|Inputs', module)
             Constraints.getAcceptedMaxPropValues(3),
             16
           )}
-          menuOptions={menuOptions}
+          options={options}
+          onSubmit={(submitValues) => {
+            alert(JSON.stringify(submitValues));
+          }}
         />
       </Section>
     );

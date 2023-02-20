@@ -139,5 +139,18 @@ export const component = () => (
         isClearable={false}
       />
     </Spec>
+    <Spec label="when showSubmitButton is false">
+      <SelectableSearchInput
+        isReadOnly={true}
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={16}
+        onSubmit={() => {}}
+        onReset={() => {}}
+        options={options}
+        isClearable={false}
+        showSubmitButton={false}
+      />
+    </Spec>
   </Suite>
 );
