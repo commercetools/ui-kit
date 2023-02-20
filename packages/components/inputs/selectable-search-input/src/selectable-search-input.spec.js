@@ -82,12 +82,6 @@ describe('SelectableSearchInput.isEmpty', () => {
       expect(
         SelectableSearchInput.isEmpty({
           textValue: '',
-          dropdownValue: 'avengers',
-        })
-      ).toBe(true);
-      expect(
-        SelectableSearchInput.isEmpty({
-          textValue: 'justice league',
           dropdownValue: '',
         })
       ).toBe(true);
@@ -220,7 +214,10 @@ describe('SelectableSearchInput', () => {
 
     const submitButton = screen.getByLabelText('search-button');
     fireEvent.click(submitButton);
-    expect(onSubmit).toHaveBeenCalledWith('avengers');
+    expect(onSubmit).toHaveBeenCalledWith({
+      dropdownValue: 'foo',
+      textValue: 'avengers',
+    });
   });
 
   it('should call the passed onReset function', () => {

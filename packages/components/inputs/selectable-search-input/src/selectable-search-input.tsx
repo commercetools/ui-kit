@@ -442,6 +442,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
               label={'search-button'}
               onClick={handleSubmit}
               css={getSearchIconButtonStyles(props)}
+              isDisabled={props.isDisabled}
             />
           )}
         </div>

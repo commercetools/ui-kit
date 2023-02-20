@@ -1,5 +1,5 @@
 # @commercetools-uikit/selectable-search-input
 
-## 15.11.2
+## 15.12.0
 
 ### Patch Changes
