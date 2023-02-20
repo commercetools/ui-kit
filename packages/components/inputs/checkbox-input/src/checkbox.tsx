@@ -1,18 +1,10 @@
 import { useRef, useEffect, useCallback, ChangeEventHandler } from 'react';
-import styled from '@emotion/styled';
-import { designTokens } from '@commercetools-uikit/design-system';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 import {
   filterAriaAttributes,
   filterDataAttributes,
 } from '@commercetools-uikit/utils';
 import type { TCheckboxProps } from './checkbox-input';
-
-const Input = styled.input`
-  &:focus + div > svg *[data-style='checkbox__border'] {
-    stroke: ${designTokens.borderColorForInputWhenFocused};
-  }
-`;
 
 type TInputRef = {
   indeterminate: boolean;
@@ -40,7 +32,8 @@ const Checkbox = (props: TProps) => {
   );
 
   return (
-    <Input
+    <input
+      role="checkbox"
       // @ts-ignore
       ref={ref}
       {...filterDataAttributes(props)}

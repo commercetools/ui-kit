@@ -46,7 +46,6 @@ storiesOf('Components|Inputs', module)
                   }}
                   value={text('value', '')}
                   isChecked={isChecked}
-                  isIndeterminate={boolean('isIndeterminate', false)}
                   isHovered={boolean('isHovered', false)}
                   isDisabled={stateLabel === states.disabled}
                   isReadOnly={stateLabel === states.readonly}

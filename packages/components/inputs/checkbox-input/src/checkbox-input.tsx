@@ -66,7 +66,12 @@ export type TCheckboxProps = {
 
 type TLabelProps = Pick<
   TCheckboxProps,
-  'hasError' | 'isDisabled' | 'isReadOnly' | 'isChecked' | 'isIndeterminate'
+  | 'hasError'
+  | 'isDisabled'
+  | 'isReadOnly'
+  | 'isChecked'
+  | 'isIndeterminate'
+  | 'isHovered'
 >;
 
 const defaultProps: Pick<
@@ -155,44 +160,52 @@ const CheckboxIcon = (props: TLabelProps) => {
     props.isDisabled ||
     props.isReadOnly
   );
+  const canShowHoverEffect =
+    props.isHovered && !(props.isDisabled || props.isReadOnly);
   return (
     <div
-      css={css`
-        width: ${themedValue('auto', '26px')};
-        height: ${themedValue('auto', '26px')};
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: ${designTokens.borderRadius6};
-        &:hover {
-          background-color: ${props.isDisabled || props.isReadOnly
-            ? 'unset'
-            : designTokens.backgroundColorForCheckboxInputIconWhenHovered};
-        }
-      `}
+      css={[
+        css`
+          width: ${themedValue('auto', '26px')};
+          height: ${themedValue('auto', '26px')};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: ${designTokens.borderRadius6};
+          &:hover {
+            background-color: ${canShowHoverEffect
+              ? designTokens.backgroundColorForCheckboxInputIconWhenHovered
+              : 'unset'};
+          }
+        `,
+        canShowHoverEffect &&
+          css`
+            background-color: ${designTokens.backgroundColorForCheckboxInputIconWhenHovered};
+          `,
+      ]}
     >
       <div
         css={[
           css`
-        border-width: ${designTokens.borderWidthForCheckboxInputIcon};
-        border-radius: ${designTokens.borderRadius2};
-        border-color: ${getBorderColor(props)};
-        border-style: solid;
-        background-color: ${getBackgroundColor(props)};
-        padding: 1px;
-        width: ${themedValue('16px', '18px')};
-        height: ${themedValue('16px', '18px')};
-        display: flex;
-        align-items: center;
-        justify-content; center;
+            border-width: ${designTokens.borderWidthForCheckboxInputIcon};
+            border-radius: ${designTokens.borderRadius2};
+            border-color: ${getBorderColor(props)};
+            border-style: solid;
+            background-color: ${getBackgroundColor(props)};
+            padding: 1px;
+            width: ${themedValue('16px', '18px')};
+            height: ${themedValue('16px', '18px')};
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-        svg > path[stroke] {
-          stroke: ${themedValue(
-            designTokens.colorPrimary,
-            designTokens.colorSurface
-          )}
-        }
-      `,
+            svg > path[stroke] {
+              stroke: ${themedValue(
+                designTokens.colorPrimary,
+                designTokens.colorSurface
+              )};
+            }
+          `,
           !isNewTheme &&
             css`
               svg > path[fill] {
@@ -214,6 +227,11 @@ const CheckboxIcon = (props: TLabelProps) => {
               &:hover {
                 border-color: ${designTokens.colorPrimary};
               }
+            `,
+          !isNewTheme &&
+            canShowHoverEffect &&
+            css`
+              border-color: ${designTokens.colorPrimary};
             `,
         ]}
       >
@@ -250,6 +268,7 @@ const CheckboxInput = (props: TCheckboxProps) => {
       isDisabled={props.isDisabled}
       isReadOnly={props.isReadOnly}
       isChecked={props.isChecked}
+      isHovered={props.isHovered}
       isIndeterminate={props.isIndeterminate}
     >
       <Checkbox
@@ -270,6 +289,7 @@ const CheckboxInput = (props: TCheckboxProps) => {
         isDisabled={props.isDisabled}
         isReadOnly={props.isReadOnly}
         isChecked={props.isChecked}
+        isHovered={props.isHovered}
         isIndeterminate={props.isIndeterminate}
       />
       {props.children && (
@@ -278,6 +298,7 @@ const CheckboxInput = (props: TCheckboxProps) => {
           isDisabled={props.isDisabled}
           isReadOnly={props.isReadOnly}
           isChecked={props.isChecked}
+          isHovered={props.isHovered}
           isIndeterminate={props.isIndeterminate}
           // To allow focusing the Label in readOnly mode, because the checkbox gets disabled and therefore unfocusable
           tabIndex={props.isReadOnly ? 0 : -1}
