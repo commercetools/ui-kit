@@ -143,10 +143,6 @@ export type TSelectableSearchInputProps = {
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint?:
-    | 3
-    | 4
-    | 5
-    | 6
     | 7
     | 8
     | 9
