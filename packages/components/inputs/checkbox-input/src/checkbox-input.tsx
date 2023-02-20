@@ -3,11 +3,7 @@ import type { ChangeEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
-import {
-  createSequentialId,
-  filterDataAttributes,
-  filterAriaAttributes,
-} from '@commercetools-uikit/utils';
+import { createSequentialId } from '@commercetools-uikit/utils';
 import { IndeterminateIcon, CheckedIcon } from './icons';
 import Checkbox from './checkbox';
 
@@ -271,19 +267,7 @@ const CheckboxInput = (props: TCheckboxProps) => {
       isHovered={props.isHovered}
       isIndeterminate={props.isIndeterminate}
     >
-      <Checkbox
-        type="checkbox"
-        id={id}
-        name={props.name}
-        value={props.value}
-        onChange={props.onChange}
-        isDisabled={props.isDisabled}
-        isReadOnly={props.isReadOnly}
-        isChecked={props.isChecked}
-        isIndeterminate={props.isIndeterminate}
-        {...filterDataAttributes(props)}
-        {...filterAriaAttributes(props)}
-      />
+      <Checkbox {...props} id={id} />
       <CheckboxIcon
         hasError={props.hasError}
         isDisabled={props.isDisabled}

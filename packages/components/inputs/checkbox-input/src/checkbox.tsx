@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, ChangeEventHandler } from 'react';
+import { useRef, useEffect } from 'react';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 import {
   filterAriaAttributes,
@@ -10,11 +10,7 @@ type TInputRef = {
   indeterminate: boolean;
 };
 
-type TProps = Omit<TCheckboxProps, 'children' | 'hasError' | 'isHovered'> & {
-  type?: string;
-};
-
-const Checkbox = (props: TProps) => {
+const Checkbox = (props: TCheckboxProps) => {
   const ref = useRef<TInputRef>({
     indeterminate: false,
   });
@@ -25,15 +21,9 @@ const Checkbox = (props: TProps) => {
     }
   }, [props.isIndeterminate]);
 
-  const { onChange } = props;
-  const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
-    (event) => !props.isReadOnly && onChange && onChange(event),
-    [props.isReadOnly, onChange]
-  );
-
   return (
     <input
-      role="checkbox"
+      type="checkbox"
       // @ts-ignore
       ref={ref}
       {...filterDataAttributes(props)}
@@ -48,8 +38,7 @@ const Checkbox = (props: TProps) => {
       disabled={props.isDisabled || props.isReadOnly}
       readOnly={props.isReadOnly}
       checked={props.isChecked && !props.isIndeterminate}
-      {...props}
-      onChange={handleChange}
+      onChange={!props.isReadOnly ? props.onChange : undefined}
     />
   );
 };
