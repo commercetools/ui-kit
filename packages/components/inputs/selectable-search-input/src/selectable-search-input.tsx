@@ -142,19 +142,7 @@ export type TSelectableSearchInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint?:
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 'scale'
-    | 'auto';
+  horizontalConstraint?: 10 | 11 | 12 | 13 | 14 | 15 | 16 | 'scale' | 'auto';
   /**
    * Array of options that populate the select menu
    */
