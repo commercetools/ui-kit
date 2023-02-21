@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -144,7 +145,7 @@ const Input = styled.input`
 
 const getNewThemeHoverStyles = (props: TStylesProps) => {
   const hoverStyles = css`
-    [class*='getContainerStyles'] {
+    > input + div {
       border-color: ${designTokens.colorNeutral90};
     }
   `;
