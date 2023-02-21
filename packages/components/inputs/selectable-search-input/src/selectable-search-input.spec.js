@@ -30,8 +30,8 @@ TestComponent.defaultProps = {
   id: 'test-id',
   name: 'test-name',
   value: {
-    textValue: 'test-value',
-    dropdownValue: 'foo',
+    text: 'test-value',
+    option: 'foo',
   },
   options: [
     { value: 'foo', label: 'Foo' },
@@ -71,8 +71,8 @@ describe('SelectableSearchInput.isEmpty', () => {
     it('should return false', () => {
       expect(
         SelectableSearchInput.isEmpty({
-          textValue: 'hello',
-          dropdownValue: 'world',
+          text: 'hello',
+          option: 'world',
         })
       ).toBe(false);
     });
@@ -81,8 +81,8 @@ describe('SelectableSearchInput.isEmpty', () => {
     it('should return true', () => {
       expect(
         SelectableSearchInput.isEmpty({
-          textValue: '',
-          dropdownValue: '',
+          text: '',
+          option: '',
         })
       ).toBe(true);
       expect(SelectableSearchInput.isEmpty()).toBe(true);
@@ -116,9 +116,7 @@ describe('SelectableSearchInput', () => {
   });
 
   it('should show the passed value', () => {
-    render(
-      <TestComponent value={{ textValue: 'foo', dropdownValue: 'bar' }} />
-    );
+    render(<TestComponent value={{ text: 'foo', option: 'bar' }} />);
     expect(screen.getByLabelText('test-label')).toHaveAttribute('value', 'foo');
     expect(
       screen.getByTestId('selectable-search-input-container')
@@ -129,7 +127,7 @@ describe('SelectableSearchInput', () => {
     const onFocus = jest.fn();
     render(
       <TestComponent
-        value={{ textValue: 'test value', dropdownValue: 'bar' }}
+        value={{ text: 'test value', option: 'bar' }}
         onFocus={onFocus}
       />
     );
@@ -148,7 +146,7 @@ describe('SelectableSearchInput', () => {
     const onBlur = jest.fn();
     render(
       <TestComponent
-        value={{ textValue: 'test value', dropdownValue: 'bar' }}
+        value={{ text: 'test value', option: 'bar' }}
         onBlur={onBlur}
       />
     );
@@ -215,8 +213,8 @@ describe('SelectableSearchInput', () => {
     const submitButton = screen.getByLabelText('search-button');
     fireEvent.click(submitButton);
     expect(onSubmit).toHaveBeenCalledWith({
-      dropdownValue: 'foo',
-      textValue: 'avengers',
+      option: 'foo',
+      text: 'avengers',
     });
   });
 

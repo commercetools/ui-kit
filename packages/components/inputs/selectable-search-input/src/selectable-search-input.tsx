@@ -51,8 +51,8 @@ type TCustomEvent = {
 };
 
 export type TValue = {
-  textValue: string;
-  dropdownValue: string;
+  text: string;
+  option: string;
 };
 
 export type TOption = {
@@ -225,7 +225,7 @@ const selectableSearchInputSequentialId = createSequentialId(
 const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const [textInputHasFocus, toggleTextInputHasFocus] = useToggleState(false);
   const [dropdownHasFocus, toggleDropdownHasFocus] = useToggleState(false);
-  const [searchValue, setSearchValue] = useState(props.value.textValue || '');
+  const [searchValue, setSearchValue] = useState(props.value.text || '');
   const containerRef = useRef<HTMLDivElement>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
 
@@ -237,8 +237,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
 
   const selectedOption = optionsWithoutGroups.find(
     (option) =>
-      has(option, 'value') &&
-      (option as TOption).value === props.value.dropdownValue
+      has(option, 'value') && (option as TOption).value === props.value.option
   ) as TOption;
 
   const selectablSearchInputId = useFieldId(
@@ -306,8 +305,8 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     event.preventDefault();
     if (props.onSubmit) {
       props.onSubmit({
-        textValue: searchValue,
-        dropdownValue: selectedOption?.value,
+        text: searchValue,
+        option: selectedOption?.value,
       });
     }
   };
@@ -447,7 +446,7 @@ SelectableSearchInput.displayName = 'SelectableSearchInput';
 SelectableSearchInput.defaultProps = defaultProps;
 SelectableSearchInput.isEmpty = (
   formValue: TSelectableSearchInputProps['value']
-) => !formValue || formValue.textValue.trim() === '';
+) => !formValue || formValue.text.trim() === '';
 SelectableSearchInput.getTextInputId = getTextInputName;
 SelectableSearchInput.getDropdownId = getDropdownName;
 

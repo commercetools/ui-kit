@@ -90,8 +90,8 @@ storiesOf('Components|Inputs', module)
     const [textInputValue, setTextInputValue] = useState();
 
     const value = {
-      textValue: textInputValue,
-      dropdownValue: dropdownValue,
+      text: textInputValue,
+      option: dropdownValue,
     };
 
     return (

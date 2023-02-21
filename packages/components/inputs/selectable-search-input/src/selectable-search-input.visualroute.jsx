@@ -4,8 +4,8 @@ import { Suite, Spec } from '../../../../../test/percy';
 export const routePath = '/selectable-search-input';
 
 const value = {
-  textValue: 'hello world',
-  dropdownValue: 'one',
+  text: 'hello world',
+  option: 'one',
 };
 const options = [
   { value: 'one', label: 'One' },
