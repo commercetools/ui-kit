@@ -23,10 +23,7 @@ const AdditionalTextWrapper = styled.div<TStylesProps>`
   margin-left: ${designTokens.spacing10};
   font-size: 1rem;
   font-family: inherit;
-  color: ${(props) =>
-    props.isDisabled
-      ? designTokens.fontColorForInputWhenDisabled
-      : designTokens.fontColorForInput};
+  ${(props) => !props.isNewTheme && getDefaultThemeLabelColor(props)}
 `;
 
 const RadioOptionWrapper = styled.div<TStylesProps>`

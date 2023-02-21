@@ -18,9 +18,6 @@
   "main": "dist/commercetools-uikit-radio-input.cjs.js",
   "module": "dist/commercetools-uikit-radio-input.esm.js",
   "files": ["dist"],
-  "scripts": {
-    "generate-icons": "svgr -d src/icons/generated --typescript -- src/icons/svg"
-  },
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
