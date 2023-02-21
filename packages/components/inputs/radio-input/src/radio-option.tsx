@@ -5,29 +5,23 @@ import {
   type ReactNode,
   isValidElement,
 } from 'react';
-import styled from '@emotion/styled';
-import { designTokens } from '@commercetools-uikit/design-system';
 import {
   filterDataAttributes,
   filterInvalidAttributes,
   warning,
 } from '@commercetools-uikit/utils';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
-import { RadioOptionCheckedIcon, RadioOptionUncheckedIcon } from './icons';
 import {
   getLabelStyles,
   getContainerStyles,
   LabelTextWrapper,
-  RadioOptionsWrapper,
+  RadioOptionWrapper,
   AdditionalTextWrapper,
+  RadioOptionKnob,
+  RadioOptionBorder,
+  Input,
 } from './radio-option.styles';
 import SpacingsInset from '@commercetools-uikit/spacings-inset';
-
-const Input = styled.input`
-  &:focus + div > svg *[data-style='radio-option__border'] {
-    stroke: ${designTokens.borderColorForInputWhenFocused};
-  }
-`;
 
 type TComponents = {
   wrapper?: (children: ReactElement) => ReactElement;
@@ -59,6 +53,11 @@ export type TOptionProps = {
   isHovered?: boolean;
 };
 
+export type TStylesProps = Pick<
+  TOptionProps,
+  'isDisabled' | 'hasError' | 'hasWarning' | 'isHovered' | 'isReadOnly'
+>;
+
 const Option = (props: TOptionProps) => {
   const labelProps = props.id ? { htmlFor: props.id } : {};
 
@@ -84,6 +83,14 @@ const Option = (props: TOptionProps) => {
     );
   }
 
+  const stylesProps: TStylesProps = {
+    isDisabled: props.isDisabled,
+    hasError: props.hasError,
+    hasWarning: props.hasWarning,
+    isHovered: props.isHovered,
+    isReadOnly: props.isReadOnly,
+  };
+
   return (
     <label
       css={getLabelStyles(props)}
@@ -93,7 +100,7 @@ const Option = (props: TOptionProps) => {
       onBlur={props.onBlur}
       {...filterInvalidAttributes(labelProps)}
     >
-      <RadioOptionsWrapper>
+      <RadioOptionWrapper>
         <Input
           css={accessibleHiddenInputStyles}
           id={props.id}
@@ -112,11 +119,9 @@ const Option = (props: TOptionProps) => {
           {...filterDataAttributes(props)}
         />
         <div css={getContainerStyles(props)}>
-          {props.isChecked ? (
-            <RadioOptionCheckedIcon size="medium" />
-          ) : (
-            <RadioOptionUncheckedIcon size="medium" />
-          )}
+          <RadioOptionBorder {...stylesProps}>
+            {props.isChecked ? <RadioOptionKnob {...stylesProps} /> : null}
+          </RadioOptionBorder>
         </div>
         <LabelTextWrapper isDisabled={props.isDisabled}>
           {props.children}
@@ -126,7 +131,7 @@ const Option = (props: TOptionProps) => {
             <SpacingsInset scale="xs">{props.additionalContent}</SpacingsInset>
           </AdditionalTextWrapper>
         )}
-      </RadioOptionsWrapper>
+      </RadioOptionWrapper>
     </label>
   );
 };
