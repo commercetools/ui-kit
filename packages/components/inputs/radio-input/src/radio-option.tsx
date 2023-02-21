@@ -5,6 +5,7 @@ import {
   type ReactNode,
   isValidElement,
 } from 'react';
+import { useTheme } from '@commercetools-uikit/design-system';
 import {
   filterDataAttributes,
   filterInvalidAttributes,
@@ -46,7 +47,7 @@ export type TOptionProps = {
   onBlur?: FocusEventHandler<HTMLLabelElement>;
 
   // This prop forces Radio.Option to be rendered in a hovered state (though isDisabled takes
-  // precedence over that). We need that to address a use-case when hovering is comming
+  // precedence over that). We need that to address a use-case when hovering is coming
   // from somewhere up the hierarchy. There is no need to touch this prop in case
   // all you need is a general highlighting on hover of Radio.Option body, which is solved
   // by a corresponding :hover selector in the syles of this component.
@@ -55,10 +56,16 @@ export type TOptionProps = {
 
 export type TStylesProps = Pick<
   TOptionProps,
-  'isDisabled' | 'hasError' | 'hasWarning' | 'isHovered' | 'isReadOnly'
->;
+  | 'isDisabled'
+  | 'hasError'
+  | 'hasWarning'
+  | 'isHovered'
+  | 'isReadOnly'
+  | 'isChecked'
+> & { isNewTheme?: boolean };
 
 const Option = (props: TOptionProps) => {
+  const { isNewTheme } = useTheme();
   const labelProps = props.id ? { htmlFor: props.id } : {};
 
   if (!props.isReadOnly) {
@@ -89,11 +96,13 @@ const Option = (props: TOptionProps) => {
     hasWarning: props.hasWarning,
     isHovered: props.isHovered,
     isReadOnly: props.isReadOnly,
+    isChecked: props.isChecked,
+    isNewTheme,
   };
 
   return (
     <label
-      css={getLabelStyles(props)}
+      css={getLabelStyles(stylesProps)}
       role="radio"
       aria-checked={props.isChecked}
       onFocus={props.onFocus}
@@ -118,12 +127,12 @@ const Option = (props: TOptionProps) => {
           aria-readonly={props.isReadOnly}
           {...filterDataAttributes(props)}
         />
-        <div css={getContainerStyles(props)}>
+        <div css={getContainerStyles(stylesProps)}>
           <RadioOptionBorder {...stylesProps}>
             {props.isChecked ? <RadioOptionKnob {...stylesProps} /> : null}
           </RadioOptionBorder>
         </div>
-        <LabelTextWrapper isDisabled={props.isDisabled}>
+        <LabelTextWrapper isDisabled={props.isDisabled} isNewTheme={isNewTheme}>
           {props.children}
         </LabelTextWrapper>
         {props.additionalContent && (

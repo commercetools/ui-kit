@@ -3,15 +3,19 @@ import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TStylesProps } from './radio-option';
 
+const getDefaultThemeLabelColor = (props: TStylesProps) => css`
+  color: ${props.isDisabled
+    ? designTokens.fontColorForInputWhenDisabled
+    : designTokens.fontColorForInput};
+`;
+
 const LabelTextWrapper = styled.div<TStylesProps>`
   grid-area: label;
-  margin-left: ${designTokens.spacing20};
+  margin-left: ${designTokens.marginLeftForRadioInputLabel};
   font-size: 1rem;
   font-family: inherit;
-  color: ${(props) =>
-    props.isDisabled
-      ? designTokens.fontColorForInputWhenDisabled
-      : designTokens.fontColorForInput};
+  display: flex;
+  ${(props) => !props.isNewTheme && getDefaultThemeLabelColor(props)}
 `;
 
 const AdditionalTextWrapper = styled.div<TStylesProps>`
@@ -45,17 +49,23 @@ const getBorderColor = (props: TStylesProps) => {
     return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isHovered && !props.isDisabled) {
-    return designTokens.borderColorForInputWhenFocused;
+    if (props.isChecked) {
+      return designTokens.borderColorForInputWhenFocused;
+    }
+    return designTokens.borderColorForRadioInputWhenFocused;
   }
   if (props.isReadOnly) {
-    return designTokens.borderColorForInputWhenReadonly;
+    return designTokens.borderColorForRadioInputWhenReadonly;
   }
-  return designTokens.borderColorForInput;
+  if (props.isChecked) {
+    return designTokens.borderColorForRadioInputWhenChecked;
+  }
+  return designTokens.borderColorForRadioInput;
 };
 
 const getKnobColor = (props: TStylesProps) => {
   if (props.isDisabled) {
-    return designTokens.fontColorForInputWhenDisabled;
+    return designTokens.borderColorForRadioInputWhenDisabled;
   }
   if (props.hasError) {
     return designTokens.fontColorForInputWhenError;
@@ -64,21 +74,10 @@ const getKnobColor = (props: TStylesProps) => {
     return designTokens.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return designTokens.fontColorForInputWhenReadonly;
+    return designTokens.colorNeutral60;
   }
   return designTokens.borderColorForInputWhenFocused;
 };
-
-const getContainerStyles = (props: TStylesProps) => css`
-  display: flex;
-  align-items: center;
-  grid-area: radio;
-  [class*='RadioOptionBorder'] {
-    background-color: ${props.isDisabled
-      ? designTokens.backgroundColorForInputWhenDisabled
-      : designTokens.backgroundColorForInput};
-  }
-`;
 
 const getLabelBorderColor = (props: TStylesProps) => {
   if (props.isDisabled) {
@@ -121,13 +120,51 @@ const getLabelCursor = (props: TStylesProps) => {
   return 'pointer';
 };
 
-const getLabelStyles = (props: TStylesProps) => css`
-  align-items: center;
-  color: ${getLabelColor(props)};
-  cursor: ${getLabelCursor(props)};
+const RadioOptionKnob = styled.div<TStylesProps>`
+  width: ${designTokens.heightForRadioInputOptionWhenChecked};
+  height: ${designTokens.heightForRadioInputOptionWhenChecked};
+  border-radius: 50%;
+  background-color: ${(props) => getKnobColor(props)};
+`;
+
+const RadioOptionBorder = styled.div<TStylesProps>`
+  width: ${designTokens.heightForRadioInputOption};
+  height: ${designTokens.heightForRadioInputOption};
+  border-radius: 50%;
+  background-color: ${designTokens.backgroundColorForInput};
+  border: ${designTokens.borderForRadioInputOption} solid
+    ${(props) => getBorderColor(props)};
   display: flex;
-  position: relative;
-  &:hover [class*='RadioOptionBorder'] {
+  align-items: center;
+  justify-content: center;
+`;
+
+const Input = styled.input`
+  &:focus + div > ${RadioOptionBorder} {
+    border-color: ${designTokens.borderColorForInputWhenFocused};
+  }
+`;
+
+const getNewThemeHoverStyles = (props: TStylesProps) => {
+  const hoverStyles = css`
+    [class*='getContainerStyles'] {
+      border-color: ${designTokens.colorNeutral90};
+    }
+  `;
+
+  return [
+    !props.isDisabled &&
+      !props.isReadOnly &&
+      /* prettier-ignore */
+      css`
+        &:hover ${hoverStyles};
+      `,
+    props.isHovered && hoverStyles,
+  ];
+};
+
+const getDefaultThemeHoverAndFocusStyles = (props: TStylesProps) => css`
+  &:hover ${RadioOptionBorder} {
     border-color: ${getLabelBorderColor(props)};
   }
   :focus-within ${LabelTextWrapper} {
@@ -136,28 +173,34 @@ const getLabelStyles = (props: TStylesProps) => css`
   }
 `;
 
-const RadioOptionKnob = styled.div<TStylesProps>`
-  width: 8px;
-  height: 8px;
+const getNewThemeHoverAreaStyles = css`
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background-color: ${(props) => getKnobColor(props)};
+  border: 4px solid ${designTokens.colorSurface};
 `;
 
-const RadioOptionBorder = styled.div<TStylesProps>`
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: ${designTokens.backgroundColorForInput};
-  border: 1px solid ${(props) => getBorderColor(props)};
+const getContainerStyles = (props: TStylesProps) => css`
   display: flex;
   align-items: center;
-  justify-content: center;
+  grid-area: radio;
+  ${RadioOptionBorder} {
+    background-color: ${props.isDisabled
+      ? designTokens.backgroundColorForInputWhenDisabled
+      : designTokens.backgroundColorForInput};
+  }
+  ${props.isNewTheme && getNewThemeHoverAreaStyles}
 `;
 
-const Input = styled.input`
-  &:focus + div > [class*='RadioOptionBorder'] {
-    border-color: ${designTokens.borderColorForInputWhenFocused};
-  }
+const getLabelStyles = (props: TStylesProps) => css`
+  align-items: center;
+  color: ${getLabelColor(props)};
+  cursor: ${getLabelCursor(props)};
+  display: flex;
+
+  ${props.isNewTheme
+    ? getNewThemeHoverStyles(props)
+    : getDefaultThemeHoverAndFocusStyles(props)}
 `;
 
 export {
