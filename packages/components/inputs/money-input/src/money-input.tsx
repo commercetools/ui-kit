@@ -148,6 +148,7 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
         return 'pointer';
       })(),
       backgroundColor: (() => {
+        if (isDisabled) return base.backgroundColor;
         if (isReadOnly) return designTokens.backgroundColorForInput;
         return base.backgroundColor;
       })(),
