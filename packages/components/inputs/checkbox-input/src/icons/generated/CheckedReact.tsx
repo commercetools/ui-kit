@@ -115,33 +115,26 @@ export const getIconStyles = (props: Props) => css`
 `;
 const SvgChecked = (props: SVGProps) => (
   <svg
-    width={16}
-    height={16}
-    viewBox="0 0 16 16"
+    width={12}
+    height={9}
+    viewBox="0 0 12 9"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     {...props}
   >
-    <g transform="translate(0 -1)" fillRule="evenodd">
-      <rect fill="#FFF" y={1} width={16} height={16} rx={4} />
-      <g transform="translate(0 .5)">
-        <rect
-          data-style="checkbox__border"
-          stroke="#AFAFAF"
-          x={0.5}
-          y={1}
-          width={15}
-          height={15}
-          rx={4}
-        />
-        <path
-          data-style="checkbox__content"
-          d="M12.918 3.759a.497.497 0 0 0-.7 0L6.011 9.966a.497.497 0 0 1-.7 0L3.78 8.438a.497.497 0 0 0-.699 0l-.938.938a.497.497 0 0 0 0 .7l3.167 3.165a.497.497 0 0 0 .7 0l7.845-7.845a.496.496 0 0 0 0-.7l-.938-.937z"
-          fill="#20AD92"
-          fillRule="nonzero"
-        />
-      </g>
-    </g>
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M.293 4.293a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414Z"
+      fill="#000"
+    />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M11.707.293a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414l7-7a1 1 0 0 1 1.414 0Z"
+      fill="#000"
+    />
   </svg>
 );
 SvgChecked.displayName = 'SvgChecked';

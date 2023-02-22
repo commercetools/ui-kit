@@ -115,32 +115,15 @@ export const getIconStyles = (props: Props) => css`
 `;
 const SvgIndeterminate = (props: SVGProps) => (
   <svg
-    width={16}
-    height={16}
-    viewBox="0 0 16 16"
+    width={12}
+    height={2}
+    viewBox="0 0 12 2"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     {...props}
   >
-    <g transform="translate(0 -1)" fillRule="evenodd">
-      <rect fill="#FFF" y={1} width={16} height={16} rx={4} />
-      <g transform="translate(0 .5)">
-        <rect
-          data-style="checkbox__border"
-          stroke="#AFAFAF"
-          x={0.5}
-          y={1}
-          width={15}
-          height={15}
-          rx={4}
-        />
-        <path
-          data-style="checkbox__content"
-          fill="#00B6A1"
-          d="M3 7.5h10v2H3z"
-        />
-      </g>
-    </g>
+    <path stroke="#000" strokeWidth={2} strokeLinecap="round" d="M11 1H1" />
   </svg>
 );
 SvgIndeterminate.displayName = 'SvgIndeterminate';

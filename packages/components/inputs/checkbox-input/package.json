@@ -28,7 +28,6 @@
     "@commercetools-uikit/icons": "15.12.0",
     "@commercetools-uikit/input-utils": "15.12.0",
     "@commercetools-uikit/select-utils": "15.12.0",
-    "@commercetools-uikit/text": "15.12.0",
     "@commercetools-uikit/utils": "15.12.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

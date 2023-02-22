@@ -1,6 +1,0 @@
-<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-    <g transform="translate(0 -1)" fill-rule="evenodd">
-        <rect fill="#FFF" y="1" width="16" height="16" rx="4"/>
-        <rect data-style="checkbox__border" x=".5" y="1" width="15" height="15" rx="4" transform="translate(0 .5)" stroke="#AFAFAF"/>
-    </g>
-</svg>
