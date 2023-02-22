@@ -134,47 +134,39 @@ const LabelTextWrapper = styled.div<TLabelProps>`
   color: ${(props) => getTextColor(props)};
 `;
 
-const Label = styled.label<TLabelProps>`
+type TCheckboxIconWrapperProps = {
+  width: string;
+  height: string;
+  isHovered: boolean;
+};
+const CheckboxIconWrapper = styled.div<TCheckboxIconWrapperProps>`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   display: flex;
   align-items: center;
-  cursor: ${(props) => {
-    if (props.isDisabled) return 'not-allowed';
-    if (props.isReadOnly) return 'default';
-    return 'pointer';
-  }};
-  position: relative;
+  justify-content: center;
+  border-radius: ${designTokens.borderRadius6};
 
-  &:focus-within ${LabelTextWrapper} {
-    box-shadow: 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
-  }
+  ${(props) =>
+    props.isHovered
+      ? css`
+          background-color: ${designTokens.backgroundColorForCheckboxInputIconWhenHovered};
+        `
+      : ''}
 `;
 
 const CheckboxIcon = (props: TLabelProps) => {
   const { isNewTheme, themedValue } = useTheme();
   const isDisabledOrReadOnlyState = props.isDisabled || props.isReadOnly;
   const isDefaultState = !(props.hasError || isDisabledOrReadOnlyState);
-  const canForcedHoverEffect = props.isHovered && !isDisabledOrReadOnlyState;
+  const canForcedHoverEffect = Boolean(
+    props.isHovered && !isDisabledOrReadOnlyState
+  );
   return (
-    <div
-      css={[
-        css`
-          width: ${themedValue('auto', '26px')};
-          height: ${themedValue('auto', '26px')};
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: ${designTokens.borderRadius6};
-          &:hover {
-            background-color: ${isDisabledOrReadOnlyState
-              ? 'unset'
-              : designTokens.backgroundColorForCheckboxInputIconWhenHovered};
-          }
-        `,
-        canForcedHoverEffect &&
-          css`
-            background-color: ${designTokens.backgroundColorForCheckboxInputIconWhenHovered};
-          `,
-      ]}
+    <CheckboxIconWrapper
+      width={themedValue('auto', '26px')}
+      height={themedValue('auto', '26px')}
+      isHovered={canForcedHoverEffect}
     >
       <div
         css={[
@@ -227,7 +219,7 @@ const CheckboxIcon = (props: TLabelProps) => {
             css`
               border-color: ${designTokens.colorPrimary};
             `,
-        ]}
+        ].filter(Boolean)}
       >
         {(() => {
           if (props.isIndeterminate)
@@ -247,9 +239,31 @@ const CheckboxIcon = (props: TLabelProps) => {
           return null;
         })()}
       </div>
-    </div>
+    </CheckboxIconWrapper>
   );
 };
+
+const Label = styled.label<TLabelProps>`
+  display: flex;
+  align-items: center;
+  cursor: ${(props) => {
+    if (props.isDisabled) return 'not-allowed';
+    if (props.isReadOnly) return 'default';
+    return 'pointer';
+  }};
+  position: relative;
+
+  &:focus-within ${LabelTextWrapper} {
+    box-shadow: 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
+  }
+
+  &:hover ${CheckboxIconWrapper} {
+    background-color: ${(props) =>
+      props.isDisabled || props.isReadOnly
+        ? 'unset'
+        : designTokens.backgroundColorForCheckboxInputIconWhenHovered};
+  }
+`;
 
 const CheckboxInput = (props: TCheckboxProps) => {
   // We generate an id in case no id is provided by the parent to attach the
