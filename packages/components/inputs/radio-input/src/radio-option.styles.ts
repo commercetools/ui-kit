@@ -145,7 +145,7 @@ const Input = styled.input`
 
 const getNewThemeHoverStyles = (props: TStylesProps) => {
   const hoverStyles = css`
-    > input + div {
+    input + div {
       border-color: ${designTokens.colorNeutral90};
     }
   `;

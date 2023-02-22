@@ -137,7 +137,10 @@ const Option = (props: TOptionProps) => {
           {props.children}
         </LabelTextWrapper>
         {props.additionalContent && (
-          <AdditionalTextWrapper isDisabled={props.isDisabled}>
+          <AdditionalTextWrapper
+            isDisabled={props.isDisabled}
+            isNewTheme={isNewTheme}
+          >
             <SpacingsInset scale="xs">{props.additionalContent}</SpacingsInset>
           </AdditionalTextWrapper>
         )}
