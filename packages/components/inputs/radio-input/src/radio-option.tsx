@@ -14,14 +14,14 @@ import {
 } from '@commercetools-uikit/utils';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
 import {
-  getLabelStyles,
-  getContainerStyles,
   LabelTextWrapper,
-  RadioOptionWrapper,
+  RadioInputWrapper,
   AdditionalTextWrapper,
   RadioOptionKnob,
   RadioOptionBorder,
   Input,
+  RadioOptionLabel,
+  RadioOptionContainer,
 } from './radio-option.styles';
 import SpacingsInset from '@commercetools-uikit/spacings-inset';
 
@@ -102,15 +102,15 @@ const Option = (props: TOptionProps) => {
   };
 
   return (
-    <label
-      css={getLabelStyles(stylesProps)}
+    <RadioOptionLabel
       role="radio"
       aria-checked={props.isChecked}
       onFocus={props.onFocus}
       onBlur={props.onBlur}
+      {...stylesProps}
       {...filterInvalidAttributes(labelProps)}
     >
-      <RadioOptionWrapper>
+      <RadioInputWrapper>
         <Input
           css={accessibleHiddenInputStyles}
           id={props.id}
@@ -128,11 +128,11 @@ const Option = (props: TOptionProps) => {
           aria-readonly={props.isReadOnly}
           {...filterDataAttributes(props)}
         />
-        <div css={getContainerStyles(stylesProps)}>
+        <RadioOptionContainer {...stylesProps}>
           <RadioOptionBorder {...stylesProps}>
             {props.isChecked ? <RadioOptionKnob {...stylesProps} /> : null}
           </RadioOptionBorder>
-        </div>
+        </RadioOptionContainer>
         <LabelTextWrapper isDisabled={props.isDisabled} isNewTheme={isNewTheme}>
           {props.children}
         </LabelTextWrapper>
@@ -144,8 +144,8 @@ const Option = (props: TOptionProps) => {
             <SpacingsInset scale="xs">{props.additionalContent}</SpacingsInset>
           </AdditionalTextWrapper>
         )}
-      </RadioOptionWrapper>
-    </label>
+      </RadioInputWrapper>
+    </RadioOptionLabel>
   );
 };
 Option.displayName = 'RadioOption';

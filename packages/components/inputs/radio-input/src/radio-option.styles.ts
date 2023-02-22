@@ -27,7 +27,7 @@ const AdditionalTextWrapper = styled.div<TStylesProps>`
   ${(props) => !props.isNewTheme && getDefaultThemeLabelColor(props)}
 `;
 
-const RadioOptionWrapper = styled.div<TStylesProps>`
+const RadioInputWrapper = styled.div<TStylesProps>`
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
@@ -143,9 +143,29 @@ const Input = styled.input`
   }
 `;
 
+const getNewThemeHoverAreaStyles = css`
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 4px solid ${designTokens.colorSurface};
+`;
+
+const RadioOptionContainer = styled.div<TStylesProps>`
+  display: flex;
+  align-items: center;
+  grid-area: radio;
+  ${RadioOptionBorder} {
+    background-color: ${(props) =>
+      props.isDisabled
+        ? designTokens.backgroundColorForInputWhenDisabled
+        : designTokens.backgroundColorForInput};
+  }
+  ${(props) => props.isNewTheme && getNewThemeHoverAreaStyles}
+`;
+
 const getNewThemeHoverStyles = (props: TStylesProps) => {
   const hoverStyles = css`
-    input + div {
+    ${RadioOptionContainer} {
       border-color: ${designTokens.colorNeutral90};
     }
   `;
@@ -167,48 +187,30 @@ const getDefaultThemeHoverStyles = (props: TStylesProps) => css`
   }
 `;
 
-const getNewThemeHoverAreaStyles = css`
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 4px solid ${designTokens.colorSurface};
-`;
-
-const getContainerStyles = (props: TStylesProps) => css`
-  display: flex;
+const RadioOptionLabel = styled.label<TStylesProps>`
   align-items: center;
-  grid-area: radio;
-  ${RadioOptionBorder} {
-    background-color: ${props.isDisabled
-      ? designTokens.backgroundColorForInputWhenDisabled
-      : designTokens.backgroundColorForInput};
-  }
-  ${props.isNewTheme && getNewThemeHoverAreaStyles}
-`;
-
-const getLabelStyles = (props: TStylesProps) => css`
-  align-items: center;
-  color: ${getLabelColor(props)};
-  cursor: ${getLabelCursor(props)};
+  color: ${(props) => getLabelColor(props)};
+  cursor: ${(props) => getLabelCursor(props)};
   display: flex;
 
   :focus-within ${LabelTextWrapper} {
     outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
-    outline-offset: ${props.isNewTheme ? '2px' : '3px'};
+    outline-offset: ${(props) => (props.isNewTheme ? '2px' : '3px')};
   }
 
-  ${props.isNewTheme
-    ? getNewThemeHoverStyles(props)
-    : getDefaultThemeHoverStyles(props)}
+  ${(props) =>
+    props.isNewTheme
+      ? getNewThemeHoverStyles(props)
+      : getDefaultThemeHoverStyles(props)}
 `;
 
 export {
-  getContainerStyles,
-  getLabelStyles,
   LabelTextWrapper,
-  RadioOptionWrapper,
+  RadioInputWrapper,
   AdditionalTextWrapper,
   RadioOptionKnob,
   RadioOptionBorder,
   Input,
+  RadioOptionLabel,
+  RadioOptionContainer,
 };
