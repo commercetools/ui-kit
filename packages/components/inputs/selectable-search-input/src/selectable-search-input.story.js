@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Value } from 'react-value';
@@ -6,7 +7,6 @@ import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import SelectableSearchInput from './selectable-search-input';
-import { useState } from 'react';
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)

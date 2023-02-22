@@ -41,7 +41,7 @@ const getTextInputName = (name?: string) =>
 const getDropdownName = (name?: string) =>
   name ? `${name}.dropdown` : undefined;
 
-type TCustomEvent = {
+export type TCustomEvent = {
   target: {
     id?: string;
     name?: string;

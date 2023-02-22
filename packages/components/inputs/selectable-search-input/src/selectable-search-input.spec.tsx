@@ -1,27 +1,37 @@
 import { useState } from 'react';
-import SelectableSearchInput from './selectable-search-input';
+import SelectableSearchInput, {
+  type TSelectableSearchInputProps,
+  type TCustomEvent,
+} from './selectable-search-input';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
 
 // We use this component to simulate the whole flow of
-// changing a value and formatting on blur.
-const TestComponent = (props) => {
-  const [value, setValue] = useState();
+// changing a value and submitting.
+const TestComponent = (props: TSelectableSearchInputProps) => {
+  const [dropdownValue, setDropdownValue] = useState(props.value.option);
+  const [textInputValue, setTextInputValue] = useState(props.value.text);
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const value = {
+    text: textInputValue,
+    option: dropdownValue,
   };
+
+  const handleChange = (event: TCustomEvent) => {
+    if (event.target.name && event.target.name.endsWith('.textInput')) {
+      setTextInputValue(event.target.value as string);
+    }
+    if (event.target.name && event.target.name.endsWith('.dropdown')) {
+      setDropdownValue(event.target.value as string);
+    }
+    props.onChange && props.onChange(event);
+  };
+
   return (
     <div>
-      <label htmlFor={SelectableSearchInput.getTextInputId('test-id')}>
+      <label htmlFor={SelectableSearchInput.getTextInputId(props.id)}>
         test-label
       </label>
-      <SelectableSearchInput
-        id={'test-id'}
-        onChange={handleChange}
-        onSubmit={() => {}}
-        value={value}
-        {...props}
-      />
+      <SelectableSearchInput {...props} value={value} onChange={handleChange} />
     </div>
   );
 };
@@ -38,6 +48,8 @@ TestComponent.defaultProps = {
     { value: 'bar', label: 'Bar' },
     { value: 'baz', label: 'Baz' },
   ],
+  onChange: () => {},
+  onSubmit: () => {},
 };
 
 describe('SelectableSearchInput.getTextInputId', () => {
@@ -85,7 +97,6 @@ describe('SelectableSearchInput.isEmpty', () => {
           option: '',
         })
       ).toBe(true);
-      expect(SelectableSearchInput.isEmpty()).toBe(true);
     });
   });
 });
@@ -133,7 +144,6 @@ describe('SelectableSearchInput', () => {
     );
 
     screen.getByLabelText('Bar').focus();
-    // expect(screen.getByLabelText('Bar')).toHaveFocus();
     expect(onFocus).toHaveBeenCalledWith({
       target: {
         id: 'test-id.dropdown',
@@ -190,30 +200,37 @@ describe('SelectableSearchInput', () => {
   });
 
   it('should call onChange when changing the value and onSubmit when submit button is clicked', () => {
-    const onChange = jest.fn((event) => {
-      expect(event.target.id).toEqual('some-id.textInput');
-      expect(event.target.name).toEqual('some-name.textInput');
-      expect(event.target.value).toEqual('avengers');
-    });
+    const onChange = jest.fn();
     const onSubmit = jest.fn();
 
-    const { container } = render(
-      <TestComponent
-        id="some-id"
-        name="some-name"
-        onChange={onChange}
-        onSubmit={onSubmit}
-      />
-    );
+    render(<TestComponent onChange={onChange} onSubmit={onSubmit} />);
+
     const event = { target: { value: 'avengers' } };
 
     fireEvent.change(screen.getByTestId('selectable-input'), event);
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith({
+      target: {
+        id: 'test-id.textInput',
+        name: 'test-name.textInput',
+        value: 'avengers',
+      },
+    });
+
+    fireEvent.keyDown(screen.getByLabelText('Foo'), { key: 'ArrowDown' });
+    screen.getByText('Bar').click();
+
+    expect(onChange).toHaveBeenCalledWith({
+      target: {
+        id: 'test-id.dropdown',
+        name: 'test-name.dropdown',
+        value: 'bar',
+      },
+    });
 
     const submitButton = screen.getByLabelText('search-button');
     fireEvent.click(submitButton);
     expect(onSubmit).toHaveBeenCalledWith({
-      option: 'foo',
+      option: 'bar',
       text: 'avengers',
     });
   });

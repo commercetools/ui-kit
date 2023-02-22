@@ -178,7 +178,6 @@ const SelectableSelect = (props: TSelectableSelect) => {
       onBlur={props.handleDropdownBlur}
       onChange={handleDropdownChange}
       onInputChange={props.onMenuInputChange}
-      data-testid="selectable-search-dropdown"
       noOptionsMessage={
         props.noMenuOptionsMessage ||
         (({ inputValue }) =>
