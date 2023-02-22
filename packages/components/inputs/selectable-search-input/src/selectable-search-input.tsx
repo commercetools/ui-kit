@@ -91,6 +91,7 @@ export type TSelectableSearchInputProps = {
   value: TValue;
   /**
    * Called with the event of the input or dropdown when either the selectable dropdown or the text input have changed.
+   * The change event from the text input has a suffix of `.textInput` and the change event from the dropdown has a suffix of `.dropdown`.
    */
   onChange?: (event: TCustomEvent) => void;
   /**
