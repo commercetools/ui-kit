@@ -161,13 +161,9 @@ const getNewThemeHoverStyles = (props: TStylesProps) => {
   ];
 };
 
-const getDefaultThemeHoverAndFocusStyles = (props: TStylesProps) => css`
+const getDefaultThemeHoverStyles = (props: TStylesProps) => css`
   &:hover ${RadioOptionBorder} {
     border-color: ${getLabelBorderColor(props)};
-  }
-  :focus-within ${LabelTextWrapper} {
-    outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
-    outline-offset: 3px;
   }
 `;
 
@@ -196,9 +192,14 @@ const getLabelStyles = (props: TStylesProps) => css`
   cursor: ${getLabelCursor(props)};
   display: flex;
 
+  :focus-within ${LabelTextWrapper} {
+    outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
+    outline-offset: ${props.isNewTheme ? '2px' : '3px'};
+  }
+
   ${props.isNewTheme
     ? getNewThemeHoverStyles(props)
-    : getDefaultThemeHoverAndFocusStyles(props)}
+    : getDefaultThemeHoverStyles(props)}
 `;
 
 export {
