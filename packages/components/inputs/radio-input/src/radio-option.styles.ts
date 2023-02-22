@@ -137,10 +137,14 @@ const RadioOptionBorder = styled.div<TStylesProps>`
   justify-content: center;
 `;
 
-const Input = styled.input`
+const focusStyles = css`
   &:focus + div > ${RadioOptionBorder} {
     border-color: ${designTokens.borderColorForInputWhenFocused};
   }
+`;
+
+const Input = styled.input<TStylesProps>`
+  ${(props) => !props.isNewTheme && focusStyles}
 `;
 
 const getNewThemeHoverAreaStyles = css`

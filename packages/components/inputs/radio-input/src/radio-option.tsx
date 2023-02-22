@@ -126,6 +126,7 @@ const Option = (props: TOptionProps) => {
           type="radio"
           readOnly={props.isReadOnly}
           aria-readonly={props.isReadOnly}
+          isNewTheme={isNewTheme}
           {...filterDataAttributes(props)}
         />
         <RadioOptionContainer {...stylesProps}>
