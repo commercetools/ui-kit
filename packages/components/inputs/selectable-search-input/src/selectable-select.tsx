@@ -4,33 +4,14 @@ import Select, {
   type SingleValueProps,
   type Props as ReactSelectProps,
 } from 'react-select';
-import {
-  createSelectStyles,
-  DropdownIndicator,
-  messages,
-} from '@commercetools-uikit/select-utils';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { DropdownIndicator, messages } from '@commercetools-uikit/select-utils';
+import { useTheme } from '@commercetools-uikit/design-system';
 import { type ReactNode, useCallback } from 'react';
 import type {
   TSelectableSearchInputProps,
   TOption,
 } from './selectable-search-input';
-
-type TBase = {
-  backgroundColor?: string;
-  color?: string;
-};
-
-type TCreateSelectableSelectStyles = {
-  isDisabled?: boolean;
-  hasError?: boolean;
-  hasWarning?: boolean;
-  isReadOnly?: boolean;
-  menuPortalZIndex?: number;
-  isNewTheme: boolean;
-  dropdownHasFocus?: boolean;
-  textInputHasFocus?: boolean;
-};
+import { createSelectableSelectStyles } from './selectable-search-input.styles';
 
 type TSingleValue = {
   id?: string;
@@ -42,72 +23,6 @@ const SingleValue = ({ id, ...props }: TSingleValue) => (
     <label htmlFor={id}>{props.children}</label>
   </components.SingleValue>
 );
-
-const createSelectableSelectStyles = ({
-  hasWarning,
-  hasError,
-  isDisabled,
-  isReadOnly,
-  menuPortalZIndex,
-  isNewTheme,
-  dropdownHasFocus,
-  textInputHasFocus,
-}: TCreateSelectableSelectStyles) => {
-  const selectStyles = createSelectStyles({
-    hasWarning,
-    hasError,
-    menuPortalZIndex,
-    isNewTheme,
-  });
-
-  return {
-    ...selectStyles,
-    control: (base: TBase, state: ReactSelectProps) => ({
-      ...selectStyles.control(base, state),
-      padding: designTokens.paddingForSelectableSearchInputDropdown,
-      borderTopRightRadius: '0',
-      borderBottomRightRadius: '0',
-      borderRight: '0',
-      height: '100%',
-      borderColor: (() => {
-        if (isDisabled)
-          return `${designTokens.borderColorForInputWhenDisabled} !important`;
-        if (hasError) return designTokens.borderColorForInputWhenError;
-        if (hasWarning) return designTokens.borderColorForInputWhenWarning;
-        if (textInputHasFocus && !isNewTheme) {
-          return designTokens.borderColorForInputWhenFocused;
-        }
-        if (dropdownHasFocus) {
-          return designTokens.borderColorForInputWhenFocused;
-        }
-        if (isReadOnly)
-          return `${designTokens.borderColorForInputWhenReadonly} !important`;
-        return designTokens.borderColorForInput;
-      })(),
-      cursor: (() => {
-        if (isDisabled) return 'not-allowed';
-        if (isReadOnly) return `default`;
-        return 'pointer';
-      })(),
-      backgroundColor: (() => {
-        if (isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
-        return base.backgroundColor;
-      })(),
-      '&:hover': {
-        backgroundColor: (() => {
-          if (isReadOnly)
-            return designTokens.backgroundColorForInputWhenReadonly;
-          return designTokens.backgroundColorForInputWhenHovered;
-        })(),
-      },
-    }),
-    dropdownIndicator: () => ({
-      fill: isReadOnly
-        ? designTokens.fontColorForInputWhenReadonly
-        : designTokens.fontColorForMoneyInputCurrencyDropdownIndicator,
-    }),
-  };
-};
 
 type TSelectableSelect = {
   textInputHasFocus: boolean;

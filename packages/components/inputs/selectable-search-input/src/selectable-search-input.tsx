@@ -253,29 +253,30 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     );
   }
 
+  const { onFocus, onBlur, name } = props;
   const handleTextInputFocus = useCallback(() => {
-    if (props.onFocus) {
-      props.onFocus({
+    if (onFocus) {
+      onFocus({
         target: {
           id: SelectableSearchInput.getTextInputId(selectablSearchInputId),
-          name: getTextInputName(props.name),
+          name: getTextInputName(name),
         },
       });
     }
     toggleTextInputHasFocus(true);
-  }, [textInputHasFocus, props.onFocus, selectablSearchInputId, props.name]);
+  }, [toggleTextInputHasFocus, onFocus, selectablSearchInputId, name]);
 
   const handleTextInputBlur = useCallback(() => {
-    if (props.onBlur) {
-      props.onBlur({
+    if (onBlur) {
+      onBlur({
         target: {
           id: SelectableSearchInput.getTextInputId(selectablSearchInputId),
-          name: getTextInputName(props.name),
+          name: getTextInputName(name),
         },
       });
     }
     toggleTextInputHasFocus(false);
-  }, [textInputHasFocus, props.onBlur, selectablSearchInputId, props.name]);
+  }, [toggleTextInputHasFocus, onBlur, selectablSearchInputId, name]);
 
   const handleClear = () => {
     setSearchValue('');
@@ -318,8 +319,8 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   );
 
   const handleDropdownFocus = useCallback(() => {
-    if (props.onFocus) {
-      props.onFocus({
+    if (onFocus) {
+      onFocus({
         target: {
           id: dropdownId,
           name: dropdownName,
@@ -327,7 +328,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
       });
     }
     toggleDropdownHasFocus(true);
-  }, [props.onFocus, toggleDropdownHasFocus, dropdownName, dropdownId]);
+  }, [onFocus, toggleDropdownHasFocus, dropdownName, dropdownId]);
 
   const handleDropdownBlur = useCallback(() => {
     toggleDropdownHasFocus(false);
@@ -338,24 +339,24 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
       // ensures that both fields are marked as touched when one of them
       // is blurred
       if (
-        typeof props.onBlur === 'function' &&
+        typeof onBlur === 'function' &&
         !containerRef.current?.contains(event.relatedTarget)
       ) {
-        props.onBlur({
+        onBlur({
           target: {
             id: SelectableSearchInput.getDropdownId(selectablSearchInputId),
-            name: getDropdownName(props.name),
+            name: getDropdownName(name),
           },
         });
-        props.onBlur({
+        onBlur({
           target: {
             id: SelectableSearchInput.getTextInputId(selectablSearchInputId),
-            name: getTextInputName(props.name),
+            name: getTextInputName(name),
           },
         });
       }
     },
-    [props.onBlur, selectablSearchInputId, props.name]
+    [onBlur, selectablSearchInputId, name]
   );
 
   return (

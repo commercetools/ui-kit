@@ -1,6 +1,8 @@
 import { css } from '@emotion/react';
+import { type Props as ReactSelectProps } from 'react-select';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 import { designTokens } from '@commercetools-uikit/design-system';
+import { createSelectStyles } from '@commercetools-uikit/select-utils';
 
 type TInputProps = {
   isDisabled?: boolean;
@@ -167,10 +169,93 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
   `,
 ];
 
+type TBase = {
+  backgroundColor?: string;
+  color?: string;
+};
+
+type TCreateSelectableSelectStyles = {
+  isDisabled?: boolean;
+  hasError?: boolean;
+  hasWarning?: boolean;
+  isReadOnly?: boolean;
+  menuPortalZIndex?: number;
+  isNewTheme: boolean;
+  dropdownHasFocus?: boolean;
+  textInputHasFocus?: boolean;
+};
+
+const createSelectableSelectStyles = ({
+  hasWarning,
+  hasError,
+  isDisabled,
+  isReadOnly,
+  menuPortalZIndex,
+  isNewTheme,
+  dropdownHasFocus,
+  textInputHasFocus,
+}: TCreateSelectableSelectStyles) => {
+  const selectStyles = createSelectStyles({
+    hasWarning,
+    hasError,
+    menuPortalZIndex,
+    isNewTheme,
+  });
+
+  return {
+    ...selectStyles,
+    control: (base: TBase, state: ReactSelectProps) => ({
+      ...selectStyles.control(base, state),
+      padding: designTokens.paddingForSelectableSearchInputDropdown,
+      borderTopRightRadius: '0',
+      borderBottomRightRadius: '0',
+      borderRight: '0',
+      height: '100%',
+      borderColor: (() => {
+        if (isDisabled)
+          return `${designTokens.borderColorForInputWhenDisabled} !important`;
+        if (hasError) return designTokens.borderColorForInputWhenError;
+        if (hasWarning) return designTokens.borderColorForInputWhenWarning;
+        if (textInputHasFocus && !isNewTheme) {
+          return designTokens.borderColorForInputWhenFocused;
+        }
+        if (dropdownHasFocus) {
+          return designTokens.borderColorForInputWhenFocused;
+        }
+        if (isReadOnly)
+          return `${designTokens.borderColorForInputWhenReadonly} !important`;
+        return designTokens.borderColorForInput;
+      })(),
+      cursor: (() => {
+        if (isDisabled) return 'not-allowed';
+        if (isReadOnly) return `default`;
+        return 'pointer';
+      })(),
+      backgroundColor: (() => {
+        if (isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
+        return base.backgroundColor;
+      })(),
+      '&:hover': {
+        backgroundColor: (() => {
+          if (isReadOnly)
+            return designTokens.backgroundColorForInputWhenReadonly;
+          return designTokens.backgroundColorForInputWhenHovered;
+        })(),
+      },
+    }),
+    dropdownIndicator: () => ({
+      fill: isReadOnly
+        ? designTokens.fontColorForInputWhenReadonly
+        : designTokens.fontColorForMoneyInputCurrencyDropdownIndicator,
+    }),
+  };
+};
+
 export {
   getSelectableSearchInputStyles,
   getSelectableSearchInputContainerStyles,
   getClearIconButtonStyles,
   getSearchIconButtonStyles,
   getBackgroundColor,
+  createSelectableSelectStyles,
 };
