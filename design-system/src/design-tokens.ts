@@ -703,7 +703,6 @@ export const themes = {
     paddingForGroupHeadingSelectInputOptions: '16px',
     paddingForSelectInputMenu: 'var(--spacing-10) 0',
     paddingForMoneyInputCurrencyDropdown: '0 12px',
-    paddingForSelectableSearchInputDropdown: '0 var(--spacing-20)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
