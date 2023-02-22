@@ -107,23 +107,24 @@ const getSearchIconButtonStyles = (props: TInputProps) => [
   `,
 ];
 
-const getBackgroundWhenHovered = (props: TInputProps) => {
+const getBackgroundColor = (props: TInputProps, defaultColor: string) => {
   if (props.isDisabled) {
     return designTokens.backgroundColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.backgroundColorForInput;
+    return designTokens.backgroundColorForInputWhenReadonly;
   }
-  return designTokens.backgroundColorForInputWhenHovered;
+  return defaultColor;
 };
 
 const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
   css`
     display: flex;
     align-items: center;
-    background-color: ${props.isDisabled
-      ? designTokens.backgroundColorForInputWhenDisabled
-      : designTokens.backgroundColorForInput};
+    background-color: ${getBackgroundColor(
+      props,
+      designTokens.backgroundColorForInput
+    )};
     border: 1px solid ${getInputContainerBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-shadow: ${getInputBoxShadow(props)};
@@ -133,6 +134,8 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
     border-bottom-left-radius: 0;
     margin-left: 0;
     width: 100%;
+    transition: border-color ${designTokens.transitionStandard},
+      background-color ${designTokens.transitionStandard};
 
     &::placeholder {
       color: ${designTokens.placeholderFontColorForInput};
@@ -143,7 +146,10 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
         props,
         designTokens.borderColorForInputWhenHovered
       )};
-      background-color: ${getBackgroundWhenHovered(props)};
+      background-color: ${getBackgroundColor(
+        props,
+        designTokens.backgroundColorForInputWhenHovered
+      )};
     }
 
     &:focus-within {
@@ -166,4 +172,5 @@ export {
   getSelectableSearchInputContainerStyles,
   getClearIconButtonStyles,
   getSearchIconButtonStyles,
+  getBackgroundColor,
 };

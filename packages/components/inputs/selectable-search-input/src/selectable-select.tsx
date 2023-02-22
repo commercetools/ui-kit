@@ -90,11 +90,15 @@ const createSelectableSelectStyles = ({
         return 'pointer';
       })(),
       backgroundColor: (() => {
-        if (isReadOnly) return designTokens.backgroundColorForInput;
+        if (isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
         return base.backgroundColor;
       })(),
       '&:hover': {
-        backgroundColor: designTokens.backgroundColorForInputWhenHovered,
+        backgroundColor: (() => {
+          if (isReadOnly)
+            return designTokens.backgroundColorForInputWhenReadonly;
+          return designTokens.backgroundColorForInputWhenHovered;
+        })(),
       },
     }),
     dropdownIndicator: () => ({

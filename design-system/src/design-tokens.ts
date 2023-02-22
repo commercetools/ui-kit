@@ -514,7 +514,7 @@ export const themes = {
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
-    borderColorForInputWhenReadonly: 'hsl(0, 0%, 90%)',
+    borderColorForInputWhenReadonly: '#fff',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForButtonAsIcon: '#ccc',
     borderColorForButtonAsIconAsInfo: '#ccc',
