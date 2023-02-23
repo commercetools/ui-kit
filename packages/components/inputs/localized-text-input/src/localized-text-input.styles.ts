@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import { TLocalizedInputProps } from './localized-text-input';
+import type { TLocalizedInputProps } from './localized-text-input';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
