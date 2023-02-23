@@ -1,12 +1,12 @@
 {
-  "name": "@commercetools-uikit/radio-input",
-  "description": "A RadioInput represents a group of options where only one option can be selected at a time.",
+  "name": "@commercetools-uikit/selectable-search-input",
+  "description": "A controlled selectable search input component for single-line strings with validation states.",
   "version": "15.12.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/commercetools/ui-kit.git",
-    "directory": "packages/components/inputs/radio-input"
+    "directory": "packages/components/inputs/selectable-search-input"
   },
   "homepage": "https://uikit.commercetools.com",
   "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
@@ -15,29 +15,32 @@
     "access": "public"
   },
   "sideEffects": false,
-  "main": "dist/commercetools-uikit-radio-input.cjs.js",
-  "module": "dist/commercetools-uikit-radio-input.esm.js",
+  "main": "dist/commercetools-uikit-selectable-search-input.cjs.js",
+  "module": "dist/commercetools-uikit-selectable-search-input.esm.js",
   "files": ["dist"],
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/constraints": "15.12.0",
     "@commercetools-uikit/design-system": "15.12.0",
+    "@commercetools-uikit/hooks": "15.12.0",
     "@commercetools-uikit/icons": "15.12.0",
     "@commercetools-uikit/input-utils": "15.12.0",
-    "@commercetools-uikit/spacings-inline": "15.12.0",
-    "@commercetools-uikit/spacings-inset": "15.12.0",
-    "@commercetools-uikit/spacings-stack": "15.12.0",
+    "@commercetools-uikit/secondary-icon-button": "15.12.0",
+    "@commercetools-uikit/select-utils": "15.12.0",
     "@commercetools-uikit/utils": "15.12.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-is": "17.0.2"
+    "react-select": "5.7.0"
   },
   "devDependencies": {
-    "react": "17.0.2"
+    "react": "17.0.2",
+    "react-intl": "^5.25.1"
   },
   "peerDependencies": {
-    "react": "17.x"
+    "react": "17.x",
+    "react-intl": "5.x"
   }
 }
