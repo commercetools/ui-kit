@@ -4,11 +4,13 @@ import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TStylesProps } from './radio-option';
 
-const getDefaultThemeLabelColor = (props: TStylesProps) => css`
-  color: ${props.isDisabled
-    ? designTokens.fontColorForInputWhenDisabled
-    : designTokens.fontColorForInput};
-`;
+const getDefaultThemeLabelColor = (props: TStylesProps) =>
+  !props.isNewTheme &&
+  css`
+    color: ${props.isDisabled
+      ? designTokens.fontColorForInputWhenDisabled
+      : designTokens.fontColorForInput};
+  `;
 
 const LabelTextWrapper = styled.div<TStylesProps>`
   grid-area: label;
@@ -16,7 +18,7 @@ const LabelTextWrapper = styled.div<TStylesProps>`
   font-size: 1rem;
   font-family: inherit;
   display: flex;
-  ${(props) => !props.isNewTheme && getDefaultThemeLabelColor(props)}
+  ${(props) => getDefaultThemeLabelColor(props)}
 `;
 
 const AdditionalTextWrapper = styled.div<TStylesProps>`
@@ -24,7 +26,7 @@ const AdditionalTextWrapper = styled.div<TStylesProps>`
   margin-left: ${designTokens.spacing10};
   font-size: 1rem;
   font-family: inherit;
-  ${(props) => !props.isNewTheme && getDefaultThemeLabelColor(props)}
+  ${(props) => getDefaultThemeLabelColor(props)}
 `;
 
 const RadioInputWrapper = styled.div<TStylesProps>`
@@ -130,8 +132,9 @@ const RadioOptionBorder = styled.div<TStylesProps>`
   height: ${designTokens.heightForRadioInputOption};
   border-radius: 50%;
   background-color: ${designTokens.backgroundColorForInput};
-  border: ${designTokens.borderForRadioInputOption} solid
-    ${(props) => getBorderColor(props)};
+  border-width: ${designTokens.borderForRadioInputOption};
+  border-style: solid;
+  border-color: ${(props) => getBorderColor(props)};
   display: flex;
   align-items: center;
   justify-content: center;
