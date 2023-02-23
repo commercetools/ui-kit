@@ -26,7 +26,7 @@ const sizePerScale = {
 
 const positionOrigin = '20px';
 
-type TLoadingSpinnerProps = {
+export type TLoadingSpinnerProps = {
   /**
    * Set the amount of time to delay the loading spinner before it renders.
    * The default value of is 1000ms.

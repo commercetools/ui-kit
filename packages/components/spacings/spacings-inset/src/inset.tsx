@@ -22,7 +22,7 @@ const getPadding = (scale?: TScale) => {
   }
 };
 
-type TProps = {
+export type TProps = {
   scale: TScale;
   children?: ReactNode;
 };

@@ -42,7 +42,7 @@ const sequentialErrorsId = createSequentialId('async-select-field-error-')();
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-type TAsyncSelectFieldProps = {
+export type TAsyncSelectFieldProps = {
   // AsyncSelectField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

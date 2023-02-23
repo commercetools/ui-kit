@@ -15,7 +15,7 @@ export type TDropdownLabel = {
   children: ReactNode;
 };
 
-type TDropdownProps = {
+export type TDropdownProps = {
   label: string;
   isMulti: boolean;
   isDisabled?: boolean;

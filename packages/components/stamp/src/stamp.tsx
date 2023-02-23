@@ -14,7 +14,7 @@ type Tone =
   | 'primary'
   | 'secondary';
 
-type Props = {
+export type TStampProps = {
   /**
    * Indicates the color scheme of stamp
    */
@@ -47,7 +47,7 @@ type ToneRelatedProps = {
   iconColor: string;
 };
 
-type StylesFunctionParams = Props & { overrideTextColor?: boolean };
+type StylesFunctionParams = TStampProps & { overrideTextColor?: boolean };
 
 const tonesPropsMap: Record<Tone, ToneRelatedProps> = {
   critical: {
@@ -155,7 +155,7 @@ const getStampStyles = (props: StylesFunctionParams) => {
   `;
 };
 
-const Stamp = (props: Props) => {
+const Stamp = (props: TStampProps) => {
   const { themedValue } = useTheme();
   const overrideTextColor = themedValue(false, true);
   const Icon =
@@ -193,7 +193,7 @@ const Stamp = (props: Props) => {
     </div>
   );
 };
-const defaultProps: Pick<Props, 'isCondensed' | 'tone'> = {
+const defaultProps: Pick<TStampProps, 'isCondensed' | 'tone'> = {
   isCondensed: false,
   tone: 'information',
 };

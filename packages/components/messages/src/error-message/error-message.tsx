@@ -9,7 +9,7 @@ type TIntlMessageDescriptor = {
   values?: Record<string, ReactNode>;
 };
 
-type TErrorMessageProps = {
+export type TErrorMessageProps = {
   id?: string;
   intlMessage?: TIntlMessageDescriptor;
   children?: ReactNode;

@@ -8,7 +8,7 @@ type TIntlMessageDescriptor = {
   values?: Record<string, ReactNode>;
 };
 
-type TWarningMessageProps = {
+export type TWarningMessageProps = {
   intlMessage?: TIntlMessageDescriptor;
   children?: ReactNode;
 };

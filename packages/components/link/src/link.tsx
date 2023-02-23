@@ -14,7 +14,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import { ExternalLinkIcon } from '@commercetools-uikit/icons';
 
-type TLinkProps = {
+export type TLinkProps = {
   /**
    * Value of the link.
    * <br />

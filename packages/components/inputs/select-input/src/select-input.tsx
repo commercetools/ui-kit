@@ -46,7 +46,7 @@ type TCustomEvent = {
   persist: () => void;
 };
 
-type TSelectInputProps = {
+export type TSelectInputProps = {
   horizontalConstraint?:
     | 3
     | 4

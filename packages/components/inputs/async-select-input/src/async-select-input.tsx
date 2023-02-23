@@ -43,7 +43,7 @@ type TCustomEvent = {
 
 type ReactSelectAsyncProps = AsyncProps<unknown, boolean, GroupBase<unknown>>;
 
-type TAsyncSelectInputProps = {
+export type TAsyncSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */

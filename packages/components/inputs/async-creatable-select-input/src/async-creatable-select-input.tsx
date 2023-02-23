@@ -48,7 +48,7 @@ type ReactSelectAsyncCreatableProps = AsyncCreatableProps<
   GroupBase<unknown>
 >;
 
-type TAsyncCreatableSelectInputProps = {
+export type TAsyncCreatableSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */

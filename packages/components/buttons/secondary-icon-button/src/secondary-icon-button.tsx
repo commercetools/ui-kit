@@ -12,7 +12,7 @@ import { getBaseStyles } from './secondary-icon-button.styles';
 
 const propsToOmit = ['type'];
 
-export type TSecondaryButtonProps<
+export type TSecondaryButtonIconProps<
   TStringOrComponent extends ElementType = 'button'
 > = {
   /**
@@ -55,7 +55,7 @@ export type TSecondaryButtonProps<
  */ ComponentPropsWithRef<TStringOrComponent>;
 
 const SecondaryIconButton = <TStringOrComponent extends ElementType = 'button'>(
-  props: TSecondaryButtonProps<TStringOrComponent>
+  props: TSecondaryButtonIconProps<TStringOrComponent>
 ) => {
   const buttonAttributes = {
     ...filterInvalidAttributes(omit(props, propsToOmit)),

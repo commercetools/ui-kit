@@ -4,7 +4,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 type TScale = 's' | 'm' | 'l';
-type TProps = {
+export type TProps = {
   scale: TScale;
   children: ReactNode;
 };

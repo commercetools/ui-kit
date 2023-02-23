@@ -20,7 +20,7 @@ type Tone =
   | 'critical'
   | 'inherit';
 
-type TBasicTextProps = {
+export type TBasicTextProps = {
   id?: string;
   intlMessage?: MessageDescriptor & {
     values?: Record<string, React.ReactNode>;

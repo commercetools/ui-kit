@@ -42,7 +42,7 @@ type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
 };
 
-type TSelectFieldProps = {
+export type TSelectFieldProps = {
   // SelectField
   /**
    * Used as HTML id property. An id is generated automatically when not provided.
