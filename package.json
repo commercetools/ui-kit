@@ -155,7 +155,7 @@
     "@jest/types": "29.4.2",
     "@types/eslint": "^8.2.2",
     "@types/react": "17.0.53",
-    "@types/react-dom": "17.0.18",
+    "@types/react-dom": "18.0.11",
     "@types/react-router": "5.1.20",
     "@types/unist": "2.0.6",
     "@typescript-eslint/eslint-plugin": "5.51.0",
