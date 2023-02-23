@@ -259,6 +259,8 @@ states:
     description: 'When the element is highlighted'
   condensed:
     description: 'When the element is condensed'
+  checked:
+    description: 'When the element is checked'
 
 variants:
   h1:
@@ -393,6 +395,12 @@ componentGroups:
     description: 'Money Input Dropdown indicator elements'
   money-input-precision-badge:
     description: 'Money input precision badge elements'
+  radio-input:
+    description: 'Radio input elements'
+  radio-input-label:
+    description: 'Radio input label elements'
+  radio-input-option:
+    description: 'Radio input option elements'
 
 decisionGroupsByTheme:
   default:
@@ -533,6 +541,8 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-select-input-tag:
           choice: 'none'
+        border-for-radio-input-option:
+          choice: border-width-1
 
     borderColors:
       label: Border Colors
@@ -628,6 +638,16 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-checkbox-input-icon-when-error:
           choice: color-error
+        border-color-for-radio-input:
+          choice: color-neutral
+        border-color-for-radio-input-when-disabled:
+          choice: color-neutral-60
+        border-color-for-radio-input-when-readonly:
+          choice: color-neutral
+        border-color-for-radio-input-when-checked:
+          choice: color-neutral
+        border-color-for-radio-input-when-focused:
+          choice: color-primary
 
     borderRadiuses:
       label: Border Radius
@@ -785,6 +805,14 @@ decisionGroupsByTheme:
           choice: color-neutral-40
         font-color-for-checkbox-input-label-when-readonly:
           choice: color-neutral-40
+        font-color-for-radio-input-when-disabled:
+          choice: color-neutral-60
+        font-color-for-radio-input-when-error:
+          choice: color-error
+        font-color-for-radio-input-when-readonly:
+          choice: color-neutral-60
+        font-color-for-radio-input-when-warning:
+          choice: color-warning
 
     heights:
       label: Height
@@ -808,6 +836,10 @@ decisionGroupsByTheme:
           choice: '24px'
         height-for-select-input-tag:
           choice: '26px'
+        height-for-radio-input-option:
+          choice: '16px'
+        height-for-radio-input-option-when-checked:
+          choice: '8px'
 
     widths:
       label: Width
@@ -974,6 +1006,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-right-for-clear-input-icon:
           choice: spacing-10
+        margin-left-for-radio-input-label:
+          choice: spacing-20
 
     paddings:
       label: Paddings
@@ -1195,6 +1229,8 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral)'
         border-for-select-input-tag:
           choice: '1px solid var(--color-neutral-85)'
+        border-for-radio-input-option:
+          choice: border-width-2
 
     borderColors:
       label: Border Colors
@@ -1272,6 +1308,16 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         border-color-for-checkbox-input-icon-when-error:
           choice: color-error
+        border-color-for-radio-input:
+          choice: color-neutral-60
+        border-color-for-radio-input-when-disabled:
+          choice: color-neutral
+        border-color-for-radio-input-when-readonly:
+          choice: color-neutral-60
+        border-color-for-radio-input-when-checked:
+          choice: color-primary
+        border-color-for-radio-input-when-focused:
+          choice: color-neutral-60
 
     borderRadiuses:
       label: Border radiuses
@@ -1513,6 +1559,10 @@ decisionGroupsByTheme:
           choice: '32px'
         height-for-select-input-tag:
           choice: '32px'
+        height-for-radio-input-option:
+          choice: '18px'
+        height-for-radio-input-option-when-checked:
+          choice: '10px'
 
     iconColors:
       label: Icon colors
@@ -1559,6 +1609,8 @@ decisionGroupsByTheme:
           choice: '12px'
         margin-right-for-clear-input-icon:
           choice: spacing-20
+        margin-left-for-radio-input-label:
+          choice: spacing-10
 
     paddings:
       label: Paddings
