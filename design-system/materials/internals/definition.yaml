@@ -1688,6 +1688,8 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-10) 0'
         padding-for-money-input-currency-dropdown:
           choice: '0 12px'
+        padding-for-selectable-search-input-dropdown:
+          choice: '0 12px'
 
     shadows:
       label: Shadows

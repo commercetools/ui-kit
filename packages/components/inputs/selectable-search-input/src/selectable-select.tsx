@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import { useIntl } from 'react-intl';
 import Select, {
   components,
@@ -49,20 +50,21 @@ const SelectableSelect = (props: TSelectableSelect) => {
     textInputHasFocus: props.textInputHasFocus,
   }) as ReactSelectProps['styles'];
 
+  const { onChange, name, id, textInputRef } = props;
   const handleDropdownChange = useCallback(
     (nextSelectedOptions) => {
-      if (props.onChange) {
-        props.onChange({
+      if (onChange) {
+        onChange({
           target: {
-            id: props.id,
-            name: props.name,
+            id: id,
+            name: name,
             value: (nextSelectedOptions as TOption).value,
           },
         });
       }
-      props.textInputRef.current?.focus();
+      textInputRef.current?.focus();
     },
-    [props.onChange, props.id, props.name, props.textInputRef]
+    [onChange, id, name, textInputRef]
   );
 
   return (
@@ -71,15 +73,12 @@ const SelectableSelect = (props: TSelectableSelect) => {
       name={props.name}
       value={props.selectedOption}
       isDisabled={props.isDisabled}
-      isSearchable={props.isMenuSearchable}
+      isSearchable={props.isReadOnly ? false : props.isMenuSearchable}
       maxMenuHeight={props.maxMenuHeight}
       closeMenuOnSelect={props.closeMenuOnSelect}
       components={{
         SingleValue: (innerProps) => (
           <SingleValue {...innerProps} id={props.id} />
-        ),
-        Input: (ownProps) => (
-          <components.Input {...ownProps} readOnly={props.isReadOnly} />
         ),
         DropdownIndicator,
       }}

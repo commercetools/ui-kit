@@ -15,19 +15,35 @@ const getInputContainerBorderColor = (
   props: TInputProps,
   defaultColor: string = designTokens.borderColorForInput
 ) => {
-  if (props.isDisabled) {
-    return designTokens.borderColorForInputWhenDisabled;
-  }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
     return designTokens.borderColorForInputWhenWarning;
   }
+  if (props.isDisabled) {
+    return designTokens.borderColorForInputWhenDisabled;
+  }
   if (props.isReadOnly) {
     return designTokens.borderColorForInputWhenReadonly;
   }
   return defaultColor;
+};
+
+const getInputFontColor = (props: TInputProps) => {
+  if (props.hasError) {
+    return designTokens.fontColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.fontColorForInputWhenWarning;
+  }
+  if (props.isDisabled) {
+    return designTokens.fontColorForInputWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.fontColorForInputWhenReadonly;
+  }
+  return designTokens.fontColorForInput;
 };
 
 const getInputBoxShadow = (props: TInputProps) => {
@@ -54,6 +70,7 @@ const getSelectableSearchInputStyles = (props: TInputProps) => [
       background-color: transparent !important;
     }
     width: 100%;
+    color: ${getInputFontColor(props)};
   `,
 ];
 
@@ -158,9 +175,6 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
       border-color: ${designTokens.borderColorForInputWhenFocused};
       box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
         ${designTokens.borderColorForInputWhenFocused};
-      &:hover {
-        background-color: ${designTokens.colorSurface};
-      }
     }
 
     &:focus {
@@ -212,10 +226,10 @@ const createSelectableSelectStyles = ({
       borderRight: '0',
       height: '100%',
       borderColor: (() => {
-        if (isDisabled)
-          return `${designTokens.borderColorForInputWhenDisabled} !important`;
         if (hasError) return designTokens.borderColorForInputWhenError;
         if (hasWarning) return designTokens.borderColorForInputWhenWarning;
+        if (isDisabled)
+          return `${designTokens.borderColorForInputWhenDisabled} !important`;
         if (textInputHasFocus && !isNewTheme) {
           return designTokens.borderColorForInputWhenFocused;
         }
@@ -231,22 +245,38 @@ const createSelectableSelectStyles = ({
         if (isReadOnly) return `default`;
         return 'pointer';
       })(),
-      backgroundColor: (() => {
-        if (isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
-        return base.backgroundColor;
-      })(),
+      backgroundColor: getBackgroundColor(
+        {
+          isDisabled,
+          isReadOnly,
+        },
+        base.backgroundColor || ''
+      ),
       '&:hover': {
-        backgroundColor: (() => {
-          if (isReadOnly)
-            return designTokens.backgroundColorForInputWhenReadonly;
-          return designTokens.backgroundColorForInputWhenHovered;
-        })(),
+        backgroundColor: getBackgroundColor(
+          {
+            isDisabled,
+            isReadOnly,
+          },
+          designTokens.backgroundColorForInputWhenHovered
+        ),
       },
+    }),
+    singleValue: (base: TBase) => ({
+      ...base,
+      marginLeft: 0,
+      maxWidth: 'initial',
+      color: getInputFontColor({
+        hasWarning,
+        hasError,
+        isDisabled,
+        isReadOnly,
+      }),
     }),
     dropdownIndicator: () => ({
       fill: isReadOnly
-        ? designTokens.fontColorForInputWhenReadonly
-        : designTokens.fontColorForMoneyInputCurrencyDropdownIndicator,
+        ? designTokens.fontColorForInputWhenDisabled
+        : designTokens.fontColorForSelectInputIcon,
     }),
   };
 };

@@ -128,8 +128,13 @@ storiesOf('Components|Inputs', module)
           placeholder={text('placeholder', 'Placeholder')}
           horizontalConstraint={select(
             'horizontalConstraint',
-            Constraints.getAcceptedMaxPropValues(3),
+            Constraints.getAcceptedMaxPropValues(10),
             16
+          )}
+          menuHorizontalConstraint={select(
+            'menuHorizontalConstraint',
+            Constraints.getAcceptedMaxPropValues(3, 5),
+            3
           )}
           options={options}
           onSubmit={(submitValues) => {

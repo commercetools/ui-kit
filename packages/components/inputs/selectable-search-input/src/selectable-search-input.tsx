@@ -331,8 +331,16 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   }, [onFocus, toggleDropdownHasFocus, dropdownName, dropdownId]);
 
   const handleDropdownBlur = useCallback(() => {
+    if (onBlur) {
+      onBlur({
+        target: {
+          id: dropdownId,
+          name: dropdownName,
+        },
+      });
+    }
     toggleDropdownHasFocus(false);
-  }, [toggleDropdownHasFocus]);
+  }, [toggleDropdownHasFocus, onBlur, dropdownName, dropdownId]);
 
   const handleContainerBlur = useCallback(
     (event) => {
@@ -387,6 +395,9 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
               isNewTheme &&
               css`
                 border-left-color: ${designTokens.borderColorForInputWhenFocused};
+                &:hover {
+                  border-left-color: ${designTokens.borderColorForInputWhenFocused};
+                }
               `,
           ]}
         >
