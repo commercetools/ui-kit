@@ -185,7 +185,7 @@ describe('SelectableSearchInput', () => {
 
   it('should render a readonly dropdown when readonly', () => {
     render(<TestComponent isReadOnly={true} />);
-    expect(screen.getByLabelText('Foo').inputMode).toBe('');
+    expect(screen.getByLabelText('Foo').inputMode).toBe('none');
   });
 
   it('should render with auto-generated ids', () => {
