@@ -401,6 +401,10 @@ componentGroups:
     description: 'Radio input label elements'
   radio-input-option:
     description: 'Radio input option elements'
+  selectable-select-input-dropdown:
+    description: 'Selectable select input dropdown elements'
+  selectable-search-input-dropdown:
+    description: 'Selectable search input dropdown elements'
 
 decisionGroupsByTheme:
   default:
@@ -1079,6 +1083,8 @@ decisionGroupsByTheme:
           choice: 'inherit'
         padding-for-money-input-currency-dropdown:
           choice: '0 var(--spacing-20)'
+        padding-for-selectable-search-input-dropdown:
+          choice: '0 var(--spacing-20)'
 
     shadows:
       label: Shadows
@@ -1243,7 +1249,7 @@ decisionGroupsByTheme:
         border-color-for-input-when-hovered:
           choice: color-neutral
         border-color-for-input-when-readonly:
-          choice: color-neutral-90
+          choice: color-surface
         border-color-for-input-when-focused:
           choice: color-primary
         border-color-for-button-as-icon:
@@ -1681,6 +1687,8 @@ decisionGroupsByTheme:
         padding-for-select-input-menu:
           choice: 'var(--spacing-10) 0'
         padding-for-money-input-currency-dropdown:
+          choice: '0 12px'
+        padding-for-selectable-search-input-dropdown:
           choice: '0 12px'
 
     shadows:

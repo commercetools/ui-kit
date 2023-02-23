@@ -41,6 +41,7 @@
     "@commercetools-uikit/search-select-input": "15.12.0",
     "@commercetools-uikit/search-text-input": "15.12.0",
     "@commercetools-uikit/select-input": "15.12.0",
+    "@commercetools-uikit/selectable-search-input": "15.12.0",
     "@commercetools-uikit/text-input": "15.12.0",
     "@commercetools-uikit/time-input": "15.12.0",
     "@commercetools-uikit/toggle-input": "15.12.0"
