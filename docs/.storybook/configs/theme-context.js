@@ -14,26 +14,20 @@ ThemeWrapper.propTypes = {
   theme: PropTypes.any,
 };
 
-const themeParams = [
-  {
-    name: 'Default Theme',
-    props: { themeName: 'default' },
-  },
-];
-
-// Do not show the new test theme in public environment
-if (process.env.VERCEL_ENV !== 'production') {
-  themeParams.push({
-    name: 'Test Theme',
-    props: { themeName: 'test' },
-  });
-}
-
 const themeContext = {
   icon: 'box', // a icon displayed in the Storybook toolbar to control contextual props
   title: 'Themes', // an unique name of a contextual environment
   components: [ThemeWrapper],
-  params: themeParams,
+  params: [
+    {
+      name: 'Current design',
+      props: { themeName: 'default' },
+    },
+    {
+      name: 'New design (beta)',
+      props: { themeName: 'test' },
+    },
+  ],
   options: {
     deep: true, // pass the `props` deeply into all wrapping components
     cancelable: false, // allow this contextual environment to be opt-out optionally in toolbar
