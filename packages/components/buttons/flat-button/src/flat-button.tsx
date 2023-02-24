@@ -121,6 +121,7 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
       css={css`
         min-height: initial;
         align-items: center;
+        font-size: ${designTokens.fontSizeForTextAsBody};
         ${props.as && props.as !== 'button'
           ? `white-space: normal;
                display: inline-block;`
