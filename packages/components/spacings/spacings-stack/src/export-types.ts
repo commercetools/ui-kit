@@ -1,1 +1,3 @@
-export type { TProps as TStackProps } from './stack';
+import type { TStackProps as StackProps } from './stack';
+
+export type TStackProps = StackProps;

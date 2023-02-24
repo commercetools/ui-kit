@@ -1,1 +1,3 @@
-export type { TProps as TInsetSquishProps } from './inset-squish';
+import type { TInsetSquishProps as InsetSquishProps } from './inset-squish';
+
+export type TInsetSquishProps = InsetSquishProps;

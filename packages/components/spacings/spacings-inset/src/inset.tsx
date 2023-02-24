@@ -22,12 +22,12 @@ const getPadding = (scale?: TScale) => {
   }
 };
 
-export type TProps = {
+export type TInsetProps = {
   scale: TScale;
   children?: ReactNode;
 };
 
-const Inset = (props: TProps) => (
+const Inset = (props: TInsetProps) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
@@ -37,7 +37,7 @@ const Inset = (props: TProps) => (
     {props.children}
   </div>
 );
-const defaultProps: Pick<TProps, 'scale'> = {
+const defaultProps: Pick<TInsetProps, 'scale'> = {
   scale: 'm',
 };
 Inset.displayName = 'Inset';

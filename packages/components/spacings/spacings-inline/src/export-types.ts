@@ -1,1 +1,3 @@
-export type { TProps as TInlineProps } from './inline';
+import type { TInlineProps as InlineProps } from './inline';
+
+export type TInlineProps = InlineProps;
