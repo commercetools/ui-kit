@@ -147,7 +147,10 @@ const SearchTextInput = (props: TSearchTextInputProps) => {
   };
 
   const handleSubmit = (
-    event: KeyboardEvent<HTMLButtonElement> | MouseEvent<HTMLButtonElement>
+    event:
+      | KeyboardEvent<HTMLButtonElement>
+      | MouseEvent<HTMLButtonElement>
+      | KeyboardEvent<HTMLInputElement>
   ) => {
     event.preventDefault();
     if (props.onSubmit) {
@@ -177,6 +180,11 @@ const SearchTextInput = (props: TSearchTextInputProps) => {
           aria-errormessage={props['aria-errormessage']}
           css={getSearchTextInputStyles(props)}
           {...filterDataAttributes(props)}
+          onKeyDown={(event) => {
+            if (!props.isReadOnly && event.key === 'Enter') {
+              handleSubmit(event);
+            }
+          }}
         />
         {props.isClearable &&
           searchValue &&
