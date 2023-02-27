@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/react';
+import { useCallback, useRef } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Value } from 'react-value';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
@@ -16,6 +17,11 @@ storiesOf('Components|Inputs', module)
     },
   })
   .add('SearchTextInput', () => {
+    const ref = useRef(null);
+
+    const handleReset = useCallback(() => {
+      ref.current?.focus();
+    }, []);
     return (
       <Section
         backgroundColor={select(
@@ -50,6 +56,8 @@ storiesOf('Components|Inputs', module)
                 Constraints.getAcceptedMaxPropValues(3),
                 7
               )}
+              ref={ref}
+              onReset={handleReset}
             />
           )}
         />
