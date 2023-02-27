@@ -23,7 +23,7 @@ type TMaxProp =
   | 'scale'
   | 'auto';
 
-type TProps = {
+export type THorizontalProps = {
   /**
    * The value of the constraint. See equivalent pixel values [here](https://uikit.commercetools.com/?path=/story/basics-tokens--all-tokens).
    */
@@ -39,7 +39,7 @@ function getConstraintStyles(maxProp?: TMaxProp) {
   `;
 }
 
-const Horizontal = (props: TProps) => (
+const Horizontal = (props: THorizontalProps) => (
   <div
     css={[
       css`
