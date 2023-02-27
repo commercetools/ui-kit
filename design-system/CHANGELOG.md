@@ -1,5 +1,16 @@
 # @commercetools-uikit/design-system
 
+## 15.13.0
+
+### Patch Changes
+
+- [#2422](https://github.com/commercetools/ui-kit/pull/2422) [`884d209e8`](https://github.com/commercetools/ui-kit/commit/884d209e81f6965fb4c12d90b4a20fb3d0b7a4d0) Thanks [@kark](https://github.com/kark)! - Apply new design tokens and UI changes
+
+- [#2424](https://github.com/commercetools/ui-kit/pull/2424) [`8530369b3`](https://github.com/commercetools/ui-kit/commit/8530369b3e84bc108e318f9ec73711cea9af13f0) Thanks [@emmenko](https://github.com/emmenko)! - Apply new design tokens and UI changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.13.0
+
 ## 15.12.0
 
 ### Patch Changes
