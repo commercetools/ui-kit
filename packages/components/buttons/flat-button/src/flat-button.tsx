@@ -11,6 +11,7 @@ import omit from 'lodash/omit';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
+import Text from '@commercetools-uikit/text';
 import { getTextColor, getButtonIconColor } from './flat-button.styles';
 
 const propsToOmit = ['type'];
@@ -121,7 +122,6 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
       css={css`
         min-height: initial;
         align-items: center;
-        font-size: ${designTokens.fontSizeForTextAsBody};
         ${props.as && props.as !== 'button'
           ? `white-space: normal;
                display: inline-block;`
@@ -162,7 +162,7 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
       {props.icon && props.iconPosition === 'left' && (
         <ButtonIcon<TStringOrComponent> {...props} />
       )}
-      <span>{props.label}</span>
+      <Text.Body as="span">{props.label}</Text.Body>
       {props.icon && props.iconPosition === 'right' && (
         <ButtonIcon<TStringOrComponent> {...props} />
       )}
