@@ -127,6 +127,21 @@ describe('SearchTextInput', () => {
     expect(onSubmit).toHaveBeenCalledWith('foo');
   });
 
+  it('should call the passed onSubmit function when Enter is clicked', () => {
+    const onSubmit = jest.fn();
+
+    const { container } = render(
+      <SearchTextInput {...baseProps} onSubmit={onSubmit} />
+    );
+
+    const event = { target: { value: 'avengers' } };
+    fireEvent.change(container.querySelector('input'), event);
+    fireEvent.keyDown(container.querySelector('input'), {
+      key: 'Enter',
+    });
+    expect(onSubmit).toHaveBeenCalledWith('avengers');
+  });
+
   it('should call the passed onReset function', () => {
     const onReset = jest.fn();
 
