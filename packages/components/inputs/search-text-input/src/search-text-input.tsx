@@ -5,7 +5,7 @@ import {
   type KeyboardEvent,
   type ChangeEvent,
   type ForwardRefExoticComponent,
-  type RefObject,
+  type RefAttributes,
   useState,
   forwardRef,
 } from 'react';
@@ -118,7 +118,7 @@ export type TSearchTextInputProps = {
 };
 
 type StaticProps = {
-  isEmpty: (value: TSearchTextInputProps['value']) => boolean;
+  isEmpty: typeof isEmpty;
 };
 
 const defaultProps: Pick<
@@ -129,7 +129,9 @@ const defaultProps: Pick<
   isClearable: true,
 };
 
-const SearchTextInput: ForwardRefExoticComponent<TSearchTextInputProps> &
+const SearchTextInput: ForwardRefExoticComponent<
+  TSearchTextInputProps & RefAttributes<HTMLInputElement>
+> &
   Partial<StaticProps> = forwardRef(
   (props: TSearchTextInputProps, forwardedRef) => {
     if (!props.isReadOnly) {
@@ -188,7 +190,7 @@ const SearchTextInput: ForwardRefExoticComponent<TSearchTextInputProps> &
             aria-invalid={props['aria-invalid']}
             aria-errormessage={props['aria-errormessage']}
             css={getSearchTextInputStyles(props)}
-            ref={forwardedRef as RefObject<HTMLInputElement>}
+            ref={forwardedRef}
             {...filterDataAttributes(props)}
             onKeyDown={(event) => {
               if (!props.isReadOnly && event.key === 'Enter') {
@@ -221,7 +223,10 @@ const SearchTextInput: ForwardRefExoticComponent<TSearchTextInputProps> &
 
 SearchTextInput.displayName = 'SearchTextInput';
 SearchTextInput.defaultProps = defaultProps;
-SearchTextInput.isEmpty = (value: TSearchTextInputProps['value']) =>
+
+const isEmpty = (value: TSearchTextInputProps['value']) =>
   !value || value.trim().length === 0;
+
+SearchTextInput.isEmpty = isEmpty;
 
 export default SearchTextInput;
