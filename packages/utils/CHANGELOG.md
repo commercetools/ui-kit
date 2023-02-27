@@ -1,5 +1,11 @@
 # @commercetools-uikit/utils
 
+## 15.13.0
+
+### Patch Changes
+
+- [#2421](https://github.com/commercetools/ui-kit/pull/2421) [`6fb466f4d`](https://github.com/commercetools/ui-kit/commit/6fb466f4d59667ccb5731a46692bf54e3e4f19c8) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Refactor warning utilities to not throw errors but log warning messages to the browser console.
+
 ## 15.12.0
 
 ### Patch Changes

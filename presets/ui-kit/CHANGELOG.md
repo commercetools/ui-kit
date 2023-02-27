@@ -1,5 +1,45 @@
 # @commercetools-frontend/ui-kit
 
+## 15.13.0
+
+### Patch Changes
+
+- Updated dependencies [[`884d209e8`](https://github.com/commercetools/ui-kit/commit/884d209e81f6965fb4c12d90b4a20fb3d0b7a4d0), [`6fb466f4d`](https://github.com/commercetools/ui-kit/commit/6fb466f4d59667ccb5731a46692bf54e3e4f19c8), [`6fb466f4d`](https://github.com/commercetools/ui-kit/commit/6fb466f4d59667ccb5731a46692bf54e3e4f19c8), [`8530369b3`](https://github.com/commercetools/ui-kit/commit/8530369b3e84bc108e318f9ec73711cea9af13f0), [`8608921ca`](https://github.com/commercetools/ui-kit/commit/8608921ca62346ae4657ffc11cc75c29a1d7a410), [`6fb466f4d`](https://github.com/commercetools/ui-kit/commit/6fb466f4d59667ccb5731a46692bf54e3e4f19c8)]:
+  - @commercetools-uikit/design-system@15.13.0
+  - @commercetools-uikit/utils@15.13.0
+  - @commercetools-uikit/stamp@15.13.0
+  - @commercetools-uikit/selectable-search-input@15.13.0
+  - @commercetools-uikit/pagination@15.13.0
+  - @commercetools-uikit/data-table-manager@15.13.0
+  - @commercetools-uikit/inputs@15.13.0
+  - @commercetools-uikit/avatar@15.13.0
+  - @commercetools-uikit/card@15.13.0
+  - @commercetools-uikit/collapsible-panel@15.13.0
+  - @commercetools-uikit/constraints@15.13.0
+  - @commercetools-uikit/data-table@15.13.0
+  - @commercetools-uikit/field-label@15.13.0
+  - @commercetools-uikit/icons@15.13.0
+  - @commercetools-uikit/label@15.13.0
+  - @commercetools-uikit/link@15.13.0
+  - @commercetools-uikit/loading-spinner@15.13.0
+  - @commercetools-uikit/notifications@15.13.0
+  - @commercetools-uikit/primary-action-dropdown@15.13.0
+  - @commercetools-uikit/tag@15.13.0
+  - @commercetools-uikit/text@15.13.0
+  - @commercetools-uikit/tooltip@15.13.0
+  - @commercetools-uikit/view-switcher@15.13.0
+  - @commercetools-uikit/buttons@15.13.0
+  - @commercetools-uikit/collapsible@15.13.0
+  - @commercetools-uikit/collapsible-motion@15.13.0
+  - @commercetools-uikit/messages@15.13.0
+  - @commercetools-uikit/hooks@15.13.0
+  - @commercetools-uikit/fields@15.13.0
+  - @commercetools-uikit/spacings@15.13.0
+  - @commercetools-uikit/field-errors@15.13.0
+  - @commercetools-uikit/accessible-hidden@15.13.0
+  - @commercetools-uikit/grid@15.13.0
+  - @commercetools-uikit/i18n@15.13.0
+
 ## 15.12.0
 
 ### Patch Changes

@@ -1,5 +1,35 @@
 # @commercetools-uikit/inputs
 
+## 15.13.0
+
+### Patch Changes
+
+- Updated dependencies [[`884d209e8`](https://github.com/commercetools/ui-kit/commit/884d209e81f6965fb4c12d90b4a20fb3d0b7a4d0), [`8530369b3`](https://github.com/commercetools/ui-kit/commit/8530369b3e84bc108e318f9ec73711cea9af13f0), [`8608921ca`](https://github.com/commercetools/ui-kit/commit/8608921ca62346ae4657ffc11cc75c29a1d7a410), [`6fb466f4d`](https://github.com/commercetools/ui-kit/commit/6fb466f4d59667ccb5731a46692bf54e3e4f19c8), [`d326f72fe`](https://github.com/commercetools/ui-kit/commit/d326f72feabeedc4de25ebeea70f6a566fe88c74), [`9265b3ec2`](https://github.com/commercetools/ui-kit/commit/9265b3ec2e03612a046cdd5bf81830223f4ada8f)]:
+  - @commercetools-uikit/radio-input@15.13.0
+  - @commercetools-uikit/checkbox-input@15.13.0
+  - @commercetools-uikit/selectable-search-input@15.13.0
+  - @commercetools-uikit/localized-money-input@15.13.0
+  - @commercetools-uikit/number-input@15.13.0
+  - @commercetools-uikit/money-input@15.13.0
+  - @commercetools-uikit/search-text-input@15.13.0
+  - @commercetools-uikit/async-creatable-select-input@15.13.0
+  - @commercetools-uikit/async-select-input@15.13.0
+  - @commercetools-uikit/creatable-select-input@15.13.0
+  - @commercetools-uikit/date-input@15.13.0
+  - @commercetools-uikit/date-range-input@15.13.0
+  - @commercetools-uikit/date-time-input@15.13.0
+  - @commercetools-uikit/localized-multiline-text-input@15.13.0
+  - @commercetools-uikit/localized-rich-text-input@15.13.0
+  - @commercetools-uikit/localized-text-input@15.13.0
+  - @commercetools-uikit/multiline-text-input@15.13.0
+  - @commercetools-uikit/password-input@15.13.0
+  - @commercetools-uikit/rich-text-input@15.13.0
+  - @commercetools-uikit/search-select-input@15.13.0
+  - @commercetools-uikit/select-input@15.13.0
+  - @commercetools-uikit/text-input@15.13.0
+  - @commercetools-uikit/time-input@15.13.0
+  - @commercetools-uikit/toggle-input@15.13.0
+
 ## 15.12.0
 
 ### Minor Changes
