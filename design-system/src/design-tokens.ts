@@ -615,7 +615,6 @@ export const themes = {
     fontSizeForTextAsDetail: '0.875rem',
     fontSizeForBody: '16px',
     fontSizeForButton: '0.875rem',
-    fontSizeForLink: 'inherit',
     fontSizeForStamp: '0.875rem',
     fontSizeForViewSwitcher: '0.875rem',
     fontSizeForTable: '0.875rem',
