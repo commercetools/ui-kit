@@ -7,6 +7,7 @@ describe('LocalizedMultilineTextInput', () => {
 
   it('Default', async () => {
     await expect(page).toMatch('minimal');
+    await page.waitForTimeout(500);
     await percySnapshot(page, 'LocalizedMultilineTextInput');
   });
 });
