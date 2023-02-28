@@ -10,7 +10,7 @@ type TSelectProps = {
   isReadOnly: boolean;
 } & MultiValueGenericProps['selectProps'];
 
-type TTagRemoveProps = {
+export type TTagRemoveProps = {
   selectProps: TSelectProps;
 } & MultiValueGenericProps;
 

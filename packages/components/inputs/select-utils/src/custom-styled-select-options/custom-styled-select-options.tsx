@@ -10,13 +10,15 @@ type TData = {
 };
 
 type SelectDropdownOptionTypesKeys = keyof typeof SELECT_DROPDOWN_OPTION_TYPES;
-type TProps = {
+export type TDoublePropertySelectInputOptionProps = {
   data?: TData;
   noValueFallback?: string;
   optionType?: (typeof SELECT_DROPDOWN_OPTION_TYPES)[SelectDropdownOptionTypesKeys];
 } & OptionProps;
 
-export const MultiplePropertiesSelectInputOption = (props: TProps) => {
+export const MultiplePropertiesSelectInputOption = (
+  props: TDoublePropertySelectInputOptionProps
+) => {
   const { data } = props;
   const noValueFallback = props.noValueFallback || NO_VALUE_FALLBACK;
 
@@ -36,7 +38,9 @@ export const MultiplePropertiesSelectInputOption = (props: TProps) => {
 MultiplePropertiesSelectInputOption.displayName =
   'MultiplePropertiesSelectInputOption';
 
-export const DoublePropertySelectInputOption = (props: TProps) => {
+export const DoublePropertySelectInputOption = (
+  props: TDoublePropertySelectInputOptionProps
+) => {
   const { data } = props;
   const noValueFallback = props.noValueFallback || NO_VALUE_FALLBACK;
   return (
@@ -53,9 +57,9 @@ export const DoublePropertySelectInputOption = (props: TProps) => {
 
 DoublePropertySelectInputOption.displayName = 'DoublePropertySelectInputOption';
 
-type TCustomSelectInputOptionProps = {
-  optionInnerProps: TProps;
-} & TProps;
+export type TCustomSelectInputOptionProps = {
+  optionInnerProps: TDoublePropertySelectInputOptionProps;
+} & TDoublePropertySelectInputOptionProps;
 
 export const CustomSelectInputOption = (
   props: TCustomSelectInputOptionProps

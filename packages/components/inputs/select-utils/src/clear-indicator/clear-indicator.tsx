@@ -10,7 +10,7 @@ type TInnerProps = {
   ref: LegacyRef<HTMLButtonElement>;
 } & JSX.IntrinsicElements['button'];
 
-type TClearIndicator = {
+export type TClearIndicator = {
   innerProps: TInnerProps;
 } & ClearIndicatorProps;
 
