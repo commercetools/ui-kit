@@ -201,6 +201,7 @@ export const themes = {
       '1px solid var(--color-neutral)',
     borderForViewSwitcher: 'none',
     borderForSelectInputTag: 'none',
+    borderForRadioInputOption: '1px',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -241,6 +242,11 @@ export const themes = {
     borderColorForCheckboxInputIconWhenDisabled: '#ccc',
     borderColorForCheckboxInputIconWhenReadonly: '#ccc',
     borderColorForCheckboxInputIconWhenError: '#e60050',
+    borderColorForRadioInput: '#ccc',
+    borderColorForRadioInputWhenDisabled: 'hsl(0, 0%, 60%)',
+    borderColorForRadioInputWhenReadonly: '#ccc',
+    borderColorForRadioInputWhenChecked: '#ccc',
+    borderColorForRadioInputWhenFocused: '#00b39e',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -308,6 +314,10 @@ export const themes = {
     fontColorForCheckboxInputLabelWhenError: '#e60050',
     fontColorForCheckboxInputLabelWhenDisabled: 'hsl(0, 0%, 40%)',
     fontColorForCheckboxInputLabelWhenReadonly: 'hsl(0, 0%, 40%)',
+    fontColorForRadioInputWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForRadioInputWhenError: '#e60050',
+    fontColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
+    fontColorForRadioInputWhenWarning: '#f16d0e',
     heightForButtonAsBig: '32px',
     heightForButtonAsSmall: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -317,6 +327,8 @@ export const themes = {
     heightForViewSwitcher: '32px',
     heightForViewSwitcherWhenCondensed: '24px',
     heightForSelectInputTag: '26px',
+    heightForRadioInputOption: '16px',
+    heightForRadioInputOptionWhenChecked: '8px',
     widthForAvatarAsMedium: '48px',
     minWidthForMoneyInputCurrencyDropdown: '72px',
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
@@ -367,6 +379,7 @@ export const themes = {
     marginRightForMoneyInputPrecisionBadge: '4px',
     marginRightForSearchInputIcon: '8px',
     marginRightForClearInputIcon: '4px',
+    marginLeftForRadioInputLabel: '8px',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -402,6 +415,7 @@ export const themes = {
     paddingForGroupHeadingSelectInputOptions: '8px',
     paddingForSelectInputMenu: 'inherit',
     paddingForMoneyInputCurrencyDropdown: '0 var(--spacing-20)',
+    paddingForSelectableSearchInputDropdown: '0 var(--spacing-20)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -497,6 +511,7 @@ export const themes = {
     borderForCollapsiblePanelHeaderIconWhenDisabled: 'none',
     borderForViewSwitcher: '1px solid var(--color-neutral)',
     borderForSelectInputTag: '1px solid var(--color-neutral-85)',
+    borderForRadioInputOption: '2px',
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
@@ -539,6 +554,11 @@ export const themes = {
     borderColorForCheckboxInputIconWhenDisabled: '#ccc',
     borderColorForCheckboxInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
     borderColorForCheckboxInputIconWhenError: '#e60050',
+    borderColorForRadioInput: 'hsl(0, 0%, 60%)',
+    borderColorForRadioInputWhenDisabled: '#ccc',
+    borderColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
+    borderColorForRadioInputWhenChecked: '#00b39e',
+    borderColorForRadioInputWhenFocused: 'hsl(0, 0%, 60%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -595,7 +615,6 @@ export const themes = {
     fontSizeForTextAsDetail: '0.875rem',
     fontSizeForBody: '16px',
     fontSizeForButton: '0.875rem',
-    fontSizeForLink: 'inherit',
     fontSizeForStamp: '0.875rem',
     fontSizeForViewSwitcher: '0.875rem',
     fontSizeForTable: '0.875rem',
@@ -629,6 +648,8 @@ export const themes = {
     heightForViewSwitcher: '40px',
     heightForViewSwitcherWhenCondensed: '32px',
     heightForSelectInputTag: '32px',
+    heightForRadioInputOption: '18px',
+    heightForRadioInputOptionWhenChecked: '10px',
     iconColorForDatetimeInputIcon: 'hsl(0, 0%, 40%)',
     iconColorForDatetimeInputIconWhenHovered: '#e60050',
     widthForAvatarAsMedium: '40px',
@@ -642,6 +663,7 @@ export const themes = {
     marginRightForMoneyInputPrecisionBadge: '12px',
     marginRightForSearchInputIcon: '12px',
     marginRightForClearInputIcon: '8px',
+    marginLeftForRadioInputLabel: '4px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -680,6 +702,7 @@ export const themes = {
     paddingForGroupHeadingSelectInputOptions: '16px',
     paddingForSelectInputMenu: 'var(--spacing-10) 0',
     paddingForMoneyInputCurrencyDropdown: '0 12px',
+    paddingForSelectableSearchInputDropdown: '0 12px',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -947,6 +970,7 @@ const designTokens = {
     'var(--border-for-collapsible-panel-header-icon-when-disabled, 1px solid var(--color-neutral))',
   borderForViewSwitcher: 'var(--border-for-view-switcher, none)',
   borderForSelectInputTag: 'var(--border-for-select-input-tag, none)',
+  borderForRadioInputOption: 'var(--border-for-radio-input-option, 1px)',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -1022,6 +1046,15 @@ const designTokens = {
     'var(--border-color-for-checkbox-input-icon-when-readonly, #ccc)',
   borderColorForCheckboxInputIconWhenError:
     'var(--border-color-for-checkbox-input-icon-when-error, #e60050)',
+  borderColorForRadioInput: 'var(--border-color-for-radio-input, #ccc)',
+  borderColorForRadioInputWhenDisabled:
+    'var(--border-color-for-radio-input-when-disabled, hsl(0, 0%, 60%))',
+  borderColorForRadioInputWhenReadonly:
+    'var(--border-color-for-radio-input-when-readonly, #ccc)',
+  borderColorForRadioInputWhenChecked:
+    'var(--border-color-for-radio-input-when-checked, #ccc)',
+  borderColorForRadioInputWhenFocused:
+    'var(--border-color-for-radio-input-when-focused, #00b39e)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -1128,6 +1161,14 @@ const designTokens = {
     'var(--font-color-for-checkbox-input-label-when-disabled, hsl(0, 0%, 40%))',
   fontColorForCheckboxInputLabelWhenReadonly:
     'var(--font-color-for-checkbox-input-label-when-readonly, hsl(0, 0%, 40%))',
+  fontColorForRadioInputWhenDisabled:
+    'var(--font-color-for-radio-input-when-disabled, hsl(0, 0%, 60%))',
+  fontColorForRadioInputWhenError:
+    'var(--font-color-for-radio-input-when-error, #e60050)',
+  fontColorForRadioInputWhenReadonly:
+    'var(--font-color-for-radio-input-when-readonly, hsl(0, 0%, 60%))',
+  fontColorForRadioInputWhenWarning:
+    'var(--font-color-for-radio-input-when-warning, #f16d0e)',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
@@ -1140,6 +1181,9 @@ const designTokens = {
   heightForViewSwitcherWhenCondensed:
     'var(--height-for-view-switcher-when-condensed, 24px)',
   heightForSelectInputTag: 'var(--height-for-select-input-tag, 26px)',
+  heightForRadioInputOption: 'var(--height-for-radio-input-option, 16px)',
+  heightForRadioInputOptionWhenChecked:
+    'var(--height-for-radio-input-option-when-checked, 8px)',
   widthForAvatarAsMedium: 'var(--width-for-avatar-as-medium, 48px)',
   minWidthForMoneyInputCurrencyDropdown:
     'var(--min-width-for-money-input-currency-dropdown, 72px)',
@@ -1201,6 +1245,7 @@ const designTokens = {
   marginRightForSearchInputIcon:
     'var(--margin-right-for-search-input-icon, 8px)',
   marginRightForClearInputIcon: 'var(--margin-right-for-clear-input-icon, 4px)',
+  marginLeftForRadioInputLabel: 'var(--margin-left-for-radio-input-label, 8px)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
@@ -1262,6 +1307,8 @@ const designTokens = {
   paddingForSelectInputMenu: 'var(--padding-for-select-input-menu, inherit)',
   paddingForMoneyInputCurrencyDropdown:
     'var(--padding-for-money-input-currency-dropdown, 0 var(--spacing-20))',
+  paddingForSelectableSearchInputDropdown:
+    'var(--padding-for-selectable-search-input-dropdown, 0 var(--spacing-20))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

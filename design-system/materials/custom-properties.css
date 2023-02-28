@@ -224,6 +224,7 @@
     var(--color-neutral);
   --border-for-view-switcher: none;
   --border-for-select-input-tag: none;
+  --border-for-radio-input-option: 1px;
   --border-color-for-input: hsl(0, 0%, 60%);
   --border-color-for-input-when-focused: #00b39e;
   --border-color-for-input-when-disabled: #ccc;
@@ -264,6 +265,11 @@
   --border-color-for-checkbox-input-icon-when-disabled: #ccc;
   --border-color-for-checkbox-input-icon-when-readonly: #ccc;
   --border-color-for-checkbox-input-icon-when-error: #e60050;
+  --border-color-for-radio-input: #ccc;
+  --border-color-for-radio-input-when-disabled: hsl(0, 0%, 60%);
+  --border-color-for-radio-input-when-readonly: #ccc;
+  --border-color-for-radio-input-when-checked: #ccc;
+  --border-color-for-radio-input-when-focused: #00b39e;
   --border-radius-for-button-as-big: 6px;
   --border-radius-for-button-as-small: 4px;
   --border-radius-for-button-as-icon-as-big: 6px;
@@ -332,6 +338,10 @@
   --font-color-for-checkbox-input-label-when-error: #e60050;
   --font-color-for-checkbox-input-label-when-disabled: hsl(0, 0%, 40%);
   --font-color-for-checkbox-input-label-when-readonly: hsl(0, 0%, 40%);
+  --font-color-for-radio-input-when-disabled: hsl(0, 0%, 60%);
+  --font-color-for-radio-input-when-error: #e60050;
+  --font-color-for-radio-input-when-readonly: hsl(0, 0%, 60%);
+  --font-color-for-radio-input-when-warning: #f16d0e;
   --height-for-button-as-big: 32px;
   --height-for-button-as-small: 24px;
   --height-for-button-as-icon-as-big: 32px;
@@ -341,6 +351,8 @@
   --height-for-view-switcher: 32px;
   --height-for-view-switcher-when-condensed: 24px;
   --height-for-select-input-tag: 26px;
+  --height-for-radio-input-option: 16px;
+  --height-for-radio-input-option-when-checked: 8px;
   --width-for-avatar-as-medium: 48px;
   --min-width-for-money-input-currency-dropdown: 72px;
   --placeholder-font-color-for-input: hsl(0, 0%, 60%);
@@ -391,6 +403,7 @@
   --margin-right-for-money-input-precision-badge: 4px;
   --margin-right-for-search-input-icon: 8px;
   --margin-right-for-clear-input-icon: 4px;
+  --margin-left-for-radio-input-label: 8px;
   --padding-for-stamp: var(--spacing-10) var(--spacing-20);
   --padding-for-stamp-as-condensed: 1px var(--spacing-10);
   --padding-for-tag: 5px var(--spacing-20);
@@ -426,6 +439,7 @@
   --padding-for-group-heading-select-input-options: 8px;
   --padding-for-select-input-menu: inherit;
   --padding-for-money-input-currency-dropdown: 0 var(--spacing-20);
+  --padding-for-selectable-search-input-dropdown: 0 var(--spacing-20);
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),

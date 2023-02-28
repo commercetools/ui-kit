@@ -11,7 +11,7 @@
     "auth": "npm_config_registry=https://registry.npmjs.org npm whoami",
     "clean": "manypkg exec rm -rf dist",
     "generate-readmes": "yarn generate-readme --all-workspace-packages",
-    "generate-icons": "manypkg run icons generate-icons && manypkg run checkbox-input generate-icons && manypkg run radio-input generate-icons && manypkg run rich-text-utils generate-icons && prettier --write '**/generated/*.tsx'",
+    "generate-icons": "manypkg run icons generate-icons && manypkg run checkbox-input generate-icons && manypkg run rich-text-utils generate-icons && prettier --write '**/generated/*.tsx'",
     "design-tokens:build": "manypkg run design-system build:tokens",
     "design-tokens:build:watch": "manypkg run design-system build:tokens:watch",
     "build": "./scripts/build.sh",

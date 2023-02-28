@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import { ExternalLinkIcon } from '@commercetools-uikit/icons';
 
@@ -104,21 +104,28 @@ const getActiveColorValue = (tone: string = 'primary') => {
   return designTokens.fontColorForTextWhenInverted;
 };
 
-const getLinkStyles = (props: TLinkProps) => {
+const getLinkStyles = (props: TLinkProps & { isNewTheme: boolean }) => {
   const color = getTextColorValue(props.tone);
   const hoverColor = getActiveColorValue(props.tone);
 
-  return css`
-    font-family: inherit;
-    color: ${color};
-    font-size: ${designTokens.fontSizeForLink};
-    &:hover,
-    &:focus,
-    &:active {
-      color: ${hoverColor};
-    }
-    text-decoration: underline;
-  `;
+  return [
+    css`
+      font-family: inherit;
+      color: ${color};
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: ${hoverColor};
+      }
+      text-decoration: underline;
+    `,
+    !props.isNewTheme
+      ? css`
+          font-size: ${designTokens.fontSizeForLink};
+        `
+      : null,
+  ];
 };
 
 const Wrapper = styled.span`
@@ -129,6 +136,7 @@ const Wrapper = styled.span`
 `;
 
 const Link = (props: TLinkProps) => {
+  const { isNewTheme } = useTheme();
   const remainingProps = filterInvalidAttributes(props);
 
   // `filterInvalidAttributes` strips off `intlMessage` and `children`
@@ -143,7 +151,7 @@ const Link = (props: TLinkProps) => {
     return (
       <Wrapper>
         <a
-          css={getLinkStyles(props)}
+          css={getLinkStyles({ ...props, isNewTheme })}
           href={props.to}
           target="_blank"
           rel="noopener noreferrer"
@@ -167,7 +175,7 @@ const Link = (props: TLinkProps) => {
 
   return (
     <ReactRouterLink
-      css={getLinkStyles(props)}
+      css={getLinkStyles({ ...props, isNewTheme })}
       to={props.to}
       {...remainingProps}
     >
