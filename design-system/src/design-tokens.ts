@@ -15,6 +15,7 @@ export const themes = {
     colorAccent20: 'hsl(195, 35.2941176471%, 20%)',
     colorAccent30: 'hsl(195, 35.2941176471%, 30%)',
     colorAccent40: 'hsl(195, 35.2941176471%, 40%)',
+    colorAccent60: 'hsl(195, 35.2941176471%, 60%)',
     colorAccent90: 'hsl(195, 35.2941176471%, 90%)',
     colorAccent95: 'hsl(195, 35.2941176471%, 95%)',
     colorAccent98: 'hsl(195, 35.2941176471%, 98%)',
@@ -192,6 +193,14 @@ export const themes = {
     backgroundColorForCheckboxInputIconWhenReadonly: '#fff',
     backgroundColorForCheckboxInputIconWhenError: '#fff',
     backgroundColorForCheckboxInputIconWhenHovered: '#fff',
+    backgroundColorForToggleInputTrackWhenDisabled: '#ccc',
+    backgroundColorForToggleInputThumbWhenDisabled:
+      'hsl(195, 35.2941176471%, 95%)',
+    backgroundColorForToggleInputTrackWhenChecked: '#00b39e',
+    backgroundColorForToggleInputThumbWhenChecked: '#fff',
+    backgroundColorForToggleInputTrackWhenCheckedAndDisabled:
+      'hsl(172.9608938547486, 100%, 25%)',
+    backgroundColorForToggleInputThumbWhenCheckedAndDisabled: '#ccc',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
@@ -436,6 +445,8 @@ export const themes = {
       '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
     shadowForSelectInputMenu:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+    shadowForToggleInputThumb:
+      '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     fontSizeM: '1rem',
     bigButtonHeight: '32px',
     smallButtonHeight: '24px',
@@ -446,7 +457,6 @@ export const themes = {
     shadowBoxTagHover:
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     sizeHeightTag: '26px',
-    standardInputHeight: '32px',
   },
   test: {
     colorPrimary: '#00b39e',
@@ -503,6 +513,16 @@ export const themes = {
     backgroundColorForCheckboxInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
     backgroundColorForCheckboxInputIconWhenError: '#e60050',
     backgroundColorForCheckboxInputIconWhenHovered: 'hsl(0, 0%, 90%)',
+    backgroundColorForToggleInputTrackWhenDisabled: 'hsl(0, 0%, 90%)',
+    backgroundColorForToggleInputThumbWhenDisabled: 'hsl(0, 0%, 60%)',
+    backgroundColorForToggleInputTrackWhenChecked:
+      'hsl(172.9608938547486, 100%, 40%)',
+    backgroundColorForToggleInputThumbWhenChecked:
+      'hsl(172.9608938547486, 100%, 25%)',
+    backgroundColorForToggleInputTrackWhenCheckedAndDisabled:
+      'hsl(195, 35.2941176471%, 90%)',
+    backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
+      'hsl(195, 35.2941176471%, 60%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -715,6 +735,7 @@ export const themes = {
     shadowForInputWhenWarning: 'inset 0 0 0 1px var(--color-warning)',
     shadowForTooltip: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)',
     shadowForSelectInputMenu: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
+    shadowForToggleInputThumb: '0px 1px 5px rgba(0, 0, 0, 0.2)',
   },
 } as const;
 
@@ -729,6 +750,7 @@ const designTokens = {
   colorAccent20: 'var(--color-accent-20, hsl(195, 35.2941176471%, 20%))',
   colorAccent30: 'var(--color-accent-30, hsl(195, 35.2941176471%, 30%))',
   colorAccent40: 'var(--color-accent-40, hsl(195, 35.2941176471%, 40%))',
+  colorAccent60: 'var(--color-accent-60, hsl(195, 35.2941176471%, 60%))',
   colorAccent90: 'var(--color-accent-90, hsl(195, 35.2941176471%, 90%))',
   colorAccent95: 'var(--color-accent-95, hsl(195, 35.2941176471%, 95%))',
   colorAccent98: 'var(--color-accent-98, hsl(195, 35.2941176471%, 98%))',
@@ -958,6 +980,18 @@ const designTokens = {
     'var(--background-color-for-checkbox-input-icon-when-error, #fff)',
   backgroundColorForCheckboxInputIconWhenHovered:
     'var(--background-color-for-checkbox-input-icon-when-hovered, #fff)',
+  backgroundColorForToggleInputTrackWhenDisabled:
+    'var(--background-color-for-toggle-input-track-when-disabled, #ccc)',
+  backgroundColorForToggleInputThumbWhenDisabled:
+    'var(--background-color-for-toggle-input-thumb-when-disabled, hsl(195, 35.2941176471%, 95%))',
+  backgroundColorForToggleInputTrackWhenChecked:
+    'var(--background-color-for-toggle-input-track-when-checked, #00b39e)',
+  backgroundColorForToggleInputThumbWhenChecked:
+    'var(--background-color-for-toggle-input-thumb-when-checked, #fff)',
+  backgroundColorForToggleInputTrackWhenCheckedAndDisabled:
+    'var(--background-color-for-toggle-input-track-when-checked-and-disabled, hsl(172.9608938547486, 100%, 25%))',
+  backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
+    'var(--background-color-for-toggle-input-thumb-when-checked-and-disabled, #ccc)',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',
@@ -1330,6 +1364,8 @@ const designTokens = {
     'var(--shadow-for-tooltip, 0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12))',
   shadowForSelectInputMenu:
     'var(--shadow-for-select-input-menu, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+  shadowForToggleInputThumb:
+    'var(--shadow-for-toggle-input-thumb, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   fontSizeM: 'var(--font-size-m, 1rem)',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',
@@ -1340,7 +1376,6 @@ const designTokens = {
   shadowBoxTagHover:
     'var(--shadow-box-tag-hover, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   sizeHeightTag: 'var(--size-height-tag, 26px)',
-  standardInputHeight: 'var(--standard-input-height, 32px)',
 } as const;
 
 export default designTokens;
