@@ -4,7 +4,10 @@ import {
   type MouseEvent,
   type KeyboardEvent,
   type ChangeEvent,
+  type ForwardRefExoticComponent,
+  type RefAttributes,
   useState,
+  forwardRef,
 } from 'react';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Constraints from '@commercetools-uikit/constraints';
@@ -114,6 +117,10 @@ export type TSearchTextInputProps = {
     | 'auto';
 };
 
+type StaticProps = {
+  isEmpty: typeof isEmpty;
+};
+
 const defaultProps: Pick<
   TSearchTextInputProps,
   'horizontalConstraint' | 'isClearable'
@@ -122,95 +129,104 @@ const defaultProps: Pick<
   isClearable: true,
 };
 
-const SearchTextInput = (props: TSearchTextInputProps) => {
-  if (!props.isReadOnly) {
-    warning(
-      typeof props.onChange === 'function',
-      'TextInput: `onChange` is required when is not read only.'
+const SearchTextInput: ForwardRefExoticComponent<
+  TSearchTextInputProps & RefAttributes<HTMLInputElement>
+> &
+  Partial<StaticProps> = forwardRef(
+  (props: TSearchTextInputProps, forwardedRef) => {
+    if (!props.isReadOnly) {
+      warning(
+        typeof props.onChange === 'function',
+        'TextInput: `onChange` is required when is not read only.'
+      );
+    }
+
+    const [searchValue, setSearchValue] = useState(props.value || '');
+
+    const handleClear = () => {
+      setSearchValue('');
+      if (props.onReset) {
+        props.onReset();
+      }
+    };
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(event.target.value);
+      if (props.onChange) {
+        props.onChange(event);
+      }
+    };
+
+    const handleSubmit = (
+      event:
+        | KeyboardEvent<HTMLButtonElement>
+        | MouseEvent<HTMLButtonElement>
+        | KeyboardEvent<HTMLInputElement>
+    ) => {
+      event.preventDefault();
+      if (props.onSubmit) {
+        props.onSubmit(searchValue);
+      }
+    };
+
+    return (
+      <Constraints.Horizontal max={props.horizontalConstraint}>
+        <div css={getSearchTextInputContainerStyles(props)}>
+          <input
+            id={props.id}
+            name={props.name}
+            type="text"
+            value={searchValue}
+            onChange={handleChange}
+            onBlur={props.onBlur}
+            onFocus={props.onFocus}
+            disabled={props.isDisabled}
+            placeholder={props.placeholder}
+            readOnly={props.isReadOnly}
+            autoFocus={props.isAutofocussed}
+            autoComplete={props.autoComplete}
+            aria-readonly={props.isReadOnly}
+            contentEditable={!props.isReadOnly}
+            aria-invalid={props['aria-invalid']}
+            aria-errormessage={props['aria-errormessage']}
+            css={getSearchTextInputStyles(props)}
+            ref={forwardedRef}
+            {...filterDataAttributes(props)}
+            onKeyDown={(event) => {
+              if (!props.isReadOnly && event.key === 'Enter') {
+                handleSubmit(event);
+              }
+            }}
+          />
+          {props.isClearable &&
+            searchValue &&
+            !props.isDisabled &&
+            !props.isReadOnly && (
+              <SecondaryIconButton
+                icon={<CloseIcon size="medium" />}
+                label={'clear-button'}
+                onClick={handleClear}
+                css={getClearIconButtonStyles(props)}
+              />
+            )}
+          <SecondaryIconButton
+            icon={<SearchIcon />}
+            label={'search-button'}
+            onClick={handleSubmit}
+            css={getSearchIconButtonStyles(props)}
+          />
+        </div>
+      </Constraints.Horizontal>
     );
   }
-
-  const [searchValue, setSearchValue] = useState(props.value || '');
-
-  const handleClear = () => {
-    setSearchValue('');
-    if (props.onReset) {
-      props.onReset();
-    }
-  };
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-    if (props.onChange) {
-      props.onChange(event);
-    }
-  };
-
-  const handleSubmit = (
-    event:
-      | KeyboardEvent<HTMLButtonElement>
-      | MouseEvent<HTMLButtonElement>
-      | KeyboardEvent<HTMLInputElement>
-  ) => {
-    event.preventDefault();
-    if (props.onSubmit) {
-      props.onSubmit(searchValue);
-    }
-  };
-
-  return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
-      <div css={getSearchTextInputContainerStyles(props)}>
-        <input
-          id={props.id}
-          name={props.name}
-          type="text"
-          value={searchValue}
-          onChange={handleChange}
-          onBlur={props.onBlur}
-          onFocus={props.onFocus}
-          disabled={props.isDisabled}
-          placeholder={props.placeholder}
-          readOnly={props.isReadOnly}
-          autoFocus={props.isAutofocussed}
-          autoComplete={props.autoComplete}
-          aria-readonly={props.isReadOnly}
-          contentEditable={!props.isReadOnly}
-          aria-invalid={props['aria-invalid']}
-          aria-errormessage={props['aria-errormessage']}
-          css={getSearchTextInputStyles(props)}
-          {...filterDataAttributes(props)}
-          onKeyDown={(event) => {
-            if (!props.isReadOnly && event.key === 'Enter') {
-              handleSubmit(event);
-            }
-          }}
-        />
-        {props.isClearable &&
-          searchValue &&
-          !props.isDisabled &&
-          !props.isReadOnly && (
-            <SecondaryIconButton
-              icon={<CloseIcon size="medium" />}
-              label={'clear-button'}
-              onClick={handleClear}
-              css={getClearIconButtonStyles(props)}
-            />
-          )}
-        <SecondaryIconButton
-          icon={<SearchIcon />}
-          label={'search-button'}
-          onClick={handleSubmit}
-          css={getSearchIconButtonStyles(props)}
-        />
-      </div>
-    </Constraints.Horizontal>
-  );
-};
+);
 
 SearchTextInput.displayName = 'SearchTextInput';
 SearchTextInput.defaultProps = defaultProps;
-SearchTextInput.isEmpty = (value: TSearchTextInputProps['value']) =>
+
+const isEmpty = (value: TSearchTextInputProps['value']) =>
   !value || value.trim().length === 0;
+
+SearchTextInput.isEmpty = isEmpty;
 
 export default SearchTextInput;

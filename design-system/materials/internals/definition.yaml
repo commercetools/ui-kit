@@ -1438,38 +1438,25 @@ decisionGroupsByTheme:
       prefix: font-size
       decisions:
         font-size-for-input:
-          description: ''
           choice: font-size-30
         font-size-for-text-as-h1:
-          description: ''
           choice: font-size-60
         font-size-for-text-as-h2:
-          description: ''
           choice: font-size-50
         font-size-for-text-as-h3:
-          description: ''
           choice: font-size-40
         font-size-for-text-as-h4:
-          description: ''
           choice: font-size-30
         font-size-for-text-as-h5:
-          description: ''
           choice: font-size-30
         font-size-for-text-as-body:
-          description: ''
           choice: font-size-30
         font-size-for-text-as-detail:
-          description: ''
           choice: font-size-20
         font-size-for-body:
-          description: ''
           choice: '16px'
         font-size-for-button:
-          description: ''
           choice: font-size-20
-        font-size-for-link:
-          description: ''
-          choice: 'inherit'
         font-size-for-stamp:
           choice: font-size-20
         font-size-for-view-switcher:
