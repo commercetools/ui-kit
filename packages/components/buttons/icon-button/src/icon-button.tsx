@@ -59,7 +59,7 @@ export type TIconButtonProps<
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * @deprecated
+   * @deprecated This prop is only used in the old theme. For the new theme this prop will not be taken into account and `square` is used by default
    */
   shape?: 'round' | 'square';
   /**
