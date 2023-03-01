@@ -43,6 +43,28 @@ const getColorStyle = (props: Pick<TSecondaryButtonProps, 'color'>) => {
   }
 };
 
+const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
+  switch (size) {
+    case 'small':
+      return css`
+        height: ${designTokens.heightForButtonAsIconAsSmall};
+        width: ${designTokens.heightForButtonAsIconAsSmall};
+      `;
+    case 'medium':
+      return css`
+        height: ${designTokens.heightForButtonAsIconAsMedium};
+        width: ${designTokens.heightForButtonAsIconAsMedium};
+      `;
+    case 'big':
+      return css`
+        height: ${designTokens.heightForButtonAsIconAsBig};
+        width: ${designTokens.heightForButtonAsIconAsBig};
+      `;
+    default:
+      return css``;
+  }
+};
+
 const getBaseStyles = <TStringOrComponent extends ElementType = 'button'>(
   props: TSecondaryButtonProps<TStringOrComponent>
 ) => {
@@ -58,4 +80,4 @@ const getBaseStyles = <TStringOrComponent extends ElementType = 'button'>(
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export { getBaseStyles };
+export { getBaseStyles, getSizeStyles };
