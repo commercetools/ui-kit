@@ -128,7 +128,7 @@ const Span = styled.span<TStyledSpanProps>`
     border-radius: ${(props) => (props.isNewTheme ? '12px' : '16px')};
     box-shadow: ${(props) =>
       props.isNewTheme ? 'none' : designTokens.shadow9};
-    background-color: ${designTokens.colorNeutral60};
+    background-color: ${designTokens.backgroundColorForToggleInputTrack};
     left: 0;
     top: 50%;
     transition: background 0.2s ease-in-out;

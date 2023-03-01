@@ -216,6 +216,7 @@
   --background-color-for-checkbox-input-icon-when-readonly: #fff;
   --background-color-for-checkbox-input-icon-when-error: #fff;
   --background-color-for-checkbox-input-icon-when-hovered: #fff;
+  --background-color-for-toggle-input-track: hsl(0, 0%, 60%);
   --background-color-for-toggle-input-track-when-disabled: #ccc;
   --background-color-for-toggle-input-thumb-when-disabled: hsl(
     195,

@@ -193,6 +193,7 @@ export const themes = {
     backgroundColorForCheckboxInputIconWhenReadonly: '#fff',
     backgroundColorForCheckboxInputIconWhenError: '#fff',
     backgroundColorForCheckboxInputIconWhenHovered: '#fff',
+    backgroundColorForToggleInputTrack: 'hsl(0, 0%, 60%)',
     backgroundColorForToggleInputTrackWhenDisabled: '#ccc',
     backgroundColorForToggleInputThumbWhenDisabled:
       'hsl(195, 35.2941176471%, 95%)',
@@ -513,6 +514,7 @@ export const themes = {
     backgroundColorForCheckboxInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
     backgroundColorForCheckboxInputIconWhenError: '#e60050',
     backgroundColorForCheckboxInputIconWhenHovered: 'hsl(0, 0%, 90%)',
+    backgroundColorForToggleInputTrack: '#ccc',
     backgroundColorForToggleInputTrackWhenDisabled: 'hsl(0, 0%, 90%)',
     backgroundColorForToggleInputThumbWhenDisabled: 'hsl(0, 0%, 60%)',
     backgroundColorForToggleInputTrackWhenChecked:
@@ -980,6 +982,8 @@ const designTokens = {
     'var(--background-color-for-checkbox-input-icon-when-error, #fff)',
   backgroundColorForCheckboxInputIconWhenHovered:
     'var(--background-color-for-checkbox-input-icon-when-hovered, #fff)',
+  backgroundColorForToggleInputTrack:
+    'var(--background-color-for-toggle-input-track, hsl(0, 0%, 60%))',
   backgroundColorForToggleInputTrackWhenDisabled:
     'var(--background-color-for-toggle-input-track-when-disabled, #ccc)',
   backgroundColorForToggleInputThumbWhenDisabled:
