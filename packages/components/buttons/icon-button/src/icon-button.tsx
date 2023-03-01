@@ -7,7 +7,7 @@ import {
   cloneElement,
 } from 'react';
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
@@ -59,7 +59,7 @@ export type TIconButtonProps<
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * The container shape of the button.
+   * @deprecated This prop is only used in the old theme. For the new theme this prop will not be taken into account and `square` is used by default
    */
   shape?: 'round' | 'square';
   /**
@@ -94,6 +94,7 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
     !(props.theme !== 'default' && !props.isToggleButton),
     `Invalid prop \`theme\` supplied to \`IconButton\`. Only toggle buttons may have a theme.`
   );
+  const { themedValue } = useTheme();
 
   const buttonAttributes = {
     'data-track-component': 'IconButton',
@@ -126,7 +127,7 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
             box-shadow 150ms ease-in-out;
         `,
         getBaseStyles(props.theme, props.isDisabled, isActive),
-        getShapeStyles(props.shape, props.size),
+        getShapeStyles(themedValue(props.shape, 'square'), props.size),
         getSizeStyles(props.size),
         getHoverStyles(props.isDisabled, props.theme),
       ]}

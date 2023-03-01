@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 15.13.1
+
+### Patch Changes
+
+- [#2441](https://github.com/commercetools/ui-kit/pull/2441) [`5e3708319`](https://github.com/commercetools/ui-kit/commit/5e37083198755a7b94a77d0c4c843e5609d5f2d0) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix `font-size` for `Link` component in the new theme.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.13.1
+
 ## 15.13.0
 
 ### Patch Changes
