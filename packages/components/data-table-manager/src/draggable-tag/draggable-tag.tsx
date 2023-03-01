@@ -10,7 +10,7 @@ type TColumnData = {
   label: ReactNode;
 };
 
-type TDraggableTagProps = {
+export type TDraggableTagProps = {
   column: TColumnData;
   index: number;
   isDisabled?: boolean;

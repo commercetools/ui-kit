@@ -11,7 +11,7 @@ type TColumnData = {
   label: ReactNode;
 };
 
-type TDroppablePanelProps = {
+export type TDroppablePanelProps = {
   droppableId: string;
   noColumnsText: ReactNode;
   columns: TColumnData[];

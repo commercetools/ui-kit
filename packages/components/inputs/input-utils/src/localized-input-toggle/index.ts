@@ -2,3 +2,4 @@ import type { TLocalizedInputToggleProps as LocalizedInputToggleProps } from './
 
 export { default } from './localized-input-toggle';
 export type TLocalizedInputToggleProps = LocalizedInputToggleProps;
+export * from './export-types';

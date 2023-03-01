@@ -5,3 +5,4 @@ const RadioInput = { Group, Option };
 export default RadioInput;
 
 export { default as version } from './version';
+export * from './export-types';

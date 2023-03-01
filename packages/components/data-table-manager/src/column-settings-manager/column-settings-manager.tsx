@@ -42,7 +42,7 @@ type TColumnData = {
   label: ReactNode;
 };
 
-type TColumnSettingsManagerProps = {
+export type TColumnSettingsManagerProps = {
   availableColumns: TColumnData[];
   selectedColumns: TColumnData[];
   onUpdateColumns: (updatedColums: TColumnData[]) => void;
