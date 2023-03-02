@@ -83,25 +83,40 @@ const getNewThemeTransformation = (props: TStyledSpanProps) =>
 const getOldThemeTransformation = (props: TStyledSpanProps) =>
   props.size === 'small' ? '117%' : '127%';
 
+const getFocusIndicatorWidth = (props: TStyledSpanProps) => `
+    calc(
+      ${track.test[props.size].width} + 2 *
+        ${thumb.test[props.size].hoverAreaWidth} + 2 *
+        ${thumb.test[props.size].shift} + 2px
+    )`;
+
+const getFocusIndicatorHeight = (props: TStyledSpanProps) => `
+    calc(
+      ${thumb.test[props.size].diameter} + 2 *
+        ${thumb.test[props.size].hoverAreaWidth} + 2px
+    )
+`;
+
+const getFocusIndicatorLeftPositioning = (props: TStyledSpanProps) => `
+    calc(
+      -${thumb.test[props.size].hoverAreaWidth} - ${
+  thumb.test[props.size].shift
+} - 1px
+    )
+`;
+
+const getFocusIndicatorTopPositioning = (props: TStyledSpanProps) =>
+  `calc(-50% - ${props.size === 'small' ? '2px' : '1px'})`;
+
 const getNewThemeFocusIndicator = (props: TStyledSpanProps) => css`
   &::after {
     content: '';
     position: absolute;
     outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
-    height: calc(
-      ${thumb.test[props.size].diameter} + 2 *
-        ${thumb.test[props.size].hoverAreaWidth} + 2px
-    );
-    top: calc(-50% - ${props.size === 'small' ? '2px' : '1px'});
-    width: calc(
-      ${track.test[props.size].width} + 2 *
-        ${thumb.test[props.size].hoverAreaWidth} + 2 *
-        ${thumb.test[props.size].shift} + 2px
-    );
-    left: calc(
-      -${thumb.test[props.size].hoverAreaWidth} - ${thumb.test[props.size]
-          .shift} - 1px
-    );
+    height: ${getFocusIndicatorHeight(props)};
+    top: ${getFocusIndicatorTopPositioning(props)};
+    width: ${getFocusIndicatorWidth(props)};
+    left: ${getFocusIndicatorLeftPositioning(props)};
   }
 `;
 
