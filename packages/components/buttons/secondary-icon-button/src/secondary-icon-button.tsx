@@ -91,6 +91,7 @@ SecondaryIconButton.displayName = 'SecondaryIconButton';
 SecondaryIconButton.defaultProps = {
   color: 'solid',
   type: 'button',
+  size: 'medium',
   isDisabled: false,
 };
 
