@@ -154,7 +154,7 @@ const getNewThemeHoverAreaStyles = css`
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  border: 4px solid ${designTokens.colorSurface};
+  border: 4px solid transparent;
 `;
 
 const RadioOptionContainer = styled.div<TStylesProps>`
