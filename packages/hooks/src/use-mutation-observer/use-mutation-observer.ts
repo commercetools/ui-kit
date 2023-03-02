@@ -3,7 +3,7 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import rafSchd from 'raf-schd';
 
-type TUseMutationObserverCallback = (
+export type TUseMutationObserverCallback = (
   mutationsList: MutationRecord[],
   observer: MutationObserver
 ) => void;

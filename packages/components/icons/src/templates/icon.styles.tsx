@@ -4,7 +4,7 @@ import { warning } from '@commercetools-uikit/utils';
 import { css, ClassNames } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 
-export type Props = {
+export type IconProps = {
   color?:
     | 'solid'
     | 'neutral60'
@@ -16,14 +16,14 @@ export type Props = {
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-export type SVGProps = Props & { className: string };
+export type SVGProps = IconProps & { className: string };
 
 const iconSizes = {
   small: 12,
   medium: 16,
   big: 24,
 } as const;
-const getSizeDimensions = (size: Props['size']) => {
+const getSizeDimensions = (size: IconProps['size']) => {
   switch (size) {
     case 'scale':
       return { width: '100%', height: 'auto' };
@@ -35,7 +35,7 @@ const getSizeDimensions = (size: Props['size']) => {
       return { width: `${iconSizes.big}px`, height: `${iconSizes.big}px` };
   }
 };
-const getSizeStyle = (size: Props['size']) => {
+const getSizeStyle = (size: IconProps['size']) => {
   const dimensions = getSizeDimensions(size);
   switch (size) {
     case 'scale':
@@ -53,7 +53,7 @@ const getSizeStyle = (size: Props['size']) => {
   }
 };
 
-const getColor = (color: Props['color']) => {
+const getColor = (color: IconProps['color']) => {
   if (!color) return 'inherit';
 
   let iconColor;
@@ -98,7 +98,7 @@ const getColor = (color: Props['color']) => {
 };
 
 // @ts-ignore
-export const getIconStyles = (props: Props) => css`
+export const getIconStyles = (props: IconProps) => css`
   *:not([fill='none']) {
     fill: ${getColor(props.color)};
   }
