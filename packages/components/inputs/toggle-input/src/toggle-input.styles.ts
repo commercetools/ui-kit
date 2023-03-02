@@ -3,104 +3,108 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import {
   designTokens,
-  type ThemeName,
+  type TUseThemeResult,
 } from '@commercetools-uikit/design-system';
 import type { TToggleInputProps } from './toggle-input';
 
 type NewThemeProps = {
   isNewTheme: boolean;
-  theme: ThemeName;
+  themedValue: TUseThemeResult['themedValue'];
 };
 
 type TStyledLabelProps = Pick<TToggleInputProps, 'isDisabled' | 'size'> &
   NewThemeProps;
 type TStyledSpanProps = Pick<TToggleInputProps, 'size'> & NewThemeProps;
 
-const track = {
-  test: {
-    small: {
-      width: '29px',
-      height: '12px',
+const track = (themedValue: TUseThemeResult['themedValue']) =>
+  themedValue(
+    {
+      small: {
+        width: '32px',
+        height: '16px',
+      },
+      big: {
+        width: '64px',
+        height: '32px',
+      },
     },
-    big: {
-      width: '56px',
-      height: '24px',
-    },
-  },
-  default: {
-    small: {
-      width: '32px',
-      height: '16px',
-    },
-    big: {
-      width: '64px',
-      height: '32px',
-    },
-  },
-};
+    {
+      small: {
+        width: '29px',
+        height: '12px',
+      },
+      big: {
+        width: '56px',
+        height: '24px',
+      },
+    }
+  );
 
-const thumb = {
-  test: {
-    small: {
-      diameter: '18px',
-      shift: '3px',
-      hoverAreaWidth: '4px',
+const thumb = (themedValue: TUseThemeResult['themedValue']) =>
+  themedValue(
+    {
+      small: {
+        diameter: '13px',
+        shift: '2px',
+        hoverAreaWidth: '0px',
+      },
+      big: {
+        diameter: '26px',
+        shift: '3px',
+        hoverAreaWidth: '0px',
+      },
     },
-    big: {
-      diameter: '32px',
-      shift: '4px',
-      hoverAreaWidth: '8px',
-    },
-  },
-  default: {
-    small: {
-      diameter: '13px',
-      shift: '2px',
-    },
-    big: {
-      diameter: '26px',
-      shift: '3px',
-    },
-  },
-};
+    {
+      small: {
+        diameter: '18px',
+        shift: '3px',
+        hoverAreaWidth: '4px',
+      },
+      big: {
+        diameter: '32px',
+        shift: '4px',
+        hoverAreaWidth: '8px',
+      },
+    }
+  );
 
 const labelSizeStyles = (props: TStyledLabelProps) => css`
-  height: ${track[props.theme][props.size].height};
-  width: ${track[props.theme][props.size].width};
+  height: ${track(props.themedValue)[props.size].height};
+  width: ${track(props.themedValue)[props.size].width};
 `;
 
 const getThumbSize = (props: TStyledSpanProps) =>
-  thumb[props.theme][props.size].diameter;
+  thumb(props.themedValue)[props.size].diameter;
 
 const getThumbShift = (props: TStyledSpanProps) =>
-  `${props.isNewTheme ? '-' : ''}${thumb[props.theme][props.size].shift}`;
+  `${props.isNewTheme ? '-' : ''}${thumb(props.themedValue)[props.size].shift}`;
 
 const getNewThemeTransformation = (props: TStyledSpanProps) =>
-  `calc(${thumb.test[props.size].shift} * 2 + ${
-    track.test[props.size].width
-  } - ${thumb.test[props.size].diameter})`;
+  `calc(${thumb(props.themedValue)[props.size].shift} * 2 + ${
+    track(props.themedValue)[props.size].width
+  } - ${thumb(props.themedValue)[props.size].diameter})`;
 
 const getOldThemeTransformation = (props: TStyledSpanProps) =>
   props.size === 'small' ? '117%' : '127%';
 
 const getFocusIndicatorWidth = (props: TStyledSpanProps) => `
     calc(
-      ${track.test[props.size].width} + 2 *
-        ${thumb.test[props.size].hoverAreaWidth} + 2 *
-        ${thumb.test[props.size].shift} + 2px
+      ${track(props.themedValue)[props.size].width} + 2 *
+        ${thumb(props.themedValue)[props.size].hoverAreaWidth} + 2 *
+        ${thumb(props.themedValue)[props.size].shift} + 2px
     )`;
 
 const getFocusIndicatorHeight = (props: TStyledSpanProps) => `
     calc(
-      ${thumb.test[props.size].diameter} + 2 *
-        ${thumb.test[props.size].hoverAreaWidth} + 2px
+      ${thumb(props.themedValue)[props.size].diameter} + 2 *
+        ${thumb(props.themedValue)[props.size].hoverAreaWidth} + 2px
     )
 `;
 
 const getFocusIndicatorLeftPositioning = (props: TStyledSpanProps) => `
     calc(
-      -${thumb.test[props.size].hoverAreaWidth} - ${
-  thumb.test[props.size].shift
+      -${thumb(props.themedValue)[props.size].hoverAreaWidth} - ${
+  thumb(props.themedValue)[props.size].shift
 } - 1px
     )
 `;
@@ -216,7 +220,9 @@ const getInputStyles = (props: TToggleInputProps & NewThemeProps) => css`
   :not(:disabled)&:focus + span::after {
     box-shadow: ${props.isNewTheme ? 'none' : designTokens.shadow16};
     outline: ${props.isNewTheme
-      ? `${thumb.test[props.size].hoverAreaWidth} solid rgba(0, 0, 0, 0.1)`
+      ? `${
+          thumb(props.themedValue)[props.size].hoverAreaWidth
+        } solid rgba(0, 0, 0, 0.1)`
       : 'none'};
   }
 `;

@@ -50,7 +50,7 @@ export const defaultProps: Pick<
 };
 
 const ToggleInput = (props: TToggleInputProps) => {
-  const { isNewTheme, theme } = useTheme();
+  const { isNewTheme, themedValue } = useTheme();
 
   return (
     <Label
@@ -58,13 +58,13 @@ const ToggleInput = (props: TToggleInputProps) => {
       size={props.size}
       isDisabled={props.isDisabled}
       isNewTheme={isNewTheme}
-      theme={theme}
+      themedValue={themedValue}
     >
       <input
         type="checkbox"
         css={[
           accessibleHiddenInputStyles,
-          getInputStyles({ ...props, isNewTheme, theme }),
+          getInputStyles({ ...props, isNewTheme, themedValue }),
         ]}
         id={props.id}
         name={props.name}
@@ -79,7 +79,7 @@ const ToggleInput = (props: TToggleInputProps) => {
         aria-hidden="true"
         size={props.size}
         isNewTheme={isNewTheme}
-        theme={theme}
+        themedValue={themedValue}
       />
     </Label>
   );
