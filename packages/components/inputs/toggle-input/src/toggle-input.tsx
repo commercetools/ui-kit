@@ -6,7 +6,13 @@ import {
   filterAriaAttributes,
 } from '@commercetools-uikit/utils';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
-import { Label, Span, getInputStyles } from './toggle-input.styles';
+import {
+  Label,
+  Span,
+  getInputStyles,
+  getThemedTrack,
+  getThemedThumb,
+} from './toggle-input.styles';
 
 export type TToggleInputProps = {
   /**
@@ -52,19 +58,23 @@ export const defaultProps: Pick<
 const ToggleInput = (props: TToggleInputProps) => {
   const { isNewTheme, themedValue } = useTheme();
 
+  const themedTrack = getThemedTrack(themedValue);
+  const themedThumb = getThemedThumb(themedValue);
+
   return (
     <Label
       htmlFor={props.id}
       size={props.size}
       isDisabled={props.isDisabled}
       isNewTheme={isNewTheme}
-      themedValue={themedValue}
+      themedTrack={themedTrack}
+      themedThumb={themedThumb}
     >
       <input
         type="checkbox"
         css={[
           accessibleHiddenInputStyles,
-          getInputStyles({ ...props, isNewTheme, themedValue }),
+          getInputStyles({ ...props, isNewTheme, themedTrack, themedThumb }),
         ]}
         id={props.id}
         name={props.name}
@@ -79,7 +89,8 @@ const ToggleInput = (props: TToggleInputProps) => {
         aria-hidden="true"
         size={props.size}
         isNewTheme={isNewTheme}
-        themedValue={themedValue}
+        themedTrack={themedTrack}
+        themedThumb={themedThumb}
       />
     </Label>
   );

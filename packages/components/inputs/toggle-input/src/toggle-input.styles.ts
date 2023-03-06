@@ -9,14 +9,15 @@ import type { TToggleInputProps } from './toggle-input';
 
 type NewThemeProps = {
   isNewTheme: boolean;
-  themedValue: TUseThemeResult['themedValue'];
+  themedTrack: ReturnType<typeof getThemedTrack>;
+  themedThumb: ReturnType<typeof getThemedThumb>;
 };
 
 type TStyledLabelProps = Pick<TToggleInputProps, 'isDisabled' | 'size'> &
   NewThemeProps;
 type TStyledSpanProps = Pick<TToggleInputProps, 'size'> & NewThemeProps;
 
-const track = (themedValue: TUseThemeResult['themedValue']) =>
+const getThemedTrack = (themedValue: TUseThemeResult['themedValue']) =>
   themedValue(
     {
       small: {
@@ -40,7 +41,7 @@ const track = (themedValue: TUseThemeResult['themedValue']) =>
     }
   );
 
-const thumb = (themedValue: TUseThemeResult['themedValue']) =>
+const getThemedThumb = (themedValue: TUseThemeResult['themedValue']) =>
   themedValue(
     {
       small: {
@@ -69,42 +70,42 @@ const thumb = (themedValue: TUseThemeResult['themedValue']) =>
   );
 
 const labelSizeStyles = (props: TStyledLabelProps) => css`
-  height: ${track(props.themedValue)[props.size].height};
-  width: ${track(props.themedValue)[props.size].width};
+  height: ${props.themedTrack[props.size].height};
+  width: ${props.themedTrack[props.size].width};
 `;
 
 const getThumbSize = (props: TStyledSpanProps) =>
-  thumb(props.themedValue)[props.size].diameter;
+  props.themedThumb[props.size].diameter;
 
 const getThumbShift = (props: TStyledSpanProps) =>
-  `${props.isNewTheme ? '-' : ''}${thumb(props.themedValue)[props.size].shift}`;
+  `${props.isNewTheme ? '-' : ''}${props.themedThumb[props.size].shift}`;
 
 const getNewThemeTransformation = (props: TStyledSpanProps) =>
-  `calc(${thumb(props.themedValue)[props.size].shift} * 2 + ${
-    track(props.themedValue)[props.size].width
-  } - ${thumb(props.themedValue)[props.size].diameter})`;
+  `calc(${props.themedThumb[props.size].shift} * 2 + ${
+    props.themedTrack[props.size].width
+  } - ${props.themedThumb[props.size].diameter})`;
 
 const getOldThemeTransformation = (props: TStyledSpanProps) =>
   props.size === 'small' ? '117%' : '127%';
 
 const getFocusIndicatorWidth = (props: TStyledSpanProps) => `
     calc(
-      ${track(props.themedValue)[props.size].width} + 2 *
-        ${thumb(props.themedValue)[props.size].hoverAreaWidth} + 2 *
-        ${thumb(props.themedValue)[props.size].shift} + 2px
+      ${props.themedTrack[props.size].width} + 2 *
+        ${props.themedThumb[props.size].hoverAreaWidth} + 2 *
+        ${props.themedThumb[props.size].shift} + 2px
     )`;
 
 const getFocusIndicatorHeight = (props: TStyledSpanProps) => `
     calc(
-      ${thumb(props.themedValue)[props.size].diameter} + 2 *
-        ${thumb(props.themedValue)[props.size].hoverAreaWidth} + 2px
+      ${props.themedThumb[props.size].diameter} + 2 *
+        ${props.themedThumb[props.size].hoverAreaWidth} + 2px
     )
 `;
 
 const getFocusIndicatorLeftPositioning = (props: TStyledSpanProps) => `
     calc(
-      -${thumb(props.themedValue)[props.size].hoverAreaWidth} - ${
-  thumb(props.themedValue)[props.size].shift
+      -${props.themedThumb[props.size].hoverAreaWidth} - ${
+  props.themedThumb[props.size].shift
 } - 1px
     )
 `;
@@ -221,10 +222,10 @@ const getInputStyles = (props: TToggleInputProps & NewThemeProps) => css`
     box-shadow: ${props.isNewTheme ? 'none' : designTokens.shadow16};
     outline: ${props.isNewTheme
       ? `${
-          thumb(props.themedValue)[props.size].hoverAreaWidth
+          props.themedThumb[props.size].hoverAreaWidth
         } solid rgba(0, 0, 0, 0.1)`
       : 'none'};
   }
 `;
 
-export { Label, Span, getInputStyles };
+export { Label, Span, getInputStyles, getThemedTrack, getThemedThumb };
