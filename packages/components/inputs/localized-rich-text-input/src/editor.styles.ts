@@ -9,9 +9,27 @@ const getEditorLanguageLabelBorderColor = (props: TEditorLanguageLabelProps) =>
       : designTokens.borderColorForInputWhenDisabled
   }`;
 
+  type TInputProps = {
+    isDisabled?: boolean;
+    isReadOnly?: boolean;
+  };
+
 type TEditorLanguageLabelProps = {
   isReadOnly?: boolean;
+  isDisabled?: boolean;
 };
+
+const getBackgroundColor = (props: TInputProps) => {
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForInputWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForInputWhenDisabled;
+  }
+  return designTokens.backgroundColorForInput;
+};
+
+
 const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   /* avoid wrapping label onto new lines */
   white-space: nowrap;
@@ -20,7 +38,7 @@ const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   line-height: calc(
     ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
   );
-  background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+  background-color: ${(props) => getBackgroundColor(props)};
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
   border: ${(props) => getEditorLanguageLabelBorderColor(props)};

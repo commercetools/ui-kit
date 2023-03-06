@@ -1,3 +1,4 @@
+//TODO: @redesign cleanup
 import {
   forwardRef,
   useCallback,
@@ -8,6 +9,7 @@ import {
 } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { useSlate } from 'slate-react';
+import { useTheme } from '@commercetools-uikit/design-system';
 import { useIntl } from 'react-intl';
 import { css, type SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -92,6 +94,7 @@ export type TRichTextEditorBody = {
   onClickExpand?: () => boolean;
   containerStyles: CSSProperties;
   children: ReactNode;
+  isNewTheme?: boolean;
 };
 
 const MoreStylesDropdownLabel = () => <MoreStylesIcon size="medium" />;
@@ -221,6 +224,7 @@ const RichTextEditorBody = forwardRef<
     ref as unknown as TRichtTextEditorBodyRef;
   const intl = useIntl();
   const editor = useSlate();
+  const { isNewTheme } = useTheme();
 
   const dropdownOptions = createMoreStylesDropdownOptions(intl);
   const styleDropdownOptions = createStyleDropdownOptions(intl);
@@ -440,6 +444,7 @@ const RichTextEditorBody = forwardRef<
             isReadOnly={props.isReadOnly}
             isDisabled={props.isDisabled}
             ref={containerRef}
+            isNewTheme={isNewTheme}
           >
             {props.children}
           </EditorContainer>

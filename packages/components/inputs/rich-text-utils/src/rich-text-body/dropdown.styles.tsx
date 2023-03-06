@@ -25,7 +25,7 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${designTokens.colorNeutral90};
+    background-color: ${designTokens.colorNeutral95};
   }
 `;
 
@@ -45,7 +45,7 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
       : designTokens.spacing10};
 
     &:hover {
-      background-color: ${designTokens.colorNeutral90};
+      background-color: ${designTokens.colorNeutral95};
     }
   `,
   props.isIndeterminate &&
@@ -55,7 +55,7 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
   props.isOpen &&
     css`
       &:not(:hover) {
-        background-color: ${designTokens.colorAccent30};
+        background-color: ${designTokens.colorAccent20};
         color: ${designTokens.colorSurface};
 
         svg {

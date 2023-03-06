@@ -364,6 +364,12 @@ componentGroups:
     description: 'Localized multiline text input label elements'
   localized-rich-text-input-label:
     description: 'Localized rich text input label elements'
+  localized-multiline-text-input-label:
+    description: 'Localized multiline text input label elements'
+  localized-rich-text-body-button:
+    description: 'Localized rich text input dropdown elements'
+  rich-text-input:
+    description: 'rich text input elements'
   tooltip:
     description: 'Tooltip elements'
   view-switcher:
@@ -1059,6 +1065,8 @@ decisionGroupsByTheme:
           choice: spacing-10
         margin-top-for-primary-action-dropdown:
           choice: 'none'
+        margin-for-localized-rich-text-body-button:
+          choice: 'none'
 
     paddings:
       label: Paddings
@@ -1103,6 +1111,10 @@ decisionGroupsByTheme:
         padding-for-localized-rich-text-input-label:
           choice: '0 var(--spacing-20)'
         padding-for-localized-input-label:
+          choice: '0 var(--spacing-20)'
+        padding-for-rich-text-input:
+          choice: 'none'
+        padding-for-localized-multiline-text-input-label:
           choice: '0 var(--spacing-20)'
         padding-for-tag-remove-icon:
           choice: '0 var(--spacing-10)'
@@ -1701,6 +1713,8 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-top-for-primary-action-dropdown:
           choice: spacing-20
+        margin-for-localized-rich-text-body-button:
+          choice: '0 var(--spacing-10)'
 
     paddings:
       label: Paddings
@@ -1778,6 +1792,8 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-30)'
         padding-for-primary-action-dropdown-icon:
           choice: '0 var(--spacing-20)'
+        padding-for-rich-text-input:
+          choice: 'var(--spacing-20) var(--spacing-30)'
 
     shadows:
       label: Shadows
