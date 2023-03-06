@@ -15,33 +15,33 @@ const getInputContainerBorderColor = (
   props: TInputProps,
   defaultColor: string = designTokens.borderColorForInput
 ) => {
-  if (props.hasError) {
-    return designTokens.borderColorForInputWhenError;
-  }
-  if (props.hasWarning) {
-    return designTokens.borderColorForInputWhenWarning;
-  }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
     return designTokens.borderColorForInputWhenReadonly;
   }
+  if (props.hasError) {
+    return designTokens.borderColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.borderColorForInputWhenWarning;
+  }
   return defaultColor;
 };
 
 const getInputFontColor = (props: TInputProps) => {
-  if (props.hasError) {
-    return designTokens.fontColorForInputWhenError;
-  }
-  if (props.hasWarning) {
-    return designTokens.fontColorForInputWhenWarning;
-  }
   if (props.isDisabled) {
     return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
     return designTokens.fontColorForInputWhenReadonly;
+  }
+  if (props.hasError) {
+    return designTokens.fontColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.fontColorForInputWhenWarning;
   }
   return designTokens.fontColorForInput;
 };
@@ -60,9 +60,11 @@ const getSelectableSearchInputStyles = (props: TInputProps) => [
   getInputStyles(props),
   css`
     border: none;
+    box-shadow: none;
     background: none;
     &,
-    &:focus {
+    &:focus,
+    &:focus:not(:read-only) {
       box-shadow: none;
     }
     &:focus,
@@ -117,6 +119,7 @@ const getSearchIconButtonStyles = (props: TInputProps) => [
   css`
     margin-right: ${designTokens.marginRightForSearchInputIcon};
     fill: ${getIconColor(props, designTokens.fontColorForSearchInputIcon)};
+    cursor: ${props.isReadOnly ? 'default' : 'pointer'};
     &:hover {
       fill: ${getIconColor(
         props,
@@ -171,16 +174,19 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
       )};
     }
 
-    &:focus-within {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-      box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
-        ${designTokens.borderColorForInputWhenFocused};
-    }
-
     &:focus {
       border-color: ${designTokens.borderColorForInputWhenFocused};
     }
   `,
+  !props.isDisabled &&
+    !props.isReadOnly &&
+    css`
+      &:focus-within {
+        border-color: ${designTokens.borderColorForInputWhenFocused};
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+          ${designTokens.borderColorForInputWhenFocused};
+      }
+    `,
 ];
 
 type TBase = {
@@ -214,6 +220,8 @@ const createSelectableSelectStyles = ({
     hasError,
     menuPortalZIndex,
     isNewTheme,
+    isDisabled,
+    isReadOnly,
   });
 
   return {
@@ -226,18 +234,18 @@ const createSelectableSelectStyles = ({
       borderRight: '0',
       height: '100%',
       borderColor: (() => {
-        if (hasError) return designTokens.borderColorForInputWhenError;
-        if (hasWarning) return designTokens.borderColorForInputWhenWarning;
         if (isDisabled)
           return `${designTokens.borderColorForInputWhenDisabled} !important`;
+        if (isReadOnly)
+          return `${designTokens.borderColorForInputWhenReadonly} !important`;
+        if (hasError) return designTokens.borderColorForInputWhenError;
+        if (hasWarning) return designTokens.borderColorForInputWhenWarning;
         if (textInputHasFocus && !isNewTheme) {
           return designTokens.borderColorForInputWhenFocused;
         }
         if (dropdownHasFocus) {
           return designTokens.borderColorForInputWhenFocused;
         }
-        if (isReadOnly)
-          return `${designTokens.borderColorForInputWhenReadonly} !important`;
         return designTokens.borderColorForInput;
       })(),
       cursor: (() => {

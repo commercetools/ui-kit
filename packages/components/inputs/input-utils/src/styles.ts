@@ -107,7 +107,6 @@ const getInputStyles = (props: TInputProps) => {
       color: ${designTokens.placeholderFontColorForInput};
     }
     :active:not(:disabled):not(:read-only),
-    :focus,
     :hover:not(:disabled):not(:read-only):not(:focus) {
       border-color: ${getInputBorderColor(
         props,
@@ -115,7 +114,7 @@ const getInputStyles = (props: TInputProps) => {
       )};
       background-color: ${designTokens.backgroundColorForInputWhenHovered};
     }
-    :focus {
+    :focus:not(:read-only) {
       box-shadow: ${designTokens.shadowForInputWhenFocused};
       border-color: ${designTokens.borderColorForInputWhenFocused};
       background-color: ${designTokens.backgroundColorForInputWhenFocused};

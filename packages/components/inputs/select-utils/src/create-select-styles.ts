@@ -44,14 +44,14 @@ const getControlBorderColor = (props: TProps, defaultColor: string) => {
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
+  if (props.isReadOnly) {
+    return designTokens.borderColorForInputWhenReadonly;
+  }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
     return designTokens.borderColorForInputWhenWarning;
-  }
-  if (props.isReadOnly) {
-    return designTokens.borderColorForInputWhenReadonly;
   }
   return defaultColor;
 };
@@ -69,11 +69,11 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     })(),
     borderColor: (() => {
       if (props.isDisabled) return designTokens.borderColorForInputWhenDisabled;
+      if (props.isReadOnly)
+        return designTokens.borderColorForSelectInputWhenReadonly;
       if (state.isFocused) return designTokens.borderColorForInputWhenFocused;
       if (props.hasError) return designTokens.borderColorForInputWhenError;
       if (props.hasWarning) return designTokens.borderColorForInputWhenWarning;
-      if (props.isReadOnly)
-        return designTokens.borderColorForSelectInputWhenReadonly;
       return designTokens.borderColorForInput;
     })(),
     borderWidth: (() => {
@@ -96,12 +96,12 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
 
     '&:focus-within': {
       boxShadow: (() => {
-        if (!props.isDisabled)
+        if (!props.isDisabled && !props.isReadOnly)
           return `${designTokens.boxShadowForSelectInputWhenFocused} ${designTokens.borderColorForInputWhenFocused}`;
         return null;
       })(),
       borderColor: (() => {
-        if (!props.isDisabled)
+        if (!props.isDisabled && !props.isReadOnly)
           return designTokens.borderColorForInputWhenFocused;
         return null;
       })(),

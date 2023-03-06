@@ -174,14 +174,6 @@ const getInputContainerStyles = (
           ? designTokens.backgroundColorForInputWhenHovered
           : null};
       }
-      &:focus-within {
-        border-color: ${designTokens.borderColorForInputWhenFocused};
-        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
-          ${designTokens.borderColorForInputWhenFocused};
-        &:hover {
-          background-color: ${designTokens.colorSurface};
-        }
-      }
       &:focus {
         border-color: ${props.isDisabled ||
         props.hasError ||
@@ -192,6 +184,17 @@ const getInputContainerStyles = (
           : designTokens.borderColorForInputWhenFocused};
       }
     `,
+    !props.isReadOnly &&
+      css`
+        &:focus-within {
+          border-color: ${designTokens.borderColorForInputWhenFocused};
+          box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+            ${designTokens.borderColorForInputWhenFocused};
+          &:hover {
+            background-color: ${designTokens.colorSurface};
+          }
+        }
+      `,
     !isNewTheme &&
       css`
         &:hover,
@@ -221,7 +224,7 @@ const getDateTimeInputStyles = (props: TCalendarBody) => {
       border: none;
       background: none !important;
       &,
-      &:focus {
+      &:focus:not(:read-only) {
         box-shadow: none;
       }
     `,

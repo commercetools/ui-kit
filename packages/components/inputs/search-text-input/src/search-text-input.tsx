@@ -214,6 +214,7 @@ const SearchTextInput: ForwardRefExoticComponent<
             label={'search-button'}
             onClick={handleSubmit}
             css={getSearchIconButtonStyles(props)}
+            isDisabled={props.isDisabled}
           />
         </div>
       </Constraints.Horizontal>

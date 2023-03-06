@@ -42,9 +42,11 @@ const getSearchTextInputStyles = (props: TInputProps) => [
   getInputStyles(props),
   css`
     border: none;
+    box-shadow: none;
     background: none;
     &,
-    &:focus {
+    &:focus,
+    &:focus:not(:read-only) {
       box-shadow: none;
     }
     &:focus,
@@ -97,6 +99,7 @@ const getSearchIconButtonStyles = (props: TInputProps) => [
   css`
     margin-right: ${designTokens.marginRightForSearchInputIcon};
     fill: ${getIconColor(props, designTokens.fontColorForSearchInputIcon)};
+    cursor: ${props.isReadOnly ? 'default' : 'pointer'};
     &:hover {
       fill: ${getIconColor(
         props,
@@ -139,19 +142,22 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
       background-color: ${designTokens.backgroundColorForInputWhenHovered};
     }
 
-    &:focus-within {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-      box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
-        ${designTokens.borderColorForInputWhenFocused};
-      &:hover {
-        background-color: ${designTokens.colorSurface};
-      }
-    }
-
     &:focus {
       border-color: ${designTokens.borderColorForInputWhenFocused};
     }
   `,
+  !props.isDisabled &&
+    !props.isReadOnly &&
+    css`
+      &:focus-within {
+        border-color: ${designTokens.borderColorForInputWhenFocused};
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+          ${designTokens.borderColorForInputWhenFocused};
+        &:hover {
+          background-color: ${designTokens.colorSurface};
+        }
+      }
+    `,
 ];
 
 export {

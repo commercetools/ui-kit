@@ -133,6 +133,8 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
       borderColor: (() => {
         if (isDisabled)
           return `${designTokens.borderColorForInputWhenDisabled} !important`;
+        if (isReadOnly)
+          return `${designTokens.borderColorForInputWhenReadonly} !important`;
         if (hasError) return designTokens.borderColorForInputWhenError;
         if (hasWarning) return designTokens.borderColorForInputWhenWarning;
         if (amountHasFocus && !isNewTheme) {
@@ -141,8 +143,6 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
         if (currencyHasFocus) {
           return designTokens.borderColorForInputWhenFocused;
         }
-        if (isReadOnly)
-          return `${designTokens.borderColorForInputWhenReadonly} !important`;
         return designTokens.borderColorForInput;
       })(),
       cursor: (() => {
@@ -154,6 +154,9 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
         if (isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
         return base.backgroundColor;
       })(),
+      '&:hover': {
+        borderColor: designTokens.borderColorForInput,
+      },
       '&:hover:not(:read-only):not(:disabled)': {
         backgroundColor: designTokens.backgroundColorForInputWhenHovered,
       },
@@ -847,6 +850,8 @@ const MoneyInput = (props: TMoneyInputProps) => {
                 `,
               currencyHasFocus &&
                 isNewTheme &&
+                !props.isDisabled &&
+                !props.isReadOnly &&
                 css`
                   border-left-color: ${designTokens.borderColorForInputWhenFocused};
                 `,

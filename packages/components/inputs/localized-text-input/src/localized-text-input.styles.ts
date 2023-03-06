@@ -25,7 +25,9 @@ const getLanguageLabelBackgroundColor = (props: TLocalizedInputProps) => {
   return designTokens.backgroundColorForLocalizedInputLabel;
 };
 
-const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
+const getLanguageLabelStyles = (
+  props: TLocalizedInputProps & { isNewTheme: boolean }
+) => {
   return css`
     display: flex;
     flex-direction: column;
@@ -41,7 +43,7 @@ const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
     border: 1px solid
-      ${props.isReadOnly
+      ${props.isReadOnly && props.isNewTheme
         ? designTokens.colorSurface
         : designTokens.borderColorForInputWhenDisabled};
     padding: ${designTokens.paddingForLocalizedInputLabel};
