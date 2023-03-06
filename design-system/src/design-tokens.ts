@@ -192,6 +192,9 @@ export const themes = {
     backgroundColorForCheckboxInputIconWhenReadonly: '#fff',
     backgroundColorForCheckboxInputIconWhenError: '#fff',
     backgroundColorForCheckboxInputIconWhenHovered: '#fff',
+    backgroundColorForPrimaryActionDropdownWhenActive: 'hsl(0, 0%, 95%)',
+    backgroundColorForPrimaryActionDropdownWhenDisabled:
+      'hsl(195, 35.2941176471%, 98%)',
     borderForButtonAsSecondary: 'none',
     borderForButtonAsSecondaryWhenHovered: 'none',
     borderForButtonAsSecondaryWhenActive: 'none',
@@ -261,6 +264,10 @@ export const themes = {
       '0 var(--border-radius-6) var(--border-radius-6) 0',
     borderRadiusForContentNotificationIcon:
       'var(--border-radius-6) 0 0 var(--border-radius-6)',
+    borderRadiusForPrimaryActionDropdown:
+      'var(--border-radius-6) 0 0 var(--border-radius-6)',
+    borderRadiusForPrimaryActionDropdownIcon:
+      '0 var(--border-radius-6) var(--border-radius-6) 0',
     borderWidthForInput: '1px',
     borderWidthForInputWhenWarning: '1px',
     borderWidthForInputWhenError: '1px',
@@ -379,6 +386,7 @@ export const themes = {
     marginRightForSearchInputIcon: '8px',
     marginRightForClearInputIcon: '4px',
     marginLeftForRadioInputLabel: '8px',
+    marginRightForPrimaryActionDropdown: '4px',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -415,6 +423,8 @@ export const themes = {
     paddingForSelectInputMenu: 'inherit',
     paddingForMoneyInputCurrencyDropdown: '0 var(--spacing-20)',
     paddingForSelectableSearchInputDropdown: '0 var(--spacing-20)',
+    paddingForPrimaryActionDropdown: '0 var(--spacing-20)',
+    paddingForPrimaryActionDropdownIcon: '0 var(--spacing-10)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -436,6 +446,12 @@ export const themes = {
       '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
     shadowForSelectInputMenu:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+    shadowForPrimaryActionDropdown:
+      '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+    shadowForPrimaryActionDropdownWhenHovered:
+      '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
+    shadowForPrimaryActionDropdownWhenActive:
+      'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
     fontSizeM: '1rem',
     bigButtonHeight: '32px',
     smallButtonHeight: '24px',
@@ -503,6 +519,8 @@ export const themes = {
     backgroundColorForCheckboxInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
     backgroundColorForCheckboxInputIconWhenError: '#e60050',
     backgroundColorForCheckboxInputIconWhenHovered: 'hsl(0, 0%, 90%)',
+    backgroundColorForPrimaryActionDropdownWhenActive: 'hsl(0, 0%, 90%)',
+    backgroundColorForPrimaryActionDropdownWhenDisabled: 'hsl(0, 0%, 95%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -573,6 +591,10 @@ export const themes = {
       '0 var(--border-radius-4) var(--border-radius-4) 0',
     borderRadiusForContentNotificationIcon:
       'var(--border-radius-4) 0 0 var(--border-radius-4)',
+    borderRadiusForPrimaryActionDropdown:
+      'var(--border-radius-4) 0 0 var(--border-radius-4)',
+    borderRadiusForPrimaryActionDropdownIcon:
+      '0 var(--border-radius-4) var(--border-radius-4) 0',
     borderWidthForTag: '1px 1px 1px 0',
     borderWidthForContentNotificationIcon: '1px',
     borderLeftWidthForContentNotification: '0px',
@@ -664,6 +686,7 @@ export const themes = {
     marginRightForSearchInputIcon: '12px',
     marginRightForClearInputIcon: '8px',
     marginLeftForRadioInputLabel: '4px',
+    marginRightForPrimaryActionDropdown: '8px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -703,6 +726,8 @@ export const themes = {
     paddingForSelectInputMenu: 'var(--spacing-10) 0',
     paddingForMoneyInputCurrencyDropdown: '0 12px',
     paddingForSelectableSearchInputDropdown: '0 12px',
+    paddingForPrimaryActionDropdown: '0 var(--spacing-30)',
+    paddingForPrimaryActionDropdownIcon: '0 var(--spacing-20)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -715,6 +740,9 @@ export const themes = {
     shadowForInputWhenWarning: 'inset 0 0 0 1px var(--color-warning)',
     shadowForTooltip: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)',
     shadowForSelectInputMenu: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
+    shadowForPrimaryActionDropdown: 'none',
+    shadowForPrimaryActionDropdownWhenHovered: 'none',
+    shadowForPrimaryActionDropdownWhenActive: 'none',
   },
 } as const;
 
@@ -958,6 +986,10 @@ const designTokens = {
     'var(--background-color-for-checkbox-input-icon-when-error, #fff)',
   backgroundColorForCheckboxInputIconWhenHovered:
     'var(--background-color-for-checkbox-input-icon-when-hovered, #fff)',
+  backgroundColorForPrimaryActionDropdownWhenActive:
+    'var(--background-color-for-primary-action-dropdown-when-active, hsl(0, 0%, 95%))',
+  backgroundColorForPrimaryActionDropdownWhenDisabled:
+    'var(--background-color-for-primary-action-dropdown-when-disabled, hsl(195, 35.2941176471%, 98%))',
   borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
   borderForButtonAsSecondaryWhenHovered:
     'var(--border-for-button-as-secondary-when-hovered, none)',
@@ -1072,6 +1104,10 @@ const designTokens = {
     'var(--border-radius-for-content-notification, 0 var(--border-radius-6) var(--border-radius-6) 0)',
   borderRadiusForContentNotificationIcon:
     'var(--border-radius-for-content-notification-icon, var(--border-radius-6) 0 0 var(--border-radius-6))',
+  borderRadiusForPrimaryActionDropdown:
+    'var(--border-radius-for-primary-action-dropdown, var(--border-radius-6) 0 0 var(--border-radius-6))',
+  borderRadiusForPrimaryActionDropdownIcon:
+    'var(--border-radius-for-primary-action-dropdown-icon, 0 var(--border-radius-6) var(--border-radius-6) 0)',
   borderWidthForInput: 'var(--border-width-for-input, 1px)',
   borderWidthForInputWhenWarning:
     'var(--border-width-for-input-when-warning, 1px)',
@@ -1244,6 +1280,8 @@ const designTokens = {
     'var(--margin-right-for-search-input-icon, 8px)',
   marginRightForClearInputIcon: 'var(--margin-right-for-clear-input-icon, 4px)',
   marginLeftForRadioInputLabel: 'var(--margin-left-for-radio-input-label, 8px)',
+  marginRightForPrimaryActionDropdown:
+    'var(--margin-right-for-primary-action-dropdown, 4px)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
@@ -1307,6 +1345,10 @@ const designTokens = {
     'var(--padding-for-money-input-currency-dropdown, 0 var(--spacing-20))',
   paddingForSelectableSearchInputDropdown:
     'var(--padding-for-selectable-search-input-dropdown, 0 var(--spacing-20))',
+  paddingForPrimaryActionDropdown:
+    'var(--padding-for-primary-action-dropdown, 0 var(--spacing-20))',
+  paddingForPrimaryActionDropdownIcon:
+    'var(--padding-for-primary-action-dropdown-icon, 0 var(--spacing-10))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:
@@ -1330,6 +1372,12 @@ const designTokens = {
     'var(--shadow-for-tooltip, 0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12))',
   shadowForSelectInputMenu:
     'var(--shadow-for-select-input-menu, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+  shadowForPrimaryActionDropdown:
+    'var(--shadow-for-primary-action-dropdown, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+  shadowForPrimaryActionDropdownWhenHovered:
+    'var(--shadow-for-primary-action-dropdown-when-hovered, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
+  shadowForPrimaryActionDropdownWhenActive:
+    'var(--shadow-for-primary-action-dropdown-when-active, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
   fontSizeM: 'var(--font-size-m, 1rem)',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',

@@ -215,6 +215,12 @@
   --background-color-for-checkbox-input-icon-when-readonly: #fff;
   --background-color-for-checkbox-input-icon-when-error: #fff;
   --background-color-for-checkbox-input-icon-when-hovered: #fff;
+  --background-color-for-primary-action-dropdown-when-active: hsl(0, 0%, 95%);
+  --background-color-for-primary-action-dropdown-when-disabled: hsl(
+    195,
+    35.2941176471%,
+    98%
+  );
   --border-for-button-as-secondary: none;
   --border-for-button-as-secondary-when-hovered: none;
   --border-for-button-as-secondary-when-active: none;
@@ -284,6 +290,10 @@
     var(--border-radius-6) 0;
   --border-radius-for-content-notification-icon: var(--border-radius-6) 0 0
     var(--border-radius-6);
+  --border-radius-for-primary-action-dropdown: var(--border-radius-6) 0 0
+    var(--border-radius-6);
+  --border-radius-for-primary-action-dropdown-icon: 0 var(--border-radius-6)
+    var(--border-radius-6) 0;
   --border-width-for-input: 1px;
   --border-width-for-input-when-warning: 1px;
   --border-width-for-input-when-error: 1px;
@@ -403,6 +413,7 @@
   --margin-right-for-search-input-icon: 8px;
   --margin-right-for-clear-input-icon: 4px;
   --margin-left-for-radio-input-label: 8px;
+  --margin-right-for-primary-action-dropdown: 4px;
   --padding-for-stamp: var(--spacing-10) var(--spacing-20);
   --padding-for-stamp-as-condensed: 1px var(--spacing-10);
   --padding-for-tag: 5px var(--spacing-20);
@@ -439,6 +450,8 @@
   --padding-for-select-input-menu: inherit;
   --padding-for-money-input-currency-dropdown: 0 var(--spacing-20);
   --padding-for-selectable-search-input-dropdown: 0 var(--spacing-20);
+  --padding-for-primary-action-dropdown: 0 var(--spacing-20);
+  --padding-for-primary-action-dropdown-icon: 0 var(--spacing-10);
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),
@@ -461,6 +474,14 @@
     0 1px 4.75px rgba(0, 0, 0, 0.12);
   --shadow-for-select-input-menu: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  --shadow-for-primary-action-dropdown: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  --shadow-for-primary-action-dropdown-when-hovered: 0 1px 9.5px 0
+      rgba(0, 0, 0, 0.12),
+    0 2px 4px 0 rgba(0, 0, 0, 0.24);
+  --shadow-for-primary-action-dropdown-when-active: inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1),
+    inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2),
+    inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25);
   --font-size-m: 1rem;
   --big-button-height: 32px;
   --small-button-height: 24px;
