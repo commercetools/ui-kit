@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/primary-button",
   "description": "Primary buttons are used for a primary action on a page. You must also pass a label for accessibility reasons.",
-  "version": "15.13.0",
+  "version": "15.13.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,11 +21,11 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/accessible-button": "15.13.0",
-    "@commercetools-uikit/design-system": "15.13.0",
-    "@commercetools-uikit/spacings-inline": "15.13.0",
-    "@commercetools-uikit/text": "15.13.0",
-    "@commercetools-uikit/utils": "15.13.0",
+    "@commercetools-uikit/accessible-button": "15.13.1",
+    "@commercetools-uikit/design-system": "15.13.1",
+    "@commercetools-uikit/spacings-inline": "15.13.1",
+    "@commercetools-uikit/text": "15.13.1",
+    "@commercetools-uikit/utils": "15.13.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",

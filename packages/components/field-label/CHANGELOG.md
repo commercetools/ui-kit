@@ -1,5 +1,20 @@
 # @commercetools-uikit/field-label
 
+## 15.13.1
+
+### Patch Changes
+
+- Updated dependencies [[`5e3708319`](https://github.com/commercetools/ui-kit/commit/5e37083198755a7b94a77d0c4c843e5609d5f2d0), [`6cae4959e`](https://github.com/commercetools/ui-kit/commit/6cae4959e5340f47f9b9d1aeae3ced149bed08e1)]:
+  - @commercetools-uikit/design-system@15.13.1
+  - @commercetools-uikit/icon-button@15.13.1
+  - @commercetools-uikit/constraints@15.13.1
+  - @commercetools-uikit/icons@15.13.1
+  - @commercetools-uikit/label@15.13.1
+  - @commercetools-uikit/spacings-inline@15.13.1
+  - @commercetools-uikit/spacings-stack@15.13.1
+  - @commercetools-uikit/text@15.13.1
+  - @commercetools-uikit/utils@15.13.1
+
 ## 15.13.0
 
 ### Patch Changes
