@@ -46,6 +46,7 @@ choiceGroupsByTheme:
         color-accent-20: 'hsl(195, 35.2941176471%, 20%)'
         color-accent-30: 'hsl(195, 35.2941176471%, 30%)'
         color-accent-40: 'hsl(195, 35.2941176471%, 40%)'
+        color-accent-60: 'hsl(195, 35.2941176471%, 60%)'
         color-accent-90: 'hsl(195, 35.2941176471%, 90%)'
         color-accent-95: 'hsl(195, 35.2941176471%, 95%)'
         color-accent-98: 'hsl(195, 35.2941176471%, 98%)'
@@ -261,6 +262,8 @@ states:
     description: 'When the element is condensed'
   checked:
     description: 'When the element is checked'
+  checked-and-disabled:
+    description: 'When the element is checked and disabled'
 
 variants:
   h1:
@@ -405,6 +408,10 @@ componentGroups:
     description: 'Selectable select input dropdown elements'
   selectable-search-input-dropdown:
     description: 'Selectable search input dropdown elements'
+  toggle-input-track:
+    description: 'Toggle input track pseudo-elements'
+  toggle-input-thumb:
+    description: 'Toggle input thumb pseudo-elements'
 
 decisionGroupsByTheme:
   default:
@@ -526,6 +533,20 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-checkbox-input-icon-when-hovered:
           choice: color-surface
+        background-color-for-toggle-input-track:
+          choice: color-neutral-60
+        background-color-for-toggle-input-track-when-disabled:
+          choice: color-neutral
+        background-color-for-toggle-input-thumb-when-disabled:
+          choice: color-accent-95
+        background-color-for-toggle-input-track-when-checked:
+          choice: color-primary
+        background-color-for-toggle-input-thumb-when-checked:
+          choice: color-surface
+        background-color-for-toggle-input-track-when-checked-and-disabled:
+          choice: color-primary-25
+        background-color-for-toggle-input-thumb-when-checked-and-disabled:
+          choice: color-neutral
 
     borders:
       label: Borders
@@ -1118,6 +1139,8 @@ decisionGroupsByTheme:
           choice: shadow-15
         shadow-for-select-input-menu:
           choice: shadow-7
+        shadow-for-toggle-input-thumb:
+          choice: shadow-7
 
   test:
     alignItems:
@@ -1218,6 +1241,20 @@ decisionGroupsByTheme:
           choice: color-error
         background-color-for-checkbox-input-icon-when-hovered:
           choice: color-neutral-90
+        background-color-for-toggle-input-track:
+          choice: color-neutral
+        background-color-for-toggle-input-track-when-disabled:
+          choice: color-neutral-90
+        background-color-for-toggle-input-thumb-when-disabled:
+          choice: color-neutral-60
+        background-color-for-toggle-input-track-when-checked:
+          choice: color-primary-40
+        background-color-for-toggle-input-thumb-when-checked:
+          choice: color-primary-25
+        background-color-for-toggle-input-track-when-checked-and-disabled:
+          choice: color-accent-90
+        background-color-for-toggle-input-thumb-when-checked-and-disabled:
+          choice: color-accent-60
 
     borders:
       label: Borders
@@ -1708,6 +1745,8 @@ decisionGroupsByTheme:
           choice: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)'
         shadow-for-select-input-menu:
           choice: '0 2px 5px 0px rgba(0, 0, 0, 0.15)'
+        shadow-for-toggle-input-thumb:
+          choice: '0px 1px 5px rgba(0, 0, 0, 0.2)'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
@@ -1730,4 +1769,3 @@ plainTokens:
   font-size-small: 0.9231rem
   shadow-box-tag-hover: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
   size-height-tag: 26px
-  standard-input-height: 32px
