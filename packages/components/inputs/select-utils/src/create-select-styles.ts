@@ -45,7 +45,7 @@ const getControlBorderColor = (props: TProps, defaultColor: string) => {
     return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.borderColorForInputWhenReadonly;
+    return designTokens.borderColorForSelectInputWhenReadonly;
   }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
