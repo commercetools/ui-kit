@@ -154,24 +154,29 @@ const getInputContainerStyles = (
           : 'inherit'};
       }
 
-      &:hover:not(:read-only):not(:disabled) {
-        background-color: ${designTokens.backgroundColorForInputWhenHovered};
-      }
-
-      &:focus-within {
-        border-color: ${designTokens.borderColorForInputWhenFocused};
-        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
-          ${designTokens.borderColorForInputWhenFocused};
-        &:hover {
-          background-color: ${designTokens.colorSurface};
-        }
-      }
-
       &:focus {
         border-color: ${designTokens.borderColorForInputWhenFocused};
       }
     `,
+    !props.isDisabled &&
+      !props.isReadOnly &&
+      css`
+        &:hover {
+          background-color: ${designTokens.backgroundColorForInputWhenHovered};
+        }
+
+        &:focus-within {
+          border-color: ${designTokens.borderColorForInputWhenFocused};
+          box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+            ${designTokens.borderColorForInputWhenFocused};
+          &:hover {
+            background-color: ${designTokens.colorSurface};
+          }
+        }
+      `,
     !isNewTheme &&
+      !props.isDisabled &&
+      !props.isReadOnly &&
       css`
         :hover:not(:disabled):not(:read-only) {
           border-color: ${designTokens.borderColorForInputWhenFocused};
@@ -197,9 +202,11 @@ const getTimeInputStyles = (props: TTimeInputProps) => {
     getInputStyles(props),
     css`
       border: none;
+      box-shadow: none;
       background: none;
       &,
-      &:focus {
+      &:focus,
+      &:focus:not(:read-only) {
         box-shadow: none;
       }
       &:focus,
