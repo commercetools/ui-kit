@@ -37,7 +37,7 @@ const noSearch = () => Promise.resolve([]);
 // 'onChange' prop in AsyncSelectInput is required but not needed here
 const voidChangeHandler = () => undefined;
 
-type TColumnData = {
+export type TColumnData = {
   key: string;
   label: ReactNode;
 };

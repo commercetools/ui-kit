@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Text from '@commercetools-uikit/text';
 
-type TIntlMessageDescriptor = {
+export type TIntlMessageDescriptor = {
   id: string;
   description?: string | object;
   defaultMessage: string;

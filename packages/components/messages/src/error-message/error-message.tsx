@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import Text from '@commercetools-uikit/text';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-type TIntlMessageDescriptor = {
+export type TIntlMessageDescriptor = {
   id: string;
   description?: string | object;
   defaultMessage: string;

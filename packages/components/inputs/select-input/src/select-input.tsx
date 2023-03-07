@@ -26,7 +26,7 @@ const customizedComponents = {
   MultiValueRemove: TagRemove,
 };
 
-type TOption = {
+export type TOption = {
   value: string;
   label?: ReactNode;
 };

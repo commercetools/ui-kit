@@ -3,17 +3,18 @@ import Text from '@commercetools-uikit/text';
 import { components, OptionProps } from 'react-select';
 import { NO_VALUE_FALLBACK, SELECT_DROPDOWN_OPTION_TYPES } from './constants';
 
-type TData = {
+export type TData = {
   label?: string;
   key?: string;
   id?: string;
 };
 
-type SelectDropdownOptionTypesKeys = keyof typeof SELECT_DROPDOWN_OPTION_TYPES;
+export type TSelectDropdownOptionTypesKeys =
+  keyof typeof SELECT_DROPDOWN_OPTION_TYPES;
 export type TDoublePropertySelectInputOptionProps = {
   data?: TData;
   noValueFallback?: string;
-  optionType?: (typeof SELECT_DROPDOWN_OPTION_TYPES)[SelectDropdownOptionTypesKeys];
+  optionType?: (typeof SELECT_DROPDOWN_OPTION_TYPES)[TSelectDropdownOptionTypesKeys];
 } & OptionProps;
 
 export const MultiplePropertiesSelectInputOption = (

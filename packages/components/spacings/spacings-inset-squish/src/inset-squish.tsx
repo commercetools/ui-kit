@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-type TScale = 's' | 'm' | 'l';
+export type TScale = 's' | 'm' | 'l';
 export type TInsetSquishProps = {
   scale: TScale;
   children: ReactNode;

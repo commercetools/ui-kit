@@ -11,7 +11,7 @@ import {
   wrapStyles,
 } from './text.styles';
 
-type Tone =
+export type TTone =
   | 'primary'
   | 'secondary'
   | 'information'
@@ -120,7 +120,7 @@ export type TSubheadlineProps = {
   as?: 'h4' | 'h5';
   truncate?: boolean;
   isBold?: boolean;
-  tone?: Tone;
+  tone?: TTone;
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -177,7 +177,7 @@ export type TBodyProps = {
   isBold?: boolean;
   isItalic?: boolean;
   isStrikethrough?: boolean;
-  tone?: Tone | 'inverted';
+  tone?: TTone | 'inverted';
   truncate?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
@@ -218,7 +218,7 @@ export type TDetailProps = {
   isItalic?: boolean;
   isStrikethrough?: boolean;
   as?: 'span' | 'small';
-  tone?: Tone | 'warning' | 'inverted';
+  tone?: TTone | 'warning' | 'inverted';
   truncate?: boolean;
   'aria-labelledby'?: string;
 } & TBasicTextProps &

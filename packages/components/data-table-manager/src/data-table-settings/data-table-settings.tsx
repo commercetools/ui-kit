@@ -16,7 +16,7 @@ import DisplaySettingsManager, {
 import ColumnSettingsManager from '../column-settings-manager';
 import messages from './messages';
 
-type SelectChangeEvent = {
+export type TSelectChangeEvent = {
   target: {
     name?: string;
     value?: string | string[] | null;
@@ -200,7 +200,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
     formatMessage: intl.formatMessage,
   });
 
-  const handleDropdownChange = (event: SelectChangeEvent) =>
+  const handleDropdownChange = (event: TSelectChangeEvent) =>
     setOpenedPanelId(
       Array.isArray(event.target.value)
         ? event.target.value[0]

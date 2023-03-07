@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { getMaxPropTokenValue } from '../helpers';
 
-type TMaxProp =
+export type TMaxProp =
   | 1
   | 2
   | 3
