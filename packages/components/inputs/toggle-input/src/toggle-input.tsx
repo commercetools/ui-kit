@@ -1,15 +1,18 @@
-import { ChangeEventHandler } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
+// TODO: @redesign cleanup
+import type { ChangeEventHandler } from 'react';
+import { useTheme } from '@commercetools-uikit/design-system';
 import {
   filterDataAttributes,
   filterAriaAttributes,
 } from '@commercetools-uikit/utils';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
-
-const thumbSmallSize = '13px';
-const thumbBigSize = `calc(${thumbSmallSize} * 2)`;
+import {
+  Label,
+  Span,
+  getInputStyles,
+  getThemedTrack,
+  getThemedThumb,
+} from './toggle-input.styles';
 
 export type TToggleInputProps = {
   /**
@@ -43,9 +46,6 @@ export type TToggleInputProps = {
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
-type TStyledLabelProps = Pick<TToggleInputProps, 'isDisabled' | 'size'>;
-type TStyledSpanProps = Pick<TToggleInputProps, 'size'>;
-
 export const defaultProps: Pick<
   TToggleInputProps,
   'isDisabled' | 'isChecked' | 'size'
@@ -55,125 +55,46 @@ export const defaultProps: Pick<
   size: 'big',
 };
 
-const labelSizeStyles = (props: TStyledLabelProps) => {
-  if (props.size === 'small')
-    return css`
-      height: calc(${designTokens.standardInputHeight} / 2);
-      width: calc(${designTokens.standardInputHeight});
-    `;
-  return css`
-    height: calc(${designTokens.standardInputHeight});
-    width: calc(${designTokens.standardInputHeight} * 2);
-  `;
+const ToggleInput = (props: TToggleInputProps) => {
+  const { isNewTheme, themedValue } = useTheme();
+
+  const themedTrack = getThemedTrack(themedValue);
+  const themedThumb = getThemedThumb(themedValue);
+
+  return (
+    <Label
+      htmlFor={props.id}
+      size={props.size}
+      isDisabled={props.isDisabled}
+      isNewTheme={isNewTheme}
+      themedTrack={themedTrack}
+      themedThumb={themedThumb}
+    >
+      <input
+        type="checkbox"
+        css={[
+          accessibleHiddenInputStyles,
+          getInputStyles({ ...props, isNewTheme, themedTrack, themedThumb }),
+        ]}
+        id={props.id}
+        name={props.name}
+        onChange={props.onChange}
+        disabled={props.isDisabled}
+        checked={props.isChecked}
+        value={props.value}
+        {...filterDataAttributes(props)}
+        {...filterAriaAttributes(props)}
+      />
+      <Span
+        aria-hidden="true"
+        size={props.size}
+        isNewTheme={isNewTheme}
+        themedTrack={themedTrack}
+        themedThumb={themedThumb}
+      />
+    </Label>
+  );
 };
-
-const Label = styled.label<TStyledLabelProps>`
-  position: relative;
-  display: inline-block;
-  cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
-
-  ${labelSizeStyles}
-
-  &:focus-within {
-    outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
-    outline-offset: 3px;
-  }
-`;
-
-const Span = styled.span<TStyledSpanProps>`
-  /* this is the track */
-
-  &::before {
-    border-radius: 16px;
-    box-shadow: ${designTokens.shadow9};
-    background-color: ${designTokens.colorNeutral60};
-    left: 0;
-    top: 50%;
-    transition: background 0.2s ease-in-out;
-    content: '';
-    position: absolute;
-    transform: translateY(-50%);
-    height: 100%;
-    width: 100%;
-  }
-
-  /* this is the thumb */
-  &::after {
-    content: '';
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    left: ${(props) => (props.size === 'small' ? '2px' : '3px')};
-    height: ${(props) =>
-      props.size === 'small' ? thumbSmallSize : thumbBigSize};
-    width: ${(props) =>
-      props.size === 'small' ? thumbSmallSize : thumbBigSize};
-    background-color: ${designTokens.colorSurface};
-    box-shadow: ${designTokens.shadow7};
-    border-radius: 50%;
-    z-index: 1;
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
-`;
-
-const getInputStyles = (props: TToggleInputProps) => css`
-  /* when checked */
-  &:checked {
-    + span::before {
-      background: ${designTokens.colorPrimary};
-    }
-    & + span::after {
-      transform: ${props.size === 'small'
-        ? 'translate(117%, -50%)'
-        : 'translate(127%, -50%)'};
-    }
-  }
-
-  /* when disabled */
-  &:disabled {
-    & + span::before {
-      background: ${designTokens.colorNeutral};
-      box-shadow: none;
-    }
-    & + span::after {
-      background: ${designTokens.colorAccent95};
-      box-shadow: none;
-    }
-  }
-
-  /* when disabled and checked */
-  &:disabled&:checked {
-    & + span::before {
-      background: ${designTokens.colorPrimary25};
-    }
-    & + span::after {
-      background: ${designTokens.colorNeutral};
-    }
-  }
-
-  :not(:disabled)&:hover + span::after,
-  :not(:disabled)&:focus + span::after {
-    box-shadow: ${designTokens.shadow16};
-  }
-`;
-
-const ToggleInput = (props: TToggleInputProps) => (
-  <Label htmlFor={props.id} size={props.size} isDisabled={props.isDisabled}>
-    <input
-      type="checkbox"
-      css={[accessibleHiddenInputStyles, getInputStyles(props)]}
-      id={props.id}
-      name={props.name}
-      onChange={props.onChange}
-      disabled={props.isDisabled}
-      checked={props.isChecked}
-      value={props.value}
-      {...filterDataAttributes(props)}
-      {...filterAriaAttributes(props)}
-    />
-    <Span aria-hidden="true" size={props.size} />
-  </Label>
-);
 
 ToggleInput.displayName = 'Toggle';
 ToggleInput.defaultProps = defaultProps;
