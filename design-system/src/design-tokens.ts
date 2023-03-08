@@ -171,9 +171,10 @@ export const themes = {
     backgroundColorForAvatar: 'hsl(0, 0%, 60%)',
     backgroundColorForAvatarWhenHighlighted: '#ccc',
     backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 85%)',
-    backgroundColorForLocalizedMultilineTextInputLabel:
-      'hsl(195, 35.2941176471%, 98%)',
-    backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
+    backgroundColorForLocalizedInputLabel: 'hsl(195, 35.2941176471%, 98%)',
+    backgroundColorForLocalizedInputLabelWhenReadonly:
+      'hsl(195, 35.2941176471%, 95%)',
+    backgroundColorForLocalizedInputLabelWhenDisabled:
       'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForTooltip: '#213c45',
     backgroundColorForViewSwitcher: '#fff',
@@ -236,8 +237,8 @@ export const themes = {
     borderColorForStampAsInformation: '#078cdf',
     borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
     borderColorForStampAsSecondary: 'hsl(0, 0%, 60%)',
-    borderColorForLocalizedMultilineTextInputLabel: '#ccc',
-    borderColorForLocalizedMultilineTextInputLabelWhenReadonly: '#ccc',
+    borderColorForLocalizedInputLabel: '#ccc',
+    borderColorForLocalizedInputLabelWhenReadonly: '#ccc',
     borderColorForContentNotificationWhenError: '#e60050',
     borderColorForContentNotificationWhenInfo: '#078cdf',
     borderColorForContentNotificationWhenWarning: '#f16d0e',
@@ -299,7 +300,7 @@ export const themes = {
     fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTextWhenInverted: '#fff',
     fontColorForTableHeader: '#fff',
-    fontColorForLocalizedMultilineTextInputLabel: 'hsl(0, 0%, 60%)',
+    fontColorForLocalizedInputLabel: 'hsl(0, 0%, 60%)',
     fontColorForViewSwitcher: '#1a1a1a',
     fontColorForViewSwitcherWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForViewSwitcherWhenSelected: '#1a1a1a',
@@ -358,7 +359,7 @@ export const themes = {
     fontSizeForAvatarAsSmall: '1rem',
     fontSizeForAvatarAsMedium: '1.5rem',
     fontSizeForAvatarAsBig: '3rem',
-    fontSizeForLocalizedMultilineTextInputLabel: '0.9231rem',
+    fontSizeForLocalizedInputLabel: '1rem',
     fontSizeForContentNotification: '1rem',
     fontSizeForSelectInputTag: '0.9231rem',
     iconColorForDatetimeInputIcon: '#1a1a1a',
@@ -409,7 +410,7 @@ export const themes = {
     paddingForInput: '8px',
     paddingForMultilineInput: 'var(--spacing-10) var(--spacing-20)',
     paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
-    paddingForLocalizedMultilineTextInputLabel: '0 var(--spacing-20)',
+    paddingForLocalizedInputLabel: '0 var(--spacing-20)',
     paddingForTagRemoveIcon: '0 var(--spacing-10)',
     paddingForTooltip: 'var(--spacing-10) var(--spacing-20)',
     paddingForViewSwitcher: '0 var(--spacing-30) 0 var(--spacing-30)',
@@ -485,9 +486,9 @@ export const themes = {
     backgroundColorForAvatar: '#213c45',
     backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
     backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 95%)',
-    backgroundColorForLocalizedMultilineTextInputLabel: '#fff',
-    backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
-      'hsl(0, 0%, 95%)',
+    backgroundColorForLocalizedInputLabel: '#fff',
+    backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(0, 0%, 95%)',
+    backgroundColorForLocalizedInputLabelWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForTooltip: 'hsl(195, 35.2941176471%, 10%)',
     backgroundColorForViewSwitcherWhenDisabled: '#fff',
     backgroundColorForViewSwitcherWhenSelected: 'hsl(0, 0%, 95%)',
@@ -555,8 +556,7 @@ export const themes = {
       'hsl(203.05555555555554, 93.9130434783%, 85%)',
     borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 85%)',
     borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
-    borderColorForLocalizedMultilineTextInputLabelWhenReadonly:
-      'hsl(0, 0%, 90%)',
+    borderColorForLocalizedInputLabelWhenReadonly: '#fff',
     borderColorForTag: '#ccc',
     borderColorForTagWhenHovered: '#ccc',
     borderColorForContentNotificationWhenError:
@@ -643,7 +643,7 @@ export const themes = {
     fontSizeForAvatarAsSmall: '0.875rem',
     fontSizeForAvatarAsMedium: '1rem',
     fontSizeForAvatarAsBig: '2.5rem',
-    fontSizeForLocalizedMultilineTextInputLabel: '1rem',
+    fontSizeForLocalizedInputLabel: '1rem',
     fontSizeForSelectInputTag: '1rem',
     lineHeightForTextAsH1: '2.125rem',
     lineHeightForTextAsH2: '1.75rem',
@@ -708,7 +708,7 @@ export const themes = {
     paddingForInput: '16px',
     paddingForMultilineInput: '8px',
     paddingForLocalizedRichTextInputLabel: '8px',
-    paddingForLocalizedMultilineTextInputLabel: '0 12px',
+    paddingForLocalizedInputLabel: '0 12px',
     paddingForTagRemoveIcon: '0 12px',
     paddingForTooltip: 'var(--spacing-20) 12px',
     paddingForViewSwitcher: '0 var(--spacing-30) 0 var(--spacing-30)',
@@ -943,10 +943,12 @@ const designTokens = {
     'var(--background-color-for-avatar-when-highlighted, #ccc)',
   backgroundColorForStampAsPositive:
     'var(--background-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 85%))',
-  backgroundColorForLocalizedMultilineTextInputLabel:
-    'var(--background-color-for-localized-multiline-text-input-label, hsl(195, 35.2941176471%, 98%))',
-  backgroundColorForLocalizedMultilineTextInputLabelWhenDisabled:
-    'var(--background-color-for-localized-multiline-text-input-label-when-disabled, hsl(195, 35.2941176471%, 98%))',
+  backgroundColorForLocalizedInputLabel:
+    'var(--background-color-for-localized-input-label, hsl(195, 35.2941176471%, 98%))',
+  backgroundColorForLocalizedInputLabelWhenReadonly:
+    'var(--background-color-for-localized-input-label-when-readonly, hsl(195, 35.2941176471%, 95%))',
+  backgroundColorForLocalizedInputLabelWhenDisabled:
+    'var(--background-color-for-localized-input-label-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForTooltip: 'var(--background-color-for-tooltip, #213c45)',
   backgroundColorForViewSwitcher:
     'var(--background-color-for-view-switcher, #fff)',
@@ -1052,10 +1054,10 @@ const designTokens = {
     'var(--border-color-for-stamp-as-primary, hsl(172.9608938547486, 100%, 25%))',
   borderColorForStampAsSecondary:
     'var(--border-color-for-stamp-as-secondary, hsl(0, 0%, 60%))',
-  borderColorForLocalizedMultilineTextInputLabel:
-    'var(--border-color-for-localized-multiline-text-input-label, #ccc)',
-  borderColorForLocalizedMultilineTextInputLabelWhenReadonly:
-    'var(--border-color-for-localized-multiline-text-input-label-when-readonly, #ccc)',
+  borderColorForLocalizedInputLabel:
+    'var(--border-color-for-localized-input-label, #ccc)',
+  borderColorForLocalizedInputLabelWhenReadonly:
+    'var(--border-color-for-localized-input-label-when-readonly, #ccc)',
   borderColorForContentNotificationWhenError:
     'var(--border-color-for-content-notification-when-error, #e60050)',
   borderColorForContentNotificationWhenInfo:
@@ -1151,8 +1153,8 @@ const designTokens = {
   fontColorForTextWhenInverted:
     'var(--font-color-for-text-when-inverted, #fff)',
   fontColorForTableHeader: 'var(--font-color-for-table-header, #fff)',
-  fontColorForLocalizedMultilineTextInputLabel:
-    'var(--font-color-for-localized-multiline-text-input-label, hsl(0, 0%, 60%))',
+  fontColorForLocalizedInputLabel:
+    'var(--font-color-for-localized-input-label, hsl(0, 0%, 60%))',
   fontColorForViewSwitcher: 'var(--font-color-for-view-switcher, #1a1a1a)',
   fontColorForViewSwitcherWhenDisabled:
     'var(--font-color-for-view-switcher-when-disabled, hsl(0, 0%, 60%))',
@@ -1242,8 +1244,8 @@ const designTokens = {
   fontSizeForAvatarAsSmall: 'var(--font-size-for-avatar-as-small, 1rem)',
   fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1.5rem)',
   fontSizeForAvatarAsBig: 'var(--font-size-for-avatar-as-big, 3rem)',
-  fontSizeForLocalizedMultilineTextInputLabel:
-    'var(--font-size-for-localized-multiline-text-input-label, 0.9231rem)',
+  fontSizeForLocalizedInputLabel:
+    'var(--font-size-for-localized-input-label, 1rem)',
   fontSizeForContentNotification:
     'var(--font-size-for-content-notification, 1rem)',
   fontSizeForSelectInputTag: 'var(--font-size-for-select-input-tag, 0.9231rem)',
@@ -1316,8 +1318,8 @@ const designTokens = {
     'var(--padding-for-multiline-input, var(--spacing-10) var(--spacing-20))',
   paddingForLocalizedRichTextInputLabel:
     'var(--padding-for-localized-rich-text-input-label, 0 var(--spacing-20))',
-  paddingForLocalizedMultilineTextInputLabel:
-    'var(--padding-for-localized-multiline-text-input-label, 0 var(--spacing-20))',
+  paddingForLocalizedInputLabel:
+    'var(--padding-for-localized-input-label, 0 var(--spacing-20))',
   paddingForTagRemoveIcon:
     'var(--padding-for-tag-remove-icon, 0 var(--spacing-10))',
   paddingForTooltip:

@@ -216,7 +216,10 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                 value={props.value}
                 onChange={props.onChange}
               >
-                <EditorLanguageLabel htmlFor={props.id}>
+                <EditorLanguageLabel
+                  htmlFor={props.id}
+                  isReadOnly={props.isReadOnly}
+                >
                   {/* FIXME: add proper tone for disabled when tones are refactored */}
                   <Text.Detail tone="secondary">
                     {props.language.toUpperCase()}

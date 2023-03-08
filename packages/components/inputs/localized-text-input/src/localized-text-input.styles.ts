@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
+import type { TLocalizedInputProps } from './localized-text-input';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -14,7 +15,19 @@ const getLocalizedInputStyles = () => [
   `,
 ];
 
-const getLanguageLabelStyles = (_props: unknown) => {
+const getLanguageLabelBackgroundColor = (props: TLocalizedInputProps) => {
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForLocalizedInputLabelWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForLocalizedInputLabelWhenReadonly;
+  }
+  return designTokens.backgroundColorForLocalizedInputLabel;
+};
+
+const getLanguageLabelStyles = (
+  props: TLocalizedInputProps & { isNewTheme: boolean }
+) => {
   return css`
     display: flex;
     flex-direction: column;
@@ -22,13 +35,18 @@ const getLanguageLabelStyles = (_props: unknown) => {
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
     box-sizing: border-box;
-    color: ${designTokens.fontColorForInputWhenDisabled};
+    color: ${designTokens.fontColorForLocalizedInputLabel};
+    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     height: ${designTokens.heightForInput};
-    background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+    font-size: ${designTokens.fontSizeForLocalizedInputLabel};
+    background-color: ${getLanguageLabelBackgroundColor(props)};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-    border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
-    padding: 0 ${designTokens.spacing20};
+    border: 1px solid
+      ${props.isReadOnly && props.isNewTheme
+        ? designTokens.colorSurface
+        : designTokens.borderColorForInputWhenDisabled};
+    padding: ${designTokens.paddingForLocalizedInputLabel};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};

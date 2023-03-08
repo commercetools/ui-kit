@@ -393,6 +393,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             getSelectableSearchInputContainerStyles(props),
             dropdownHasFocus &&
               isNewTheme &&
+              !props.isReadOnly &&
               css`
                 border-left-color: ${designTokens.borderColorForInputWhenFocused};
                 &:hover {
