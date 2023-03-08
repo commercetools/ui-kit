@@ -289,6 +289,7 @@ export const themes = {
     borderWidthForContentNotificationIcon: '0px',
     borderLeftWidthForContentNotification: '1px',
     borderWidthForCheckboxInputIcon: '1px',
+    borderForPrimaryActionDropdownIcon: '0px 0px 0px 1px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 2px',
     boxShadowForViewSwitcher:
       '0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)',
@@ -630,6 +631,7 @@ export const themes = {
     borderLeftWidthForContentNotification: '0px',
     borderWidthForSelectInput: '2px',
     borderWidthForCheckboxInputIcon: '2px',
+    borderForPrimaryActionDropdownIcon: '1px 1px 1px 0px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     boxShadowForViewSwitcher: 'none',
     boxShadowForViewSwitcherWhenSelected: 'none',
@@ -1175,6 +1177,8 @@ const designTokens = {
     'var(--border-left-width-for-content-notification, 1px)',
   borderWidthForCheckboxInputIcon:
     'var(--border-width-for-checkbox-input-icon, 1px)',
+  borderForPrimaryActionDropdownIcon:
+    'var(--border-for-primary-action-dropdown-icon, 0px 0px 0px 1px)',
   boxShadowForDatetimeInputWhenHovered:
     'var(--box-shadow-for-datetime-input-when-hovered, inset 0 0 0 2px)',
   boxShadowForViewSwitcher:

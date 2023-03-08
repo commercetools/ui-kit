@@ -321,6 +321,7 @@
   --border-width-for-content-notification-icon: 0px;
   --border-left-width-for-content-notification: 1px;
   --border-width-for-checkbox-input-icon: 1px;
+  --border-for-primary-action-dropdown-icon: 0px 0px 0px 1px;
   --box-shadow-for-datetime-input-when-hovered: inset 0 0 0 2px;
   --box-shadow-for-view-switcher: 0 1px 1px 0 rgba(0, 0, 0, 0.24),
     0 -1px 1px 0 rgba(0, 0, 0, 0.12);

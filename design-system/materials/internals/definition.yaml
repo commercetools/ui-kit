@@ -747,6 +747,8 @@ decisionGroupsByTheme:
           choice: border-width-1
         border-width-for-checkbox-input-icon:
           choice: border-width-1
+        border-for-primary-action-dropdown-icon:
+          choice: '0px 0px 0px 1px'
 
     boxShadows:
       label: Box shadows
@@ -1453,6 +1455,8 @@ decisionGroupsByTheme:
           choice: border-width-2
         border-width-for-checkbox-input-icon:
           choice: border-width-2
+        border-for-primary-action-dropdown-icon:
+          choice: '1px 1px 1px 0px'
 
     boxShadows:
       label: Box shadows
