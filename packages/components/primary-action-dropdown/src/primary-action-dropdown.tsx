@@ -134,10 +134,9 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
       css={[
         ...getButtonStyles(props.isDisabled, props.isNewTheme),
         css`
-          padding: 0 ${designTokens.spacing10};
+          padding: ${designTokens.paddingForPrimaryActionDropdownIcon};
           border-left: 1px solid ${designTokens.colorNeutral};
-          border-radius: 0 ${designTokens.borderRadius6}
-            ${designTokens.borderRadius6} 0;
+          border-radius: ${designTokens.borderRadiusForPrimaryActionDropdownIcon};
           border: ${props.isNewTheme &&
           `1px solid ${designTokens.colorNeutral}`};
           margin-left: ${props.isNewTheme && '-1px'};
@@ -182,8 +181,9 @@ const Options = styled.div<{ isNewTheme: boolean }>`
   width: 100%;
   top: calc(${designTokens.spacing20} + ${designTokens.bigButtonHeight});
   border: 1px solid ${designTokens.borderColorForPrimaryActionDropdownMenu};
-  border-radius: ${designTokens.borderRadius6};
+  border-radius: ${designTokens.borderRadiusForPrimaryActionDropdownMenu};
   box-shadow: ${designTokens.shadowForPrimaryActionDropdownMenu};
+  margin-top: ${designTokens.marginTopForPrimaryActionDropdown};
 
   > button {
     padding-left: ${(props) => props.isNewTheme && designTokens.spacing30};
@@ -268,6 +268,10 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         position: relative;
         display: inline-flex;
         align-items: column;
+
+        > * > button {
+          height: ${designTokens.heightForPrimaryActionDropdown};
+        }
       `}
     >
       <DropdownHead

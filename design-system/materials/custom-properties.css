@@ -311,6 +311,7 @@
     var(--border-radius-6);
   --border-radius-for-primary-action-dropdown-icon: 0 var(--border-radius-6)
     var(--border-radius-6) 0;
+  --border-radius-for-primary-action-dropdown-menu: 6px;
   --border-width-for-input: 1px;
   --border-width-for-input-when-warning: 1px;
   --border-width-for-input-when-error: 1px;
@@ -379,6 +380,7 @@
   --height-for-select-input-tag: 26px;
   --height-for-radio-input-option: 16px;
   --height-for-radio-input-option-when-checked: 8px;
+  --height-for-primary-action-dropdown: 32px;
   --width-for-avatar-as-medium: 48px;
   --min-width-for-money-input-currency-dropdown: 72px;
   --placeholder-font-color-for-input: hsl(0, 0%, 60%);
@@ -431,6 +433,7 @@
   --margin-right-for-clear-input-icon: 4px;
   --margin-left-for-radio-input-label: 8px;
   --margin-right-for-primary-action-dropdown: 4px;
+  --margin-top-for-primary-action-dropdown: none;
   --padding-for-stamp: var(--spacing-10) var(--spacing-20);
   --padding-for-stamp-as-condensed: 1px var(--spacing-10);
   --padding-for-tag: 5px var(--spacing-20);

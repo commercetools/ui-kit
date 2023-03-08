@@ -279,6 +279,7 @@ export const themes = {
       'var(--border-radius-6) 0 0 var(--border-radius-6)',
     borderRadiusForPrimaryActionDropdownIcon:
       '0 var(--border-radius-6) var(--border-radius-6) 0',
+    borderRadiusForPrimaryActionDropdownMenu: '6px',
     borderWidthForInput: '1px',
     borderWidthForInputWhenWarning: '1px',
     borderWidthForInputWhenError: '1px',
@@ -346,6 +347,7 @@ export const themes = {
     heightForSelectInputTag: '26px',
     heightForRadioInputOption: '16px',
     heightForRadioInputOptionWhenChecked: '8px',
+    heightForPrimaryActionDropdown: '32px',
     widthForAvatarAsMedium: '48px',
     minWidthForMoneyInputCurrencyDropdown: '72px',
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
@@ -398,6 +400,7 @@ export const themes = {
     marginRightForClearInputIcon: '4px',
     marginLeftForRadioInputLabel: '8px',
     marginRightForPrimaryActionDropdown: '4px',
+    marginTopForPrimaryActionDropdown: 'none',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -621,6 +624,7 @@ export const themes = {
       'var(--border-radius-4) 0 0 var(--border-radius-4)',
     borderRadiusForPrimaryActionDropdownIcon:
       '0 var(--border-radius-4) var(--border-radius-4) 0',
+    borderRadiusForPrimaryActionDropdownMenu: '4px',
     borderWidthForTag: '1px 1px 1px 0',
     borderWidthForContentNotificationIcon: '1px',
     borderLeftWidthForContentNotification: '0px',
@@ -698,6 +702,7 @@ export const themes = {
     heightForSelectInputTag: '32px',
     heightForRadioInputOption: '18px',
     heightForRadioInputOptionWhenChecked: '10px',
+    heightForPrimaryActionDropdown: '40px',
     iconColorForDatetimeInputIcon: 'hsl(0, 0%, 40%)',
     iconColorForDatetimeInputIconWhenHovered: '#e60050',
     widthForAvatarAsMedium: '40px',
@@ -713,6 +718,7 @@ export const themes = {
     marginRightForClearInputIcon: '8px',
     marginLeftForRadioInputLabel: '4px',
     marginRightForPrimaryActionDropdown: '8px',
+    marginTopForPrimaryActionDropdown: '8px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -1153,6 +1159,8 @@ const designTokens = {
     'var(--border-radius-for-primary-action-dropdown, var(--border-radius-6) 0 0 var(--border-radius-6))',
   borderRadiusForPrimaryActionDropdownIcon:
     'var(--border-radius-for-primary-action-dropdown-icon, 0 var(--border-radius-6) var(--border-radius-6) 0)',
+  borderRadiusForPrimaryActionDropdownMenu:
+    'var(--border-radius-for-primary-action-dropdown-menu, 6px)',
   borderWidthForInput: 'var(--border-width-for-input, 1px)',
   borderWidthForInputWhenWarning:
     'var(--border-width-for-input-when-warning, 1px)',
@@ -1263,6 +1271,8 @@ const designTokens = {
   heightForRadioInputOption: 'var(--height-for-radio-input-option, 16px)',
   heightForRadioInputOptionWhenChecked:
     'var(--height-for-radio-input-option-when-checked, 8px)',
+  heightForPrimaryActionDropdown:
+    'var(--height-for-primary-action-dropdown, 32px)',
   widthForAvatarAsMedium: 'var(--width-for-avatar-as-medium, 48px)',
   minWidthForMoneyInputCurrencyDropdown:
     'var(--min-width-for-money-input-currency-dropdown, 72px)',
@@ -1327,6 +1337,8 @@ const designTokens = {
   marginLeftForRadioInputLabel: 'var(--margin-left-for-radio-input-label, 8px)',
   marginRightForPrimaryActionDropdown:
     'var(--margin-right-for-primary-action-dropdown, 4px)',
+  marginTopForPrimaryActionDropdown:
+    'var(--margin-top-for-primary-action-dropdown, none)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
