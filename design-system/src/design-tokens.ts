@@ -249,6 +249,7 @@ export const themes = {
     borderColorForRadioInputWhenReadonly: '#ccc',
     borderColorForRadioInputWhenChecked: '#ccc',
     borderColorForRadioInputWhenFocused: '#00b39e',
+    borderColorForPrimaryActionDropdownMenu: '#ccc',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -452,6 +453,8 @@ export const themes = {
       '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
     shadowForPrimaryActionDropdownWhenActive:
       'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
+    shadowForPrimaryActionDropdownMenu:
+      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     fontSizeM: '1rem',
     bigButtonHeight: '32px',
     smallButtonHeight: '24px',
@@ -577,6 +580,7 @@ export const themes = {
     borderColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
     borderColorForRadioInputWhenChecked: '#00b39e',
     borderColorForRadioInputWhenFocused: 'hsl(0, 0%, 60%)',
+    borderColorForPrimaryActionDropdownMenu: '#fff',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -743,6 +747,7 @@ export const themes = {
     shadowForPrimaryActionDropdown: 'none',
     shadowForPrimaryActionDropdownWhenHovered: 'none',
     shadowForPrimaryActionDropdownWhenActive: 'none',
+    shadowForPrimaryActionDropdownMenu: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
   },
 } as const;
 
@@ -1085,6 +1090,8 @@ const designTokens = {
     'var(--border-color-for-radio-input-when-checked, #ccc)',
   borderColorForRadioInputWhenFocused:
     'var(--border-color-for-radio-input-when-focused, #00b39e)',
+  borderColorForPrimaryActionDropdownMenu:
+    'var(--border-color-for-primary-action-dropdown-menu, #ccc)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -1378,6 +1385,8 @@ const designTokens = {
     'var(--shadow-for-primary-action-dropdown-when-hovered, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
   shadowForPrimaryActionDropdownWhenActive:
     'var(--shadow-for-primary-action-dropdown-when-active, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
+  shadowForPrimaryActionDropdownMenu:
+    'var(--shadow-for-primary-action-dropdown-menu, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   fontSizeM: 'var(--font-size-m, 1rem)',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',

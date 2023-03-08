@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import {
   cloneElement,
   forwardRef,
@@ -62,131 +63,135 @@ type TDropdownHead = {
   children: string;
   isDisabled: boolean;
   chevron: ReactElement;
+  isNewTheme: boolean;
 };
 
-const DropdownHead = (props: TDropdownHead) => {
-  const { isNewTheme } = useTheme();
-
-  return (
-    <div
-      css={css`
-        display: flex;
-        align-items: center;
-      `}
+const DropdownHead = (props: TDropdownHead) => (
+  <div
+    css={css`
+      display: flex;
+      align-items: center;
+    `}
+  >
+    <AccessibleButton
+      label={props.children}
+      onClick={props.onClick}
+      isDisabled={props.isDisabled}
+      css={[
+        ...getButtonStyles(props.isDisabled, props.isNewTheme),
+        css`
+          padding: ${designTokens.paddingForPrimaryActionDropdown};
+          border-radius: ${designTokens.borderRadiusForPrimaryActionDropdown};
+        `,
+      ]}
     >
-      <AccessibleButton
-        label={props.children}
-        onClick={props.onClick}
-        isDisabled={props.isDisabled}
-        css={[
-          ...getButtonStyles(props.isDisabled, isNewTheme),
-          css`
-            padding: ${designTokens.paddingForPrimaryActionDropdown};
-            border-radius: ${designTokens.borderRadiusForPrimaryActionDropdown};
-          `,
-        ]}
+      <span
+        css={css`
+          margin-right: ${designTokens.marginRightForPrimaryActionDropdown};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        `}
       >
-        <span
-          css={css`
-            margin-right: ${designTokens.marginRightForPrimaryActionDropdown};
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          `}
-        >
-          {cloneElement(props.iconLeft, {
-            size: 'big',
-            color: props.isDisabled ? 'neutral60' : 'solid',
-          })}
-        </span>
-        <span
-          css={css`
-            margin: 0 ${designTokens.spacing10} 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          `}
-        >
-          <Text.Detail tone={props.isDisabled ? 'secondary' : undefined}>
-            {props.children}
-          </Text.Detail>
-        </span>
-      </AccessibleButton>
-      {props.chevron}
-    </div>
-  );
-};
+        {cloneElement(props.iconLeft, {
+          size: 'big',
+          color: props.isDisabled ? 'neutral60' : 'solid',
+        })}
+      </span>
+      <span
+        css={css`
+          margin: 0 ${designTokens.spacing10} 0 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        `}
+      >
+        <Text.Detail tone={props.isDisabled ? 'secondary' : undefined}>
+          {props.children}
+        </Text.Detail>
+      </span>
+    </AccessibleButton>
+    {props.chevron}
+  </div>
+);
 
 DropdownHead.displayName = 'DropdownHead';
 
 type TDropdownChevron = {
   onClick: () => void;
   isDisabled: boolean;
+  isNewTheme: boolean;
   isOpen: boolean;
 };
-const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
-  (props, ref) => {
-    const { isNewTheme } = useTheme();
 
-    return (
-      <AccessibleButton
-        ref={ref}
-        label="Open Dropdown"
-        onClick={props.onClick}
-        isDisabled={props.isDisabled}
-        css={[
-          ...getButtonStyles(props.isDisabled, isNewTheme),
-          css`
-            padding: ${designTokens.paddingForPrimaryActionDropdownIcon};
-            border-left: 1px solid ${designTokens.colorNeutral};
-            border-radius: 0 ${designTokens.borderRadius6}
-              ${designTokens.borderRadius6} 0;
-            border: ${isNewTheme && `1px solid ${designTokens.colorNeutral}`};
-            margin-left: ${isNewTheme && '-1px'};
-          `,
-        ]}
+const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
+  (props, ref) => (
+    <AccessibleButton
+      ref={ref}
+      label="Open Dropdown"
+      onClick={props.onClick}
+      isDisabled={props.isDisabled}
+      css={[
+        ...getButtonStyles(props.isDisabled, props.isNewTheme),
+        css`
+          padding: 0 ${designTokens.spacing10};
+          border-left: 1px solid ${designTokens.colorNeutral};
+          border-radius: 0 ${designTokens.borderRadius6}
+            ${designTokens.borderRadius6} 0;
+          border: ${props.isNewTheme &&
+          `1px solid ${designTokens.colorNeutral}`};
+          margin-left: ${props.isNewTheme && '-1px'};
+        `,
+      ]}
+    >
+      {/*
+    We need to apply pointer-events: none on the icons, so that
+    event.target is always set to the button and never to the icons.
+
+    That way we can use the ref to compare event.target to the
+    AccessibleButton's button in the global click handler.
+  */}
+      <div
+        // The margin-top is to center the icon as the caret visually looks too high otherwise
+        css={css`
+          pointer-events: none;
+          margin-top: 3px;
+        `}
       >
-        {/*
-        We need to apply pointer-events: none on the icons, so that
-        event.target is always set to the button and never to the icons.
-        That way we can use the ref to compare event.target to the
-        AccessibleButton's button in the global click handler.
-      */}
-        <div
-          // The margin-top is to center the icon as the caret visually looks too high otherwise
-          css={css`
-            pointer-events: none;
-            margin-top: 3px;
-          `}
-        >
-          {cloneElement(
-            props.isOpen && !props.isDisabled ? (
-              <CaretUpIcon />
-            ) : (
-              <CaretDownIcon />
-            ),
-            {
-              color: props.isDisabled || isNewTheme ? 'neutral60' : 'solid',
-              size: 'small',
-            }
-          )}
-        </div>
-      </AccessibleButton>
-    );
-  }
+        {cloneElement(
+          props.isOpen && !props.isDisabled ? (
+            <CaretUpIcon />
+          ) : (
+            <CaretDownIcon />
+          ),
+          {
+            color: props.isDisabled || props.isNewTheme ? 'neutral60' : 'solid',
+            size: 'small',
+          }
+        )}
+      </div>
+    </AccessibleButton>
+  )
 );
 
 DropdownChevron.displayName = 'DropdownChevron';
 
-const Options = styled.div`
+const Options = styled.div<{ isNewTheme: boolean }>`
   position: absolute;
   z-index: 5;
   width: 100%;
   top: calc(${designTokens.spacing20} + ${designTokens.bigButtonHeight});
-  left: 0;
-  border: 1px solid ${designTokens.colorNeutral};
+  border: 1px solid ${designTokens.borderColorForPrimaryActionDropdownMenu};
   border-radius: ${designTokens.borderRadius6};
-  box-shadow: ${designTokens.shadow1};
+  box-shadow: ${designTokens.shadowForPrimaryActionDropdownMenu};
+
+  > button {
+    padding-left: ${(props) => props.isNewTheme && designTokens.spacing30};
+    &:active {
+      background-color: ${(props) =>
+        props.isNewTheme && designTokens.colorInfo95};
+    }
+  }
 `;
 
 /*
@@ -209,6 +214,7 @@ type TPrimaryActionDropdown = {
 const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
   const ref = useRef<HTMLButtonElement>();
   const [isOpen, toggle] = useToggleState(false);
+  const { isNewTheme } = useTheme();
 
   const handleGlobalClick = useCallback(
     (event) => {
@@ -267,12 +273,14 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
       <DropdownHead
         iconLeft={primaryOption.props.iconLeft}
         isDisabled={primaryOption.props.isDisabled}
+        isNewTheme={isNewTheme}
         onClick={handleClickOnHead}
         chevron={
           <DropdownChevron
             ref={ref as ForwardedRef<HTMLButtonElement>}
             onClick={handleClickOnChevron}
             isDisabled={primaryOption.props.isDisabled}
+            isNewTheme={isNewTheme}
             isOpen={isOpen}
           />
         }
@@ -280,7 +288,7 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         {primaryOption.props.children}
       </DropdownHead>
       {isOpen && !primaryOption.props.isDisabled && (
-        <Options>{childrenAsArray}</Options>
+        <Options isNewTheme={isNewTheme}>{childrenAsArray}</Options>
       )}
     </div>
   );

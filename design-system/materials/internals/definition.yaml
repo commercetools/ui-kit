@@ -409,6 +409,8 @@ componentGroups:
     description: 'Primary action dropdown elements'
   primary-action-dropdown-icon:
     description: 'Primary action dropdown icon elements'
+  primary-action-dropdown-menu:
+    description: 'Primary action dropdown menu elements'
 
 decisionGroupsByTheme:
   default:
@@ -660,6 +662,8 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-radio-input-when-focused:
           choice: color-primary
+        border-color-for-primary-action-dropdown-menu:
+          choice: color-neutral
 
     borderRadiuses:
       label: Border Radius
@@ -1142,6 +1146,8 @@ decisionGroupsByTheme:
           choice: shadow-8
         shadow-for-primary-action-dropdown-when-active:
           choice: shadow-9
+        shadow-for-primary-action-dropdown-menu:
+          choice: shadow-1
 
   test:
     alignItems:
@@ -1352,6 +1358,8 @@ decisionGroupsByTheme:
           choice: color-primary
         border-color-for-radio-input-when-focused:
           choice: color-neutral-60
+        border-color-for-primary-action-dropdown-menu:
+          choice: color-surface
 
     borderRadiuses:
       label: Border radiuses
@@ -1750,6 +1758,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         shadow-for-primary-action-dropdown-when-active:
           choice: shadow-0
+        shadow-for-primary-action-dropdown-menu:
+          choice: '0 2px 5px 0px rgba(0, 0, 0, 0.15)'
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.
