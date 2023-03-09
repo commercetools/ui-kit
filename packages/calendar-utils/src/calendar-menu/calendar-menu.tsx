@@ -24,6 +24,7 @@ export default class CalendarMenu extends Component<TCalendarMenu> {
             color: ${designTokens.colorSolid};
             font-family: inherit;
             border: 1px solid ${designTokens.borderColorForInputWhenFocused};
+            box-shadow: ${designTokens.boxShadowForCalendarMenuWhenFocused};
             border-radius: ${designTokens.borderRadiusForInput};
             margin-top: ${designTokens.spacing10};
             font-size: ${designTokens.fontSizeDefault};

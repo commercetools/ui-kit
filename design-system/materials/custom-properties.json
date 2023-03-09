@@ -275,6 +275,7 @@
   "--box-shadow-for-view-switcher": "0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)",
   "--box-shadow-for-view-switcher-when-selected": "inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)",
   "--box-shadow-for-select-input-when-focused": "inset 0 0 0 2px",
+  "--box-shadow-for-calendar-menu-when-focused": "none",
   "--font-color-for-text": "#1a1a1a",
   "--font-color-for-input": "#1a1a1a",
   "--font-color-for-input-when-disabled": "hsl(0, 0%, 60%)",

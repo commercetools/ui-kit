@@ -303,6 +303,7 @@ export const themes = {
     boxShadowForViewSwitcherWhenSelected:
       'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 2px',
+    boxShadowForCalendarMenuWhenFocused: 'none',
     fontColorForText: '#1a1a1a',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
@@ -664,6 +665,7 @@ export const themes = {
     boxShadowForViewSwitcher: 'none',
     boxShadowForViewSwitcherWhenSelected: 'none',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 1px',
+    boxShadowForCalendarMenuWhenFocused: 'inset 0 0 0 1px var(--color-primary)',
     fontColorForTableHeader: 'hsl(0, 0%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
     fontColorForTagRemoveIcon: 'hsl(0, 0%, 40%)',
@@ -1241,6 +1243,8 @@ const designTokens = {
     'var(--box-shadow-for-view-switcher-when-selected, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
   boxShadowForSelectInputWhenFocused:
     'var(--box-shadow-for-select-input-when-focused, inset 0 0 0 2px)',
+  boxShadowForCalendarMenuWhenFocused:
+    'var(--box-shadow-for-calendar-menu-when-focused, none)',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:

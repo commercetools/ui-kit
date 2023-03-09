@@ -442,6 +442,8 @@ componentGroups:
     description: 'Rich text tool bar element'
   rich-text-button:
     description: 'Rich text button element'
+  calendar-menu:
+    description: 'Calendar menu element'
 
 decisionGroupsByTheme:
   default:
@@ -796,6 +798,8 @@ decisionGroupsByTheme:
           choice: shadow-9
         box-shadow-for-select-input-when-focused:
           choice: 'inset 0 0 0 2px'
+        box-shadow-for-calendar-menu-when-focused:
+          choice: 'none'
 
     fontColors:
       label: Font Colors
@@ -1541,6 +1545,8 @@ decisionGroupsByTheme:
           choice: shadow-0
         box-shadow-for-select-input-when-focused:
           choice: 'inset 0 0 0 1px'
+        box-shadow-for-calendar-menu-when-focused:
+          choice: 'inset 0 0 0 1px var(--color-primary)'
 
     fontColors:
       label: Font Colors
