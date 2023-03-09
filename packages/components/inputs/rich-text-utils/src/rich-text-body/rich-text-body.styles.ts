@@ -57,11 +57,6 @@ const getTextColor = (props: TRichTextBodyStylesProps) => {
       color: ${designTokens.fontColorForInputWhenWarning};
     `;
   }
-  if(props.isDisabled || props.isReadOnly && props.isNewTheme) {
-    return css`
-      color: ${designTokens.fontColorForInputWhenDisabled};
-    `;
-  }
   return css`
     color: ${designTokens.fontColorForInput};
   `;
