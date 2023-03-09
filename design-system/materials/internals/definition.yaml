@@ -408,6 +408,12 @@ componentGroups:
     description: 'Selectable select input dropdown elements'
   selectable-search-input-dropdown:
     description: 'Selectable search input dropdown elements'
+  primary-action-dropdown:
+    description: 'Primary action dropdown elements'
+  primary-action-dropdown-icon:
+    description: 'Primary action dropdown icon elements'
+  primary-action-dropdown-menu:
+    description: 'Primary action dropdown menu elements'
   toggle-input-track:
     description: 'Toggle input track pseudo-elements'
   toggle-input-thumb:
@@ -533,6 +539,10 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-checkbox-input-icon-when-hovered:
           choice: color-surface
+        background-color-for-primary-action-dropdown-when-active:
+          choice: color-neutral-95
+        background-color-for-primary-action-dropdown-when-disabled:
+          choice: color-accent-98
         background-color-for-toggle-input-track:
           choice: color-neutral-60
         background-color-for-toggle-input-track-when-disabled:
@@ -673,6 +683,8 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-radio-input-when-focused:
           choice: color-primary
+        border-color-for-primary-action-dropdown-menu:
+          choice: color-neutral
 
     borderRadiuses:
       label: Border Radius
@@ -706,6 +718,12 @@ decisionGroupsByTheme:
           choice: '0 var(--border-radius-6) var(--border-radius-6) 0'
         border-radius-for-content-notification-icon:
           choice: 'var(--border-radius-6) 0 0 var(--border-radius-6)'
+        border-radius-for-primary-action-dropdown:
+          choice: 'var(--border-radius-6) 0 0 var(--border-radius-6)'
+        border-radius-for-primary-action-dropdown-icon:
+          choice: '0 var(--border-radius-6) var(--border-radius-6) 0'
+        border-radius-for-primary-action-dropdown-menu:
+          choice: border-radius-6
 
     borderWidths:
       label: Border width
@@ -729,6 +747,8 @@ decisionGroupsByTheme:
           choice: border-width-1
         border-width-for-checkbox-input-icon:
           choice: border-width-1
+        border-for-primary-action-dropdown-icon:
+          choice: '0px 0px 0px 1px'
 
     boxShadows:
       label: Box shadows
@@ -865,6 +885,8 @@ decisionGroupsByTheme:
           choice: '16px'
         height-for-radio-input-option-when-checked:
           choice: '8px'
+        height-for-primary-action-dropdown:
+          choice: '32px'
 
     widths:
       label: Width
@@ -1033,6 +1055,10 @@ decisionGroupsByTheme:
           choice: spacing-10
         margin-left-for-radio-input-label:
           choice: spacing-20
+        margin-right-for-primary-action-dropdown:
+          choice: spacing-10
+        margin-top-for-primary-action-dropdown:
+          choice: 'none'
 
     paddings:
       label: Paddings
@@ -1106,6 +1132,10 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-20)'
         padding-for-selectable-search-input-dropdown:
           choice: '0 var(--spacing-20)'
+        padding-for-primary-action-dropdown:
+          choice: '0 var(--spacing-20)'
+        padding-for-primary-action-dropdown-icon:
+          choice: '0 var(--spacing-10)'
 
     shadows:
       label: Shadows
@@ -1139,6 +1169,14 @@ decisionGroupsByTheme:
           choice: shadow-15
         shadow-for-select-input-menu:
           choice: shadow-7
+        shadow-for-primary-action-dropdown:
+          choice: shadow-7
+        shadow-for-primary-action-dropdown-when-hovered:
+          choice: shadow-8
+        shadow-for-primary-action-dropdown-when-active:
+          choice: shadow-9
+        shadow-for-primary-action-dropdown-menu:
+          choice: shadow-1
         shadow-for-toggle-input-thumb:
           choice: shadow-7
 
@@ -1241,6 +1279,10 @@ decisionGroupsByTheme:
           choice: color-error
         background-color-for-checkbox-input-icon-when-hovered:
           choice: color-neutral-90
+        background-color-for-primary-action-dropdown-when-active:
+          choice: color-neutral-90
+        background-color-for-primary-action-dropdown-when-disabled:
+          choice: color-neutral-95
         background-color-for-toggle-input-track:
           choice: color-neutral
         background-color-for-toggle-input-track-when-disabled:
@@ -1363,6 +1405,8 @@ decisionGroupsByTheme:
           choice: color-primary
         border-color-for-radio-input-when-focused:
           choice: color-neutral-60
+        border-color-for-primary-action-dropdown-menu:
+          choice: color-surface
 
     borderRadiuses:
       label: Border radiuses
@@ -1392,6 +1436,12 @@ decisionGroupsByTheme:
           choice: '0 var(--border-radius-4) var(--border-radius-4) 0'
         border-radius-for-content-notification-icon:
           choice: 'var(--border-radius-4) 0 0 var(--border-radius-4)'
+        border-radius-for-primary-action-dropdown:
+          choice: 'var(--border-radius-4) 0 0 var(--border-radius-4)'
+        border-radius-for-primary-action-dropdown-icon:
+          choice: '0 var(--border-radius-4) var(--border-radius-4) 0'
+        border-radius-for-primary-action-dropdown-menu:
+          choice: border-radius-4
 
     borderWidths:
       label: Border width
@@ -1407,6 +1457,8 @@ decisionGroupsByTheme:
           choice: border-width-2
         border-width-for-checkbox-input-icon:
           choice: border-width-2
+        border-for-primary-action-dropdown-icon:
+          choice: '1px 1px 1px 0px'
 
     boxShadows:
       label: Box shadows
@@ -1595,6 +1647,8 @@ decisionGroupsByTheme:
           choice: '18px'
         height-for-radio-input-option-when-checked:
           choice: '10px'
+        height-for-primary-action-dropdown:
+          choice: '40px'
 
     iconColors:
       label: Icon colors
@@ -1643,6 +1697,10 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-left-for-radio-input-label:
           choice: spacing-10
+        margin-right-for-primary-action-dropdown:
+          choice: spacing-20
+        margin-top-for-primary-action-dropdown:
+          choice: spacing-20
 
     paddings:
       label: Paddings
@@ -1716,6 +1774,10 @@ decisionGroupsByTheme:
           choice: '0 12px'
         padding-for-selectable-search-input-dropdown:
           choice: '0 12px'
+        padding-for-primary-action-dropdown:
+          choice: '0 var(--spacing-30)'
+        padding-for-primary-action-dropdown-icon:
+          choice: '0 var(--spacing-20)'
 
     shadows:
       label: Shadows
@@ -1744,6 +1806,14 @@ decisionGroupsByTheme:
         shadow-for-tooltip:
           choice: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)'
         shadow-for-select-input-menu:
+          choice: '0 2px 5px 0px rgba(0, 0, 0, 0.15)'
+        shadow-for-primary-action-dropdown:
+          choice: shadow-0
+        shadow-for-primary-action-dropdown-when-hovered:
+          choice: shadow-0
+        shadow-for-primary-action-dropdown-when-active:
+          choice: shadow-0
+        shadow-for-primary-action-dropdown-menu:
           choice: '0 2px 5px 0px rgba(0, 0, 0, 0.15)'
         shadow-for-toggle-input-thumb:
           choice: '0px 1px 5px rgba(0, 0, 0, 0.2)'

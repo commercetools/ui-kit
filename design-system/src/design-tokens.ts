@@ -194,6 +194,9 @@ export const themes = {
     backgroundColorForCheckboxInputIconWhenReadonly: '#fff',
     backgroundColorForCheckboxInputIconWhenError: '#fff',
     backgroundColorForCheckboxInputIconWhenHovered: '#fff',
+    backgroundColorForPrimaryActionDropdownWhenActive: 'hsl(0, 0%, 95%)',
+    backgroundColorForPrimaryActionDropdownWhenDisabled:
+      'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForToggleInputTrack: 'hsl(0, 0%, 60%)',
     backgroundColorForToggleInputTrackWhenDisabled: '#ccc',
     backgroundColorForToggleInputThumbWhenDisabled:
@@ -257,6 +260,7 @@ export const themes = {
     borderColorForRadioInputWhenReadonly: '#ccc',
     borderColorForRadioInputWhenChecked: '#ccc',
     borderColorForRadioInputWhenFocused: '#00b39e',
+    borderColorForPrimaryActionDropdownMenu: '#ccc',
     borderRadiusForButtonAsBig: '6px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
@@ -272,6 +276,11 @@ export const themes = {
       '0 var(--border-radius-6) var(--border-radius-6) 0',
     borderRadiusForContentNotificationIcon:
       'var(--border-radius-6) 0 0 var(--border-radius-6)',
+    borderRadiusForPrimaryActionDropdown:
+      'var(--border-radius-6) 0 0 var(--border-radius-6)',
+    borderRadiusForPrimaryActionDropdownIcon:
+      '0 var(--border-radius-6) var(--border-radius-6) 0',
+    borderRadiusForPrimaryActionDropdownMenu: '6px',
     borderWidthForInput: '1px',
     borderWidthForInputWhenWarning: '1px',
     borderWidthForInputWhenError: '1px',
@@ -281,6 +290,7 @@ export const themes = {
     borderWidthForContentNotificationIcon: '0px',
     borderLeftWidthForContentNotification: '1px',
     borderWidthForCheckboxInputIcon: '1px',
+    borderForPrimaryActionDropdownIcon: '0px 0px 0px 1px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 2px',
     boxShadowForViewSwitcher:
       '0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)',
@@ -339,6 +349,7 @@ export const themes = {
     heightForSelectInputTag: '26px',
     heightForRadioInputOption: '16px',
     heightForRadioInputOptionWhenChecked: '8px',
+    heightForPrimaryActionDropdown: '32px',
     widthForAvatarAsMedium: '48px',
     minWidthForMoneyInputCurrencyDropdown: '72px',
     placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
@@ -390,6 +401,8 @@ export const themes = {
     marginRightForSearchInputIcon: '8px',
     marginRightForClearInputIcon: '4px',
     marginLeftForRadioInputLabel: '8px',
+    marginRightForPrimaryActionDropdown: '4px',
+    marginTopForPrimaryActionDropdown: 'none',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -426,6 +439,8 @@ export const themes = {
     paddingForSelectInputMenu: 'inherit',
     paddingForMoneyInputCurrencyDropdown: '0 var(--spacing-20)',
     paddingForSelectableSearchInputDropdown: '0 var(--spacing-20)',
+    paddingForPrimaryActionDropdown: '0 var(--spacing-20)',
+    paddingForPrimaryActionDropdownIcon: '0 var(--spacing-10)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -447,6 +462,14 @@ export const themes = {
       '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
     shadowForSelectInputMenu:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+    shadowForPrimaryActionDropdown:
+      '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+    shadowForPrimaryActionDropdownWhenHovered:
+      '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
+    shadowForPrimaryActionDropdownWhenActive:
+      'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
+    shadowForPrimaryActionDropdownMenu:
+      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     shadowForToggleInputThumb:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     fontSizeM: '1rem',
@@ -515,6 +538,8 @@ export const themes = {
     backgroundColorForCheckboxInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
     backgroundColorForCheckboxInputIconWhenError: '#e60050',
     backgroundColorForCheckboxInputIconWhenHovered: 'hsl(0, 0%, 90%)',
+    backgroundColorForPrimaryActionDropdownWhenActive: 'hsl(0, 0%, 90%)',
+    backgroundColorForPrimaryActionDropdownWhenDisabled: 'hsl(0, 0%, 95%)',
     backgroundColorForToggleInputTrack: '#ccc',
     backgroundColorForToggleInputTrackWhenDisabled: 'hsl(0, 0%, 90%)',
     backgroundColorForToggleInputThumbWhenDisabled: 'hsl(0, 0%, 60%)',
@@ -581,6 +606,7 @@ export const themes = {
     borderColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
     borderColorForRadioInputWhenChecked: '#00b39e',
     borderColorForRadioInputWhenFocused: 'hsl(0, 0%, 60%)',
+    borderColorForPrimaryActionDropdownMenu: '#fff',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsSmall: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -595,11 +621,17 @@ export const themes = {
       '0 var(--border-radius-4) var(--border-radius-4) 0',
     borderRadiusForContentNotificationIcon:
       'var(--border-radius-4) 0 0 var(--border-radius-4)',
+    borderRadiusForPrimaryActionDropdown:
+      'var(--border-radius-4) 0 0 var(--border-radius-4)',
+    borderRadiusForPrimaryActionDropdownIcon:
+      '0 var(--border-radius-4) var(--border-radius-4) 0',
+    borderRadiusForPrimaryActionDropdownMenu: '4px',
     borderWidthForTag: '1px 1px 1px 0',
     borderWidthForContentNotificationIcon: '1px',
     borderLeftWidthForContentNotification: '0px',
     borderWidthForSelectInput: '2px',
     borderWidthForCheckboxInputIcon: '2px',
+    borderForPrimaryActionDropdownIcon: '1px 1px 1px 0px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
     boxShadowForViewSwitcher: 'none',
     boxShadowForViewSwitcherWhenSelected: 'none',
@@ -672,6 +704,7 @@ export const themes = {
     heightForSelectInputTag: '32px',
     heightForRadioInputOption: '18px',
     heightForRadioInputOptionWhenChecked: '10px',
+    heightForPrimaryActionDropdown: '40px',
     iconColorForDatetimeInputIcon: 'hsl(0, 0%, 40%)',
     iconColorForDatetimeInputIconWhenHovered: '#e60050',
     widthForAvatarAsMedium: '40px',
@@ -686,6 +719,8 @@ export const themes = {
     marginRightForSearchInputIcon: '12px',
     marginRightForClearInputIcon: '8px',
     marginLeftForRadioInputLabel: '4px',
+    marginRightForPrimaryActionDropdown: '8px',
+    marginTopForPrimaryActionDropdown: '8px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -725,6 +760,8 @@ export const themes = {
     paddingForSelectInputMenu: 'var(--spacing-10) 0',
     paddingForMoneyInputCurrencyDropdown: '0 12px',
     paddingForSelectableSearchInputDropdown: '0 12px',
+    paddingForPrimaryActionDropdown: '0 var(--spacing-30)',
+    paddingForPrimaryActionDropdownIcon: '0 var(--spacing-20)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -737,6 +774,10 @@ export const themes = {
     shadowForInputWhenWarning: 'inset 0 0 0 1px var(--color-warning)',
     shadowForTooltip: '0px 1px 2px 0px rgba(0, 0, 0, 0.25)',
     shadowForSelectInputMenu: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
+    shadowForPrimaryActionDropdown: 'none',
+    shadowForPrimaryActionDropdownWhenHovered: 'none',
+    shadowForPrimaryActionDropdownWhenActive: 'none',
+    shadowForPrimaryActionDropdownMenu: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
     shadowForToggleInputThumb: '0px 1px 5px rgba(0, 0, 0, 0.2)',
   },
 } as const;
@@ -984,6 +1025,10 @@ const designTokens = {
     'var(--background-color-for-checkbox-input-icon-when-error, #fff)',
   backgroundColorForCheckboxInputIconWhenHovered:
     'var(--background-color-for-checkbox-input-icon-when-hovered, #fff)',
+  backgroundColorForPrimaryActionDropdownWhenActive:
+    'var(--background-color-for-primary-action-dropdown-when-active, hsl(0, 0%, 95%))',
+  backgroundColorForPrimaryActionDropdownWhenDisabled:
+    'var(--background-color-for-primary-action-dropdown-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForToggleInputTrack:
     'var(--background-color-for-toggle-input-track, hsl(0, 0%, 60%))',
   backgroundColorForToggleInputTrackWhenDisabled:
@@ -1093,6 +1138,8 @@ const designTokens = {
     'var(--border-color-for-radio-input-when-checked, #ccc)',
   borderColorForRadioInputWhenFocused:
     'var(--border-color-for-radio-input-when-focused, #00b39e)',
+  borderColorForPrimaryActionDropdownMenu:
+    'var(--border-color-for-primary-action-dropdown-menu, #ccc)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
   borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
   borderRadiusForButtonAsIconAsBig:
@@ -1112,6 +1159,12 @@ const designTokens = {
     'var(--border-radius-for-content-notification, 0 var(--border-radius-6) var(--border-radius-6) 0)',
   borderRadiusForContentNotificationIcon:
     'var(--border-radius-for-content-notification-icon, var(--border-radius-6) 0 0 var(--border-radius-6))',
+  borderRadiusForPrimaryActionDropdown:
+    'var(--border-radius-for-primary-action-dropdown, var(--border-radius-6) 0 0 var(--border-radius-6))',
+  borderRadiusForPrimaryActionDropdownIcon:
+    'var(--border-radius-for-primary-action-dropdown-icon, 0 var(--border-radius-6) var(--border-radius-6) 0)',
+  borderRadiusForPrimaryActionDropdownMenu:
+    'var(--border-radius-for-primary-action-dropdown-menu, 6px)',
   borderWidthForInput: 'var(--border-width-for-input, 1px)',
   borderWidthForInputWhenWarning:
     'var(--border-width-for-input-when-warning, 1px)',
@@ -1126,6 +1179,8 @@ const designTokens = {
     'var(--border-left-width-for-content-notification, 1px)',
   borderWidthForCheckboxInputIcon:
     'var(--border-width-for-checkbox-input-icon, 1px)',
+  borderForPrimaryActionDropdownIcon:
+    'var(--border-for-primary-action-dropdown-icon, 0px 0px 0px 1px)',
   boxShadowForDatetimeInputWhenHovered:
     'var(--box-shadow-for-datetime-input-when-hovered, inset 0 0 0 2px)',
   boxShadowForViewSwitcher:
@@ -1222,6 +1277,8 @@ const designTokens = {
   heightForRadioInputOption: 'var(--height-for-radio-input-option, 16px)',
   heightForRadioInputOptionWhenChecked:
     'var(--height-for-radio-input-option-when-checked, 8px)',
+  heightForPrimaryActionDropdown:
+    'var(--height-for-primary-action-dropdown, 32px)',
   widthForAvatarAsMedium: 'var(--width-for-avatar-as-medium, 48px)',
   minWidthForMoneyInputCurrencyDropdown:
     'var(--min-width-for-money-input-currency-dropdown, 72px)',
@@ -1284,6 +1341,10 @@ const designTokens = {
     'var(--margin-right-for-search-input-icon, 8px)',
   marginRightForClearInputIcon: 'var(--margin-right-for-clear-input-icon, 4px)',
   marginLeftForRadioInputLabel: 'var(--margin-left-for-radio-input-label, 8px)',
+  marginRightForPrimaryActionDropdown:
+    'var(--margin-right-for-primary-action-dropdown, 4px)',
+  marginTopForPrimaryActionDropdown:
+    'var(--margin-top-for-primary-action-dropdown, none)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
@@ -1347,6 +1408,10 @@ const designTokens = {
     'var(--padding-for-money-input-currency-dropdown, 0 var(--spacing-20))',
   paddingForSelectableSearchInputDropdown:
     'var(--padding-for-selectable-search-input-dropdown, 0 var(--spacing-20))',
+  paddingForPrimaryActionDropdown:
+    'var(--padding-for-primary-action-dropdown, 0 var(--spacing-20))',
+  paddingForPrimaryActionDropdownIcon:
+    'var(--padding-for-primary-action-dropdown-icon, 0 var(--spacing-10))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:
@@ -1370,6 +1435,14 @@ const designTokens = {
     'var(--shadow-for-tooltip, 0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12))',
   shadowForSelectInputMenu:
     'var(--shadow-for-select-input-menu, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+  shadowForPrimaryActionDropdown:
+    'var(--shadow-for-primary-action-dropdown, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+  shadowForPrimaryActionDropdownWhenHovered:
+    'var(--shadow-for-primary-action-dropdown-when-hovered, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
+  shadowForPrimaryActionDropdownWhenActive:
+    'var(--shadow-for-primary-action-dropdown-when-active, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
+  shadowForPrimaryActionDropdownMenu:
+    'var(--shadow-for-primary-action-dropdown-menu, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   shadowForToggleInputThumb:
     'var(--shadow-for-toggle-input-thumb, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   fontSizeM: 'var(--font-size-m, 1rem)',
