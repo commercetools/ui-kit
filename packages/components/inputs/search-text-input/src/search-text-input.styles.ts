@@ -42,9 +42,11 @@ const getSearchTextInputStyles = (props: TInputProps) => [
   getInputStyles(props),
   css`
     border: none;
+    box-shadow: none;
     background: none;
     &,
-    &:focus {
+    &:focus,
+    &:focus:not(:read-only) {
       box-shadow: none;
     }
     &:focus,
@@ -97,6 +99,7 @@ const getSearchIconButtonStyles = (props: TInputProps) => [
   css`
     margin-right: ${designTokens.marginRightForSearchInputIcon};
     fill: ${getIconColor(props, designTokens.fontColorForSearchInputIcon)};
+    cursor: ${props.isReadOnly ? 'default' : 'pointer'};
     &:hover {
       fill: ${getIconColor(
         props,
@@ -106,14 +109,14 @@ const getSearchIconButtonStyles = (props: TInputProps) => [
   `,
 ];
 
-const getBackgroundWhenHovered = (props: TInputProps) => {
+const getTextInputContainerBackgroundColor = (props: TInputProps) => {
   if (props.isDisabled) {
     return designTokens.backgroundColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.backgroundColorForInput;
+    return designTokens.backgroundColorForInputWhenReadonly;
   }
-  return designTokens.backgroundColorForInputWhenHovered;
+  return designTokens.backgroundColorForInput;
 };
 
 const getSearchTextInputContainerStyles = (props: TInputProps) => [
@@ -123,6 +126,7 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
     background-color: ${props.isDisabled
       ? designTokens.backgroundColorForInputWhenDisabled
       : designTokens.backgroundColorForInput};
+    background-color: ${getTextInputContainerBackgroundColor(props)};
     border: 1px solid ${getInputContainerBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-shadow: ${getInputBoxShadow(props)};
@@ -133,22 +137,27 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
         props,
         designTokens.borderColorForInputWhenHovered
       )};
-      background-color: ${getBackgroundWhenHovered(props)};
     }
-
-    &:focus-within {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-      box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
-        ${designTokens.borderColorForInputWhenFocused};
-      &:hover {
-        background-color: ${designTokens.colorSurface};
-      }
+    &:hover:not(:read-only):not(:disabled) {
+      background-color: ${designTokens.backgroundColorForInputWhenHovered};
     }
 
     &:focus {
       border-color: ${designTokens.borderColorForInputWhenFocused};
     }
   `,
+  !props.isDisabled &&
+    !props.isReadOnly &&
+    css`
+      &:focus-within {
+        border-color: ${designTokens.borderColorForInputWhenFocused};
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+          ${designTokens.borderColorForInputWhenFocused};
+        &:hover {
+          background-color: ${designTokens.colorSurface};
+        }
+      }
+    `,
 ];
 
 export {

@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import {
   cloneElement,
   forwardRef,
@@ -14,13 +15,13 @@ import {
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { warning } from '@commercetools-uikit/utils';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
 import { useToggleState } from '@commercetools-uikit/hooks';
 
-const getButtonStyles = (isDisabled: boolean) => {
+const getButtonStyles = (isDisabled: boolean, isNewTheme: boolean) => {
   const baseButtonStyles = css`
     display: flex;
     align-items: center;
@@ -31,7 +32,8 @@ const getButtonStyles = (isDisabled: boolean) => {
       baseButtonStyles,
       css`
         box-shadow: none;
-        background-color: ${designTokens.colorAccent98};
+        background-color: ${designTokens.backgroundColorForPrimaryActionDropdownWhenDisabled};
+        border: ${isNewTheme && `1px solid ${designTokens.colorNeutral}`};
       `,
     ];
   }
@@ -39,13 +41,15 @@ const getButtonStyles = (isDisabled: boolean) => {
     baseButtonStyles,
     css`
       background-color: ${designTokens.colorSurface};
-      box-shadow: ${designTokens.shadow7};
+      box-shadow: ${designTokens.shadowForPrimaryActionDropdown};
+      border: ${isNewTheme && `1px solid ${designTokens.colorNeutral}`};
       &:hover {
-        box-shadow: ${designTokens.shadow8};
+        box-shadow: ${designTokens.shadowForPrimaryActionDropdownWhenHovered};
+        background-color: ${isNewTheme && designTokens.colorNeutral95};
       }
       &:active {
-        box-shadow: ${designTokens.shadow9};
-        background-color: ${designTokens.colorNeutral95};
+        box-shadow: ${designTokens.shadowForPrimaryActionDropdownWhenActive};
+        background-color: ${designTokens.backgroundColorForPrimaryActionDropdownWhenActive};
       }
     `,
   ];
@@ -59,7 +63,9 @@ type TDropdownHead = {
   children: string;
   isDisabled: boolean;
   chevron: ReactElement;
+  isNewTheme: boolean;
 };
+
 const DropdownHead = (props: TDropdownHead) => (
   <div
     css={css`
@@ -72,17 +78,16 @@ const DropdownHead = (props: TDropdownHead) => (
       onClick={props.onClick}
       isDisabled={props.isDisabled}
       css={[
-        ...getButtonStyles(props.isDisabled),
+        ...getButtonStyles(props.isDisabled, props.isNewTheme),
         css`
-          padding: 0 ${designTokens.spacing20};
-          border-radius: ${designTokens.borderRadius6} 0 0
-            ${designTokens.borderRadius6};
+          padding: ${designTokens.paddingForPrimaryActionDropdown};
+          border-radius: ${designTokens.borderRadiusForPrimaryActionDropdown};
         `,
       ]}
     >
       <span
         css={css`
-          margin: 0 ${designTokens.spacing10} 0 0;
+          margin-right: ${designTokens.marginRightForPrimaryActionDropdown};
           display: flex;
           align-items: center;
           justify-content: center;
@@ -115,8 +120,10 @@ DropdownHead.displayName = 'DropdownHead';
 type TDropdownChevron = {
   onClick: () => void;
   isDisabled: boolean;
+  isNewTheme: boolean;
   isOpen: boolean;
 };
+
 const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
   (props, ref) => (
     <AccessibleButton
@@ -125,12 +132,13 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
       onClick={props.onClick}
       isDisabled={props.isDisabled}
       css={[
-        ...getButtonStyles(props.isDisabled),
+        ...getButtonStyles(props.isDisabled, props.isNewTheme),
         css`
-          padding: 0 ${designTokens.spacing10};
-          border-left: 1px solid ${designTokens.colorNeutral};
-          border-radius: 0 ${designTokens.borderRadius6}
-            ${designTokens.borderRadius6} 0;
+          padding: ${designTokens.paddingForPrimaryActionDropdownIcon};
+          border-radius: ${designTokens.borderRadiusForPrimaryActionDropdownIcon};
+          border-color: ${designTokens.colorNeutral};
+          border-width: ${designTokens.borderForPrimaryActionDropdownIcon};
+          border-style: solid;
         `,
       ]}
     >
@@ -155,7 +163,7 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
             <CaretDownIcon />
           ),
           {
-            color: props.isDisabled ? 'neutral60' : 'solid',
+            color: props.isDisabled || props.isNewTheme ? 'neutral60' : 'solid',
             size: 'small',
           }
         )}
@@ -166,15 +174,24 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
 
 DropdownChevron.displayName = 'DropdownChevron';
 
-const Options = styled.div`
+const Options = styled.div<{ isNewTheme: boolean }>`
   position: absolute;
   z-index: 5;
   width: 100%;
   top: calc(${designTokens.spacing20} + ${designTokens.bigButtonHeight});
-  left: 0;
-  border: 1px solid ${designTokens.colorNeutral};
-  border-radius: ${designTokens.borderRadius6};
-  box-shadow: ${designTokens.shadow1};
+  border: 1px solid ${designTokens.borderColorForPrimaryActionDropdownMenu};
+  border-radius: ${designTokens.borderRadiusForPrimaryActionDropdownMenu};
+  box-shadow: ${designTokens.shadowForPrimaryActionDropdownMenu};
+  margin-top: ${designTokens.marginTopForPrimaryActionDropdown};
+
+  > button {
+    padding-left: ${(props) => props.isNewTheme && designTokens.spacing30};
+    white-space: normal;
+    &:active {
+      background-color: ${(props) =>
+        props.isNewTheme && designTokens.colorInfo95};
+    }
+  }
 `;
 
 /*
@@ -197,6 +214,7 @@ export type TPrimaryActionDropdown = {
 const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
   const ref = useRef<HTMLButtonElement>();
   const [isOpen, toggle] = useToggleState(false);
+  const { isNewTheme } = useTheme();
 
   const handleGlobalClick = useCallback(
     (event) => {
@@ -250,17 +268,23 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         position: relative;
         display: inline-flex;
         align-items: column;
+
+        > :first-of-type > button {
+          height: ${designTokens.heightForPrimaryActionDropdown};
+        }
       `}
     >
       <DropdownHead
         iconLeft={primaryOption.props.iconLeft}
         isDisabled={primaryOption.props.isDisabled}
+        isNewTheme={isNewTheme}
         onClick={handleClickOnHead}
         chevron={
           <DropdownChevron
             ref={ref as ForwardedRef<HTMLButtonElement>}
             onClick={handleClickOnChevron}
             isDisabled={primaryOption.props.isDisabled}
+            isNewTheme={isNewTheme}
             isOpen={isOpen}
           />
         }
@@ -268,7 +292,7 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         {primaryOption.props.children}
       </DropdownHead>
       {isOpen && !primaryOption.props.isDisabled && (
-        <Options>{childrenAsArray}</Options>
+        <Options isNewTheme={isNewTheme}>{childrenAsArray}</Options>
       )}
     </div>
   );

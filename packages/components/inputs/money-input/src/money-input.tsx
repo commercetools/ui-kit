@@ -47,6 +47,7 @@ type TLabel = {
   id: string;
   children?: ReactNode;
   isDisabled?: boolean;
+  isReadOnly?: boolean;
 };
 
 const Portal = (props: TLabel) => {
@@ -58,7 +59,7 @@ const Portal = (props: TLabel) => {
 };
 
 const CurrencyLabel = (props: TLabel) => (
-  <label htmlFor={props.id} css={getCurrencyLabelStyles()}>
+  <label htmlFor={props.id} css={getCurrencyLabelStyles(props)}>
     {props.children}
   </label>
 );
@@ -116,6 +117,8 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
     hasError,
     menuPortalZIndex,
     isNewTheme,
+    isReadOnly,
+    isDisabled,
   });
   return {
     ...selectStyles,
@@ -130,6 +133,8 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
       borderColor: (() => {
         if (isDisabled)
           return `${designTokens.borderColorForInputWhenDisabled} !important`;
+        if (isReadOnly)
+          return `${designTokens.borderColorForInputWhenReadonly} !important`;
         if (hasError) return designTokens.borderColorForInputWhenError;
         if (hasWarning) return designTokens.borderColorForInputWhenWarning;
         if (amountHasFocus && !isNewTheme) {
@@ -138,8 +143,6 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
         if (currencyHasFocus) {
           return designTokens.borderColorForInputWhenFocused;
         }
-        if (isReadOnly)
-          return `${designTokens.borderColorForInputWhenReadonly} !important`;
         return designTokens.borderColorForInput;
       })(),
       cursor: (() => {
@@ -148,10 +151,13 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
         return 'pointer';
       })(),
       backgroundColor: (() => {
-        if (isReadOnly) return designTokens.backgroundColorForInput;
+        if (isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
         return base.backgroundColor;
       })(),
       '&:hover': {
+        borderColor: designTokens.borderColorForInput,
+      },
+      '&:hover:not(:read-only):not(:disabled)': {
         backgroundColor: designTokens.backgroundColorForInputWhenHovered,
       },
     }),
@@ -783,6 +789,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
           <CurrencyLabel
             id={MoneyInput.getAmountInputId(moneyInputId) as string}
             isDisabled={props.isDisabled}
+            isReadOnly={props.isReadOnly}
           >
             {option && option.label}
           </CurrencyLabel>
@@ -843,6 +850,8 @@ const MoneyInput = (props: TMoneyInputProps) => {
                 `,
               currencyHasFocus &&
                 isNewTheme &&
+                !props.isDisabled &&
+                !props.isReadOnly &&
                 css`
                   border-left-color: ${designTokens.borderColorForInputWhenFocused};
                 `,

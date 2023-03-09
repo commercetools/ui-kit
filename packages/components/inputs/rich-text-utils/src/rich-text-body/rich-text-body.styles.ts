@@ -10,39 +10,28 @@ type TRichTextBodyStylesProps = Pick<
 
 const getBorderColor = (props: TRichTextBodyStylesProps) => {
   if (props.isDisabled) {
-    return css`
-      border-color: ${designTokens.borderColorForInputWhenDisabled};
-    `;
+    return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.hasError) {
-    return css`
-      border-color: ${designTokens.borderColorForInputWhenError};
-    `;
+    return designTokens.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
-    return css`
-      border-color: ${designTokens.borderColorForInputWhenWarning};
-    `;
+    return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return css`
-      border-color: ${designTokens.borderColorForInputWhenReadonly};
-    `;
+    return designTokens.borderColorForInputWhenReadonly;
   }
-  return css`
-    border-color: ${designTokens.borderColorForInput};
-  `;
+  return designTokens.borderColorForInput;
 };
 
-const getBackgroundColor = (props: TRichTextBodyStylesProps) => {
+const getContainerBackgroundColor = (props: TRichTextBodyStylesProps) => {
   if (props.isDisabled) {
-    return css`
-      background-color: ${designTokens.backgroundColorForInputWhenDisabled};
-    `;
+    return designTokens.backgroundColorForInputWhenDisabled;
   }
-  return css`
-    background-color: ${designTokens.backgroundColorForInput};
-  `;
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForInputWhenReadonly;
+  }
+  return designTokens.backgroundColorForInput;
 };
 
 export const ToolbarMainControls = styled.div`
@@ -118,7 +107,7 @@ export const EditorContainer = styled.div<TRichTextBodyStylesProps>`
   padding-top: 6px;
   border-radius: ${designTokens.borderRadiusForInput};
   font-family: ${designTokens.fontFamilyDefault};
-  ${getBorderColor}
+  border-color: ${(props) => getBorderColor(props)};
   overflow-y: scroll;
   ${reset}
 `;
@@ -127,8 +116,8 @@ export const Container = styled.div<TRichTextBodyStylesProps>`
   border-radius: ${designTokens.borderRadiusForInput};
   border: 1px solid ${designTokens.borderColorForInput};
   transition: ${designTokens.transitionStandard};
-  ${getBorderColor}
-  ${getBackgroundColor}
+  background-color: ${(props) => getContainerBackgroundColor(props)};
+  border-color: ${(props) => getBorderColor(props)};
   pointer-events: ${(props) =>
     props.isDisabled || props.isReadOnly ? 'none' : 'inherit'};
   position: relative;
