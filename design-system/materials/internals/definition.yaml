@@ -1851,9 +1851,9 @@ decisionGroupsByTheme:
         padding-right-for-select-input-options:
           choice: spacing-30
         padding-top-for-select-input-options:
-          choice: spacing-20
+          choice: '12px'
         padding-bottom-for-select-input-options:
-          choice: spacing-20
+          choice: '12px'
         padding-for-group-heading-select-input-options:
           choice: spacing-30
         padding-for-select-input-menu:
