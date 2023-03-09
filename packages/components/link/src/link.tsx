@@ -42,7 +42,7 @@ export type TLinkProps = {
   /**
    * Color of the link
    */
-  tone?: 'primary' | 'inverted';
+  tone?: 'primary' | 'inverted' | 'secondary';
 
   /**
    * Handler when the link is clicked.
@@ -51,7 +51,6 @@ export type TLinkProps = {
     event: MouseEvent<HTMLLinkElement> | KeyboardEvent<HTMLLinkElement>
   ) => void;
 };
-type TIconColor = 'primary' | 'surface';
 
 const warnIfMissingContent = (props: TLinkProps) => {
   const hasContent =
@@ -82,41 +81,38 @@ const defaultProps: Pick<TLinkProps, 'tone' | 'isExternal'> = {
 
 const getTextColorValue = (tone: TLinkProps['tone'] = 'primary') => {
   if (tone === 'primary') {
-    return designTokens.colorPrimary;
+    return designTokens.fontColorForLinkAsPrimary;
+  } else if (tone === 'secondary') {
+    return designTokens.fontColorForLinkAsSecondary;
   }
 
   return designTokens.fontColorForTextWhenInverted;
 };
-const getIconColorValue = (
-  tone: TLinkProps['tone'] = 'primary'
-): TIconColor => {
-  if (tone === 'inverted') {
-    return 'surface';
-  }
 
-  return tone;
-};
 const getActiveColorValue = (tone: string = 'primary') => {
   if (tone === 'primary') {
     return designTokens.colorPrimary25;
+  }
+  if (tone === 'secondary') {
+    return designTokens.colorPrimary;
   }
 
   return designTokens.fontColorForTextWhenInverted;
 };
 
 const getLinkStyles = (props: TLinkProps & { isNewTheme: boolean }) => {
-  const color = getTextColorValue(props.tone);
-  const hoverColor = getActiveColorValue(props.tone);
+  const iconColor = getTextColorValue(props.tone);
+  const iconHoverColor = getActiveColorValue(props.tone);
 
   return [
     css`
       font-family: inherit;
-      color: ${color};
+      color: ${iconColor};
 
       &:hover,
       &:focus,
       &:active {
-        color: ${hoverColor};
+        color: ${iconHoverColor};
       }
       text-decoration: underline;
     `,
@@ -139,6 +135,9 @@ const Link = (props: TLinkProps) => {
   const { isNewTheme } = useTheme();
   const remainingProps = filterInvalidAttributes(props);
 
+  const color = getTextColorValue(props.tone);
+  const hoverColor = getActiveColorValue(props.tone);
+
   // `filterInvalidAttributes` strips off `intlMessage` and `children`
   // so we pass in the "raw" props instead.
   warnIfMissingContent(props);
@@ -149,7 +148,14 @@ const Link = (props: TLinkProps) => {
     }
 
     return (
-      <Wrapper>
+      <Wrapper
+        css={css`
+          fill: ${color};
+          &:hover {
+            fill: ${hoverColor};
+          }
+        `}
+      >
         <a
           css={getLinkStyles({ ...props, isNewTheme })}
           href={props.to}
@@ -163,12 +169,7 @@ const Link = (props: TLinkProps) => {
             props.children
           )}
         </a>
-        {props.isExternal && (
-          <ExternalLinkIcon
-            size="medium"
-            color={getIconColorValue(props.tone)}
-          />
-        )}
+        {props.isExternal && <ExternalLinkIcon size="medium" />}
       </Wrapper>
     );
   }

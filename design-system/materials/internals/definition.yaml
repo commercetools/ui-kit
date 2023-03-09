@@ -294,6 +294,8 @@ variants:
     description: 'To differentiate component primary type'
   secondary:
     description: 'To differentiate component secondary type'
+  inverted:
+    description: 'To differentiate component inverted type'
   urgent:
     description: 'To differentiate component urgent type'
   info:
@@ -842,6 +844,16 @@ decisionGroupsByTheme:
         font-color-for-text-when-inverted:
           description: ''
           choice: color-surface
+        font-color-for-link-as-inverted:
+          choice: color-surface
+        font-color-for-link-as-primary:
+          choice: color-primary
+        font-color-for-link-as-secondary:
+          choice: color-solid
+        font-color-for-link-as-primary-when-active:
+          choice: color-primary-25
+        font-color-for-link-as-secondary-when-active:
+          choice: color-primary
         font-color-for-table-header:
           choice: color-surface
         font-color-for-localized-input-label:

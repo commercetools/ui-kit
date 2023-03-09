@@ -317,6 +317,11 @@ export const themes = {
     fontColorForTagRemoveIconWhenHovered: '#f16d0e',
     fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTextWhenInverted: '#fff',
+    fontColorForLinkAsInverted: '#fff',
+    fontColorForLinkAsPrimary: '#00b39e',
+    fontColorForLinkAsSecondary: '#1a1a1a',
+    fontColorForLinkAsPrimaryWhenActive: 'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForLinkAsSecondaryWhenActive: '#00b39e',
     fontColorForTableHeader: '#fff',
     fontColorForLocalizedInputLabel: 'hsl(0, 0%, 60%)',
     fontColorForViewSwitcher: '#1a1a1a',
@@ -1269,6 +1274,14 @@ const designTokens = {
     'var(--font-color-for-tag-when-disabled, hsl(0, 0%, 60%))',
   fontColorForTextWhenInverted:
     'var(--font-color-for-text-when-inverted, #fff)',
+  fontColorForLinkAsInverted: 'var(--font-color-for-link-as-inverted, #fff)',
+  fontColorForLinkAsPrimary: 'var(--font-color-for-link-as-primary, #00b39e)',
+  fontColorForLinkAsSecondary:
+    'var(--font-color-for-link-as-secondary, #1a1a1a)',
+  fontColorForLinkAsPrimaryWhenActive:
+    'var(--font-color-for-link-as-primary-when-active, hsl(172.9608938547486, 100%, 25%))',
+  fontColorForLinkAsSecondaryWhenActive:
+    'var(--font-color-for-link-as-secondary-when-active, #00b39e)',
   fontColorForTableHeader: 'var(--font-color-for-table-header, #fff)',
   fontColorForLocalizedInputLabel:
     'var(--font-color-for-localized-input-label, hsl(0, 0%, 60%))',
