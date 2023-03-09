@@ -345,6 +345,7 @@
   --box-shadow-for-select-input-when-focused: inset 0 0 0 2px;
   --box-shadow-for-calendar-menu-when-focused: none;
   --font-color-for-text: #1a1a1a;
+  --font-color-for-text-when-disabled: #ccc;
   --font-color-for-input: #1a1a1a;
   --font-color-for-input-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-input-when-error: #e60050;

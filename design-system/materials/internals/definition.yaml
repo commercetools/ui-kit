@@ -810,6 +810,8 @@ decisionGroupsByTheme:
         font-color-for-text:
           description: ''
           choice: color-solid
+        font-color-for-text-when-disabled:
+          choice: color-neutral
         font-color-for-input:
           description: ''
           choice: color-solid
@@ -1556,6 +1558,8 @@ decisionGroupsByTheme:
       label: Font Colors
       prefix: font-color
       decisions:
+        font-color-for-text-when-disabled:
+          choice: color-neutral-60
         font-color-for-table-header:
           choice: color-neutral-40
         font-color-for-input-when-readonly:

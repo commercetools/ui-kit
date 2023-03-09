@@ -128,7 +128,7 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
 
         span {
           color: ${props.isDisabled
-            ? designTokens.colorNeutral
+            ? designTokens.fontColorForTextWhenDisabled
             : getTextColor(props.tone, false, designTokens)};
         }
 
