@@ -109,7 +109,7 @@ class RichTextInput extends PureComponent<TRichTextInputProps> {
       <Editor
         {...filterDataAttributes(this.props)}
         name={this.props.name}
-        isReadOnly={this.props.isReadOnly || this.props.isDisabled}
+        isReadOnly={this.props.isReadOnly}
         onChange={this.onValueChange}
         id={this.props.id}
         value={this.internalSlateValue}

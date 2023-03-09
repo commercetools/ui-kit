@@ -42,6 +42,9 @@ const getBorderColor = (props: TStylesProps) => {
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
+  if (props.isReadOnly) {
+    return designTokens.borderColorForRadioInputWhenReadonly;
+  }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
   }
@@ -53,9 +56,6 @@ const getBorderColor = (props: TStylesProps) => {
       return designTokens.borderColorForInputWhenFocused;
     }
     return designTokens.borderColorForRadioInputWhenFocused;
-  }
-  if (props.isReadOnly) {
-    return designTokens.borderColorForRadioInputWhenReadonly;
   }
   if (props.isChecked) {
     return designTokens.borderColorForRadioInputWhenChecked;
@@ -83,14 +83,14 @@ const getLabelBorderColor = (props: TStylesProps) => {
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
+  if (props.isReadOnly) {
+    return designTokens.borderColorForInputWhenReadonly;
+  }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
   }
   if (props.hasWarning) {
     return designTokens.borderColorForInputWhenWarning;
-  }
-  if (props.isReadOnly) {
-    return designTokens.borderColorForInputWhenReadonly;
   }
   return designTokens.borderColorForInputWhenFocused;
 };
@@ -99,14 +99,14 @@ const getLabelColor = (props: TStylesProps) => {
   if (props.isDisabled) {
     return designTokens.fontColorForInputWhenDisabled;
   }
+  if (props.isReadOnly) {
+    return designTokens.fontColorForInputWhenReadonly;
+  }
   if (props.hasError) {
     return designTokens.fontColorForInputWhenError;
   }
   if (props.hasWarning) {
     return designTokens.fontColorForInputWhenWarning;
-  }
-  if (props.isReadOnly) {
-    return designTokens.fontColorForInputWhenReadonly;
   }
   return designTokens.fontColorForInput;
 };
@@ -141,7 +141,7 @@ const RadioOptionBorder = styled.div<TStylesProps>`
 `;
 
 const focusStyles = css`
-  &:focus + div > ${RadioOptionBorder} {
+  &:focus:not(:read-only) + div > ${RadioOptionBorder} {
     border-color: ${designTokens.borderColorForInputWhenFocused};
   }
 `;
@@ -200,10 +200,13 @@ const RadioOptionLabel = styled.label<TStylesProps>`
   cursor: ${(props) => getLabelCursor(props)};
   display: flex;
 
-  :focus-within ${LabelTextWrapper} {
-    outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
-    outline-offset: ${(props) => (props.isNewTheme ? '2px' : '3px')};
-  }
+  ${(props) =>
+    !props.isReadOnly
+      ? `:focus-within ${LabelTextWrapper} {
+      outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
+      outline-offset: ${props.isNewTheme ? '2px' : '3px'};
+    }`
+      : ''}
 
   ${(props) =>
     props.isNewTheme

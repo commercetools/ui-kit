@@ -360,10 +360,10 @@ componentGroups:
     description: 'Avatar elements'
   multiline-input:
     description: 'Multiline input elements'
+  localized-input-label:
+    description: 'Localized multiline text input label elements'
   localized-rich-text-input-label:
     description: 'Localized rich text input label elements'
-  localized-multiline-text-input-label:
-    description: 'Localized multiline text input label elements'
   tooltip:
     description: 'Tooltip elements'
   view-switcher:
@@ -497,11 +497,11 @@ decisionGroupsByTheme:
         background-color-for-stamp-as-positive:
           description: ''
           choice: color-primary-85
-        background-color-for-localized-multiline-text-input-label:
-          description: ''
+        background-color-for-localized-input-label:
           choice: color-accent-98
-        background-color-for-localized-multiline-text-input-label-when-disabled:
-          description: ''
+        background-color-for-localized-input-label-when-readonly:
+          choice: color-accent-95
+        background-color-for-localized-input-label-when-disabled:
           choice: color-accent-98
         background-color-for-tooltip:
           choice: color-accent
@@ -643,9 +643,9 @@ decisionGroupsByTheme:
           choice: color-primary-25
         border-color-for-stamp-as-secondary:
           choice: color-neutral-60
-        border-color-for-localized-multiline-text-input-label:
+        border-color-for-localized-input-label:
           choice: color-neutral
-        border-color-for-localized-multiline-text-input-label-when-readonly:
+        border-color-for-localized-input-label-when-readonly:
           choice: color-neutral
         border-color-for-content-notification-when-error:
           choice: color-error
@@ -802,7 +802,7 @@ decisionGroupsByTheme:
           choice: color-surface
         font-color-for-table-header:
           choice: color-surface
-        font-color-for-localized-multiline-text-input-label:
+        font-color-for-localized-input-label:
           choice: color-neutral-60
         font-color-for-view-switcher:
           choice: color-solid
@@ -959,8 +959,8 @@ decisionGroupsByTheme:
           choice: font-size-60
         font-size-for-avatar-as-big:
           choice: font-size-78
-        font-size-for-localized-multiline-text-input-label:
-          choice: font-size-15
+        font-size-for-localized-input-label:
+          choice: font-size-30
         font-size-for-content-notification:
           choice: font-size-30
         font-size-for-select-input-tag:
@@ -1102,7 +1102,7 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-10) var(--spacing-20)'
         padding-for-localized-rich-text-input-label:
           choice: '0 var(--spacing-20)'
-        padding-for-localized-multiline-text-input-label:
+        padding-for-localized-input-label:
           choice: '0 var(--spacing-20)'
         padding-for-tag-remove-icon:
           choice: '0 var(--spacing-10)'
@@ -1237,9 +1237,11 @@ decisionGroupsByTheme:
         background-color-for-stamp-as-positive:
           description: ''
           choice: color-primary-95
-        background-color-for-localized-multiline-text-input-label:
+        background-color-for-localized-input-label:
           choice: color-surface
-        background-color-for-localized-multiline-text-input-label-when-disabled:
+        background-color-for-localized-input-label-when-readonly:
+          choice: color-neutral-95
+        background-color-for-localized-input-label-when-disabled:
           choice: color-neutral-95
         background-color-for-tooltip:
           choice: color-accent-10
@@ -1361,8 +1363,8 @@ decisionGroupsByTheme:
           choice: color-primary-85
         border-color-for-stamp-as-secondary:
           choice: color-neutral-85
-        border-color-for-localized-multiline-text-input-label-when-readonly:
-          choice: color-neutral-90
+        border-color-for-localized-input-label-when-readonly:
+          choice: color-surface
         border-color-for-tag:
           choice: color-neutral
         border-color-for-tag-when-hovered:
@@ -1558,7 +1560,7 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-avatar-as-big:
           choice: font-size-80
-        font-size-for-localized-multiline-text-input-label:
+        font-size-for-localized-input-label:
           choice: font-size-30
         font-size-for-select-input-tag:
           choice: font-size-30
@@ -1742,7 +1744,7 @@ decisionGroupsByTheme:
           choice: spacing-20
         padding-for-localized-rich-text-input-label:
           choice: spacing-20
-        padding-for-localized-multiline-text-input-label:
+        padding-for-localized-input-label:
           choice: '0 12px'
         padding-for-tag-remove-icon:
           choice: '0 12px'

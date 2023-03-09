@@ -160,7 +160,7 @@ const TranslationInput = (props: TranslationInputProps) => {
         `}
       >
         <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
-          <span>{props.language.toUpperCase()}</span>
+          {props.language.toUpperCase()}
         </label>
         <MultilineInput
           id={props.id}
