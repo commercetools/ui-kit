@@ -264,6 +264,8 @@ states:
     description: 'When the element is checked'
   checked-and-disabled:
     description: 'When the element is checked and disabled'
+  bold:
+    description: 'When the element is bold'
 
 variants:
   h1:
@@ -1068,6 +1070,8 @@ decisionGroupsByTheme:
           choice: font-weight-400
         font-weight-for-table-header:
           choice: font-weight-400
+        font-weight-for-text-when-bold:
+          choice: 'bold'
 
     margins:
       label: Margins
@@ -1694,6 +1698,8 @@ decisionGroupsByTheme:
         font-weight-for-button:
           choice: font-weight-500
         font-weight-for-table-header:
+          choice: font-weight-600
+        font-weight-for-text-when-bold:
           choice: font-weight-600
 
     heights:
