@@ -212,11 +212,13 @@ const defaultProps: Pick<
   | 'isClearable'
   | 'menuHorizontalConstraint'
   | 'showSubmitButton'
+  | 'menuPortalZIndex'
 > = {
   horizontalConstraint: 'scale',
   isClearable: true,
   menuHorizontalConstraint: 3,
   showSubmitButton: true,
+  menuPortalZIndex: 1,
 };
 
 const selectableSearchInputSequentialId = createSequentialId(
@@ -453,6 +455,14 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
           )}
         </div>
       </Container>
+      <p
+        css={css`
+          position: relative;
+          z-index: 9;
+        `}
+      >
+        Hello world
+      </p>
     </Constraints.Horizontal>
   );
 };
