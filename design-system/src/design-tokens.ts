@@ -165,6 +165,7 @@ export const themes = {
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
+    backgroundColorForTagWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
       'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 90%)',
@@ -501,6 +502,8 @@ export const themes = {
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     shadowForToggleInputThumb:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+    shadowForTagWhenHovered:
+      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     fontSizeM: '1rem',
     bigButtonHeight: '32px',
     smallButtonHeight: '24px',
@@ -587,6 +590,7 @@ export const themes = {
       'hsl(195, 35.2941176471%, 90%)',
     backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
       'hsl(195, 35.2941176471%, 60%)',
+    backgroundColorForTagWhenHovered: 'hsl(0, 0%, 90%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -619,6 +623,7 @@ export const themes = {
     borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
     borderColorForLocalizedInputLabelWhenReadonly: '#fff',
     borderColorForTag: '#ccc',
+    borderColorForTagWhenFocused: '#ccc',
     borderColorForTagWhenHovered: '#ccc',
     borderColorForContentNotificationWhenError:
       'hsl(339.1304347826087, 100%, 85%)',
@@ -831,6 +836,7 @@ export const themes = {
     shadowForPrimaryActionDropdownWhenActive: 'none',
     shadowForPrimaryActionDropdownMenu: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
     shadowForToggleInputThumb: '0px 1px 5px rgba(0, 0, 0, 0.2)',
+    shadowForTagWhenHovered: 'none',
   },
 } as const;
 
@@ -1026,6 +1032,8 @@ const designTokens = {
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
+  backgroundColorForTagWhenHovered:
+    'var(--background-color-for-tag-when-hovered, hsl(0, 0%, 95%))',
   backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
     'var(--background-color-for-collapsible-panel-header-icon-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForSelectInputOptionWhenHovered:
@@ -1546,6 +1554,8 @@ const designTokens = {
     'var(--shadow-for-primary-action-dropdown-menu, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   shadowForToggleInputThumb:
     'var(--shadow-for-toggle-input-thumb, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+  shadowForTagWhenHovered:
+    'var(--shadow-for-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   fontSizeM: 'var(--font-size-m, 1rem)',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',

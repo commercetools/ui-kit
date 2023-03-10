@@ -93,9 +93,18 @@ const Tag = (props: TTagProps) => {
           cursor: default;
           min-width: 0;
           display: flex;
-          background-color: ${props.type === 'warning'
-            ? designTokens.backgroundColorForTagWarning
-            : designTokens.backgroundColorForTag};
+          background-color: ${
+            props.type === 'warning'
+              ? designTokens.backgroundColorForTagWarning
+              : designTokens.backgroundColorForTag
+          };
+          
+          &:hover {
+            background-color: ${
+              props.type === 'warning'
+                ? designTokens.backgroundColorForTagWarning
+                : designTokens.backgroundColorForTagWhenHovered
+            };
         `}
       >
         <TagBody
