@@ -1,5 +1,18 @@
 # @commercetools-uikit/radio-field
 
+## 15.13.2
+
+### Patch Changes
+
+- Updated dependencies [[`661d9cd94`](https://github.com/commercetools/ui-kit/commit/661d9cd9425c51ce86cf37af78d8ced82e560724), [`29964960c`](https://github.com/commercetools/ui-kit/commit/29964960c78206aa7b766b2a173f46f0743d8b5c), [`2b78277fc`](https://github.com/commercetools/ui-kit/commit/2b78277fc849504d5eee1d1f2d7b7b8046976f4a), [`9a1fe4877`](https://github.com/commercetools/ui-kit/commit/9a1fe4877cc429e0b1c4f7dfe1ca89aeec9d75d2), [`e539cb497`](https://github.com/commercetools/ui-kit/commit/e539cb497ae74a2f557b8fdad3656f2814229aca)]:
+  - @commercetools-uikit/radio-input@15.13.2
+  - @commercetools-uikit/design-system@15.13.2
+  - @commercetools-uikit/constraints@15.13.2
+  - @commercetools-uikit/field-label@15.13.2
+  - @commercetools-uikit/spacings-stack@15.13.2
+  - @commercetools-uikit/field-errors@15.13.2
+  - @commercetools-uikit/utils@15.13.2
+
 ## 15.13.1
 
 ### Patch Changes
