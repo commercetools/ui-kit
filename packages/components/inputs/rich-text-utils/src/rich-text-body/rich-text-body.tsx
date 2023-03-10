@@ -19,6 +19,7 @@ import Inline from '@commercetools-uikit/spacings-inline';
 import {
   BoldIcon,
   ExpandFullIcon,
+  ExpandIcon,
   ItalicIcon,
   UnorderedListIcon,
   OrderedListIcon,
@@ -429,7 +430,11 @@ const RichTextEditorBody = forwardRef<
                   label={intl.formatMessage(messages.expandButtonLabel)}
                   onClick={props.onClickExpand}
                 >
-                  <ExpandFullIcon size="medium" />
+                  {isNewTheme ? (
+                    <ExpandIcon size="medium" />
+                  ) : (
+                    <ExpandFullIcon size="medium" />
+                  )}
                 </Button>
               </Tooltip>
             </>
