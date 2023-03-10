@@ -401,6 +401,8 @@ export const themes = {
     marginRightForSearchInputIcon: '8px',
     marginRightForClearInputIcon: '4px',
     marginLeftForRadioInputLabel: '8px',
+    marginRightForPrimaryActionDropdown: '4px',
+    marginTopForPrimaryActionDropdown: 'none',
     marginForLocalizedRichTextBodyButton: 'none',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
@@ -422,7 +424,10 @@ export const themes = {
     paddingForInput: '8px',
     paddingForMultilineInput: 'var(--spacing-10) var(--spacing-20)',
     paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
+    paddingForLocalizedInputLabel: '0 var(--spacing-20)',
     paddingForRichTextInput: 'none',
+    paddingForRichTextToolbar: 'var(--spacing-10) 7px',
+    paddingLeftForRichTextToolbar: '3px',
     paddingForLocalizedMultilineTextInputLabel: '0 var(--spacing-20)',
     paddingForTagRemoveIcon: '0 var(--spacing-10)',
     paddingForTooltip: 'var(--spacing-10) var(--spacing-20)',
@@ -721,7 +726,7 @@ export const themes = {
     marginLeftForRadioInputLabel: '4px',
     marginRightForPrimaryActionDropdown: '8px',
     marginTopForPrimaryActionDropdown: '8px',
-    marginForLocalizedRichTextBodyButton: '0 var(--spacing-10)',
+    marginForLocalizedRichTextBodyButton: '0 calc(var(--spacing-10) - 2px)',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -744,6 +749,9 @@ export const themes = {
     paddingForInput: '16px',
     paddingForMultilineInput: '8px',
     paddingForLocalizedRichTextInputLabel: '8px',
+    paddingForRichTextInput: 'var(--spacing-20) var(--spacing-30)',
+    paddingForRichTextToolbar: 'none',
+    paddingLeftForRichTextToolbar: 'none',
     paddingForLocalizedInputLabel: '0 12px',
     paddingForTagRemoveIcon: '0 12px',
     paddingForTooltip: 'var(--spacing-20) 12px',
@@ -763,7 +771,6 @@ export const themes = {
     paddingForSelectableSearchInputDropdown: '0 12px',
     paddingForPrimaryActionDropdown: '0 var(--spacing-30)',
     paddingForPrimaryActionDropdownIcon: '0 var(--spacing-20)',
-    paddingForRichTextInput: 'var(--spacing-20) var(--spacing-30)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -1386,6 +1393,10 @@ const designTokens = {
   paddingForLocalizedInputLabel:
     'var(--padding-for-localized-input-label, 0 var(--spacing-20))',
   paddingForRichTextInput: 'var(--padding-for-rich-text-input, none)',
+  paddingForRichTextToolbar:
+    'var(--padding-for-rich-text-toolbar, var(--spacing-10) 7px)',
+  paddingLeftForRichTextToolbar:
+    'var(--padding-left-for-rich-text-toolbar, 3px)',
   paddingForLocalizedMultilineTextInputLabel:
     'var(--padding-for-localized-multiline-text-input-label, 0 var(--spacing-20))',
   paddingForTagRemoveIcon:

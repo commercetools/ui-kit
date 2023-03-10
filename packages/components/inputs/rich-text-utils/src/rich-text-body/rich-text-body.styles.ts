@@ -96,8 +96,8 @@ export const Toolbar = styled.div`
   font-family: ${designTokens.fontFamilyDefault};
   border-radius: ${designTokens.borderRadiusForInput};
   border-bottom: 0;
-  padding: ${designTokens.spacing10} calc(${designTokens.spacing20} - 1px);
-  padding-left: calc(${designTokens.spacing10} - 1px);
+  padding: ${designTokens.paddingForRichTextToolbar};
+  padding-left: ${designTokens.paddingLeftForRichTextToolbar};
   align-items: flex-start;
   align-content: stretch;
 

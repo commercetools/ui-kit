@@ -1,3 +1,4 @@
+//TODO: @redesign cleanup
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TEditorProps } from './editor';
@@ -9,14 +10,15 @@ const getEditorLanguageLabelBorderColor = (props: TEditorLanguageLabelProps) =>
       : designTokens.borderColorForInputWhenDisabled
   }`;
 
-  type TInputProps = {
-    isDisabled?: boolean;
-    isReadOnly?: boolean;
-  };
+type TInputProps = {
+  isDisabled?: boolean;
+  isReadOnly?: boolean;
+};
 
 type TEditorLanguageLabelProps = {
   isReadOnly?: boolean;
   isDisabled?: boolean;
+  isNewTheme?: boolean;
 };
 
 const getBackgroundColor = (props: TInputProps) => {
@@ -28,7 +30,6 @@ const getBackgroundColor = (props: TInputProps) => {
   }
   return designTokens.backgroundColorForInput;
 };
-
 
 const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   /* avoid wrapping label onto new lines */
@@ -49,6 +50,8 @@ const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   border-right: 0;
   box-shadow: none;
   appearance: none;
+  display: ${(props) => props.isNewTheme && 'flex'};
+  align-items: center;
 
   /* cursor should be inherited from parent,
     * GIVEN parent has 'not-allowed' cursor

@@ -424,6 +424,8 @@ componentGroups:
     description: 'Toggle input track pseudo-elements'
   toggle-input-thumb:
     description: 'Toggle input thumb pseudo-elements'
+  rich-text-toolbar:
+    description: 'Rich text tool bar element'
 
 decisionGroupsByTheme:
   default:
@@ -1114,6 +1116,10 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-20)'
         padding-for-rich-text-input:
           choice: 'none'
+        padding-for-rich-text-toolbar:
+          choice: 'var(--spacing-10) 7px'
+        padding-left-for-rich-text-toolbar:
+          choice: '3px'
         padding-for-localized-multiline-text-input-label:
           choice: '0 var(--spacing-20)'
         padding-for-tag-remove-icon:
@@ -1714,7 +1720,7 @@ decisionGroupsByTheme:
         margin-top-for-primary-action-dropdown:
           choice: spacing-20
         margin-for-localized-rich-text-body-button:
-          choice: '0 var(--spacing-10)'
+          choice: '0 calc(var(--spacing-10) - 2px)'
 
     paddings:
       label: Paddings
@@ -1758,6 +1764,12 @@ decisionGroupsByTheme:
           choice: spacing-20
         padding-for-localized-rich-text-input-label:
           choice: spacing-20
+        padding-for-rich-text-input:
+          choice: 'var(--spacing-20) var(--spacing-30)'
+        padding-for-rich-text-toolbar:
+          choice: 'none'
+        padding-left-for-rich-text-toolbar:
+          choice: 'none'
         padding-for-localized-input-label:
           choice: '0 12px'
         padding-for-tag-remove-icon:
@@ -1792,8 +1804,6 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-30)'
         padding-for-primary-action-dropdown-icon:
           choice: '0 var(--spacing-20)'
-        padding-for-rich-text-input:
-          choice: 'var(--spacing-20) var(--spacing-30)'
 
     shadows:
       label: Shadows

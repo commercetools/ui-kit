@@ -459,6 +459,8 @@
   --padding-for-localized-rich-text-input-label: 0 var(--spacing-20);
   --padding-for-localized-input-label: 0 var(--spacing-20);
   --padding-for-rich-text-input: none;
+  --padding-for-rich-text-toolbar: var(--spacing-10) 7px;
+  --padding-left-for-rich-text-toolbar: 3px;
   --padding-for-localized-multiline-text-input-label: 0 var(--spacing-20);
   --padding-for-tag-remove-icon: 0 var(--spacing-10);
   --padding-for-tooltip: var(--spacing-10) var(--spacing-20);

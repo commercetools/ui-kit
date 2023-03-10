@@ -1,3 +1,4 @@
+//TODO: @redesign cleanup
 import {
   useRef,
   useState,
@@ -15,7 +16,7 @@ import {
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -118,6 +119,7 @@ const renderLeaf = (props: RenderLeafProps) => <Leaf {...props} />;
 const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
   const intl = useIntl();
   const ref = useRef<HTMLDivElement>();
+  const { isNewTheme } = useTheme();
 
   const createEditorWithPlugins = pipe(withReact, withHistory);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -220,6 +222,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                   htmlFor={props.id}
                   isDisabled={props.isDisabled}
                   isReadOnly={props.isReadOnly}
+                  isNewTheme={isNewTheme}
                 >
                   {/* FIXME: add proper tone for disabled when tones are refactored */}
                   <Text.Detail tone="secondary">
