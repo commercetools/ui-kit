@@ -1,6 +1,6 @@
 {
   "name": "visual-testing-app",
-  "version": "11.1.14",
+  "version": "11.1.15",
   "description": "An app to facilitate visual testing",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "preview": "vite preview --port 3000"
   },
   "dependencies": {
-    "@commercetools-uikit/design-system": "15.13.1",
+    "@commercetools-uikit/design-system": "15.13.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "moment": "2.29.4",
