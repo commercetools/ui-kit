@@ -455,14 +455,6 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
           )}
         </div>
       </Container>
-      <p
-        css={css`
-          position: relative;
-          z-index: 9;
-        `}
-      >
-        Hello world
-      </p>
     </Constraints.Horizontal>
   );
 };
