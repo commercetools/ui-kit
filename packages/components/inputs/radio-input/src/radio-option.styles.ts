@@ -18,6 +18,7 @@ const LabelTextWrapper = styled.div<TStylesProps>`
   font-size: 1rem;
   font-family: inherit;
   display: flex;
+  align-items: center;
   ${(props) => getDefaultThemeLabelColor(props)}
 `;
 
