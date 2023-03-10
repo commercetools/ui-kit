@@ -193,8 +193,8 @@ const TimeInput = (props: TTimeInputProps) => {
         onFocus={props.onFocus}
         isAutofocussed={props.isAutofocussed}
         isDisabled={props.isDisabled}
-        hasError={props.hasError}
         isReadOnly={props.isReadOnly}
+        hasError={props.hasError}
         onClear={handleClear}
         placeholder={
           typeof props.placeholder === 'string'

@@ -1,5 +1,39 @@
 # @commercetools-uikit/radio-input
 
+## 15.13.2
+
+### Patch Changes
+
+- [#2451](https://github.com/commercetools/ui-kit/pull/2451) [`661d9cd94`](https://github.com/commercetools/ui-kit/commit/661d9cd9425c51ce86cf37af78d8ced82e560724) Thanks [@kark](https://github.com/kark)! - Fix `RadioInput.Option` label alignment
+
+- [#2444](https://github.com/commercetools/ui-kit/pull/2444) [`2b78277fc`](https://github.com/commercetools/ui-kit/commit/2b78277fc849504d5eee1d1f2d7b7b8046976f4a) Thanks [@kark](https://github.com/kark)! - Set default hover area color to `transparent`
+
+- [#2420](https://github.com/commercetools/ui-kit/pull/2420) [`e539cb497`](https://github.com/commercetools/ui-kit/commit/e539cb497ae74a2f557b8fdad3656f2814229aca) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update common input styles in the new theme (`background-color` on hover and read-only state styles).
+
+- Updated dependencies [[`29964960c`](https://github.com/commercetools/ui-kit/commit/29964960c78206aa7b766b2a173f46f0743d8b5c), [`9a1fe4877`](https://github.com/commercetools/ui-kit/commit/9a1fe4877cc429e0b1c4f7dfe1ca89aeec9d75d2), [`e539cb497`](https://github.com/commercetools/ui-kit/commit/e539cb497ae74a2f557b8fdad3656f2814229aca)]:
+  - @commercetools-uikit/design-system@15.13.2
+  - @commercetools-uikit/input-utils@15.13.2
+  - @commercetools-uikit/constraints@15.13.2
+  - @commercetools-uikit/icons@15.13.2
+  - @commercetools-uikit/spacings-inline@15.13.2
+  - @commercetools-uikit/spacings-inset@15.13.2
+  - @commercetools-uikit/spacings-stack@15.13.2
+  - @commercetools-uikit/utils@15.13.2
+
+## 15.13.1
+
+### Patch Changes
+
+- Updated dependencies [[`5e3708319`](https://github.com/commercetools/ui-kit/commit/5e37083198755a7b94a77d0c4c843e5609d5f2d0)]:
+  - @commercetools-uikit/design-system@15.13.1
+  - @commercetools-uikit/constraints@15.13.1
+  - @commercetools-uikit/icons@15.13.1
+  - @commercetools-uikit/input-utils@15.13.1
+  - @commercetools-uikit/spacings-inline@15.13.1
+  - @commercetools-uikit/spacings-inset@15.13.1
+  - @commercetools-uikit/spacings-stack@15.13.1
+  - @commercetools-uikit/utils@15.13.1
+
 ## 15.13.0
 
 ### Patch Changes

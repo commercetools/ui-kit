@@ -163,4 +163,4 @@ const withThemeContext = (
 };
 
 export { ThemeProvider, useTheme, withThemeContext };
-export type { ThemeName };
+export type { ThemeName, TUseThemeResult };

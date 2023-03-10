@@ -16,6 +16,7 @@
   --color-accent-20: hsl(195, 35.2941176471%, 20%);
   --color-accent-30: hsl(195, 35.2941176471%, 30%);
   --color-accent-40: hsl(195, 35.2941176471%, 40%);
+  --color-accent-60: hsl(195, 35.2941176471%, 60%);
   --color-accent-90: hsl(195, 35.2941176471%, 90%);
   --color-accent-95: hsl(195, 35.2941176471%, 95%);
   --color-accent-98: hsl(195, 35.2941176471%, 98%);
@@ -183,12 +184,13 @@
   --background-color-for-avatar: hsl(0, 0%, 60%);
   --background-color-for-avatar-when-highlighted: #ccc;
   --background-color-for-stamp-as-positive: hsl(172.9608938547486, 100%, 85%);
-  --background-color-for-localized-multiline-text-input-label: hsl(
+  --background-color-for-localized-input-label: hsl(195, 35.2941176471%, 98%);
+  --background-color-for-localized-input-label-when-readonly: hsl(
     195,
     35.2941176471%,
-    98%
+    95%
   );
-  --background-color-for-localized-multiline-text-input-label-when-disabled: hsl(
+  --background-color-for-localized-input-label-when-disabled: hsl(
     195,
     35.2941176471%,
     98%
@@ -215,6 +217,27 @@
   --background-color-for-checkbox-input-icon-when-readonly: #fff;
   --background-color-for-checkbox-input-icon-when-error: #fff;
   --background-color-for-checkbox-input-icon-when-hovered: #fff;
+  --background-color-for-primary-action-dropdown-when-active: hsl(0, 0%, 95%);
+  --background-color-for-primary-action-dropdown-when-disabled: hsl(
+    195,
+    35.2941176471%,
+    98%
+  );
+  --background-color-for-toggle-input-track: hsl(0, 0%, 60%);
+  --background-color-for-toggle-input-track-when-disabled: #ccc;
+  --background-color-for-toggle-input-thumb-when-disabled: hsl(
+    195,
+    35.2941176471%,
+    95%
+  );
+  --background-color-for-toggle-input-track-when-checked: #00b39e;
+  --background-color-for-toggle-input-thumb-when-checked: #fff;
+  --background-color-for-toggle-input-track-when-checked-and-disabled: hsl(
+    172.9608938547486,
+    100%,
+    25%
+  );
+  --background-color-for-toggle-input-thumb-when-checked-and-disabled: #ccc;
   --border-for-button-as-secondary: none;
   --border-for-button-as-secondary-when-hovered: none;
   --border-for-button-as-secondary-when-active: none;
@@ -249,8 +272,8 @@
   --border-color-for-stamp-as-information: #078cdf;
   --border-color-for-stamp-as-primary: hsl(172.9608938547486, 100%, 25%);
   --border-color-for-stamp-as-secondary: hsl(0, 0%, 60%);
-  --border-color-for-localized-multiline-text-input-label: #ccc;
-  --border-color-for-localized-multiline-text-input-label-when-readonly: #ccc;
+  --border-color-for-localized-input-label: #ccc;
+  --border-color-for-localized-input-label-when-readonly: #ccc;
   --border-color-for-content-notification-when-error: #e60050;
   --border-color-for-content-notification-when-info: #078cdf;
   --border-color-for-content-notification-when-warning: #f16d0e;
@@ -269,6 +292,7 @@
   --border-color-for-radio-input-when-readonly: #ccc;
   --border-color-for-radio-input-when-checked: #ccc;
   --border-color-for-radio-input-when-focused: #00b39e;
+  --border-color-for-primary-action-dropdown-menu: #ccc;
   --border-radius-for-button-as-big: 6px;
   --border-radius-for-button-as-small: 4px;
   --border-radius-for-button-as-icon-as-big: 6px;
@@ -284,6 +308,11 @@
     var(--border-radius-6) 0;
   --border-radius-for-content-notification-icon: var(--border-radius-6) 0 0
     var(--border-radius-6);
+  --border-radius-for-primary-action-dropdown: var(--border-radius-6) 0 0
+    var(--border-radius-6);
+  --border-radius-for-primary-action-dropdown-icon: 0 var(--border-radius-6)
+    var(--border-radius-6) 0;
+  --border-radius-for-primary-action-dropdown-menu: 6px;
   --border-width-for-input: 1px;
   --border-width-for-input-when-warning: 1px;
   --border-width-for-input-when-error: 1px;
@@ -293,6 +322,7 @@
   --border-width-for-content-notification-icon: 0px;
   --border-left-width-for-content-notification: 1px;
   --border-width-for-checkbox-input-icon: 1px;
+  --border-for-primary-action-dropdown-icon: 0px 0px 0px 1px;
   --box-shadow-for-datetime-input-when-hovered: inset 0 0 0 2px;
   --box-shadow-for-view-switcher: 0 1px 1px 0 rgba(0, 0, 0, 0.24),
     0 -1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -313,7 +343,7 @@
   --font-color-for-tag-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-text-when-inverted: #fff;
   --font-color-for-table-header: #fff;
-  --font-color-for-localized-multiline-text-input-label: hsl(0, 0%, 60%);
+  --font-color-for-localized-input-label: hsl(0, 0%, 60%);
   --font-color-for-view-switcher: #1a1a1a;
   --font-color-for-view-switcher-when-disabled: hsl(0, 0%, 60%);
   --font-color-for-view-switcher-when-selected: #1a1a1a;
@@ -352,6 +382,7 @@
   --height-for-select-input-tag: 26px;
   --height-for-radio-input-option: 16px;
   --height-for-radio-input-option-when-checked: 8px;
+  --height-for-primary-action-dropdown: 32px;
   --width-for-avatar-as-medium: 48px;
   --min-width-for-money-input-currency-dropdown: 72px;
   --placeholder-font-color-for-input: hsl(0, 0%, 60%);
@@ -372,7 +403,7 @@
   --font-size-for-avatar-as-small: 1rem;
   --font-size-for-avatar-as-medium: 1.5rem;
   --font-size-for-avatar-as-big: 3rem;
-  --font-size-for-localized-multiline-text-input-label: 0.9231rem;
+  --font-size-for-localized-input-label: 1rem;
   --font-size-for-content-notification: 1rem;
   --font-size-for-select-input-tag: 0.9231rem;
   --icon-color-for-datetime-input-icon: #1a1a1a;
@@ -403,6 +434,8 @@
   --margin-right-for-search-input-icon: 8px;
   --margin-right-for-clear-input-icon: 4px;
   --margin-left-for-radio-input-label: 8px;
+  --margin-right-for-primary-action-dropdown: 4px;
+  --margin-top-for-primary-action-dropdown: none;
   --padding-for-stamp: var(--spacing-10) var(--spacing-20);
   --padding-for-stamp-as-condensed: 1px var(--spacing-10);
   --padding-for-tag: 5px var(--spacing-20);
@@ -423,7 +456,7 @@
   --padding-for-input: 8px;
   --padding-for-multiline-input: var(--spacing-10) var(--spacing-20);
   --padding-for-localized-rich-text-input-label: 0 var(--spacing-20);
-  --padding-for-localized-multiline-text-input-label: 0 var(--spacing-20);
+  --padding-for-localized-input-label: 0 var(--spacing-20);
   --padding-for-tag-remove-icon: 0 var(--spacing-10);
   --padding-for-tooltip: var(--spacing-10) var(--spacing-20);
   --padding-for-view-switcher: 0 var(--spacing-30) 0 var(--spacing-30);
@@ -439,6 +472,8 @@
   --padding-for-select-input-menu: inherit;
   --padding-for-money-input-currency-dropdown: 0 var(--spacing-20);
   --padding-for-selectable-search-input-dropdown: 0 var(--spacing-20);
+  --padding-for-primary-action-dropdown: 0 var(--spacing-20);
+  --padding-for-primary-action-dropdown-icon: 0 var(--spacing-10);
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),
@@ -461,6 +496,18 @@
     0 1px 4.75px rgba(0, 0, 0, 0.12);
   --shadow-for-select-input-menu: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  --shadow-for-primary-action-dropdown: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  --shadow-for-primary-action-dropdown-when-hovered: 0 1px 9.5px 0
+      rgba(0, 0, 0, 0.12),
+    0 2px 4px 0 rgba(0, 0, 0, 0.24);
+  --shadow-for-primary-action-dropdown-when-active: inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1),
+    inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2),
+    inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25);
+  --shadow-for-primary-action-dropdown-menu: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-for-toggle-input-thumb: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --font-size-m: 1rem;
   --big-button-height: 32px;
   --small-button-height: 24px;
@@ -471,5 +518,4 @@
   --shadow-box-tag-hover: 0 1px 3px rgba(0, 0, 0, 0.12),
     0 1px 2px rgba(0, 0, 0, 0.24);
   --size-height-tag: 26px;
-  --standard-input-height: 32px;
 }

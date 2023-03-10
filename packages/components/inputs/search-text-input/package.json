@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/search-text-input",
   "description": "A controlled search text input component for single-line strings with validation states.",
-  "version": "15.13.0",
+  "version": "15.13.2",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,12 +21,12 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/constraints": "15.13.0",
-    "@commercetools-uikit/design-system": "15.13.0",
-    "@commercetools-uikit/icons": "15.13.0",
-    "@commercetools-uikit/input-utils": "15.13.0",
-    "@commercetools-uikit/secondary-icon-button": "15.13.0",
-    "@commercetools-uikit/utils": "15.13.0",
+    "@commercetools-uikit/constraints": "15.13.2",
+    "@commercetools-uikit/design-system": "15.13.2",
+    "@commercetools-uikit/icons": "15.13.2",
+    "@commercetools-uikit/input-utils": "15.13.2",
+    "@commercetools-uikit/secondary-icon-button": "15.13.2",
+    "@commercetools-uikit/utils": "15.13.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "prop-types": "15.8.1"

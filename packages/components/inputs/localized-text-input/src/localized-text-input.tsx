@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import {
   type FocusEventHandler,
   type ChangeEventHandler,
@@ -5,11 +6,11 @@ import {
 } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/react';
+import { useTheme } from '@commercetools-uikit/design-system';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
-import Text from '@commercetools-uikit/text';
 import {
   sortLanguages,
   createLocalizedDataAttributes,
@@ -126,7 +127,7 @@ type TLocalizedTextInputProps = {
   errors?: Record<string, string>;
 };
 
-type TLocalizedInputProps = {
+export type TLocalizedInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`. You can use the static `LocalizedTextInput.getId(idPrefix, language)` to create this id string, e.g. for labels.
    */
@@ -158,6 +159,7 @@ const sequentialId = createSequentialId('localized-text-input-');
 
 const LocalizedInput = (props: TLocalizedInputProps) => {
   const { onChange } = props;
+  const { isNewTheme } = useTheme();
   const handleChange = useCallback(
     (event) => {
       // We manipulate the event to add the language to the target.
@@ -193,11 +195,11 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
         display: flex;
       `}
     >
-      <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
-        {/* FIXME: add proper tone for disabled when tones are refactored */}
-        <Text.Detail tone="secondary">
-          {props.language.toUpperCase()}
-        </Text.Detail>
+      <label
+        htmlFor={props.id}
+        css={getLanguageLabelStyles({ ...props, isNewTheme })}
+      >
+        {props.language.toUpperCase()}
       </label>
       <TextInput
         {...props}
