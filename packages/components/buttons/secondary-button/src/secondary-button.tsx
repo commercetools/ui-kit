@@ -13,7 +13,11 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { getStateStyles, getThemeStyles } from './secondary-button.styles';
+import {
+  getStateStyles,
+  getThemeStyles,
+  getSizeStyles,
+} from './secondary-button.styles';
 
 export type TSecondaryButtonProps<
   TStringOrComponent extends ElementType = 'button'
@@ -56,6 +60,10 @@ export type TSecondaryButtonProps<
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
+   * Indicates the size of the button.
+   */
+  size?: 'small' | 'big';
+  /**
    * Indicates the color scheme of the button.
    */
   theme?: 'default' | 'info';
@@ -85,10 +93,11 @@ export const getIconColor = (
 
 const defaultProps: Pick<
   TSecondaryButtonProps,
-  'type' | 'theme' | 'isToggleButton'
+  'type' | 'theme' | 'size' | 'isToggleButton'
 > = {
   type: 'button',
   theme: 'default',
+  size: 'big',
   isToggleButton: false,
 };
 
@@ -129,6 +138,7 @@ export const SecondaryButton = <
     `,
     getThemeStyles(props.theme),
     getStateStyles(props.isDisabled, isActive, props.theme),
+    getSizeStyles(props.size),
   ];
 
   return (
@@ -156,6 +166,7 @@ export const SecondaryButton = <
             {props.iconLeft &&
               cloneElement(props.iconLeft, {
                 color: getIconColor(props),
+                size: props.size === 'small' ? 'medium' : 'big',
               })}
           </span>
         )}

@@ -59,7 +59,7 @@ export type TPrimaryButtonProps<
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * Indicates the size of the icon.
+   * Indicates the size of the button.
    */
   size?: 'small' | 'big';
   /**

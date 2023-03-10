@@ -3,6 +3,7 @@ import type { Theme } from '@emotion/react';
 import { warning } from '@commercetools-uikit/utils';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
+import type { TSecondaryButtonProps } from './secondary-button';
 
 const getStateStyles = (
   isDisabled: boolean,
@@ -103,4 +104,25 @@ const getThemeStyles = (theme: Theme) => {
   }
 };
 
-export { getStateStyles, getThemeStyles };
+const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
+  switch (size) {
+    case 'small':
+      return css`
+        border-radius: ${designTokens.borderRadiusForButtonAsSmall};
+        padding: 0 ${designTokens.spacing20} 0 ${designTokens.spacing20};
+        height: ${designTokens.heightForButtonAsSmall};
+      `;
+
+    case 'big':
+      return css`
+        padding: 0 ${designTokens.spacing30} 0 ${designTokens.spacing30};
+        height: ${designTokens.heightForButtonAsBig};
+        border-radius: ${designTokens.borderRadiusForButtonAsBig};
+      `;
+
+    default:
+      return css``;
+  }
+};
+
+export { getStateStyles, getThemeStyles, getSizeStyles };
