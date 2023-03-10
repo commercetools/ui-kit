@@ -9,7 +9,7 @@ import {
 import omit from 'lodash/omit';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { getBaseStyles, getSizeStyles } from './secondary-icon-button.styles';
+import { getBaseStyles } from './secondary-icon-button.styles';
 
 const propsToOmit = ['type'];
 
@@ -77,7 +77,7 @@ const SecondaryIconButton = <TStringOrComponent extends ElementType = 'button'>(
       label={props.label}
       onClick={props.onClick}
       isDisabled={props.isDisabled}
-      css={[getBaseStyles(props), getSizeStyles(props.size)]}
+      css={getBaseStyles(props)}
     >
       {props.icon &&
         cloneElement(props.icon, {
@@ -91,7 +91,7 @@ SecondaryIconButton.displayName = 'SecondaryIconButton';
 SecondaryIconButton.defaultProps = {
   color: 'solid',
   type: 'button',
-  size: 'medium',
+  size: 'big',
   isDisabled: false,
 };
 

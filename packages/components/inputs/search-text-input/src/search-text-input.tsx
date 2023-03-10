@@ -203,7 +203,8 @@ const SearchTextInput: ForwardRefExoticComponent<
             !props.isDisabled &&
             !props.isReadOnly && (
               <SecondaryIconButton
-                icon={<CloseIcon size="medium" />}
+                icon={<CloseIcon />}
+                size="medium"
                 label={'clear-button'}
                 onClick={handleClear}
                 css={getClearIconButtonStyles(props)}
