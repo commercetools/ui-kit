@@ -200,6 +200,7 @@
   "--border-for-view-switcher": "none",
   "--border-for-select-input-tag": "none",
   "--border-for-radio-input-option": "1px",
+  "--border-for-calendar-menu-when-focused": "1px solid var(--color-primary)",
   "--border-color-for-input": "hsl(0, 0%, 60%)",
   "--border-color-for-input-when-focused": "#00b39e",
   "--border-color-for-input-when-disabled": "#ccc",

@@ -222,6 +222,7 @@ export const themes = {
     borderForViewSwitcher: 'none',
     borderForSelectInputTag: 'none',
     borderForRadioInputOption: '1px',
+    borderForCalendarMenuWhenFocused: '1px solid var(--color-primary)',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -599,6 +600,7 @@ export const themes = {
     borderForViewSwitcher: '1px solid var(--color-neutral)',
     borderForSelectInputTag: '1px solid var(--color-neutral-85)',
     borderForRadioInputOption: '2px',
+    borderForCalendarMenuWhenFocused: 'none',
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
@@ -677,7 +679,7 @@ export const themes = {
     boxShadowForViewSwitcher: 'none',
     boxShadowForViewSwitcherWhenSelected: 'none',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 1px',
-    boxShadowForCalendarMenuWhenFocused: 'inset 0 0 0 1px var(--color-primary)',
+    boxShadowForCalendarMenuWhenFocused: 'inset 0 0 0 2px var(--color-primary)',
     fontColorForTextWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTableHeader: '#1a1a1a',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
@@ -1124,6 +1126,8 @@ const designTokens = {
   borderForViewSwitcher: 'var(--border-for-view-switcher, none)',
   borderForSelectInputTag: 'var(--border-for-select-input-tag, none)',
   borderForRadioInputOption: 'var(--border-for-radio-input-option, 1px)',
+  borderForCalendarMenuWhenFocused:
+    'var(--border-for-calendar-menu-when-focused, 1px solid var(--color-primary))',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',

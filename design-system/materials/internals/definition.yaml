@@ -620,6 +620,8 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-radio-input-option:
           choice: border-width-1
+        border-for-calendar-menu-when-focused:
+          choice: '1px solid var(--color-primary)'
 
     borderColors:
       label: Border Colors
@@ -1415,6 +1417,8 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral-85)'
         border-for-radio-input-option:
           choice: border-width-2
+        border-for-calendar-menu-when-focused:
+          choice: 'none'
 
     borderColors:
       label: Border Colors
@@ -1572,7 +1576,7 @@ decisionGroupsByTheme:
         box-shadow-for-select-input-when-focused:
           choice: 'inset 0 0 0 1px'
         box-shadow-for-calendar-menu-when-focused:
-          choice: 'inset 0 0 0 1px var(--color-primary)'
+          choice: 'inset 0 0 0 2px var(--color-primary)'
 
     fontColors:
       label: Font Colors
