@@ -8,6 +8,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import Readme from './TOKENS.md';
 import definition from './definition.yaml';
 import deprecatedTokens from './deprecated-tokens';
+import { ChoicesDetailsList, ChoicesLinks } from './story/choices';
 
 const choiceGroupsByTheme =
   process.env.NODE_ENV !== 'production'
@@ -63,10 +64,11 @@ const Description = styled.p`
 const DeprecationBadge = () => <b style={{ color: 'orange' }}>DEPRECATED</b>;
 DeprecationBadge.displayName = 'DeprecationBadge';
 
-const getThemeChoiceByName = (theme, choiceName) =>
-  Object.values(theme)
+const getThemeChoiceByName = (theme, choiceName) => {
+  return Object.values(theme)
     .map((choiceGroup) => choiceGroup.choices)
     .find((choices) => choices[choiceName]);
+};
 
 const getChoiceValue = (choiceName, theme) => {
   const defaultChoice = getThemeChoiceByName(
@@ -91,15 +93,16 @@ const filterChoiceGroupValues = (choices, searchText) =>
       value.toLowerCase().includes(searchText.toLowerCase())
   );
 
-const filterDecisionGroupValues = (decisions, searchText) =>
-  Object.entries(decisions).filter(
-    ([key, decision]) =>
+const filterDecisionGroupValues = (decisions, searchText, theme) =>
+  Object.entries(decisions).filter(([key, decision]) => {
+    return (
       key.toLowerCase().includes(searchText.toLowerCase()) ||
       decision.choice.toLowerCase().includes(searchText.toLowerCase()) ||
-      getChoiceValue(decision.choice)
+      (getChoiceValue(decision.choice, theme) || '')
         .toLowerCase()
         .includes(searchText.toLowerCase())
-  );
+    );
+  });
 
 const filterStatesGroupValues = (states, searchText) =>
   Object.entries(states).filter(
@@ -215,7 +218,8 @@ ChoiceGroup.defaultProps = {
 const DecisionGroup = (props) => {
   const decisions = filterDecisionGroupValues(
     props.decisionGroup.decisions,
-    props.searchText
+    props.searchText,
+    allThemesNames[0]
   );
   return (
     <GroupStyle isVisible={decisions.length > 0}>
@@ -266,7 +270,7 @@ DecisionGroup.propTypes = {
     label: PropTypes.string.isRequired,
     prefix: PropTypes.string.isRequired,
     decisions: PropTypes.shape({
-      choice: PropTypes.string.isRequired,
+      choice: PropTypes.string,
       description: PropTypes.string,
     }),
   }).isRequired,
@@ -441,57 +445,25 @@ class Story extends Component {
     searchText: '',
   };
 
+  searchTextChangeHandler = (event) => {
+    this.setState({ searchText: event.target.value });
+  };
+
   render() {
     return (
       <Background>
         <TextInput
           value={this.state.searchText}
-          onChange={(event) => {
-            this.setState({ searchText: event.target.value });
-          }}
+          onChange={this.searchTextChangeHandler}
           horizontalConstraint="m"
         />
         <h2>Table of Contents</h2>
         <ul>
           <li>
-            <a
-              href="#choices"
-              onClick={(event) => {
-                event.preventDefault();
-                window.scrollTo(
-                  0,
-                  document.getElementById('choices').offsetTop
-                );
-              }}
-            >
-              Choices
-            </a>
-            <ul>
-              {Object.entries(choiceGroupsByTheme.default).map(
-                ([key, choiceGroup]) =>
-                  filterChoiceGroupValues(
-                    choiceGroup.choices,
-                    this.state.searchText
-                  ).length > 0 && (
-                    <li key={key}>
-                      <a
-                        href={`#${choiceGroup.prefix}`}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          window.scrollTo(
-                            0,
-                            document.getElementById(
-                              `choice-${choiceGroup.prefix}`
-                            ).offsetTop
-                          );
-                        }}
-                      >
-                        {choiceGroup.label}
-                      </a>
-                    </li>
-                  )
-              )}
-            </ul>
+            <ChoicesLinks
+              config={choiceGroupsByTheme.default}
+              filterText={this.state.searchText}
+            />
           </li>
           <li>
             <a
@@ -551,7 +523,8 @@ class Story extends Component {
                 ([key, decisionGroup]) =>
                   filterDecisionGroupValues(
                     decisionGroup.decisions,
-                    this.state.searchText
+                    this.state.searchText,
+                    allThemesNames[0]
                   ).length > 0 && (
                     <li key={key}>
                       <a
@@ -580,6 +553,7 @@ class Story extends Component {
           This is the palette of values you may chose from when creating design
           tokens.
         </p>
+        <ChoicesDetailsList choiceGroupsByTheme={choiceGroupsByTheme} />
         <ChoiceGroup
           choiceGroup="colors"
           searchText={this.state.searchText}
@@ -653,6 +627,7 @@ class Story extends Component {
           (optionally in a certain state).
         </p>
         <DecisionGroup
+          theme={definition.decisionGroupsByTheme.default}
           decisionGroup={
             definition.decisionGroupsByTheme.default.backgroundColors
           }
@@ -664,6 +639,7 @@ class Story extends Component {
           )}
         />
         <DecisionGroup
+          theme={definition.decisionGroupsByTheme.default}
           decisionGroup={definition.decisionGroupsByTheme.default.borderColors}
           searchText={this.state.searchText}
           renderSample={(value) => (
@@ -673,6 +649,7 @@ class Story extends Component {
           )}
         />
         <DecisionGroup
+          theme={definition.decisionGroupsByTheme.default}
           decisionGroup={
             definition.decisionGroupsByTheme.default.borderRadiuses
           }
@@ -684,6 +661,7 @@ class Story extends Component {
           )}
         />
         <DecisionGroup
+          theme={definition.decisionGroupsByTheme.default}
           decisionGroup={definition.decisionGroupsByTheme.default.fontColors}
           searchText={this.state.searchText}
           renderSample={(value) => (
@@ -693,6 +671,7 @@ class Story extends Component {
           )}
         />
         <DecisionGroup
+          theme={definition.decisionGroupsByTheme.default}
           decisionGroup={definition.decisionGroupsByTheme.default.shadows}
           searchText={this.state.searchText}
           renderSample={(value) => (
