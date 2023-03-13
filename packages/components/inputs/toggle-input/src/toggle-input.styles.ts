@@ -126,9 +126,14 @@ const getNewThemeFocusIndicator = (props: TStyledSpanProps) => css`
 `;
 
 const getNewThemeMargin = (props: TStyledLabelProps) =>
+  `calc(2px + ${props.themedThumb[props.size].hoverAreaWidth} + (${
+    props.themedThumb[props.size].diameter
+  } - ${props.themedTrack[props.size].height}) / 2)`;
+
+const getMargin = (props: TStyledLabelProps) =>
   css`
     margin: ${props.isNewTheme
-      ? `${props.size === 'big' ? '14px' : '9px'} !important`
+      ? `${getNewThemeMargin(props)} !important`
       : 'unset'};
   `;
 
@@ -137,7 +142,7 @@ const Label = styled.label<TStyledLabelProps>`
   display: inline-block;
   cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
   align-self: center;
-  ${getNewThemeMargin}
+  ${getMargin}
 
   ${labelSizeStyles}
 
