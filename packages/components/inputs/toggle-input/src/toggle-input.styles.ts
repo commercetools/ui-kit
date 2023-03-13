@@ -130,7 +130,10 @@ const Label = styled.label<TStyledLabelProps>`
   display: inline-block;
   cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
   align-self: center;
-  margin: ${(props) => (props.isNewTheme ? '14px !important' : 'unset')};
+  margin: ${(props) =>
+    props.isNewTheme
+      ? `${props.size === 'big' ? '14px' : '9px'} !important`
+      : 'unset'};
 
   ${labelSizeStyles}
 
