@@ -62,7 +62,7 @@ export type TSecondaryButtonProps<
   /**
    * Indicates the size of the button.
    */
-  size?: 'small' | 'big';
+  size?: 'small' | 'medium' | 'big';
   /**
    * Indicates the color scheme of the button.
    */
@@ -166,7 +166,7 @@ export const SecondaryButton = <
             {props.iconLeft &&
               cloneElement(props.iconLeft, {
                 color: getIconColor(props),
-                size: props.size === 'small' ? 'medium' : 'big',
+                size: props.size === 'big' ? 'big' : 'medium',
               })}
           </span>
         )}

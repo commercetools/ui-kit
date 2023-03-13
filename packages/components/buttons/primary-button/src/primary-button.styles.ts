@@ -5,18 +5,20 @@ import type { TPrimaryButtonProps } from './primary-button';
 
 const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
   switch (size) {
+    // rendering the same style for now to not introduce a breaking change
     case 'small':
+    case 'medium':
       return css`
-        border-radius: ${designTokens.borderRadiusForButtonAsSmall};
+        height: ${designTokens.heightForButtonAsMedium};
+        border-radius: ${designTokens.borderRadiusForButtonAsMedium};
         padding: 0 ${designTokens.spacing20} 0 ${designTokens.spacing20};
-        height: ${designTokens.heightForButtonAsSmall};
       `;
 
     case 'big':
       return css`
-        padding: 0 ${designTokens.spacing30} 0 ${designTokens.spacing30};
         height: ${designTokens.heightForButtonAsBig};
         border-radius: ${designTokens.borderRadiusForButtonAsBig};
+        padding: 0 ${designTokens.spacing30} 0 ${designTokens.spacing30};
       `;
 
     default:

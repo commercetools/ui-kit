@@ -61,7 +61,7 @@ export type TPrimaryButtonProps<
   /**
    * Indicates the size of the button.
    */
-  size?: 'small' | 'big';
+  size?: 'small' | 'medium' | 'big';
   /**
    * Indicates the color scheme of the button.
    */
@@ -119,7 +119,7 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
             {props.iconLeft &&
               cloneElement(props.iconLeft, {
                 color: props.isDisabled ? 'neutral60' : 'surface',
-                size: props.size === 'small' ? 'medium' : 'big',
+                size: props.size === 'big' ? 'big' : 'medium',
               })}
           </span>
         )}

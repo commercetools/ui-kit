@@ -692,7 +692,7 @@ decisionGroupsByTheme:
       decisions:
         border-radius-for-button-as-big:
           choice: border-radius-6
-        border-radius-for-button-as-small:
+        border-radius-for-button-as-medium:
           choice: border-radius-4
         border-radius-for-button-as-icon-as-big:
           choice: border-radius-6
@@ -865,7 +865,7 @@ decisionGroupsByTheme:
       decisions:
         height-for-button-as-big:
           choice: '32px'
-        height-for-button-as-small:
+        height-for-button-as-medium:
           choice: '24px'
         height-for-button-as-icon-as-big:
           choice: '32px'
@@ -1414,7 +1414,7 @@ decisionGroupsByTheme:
       decisions:
         border-radius-for-button-as-big:
           choice: border-radius-4
-        border-radius-for-button-as-small:
+        border-radius-for-button-as-medium:
           choice: border-radius-4
         border-radius-for-button-as-icon-as-big:
           choice: border-radius-4
@@ -1627,7 +1627,7 @@ decisionGroupsByTheme:
       decisions:
         height-for-button-as-big:
           choice: '40px'
-        height-for-button-as-small:
+        height-for-button-as-medium:
           choice: '32px'
         height-for-button-as-icon-as-big:
           choice: '40px'
