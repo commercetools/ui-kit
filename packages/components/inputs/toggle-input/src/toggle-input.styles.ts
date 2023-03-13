@@ -125,15 +125,19 @@ const getNewThemeFocusIndicator = (props: TStyledSpanProps) => css`
   }
 `;
 
+const getNewThemeMargin = (props: TStyledLabelProps) =>
+  css`
+    margin: ${props.isNewTheme
+      ? `${props.size === 'big' ? '14px' : '9px'} !important`
+      : 'unset'};
+  `;
+
 const Label = styled.label<TStyledLabelProps>`
   position: relative;
   display: inline-block;
   cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
   align-self: center;
-  margin: ${(props) =>
-    props.isNewTheme
-      ? `${props.size === 'big' ? '14px' : '9px'} !important`
-      : 'unset'};
+  ${getNewThemeMargin}
 
   ${labelSizeStyles}
 
