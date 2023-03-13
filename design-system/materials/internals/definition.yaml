@@ -1087,7 +1087,7 @@ decisionGroupsByTheme:
         font-weight-for-table-header:
           choice: font-weight-400
         font-weight-for-text-when-bold:
-          choice: 'bold'
+          choice: font-weight-700
 
     margins:
       label: Margins

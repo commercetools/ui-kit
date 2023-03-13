@@ -449,7 +449,7 @@
   --font-weight-for-text-as-detail: 400;
   --font-weight-for-button: 400;
   --font-weight-for-table-header: 400;
-  --font-weight-for-text-when-bold: bold;
+  --font-weight-for-text-when-bold: 700;
   --margin-for-table-header: 8px;
   --margin-for-table-as-condensed: 8px;
   --margin-for-view-switcher-icon: 0 var(--spacing-10) 0 0;

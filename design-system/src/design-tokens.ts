@@ -405,7 +405,7 @@ export const themes = {
     fontWeightForTextAsDetail: '400',
     fontWeightForButton: '400',
     fontWeightForTableHeader: '400',
-    fontWeightForTextWhenBold: 'bold',
+    fontWeightForTextWhenBold: '700',
     marginForTableHeader: '8px',
     marginForTableAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-10) 0 0',
@@ -1409,7 +1409,7 @@ const designTokens = {
   fontWeightForTextAsDetail: 'var(--font-weight-for-text-as-detail, 400)',
   fontWeightForButton: 'var(--font-weight-for-button, 400)',
   fontWeightForTableHeader: 'var(--font-weight-for-table-header, 400)',
-  fontWeightForTextWhenBold: 'var(--font-weight-for-text-when-bold, bold)',
+  fontWeightForTextWhenBold: 'var(--font-weight-for-text-when-bold, 700)',
   marginForTableHeader: 'var(--margin-for-table-header, 8px)',
   marginForTableAsCondensed: 'var(--margin-for-table-as-condensed, 8px)',
   marginForViewSwitcherIcon:
