@@ -1652,6 +1652,10 @@ decisionGroupsByTheme:
           choice: color-primary-25
         font-color-for-flat-button-as-primary-when-hovered:
           choice: color-primary
+        font-color-for-link-as-primary:
+          choice: color-primary-25
+        font-color-for-link-as-primary-when-active:
+          choice: color-primary
 
     fontSizes:
       label: Font Sizes

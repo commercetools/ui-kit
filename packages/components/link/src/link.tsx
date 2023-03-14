@@ -91,10 +91,10 @@ const getTextColorValue = (tone: TLinkProps['tone'] = 'primary') => {
 
 const getActiveColorValue = (tone: string = 'primary') => {
   if (tone === 'primary') {
-    return designTokens.colorPrimary25;
+    return designTokens.fontColorForLinkAsPrimaryWhenActive;
   }
   if (tone === 'secondary') {
-    return designTokens.colorPrimary;
+    return designTokens.fontColorForLinkAsSecondaryWhenActive;
   }
 
   return designTokens.fontColorForLinkAsInverted;

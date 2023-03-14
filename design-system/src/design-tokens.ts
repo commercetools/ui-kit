@@ -715,6 +715,8 @@ export const themes = {
     fontColorForCheckboxInputLabelWhenReadonly: 'hsl(0, 0%, 40%)',
     fontColorForFlatButtonAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
     fontColorForFlatButtonAsPrimaryWhenHovered: '#00b39e',
+    fontColorForLinkAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForLinkAsPrimaryWhenActive: '#00b39e',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.25rem',
