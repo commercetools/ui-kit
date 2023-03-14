@@ -452,6 +452,8 @@ componentGroups:
     description: 'Calendar menu element'
   flat-button:
     description: 'Flat button elements'
+  secondary-icon-button:
+    description: 'Secondary icon button elements'
 
 decisionGroupsByTheme:
   default:
@@ -932,6 +934,10 @@ decisionGroupsByTheme:
           choice: color-solid
         font-color-for-flat-button-as-inverted:
           choice: color-surface
+        font-color-for-secondary-icon-button-as-primary:
+          choice: color-primary
+        font-color-for-secondary-icon-button-as-primary-when-hovered:
+          choice: color-primary-25
 
     heights:
       label: Height
@@ -1655,6 +1661,10 @@ decisionGroupsByTheme:
         font-color-for-link-as-primary:
           choice: color-primary-25
         font-color-for-link-as-primary-when-active:
+          choice: color-primary
+        font-color-for-secondary-icon-button-as-primary:
+          choice: color-primary-25
+        font-color-for-secondary-icon-button-as-primary-when-hovered:
           choice: color-primary
 
     fontSizes:
