@@ -15,7 +15,7 @@ type TDropdownStylesProps = {
 const getBackgroundColor = (props: TDropdownStylesProps) => {
   if (props.isSelected) {
     if (props.isMoreStylesDropdownItem)
-      return designTokens.backgroundColorForInputWhenSelected;
+      return designTokens.backgroundColorForInputWhenActive;
     return designTokens.colorAccent95;
   }
   return designTokens.colorSurface;
