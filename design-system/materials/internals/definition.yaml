@@ -308,6 +308,8 @@ variants:
     description: 'To differentiate component positive style'
   information:
     description: 'To differentiate component information style'
+  critical:
+    description: 'To differentiate component critical style'
 
 componentGroups:
   button:
@@ -448,6 +450,8 @@ componentGroups:
     description: 'Rich text button element'
   calendar-menu:
     description: 'Calendar menu element'
+  flat-button:
+    description: 'Flat button elements'
 
 decisionGroupsByTheme:
   default:
@@ -916,6 +920,18 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         font-color-for-radio-input-when-warning:
           choice: color-warning
+        font-color-for-flat-button-as-primary:
+          choice: color-primary
+        font-color-for-flat-button-as-primary-when-hovered:
+          choice: color-primary-25
+        font-color-for-flat-button-as-critical:
+          choice: color-error
+        font-color-for-flat-button-as-critical-when-hovered:
+          choice: color-error-25
+        font-color-for-flat-button-as-secondary:
+          choice: color-solid
+        font-color-for-flat-button-as-inverted:
+          choice: color-surface
 
     heights:
       label: Height
@@ -1632,6 +1648,10 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         font-color-for-checkbox-input-label-when-readonly:
           choice: color-neutral-40
+        font-color-for-flat-button-as-primary:
+          choice: color-primary-25
+        font-color-for-flat-button-as-primary-when-hovered:
+          choice: color-primary
 
     fontSizes:
       label: Font Sizes

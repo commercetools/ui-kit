@@ -353,6 +353,14 @@ export const themes = {
     fontColorForRadioInputWhenError: '#e60050',
     fontColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
     fontColorForRadioInputWhenWarning: '#f16d0e',
+    fontColorForFlatButtonAsPrimary: '#00b39e',
+    fontColorForFlatButtonAsPrimaryWhenHovered:
+      'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForFlatButtonAsCritical: '#e60050',
+    fontColorForFlatButtonAsCriticalWhenHovered:
+      'hsl(339.1304347826087, 100%, 25%)',
+    fontColorForFlatButtonAsSecondary: '#1a1a1a',
+    fontColorForFlatButtonAsInverted: '#fff',
     heightForButtonAsBig: '32px',
     heightForButtonAsMedium: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -705,6 +713,8 @@ export const themes = {
     fontColorForCheckboxInputLabelWhenError: '#e60050',
     fontColorForCheckboxInputLabelWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForCheckboxInputLabelWhenReadonly: 'hsl(0, 0%, 40%)',
+    fontColorForFlatButtonAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForFlatButtonAsPrimaryWhenHovered: '#00b39e',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.25rem',
@@ -1351,6 +1361,18 @@ const designTokens = {
     'var(--font-color-for-radio-input-when-readonly, hsl(0, 0%, 60%))',
   fontColorForRadioInputWhenWarning:
     'var(--font-color-for-radio-input-when-warning, #f16d0e)',
+  fontColorForFlatButtonAsPrimary:
+    'var(--font-color-for-flat-button-as-primary, #00b39e)',
+  fontColorForFlatButtonAsPrimaryWhenHovered:
+    'var(--font-color-for-flat-button-as-primary-when-hovered, hsl(172.9608938547486, 100%, 25%))',
+  fontColorForFlatButtonAsCritical:
+    'var(--font-color-for-flat-button-as-critical, #e60050)',
+  fontColorForFlatButtonAsCriticalWhenHovered:
+    'var(--font-color-for-flat-button-as-critical-when-hovered, hsl(339.1304347826087, 100%, 25%))',
+  fontColorForFlatButtonAsSecondary:
+    'var(--font-color-for-flat-button-as-secondary, #1a1a1a)',
+  fontColorForFlatButtonAsInverted:
+    'var(--font-color-for-flat-button-as-inverted, #fff)',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
