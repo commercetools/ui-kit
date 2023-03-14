@@ -1,5 +1,11 @@
 // TODO: @redesign cleanup
-import { useContext, useRef, ReactNode, MouseEvent, RefObject } from 'react';
+import {
+  useContext,
+  useRef,
+  type ReactNode,
+  type MouseEvent,
+  type RefObject,
+} from 'react';
 import {
   AngleUpIcon,
   AngleDownIcon,
