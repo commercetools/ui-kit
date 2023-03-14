@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { useSlate } from 'slate-react';
-import { useTheme } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import { useIntl } from 'react-intl';
 import { css, type SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -56,6 +56,7 @@ import type { TDropdownLabel } from './dropdown';
 type TMoreStylesDropdownItem = {
   value?: string;
   children?: ReactNode;
+  isMoreStylesDropdownItem?: boolean;
 };
 
 type TStylesDropdownItem = {
@@ -115,7 +116,7 @@ const MoreStylesDropdownItem = (props: TMoreStylesDropdownItem) => {
   }
 
   return (
-    <DropdownItem {...props}>
+    <DropdownItem {...props} isMoreStylesDropdownItem>
       <Inline scale="xs" alignItems="center" justifyContent="flex-start">
         <Icon size="medium" />
         <div>{props.children}</div>
@@ -348,7 +349,7 @@ const RichTextEditorBody = forwardRef<
           />
           <Divider
             css={css`
-              ${isNewTheme ? 'margin: 8px 0' : 'inherit'}
+              margin: ${designTokens.marginForRichTextDivider};
             `}
           />
           <Tooltip
@@ -422,7 +423,11 @@ const RichTextEditorBody = forwardRef<
           </Tooltip>
           {props.showExpandIcon && (
             <>
-              <Divider />
+              <Divider
+                css={css`
+                  margin: ${designTokens.marginForRichTextDivider};
+                `}
+              />
               <Tooltip
                 title={intl.formatMessage(messages.expandButtonLabel)}
                 placement="bottom-end"

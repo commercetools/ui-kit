@@ -176,6 +176,12 @@ export const themes = {
       'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForLocalizedInputLabelWhenDisabled:
       'hsl(195, 35.2941176471%, 98%)',
+    backgroundColorForLocalizedRichTextBodyButtonWhenActive:
+      'hsl(195, 35.2941176471%, 30%)',
+    backgroundColorForLocalizedRichTextBodyButton: 'hsl(0, 0%, 90%)',
+    backgroundColorForRichTextDropdownWhenHovered: 'hsl(0, 0%, 90%)',
+    backgroundColorForRichTextMoreStylesDropdownWhenHovered: 'hsl(0, 0%, 90%)',
+    backgroundColorForRichTextButton: 'hsl(195, 35.2941176471%, 30%)',
     backgroundColorForTooltip: '#213c45',
     backgroundColorForViewSwitcher: '#fff',
     backgroundColorForViewSwitcherWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
@@ -404,6 +410,7 @@ export const themes = {
     marginRightForPrimaryActionDropdown: '4px',
     marginTopForPrimaryActionDropdown: 'none',
     marginForLocalizedRichTextBodyButton: 'none',
+    marginForRichTextDivider: '0 var(--spacing-10)',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -424,7 +431,7 @@ export const themes = {
     paddingForInput: '8px',
     paddingForMultilineInput: 'var(--spacing-10) var(--spacing-20)',
     paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
-    paddingForLocalizedRichTextDropdownButton: '3px',
+    paddingForLocalizedRichTextDropdownButton: '3px var(--spacing-20)',
     paddingForLocalizedRichTextBodyButton: 'var(--spacing-10)',
     paddingForLocalizedInputLabel: '0 var(--spacing-20)',
     paddingForRichTextInput: 'none',
@@ -521,6 +528,13 @@ export const themes = {
     backgroundColorForLocalizedInputLabel: '#fff',
     backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(0, 0%, 95%)',
     backgroundColorForLocalizedInputLabelWhenDisabled: 'hsl(0, 0%, 95%)',
+    backgroundColorForLocalizedRichTextBodyButtonWhenActive:
+      'hsl(195, 35.2941176471%, 20%)',
+    backgroundColorForLocalizedRichTextBodyButton: 'hsl(0, 0%, 95%)',
+    backgroundColorForRichTextDropdownWhenHovered: 'hsl(0, 0%, 95%)',
+    backgroundColorForRichTextMoreStylesDropdownWhenHovered:
+      'hsl(203.05555555555554, 93.9130434783%, 95%)',
+    backgroundColorForRichTextButton: 'hsl(195, 35.2941176471%, 20%)',
     backgroundColorForTooltip: 'hsl(195, 35.2941176471%, 10%)',
     backgroundColorForViewSwitcherWhenDisabled: '#fff',
     backgroundColorForViewSwitcherWhenSelected: 'hsl(0, 0%, 95%)',
@@ -730,7 +744,8 @@ export const themes = {
     marginLeftForRadioInputLabel: '4px',
     marginRightForPrimaryActionDropdown: '8px',
     marginTopForPrimaryActionDropdown: '8px',
-    marginForLocalizedRichTextBodyButton: 'var(--spacing-10) 2px',
+    marginForLocalizedRichTextBodyButton: 'var(--spacing-20) 2px',
+    marginForRichTextDivider: '12px 2px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -752,8 +767,8 @@ export const themes = {
       '0 0 var(--spacing-40)',
     paddingForInput: '16px',
     paddingForMultilineInput: '8px',
-    paddingForLocalizedRichTextInputLabel: '8px',
-    paddingForLocalizedRichTextDropdownButton: '5px',
+    paddingForLocalizedRichTextInputLabel: 'var(--spacing-20) 12px',
+    paddingForLocalizedRichTextDropdownButton: '5px var(--spacing-20)',
     paddingForLocalizedRichTextBodyButton: 'var(--spacing-20)',
     paddingForRichTextInput: 'var(--spacing-20) var(--spacing-30)',
     paddingForRichTextToolbar: 'none',
@@ -1006,6 +1021,16 @@ const designTokens = {
     'var(--background-color-for-localized-input-label-when-readonly, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForLocalizedInputLabelWhenDisabled:
     'var(--background-color-for-localized-input-label-when-disabled, hsl(195, 35.2941176471%, 98%))',
+  backgroundColorForLocalizedRichTextBodyButtonWhenActive:
+    'var(--background-color-for-localized-rich-text-body-button-when-active, hsl(195, 35.2941176471%, 30%))',
+  backgroundColorForLocalizedRichTextBodyButton:
+    'var(--background-color-for-localized-rich-text-body-button, hsl(0, 0%, 90%))',
+  backgroundColorForRichTextDropdownWhenHovered:
+    'var(--background-color-for-rich-text-dropdown-when-hovered, hsl(0, 0%, 90%))',
+  backgroundColorForRichTextMoreStylesDropdownWhenHovered:
+    'var(--background-color-for-rich-text-more-styles-dropdown-when-hovered, hsl(0, 0%, 90%))',
+  backgroundColorForRichTextButton:
+    'var(--background-color-for-rich-text-button, hsl(195, 35.2941176471%, 30%))',
   backgroundColorForTooltip: 'var(--background-color-for-tooltip, #213c45)',
   backgroundColorForViewSwitcher:
     'var(--background-color-for-view-switcher, #fff)',
@@ -1363,6 +1388,8 @@ const designTokens = {
     'var(--margin-top-for-primary-action-dropdown, none)',
   marginForLocalizedRichTextBodyButton:
     'var(--margin-for-localized-rich-text-body-button, none)',
+  marginForRichTextDivider:
+    'var(--margin-for-rich-text-divider, 0 var(--spacing-10))',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
@@ -1398,7 +1425,7 @@ const designTokens = {
   paddingForLocalizedRichTextInputLabel:
     'var(--padding-for-localized-rich-text-input-label, 0 var(--spacing-20))',
   paddingForLocalizedRichTextDropdownButton:
-    'var(--padding-for-localized-rich-text-dropdown-button, 3px)',
+    'var(--padding-for-localized-rich-text-dropdown-button, 3px var(--spacing-20))',
   paddingForLocalizedRichTextBodyButton:
     'var(--padding-for-localized-rich-text-body-button, var(--spacing-10))',
   paddingForLocalizedInputLabel:

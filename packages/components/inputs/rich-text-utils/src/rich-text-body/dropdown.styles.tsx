@@ -9,6 +9,16 @@ type TDropdownStylesProps = {
   isOpen?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  isMoreStylesDropdownItem?: boolean;
+};
+
+const getBackgroundColor = (props: TDropdownStylesProps) => {
+  if (props.isSelected) {
+    if (props.isMoreStylesDropdownItem)
+      return designTokens.backgroundColorForInputWhenSelected;
+    return designTokens.colorAccent95;
+  }
+  return designTokens.colorSurface;
 };
 
 const DropdownItem = styled.button<TDropdownStylesProps>`
@@ -19,13 +29,15 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   padding: ${designTokens.spacing10} ${designTokens.spacing20};
   font-family: ${designTokens.fontFamilyDefault};
   display: block;
-  background-color: ${(props) =>
-    props.isSelected ? designTokens.colorAccent95 : designTokens.colorSurface};
+  background-color: ${(props) => getBackgroundColor(props)};
 
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${designTokens.colorNeutral95};
+    background-color: ${(props) =>
+      props.isMoreStylesDropdownItem
+        ? designTokens.backgroundColorForSelectInputOptionWhenHovered
+        : designTokens.backgroundColorForRichTextDropdownWhenHovered};
   }
 `;
 
@@ -41,11 +53,11 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
     justify-content: center;
     align-items: center;
     padding: ${props.isStyleButton
-      ? `${designTokens.paddingForLocalizedRichTextDropdownButton} ${designTokens.spacing20}`
+      ? `${designTokens.paddingForLocalizedRichTextDropdownButton}`
       : designTokens.paddingForLocalizedRichTextBodyButton};
 
     &:hover {
-      background-color: ${designTokens.colorNeutral95};
+      background-color: ${designTokens.backgroundColorForRichTextDropdownWhenHovered};
     }
   `,
   props.isIndeterminate &&
@@ -55,7 +67,7 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
   props.isOpen &&
     css`
       &:not(:hover) {
-        background-color: ${designTokens.colorAccent20};
+        background-color: ${designTokens.backgroundColorForRichTextButton};
         color: ${designTokens.colorSurface};
 
         svg {

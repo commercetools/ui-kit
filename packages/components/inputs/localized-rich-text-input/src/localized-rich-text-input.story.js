@@ -81,7 +81,7 @@ const StoryWrapper = (props) => {
       horizontalConstraint={select(
         'horizontalConstraint',
         Constraints.getAcceptedMaxPropValues(7),
-        7
+        10
       )}
       hasError={boolean('hasError', false)}
       hasWarning={boolean('hasWarning', false)}

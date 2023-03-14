@@ -37,7 +37,7 @@ const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
           border: 0;
           cursor: pointer;
           background: ${props.isActive
-            ? designTokens.colorAccent20
+            ? designTokens.backgroundColorForLocalizedRichTextBodyButtonWhenActive
             : 'transparent'};
           display: flex;
           justify-content: center;
@@ -53,8 +53,8 @@ const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
           &:hover,
           &:focus {
             background: ${props.isActive
-              ? designTokens.colorAccent20
-              : designTokens.colorNeutral95};
+              ? designTokens.backgroundColorForLocalizedRichTextBodyButtonWhenActive
+              : designTokens.backgroundColorForLocalizedRichTextBodyButton};
           }
 
           svg {
