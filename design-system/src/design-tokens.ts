@@ -424,10 +424,14 @@ export const themes = {
     paddingForInput: '8px',
     paddingForMultilineInput: 'var(--spacing-10) var(--spacing-20)',
     paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
+    paddingForLocalizedRichTextDropdownButton: '3px',
+    paddingForLocalizedRichTextBodyButton: 'var(--spacing-10)',
     paddingForLocalizedInputLabel: '0 var(--spacing-20)',
     paddingForRichTextInput: 'none',
     paddingForRichTextToolbar: 'var(--spacing-10) 7px',
     paddingLeftForRichTextToolbar: '3px',
+    paddingForRichTextEditorContainer:
+      '6px var(--spacing-20) var(--spacing-10)',
     paddingForLocalizedMultilineTextInputLabel: '0 var(--spacing-20)',
     paddingForTagRemoveIcon: '0 var(--spacing-10)',
     paddingForTooltip: 'var(--spacing-10) var(--spacing-20)',
@@ -726,7 +730,7 @@ export const themes = {
     marginLeftForRadioInputLabel: '4px',
     marginRightForPrimaryActionDropdown: '8px',
     marginTopForPrimaryActionDropdown: '8px',
-    marginForLocalizedRichTextBodyButton: '0 calc(var(--spacing-10) - 2px)',
+    marginForLocalizedRichTextBodyButton: 'var(--spacing-10) 2px',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -749,9 +753,12 @@ export const themes = {
     paddingForInput: '16px',
     paddingForMultilineInput: '8px',
     paddingForLocalizedRichTextInputLabel: '8px',
+    paddingForLocalizedRichTextDropdownButton: '5px',
+    paddingForLocalizedRichTextBodyButton: 'var(--spacing-20)',
     paddingForRichTextInput: 'var(--spacing-20) var(--spacing-30)',
     paddingForRichTextToolbar: 'none',
     paddingLeftForRichTextToolbar: 'none',
+    paddingForRichTextEditorContainer: 'var(--spacing-20) 0 0',
     paddingForLocalizedInputLabel: '0 12px',
     paddingForTagRemoveIcon: '0 12px',
     paddingForTooltip: 'var(--spacing-20) 12px',
@@ -1390,6 +1397,10 @@ const designTokens = {
     'var(--padding-for-multiline-input, var(--spacing-10) var(--spacing-20))',
   paddingForLocalizedRichTextInputLabel:
     'var(--padding-for-localized-rich-text-input-label, 0 var(--spacing-20))',
+  paddingForLocalizedRichTextDropdownButton:
+    'var(--padding-for-localized-rich-text-dropdown-button, 3px)',
+  paddingForLocalizedRichTextBodyButton:
+    'var(--padding-for-localized-rich-text-body-button, var(--spacing-10))',
   paddingForLocalizedInputLabel:
     'var(--padding-for-localized-input-label, 0 var(--spacing-20))',
   paddingForRichTextInput: 'var(--padding-for-rich-text-input, none)',
@@ -1397,6 +1408,8 @@ const designTokens = {
     'var(--padding-for-rich-text-toolbar, var(--spacing-10) 7px)',
   paddingLeftForRichTextToolbar:
     'var(--padding-left-for-rich-text-toolbar, 3px)',
+  paddingForRichTextEditorContainer:
+    'var(--padding-for-rich-text-editor-container, 6px var(--spacing-20) var(--spacing-10))',
   paddingForLocalizedMultilineTextInputLabel:
     'var(--padding-for-localized-multiline-text-input-label, 0 var(--spacing-20))',
   paddingForTagRemoveIcon:

@@ -367,9 +367,13 @@ componentGroups:
   localized-multiline-text-input-label:
     description: 'Localized multiline text input label elements'
   localized-rich-text-body-button:
+    description: 'Localized rich text input button elements'
+  localized-rich-text-dropdown-button:
     description: 'Localized rich text input dropdown elements'
   rich-text-input:
     description: 'rich text input elements'
+  rich-text-editor-container:
+    description: 'Rich text editor container elements'
   tooltip:
     description: 'Tooltip elements'
   view-switcher:
@@ -1112,6 +1116,10 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-10) var(--spacing-20)'
         padding-for-localized-rich-text-input-label:
           choice: '0 var(--spacing-20)'
+        padding-for-localized-rich-text-dropdown-button:
+          choice: '3px'
+        padding-for-localized-rich-text-body-button:
+          choice: 'var(--spacing-10)'
         padding-for-localized-input-label:
           choice: '0 var(--spacing-20)'
         padding-for-rich-text-input:
@@ -1120,6 +1128,8 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-10) 7px'
         padding-left-for-rich-text-toolbar:
           choice: '3px'
+        padding-for-rich-text-editor-container:
+          choice: '6px var(--spacing-20) var(--spacing-10)'
         padding-for-localized-multiline-text-input-label:
           choice: '0 var(--spacing-20)'
         padding-for-tag-remove-icon:
@@ -1720,7 +1730,7 @@ decisionGroupsByTheme:
         margin-top-for-primary-action-dropdown:
           choice: spacing-20
         margin-for-localized-rich-text-body-button:
-          choice: '0 calc(var(--spacing-10) - 2px)'
+          choice: 'var(--spacing-10) 2px'
 
     paddings:
       label: Paddings
@@ -1764,12 +1774,18 @@ decisionGroupsByTheme:
           choice: spacing-20
         padding-for-localized-rich-text-input-label:
           choice: spacing-20
+        padding-for-localized-rich-text-dropdown-button:
+          choice: '5px'
+        padding-for-localized-rich-text-body-button:
+          choice: 'var(--spacing-20)'
         padding-for-rich-text-input:
           choice: 'var(--spacing-20) var(--spacing-30)'
         padding-for-rich-text-toolbar:
           choice: 'none'
         padding-left-for-rich-text-toolbar:
           choice: 'none'
+        padding-for-rich-text-editor-container:
+          choice: 'var(--spacing-20) 0 0'
         padding-for-localized-input-label:
           choice: '0 12px'
         padding-for-tag-remove-icon:

@@ -346,7 +346,11 @@ const RichTextEditorBody = forwardRef<
             }}
             getIsItemSelected={getIsMoreStyleMarkItemSelected}
           />
-          <Divider />
+          <Divider
+            css={css`
+              ${isNewTheme ? 'margin: 8px 0' : 'inherit'}
+            `}
+          />
           <Tooltip
             title={intl.formatMessage(messages.orderedListButtonLabel)}
             placement="bottom"

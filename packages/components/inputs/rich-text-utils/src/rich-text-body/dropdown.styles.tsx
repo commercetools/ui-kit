@@ -41,8 +41,8 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
     justify-content: center;
     align-items: center;
     padding: ${props.isStyleButton
-      ? `calc(${designTokens.spacing10} - 1px) ${designTokens.spacing20}`
-      : designTokens.spacing10};
+      ? `${designTokens.paddingForLocalizedRichTextDropdownButton} ${designTokens.spacing20}`
+      : designTokens.paddingForLocalizedRichTextBodyButton};
 
     &:hover {
       background-color: ${designTokens.colorNeutral95};

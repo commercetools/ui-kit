@@ -146,8 +146,7 @@ const reset = (props: TRichTextBodyStylesProps) => [
 ];
 
 export const EditorContainer = styled.div<TRichTextBodyStylesProps>`
-  padding: ${designTokens.spacing20} ${designTokens.spacing30} 0
-    ${designTokens.spacing30};
+  padding: ${designTokens.paddingForRichTextEditorContainer};
   border-radius: ${designTokens.borderRadiusForInput};
   font-family: ${designTokens.fontFamilyDefault};
   border-color: ${(props) => getBorderColor(props)};
