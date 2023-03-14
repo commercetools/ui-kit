@@ -679,7 +679,7 @@ export const themes = {
     boxShadowForViewSwitcher: 'none',
     boxShadowForViewSwitcherWhenSelected: 'none',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 1px',
-    boxShadowForCalendarMenuWhenFocused: 'inset 0 0 0 2px var(--color-primary)',
+    boxShadowForCalendarMenuWhenFocused: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
     fontColorForTextWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTableHeader: '#1a1a1a',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',

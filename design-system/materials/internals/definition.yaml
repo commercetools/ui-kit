@@ -1576,7 +1576,7 @@ decisionGroupsByTheme:
         box-shadow-for-select-input-when-focused:
           choice: 'inset 0 0 0 1px'
         box-shadow-for-calendar-menu-when-focused:
-          choice: 'inset 0 0 0 2px var(--color-primary)'
+          choice: '0 2px 5px 0px rgba(0, 0, 0, 0.15)'
 
     fontColors:
       label: Font Colors
