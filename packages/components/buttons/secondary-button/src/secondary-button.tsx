@@ -62,7 +62,7 @@ export type TSecondaryButtonProps<
   /**
    * Indicates the size of the button.
    */
-  size?: 'small' | 'medium' | 'big';
+  size?: 'medium' | 'big';
   /**
    * Indicates the color scheme of the button.
    */
