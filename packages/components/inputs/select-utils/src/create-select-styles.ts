@@ -201,6 +201,7 @@ const optionStyles = () => (base: TBase, state: TState) => {
     paddingRight: designTokens.paddingRightForSelectInputOptions,
     paddingTop: designTokens.paddingTopForSelectInputOptions,
     paddingBottom: designTokens.paddingBottomForSelectInputOptions,
+    lineHeight: designTokens.lineHeightForSelectInputOptions,
     color: (() => {
       if (!state.isDisabled) return designTokens.fontColorForInput;
       if (state.isSelected) return designTokens.fontColorForInput;

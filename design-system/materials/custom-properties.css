@@ -441,6 +441,7 @@
   --line-height-for-text-as-h5: inherit;
   --line-height-for-text-as-body: inherit;
   --line-height-for-text-as-detail: inherit;
+  --line-height-for-select-input-options: inherit;
   --font-weight-for-text-as-h1: 300;
   --font-weight-for-text-as-h2: 300;
   --font-weight-for-text-as-h3: 300;

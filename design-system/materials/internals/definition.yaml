@@ -1058,6 +1058,8 @@ decisionGroupsByTheme:
         line-height-for-text-as-detail:
           description: ''
           choice: 'inherit'
+        line-height-for-select-input-options:
+          choice: 'inherit'
 
     fontWeights:
       label: Font Weights
@@ -1697,6 +1699,8 @@ decisionGroupsByTheme:
         line-height-for-text-as-detail:
           description: ''
           choice: line-height-20
+        line-height-for-select-input-options:
+          choice: line-height-40
 
     fontWeights:
       label: Font Weights
