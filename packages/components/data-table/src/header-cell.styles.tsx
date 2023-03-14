@@ -1,3 +1,4 @@
+// TODO: @redesign cleanup
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { getCellInnerStyles } from './cell.styles';
@@ -87,6 +88,7 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
 type TBaseHeaderCell = {
   disableHeaderStickiness?: boolean;
   shouldClipContent?: boolean;
+  isNewTheme?: boolean;
 };
 const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   color: ${designTokens.fontColorForTableHeader};
@@ -116,16 +118,19 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
    * - not using "border-bottom" since it stands out in front of the resize indicator and counts towards the row height
    * - not using "box-shadow" since it's already used for the column divider
    */
-  :before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 1px;
-    bottom: 0;
-    left: 0;
-    background-color: ${designTokens.borderColorForTableHeaderAsBottom};
-  }
+  ${(props) =>
+    !props.isNewTheme &&
+    `:before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: ${designTokens.borderColorForTableHeaderAsBottom};
+    };`}
+
   ${HeaderCellInner} {
     ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}
   }
