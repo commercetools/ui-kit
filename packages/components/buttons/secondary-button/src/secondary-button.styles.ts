@@ -112,14 +112,14 @@ const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
       return css`
         height: ${designTokens.heightForButtonAsMedium};
         border-radius: ${designTokens.borderRadiusForButtonAsMedium};
-        padding: 0 ${designTokens.spacing20} 0 ${designTokens.spacing20};
+        padding: ${designTokens.paddingForButtonAsMedium};
       `;
 
     case 'big':
       return css`
         height: ${designTokens.heightForButtonAsBig};
         border-radius: ${designTokens.borderRadiusForButtonAsBig};
-        padding: 0 ${designTokens.spacing30} 0 ${designTokens.spacing30};
+        padding: ${designTokens.paddingForButtonAsBig};
       `;
 
     default:

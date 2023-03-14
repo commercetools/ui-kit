@@ -1136,6 +1136,10 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-20)'
         padding-for-primary-action-dropdown-icon:
           choice: '0 var(--spacing-10)'
+        padding-for-button-as-medium:
+          choice: '0 var(--spacing-20)'
+        padding-for-button-as-big:
+          choice: '0 var(--spacing-30)'
 
     shadows:
       label: Shadows
@@ -1778,6 +1782,10 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-30)'
         padding-for-primary-action-dropdown-icon:
           choice: '0 var(--spacing-20)'
+        padding-for-button-as-medium:
+          choice: '0 var(--spacing-30)'
+        padding-for-button-as-big:
+          choice: '0 var(--spacing-30)'
 
     shadows:
       label: Shadows

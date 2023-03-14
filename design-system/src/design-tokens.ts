@@ -441,6 +441,8 @@ export const themes = {
     paddingForSelectableSearchInputDropdown: '0 var(--spacing-20)',
     paddingForPrimaryActionDropdown: '0 var(--spacing-20)',
     paddingForPrimaryActionDropdownIcon: '0 var(--spacing-10)',
+    paddingForButtonAsMedium: '0 var(--spacing-20)',
+    paddingForButtonAsBig: '0 var(--spacing-30)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -762,6 +764,8 @@ export const themes = {
     paddingForSelectableSearchInputDropdown: '0 12px',
     paddingForPrimaryActionDropdown: '0 var(--spacing-30)',
     paddingForPrimaryActionDropdownIcon: '0 var(--spacing-20)',
+    paddingForButtonAsMedium: '0 var(--spacing-30)',
+    paddingForButtonAsBig: '0 var(--spacing-30)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -1413,6 +1417,10 @@ const designTokens = {
     'var(--padding-for-primary-action-dropdown, 0 var(--spacing-20))',
   paddingForPrimaryActionDropdownIcon:
     'var(--padding-for-primary-action-dropdown-icon, 0 var(--spacing-10))',
+  paddingForButtonAsMedium:
+    'var(--padding-for-button-as-medium, 0 var(--spacing-20))',
+  paddingForButtonAsBig:
+    'var(--padding-for-button-as-big, 0 var(--spacing-30))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:
