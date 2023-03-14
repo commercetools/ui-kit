@@ -8,4 +8,24 @@ export const choiceGroupsByTheme =
 
 export const allThemesNames = Object.keys(choiceGroupsByTheme);
 
+const getThemeChoiceByName = (theme, choiceName) => {
+  return Object.values(theme)
+    .map((choiceGroup) => choiceGroup.choices)
+    .find((choices) => choices[choiceName]);
+};
+
+export const choiceValueResolver = (choiceName, themeName) => {
+  const defaultChoice = getThemeChoiceByName(
+    choiceGroupsByTheme.default,
+    choiceName
+  );
+
+  const themeChoice = getThemeChoiceByName(
+    choiceGroupsByTheme[themeName],
+    choiceName
+  );
+
+  return themeChoice?.[choiceName] ?? defaultChoice?.[choiceName];
+};
+
 export const getIsDeprecated = (token) => deprecatedTokens.includes(token);
