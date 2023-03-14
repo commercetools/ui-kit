@@ -86,7 +86,7 @@ const getTextColorValue = (tone: TLinkProps['tone'] = 'primary') => {
     return designTokens.fontColorForLinkAsSecondary;
   }
 
-  return designTokens.fontColorForTextWhenInverted;
+  return designTokens.fontColorForLinkAsInverted;
 };
 
 const getActiveColorValue = (tone: string = 'primary') => {
@@ -97,7 +97,7 @@ const getActiveColorValue = (tone: string = 'primary') => {
     return designTokens.colorPrimary;
   }
 
-  return designTokens.fontColorForTextWhenInverted;
+  return designTokens.fontColorForLinkAsInverted;
 };
 
 const getLinkStyles = (props: TLinkProps & { isNewTheme: boolean }) => {
