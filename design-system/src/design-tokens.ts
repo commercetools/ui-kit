@@ -411,6 +411,7 @@ export const themes = {
     marginTopForPrimaryActionDropdown: 'none',
     marginForLocalizedRichTextBodyButton: 'none',
     marginForRichTextDivider: '0 var(--spacing-10)',
+    marginForRichTextDropdownItemLabel: '0 0 0 var(--spacing-10)',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -432,6 +433,8 @@ export const themes = {
     paddingForMultilineInput: 'var(--spacing-10) var(--spacing-20)',
     paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
     paddingForLocalizedRichTextDropdownButton: '3px var(--spacing-20)',
+    paddingForLocalizedRichTextDropdownItem:
+      'var(--spacing-10) var(--spacing-20)',
     paddingForLocalizedRichTextBodyButton: 'var(--spacing-10)',
     paddingForLocalizedInputLabel: '0 var(--spacing-20)',
     paddingForRichTextInput: 'none',
@@ -748,6 +751,7 @@ export const themes = {
     marginTopForPrimaryActionDropdown: '8px',
     marginForLocalizedRichTextBodyButton: 'var(--spacing-20) 2px',
     marginForRichTextDivider: '12px 2px',
+    marginForRichTextDropdownItemLabel: '0 0 0 var(--spacing-20)',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -771,6 +775,8 @@ export const themes = {
     paddingForMultilineInput: '8px',
     paddingForLocalizedRichTextInputLabel: 'var(--spacing-20) 12px',
     paddingForLocalizedRichTextDropdownButton: '5px var(--spacing-20)',
+    paddingForLocalizedRichTextDropdownItem:
+      'var(--spacing-20) var(--spacing-30)',
     paddingForLocalizedRichTextBodyButton: 'var(--spacing-20)',
     paddingForRichTextInput: 'var(--spacing-20) var(--spacing-30)',
     paddingForRichTextToolbar: 'none',
@@ -1395,6 +1401,8 @@ const designTokens = {
     'var(--margin-for-localized-rich-text-body-button, none)',
   marginForRichTextDivider:
     'var(--margin-for-rich-text-divider, 0 var(--spacing-10))',
+  marginForRichTextDropdownItemLabel:
+    'var(--margin-for-rich-text-dropdown-item-label, 0 0 0 var(--spacing-10))',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:
@@ -1431,6 +1439,8 @@ const designTokens = {
     'var(--padding-for-localized-rich-text-input-label, 0 var(--spacing-20))',
   paddingForLocalizedRichTextDropdownButton:
     'var(--padding-for-localized-rich-text-dropdown-button, 3px var(--spacing-20))',
+  paddingForLocalizedRichTextDropdownItem:
+    'var(--padding-for-localized-rich-text-dropdown-item, var(--spacing-10) var(--spacing-20))',
   paddingForLocalizedRichTextBodyButton:
     'var(--padding-for-localized-rich-text-body-button, var(--spacing-10))',
   paddingForLocalizedInputLabel:

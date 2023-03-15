@@ -10,6 +10,7 @@ import {
   DropdownContainer,
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 export type TDropdownLabel = {
   children: ReactNode;
@@ -108,7 +109,13 @@ const Dropdown = (props: TDropdownProps) => {
                         value={item.value}
                         isSelected={props.getIsItemSelected(item)}
                       >
-                        {item.label}
+                        <div
+                          css={css`
+                            margin: ${designTokens.marginForRichTextDropdownItemLabel};
+                          `}
+                        >
+                          {item.label}
+                        </div>
                       </DropdownItem>
                     );
                   })}

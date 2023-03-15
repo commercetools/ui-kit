@@ -370,6 +370,8 @@ componentGroups:
     description: 'Localized rich text input button elements'
   localized-rich-text-dropdown-button:
     description: 'Localized rich text input dropdown elements'
+  localized-rich-text-dropdown-item:
+    description: 'Localized rich text input dropdown item elements'
   rich-text-input:
     description: 'rich text input elements'
   rich-text-editor-container:
@@ -378,6 +380,8 @@ componentGroups:
     description: 'Rich text divider elements'
   rich-text-dropdown:
     description: 'Rich text dropdown elements'
+  rich-text-dropdown-item-label:
+    description: 'Rich text dropdown item label elements'
   rich-text-more-styles-dropdown:
     description: 'Rich text more styles dropdown elements'
   tooltip:
@@ -1093,6 +1097,8 @@ decisionGroupsByTheme:
           choice: 'none'
         margin-for-rich-text-divider:
           choice: '0 var(--spacing-10)'
+        margin-for-rich-text-dropdown-item-label:
+          choice: '0 0 0 var(--spacing-10)'
     paddings:
       label: Paddings
       prefix: padding
@@ -1137,6 +1143,8 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-20)'
         padding-for-localized-rich-text-dropdown-button:
           choice: '3px var(--spacing-20)'
+        padding-for-localized-rich-text-dropdown-item:
+          choice: 'var(--spacing-10) var(--spacing-20)'
         padding-for-localized-rich-text-body-button:
           choice: 'var(--spacing-10)'
         padding-for-localized-input-label:
@@ -1766,6 +1774,8 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-20) 2px'
         margin-for-rich-text-divider:
           choice: '12px 2px'
+        margin-for-rich-text-dropdown-item-label:
+          choice: '0 0 0 var(--spacing-20)'
     paddings:
       label: Paddings
       prefix: padding
@@ -1810,6 +1820,8 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-20) 12px'
         padding-for-localized-rich-text-dropdown-button:
           choice: '5px var(--spacing-20)'
+        padding-for-localized-rich-text-dropdown-item:
+          choice: 'var(--spacing-20) var(--spacing-30)'
         padding-for-localized-rich-text-body-button:
           choice: 'var(--spacing-20)'
         padding-for-rich-text-input:

@@ -9,16 +9,6 @@ type TDropdownStylesProps = {
   isOpen?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
-  isMoreStylesDropdownItem?: boolean;
-};
-
-const getBackgroundColor = (props: TDropdownStylesProps) => {
-  if (props.isSelected) {
-    if (props.isMoreStylesDropdownItem)
-      return designTokens.backgroundColorForInputWhenActive;
-    return designTokens.colorAccent95;
-  }
-  return designTokens.colorSurface;
 };
 
 const DropdownItem = styled.button<TDropdownStylesProps>`
@@ -26,18 +16,18 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   border: 0;
   font-size: 1rem;
   cursor: pointer;
-  padding: ${designTokens.spacing10} ${designTokens.spacing20};
+  padding: ${designTokens.paddingForLocalizedRichTextDropdownItem};
   font-family: ${designTokens.fontFamilyDefault};
   display: block;
-  background-color: ${(props) => getBackgroundColor(props)};
+  background-color: ${(props) =>
+    props.isSelected
+      ? designTokens.backgroundColorForInputWhenActive
+      : designTokens.colorSurface};
 
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${(props) =>
-      props.isMoreStylesDropdownItem
-        ? designTokens.backgroundColorForSelectInputOptionWhenHovered
-        : designTokens.backgroundColorForRichTextDropdownWhenHovered};
+    background-color: ${designTokens.backgroundColorForSelectInputOptionWhenHovered};
   }
 `;
 
@@ -104,7 +94,8 @@ const DropdownContainer = styled.div`
   background: ${designTokens.colorSurface};
   overflow: hidden;
   z-index: 9999;
-  border: 1px solid ${designTokens.colorPrimary};
+  border: 1px solid ${designTokens.borderColorForSelectInputMenu};
+  box-shadow: ${designTokens.shadowForSelectInputMenu};
   border-radius: ${designTokens.borderRadius6};
 `;
 

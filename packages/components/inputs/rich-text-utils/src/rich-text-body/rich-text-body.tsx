@@ -56,7 +56,6 @@ import type { TDropdownLabel } from './dropdown';
 type TMoreStylesDropdownItem = {
   value?: string;
   children?: ReactNode;
-  isMoreStylesDropdownItem?: boolean;
 };
 
 type TStylesDropdownItem = {
@@ -116,7 +115,7 @@ const MoreStylesDropdownItem = (props: TMoreStylesDropdownItem) => {
   }
 
   return (
-    <DropdownItem {...props} isMoreStylesDropdownItem>
+    <DropdownItem {...props}>
       <Inline scale="xs" alignItems="center" justifyContent="flex-start">
         <Icon size="medium" />
         <div>{props.children}</div>
