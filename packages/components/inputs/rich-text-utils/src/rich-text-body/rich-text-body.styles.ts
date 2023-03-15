@@ -169,7 +169,7 @@ export const Container = styled.div<TRichTextBodyStylesProps>`
 
   &:hover {
     ${(props) =>
-      getBorderColor(props, designTokens.borderColorForInputWhenHovered)}
+      getBorderColor(props, designTokens.borderColorForInputWhenHovered)};
     background-color: ${designTokens.backgroundColorForInputWhenHovered};
   }
 
