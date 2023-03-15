@@ -1771,9 +1771,9 @@ decisionGroupsByTheme:
         margin-top-for-primary-action-dropdown:
           choice: spacing-20
         margin-for-localized-rich-text-body-button:
-          choice: 'var(--spacing-20) 2px'
+          choice: '0 2px var(--spacing-20) 2px'
         margin-for-rich-text-divider:
-          choice: '12px 2px'
+          choice: 'var(--spacing-10) 2px'
         margin-for-rich-text-dropdown-item-label:
           choice: '0 0 0 var(--spacing-20)'
     paddings:
