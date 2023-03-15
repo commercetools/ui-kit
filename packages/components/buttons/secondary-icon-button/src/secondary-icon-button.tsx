@@ -1,9 +1,9 @@
-import type {
-  MouseEvent,
-  KeyboardEvent,
-  ElementType,
-  ReactElement,
-  ComponentPropsWithRef,
+import {
+  type MouseEvent,
+  type KeyboardEvent,
+  type ElementType,
+  type ReactElement,
+  type ComponentPropsWithRef,
   cloneElement,
 } from 'react';
 import omit from 'lodash/omit';
