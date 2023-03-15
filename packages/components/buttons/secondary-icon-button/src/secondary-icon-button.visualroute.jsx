@@ -46,5 +46,29 @@ export const component = () => (
         onClick={() => {}}
       />
     </Spec>
+    <Spec label="sizes when small">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        size="small"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
+    <Spec label="sizes when medium">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        size="medium"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
+    <Spec label="sizes when big (default)">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        size="big"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
   </Suite>
 );

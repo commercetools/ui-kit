@@ -56,7 +56,8 @@ const CalendarHeader = (props: TCalendarHeader) => {
           <SecondaryIconButton
             label="show prev month"
             onClick={props.onPrevMonthClick}
-            icon={<AngleLeftIcon size="medium" />}
+            icon={<AngleLeftIcon />}
+            size="medium"
           />
         </Tooltip>
         <Tooltip
@@ -66,7 +67,8 @@ const CalendarHeader = (props: TCalendarHeader) => {
           <SecondaryIconButton
             label="show today"
             onClick={props.onTodayClick}
-            icon={<CircleIcon size="medium" />}
+            icon={<CircleIcon />}
+            size="medium"
           />
         </Tooltip>
         <Tooltip
@@ -76,7 +78,8 @@ const CalendarHeader = (props: TCalendarHeader) => {
           <SecondaryIconButton
             label="show next month"
             onClick={props.onNextMonthClick}
-            icon={<AngleRightIcon size="medium" />}
+            icon={<AngleRightIcon />}
+            size="medium"
           />
         </Tooltip>
         <Text.Body as="span" isBold={true}>
@@ -91,7 +94,8 @@ const CalendarHeader = (props: TCalendarHeader) => {
           <SecondaryIconButton
             label="show prev year"
             onClick={props.onPrevYearClick}
-            icon={<AngleLeftIcon size="medium" />}
+            icon={<AngleLeftIcon />}
+            size="medium"
           />
         </Tooltip>
         <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
@@ -102,7 +106,8 @@ const CalendarHeader = (props: TCalendarHeader) => {
           <SecondaryIconButton
             label="show next year"
             onClick={props.onNextYearClick}
-            icon={<AngleRightIcon size="medium" />}
+            icon={<AngleRightIcon />}
+            size="medium"
           />
         </Tooltip>
       </Inline>

@@ -46,8 +46,8 @@ export const component = () => (
       <PrimaryButton label="A label text" onClick={() => {}} size="big" />
     </Spec>
 
-    <Spec label='size - when "small"'>
-      <PrimaryButton label="A label text" onClick={() => {}} size="small" />
+    <Spec label='size - when "medium"'>
+      <PrimaryButton label="A label text" onClick={() => {}} size="medium" />
     </Spec>
 
     <Spec label='tone - when "urgent"'>
@@ -97,6 +97,7 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
+    
     <Spec label="with `as` as Link - regular">
       <PrimaryButton
         as="a"
@@ -157,13 +158,13 @@ export const component = () => (
       />
     </Spec>
 
-    <Spec label='size - when "small"'>
+    <Spec label='size - when "medium"'>
       <PrimaryButton
         as="a"
         href="https://kanyetothe.com"
         label="A label text"
         onClick={() => {}}
-        size="small"
+        size="medium"
       />
     </Spec>
 
