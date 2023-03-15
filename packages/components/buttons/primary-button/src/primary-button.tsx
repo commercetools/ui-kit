@@ -11,7 +11,7 @@ import { css } from '@emotion/react';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
-import { useWarnDeprecatedProp } from '@commercetools-uikit/utils';
+import { useWarning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getButtonStyles } from './primary-button.styles';
 
@@ -94,11 +94,9 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
     disabled: props.isDisabled,
   };
 
-  useWarnDeprecatedProp(
+  useWarning(
     !Boolean(props.size === 'small'),
-    'props.size = small',
-    'PrimaryButton',
-    'Please use `medium` or `big` size properties instead.'
+    'PrimaryButton `small` value for `size` property has been renamed to `medium`. Please update that value when using this component'
   );
 
   const isActive = Boolean(props.isToggleButton && props.isToggled);
