@@ -99,4 +99,13 @@ const DropdownContainer = styled.div`
   border-radius: ${designTokens.borderRadius6};
 `;
 
-export { DropdownContainer, DropdownItem, getButtonStyles };
+const DropdownItemLabelWrapper = styled.div`
+  margin: ${designTokens.marginForRichTextDropdownItemLabel};
+`;
+
+export {
+  DropdownContainer,
+  DropdownItem,
+  DropdownItemLabelWrapper,
+  getButtonStyles,
+};

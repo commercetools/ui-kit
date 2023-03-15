@@ -8,9 +8,9 @@ import Button from './rich-text-body-button';
 import {
   getButtonStyles,
   DropdownContainer,
+  DropdownItemLabelWrapper,
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
-import { designTokens } from '@commercetools-uikit/design-system';
 
 export type TDropdownLabel = {
   children: ReactNode;
@@ -109,13 +109,9 @@ const Dropdown = (props: TDropdownProps) => {
                         value={item.value}
                         isSelected={props.getIsItemSelected(item)}
                       >
-                        <div
-                          css={css`
-                            margin: ${designTokens.marginForRichTextDropdownItemLabel};
-                          `}
-                        >
+                        <DropdownItemLabelWrapper>
                           {item.label}
-                        </div>
+                        </DropdownItemLabelWrapper>
                       </DropdownItem>
                     );
                   })}
