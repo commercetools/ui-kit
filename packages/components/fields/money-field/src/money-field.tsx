@@ -52,7 +52,7 @@ type TCustomEvent = {
   persist?: () => void;
 };
 
-type TMoneyFieldProps = {
+export type TMoneyFieldProps = {
   // MoneyField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

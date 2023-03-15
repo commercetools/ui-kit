@@ -3,7 +3,7 @@ import Spacings from '@commercetools-uikit/spacings';
 import PageNavigator from './page-navigator';
 import PageSizeSelector, { type TPageRangeSize } from './page-size-selector';
 
-type TPaginationProps = {
+export type TPaginationProps = {
   /**
    * Total number of items across all pages
    */

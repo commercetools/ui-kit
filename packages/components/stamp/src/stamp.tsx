@@ -6,7 +6,7 @@ import Text from '@commercetools-uikit/text';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { useWarnDeprecatedProp } from '@commercetools-uikit/utils';
 
-type Tone =
+export type TTone =
   | 'critical'
   | 'warning'
   | 'positive'
@@ -14,11 +14,11 @@ type Tone =
   | 'primary'
   | 'secondary';
 
-type Props = {
+export type TStampProps = {
   /**
    * Indicates the color scheme of stamp
    */
-  tone?: Tone;
+  tone?: TTone;
   /**
    * If `true`, renders a condensed version of the stamp.
    */
@@ -47,9 +47,9 @@ type ToneRelatedProps = {
   iconColor: string;
 };
 
-type StylesFunctionParams = Props & { overrideTextColor?: boolean };
+type StylesFunctionParams = TStampProps & { overrideTextColor?: boolean };
 
-const tonesPropsMap: Record<Tone, ToneRelatedProps> = {
+const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   critical: {
     styles: {
       backgroundColor: designTokens.colorError95,
@@ -100,7 +100,7 @@ const tonesPropsMap: Record<Tone, ToneRelatedProps> = {
   },
 };
 
-export const availableTones: Tone[] = [
+export const availableTones: TTone[] = [
   'critical',
   'warning',
   'positive',
@@ -155,7 +155,7 @@ const getStampStyles = (props: StylesFunctionParams) => {
   `;
 };
 
-const Stamp = (props: Props) => {
+const Stamp = (props: TStampProps) => {
   const { themedValue } = useTheme();
   const overrideTextColor = themedValue(false, true);
   const Icon =
@@ -193,7 +193,7 @@ const Stamp = (props: Props) => {
     </div>
   );
 };
-const defaultProps: Pick<Props, 'isCondensed' | 'tone'> = {
+const defaultProps: Pick<TStampProps, 'isCondensed' | 'tone'> = {
   isCondensed: false,
   tone: 'information',
 };

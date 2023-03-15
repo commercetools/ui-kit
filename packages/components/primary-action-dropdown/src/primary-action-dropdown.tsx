@@ -204,7 +204,7 @@ const Options = styled.div<{ isNewTheme: boolean }>`
   when the dropdown trigger itself is clicked. Otherwise it would open and close
   immediately.
  */
-type TPrimaryActionDropdown = {
+export type TPrimaryActionDropdown = {
   /**
    * Any React element.
    */

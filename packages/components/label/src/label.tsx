@@ -10,7 +10,7 @@ import { css } from '@emotion/react';
 
 // TODO: @redesign cleanup
 
-type TLabelProps = {
+export type TLabelProps = {
   /**
    * The `id` HTML attribute, used to reference non-form elements with the related attribute `aria-labelledby`.
    * <br/>

@@ -48,7 +48,7 @@ type ReactSelectCreatableProps = CreatableProps<
   GroupBase<unknown>
 >;
 
-type TCreatableSelectInputProps = {
+export type TCreatableSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */

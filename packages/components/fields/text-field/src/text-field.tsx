@@ -32,7 +32,7 @@ type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
 };
 
-type TTextFieldProps = {
+export type TTextFieldProps = {
   // TextField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

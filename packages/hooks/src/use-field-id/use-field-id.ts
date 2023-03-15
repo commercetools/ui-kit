@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getFieldId } from '@commercetools-uikit/utils';
 
-type CreateIdFn = () => string;
+export type TCreateIdFn = () => string;
 
-const useFieldId = (id: string | undefined, createIdFn: CreateIdFn): string => {
+const useFieldId = (
+  id: string | undefined,
+  createIdFn: TCreateIdFn
+): string => {
   const [internalId, setId] = useState(id || createIdFn());
 
   useEffect(() => {

@@ -42,7 +42,7 @@ const hasErrors = (errors?: TFieldErrors) =>
 const sequentialId = createSequentialId('search-select-field-');
 const sequentialErrorsId = createSequentialId('search-select-field-error-')();
 
-type TSearchSelectFieldProps = {
+export type TSearchSelectFieldProps = {
   /**
    *Horizontal size limit of the input fields.
    */

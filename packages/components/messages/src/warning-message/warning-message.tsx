@@ -1,14 +1,14 @@
 import { ReactNode } from 'react';
 import Text from '@commercetools-uikit/text';
 
-type TIntlMessageDescriptor = {
+export type TIntlMessageDescriptor = {
   id: string;
   description?: string | object;
   defaultMessage: string;
   values?: Record<string, ReactNode>;
 };
 
-type TWarningMessageProps = {
+export type TWarningMessageProps = {
   intlMessage?: TIntlMessageDescriptor;
   children?: ReactNode;
 };
