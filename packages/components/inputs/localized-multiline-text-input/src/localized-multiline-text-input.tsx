@@ -43,7 +43,7 @@ interface HTMLLocalizedTextAreaElement extends HTMLTextAreaElement {
   language: string;
 }
 
-type TLocalizedMultilineTextInputProps = {
+export type TLocalizedMultilineTextInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`
    */

@@ -21,7 +21,7 @@ import { Wrapper, Body, getBodyStyles } from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
 
-type TComponents = {
+export type TComponents = {
   /**
    * The component rendered as the tooltip body.
    */

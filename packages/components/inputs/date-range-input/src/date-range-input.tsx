@@ -114,7 +114,7 @@ type TCustomEvent = {
   };
 };
 
-type TDateRangeInputProps = {
+export type TDateRangeInputProps = {
   /**
    * Horizontal size limit of the input field.
    */

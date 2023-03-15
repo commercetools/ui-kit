@@ -1,15 +1,15 @@
 import { useState, useCallback } from 'react';
 import isNil from 'lodash/isNil';
 
-type TPaginationDefinition = {
+export type TPaginationDefinition = {
   page: number;
   perPage: number;
 };
-type TState = {
+export type TState = {
   value: number;
   onChange: (value: number) => void;
 };
-type TPaginationState = {
+export type TPaginationState = {
   [P in keyof TPaginationDefinition]: TState;
 };
 

@@ -53,7 +53,7 @@ type TCustomEvent = {
   };
 };
 
-type TDateInput = {
+export type TDateInput = {
   /**
    * Horizontal size limit of the input field.
    */

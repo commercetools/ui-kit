@@ -38,7 +38,7 @@ type TCustomEvent = {
   };
 };
 
-type TDateFieldProps = {
+export type TDateFieldProps = {
   // DateField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

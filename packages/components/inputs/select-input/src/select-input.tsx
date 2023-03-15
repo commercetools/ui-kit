@@ -26,7 +26,7 @@ const customizedComponents = {
   MultiValueRemove: TagRemove,
 };
 
-type TOption = {
+export type TOption = {
   value: string;
   label?: ReactNode;
 };
@@ -46,7 +46,7 @@ type TCustomEvent = {
   persist: () => void;
 };
 
-type TSelectInputProps = {
+export type TSelectInputProps = {
   horizontalConstraint?:
     | 3
     | 4

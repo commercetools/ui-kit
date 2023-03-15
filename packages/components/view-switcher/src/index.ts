@@ -5,3 +5,4 @@ const ViewSwitcher = { Group, Button };
 export default ViewSwitcher;
 
 export { default as version } from './version';
+export * from './export-types';

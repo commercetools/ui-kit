@@ -48,7 +48,7 @@ type TCustomEvent = {
   persist: () => void;
 };
 
-type TAsyncCreatableSelectFieldProps = {
+export type TAsyncCreatableSelectFieldProps = {
   // AsyncCreatableSelectField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

@@ -37,7 +37,7 @@ interface HTMLLocalizedInputElement extends HTMLInputElement {
   language: string;
 }
 
-type TLocalizedTextInputProps = {
+export type TLocalizedTextInputProps = {
   id?: string;
   name?: string;
   autoComplete?: string;

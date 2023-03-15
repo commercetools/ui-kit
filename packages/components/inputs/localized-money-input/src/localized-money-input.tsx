@@ -34,7 +34,7 @@ type TCustomEvent = {
   persist?: () => void;
 };
 
-type TLocalizedMoneyInputProps = {
+export type TLocalizedMoneyInputProps = {
   /**
    * Used as HTML id property.
    */

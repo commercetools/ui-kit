@@ -9,7 +9,7 @@ import messages from './messages';
 
 export type TPageRangeSize = 's' | 'm' | 'l';
 
-type TPageSizeSelectorProps = {
+export type TPageSizeSelectorProps = {
   /**
    * Number of items per page, according to the pre-defined range values.
    */

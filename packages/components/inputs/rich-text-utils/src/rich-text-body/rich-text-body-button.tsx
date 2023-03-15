@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 
-type TRichTextBodyButtonProps = {
+export type TRichTextBodyButtonProps = {
   isDisabled?: boolean;
   label: string;
   isActive?: boolean;

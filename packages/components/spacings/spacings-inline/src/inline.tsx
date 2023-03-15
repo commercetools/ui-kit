@@ -27,19 +27,22 @@ export type TJustifyContent =
 
 export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 
-export type TProps = {
+export type TInlineProps = {
   scale: TScale;
   alignItems: TAlignItem;
   justifyContent: TJustifyContent;
   children: ReactNode;
 };
 
-const Inline = (props: TProps) => (
+const Inline = (props: TInlineProps) => (
   <span css={getStyles(props)} {...filterDataAttributes(props)}>
     {props.children}
   </span>
 );
-const defaultProps: Pick<TProps, 'scale' | 'alignItems' | 'justifyContent'> = {
+const defaultProps: Pick<
+  TInlineProps,
+  'scale' | 'alignItems' | 'justifyContent'
+> = {
   scale: 's',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
