@@ -331,6 +331,7 @@
   "--font-color-for-flat-button-as-critical-when-hovered": "hsl(339.1304347826087, 100%, 25%)",
   "--font-color-for-flat-button-as-secondary": "#1a1a1a",
   "--font-color-for-flat-button-as-inverted": "#fff",
+  "--font-color-for-flat-button-icon-when-disabled": "hsl(0, 0%, 60%)",
   "--font-color-for-secondary-icon-button-as-primary": "#00b39e",
   "--font-color-for-secondary-icon-button-as-primary-when-hovered": "hsl(172.9608938547486, 100%, 25%)",
   "--height-for-button-as-big": "32px",

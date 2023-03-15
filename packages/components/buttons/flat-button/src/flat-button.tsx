@@ -127,7 +127,7 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
           color: ${getTextColor(props.tone, false, props.isDisabled)};
         }
 
-        fill: ${getTextColor(props.tone, false, props.isDisabled)};
+        fill: ${getTextColor(props.tone, false, props.isDisabled, true)};
 
         * + span,
         * + svg {
@@ -142,7 +142,7 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
                 color: ${getTextColor(props.tone, true, props.isDisabled)};
               }
               svg * {
-                fill: ${getTextColor(props.tone, true, props.isDisabled)};
+                fill: ${getTextColor(props.tone, true, props.isDisabled, true)};
               }
             }`
           : ''}

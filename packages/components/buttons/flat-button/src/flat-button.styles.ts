@@ -4,8 +4,13 @@ import type { TFlatButtonProps } from './flat-button';
 export const getTextColor = (
   tone: TFlatButtonProps['tone'],
   isHover: boolean = false,
-  isDisabled: boolean
+  isDisabled: boolean,
+  isIcon?: boolean
 ): string => {
+  if (isIcon && isDisabled) {
+    return designTokens.fontColorForFlatButtonIconWhenDisabled;
+  }
+
   if (isDisabled) {
     return designTokens.fontColorForTextWhenDisabled;
   }

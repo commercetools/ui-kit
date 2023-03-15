@@ -361,6 +361,7 @@ export const themes = {
       'hsl(339.1304347826087, 100%, 25%)',
     fontColorForFlatButtonAsSecondary: '#1a1a1a',
     fontColorForFlatButtonAsInverted: '#fff',
+    fontColorForFlatButtonIconWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForSecondaryIconButtonAsPrimary: '#00b39e',
     fontColorForSecondaryIconButtonAsPrimaryWhenHovered:
       'hsl(172.9608938547486, 100%, 25%)',
@@ -1381,6 +1382,8 @@ const designTokens = {
     'var(--font-color-for-flat-button-as-secondary, #1a1a1a)',
   fontColorForFlatButtonAsInverted:
     'var(--font-color-for-flat-button-as-inverted, #fff)',
+  fontColorForFlatButtonIconWhenDisabled:
+    'var(--font-color-for-flat-button-icon-when-disabled, hsl(0, 0%, 60%))',
   fontColorForSecondaryIconButtonAsPrimary:
     'var(--font-color-for-secondary-icon-button-as-primary, #00b39e)',
   fontColorForSecondaryIconButtonAsPrimaryWhenHovered:
