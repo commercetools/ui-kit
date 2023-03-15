@@ -435,7 +435,8 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             !props.isDisabled &&
             !props.isReadOnly && (
               <SecondaryIconButton
-                icon={<CloseIcon size="medium" />}
+                icon={<CloseIcon />}
+                size="medium"
                 label={'clear-button'}
                 onClick={handleClear}
                 css={getClearIconButtonStyles(props)}
