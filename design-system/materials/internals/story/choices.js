@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
 import merge from 'lodash/merge';
+import upperFirst from 'lodash/upperFirst';
 import {
   Samplers,
   Table,
@@ -11,16 +12,9 @@ import {
   GroupStyle,
   DeprecationBadge,
 } from './shared-components';
-import { getIsDeprecated } from './utils';
+import { allThemesNames, choiceValueResolver, getIsDeprecated } from './utils';
 
-const filterChoiceGroupValues = (choices, searchText) =>
-  Object.entries(choices).filter(
-    ([key, value]) =>
-      key.toLowerCase().includes(searchText.toLowerCase()) ||
-      value.toLowerCase().includes(searchText.toLowerCase())
-  );
-
-const getChoiceDetailId = (choicePrefix) => `choice-${choicePrefix}`;
+const getChoiceDetailId = (choicePrefix) => `choices-${choicePrefix}`;
 
 const choicesSamplesMap = {
   color: Samplers.ColorSample,
@@ -89,55 +83,7 @@ ChoiceGroup.propTypes = {
   ),
 };
 
-export const ChoicesLinks = ({ config, filterText }) => {
-  return (
-    <>
-      <a
-        href="#choices"
-        onClick={(event) => {
-          event.preventDefault();
-          window.scrollTo({
-            top: document.getElementById(document.getElementById('choices'))
-              .offsetTop,
-            behavior: 'smooth',
-          });
-        }}
-      >
-        Choices
-      </a>
-      <ul>
-        {Object.entries(config).map(
-          ([key, choiceGroup]) =>
-            filterChoiceGroupValues(choiceGroup.choices, filterText).length >
-              0 && (
-              <li key={key}>
-                <a
-                  href={`#${getChoiceDetailId(choiceGroup.prefix)}`}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    window.scrollTo({
-                      top: document.getElementById(
-                        getChoiceDetailId(choiceGroup.prefix)
-                      ).offsetTop,
-                      behavior: 'smooth',
-                    });
-                  }}
-                >
-                  {choiceGroup.label}
-                </a>
-              </li>
-            )
-        )}
-      </ul>
-    </>
-  );
-};
-ChoicesLinks.propTypes = {
-  config: PropTypes.object.isRequired,
-  filterText: PropTypes.string.isRequired,
-};
-
-export const ChoicesDetailsList = ({ choiceGroupsByTheme }) => {
+export const ChoicesDetailsListBak = ({ choiceGroupsByTheme }) => {
   return (
     <>
       {Object.entries(choiceGroupsByTheme.default).map(
@@ -158,4 +104,76 @@ export const ChoicesDetailsList = ({ choiceGroupsByTheme }) => {
       )}
     </>
   );
+};
+
+const TableHeader = ({ choiceName }) => (
+  <thead>
+    <tr>
+      <TokenNameHeaderCell>Token</TokenNameHeaderCell>
+      {allThemesNames.map((themeName) => (
+        <td key={`choices-${choiceName}-${themeName}-header-key`}>
+          {themeName}
+        </td>
+      ))}
+    </tr>
+  </thead>
+);
+
+const TableBody = ({ choiceConfig, choiceGroupsByTheme }) => (
+  <tbody>
+    {Object.keys(choiceConfig.choices).map((tokenName) => {
+      const ChoiceSample =
+        choicesSamplesMap[choiceConfig.prefix] || Samplers.BasicSample;
+      return (
+        <tr key={`choices-${tokenName}-body-key`}>
+          <td>
+            <Token>{tokenName}</Token>
+            {getIsDeprecated(tokenName) && <DeprecationBadge />}
+          </td>
+          {Object.keys(choiceGroupsByTheme).map((themeName) => {
+            const choiceValue = choiceValueResolver(tokenName, themeName);
+            return (
+              <td key={`choices-${tokenName}-${themeName}-body-key`}>
+                <ChoiceSample value={choiceValue} />
+                &nbsp;{choiceValue}
+              </td>
+            );
+          })}
+        </tr>
+      );
+    })}
+  </tbody>
+);
+
+export const ChoicesDetailsList = (props) => {
+  return (
+    <>
+      <h2 id={props.id}>{props.title || upperFirst(props.id)}</h2>
+      {props.subtitle && <p>{props.subtitle}</p>}
+      {Object.entries(props.choiceGroupsByTheme.default).map(
+        ([choiceName, choiceConfig]) => (
+          <GroupStyle key={`choice-group_${choiceName}`} isVisible>
+            <a id={`choices-${choiceConfig.prefix}`} />
+            <h3>{choiceConfig.label}</h3>
+            {Boolean(choiceConfig.description) && (
+              <p>{choiceConfig.description}</p>
+            )}
+            <Table>
+              <TableHeader choiceName={choiceName} />
+              <TableBody
+                choiceConfig={choiceConfig}
+                choiceGroupsByTheme={props.choiceGroupsByTheme}
+              />
+            </Table>
+          </GroupStyle>
+        )
+      )}
+    </>
+  );
+};
+ChoicesDetailsList.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  choiceGroupsByTheme: PropTypes.object.isRequired,
 };

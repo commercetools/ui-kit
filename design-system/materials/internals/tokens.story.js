@@ -1,18 +1,13 @@
-import { Component } from 'react';
+import { useCallback, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import TextInput from '@commercetools-uikit/text-input';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Readme from './TOKENS.md';
 import definition from './definition.yaml';
-import { ChoicesLinks, ChoicesDetailsList } from './story/choices';
-import { StatesLinks, StatesDetailsList } from './story/states';
-import {
-  ComponentGroupsLinks,
-  ComponentGroupsDetailsList,
-} from './story/component-groups';
-import { VariantsLinks, VariantsDetailsList } from './story/variants';
-import { DecisionsLinks, DecisionsDetailsList } from './story/decisions';
+import { GroupLinks, GroupItemsDetailedList } from './story/shared-components';
+import { ChoicesDetailsList } from './story/choices';
+import { DecisionsDetailsList } from './story/decisions';
 
 const choiceGroupsByTheme =
   process.env.NODE_ENV !== 'production'
@@ -29,87 +24,89 @@ const Background = styled.div`
   }
 `;
 
-class Story extends Component {
-  static displayName = 'Story';
+function Story() {
+  const [filterText, setFilterText] = useState('');
+  const { theme } = useTheme();
 
-  state = {
-    searchText: '',
-  };
+  const searchTextChangeHandler = useCallback((event) => {
+    setFilterText(event.target.value);
+  }, []);
 
-  searchTextChangeHandler = (event) => {
-    this.setState({ searchText: event.target.value });
-  };
+  return (
+    <Background>
+      <TextInput
+        value={filterText}
+        onChange={searchTextChangeHandler}
+        horizontalConstraint="m"
+      />
+      <h2>Table of Contents___</h2>
+      <ul>
+        <li>
+          <GroupLinks
+            id="choices"
+            config={choiceGroupsByTheme.default}
+            filterText={filterText}
+          >
+            Choices
+          </GroupLinks>
+        </li>
+        <li>
+          <GroupLinks id="states">States</GroupLinks>
+        </li>
+        <li>
+          <GroupLinks id="component-groups">Component Groups</GroupLinks>
+        </li>
+        <li>
+          <GroupLinks id="variants">Variants</GroupLinks>
+        </li>
+        <li>
+          <GroupLinks
+            id="decisions"
+            config={definition.decisionGroupsByTheme.default}
+            filterText={filterText}
+          >
+            Decisions
+          </GroupLinks>
+        </li>
+      </ul>
 
-  render() {
-    return (
-      <Background>
-        <TextInput
-          value={this.state.searchText}
-          onChange={this.searchTextChangeHandler}
-          horizontalConstraint="m"
-        />
-        <h2>Table of Contents</h2>
-        <ul>
-          <li>
-            <ChoicesLinks
-              config={choiceGroupsByTheme.default}
-              filterText={this.state.searchText}
-            />
-          </li>
-          <li>
-            <StatesLinks />
-          </li>
-          <li>
-            <ComponentGroupsLinks />
-          </li>
-          <li>
-            <VariantsLinks />
-          </li>
-          <li>
-            <DecisionsLinks
-              config={definition.decisionGroupsByTheme.default}
-              filterText={this.state.searchText}
-            />
-          </li>
-        </ul>
+      <ChoicesDetailsList
+        id="choices"
+        subtitle="This is the palette of values you may chose from when creating design tokens."
+        choiceGroupsByTheme={choiceGroupsByTheme}
+      />
 
-        <h2 id="choices">Choices</h2>
-        <p>
-          This is the palette of values you may chose from when creating design
-          tokens.
-        </p>
-        <ChoicesDetailsList choiceGroupsByTheme={choiceGroupsByTheme} />
+      <GroupItemsDetailedList
+        id="states"
+        groupItems={definition.states}
+        searchText={filterText}
+      />
 
-        <h2 id="states">States</h2>
-        <StatesDetailsList
-          states={definition.states}
-          searchText={this.state.searchText}
-        />
+      <GroupItemsDetailedList
+        id="component-groups"
+        title="Component Groups"
+        groupItems={definition.componentGroups}
+        searchText={filterText}
+      />
 
-        <h2 id="component-groups">Component Groups</h2>
-        <ComponentGroupsDetailsList
-          states={definition.componentGroups}
-          searchText={this.state.searchText}
-        />
+      <GroupItemsDetailedList
+        id="variants"
+        groupItems={definition.variants}
+        searchText={filterText}
+      />
 
-        <h2 id="variants">Variants</h2>
-        <VariantsDetailsList
-          variants={definition.variants}
-          searchText={this.state.searchText}
-        />
-
-        <h2 id="decisions">Decisions</h2>
-        <p>
-          These are specific decisions where a choice gets applied to an element
-          (optionally in a certain state).
-        </p>
-        <DecisionsDetailsList
-          decisionGroupsByTheme={definition.decisionGroupsByTheme}
-          filterText={this.state.searchText}
-        />
-      </Background>
-    );
-  }
+      <h2 id="decisions">Decisions</h2>
+      <p>
+        These are specific decisions where a choice gets applied to an element
+        (optionally in a certain state).
+      </p>
+      <DecisionsDetailsList
+        themeName={theme}
+        decisionGroupsByTheme={definition.decisionGroupsByTheme}
+        filterText={filterText}
+      />
+    </Background>
+  );
 }
 
 storiesOf('Basics|Tokens', module)

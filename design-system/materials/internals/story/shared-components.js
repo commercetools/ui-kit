@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
+import upperFirst from 'lodash/upperFirst';
 import { designTokens } from '@commercetools-uikit/design-system';
 
 export const Table = styled.table`
@@ -48,6 +50,108 @@ export const DeprecationBadge = () => (
   <b style={{ color: 'orange' }}>DEPRECATED</b>
 );
 DeprecationBadge.displayName = 'DeprecationBadge';
+
+const filterGroupItemsValues = (groupItems, searchText) =>
+  Object.entries(groupItems).filter(
+    ([key, value]) =>
+      key.toLowerCase().includes(searchText.toLowerCase()) ||
+      value?.toLowerCase?.().includes(searchText.toLowerCase()) ||
+      value?.description?.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+export const GroupLinks = (props) => {
+  return (
+    <>
+      <a
+        href={`#${props.id}`}
+        onClick={(event) => {
+          event.preventDefault();
+          window.scrollTo({
+            top: document.getElementById(props.id).offsetTop,
+            behavior: 'smooth',
+          });
+        }}
+      >
+        {props.children}
+      </a>
+      {Boolean(props.config) && (
+        <ul>
+          {Object.entries(props.config).map(
+            ([key, configGroup]) =>
+              filterGroupItemsValues(
+                configGroup.choices || configGroup.decisions,
+                props.filterText
+              ).length > 0 && (
+                <li key={key}>
+                  <a
+                    href={`#${props.id}-${configGroup.prefix}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      window.scrollTo({
+                        top: document.getElementById(
+                          `${props.id}-${configGroup.prefix}`
+                        ).offsetTop,
+                        behavior: 'smooth',
+                      });
+                    }}
+                  >
+                    {configGroup.label}
+                  </a>
+                </li>
+              )
+          )}
+        </ul>
+      )}
+    </>
+  );
+};
+GroupLinks.propTypes = {
+  id: PropTypes.string.isRequired,
+  config: PropTypes.object,
+  filterText: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+export function GroupItemsDetailedList(props) {
+  const filteredGroupItems = filterGroupItemsValues(
+    props.groupItems,
+    props.searchText
+  );
+  return (
+    <>
+      <h2 id={props.id}>{props.title || upperFirst(props.id)}</h2>
+      <GroupStyle isVisible={filteredGroupItems.length > 0}>
+        <Table>
+          <thead>
+            <tr>
+              <TokenNameHeaderCell>
+                {props.title || upperFirst(props.id)}
+              </TokenNameHeaderCell>
+              <td>Description</td>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredGroupItems.map(([name, itemConfig]) => (
+              <tr key={name}>
+                <td>
+                  <Token>{name}</Token>
+                  {itemConfig.deprecated && <DeprecationBadge />}
+                </td>
+                <td>{itemConfig.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </GroupStyle>
+    </>
+  );
+}
+GroupItemsDetailedList.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  searchText: PropTypes.string.isRequired,
+  groupItems: PropTypes.object.isRequired,
+};
 
 const BasicSample = styled.div``;
 

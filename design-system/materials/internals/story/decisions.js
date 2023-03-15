@@ -12,9 +12,8 @@ import {
   DeprecationBadge,
 } from './shared-components';
 import { choiceValueResolver, getIsDeprecated } from './utils';
-import { useTheme } from '@commercetools-uikit/design-system';
 
-const getDecisionDetailId = (decisionPrefix) => `decision-${decisionPrefix}`;
+const getDecisionDetailId = (decisionPrefix) => `decisions-${decisionPrefix}`;
 
 const filterDecisionGroupValues = (decisions, filterText) =>
   Object.entries(decisions).filter(([key, decision]) => {
@@ -30,53 +29,6 @@ const choicesSamplesMap = {
   'border-radius': Samplers.BorderRadiusSample,
   'font-color': Samplers.FontColorSample,
   shadow: Samplers.ShadowSample,
-};
-
-export const DecisionsLinks = ({ config, filterText }) => {
-  return (
-    <>
-      <a
-        href="#decisions"
-        onClick={(event) => {
-          event.preventDefault();
-          window.scrollTo({
-            top: document.getElementById('decisions').offsetTop,
-            behavior: 'smooth',
-          });
-        }}
-      >
-        Decisions
-      </a>
-      <ul>
-        {Object.entries(config).map(
-          ([key, decisionGroup]) =>
-            filterDecisionGroupValues(decisionGroup.decisions, filterText)
-              .length > 0 && (
-              <li key={key}>
-                <a
-                  href={`#${getDecisionDetailId(decisionGroup.prefix)}`}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    window.scrollTo({
-                      top: document.getElementById(
-                        getDecisionDetailId(decisionGroup.prefix)
-                      ).offsetTop,
-                      behavior: 'smooth',
-                    });
-                  }}
-                >
-                  {decisionGroup.label}
-                </a>
-              </li>
-            )
-        )}
-      </ul>
-    </>
-  );
-};
-DecisionsLinks.propTypes = {
-  config: PropTypes.object.isRequired,
-  filterText: PropTypes.string.isRequired,
 };
 
 const DecisionGroup = ({
@@ -150,9 +102,8 @@ DecisionGroup.defaultProps = {
   renderSample: (value) => value,
 };
 
-export const DecisionsDetailsList = ({ decisionGroupsByTheme, filterText }) => {
-  const { theme } = useTheme();
-  const decisionGroups = decisionGroupsByTheme[theme];
+export const DecisionsDetailsList = (props) => {
+  const decisionGroups = props.decisionGroupsByTheme[props.themeName];
 
   return (
     <>
@@ -160,21 +111,20 @@ export const DecisionsDetailsList = ({ decisionGroupsByTheme, filterText }) => {
         <DecisionGroup
           key={decisionConfig.prefix}
           decisionConfig={decisionConfig}
-          themeName={theme}
+          themeName={props.themeName}
           themeValues={
-            merge({}, decisionGroupsByTheme.default, decisionGroups)[
+            merge({}, props.decisionGroupsByTheme.default, decisionGroups)[
               decisionName
             ].decisions
           }
-          filterText={filterText}
+          filterText={props.filterText}
         />
       ))}
     </>
   );
 };
 DecisionsDetailsList.propTypes = {
-  decisionGroupsByTheme: PropTypes.shape({
-    default: PropTypes.object,
-  }),
+  themeName: PropTypes.string.isRequired,
+  decisionGroupsByTheme: PropTypes.object.isRequired,
   filterText: PropTypes.string.isRequired,
 };

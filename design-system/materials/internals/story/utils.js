@@ -25,6 +25,15 @@ export const choiceValueResolver = (choiceName, themeName) => {
     choiceName
   );
 
+  // console.log({
+  //   choiceName,
+  //   themeName,
+  //   defaultChoice,
+  //   defaultValue: defaultChoice?.[choiceName],
+  //   themeChoice: themeChoice?.[choiceName],
+  //   result: themeChoice?.[choiceName] ?? defaultChoice?.[choiceName],
+  // });
+
   return themeChoice?.[choiceName] ?? defaultChoice?.[choiceName];
 };
 
