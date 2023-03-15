@@ -23,15 +23,15 @@ export const component = () => (
         An inverted label text
       </Link>
     </Spec>
-    <Spec label="tone - seconday">
-      <Link to="/" tone="secondary">
-        An seconday label text
-      </Link>
-    </Spec>
     <Spec label="Link respecting parent font-size">
       <div style={{ fontSize: 24 }}>
         <Link to="/">A label text</Link>
       </div>
+    </Spec>
+    <Spec label="tone - seconday">
+      <Link to="/" tone="secondary">
+        A seconday label text
+      </Link>
     </Spec>
   </Suite>
 );
