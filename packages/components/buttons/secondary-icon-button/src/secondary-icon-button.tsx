@@ -4,6 +4,7 @@ import {
   ElementType,
   ReactElement,
   ComponentPropsWithRef,
+  cloneElement,
 } from 'react';
 import omit from 'lodash/omit';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
@@ -43,6 +44,10 @@ export type TSecondaryButtonProps<
    */
   isDisabled?: boolean;
   /**
+   * Indicates the size of the icon.
+   */
+  size?: 'small' | 'medium' | 'big';
+  /**
    * Handler when the button is clicked.
    */
   onClick?: (
@@ -74,7 +79,10 @@ const SecondaryIconButton = <TStringOrComponent extends ElementType = 'button'>(
       isDisabled={props.isDisabled}
       css={getBaseStyles(props)}
     >
-      {props.icon}
+      {props.icon &&
+        cloneElement(props.icon, {
+          size: props.size,
+        })}
     </AccessibleButton>
   );
 };
@@ -83,6 +91,7 @@ SecondaryIconButton.displayName = 'SecondaryIconButton';
 SecondaryIconButton.defaultProps = {
   color: 'solid',
   type: 'button',
+  size: 'big',
   isDisabled: false,
 };
 

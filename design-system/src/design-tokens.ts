@@ -262,7 +262,7 @@ export const themes = {
     borderColorForRadioInputWhenFocused: '#00b39e',
     borderColorForPrimaryActionDropdownMenu: '#ccc',
     borderRadiusForButtonAsBig: '6px',
-    borderRadiusForButtonAsSmall: '4px',
+    borderRadiusForButtonAsMedium: '4px',
     borderRadiusForButtonAsIconAsBig: '6px',
     borderRadiusForButtonAsIconAsMedium: '4px',
     borderRadiusForButtonAsIconAsSmall: '2px',
@@ -339,7 +339,7 @@ export const themes = {
     fontColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
     fontColorForRadioInputWhenWarning: '#f16d0e',
     heightForButtonAsBig: '32px',
-    heightForButtonAsSmall: '24px',
+    heightForButtonAsMedium: '24px',
     heightForButtonAsIconAsBig: '32px',
     heightForButtonAsIconAsMedium: '24px',
     heightForButtonAsIconAsSmall: '16px',
@@ -441,6 +441,8 @@ export const themes = {
     paddingForSelectableSearchInputDropdown: '0 var(--spacing-20)',
     paddingForPrimaryActionDropdown: '0 var(--spacing-20)',
     paddingForPrimaryActionDropdownIcon: '0 var(--spacing-10)',
+    paddingForButtonAsMedium: '0 var(--spacing-20)',
+    paddingForButtonAsBig: '0 var(--spacing-30)',
     shadowForButton:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
     shadowForButtonWhenFocused:
@@ -608,7 +610,7 @@ export const themes = {
     borderColorForRadioInputWhenFocused: 'hsl(0, 0%, 60%)',
     borderColorForPrimaryActionDropdownMenu: '#fff',
     borderRadiusForButtonAsBig: '4px',
-    borderRadiusForButtonAsSmall: '4px',
+    borderRadiusForButtonAsMedium: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
     borderRadiusForButtonAsIconAsMedium: '4px',
     borderRadiusForButtonAsIconAsSmall: '2px',
@@ -694,7 +696,7 @@ export const themes = {
     fontWeightForButton: '500',
     fontWeightForTableHeader: '600',
     heightForButtonAsBig: '40px',
-    heightForButtonAsSmall: '32px',
+    heightForButtonAsMedium: '32px',
     heightForButtonAsIconAsBig: '40px',
     heightForButtonAsIconAsMedium: '32px',
     heightForButtonAsIconAsSmall: '16px',
@@ -762,6 +764,8 @@ export const themes = {
     paddingForSelectableSearchInputDropdown: '0 12px',
     paddingForPrimaryActionDropdown: '0 var(--spacing-30)',
     paddingForPrimaryActionDropdownIcon: '0 var(--spacing-20)',
+    paddingForButtonAsMedium: '0 var(--spacing-30)',
+    paddingForButtonAsBig: '0 var(--spacing-30)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -1141,7 +1145,8 @@ const designTokens = {
   borderColorForPrimaryActionDropdownMenu:
     'var(--border-color-for-primary-action-dropdown-menu, #ccc)',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
-  borderRadiusForButtonAsSmall: 'var(--border-radius-for-button-as-small, 4px)',
+  borderRadiusForButtonAsMedium:
+    'var(--border-radius-for-button-as-medium, 4px)',
   borderRadiusForButtonAsIconAsBig:
     'var(--border-radius-for-button-as-icon-as-big, 6px)',
   borderRadiusForButtonAsIconAsMedium:
@@ -1263,7 +1268,7 @@ const designTokens = {
   fontColorForRadioInputWhenWarning:
     'var(--font-color-for-radio-input-when-warning, #f16d0e)',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
-  heightForButtonAsSmall: 'var(--height-for-button-as-small, 24px)',
+  heightForButtonAsMedium: 'var(--height-for-button-as-medium, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
   heightForButtonAsIconAsMedium:
     'var(--height-for-button-as-icon-as-medium, 24px)',
@@ -1412,6 +1417,10 @@ const designTokens = {
     'var(--padding-for-primary-action-dropdown, 0 var(--spacing-20))',
   paddingForPrimaryActionDropdownIcon:
     'var(--padding-for-primary-action-dropdown-icon, 0 var(--spacing-10))',
+  paddingForButtonAsMedium:
+    'var(--padding-for-button-as-medium, 0 var(--spacing-20))',
+  paddingForButtonAsBig:
+    'var(--padding-for-button-as-big, 0 var(--spacing-30))',
   shadowForButton:
     'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
   shadowForButtonWhenFocused:

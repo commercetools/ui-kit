@@ -140,7 +140,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
         {props.onInfoButtonClick && (
           <IconButton
             label="More Info"
-            icon={<InformationIcon size="medium" />}
+            icon={<InformationIcon />}
             size="small"
             onClick={props.onInfoButtonClick}
           />

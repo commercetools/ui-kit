@@ -294,7 +294,7 @@
   --border-color-for-radio-input-when-focused: #00b39e;
   --border-color-for-primary-action-dropdown-menu: #ccc;
   --border-radius-for-button-as-big: 6px;
-  --border-radius-for-button-as-small: 4px;
+  --border-radius-for-button-as-medium: 4px;
   --border-radius-for-button-as-icon-as-big: 6px;
   --border-radius-for-button-as-icon-as-medium: 4px;
   --border-radius-for-button-as-icon-as-small: 2px;
@@ -372,7 +372,7 @@
   --font-color-for-radio-input-when-readonly: hsl(0, 0%, 60%);
   --font-color-for-radio-input-when-warning: #f16d0e;
   --height-for-button-as-big: 32px;
-  --height-for-button-as-small: 24px;
+  --height-for-button-as-medium: 24px;
   --height-for-button-as-icon-as-big: 32px;
   --height-for-button-as-icon-as-medium: 24px;
   --height-for-button-as-icon-as-small: 16px;
@@ -474,6 +474,8 @@
   --padding-for-selectable-search-input-dropdown: 0 var(--spacing-20);
   --padding-for-primary-action-dropdown: 0 var(--spacing-20);
   --padding-for-primary-action-dropdown-icon: 0 var(--spacing-10);
+  --padding-for-button-as-medium: 0 var(--spacing-20);
+  --padding-for-button-as-big: 0 var(--spacing-30);
   --shadow-for-button: 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12),
     0 1px 1px 0 rgba(0, 0, 0, 0.24);
   --shadow-for-button-when-focused: 0 1px 9.5px 0 rgba(0, 0, 0, 0.12),
