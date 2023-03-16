@@ -1,23 +1,25 @@
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TFlatButtonProps } from './flat-button';
 
-export const getTextColor = (
-  tone: TFlatButtonProps['tone'],
-  isHover: boolean = false,
-  isDisabled: boolean,
-  isIcon?: boolean
-): string => {
-  if (isIcon && isDisabled) {
+type TGetTextColor = {
+  tone: TFlatButtonProps['tone'];
+  isHover?: boolean;
+  isDisabled?: boolean;
+  isIcon?: boolean;
+};
+
+export const getTextColor = (props: TGetTextColor): string => {
+  if (props.isIcon && props.isDisabled) {
     return designTokens.fontColorForFlatButtonIconWhenDisabled;
   }
 
-  if (isDisabled) {
+  if (props.isDisabled) {
     return designTokens.fontColorForTextWhenDisabled;
   }
 
-  switch (tone) {
+  switch (props.tone) {
     case 'primary':
-      return isHover
+      return props.isHover
         ? designTokens.fontColorForFlatButtonAsPrimaryWhenHovered
         : designTokens.fontColorForFlatButtonAsPrimary;
     case 'secondary':
@@ -25,7 +27,7 @@ export const getTextColor = (
     case 'inverted':
       return designTokens.fontColorForFlatButtonAsInverted;
     case 'critical':
-      return isHover
+      return props.isHover
         ? designTokens.fontColorForFlatButtonAsCriticalWhenHovered
         : designTokens.fontColorForFlatButtonAsCritical;
     default:
