@@ -545,7 +545,7 @@ export const themes = {
     backgroundColorForButtonAsUrgentWhenActive: '#DC630A',
     backgroundColorForButtonAsUrgentWhenHovered: '#E7680D',
     backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
-    backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
+    backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 98%)',
     backgroundColorForTableHeader: 'hsl(0, 0%, 95%)',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
     backgroundColorForInputWhenHovered: 'hsl(0, 0%, 98%)',
