@@ -264,8 +264,6 @@ states:
     description: 'When the element is checked'
   checked-and-disabled:
     description: 'When the element is checked and disabled'
-  bold:
-    description: 'When the element is bold'
 
 variants:
   h1:
@@ -310,6 +308,8 @@ variants:
     description: 'To differentiate component information style'
   critical:
     description: 'To differentiate component critical style'
+  bold:
+    description: 'When the element is bold'
 
 componentGroups:
   button:
@@ -1116,7 +1116,7 @@ decisionGroupsByTheme:
           choice: font-weight-400
         font-weight-for-table-header:
           choice: font-weight-400
-        font-weight-for-text-when-bold:
+        font-weight-for-text-as-bold:
           choice: font-weight-700
 
     margins:
@@ -1769,7 +1769,7 @@ decisionGroupsByTheme:
           choice: font-weight-500
         font-weight-for-table-header:
           choice: font-weight-600
-        font-weight-for-text-when-bold:
+        font-weight-for-text-as-bold:
           choice: font-weight-600
 
     heights:
