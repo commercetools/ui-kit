@@ -226,7 +226,7 @@ export const MultiTokensGroupDetails = (props) => (
     {Object.entries(props.tokensGroupData).map(
       ([tokenGroupKey, tokenGroupConfig]) => {
         const filteredTokensGroups = filterGroupItemsValues(
-          tokenGroupConfig.choices || tokenGroupConfig.decisions, // TODO: Fix this coupling
+          tokenGroupConfig[props.id],
           props.filterText
         );
 
