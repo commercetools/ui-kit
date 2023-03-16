@@ -79,7 +79,6 @@ const ButtonIcon = <TStringOrComponent extends ElementType = 'button'>(
   if (!props.icon) return null;
   const Icon = cloneElement(props.icon, {
     size: 'medium',
-    // color: iconColor,
   });
   if (props.as && props.as !== 'button') {
     return (
