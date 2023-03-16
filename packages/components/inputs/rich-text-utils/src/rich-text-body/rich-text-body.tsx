@@ -1,3 +1,4 @@
+//TODO: @redesign cleanup
 import {
   forwardRef,
   useCallback,
@@ -8,6 +9,7 @@ import {
 } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { useSlate } from 'slate-react';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import { useIntl } from 'react-intl';
 import { css, type SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -17,6 +19,7 @@ import Inline from '@commercetools-uikit/spacings-inline';
 import {
   BoldIcon,
   ExpandFullIcon,
+  ExpandIcon,
   ItalicIcon,
   UnorderedListIcon,
   OrderedListIcon,
@@ -92,6 +95,7 @@ export type TRichTextEditorBody = {
   onClickExpand?: () => boolean;
   containerStyles: CSSProperties;
   children: ReactNode;
+  isNewTheme?: boolean;
 };
 
 const MoreStylesDropdownLabel = () => <MoreStylesIcon size="medium" />;
@@ -221,6 +225,7 @@ const RichTextEditorBody = forwardRef<
     ref as unknown as TRichtTextEditorBodyRef;
   const intl = useIntl();
   const editor = useSlate();
+  const { isNewTheme } = useTheme();
 
   const dropdownOptions = createMoreStylesDropdownOptions(intl);
   const styleDropdownOptions = createStyleDropdownOptions(intl);
@@ -341,7 +346,11 @@ const RichTextEditorBody = forwardRef<
             }}
             getIsItemSelected={getIsMoreStyleMarkItemSelected}
           />
-          <Divider />
+          <Divider
+            css={css`
+              margin: ${designTokens.marginForRichTextDivider};
+            `}
+          />
           <Tooltip
             title={intl.formatMessage(messages.orderedListButtonLabel)}
             placement="bottom"
@@ -413,7 +422,11 @@ const RichTextEditorBody = forwardRef<
           </Tooltip>
           {props.showExpandIcon && (
             <>
-              <Divider />
+              <Divider
+                css={css`
+                  margin: ${designTokens.marginForRichTextDivider};
+                `}
+              />
               <Tooltip
                 title={intl.formatMessage(messages.expandButtonLabel)}
                 placement="bottom-end"
@@ -425,7 +438,11 @@ const RichTextEditorBody = forwardRef<
                   label={intl.formatMessage(messages.expandButtonLabel)}
                   onClick={props.onClickExpand}
                 >
-                  <ExpandFullIcon size="medium" />
+                  {isNewTheme ? (
+                    <ExpandIcon size="medium" />
+                  ) : (
+                    <ExpandFullIcon size="medium" />
+                  )}
                 </Button>
               </Tooltip>
             </>
@@ -440,6 +457,7 @@ const RichTextEditorBody = forwardRef<
             isReadOnly={props.isReadOnly}
             isDisabled={props.isDisabled}
             ref={containerRef}
+            isNewTheme={isNewTheme}
           >
             {props.children}
           </EditorContainer>
