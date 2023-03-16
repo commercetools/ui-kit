@@ -61,7 +61,7 @@ export type TPrimaryButtonProps<
   ) => void;
   /**
    * Indicates the size of the button.
-   * The `small` size value is still working but it’s deprecated and we will remove it in the future.
+   * @deprecated `small` value is deprecated. Use `medium` instead.
    */
   size?: 'small' | 'medium' | 'big';
   /**
