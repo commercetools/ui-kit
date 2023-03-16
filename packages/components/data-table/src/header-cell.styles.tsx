@@ -116,7 +116,6 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   /**
    * header row bottom border:
    * - not using "border-bottom" since it stands out in front of the resize indicator and counts towards the row height
-   * - not using "box-shadow" since it's already used for the column divider
    */
   ${(props) =>
     !props.isNewTheme &&
