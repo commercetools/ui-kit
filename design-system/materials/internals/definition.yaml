@@ -220,12 +220,6 @@ choiceGroupsByTheme:
         break-point-jumbodesktop: 1920px
 
   test:
-    colors:
-      label: Colors
-      prefix: color
-      description: Dark theme colors overwrite
-      choices:
-        color-primary: '#00b39e'
     fontFamilies:
       label: Font families
       prefix: font-family
