@@ -64,7 +64,7 @@ function Story() {
         <TextInput
           value={filterText}
           onChange={searchTextChangeHandler}
-          horizontalConstraint="13"
+          horizontalConstraint={13}
         />
         <h2>Table of Contents</h2>
         <ul>

@@ -31,6 +31,24 @@ const FontColorSample = (props) => (
   <FontColorSampleStyle {...props}>Aa</FontColorSampleStyle>
 );
 
+const FontSizeSampleStyle = styled.div`
+  font-size: ${(props) => props.value};
+  font-weight: bolder;
+  display: inline-block;
+`;
+const FontSizeSample = (props) => (
+  <FontSizeSampleStyle {...props}>Aa</FontSizeSampleStyle>
+);
+
+const FontWeightSampleStyle = styled.div`
+  font-weight: ${(props) => props.value};
+  font-size: 2rem;
+  display: inline-block;
+`;
+const FontWeightSample = (props) => (
+  <FontWeightSampleStyle {...props}>Aa</FontWeightSampleStyle>
+);
+
 const ShadowSample = styled.div`
   width: 50px;
   height: 50px;
@@ -53,6 +71,9 @@ const samplersMap = {
   'border-radius': BorderRadiusSample,
   color: ColorSample,
   'font-color': FontColorSample,
+  'font-size': FontSizeSample,
+  'font-weight': FontWeightSample,
+  'icon-color': ColorSample,
   shadow: ShadowSample,
   spacing: SpacingSample,
 };

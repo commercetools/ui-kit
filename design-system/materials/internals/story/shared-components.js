@@ -178,7 +178,7 @@ TokensDetailsTable.propTypes = {
   cellRenderer: PropTypes.func.isRequired,
   themeName: PropTypes.string.isRequired,
   tokensGroupPrefix: PropTypes.string,
-  tokensGroupData: PropTypes.object.isRequired,
+  tokensGroupData: PropTypes.array.isRequired,
 };
 
 export function SingleTokensGroupDetails(props) {
