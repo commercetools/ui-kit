@@ -1,11 +1,21 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/anchor-has-content */
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import upperFirst from 'lodash/upperFirst';
-import { designTokens } from '@commercetools-uikit/design-system';
-import { /*choiceValueResolver,*/ getIsDeprecated } from './utils';
-// import { getSampleComponent } from './samplers';
+import deprecatedTokens from '../deprecated-tokens';
 
-export const Table = styled.table`
+const getIsDeprecated = (token) => deprecatedTokens.includes(token);
+
+const filterGroupItemsValues = (groupItems, searchText) =>
+  Object.entries(groupItems).filter(
+    ([key, value]) =>
+      key.toLowerCase().includes(searchText.toLowerCase()) ||
+      value?.toLowerCase?.().includes(searchText.toLowerCase()) ||
+      value?.description?.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+const Table = styled.table`
   border: 1px solid #ccc;
   border-collapse: collapse;
   & tr td {
@@ -20,17 +30,7 @@ export const Table = styled.table`
   }
 `;
 
-export const Background = styled.div`
-  background-color: rgba(0, 0, 0, 0.01);
-  font-family: ${designTokens.fontFamilyDefault};
-  color: ${designTokens.colorSolid}
-  margin: 10px;
-  > * + * {
-    margin: 16px 0 0 0;
-  }
-`;
-
-export const GroupStyle = styled.div`
+const GroupStyle = styled.div`
   padding: 10px;
   display: ${(props) => (props.isVisible ? 'block' : 'none')};
 `;
@@ -39,18 +39,7 @@ export const Token = styled.p`
   font-family: monospace;
 `;
 
-export const TokenNameHeaderCell = styled.td`
-  min-width: 400px;
-`;
-
-export const Description = styled.p`
-  font-size: 10pt;
-  margin: 10px 0;
-`;
-
-export const DeprecationBadge = () => (
-  <b style={{ color: 'orange' }}>DEPRECATED</b>
-);
+const DeprecationBadge = () => <b style={{ color: 'orange' }}>DEPRECATED</b>;
 DeprecationBadge.displayName = 'DeprecationBadge';
 
 export const TokenBodyCell = (props) => (
@@ -63,15 +52,7 @@ TokenBodyCell.propTypes = {
   tokenName: PropTypes.string.isRequired,
 };
 
-const filterGroupItemsValues = (groupItems, searchText) =>
-  Object.entries(groupItems).filter(
-    ([key, value]) =>
-      key.toLowerCase().includes(searchText.toLowerCase()) ||
-      value?.toLowerCase?.().includes(searchText.toLowerCase()) ||
-      value?.description?.toLowerCase().includes(searchText.toLowerCase())
-  );
-
-export const GroupLinks = (props) => {
+export const TokenGroupLinks = (props) => {
   return (
     <>
       <a
@@ -117,10 +98,10 @@ export const GroupLinks = (props) => {
     </>
   );
 };
-GroupLinks.propTypes = {
+TokenGroupLinks.propTypes = {
   id: PropTypes.string.isRequired,
   config: PropTypes.object,
-  filterText: PropTypes.string.isRequired,
+  filterText: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
@@ -128,21 +109,6 @@ const TableBody = (props) => {
   return (
     <tbody>
       {props.groupItems.map(([tokenName, tokenData]) => {
-        // const ChoiceSample = getSampleComponent(props.groupItemsPrefix);
-        // const choiceValue = choiceValueResolver(tokenName, props.themeName);
-        // return (
-        //   <tr key={`choices-${tokenName}-body-key`}>
-        //     <td>
-        //       <Token>{tokenName}</Token>
-        //       {getIsDeprecated(tokenName) && <DeprecationBadge />}
-        //     </td>
-        //     <td>
-        //       <ChoiceSample value={choiceValue} />
-        //       &nbsp;{choiceValue}
-        //     </td>
-        //   </tr>
-        // );
-
         return (
           <tr key={`${props.groupItemsPrefix}-${tokenName}-body-row-key`}>
             {props.columnsConfig.map((columnConfig) => (
@@ -166,7 +132,7 @@ const TableBody = (props) => {
 };
 TableBody.propTypes = {
   groupItems: PropTypes.array.isRequired,
-  groupItemsPrefix: PropTypes.string.isRequired,
+  groupItemsPrefix: PropTypes.string,
   themeName: PropTypes.string.isRequired,
   columnsConfig: PropTypes.arrayOf(
     PropTypes.shape({
@@ -177,43 +143,122 @@ TableBody.propTypes = {
   cellRenderer: PropTypes.func.isRequired,
 };
 
-export function GroupItemsDetailedList(props) {
+const TokensDetailsTable = (props) => (
+  <Table>
+    <thead>
+      <tr>
+        {props.columnsConfig.map((columnsConfig, index) => (
+          <td
+            key={columnsConfig.key}
+            style={{
+              minWidth: index === 0 ? 400 : 'auto',
+            }}
+          >
+            {columnsConfig.label || upperFirst(columnsConfig.key)}
+          </td>
+        ))}
+      </tr>
+    </thead>
+    <TableBody
+      groupItems={props.tokensGroupData}
+      groupItemsPrefix={props.tokensGroupPrefix}
+      themeName={props.themeName}
+      columnsConfig={props.columnsConfig}
+      cellRenderer={props.cellRenderer}
+    />
+  </Table>
+);
+TokensDetailsTable.propTypes = {
+  columnsConfig: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      label: PropTypes.string,
+    })
+  ).isRequired,
+  cellRenderer: PropTypes.func.isRequired,
+  themeName: PropTypes.string.isRequired,
+  tokensGroupPrefix: PropTypes.string,
+  tokensGroupData: PropTypes.object.isRequired,
+};
+
+export function SingleTokensGroupDetails(props) {
   const filteredGroupItems = filterGroupItemsValues(
     props.groupItems,
-    props.searchText
+    props.filterText
   );
-  console.log({ groupItems: props.groupItems, filteredGroupItems });
+
   return (
-    <>
+    <section>
       <h2 id={props.id}>{props.title || upperFirst(props.id)}</h2>
+      {props.subtitle && <p>{props.subtitle}</p>}
       <GroupStyle isVisible={filteredGroupItems.length > 0}>
-        <Table>
-          <thead>
-            <tr>
-              {props.columnsConfig.map((columnsConfig) => (
-                <td key={columnsConfig.key}>
-                  {columnsConfig.label || upperFirst(columnsConfig.key)}
-                </td>
-              ))}
-            </tr>
-          </thead>
-          <TableBody
-            groupItems={filteredGroupItems}
-            groupItemsPrefix={undefined}
-            themeName={props.themeName}
-            columnsConfig={props.columnsConfig}
-            cellRenderer={props.cellRenderer}
-          />
-        </Table>
+        <TokensDetailsTable
+          columnsConfig={props.columnsConfig}
+          cellRenderer={props.cellRenderer}
+          themeName={props.themeName}
+          tokensGroupPrefix=""
+          tokensGroupData={filteredGroupItems}
+        />
       </GroupStyle>
-    </>
+    </section>
   );
 }
-GroupItemsDetailedList.propTypes = {
+SingleTokensGroupDetails.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string,
-  searchText: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  filterText: PropTypes.string.isRequired,
   groupItems: PropTypes.object.isRequired,
+  columnsConfig: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      label: PropTypes.string,
+    })
+  ).isRequired,
+  cellRenderer: PropTypes.func.isRequired,
+  themeName: PropTypes.string.isRequired,
+};
+
+export const MultiTokensGroupDetails = (props) => (
+  <section>
+    <h2 id={props.id}>{props.title || upperFirst(props.id)}</h2>
+    {props.subtitle && <p>{props.subtitle}</p>}
+    {Object.entries(props.tokensGroupData).map(
+      ([tokenGroupKey, tokenGroupConfig]) => {
+        const filteredTokensGroups = filterGroupItemsValues(
+          tokenGroupConfig.choices || tokenGroupConfig.decisions, // TODO: Fix this coupling
+          props.filterText
+        );
+
+        return (
+          <GroupStyle
+            key={`tokens-group_${tokenGroupKey}`}
+            isVisible={filteredTokensGroups.length > 0}
+          >
+            <a id={`${props.id}-${tokenGroupConfig.prefix}`} />
+            <h3>{tokenGroupConfig.label}</h3>
+            {Boolean(tokenGroupConfig.description) && (
+              <p>{tokenGroupConfig.description}</p>
+            )}
+            <TokensDetailsTable
+              columnsConfig={props.columnsConfig}
+              cellRenderer={props.cellRenderer}
+              themeName={props.themeName}
+              tokensGroupPrefix={tokenGroupConfig.prefix}
+              tokensGroupData={filteredTokensGroups}
+            />
+          </GroupStyle>
+        );
+      }
+    )}
+  </section>
+);
+MultiTokensGroupDetails.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  filterText: PropTypes.string.isRequired,
+  tokensGroupData: PropTypes.object.isRequired,
   columnsConfig: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,

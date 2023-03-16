@@ -7,17 +7,24 @@ import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Readme from './TOKENS.md';
 import definition from './definition.yaml';
 import {
-  GroupLinks,
-  GroupItemsDetailedList,
+  MultiTokensGroupDetails,
+  Token,
   TokenBodyCell,
+  TokenGroupLinks,
+  SingleTokensGroupDetails,
 } from './story/shared-components';
-import { ChoicesDetailsList } from './story/choices';
-import { DecisionsDetailsList } from './story/decisions';
+import { getSampleComponent } from './story/samplers';
 
 const choiceGroupsByTheme =
   process.env.NODE_ENV !== 'production'
     ? definition.choiceGroupsByTheme
     : { default: definition.choiceGroupsByTheme.default };
+
+const findChoiceValue = (theme, choiceName) => {
+  return Object.values(theme)
+    .map((choiceGroup) => choiceGroup.choices)
+    .find((choices) => choices[choiceName])?.[choiceName];
+};
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
@@ -29,6 +36,20 @@ const Background = styled.div`
   }
 `;
 
+const DetailsGroupsContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+`;
+
+const BasicCellRenderer = (cellData) => {
+  if (cellData.columnKey !== 'description') {
+    return <TokenBodyCell tokenName={cellData.tokenName} />;
+  } else {
+    return cellData.tokenData.description;
+  }
+};
+
 function Story() {
   const [filterText, setFilterText] = useState('');
   const { theme } = useTheme();
@@ -39,109 +60,139 @@ function Story() {
 
   return (
     <Background>
-      <TextInput
-        value={filterText}
-        onChange={searchTextChangeHandler}
-        horizontalConstraint="13"
-      />
-      <h2>Table of Contents</h2>
-      <ul>
-        <li>
-          <GroupLinks
-            id="choices"
-            config={choiceGroupsByTheme.default}
-            filterText={filterText}
-          >
-            Choices
-          </GroupLinks>
-        </li>
-        <li>
-          <GroupLinks id="states">States</GroupLinks>
-        </li>
-        <li>
-          <GroupLinks id="component-groups">Component Groups</GroupLinks>
-        </li>
-        <li>
-          <GroupLinks id="variants">Variants</GroupLinks>
-        </li>
-        <li>
-          <GroupLinks
-            id="decisions"
-            config={definition.decisionGroupsByTheme.default}
-            filterText={filterText}
-          >
-            Decisions
-          </GroupLinks>
-        </li>
-      </ul>
+      <header>
+        <TextInput
+          value={filterText}
+          onChange={searchTextChangeHandler}
+          horizontalConstraint="13"
+        />
+        <h2>Table of Contents</h2>
+        <ul>
+          <li>
+            <TokenGroupLinks
+              id="choices"
+              config={choiceGroupsByTheme.default}
+              filterText={filterText}
+            >
+              Choices
+            </TokenGroupLinks>
+          </li>
+          <li>
+            <TokenGroupLinks id="states">States</TokenGroupLinks>
+          </li>
+          <li>
+            <TokenGroupLinks id="component-groups">
+              Component Groups
+            </TokenGroupLinks>
+          </li>
+          <li>
+            <TokenGroupLinks id="variants">Variants</TokenGroupLinks>
+          </li>
+          <li>
+            <TokenGroupLinks
+              id="decisions"
+              config={definition.decisionGroupsByTheme.default}
+              filterText={filterText}
+            >
+              Decisions
+            </TokenGroupLinks>
+          </li>
+        </ul>
+      </header>
 
-      <ChoicesDetailsList
-        id="choices"
-        subtitle="This is the palette of values you may chose from when creating design tokens."
-        themeName={theme}
-        choiceGroups={definition.choiceGroupsByTheme[theme]}
-        filterText={filterText}
-      />
+      <DetailsGroupsContainer>
+        <MultiTokensGroupDetails
+          id="choices"
+          subtitle="This is the palette of values you may chose from when creating design tokens."
+          themeName={theme}
+          filterText={filterText}
+          columnsConfig={[{ key: 'token' }, { key: 'value' }]}
+          cellRenderer={(data) => {
+            if (data.columnKey === 'token') {
+              return <Token>{data.tokenName}</Token>;
+            } else {
+              const ChoiceSample = getSampleComponent(data.groupItemsPrefix);
+              return (
+                <>
+                  <ChoiceSample value={data.tokenData} />
+                  &nbsp;{data.tokenData}
+                </>
+              );
+            }
+          }}
+          tokensGroupData={definition.choiceGroupsByTheme[theme]}
+        />
 
-      <GroupItemsDetailedList
-        id="states"
-        columnsConfig={[{ key: 'state' }, { key: 'description' }]}
-        cellRenderer={(data) => {
-          switch (data.columnKey) {
-            case 'state':
-              return <TokenBodyCell tokenName={data.tokenName} />;
-            case 'description':
-              return data.tokenData.description;
-          }
-        }}
-        groupItems={definition.states}
-        themeName={theme}
-        searchText={filterText}
-      />
+        <SingleTokensGroupDetails
+          id="states"
+          columnsConfig={[{ key: 'state' }, { key: 'description' }]}
+          cellRenderer={BasicCellRenderer}
+          groupItems={definition.states}
+          themeName={theme}
+          filterText={filterText}
+        />
 
-      <GroupItemsDetailedList
-        id="component-groups"
-        title="Component Groups"
-        columnsConfig={[
-          { key: 'component-group', label: 'Component Group' },
-          { key: 'description' },
-        ]}
-        cellRenderer={(data) => {
-          switch (data.columnKey) {
-            case 'component-group':
-              return <TokenBodyCell tokenName={data.tokenName} />;
-            case 'description':
-              return data.tokenData.description;
-          }
-        }}
-        groupItems={definition.componentGroups}
-        themeName={theme}
-        searchText={filterText}
-      />
+        <SingleTokensGroupDetails
+          id="component-groups"
+          title="Component Groups"
+          columnsConfig={[
+            { key: 'component-group', label: 'Component Group' },
+            { key: 'description' },
+          ]}
+          cellRenderer={BasicCellRenderer}
+          groupItems={definition.componentGroups}
+          themeName={theme}
+          filterText={filterText}
+        />
 
-      <GroupItemsDetailedList
-        id="variants"
-        columnsConfig={[{ key: 'variant' }, { key: 'description' }]}
-        cellRenderer={(data) => {
-          switch (data.columnKey) {
-            case 'variant':
-              return <TokenBodyCell tokenName={data.tokenName} />;
-            case 'description':
-              return data.tokenData.description;
-          }
-        }}
-        groupItems={definition.variants}
-        themeName={theme}
-        searchText={filterText}
-      />
+        <SingleTokensGroupDetails
+          id="variants"
+          columnsConfig={[{ key: 'variant' }, { key: 'description' }]}
+          cellRenderer={BasicCellRenderer}
+          groupItems={definition.variants}
+          themeName={theme}
+          filterText={filterText}
+        />
 
-      <DecisionsDetailsList
-        id="decisions"
-        subtitle="These are specific decisions where a choice gets applied to an element (optionally in a certain state)."
-        themeName={theme}
-        decisionGroups={definition.decisionGroupsByTheme[theme]}
-        filterText={filterText}
-      />
+        <MultiTokensGroupDetails
+          id="decisions"
+          subtitle="These are specific decisions where a choice gets applied to an element (optionally in a certain state)."
+          themeName={theme}
+          filterText={filterText}
+          columnsConfig={[
+            { key: 'token' },
+            { key: 'choice' },
+            { key: 'value' },
+          ]}
+          cellRenderer={(data) => {
+            switch (data.columnKey) {
+              case 'token':
+                return <Token>{data.tokenName}</Token>;
+              case 'choice':
+                return <Token>{data.tokenData.choice}</Token>;
+              case 'value':
+                const ChoiceSample = getSampleComponent(data.groupItemsPrefix);
+                const choiceValue = findChoiceValue(
+                  definition.choiceGroupsByTheme[theme],
+                  data.tokenData.choice
+                );
+                if (choiceValue) {
+                  return (
+                    <>
+                      <ChoiceSample value={choiceValue} />
+                      &nbsp;{choiceValue}
+                    </>
+                  );
+                } else {
+                  return <Token>---</Token>;
+                }
+              default:
+                return null;
+            }
+          }}
+          tokensGroupData={definition.decisionGroupsByTheme[theme]}
+        />
+      </DetailsGroupsContainer>
     </Background>
   );
 }

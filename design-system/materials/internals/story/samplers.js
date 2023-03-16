@@ -22,7 +22,7 @@ const ColorSample = styled.div`
 `;
 
 const FontColorSampleStyle = styled.div`
-  color: ${(props) => props.color};
+  color: ${(props) => props.value};
   font-size: 24pt;
   font-weight: bolder;
   display: inline-block;
