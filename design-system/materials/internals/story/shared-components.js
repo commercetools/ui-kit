@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import upperFirst from 'lodash/upperFirst';
 import { designTokens } from '@commercetools-uikit/design-system';
+import { /*choiceValueResolver,*/ getIsDeprecated } from './utils';
+// import { getSampleComponent } from './samplers';
 
 export const Table = styled.table`
   border: 1px solid #ccc;
@@ -50,6 +52,16 @@ export const DeprecationBadge = () => (
   <b style={{ color: 'orange' }}>DEPRECATED</b>
 );
 DeprecationBadge.displayName = 'DeprecationBadge';
+
+export const TokenBodyCell = (props) => (
+  <>
+    <Token>{props.tokenName}</Token>
+    {getIsDeprecated(props.tokenName) && <DeprecationBadge />}
+  </>
+);
+TokenBodyCell.propTypes = {
+  tokenName: PropTypes.string.isRequired,
+};
 
 const filterGroupItemsValues = (groupItems, searchText) =>
   Object.entries(groupItems).filter(
@@ -112,11 +124,65 @@ GroupLinks.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+const TableBody = (props) => {
+  return (
+    <tbody>
+      {props.groupItems.map(([tokenName, tokenData]) => {
+        // const ChoiceSample = getSampleComponent(props.groupItemsPrefix);
+        // const choiceValue = choiceValueResolver(tokenName, props.themeName);
+        // return (
+        //   <tr key={`choices-${tokenName}-body-key`}>
+        //     <td>
+        //       <Token>{tokenName}</Token>
+        //       {getIsDeprecated(tokenName) && <DeprecationBadge />}
+        //     </td>
+        //     <td>
+        //       <ChoiceSample value={choiceValue} />
+        //       &nbsp;{choiceValue}
+        //     </td>
+        //   </tr>
+        // );
+
+        return (
+          <tr key={`${props.groupItemsPrefix}-${tokenName}-body-row-key`}>
+            {props.columnsConfig.map((columnConfig) => (
+              <td
+                key={`${props.groupItemsPrefix}-${tokenName}-${columnConfig.key}-body-cell-key`}
+              >
+                {props.cellRenderer({
+                  columnKey: columnConfig.key,
+                  groupItemsPrefix: props.groupItemsPrefix,
+                  tokenName,
+                  tokenData,
+                  themeName: props.themeName,
+                })}
+              </td>
+            ))}
+          </tr>
+        );
+      })}
+    </tbody>
+  );
+};
+TableBody.propTypes = {
+  groupItems: PropTypes.array.isRequired,
+  groupItemsPrefix: PropTypes.string.isRequired,
+  themeName: PropTypes.string.isRequired,
+  columnsConfig: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      label: PropTypes.string,
+    })
+  ).isRequired,
+  cellRenderer: PropTypes.func.isRequired,
+};
+
 export function GroupItemsDetailedList(props) {
   const filteredGroupItems = filterGroupItemsValues(
     props.groupItems,
     props.searchText
   );
+  console.log({ groupItems: props.groupItems, filteredGroupItems });
   return (
     <>
       <h2 id={props.id}>{props.title || upperFirst(props.id)}</h2>
@@ -124,23 +190,20 @@ export function GroupItemsDetailedList(props) {
         <Table>
           <thead>
             <tr>
-              <TokenNameHeaderCell>
-                {props.title || upperFirst(props.id)}
-              </TokenNameHeaderCell>
-              <td>Description</td>
+              {props.columnsConfig.map((columnsConfig) => (
+                <td key={columnsConfig.key}>
+                  {columnsConfig.label || upperFirst(columnsConfig.key)}
+                </td>
+              ))}
             </tr>
           </thead>
-          <tbody>
-            {filteredGroupItems.map(([name, itemConfig]) => (
-              <tr key={name}>
-                <td>
-                  <Token>{name}</Token>
-                  {itemConfig.deprecated && <DeprecationBadge />}
-                </td>
-                <td>{itemConfig.description}</td>
-              </tr>
-            ))}
-          </tbody>
+          <TableBody
+            groupItems={filteredGroupItems}
+            groupItemsPrefix={undefined}
+            themeName={props.themeName}
+            columnsConfig={props.columnsConfig}
+            cellRenderer={props.cellRenderer}
+          />
         </Table>
       </GroupStyle>
     </>
@@ -151,60 +214,12 @@ GroupItemsDetailedList.propTypes = {
   title: PropTypes.string,
   searchText: PropTypes.string.isRequired,
   groupItems: PropTypes.object.isRequired,
-};
-
-const BasicSample = styled.div``;
-
-const BorderRadiusSample = styled.div`
-  width: calc(${(props) => props.value} + 2 * ${(props) => props.value});
-  min-width: 20px;
-  height: calc(${(props) => props.value} + 2 * ${(props) => props.value});
-  min-height: 20px;
-  background-color: pink;
-  border-radius: ${(props) => props.value};
-  display: inline-block;
-  margin: 0 10px;
-`;
-
-const ColorSample = styled.div`
-  width: 30px;
-  height: 30px;
-  background-color: ${(props) => props.value};
-  box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.1);
-  display: inline-block;
-`;
-
-const FontColorSampleStyle = styled.div`
-  color: ${(props) => props.color};
-  font-size: 24pt;
-  font-weight: bolder;
-  display: inline-block;
-`;
-const FontColorSample = (props) => (
-  <FontColorSampleStyle {...props}>Aa</FontColorSampleStyle>
-);
-
-const ShadowSample = styled.div`
-  width: 50px;
-  height: 50px;
-  box-shadow: ${(props) => props.value};
-  display: inline-block;
-  margin: 0 10px;
-`;
-
-const SpacingSample = styled.div`
-  width: ${(props) => props.value};
-  height: ${(props) => props.value};
-  background-color: lightblue;
-  display: inline-block;
-  margin: 0 10px;
-`;
-
-export const Samplers = {
-  BasicSample,
-  BorderRadiusSample,
-  ColorSample,
-  FontColorSample,
-  ShadowSample,
-  SpacingSample,
+  columnsConfig: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      label: PropTypes.string,
+    })
+  ).isRequired,
+  cellRenderer: PropTypes.func.isRequired,
+  themeName: PropTypes.string.isRequired,
 };
