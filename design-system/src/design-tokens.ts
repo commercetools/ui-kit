@@ -484,7 +484,6 @@ export const themes = {
     sizeHeightTag: '26px',
   },
   test: {
-    colorPrimary: '#00b39e',
     fontFamily: "'Inter', system-ui",
     alignItemsForSelectInputTag: 'center',
     backgroundColorForButtonWhenActive: 'hsl(0deg 0% 10% / 10%)',
