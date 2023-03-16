@@ -410,6 +410,7 @@ export const themes = {
     lineHeightForTextAsBody: 'inherit',
     lineHeightForTextAsDetail: 'inherit',
     lineHeightForSelectInputOptions: 'inherit',
+    lineHeightForTableHeader: 'inherit',
     fontWeightForTextAsH1: '300',
     fontWeightForTextAsH2: '300',
     fontWeightForTextAsH3: '300',
@@ -750,6 +751,7 @@ export const themes = {
     lineHeightForTextAsBody: '1.625rem',
     lineHeightForTextAsDetail: '1.375rem',
     lineHeightForSelectInputOptions: '1.625rem',
+    lineHeightForTableHeader: '26px',
     fontWeightForTextAsH1: '600',
     fontWeightForTextAsH2: '500',
     fontWeightForTextAsH3: '500',
@@ -1445,6 +1447,7 @@ const designTokens = {
   lineHeightForTextAsDetail: 'var(--line-height-for-text-as-detail, inherit)',
   lineHeightForSelectInputOptions:
     'var(--line-height-for-select-input-options, inherit)',
+  lineHeightForTableHeader: 'var(--line-height-for-table-header, inherit)',
   fontWeightForTextAsH1: 'var(--font-weight-for-text-as-h-1, 300)',
   fontWeightForTextAsH2: 'var(--font-weight-for-text-as-h-2, 300)',
   fontWeightForTextAsH3: 'var(--font-weight-for-text-as-h-3, 300)',

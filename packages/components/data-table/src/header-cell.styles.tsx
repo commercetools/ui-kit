@@ -98,6 +98,7 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
     props.disableHeaderStickiness ? 'relative' : 'sticky'};
   top: 0;
   z-index: 1;
+  line-height: ${designTokens.lineHeightForTableHeader};
 
   /* remove user-agent styles */
   padding: 0;
