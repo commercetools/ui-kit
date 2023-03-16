@@ -1,3 +1,4 @@
+//TODO: @redesign cleanup
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TEditorProps } from './editor';
@@ -9,9 +10,27 @@ const getEditorLanguageLabelBorderColor = (props: TEditorLanguageLabelProps) =>
       : designTokens.borderColorForInputWhenDisabled
   }`;
 
-type TEditorLanguageLabelProps = {
+type TInputProps = {
+  isDisabled?: boolean;
   isReadOnly?: boolean;
 };
+
+type TEditorLanguageLabelProps = {
+  isReadOnly?: boolean;
+  isDisabled?: boolean;
+  isNewTheme?: boolean;
+};
+
+const getBackgroundColor = (props: TInputProps) => {
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForInputWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForInputWhenDisabled;
+  }
+  return designTokens.backgroundColorForInput;
+};
+
 const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   /* avoid wrapping label onto new lines */
   white-space: nowrap;
@@ -20,7 +39,7 @@ const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   line-height: calc(
     ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
   );
-  background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+  background-color: ${(props) => getBackgroundColor(props)};
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
   border: ${(props) => getEditorLanguageLabelBorderColor(props)};
@@ -31,6 +50,8 @@ const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   border-right: 0;
   box-shadow: none;
   appearance: none;
+  display: ${(props) => props.isNewTheme && 'flex'};
+  align-items: center;
 
   /* cursor should be inherited from parent,
     * GIVEN parent has 'not-allowed' cursor

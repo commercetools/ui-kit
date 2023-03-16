@@ -8,6 +8,7 @@ import Button from './rich-text-body-button';
 import {
   getButtonStyles,
   DropdownContainer,
+  DropdownItemLabelWrapper,
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
 
@@ -108,7 +109,9 @@ const Dropdown = (props: TDropdownProps) => {
                         value={item.value}
                         isSelected={props.getIsItemSelected(item)}
                       >
-                        {item.label}
+                        <DropdownItemLabelWrapper>
+                          {item.label}
+                        </DropdownItemLabelWrapper>
                       </DropdownItem>
                     );
                   })}

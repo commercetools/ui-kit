@@ -16,16 +16,18 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   border: 0;
   font-size: 1rem;
   cursor: pointer;
-  padding: ${designTokens.spacing10} ${designTokens.spacing20};
+  padding: ${designTokens.paddingForLocalizedRichTextDropdownItem};
   font-family: ${designTokens.fontFamilyDefault};
   display: block;
   background-color: ${(props) =>
-    props.isSelected ? designTokens.colorAccent95 : designTokens.colorSurface};
+    props.isSelected
+      ? designTokens.backgroundColorForInputWhenActive
+      : designTokens.colorSurface};
 
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${designTokens.colorNeutral90};
+    background-color: ${designTokens.backgroundColorForSelectInputOptionWhenHovered};
   }
 `;
 
@@ -41,11 +43,11 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
     justify-content: center;
     align-items: center;
     padding: ${props.isStyleButton
-      ? `calc(${designTokens.spacing10} - 1px) ${designTokens.spacing20}`
-      : designTokens.spacing10};
+      ? `${designTokens.paddingForLocalizedRichTextDropdownButton}`
+      : designTokens.paddingForLocalizedRichTextBodyButton};
 
     &:hover {
-      background-color: ${designTokens.colorNeutral90};
+      background-color: ${designTokens.backgroundColorForRichTextDropdownWhenHovered};
     }
   `,
   props.isIndeterminate &&
@@ -55,7 +57,7 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
   props.isOpen &&
     css`
       &:not(:hover) {
-        background-color: ${designTokens.colorAccent30};
+        background-color: ${designTokens.backgroundColorForRichTextButton};
         color: ${designTokens.colorSurface};
 
         svg {
@@ -92,8 +94,18 @@ const DropdownContainer = styled.div`
   background: ${designTokens.colorSurface};
   overflow: hidden;
   z-index: 9999;
-  border: 1px solid ${designTokens.colorPrimary};
+  border: 1px solid ${designTokens.borderColorForSelectInputMenu};
+  box-shadow: ${designTokens.shadowForSelectInputMenu};
   border-radius: ${designTokens.borderRadius6};
 `;
 
-export { DropdownContainer, DropdownItem, getButtonStyles };
+const DropdownItemLabelWrapper = styled.div`
+  margin: ${designTokens.marginForRichTextDropdownItemLabel};
+`;
+
+export {
+  DropdownContainer,
+  DropdownItem,
+  DropdownItemLabelWrapper,
+  getButtonStyles,
+};

@@ -364,6 +364,26 @@ componentGroups:
     description: 'Localized multiline text input label elements'
   localized-rich-text-input-label:
     description: 'Localized rich text input label elements'
+  localized-multiline-text-input-label:
+    description: 'Localized multiline text input label elements'
+  localized-rich-text-body-button:
+    description: 'Localized rich text input button elements'
+  localized-rich-text-dropdown-button:
+    description: 'Localized rich text input dropdown elements'
+  localized-rich-text-dropdown-item:
+    description: 'Localized rich text input dropdown item elements'
+  rich-text-input:
+    description: 'rich text input elements'
+  rich-text-editor-container:
+    description: 'Rich text editor container elements'
+  rich-text-divider:
+    description: 'Rich text divider elements'
+  rich-text-dropdown:
+    description: 'Rich text dropdown elements'
+  rich-text-dropdown-item-label:
+    description: 'Rich text dropdown item label elements'
+  rich-text-more-styles-dropdown:
+    description: 'Rich text more styles dropdown elements'
   tooltip:
     description: 'Tooltip elements'
   view-switcher:
@@ -418,6 +438,10 @@ componentGroups:
     description: 'Toggle input track pseudo-elements'
   toggle-input-thumb:
     description: 'Toggle input thumb pseudo-elements'
+  rich-text-toolbar:
+    description: 'Rich text tool bar element'
+  rich-text-button:
+    description: 'Rich text button element'
 
 decisionGroupsByTheme:
   default:
@@ -503,6 +527,16 @@ decisionGroupsByTheme:
           choice: color-accent-95
         background-color-for-localized-input-label-when-disabled:
           choice: color-accent-98
+        background-color-for-localized-rich-text-body-button-when-active:
+          choice: color-accent-30
+        background-color-for-localized-rich-text-body-button:
+          choice: color-neutral-90
+        background-color-for-rich-text-dropdown-when-hovered:
+          choice: color-neutral-90
+        background-color-for-rich-text-more-styles-dropdown-when-hovered:
+          choice: color-neutral-90
+        background-color-for-rich-text-button:
+          choice: color-accent-30
         background-color-for-tooltip:
           choice: color-accent
         background-color-for-view-switcher:
@@ -1059,7 +1093,12 @@ decisionGroupsByTheme:
           choice: spacing-10
         margin-top-for-primary-action-dropdown:
           choice: 'none'
-
+        margin-for-localized-rich-text-body-button:
+          choice: 'none'
+        margin-for-rich-text-divider:
+          choice: '0 var(--spacing-10)'
+        margin-for-rich-text-dropdown-item-label:
+          choice: '0 0 0 var(--spacing-10)'
     paddings:
       label: Paddings
       prefix: padding
@@ -1102,7 +1141,23 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-10) var(--spacing-20)'
         padding-for-localized-rich-text-input-label:
           choice: '0 var(--spacing-20)'
+        padding-for-localized-rich-text-dropdown-button:
+          choice: '3px var(--spacing-20)'
+        padding-for-localized-rich-text-dropdown-item:
+          choice: 'var(--spacing-10) var(--spacing-20)'
+        padding-for-localized-rich-text-body-button:
+          choice: 'var(--spacing-10)'
         padding-for-localized-input-label:
+          choice: '0 var(--spacing-20)'
+        padding-for-rich-text-input:
+          choice: 'none'
+        padding-for-rich-text-toolbar:
+          choice: 'var(--spacing-10) 7px'
+        padding-left-for-rich-text-toolbar:
+          choice: '3px'
+        padding-for-rich-text-editor-container:
+          choice: '6px var(--spacing-20) var(--spacing-10)'
+        padding-for-localized-multiline-text-input-label:
           choice: '0 var(--spacing-20)'
         padding-for-tag-remove-icon:
           choice: '0 var(--spacing-10)'
@@ -1247,6 +1302,16 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-localized-input-label-when-disabled:
           choice: color-neutral-95
+        background-color-for-localized-rich-text-body-button-when-active:
+          choice: color-accent-20
+        background-color-for-localized-rich-text-body-button:
+          choice: color-neutral-95
+        background-color-for-rich-text-dropdown-when-hovered:
+          choice: color-neutral-95
+        background-color-for-rich-text-more-styles-dropdown-when-hovered:
+          choice: color-info-95
+        background-color-for-rich-text-button:
+          choice: color-accent-20
         background-color-for-tooltip:
           choice: color-accent-10
         background-color-for-view-switcher-when-disabled:
@@ -1705,7 +1770,12 @@ decisionGroupsByTheme:
           choice: spacing-20
         margin-top-for-primary-action-dropdown:
           choice: spacing-20
-
+        margin-for-localized-rich-text-body-button:
+          choice: '0 2px var(--spacing-20) 2px'
+        margin-for-rich-text-divider:
+          choice: 'var(--spacing-10) 2px'
+        margin-for-rich-text-dropdown-item-label:
+          choice: '0 0 0 var(--spacing-20)'
     paddings:
       label: Paddings
       prefix: padding
@@ -1747,7 +1817,21 @@ decisionGroupsByTheme:
         padding-for-multiline-input:
           choice: spacing-20
         padding-for-localized-rich-text-input-label:
-          choice: spacing-20
+          choice: 'var(--spacing-20) 12px'
+        padding-for-localized-rich-text-dropdown-button:
+          choice: '5px var(--spacing-20)'
+        padding-for-localized-rich-text-dropdown-item:
+          choice: 'var(--spacing-20) var(--spacing-30)'
+        padding-for-localized-rich-text-body-button:
+          choice: 'var(--spacing-20)'
+        padding-for-rich-text-input:
+          choice: 'var(--spacing-20) var(--spacing-30)'
+        padding-for-rich-text-toolbar:
+          choice: 'none'
+        padding-left-for-rich-text-toolbar:
+          choice: 'none'
+        padding-for-rich-text-editor-container:
+          choice: 'var(--spacing-20) 0 0'
         padding-for-localized-input-label:
           choice: '0 12px'
         padding-for-tag-remove-icon:
