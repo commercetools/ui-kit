@@ -5,12 +5,12 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import Tag from '@commercetools-uikit/tag';
 import DraggingContainer from './draggable-tag.styles';
 
-type TColumnData = {
+export type TColumnData = {
   key: string;
   label: ReactNode;
 };
 
-type TDraggableTagProps = {
+export type TDraggableTagProps = {
   column: TColumnData;
   index: number;
   isDisabled?: boolean;

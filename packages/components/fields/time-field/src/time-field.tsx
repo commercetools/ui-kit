@@ -26,7 +26,7 @@ type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
 };
 
-type TTimeFieldProps = {
+export type TTimeFieldProps = {
   // TimeField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

@@ -11,6 +11,7 @@ import { css } from '@emotion/react';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
+import { useWarning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getButtonStyles } from './primary-button.styles';
 
@@ -59,9 +60,11 @@ export type TPrimaryButtonProps<
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * Indicates the size of the icon.
+   * Indicates the size of the button.
+   * <br />
+   * `small` value has been deprecated. Please use `medium` value instead as a replacement.
    */
-  size?: 'small' | 'big';
+  size?: 'small' | 'medium' | 'big';
   /**
    * Indicates the color scheme of the button.
    */
@@ -93,6 +96,11 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
     disabled: props.isDisabled,
   };
 
+  useWarning(
+    !Boolean(props.size === 'small'),
+    'PrimaryButton `small` value for `size` property has been renamed to `medium`. Please update that value when using this component'
+  );
+
   const isActive = Boolean(props.isToggleButton && props.isToggled);
   return (
     <AccessibleButton
@@ -119,7 +127,7 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
             {props.iconLeft &&
               cloneElement(props.iconLeft, {
                 color: props.isDisabled ? 'neutral60' : 'surface',
-                size: props.size === 'small' ? 'medium' : 'big',
+                size: props.size === 'big' ? 'big' : 'medium',
               })}
           </span>
         )}

@@ -33,7 +33,7 @@ const sequentialErrorsId = createSequentialId('radio-field-error-')();
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-type TRadioFieldProps = {
+export type TRadioFieldProps = {
   // RadioField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

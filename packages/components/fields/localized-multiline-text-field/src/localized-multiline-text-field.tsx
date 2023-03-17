@@ -29,7 +29,7 @@ interface HTMLLocalizedTextAreaElement extends HTMLTextAreaElement {
   language: string;
 }
 
-type TLocalizedMultilineTextFieldProps = {
+export type TLocalizedMultilineTextFieldProps = {
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
    */

@@ -13,7 +13,7 @@ import {
 } from '@commercetools-uikit/icons';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 
-type TContentNotificationProps = {
+export type TContentNotificationProps = {
   /**
    * Determines the color/type of notification.
    */

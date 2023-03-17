@@ -3,8 +3,8 @@ import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-type TScale = 's' | 'm' | 'l';
-type TProps = {
+export type TScale = 's' | 'm' | 'l';
+export type TInsetSquishProps = {
   scale: TScale;
   children: ReactNode;
 };
@@ -22,7 +22,7 @@ const getPadding = (scale?: TScale) => {
   }
 };
 
-const InsetSquish = (props: TProps) => (
+const InsetSquish = (props: TInsetSquishProps) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
@@ -32,7 +32,7 @@ const InsetSquish = (props: TProps) => (
     {props.children}
   </div>
 );
-const defaultProps: Pick<TProps, 'scale'> = {
+const defaultProps: Pick<TInsetSquishProps, 'scale'> = {
   scale: 'm',
 };
 InsetSquish.displayName = 'InsetSquish';

@@ -3,3 +3,4 @@ export { default } from './accessible-button';
 export { getNormalizedButtonStyles } from './accessible-button.styles';
 
 export { default as version } from './version';
+export * from './export-types';

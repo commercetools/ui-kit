@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 
-type GridItemProps = {
+export type TGridItemProps = {
   children?: ReactNode;
   // List based on https://css-tricks.com/snippets/css/complete-guide-grid
   gridArea?: string;
@@ -15,7 +15,7 @@ type GridItemProps = {
   alignSelf?: 'start' | 'end' | 'center' | 'stretch';
   placeSelf?: 'start' | 'end' | 'center' | 'stretch';
 };
-type GridProps = {
+export type TGridProps = {
   children: ReactNode;
   // List based on https://css-tricks.com/snippets/css/complete-guide-grid
   display: 'grid' | 'inline-grid';
@@ -59,7 +59,7 @@ type GridProps = {
   grid?: string;
 };
 
-const GridItem = (props: GridItemProps) => (
+const GridItem = (props: TGridItemProps) => (
   <div
     css={{
       gridArea: props.gridArea,
@@ -79,7 +79,7 @@ const GridItem = (props: GridItemProps) => (
 );
 GridItem.displayName = 'GridItem';
 
-const GridContainer = styled.div<GridProps>((props) => ({
+const GridContainer = styled.div<TGridProps>((props) => ({
   display: props.display,
   grid: props.grid,
   gridTemplate: props.gridTemplate,
@@ -99,10 +99,10 @@ const GridContainer = styled.div<GridProps>((props) => ({
   gridAutoRows: props.gridAutoRows,
   gridAutoFlow: props.gridAutoFlow,
 }));
-const defaultProps: Pick<GridProps, 'display'> = {
+const defaultProps: Pick<TGridProps, 'display'> = {
   display: 'grid',
 };
-const Grid = (props: GridProps) => <GridContainer {...props} />;
+const Grid = (props: TGridProps) => <GridContainer {...props} />;
 Grid.displayName = 'Grid';
 Grid.defaultProps = defaultProps;
 // Assign GridItem as a static property of Grid

@@ -2,6 +2,7 @@
 // This file is created with 'yarn generate-icons'.
 export { default as BoldIcon } from './BoldReact';
 export { default as ExpandFullIcon } from './ExpandFullReact';
+export { default as ExpandIcon } from './ExpandReact';
 export { default as ItalicIcon } from './ItalicReact';
 export { default as MoreStylesIcon } from './MoreStylesReact';
 export { default as OrderedListIcon } from './OrderedListReact';

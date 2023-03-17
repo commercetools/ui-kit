@@ -38,7 +38,7 @@ const hasErrors = (errors?: TFieldErrors) =>
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
-type TPasswordField = {
+export type TPasswordField = {
   // PasswordField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

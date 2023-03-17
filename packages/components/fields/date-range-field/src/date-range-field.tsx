@@ -37,7 +37,7 @@ const sequentialErrorsId = createSequentialId('date-range-field-error-')();
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-type TDateRangeFieldProps = {
+export type TDateRangeFieldProps = {
   // DateRangeField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

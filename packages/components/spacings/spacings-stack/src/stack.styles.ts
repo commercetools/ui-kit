@@ -1,4 +1,4 @@
-import type { TAlignItem, TScale, TProps } from './stack';
+import type { TAlignItem, TScale, TStackProps } from './stack';
 
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -41,7 +41,7 @@ const getMargin = (scale?: TScale) => {
  * causing the margings of the spacing components to be ignored.
  * See https://github.com/commercetools/ui-kit/issues/542
  */
-const getStyles = (props: TProps) => css`
+const getStyles = (props: TStackProps) => css`
   display: flex;
   flex-direction: column;
   align-items: ${getAlignItem(props.alignItems)};
