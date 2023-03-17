@@ -292,6 +292,8 @@ variants:
     description: 'To differentiate component primary type'
   secondary:
     description: 'To differentiate component secondary type'
+  inverted:
+    description: 'To differentiate component inverted type'
   urgent:
     description: 'To differentiate component urgent type'
   info:
@@ -304,6 +306,10 @@ variants:
     description: 'To differentiate component positive style'
   information:
     description: 'To differentiate component information style'
+  critical:
+    description: 'To differentiate component critical style'
+  bold:
+    description: 'When the element is bold'
 
 componentGroups:
   button:
@@ -442,6 +448,14 @@ componentGroups:
     description: 'Rich text tool bar element'
   rich-text-button:
     description: 'Rich text button element'
+  calendar-menu:
+    description: 'Calendar menu element'
+  flat-button:
+    description: 'Flat button elements'
+  flat-button-icon:
+    description: 'Flat button icon elements'
+  secondary-icon-button:
+    description: 'Secondary icon button elements'
 
 decisionGroupsByTheme:
   default:
@@ -507,6 +521,8 @@ decisionGroupsByTheme:
         background-color-for-tag-warning:
           description: ''
           choice: color-warning-95
+        background-color-for-tag-when-hovered:
+          choice: color-neutral-95
         background-color-for-collapsible-panel-header-icon-when-disabled:
           choice: color-accent-98
         background-color-for-select-input-option-when-hovered:
@@ -612,6 +628,8 @@ decisionGroupsByTheme:
           choice: 'none'
         border-for-radio-input-option:
           choice: border-width-1
+        border-for-calendar-menu-when-focused:
+          choice: '1px solid var(--color-primary)'
 
     borderColors:
       label: Border Colors
@@ -796,6 +814,8 @@ decisionGroupsByTheme:
           choice: shadow-9
         box-shadow-for-select-input-when-focused:
           choice: 'inset 0 0 0 2px'
+        box-shadow-for-calendar-menu-when-focused:
+          choice: 'none'
 
     fontColors:
       label: Font Colors
@@ -804,6 +824,8 @@ decisionGroupsByTheme:
         font-color-for-text:
           description: ''
           choice: color-solid
+        font-color-for-text-when-disabled:
+          choice: color-neutral
         font-color-for-input:
           description: ''
           choice: color-solid
@@ -834,6 +856,16 @@ decisionGroupsByTheme:
         font-color-for-text-when-inverted:
           description: ''
           choice: color-surface
+        font-color-for-link-as-inverted:
+          choice: color-surface
+        font-color-for-link-as-primary:
+          choice: color-primary
+        font-color-for-link-as-secondary:
+          choice: color-solid
+        font-color-for-link-as-primary-when-active:
+          choice: color-primary-25
+        font-color-for-link-as-secondary-when-active:
+          choice: color-primary
         font-color-for-table-header:
           choice: color-surface
         font-color-for-localized-input-label:
@@ -892,6 +924,24 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         font-color-for-radio-input-when-warning:
           choice: color-warning
+        font-color-for-flat-button-as-primary:
+          choice: color-primary
+        font-color-for-flat-button-as-primary-when-hovered:
+          choice: color-primary-25
+        font-color-for-flat-button-as-critical:
+          choice: color-error
+        font-color-for-flat-button-as-critical-when-hovered:
+          choice: color-error-25
+        font-color-for-flat-button-as-secondary:
+          choice: color-solid
+        font-color-for-flat-button-as-inverted:
+          choice: color-surface
+        font-color-for-flat-button-icon-when-disabled:
+          choice: color-neutral-60
+        font-color-for-secondary-icon-button-as-primary:
+          choice: color-primary
+        font-color-for-secondary-icon-button-as-primary-when-hovered:
+          choice: color-primary-25
 
     heights:
       label: Height
@@ -1034,6 +1084,10 @@ decisionGroupsByTheme:
         line-height-for-text-as-detail:
           description: ''
           choice: 'inherit'
+        line-height-for-select-input-options:
+          choice: 'inherit'
+        line-height-for-table-header:
+          choice: 'inherit'
 
     fontWeights:
       label: Font Weights
@@ -1064,6 +1118,8 @@ decisionGroupsByTheme:
           choice: font-weight-400
         font-weight-for-table-header:
           choice: font-weight-400
+        font-weight-for-text-as-bold:
+          choice: font-weight-700
 
     margins:
       label: Margins
@@ -1238,6 +1294,8 @@ decisionGroupsByTheme:
           choice: shadow-1
         shadow-for-toggle-input-thumb:
           choice: shadow-7
+        shadow-for-tag-when-hovered:
+          choice: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
 
   test:
     alignItems:
@@ -1274,9 +1332,9 @@ decisionGroupsByTheme:
         background-color-for-button-when-disabled:
           choice: color-neutral-95
         background-color-for-table-cell-when-hovered:
-          choice: color-neutral-95
+          choice: color-neutral-98
         background-color-for-table-header:
-          choice: color-surface
+          choice: color-neutral-95
         background-color-for-collapsible-panel-header-icon-when-disabled:
           choice: color-surface
         background-color-for-input-when-hovered:
@@ -1366,6 +1424,8 @@ decisionGroupsByTheme:
           choice: color-accent-90
         background-color-for-toggle-input-thumb-when-checked-and-disabled:
           choice: color-accent-60
+        background-color-for-tag-when-hovered:
+          choice: color-neutral-90
 
     borders:
       label: Borders
@@ -1387,6 +1447,8 @@ decisionGroupsByTheme:
           choice: '1px solid var(--color-neutral-85)'
         border-for-radio-input-option:
           choice: border-width-2
+        border-for-calendar-menu-when-focused:
+          choice: 'none'
 
     borderColors:
       label: Border Colors
@@ -1435,6 +1497,8 @@ decisionGroupsByTheme:
         border-color-for-localized-input-label-when-readonly:
           choice: color-surface
         border-color-for-tag:
+          choice: color-neutral
+        border-color-for-tag-when-focused:
           choice: color-neutral
         border-color-for-tag-when-hovered:
           choice: color-neutral
@@ -1541,13 +1605,17 @@ decisionGroupsByTheme:
           choice: shadow-0
         box-shadow-for-select-input-when-focused:
           choice: 'inset 0 0 0 1px'
+        box-shadow-for-calendar-menu-when-focused:
+          choice: '0 2px 5px 0px rgba(0, 0, 0, 0.15)'
 
     fontColors:
       label: Font Colors
       prefix: font-color
       decisions:
+        font-color-for-text-when-disabled:
+          choice: color-neutral-60
         font-color-for-table-header:
-          choice: color-neutral-40
+          choice: color-solid
         font-color-for-input-when-readonly:
           choice: color-neutral-40
         font-color-for-tag-remove-icon:
@@ -1592,6 +1660,18 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         font-color-for-checkbox-input-label-when-readonly:
           choice: color-neutral-40
+        font-color-for-flat-button-as-primary:
+          choice: color-primary-25
+        font-color-for-flat-button-as-primary-when-hovered:
+          choice: color-primary
+        font-color-for-link-as-primary:
+          choice: color-primary-25
+        font-color-for-link-as-primary-when-active:
+          choice: color-primary
+        font-color-for-secondary-icon-button-as-primary:
+          choice: color-primary-25
+        font-color-for-secondary-icon-button-as-primary-when-hovered:
+          choice: color-primary
 
     fontSizes:
       label: Font Sizes
@@ -1659,6 +1739,10 @@ decisionGroupsByTheme:
         line-height-for-text-as-detail:
           description: ''
           choice: line-height-20
+        line-height-for-select-input-options:
+          choice: line-height-40
+        line-height-for-table-header:
+          choice: '26px'
 
     fontWeights:
       label: Font Weights
@@ -1688,6 +1772,8 @@ decisionGroupsByTheme:
         font-weight-for-button:
           choice: font-weight-500
         font-weight-for-table-header:
+          choice: font-weight-600
+        font-weight-for-text-as-bold:
           choice: font-weight-600
 
     heights:
@@ -1909,6 +1995,8 @@ decisionGroupsByTheme:
           choice: '0 2px 5px 0px rgba(0, 0, 0, 0.15)'
         shadow-for-toggle-input-thumb:
           choice: '0px 1px 5px rgba(0, 0, 0, 0.2)'
+        shadow-for-tag-when-hovered:
+          choice: shadow-0
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.

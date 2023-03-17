@@ -21,7 +21,7 @@ const truncate = `
 `;
 
 const bold = `
-  font-weight: bold;
+  font-weight: ${designTokens.fontWeightForTextAsBold};
 `;
 
 const italic = `

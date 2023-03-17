@@ -27,11 +27,11 @@ const getColorStyle = (props: Pick<TSecondaryButtonIconProps, 'color'>) => {
     case 'primary':
       return css`
         & svg {
-          fill: ${designTokens.colorPrimary};
+          fill: ${designTokens.fontColorForSecondaryIconButtonAsPrimary};
         }
         &:focus,
         &:hover svg {
-          fill: ${designTokens.colorPrimary25};
+          fill: ${designTokens.fontColorForSecondaryIconButtonAsPrimaryWhenHovered};
         }
       `;
     default:

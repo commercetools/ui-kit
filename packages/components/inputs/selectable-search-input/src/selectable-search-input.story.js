@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { Value } from 'react-value';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../../docs/.storybook/decorators/section';

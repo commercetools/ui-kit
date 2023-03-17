@@ -28,5 +28,10 @@ export const component = () => (
         <Link to="/">A label text</Link>
       </div>
     </Spec>
+    <Spec label="tone - secondary">
+      <Link to="/" tone="secondary">
+        A secondary label text
+      </Link>
+    </Spec>
   </Suite>
 );

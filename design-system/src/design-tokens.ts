@@ -165,6 +165,7 @@ export const themes = {
     backgroundColorForTag: 'hsl(0, 0%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
+    backgroundColorForTagWhenHovered: 'hsl(0, 0%, 95%)',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
       'hsl(195, 35.2941176471%, 98%)',
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 90%)',
@@ -221,6 +222,7 @@ export const themes = {
     borderForViewSwitcher: 'none',
     borderForSelectInputTag: 'none',
     borderForRadioInputOption: '1px',
+    borderForCalendarMenuWhenFocused: '1px solid var(--color-primary)',
     borderColorForInput: 'hsl(0, 0%, 60%)',
     borderColorForInputWhenFocused: '#00b39e',
     borderColorForInputWhenDisabled: '#ccc',
@@ -303,7 +305,9 @@ export const themes = {
     boxShadowForViewSwitcherWhenSelected:
       'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 2px',
+    boxShadowForCalendarMenuWhenFocused: 'none',
     fontColorForText: '#1a1a1a',
+    fontColorForTextWhenDisabled: '#ccc',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForInputWhenError: '#e60050',
@@ -315,6 +319,11 @@ export const themes = {
     fontColorForTagRemoveIconWhenHovered: '#f16d0e',
     fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForTextWhenInverted: '#fff',
+    fontColorForLinkAsInverted: '#fff',
+    fontColorForLinkAsPrimary: '#00b39e',
+    fontColorForLinkAsSecondary: '#1a1a1a',
+    fontColorForLinkAsPrimaryWhenActive: 'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForLinkAsSecondaryWhenActive: '#00b39e',
     fontColorForTableHeader: '#fff',
     fontColorForLocalizedInputLabel: 'hsl(0, 0%, 60%)',
     fontColorForViewSwitcher: '#1a1a1a',
@@ -344,6 +353,18 @@ export const themes = {
     fontColorForRadioInputWhenError: '#e60050',
     fontColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
     fontColorForRadioInputWhenWarning: '#f16d0e',
+    fontColorForFlatButtonAsPrimary: '#00b39e',
+    fontColorForFlatButtonAsPrimaryWhenHovered:
+      'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForFlatButtonAsCritical: '#e60050',
+    fontColorForFlatButtonAsCriticalWhenHovered:
+      'hsl(339.1304347826087, 100%, 25%)',
+    fontColorForFlatButtonAsSecondary: '#1a1a1a',
+    fontColorForFlatButtonAsInverted: '#fff',
+    fontColorForFlatButtonIconWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForSecondaryIconButtonAsPrimary: '#00b39e',
+    fontColorForSecondaryIconButtonAsPrimaryWhenHovered:
+      'hsl(172.9608938547486, 100%, 25%)',
     heightForButtonAsBig: '32px',
     heightForButtonAsMedium: '24px',
     heightForButtonAsIconAsBig: '32px',
@@ -388,6 +409,8 @@ export const themes = {
     lineHeightForTextAsH5: 'inherit',
     lineHeightForTextAsBody: 'inherit',
     lineHeightForTextAsDetail: 'inherit',
+    lineHeightForSelectInputOptions: 'inherit',
+    lineHeightForTableHeader: 'inherit',
     fontWeightForTextAsH1: '300',
     fontWeightForTextAsH2: '300',
     fontWeightForTextAsH3: '300',
@@ -397,6 +420,7 @@ export const themes = {
     fontWeightForTextAsDetail: '400',
     fontWeightForButton: '400',
     fontWeightForTableHeader: '400',
+    fontWeightForTextAsBold: '700',
     marginForTableHeader: '8px',
     marginForTableAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-10) 0 0',
@@ -493,6 +517,8 @@ export const themes = {
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     shadowForToggleInputThumb:
       '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
+    shadowForTagWhenHovered:
+      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     fontSizeM: '1rem',
     bigButtonHeight: '32px',
     smallButtonHeight: '24px',
@@ -519,8 +545,8 @@ export const themes = {
     backgroundColorForButtonAsUrgentWhenActive: '#DC630A',
     backgroundColorForButtonAsUrgentWhenHovered: '#E7680D',
     backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
-    backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 95%)',
-    backgroundColorForTableHeader: '#fff',
+    backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 98%)',
+    backgroundColorForTableHeader: 'hsl(0, 0%, 95%)',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
     backgroundColorForInputWhenHovered: 'hsl(0, 0%, 98%)',
     backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
@@ -579,6 +605,7 @@ export const themes = {
       'hsl(195, 35.2941176471%, 90%)',
     backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
       'hsl(195, 35.2941176471%, 60%)',
+    backgroundColorForTagWhenHovered: 'hsl(0, 0%, 90%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -587,6 +614,7 @@ export const themes = {
     borderForViewSwitcher: '1px solid var(--color-neutral)',
     borderForSelectInputTag: '1px solid var(--color-neutral-85)',
     borderForRadioInputOption: '2px',
+    borderForCalendarMenuWhenFocused: 'none',
     borderColorForInput: '#ccc',
     borderColorForInputWhenDisabled: '#ccc',
     borderColorForInputWhenHovered: '#ccc',
@@ -611,6 +639,7 @@ export const themes = {
     borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
     borderColorForLocalizedInputLabelWhenReadonly: '#fff',
     borderColorForTag: '#ccc',
+    borderColorForTagWhenFocused: '#ccc',
     borderColorForTagWhenHovered: '#ccc',
     borderColorForContentNotificationWhenError:
       'hsl(339.1304347826087, 100%, 85%)',
@@ -664,7 +693,9 @@ export const themes = {
     boxShadowForViewSwitcher: 'none',
     boxShadowForViewSwitcherWhenSelected: 'none',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 1px',
-    fontColorForTableHeader: 'hsl(0, 0%, 40%)',
+    boxShadowForCalendarMenuWhenFocused: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
+    fontColorForTextWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForTableHeader: '#1a1a1a',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
     fontColorForTagRemoveIcon: 'hsl(0, 0%, 40%)',
     fontColorForTagDragIcon: 'hsl(0, 0%, 40%)',
@@ -687,6 +718,13 @@ export const themes = {
     fontColorForCheckboxInputLabelWhenError: '#e60050',
     fontColorForCheckboxInputLabelWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForCheckboxInputLabelWhenReadonly: 'hsl(0, 0%, 40%)',
+    fontColorForFlatButtonAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForFlatButtonAsPrimaryWhenHovered: '#00b39e',
+    fontColorForLinkAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForLinkAsPrimaryWhenActive: '#00b39e',
+    fontColorForSecondaryIconButtonAsPrimary:
+      'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForSecondaryIconButtonAsPrimaryWhenHovered: '#00b39e',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.25rem',
@@ -712,6 +750,8 @@ export const themes = {
     lineHeightForTextAsH5: '1.375rem',
     lineHeightForTextAsBody: '1.625rem',
     lineHeightForTextAsDetail: '1.375rem',
+    lineHeightForSelectInputOptions: '1.625rem',
+    lineHeightForTableHeader: '26px',
     fontWeightForTextAsH1: '600',
     fontWeightForTextAsH2: '500',
     fontWeightForTextAsH3: '500',
@@ -721,6 +761,7 @@ export const themes = {
     fontWeightForTextAsDetail: '400',
     fontWeightForButton: '500',
     fontWeightForTableHeader: '600',
+    fontWeightForTextAsBold: '600',
     heightForButtonAsBig: '40px',
     heightForButtonAsMedium: '32px',
     heightForButtonAsIconAsBig: '40px',
@@ -820,6 +861,7 @@ export const themes = {
     shadowForPrimaryActionDropdownWhenActive: 'none',
     shadowForPrimaryActionDropdownMenu: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
     shadowForToggleInputThumb: '0px 1px 5px rgba(0, 0, 0, 0.2)',
+    shadowForTagWhenHovered: 'none',
   },
 } as const;
 
@@ -1015,6 +1057,8 @@ const designTokens = {
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
+  backgroundColorForTagWhenHovered:
+    'var(--background-color-for-tag-when-hovered, hsl(0, 0%, 95%))',
   backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
     'var(--background-color-for-collapsible-panel-header-icon-when-disabled, hsl(195, 35.2941176471%, 98%))',
   backgroundColorForSelectInputOptionWhenHovered:
@@ -1105,6 +1149,8 @@ const designTokens = {
   borderForViewSwitcher: 'var(--border-for-view-switcher, none)',
   borderForSelectInputTag: 'var(--border-for-select-input-tag, none)',
   borderForRadioInputOption: 'var(--border-for-radio-input-option, 1px)',
+  borderForCalendarMenuWhenFocused:
+    'var(--border-for-calendar-menu-when-focused, 1px solid var(--color-primary))',
   borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
@@ -1241,7 +1287,11 @@ const designTokens = {
     'var(--box-shadow-for-view-switcher-when-selected, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
   boxShadowForSelectInputWhenFocused:
     'var(--box-shadow-for-select-input-when-focused, inset 0 0 0 2px)',
+  boxShadowForCalendarMenuWhenFocused:
+    'var(--box-shadow-for-calendar-menu-when-focused, none)',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
+  fontColorForTextWhenDisabled:
+    'var(--font-color-for-text-when-disabled, #ccc)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
     'var(--font-color-for-input-when-disabled, hsl(0, 0%, 60%))',
@@ -1259,6 +1309,14 @@ const designTokens = {
     'var(--font-color-for-tag-when-disabled, hsl(0, 0%, 60%))',
   fontColorForTextWhenInverted:
     'var(--font-color-for-text-when-inverted, #fff)',
+  fontColorForLinkAsInverted: 'var(--font-color-for-link-as-inverted, #fff)',
+  fontColorForLinkAsPrimary: 'var(--font-color-for-link-as-primary, #00b39e)',
+  fontColorForLinkAsSecondary:
+    'var(--font-color-for-link-as-secondary, #1a1a1a)',
+  fontColorForLinkAsPrimaryWhenActive:
+    'var(--font-color-for-link-as-primary-when-active, hsl(172.9608938547486, 100%, 25%))',
+  fontColorForLinkAsSecondaryWhenActive:
+    'var(--font-color-for-link-as-secondary-when-active, #00b39e)',
   fontColorForTableHeader: 'var(--font-color-for-table-header, #fff)',
   fontColorForLocalizedInputLabel:
     'var(--font-color-for-localized-input-label, hsl(0, 0%, 60%))',
@@ -1314,6 +1372,24 @@ const designTokens = {
     'var(--font-color-for-radio-input-when-readonly, hsl(0, 0%, 60%))',
   fontColorForRadioInputWhenWarning:
     'var(--font-color-for-radio-input-when-warning, #f16d0e)',
+  fontColorForFlatButtonAsPrimary:
+    'var(--font-color-for-flat-button-as-primary, #00b39e)',
+  fontColorForFlatButtonAsPrimaryWhenHovered:
+    'var(--font-color-for-flat-button-as-primary-when-hovered, hsl(172.9608938547486, 100%, 25%))',
+  fontColorForFlatButtonAsCritical:
+    'var(--font-color-for-flat-button-as-critical, #e60050)',
+  fontColorForFlatButtonAsCriticalWhenHovered:
+    'var(--font-color-for-flat-button-as-critical-when-hovered, hsl(339.1304347826087, 100%, 25%))',
+  fontColorForFlatButtonAsSecondary:
+    'var(--font-color-for-flat-button-as-secondary, #1a1a1a)',
+  fontColorForFlatButtonAsInverted:
+    'var(--font-color-for-flat-button-as-inverted, #fff)',
+  fontColorForFlatButtonIconWhenDisabled:
+    'var(--font-color-for-flat-button-icon-when-disabled, hsl(0, 0%, 60%))',
+  fontColorForSecondaryIconButtonAsPrimary:
+    'var(--font-color-for-secondary-icon-button-as-primary, #00b39e)',
+  fontColorForSecondaryIconButtonAsPrimaryWhenHovered:
+    'var(--font-color-for-secondary-icon-button-as-primary-when-hovered, hsl(172.9608938547486, 100%, 25%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 24px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
@@ -1369,6 +1445,9 @@ const designTokens = {
   lineHeightForTextAsH5: 'var(--line-height-for-text-as-h-5, inherit)',
   lineHeightForTextAsBody: 'var(--line-height-for-text-as-body, inherit)',
   lineHeightForTextAsDetail: 'var(--line-height-for-text-as-detail, inherit)',
+  lineHeightForSelectInputOptions:
+    'var(--line-height-for-select-input-options, inherit)',
+  lineHeightForTableHeader: 'var(--line-height-for-table-header, inherit)',
   fontWeightForTextAsH1: 'var(--font-weight-for-text-as-h-1, 300)',
   fontWeightForTextAsH2: 'var(--font-weight-for-text-as-h-2, 300)',
   fontWeightForTextAsH3: 'var(--font-weight-for-text-as-h-3, 300)',
@@ -1378,6 +1457,7 @@ const designTokens = {
   fontWeightForTextAsDetail: 'var(--font-weight-for-text-as-detail, 400)',
   fontWeightForButton: 'var(--font-weight-for-button, 400)',
   fontWeightForTableHeader: 'var(--font-weight-for-table-header, 400)',
+  fontWeightForTextAsBold: 'var(--font-weight-for-text-as-bold, 700)',
   marginForTableHeader: 'var(--margin-for-table-header, 8px)',
   marginForTableAsCondensed: 'var(--margin-for-table-as-condensed, 8px)',
   marginForViewSwitcherIcon:
@@ -1522,6 +1602,8 @@ const designTokens = {
     'var(--shadow-for-primary-action-dropdown-menu, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   shadowForToggleInputThumb:
     'var(--shadow-for-toggle-input-thumb, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+  shadowForTagWhenHovered:
+    'var(--shadow-for-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
   fontSizeM: 'var(--font-size-m, 1rem)',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',
