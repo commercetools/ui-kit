@@ -96,6 +96,15 @@ const Tag = (props: TTagProps) => {
           background-color: ${props.type === 'warning'
             ? designTokens.backgroundColorForTagWarning
             : designTokens.backgroundColorForTag};
+
+          ${props.onClick &&
+          `&:hover {
+            background-color: ${
+              props.type === 'warning'
+                ? designTokens.backgroundColorForTagWarning
+                : designTokens.backgroundColorForTagWhenHovered
+            };
+          }`}
         `}
       >
         <TagBody

@@ -212,11 +212,13 @@ const defaultProps: Pick<
   | 'isClearable'
   | 'menuHorizontalConstraint'
   | 'showSubmitButton'
+  | 'menuPortalZIndex'
 > = {
   horizontalConstraint: 'scale',
   isClearable: true,
   menuHorizontalConstraint: 3,
   showSubmitButton: true,
+  menuPortalZIndex: 1,
 };
 
 const selectableSearchInputSequentialId = createSequentialId(

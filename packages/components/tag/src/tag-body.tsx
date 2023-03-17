@@ -110,18 +110,23 @@ const TagBody = (props: TTagBodyProps) => {
           Boolean(props.onClick) &&
           css`
             &:hover {
-              box-shadow: ${designTokens.shadowBoxTagWhenHovered};
-              &::after {
+              box-shadow: ${designTokens.shadowForTagWhenHovered};
+            }
+            ${!isNewTheme &&
+            `
+              &:hover::after {
                 position: absolute;
                 right: -1px;
                 content: '';
-                background-color: ${props.type === 'warning'
-                  ? designTokens.colorWarning
-                  : designTokens.borderColorForTagWhenFocused};
+                background-color: ${
+                  props.type === 'warning'
+                    ? designTokens.colorWarning
+                    : designTokens.borderColorForTagWhenFocused
+                };
                 width: 1px;
                 height: 100%;
               }
-            }
+              `}
           `,
         props.styles?.body,
       ]}

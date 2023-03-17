@@ -23,7 +23,8 @@ export default class CalendarMenu extends Component<TCalendarMenu> {
             overflow-y: scroll;
             color: ${designTokens.colorSolid};
             font-family: inherit;
-            border: 1px solid ${designTokens.borderColorForInputWhenFocused};
+            border: ${designTokens.borderForCalendarMenuWhenFocused};
+            box-shadow: ${designTokens.boxShadowForCalendarMenuWhenFocused};
             border-radius: ${designTokens.borderRadiusForInput};
             margin-top: ${designTokens.spacing10};
             font-size: ${designTokens.fontSizeDefault};
