@@ -1,7 +1,8 @@
 /* eslint-disable default-case */
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
+import merge from 'lodash/merge';
 import TextInput from '@commercetools-uikit/text-input';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Readme from './TOKENS.md';
@@ -14,11 +15,6 @@ import {
   SingleTokensGroupDetails,
 } from './story/shared-components';
 import { getSampleComponent } from './story/samplers';
-
-const choiceGroupsByTheme =
-  process.env.NODE_ENV !== 'production'
-    ? definition.choiceGroupsByTheme
-    : { default: definition.choiceGroupsByTheme.default };
 
 const findChoiceValue = (theme, choiceName) => {
   return Object.values(theme)
@@ -53,6 +49,22 @@ const BasicCellRenderer = (cellData) => {
 function Story() {
   const [filterText, setFilterText] = useState('');
   const { theme } = useTheme();
+  const currentThemeChoices = useMemo(() => {
+    return merge(
+      {},
+      definition.choiceGroupsByTheme.default,
+      definition.choiceGroupsByTheme[theme]
+    );
+  }, [theme]);
+  const currentThemeDecisions = useMemo(
+    () =>
+      merge(
+        {},
+        definition.decisionGroupsByTheme.default,
+        definition.decisionGroupsByTheme[theme]
+      ),
+    [theme]
+  );
 
   const searchTextChangeHandler = useCallback((event) => {
     setFilterText(event.target.value);
@@ -71,7 +83,7 @@ function Story() {
           <li>
             <TokenGroupLinks
               id="choices"
-              config={choiceGroupsByTheme.default}
+              config={currentThemeChoices}
               filterText={filterText}
             >
               Choices
@@ -91,7 +103,7 @@ function Story() {
           <li>
             <TokenGroupLinks
               id="decisions"
-              config={definition.decisionGroupsByTheme.default}
+              config={currentThemeDecisions}
               filterText={filterText}
             >
               Decisions
@@ -120,7 +132,7 @@ function Story() {
               );
             }
           }}
-          tokensGroupData={definition.choiceGroupsByTheme[theme]}
+          tokensGroupData={currentThemeChoices}
         />
 
         <SingleTokensGroupDetails
@@ -173,7 +185,7 @@ function Story() {
               case 'value':
                 const ChoiceSample = getSampleComponent(data.groupItemsPrefix);
                 const choiceValue = findChoiceValue(
-                  definition.choiceGroupsByTheme[theme],
+                  currentThemeChoices,
                   data.tokenData.choice
                 );
                 if (choiceValue) {
@@ -190,7 +202,7 @@ function Story() {
                 return null;
             }
           }}
-          tokensGroupData={definition.decisionGroupsByTheme[theme]}
+          tokensGroupData={currentThemeDecisions}
         />
       </DetailsGroupsContainer>
     </Background>
