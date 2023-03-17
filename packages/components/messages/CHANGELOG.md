@@ -1,5 +1,15 @@
 # @commercetools-uikit/messages
 
+## 15.14.0
+
+### Patch Changes
+
+- [#2429](https://github.com/commercetools/ui-kit/pull/2429) [`4c2501b92`](https://github.com/commercetools/ui-kit/commit/4c2501b92dc41777b45bb5c99b4f15cc4e08f224) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Export component props typescript definition for uikit components. This will give users access to the Typescript definitions for the components props.
+
+- Updated dependencies [[`44a6d6a4e`](https://github.com/commercetools/ui-kit/commit/44a6d6a4ec63a058c6329f52868894fa95810b59), [`4c2501b92`](https://github.com/commercetools/ui-kit/commit/4c2501b92dc41777b45bb5c99b4f15cc4e08f224)]:
+  - @commercetools-uikit/text@15.14.0
+  - @commercetools-uikit/utils@15.14.0
+
 ## 15.13.2
 
 ### Patch Changes

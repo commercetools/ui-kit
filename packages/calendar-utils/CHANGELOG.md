@@ -1,5 +1,25 @@
 # @commercetools-uikit/calendar-utils
 
+## 15.14.0
+
+### Patch Changes
+
+- [#2443](https://github.com/commercetools/ui-kit/pull/2443) [`500ba82ca`](https://github.com/commercetools/ui-kit/commit/500ba82ca036c73b4bb3892b5c9b607eb22465bb) Thanks [@chloe0592](https://github.com/chloe0592)! - Unifying sizes of the buttons
+
+- [#2452](https://github.com/commercetools/ui-kit/pull/2452) [`44a6d6a4e`](https://github.com/commercetools/ui-kit/commit/44a6d6a4ec63a058c6329f52868894fa95810b59) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Style update for new theme
+
+- Updated dependencies [[`12d05bc50`](https://github.com/commercetools/ui-kit/commit/12d05bc502490f271e4255463f2e226af24387bd), [`500ba82ca`](https://github.com/commercetools/ui-kit/commit/500ba82ca036c73b4bb3892b5c9b607eb22465bb), [`44a6d6a4e`](https://github.com/commercetools/ui-kit/commit/44a6d6a4ec63a058c6329f52868894fa95810b59), [`4c2501b92`](https://github.com/commercetools/ui-kit/commit/4c2501b92dc41777b45bb5c99b4f15cc4e08f224)]:
+  - @commercetools-uikit/design-system@15.14.0
+  - @commercetools-uikit/secondary-icon-button@15.14.0
+  - @commercetools-uikit/text@15.14.0
+  - @commercetools-uikit/accessible-button@15.14.0
+  - @commercetools-uikit/spacings-inline@15.14.0
+  - @commercetools-uikit/input-utils@15.14.0
+  - @commercetools-uikit/icons@15.14.0
+  - @commercetools-uikit/hooks@15.14.0
+  - @commercetools-uikit/tooltip@15.14.0
+  - @commercetools-uikit/utils@15.14.0
+
 ## 15.13.2
 
 ### Patch Changes
