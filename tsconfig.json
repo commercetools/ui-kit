@@ -28,6 +28,7 @@
     "stripInternal": true,
     "target": "ES2019",
     "allowJs": true,
+    "declaration": true,
     "declarationMap": true,
     "typeRoots": [
       "@types",
