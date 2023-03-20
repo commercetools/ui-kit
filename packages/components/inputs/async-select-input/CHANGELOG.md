@@ -1,5 +1,21 @@
 # @commercetools-uikit/async-select-input
 
+## 15.14.0
+
+### Patch Changes
+
+- [#2429](https://github.com/commercetools/ui-kit/pull/2429) [`4c2501b92`](https://github.com/commercetools/ui-kit/commit/4c2501b92dc41777b45bb5c99b4f15cc4e08f224) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Export component props typescript definition for uikit components. This will give users access to the Typescript definitions for the components props.
+
+- Updated dependencies [[`12d05bc50`](https://github.com/commercetools/ui-kit/commit/12d05bc502490f271e4255463f2e226af24387bd), [`500ba82ca`](https://github.com/commercetools/ui-kit/commit/500ba82ca036c73b4bb3892b5c9b607eb22465bb), [`44a6d6a4e`](https://github.com/commercetools/ui-kit/commit/44a6d6a4ec63a058c6329f52868894fa95810b59), [`4c2501b92`](https://github.com/commercetools/ui-kit/commit/4c2501b92dc41777b45bb5c99b4f15cc4e08f224)]:
+  - @commercetools-uikit/design-system@15.14.0
+  - @commercetools-uikit/select-utils@15.14.0
+  - @commercetools-uikit/text@15.14.0
+  - @commercetools-uikit/loading-spinner@15.14.0
+  - @commercetools-uikit/constraints@15.14.0
+  - @commercetools-uikit/icons@15.14.0
+  - @commercetools-uikit/spacings@15.14.0
+  - @commercetools-uikit/utils@15.14.0
+
 ## 15.13.2
 
 ### Patch Changes

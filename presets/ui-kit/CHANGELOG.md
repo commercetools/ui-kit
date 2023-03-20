@@ -1,5 +1,45 @@
 # @commercetools-frontend/ui-kit
 
+## 15.14.0
+
+### Patch Changes
+
+- Updated dependencies [[`12d05bc50`](https://github.com/commercetools/ui-kit/commit/12d05bc502490f271e4255463f2e226af24387bd), [`500ba82ca`](https://github.com/commercetools/ui-kit/commit/500ba82ca036c73b4bb3892b5c9b607eb22465bb), [`44a6d6a4e`](https://github.com/commercetools/ui-kit/commit/44a6d6a4ec63a058c6329f52868894fa95810b59), [`4c2501b92`](https://github.com/commercetools/ui-kit/commit/4c2501b92dc41777b45bb5c99b4f15cc4e08f224)]:
+  - @commercetools-uikit/design-system@15.14.0
+  - @commercetools-uikit/selectable-search-input@15.14.0
+  - @commercetools-uikit/field-label@15.14.0
+  - @commercetools-uikit/data-table@15.14.0
+  - @commercetools-uikit/link@15.14.0
+  - @commercetools-uikit/text@15.14.0
+  - @commercetools-uikit/tag@15.14.0
+  - @commercetools-uikit/primary-action-dropdown@15.14.0
+  - @commercetools-uikit/collapsible-motion@15.14.0
+  - @commercetools-uikit/data-table-manager@15.14.0
+  - @commercetools-uikit/accessible-hidden@15.14.0
+  - @commercetools-uikit/collapsible-panel@15.14.0
+  - @commercetools-uikit/loading-spinner@15.14.0
+  - @commercetools-uikit/notifications@15.14.0
+  - @commercetools-uikit/view-switcher@15.14.0
+  - @commercetools-uikit/collapsible@15.14.0
+  - @commercetools-uikit/constraints@15.14.0
+  - @commercetools-uikit/pagination@15.14.0
+  - @commercetools-uikit/messages@15.14.0
+  - @commercetools-uikit/icons@15.14.0
+  - @commercetools-uikit/label@15.14.0
+  - @commercetools-uikit/stamp@15.14.0
+  - @commercetools-uikit/card@15.14.0
+  - @commercetools-uikit/grid@15.14.0
+  - @commercetools-uikit/hooks@15.14.0
+  - @commercetools-uikit/inputs@15.14.0
+  - @commercetools-uikit/avatar@15.14.0
+  - @commercetools-uikit/tooltip@15.14.0
+  - @commercetools-uikit/buttons@15.14.0
+  - @commercetools-uikit/fields@15.14.0
+  - @commercetools-uikit/spacings@15.14.0
+  - @commercetools-uikit/field-errors@15.14.0
+  - @commercetools-uikit/i18n@15.14.0
+  - @commercetools-uikit/utils@15.14.0
+
 ## 15.13.2
 
 ### Patch Changes
