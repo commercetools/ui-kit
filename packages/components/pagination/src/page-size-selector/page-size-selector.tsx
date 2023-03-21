@@ -74,7 +74,7 @@ const PageSizeSelector = (props: TPageSizeSelectorProps) => {
 
   return (
     <Spacings.Inline alignItems="center">
-      <Constraints.Horizontal max={2}>
+      <Constraints.Horizontal max="auto">
         <SelectInput
           id={perPageSelectorId}
           name="per-page-selector"
