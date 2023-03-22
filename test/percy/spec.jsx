@@ -1,8 +1,11 @@
 import { Children, isValidElement } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import pick from 'lodash/pick';
-import { designTokens } from '../../design-system';
+import { createSequentialId } from '@commercetools-uikit/utils';
+import { useFieldId } from '@commercetools-uikit/hooks';
+import { designTokens, ThemeProvider } from '../../design-system';
 
 const SpecContainer = styled.div`
   display: flex;
@@ -48,11 +51,35 @@ const PropValue = styled.span`
   box-sizing: border-box;
 `;
 
-const Box = styled.div`
-  background-color: ${(props) =>
-    props.backgroundColor ?? designTokens.colorSurface};
-  }};
-`;
+const Box = (props) => (
+  <div
+    css={css`
+      background-color: ${(props) =>
+        props.backgroundColor ?? designTokens.colorSurface};
+      margin-bottom: 20px;
+    `}
+    {...(props.boxId ? { id: props.boxId } : {})}
+  >
+    <p
+      css={css`
+        text-decoration: underline;
+        font-weight: bold;
+        :first-letter {
+          text-transform: capitalize;
+        }
+      `}
+    >
+      {props.themeName} theme:
+    </p>
+    {props.children}
+  </div>
+);
+Box.propTypes = {
+  children: PropTypes.node.isRequired,
+  backgroundColor: PropTypes.string,
+  themeName: PropTypes.string.isRequired,
+  boxId: PropTypes.string.isRequired,
+};
 
 const Pill = (props) => {
   const value = (() => {
@@ -109,7 +136,11 @@ Props.propTypes = {
   propsToList: PropTypes.arrayOf(PropTypes.string),
 };
 
+const sequentialId = createSequentialId('local-');
+
 const Spec = (props) => {
+  const localId = useFieldId(undefined, sequentialId);
+
   return (
     <SpecContainer>
       <Label>{props.label}</Label>
@@ -121,7 +152,20 @@ const Spec = (props) => {
           {props.children}
         </Props>
       )}
-      <Box backgroundColor={props.backgroundColor}>{props.children}</Box>
+      <Box themeName="old" backgroundColor={props.backgroundColor}>
+        {props.children}
+      </Box>
+      <Box
+        themeName="new"
+        boxId={localId}
+        backgroundColor={props.backgroundColor}
+      >
+        <ThemeProvider
+          theme="test"
+          parentSelector={() => document.getElementById(localId)}
+        />
+        {props.children}
+      </Box>
     </SpecContainer>
   );
 };
