@@ -17,7 +17,7 @@
     "@types/lodash": "4.14.191",
     "@types/mdast": "3.0.11",
     "@types/mri": "1.1.1",
-    "@types/node": "16.18.18",
+    "@types/node": "18.15.5",
     "@types/shelljs": "0.8.11",
     "@types/unist": "2.0.6",
     "@types/vfile": "4.0.0",

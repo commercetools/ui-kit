@@ -3017,7 +3017,7 @@ __metadata:
     "@manypkg/find-root": 1.1.0
     "@manypkg/get-packages": 1.1.3
     "@types/mri": 1.1.1
-    "@types/node": 16.18.18
+    "@types/node": 18.15.5
     mri: 1.2.0
     omit-empty-es: 1.1.3
     prettier: 2.8.6
@@ -3041,7 +3041,7 @@ __metadata:
     "@types/lodash": 4.14.191
     "@types/mdast": 3.0.11
     "@types/mri": 1.1.1
-    "@types/node": 16.18.18
+    "@types/node": 18.15.5
     "@types/shelljs": 0.8.11
     "@types/unist": 2.0.6
     "@types/vfile": 4.0.0
@@ -7702,10 +7702,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.18.18":
-  version: 16.18.18
-  resolution: "@types/node@npm:16.18.18"
-  checksum: 021936e4fcd5cb038cd5d2d26328c7c0bf501d15793e48a12501129cf8770cbbe9a6936fcb64eeb10a102ff273c2606b75c1635a5834abd786014c98c112aaee
+"@types/node@npm:18.15.5":
+  version: 18.15.5
+  resolution: "@types/node@npm:18.15.5"
+  checksum: 5fbf3453bd5ce1402bb2964e55d928fc8a8a7de5451b1b0fe66587fecb8a3eb86854ca9cefa5076a5971e2cff00e1773ceeb5d872a54f6c6ddfbbc1064b4e91a
   languageName: node
   linkType: hard
 
