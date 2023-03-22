@@ -43,7 +43,7 @@
     "is-hotkey": "0.2.0",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-textarea-autosize": "8.4.1",
+    "react-textarea-autosize": "8.4.0",
     "slate": "0.75.0",
     "slate-history": "0.86.0",
     "slate-react": "0.75.0"

@@ -27,7 +27,7 @@
     "@commercetools-uikit/utils": "15.14.0",
     "@emotion/react": "^11.10.5",
     "prop-types": "15.8.1",
-    "react-textarea-autosize": "8.4.1"
+    "react-textarea-autosize": "8.4.0"
   },
   "devDependencies": {
     "react": "17.0.2",

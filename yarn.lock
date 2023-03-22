@@ -3917,7 +3917,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^5.25.1
-    react-textarea-autosize: 8.4.1
+    react-textarea-autosize: 8.4.0
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -4133,7 +4133,7 @@ __metadata:
     react-dom: 17.0.2
     react-intl: ^5.25.1
     react-select: 5.7.1
-    react-textarea-autosize: 8.4.1
+    react-textarea-autosize: 8.4.0
   peerDependencies:
     react: 17.x
     react-dom: 17.x
@@ -4171,7 +4171,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^5.25.1
-    react-textarea-autosize: 8.4.1
+    react-textarea-autosize: 8.4.0
     slate: 0.75.0
     slate-history: 0.86.0
     slate-react: 0.75.0
@@ -4360,7 +4360,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-intl: ^5.25.1
-    react-textarea-autosize: 8.4.1
+    react-textarea-autosize: 8.4.0
   peerDependencies:
     react: 17.x
     react-intl: 5.x
@@ -9380,17 +9380,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001312, caniuse-lite@npm:^1.0.30001332, caniuse-lite@npm:^1.0.30001370":
-  version: 1.0.30001402
-  resolution: "caniuse-lite@npm:1.0.30001402"
-  checksum: 6068ccccd64b357f75388cb2303cf351b686b20800571d0a845bff5c0e0d24f83df0133afbbdd8177a33eb087c93d39ecf359035a52b2feac5f182c946f706ee
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001449":
-  version: 1.0.30001451
-  resolution: "caniuse-lite@npm:1.0.30001451"
-  checksum: 48a06a7881093bb4d8a08ed5428f24a1cbdaa544b0a6f0c3614287d4f34b6c853e79a0f608a5bd901c27995f5e951825606fba11e7930251cc422bd61de9d849
+"caniuse-lite@npm:^1.0.30001312, caniuse-lite@npm:^1.0.30001332, caniuse-lite@npm:^1.0.30001370, caniuse-lite@npm:^1.0.30001449":
+  version: 1.0.30001469
+  resolution: "caniuse-lite@npm:1.0.30001469"
+  checksum: 8e496509d7e9ff189c72205675b5db0c5f1b6a09917027441e835efae0848a468a8c4e7d2b409ffc202438fcd23ae53e017f976a03c22c04d12d3c0e1e33e5de
   languageName: node
   linkType: hard
 
@@ -18141,16 +18134,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-textarea-autosize@npm:8.4.1":
-  version: 8.4.1
-  resolution: "react-textarea-autosize@npm:8.4.1"
+"react-textarea-autosize@npm:8.4.0":
+  version: 8.4.0
+  resolution: "react-textarea-autosize@npm:8.4.0"
   dependencies:
-    "@babel/runtime": ^7.20.13
+    "@babel/runtime": ^7.10.2
     use-composed-ref: ^1.3.0
     use-latest: ^1.2.1
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: b200437cd68938c23b13944fe6fdfeb32a6d949ac88588307f14d6fcdaba3044b8c7d8e239851b081f2101d433b93d4cf5aa027543b170b84f2a0cbe6fc9093f
+  checksum: 055fb51b74e1ab6b286490cfcd8ed77a760f6fc90706053b5dfcb138199d02c56289a1060a1daf9f3ae37ffd66f73e9553f026d0fad446bc2243b713acf48e05
   languageName: node
   linkType: hard
 
