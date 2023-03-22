@@ -10,8 +10,10 @@ import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { designTokens } from '@commercetools-uikit/design-system';
-import { filterInvalidAttributes } from '@commercetools-uikit/utils';
-import { useWarning } from '@commercetools-uikit/utils';
+import {
+  filterInvalidAttributes,
+  useWarning,
+} from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getButtonStyles } from './primary-button.styles';
 

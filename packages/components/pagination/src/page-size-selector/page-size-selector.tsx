@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import uniqueId from 'lodash/uniqueId';
+import { useTheme } from '@commercetools-uikit/design-system';
 import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import Constraints from '@commercetools-uikit/constraints';
@@ -53,6 +54,7 @@ const mapRangeToListOfOptions = (perPageRange: TPageRangeSize) => {
 };
 
 const PageSizeSelector = (props: TPageSizeSelectorProps) => {
+  const { themedValue } = useTheme();
   const [perPageSelectorId] = useState(uniqueId('per-page-selector-'));
   const options = mapRangeToListOfOptions(props.perPageRange);
   const hasValidPerPageOption = options.includes(props.perPage);
@@ -74,7 +76,7 @@ const PageSizeSelector = (props: TPageSizeSelectorProps) => {
 
   return (
     <Spacings.Inline alignItems="center">
-      <Constraints.Horizontal max={2}>
+      <Constraints.Horizontal max={themedValue(2, 'auto')}>
         <SelectInput
           id={perPageSelectorId}
           name="per-page-selector"
