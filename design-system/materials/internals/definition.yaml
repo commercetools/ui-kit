@@ -1891,9 +1891,9 @@ decisionGroupsByTheme:
         padding-for-collapsible-panel-header-as-condensed:
           choice: 'var(--spacing-20) 0'
         padding-for-collapsible-panel-section-wrapper:
-          choice: 'var(--spacing-50) 0 var(--spacing-70) calc(var(--spacing-30) + var(--spacing-10))'
+          choice: 'var(--spacing-50) 0 0 calc(var(--spacing-30) + var(--spacing-10))'
         padding-for-collapsible-panel-section-wrapper-as-condensed:
-          choice: 'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-30) + var(--spacing-10))'
+          choice: 'var(--spacing-40) 0 0 calc(var(--spacing-30) + var(--spacing-10))'
         padding-for-collapsible-panel-section-description:
           choice: '0 0 var(--spacing-40)'
         padding-for-collapsible-panel-section-description-as-condensed:
