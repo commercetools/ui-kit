@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "moment": "2.29.4",
-    "moment-timezone": "0.5.40",
+    "moment-timezone": "0.5.41",
     "react": "17.0.2",
     "react-intl": "^5.25.1",
     "react-router-dom": "5.3.4"
