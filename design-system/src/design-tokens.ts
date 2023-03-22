@@ -806,9 +806,9 @@ export const themes = {
     paddingForCollapsiblePanelHeader: 'var(--spacing-30) 0',
     paddingForCollapsiblePanelHeaderAsCondensed: 'var(--spacing-20) 0',
     paddingForCollapsiblePanelSectionWrapper:
-      'var(--spacing-50) 0 var(--spacing-70) calc(var(--spacing-30) + var(--spacing-10))',
+      'var(--spacing-50) 0 0 calc(var(--spacing-30) + var(--spacing-10))',
     paddingForCollapsiblePanelSectionWrapperAsCondensed:
-      'var(--spacing-40) 0 var(--spacing-70) calc(var(--spacing-30) + var(--spacing-10))',
+      'var(--spacing-40) 0 0 calc(var(--spacing-30) + var(--spacing-10))',
     paddingForCollapsiblePanelSectionDescription: '0 0 var(--spacing-40)',
     paddingForCollapsiblePanelSectionDescriptionAsCondensed:
       '0 0 var(--spacing-40)',
