@@ -10,7 +10,7 @@ export const component = () => (
     <Spec
       label="minimal"
       propsToList={['value', 'horizontalConstraint']}
-      testedTheme="old"
+      testedThemes={['new']}
     >
       <DateInput
         id="date-input"

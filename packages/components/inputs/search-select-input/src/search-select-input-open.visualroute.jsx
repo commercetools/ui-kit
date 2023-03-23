@@ -13,7 +13,7 @@ export const routePath = '/search-select-input-open';
 
 export const component = () => (
   <Suite>
-    <Spec label="minimal" testedTheme="old">
+    <Spec label="minimal" testedThemes={['new']}>
       <SearchSelectInput
         value={value}
         onChange={() => {}}

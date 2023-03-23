@@ -162,12 +162,12 @@ const Spec = (props) => {
           {props.children}
         </Props>
       )}
-      {props.testedTheme === 'both' || props.testedTheme === 'old' ? (
+      {props.testedThemes.includes('old') ? (
         <Box themeName="old" backgroundColor={props.backgroundColor}>
           {props.children}
         </Box>
       ) : null}
-      {props.testedTheme === 'both' || props.testedTheme === 'new' ? (
+      {props.testedThemes.includes('new') ? (
         <Box
           themeName="new"
           boxId={localId}
@@ -191,13 +191,13 @@ Spec.propTypes = {
   propsToList: PropTypes.arrayOf(PropTypes.string),
   omitPropsList: PropTypes.bool,
   backgroundColor: PropTypes.string,
-  testedTheme: PropTypes.oneOf(['new', 'old', 'both']),
+  testedThemes: PropTypes.arrayOf(['new', 'old']),
 };
 
 Spec.defaultProps = {
   omitPropsList: false,
   listPropsOfNestedChild: false,
-  testedTheme: 'both',
+  testedThemes: ['new', 'old'],
 };
 
 Spec.displayName = 'Spec';
