@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import pick from 'lodash/pick';
 import { createSequentialId } from '@commercetools-uikit/utils';
 import { useFieldId } from '@commercetools-uikit/hooks';
-import { designTokens, ThemeProvider } from '../../design-system';
+import { designTokens, ThemeProvider, useTheme } from '../../design-system';
 
 const SpecContainer = styled.div`
   display: flex;
@@ -51,34 +51,44 @@ const PropValue = styled.span`
   box-sizing: border-box;
 `;
 
-const Box = (props) => (
-  <div
-    css={css`
-      background-color: ${(props) =>
-        props.backgroundColor ?? designTokens.colorSurface};
-      margin-bottom: 20px;
-    `}
-    {...(props.boxId ? { id: props.boxId } : {})}
-  >
-    <p
+const Box = (props) => {
+  const { isNewTheme } = useTheme(
+    props.boxId ? () => document.getElementById(props.boxId) : undefined
+  );
+  return (
+    <div
       css={css`
-        text-decoration: underline;
-        font-weight: bold;
-        :first-letter {
-          text-transform: capitalize;
-        }
+        background-color: ${props.backgroundColor ?? designTokens.colorSurface};
+        margin-bottom: 20px;
+
+        ${isNewTheme &&
+        css`
+          font-family: 'Inter', system-ui;
+          font-size: 16px; // This won't ever work since we use 'rem' units in components, so the font size will be calculated based on the font-size set in the <html> element
+        `}
       `}
+      {...(props.boxId ? { id: props.boxId } : {})}
     >
-      {props.themeName} theme:
-    </p>
-    {props.children}
-  </div>
-);
+      <p
+        css={css`
+          text-decoration: underline;
+          font-weight: bold;
+          :first-letter {
+            text-transform: capitalize;
+          }
+        `}
+      >
+        {props.themeName} theme:
+      </p>
+      {props.children}
+    </div>
+  );
+};
 Box.propTypes = {
   children: PropTypes.node.isRequired,
   backgroundColor: PropTypes.string,
   themeName: PropTypes.string.isRequired,
-  boxId: PropTypes.string.isRequired,
+  boxId: PropTypes.string,
 };
 
 const Pill = (props) => {
