@@ -1,36 +1,26 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable default-case */
+import { useCallback, useMemo, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
-import TextInput from '@commercetools-uikit/text-input';
 import merge from 'lodash/merge';
-import { designTokens } from '@commercetools-uikit/design-system';
+import TextInput from '@commercetools-uikit/text-input';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Readme from './TOKENS.md';
 import definition from './definition.yaml';
-import deprecatedTokens from './deprecated-tokens';
+import {
+  MultiTokensGroupDetails,
+  Token,
+  TokenBodyCell,
+  TokenGroupLinks,
+  SingleTokensGroupDetails,
+} from './story/shared-components';
+import { getSampleComponent } from './story/samplers';
 
-const choiceGroupsByTheme =
-  process.env.NODE_ENV !== 'production'
-    ? definition.choiceGroupsByTheme
-    : { default: definition.choiceGroupsByTheme.default };
-const allThemesNames = Object.keys(choiceGroupsByTheme);
-
-const getIsDeprecated = (token) => deprecatedTokens.includes(token);
-
-const Table = styled.table`
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-  & tr td {
-    border: 1px solid #ccc;
-    padding: 15px;
-    text-align: left;
-  }
-  & thead td {
-    background-color: gray;
-    color: white;
-    font-weight: bold;
-  }
-`;
+const findChoiceValue = (theme, choiceName) => {
+  return Object.values(theme)
+    .map((choiceGroup) => choiceGroup.choices)
+    .find((choices) => choices[choiceName])?.[choiceName];
+};
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
@@ -42,668 +32,181 @@ const Background = styled.div`
   }
 `;
 
-const GroupStyle = styled.div`
-  padding: 10px;
-  display: ${(props) => (props.isVisible ? 'block' : 'none')};
+const DetailsGroupsContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 `;
 
-const Token = styled.p`
-  font-family: monospace;
-`;
-
-const TokenRow = styled.td`
-  min-width: 400px;
-`;
-
-const Description = styled.p`
-  font-size: 10pt;
-  margin: 10px 0;
-`;
-
-const DeprecationBadge = () => <b style={{ color: 'orange' }}>DEPRECATED</b>;
-DeprecationBadge.displayName = 'DeprecationBadge';
-
-const getThemeChoiceByName = (theme, choiceName) =>
-  Object.values(theme)
-    .map((choiceGroup) => choiceGroup.choices)
-    .find((choices) => choices[choiceName]);
-
-const getChoiceValue = (choiceName, theme) => {
-  const defaultChoice = getThemeChoiceByName(
-    choiceGroupsByTheme.default,
-    choiceName
-  );
-
-  const themeChoice = getThemeChoiceByName(
-    choiceGroupsByTheme[theme],
-    choiceName
-  );
-
-  return defaultChoice
-    ? themeChoice?.[choiceName] ?? defaultChoice[choiceName]
-    : undefined;
+const BasicCellRenderer = (cellData) => {
+  if (cellData.columnKey !== 'description') {
+    return <TokenBodyCell tokenName={cellData.tokenName} />;
+  } else {
+    return cellData.tokenData.description;
+  }
 };
 
-const filterChoiceGroupValues = (choices, searchText) =>
-  Object.entries(choices).filter(
-    ([key, value]) =>
-      key.toLowerCase().includes(searchText.toLowerCase()) ||
-      value.toLowerCase().includes(searchText.toLowerCase())
-  );
-
-const filterDecisionGroupValues = (decisions, searchText) =>
-  Object.entries(decisions).filter(
-    ([key, decision]) =>
-      key.toLowerCase().includes(searchText.toLowerCase()) ||
-      decision.choice.toLowerCase().includes(searchText.toLowerCase()) ||
-      getChoiceValue(decision.choice)
-        .toLowerCase()
-        .includes(searchText.toLowerCase())
-  );
-
-const filterStatesGroupValues = (states, searchText) =>
-  Object.entries(states).filter(
-    ([key, state]) =>
-      key.toLowerCase().includes(searchText.toLowerCase()) ||
-      (state.description &&
-        state.description.toLowerCase().includes(searchText.toLowerCase()))
-  );
-
-const filterComponentGroupsGroupValues = (componentGroups, searchText) =>
-  Object.entries(componentGroups).filter(
-    ([key, state]) =>
-      key.toLowerCase().includes(searchText.toLowerCase()) ||
-      (state.description &&
-        state.description.toLowerCase().includes(searchText.toLowerCase()))
-  );
-
-const filterVariantsGroupValues = (variants, searchText) =>
-  Object.entries(variants).filter(
-    ([key, state]) =>
-      key.toLowerCase().includes(searchText.toLowerCase()) ||
-      (state.description &&
-        state.description.toLowerCase().includes(searchText.toLowerCase()))
-  );
-
-const getDefaultThemeChoiceGroupProperty = (choiceGroup, property) =>
-  choiceGroupsByTheme.default[choiceGroup][property];
-
-const ChoiceGroup = (props) => {
-  const choices = Object.entries(choiceGroupsByTheme).reduce(
-    (acc, [theme, themeChoices]) => {
-      // default theme is used as a blueprint
-      const themeChoicesBasedOnDefaultTheme = merge(
+function Story() {
+  const [filterText, setFilterText] = useState('');
+  const { theme } = useTheme();
+  const currentThemeChoices = useMemo(() => {
+    return merge(
+      {},
+      definition.choiceGroupsByTheme.default,
+      definition.choiceGroupsByTheme[theme]
+    );
+  }, [theme]);
+  const currentThemeDecisions = useMemo(
+    () =>
+      merge(
         {},
-        choiceGroupsByTheme.default,
-        themeChoices
-      );
-      const filteredThemeChoices = Object.fromEntries(
-        filterChoiceGroupValues(
-          themeChoicesBasedOnDefaultTheme[props.choiceGroup].choices,
-          props.searchText
-        )
-      );
-      const filteredThemeChoicesNames = Object.keys(filteredThemeChoices);
-
-      return merge(
-        acc,
-        ...filteredThemeChoicesNames.map((name) => ({
-          [name]: { [theme]: filteredThemeChoices[name] },
-        }))
-      );
-    },
-    {}
+        definition.decisionGroupsByTheme.default,
+        definition.decisionGroupsByTheme[theme]
+      ),
+    [theme]
   );
+
+  const searchTextChangeHandler = useCallback((event) => {
+    setFilterText(event.target.value);
+  }, []);
 
   return (
-    <GroupStyle isVisible={Object.values(choices).length > 0}>
-      <a
-        id={`choice-${getDefaultThemeChoiceGroupProperty(
-          props.choiceGroup,
-          'prefix'
-        )}`}
-      />
-      <h3>{getDefaultThemeChoiceGroupProperty(props.choiceGroup, 'label')}</h3>
-      {getDefaultThemeChoiceGroupProperty(props.choiceGroup, 'description') && (
-        <p>
-          {getDefaultThemeChoiceGroupProperty(props.choiceGroup, 'description')}
-        </p>
-      )}
-      <Table>
-        <thead>
-          <tr>
-            <TokenRow>Token</TokenRow>
-            {allThemesNames.map((theme) => {
-              return <td key={theme}>{theme}</td>;
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(choices).map(([name, values]) => (
-            <tr key={name}>
-              <td>
-                <>
-                  <Token>{name}</Token>
-                  {getIsDeprecated(name) && <DeprecationBadge />}
-                </>
-              </td>
-              {Object.entries(values).map(([theme, value]) => (
-                <td key={theme}>{props.renderSample(value)}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </GroupStyle>
-  );
-};
-ChoiceGroup.displayName = 'ChoiceGroup';
-ChoiceGroup.propTypes = {
-  searchText: PropTypes.string.isRequired,
-  choiceGroup: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    prefix: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    choices: PropTypes.objectOf(PropTypes.string),
-  }).isRequired,
-  renderSample: PropTypes.func.isRequired,
-};
-ChoiceGroup.defaultProps = {
-  renderSample: (value) => value,
-};
-
-const DecisionGroup = (props) => {
-  const decisions = filterDecisionGroupValues(
-    props.decisionGroup.decisions,
-    props.searchText
-  );
-  return (
-    <GroupStyle isVisible={decisions.length > 0}>
-      <a id={`decision-${props.decisionGroup.prefix}`} />
-      <h3>{props.decisionGroup.label}</h3>
-      <Table>
-        <thead>
-          <tr>
-            <TokenRow>Token</TokenRow>
-            <td>Choice</td>
-            {allThemesNames.map((theme) => {
-              return <td key={theme}>{theme}</td>;
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {decisions.map(([name, decision]) => (
-            <tr key={name}>
-              <td>
-                <Token>{name}</Token>
-                <Description>{decision.description}</Description>
-                {decision.deprecated && <DeprecationBadge />}
-              </td>
-              <td>
-                <Token>{decision.choice}</Token>
-              </td>
-              {allThemesNames.map((theme) => {
-                return (
-                  <td key={theme}>
-                    {props.renderSample(
-                      getChoiceValue(decision.choice, theme),
-                      name
-                    )}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </GroupStyle>
-  );
-};
-DecisionGroup.displayName = 'DecisionGroup';
-DecisionGroup.propTypes = {
-  searchText: PropTypes.string.isRequired,
-  decisionGroup: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    prefix: PropTypes.string.isRequired,
-    decisions: PropTypes.shape({
-      choice: PropTypes.string.isRequired,
-      description: PropTypes.string,
-    }),
-  }).isRequired,
-  renderSample: PropTypes.func.isRequired,
-};
-DecisionGroup.defaultProps = {
-  renderSample: (value) => value,
-};
-
-const StatesGroup = (props) => {
-  const states = filterStatesGroupValues(props.states, props.searchText);
-  return (
-    <GroupStyle isVisible={states.length > 0}>
-      <Table>
-        <thead>
-          <tr>
-            <TokenRow>State</TokenRow>
-            <td>Description</td>
-          </tr>
-        </thead>
-        <tbody>
-          {states.map(([name, state]) => (
-            <tr key={name}>
-              <td>
-                <Token>{name}</Token>
-                {state.deprecated && <DeprecationBadge />}
-              </td>
-              <td>{state.description}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </GroupStyle>
-  );
-};
-StatesGroup.displayName = 'StatesGroup';
-StatesGroup.propTypes = {
-  searchText: PropTypes.string.isRequired,
-  states: PropTypes.shape({
-    decisions: PropTypes.objectOf(PropTypes.string),
-    description: PropTypes.string,
-  }).isRequired,
-};
-
-const ComponentGroupsGroup = (props) => {
-  const componentGroups = filterComponentGroupsGroupValues(
-    props.states,
-    props.searchText
-  );
-  return (
-    <GroupStyle isVisible={componentGroups.length > 0}>
-      <Table>
-        <thead>
-          <tr>
-            <TokenRow>State</TokenRow>
-            <td>Description</td>
-          </tr>
-        </thead>
-        <tbody>
-          {componentGroups.map(([name, componentGroup]) => (
-            <tr key={name}>
-              <td>
-                <Token>{name}</Token>
-                {componentGroup.deprecated && <DeprecationBadge />}
-              </td>
-              <td>{componentGroup.description}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </GroupStyle>
-  );
-};
-ComponentGroupsGroup.displayName = 'ComponentGroupsGroup';
-ComponentGroupsGroup.propTypes = {
-  searchText: PropTypes.string.isRequired,
-  states: PropTypes.shape({
-    decisions: PropTypes.objectOf(PropTypes.string),
-  }).isRequired,
-};
-
-const VariantsGroup = (props) => {
-  const variants = filterVariantsGroupValues(props.states, props.searchText);
-  return (
-    <GroupStyle isVisible={variants.length > 0}>
-      <Table>
-        <thead>
-          <tr>
-            <TokenRow>State</TokenRow>
-            <td>Description</td>
-          </tr>
-        </thead>
-        <tbody>
-          {variants.map(([name, variant]) => (
-            <tr key={name}>
-              <td>
-                <Token>{name}</Token>
-                {variant.deprecated && <DeprecationBadge />}
-              </td>
-              <td>{variant.description}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </GroupStyle>
-  );
-};
-VariantsGroup.displayName = 'VariantsGroup';
-VariantsGroup.propTypes = {
-  searchText: PropTypes.string.isRequired,
-  states: PropTypes.shape({
-    decisions: PropTypes.objectOf(PropTypes.string),
-    description: PropTypes.string,
-  }).isRequired,
-};
-
-const ColorSample = styled.div`
-  width: 30px;
-  height: 30px;
-  background-color: ${(props) => props.color};
-  box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.1);
-  display: inline-block;
-`;
-
-const FontColorSampleStyle = styled.div`
-  color: ${(props) => props.color};
-  font-size: 24pt;
-  font-weight: bolder;
-  display: inline-block;
-`;
-
-const FontColorSample = (props) => (
-  <FontColorSampleStyle {...props}>Aa</FontColorSampleStyle>
-);
-FontColorSample.displayName = 'FontColorSample';
-
-const BorderRadiusSample = styled.div`
-  width: calc(
-    ${(props) => props.borderRadius} + 2 * ${(props) => props.borderRadius}
-  );
-  min-width: 20px;
-  height: calc(
-    ${(props) => props.borderRadius} + 2 * ${(props) => props.borderRadius}
-  );
-  min-height: 20px;
-  background-color: pink;
-  border-radius: ${(props) => props.borderRadius};
-  display: inline-block;
-  margin: 0 10px;
-`;
-
-const ShadowSample = styled.div`
-  width: 50px;
-  height: 50px;
-  box-shadow: ${(props) => props.shadow};
-  display: inline-block;
-  margin: 0 10px;
-`;
-
-const SpacingSample = styled.div`
-  width: ${(props) => props.spacing};
-  height: ${(props) => props.spacing};
-  background-color: lightblue;
-  display: inline-block;
-  margin: 0 10px;
-`;
-
-class Story extends Component {
-  static displayName = 'Story';
-
-  state = {
-    searchText: '',
-  };
-
-  render() {
-    return (
-      <Background>
+    <Background>
+      <header>
         <TextInput
-          value={this.state.searchText}
-          onChange={(event) => {
-            this.setState({ searchText: event.target.value });
-          }}
-          horizontalConstraint="m"
+          value={filterText}
+          onChange={searchTextChangeHandler}
+          horizontalConstraint={13}
         />
         <h2>Table of Contents</h2>
         <ul>
           <li>
-            <a
-              href="#choices"
-              onClick={(event) => {
-                event.preventDefault();
-                window.scrollTo(
-                  0,
-                  document.getElementById('choices').offsetTop
-                );
-              }}
+            <TokenGroupLinks
+              id="choices"
+              config={currentThemeChoices}
+              filterText={filterText}
             >
               Choices
-            </a>
-            <ul>
-              {Object.entries(choiceGroupsByTheme.default).map(
-                ([key, choiceGroup]) =>
-                  filterChoiceGroupValues(
-                    choiceGroup.choices,
-                    this.state.searchText
-                  ).length > 0 && (
-                    <li key={key}>
-                      <a
-                        href={`#${choiceGroup.prefix}`}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          window.scrollTo(
-                            0,
-                            document.getElementById(
-                              `choice-${choiceGroup.prefix}`
-                            ).offsetTop
-                          );
-                        }}
-                      >
-                        {choiceGroup.label}
-                      </a>
-                    </li>
-                  )
-              )}
-            </ul>
+            </TokenGroupLinks>
           </li>
           <li>
-            <a
-              href="#states"
-              onClick={(event) => {
-                event.preventDefault();
-                window.scrollTo(0, document.getElementById('states').offsetTop);
-              }}
-            >
-              States
-            </a>
+            <TokenGroupLinks id="states">States</TokenGroupLinks>
           </li>
           <li>
-            <a
-              href="#component-groups"
-              onClick={(event) => {
-                event.preventDefault();
-                window.scrollTo(
-                  0,
-                  document.getElementById('component-groups').offsetTop
-                );
-              }}
-            >
+            <TokenGroupLinks id="component-groups">
               Component Groups
-            </a>
+            </TokenGroupLinks>
           </li>
           <li>
-            <a
-              href="#variants"
-              onClick={(event) => {
-                event.preventDefault();
-                window.scrollTo(
-                  0,
-                  document.getElementById('variants').offsetTop
-                );
-              }}
-            >
-              Variants
-            </a>
+            <TokenGroupLinks id="variants">Variants</TokenGroupLinks>
           </li>
           <li>
-            {' '}
-            <a
-              href="#decisions"
-              onClick={(event) => {
-                event.preventDefault();
-                window.scrollTo(
-                  0,
-                  document.getElementById('decisions').offsetTop
-                );
-              }}
+            <TokenGroupLinks
+              id="decisions"
+              config={currentThemeDecisions}
+              filterText={filterText}
             >
               Decisions
-            </a>{' '}
-            <ul>
-              {Object.entries(definition.decisionGroupsByTheme.default).map(
-                ([key, decisionGroup]) =>
-                  filterDecisionGroupValues(
-                    decisionGroup.decisions,
-                    this.state.searchText
-                  ).length > 0 && (
-                    <li key={key}>
-                      <a
-                        href={`#${decisionGroup.prefix}`}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          window.scrollTo(
-                            0,
-                            document.getElementById(
-                              `decision-${decisionGroup.prefix}`
-                            ).offsetTop
-                          );
-                        }}
-                      >
-                        {decisionGroup.label}
-                      </a>
-                    </li>
-                  )
-              )}
-            </ul>
+            </TokenGroupLinks>
           </li>
         </ul>
+      </header>
 
-        <h2 id="choices">Choices</h2>
-        <p>
-          This is the palette of values you may chose from when creating design
-          tokens.
-        </p>
-        <ChoiceGroup
-          choiceGroup="colors"
-          searchText={this.state.searchText}
-          renderSample={(value) => (
-            <>
-              <ColorSample color={value} /> {value}
-            </>
-          )}
-        />
-        <ChoiceGroup
-          choiceGroup="borderRadiuses"
-          searchText={this.state.searchText}
-          renderSample={(value) => (
-            <>
-              <BorderRadiusSample borderRadius={value} /> {value}
-            </>
-          )}
-        />
-        <ChoiceGroup
-          choiceGroup="shadows"
-          searchText={this.state.searchText}
-          renderSample={(value) => (
-            <>
-              <ShadowSample shadow={value} /> {value}
-            </>
-          )}
-        />
-        <ChoiceGroup
-          choiceGroup="constraints"
-          searchText={this.state.searchText}
-        />
-        <ChoiceGroup
-          choiceGroup="spacings"
-          searchText={this.state.searchText}
-          renderSample={(value) => (
-            <>
-              <SpacingSample spacing={value} /> {value}
-            </>
-          )}
-        />
-        <ChoiceGroup
-          choiceGroup="transitions"
-          searchText={this.state.searchText}
-        />
-        <ChoiceGroup
-          choiceGroup="breakpoints"
-          searchText={this.state.searchText}
+      <DetailsGroupsContainer>
+        <MultiTokensGroupDetails
+          id="choices"
+          subtitle="This is the palette of values you may chose from when creating design tokens."
+          themeName={theme}
+          filterText={filterText}
+          columnsConfig={[{ key: 'token' }, { key: 'value' }]}
+          cellRenderer={(data) => {
+            if (data.columnKey === 'token') {
+              return <Token>{data.tokenName}</Token>;
+            } else {
+              const ChoiceSample = getSampleComponent(data.groupItemsPrefix);
+              return (
+                <>
+                  <ChoiceSample value={data.tokenData} />
+                  &nbsp;{data.tokenData}
+                </>
+              );
+            }
+          }}
+          tokensGroupData={currentThemeChoices}
         />
 
-        <h2 id="states">States</h2>
-        <StatesGroup
-          states={definition.states}
-          searchText={this.state.searchText}
+        <SingleTokensGroupDetails
+          id="states"
+          columnsConfig={[{ key: 'state' }, { key: 'description' }]}
+          cellRenderer={BasicCellRenderer}
+          groupItems={definition.states}
+          themeName={theme}
+          filterText={filterText}
         />
 
-        <h2 id="component-groups">Component Groups</h2>
-        <ComponentGroupsGroup
-          states={definition.componentGroups}
-          searchText={this.state.searchText}
+        <SingleTokensGroupDetails
+          id="component-groups"
+          title="Component Groups"
+          columnsConfig={[
+            { key: 'component-group', label: 'Component Group' },
+            { key: 'description' },
+          ]}
+          cellRenderer={BasicCellRenderer}
+          groupItems={definition.componentGroups}
+          themeName={theme}
+          filterText={filterText}
         />
 
-        <h2 id="variants">Variants</h2>
-        <VariantsGroup
-          states={definition.variants}
-          searchText={this.state.searchText}
+        <SingleTokensGroupDetails
+          id="variants"
+          columnsConfig={[{ key: 'variant' }, { key: 'description' }]}
+          cellRenderer={BasicCellRenderer}
+          groupItems={definition.variants}
+          themeName={theme}
+          filterText={filterText}
         />
 
-        <h2 id="decisions">Decisions</h2>
-        <p>
-          These are specific decisions where a choice gets applied to an element
-          (optionally in a certain state).
-        </p>
-        <DecisionGroup
-          decisionGroup={
-            definition.decisionGroupsByTheme.default.backgroundColors
-          }
-          searchText={this.state.searchText}
-          renderSample={(value) => (
-            <>
-              <ColorSample color={value} /> {value}
-            </>
-          )}
+        <MultiTokensGroupDetails
+          id="decisions"
+          subtitle="These are specific decisions where a choice gets applied to an element (optionally in a certain state)."
+          themeName={theme}
+          filterText={filterText}
+          columnsConfig={[
+            { key: 'token' },
+            { key: 'choice' },
+            { key: 'value' },
+          ]}
+          cellRenderer={(data) => {
+            switch (data.columnKey) {
+              case 'token':
+                return <Token>{data.tokenName}</Token>;
+              case 'choice':
+                return <Token>{data.tokenData.choice}</Token>;
+              case 'value':
+                const ChoiceSample = getSampleComponent(data.groupItemsPrefix);
+                const choiceValue = findChoiceValue(
+                  currentThemeChoices,
+                  data.tokenData.choice
+                );
+                if (choiceValue) {
+                  return (
+                    <>
+                      <ChoiceSample value={choiceValue} />
+                      &nbsp;{choiceValue}
+                    </>
+                  );
+                } else {
+                  return <Token>---</Token>;
+                }
+              default:
+                return null;
+            }
+          }}
+          tokensGroupData={currentThemeDecisions}
         />
-        <DecisionGroup
-          decisionGroup={definition.decisionGroupsByTheme.default.borderColors}
-          searchText={this.state.searchText}
-          renderSample={(value) => (
-            <>
-              <ColorSample color={value} /> {value}
-            </>
-          )}
-        />
-        <DecisionGroup
-          decisionGroup={
-            definition.decisionGroupsByTheme.default.borderRadiuses
-          }
-          searchText={this.state.searchText}
-          renderSample={(value) => (
-            <>
-              <BorderRadiusSample borderRadius={value} /> {value}
-            </>
-          )}
-        />
-        <DecisionGroup
-          decisionGroup={definition.decisionGroupsByTheme.default.fontColors}
-          searchText={this.state.searchText}
-          renderSample={(value) => (
-            <>
-              <FontColorSample color={value} /> {value}
-            </>
-          )}
-        />
-        <DecisionGroup
-          decisionGroup={definition.decisionGroupsByTheme.default.shadows}
-          searchText={this.state.searchText}
-          renderSample={(value) => (
-            <>
-              <ShadowSample shadow={value} /> {value}
-            </>
-          )}
-        />
-      </Background>
-    );
-  }
+      </DetailsGroupsContainer>
+    </Background>
+  );
 }
 
 storiesOf('Basics|Tokens', module)

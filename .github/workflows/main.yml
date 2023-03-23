@@ -47,7 +47,7 @@ jobs:
         run: yarn typecheck
 
       - name: Running linters and tests
-        run: yarn run jest --projects jest.{eslint,stylelint,test,ts-test,bundle}.config.js --reporters github-actions
+        run: yarn run jest --projects jest.{eslint,test,ts-test,bundle}.config.js --reporters github-actions
         env:
           CI: true
 
