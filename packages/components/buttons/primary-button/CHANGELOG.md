@@ -1,5 +1,18 @@
 # @commercetools-uikit/primary-button
 
+## 15.14.1
+
+### Patch Changes
+
+- [#2459](https://github.com/commercetools/ui-kit/pull/2459) [`38880bce0`](https://github.com/commercetools/ui-kit/commit/38880bce0df04172708221de71d2506f6ef0f8de) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Refactored repeated dependencies imports.
+
+- Updated dependencies [[`8fb88a98d`](https://github.com/commercetools/ui-kit/commit/8fb88a98da1b2267d05e14c1b65f99569df06974)]:
+  - @commercetools-uikit/design-system@15.14.1
+  - @commercetools-uikit/accessible-button@15.14.1
+  - @commercetools-uikit/spacings-inline@15.14.1
+  - @commercetools-uikit/text@15.14.1
+  - @commercetools-uikit/utils@15.14.1
+
 ## 15.14.0
 
 ### Patch Changes

@@ -1,5 +1,19 @@
 # @commercetools-uikit/buttons
 
+## 15.14.1
+
+### Patch Changes
+
+- Updated dependencies [[`38880bce0`](https://github.com/commercetools/ui-kit/commit/38880bce0df04172708221de71d2506f6ef0f8de), [`8fb88a98d`](https://github.com/commercetools/ui-kit/commit/8fb88a98da1b2267d05e14c1b65f99569df06974)]:
+  - @commercetools-uikit/primary-button@15.14.1
+  - @commercetools-uikit/design-system@15.14.1
+  - @commercetools-uikit/accessible-button@15.14.1
+  - @commercetools-uikit/flat-button@15.14.1
+  - @commercetools-uikit/icon-button@15.14.1
+  - @commercetools-uikit/link-button@15.14.1
+  - @commercetools-uikit/secondary-button@15.14.1
+  - @commercetools-uikit/secondary-icon-button@15.14.1
+
 ## 15.14.0
 
 ### Patch Changes
