@@ -1,5 +1,7 @@
 # @commercetools-uikit/utils
 
+## 15.14.1
+
 ## 15.14.0
 
 ## 15.13.2

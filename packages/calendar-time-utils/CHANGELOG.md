@@ -1,5 +1,14 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 15.14.1
+
+### Patch Changes
+
+- [#2447](https://github.com/commercetools/ui-kit/pull/2447) [`9d354abe6`](https://github.com/commercetools/ui-kit/commit/9d354abe62009f20138a8c3aeb535aa50060e503) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade dependencies
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@15.14.1
+
 ## 15.14.0
 
 ### Patch Changes

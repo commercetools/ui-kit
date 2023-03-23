@@ -1,5 +1,47 @@
 # @commercetools-frontend/ui-kit
 
+## 15.14.1
+
+### Patch Changes
+
+- [#2447](https://github.com/commercetools/ui-kit/pull/2447) [`9d354abe6`](https://github.com/commercetools/ui-kit/commit/9d354abe62009f20138a8c3aeb535aa50060e503) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade dependencies
+
+- Updated dependencies [[`9d354abe6`](https://github.com/commercetools/ui-kit/commit/9d354abe62009f20138a8c3aeb535aa50060e503), [`38880bce0`](https://github.com/commercetools/ui-kit/commit/38880bce0df04172708221de71d2506f6ef0f8de), [`8fb88a98d`](https://github.com/commercetools/ui-kit/commit/8fb88a98da1b2267d05e14c1b65f99569df06974)]:
+  - @commercetools-uikit/selectable-search-input@15.14.1
+  - @commercetools-uikit/icons@15.14.1
+  - @commercetools-uikit/pagination@15.14.1
+  - @commercetools-uikit/design-system@15.14.1
+  - @commercetools-uikit/data-table-manager@15.14.1
+  - @commercetools-uikit/buttons@15.14.1
+  - @commercetools-uikit/inputs@15.14.1
+  - @commercetools-uikit/collapsible-panel@15.14.1
+  - @commercetools-uikit/data-table@15.14.1
+  - @commercetools-uikit/field-label@15.14.1
+  - @commercetools-uikit/link@15.14.1
+  - @commercetools-uikit/notifications@15.14.1
+  - @commercetools-uikit/primary-action-dropdown@15.14.1
+  - @commercetools-uikit/tag@15.14.1
+  - @commercetools-uikit/avatar@15.14.1
+  - @commercetools-uikit/card@15.14.1
+  - @commercetools-uikit/constraints@15.14.1
+  - @commercetools-uikit/label@15.14.1
+  - @commercetools-uikit/loading-spinner@15.14.1
+  - @commercetools-uikit/stamp@15.14.1
+  - @commercetools-uikit/text@15.14.1
+  - @commercetools-uikit/tooltip@15.14.1
+  - @commercetools-uikit/view-switcher@15.14.1
+  - @commercetools-uikit/fields@15.14.1
+  - @commercetools-uikit/spacings@15.14.1
+  - @commercetools-uikit/messages@15.14.1
+  - @commercetools-uikit/field-errors@15.14.1
+  - @commercetools-uikit/accessible-hidden@15.14.1
+  - @commercetools-uikit/collapsible@15.14.1
+  - @commercetools-uikit/collapsible-motion@15.14.1
+  - @commercetools-uikit/grid@15.14.1
+  - @commercetools-uikit/hooks@15.14.1
+  - @commercetools-uikit/i18n@15.14.1
+  - @commercetools-uikit/utils@15.14.1
+
 ## 15.14.0
 
 ### Patch Changes

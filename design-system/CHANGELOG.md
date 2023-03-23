@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 15.14.1
+
+### Patch Changes
+
+- [#2461](https://github.com/commercetools/ui-kit/pull/2461) [`8fb88a98d`](https://github.com/commercetools/ui-kit/commit/8fb88a98da1b2267d05e14c1b65f99569df06974) Thanks [@emmenko](https://github.com/emmenko)! - Remove padding bottom from `<CollapsiblePanel>` content (new design). The spacing between elements should be determined by the parent component. It is recommended to use `spacing-70` to separate multiple panels between each other.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.14.1
+
 ## 15.14.0
 
 ### Minor Changes
