@@ -7,7 +7,11 @@ export const routePath = '/date-input-open';
 
 export const component = () => (
   <Suite>
-    <Spec label="minimal" propsToList={['value', 'horizontalConstraint']}>
+    <Spec
+      label="minimal"
+      propsToList={['value', 'horizontalConstraint']}
+      testedTheme="old"
+    >
       <DateInput
         id="date-input"
         data-testid="date-input"

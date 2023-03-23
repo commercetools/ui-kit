@@ -13,7 +13,7 @@ export const routePath = '/async-creatable-select-input-open';
 
 export const component = () => (
   <Suite>
-    <Spec label="minimal">
+    <Spec label="minimal" testedTheme="old">
       <AsyncCreatableSelectInput
         value={value}
         onChange={() => {}}

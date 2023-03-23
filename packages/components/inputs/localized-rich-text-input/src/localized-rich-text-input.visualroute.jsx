@@ -69,7 +69,7 @@ const InteractiveRoute = () => {
   }, []);
   return (
     <Suite>
-      <Spec label="Interactive Rich Text" omitPropsList>
+      <Spec label="Interactive Rich Text" omitPropsList testedTheme="old">
         <div>
           <label htmlFor="reset-button">Reset value to lorem ipsum</label>
           <button

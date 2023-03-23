@@ -13,7 +13,7 @@ export const routePath = '/async-select-input-open';
 
 export const component = () => (
   <Suite>
-    <Spec label="minimal">
+    <Spec label="minimal" testedTheme="old">
       <AsyncSelectInput
         value={value}
         onChange={() => {}}

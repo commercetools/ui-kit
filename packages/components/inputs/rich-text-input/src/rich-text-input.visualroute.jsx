@@ -30,7 +30,7 @@ const InteractiveRoute = () => {
 
   return (
     <Suite>
-      <Spec label="minimal" omitPropsList>
+      <Spec label="minimal" omitPropsList testedTheme="old">
         <div>
           <label htmlFor="reset-button">Reset value to Hello World</label>
           <button

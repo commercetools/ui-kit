@@ -64,7 +64,7 @@ const Box = (props) => {
         ${isNewTheme &&
         css`
           font-family: 'Inter', system-ui;
-          font-size: 16px; // This won't ever work since we use 'rem' units in components, so the font size will be calculated based on the font-size set in the <html> element
+          // Updating 'font-size' here won't make difference since we use 'rem' units in components based on 'font-size' set in the <html> element
         `}
       `}
       {...(props.boxId ? { id: props.boxId } : {})}
@@ -78,7 +78,7 @@ const Box = (props) => {
           }
         `}
       >
-        {props.themeName} theme:
+        {`${props.themeName} theme`}
       </p>
       {props.children}
     </div>
@@ -162,20 +162,24 @@ const Spec = (props) => {
           {props.children}
         </Props>
       )}
-      <Box themeName="old" backgroundColor={props.backgroundColor}>
-        {props.children}
-      </Box>
-      <Box
-        themeName="new"
-        boxId={localId}
-        backgroundColor={props.backgroundColor}
-      >
-        <ThemeProvider
-          theme="test"
-          parentSelector={() => document.getElementById(localId)}
-        />
-        {props.children}
-      </Box>
+      {props.testedTheme === 'both' || props.testedTheme === 'old' ? (
+        <Box themeName="old" backgroundColor={props.backgroundColor}>
+          {props.children}
+        </Box>
+      ) : null}
+      {props.testedTheme === 'both' || props.testedTheme === 'new' ? (
+        <Box
+          themeName="new"
+          boxId={localId}
+          backgroundColor={props.backgroundColor}
+        >
+          <ThemeProvider
+            theme="test"
+            parentSelector={() => document.getElementById(localId)}
+          />
+          {props.children}
+        </Box>
+      ) : null}
     </SpecContainer>
   );
 };
@@ -187,11 +191,13 @@ Spec.propTypes = {
   propsToList: PropTypes.arrayOf(PropTypes.string),
   omitPropsList: PropTypes.bool,
   backgroundColor: PropTypes.string,
+  testedTheme: PropTypes.oneOf(['new', 'old', 'both']),
 };
 
 Spec.defaultProps = {
   omitPropsList: false,
   listPropsOfNestedChild: false,
+  testedTheme: 'both',
 };
 
 Spec.displayName = 'Spec';
