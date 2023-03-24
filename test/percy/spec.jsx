@@ -160,6 +160,7 @@ const Spec = (props) => {
           {props.children}
         </Box>
       ) : null}
+      {/* For cases when the default theme is needed and the theme label is not necessary */}
       {props.testedThemes.length === 0 ? (
         <Box backgroundColor={props.backgroundColor}>{props.children}</Box>
       ) : null}
