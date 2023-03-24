@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import pick from 'lodash/pick';
-import { createSequentialId } from '@commercetools-uikit/utils';
-import { useFieldId } from '@commercetools-uikit/hooks';
-import { designTokens, ThemeProvider, useTheme } from '../../design-system';
+import { designTokens } from '../../design-system';
+import { LocalThemeProvider } from './local-theme-provider';
 
 const SpecContainer = styled.div`
   display: flex;
@@ -52,22 +51,12 @@ const PropValue = styled.span`
 `;
 
 const Box = (props) => {
-  const { isNewTheme } = useTheme(
-    props.boxId ? () => document.getElementById(props.boxId) : undefined
-  );
   return (
     <div
       css={css`
         background-color: ${props.backgroundColor ?? designTokens.colorSurface};
         margin-bottom: 20px;
-
-        ${isNewTheme &&
-        css`
-          font-family: 'Inter', system-ui;
-          // Updating 'font-size' here won't make difference since we use 'rem' units in components based on 'font-size' set in the <html> element
-        `}
       `}
-      {...(props.boxId ? { id: props.boxId } : {})}
     >
       <p
         css={css`
@@ -80,7 +69,11 @@ const Box = (props) => {
       >
         {`${props.themeName} theme`}
       </p>
-      {props.children}
+      {props.themeName === 'new' ? (
+        <LocalThemeProvider theme="test">{props.children}</LocalThemeProvider>
+      ) : (
+        props.children
+      )}
     </div>
   );
 };
@@ -88,7 +81,6 @@ Box.propTypes = {
   children: PropTypes.node.isRequired,
   backgroundColor: PropTypes.string,
   themeName: PropTypes.string.isRequired,
-  boxId: PropTypes.string,
 };
 
 const Pill = (props) => {
@@ -146,11 +138,7 @@ Props.propTypes = {
   propsToList: PropTypes.arrayOf(PropTypes.string),
 };
 
-const sequentialId = createSequentialId('local-');
-
 const Spec = (props) => {
-  const localId = useFieldId(undefined, sequentialId);
-
   return (
     <SpecContainer>
       <Label>{props.label}</Label>
@@ -168,15 +156,7 @@ const Spec = (props) => {
         </Box>
       ) : null}
       {props.testedThemes.includes('new') ? (
-        <Box
-          themeName="new"
-          boxId={localId}
-          backgroundColor={props.backgroundColor}
-        >
-          <ThemeProvider
-            theme="test"
-            parentSelector={() => document.getElementById(localId)}
-          />
+        <Box themeName="new" backgroundColor={props.backgroundColor}>
           {props.children}
         </Box>
       ) : null}
