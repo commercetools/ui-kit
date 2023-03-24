@@ -80,7 +80,7 @@ const Box = (props) => {
 Box.propTypes = {
   children: PropTypes.node.isRequired,
   backgroundColor: PropTypes.string,
-  themeName: PropTypes.string.isRequired,
+  themeName: PropTypes.string,
 };
 
 const Pill = (props) => {
@@ -175,7 +175,7 @@ Spec.propTypes = {
   propsToList: PropTypes.arrayOf(PropTypes.string),
   omitPropsList: PropTypes.bool,
   backgroundColor: PropTypes.string,
-  testedThemes: PropTypes.arrayOf(PropTypes.string),
+  testedThemes: PropTypes.arrayOf('new', 'old'),
 };
 
 Spec.defaultProps = {
