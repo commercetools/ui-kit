@@ -67,7 +67,7 @@ const Box = (props) => {
           }
         `}
       >
-        {`${props.themeName} theme`}
+        {props.themeName ? `${props.themeName} theme` : null}
       </p>
       {props.themeName === 'new' ? (
         <LocalThemeProvider theme="test">{props.children}</LocalThemeProvider>
@@ -160,6 +160,9 @@ const Spec = (props) => {
           {props.children}
         </Box>
       ) : null}
+      {props.testedThemes.length === 0 ? (
+        <Box backgroundColor={props.backgroundColor}>{props.children}</Box>
+      ) : null}
     </SpecContainer>
   );
 };
@@ -171,7 +174,7 @@ Spec.propTypes = {
   propsToList: PropTypes.arrayOf(PropTypes.string),
   omitPropsList: PropTypes.bool,
   backgroundColor: PropTypes.string,
-  testedThemes: PropTypes.arrayOf(['new', 'old']),
+  testedThemes: PropTypes.arrayOf(PropTypes.string),
 };
 
 Spec.defaultProps = {

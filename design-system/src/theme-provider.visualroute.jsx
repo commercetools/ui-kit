@@ -17,9 +17,7 @@ const parentSelector = (id) => () => document.getElementById(id);
 
 const DummyComponent = (props) => {
   const { theme } = useTheme(
-    props.parentId
-      ? parentSelector(props.parentId)
-      : undefined
+    props.parentId ? parentSelector(props.parentId) : undefined
   );
 
   return (
@@ -48,11 +46,11 @@ DummyComponent.propTypes = {
 
 const DefaultRoute = () => (
   <Suite>
-    <Spec label="use global default theme">
+    <Spec label="use global default theme" testedThemes={[]}>
       <DummyComponent />
     </Spec>
 
-    <Spec label="use local default theme">
+    <Spec label="use local default theme" testedThemes={[]}>
       <LocalThemeProvider
         parentId="local-1"
         parentSelector={parentSelector('local-1')}
@@ -61,7 +59,7 @@ const DefaultRoute = () => (
       </LocalThemeProvider>
     </Spec>
 
-    <Spec label="use local dark theme">
+    <Spec label="use local dark theme" testedThemes={[]}>
       <LocalDarkThemeProvider
         theme="dark"
         parentId="local-2"
@@ -71,7 +69,7 @@ const DefaultRoute = () => (
       </LocalDarkThemeProvider>
     </Spec>
 
-    <Spec label="repeat local default theme">
+    <Spec label="repeat local default theme" testedThemes={[]}>
       <LocalThemeProvider
         parentId="local-3"
         parentSelector={parentSelector('local-3')}
@@ -80,7 +78,7 @@ const DefaultRoute = () => (
       </LocalThemeProvider>
     </Spec>
 
-    <Spec label="repeat local dark theme">
+    <Spec label="repeat local dark theme" testedThemes={[]}>
       <LocalDarkThemeProvider
         theme="dark"
         parentId="local-4"
@@ -90,7 +88,7 @@ const DefaultRoute = () => (
       </LocalDarkThemeProvider>
     </Spec>
 
-    <Spec label="overridden local default theme">
+    <Spec label="overridden local default theme" testedThemes={[]}>
       <LocalThemeProvider
         themeOverrides={{ colorSolid: 'red' }}
         parentId="local-5"
@@ -107,7 +105,7 @@ const DefaultRoute = () => (
       </LocalThemeProvider>
     </Spec>
 
-    <Spec label="custom property added to default theme">
+    <Spec label="custom property added to default theme" testedThemes={[]}>
       <LocalThemeProvider
         themeOverrides={{ customColor: 'tomato' }}
         parentId="local-6"
@@ -140,8 +138,14 @@ TestComponent.propTypes = {
 const localThemeParentSelector = () => document.getElementById('local');
 
 const InteractiveRoute = () => {
-  const [globalTheme, setGlobalTheme] = useState({ name: 'default', overrides: {} });
-  const [localTheme, setLocalTheme] = useState({ name: 'default', overrides: {} });
+  const [globalTheme, setGlobalTheme] = useState({
+    name: 'default',
+    overrides: {},
+  });
+  const [localTheme, setLocalTheme] = useState({
+    name: 'default',
+    overrides: {},
+  });
 
   return (
     <>
@@ -178,7 +182,8 @@ const InteractiveRoute = () => {
         <ThemeProvider
           theme={localTheme.name}
           themeOverrides={localTheme.overrides}
-          parentSelector={localThemeParentSelector} />
+          parentSelector={localThemeParentSelector}
+        />
         <TestComponent text="local" />
       </div>
     </>
