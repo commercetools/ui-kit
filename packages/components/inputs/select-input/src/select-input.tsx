@@ -137,9 +137,9 @@ export type TSelectInputProps = {
    */
   components?: ReactSelectProps['components'];
   /**
-   * Control whether the selected values should bre rendered in the control
+   * Control whether the selected values should be rendered in the control
    */
-  controlShouldRenderValue?: boolean,
+  controlShouldRenderValue?: boolean;
   // delimiter: PropTypes.string,
   // escapeClearsValue: PropTypes.bool,
   /**
