@@ -1,3 +1,1 @@
-import type { TSearchSelectFieldProps as SearchSelectFieldProps } from './search-select-field';
-
-export type TSearchSelectFieldProps = SearchSelectFieldProps;
+export type { TSearchSelectFieldProps } from './search-select-field';

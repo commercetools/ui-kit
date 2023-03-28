@@ -1,3 +1,1 @@
-import type { TTimeFieldProps as TimeFieldProps } from './time-field';
-
-export type TTimeFieldProps = TimeFieldProps;
+export type { TTimeFieldProps } from './time-field';

@@ -1,3 +1,1 @@
-import type { TDateTimeFieldProps as DateTimeFieldProps } from './date-time-field';
-
-export type TDateTimeFieldProps = DateTimeFieldProps;
+export type { TDateTimeFieldProps } from './date-time-field';

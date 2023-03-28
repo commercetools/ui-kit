@@ -1,3 +1,1 @@
-import type { TViewSwitcherProps as ViewSwitcherProps } from './view-switcher';
-
-export type TViewSwitcherProps = ViewSwitcherProps;
+export type { TViewSwitcherProps } from './view-switcher';

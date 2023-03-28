@@ -1,3 +1,1 @@
-import { TLocalizedInputToggleProps as LocalizedInputToggleProps } from './localized-input-toggle';
-
-export type TLocalizedInputToggleProps = LocalizedInputToggleProps;
+export type { TLocalizedInputToggleProps } from './localized-input-toggle';

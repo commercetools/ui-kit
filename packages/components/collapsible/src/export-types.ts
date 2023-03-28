@@ -1,3 +1,1 @@
-import type { TCollapsibleProps as CollapsibleProps } from './collapsible';
-
-export type TCollapsibleProps = CollapsibleProps;
+export type { TCollapsibleProps } from './collapsible';

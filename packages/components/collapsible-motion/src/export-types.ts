@@ -1,9 +1,5 @@
-import type {
-  TCollapsibleMotionProps as CollapsibleMotionProps,
-  TContainerStyles as ContainerStyles,
-  TRenderFunctionOptions as RenderFunctionOptions,
+export type {
+  TCollapsibleMotionProps,
+  TContainerStyles,
+  TRenderFunctionOptions,
 } from './collapsible-motion';
-
-export type TCollapsibleMotionProps = CollapsibleMotionProps;
-export type TContainerStyles = ContainerStyles;
-export type TRenderFunctionOptions = RenderFunctionOptions;

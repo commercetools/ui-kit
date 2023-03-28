@@ -1,3 +1,1 @@
-import type { TDateRangeInputProps as DateRangeInputProps } from './date-range-input';
-
-export type TDateRangeInputProps = DateRangeInputProps;
+export type { TDateRangeInputProps } from './date-range-input';

@@ -1,3 +1,1 @@
-import type { TTimeInputProps as TimeInputProps } from './time-input';
-
-export type TTimeInputProps = TimeInputProps;
+export type { TTimeInputProps } from './time-input';
