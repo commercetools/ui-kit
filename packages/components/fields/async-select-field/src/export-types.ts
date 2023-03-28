@@ -1,3 +1,1 @@
-import type { TAsyncSelectFieldProps as AsyncSelectFieldProps } from './async-select-field';
-
-export type TAsyncSelectFieldProps = AsyncSelectFieldProps;
+export type { TAsyncSelectFieldProps } from './async-select-field';

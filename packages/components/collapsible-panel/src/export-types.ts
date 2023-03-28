@@ -1,3 +1,1 @@
-import type { TCollapsiblePanel as CollapsiblePanel } from './collapsible-panel';
-
-export type TCollapsiblePanel = CollapsiblePanel;
+export type { TCollapsiblePanel } from './collapsible-panel';

@@ -1,3 +1,1 @@
-import type { TSecondaryButtonProps as SecondaryButtonProps } from './secondary-button';
-
-export type TSecondaryButtonProps = SecondaryButtonProps;
+export type { TSecondaryButtonProps } from './secondary-button';

@@ -1,3 +1,1 @@
-import type { TAsyncSelectInputProps as AsyncSelectInputProps } from './async-select-input';
-
-export type TAsyncSelectInputProps = AsyncSelectInputProps;
+export type { TAsyncSelectInputProps } from './async-select-input';

@@ -1,3 +1,1 @@
-import type { TNumberFieldProps as NumberFieldProps } from './number-field';
-
-export type TNumberFieldProps = NumberFieldProps;
+export type { TNumberFieldProps } from './number-field';

@@ -1,3 +1,1 @@
-import type { TLocalizedMoneyInputProps as LocalizedMoneyInputProps } from './localized-money-input';
-
-export type TLocalizedMoneyInputProps = LocalizedMoneyInputProps;
+export type { TLocalizedMoneyInputProps } from './localized-money-input';

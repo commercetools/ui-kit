@@ -1,3 +1,1 @@
-import type { TCardProps as CardProps } from './card';
-
-export type TCardProps = CardProps;
+export type { TCardProps } from './card';

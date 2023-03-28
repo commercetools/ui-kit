@@ -1,3 +1,1 @@
-import type { TTextFieldProps as TextFieldProps } from './text-field';
-
-export type TTextFieldProps = TextFieldProps;
+export type { TTextFieldProps } from './text-field';

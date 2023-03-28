@@ -1,3 +1,1 @@
-import type { TPasswordField as PasswordField } from './password-field';
-
-export type TPasswordField = PasswordField;
+export type { TPasswordField } from './password-field';

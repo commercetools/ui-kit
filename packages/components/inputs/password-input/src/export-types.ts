@@ -1,3 +1,1 @@
-import type { TPasswordInputProps as PasswordInputProps } from './password-input';
-
-export type TPasswordInputProps = PasswordInputProps;
+export type { TPasswordInputProps } from './password-input';

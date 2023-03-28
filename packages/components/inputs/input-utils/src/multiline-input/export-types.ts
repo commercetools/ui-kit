@@ -1,3 +1,1 @@
-import { TMultiLineInputProps as MultiLineInputProps } from './multiline-input';
-
-export type TMultiLineInputProps = MultiLineInputProps;
+export type { TMultiLineInputProps } from './multiline-input';

@@ -1,3 +1,1 @@
-import type { TIconButtonProps as IconButtonProps } from './icon-button';
-
-export type TIconButtonProps = IconButtonProps;
+export type { TIconButtonProps } from './icon-button';
