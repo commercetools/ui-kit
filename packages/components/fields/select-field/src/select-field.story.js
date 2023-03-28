@@ -115,6 +115,10 @@ storiesOf('Components|Fields/SelectFields', module)
               aria-label={text('aria-label', '')}
               aria-labelledby={text('aria-labelledby', '')}
               backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
+              controlShouldRenderValue={boolean(
+                'controlShouldRenderValue',
+                true
+              )}
               containerId={text('containerId', '')}
               id={id || undefined}
               name={name}

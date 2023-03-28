@@ -118,6 +118,10 @@ storiesOf('Components|Inputs/SelectInputs', module)
                 aria-labelledby={text('aria-labelledby', '')}
                 isAutofocussed={boolean('isAutofocussed', false)}
                 backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
+                controlShouldRenderValue={boolean(
+                  'controlShouldRenderValue',
+                  true
+                )}
                 id={text('id', '')}
                 containerId={text('containerId', '')}
                 isClearable={boolean('isClearable', false)}
