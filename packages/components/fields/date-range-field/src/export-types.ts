@@ -1,3 +1,1 @@
-import type { TDateRangeFieldProps as DateRangeFieldProps } from './date-range-field';
-
-export type TDateRangeFieldProps = DateRangeFieldProps;
+export type { TDateRangeFieldProps } from './date-range-field';

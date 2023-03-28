@@ -1,3 +1,1 @@
-import type { TPaginationProps as PaginationProps } from './pagination';
-
-export type TPaginationProps = PaginationProps;
+export type { TPaginationProps } from './pagination';

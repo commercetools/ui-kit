@@ -1,3 +1,1 @@
-import type { TAccessibleButtonProps as AccessibleButtonProps } from './accessible-button';
-
-export type TAccessibleButtonProps = AccessibleButtonProps;
+export type { TAccessibleButtonProps } from './accessible-button';

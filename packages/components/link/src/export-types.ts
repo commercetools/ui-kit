@@ -1,3 +1,1 @@
-import type { TLinkProps as LinkProps } from './link';
-
-export type TLinkProps = LinkProps;
+export type { TLinkProps } from './link';

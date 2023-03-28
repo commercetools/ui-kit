@@ -1,4 +1,1 @@
-import type { TStampProps as StampProps, TTone as Tone } from './stamp';
-
-export type TStampProps = StampProps;
-export type TTone = Tone;
+export type { TStampProps, TTone } from './stamp';

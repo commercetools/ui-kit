@@ -1,3 +1,1 @@
-import type { TCreatableSelectInputProps as CreatableSelectInputProps } from './creatable-select-input';
-
-export type TCreatableSelectInputProps = CreatableSelectInputProps;
+export type { TCreatableSelectInputProps } from './creatable-select-input';

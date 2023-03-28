@@ -1,3 +1,1 @@
-import type { TRadioFieldProps as RadioFieldProps } from './radio-field';
-
-export type TRadioFieldProps = RadioFieldProps;
+export type { TRadioFieldProps } from './radio-field';

@@ -1,3 +1,1 @@
-import type { TTextInputProps as TextInputProps } from './text-input';
-
-export type TTextInputProps = TextInputProps;
+export type { TTextInputProps } from './text-input';

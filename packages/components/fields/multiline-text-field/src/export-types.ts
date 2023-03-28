@@ -1,3 +1,1 @@
-import type { TMultiTextFieldProps as MultiTextFieldProps } from './multiline-text-field';
-
-export type TMultiTextFieldProps = MultiTextFieldProps;
+export type { TMultiTextFieldProps } from './multiline-text-field';

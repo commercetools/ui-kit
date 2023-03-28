@@ -1,3 +1,1 @@
-import type { TToggleInputProps as ToggleInputProps } from './toggle-input';
-
-export type TToggleInputProps = ToggleInputProps;
+export type { TToggleInputProps } from './toggle-input';

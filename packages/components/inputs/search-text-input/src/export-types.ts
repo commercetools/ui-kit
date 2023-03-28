@@ -1,3 +1,1 @@
-import type { TSearchTextInputProps as SearchTextInputProps } from './search-text-input';
-
-export type TSearchTextInputProps = SearchTextInputProps;
+export type { TSearchTextInputProps } from './search-text-input';
