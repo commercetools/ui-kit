@@ -1,5 +1,20 @@
 # @commercetools-uikit/select-input
 
+## 15.14.2
+
+### Patch Changes
+
+- [#2467](https://github.com/commercetools/ui-kit/pull/2467) [`56ce7921d`](https://github.com/commercetools/ui-kit/commit/56ce7921db35ec34ba83f4b65b2c1e777e1b0b54) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Refactored the way we export Typescript definitions as there was an issue with generic types.
+
+- [#2466](https://github.com/commercetools/ui-kit/pull/2466) [`d88b19c1a`](https://github.com/commercetools/ui-kit/commit/d88b19c1a7c30f6973d1672ee67cfa5fdd58c373) Thanks [@ChristianMoll](https://github.com/ChristianMoll)! - Add prop `controlShouldRenderValue` `<SelectField>` and `SelectInput` components to make rendering of values in the control optional
+
+- Updated dependencies [[`56ce7921d`](https://github.com/commercetools/ui-kit/commit/56ce7921db35ec34ba83f4b65b2c1e777e1b0b54)]:
+  - @commercetools-uikit/constraints@15.14.2
+  - @commercetools-uikit/select-utils@15.14.2
+  - @commercetools-uikit/design-system@15.14.2
+  - @commercetools-uikit/icons@15.14.2
+  - @commercetools-uikit/utils@15.14.2
+
 ## 15.14.1
 
 ### Patch Changes
