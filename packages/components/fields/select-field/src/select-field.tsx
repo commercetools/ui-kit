@@ -114,6 +114,12 @@ export type TSelectFieldProps = {
    */
   components?: ReactSelectProps['components'];
   /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectProps['controlShouldRenderValue'];
+  /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
@@ -388,6 +394,7 @@ export default class SelectField extends Component<TSelectFieldProps> {
             iconLeft={this.props.iconLeft}
             inputValue={this.props.inputValue}
             {...filterDataAttributes(this.props)}
+            controlShouldRenderValue={this.props.controlShouldRenderValue}
             /* ARIA */
             aria-invalid={hasError}
             aria-errormessage={sequentialErrorsId}

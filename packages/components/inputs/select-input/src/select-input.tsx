@@ -136,7 +136,12 @@ export type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   components?: ReactSelectProps['components'];
-  // controlShouldRenderValue: PropTypes.bool,
+  /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectProps['controlShouldRenderValue'];
   // delimiter: PropTypes.string,
   // escapeClearsValue: PropTypes.bool,
   /**
@@ -485,6 +490,7 @@ const SelectInput = (props: TSelectInputProps) => {
           tabSelectsValue={props.tabSelectsValue}
           value={selectedOptions}
           iconLeft={props.iconLeft}
+          controlShouldRenderValue={props.controlShouldRenderValue}
         />
       </div>
     </Constraints.Horizontal>
