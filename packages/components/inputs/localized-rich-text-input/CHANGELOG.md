@@ -1,5 +1,28 @@
 # @commercetools-uikit/localized-rich-text-input
 
+## 15.14.2
+
+### Patch Changes
+
+- [#2467](https://github.com/commercetools/ui-kit/pull/2467) [`56ce7921d`](https://github.com/commercetools/ui-kit/commit/56ce7921db35ec34ba83f4b65b2c1e777e1b0b54) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Refactored the way we export Typescript definitions as there was an issue with generic types.
+
+- Updated dependencies [[`56ce7921d`](https://github.com/commercetools/ui-kit/commit/56ce7921db35ec34ba83f4b65b2c1e777e1b0b54)]:
+  - @commercetools-uikit/spacings-inline@15.14.2
+  - @commercetools-uikit/spacings-stack@15.14.2
+  - @commercetools-uikit/flat-button@15.14.2
+  - @commercetools-uikit/collapsible-motion@15.14.2
+  - @commercetools-uikit/input-utils@15.14.2
+  - @commercetools-uikit/constraints@15.14.2
+  - @commercetools-uikit/tooltip@15.14.2
+  - @commercetools-uikit/text@15.14.2
+  - @commercetools-uikit/rich-text-utils@15.14.2
+  - @commercetools-uikit/messages@15.14.2
+  - @commercetools-uikit/design-system@15.14.2
+  - @commercetools-uikit/icons@15.14.2
+  - @commercetools-uikit/hooks@15.14.2
+  - @commercetools-uikit/localized-utils@15.14.2
+  - @commercetools-uikit/utils@15.14.2
+
 ## 15.14.1
 
 ### Patch Changes

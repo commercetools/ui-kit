@@ -1,5 +1,17 @@
 # @commercetools-uikit/password-input
 
+## 15.14.2
+
+### Patch Changes
+
+- [#2467](https://github.com/commercetools/ui-kit/pull/2467) [`56ce7921d`](https://github.com/commercetools/ui-kit/commit/56ce7921db35ec34ba83f4b65b2c1e777e1b0b54) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Refactored the way we export Typescript definitions as there was an issue with generic types.
+
+- Updated dependencies [[`56ce7921d`](https://github.com/commercetools/ui-kit/commit/56ce7921db35ec34ba83f4b65b2c1e777e1b0b54)]:
+  - @commercetools-uikit/input-utils@15.14.2
+  - @commercetools-uikit/constraints@15.14.2
+  - @commercetools-uikit/design-system@15.14.2
+  - @commercetools-uikit/utils@15.14.2
+
 ## 15.14.1
 
 ### Patch Changes
