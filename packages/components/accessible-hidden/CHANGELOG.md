@@ -1,5 +1,7 @@
 # @commercetools-uikit/accessible-hidden
 
+## 15.14.3
+
 ## 15.14.2
 
 ### Patch Changes
