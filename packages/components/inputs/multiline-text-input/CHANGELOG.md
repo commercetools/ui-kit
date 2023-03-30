@@ -1,5 +1,21 @@
 # @commercetools-uikit/multiline-text-input
 
+## 15.14.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.14.3
+  - @commercetools-uikit/flat-button@15.14.3
+  - @commercetools-uikit/constraints@15.14.3
+  - @commercetools-uikit/icons@15.14.3
+  - @commercetools-uikit/input-utils@15.14.3
+  - @commercetools-uikit/spacings-inline@15.14.3
+  - @commercetools-uikit/spacings-stack@15.14.3
+  - @commercetools-uikit/tooltip@15.14.3
+  - @commercetools-uikit/hooks@15.14.3
+  - @commercetools-uikit/utils@15.14.3
+
 ## 15.14.2
 
 ### Patch Changes

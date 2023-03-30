@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/buttons",
   "description": "A preset of all the UI-Kit buttons components.",
-  "version": "15.14.2",
+  "version": "15.14.3",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,14 +21,14 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/accessible-button": "15.14.2",
-    "@commercetools-uikit/design-system": "15.14.2",
-    "@commercetools-uikit/flat-button": "15.14.2",
-    "@commercetools-uikit/icon-button": "15.14.2",
-    "@commercetools-uikit/link-button": "15.14.2",
-    "@commercetools-uikit/primary-button": "15.14.2",
-    "@commercetools-uikit/secondary-button": "15.14.2",
-    "@commercetools-uikit/secondary-icon-button": "15.14.2"
+    "@commercetools-uikit/accessible-button": "15.14.3",
+    "@commercetools-uikit/design-system": "15.14.3",
+    "@commercetools-uikit/flat-button": "15.14.3",
+    "@commercetools-uikit/icon-button": "15.14.3",
+    "@commercetools-uikit/link-button": "15.14.3",
+    "@commercetools-uikit/primary-button": "15.14.3",
+    "@commercetools-uikit/secondary-button": "15.14.3",
+    "@commercetools-uikit/secondary-icon-button": "15.14.3"
   },
   "devDependencies": {
     "react": "17.0.2",
