@@ -7,13 +7,16 @@ import {
   type PlaceholderProps,
 } from 'react-select';
 
+export type TWrapperWithIconSelectProps = {
+  iconLeft?: ReactElement;
+};
 export type TSingleValueWrapperWithIconProps = {
   type: 'singleValue';
-  selectProps?: TSelectProps;
+  selectProps?: TWrapperWithIconSelectProps;
 } & SingleValueProps;
 export type TPlaceholderWrapperWithIconProps = {
   type: 'placeholder';
-  selectProps?: TSelectProps;
+  selectProps?: TWrapperWithIconSelectProps;
 } & PlaceholderProps;
 export type TWrapperWithIconProps<Type extends 'singleValue' | 'placeholder'> =
   Type extends 'singleValue'
@@ -37,10 +40,6 @@ const getDefaultComponent = <Type extends 'singleValue' | 'placeholder'>(
   if (type === 'placeholder')
     return defaultComponents.Placeholder as TDefaultComponent<Type>;
   return null;
-};
-
-type TSelectProps = {
-  iconLeft?: ReactElement;
 };
 
 const WrapperWithIcon = <Type extends 'singleValue' | 'placeholder'>(
