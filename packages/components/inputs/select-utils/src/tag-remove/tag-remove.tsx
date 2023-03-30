@@ -6,12 +6,12 @@ import type { MultiValueGenericProps } from 'react-select';
 // see https://github.com/JedWatson/react-select/blob/44e9fb29b230e49a754a2f0d6f30c2250aa45009/src/components/MultiValue.js
 const removeProps = ['onClick', 'onTouchEnd', 'onMouseDown'];
 
-export type TSelectProps = {
+export type TTagRemoveSelectProps = {
   isReadOnly: boolean;
 } & MultiValueGenericProps['selectProps'];
 
 export type TTagRemoveProps = {
-  selectProps: TSelectProps;
+  selectProps: TTagRemoveSelectProps;
 } & MultiValueGenericProps;
 
 const TagRemove = (props: TTagRemoveProps) => {
