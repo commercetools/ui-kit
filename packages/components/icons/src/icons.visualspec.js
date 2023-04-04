@@ -20,7 +20,7 @@ describe('Icons', () => {
     colors.map((color) =>
       it(`Color ${color}`, async () => {
         await page.goto(`${globalThis.HOST}/icons/${color}`);
-        await expect(page).toMatch(color);
+        await page.waitForSelector(`text/${color}`);
         await snapshot(page, `Icons - Color: ${color}`);
       })
     );
