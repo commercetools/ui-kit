@@ -3110,13 +3110,13 @@ __metadata:
     moment: 2.29.4
     moment-timezone: 0.5.43
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
     moment: 2.x
     moment-timezone: 0.5.x
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
   linkType: soft
@@ -3234,7 +3234,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3261,12 +3261,12 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-select: 5.7.2
   peerDependencies:
     react: 17.x
     react-dom: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3287,7 +3287,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3313,12 +3313,12 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-select: 5.7.2
   peerDependencies:
     react: 17.x
     react-dom: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3354,11 +3354,11 @@ __metadata:
     "@commercetools-uikit/secondary-button": 15.15.1
     "@commercetools-uikit/secondary-icon-button": 15.15.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
   linkType: soft
@@ -3397,12 +3397,12 @@ __metadata:
     moment: 2.29.4
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-select: 5.7.2
   peerDependencies:
     moment: 2.x
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3439,7 +3439,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3483,7 +3483,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3541,7 +3541,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3566,12 +3566,12 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-select: 5.7.2
   peerDependencies:
     react: 17.x
     react-dom: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3611,11 +3611,11 @@ __metadata:
     react: 17.0.2
     react-beautiful-dnd: 13.1.1
     react-dom: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
     react-dom: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3638,7 +3638,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3661,7 +3661,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3692,13 +3692,13 @@ __metadata:
     moment: 2.29.4
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-is: 17.0.2
     warning: 4.0.3
   peerDependencies:
     moment: 2.x
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3719,7 +3719,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3750,13 +3750,13 @@ __metadata:
     moment: 2.29.4
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-is: 17.0.2
     warning: 4.0.3
   peerDependencies:
     moment: 2.x
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3777,7 +3777,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3808,13 +3808,13 @@ __metadata:
     moment: 2.29.4
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-is: 17.0.2
     warning: 4.0.3
   peerDependencies:
     moment: 2.x
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3844,10 +3844,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -3870,7 +3870,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3900,11 +3900,11 @@ __metadata:
     "@commercetools-uikit/text-field": 15.15.1
     "@commercetools-uikit/time-field": 15.15.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
   linkType: soft
@@ -3925,7 +3925,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -3988,7 +3988,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4027,11 +4027,11 @@ __metadata:
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-textarea-autosize: 8.4.0
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4066,11 +4066,11 @@ __metadata:
     "@commercetools-uikit/time-input": 15.15.1
     "@commercetools-uikit/toggle-input": 15.15.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
   linkType: soft
@@ -4088,10 +4088,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4111,11 +4111,11 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
   linkType: soft
@@ -4137,11 +4137,11 @@ __metadata:
     history: 4.10.1
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
   linkType: soft
@@ -4159,7 +4159,7 @@ __metadata:
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4188,12 +4188,12 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-select: 5.7.2
   peerDependencies:
     react: 17.x
     react-dom: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4214,7 +4214,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4242,13 +4242,13 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-select: 5.7.2
     react-textarea-autosize: 8.4.0
   peerDependencies:
     react: 17.x
     react-dom: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4281,14 +4281,14 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-textarea-autosize: 8.4.0
     slate: 0.75.0
     slate-history: 0.93.0
     slate-react: 0.75.0
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4309,7 +4309,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4337,10 +4337,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4367,7 +4367,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4391,7 +4391,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4417,12 +4417,12 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-select: 5.7.2
   peerDependencies:
     react: 17.x
     react-dom: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4443,7 +4443,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4470,11 +4470,11 @@ __metadata:
     downshift: 6.1.12
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-textarea-autosize: 8.4.0
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4490,10 +4490,10 @@ __metadata:
     "@emotion/react": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4514,7 +4514,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4561,10 +4561,10 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4589,10 +4589,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4633,7 +4633,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4655,7 +4655,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4678,7 +4678,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4734,13 +4734,13 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     slate: 0.75.0
     slate-history: 0.93.0
     slate-react: 0.75.0
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4765,7 +4765,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     slate: 0.75.0
     slate-history: 0.93.0
     slate-hyperscript: 0.77.0
@@ -4773,7 +4773,7 @@ __metadata:
     style-to-object: 0.4.1
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4795,7 +4795,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4818,11 +4818,11 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
     react-dom: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4863,11 +4863,11 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
     react-router-dom: 5.x
   languageName: unknown
   linkType: soft
@@ -4888,7 +4888,7 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4911,7 +4911,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -4934,11 +4934,11 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-select: 5.7.2
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4959,11 +4959,11 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-select: 5.7.2
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -4986,11 +4986,11 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-select: 5.7.2
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -5109,7 +5109,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-router-dom: 5.3.4
   peerDependencies:
     react: 17.x
@@ -5134,7 +5134,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -5171,11 +5171,11 @@ __metadata:
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     warning: 4.0.3
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -5196,7 +5196,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -5221,10 +5221,10 @@ __metadata:
     "@emotion/styled": ^11.10.5
     prop-types: 15.8.1
     react: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
   peerDependencies:
     react: 17.x
-    react-intl: 5.x
+    react-intl: 6.x
   languageName: unknown
   linkType: soft
 
@@ -5883,9 +5883,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/cli@npm:5.1.13":
-  version: 5.1.13
-  resolution: "@formatjs/cli@npm:5.1.13"
+"@formatjs/cli@npm:6.0.4":
+  version: 6.0.4
+  resolution: "@formatjs/cli@npm:6.0.4"
   peerDependencies:
     "@vue/compiler-sfc": ^3.2.34
   peerDependenciesMeta:
@@ -5893,87 +5893,69 @@ __metadata:
       optional: true
   bin:
     formatjs: bin/formatjs
-  checksum: 790712c6d6479c7c039beb845ffa0acf402a0550464c5cd8c75bac8335002165d4ae8c4d6630e0fa23215aa29df62689f055d21c420aaf5a320ad1146fd120c7
+  checksum: 2a13d9fe5a6fc70ddd7e667e64f727eeebf554ec20b25cdfc3354c7f02cc938410ebfaf59fd492e5c2af7acc3542d8861c0095e96a0a920d6b5608162876ceeb
   languageName: node
   linkType: hard
 
-"@formatjs/ecma402-abstract@npm:^1.11.8":
-  version: 1.12.0
-  resolution: "@formatjs/ecma402-abstract@npm:1.12.0"
+"@formatjs/ecma402-abstract@npm:1.14.3":
+  version: 1.14.3
+  resolution: "@formatjs/ecma402-abstract@npm:1.14.3"
   dependencies:
-    "@formatjs/intl-localematcher": 0.2.31
-    tslib: 2.4.0
-  checksum: 29dc157d669f4fe267b850d06ae2c5a9b666a2b859ba1c99a8228bb10e9b2d7cbc19fdf0e247efed6f5100fd33333cecfb0e86315b52fad639cb137aef44b367
+    "@formatjs/intl-localematcher": 0.2.32
+    tslib: ^2.4.0
+  checksum: 504ae9775094adec611aa0bbc6dadec2360ba30c13331f376feacd75b23f856ac1e45e3c88a572fb91ff917e726d0cc7e6e1b6c5b73af48f53896592362c91d5
   languageName: node
   linkType: hard
 
-"@formatjs/fast-memoize@npm:1.2.1":
-  version: 1.2.1
-  resolution: "@formatjs/fast-memoize@npm:1.2.1"
+"@formatjs/fast-memoize@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@formatjs/fast-memoize@npm:2.0.1"
   dependencies:
-    tslib: ^2.1.0
-  checksum: 7df9e941142be16e5862afe7387926cec44ec136d2c2f9a7e1598cb6c8c23a65e420ed90251ec9b48df083f5473b10d6fbbee2e9fc7233d5bf1f27efffba59a7
+    tslib: ^2.4.0
+  checksum: e434cdc53354666459c47556c403f0ed3391ebab0e851a64e5622d8d81e3b684a74a09c4bf5189885c66e743004601f64e2e2c8c70adf6b00071d4afea20f69d
   languageName: node
   linkType: hard
 
-"@formatjs/icu-messageformat-parser@npm:2.1.0":
-  version: 2.1.0
-  resolution: "@formatjs/icu-messageformat-parser@npm:2.1.0"
+"@formatjs/icu-messageformat-parser@npm:2.3.0":
+  version: 2.3.0
+  resolution: "@formatjs/icu-messageformat-parser@npm:2.3.0"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.4
-    "@formatjs/icu-skeleton-parser": 1.3.6
-    tslib: ^2.1.0
-  checksum: 8dab4d102b334dd7ab25b85817b074f1b54845d02f9ef9fa5a1fa6a9723176ad28a59d845fdc0eeedb868b891e61a4c530384b123db29f5b14e1f3f8b207373f
+    "@formatjs/ecma402-abstract": 1.14.3
+    "@formatjs/icu-skeleton-parser": 1.3.18
+    tslib: ^2.4.0
+  checksum: e8aca733bed81c94ec16fa9f1a88dbaf93a644a8c5796a6ab1e795112dd1f6c1e92528a123483d3034ac5e6b2b454481ef61f7e56e6e77f1467f9524be7fe331
   languageName: node
   linkType: hard
 
-"@formatjs/icu-skeleton-parser@npm:1.3.6":
-  version: 1.3.6
-  resolution: "@formatjs/icu-skeleton-parser@npm:1.3.6"
+"@formatjs/icu-skeleton-parser@npm:1.3.18":
+  version: 1.3.18
+  resolution: "@formatjs/icu-skeleton-parser@npm:1.3.18"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.4
-    tslib: ^2.1.0
-  checksum: cce2d8bea54f0096c557dc03920bfe4785893e60962313fab9eeee41f0b411d38b9d45852882b19f261417d730362c8685bea6ba5ac1e2dee141f030cda624e9
+    "@formatjs/ecma402-abstract": 1.14.3
+    tslib: ^2.4.0
+  checksum: 19655c452ed3c45db07b03c90fbfe6172655b0babb9579f2d9397ca2b3c56e5e17a3beed1d13af12104313e6ed1f14976d7c996756f1a59c977d6f3228518fad
   languageName: node
   linkType: hard
 
-"@formatjs/intl-displaynames@npm:5.4.3":
-  version: 5.4.3
-  resolution: "@formatjs/intl-displaynames@npm:5.4.3"
+"@formatjs/intl-displaynames@npm:6.2.6":
+  version: 6.2.6
+  resolution: "@formatjs/intl-displaynames@npm:6.2.6"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.4
-    "@formatjs/intl-localematcher": 0.2.25
-    tslib: ^2.1.0
-  checksum: 5d9444ce6b0f906fb95e657e276f341c6eb96d76411182f35a05388fa8da8d5af0ede3641c8316f9d08aeedae6fcc152ccc34f3bff67b1f20295472bbaa6626b
+    "@formatjs/ecma402-abstract": 1.14.3
+    "@formatjs/intl-localematcher": 0.2.32
+    tslib: ^2.4.0
+  checksum: 31a293e2d8809a42b2511a6d32d0bdf3bcbb32a0ef1c16000cf39437d480f307f17515ee521d8d8d9742926535130c16e0b898fe2dfc09ef3d11557edf73b88a
   languageName: node
   linkType: hard
 
-"@formatjs/intl-listformat@npm:6.5.3":
-  version: 6.5.3
-  resolution: "@formatjs/intl-listformat@npm:6.5.3"
+"@formatjs/intl-listformat@npm:7.1.9":
+  version: 7.1.9
+  resolution: "@formatjs/intl-listformat@npm:7.1.9"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.4
-    "@formatjs/intl-localematcher": 0.2.25
-    tslib: ^2.1.0
-  checksum: e641b7f82eb2a9ea8fdfc66783356e4c438c6fdd23fb64e05d2712d0bf06c18fc54ac80f46fadd158c4f3920d2d970bc3ecb4718d30df7abaf5b1de8f6b55f17
-  languageName: node
-  linkType: hard
-
-"@formatjs/intl-localematcher@npm:0.2.25":
-  version: 0.2.25
-  resolution: "@formatjs/intl-localematcher@npm:0.2.25"
-  dependencies:
-    tslib: ^2.1.0
-  checksum: ee00ddc23317dc47a58831aaca5112e101d8bb1f38adc0ecfe1a9d7e008d0bb1091519f07e1d7d805b0c1e28f2c3e75f697ae479e22423445814412c7669284c
-  languageName: node
-  linkType: hard
-
-"@formatjs/intl-localematcher@npm:0.2.31":
-  version: 0.2.31
-  resolution: "@formatjs/intl-localematcher@npm:0.2.31"
-  dependencies:
-    tslib: 2.4.0
-  checksum: c05bf5854f04ad0cc5ad78436023805c9542d97cdf000c685793e2053b84b585be3603b370e27921a617bbb87ef021239d773bc5326ab99850786c73d46a5156
+    "@formatjs/ecma402-abstract": 1.14.3
+    "@formatjs/intl-localematcher": 0.2.32
+    tslib: ^2.4.0
+  checksum: 0479a76bd51871c5688c2bdfb3c54eb10bfb25884318c7dad372e8a9662552e14b4b6ebe31b933e7dcdced09fdaff35e0b6cfc3b13fcf2d6a6d1817a12736450
   languageName: node
   linkType: hard
 
@@ -5997,23 +5979,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl@npm:2.2.1":
-  version: 2.2.1
-  resolution: "@formatjs/intl@npm:2.2.1"
+"@formatjs/intl@npm:2.6.9":
+  version: 2.6.9
+  resolution: "@formatjs/intl@npm:2.6.9"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.4
-    "@formatjs/fast-memoize": 1.2.1
-    "@formatjs/icu-messageformat-parser": 2.1.0
-    "@formatjs/intl-displaynames": 5.4.3
-    "@formatjs/intl-listformat": 6.5.3
-    intl-messageformat: 9.13.0
-    tslib: ^2.1.0
+    "@formatjs/ecma402-abstract": 1.14.3
+    "@formatjs/fast-memoize": 2.0.1
+    "@formatjs/icu-messageformat-parser": 2.3.0
+    "@formatjs/intl-displaynames": 6.2.6
+    "@formatjs/intl-listformat": 7.1.9
+    intl-messageformat: 10.3.3
+    tslib: ^2.4.0
   peerDependencies:
-    typescript: ^4.5
+    typescript: ^4.7
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 35411545e2975b641faede0d58d1afe0f44b90cac6fa37b0d025366c91378dafde6a7ac35a1cc02d0e11c90cb2e57e3b2f6d50044b8f00092bc6d0ef197d4d49
+  checksum: 66243ef05c6bdb5f5d9005e831e946ae1052fc3e49a58642fac36f8bd12757e371a17820530268ffe9805152739b4540c8be6b16277711e050886ac65eb623b0
   languageName: node
   linkType: hard
 
@@ -13690,15 +13672,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"intl-messageformat@npm:9.13.0":
-  version: 9.13.0
-  resolution: "intl-messageformat@npm:9.13.0"
+"intl-messageformat@npm:10.3.3":
+  version: 10.3.3
+  resolution: "intl-messageformat@npm:10.3.3"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.4
-    "@formatjs/fast-memoize": 1.2.1
-    "@formatjs/icu-messageformat-parser": 2.1.0
-    tslib: ^2.1.0
-  checksum: effb840ae6e213adceab9951dbb2d18d1a354c82e35dbd213011daf23bcc79e2a18b6ef79157ae3b69c1e6d898fe66b54dd184ac180ee0646e26a70276e60038
+    "@formatjs/ecma402-abstract": 1.14.3
+    "@formatjs/fast-memoize": 2.0.1
+    "@formatjs/icu-messageformat-parser": 2.3.0
+    tslib: ^2.4.0
+  checksum: 05baee05d31b911dc4bb1774ddf0799dc136723203461f73fecb185e2e2d18b148311db7ef14294d664a6212311c5d9116c3e850cf609dd6348e347f3d07e660
   languageName: node
   linkType: hard
 
@@ -18090,27 +18072,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-intl@npm:^5.25.1":
-  version: 5.25.1
-  resolution: "react-intl@npm:5.25.1"
+"react-intl@npm:^6.3.2":
+  version: 6.3.2
+  resolution: "react-intl@npm:6.3.2"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.11.4
-    "@formatjs/icu-messageformat-parser": 2.1.0
-    "@formatjs/intl": 2.2.1
-    "@formatjs/intl-displaynames": 5.4.3
-    "@formatjs/intl-listformat": 6.5.3
+    "@formatjs/ecma402-abstract": 1.14.3
+    "@formatjs/icu-messageformat-parser": 2.3.0
+    "@formatjs/intl": 2.6.9
+    "@formatjs/intl-displaynames": 6.2.6
+    "@formatjs/intl-listformat": 7.1.9
     "@types/hoist-non-react-statics": ^3.3.1
     "@types/react": 16 || 17 || 18
     hoist-non-react-statics: ^3.3.2
-    intl-messageformat: 9.13.0
-    tslib: ^2.1.0
+    intl-messageformat: 10.3.3
+    tslib: ^2.4.0
   peerDependencies:
-    react: ^16.3.0 || 17 || 18
-    typescript: ^4.5
+    react: ^16.6.0 || 17 || 18
+    typescript: ^4.7
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 93876910a68ee13937c405d0a25b5b1ae9c262290fc8aeedc8457b2d63a3b2dff6a86a9d01f1c3e0b1e49e23df37225d84e404ef7ab406ee2e6717fc23f54653
+  checksum: 0b1ee1170ac800da8396b1f7d59111db3b2c1eb6db0c071b02fc15c0c81b19641badfab0060db39faf3ed1d02f932b8976b39d371d61eb8322e38127b2dc7e00
   languageName: node
   linkType: hard
 
@@ -20462,13 +20444,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.4.0, tslib@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "tslib@npm:2.4.0"
-  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
-  languageName: node
-  linkType: hard
-
 "tslib@npm:^1.10.0, tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
@@ -20480,6 +20455,13 @@ __metadata:
   version: 2.3.1
   resolution: "tslib@npm:2.3.1"
   checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "tslib@npm:2.4.0"
+  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
   languageName: node
   linkType: hard
 
@@ -20661,7 +20643,7 @@ __metadata:
     "@commercetools/github-labels": 1.1.0
     "@commitlint/cli": 17.6.1
     "@commitlint/config-conventional": 17.6.1
-    "@formatjs/cli": 5.1.13
+    "@formatjs/cli": 6.0.4
     "@formatjs/intl-relativetimeformat": 11.2.1
     "@manypkg/cli": 0.20.0
     "@manypkg/get-packages": 1.1.3
@@ -20720,7 +20702,7 @@ __metadata:
     rcfile: 1.0.3
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-router-dom: 5.3.4
     react-test-renderer: 17.0.2
     react-value: 0.2.0
@@ -21258,7 +21240,7 @@ __metadata:
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    react-intl: ^5.25.1
+    react-intl: ^6.3.2
     react-router: 5.3.4
     react-router-dom: 5.3.4
     vite: 3.2.6
