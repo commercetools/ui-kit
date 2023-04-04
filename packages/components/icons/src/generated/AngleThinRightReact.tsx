@@ -115,16 +115,16 @@ export const getIconStyles = (props: Props) => css`
 `;
 const SvgAngleThinRight = (props: SVGProps) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
     role="img"
     {...props}
   >
     <path
-      d="M7.39 3c.118 0 .196.038.274.15l8.633 8.25a.353.353 0 0 1 0 .525l-8.633 8.288a.389.389 0 0 1-.547 0 .353.353 0 0 1 0-.525l8.36-8.025-8.36-7.988a.353.353 0 0 1 0-.525.342.342 0 0 1 .274-.15Z"
       fillRule="evenodd"
+      d="M7.39 3c.118 0 .196.038.274.15l8.633 8.25a.353.353 0 0 1 0 .525l-8.633 8.288a.389.389 0 0 1-.547 0 .353.353 0 0 1 0-.525l8.36-8.025-8.36-7.988a.353.353 0 0 1 0-.525.342.342 0 0 1 .274-.15Z"
     />
   </svg>
 );

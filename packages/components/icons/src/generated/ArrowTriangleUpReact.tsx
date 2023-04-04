@@ -115,14 +115,14 @@ export const getIconStyles = (props: Props) => css`
 `;
 const SvgArrowTriangleUp = (props: SVGProps) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
     role="img"
     {...props}
   >
-    <path d="m12 4 9 15H3" fillRule="evenodd" />
+    <path fillRule="evenodd" d="m12 4 9 15H3" />
   </svg>
 );
 SvgArrowTriangleUp.displayName = 'SvgArrowTriangleUp';

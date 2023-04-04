@@ -115,17 +115,17 @@ export const getIconStyles = (props: Props) => css`
 `;
 const SvgItalic = (props: SVGProps) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
     role="img"
     {...props}
   >
     <path
-      d="M9 20.99 12.827 3h2.067l-3.827 17.99z"
       fill="#1A1A1A"
       fillRule="evenodd"
+      d="M9 20.99 12.827 3h2.067l-3.827 17.99z"
     />
   </svg>
 );

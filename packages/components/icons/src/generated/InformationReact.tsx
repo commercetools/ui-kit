@@ -115,16 +115,16 @@ export const getIconStyles = (props: Props) => css`
 `;
 const SvgInformation = (props: SVGProps) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
     role="img"
     {...props}
   >
     <path
-      d="M11.856 4.773a1.932 1.932 0 1 1 0 3.863 1.932 1.932 0 0 1 0-3.863Zm3.112 14.81H9.173a.966.966 0 1 1 0-1.932h.966v-5.795h-.966a.966.966 0 1 1 0-1.932h3.864c.533 0 .966.433.966.966v6.761h.965a.966.966 0 0 1 0 1.932Z"
       fillRule="evenodd"
+      d="M11.856 4.773a1.932 1.932 0 1 1 0 3.863 1.932 1.932 0 0 1 0-3.863Zm3.112 14.81H9.173a.966.966 0 1 1 0-1.932h.966v-5.795h-.966a.966.966 0 1 1 0-1.932h3.864c.533 0 .966.433.966.966v6.761h.965a.966.966 0 0 1 0 1.932Z"
     />
   </svg>
 );
