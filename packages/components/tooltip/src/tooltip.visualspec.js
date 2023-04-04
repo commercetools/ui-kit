@@ -6,7 +6,7 @@ describe('Tooltip', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Closed');
+    await page.waitForSelector('text/Closed');
     await percySnapshot(page, 'Tooltip');
   });
 });

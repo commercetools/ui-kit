@@ -6,7 +6,7 @@ describe('Pagination', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('');
+    await page.waitForSelector('text/');
     await percySnapshot(page, 'Pagination');
   });
 });

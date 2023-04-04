@@ -6,7 +6,7 @@ describe('CreatableSelectField', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('State');
+    await page.waitForSelector('text/State');
     await percySnapshot(page, 'CreatableSelectField');
   });
 });

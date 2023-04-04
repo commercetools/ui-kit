@@ -27,7 +27,7 @@ describe('Icons', () => {
   });
   it('Inline SVG', async () => {
     await page.goto(`${globalThis.HOST}/icons/inline-svg`);
-    await expect(page).toMatch('Inline SVG');
+    await page.waitForSelector('text/Inline SVG');
     await percySnapshot(page, `Icons - Inline SVG`);
   });
 });

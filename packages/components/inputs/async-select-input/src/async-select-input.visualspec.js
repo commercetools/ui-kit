@@ -4,7 +4,7 @@ import { getDocument, queries } from 'pptr-testing-library';
 describe('AsyncSelectInput', () => {
   it('Default', async () => {
     await page.goto(`${globalThis.HOST}/async-select-input`);
-    await expect(page).toMatch('minimal');
+    await page.waitForSelector('text/minimal');
     await percySnapshot(page, 'AsyncSelectInput');
   });
 

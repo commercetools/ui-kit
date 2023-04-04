@@ -6,7 +6,7 @@ describe('SearchTextInput', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('hello world how are you');
+    await page.waitForSelector('text/hello world how are you');
     await percySnapshot(page, 'SearchTextInput');
   });
 });

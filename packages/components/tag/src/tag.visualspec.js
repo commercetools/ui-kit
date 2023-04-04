@@ -6,7 +6,7 @@ describe('Tag', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Normal');
+    await page.waitForSelector('text/Normal');
     await percySnapshot(page, 'Tag');
   });
 });

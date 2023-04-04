@@ -6,7 +6,7 @@ describe('FlatButton', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('A label text');
+    await page.waitForSelector('text/A label text');
     await percySnapshot(page, 'FlatButton');
   });
 });

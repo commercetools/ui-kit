@@ -6,7 +6,7 @@ describe('DateField', () => {
   });
 
   it('DateField', async () => {
-    await expect(page).toMatch('Release Date');
+    await page.waitForSelector('text/Release Date');
     await percySnapshot(page, 'DateField');
   });
 });

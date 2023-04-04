@@ -47,7 +47,7 @@ describe('RichTextInput', () => {
 
   it('Default', async () => {
     await page.goto(`${globalThis.HOST}/rich-text-input`);
-    await expect(page).toMatch('minimal');
+    await page.waitForSelector('text/minimal');
     // TODO: uncomment when issue with Percy is resolved
     // await percySnapshot(page, 'RichTextInput');
   });

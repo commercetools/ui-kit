@@ -6,7 +6,7 @@ describe('CheckboxInput', () => {
   });
 
   it('CheckboxInput', async () => {
-    await expect(page).toMatch('when default');
+    await page.waitForSelector('text/when default');
     await percySnapshot(page, 'Checkbox');
   });
 });

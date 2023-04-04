@@ -6,7 +6,7 @@ describe('Spacings', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Inset');
+    await page.waitForSelector('text/Inset');
     await percySnapshot(page, 'Spacings');
   });
 });
