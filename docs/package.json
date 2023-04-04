@@ -44,6 +44,10 @@
   "peerDependencies": {
     "prismjs": "1.29.0"
   },
+  "resolutions": {
+    "@types/react": "17.0.53",
+    "@types/react-dom": "17.0.19"
+  },
   "engines": {
     "node": ">=16 <17"
   }

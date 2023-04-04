@@ -320,7 +320,7 @@ const Tooltip = (props: TTooltipProps) => {
             // ref accepts `LegacyRef`, which is a union of `RefObject` and `string`
             // propper.ref returns `RefObject`
             ref={popper.ref as LegacyRef<HTMLDivElement>}
-            css={{
+            style={{
               ...popper.styles,
               ...getBodyStyles({
                 constraint: props.horizontalConstraint,
