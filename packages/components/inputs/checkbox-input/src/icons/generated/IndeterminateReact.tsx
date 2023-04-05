@@ -115,15 +115,15 @@ export const getIconStyles = (props: Props) => css`
 `;
 const SvgIndeterminate = (props: SVGProps) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={12}
     height={2}
-    viewBox="0 0 12 2"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 12 2"
     role="img"
     {...props}
   >
-    <path stroke="#000" strokeWidth={2} strokeLinecap="round" d="M11 1H1" />
+    <path stroke="#000" strokeLinecap="round" strokeWidth={2} d="M11 1H1" />
   </svg>
 );
 SvgIndeterminate.displayName = 'SvgIndeterminate';

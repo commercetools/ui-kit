@@ -115,16 +115,16 @@ export const getIconStyles = (props: Props) => css`
 `;
 const SvgArrowLeft = (props: SVGProps) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
     role="img"
     {...props}
   >
     <path
-      d="M9.44 18.475V13.771h10.129c.79 0 1.431-.66 1.431-1.473 0-.814-.64-1.474-1.431-1.474H9.439V6L3 12.298l6.44 6.177Z"
       fillRule="evenodd"
+      d="M9.44 18.475V13.771h10.129c.79 0 1.431-.66 1.431-1.473 0-.814-.64-1.474-1.431-1.474H9.439V6L3 12.298l6.44 6.177Z"
     />
   </svg>
 );

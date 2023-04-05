@@ -115,14 +115,14 @@ export const getIconStyles = (props: Props) => css`
 `;
 const SvgArrowTriangleDown = (props: SVGProps) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={24}
     height={24}
     viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
     role="img"
     {...props}
   >
-    <path d="M12 20 3 5h18" fillRule="evenodd" />
+    <path fillRule="evenodd" d="M12 20 3 5h18" />
   </svg>
 );
 SvgArrowTriangleDown.displayName = 'SvgArrowTriangleDown';

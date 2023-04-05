@@ -115,25 +115,25 @@ export const getIconStyles = (props: Props) => css`
 `;
 const SvgChecked = (props: SVGProps) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width={12}
     height={9}
-    viewBox="0 0 12 9"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 12 9"
     role="img"
     {...props}
   >
     <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M.293 4.293a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414Z"
       fill="#000"
+      fillRule="evenodd"
+      d="M.293 4.293a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414Z"
+      clipRule="evenodd"
     />
     <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M11.707.293a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414l7-7a1 1 0 0 1 1.414 0Z"
       fill="#000"
+      fillRule="evenodd"
+      d="M11.707.293a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414l7-7a1 1 0 0 1 1.414 0Z"
+      clipRule="evenodd"
     />
   </svg>
 );
