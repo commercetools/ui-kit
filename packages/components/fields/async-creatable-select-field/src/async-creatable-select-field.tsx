@@ -187,6 +187,8 @@ export type TAsyncCreatableSelectFieldProps = {
   menuPortalTarget?: ReactSelectAsyncCreatableProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
