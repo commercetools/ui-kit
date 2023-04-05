@@ -20,14 +20,14 @@ describe('Icons', () => {
     colors.map((color) =>
       it(`Color ${color}`, async () => {
         await page.goto(`${globalThis.HOST}/icons/${color}`);
-        await expect(page).toMatch(color);
+        await page.waitForSelector(`text/${color}`);
         await snapshot(page, `Icons - Color: ${color}`);
       })
     );
   });
   it('Inline SVG', async () => {
     await page.goto(`${globalThis.HOST}/icons/inline-svg`);
-    await expect(page).toMatch('Inline SVG');
+    await page.waitForSelector('text/Inline SVG');
     await percySnapshot(page, `Icons - Inline SVG`);
   });
 });

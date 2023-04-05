@@ -6,7 +6,7 @@ describe('MultilineTextField', () => {
   });
 
   it('MultilineTextField', async () => {
-    await expect(page).toMatch('Welcome Text');
+    await page.waitForSelector('text/Welcome Text');
     await percySnapshot(page, 'MultilineTextField');
   });
 });

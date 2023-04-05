@@ -6,7 +6,7 @@ describe('Avatar', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('when gravatar hash is known');
+    await page.waitForSelector('text/when gravatar hash is known');
     await percySnapshot(page, 'Avatar');
   });
 });

@@ -6,7 +6,7 @@ describe('NumberField', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Age');
+    await page.waitForSelector('text/Age');
     await percySnapshot(page, 'NumberField');
   });
 });

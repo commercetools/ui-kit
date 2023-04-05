@@ -6,7 +6,7 @@ describe('Text', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Headline - h1');
+    await page.waitForSelector('text/Headline - h1');
     await percySnapshot(page, 'Text');
   });
 });

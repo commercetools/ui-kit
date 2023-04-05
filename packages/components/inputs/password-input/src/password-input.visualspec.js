@@ -6,7 +6,7 @@ describe('PasswordInput', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('minimal');
+    await page.waitForSelector('text/minimal');
     await percySnapshot(page, 'PasswordInput');
   });
 });

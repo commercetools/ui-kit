@@ -6,7 +6,7 @@ describe('CollapsiblePanel', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('condensed');
+    await page.waitForSelector('text/condensed');
     await percySnapshot(page, 'CollapsiblePanel');
   });
 });

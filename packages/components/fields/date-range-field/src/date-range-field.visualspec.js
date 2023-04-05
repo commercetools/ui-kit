@@ -6,7 +6,7 @@ describe('DateRangeField', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Discounted days');
+    await page.waitForSelector('text/Discounted days');
     await percySnapshot(page, 'DateRangeField');
   });
 });

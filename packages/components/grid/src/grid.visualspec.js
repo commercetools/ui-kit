@@ -6,7 +6,7 @@ describe('Grid', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('1');
+    await page.waitForSelector('text/1');
     await percySnapshot(page, 'Grid');
   });
 });

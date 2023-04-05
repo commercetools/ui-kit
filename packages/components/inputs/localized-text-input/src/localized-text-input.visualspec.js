@@ -6,7 +6,7 @@ describe('LocalizedTextInput', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('hello world');
+    await page.waitForSelector('text/hello world');
     await percySnapshot(page, 'LocalizedTextInput');
   });
 });

@@ -6,7 +6,7 @@ describe('Constraints.Horizontal', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('when max is 1');
+    await page.waitForSelector('text/when max is 1');
     await percySnapshot(page, 'Constraints.Horizontal');
   });
 });

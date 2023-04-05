@@ -6,7 +6,7 @@ describe('DataTable', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('default');
+    await page.waitForSelector('text/default');
     await percySnapshot(page, 'DataTable');
   });
 });

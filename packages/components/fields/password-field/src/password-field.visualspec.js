@@ -6,7 +6,7 @@ describe('PasswordField', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Welcome Text');
+    await page.waitForSelector('text/Welcome Text');
     await percySnapshot(page, 'PasswordField');
   });
 });

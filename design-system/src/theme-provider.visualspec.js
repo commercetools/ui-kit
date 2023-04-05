@@ -4,7 +4,7 @@ import { getDocument, queries } from 'pptr-testing-library';
 describe('ThemeProvider', () => {
   it('Default', async () => {
     await page.goto(`${globalThis.HOST}/theme-provider`);
-    await expect(page).toMatch('use global default theme');
+    await page.waitForSelector('text/use global default theme');
     await percySnapshot(page, 'ThemeProvider');
   });
 });
