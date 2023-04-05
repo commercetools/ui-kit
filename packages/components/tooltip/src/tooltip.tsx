@@ -15,6 +15,7 @@ import {
 import { isValidElementType } from 'react-is';
 import isNil from 'lodash/isNil';
 import usePopper from 'use-popper';
+import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { createSequentialId, warning } from '@commercetools-uikit/utils';
 import { Wrapper, Body, getBodyStyles } from './tooltip.styles';
@@ -320,14 +321,14 @@ const Tooltip = (props: TTooltipProps) => {
             // ref accepts `LegacyRef`, which is a union of `RefObject` and `string`
             // propper.ref returns `RefObject`
             ref={popper.ref as LegacyRef<HTMLDivElement>}
-            css={{
+            css={css({
               ...popper.styles,
               ...getBodyStyles({
                 constraint: props.horizontalConstraint,
                 placement: popper.placement,
                 customStyles: props.styles?.body,
               }),
-            }}
+            })}
             data-placement={popper.placement}
           >
             <BodyComponent>{props.title}</BodyComponent>
