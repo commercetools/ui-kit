@@ -22,7 +22,7 @@ type ThemeName = keyof typeof themes;
 const isBrowser = typeof window !== 'undefined';
 
 const defaultParentSelector = (): HTMLElement | null =>
-  document.querySelector(':root');
+  isBrowser ? document.querySelector(':root') : null;
 
 type TApplyTheme = {
   newTheme?: string;
@@ -35,7 +35,7 @@ const applyTheme = ({
   parentSelector = defaultParentSelector,
   themeOverrides,
 }: TApplyTheme): void => {
-  const target = isBrowser ? parentSelector() : null;
+  const target = parentSelector();
 
   // With no target we can't change themes
   if (!target) return;
