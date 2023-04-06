@@ -258,6 +258,13 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
       );
     }
 
+    if (typeof this.props.menuPortalZIndex !== 'undefined') {
+      warning(
+        this.props.menuPortalTarget,
+        'MoneyField: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
+      );
+    }
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">

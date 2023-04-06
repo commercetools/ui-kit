@@ -563,6 +563,13 @@ const MoneyInput = (props: TMoneyInputProps) => {
     );
   }
 
+  if (typeof props.menuPortalZIndex !== 'undefined') {
+    warning(
+      props.menuPortalTarget,
+      'MoneyInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
+    );
+  }
+
   const { onFocus } = props;
   const handleAmountFocus = useCallback(() => {
     if (onFocus)

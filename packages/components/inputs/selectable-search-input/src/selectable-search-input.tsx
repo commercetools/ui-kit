@@ -253,7 +253,14 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
-      'TextInput: `onChange` is required when is not read only.'
+      'SelectableSearchInput: `onChange` is required when is not read only.'
+    );
+  }
+
+  if (typeof props.menuPortalZIndex !== 'undefined') {
+    warning(
+      props.menuPortalTarget,
+      'SelectableSearchInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
     );
   }
 

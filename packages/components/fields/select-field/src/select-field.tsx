@@ -346,6 +346,14 @@ export default class SelectField extends Component<TSelectFieldProps> {
         `SelectField: "touched" is expected to be an array of booleans when "isMulti" is true, instead got ${this.props.touched}.`
       );
     }
+
+    if (typeof this.props.menuPortalZIndex !== 'undefined') {
+      warning(
+        this.props.menuPortalTarget,
+        'SelectField: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
+      );
+    }
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">

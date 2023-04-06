@@ -17,7 +17,7 @@ import {
   createSelectStyles,
   messages,
 } from '@commercetools-uikit/select-utils';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { useTheme } from '@commercetools-uikit/design-system';
 
 const customizedComponents = {
@@ -334,6 +334,13 @@ const defaultProps: Pick<
 const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
   const { isNewTheme } = useTheme();
+
+  if (typeof props.menuPortalZIndex !== 'undefined') {
+    warning(
+      props.menuPortalTarget,
+      'SelectInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
+    );
+  }
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);

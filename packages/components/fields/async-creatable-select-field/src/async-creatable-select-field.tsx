@@ -434,6 +434,12 @@ export default class AsyncCreatableSelectField extends Component<
         'AsyncCreatableSelectField: `touched` is expected to be an array of boolean when isMulti is true'
       );
     }
+    if (typeof this.props.menuPortalZIndex !== 'undefined') {
+      warning(
+        this.props.menuPortalTarget,
+        'AsyncCreatableSelectField: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
+      );
+    }
 
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>

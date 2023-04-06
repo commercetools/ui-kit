@@ -282,6 +282,13 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
     );
   }
 
+  if (typeof props.menuPortalZIndex !== 'undefined') {
+    warning(
+      props.menuPortalTarget,
+      'SearchSelectInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
+    );
+  }
+
   const noOptionsMessage =
     props.noOptionsMessage ||
     (() => intl.formatMessage(messages.noOptionsMessage));

@@ -320,6 +320,13 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
     );
   }
 
+  if (typeof props.menuPortalZIndex !== 'undefined') {
+    warning(
+      props.menuPortalTarget,
+      'AsyncSelectInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
+    );
+  }
+
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
 

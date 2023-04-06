@@ -371,6 +371,13 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
     );
   }
 
+  if (typeof props.menuPortalZIndex !== 'undefined') {
+    warning(
+      props.menuPortalTarget,
+      'AsyncCreatableSelectInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
+    );
+  }
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
