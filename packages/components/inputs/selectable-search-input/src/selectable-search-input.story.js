@@ -3,9 +3,18 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
 import Readme from '../README.md';
 import SelectableSearchInput from './selectable-search-input';
+
+const getMenuPortalTargetValue = (menuPortalTarget) => {
+  if (menuPortalTarget === 'document.body') {
+    return document.body;
+  }
+  return undefined;
+};
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
@@ -104,42 +113,64 @@ storiesOf('Components|Inputs', module)
           null
         )}
       >
-        <SelectableSearchInput
-          id={text('id', '')}
-          name={name}
-          value={value}
-          onChange={(event) => {
-            action('onChange')(event);
-            if (event.target.name.endsWith('.textInput')) {
-              setTextInputValue(event.target.value);
-            }
-            if (event.target.name.endsWith('.dropdown')) {
-              setDropdownValue(event.target.value);
-            }
-          }}
-          isAutofocussed={boolean('isAutofocussed', false)}
-          isDisabled={boolean('isDisabled', false)}
-          isReadOnly={boolean('isReadOnly', false)}
-          isClearable={boolean('isClearable', true)}
-          showSubmitButton={boolean('showSubmitButton', true)}
-          hasError={boolean('hasError', false)}
-          hasWarning={boolean('hasWarning', false)}
-          placeholder={text('placeholder', 'Placeholder')}
-          horizontalConstraint={select(
-            'horizontalConstraint',
-            Constraints.getAcceptedMaxPropValues(10),
-            16
-          )}
-          menuHorizontalConstraint={select(
-            'menuHorizontalConstraint',
-            Constraints.getAcceptedMaxPropValues(3, 5),
-            3
-          )}
-          options={options}
-          onSubmit={(submitValues) => {
-            alert(JSON.stringify(submitValues));
-          }}
-        />
+        <Spacings.Stack scale="m">
+          <SelectableSearchInput
+            id={text('id', '')}
+            name={name}
+            value={value}
+            onChange={(event) => {
+              action('onChange')(event);
+              if (event.target.name.endsWith('.textInput')) {
+                setTextInputValue(event.target.value);
+              }
+              if (event.target.name.endsWith('.dropdown')) {
+                setDropdownValue(event.target.value);
+              }
+            }}
+            isAutofocussed={boolean('isAutofocussed', false)}
+            isDisabled={boolean('isDisabled', false)}
+            isReadOnly={boolean('isReadOnly', false)}
+            isClearable={boolean('isClearable', true)}
+            showSubmitButton={boolean('showSubmitButton', true)}
+            hasError={boolean('hasError', false)}
+            hasWarning={boolean('hasWarning', false)}
+            placeholder={text('placeholder', 'Placeholder')}
+            horizontalConstraint={select(
+              'horizontalConstraint',
+              Constraints.getAcceptedMaxPropValues(10),
+              16
+            )}
+            menuHorizontalConstraint={select(
+              'menuHorizontalConstraint',
+              Constraints.getAcceptedMaxPropValues(3, 5),
+              3
+            )}
+            options={options}
+            onSubmit={(submitValues) => {
+              alert(JSON.stringify(submitValues));
+            }}
+            menuPortalZIndex={select('menuPortalZIndex', [1, 2, 3], 1)}
+            // this IIFE is only to make the `menuPortalTarget` knob show up after `menuPortalZIndex`
+            {...(() => {
+              const menuPortalTarget = select(
+                'menuPortalTarget',
+                ['undefined', 'document.body'],
+                'undefined'
+              );
+              return {
+                menuPortalTarget: getMenuPortalTargetValue(menuPortalTarget),
+              };
+            })()}
+          />
+          {/* this IIFE is only to make the `menuPortalZIndex-show-neighbouring-stacking-context` knob show up last on the list */}
+          {(() => {
+            const isActive = boolean(
+              'menuPortalZIndex-show-neighbouring-stacking-context',
+              false
+            );
+            return isActive && <NeighbouringStackingContext />;
+          })()}
+        </Spacings.Stack>
       </Section>
     );
   });

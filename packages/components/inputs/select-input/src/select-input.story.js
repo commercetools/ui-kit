@@ -9,11 +9,11 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs/react';
-import Card from '@commercetools-uikit/card';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import LinkTo from '@storybook/addon-links/react';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
 import Readme from '../README.md';
 import SelectInput from './select-input';
 import * as icons from '../../../icons';
@@ -175,22 +175,7 @@ storiesOf('Components|Inputs/SelectInputs', module)
                     'menuPortalZIndex-show-neighbouring-stacking-context',
                     false
                   );
-                  return (
-                    isActive && (
-                      <div
-                        style={{
-                          width: '300px',
-                          height: '50px',
-                          position: 'relative',
-                          zIndex: 2,
-                        }}
-                      >
-                        <Card theme="dark">
-                          Stacking context with <code>z-index: 2</code>
-                        </Card>
-                      </div>
-                    )
-                  );
+                  return isActive && <NeighbouringStackingContext />;
                 })()}
               </Spacings.Stack>
             )}

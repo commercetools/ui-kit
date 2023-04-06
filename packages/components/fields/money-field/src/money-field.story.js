@@ -9,12 +9,21 @@ import {
   object,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import { injectIntl } from 'react-intl';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
 import Readme from '../README.md';
 import * as icons from '../../../icons';
 import MoneyField from './money-field';
 import MoneyInput from '../../../inputs/money-input';
+
+const getMenuPortalTargetValue = (menuPortalTarget) => {
+  if (menuPortalTarget === 'document.body') {
+    return document.body;
+  }
+  return undefined;
+};
 
 // This uses a dedicated story component to keep track of state instead of
 // react-value. The reason is that MoneyInput can call twice onChange before
@@ -60,64 +69,86 @@ class MoneyFieldStory extends Component {
     const hintIcon = icon ? createElement(icons[icon]) : undefined;
     return (
       <Section>
-        <MoneyField
-          // MoneyField
-          id={name.trim() === '' ? undefined : name}
-          horizontalConstraint={select(
-            'horizontalConstraint',
-            Constraints.getAcceptedMaxPropValues(),
-            7
-          )}
-          errors={object('errors', { missing: true, customError: true })}
-          renderError={(key) => {
-            switch (key) {
-              case 'customError':
-                return 'A custom error.';
-              default:
-                return null;
+        <Spacings.Stack scale="m">
+          <MoneyField
+            // MoneyField
+            id={name.trim() === '' ? undefined : name}
+            horizontalConstraint={select(
+              'horizontalConstraint',
+              Constraints.getAcceptedMaxPropValues(),
+              7
+            )}
+            errors={object('errors', { missing: true, customError: true })}
+            renderError={(key) => {
+              switch (key) {
+                case 'customError':
+                  return 'A custom error.';
+                default:
+                  return null;
+              }
+            }}
+            isRequired={boolean('isRequired', false)}
+            touched={
+              boolean('touched', false)
+                ? { amount: true, currencyCode: true }
+                : { amount: false, currencyCode: false }
             }
-          }}
-          isRequired={boolean('isRequired', false)}
-          touched={
-            boolean('touched', false)
-              ? { amount: true, currencyCode: true }
-              : { amount: false, currencyCode: false }
-          }
-          // MoneyInput
-          name={name}
-          value={{
-            amount: this.state.amount,
-            currencyCode: this.state.currencyCode,
-          }}
-          currencies={boolean('dropdown', true) ? currencies : undefined}
-          placeholder={text('placeholder', 'Placeholder')}
-          onBlur={action('onBlur')}
-          isDisabled={boolean('isDisabled', false)}
-          isReadOnly={boolean('isReadOnly', false)}
-          isAutofocussed={boolean('isAutofocussed', false)}
-          onChange={(event) => {
-            action('onChange')(event);
+            // MoneyInput
+            name={name}
+            value={{
+              amount: this.state.amount,
+              currencyCode: this.state.currencyCode,
+            }}
+            currencies={boolean('dropdown', true) ? currencies : undefined}
+            placeholder={text('placeholder', 'Placeholder')}
+            onBlur={action('onBlur')}
+            isDisabled={boolean('isDisabled', false)}
+            isReadOnly={boolean('isReadOnly', false)}
+            isAutofocussed={boolean('isAutofocussed', false)}
+            onChange={(event) => {
+              action('onChange')(event);
 
-            if (event.target.name.endsWith('.amount')) {
-              this.setState({ amount: event.target.value });
-            }
+              if (event.target.name.endsWith('.amount')) {
+                this.setState({ amount: event.target.value });
+              }
 
-            if (event.target.name.endsWith('.currencyCode')) {
-              this.setState({ currencyCode: event.target.value });
+              if (event.target.name.endsWith('.currencyCode')) {
+                this.setState({ currencyCode: event.target.value });
+              }
+            }}
+            // LabelField
+            title={text('title', 'Price')}
+            hint={hint}
+            description={text('description', '')}
+            onInfoButtonClick={
+              boolean('show info button', false)
+                ? action('onInfoButtonClick')
+                : undefined
             }
-          }}
-          // LabelField
-          title={text('title', 'Price')}
-          hint={hint}
-          description={text('description', '')}
-          onInfoButtonClick={
-            boolean('show info button', false)
-              ? action('onInfoButtonClick')
-              : undefined
-          }
-          hintIcon={hintIcon}
-          hasHighPrecisionBadge={boolean('hasHighPrecisionBadge', false)}
-        />
+            hintIcon={hintIcon}
+            hasHighPrecisionBadge={boolean('hasHighPrecisionBadge', false)}
+            menuPortalZIndex={select('menuPortalZIndex', [1, 2, 3], 1)}
+            // this IIFE is only to make the `menuPortalTarget` knob show up after `menuPortalZIndex`
+            {...(() => {
+              const menuPortalTarget = select(
+                'menuPortalTarget',
+                ['undefined', 'document.body'],
+                'undefined'
+              );
+              return {
+                menuPortalTarget: getMenuPortalTargetValue(menuPortalTarget),
+              };
+            })()}
+          />
+          {/* this IIFE is only to make the `menuPortalZIndex-show-neighbouring-stacking-context` knob show up last on the list */}
+          {(() => {
+            const isActive = boolean(
+              'menuPortalZIndex-show-neighbouring-stacking-context',
+              false
+            );
+            return isActive && <NeighbouringStackingContext />;
+          })()}
+        </Spacings.Stack>
       </Section>
     );
   }

@@ -11,7 +11,9 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
 import Readme from '../README.md';
 import * as icons from '../../../icons';
 import AsyncSelectField from './async-select-field';
@@ -76,6 +78,13 @@ const filterAnimals = (inputValue) =>
     animalOption.label.toLowerCase().includes(inputValue.toLowerCase())
   );
 
+const getMenuPortalTargetValue = (menuPortalTarget) => {
+  if (menuPortalTarget === 'document.body') {
+    return document.body;
+  }
+  return undefined;
+};
+
 const loadOptions = (inputValue) =>
   delay(500).then(() => filterAnimals(inputValue));
 
@@ -110,66 +119,89 @@ storiesOf('Components|Fields/SelectFields', module)
           key={isMulti}
           defaultValue={isMulti ? [] : undefined}
           render={(value, onChange) => (
-            <AsyncSelectField
-              horizontalConstraint={select(
-                'horizontalConstraint',
-                Constraints.getAcceptedMaxPropValues(3),
-                7
-              )}
-              errors={object('errors', { missing: true, customError: true })}
-              renderError={(key) => {
-                switch (key) {
-                  case 'customError':
-                    return 'A custom error.';
-                  default:
-                    return null;
+            <Spacings.Stack scale="m">
+              <AsyncSelectField
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  Constraints.getAcceptedMaxPropValues(3),
+                  7
+                )}
+                errors={object('errors', { missing: true, customError: true })}
+                renderError={(key) => {
+                  switch (key) {
+                    case 'customError':
+                      return 'A custom error.';
+                    default:
+                      return null;
+                  }
+                }}
+                isRequired={boolean('isRequired', false)}
+                touched={boolean('touched', false)}
+                aria-label={text('aria-label', '')}
+                aria-labelledby={text('aria-labelledby', '')}
+                backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
+                containerId={text('containerId', '')}
+                id={id || undefined}
+                name={name}
+                value={value}
+                onChange={(event) => {
+                  action('onChange')(event);
+                  onChange(event.target.value);
+                }}
+                onBlur={action('onBlur')}
+                onFocus={action('onFocus')}
+                onInputChange={action('onInputChange')}
+                isAutofocussed={boolean('isAutofocussed', false)}
+                isDisabled={boolean('isDisabled', false)}
+                isReadOnly={boolean('isReadOnly', false)}
+                isMulti={isMulti}
+                hasWarning={boolean('hasWarning', false)}
+                placeholder={text('placeholder', 'Select...')}
+                loadingMessage={loadingMessage}
+                title={text('title', 'Favourite animal')}
+                maxMenuHeight={number('maxMenuHeight', 220)}
+                isSearchable={boolean('isSearchable', true)}
+                isClearable={boolean('isClearable', false)}
+                tabIndex={text('tabIndex', '0')}
+                tabSelectsValue={boolean('tabSelectsValue', true)}
+                // Async props
+                defaultOptions={defaultOptions}
+                loadOptions={loadOptions}
+                cacheOptions={boolean('cacheOptions', false)}
+                // FieldLabel
+                hint={hint}
+                description={text('description', '')}
+                onInfoButtonClick={
+                  boolean('show info button', false)
+                    ? action('onInfoButtonClick')
+                    : undefined
                 }
-              }}
-              isRequired={boolean('isRequired', false)}
-              touched={boolean('touched', false)}
-              aria-label={text('aria-label', '')}
-              aria-labelledby={text('aria-labelledby', '')}
-              backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
-              containerId={text('containerId', '')}
-              id={id || undefined}
-              name={name}
-              value={value}
-              onChange={(event) => {
-                action('onChange')(event);
-                onChange(event.target.value);
-              }}
-              onBlur={action('onBlur')}
-              onFocus={action('onFocus')}
-              onInputChange={action('onInputChange')}
-              isAutofocussed={boolean('isAutofocussed', false)}
-              isDisabled={boolean('isDisabled', false)}
-              isReadOnly={boolean('isReadOnly', false)}
-              isMulti={isMulti}
-              hasWarning={boolean('hasWarning', false)}
-              placeholder={text('placeholder', 'Select...')}
-              loadingMessage={loadingMessage}
-              title={text('title', 'Favourite animal')}
-              maxMenuHeight={number('maxMenuHeight', 220)}
-              isSearchable={boolean('isSearchable', true)}
-              isClearable={boolean('isClearable', false)}
-              tabIndex={text('tabIndex', '0')}
-              tabSelectsValue={boolean('tabSelectsValue', true)}
-              // Async props
-              defaultOptions={defaultOptions}
-              loadOptions={loadOptions}
-              cacheOptions={boolean('cacheOptions', false)}
-              // FieldLabel
-              hint={hint}
-              description={text('description', '')}
-              onInfoButtonClick={
-                boolean('show info button', false)
-                  ? action('onInfoButtonClick')
-                  : undefined
-              }
-              hintIcon={hintIcon}
-              badge={text('badge', '')}
-              iconLeft={iconLeft ? createElement(iconLeft) : undefined}
-            />
+                hintIcon={hintIcon}
+                badge={text('badge', '')}
+                iconLeft={iconLeft ? createElement(iconLeft) : undefined}
+                menuPortalZIndex={select('menuPortalZIndex', [1, 2, 3], 1)}
+                // this IIFE is only to make the `menuPortalTarget` knob show up after `menuPortalZIndex`
+                {...(() => {
+                  const menuPortalTarget = select(
+                    'menuPortalTarget',
+                    ['undefined', 'document.body'],
+                    'undefined'
+                  );
+                  return {
+                    menuPortalTarget:
+                      getMenuPortalTargetValue(menuPortalTarget),
+                  };
+                })()}
+              />
+              {/* this IIFE is only to make the `menuPortalZIndex-show-neighbouring-stacking-context` knob show up last on the list */}
+              {(() => {
+                const isActive = boolean(
+                  'menuPortalZIndex-show-neighbouring-stacking-context',
+                  false
+                );
+                return isActive && <NeighbouringStackingContext />;
+              })()}
+            </Spacings.Stack>
           )}
         />
       </Section>

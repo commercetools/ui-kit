@@ -10,7 +10,9 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
 import Readme from '../README.md';
 import AsyncSelectInput from './async-select-input';
 import * as icons from '../../../icons';
@@ -53,6 +55,13 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const loadOptions = (inputValue) =>
   delay(500).then(() => filterColors(inputValue));
 
+const getMenuPortalTargetValue = (menuPortalTarget) => {
+  if (menuPortalTarget === 'document.body') {
+    return document.body;
+  }
+  return undefined;
+};
+
 class SelectStory extends Component {
   static displayName = 'SelectStory';
   render() {
@@ -71,7 +80,7 @@ class SelectStory extends Component {
             key={`${isMulti}-${defaultOptions}`}
             defaultValue={isMulti ? [] : undefined}
             render={(value, onChange) => (
-              <div>
+              <Spacings.Stack scale="m">
                 <AsyncSelectInput
                   horizontalConstraint={select(
                     'horizontalConstraint',
@@ -112,8 +121,29 @@ class SelectStory extends Component {
                   cacheOptions={boolean('cacheOptions', false)}
                   showOptionGroupDivider={showOptionGroupDivider}
                   iconLeft={iconLeft ? createElement(iconLeft) : undefined}
+                  menuPortalZIndex={select('menuPortalZIndex', [1, 2, 3], 1)}
+                  // this IIFE is only to make the `menuPortalTarget` knob show up after `menuPortalZIndex`
+                  {...(() => {
+                    const menuPortalTarget = select(
+                      'menuPortalTarget',
+                      ['undefined', 'document.body'],
+                      'undefined'
+                    );
+                    return {
+                      menuPortalTarget:
+                        getMenuPortalTargetValue(menuPortalTarget),
+                    };
+                  })()}
                 />
-              </div>
+                {/* this IIFE is only to make the `menuPortalZIndex-show-neighbouring-stacking-context` knob show up last on the list */}
+                {(() => {
+                  const isActive = boolean(
+                    'menuPortalZIndex-show-neighbouring-stacking-context',
+                    false
+                  );
+                  return isActive && <NeighbouringStackingContext />;
+                })()}
+              </Spacings.Stack>
             )}
           />
         </Section>
