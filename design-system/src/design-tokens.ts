@@ -436,6 +436,7 @@ export const themes = {
     marginForLocalizedRichTextBodyButton: 'none',
     marginForRichTextDivider: '0 var(--spacing-10)',
     marginForRichTextDropdownItemLabel: '0 0 0 var(--spacing-10)',
+    marginForTagList: '0 var(--spacing-10) var(--spacing-10) 0',
     paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
     paddingForStampAsCondensed: '1px var(--spacing-10)',
     paddingForTag: '5px var(--spacing-20)',
@@ -792,6 +793,7 @@ export const themes = {
     marginForLocalizedRichTextBodyButton: '0 2px var(--spacing-20) 2px',
     marginForRichTextDivider: 'var(--spacing-10) 2px',
     marginForRichTextDropdownItemLabel: '0 0 0 var(--spacing-20)',
+    marginForTagList: '0 var(--spacing-20) var(--spacing-20) 0',
     paddingForStamp: '4px 12px',
     paddingForStampAsCondensed: '0 var(--spacing-20)',
     paddingForTag: '2px 12px',
@@ -1482,6 +1484,8 @@ const designTokens = {
     'var(--margin-for-rich-text-divider, 0 var(--spacing-10))',
   marginForRichTextDropdownItemLabel:
     'var(--margin-for-rich-text-dropdown-item-label, 0 0 0 var(--spacing-10))',
+  marginForTagList:
+    'var(--margin-for-tag-list, 0 var(--spacing-10) var(--spacing-10) 0)',
   paddingForStamp:
     'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
   paddingForStampAsCondensed:

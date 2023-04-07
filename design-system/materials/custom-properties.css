@@ -489,6 +489,7 @@
   --margin-for-localized-rich-text-body-button: none;
   --margin-for-rich-text-divider: 0 var(--spacing-10);
   --margin-for-rich-text-dropdown-item-label: 0 0 0 var(--spacing-10);
+  --margin-for-tag-list: 0 var(--spacing-10) var(--spacing-10) 0;
   --padding-for-stamp: var(--spacing-10) var(--spacing-20);
   --padding-for-stamp-as-condensed: 1px var(--spacing-10);
   --padding-for-tag: 5px var(--spacing-20);

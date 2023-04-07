@@ -5,9 +5,12 @@ import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Tag from './tag';
+import TagList from './tag-list/tag-list';
 import Readme from '../README.md';
 
-const Story = () => (
+const TagExamples = ['Pasta', 'Salad', 'Cookies', 'Wraps'];
+
+const TagStory = () => (
   <Section>
     <Tag
       type={select('type', ['normal', 'warning'], 'normal')}
@@ -26,7 +29,23 @@ const Story = () => (
     </Tag>
   </Section>
 );
-Story.displayName = 'Story';
+TagStory.displayName = 'TagStory';
+
+const TagListStory = () => (
+  <Section>
+    <TagList>
+      {TagExamples.map((tag, index) => (
+        <Tag
+          onRemove={boolean('onRemove', false) ? action('onRemove') : undefined}
+          key={index}
+        >
+          {tag}
+        </Tag>
+      ))}
+    </TagList>
+  </Section>
+);
+TagListStory.displayName = 'TagListStory';
 
 storiesOf('Components|Tags', module)
   .addDecorator(withKnobs)
@@ -39,6 +58,11 @@ storiesOf('Components|Tags', module)
   // Router is required to support the Link component used by Tag
   .add('Tag', () => (
     <Router>
-      <Story />
+      <TagStory />
+    </Router>
+  ))
+  .add('TagList', () => (
+    <Router>
+      <TagListStory />
     </Router>
   ));
