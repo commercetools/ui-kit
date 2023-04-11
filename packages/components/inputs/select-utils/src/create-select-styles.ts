@@ -21,6 +21,7 @@ type TProps = {
   iconLeft?: ReactNode;
   isMulti?: boolean;
   hasValue?: boolean;
+  controlShouldRenderValue?: boolean;
 };
 
 type TBase = {
@@ -252,7 +253,8 @@ const valueContainerStyles = (props: TProps) => (base: TBase) => {
     // Display property should be Flex when there is an iconLeft, also when the input has some values when isMulti.
     // See PR from react select for more insight https://github.com/JedWatson/react-select/pull/4833
     display:
-      (props.iconLeft && !props.isMulti) || (props.isMulti && props.hasValue)
+      (props.iconLeft && !props.isMulti) ||
+      (props.isMulti && props.hasValue && props.controlShouldRenderValue)
         ? 'flex'
         : 'grid',
     fill:

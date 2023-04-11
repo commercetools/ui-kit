@@ -402,6 +402,7 @@ const SelectInput = (props: TSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
+              controlShouldRenderValue: props.controlShouldRenderValue,
               isNewTheme,
             }) as ReactSelectProps['styles']
           }
