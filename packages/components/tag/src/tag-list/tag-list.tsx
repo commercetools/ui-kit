@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import { ReactNode, Children } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
