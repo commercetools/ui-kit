@@ -127,7 +127,7 @@ const getLinkStyles = (props: TLinkProps & { isNewTheme: boolean }) => {
 const Wrapper = styled.span`
   > svg {
     margin: 0 0 0 ${designTokens.spacing10} !important;
-    vertical-align: bottom;
+    vertical-align: middle;
   }
 `;
 
