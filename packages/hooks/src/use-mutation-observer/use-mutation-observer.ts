@@ -2,6 +2,7 @@
 // except for the usage of `MutationObserver` instead of `IntersectionObserver`.
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import rafSchd from 'raf-schd';
+import './polyfill';
 
 export type TUseMutationObserverCallback = (
   mutationsList: MutationRecord[],
