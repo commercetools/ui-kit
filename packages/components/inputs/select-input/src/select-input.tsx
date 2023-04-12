@@ -322,10 +322,11 @@ export type TSelectInputProps = {
 
 const defaultProps: Pick<
   TSelectInputProps,
-  'maxMenuHeight' | 'menuPortalZIndex'
+  'maxMenuHeight' | 'menuPortalZIndex' | 'controlShouldRenderValue'
 > = {
   maxMenuHeight: 220,
   menuPortalZIndex: 1,
+  controlShouldRenderValue: true,
 };
 
 const SelectInput = (props: TSelectInputProps) => {
@@ -402,6 +403,7 @@ const SelectInput = (props: TSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
+              controlShouldRenderValue: props.controlShouldRenderValue,
               isNewTheme,
             }) as ReactSelectProps['styles']
           }
