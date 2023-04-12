@@ -8,7 +8,9 @@ import Tag from './tag';
 import TagList from './tag-list/tag-list';
 import Readme from '../README.md';
 
-const TagExamples = ['Pasta', 'Salad', 'Cookies', 'Wraps'];
+const examples = Array(15)
+  .fill('')
+  .map((_, i) => i + ' fish');
 
 const TagStory = () => (
   <Section>
@@ -34,7 +36,7 @@ TagStory.displayName = 'TagStory';
 const TagListStory = () => (
   <Section>
     <TagList>
-      {TagExamples.map((tag, index) => (
+      {examples.map((tag, index) => (
         <Tag
           onRemove={boolean('onRemove', false) ? action('onRemove') : undefined}
           key={index}
