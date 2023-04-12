@@ -16,8 +16,9 @@ import {
   customComponentsWithIcons,
   createSelectStyles,
   messages,
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget,
 } from '@commercetools-uikit/select-utils';
-import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { useTheme } from '@commercetools-uikit/design-system';
 
 const customizedComponents = {
@@ -335,12 +336,11 @@ const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
   const { isNewTheme } = useTheme();
 
-  if (typeof props.menuPortalZIndex !== 'undefined') {
-    warning(
-      props.menuPortalTarget,
-      'SelectInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
-    );
-  }
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'SelectInput',
+  });
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);

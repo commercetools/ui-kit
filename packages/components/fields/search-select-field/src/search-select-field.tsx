@@ -328,13 +328,6 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
     );
   }
 
-  if (typeof props.menuPortalZIndex !== 'undefined') {
-    warning(
-      props.menuPortalTarget,
-      'SearchSelectField: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
-    );
-  }
-
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Spacings.Stack scale="xs">

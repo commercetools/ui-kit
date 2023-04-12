@@ -10,9 +10,10 @@
 '@commercetools-uikit/async-select-input': patch
 '@commercetools-uikit/select-field': patch
 '@commercetools-uikit/select-input': patch
+'@commercetools-uikit/select-utils': patch
 '@commercetools-uikit/money-field': patch
 '@commercetools-uikit/money-input': patch
 ---
 
 Improve docs regarding the use of `menuPortalZIndex` prop.
-Warn when `menuPortalZIndex` used without setting `menuPortalTarget`.
+Warn when `menuPortalZIndex` is used without setting `menuPortalTarget`.

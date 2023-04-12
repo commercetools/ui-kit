@@ -21,6 +21,7 @@ import Tooltip from '@commercetools-uikit/tooltip';
 import {
   DropdownIndicator,
   createSelectStyles,
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget,
 } from '@commercetools-uikit/select-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
@@ -563,12 +564,11 @@ const MoneyInput = (props: TMoneyInputProps) => {
     );
   }
 
-  if (typeof props.menuPortalZIndex !== 'undefined') {
-    warning(
-      props.menuPortalTarget,
-      'MoneyInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
-    );
-  }
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'MoneyInput',
+  });
 
   const { onFocus } = props;
   const handleAmountFocus = useCallback(() => {

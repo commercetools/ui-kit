@@ -19,6 +19,7 @@ import {
   customComponentsWithIcons,
   messages,
   createSelectStyles,
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget,
 } from '@commercetools-uikit/select-utils';
 import { useTheme } from '@commercetools-uikit/design-system';
 
@@ -320,12 +321,11 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
     );
   }
 
-  if (typeof props.menuPortalZIndex !== 'undefined') {
-    warning(
-      props.menuPortalTarget,
-      'AsyncSelectInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
-    );
-  }
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'AsyncSelectInput',
+  });
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);

@@ -18,6 +18,7 @@ import {
   filterDataAttributes,
   warning,
 } from '@commercetools-uikit/utils';
+import { warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget } from '@commercetools-uikit/select-utils';
 import {
   getClearIconButtonStyles,
   getSearchIconButtonStyles,
@@ -257,12 +258,11 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     );
   }
 
-  if (typeof props.menuPortalZIndex !== 'undefined') {
-    warning(
-      props.menuPortalTarget,
-      'SelectableSearchInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
-    );
-  }
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'SelectableSearchInput',
+  });
 
   const { onFocus, onBlur, name } = props;
   const handleTextInputFocus = useCallback(() => {

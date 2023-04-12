@@ -19,6 +19,7 @@ import {
   customComponentsWithIcons,
   messages,
   createSelectStyles,
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { useTheme } from '@commercetools-uikit/design-system';
@@ -371,12 +372,11 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
     );
   }
 
-  if (typeof props.menuPortalZIndex !== 'undefined') {
-    warning(
-      props.menuPortalTarget,
-      'AsyncCreatableSelectInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
-    );
-  }
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'AsyncCreatableSelectInput',
+  });
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>

@@ -7,6 +7,7 @@ import { warning } from '@commercetools-uikit/utils';
 import {
   CustomSelectInputOption,
   SearchIconDropdownIndicator,
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget,
 } from '@commercetools-uikit/select-utils';
 import messages from './messages';
 import { SearchSelectInputWrapper } from './search-select-input.styles';
@@ -282,12 +283,11 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
     );
   }
 
-  if (typeof props.menuPortalZIndex !== 'undefined') {
-    warning(
-      props.menuPortalTarget,
-      'SearchSelectInput: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
-    );
-  }
+  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'SearchSelectInput',
+  });
 
   const noOptionsMessage =
     props.noOptionsMessage ||

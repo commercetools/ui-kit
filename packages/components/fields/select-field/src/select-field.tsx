@@ -347,13 +347,6 @@ export default class SelectField extends Component<TSelectFieldProps> {
       );
     }
 
-    if (typeof this.props.menuPortalZIndex !== 'undefined') {
-      warning(
-        this.props.menuPortalTarget,
-        'SelectField: use `menuPortalZIndex` in conjunction with `menuPortalTarget`'
-      );
-    }
-
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
