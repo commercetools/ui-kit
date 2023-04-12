@@ -35,16 +35,20 @@ TagStory.displayName = 'TagStory';
 
 const TagListStory = () => (
   <Section>
-    <TagList>
-      {examples.map((tag, index) => (
-        <Tag
-          onRemove={boolean('onRemove', false) ? action('onRemove') : undefined}
-          key={index}
-        >
-          {tag}
-        </Tag>
-      ))}
-    </TagList>
+    <Constraints.Horizontal max={10}>
+      <TagList>
+        {examples.map((tag, index) => (
+          <Tag
+            onRemove={
+              boolean('onRemove', false) ? action('onRemove') : undefined
+            }
+            key={index}
+          >
+            {tag}
+          </Tag>
+        ))}
+      </TagList>
+    </Constraints.Horizontal>
   </Section>
 );
 TagListStory.displayName = 'TagListStory';
