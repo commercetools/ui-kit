@@ -1,4 +1,5 @@
-import { Tag } from '@commercetools-frontend/ui-kit';
+import { Tag, TagList } from '@commercetools-frontend/ui-kit';
+import Constraints from '@commercetools-uikit/constraints';
 import { Suite, Spec } from '../../../../test/percy';
 
 const longText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et
@@ -7,6 +8,10 @@ eleifend, fermentum nunc non, sagittis tortor. Pellentesque vulputate
 dignissim leo fermentum vehicula. Fusce efficitur est molestie augue
 ullamcorper dictum. Donec non leo a augue dictum pretium. Praesent ac
 quam pharetra, posuere mauris in, pharetra nisi.`;
+
+const examplesLong = Array(15)
+  .fill()
+  .map((_, i) => i + ' fish');
 
 export const routePath = '/tag';
 
@@ -193,6 +198,44 @@ export const component = () => (
       <Tag type="normal" to="foo/bar" onRemove={() => {}} isDisabled>
         {longText}
       </Tag>
+    </Spec>
+    <Spec
+      label="Tag list - with remove"
+      propsToList={[...basePropsToList, 'to']}
+    >
+      <TagList>
+        {examplesLong.map((tag, index) => (
+          <Tag type="normal" to="foo/bar" onRemove={() => {}} key={index}>
+            {tag}
+          </Tag>
+        ))}
+      </TagList>
+    </Spec>
+    <Spec
+      label="Tag list - no remove"
+      propsToList={[...basePropsToList, 'to']}
+    >
+      <TagList>
+        {examplesLong.map((tag, index) => (
+          <Tag type="normal" to="foo/bar" key={index}>
+            {tag}
+          </Tag>
+        ))}
+      </TagList>
+    </Spec>
+    <Spec
+      label="Tag list - multi rows"
+      propsToList={[...basePropsToList, 'to']}
+    >
+      <Constraints.Horizontal max={5}>
+        <TagList>
+          {examplesLong.map((tag, index) => (
+            <Tag type="normal" to="foo/bar" key={index}>
+              {tag}
+            </Tag>
+          ))}
+        </TagList>
+      </Constraints.Horizontal>
     </Spec>
   </Suite>
 );
