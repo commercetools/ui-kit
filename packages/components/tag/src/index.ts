@@ -1,4 +1,4 @@
-/** @deprecated use new way below of exporting the Tag component*/
+/** @deprecated Please use the named export instead `import { Tag } from '@commercetools-uikit/tag';` */
 export { default } from './tag';
 
 export { default as Tag } from './tag';

@@ -9,7 +9,7 @@ import TagList from './tag-list/tag-list';
 import Readme from '../README.md';
 
 const examples = Array(15)
-  .fill('')
+  .fill()
   .map((_, i) => i + ' fish');
 
 const TagStory = () => (
