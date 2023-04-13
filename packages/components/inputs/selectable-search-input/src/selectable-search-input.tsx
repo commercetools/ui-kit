@@ -18,7 +18,7 @@ import {
   filterDataAttributes,
   warning,
 } from '@commercetools-uikit/utils';
-import { warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget } from '@commercetools-uikit/select-utils';
+import { warnAgainstMisuseOfMenuPortalProps } from '@commercetools-uikit/select-utils';
 import {
   getClearIconButtonStyles,
   getSearchIconButtonStyles,
@@ -258,7 +258,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     );
   }
 
-  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget({
+  warnAgainstMisuseOfMenuPortalProps({
     menuPortalZIndex: props.menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'SelectableSearchInput',

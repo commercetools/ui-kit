@@ -19,7 +19,7 @@ import {
   customComponentsWithIcons,
   messages,
   createSelectStyles,
-  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget,
+  warnAgainstMisuseOfMenuPortalProps,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { useTheme } from '@commercetools-uikit/design-system';
@@ -372,7 +372,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
     );
   }
 
-  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget({
+  warnAgainstMisuseOfMenuPortalProps({
     menuPortalZIndex: props.menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'AsyncCreatableSelectInput',

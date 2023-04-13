@@ -7,7 +7,7 @@ import { warning } from '@commercetools-uikit/utils';
 import {
   CustomSelectInputOption,
   SearchIconDropdownIndicator,
-  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget,
+  warnAgainstMisuseOfMenuPortalProps,
 } from '@commercetools-uikit/select-utils';
 import messages from './messages';
 import { SearchSelectInputWrapper } from './search-select-input.styles';
@@ -283,7 +283,7 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
     );
   }
 
-  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget({
+  warnAgainstMisuseOfMenuPortalProps({
     menuPortalZIndex: props.menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'SearchSelectInput',

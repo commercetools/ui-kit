@@ -8,6 +8,6 @@ export * from './custom-styled-select-options';
 export * from './export-types';
 export { default as messages } from './messages';
 export { default as createSelectStyles } from './create-select-styles';
-export { warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget } from './warning';
+export { warnAgainstMisuseOfMenuPortalProps } from './warning';
 
 export { default as version } from './version';

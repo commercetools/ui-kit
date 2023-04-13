@@ -21,7 +21,7 @@ import Tooltip from '@commercetools-uikit/tooltip';
 import {
   DropdownIndicator,
   createSelectStyles,
-  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget,
+  warnAgainstMisuseOfMenuPortalProps,
 } from '@commercetools-uikit/select-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
@@ -564,7 +564,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
     );
   }
 
-  warnIfMenuPortalZIndexNotUsedInConjunctionWithMenuPortalTarget({
+  warnAgainstMisuseOfMenuPortalProps({
     menuPortalZIndex: props.menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'MoneyInput',
