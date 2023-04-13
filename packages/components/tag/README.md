@@ -37,7 +37,7 @@ npm --save install react react-router-dom
 ## Usage
 
 ```jsx
-import Tag from '@commercetools-uikit/tag';
+import { Tag } from '@commercetools-uikit/tag';
 
 const Example = () => (
   <Tag
@@ -95,14 +95,20 @@ The `<TagList>` component accepts `<Tag>` element as `children` props.
 Here's the example how to use them:
 
 ```jsx
-<TagList>
-  {examples.map((tag, index) => (
-    <Tag
-      key={index}
-    >
-      {tag}
-    </Tag>
-  ))}
-</TagList>
+import { Tag, TagList } from '@commercetools-uikit/tag';
+
+const Example = () => (
+  <TagList>
+    {["apple", "orange"].map((tag, index) => (
+      <Tag
+        key={index}
+      >
+        {tag}
+      </Tag>
+    ))}
+  </TagList>
+  );
+
+export default Example;
 />
 ```
