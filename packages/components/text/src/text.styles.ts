@@ -20,6 +20,10 @@ const truncate = `
   text-overflow: ellipsis;
 `;
 
+const nowrap = `
+  white-space: nowrap;
+`;
+
 const bold = `
   font-weight: ${designTokens.fontWeightForTextAsBold};
 `;
@@ -119,6 +123,7 @@ export const bodyStyles = (props: TBodyProps) => css`
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
   ${props.truncate && truncate}
+  ${props.nowrap && nowrap}
 `;
 
 export const headlineStyles = (props: THeadlineProps) => css`
@@ -128,6 +133,7 @@ export const headlineStyles = (props: THeadlineProps) => css`
   line-height: ${getElementLineHeight(props.as)};
   font-weight: ${getElementFontWeight(props.as)};
   ${props.truncate && truncate}
+  ${props.nowrap && nowrap}
 `;
 
 export const subheadlineStyles = (props: TSubheadlineProps) => css`
@@ -137,6 +143,7 @@ export const subheadlineStyles = (props: TSubheadlineProps) => css`
   line-height: ${getElementLineHeight(props.as)};
   font-weight: ${getElementFontWeight(props.as)};
   ${props.truncate && truncate}
+  ${props.nowrap && nowrap}
   ${props.isBold && bold}
   ${props.tone && getTone(props.tone)}
 `;
@@ -157,4 +164,5 @@ export const detailStyles = (props: TDetailProps) => css`
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
   ${props.truncate && truncate}
+  ${props.nowrap && nowrap}
 `;
