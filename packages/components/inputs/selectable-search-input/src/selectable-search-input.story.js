@@ -6,15 +6,9 @@ import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { getMenuPortalTargetValue } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import SelectableSearchInput from './selectable-search-input';
-
-const getMenuPortalTargetValue = (menuPortalTarget) => {
-  if (menuPortalTarget === 'document.body') {
-    return document.body;
-  }
-  return undefined;
-};
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)

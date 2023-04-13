@@ -14,18 +14,12 @@ import Spacings from '@commercetools-uikit/spacings';
 import LinkTo from '@storybook/addon-links/react';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { getMenuPortalTargetValue } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import SelectInput from './select-input';
 import * as icons from '../../../icons';
 
 const iconNames = Object.keys(icons);
-
-const getMenuPortalTargetValue = (menuPortalTarget) => {
-  if (menuPortalTarget === 'document.body') {
-    return document.body;
-  }
-  return undefined;
-};
 
 storiesOf('Components|Inputs/SelectInputs', module)
   .addDecorator(withKnobs)

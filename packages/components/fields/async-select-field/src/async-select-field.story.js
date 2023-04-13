@@ -14,6 +14,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { getMenuPortalTargetValue } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import * as icons from '../../../icons';
 import AsyncSelectField from './async-select-field';
@@ -77,13 +78,6 @@ const filterAnimals = (inputValue) =>
   animalOptions.filter((animalOption) =>
     animalOption.label.toLowerCase().includes(inputValue.toLowerCase())
   );
-
-const getMenuPortalTargetValue = (menuPortalTarget) => {
-  if (menuPortalTarget === 'document.body') {
-    return document.body;
-  }
-  return undefined;
-};
 
 const loadOptions = (inputValue) =>
   delay(500).then(() => filterAnimals(inputValue));

@@ -13,6 +13,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { getMenuPortalTargetValue } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import AsyncSelectInput from './async-select-input';
 import * as icons from '../../../icons';
@@ -54,13 +55,6 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const loadOptions = (inputValue) =>
   delay(500).then(() => filterColors(inputValue));
-
-const getMenuPortalTargetValue = (menuPortalTarget) => {
-  if (menuPortalTarget === 'document.body') {
-    return document.body;
-  }
-  return undefined;
-};
 
 class SelectStory extends Component {
   static displayName = 'SelectStory';

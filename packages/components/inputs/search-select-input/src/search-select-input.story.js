@@ -14,6 +14,7 @@ import Spacings from '@commercetools-uikit/spacings';
 import { SELECT_DROPDOWN_OPTION_TYPES } from '@commercetools-uikit/select-utils';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { getMenuPortalTargetValue } from '../../../../../docs/.storybook/utils';
 import SearchSelectInput from './search-select-input';
 import Readme from '../README.md';
 
@@ -45,13 +46,6 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const loadOptions = (inputValue) =>
   delay(500).then(() => filterColors(inputValue));
-
-const getMenuPortalTargetValue = (menuPortalTarget) => {
-  if (menuPortalTarget === 'document.body') {
-    return document.body;
-  }
-  return undefined;
-};
 
 class SearchSelectInputStory extends Component {
   static displayName = 'SearchSelectInputStory';

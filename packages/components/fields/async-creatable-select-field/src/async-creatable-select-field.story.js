@@ -14,6 +14,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { getMenuPortalTargetValue } from '../../../../../docs/.storybook/utils';
 import * as icons from '../../../icons';
 import Readme from '../README.md';
 import AsyncCreatableSelectField from './async-creatable-select-field';
@@ -80,13 +81,6 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const loadOptions = (inputValue) =>
   delay(500).then(() => filterAnimals(inputValue));
-
-const getMenuPortalTargetValue = (menuPortalTarget) => {
-  if (menuPortalTarget === 'document.body') {
-    return document.body;
-  }
-  return undefined;
-};
 
 storiesOf('Components|Fields/SelectFields', module)
   .addDecorator(withKnobs)
