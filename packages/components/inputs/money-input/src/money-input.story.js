@@ -10,7 +10,10 @@ import {
   select,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import MoneyInput from './money-input';
 
@@ -57,37 +60,41 @@ class MoneyInputStory extends Component {
     return (
       <>
         <Section>
-          <MoneyInput
-            id={text('id', '')}
-            name={name}
-            value={value}
-            currencies={boolean('dropdown', true) ? currencies : undefined}
-            placeholder={text('placeholder', 'Placeholder')}
-            onFocus={action('onFocus')}
-            onBlur={action('onBlur')}
-            isDisabled={boolean('isDisabled', false)}
-            isReadOnly={boolean('isReadOnly', false)}
-            isAutofocussed={boolean('isAutofocussed', false)}
-            onChange={(event) => {
-              action('onChange')(event);
+          <Spacings.Stack scale="m">
+            <MoneyInput
+              id={text('id', '')}
+              name={name}
+              value={value}
+              currencies={boolean('dropdown', true) ? currencies : undefined}
+              placeholder={text('placeholder', 'Placeholder')}
+              onFocus={action('onFocus')}
+              onBlur={action('onBlur')}
+              isDisabled={boolean('isDisabled', false)}
+              isReadOnly={boolean('isReadOnly', false)}
+              isAutofocussed={boolean('isAutofocussed', false)}
+              onChange={(event) => {
+                action('onChange')(event);
 
-              if (event.target.name.endsWith('.amount')) {
-                this.setState({ amount: event.target.value });
-              }
+                if (event.target.name.endsWith('.amount')) {
+                  this.setState({ amount: event.target.value });
+                }
 
-              if (event.target.name.endsWith('.currencyCode')) {
-                this.setState({ currencyCode: event.target.value });
-              }
-            }}
-            hasError={boolean('hasError', false)}
-            hasWarning={boolean('hasWarning', false)}
-            horizontalConstraint={select(
-              'horizontalConstraint',
-              Constraints.getAcceptedMaxPropValues(3),
-              7
-            )}
-            hasHighPrecisionBadge={boolean('hasHighPrecisionBadge', false)}
-          />
+                if (event.target.name.endsWith('.currencyCode')) {
+                  this.setState({ currencyCode: event.target.value });
+                }
+              }}
+              hasError={boolean('hasError', false)}
+              hasWarning={boolean('hasWarning', false)}
+              horizontalConstraint={select(
+                'horizontalConstraint',
+                Constraints.getAcceptedMaxPropValues(3),
+                7
+              )}
+              hasHighPrecisionBadge={boolean('hasHighPrecisionBadge', false)}
+              {...addMenuPortalProps()}
+            />
+            <NeighbouringStackingContext />
+          </Spacings.Stack>
         </Section>
         <Section>
           <p>

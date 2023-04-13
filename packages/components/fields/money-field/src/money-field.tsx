@@ -157,6 +157,8 @@ export type TMoneyFieldProps = {
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
    * z-index value for the currency select menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**

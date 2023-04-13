@@ -16,6 +16,7 @@ import {
   customComponentsWithIcons,
   createSelectStyles,
   messages,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { useTheme } from '@commercetools-uikit/design-system';
@@ -228,6 +229,8 @@ export type TSelectInputProps = {
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
@@ -332,6 +335,12 @@ const defaultProps: Pick<
 const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
   const { isNewTheme } = useTheme();
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'SelectInput',
+  });
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
