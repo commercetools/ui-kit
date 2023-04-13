@@ -14,7 +14,7 @@ import Spacings from '@commercetools-uikit/spacings';
 import { SELECT_DROPDOWN_OPTION_TYPES } from '@commercetools-uikit/select-utils';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
-import { getMenuPortalTargetValue } from '../../../../../docs/.storybook/utils';
+import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import SearchSelectInput from './search-select-input';
 import Readme from '../README.md';
 
@@ -110,28 +110,9 @@ class SearchSelectInputStory extends Component {
                   // Async props
                   loadOptions={loadOptions}
                   cacheOptions={boolean('cacheOptions', false)}
-                  menuPortalZIndex={select('menuPortalZIndex', [1, 2, 3], 1)}
-                  // this IIFE is only to make the `menuPortalTarget` knob show up after `menuPortalZIndex`
-                  {...(() => {
-                    const menuPortalTarget = select(
-                      'menuPortalTarget',
-                      ['undefined', 'document.body'],
-                      'undefined'
-                    );
-                    return {
-                      menuPortalTarget:
-                        getMenuPortalTargetValue(menuPortalTarget),
-                    };
-                  })()}
+                  {...addMenuPortalProps()}
                 />
-                {/* this IIFE is only to make the `menuPortalZIndex-show-neighbouring-stacking-context` knob show up last on the list */}
-                {(() => {
-                  const isActive = boolean(
-                    'menuPortalZIndex-show-neighbouring-stacking-context',
-                    false
-                  );
-                  return isActive && <NeighbouringStackingContext />;
-                })()}
+                <NeighbouringStackingContext />
                 <div>
                   <p>
                     In this example, our `loadOptions` function uses the data

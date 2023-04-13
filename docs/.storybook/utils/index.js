@@ -1,1 +1,1 @@
-export { getMenuPortalTargetValue } from './get-menu-portal-target-value';
+export { addMenuPortalProps } from './add-menu-portal-props';

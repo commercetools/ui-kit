@@ -13,7 +13,7 @@ import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
-import { getMenuPortalTargetValue } from '../../../../../docs/.storybook/utils';
+import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import AsyncCreatableSelectInput from './async-creatable-select-input';
 import * as icons from '../../../icons';
@@ -123,28 +123,9 @@ class SelectStory extends Component {
                   )}
                   showOptionGroupDivider={showOptionGroupDivider}
                   iconLeft={iconLeft ? createElement(iconLeft) : undefined}
-                  menuPortalZIndex={select('menuPortalZIndex', [1, 2, 3], 1)}
-                  // this IIFE is only to make the `menuPortalTarget` knob show up after `menuPortalZIndex`
-                  {...(() => {
-                    const menuPortalTarget = select(
-                      'menuPortalTarget',
-                      ['undefined', 'document.body'],
-                      'undefined'
-                    );
-                    return {
-                      menuPortalTarget:
-                        getMenuPortalTargetValue(menuPortalTarget),
-                    };
-                  })()}
+                  {...addMenuPortalProps()}
                 />
-                {/* this IIFE is only to make the `menuPortalZIndex-show-neighbouring-stacking-context` knob show up last on the list */}
-                {(() => {
-                  const isActive = boolean(
-                    'menuPortalZIndex-show-neighbouring-stacking-context',
-                    false
-                  );
-                  return isActive && <NeighbouringStackingContext />;
-                })()}
+                <NeighbouringStackingContext />
               </Spacings.Stack>
             )}
           />
