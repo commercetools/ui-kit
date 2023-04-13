@@ -1,4 +1,4 @@
-import { ReactNode, Children } from 'react';
+import { type ReactNode, Children } from 'react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import styled from '@emotion/styled';
 
