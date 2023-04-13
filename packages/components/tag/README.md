@@ -99,16 +99,11 @@ import { Tag, TagList } from '@commercetools-uikit/tag';
 
 const Example = () => (
   <TagList>
-    {["apple", "orange"].map((tag, index) => (
-      <Tag
-        key={index}
-      >
-        {tag}
-      </Tag>
+    {['apple', 'orange'].map((tag, index) => (
+      <Tag key={index}>{tag}</Tag>
     ))}
   </TagList>
-  );
+);
 
 export default Example;
-/>
 ```
