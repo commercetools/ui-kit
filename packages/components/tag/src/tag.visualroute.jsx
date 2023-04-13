@@ -201,7 +201,6 @@ export const component = () => (
     </Spec>
     <Spec
       label="Tag list - with remove"
-      propsToList={[...basePropsToList, 'to']}
     >
       <TagList>
         {examplesLong.map((tag, index) => (
@@ -213,7 +212,6 @@ export const component = () => (
     </Spec>
     <Spec
       label="Tag list - no remove"
-      propsToList={[...basePropsToList, 'to']}
     >
       <TagList>
         {examplesLong.map((tag, index) => (
@@ -225,7 +223,6 @@ export const component = () => (
     </Spec>
     <Spec
       label="Tag list - multi rows"
-      propsToList={[...basePropsToList, 'to']}
     >
       <Constraints.Horizontal max={5}>
         <TagList>
