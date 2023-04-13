@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 
 export type TTagListProps = {
   children: ReactNode;
-  tag: string;
 };
 
 const TagListContainer = styled.div`
