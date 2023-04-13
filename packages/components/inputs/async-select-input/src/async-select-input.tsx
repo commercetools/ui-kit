@@ -19,7 +19,7 @@ import {
   customComponentsWithIcons,
   messages,
   createSelectStyles,
-  warnAgainstMisuseOfMenuPortalProps,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { useTheme } from '@commercetools-uikit/design-system';
 
@@ -321,7 +321,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
     );
   }
 
-  warnAgainstMisuseOfMenuPortalProps({
+  warnIfMenuPortalPropsAreMissing({
     menuPortalZIndex: props.menuPortalZIndex,
     menuPortalTarget: props.menuPortalTarget,
     componentName: 'AsyncSelectInput',

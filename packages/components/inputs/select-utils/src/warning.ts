@@ -4,14 +4,14 @@ import { type Props as ReactSelectProps } from 'react-select';
 const getMessage = (componentName: string) =>
   `${componentName}: use \`menuPortalZIndex\` in conjunction with \`menuPortalTarget\``;
 
-type TWarnAgainstMisuseOfMenuPortalProps = {
+type TWarnIfMenuPortalPropsAreMissingProps = {
   menuPortalZIndex?: number;
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   componentName: string;
 };
 
-export const warnAgainstMisuseOfMenuPortalProps = (
-  props: TWarnAgainstMisuseOfMenuPortalProps
+export const warnIfMenuPortalPropsAreMissing = (
+  props: TWarnIfMenuPortalPropsAreMissingProps
 ): void => {
   if (
     typeof props.menuPortalZIndex !== 'undefined' &&
