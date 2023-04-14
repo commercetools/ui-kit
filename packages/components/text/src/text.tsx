@@ -83,6 +83,7 @@ Text.displayName = 'Text';
 export type THeadlineProps = {
   as?: 'h1' | 'h2' | 'h3';
   truncate?: boolean;
+  nowrap?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -119,6 +120,7 @@ Headline.displayName = 'TextHeadline';
 export type TSubheadlineProps = {
   as?: 'h4' | 'h5';
   truncate?: boolean;
+  nowrap?: boolean;
   isBold?: boolean;
   tone?: TTone;
 } & TBasicTextProps &
@@ -179,6 +181,7 @@ export type TBodyProps = {
   isStrikethrough?: boolean;
   tone?: TTone | 'inverted';
   truncate?: boolean;
+  nowrap?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -220,6 +223,7 @@ export type TDetailProps = {
   as?: 'span' | 'small';
   tone?: TTone | 'warning' | 'inverted';
   truncate?: boolean;
+  nowrap?: boolean;
   'aria-labelledby'?: string;
 } & TBasicTextProps &
   TBasicHeadlineProps;

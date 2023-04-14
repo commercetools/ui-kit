@@ -24,6 +24,7 @@ storiesOf('Basics|Typography/Text', module)
         as={select('as', ['h1', 'h2', 'h3'], 'h1')}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        nowrap={boolean('nowrap', false)}
       >
         {text('Text', 'Sample text Headline')}
       </Text.Headline>
@@ -44,6 +45,7 @@ storiesOf('Basics|Typography/Text', module)
         })}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        nowrap={boolean('nowrap', false)}
       >
         {text('Text', 'Sample text Subheadline')}
       </Text.Subheadline>
@@ -85,6 +87,7 @@ storiesOf('Basics|Typography/Text', module)
         })}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        nowrap={boolean('nowrap', false)}
       >
         {text('Text', 'Sample text Body')}
       </Text.Body>
@@ -112,6 +115,7 @@ storiesOf('Basics|Typography/Text', module)
         })}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        nowrap={boolean('nowrap', false)}
       >
         {text('Text', 'Sample text Detail')}
       </Text.Detail>
