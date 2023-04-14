@@ -59,7 +59,7 @@ const LoadingSpinner = (props: TLoadingSpinnerProps) => {
     return () => clearTimeout(delaySpinnerTimeout);
   }, [props.maxDelayDuration]);
 
-  if (!showSpinner) return null;
+  if (!showSpinner && (props.maxDelayDuration ?? 0) > 0) return null;
 
   return (
     <Inline alignItems="center">
