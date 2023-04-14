@@ -1,1 +1,7 @@
-export type { TSelectInputProps, TOption } from './select-input';
+export type {
+  TSelectInputProps,
+  TOption,
+  TOptionObject,
+  TOptions,
+  TCustomEvent,
+} from './select-input';
