@@ -32,13 +32,13 @@ export type TOption = {
   label?: ReactNode;
 };
 
-type TOptionObject = {
+export type TOptionObject = {
   options: TOption[];
 };
 
-type TOptions = TOption[] | TOptionObject[];
+export type TOptions = TOption[] | TOptionObject[];
 
-type TCustomEvent = {
+export type TCustomEvent = {
   target: {
     id?: ReactSelectProps['inputId'];
     name?: ReactSelectProps['name'];
