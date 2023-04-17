@@ -283,7 +283,7 @@ export const parseRawAmountToNumber = (rawAmount: string, locale: string) => {
   fractionsSeparator = fractionsSeparator === '.' ? '\\.' : fractionsSeparator; // here we escape the '.' to use it as regex
   // The raw amount with only one sparator
   const normalizedAmount = String(rawAmount)
-    .replace(new RegExp(`[^0-9${fractionsSeparator}]`, 'g'), '') // we just keep the numbers and the fraction symbol
+    .replace(new RegExp(`[^-0-9${fractionsSeparator}]`, 'g'), '') // we just keep the numbers and the fraction symbol
     .replace(fractionsSeparator, '.'); // then we change whatever `fractionsSeparator` was to `.` so we can parse it as float
 
   return parseFloat(normalizedAmount);
