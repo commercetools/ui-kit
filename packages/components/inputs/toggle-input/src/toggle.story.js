@@ -19,38 +19,17 @@ storiesOf('Components|Inputs', module)
       <Value
         defaultValue={false}
         render={(value, onChange) => (
-          <div
-            style={{
-              width: '200px',
-              height: '40px',
-              overflowY: 'scroll',
-              zIndex: '1',
-              position: 'relative',
-              border: '1px solid black',
+          <Toggle
+            id={text('id', 'toggle-id')}
+            name={text('name', '')}
+            size={select('size', ['small', 'big'], 'big')}
+            isDisabled={boolean('isDisabled', false)}
+            isChecked={value}
+            onChange={(event) => {
+              action('onChange')(event);
+              onChange(event.target.checked);
             }}
-          >
-            <div
-              style={{
-                position: 'sticky',
-                top: '0',
-                width: '100%',
-                height: '10px',
-                background: 'pink',
-                zIndex: 1,
-              }}
-            ></div>
-            <Toggle
-              id={text('id', 'toggle-id')}
-              name={text('name', '')}
-              size={select('size', ['small', 'big'], 'big')}
-              isDisabled={boolean('isDisabled', false)}
-              isChecked={value}
-              onChange={(event) => {
-                action('onChange')(event);
-                onChange(event.target.checked);
-              }}
-            />
-          </div>
+          />
         )}
       />
     </Section>
