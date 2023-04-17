@@ -18,6 +18,7 @@ import {
   filterDataAttributes,
   warning,
 } from '@commercetools-uikit/utils';
+import { warnIfMenuPortalPropsAreMissing } from '@commercetools-uikit/select-utils';
 import {
   getClearIconButtonStyles,
   getSearchIconButtonStyles,
@@ -150,6 +151,8 @@ export type TSelectableSearchInputProps = {
   options: TOption[] | TOptionObject[];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
@@ -251,9 +254,15 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
-      'TextInput: `onChange` is required when is not read only.'
+      'SelectableSearchInput: `onChange` is required when is not read only.'
     );
   }
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'SelectableSearchInput',
+  });
 
   const { onFocus, onBlur, name } = props;
   const handleTextInputFocus = useCallback(() => {

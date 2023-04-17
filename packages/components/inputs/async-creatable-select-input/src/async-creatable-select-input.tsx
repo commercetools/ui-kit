@@ -19,6 +19,7 @@ import {
   customComponentsWithIcons,
   messages,
   createSelectStyles,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { useTheme } from '@commercetools-uikit/design-system';
@@ -204,6 +205,8 @@ export type TAsyncCreatableSelectInputProps = {
   menuPortalTarget?: ReactSelectAsyncCreatableProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex: number;
   /**
@@ -368,6 +371,12 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
       'AsyncCreatableSelectInput: `value` is expected to be an array when isMulti is true'
     );
   }
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'AsyncCreatableSelectInput',
+  });
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>

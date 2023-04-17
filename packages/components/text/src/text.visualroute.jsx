@@ -22,6 +22,13 @@ export const component = () => (
         </Text.Headline>
       </Spec>
     </NarrowBox>
+    <NarrowBox>
+      <Spec label="Headline - h1 - nowrap">
+        <Text.Headline as="h1" nowrap={true}>
+          {'A longer title that should not be new line'}
+        </Text.Headline>
+      </Spec>
+    </NarrowBox>
 
     <Spec label="Headline - h2">
       <Text.Headline as="h2">{'Title H2'}</Text.Headline>
@@ -36,6 +43,13 @@ export const component = () => (
       <Spec label="Subheadline - h4 - truncated">
         <Text.Subheadline as="h4" truncate={true}>
           {'A longer subheadline that should be truncated'}
+        </Text.Subheadline>
+      </Spec>
+    </NarrowBox>
+    <NarrowBox>
+      <Spec label="Subheadline - h4 - nowrap">
+        <Text.Subheadline as="h4" nowrap={true}>
+          {'A longer title that should not be new line'}
         </Text.Subheadline>
       </Spec>
     </NarrowBox>
@@ -116,6 +130,13 @@ export const component = () => (
         </Text.Body>
       </Spec>
     </NarrowBox>
+    <NarrowBox>
+      <Spec label="Body - nowrap">
+        <Text.Body nowrap={true}>
+          A longer title that should not be new line
+        </Text.Body>
+      </Spec>
+    </NarrowBox>
     <Spec label="Body - inline" omitPropsList>
       <Text.Body as="span">One inline body text{'. '}</Text.Body>
       <Text.Body as="span">A second inline text.</Text.Body>
@@ -151,6 +172,13 @@ export const component = () => (
       <Spec label="Detail - truncate">
         <Text.Detail truncate={true}>
           A longer detail text that needs to be truncated.
+        </Text.Detail>
+      </Spec>
+    </NarrowBox>
+    <NarrowBox>
+      <Spec label="Detail - nowrap">
+        <Text.Detail nowrap={true}>
+          A longer title that should not be new line
         </Text.Detail>
       </Spec>
     </NarrowBox>

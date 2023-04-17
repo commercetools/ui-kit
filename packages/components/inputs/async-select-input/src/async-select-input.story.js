@@ -10,7 +10,10 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import AsyncSelectInput from './async-select-input';
 import * as icons from '../../../icons';
@@ -71,7 +74,7 @@ class SelectStory extends Component {
             key={`${isMulti}-${defaultOptions}`}
             defaultValue={isMulti ? [] : undefined}
             render={(value, onChange) => (
-              <div>
+              <Spacings.Stack scale="m">
                 <AsyncSelectInput
                   horizontalConstraint={select(
                     'horizontalConstraint',
@@ -112,8 +115,10 @@ class SelectStory extends Component {
                   cacheOptions={boolean('cacheOptions', false)}
                   showOptionGroupDivider={showOptionGroupDivider}
                   iconLeft={iconLeft ? createElement(iconLeft) : undefined}
+                  {...addMenuPortalProps()}
                 />
-              </div>
+                <NeighbouringStackingContext />
+              </Spacings.Stack>
             )}
           />
         </Section>
