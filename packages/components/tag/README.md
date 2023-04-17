@@ -92,7 +92,7 @@ A `TagList` component is used as wrapper for the list of tags. It has predefined
 ## Usage
 
 The `<TagList>` component accepts `<Tag>` element as `children` props.
-Here's the example how to use them:
+Here's an example of how to use them:
 
 ```jsx
 import { Tag, TagList } from '@commercetools-uikit/tag';
