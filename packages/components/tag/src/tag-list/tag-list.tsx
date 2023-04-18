@@ -6,6 +6,8 @@ import styled from '@emotion/styled';
 export type TTagListProps = {
   children: ReactNode;
   /**
+   * @deprecated
+   *
    * Allow to override the styles by passing a `className` prop.
    * <br/>
    * Custom styles can also be passed using the [`css` prop from emotion](https://emotion.sh/docs/css-prop#style-precedence).
