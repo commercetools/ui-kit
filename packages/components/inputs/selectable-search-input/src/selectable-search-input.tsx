@@ -8,8 +8,6 @@ import {
   useCallback,
   useRef,
 } from 'react';
-import has from 'lodash/has';
-import flatMap from 'lodash/flatMap';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Constraints from '@commercetools-uikit/constraints';
 import { SearchIcon, CloseIcon } from '@commercetools-uikit/icons';
@@ -64,6 +62,8 @@ export type TOption = {
 export type TOptionObject = {
   options: TOption[];
 };
+
+export type TOptions = TOption[] | TOptionObject[];
 
 export type TSelectableSearchInputProps = {
   /**
@@ -148,7 +148,7 @@ export type TSelectableSearchInputProps = {
   /**
    * Array of options that populate the select menu
    */
-  options: TOption[] | TOptionObject[];
+  options: TOptions;
   /**
    * z-index value for the menu portal
    * <br>
@@ -216,17 +216,23 @@ const defaultProps: Pick<
   | 'menuHorizontalConstraint'
   | 'showSubmitButton'
   | 'menuPortalZIndex'
+  | 'options'
 > = {
   horizontalConstraint: 'scale',
   isClearable: true,
   menuHorizontalConstraint: 3,
   showSubmitButton: true,
   menuPortalZIndex: 1,
+  options: [],
 };
 
 const selectableSearchInputSequentialId = createSequentialId(
   'selectable-search-input-'
 );
+
+const isOptionObject = (
+  option: TOption | TOptionObject
+): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
 const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const [textInputHasFocus, toggleTextInputHasFocus] = useToggleState(false);
@@ -237,14 +243,16 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
 
   const { isNewTheme } = useTheme();
 
-  const optionsWithoutGroups = flatMap(props.options, (option) =>
-    has(option, 'value') ? option : (option as TOptionObject).options
-  );
+  const optionsWithoutGroups = props.options.flatMap((option) => {
+    if (isOptionObject(option)) {
+      return option.options;
+    }
+    return option;
+  });
 
   const selectedOption = optionsWithoutGroups.find(
-    (option) =>
-      has(option, 'value') && (option as TOption).value === props.value.option
-  ) as TOption;
+    (option) => option.value === props.value.option
+  );
 
   const selectablSearchInputId = useFieldId(
     props.id,
@@ -319,7 +327,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     if (props.onSubmit) {
       props.onSubmit({
         text: searchValue,
-        option: selectedOption?.value,
+        option: selectedOption?.value ?? '',
       });
     }
   };
