@@ -25,7 +25,8 @@ export const component = () => (
         selectedLanguage="en"
       />
     </Spec>
-    <Spec label="when multiline text is expanded by default">
+    {/* Percy does not support this dynamic behaviour tests as of now */}
+    {/* <Spec label="when multiline text is expanded by default">
       <LocalizedMultilineTextInput
         value={value}
         onChange={() => {}}
@@ -43,7 +44,7 @@ export const component = () => (
         defaultExpandMultilineText={true}
         defaultExpandLanguages={true}
       />
-    </Spec>
+    </Spec> */}
     <Spec label="when language controls are hidden">
       <LocalizedMultilineTextInput
         value={value}
