@@ -27,7 +27,6 @@
     "@commercetools-uikit/icons": "15.14.3",
     "@commercetools-uikit/spacings": "15.14.3",
     "@commercetools-uikit/text": "15.14.3",
-    "@commercetools-uikit/utils": "15.14.3",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "prop-types": "15.8.1",
