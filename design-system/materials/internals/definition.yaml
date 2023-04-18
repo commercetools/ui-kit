@@ -318,6 +318,8 @@ componentGroups:
     description: 'Tag drag icon elements'
   tag-warning:
     description: 'Tag elements with type warning'
+  tag-list:
+    description: 'Wrapper for Tag elements'
   text:
     description: 'Text elements'
   body:
@@ -1149,6 +1151,8 @@ decisionGroupsByTheme:
           choice: '0 var(--spacing-10)'
         margin-for-rich-text-dropdown-item-label:
           choice: '0 0 0 var(--spacing-10)'
+        margin-for-tag-list:
+          choice: '0 var(--spacing-10) var(--spacing-10) 0'
     paddings:
       label: Paddings
       prefix: padding
@@ -1856,6 +1860,8 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-10) 2px'
         margin-for-rich-text-dropdown-item-label:
           choice: '0 0 0 var(--spacing-20)'
+        margin-for-tag-list:
+          choice: '0 var(--spacing-20) var(--spacing-20) 0'
     paddings:
       label: Paddings
       prefix: padding
