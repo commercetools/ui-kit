@@ -3,7 +3,6 @@ import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import has from 'lodash/has';
-import flatMap from 'lodash/flatMap';
 import Select, {
   components as defaultComponents,
   type Props as ReactSelectProps,
@@ -291,7 +290,7 @@ export type TSelectInputProps = {
   /**
    * Array of options that populate the select menu
    */
-  options?: TOptions;
+  options: TOptions;
   showOptionGroupDivider?: boolean;
   // pageSize: PropTypes.number,
   /**
@@ -325,12 +324,17 @@ export type TSelectInputProps = {
 
 const defaultProps: Pick<
   TSelectInputProps,
-  'maxMenuHeight' | 'menuPortalZIndex' | 'controlShouldRenderValue'
+  'maxMenuHeight' | 'menuPortalZIndex' | 'controlShouldRenderValue' | 'options'
 > = {
   maxMenuHeight: 220,
   menuPortalZIndex: 1,
   controlShouldRenderValue: true,
+  options: [],
 };
+
+const isOptionObject = (
+  option: TOption | TOptionObject
+): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
 const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
@@ -352,9 +356,12 @@ const SelectInput = (props: TSelectInputProps) => {
   //     { label: 'Flavours', options: flavourOptions },
   //   ];
   // So we "ungroup" the options by merging them all into one list first.
-  const optionsWithoutGroups = flatMap(props.options, (option) =>
-    has(option, 'value') ? option : (option as TOptionObject).options
-  );
+  const optionsWithoutGroups = props.options.flatMap((option) => {
+    if (isOptionObject(option)) {
+      return option.options;
+    }
+    return option;
+  });
 
   const selectedOptions = props.isMulti
     ? ((props.value || []) as string[])
