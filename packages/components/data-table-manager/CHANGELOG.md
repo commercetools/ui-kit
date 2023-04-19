@@ -1,5 +1,30 @@
 # @commercetools-uikit/data-table-manager
 
+## 15.15.0
+
+### Patch Changes
+
+- Updated dependencies [[`03cb6a23d`](https://github.com/commercetools/ui-kit/commit/03cb6a23dc0f2709e774e60f46ba610080db47b4), [`d20d14ec3`](https://github.com/commercetools/ui-kit/commit/d20d14ec38be7327b1386c9501318ca201c9df04), [`26830d8ed`](https://github.com/commercetools/ui-kit/commit/26830d8ed0f0bccad6ceae0891e4c2491328c685), [`5bf3bdacf`](https://github.com/commercetools/ui-kit/commit/5bf3bdacf2e8553ce965e564a805b0fe011a9612), [`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1), [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84), [`f8e2292ac`](https://github.com/commercetools/ui-kit/commit/f8e2292ac9e7003f5d1ff6401cb4a0284a6721be), [`b9f80bf64`](https://github.com/commercetools/ui-kit/commit/b9f80bf64a5a483bfd93c5d8e856fcd587ced281), [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84), [`d951de90b`](https://github.com/commercetools/ui-kit/commit/d951de90bbb2345b1726ca9ccb4a458bceceed6b), [`75da6b87b`](https://github.com/commercetools/ui-kit/commit/75da6b87b3ae9c7a14548ea1cd38b427e1e167c5)]:
+  - @commercetools-uikit/select-input@15.15.0
+  - @commercetools-uikit/tag@15.15.0
+  - @commercetools-uikit/icons@15.15.0
+  - @commercetools-uikit/design-system@15.15.0
+  - @commercetools-uikit/hooks@15.15.0
+  - @commercetools-uikit/text@15.15.0
+  - @commercetools-uikit/async-select-input@15.15.0
+  - @commercetools-uikit/field-label@15.15.0
+  - @commercetools-uikit/radio-input@15.15.0
+  - @commercetools-uikit/accessible-button@15.15.0
+  - @commercetools-uikit/primary-button@15.15.0
+  - @commercetools-uikit/secondary-button@15.15.0
+  - @commercetools-uikit/secondary-icon-button@15.15.0
+  - @commercetools-uikit/card@15.15.0
+  - @commercetools-uikit/collapsible-motion@15.15.0
+  - @commercetools-uikit/spacings@15.15.0
+  - @commercetools-uikit/accessible-hidden@15.15.0
+  - @commercetools-uikit/grid@15.15.0
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

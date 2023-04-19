@@ -1,5 +1,23 @@
 # @commercetools-uikit/select-field
 
+## 15.15.0
+
+### Patch Changes
+
+- [#2484](https://github.com/commercetools/ui-kit/pull/2484) [`75da6b87b`](https://github.com/commercetools/ui-kit/commit/75da6b87b3ae9c7a14548ea1cd38b427e1e167c5) Thanks [@kark](https://github.com/kark)! - Improve docs regarding the use of `menuPortalZIndex` prop.
+  Warn when `menuPortalZIndex` is used without setting `menuPortalTarget`.
+
+- [#2493](https://github.com/commercetools/ui-kit/pull/2493) [`f8e2292ac`](https://github.com/commercetools/ui-kit/commit/f8e2292ac9e7003f5d1ff6401cb4a0284a6721be) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Export new Typescript types: `TSelectFieldProps`, `TOption`, `TOptionObject`, `TOptions` and `TCustomEvent`.
+
+- Updated dependencies [[`03cb6a23d`](https://github.com/commercetools/ui-kit/commit/03cb6a23dc0f2709e774e60f46ba610080db47b4), [`26830d8ed`](https://github.com/commercetools/ui-kit/commit/26830d8ed0f0bccad6ceae0891e4c2491328c685), [`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1), [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84), [`f8e2292ac`](https://github.com/commercetools/ui-kit/commit/f8e2292ac9e7003f5d1ff6401cb4a0284a6721be), [`b9f80bf64`](https://github.com/commercetools/ui-kit/commit/b9f80bf64a5a483bfd93c5d8e856fcd587ced281), [`75da6b87b`](https://github.com/commercetools/ui-kit/commit/75da6b87b3ae9c7a14548ea1cd38b427e1e167c5)]:
+  - @commercetools-uikit/select-input@15.15.0
+  - @commercetools-uikit/design-system@15.15.0
+  - @commercetools-uikit/field-label@15.15.0
+  - @commercetools-uikit/constraints@15.15.0
+  - @commercetools-uikit/spacings@15.15.0
+  - @commercetools-uikit/field-errors@15.15.0
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

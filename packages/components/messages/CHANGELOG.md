@@ -1,5 +1,13 @@
 # @commercetools-uikit/messages
 
+## 15.15.0
+
+### Patch Changes
+
+- Updated dependencies [[`d951de90b`](https://github.com/commercetools/ui-kit/commit/d951de90bbb2345b1726ca9ccb4a458bceceed6b)]:
+  - @commercetools-uikit/text@15.15.0
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes
