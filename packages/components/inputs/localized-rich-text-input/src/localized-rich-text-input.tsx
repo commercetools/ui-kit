@@ -150,10 +150,7 @@ type StaticProps = {
   isTouched: typeof isTouched;
 };
 
-type TReducerState = {
-  [id: string]: boolean;
-};
-
+type TReducerState = Record<string, boolean>;
 type TReducerAction =
   | { type: 'toggle'; payload: string }
   | { type: 'toggleAll'; payload: string };
@@ -228,17 +225,17 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
     }
 
     const initialExpandedTranslationsState = Object.keys(props.value).reduce(
-      (translations, locale) => {
-        return {
-          [locale]: Boolean(props.defaultExpandMultilineText),
-          ...translations,
-        };
-      },
-      {}
+      (translations, locale) => ({
+        ...translations,
+        [locale]: Boolean(props.defaultExpandMultilineText),
+      }),
+      {} as TReducerState
     );
 
     const [expandedTranslationsState, expandedTranslationsDispatch] =
-      useReducer(expandedTranslationsReducer, initialExpandedTranslationsState);
+      useReducer<
+        (state: TReducerState, action: TReducerAction) => TReducerState
+      >(expandedTranslationsReducer, initialExpandedTranslationsState);
 
     const defaultExpansionState = Boolean(
       props.hideLanguageExpansionControls || props.defaultExpandLanguages
