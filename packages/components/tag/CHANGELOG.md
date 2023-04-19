@@ -1,5 +1,24 @@
 # @commercetools-uikit/tag
 
+## 15.15.0
+
+### Minor Changes
+
+- [#2489](https://github.com/commercetools/ui-kit/pull/2489) [`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding `TagList` component
+
+### Patch Changes
+
+- [#2497](https://github.com/commercetools/ui-kit/pull/2497) [`d20d14ec3`](https://github.com/commercetools/ui-kit/commit/d20d14ec38be7327b1386c9501318ca201c9df04) Thanks [@kark](https://github.com/kark)! - Enable passing `data-*` attributes to the `<TagList>` component
+
+- Updated dependencies [[`5bf3bdacf`](https://github.com/commercetools/ui-kit/commit/5bf3bdacf2e8553ce965e564a805b0fe011a9612), [`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1), [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84), [`b9f80bf64`](https://github.com/commercetools/ui-kit/commit/b9f80bf64a5a483bfd93c5d8e856fcd587ced281), [`d951de90b`](https://github.com/commercetools/ui-kit/commit/d951de90bbb2345b1726ca9ccb4a458bceceed6b)]:
+  - @commercetools-uikit/icons@15.15.0
+  - @commercetools-uikit/design-system@15.15.0
+  - @commercetools-uikit/text@15.15.0
+  - @commercetools-uikit/accessible-button@15.15.0
+  - @commercetools-uikit/constraints@15.15.0
+  - @commercetools-uikit/spacings@15.15.0
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

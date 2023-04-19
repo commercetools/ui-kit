@@ -1,5 +1,17 @@
 # @commercetools-uikit/toggle-input
 
+## 15.15.0
+
+### Patch Changes
+
+- [#2494](https://github.com/commercetools/ui-kit/pull/2494) [`a8f7b107a`](https://github.com/commercetools/ui-kit/commit/a8f7b107af2d648012aa379cff76c4855107638a) Thanks [@kark](https://github.com/kark)! - Fix an issue with `z-index`
+
+- Updated dependencies [[`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1), [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84), [`b9f80bf64`](https://github.com/commercetools/ui-kit/commit/b9f80bf64a5a483bfd93c5d8e856fcd587ced281)]:
+  - @commercetools-uikit/design-system@15.15.0
+  - @commercetools-uikit/input-utils@15.15.0
+  - @commercetools-uikit/constraints@15.15.0
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

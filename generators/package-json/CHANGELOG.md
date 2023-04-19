@@ -1,5 +1,11 @@
 # @commercetools-local/generator-package-json
 
+## 3.0.9
+
+### Patch Changes
+
+- [#2496](https://github.com/commercetools/ui-kit/pull/2496) [`03cb6a23d`](https://github.com/commercetools/ui-kit/commit/03cb6a23dc0f2709e774e60f46ba610080db47b4) Thanks [@emmenko](https://github.com/emmenko)! - Update TypeScript to v5
+
 ## 3.0.8
 
 ### Patch Changes
