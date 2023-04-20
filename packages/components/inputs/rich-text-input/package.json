@@ -41,7 +41,7 @@
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
     "slate": "0.75.0",
-    "slate-history": "0.86.0",
+    "slate-history": "0.93.0",
     "slate-react": "0.75.0"
   },
   "devDependencies": {

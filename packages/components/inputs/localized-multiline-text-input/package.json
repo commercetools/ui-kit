@@ -35,7 +35,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "prop-types": "15.8.1",
-    "react-select": "5.7.1",
+    "react-select": "5.7.2",
     "react-textarea-autosize": "8.4.0"
   },
   "devDependencies": {
