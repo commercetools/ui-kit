@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/collapsible-motion",
   "description": "A component which allows building collapsible elements with an arbitrary height.",
-  "version": "15.15.0",
+  "version": "15.15.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,8 +21,8 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/hooks": "15.15.0",
-    "@commercetools-uikit/utils": "15.15.0",
+    "@commercetools-uikit/hooks": "15.15.1",
+    "@commercetools-uikit/utils": "15.15.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
