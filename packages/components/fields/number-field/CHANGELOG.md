@@ -1,5 +1,18 @@
 # @commercetools-uikit/number-field
 
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.15.1
+  - @commercetools-uikit/constraints@15.15.1
+  - @commercetools-uikit/field-errors@15.15.1
+  - @commercetools-uikit/field-label@15.15.1
+  - @commercetools-uikit/number-input@15.15.1
+  - @commercetools-uikit/spacings-stack@15.15.1
+  - @commercetools-uikit/utils@15.15.1
+
 ## 15.15.0
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @commercetools-uikit/design-system
 
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.15.1
+
 ## 15.15.0
 
 ### Minor Changes
