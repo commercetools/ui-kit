@@ -1,5 +1,36 @@
 # @commercetools-uikit/fields
 
+## 16.0.0
+
+### Major Changes
+
+- [#2475](https://github.com/commercetools/ui-kit/pull/2475) [`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade `react-intl` to `v6`.
+
+  # Migration
+
+  The peer dependency of `react-intl` should be updated to `v6`. No other migration steps are required.
+
+### Patch Changes
+
+- Updated dependencies [[`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c)]:
+  - @commercetools-uikit/localized-multiline-text-field@16.0.0
+  - @commercetools-uikit/async-creatable-select-field@16.0.0
+  - @commercetools-uikit/creatable-select-field@16.0.0
+  - @commercetools-uikit/localized-text-field@16.0.0
+  - @commercetools-uikit/multiline-text-field@16.0.0
+  - @commercetools-uikit/search-select-field@16.0.0
+  - @commercetools-uikit/async-select-field@16.0.0
+  - @commercetools-uikit/date-range-field@16.0.0
+  - @commercetools-uikit/date-time-field@16.0.0
+  - @commercetools-uikit/password-field@16.0.0
+  - @commercetools-uikit/number-field@16.0.0
+  - @commercetools-uikit/select-field@16.0.0
+  - @commercetools-uikit/money-field@16.0.0
+  - @commercetools-uikit/radio-field@16.0.0
+  - @commercetools-uikit/date-field@16.0.0
+  - @commercetools-uikit/text-field@16.0.0
+  - @commercetools-uikit/time-field@16.0.0
+
 ## 15.15.1
 
 ### Patch Changes

@@ -1,5 +1,43 @@
 # @commercetools-uikit/inputs
 
+## 16.0.0
+
+### Major Changes
+
+- [#2475](https://github.com/commercetools/ui-kit/pull/2475) [`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade `react-intl` to `v6`.
+
+  # Migration
+
+  The peer dependency of `react-intl` should be updated to `v6`. No other migration steps are required.
+
+### Patch Changes
+
+- Updated dependencies [[`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c)]:
+  - @commercetools-uikit/localized-multiline-text-input@16.0.0
+  - @commercetools-uikit/async-creatable-select-input@16.0.0
+  - @commercetools-uikit/localized-rich-text-input@16.0.0
+  - @commercetools-uikit/selectable-search-input@16.0.0
+  - @commercetools-uikit/creatable-select-input@16.0.0
+  - @commercetools-uikit/localized-money-input@16.0.0
+  - @commercetools-uikit/localized-text-input@16.0.0
+  - @commercetools-uikit/multiline-text-input@16.0.0
+  - @commercetools-uikit/search-select-input@16.0.0
+  - @commercetools-uikit/async-select-input@16.0.0
+  - @commercetools-uikit/date-range-input@16.0.0
+  - @commercetools-uikit/date-time-input@16.0.0
+  - @commercetools-uikit/rich-text-input@16.0.0
+  - @commercetools-uikit/checkbox-input@16.0.0
+  - @commercetools-uikit/select-input@16.0.0
+  - @commercetools-uikit/money-input@16.0.0
+  - @commercetools-uikit/date-input@16.0.0
+  - @commercetools-uikit/time-input@16.0.0
+  - @commercetools-uikit/search-text-input@16.0.0
+  - @commercetools-uikit/number-input@16.0.0
+  - @commercetools-uikit/password-input@16.0.0
+  - @commercetools-uikit/radio-input@16.0.0
+  - @commercetools-uikit/text-input@16.0.0
+  - @commercetools-uikit/toggle-input@16.0.0
+
 ## 15.15.1
 
 ### Patch Changes
