@@ -1,5 +1,15 @@
 # @commercetools-uikit/stamp
 
+## 16.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c)]:
+  - @commercetools-uikit/text@16.0.0
+  - @commercetools-uikit/design-system@16.0.0
+  - @commercetools-uikit/spacings-inline@16.0.0
+  - @commercetools-uikit/utils@16.0.0
+
 ## 15.15.1
 
 ### Patch Changes

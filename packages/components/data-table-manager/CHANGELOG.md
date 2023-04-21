@@ -1,5 +1,38 @@
 # @commercetools-uikit/data-table-manager
 
+## 16.0.0
+
+### Major Changes
+
+- [#2475](https://github.com/commercetools/ui-kit/pull/2475) [`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade `react-intl` to `v6`.
+
+  # Migration
+
+  The peer dependency of `react-intl` should be updated to `v6`. No other migration steps are required.
+
+### Patch Changes
+
+- Updated dependencies [[`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c)]:
+  - @commercetools-uikit/secondary-icon-button@16.0.0
+  - @commercetools-uikit/async-select-input@16.0.0
+  - @commercetools-uikit/secondary-button@16.0.0
+  - @commercetools-uikit/primary-button@16.0.0
+  - @commercetools-uikit/select-input@16.0.0
+  - @commercetools-uikit/field-label@16.0.0
+  - @commercetools-uikit/text@16.0.0
+  - @commercetools-uikit/tag@16.0.0
+  - @commercetools-uikit/radio-input@16.0.0
+  - @commercetools-uikit/design-system@16.0.0
+  - @commercetools-uikit/accessible-hidden@16.0.0
+  - @commercetools-uikit/accessible-button@16.0.0
+  - @commercetools-uikit/card@16.0.0
+  - @commercetools-uikit/collapsible-motion@16.0.0
+  - @commercetools-uikit/grid@16.0.0
+  - @commercetools-uikit/icons@16.0.0
+  - @commercetools-uikit/hooks@16.0.0
+  - @commercetools-uikit/utils@16.0.0
+  - @commercetools-uikit/spacings@16.0.0
+
 ## 15.15.1
 
 ### Patch Changes

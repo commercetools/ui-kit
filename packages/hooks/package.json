@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/hooks",
   "description": "A collection of React hooks used across some of the UI-Kit components.",
-  "version": "15.15.1",
+  "version": "16.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/utils": "15.15.1",
+    "@commercetools-uikit/utils": "16.0.0",
     "@types/raf-schd": "^4.0.1",
     "lodash": "4.17.21",
     "raf-schd": "^4.0.3"
