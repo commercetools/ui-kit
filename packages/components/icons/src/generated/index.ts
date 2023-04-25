@@ -73,6 +73,7 @@ export { default as HomeIcon } from './HomeReact';
 export { default as ImportIcon } from './ImportReact';
 export { default as InfoIcon } from './InfoReact';
 export { default as InformationIcon } from './InformationReact';
+export { default as LayersIcon } from './LayersReact';
 export { default as ListWithSearchIcon } from './ListWithSearchReact';
 export { default as ListIcon } from './ListReact';
 export { default as LockIcon } from './LockReact';
