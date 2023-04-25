@@ -254,7 +254,9 @@ const valueContainerStyles = (props: TProps) => (base: TBase) => {
     // See PR from react select for more insight https://github.com/JedWatson/react-select/pull/4833
     display:
       (props.iconLeft && !props.isMulti) ||
-      (props.isMulti && props.hasValue && props.controlShouldRenderValue)
+      (props.isMulti &&
+        props.hasValue &&
+        (props.controlShouldRenderValue ?? true))
         ? 'flex'
         : 'grid',
     fill:
