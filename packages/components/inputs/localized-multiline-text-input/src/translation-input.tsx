@@ -82,9 +82,7 @@ const Row = styled.div`
 `;
 
 const TranslationInput = (props: TranslationInputProps) => {
-  const [contentRowCount, setContentRowCount] = useState(
-    TranslationInput.MIN_ROW_COUNT
-  );
+  const [contentRowCount, setContentRowCount] = useState(0);
 
   const handleHeightChange = useCallback(
     (_, rowCount) => {
@@ -122,10 +120,9 @@ const TranslationInput = (props: TranslationInputProps) => {
     if (onFocus) onFocus();
   }, [props.isCollapsed, onFocus, onToggle]);
 
-  // This checks if the content in the textarea overflows the minimum
-  // amount of lines it should have when collapsed
+  // This checks if the content in the textarea is greater than one row.
   const contentExceedsShownRows =
-    contentRowCount > TranslationInput.MIN_ROW_COUNT;
+    contentRowCount > TranslationInput.FIRST_ROW_COUNT;
 
   const shouldToggleButtonTakeSpace =
     /*
@@ -248,9 +245,8 @@ const TranslationInput = (props: TranslationInputProps) => {
 
 TranslationInput.displayName = 'TranslationInput';
 
-// The minimum ammount of rows the MultilineTextInput will show.
-// When the input is closed, this is used as the maximum row count as well
-// so that the input "collapses".
-TranslationInput.MIN_ROW_COUNT = 1;
+// This is the number represents first row in the input.
+// Anything grater than this means we have multiple rows.
+TranslationInput.FIRST_ROW_COUNT = 38;
 
 export default TranslationInput;

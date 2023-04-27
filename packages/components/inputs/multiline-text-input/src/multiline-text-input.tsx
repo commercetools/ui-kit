@@ -111,9 +111,7 @@ const defaultProps: Pick<
 const MultilineTextInput = (props: TMultilineTextInputProps) => {
   const intl = useIntl();
 
-  const [contentRowCount, setContentRowCount] = useState<number>(
-    MultilineTextInput.MIN_ROW_COUNT
-  );
+  const [contentRowCount, setContentRowCount] = useState<number>(0);
 
   const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
 
@@ -135,10 +133,9 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
     [setContentRowCount]
   );
 
-  // This checks if the content in the textarea overflows the minimum
-  // amount of lines it should have when collapsed
+  // This checks if the content in the textarea is greater than one row.
   const shouldRenderToggleButton =
-    contentRowCount > MultilineTextInput.MIN_ROW_COUNT;
+    contentRowCount > MultilineTextInput.FIRST_ROW_COUNT;
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
@@ -196,10 +193,9 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
 
 MultilineTextInput.displayName = 'MultilineTextInput';
 
-// The minimum ammount of rows the MultilineTextInput will show.
-// When the input is closed, this is used as the maximum row count as well
-// so that the input "collapses".
-MultilineTextInput.MIN_ROW_COUNT = 1;
+// This is the number represents first row in the input.
+// Anything grater than this means we have multiple rows.
+MultilineTextInput.FIRST_ROW_COUNT = 38;
 
 MultilineTextInput.isEmpty = (value: TMultilineTextInputProps['value']) =>
   !value || value.trim().length === 0;
