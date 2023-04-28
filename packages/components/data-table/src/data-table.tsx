@@ -25,7 +25,9 @@ export interface TRow {
   id: string;
 }
 
-const getColumnsLayoutInfo = (columns: TColumn[]) =>
+const getColumnsLayoutInfo = <Row extends TRow = TRow>(
+  columns: TColumn<Row>[]
+) =>
   columns.reduce<Pick<TColumn, 'key' | 'width'>[]>(
     (acc, currentValue) => [
       ...acc,
@@ -154,7 +156,7 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    * The list of columns to be rendered.
    * Each column can be customized (see properties below).
    */
-  columns: TColumn[];
+  columns: TColumn<Row>[];
   /**
    * Element to render within the `tfoot` (footer) element of the table.
    */
@@ -279,7 +281,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
       <TableGrid
         ref={tableRef as LegacyRef<HTMLTableElement>}
         {...filterDataAttributes(props)}
-        columns={props.columns}
+        columns={props.columns as TColumn<TRow>[]}
         maxHeight={props.maxHeight}
         disableSelfContainment={!!props.disableSelfContainment}
         resizedTotalWidth={resizedTotalWidth}
