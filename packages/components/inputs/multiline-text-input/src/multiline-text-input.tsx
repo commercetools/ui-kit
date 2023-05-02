@@ -133,7 +133,8 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
     [setContentRowCount]
   );
 
-  // This checks if the content in the textarea is greater than one row.
+  // This checks if the content in the textarea is greater than 38 (one row). If it is, then the toggle button will be shown.
+  // This is to prevent the toggle button from showing when there is not enough content to expand/collapse.
   const shouldRenderToggleButton =
     contentRowCount > MultilineTextInput.FIRST_ROW_COUNT;
 
