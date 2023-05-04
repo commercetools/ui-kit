@@ -40,19 +40,18 @@ const MultilineInput = (props: TMultiLineInputProps) => {
   const ref = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
-    // Getting the line height and paddings of the element and then calculate the height of one row.
+    // Getting the line height and paddings of the element and then calculating the height of one row.
+    const elementComputedStyles = getComputedStyle(ref.current as Element);
     const lineHeight = parseInt(
-      getComputedStyle(ref.current as Element).getPropertyValue('line-height'),
+      elementComputedStyles.getPropertyValue('line-height'),
       10
     );
     const paddingTop = parseInt(
-      getComputedStyle(ref.current as Element).getPropertyValue('padding-top'),
+      elementComputedStyles.getPropertyValue('padding-top'),
       10
     );
     const paddingBottom = parseInt(
-      getComputedStyle(ref.current as Element).getPropertyValue(
-        'padding-bottom'
-      ),
+      elementComputedStyles.getPropertyValue('padding-bottom'),
       10
     );
     const elementHeight = lineHeight + paddingTop + paddingBottom;
