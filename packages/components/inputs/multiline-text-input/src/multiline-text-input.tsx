@@ -112,6 +112,7 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
   const intl = useIntl();
 
   const [contentRowCount, setContentRowCount] = useState<number>(0);
+  const [firstRowHeight, setFirstRowHeight] = useState(0);
 
   const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
 
@@ -133,10 +134,16 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
     [setContentRowCount]
   );
 
+  const calculateFirstRowHeight = useCallback(
+    (rowHeight) => {
+      setFirstRowHeight(rowHeight);
+    },
+    [setFirstRowHeight]
+  );
+
   // This checks if the content in the textarea is greater than 38 (one row). If it is, then the toggle button will be shown.
   // This is to prevent the toggle button from showing when there is not enough content to expand/collapse.
-  const shouldRenderToggleButton =
-    contentRowCount > MultilineTextInput.FIRST_ROW_COUNT;
+  const shouldRenderToggleButton = contentRowCount > firstRowHeight;
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
@@ -147,6 +154,7 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
           value={props.value}
           onChange={props.onChange}
           onHeightChange={handleHeightChange}
+          calculateFirstRowHeight={calculateFirstRowHeight}
           id={props.id}
           onBlur={props.onBlur}
           onFocus={handleFocus}
@@ -193,10 +201,6 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
 };
 
 MultilineTextInput.displayName = 'MultilineTextInput';
-
-// This is the number represents first row in the input.
-// Anything grater than this means we have multiple rows.
-MultilineTextInput.FIRST_ROW_COUNT = 38;
 
 MultilineTextInput.isEmpty = (value: TMultilineTextInputProps['value']) =>
   !value || value.trim().length === 0;

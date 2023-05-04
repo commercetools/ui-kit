@@ -1,4 +1,4 @@
-import { useRef, useCallback, ChangeEventHandler } from 'react';
+import { useRef, useCallback, ChangeEventHandler, useEffect } from 'react';
 import TextareaAutosize, {
   TextareaHeightChangeMeta,
 } from 'react-textarea-autosize';
@@ -24,6 +24,7 @@ export type TMultiLineInputProps = {
   value: string;
   isOpen: boolean;
   onHeightChange?: (height: number, rowCount: number) => void;
+  calculateFirstRowHeight?: (age: number) => void;
   /**
    * Indicate if the value entered in the input is invalid.
    */
@@ -35,8 +36,32 @@ export type TMultiLineInputProps = {
 };
 
 const MultilineInput = (props: TMultiLineInputProps) => {
-  const { onHeightChange } = props;
+  const { onHeightChange, calculateFirstRowHeight } = props;
   const ref = useRef<HTMLTextAreaElement | null>(null);
+
+  useEffect(() => {
+    // Getting the line height and paddings of the element and then calculate the height of one row.
+    const lineHeight = parseInt(
+      getComputedStyle(ref.current as Element).getPropertyValue('line-height'),
+      10
+    );
+    const paddingTop = parseInt(
+      getComputedStyle(ref.current as Element).getPropertyValue('padding-top'),
+      10
+    );
+    const paddingBottom = parseInt(
+      getComputedStyle(ref.current as Element).getPropertyValue(
+        'padding-bottom'
+      ),
+      10
+    );
+    const elementHeight = lineHeight + paddingTop + paddingBottom;
+
+    if (calculateFirstRowHeight) {
+      calculateFirstRowHeight(elementHeight);
+    }
+  }, [ref, calculateFirstRowHeight]);
+
   const handleHeightChange = useCallback<
     (height: number, meta: TextareaHeightChangeMeta) => void
   >(
