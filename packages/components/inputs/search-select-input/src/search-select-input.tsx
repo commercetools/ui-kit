@@ -99,6 +99,12 @@ export type TSearchSelectInputProps = {
    */
   components?: ReactSelectAsyncProps['components'];
   /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectAsyncProps['controlShouldRenderValue'];
+  /**
    * Sets the tabIndex attribute on the input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -266,11 +272,12 @@ type TOptionInnerProps = {
 
 const defaultProps: Pick<
   TSearchSelectInputProps,
-  'value' | 'menuPortalZIndex' | 'maxMenuHeight'
+  'value' | 'menuPortalZIndex' | 'maxMenuHeight' | 'controlShouldRenderValue'
 > = {
   value: null,
   menuPortalZIndex: 1,
   maxMenuHeight: 220,
+  controlShouldRenderValue: true,
 };
 
 const SearchSelectInput = (props: TSearchSelectInputProps) => {
