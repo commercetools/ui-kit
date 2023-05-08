@@ -128,10 +128,11 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
     attributeFilter: ['data-theme'],
   });
 
-  const themedValue: TUseThemeResult['themedValue'] = (
-    defaultThemeValue,
-    newThemeValue
-  ) => (theme === 'default' ? defaultThemeValue : newThemeValue);
+  const themedValue: TUseThemeResult['themedValue'] = useCallback(
+    (defaultThemeValue, newThemeValue) =>
+      theme === 'default' ? defaultThemeValue : newThemeValue,
+    [theme]
+  );
 
   // If we use 'useLayoutEffect' here, we would be trying to read the
   // data attribute before it gets set from the effect in the ThemeProvider
