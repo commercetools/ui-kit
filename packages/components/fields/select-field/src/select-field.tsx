@@ -20,15 +20,15 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 import type { Props as ReactSelectProps } from 'react-select';
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
-type TOption = {
+export type TOption = {
   value: string;
   label?: ReactNode;
 };
-type TOptionObject = {
+export type TOptionObject = {
   options: TOption[];
 };
-type TOptions = TOption[] | TOptionObject[];
-type TCustomEvent = {
+export type TOptions = TOption[] | TOptionObject[];
+export type TCustomEvent = {
   target: {
     id?: ReactSelectProps['inputId'];
     name?: ReactSelectProps['name'];
@@ -167,6 +167,8 @@ export type TSelectFieldProps = {
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
@@ -194,7 +196,7 @@ export type TSelectFieldProps = {
    * <br/>
    * The value will be the selected option, or an array of options in case isMulti is true.
    */
-  onChange?: (event?: TCustomEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Handle focus events on the control
    * <br/>
@@ -344,6 +346,7 @@ export default class SelectField extends Component<TSelectFieldProps> {
         `SelectField: "touched" is expected to be an array of booleans when "isMulti" is true, instead got ${this.props.touched}.`
       );
     }
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">

@@ -21,6 +21,7 @@ import Tooltip from '@commercetools-uikit/tooltip';
 import {
   DropdownIndicator,
   createSelectStyles,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
@@ -282,7 +283,7 @@ export const parseRawAmountToNumber = (rawAmount: string, locale: string) => {
   fractionsSeparator = fractionsSeparator === '.' ? '\\.' : fractionsSeparator; // here we escape the '.' to use it as regex
   // The raw amount with only one sparator
   const normalizedAmount = String(rawAmount)
-    .replace(new RegExp(`[^0-9${fractionsSeparator}]`, 'g'), '') // we just keep the numbers and the fraction symbol
+    .replace(new RegExp(`[^-0-9${fractionsSeparator}]`, 'g'), '') // we just keep the numbers and the fraction symbol
     .replace(fractionsSeparator, '.'); // then we change whatever `fractionsSeparator` was to `.` so we can parse it as float
 
   return parseFloat(normalizedAmount);
@@ -492,6 +493,8 @@ type TMoneyInputProps = {
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
    * z-index value for the currency select menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
@@ -560,6 +563,12 @@ const MoneyInput = (props: TMoneyInputProps) => {
       'MoneyInput: "onChange" is required when is not read only.'
     );
   }
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'MoneyInput',
+  });
 
   const { onFocus } = props;
   const handleAmountFocus = useCallback(() => {

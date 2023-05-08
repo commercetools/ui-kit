@@ -1,5 +1,32 @@
 # @commercetools-uikit/view-switcher
 
+## 16.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.0.0
+  - @commercetools-uikit/accessible-button@16.0.0
+  - @commercetools-uikit/utils@16.0.0
+
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.15.1
+  - @commercetools-uikit/accessible-button@15.15.1
+  - @commercetools-uikit/utils@15.15.1
+
+## 15.15.0
+
+### Patch Changes
+
+- Updated dependencies [[`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1), [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84), [`b9f80bf64`](https://github.com/commercetools/ui-kit/commit/b9f80bf64a5a483bfd93c5d8e856fcd587ced281)]:
+  - @commercetools-uikit/design-system@15.15.0
+  - @commercetools-uikit/accessible-button@15.15.0
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

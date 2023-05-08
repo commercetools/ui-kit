@@ -1,5 +1,69 @@
 # @commercetools-uikit/localized-text-input
 
+## 16.0.0
+
+### Major Changes
+
+- [#2475](https://github.com/commercetools/ui-kit/pull/2475) [`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade `react-intl` to `v6`.
+
+  # Migration
+
+  The peer dependency of `react-intl` should be updated to `v6`. No other migration steps are required.
+
+### Patch Changes
+
+- Updated dependencies [[`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c)]:
+  - @commercetools-uikit/flat-button@16.0.0
+  - @commercetools-uikit/input-utils@16.0.0
+  - @commercetools-uikit/messages@16.0.0
+  - @commercetools-uikit/text@16.0.0
+  - @commercetools-uikit/text-input@16.0.0
+  - @commercetools-uikit/design-system@16.0.0
+  - @commercetools-uikit/constraints@16.0.0
+  - @commercetools-uikit/icons@16.0.0
+  - @commercetools-uikit/spacings-stack@16.0.0
+  - @commercetools-uikit/hooks@16.0.0
+  - @commercetools-uikit/localized-utils@16.0.0
+  - @commercetools-uikit/utils@16.0.0
+
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.15.1
+  - @commercetools-uikit/flat-button@15.15.1
+  - @commercetools-uikit/constraints@15.15.1
+  - @commercetools-uikit/icons@15.15.1
+  - @commercetools-uikit/input-utils@15.15.1
+  - @commercetools-uikit/text-input@15.15.1
+  - @commercetools-uikit/messages@15.15.1
+  - @commercetools-uikit/spacings-stack@15.15.1
+  - @commercetools-uikit/text@15.15.1
+  - @commercetools-uikit/hooks@15.15.1
+  - @commercetools-uikit/localized-utils@15.15.1
+  - @commercetools-uikit/utils@15.15.1
+
+## 15.15.0
+
+### Patch Changes
+
+- [#2486](https://github.com/commercetools/ui-kit/pull/2486) [`0a440f65f`](https://github.com/commercetools/ui-kit/commit/0a440f65fd2eefb811e9c7ee0af5f51e23139a7d) Thanks [@kark](https://github.com/kark)! - Make border color in the `disabled` state take precedence over border color in the `read-only` state
+
+- Updated dependencies [[`5bf3bdacf`](https://github.com/commercetools/ui-kit/commit/5bf3bdacf2e8553ce965e564a805b0fe011a9612), [`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1), [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84), [`b9f80bf64`](https://github.com/commercetools/ui-kit/commit/b9f80bf64a5a483bfd93c5d8e856fcd587ced281), [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84), [`d951de90b`](https://github.com/commercetools/ui-kit/commit/d951de90bbb2345b1726ca9ccb4a458bceceed6b)]:
+  - @commercetools-uikit/icons@15.15.0
+  - @commercetools-uikit/design-system@15.15.0
+  - @commercetools-uikit/hooks@15.15.0
+  - @commercetools-uikit/text@15.15.0
+  - @commercetools-uikit/input-utils@15.15.0
+  - @commercetools-uikit/flat-button@15.15.0
+  - @commercetools-uikit/constraints@15.15.0
+  - @commercetools-uikit/text-input@15.15.0
+  - @commercetools-uikit/spacings-stack@15.15.0
+  - @commercetools-uikit/messages@15.15.0
+  - @commercetools-uikit/localized-utils@15.15.0
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

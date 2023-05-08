@@ -10,8 +10,11 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import { SELECT_DROPDOWN_OPTION_TYPES } from '@commercetools-uikit/select-utils';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import SearchSelectInput from './search-select-input';
 import Readme from '../README.md';
 
@@ -68,7 +71,7 @@ class SearchSelectInputStory extends Component {
             key={`${isMulti}`}
             defaultValue={isMulti ? [] : undefined}
             render={(value, onChange) => (
-              <div>
+              <Spacings.Stack scale="m">
                 <SearchSelectInput
                   horizontalConstraint={select(
                     'horizontalConstraint',
@@ -107,7 +110,9 @@ class SearchSelectInputStory extends Component {
                   // Async props
                   loadOptions={loadOptions}
                   cacheOptions={boolean('cacheOptions', false)}
+                  {...addMenuPortalProps()}
                 />
+                <NeighbouringStackingContext />
                 <div>
                   <p>
                     In this example, our `loadOptions` function uses the data
@@ -125,7 +130,7 @@ class SearchSelectInputStory extends Component {
                   <b>Data used:</b>
                   <pre>{JSON.stringify(colourOptions, undefined, 2)}</pre>
                 </div>
-              </div>
+              </Spacings.Stack>
             )}
           />
         </Section>

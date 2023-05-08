@@ -1,5 +1,34 @@
 # @commercetools-uikit/design-system
 
+## 16.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.0.0
+
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.15.1
+
+## 15.15.0
+
+### Minor Changes
+
+- [#2489](https://github.com/commercetools/ui-kit/pull/2489) [`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding `TagList` component
+
+### Patch Changes
+
+- [#2485](https://github.com/commercetools/ui-kit/pull/2485) [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84) Thanks [@emmenko](https://github.com/emmenko)! - Fix issue with SSR
+
+- [#2479](https://github.com/commercetools/ui-kit/pull/2479) [`b9f80bf64`](https://github.com/commercetools/ui-kit/commit/b9f80bf64a5a483bfd93c5d8e856fcd587ced281) Thanks [@emmenko](https://github.com/emmenko)! - Fix types
+
+- Updated dependencies [[`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84)]:
+  - @commercetools-uikit/hooks@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

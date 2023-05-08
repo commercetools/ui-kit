@@ -1,5 +1,37 @@
 # @commercetools-uikit/messages
 
+## 16.0.0
+
+### Major Changes
+
+- [#2475](https://github.com/commercetools/ui-kit/pull/2475) [`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade `react-intl` to `v6`.
+
+  # Migration
+
+  The peer dependency of `react-intl` should be updated to `v6`. No other migration steps are required.
+
+### Patch Changes
+
+- Updated dependencies [[`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c)]:
+  - @commercetools-uikit/text@16.0.0
+  - @commercetools-uikit/utils@16.0.0
+
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/text@15.15.1
+  - @commercetools-uikit/utils@15.15.1
+
+## 15.15.0
+
+### Patch Changes
+
+- Updated dependencies [[`d951de90b`](https://github.com/commercetools/ui-kit/commit/d951de90bbb2345b1726ca9ccb4a458bceceed6b)]:
+  - @commercetools-uikit/text@15.15.0
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

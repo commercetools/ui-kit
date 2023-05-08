@@ -19,6 +19,7 @@ import {
   customComponentsWithIcons,
   messages,
   createSelectStyles,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { useTheme } from '@commercetools-uikit/design-system';
 
@@ -196,6 +197,8 @@ export type TAsyncSelectInputProps = {
   menuPortalTarget?: ReactSelectAsyncProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex: number;
   /**
@@ -317,6 +320,12 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
       'AsyncSelectInput: `onChange` is required when input is not read only.'
     );
   }
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'AsyncSelectInput',
+  });
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);

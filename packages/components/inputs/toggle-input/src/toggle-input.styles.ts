@@ -185,7 +185,6 @@ const Span = styled.span<TStyledSpanProps>`
     background-color: ${designTokens.colorSurface};
     box-shadow: ${designTokens.shadowForToggleInputThumb};
     border-radius: 50%;
-    z-index: 1;
     transition: transform 0.2s ease, background 0.2s ease;
   }
 `;

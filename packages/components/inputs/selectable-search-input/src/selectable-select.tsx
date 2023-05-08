@@ -32,7 +32,7 @@ type TSelectableSelect = {
   handleDropdownFocus: () => void;
   handleDropdownBlur: () => void;
   textInputRef: React.RefObject<HTMLInputElement>;
-  selectedOption: TOption;
+  selectedOption?: TOption;
 } & TSelectableSearchInputProps;
 
 const SelectableSelect = (props: TSelectableSelect) => {

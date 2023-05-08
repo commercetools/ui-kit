@@ -26,14 +26,7 @@ import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 import { warning } from '@commercetools-uikit/utils';
 
-type TState = {
-  [key: string]: string;
-};
-
-type TExpandedTranslationsReducerState = {
-  state?: TState;
-};
-
+type TExpandedTranslationsReducerState = Record<string, boolean>;
 type TExpandedTranslationsReducerAction = {
   type: string;
   payload: string;
@@ -198,20 +191,18 @@ const LocalizedMultilineTextInput = (
   const intl = useIntl();
 
   const initialExpandedTranslationsState = Object.keys(props.value).reduce(
-    (translations, locale) => {
-      return {
-        [locale]: Boolean(props.defaultExpandMultilineText),
-        ...translations,
-      };
-    },
-    {}
+    (translations, locale) => ({
+      ...translations,
+      [locale]: Boolean(props.defaultExpandMultilineText),
+    }),
+    {} as TExpandedTranslationsReducerState
   );
 
   const [expandedTranslationsState, expandedTranslationsDispatch] = useReducer<
     (
       prevState: TExpandedTranslationsReducerState,
       action: TExpandedTranslationsReducerAction
-    ) => TState
+    ) => TExpandedTranslationsReducerState
   >(expandedTranslationsReducer, initialExpandedTranslationsState);
 
   const defaultExpansionState =

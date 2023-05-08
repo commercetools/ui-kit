@@ -3,7 +3,6 @@ import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import has from 'lodash/has';
-import flatMap from 'lodash/flatMap';
 import Select, {
   components as defaultComponents,
   type Props as ReactSelectProps,
@@ -16,6 +15,7 @@ import {
   customComponentsWithIcons,
   createSelectStyles,
   messages,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { useTheme } from '@commercetools-uikit/design-system';
@@ -31,13 +31,13 @@ export type TOption = {
   label?: ReactNode;
 };
 
-type TOptionObject = {
+export type TOptionObject = {
   options: TOption[];
 };
 
-type TOptions = TOption[] | TOptionObject[];
+export type TOptions = TOption[] | TOptionObject[];
 
-type TCustomEvent = {
+export type TCustomEvent = {
   target: {
     id?: ReactSelectProps['inputId'];
     name?: ReactSelectProps['name'];
@@ -228,6 +228,8 @@ export type TSelectInputProps = {
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
@@ -288,7 +290,7 @@ export type TSelectInputProps = {
   /**
    * Array of options that populate the select menu
    */
-  options?: TOptions;
+  options: TOptions;
   showOptionGroupDivider?: boolean;
   // pageSize: PropTypes.number,
   /**
@@ -322,15 +324,26 @@ export type TSelectInputProps = {
 
 const defaultProps: Pick<
   TSelectInputProps,
-  'maxMenuHeight' | 'menuPortalZIndex'
+  'maxMenuHeight' | 'menuPortalZIndex' | 'options'
 > = {
   maxMenuHeight: 220,
   menuPortalZIndex: 1,
+  options: [],
 };
+
+const isOptionObject = (
+  option: TOption | TOptionObject
+): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
 const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
   const { isNewTheme } = useTheme();
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'SelectInput',
+  });
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
@@ -342,9 +355,12 @@ const SelectInput = (props: TSelectInputProps) => {
   //     { label: 'Flavours', options: flavourOptions },
   //   ];
   // So we "ungroup" the options by merging them all into one list first.
-  const optionsWithoutGroups = flatMap(props.options, (option) =>
-    has(option, 'value') ? option : (option as TOptionObject).options
-  );
+  const optionsWithoutGroups = props.options.flatMap((option) => {
+    if (isOptionObject(option)) {
+      return option.options;
+    }
+    return option;
+  });
 
   const selectedOptions = props.isMulti
     ? ((props.value || []) as string[])
@@ -402,6 +418,7 @@ const SelectInput = (props: TSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
+              controlShouldRenderValue: props.controlShouldRenderValue,
               isNewTheme,
             }) as ReactSelectProps['styles']
           }

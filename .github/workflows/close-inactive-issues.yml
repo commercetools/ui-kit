@@ -9,7 +9,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/stale@v6
+      - uses: actions/stale@v8
         with:
           any-of-labels: "⌛ Status: Waiting for Customer"
           start-date: "2022-04-06 00:00:00.000"

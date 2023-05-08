@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-local/generator-readme",
   "description": "CLI to generate README files for each package",
-  "version": "3.0.8",
+  "version": "3.0.10",
   "private": true,
   "bin": {
     "generate-readme": "./bin/cli.mjs"
@@ -14,11 +14,11 @@
   "dependencies": {
     "@manypkg/get-packages": "1.1.3",
     "@types/listr": "0.14.4",
-    "@types/lodash": "4.14.191",
+    "@types/lodash": "4.14.194",
     "@types/mdast": "3.0.11",
     "@types/mri": "1.1.1",
-    "@types/node": "16.18.18",
-    "@types/shelljs": "0.8.11",
+    "@types/node": "16.18.24",
+    "@types/shelljs": "0.8.12",
     "@types/unist": "2.0.6",
     "@types/vfile": "4.0.0",
     "listr": "0.14.3",
@@ -39,12 +39,12 @@
     "vfile-reporter": "6.0.2"
   },
   "devDependencies": {
-    "prettier": "2.8.6",
+    "prettier": "2.8.7",
     "ts-node": "10.9.1",
-    "typescript": "4.9.5"
+    "typescript": "5.0.4"
   },
   "peerDependencies": {
     "prettier": "2.x",
-    "typescript": "4.x"
+    "typescript": "5.x"
   }
 }

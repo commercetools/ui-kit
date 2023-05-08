@@ -1,5 +1,45 @@
 # @commercetools-uikit/link
 
+## 16.0.0
+
+### Major Changes
+
+- [#2475](https://github.com/commercetools/ui-kit/pull/2475) [`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade `react-intl` to `v6`.
+
+  # Migration
+
+  The peer dependency of `react-intl` should be updated to `v6`. No other migration steps are required.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.0.0
+  - @commercetools-uikit/icons@16.0.0
+  - @commercetools-uikit/spacings-inline@16.0.0
+  - @commercetools-uikit/utils@16.0.0
+
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@15.15.1
+  - @commercetools-uikit/icons@15.15.1
+  - @commercetools-uikit/spacings-inline@15.15.1
+  - @commercetools-uikit/utils@15.15.1
+
+## 15.15.0
+
+### Patch Changes
+
+- [#2487](https://github.com/commercetools/ui-kit/pull/2487) [`0ddd32af7`](https://github.com/commercetools/ui-kit/commit/0ddd32af7dd556447042b5fcb156261b8a85e180) Thanks [@kark](https://github.com/kark)! - Fix vertical alignment of the external Link's icon
+
+- Updated dependencies [[`5bf3bdacf`](https://github.com/commercetools/ui-kit/commit/5bf3bdacf2e8553ce965e564a805b0fe011a9612), [`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1), [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84), [`b9f80bf64`](https://github.com/commercetools/ui-kit/commit/b9f80bf64a5a483bfd93c5d8e856fcd587ced281)]:
+  - @commercetools-uikit/icons@15.15.0
+  - @commercetools-uikit/design-system@15.15.0
+  - @commercetools-uikit/spacings-inline@15.15.0
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

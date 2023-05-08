@@ -657,6 +657,21 @@ describe('MoneyInput', () => {
     expect(screen.getByLabelText('Amount')).toHaveAttribute('value', '12.00');
   });
 
+  it('should format the amount on blur for negative numbers', () => {
+    render(<TestComponent />);
+
+    // change amount
+    fireEvent.change(screen.getByLabelText('Amount'), {
+      target: { value: '-23' },
+    });
+
+    // blur amount
+    fireEvent.blur(screen.getByLabelText('Amount'));
+
+    // input should have the formatted value after blurring
+    expect(screen.getByLabelText('Amount')).toHaveAttribute('value', '-23.00');
+  });
+
   // The original currency (EUR) uses 2 fraction digits, whereas the
   // next currency (KWD) uses 3 fraction digits.
   // We expect the last fraction to get added when changing the value

@@ -8,8 +8,6 @@ import {
   useCallback,
   useRef,
 } from 'react';
-import has from 'lodash/has';
-import flatMap from 'lodash/flatMap';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Constraints from '@commercetools-uikit/constraints';
 import { SearchIcon, CloseIcon } from '@commercetools-uikit/icons';
@@ -18,6 +16,7 @@ import {
   filterDataAttributes,
   warning,
 } from '@commercetools-uikit/utils';
+import { warnIfMenuPortalPropsAreMissing } from '@commercetools-uikit/select-utils';
 import {
   getClearIconButtonStyles,
   getSearchIconButtonStyles,
@@ -63,6 +62,8 @@ export type TOption = {
 export type TOptionObject = {
   options: TOption[];
 };
+
+export type TOptions = TOption[] | TOptionObject[];
 
 export type TSelectableSearchInputProps = {
   /**
@@ -147,9 +148,11 @@ export type TSelectableSearchInputProps = {
   /**
    * Array of options that populate the select menu
    */
-  options: TOption[] | TOptionObject[];
+  options: TOptions;
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
@@ -213,17 +216,23 @@ const defaultProps: Pick<
   | 'menuHorizontalConstraint'
   | 'showSubmitButton'
   | 'menuPortalZIndex'
+  | 'options'
 > = {
   horizontalConstraint: 'scale',
   isClearable: true,
   menuHorizontalConstraint: 3,
   showSubmitButton: true,
   menuPortalZIndex: 1,
+  options: [],
 };
 
 const selectableSearchInputSequentialId = createSequentialId(
   'selectable-search-input-'
 );
+
+const isOptionObject = (
+  option: TOption | TOptionObject
+): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
 const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const [textInputHasFocus, toggleTextInputHasFocus] = useToggleState(false);
@@ -234,14 +243,16 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
 
   const { isNewTheme } = useTheme();
 
-  const optionsWithoutGroups = flatMap(props.options, (option) =>
-    has(option, 'value') ? option : (option as TOptionObject).options
-  );
+  const optionsWithoutGroups = props.options.flatMap((option) => {
+    if (isOptionObject(option)) {
+      return option.options;
+    }
+    return option;
+  });
 
   const selectedOption = optionsWithoutGroups.find(
-    (option) =>
-      has(option, 'value') && (option as TOption).value === props.value.option
-  ) as TOption;
+    (option) => option.value === props.value.option
+  );
 
   const selectablSearchInputId = useFieldId(
     props.id,
@@ -251,9 +262,15 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   if (!props.isReadOnly) {
     warning(
       typeof props.onChange === 'function',
-      'TextInput: `onChange` is required when is not read only.'
+      'SelectableSearchInput: `onChange` is required when is not read only.'
     );
   }
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'SelectableSearchInput',
+  });
 
   const { onFocus, onBlur, name } = props;
   const handleTextInputFocus = useCallback(() => {
@@ -310,7 +327,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     if (props.onSubmit) {
       props.onSubmit({
         text: searchValue,
-        option: selectedOption?.value,
+        option: selectedOption?.value ?? '',
       });
     }
   };

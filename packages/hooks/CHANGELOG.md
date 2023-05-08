@@ -1,5 +1,28 @@
 # @commercetools-uikit/hooks
 
+## 16.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.0.0
+
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@15.15.1
+
+## 15.15.0
+
+### Patch Changes
+
+- [#2485](https://github.com/commercetools/ui-kit/pull/2485) [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84) Thanks [@emmenko](https://github.com/emmenko)! - Include polyfill for `MutationObserver`
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

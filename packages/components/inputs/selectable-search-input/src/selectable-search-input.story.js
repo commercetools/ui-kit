@@ -3,7 +3,10 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import SelectableSearchInput from './selectable-search-input';
 
@@ -104,42 +107,46 @@ storiesOf('Components|Inputs', module)
           null
         )}
       >
-        <SelectableSearchInput
-          id={text('id', '')}
-          name={name}
-          value={value}
-          onChange={(event) => {
-            action('onChange')(event);
-            if (event.target.name.endsWith('.textInput')) {
-              setTextInputValue(event.target.value);
-            }
-            if (event.target.name.endsWith('.dropdown')) {
-              setDropdownValue(event.target.value);
-            }
-          }}
-          isAutofocussed={boolean('isAutofocussed', false)}
-          isDisabled={boolean('isDisabled', false)}
-          isReadOnly={boolean('isReadOnly', false)}
-          isClearable={boolean('isClearable', true)}
-          showSubmitButton={boolean('showSubmitButton', true)}
-          hasError={boolean('hasError', false)}
-          hasWarning={boolean('hasWarning', false)}
-          placeholder={text('placeholder', 'Placeholder')}
-          horizontalConstraint={select(
-            'horizontalConstraint',
-            Constraints.getAcceptedMaxPropValues(10),
-            16
-          )}
-          menuHorizontalConstraint={select(
-            'menuHorizontalConstraint',
-            Constraints.getAcceptedMaxPropValues(3, 5),
-            3
-          )}
-          options={options}
-          onSubmit={(submitValues) => {
-            alert(JSON.stringify(submitValues));
-          }}
-        />
+        <Spacings.Stack scale="m">
+          <SelectableSearchInput
+            id={text('id', '')}
+            name={name}
+            value={value}
+            onChange={(event) => {
+              action('onChange')(event);
+              if (event.target.name.endsWith('.textInput')) {
+                setTextInputValue(event.target.value);
+              }
+              if (event.target.name.endsWith('.dropdown')) {
+                setDropdownValue(event.target.value);
+              }
+            }}
+            isAutofocussed={boolean('isAutofocussed', false)}
+            isDisabled={boolean('isDisabled', false)}
+            isReadOnly={boolean('isReadOnly', false)}
+            isClearable={boolean('isClearable', true)}
+            showSubmitButton={boolean('showSubmitButton', true)}
+            hasError={boolean('hasError', false)}
+            hasWarning={boolean('hasWarning', false)}
+            placeholder={text('placeholder', 'Placeholder')}
+            horizontalConstraint={select(
+              'horizontalConstraint',
+              Constraints.getAcceptedMaxPropValues(10),
+              16
+            )}
+            menuHorizontalConstraint={select(
+              'menuHorizontalConstraint',
+              Constraints.getAcceptedMaxPropValues(3, 5),
+              3
+            )}
+            options={options}
+            onSubmit={(submitValues) => {
+              alert(JSON.stringify(submitValues));
+            }}
+            {...addMenuPortalProps()}
+          />
+          <NeighbouringStackingContext />
+        </Spacings.Stack>
       </Section>
     );
   });

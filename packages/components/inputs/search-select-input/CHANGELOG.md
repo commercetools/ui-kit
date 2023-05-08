@@ -1,5 +1,51 @@
 # @commercetools-uikit/search-select-input
 
+## 16.0.0
+
+### Major Changes
+
+- [#2475](https://github.com/commercetools/ui-kit/pull/2475) [`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade `react-intl` to `v6`.
+
+  # Migration
+
+  The peer dependency of `react-intl` should be updated to `v6`. No other migration steps are required.
+
+### Patch Changes
+
+- Updated dependencies [[`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c)]:
+  - @commercetools-uikit/async-select-input@16.0.0
+  - @commercetools-uikit/select-utils@16.0.0
+  - @commercetools-uikit/text@16.0.0
+  - @commercetools-uikit/design-system@16.0.0
+  - @commercetools-uikit/utils@16.0.0
+  - @commercetools-uikit/spacings@16.0.0
+
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies [[`c03ec4d7d`](https://github.com/commercetools/ui-kit/commit/c03ec4d7d7a927b112392069a606d8c8194046f6)]:
+  - @commercetools-uikit/async-select-input@15.15.1
+  - @commercetools-uikit/select-utils@15.15.1
+  - @commercetools-uikit/design-system@15.15.1
+  - @commercetools-uikit/text@15.15.1
+  - @commercetools-uikit/utils@15.15.1
+  - @commercetools-uikit/spacings@15.15.1
+
+## 15.15.0
+
+### Patch Changes
+
+- [#2484](https://github.com/commercetools/ui-kit/pull/2484) [`75da6b87b`](https://github.com/commercetools/ui-kit/commit/75da6b87b3ae9c7a14548ea1cd38b427e1e167c5) Thanks [@kark](https://github.com/kark)! - Improve docs regarding the use of `menuPortalZIndex` prop.
+  Warn when `menuPortalZIndex` is used without setting `menuPortalTarget`.
+- Updated dependencies [[`26830d8ed`](https://github.com/commercetools/ui-kit/commit/26830d8ed0f0bccad6ceae0891e4c2491328c685), [`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1), [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84), [`b9f80bf64`](https://github.com/commercetools/ui-kit/commit/b9f80bf64a5a483bfd93c5d8e856fcd587ced281), [`d951de90b`](https://github.com/commercetools/ui-kit/commit/d951de90bbb2345b1726ca9ccb4a458bceceed6b), [`75da6b87b`](https://github.com/commercetools/ui-kit/commit/75da6b87b3ae9c7a14548ea1cd38b427e1e167c5)]:
+  - @commercetools-uikit/select-utils@15.15.0
+  - @commercetools-uikit/design-system@15.15.0
+  - @commercetools-uikit/text@15.15.0
+  - @commercetools-uikit/async-select-input@15.15.0
+  - @commercetools-uikit/spacings@15.15.0
+  - @commercetools-uikit/utils@15.15.0
+
 ## 15.14.3
 
 ### Patch Changes

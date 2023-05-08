@@ -11,8 +11,11 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import { SELECT_DROPDOWN_OPTION_TYPES } from '../../../inputs/select-utils';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import * as icons from '../../../icons';
 import SearchSelectField from './search-select-field';
@@ -83,7 +86,7 @@ storiesOf('Components|Fields/SelectFields', module)
           key={isMulti}
           defaultValue={isMulti ? [] : undefined}
           render={(value, onChange) => (
-            <>
+            <Spacings.Stack scale="m">
               <SearchSelectField
                 horizontalConstraint={select(
                   'horizontalConstraint',
@@ -143,7 +146,9 @@ storiesOf('Components|Fields/SelectFields', module)
                 }
                 hintIcon={hintIcon}
                 badge={text('badge', '')}
+                {...addMenuPortalProps()}
               />
+              <NeighbouringStackingContext />
               <div>
                 <p>
                   In this example, our `loadOptions` function uses the data
@@ -161,7 +166,7 @@ storiesOf('Components|Fields/SelectFields', module)
                 <b>Data used:</b>
                 <pre>{JSON.stringify(colourOptions, undefined, 2)}</pre>
               </div>
-            </>
+            </Spacings.Stack>
           )}
         />
       </Section>
