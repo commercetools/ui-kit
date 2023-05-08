@@ -110,9 +110,8 @@ const defaultProps: Pick<
 
 const MultilineTextInput = (props: TMultilineTextInputProps) => {
   const intl = useIntl();
-
-  const [contentRowCount, setContentRowCount] = useState<number>(0);
-  const [firstRowHeight, setFirstRowHeight] = useState(0);
+  const [shouldRenderToggleButton, setShouldRenderToggleButton] =
+    useState(true);
 
   const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
 
@@ -126,24 +125,15 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
   );
 
   const handleHeightChange = useCallback<
-    (height: number, rowCount: number) => void
+    (height: number, rowCount: number, hasSeveralRows: boolean) => void
   >(
-    (_, rowCount) => {
-      setContentRowCount(rowCount);
+    (_, __, hasSeveralRows) => {
+      // This checks if the content in the textarea is greater than one row. If it is, then the toggle button will be shown.
+      // This is to prevent the toggle button from showing when there is not enough content to expand/collapse.
+      setShouldRenderToggleButton(hasSeveralRows);
     },
-    [setContentRowCount]
+    [setShouldRenderToggleButton]
   );
-
-  const calculateFirstRowHeight = useCallback(
-    (rowHeight) => {
-      setFirstRowHeight(rowHeight);
-    },
-    [setFirstRowHeight]
-  );
-
-  // This checks if the content in the textarea is greater than 38 (one row). If it is, then the toggle button will be shown.
-  // This is to prevent the toggle button from showing when there is not enough content to expand/collapse.
-  const shouldRenderToggleButton = contentRowCount > firstRowHeight;
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
@@ -154,7 +144,6 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
           value={props.value}
           onChange={props.onChange}
           onHeightChange={handleHeightChange}
-          calculateFirstRowHeight={calculateFirstRowHeight}
           id={props.id}
           onBlur={props.onBlur}
           onFocus={handleFocus}

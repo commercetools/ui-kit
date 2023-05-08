@@ -1,9 +1,11 @@
-import { useRef, useCallback, ChangeEventHandler, useEffect } from 'react';
+// TODO: @redesign cleanup
+import { useRef, useCallback, ChangeEventHandler } from 'react';
 import TextareaAutosize, {
   TextareaHeightChangeMeta,
 } from 'react-textarea-autosize';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { getTextareaStyles } from './multiline-input.styles';
+import { ThemeName, useTheme } from '@commercetools-uikit/design-system';
 
 const MIN_ROW_COUNT = 1;
 
@@ -23,8 +25,11 @@ export type TMultiLineInputProps = {
   placeholder?: string;
   value: string;
   isOpen: boolean;
-  onHeightChange?: (height: number, rowCount: number) => void;
-  calculateFirstRowHeight?: (age: number) => void;
+  onHeightChange?: (
+    height: number,
+    rowCount: number,
+    hasSeveralRows: boolean
+  ) => void;
   /**
    * Indicate if the value entered in the input is invalid.
    */
@@ -35,13 +40,18 @@ export type TMultiLineInputProps = {
   'aria-errormessage'?: string;
 };
 
-const MultilineInput = (props: TMultiLineInputProps) => {
-  const { onHeightChange, calculateFirstRowHeight } = props;
-  const ref = useRef<HTMLTextAreaElement | null>(null);
-
-  useEffect(() => {
+// TODO: We will just need to store one value after the redesign is finished
+const _firstRowHeight: Record<ThemeName, null | number> = {
+  default: null,
+  test: null,
+};
+const calculateFirstRowHeight = (
+  element: Element,
+  theme: ThemeName
+): number => {
+  if (!_firstRowHeight[theme]) {
     // Getting the line height and paddings of the element and then calculating the height of one row.
-    const elementComputedStyles = getComputedStyle(ref.current as Element);
+    const elementComputedStyles = getComputedStyle(element);
     const lineHeight = parseInt(
       elementComputedStyles.getPropertyValue('line-height'),
       10
@@ -54,12 +64,16 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       elementComputedStyles.getPropertyValue('padding-bottom'),
       10
     );
-    const elementHeight = lineHeight + paddingTop + paddingBottom;
+    _firstRowHeight[theme] = lineHeight + paddingTop + paddingBottom;
+  }
 
-    if (calculateFirstRowHeight) {
-      calculateFirstRowHeight(elementHeight);
-    }
-  }, [ref, calculateFirstRowHeight]);
+  return _firstRowHeight[theme]!;
+};
+
+const MultilineInput = (props: TMultiLineInputProps) => {
+  const { onHeightChange } = props;
+  const ref = useRef<HTMLTextAreaElement | null>(null);
+  const { theme } = useTheme();
 
   const handleHeightChange = useCallback<
     (height: number, meta: TextareaHeightChangeMeta) => void
@@ -68,11 +82,12 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       const rowCount = Math.floor(
         ref.current?.scrollHeight || 0 / meta.rowHeight
       );
+      const firstRowHeight = calculateFirstRowHeight(ref.current!, theme);
       if (onHeightChange) {
-        onHeightChange(height, rowCount);
+        onHeightChange(height, rowCount, rowCount > firstRowHeight);
       }
     },
-    [ref, onHeightChange]
+    [ref, theme, onHeightChange]
   );
 
   if (!props.isReadOnly) {
