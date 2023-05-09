@@ -34,6 +34,20 @@ export type TMultiLineInputProps = {
   'aria-errormessage'?: string;
 };
 
+// We cache the vertical padding of the element becuase
+// it does not change over time so we don't need to
+// recalculate it on every height change event.
+let _elementVerticalPadding: number | null = null;
+const getElementVerticalPadding = (element: Element) => {
+  if (_elementVerticalPadding === null) {
+    const computedStyle = getComputedStyle(element);
+    const paddingTop = parseInt(computedStyle.paddingTop, 10);
+    const paddingBottom = parseInt(computedStyle.paddingBottom, 10);
+    _elementVerticalPadding = paddingTop + paddingBottom;
+  }
+  return _elementVerticalPadding;
+};
+
 const MultilineInput = (props: TMultiLineInputProps) => {
   const { onHeightChange } = props;
   const ref = useRef<HTMLTextAreaElement | null>(null);
@@ -42,20 +56,10 @@ const MultilineInput = (props: TMultiLineInputProps) => {
     (height: number, meta: TextareaHeightChangeMeta) => void
   >(
     (_, meta: TextareaHeightChangeMeta) => {
-      const containerHeight = Math.floor(
-        ref.current?.scrollHeight || 0 / meta.rowHeight
-      );
-
-      const lineHeight = parseInt(
-        getComputedStyle(ref.current as Element).getPropertyValue(
-          'line-height'
-        ),
-        10
-      );
-
-      const rowCount = Math.floor(
-        (ref.current?.scrollHeight || 0) / lineHeight
-      );
+      const containerHeight = ref.current!.scrollHeight;
+      const textHeight =
+        containerHeight - getElementVerticalPadding(ref.current!);
+      const rowCount = Math.floor(textHeight / meta.rowHeight);
 
       if (onHeightChange) {
         onHeightChange(containerHeight, rowCount);
