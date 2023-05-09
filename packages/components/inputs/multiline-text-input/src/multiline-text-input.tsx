@@ -125,7 +125,7 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
   );
 
   const handleHeightChange = useCallback<
-    (height: number, rowCount: number, hasSeveralRows: boolean) => void
+    (height: number, containerHeight: number, hasSeveralRows: boolean) => void
   >(
     (_, __, hasSeveralRows) => {
       // This checks if the content in the textarea is greater than one row. If it is, then the toggle button will be shown.

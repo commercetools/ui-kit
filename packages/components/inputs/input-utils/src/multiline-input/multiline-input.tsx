@@ -1,11 +1,9 @@
-// TODO: @redesign cleanup
 import { useRef, useCallback, ChangeEventHandler } from 'react';
 import TextareaAutosize, {
   TextareaHeightChangeMeta,
 } from 'react-textarea-autosize';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { getTextareaStyles } from './multiline-input.styles';
-import { ThemeName, useTheme } from '@commercetools-uikit/design-system';
 
 const MIN_ROW_COUNT = 1;
 
@@ -27,7 +25,7 @@ export type TMultiLineInputProps = {
   isOpen: boolean;
   onHeightChange?: (
     height: number,
-    rowCount: number,
+    containerHeight: number,
     hasSeveralRows: boolean
   ) => void;
   /**
@@ -40,54 +38,34 @@ export type TMultiLineInputProps = {
   'aria-errormessage'?: string;
 };
 
-// TODO: We will just need to store one value after the redesign is finished
-const _firstRowHeight: Record<ThemeName, null | number> = {
-  default: null,
-  test: null,
-};
-const calculateFirstRowHeight = (
-  element: Element,
-  theme: ThemeName
-): number => {
-  if (!_firstRowHeight[theme]) {
-    // Getting the line height and paddings of the element and then calculating the height of one row.
-    const elementComputedStyles = getComputedStyle(element);
-    const lineHeight = parseInt(
-      elementComputedStyles.getPropertyValue('line-height'),
-      10
-    );
-    const paddingTop = parseInt(
-      elementComputedStyles.getPropertyValue('padding-top'),
-      10
-    );
-    const paddingBottom = parseInt(
-      elementComputedStyles.getPropertyValue('padding-bottom'),
-      10
-    );
-    _firstRowHeight[theme] = lineHeight + paddingTop + paddingBottom;
-  }
-
-  return _firstRowHeight[theme]!;
-};
-
 const MultilineInput = (props: TMultiLineInputProps) => {
   const { onHeightChange } = props;
   const ref = useRef<HTMLTextAreaElement | null>(null);
-  const { theme } = useTheme();
 
   const handleHeightChange = useCallback<
     (height: number, meta: TextareaHeightChangeMeta) => void
   >(
     (height: number, meta: TextareaHeightChangeMeta) => {
-      const rowCount = Math.floor(
+      const containerHeight = Math.floor(
         ref.current?.scrollHeight || 0 / meta.rowHeight
       );
-      const firstRowHeight = calculateFirstRowHeight(ref.current!, theme);
+
+      const lineHeight = parseInt(
+        getComputedStyle(ref.current as Element).getPropertyValue(
+          'line-height'
+        ),
+        10
+      );
+
+      const rowCount = Math.floor(
+        (ref.current?.scrollHeight || 0) / lineHeight
+      );
+
       if (onHeightChange) {
-        onHeightChange(height, rowCount, rowCount > firstRowHeight);
+        onHeightChange(height, containerHeight, rowCount > 1);
       }
     },
-    [ref, theme, onHeightChange]
+    [ref, onHeightChange]
   );
 
   if (!props.isReadOnly) {
