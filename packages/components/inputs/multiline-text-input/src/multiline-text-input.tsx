@@ -125,12 +125,12 @@ const MultilineTextInput = (props: TMultilineTextInputProps) => {
   );
 
   const handleHeightChange = useCallback<
-    (height: number, containerHeight: number, hasSeveralRows: boolean) => void
+    (height: number, rowCount: number) => void
   >(
-    (_, __, hasSeveralRows) => {
+    (_, rowCount) => {
       // This checks if the content in the textarea is greater than one row. If it is, then the toggle button will be shown.
       // This is to prevent the toggle button from showing when there is not enough content to expand/collapse.
-      setShouldRenderToggleButton(hasSeveralRows);
+      setShouldRenderToggleButton(rowCount > 1);
     },
     [setShouldRenderToggleButton]
   );

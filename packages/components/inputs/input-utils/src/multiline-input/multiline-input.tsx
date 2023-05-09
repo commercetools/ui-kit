@@ -23,11 +23,7 @@ export type TMultiLineInputProps = {
   placeholder?: string;
   value: string;
   isOpen: boolean;
-  onHeightChange?: (
-    height: number,
-    containerHeight: number,
-    hasSeveralRows: boolean
-  ) => void;
+  onHeightChange?: (height: number, rowCount: number) => void;
   /**
    * Indicate if the value entered in the input is invalid.
    */
@@ -45,7 +41,7 @@ const MultilineInput = (props: TMultiLineInputProps) => {
   const handleHeightChange = useCallback<
     (height: number, meta: TextareaHeightChangeMeta) => void
   >(
-    (height: number, meta: TextareaHeightChangeMeta) => {
+    (_, meta: TextareaHeightChangeMeta) => {
       const containerHeight = Math.floor(
         ref.current?.scrollHeight || 0 / meta.rowHeight
       );
@@ -62,7 +58,7 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       );
 
       if (onHeightChange) {
-        onHeightChange(height, containerHeight, rowCount > 1);
+        onHeightChange(containerHeight, rowCount);
       }
     },
     [ref, onHeightChange]

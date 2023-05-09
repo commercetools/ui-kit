@@ -85,10 +85,10 @@ const TranslationInput = (props: TranslationInputProps) => {
   const [inputHasSeveralRows, setInputHasSeveralRows] = useState(true);
 
   const handleHeightChange = useCallback(
-    (_, __, hasSeveralRows) => {
+    (_, rowCount) => {
       // This checks if the content in the textarea is greater than one row. If it is, then the toggle button will be shown.
       // This is to prevent the toggle button from showing when there is not enough content to expand/collapse.
-      setInputHasSeveralRows(hasSeveralRows);
+      setInputHasSeveralRows(rowCount > 1);
     },
     [setInputHasSeveralRows]
   );
