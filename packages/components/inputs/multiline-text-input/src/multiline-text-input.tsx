@@ -111,7 +111,7 @@ const defaultProps: Pick<
 const MultilineTextInput = (props: TMultilineTextInputProps) => {
   const intl = useIntl();
   const [shouldRenderToggleButton, setShouldRenderToggleButton] =
-    useState(true);
+    useState(false);
 
   const [isOpen, toggle] = useToggleState(props.defaultExpandMultilineText);
 

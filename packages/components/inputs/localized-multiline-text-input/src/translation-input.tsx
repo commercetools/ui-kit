@@ -82,7 +82,7 @@ const Row = styled.div`
 `;
 
 const TranslationInput = (props: TranslationInputProps) => {
-  const [inputHasSeveralRows, setInputHasSeveralRows] = useState(true);
+  const [inputHasSeveralRows, setInputHasSeveralRows] = useState(false);
 
   const handleHeightChange = useCallback(
     (_, rowCount) => {
