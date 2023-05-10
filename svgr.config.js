@@ -30,14 +30,31 @@ const annotationsToRemove = [
   '// @ts-ignore',
 ];
 
+const isUppercaseLetter = (letter) => /[A-Z]/.test(letter);
+const getIconAccessibleTitle = (componentName) => {
+  return [...componentName]
+    .map((letter, index) =>
+      index > 0 && isUppercaseLetter(letter)
+        ? ` ${letter.toLowerCase()}`
+        : letter
+    )
+    .join('');
+};
+const getSvgFileName = (filePathname) =>
+  filePathname.match(/\/svg\/(.*)\.react\.svg/)[1];
+
 // https://react-svgr.com/docs/custom-templates/
 // https://github.com/gregberge/svgr/blob/c57ee04b19c15a76ae4caf40d1bb82c210d6c398/packages/babel-plugin-transform-svg-component/src/types.ts#L18
 const styledIconsTemplate = (variables, context) => {
+  console.log('Variables:', JSON.stringify(variables, null, 4));
+  console.log('Context:', JSON.stringify(context, null, 4));
+
   const svgComponentName = context.options.state.componentName.replace(
     /react/i,
     ''
   );
   const reactComponentName = `${svgComponentName.replace(/svg/i, '')}Icon`;
+  const svgAccessibleTitle = getIconAccessibleTitle(reactComponentName);
   const babelOptions = {
     preserveComments: true,
     placeholderPattern: false,
@@ -50,18 +67,28 @@ const styledIconsTemplate = (variables, context) => {
 // This file is created with 'yarn generate-icons'.
 // Original SVG file: ${context.options.state.filePath}
 
+import { useMemo } from 'react';
+import { createSequentialId } from '@commercetools-uikit/utils';
+
 ${templateCreateStyledIcon}
 
-const ${svgComponentName} = (props: SVGProps) => JSX;
+const ${svgComponentName} = ({ titleId, title, ...props }: SVGProps) => JSX;
 ${svgComponentName}.displayName = "${svgComponentName}";
 
-const ${reactComponentName} = (props: Props) => (
+const titleSequentialId = createSequentialId('${getSvgFileName(
+    context.options.state.filePath
+  )}-icon-title-');
+
+const ${reactComponentName} = (props: Props) => {
+  const svgTitleId = useMemo(() => titleSequentialId(), []);
+  return (
     <ClassNames>
       {({ css: createClass }) =>
-        <${svgComponentName} {...props} className={createClass(getIconStyles(props))} />
+        <${svgComponentName} {...props} titleId={svgTitleId} title="${svgAccessibleTitle}" className={createClass(getIconStyles(props))} />
       }
     </ClassNames>
   );
+};
 ${reactComponentName}.displayName = "${reactComponentName}";
 
 export default ${reactComponentName};
@@ -79,6 +106,8 @@ export default ${reactComponentName};
 
 module.exports = {
   icon: false,
+  expandProps: 'end',
+  titleProp: true,
   svgoConfig: {
     plugins: [
       {
