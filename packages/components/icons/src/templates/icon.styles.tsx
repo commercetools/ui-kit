@@ -16,7 +16,11 @@ export type Props = {
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-export type SVGProps = Props & { className: string };
+export type SVGProps = Props & {
+  className: string;
+  titleId: string;
+  title?: string;
+};
 
 const iconSizes = {
   small: 12,
