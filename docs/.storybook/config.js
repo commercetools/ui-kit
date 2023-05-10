@@ -5,6 +5,7 @@ import { addReadme } from 'storybook-readme';
 import { withA11y } from '@storybook/addon-a11y';
 import { create } from '@storybook/theming';
 import { contexts } from './configs/contexts';
+import { ThemeWrapper } from './decorators';
 
 addParameters({
   readme: {
@@ -70,5 +71,6 @@ function loadStories() {
 addDecorator(addReadme);
 addDecorator(withContexts(contexts));
 addDecorator(withA11y);
+addDecorator(ThemeWrapper);
 
 configure(loadStories, module);
