@@ -33,7 +33,7 @@
     "react-dom": "17.0.2",
     "storybook-readme": "5.0.9",
     "style-loader": "2.0.0",
-    "yaml": "1.10.2",
+    "yaml": "2.2.2",
     "yaml-loader": "0.8.0"
   },
   "devDependencies": {
