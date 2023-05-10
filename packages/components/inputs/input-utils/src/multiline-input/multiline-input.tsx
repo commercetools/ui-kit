@@ -1,4 +1,4 @@
-import { useRef, useCallback, ChangeEventHandler, useEffect } from 'react';
+import { useRef, useCallback, ChangeEventHandler } from 'react';
 import TextareaAutosize, {
   TextareaHeightChangeMeta,
 } from 'react-textarea-autosize';
@@ -24,7 +24,6 @@ export type TMultiLineInputProps = {
   value: string;
   isOpen: boolean;
   onHeightChange?: (height: number, rowCount: number) => void;
-  calculateFirstRowHeight?: (age: number) => void;
   /**
    * Indicate if the value entered in the input is invalid.
    */
@@ -35,41 +34,35 @@ export type TMultiLineInputProps = {
   'aria-errormessage'?: string;
 };
 
+// We cache the vertical padding of the element becuase
+// it does not change over time so we don't need to
+// recalculate it on every height change event.
+let _elementVerticalPadding: number | null = null;
+const getElementVerticalPadding = (element: Element) => {
+  if (_elementVerticalPadding === null) {
+    const computedStyle = getComputedStyle(element);
+    const paddingTop = parseInt(computedStyle.paddingTop, 10);
+    const paddingBottom = parseInt(computedStyle.paddingBottom, 10);
+    _elementVerticalPadding = paddingTop + paddingBottom;
+  }
+  return _elementVerticalPadding;
+};
+
 const MultilineInput = (props: TMultiLineInputProps) => {
-  const { onHeightChange, calculateFirstRowHeight } = props;
+  const { onHeightChange } = props;
   const ref = useRef<HTMLTextAreaElement | null>(null);
-
-  useEffect(() => {
-    // Getting the line height and paddings of the element and then calculating the height of one row.
-    const elementComputedStyles = getComputedStyle(ref.current as Element);
-    const lineHeight = parseInt(
-      elementComputedStyles.getPropertyValue('line-height'),
-      10
-    );
-    const paddingTop = parseInt(
-      elementComputedStyles.getPropertyValue('padding-top'),
-      10
-    );
-    const paddingBottom = parseInt(
-      elementComputedStyles.getPropertyValue('padding-bottom'),
-      10
-    );
-    const elementHeight = lineHeight + paddingTop + paddingBottom;
-
-    if (calculateFirstRowHeight) {
-      calculateFirstRowHeight(elementHeight);
-    }
-  }, [ref, calculateFirstRowHeight]);
 
   const handleHeightChange = useCallback<
     (height: number, meta: TextareaHeightChangeMeta) => void
   >(
-    (height: number, meta: TextareaHeightChangeMeta) => {
-      const rowCount = Math.floor(
-        ref.current?.scrollHeight || 0 / meta.rowHeight
-      );
+    (_, meta: TextareaHeightChangeMeta) => {
+      const containerHeight = ref.current!.scrollHeight;
+      const textHeight =
+        containerHeight - getElementVerticalPadding(ref.current!);
+      const rowCount = Math.floor(textHeight / meta.rowHeight);
+
       if (onHeightChange) {
-        onHeightChange(height, rowCount);
+        onHeightChange(containerHeight, rowCount);
       }
     },
     [ref, onHeightChange]

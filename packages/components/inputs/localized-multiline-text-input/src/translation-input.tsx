@@ -82,21 +82,15 @@ const Row = styled.div`
 `;
 
 const TranslationInput = (props: TranslationInputProps) => {
-  const [contentRowCount, setContentRowCount] = useState(0);
-  const [firstRowHeight, setFirstRowHeight] = useState(0);
+  const [inputHasSeveralRows, setInputHasSeveralRows] = useState(false);
 
   const handleHeightChange = useCallback(
     (_, rowCount) => {
-      setContentRowCount(rowCount);
+      // This checks if the content in the textarea is greater than one row. If it is, then the toggle button will be shown.
+      // This is to prevent the toggle button from showing when there is not enough content to expand/collapse.
+      setInputHasSeveralRows(rowCount > 1);
     },
-    [setContentRowCount]
-  );
-
-  const calculateFirstRowHeight = useCallback(
-    (rowHeight) => {
-      setFirstRowHeight(rowHeight);
-    },
-    [setFirstRowHeight]
+    [setInputHasSeveralRows]
   );
 
   const { onChange } = props;
@@ -130,7 +124,7 @@ const TranslationInput = (props: TranslationInputProps) => {
 
   // This checks if the content in the textarea is greater than 38 (one row). If it is, then the toggle button will be shown.
   // This is to prevent the toggle button from showing when there is not enough content to expand/collapse.
-  const contentExceedsShownRows = contentRowCount > firstRowHeight;
+  // const contentExceedsShownRows = contentRowCount > firstRowHeight;
 
   const shouldToggleButtonTakeSpace =
     /*
@@ -141,9 +135,7 @@ const TranslationInput = (props: TranslationInputProps) => {
       then it can be placed statically because it will then be a sibling to the error/warning message
       and LocalizedInputToggle is placed below the errors/warnings.
     */
-    (!props.isCollapsed &&
-      contentExceedsShownRows &&
-      !props.hasLanguagesControl) ||
+    (!props.isCollapsed && inputHasSeveralRows && !props.hasLanguagesControl) ||
     props.error ||
     props.warning;
 
@@ -174,7 +166,6 @@ const TranslationInput = (props: TranslationInputProps) => {
           value={props.value}
           onChange={handleChange}
           onHeightChange={handleHeightChange}
-          calculateFirstRowHeight={calculateFirstRowHeight}
           onBlur={props.onBlur}
           onFocus={handleFocus}
           isDisabled={props.isDisabled}
@@ -220,7 +211,7 @@ const TranslationInput = (props: TranslationInputProps) => {
             );
           return null;
         })()}
-        {!props.isCollapsed && contentExceedsShownRows && (
+        {!props.isCollapsed && inputHasSeveralRows && (
           <>
             <LeftColumn />
             <RightColumn>
