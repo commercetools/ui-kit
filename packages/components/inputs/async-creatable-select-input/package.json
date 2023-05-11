@@ -29,12 +29,12 @@
     "@commercetools-uikit/spacings": "16.0.0",
     "@commercetools-uikit/text": "16.0.0",
     "@commercetools-uikit/utils": "16.0.0",
-    "@emotion/is-prop-valid": "1.2.0",
+    "@emotion/is-prop-valid": "1.2.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-select": "5.7.2"
+    "react-select": "5.7.3"
   },
   "devDependencies": {
     "react": "17.0.2",
