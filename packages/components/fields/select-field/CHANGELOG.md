@@ -1,5 +1,18 @@
 # @commercetools-uikit/select-field
 
+## 16.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`9ec1a6f9a`](https://github.com/commercetools/ui-kit/commit/9ec1a6f9a72ccb08a8d058396db48a6347861887), [`03dad5626`](https://github.com/commercetools/ui-kit/commit/03dad56266eda43d9ccfda3d32ca8febfeb0998b), [`cd36078fa`](https://github.com/commercetools/ui-kit/commit/cd36078fa6f1bf83bd1be03035d916298ad6038e)]:
+  - @commercetools-uikit/design-system@16.1.0
+  - @commercetools-uikit/select-input@16.1.0
+  - @commercetools-uikit/utils@16.1.0
+  - @commercetools-uikit/constraints@16.1.0
+  - @commercetools-uikit/field-label@16.1.0
+  - @commercetools-uikit/spacings@16.1.0
+  - @commercetools-uikit/field-errors@16.1.0
+
 ## 16.0.0
 
 ### Major Changes

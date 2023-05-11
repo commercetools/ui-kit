@@ -1,5 +1,11 @@
 # @commercetools-uikit/utils
 
+## 16.1.0
+
+### Patch Changes
+
+- [#2509](https://github.com/commercetools/ui-kit/pull/2509) [`cd36078fa`](https://github.com/commercetools/ui-kit/commit/cd36078fa6f1bf83bd1be03035d916298ad6038e) Thanks [@renovate](https://github.com/apps/renovate)! - Updated all dependencies
+
 ## 16.0.0
 
 ## 15.15.1
