@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import type { KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
 import { useIntl, type MessageDescriptor } from 'react-intl';
 import styled from '@emotion/styled';
@@ -8,7 +7,7 @@ import Card from '@commercetools-uikit/card';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import { CloseIcon } from '@commercetools-uikit/icons';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
 type TSettingsContainerProps = {
   title: MessageDescriptor & {
@@ -38,23 +37,15 @@ const CardContentWrapper = styled.div`
 
 const SettingsContainer = (props: TSettingsContainerProps) => {
   const intl = useIntl();
-  const { themedValue } = useTheme();
 
   return (
     <CollapsibleMotion isDefaultClosed={false}>
       {({ registerContentNode, containerStyles }) => (
-        <Card
-          type={themedValue('flat', 'raised')}
-          insetScale="none"
-          theme={props.containerTheme}
-        >
+        <Card type="raised" insetScale="none" theme={props.containerTheme}>
           <CardContentWrapper>
-            <Spacings.Stack scale={themedValue('xs', 'xl')}>
+            <Spacings.Stack scale="xl">
               <HeaderContainer>
-                <Text.Headline
-                  as={themedValue('h3', 'h2')}
-                  intlMessage={props.title}
-                />
+                <Text.Headline as="h2" intlMessage={props.title} />
                 <AccessibleButton
                   onClick={props.onClose}
                   label={intl.formatMessage(props.closeButtonLabel)}
@@ -62,7 +53,7 @@ const SettingsContainer = (props: TSettingsContainerProps) => {
                   <CloseIcon size="medium" />
                 </AccessibleButton>
               </HeaderContainer>
-              <Spacings.Stack scale={themedValue('xs', 'l')}>
+              <Spacings.Stack scale="l">
                 <Spacings.Inset scale="s">
                   <div style={containerStyles}>
                     <div ref={registerContentNode}>{props.children}</div>

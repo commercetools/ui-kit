@@ -87,9 +87,8 @@ const getContentWrapperStyles = (props: TTagBodyProps, isNewTheme: boolean) => {
 };
 
 const TagBody = (props: TTagBodyProps) => {
-  const { themedValue, isNewTheme } = useTheme();
+  const { isNewTheme } = useTheme();
   const textTone = props.isDisabled ? 'secondary' : 'inherit';
-  const TextComponent = themedValue(Text.Detail, Text.Body);
 
   return (
     <Body
@@ -134,13 +133,9 @@ const TagBody = (props: TTagBodyProps) => {
     >
       <Spacings.Inline scale="s" alignItems="center">
         {props.isDraggable && !props.isDisabled ? (
-          <DragIcon
-            data-testid="drag-icon"
-            size="medium"
-            color={themedValue('solid', undefined)}
-          />
+          <DragIcon data-testid="drag-icon" size="medium" />
         ) : null}
-        <TextComponent tone={textTone}>{props.children}</TextComponent>
+        <Text.Body tone={textTone}>{props.children}</Text.Body>
       </Spacings.Inline>
     </Body>
   );

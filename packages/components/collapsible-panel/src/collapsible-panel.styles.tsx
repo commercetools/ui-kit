@@ -19,14 +19,13 @@ const getHeaderContainerStyles = (
   props: Pick<
     TCollapsiblePanel,
     'headerControlsAlignment' | 'condensed' | 'isDisabled' | 'isSticky'
-  > & { isNewTheme: boolean },
+  >,
   isOpen: boolean
 ) => {
   const baseStyles = css`
     background-color: ${designTokens.colorSurface};
-    border-bottom: ${isOpen || props.isNewTheme
-      ? '1px solid ' + designTokens.borderColorForCollapsiblePanelHeader
-      : 'none'};
+    border-bottom: ${'1px solid ' +
+    designTokens.borderColorForCollapsiblePanelHeader};
     position: relative;
     border-top-left-radius: ${designTokens.borderRadius6};
     border-top-right-radius: ${designTokens.borderRadius6};
@@ -76,14 +75,6 @@ const baseContainerStyles = css`
   font-size: ${designTokens.fontSizeDefault};
 `;
 
-const getBaseContainerStyles = (isNewTheme: boolean) =>
-  !isNewTheme
-    ? css`
-        box-shadow: ${designTokens.shadow1};
-        border-radius: ${designTokens.borderRadius6};
-      `
-    : undefined;
-
 const HeaderControlsWrapper = styled.div`
   margin-left: ${designTokens.spacing30};
   display: flex;
@@ -110,7 +101,6 @@ const SectionDescriptionWrapper = styled.div<{ condensed?: boolean }>`
 type TSectionWrapper = {
   condensed?: boolean;
   isExpandControlHidden?: boolean;
-  isNewTheme: boolean;
   children: ReactNode;
 };
 const SectionWrapper = forwardRef<HTMLDivElement, TSectionWrapper>(
@@ -126,7 +116,7 @@ const SectionWrapper = forwardRef<HTMLDivElement, TSectionWrapper>(
               : designTokens.paddingForCollapsiblePanelSectionWrapper
           };
         `,
-          props.isNewTheme && props.isExpandControlHidden && 'padding-left: 0;',
+          props.isExpandControlHidden && 'padding-left: 0;',
         ]}
       >
         {props.children}
@@ -140,7 +130,6 @@ export {
   baseContainerStyles,
   getHeaderContainerStyles,
   getThemeStyle,
-  getBaseContainerStyles,
   SectionContent,
   SectionDescriptionWrapper,
   SectionWrapper,

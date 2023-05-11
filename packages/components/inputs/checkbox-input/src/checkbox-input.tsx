@@ -156,7 +156,7 @@ const CheckboxIconWrapper = styled.div<TCheckboxIconWrapperProps>`
 `;
 
 const CheckboxIcon = (props: TLabelProps) => {
-  const { isNewTheme, themedValue } = useTheme();
+  const { isNewTheme } = useTheme();
   const isDisabledOrReadOnlyState = props.isDisabled || props.isReadOnly;
   const isDefaultState = !(props.hasError || isDisabledOrReadOnlyState);
   const canForcedHoverEffect = Boolean(
@@ -164,8 +164,8 @@ const CheckboxIcon = (props: TLabelProps) => {
   );
   return (
     <CheckboxIconWrapper
-      width={themedValue('auto', '26px')}
-      height={themedValue('auto', '26px')}
+      width="26px"
+      height="26px"
       isHovered={canForcedHoverEffect}
     >
       <div
@@ -177,17 +177,14 @@ const CheckboxIcon = (props: TLabelProps) => {
             border-style: solid;
             background-color: ${getBackgroundColor(props)};
             padding: 1px;
-            width: ${themedValue('16px', '18px')};
-            height: ${themedValue('16px', '18px')};
+            width: 18px;
+            height: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
 
             svg > path[stroke] {
-              stroke: ${themedValue(
-                designTokens.colorPrimary,
-                designTokens.colorSurface
-              )};
+              stroke: ${designTokens.colorSurface};
             }
           `,
           !isNewTheme &&
@@ -223,19 +220,9 @@ const CheckboxIcon = (props: TLabelProps) => {
       >
         {(() => {
           if (props.isIndeterminate)
-            return (
-              <IndeterminateIcon
-                color={themedValue('primary', 'surface')}
-                size="scale"
-              />
-            );
+            return <IndeterminateIcon color="surface" size="scale" />;
           if (props.isChecked)
-            return (
-              <CheckedIcon
-                color={themedValue('primary', 'surface')}
-                size="scale"
-              />
-            );
+            return <CheckedIcon color="surface" size="scale" />;
           return null;
         })()}
       </div>
