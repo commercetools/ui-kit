@@ -99,7 +99,7 @@ choiceGroupsByTheme:
       label: Font families
       prefix: font-family
       choices:
-        font-family: "'Open Sans', sans-serif"
+        font-family: "'Inter', system-ui"
     fontSizes:
       label: Font sizes
       prefix: font-size
@@ -189,6 +189,7 @@ choiceGroupsByTheme:
       prefix: spacing
       choices:
         # Legacy deprecated tokens
+        # TODO: Remove these tokens after no consumers are using them
         spacing-xs: 4px
         spacing-s: 8px
         spacing-m: 16px
@@ -218,13 +219,6 @@ choiceGroupsByTheme:
         break-point-biggerdesktop: 1280px
         break-point-giantdesktop: 1680px
         break-point-jumbodesktop: 1920px
-
-  test:
-    fontFamilies:
-      label: Font families
-      prefix: font-family
-      choices:
-        font-family: "'Inter', system-ui"
 
 states:
   active: 'Trigged while the user is currently interacting with the element'
@@ -460,847 +454,6 @@ decisionGroupsByTheme:
       prefix: align-items
       decisions:
         align-items-for-select-input-tag:
-          choice: 'unset'
-
-    backgroundColors:
-      label: Background Colors
-      prefix: background-color
-      decisions:
-        background-color-for-button-when-active:
-          choice: color-surface
-        background-color-for-button-when-hovered:
-          choice: color-surface
-        background-color-for-button-as-primary-when-active:
-          choice: color-primary
-        background-color-for-button-as-primary-when-hovered:
-          choice: color-primary-25
-        background-color-for-button-as-icon-as-primary-when-active:
-          choice: color-primary
-        background-color-for-button-as-icon-as-primary-when-hovered:
-          choice: color-primary
-        background-color-for-button-as-icon-as-info-when-active:
-          choice: color-info
-        background-color-for-button-as-icon-as-info-when-hovered:
-          choice: color-info
-        background-color-for-button-as-urgent-when-active:
-          choice: color-warning
-        background-color-for-button-as-urgent-when-hovered:
-          choice: color-warning-25
-        background-color-for-button-when-disabled:
-          choice: color-accent-98
-        background-color-for-input:
-          description: ''
-          choice: color-surface
-        background-color-for-input-when-selected:
-          description: ''
-          choice: color-accent-95
-        background-color-for-input-when-disabled:
-          description: ''
-          choice: color-accent-98
-        background-color-for-input-when-hovered:
-          description: ''
-          choice: color-surface
-        background-color-for-input-when-focused:
-          description: ''
-          choice: color-surface
-        background-color-for-input-when-readonly:
-          choice: color-surface
-        background-color-for-input-when-active:
-          choice: color-accent-95
-        background-color-for-table-cell-when-hovered:
-          choice: color-neutral-90
-        background-color-for-table-header:
-          choice: color-accent
-        background-color-for-tag:
-          description: ''
-          choice: color-neutral-95
-        background-color-for-tag-warning:
-          description: ''
-          choice: color-warning-95
-        background-color-for-tag-when-hovered:
-          choice: color-neutral-95
-        background-color-for-collapsible-panel-header-icon-when-disabled:
-          choice: color-accent-98
-        background-color-for-select-input-option-when-hovered:
-          description: ''
-          choice: color-neutral-90
-        background-color-for-avatar:
-          description: ''
-          choice: color-neutral-60
-        background-color-for-avatar-when-highlighted:
-          description: ''
-          choice: color-neutral
-        background-color-for-stamp-as-positive:
-          description: ''
-          choice: color-primary-85
-        background-color-for-localized-input-label:
-          choice: color-accent-98
-        background-color-for-localized-input-label-when-readonly:
-          choice: color-accent-95
-        background-color-for-localized-input-label-when-disabled:
-          choice: color-accent-98
-        background-color-for-localized-rich-text-body-button-when-active:
-          choice: color-accent-30
-        background-color-for-localized-rich-text-body-button:
-          choice: color-neutral-90
-        background-color-for-rich-text-dropdown-when-hovered:
-          choice: color-neutral-90
-        background-color-for-rich-text-more-styles-dropdown-when-hovered:
-          choice: color-neutral-90
-        background-color-for-rich-text-button:
-          choice: color-accent-30
-        background-color-for-tooltip:
-          choice: color-accent
-        background-color-for-view-switcher:
-          choice: color-surface
-        background-color-for-view-switcher-when-disabled:
-          choice: color-accent-98
-        background-color-for-view-switcher-when-selected:
-          choice: color-neutral-95
-        background-color-for-view-switcher-when-hovered:
-          choice: color-neutral-90
-        background-color-for-content-notification-when-error:
-          choice: color-surface
-        background-color-for-content-notification-when-info:
-          choice: color-surface
-        background-color-for-content-notification-when-warning:
-          choice: color-surface
-        background-color-for-content-notification-when-success:
-          choice: color-surface
-        background-color-for-content-notification-icon-when-error:
-          choice: color-error
-        background-color-for-content-notification-icon-when-info:
-          choice: color-info
-        background-color-for-content-notification-icon-when-warning:
-          choice: color-warning
-        background-color-for-content-notification-icon-when-success:
-          choice: color-primary
-        background-color-for-checkbox-input-icon:
-          choice: color-surface
-        background-color-for-checkbox-input-icon-when-disabled:
-          choice: color-surface
-        background-color-for-checkbox-input-icon-when-readonly:
-          choice: color-surface
-        background-color-for-checkbox-input-icon-when-error:
-          choice: color-surface
-        background-color-for-checkbox-input-icon-when-hovered:
-          choice: color-surface
-        background-color-for-primary-action-dropdown-when-active:
-          choice: color-neutral-95
-        background-color-for-primary-action-dropdown-when-disabled:
-          choice: color-accent-98
-        background-color-for-toggle-input-track:
-          choice: color-neutral-60
-        background-color-for-toggle-input-track-when-disabled:
-          choice: color-neutral
-        background-color-for-toggle-input-thumb-when-disabled:
-          choice: color-accent-95
-        background-color-for-toggle-input-track-when-checked:
-          choice: color-primary
-        background-color-for-toggle-input-thumb-when-checked:
-          choice: color-surface
-        background-color-for-toggle-input-track-when-checked-and-disabled:
-          choice: color-primary-25
-        background-color-for-toggle-input-thumb-when-checked-and-disabled:
-          choice: color-neutral
-
-    borders:
-      label: Borders
-      prefix: border
-      decisions:
-        border-for-button-as-secondary:
-          choice: 'none'
-        border-for-button-as-secondary-when-hovered:
-          choice: 'none'
-        border-for-button-as-secondary-when-active:
-          choice: 'none'
-        border-for-card-when-raised:
-          choice: 'none'
-        border-for-collapsible-panel-header-icon-when-disabled:
-          choice: '1px solid var(--color-neutral)'
-        border-for-view-switcher:
-          choice: 'none'
-        border-for-select-input-tag:
-          choice: 'none'
-        border-for-radio-input-option:
-          choice: border-width-1
-        border-for-calendar-menu-when-focused:
-          choice: '1px solid var(--color-primary)'
-
-    borderColors:
-      label: Border Colors
-      prefix: border-color
-      decisions:
-        border-color-for-input:
-          description: ''
-          choice: color-neutral-60
-        border-color-for-input-when-focused:
-          description: ''
-          choice: color-primary
-        border-color-for-input-when-disabled:
-          description: ''
-          choice: color-neutral
-        border-color-for-input-when-readonly:
-          description: ''
-          choice: color-neutral
-        border-color-for-input-when-error:
-          description: ''
-          choice: color-error
-        border-color-for-input-when-warning:
-          description: ''
-          choice: color-warning
-        border-color-for-input-when-hovered:
-          description: ''
-          choice: color-primary
-        border-color-for-tag:
-          description: ''
-          choice: color-neutral-60
-        border-color-for-tag-warning:
-          description: ''
-          choice: color-warning
-        border-color-for-tag-when-focused:
-          description: ''
-          choice: color-primary
-        border-color-for-tag-when-hovered:
-          choice: color-warning
-        border-color-for-button-as-icon:
-          choice: color-surface
-        border-color-for-button-as-icon-as-info:
-          choice: color-info
-        border-color-for-button-as-icon-as-primary:
-          choice: color-primary
-        border-color-for-button-as-icon-when-disabled:
-          choice: color-neutral
-        border-color-for-table-header:
-          choice: color-neutral
-        border-color-for-table-header-as-bottom:
-          choice: color-accent
-        border-color-for-table-manager-droppable-list:
-          choice: color-neutral-60
-        border-color-for-collapsible-panel-header:
-          choice: color-neutral-60
-        border-color-for-stamp-when-error:
-          choice: color-error
-        border-color-for-stamp-when-warning:
-          choice: color-warning
-        border-color-for-stamp-as-positive:
-          choice: color-primary-40
-        border-color-for-stamp-as-information:
-          choice: color-info
-        border-color-for-stamp-as-primary:
-          choice: color-primary-25
-        border-color-for-stamp-as-secondary:
-          choice: color-neutral-60
-        border-color-for-localized-input-label:
-          choice: color-neutral
-        border-color-for-localized-input-label-when-readonly:
-          choice: color-neutral
-        border-color-for-content-notification-when-error:
-          choice: color-error
-        border-color-for-content-notification-when-info:
-          choice: color-info
-        border-color-for-content-notification-when-warning:
-          choice: color-warning
-        border-color-for-content-notification-when-success:
-          choice: color-primary
-        border-color-for-group-heading-select-input-options:
-          choice: color-neutral
-        border-color-for-select-input-menu:
-          choice: color-primary
-        border-color-for-select-input-when-readonly:
-          choice: color-neutral
-        border-color-for-select-input-menu-when-warning:
-          choice: color-warning
-        border-color-for-select-input-menu-when-error:
-          choice: color-error
-        border-color-for-checkbox-input-icon:
-          choice: color-neutral-60
-        border-color-for-checkbox-input-icon-when-disabled:
-          choice: color-neutral
-        border-color-for-checkbox-input-icon-when-readonly:
-          choice: color-neutral
-        border-color-for-checkbox-input-icon-when-error:
-          choice: color-error
-        border-color-for-radio-input:
-          choice: color-neutral
-        border-color-for-radio-input-when-disabled:
-          choice: color-neutral-60
-        border-color-for-radio-input-when-readonly:
-          choice: color-neutral
-        border-color-for-radio-input-when-checked:
-          choice: color-neutral
-        border-color-for-radio-input-when-focused:
-          choice: color-primary
-        border-color-for-primary-action-dropdown-menu:
-          choice: color-neutral
-
-    borderRadiuses:
-      label: Border Radius
-      prefix: border-radius
-      decisions:
-        border-radius-for-button-as-big:
-          choice: border-radius-6
-        border-radius-for-button-as-medium:
-          choice: border-radius-4
-        border-radius-for-button-as-icon-as-big:
-          choice: border-radius-6
-        border-radius-for-button-as-icon-as-medium:
-          choice: border-radius-4
-        border-radius-for-button-as-icon-as-small:
-          choice: border-radius-2
-        border-radius-for-input:
-          description: ''
-          choice: border-radius-6
-        border-radius-for-tag:
-          description: ''
-          choice: border-radius-2
-        border-radius-for-card:
-          choice: border-radius-6
-        border-radius-for-table-manager-droppable-list:
-          choice: border-radius-6
-        border-radius-for-stamp:
-          choice: border-radius-2
-        border-radius-for-view-switcher:
-          choice: border-radius-6
-        border-radius-for-content-notification:
-          choice: '0 var(--border-radius-6) var(--border-radius-6) 0'
-        border-radius-for-content-notification-icon:
-          choice: 'var(--border-radius-6) 0 0 var(--border-radius-6)'
-        border-radius-for-primary-action-dropdown:
-          choice: 'var(--border-radius-6) 0 0 var(--border-radius-6)'
-        border-radius-for-primary-action-dropdown-icon:
-          choice: '0 var(--border-radius-6) var(--border-radius-6) 0'
-        border-radius-for-primary-action-dropdown-menu:
-          choice: border-radius-6
-
-    borderWidths:
-      label: Border width
-      prefix: border-width
-      decisions:
-        border-width-for-input:
-          choice: border-width-1
-        border-width-for-input-when-warning:
-          choice: border-width-1
-        border-width-for-input-when-error:
-          choice: border-width-1
-        border-width-for-input-when-focused:
-          choice: border-width-1
-        border-width-for-tag:
-          choice: border-width-1
-        border-width-for-select-input:
-          choice: border-width-1
-        border-width-for-content-notification-icon:
-          choice: '0px'
-        border-left-width-for-content-notification:
-          choice: border-width-1
-        border-width-for-checkbox-input-icon:
-          choice: border-width-1
-        border-for-primary-action-dropdown-icon:
-          choice: '0px 0px 0px 1px'
-
-    boxShadows:
-      label: Box shadows
-      prefix: box-shadow
-      decisions:
-        box-shadow-for-datetime-input-when-hovered:
-          choice: 'inset 0 0 0 2px'
-        box-shadow-for-view-switcher:
-          choice: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)
-        box-shadow-for-view-switcher-when-selected:
-          choice: shadow-9
-        box-shadow-for-select-input-when-focused:
-          choice: 'inset 0 0 0 2px'
-        box-shadow-for-calendar-menu-when-focused:
-          choice: 'none'
-
-    fontColors:
-      label: Font Colors
-      prefix: font-color
-      decisions:
-        font-color-for-text:
-          description: ''
-          choice: color-solid
-        font-color-for-text-when-disabled:
-          choice: color-neutral
-        font-color-for-input:
-          description: ''
-          choice: color-solid
-        font-color-for-input-when-disabled:
-          description: ''
-          choice: color-neutral-60
-        font-color-for-input-when-error:
-          description: ''
-          choice: color-error
-        font-color-for-input-when-readonly:
-          description: ''
-          choice: color-neutral-60
-        font-color-for-input-when-warning:
-          description: ''
-          choice: color-warning
-        font-color-for-tag:
-          description: ''
-          choice: color-solid
-        font-color-for-tag-remove-icon:
-          choice: color-solid
-        font-color-for-tag-drag-icon:
-          choice: color-solid
-        font-color-for-tag-remove-icon-when-hovered:
-          choice: color-warning
-        font-color-for-tag-when-disabled:
-          description: ''
-          choice: color-neutral-60
-        font-color-for-text-when-inverted:
-          description: ''
-          choice: color-surface
-        font-color-for-link-as-inverted:
-          choice: color-surface
-        font-color-for-link-as-primary:
-          choice: color-primary
-        font-color-for-link-as-secondary:
-          choice: color-solid
-        font-color-for-link-as-primary-when-active:
-          choice: color-primary-25
-        font-color-for-link-as-secondary-when-active:
-          choice: color-primary
-        font-color-for-table-header:
-          choice: color-surface
-        font-color-for-localized-input-label:
-          choice: color-neutral-60
-        font-color-for-view-switcher:
-          choice: color-solid
-        font-color-for-view-switcher-when-disabled:
-          choice: color-neutral-60
-        font-color-for-view-switcher-when-selected:
-          choice: color-solid
-        font-color-for-clear-input-icon:
-          choice: color-solid
-        font-color-for-clear-input-icon-when-hovered:
-          choice: color-warning
-        font-color-for-content-notification:
-          choice: color-solid
-        font-color-for-content-notification-icon-when-error:
-          choice: color-surface
-        font-color-for-content-notification-icon-when-warning:
-          choice: color-surface
-        font-color-for-content-notification-icon-when-success:
-          choice: color-surface
-        font-color-for-content-notification-icon-when-info:
-          choice: color-surface
-        font-color-for-search-input-icon:
-          choice: color-solid
-        font-color-for-search-input-icon-when-hovered:
-          choice: color-primary
-        font-color-for-select-input-icon:
-          choice: color-solid
-        font-color-for-select-input-when-error:
-          choice: color-solid
-        font-color-for-select-input-when-warning:
-          choice: color-solid
-        font-color-for-select-input-icon-when-error:
-          choice: color-solid
-        font-color-for-select-input-icon-when-warning:
-          choice: color-solid
-        font-color-for-money-input-currency-dropdown-indicator:
-          choice: color-solid
-        font-color-for-search-input-icon-when-readonly:
-          choice: color-neutral-60
-        font-color-for-checkbox-input-label:
-          choice: color-solid
-        font-color-for-checkbox-input-label-when-error:
-          choice: color-error
-        font-color-for-checkbox-input-label-when-disabled:
-          choice: color-neutral-40
-        font-color-for-checkbox-input-label-when-readonly:
-          choice: color-neutral-40
-        font-color-for-radio-input-when-disabled:
-          choice: color-neutral-60
-        font-color-for-radio-input-when-error:
-          choice: color-error
-        font-color-for-radio-input-when-readonly:
-          choice: color-neutral-60
-        font-color-for-radio-input-when-warning:
-          choice: color-warning
-        font-color-for-flat-button-as-primary:
-          choice: color-primary
-        font-color-for-flat-button-as-primary-when-hovered:
-          choice: color-primary-25
-        font-color-for-flat-button-as-critical:
-          choice: color-error
-        font-color-for-flat-button-as-critical-when-hovered:
-          choice: color-error-25
-        font-color-for-flat-button-as-secondary:
-          choice: color-solid
-        font-color-for-flat-button-as-inverted:
-          choice: color-surface
-        font-color-for-flat-button-icon-when-disabled:
-          choice: color-neutral-60
-        font-color-for-secondary-icon-button-as-primary:
-          choice: color-primary
-        font-color-for-secondary-icon-button-as-primary-when-hovered:
-          choice: color-primary-25
-
-    heights:
-      label: Height
-      prefix: height
-      decisions:
-        height-for-button-as-big:
-          choice: '32px'
-        height-for-button-as-medium:
-          choice: '24px'
-        height-for-button-as-icon-as-big:
-          choice: '32px'
-        height-for-button-as-icon-as-medium:
-          choice: '24px'
-        height-for-button-as-icon-as-small:
-          choice: '16px'
-        height-for-input:
-          choice: '32px'
-        height-for-view-switcher:
-          choice: '32px'
-        height-for-view-switcher-when-condensed:
-          choice: '24px'
-        height-for-select-input-tag:
-          choice: '26px'
-        height-for-radio-input-option:
-          choice: '16px'
-        height-for-radio-input-option-when-checked:
-          choice: '8px'
-        height-for-primary-action-dropdown:
-          choice: '32px'
-
-    widths:
-      label: Width
-      prefix: width
-      decisions:
-        width-for-avatar-as-medium:
-          choice: '48px'
-
-    minWidths:
-      label: Min width
-      prefix: min-width
-      decisions:
-        min-width-for-money-input-currency-dropdown:
-          choice: '72px'
-
-    placeholderFontColors:
-      label: Placeholder font colors
-      prefix: placeholder-font-color
-      decisions:
-        placeholder-font-color-for-input:
-          description: ''
-          choice: color-neutral-60
-
-    fontSizes:
-      label: Font Sizes
-      prefix: font-size
-      decisions:
-        font-size-for-button:
-          description: ''
-          choice: font-size-30
-        font-size-for-input:
-          description: ''
-          choice: font-size-30
-        font-size-for-text-as-h1:
-          description: ''
-          choice: font-size-69
-        font-size-for-text-as-h2:
-          description: ''
-          choice: font-size-66
-        font-size-for-text-as-h3:
-          description: ''
-          choice: font-size-63
-        font-size-for-text-as-h4:
-          description: ''
-          choice: font-size-45
-        font-size-for-text-as-h5:
-          description: ''
-          choice: font-size-35
-        font-size-for-text-as-body:
-          description: ''
-          choice: font-size-30
-        font-size-for-text-as-detail:
-          description: ''
-          choice: font-size-15
-        font-size-for-body:
-          description: ''
-          choice: '13px'
-        font-size-for-link:
-          description: ''
-          choice: font-size-30
-        font-size-for-stamp:
-          choice: font-size-30
-        font-size-for-view-switcher:
-          choice: font-size-30
-        font-size-for-table:
-          choice: font-size-30
-        font-size-for-avatar-as-small:
-          choice: font-size-30
-        font-size-for-avatar-as-medium:
-          choice: font-size-60
-        font-size-for-avatar-as-big:
-          choice: font-size-78
-        font-size-for-localized-input-label:
-          choice: font-size-30
-        font-size-for-content-notification:
-          choice: font-size-30
-        font-size-for-select-input-tag:
-          choice: font-size-15
-
-    iconColors:
-      label: Icon colors
-      prefix: icon-color
-      decisions:
-        icon-color-for-datetime-input-icon:
-          choice: color-solid
-        icon-color-for-datetime-input-icon-when-hovered:
-          choice: color-warning
-
-    lineHeights:
-      label: Line Heights
-      prefix: line-height
-      decisions:
-        line-height-for-text-as-h1:
-          description: ''
-          choice: 'inherit'
-        line-height-for-text-as-h2:
-          description: ''
-          choice: 'inherit'
-        line-height-for-text-as-h3:
-          description: ''
-          choice: 'inherit'
-        line-height-for-text-as-h4:
-          description: ''
-          choice: 'inherit'
-        line-height-for-text-as-h5:
-          description: ''
-          choice: 'inherit'
-        line-height-for-text-as-body:
-          description: ''
-          choice: 'inherit'
-        line-height-for-text-as-detail:
-          description: ''
-          choice: 'inherit'
-        line-height-for-select-input-options:
-          choice: 'inherit'
-        line-height-for-table-header:
-          choice: 'inherit'
-
-    fontWeights:
-      label: Font Weights
-      prefix: font-weight
-      decisions:
-        font-weight-for-text-as-h1:
-          description: ''
-          choice: font-weight-300
-        font-weight-for-text-as-h2:
-          description: ''
-          choice: font-weight-300
-        font-weight-for-text-as-h3:
-          description: ''
-          choice: font-weight-300
-        font-weight-for-text-as-h4:
-          description: ''
-          choice: font-weight-400
-        font-weight-for-text-as-h5:
-          description: ''
-          choice: font-weight-400
-        font-weight-for-text-as-body:
-          description: ''
-          choice: font-weight-400
-        font-weight-for-text-as-detail:
-          description: ''
-          choice: font-weight-400
-        font-weight-for-button:
-          choice: font-weight-400
-        font-weight-for-table-header:
-          choice: font-weight-400
-        font-weight-for-text-as-bold:
-          choice: font-weight-700
-
-    margins:
-      label: Margins
-      prefix: margin
-      decisions:
-        margin-for-table-header:
-          choice: spacing-20
-        margin-for-table-as-condensed:
-          choice: spacing-20
-        margin-for-view-switcher-icon:
-          choice: '0 var(--spacing-10) 0 0'
-        margin-for-group-heading-select-input-options:
-          choice: spacing-10
-        margin-for-select-input-icon:
-          choice: spacing-10
-        margin-left-for-select-input-icon:
-          choice: 'inherit'
-        margin-right-for-money-input-precision-badge:
-          choice: spacing-10
-        margin-right-for-search-input-icon:
-          choice: spacing-20
-        margin-right-for-clear-input-icon:
-          choice: spacing-10
-        margin-left-for-radio-input-label:
-          choice: spacing-20
-        margin-right-for-primary-action-dropdown:
-          choice: spacing-10
-        margin-top-for-primary-action-dropdown:
-          choice: 'none'
-        margin-for-localized-rich-text-body-button:
-          choice: 'none'
-        margin-for-rich-text-divider:
-          choice: '0 var(--spacing-10)'
-        margin-for-rich-text-dropdown-item-label:
-          choice: '0 0 0 var(--spacing-10)'
-        margin-for-tag-list:
-          choice: '0 var(--spacing-10) var(--spacing-10) 0'
-    paddings:
-      label: Paddings
-      prefix: padding
-      decisions:
-        padding-for-stamp:
-          choice: 'var(--spacing-10) var(--spacing-20)'
-        padding-for-stamp-as-condensed:
-          choice: '1px var(--spacing-10)'
-        padding-for-tag:
-          choice: '5px var(--spacing-20)'
-        padding-for-table-header:
-          choice: spacing-30
-        padding-for-table-header-as-condensed:
-          choice: spacing-20
-        padding-for-table-cell:
-          choice: spacing-30
-        padding-for-table-cell-as-condensed:
-          choice: spacing-20
-        padding-for-table-manager-droppable-list:
-          choice: spacing-20
-        padding-for-table-manager-settings-panel:
-          choice: spacing-30
-        padding-for-table-manager-draggable-tag:
-          choice: spacing-10
-        padding-for-collapsible-panel-header:
-          choice: 'var(--spacing-20) var(--spacing-30)'
-        padding-for-collapsible-panel-header-as-condensed:
-          choice: spacing-20
-        padding-for-collapsible-panel-section-wrapper:
-          choice: spacing-30
-        padding-for-collapsible-panel-section-wrapper-as-condensed:
-          choice: spacing-20
-        padding-for-collapsible-panel-section-description:
-          choice: '0 0 var(--spacing-50)'
-        padding-for-collapsible-panel-section-description-as-condensed:
-          choice: '0 0 var(--spacing-30)'
-        padding-for-input:
-          choice: spacing-20
-        padding-for-multiline-input:
-          choice: 'var(--spacing-10) var(--spacing-20)'
-        padding-for-localized-rich-text-input-label:
-          choice: '0 var(--spacing-20)'
-        padding-for-localized-rich-text-dropdown-button:
-          choice: '3px var(--spacing-20)'
-        padding-for-localized-rich-text-dropdown-item:
-          choice: 'var(--spacing-10) var(--spacing-20)'
-        padding-for-localized-rich-text-body-button:
-          choice: 'var(--spacing-10)'
-        padding-for-localized-input-label:
-          choice: '0 var(--spacing-20)'
-        padding-for-rich-text-input:
-          choice: 'none'
-        padding-for-rich-text-toolbar:
-          choice: 'var(--spacing-10) 7px'
-        padding-left-for-rich-text-toolbar:
-          choice: '3px'
-        padding-for-rich-text-editor-container:
-          choice: '6px var(--spacing-20) var(--spacing-10)'
-        padding-for-localized-multiline-text-input-label:
-          choice: '0 var(--spacing-20)'
-        padding-for-tag-remove-icon:
-          choice: '0 var(--spacing-10)'
-        padding-for-tooltip:
-          choice: 'var(--spacing-10) var(--spacing-20)'
-        padding-for-view-switcher:
-          choice: '0 var(--spacing-30) 0 var(--spacing-30)'
-        padding-for-view-switcher-when-condensed:
-          choice: '0 var(--spacing-20) 0 var(--spacing-20)'
-        padding-for-content-notification:
-          choice: 'var(--spacing-20)'
-        padding-for-content-notification-icon:
-          choice: 'var(--spacing-20) var(--spacing-30)'
-        padding-left-for-select-input-options:
-          choice: spacing-20
-        padding-right-for-select-input-options:
-          choice: spacing-20
-        padding-top-for-select-input-options:
-          choice: spacing-10
-        padding-bottom-for-select-input-options:
-          choice: spacing-10
-        padding-for-group-heading-select-input-options:
-          choice: spacing-20
-        padding-for-select-input-menu:
-          choice: 'inherit'
-        padding-for-money-input-currency-dropdown:
-          choice: '0 var(--spacing-20)'
-        padding-for-selectable-search-input-dropdown:
-          choice: '0 var(--spacing-20)'
-        padding-for-primary-action-dropdown:
-          choice: '0 var(--spacing-20)'
-        padding-for-primary-action-dropdown-icon:
-          choice: '0 var(--spacing-10)'
-        padding-for-button-as-medium:
-          choice: '0 var(--spacing-20)'
-        padding-for-button-as-big:
-          choice: '0 var(--spacing-30)'
-
-    shadows:
-      label: Shadows
-      prefix: shadow
-      decisions:
-        shadow-for-button:
-          choice: shadow-7
-        shadow-for-button-when-focused:
-          choice: shadow-8
-        shadow-for-button-when-hovered:
-          choice: shadow-8
-        shadow-for-button-when-active:
-          choice: shadow-9
-        shadow-for-button-when-disabled:
-          choice: '0 0 0 1px var(--color-neutral) inset'
-        shadow-box-tag-when-hovered:
-          description: ''
-          deprecated: true
-          choice: shadow-1
-        shadow-for-card-when-raised:
-          choice: shadow-1
-        shadow-for-input:
-          choice: shadow-0
-        shadow-for-input-when-focused:
-          choice: 'inset 0 0 0 2px var(--color-primary)'
-        shadow-for-input-when-error:
-          choice: shadow-0
-        shadow-for-input-when-warning:
-          choice: shadow-0
-        shadow-for-tooltip:
-          choice: shadow-15
-        shadow-for-select-input-menu:
-          choice: shadow-7
-        shadow-for-primary-action-dropdown:
-          choice: shadow-7
-        shadow-for-primary-action-dropdown-when-hovered:
-          choice: shadow-8
-        shadow-for-primary-action-dropdown-when-active:
-          choice: shadow-9
-        shadow-for-primary-action-dropdown-menu:
-          choice: shadow-1
-        shadow-for-toggle-input-thumb:
-          choice: shadow-7
-        shadow-for-tag-when-hovered:
-          choice: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
-
-  test:
-    alignItems:
-      label: Flex align items
-      prefix: align-items
-      decisions:
-        align-items-for-select-input-tag:
           choice: 'center'
 
     backgroundColors:
@@ -1328,29 +481,40 @@ decisionGroupsByTheme:
         background-color-for-button-as-urgent-when-hovered:
           choice: '#E7680D' # color-warning with 5% black opacity
         background-color-for-button-when-disabled:
+          choice: color-accent-95
+        background-color-for-input:
+          choice: color-surface
+        background-color-for-input-when-selected:
+          choice: color-accent-95
+        background-color-for-input-when-disabled:
           choice: color-neutral-95
+        background-color-for-input-when-hovered:
+          choice: color-neutral-98
+        background-color-for-input-when-focused:
+          choice: color-surface
+        background-color-for-input-when-readonly:
+          choice: color-neutral-95
+        background-color-for-input-when-active:
+          choice: color-info-95
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-98
         background-color-for-table-header:
           choice: color-neutral-95
+        background-color-for-tag:
+          choice: color-neutral-95
+        background-color-for-tag-warning:
+          choice: color-warning-95
+        background-color-for-tag-when-hovered:
+          choice: color-neutral-90
         background-color-for-collapsible-panel-header-icon-when-disabled:
           choice: color-surface
-        background-color-for-input-when-hovered:
+        background-color-for-select-input-option-when-hovered:
           choice: color-neutral-98
-        background-color-for-input-when-disabled:
-          choice: color-neutral-95
-        background-color-for-input-when-active:
-          choice: color-info-95
-        background-color-for-input-when-readonly:
-          choice: color-neutral-95
         background-color-for-avatar:
-          description: ''
           choice: color-accent
         background-color-for-avatar-when-highlighted:
-          description: ''
           choice: color-accent-30
         background-color-for-stamp-as-positive:
-          description: ''
           choice: color-primary-95
         background-color-for-localized-input-label:
           choice: color-surface
@@ -1370,6 +534,8 @@ decisionGroupsByTheme:
           choice: color-accent-20
         background-color-for-tooltip:
           choice: color-accent-10
+        background-color-for-view-switcher:
+          choice: color-surface
         background-color-for-view-switcher-when-disabled:
           choice: color-surface
         background-color-for-view-switcher-when-selected:
@@ -1392,8 +558,6 @@ decisionGroupsByTheme:
           choice: color-warning-95
         background-color-for-content-notification-icon-when-success:
           choice: color-primary-95
-        background-color-for-select-input-option-when-hovered:
-          choice: color-neutral-98
         background-color-for-checkbox-input-icon:
           choice: color-primary
         background-color-for-checkbox-input-icon-when-disabled:
@@ -1422,8 +586,6 @@ decisionGroupsByTheme:
           choice: color-accent-90
         background-color-for-toggle-input-thumb-when-checked-and-disabled:
           choice: color-accent-60
-        background-color-for-tag-when-hovered:
-          choice: color-neutral-90
 
     borders:
       label: Borders
@@ -1454,14 +616,26 @@ decisionGroupsByTheme:
       decisions:
         border-color-for-input:
           choice: color-neutral
+        border-color-for-input-when-focused:
+          choice: color-primary
         border-color-for-input-when-disabled:
-          choice: color-neutral
-        border-color-for-input-when-hovered:
           choice: color-neutral
         border-color-for-input-when-readonly:
           choice: color-surface
-        border-color-for-input-when-focused:
-          choice: color-primary
+        border-color-for-input-when-error:
+          choice: color-error
+        border-color-for-input-when-warning:
+          choice: color-warning
+        border-color-for-input-when-hovered:
+          choice: color-neutral
+        border-color-for-tag:
+          choice: color-neutral
+        border-color-for-tag-warning:
+          choice: color-warning
+        border-color-for-tag-when-focused:
+          choice: color-neutral
+        border-color-for-tag-when-hovered:
+          choice: color-neutral
         border-color-for-button-as-icon:
           choice: color-neutral
         border-color-for-button-as-icon-as-info:
@@ -1470,8 +644,6 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-button-as-icon-when-disabled:
           choice: color-surface
-        border-color-for-card-when-raised:
-          choice: color-neutral-90
         border-color-for-table-header:
           choice: color-surface
         border-color-for-table-header-as-bottom:
@@ -1492,14 +664,10 @@ decisionGroupsByTheme:
           choice: color-primary-85
         border-color-for-stamp-as-secondary:
           choice: color-neutral-85
+        border-color-for-localized-input-label:
+          choice: color-neutral
         border-color-for-localized-input-label-when-readonly:
           choice: color-surface
-        border-color-for-tag:
-          choice: color-neutral
-        border-color-for-tag-when-focused:
-          choice: color-neutral
-        border-color-for-tag-when-hovered:
-          choice: color-neutral
         border-color-for-content-notification-when-error:
           choice: color-error-85
         border-color-for-content-notification-when-info:
@@ -1540,7 +708,7 @@ decisionGroupsByTheme:
           choice: color-surface
 
     borderRadiuses:
-      label: Border radiuses
+      label: Border Radius
       prefix: border-radius
       decisions:
         border-radius-for-button-as-big:
@@ -1553,11 +721,13 @@ decisionGroupsByTheme:
           choice: border-radius-4
         border-radius-for-button-as-icon-as-small:
           choice: border-radius-2
+        border-radius-for-input:
+          choice: border-radius-4
+        border-radius-for-tag:
+          choice: border-radius-2
         border-radius-for-card:
           choice: border-radius-4
         border-radius-for-table-manager-droppable-list:
-          choice: border-radius-4
-        border-radius-for-input:
           choice: border-radius-4
         border-radius-for-stamp:
           choice: border-radius-20
@@ -1578,14 +748,22 @@ decisionGroupsByTheme:
       label: Border width
       prefix: border-width
       decisions:
+        border-width-for-input:
+          choice: border-width-1
+        border-width-for-input-when-warning:
+          choice: border-width-1
+        border-width-for-input-when-error:
+          choice: border-width-1
+        border-width-for-input-when-focused:
+          choice: border-width-1
         border-width-for-tag:
           choice: '1px 1px 1px 0'
+        border-width-for-select-input:
+          choice: border-width-2
         border-width-for-content-notification-icon:
           choice: border-width-1
         border-left-width-for-content-notification:
           choice: '0px'
-        border-width-for-select-input:
-          choice: border-width-2
         border-width-for-checkbox-input-icon:
           choice: border-width-2
         border-for-primary-action-dropdown-icon:
@@ -1610,20 +788,58 @@ decisionGroupsByTheme:
       label: Font Colors
       prefix: font-color
       decisions:
+        font-color-for-text:
+          choice: color-solid
         font-color-for-text-when-disabled:
           choice: color-neutral-60
-        font-color-for-table-header:
+        font-color-for-input:
           choice: color-solid
+        font-color-for-input-when-disabled:
+          choice: color-neutral-60
+        font-color-for-input-when-error:
+          choice: color-error
         font-color-for-input-when-readonly:
           choice: color-neutral-40
+        font-color-for-input-when-warning:
+          choice: color-warning
+        font-color-for-tag:
+          choice: color-solid
         font-color-for-tag-remove-icon:
           choice: color-neutral-40
         font-color-for-tag-drag-icon:
           choice: color-neutral-40
         font-color-for-tag-remove-icon-when-hovered:
           choice: color-error
+        font-color-for-tag-when-disabled:
+          choice: color-neutral-60
+        font-color-for-text-when-inverted:
+          choice: color-surface
+        font-color-for-link-as-inverted:
+          choice: color-surface
+        font-color-for-link-as-primary:
+          choice: color-primary-25
+        font-color-for-link-as-secondary:
+          choice: color-solid
+        font-color-for-link-as-primary-when-active:
+          choice: color-primary
+        font-color-for-link-as-secondary-when-active:
+          choice: color-primary
+        font-color-for-table-header:
+          choice: color-solid
+        font-color-for-localized-input-label:
+          choice: color-neutral-60
         font-color-for-view-switcher:
           choice: color-neutral-40
+        font-color-for-view-switcher-when-disabled:
+          choice: color-neutral-60
+        font-color-for-view-switcher-when-selected:
+          choice: color-solid
+        font-color-for-clear-input-icon:
+          choice: color-neutral-40
+        font-color-for-clear-input-icon-when-hovered:
+          choice: color-error
+        font-color-for-content-notification:
+          choice: color-solid
         font-color-for-content-notification-icon-when-error:
           choice: color-error
         font-color-for-content-notification-icon-when-warning:
@@ -1632,12 +848,10 @@ decisionGroupsByTheme:
           choice: color-primary
         font-color-for-content-notification-icon-when-info:
           choice: color-info
-        font-color-for-clear-input-icon-when-hovered:
-          choice: color-error
-        font-color-for-clear-input-icon:
-          choice: color-neutral-40
         font-color-for-search-input-icon:
           choice: color-neutral-60
+        font-color-for-search-input-icon-when-hovered:
+          choice: color-primary
         font-color-for-select-input-icon:
           choice: color-neutral-60
         font-color-for-select-input-when-error:
@@ -1650,6 +864,8 @@ decisionGroupsByTheme:
           choice: color-warning
         font-color-for-money-input-currency-dropdown-indicator:
           choice: color-neutral-40
+        font-color-for-search-input-icon-when-readonly:
+          choice: color-neutral-60
         font-color-for-checkbox-input-label:
           choice: color-solid
         font-color-for-checkbox-input-label-when-error:
@@ -1658,124 +874,35 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         font-color-for-checkbox-input-label-when-readonly:
           choice: color-neutral-40
+        font-color-for-radio-input-when-disabled:
+          choice: color-neutral-60
+        font-color-for-radio-input-when-error:
+          choice: color-error
+        font-color-for-radio-input-when-readonly:
+          choice: color-neutral-60
+        font-color-for-radio-input-when-warning:
+          choice: color-warning
         font-color-for-flat-button-as-primary:
           choice: color-primary-25
         font-color-for-flat-button-as-primary-when-hovered:
           choice: color-primary
-        font-color-for-link-as-primary:
-          choice: color-primary-25
-        font-color-for-link-as-primary-when-active:
-          choice: color-primary
+        font-color-for-flat-button-as-critical:
+          choice: color-error
+        font-color-for-flat-button-as-critical-when-hovered:
+          choice: color-error-25
+        font-color-for-flat-button-as-secondary:
+          choice: color-solid
+        font-color-for-flat-button-as-inverted:
+          choice: color-surface
+        font-color-for-flat-button-icon-when-disabled:
+          choice: color-neutral-60
         font-color-for-secondary-icon-button-as-primary:
           choice: color-primary-25
         font-color-for-secondary-icon-button-as-primary-when-hovered:
           choice: color-primary
 
-    fontSizes:
-      label: Font Sizes
-      prefix: font-size
-      decisions:
-        font-size-for-input:
-          choice: font-size-30
-        font-size-for-text-as-h1:
-          choice: font-size-60
-        font-size-for-text-as-h2:
-          choice: font-size-50
-        font-size-for-text-as-h3:
-          choice: font-size-40
-        font-size-for-text-as-h4:
-          choice: font-size-30
-        font-size-for-text-as-h5:
-          choice: font-size-30
-        font-size-for-text-as-body:
-          choice: font-size-30
-        font-size-for-text-as-detail:
-          choice: font-size-20
-        font-size-for-body:
-          choice: '16px'
-        font-size-for-button:
-          choice: font-size-20
-        font-size-for-stamp:
-          choice: font-size-20
-        font-size-for-view-switcher:
-          choice: font-size-20
-        font-size-for-table:
-          choice: font-size-20
-        font-size-for-avatar-as-small:
-          choice: font-size-20
-        font-size-for-avatar-as-medium:
-          choice: font-size-30
-        font-size-for-avatar-as-big:
-          choice: font-size-80
-        font-size-for-localized-input-label:
-          choice: font-size-30
-        font-size-for-select-input-tag:
-          choice: font-size-30
-
-    lineHeights:
-      label: Line Heights
-      prefix: line-height
-      decisions:
-        line-height-for-text-as-h1:
-          description: ''
-          choice: line-height-60
-        line-height-for-text-as-h2:
-          description: ''
-          choice: line-height-50
-        line-height-for-text-as-h3:
-          description: ''
-          choice: line-height-30
-        line-height-for-text-as-h4:
-          description: ''
-          choice: line-height-20
-        line-height-for-text-as-h5:
-          description: ''
-          choice: line-height-20
-        line-height-for-text-as-body:
-          description: ''
-          choice: line-height-40
-        line-height-for-text-as-detail:
-          description: ''
-          choice: line-height-20
-        line-height-for-select-input-options:
-          choice: line-height-40
-        line-height-for-table-header:
-          choice: '26px'
-
-    fontWeights:
-      label: Font Weights
-      prefix: font-weight
-      decisions:
-        font-weight-for-text-as-h1:
-          description: ''
-          choice: font-weight-600
-        font-weight-for-text-as-h2:
-          description: ''
-          choice: font-weight-500
-        font-weight-for-text-as-h3:
-          description: ''
-          choice: font-weight-500
-        font-weight-for-text-as-h4:
-          description: ''
-          choice: font-weight-500
-        font-weight-for-text-as-h5:
-          description: ''
-          choice: font-weight-500
-        font-weight-for-text-as-body:
-          description: ''
-          choice: font-weight-400
-        font-weight-for-text-as-detail:
-          description: ''
-          choice: font-weight-400
-        font-weight-for-button:
-          choice: font-weight-500
-        font-weight-for-table-header:
-          choice: font-weight-600
-        font-weight-for-text-as-bold:
-          choice: font-weight-600
-
     heights:
-      label: Heights
+      label: Height
       prefix: height
       decisions:
         height-for-button-as-big:
@@ -1803,15 +930,6 @@ decisionGroupsByTheme:
         height-for-primary-action-dropdown:
           choice: '40px'
 
-    iconColors:
-      label: Icon colors
-      prefix: icon-color
-      decisions:
-        icon-color-for-datetime-input-icon:
-          choice: color-neutral-40
-        icon-color-for-datetime-input-icon-when-hovered:
-          choice: color-error
-
     widths:
       label: Width
       prefix: width
@@ -1825,6 +943,116 @@ decisionGroupsByTheme:
       decisions:
         min-width-for-money-input-currency-dropdown:
           choice: '80px'
+
+    placeholderFontColors:
+      label: Placeholder font colors
+      prefix: placeholder-font-color
+      decisions:
+        placeholder-font-color-for-input:
+          description: ''
+          choice: color-neutral-60
+
+    fontSizes:
+      label: Font Sizes
+      prefix: font-size
+      decisions:
+        font-size-for-button:
+          choice: font-size-20
+        font-size-for-input:
+          choice: font-size-30
+        font-size-for-text-as-h1:
+          choice: font-size-60
+        font-size-for-text-as-h2:
+          choice: font-size-50
+        font-size-for-text-as-h3:
+          choice: font-size-40
+        font-size-for-text-as-h4:
+          choice: font-size-30
+        font-size-for-text-as-h5:
+          choice: font-size-30
+        font-size-for-text-as-body:
+          choice: font-size-30
+        font-size-for-text-as-detail:
+          choice: font-size-20
+        font-size-for-body:
+          choice: '16px'
+        font-size-for-link:
+          choice: font-size-30
+        font-size-for-stamp:
+          choice: font-size-20
+        font-size-for-view-switcher:
+          choice: font-size-20
+        font-size-for-table:
+          choice: font-size-20
+        font-size-for-avatar-as-small:
+          choice: font-size-20
+        font-size-for-avatar-as-medium:
+          choice: font-size-30
+        font-size-for-avatar-as-big:
+          choice: font-size-80
+        font-size-for-localized-input-label:
+          choice: font-size-30
+        font-size-for-content-notification:
+          choice: font-size-30
+        font-size-for-select-input-tag:
+          choice: font-size-30
+
+    iconColors:
+      label: Icon colors
+      prefix: icon-color
+      decisions:
+        icon-color-for-datetime-input-icon:
+          choice: color-neutral-40
+        icon-color-for-datetime-input-icon-when-hovered:
+          choice: color-error
+
+    lineHeights:
+      label: Line Heights
+      prefix: line-height
+      decisions:
+        line-height-for-text-as-h1:
+          choice: line-height-60
+        line-height-for-text-as-h2:
+          choice: line-height-50
+        line-height-for-text-as-h3:
+          choice: line-height-30
+        line-height-for-text-as-h4:
+          choice: line-height-20
+        line-height-for-text-as-h5:
+          choice: line-height-20
+        line-height-for-text-as-body:
+          choice: line-height-40
+        line-height-for-text-as-detail:
+          choice: line-height-20
+        line-height-for-select-input-options:
+          choice: line-height-40
+        line-height-for-table-header:
+          choice: '26px'
+
+    fontWeights:
+      label: Font Weights
+      prefix: font-weight
+      decisions:
+        font-weight-for-text-as-h1:
+          choice: font-weight-600
+        font-weight-for-text-as-h2:
+          choice: font-weight-500
+        font-weight-for-text-as-h3:
+          choice: font-weight-500
+        font-weight-for-text-as-h4:
+          choice: font-weight-500
+        font-weight-for-text-as-h5:
+          choice: font-weight-500
+        font-weight-for-text-as-body:
+          choice: font-weight-400
+        font-weight-for-text-as-detail:
+          choice: font-weight-400
+        font-weight-for-button:
+          choice: font-weight-500
+        font-weight-for-table-header:
+          choice: font-weight-600
+        font-weight-for-text-as-bold:
+          choice: font-weight-600
 
     margins:
       label: Margins
@@ -1862,6 +1090,7 @@ decisionGroupsByTheme:
           choice: '0 0 0 var(--spacing-20)'
         margin-for-tag-list:
           choice: '0 var(--spacing-20) var(--spacing-20) 0'
+
     paddings:
       label: Paddings
       prefix: padding
@@ -1910,6 +1139,8 @@ decisionGroupsByTheme:
           choice: 'var(--spacing-20) var(--spacing-30)'
         padding-for-localized-rich-text-body-button:
           choice: 'var(--spacing-20)'
+        padding-for-localized-input-label:
+          choice: '0 12px'
         padding-for-rich-text-input:
           choice: 'var(--spacing-20) var(--spacing-30)'
         padding-for-rich-text-toolbar:
@@ -1918,8 +1149,8 @@ decisionGroupsByTheme:
           choice: 'none'
         padding-for-rich-text-editor-container:
           choice: 'var(--spacing-20) 0 0'
-        padding-for-localized-input-label:
-          choice: '0 12px'
+        padding-for-localized-multiline-text-input-label:
+          choice: '0 var(--spacing-20)'
         padding-for-tag-remove-icon:
           choice: '0 12px'
         padding-for-tooltip:
@@ -1961,6 +1192,10 @@ decisionGroupsByTheme:
       label: Shadows
       prefix: shadow
       decisions:
+        shadow-box-tag-when-hovered:
+          description: ''
+          deprecated: true
+          choice: shadow-1
         shadow-for-button:
           choice: shadow-0
         shadow-for-button-when-focused:
