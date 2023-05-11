@@ -1,5 +1,20 @@
 # @commercetools-uikit/select-input
 
+## 16.1.0
+
+### Patch Changes
+
+- [#2504](https://github.com/commercetools/ui-kit/pull/2504) [`03dad5626`](https://github.com/commercetools/ui-kit/commit/03dad56266eda43d9ccfda3d32ca8febfeb0998b) Thanks [@kark](https://github.com/kark)! - Fix ui regression in select inputs and fields with `controlShouldRenderValue` prop value
+
+- [#2509](https://github.com/commercetools/ui-kit/pull/2509) [`cd36078fa`](https://github.com/commercetools/ui-kit/commit/cd36078fa6f1bf83bd1be03035d916298ad6038e) Thanks [@renovate](https://github.com/apps/renovate)! - Updated all dependencies
+
+- Updated dependencies [[`9ec1a6f9a`](https://github.com/commercetools/ui-kit/commit/9ec1a6f9a72ccb08a8d058396db48a6347861887), [`03dad5626`](https://github.com/commercetools/ui-kit/commit/03dad56266eda43d9ccfda3d32ca8febfeb0998b), [`9bc8e06ec`](https://github.com/commercetools/ui-kit/commit/9bc8e06ec03b1a123c507e442254c6d486f4ae71), [`cd36078fa`](https://github.com/commercetools/ui-kit/commit/cd36078fa6f1bf83bd1be03035d916298ad6038e)]:
+  - @commercetools-uikit/design-system@16.1.0
+  - @commercetools-uikit/select-utils@16.1.0
+  - @commercetools-uikit/icons@16.1.0
+  - @commercetools-uikit/utils@16.1.0
+  - @commercetools-uikit/constraints@16.1.0
+
 ## 16.0.0
 
 ### Major Changes
