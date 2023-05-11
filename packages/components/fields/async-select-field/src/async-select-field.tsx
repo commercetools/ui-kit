@@ -119,6 +119,12 @@ export type TAsyncSelectFieldProps = {
    */
   components?: ReactSelectAsyncProps['components'];
   /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectAsyncProps['controlShouldRenderValue'];
+  /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -321,8 +327,12 @@ export default class AsyncSelectField extends Component<
 > {
   static displayName = 'AsyncSelectField';
 
-  static defaultProps: Pick<TAsyncSelectFieldProps, 'horizontalConstraint'> = {
+  static defaultProps: Pick<
+    TAsyncSelectFieldProps,
+    'horizontalConstraint' | 'controlShouldRenderValue'
+  > = {
     horizontalConstraint: 'scale',
+    controlShouldRenderValue: true,
   };
 
   state = {
@@ -436,6 +446,7 @@ export default class AsyncSelectField extends Component<
             showOptionGroupDivider={this.props.showOptionGroupDivider}
             iconLeft={this.props.iconLeft}
             {...filterDataAttributes(this.props)}
+            controlShouldRenderValue={this.props.controlShouldRenderValue}
           />
           <FieldErrors
             id={sequentialErrorsId}
