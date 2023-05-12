@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/selectable-search-input",
   "description": "A controlled selectable search input component for single-line strings with validation states.",
-  "version": "16.0.0",
+  "version": "16.1.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,19 +21,19 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/constraints": "16.0.0",
-    "@commercetools-uikit/design-system": "16.0.0",
-    "@commercetools-uikit/hooks": "16.0.0",
-    "@commercetools-uikit/icons": "16.0.0",
-    "@commercetools-uikit/input-utils": "16.0.0",
-    "@commercetools-uikit/secondary-icon-button": "16.0.0",
-    "@commercetools-uikit/select-utils": "16.0.0",
-    "@commercetools-uikit/utils": "16.0.0",
+    "@commercetools-uikit/constraints": "16.1.0",
+    "@commercetools-uikit/design-system": "16.1.0",
+    "@commercetools-uikit/hooks": "16.1.0",
+    "@commercetools-uikit/icons": "16.1.0",
+    "@commercetools-uikit/input-utils": "16.1.0",
+    "@commercetools-uikit/secondary-icon-button": "16.1.0",
+    "@commercetools-uikit/select-utils": "16.1.0",
+    "@commercetools-uikit/utils": "16.1.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-select": "5.7.2"
+    "react-select": "5.7.3"
   },
   "devDependencies": {
     "react": "17.0.2",
