@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 16.1.0
+
+### Patch Changes
+
+- [#2508](https://github.com/commercetools/ui-kit/pull/2508) [`9ec1a6f9a`](https://github.com/commercetools/ui-kit/commit/9ec1a6f9a72ccb08a8d058396db48a6347861887) Thanks [@ragafus](https://github.com/ragafus)! - Memoized `useTheme.themedValue` helper
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.1.0
+
 ## 16.0.0
 
 ### Patch Changes

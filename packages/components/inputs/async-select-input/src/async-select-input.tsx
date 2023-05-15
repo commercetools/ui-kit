@@ -126,6 +126,12 @@ export type TAsyncSelectInputProps = {
    */
   components?: ReactSelectAsyncProps['components'];
   /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectAsyncProps['controlShouldRenderValue'];
+  /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -299,13 +305,14 @@ export type TAsyncSelectInputProps = {
 
 const defaultProps: Pick<
   TAsyncSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex'
+  'value' | 'isSearchable' | 'menuPortalZIndex' | 'controlShouldRenderValue'
 > = {
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
   value: null,
   isSearchable: true,
   menuPortalZIndex: 1,
+  controlShouldRenderValue: true,
 };
 
 const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
@@ -375,6 +382,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
+              controlShouldRenderValue: props.controlShouldRenderValue,
             }) as ReactSelectAsyncProps['styles']
           }
           filterOption={props.filterOption}
@@ -457,6 +465,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           // Extra props
           // @ts-ignore: passed to the react-select components via `selectProps`.
           iconLeft={props.iconLeft}
+          controlShouldRenderValue={props.controlShouldRenderValue}
         />
       </div>
     </Constraints.Horizontal>

@@ -19,7 +19,7 @@ const getTextareaStyles = (props: TMultiLineInputProps) => {
       flex: auto;
       word-break: break-word;
       white-space: pre-wrap;
-      resize: vertical;
+      resize: none;
     `,
   ];
   return baseStyles;
