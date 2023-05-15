@@ -5,10 +5,8 @@ import { FormattedMessage } from 'react-intl';
 import { warning } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
 import RequiredIndicator from './required-indicator';
-import { useTheme, designTokens } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
-
-// TODO: @redesign cleanup
 
 export type TLabelProps = {
   /**
@@ -63,11 +61,6 @@ export type TLabelProps = {
 };
 
 const Label = (props: TLabelProps) => {
-  const { theme } = useTheme();
-  // TODO: This is a temporary solution due to theme migration. After the new
-  // theme is published, we must remove this and just use the `Text.Detail` component
-  const TextComponent = theme === 'default' ? Text.Body : Text.Detail;
-
   warning(
     !(Boolean(props.id) && Boolean(props.htmlFor)),
     `ui-kit/Label: provide only the "id" or the "htmlFor" properties, not both.`
@@ -93,14 +86,14 @@ const Label = (props: TLabelProps) => {
       id={props.id}
       htmlFor={props.htmlFor}
     >
-      <TextComponent tone={props.tone} isBold={props.isBold}>
+      <Text.Detail tone={props.tone} isBold={props.isBold}>
         {props.intlMessage ? (
           <FormattedMessage {...props.intlMessage} />
         ) : (
           props.children
         )}
         {props.isRequiredIndicatorVisible && <RequiredIndicator />}
-      </TextComponent>
+      </Text.Detail>
     </label>
   );
 };

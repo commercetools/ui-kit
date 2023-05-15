@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import {
   type ChangeEventHandler,
   type FocusEventHandler,
@@ -6,7 +5,6 @@ import {
   type ReactNode,
   isValidElement,
 } from 'react';
-import { useTheme } from '@commercetools-uikit/design-system';
 import {
   filterDataAttributes,
   filterInvalidAttributes,
@@ -19,7 +17,6 @@ import {
   AdditionalTextWrapper,
   RadioOptionKnob,
   RadioOptionBorder,
-  Input,
   RadioOptionLabel,
   RadioOptionContainer,
 } from './radio-option.styles';
@@ -63,10 +60,9 @@ export type TStylesProps = Pick<
   | 'isHovered'
   | 'isReadOnly'
   | 'isChecked'
-> & { isNewTheme?: boolean };
+>;
 
 const Option = (props: TOptionProps) => {
-  const { isNewTheme } = useTheme();
   const labelProps = props.id ? { htmlFor: props.id } : {};
 
   if (!props.isReadOnly) {
@@ -98,7 +94,6 @@ const Option = (props: TOptionProps) => {
     isHovered: props.isHovered,
     isReadOnly: props.isReadOnly,
     isChecked: props.isChecked,
-    isNewTheme,
   };
 
   return (
@@ -111,7 +106,7 @@ const Option = (props: TOptionProps) => {
       {...filterInvalidAttributes(labelProps)}
     >
       <RadioInputWrapper>
-        <Input
+        <input
           css={accessibleHiddenInputStyles}
           id={props.id}
           name={props.name}
@@ -125,8 +120,6 @@ const Option = (props: TOptionProps) => {
           checked={props.isChecked}
           type="radio"
           readOnly={props.isReadOnly}
-          aria-readonly={props.isReadOnly}
-          isNewTheme={isNewTheme}
           {...filterDataAttributes(props)}
         />
         <RadioOptionContainer {...stylesProps}>
@@ -134,14 +127,11 @@ const Option = (props: TOptionProps) => {
             {props.isChecked ? <RadioOptionKnob {...stylesProps} /> : null}
           </RadioOptionBorder>
         </RadioOptionContainer>
-        <LabelTextWrapper isDisabled={props.isDisabled} isNewTheme={isNewTheme}>
+        <LabelTextWrapper isDisabled={props.isDisabled}>
           {props.children}
         </LabelTextWrapper>
         {props.additionalContent && (
-          <AdditionalTextWrapper
-            isDisabled={props.isDisabled}
-            isNewTheme={isNewTheme}
-          >
+          <AdditionalTextWrapper isDisabled={props.isDisabled}>
             <SpacingsInset scale="xs">{props.additionalContent}</SpacingsInset>
           </AdditionalTextWrapper>
         )}

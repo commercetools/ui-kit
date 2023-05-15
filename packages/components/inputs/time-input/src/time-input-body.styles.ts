@@ -49,10 +49,7 @@ const getClockIconContainerFontColor = (props: TTimeInputProps) => {
   }
   return designTokens.fontColorForInput;
 };
-const getClockIconContainerStyles = (
-  props: TTimeInputProps,
-  isNewTheme: boolean
-) => {
+const getClockIconContainerStyles = (props: TTimeInputProps) => {
   return [
     css`
       align-items: center;
@@ -78,10 +75,6 @@ const getClockIconContainerStyles = (
         border-color: ${designTokens.borderColorForInputWhenFocused};
       }
     `,
-    !isNewTheme &&
-      css`
-        border-left: 1px solid ${getClockIconContainerColor(props)};
-      `,
   ];
 };
 
@@ -123,10 +116,7 @@ const getInputContainerBackgroundColor = (props: TTimeInputProps) => {
 
 // This styled component is only useful because it's referenced in the styles below
 const StyledClockIconContainer = styled.label``;
-const getInputContainerStyles = (
-  props: TTimeInputProps,
-  isNewTheme: boolean
-) => {
+const getInputContainerStyles = (props: TTimeInputProps) => {
   return [
     css`
       appearance: none;
@@ -173,27 +163,6 @@ const getInputContainerStyles = (
             background-color: ${designTokens.colorSurface};
           }
         }
-      `,
-    !isNewTheme &&
-      !props.isDisabled &&
-      !props.isReadOnly &&
-      css`
-        :hover:not(:disabled):not(:read-only) {
-          border-color: ${designTokens.borderColorForInputWhenFocused};
-        }
-
-        &:hover,
-        &:hover
-          ${StyledClockIconContainer},
-          &:focus-within
-          ${StyledClockIconContainer} {
-          border-color: ${designTokens.borderColorForInputWhenFocused};
-        }
-      `,
-    isNewTheme &&
-      props.hasError &&
-      css`
-        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered};
       `,
   ];
 };

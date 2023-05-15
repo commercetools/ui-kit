@@ -1,8 +1,7 @@
-// TODO: @redesign cleanup
 import type { ChangeEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { createSequentialId } from '@commercetools-uikit/utils';
 import { IndeterminateIcon, CheckedIcon } from './icons';
 import Checkbox from './checkbox';
@@ -156,9 +155,7 @@ const CheckboxIconWrapper = styled.div<TCheckboxIconWrapperProps>`
 `;
 
 const CheckboxIcon = (props: TLabelProps) => {
-  const { isNewTheme } = useTheme();
   const isDisabledOrReadOnlyState = props.isDisabled || props.isReadOnly;
-  const isDefaultState = !(props.hasError || isDisabledOrReadOnlyState);
   const canForcedHoverEffect = Boolean(
     props.isHovered && !isDisabledOrReadOnlyState
   );
@@ -187,35 +184,6 @@ const CheckboxIcon = (props: TLabelProps) => {
               stroke: ${designTokens.colorSurface};
             }
           `,
-          !isNewTheme &&
-            css`
-              svg > path[fill] {
-                fill: ${getTextColor(props)};
-              }
-              svg > path[stroke] {
-                stroke: ${getTextColor(props)};
-              }
-            `,
-          !isNewTheme &&
-            isDefaultState &&
-            css`
-              svg > path[fill] {
-                fill: ${designTokens.colorPrimary};
-              }
-              svg > path[stroke] {
-                stroke: ${designTokens.colorPrimary};
-              }
-              &:hover {
-                border-color: ${isDisabledOrReadOnlyState
-                  ? 'unset'
-                  : designTokens.colorPrimary};
-              }
-            `,
-          !isNewTheme &&
-            canForcedHoverEffect &&
-            css`
-              border-color: ${designTokens.colorPrimary};
-            `,
         ].filter(Boolean)}
       >
         {(() => {

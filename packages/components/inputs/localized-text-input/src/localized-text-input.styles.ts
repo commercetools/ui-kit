@@ -34,9 +34,7 @@ const getLanguageLabelBorderColor = (props: TLocalizedInputProps) => {
     : designTokens.borderColorForLocalizedInputLabel;
 };
 
-const getLanguageLabelStyles = (
-  props: TLocalizedInputProps & { isNewTheme: boolean }
-) => {
+const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
   return css`
     display: flex;
     flex-direction: column;

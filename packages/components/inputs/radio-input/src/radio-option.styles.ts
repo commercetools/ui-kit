@@ -1,16 +1,7 @@
-// TODO: @redesign cleanup
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TStylesProps } from './radio-option';
-
-const getDefaultThemeLabelColor = (props: TStylesProps) =>
-  !props.isNewTheme &&
-  css`
-    color: ${props.isDisabled
-      ? designTokens.fontColorForInputWhenDisabled
-      : designTokens.fontColorForInput};
-  `;
 
 const LabelTextWrapper = styled.div<TStylesProps>`
   grid-area: label;
@@ -19,7 +10,6 @@ const LabelTextWrapper = styled.div<TStylesProps>`
   font-family: inherit;
   display: flex;
   align-items: center;
-  ${(props) => getDefaultThemeLabelColor(props)}
 `;
 
 const AdditionalTextWrapper = styled.div<TStylesProps>`
@@ -27,7 +17,6 @@ const AdditionalTextWrapper = styled.div<TStylesProps>`
   margin-left: ${designTokens.spacing10};
   font-size: 1rem;
   font-family: inherit;
-  ${(props) => getDefaultThemeLabelColor(props)}
 `;
 
 const RadioInputWrapper = styled.div<TStylesProps>`
@@ -80,22 +69,6 @@ const getKnobColor = (props: TStylesProps) => {
   return designTokens.borderColorForInputWhenFocused;
 };
 
-const getLabelBorderColor = (props: TStylesProps) => {
-  if (props.isDisabled) {
-    return designTokens.borderColorForInputWhenDisabled;
-  }
-  if (props.isReadOnly) {
-    return designTokens.borderColorForInputWhenReadonly;
-  }
-  if (props.hasError) {
-    return designTokens.borderColorForInputWhenError;
-  }
-  if (props.hasWarning) {
-    return designTokens.borderColorForInputWhenWarning;
-  }
-  return designTokens.borderColorForInputWhenFocused;
-};
-
 const getLabelColor = (props: TStylesProps) => {
   if (props.isDisabled) {
     return designTokens.fontColorForInputWhenDisabled;
@@ -141,37 +114,23 @@ const RadioOptionBorder = styled.div<TStylesProps>`
   justify-content: center;
 `;
 
-const focusStyles = css`
-  &:focus:not(:read-only) + div > ${RadioOptionBorder} {
-    border-color: ${designTokens.borderColorForInputWhenFocused};
-  }
-`;
-
-const Input = styled.input<TStylesProps>`
-  ${(props) => !props.isNewTheme && focusStyles}
-`;
-
-const getNewThemeHoverAreaStyles = css`
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 4px solid transparent;
-`;
-
 const RadioOptionContainer = styled.div<TStylesProps>`
   display: flex;
   align-items: center;
   grid-area: radio;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 4px solid transparent;
   ${RadioOptionBorder} {
     background-color: ${(props) =>
       props.isDisabled
         ? designTokens.backgroundColorForInputWhenDisabled
         : designTokens.backgroundColorForInput};
   }
-  ${(props) => props.isNewTheme && getNewThemeHoverAreaStyles}
 `;
 
-const getNewThemeHoverStyles = (props: TStylesProps) => {
+const getHoverStyles = (props: TStylesProps) => {
   const hoverStyles = css`
     ${RadioOptionContainer} {
       border-color: ${designTokens.colorNeutral90};
@@ -189,12 +148,6 @@ const getNewThemeHoverStyles = (props: TStylesProps) => {
   ];
 };
 
-const getDefaultThemeHoverStyles = (props: TStylesProps) => css`
-  &:hover ${RadioOptionBorder} {
-    border-color: ${getLabelBorderColor(props)};
-  }
-`;
-
 const RadioOptionLabel = styled.label<TStylesProps>`
   align-items: center;
   color: ${(props) => getLabelColor(props)};
@@ -205,14 +158,11 @@ const RadioOptionLabel = styled.label<TStylesProps>`
     !props.isReadOnly
       ? `:focus-within ${LabelTextWrapper} {
       outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
-      outline-offset: ${props.isNewTheme ? '2px' : '3px'};
+      outline-offset: 2px;
     }`
       : ''}
 
-  ${(props) =>
-    props.isNewTheme
-      ? getNewThemeHoverStyles(props)
-      : getDefaultThemeHoverStyles(props)}
+  ${(props) => getHoverStyles(props)}
 `;
 
 export {
@@ -221,7 +171,6 @@ export {
   AdditionalTextWrapper,
   RadioOptionKnob,
   RadioOptionBorder,
-  Input,
   RadioOptionLabel,
   RadioOptionContainer,
 };

@@ -88,7 +88,6 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
 type TBaseHeaderCell = {
   disableHeaderStickiness?: boolean;
   shouldClipContent?: boolean;
-  isNewTheme?: boolean;
 };
 const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   color: ${designTokens.fontColorForTableHeader};
@@ -114,22 +113,6 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   :active {
     z-index: 2;
   }
-  /**
-   * header row bottom border:
-   * - not using "border-bottom" since it stands out in front of the resize indicator and counts towards the row height
-   */
-  ${(props) =>
-    !props.isNewTheme &&
-    `:before {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      width: 100%;
-      height: 1px;
-      bottom: 0;
-      left: 0;
-      background-color: ${designTokens.borderColorForTableHeaderAsBottom};
-    };`}
 
   ${HeaderCellInner} {
     ${(props) => (props.shouldClipContent ? 'overflow: hidden;' : '')}

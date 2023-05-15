@@ -1,10 +1,8 @@
-// TODO: @redesign cleanup
 import { forwardRef, type KeyboardEvent, type MouseEvent } from 'react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { useTheme } from '@commercetools-uikit/design-system';
 import {
   getClearSectionStyles,
   getClockIconContainerStyles,
@@ -48,10 +46,9 @@ ClearSection.displayName = 'ClearSection';
 
 const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
   (props, ref) => {
-    const { isNewTheme } = useTheme();
     return (
       <Inline alignItems="center">
-        <StyledInputContainer css={getInputContainerStyles(props, isNewTheme)}>
+        <StyledInputContainer css={getInputContainerStyles(props)}>
           <input
             ref={ref}
             css={getTimeInputStyles(props)}
@@ -87,17 +84,11 @@ const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
             />
           )}
           <StyledClockIconContainer
-            css={getClockIconContainerStyles(props, isNewTheme)}
+            css={getClockIconContainerStyles(props)}
             htmlFor={props.id}
             data-toggle
           >
-            <ClockIcon
-              color={
-                props.isDisabled || props.isReadOnly || isNewTheme
-                  ? 'neutral60'
-                  : 'solid'
-              }
-            />
+            <ClockIcon color="neutral60" />
           </StyledClockIconContainer>
         </StyledInputContainer>
       </Inline>

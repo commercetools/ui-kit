@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import {
   useContext,
   useRef,
@@ -11,7 +10,6 @@ import {
   AngleDownIcon,
   AngleUpDownIcon,
 } from '@commercetools-uikit/icons';
-import { useTheme } from '@commercetools-uikit/design-system';
 import {
   BaseHeaderCell,
   HeaderCellInner,
@@ -49,7 +47,6 @@ const HeaderCellWrapper = (
     | 'onColumnResized'
   >
 ) => {
-  const { isNewTheme } = useTheme();
   const columnResizingReducer = useContext(
     ColumnResizingContext
   ) as TColumnResizingReducer;
@@ -96,7 +93,6 @@ const HeaderCellWrapper = (
       data-id={props.columnKey}
       shouldClipContent={shouldClipContent}
       disableHeaderStickiness={props.disableHeaderStickiness}
-      isNewTheme={isNewTheme}
     >
       {props.children}
       {!props.disableResizing && <Resizer onMouseDown={onStartResizing} />}

@@ -1,11 +1,10 @@
-// TODO: @redesign cleanup
 import type { TTagProps } from './tag';
 
 import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { DragIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
@@ -48,7 +47,7 @@ const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
   return designTokens.colorSolid;
 };
 
-const getContentWrapperStyles = (props: TTagBodyProps, isNewTheme: boolean) => {
+const getContentWrapperStyles = (props: TTagBodyProps) => {
   return css`
     position: relative;
     display: flex;
@@ -77,7 +76,6 @@ const getContentWrapperStyles = (props: TTagBodyProps, isNewTheme: boolean) => {
     }
 
     ${props.isDisabled &&
-    isNewTheme &&
     `
       * {
         color: ${designTokens.colorNeutral60} !important;
@@ -87,7 +85,6 @@ const getContentWrapperStyles = (props: TTagBodyProps, isNewTheme: boolean) => {
 };
 
 const TagBody = (props: TTagBodyProps) => {
-  const { isNewTheme } = useTheme();
   const textTone = props.isDisabled ? 'secondary' : 'inherit';
 
   return (
@@ -95,10 +92,10 @@ const TagBody = (props: TTagBodyProps) => {
       to={props.to}
       as={props.as}
       css={[
-        getContentWrapperStyles(props, isNewTheme),
+        getContentWrapperStyles(props),
         Boolean(props.onRemove) &&
           css`
-            border-right: ${!(props.isDisabled && isNewTheme) && '0'};
+            border-right: ${!props.isDisabled && '0'};
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
           `,
@@ -111,21 +108,6 @@ const TagBody = (props: TTagBodyProps) => {
             &:hover {
               box-shadow: ${designTokens.shadowForTagWhenHovered};
             }
-            ${!isNewTheme &&
-            `
-              &:hover::after {
-                position: absolute;
-                right: -1px;
-                content: '';
-                background-color: ${
-                  props.type === 'warning'
-                    ? designTokens.colorWarning
-                    : designTokens.borderColorForTagWhenFocused
-                };
-                width: 1px;
-                height: 100%;
-              }
-              `}
           `,
         props.styles?.body,
       ]}

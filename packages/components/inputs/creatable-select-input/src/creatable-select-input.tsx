@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
@@ -18,7 +17,6 @@ import {
   createSelectStyles,
   messages,
 } from '@commercetools-uikit/select-utils';
-import { useTheme } from '@commercetools-uikit/design-system';
 
 const customizedComponents = {
   DropdownIndicator,
@@ -343,7 +341,6 @@ const defaultProps: Pick<
 
 const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
   const intl = useIntl();
-  const { isNewTheme } = useTheme();
 
   if (!props.isReadOnly) {
     warning(
@@ -397,7 +394,6 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
-              isNewTheme,
             }) as ReactSelectCreatableProps['styles']
           }
           filterOption={props.filterOption}

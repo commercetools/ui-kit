@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import { useIntl } from 'react-intl';
 import Select, {
   components,
@@ -6,7 +5,6 @@ import Select, {
   type Props as ReactSelectProps,
 } from 'react-select';
 import { DropdownIndicator, messages } from '@commercetools-uikit/select-utils';
-import { useTheme } from '@commercetools-uikit/design-system';
 import { type ReactNode, useCallback } from 'react';
 import type {
   TSelectableSearchInputProps,
@@ -26,9 +24,7 @@ const SingleValue = ({ id, ...props }: TSingleValue) => (
 );
 
 type TSelectableSelect = {
-  textInputHasFocus: boolean;
   dropdownHasFocus: boolean;
-  isNewTheme: boolean;
   handleDropdownFocus: () => void;
   handleDropdownBlur: () => void;
   textInputRef: React.RefObject<HTMLInputElement>;
@@ -37,7 +33,6 @@ type TSelectableSelect = {
 
 const SelectableSelect = (props: TSelectableSelect) => {
   const intl = useIntl();
-  const { isNewTheme } = useTheme();
 
   const dropdownStyles = createSelectableSelectStyles({
     hasWarning: props.hasWarning,
@@ -45,9 +40,7 @@ const SelectableSelect = (props: TSelectableSelect) => {
     isDisabled: props.isDisabled,
     isReadOnly: props.isReadOnly,
     menuPortalZIndex: props.menuPortalZIndex,
-    isNewTheme,
     dropdownHasFocus: props.dropdownHasFocus,
-    textInputHasFocus: props.textInputHasFocus,
   }) as ReactSelectProps['styles'];
 
   const { onChange, name, id, textInputRef } = props;

@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import {
   type FocusEventHandler,
   type ChangeEventHandler,
@@ -6,7 +5,6 @@ import {
 } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/react';
-import { useTheme } from '@commercetools-uikit/design-system';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -159,7 +157,6 @@ const sequentialId = createSequentialId('localized-text-input-');
 
 const LocalizedInput = (props: TLocalizedInputProps) => {
   const { onChange } = props;
-  const { isNewTheme } = useTheme();
   const handleChange = useCallback(
     (event) => {
       // We manipulate the event to add the language to the target.
@@ -195,10 +192,7 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
         display: flex;
       `}
     >
-      <label
-        htmlFor={props.id}
-        css={getLanguageLabelStyles({ ...props, isNewTheme })}
-      >
+      <label htmlFor={props.id} css={getLanguageLabelStyles({ ...props })}>
         {props.language.toUpperCase()}
       </label>
       <TextInput
