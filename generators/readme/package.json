@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-local/generator-readme",
   "description": "CLI to generate README files for each package",
-  "version": "3.0.10",
+  "version": "3.0.11",
   "private": true,
   "bin": {
     "generate-readme": "./bin/cli.mjs"

@@ -106,6 +106,12 @@ export type TSearchSelectFieldProps = {
    */
   components?: ReactSelectAsyncProps['components'];
   /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectAsyncProps['controlShouldRenderValue'];
+  /**
    * Sets the tabIndex attribute on the input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -298,6 +304,11 @@ export type TSearchSelectFieldProps = {
   badge?: ReactNode;
 };
 
+const defaultProps: Pick<TSearchSelectFieldProps, 'controlShouldRenderValue'> =
+  {
+    controlShouldRenderValue: true,
+  };
+
 const SearchSelectField = (props: TSearchSelectFieldProps) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
   const id = useFieldId(props.id, sequentialId);
@@ -381,6 +392,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           cacheOptions={props.cacheOptions}
           showOptionGroupDivider={props.showOptionGroupDivider}
           optionType={props.optionType}
+          controlShouldRenderValue={props.controlShouldRenderValue}
         />
         <FieldErrors
           id={sequentialErrorsId}
@@ -392,6 +404,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
     </Constraints.Horizontal>
   );
 };
+SearchSelectField.defaultProps = defaultProps;
 SearchSelectField.displayName = 'SearchSelectField';
 /**
  * Use this function to convert the Formik `errors` object type to
