@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { getCellInnerStyles } from './cell.styles';

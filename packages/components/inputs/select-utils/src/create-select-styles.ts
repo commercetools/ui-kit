@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 /*
   ⚠️ These styles are used for
     - SelectInput

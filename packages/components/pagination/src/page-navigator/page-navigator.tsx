@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import { useState, useCallback } from 'react';
 import { useFormik } from 'formik';
 import { useIntl } from 'react-intl';
