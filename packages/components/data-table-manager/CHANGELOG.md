@@ -1,5 +1,30 @@
 # @commercetools-uikit/data-table-manager
 
+## 16.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`da91688a3`](https://github.com/commercetools/ui-kit/commit/da91688a3ee454ce0a8bdbb925473d4902154b57), [`9ec1a6f9a`](https://github.com/commercetools/ui-kit/commit/9ec1a6f9a72ccb08a8d058396db48a6347861887), [`03dad5626`](https://github.com/commercetools/ui-kit/commit/03dad56266eda43d9ccfda3d32ca8febfeb0998b), [`9bc8e06ec`](https://github.com/commercetools/ui-kit/commit/9bc8e06ec03b1a123c507e442254c6d486f4ae71), [`cd36078fa`](https://github.com/commercetools/ui-kit/commit/cd36078fa6f1bf83bd1be03035d916298ad6038e)]:
+  - @commercetools-uikit/async-select-input@16.1.0
+  - @commercetools-uikit/design-system@16.1.0
+  - @commercetools-uikit/select-input@16.1.0
+  - @commercetools-uikit/icons@16.1.0
+  - @commercetools-uikit/utils@16.1.0
+  - @commercetools-uikit/accessible-button@16.1.0
+  - @commercetools-uikit/primary-button@16.1.0
+  - @commercetools-uikit/secondary-button@16.1.0
+  - @commercetools-uikit/secondary-icon-button@16.1.0
+  - @commercetools-uikit/card@16.1.0
+  - @commercetools-uikit/field-label@16.1.0
+  - @commercetools-uikit/radio-input@16.1.0
+  - @commercetools-uikit/tag@16.1.0
+  - @commercetools-uikit/text@16.1.0
+  - @commercetools-uikit/collapsible-motion@16.1.0
+  - @commercetools-uikit/hooks@16.1.0
+  - @commercetools-uikit/spacings@16.1.0
+  - @commercetools-uikit/accessible-hidden@16.1.0
+  - @commercetools-uikit/grid@16.1.0
+
 ## 16.0.0
 
 ### Major Changes

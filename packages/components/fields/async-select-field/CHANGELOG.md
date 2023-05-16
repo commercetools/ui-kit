@@ -1,5 +1,20 @@
 # @commercetools-uikit/async-select-field
 
+## 16.1.0
+
+### Patch Changes
+
+- [#2512](https://github.com/commercetools/ui-kit/pull/2512) [`da91688a3`](https://github.com/commercetools/ui-kit/commit/da91688a3ee454ce0a8bdbb925473d4902154b57) Thanks [@ragafus](https://github.com/ragafus)! - Add prop `controlShouldRenderValue` to make rendering of values in the control optional.
+
+- Updated dependencies [[`da91688a3`](https://github.com/commercetools/ui-kit/commit/da91688a3ee454ce0a8bdbb925473d4902154b57), [`9ec1a6f9a`](https://github.com/commercetools/ui-kit/commit/9ec1a6f9a72ccb08a8d058396db48a6347861887), [`cd36078fa`](https://github.com/commercetools/ui-kit/commit/cd36078fa6f1bf83bd1be03035d916298ad6038e)]:
+  - @commercetools-uikit/async-select-input@16.1.0
+  - @commercetools-uikit/design-system@16.1.0
+  - @commercetools-uikit/utils@16.1.0
+  - @commercetools-uikit/constraints@16.1.0
+  - @commercetools-uikit/field-label@16.1.0
+  - @commercetools-uikit/spacings@16.1.0
+  - @commercetools-uikit/field-errors@16.1.0
+
 ## 16.0.0
 
 ### Major Changes

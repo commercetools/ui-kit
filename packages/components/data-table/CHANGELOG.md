@@ -1,5 +1,19 @@
 # @commercetools-uikit/data-table
 
+## 16.1.0
+
+### Patch Changes
+
+- [#2507](https://github.com/commercetools/ui-kit/pull/2507) [`c70a2a9ad`](https://github.com/commercetools/ui-kit/commit/c70a2a9add2801775185ae5fd6b4beaa8297c02b) Thanks [@ragafus](https://github.com/ragafus)! - Extend `TDataTableProps` type by using the generic row type in its `columns` property
+
+- Updated dependencies [[`9ec1a6f9a`](https://github.com/commercetools/ui-kit/commit/9ec1a6f9a72ccb08a8d058396db48a6347861887), [`9bc8e06ec`](https://github.com/commercetools/ui-kit/commit/9bc8e06ec03b1a123c507e442254c6d486f4ae71), [`cd36078fa`](https://github.com/commercetools/ui-kit/commit/cd36078fa6f1bf83bd1be03035d916298ad6038e)]:
+  - @commercetools-uikit/design-system@16.1.0
+  - @commercetools-uikit/icons@16.1.0
+  - @commercetools-uikit/utils@16.1.0
+  - @commercetools-uikit/accessible-button@16.1.0
+  - @commercetools-uikit/secondary-icon-button@16.1.0
+  - @commercetools-uikit/hooks@16.1.0
+
 ## 16.0.0
 
 ### Major Changes
