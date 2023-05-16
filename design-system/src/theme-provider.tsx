@@ -100,6 +100,7 @@ ThemeProvider.defaultProps = {
 
 type TUseThemeResult = {
   theme: ThemeName;
+  /** @deprecated */
   themedValue: <
     Old extends string | ReactNode | undefined,
     New extends string | ReactNode | undefined
@@ -107,6 +108,7 @@ type TUseThemeResult = {
     defaultThemeValue: Old,
     newThemeValue: New
   ) => Old | New;
+  /** @deprecated */
   isNewTheme: boolean;
 };
 const useTheme = (_parentSelector = defaultParentSelector): TUseThemeResult => {
@@ -117,9 +119,7 @@ const useTheme = (_parentSelector = defaultParentSelector): TUseThemeResult => {
 
   return {
     theme: 'default',
-    // @deprecated
     themedValue,
-    // @deprecated
     isNewTheme: true,
   };
 };
