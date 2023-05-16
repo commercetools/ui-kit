@@ -24,8 +24,7 @@ const getHeaderContainerStyles = (
 ) => {
   const baseStyles = css`
     background-color: ${designTokens.colorSurface};
-    border-bottom: ${'1px solid ' +
-    designTokens.borderColorForCollapsiblePanelHeader};
+    border-bottom: ${`1px solid ${designTokens.borderColorForCollapsiblePanelHeader}`};
     position: relative;
     border-top-left-radius: ${designTokens.borderRadius6};
     border-top-right-radius: ${designTokens.borderRadius6};
