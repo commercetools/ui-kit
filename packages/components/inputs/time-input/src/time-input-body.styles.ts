@@ -164,6 +164,10 @@ const getInputContainerStyles = (props: TTimeInputProps) => {
           }
         }
       `,
+    props.hasError &&
+      css`
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered};
+      `,
   ];
 };
 const getTimeInputStyles = (props: TTimeInputProps) => {
