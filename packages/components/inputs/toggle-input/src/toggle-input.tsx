@@ -8,8 +8,8 @@ import {
   Label,
   Span,
   getInputStyles,
-  getTrackSizes,
-  getThumbSizes,
+  trackSizes,
+  thumbSizes,
 } from './toggle-input.styles';
 
 export type TToggleInputProps = {
@@ -54,9 +54,6 @@ export const defaultProps: Pick<
 };
 
 const ToggleInput = (props: TToggleInputProps) => {
-  const trackSizes = getTrackSizes();
-  const thumbSizes = getThumbSizes();
-
   return (
     <Label
       htmlFor={props.id}

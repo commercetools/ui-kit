@@ -192,7 +192,7 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
         display: flex;
       `}
     >
-      <label htmlFor={props.id} css={getLanguageLabelStyles({ ...props })}>
+      <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
         {props.language.toUpperCase()}
       </label>
       <TextInput

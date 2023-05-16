@@ -4,15 +4,15 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import type { TToggleInputProps } from './toggle-input';
 
 type SizesProps = {
-  trackSizes: ReturnType<typeof getTrackSizes>;
-  thumbSizes: ReturnType<typeof getThumbSizes>;
+  trackSizes: typeof trackSizes;
+  thumbSizes: typeof thumbSizes;
 };
 
 type TStyledLabelProps = Pick<TToggleInputProps, 'isDisabled' | 'size'> &
   SizesProps;
 type TStyledSpanProps = Pick<TToggleInputProps, 'size'> & SizesProps;
 
-const getTrackSizes = () => ({
+const trackSizes = {
   small: {
     width: '29px',
     height: '12px',
@@ -21,9 +21,8 @@ const getTrackSizes = () => ({
     width: '56px',
     height: '24px',
   },
-});
-
-const getThumbSizes = () => ({
+};
+const thumbSizes = {
   small: {
     diameter: '18px',
     shift: '3px',
@@ -34,7 +33,7 @@ const getThumbSizes = () => ({
     shift: '4px',
     hoverAreaWidth: '8px',
   },
-});
+};
 
 const labelSizeStyles = (props: TStyledLabelProps) => css`
   height: ${props.trackSizes[props.size].height};
@@ -187,4 +186,4 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
     } solid rgba(0, 0, 0, 0.1)`}
 `;
 
-export { Label, Span, getInputStyles, getTrackSizes, getThumbSizes };
+export { Label, Span, trackSizes, thumbSizes, getInputStyles };
