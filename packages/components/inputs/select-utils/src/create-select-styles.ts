@@ -374,7 +374,7 @@ const multiValueRemoveStyles =
       borderColor: designTokens.borderColorForTag,
       padding: `0 ${designTokens.spacing10}`,
       borderRadius: `0 ${designTokens.borderRadiusForTag} ${designTokens.borderRadiusForTag} 0`,
-      borderStyle: 'solid',
+      borderStyle: 'none',
       borderWidth: '0',
       pointerEvents:
         state.isDisabled || props.isReadOnly ? 'none' : base.pointerEvents,
