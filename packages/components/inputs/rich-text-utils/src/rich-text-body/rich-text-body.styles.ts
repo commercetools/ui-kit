@@ -5,7 +5,7 @@ import type { TRichTextEditorBody } from './rich-text-body';
 
 type TRichTextBodyStylesProps = Pick<
   TRichTextEditorBody,
-  'hasError' | 'isReadOnly' | 'hasWarning' | 'isDisabled' | 'isNewTheme'
+  'hasError' | 'isReadOnly' | 'hasWarning' | 'isDisabled'
 >;
 
 const getBorderColor = (
@@ -47,12 +47,12 @@ const getInputBoxShadow = (
 };
 
 const getTextColor = (props: TRichTextBodyStylesProps) => {
-  if (props.hasError && props.isNewTheme) {
+  if (props.hasError) {
     return css`
       color: ${designTokens.fontColorForInputWhenError};
     `;
   }
-  if (props.hasWarning && props.isNewTheme) {
+  if (props.hasWarning) {
     return css`
       color: ${designTokens.fontColorForInputWhenWarning};
     `;

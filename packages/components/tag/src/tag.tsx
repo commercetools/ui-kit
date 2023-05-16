@@ -1,9 +1,8 @@
-// TODO: @redesign cleanup
 import type { LocationDescriptor } from 'history';
 import { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 import { css, type SerializedStyles } from '@emotion/react';
 import { Link } from 'react-router-dom';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
@@ -79,7 +78,6 @@ const defaultProps: Pick<
 };
 
 const Tag = (props: TTagProps) => {
-  const { isNewTheme } = useTheme();
   const linkProps =
     props.to && !props.isDisabled ? { as: Link, to: props.to } : {};
   return (
@@ -119,7 +117,7 @@ const Tag = (props: TTagProps) => {
           {props.children}
         </TagBody>
 
-        {Boolean(props.onRemove) && !(isNewTheme && props.isDisabled) && (
+        {Boolean(props.onRemove) && !props.isDisabled && (
           <AccessibleButton
             label="Remove"
             isDisabled={props.isDisabled}

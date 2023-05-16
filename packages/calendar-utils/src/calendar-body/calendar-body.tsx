@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import {
   useCallback,
   type LegacyRef,
@@ -6,7 +5,6 @@ import {
   type KeyboardEvent,
 } from 'react';
 import type { Theme } from '@emotion/react';
-import { useTheme } from '@commercetools-uikit/design-system';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -85,7 +83,6 @@ const defaultProps: Pick<TCalendarBody, 'isClearable'> = {
 
 export const CalendarBody = (props: TCalendarBody) => {
   const [isFocused, toggleIsFocused] = useToggleState(false);
-  const { isNewTheme } = useTheme();
 
   const onInputFocus = props.inputProps?.onFocus;
 
@@ -131,7 +128,7 @@ export const CalendarBody = (props: TCalendarBody) => {
 
   return (
     <Inline alignItems="center">
-      <div css={getInputContainerStyles(props, { isFocused }, isNewTheme)}>
+      <div css={getInputContainerStyles(props, { isFocused })}>
         <input
           ref={props.inputRef}
           {...props.inputProps}
@@ -153,7 +150,7 @@ export const CalendarBody = (props: TCalendarBody) => {
         )}
         <button
           type="button"
-          css={getCalendarIconContainerStyles(props, { isFocused }, isNewTheme)}
+          css={getCalendarIconContainerStyles(props, { isFocused })}
           {...props.toggleButtonProps}
           onFocus={handleToggleFocus}
           onBlur={handleToggleBlur}
@@ -163,13 +160,9 @@ export const CalendarBody = (props: TCalendarBody) => {
           tabIndex={-1}
         >
           {props.icon === 'clock' ? (
-            <ClockIcon
-              color={disabledOrReadOnly || isNewTheme ? 'neutral60' : 'solid'}
-            />
+            <ClockIcon color="neutral60" />
           ) : (
-            <CalendarIcon
-              color={disabledOrReadOnly || isNewTheme ? 'neutral60' : 'solid'}
-            />
+            <CalendarIcon color="neutral60" />
           )}
         </button>
       </div>

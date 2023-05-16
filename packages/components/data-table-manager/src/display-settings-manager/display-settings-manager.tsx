@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import type {
   ChangeEventHandler,
   MouseEvent,
@@ -11,7 +10,7 @@ import Grid from '@commercetools-uikit/grid';
 import RadioInput from '@commercetools-uikit/radio-input';
 import Spacings from '@commercetools-uikit/spacings';
 import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import SettingsContainer from '../settings-container';
 import messages from './messages';
 import {
@@ -36,14 +35,12 @@ export type TDensityManagerProps = {
 
 const DensityManager = (props: TDensityManagerProps) => {
   const intl = useIntl();
-  const { themedValue } = useTheme();
   const textWrappingOption = props.isWrappingText
     ? SHOW_HIDE_ON_DEMAND
     : WRAPPED_TEXT_VISIBLE;
   const densityDisplayOption = props.isCondensed
     ? DENSITY_COMPACT
     : DENSITY_DEFAULT;
-  const columnStackScale = themedValue('s', 'l');
 
   return (
     <SettingsContainer
@@ -59,7 +56,7 @@ const DensityManager = (props: TDensityManagerProps) => {
         gridTemplateColumns="repeat(2, 1fr)"
       >
         <Grid.Item>
-          <Spacings.Stack scale={columnStackScale}>
+          <Spacings.Stack scale={'l'}>
             <FieldLabel
               title={intl.formatMessage(messages.textWrappingSubtitle)}
             />
@@ -89,7 +86,7 @@ const DensityManager = (props: TDensityManagerProps) => {
           </Spacings.Stack>
         </Grid.Item>
         <Grid.Item>
-          <Spacings.Stack scale={columnStackScale}>
+          <Spacings.Stack scale={'l'}>
             <FieldLabel
               title={intl.formatMessage(messages.densityDisplaySubtitle)}
             />

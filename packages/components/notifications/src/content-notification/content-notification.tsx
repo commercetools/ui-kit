@@ -3,11 +3,10 @@ import type { MessageDescriptor } from 'react-intl';
 import { Children, ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import {
   ErrorIcon,
   WarningIcon,
-  InfoIcon,
   CheckBoldIcon,
   InformationIcon,
 } from '@commercetools-uikit/icons';
@@ -73,15 +72,12 @@ const getIconContainerBackgroundColour = (props: TContentNotificationProps) => {
   }
 };
 
-const getIconByType = (
-  props: TContentNotificationProps,
-  isNewTheme: boolean
-) => {
+const getIconByType = (props: TContentNotificationProps) => {
   switch (props.type) {
     case 'error':
       return ErrorIcon;
     case 'info':
-      return isNewTheme ? InformationIcon : InfoIcon;
+      return InformationIcon;
     case 'warning':
       return WarningIcon;
     default:
@@ -120,8 +116,7 @@ const getIconColor = (props: TContentNotificationProps) => {
 };
 
 const NotificationIcon = (props: TContentNotificationProps) => {
-  const { isNewTheme } = useTheme();
-  const Icon = getIconByType(props, isNewTheme);
+  const Icon = getIconByType(props);
   return (
     <div
       css={css`

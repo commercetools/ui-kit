@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import type { ReactNode, FocusEvent } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
@@ -21,7 +20,6 @@ import {
   createSelectStyles,
   warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
-import { useTheme } from '@commercetools-uikit/design-system';
 
 const LoadingIndicator = () => <LoadingSpinner scale="s" />;
 LoadingIndicator.displayName = 'LoadingIndicator';
@@ -319,7 +317,6 @@ const defaultProps: Pick<
 
 const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
   const intl = useIntl();
-  const { isNewTheme } = useTheme();
 
   if (!props.isReadOnly) {
     warning(
@@ -386,7 +383,6 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
               controlShouldRenderValue: props.controlShouldRenderValue,
-              isNewTheme,
             }) as ReactSelectAsyncProps['styles']
           }
           filterOption={props.filterOption}

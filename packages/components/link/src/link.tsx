@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import { FormattedMessage } from 'react-intl';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import { ExternalLinkIcon } from '@commercetools-uikit/icons';
 
@@ -100,7 +100,7 @@ const getActiveColorValue = (tone: string = 'primary') => {
   return designTokens.fontColorForLinkAsInverted;
 };
 
-const getLinkStyles = (props: TLinkProps & { isNewTheme: boolean }) => {
+const getLinkStyles = (props: TLinkProps) => {
   const iconColor = getTextColorValue(props.tone);
   const iconHoverColor = getActiveColorValue(props.tone);
 
@@ -116,11 +116,6 @@ const getLinkStyles = (props: TLinkProps & { isNewTheme: boolean }) => {
       }
       text-decoration: underline;
     `,
-    !props.isNewTheme
-      ? css`
-          font-size: ${designTokens.fontSizeForLink};
-        `
-      : null,
   ];
 };
 
@@ -132,7 +127,6 @@ const Wrapper = styled.span`
 `;
 
 const Link = (props: TLinkProps) => {
-  const { isNewTheme } = useTheme();
   const remainingProps = filterInvalidAttributes(props);
 
   const color = getTextColorValue(props.tone);
@@ -157,7 +151,7 @@ const Link = (props: TLinkProps) => {
         `}
       >
         <a
-          css={getLinkStyles({ ...props, isNewTheme })}
+          css={getLinkStyles(props)}
           href={props.to}
           target="_blank"
           rel="noopener noreferrer"
@@ -176,7 +170,7 @@ const Link = (props: TLinkProps) => {
 
   return (
     <ReactRouterLink
-      css={getLinkStyles({ ...props, isNewTheme })}
+      css={getLinkStyles(props)}
       to={props.to}
       {...remainingProps}
     >

@@ -14,9 +14,7 @@ import Text from '@commercetools-uikit/text';
 import Constraints from '@commercetools-uikit/constraints';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Label from '@commercetools-uikit/label';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
-
-// TODO: @redesign cleanup
+import { designTokens } from '@commercetools-uikit/design-system';
 
 export type TFieldLabelProps = {
   /**
@@ -106,8 +104,6 @@ const LabelRowWrapper = styled.div`
 `;
 
 const FieldLabel = (props: TFieldLabelProps) => {
-  const { theme } = useTheme();
-
   if (props.hintIcon) {
     warning(
       props.hintIcon.props.size === undefined,
@@ -122,13 +118,9 @@ const FieldLabel = (props: TFieldLabelProps) => {
 
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
-      <Inline
-        alignItems={theme === 'default' ? 'flexStart' : 'center'}
-        scale="xs"
-      >
+      <Inline alignItems={'center'} scale="xs">
         <Text.Wrap>
           <Label
-            isBold={theme === 'default'}
             isRequiredIndicatorVisible={props.hasRequiredIndicator}
             tone={props.tone}
             id={props.id}
@@ -149,10 +141,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
 
       {props.hint && (
         <LabelRowWrapper>
-          <Inline
-            alignItems={theme === 'default' ? 'flexStart' : 'center'}
-            scale="xs"
-          >
+          <Inline alignItems={'center'} scale="xs">
             {props.hintIcon && (
               <Inline data-key="field-label-hint-wrapper">
                 {cloneElement(props.hintIcon, {
@@ -163,10 +152,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
               </Inline>
             )}
             {props.hint && (
-              <Text.Detail
-                tone={theme === 'default' ? props.tone : 'secondary'}
-                data-key="field-label-hint-wrapper"
-              >
+              <Text.Detail tone="secondary" data-key="field-label-hint-wrapper">
                 {props.hint}
               </Text.Detail>
             )}
@@ -177,7 +163,7 @@ const FieldLabel = (props: TFieldLabelProps) => {
         <LabelRowWrapper>
           <Text.Wrap>
             <Text.Detail
-              tone={theme === 'default' ? props.tone : 'secondary'}
+              tone="secondary"
               data-key="field-label-description-wrapper"
             >
               {props.description}

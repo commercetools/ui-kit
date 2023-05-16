@@ -1,7 +1,6 @@
-// TODO: @redesign cleanup
 import { cloneElement, type ReactElement, type ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { useWarnDeprecatedProp } from '@commercetools-uikit/utils';
@@ -156,13 +155,11 @@ const getStampStyles = (props: StylesFunctionParams) => {
 };
 
 const Stamp = (props: TStampProps) => {
-  const { themedValue } = useTheme();
-  const overrideTextColor = themedValue(false, true);
   const Icon =
     props.icon &&
     cloneElement(props.icon, {
       size: 'medium',
-      color: getIconColor(props, overrideTextColor),
+      color: getIconColor(props, true),
     });
 
   useWarnDeprecatedProp(
@@ -175,17 +172,15 @@ const Stamp = (props: TStampProps) => {
   return (
     <div
       css={[
-        getStampStyles({ ...props, overrideTextColor }),
-        getToneStyles({ ...props, overrideTextColor }),
+        getStampStyles({ ...props, overrideTextColor: true }),
+        getToneStyles({ ...props, overrideTextColor: true }),
         getPaddingStyle(props),
       ]}
     >
       <SpacingsInline alignItems="center">
         {Icon}
         {props.label ? (
-          <Text.Detail tone={themedValue(undefined, 'inherit')}>
-            {props.label}
-          </Text.Detail>
+          <Text.Detail tone="inherit">{props.label}</Text.Detail>
         ) : (
           props.children
         )}

@@ -200,9 +200,7 @@ type TCreateSelectableSelectStyles = {
   hasWarning?: boolean;
   isReadOnly?: boolean;
   menuPortalZIndex?: number;
-  isNewTheme: boolean;
   dropdownHasFocus?: boolean;
-  textInputHasFocus?: boolean;
 };
 
 const createSelectableSelectStyles = ({
@@ -211,15 +209,12 @@ const createSelectableSelectStyles = ({
   isDisabled,
   isReadOnly,
   menuPortalZIndex,
-  isNewTheme,
   dropdownHasFocus,
-  textInputHasFocus,
 }: TCreateSelectableSelectStyles) => {
   const selectStyles = createSelectStyles({
     hasWarning,
     hasError,
     menuPortalZIndex,
-    isNewTheme,
     isDisabled,
     isReadOnly,
   });
@@ -240,9 +235,6 @@ const createSelectableSelectStyles = ({
           return `${designTokens.borderColorForInputWhenReadonly} !important`;
         if (hasError) return designTokens.borderColorForInputWhenError;
         if (hasWarning) return designTokens.borderColorForInputWhenWarning;
-        if (textInputHasFocus && !isNewTheme) {
-          return designTokens.borderColorForInputWhenFocused;
-        }
         if (dropdownHasFocus) {
           return designTokens.borderColorForInputWhenFocused;
         }

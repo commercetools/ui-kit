@@ -1,16 +1,13 @@
 import {
   useLayoutEffect,
-  useState,
   useRef,
-  useEffect,
+  useCallback,
   type ReactNode,
   type JSXElementConstructor,
-  useCallback,
 } from 'react';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import isEqual from 'lodash/isEqual';
-import { useMutationObserver } from '@commercetools-uikit/hooks';
 import { themes } from './design-tokens';
 import { transformTokensToCssVarsValues } from './utils';
 
@@ -103,6 +100,7 @@ ThemeProvider.defaultProps = {
 
 type TUseThemeResult = {
   theme: ThemeName;
+  /** @deprecated */
   themedValue: <
     Old extends string | ReactNode | undefined,
     New extends string | ReactNode | undefined
@@ -110,46 +108,19 @@ type TUseThemeResult = {
     defaultThemeValue: Old,
     newThemeValue: New
   ) => Old | New;
+  /** @deprecated */
   isNewTheme: boolean;
 };
-const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
-  const [theme, setTheme] = useState<ThemeName>('default');
-  const parentSelectorRef = useRef(parentSelector);
-
-  const mutationChangeCallback = useCallback((mutationList) => {
-    // We expect only a single element in the mutation list as we configured the
-    // observer to only listen to `data-theme` changes.
-    const [mutationEvent] = mutationList;
-    setTheme((mutationEvent.target as HTMLElement).dataset.theme as ThemeName);
-  }, []);
-
-  useMutationObserver(parentSelector(), mutationChangeCallback, {
-    attributes: true,
-    attributeFilter: ['data-theme'],
-  });
-
+const useTheme = (_parentSelector = defaultParentSelector): TUseThemeResult => {
   const themedValue: TUseThemeResult['themedValue'] = useCallback(
-    (defaultThemeValue, newThemeValue) =>
-      theme === 'default' ? defaultThemeValue : newThemeValue,
-    [theme]
+    (_defaultThemeValue, newThemeValue) => newThemeValue,
+    []
   );
 
-  // If we use 'useLayoutEffect' here, we would be trying to read the
-  // data attribute before it gets set from the effect in the ThemeProvider
-  useEffect(() => {
-    // We need to read the current theme after the provider is rendered
-    // to have the actual selected theme (calculated client-side) in the
-    // hook local state
-    const nextTheme = parentSelectorRef.current()?.dataset.theme as ThemeName;
-    if (nextTheme) {
-      setTheme(nextTheme);
-    }
-  }, []);
-
   return {
-    theme,
+    theme: 'default',
     themedValue,
-    isNewTheme: theme === 'test',
+    isNewTheme: true,
   };
 };
 

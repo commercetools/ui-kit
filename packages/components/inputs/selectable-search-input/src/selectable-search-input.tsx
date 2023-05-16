@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import {
   type MouseEvent,
   type KeyboardEvent,
@@ -26,7 +25,7 @@ import {
 import SelectableSelect from './selectable-select';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import styled from '@emotion/styled';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 import { type Props as ReactSelectProps } from 'react-select';
 
@@ -235,13 +234,10 @@ const isOptionObject = (
 ): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
 const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
-  const [textInputHasFocus, toggleTextInputHasFocus] = useToggleState(false);
   const [dropdownHasFocus, toggleDropdownHasFocus] = useToggleState(false);
   const [searchValue, setSearchValue] = useState(props.value.text || '');
   const containerRef = useRef<HTMLDivElement>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
-
-  const { isNewTheme } = useTheme();
 
   const optionsWithoutGroups = props.options.flatMap((option) => {
     if (isOptionObject(option)) {
@@ -282,8 +278,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
         },
       });
     }
-    toggleTextInputHasFocus(true);
-  }, [toggleTextInputHasFocus, onFocus, selectablSearchInputId, name]);
+  }, [onFocus, selectablSearchInputId, name]);
 
   const handleTextInputBlur = useCallback(() => {
     if (onBlur) {
@@ -294,8 +289,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
         },
       });
     }
-    toggleTextInputHasFocus(false);
-  }, [toggleTextInputHasFocus, onBlur, selectablSearchInputId, name]);
+  }, [onBlur, selectablSearchInputId, name]);
 
   const handleClear = () => {
     setSearchValue('');
@@ -398,11 +392,9 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             {...props}
             id={SelectableSearchInput.getDropdownId(selectablSearchInputId)}
             name={getDropdownName(props.name)}
-            textInputHasFocus={textInputHasFocus}
             dropdownHasFocus={dropdownHasFocus}
             handleDropdownFocus={handleDropdownFocus}
             handleDropdownBlur={handleDropdownBlur}
-            isNewTheme={isNewTheme}
             textInputRef={textInputRef}
             selectedOption={selectedOption}
           />
@@ -411,7 +403,6 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
           css={[
             getSelectableSearchInputContainerStyles(props),
             dropdownHasFocus &&
-              isNewTheme &&
               !props.isReadOnly &&
               css`
                 border-left-color: ${designTokens.borderColorForInputWhenFocused};
