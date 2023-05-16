@@ -145,12 +145,7 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
     }
     & + span::after {
       background: ${designTokens.backgroundColorForToggleInputThumbWhenChecked};
-      transform: translate(${`calc(${
-        props.thumbSizes[props.size].shift
-      } * 2 + ${props.trackSizes[props.size].width} - ${
-        props.thumbSizes[props.size].diameter
-      })`}
-      );
+      transform: translate(${props.thumbSizes[props.size].diameter}, -50%);
     }
   }
 
