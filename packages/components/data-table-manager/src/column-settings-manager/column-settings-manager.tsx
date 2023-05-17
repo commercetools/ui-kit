@@ -117,7 +117,6 @@ export const handleColumnsUpdate = (
 };
 
 const DropdownIndicator = () => (
-  // fails here
   <Spacings.Inline alignItems="center">
     <SearchIcon size="medium" color="primary" />
   </Spacings.Inline>
