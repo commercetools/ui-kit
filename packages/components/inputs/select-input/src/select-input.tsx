@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
@@ -18,7 +17,6 @@ import {
   warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import { useTheme } from '@commercetools-uikit/design-system';
 
 const customizedComponents = {
   DropdownIndicator,
@@ -337,7 +335,6 @@ const isOptionObject = (
 
 const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
-  const { isNewTheme } = useTheme();
 
   warnIfMenuPortalPropsAreMissing({
     menuPortalZIndex: props.menuPortalZIndex,
@@ -419,7 +416,6 @@ const SelectInput = (props: TSelectInputProps) => {
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
               controlShouldRenderValue: props.controlShouldRenderValue,
-              isNewTheme,
             }) as ReactSelectProps['styles']
           }
           filterOption={props.filterOption}

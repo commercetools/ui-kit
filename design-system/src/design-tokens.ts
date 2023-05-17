@@ -53,7 +53,7 @@ export const themes = {
     borderRadius20: '20px',
     borderWidth1: '1px',
     borderWidth2: '2px',
-    fontFamily: "'Open Sans', sans-serif",
+    fontFamily: "'Inter', system-ui",
     fontSize10: '0.75rem',
     fontSize20: '0.875rem',
     fontSize30: '1rem',
@@ -139,400 +139,6 @@ export const themes = {
     breakPointBiggerdesktop: '1280px',
     breakPointGiantdesktop: '1680px',
     breakPointJumbodesktop: '1920px',
-    alignItemsForSelectInputTag: 'unset',
-    backgroundColorForButtonWhenActive: '#fff',
-    backgroundColorForButtonWhenHovered: '#fff',
-    backgroundColorForButtonAsPrimaryWhenActive: '#00b39e',
-    backgroundColorForButtonAsPrimaryWhenHovered:
-      'hsl(172.9608938547486, 100%, 25%)',
-    backgroundColorForButtonAsIconAsPrimaryWhenActive: '#00b39e',
-    backgroundColorForButtonAsIconAsPrimaryWhenHovered: '#00b39e',
-    backgroundColorForButtonAsIconAsInfoWhenActive: '#078cdf',
-    backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
-    backgroundColorForButtonAsUrgentWhenActive: '#f16d0e',
-    backgroundColorForButtonAsUrgentWhenHovered:
-      'hsl(25.110132158590307, 89.0196078431%, 25%)',
-    backgroundColorForButtonWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
-    backgroundColorForInput: '#fff',
-    backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
-    backgroundColorForInputWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
-    backgroundColorForInputWhenHovered: '#fff',
-    backgroundColorForInputWhenFocused: '#fff',
-    backgroundColorForInputWhenReadonly: '#fff',
-    backgroundColorForInputWhenActive: 'hsl(195, 35.2941176471%, 95%)',
-    backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 90%)',
-    backgroundColorForTableHeader: '#213c45',
-    backgroundColorForTag: 'hsl(0, 0%, 95%)',
-    backgroundColorForTagWarning:
-      'hsl(25.110132158590307, 89.0196078431%, 95%)',
-    backgroundColorForTagWhenHovered: 'hsl(0, 0%, 95%)',
-    backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
-      'hsl(195, 35.2941176471%, 98%)',
-    backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 90%)',
-    backgroundColorForAvatar: 'hsl(0, 0%, 60%)',
-    backgroundColorForAvatarWhenHighlighted: '#ccc',
-    backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 85%)',
-    backgroundColorForLocalizedInputLabel: 'hsl(195, 35.2941176471%, 98%)',
-    backgroundColorForLocalizedInputLabelWhenReadonly:
-      'hsl(195, 35.2941176471%, 95%)',
-    backgroundColorForLocalizedInputLabelWhenDisabled:
-      'hsl(195, 35.2941176471%, 98%)',
-    backgroundColorForLocalizedRichTextBodyButtonWhenActive:
-      'hsl(195, 35.2941176471%, 30%)',
-    backgroundColorForLocalizedRichTextBodyButton: 'hsl(0, 0%, 90%)',
-    backgroundColorForRichTextDropdownWhenHovered: 'hsl(0, 0%, 90%)',
-    backgroundColorForRichTextMoreStylesDropdownWhenHovered: 'hsl(0, 0%, 90%)',
-    backgroundColorForRichTextButton: 'hsl(195, 35.2941176471%, 30%)',
-    backgroundColorForTooltip: '#213c45',
-    backgroundColorForViewSwitcher: '#fff',
-    backgroundColorForViewSwitcherWhenDisabled: 'hsl(195, 35.2941176471%, 98%)',
-    backgroundColorForViewSwitcherWhenSelected: 'hsl(0, 0%, 95%)',
-    backgroundColorForViewSwitcherWhenHovered: 'hsl(0, 0%, 90%)',
-    backgroundColorForContentNotificationWhenError: '#fff',
-    backgroundColorForContentNotificationWhenInfo: '#fff',
-    backgroundColorForContentNotificationWhenWarning: '#fff',
-    backgroundColorForContentNotificationWhenSuccess: '#fff',
-    backgroundColorForContentNotificationIconWhenError: '#e60050',
-    backgroundColorForContentNotificationIconWhenInfo: '#078cdf',
-    backgroundColorForContentNotificationIconWhenWarning: '#f16d0e',
-    backgroundColorForContentNotificationIconWhenSuccess: '#00b39e',
-    backgroundColorForCheckboxInputIcon: '#fff',
-    backgroundColorForCheckboxInputIconWhenDisabled: '#fff',
-    backgroundColorForCheckboxInputIconWhenReadonly: '#fff',
-    backgroundColorForCheckboxInputIconWhenError: '#fff',
-    backgroundColorForCheckboxInputIconWhenHovered: '#fff',
-    backgroundColorForPrimaryActionDropdownWhenActive: 'hsl(0, 0%, 95%)',
-    backgroundColorForPrimaryActionDropdownWhenDisabled:
-      'hsl(195, 35.2941176471%, 98%)',
-    backgroundColorForToggleInputTrack: 'hsl(0, 0%, 60%)',
-    backgroundColorForToggleInputTrackWhenDisabled: '#ccc',
-    backgroundColorForToggleInputThumbWhenDisabled:
-      'hsl(195, 35.2941176471%, 95%)',
-    backgroundColorForToggleInputTrackWhenChecked: '#00b39e',
-    backgroundColorForToggleInputThumbWhenChecked: '#fff',
-    backgroundColorForToggleInputTrackWhenCheckedAndDisabled:
-      'hsl(172.9608938547486, 100%, 25%)',
-    backgroundColorForToggleInputThumbWhenCheckedAndDisabled: '#ccc',
-    borderForButtonAsSecondary: 'none',
-    borderForButtonAsSecondaryWhenHovered: 'none',
-    borderForButtonAsSecondaryWhenActive: 'none',
-    borderForCardWhenRaised: 'none',
-    borderForCollapsiblePanelHeaderIconWhenDisabled:
-      '1px solid var(--color-neutral)',
-    borderForViewSwitcher: 'none',
-    borderForSelectInputTag: 'none',
-    borderForRadioInputOption: '1px',
-    borderForCalendarMenuWhenFocused: '1px solid var(--color-primary)',
-    borderColorForInput: 'hsl(0, 0%, 60%)',
-    borderColorForInputWhenFocused: '#00b39e',
-    borderColorForInputWhenDisabled: '#ccc',
-    borderColorForInputWhenReadonly: '#ccc',
-    borderColorForInputWhenError: '#e60050',
-    borderColorForInputWhenWarning: '#f16d0e',
-    borderColorForInputWhenHovered: '#00b39e',
-    borderColorForTag: 'hsl(0, 0%, 60%)',
-    borderColorForTagWarning: '#f16d0e',
-    borderColorForTagWhenFocused: '#00b39e',
-    borderColorForTagWhenHovered: '#f16d0e',
-    borderColorForButtonAsIcon: '#fff',
-    borderColorForButtonAsIconAsInfo: '#078cdf',
-    borderColorForButtonAsIconAsPrimary: '#00b39e',
-    borderColorForButtonAsIconWhenDisabled: '#ccc',
-    borderColorForTableHeader: '#ccc',
-    borderColorForTableHeaderAsBottom: '#213c45',
-    borderColorForTableManagerDroppableList: 'hsl(0, 0%, 60%)',
-    borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 60%)',
-    borderColorForStampWhenError: '#e60050',
-    borderColorForStampWhenWarning: '#f16d0e',
-    borderColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 40%)',
-    borderColorForStampAsInformation: '#078cdf',
-    borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
-    borderColorForStampAsSecondary: 'hsl(0, 0%, 60%)',
-    borderColorForLocalizedInputLabel: '#ccc',
-    borderColorForLocalizedInputLabelWhenReadonly: '#ccc',
-    borderColorForContentNotificationWhenError: '#e60050',
-    borderColorForContentNotificationWhenInfo: '#078cdf',
-    borderColorForContentNotificationWhenWarning: '#f16d0e',
-    borderColorForContentNotificationWhenSuccess: '#00b39e',
-    borderColorForGroupHeadingSelectInputOptions: '#ccc',
-    borderColorForSelectInputMenu: '#00b39e',
-    borderColorForSelectInputWhenReadonly: '#ccc',
-    borderColorForSelectInputMenuWhenWarning: '#f16d0e',
-    borderColorForSelectInputMenuWhenError: '#e60050',
-    borderColorForCheckboxInputIcon: 'hsl(0, 0%, 60%)',
-    borderColorForCheckboxInputIconWhenDisabled: '#ccc',
-    borderColorForCheckboxInputIconWhenReadonly: '#ccc',
-    borderColorForCheckboxInputIconWhenError: '#e60050',
-    borderColorForRadioInput: '#ccc',
-    borderColorForRadioInputWhenDisabled: 'hsl(0, 0%, 60%)',
-    borderColorForRadioInputWhenReadonly: '#ccc',
-    borderColorForRadioInputWhenChecked: '#ccc',
-    borderColorForRadioInputWhenFocused: '#00b39e',
-    borderColorForPrimaryActionDropdownMenu: '#ccc',
-    borderRadiusForButtonAsBig: '6px',
-    borderRadiusForButtonAsMedium: '4px',
-    borderRadiusForButtonAsIconAsBig: '6px',
-    borderRadiusForButtonAsIconAsMedium: '4px',
-    borderRadiusForButtonAsIconAsSmall: '2px',
-    borderRadiusForInput: '6px',
-    borderRadiusForTag: '2px',
-    borderRadiusForCard: '6px',
-    borderRadiusForTableManagerDroppableList: '6px',
-    borderRadiusForStamp: '2px',
-    borderRadiusForViewSwitcher: '6px',
-    borderRadiusForContentNotification:
-      '0 var(--border-radius-6) var(--border-radius-6) 0',
-    borderRadiusForContentNotificationIcon:
-      'var(--border-radius-6) 0 0 var(--border-radius-6)',
-    borderRadiusForPrimaryActionDropdown:
-      'var(--border-radius-6) 0 0 var(--border-radius-6)',
-    borderRadiusForPrimaryActionDropdownIcon:
-      '0 var(--border-radius-6) var(--border-radius-6) 0',
-    borderRadiusForPrimaryActionDropdownMenu: '6px',
-    borderWidthForInput: '1px',
-    borderWidthForInputWhenWarning: '1px',
-    borderWidthForInputWhenError: '1px',
-    borderWidthForInputWhenFocused: '1px',
-    borderWidthForTag: '1px',
-    borderWidthForSelectInput: '1px',
-    borderWidthForContentNotificationIcon: '0px',
-    borderLeftWidthForContentNotification: '1px',
-    borderWidthForCheckboxInputIcon: '1px',
-    borderForPrimaryActionDropdownIcon: '0px 0px 0px 1px',
-    boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 2px',
-    boxShadowForViewSwitcher:
-      '0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12)',
-    boxShadowForViewSwitcherWhenSelected:
-      'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
-    boxShadowForSelectInputWhenFocused: 'inset 0 0 0 2px',
-    boxShadowForCalendarMenuWhenFocused: 'none',
-    fontColorForText: '#1a1a1a',
-    fontColorForTextWhenDisabled: '#ccc',
-    fontColorForInput: '#1a1a1a',
-    fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
-    fontColorForInputWhenError: '#e60050',
-    fontColorForInputWhenReadonly: 'hsl(0, 0%, 60%)',
-    fontColorForInputWhenWarning: '#f16d0e',
-    fontColorForTag: '#1a1a1a',
-    fontColorForTagRemoveIcon: '#1a1a1a',
-    fontColorForTagDragIcon: '#1a1a1a',
-    fontColorForTagRemoveIconWhenHovered: '#f16d0e',
-    fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
-    fontColorForTextWhenInverted: '#fff',
-    fontColorForLinkAsInverted: '#fff',
-    fontColorForLinkAsPrimary: '#00b39e',
-    fontColorForLinkAsSecondary: '#1a1a1a',
-    fontColorForLinkAsPrimaryWhenActive: 'hsl(172.9608938547486, 100%, 25%)',
-    fontColorForLinkAsSecondaryWhenActive: '#00b39e',
-    fontColorForTableHeader: '#fff',
-    fontColorForLocalizedInputLabel: 'hsl(0, 0%, 60%)',
-    fontColorForViewSwitcher: '#1a1a1a',
-    fontColorForViewSwitcherWhenDisabled: 'hsl(0, 0%, 60%)',
-    fontColorForViewSwitcherWhenSelected: '#1a1a1a',
-    fontColorForClearInputIcon: '#1a1a1a',
-    fontColorForClearInputIconWhenHovered: '#f16d0e',
-    fontColorForContentNotification: '#1a1a1a',
-    fontColorForContentNotificationIconWhenError: '#fff',
-    fontColorForContentNotificationIconWhenWarning: '#fff',
-    fontColorForContentNotificationIconWhenSuccess: '#fff',
-    fontColorForContentNotificationIconWhenInfo: '#fff',
-    fontColorForSearchInputIcon: '#1a1a1a',
-    fontColorForSearchInputIconWhenHovered: '#00b39e',
-    fontColorForSelectInputIcon: '#1a1a1a',
-    fontColorForSelectInputWhenError: '#1a1a1a',
-    fontColorForSelectInputWhenWarning: '#1a1a1a',
-    fontColorForSelectInputIconWhenError: '#1a1a1a',
-    fontColorForSelectInputIconWhenWarning: '#1a1a1a',
-    fontColorForMoneyInputCurrencyDropdownIndicator: '#1a1a1a',
-    fontColorForSearchInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
-    fontColorForCheckboxInputLabel: '#1a1a1a',
-    fontColorForCheckboxInputLabelWhenError: '#e60050',
-    fontColorForCheckboxInputLabelWhenDisabled: 'hsl(0, 0%, 40%)',
-    fontColorForCheckboxInputLabelWhenReadonly: 'hsl(0, 0%, 40%)',
-    fontColorForRadioInputWhenDisabled: 'hsl(0, 0%, 60%)',
-    fontColorForRadioInputWhenError: '#e60050',
-    fontColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
-    fontColorForRadioInputWhenWarning: '#f16d0e',
-    fontColorForFlatButtonAsPrimary: '#00b39e',
-    fontColorForFlatButtonAsPrimaryWhenHovered:
-      'hsl(172.9608938547486, 100%, 25%)',
-    fontColorForFlatButtonAsCritical: '#e60050',
-    fontColorForFlatButtonAsCriticalWhenHovered:
-      'hsl(339.1304347826087, 100%, 25%)',
-    fontColorForFlatButtonAsSecondary: '#1a1a1a',
-    fontColorForFlatButtonAsInverted: '#fff',
-    fontColorForFlatButtonIconWhenDisabled: 'hsl(0, 0%, 60%)',
-    fontColorForSecondaryIconButtonAsPrimary: '#00b39e',
-    fontColorForSecondaryIconButtonAsPrimaryWhenHovered:
-      'hsl(172.9608938547486, 100%, 25%)',
-    heightForButtonAsBig: '32px',
-    heightForButtonAsMedium: '24px',
-    heightForButtonAsIconAsBig: '32px',
-    heightForButtonAsIconAsMedium: '24px',
-    heightForButtonAsIconAsSmall: '16px',
-    heightForInput: '32px',
-    heightForViewSwitcher: '32px',
-    heightForViewSwitcherWhenCondensed: '24px',
-    heightForSelectInputTag: '26px',
-    heightForRadioInputOption: '16px',
-    heightForRadioInputOptionWhenChecked: '8px',
-    heightForPrimaryActionDropdown: '32px',
-    widthForAvatarAsMedium: '48px',
-    minWidthForMoneyInputCurrencyDropdown: '72px',
-    placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
-    fontSizeForButton: '1rem',
-    fontSizeForInput: '1rem',
-    fontSizeForTextAsH1: '2.4615rem',
-    fontSizeForTextAsH2: '1.8462rem',
-    fontSizeForTextAsH3: '1.5385rem',
-    fontSizeForTextAsH4: '1.2308rem',
-    fontSizeForTextAsH5: '1.0769rem',
-    fontSizeForTextAsBody: '1rem',
-    fontSizeForTextAsDetail: '0.9231rem',
-    fontSizeForBody: '13px',
-    fontSizeForLink: '1rem',
-    fontSizeForStamp: '1rem',
-    fontSizeForViewSwitcher: '1rem',
-    fontSizeForTable: '1rem',
-    fontSizeForAvatarAsSmall: '1rem',
-    fontSizeForAvatarAsMedium: '1.5rem',
-    fontSizeForAvatarAsBig: '3rem',
-    fontSizeForLocalizedInputLabel: '1rem',
-    fontSizeForContentNotification: '1rem',
-    fontSizeForSelectInputTag: '0.9231rem',
-    iconColorForDatetimeInputIcon: '#1a1a1a',
-    iconColorForDatetimeInputIconWhenHovered: '#f16d0e',
-    lineHeightForTextAsH1: 'inherit',
-    lineHeightForTextAsH2: 'inherit',
-    lineHeightForTextAsH3: 'inherit',
-    lineHeightForTextAsH4: 'inherit',
-    lineHeightForTextAsH5: 'inherit',
-    lineHeightForTextAsBody: 'inherit',
-    lineHeightForTextAsDetail: 'inherit',
-    lineHeightForSelectInputOptions: 'inherit',
-    lineHeightForTableHeader: 'inherit',
-    fontWeightForTextAsH1: '300',
-    fontWeightForTextAsH2: '300',
-    fontWeightForTextAsH3: '300',
-    fontWeightForTextAsH4: '400',
-    fontWeightForTextAsH5: '400',
-    fontWeightForTextAsBody: '400',
-    fontWeightForTextAsDetail: '400',
-    fontWeightForButton: '400',
-    fontWeightForTableHeader: '400',
-    fontWeightForTextAsBold: '700',
-    marginForTableHeader: '8px',
-    marginForTableAsCondensed: '8px',
-    marginForViewSwitcherIcon: '0 var(--spacing-10) 0 0',
-    marginForGroupHeadingSelectInputOptions: '4px',
-    marginForSelectInputIcon: '4px',
-    marginLeftForSelectInputIcon: 'inherit',
-    marginRightForMoneyInputPrecisionBadge: '4px',
-    marginRightForSearchInputIcon: '8px',
-    marginRightForClearInputIcon: '4px',
-    marginLeftForRadioInputLabel: '8px',
-    marginRightForPrimaryActionDropdown: '4px',
-    marginTopForPrimaryActionDropdown: 'none',
-    marginForLocalizedRichTextBodyButton: 'none',
-    marginForRichTextDivider: '0 var(--spacing-10)',
-    marginForRichTextDropdownItemLabel: '0 0 0 var(--spacing-10)',
-    marginForTagList: '0 var(--spacing-10) var(--spacing-10) 0',
-    paddingForStamp: 'var(--spacing-10) var(--spacing-20)',
-    paddingForStampAsCondensed: '1px var(--spacing-10)',
-    paddingForTag: '5px var(--spacing-20)',
-    paddingForTableHeader: '16px',
-    paddingForTableHeaderAsCondensed: '8px',
-    paddingForTableCell: '16px',
-    paddingForTableCellAsCondensed: '8px',
-    paddingForTableManagerDroppableList: '8px',
-    paddingForTableManagerSettingsPanel: '16px',
-    paddingForTableManagerDraggableTag: '4px',
-    paddingForCollapsiblePanelHeader: 'var(--spacing-20) var(--spacing-30)',
-    paddingForCollapsiblePanelHeaderAsCondensed: '8px',
-    paddingForCollapsiblePanelSectionWrapper: '16px',
-    paddingForCollapsiblePanelSectionWrapperAsCondensed: '8px',
-    paddingForCollapsiblePanelSectionDescription: '0 0 var(--spacing-50)',
-    paddingForCollapsiblePanelSectionDescriptionAsCondensed:
-      '0 0 var(--spacing-30)',
-    paddingForInput: '8px',
-    paddingForMultilineInput: 'var(--spacing-10) var(--spacing-20)',
-    paddingForLocalizedRichTextInputLabel: '0 var(--spacing-20)',
-    paddingForLocalizedRichTextDropdownButton: '3px var(--spacing-20)',
-    paddingForLocalizedRichTextDropdownItem:
-      'var(--spacing-10) var(--spacing-20)',
-    paddingForLocalizedRichTextBodyButton: 'var(--spacing-10)',
-    paddingForLocalizedInputLabel: '0 var(--spacing-20)',
-    paddingForRichTextInput: 'none',
-    paddingForRichTextToolbar: 'var(--spacing-10) 7px',
-    paddingLeftForRichTextToolbar: '3px',
-    paddingForRichTextEditorContainer:
-      '6px var(--spacing-20) var(--spacing-10)',
-    paddingForLocalizedMultilineTextInputLabel: '0 var(--spacing-20)',
-    paddingForTagRemoveIcon: '0 var(--spacing-10)',
-    paddingForTooltip: 'var(--spacing-10) var(--spacing-20)',
-    paddingForViewSwitcher: '0 var(--spacing-30) 0 var(--spacing-30)',
-    paddingForViewSwitcherWhenCondensed:
-      '0 var(--spacing-20) 0 var(--spacing-20)',
-    paddingForContentNotification: 'var(--spacing-20)',
-    paddingForContentNotificationIcon: 'var(--spacing-20) var(--spacing-30)',
-    paddingLeftForSelectInputOptions: '8px',
-    paddingRightForSelectInputOptions: '8px',
-    paddingTopForSelectInputOptions: '4px',
-    paddingBottomForSelectInputOptions: '4px',
-    paddingForGroupHeadingSelectInputOptions: '8px',
-    paddingForSelectInputMenu: 'inherit',
-    paddingForMoneyInputCurrencyDropdown: '0 var(--spacing-20)',
-    paddingForSelectableSearchInputDropdown: '0 var(--spacing-20)',
-    paddingForPrimaryActionDropdown: '0 var(--spacing-20)',
-    paddingForPrimaryActionDropdownIcon: '0 var(--spacing-10)',
-    paddingForButtonAsMedium: '0 var(--spacing-20)',
-    paddingForButtonAsBig: '0 var(--spacing-30)',
-    shadowForButton:
-      '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
-    shadowForButtonWhenFocused:
-      '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
-    shadowForButtonWhenHovered:
-      '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
-    shadowForButtonWhenActive:
-      'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
-    shadowForButtonWhenDisabled: '0 0 0 1px var(--color-neutral) inset',
-    shadowBoxTagWhenHovered:
-      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
-    shadowForCardWhenRaised:
-      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
-    shadowForInput: 'none',
-    shadowForInputWhenFocused: 'inset 0 0 0 2px var(--color-primary)',
-    shadowForInputWhenError: 'none',
-    shadowForInputWhenWarning: 'none',
-    shadowForTooltip:
-      '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
-    shadowForSelectInputMenu:
-      '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
-    shadowForPrimaryActionDropdown:
-      '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
-    shadowForPrimaryActionDropdownWhenHovered:
-      '0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24)',
-    shadowForPrimaryActionDropdownWhenActive:
-      'inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25)',
-    shadowForPrimaryActionDropdownMenu:
-      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
-    shadowForToggleInputThumb:
-      '0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24)',
-    shadowForTagWhenHovered:
-      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
-    fontSizeM: '1rem',
-    bigButtonHeight: '32px',
-    smallButtonHeight: '24px',
-    sizeHeightInput: '32px',
-    fontFamilyDefault: "'Open Sans', sans-serif",
-    fontSizeDefault: '1rem',
-    fontSizeSmall: '0.9231rem',
-    shadowBoxTagHover:
-      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
-    sizeHeightTag: '26px',
-  },
-  test: {
-    fontFamily: "'Inter', system-ui",
     alignItemsForSelectInputTag: 'center',
     backgroundColorForButtonWhenActive: 'hsl(0deg 0% 10% / 10%)',
     backgroundColorForButtonWhenHovered: 'hsl(0deg 0% 10% / 5%)',
@@ -544,15 +150,23 @@ export const themes = {
     backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
     backgroundColorForButtonAsUrgentWhenActive: '#DC630A',
     backgroundColorForButtonAsUrgentWhenHovered: '#E7680D',
-    backgroundColorForButtonWhenDisabled: 'hsl(0, 0%, 95%)',
-    backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 98%)',
-    backgroundColorForTableHeader: 'hsl(0, 0%, 95%)',
-    backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
-    backgroundColorForInputWhenHovered: 'hsl(0, 0%, 98%)',
+    backgroundColorForButtonWhenDisabled: 'hsl(195, 35.2941176471%, 95%)',
+    backgroundColorForInput: '#fff',
+    backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
+    backgroundColorForInputWhenHovered: 'hsl(0, 0%, 98%)',
+    backgroundColorForInputWhenFocused: '#fff',
+    backgroundColorForInputWhenReadonly: 'hsl(0, 0%, 95%)',
     backgroundColorForInputWhenActive:
       'hsl(203.05555555555554, 93.9130434783%, 95%)',
-    backgroundColorForInputWhenReadonly: 'hsl(0, 0%, 95%)',
+    backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 98%)',
+    backgroundColorForTableHeader: 'hsl(0, 0%, 95%)',
+    backgroundColorForTag: 'hsl(0, 0%, 95%)',
+    backgroundColorForTagWarning:
+      'hsl(25.110132158590307, 89.0196078431%, 95%)',
+    backgroundColorForTagWhenHovered: 'hsl(0, 0%, 90%)',
+    backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
+    backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 98%)',
     backgroundColorForAvatar: '#213c45',
     backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
     backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 95%)',
@@ -567,6 +181,7 @@ export const themes = {
       'hsl(203.05555555555554, 93.9130434783%, 95%)',
     backgroundColorForRichTextButton: 'hsl(195, 35.2941176471%, 20%)',
     backgroundColorForTooltip: 'hsl(195, 35.2941176471%, 10%)',
+    backgroundColorForViewSwitcher: '#fff',
     backgroundColorForViewSwitcherWhenDisabled: '#fff',
     backgroundColorForViewSwitcherWhenSelected: 'hsl(0, 0%, 95%)',
     backgroundColorForViewSwitcherWhenHovered: 'hsl(0, 0%, 95%)',
@@ -586,7 +201,6 @@ export const themes = {
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForContentNotificationIconWhenSuccess:
       'hsl(172.9608938547486, 100%, 95%)',
-    backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 98%)',
     backgroundColorForCheckboxInputIcon: '#00b39e',
     backgroundColorForCheckboxInputIconWhenDisabled: '#ccc',
     backgroundColorForCheckboxInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
@@ -605,7 +219,6 @@ export const themes = {
       'hsl(195, 35.2941176471%, 90%)',
     backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
       'hsl(195, 35.2941176471%, 60%)',
-    backgroundColorForTagWhenHovered: 'hsl(0, 0%, 90%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -616,15 +229,20 @@ export const themes = {
     borderForRadioInputOption: '2px',
     borderForCalendarMenuWhenFocused: 'none',
     borderColorForInput: '#ccc',
-    borderColorForInputWhenDisabled: '#ccc',
-    borderColorForInputWhenHovered: '#ccc',
-    borderColorForInputWhenReadonly: '#fff',
     borderColorForInputWhenFocused: '#00b39e',
+    borderColorForInputWhenDisabled: '#ccc',
+    borderColorForInputWhenReadonly: '#fff',
+    borderColorForInputWhenError: '#e60050',
+    borderColorForInputWhenWarning: '#f16d0e',
+    borderColorForInputWhenHovered: '#ccc',
+    borderColorForTag: '#ccc',
+    borderColorForTagWarning: '#f16d0e',
+    borderColorForTagWhenFocused: '#ccc',
+    borderColorForTagWhenHovered: '#ccc',
     borderColorForButtonAsIcon: '#ccc',
     borderColorForButtonAsIconAsInfo: '#ccc',
     borderColorForButtonAsIconAsPrimary: '#ccc',
     borderColorForButtonAsIconWhenDisabled: '#fff',
-    borderColorForCardWhenRaised: 'hsl(0, 0%, 90%)',
     borderColorForTableHeader: '#fff',
     borderColorForTableHeaderAsBottom: 'hsl(0, 0%, 90%)',
     borderColorForTableManagerDroppableList: '#ccc',
@@ -637,10 +255,8 @@ export const themes = {
       'hsl(203.05555555555554, 93.9130434783%, 85%)',
     borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 85%)',
     borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
+    borderColorForLocalizedInputLabel: '#ccc',
     borderColorForLocalizedInputLabelWhenReadonly: '#fff',
-    borderColorForTag: '#ccc',
-    borderColorForTagWhenFocused: '#ccc',
-    borderColorForTagWhenHovered: '#ccc',
     borderColorForContentNotificationWhenError:
       'hsl(339.1304347826087, 100%, 85%)',
     borderColorForContentNotificationWhenInfo:
@@ -669,9 +285,10 @@ export const themes = {
     borderRadiusForButtonAsIconAsBig: '4px',
     borderRadiusForButtonAsIconAsMedium: '4px',
     borderRadiusForButtonAsIconAsSmall: '2px',
+    borderRadiusForInput: '4px',
+    borderRadiusForTag: '2px',
     borderRadiusForCard: '4px',
     borderRadiusForTableManagerDroppableList: '4px',
-    borderRadiusForInput: '4px',
     borderRadiusForStamp: '20px',
     borderRadiusForViewSwitcher: '4px',
     borderRadiusForContentNotification:
@@ -683,10 +300,14 @@ export const themes = {
     borderRadiusForPrimaryActionDropdownIcon:
       '0 var(--border-radius-4) var(--border-radius-4) 0',
     borderRadiusForPrimaryActionDropdownMenu: '4px',
+    borderWidthForInput: '1px',
+    borderWidthForInputWhenWarning: '1px',
+    borderWidthForInputWhenError: '1px',
+    borderWidthForInputWhenFocused: '1px',
     borderWidthForTag: '1px 1px 1px 0',
+    borderWidthForSelectInput: '2px',
     borderWidthForContentNotificationIcon: '1px',
     borderLeftWidthForContentNotification: '0px',
-    borderWidthForSelectInput: '2px',
     borderWidthForCheckboxInputIcon: '2px',
     borderForPrimaryActionDropdownIcon: '1px 1px 1px 0px',
     boxShadowForDatetimeInputWhenHovered: 'inset 0 0 0 1px',
@@ -694,37 +315,80 @@ export const themes = {
     boxShadowForViewSwitcherWhenSelected: 'none',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 1px',
     boxShadowForCalendarMenuWhenFocused: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
+    fontColorForText: '#1a1a1a',
     fontColorForTextWhenDisabled: 'hsl(0, 0%, 60%)',
-    fontColorForTableHeader: '#1a1a1a',
+    fontColorForInput: '#1a1a1a',
+    fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForInputWhenError: '#e60050',
     fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
+    fontColorForInputWhenWarning: '#f16d0e',
+    fontColorForTag: '#1a1a1a',
     fontColorForTagRemoveIcon: 'hsl(0, 0%, 40%)',
     fontColorForTagDragIcon: 'hsl(0, 0%, 40%)',
     fontColorForTagRemoveIconWhenHovered: '#e60050',
+    fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForTextWhenInverted: '#fff',
+    fontColorForLinkAsInverted: '#fff',
+    fontColorForLinkAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForLinkAsSecondary: '#1a1a1a',
+    fontColorForLinkAsPrimaryWhenActive: '#00b39e',
+    fontColorForLinkAsSecondaryWhenActive: '#00b39e',
+    fontColorForTableHeader: '#1a1a1a',
+    fontColorForLocalizedInputLabel: 'hsl(0, 0%, 60%)',
     fontColorForViewSwitcher: 'hsl(0, 0%, 40%)',
+    fontColorForViewSwitcherWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForViewSwitcherWhenSelected: '#1a1a1a',
+    fontColorForClearInputIcon: 'hsl(0, 0%, 40%)',
+    fontColorForClearInputIconWhenHovered: '#e60050',
+    fontColorForContentNotification: '#1a1a1a',
     fontColorForContentNotificationIconWhenError: '#e60050',
     fontColorForContentNotificationIconWhenWarning: '#f16d0e',
     fontColorForContentNotificationIconWhenSuccess: '#00b39e',
     fontColorForContentNotificationIconWhenInfo: '#078cdf',
-    fontColorForClearInputIconWhenHovered: '#e60050',
-    fontColorForClearInputIcon: 'hsl(0, 0%, 40%)',
     fontColorForSearchInputIcon: 'hsl(0, 0%, 60%)',
+    fontColorForSearchInputIconWhenHovered: '#00b39e',
     fontColorForSelectInputIcon: 'hsl(0, 0%, 60%)',
     fontColorForSelectInputWhenError: '#e60050',
     fontColorForSelectInputWhenWarning: '#f16d0e',
     fontColorForSelectInputIconWhenError: '#e60050',
     fontColorForSelectInputIconWhenWarning: '#f16d0e',
     fontColorForMoneyInputCurrencyDropdownIndicator: 'hsl(0, 0%, 40%)',
+    fontColorForSearchInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
     fontColorForCheckboxInputLabel: '#1a1a1a',
     fontColorForCheckboxInputLabelWhenError: '#e60050',
     fontColorForCheckboxInputLabelWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForCheckboxInputLabelWhenReadonly: 'hsl(0, 0%, 40%)',
+    fontColorForRadioInputWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForRadioInputWhenError: '#e60050',
+    fontColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
+    fontColorForRadioInputWhenWarning: '#f16d0e',
     fontColorForFlatButtonAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
     fontColorForFlatButtonAsPrimaryWhenHovered: '#00b39e',
-    fontColorForLinkAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
-    fontColorForLinkAsPrimaryWhenActive: '#00b39e',
+    fontColorForFlatButtonAsCritical: '#e60050',
+    fontColorForFlatButtonAsCriticalWhenHovered:
+      'hsl(339.1304347826087, 100%, 25%)',
+    fontColorForFlatButtonAsSecondary: '#1a1a1a',
+    fontColorForFlatButtonAsInverted: '#fff',
+    fontColorForFlatButtonIconWhenDisabled: 'hsl(0, 0%, 60%)',
     fontColorForSecondaryIconButtonAsPrimary:
       'hsl(172.9608938547486, 100%, 25%)',
     fontColorForSecondaryIconButtonAsPrimaryWhenHovered: '#00b39e',
+    heightForButtonAsBig: '40px',
+    heightForButtonAsMedium: '32px',
+    heightForButtonAsIconAsBig: '40px',
+    heightForButtonAsIconAsMedium: '32px',
+    heightForButtonAsIconAsSmall: '16px',
+    heightForInput: '40px',
+    heightForViewSwitcher: '40px',
+    heightForViewSwitcherWhenCondensed: '32px',
+    heightForSelectInputTag: '32px',
+    heightForRadioInputOption: '18px',
+    heightForRadioInputOptionWhenChecked: '10px',
+    heightForPrimaryActionDropdown: '40px',
+    widthForAvatarAsMedium: '40px',
+    minWidthForMoneyInputCurrencyDropdown: '80px',
+    placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
+    fontSizeForButton: '0.875rem',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
     fontSizeForTextAsH2: '1.25rem',
@@ -734,7 +398,7 @@ export const themes = {
     fontSizeForTextAsBody: '1rem',
     fontSizeForTextAsDetail: '0.875rem',
     fontSizeForBody: '16px',
-    fontSizeForButton: '0.875rem',
+    fontSizeForLink: '1rem',
     fontSizeForStamp: '0.875rem',
     fontSizeForViewSwitcher: '0.875rem',
     fontSizeForTable: '0.875rem',
@@ -742,7 +406,10 @@ export const themes = {
     fontSizeForAvatarAsMedium: '1rem',
     fontSizeForAvatarAsBig: '2.5rem',
     fontSizeForLocalizedInputLabel: '1rem',
+    fontSizeForContentNotification: '1rem',
     fontSizeForSelectInputTag: '1rem',
+    iconColorForDatetimeInputIcon: 'hsl(0, 0%, 40%)',
+    iconColorForDatetimeInputIconWhenHovered: '#e60050',
     lineHeightForTextAsH1: '2.125rem',
     lineHeightForTextAsH2: '1.75rem',
     lineHeightForTextAsH3: '1.5rem',
@@ -762,22 +429,6 @@ export const themes = {
     fontWeightForButton: '500',
     fontWeightForTableHeader: '600',
     fontWeightForTextAsBold: '600',
-    heightForButtonAsBig: '40px',
-    heightForButtonAsMedium: '32px',
-    heightForButtonAsIconAsBig: '40px',
-    heightForButtonAsIconAsMedium: '32px',
-    heightForButtonAsIconAsSmall: '16px',
-    heightForInput: '40px',
-    heightForViewSwitcher: '40px',
-    heightForViewSwitcherWhenCondensed: '32px',
-    heightForSelectInputTag: '32px',
-    heightForRadioInputOption: '18px',
-    heightForRadioInputOptionWhenChecked: '10px',
-    heightForPrimaryActionDropdown: '40px',
-    iconColorForDatetimeInputIcon: 'hsl(0, 0%, 40%)',
-    iconColorForDatetimeInputIconWhenHovered: '#e60050',
-    widthForAvatarAsMedium: '40px',
-    minWidthForMoneyInputCurrencyDropdown: '80px',
     marginForTableHeader: '16px',
     marginForTableCellAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-20) 0 0',
@@ -820,11 +471,12 @@ export const themes = {
     paddingForLocalizedRichTextDropdownItem:
       'var(--spacing-20) var(--spacing-30)',
     paddingForLocalizedRichTextBodyButton: 'var(--spacing-20)',
+    paddingForLocalizedInputLabel: '0 12px',
     paddingForRichTextInput: 'var(--spacing-20) var(--spacing-30)',
     paddingForRichTextToolbar: 'none',
     paddingLeftForRichTextToolbar: 'none',
     paddingForRichTextEditorContainer: 'var(--spacing-20) 0 0',
-    paddingForLocalizedInputLabel: '0 12px',
+    paddingForLocalizedMultilineTextInputLabel: '0 var(--spacing-20)',
     paddingForTagRemoveIcon: '0 12px',
     paddingForTooltip: 'var(--spacing-20) 12px',
     paddingForViewSwitcher: '0 var(--spacing-30) 0 var(--spacing-30)',
@@ -845,6 +497,8 @@ export const themes = {
     paddingForPrimaryActionDropdownIcon: '0 var(--spacing-20)',
     paddingForButtonAsMedium: '0 var(--spacing-30)',
     paddingForButtonAsBig: '0 var(--spacing-30)',
+    shadowBoxTagWhenHovered:
+      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     shadowForButton: 'none',
     shadowForButtonWhenFocused: 'none',
     shadowForButtonWhenHovered: 'none',
@@ -863,6 +517,16 @@ export const themes = {
     shadowForPrimaryActionDropdownMenu: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
     shadowForToggleInputThumb: '0px 1px 5px rgba(0, 0, 0, 0.2)',
     shadowForTagWhenHovered: 'none',
+    fontSizeM: '1rem',
+    bigButtonHeight: '32px',
+    smallButtonHeight: '24px',
+    sizeHeightInput: '32px',
+    fontFamilyDefault: "'Open Sans', sans-serif",
+    fontSizeDefault: '1rem',
+    fontSizeSmall: '0.9231rem',
+    shadowBoxTagHover:
+      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+    sizeHeightTag: '26px',
   },
 } as const;
 
@@ -922,7 +586,7 @@ const designTokens = {
   borderRadius20: 'var(--border-radius-20, 20px)',
   borderWidth1: 'var(--border-width-1, 1px)',
   borderWidth2: 'var(--border-width-2, 2px)',
-  fontFamily: "var(--font-family, 'Open Sans', sans-serif)",
+  fontFamily: "var(--font-family, 'Inter', system-ui)",
   fontSize10: 'var(--font-size-10, 0.75rem)',
   fontSize20: 'var(--font-size-20, 0.875rem)',
   fontSize30: 'var(--font-size-30, 1rem)',
@@ -1015,346 +679,356 @@ const designTokens = {
   breakPointBiggerdesktop: 'var(--break-point-biggerdesktop, 1280px)',
   breakPointGiantdesktop: 'var(--break-point-giantdesktop, 1680px)',
   breakPointJumbodesktop: 'var(--break-point-jumbodesktop, 1920px)',
-  alignItemsForSelectInputTag: 'var(--align-items-for-select-input-tag, unset)',
+  alignItemsForSelectInputTag:
+    'var(--align-items-for-select-input-tag, center)',
   backgroundColorForButtonWhenActive:
-    'var(--background-color-for-button-when-active, #fff)',
+    'var(--background-color-for-button-when-active, hsl(0deg 0% 10% / 10%))',
   backgroundColorForButtonWhenHovered:
-    'var(--background-color-for-button-when-hovered, #fff)',
+    'var(--background-color-for-button-when-hovered, hsl(0deg 0% 10% / 5%))',
   backgroundColorForButtonAsPrimaryWhenActive:
-    'var(--background-color-for-button-as-primary-when-active, #00b39e)',
+    'var(--background-color-for-button-as-primary-when-active, #15A390)',
   backgroundColorForButtonAsPrimaryWhenHovered:
-    'var(--background-color-for-button-as-primary-when-hovered, hsl(172.9608938547486, 100%, 25%))',
+    'var(--background-color-for-button-as-primary-when-hovered, #17AB97)',
   backgroundColorForButtonAsIconAsPrimaryWhenActive:
-    'var(--background-color-for-button-as-icon-as-primary-when-active, #00b39e)',
+    'var(--background-color-for-button-as-icon-as-primary-when-active, #15A390)',
   backgroundColorForButtonAsIconAsPrimaryWhenHovered:
     'var(--background-color-for-button-as-icon-as-primary-when-hovered, #00b39e)',
   backgroundColorForButtonAsIconAsInfoWhenActive:
-    'var(--background-color-for-button-as-icon-as-info-when-active, #078cdf)',
+    'var(--background-color-for-button-as-icon-as-info-when-active, #057FCC)',
   backgroundColorForButtonAsIconAsInfoWhenHovered:
     'var(--background-color-for-button-as-icon-as-info-when-hovered, #078cdf)',
   backgroundColorForButtonAsUrgentWhenActive:
-    'var(--background-color-for-button-as-urgent-when-active, #f16d0e)',
+    'var(--background-color-for-button-as-urgent-when-active, #DC630A)',
   backgroundColorForButtonAsUrgentWhenHovered:
-    'var(--background-color-for-button-as-urgent-when-hovered, hsl(25.110132158590307, 89.0196078431%, 25%))',
+    'var(--background-color-for-button-as-urgent-when-hovered, #E7680D)',
   backgroundColorForButtonWhenDisabled:
-    'var(--background-color-for-button-when-disabled, hsl(195, 35.2941176471%, 98%))',
+    'var(--background-color-for-button-when-disabled, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForInput: 'var(--background-color-for-input, #fff)',
   backgroundColorForInputWhenSelected:
     'var(--background-color-for-input-when-selected, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForInputWhenDisabled:
-    'var(--background-color-for-input-when-disabled, hsl(195, 35.2941176471%, 98%))',
+    'var(--background-color-for-input-when-disabled, hsl(0, 0%, 95%))',
   backgroundColorForInputWhenHovered:
-    'var(--background-color-for-input-when-hovered, #fff)',
+    'var(--background-color-for-input-when-hovered, hsl(0, 0%, 98%))',
   backgroundColorForInputWhenFocused:
     'var(--background-color-for-input-when-focused, #fff)',
   backgroundColorForInputWhenReadonly:
-    'var(--background-color-for-input-when-readonly, #fff)',
+    'var(--background-color-for-input-when-readonly, hsl(0, 0%, 95%))',
   backgroundColorForInputWhenActive:
-    'var(--background-color-for-input-when-active, hsl(195, 35.2941176471%, 95%))',
+    'var(--background-color-for-input-when-active, hsl(203.05555555555554, 93.9130434783%, 95%))',
   backgroundColorForTableCellWhenHovered:
-    'var(--background-color-for-table-cell-when-hovered, hsl(0, 0%, 90%))',
+    'var(--background-color-for-table-cell-when-hovered, hsl(0, 0%, 98%))',
   backgroundColorForTableHeader:
-    'var(--background-color-for-table-header, #213c45)',
+    'var(--background-color-for-table-header, hsl(0, 0%, 95%))',
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
   backgroundColorForTagWhenHovered:
-    'var(--background-color-for-tag-when-hovered, hsl(0, 0%, 95%))',
+    'var(--background-color-for-tag-when-hovered, hsl(0, 0%, 90%))',
   backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
-    'var(--background-color-for-collapsible-panel-header-icon-when-disabled, hsl(195, 35.2941176471%, 98%))',
+    'var(--background-color-for-collapsible-panel-header-icon-when-disabled, #fff)',
   backgroundColorForSelectInputOptionWhenHovered:
-    'var(--background-color-for-select-input-option-when-hovered, hsl(0, 0%, 90%))',
-  backgroundColorForAvatar:
-    'var(--background-color-for-avatar, hsl(0, 0%, 60%))',
+    'var(--background-color-for-select-input-option-when-hovered, hsl(0, 0%, 98%))',
+  backgroundColorForAvatar: 'var(--background-color-for-avatar, #213c45)',
   backgroundColorForAvatarWhenHighlighted:
-    'var(--background-color-for-avatar-when-highlighted, #ccc)',
+    'var(--background-color-for-avatar-when-highlighted, hsl(195, 35.2941176471%, 30%))',
   backgroundColorForStampAsPositive:
-    'var(--background-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 85%))',
+    'var(--background-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 95%))',
   backgroundColorForLocalizedInputLabel:
-    'var(--background-color-for-localized-input-label, hsl(195, 35.2941176471%, 98%))',
+    'var(--background-color-for-localized-input-label, #fff)',
   backgroundColorForLocalizedInputLabelWhenReadonly:
-    'var(--background-color-for-localized-input-label-when-readonly, hsl(195, 35.2941176471%, 95%))',
+    'var(--background-color-for-localized-input-label-when-readonly, hsl(0, 0%, 95%))',
   backgroundColorForLocalizedInputLabelWhenDisabled:
-    'var(--background-color-for-localized-input-label-when-disabled, hsl(195, 35.2941176471%, 98%))',
+    'var(--background-color-for-localized-input-label-when-disabled, hsl(0, 0%, 95%))',
   backgroundColorForLocalizedRichTextBodyButtonWhenActive:
-    'var(--background-color-for-localized-rich-text-body-button-when-active, hsl(195, 35.2941176471%, 30%))',
+    'var(--background-color-for-localized-rich-text-body-button-when-active, hsl(195, 35.2941176471%, 20%))',
   backgroundColorForLocalizedRichTextBodyButton:
-    'var(--background-color-for-localized-rich-text-body-button, hsl(0, 0%, 90%))',
+    'var(--background-color-for-localized-rich-text-body-button, hsl(0, 0%, 95%))',
   backgroundColorForRichTextDropdownWhenHovered:
-    'var(--background-color-for-rich-text-dropdown-when-hovered, hsl(0, 0%, 90%))',
+    'var(--background-color-for-rich-text-dropdown-when-hovered, hsl(0, 0%, 95%))',
   backgroundColorForRichTextMoreStylesDropdownWhenHovered:
-    'var(--background-color-for-rich-text-more-styles-dropdown-when-hovered, hsl(0, 0%, 90%))',
+    'var(--background-color-for-rich-text-more-styles-dropdown-when-hovered, hsl(203.05555555555554, 93.9130434783%, 95%))',
   backgroundColorForRichTextButton:
-    'var(--background-color-for-rich-text-button, hsl(195, 35.2941176471%, 30%))',
-  backgroundColorForTooltip: 'var(--background-color-for-tooltip, #213c45)',
+    'var(--background-color-for-rich-text-button, hsl(195, 35.2941176471%, 20%))',
+  backgroundColorForTooltip:
+    'var(--background-color-for-tooltip, hsl(195, 35.2941176471%, 10%))',
   backgroundColorForViewSwitcher:
     'var(--background-color-for-view-switcher, #fff)',
   backgroundColorForViewSwitcherWhenDisabled:
-    'var(--background-color-for-view-switcher-when-disabled, hsl(195, 35.2941176471%, 98%))',
+    'var(--background-color-for-view-switcher-when-disabled, #fff)',
   backgroundColorForViewSwitcherWhenSelected:
     'var(--background-color-for-view-switcher-when-selected, hsl(0, 0%, 95%))',
   backgroundColorForViewSwitcherWhenHovered:
-    'var(--background-color-for-view-switcher-when-hovered, hsl(0, 0%, 90%))',
+    'var(--background-color-for-view-switcher-when-hovered, hsl(0, 0%, 95%))',
   backgroundColorForContentNotificationWhenError:
-    'var(--background-color-for-content-notification-when-error, #fff)',
+    'var(--background-color-for-content-notification-when-error, hsl(339.1304347826087, 100%, 95%))',
   backgroundColorForContentNotificationWhenInfo:
-    'var(--background-color-for-content-notification-when-info, #fff)',
+    'var(--background-color-for-content-notification-when-info, hsl(203.05555555555554, 93.9130434783%, 95%))',
   backgroundColorForContentNotificationWhenWarning:
-    'var(--background-color-for-content-notification-when-warning, #fff)',
+    'var(--background-color-for-content-notification-when-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
   backgroundColorForContentNotificationWhenSuccess:
-    'var(--background-color-for-content-notification-when-success, #fff)',
+    'var(--background-color-for-content-notification-when-success, hsl(172.9608938547486, 100%, 95%))',
   backgroundColorForContentNotificationIconWhenError:
-    'var(--background-color-for-content-notification-icon-when-error, #e60050)',
+    'var(--background-color-for-content-notification-icon-when-error, hsl(339.1304347826087, 100%, 95%))',
   backgroundColorForContentNotificationIconWhenInfo:
-    'var(--background-color-for-content-notification-icon-when-info, #078cdf)',
+    'var(--background-color-for-content-notification-icon-when-info, hsl(203.05555555555554, 93.9130434783%, 95%))',
   backgroundColorForContentNotificationIconWhenWarning:
-    'var(--background-color-for-content-notification-icon-when-warning, #f16d0e)',
+    'var(--background-color-for-content-notification-icon-when-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
   backgroundColorForContentNotificationIconWhenSuccess:
-    'var(--background-color-for-content-notification-icon-when-success, #00b39e)',
+    'var(--background-color-for-content-notification-icon-when-success, hsl(172.9608938547486, 100%, 95%))',
   backgroundColorForCheckboxInputIcon:
-    'var(--background-color-for-checkbox-input-icon, #fff)',
+    'var(--background-color-for-checkbox-input-icon, #00b39e)',
   backgroundColorForCheckboxInputIconWhenDisabled:
-    'var(--background-color-for-checkbox-input-icon-when-disabled, #fff)',
+    'var(--background-color-for-checkbox-input-icon-when-disabled, #ccc)',
   backgroundColorForCheckboxInputIconWhenReadonly:
-    'var(--background-color-for-checkbox-input-icon-when-readonly, #fff)',
+    'var(--background-color-for-checkbox-input-icon-when-readonly, hsl(0, 0%, 60%))',
   backgroundColorForCheckboxInputIconWhenError:
-    'var(--background-color-for-checkbox-input-icon-when-error, #fff)',
+    'var(--background-color-for-checkbox-input-icon-when-error, #e60050)',
   backgroundColorForCheckboxInputIconWhenHovered:
-    'var(--background-color-for-checkbox-input-icon-when-hovered, #fff)',
+    'var(--background-color-for-checkbox-input-icon-when-hovered, hsl(0, 0%, 90%))',
   backgroundColorForPrimaryActionDropdownWhenActive:
-    'var(--background-color-for-primary-action-dropdown-when-active, hsl(0, 0%, 95%))',
+    'var(--background-color-for-primary-action-dropdown-when-active, hsl(0, 0%, 90%))',
   backgroundColorForPrimaryActionDropdownWhenDisabled:
-    'var(--background-color-for-primary-action-dropdown-when-disabled, hsl(195, 35.2941176471%, 98%))',
+    'var(--background-color-for-primary-action-dropdown-when-disabled, hsl(0, 0%, 95%))',
   backgroundColorForToggleInputTrack:
-    'var(--background-color-for-toggle-input-track, hsl(0, 0%, 60%))',
+    'var(--background-color-for-toggle-input-track, #ccc)',
   backgroundColorForToggleInputTrackWhenDisabled:
-    'var(--background-color-for-toggle-input-track-when-disabled, #ccc)',
+    'var(--background-color-for-toggle-input-track-when-disabled, hsl(0, 0%, 90%))',
   backgroundColorForToggleInputThumbWhenDisabled:
-    'var(--background-color-for-toggle-input-thumb-when-disabled, hsl(195, 35.2941176471%, 95%))',
+    'var(--background-color-for-toggle-input-thumb-when-disabled, hsl(0, 0%, 60%))',
   backgroundColorForToggleInputTrackWhenChecked:
-    'var(--background-color-for-toggle-input-track-when-checked, #00b39e)',
+    'var(--background-color-for-toggle-input-track-when-checked, hsl(172.9608938547486, 100%, 40%))',
   backgroundColorForToggleInputThumbWhenChecked:
-    'var(--background-color-for-toggle-input-thumb-when-checked, #fff)',
+    'var(--background-color-for-toggle-input-thumb-when-checked, hsl(172.9608938547486, 100%, 25%))',
   backgroundColorForToggleInputTrackWhenCheckedAndDisabled:
-    'var(--background-color-for-toggle-input-track-when-checked-and-disabled, hsl(172.9608938547486, 100%, 25%))',
+    'var(--background-color-for-toggle-input-track-when-checked-and-disabled, hsl(195, 35.2941176471%, 90%))',
   backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
-    'var(--background-color-for-toggle-input-thumb-when-checked-and-disabled, #ccc)',
-  borderForButtonAsSecondary: 'var(--border-for-button-as-secondary, none)',
+    'var(--background-color-for-toggle-input-thumb-when-checked-and-disabled, hsl(195, 35.2941176471%, 60%))',
+  borderForButtonAsSecondary:
+    'var(--border-for-button-as-secondary, 1px solid var(--color-neutral))',
   borderForButtonAsSecondaryWhenHovered:
-    'var(--border-for-button-as-secondary-when-hovered, none)',
+    'var(--border-for-button-as-secondary-when-hovered, 1px solid var(--color-neutral))',
   borderForButtonAsSecondaryWhenActive:
-    'var(--border-for-button-as-secondary-when-active, none)',
-  borderForCardWhenRaised: 'var(--border-for-card-when-raised, none)',
+    'var(--border-for-button-as-secondary-when-active, 1px solid var(--color-neutral))',
+  borderForCardWhenRaised:
+    'var(--border-for-card-when-raised, 1px solid var(--color-neutral-90))',
   borderForCollapsiblePanelHeaderIconWhenDisabled:
-    'var(--border-for-collapsible-panel-header-icon-when-disabled, 1px solid var(--color-neutral))',
-  borderForViewSwitcher: 'var(--border-for-view-switcher, none)',
-  borderForSelectInputTag: 'var(--border-for-select-input-tag, none)',
-  borderForRadioInputOption: 'var(--border-for-radio-input-option, 1px)',
+    'var(--border-for-collapsible-panel-header-icon-when-disabled, none)',
+  borderForViewSwitcher:
+    'var(--border-for-view-switcher, 1px solid var(--color-neutral))',
+  borderForSelectInputTag:
+    'var(--border-for-select-input-tag, 1px solid var(--color-neutral-85))',
+  borderForRadioInputOption: 'var(--border-for-radio-input-option, 2px)',
   borderForCalendarMenuWhenFocused:
-    'var(--border-for-calendar-menu-when-focused, 1px solid var(--color-primary))',
-  borderColorForInput: 'var(--border-color-for-input, hsl(0, 0%, 60%))',
+    'var(--border-for-calendar-menu-when-focused, none)',
+  borderColorForInput: 'var(--border-color-for-input, #ccc)',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, #00b39e)',
   borderColorForInputWhenDisabled:
     'var(--border-color-for-input-when-disabled, #ccc)',
   borderColorForInputWhenReadonly:
-    'var(--border-color-for-input-when-readonly, #ccc)',
+    'var(--border-color-for-input-when-readonly, #fff)',
   borderColorForInputWhenError:
     'var(--border-color-for-input-when-error, #e60050)',
   borderColorForInputWhenWarning:
     'var(--border-color-for-input-when-warning, #f16d0e)',
   borderColorForInputWhenHovered:
-    'var(--border-color-for-input-when-hovered, #00b39e)',
-  borderColorForTag: 'var(--border-color-for-tag, hsl(0, 0%, 60%))',
+    'var(--border-color-for-input-when-hovered, #ccc)',
+  borderColorForTag: 'var(--border-color-for-tag, #ccc)',
   borderColorForTagWarning: 'var(--border-color-for-tag-warning, #f16d0e)',
   borderColorForTagWhenFocused:
-    'var(--border-color-for-tag-when-focused, #00b39e)',
+    'var(--border-color-for-tag-when-focused, #ccc)',
   borderColorForTagWhenHovered:
-    'var(--border-color-for-tag-when-hovered, #f16d0e)',
-  borderColorForButtonAsIcon: 'var(--border-color-for-button-as-icon, #fff)',
+    'var(--border-color-for-tag-when-hovered, #ccc)',
+  borderColorForButtonAsIcon: 'var(--border-color-for-button-as-icon, #ccc)',
   borderColorForButtonAsIconAsInfo:
-    'var(--border-color-for-button-as-icon-as-info, #078cdf)',
+    'var(--border-color-for-button-as-icon-as-info, #ccc)',
   borderColorForButtonAsIconAsPrimary:
-    'var(--border-color-for-button-as-icon-as-primary, #00b39e)',
+    'var(--border-color-for-button-as-icon-as-primary, #ccc)',
   borderColorForButtonAsIconWhenDisabled:
-    'var(--border-color-for-button-as-icon-when-disabled, #ccc)',
-  borderColorForTableHeader: 'var(--border-color-for-table-header, #ccc)',
+    'var(--border-color-for-button-as-icon-when-disabled, #fff)',
+  borderColorForTableHeader: 'var(--border-color-for-table-header, #fff)',
   borderColorForTableHeaderAsBottom:
-    'var(--border-color-for-table-header-as-bottom, #213c45)',
+    'var(--border-color-for-table-header-as-bottom, hsl(0, 0%, 90%))',
   borderColorForTableManagerDroppableList:
-    'var(--border-color-for-table-manager-droppable-list, hsl(0, 0%, 60%))',
+    'var(--border-color-for-table-manager-droppable-list, #ccc)',
   borderColorForCollapsiblePanelHeader:
-    'var(--border-color-for-collapsible-panel-header, hsl(0, 0%, 60%))',
+    'var(--border-color-for-collapsible-panel-header, hsl(0, 0%, 90%))',
   borderColorForStampWhenError:
-    'var(--border-color-for-stamp-when-error, #e60050)',
+    'var(--border-color-for-stamp-when-error, hsl(339.1304347826087, 100%, 85%))',
   borderColorForStampWhenWarning:
-    'var(--border-color-for-stamp-when-warning, #f16d0e)',
+    'var(--border-color-for-stamp-when-warning, hsl(25.110132158590307, 89.0196078431%, 85%))',
   borderColorForStampAsPositive:
-    'var(--border-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 40%))',
+    'var(--border-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 85%))',
   borderColorForStampAsInformation:
-    'var(--border-color-for-stamp-as-information, #078cdf)',
+    'var(--border-color-for-stamp-as-information, hsl(203.05555555555554, 93.9130434783%, 85%))',
   borderColorForStampAsPrimary:
-    'var(--border-color-for-stamp-as-primary, hsl(172.9608938547486, 100%, 25%))',
+    'var(--border-color-for-stamp-as-primary, hsl(172.9608938547486, 100%, 85%))',
   borderColorForStampAsSecondary:
-    'var(--border-color-for-stamp-as-secondary, hsl(0, 0%, 60%))',
+    'var(--border-color-for-stamp-as-secondary, hsl(0, 0%, 85%))',
   borderColorForLocalizedInputLabel:
     'var(--border-color-for-localized-input-label, #ccc)',
   borderColorForLocalizedInputLabelWhenReadonly:
-    'var(--border-color-for-localized-input-label-when-readonly, #ccc)',
+    'var(--border-color-for-localized-input-label-when-readonly, #fff)',
   borderColorForContentNotificationWhenError:
-    'var(--border-color-for-content-notification-when-error, #e60050)',
+    'var(--border-color-for-content-notification-when-error, hsl(339.1304347826087, 100%, 85%))',
   borderColorForContentNotificationWhenInfo:
-    'var(--border-color-for-content-notification-when-info, #078cdf)',
+    'var(--border-color-for-content-notification-when-info, hsl(203.05555555555554, 93.9130434783%, 85%))',
   borderColorForContentNotificationWhenWarning:
-    'var(--border-color-for-content-notification-when-warning, #f16d0e)',
+    'var(--border-color-for-content-notification-when-warning, hsl(25.110132158590307, 89.0196078431%, 85%))',
   borderColorForContentNotificationWhenSuccess:
-    'var(--border-color-for-content-notification-when-success, #00b39e)',
+    'var(--border-color-for-content-notification-when-success, hsl(172.9608938547486, 100%, 85%))',
   borderColorForGroupHeadingSelectInputOptions:
-    'var(--border-color-for-group-heading-select-input-options, #ccc)',
+    'var(--border-color-for-group-heading-select-input-options, hsl(0, 0%, 90%))',
   borderColorForSelectInputMenu:
-    'var(--border-color-for-select-input-menu, #00b39e)',
+    'var(--border-color-for-select-input-menu, #fff)',
   borderColorForSelectInputWhenReadonly:
-    'var(--border-color-for-select-input-when-readonly, #ccc)',
+    'var(--border-color-for-select-input-when-readonly, hsl(0, 0%, 95%))',
   borderColorForSelectInputMenuWhenWarning:
-    'var(--border-color-for-select-input-menu-when-warning, #f16d0e)',
+    'var(--border-color-for-select-input-menu-when-warning, #fff)',
   borderColorForSelectInputMenuWhenError:
-    'var(--border-color-for-select-input-menu-when-error, #e60050)',
+    'var(--border-color-for-select-input-menu-when-error, #fff)',
   borderColorForCheckboxInputIcon:
-    'var(--border-color-for-checkbox-input-icon, hsl(0, 0%, 60%))',
+    'var(--border-color-for-checkbox-input-icon, #00b39e)',
   borderColorForCheckboxInputIconWhenDisabled:
     'var(--border-color-for-checkbox-input-icon-when-disabled, #ccc)',
   borderColorForCheckboxInputIconWhenReadonly:
-    'var(--border-color-for-checkbox-input-icon-when-readonly, #ccc)',
+    'var(--border-color-for-checkbox-input-icon-when-readonly, hsl(0, 0%, 60%))',
   borderColorForCheckboxInputIconWhenError:
     'var(--border-color-for-checkbox-input-icon-when-error, #e60050)',
-  borderColorForRadioInput: 'var(--border-color-for-radio-input, #ccc)',
+  borderColorForRadioInput:
+    'var(--border-color-for-radio-input, hsl(0, 0%, 60%))',
   borderColorForRadioInputWhenDisabled:
-    'var(--border-color-for-radio-input-when-disabled, hsl(0, 0%, 60%))',
+    'var(--border-color-for-radio-input-when-disabled, #ccc)',
   borderColorForRadioInputWhenReadonly:
-    'var(--border-color-for-radio-input-when-readonly, #ccc)',
+    'var(--border-color-for-radio-input-when-readonly, hsl(0, 0%, 60%))',
   borderColorForRadioInputWhenChecked:
-    'var(--border-color-for-radio-input-when-checked, #ccc)',
+    'var(--border-color-for-radio-input-when-checked, #00b39e)',
   borderColorForRadioInputWhenFocused:
-    'var(--border-color-for-radio-input-when-focused, #00b39e)',
+    'var(--border-color-for-radio-input-when-focused, hsl(0, 0%, 60%))',
   borderColorForPrimaryActionDropdownMenu:
-    'var(--border-color-for-primary-action-dropdown-menu, #ccc)',
-  borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 6px)',
+    'var(--border-color-for-primary-action-dropdown-menu, #fff)',
+  borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 4px)',
   borderRadiusForButtonAsMedium:
     'var(--border-radius-for-button-as-medium, 4px)',
   borderRadiusForButtonAsIconAsBig:
-    'var(--border-radius-for-button-as-icon-as-big, 6px)',
+    'var(--border-radius-for-button-as-icon-as-big, 4px)',
   borderRadiusForButtonAsIconAsMedium:
     'var(--border-radius-for-button-as-icon-as-medium, 4px)',
   borderRadiusForButtonAsIconAsSmall:
     'var(--border-radius-for-button-as-icon-as-small, 2px)',
-  borderRadiusForInput: 'var(--border-radius-for-input, 6px)',
+  borderRadiusForInput: 'var(--border-radius-for-input, 4px)',
   borderRadiusForTag: 'var(--border-radius-for-tag, 2px)',
-  borderRadiusForCard: 'var(--border-radius-for-card, 6px)',
+  borderRadiusForCard: 'var(--border-radius-for-card, 4px)',
   borderRadiusForTableManagerDroppableList:
-    'var(--border-radius-for-table-manager-droppable-list, 6px)',
-  borderRadiusForStamp: 'var(--border-radius-for-stamp, 2px)',
-  borderRadiusForViewSwitcher: 'var(--border-radius-for-view-switcher, 6px)',
+    'var(--border-radius-for-table-manager-droppable-list, 4px)',
+  borderRadiusForStamp: 'var(--border-radius-for-stamp, 20px)',
+  borderRadiusForViewSwitcher: 'var(--border-radius-for-view-switcher, 4px)',
   borderRadiusForContentNotification:
-    'var(--border-radius-for-content-notification, 0 var(--border-radius-6) var(--border-radius-6) 0)',
+    'var(--border-radius-for-content-notification, 0 var(--border-radius-4) var(--border-radius-4) 0)',
   borderRadiusForContentNotificationIcon:
-    'var(--border-radius-for-content-notification-icon, var(--border-radius-6) 0 0 var(--border-radius-6))',
+    'var(--border-radius-for-content-notification-icon, var(--border-radius-4) 0 0 var(--border-radius-4))',
   borderRadiusForPrimaryActionDropdown:
-    'var(--border-radius-for-primary-action-dropdown, var(--border-radius-6) 0 0 var(--border-radius-6))',
+    'var(--border-radius-for-primary-action-dropdown, var(--border-radius-4) 0 0 var(--border-radius-4))',
   borderRadiusForPrimaryActionDropdownIcon:
-    'var(--border-radius-for-primary-action-dropdown-icon, 0 var(--border-radius-6) var(--border-radius-6) 0)',
+    'var(--border-radius-for-primary-action-dropdown-icon, 0 var(--border-radius-4) var(--border-radius-4) 0)',
   borderRadiusForPrimaryActionDropdownMenu:
-    'var(--border-radius-for-primary-action-dropdown-menu, 6px)',
+    'var(--border-radius-for-primary-action-dropdown-menu, 4px)',
   borderWidthForInput: 'var(--border-width-for-input, 1px)',
   borderWidthForInputWhenWarning:
     'var(--border-width-for-input-when-warning, 1px)',
   borderWidthForInputWhenError: 'var(--border-width-for-input-when-error, 1px)',
   borderWidthForInputWhenFocused:
     'var(--border-width-for-input-when-focused, 1px)',
-  borderWidthForTag: 'var(--border-width-for-tag, 1px)',
-  borderWidthForSelectInput: 'var(--border-width-for-select-input, 1px)',
+  borderWidthForTag: 'var(--border-width-for-tag, 1px 1px 1px 0)',
+  borderWidthForSelectInput: 'var(--border-width-for-select-input, 2px)',
   borderWidthForContentNotificationIcon:
-    'var(--border-width-for-content-notification-icon, 0px)',
+    'var(--border-width-for-content-notification-icon, 1px)',
   borderLeftWidthForContentNotification:
-    'var(--border-left-width-for-content-notification, 1px)',
+    'var(--border-left-width-for-content-notification, 0px)',
   borderWidthForCheckboxInputIcon:
-    'var(--border-width-for-checkbox-input-icon, 1px)',
+    'var(--border-width-for-checkbox-input-icon, 2px)',
   borderForPrimaryActionDropdownIcon:
-    'var(--border-for-primary-action-dropdown-icon, 0px 0px 0px 1px)',
+    'var(--border-for-primary-action-dropdown-icon, 1px 1px 1px 0px)',
   boxShadowForDatetimeInputWhenHovered:
-    'var(--box-shadow-for-datetime-input-when-hovered, inset 0 0 0 2px)',
-  boxShadowForViewSwitcher:
-    'var(--box-shadow-for-view-switcher, 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 -1px 1px 0 rgba(0, 0, 0, 0.12))',
+    'var(--box-shadow-for-datetime-input-when-hovered, inset 0 0 0 1px)',
+  boxShadowForViewSwitcher: 'var(--box-shadow-for-view-switcher, none)',
   boxShadowForViewSwitcherWhenSelected:
-    'var(--box-shadow-for-view-switcher-when-selected, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
+    'var(--box-shadow-for-view-switcher-when-selected, none)',
   boxShadowForSelectInputWhenFocused:
-    'var(--box-shadow-for-select-input-when-focused, inset 0 0 0 2px)',
+    'var(--box-shadow-for-select-input-when-focused, inset 0 0 0 1px)',
   boxShadowForCalendarMenuWhenFocused:
-    'var(--box-shadow-for-calendar-menu-when-focused, none)',
+    'var(--box-shadow-for-calendar-menu-when-focused, 0 2px 5px 0px rgba(0, 0, 0, 0.15))',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForTextWhenDisabled:
-    'var(--font-color-for-text-when-disabled, #ccc)',
+    'var(--font-color-for-text-when-disabled, hsl(0, 0%, 60%))',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
     'var(--font-color-for-input-when-disabled, hsl(0, 0%, 60%))',
   fontColorForInputWhenError: 'var(--font-color-for-input-when-error, #e60050)',
   fontColorForInputWhenReadonly:
-    'var(--font-color-for-input-when-readonly, hsl(0, 0%, 60%))',
+    'var(--font-color-for-input-when-readonly, hsl(0, 0%, 40%))',
   fontColorForInputWhenWarning:
     'var(--font-color-for-input-when-warning, #f16d0e)',
   fontColorForTag: 'var(--font-color-for-tag, #1a1a1a)',
-  fontColorForTagRemoveIcon: 'var(--font-color-for-tag-remove-icon, #1a1a1a)',
-  fontColorForTagDragIcon: 'var(--font-color-for-tag-drag-icon, #1a1a1a)',
+  fontColorForTagRemoveIcon:
+    'var(--font-color-for-tag-remove-icon, hsl(0, 0%, 40%))',
+  fontColorForTagDragIcon:
+    'var(--font-color-for-tag-drag-icon, hsl(0, 0%, 40%))',
   fontColorForTagRemoveIconWhenHovered:
-    'var(--font-color-for-tag-remove-icon-when-hovered, #f16d0e)',
+    'var(--font-color-for-tag-remove-icon-when-hovered, #e60050)',
   fontColorForTagWhenDisabled:
     'var(--font-color-for-tag-when-disabled, hsl(0, 0%, 60%))',
   fontColorForTextWhenInverted:
     'var(--font-color-for-text-when-inverted, #fff)',
   fontColorForLinkAsInverted: 'var(--font-color-for-link-as-inverted, #fff)',
-  fontColorForLinkAsPrimary: 'var(--font-color-for-link-as-primary, #00b39e)',
+  fontColorForLinkAsPrimary:
+    'var(--font-color-for-link-as-primary, hsl(172.9608938547486, 100%, 25%))',
   fontColorForLinkAsSecondary:
     'var(--font-color-for-link-as-secondary, #1a1a1a)',
   fontColorForLinkAsPrimaryWhenActive:
-    'var(--font-color-for-link-as-primary-when-active, hsl(172.9608938547486, 100%, 25%))',
+    'var(--font-color-for-link-as-primary-when-active, #00b39e)',
   fontColorForLinkAsSecondaryWhenActive:
     'var(--font-color-for-link-as-secondary-when-active, #00b39e)',
-  fontColorForTableHeader: 'var(--font-color-for-table-header, #fff)',
+  fontColorForTableHeader: 'var(--font-color-for-table-header, #1a1a1a)',
   fontColorForLocalizedInputLabel:
     'var(--font-color-for-localized-input-label, hsl(0, 0%, 60%))',
-  fontColorForViewSwitcher: 'var(--font-color-for-view-switcher, #1a1a1a)',
+  fontColorForViewSwitcher:
+    'var(--font-color-for-view-switcher, hsl(0, 0%, 40%))',
   fontColorForViewSwitcherWhenDisabled:
     'var(--font-color-for-view-switcher-when-disabled, hsl(0, 0%, 60%))',
   fontColorForViewSwitcherWhenSelected:
     'var(--font-color-for-view-switcher-when-selected, #1a1a1a)',
-  fontColorForClearInputIcon: 'var(--font-color-for-clear-input-icon, #1a1a1a)',
+  fontColorForClearInputIcon:
+    'var(--font-color-for-clear-input-icon, hsl(0, 0%, 40%))',
   fontColorForClearInputIconWhenHovered:
-    'var(--font-color-for-clear-input-icon-when-hovered, #f16d0e)',
+    'var(--font-color-for-clear-input-icon-when-hovered, #e60050)',
   fontColorForContentNotification:
     'var(--font-color-for-content-notification, #1a1a1a)',
   fontColorForContentNotificationIconWhenError:
-    'var(--font-color-for-content-notification-icon-when-error, #fff)',
+    'var(--font-color-for-content-notification-icon-when-error, #e60050)',
   fontColorForContentNotificationIconWhenWarning:
-    'var(--font-color-for-content-notification-icon-when-warning, #fff)',
+    'var(--font-color-for-content-notification-icon-when-warning, #f16d0e)',
   fontColorForContentNotificationIconWhenSuccess:
-    'var(--font-color-for-content-notification-icon-when-success, #fff)',
+    'var(--font-color-for-content-notification-icon-when-success, #00b39e)',
   fontColorForContentNotificationIconWhenInfo:
-    'var(--font-color-for-content-notification-icon-when-info, #fff)',
+    'var(--font-color-for-content-notification-icon-when-info, #078cdf)',
   fontColorForSearchInputIcon:
-    'var(--font-color-for-search-input-icon, #1a1a1a)',
+    'var(--font-color-for-search-input-icon, hsl(0, 0%, 60%))',
   fontColorForSearchInputIconWhenHovered:
     'var(--font-color-for-search-input-icon-when-hovered, #00b39e)',
   fontColorForSelectInputIcon:
-    'var(--font-color-for-select-input-icon, #1a1a1a)',
+    'var(--font-color-for-select-input-icon, hsl(0, 0%, 60%))',
   fontColorForSelectInputWhenError:
-    'var(--font-color-for-select-input-when-error, #1a1a1a)',
+    'var(--font-color-for-select-input-when-error, #e60050)',
   fontColorForSelectInputWhenWarning:
-    'var(--font-color-for-select-input-when-warning, #1a1a1a)',
+    'var(--font-color-for-select-input-when-warning, #f16d0e)',
   fontColorForSelectInputIconWhenError:
-    'var(--font-color-for-select-input-icon-when-error, #1a1a1a)',
+    'var(--font-color-for-select-input-icon-when-error, #e60050)',
   fontColorForSelectInputIconWhenWarning:
-    'var(--font-color-for-select-input-icon-when-warning, #1a1a1a)',
+    'var(--font-color-for-select-input-icon-when-warning, #f16d0e)',
   fontColorForMoneyInputCurrencyDropdownIndicator:
-    'var(--font-color-for-money-input-currency-dropdown-indicator, #1a1a1a)',
+    'var(--font-color-for-money-input-currency-dropdown-indicator, hsl(0, 0%, 40%))',
   fontColorForSearchInputIconWhenReadonly:
     'var(--font-color-for-search-input-icon-when-readonly, hsl(0, 0%, 60%))',
   fontColorForCheckboxInputLabel:
@@ -1362,7 +1036,7 @@ const designTokens = {
   fontColorForCheckboxInputLabelWhenError:
     'var(--font-color-for-checkbox-input-label-when-error, #e60050)',
   fontColorForCheckboxInputLabelWhenDisabled:
-    'var(--font-color-for-checkbox-input-label-when-disabled, hsl(0, 0%, 40%))',
+    'var(--font-color-for-checkbox-input-label-when-disabled, hsl(0, 0%, 60%))',
   fontColorForCheckboxInputLabelWhenReadonly:
     'var(--font-color-for-checkbox-input-label-when-readonly, hsl(0, 0%, 40%))',
   fontColorForRadioInputWhenDisabled:
@@ -1374,9 +1048,9 @@ const designTokens = {
   fontColorForRadioInputWhenWarning:
     'var(--font-color-for-radio-input-when-warning, #f16d0e)',
   fontColorForFlatButtonAsPrimary:
-    'var(--font-color-for-flat-button-as-primary, #00b39e)',
+    'var(--font-color-for-flat-button-as-primary, hsl(172.9608938547486, 100%, 25%))',
   fontColorForFlatButtonAsPrimaryWhenHovered:
-    'var(--font-color-for-flat-button-as-primary-when-hovered, hsl(172.9608938547486, 100%, 25%))',
+    'var(--font-color-for-flat-button-as-primary-when-hovered, #00b39e)',
   fontColorForFlatButtonAsCritical:
     'var(--font-color-for-flat-button-as-critical, #e60050)',
   fontColorForFlatButtonAsCriticalWhenHovered:
@@ -1388,225 +1062,219 @@ const designTokens = {
   fontColorForFlatButtonIconWhenDisabled:
     'var(--font-color-for-flat-button-icon-when-disabled, hsl(0, 0%, 60%))',
   fontColorForSecondaryIconButtonAsPrimary:
-    'var(--font-color-for-secondary-icon-button-as-primary, #00b39e)',
+    'var(--font-color-for-secondary-icon-button-as-primary, hsl(172.9608938547486, 100%, 25%))',
   fontColorForSecondaryIconButtonAsPrimaryWhenHovered:
-    'var(--font-color-for-secondary-icon-button-as-primary-when-hovered, hsl(172.9608938547486, 100%, 25%))',
-  heightForButtonAsBig: 'var(--height-for-button-as-big, 32px)',
-  heightForButtonAsMedium: 'var(--height-for-button-as-medium, 24px)',
-  heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 32px)',
+    'var(--font-color-for-secondary-icon-button-as-primary-when-hovered, #00b39e)',
+  heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',
+  heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
+  heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 40px)',
   heightForButtonAsIconAsMedium:
-    'var(--height-for-button-as-icon-as-medium, 24px)',
+    'var(--height-for-button-as-icon-as-medium, 32px)',
   heightForButtonAsIconAsSmall:
     'var(--height-for-button-as-icon-as-small, 16px)',
-  heightForInput: 'var(--height-for-input, 32px)',
-  heightForViewSwitcher: 'var(--height-for-view-switcher, 32px)',
+  heightForInput: 'var(--height-for-input, 40px)',
+  heightForViewSwitcher: 'var(--height-for-view-switcher, 40px)',
   heightForViewSwitcherWhenCondensed:
-    'var(--height-for-view-switcher-when-condensed, 24px)',
-  heightForSelectInputTag: 'var(--height-for-select-input-tag, 26px)',
-  heightForRadioInputOption: 'var(--height-for-radio-input-option, 16px)',
+    'var(--height-for-view-switcher-when-condensed, 32px)',
+  heightForSelectInputTag: 'var(--height-for-select-input-tag, 32px)',
+  heightForRadioInputOption: 'var(--height-for-radio-input-option, 18px)',
   heightForRadioInputOptionWhenChecked:
-    'var(--height-for-radio-input-option-when-checked, 8px)',
+    'var(--height-for-radio-input-option-when-checked, 10px)',
   heightForPrimaryActionDropdown:
-    'var(--height-for-primary-action-dropdown, 32px)',
-  widthForAvatarAsMedium: 'var(--width-for-avatar-as-medium, 48px)',
+    'var(--height-for-primary-action-dropdown, 40px)',
+  widthForAvatarAsMedium: 'var(--width-for-avatar-as-medium, 40px)',
   minWidthForMoneyInputCurrencyDropdown:
-    'var(--min-width-for-money-input-currency-dropdown, 72px)',
+    'var(--min-width-for-money-input-currency-dropdown, 80px)',
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
-  fontSizeForButton: 'var(--font-size-for-button, 1rem)',
+  fontSizeForButton: 'var(--font-size-for-button, 0.875rem)',
   fontSizeForInput: 'var(--font-size-for-input, 1rem)',
-  fontSizeForTextAsH1: 'var(--font-size-for-text-as-h-1, 2.4615rem)',
-  fontSizeForTextAsH2: 'var(--font-size-for-text-as-h-2, 1.8462rem)',
-  fontSizeForTextAsH3: 'var(--font-size-for-text-as-h-3, 1.5385rem)',
-  fontSizeForTextAsH4: 'var(--font-size-for-text-as-h-4, 1.2308rem)',
-  fontSizeForTextAsH5: 'var(--font-size-for-text-as-h-5, 1.0769rem)',
+  fontSizeForTextAsH1: 'var(--font-size-for-text-as-h-1, 1.5rem)',
+  fontSizeForTextAsH2: 'var(--font-size-for-text-as-h-2, 1.25rem)',
+  fontSizeForTextAsH3: 'var(--font-size-for-text-as-h-3, 1.125rem)',
+  fontSizeForTextAsH4: 'var(--font-size-for-text-as-h-4, 1rem)',
+  fontSizeForTextAsH5: 'var(--font-size-for-text-as-h-5, 1rem)',
   fontSizeForTextAsBody: 'var(--font-size-for-text-as-body, 1rem)',
-  fontSizeForTextAsDetail: 'var(--font-size-for-text-as-detail, 0.9231rem)',
-  fontSizeForBody: 'var(--font-size-for-body, 13px)',
+  fontSizeForTextAsDetail: 'var(--font-size-for-text-as-detail, 0.875rem)',
+  fontSizeForBody: 'var(--font-size-for-body, 16px)',
   fontSizeForLink: 'var(--font-size-for-link, 1rem)',
-  fontSizeForStamp: 'var(--font-size-for-stamp, 1rem)',
-  fontSizeForViewSwitcher: 'var(--font-size-for-view-switcher, 1rem)',
-  fontSizeForTable: 'var(--font-size-for-table, 1rem)',
-  fontSizeForAvatarAsSmall: 'var(--font-size-for-avatar-as-small, 1rem)',
-  fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1.5rem)',
-  fontSizeForAvatarAsBig: 'var(--font-size-for-avatar-as-big, 3rem)',
+  fontSizeForStamp: 'var(--font-size-for-stamp, 0.875rem)',
+  fontSizeForViewSwitcher: 'var(--font-size-for-view-switcher, 0.875rem)',
+  fontSizeForTable: 'var(--font-size-for-table, 0.875rem)',
+  fontSizeForAvatarAsSmall: 'var(--font-size-for-avatar-as-small, 0.875rem)',
+  fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1rem)',
+  fontSizeForAvatarAsBig: 'var(--font-size-for-avatar-as-big, 2.5rem)',
   fontSizeForLocalizedInputLabel:
     'var(--font-size-for-localized-input-label, 1rem)',
   fontSizeForContentNotification:
     'var(--font-size-for-content-notification, 1rem)',
-  fontSizeForSelectInputTag: 'var(--font-size-for-select-input-tag, 0.9231rem)',
+  fontSizeForSelectInputTag: 'var(--font-size-for-select-input-tag, 1rem)',
   iconColorForDatetimeInputIcon:
-    'var(--icon-color-for-datetime-input-icon, #1a1a1a)',
+    'var(--icon-color-for-datetime-input-icon, hsl(0, 0%, 40%))',
   iconColorForDatetimeInputIconWhenHovered:
-    'var(--icon-color-for-datetime-input-icon-when-hovered, #f16d0e)',
-  lineHeightForTextAsH1: 'var(--line-height-for-text-as-h-1, inherit)',
-  lineHeightForTextAsH2: 'var(--line-height-for-text-as-h-2, inherit)',
-  lineHeightForTextAsH3: 'var(--line-height-for-text-as-h-3, inherit)',
-  lineHeightForTextAsH4: 'var(--line-height-for-text-as-h-4, inherit)',
-  lineHeightForTextAsH5: 'var(--line-height-for-text-as-h-5, inherit)',
-  lineHeightForTextAsBody: 'var(--line-height-for-text-as-body, inherit)',
-  lineHeightForTextAsDetail: 'var(--line-height-for-text-as-detail, inherit)',
+    'var(--icon-color-for-datetime-input-icon-when-hovered, #e60050)',
+  lineHeightForTextAsH1: 'var(--line-height-for-text-as-h-1, 2.125rem)',
+  lineHeightForTextAsH2: 'var(--line-height-for-text-as-h-2, 1.75rem)',
+  lineHeightForTextAsH3: 'var(--line-height-for-text-as-h-3, 1.5rem)',
+  lineHeightForTextAsH4: 'var(--line-height-for-text-as-h-4, 1.375rem)',
+  lineHeightForTextAsH5: 'var(--line-height-for-text-as-h-5, 1.375rem)',
+  lineHeightForTextAsBody: 'var(--line-height-for-text-as-body, 1.625rem)',
+  lineHeightForTextAsDetail: 'var(--line-height-for-text-as-detail, 1.375rem)',
   lineHeightForSelectInputOptions:
-    'var(--line-height-for-select-input-options, inherit)',
-  lineHeightForTableHeader: 'var(--line-height-for-table-header, inherit)',
-  fontWeightForTextAsH1: 'var(--font-weight-for-text-as-h-1, 300)',
-  fontWeightForTextAsH2: 'var(--font-weight-for-text-as-h-2, 300)',
-  fontWeightForTextAsH3: 'var(--font-weight-for-text-as-h-3, 300)',
-  fontWeightForTextAsH4: 'var(--font-weight-for-text-as-h-4, 400)',
-  fontWeightForTextAsH5: 'var(--font-weight-for-text-as-h-5, 400)',
+    'var(--line-height-for-select-input-options, 1.625rem)',
+  lineHeightForTableHeader: 'var(--line-height-for-table-header, 26px)',
+  fontWeightForTextAsH1: 'var(--font-weight-for-text-as-h-1, 600)',
+  fontWeightForTextAsH2: 'var(--font-weight-for-text-as-h-2, 500)',
+  fontWeightForTextAsH3: 'var(--font-weight-for-text-as-h-3, 500)',
+  fontWeightForTextAsH4: 'var(--font-weight-for-text-as-h-4, 500)',
+  fontWeightForTextAsH5: 'var(--font-weight-for-text-as-h-5, 500)',
   fontWeightForTextAsBody: 'var(--font-weight-for-text-as-body, 400)',
   fontWeightForTextAsDetail: 'var(--font-weight-for-text-as-detail, 400)',
-  fontWeightForButton: 'var(--font-weight-for-button, 400)',
-  fontWeightForTableHeader: 'var(--font-weight-for-table-header, 400)',
-  fontWeightForTextAsBold: 'var(--font-weight-for-text-as-bold, 700)',
-  marginForTableHeader: 'var(--margin-for-table-header, 8px)',
-  marginForTableAsCondensed: 'var(--margin-for-table-as-condensed, 8px)',
+  fontWeightForButton: 'var(--font-weight-for-button, 500)',
+  fontWeightForTableHeader: 'var(--font-weight-for-table-header, 600)',
+  fontWeightForTextAsBold: 'var(--font-weight-for-text-as-bold, 600)',
+  marginForTableHeader: 'var(--margin-for-table-header, 16px)',
+  marginForTableCellAsCondensed:
+    'var(--margin-for-table-cell-as-condensed, 8px)',
   marginForViewSwitcherIcon:
-    'var(--margin-for-view-switcher-icon, 0 var(--spacing-10) 0 0)',
+    'var(--margin-for-view-switcher-icon, 0 var(--spacing-20) 0 0)',
   marginForGroupHeadingSelectInputOptions:
-    'var(--margin-for-group-heading-select-input-options, 4px)',
-  marginForSelectInputIcon: 'var(--margin-for-select-input-icon, 4px)',
-  marginLeftForSelectInputIcon:
-    'var(--margin-left-for-select-input-icon, inherit)',
+    'var(--margin-for-group-heading-select-input-options, 8px)',
+  marginForSelectInputIcon: 'var(--margin-for-select-input-icon, 8px)',
+  marginLeftForSelectInputIcon: 'var(--margin-left-for-select-input-icon, 8px)',
   marginRightForMoneyInputPrecisionBadge:
-    'var(--margin-right-for-money-input-precision-badge, 4px)',
+    'var(--margin-right-for-money-input-precision-badge, 12px)',
   marginRightForSearchInputIcon:
-    'var(--margin-right-for-search-input-icon, 8px)',
-  marginRightForClearInputIcon: 'var(--margin-right-for-clear-input-icon, 4px)',
-  marginLeftForRadioInputLabel: 'var(--margin-left-for-radio-input-label, 8px)',
+    'var(--margin-right-for-search-input-icon, 12px)',
+  marginRightForClearInputIcon: 'var(--margin-right-for-clear-input-icon, 8px)',
+  marginLeftForRadioInputLabel: 'var(--margin-left-for-radio-input-label, 4px)',
   marginRightForPrimaryActionDropdown:
-    'var(--margin-right-for-primary-action-dropdown, 4px)',
+    'var(--margin-right-for-primary-action-dropdown, 8px)',
   marginTopForPrimaryActionDropdown:
-    'var(--margin-top-for-primary-action-dropdown, none)',
+    'var(--margin-top-for-primary-action-dropdown, 8px)',
   marginForLocalizedRichTextBodyButton:
-    'var(--margin-for-localized-rich-text-body-button, none)',
+    'var(--margin-for-localized-rich-text-body-button, 0 2px var(--spacing-20) 2px)',
   marginForRichTextDivider:
-    'var(--margin-for-rich-text-divider, 0 var(--spacing-10))',
+    'var(--margin-for-rich-text-divider, var(--spacing-10) 2px)',
   marginForRichTextDropdownItemLabel:
-    'var(--margin-for-rich-text-dropdown-item-label, 0 0 0 var(--spacing-10))',
+    'var(--margin-for-rich-text-dropdown-item-label, 0 0 0 var(--spacing-20))',
   marginForTagList:
-    'var(--margin-for-tag-list, 0 var(--spacing-10) var(--spacing-10) 0)',
-  paddingForStamp:
-    'var(--padding-for-stamp, var(--spacing-10) var(--spacing-20))',
+    'var(--margin-for-tag-list, 0 var(--spacing-20) var(--spacing-20) 0)',
+  paddingForStamp: 'var(--padding-for-stamp, 4px 12px)',
   paddingForStampAsCondensed:
-    'var(--padding-for-stamp-as-condensed, 1px var(--spacing-10))',
-  paddingForTag: 'var(--padding-for-tag, 5px var(--spacing-20))',
-  paddingForTableHeader: 'var(--padding-for-table-header, 16px)',
+    'var(--padding-for-stamp-as-condensed, 0 var(--spacing-20))',
+  paddingForTag: 'var(--padding-for-tag, 2px 12px)',
+  paddingForTableHeader: 'var(--padding-for-table-header, 24px)',
   paddingForTableHeaderAsCondensed:
-    'var(--padding-for-table-header-as-condensed, 8px)',
-  paddingForTableCell: 'var(--padding-for-table-cell, 16px)',
+    'var(--padding-for-table-header-as-condensed, 24px)',
+  paddingForTableCell:
+    'var(--padding-for-table-cell, var(--spacing-30) var(--spacing-40))',
   paddingForTableCellAsCondensed:
-    'var(--padding-for-table-cell-as-condensed, 8px)',
+    'var(--padding-for-table-cell-as-condensed, var(--spacing-20) var(--spacing-40))',
   paddingForTableManagerDroppableList:
-    'var(--padding-for-table-manager-droppable-list, 8px)',
+    'var(--padding-for-table-manager-droppable-list, 16px)',
   paddingForTableManagerSettingsPanel:
-    'var(--padding-for-table-manager-settings-panel, 16px)',
+    'var(--padding-for-table-manager-settings-panel, var(--spacing-40) var(--spacing-50))',
   paddingForTableManagerDraggableTag:
-    'var(--padding-for-table-manager-draggable-tag, 4px)',
+    'var(--padding-for-table-manager-draggable-tag, var(--spacing-10) 0)',
   paddingForCollapsiblePanelHeader:
-    'var(--padding-for-collapsible-panel-header, var(--spacing-20) var(--spacing-30))',
+    'var(--padding-for-collapsible-panel-header, var(--spacing-30) 0)',
   paddingForCollapsiblePanelHeaderAsCondensed:
-    'var(--padding-for-collapsible-panel-header-as-condensed, 8px)',
+    'var(--padding-for-collapsible-panel-header-as-condensed, var(--spacing-20) 0)',
   paddingForCollapsiblePanelSectionWrapper:
-    'var(--padding-for-collapsible-panel-section-wrapper, 16px)',
+    'var(--padding-for-collapsible-panel-section-wrapper, var(--spacing-50) 0 0 calc(var(--spacing-30) + var(--spacing-10)))',
   paddingForCollapsiblePanelSectionWrapperAsCondensed:
-    'var(--padding-for-collapsible-panel-section-wrapper-as-condensed, 8px)',
+    'var(--padding-for-collapsible-panel-section-wrapper-as-condensed, var(--spacing-40) 0 0 calc(var(--spacing-30) + var(--spacing-10)))',
   paddingForCollapsiblePanelSectionDescription:
-    'var(--padding-for-collapsible-panel-section-description, 0 0 var(--spacing-50))',
+    'var(--padding-for-collapsible-panel-section-description, 0 0 var(--spacing-40))',
   paddingForCollapsiblePanelSectionDescriptionAsCondensed:
-    'var(--padding-for-collapsible-panel-section-description-as-condensed, 0 0 var(--spacing-30))',
-  paddingForInput: 'var(--padding-for-input, 8px)',
-  paddingForMultilineInput:
-    'var(--padding-for-multiline-input, var(--spacing-10) var(--spacing-20))',
+    'var(--padding-for-collapsible-panel-section-description-as-condensed, 0 0 var(--spacing-40))',
+  paddingForInput: 'var(--padding-for-input, 16px)',
+  paddingForMultilineInput: 'var(--padding-for-multiline-input, 8px)',
   paddingForLocalizedRichTextInputLabel:
-    'var(--padding-for-localized-rich-text-input-label, 0 var(--spacing-20))',
+    'var(--padding-for-localized-rich-text-input-label, var(--spacing-20) 12px)',
   paddingForLocalizedRichTextDropdownButton:
-    'var(--padding-for-localized-rich-text-dropdown-button, 3px var(--spacing-20))',
+    'var(--padding-for-localized-rich-text-dropdown-button, 5px var(--spacing-20))',
   paddingForLocalizedRichTextDropdownItem:
-    'var(--padding-for-localized-rich-text-dropdown-item, var(--spacing-10) var(--spacing-20))',
+    'var(--padding-for-localized-rich-text-dropdown-item, var(--spacing-20) var(--spacing-30))',
   paddingForLocalizedRichTextBodyButton:
-    'var(--padding-for-localized-rich-text-body-button, var(--spacing-10))',
+    'var(--padding-for-localized-rich-text-body-button, var(--spacing-20))',
   paddingForLocalizedInputLabel:
-    'var(--padding-for-localized-input-label, 0 var(--spacing-20))',
-  paddingForRichTextInput: 'var(--padding-for-rich-text-input, none)',
-  paddingForRichTextToolbar:
-    'var(--padding-for-rich-text-toolbar, var(--spacing-10) 7px)',
+    'var(--padding-for-localized-input-label, 0 12px)',
+  paddingForRichTextInput:
+    'var(--padding-for-rich-text-input, var(--spacing-20) var(--spacing-30))',
+  paddingForRichTextToolbar: 'var(--padding-for-rich-text-toolbar, none)',
   paddingLeftForRichTextToolbar:
-    'var(--padding-left-for-rich-text-toolbar, 3px)',
+    'var(--padding-left-for-rich-text-toolbar, none)',
   paddingForRichTextEditorContainer:
-    'var(--padding-for-rich-text-editor-container, 6px var(--spacing-20) var(--spacing-10))',
+    'var(--padding-for-rich-text-editor-container, var(--spacing-20) 0 0)',
   paddingForLocalizedMultilineTextInputLabel:
     'var(--padding-for-localized-multiline-text-input-label, 0 var(--spacing-20))',
-  paddingForTagRemoveIcon:
-    'var(--padding-for-tag-remove-icon, 0 var(--spacing-10))',
-  paddingForTooltip:
-    'var(--padding-for-tooltip, var(--spacing-10) var(--spacing-20))',
+  paddingForTagRemoveIcon: 'var(--padding-for-tag-remove-icon, 0 12px)',
+  paddingForTooltip: 'var(--padding-for-tooltip, var(--spacing-20) 12px)',
   paddingForViewSwitcher:
     'var(--padding-for-view-switcher, 0 var(--spacing-30) 0 var(--spacing-30))',
   paddingForViewSwitcherWhenCondensed:
-    'var(--padding-for-view-switcher-when-condensed, 0 var(--spacing-20) 0 var(--spacing-20))',
+    'var(--padding-for-view-switcher-when-condensed, 0 12px 0 12px)',
   paddingForContentNotification:
-    'var(--padding-for-content-notification, var(--spacing-20))',
+    'var(--padding-for-content-notification, var(--spacing-20) var(--spacing-30) var(--spacing-20) var(--spacing-20))',
   paddingForContentNotificationIcon:
-    'var(--padding-for-content-notification-icon, var(--spacing-20) var(--spacing-30))',
+    'var(--padding-for-content-notification-icon, var(--spacing-20) 0 var(--spacing-20) var(--spacing-30))',
   paddingLeftForSelectInputOptions:
-    'var(--padding-left-for-select-input-options, 8px)',
+    'var(--padding-left-for-select-input-options, 16px)',
   paddingRightForSelectInputOptions:
-    'var(--padding-right-for-select-input-options, 8px)',
+    'var(--padding-right-for-select-input-options, 16px)',
   paddingTopForSelectInputOptions:
-    'var(--padding-top-for-select-input-options, 4px)',
+    'var(--padding-top-for-select-input-options, 8px)',
   paddingBottomForSelectInputOptions:
-    'var(--padding-bottom-for-select-input-options, 4px)',
+    'var(--padding-bottom-for-select-input-options, 8px)',
   paddingForGroupHeadingSelectInputOptions:
-    'var(--padding-for-group-heading-select-input-options, 8px)',
-  paddingForSelectInputMenu: 'var(--padding-for-select-input-menu, inherit)',
+    'var(--padding-for-group-heading-select-input-options, 16px)',
+  paddingForSelectInputMenu:
+    'var(--padding-for-select-input-menu, var(--spacing-10) 0)',
   paddingForMoneyInputCurrencyDropdown:
-    'var(--padding-for-money-input-currency-dropdown, 0 var(--spacing-20))',
+    'var(--padding-for-money-input-currency-dropdown, 0 12px)',
   paddingForSelectableSearchInputDropdown:
-    'var(--padding-for-selectable-search-input-dropdown, 0 var(--spacing-20))',
+    'var(--padding-for-selectable-search-input-dropdown, 0 12px)',
   paddingForPrimaryActionDropdown:
-    'var(--padding-for-primary-action-dropdown, 0 var(--spacing-20))',
+    'var(--padding-for-primary-action-dropdown, 0 var(--spacing-30))',
   paddingForPrimaryActionDropdownIcon:
-    'var(--padding-for-primary-action-dropdown-icon, 0 var(--spacing-10))',
+    'var(--padding-for-primary-action-dropdown-icon, 0 var(--spacing-20))',
   paddingForButtonAsMedium:
-    'var(--padding-for-button-as-medium, 0 var(--spacing-20))',
+    'var(--padding-for-button-as-medium, 0 var(--spacing-30))',
   paddingForButtonAsBig:
     'var(--padding-for-button-as-big, 0 var(--spacing-30))',
-  shadowForButton:
-    'var(--shadow-for-button, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
-  shadowForButtonWhenFocused:
-    'var(--shadow-for-button-when-focused, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
-  shadowForButtonWhenHovered:
-    'var(--shadow-for-button-when-hovered, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
-  shadowForButtonWhenActive:
-    'var(--shadow-for-button-when-active, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
-  shadowForButtonWhenDisabled:
-    'var(--shadow-for-button-when-disabled, 0 0 0 1px var(--color-neutral) inset)',
   shadowBoxTagWhenHovered:
     'var(--shadow-box-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
+  shadowForButton: 'var(--shadow-for-button, none)',
+  shadowForButtonWhenFocused: 'var(--shadow-for-button-when-focused, none)',
+  shadowForButtonWhenHovered: 'var(--shadow-for-button-when-hovered, none)',
+  shadowForButtonWhenActive: 'var(--shadow-for-button-when-active, none)',
+  shadowForButtonWhenDisabled: 'var(--shadow-for-button-when-disabled, none)',
   shadowForCardWhenRaised:
-    'var(--shadow-for-card-when-raised, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
+    'var(--shadow-for-card-when-raised, 0 1px 5px 0 rgba(0, 0, 0, 0.05))',
   shadowForInput: 'var(--shadow-for-input, none)',
   shadowForInputWhenFocused:
-    'var(--shadow-for-input-when-focused, inset 0 0 0 2px var(--color-primary))',
-  shadowForInputWhenError: 'var(--shadow-for-input-when-error, none)',
-  shadowForInputWhenWarning: 'var(--shadow-for-input-when-warning, none)',
+    'var(--shadow-for-input-when-focused, inset 0 0 0 1px var(--color-primary))',
+  shadowForInputWhenError:
+    'var(--shadow-for-input-when-error, inset 0 0 0 1px var(--color-error))',
+  shadowForInputWhenWarning:
+    'var(--shadow-for-input-when-warning, inset 0 0 0 1px var(--color-warning))',
   shadowForTooltip:
-    'var(--shadow-for-tooltip, 0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12))',
+    'var(--shadow-for-tooltip, 0px 1px 2px 0px rgba(0, 0, 0, 0.25))',
   shadowForSelectInputMenu:
-    'var(--shadow-for-select-input-menu, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+    'var(--shadow-for-select-input-menu, 0 2px 5px 0px rgba(0, 0, 0, 0.15))',
   shadowForPrimaryActionDropdown:
-    'var(--shadow-for-primary-action-dropdown, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
+    'var(--shadow-for-primary-action-dropdown, none)',
   shadowForPrimaryActionDropdownWhenHovered:
-    'var(--shadow-for-primary-action-dropdown-when-hovered, 0 1px 9.5px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24))',
+    'var(--shadow-for-primary-action-dropdown-when-hovered, none)',
   shadowForPrimaryActionDropdownWhenActive:
-    'var(--shadow-for-primary-action-dropdown-when-active, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.25))',
+    'var(--shadow-for-primary-action-dropdown-when-active, none)',
   shadowForPrimaryActionDropdownMenu:
-    'var(--shadow-for-primary-action-dropdown-menu, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
+    'var(--shadow-for-primary-action-dropdown-menu, 0 2px 5px 0px rgba(0, 0, 0, 0.15))',
   shadowForToggleInputThumb:
-    'var(--shadow-for-toggle-input-thumb, 0 -1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24))',
-  shadowForTagWhenHovered:
-    'var(--shadow-for-tag-when-hovered, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
+    'var(--shadow-for-toggle-input-thumb, 0px 1px 5px rgba(0, 0, 0, 0.2))',
+  shadowForTagWhenHovered: 'var(--shadow-for-tag-when-hovered, none)',
   fontSizeM: 'var(--font-size-m, 1rem)',
   bigButtonHeight: 'var(--big-button-height, 32px)',
   smallButtonHeight: 'var(--small-button-height, 24px)',

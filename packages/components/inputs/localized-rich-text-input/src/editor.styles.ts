@@ -1,4 +1,3 @@
-//TODO: @redesign cleanup
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TEditorProps } from './editor';
@@ -18,7 +17,6 @@ type TInputProps = {
 type TEditorLanguageLabelProps = {
   isReadOnly?: boolean;
   isDisabled?: boolean;
-  isNewTheme?: boolean;
 };
 
 const getBackgroundColor = (props: TInputProps) => {
@@ -50,7 +48,7 @@ const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   border-right: 0;
   box-shadow: none;
   appearance: none;
-  display: ${(props) => props.isNewTheme && 'flex'};
+  display: flex;
   align-items: center;
 
   /* cursor should be inherited from parent,

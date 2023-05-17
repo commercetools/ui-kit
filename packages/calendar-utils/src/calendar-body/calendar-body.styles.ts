@@ -67,8 +67,7 @@ const getIconFontColor = (props: TCalendarBody) => {
 
 const getCalendarIconContainerStyles = (
   props: TCalendarBody,
-  state: TState,
-  isNewTheme: boolean
+  state: TState
 ) => {
   return [
     css`
@@ -93,10 +92,6 @@ const getCalendarIconContainerStyles = (
         border-color: ${designTokens.borderColorForInputWhenFocused};
       }
     `,
-    !isNewTheme &&
-      css`
-        border-left: 1px solid ${getIconBorderColor(props, state)};
-      `,
   ];
 };
 
@@ -145,11 +140,7 @@ const getInputContainerBackgroundColor = (props: TCalendarBody) => {
   return designTokens.backgroundColorForInput;
 };
 
-const getInputContainerStyles = (
-  props: TCalendarBody,
-  state: TState,
-  isNewTheme: boolean
-) => {
+const getInputContainerStyles = (props: TCalendarBody, state: TState) => {
   return [
     css`
       appearance: none;
@@ -195,22 +186,7 @@ const getInputContainerStyles = (
           }
         }
       `,
-    !isNewTheme &&
-      css`
-        &:hover,
-        &:hover > button,
-        &:focus > button {
-          border-color: ${props.isDisabled ||
-          props.hasError ||
-          props.hasWarning ||
-          props.isReadOnly ||
-          ((props.isOpen || state.isFocused) && !props.isReadOnly)
-            ? ''
-            : designTokens.borderColorForInputWhenFocused};
-        }
-      `,
-    isNewTheme &&
-      (props.hasError || props.hasWarning) &&
+    (props.hasError || props.hasWarning) &&
       css`
         box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered};
       `,

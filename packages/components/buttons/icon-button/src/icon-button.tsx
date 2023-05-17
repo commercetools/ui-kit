@@ -7,7 +7,7 @@ import {
   cloneElement,
 } from 'react';
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
@@ -94,7 +94,6 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
     !(props.theme !== 'default' && !props.isToggleButton),
     `Invalid prop \`theme\` supplied to \`IconButton\`. Only toggle buttons may have a theme.`
   );
-  const { themedValue } = useTheme();
 
   const buttonAttributes = {
     'data-track-component': 'IconButton',
@@ -127,7 +126,7 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
             box-shadow 150ms ease-in-out;
         `,
         getBaseStyles(props.theme, props.isDisabled, isActive),
-        getShapeStyles(themedValue(props.shape, 'square'), props.size),
+        getShapeStyles('square', props.size),
         getSizeStyles(props.size),
         getHoverStyles(props.isDisabled, props.theme),
       ]}

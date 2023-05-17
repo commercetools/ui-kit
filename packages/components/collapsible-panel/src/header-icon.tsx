@@ -1,22 +1,13 @@
-// TODO: @redesign cleanup
 import { css } from '@emotion/react';
-import {
-  designTokens,
-  useTheme,
-  type ThemeName,
-} from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
-
-const sizeIconContainer = '24px';
-const sizeIconContainerSmall = '14px';
 
 const getArrowColor = ({
   tone,
   isDisabled,
-  theme,
-}: Pick<THeaderIcon, 'isDisabled' | 'tone'> & { theme: ThemeName }) => {
+}: Pick<THeaderIcon, 'isDisabled' | 'tone'>) => {
   if (isDisabled) return 'neutral60';
-  if (tone === 'urgent') return theme === 'default' ? 'surface' : 'warning';
+  if (tone === 'urgent') return 'warning';
 
   return 'solid';
 };
@@ -29,11 +20,6 @@ type THeaderIcon = {
 };
 
 const HeaderIcon = (props: THeaderIcon) => {
-  const { theme, isNewTheme } = useTheme();
-  const backgroundColor =
-    props.tone === 'urgent' && !isNewTheme
-      ? designTokens.colorWarning
-      : designTokens.colorSurface;
   return (
     <div
       css={[
@@ -42,21 +28,6 @@ const HeaderIcon = (props: THeaderIcon) => {
           align-items: center;
           justify-content: center;
         `,
-        !isNewTheme &&
-          css`
-            height: ${props.size === 'small'
-              ? sizeIconContainerSmall
-              : sizeIconContainer};
-            width: ${props.size === 'small'
-              ? sizeIconContainerSmall
-              : sizeIconContainer};
-
-            border-radius: 50%;
-            flex-shrink: 0;
-            box-shadow: ${designTokens.shadow7};
-            background-color: ${backgroundColor};
-            border: ${backgroundColor};
-          `,
         props.isDisabled &&
           css`
             box-shadow: none;
@@ -71,7 +42,6 @@ const HeaderIcon = (props: THeaderIcon) => {
           color={getArrowColor({
             tone: props.tone,
             isDisabled: props.isDisabled,
-            theme,
           })}
           size={props.size}
         />
@@ -80,7 +50,6 @@ const HeaderIcon = (props: THeaderIcon) => {
           color={getArrowColor({
             tone: props.tone,
             isDisabled: props.isDisabled,
-            theme,
           })}
           size={props.size}
         />

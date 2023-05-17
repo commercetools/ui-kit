@@ -1,8 +1,7 @@
-// TODO: @redesign cleanup
 import type { ChangeEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { createSequentialId } from '@commercetools-uikit/utils';
 import { IndeterminateIcon, CheckedIcon } from './icons';
 import Checkbox from './checkbox';
@@ -160,16 +159,14 @@ const CheckboxIconWrapper = styled.div<TCheckboxIconWrapperProps>`
 `;
 
 const CheckboxIcon = (props: TLabelProps) => {
-  const { isNewTheme, themedValue } = useTheme();
   const isDisabledOrReadOnlyState = props.isDisabled || props.isReadOnly;
-  const isDefaultState = !(props.hasError || isDisabledOrReadOnlyState);
   const canForcedHoverEffect = Boolean(
     props.isHovered && !isDisabledOrReadOnlyState
   );
   return (
     <CheckboxIconWrapper
-      width={themedValue('auto', '26px')}
-      height={themedValue('auto', '26px')}
+      width="26px"
+      height="26px"
       isHovered={canForcedHoverEffect}
     >
       <div
@@ -181,65 +178,23 @@ const CheckboxIcon = (props: TLabelProps) => {
             border-style: solid;
             background-color: ${getBackgroundColor(props)};
             padding: 1px;
-            width: ${themedValue('16px', '18px')};
-            height: ${themedValue('16px', '18px')};
+            width: 18px;
+            height: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
 
             svg > path[stroke] {
-              stroke: ${themedValue(
-                designTokens.colorPrimary,
-                designTokens.colorSurface
-              )};
+              stroke: ${designTokens.colorSurface};
             }
           `,
-          !isNewTheme &&
-            css`
-              svg > path[fill] {
-                fill: ${getTextColor(props)};
-              }
-              svg > path[stroke] {
-                stroke: ${getTextColor(props)};
-              }
-            `,
-          !isNewTheme &&
-            isDefaultState &&
-            css`
-              svg > path[fill] {
-                fill: ${designTokens.colorPrimary};
-              }
-              svg > path[stroke] {
-                stroke: ${designTokens.colorPrimary};
-              }
-              &:hover {
-                border-color: ${isDisabledOrReadOnlyState
-                  ? 'unset'
-                  : designTokens.colorPrimary};
-              }
-            `,
-          !isNewTheme &&
-            canForcedHoverEffect &&
-            css`
-              border-color: ${designTokens.colorPrimary};
-            `,
         ].filter(Boolean)}
       >
         {(() => {
           if (props.isIndeterminate)
-            return (
-              <IndeterminateIcon
-                color={themedValue('primary', 'surface')}
-                size="scale"
-              />
-            );
+            return <IndeterminateIcon color="surface" size="scale" />;
           if (props.isChecked)
-            return (
-              <CheckedIcon
-                color={themedValue('primary', 'surface')}
-                size="scale"
-              />
-            );
+            return <CheckedIcon color="surface" size="scale" />;
           return null;
         })()}
       </div>

@@ -52,15 +52,15 @@ describe('when disabled', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
-  it('should not call onRemove when clicked', () => {
+  it('should not render the remove icon', () => {
     const onRemove = jest.fn();
     render(
       <Tag onRemove={onRemove} isDisabled={true}>
         Bread
       </Tag>
     );
-    screen.getByLabelText('Remove').click();
-    expect(onRemove).not.toHaveBeenCalled();
+    const removeIcon = screen.queryByLabelText('Remove');
+    expect(removeIcon).not.toBeInTheDocument();
   });
 });
 

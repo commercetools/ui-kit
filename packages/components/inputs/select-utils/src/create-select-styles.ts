@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 /*
   ⚠️ These styles are used for
     - SelectInput
@@ -347,39 +346,36 @@ const multiValueStyles = () => (base: TBase) => {
   };
 };
 
-const multiValueLabelStyles =
-  (props: TProps & { isNewTheme: boolean }) => (base: TBase) => {
-    return {
-      ...base,
-      fontSize: designTokens.fontSizeForSelectInputTag,
-      color: (() => {
-        if (props.isDisabled) return designTokens.fontColorForInputWhenDisabled;
-        if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
-        return base.color;
-      })(),
-      padding: `${designTokens.spacing10} ${designTokens.spacing20}`,
-      borderRadius: `${designTokens.borderRadiusForTag} 0 0 ${designTokens.borderRadiusForTag}`,
-      border: props.isNewTheme
-        ? 'none'
-        : `1px ${designTokens.borderColorForTag} solid`,
-      borderWidth: '1px 0 1px 1px',
+const multiValueLabelStyles = (props: TProps) => (base: TBase) => {
+  return {
+    ...base,
+    fontSize: designTokens.fontSizeForSelectInputTag,
+    color: (() => {
+      if (props.isDisabled) return designTokens.fontColorForInputWhenDisabled;
+      if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
+      return base.color;
+    })(),
+    padding: `${designTokens.spacing10} ${designTokens.spacing20}`,
+    borderRadius: `${designTokens.borderRadiusForTag} 0 0 ${designTokens.borderRadiusForTag}`,
+    border: 'none',
+    borderWidth: '1px 0 1px 1px',
 
-      '&:last-child': {
-        borderRadius: designTokens.borderRadiusForTag,
-        borderWidth: designTokens.borderWidth1,
-      },
-    };
+    '&:last-child': {
+      borderRadius: designTokens.borderRadiusForTag,
+      borderWidth: designTokens.borderWidth1,
+    },
   };
+};
 
 const multiValueRemoveStyles =
-  (props: TProps & { isNewTheme: boolean }) => (base: TBase, state: TState) => {
+  (props: TProps) => (base: TBase, state: TState) => {
     return {
       ...base,
       borderColor: designTokens.borderColorForTag,
       padding: `0 ${designTokens.spacing10}`,
       borderRadius: `0 ${designTokens.borderRadiusForTag} ${designTokens.borderRadiusForTag} 0`,
-      borderStyle: !props.isNewTheme ? 'solid' : 'none',
-      borderWidth: !props.isNewTheme ? designTokens.borderWidth1 : '0',
+      borderStyle: 'none',
+      borderWidth: '0',
       pointerEvents:
         state.isDisabled || props.isReadOnly ? 'none' : base.pointerEvents,
       backgroundColor: designTokens.backgroundColorForTag,
@@ -401,9 +397,7 @@ const multiValueRemoveStyles =
     };
   };
 
-export default function createSelectStyles(
-  props: TProps & { isNewTheme: boolean }
-) {
+export default function createSelectStyles(props: TProps) {
   return {
     control: controlStyles(props),
     menu: menuStyles(props),

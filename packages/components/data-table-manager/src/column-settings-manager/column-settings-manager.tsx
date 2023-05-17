@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import {
   useMemo,
   useCallback,
@@ -14,7 +13,7 @@ import { DragDropContext, type DropResult } from 'react-beautiful-dnd';
 import debounce from 'debounce-promise';
 import differenceWith from 'lodash/differenceWith';
 import styled from '@emotion/styled';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import AsyncSelectInput from '@commercetools-uikit/async-select-input';
 import FieldLabel from '@commercetools-uikit/field-label';
 import Spacings from '@commercetools-uikit/spacings';
@@ -139,7 +138,6 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
   }
 
   const intl = useIntl();
-  const { themedValue } = useTheme();
   const [isDragging, setIsDragging] = useState(false);
   const { searchHiddenColumns } = props;
 
@@ -188,17 +186,14 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
       containerTheme={props.managerTheme}
     >
       <DragDropContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-        <Spacings.Inline scale={themedValue('m', 'l')}>
+        <Spacings.Inline scale="l">
           <DroppableContainer
             isDragging={isDragging}
             aria-labelledby="hidden-columns"
           >
-            <Spacings.Stack scale={themedValue('s', 'm')}>
-              <Spacings.Inline
-                scale={themedValue('xs', 's')}
-                alignItems="center"
-              >
-                <EyeCrossedIcon size={themedValue('medium', 'big')} />
+            <Spacings.Stack scale="m">
+              <Spacings.Inline scale="s" alignItems="center">
+                <EyeCrossedIcon size="big" />
                 <FieldLabel
                   id="hidden-columns"
                   title={intl.formatMessage(messages.hiddenColumns)}
@@ -232,7 +227,7 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
             isDragging={isDragging}
             aria-labelledby="visible-columns"
           >
-            <Spacings.Stack scale={themedValue('s', 'm')}>
+            <Spacings.Stack scale="m">
               <Spacings.Inline scale="xs" alignItems="center">
                 <EyeIcon size="medium" />
                 <FieldLabel

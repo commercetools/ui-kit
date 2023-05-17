@@ -1,4 +1,3 @@
-// TODO: @redesign cleanup
 import { useState, type ReactElement, type ReactNode } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { useIntl, type MessageDescriptor } from 'react-intl';
@@ -7,7 +6,7 @@ import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
 import SelectInput from '@commercetools-uikit/select-input';
 import { TableIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
 import DisplaySettingsManager, {
   DENSITY_COMPACT,
@@ -189,7 +188,6 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   );
 
   const intl = useIntl();
-  const { themedValue } = useTheme();
   const [openedPanelId, setOpenedPanelId] = useState<string | null | undefined>(
     null
   );
@@ -221,7 +219,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   const handleSettingsPanelChange = () => setOpenedPanelId(null);
 
   return (
-    <Spacings.Stack scale={themedValue('s', 'xs')}>
+    <Spacings.Stack scale="xs">
       <Spacings.Inline justifyContent="space-between" alignItems="center">
         <TopBarContainer>{props.topBar}</TopBarContainer>
         {dropdownOptions.length > 0 && (
@@ -239,9 +237,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
               placeholder={intl.formatMessage(messages.placeholder)}
               onChange={handleDropdownChange}
               options={dropdownOptions}
-              iconLeft={
-                <TableIcon color={themedValue(undefined, 'neutral60')} />
-              }
+              iconLeft={<TableIcon color="neutral60" />}
             />
           </SelectContainer>
         )}
@@ -265,7 +261,6 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
           managerTheme={props.managerTheme}
         />
       )}
-
       {openedPanelId === COLUMN_MANAGER && (
         <ColumnSettingsManager
           {...(props.columnManager || {})}
