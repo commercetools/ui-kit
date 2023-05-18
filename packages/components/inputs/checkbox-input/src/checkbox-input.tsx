@@ -133,10 +133,6 @@ const LabelTextWrapper = styled.div<TLabelProps>`
   color: ${(props) => getTextColor(props)};
 `;
 
-const CheckboxWrapper = styled.div`
-  display: flex;
-`;
-
 type TCheckboxIconWrapperProps = {
   width: string;
   height: string;
@@ -229,7 +225,15 @@ const CheckboxInput = (props: TCheckboxProps) => {
   // label to the input component.
   const id = props.id || sequentialId();
   return (
-    <CheckboxWrapper>
+    <Label
+      htmlFor={id}
+      hasError={props.hasError}
+      isDisabled={props.isDisabled}
+      isReadOnly={props.isReadOnly}
+      isChecked={props.isChecked}
+      isHovered={props.isHovered}
+      isIndeterminate={props.isIndeterminate}
+    >
       <Checkbox {...props} id={id} />
       <CheckboxIcon
         hasError={props.hasError}
@@ -239,31 +243,21 @@ const CheckboxInput = (props: TCheckboxProps) => {
         isHovered={props.isHovered}
         isIndeterminate={props.isIndeterminate}
       />
-      <Label
-        htmlFor={id}
-        hasError={props.hasError}
-        isDisabled={props.isDisabled}
-        isReadOnly={props.isReadOnly}
-        isChecked={props.isChecked}
-        isHovered={props.isHovered}
-        isIndeterminate={props.isIndeterminate}
-      >
-        {props.children && (
-          <LabelTextWrapper
-            hasError={props.hasError}
-            isDisabled={props.isDisabled}
-            isReadOnly={props.isReadOnly}
-            isChecked={props.isChecked}
-            isHovered={props.isHovered}
-            isIndeterminate={props.isIndeterminate}
-            // To allow focusing the Label in readOnly mode, because the checkbox gets disabled and therefore unfocusable
-            tabIndex={props.isReadOnly ? 0 : -1}
-          >
-            {props.children}
-          </LabelTextWrapper>
-        )}
-      </Label>
-    </CheckboxWrapper>
+      {props.children && (
+        <LabelTextWrapper
+          hasError={props.hasError}
+          isDisabled={props.isDisabled}
+          isReadOnly={props.isReadOnly}
+          isChecked={props.isChecked}
+          isHovered={props.isHovered}
+          isIndeterminate={props.isIndeterminate}
+          // To allow focusing the Label in readOnly mode, because the checkbox gets disabled and therefore unfocusable
+          tabIndex={props.isReadOnly ? 0 : -1}
+        >
+          {props.children}
+        </LabelTextWrapper>
+      )}
+    </Label>
   );
 };
 

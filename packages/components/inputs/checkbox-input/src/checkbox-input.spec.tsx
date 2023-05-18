@@ -76,7 +76,7 @@ it('should check the input when isChecked is "true"', () => {
       Accept Terms
     </CheckboxInput>
   );
-  expect(screen.getByLabelText('Accept Terms')).toBeChecked();
+  expect(screen.getByLabelText('Accept Terms', { exact: false })).toBeChecked();
 });
 
 it('should not check the input when isChecked is "false"', () => {
@@ -108,9 +108,9 @@ it('should allow changing the checked state', () => {
     </CheckboxInput>
   );
 
-  expect(screen.getByLabelText('Accept Terms')).toBeChecked();
+  expect(screen.getByLabelText(/Accept Terms/)).toBeChecked();
 
-  screen.getByLabelText('Accept Terms').click();
+  screen.getByLabelText(/Accept Terms/).click();
   expect(onChange).toHaveBeenCalledTimes(2);
 });
 
@@ -125,7 +125,9 @@ describe('when indeterminate', () => {
         Accept Terms
       </CheckboxInput>
     );
-    expect(screen.getByLabelText('Accept Terms')).not.toBeChecked();
+    expect(
+      screen.getByLabelText('Accept Terms', { exact: false })
+    ).not.toBeChecked();
   });
 
   // The input is always unchecked when the state is indeterminate!
@@ -139,6 +141,8 @@ describe('when indeterminate', () => {
         Accept Terms
       </CheckboxInput>
     );
-    expect(screen.getByLabelText('Accept Terms')).not.toBeChecked();
+    expect(
+      screen.getByLabelText('Accept Terms', { exact: false })
+    ).not.toBeChecked();
   });
 });
