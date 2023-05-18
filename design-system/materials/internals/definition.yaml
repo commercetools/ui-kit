@@ -1049,7 +1049,7 @@ decisionGroupsByTheme:
       prefix: margin
       decisions:
         margin-for-table-header:
-          choice: spacing-30
+          choice: spacing-20
         margin-for-table-cell-as-condensed:
           choice: spacing-20
         margin-for-view-switcher-icon:

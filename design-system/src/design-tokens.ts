@@ -417,7 +417,7 @@ export const themes = {
     fontWeightForButton: '500',
     fontWeightForTableHeader: '600',
     fontWeightForTextAsBold: '600',
-    marginForTableHeader: '16px',
+    marginForTableHeader: '8px',
     marginForTableCellAsCondensed: '8px',
     marginForViewSwitcherIcon: '0 var(--spacing-20) 0 0',
     marginForGroupHeadingSelectInputOptions: '8px',
@@ -1108,7 +1108,7 @@ const designTokens = {
   fontWeightForButton: 'var(--font-weight-for-button, 500)',
   fontWeightForTableHeader: 'var(--font-weight-for-table-header, 600)',
   fontWeightForTextAsBold: 'var(--font-weight-for-text-as-bold, 600)',
-  marginForTableHeader: 'var(--margin-for-table-header, 16px)',
+  marginForTableHeader: 'var(--margin-for-table-header, 8px)',
   marginForTableCellAsCondensed:
     'var(--margin-for-table-cell-as-condensed, 8px)',
   marginForViewSwitcherIcon:
