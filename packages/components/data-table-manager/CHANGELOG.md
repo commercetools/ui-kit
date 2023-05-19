@@ -1,5 +1,32 @@
 # @commercetools-uikit/data-table-manager
 
+## 16.1.1
+
+### Patch Changes
+
+- [#2521](https://github.com/commercetools/ui-kit/pull/2521) [`251c0dd89`](https://github.com/commercetools/ui-kit/commit/251c0dd89dc9d2228ffe23f05e25178ec3662f45) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Remove supporting code for look and feel migration.
+
+- Updated dependencies [[`251c0dd89`](https://github.com/commercetools/ui-kit/commit/251c0dd89dc9d2228ffe23f05e25178ec3662f45)]:
+  - @commercetools-uikit/async-select-input@16.1.1
+  - @commercetools-uikit/select-input@16.1.1
+  - @commercetools-uikit/radio-input@16.1.1
+  - @commercetools-uikit/field-label@16.1.1
+  - @commercetools-uikit/tag@16.1.1
+  - @commercetools-uikit/design-system@16.1.1
+  - @commercetools-uikit/accessible-button@16.1.1
+  - @commercetools-uikit/primary-button@16.1.1
+  - @commercetools-uikit/secondary-button@16.1.1
+  - @commercetools-uikit/secondary-icon-button@16.1.1
+  - @commercetools-uikit/card@16.1.1
+  - @commercetools-uikit/icons@16.1.1
+  - @commercetools-uikit/text@16.1.1
+  - @commercetools-uikit/spacings@16.1.1
+  - @commercetools-uikit/accessible-hidden@16.1.1
+  - @commercetools-uikit/collapsible-motion@16.1.1
+  - @commercetools-uikit/grid@16.1.1
+  - @commercetools-uikit/hooks@16.1.1
+  - @commercetools-uikit/utils@16.1.1
+
 ## 16.1.0
 
 ### Patch Changes
