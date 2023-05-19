@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 16.1.1
+
+### Patch Changes
+
+- [#2521](https://github.com/commercetools/ui-kit/pull/2521) [`251c0dd89`](https://github.com/commercetools/ui-kit/commit/251c0dd89dc9d2228ffe23f05e25178ec3662f45) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Remove supporting code for look and feel migration.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.1.1
+
 ## 16.1.0
 
 ### Patch Changes

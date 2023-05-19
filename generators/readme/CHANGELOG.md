@@ -1,5 +1,11 @@
 # @commercetools-local/generator-readme
 
+## 3.1.0
+
+### Minor Changes
+
+- [#2525](https://github.com/commercetools/ui-kit/pull/2525) [`6e66d69b5`](https://github.com/commercetools/ui-kit/commit/6e66d69b55a5ce3cb709c34d7d88c07335f8c1e7) Thanks [@YahiaElTai](https://github.com/YahiaElTai)! - use cac instead of mri for flags parsing
+
 ## 3.0.11
 
 ### Patch Changes
