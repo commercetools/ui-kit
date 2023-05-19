@@ -20,7 +20,7 @@
     "@types/shelljs": "0.8.12",
     "@types/unist": "2.0.6",
     "@types/vfile": "4.0.0",
-    "cac": "^6.7.14",
+    "cac": "6.7.14",
     "listr": "0.14.3",
     "listr-verbose-renderer": "0.6.0",
     "lodash": "4.17.21",
