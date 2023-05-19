@@ -122,7 +122,7 @@ export default Example;
 ### Signature `onChange`
 
 ```ts
-(event?: TCustomEvent) => void
+(event: TCustomEvent) => void
 ```
 
 ### Signature `onInfoButtonClick`
