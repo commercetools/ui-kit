@@ -17,7 +17,7 @@
   "sideEffects": false,
   "main": "dist/commercetools-uikit-hooks.cjs.js",
   "module": "dist/commercetools-uikit-hooks.esm.js",
-  "files": ["dist"],
+  "files": ["dist", "polyfills.js"],
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",

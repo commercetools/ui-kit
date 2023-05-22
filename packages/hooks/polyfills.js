@@ -1,5 +1,5 @@
 // Polyfill for `MutationObserver` when used with SSR.
-global.MutationObserver =
+(window || global).MutationObserver =
   typeof window !== 'undefined' && 'MutationObserver' in window
     ? window.MutationObserver
     : class MutationObserver {
