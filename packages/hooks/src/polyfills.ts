@@ -1,5 +1,6 @@
 // Polyfill for `MutationObserver` when used with SSR.
-global.MutationObserver =
+// eslint-disable-next-line no-undef
+globalThis.MutationObserver =
   typeof window !== 'undefined' && 'MutationObserver' in window
     ? window.MutationObserver
     : class MutationObserver {
