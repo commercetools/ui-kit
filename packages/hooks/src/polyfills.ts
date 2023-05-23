@@ -10,3 +10,6 @@ globalThis.MutationObserver =
           return [];
         }
       };
+
+// Empty export statement to identify this as a module.
+export {};
