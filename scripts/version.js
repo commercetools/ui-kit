@@ -2,57 +2,55 @@
 
 /* eslint-disable no-console */
 
-const mri = require('mri');
+const cac = require('cac').cac;
 const path = require('path');
 const fs = require('fs');
 const replace = require('replace');
 
+const cli = cac('version');
+
 const versionOfPackage = process.env.npm_package_version;
 const nameOfPackage = process.env.npm_package_name;
 
-const flags = mri(process.argv.slice(2), { alias: { help: ['h'] } });
-const commands = flags._;
+const execute = async () => {
+  cli.command('').action(cli.outputHelp);
 
-if (commands.length === 0 || (flags.help && commands.length === 0)) {
-  console.log(`
-    Usage: version [command] [options]
-    Commands:
-      print        Prints the version and package name
-      replace      Replaces the version to the built files
-  `);
-  process.exit(0);
-}
-
-const command = commands[0];
-
-switch (command) {
-  case 'print': {
+  cli.command('print', 'Prints the version and package name').action(() => {
     console.log(
       `Version for ${nameOfPackage} of release will be ${versionOfPackage}`
     );
-    break;
-  }
-  case 'replace': {
-    const pkgDirectory = fs.realpathSync(process.cwd());
-    const resolvePkg = (relativePath) =>
-      path.resolve(pkgDirectory, relativePath);
+  });
 
-    const paths = [resolvePkg('dist')];
+  cli
+    .command('replace', 'Replaces the version to the built files')
+    .action(() => {
+      const pkgDirectory = fs.realpathSync(process.cwd());
+      const resolvePkg = (relativePath) =>
+        path.resolve(pkgDirectory, relativePath);
 
-    replace({
-      regex: '__@UI_KIT_PACKAGE/VERSION_OF_RELEASE__',
-      replacement: versionOfPackage,
-      paths,
-      recursive: true,
-      silent: true,
+      const paths = [resolvePkg('dist')];
+
+      replace({
+        regex: '__@UI_KIT_PACKAGE/VERSION_OF_RELEASE__',
+        replacement: versionOfPackage,
+        paths,
+        recursive: true,
+        silent: true,
+      });
+
+      console.log(
+        `Replaced placeholder for ${nameOfPackage} and release ${versionOfPackage}`
+      );
     });
 
-    console.log(
-      `Replaced placeholder for ${nameOfPackage} and release ${versionOfPackage}`
-    );
-    break;
-  }
-  default:
-    console.log(`Unknown command "${command}".`);
-    break;
-}
+  cli.help();
+
+  cli.parse(process.argv, { run: false });
+
+  await cli.runMatchedCommand();
+};
+
+execute().catch((error) => {
+  console.error(error.message || error);
+  process.exit(1);
+});

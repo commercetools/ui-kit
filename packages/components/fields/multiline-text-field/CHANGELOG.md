@@ -1,5 +1,18 @@
 # @commercetools-uikit/multiline-text-field
 
+## 16.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`5469c3468`](https://github.com/commercetools/ui-kit/commit/5469c3468fc788041b06f2b5288029993339a593), [`251c0dd89`](https://github.com/commercetools/ui-kit/commit/251c0dd89dc9d2228ffe23f05e25178ec3662f45)]:
+  - @commercetools-uikit/multiline-text-input@16.1.1
+  - @commercetools-uikit/field-label@16.1.1
+  - @commercetools-uikit/design-system@16.1.1
+  - @commercetools-uikit/constraints@16.1.1
+  - @commercetools-uikit/spacings@16.1.1
+  - @commercetools-uikit/field-errors@16.1.1
+  - @commercetools-uikit/utils@16.1.1
+
 ## 16.1.0
 
 ### Patch Changes

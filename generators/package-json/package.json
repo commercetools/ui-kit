@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-local/generator-package-json",
   "description": "CLI to generate the necessary information for each package.json",
-  "version": "3.0.11",
+  "version": "3.1.0",
   "private": true,
   "bin": {
     "generate-package-json": "./bin/cli.mjs"
@@ -14,9 +14,8 @@
   "dependencies": {
     "@manypkg/find-root": "1.1.0",
     "@manypkg/get-packages": "1.1.3",
-    "@types/mri": "1.1.1",
     "@types/node": "16.18.31",
-    "mri": "1.2.0",
+    "cac": "6.7.14",
     "omit-empty-es": "1.1.3",
     "rcfile": "1.0.3"
   },

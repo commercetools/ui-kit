@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/hooks",
   "description": "A collection of React hooks used across some of the UI-Kit components.",
-  "version": "16.1.0",
+  "version": "16.1.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -17,11 +17,14 @@
   "sideEffects": false,
   "main": "dist/commercetools-uikit-hooks.cjs.js",
   "module": "dist/commercetools-uikit-hooks.esm.js",
-  "files": ["dist"],
+  "preconstruct": {
+    "entrypoints": ["./index.ts", "./polyfills.ts"]
+  },
+  "files": ["dist", "polyfills"],
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/utils": "16.1.0",
+    "@commercetools-uikit/utils": "16.1.1",
     "@types/raf-schd": "^4.0.1",
     "lodash": "4.17.21",
     "raf-schd": "^4.0.3"
