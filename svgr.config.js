@@ -46,9 +46,6 @@ const getSvgFileName = (filePathname) =>
 // https://react-svgr.com/docs/custom-templates/
 // https://github.com/gregberge/svgr/blob/c57ee04b19c15a76ae4caf40d1bb82c210d6c398/packages/babel-plugin-transform-svg-component/src/types.ts#L18
 const styledIconsTemplate = (variables, context) => {
-  console.log('Variables:', JSON.stringify(variables, null, 4));
-  console.log('Context:', JSON.stringify(context, null, 4));
-
   const svgComponentName = context.options.state.componentName.replace(
     /react/i,
     ''
@@ -106,7 +103,6 @@ export default ${reactComponentName};
 
 module.exports = {
   icon: false,
-  expandProps: 'end',
   titleProp: true,
   svgoConfig: {
     plugins: [
