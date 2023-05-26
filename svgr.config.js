@@ -64,9 +64,6 @@ const styledIconsTemplate = (variables, context) => {
 // This file is created with 'yarn generate-icons'.
 // Original SVG file: ${context.options.state.filePath}
 
-import { useMemo } from 'react';
-import { createSequentialId } from '@commercetools-uikit/utils';
-
 ${templateCreateStyledIcon}
 
 const ${svgComponentName} = ({ titleId, title, ...props }: SVGProps) => JSX;

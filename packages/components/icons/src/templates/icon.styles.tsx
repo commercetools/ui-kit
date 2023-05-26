@@ -1,5 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { warning } from '@commercetools-uikit/utils';
+// @ts-ignore
+import { warning, createSequentialId } from '@commercetools-uikit/utils';
+// @ts-ignore
+import { useMemo } from 'react';
 // @ts-ignore
 import { css, ClassNames } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
