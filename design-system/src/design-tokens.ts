@@ -193,14 +193,6 @@ export const themes = {
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForContentNotificationWhenSuccess:
       'hsl(172.9608938547486, 100%, 95%)',
-    backgroundColorForContentNotificationIconWhenError:
-      'hsl(339.1304347826087, 100%, 95%)',
-    backgroundColorForContentNotificationIconWhenInfo:
-      'hsl(203.05555555555554, 93.9130434783%, 95%)',
-    backgroundColorForContentNotificationIconWhenWarning:
-      'hsl(25.110132158590307, 89.0196078431%, 95%)',
-    backgroundColorForContentNotificationIconWhenSuccess:
-      'hsl(172.9608938547486, 100%, 95%)',
     backgroundColorForCheckboxInputIcon: '#00b39e',
     backgroundColorForCheckboxInputIconWhenDisabled: '#ccc',
     backgroundColorForCheckboxInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
@@ -763,14 +755,6 @@ const designTokens = {
     'var(--background-color-for-content-notification-when-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
   backgroundColorForContentNotificationWhenSuccess:
     'var(--background-color-for-content-notification-when-success, hsl(172.9608938547486, 100%, 95%))',
-  backgroundColorForContentNotificationIconWhenError:
-    'var(--background-color-for-content-notification-icon-when-error, hsl(339.1304347826087, 100%, 95%))',
-  backgroundColorForContentNotificationIconWhenInfo:
-    'var(--background-color-for-content-notification-icon-when-info, hsl(203.05555555555554, 93.9130434783%, 95%))',
-  backgroundColorForContentNotificationIconWhenWarning:
-    'var(--background-color-for-content-notification-icon-when-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
-  backgroundColorForContentNotificationIconWhenSuccess:
-    'var(--background-color-for-content-notification-icon-when-success, hsl(172.9608938547486, 100%, 95%))',
   backgroundColorForCheckboxInputIcon:
     'var(--background-color-for-checkbox-input-icon, #00b39e)',
   backgroundColorForCheckboxInputIconWhenDisabled:

@@ -552,14 +552,6 @@ decisionGroupsByTheme:
           choice: color-warning-95
         background-color-for-content-notification-when-success:
           choice: color-primary-95
-        background-color-for-content-notification-icon-when-error:
-          choice: color-error-95
-        background-color-for-content-notification-icon-when-info:
-          choice: color-info-95
-        background-color-for-content-notification-icon-when-warning:
-          choice: color-warning-95
-        background-color-for-content-notification-icon-when-success:
-          choice: color-primary-95
         background-color-for-checkbox-input-icon:
           choice: color-primary
         background-color-for-checkbox-input-icon-when-disabled:
