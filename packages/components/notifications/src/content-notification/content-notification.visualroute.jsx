@@ -23,7 +23,9 @@ export const component = () => (
       <ContentNotification type="success" intlMessage={intlMessage} />
     </Spec>
     <Spec label="onRemove">
-      <ContentNotification type="error" onRemove={() => false} />
+      <ContentNotification type="error" onRemove={() => false}>
+        A Notification
+      </ContentNotification>
     </Spec>
   </Suite>
 );
