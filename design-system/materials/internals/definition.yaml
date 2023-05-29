@@ -388,8 +388,10 @@ componentGroups:
     description: 'View switcher icon elements'
   content-notification:
     description: 'Content notification elements'
+  content-notification-message:
+    description: 'Content notification message element'
   content-notification-icon:
-    description: 'Content notification icon elements'
+    description: 'Content notification icon element'
   checkbox-input-icon:
     description: 'Checkbox icon elements'
   checkbox-input-label:
@@ -734,9 +736,7 @@ decisionGroupsByTheme:
         border-radius-for-view-switcher:
           choice: border-radius-4
         border-radius-for-content-notification:
-          choice: '0 var(--border-radius-4) var(--border-radius-4) 0'
-        border-radius-for-content-notification-icon:
-          choice: 'var(--border-radius-4) 0 0 var(--border-radius-4)'
+          choice: border-radius-4
         border-radius-for-primary-action-dropdown:
           choice: 'var(--border-radius-4) 0 0 var(--border-radius-4)'
         border-radius-for-primary-action-dropdown-icon:
@@ -760,8 +760,6 @@ decisionGroupsByTheme:
           choice: '1px 1px 1px 0'
         border-width-for-select-input:
           choice: border-width-2
-        border-width-for-content-notification-icon:
-          choice: border-width-1
         border-left-width-for-content-notification:
           choice: '0px'
         border-width-for-checkbox-input-icon:
@@ -1160,9 +1158,9 @@ decisionGroupsByTheme:
         padding-for-view-switcher-when-condensed:
           choice: '0 12px 0 12px'
         padding-for-content-notification:
-          choice: 'var(--spacing-20) var(--spacing-30) var(--spacing-20) var(--spacing-20)'
-        padding-for-content-notification-icon:
-          choice: 'var(--spacing-20) 0 var(--spacing-20) var(--spacing-30)'
+          choice: 'var(--spacing-20) var(--spacing-30)'
+        padding-for-content-notification-message:
+          choice: '0 var(--spacing-30) 0 var(--spacing-20)'
         padding-left-for-select-input-options:
           choice: spacing-30
         padding-right-for-select-input-options:

@@ -291,10 +291,7 @@ export const themes = {
     borderRadiusForTableManagerDroppableList: '4px',
     borderRadiusForStamp: '20px',
     borderRadiusForViewSwitcher: '4px',
-    borderRadiusForContentNotification:
-      '0 var(--border-radius-4) var(--border-radius-4) 0',
-    borderRadiusForContentNotificationIcon:
-      'var(--border-radius-4) 0 0 var(--border-radius-4)',
+    borderRadiusForContentNotification: '4px',
     borderRadiusForPrimaryActionDropdown:
       'var(--border-radius-4) 0 0 var(--border-radius-4)',
     borderRadiusForPrimaryActionDropdownIcon:
@@ -306,7 +303,6 @@ export const themes = {
     borderWidthForInputWhenFocused: '1px',
     borderWidthForTag: '1px 1px 1px 0',
     borderWidthForSelectInput: '2px',
-    borderWidthForContentNotificationIcon: '1px',
     borderLeftWidthForContentNotification: '0px',
     borderWidthForCheckboxInputIcon: '2px',
     borderForPrimaryActionDropdownIcon: '1px 1px 1px 0px',
@@ -481,10 +477,9 @@ export const themes = {
     paddingForTooltip: 'var(--spacing-20) 12px',
     paddingForViewSwitcher: '0 var(--spacing-30) 0 var(--spacing-30)',
     paddingForViewSwitcherWhenCondensed: '0 12px 0 12px',
-    paddingForContentNotification:
-      'var(--spacing-20) var(--spacing-30) var(--spacing-20) var(--spacing-20)',
-    paddingForContentNotificationIcon:
-      'var(--spacing-20) 0 var(--spacing-20) var(--spacing-30)',
+    paddingForContentNotification: 'var(--spacing-20) var(--spacing-30)',
+    paddingForContentNotificationMessage:
+      '0 var(--spacing-30) 0 var(--spacing-20)',
     paddingLeftForSelectInputOptions: '16px',
     paddingRightForSelectInputOptions: '16px',
     paddingTopForSelectInputOptions: '8px',
@@ -925,9 +920,7 @@ const designTokens = {
   borderRadiusForStamp: 'var(--border-radius-for-stamp, 20px)',
   borderRadiusForViewSwitcher: 'var(--border-radius-for-view-switcher, 4px)',
   borderRadiusForContentNotification:
-    'var(--border-radius-for-content-notification, 0 var(--border-radius-4) var(--border-radius-4) 0)',
-  borderRadiusForContentNotificationIcon:
-    'var(--border-radius-for-content-notification-icon, var(--border-radius-4) 0 0 var(--border-radius-4))',
+    'var(--border-radius-for-content-notification, 4px)',
   borderRadiusForPrimaryActionDropdown:
     'var(--border-radius-for-primary-action-dropdown, var(--border-radius-4) 0 0 var(--border-radius-4))',
   borderRadiusForPrimaryActionDropdownIcon:
@@ -942,8 +935,6 @@ const designTokens = {
     'var(--border-width-for-input-when-focused, 1px)',
   borderWidthForTag: 'var(--border-width-for-tag, 1px 1px 1px 0)',
   borderWidthForSelectInput: 'var(--border-width-for-select-input, 2px)',
-  borderWidthForContentNotificationIcon:
-    'var(--border-width-for-content-notification-icon, 1px)',
   borderLeftWidthForContentNotification:
     'var(--border-left-width-for-content-notification, 0px)',
   borderWidthForCheckboxInputIcon:
@@ -1217,9 +1208,9 @@ const designTokens = {
   paddingForViewSwitcherWhenCondensed:
     'var(--padding-for-view-switcher-when-condensed, 0 12px 0 12px)',
   paddingForContentNotification:
-    'var(--padding-for-content-notification, var(--spacing-20) var(--spacing-30) var(--spacing-20) var(--spacing-20))',
-  paddingForContentNotificationIcon:
-    'var(--padding-for-content-notification-icon, var(--spacing-20) 0 var(--spacing-20) var(--spacing-30))',
+    'var(--padding-for-content-notification, var(--spacing-20) var(--spacing-30))',
+  paddingForContentNotificationMessage:
+    'var(--padding-for-content-notification-message, 0 var(--spacing-30) 0 var(--spacing-20))',
   paddingLeftForSelectInputOptions:
     'var(--padding-left-for-select-input-options, 16px)',
   paddingRightForSelectInputOptions:
