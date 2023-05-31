@@ -124,7 +124,7 @@ const defaultProps: Pick<
   TDensityManagerProps,
   'isCondensed' | 'isWrappingText'
 > = {
-  isCondensed: false,
+  isCondensed: true,
   isWrappingText: false,
 };
 DensityManager.defaultProps = defaultProps;

@@ -34,7 +34,7 @@ const defaultProps: Pick<
   | 'shouldRenderBottomBorder'
   | 'itemRenderer'
 > = {
-  isCondensed: false,
+  isCondensed: true,
   shouldClipContent: false,
   verticalCellAlignment: 'top',
   horizontalCellAlignment: 'left',
