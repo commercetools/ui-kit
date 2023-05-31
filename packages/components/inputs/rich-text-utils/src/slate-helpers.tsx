@@ -220,7 +220,7 @@ const resetEditor = (editor: Editor, resetValue?: string) => {
     },
   });
 
-  // Removes empty node
+  // remove empty node
   Transforms.removeNodes(editor, {
     at: [0],
   });

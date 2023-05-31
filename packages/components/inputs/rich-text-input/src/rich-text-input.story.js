@@ -93,7 +93,7 @@ storiesOf('Components|Inputs', module)
             value={value}
           />
           <Text.Headline as="h3">Output</Text.Headline>
-          <code>{value}</code>
+          <pre>{value}</pre>
         </Spacings.Stack>
       </Section>
     );
