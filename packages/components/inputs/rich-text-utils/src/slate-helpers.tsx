@@ -190,14 +190,24 @@ const toggleBlock = (editor: TEditor, format: Format) => {
   }
 };
 
+function nonNullable<T>(value: T): value is NonNullable<T> {
+  return value !== null && value !== undefined;
+}
+
 const validSlateStateAdapter = (
   value: Deserialized | Deserialized[]
 ): Descendant[] => {
   if (SlateElement.isElement(value) || Text.isText(value)) {
     return [value];
   }
-  if (SlateElement.isElementList(value) || Text.isTextList(value)) {
-    return value;
+  if (
+    SlateElement.isElementList(value) ||
+    Text.isTextList(value) ||
+    // in case of an array of mixed text and element nodes
+    (Array.isArray(value) &&
+      value.every((node) => SlateElement.isElement(node) || Text.isText(node)))
+  ) {
+    return value.filter(nonNullable);
   }
   return defaultSlateState;
 };

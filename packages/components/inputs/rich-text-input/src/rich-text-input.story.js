@@ -1,51 +1,22 @@
 /* eslint-disable react/prop-types, react/display-name */
 
-import { useState, useCallback } from 'react';
-import { Value } from 'react-value';
+import { useState, useCallback, useRef } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
 import Spacings from '@commercetools-uikit/spacings';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
+import Constraints from '@commercetools-uikit/constraints';
+import Text from '@commercetools-uikit/text';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import RichTextInput from './rich-text-input';
-import TextInput from '../../text-input';
 import Readme from '../README.md';
 
 // Create our initial value...
 
 const initialValue = '<h1>H1 <u>heading</u></h1>';
-
-const Input = (props) => {
-  const [value, setValue] = useState(initialValue);
-  const onChange = useCallback(
-    (event) => {
-      setValue(event.target.value);
-      action('onChange')(event);
-    },
-    [setValue]
-  );
-
-  return (
-    <RichTextInput
-      id={props.id}
-      name={props.name}
-      key={`rich-text-input-${props.defaultExpandMultilineText}`}
-      onChange={onChange}
-      value={value}
-      onBlur={props.onBlur}
-      onFocus={props.onFocus}
-      defaultExpandMultilineText={props.defaultExpandMultilineText}
-      placeholder={props.placeholder}
-      onClickExpand={props.onClickExpand}
-      showExpandIcon={props.showExpandIcon}
-      hasError={props.hasError}
-      hasWarning={props.hasWarning}
-      isDisabled={props.isDisabled}
-      isReadOnly={props.isReadOnly}
-    />
-  );
-};
 
 storiesOf('Components|Inputs', module)
   .addDecorator(withKnobs)
@@ -58,24 +29,51 @@ storiesOf('Components|Inputs', module)
 
     const onBlur = useCallback(action('onBlur'), []);
     const onFocus = useCallback(action('onFocus'), []);
-    const id = text('id', 'test-id');
+    const ref = useRef(null);
+    const [value, setValue] = useState(initialValue);
+    const [resetValue, setResetValue] = useState(initialValue);
+    const onChange = useCallback(
+      (event) => {
+        setValue(event.target.value);
+      },
+      [setValue]
+    );
+    const onResetValueChange = useCallback(
+      (event) => {
+        setResetValue(event.target.value);
+      },
+      [setResetValue]
+    );
+    const handleReset = () => {
+      ref.current?.resetValue(resetValue);
+    };
+
     return (
       <Section>
         <Spacings.Stack scale="l">
-          <Value
-            defaultValue={''}
-            render={(value, onChange) => (
-              <TextInput
-                id="text-input"
-                name="text-input"
-                value={value}
-                onChange={(event) => onChange(event.target.value)}
-              />
-            )}
-          />
-          <label htmlFor={id}>Rich Text</label>
-          <Input
-            id={text('id', 'test-id')}
+          <CollapsiblePanel
+            header="Set initial value"
+            horizontalConstraint="scale"
+            isDefaultClosed
+          >
+            <Constraints.Horizontal max="scale">
+              <Spacings.Stack scale="m">
+                <textarea
+                  defaultValue={resetValue}
+                  onChange={onResetValueChange}
+                  rows={4}
+                />
+                <Constraints.Horizontal max="auto">
+                  <PrimaryButton
+                    label="Reset"
+                    onClick={handleReset}
+                    size="medium"
+                  />
+                </Constraints.Horizontal>
+              </Spacings.Stack>
+            </Constraints.Horizontal>
+          </CollapsiblePanel>
+          <RichTextInput
             name={text('name', 'test-name')}
             onBlur={onBlur}
             onFocus={onFocus}
@@ -90,7 +88,12 @@ storiesOf('Components|Inputs', module)
             hasWarning={boolean('hasWarning', false)}
             isDisabled={boolean('isDisabled', false)}
             isReadOnly={boolean('isReadOnly', false)}
+            ref={ref}
+            onChange={onChange}
+            value={value}
           />
+          <Text.Headline as="h3">Output</Text.Headline>
+          <code>{value}</code>
         </Spacings.Stack>
       </Section>
     );
