@@ -59,7 +59,7 @@ describe('ColumnSettingsManager', () => {
 
       render(<ColumnSettingsManager {...props} />);
 
-      expect(screen.getByText(/search/i)).toBeInTheDocument();
+      expect(screen.getByText(/search/)).toBeInTheDocument();
     });
   });
 
