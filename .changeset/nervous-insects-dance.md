@@ -1,5 +1,4 @@
 ---
-'@commercetools-uikit/rich-text-input': patch
 '@commercetools-uikit/rich-text-utils': patch
 ---
 
