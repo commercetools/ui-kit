@@ -213,18 +213,26 @@ const validSlateStateAdapter = (
 };
 
 const resetEditor = (editor: Editor, resetValue?: string) => {
-  const children = [...editor.children];
-  children.forEach((node) =>
-    editor.apply({ type: 'remove_node', path: [0], node })
-  );
-  const newState = resetValue
-    ? validSlateStateAdapter(html.deserialize(resetValue))
-    : defaultSlateState;
-  editor.apply({
-    type: 'insert_node',
-    path: [0],
-    node: newState[0],
+  Transforms.delete(editor, {
+    at: {
+      anchor: Editor.start(editor, []),
+      focus: Editor.end(editor, []),
+    },
   });
+
+  // Removes empty node
+  Transforms.removeNodes(editor, {
+    at: [0],
+  });
+
+  const newState = resetValue
+    ? validSlateStateAdapter(html.deserialize(resetValue)).map((node) =>
+        Text.isText(node) ? { type: 'text', children: [node] } : node
+      )
+    : defaultSlateState;
+
+  // insert all new nodes
+  Transforms.insertNodes(editor, newState);
 };
 
 const focusEditor = (editor: Editor) => {
