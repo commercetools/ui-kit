@@ -427,7 +427,7 @@ storiesOf('Components|DataTable', module)
             'center',
             'bottom',
           ])}
-          isCondensed={boolean('isCondensed', false)}
+          isCondensed={boolean('isCondensed', true)}
           wrapHeaderLabels={boolean('wrapHeaderLabels', true)}
           disableHeaderStickiness={boolean('disableHeaderStickiness', false)}
           sortedBy={sortedBy}
