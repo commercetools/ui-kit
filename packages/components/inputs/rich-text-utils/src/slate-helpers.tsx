@@ -197,9 +197,7 @@ function nonNullable<T>(value: T): value is NonNullable<T> {
 const validSlateStateAdapter = (
   value: Deserialized | Deserialized[]
 ): Descendant[] => {
-  if (SlateElement.isElement(value) || Text.isText(value)) {
-    return [value];
-  }
+  const valueAsArray: Deserialized[] = Array.isArray(value) ? value : [value];
   if (
     SlateElement.isElementList(value) ||
     Text.isTextList(value) ||
@@ -207,7 +205,11 @@ const validSlateStateAdapter = (
     (Array.isArray(value) &&
       value.every((node) => SlateElement.isElement(node) || Text.isText(node)))
   ) {
-    return value.filter(nonNullable);
+    return valueAsArray
+      .map((node) =>
+        Text.isText(node) ? { type: 'text', children: [node] } : node
+      )
+      .filter(nonNullable);
   }
   return defaultSlateState;
 };
@@ -226,9 +228,7 @@ const resetEditor = (editor: Editor, resetValue?: string) => {
   });
 
   const newState = resetValue
-    ? validSlateStateAdapter(html.deserialize(resetValue)).map((node) =>
-        Text.isText(node) ? { type: 'text', children: [node] } : node
-      )
+    ? validSlateStateAdapter(html.deserialize(resetValue))
     : defaultSlateState;
 
   // insert all new nodes
