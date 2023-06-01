@@ -26,8 +26,8 @@ export default defineMessages({
     description: 'Show or hide texts on demand option.',
     defaultMessage: 'Show / hide texts by row on demand',
   },
-  densityDisplayDefaultOption: {
-    id: 'UIKit.DataTableManager.DensityManager.densityDisplayDefaultOption',
+  densityDisplayComfortableOption: {
+    id: 'UIKit.DataTableManager.DensityManager.densityDisplayComfortableOption',
     description: 'Density display default option.',
     defaultMessage: 'Default',
   },

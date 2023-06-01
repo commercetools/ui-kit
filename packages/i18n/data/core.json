@@ -15,7 +15,7 @@
   "UIKit.DataTableManager.ColumnSelectorGroups.visible": "Visible columns",
   "UIKit.DataTableManager.DensityManager.closeButtonLabel": "Close",
   "UIKit.DataTableManager.DensityManager.densityDisplayCompactOption": "Compact",
-  "UIKit.DataTableManager.DensityManager.densityDisplayDefaultOption": "Default",
+  "UIKit.DataTableManager.DensityManager.densityDisplayComfortableOption": "Comfortable",
   "UIKit.DataTableManager.DensityManager.densityDisplaySubtitle": "Density display",
   "UIKit.DataTableManager.DensityManager.textWrappingAllWrapVisibleOption": "Make all wrapped texts visible",
   "UIKit.DataTableManager.DensityManager.textWrappingShowHideOnDemandOption": "Show / hide texts by row on demand",

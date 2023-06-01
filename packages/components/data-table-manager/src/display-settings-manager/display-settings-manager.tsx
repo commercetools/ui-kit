@@ -16,7 +16,7 @@ import messages from './messages';
 import {
   WRAPPED_TEXT_VISIBLE,
   SHOW_HIDE_ON_DEMAND,
-  DENSITY_DEFAULT,
+  DENSITY_COMFORTABLE,
   DENSITY_COMPACT,
 } from './constants';
 
@@ -40,7 +40,7 @@ const DensityManager = (props: TDensityManagerProps) => {
     : WRAPPED_TEXT_VISIBLE;
   const densityDisplayOption = props.isCondensed
     ? DENSITY_COMPACT
-    : DENSITY_DEFAULT;
+    : DENSITY_COMFORTABLE;
 
   return (
     <SettingsContainer
@@ -104,8 +104,8 @@ const DensityManager = (props: TDensityManagerProps) => {
               value={densityDisplayOption}
               onChange={props.onDensityDisplayChange}
             >
-              <RadioInput.Option value={DENSITY_DEFAULT}>
-                {intl.formatMessage(messages.densityDisplayDefaultOption)}
+              <RadioInput.Option value={DENSITY_COMFORTABLE}>
+                {intl.formatMessage(messages.densityDisplayComfortableOption)}
               </RadioInput.Option>
               <RadioInput.Option value={DENSITY_COMPACT}>
                 {intl.formatMessage(messages.densityDisplayCompactOption)}
