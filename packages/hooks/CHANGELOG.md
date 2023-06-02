@@ -1,5 +1,14 @@
 # @commercetools-uikit/hooks
 
+## 16.2.0
+
+### Patch Changes
+
+- [#2529](https://github.com/commercetools/ui-kit/pull/2529) [`b6fae35c8`](https://github.com/commercetools/ui-kit/commit/b6fae35c8cc0de405a4d8aacbffac4f46a369fc4) Thanks [@emmenko](https://github.com/emmenko)! - Export polyfill as separate entry point. Consumers should import this explicitly in their application when using SSR.
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.2.0
+
 ## 16.1.1
 
 ### Patch Changes
