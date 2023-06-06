@@ -106,9 +106,19 @@ describe('html', () => {
             '<ol><li><span style="font-weight: bold; font-family: &quot;Comic Sans MS&quot;;">Computermouse for <span style="text-decoration-line: underline;">controlling</span></span></li></ol><table class="table table-bordered"><tbody><tr><td>hello</td></tr><tr><td><p>world<img src="https://www.rollingstone.com/wp-content/uploads/2019/01/shutterstock_10010937aj.jpg" style="width: 100%; float: right;" class="pull-right img-circle"></p></td></tr></tbody></table><ol><li><span style="font-weight: bold; font-family: &quot;Comic Sans MS&quot;;"><span style="text-decoration-line: underline;"><br></span></span></li></ol>';
 
           expect(html.serialize(html.deserialize(htmlValue))).toEqual(
-            '<ol><li><strong>Computermouse for </strong><u><strong>controlling</strong></u></li></ol><p>hello</p><p>world</p><ol><li><u><strong></strong></u></li></ol>'
+            '<ol><li><strong>Computermouse for </strong><u><strong>controlling</strong></u></li></ol>hello<p>world</p><ol><li><u><strong></strong></u></li></ol>'
           );
         });
+      });
+    });
+    describe('multiple nested text nodes within parent text node', () => {
+      it('should properly serialize', () => {
+        const htmlValue =
+          '<p><del>first</del><del><sup>second</sup></del><del><sub><sup>third</sup></sub></del></p>';
+
+        expect(html.serialize(html.deserialize(htmlValue))).toEqual(
+          '<p><del>first</del><del><sup>second</sup></del><del><sub><sup>third</sup></sub></del></p>'
+        );
       });
     });
   });
