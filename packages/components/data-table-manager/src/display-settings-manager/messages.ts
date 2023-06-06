@@ -29,7 +29,7 @@ export default defineMessages({
   densityDisplayComfortableOption: {
     id: 'UIKit.DataTableManager.DensityManager.densityDisplayComfortableOption',
     description: 'Density display default option.',
-    defaultMessage: 'Default',
+    defaultMessage: 'Comfortable',
   },
   densityDisplayCompactOption: {
     id: 'UIKit.DataTableManager.DensityManager.densityDisplayCompactOption',
