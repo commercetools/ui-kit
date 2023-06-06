@@ -117,7 +117,9 @@ const TagBody = (props: TTagBodyProps) => {
         {props.isDraggable && !props.isDisabled ? (
           <DragIcon data-testid="drag-icon" size="medium" />
         ) : null}
-        <Text.Body tone={textTone}>{props.children}</Text.Body>
+        <Text.Body tone={textTone} as="span">
+          {props.children}
+        </Text.Body>
       </Spacings.Inline>
     </Body>
   );

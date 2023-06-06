@@ -1,9 +1,21 @@
 import { screen, render } from '../../../../test/test-utils';
 import Tag from './tag';
 
-it('should render children', () => {
+it('should render text as children', () => {
   render(<Tag>Bread</Tag>);
   expect(screen.getByText('Bread')).toBeInTheDocument();
+});
+it('should render html markup as children', () => {
+  const error = jest.spyOn(console, 'error').mockImplementation(() => {});
+  render(
+    <Tag>
+      <div>👋</div>
+    </Tag>
+  );
+
+  // ensure is renders correctly without validateDOMNesting warning
+  expect(screen.getByText('👋')).toBeInTheDocument();
+  expect(error).not.toHaveBeenCalled();
 });
 
 it('should call onClick when clicked', () => {

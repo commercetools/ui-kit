@@ -1,5 +1,34 @@
 # @commercetools-uikit/data-table-manager
 
+## 16.2.0
+
+### Minor Changes
+
+- [#2524](https://github.com/commercetools/ui-kit/pull/2524) [`daab7741e`](https://github.com/commercetools/ui-kit/commit/daab7741e3b46044695eff319053809449488f3a) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding accessible information to the icons
+
+### Patch Changes
+
+- Updated dependencies [[`4474bf760`](https://github.com/commercetools/ui-kit/commit/4474bf760c7f5572c03ede11dbc023ac97c503d7), [`c3a505a94`](https://github.com/commercetools/ui-kit/commit/c3a505a941958e095799db6f9eab02a872b9b0fd), [`b6fae35c8`](https://github.com/commercetools/ui-kit/commit/b6fae35c8cc0de405a4d8aacbffac4f46a369fc4), [`daab7741e`](https://github.com/commercetools/ui-kit/commit/daab7741e3b46044695eff319053809449488f3a)]:
+  - @commercetools-uikit/tag@16.2.0
+  - @commercetools-uikit/design-system@16.2.0
+  - @commercetools-uikit/hooks@16.2.0
+  - @commercetools-uikit/icons@16.2.0
+  - @commercetools-uikit/accessible-button@16.2.0
+  - @commercetools-uikit/primary-button@16.2.0
+  - @commercetools-uikit/secondary-button@16.2.0
+  - @commercetools-uikit/secondary-icon-button@16.2.0
+  - @commercetools-uikit/card@16.2.0
+  - @commercetools-uikit/field-label@16.2.0
+  - @commercetools-uikit/async-select-input@16.2.0
+  - @commercetools-uikit/radio-input@16.2.0
+  - @commercetools-uikit/select-input@16.2.0
+  - @commercetools-uikit/text@16.2.0
+  - @commercetools-uikit/collapsible-motion@16.2.0
+  - @commercetools-uikit/spacings@16.2.0
+  - @commercetools-uikit/accessible-hidden@16.2.0
+  - @commercetools-uikit/grid@16.2.0
+  - @commercetools-uikit/utils@16.2.0
+
 ## 16.1.1
 
 ### Patch Changes

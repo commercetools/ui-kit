@@ -1,5 +1,16 @@
 # @commercetools-uikit/flat-button
 
+## 16.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`c3a505a94`](https://github.com/commercetools/ui-kit/commit/c3a505a941958e095799db6f9eab02a872b9b0fd)]:
+  - @commercetools-uikit/design-system@16.2.0
+  - @commercetools-uikit/accessible-button@16.2.0
+  - @commercetools-uikit/spacings-inline@16.2.0
+  - @commercetools-uikit/text@16.2.0
+  - @commercetools-uikit/utils@16.2.0
+
 ## 16.1.1
 
 ### Patch Changes

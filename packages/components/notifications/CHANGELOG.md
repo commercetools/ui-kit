@@ -1,5 +1,19 @@
 # @commercetools-uikit/notifications
 
+## 16.2.0
+
+### Minor Changes
+
+- [#2531](https://github.com/commercetools/ui-kit/pull/2531) [`c3a505a94`](https://github.com/commercetools/ui-kit/commit/c3a505a941958e095799db6f9eab02a872b9b0fd) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Included `onRemove` property to allow rendering a close icon which will call the property callback.
+
+### Patch Changes
+
+- Updated dependencies [[`c3a505a94`](https://github.com/commercetools/ui-kit/commit/c3a505a941958e095799db6f9eab02a872b9b0fd), [`daab7741e`](https://github.com/commercetools/ui-kit/commit/daab7741e3b46044695eff319053809449488f3a)]:
+  - @commercetools-uikit/design-system@16.2.0
+  - @commercetools-uikit/icons@16.2.0
+  - @commercetools-uikit/accessible-button@16.2.0
+  - @commercetools-uikit/utils@16.2.0
+
 ## 16.1.1
 
 ### Patch Changes

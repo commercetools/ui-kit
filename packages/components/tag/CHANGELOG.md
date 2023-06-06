@@ -1,5 +1,20 @@
 # @commercetools-uikit/tag
 
+## 16.2.0
+
+### Patch Changes
+
+- [#2533](https://github.com/commercetools/ui-kit/pull/2533) [`4474bf760`](https://github.com/commercetools/ui-kit/commit/4474bf760c7f5572c03ede11dbc023ac97c503d7) Thanks [@kark](https://github.com/kark)! - Make `<TagBody>` render as `<span>` rather than `<p>`
+
+- Updated dependencies [[`c3a505a94`](https://github.com/commercetools/ui-kit/commit/c3a505a941958e095799db6f9eab02a872b9b0fd), [`daab7741e`](https://github.com/commercetools/ui-kit/commit/daab7741e3b46044695eff319053809449488f3a)]:
+  - @commercetools-uikit/design-system@16.2.0
+  - @commercetools-uikit/icons@16.2.0
+  - @commercetools-uikit/accessible-button@16.2.0
+  - @commercetools-uikit/constraints@16.2.0
+  - @commercetools-uikit/text@16.2.0
+  - @commercetools-uikit/spacings@16.2.0
+  - @commercetools-uikit/utils@16.2.0
+
 ## 16.1.1
 
 ### Patch Changes

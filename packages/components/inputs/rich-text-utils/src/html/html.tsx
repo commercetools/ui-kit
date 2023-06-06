@@ -149,6 +149,8 @@ const TEXT_TAGS = {
   EM: () => ({ italic: true }),
   I: () => ({ italic: true }),
   S: () => ({ strikethrough: true }),
+  SUP: () => ({ superscript: true }),
+  SUB: () => ({ subscript: true }),
   STRONG: () => ({ bold: true }),
   U: () => ({ underline: true }),
 };
@@ -279,10 +281,7 @@ const deserializeElement = (
     return children.map((child) => jsx('text', attrs, child));
   }
 
-  // each non-empty text node must be wrapped with a paragraph
-  return children.map((child) =>
-    Text.isText(child) && child.text ? wrapWithParagraph(child) : child
-  );
+  return children;
 };
 const deserialize = (html: Html) => {
   const document = new DOMParser().parseFromString(
