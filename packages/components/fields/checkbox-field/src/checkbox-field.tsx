@@ -192,7 +192,6 @@ class CheckBoxField extends Component<
           hintIcon={this.props.hintIcon}
           badge={this.props.badge}
           hasRequiredIndicator={this.props.isRequired}
-          id={this.state.id}
         />
         <CheckboxInput
           id={this.state.id}
@@ -204,7 +203,7 @@ class CheckBoxField extends Component<
           isHovered={false}
           isDisabled={this.props.isDisabled}
           isReadOnly={this.props.isReadOnly}
-          hasError={hasError}
+          hasError={this.props.hasError}
         >
           {this.props.children}
         </CheckboxInput>

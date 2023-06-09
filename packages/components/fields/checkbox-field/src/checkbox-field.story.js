@@ -1,6 +1,12 @@
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
+import {
+  withKnobs,
+  boolean,
+  text,
+  select,
+  object,
+} from '@storybook/addon-knobs/react';
 import { createElement } from 'react';
 import { Value } from 'react-value';
 import Spacings from '@commercetools-uikit/spacings';
@@ -66,6 +72,21 @@ storiesOf('Components|Fields', module)
                       ? action('onInfoButtonClick')
                       : undefined
                   }
+                  errors={object(
+                    'errors',
+                    { missing: true, customError: true },
+                    checkBoxField
+                  )}
+                  renderError={(key) => {
+                    switch (key) {
+                      case 'customError':
+                        return 'A custom error.';
+                      default:
+                        return null;
+                    }
+                  }}
+                  isRequired={boolean('isRequired', false, checkBoxField)}
+                  touched={boolean('touched', false, checkBoxField)}
                   hintIcon={hintIcon}
                   badge={text('badge', '', checkBoxField)}
                 >
@@ -97,6 +118,7 @@ storiesOf('Components|Fields', module)
                       ? action('onInfoButtonClick')
                       : undefined
                   }
+                  isRequired={boolean('isRequired', false, checkBoxField)}
                   hintIcon={hintIcon}
                   badge={text('badge', '', checkBoxField)}
                 >
@@ -130,6 +152,7 @@ storiesOf('Components|Fields', module)
                         ? action('onInfoButtonClick')
                         : undefined
                     }
+                    isRequired={boolean('isRequired', false, checkBoxField)}
                     hintIcon={hintIcon}
                     badge={text('badge', '', checkBoxField)}
                   >
