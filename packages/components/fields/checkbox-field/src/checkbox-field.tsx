@@ -29,7 +29,7 @@ const sequentialId = createSequentialId('checkbox-field-');
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-type TCheckBoxFieldProps = {
+export type TCheckBoxFieldProps = {
   /**
    * Used as HTML id attribute. An id is auto-generated when it is not specified.
    */
