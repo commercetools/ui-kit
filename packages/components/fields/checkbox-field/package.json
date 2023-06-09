@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/checkbox-field",
   "description": "A controlled checkbox input component with validation states and a label.",
-  "version": "15.13.1",
+  "version": "16.2.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
