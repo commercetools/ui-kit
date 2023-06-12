@@ -4,7 +4,7 @@ import { screen, render } from '../../../../../test/test-utils';
 import {
   WRAPPED_TEXT_VISIBLE,
   SHOW_HIDE_ON_DEMAND,
-  DENSITY_DEFAULT,
+  DENSITY_COMFORTABLE,
   DENSITY_COMPACT,
 } from './constants';
 import DisplaySettingsManager from './display-settings-manager';
@@ -39,7 +39,7 @@ describe('DisplaySettingsManager', () => {
     const props = createTestProps();
     const { container } = render(<DisplaySettingsManager {...props} />);
     expect(
-      container.querySelector(`[value='${DENSITY_DEFAULT}']`)
+      container.querySelector(`[value='${DENSITY_COMFORTABLE}']`)
     ).toBeChecked();
   });
 

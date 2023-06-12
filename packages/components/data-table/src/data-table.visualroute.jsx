@@ -83,8 +83,8 @@ export const component = () => (
         <DataTable rows={testRows} columns={testColumns} />
       </div>
     </Spec>
-    <Spec label="condensed mode">
-      <DataTable rows={testRows} columns={testColumns} isCondensed />
+    <Spec label="Non condensed mode">
+      <DataTable rows={testRows} columns={testColumns} isCondensed={false} />
     </Spec>
     <Spec label="with a numeric max-width">
       <DataTable rows={testRows} columns={testColumns} maxWidth={300} />
@@ -114,11 +114,11 @@ export const component = () => (
         maxHeight={150}
       />
     </Spec>
-    <Spec label="condensed mode with max-width">
+    <Spec label="Non condensed mode with max-width">
       <DataTable
         rows={testRows}
         columns={testColumns}
-        isCondensed
+        isCondensed={false}
         maxWidth={300}
       />
     </Spec>
@@ -179,11 +179,11 @@ export const component = () => (
         footer={<div>This is a Footer</div>}
       />
     </Spec>
-    <Spec label="with a footer - condensed mode">
+    <Spec label="with a footer - non condensed mode">
       <DataTable
         rows={testRows}
         columns={testColumns}
-        isCondensed
+        isCondensed={false}
         footer={<div>This is a Footer</div>}
       />
     </Spec>
@@ -498,11 +498,11 @@ export const component = () => (
         ]}
       />
     </Spec>
-    <Spec label="with maxWidth, defined per-column widths, and truncated columns - condensed mode">
+    <Spec label="with maxWidth, defined per-column widths, and truncated columns - non condensed mode">
       <DataTable
         rows={testRows}
         maxWidth={300}
-        isCondensed
+        isCondensed={false}
         columns={[
           {
             key: 'title',
