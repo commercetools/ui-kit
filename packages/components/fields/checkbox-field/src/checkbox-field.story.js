@@ -27,7 +27,7 @@ const states = {
 const checkBoxField = 'Fruits';
 // hintIcon will only render when hint exists
 const iconNames = Object.keys(icons);
-const icon = select('hintIcon', ['', ...iconNames], '', checkBoxField);
+const icon = select('hintIcon', ['', ...iconNames], '', CheckBoxField);
 const hintIcon = icon ? createElement(icons[icon]) : undefined;
 
 storiesOf('Components|Fields', module)
@@ -38,7 +38,7 @@ storiesOf('Components|Fields', module)
       sidebar: Readme,
     },
   })
-  .add('CheckboxField', () => (
+  .add('CheckBoxField', () => (
     <Section>
       <Spacings.Stack>
         {Object.entries(states).map(([stateKey, stateLabel]) => (
@@ -75,7 +75,7 @@ storiesOf('Components|Fields', module)
                   errors={object(
                     'errors',
                     { missing: true, customError: true },
-                    checkBoxField
+                    CheckBoxField
                   )}
                   renderError={(key) => {
                     switch (key) {

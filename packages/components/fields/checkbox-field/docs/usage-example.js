@@ -1,22 +1,22 @@
-import CheckboxField from '@commercetools-uikit/checkbox-field';
+import CheckBoxField from '@commercetools-uikit/checkbox-field';
 
 const Example = () => (
   <div>
-    <CheckboxField
+    <CheckBoxField
       value="foo-checkbox-value"
       onChange={(event) => alert(event.target.value)}
       isChecked={true}
     >
       A pre-checked option
-    </CheckboxField>
-    <CheckboxField
+    </CheckBoxField>
+    <CheckBoxField
       value="bar-checkbox-value"
       onChange={(event) => alert(event.target.value)}
       isDisabled={true}
     >
       A disabled option
-    </CheckboxField>
-    <CheckboxField
+    </CheckBoxField>
+    <CheckBoxField
       value="unknown-checkbox-value"
       onChange={(event) => alert(event.target.value)}
       aria-label={'An Option Without a Visible Label'}
