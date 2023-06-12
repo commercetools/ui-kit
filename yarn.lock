@@ -2396,7 +2396,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/checkbox-field@workspace:packages/components/fields/checkbox-field":
+"@commercetools-uikit/checkbox-field@16.2.1, @commercetools-uikit/checkbox-field@workspace:packages/components/fields/checkbox-field":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/checkbox-field@workspace:packages/components/fields/checkbox-field"
   dependencies:
@@ -2879,6 +2879,7 @@ __metadata:
     "@babel/runtime-corejs3": ^7.20.13
     "@commercetools-uikit/async-creatable-select-field": 16.2.1
     "@commercetools-uikit/async-select-field": 16.2.1
+    "@commercetools-uikit/checkbox-field": 16.2.1
     "@commercetools-uikit/creatable-select-field": 16.2.1
     "@commercetools-uikit/date-field": 16.2.1
     "@commercetools-uikit/date-range-field": 16.2.1
