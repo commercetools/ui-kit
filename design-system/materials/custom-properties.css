@@ -478,7 +478,7 @@
   --font-weight-for-button: 500;
   --font-weight-for-table-header: 600;
   --font-weight-for-text-as-bold: 600;
-  --margin-for-table-header: 16px;
+  --margin-for-table-header: 8px;
   --margin-for-table-cell-as-condensed: 8px;
   --margin-for-view-switcher-icon: 0 var(--spacing-20) 0 0;
   --margin-for-group-heading-select-input-options: 8px;

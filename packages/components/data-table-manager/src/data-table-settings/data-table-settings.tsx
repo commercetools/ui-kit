@@ -42,7 +42,7 @@ export type TDisplaySettingsProps = {
    * Set this to `true` to reduce the paddings of all cells, allowing the table to display
    * more data in less space.
    *
-   * @@defaultValue@@: false
+   * @@defaultValue@@: true
    */
   isCondensed?: boolean;
 

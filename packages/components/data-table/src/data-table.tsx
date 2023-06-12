@@ -57,7 +57,7 @@ const defaultProps: Pick<
   | 'itemRenderer'
 > = {
   columns: [],
-  isCondensed: false,
+  isCondensed: true,
   wrapHeaderLabels: true,
   verticalCellAlignment: 'top',
   horizontalCellAlignment: 'left',
