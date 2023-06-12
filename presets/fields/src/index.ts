@@ -15,4 +15,4 @@ export { default as AsyncCreatableSelectField } from '@commercetools-uikit/async
 export { default as PasswordField } from '@commercetools-uikit/password-field';
 export { default as RadioField } from '@commercetools-uikit/radio-field';
 export { default as SearchSelectField } from '@commercetools-uikit/search-select-field';
-export { default as CheckboxField } from '@commercetools-uikit/checkbox-field';
+export { default as CheckBoxField } from '@commercetools-uikit/checkbox-field';
