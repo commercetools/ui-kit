@@ -17,10 +17,9 @@ import CheckboxField from '.';
 import * as icons from '../../../icons';
 import Readme from '../README.md';
 
-const checkboxField = 'Fruits';
 // hintIcon will only render when hint exists
 const iconNames = Object.keys(icons);
-const icon = select('hintIcon', ['', ...iconNames], '', CheckboxField);
+const icon = select('hintIcon', ['', ...iconNames], '');
 const hintIcon = icon ? createElement(icons[icon]) : undefined;
 
 storiesOf('Components|Fields', module)
@@ -51,19 +50,15 @@ storiesOf('Components|Fields', module)
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               hasError={boolean('Error', false)}
-              title={text('title', 'Fruits', checkboxField)}
-              hint={text('hint', 'Select an option', checkboxField)}
-              description={text('description', '', checkboxField)}
+              title={text('title', 'Fruits', '')}
+              hint={text('hint', 'Select an option', '')}
+              description={text('description', '', '')}
               onInfoButtonClick={
-                boolean('show info button', false, checkboxField)
+                boolean('show info button', false, '')
                   ? action('onInfoButtonClick')
                   : undefined
               }
-              errors={object(
-                'errors',
-                { missing: true, customError: true },
-                CheckboxField
-              )}
+              errors={object('errors', { missing: true, customError: true })}
               renderError={(key) => {
                 switch (key) {
                   case 'customError':
@@ -72,11 +67,11 @@ storiesOf('Components|Fields', module)
                     return null;
                 }
               }}
-              isRequired={boolean('isRequired', false, checkboxField)}
-              touched={boolean('touched', false, checkboxField)}
+              isRequired={boolean('isRequired', false, '')}
+              touched={boolean('touched', false, '')}
               hintIcon={hintIcon}
               badge={
-                boolean('show badge', false, checkboxField) ? (
+                boolean('show badge', false, '') ? (
                   <FlatButton
                     tone="primary"
                     icon={<icons.BoxIcon />}
