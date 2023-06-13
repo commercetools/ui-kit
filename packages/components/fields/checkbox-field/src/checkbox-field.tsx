@@ -29,7 +29,7 @@ const sequentialId = createSequentialId('checkbox-field-');
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-export type TCheckBoxFieldProps = {
+export type TCheckboxFieldProps = {
   /**
    * Used as HTML id attribute. An id is auto-generated when it is not specified.
    */
@@ -127,13 +127,13 @@ export type TCheckBoxFieldProps = {
    */
 };
 
-type TCheckBoxFieldStates = Pick<TCheckBoxFieldProps, 'id'>;
+type TCheckboxFieldStates = Pick<TCheckboxFieldProps, 'id'>;
 
-class CheckBoxField extends Component<
-  TCheckBoxFieldProps,
-  TCheckBoxFieldStates
+class CheckboxField extends Component<
+  TCheckboxFieldProps,
+  TCheckboxFieldStates
 > {
-  static displayName = 'CheckBoxField';
+  static displayName = 'CheckboxField';
 
   static defaultProps = {
     isChecked: false,
@@ -148,8 +148,8 @@ class CheckBoxField extends Component<
   };
 
   static getDerivedStateFromProps = (
-    props: TCheckBoxFieldProps,
-    state: TCheckBoxFieldStates
+    props: TCheckboxFieldProps,
+    state: TCheckboxFieldStates
   ) => ({
     id: getFieldId(props, state, sequentialId),
   });
@@ -171,14 +171,14 @@ class CheckBoxField extends Component<
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
-        'CheckBoxField: `onChange` is required when field is not read only.'
+        'CheckboxField: `onChange` is required when field is not read only.'
       );
     }
 
     if (this.props.hintIcon) {
       warning(
         typeof this.props.hint === 'string' || isValidElement(this.props.hint),
-        'CheckBoxField: `hint` is required to be string or ReactNode if hintIcon is present'
+        'CheckboxField: `hint` is required to be string or ReactNode if hintIcon is present'
       );
     }
 
@@ -217,4 +217,4 @@ class CheckBoxField extends Component<
   }
 }
 
-export default CheckBoxField;
+export default CheckboxField;

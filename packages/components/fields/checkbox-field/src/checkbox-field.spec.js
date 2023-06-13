@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '../../../../../test/test-utils';
-import CheckBoxField from './checkbox-field';
+import CheckboxField from './checkbox-field';
 
 // This component is used to enable easy testing.
 // It overwrites the onChange function and places a label for the
@@ -30,20 +30,20 @@ class Story extends Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.props.id}>CheckBoxField</label>
-        <CheckBoxField
+        <label htmlFor={this.props.id}>CheckboxField</label>
+        <CheckboxField
           {...this.props}
           value={this.state.value}
           onChange={this.handleChange}
         >
           Accept Terms
-        </CheckBoxField>
+        </CheckboxField>
       </div>
     );
   }
 }
 
-const renderCheckBoxField = (customProps, options) => {
+const renderCheckboxField = (customProps, options) => {
   const props = {
     title: 'CheckBox Field',
     onChange: jest.fn(),
@@ -55,28 +55,28 @@ const renderCheckBoxField = (customProps, options) => {
   };
 };
 
-describe('CheckBoxField', () => {
+describe('CheckboxField', () => {
   it('should render a checkbox field', () => {
-    const { getByLabelText } = renderCheckBoxField();
+    const { getByLabelText } = renderCheckboxField();
     expect(getByLabelText('Accept Terms')).toBeInTheDocument();
   });
 
   it('should have an HTML name', () => {
-    const { container } = renderCheckBoxField({ name: 'foo' });
+    const { container } = renderCheckboxField({ name: 'foo' });
     expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
   });
 
   it('should call onChange when changing the value', () => {
-    const { getByLabelText, onChange } = renderCheckBoxField({
+    const { getByLabelText, onChange } = renderCheckboxField({
       isChecked: true,
     });
-    fireEvent.click(getByLabelText(/CheckBoxField/));
+    fireEvent.click(getByLabelText(/CheckboxField/));
     expect(onChange).toHaveBeenCalled();
   });
 
   describe('when `description` is passed', () => {
     it('should render a description', () => {
-      const { getByText } = renderCheckBoxField({
+      const { getByText } = renderCheckboxField({
         description: 'foo description',
       });
       expect(getByText('foo description')).toBeInTheDocument();
@@ -85,14 +85,14 @@ describe('CheckBoxField', () => {
 
   describe('when `hint` is passed', () => {
     it('should render a hint', () => {
-      const { getByText } = renderCheckBoxField({ hint: 'foo hint' });
+      const { getByText } = renderCheckboxField({ hint: 'foo hint' });
       expect(getByText('foo hint')).toBeInTheDocument();
     });
   });
 
   describe('when `hintIcon` is passed', () => {
     it('should render hintIcon and hint', () => {
-      const { getByText } = renderCheckBoxField({
+      const { getByText } = renderCheckboxField({
         hintIcon: <span>icon hint</span>,
         hint: <span>foo hint</span>,
       });
@@ -103,28 +103,28 @@ describe('CheckBoxField', () => {
 
   describe('when `badge` is passed', () => {
     it('should render a badge', () => {
-      const { getByText } = renderCheckBoxField({ badge: 'foo badge' });
+      const { getByText } = renderCheckboxField({ badge: 'foo badge' });
       expect(getByText('foo badge')).toBeInTheDocument();
     });
   });
 
   describe('when disabled', () => {
     it('should disable the input', () => {
-      const { getByLabelText } = renderCheckBoxField({ isDisabled: true });
-      expect(getByLabelText(/CheckBoxField/)).toBeDisabled();
+      const { getByLabelText } = renderCheckboxField({ isDisabled: true });
+      expect(getByLabelText(/CheckboxField/)).toBeDisabled();
     });
   });
 
   describe('when readOnly', () => {
     it('should disable the input', () => {
-      const { getByLabelText } = renderCheckBoxField({ isReadOnly: true });
-      expect(getByLabelText(/CheckBoxField/)).toHaveAttribute('readonly');
+      const { getByLabelText } = renderCheckboxField({ isReadOnly: true });
+      expect(getByLabelText(/CheckboxField/)).toHaveAttribute('readonly');
     });
   });
 
   describe('when required', () => {
     it('should add `*` to title`', () => {
-      const { getByText } = renderCheckBoxField({ isRequired: true });
+      const { getByText } = renderCheckboxField({ isRequired: true });
       expect(getByText('*')).toBeInTheDocument();
     });
   });
@@ -132,14 +132,14 @@ describe('CheckBoxField', () => {
   describe('when showing an info button', () => {
     it('should render an info button', () => {
       const onInfoButtonClick = jest.fn();
-      const { getByLabelText } = renderCheckBoxField({
+      const { getByLabelText } = renderCheckboxField({
         onInfoButtonClick,
       });
       expect(getByLabelText('More Info')).toBeInTheDocument();
     });
     it('should call onInfoButtonClick when button is clicked', () => {
       const onInfoButtonClick = jest.fn();
-      const { getByLabelText } = renderCheckBoxField({ onInfoButtonClick });
+      const { getByLabelText } = renderCheckboxField({ onInfoButtonClick });
       getByLabelText('More Info').click();
       expect(onInfoButtonClick).toHaveBeenCalled();
     });
@@ -148,7 +148,7 @@ describe('CheckBoxField', () => {
   describe('when field is touched and has errors', () => {
     describe('when field empty', () => {
       it('should render a default error', () => {
-        const { getByText } = renderCheckBoxField({
+        const { getByText } = renderCheckboxField({
           touched: true,
           errors: { missing: true },
         });
@@ -157,7 +157,7 @@ describe('CheckBoxField', () => {
     });
     describe('when there is a custom error', () => {
       it('should render the custom error message', () => {
-        const { getByText } = renderCheckBoxField({
+        const { getByText } = renderCheckboxField({
           touched: true,
           errors: { custom: true },
           renderError: () => 'Custom error',

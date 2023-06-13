@@ -13,14 +13,14 @@ import { Value } from 'react-value';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import Section from '../../../../../docs/.storybook/decorators/section';
-import CheckBoxField from '.';
+import CheckboxField from '.';
 import * as icons from '../../../icons';
 import Readme from '../README.md';
 
-const checkBoxField = 'Fruits';
+const checkboxField = 'Fruits';
 // hintIcon will only render when hint exists
 const iconNames = Object.keys(icons);
-const icon = select('hintIcon', ['', ...iconNames], '', CheckBoxField);
+const icon = select('hintIcon', ['', ...iconNames], '', CheckboxField);
 const hintIcon = icon ? createElement(icons[icon]) : undefined;
 
 storiesOf('Components|Fields', module)
@@ -31,14 +31,14 @@ storiesOf('Components|Fields', module)
       sidebar: Readme,
     },
   })
-  .add('CheckBoxField', () => (
+  .add('CheckboxField', () => (
     <Section>
       <Spacings.Stack>
-        <Text.Body isBold>CheckBoxField</Text.Body>
+        <Text.Body isBold>CheckboxField</Text.Body>
         <Value
           defaultValue={true}
           render={(isChecked, onChange) => (
-            <CheckBoxField
+            <CheckboxField
               id={text('id', '')}
               name={text('name', '')}
               onChange={(event) => {
@@ -51,18 +51,18 @@ storiesOf('Components|Fields', module)
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               hasError={boolean('Error', false)}
-              title={text('title', 'Fruits', checkBoxField)}
-              hint={text('hint', 'Select an option', checkBoxField)}
-              description={text('description', '', checkBoxField)}
+              title={text('title', 'Fruits', checkboxField)}
+              hint={text('hint', 'Select an option', checkboxField)}
+              description={text('description', '', checkboxField)}
               onInfoButtonClick={
-                boolean('show info button', false, checkBoxField)
+                boolean('show info button', false, checkboxField)
                   ? action('onInfoButtonClick')
                   : undefined
               }
               errors={object(
                 'errors',
                 { missing: true, customError: true },
-                CheckBoxField
+                CheckboxField
               )}
               renderError={(key) => {
                 switch (key) {
@@ -72,11 +72,11 @@ storiesOf('Components|Fields', module)
                     return null;
                 }
               }}
-              isRequired={boolean('isRequired', false, checkBoxField)}
-              touched={boolean('touched', false, checkBoxField)}
+              isRequired={boolean('isRequired', false, checkboxField)}
+              touched={boolean('touched', false, checkboxField)}
               hintIcon={hintIcon}
               badge={
-                boolean('show badge', false, checkBoxField) ? (
+                boolean('show badge', false, checkboxField) ? (
                   <FlatButton
                     tone="primary"
                     icon={<icons.BoxIcon />}
@@ -87,7 +87,7 @@ storiesOf('Components|Fields', module)
               }
             >
               {text('Label', 'This is a label')}
-            </CheckBoxField>
+            </CheckboxField>
           )}
         />
       </Spacings.Stack>

@@ -1,4 +1,4 @@
-import { CheckBoxField } from '@commercetools-frontend/ui-kit';
+import { CheckboxField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
 const value = 'apple';
@@ -8,52 +8,52 @@ export const routePath = '/checkbox-field';
 export const component = () => (
   <Suite>
     <Spec label="minimal">
-      <CheckBoxField title="Welcome Text" value={value} onChange={() => {}}>
+      <CheckboxField title="Welcome Text" value={value} onChange={() => {}}>
         I want capri sun
-      </CheckBoxField>
+      </CheckboxField>
     </Spec>
     <Spec label="when required">
-      <CheckBoxField
+      <CheckboxField
         title="Welcome Text"
         isRequired={true}
         value={value}
         onChange={() => {}}
       >
         I want capri sun
-      </CheckBoxField>
+      </CheckboxField>
     </Spec>
     <Spec label="when disabled">
-      <CheckBoxField
+      <CheckboxField
         title="Welcome Text"
         isDisabled={true}
         value={value}
         onChange={() => {}}
       >
        I want capri sun
-      </CheckBoxField>
+      </CheckboxField>
     </Spec>
     <Spec label="when readonly">
-      <CheckBoxField
+      <CheckboxField
         title="Welcome Text"
         isReadOnly={true}
         value={value}
         onChange={() => {}}
       >
        I want capri sun
-      </CheckBoxField>
+      </CheckboxField>
     </Spec>
     <Spec label="with error when not touched">
-      <CheckBoxField
+      <CheckboxField
         title="Welcome Text"
         value={value}
         onChange={() => {}}
         errors={{ missing: true }}
       >
         I want capri sun
-      </CheckBoxField>
+      </CheckboxField>
     </Spec>
     <Spec label="with error when touched">
-      <CheckBoxField
+      <CheckboxField
         title="Welcome Text"
         value={value}
         onChange={() => {}}
@@ -61,7 +61,7 @@ export const component = () => (
         touched={true}
       >
         I want capri sun
-      </CheckBoxField>
+      </CheckboxField>
     </Spec>
   </Suite>
 );

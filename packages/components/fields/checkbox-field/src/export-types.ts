@@ -1,1 +1,1 @@
-export type { TCheckBoxFieldProps } from './checkbox-field';
+export type { TCheckboxFieldProps } from './checkbox-field';

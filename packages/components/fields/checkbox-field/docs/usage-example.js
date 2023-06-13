@@ -1,4 +1,4 @@
-import CheckBoxField from '@commercetools-uikit/checkbox-field';
+import CheckboxField from '@commercetools-uikit/checkbox-field';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { WarningIcon } from '@commercetools-uikit/icons';
 import { defineMessage, FormattedMessage } from 'react-intl';
@@ -7,7 +7,7 @@ const messages = defineMessage();
 
 const Example = () => (
   <div>
-    <CheckBoxField
+    <CheckboxField
       value="foo-checkbox-value"
       onChange={(event) => alert(event.target.value)}
       isChecked={true}
@@ -17,8 +17,8 @@ const Example = () => (
       badge={<FlatButton tone="primary" label="label" />}
     >
       A pre-checked option
-    </CheckBoxField>
-    <CheckBoxField
+    </CheckboxField>
+    <CheckboxField
       value="bar-checkbox-value"
       onChange={(event) => alert(event.target.value)}
       isDisabled={true}
@@ -28,8 +28,8 @@ const Example = () => (
       badge={<FlatButton tone="primary" label="label" />}
     >
       A disabled option
-    </CheckBoxField>
-    <CheckBoxField
+    </CheckboxField>
+    <CheckboxField
       value="unknown-checkbox-value"
       onChange={(event) => alert(event.target.value)}
       aria-label={'An Option Without a Visible Label'}
