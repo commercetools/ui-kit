@@ -55,111 +55,115 @@ const renderCheckBoxField = (customProps, options) => {
   };
 };
 
-it('should render a checkbox field', () => {
-  const { getByLabelText } = renderCheckBoxField();
-  expect(getByLabelText('Accept Terms')).toBeInTheDocument();
-});
+describe('CheckBoxField', () => {
+  it('should render a checkbox field', () => {
+    const { getByLabelText } = renderCheckBoxField();
+    expect(getByLabelText('Accept Terms')).toBeInTheDocument();
+  });
 
-it('should have an HTML name', () => {
-  const { container } = renderCheckBoxField({ name: 'foo' });
-  expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
-});
+  it('should have an HTML name', () => {
+    const { container } = renderCheckBoxField({ name: 'foo' });
+    expect(container.querySelector('[name="foo"]')).toBeInTheDocument();
+  });
 
-it('should call onChange when changing the value', () => {
-  const { getByLabelText, onChange } = renderCheckBoxField({ isChecked: true });
-  fireEvent.click(getByLabelText(/CheckBoxField/));
-  expect(onChange).toHaveBeenCalled();
-});
-
-describe('when `description` is passed', () => {
-  it('should render a description', () => {
-    const { getByText } = renderCheckBoxField({
-      description: 'foo description',
+  it('should call onChange when changing the value', () => {
+    const { getByLabelText, onChange } = renderCheckBoxField({
+      isChecked: true,
     });
-    expect(getByText('foo description')).toBeInTheDocument();
+    fireEvent.click(getByLabelText(/CheckBoxField/));
+    expect(onChange).toHaveBeenCalled();
   });
-});
 
-describe('when `hint` is passed', () => {
-  it('should render a hint', () => {
-    const { getByText } = renderCheckBoxField({ hint: 'foo hint' });
-    expect(getByText('foo hint')).toBeInTheDocument();
-  });
-});
-
-describe('when `hintIcon` is passed', () => {
-  it('should render hintIcon and hint', () => {
-    const { getByText } = renderCheckBoxField({
-      hintIcon: <span>icon hint</span>,
-      hint: <span>foo hint</span>,
-    });
-    expect(getByText('icon hint')).toBeInTheDocument();
-    expect(getByText('foo hint')).toBeInTheDocument();
-  });
-});
-
-describe('when `badge` is passed', () => {
-  it('should render a badge', () => {
-    const { getByText } = renderCheckBoxField({ badge: 'foo badge' });
-    expect(getByText('foo badge')).toBeInTheDocument();
-  });
-});
-
-describe('when disabled', () => {
-  it('should disable the input', () => {
-    const { getByLabelText } = renderCheckBoxField({ isDisabled: true });
-    expect(getByLabelText(/CheckBoxField/)).toBeDisabled();
-  });
-});
-
-describe('when readOnly', () => {
-  it('should disable the input', () => {
-    const { getByLabelText } = renderCheckBoxField({ isReadOnly: true });
-    expect(getByLabelText(/CheckBoxField/)).toHaveAttribute('readonly');
-  });
-});
-
-describe('when required', () => {
-  it('should add `*` to title`', () => {
-    const { getByText } = renderCheckBoxField({ isRequired: true });
-    expect(getByText('*')).toBeInTheDocument();
-  });
-});
-
-describe('when showing an info button', () => {
-  it('should render an info button', () => {
-    const onInfoButtonClick = jest.fn();
-    const { getByLabelText } = renderCheckBoxField({
-      onInfoButtonClick,
-    });
-    expect(getByLabelText('More Info')).toBeInTheDocument();
-  });
-  it('should call onInfoButtonClick when button is clicked', () => {
-    const onInfoButtonClick = jest.fn();
-    const { getByLabelText } = renderCheckBoxField({ onInfoButtonClick });
-    getByLabelText('More Info').click();
-    expect(onInfoButtonClick).toHaveBeenCalled();
-  });
-});
-
-describe('when field is touched and has errors', () => {
-  describe('when field empty', () => {
-    it('should render a default error', () => {
+  describe('when `description` is passed', () => {
+    it('should render a description', () => {
       const { getByText } = renderCheckBoxField({
-        touched: true,
-        errors: { missing: true },
+        description: 'foo description',
       });
-      expect(getByText(/field is required/i)).toBeInTheDocument();
+      expect(getByText('foo description')).toBeInTheDocument();
     });
   });
-  describe('when there is a custom error', () => {
-    it('should render the custom error message', () => {
+
+  describe('when `hint` is passed', () => {
+    it('should render a hint', () => {
+      const { getByText } = renderCheckBoxField({ hint: 'foo hint' });
+      expect(getByText('foo hint')).toBeInTheDocument();
+    });
+  });
+
+  describe('when `hintIcon` is passed', () => {
+    it('should render hintIcon and hint', () => {
       const { getByText } = renderCheckBoxField({
-        touched: true,
-        errors: { custom: true },
-        renderError: () => 'Custom error',
+        hintIcon: <span>icon hint</span>,
+        hint: <span>foo hint</span>,
       });
-      expect(getByText('Custom error')).toBeInTheDocument();
+      expect(getByText('icon hint')).toBeInTheDocument();
+      expect(getByText('foo hint')).toBeInTheDocument();
+    });
+  });
+
+  describe('when `badge` is passed', () => {
+    it('should render a badge', () => {
+      const { getByText } = renderCheckBoxField({ badge: 'foo badge' });
+      expect(getByText('foo badge')).toBeInTheDocument();
+    });
+  });
+
+  describe('when disabled', () => {
+    it('should disable the input', () => {
+      const { getByLabelText } = renderCheckBoxField({ isDisabled: true });
+      expect(getByLabelText(/CheckBoxField/)).toBeDisabled();
+    });
+  });
+
+  describe('when readOnly', () => {
+    it('should disable the input', () => {
+      const { getByLabelText } = renderCheckBoxField({ isReadOnly: true });
+      expect(getByLabelText(/CheckBoxField/)).toHaveAttribute('readonly');
+    });
+  });
+
+  describe('when required', () => {
+    it('should add `*` to title`', () => {
+      const { getByText } = renderCheckBoxField({ isRequired: true });
+      expect(getByText('*')).toBeInTheDocument();
+    });
+  });
+
+  describe('when showing an info button', () => {
+    it('should render an info button', () => {
+      const onInfoButtonClick = jest.fn();
+      const { getByLabelText } = renderCheckBoxField({
+        onInfoButtonClick,
+      });
+      expect(getByLabelText('More Info')).toBeInTheDocument();
+    });
+    it('should call onInfoButtonClick when button is clicked', () => {
+      const onInfoButtonClick = jest.fn();
+      const { getByLabelText } = renderCheckBoxField({ onInfoButtonClick });
+      getByLabelText('More Info').click();
+      expect(onInfoButtonClick).toHaveBeenCalled();
+    });
+  });
+
+  describe('when field is touched and has errors', () => {
+    describe('when field empty', () => {
+      it('should render a default error', () => {
+        const { getByText } = renderCheckBoxField({
+          touched: true,
+          errors: { missing: true },
+        });
+        expect(getByText(/field is required/i)).toBeInTheDocument();
+      });
+    });
+    describe('when there is a custom error', () => {
+      it('should render the custom error message', () => {
+        const { getByText } = renderCheckBoxField({
+          touched: true,
+          errors: { custom: true },
+          renderError: () => 'Custom error',
+        });
+        expect(getByText('Custom error')).toBeInTheDocument();
+      });
     });
   });
 });

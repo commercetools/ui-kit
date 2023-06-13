@@ -200,7 +200,7 @@ class CheckBoxField extends Component<
           isChecked={this.props.isChecked}
           isIndeterminate={this.props.isIndeterminate}
           onChange={this.props.onChange}
-          isHovered={false}
+          isHovered={this.props.isHovered}
           isDisabled={this.props.isDisabled}
           isReadOnly={this.props.isReadOnly}
           hasError={this.props.hasError}
