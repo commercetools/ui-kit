@@ -18,7 +18,7 @@ Known error keys are:
 
 ## Main Functions and use cases are:
 
-- Single option selection field in login forms
+- Multiple options selection field
 
 ## Static methods
 

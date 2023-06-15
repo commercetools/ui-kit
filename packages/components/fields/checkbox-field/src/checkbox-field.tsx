@@ -71,21 +71,21 @@ export type TCheckboxFieldProps = {
    */
   isIndeterminate?: boolean;
   /**
-   *  Will be triggered whenever an `CheckboxInput` is clicked. Called with `event`
+   *  Will be triggered whenever an `CheckboxField` is clicked. Called with `event`
    */
   onChange: ChangeEventHandler<HTMLInputElement>;
   /**
-   * Forces CheckboxInput to be rendered in a hovered state.
-   * Needed for cases when hovered appearance should be triggered by the parent component and not the CheckboxInput itself.
-   * CheckboxInput is capable of handling it's own hovering without the need to pass this prop.
+   * Forces CheckboxField to be rendered in a hovered state.
+   * Needed for cases when hovered appearance should be triggered by the parent component and not the CheckboxField itself.
+   * CheckboxField is capable of handling it's own hovering without the need to pass this prop.
    */
   isHovered?: boolean;
   /**
-   * Disables the CheckboxInput
+   * Disables the CheckboxField
    */
   isDisabled?: boolean;
   /**
-   * Makes the CheckboxInput readonly
+   * Makes the CheckboxField readonly
    */
   isReadOnly?: boolean;
   /**
@@ -93,7 +93,7 @@ export type TCheckboxFieldProps = {
    */
   hasError?: boolean;
   /**
-   * The descriptive text of the CheckboxInput, used as its label.
+   * The descriptive text of the CheckboxField, used as its label.
    */
   children?: ReactNode;
   /**
@@ -118,10 +118,6 @@ export type TCheckboxFieldProps = {
    * Icon to be displayed beside the hint text. Will only get rendered when hint is passed as well.
    */
   hintIcon?: ReactElement;
-  /**
-   * Badge to be displayed beside the label. Might be used to display additional information about the content of the field (E.g verified email)
-   */
-  badge?: ReactNode;
   /**
    * Indicates if the labeled field is required in a form
    */
@@ -190,7 +186,6 @@ class CheckboxField extends Component<
           description={this.props.description}
           onInfoButtonClick={this.props.onInfoButtonClick}
           hintIcon={this.props.hintIcon}
-          badge={this.props.badge}
           hasRequiredIndicator={this.props.isRequired}
         />
         <CheckboxInput

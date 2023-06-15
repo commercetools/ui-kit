@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import FlatButton from '@commercetools-uikit/flat-button';
 import {
   withKnobs,
   boolean,
@@ -17,11 +16,6 @@ import CheckboxField from '.';
 import * as icons from '../../../icons';
 import Readme from '../README.md';
 
-// hintIcon will only render when hint exists
-const iconNames = Object.keys(icons);
-const icon = select('hintIcon', ['', ...iconNames], '');
-const hintIcon = icon ? createElement(icons[icon]) : undefined;
-
 storiesOf('Components|Fields', module)
   .addDecorator(withKnobs)
   .addParameters({
@@ -36,54 +30,51 @@ storiesOf('Components|Fields', module)
         <Text.Body isBold>CheckboxField</Text.Body>
         <Value
           defaultValue={true}
-          render={(isChecked, onChange) => (
-            <CheckboxField
-              id={text('id', '')}
-              name={text('name', '')}
-              onChange={(event) => {
-                action('onChange')(event);
-                onChange(!isChecked);
-              }}
-              value={text('value', '')}
-              isChecked={isChecked}
-              isHovered={boolean('isHovered', false)}
-              isDisabled={boolean('isDisabled', false)}
-              isReadOnly={boolean('isReadOnly', false)}
-              hasError={boolean('Error', false)}
-              title={text('title', 'Fruits', '')}
-              hint={text('hint', 'Select an option', '')}
-              description={text('description', '', '')}
-              onInfoButtonClick={
-                boolean('show info button', false, '')
-                  ? action('onInfoButtonClick')
-                  : undefined
-              }
-              errors={object('errors', { missing: true, customError: true })}
-              renderError={(key) => {
-                switch (key) {
-                  case 'customError':
-                    return 'A custom error.';
-                  default:
-                    return null;
+          render={(isChecked, onChange) => {
+            // hintIcon will only render when hint exists
+            const iconNames = Object.keys(icons);
+            const icon = select('hintIcon', ['', ...iconNames], '');
+            const hintIcon = icon ? createElement(icons[icon]) : undefined;
+
+            return (
+              <CheckboxField
+                id={text('id', '')}
+                name={text('name', '')}
+                onChange={(event) => {
+                  action('onChange')(event);
+                  onChange(!isChecked);
+                }}
+                value={text('value', '')}
+                isChecked={isChecked}
+                isHovered={boolean('isHovered', false)}
+                isDisabled={boolean('isDisabled', false)}
+                isReadOnly={boolean('isReadOnly', false)}
+                hasError={boolean('Error', false)}
+                title={text('title', 'Fruits', '')}
+                hint={text('hint', 'Select an option', '')}
+                description={text('description', '', '')}
+                onInfoButtonClick={
+                  boolean('show info button', false, '')
+                    ? action('onInfoButtonClick')
+                    : undefined
                 }
-              }}
-              isRequired={boolean('isRequired', false, '')}
-              touched={boolean('touched', false, '')}
-              hintIcon={hintIcon}
-              badge={
-                boolean('show badge', false, '') ? (
-                  <FlatButton
-                    tone="primary"
-                    icon={<icons.BoxIcon />}
-                    label="label"
-                    onClick={() => {}}
-                  />
-                ) : undefined
-              }
-            >
-              {text('Label', 'This is a label')}
-            </CheckboxField>
-          )}
+                errors={object('errors', { missing: true, customError: true })}
+                renderError={(key) => {
+                  switch (key) {
+                    case 'customError':
+                      return 'A custom error.';
+                    default:
+                      return null;
+                  }
+                }}
+                isRequired={boolean('isRequired', false, '')}
+                touched={boolean('touched', false, '')}
+                hintIcon={hintIcon}
+              >
+                {text('Label', 'This is a label')}
+              </CheckboxField>
+            );
+          }}
         />
       </Spacings.Stack>
     </Section>

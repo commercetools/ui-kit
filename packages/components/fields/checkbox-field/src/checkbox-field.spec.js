@@ -101,13 +101,6 @@ describe('CheckboxField', () => {
     });
   });
 
-  describe('when `badge` is passed', () => {
-    it('should render a badge', () => {
-      const { getByText } = renderCheckboxField({ badge: 'foo badge' });
-      expect(getByText('foo badge')).toBeInTheDocument();
-    });
-  });
-
   describe('when disabled', () => {
     it('should disable the input', () => {
       const { getByLabelText } = renderCheckboxField({ isDisabled: true });
