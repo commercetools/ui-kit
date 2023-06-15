@@ -87,6 +87,17 @@ const getButtonStyles = (
             }
           `,
         ];
+      case 'critical':
+        return [
+          baseActiveStyles,
+          css`
+            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenActive};
+            &:focus,
+            &:hover {
+              background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenHovered};
+            }
+          `,
+        ];
       default:
         return baseActiveStyles;
     }
@@ -130,6 +141,20 @@ const getButtonStyles = (
           }
           &:active {
             background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenActive};
+          }
+        `,
+      ];
+    case 'critical':
+      return [
+        baseDefaultStyles,
+        css`
+          background-color: ${designTokens.colorError};
+          &:focus,
+          &:hover {
+            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenHovered};
+          }
+          &:active {
+            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenActive};
           }
         `,
       ];

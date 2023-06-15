@@ -70,7 +70,7 @@ export type TPrimaryButtonProps<
   /**
    * Indicates the color scheme of the button.
    */
-  tone?: 'urgent' | 'primary';
+  tone?: 'urgent' | 'primary' | 'critical';
 } & /**
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
