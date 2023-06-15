@@ -150,6 +150,8 @@ export const themes = {
     backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
     backgroundColorForButtonAsUrgentWhenActive: '#DC630A',
     backgroundColorForButtonAsUrgentWhenHovered: '#E7680D',
+    backgroundColorForButtonAsCriticalWhenActive: '#B3003E',
+    backgroundColorForButtonAsCriticalWhenHovered: '#CC0047',
     backgroundColorForButtonWhenDisabled: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInput: '#fff',
     backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
@@ -688,6 +690,10 @@ const designTokens = {
     'var(--background-color-for-button-as-urgent-when-active, #DC630A)',
   backgroundColorForButtonAsUrgentWhenHovered:
     'var(--background-color-for-button-as-urgent-when-hovered, #E7680D)',
+  backgroundColorForButtonAsCriticalWhenActive:
+    'var(--background-color-for-button-as-critical-when-active, #B3003E)',
+  backgroundColorForButtonAsCriticalWhenHovered:
+    'var(--background-color-for-button-as-critical-when-hovered, #CC0047)',
   backgroundColorForButtonWhenDisabled:
     'var(--background-color-for-button-when-disabled, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForInput: 'var(--background-color-for-input, #fff)',

@@ -58,6 +58,10 @@ export const component = () => (
       <PrimaryButton label="A label text" onClick={() => {}} tone="primary" />
     </Spec>
 
+    <Spec label='tone - when "critical"'>
+      <PrimaryButton label="A label text" onClick={() => {}} tone="critical" />
+    </Spec>
+
     <Spec label="as toggle button - when toggled and disabled">
       <PrimaryButton
         label="A label text"
@@ -92,6 +96,17 @@ export const component = () => (
         label="A label text"
         onClick={() => {}}
         tone="urgent"
+        isToggleButton={true}
+        isToggled={true}
+        isDisabled={true}
+      />
+    </Spec>
+
+    <Spec label="as toggle button (critical tone) - when toggled and disabled">
+      <PrimaryButton
+        label="A label text"
+        onClick={() => {}}
+        tone="critical"
         isToggleButton={true}
         isToggled={true}
         isDisabled={true}
@@ -185,6 +200,16 @@ export const component = () => (
         label="A label text"
         onClick={() => {}}
         tone="primary"
+      />
+    </Spec>
+
+    <Spec label='tone - when "critical"'>
+      <PrimaryButton
+        as="a"
+        href="https://kanyetothe.com"
+        label="A label text"
+        onClick={() => {}}
+        tone="critical"
       />
     </Spec>
 
