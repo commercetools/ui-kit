@@ -275,6 +275,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   return (
     <TableContainer
       maxWidth={props.maxWidth}
+      maxHeight={props.maxHeight}
       isBeingResized={columnResizingReducer.getIsAnyColumnBeingResized()}
       disableSelfContainment={!!props.disableSelfContainment}
     >
