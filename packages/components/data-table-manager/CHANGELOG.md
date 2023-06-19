@@ -1,5 +1,32 @@
 # @commercetools-uikit/data-table-manager
 
+## 16.3.0
+
+### Patch Changes
+
+- [#2532](https://github.com/commercetools/ui-kit/pull/2532) [`767267936`](https://github.com/commercetools/ui-kit/commit/767267936f2900f08e94d19811cbe6b8f8c9cbd7) Thanks [@chloe0592](https://github.com/chloe0592)! - Changing `isCondensed` to true by default
+
+- Updated dependencies [[`767267936`](https://github.com/commercetools/ui-kit/commit/767267936f2900f08e94d19811cbe6b8f8c9cbd7), [`0105a8b4a`](https://github.com/commercetools/ui-kit/commit/0105a8b4af8e214e586ab1e69aae3daf879c4a5a)]:
+  - @commercetools-uikit/design-system@16.3.0
+  - @commercetools-uikit/primary-button@16.3.0
+  - @commercetools-uikit/accessible-button@16.3.0
+  - @commercetools-uikit/secondary-button@16.3.0
+  - @commercetools-uikit/secondary-icon-button@16.3.0
+  - @commercetools-uikit/card@16.3.0
+  - @commercetools-uikit/field-label@16.3.0
+  - @commercetools-uikit/icons@16.3.0
+  - @commercetools-uikit/async-select-input@16.3.0
+  - @commercetools-uikit/radio-input@16.3.0
+  - @commercetools-uikit/select-input@16.3.0
+  - @commercetools-uikit/tag@16.3.0
+  - @commercetools-uikit/text@16.3.0
+  - @commercetools-uikit/spacings@16.3.0
+  - @commercetools-uikit/accessible-hidden@16.3.0
+  - @commercetools-uikit/collapsible-motion@16.3.0
+  - @commercetools-uikit/grid@16.3.0
+  - @commercetools-uikit/hooks@16.3.0
+  - @commercetools-uikit/utils@16.3.0
+
 ## 16.2.1
 
 ### Patch Changes
