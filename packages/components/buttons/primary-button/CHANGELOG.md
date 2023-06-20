@@ -1,5 +1,20 @@
 # @commercetools-uikit/primary-button
 
+## 16.3.0
+
+### Minor Changes
+
+- [#2540](https://github.com/commercetools/ui-kit/pull/2540) [`0105a8b4a`](https://github.com/commercetools/ui-kit/commit/0105a8b4af8e214e586ab1e69aae3daf879c4a5a) Thanks [@chloe0592](https://github.com/chloe0592)! - Added 'critical' tone to the Primary Button
+
+### Patch Changes
+
+- Updated dependencies [[`767267936`](https://github.com/commercetools/ui-kit/commit/767267936f2900f08e94d19811cbe6b8f8c9cbd7), [`0105a8b4a`](https://github.com/commercetools/ui-kit/commit/0105a8b4af8e214e586ab1e69aae3daf879c4a5a)]:
+  - @commercetools-uikit/design-system@16.3.0
+  - @commercetools-uikit/accessible-button@16.3.0
+  - @commercetools-uikit/spacings-inline@16.3.0
+  - @commercetools-uikit/text@16.3.0
+  - @commercetools-uikit/utils@16.3.0
+
 ## 16.2.1
 
 ### Patch Changes
