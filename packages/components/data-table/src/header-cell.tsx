@@ -45,6 +45,8 @@ const HeaderCellWrapper = (
     | 'disableResizing'
     | 'disableHeaderStickiness'
     | 'onColumnResized'
+    | 'maxHeight'
+    | 'topHeaderPosition'
   >
 ) => {
   const columnResizingReducer = useContext(
@@ -93,6 +95,8 @@ const HeaderCellWrapper = (
       data-id={props.columnKey}
       shouldClipContent={shouldClipContent}
       disableHeaderStickiness={props.disableHeaderStickiness}
+      maxHeight={props.maxHeight}
+      topHeaderPosition={props.topHeaderPosition}
     >
       {props.children}
       {!props.disableResizing && <Resizer onMouseDown={onStartResizing} />}
@@ -116,6 +120,8 @@ export type THeaderCell = {
   disableHeaderStickiness: boolean;
   horizontalCellAlignment: 'left' | 'center' | 'right';
   iconComponent?: ReactNode;
+  maxHeight?: string | number;
+  topHeaderPosition?: string | number;
 };
 
 const defaultProps: Pick<
@@ -159,6 +165,8 @@ const HeaderCell = (props: THeaderCell) => {
       onColumnResized={props.onColumnResized}
       disableResizing={props.disableResizing}
       disableHeaderStickiness={props.disableHeaderStickiness}
+      maxHeight={props.maxHeight}
+      topHeaderPosition={props.topHeaderPosition}
     >
       <HeaderCellInner
         shouldWrap={props.shouldWrap}

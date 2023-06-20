@@ -87,6 +87,8 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
 type TBaseHeaderCell = {
   disableHeaderStickiness?: boolean;
   shouldClipContent?: boolean;
+  maxHeight?: string | number;
+  topHeaderPosition?: string | number;
 };
 const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   color: ${designTokens.fontColorForTableHeader};
@@ -94,7 +96,12 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
 
   position: ${(props) =>
     props.disableHeaderStickiness ? 'relative' : 'sticky'};
-  top: 0;
+
+  top: ${(props) =>
+    // if maxHeight is set, the top is 0 and if not,
+    // we can set a custom top position depending on the spacing above the table in order to have a sticky header
+    props.maxHeight ? `0` : props.topHeaderPosition || `0`};
+
   z-index: 1;
   line-height: ${designTokens.lineHeightForTableHeader};
 
