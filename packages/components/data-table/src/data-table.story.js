@@ -417,6 +417,9 @@ storiesOf('Components|DataTable', module)
             text('maxHeight', 'max(400px, calc(100vh - 200px))')
           )}
           maxWidth={castToNumberIfPossible(text('maxWidth', undefined))}
+          topHeaderPosition={castToNumberIfPossible(
+            text('topHeaderPosition', undefined)
+          )}
           horizontalCellAlignment={select('horizontalCellAlignment', [
             'left',
             'center',
