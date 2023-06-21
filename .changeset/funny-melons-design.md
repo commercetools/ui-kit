@@ -2,4 +2,4 @@
 '@commercetools-uikit/radio-input': minor
 ---
 
-align radio options siblings
+Align additional content.
