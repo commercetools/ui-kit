@@ -14,7 +14,6 @@ const LabelTextWrapper = styled.div<TStylesProps>`
 
 const AdditionalTextWrapper = styled.div<TStylesProps>`
   grid-area: content;
-  margin-left: ${designTokens.spacing10};
   font-size: 1rem;
   font-family: inherit;
 `;
@@ -159,6 +158,7 @@ const RadioOptionLabel = styled.label<TStylesProps>`
       ? `:focus-within ${LabelTextWrapper} {
       outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
       outline-offset: 2px;
+      width: fit-content;
     }`
       : ''}
 
