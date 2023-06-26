@@ -310,7 +310,6 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
                   columnKey={column.key}
                   isSortable={column.isSortable}
                   sortDirection={props.sortDirection}
-                  maxHeight={props.maxHeight}
                 >
                   {column.label}
                 </HeaderCell>
