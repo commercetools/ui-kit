@@ -411,15 +411,12 @@ storiesOf('Components|DataTable', module)
               ? (item, index) => alert(`Row click: Row number ${index}`)
               : null
           }
-          maxHeight={castToNumberIfPossible(
-            // in this example, the table has a dynamic height equal to the viewport height minus 200px
-            // floored to a minimum value of 400px
-            text('maxHeight', 'max(400px, calc(100vh - 200px))')
-          )}
+          // maxHeight={castToNumberIfPossible(
+          //   // in this example, the table has a dynamic height equal to the viewport height minus 200px
+          //   // floored to a minimum value of 400px
+          //   text('maxHeight', 'max(400px, calc(100vh - 200px))')
+          // )}
           maxWidth={castToNumberIfPossible(text('maxWidth', undefined))}
-          topHeaderPosition={castToNumberIfPossible(
-            text('topHeaderPosition', undefined)
-          )}
           horizontalCellAlignment={select('horizontalCellAlignment', [
             'left',
             'center',

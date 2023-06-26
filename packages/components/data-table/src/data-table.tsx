@@ -172,10 +172,6 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    */
   maxHeight?: number | string;
   /**
-   * When maxHeight is not set this prop allows us to control the position of the sticky header in case there are some spacings between the table and the outer content.
-   */
-  topHeaderPosition?: number | string;
-  /**
    * A callback function, called when a user clicks on a row.
    */
   onRowClick?: (row: Row, rowIndex: number, columnKey: string) => void;
@@ -315,7 +311,6 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
                   isSortable={column.isSortable}
                   sortDirection={props.sortDirection}
                   maxHeight={props.maxHeight}
-                  topHeaderPosition={props.topHeaderPosition}
                 >
                   {column.label}
                 </HeaderCell>
