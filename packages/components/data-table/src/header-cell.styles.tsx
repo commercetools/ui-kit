@@ -87,7 +87,6 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
 type TBaseHeaderCell = {
   disableHeaderStickiness?: boolean;
   shouldClipContent?: boolean;
-  maxHeight?: string | number;
 };
 const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   color: ${designTokens.fontColorForTableHeader};
