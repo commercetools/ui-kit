@@ -41,13 +41,16 @@ const getDisabledSelfContainmentStyles = (
 type TTableContainer = {
   isBeingResized?: boolean;
   maxWidth?: string | number;
+  maxHeight?: string | number;
   disableSelfContainment: boolean;
 };
 
 const TableContainer = styled.div<TTableContainer>`
   position: relative;
   z-index: 0;
-  overflow-x: auto;
+  ${(props) =>
+    // this is needed in order to have a sticky header
+    props.maxHeight ? `overflow-x: auto;` : ''}
 
   ${(props) =>
     props.maxWidth && !props.disableSelfContainment
@@ -79,7 +82,9 @@ const TableGrid = styled.table<TTableGrid>`
     props.columns.map((column) => column.width || 'auto').join(' ')};
   /* stylelint-enable function-whitespace-after */
 
-  overflow-y: auto;
+  ${(props) =>
+    // this is needed in order to have a sticky header
+    props.maxHeight ? `overflow-y: auto;` : ''}
 
   ${(props) =>
     props.maxHeight && !props.disableSelfContainment
