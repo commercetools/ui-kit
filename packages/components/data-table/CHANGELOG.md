@@ -1,5 +1,19 @@
 # @commercetools-uikit/data-table
 
+## 16.4.0
+
+### Patch Changes
+
+- [`4e8a67a86`](https://github.com/commercetools/ui-kit/commit/4e8a67a867a98f2f2212a316f8b4c13b4158ccfa) Thanks [@chloe0592](https://github.com/chloe0592)! - fix for sticky header
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.4.0
+  - @commercetools-uikit/accessible-button@16.4.0
+  - @commercetools-uikit/secondary-icon-button@16.4.0
+  - @commercetools-uikit/icons@16.4.0
+  - @commercetools-uikit/hooks@16.4.0
+  - @commercetools-uikit/utils@16.4.0
+
 ## 16.3.0
 
 ### Patch Changes
