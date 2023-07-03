@@ -154,9 +154,12 @@ const HeadLineText = (
 
   return (
     <Text.Subheadline as="h4" truncate>
-      {cloneElement(props.header as React.ReactElement, {
-        isCondensed: props.condensed,
-      })}
+      {/* TODO: this is a temporary fix, which will be refactored after we align with the desing team on how to proceed */}
+      {typeof props.header === 'string'
+        ? props.header
+        : cloneElement(props.header as React.ReactElement, {
+            isCondensed: props.condensed,
+          })}
     </Text.Subheadline>
   );
 };
