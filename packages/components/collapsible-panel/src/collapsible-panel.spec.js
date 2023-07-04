@@ -124,7 +124,7 @@ describe('when onToggle is provided without isClosed', () => {
   });
 });
 
-describe('hen using CollapsiblePanelHeader component as header', () => {
+describe('condensed and when header prop has <CollapsiblePanelHeader>', () => {
   it('should render an H4 title when condensed', () => {
     render(
       <CollapsiblePanel
