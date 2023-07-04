@@ -124,8 +124,8 @@ describe('when onToggle is provided without isClosed', () => {
   });
 });
 
-describe('condensed and when header prop has <CollapsiblePanelHeader>', () => {
-  it('render a <h4>', () => {
+describe('hen using CollapsiblePanelHeader component as header', () => {
+  it('should render an H4 title when condensed', () => {
     render(
       <CollapsiblePanel
         header={<CollapsiblePanelHeader>Header</CollapsiblePanelHeader>}
@@ -139,20 +139,18 @@ describe('condensed and when header prop has <CollapsiblePanelHeader>', () => {
     expect(screen.getByText('Header').tagName).toEqual('H4');
   });
 
-  it('should not render a <h> as a child of a <h>', () => {
+  it('should render an H2 title when not condensed', () => {
     render(
       <CollapsiblePanel
         header={<CollapsiblePanelHeader>Header</CollapsiblePanelHeader>}
         onToggle={() => {}}
         isClosed={false}
-        condensed={true}
+        condensed={false}
       >
         Children
       </CollapsiblePanel>
     );
-    expect(screen.getByText('Header').parentNode.tagName).not.toMatch(
-      /h[1-6]/i
-    );
+    expect(screen.getByText('Header').tagName).toEqual('H2');
   });
 });
 
