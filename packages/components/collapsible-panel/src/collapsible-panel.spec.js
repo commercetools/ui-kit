@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { warning } from '@commercetools-uikit/utils';
 import { screen, render } from '../../../../test/test-utils';
 import CollapsiblePanel from './collapsible-panel';
+import CollapsiblePanelHeader from './collapsible-panel-header';
 
 const HeaderControls = (props) => (
   <div onClick={props.onClick}>Header Controls</div>
@@ -120,6 +121,36 @@ describe('when onToggle is provided without isClosed', () => {
       expect.any(Boolean),
       expect.stringMatching(/Invalid prop `onToggle` supplied to (.*)/i)
     );
+  });
+});
+
+describe('condensed and when header prop has <CollapsiblePanelHeader>', () => {
+  it('should render an H4 title when condensed', () => {
+    render(
+      <CollapsiblePanel
+        header={<CollapsiblePanelHeader>Header</CollapsiblePanelHeader>}
+        onToggle={() => {}}
+        isClosed={false}
+        condensed={true}
+      >
+        Children
+      </CollapsiblePanel>
+    );
+    expect(screen.getByText('Header').tagName).toEqual('H4');
+  });
+
+  it('should render an H2 title when not condensed', () => {
+    render(
+      <CollapsiblePanel
+        header={<CollapsiblePanelHeader>Header</CollapsiblePanelHeader>}
+        onToggle={() => {}}
+        isClosed={false}
+        condensed={false}
+      >
+        Children
+      </CollapsiblePanel>
+    );
+    expect(screen.getByText('Header').tagName).toEqual('H2');
   });
 });
 
