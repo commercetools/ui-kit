@@ -1,5 +1,13 @@
 # @commercetools-uikit/messages
 
+## 16.4.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/text@16.4.1
+  - @commercetools-uikit/utils@16.4.1
+
 ## 16.4.0
 
 ### Patch Changes
