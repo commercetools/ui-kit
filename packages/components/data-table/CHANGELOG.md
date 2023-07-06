@@ -1,5 +1,17 @@
 # @commercetools-uikit/data-table
 
+## 16.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`6729c7595`](https://github.com/commercetools/ui-kit/commit/6729c7595c4d80d558697fabcd6c92d3788f0266)]:
+  - @commercetools-uikit/icons@16.5.0
+  - @commercetools-uikit/design-system@16.5.0
+  - @commercetools-uikit/accessible-button@16.5.0
+  - @commercetools-uikit/secondary-icon-button@16.5.0
+  - @commercetools-uikit/hooks@16.5.0
+  - @commercetools-uikit/utils@16.5.0
+
 ## 16.4.1
 
 ### Patch Changes

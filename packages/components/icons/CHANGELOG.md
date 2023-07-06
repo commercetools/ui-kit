@@ -1,5 +1,18 @@
 # @commercetools-uikit/icons
 
+## 16.5.0
+
+### Minor Changes
+
+- [#2553](https://github.com/commercetools/ui-kit/pull/2553) [`6729c7595`](https://github.com/commercetools/ui-kit/commit/6729c7595c4d80d558697fabcd6c92d3788f0266) Thanks [@chloe0592](https://github.com/chloe0592)! - After enabling accessible titles for our SVG icons, we've seen issues in ui-kit consumers tests.
+  We think we didn't find the best solution for this area so we want to first revert the initial implementation and later discuss for a better solution based on our findings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.5.0
+  - @commercetools-uikit/utils@16.5.0
+
 ## 16.4.1
 
 ### Patch Changes
