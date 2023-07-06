@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -149,7 +150,7 @@ const FractionDigitsIcon = (props: Props) => {
         <SvgFractionDigits
           {...props}
           titleId={svgTitleId}
-          title="Fraction digits icon"
+          title={props.title || 'Fraction digits icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

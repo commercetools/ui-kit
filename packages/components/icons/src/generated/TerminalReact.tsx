@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const TerminalIcon = (props: Props) => {
         <SvgTerminal
           {...props}
           titleId={svgTitleId}
-          title="Terminal icon"
+          title={props.title || 'Terminal icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

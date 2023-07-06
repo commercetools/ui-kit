@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -146,7 +147,7 @@ const UndoIcon = (props: Props) => {
         <SvgUndo
           {...props}
           titleId={svgTitleId}
-          title="Undo icon"
+          title={props.title || 'Undo icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

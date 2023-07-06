@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const CircleIcon = (props: Props) => {
         <SvgCircle
           {...props}
           titleId={svgTitleId}
-          title="Circle icon"
+          title={props.title || 'Circle icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

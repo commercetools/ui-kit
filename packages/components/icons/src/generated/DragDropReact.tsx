@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const DragDropIcon = (props: Props) => {
         <SvgDragDrop
           {...props}
           titleId={svgTitleId}
-          title="Drag drop icon"
+          title={props.title || 'Drag drop icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

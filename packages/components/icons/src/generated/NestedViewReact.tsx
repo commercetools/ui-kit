@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -142,7 +143,7 @@ const NestedViewIcon = (props: Props) => {
         <SvgNestedView
           {...props}
           titleId={svgTitleId}
-          title="Nested view icon"
+          title={props.title || 'Nested view icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

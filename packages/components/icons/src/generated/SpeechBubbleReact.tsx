@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const SpeechBubbleIcon = (props: Props) => {
         <SvgSpeechBubble
           {...props}
           titleId={svgTitleId}
-          title="Speech bubble icon"
+          title={props.title || 'Speech bubble icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

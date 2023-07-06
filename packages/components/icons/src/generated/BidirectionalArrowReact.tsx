@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const BidirectionalArrowIcon = (props: Props) => {
         <SvgBidirectionalArrow
           {...props}
           titleId={svgTitleId}
-          title="Bidirectional arrow icon"
+          title={props.title || 'Bidirectional arrow icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

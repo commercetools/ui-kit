@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const ScreenUserIcon = (props: Props) => {
         <SvgScreenUser
           {...props}
           titleId={svgTitleId}
-          title="Screen user icon"
+          title={props.title || 'Screen user icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

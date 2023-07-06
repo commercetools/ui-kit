@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const ListWithSearchIcon = (props: Props) => {
         <SvgListWithSearch
           {...props}
           titleId={svgTitleId}
-          title="List with search icon"
+          title={props.title || 'List with search icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const BinLinearIcon = (props: Props) => {
         <SvgBinLinear
           {...props}
           titleId={svgTitleId}
-          title="Bin linear icon"
+          title={props.title || 'Bin linear icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

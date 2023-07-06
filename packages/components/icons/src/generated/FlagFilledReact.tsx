@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const FlagFilledIcon = (props: Props) => {
         <SvgFlagFilled
           {...props}
           titleId={svgTitleId}
-          title="Flag filled icon"
+          title={props.title || 'Flag filled icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

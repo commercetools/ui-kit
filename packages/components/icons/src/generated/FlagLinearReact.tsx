@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const FlagLinearIcon = (props: Props) => {
         <SvgFlagLinear
           {...props}
           titleId={svgTitleId}
-          title="Flag linear icon"
+          title={props.title || 'Flag linear icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

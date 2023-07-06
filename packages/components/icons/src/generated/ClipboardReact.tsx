@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const ClipboardIcon = (props: Props) => {
         <SvgClipboard
           {...props}
           titleId={svgTitleId}
-          title="Clipboard icon"
+          title={props.title || 'Clipboard icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

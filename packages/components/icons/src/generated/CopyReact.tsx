@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const CopyIcon = (props: Props) => {
         <SvgCopy
           {...props}
           titleId={svgTitleId}
-          title="Copy icon"
+          title={props.title || 'Copy icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

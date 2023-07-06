@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const TagMultiIcon = (props: Props) => {
         <SvgTagMulti
           {...props}
           titleId={svgTitleId}
-          title="Tag multi icon"
+          title={props.title || 'Tag multi icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

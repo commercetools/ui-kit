@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const ArrowRightIcon = (props: Props) => {
         <SvgArrowRight
           {...props}
           titleId={svgTitleId}
-          title="Arrow right icon"
+          title={props.title || 'Arrow right icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

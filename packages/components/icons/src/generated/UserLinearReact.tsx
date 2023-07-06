@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const UserLinearIcon = (props: Props) => {
         <SvgUserLinear
           {...props}
           titleId={svgTitleId}
-          title="User linear icon"
+          title={props.title || 'User linear icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

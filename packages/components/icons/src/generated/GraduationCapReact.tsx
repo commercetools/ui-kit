@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const GraduationCapIcon = (props: Props) => {
         <SvgGraduationCap
           {...props}
           titleId={svgTitleId}
-          title="Graduation cap icon"
+          title={props.title || 'Graduation cap icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

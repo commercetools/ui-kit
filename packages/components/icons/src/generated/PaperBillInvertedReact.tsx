@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const PaperBillInvertedIcon = (props: Props) => {
         <SvgPaperBillInverted
           {...props}
           titleId={svgTitleId}
-          title="Paper bill inverted icon"
+          title={props.title || 'Paper bill inverted icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

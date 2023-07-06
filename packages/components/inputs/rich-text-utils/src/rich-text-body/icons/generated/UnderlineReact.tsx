@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -143,7 +144,7 @@ const UnderlineIcon = (props: Props) => {
         <SvgUnderline
           {...props}
           titleId={svgTitleId}
-          title="Underline icon"
+          title={props.title || 'Underline icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

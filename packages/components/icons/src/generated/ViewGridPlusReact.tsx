@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const ViewGridPlusIcon = (props: Props) => {
         <SvgViewGridPlus
           {...props}
           titleId={svgTitleId}
-          title="View grid plus icon"
+          title={props.title || 'View grid plus icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

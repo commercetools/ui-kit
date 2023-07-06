@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const FilterAndListIcon = (props: Props) => {
         <SvgFilterAndList
           {...props}
           titleId={svgTitleId}
-          title="Filter and list icon"
+          title={props.title || 'Filter and list icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

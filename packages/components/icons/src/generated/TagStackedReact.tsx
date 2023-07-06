@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -142,7 +143,7 @@ const TagStackedIcon = (props: Props) => {
         <SvgTagStacked
           {...props}
           titleId={svgTitleId}
-          title="Tag stacked icon"
+          title={props.title || 'Tag stacked icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

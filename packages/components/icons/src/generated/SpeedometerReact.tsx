@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const SpeedometerIcon = (props: Props) => {
         <SvgSpeedometer
           {...props}
           titleId={svgTitleId}
-          title="Speedometer icon"
+          title={props.title || 'Speedometer icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

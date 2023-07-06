@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -150,7 +151,7 @@ const PageGearIcon = (props: Props) => {
         <SvgPageGear
           {...props}
           titleId={svgTitleId}
-          title="Page gear icon"
+          title={props.title || 'Page gear icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

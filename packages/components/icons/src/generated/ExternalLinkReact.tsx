@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const ExternalLinkIcon = (props: Props) => {
         <SvgExternalLink
           {...props}
           titleId={svgTitleId}
-          title="External link icon"
+          title={props.title || 'External link icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -143,7 +144,7 @@ const ItalicIcon = (props: Props) => {
         <SvgItalic
           {...props}
           titleId={svgTitleId}
-          title="Italic icon"
+          title={props.title || 'Italic icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

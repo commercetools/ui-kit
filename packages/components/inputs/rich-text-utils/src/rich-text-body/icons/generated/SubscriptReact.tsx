@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -141,7 +142,7 @@ const SubscriptIcon = (props: Props) => {
         <SvgSubscript
           {...props}
           titleId={svgTitleId}
-          title="Subscript icon"
+          title={props.title || 'Subscript icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

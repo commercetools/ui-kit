@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -143,7 +144,7 @@ const StrikethroughIcon = (props: Props) => {
         <SvgStrikethrough
           {...props}
           titleId={svgTitleId}
-          title="Strikethrough icon"
+          title={props.title || 'Strikethrough icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

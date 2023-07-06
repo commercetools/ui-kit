@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const TreeStructureIcon = (props: Props) => {
         <SvgTreeStructure
           {...props}
           titleId={svgTitleId}
-          title="Tree structure icon"
+          title={props.title || 'Tree structure icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const RevertIcon = (props: Props) => {
         <SvgRevert
           {...props}
           titleId={svgTitleId}
-          title="Revert icon"
+          title={props.title || 'Revert icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

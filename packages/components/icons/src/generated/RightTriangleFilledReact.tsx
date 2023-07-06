@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -141,7 +142,7 @@ const RightTriangleFilledIcon = (props: Props) => {
         <SvgRightTriangleFilled
           {...props}
           titleId={svgTitleId}
-          title="Right triangle filled icon"
+          title={props.title || 'Right triangle filled icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

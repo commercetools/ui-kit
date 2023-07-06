@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const CloseBoldIcon = (props: Props) => {
         <SvgCloseBold
           {...props}
           titleId={svgTitleId}
-          title="Close bold icon"
+          title={props.title || 'Close bold icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

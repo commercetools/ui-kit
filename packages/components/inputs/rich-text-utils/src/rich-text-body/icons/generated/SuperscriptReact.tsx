@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -145,7 +146,7 @@ const SuperscriptIcon = (props: Props) => {
         <SvgSuperscript
           {...props}
           titleId={svgTitleId}
-          title="Superscript icon"
+          title={props.title || 'Superscript icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const LogoutIcon = (props: Props) => {
         <SvgLogout
           {...props}
           titleId={svgTitleId}
-          title="Logout icon"
+          title={props.title || 'Logout icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

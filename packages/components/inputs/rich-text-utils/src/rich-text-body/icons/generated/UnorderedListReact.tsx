@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -150,7 +151,7 @@ const UnorderedListIcon = (props: Props) => {
         <SvgUnorderedList
           {...props}
           titleId={svgTitleId}
-          title="Unordered list icon"
+          title={props.title || 'Unordered list icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -142,7 +143,7 @@ const ConnectedTriangleIcon = (props: Props) => {
         <SvgConnectedTriangle
           {...props}
           titleId={svgTitleId}
-          title="Connected triangle icon"
+          title={props.title || 'Connected triangle icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

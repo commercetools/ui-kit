@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -140,7 +141,7 @@ const IndeterminateIcon = (props: Props) => {
         <SvgIndeterminate
           {...props}
           titleId={svgTitleId}
-          title="Indeterminate icon"
+          title={props.title || 'Indeterminate icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

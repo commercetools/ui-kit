@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const ScreenGearIcon = (props: Props) => {
         <SvgScreenGear
           {...props}
           titleId={svgTitleId}
-          title="Screen gear icon"
+          title={props.title || 'Screen gear icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

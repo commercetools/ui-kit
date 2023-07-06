@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -143,7 +144,7 @@ const ExpandFullIcon = (props: Props) => {
         <SvgExpandFull
           {...props}
           titleId={svgTitleId}
-          title="Expand full icon"
+          title={props.title || 'Expand full icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

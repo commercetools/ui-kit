@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const SubdirectoryArrowIcon = (props: Props) => {
         <SvgSubdirectoryArrow
           {...props}
           titleId={svgTitleId}
-          title="Subdirectory arrow icon"
+          title={props.title || 'Subdirectory arrow icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

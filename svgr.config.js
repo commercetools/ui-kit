@@ -78,7 +78,7 @@ const ${reactComponentName} = (props: Props) => {
   return (
     <ClassNames>
       {({ css: createClass }) =>
-        <${svgComponentName} {...props} titleId={svgTitleId} title="${svgAccessibleTitle}" className={createClass(getIconStyles(props))} />
+        <${svgComponentName} {...props} titleId={svgTitleId} title={props.title || "${svgAccessibleTitle}"} className={createClass(getIconStyles(props))} />
       }
     </ClassNames>
   );

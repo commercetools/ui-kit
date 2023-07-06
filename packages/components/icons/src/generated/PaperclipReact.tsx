@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const PaperclipIcon = (props: Props) => {
         <SvgPaperclip
           {...props}
           titleId={svgTitleId}
-          title="Paperclip icon"
+          title={props.title || 'Paperclip icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

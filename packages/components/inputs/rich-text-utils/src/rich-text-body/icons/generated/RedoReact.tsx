@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -151,7 +152,7 @@ const RedoIcon = (props: Props) => {
         <SvgRedo
           {...props}
           titleId={svgTitleId}
-          title="Redo icon"
+          title={props.title || 'Redo icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

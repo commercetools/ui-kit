@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const AngleDownIcon = (props: Props) => {
         <SvgAngleDown
           {...props}
           titleId={svgTitleId}
-          title="Angle down icon"
+          title={props.title || 'Angle down icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

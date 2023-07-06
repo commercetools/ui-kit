@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -142,7 +143,7 @@ const AngleThinLeftIcon = (props: Props) => {
         <SvgAngleThinLeft
           {...props}
           titleId={svgTitleId}
-          title="Angle thin left icon"
+          title={props.title || 'Angle thin left icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

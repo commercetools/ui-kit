@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const PinFilledIcon = (props: Props) => {
         <SvgPinFilled
           {...props}
           titleId={svgTitleId}
-          title="Pin filled icon"
+          title={props.title || 'Pin filled icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

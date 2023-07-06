@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const MinimizeIcon = (props: Props) => {
         <SvgMinimize
           {...props}
           titleId={svgTitleId}
-          title="Minimize icon"
+          title={props.title || 'Minimize icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

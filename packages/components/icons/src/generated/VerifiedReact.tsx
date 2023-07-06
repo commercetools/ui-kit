@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const VerifiedIcon = (props: Props) => {
         <SvgVerified
           {...props}
           titleId={svgTitleId}
-          title="Verified icon"
+          title={props.title || 'Verified icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const ErrorIcon = (props: Props) => {
         <SvgError
           {...props}
           titleId={svgTitleId}
-          title="Error icon"
+          title={props.title || 'Error icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

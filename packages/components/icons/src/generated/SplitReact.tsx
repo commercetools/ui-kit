@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const SplitIcon = (props: Props) => {
         <SvgSplit
           {...props}
           titleId={svgTitleId}
-          title="Split icon"
+          title={props.title || 'Split icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

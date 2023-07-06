@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const SupportIcon = (props: Props) => {
         <SvgSupport
           {...props}
           titleId={svgTitleId}
-          title="Support icon"
+          title={props.title || 'Support icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

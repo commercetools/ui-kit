@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const CalendarIcon = (props: Props) => {
         <SvgCalendar
           {...props}
           titleId={svgTitleId}
-          title="Calendar icon"
+          title={props.title || 'Calendar icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const CheckInactiveIcon = (props: Props) => {
         <SvgCheckInactive
           {...props}
           titleId={svgTitleId}
-          title="Check inactive icon"
+          title={props.title || 'Check inactive icon'}
           className={createClass(getIconStyles(props))}
         />
       )}

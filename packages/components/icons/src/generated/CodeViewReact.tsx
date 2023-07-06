@@ -16,6 +16,7 @@ export type Props = {
     | 'warning'
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
+  title?: string;
 };
 export type SVGProps = Props & {
   className: string;
@@ -139,7 +140,7 @@ const CodeViewIcon = (props: Props) => {
         <SvgCodeView
           {...props}
           titleId={svgTitleId}
-          title="Code view icon"
+          title={props.title || 'Code view icon'}
           className={createClass(getIconStyles(props))}
         />
       )}
