@@ -1,5 +1,12 @@
 # @commercetools-uikit/localized-utils
 
+## 16.4.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.4.1
+
 ## 16.4.0
 
 ### Patch Changes

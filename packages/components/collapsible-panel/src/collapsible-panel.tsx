@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, cloneElement } from 'react';
 import isNil from 'lodash/isNil';
 import styled from '@emotion/styled';
 import {
@@ -154,7 +154,12 @@ const HeadLineText = (
 
   return (
     <Text.Subheadline as="h4" truncate>
-      {props.header}
+      {/* TODO: this is a temporary fix, which will be refactored after we align with the desing team on how to proceed */}
+      {typeof props.header === 'string'
+        ? props.header
+        : cloneElement(props.header as React.ReactElement, {
+            isCondensed: props.condensed,
+          })}
     </Text.Subheadline>
   );
 };
