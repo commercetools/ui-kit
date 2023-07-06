@@ -20,7 +20,7 @@ import {
   SecondaryButton,
   Spacings,
   SelectField,
-} from '../../presets/ui-kit';
+} from '@commercetools-frontend/ui-kit';
 import { FormikBox, Section } from '../.storybook/decorators';
 import Forms from './form-fields.md';
 

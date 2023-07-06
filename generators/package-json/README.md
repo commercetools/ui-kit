@@ -7,5 +7,5 @@ A package to generate the necessary information for each package.json
 > The package contains TypeScript file which are not transpiled. To execute the script, the package uses internally `ts-node` CLI, which is already installed in this repository.
 
 ```
-yarn generate-package-json packages/components/avatar
+pnpm generate-package-json packages/components/avatar
 ```

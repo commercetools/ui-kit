@@ -5,9 +5,11 @@ import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty-es';
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs/react';
-import FieldLabel from '@commercetools-uikit/field-label';
-import Spacings from '@commercetools-uikit/spacings';
-import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
+import FieldLabel from '../../../field-label';
+import Stack from '../../../spacings/spacings-stack';
+import Inline from '../../../spacings/spacings-inline';
+import PrimaryButton from '../../../buttons/primary-button';
+import SecondaryButton from '../../../buttons/secondary-button';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import FormikBox from '../../../../../docs/.storybook/decorators/formik-box';
 import Readme from '../README.md';
@@ -95,7 +97,7 @@ storiesOf('Examples|Forms/Inputs', module)
             formik.resetForm({ values: initialValues });
           }}
           render={(formik) => (
-            <Spacings.Stack scale="l">
+            <Stack scale="l">
               <TextField
                 title="Enter your first name"
                 name="firstName"
@@ -116,7 +118,7 @@ storiesOf('Examples|Forms/Inputs', module)
                 touched={formik.touched.lastName}
                 errors={formik.errors.lastName}
               />
-              <Spacings.Stack scale="s">
+              <Stack scale="s">
                 <FieldLabel title="Enter your cv" htmlFor="cv" />
                 <RichTextFormikInput
                   name="cv"
@@ -127,8 +129,8 @@ storiesOf('Examples|Forms/Inputs', module)
                   }
                   ref={refCv}
                 />
-              </Spacings.Stack>
-              <Spacings.Stack scale="s">
+              </Stack>
+              <Stack scale="s">
                 <FieldLabel
                   title="Enter your cover letter"
                   htmlFor="coverLetter"
@@ -142,8 +144,8 @@ storiesOf('Examples|Forms/Inputs', module)
                   }
                   ref={refCoverLetter}
                 />
-              </Spacings.Stack>
-              <Spacings.Stack scale="s">
+              </Stack>
+              <Stack scale="s">
                 <FieldLabel title="Tell us about yourself" htmlFor="aboutMe" />
                 <RichTextFormikInput
                   name="aboutMe"
@@ -154,8 +156,8 @@ storiesOf('Examples|Forms/Inputs', module)
                   }
                   ref={refAboutMe}
                 />
-              </Spacings.Stack>
-              <Spacings.Inline>
+              </Stack>
+              <Inline>
                 <SecondaryButton
                   onClick={() => {
                     formik.handleReset();
@@ -171,10 +173,10 @@ storiesOf('Examples|Forms/Inputs', module)
                   isDisabled={formik.isSubmitting || !formik.dirty}
                   label="Submit"
                 />
-              </Spacings.Inline>
+              </Inline>
               <hr />
               <FormikBox formik={formik} />
-            </Spacings.Stack>
+            </Stack>
           )}
         />
       </Section>

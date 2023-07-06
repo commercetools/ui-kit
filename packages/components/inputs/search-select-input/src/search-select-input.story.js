@@ -9,8 +9,8 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
-import Spacings from '@commercetools-uikit/spacings';
+import Constraints from '../../../constraints';
+import Stack from '../../../spacings/spacings-stack';
 import { SELECT_DROPDOWN_OPTION_TYPES } from '@commercetools-uikit/select-utils';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
@@ -71,7 +71,7 @@ class SearchSelectInputStory extends Component {
             key={`${isMulti}`}
             defaultValue={isMulti ? [] : undefined}
             render={(value, onChange) => (
-              <Spacings.Stack scale="m">
+              <Stack scale="m">
                 <SearchSelectInput
                   horizontalConstraint={select(
                     'horizontalConstraint',
@@ -134,7 +134,7 @@ class SearchSelectInputStory extends Component {
                   <b>Data used:</b>
                   <pre>{JSON.stringify(colourOptions, undefined, 2)}</pre>
                 </div>
-              </Spacings.Stack>
+              </Stack>
             )}
           />
         </Section>

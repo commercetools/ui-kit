@@ -2,8 +2,10 @@ import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs/react';
-import Spacings from '@commercetools-uikit/spacings';
-import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
+import Stack from '../../../spacings/spacings-stack';
+import Inline from '../../../spacings/spacings-inline';
+import PrimaryButton from '../../../buttons/primary-button';
+import SecondaryButton from '../../../buttons/secondary-button';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import FormikBox from '../../../../../docs/.storybook/decorators/formik-box';
 import Readme from '../README.md';
@@ -31,7 +33,7 @@ storiesOf('Examples|Forms/Inputs', module)
             formik.resetForm({ values: initialValues });
           }}
           render={(formik) => (
-            <Spacings.Stack scale="l">
+            <Stack scale="l">
               <DateTimeInput
                 name="startDate"
                 value={formik.values.startDate}
@@ -48,7 +50,7 @@ storiesOf('Examples|Forms/Inputs', module)
                 timeZone="Europe/Berlin"
                 horizontalConstraint={7}
               />
-              <Spacings.Inline>
+              <Inline>
                 <SecondaryButton
                   onClick={formik.handleReset}
                   isDisabled={formik.isSubmitting}
@@ -59,10 +61,10 @@ storiesOf('Examples|Forms/Inputs', module)
                   isDisabled={formik.isSubmitting || !formik.dirty}
                   label="Submit"
                 />
-              </Spacings.Inline>
+              </Inline>
               <hr />
               <FormikBox formik={formik} />
-            </Spacings.Stack>
+            </Stack>
           )}
         />
       </Section>

@@ -23,6 +23,12 @@ const renderSpinner = (customProps = { maxDelayDuration: 100 }) => {
   return { ...rendered, waitUntilMaxDuration };
 };
 
+// TODO: refactor to prevent `An update to %s inside a test was not wrapped in act(...)` error
+beforeEach(() => {
+  const consoleWarnMock = jest.fn();
+  consoleWarnMock.mockClear();
+  console.error = consoleWarnMock;
+});
 it('should show loading spinner and render children when the maximum delay duration has passed', async () => {
   const rendered = renderSpinner();
 

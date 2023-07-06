@@ -30,9 +30,9 @@ Some of the packages are used as "presets" and live in the [`presets`](./presets
 
 At commercetools we use the following development tools:
 
-#### Yarn
+#### Pnpm
 
-We use [Yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) to manage dependencies between multiple packages.
+We use [Pnpm workspaces](https://pnpm.io/workspaces) to manage dependencies between multiple packages.
 
 #### Jest
 
@@ -77,23 +77,23 @@ If possible, please try to provide a [related issue first](#opening-an-issue), w
 ## Getting started
 
 1. Clone the repository.
-2. Run `yarn` in the root folder to install the dependencies.
+2. Run `pnpm install` in the root folder to install the dependencies.
 
 At this point you can start working on the UI components in the `packages` folder.
 
 Some useful commands to work with the repository:
 
-- `yarn test` and `yarn test:watch`
-- `yarn typecheck`
-- `yarn build`
-- `yarn lint`
+- `pnpm test` and `pnpm test:watch`
+- `pnpm typecheck`
+- `pnpm build`
+- `pnpm lint`
 
 ## Developing locally
 
 When you develop UI components, it's recommended to start Storybook.
 
 ```
-yarn start
+pnpm start
 ```
 
 ### Adding translations
@@ -102,7 +102,7 @@ The UI Kit uses `react-intl` to define and consume messages. The source/core mes
 
 The translations for the supported languages exist in the `/i18n` folder. We do not use any automated translation software.
 
-After adding new messages, you need to run `yarn extract-intl`. This will modify the language files in `/i18n` by adding empty translations for the message keys.
+After adding new messages, you need to run `pnpm extract-intl`. This will modify the language files in `/i18n` by adding empty translations for the message keys.
 
 If you want to modify an existing translation, you will need to manually edit the related files in `/i18n`.
 
@@ -111,13 +111,13 @@ If you want to modify an existing translation, you will need to manually edit th
 To add new icons in the `@commercetools-uikit/icons` package:
 
 1. Add the raw SVG file to the `packages/components/icons/src/svg` folder. Make sure the file name ends with `.react.svg`.
-2. Run the `yarn generate-icons` command to generate the React component files. The components are generated using the `svgo` CLI and the template file `packages/components/icons/src/templates/icon.styles.tsx`.
+2. Run the `pnpm generate-icons` command to generate the React component files. The components are generated using the `svgo` CLI and the template file `packages/components/icons/src/templates/icon.styles.tsx`.
 
 ## Adding changesets
 
 commercetools ui-kit uses [changesets](https://github.com/atlassian/changesets) to do versioning and creating changelogs.
 
-As a contributor you need to add a changeset by running `yarn changeset`.
+As a contributor you need to add a changeset by running `pnpm changeset`.
 The command will prompt to select the packages that should be bumped, their associated semver bump types and some markdown which will be inserted into the changelogs.
 
 When opening a Pull Request, a `changeset-bot` checks that the Pull Request contains a changeset. A changeset is **NOT required**, as things like documentation or other changes in the repository itself generally don't need a changeset.

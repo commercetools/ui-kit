@@ -5,11 +5,11 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import withReadme from 'storybook-readme/with-readme';
-import Spacings from '@commercetools-uikit/spacings';
-import PrimaryButton from '@commercetools-uikit/primary-button';
-import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
-import Constraints from '@commercetools-uikit/constraints';
-import Text from '@commercetools-uikit/text';
+import Stack from '../../../spacings/spacings-stack';
+import PrimaryButton from '../../../buttons/primary-button';
+import CollapsiblePanel from '../../../collapsible-panel';
+import Constraints from '../../../constraints';
+import Text from '../../../text';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import RichTextInput from './rich-text-input';
 import Readme from '../README.md';
@@ -50,14 +50,14 @@ storiesOf('Components|Inputs', module)
 
     return (
       <Section>
-        <Spacings.Stack scale="l">
+        <Stack scale="l">
           <CollapsiblePanel
             header="Set initial value"
             horizontalConstraint="scale"
             isDefaultClosed
           >
             <Constraints.Horizontal max="scale">
-              <Spacings.Stack scale="m">
+              <Stack scale="m">
                 <textarea
                   defaultValue={resetValue}
                   onChange={onResetValueChange}
@@ -70,7 +70,7 @@ storiesOf('Components|Inputs', module)
                     size="medium"
                   />
                 </Constraints.Horizontal>
-              </Spacings.Stack>
+              </Stack>
             </Constraints.Horizontal>
           </CollapsiblePanel>
           <RichTextInput
@@ -94,7 +94,7 @@ storiesOf('Components|Inputs', module)
           />
           <Text.Headline as="h3">Output</Text.Headline>
           <pre>{value}</pre>
-        </Spacings.Stack>
+        </Stack>
       </Section>
     );
   });

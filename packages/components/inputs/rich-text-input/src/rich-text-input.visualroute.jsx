@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
 import { RichTextInput } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 

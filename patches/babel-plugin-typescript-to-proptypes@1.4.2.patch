@@ -1,7 +1,7 @@
-diff --git a/node_modules/babel-plugin-typescript-to-proptypes/lib/convertBabelToPropTypes.js b/node_modules/babel-plugin-typescript-to-proptypes/lib/convertBabelToPropTypes.js
-index 4d3252f..c939b42 100644
---- a/node_modules/babel-plugin-typescript-to-proptypes/lib/convertBabelToPropTypes.js
-+++ b/node_modules/babel-plugin-typescript-to-proptypes/lib/convertBabelToPropTypes.js
+diff --git a/lib/convertBabelToPropTypes.js b/lib/convertBabelToPropTypes.js
+index 4d3252fb8d0f2d4c69eb4320fbf65ce9cffed707..1249b34baeffd7fb1e27ec98ed139b8755566534 100644
+--- a/lib/convertBabelToPropTypes.js
++++ b/lib/convertBabelToPropTypes.js
 @@ -141,6 +141,13 @@ function convert(type, state, depth) {
          }
          else if (NATIVE_BUILT_INS.includes(name)) {
@@ -10,7 +10,7 @@ index 4d3252f..c939b42 100644
 +        }
 +        else if (name === 'Record') {
 +            const result = convert(type.typeParameters.params[1], state, depth);
-+            if (result) {
++            if (result) { 
 +                return propTypes_1.createCall(core_1.types.identifier('objectOf'), [result], propTypesImportedName);
 +            }
              // inline references

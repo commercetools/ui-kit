@@ -2,8 +2,8 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select, number } from '@storybook/addon-knobs/react';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
-import Spacings from '@commercetools-uikit/spacings';
-import Text from '@commercetools-uikit/text';
+import Stack from '../../spacings/spacings-stack';
+import Text from '../../text';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import Grid from './grid';
@@ -38,7 +38,7 @@ storiesOf('Examples|Components/Grid', module)
   })
   .add('With fixed columns', () => (
     <Section>
-      <Spacings.Stack scale="l">
+      <Stack scale="l">
         <Text.Body tone="information">
           {'💁 Try resizing the window to see how the grid layout behaves.'}
         </Text.Body>
@@ -49,12 +49,12 @@ storiesOf('Examples|Components/Grid', module)
         >
           {renderGridElements()}
         </Grid>
-      </Spacings.Stack>
+      </Stack>
     </Section>
   ))
   .add('With auto-sizing columns', () => (
     <Section>
-      <Spacings.Stack scale="l">
+      <Stack scale="l">
         <Text.Body tone="information">
           {'💁 Try resizing the window to see how the grid layout behaves.'}
         </Text.Body>
@@ -68,6 +68,6 @@ storiesOf('Examples|Components/Grid', module)
         >
           {renderGridElements()}
         </Grid>
-      </Spacings.Stack>
+      </Stack>
     </Section>
   ));

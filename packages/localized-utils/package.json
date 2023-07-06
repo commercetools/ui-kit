@@ -23,5 +23,8 @@
     "@babel/runtime-corejs3": "^7.20.13",
     "@commercetools-uikit/utils": "16.5.0",
     "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.194"
   }
 }

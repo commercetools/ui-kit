@@ -35,6 +35,8 @@
   },
   "devDependencies": {
     "@testing-library/react-hooks": "8.0.1",
+    "@types/lodash": "4.14.194",
+    "@types/react": "17.0.59",
     "formik": "^2.2.9",
     "react": "17.0.2"
   },

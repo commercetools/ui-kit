@@ -9,8 +9,8 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
-import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
+import Constraints from '../../../constraints';
+import { getExampleDateStrings } from '../../../../calendar-utils';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import * as icons from '../../../icons';

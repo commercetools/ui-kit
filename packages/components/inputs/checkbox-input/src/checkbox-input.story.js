@@ -2,9 +2,9 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import { Value } from 'react-value';
-import Spacings from '@commercetools-uikit/spacings';
-import Text from '@commercetools-uikit/text';
-import Grid from '@commercetools-uikit/grid';
+import Stack from '../../../spacings/spacings-stack';
+import Text from '../../../text';
+import Grid from '../../../grid';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import CheckboxInput from './checkbox-input';
@@ -26,7 +26,7 @@ storiesOf('Components|Inputs', module)
   })
   .add('CheckboxInput', () => (
     <Section>
-      <Spacings.Stack>
+      <Stack>
         {Object.entries(states).map(([stateKey, stateLabel]) => (
           <Grid
             key={stateKey}
@@ -100,6 +100,6 @@ storiesOf('Components|Inputs', module)
             />
           </Grid>
         ))}
-      </Spacings.Stack>
+      </Stack>
     </Section>
   ));

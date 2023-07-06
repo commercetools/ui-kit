@@ -3,7 +3,7 @@ module.exports = {
   '*.yaml': ['prettier --write --parser yaml'],
   '*.json': ['prettier --write --parser json'],
   '*.js': [
-    'yarn prettier --write',
+    'pnpm prettier --write',
     // NOTE: apparently if you pass some argument that is not a flag AFTER the `reporters`
     // flag, jest does not seem correctly parse the arguments.
     //
@@ -12,10 +12,10 @@ module.exports = {
     //   Error: An error occurred while adding the reporter at path "/path/to/file".Reporter is not a constructor
     //
     // For that reason, we move the `--onlyChanged` flag next to it.
-    'yarn lint:js --reporters=jest-silent-reporter --onlyChanged',
+    'pnpm lint:js --reporters=jest-silent-reporter --onlyChanged --passWithNoTests',
   ],
   '*.{ts,tsx}': [
-    'yarn prettier --write',
+    'pnpm prettier --write',
     // NOTE: apparently if you pass some argument that is not a flag AFTER the `reporters`
     // flag, jest does not seem correctly parse the arguments.
     //
@@ -24,7 +24,7 @@ module.exports = {
     //   Error: An error occurred while adding the reporter at path "/path/to/file".Reporter is not a constructor
     //
     // For that reason, we move the `--onlyChanged` flag next to it.
-    'yarn lint:js --reporters=jest-silent-reporter --onlyChanged',
+    'pnpm lint:js --reporters=jest-silent-reporter --onlyChanged --passWithNoTests',
     'tsc-files --noEmit',
   ],
 };

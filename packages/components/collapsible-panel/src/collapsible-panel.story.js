@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
 import Section from '../../../../docs/.storybook/decorators/section';
-import Constraints from '@commercetools-uikit/constraints';
+import Constraints from '../../constraints';
 import CollapsiblePanel from './collapsible-panel';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 import Readme from '../README.md';

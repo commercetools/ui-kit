@@ -69,6 +69,9 @@ typings/
 !.yarn/sdks
 !.yarn/versions
 
+# pnpm
+.pnp.*
+
 # dotenv environment variables file
 .env
 

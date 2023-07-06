@@ -8,3 +8,5 @@ dist
 vendors
 .yarn
 .changeset
+pnpm-lock.yaml
+pnpm-workspace.yaml

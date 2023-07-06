@@ -8,9 +8,9 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
+import Constraints from '../../../constraints';
 import { Value } from 'react-value';
-import RadioInput from '@commercetools-uikit/radio-input';
+import RadioInput from '../../../inputs/radio-input';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import * as icons from '../../../icons';

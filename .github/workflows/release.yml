@@ -19,26 +19,8 @@ jobs:
           # https://github.community/t/action-does-not-trigger-another-on-push-tag-action/17148/8
           token: ${{ secrets.RELEASE_GITHUB_TOKEN }}
 
-      - name: Setup Node (uses version in .nvmrc)
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
-
-      - uses: actions/cache@v3
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock', 'patches/*.patch') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: yarn install --immutable
-        env:
-          SKIP_INSTALL_STORYBOOK: true
+      - name: Installing dependencies and building packages
+        uses: ./.github/actions/ci
 
       - name: Creating .npmrc
         run: |
@@ -49,11 +31,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Building packages
-        run: yarn build
-
       - name: Building package READMEs
-        run: yarn generate-readmes
+        run: pnpm generate-readmes
         env:
           CI: true
 
@@ -69,8 +48,8 @@ jobs:
         uses: dotansimha/changesets-action@v1.5.2
         with:
           commit: 'ci(changesets): version packages'
-          publish: yarn changeset publish
-          version: yarn changeset:version-and-format
+          publish: pnpm changeset publish
+          version: pnpm changeset:version-and-format
           createGithubReleases: aggregate
           githubReleaseName: v${{ steps.release_version.outputs.VALUE }}
           githubTagName: v${{ steps.release_version.outputs.VALUE }}
@@ -83,7 +62,7 @@ jobs:
         if: steps.changesets.outputs.published != 'true'
         run: |
           git checkout main
-          yarn changeset version --snapshot canary
-          yarn changeset publish --tag canary
+          pnpm changeset version --snapshot canary
+          pnpm changeset publish --tag canary
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}

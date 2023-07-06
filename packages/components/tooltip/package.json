@@ -33,6 +33,10 @@
     "use-popper": "1.1.6"
   },
   "devDependencies": {
+    "@types/lodash": "4.14.194",
+    "@types/react": "17.0.59",
+    "@types/react-is": "^17.0.3",
+    "popper.js": "1.15.0",
     "react": "17.0.2"
   },
   "peerDependencies": {

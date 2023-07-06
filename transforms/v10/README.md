@@ -4,6 +4,7 @@ Make sure to have `jscodeshift` installed globally.
 
 ```bash
 $ yarn global add jscodeshift
+$ pnpm add --global jscodeshift
 $ npm -g install jscodeshift
 ```
 

@@ -15,7 +15,7 @@ Each package should have the following fragment files in a `docs` folder:
 > The package contains TypeScript file which are not transpiled. To execute the script, the package uses internally `ts-node` CLI, which is already installed in this repository.
 
 ```
-yarn generate-readme packages/components/avatar
+pnpm generate-readme packages/components/avatar
 ```
 
 ## Prop Types documentation

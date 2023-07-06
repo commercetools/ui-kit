@@ -2,10 +2,10 @@
 
 set -e
 
-yarn generate-icons
-yarn design-tokens:build
-yarn compile-intl
+pnpm generate-icons
+pnpm design-tokens:build
+pnpm compile-intl
 
-yarn preconstruct build
+pnpm preconstruct build
 
-yarn workspace @commercetools-frontend/ui-kit copy-assets
+pnpm --filter @commercetools-frontend/ui-kit copy-assets

@@ -1,0 +1,9 @@
+packages:
+- ../design-system
+- ../packages/*
+- ../packages/components/*
+- ../packages/components/buttons/*
+- ../packages/components/fields/*
+- ../packages/components/inputs/*
+- ../packages/components/spacings/*
+- ../presets/*

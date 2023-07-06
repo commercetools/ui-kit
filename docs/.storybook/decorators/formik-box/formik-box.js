@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import Text from '../../../../packages/components/text';
-import SpacingsStack from '../../../../packages/components/spacings/spacings-stack';
+import { Text, Spacings } from '@commercetools-frontend/ui-kit';
 
 export default class FormikBox extends Component {
   static displayName = 'FormikBox';
@@ -14,7 +13,7 @@ export default class FormikBox extends Component {
   };
   render() {
     return (
-      <SpacingsStack scale="l">
+      <Spacings.Stack scale="l">
         <div>
           <Text.Subheadline as="h4">formik.values</Text.Subheadline>
           <pre>{JSON.stringify(this.props.formik.values, null, 2)}</pre>
@@ -27,7 +26,7 @@ export default class FormikBox extends Component {
           <Text.Subheadline as="h4">formik.errors</Text.Subheadline>
           <pre>{JSON.stringify(this.props.formik.errors, null, 2)}</pre>
         </div>
-      </SpacingsStack>
+      </Spacings.Stack>
     );
   }
 }

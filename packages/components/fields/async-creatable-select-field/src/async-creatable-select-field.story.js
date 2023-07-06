@@ -10,8 +10,8 @@ import {
   object,
   number,
 } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
-import Spacings from '@commercetools-uikit/spacings';
+import Constraints from '../../../constraints';
+import Stack from '../../../spacings/spacings-stack';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
 import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
@@ -112,7 +112,7 @@ storiesOf('Components|Fields/SelectFields', module)
           key={isMulti}
           defaultValue={isMulti ? [] : undefined}
           render={(value, onChange) => (
-            <Spacings.Stack scale="m">
+            <Stack scale="m">
               <AsyncCreatableSelectField
                 horizontalConstraint={select(
                   'horizontalConstraint',
@@ -184,7 +184,7 @@ storiesOf('Components|Fields/SelectFields', module)
                 {...addMenuPortalProps()}
               />
               <NeighbouringStackingContext />
-            </Spacings.Stack>
+            </Stack>
           )}
         />
       </Section>

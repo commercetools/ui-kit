@@ -7,12 +7,5 @@ export default defineConfig({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     'process.env.CI': JSON.stringify(process.env.CI),
   },
-  plugins: [
-    react({
-      jsxImportSource: '@emotion/react',
-      babel: {
-        plugins: ['@emotion/babel-plugin'],
-      },
-    }),
-  ],
+  plugins: [react()],
 });

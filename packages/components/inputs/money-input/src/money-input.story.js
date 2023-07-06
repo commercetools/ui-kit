@@ -9,8 +9,8 @@ import {
   text,
   select,
 } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
-import Spacings from '@commercetools-uikit/spacings';
+import Constraints from '../../../constraints';
+import Stack from '../../../spacings/spacings-stack';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
 import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
@@ -60,7 +60,7 @@ class MoneyInputStory extends Component {
     return (
       <>
         <Section>
-          <Spacings.Stack scale="m">
+          <Stack scale="m">
             <MoneyInput
               id={text('id', '')}
               name={name}
@@ -94,7 +94,7 @@ class MoneyInputStory extends Component {
               {...addMenuPortalProps()}
             />
             <NeighbouringStackingContext />
-          </Spacings.Stack>
+          </Stack>
         </Section>
         <Section>
           <p>
