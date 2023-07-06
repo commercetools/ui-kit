@@ -1,5 +1,14 @@
 # @commercetools-uikit/label
 
+## 16.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.5.0
+  - @commercetools-uikit/text@16.5.0
+  - @commercetools-uikit/utils@16.5.0
+
 ## 16.4.1
 
 ### Patch Changes
