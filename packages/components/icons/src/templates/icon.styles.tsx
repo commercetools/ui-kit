@@ -1,7 +1,5 @@
-// @ts-ignore
-import { warning, createSequentialId } from '@commercetools-uikit/utils';
-// @ts-ignore
-import { useMemo } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { warning } from '@commercetools-uikit/utils';
 // @ts-ignore
 import { css, ClassNames } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -18,11 +16,7 @@ export type Props = {
     | 'error';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
-export type SVGProps = Props & {
-  className: string;
-  titleId: string;
-  title?: string;
-};
+export type SVGProps = Props & { className: string };
 
 const iconSizes = {
   small: 12,

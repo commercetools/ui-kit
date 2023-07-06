@@ -30,19 +30,6 @@ const annotationsToRemove = [
   '// @ts-ignore',
 ];
 
-const isUppercaseLetter = (letter) => /[A-Z]/.test(letter);
-const getIconAccessibleTitle = (componentName) => {
-  return [...componentName]
-    .map((letter, index) =>
-      index > 0 && isUppercaseLetter(letter)
-        ? ` ${letter.toLowerCase()}`
-        : letter
-    )
-    .join('');
-};
-const getSvgFileName = (filePathname) =>
-  filePathname.match(/\/svg\/(.*)\.react\.svg/)[1];
-
 // https://react-svgr.com/docs/custom-templates/
 // https://github.com/gregberge/svgr/blob/c57ee04b19c15a76ae4caf40d1bb82c210d6c398/packages/babel-plugin-transform-svg-component/src/types.ts#L18
 const styledIconsTemplate = (variables, context) => {
@@ -51,7 +38,6 @@ const styledIconsTemplate = (variables, context) => {
     ''
   );
   const reactComponentName = `${svgComponentName.replace(/svg/i, '')}Icon`;
-  const svgAccessibleTitle = getIconAccessibleTitle(reactComponentName);
   const babelOptions = {
     preserveComments: true,
     placeholderPattern: false,
@@ -66,23 +52,16 @@ const styledIconsTemplate = (variables, context) => {
 
 ${templateCreateStyledIcon}
 
-const ${svgComponentName} = ({ titleId, title, ...props }: SVGProps) => JSX;
+const ${svgComponentName} = (props: SVGProps) => JSX;
 ${svgComponentName}.displayName = "${svgComponentName}";
 
-const titleSequentialId = createSequentialId('${getSvgFileName(
-    context.options.state.filePath
-  )}-icon-title-');
-
-const ${reactComponentName} = (props: Props) => {
-  const svgTitleId = useMemo(() => titleSequentialId(), []);
-  return (
+const ${reactComponentName} = (props: Props) => (
     <ClassNames>
       {({ css: createClass }) =>
-        <${svgComponentName} {...props} titleId={svgTitleId} title="${svgAccessibleTitle}" className={createClass(getIconStyles(props))} />
+        <${svgComponentName} {...props} className={createClass(getIconStyles(props))} />
       }
     </ClassNames>
   );
-};
 ${reactComponentName}.displayName = "${reactComponentName}";
 
 export default ${reactComponentName};
@@ -100,7 +79,6 @@ export default ${reactComponentName};
 
 module.exports = {
   icon: false,
-  titleProp: true,
   svgoConfig: {
     plugins: [
       {
