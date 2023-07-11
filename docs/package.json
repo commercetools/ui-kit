@@ -7,7 +7,7 @@
     "build": "NODE_ENV=production build-storybook -o public -s assets"
   },
   "dependencies": {
-    "@babel/core": "7.21.8",
+    "@babel/core": "7.22.8",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@manypkg/get-packages": "1.1.3",
@@ -33,7 +33,7 @@
     "react-dom": "17.0.2",
     "storybook-readme": "5.0.9",
     "style-loader": "2.0.0",
-    "yaml": "2.2.2",
+    "yaml": "2.3.1",
     "yaml-loader": "0.8.0"
   },
   "devDependencies": {
@@ -45,7 +45,7 @@
     "prismjs": "1.29.0"
   },
   "resolutions": {
-    "@types/react": "17.0.59",
+    "@types/react": "17.0.62",
     "@types/react-dom": "17.0.20"
   },
   "engines": {
