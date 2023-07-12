@@ -6091,9 +6091,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@preconstruct/cli@npm:2.8.1":
-  version: 2.8.1
-  resolution: "@preconstruct/cli@npm:2.8.1"
+"@preconstruct/cli@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@preconstruct/cli@npm:2.6.4"
   dependencies:
     "@babel/code-frame": ^7.5.5
     "@babel/core": ^7.7.7
@@ -6135,7 +6135,7 @@ __metadata:
     zod: ^3.21.4
   bin:
     preconstruct: bin.js
-  checksum: 11b956d71635848acad8e8abd4e4cbddf45158921b26186ad2d3251ad094033bf0c758dcd016d584df008d972d4d2439127e458d75182259b2ca429da541875c
+  checksum: 39baf884378212558594ee218c14d97622172a661cc407127ea092e50f6938a63d23689109c15e0f224f6e62c35c01c522936a322d87394a8aa1b9ecc3636c1a
   languageName: node
   linkType: hard
 
@@ -19014,7 +19014,7 @@ __metadata:
     "@manypkg/get-packages": 1.1.3
     "@percy/cli": 1.26.2
     "@percy/puppeteer": 2.0.2
-    "@preconstruct/cli": 2.8.1
+    "@preconstruct/cli": 2.6.4
     "@stylelint/postcss-css-in-js": ^0.38.0
     "@svgr/babel-plugin-svg-dynamic-title": ^7.0.0
     "@svgr/cli": 7.0.0
