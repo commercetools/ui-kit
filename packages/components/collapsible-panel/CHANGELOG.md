@@ -1,5 +1,37 @@
 # @commercetools-uikit/collapsible-panel
 
+## 16.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`6729c7595`](https://github.com/commercetools/ui-kit/commit/6729c7595c4d80d558697fabcd6c92d3788f0266)]:
+  - @commercetools-uikit/icons@16.5.0
+  - @commercetools-uikit/design-system@16.5.0
+  - @commercetools-uikit/accessible-button@16.5.0
+  - @commercetools-uikit/collapsible-motion@16.5.0
+  - @commercetools-uikit/constraints@16.5.0
+  - @commercetools-uikit/text@16.5.0
+  - @commercetools-uikit/hooks@16.5.0
+  - @commercetools-uikit/utils@16.5.0
+  - @commercetools-uikit/spacings@16.5.0
+
+## 16.4.1
+
+### Patch Changes
+
+- [#2548](https://github.com/commercetools/ui-kit/pull/2548) [`a3f1aa3cc`](https://github.com/commercetools/ui-kit/commit/a3f1aa3cc6de25c9a8dfdf34fa38e0ab60c4a329) Thanks [@chloe0592](https://github.com/chloe0592)! - Fix the error of headings wrapping another headings
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.4.1
+  - @commercetools-uikit/accessible-button@16.4.1
+  - @commercetools-uikit/collapsible-motion@16.4.1
+  - @commercetools-uikit/constraints@16.4.1
+  - @commercetools-uikit/icons@16.4.1
+  - @commercetools-uikit/text@16.4.1
+  - @commercetools-uikit/hooks@16.4.1
+  - @commercetools-uikit/utils@16.4.1
+  - @commercetools-uikit/spacings@16.4.1
+
 ## 16.4.0
 
 ### Patch Changes
