@@ -35,7 +35,7 @@
     "@commercetools-uikit/utils": "16.5.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "downshift": "6.1.12",
+    "downshift": "7.6.1",
     "immutable": "4.3.0",
     "is-hotkey": "0.2.0",
     "lodash": "4.17.21",
