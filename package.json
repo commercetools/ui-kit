@@ -141,7 +141,7 @@
     "replace": "1.2.2",
     "rimraf": "3.0.2",
     "shelljs": "0.8.5",
-    "stylelint": "14.16.1",
+    "stylelint": "15.10.1",
     "stylelint-config-prettier": "9.0.5",
     "stylelint-config-standard": "26.0.0",
     "stylelint-order": "5.0.0",
