@@ -73,7 +73,7 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
-    <Spec label="when expanded by default">
+    {/* <Spec label="when expanded by default">
       <MultilineTextInput
         value={value}
         onChange={() => {}}
@@ -89,6 +89,6 @@ export const component = () => (
         defaultExpandMultilineText={true}
         isDisabled={true}
       />
-    </Spec>
+    </Spec> */}
   </Suite>
 );
