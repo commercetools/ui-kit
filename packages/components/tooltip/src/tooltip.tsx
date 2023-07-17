@@ -41,9 +41,13 @@ export type TTooltipProps = {
   children: ReactElement;
 
   /**
+   * Delay (in milliseconds) between the start of the user interaction, and showing the tooltip.
+   */
+  showAfter?: number;
+  /**
    * Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip.
    */
-  closeAfter: number;
+  closeAfter?: number;
   /**
    * Custom css-in-js object styles for the tooltip body.
    */
@@ -124,15 +128,17 @@ TooltipWrapper.displayName = 'TooltipWrapperComponent';
 
 const tooltipDefaultProps: Pick<
   TTooltipProps,
-  'closeAfter' | 'horizontalConstraint' | 'off' | 'placement'
+  'showAfter' | 'closeAfter' | 'horizontalConstraint' | 'off' | 'placement'
 > = {
-  closeAfter: 0,
+  showAfter: 300,
+  closeAfter: 200,
   horizontalConstraint: 'scale',
   off: false,
   placement: 'top',
 };
 
 const Tooltip = (props: TTooltipProps) => {
+  const enterTimer = useRef<ReturnType<typeof setTimeout>>();
   const leaveTimer = useRef<ReturnType<typeof setTimeout>>();
   const childrenRef = useRef<ReturnType<typeof setTimeout>>();
   if (props.components?.BodyComponent) {
@@ -156,6 +162,9 @@ const Tooltip = (props: TTooltipProps) => {
 
   useEffect(() => {
     return () => {
+      if (enterTimer.current) {
+        clearTimeout(enterTimer.current);
+      }
       if (leaveTimer.current) {
         clearTimeout(leaveTimer.current);
       }
@@ -192,7 +201,7 @@ const Tooltip = (props: TTooltipProps) => {
   );
 
   const { onFocus, onMouseOver } = props.children.props;
-  const { onOpen } = props;
+  const { showAfter, onOpen } = props;
   const handleEnter = useCallback(
     (event?: ChangeEvent | FocusEvent) => {
       // Remove the title ahead of time.
@@ -214,17 +223,20 @@ const Tooltip = (props: TTooltipProps) => {
 
         if (!isOpen && !isControlled) {
           openTooltip();
-        }
+          enterTimer.current = setTimeout(() => {
+            openTooltip();
 
-        if (onOpen) {
-          onOpen(event);
+            if (onOpen) {
+              onOpen(event);
+            }
+          }, showAfter);
         }
 
         event.preventDefault();
         event.stopPropagation();
       }
     },
-    [onFocus, onOpen, onMouseOver, isControlled, isOpen, openTooltip]
+    [onFocus, onOpen, onMouseOver, isControlled, isOpen, openTooltip, showAfter]
   );
 
   const { onBlur, onMouseLeave } = props.children.props;
@@ -232,6 +244,9 @@ const Tooltip = (props: TTooltipProps) => {
 
   const handleLeave = useCallback(
     (event) => {
+      if (enterTimer.current) {
+        clearTimeout(enterTimer.current);
+      }
       if (leaveTimer.current) {
         clearTimeout(leaveTimer.current);
       }
