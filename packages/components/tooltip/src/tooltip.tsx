@@ -140,7 +140,7 @@ const tooltipDefaultProps: Pick<
 const Tooltip = (props: TTooltipProps) => {
   const enterTimer = useRef<ReturnType<typeof setTimeout>>();
   const leaveTimer = useRef<ReturnType<typeof setTimeout>>();
-  const childrenRef = useRef<ReturnType<typeof setTimeout>>();
+  const childrenRef = useRef<HTMLElement>();
   if (props.components?.BodyComponent) {
     warning(
       isValidElementType(props.components.BodyComponent),
@@ -207,9 +207,8 @@ const Tooltip = (props: TTooltipProps) => {
       // Remove the title ahead of time.
       // We don't want to wait for the next render commit.
       // We would risk displaying two tooltips at the same time (native + this one).
-      if (childrenRef && typeof childrenRef === 'function') {
-        // @ts-ignore
-        childrenRef.setAttribute('title', '');
+      if (childrenRef.current) {
+        childrenRef.current.setAttribute('title', '');
       }
 
       if (event) {
@@ -222,7 +221,6 @@ const Tooltip = (props: TTooltipProps) => {
         }
 
         if (!isOpen && !isControlled) {
-          openTooltip();
           enterTimer.current = setTimeout(() => {
             openTooltip();
 
@@ -244,12 +242,8 @@ const Tooltip = (props: TTooltipProps) => {
 
   const handleLeave = useCallback(
     (event) => {
-      if (enterTimer.current) {
-        clearTimeout(enterTimer.current);
-      }
-      if (leaveTimer.current) {
-        clearTimeout(leaveTimer.current);
-      }
+      clearTimeout(enterTimer.current);
+      clearTimeout(leaveTimer.current);
 
       if (event.type === 'mouseleave' && onMouseLeave) {
         onMouseLeave(event);
@@ -259,7 +253,7 @@ const Tooltip = (props: TTooltipProps) => {
         onBlur(event);
       }
 
-      if (closeAfter) {
+      if (closeAfter && isOpen) {
         leaveTimer.current = setTimeout(() => {
           handleClose(event);
         }, closeAfter);
@@ -267,7 +261,7 @@ const Tooltip = (props: TTooltipProps) => {
         handleClose(event);
       }
     },
-    [closeAfter, onBlur, onMouseLeave, handleClose]
+    [closeAfter, onBlur, onMouseLeave, handleClose, isOpen]
   );
 
   useEffect(() => {
@@ -290,6 +284,7 @@ const Tooltip = (props: TTooltipProps) => {
     onMouseOver: null,
     onMouseLeave: null,
     onBlur: null,
+    ref: childrenRef,
   };
 
   const tooltipProps = !props.off
@@ -306,7 +301,7 @@ const Tooltip = (props: TTooltipProps) => {
 
   const eventListeners = !props.off
     ? {
-        onMouseOver: handleEnter,
+        onMouseEnter: handleEnter,
         onMouseLeave: handleLeave,
         onFocus: handleEnter,
         onBlur: handleLeave,
