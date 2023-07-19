@@ -186,7 +186,9 @@ const Tooltip = (props: TTooltipProps) => {
   const [state, setState] = useState<TTooltipState>('closed');
 
   const isControlled = !isNil(props.isOpen);
-  const tooltipIsOpen = isControlled ? props.isOpen : state === 'opened';
+  const tooltipIsOpen = isControlled
+    ? props.isOpen
+    : state === 'opened' || state === 'exiting';
   const id = useFieldId(props.id, sequentialId);
 
   const { onClose } = props;
@@ -258,8 +260,9 @@ const Tooltip = (props: TTooltipProps) => {
 
       if (closeAfter && state === 'opened') {
         leaveTimer.current = setTimeout(() => {
-          const tooltipElement = popperInstance?.popper
-            .children[0] as HTMLElement;
+          const tooltipElement = popperInstance?.popper.querySelector(
+            '[data-testid="tooltip-message-wrapper"]'
+          ) as HTMLElement;
           tooltipElement.addEventListener(
             'animationend',
             (event: AnimationEvent) => {
@@ -339,7 +342,7 @@ const Tooltip = (props: TTooltipProps) => {
           ...tooltipProps,
         })}
       </WrapperComponent>
-      {(state === 'opened' || state === 'exiting') && (
+      {tooltipIsOpen && (
         <TooltipWrapperComponent>
           <div
             // ref accepts `LegacyRef`, which is a union of `RefObject` and `string`
@@ -359,6 +362,7 @@ const Tooltip = (props: TTooltipProps) => {
               css={css({
                 ...getTooltipStyles(state),
               })}
+              data-testid="tooltip-message-wrapper"
             >
               <BodyComponent>{props.title}</BodyComponent>
             </div>

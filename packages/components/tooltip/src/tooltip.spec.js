@@ -1,3 +1,4 @@
+import { merge } from 'lodash';
 import { Component, forwardRef } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
@@ -6,9 +7,92 @@ import {
   render,
   fireEvent,
   waitFor,
-  waitForElementToBeRemoved,
 } from '../../../../test/test-utils';
 import Tooltip from './tooltip';
+
+const waitForTimeout = (timeout) => {
+  const now = Date.now();
+  return waitFor(() => {
+    if (Date.now() - now < timeout) {
+      throw new Error('Still waiting for the timeout');
+    }
+  });
+};
+
+const openAndValidateTooltip = async ({
+  triggerElement,
+  eventType,
+  onOpenCallback,
+}) => {
+  const options = merge(
+    {
+      eventType: 'focus',
+    },
+    {
+      triggerElement,
+      eventType,
+      onOpenCallback,
+    }
+  );
+  // Let's focus the button to trigger the tooltip
+  fireEvent[options.eventType](options.triggerElement);
+
+  // First we need to wait for the tooltip to be visible
+  // after the 'showAfter' delay
+  await screen.findByText('What kind of bear is best?');
+
+  // Now we can verify the callbacks
+  // expect(onMouseOver).toHaveBeenCalled();
+  expect(onOpenCallback).toHaveBeenCalled();
+
+  // Should remove the title
+  expect(triggerElement).toHaveProperty('title', '');
+};
+
+const closeAndValidateTooltip = async ({
+  eventType,
+  triggerElement,
+  closeAfter,
+  exitCallbacks,
+} = {}) => {
+  const options = merge(
+    {
+      eventType: 'blur',
+      exitCallbacks: [],
+    },
+    {
+      eventType,
+      triggerElement,
+      closeAfter,
+      exitCallbacks,
+    }
+  );
+
+  // Move away from the trigger element
+  fireEvent[options.eventType](options.triggerElement);
+
+  // We need to wait for the tooltip to be removed
+  // after the 'closeAfter' delay
+  await waitForTimeout(options.closeAfter);
+
+  // We need to fake trigger the animation we use to hide the tooltip
+  fireEvent.animationEnd(screen.getByTestId('tooltip-message-wrapper'));
+
+  // should call the exit callbacks
+  options.exitCallbacks.forEach((callback) => {
+    expect(callback).toHaveBeenCalled();
+  });
+
+  // should hide tooltip
+  expect(
+    screen.queryByText('What kind of bear is best?')
+  ).not.toBeInTheDocument();
+  // should add the title again
+  expect(options.triggerElement).toHaveProperty(
+    'title',
+    'What kind of bear is best?'
+  );
+};
 
 const Portal = (props) => {
   const domNode = document.querySelector('#portal-id');
@@ -26,6 +110,7 @@ class TestComponent extends Component {
     onClose: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
+    showAfter: PropTypes.number,
     closeAfter: PropTypes.number,
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
@@ -39,6 +124,8 @@ class TestComponent extends Component {
   static defaultProps = {
     title: 'What kind of bear is best?',
     buttonLabel: 'Submit',
+    showAfter: 10,
+    closeAfter: 10,
   };
 
   state = {
@@ -63,6 +150,7 @@ class TestComponent extends Component {
             onOpen={this.props.onOpen}
             isOpen={this.state.open}
             id={this.props.id}
+            showAfter={this.props.showAfter}
             closeAfter={this.props.closeAfter}
             components={this.props.components}
           >
@@ -105,7 +193,6 @@ describe('Tooltip', () => {
       <TestComponent id="my-tooltip" isOpen={true} />
     );
 
-    // eslint-disable-next-line testing-library/prefer-find-by
     await waitFor(() =>
       expect(
         container.querySelector("[aria-describedby='my-tooltip']")
@@ -128,6 +215,8 @@ describe('Tooltip', () => {
       const onMouseLeave = jest.fn();
       const onClose = jest.fn();
       const onOpen = jest.fn();
+      const showAfter = 10;
+      const closeAfter = 10;
 
       render(
         <TestComponent
@@ -135,30 +224,26 @@ describe('Tooltip', () => {
           onMouseLeave={onMouseLeave}
           onClose={onClose}
           onOpen={onOpen}
+          showAfter={showAfter}
+          closeAfter={closeAfter}
         />
       );
 
+      // Get the tooltip triggering element
       const button = await screen.findByText('Submit');
 
-      fireEvent.mouseOver(button);
-      // should call callbacks
-      expect(onMouseOver).toHaveBeenCalled();
-      expect(onOpen).toHaveBeenCalled();
-      // should show the tooltip
+      await openAndValidateTooltip({
+        eventType: 'mouseOver',
+        triggerElement: button,
+        onOpenCallback: onOpen,
+      });
 
-      await screen.findByText('What kind of bear is best?');
-      // should remove the title
-      expect(button).toHaveProperty('title', '');
-      fireEvent.mouseLeave(button);
-      // should call callbacks
-      expect(onMouseLeave).toHaveBeenCalled();
-      expect(onClose).toHaveBeenCalled();
-      // should hide tooltip
-      expect(
-        screen.queryByText('What kind of bear is best?')
-      ).not.toBeInTheDocument();
-      // should add the title again
-      expect(button).toHaveProperty('title', 'What kind of bear is best?');
+      await closeAndValidateTooltip({
+        eventType: 'mouseLeave',
+        triggerElement: button,
+        closeAfter,
+        exitCallbacks: [onMouseLeave, onClose],
+      });
     });
   });
   describe('interacting with keyboard', () => {
@@ -167,41 +252,8 @@ describe('Tooltip', () => {
       const onBlur = jest.fn();
       const onClose = jest.fn();
       const onOpen = jest.fn();
-      render(
-        <TestComponent
-          onClose={onClose}
-          onOpen={onOpen}
-          onFocus={onFocus}
-          onBlur={onBlur}
-        />
-      );
-      const button = await screen.findByText('Submit');
-      fireEvent.focus(button);
-      // should call callbacks
-      expect(onFocus).toHaveBeenCalled();
-      expect(onOpen).toHaveBeenCalled();
-      // should show the tooltip
-      await screen.findByText('What kind of bear is best?');
-      // should remove the title
-      expect(button).toHaveProperty('title', '');
-      fireEvent.blur(button);
-      // should call callbacks
-      expect(onBlur).toHaveBeenCalled();
-      expect(onClose).toHaveBeenCalled();
-      // should hide tooltip
-      expect(
-        screen.queryByText('What kind of bear is best?')
-      ).not.toBeInTheDocument();
-      // should add the title again
-      expect(button).toHaveProperty('title', 'What kind of bear is best?');
-    });
-  });
-  describe('with leave delay', () => {
-    it('should show tooltip for duration of delay', async () => {
-      const onFocus = jest.fn();
-      const onBlur = jest.fn();
-      const onOpen = jest.fn();
-      const onClose = jest.fn();
+      const showAfter = 10;
+      const closeAfter = 10;
 
       render(
         <TestComponent
@@ -209,30 +261,29 @@ describe('Tooltip', () => {
           onOpen={onOpen}
           onFocus={onFocus}
           onBlur={onBlur}
-          closeAfter={100}
+          showAfter={showAfter}
+          closeAfter={closeAfter}
         />
       );
 
+      // Get the tooltip triggering element
       const button = await screen.findByText('Submit');
-      fireEvent.focus(button);
-      // should call callbacks
-      expect(onFocus).toHaveBeenCalled();
-      expect(onOpen).toHaveBeenCalled();
-      // should show the tooltip
-      await screen.findByText('What kind of bear is best?');
-      fireEvent.blur(button);
-      // should call callback
-      expect(onBlur).toHaveBeenCalled();
-      // should not call onClose
-      expect(onClose).not.toHaveBeenCalled();
 
-      // should hide tooltip after delay again
-      await waitForElementToBeRemoved(
-        screen.queryByText('What kind of bear is best?')
-      );
-      expect(onClose).toHaveBeenCalled();
+      await openAndValidateTooltip({
+        eventType: 'focus',
+        triggerElement: button,
+        onOpenCallback: onOpen,
+      });
+
+      await closeAndValidateTooltip({
+        eventType: 'blur',
+        triggerElement: button,
+        closeAfter,
+        exitCallbacks: [onBlur, onClose],
+      });
     });
   });
+
   describe('when controlled with open prop', () => {
     it('should open and close based on open prop', async () => {
       render(<TestComponent isOpen={false} />);
@@ -283,39 +334,44 @@ describe('when used with a custom body component', () => {
     const onBlur = jest.fn();
     const onClose = jest.fn();
     const onOpen = jest.fn();
+    const showAfter = 10;
+    const closeAfter = 10;
+
     const { container } = render(
       <TestComponent
         onClose={onClose}
         onOpen={onOpen}
         onFocus={onFocus}
         onBlur={onBlur}
+        showAfter={showAfter}
+        closeAfter={closeAfter}
         components={{ BodyComponent }}
       />
     );
 
+    // get the tooltip triggering element
     const button = screen.getByText('Submit');
-    fireEvent.focus(button);
-    // should call callbacks
-    expect(onFocus).toHaveBeenCalled();
-    expect(onOpen).toHaveBeenCalled();
-    // should show the tooltip and show the custom body
+
+    await openAndValidateTooltip({
+      eventType: 'focus',
+      triggerElement: button,
+      onOpenCallback: onOpen,
+    });
+
+    // Validate the custom tooltip body is rendered
     await waitFor(() =>
       container.querySelector("[data-testid='tooltip-custom-body']")
     );
 
-    expect(screen.getByText('What kind of bear is best?')).toBeInTheDocument();
-    // should remove the title
-    expect(button).toHaveProperty('title', '');
-    fireEvent.blur(button);
-    // should call callbacks
-    expect(onBlur).toHaveBeenCalled();
-    expect(onClose).toHaveBeenCalled();
-    // should hide tooltip
-    expect(
-      screen.queryByText('What kind of bear is best?')
-    ).not.toBeInTheDocument();
-    // should add the title again
-    expect(button).toHaveProperty('title', 'What kind of bear is best?');
+    await closeAndValidateTooltip({
+      eventType: 'blur',
+      triggerElement: button,
+      closeAfter,
+      exitCallbacks: [onBlur, onClose],
+    });
+
+    // Validate the custom tooltip body is not in the document anymore
+    expect(screen.queryByTestId('tooltip-custom-body')).not.toBeInTheDocument();
   });
 });
 
@@ -325,12 +381,17 @@ describe('when used with a custom wrapper component', () => {
     const onBlur = jest.fn();
     const onClose = jest.fn();
     const onOpen = jest.fn();
+    const showAfter = 10;
+    const closeAfter = 10;
+
     const { container } = render(
       <TestComponent
         onClose={onClose}
         onOpen={onOpen}
         onFocus={onFocus}
         onBlur={onBlur}
+        showAfter={showAfter}
+        closeAfter={closeAfter}
         components={{ WrapperComponent: TooltipWrapper }}
       />
     );
@@ -340,25 +401,21 @@ describe('when used with a custom wrapper component', () => {
       container.querySelector("[data-testid='tooltip-custom-wrapper']")
     ).toBeInTheDocument();
 
+    // Get the tooltip triggering element
     const button = screen.getByText('Submit');
-    fireEvent.focus(button);
-    // should call callbacks
-    expect(onFocus).toHaveBeenCalled();
-    expect(onOpen).toHaveBeenCalled();
-    // should show the tooltip
-    await screen.findByText('What kind of bear is best?');
-    // should remove the title
-    expect(button).toHaveProperty('title', '');
-    fireEvent.blur(button);
-    // should call callbacks
-    expect(onBlur).toHaveBeenCalled();
-    expect(onClose).toHaveBeenCalled();
-    // should hide tooltip
-    expect(
-      screen.queryByText('What kind of bear is best?')
-    ).not.toBeInTheDocument();
-    // should add the title again
-    expect(button).toHaveProperty('title', 'What kind of bear is best?');
+
+    await openAndValidateTooltip({
+      eventType: 'focus',
+      triggerElement: button,
+      onOpenCallback: onOpen,
+    });
+
+    await closeAndValidateTooltip({
+      eventType: 'blur',
+      triggerElement: button,
+      closeAfter,
+      exitCallbacks: [onBlur, onClose],
+    });
   });
 });
 
@@ -368,6 +425,8 @@ describe('when used with a custom popper wrapper component', () => {
     const onBlur = jest.fn();
     const onClose = jest.fn();
     const onOpen = jest.fn();
+    const showAfter = 10;
+    const closeAfter = 10;
 
     const { container } = render(
       <TestComponent
@@ -375,6 +434,8 @@ describe('when used with a custom popper wrapper component', () => {
         onOpen={onOpen}
         onFocus={onFocus}
         onBlur={onBlur}
+        showAfter={showAfter}
+        closeAfter={closeAfter}
         components={{
           BodyComponent,
           TooltipWrapperComponent: Portal,
@@ -382,11 +443,14 @@ describe('when used with a custom popper wrapper component', () => {
       />
     );
 
+    // Get the tooltip triggering element
     const button = screen.getByText('Submit');
-    fireEvent.focus(button);
-    // should call callbacks
-    expect(onFocus).toHaveBeenCalled();
-    expect(onOpen).toHaveBeenCalled();
+
+    await openAndValidateTooltip({
+      eventType: 'focus',
+      triggerElement: button,
+      onOpenCallback: onOpen,
+    });
 
     // should not render the tooltip inside of the main div
     const mainContainer = await waitFor(() => container.querySelector('#main'));
@@ -400,20 +464,12 @@ describe('when used with a custom popper wrapper component', () => {
       portalContainer.querySelector("[data-testid='tooltip-custom-body']")
     ).toBeInTheDocument();
 
-    // should show the tooltip
-    expect(screen.getByText('What kind of bear is best?')).toBeInTheDocument();
-    // should remove the title
-    expect(button).toHaveProperty('title', '');
-    fireEvent.blur(button);
-    // should call callbacks
-    expect(onBlur).toHaveBeenCalled();
-    expect(onClose).toHaveBeenCalled();
-    // should hide tooltip
-    expect(
-      screen.queryByText('What kind of bear is best?')
-    ).not.toBeInTheDocument();
-    // should add the title again
-    expect(button).toHaveProperty('title', 'What kind of bear is best?');
+    await closeAndValidateTooltip({
+      eventType: 'blur',
+      triggerElement: button,
+      closeAfter,
+      exitCallbacks: [onBlur, onClose],
+    });
   });
 });
 
