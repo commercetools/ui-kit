@@ -6,17 +6,17 @@ const locales = ['en', 'en-GB', 'de', 'es', 'fr-FR', 'zh-CN'];
 const getMessagesForLocale = (locale) => {
   switch (locale) {
     case 'en': // This is american english
-      return require('@commercetools-uikit/i18n/compiled-data/en.json');
+      return require('../../../packages/i18n/compiled-data/en.json');
     case 'en-GB':
-      return require('@commercetools-uikit/i18n/compiled-data/en.json');
+      return require('../../../packages/i18n/compiled-data/en.json');
     case 'es':
-      return require('@commercetools-uikit/i18n/compiled-data/es.json');
+      return require('../../../packages/i18n/compiled-data/es.json');
     case 'de':
-      return require('@commercetools-uikit/i18n/compiled-data/de.json');
+      return require('../../../packages/i18n/compiled-data/de.json');
     case 'fr-FR':
-      return require('@commercetools-uikit/i18n/compiled-data/fr-FR.json');
+      return require('../../../packages/i18n/compiled-data/fr-FR.json');
     case 'zh-CN':
-      return require('@commercetools-uikit/i18n/compiled-data/zh-CN.json');
+      return require('../../../packages/i18n/compiled-data/zh-CN.json');
     default:
       throw new Error(`Unable to load messages for locale ${locale}.`);
   }

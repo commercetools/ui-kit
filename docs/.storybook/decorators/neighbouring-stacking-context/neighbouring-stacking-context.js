@@ -1,4 +1,4 @@
-import { Card } from '@commercetools-frontend/ui-kit';
+import Card from '../../../../packages/components/card';
 import styled from '@emotion/styled';
 import { boolean } from '@storybook/addon-knobs/react';
 

@@ -8,9 +8,6 @@
   },
   "dependencies": {
     "@babel/core": "7.22.8",
-    "@commercetools-uikit/design-system": "16.5.0",
-    "@commercetools-uikit/i18n": "16.5.0",
-    "@commercetools-frontend/ui-kit": "16.5.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@manypkg/get-packages": "1.1.3",

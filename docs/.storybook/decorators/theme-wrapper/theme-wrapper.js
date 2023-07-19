@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ThemeProvider } from '@commercetools-uikit/design-system';
+import { ThemeProvider } from '../../../../design-system';
 
 const ThemeWrapper = (storyFn) => {
   return (
