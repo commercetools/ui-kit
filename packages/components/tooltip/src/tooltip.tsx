@@ -11,14 +11,20 @@ import {
   useEffect,
   useCallback,
   cloneElement,
+  useState,
 } from 'react';
 import { isValidElementType } from 'react-is';
 import isNil from 'lodash/isNil';
 import usePopper from 'use-popper';
 import { css } from '@emotion/react';
-import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
+import { useFieldId } from '@commercetools-uikit/hooks';
 import { createSequentialId, warning } from '@commercetools-uikit/utils';
-import { Wrapper, Body, getBodyStyles } from './tooltip.styles';
+import {
+  Wrapper,
+  Body,
+  getBodyStyles,
+  getTooltipStyles,
+} from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
 
@@ -121,6 +127,8 @@ export type TTooltipProps = {
     | 'auto';
 };
 
+export type TTooltipState = 'closed' | 'entering' | 'opened' | 'exiting';
+
 const TooltipWrapper = (props: Pick<TTooltipProps, 'children'>) => (
   <>{props.children}</>
 );
@@ -171,33 +179,27 @@ const Tooltip = (props: TTooltipProps) => {
     };
   }, []);
 
-  const { reference, popper } = usePopper({
+  const { reference, popper, popperInstance } = usePopper({
     placement: props.placement,
     modifiers: props.modifiers,
   });
-  const [isOpen, toggle] = useToggleState(false);
-  const closeTooltip = useCallback(() => {
-    toggle(false);
-  }, [toggle]);
-  const openTooltip = useCallback(() => {
-    toggle(true);
-  }, [toggle]);
+  const [state, setState] = useState<TTooltipState>('closed');
 
   const isControlled = !isNil(props.isOpen);
-  const tooltipIsOpen = isControlled ? props.isOpen : isOpen;
+  const tooltipIsOpen = isControlled ? props.isOpen : state === 'opened';
   const id = useFieldId(props.id, sequentialId);
 
   const { onClose } = props;
   const handleClose = useCallback(
     (event?: ChangeEvent | FocusEvent) => {
       if (!isControlled) {
-        closeTooltip();
+        setState('closed');
       }
       if (onClose) {
         onClose(event);
       }
     },
-    [isControlled, closeTooltip, onClose]
+    [isControlled, onClose]
   );
 
   const { onFocus, onMouseOver } = props.children.props;
@@ -220,9 +222,10 @@ const Tooltip = (props: TTooltipProps) => {
           onFocus(event);
         }
 
-        if (!isOpen && !isControlled) {
+        if (state !== 'opened' && !isControlled) {
+          setState('entering');
           enterTimer.current = setTimeout(() => {
-            openTooltip();
+            setState('opened');
 
             if (onOpen) {
               onOpen(event);
@@ -234,7 +237,7 @@ const Tooltip = (props: TTooltipProps) => {
         event.stopPropagation();
       }
     },
-    [onFocus, onOpen, onMouseOver, isControlled, isOpen, openTooltip, showAfter]
+    [onFocus, onOpen, onMouseOver, isControlled, state, showAfter]
   );
 
   const { onBlur, onMouseLeave } = props.children.props;
@@ -253,21 +256,32 @@ const Tooltip = (props: TTooltipProps) => {
         onBlur(event);
       }
 
-      if (closeAfter && isOpen) {
+      if (closeAfter && state === 'opened') {
         leaveTimer.current = setTimeout(() => {
-          handleClose(event);
+          const tooltipElement = popperInstance?.popper
+            .children[0] as HTMLElement;
+          tooltipElement.addEventListener(
+            'animationend',
+            (event: AnimationEvent) => {
+              const element = event.target as HTMLElement;
+              element.style.display = 'none';
+              handleClose();
+            }
+          );
+
+          setState('exiting');
         }, closeAfter);
       } else {
         handleClose(event);
       }
     },
-    [closeAfter, onBlur, onMouseLeave, handleClose, isOpen]
+    [closeAfter, onBlur, onMouseLeave, handleClose, state, popperInstance]
   );
 
   useEffect(() => {
     // if tooltip was open, and then component
     // updated to be off, we should close the tooltip
-    if (isOpen && props.off) {
+    if (state === 'opened' && props.off) {
       if (closeAfter) {
         leaveTimer.current = setTimeout(() => {
           handleClose();
@@ -276,7 +290,7 @@ const Tooltip = (props: TTooltipProps) => {
         handleClose();
       }
     }
-  }, [props.off, closeAfter, handleClose, toggle, isOpen]);
+  }, [props.off, closeAfter, handleClose, state]);
 
   const childrenProps = {
     // don't pass event listeners to children
@@ -325,7 +339,7 @@ const Tooltip = (props: TTooltipProps) => {
           ...tooltipProps,
         })}
       </WrapperComponent>
-      {tooltipIsOpen && (
+      {(state === 'opened' || state === 'exiting') && (
         <TooltipWrapperComponent>
           <div
             // ref accepts `LegacyRef`, which is a union of `RefObject` and `string`
@@ -341,7 +355,13 @@ const Tooltip = (props: TTooltipProps) => {
             })}
             data-placement={popper.placement}
           >
-            <BodyComponent>{props.title}</BodyComponent>
+            <div
+              css={css({
+                ...getTooltipStyles(state),
+              })}
+            >
+              <BodyComponent>{props.title}</BodyComponent>
+            </div>
           </div>
         </TooltipWrapperComponent>
       )}
