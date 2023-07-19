@@ -17,9 +17,6 @@ echo "Running prettier on package.json files"
 # We need to run prettier to avoid unnecessary formatting changes to package.json (due to pnpm install).
 pnpm prettier --write --parser json '**/package.json' &>/dev/null
 
-echo "Patching packages"
-pnpm patch-package
-
 if [ -n "$SKIP_INSTALL_STORYBOOK" ]; then
   echo "Skipping installation of Storybook dependencies."
 
