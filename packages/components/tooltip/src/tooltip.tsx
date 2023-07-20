@@ -301,7 +301,7 @@ const Tooltip = (props: TTooltipProps) => {
     onMouseOver: null,
     onMouseLeave: null,
     onBlur: null,
-    // ref: childrenRef,
+    ref: childrenRef,
   };
 
   const tooltipProps = !props.off
