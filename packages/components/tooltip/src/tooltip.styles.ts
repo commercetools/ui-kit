@@ -24,15 +24,15 @@ const growOut = keyframes`
   }
 `;
 
-const getAnimation = (state: TTooltipState) => {
+const getAnimation = (state: TTooltipState, duration: number) => {
   switch (state) {
     case 'opened':
       return {
-        animation: `${growIn} 0.15s`,
+        animation: `${growIn} ${duration}ms`,
       };
     case 'exiting':
       return {
-        animation: `${growOut} 0.15s`,
+        animation: `${growOut} ${duration}ms`,
       };
     default:
       return {};
@@ -93,8 +93,10 @@ export const getBodyStyles = ({
   };
 };
 
-export const getTooltipStyles = (tooltipState: TTooltipState) =>
-  getAnimation(tooltipState);
+export const getTooltipStyles = (
+  tooltipState: TTooltipState,
+  transitionDuration: number
+) => getAnimation(tooltipState, transitionDuration);
 
 export const Wrapper = styled.div`
   display: inline-block;

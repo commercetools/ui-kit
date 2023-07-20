@@ -125,6 +125,7 @@ export type TTooltipProps = {
     | 16
     | 'scale'
     | 'auto';
+  transitionDuration?: number;
 };
 
 export type TTooltipState = 'closed' | 'entering' | 'opened' | 'exiting';
@@ -136,13 +137,19 @@ TooltipWrapper.displayName = 'TooltipWrapperComponent';
 
 const tooltipDefaultProps: Pick<
   TTooltipProps,
-  'showAfter' | 'closeAfter' | 'horizontalConstraint' | 'off' | 'placement'
+  | 'showAfter'
+  | 'closeAfter'
+  | 'horizontalConstraint'
+  | 'off'
+  | 'placement'
+  | 'transitionDuration'
 > = {
   showAfter: 300,
   closeAfter: 200,
   horizontalConstraint: 'scale',
   off: false,
   placement: 'top',
+  transitionDuration: 150,
 };
 
 const Tooltip = (props: TTooltipProps) => {
@@ -354,7 +361,7 @@ const Tooltip = (props: TTooltipProps) => {
           >
             <div
               css={css({
-                ...getTooltipStyles(state),
+                ...getTooltipStyles(state, props.transitionDuration!),
               })}
               data-testid="tooltip-message-wrapper"
             >

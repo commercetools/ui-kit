@@ -70,6 +70,7 @@ storiesOf('Components|Tooltips', module)
 
     const showAfter = number('show after', 300);
     const closeAfter = number('close after', 200);
+    const transitionDuration = number('transition duration', 150);
 
     const fullWidth = boolean('full width wrapper', false);
     const customBodyWrapper = boolean('custom body wrapper', false);
@@ -88,6 +89,7 @@ storiesOf('Components|Tooltips', module)
             showAfter={showAfter}
             closeAfter={closeAfter}
             placement={placement}
+            transitionDuration={transitionDuration}
             horizontalConstraint={constraint}
             components={{
               WrapperComponent: fullWidth ? CustomWrapper : null,
