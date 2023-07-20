@@ -28,11 +28,11 @@ const getAnimation = (state: TTooltipState) => {
   switch (state) {
     case 'opened':
       return {
-        animation: `${growIn} 0.15s`,
+        animation: `${growIn} 80ms`,
       };
     case 'exiting':
       return {
-        animation: `${growOut} 0.15s`,
+        animation: `${growOut} 80ms`,
       };
     default:
       return {};
