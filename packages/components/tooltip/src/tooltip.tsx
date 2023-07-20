@@ -148,7 +148,7 @@ const tooltipDefaultProps: Pick<
 const Tooltip = (props: TTooltipProps) => {
   const enterTimer = useRef<ReturnType<typeof setTimeout>>();
   const leaveTimer = useRef<ReturnType<typeof setTimeout>>();
-  const childrenRef = useRef<HTMLElement>();
+
   if (props.components?.BodyComponent) {
     warning(
       isValidElementType(props.components.BodyComponent),
@@ -208,13 +208,6 @@ const Tooltip = (props: TTooltipProps) => {
   const { showAfter, onOpen } = props;
   const handleEnter = useCallback(
     (event?: ChangeEvent | FocusEvent) => {
-      // Remove the title ahead of time.
-      // We don't want to wait for the next render commit.
-      // We would risk displaying two tooltips at the same time (native + this one).
-      if (childrenRef.current) {
-        childrenRef.current.setAttribute('title', '');
-      }
-
       if (event) {
         if (event.type === 'mouseover' && onMouseOver) {
           onMouseOver(event);
@@ -301,7 +294,6 @@ const Tooltip = (props: TTooltipProps) => {
     onMouseOver: null,
     onMouseLeave: null,
     onBlur: null,
-    ref: childrenRef,
   };
 
   const tooltipProps = !props.off
@@ -310,7 +302,9 @@ const Tooltip = (props: TTooltipProps) => {
         // for seo and accessibility, we add the tooltip's title
         // as a native title when the title is hidden
         title:
-          !tooltipIsOpen && typeof props.title === 'string'
+          !tooltipIsOpen &&
+          state !== 'entering' &&
+          typeof props.title === 'string'
             ? props.title
             : null,
       }
