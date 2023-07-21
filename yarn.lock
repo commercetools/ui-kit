@@ -2241,7 +2241,7 @@ __metadata:
     "@types/mdast": 3.0.12
     "@types/node": 16.18.38
     "@types/shelljs": 0.8.12
-    "@types/unist": 2.0.7
+    "@types/unist": 3.0.0
     "@types/vfile": 4.0.0
     cac: 6.7.14
     listr: 0.14.3
@@ -7180,10 +7180,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/unist@npm:2.0.7":
-  version: 2.0.7
-  resolution: "@types/unist@npm:2.0.7"
-  checksum: b97a219554e83431f19a93ff113306bf0512909292815e8f32964e47d041c505af1aaa2a381c23e137c4c0b962fad58d4ce9c5c3256642921a466be43c1fc715
+"@types/unist@npm:3.0.0":
+  version: 3.0.0
+  resolution: "@types/unist@npm:3.0.0"
+  checksum: e9d21a8fb5e332be0acef29192d82632875b2ef3e700f1bc64fdfc1520189542de85c3d4f3bcfbc2f4afdb210f4c23f68061f3fbf10744e920d4f18430d19f49
   languageName: node
   linkType: hard
 
