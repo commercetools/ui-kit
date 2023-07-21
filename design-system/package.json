@@ -33,7 +33,7 @@
     "yaml": "2.2.2"
   },
   "devDependencies": {
-    "@types/lodash": "4.14.194",
+    "@types/lodash": "4.14.195",
     "@types/react": "17.0.59",
     "nodemon": "^2.0.20"
   }

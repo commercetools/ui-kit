@@ -46,7 +46,7 @@
     "style-to-object": "0.4.1"
   },
   "devDependencies": {
-    "@types/lodash": "4.14.194",
+    "@types/lodash": "4.14.195",
     "@types/react": "17.0.59",
     "react": "17.0.2",
     "react-intl": "^6.3.2"

@@ -373,8 +373,8 @@ importers:
         version: 2.2.2
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -425,8 +425,8 @@ importers:
         specifier: 0.14.4
         version: 0.14.4
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/mdast':
         specifier: 3.0.12
         version: 3.0.12
@@ -665,8 +665,8 @@ importers:
         version: 17.0.2
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -714,8 +714,8 @@ importers:
         version: 6.3.2(react@17.0.2)(typescript@5.1.6)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -864,8 +864,8 @@ importers:
         version: 6.3.2(react@17.0.2)(typescript@5.1.6)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -965,8 +965,8 @@ importers:
         version: 6.3.2(react@17.0.2)(typescript@5.1.6)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -1036,8 +1036,8 @@ importers:
         version: 15.8.1
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -1073,8 +1073,8 @@ importers:
         version: 15.8.1
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -1134,8 +1134,8 @@ importers:
         version: 6.3.2(react@17.0.2)(typescript@5.1.6)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -1220,8 +1220,8 @@ importers:
         specifier: 8.0.1
         version: 8.0.1(@types/react@17.0.62)(react-dom@17.0.2)(react-test-renderer@17.0.2)(react@17.0.2)
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -1320,8 +1320,8 @@ importers:
         specifier: ^3.1.6
         version: 3.1.6
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -1874,8 +1874,8 @@ importers:
         version: 6.3.2(react@17.0.2)(typescript@5.1.6)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -2416,8 +2416,8 @@ importers:
         version: 5.7.3(@babel/core@7.22.6)(@types/react@17.0.62)(react-dom@17.0.2)(react@17.0.2)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -2480,8 +2480,8 @@ importers:
         version: 5.7.3(@babel/core@7.22.6)(@types/react@17.0.62)(react-dom@17.0.2)(react@17.0.2)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -2584,8 +2584,8 @@ importers:
         version: 5.7.3(@babel/core@7.22.6)(@types/react@17.0.62)(react-dom@17.0.2)(react@17.0.2)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -3104,8 +3104,8 @@ importers:
         version: 0.75.0(react-dom@17.0.2)(react@17.0.2)(slate@0.75.0)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -3229,8 +3229,8 @@ importers:
         version: 5.7.3(@babel/core@7.22.6)(@types/react@17.0.62)(react-dom@17.0.2)(react@17.0.2)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -3513,8 +3513,8 @@ importers:
         version: 0.75.0(react-dom@17.0.2)(react@17.0.2)(slate@0.75.0)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -3595,8 +3595,8 @@ importers:
         version: 0.4.1
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -3745,8 +3745,8 @@ importers:
         version: 5.7.3(@babel/core@7.22.6)(@types/react@17.0.62)(react-dom@17.0.2)(react@17.0.2)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -3800,8 +3800,8 @@ importers:
         version: 5.7.3(@babel/core@7.22.6)(@types/react@17.0.62)(react-dom@17.0.2)(react@17.0.2)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -4251,8 +4251,8 @@ importers:
         version: 15.8.1
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -4596,8 +4596,8 @@ importers:
         version: 1.1.6(react@17.0.2)
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -4642,8 +4642,8 @@ importers:
         version: 15.8.1
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -4676,8 +4676,8 @@ importers:
         specifier: 12.1.5
         version: 12.1.5(react-dom@17.0.2)(react@17.0.2)
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/react':
         specifier: 17.0.62
         version: 17.0.62
@@ -4710,8 +4710,8 @@ importers:
         version: 4.17.21
     devDependencies:
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
 
   packages/utils:
     dependencies:
@@ -9284,8 +9284,8 @@ packages:
       rxjs: 6.6.7
     dev: false
 
-  /@types/lodash@4.14.194:
-    resolution: {integrity: sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==}
+  /@types/lodash@4.14.195:
+    resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
 
   /@types/mdast@3.0.12:
     resolution: {integrity: sha512-DT+iNIRNX884cx0/Q1ja7NyUPpZuv0KPyL5rGNxm1WC1OtHstl7n4Jb7nk+xacNShQMbczJjt8uFzznpp6kYBg==}
@@ -17234,7 +17234,7 @@ packages:
       slate: '>=0.65.3'
     dependencies:
       '@types/is-hotkey': 0.1.7
-      '@types/lodash': 4.14.194
+      '@types/lodash': 4.14.195
       direction: 1.0.4
       is-hotkey: 0.1.8
       is-plain-object: 5.0.0
