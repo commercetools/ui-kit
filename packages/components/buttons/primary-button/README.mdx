@@ -1,0 +1,59 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as PrimaryButtonStories from './src/primary-button.new.stories';
+
+<Meta of={PrimaryButtonStories} />
+
+# PrimaryButton
+
+## Description
+
+Primary buttons are used for a primary action on a page. You must also pass a label for accessibility reasons.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/primary-button
+```
+
+```
+npm --save install @commercetools-uikit/primary-button
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import { InformationIcon } from '@commercetools-uikit/icons';
+
+const Example = () => (
+  <PrimaryButton
+    iconLeft={<InformationIcon />}
+    label="A label text"
+    onClick={() => alert('Button clicked')}
+    isDisabled={false}
+  />
+);
+
+export default Example;
+```
+
+The component further forwards all valid HTML attributes to the underlying `button` component.
+
+### Examples in the Merchant Center
+
+- Primary action: Save changes
+- Affirming affects: Submit a form
+- Attracting attention: Add a discount rule
+
+<Canvas of={PrimaryButtonStories.Default} />
