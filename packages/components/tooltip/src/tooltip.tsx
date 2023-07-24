@@ -324,6 +324,10 @@ const Tooltip = (props: TTooltipProps) => {
   const TooltipWrapperComponent =
     props.components?.TooltipWrapperComponent || TooltipWrapper;
 
+  useEffect(() => {
+    console.log({ tooltipState: state });
+  }, [state]);
+
   return (
     <>
       <WrapperComponent

@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import merge from 'lodash/merge';
 import { Component, forwardRef } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
@@ -42,7 +42,6 @@ const openAndValidateTooltip = async ({
   await screen.findByText('What kind of bear is best?');
 
   // Now we can verify the callbacks
-  // expect(onMouseOver).toHaveBeenCalled();
   expect(onOpenCallback).toHaveBeenCalled();
 
   // Should remove the title
