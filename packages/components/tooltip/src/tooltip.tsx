@@ -256,14 +256,7 @@ const Tooltip = (props: TTooltipProps) => {
           const tooltipElement = popperInstance?.popper.querySelector(
             '[data-testid="tooltip-message-wrapper"]'
           ) as HTMLElement;
-          tooltipElement.addEventListener(
-            'animationend',
-            (event: AnimationEvent) => {
-              const element = event.target as HTMLElement;
-              element.style.display = 'none';
-              handleClose();
-            }
-          );
+          tooltipElement.addEventListener('animationend', () => handleClose());
 
           setState('exiting');
         }, closeAfter);
@@ -323,10 +316,6 @@ const Tooltip = (props: TTooltipProps) => {
   const BodyComponent = props.components?.BodyComponent || Body;
   const TooltipWrapperComponent =
     props.components?.TooltipWrapperComponent || TooltipWrapper;
-
-  useEffect(() => {
-    console.log({ tooltipState: state });
-  }, [state]);
 
   return (
     <>
