@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import Card from '@commercetools-uikit/card';
 import Text from '@commercetools-uikit/text';
 import { Suite, Spec } from '../../../../test/percy';
@@ -12,17 +12,16 @@ const text = `
   illud soluta utamur ne vim. Nihil ornatus ad duo, ius cu nibh neglegentur.
 `;
 
-const CardWrapper = styled.div`
-  margin: 16px;
-  width: 300px;
-`;
-
 const WrappedCard = (props) => (
-  <CardWrapper>
-    <Card {...props}>
-      <Text.Body>{props.children}</Text.Body>
-    </Card>
-  </CardWrapper>
+  <Card
+    css={css`
+      margin: 16px;
+      width: 300px;
+    `}
+    {...props}
+  >
+    <Text.Body>{props.children}</Text.Body>
+  </Card>
 );
 
 export const component = () => (
