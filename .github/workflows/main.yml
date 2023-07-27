@@ -32,6 +32,11 @@ jobs:
       - name: Building Visual Regression Tests application for UI components
         run: pnpm visual-testing-app:build
 
+      # Explicitly install the Chrome binary in case it's not available yet.
+      # This workaround is based on the suggestions from https://github.com/puppeteer/puppeteer/issues/9533.
+      - name: Installing Chrome via Puppeteer
+        run: node ./node_modules/puppeteer/install.js
+
       - name: Running Visual Regression Tests for UI components
         run: pnpm vrt:components
         timeout-minutes: 20
