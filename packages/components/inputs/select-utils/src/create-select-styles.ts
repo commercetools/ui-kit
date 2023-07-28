@@ -21,6 +21,7 @@ type TProps = {
   isMulti?: boolean;
   hasValue?: boolean;
   controlShouldRenderValue?: boolean;
+  horizontalConstraint?: string | number;
 };
 
 type TBase = {
@@ -93,6 +94,9 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     box-shadow ${designTokens.transitionStandard}`,
     outline: 0,
     boxShadow: 'none',
+    ...(props.horizontalConstraint === 'auto'
+      ? { display: 'inline-flex' }
+      : {}),
 
     '&:focus-within': {
       boxShadow: (() => {
@@ -143,6 +147,7 @@ const menuStyles = (props: TProps) => (base: TBase) => {
         return designTokens.borderColorForSelectInputMenuWhenWarning;
       return base.borderColorForInput;
     })(),
+    width: props.horizontalConstraint === 'auto' ? 'auto' : '100%',
   };
 };
 

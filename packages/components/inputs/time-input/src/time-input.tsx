@@ -201,6 +201,7 @@ const TimeInput = (props: TTimeInputProps) => {
             ? props.placeholder
             : intl.formatMessage(messages.placeholder)
         }
+        horizontalConstraint={props.horizontalConstraint}
         {...filterDataAttributes(props)}
         /* ARIA */
         aria-invalid={props['aria-invalid']}

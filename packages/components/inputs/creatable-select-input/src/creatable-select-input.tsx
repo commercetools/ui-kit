@@ -7,7 +7,7 @@ import {
   type ActionMeta,
 } from 'react-select';
 import CreatableSelect, { type CreatableProps } from 'react-select/creatable';
-import Constraints from '@commercetools-uikit/constraints';
+import Constraints, { TMaxProp } from '@commercetools-uikit/constraints';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   ClearIndicator,
@@ -50,23 +50,7 @@ export type TCreatableSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint?:
-    | 3
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 'scale'
-    | 'auto';
+  horizontalConstraint?: TMaxProp;
   /**
    * Indicates the input field has an error
    */
@@ -394,6 +378,7 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectCreatableProps['styles']
           }
           filterOption={props.filterOption}

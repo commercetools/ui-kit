@@ -23,7 +23,7 @@ import {
   warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
-import Constraints from '@commercetools-uikit/constraints';
+import Constraints, { TMaxProp } from '@commercetools-uikit/constraints';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import currencies from './currencies.json';
 import {
@@ -82,6 +82,7 @@ SingleValue.displayName = 'SingleValue';
 type TCreateCurrencySelectStyles = (
   input: TInputProps & {
     currencyHasFocus?: boolean;
+    horizontalConstraint?: TMaxProp;
   }
 ) => void;
 
@@ -106,6 +107,7 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
   isDisabled,
   isReadOnly,
   menuPortalZIndex,
+  horizontalConstraint,
   currencyHasFocus,
 }) => {
   const selectStyles = createSelectStyles({
@@ -114,6 +116,7 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
     menuPortalZIndex,
     isReadOnly,
     isDisabled,
+    horizontalConstraint,
   });
   return {
     ...selectStyles,
@@ -509,23 +512,7 @@ type TMoneyInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint?:
-    | 3
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 'scale'
-    | 'auto';
+  horizontalConstraint?: TMaxProp;
 };
 
 const defaultProps: Pick<
@@ -712,6 +699,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
     isDisabled: props.isDisabled,
     isReadOnly: props.isReadOnly,
     menuPortalZIndex: props.menuPortalZIndex,
+    horizontalConstraint: props.horizontalConstraint,
     currencyHasFocus,
   });
   const options = props.currencies.map((currencyCode) => ({

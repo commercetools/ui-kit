@@ -3,12 +3,14 @@ import { type Props as ReactSelectProps } from 'react-select';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { createSelectStyles } from '@commercetools-uikit/select-utils';
+import { TMaxProp } from '@commercetools-uikit/constraints';
 
 type TInputProps = {
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
   isReadOnly?: boolean;
+  horizontalConstraint?: string | number;
 };
 
 const getInputContainerBorderColor = (
@@ -155,7 +157,7 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     margin-left: 0;
-    width: 100%;
+    width: ${props.horizontalConstraint === 'auto' ? 'auto' : '100%'};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard};
 
@@ -201,6 +203,7 @@ type TCreateSelectableSelectStyles = {
   isReadOnly?: boolean;
   menuPortalZIndex?: number;
   dropdownHasFocus?: boolean;
+  horizontalConstraint?: TMaxProp;
 };
 
 const createSelectableSelectStyles = ({
@@ -210,6 +213,7 @@ const createSelectableSelectStyles = ({
   isReadOnly,
   menuPortalZIndex,
   dropdownHasFocus,
+  horizontalConstraint,
 }: TCreateSelectableSelectStyles) => {
   const selectStyles = createSelectStyles({
     hasWarning,
@@ -217,6 +221,7 @@ const createSelectableSelectStyles = ({
     menuPortalZIndex,
     isDisabled,
     isReadOnly,
+    horizontalConstraint,
   });
 
   return {

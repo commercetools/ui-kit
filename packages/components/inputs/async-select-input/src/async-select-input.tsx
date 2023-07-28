@@ -9,7 +9,7 @@ import {
 } from 'react-select';
 import AsyncSelect, { type AsyncProps } from 'react-select/async';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
-import Constraints from '@commercetools-uikit/constraints';
+import Constraints, { TMaxProp } from '@commercetools-uikit/constraints';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import {
   ClearIndicator,
@@ -46,23 +46,7 @@ export type TAsyncSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint?:
-    | 3
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 'scale'
-    | 'auto';
+  horizontalConstraint?: TMaxProp;
   /**
    * Indicates the input field has an error
    */
@@ -383,6 +367,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
               controlShouldRenderValue: props.controlShouldRenderValue,
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectAsyncProps['styles']
           }
           filterOption={props.filterOption}

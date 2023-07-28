@@ -6,7 +6,7 @@ import Select, {
   components as defaultComponents,
   type Props as ReactSelectProps,
 } from 'react-select';
-import Constraints from '@commercetools-uikit/constraints';
+import Constraints, { TMaxProp } from '@commercetools-uikit/constraints';
 import {
   ClearIndicator,
   TagRemove,
@@ -45,23 +45,7 @@ export type TCustomEvent = {
 };
 
 export type TSelectInputProps = {
-  horizontalConstraint?:
-    | 3
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 'scale'
-    | 'auto';
+  horizontalConstraint?: TMaxProp;
   /**
    * Indicates that input has errors
    */
@@ -416,6 +400,7 @@ const SelectInput = (props: TSelectInputProps) => {
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
               controlShouldRenderValue: props.controlShouldRenderValue,
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectProps['styles']
           }
           filterOption={props.filterOption}

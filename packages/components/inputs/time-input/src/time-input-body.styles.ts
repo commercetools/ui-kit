@@ -117,6 +117,7 @@ const getInputContainerBackgroundColor = (props: TTimeInputProps) => {
 // This styled component is only useful because it's referenced in the styles below
 const StyledClockIconContainer = styled.label``;
 const getInputContainerStyles = (props: TTimeInputProps) => {
+  console.log({ props });
   return [
     css`
       appearance: none;
@@ -129,10 +130,12 @@ const getInputContainerStyles = (props: TTimeInputProps) => {
       box-sizing: border-box;
       color: ${getInputContainerFontColor(props)};
       cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-      width: 100%;
+      width: ${props.horizontalConstraint === 'auto' ? 'auto' : '100%'};
       height: ${designTokens.heightForInput};
       align-items: center;
-      display: flex;
+      display: ${props.horizontalConstraint === 'auto'
+        ? 'inline-flex'
+        : 'flex'};
       font-size: ${designTokens.fontSizeForInput};
       font-family: inherit;
       transition: border-color ${designTokens.transitionStandard},

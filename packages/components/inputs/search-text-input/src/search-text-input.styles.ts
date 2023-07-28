@@ -7,6 +7,7 @@ type TInputProps = {
   hasError?: boolean;
   hasWarning?: boolean;
   isReadOnly?: boolean;
+  horizontalConstraint?: string | number;
 };
 
 const getInputContainerBorderColor = (
@@ -121,7 +122,7 @@ const getTextInputContainerBackgroundColor = (props: TInputProps) => {
 
 const getSearchTextInputContainerStyles = (props: TInputProps) => [
   css`
-    display: flex;
+    display: ${props.horizontalConstraint === 'auto' ? 'inline-flex' : 'flex'};
     align-items: center;
     background-color: ${props.isDisabled
       ? designTokens.backgroundColorForInputWhenDisabled
