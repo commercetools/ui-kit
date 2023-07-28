@@ -18,7 +18,7 @@
     "design-tokens:build:watch": "pnpm --filter design-system run build:tokens:watch",
     "build": "./scripts/build.sh",
     "build:watch": "./scripts/build_watch.sh",
-    "start": "pnpm --cwd docs start",
+    "start": "pnpm --dir docs start",
     "extract-intl": "formatjs extract --format=./packages/i18n/transifex-transformer.js --out-file=./packages/i18n/data/core.json '{packages,src/components}/**/messages.ts'",
     "compile-intl": "pnpm --filter @commercetools-uikit/i18n compile-data",
     "lint": "jest --projects jest.eslint.config.js",
