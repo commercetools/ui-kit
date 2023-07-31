@@ -2,8 +2,8 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, text, select } from '@storybook/addon-knobs/react';
 import LinkTo from '@storybook/addon-links/react';
 import styled from '@emotion/styled';
-import Spacings from '@commercetools-uikit/spacings';
-import Text from '@commercetools-uikit/text';
+import Stack from '../../spacings/spacings-stack';
+import Text from '../../text';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import Grid from './grid';
@@ -69,8 +69,8 @@ storiesOf('Components|Grid', module)
   .add('Grid', () => (
     <>
       <Section>
-        <Spacings.Stack scale="m">
-          <Spacings.Stack scale="s">
+        <Stack scale="m">
+          <Stack scale="s">
             <Text.Body isItalic={true} tone="secondary">
               <a
                 href="https://css-tricks.com/snippets/css/complete-guide-grid"
@@ -96,7 +96,7 @@ storiesOf('Components|Grid', module)
                 }
               </Text.Body>
             </LinkTo>
-          </Spacings.Stack>
+          </Stack>
           <Grid
             display={select(
               'display',
@@ -181,7 +181,7 @@ storiesOf('Components|Grid', module)
           >
             {renderGridElements()}
           </Grid>
-        </Spacings.Stack>
+        </Stack>
       </Section>
     </>
   ));

@@ -9,8 +9,8 @@ import {
   select,
   number,
 } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
-import Spacings from '@commercetools-uikit/spacings';
+import Constraints from '../../../constraints';
+import Stack from '../../../spacings/spacings-stack';
 import LinkTo from '@storybook/addon-links/react';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
@@ -99,13 +99,13 @@ storiesOf('Components|Inputs/SelectInputs', module)
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
 
     return (
-      <Spacings.Stack scale="xl">
+      <Stack scale="xl">
         <Section>
           <Value
             key={isMulti}
             defaultValue={isMulti ? [] : undefined}
             render={(value, onChange) => (
-              <Spacings.Stack scale="m">
+              <Stack scale="m">
                 <CreatableSelectInput
                   horizontalConstraint={select(
                     'horizontalConstraint',
@@ -155,7 +155,7 @@ storiesOf('Components|Inputs/SelectInputs', module)
                   {...addMenuPortalProps()}
                 />
                 <NeighbouringStackingContext />
-              </Spacings.Stack>
+              </Stack>
             )}
           />
         </Section>
@@ -167,6 +167,6 @@ storiesOf('Components|Inputs/SelectInputs', module)
             See form example
           </LinkTo>
         </Section>
-      </Spacings.Stack>
+      </Stack>
     );
   });

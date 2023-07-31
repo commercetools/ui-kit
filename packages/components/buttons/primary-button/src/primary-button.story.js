@@ -2,7 +2,7 @@ import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
-import * as icons from '@commercetools-uikit/icons';
+import * as icons from '../../../icons';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import PrimaryButton from './primary-button';

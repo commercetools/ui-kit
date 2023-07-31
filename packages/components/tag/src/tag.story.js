@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
+import Constraints from '../../constraints';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Tag from './tag';
 import TagList from './tag-list/tag-list';

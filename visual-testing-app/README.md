@@ -29,11 +29,11 @@ export const component = () => (
 ```
 
 Note that we import the components using the main preset `@commercetools-frontend/ui-kit`. This is to ensure that the bundled packages work correctly.
-At the same time it also means that you need to build the packages before starting the visual testing application. From the workspace root, run `yarn build` or `yarn build:watch`.
+At the same time it also means that you need to build the packages before starting the visual testing application. From the workspace root, run `pnpm build` or `pnpm build:watch`.
 
 ## Starting the visual testing application
 
-You can start the application in development mode with the command `yarn start`.
+You can start the application in development mode with the command `pnpm start`.
 
 The application main page shows a list of all available routes, so you can easily navigate to them.
 
@@ -41,4 +41,4 @@ The application main page shows a list of all available routes, so you can easil
 
 You can also start the application in production mode. This is the preferred way to run the visual tests on CI.
 
-Build the application with `yarn build` and serve the production bundles with `yarn preview`.
+Build the application with `pnpm build` and serve the production bundles with `pnpm preview`.

@@ -1,2 +1,2 @@
-.yarn/** linguist-vendored
-.yarn/** linguist-generated=true
+.linkcheck/releases/** linguist-vendored
+.linkcheck/releases/** linguist-generated=true

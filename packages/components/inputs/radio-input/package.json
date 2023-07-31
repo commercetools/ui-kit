@@ -35,6 +35,7 @@
     "react-is": "17.0.2"
   },
   "devDependencies": {
+    "@types/react": "17.0.59",
     "react": "17.0.2"
   },
   "peerDependencies": {

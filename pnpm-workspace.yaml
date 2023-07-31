@@ -1,0 +1,11 @@
+packages:
+- design-system
+- generators/*
+- packages/*
+- packages/components/*
+- packages/components/buttons/*
+- packages/components/fields/*
+- packages/components/inputs/*
+- packages/components/spacings/*
+- presets/*
+- visual-testing-app

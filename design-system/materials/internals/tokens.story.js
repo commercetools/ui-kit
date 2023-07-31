@@ -3,7 +3,8 @@ import { useCallback, useMemo, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from '@emotion/styled';
 import merge from 'lodash/merge';
-import TextInput from '@commercetools-uikit/text-input';
+// eslint-disable-next-line import/no-unresolved
+import TextInput from '../../../packages/components/inputs/text-input';
 import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Readme from './TOKENS.md';
 import definition from './definition.yaml';

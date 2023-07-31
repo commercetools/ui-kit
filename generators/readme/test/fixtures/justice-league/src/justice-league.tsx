@@ -78,6 +78,7 @@ const defaultProps: Pick<Props, 'power' | 'isAlive'> = {
 };
 
 const JusticeLeague = (props: Props) => (
+  /* @ts-ignore */
   <div>{`JusticeLeague: ${props.name}`}</div>
 );
 JusticeLeague.defaultProps = defaultProps;

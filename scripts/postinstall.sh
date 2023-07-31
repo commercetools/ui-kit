@@ -7,18 +7,15 @@ if [ -n "$SKIP_POSTINSTALL_DEV_SETUP" ]; then
 
 else
   echo "Preparing development setup."
-  yarn husky install
-  yarn manypkg check
-  yarn preconstruct dev
+  pnpm husky install
+  pnpm manypkg check
+  pnpm preconstruct dev
 
 fi
 
 echo "Running prettier on package.json files"
-# We need to run prettier to avoid unnecessary formatting changes to package.json (due to Yarn install).
-yarn prettier --write --parser json '**/package.json' &>/dev/null
-
-echo "Patching packages"
-yarn patch-package
+# We need to run prettier to avoid unnecessary formatting changes to package.json (due to pnpm install).
+pnpm prettier --write --parser json '**/package.json' &>/dev/null
 
 if [ -n "$SKIP_INSTALL_STORYBOOK" ]; then
   echo "Skipping installation of Storybook dependencies."
@@ -26,6 +23,6 @@ if [ -n "$SKIP_INSTALL_STORYBOOK" ]; then
 else
   echo "Installing dependencies for Storybook."
   pushd docs/
-  yarn
+  pnpm install
 
 fi

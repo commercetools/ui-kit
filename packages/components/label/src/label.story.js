@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
+import Constraints from '../../constraints';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import Label from './label';

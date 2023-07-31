@@ -1,0 +1,13 @@
+diff --git a/index.js b/index.js
+index 5c636b98ce6714daed7281e85caca4a69c16be49..e435dab1ba863047b8e876b8a40a5245c589e247 100644
+--- a/index.js
++++ b/index.js
+@@ -47,7 +47,7 @@ function checkForProptypes(path, paramTypeName) {
+ }
+ 
+ function setParamsTypeDefinitionFromFunctionType(documentation, path) {
+-    if (path.parentPath.node.init && path.parentPath.node.init.params.length === 0) {
++    if (path.parentPath.node.init && Array.isArray(path.parentPath.node.init.params) && path.parentPath.node.init.params.length === 0) {
+         return;
+     }
+ 

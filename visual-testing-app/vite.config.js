@@ -7,6 +7,12 @@ export default defineConfig({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     'process.env.CI': JSON.stringify(process.env.CI),
   },
+  optimizeDeps: {
+    include: ['@emotion/react'],
+  },
+  resolve: {
+    dedupe: ['@emotion/react'],
+  },
   plugins: [
     react({
       jsxImportSource: '@emotion/react',

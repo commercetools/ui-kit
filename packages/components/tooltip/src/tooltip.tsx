@@ -1,5 +1,5 @@
 // inspired from https://github.com/mui-org/material-ui/blob/9ecc8db8abbfb829111d3b5c0678267827984024/packages/material-ui/src/Tooltip/Tooltip.js
-import { Modifiers } from 'popper.js';
+import PopperJS from 'popper.js';
 import {
   ComponentType,
   FocusEvent,
@@ -98,7 +98,7 @@ export type TTooltipProps = {
   /**
    * Provides a way to fine-tune an appearance of underlying Popper tooltip element. For more information, please check [Popper.js documentation](https://popper.js.org/popper-documentation.html#modifiers).
    */
-  modifiers?: Modifiers;
+  modifiers?: PopperJS.Modifiers;
   /**
    * Customize the appearance of certain elements of the tooltip.
    */

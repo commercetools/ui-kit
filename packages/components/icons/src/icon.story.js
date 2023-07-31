@@ -5,13 +5,12 @@ import { withKnobs, select } from '@storybook/addon-knobs/react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import Grid from '@commercetools-uikit/grid';
-import Spacings from '@commercetools-uikit/spacings';
-import {
-  MultilineTextInput,
-  RadioInput,
-  SelectInput,
-} from '@commercetools-uikit/inputs';
+import Grid from '../../grid';
+import Stack from '../../spacings/spacings-stack';
+import Inline from '../../spacings/spacings-inline';
+import MultilineTextInput from '../../inputs/multiline-text-input';
+import RadioInput from '../../inputs/radio-input';
+import SelectInput from '../../inputs/select-input';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Text from '../../text';
 import Readme from '../README.md';
@@ -80,10 +79,10 @@ const svgFixtures = {
 };
 const SelectSvgFixtureOption = (props) => (
   <SelectInput.Option {...props}>
-    <Spacings.Stack scale="xs">
+    <Stack scale="xs">
       <Text.Body isBold>{props.data.label ?? '---'}</Text.Body>
       <Text.Detail>{props.data.value}</Text.Detail>
-    </Spacings.Stack>
+    </Stack>
   </SelectInput.Option>
 );
 SelectSvgFixtureOption.propTypes = {
@@ -98,8 +97,8 @@ const InlineSvgPage = (props) => {
   const [activeSvgFixture, setActiveSvgFixture] = useState('');
   const [customSvgData, setCustomSvg] = useState('');
   return (
-    <Spacings.Stack scale="l">
-      <Spacings.Stack scale="s">
+    <Stack scale="l">
+      <Stack scale="s">
         <Text.Headline as="h2">Select the SVG to render:</Text.Headline>
         <RadioInput.Group
           onChange={(event) => {
@@ -108,14 +107,10 @@ const InlineSvgPage = (props) => {
           value={activeExample}
         >
           <RadioInput.Option value="cleanSvg">
-            <Spacings.Inline alignItems="center">
-              Clean SVG (no XSS)
-            </Spacings.Inline>
+            <Inline alignItems="center">Clean SVG (no XSS)</Inline>
           </RadioInput.Option>
           <RadioInput.Option value="dirtySvg">
-            <Spacings.Inline alignItems="center">
-              SVG examples with XSS injection
-            </Spacings.Inline>
+            <Inline alignItems="center">SVG examples with XSS injection</Inline>
           </RadioInput.Option>
           {activeExample === 'dirtySvg' && (
             <SelectInput
@@ -133,7 +128,7 @@ const InlineSvgPage = (props) => {
             />
           )}
           <RadioInput.Option value="custom">
-            <Spacings.Inline alignItems="center">Custom SVG</Spacings.Inline>
+            <Inline alignItems="center">Custom SVG</Inline>
           </RadioInput.Option>
           {activeExample === 'custom' && (
             <MultilineTextInput
@@ -144,11 +139,11 @@ const InlineSvgPage = (props) => {
             />
           )}
         </RadioInput.Group>
-      </Spacings.Stack>
-      <Spacings.Stack scale="m">
+      </Stack>
+      <Stack scale="m">
         <Text.Headline as="h2">Rendered:</Text.Headline>
         {colorValues.map((color) => (
-          <Spacings.Stack scale="xs" key={color}>
+          <Stack scale="xs" key={color}>
             <Text.Body isBold>
               <code>color: {color}</code>
             </Text.Body>
@@ -197,10 +192,10 @@ const InlineSvgPage = (props) => {
                 })}
               </Grid>
             </div>
-          </Spacings.Stack>
+          </Stack>
         ))}
-      </Spacings.Stack>
-    </Spacings.Stack>
+      </Stack>
+    </Stack>
   );
 };
 
@@ -213,7 +208,7 @@ storiesOf('Components|Icons', module)
     },
   })
   .add('All Icons', () => (
-    <Spacings.Stack scale="m">
+    <Stack scale="m">
       <Text.Body isItalic>
         Icons marked with the <LegacyBadge /> label are not supported anymore.
         <br />
@@ -265,7 +260,7 @@ storiesOf('Components|Icons', module)
           );
         })}
       </IconList>
-    </Spacings.Stack>
+    </Stack>
   ))
   .add('Inline SVG', () => (
     <Section>

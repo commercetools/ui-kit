@@ -9,12 +9,12 @@ import {
   select,
   object,
 } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
-import Spacings from '@commercetools-uikit/spacings';
-import PrimaryButton from '@commercetools-uikit/primary-button';
-import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
-import Text from '@commercetools-uikit/text';
-import { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
+import Constraints from '../../../constraints';
+import Stack from '../../../spacings/spacings-stack';
+import PrimaryButton from '../../../buttons/primary-button';
+import CollapsiblePanel from '../../../collapsible-panel';
+import Text from '../../../text';
+import { ErrorMessage, WarningMessage } from '../../../messages';
 import Readme from '../README.md';
 import LocalizedRichTextInput from './localized-rich-text-input';
 
@@ -69,14 +69,14 @@ const StoryWrapper = (props) => {
   const ref = useRef(null);
 
   return (
-    <Spacings.Stack scale="l">
+    <Stack scale="l">
       <CollapsiblePanel
         header="Set initial value"
         horizontalConstraint="scale"
         isDefaultClosed
       >
         <Constraints.Horizontal max="scale">
-          <Spacings.Stack scale="m">
+          <Stack scale="m">
             <textarea
               defaultValue={resetValue.en}
               onChange={onResetValueChange('en')}
@@ -99,7 +99,7 @@ const StoryWrapper = (props) => {
                 size="medium"
               />
             </Constraints.Horizontal>
-          </Spacings.Stack>
+          </Stack>
         </Constraints.Horizontal>
       </CollapsiblePanel>
       <LocalizedRichTextInput
@@ -162,7 +162,7 @@ const StoryWrapper = (props) => {
       />
       <Text.Headline as="h3">Output</Text.Headline>
       <pre>{JSON.stringify(value, null, 2)}</pre>
-    </Spacings.Stack>
+    </Stack>
   );
 };
 

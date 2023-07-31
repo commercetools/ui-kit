@@ -2,9 +2,11 @@ import { Formik } from 'formik';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean } from '@storybook/addon-knobs/react';
-import Spacings from '@commercetools-uikit/spacings';
-import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
-import { ErrorMessage } from '@commercetools-uikit/messages';
+import Stack from '../../../spacings/spacings-stack';
+import Inline from '../../../spacings/spacings-inline';
+import PrimaryButton from '../../../buttons/primary-button';
+import SecondaryButton from '../../../buttons/secondary-button';
+import { ErrorMessage } from '../../../messages';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import FormikBox from '../../../../../docs/.storybook/decorators/formik-box';
 import Readme from '../README.md';
@@ -92,8 +94,8 @@ storiesOf('Examples|Forms/Inputs/SelectInputs', module)
               isTouched: SelectInput.isTouched(formik.touched.colour),
             };
             return (
-              <Spacings.Stack scale="l">
-                <Spacings.Stack scale="xs">
+              <Stack scale="l">
+                <Stack scale="xs">
                   <SelectInput
                     name="state"
                     isMulti={isMulti}
@@ -108,8 +110,8 @@ storiesOf('Examples|Forms/Inputs/SelectInputs', module)
                   {stateInput.hasError && stateInput.isTouched && (
                     <ErrorMessage>State is not valid</ErrorMessage>
                   )}
-                </Spacings.Stack>
-                <Spacings.Stack scale="xs">
+                </Stack>
+                <Stack scale="xs">
                   <SelectInput
                     name="colour"
                     isMulti={isMulti}
@@ -125,8 +127,8 @@ storiesOf('Examples|Forms/Inputs/SelectInputs', module)
                   {colourInput.hasError && colourInput.isTouched && (
                     <ErrorMessage>Colour is not valid</ErrorMessage>
                   )}
-                </Spacings.Stack>
-                <Spacings.Inline>
+                </Stack>
+                <Inline>
                   <SecondaryButton
                     onClick={formik.handleReset}
                     isDisabled={formik.isSubmitting}
@@ -137,10 +139,10 @@ storiesOf('Examples|Forms/Inputs/SelectInputs', module)
                     isDisabled={formik.isSubmitting || !formik.dirty}
                     label="Submit"
                   />
-                </Spacings.Inline>
+                </Inline>
                 <hr />
                 <FormikBox formik={formik} />
-              </Spacings.Stack>
+              </Stack>
             );
           }}
         />

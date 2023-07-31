@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, number } from '@storybook/addon-knobs/react';
-import Spacings from '@commercetools-uikit/spacings';
-import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
-import { ErrorMessage } from '@commercetools-uikit/messages';
+import Stack from '../../../spacings/spacings-stack';
+import Inline from '../../../spacings/spacings-inline';
+import PrimaryButton from '../../../buttons/primary-button';
+import SecondaryButton from '../../../buttons/secondary-button';
+import { ErrorMessage } from '../../../messages';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import FormikBox from '../../../../../docs/.storybook/decorators/formik-box';
 import Readme from '../README.md';
@@ -90,7 +92,7 @@ class SearchSelectInputStory extends Component {
                   const hasError = failValidation;
                   const isTouched = Boolean(formik.touched.category);
                   return (
-                    <Spacings.Stack scale="l">
+                    <Stack scale="l">
                       <div>
                         <SearchSelectInput
                           name="category"
@@ -186,7 +188,7 @@ class SearchSelectInputStory extends Component {
                           Select Cats
                         </button>
                       </div>
-                      <Spacings.Inline>
+                      <Inline>
                         <SecondaryButton
                           onClick={formik.handleReset}
                           isDisabled={formik.isSubmitting}
@@ -197,10 +199,10 @@ class SearchSelectInputStory extends Component {
                           isDisabled={formik.isSubmitting || !formik.dirty}
                           label="Submit"
                         />
-                      </Spacings.Inline>
+                      </Inline>
                       <hr />
                       <FormikBox formik={formik} />
-                    </Spacings.Stack>
+                    </Stack>
                   );
                 }}
               />

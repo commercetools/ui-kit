@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number, boolean } from '@storybook/addon-knobs/react';
-import { Spacings } from '@commercetools-frontend/ui-kit';
+import Inline from '../../spacings/spacings-inline';
 import CollapsibleMotion from './collapsible-motion';
 import Readme from '../README.md';
 
@@ -15,7 +15,7 @@ class CollapsibleMotionStory extends Component {
   render() {
     const isDefaultClosed = boolean('isDefaultClosed', false);
     return (
-      <Spacings.Inline>
+      <Inline>
         <div>
           <h2>Uncontrolled example</h2>
           <div key={isDefaultClosed}>
@@ -109,7 +109,7 @@ class CollapsibleMotionStory extends Component {
             <div>Some content afterwards</div>
           </div>
         </div>
-      </Spacings.Inline>
+      </Inline>
     );
   }
 }

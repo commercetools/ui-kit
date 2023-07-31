@@ -1,5 +1,5 @@
 import { useTheme, designTokens } from '@commercetools-uikit/design-system';
-import { Switch, Route } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import {
@@ -15,9 +15,7 @@ const parentSelector = (id) => () => document.getElementById(id);
 
 const DummyComponent = (props) => {
   const { theme } = useTheme(
-    props.parentId
-      ? parentSelector(props.parentId)
-      : undefined
+    props.parentId ? parentSelector(props.parentId) : undefined
   );
 
   return (

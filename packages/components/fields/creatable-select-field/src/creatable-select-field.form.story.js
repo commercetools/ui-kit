@@ -3,9 +3,11 @@ import { storiesOf } from '@storybook/react';
 import omitEmpty from 'omit-empty-es';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, select } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
-import Spacings from '@commercetools-uikit/spacings';
-import { PrimaryButton, SecondaryButton } from '@commercetools-uikit/buttons';
+import Constraints from '../../../constraints';
+import Stack from '../../../spacings/spacings-stack';
+import Inline from '../../../spacings/spacings-inline';
+import PrimaryButton from '../../../buttons/primary-button';
+import SecondaryButton from '../../../buttons/secondary-button';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import FormikBox from '../../../../../docs/.storybook/decorators/formik-box';
 import Readme from '../README.md';
@@ -92,7 +94,7 @@ storiesOf('Examples|Forms/Fields/SelectFields', module)
             formik.resetForm({ values: initialValues });
           }}
           render={(formik) => (
-            <Spacings.Stack scale="l">
+            <Stack scale="l">
               <CreatableSelectField
                 horizontalConstraint={select(
                   'horizontalConstraint',
@@ -114,7 +116,7 @@ storiesOf('Examples|Forms/Fields/SelectFields', module)
                 description="Bonus points if it is a mammal"
                 isClearable={true}
               />
-              <Spacings.Inline>
+              <Inline>
                 <SecondaryButton
                   onClick={formik.handleReset}
                   isDisabled={formik.isSubmitting}
@@ -125,10 +127,10 @@ storiesOf('Examples|Forms/Fields/SelectFields', module)
                   isDisabled={formik.isSubmitting || !formik.dirty}
                   label="Submit"
                 />
-              </Spacings.Inline>
+              </Inline>
               <hr />
               <FormikBox formik={formik} />
-            </Spacings.Stack>
+            </Stack>
           )}
         />
       </Section>

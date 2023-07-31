@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Value } from 'react-value';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
+import Constraints from '../../../constraints';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import SearchTextInput from './search-text-input';
