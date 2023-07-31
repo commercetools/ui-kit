@@ -306,6 +306,7 @@ const LocalizedMultilineTextInput = (
                 warning={props.warnings && props.warnings[language]}
                 error={props.errors && props.errors[language]}
                 hasLanguagesControl={hasLanguagesControl}
+                horizontalConstraint={props.horizontalConstraint}
                 {...createLocalizedDataAttributes(props, language)}
                 /* ARIA */
                 aria-invalid={props['aria-invalid']}

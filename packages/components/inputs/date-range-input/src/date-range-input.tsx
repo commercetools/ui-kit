@@ -535,6 +535,7 @@ class DateRangeInput extends Component<
                   toggleButtonProps={getToggleButtonProps()}
                   hasError={this.props.hasError}
                   hasWarning={this.props.hasWarning}
+                  horizontalConstraint={this.props.horizontalConstraint}
                 />
                 {isOpen && !this.props.isDisabled && (
                   <CalendarMenu

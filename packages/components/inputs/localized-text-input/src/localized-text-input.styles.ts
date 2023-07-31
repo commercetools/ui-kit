@@ -40,7 +40,7 @@ const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
     flex-direction: column;
     justify-content: center;
     /* avoid wrapping label onto new lines */
-    flex: 1 0 auto;
+    flex: ${props.horizontalConstraint === 'auto' ? 'inherit' : '1 0 auto'};
     box-sizing: border-box;
     color: ${designTokens.fontColorForLocalizedInputLabel};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};

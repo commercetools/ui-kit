@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
+import { type TMaxProp } from '@commercetools-uikit/constraints';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -11,6 +12,7 @@ type TTranslationInputStylesProps = {
   isCollapsed?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
+  horizontalConstraint?: TMaxProp;
 };
 
 const getTextareaStyles = (props: TTranslationInputStylesProps) => {
@@ -51,7 +53,7 @@ const getLanguageLabelBorderColor = (props: TTranslationInputStylesProps) => {
 const getLanguageLabelStyles = (props: TTranslationInputStylesProps) => {
   return css`
     /* avoid wrapping label onto new lines */
-    flex: 1 0 auto;
+    flex: ${props.horizontalConstraint === 'auto' ? 'inherit' : '1 0 auto'};
     color: ${designTokens.fontColorForLocalizedInputLabel};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
     line-height: calc(

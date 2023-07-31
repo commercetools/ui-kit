@@ -5,6 +5,7 @@ import {
   type KeyboardEvent,
 } from 'react';
 import type { Theme } from '@emotion/react';
+import { type TMaxProp } from '@commercetools-uikit/constraints';
 import { CalendarIcon, ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -73,6 +74,7 @@ export type TCalendarBody = {
   hasError?: boolean;
   onClear?: () => void;
   placeholder?: string;
+  horizontalConstraint?: TMaxProp;
   /** @deprecated */
   theme?: Theme;
 };

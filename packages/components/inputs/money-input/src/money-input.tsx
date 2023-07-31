@@ -23,7 +23,7 @@ import {
   warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
-import Constraints, { TMaxProp } from '@commercetools-uikit/constraints';
+import Constraints, { type TMaxProp } from '@commercetools-uikit/constraints';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import currencies from './currencies.json';
 import {
