@@ -19,10 +19,6 @@ runs:
 
     - name: Install dependencies
       run: pnpm install
-      env:
-        # https://github.com/bahmutov/cypress-gh-action-split-install/blob/ca3916d4e7240ebdc337825d2d78eb354855464b/.github/workflows/tests.yml#L14-L18
-        # https://github.com/marketplace/actions/cypress-io#custom-install
-        CYPRESS_INSTALL_BINARY: '0'
       shell: bash
 
     - name: Building packages
