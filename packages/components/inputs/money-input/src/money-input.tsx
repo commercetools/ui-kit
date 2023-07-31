@@ -23,7 +23,7 @@ import {
   warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
-import Constraints, { type TMaxProp } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import currencies from './currencies.json';
 import {
@@ -82,7 +82,23 @@ SingleValue.displayName = 'SingleValue';
 type TCreateCurrencySelectStyles = (
   input: TInputProps & {
     currencyHasFocus?: boolean;
-    horizontalConstraint?: TMaxProp;
+    horizontalConstraint?:
+      | 3
+      | 4
+      | 5
+      | 6
+      | 7
+      | 8
+      | 9
+      | 10
+      | 11
+      | 12
+      | 13
+      | 14
+      | 15
+      | 16
+      | 'scale'
+      | 'auto';
   }
 ) => void;
 
@@ -512,7 +528,23 @@ type TMoneyInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint?: TMaxProp;
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
 };
 
 const defaultProps: Pick<

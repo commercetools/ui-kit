@@ -3,14 +3,29 @@ import { type Props as ReactSelectProps } from 'react-select';
 import { getInputStyles } from '@commercetools-uikit/input-utils';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { createSelectStyles } from '@commercetools-uikit/select-utils';
-import { TMaxProp } from '@commercetools-uikit/constraints';
 
 type TInputProps = {
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
   isReadOnly?: boolean;
-  horizontalConstraint?: string | number;
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
 };
 
 const getInputContainerBorderColor = (
@@ -203,7 +218,23 @@ type TCreateSelectableSelectStyles = {
   isReadOnly?: boolean;
   menuPortalZIndex?: number;
   dropdownHasFocus?: boolean;
-  horizontalConstraint?: TMaxProp;
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
 };
 
 const createSelectableSelectStyles = ({

@@ -9,7 +9,7 @@ import {
 import AsyncCreatableSelect, {
   type AsyncCreatableProps,
 } from 'react-select/async-creatable';
-import Constraints, { TMaxProp } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import {
   ClearIndicator,
@@ -51,7 +51,23 @@ export type TAsyncCreatableSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint?: TMaxProp;
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
   /**
    * Indicates the input field has an error
    */

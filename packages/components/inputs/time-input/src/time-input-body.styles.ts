@@ -117,7 +117,6 @@ const getInputContainerBackgroundColor = (props: TTimeInputProps) => {
 // This styled component is only useful because it's referenced in the styles below
 const StyledClockIconContainer = styled.label``;
 const getInputContainerStyles = (props: TTimeInputProps) => {
-  console.log({ props });
   return [
     css`
       appearance: none;
