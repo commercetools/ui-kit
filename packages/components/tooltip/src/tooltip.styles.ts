@@ -1,9 +1,43 @@
 import { CSSProperties } from 'react';
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import type { TTooltipProps } from './tooltip';
+import type { TTooltipProps, TTooltipState } from './tooltip';
 
 type TDesignTokenName = keyof typeof designTokens;
+
+const growIn = keyframes`
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+`;
+
+const growOut = keyframes`
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+`;
+
+const getAnimation = (state: TTooltipState) => {
+  switch (state) {
+    case 'opened':
+      return {
+        animation: `${growIn} 80ms`,
+      };
+    case 'exiting':
+      return {
+        animation: `${growOut} 80ms`,
+      };
+    default:
+      return {};
+  }
+};
 
 const getOffsetMargin = ({ placement }: { placement: string }) => {
   const position = (placement && placement.split('-')[0]) || '';
@@ -58,6 +92,9 @@ export const getBodyStyles = ({
     ...customStyles,
   };
 };
+
+export const getTooltipStyles = (tooltipState: TTooltipState) =>
+  getAnimation(tooltipState);
 
 export const Wrapper = styled.div`
   display: inline-block;
