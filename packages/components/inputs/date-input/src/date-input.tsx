@@ -356,7 +356,6 @@ const DateInput = (props: TDateInput) => {
                 toggleButtonProps={getToggleButtonProps()}
                 hasError={props.hasError}
                 hasWarning={props.hasWarning}
-                horizontalConstraint={props.horizontalConstraint}
               />
               {isOpen && !props.isDisabled && !props.isReadOnly && (
                 <CalendarMenu

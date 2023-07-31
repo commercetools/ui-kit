@@ -1,6 +1,7 @@
 import { forwardRef, type KeyboardEvent, type MouseEvent } from 'react';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import { ClockIcon, CloseIcon } from '@commercetools-uikit/icons';
+import Inline from '@commercetools-uikit/spacings-inline';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
   getClearSectionStyles,
@@ -46,49 +47,51 @@ ClearSection.displayName = 'ClearSection';
 const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
   (props, ref) => {
     return (
-      <StyledInputContainer css={getInputContainerStyles(props)}>
-        <input
-          ref={ref}
-          css={getTimeInputStyles(props)}
-          id={props.id}
-          name={props.name}
-          autoComplete={props.autoComplete}
-          placeholder={props.placeholder}
-          autoFocus={props.isAutofocussed}
-          disabled={props.isDisabled}
-          readOnly={props.isReadOnly}
-          value={props.value}
-          onChange={props.onChange}
-          onFocus={props.onFocus}
-          onBlur={props.onBlur}
-          {...filterDataAttributes(props)}
-          /* ARIA */
-          aria-readonly={props.isReadOnly}
-          contentEditable={!props.isReadOnly}
-          {...(!props.isReadOnly
-            ? {
-                'aria-invalid': props['aria-invalid'],
-                'aria-errormessage': props['aria-errormessage'],
-              }
-            : {})}
-        />
-
-        {!props.isDisabled && !props.isReadOnly && Boolean(props.value) && (
-          <ClearSection
-            isDisabled={props.isDisabled}
-            hasError={props.hasError}
-            isReadOnly={props.isReadOnly}
-            onClear={props.onClear}
+      <Inline alignItems="center">
+        <StyledInputContainer css={getInputContainerStyles(props)}>
+          <input
+            ref={ref}
+            css={getTimeInputStyles(props)}
+            id={props.id}
+            name={props.name}
+            autoComplete={props.autoComplete}
+            placeholder={props.placeholder}
+            autoFocus={props.isAutofocussed}
+            disabled={props.isDisabled}
+            readOnly={props.isReadOnly}
+            value={props.value}
+            onChange={props.onChange}
+            onFocus={props.onFocus}
+            onBlur={props.onBlur}
+            {...filterDataAttributes(props)}
+            /* ARIA */
+            aria-readonly={props.isReadOnly}
+            contentEditable={!props.isReadOnly}
+            {...(!props.isReadOnly
+              ? {
+                  'aria-invalid': props['aria-invalid'],
+                  'aria-errormessage': props['aria-errormessage'],
+                }
+              : {})}
           />
-        )}
-        <StyledClockIconContainer
-          css={getClockIconContainerStyles(props)}
-          htmlFor={props.id}
-          data-toggle
-        >
-          <ClockIcon color="neutral60" />
-        </StyledClockIconContainer>
-      </StyledInputContainer>
+
+          {!props.isDisabled && !props.isReadOnly && Boolean(props.value) && (
+            <ClearSection
+              isDisabled={props.isDisabled}
+              hasError={props.hasError}
+              isReadOnly={props.isReadOnly}
+              onClear={props.onClear}
+            />
+          )}
+          <StyledClockIconContainer
+            css={getClockIconContainerStyles(props)}
+            htmlFor={props.id}
+            data-toggle
+          >
+            <ClockIcon color="neutral60" />
+          </StyledClockIconContainer>
+        </StyledInputContainer>
+      </Inline>
     );
   }
 );

@@ -82,23 +82,6 @@ SingleValue.displayName = 'SingleValue';
 type TCreateCurrencySelectStyles = (
   input: TInputProps & {
     currencyHasFocus?: boolean;
-    horizontalConstraint?:
-      | 3
-      | 4
-      | 5
-      | 6
-      | 7
-      | 8
-      | 9
-      | 10
-      | 11
-      | 12
-      | 13
-      | 14
-      | 15
-      | 16
-      | 'scale'
-      | 'auto';
   }
 ) => void;
 
@@ -123,7 +106,6 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
   isDisabled,
   isReadOnly,
   menuPortalZIndex,
-  horizontalConstraint,
   currencyHasFocus,
 }) => {
   const selectStyles = createSelectStyles({
@@ -132,7 +114,6 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
     menuPortalZIndex,
     isReadOnly,
     isDisabled,
-    horizontalConstraint,
   });
   return {
     ...selectStyles,
@@ -731,7 +712,6 @@ const MoneyInput = (props: TMoneyInputProps) => {
     isDisabled: props.isDisabled,
     isReadOnly: props.isReadOnly,
     menuPortalZIndex: props.menuPortalZIndex,
-    horizontalConstraint: props.horizontalConstraint,
     currencyHasFocus,
   });
   const options = props.currencies.map((currencyCode) => ({

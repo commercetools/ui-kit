@@ -7,7 +7,6 @@ import {
 } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { type TMaxProp } from '@commercetools-uikit/constraints';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
@@ -58,7 +57,6 @@ type TranslationInputProps = {
   intl: {
     formatMessage: (messageObject: TMessagesMultilineInput) => string;
   };
-  horizontalConstraint?: TMaxProp;
 };
 
 type TMessagesMultilineInput = {
@@ -174,7 +172,6 @@ const TranslationInput = (props: TranslationInputProps) => {
           isReadOnly={props.isReadOnly}
           isAutofocussed={props.isAutofocussed}
           isOpen={!props.isCollapsed}
-          horizontalConstraint={props.horizontalConstraint}
           {...filterDataAttributes(props)}
           /* ARIA */
           aria-invalid={props['aria-invalid']}

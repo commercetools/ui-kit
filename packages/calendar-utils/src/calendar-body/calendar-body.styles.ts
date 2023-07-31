@@ -150,7 +150,7 @@ const getInputContainerStyles = (props: TCalendarBody, state: TState) => {
       box-sizing: border-box;
       color: ${getInputFontColor(props)};
       cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-      width: ${props.horizontalConstraint === 'auto' ? 'auto' : '100%'};
+      width: 100%;
       height: ${designTokens.heightForInput};
       align-items: center;
       display: flex;

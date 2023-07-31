@@ -129,12 +129,10 @@ const getInputContainerStyles = (props: TTimeInputProps) => {
       box-sizing: border-box;
       color: ${getInputContainerFontColor(props)};
       cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-      width: ${props.horizontalConstraint === 'auto' ? 'auto' : '100%'};
+      width: 100%;
       height: ${designTokens.heightForInput};
       align-items: center;
-      display: ${props.horizontalConstraint === 'auto'
-        ? 'inline-flex'
-        : 'flex'};
+      display: flex;
       font-size: ${designTokens.fontSizeForInput};
       font-family: inherit;
       transition: border-color ${designTokens.transitionStandard},

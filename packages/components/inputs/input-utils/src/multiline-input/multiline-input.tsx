@@ -2,7 +2,6 @@ import { useRef, useCallback, ChangeEventHandler } from 'react';
 import TextareaAutosize, {
   TextareaHeightChangeMeta,
 } from 'react-textarea-autosize';
-import { type TMaxProp } from '@commercetools-uikit/constraints';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { getTextareaStyles } from './multiline-input.styles';
 
@@ -24,7 +23,6 @@ export type TMultiLineInputProps = {
   placeholder?: string;
   value: string;
   isOpen: boolean;
-  horizontalConstraint?: TMaxProp;
   onHeightChange?: (height: number, rowCount: number) => void;
   /**
    * Indicate if the value entered in the input is invalid.

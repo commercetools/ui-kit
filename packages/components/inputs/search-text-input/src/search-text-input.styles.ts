@@ -7,23 +7,6 @@ type TInputProps = {
   hasError?: boolean;
   hasWarning?: boolean;
   isReadOnly?: boolean;
-  horizontalConstraint?:
-    | 3
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 'scale'
-    | 'auto';
 };
 
 const getInputContainerBorderColor = (
@@ -138,7 +121,7 @@ const getTextInputContainerBackgroundColor = (props: TInputProps) => {
 
 const getSearchTextInputContainerStyles = (props: TInputProps) => [
   css`
-    display: ${props.horizontalConstraint === 'auto' ? 'inline-flex' : 'flex'};
+    display: flex;
     align-items: center;
     background-color: ${props.isDisabled
       ? designTokens.backgroundColorForInputWhenDisabled

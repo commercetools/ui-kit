@@ -186,10 +186,6 @@ type TLocalizedInputProps = {
    * HTML node to display warning
    */
   warning?: ReactNode;
-  /**
-   * Horizontal size limit of the input fields.
-   */
-  horizontalConstraint?: TLocalizedMoneyInputProps['horizontalConstraint'];
 };
 
 const sequentialId = createSequentialId('localized-money-input-');
@@ -246,7 +242,6 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
           placeholder={props.placeholder}
           hasError={props.hasError}
           hasWarning={props.hasWarning}
-          horizontalConstraint={props.horizontalConstraint}
           {...filterDataAttributes(props)}
         />
       </div>
@@ -342,7 +337,6 @@ const LocalizedMoneyInput = (props: TLocalizedMoneyInputProps) => {
                 )}
                 warning={props.warnings && props.warnings[currency]}
                 error={props.errors && props.errors[currency]}
-                horizontalConstraint={props.horizontalConstraint}
                 {...createLocalizedDataAttributes(props, currency)}
               />
             );

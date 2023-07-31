@@ -16,7 +16,7 @@ const getTextareaStyles = (props: TMultiLineInputProps) => {
     css`
       padding: ${designTokens.paddingForMultilineInput};
       line-height: ${sizeInputLineHeight};
-      flex: ${props.horizontalConstraint === 'auto' ? 'inherit' : 'auto'};
+      flex: auto;
       word-break: break-word;
       white-space: pre-wrap;
       resize: none;

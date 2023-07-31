@@ -8,7 +8,7 @@ import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
-import Constraints, { TMaxProp } from '@commercetools-uikit/constraints';
+import Constraints from '@commercetools-uikit/constraints';
 import {
   sortLanguages,
   createLocalizedDataAttributes,
@@ -96,7 +96,25 @@ export type TLocalizedTextInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
-  horizontalConstraint?: TMaxProp;
+  horizontalConstraint?:
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
   /**
    * Will apply the error state to each input without showing any error message.
    */
@@ -133,7 +151,6 @@ export type TLocalizedInputProps = {
   isReadOnly?: boolean;
   hasError?: boolean;
   placeholder?: string;
-  horizontalConstraint?: TMaxProp;
 };
 
 const sequentialId = createSequentialId('localized-text-input-');
@@ -180,9 +197,6 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
       </label>
       <TextInput
         {...props}
-        horizontalConstraint={
-          props.horizontalConstraint === 'auto' ? 'auto' : undefined
-        }
         onChange={handleChange}
         css={getLocalizedInputStyles}
       />
@@ -274,7 +288,6 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                         ? props.placeholder[language]
                         : undefined
                     }
-                    horizontalConstraint={props.horizontalConstraint}
                     onBlur={props.onBlur}
                     onFocus={props.onFocus}
                     isAutofocussed={index === 0 && props.isAutofocussed}

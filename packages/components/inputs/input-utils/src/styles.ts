@@ -8,25 +8,6 @@ type TInputProps = {
   hasWarning?: boolean;
   isReadOnly?: boolean;
   readOnly?: boolean;
-  horizontalConstraint?:
-    | 1
-    | 2
-    | 3
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 'scale'
-    | 'auto';
 };
 
 const getInputBorderColor = (
@@ -120,7 +101,7 @@ const getInputStyles = (props: TInputProps) => {
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard},
       box-shadow ${designTokens.transitionStandard};
-    width: ${props.horizontalConstraint === 'auto' ? 'auto' : '100%'};
+    width: 100%;
 
     &::placeholder {
       color: ${designTokens.placeholderFontColorForInput};
