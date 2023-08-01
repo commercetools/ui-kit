@@ -22,7 +22,7 @@ if [ -n "$SKIP_INSTALL_STORYBOOK" ]; then
 
 else
   echo "Installing dependencies for Storybook."
-  pushd docs/
-  pnpm install
+  # pushd docs/
+  # pnpm install
 
 fi

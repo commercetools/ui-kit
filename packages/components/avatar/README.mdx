@@ -1,0 +1,50 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as AvatarStories from './src/avatar.new.stories';
+
+<Meta of={AvatarStories} />
+
+# Avatar
+
+## Description
+
+A component for rendering profile images
+
+## Installation
+
+```
+yarn add @commercetools-uikit/avatar
+```
+
+```
+npm --save install @commercetools-uikit/avatar
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import Avatar from '@commercetools-uikit/avatar';
+
+const Example = () => (
+  <Avatar
+    gravatarHash="20c9c1b252b46ab49d6f7a4cee9c3e68"
+    firstName="John"
+    lastName="Doe"
+    size="s"
+  />
+);
+
+export default Example;
+```
+
+<Canvas of={AvatarStories.Default} />
