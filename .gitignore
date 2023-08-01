@@ -92,6 +92,7 @@ typings/
 public
 docs/.public
 docs/public
+storybook-static
 
 # Serverless directories
 .serverless
