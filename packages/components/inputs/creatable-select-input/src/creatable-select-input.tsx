@@ -394,6 +394,7 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectCreatableProps['styles']
           }
           filterOption={props.filterOption}
