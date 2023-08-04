@@ -1,0 +1,61 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as TextInputStories from './src/text-input.new.stories';
+
+<Meta of={TextInputStories} />
+
+# TextInput
+
+## Description
+
+A controlled text input component for single-line strings with validation states.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/text-input
+```
+
+```
+npm --save install @commercetools-uikit/text-input
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import TextInput from '@commercetools-uikit/text-input';
+
+const Example = () => (
+  <TextInput value="foo" onChange={(event) => alert(event.target.value)} />
+);
+
+export default Example;
+```
+
+## Static methods
+
+### `TextInput.isEmpty`
+
+Returns `true` when the value is considered empty, which is when the value is empty or consists of spaces only.
+
+```js
+TextInput.isEmpty(''); // -> true
+TextInput.isEmpty(' '); // -> true
+TextInput.isEmpty('tree'); // -> false
+```
+
+## Main Functions and use cases are:
+
+- Input field for single-line strings
+
+<Canvas of={TextInputStories.Default} />

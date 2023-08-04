@@ -1,6 +1,7 @@
+import { type ChangeEvent, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import TextInput from './text-input';
+import TextInput, { TTextInputProps } from './text-input';
 
 const meta = {
   title: 'Components/Inputs/TextInput',
@@ -9,33 +10,35 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  args: (args,) => {
-    return {
-      ...args,
-      horizontalConstraint: 10,
-      onChange: (event, ...params) => {
-        console.log({ self: this, event, params});
-        args.value = event.target.value;
-      },
-      onBlur: () => {},
-      onFocus: () => {},
-    };
+  args: {
+    value: '',
+    placeholder: 'Placeholder',
+    horizontalConstraint: 10,
+    onBlur: () => {},
+    onFocus: () => {},
   },
 } satisfies Meta<typeof TextInput>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const TextInputWrapper = (args: TTextInputProps) => {
+  const [value, setValue] = useState(args.value);
+  const props = {
+    ...args,
+    value,
+    onChange: (event: ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value);
+    },
+  };
+  return <TextInput {...props} />;
+};
+
 export const Default: Story = {
   args: {
-    value: 'Some random value',
-    horizontalConstraint: 10,
-    onChange: (event, ...params) => {
-      console.log({ self: this, event, params});
-    },
-    onBlur: () => {},
-    onFocus: () => {},
+    value: '',
   },
+  render: TextInputWrapper,
 };
 
 export const Disabled: Story = {
@@ -43,13 +46,16 @@ export const Disabled: Story = {
     ...Default.args,
     isDisabled: true,
   },
+  render: TextInputWrapper,
 };
 
 export const ReadOnly: Story = {
   args: {
     ...Default.args,
+    value: 'Read only value',
     isReadOnly: true,
   },
+  render: TextInputWrapper,
 };
 
 export const WithError: Story = {
@@ -58,12 +64,14 @@ export const WithError: Story = {
     value: 'Invalid value',
     hasError: true,
   },
+  render: TextInputWrapper,
 };
 
 export const WithWarning: Story = {
   args: {
     ...Default.args,
     value: 'Dangerous value',
-    hasError: true,
+    hasWarning: true,
   },
+  render: TextInputWrapper,
 };
