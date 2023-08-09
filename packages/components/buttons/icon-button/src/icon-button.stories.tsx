@@ -2,19 +2,19 @@ import type { ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import * as icons from '@commercetools-uikit/icons';
 
-import PrimaryButton from './primary-button';
+import IconButton from './icon-button';
 
 const iconNames = Object.keys(icons);
 
 const meta = {
-  title: 'Components/Buttons/PrimaryButton',
-  component: PrimaryButton,
+  title: 'Components/Buttons/IconButton',
+  component: IconButton,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {
-    iconLeft: {
+    icon: {
       options: ['', ...iconNames],
       mapping: Object.entries(icons).reduce<Record<string, ReactNode>>(
         (acc, [iconName, IconComponent]) => {
@@ -25,30 +25,23 @@ const meta = {
       ),
     },
   },
-} satisfies Meta<typeof PrimaryButton>;
+} satisfies Meta<typeof IconButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    type: 'button',
-    tone: 'primary',
+    typ: 'button',
+    shape: 'round',
+    size: 'big',
+    theme: 'default',
+    icon: iconNames[0],
+    onClick: () => {},
     label: 'Accessibility text',
-  },
-};
-
-export const Critical: Story = {
-  args: {
-    ...Default.args,
-    tone: 'critical',
-  },
-};
-
-export const WithIcon: Story = {
-  args: {
-    ...Default.args,
-    iconLeft: iconNames[0],
+    isToggleButton: false,
+    isToggled: false,
+    isDisabled: false,
   },
 };
 
@@ -59,9 +52,10 @@ export const Small: Story = {
   },
 };
 
-export const Disabled: Story = {
+export const Toggled: Story = {
   args: {
     ...Default.args,
-    isDisabled: true,
+    isToggleButton: true,
+    isToggled: true,
   },
 };

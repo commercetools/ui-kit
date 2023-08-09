@@ -2,13 +2,13 @@ import type { ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import * as icons from '@commercetools-uikit/icons';
 
-import PrimaryButton from './primary-button';
+import SecondaryIconButton from './secondary-icon-button';
 
 const iconNames = Object.keys(icons);
 
 const meta = {
-  title: 'Components/Buttons/PrimaryButton',
-  component: PrimaryButton,
+  title: 'Components/Buttons/SecondaryIconButton',
+  component: SecondaryIconButton,
   parameters: {
     layout: 'centered',
   },
@@ -25,16 +25,18 @@ const meta = {
       ),
     },
   },
-} satisfies Meta<typeof PrimaryButton>;
+} satisfies Meta<typeof SecondaryIconButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    type: 'button',
-    tone: 'primary',
+    icon: iconNames[0],
     label: 'Accessibility text',
+    color: 'solid',
+    size: 'big',
+    isDisabled: false,
   },
 };
 
@@ -45,10 +47,10 @@ export const Critical: Story = {
   },
 };
 
-export const WithIcon: Story = {
+export const Primary: Story = {
   args: {
     ...Default.args,
-    iconLeft: iconNames[0],
+    color: 'primary',
   },
 };
 

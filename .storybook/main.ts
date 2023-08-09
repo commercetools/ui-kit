@@ -3,13 +3,14 @@ const config: StorybookConfig = {
   stories: [
     '../stories/**/*.mdx',
     '../stories/**/*.new.stories.@(js|jsx|mjs|ts|tsx)',
+    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../packages/components/**/*.mdx',
     '../packages/components/**/*.new.stories.@(js|jsx|mjs|ts|tsx)',
+    '../packages/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
   ],
   framework: {
@@ -21,6 +22,6 @@ const config: StorybookConfig = {
   },
   core: {
     disableTelemetry: true,
-  }
+  },
 };
 export default config;

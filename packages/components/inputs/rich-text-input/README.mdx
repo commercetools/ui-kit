@@ -1,0 +1,79 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as RichTextInputStories from './src/rich-text-input.new.stories';
+
+<Meta of={RichTextInputStories} />
+
+# RichTextInput
+
+## Description
+
+A controlled rich text input component for rich text with validation states.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/rich-text-input
+```
+
+```
+npm --save install @commercetools-uikit/rich-text-input
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react react-intl
+```
+
+```
+npm --save install react react-intl
+```
+
+## Usage
+
+```jsx
+import React from 'react';
+import RichTextInput from '@commercetools-uikit/rich-text-input';
+
+const html = '<p>hello world</p>';
+
+const Example = (props) => {
+  const [value, setValue] = React.useState(html);
+  const handleChange = React.useCallback((event) => {
+    setValue(event.target.value);
+  }, []);
+  const ref = React.useRef(null);
+  const handleReset = React.useCallback(() => {
+    ref.current?.resetValue('<p>after reset</p>');
+  }, []);
+
+  return (
+    <>
+      <button onClick={handleReset}>Reset</button>
+      <RichTextInput value={value} onChange={handleChange} ref={ref} />
+    </>
+  );
+};
+
+export default Example;
+```
+
+## Static methods
+
+### `RichTextInput.isEmpty`
+
+Returns `true` when the value is considered empty, which is when the value is empty.
+
+```js
+RichTextInput.isEmpty(''); // -> true
+RichTextInput.isEmpty('<p></p>'); // -> true
+RichTextInput.isEmpty('tree'); // -> false
+```
+
+### `isTouched(touched)`
+
+Expects to be called with an array or boolean.
+Returns `true` when truthy.
+
+<Canvas of={RichTextInputStories.Default} />

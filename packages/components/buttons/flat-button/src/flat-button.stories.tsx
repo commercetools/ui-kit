@@ -1,20 +1,24 @@
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import * as icons from '@commercetools-uikit/icons';
 
-import PrimaryButton from './primary-button';
+import FlatButton, { TFlatButtonProps } from './flat-button';
 
 const iconNames = Object.keys(icons);
 
 const meta = {
-  title: 'Components/Buttons/PrimaryButton',
-  component: PrimaryButton,
+  title: 'Components/Buttons/FlatButton',
+  component: FlatButton,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  // args: {
+  //   // icon: iconNames[0],
+  //   label: 'Accessibility text',
+  // },
   argTypes: {
-    iconLeft: {
+    icon: {
       options: ['', ...iconNames],
       mapping: Object.entries(icons).reduce<Record<string, ReactNode>>(
         (acc, [iconName, IconComponent]) => {
@@ -25,43 +29,14 @@ const meta = {
       ),
     },
   },
-} satisfies Meta<typeof PrimaryButton>;
+} satisfies Meta<TFlatButtonProps<'button'>>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    type: 'button',
-    tone: 'primary',
+    // icon: iconNames[0],
     label: 'Accessibility text',
-  },
-};
-
-export const Critical: Story = {
-  args: {
-    ...Default.args,
-    tone: 'critical',
-  },
-};
-
-export const WithIcon: Story = {
-  args: {
-    ...Default.args,
-    iconLeft: iconNames[0],
-  },
-};
-
-export const Small: Story = {
-  args: {
-    ...Default.args,
-    size: 'small',
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    ...Default.args,
-    isDisabled: true,
   },
 };
