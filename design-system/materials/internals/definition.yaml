@@ -62,6 +62,7 @@ choiceGroupsByTheme:
         color-info: '#078cdf'
         color-info-40: 'hsl(203.05555555555554, 93.9130434783%, 40%)'
         color-info-85: 'hsl(203.05555555555554, 93.9130434783%, 85%)'
+        color-info-90: '#CEEBFD'
         color-info-95: 'hsl(203.05555555555554, 93.9130434783%, 95%)'
         color-warning: '#f16d0e'
         color-warning-25: 'hsl(25.110132158590307, 89.0196078431%, 25%)'
@@ -252,6 +253,10 @@ states:
     description: 'When the element is checked'
   checked-and-disabled:
     description: 'When the element is checked and disabled'
+  info-and-hovered:
+    description: "When the element's tone is info and disabled"
+  info-and-active:
+    description: "When the element's tone is info and active"
 
 variants:
   h1:
@@ -584,6 +589,12 @@ decisionGroupsByTheme:
           choice: color-accent-90
         background-color-for-toggle-input-thumb-when-checked-and-disabled:
           choice: color-accent-60
+        background-color-for-button-as-secondary-when-info:
+          choice: color-info-95
+        background-color-for-button-as-secondary-when-info-and-hovered:
+          choice: color-info-90
+        background-color-for-button-as-secondary-when-info-and-active:
+          choice: color-info-85
 
     borders:
       label: Borders
@@ -704,6 +715,8 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         border-color-for-primary-action-dropdown-menu:
           choice: color-surface
+        border-color-for-button-as-secondary-when-info:
+          choice: color-info-85
 
     borderRadiuses:
       label: Border Radius

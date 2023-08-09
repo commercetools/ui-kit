@@ -86,23 +86,28 @@ export const component = () => (
     </Spec>
 
     <Spec label='size - when "big"'>
-      <SecondaryButton
-        label="A label text"
-        onClick={() => {}}
-        size="big"
-      />
+      <SecondaryButton label="A label text" onClick={() => {}} size="big" />
     </Spec>
 
     <Spec label='size - when "medium"'>
-      <SecondaryButton
-        label="A label text"
-        onClick={() => {}}
-        size="medium"
-      />
+      <SecondaryButton label="A label text" onClick={() => {}} size="medium" />
     </Spec>
 
     <Spec label="when used as link">
       <SecondaryButton label="A label text" to="/" />
+    </Spec>
+
+    <Spec label='when tone is "info"'>
+      <SecondaryButton label="A label text" onClick={() => {}} tone="info" />
+    </Spec>
+    <Spec label='when toggled with tone "info"'>
+      <SecondaryButton
+        label="A label text"
+        onClick={() => {}}
+        isToggleButton={true}
+        isToggled={true}
+        tone="info"
+      />
     </Spec>
   </Suite>
 );
