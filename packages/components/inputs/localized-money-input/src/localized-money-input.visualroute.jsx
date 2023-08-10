@@ -21,8 +21,10 @@ const value = {
 };
 
 const highPrecisionValue = {
-  amount: '13.501',
-  currencyCode: 'EUR',
+  CAD: {
+    currencyCode: 'CAD',
+    amount: '13.501',
+  },
 };
 
 export const routePath = '/localized-money-input';
