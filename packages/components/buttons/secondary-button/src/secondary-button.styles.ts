@@ -136,9 +136,11 @@ const getToneStyles = (
           css`
             background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfo};
             border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
-            &:focus,
             &:hover {
               background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndHovered};
+              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            }
+            &:focus {
               border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
             }
             &:active {
