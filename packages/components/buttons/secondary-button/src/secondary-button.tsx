@@ -72,7 +72,7 @@ export type TSecondaryButtonProps<
   /**
    * Indicates the tone of the button.
    */
-  tone?: 'default' | 'info';
+  tone?: 'secondary' | 'info';
 } & /**
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
@@ -103,7 +103,7 @@ const defaultProps: Pick<
 > = {
   type: 'button',
   theme: 'default',
-  tone: 'default',
+  tone: 'secondary',
   size: 'big',
   isToggleButton: false,
 };

@@ -29,7 +29,7 @@ storiesOf('Components|Buttons', module)
         <MemoryRouter>
           <SecondaryButton
             type={select('type', ['button', 'reset', 'submit'], 'button')}
-            tone={select('tone', ['info', 'default'], 'default')}
+            tone={select('tone', ['info', 'secondary'], 'secondary')}
             size={select('size', ['medium', 'big'], 'big')}
             iconLeft={createElement(
               icons[select('iconLeft', iconNames, iconNames[0])]
