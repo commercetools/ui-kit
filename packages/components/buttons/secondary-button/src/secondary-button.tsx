@@ -146,7 +146,7 @@ export const SecondaryButton = <
     getThemeStyles(props.theme),
     getStateStyles(props.isDisabled, isActive, props.theme),
     getSizeStyles(props.size),
-    getToneStyles(props.tone, props.isDisabled, isActive),
+    getToneStyles(props.tone, props.isDisabled),
   ];
 
   return (

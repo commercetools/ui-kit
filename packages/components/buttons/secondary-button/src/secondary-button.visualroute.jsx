@@ -100,14 +100,5 @@ export const component = () => (
     <Spec label='when tone is "info"'>
       <SecondaryButton label="A label text" onClick={() => {}} tone="info" />
     </Spec>
-    <Spec label='when toggled with tone "info"'>
-      <SecondaryButton
-        label="A label text"
-        onClick={() => {}}
-        isToggleButton={true}
-        isToggled={true}
-        tone="info"
-      />
-    </Spec>
   </Suite>
 );

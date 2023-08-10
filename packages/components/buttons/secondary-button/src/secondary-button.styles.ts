@@ -127,8 +127,7 @@ const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
 
 const getToneStyles = (
   tone: TSecondaryButtonProps['tone'],
-  isDisabled: boolean,
-  isActive: boolean
+  isDisabled: boolean
 ) => {
   switch (tone) {
     case 'info':
@@ -142,11 +141,10 @@ const getToneStyles = (
               background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndHovered};
               border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
             }
-          `,
-        isActive &&
-          css`
-            background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndActive};
-            border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            &:active {
+              background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndActive};
+              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            }
           `,
       ];
 
