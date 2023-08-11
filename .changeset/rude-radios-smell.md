@@ -2,4 +2,4 @@
 '@commercetools-uikit/localized-money-input': minor
 ---
 
-add precision badge to localized money input field
+Added a new property (**hasHighPrecisionBadge**) which can be used so the component shows a high precision badge when its value has a high precision decimal number.
