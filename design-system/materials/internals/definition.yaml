@@ -254,7 +254,7 @@ states:
   checked-and-disabled:
     description: 'When the element is checked and disabled'
   info-and-hovered:
-    description: "When the element's tone is info and disabled"
+    description: "When the element's tone is info and hovered"
   info-and-active:
     description: "When the element's tone is info and active"
 
