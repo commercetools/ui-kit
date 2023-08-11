@@ -20,6 +20,13 @@ const value = {
   },
 };
 
+const highPrecisionValue = {
+  CAD: {
+    currencyCode: 'CAD',
+    amount: '13.501',
+  },
+};
+
 export const routePath = '/localized-money-input';
 
 export const component = () => (
@@ -138,6 +145,24 @@ export const component = () => (
         selectedCurrency="CAD"
         horizontalConstraint={7}
         hasWarning={true}
+      />
+    </Spec>
+    <Spec label="with high precision badge and regular price">
+      <LocalizedMoneyInput
+        value={value}
+        onChange={() => {}}
+        selectedCurrency="CAD"
+        horizontalConstraint={7}
+        hasHighPrecisionBadge={true}
+      />
+    </Spec>
+    <Spec label="with high precision badge and high precision price">
+      <LocalizedMoneyInput
+        value={highPrecisionValue}
+        onChange={() => {}}
+        selectedCurrency="CAD"
+        horizontalConstraint={7}
+        hasHighPrecisionBadge={true}
       />
     </Spec>
   </Suite>
