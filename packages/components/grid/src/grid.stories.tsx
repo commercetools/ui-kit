@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
+import LinkTo from '@storybook/addon-links/react';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 
@@ -9,6 +10,10 @@ const meta = {
   title: 'Components/Grid',
   component: Grid,
   tags: ['autodocs'],
+  args: {
+    display: 'grid',
+    children: '',
+  },
 } satisfies Meta<typeof Grid>;
 
 export default meta;
@@ -31,10 +36,6 @@ const renderGridElements = () => {
 };
 
 export const Default: Story = {
-  args: {
-    display: 'grid',
-    children: '',
-  },
   render: (args) => (
     <Spacings.Stack scale="m">
       <Spacings.Stack scale="s">
@@ -56,15 +57,51 @@ export const Default: Story = {
             'In the Knobs section on the right panel, you can see all the supported CSS Grid properties, both for the parent container and for the children elements (items).'
           }
         </Text.Body>
-        {/* <LinkTo kind="Examples/Components/Grid" story="With-fixed-columns">
+        <LinkTo kind="Components/Grid" story="with-fixed-columns">
           <Text.Body tone="primary">
-            {
-              'Check out the Grid examples to build some basic grid layouts!'
-            }
+            {'Check out the Grid examples to build some basic grid layouts!'}
           </Text.Body>
-        </LinkTo> */}
+        </LinkTo>
       </Spacings.Stack>
       <Grid {...args}>{renderGridElements()}</Grid>
     </Spacings.Stack>
   ),
+};
+
+export const WithFixedColumns: Story = {
+  render() {
+    return (
+      <Spacings.Stack scale="l">
+        <Text.Body tone="information">
+          {'💁 Try resizing the window to see how the grid layout behaves.'}
+        </Text.Body>
+        <Grid
+          gridGap="16px"
+          gridAutoColumns="1fr"
+          gridTemplateColumns="repeat(3, 1fr)"
+        >
+          {renderGridElements()}
+        </Grid>
+      </Spacings.Stack>
+    );
+  },
+};
+
+export const WithAutoSizingColumns: Story = {
+  render() {
+    return (
+      <Spacings.Stack scale="l">
+        <Text.Body tone="information">
+          {'💁 Try resizing the window to see how the grid layout behaves.'}
+        </Text.Body>
+        <Grid
+          gridGap="16px"
+          gridAutoColumns="1fr"
+          gridTemplateColumns={`repeat(auto-fill, minmax(150px, 1fr))`}
+        >
+          {renderGridElements()}
+        </Grid>
+      </Spacings.Stack>
+    );
+  },
 };
