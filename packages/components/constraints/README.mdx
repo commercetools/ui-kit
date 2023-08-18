@@ -1,0 +1,47 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as HorizontalConstraintsStories from './src/horizontal/horizontal.stories';
+
+<Meta of={HorizontalConstraintsStories} />
+
+# Constraints
+
+## Description
+
+Constraints are container elements with a configurable constraint size, like width or height.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/constraints
+```
+
+```
+npm --save install @commercetools-uikit/constraints
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import Constraints from '@commercetools-uikit/constraints';
+
+<Constraints.Horizontal max={7}>
+  <p>
+    Lorem ipsum dolor sit amet, id labitur perpetua vix. An graece iisque
+    corpora sit, erant nihil signiferumque et pro, cu ius minim altera
+    temporibus.
+  </p>
+</Constraints.Horizontal>;
+```
+
+<Canvas of={HorizontalConstraintsStories.Default} />

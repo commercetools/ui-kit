@@ -1,0 +1,70 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as SecondaryIconButtonStories from './src/secondary-icon-button.stories';
+
+<Meta of={SecondaryIconButtonStories} />
+
+# SecondaryIconButton
+
+## Description
+
+Secondary Icon Buttons are "icon-only" buttons and a restricted version of the \`\<IconButton>\`. They trigger an action when clicked (\`onClick\` prop). You must also pass a label for accessibility reasons.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/secondary-icon-button
+```
+
+```
+npm --save install @commercetools-uikit/secondary-icon-button
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import { InformationIcon } from '@commercetools-uikit/icons';
+
+const Example = () => (
+  <SecondaryIconButton
+    icon={<InformationIcon />}
+    label="A label text"
+    onClick={() => alert('Button clicked')}
+  />
+);
+
+export default Example;
+```
+
+The component further forwards all valid HTML attributes to the underlying `button` component.
+
+## Note
+
+The size of the button should be adjusted directly on the passed `Icon` component. Example:
+
+```jsx
+<SecondaryIconButton
+  icon={<ArrowRightIcon size="small" />}
+  label="Next"
+  onClick={() => alert('Button clicked')}
+/>
+```
+
+## Examples in the Merchant Center
+
+Mostly in all places where you just need a "clickable" icon, without the complex behaviors of the `IconButton`.
+
+- Pagination list: Go to next page
+
+<Canvas of={SecondaryIconButtonStories.Default} />

@@ -1,0 +1,35 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as SecondaryButtonStories from './src/secondary-button.stories';
+
+<Meta of={SecondaryButtonStories} />
+
+# Buttons: Secondary Button
+
+## Description
+
+Secondary buttons are used in combination with a `PrimaryButton` given a
+converse secondary action on a page. You must also pass a label for
+accessibility reasons.
+
+## Usage
+
+```js
+import SecondaryButton from '@commercetools-uikit/secondary-button';
+
+<SecondaryButton
+  iconLeft={<InformationIcon />}
+  label="Alerts a message"
+  onClick={() => alert('Button clicked')}
+/>;
+```
+
+The component further forwards all valid HTML attributes to the underlying `button` component.
+
+Main Functions and use cases are:
+
+- Secondary action _example: Discard changes_
+
+- Restoring state _example: Canceling a form_
+
+<Canvas of={SecondaryButtonStories.Default} />

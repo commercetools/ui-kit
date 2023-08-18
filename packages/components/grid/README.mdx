@@ -1,0 +1,66 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as GridStories from './src/grid.stories';
+
+<Meta of={GridStories} />
+
+# Grid
+
+## Description
+
+The Grid component can be used to implement layouts using CSS-Grid.
+
+> [CSS Grid Layout](https://css-tricks.com/snippets/css/complete-guide-grid) is the most powerful layout system available in CSS. It is a 2-dimensional system, meaning it can handle both columns and rows, unlike flexbox which is largely a 1-dimensional system. You work with Grid Layout by applying CSS rules both to a parent element (which becomes the Grid Container) and to that elements children (which become Grid Items).
+
+The component accepts all the supported properties of CSS Grid, both for the parent container and the children elements (`<Grid.Item>`).
+
+## Installation
+
+```
+yarn add @commercetools-uikit/grid
+```
+
+```
+npm --save install @commercetools-uikit/grid
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import Grid from '@commercetools-uikit/grid';
+
+/**
+ * We also recommend having a look at the [Grid story examples](https://uikit.commercetools.com/?path=/story/examples-components-grid--with-fixed-columns)
+ * to see more detailed examples of common use cases of the CSS Grid layout.
+ **/
+const Example = () => (
+  <Grid
+    gridGap="16px"
+    gridAutoColumns="1fr"
+    gridTemplateColumns="repeat(3, 1fr)"
+  >
+    <Grid.Item>{'1'}</Grid.Item>
+    <Grid.Item>{'2'}</Grid.Item>
+    <Grid.Item>{'3'}</Grid.Item>
+    <Grid.Item>{'4'}</Grid.Item>
+    <Grid.Item>{'5'}</Grid.Item>
+  </Grid>
+);
+
+export default Example;
+```
+
+> The component accepts all supported CSS Grid properties, [as listed here](https://css-tricks.com/snippets/css/complete-guide-grid), in **camelCase** format
+
+
+<Canvas of={GridStories.Default} />

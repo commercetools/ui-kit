@@ -8,6 +8,10 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  args: {
+    onFocus: () => {},
+    onBlur: () => {},
+  },
   tags: ['autodocs'],
 } satisfies Meta<typeof RichTextInput>;
 
@@ -20,6 +24,4 @@ export const Default: Story = {
     placeholder: 'Placeholder',
     showExpandIcon: true,
   },
-  onFocus: () => {},
-  onBlur: () => {},
 };

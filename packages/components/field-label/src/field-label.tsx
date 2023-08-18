@@ -187,8 +187,9 @@ const FieldLabel = (props: TFieldLabelProps) => {
 };
 
 FieldLabel.displayName = 'FieldLabel';
-FieldLabel.defaultProps = {
+const defaultProps: Pick<TFieldLabelProps, 'horizontalConstraint'> = {
   horizontalConstraint: 'scale',
 };
+FieldLabel.defaultProps = defaultProps;
 
 export default FieldLabel;

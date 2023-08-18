@@ -79,7 +79,7 @@ const createClosingAnimation = (height: number, minHeight = 0) =>
     )}; overflow: hidden; visibility: ${getVisibility(minHeight)}; }
   `;
 
-type TNodeRefObject = {
+export type TNodeRefObject = {
   clientHeight: number;
 } & LegacyRef<HTMLDivElement>;
 
