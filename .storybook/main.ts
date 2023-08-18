@@ -1,4 +1,10 @@
+import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')));
+}
+
 const config: StorybookConfig = {
   stories: [
     '../stories/**/*.mdx',
@@ -9,13 +15,13 @@ const config: StorybookConfig = {
     '../packages/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-links',
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-interactions'),
+    getAbsolutePath('@storybook/addon-links'),
   ],
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
   docs: {
@@ -25,4 +31,5 @@ const config: StorybookConfig = {
     disableTelemetry: true,
   },
 };
+
 export default config;
