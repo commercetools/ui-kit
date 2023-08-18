@@ -416,6 +416,7 @@ const SelectInput = (props: TSelectInputProps) => {
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
               controlShouldRenderValue: props.controlShouldRenderValue,
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectProps['styles']
           }
           filterOption={props.filterOption}

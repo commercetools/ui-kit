@@ -1,5 +1,23 @@
 # @commercetools-uikit/buttons
 
+## 16.6.0
+
+### Patch Changes
+
+- [#2559](https://github.com/commercetools/ui-kit/pull/2559) [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad) Thanks [@dependabot](https://github.com/apps/dependabot)! - Updated [semver](https://github.com/npm/node-semver) dependency.
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
+- Updated dependencies [[`0697dc48c`](https://github.com/commercetools/ui-kit/commit/0697dc48c6dfa858bcc7f2fabd841711a20795fa), [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad), [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae), [`ea757c503`](https://github.com/commercetools/ui-kit/commit/ea757c503af763a845d9ae8c4370c94bd77dd9ab)]:
+  - @commercetools-uikit/secondary-button@16.6.0
+  - @commercetools-uikit/design-system@16.6.0
+  - @commercetools-uikit/accessible-button@16.6.0
+  - @commercetools-uikit/flat-button@16.6.0
+  - @commercetools-uikit/icon-button@16.6.0
+  - @commercetools-uikit/link-button@16.6.0
+  - @commercetools-uikit/primary-button@16.6.0
+  - @commercetools-uikit/secondary-icon-button@16.6.0
+
 ## 16.5.0
 
 ### Patch Changes

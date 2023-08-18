@@ -1,5 +1,31 @@
 # @commercetools-uikit/localized-money-input
 
+## 16.6.0
+
+### Minor Changes
+
+- [#2578](https://github.com/commercetools/ui-kit/pull/2578) [`5f2886d1f`](https://github.com/commercetools/ui-kit/commit/5f2886d1f29234c28c6201922d89ed7d14d5d17e) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Added a new property (**hasHighPrecisionBadge**) which can be used so the component shows a high precision badge when its value has a high precision decimal number.
+
+### Patch Changes
+
+- [#2559](https://github.com/commercetools/ui-kit/pull/2559) [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad) Thanks [@dependabot](https://github.com/apps/dependabot)! - Updated [semver](https://github.com/npm/node-semver) dependency.
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
+- Updated dependencies [[`0697dc48c`](https://github.com/commercetools/ui-kit/commit/0697dc48c6dfa858bcc7f2fabd841711a20795fa), [`b0dad1173`](https://github.com/commercetools/ui-kit/commit/b0dad1173d9a93d4b3c863527177c82d24b9dcfa), [`5c88b1c9e`](https://github.com/commercetools/ui-kit/commit/5c88b1c9e637d47ff372d0555729f9df717a45c1), [`86a5f09f2`](https://github.com/commercetools/ui-kit/commit/86a5f09f26e0f2dcac8f61d9333a6043a6ecc39a), [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad), [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae), [`ea757c503`](https://github.com/commercetools/ui-kit/commit/ea757c503af763a845d9ae8c4370c94bd77dd9ab)]:
+  - @commercetools-uikit/design-system@16.6.0
+  - @commercetools-uikit/select-utils@16.6.0
+  - @commercetools-uikit/tooltip@16.6.0
+  - @commercetools-uikit/icons@16.6.0
+  - @commercetools-uikit/flat-button@16.6.0
+  - @commercetools-uikit/constraints@16.6.0
+  - @commercetools-uikit/input-utils@16.6.0
+  - @commercetools-uikit/money-input@16.6.0
+  - @commercetools-uikit/spacings-stack@16.6.0
+  - @commercetools-uikit/hooks@16.6.0
+  - @commercetools-uikit/localized-utils@16.6.0
+  - @commercetools-uikit/utils@16.6.0
+
 ## 16.5.0
 
 ### Patch Changes

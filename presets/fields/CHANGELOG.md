@@ -1,5 +1,32 @@
 # @commercetools-uikit/fields
 
+## 16.6.0
+
+### Patch Changes
+
+- [#2559](https://github.com/commercetools/ui-kit/pull/2559) [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad) Thanks [@dependabot](https://github.com/apps/dependabot)! - Updated [semver](https://github.com/npm/node-semver) dependency.
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
+- Updated dependencies [[`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad), [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae)]:
+  - @commercetools-uikit/async-creatable-select-field@16.6.0
+  - @commercetools-uikit/async-select-field@16.6.0
+  - @commercetools-uikit/creatable-select-field@16.6.0
+  - @commercetools-uikit/date-field@16.6.0
+  - @commercetools-uikit/date-range-field@16.6.0
+  - @commercetools-uikit/date-time-field@16.6.0
+  - @commercetools-uikit/localized-multiline-text-field@16.6.0
+  - @commercetools-uikit/localized-text-field@16.6.0
+  - @commercetools-uikit/money-field@16.6.0
+  - @commercetools-uikit/multiline-text-field@16.6.0
+  - @commercetools-uikit/number-field@16.6.0
+  - @commercetools-uikit/password-field@16.6.0
+  - @commercetools-uikit/radio-field@16.6.0
+  - @commercetools-uikit/search-select-field@16.6.0
+  - @commercetools-uikit/select-field@16.6.0
+  - @commercetools-uikit/text-field@16.6.0
+  - @commercetools-uikit/time-field@16.6.0
+
 ## 16.5.0
 
 ### Patch Changes

@@ -120,14 +120,9 @@ describe('per page selector interaction', () => {
 
     const perPageSelector = await screen.findByLabelText(/Items per page/);
 
-    fireEvent.focus(perPageSelector);
-    fireEvent.change(perPageSelector, { target: { value: 50 } });
-    fireEvent.keyDown(perPageSelector, {
-      key: 'Enter',
-      keyCode: 13,
-      which: 13,
-    });
-
+    perPageSelector.focus();
+    fireEvent.keyDown(perPageSelector, { key: 'ArrowDown' });
+    screen.getByText('50').click();
     expect(onPerPageChange).toHaveBeenCalledWith(50);
   });
 });

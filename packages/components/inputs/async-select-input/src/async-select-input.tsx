@@ -383,6 +383,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
               controlShouldRenderValue: props.controlShouldRenderValue,
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectAsyncProps['styles']
           }
           filterOption={props.filterOption}
