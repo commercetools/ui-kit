@@ -142,6 +142,7 @@ const CheckboxIconWrapper = styled.div<TCheckboxIconWrapperProps>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   border-radius: ${designTokens.borderRadius6};
