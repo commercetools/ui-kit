@@ -1,5 +1,23 @@
 # @commercetools-uikit/pagination
 
+## 16.6.1
+
+### Patch Changes
+
+- [#2577](https://github.com/commercetools/ui-kit/pull/2577) [`f5e593cd8`](https://github.com/commercetools/ui-kit/commit/f5e593cd8ae8e864481faa99832e301d44a08a66) Thanks [@ChristianMoll](https://github.com/ChristianMoll)! - Change `<Pagination>` component to disallow searching inside its page size selector.
+
+- Updated dependencies [[`27c002aad`](https://github.com/commercetools/ui-kit/commit/27c002aadf38ffbc5d827c425f239d46dfa71b7f)]:
+  - @commercetools-uikit/icons@16.6.1
+  - @commercetools-uikit/design-system@16.6.1
+  - @commercetools-uikit/select-input@16.6.1
+  - @commercetools-uikit/secondary-icon-button@16.6.1
+  - @commercetools-uikit/constraints@16.6.1
+  - @commercetools-uikit/number-input@16.6.1
+  - @commercetools-uikit/label@16.6.1
+  - @commercetools-uikit/text@16.6.1
+  - @commercetools-uikit/spacings@16.6.1
+  - @commercetools-uikit/utils@16.6.1
+
 ## 16.6.0
 
 ### Patch Changes
