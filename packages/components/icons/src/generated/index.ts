@@ -44,7 +44,6 @@ export { default as ColumnsIcon } from './ColumnsReact';
 export { default as ConnectedSquareIcon } from './ConnectedSquareReact';
 export { default as ConnectedTriangleIcon } from './ConnectedTriangleReact';
 export { default as CopyIcon } from './CopyReact';
-export { default as CtSmallLogoIcon } from './CtSmallLogoReact';
 export { default as CubeIcon } from './CubeReact';
 export { default as CubesIcon } from './CubesReact';
 export { default as DomainIcon } from './DomainReact';
