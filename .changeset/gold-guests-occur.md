@@ -3,4 +3,4 @@
 '@commercetools-uikit/design-system': patch
 ---
 
-Adding new color (primary-30) and icons for main navigation
+Adding new color (primary-30) and icons for representing expand/collapse actions.
