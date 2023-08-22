@@ -1,5 +1,18 @@
 # @commercetools-uikit/checkbox-input
 
+## 16.6.1
+
+### Patch Changes
+
+- [#2580](https://github.com/commercetools/ui-kit/pull/2580) [`842e12257`](https://github.com/commercetools/ui-kit/commit/842e122571db1c28a5c1f14a1fa0ecf16a80cf56) Thanks [@martinw-ct](https://github.com/martinw-ct)! - Prevent CheckboxInput icon shrinking when label text wraps
+
+- Updated dependencies [[`27c002aad`](https://github.com/commercetools/ui-kit/commit/27c002aadf38ffbc5d827c425f239d46dfa71b7f)]:
+  - @commercetools-uikit/icons@16.6.1
+  - @commercetools-uikit/design-system@16.6.1
+  - @commercetools-uikit/input-utils@16.6.1
+  - @commercetools-uikit/select-utils@16.6.1
+  - @commercetools-uikit/utils@16.6.1
+
 ## 16.6.0
 
 ### Patch Changes

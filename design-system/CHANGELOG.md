@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 16.6.1
+
+### Patch Changes
+
+- [#2581](https://github.com/commercetools/ui-kit/pull/2581) [`27c002aad`](https://github.com/commercetools/ui-kit/commit/27c002aadf38ffbc5d827c425f239d46dfa71b7f) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding new color (primary-30) and icons for representing expand/collapse actions.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.6.1
+
 ## 16.6.0
 
 ### Patch Changes
