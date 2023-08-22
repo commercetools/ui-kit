@@ -38,7 +38,7 @@ choiceGroupsByTheme:
       choices:
         color-primary: '#00b39e'
         color-primary-25: 'hsl(172.9608938547486, 100%, 25%)'
-        color-primary-30: '#009987'
+        color-primary-30: 'hsl(172.9608938547486, 100%, 30%)'
         color-primary-40: 'hsl(172.9608938547486, 100%, 40%)'
         color-primary-85: 'hsl(172.9608938547486, 100%, 85%)'
         color-primary-95: 'hsl(172.9608938547486, 100%, 95%)'
