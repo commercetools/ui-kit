@@ -37,6 +37,7 @@ choiceGroupsByTheme:
       description: All colors in the system
       choices:
         color-primary: '#00b39e'
+        color-primary-20: 'hsl(173, 100%, 20%)'
         color-primary-25: 'hsl(172.9608938547486, 100%, 25%)'
         color-primary-30: 'hsl(172.9608938547486, 100%, 30%)'
         color-primary-40: 'hsl(172.9608938547486, 100%, 40%)'
