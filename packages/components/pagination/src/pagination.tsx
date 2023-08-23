@@ -40,7 +40,7 @@ export type TPaginationProps = {
    */
   onPerPageChange: (newPerPage: number) => void;
   /**
-   * Searchable input
+   * Whether to enable search functionality
    */
   isSearchable?: boolean;
 };

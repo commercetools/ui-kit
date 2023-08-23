@@ -37,7 +37,7 @@ export type TPageSizeSelectorProps = {
   pageItems: number;
 
   /**
-   * Searchable input
+   * Whether to enable search functionality
    */
   isSearchable?: boolean;
 };
