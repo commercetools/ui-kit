@@ -102,6 +102,8 @@ export { default as RocketIcon } from './RocketReact';
 export { default as ScreenGearIcon } from './ScreenGearReact';
 export { default as ScreenUserIcon } from './ScreenUserReact';
 export { default as SearchIcon } from './SearchReact';
+export { default as SidebarCollapseIcon } from './SidebarCollapseReact';
+export { default as SidebarExpandIcon } from './SidebarExpandReact';
 export { default as SortingIcon } from './SortingReact';
 export { default as SpeechBubbleIcon } from './SpeechBubbleReact';
 export { default as SpeedometerIcon } from './SpeedometerReact';

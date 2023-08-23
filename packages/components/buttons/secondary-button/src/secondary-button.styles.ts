@@ -125,4 +125,34 @@ const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
   }
 };
 
-export { getStateStyles, getThemeStyles, getSizeStyles };
+const getToneStyles = (
+  tone: TSecondaryButtonProps['tone'],
+  isDisabled: boolean
+) => {
+  switch (tone) {
+    case 'info':
+      return [
+        !isDisabled &&
+          css`
+            background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfo};
+            border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            &:hover {
+              background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndHovered};
+              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            }
+            &:focus {
+              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            }
+            &:active {
+              background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndActive};
+              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            }
+          `,
+      ];
+
+    default:
+      return css``;
+  }
+};
+
+export { getStateStyles, getThemeStyles, getSizeStyles, getToneStyles };

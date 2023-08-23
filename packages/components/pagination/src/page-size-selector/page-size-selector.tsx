@@ -82,6 +82,7 @@ const PageSizeSelector = (props: TPageSizeSelectorProps) => {
       <Constraints.Horizontal max="auto">
         <SelectInput
           id={perPageSelectorId}
+          isSearchable={false}
           name="per-page-selector"
           value={props.perPage.toString()}
           options={options.map((option) => ({

@@ -7,6 +7,7 @@ export const themes = {
   default: {
     colorPrimary: '#00b39e',
     colorPrimary25: 'hsl(172.9608938547486, 100%, 25%)',
+    colorPrimary30: 'hsl(172.9608938547486, 100%, 30%)',
     colorPrimary40: 'hsl(172.9608938547486, 100%, 40%)',
     colorPrimary85: 'hsl(172.9608938547486, 100%, 85%)',
     colorPrimary95: 'hsl(172.9608938547486, 100%, 95%)',
@@ -31,6 +32,7 @@ export const themes = {
     colorInfo: '#078cdf',
     colorInfo40: 'hsl(203.05555555555554, 93.9130434783%, 40%)',
     colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
+    colorInfo90: '#CEEBFD',
     colorInfo95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
     colorWarning: '#f16d0e',
     colorWarning25: 'hsl(25.110132158590307, 89.0196078431%, 25%)',
@@ -213,6 +215,11 @@ export const themes = {
       'hsl(195, 35.2941176471%, 90%)',
     backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
       'hsl(195, 35.2941176471%, 60%)',
+    backgroundColorForButtonAsSecondaryWhenInfo:
+      'hsl(203.05555555555554, 93.9130434783%, 95%)',
+    backgroundColorForButtonAsSecondaryWhenInfoAndHovered: '#CEEBFD',
+    backgroundColorForButtonAsSecondaryWhenInfoAndActive:
+      'hsl(203.05555555555554, 93.9130434783%, 85%)',
     borderForButtonAsSecondary: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenHovered: '1px solid var(--color-neutral)',
     borderForButtonAsSecondaryWhenActive: '1px solid var(--color-neutral)',
@@ -274,6 +281,8 @@ export const themes = {
     borderColorForRadioInputWhenChecked: '#00b39e',
     borderColorForRadioInputWhenFocused: 'hsl(0, 0%, 60%)',
     borderColorForPrimaryActionDropdownMenu: '#fff',
+    borderColorForButtonAsSecondaryWhenInfo:
+      'hsl(203.05555555555554, 93.9130434783%, 85%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsMedium: '4px',
     borderRadiusForButtonAsIconAsBig: '4px',
@@ -522,6 +531,7 @@ export const themes = {
 const designTokens = {
   colorPrimary: 'var(--color-primary, #00b39e)',
   colorPrimary25: 'var(--color-primary-25, hsl(172.9608938547486, 100%, 25%))',
+  colorPrimary30: 'var(--color-primary-30, hsl(172.9608938547486, 100%, 30%))',
   colorPrimary40: 'var(--color-primary-40, hsl(172.9608938547486, 100%, 40%))',
   colorPrimary85: 'var(--color-primary-85, hsl(172.9608938547486, 100%, 85%))',
   colorPrimary95: 'var(--color-primary-95, hsl(172.9608938547486, 100%, 95%))',
@@ -548,6 +558,7 @@ const designTokens = {
     'var(--color-info-40, hsl(203.05555555555554, 93.9130434783%, 40%))',
   colorInfo85:
     'var(--color-info-85, hsl(203.05555555555554, 93.9130434783%, 85%))',
+  colorInfo90: 'var(--color-info-90, #CEEBFD)',
   colorInfo95:
     'var(--color-info-95, hsl(203.05555555555554, 93.9130434783%, 95%))',
   colorWarning: 'var(--color-warning, #f16d0e)',
@@ -789,6 +800,12 @@ const designTokens = {
     'var(--background-color-for-toggle-input-track-when-checked-and-disabled, hsl(195, 35.2941176471%, 90%))',
   backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
     'var(--background-color-for-toggle-input-thumb-when-checked-and-disabled, hsl(195, 35.2941176471%, 60%))',
+  backgroundColorForButtonAsSecondaryWhenInfo:
+    'var(--background-color-for-button-as-secondary-when-info, hsl(203.05555555555554, 93.9130434783%, 95%))',
+  backgroundColorForButtonAsSecondaryWhenInfoAndHovered:
+    'var(--background-color-for-button-as-secondary-when-info-and-hovered, #CEEBFD)',
+  backgroundColorForButtonAsSecondaryWhenInfoAndActive:
+    'var(--background-color-for-button-as-secondary-when-info-and-active, hsl(203.05555555555554, 93.9130434783%, 85%))',
   borderForButtonAsSecondary:
     'var(--border-for-button-as-secondary, 1px solid var(--color-neutral))',
   borderForButtonAsSecondaryWhenHovered:
@@ -893,6 +910,8 @@ const designTokens = {
     'var(--border-color-for-radio-input-when-focused, hsl(0, 0%, 60%))',
   borderColorForPrimaryActionDropdownMenu:
     'var(--border-color-for-primary-action-dropdown-menu, #fff)',
+  borderColorForButtonAsSecondaryWhenInfo:
+    'var(--border-color-for-button-as-secondary-when-info, hsl(203.05555555555554, 93.9130434783%, 85%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 4px)',
   borderRadiusForButtonAsMedium:
     'var(--border-radius-for-button-as-medium, 4px)',
