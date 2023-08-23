@@ -6,7 +6,7 @@
 export const themes = {
   default: {
     colorPrimary: '#00b39e',
-    colorPrimary20: 'hsl(173, 100%, 20%)',
+    colorPrimary20: 'hsl(172.9608938547486, 100%, 20%)',
     colorPrimary25: 'hsl(172.9608938547486, 100%, 25%)',
     colorPrimary30: 'hsl(172.9608938547486, 100%, 30%)',
     colorPrimary40: 'hsl(172.9608938547486, 100%, 40%)',
@@ -531,7 +531,7 @@ export const themes = {
 
 const designTokens = {
   colorPrimary: 'var(--color-primary, #00b39e)',
-  colorPrimary20: 'var(--color-primary-20, hsl(173, 100%, 20%))',
+  colorPrimary20: 'var(--color-primary-20, hsl(172.9608938547486, 100%, 20%))',
   colorPrimary25: 'var(--color-primary-25, hsl(172.9608938547486, 100%, 25%))',
   colorPrimary30: 'var(--color-primary-30, hsl(172.9608938547486, 100%, 30%))',
   colorPrimary40: 'var(--color-primary-40, hsl(172.9608938547486, 100%, 40%))',
