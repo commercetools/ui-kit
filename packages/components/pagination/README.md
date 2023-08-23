@@ -57,6 +57,7 @@ export default Example;
 | `perPage`         | `number`                                                    |          | `20`    | Number of items per page, according to the pre-defined range values.                                      |
 | `perPageRange`    | `TPageRangeSize`                                            |          | `'s'`   | Range of items per page.&#xA;<br/>&#xA;`s: 20,50`&#xA;<br/>&#xA;`m: 20,50,100`&#xA;<br/>&#xA;`l: 200,500` |
 | `onPerPageChange` | `Function`<br/>[See signature.](#signature-onPerPageChange) |    ✅    |         | A callback function, called when `perPage` is changed.                                                    |
+| `isSearchable`    | `boolean`                                                   |          |         | Searchable input                                                                                          |
 
 ## Signatures
 

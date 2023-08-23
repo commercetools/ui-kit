@@ -39,7 +39,7 @@ export type TPageSizeSelectorProps = {
   /**
    * Searchable input
    */
-  isSearchable: boolean;
+  isSearchable?: boolean;
 };
 
 const mapRangeToListOfOptions = (perPageRange: TPageRangeSize) => {

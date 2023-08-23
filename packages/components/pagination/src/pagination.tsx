@@ -42,7 +42,7 @@ export type TPaginationProps = {
   /**
    * Searchable input
    */
-  isSearchable: boolean;
+  isSearchable?: boolean;
 };
 
 const Pagination = (props: TPaginationProps) => {
