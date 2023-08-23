@@ -1,5 +1,10 @@
 import { storiesOf } from '@storybook/react';
-import { select, withKnobs, number } from '@storybook/addon-knobs/react';
+import {
+  select,
+  withKnobs,
+  number,
+  boolean,
+} from '@storybook/addon-knobs/react';
 import { Value } from 'react-value';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Pagination from './pagination';
@@ -18,7 +23,7 @@ storiesOf('Components|Pagination', module)
     <Section>
       <Value
         defaultValue={20}
-        render={(perPage, onPerPageChange) => (
+        render={(perPage, onPerPageChange, isSearchable) => (
           <Value
             defaultValue={number('page', 1)}
             render={(page, onPageChange) => (
@@ -28,6 +33,7 @@ storiesOf('Components|Pagination', module)
                 onPageChange={onPageChange}
                 perPage={perPage}
                 onPerPageChange={onPerPageChange}
+                isSearchable={boolean('isSearchable', false)}
               />
             )}
           />

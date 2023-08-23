@@ -35,6 +35,11 @@ export type TPageSizeSelectorProps = {
    * Number of items in the current page
    */
   pageItems: number;
+
+  /**
+   * Searchable input
+   */
+  isSearchable: boolean;
 };
 
 const mapRangeToListOfOptions = (perPageRange: TPageRangeSize) => {
@@ -84,6 +89,7 @@ const PageSizeSelector = (props: TPageSizeSelectorProps) => {
             label: option.toString(),
           }))}
           onChange={handleSelectPerPage}
+          isSearchable={props.isSearchable}
         />
       </Constraints.Horizontal>
       <Label

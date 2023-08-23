@@ -39,6 +39,10 @@ export type TPaginationProps = {
    * A callback function, called when `perPage` is changed.
    */
   onPerPageChange: (newPerPage: number) => void;
+  /**
+   * Searchable input
+   */
+  isSearchable: boolean;
 };
 
 const Pagination = (props: TPaginationProps) => {
@@ -61,6 +65,7 @@ const Pagination = (props: TPaginationProps) => {
           perPage={props.perPage}
           perPageRange={props.perPageRange}
           onPerPageChange={props.onPerPageChange}
+          isSearchable={props.isSearchable}
         />
       </div>
       <PageNavigator
