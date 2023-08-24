@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 16.7.0
+
+### Patch Changes
+
+- [#2584](https://github.com/commercetools/ui-kit/pull/2584) [`be20cc204`](https://github.com/commercetools/ui-kit/commit/be20cc2045128dcabd96e86b7979c22540d260c9) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding new color `primary-20`
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.7.0
+
 ## 16.6.1
 
 ### Patch Changes
