@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 
-const locales = ['en', 'en-GB', 'de', 'es', 'fr-FR', 'zh-CN'];
+const supportedLocales = ['en', 'en-GB', 'de', 'es', 'fr-FR', 'pt-BR', 'zh-CN'];
 
 const getMessagesForLocale = (locale) => {
   switch (locale) {
@@ -15,6 +15,8 @@ const getMessagesForLocale = (locale) => {
       return require('../../../packages/i18n/data/de.json');
     case 'fr-FR':
       return require('../../../packages/i18n/data/fr-FR.json');
+    case 'pt-BR':
+      return require('../../../packages/i18n/data/pt-BR.json');
     case 'zh-CN':
       return require('../../../packages/i18n/data/zh-CN.json');
     default:
@@ -34,6 +36,8 @@ const namifyLocale = (locale) => {
       return 'Deutsch';
     case 'fr-FR':
       return 'Français';
+    case 'pt-BR':
+      return 'Português brasileiro';
     case 'zh-CN':
       return '简化字';
     default:
