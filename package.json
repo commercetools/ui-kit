@@ -90,8 +90,8 @@
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "8.0.1",
     "@types/is-hotkey": "^0.1.7",
-    "@typescript-eslint/eslint-plugin": "5.62.0",
-    "@typescript-eslint/parser": "5.62.0",
+    "@typescript-eslint/eslint-plugin": "6.4.1",
+    "@typescript-eslint/parser": "6.4.1",
     "babel-jest": "29.6.1",
     "babel-loader": "8.3.0",
     "babel-plugin-typescript-to-proptypes": "1.4.2",
@@ -158,8 +158,8 @@
     "@types/react-dom": "17.0.20",
     "@types/react-router": "5.1.20",
     "@types/unist": "3.0.0",
-    "@typescript-eslint/eslint-plugin": "5.62.0",
-    "@typescript-eslint/parser": "5.62.0",
+    "@typescript-eslint/eslint-plugin": "6.4.1",
+    "@typescript-eslint/parser": "6.4.1",
     "core-js-compat": "^3.23.4"
   },
   "engines": {
