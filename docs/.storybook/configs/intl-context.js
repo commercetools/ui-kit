@@ -59,7 +59,7 @@ IntlWrapper.propTypes = {
   locale: PropTypes.string.isRequired,
 };
 
-const intlParams = locales.map((locale) => ({
+const intlParams = supportedLocales.map((locale) => ({
   name: namifyLocale(locale),
   props: { locale },
 }));
