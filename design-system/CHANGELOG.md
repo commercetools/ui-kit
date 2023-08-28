@@ -1,5 +1,39 @@
 # @commercetools-uikit/design-system
 
+## 16.7.0
+
+### Patch Changes
+
+- [#2584](https://github.com/commercetools/ui-kit/pull/2584) [`be20cc204`](https://github.com/commercetools/ui-kit/commit/be20cc2045128dcabd96e86b7979c22540d260c9) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding new color `primary-20`
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.7.0
+
+## 16.6.1
+
+### Patch Changes
+
+- [#2581](https://github.com/commercetools/ui-kit/pull/2581) [`27c002aad`](https://github.com/commercetools/ui-kit/commit/27c002aadf38ffbc5d827c425f239d46dfa71b7f) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding new color (primary-30) and icons for representing expand/collapse actions.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.6.1
+
+## 16.6.0
+
+### Patch Changes
+
+- [#2576](https://github.com/commercetools/ui-kit/pull/2576) [`0697dc48c`](https://github.com/commercetools/ui-kit/commit/0697dc48c6dfa858bcc7f2fabd841711a20795fa) Thanks [@Rhotimee](https://github.com/Rhotimee)! - A new property called **tone** has been added to the component so consumers can use it with different color schemes (**secondary** and **info** by now).
+  Also, the **theme** property has been deprecated and it will be removed in the future, so please don't use it anymore (use the new one instead if needed).
+
+- [#2559](https://github.com/commercetools/ui-kit/pull/2559) [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad) Thanks [@dependabot](https://github.com/apps/dependabot)! - Updated [semver](https://github.com/npm/node-semver) dependency.
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
+- [#2571](https://github.com/commercetools/ui-kit/pull/2571) [`ea757c503`](https://github.com/commercetools/ui-kit/commit/ea757c503af763a845d9ae8c4370c94bd77dd9ab) Thanks [@renovate](https://github.com/apps/renovate)! - Update [nodemon](https://github.com/remy/nodemon/) dependency.
+
+- Updated dependencies [[`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad), [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae)]:
+  - @commercetools-uikit/hooks@16.6.0
+
 ## 16.5.0
 
 ### Patch Changes

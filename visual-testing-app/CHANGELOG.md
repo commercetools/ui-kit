@@ -1,5 +1,32 @@
 # visual-testing-app
 
+## 12.1.2
+
+### Patch Changes
+
+- Updated dependencies [[`be20cc204`](https://github.com/commercetools/ui-kit/commit/be20cc2045128dcabd96e86b7979c22540d260c9)]:
+  - @commercetools-uikit/design-system@16.7.0
+
+## 12.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`27c002aad`](https://github.com/commercetools/ui-kit/commit/27c002aadf38ffbc5d827c425f239d46dfa71b7f)]:
+  - @commercetools-uikit/design-system@16.6.1
+
+## 12.1.0
+
+### Minor Changes
+
+- [#2526](https://github.com/commercetools/ui-kit/pull/2526) [`86a5f09f2`](https://github.com/commercetools/ui-kit/commit/86a5f09f26e0f2dcac8f61d9333a6043a6ecc39a) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies.
+
+### Patch Changes
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
+- Updated dependencies [[`0697dc48c`](https://github.com/commercetools/ui-kit/commit/0697dc48c6dfa858bcc7f2fabd841711a20795fa), [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad), [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae), [`ea757c503`](https://github.com/commercetools/ui-kit/commit/ea757c503af763a845d9ae8c4370c94bd77dd9ab)]:
+  - @commercetools-uikit/design-system@16.6.0
+
 ## 12.0.8
 
 ### Patch Changes

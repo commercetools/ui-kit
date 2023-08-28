@@ -17,6 +17,7 @@ import {
   getStateStyles,
   getThemeStyles,
   getSizeStyles,
+  getToneStyles,
 } from './secondary-button.styles';
 
 export type TSecondaryButtonProps<
@@ -65,8 +66,13 @@ export type TSecondaryButtonProps<
   size?: 'medium' | 'big';
   /**
    * Indicates the color scheme of the button.
+   * @deprecated Use `tone` instead.
    */
   theme?: 'default' | 'info';
+  /**
+   * Indicates the tone of the button.
+   */
+  tone?: 'secondary' | 'info';
 } & /**
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
@@ -93,10 +99,11 @@ export const getIconColor = (
 
 const defaultProps: Pick<
   TSecondaryButtonProps,
-  'type' | 'theme' | 'size' | 'isToggleButton'
+  'type' | 'theme' | 'size' | 'isToggleButton' | 'tone'
 > = {
   type: 'button',
   theme: 'default',
+  tone: 'secondary',
   size: 'big',
   isToggleButton: false,
 };
@@ -139,6 +146,7 @@ export const SecondaryButton = <
     getThemeStyles(props.theme),
     getStateStyles(props.isDisabled, isActive, props.theme),
     getSizeStyles(props.size),
+    getToneStyles(props.tone, props.isDisabled),
   ];
 
   return (

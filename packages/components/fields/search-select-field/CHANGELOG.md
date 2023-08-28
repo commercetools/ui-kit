@@ -1,5 +1,51 @@
 # @commercetools-uikit/search-select-field
 
+## 16.7.0
+
+### Patch Changes
+
+- Updated dependencies [[`be20cc204`](https://github.com/commercetools/ui-kit/commit/be20cc2045128dcabd96e86b7979c22540d260c9)]:
+  - @commercetools-uikit/design-system@16.7.0
+  - @commercetools-uikit/constraints@16.7.0
+  - @commercetools-uikit/field-label@16.7.0
+  - @commercetools-uikit/search-select-input@16.7.0
+  - @commercetools-uikit/spacings@16.7.0
+  - @commercetools-uikit/field-errors@16.7.0
+  - @commercetools-uikit/hooks@16.7.0
+  - @commercetools-uikit/utils@16.7.0
+
+## 16.6.1
+
+### Patch Changes
+
+- Updated dependencies [[`27c002aad`](https://github.com/commercetools/ui-kit/commit/27c002aadf38ffbc5d827c425f239d46dfa71b7f)]:
+  - @commercetools-uikit/design-system@16.6.1
+  - @commercetools-uikit/field-label@16.6.1
+  - @commercetools-uikit/constraints@16.6.1
+  - @commercetools-uikit/search-select-input@16.6.1
+  - @commercetools-uikit/spacings@16.6.1
+  - @commercetools-uikit/field-errors@16.6.1
+  - @commercetools-uikit/hooks@16.6.1
+  - @commercetools-uikit/utils@16.6.1
+
+## 16.6.0
+
+### Patch Changes
+
+- [#2559](https://github.com/commercetools/ui-kit/pull/2559) [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad) Thanks [@dependabot](https://github.com/apps/dependabot)! - Updated [semver](https://github.com/npm/node-semver) dependency.
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
+- Updated dependencies [[`0697dc48c`](https://github.com/commercetools/ui-kit/commit/0697dc48c6dfa858bcc7f2fabd841711a20795fa), [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad), [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae), [`ea757c503`](https://github.com/commercetools/ui-kit/commit/ea757c503af763a845d9ae8c4370c94bd77dd9ab)]:
+  - @commercetools-uikit/design-system@16.6.0
+  - @commercetools-uikit/constraints@16.6.0
+  - @commercetools-uikit/field-errors@16.6.0
+  - @commercetools-uikit/field-label@16.6.0
+  - @commercetools-uikit/search-select-input@16.6.0
+  - @commercetools-uikit/hooks@16.6.0
+  - @commercetools-uikit/utils@16.6.0
+  - @commercetools-uikit/spacings@16.6.0
+
 ## 16.5.0
 
 ### Patch Changes

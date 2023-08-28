@@ -1,5 +1,21 @@
 # @commercetools-uikit/i18n
 
+## 16.7.0
+
+### Minor Changes
+
+- [#2583](https://github.com/commercetools/ui-kit/pull/2583) [`a095b5d1b`](https://github.com/commercetools/ui-kit/commit/a095b5d1b4742c5b16aeba2003a7bb402fc75e68) Thanks [@emmenko](https://github.com/emmenko)! - Support new application locale `pt-BR`
+
+## 16.6.1
+
+## 16.6.0
+
+### Patch Changes
+
+- [#2559](https://github.com/commercetools/ui-kit/pull/2559) [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad) Thanks [@dependabot](https://github.com/apps/dependabot)! - Updated [semver](https://github.com/npm/node-semver) dependency.
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
 ## 16.5.0
 
 ## 16.4.1

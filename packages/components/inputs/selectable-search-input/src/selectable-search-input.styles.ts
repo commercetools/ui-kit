@@ -9,6 +9,23 @@ type TInputProps = {
   hasError?: boolean;
   hasWarning?: boolean;
   isReadOnly?: boolean;
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
 };
 
 const getInputContainerBorderColor = (
@@ -155,7 +172,7 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     margin-left: 0;
-    width: 100%;
+    width: ${props.horizontalConstraint === 'auto' ? 'auto' : '100%'};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard};
 
@@ -201,6 +218,23 @@ type TCreateSelectableSelectStyles = {
   isReadOnly?: boolean;
   menuPortalZIndex?: number;
   dropdownHasFocus?: boolean;
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
 };
 
 const createSelectableSelectStyles = ({
@@ -210,6 +244,7 @@ const createSelectableSelectStyles = ({
   isReadOnly,
   menuPortalZIndex,
   dropdownHasFocus,
+  horizontalConstraint,
 }: TCreateSelectableSelectStyles) => {
   const selectStyles = createSelectStyles({
     hasWarning,
@@ -217,6 +252,7 @@ const createSelectableSelectStyles = ({
     menuPortalZIndex,
     isDisabled,
     isReadOnly,
+    horizontalConstraint,
   });
 
   return {

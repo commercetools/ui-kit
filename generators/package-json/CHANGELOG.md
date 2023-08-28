@@ -1,5 +1,15 @@
 # @commercetools-local/generator-package-json
 
+## 3.2.0
+
+### Minor Changes
+
+- [#2526](https://github.com/commercetools/ui-kit/pull/2526) [`86a5f09f2`](https://github.com/commercetools/ui-kit/commit/86a5f09f26e0f2dcac8f61d9333a6043a6ecc39a) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies.
+
+### Patch Changes
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
 ## 3.1.0
 
 ### Minor Changes

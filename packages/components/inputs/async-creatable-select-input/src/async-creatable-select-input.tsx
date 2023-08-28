@@ -416,6 +416,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectAsyncCreatableProps['styles']
           }
           filterOption={props.filterOption}
