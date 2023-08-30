@@ -1,5 +1,15 @@
 # @commercetools-uikit/tooltip
 
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.1
+  - @commercetools-uikit/constraints@16.7.1
+  - @commercetools-uikit/hooks@16.7.1
+  - @commercetools-uikit/utils@16.7.1
+
 ## 16.7.0
 
 ### Patch Changes

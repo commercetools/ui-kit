@@ -1,5 +1,22 @@
 # @commercetools-uikit/localized-multiline-text-input
 
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.1
+  - @commercetools-uikit/flat-button@16.7.1
+  - @commercetools-uikit/constraints@16.7.1
+  - @commercetools-uikit/icons@16.7.1
+  - @commercetools-uikit/input-utils@16.7.1
+  - @commercetools-uikit/messages@16.7.1
+  - @commercetools-uikit/spacings-stack@16.7.1
+  - @commercetools-uikit/text@16.7.1
+  - @commercetools-uikit/hooks@16.7.1
+  - @commercetools-uikit/localized-utils@16.7.1
+  - @commercetools-uikit/utils@16.7.1
+
 ## 16.7.0
 
 ### Patch Changes
