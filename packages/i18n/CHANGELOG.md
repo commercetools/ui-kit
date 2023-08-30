@@ -1,5 +1,11 @@
 # @commercetools-uikit/i18n
 
+## 16.7.1
+
+### Patch Changes
+
+- [#2589](https://github.com/commercetools/ui-kit/pull/2589) [`cc651012d`](https://github.com/commercetools/ui-kit/commit/cc651012d5f4b3524e62c310e85343ee40433a6e) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Add translations for `pt-BR`
+
 ## 16.7.0
 
 ### Minor Changes

@@ -1,5 +1,15 @@
 # @commercetools-uikit/input-utils
 
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.1
+  - @commercetools-uikit/flat-button@16.7.1
+  - @commercetools-uikit/icons@16.7.1
+  - @commercetools-uikit/utils@16.7.1
+
 ## 16.7.0
 
 ### Patch Changes

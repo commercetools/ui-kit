@@ -1,5 +1,15 @@
 # @commercetools-uikit/link
 
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.1
+  - @commercetools-uikit/icons@16.7.1
+  - @commercetools-uikit/spacings-inline@16.7.1
+  - @commercetools-uikit/utils@16.7.1
+
 ## 16.7.0
 
 ### Patch Changes
