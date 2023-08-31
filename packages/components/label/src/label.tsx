@@ -81,6 +81,7 @@ const Label = (props: TLabelProps) => {
       css={css`
         > div {
           font-weight: ${!props.isBold && designTokens.fontWeight500};
+          display: flex;
         }
       `}
       id={props.id}
