@@ -1,5 +1,15 @@
 # @commercetools-uikit/notifications
 
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.2
+  - @commercetools-uikit/accessible-button@16.7.2
+  - @commercetools-uikit/icons@16.7.2
+  - @commercetools-uikit/utils@16.7.2
+
 ## 16.7.1
 
 ### Patch Changes
