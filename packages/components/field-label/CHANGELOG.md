@@ -1,5 +1,22 @@
 # @commercetools-uikit/field-label
 
+## 16.7.2
+
+### Patch Changes
+
+- [#2591](https://github.com/commercetools/ui-kit/pull/2591) [`60c80f16d`](https://github.com/commercetools/ui-kit/commit/60c80f16ddffe15d05d14e0c1238d3136db609b7) Thanks [@chloe0592](https://github.com/chloe0592)! - Fix misplaced required indicator and `ReactNode` title in the `FieldLabel`
+
+- Updated dependencies [[`60c80f16d`](https://github.com/commercetools/ui-kit/commit/60c80f16ddffe15d05d14e0c1238d3136db609b7)]:
+  - @commercetools-uikit/label@16.7.2
+  - @commercetools-uikit/design-system@16.7.2
+  - @commercetools-uikit/icon-button@16.7.2
+  - @commercetools-uikit/constraints@16.7.2
+  - @commercetools-uikit/icons@16.7.2
+  - @commercetools-uikit/spacings-inline@16.7.2
+  - @commercetools-uikit/spacings-stack@16.7.2
+  - @commercetools-uikit/text@16.7.2
+  - @commercetools-uikit/utils@16.7.2
+
 ## 16.7.1
 
 ### Patch Changes

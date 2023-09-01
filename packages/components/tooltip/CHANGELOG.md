@@ -1,5 +1,17 @@
 # @commercetools-uikit/tooltip
 
+## 16.7.2
+
+### Patch Changes
+
+- [#2593](https://github.com/commercetools/ui-kit/pull/2593) [`dccbb2c0d`](https://github.com/commercetools/ui-kit/commit/dccbb2c0da8facfba7ba5cd73d9c4f7397bb9635) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix an edge case when managing end transition side effects.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.2
+  - @commercetools-uikit/constraints@16.7.2
+  - @commercetools-uikit/hooks@16.7.2
+  - @commercetools-uikit/utils@16.7.2
+
 ## 16.7.1
 
 ### Patch Changes

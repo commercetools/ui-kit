@@ -1,5 +1,45 @@
 # @commercetools-frontend/ui-kit
 
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies [[`dccbb2c0d`](https://github.com/commercetools/ui-kit/commit/dccbb2c0da8facfba7ba5cd73d9c4f7397bb9635), [`60c80f16d`](https://github.com/commercetools/ui-kit/commit/60c80f16ddffe15d05d14e0c1238d3136db609b7)]:
+  - @commercetools-uikit/tooltip@16.7.2
+  - @commercetools-uikit/field-label@16.7.2
+  - @commercetools-uikit/label@16.7.2
+  - @commercetools-uikit/data-table-manager@16.7.2
+  - @commercetools-uikit/pagination@16.7.2
+  - @commercetools-uikit/inputs@16.7.2
+  - @commercetools-uikit/fields@16.7.2
+  - @commercetools-uikit/design-system@16.7.2
+  - @commercetools-uikit/accessible-hidden@16.7.2
+  - @commercetools-uikit/avatar@16.7.2
+  - @commercetools-uikit/card@16.7.2
+  - @commercetools-uikit/collapsible@16.7.2
+  - @commercetools-uikit/collapsible-motion@16.7.2
+  - @commercetools-uikit/collapsible-panel@16.7.2
+  - @commercetools-uikit/constraints@16.7.2
+  - @commercetools-uikit/data-table@16.7.2
+  - @commercetools-uikit/field-errors@16.7.2
+  - @commercetools-uikit/grid@16.7.2
+  - @commercetools-uikit/icons@16.7.2
+  - @commercetools-uikit/selectable-search-input@16.7.2
+  - @commercetools-uikit/link@16.7.2
+  - @commercetools-uikit/loading-spinner@16.7.2
+  - @commercetools-uikit/messages@16.7.2
+  - @commercetools-uikit/notifications@16.7.2
+  - @commercetools-uikit/primary-action-dropdown@16.7.2
+  - @commercetools-uikit/stamp@16.7.2
+  - @commercetools-uikit/tag@16.7.2
+  - @commercetools-uikit/text@16.7.2
+  - @commercetools-uikit/view-switcher@16.7.2
+  - @commercetools-uikit/hooks@16.7.2
+  - @commercetools-uikit/i18n@16.7.2
+  - @commercetools-uikit/utils@16.7.2
+  - @commercetools-uikit/buttons@16.7.2
+  - @commercetools-uikit/spacings@16.7.2
+
 ## 16.7.1
 
 ### Patch Changes

@@ -1,5 +1,30 @@
 # @commercetools-uikit/data-table-manager
 
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies [[`60c80f16d`](https://github.com/commercetools/ui-kit/commit/60c80f16ddffe15d05d14e0c1238d3136db609b7)]:
+  - @commercetools-uikit/field-label@16.7.2
+  - @commercetools-uikit/design-system@16.7.2
+  - @commercetools-uikit/accessible-hidden@16.7.2
+  - @commercetools-uikit/accessible-button@16.7.2
+  - @commercetools-uikit/primary-button@16.7.2
+  - @commercetools-uikit/secondary-button@16.7.2
+  - @commercetools-uikit/secondary-icon-button@16.7.2
+  - @commercetools-uikit/card@16.7.2
+  - @commercetools-uikit/collapsible-motion@16.7.2
+  - @commercetools-uikit/grid@16.7.2
+  - @commercetools-uikit/icons@16.7.2
+  - @commercetools-uikit/async-select-input@16.7.2
+  - @commercetools-uikit/radio-input@16.7.2
+  - @commercetools-uikit/select-input@16.7.2
+  - @commercetools-uikit/tag@16.7.2
+  - @commercetools-uikit/text@16.7.2
+  - @commercetools-uikit/hooks@16.7.2
+  - @commercetools-uikit/utils@16.7.2
+  - @commercetools-uikit/spacings@16.7.2
+
 ## 16.7.1
 
 ### Patch Changes

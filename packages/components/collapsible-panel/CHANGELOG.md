@@ -1,5 +1,20 @@
 # @commercetools-uikit/collapsible-panel
 
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.2
+  - @commercetools-uikit/accessible-button@16.7.2
+  - @commercetools-uikit/collapsible-motion@16.7.2
+  - @commercetools-uikit/constraints@16.7.2
+  - @commercetools-uikit/icons@16.7.2
+  - @commercetools-uikit/text@16.7.2
+  - @commercetools-uikit/hooks@16.7.2
+  - @commercetools-uikit/utils@16.7.2
+  - @commercetools-uikit/spacings@16.7.2
+
 ## 16.7.1
 
 ### Patch Changes
