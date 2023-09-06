@@ -1,0 +1,43 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as LoadingSpinnerStories from './src/loading-spinner.stories';
+
+<Meta of={LoadingSpinnerStories} />
+
+# LoadingSpinner
+
+## Description
+
+A spinner animation to indicate loading state (e.g pending requests) for the user.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/loading-spinner
+```
+
+```
+npm --save install @commercetools-uikit/loading-spinner
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import LoadingSpinner from '@commercetools-uikit/loading-spinner';
+
+const Example = () => <LoadingSpinner size="s">Loading</LoadingSpinner>;
+
+export default Example;
+```
+
+<Canvas of={LoadingSpinnerStories.Default} />
