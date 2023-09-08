@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 16.7.3
+
+### Patch Changes
+
+- [#2595](https://github.com/commercetools/ui-kit/pull/2595) [`9cfdcbb22`](https://github.com/commercetools/ui-kit/commit/9cfdcbb2272e16677056f0aebe812ad6caf18ff7) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding design tokens `border-radius-8` and `spacing-25`
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.7.3
+
 ## 16.7.2
 
 ### Patch Changes
