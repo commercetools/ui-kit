@@ -54,6 +54,7 @@
   --border-radius-2: 2px;
   --border-radius-4: 4px;
   --border-radius-6: 6px;
+  --border-radius-8: 8px;
   --border-radius-20: 20px;
   --border-width-1: 1px;
   --border-width-2: 2px;
@@ -130,6 +131,7 @@
   --spacing-xl: 32px;
   --spacing-10: 4px;
   --spacing-20: 8px;
+  --spacing-25: 12px;
   --spacing-30: 16px;
   --spacing-40: 24px;
   --spacing-50: 32px;
