@@ -505,6 +505,7 @@ const SelectInput = (props: TSelectInputProps) => {
           value={selectedOptions}
           iconLeft={props.iconLeft}
           controlShouldRenderValue={props.controlShouldRenderValue}
+          menuPlacement="auto"
         />
       </div>
     </Constraints.Horizontal>
