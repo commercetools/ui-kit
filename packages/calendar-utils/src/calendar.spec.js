@@ -1,5 +1,9 @@
 import moment from 'moment';
-import { getIsDateInRange, getExampleDateStrings } from './calendar';
+import {
+  getIsDateInRange,
+  getExampleDateStrings,
+  getPaddingDayCount,
+} from './calendar';
 
 describe('getIsDateInRange', () => {
   const min = '2019-01-01';
@@ -77,5 +81,11 @@ describe('getExampleDateStrings', () => {
         exampleDates.maxDate
       )
     ).toBeTruthy();
+  });
+});
+describe('getPaddingDayCount', () => {
+  it('should return a number for valid and NaN input', () => {
+    expect(getPaddingDayCount('2019-01-01')).toEqual(2);
+    expect(getPaddingDayCount(NaN)).toEqual(0);
   });
 });

@@ -33,6 +33,7 @@
     "@commercetools-uikit/utils": "16.7.3",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "lodash": "4.17.21",
     "prop-types": "15.8.1",
     "react-select": "5.7.3"
   },
