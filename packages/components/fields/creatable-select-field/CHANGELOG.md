@@ -1,5 +1,18 @@
 # @commercetools-uikit/creatable-select-field
 
+## 16.7.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.4
+  - @commercetools-uikit/constraints@16.7.4
+  - @commercetools-uikit/field-errors@16.7.4
+  - @commercetools-uikit/field-label@16.7.4
+  - @commercetools-uikit/creatable-select-input@16.7.4
+  - @commercetools-uikit/utils@16.7.4
+  - @commercetools-uikit/spacings@16.7.4
+
 ## 16.7.3
 
 ### Patch Changes

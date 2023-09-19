@@ -1,5 +1,23 @@
 # @commercetools-uikit/calendar-utils
 
+## 16.7.4
+
+### Patch Changes
+
+- [#2598](https://github.com/commercetools/ui-kit/pull/2598) [`21f2eef1e`](https://github.com/commercetools/ui-kit/commit/21f2eef1e1adb835b88616c31aa2c4dd989ffa48) Thanks [@kark](https://github.com/kark)! - Fix DateInput in Safari when providing invalid calendar date input
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.4
+  - @commercetools-uikit/accessible-button@16.7.4
+  - @commercetools-uikit/secondary-icon-button@16.7.4
+  - @commercetools-uikit/icons@16.7.4
+  - @commercetools-uikit/input-utils@16.7.4
+  - @commercetools-uikit/spacings-inline@16.7.4
+  - @commercetools-uikit/text@16.7.4
+  - @commercetools-uikit/tooltip@16.7.4
+  - @commercetools-uikit/hooks@16.7.4
+  - @commercetools-uikit/utils@16.7.4
+
 ## 16.7.3
 
 ### Patch Changes

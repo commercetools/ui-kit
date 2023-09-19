@@ -1,5 +1,18 @@
 # @commercetools-uikit/select-input
 
+## 16.7.4
+
+### Patch Changes
+
+- [#2599](https://github.com/commercetools/ui-kit/pull/2599) [`83e781749`](https://github.com/commercetools/ui-kit/commit/83e781749dbdc5d9fac402b16c1ba5c6c4c8f6ac) Thanks [@kark](https://github.com/kark)! - Set menu placement to "auto" to make it flip when there isn't enough space below the input
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.4
+  - @commercetools-uikit/constraints@16.7.4
+  - @commercetools-uikit/icons@16.7.4
+  - @commercetools-uikit/select-utils@16.7.4
+  - @commercetools-uikit/utils@16.7.4
+
 ## 16.7.3
 
 ### Patch Changes
