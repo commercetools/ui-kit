@@ -99,6 +99,7 @@ storiesOf('Components|Inputs/SelectInputs', module)
     ];
     const isMulti = boolean('isMulti', false);
     const showOptionGroupDivider = boolean('Show option group divider', false);
+    const shouldMenuFlip = boolean('Show menu flipping above the input', false);
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
 
     return (
@@ -109,6 +110,14 @@ storiesOf('Components|Inputs/SelectInputs', module)
             defaultValue={isMulti ? [] : undefined}
             render={(value, onChange) => (
               <Spacings.Stack scale="m">
+                {shouldMenuFlip && (
+                  <div
+                    style={{
+                      height: `${window.innerHeight - 200}px`,
+                      display: 'block',
+                    }}
+                  />
+                )}
                 <SelectInput
                   horizontalConstraint={select(
                     'horizontalConstraint',
