@@ -65,6 +65,7 @@
     ]
   },
   "dependencies": {
+    "@babel/core": "^7.20.13",
     "@changesets/changelog-github": "0.4.8",
     "@changesets/cli": "2.26.2",
     "@commercetools-frontend/babel-preset-mc-app": "21.25.2",
@@ -84,12 +85,14 @@
     "@stylelint/postcss-css-in-js": "^0.38.0",
     "@svgr/babel-plugin-svg-dynamic-title": "^7.0.0",
     "@svgr/cli": "7.0.0",
+    "@svgr/core": "^6.5.1",
     "@svgr/plugin-jsx": "7.0.0",
     "@svgr/plugin-svgo": "7.0.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "8.0.1",
     "@types/is-hotkey": "^0.1.7",
+    "@types/node": "16.18.38",
     "@typescript-eslint/eslint-plugin": "6.4.1",
     "@typescript-eslint/parser": "6.4.1",
     "babel-jest": "29.6.1",
@@ -148,7 +151,8 @@
     "ts-jest": "29.1.1",
     "ts-node": "10.9.1",
     "tsc-files": "1.1.4",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "webpack": "5.82.1"
   },
   "resolutions": {
     "@babel/preset-env": "^7.18.6",
