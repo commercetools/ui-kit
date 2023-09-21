@@ -278,7 +278,9 @@ const deserializeElement = (
 
   if (TEXT_TAGS[nodeName as keyof typeof TEXT_TAGS]) {
     const attrs = TEXT_TAGS[nodeName as keyof typeof TEXT_TAGS]();
-    return children.map((child) => jsx('text', attrs, child));
+    return children.map((child) =>
+      jsx('text', attrs, Text.isText(child) ? child : 'Invalid markup')
+    );
   }
 
   return children;
