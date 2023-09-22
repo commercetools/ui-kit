@@ -1,5 +1,21 @@
 # @commercetools-uikit/rich-text-utils
 
+## 16.7.5
+
+### Patch Changes
+
+- [#2606](https://github.com/commercetools/ui-kit/pull/2606) [`5cc180f84`](https://github.com/commercetools/ui-kit/commit/5cc180f84c89a2640a6b855c99e5ef21186d7bc5) Thanks [@kark](https://github.com/kark)! - Fix handling invalid markup passed to text a node
+
+- [#2603](https://github.com/commercetools/ui-kit/pull/2603) [`1f7f2e06c`](https://github.com/commercetools/ui-kit/commit/1f7f2e06c78a7e11e7d2c2a9dad22642418bb796) Thanks [@kark](https://github.com/kark)! - Add missing peer dependencies
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.5
+  - @commercetools-uikit/tooltip@16.7.5
+  - @commercetools-uikit/icons@16.7.5
+  - @commercetools-uikit/input-utils@16.7.5
+  - @commercetools-uikit/spacings-inline@16.7.5
+  - @commercetools-uikit/utils@16.7.5
+
 ## 16.7.4
 
 ### Patch Changes
