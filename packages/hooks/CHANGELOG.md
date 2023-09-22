@@ -1,5 +1,14 @@
 # @commercetools-uikit/hooks
 
+## 16.7.5
+
+### Patch Changes
+
+- [#2603](https://github.com/commercetools/ui-kit/pull/2603) [`1f7f2e06c`](https://github.com/commercetools/ui-kit/commit/1f7f2e06c78a7e11e7d2c2a9dad22642418bb796) Thanks [@kark](https://github.com/kark)! - Add missing peer dependencies
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.7.5
+
 ## 16.7.4
 
 ### Patch Changes

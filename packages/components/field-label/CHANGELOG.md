@@ -1,5 +1,20 @@
 # @commercetools-uikit/field-label
 
+## 16.7.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.5
+  - @commercetools-uikit/icon-button@16.7.5
+  - @commercetools-uikit/constraints@16.7.5
+  - @commercetools-uikit/icons@16.7.5
+  - @commercetools-uikit/label@16.7.5
+  - @commercetools-uikit/spacings-inline@16.7.5
+  - @commercetools-uikit/spacings-stack@16.7.5
+  - @commercetools-uikit/text@16.7.5
+  - @commercetools-uikit/utils@16.7.5
+
 ## 16.7.4
 
 ### Patch Changes

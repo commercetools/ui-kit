@@ -1,5 +1,19 @@
 # @commercetools-uikit/radio-input
 
+## 16.7.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.5
+  - @commercetools-uikit/constraints@16.7.5
+  - @commercetools-uikit/icons@16.7.5
+  - @commercetools-uikit/input-utils@16.7.5
+  - @commercetools-uikit/spacings-inline@16.7.5
+  - @commercetools-uikit/spacings-inset@16.7.5
+  - @commercetools-uikit/spacings-stack@16.7.5
+  - @commercetools-uikit/utils@16.7.5
+
 ## 16.7.4
 
 ### Patch Changes
