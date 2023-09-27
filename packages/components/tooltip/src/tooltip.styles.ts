@@ -63,6 +63,7 @@ export const Body = styled.div`
   opacity: 0.95;
   color: ${designTokens.colorSurface};
   background-color: ${designTokens.backgroundColorForTooltip};
+  white-space: break-spaces;
 `;
 
 // here we use object styles so we can spread these
