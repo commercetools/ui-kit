@@ -49,6 +49,6 @@
     "@types/react-dom": "17.0.20"
   },
   "engines": {
-    "node": "<17"
+    "node": ">=16 <17"
   }
 }
