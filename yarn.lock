@@ -2216,7 +2216,7 @@ __metadata:
   dependencies:
     "@manypkg/find-root": 1.1.0
     "@manypkg/get-packages": 1.1.3
-    "@types/node": 16.18.38
+    "@types/node": 18.18.0
     cac: 6.7.14
     omit-empty-es: 1.2.0
     prettier: 2.8.8
@@ -2239,7 +2239,7 @@ __metadata:
     "@types/listr": 0.14.4
     "@types/lodash": 4.14.195
     "@types/mdast": 3.0.12
-    "@types/node": 16.18.38
+    "@types/node": 18.18.0
     "@types/shelljs": 0.8.12
     "@types/unist": 3.0.0
     "@types/vfile": 4.0.0
@@ -7017,10 +7017,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.18.38":
-  version: 16.18.38
-  resolution: "@types/node@npm:16.18.38"
-  checksum: a3baa141e49ce94486f083eea1240cf38479a73ba663e1bf3f52f85b466125821b6e3ea85ded38fde3901530aca4601291395a50eefcea533a4f3b45171bda28
+"@types/node@npm:18.18.0":
+  version: 18.18.0
+  resolution: "@types/node@npm:18.18.0"
+  checksum: 61bcffa28eb713e7a4c66fd369df603369c3f834a783faeced95fe3e78903faa25f1a704d49e054f41d71b7915eeb066d10a37cc699421fcf5dd267f96ad5808
   languageName: node
   linkType: hard
 
@@ -19561,7 +19561,7 @@ __metadata:
     "@testing-library/react": 12.1.5
     "@testing-library/react-hooks": 8.0.1
     "@types/is-hotkey": ^0.1.7
-    "@types/node": 16.18.38
+    "@types/node": 18.18.0
     "@typescript-eslint/eslint-plugin": 6.4.1
     "@typescript-eslint/parser": 6.4.1
     babel-jest: 29.6.1
