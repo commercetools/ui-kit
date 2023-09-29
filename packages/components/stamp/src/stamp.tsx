@@ -137,7 +137,6 @@ const getToneStyles = (props: StylesFunctionParams) => {
   const toneProps = tonesPropsMap[props.tone];
   return css`
     background-color: ${toneProps.styles.backgroundColor};
-    border: 1px solid ${toneProps.styles.borderColor};
     &,
     & * {
       color: ${props.overrideTextColor ? toneProps.styles.color : 'inherit'};
@@ -149,8 +148,13 @@ const getStampStyles = (props: StylesFunctionParams) => {
   return css`
     color: ${props.overrideTextColor ? 'inherit' : designTokens.colorSolid};
     display: inline-block;
-    font-size: ${designTokens.fontSizeForStamp};
-    border-radius: ${designTokens.borderRadiusForStamp};
+    font-size: ${props.isCondensed
+      ? designTokens.fontSizeForStampAsCondensed
+      : designTokens.fontSizeForStamp};
+    font-weight: ${designTokens.fontWeightForStamp};
+    border-radius: ${props.isCondensed
+      ? designTokens.borderRadiusForStampAsCondensed
+      : designTokens.borderRadiusForStamp};
   `;
 };
 

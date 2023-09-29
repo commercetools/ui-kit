@@ -60,18 +60,18 @@ export const themes = {
     colorNeutral95: 'hsl(232, 18%, 95%)',
     colorNeutral98: 'hsl(232, 18%, 98%)',
     colorInfo: '#078cdf',
-    colorInfo40: 'hsl(203.05555555555554, 93.9130434783%, 40%)',
+    colorInfo40: 'hsl(203.05555555555554, 93.9130434783%, 35%)',
     colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
     colorInfo90: '#CEEBFD',
     colorInfo95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
     colorWarning: '#f16d0e',
     colorWarning25: 'hsl(25.110132158590307, 89.0196078431%, 25%)',
-    colorWarning40: 'hsl(25.110132158590307, 89.0196078431%, 40%)',
+    colorWarning40: 'hsl(25.110132158590307, 89.0196078431%, 35%)',
     colorWarning85: 'hsl(25.110132158590307, 89.0196078431%, 85%)',
     colorWarning95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     colorError: '#e60050',
     colorError25: 'hsl(339.1304347826087, 100%, 25%)',
-    colorError40: 'hsl(339.1304347826087, 100%, 40%)',
+    colorError40: 'hsl(339.1304347826087, 100%, 35%)',
     colorError85: 'hsl(339.1304347826087, 100%, 85%)',
     colorError95: 'hsl(339.1304347826087, 100%, 95%)',
     colorSolid: '#1a1a1a',
@@ -322,7 +322,8 @@ export const themes = {
     borderRadiusForTag: '2px',
     borderRadiusForCard: '4px',
     borderRadiusForTableManagerDroppableList: '4px',
-    borderRadiusForStamp: '20px',
+    borderRadiusForStamp: '4px',
+    borderRadiusForStampAsCondensed: '2px',
     borderRadiusForViewSwitcher: '4px',
     borderRadiusForContentNotification: '4px',
     borderRadiusForPrimaryActionDropdown:
@@ -430,6 +431,7 @@ export const themes = {
     fontSizeForBody: '16px',
     fontSizeForLink: '1rem',
     fontSizeForStamp: '0.875rem',
+    fontSizeForStampAsCondensed: '0.75rem',
     fontSizeForViewSwitcher: '0.875rem',
     fontSizeForTable: '0.875rem',
     fontSizeForLocalizedInputLabel: '1rem',
@@ -456,6 +458,7 @@ export const themes = {
     fontWeightForTextAsCaption: '400',
     fontWeightForTextAsDetail: '400',
     fontWeightForButton: '500',
+    fontWeightForStamp: '500',
     fontWeightForTableHeader: '600',
     fontWeightForTextAsBold: '600',
     marginForTableHeader: '8px',
@@ -475,7 +478,7 @@ export const themes = {
     marginForRichTextDropdownItemLabel: '0 0 0 var(--spacing-20)',
     marginForTagList: '0 var(--spacing-20) var(--spacing-20) 0',
     paddingForStamp: '4px 12px',
-    paddingForStampAsCondensed: '0 var(--spacing-20)',
+    paddingForStampAsCondensed: '2px var(--spacing-10)',
     paddingForTag: '2px 12px',
     paddingForTableHeader: '24px',
     paddingForTableHeaderAsCondensed: '24px',
@@ -615,7 +618,7 @@ const designTokens = {
   colorNeutral98: 'var(--color-neutral-98, hsl(232, 18%, 98%))',
   colorInfo: 'var(--color-info, #078cdf)',
   colorInfo40:
-    'var(--color-info-40, hsl(203.05555555555554, 93.9130434783%, 40%))',
+    'var(--color-info-40, hsl(203.05555555555554, 93.9130434783%, 35%))',
   colorInfo85:
     'var(--color-info-85, hsl(203.05555555555554, 93.9130434783%, 85%))',
   colorInfo90: 'var(--color-info-90, #CEEBFD)',
@@ -625,14 +628,14 @@ const designTokens = {
   colorWarning25:
     'var(--color-warning-25, hsl(25.110132158590307, 89.0196078431%, 25%))',
   colorWarning40:
-    'var(--color-warning-40, hsl(25.110132158590307, 89.0196078431%, 40%))',
+    'var(--color-warning-40, hsl(25.110132158590307, 89.0196078431%, 35%))',
   colorWarning85:
     'var(--color-warning-85, hsl(25.110132158590307, 89.0196078431%, 85%))',
   colorWarning95:
     'var(--color-warning-95, hsl(25.110132158590307, 89.0196078431%, 95%))',
   colorError: 'var(--color-error, #e60050)',
   colorError25: 'var(--color-error-25, hsl(339.1304347826087, 100%, 25%))',
-  colorError40: 'var(--color-error-40, hsl(339.1304347826087, 100%, 40%))',
+  colorError40: 'var(--color-error-40, hsl(339.1304347826087, 100%, 35%))',
   colorError85: 'var(--color-error-85, hsl(339.1304347826087, 100%, 85%))',
   colorError95: 'var(--color-error-95, hsl(339.1304347826087, 100%, 95%))',
   colorSolid: 'var(--color-solid, #1a1a1a)',
@@ -990,7 +993,9 @@ const designTokens = {
   borderRadiusForCard: 'var(--border-radius-for-card, 4px)',
   borderRadiusForTableManagerDroppableList:
     'var(--border-radius-for-table-manager-droppable-list, 4px)',
-  borderRadiusForStamp: 'var(--border-radius-for-stamp, 20px)',
+  borderRadiusForStamp: 'var(--border-radius-for-stamp, 4px)',
+  borderRadiusForStampAsCondensed:
+    'var(--border-radius-for-stamp-as-condensed, 2px)',
   borderRadiusForViewSwitcher: 'var(--border-radius-for-view-switcher, 4px)',
   borderRadiusForContentNotification:
     'var(--border-radius-for-content-notification, 4px)',
@@ -1166,6 +1171,8 @@ const designTokens = {
   fontSizeForBody: 'var(--font-size-for-body, 16px)',
   fontSizeForLink: 'var(--font-size-for-link, 1rem)',
   fontSizeForStamp: 'var(--font-size-for-stamp, 0.875rem)',
+  fontSizeForStampAsCondensed:
+    'var(--font-size-for-stamp-as-condensed, 0.75rem)',
   fontSizeForViewSwitcher: 'var(--font-size-for-view-switcher, 0.875rem)',
   fontSizeForTable: 'var(--font-size-for-table, 0.875rem)',
   fontSizeForLocalizedInputLabel:
@@ -1197,6 +1204,7 @@ const designTokens = {
   fontWeightForTextAsCaption: 'var(--font-weight-for-text-as-caption, 400)',
   fontWeightForTextAsDetail: 'var(--font-weight-for-text-as-detail, 400)',
   fontWeightForButton: 'var(--font-weight-for-button, 500)',
+  fontWeightForStamp: 'var(--font-weight-for-stamp, 500)',
   fontWeightForTableHeader: 'var(--font-weight-for-table-header, 600)',
   fontWeightForTextAsBold: 'var(--font-weight-for-text-as-bold, 600)',
   marginForTableHeader: 'var(--margin-for-table-header, 8px)',
@@ -1228,7 +1236,7 @@ const designTokens = {
     'var(--margin-for-tag-list, 0 var(--spacing-20) var(--spacing-20) 0)',
   paddingForStamp: 'var(--padding-for-stamp, 4px 12px)',
   paddingForStampAsCondensed:
-    'var(--padding-for-stamp-as-condensed, 0 var(--spacing-20))',
+    'var(--padding-for-stamp-as-condensed, 2px var(--spacing-10))',
   paddingForTag: 'var(--padding-for-tag, 2px 12px)',
   paddingForTableHeader: 'var(--padding-for-table-header, 24px)',
   paddingForTableHeaderAsCondensed:
