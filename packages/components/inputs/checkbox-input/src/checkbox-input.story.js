@@ -33,7 +33,9 @@ storiesOf('Components|Inputs', module)
             alignItems="center"
             gridTemplateColumns="100px 1fr 1fr 1fr"
           >
-            <Text.Body isBold>{stateLabel}</Text.Body>
+            <Text.Body isBold fontWeight="bold">
+              {stateLabel}
+            </Text.Body>
             <Value
               defaultValue={true}
               render={(isChecked, onChange) => (

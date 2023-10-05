@@ -38,6 +38,7 @@ export type TLabelProps = {
   htmlFor?: string;
   // Indicates if the label title should be in bold text
   isBold?: boolean;
+  fontWeight?: 'regular' | 'medium' | 'bold';
   // Indicates if the labeled field is required in a form
   isRequiredIndicatorVisible?: boolean;
   // Indicates the tone to be applied to the label
@@ -87,7 +88,11 @@ const Label = (props: TLabelProps) => {
       id={props.id}
       htmlFor={props.htmlFor}
     >
-      <Text.Detail tone={props.tone} isBold={props.isBold}>
+      <Text.Detail
+        tone={props.tone}
+        isBold={props.isBold}
+        fontWeight={props.fontWeight}
+      >
         {props.intlMessage ? (
           <FormattedMessage {...props.intlMessage} />
         ) : (
