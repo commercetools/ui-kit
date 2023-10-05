@@ -61,6 +61,19 @@ const getTone = (tone: string) => {
   }
 };
 
+const getFontWeight = (fontWeight: string) => {
+  switch (fontWeight) {
+    case 'regular':
+      return `font-weight: ${designTokens.fontWeight400};`;
+    case 'medium':
+      return `font-weight: ${designTokens.fontWeight500};`;
+    case 'bold':
+      return `font-weight: ${designTokens.fontWeight600};`;
+    default:
+      return ``;
+  }
+};
+
 const getElementFontSize = (elementType?: string) => {
   switch (elementType) {
     case 'h1':
@@ -122,6 +135,7 @@ export const bodyStyles = (props: TBodyProps) => css`
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
+  ${props.fontWeight && getFontWeight(props.fontWeight)}
   ${props.truncate && truncate}
   ${props.nowrap && nowrap}
 `;
@@ -163,6 +177,20 @@ export const detailStyles = (props: TDetailProps) => css`
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
+  ${props.fontWeight && getFontWeight(props.fontWeight)}
+  ${props.truncate && truncate}
+  ${props.nowrap && nowrap}
+`;
+
+export const captionStyles = (props: TDetailProps) => css`
+  ${getBaseStyles()}
+  font-size: ${designTokens.fontSizeForTextAsCaption};
+  line-height: ${designTokens.lineHeightForTextAsCaption};
+  font-weight: ${designTokens.fontWeightForTextAsCaption};
+  ${props.isItalic && italic}
+  ${props.isStrikethrough && strikethrough}
+  ${props.tone && getTone(props.tone)}
+  ${props.fontWeight && getFontWeight(props.fontWeight)}
   ${props.truncate && truncate}
   ${props.nowrap && nowrap}
 `;

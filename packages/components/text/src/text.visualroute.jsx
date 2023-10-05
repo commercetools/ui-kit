@@ -100,7 +100,9 @@ export const component = () => (
       <Text.Body>Body text</Text.Body>
     </Spec>
     <Spec label="Body - bold">
-      <Text.Body isBold={true}>Body text bold</Text.Body>
+      <Text.Body isBold={true} fontWeight="bold">
+        Body text bold
+      </Text.Body>
     </Spec>
     <Spec label="Body - italic">
       <Text.Body isItalic={true}>Body text italic</Text.Body>
@@ -145,13 +147,17 @@ export const component = () => (
       <Text.Detail>Detail text</Text.Detail>
     </Spec>
     <Spec label="Detail - bold">
-      <Text.Detail isBold={true}>Detail text bold</Text.Detail>
+      <Text.Detail isBold={true} fontWeight="bold">
+        Detail text bold
+      </Text.Detail>
     </Spec>
     <Spec label="Detail - italic">
       <Text.Detail isItalic={true}>Detail text italic</Text.Detail>
     </Spec>
     <Spec label="Detail - strikethrough">
-      <Text.Detail isStrikethrough={true}>Detail text strikethrough</Text.Detail>
+      <Text.Detail isStrikethrough={true}>
+        Detail text strikethrough
+      </Text.Detail>
     </Spec>
     <Spec label="Detail - tone - primary">
       <Text.Detail tone="primary">Detail text primary</Text.Detail>
