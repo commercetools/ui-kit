@@ -127,7 +127,7 @@
     "moment-timezone": "0.5.43",
     "omit-empty-es": "1.2.0",
     "patch-package": "6.5.1",
-    "postcss": "8.4.25",
+    "postcss": "8.4.31",
     "postcss-syntax": "^0.36.2",
     "postcss-value-parser": "4.2.0",
     "pptr-testing-library": "0.7.0",
