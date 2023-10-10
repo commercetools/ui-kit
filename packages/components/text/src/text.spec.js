@@ -10,8 +10,8 @@ jest.mock('@commercetools-uikit/utils', () => ({
 const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
 
 describe('exports', () => {
-  it('should export 5 components', () => {
-    expect(Object.keys(Text)).toHaveLength(5);
+  it('should export 6 components', () => {
+    expect(Object.keys(Text)).toHaveLength(6);
   });
   it('should export <Headline> component', () => {
     expect(Text).toHaveProperty('Headline');
@@ -27,6 +27,9 @@ describe('exports', () => {
   });
   it('should export <Detail> component', () => {
     expect(Text).toHaveProperty('Detail');
+  });
+  it('should export <Caption> component', () => {
+    expect(Text).toHaveProperty('Caption');
   });
 });
 
