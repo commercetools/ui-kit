@@ -180,15 +180,13 @@ Wrap.displayName = 'TextWrap';
 export type TBodyProps = {
   as?: 'span' | 'p';
   /**
-   * @deprecated
-   *
-   * `isBold` prop is being deprecatied in favor of the new `fontWeight` prop.
+   * @deprecated: Use the new `fontWeight` prop.
    */
   isBold?: boolean;
   isItalic?: boolean;
   isStrikethrough?: boolean;
   tone?: TTone | 'inverted';
-  fontWeight?: TFontWeight | 'regular' | 'medium' | 'bold';
+  fontWeight?: TFontWeight;
   truncate?: boolean;
   nowrap?: boolean;
 } & TBasicTextProps &
@@ -236,7 +234,7 @@ export type TDetailProps = {
   isStrikethrough?: boolean;
   as?: 'span' | 'small';
   tone?: TTone | 'warning' | 'inverted';
-  fontWeight?: TFontWeight | 'regular' | 'medium' | 'bold';
+  fontWeight?: TFontWeight;
   truncate?: boolean;
   nowrap?: boolean;
   'aria-labelledby'?: string;
@@ -278,7 +276,7 @@ export type TCaptionProps = {
   isItalic?: boolean;
   isStrikethrough?: boolean;
   tone?: TTone | 'warning' | 'inverted';
-  fontWeight?: TFontWeight | 'regular' | 'medium' | 'bold';
+  fontWeight?: TFontWeight;
   truncate?: boolean;
   nowrap?: boolean;
   'aria-labelledby'?: string;

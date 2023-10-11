@@ -36,8 +36,9 @@ export type TLabelProps = {
    * ````
    */
   htmlFor?: string;
-  // Indicates if the label title should be in bold text
+  // Indicates if the label title should be in bold text. This is deprecated, use `fontWeight` instead.
   isBold?: boolean;
+  // Indicates if the label title should be in bold text
   fontWeight?: 'regular' | 'medium' | 'bold';
   // Indicates if the labeled field is required in a form
   isRequiredIndicatorVisible?: boolean;
