@@ -135,6 +135,7 @@ export const themes = {
     shadow15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
     shadow16:
       '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)',
+    shadow17: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
     constraintScale: '100%',
     constraint1: '42px',
     constraint2: '84px',
@@ -342,6 +343,7 @@ export const themes = {
     boxShadowForViewSwitcherWhenSelected: 'none',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 1px',
     boxShadowForCalendarMenuWhenFocused: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
+    boxShadowForTable: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
     fontColorForText: '#1a1a1a',
     fontColorForTextWhenDisabled: 'hsl(232, 18%, 60%)',
     fontColorForInput: '#1a1a1a',
@@ -699,6 +701,7 @@ const designTokens = {
     'var(--shadow-15, 0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12))',
   shadow16:
     'var(--shadow-16, 0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25))',
+  shadow17: 'var(--shadow-17, 0 1px 5px 0 rgba(0, 0, 0, 0.05))',
   constraintScale: 'var(--constraint-scale, 100%)',
   constraint1: 'var(--constraint-1, 42px)',
   constraint2: 'var(--constraint-2, 84px)',
@@ -1019,6 +1022,8 @@ const designTokens = {
     'var(--box-shadow-for-select-input-when-focused, inset 0 0 0 1px)',
   boxShadowForCalendarMenuWhenFocused:
     'var(--box-shadow-for-calendar-menu-when-focused, 0 2px 5px 0px rgba(0, 0, 0, 0.15))',
+  boxShadowForTable:
+    'var(--box-shadow-for-table, 0 1px 5px 0 rgba(0, 0, 0, 0.05))',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForTextWhenDisabled:
     'var(--font-color-for-text-when-disabled, hsl(232, 18%, 60%))',
