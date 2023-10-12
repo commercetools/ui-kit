@@ -26,7 +26,7 @@ export const MultiplePropertiesSelectInputOption = (
   return (
     <components.Option {...props}>
       <Spacings.Stack scale="xs">
-        <Text.Detail isBold={true} fontWeight="bold">
+        <Text.Detail fontWeight="bold">
           {data?.label || noValueFallback}
         </Text.Detail>
         <Text.Detail>Key: {data?.key || noValueFallback}</Text.Detail>
@@ -47,7 +47,7 @@ export const DoublePropertySelectInputOption = (
   return (
     <components.Option {...props}>
       <Spacings.Stack scale="xs">
-        <Text.Detail isBold={true} fontWeight="bold">
+        <Text.Detail fontWeight="bold">
           {data?.label || noValueFallback}
         </Text.Detail>
         <Text.Detail>Key: {data?.key || noValueFallback}</Text.Detail>
