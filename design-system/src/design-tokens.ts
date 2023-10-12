@@ -433,9 +433,12 @@ export const themes = {
     fontSizeForStamp: '0.875rem',
     fontSizeForViewSwitcher: '0.875rem',
     fontSizeForTable: '0.875rem',
-    fontSizeForAvatarAsSmall: '0.875rem',
-    fontSizeForAvatarAsMedium: '1rem',
-    fontSizeForAvatarAsBig: '2.5rem',
+    fontSizeForAvatarAsSmallWhenTwoChars: '0.75rem',
+    fontSizeForAvatarAsSmallWhenOneChar: '1rem',
+    fontSizeForAvatarAsMediumWhenTwoChars: '1rem',
+    fontSizeForAvatarAsMediumWhenOneChar: '1.25rem',
+    fontSizeForAvatarAsBigWhenTwoChars: '2.5rem',
+    fontSizeForAvatarAsBigWhenOneChar: '3rem',
     fontSizeForLocalizedInputLabel: '1rem',
     fontSizeForContentNotification: '1rem',
     fontSizeForSelectInputTag: '1rem',
@@ -1174,9 +1177,18 @@ const designTokens = {
   fontSizeForStamp: 'var(--font-size-for-stamp, 0.875rem)',
   fontSizeForViewSwitcher: 'var(--font-size-for-view-switcher, 0.875rem)',
   fontSizeForTable: 'var(--font-size-for-table, 0.875rem)',
-  fontSizeForAvatarAsSmall: 'var(--font-size-for-avatar-as-small, 0.875rem)',
-  fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1rem)',
-  fontSizeForAvatarAsBig: 'var(--font-size-for-avatar-as-big, 2.5rem)',
+  fontSizeForAvatarAsSmallWhenTwoChars:
+    'var(--font-size-for-avatar-as-small-when-two-chars, 0.75rem)',
+  fontSizeForAvatarAsSmallWhenOneChar:
+    'var(--font-size-for-avatar-as-small-when-one-char, 1rem)',
+  fontSizeForAvatarAsMediumWhenTwoChars:
+    'var(--font-size-for-avatar-as-medium-when-two-chars, 1rem)',
+  fontSizeForAvatarAsMediumWhenOneChar:
+    'var(--font-size-for-avatar-as-medium-when-one-char, 1.25rem)',
+  fontSizeForAvatarAsBigWhenTwoChars:
+    'var(--font-size-for-avatar-as-big-when-two-chars, 2.5rem)',
+  fontSizeForAvatarAsBigWhenOneChar:
+    'var(--font-size-for-avatar-as-big-when-one-char, 3rem)',
   fontSizeForLocalizedInputLabel:
     'var(--font-size-for-localized-input-label, 1rem)',
   fontSizeForContentNotification:
