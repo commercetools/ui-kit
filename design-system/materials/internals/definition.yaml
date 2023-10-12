@@ -258,6 +258,8 @@ choiceGroupsByTheme:
         break-point-jumbodesktop: 1920px
 
 states:
+  two-chars: 'When string contains two characters'
+  one-char: 'When string contains one character'
   active: 'Trigged while the user is currently interacting with the element'
   hovered:
     description: 'When the mouse is over the element'
@@ -1033,12 +1035,18 @@ decisionGroupsByTheme:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
-        font-size-for-avatar-as-small:
-          choice: font-size-20
-        font-size-for-avatar-as-medium:
+        font-size-for-avatar-as-small-when-two-chars:
+          choice: font-size-10
+        font-size-for-avatar-as-small-when-one-char:
           choice: font-size-30
-        font-size-for-avatar-as-big:
+        font-size-for-avatar-as-medium-when-two-chars:
+          choice: font-size-30
+        font-size-for-avatar-as-medium-when-one-char:
+          choice: font-size-50
+        font-size-for-avatar-as-big-when-two-chars:
           choice: font-size-80
+        font-size-for-avatar-as-big-when-one-char:
+          choice: font-size-78
         font-size-for-localized-input-label:
           choice: font-size-30
         font-size-for-content-notification:
