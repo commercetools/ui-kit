@@ -91,18 +91,18 @@ choiceGroupsByTheme:
         color-neutral-95: 'hsl(232, 18%, 95%)'
         color-neutral-98: 'hsl(232, 18%, 98%)'
         color-info: '#078cdf'
-        color-info-40: 'hsl(203.05555555555554, 93.9130434783%, 35%)'
+        color-info-40: 'hsl(203.05555555555554, 93.9130434783%, 40%)'
         color-info-85: 'hsl(203.05555555555554, 93.9130434783%, 85%)'
         color-info-90: '#CEEBFD'
         color-info-95: 'hsl(203.05555555555554, 93.9130434783%, 95%)'
         color-warning: '#f16d0e'
         color-warning-25: 'hsl(25.110132158590307, 89.0196078431%, 25%)'
-        color-warning-40: 'hsl(25.110132158590307, 89.0196078431%, 35%)'
+        color-warning-40: 'hsl(25.110132158590307, 89.0196078431%, 40%)'
         color-warning-85: 'hsl(25.110132158590307, 89.0196078431%, 85%)'
         color-warning-95: 'hsl(25.110132158590307, 89.0196078431%, 95%)'
         color-error: '#e60050'
         color-error-25: 'hsl(339.1304347826087, 100%, 25%)'
-        color-error-40: 'hsl(339.1304347826087, 100%, 35%)'
+        color-error-40: 'hsl(339.1304347826087, 100%, 40%)'
         color-error-85: 'hsl(339.1304347826087, 100%, 85%)'
         color-error-95: 'hsl(339.1304347826087, 100%, 95%)'
         color-solid: '#1a1a1a'
@@ -233,6 +233,7 @@ choiceGroupsByTheme:
         spacing-l: 24px
         spacing-xl: 32px
         # New tokens
+        spacing-05: 2px
         spacing-10: 4px
         spacing-20: 8px
         spacing-25: 12px
@@ -1148,7 +1149,7 @@ decisionGroupsByTheme:
         padding-for-stamp:
           choice: '4px 12px'
         padding-for-stamp-as-condensed:
-          choice: '2px var(--spacing-10)'
+          choice: 'var(--spacing-05) var(--spacing-10)'
         padding-for-tag:
           choice: '2px 12px'
         padding-for-table-header:
