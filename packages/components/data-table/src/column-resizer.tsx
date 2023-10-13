@@ -9,8 +9,8 @@ type TColumnResizer = {
 
 const ResizerIndicator = styled.div<TColumnResizer>`
   height: 100%;
-  width: 3px;
-  background: ${designTokens.colorInfo};
+  width: 1px;
+  background: ${designTokens.colorNeutral};
   visibility: hidden;
   cursor: col-resize;
 

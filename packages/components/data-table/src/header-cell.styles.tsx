@@ -104,7 +104,7 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   font-size: ${designTokens.fontSizeForTable};
 
   /* right border that doesn't count towards the column width */
-  box-shadow: inset -1px 0 ${designTokens.borderColorForTableHeader};
+  box-shadow: inset -1px 0 ${designTokens.colorNeutral};
 
   /* this ensures that, when dragging this header's column resizer
   it remains above the rest of the headers, preventing accidental hovers/flickering */
