@@ -17,7 +17,6 @@ storiesOf('Components|Label', module)
     <Section>
       <Constraints.Horizontal constraint="m">
         <Label
-          isBold={boolean('isBold', false)}
           fontWeight={select('fontWeight', ['regular', 'medium', 'bold'])}
           isRequiredIndicatorVisible={boolean(
             'isRequiredIndicatorVisible',

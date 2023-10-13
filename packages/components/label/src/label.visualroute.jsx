@@ -11,12 +11,10 @@ export const component = () => (
       <Label>Hello</Label>
     </Spec>
     <Spec label="when bold">
-      <Label isBold={true} fontWeight="bold">
-        Hello
-      </Label>
+      <Label fontWeight="bold">Hello</Label>
     </Spec>
     <Spec label="with required indicator">
-      <Label isBold={true} fontWeight="bold" isRequiredIndicatorVisible={true}>
+      <Label fontWeight="bold" isRequiredIndicatorVisible={true}>
         Hello
       </Label>
     </Spec>

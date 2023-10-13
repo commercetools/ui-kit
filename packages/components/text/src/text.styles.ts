@@ -61,8 +61,8 @@ const getTone = (tone: string) => {
   }
 };
 
-const getFontWeight = (fontWeight: string) => {
-  switch (fontWeight) {
+const getFontWeight = (props: { isBold?: boolean; fontWeight?: string }) => {
+  switch (props.fontWeight) {
     case 'regular':
       return `font-weight: ${designTokens.fontWeight400};`;
     case 'medium':
@@ -70,6 +70,9 @@ const getFontWeight = (fontWeight: string) => {
     case 'bold':
       return `font-weight: ${designTokens.fontWeight600};`;
     default:
+      if (props.isBold) {
+        return `font-weight: ${designTokens.fontWeight600};`;
+      }
       return ``;
   }
 };
@@ -131,11 +134,10 @@ export const bodyStyles = (props: TBodyProps) => css`
   font-size: ${designTokens.fontSizeForTextAsBody};
   line-height: ${designTokens.lineHeightForTextAsBody};
   font-weight: ${designTokens.fontWeightForTextAsBody};
-  ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
-  ${props.fontWeight && getFontWeight(props.fontWeight)}
+  ${getFontWeight(props)}
   ${props.truncate && truncate}
   ${props.nowrap && nowrap}
 `;
@@ -173,11 +175,10 @@ export const detailStyles = (props: TDetailProps) => css`
   font-size: ${designTokens.fontSizeForTextAsDetail};
   line-height: ${designTokens.lineHeightForTextAsDetail};
   font-weight: ${designTokens.fontWeightForTextAsDetail};
-  ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
-  ${props.fontWeight && getFontWeight(props.fontWeight)}
+  ${getFontWeight(props)}
   ${props.truncate && truncate}
   ${props.nowrap && nowrap}
 `;
@@ -190,7 +191,7 @@ export const captionStyles = (props: TDetailProps) => css`
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
-  ${props.fontWeight && getFontWeight(props.fontWeight)}
+  ${getFontWeight(props)}
   ${props.truncate && truncate}
   ${props.nowrap && nowrap}
 `;

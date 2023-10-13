@@ -5,7 +5,6 @@ import { FormattedMessage } from 'react-intl';
 import { warning } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
 import RequiredIndicator from './required-indicator';
-import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 
 export type TLabelProps = {
@@ -36,9 +35,7 @@ export type TLabelProps = {
    * ````
    */
   htmlFor?: string;
-  // Indicates if the label title should be in bold text. This is deprecated, use `fontWeight` instead.
-  isBold?: boolean;
-  // Indicates if the label title should be in bold text
+  // Indicates the weight (or boldness) of the font.
   fontWeight?: 'regular' | 'medium' | 'bold';
   // Indicates if the labeled field is required in a form
   isRequiredIndicatorVisible?: boolean;
@@ -82,18 +79,14 @@ const Label = (props: TLabelProps) => {
     <label
       css={css`
         > div {
-          font-weight: ${!props.isBold && designTokens.fontWeight500};
+          font-weight: ${props.fontWeight};
           display: flex;
         }
       `}
       id={props.id}
       htmlFor={props.htmlFor}
     >
-      <Text.Detail
-        tone={props.tone}
-        isBold={props.isBold}
-        fontWeight={props.fontWeight}
-      >
+      <Text.Detail tone={props.tone} fontWeight={props.fontWeight}>
         {props.intlMessage ? (
           <FormattedMessage {...props.intlMessage} />
         ) : (
