@@ -5,31 +5,60 @@
 */
 export const themes = {
   default: {
-    colorPrimary: '#00b39e',
-    colorPrimary20: 'hsl(172.9608938547486, 100%, 20%)',
-    colorPrimary25: 'hsl(172.9608938547486, 100%, 25%)',
-    colorPrimary30: 'hsl(172.9608938547486, 100%, 30%)',
-    colorPrimary40: 'hsl(172.9608938547486, 100%, 40%)',
-    colorPrimary85: 'hsl(172.9608938547486, 100%, 85%)',
-    colorPrimary95: 'hsl(172.9608938547486, 100%, 95%)',
+    colorPrimary: 'hsl(175, 55%, 45%)',
+    colorPrimary20: 'hsl(175, 55%, 20%)',
+    colorPrimary25: 'hsl(175, 55%, 25%)',
+    colorPrimary30: 'hsl(175, 55%, 33%)',
+    colorPrimary40: 'hsl(175, 55%, 40%)',
+    colorPrimary85: 'hsl(175, 70%, 85%)',
+    colorPrimary95: 'hsl(175, 90%, 95%)',
     colorAccent: '#213c45',
     colorAccent10: 'hsl(195, 35.2941176471%, 10%)',
     colorAccent20: 'hsl(195, 35.2941176471%, 20%)',
     colorAccent30: 'hsl(195, 35.2941176471%, 30%)',
     colorAccent40: 'hsl(195, 35.2941176471%, 40%)',
+    colorAccent50: 'hsl(195, 35%, 50%)',
     colorAccent60: 'hsl(195, 35.2941176471%, 60%)',
+    colorAccent85: 'hsl(195, 35%, 85%)',
     colorAccent90: 'hsl(195, 35.2941176471%, 90%)',
     colorAccent95: 'hsl(195, 35.2941176471%, 95%)',
     colorAccent98: 'hsl(195, 35.2941176471%, 98%)',
-    colorNeutral: '#ccc',
+    colorBrown10: 'hsl(35, 90%, 10%)',
+    colorBrown20: 'hsl(35, 50%, 20%)',
+    colorBrown35: 'hsl(35, 25%, 35%)',
+    colorBrown50: 'hsl(35, 30%, 50%)',
+    colorBrown70: 'hsl(35, 40%, 70%)',
+    colorBrown85: 'hsl(35, 60%, 85%)',
+    colorBrown90: 'hsl(35, 90%, 90%)',
+    colorBrown95: 'hsl(35, 80%, 95%)',
+    colorBrown98: 'hsl(35, 90%, 98%)',
+    colorPurple10: 'hsl(248, 90%, 10%)',
+    colorPurple20: 'hsl(248, 50%, 20%)',
+    colorPurple35: 'hsl(248, 25%, 35%)',
+    colorPurple50: 'hsl(248, 30%,50%)',
+    colorPurple70: 'hsl(248, 40%, 70%)',
+    colorPurple85: 'hsl(248, 60%, 85%)',
+    colorPurple90: 'hsl(248, 50%, 90%)',
+    colorPurple95: 'hsl(248, 80%, 95%)',
+    colorPurple98: 'hsl(248, 90%, 98%)',
+    colorTurquoise10: 'hsl(180, 90%, 10%)',
+    colorTurquoise20: 'hsl(180, 50%, 20%)',
+    colorTurquoise35: 'hsl(180, 25%, 35%)',
+    colorTurquoise50: 'hsl(180, 30%, 45%)',
+    colorTurquoise70: 'hsl(180, 40%, 70%)',
+    colorTurquoise85: 'hsl(180, 60%, 85%)',
+    colorTurquoise90: 'hsl(180, 40%, 90%)',
+    colorTurquoise95: 'hsl(180, 80%, 95%)',
+    colorTurquoise98: 'hsl(180, 90%, 98%)',
+    colorNeutral: 'hsl(232, 18%, 80%)',
     colorNeutral05: 'hsl(0deg 0% 80% / 5%)',
     colorNeutral10: 'hsl(0deg 0% 80% / 10%)',
-    colorNeutral40: 'hsl(0, 0%, 40%)',
-    colorNeutral60: 'hsl(0, 0%, 60%)',
-    colorNeutral85: 'hsl(0, 0%, 85%)',
-    colorNeutral90: 'hsl(0, 0%, 90%)',
-    colorNeutral95: 'hsl(0, 0%, 95%)',
-    colorNeutral98: 'hsl(0, 0%, 98%)',
+    colorNeutral40: 'hsl(232, 18%, 40%)',
+    colorNeutral60: 'hsl(232, 18%, 60%)',
+    colorNeutral85: 'hsl(232, 18%, 85%)',
+    colorNeutral90: 'hsl(232, 18%, 90%)',
+    colorNeutral95: 'hsl(232, 18%, 95%)',
+    colorNeutral98: 'hsl(232, 18%, 98%)',
     colorInfo: '#078cdf',
     colorInfo40: 'hsl(203.05555555555554, 93.9130434783%, 40%)',
     colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
@@ -108,6 +137,7 @@ export const themes = {
     shadow15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)',
     shadow16:
       '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)',
+    shadow17: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
     constraintScale: '100%',
     constraint1: '42px',
     constraint2: '84px',
@@ -152,7 +182,7 @@ export const themes = {
     backgroundColorForButtonAsPrimaryWhenActive: '#15A390',
     backgroundColorForButtonAsPrimaryWhenHovered: '#17AB97',
     backgroundColorForButtonAsIconAsPrimaryWhenActive: '#15A390',
-    backgroundColorForButtonAsIconAsPrimaryWhenHovered: '#00b39e',
+    backgroundColorForButtonAsIconAsPrimaryWhenHovered: 'hsl(175, 55%, 45%)',
     backgroundColorForButtonAsIconAsInfoWhenActive: '#057FCC',
     backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
     backgroundColorForButtonAsUrgentWhenActive: '#DC630A',
@@ -162,60 +192,57 @@ export const themes = {
     backgroundColorForButtonWhenDisabled: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInput: '#fff',
     backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
-    backgroundColorForInputWhenDisabled: 'hsl(0, 0%, 95%)',
-    backgroundColorForInputWhenHovered: 'hsl(0, 0%, 98%)',
+    backgroundColorForInputWhenDisabled: 'hsl(232, 18%, 95%)',
+    backgroundColorForInputWhenHovered: 'hsl(232, 18%, 98%)',
     backgroundColorForInputWhenFocused: '#fff',
-    backgroundColorForInputWhenReadonly: 'hsl(0, 0%, 95%)',
+    backgroundColorForInputWhenReadonly: 'hsl(232, 18%, 95%)',
     backgroundColorForInputWhenActive:
       'hsl(203.05555555555554, 93.9130434783%, 95%)',
-    backgroundColorForTableCellWhenHovered: 'hsl(0, 0%, 98%)',
-    backgroundColorForTableHeader: 'hsl(0, 0%, 95%)',
-    backgroundColorForTag: 'hsl(0, 0%, 95%)',
+    backgroundColorForTableCellWhenHovered: 'hsl(232, 18%, 98%)',
+    backgroundColorForTableHeader: 'hsl(232, 18%, 95%)',
+    backgroundColorForTag: 'hsl(232, 18%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
-    backgroundColorForTagWhenHovered: 'hsl(0, 0%, 90%)',
+    backgroundColorForTagWhenHovered: 'hsl(232, 18%, 90%)',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
-    backgroundColorForSelectInputOptionWhenHovered: 'hsl(0, 0%, 98%)',
+    backgroundColorForSelectInputOptionWhenHovered: 'hsl(232, 18%, 98%)',
     backgroundColorForAvatar: '#213c45',
     backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
-    backgroundColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 95%)',
+    backgroundColorForStampAsPositive: 'hsl(175, 90%, 95%)',
     backgroundColorForLocalizedInputLabel: '#fff',
-    backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(0, 0%, 95%)',
-    backgroundColorForLocalizedInputLabelWhenDisabled: 'hsl(0, 0%, 95%)',
+    backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(232, 18%, 95%)',
+    backgroundColorForLocalizedInputLabelWhenDisabled: 'hsl(232, 18%, 95%)',
     backgroundColorForLocalizedRichTextBodyButtonWhenActive:
       'hsl(195, 35.2941176471%, 20%)',
-    backgroundColorForLocalizedRichTextBodyButton: 'hsl(0, 0%, 95%)',
-    backgroundColorForRichTextDropdownWhenHovered: 'hsl(0, 0%, 95%)',
+    backgroundColorForLocalizedRichTextBodyButton: 'hsl(232, 18%, 95%)',
+    backgroundColorForRichTextDropdownWhenHovered: 'hsl(232, 18%, 95%)',
     backgroundColorForRichTextMoreStylesDropdownWhenHovered:
       'hsl(203.05555555555554, 93.9130434783%, 95%)',
     backgroundColorForRichTextButton: 'hsl(195, 35.2941176471%, 20%)',
     backgroundColorForTooltip: 'hsl(195, 35.2941176471%, 10%)',
     backgroundColorForViewSwitcher: '#fff',
     backgroundColorForViewSwitcherWhenDisabled: '#fff',
-    backgroundColorForViewSwitcherWhenSelected: 'hsl(0, 0%, 95%)',
-    backgroundColorForViewSwitcherWhenHovered: 'hsl(0, 0%, 95%)',
+    backgroundColorForViewSwitcherWhenSelected: 'hsl(232, 18%, 95%)',
+    backgroundColorForViewSwitcherWhenHovered: 'hsl(232, 18%, 95%)',
     backgroundColorForContentNotificationWhenError:
       'hsl(339.1304347826087, 100%, 95%)',
     backgroundColorForContentNotificationWhenInfo:
       'hsl(203.05555555555554, 93.9130434783%, 95%)',
     backgroundColorForContentNotificationWhenWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
-    backgroundColorForContentNotificationWhenSuccess:
-      'hsl(172.9608938547486, 100%, 95%)',
-    backgroundColorForCheckboxInputIcon: '#00b39e',
-    backgroundColorForCheckboxInputIconWhenDisabled: '#ccc',
-    backgroundColorForCheckboxInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
+    backgroundColorForContentNotificationWhenSuccess: 'hsl(175, 90%, 95%)',
+    backgroundColorForCheckboxInputIcon: 'hsl(175, 55%, 45%)',
+    backgroundColorForCheckboxInputIconWhenDisabled: 'hsl(232, 18%, 80%)',
+    backgroundColorForCheckboxInputIconWhenReadonly: 'hsl(232, 18%, 60%)',
     backgroundColorForCheckboxInputIconWhenError: '#e60050',
-    backgroundColorForCheckboxInputIconWhenHovered: 'hsl(0, 0%, 90%)',
-    backgroundColorForPrimaryActionDropdownWhenActive: 'hsl(0, 0%, 90%)',
-    backgroundColorForPrimaryActionDropdownWhenDisabled: 'hsl(0, 0%, 95%)',
-    backgroundColorForToggleInputTrack: '#ccc',
-    backgroundColorForToggleInputTrackWhenDisabled: 'hsl(0, 0%, 90%)',
-    backgroundColorForToggleInputThumbWhenDisabled: 'hsl(0, 0%, 60%)',
-    backgroundColorForToggleInputTrackWhenChecked:
-      'hsl(172.9608938547486, 100%, 40%)',
-    backgroundColorForToggleInputThumbWhenChecked:
-      'hsl(172.9608938547486, 100%, 25%)',
+    backgroundColorForCheckboxInputIconWhenHovered: 'hsl(232, 18%, 90%)',
+    backgroundColorForPrimaryActionDropdownWhenActive: 'hsl(232, 18%, 90%)',
+    backgroundColorForPrimaryActionDropdownWhenDisabled: 'hsl(232, 18%, 95%)',
+    backgroundColorForToggleInputTrack: 'hsl(232, 18%, 80%)',
+    backgroundColorForToggleInputTrackWhenDisabled: 'hsl(232, 18%, 90%)',
+    backgroundColorForToggleInputThumbWhenDisabled: 'hsl(232, 18%, 60%)',
+    backgroundColorForToggleInputTrackWhenChecked: 'hsl(175, 55%, 40%)',
+    backgroundColorForToggleInputThumbWhenChecked: 'hsl(175, 55%, 25%)',
     backgroundColorForToggleInputTrackWhenCheckedAndDisabled:
       'hsl(195, 35.2941176471%, 90%)',
     backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
@@ -234,34 +261,34 @@ export const themes = {
     borderForSelectInputTag: '1px solid var(--color-neutral-85)',
     borderForRadioInputOption: '2px',
     borderForCalendarMenuWhenFocused: 'none',
-    borderColorForInput: '#ccc',
-    borderColorForInputWhenFocused: '#00b39e',
-    borderColorForInputWhenDisabled: '#ccc',
+    borderColorForInput: 'hsl(232, 18%, 80%)',
+    borderColorForInputWhenFocused: 'hsl(175, 55%, 45%)',
+    borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenReadonly: '#fff',
     borderColorForInputWhenError: '#e60050',
     borderColorForInputWhenWarning: '#f16d0e',
-    borderColorForInputWhenHovered: '#ccc',
-    borderColorForTag: '#ccc',
+    borderColorForInputWhenHovered: 'hsl(232, 18%, 80%)',
+    borderColorForTag: 'hsl(232, 18%, 80%)',
     borderColorForTagWarning: '#f16d0e',
-    borderColorForTagWhenFocused: '#ccc',
-    borderColorForTagWhenHovered: '#ccc',
-    borderColorForButtonAsIcon: '#ccc',
-    borderColorForButtonAsIconAsInfo: '#ccc',
-    borderColorForButtonAsIconAsPrimary: '#ccc',
+    borderColorForTagWhenFocused: 'hsl(232, 18%, 80%)',
+    borderColorForTagWhenHovered: 'hsl(232, 18%, 80%)',
+    borderColorForButtonAsIcon: 'hsl(232, 18%, 80%)',
+    borderColorForButtonAsIconAsInfo: 'hsl(232, 18%, 80%)',
+    borderColorForButtonAsIconAsPrimary: 'hsl(232, 18%, 80%)',
     borderColorForButtonAsIconWhenDisabled: '#fff',
     borderColorForTableHeader: '#fff',
-    borderColorForTableHeaderAsBottom: 'hsl(0, 0%, 90%)',
-    borderColorForTableManagerDroppableList: '#ccc',
-    borderColorForCollapsiblePanelHeader: 'hsl(0, 0%, 90%)',
+    borderColorForTableHeaderAsBottom: 'hsl(232, 18%, 90%)',
+    borderColorForTableManagerDroppableList: 'hsl(232, 18%, 80%)',
+    borderColorForCollapsiblePanelHeader: 'hsl(232, 18%, 90%)',
     borderColorForStampWhenError: 'hsl(339.1304347826087, 100%, 85%)',
     borderColorForStampWhenWarning:
       'hsl(25.110132158590307, 89.0196078431%, 85%)',
-    borderColorForStampAsPositive: 'hsl(172.9608938547486, 100%, 85%)',
+    borderColorForStampAsPositive: 'hsl(175, 70%, 85%)',
     borderColorForStampAsInformation:
       'hsl(203.05555555555554, 93.9130434783%, 85%)',
-    borderColorForStampAsPrimary: 'hsl(172.9608938547486, 100%, 85%)',
-    borderColorForStampAsSecondary: 'hsl(0, 0%, 85%)',
-    borderColorForLocalizedInputLabel: '#ccc',
+    borderColorForStampAsPrimary: 'hsl(175, 70%, 85%)',
+    borderColorForStampAsSecondary: 'hsl(232, 18%, 85%)',
+    borderColorForLocalizedInputLabel: 'hsl(232, 18%, 80%)',
     borderColorForLocalizedInputLabelWhenReadonly: '#fff',
     borderColorForContentNotificationWhenError:
       'hsl(339.1304347826087, 100%, 85%)',
@@ -269,22 +296,21 @@ export const themes = {
       'hsl(203.05555555555554, 93.9130434783%, 85%)',
     borderColorForContentNotificationWhenWarning:
       'hsl(25.110132158590307, 89.0196078431%, 85%)',
-    borderColorForContentNotificationWhenSuccess:
-      'hsl(172.9608938547486, 100%, 85%)',
-    borderColorForGroupHeadingSelectInputOptions: 'hsl(0, 0%, 90%)',
+    borderColorForContentNotificationWhenSuccess: 'hsl(175, 70%, 85%)',
+    borderColorForGroupHeadingSelectInputOptions: 'hsl(232, 18%, 90%)',
     borderColorForSelectInputMenu: '#fff',
-    borderColorForSelectInputWhenReadonly: 'hsl(0, 0%, 95%)',
+    borderColorForSelectInputWhenReadonly: 'hsl(232, 18%, 95%)',
     borderColorForSelectInputMenuWhenWarning: '#fff',
     borderColorForSelectInputMenuWhenError: '#fff',
-    borderColorForCheckboxInputIcon: '#00b39e',
-    borderColorForCheckboxInputIconWhenDisabled: '#ccc',
-    borderColorForCheckboxInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
+    borderColorForCheckboxInputIcon: 'hsl(175, 55%, 45%)',
+    borderColorForCheckboxInputIconWhenDisabled: 'hsl(232, 18%, 80%)',
+    borderColorForCheckboxInputIconWhenReadonly: 'hsl(232, 18%, 60%)',
     borderColorForCheckboxInputIconWhenError: '#e60050',
-    borderColorForRadioInput: 'hsl(0, 0%, 60%)',
-    borderColorForRadioInputWhenDisabled: '#ccc',
-    borderColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
-    borderColorForRadioInputWhenChecked: '#00b39e',
-    borderColorForRadioInputWhenFocused: 'hsl(0, 0%, 60%)',
+    borderColorForRadioInput: 'hsl(232, 18%, 60%)',
+    borderColorForRadioInputWhenDisabled: 'hsl(232, 18%, 80%)',
+    borderColorForRadioInputWhenReadonly: 'hsl(232, 18%, 60%)',
+    borderColorForRadioInputWhenChecked: 'hsl(175, 55%, 45%)',
+    borderColorForRadioInputWhenFocused: 'hsl(232, 18%, 60%)',
     borderColorForPrimaryActionDropdownMenu: '#fff',
     borderColorForButtonAsSecondaryWhenInfo:
       'hsl(203.05555555555554, 93.9130434783%, 85%)',
@@ -319,64 +345,64 @@ export const themes = {
     boxShadowForViewSwitcherWhenSelected: 'none',
     boxShadowForSelectInputWhenFocused: 'inset 0 0 0 1px',
     boxShadowForCalendarMenuWhenFocused: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
+    boxShadowForTable: '0 1px 5px 0 rgba(0, 0, 0, 0.05)',
     fontColorForText: '#1a1a1a',
-    fontColorForTextWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForTextWhenDisabled: 'hsl(232, 18%, 60%)',
     fontColorForInput: '#1a1a1a',
-    fontColorForInputWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForInputWhenDisabled: 'hsl(232, 18%, 60%)',
     fontColorForInputWhenError: '#e60050',
-    fontColorForInputWhenReadonly: 'hsl(0, 0%, 40%)',
+    fontColorForInputWhenReadonly: 'hsl(232, 18%, 40%)',
     fontColorForInputWhenWarning: '#f16d0e',
     fontColorForTag: '#1a1a1a',
-    fontColorForTagRemoveIcon: 'hsl(0, 0%, 40%)',
-    fontColorForTagDragIcon: 'hsl(0, 0%, 40%)',
+    fontColorForTagRemoveIcon: 'hsl(232, 18%, 40%)',
+    fontColorForTagDragIcon: 'hsl(232, 18%, 40%)',
     fontColorForTagRemoveIconWhenHovered: '#e60050',
-    fontColorForTagWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForTagWhenDisabled: 'hsl(232, 18%, 60%)',
     fontColorForTextWhenInverted: '#fff',
     fontColorForLinkAsInverted: '#fff',
-    fontColorForLinkAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
+    fontColorForLinkAsPrimary: 'hsl(175, 55%, 25%)',
     fontColorForLinkAsSecondary: '#1a1a1a',
-    fontColorForLinkAsPrimaryWhenActive: '#00b39e',
-    fontColorForLinkAsSecondaryWhenActive: '#00b39e',
+    fontColorForLinkAsPrimaryWhenActive: 'hsl(175, 55%, 45%)',
+    fontColorForLinkAsSecondaryWhenActive: 'hsl(175, 55%, 45%)',
     fontColorForTableHeader: '#1a1a1a',
-    fontColorForLocalizedInputLabel: 'hsl(0, 0%, 60%)',
-    fontColorForViewSwitcher: 'hsl(0, 0%, 40%)',
-    fontColorForViewSwitcherWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForLocalizedInputLabel: 'hsl(232, 18%, 60%)',
+    fontColorForViewSwitcher: 'hsl(232, 18%, 40%)',
+    fontColorForViewSwitcherWhenDisabled: 'hsl(232, 18%, 60%)',
     fontColorForViewSwitcherWhenSelected: '#1a1a1a',
-    fontColorForClearInputIcon: 'hsl(0, 0%, 40%)',
+    fontColorForClearInputIcon: 'hsl(232, 18%, 40%)',
     fontColorForClearInputIconWhenHovered: '#e60050',
     fontColorForContentNotification: '#1a1a1a',
     fontColorForContentNotificationIconWhenError: '#e60050',
     fontColorForContentNotificationIconWhenWarning: '#f16d0e',
-    fontColorForContentNotificationIconWhenSuccess: '#00b39e',
+    fontColorForContentNotificationIconWhenSuccess: 'hsl(175, 55%, 45%)',
     fontColorForContentNotificationIconWhenInfo: '#078cdf',
-    fontColorForSearchInputIcon: 'hsl(0, 0%, 60%)',
-    fontColorForSearchInputIconWhenHovered: '#00b39e',
-    fontColorForSelectInputIcon: 'hsl(0, 0%, 60%)',
+    fontColorForSearchInputIcon: 'hsl(232, 18%, 60%)',
+    fontColorForSearchInputIconWhenHovered: 'hsl(175, 55%, 45%)',
+    fontColorForSelectInputIcon: 'hsl(232, 18%, 60%)',
     fontColorForSelectInputWhenError: '#e60050',
     fontColorForSelectInputWhenWarning: '#f16d0e',
     fontColorForSelectInputIconWhenError: '#e60050',
     fontColorForSelectInputIconWhenWarning: '#f16d0e',
-    fontColorForMoneyInputCurrencyDropdownIndicator: 'hsl(0, 0%, 40%)',
-    fontColorForSearchInputIconWhenReadonly: 'hsl(0, 0%, 60%)',
+    fontColorForMoneyInputCurrencyDropdownIndicator: 'hsl(232, 18%, 40%)',
+    fontColorForSearchInputIconWhenReadonly: 'hsl(232, 18%, 60%)',
     fontColorForCheckboxInputLabel: '#1a1a1a',
     fontColorForCheckboxInputLabelWhenError: '#e60050',
-    fontColorForCheckboxInputLabelWhenDisabled: 'hsl(0, 0%, 60%)',
-    fontColorForCheckboxInputLabelWhenReadonly: 'hsl(0, 0%, 40%)',
-    fontColorForRadioInputWhenDisabled: 'hsl(0, 0%, 60%)',
+    fontColorForCheckboxInputLabelWhenDisabled: 'hsl(232, 18%, 60%)',
+    fontColorForCheckboxInputLabelWhenReadonly: 'hsl(232, 18%, 40%)',
+    fontColorForRadioInputWhenDisabled: 'hsl(232, 18%, 60%)',
     fontColorForRadioInputWhenError: '#e60050',
-    fontColorForRadioInputWhenReadonly: 'hsl(0, 0%, 60%)',
+    fontColorForRadioInputWhenReadonly: 'hsl(232, 18%, 60%)',
     fontColorForRadioInputWhenWarning: '#f16d0e',
-    fontColorForFlatButtonAsPrimary: 'hsl(172.9608938547486, 100%, 25%)',
-    fontColorForFlatButtonAsPrimaryWhenHovered: '#00b39e',
+    fontColorForFlatButtonAsPrimary: 'hsl(175, 55%, 25%)',
+    fontColorForFlatButtonAsPrimaryWhenHovered: 'hsl(175, 55%, 45%)',
     fontColorForFlatButtonAsCritical: '#e60050',
     fontColorForFlatButtonAsCriticalWhenHovered:
       'hsl(339.1304347826087, 100%, 25%)',
     fontColorForFlatButtonAsSecondary: '#1a1a1a',
     fontColorForFlatButtonAsInverted: '#fff',
-    fontColorForFlatButtonIconWhenDisabled: 'hsl(0, 0%, 60%)',
-    fontColorForSecondaryIconButtonAsPrimary:
-      'hsl(172.9608938547486, 100%, 25%)',
-    fontColorForSecondaryIconButtonAsPrimaryWhenHovered: '#00b39e',
+    fontColorForFlatButtonIconWhenDisabled: 'hsl(232, 18%, 60%)',
+    fontColorForSecondaryIconButtonAsPrimary: 'hsl(175, 55%, 25%)',
+    fontColorForSecondaryIconButtonAsPrimaryWhenHovered: 'hsl(175, 55%, 45%)',
     heightForButtonAsBig: '40px',
     heightForButtonAsMedium: '32px',
     heightForButtonAsIconAsBig: '40px',
@@ -391,7 +417,7 @@ export const themes = {
     heightForPrimaryActionDropdown: '40px',
     widthForAvatarAsMedium: '40px',
     minWidthForMoneyInputCurrencyDropdown: '80px',
-    placeholderFontColorForInput: 'hsl(0, 0%, 60%)',
+    placeholderFontColorForInput: 'hsl(232, 18%, 60%)',
     fontSizeForButton: '0.875rem',
     fontSizeForInput: '1rem',
     fontSizeForTextAsH1: '1.5rem',
@@ -413,7 +439,7 @@ export const themes = {
     fontSizeForLocalizedInputLabel: '1rem',
     fontSizeForContentNotification: '1rem',
     fontSizeForSelectInputTag: '1rem',
-    iconColorForDatetimeInputIcon: 'hsl(0, 0%, 40%)',
+    iconColorForDatetimeInputIcon: 'hsl(232, 18%, 40%)',
     iconColorForDatetimeInputIconWhenHovered: '#e60050',
     lineHeightForTextAsH1: '2.125rem',
     lineHeightForTextAsH2: '1.75rem',
@@ -537,31 +563,60 @@ export const themes = {
 } as const;
 
 const designTokens = {
-  colorPrimary: 'var(--color-primary, #00b39e)',
-  colorPrimary20: 'var(--color-primary-20, hsl(172.9608938547486, 100%, 20%))',
-  colorPrimary25: 'var(--color-primary-25, hsl(172.9608938547486, 100%, 25%))',
-  colorPrimary30: 'var(--color-primary-30, hsl(172.9608938547486, 100%, 30%))',
-  colorPrimary40: 'var(--color-primary-40, hsl(172.9608938547486, 100%, 40%))',
-  colorPrimary85: 'var(--color-primary-85, hsl(172.9608938547486, 100%, 85%))',
-  colorPrimary95: 'var(--color-primary-95, hsl(172.9608938547486, 100%, 95%))',
+  colorPrimary: 'var(--color-primary, hsl(175, 55%, 45%))',
+  colorPrimary20: 'var(--color-primary-20, hsl(175, 55%, 20%))',
+  colorPrimary25: 'var(--color-primary-25, hsl(175, 55%, 25%))',
+  colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 33%))',
+  colorPrimary40: 'var(--color-primary-40, hsl(175, 55%, 40%))',
+  colorPrimary85: 'var(--color-primary-85, hsl(175, 70%, 85%))',
+  colorPrimary95: 'var(--color-primary-95, hsl(175, 90%, 95%))',
   colorAccent: 'var(--color-accent, #213c45)',
   colorAccent10: 'var(--color-accent-10, hsl(195, 35.2941176471%, 10%))',
   colorAccent20: 'var(--color-accent-20, hsl(195, 35.2941176471%, 20%))',
   colorAccent30: 'var(--color-accent-30, hsl(195, 35.2941176471%, 30%))',
   colorAccent40: 'var(--color-accent-40, hsl(195, 35.2941176471%, 40%))',
+  colorAccent50: 'var(--color-accent-50, hsl(195, 35%, 50%))',
   colorAccent60: 'var(--color-accent-60, hsl(195, 35.2941176471%, 60%))',
+  colorAccent85: 'var(--color-accent-85, hsl(195, 35%, 85%))',
   colorAccent90: 'var(--color-accent-90, hsl(195, 35.2941176471%, 90%))',
   colorAccent95: 'var(--color-accent-95, hsl(195, 35.2941176471%, 95%))',
   colorAccent98: 'var(--color-accent-98, hsl(195, 35.2941176471%, 98%))',
-  colorNeutral: 'var(--color-neutral, #ccc)',
+  colorBrown10: 'var(--color-brown-10, hsl(35, 90%, 10%))',
+  colorBrown20: 'var(--color-brown-20, hsl(35, 50%, 20%))',
+  colorBrown35: 'var(--color-brown-35, hsl(35, 25%, 35%))',
+  colorBrown50: 'var(--color-brown-50, hsl(35, 30%, 50%))',
+  colorBrown70: 'var(--color-brown-70, hsl(35, 40%, 70%))',
+  colorBrown85: 'var(--color-brown-85, hsl(35, 60%, 85%))',
+  colorBrown90: 'var(--color-brown-90, hsl(35, 90%, 90%))',
+  colorBrown95: 'var(--color-brown-95, hsl(35, 80%, 95%))',
+  colorBrown98: 'var(--color-brown-98, hsl(35, 90%, 98%))',
+  colorPurple10: 'var(--color-purple-10, hsl(248, 90%, 10%))',
+  colorPurple20: 'var(--color-purple-20, hsl(248, 50%, 20%))',
+  colorPurple35: 'var(--color-purple-35, hsl(248, 25%, 35%))',
+  colorPurple50: 'var(--color-purple-50, hsl(248, 30%,50%))',
+  colorPurple70: 'var(--color-purple-70, hsl(248, 40%, 70%))',
+  colorPurple85: 'var(--color-purple-85, hsl(248, 60%, 85%))',
+  colorPurple90: 'var(--color-purple-90, hsl(248, 50%, 90%))',
+  colorPurple95: 'var(--color-purple-95, hsl(248, 80%, 95%))',
+  colorPurple98: 'var(--color-purple-98, hsl(248, 90%, 98%))',
+  colorTurquoise10: 'var(--color-turquoise-10, hsl(180, 90%, 10%))',
+  colorTurquoise20: 'var(--color-turquoise-20, hsl(180, 50%, 20%))',
+  colorTurquoise35: 'var(--color-turquoise-35, hsl(180, 25%, 35%))',
+  colorTurquoise50: 'var(--color-turquoise-50, hsl(180, 30%, 45%))',
+  colorTurquoise70: 'var(--color-turquoise-70, hsl(180, 40%, 70%))',
+  colorTurquoise85: 'var(--color-turquoise-85, hsl(180, 60%, 85%))',
+  colorTurquoise90: 'var(--color-turquoise-90, hsl(180, 40%, 90%))',
+  colorTurquoise95: 'var(--color-turquoise-95, hsl(180, 80%, 95%))',
+  colorTurquoise98: 'var(--color-turquoise-98, hsl(180, 90%, 98%))',
+  colorNeutral: 'var(--color-neutral, hsl(232, 18%, 80%))',
   colorNeutral05: 'var(--color-neutral-05, hsl(0deg 0% 80% / 5%))',
   colorNeutral10: 'var(--color-neutral-10, hsl(0deg 0% 80% / 10%))',
-  colorNeutral40: 'var(--color-neutral-40, hsl(0, 0%, 40%))',
-  colorNeutral60: 'var(--color-neutral-60, hsl(0, 0%, 60%))',
-  colorNeutral85: 'var(--color-neutral-85, hsl(0, 0%, 85%))',
-  colorNeutral90: 'var(--color-neutral-90, hsl(0, 0%, 90%))',
-  colorNeutral95: 'var(--color-neutral-95, hsl(0, 0%, 95%))',
-  colorNeutral98: 'var(--color-neutral-98, hsl(0, 0%, 98%))',
+  colorNeutral40: 'var(--color-neutral-40, hsl(232, 18%, 40%))',
+  colorNeutral60: 'var(--color-neutral-60, hsl(232, 18%, 60%))',
+  colorNeutral85: 'var(--color-neutral-85, hsl(232, 18%, 85%))',
+  colorNeutral90: 'var(--color-neutral-90, hsl(232, 18%, 90%))',
+  colorNeutral95: 'var(--color-neutral-95, hsl(232, 18%, 95%))',
+  colorNeutral98: 'var(--color-neutral-98, hsl(232, 18%, 98%))',
   colorInfo: 'var(--color-info, #078cdf)',
   colorInfo40:
     'var(--color-info-40, hsl(203.05555555555554, 93.9130434783%, 40%))',
@@ -653,6 +708,7 @@ const designTokens = {
     'var(--shadow-15, 0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12))',
   shadow16:
     'var(--shadow-16, 0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25))',
+  shadow17: 'var(--shadow-17, 0 1px 5px 0 rgba(0, 0, 0, 0.05))',
   constraintScale: 'var(--constraint-scale, 100%)',
   constraint1: 'var(--constraint-1, 42px)',
   constraint2: 'var(--constraint-2, 84px)',
@@ -705,7 +761,7 @@ const designTokens = {
   backgroundColorForButtonAsIconAsPrimaryWhenActive:
     'var(--background-color-for-button-as-icon-as-primary-when-active, #15A390)',
   backgroundColorForButtonAsIconAsPrimaryWhenHovered:
-    'var(--background-color-for-button-as-icon-as-primary-when-hovered, #00b39e)',
+    'var(--background-color-for-button-as-icon-as-primary-when-hovered, hsl(175, 55%, 45%))',
   backgroundColorForButtonAsIconAsInfoWhenActive:
     'var(--background-color-for-button-as-icon-as-info-when-active, #057FCC)',
   backgroundColorForButtonAsIconAsInfoWhenHovered:
@@ -724,45 +780,45 @@ const designTokens = {
   backgroundColorForInputWhenSelected:
     'var(--background-color-for-input-when-selected, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForInputWhenDisabled:
-    'var(--background-color-for-input-when-disabled, hsl(0, 0%, 95%))',
+    'var(--background-color-for-input-when-disabled, hsl(232, 18%, 95%))',
   backgroundColorForInputWhenHovered:
-    'var(--background-color-for-input-when-hovered, hsl(0, 0%, 98%))',
+    'var(--background-color-for-input-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForInputWhenFocused:
     'var(--background-color-for-input-when-focused, #fff)',
   backgroundColorForInputWhenReadonly:
-    'var(--background-color-for-input-when-readonly, hsl(0, 0%, 95%))',
+    'var(--background-color-for-input-when-readonly, hsl(232, 18%, 95%))',
   backgroundColorForInputWhenActive:
     'var(--background-color-for-input-when-active, hsl(203.05555555555554, 93.9130434783%, 95%))',
   backgroundColorForTableCellWhenHovered:
-    'var(--background-color-for-table-cell-when-hovered, hsl(0, 0%, 98%))',
+    'var(--background-color-for-table-cell-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForTableHeader:
-    'var(--background-color-for-table-header, hsl(0, 0%, 95%))',
-  backgroundColorForTag: 'var(--background-color-for-tag, hsl(0, 0%, 95%))',
+    'var(--background-color-for-table-header, hsl(232, 18%, 95%))',
+  backgroundColorForTag: 'var(--background-color-for-tag, hsl(232, 18%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
   backgroundColorForTagWhenHovered:
-    'var(--background-color-for-tag-when-hovered, hsl(0, 0%, 90%))',
+    'var(--background-color-for-tag-when-hovered, hsl(232, 18%, 90%))',
   backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
     'var(--background-color-for-collapsible-panel-header-icon-when-disabled, #fff)',
   backgroundColorForSelectInputOptionWhenHovered:
-    'var(--background-color-for-select-input-option-when-hovered, hsl(0, 0%, 98%))',
+    'var(--background-color-for-select-input-option-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForAvatar: 'var(--background-color-for-avatar, #213c45)',
   backgroundColorForAvatarWhenHighlighted:
     'var(--background-color-for-avatar-when-highlighted, hsl(195, 35.2941176471%, 30%))',
   backgroundColorForStampAsPositive:
-    'var(--background-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 95%))',
+    'var(--background-color-for-stamp-as-positive, hsl(175, 90%, 95%))',
   backgroundColorForLocalizedInputLabel:
     'var(--background-color-for-localized-input-label, #fff)',
   backgroundColorForLocalizedInputLabelWhenReadonly:
-    'var(--background-color-for-localized-input-label-when-readonly, hsl(0, 0%, 95%))',
+    'var(--background-color-for-localized-input-label-when-readonly, hsl(232, 18%, 95%))',
   backgroundColorForLocalizedInputLabelWhenDisabled:
-    'var(--background-color-for-localized-input-label-when-disabled, hsl(0, 0%, 95%))',
+    'var(--background-color-for-localized-input-label-when-disabled, hsl(232, 18%, 95%))',
   backgroundColorForLocalizedRichTextBodyButtonWhenActive:
     'var(--background-color-for-localized-rich-text-body-button-when-active, hsl(195, 35.2941176471%, 20%))',
   backgroundColorForLocalizedRichTextBodyButton:
-    'var(--background-color-for-localized-rich-text-body-button, hsl(0, 0%, 95%))',
+    'var(--background-color-for-localized-rich-text-body-button, hsl(232, 18%, 95%))',
   backgroundColorForRichTextDropdownWhenHovered:
-    'var(--background-color-for-rich-text-dropdown-when-hovered, hsl(0, 0%, 95%))',
+    'var(--background-color-for-rich-text-dropdown-when-hovered, hsl(232, 18%, 95%))',
   backgroundColorForRichTextMoreStylesDropdownWhenHovered:
     'var(--background-color-for-rich-text-more-styles-dropdown-when-hovered, hsl(203.05555555555554, 93.9130434783%, 95%))',
   backgroundColorForRichTextButton:
@@ -774,9 +830,9 @@ const designTokens = {
   backgroundColorForViewSwitcherWhenDisabled:
     'var(--background-color-for-view-switcher-when-disabled, #fff)',
   backgroundColorForViewSwitcherWhenSelected:
-    'var(--background-color-for-view-switcher-when-selected, hsl(0, 0%, 95%))',
+    'var(--background-color-for-view-switcher-when-selected, hsl(232, 18%, 95%))',
   backgroundColorForViewSwitcherWhenHovered:
-    'var(--background-color-for-view-switcher-when-hovered, hsl(0, 0%, 95%))',
+    'var(--background-color-for-view-switcher-when-hovered, hsl(232, 18%, 95%))',
   backgroundColorForContentNotificationWhenError:
     'var(--background-color-for-content-notification-when-error, hsl(339.1304347826087, 100%, 95%))',
   backgroundColorForContentNotificationWhenInfo:
@@ -784,31 +840,31 @@ const designTokens = {
   backgroundColorForContentNotificationWhenWarning:
     'var(--background-color-for-content-notification-when-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
   backgroundColorForContentNotificationWhenSuccess:
-    'var(--background-color-for-content-notification-when-success, hsl(172.9608938547486, 100%, 95%))',
+    'var(--background-color-for-content-notification-when-success, hsl(175, 90%, 95%))',
   backgroundColorForCheckboxInputIcon:
-    'var(--background-color-for-checkbox-input-icon, #00b39e)',
+    'var(--background-color-for-checkbox-input-icon, hsl(175, 55%, 45%))',
   backgroundColorForCheckboxInputIconWhenDisabled:
-    'var(--background-color-for-checkbox-input-icon-when-disabled, #ccc)',
+    'var(--background-color-for-checkbox-input-icon-when-disabled, hsl(232, 18%, 80%))',
   backgroundColorForCheckboxInputIconWhenReadonly:
-    'var(--background-color-for-checkbox-input-icon-when-readonly, hsl(0, 0%, 60%))',
+    'var(--background-color-for-checkbox-input-icon-when-readonly, hsl(232, 18%, 60%))',
   backgroundColorForCheckboxInputIconWhenError:
     'var(--background-color-for-checkbox-input-icon-when-error, #e60050)',
   backgroundColorForCheckboxInputIconWhenHovered:
-    'var(--background-color-for-checkbox-input-icon-when-hovered, hsl(0, 0%, 90%))',
+    'var(--background-color-for-checkbox-input-icon-when-hovered, hsl(232, 18%, 90%))',
   backgroundColorForPrimaryActionDropdownWhenActive:
-    'var(--background-color-for-primary-action-dropdown-when-active, hsl(0, 0%, 90%))',
+    'var(--background-color-for-primary-action-dropdown-when-active, hsl(232, 18%, 90%))',
   backgroundColorForPrimaryActionDropdownWhenDisabled:
-    'var(--background-color-for-primary-action-dropdown-when-disabled, hsl(0, 0%, 95%))',
+    'var(--background-color-for-primary-action-dropdown-when-disabled, hsl(232, 18%, 95%))',
   backgroundColorForToggleInputTrack:
-    'var(--background-color-for-toggle-input-track, #ccc)',
+    'var(--background-color-for-toggle-input-track, hsl(232, 18%, 80%))',
   backgroundColorForToggleInputTrackWhenDisabled:
-    'var(--background-color-for-toggle-input-track-when-disabled, hsl(0, 0%, 90%))',
+    'var(--background-color-for-toggle-input-track-when-disabled, hsl(232, 18%, 90%))',
   backgroundColorForToggleInputThumbWhenDisabled:
-    'var(--background-color-for-toggle-input-thumb-when-disabled, hsl(0, 0%, 60%))',
+    'var(--background-color-for-toggle-input-thumb-when-disabled, hsl(232, 18%, 60%))',
   backgroundColorForToggleInputTrackWhenChecked:
-    'var(--background-color-for-toggle-input-track-when-checked, hsl(172.9608938547486, 100%, 40%))',
+    'var(--background-color-for-toggle-input-track-when-checked, hsl(175, 55%, 40%))',
   backgroundColorForToggleInputThumbWhenChecked:
-    'var(--background-color-for-toggle-input-thumb-when-checked, hsl(172.9608938547486, 100%, 25%))',
+    'var(--background-color-for-toggle-input-thumb-when-checked, hsl(175, 55%, 25%))',
   backgroundColorForToggleInputTrackWhenCheckedAndDisabled:
     'var(--background-color-for-toggle-input-track-when-checked-and-disabled, hsl(195, 35.2941176471%, 90%))',
   backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
@@ -836,11 +892,11 @@ const designTokens = {
   borderForRadioInputOption: 'var(--border-for-radio-input-option, 2px)',
   borderForCalendarMenuWhenFocused:
     'var(--border-for-calendar-menu-when-focused, none)',
-  borderColorForInput: 'var(--border-color-for-input, #ccc)',
+  borderColorForInput: 'var(--border-color-for-input, hsl(232, 18%, 80%))',
   borderColorForInputWhenFocused:
-    'var(--border-color-for-input-when-focused, #00b39e)',
+    'var(--border-color-for-input-when-focused, hsl(175, 55%, 45%))',
   borderColorForInputWhenDisabled:
-    'var(--border-color-for-input-when-disabled, #ccc)',
+    'var(--border-color-for-input-when-disabled, hsl(232, 18%, 80%))',
   borderColorForInputWhenReadonly:
     'var(--border-color-for-input-when-readonly, #fff)',
   borderColorForInputWhenError:
@@ -848,41 +904,42 @@ const designTokens = {
   borderColorForInputWhenWarning:
     'var(--border-color-for-input-when-warning, #f16d0e)',
   borderColorForInputWhenHovered:
-    'var(--border-color-for-input-when-hovered, #ccc)',
-  borderColorForTag: 'var(--border-color-for-tag, #ccc)',
+    'var(--border-color-for-input-when-hovered, hsl(232, 18%, 80%))',
+  borderColorForTag: 'var(--border-color-for-tag, hsl(232, 18%, 80%))',
   borderColorForTagWarning: 'var(--border-color-for-tag-warning, #f16d0e)',
   borderColorForTagWhenFocused:
-    'var(--border-color-for-tag-when-focused, #ccc)',
+    'var(--border-color-for-tag-when-focused, hsl(232, 18%, 80%))',
   borderColorForTagWhenHovered:
-    'var(--border-color-for-tag-when-hovered, #ccc)',
-  borderColorForButtonAsIcon: 'var(--border-color-for-button-as-icon, #ccc)',
+    'var(--border-color-for-tag-when-hovered, hsl(232, 18%, 80%))',
+  borderColorForButtonAsIcon:
+    'var(--border-color-for-button-as-icon, hsl(232, 18%, 80%))',
   borderColorForButtonAsIconAsInfo:
-    'var(--border-color-for-button-as-icon-as-info, #ccc)',
+    'var(--border-color-for-button-as-icon-as-info, hsl(232, 18%, 80%))',
   borderColorForButtonAsIconAsPrimary:
-    'var(--border-color-for-button-as-icon-as-primary, #ccc)',
+    'var(--border-color-for-button-as-icon-as-primary, hsl(232, 18%, 80%))',
   borderColorForButtonAsIconWhenDisabled:
     'var(--border-color-for-button-as-icon-when-disabled, #fff)',
   borderColorForTableHeader: 'var(--border-color-for-table-header, #fff)',
   borderColorForTableHeaderAsBottom:
-    'var(--border-color-for-table-header-as-bottom, hsl(0, 0%, 90%))',
+    'var(--border-color-for-table-header-as-bottom, hsl(232, 18%, 90%))',
   borderColorForTableManagerDroppableList:
-    'var(--border-color-for-table-manager-droppable-list, #ccc)',
+    'var(--border-color-for-table-manager-droppable-list, hsl(232, 18%, 80%))',
   borderColorForCollapsiblePanelHeader:
-    'var(--border-color-for-collapsible-panel-header, hsl(0, 0%, 90%))',
+    'var(--border-color-for-collapsible-panel-header, hsl(232, 18%, 90%))',
   borderColorForStampWhenError:
     'var(--border-color-for-stamp-when-error, hsl(339.1304347826087, 100%, 85%))',
   borderColorForStampWhenWarning:
     'var(--border-color-for-stamp-when-warning, hsl(25.110132158590307, 89.0196078431%, 85%))',
   borderColorForStampAsPositive:
-    'var(--border-color-for-stamp-as-positive, hsl(172.9608938547486, 100%, 85%))',
+    'var(--border-color-for-stamp-as-positive, hsl(175, 70%, 85%))',
   borderColorForStampAsInformation:
     'var(--border-color-for-stamp-as-information, hsl(203.05555555555554, 93.9130434783%, 85%))',
   borderColorForStampAsPrimary:
-    'var(--border-color-for-stamp-as-primary, hsl(172.9608938547486, 100%, 85%))',
+    'var(--border-color-for-stamp-as-primary, hsl(175, 70%, 85%))',
   borderColorForStampAsSecondary:
-    'var(--border-color-for-stamp-as-secondary, hsl(0, 0%, 85%))',
+    'var(--border-color-for-stamp-as-secondary, hsl(232, 18%, 85%))',
   borderColorForLocalizedInputLabel:
-    'var(--border-color-for-localized-input-label, #ccc)',
+    'var(--border-color-for-localized-input-label, hsl(232, 18%, 80%))',
   borderColorForLocalizedInputLabelWhenReadonly:
     'var(--border-color-for-localized-input-label-when-readonly, #fff)',
   borderColorForContentNotificationWhenError:
@@ -892,35 +949,35 @@ const designTokens = {
   borderColorForContentNotificationWhenWarning:
     'var(--border-color-for-content-notification-when-warning, hsl(25.110132158590307, 89.0196078431%, 85%))',
   borderColorForContentNotificationWhenSuccess:
-    'var(--border-color-for-content-notification-when-success, hsl(172.9608938547486, 100%, 85%))',
+    'var(--border-color-for-content-notification-when-success, hsl(175, 70%, 85%))',
   borderColorForGroupHeadingSelectInputOptions:
-    'var(--border-color-for-group-heading-select-input-options, hsl(0, 0%, 90%))',
+    'var(--border-color-for-group-heading-select-input-options, hsl(232, 18%, 90%))',
   borderColorForSelectInputMenu:
     'var(--border-color-for-select-input-menu, #fff)',
   borderColorForSelectInputWhenReadonly:
-    'var(--border-color-for-select-input-when-readonly, hsl(0, 0%, 95%))',
+    'var(--border-color-for-select-input-when-readonly, hsl(232, 18%, 95%))',
   borderColorForSelectInputMenuWhenWarning:
     'var(--border-color-for-select-input-menu-when-warning, #fff)',
   borderColorForSelectInputMenuWhenError:
     'var(--border-color-for-select-input-menu-when-error, #fff)',
   borderColorForCheckboxInputIcon:
-    'var(--border-color-for-checkbox-input-icon, #00b39e)',
+    'var(--border-color-for-checkbox-input-icon, hsl(175, 55%, 45%))',
   borderColorForCheckboxInputIconWhenDisabled:
-    'var(--border-color-for-checkbox-input-icon-when-disabled, #ccc)',
+    'var(--border-color-for-checkbox-input-icon-when-disabled, hsl(232, 18%, 80%))',
   borderColorForCheckboxInputIconWhenReadonly:
-    'var(--border-color-for-checkbox-input-icon-when-readonly, hsl(0, 0%, 60%))',
+    'var(--border-color-for-checkbox-input-icon-when-readonly, hsl(232, 18%, 60%))',
   borderColorForCheckboxInputIconWhenError:
     'var(--border-color-for-checkbox-input-icon-when-error, #e60050)',
   borderColorForRadioInput:
-    'var(--border-color-for-radio-input, hsl(0, 0%, 60%))',
+    'var(--border-color-for-radio-input, hsl(232, 18%, 60%))',
   borderColorForRadioInputWhenDisabled:
-    'var(--border-color-for-radio-input-when-disabled, #ccc)',
+    'var(--border-color-for-radio-input-when-disabled, hsl(232, 18%, 80%))',
   borderColorForRadioInputWhenReadonly:
-    'var(--border-color-for-radio-input-when-readonly, hsl(0, 0%, 60%))',
+    'var(--border-color-for-radio-input-when-readonly, hsl(232, 18%, 60%))',
   borderColorForRadioInputWhenChecked:
-    'var(--border-color-for-radio-input-when-checked, #00b39e)',
+    'var(--border-color-for-radio-input-when-checked, hsl(175, 55%, 45%))',
   borderColorForRadioInputWhenFocused:
-    'var(--border-color-for-radio-input-when-focused, hsl(0, 0%, 60%))',
+    'var(--border-color-for-radio-input-when-focused, hsl(232, 18%, 60%))',
   borderColorForPrimaryActionDropdownMenu:
     'var(--border-color-for-primary-action-dropdown-menu, #fff)',
   borderColorForButtonAsSecondaryWhenInfo:
@@ -972,48 +1029,50 @@ const designTokens = {
     'var(--box-shadow-for-select-input-when-focused, inset 0 0 0 1px)',
   boxShadowForCalendarMenuWhenFocused:
     'var(--box-shadow-for-calendar-menu-when-focused, 0 2px 5px 0px rgba(0, 0, 0, 0.15))',
+  boxShadowForTable:
+    'var(--box-shadow-for-table, 0 1px 5px 0 rgba(0, 0, 0, 0.05))',
   fontColorForText: 'var(--font-color-for-text, #1a1a1a)',
   fontColorForTextWhenDisabled:
-    'var(--font-color-for-text-when-disabled, hsl(0, 0%, 60%))',
+    'var(--font-color-for-text-when-disabled, hsl(232, 18%, 60%))',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
-    'var(--font-color-for-input-when-disabled, hsl(0, 0%, 60%))',
+    'var(--font-color-for-input-when-disabled, hsl(232, 18%, 60%))',
   fontColorForInputWhenError: 'var(--font-color-for-input-when-error, #e60050)',
   fontColorForInputWhenReadonly:
-    'var(--font-color-for-input-when-readonly, hsl(0, 0%, 40%))',
+    'var(--font-color-for-input-when-readonly, hsl(232, 18%, 40%))',
   fontColorForInputWhenWarning:
     'var(--font-color-for-input-when-warning, #f16d0e)',
   fontColorForTag: 'var(--font-color-for-tag, #1a1a1a)',
   fontColorForTagRemoveIcon:
-    'var(--font-color-for-tag-remove-icon, hsl(0, 0%, 40%))',
+    'var(--font-color-for-tag-remove-icon, hsl(232, 18%, 40%))',
   fontColorForTagDragIcon:
-    'var(--font-color-for-tag-drag-icon, hsl(0, 0%, 40%))',
+    'var(--font-color-for-tag-drag-icon, hsl(232, 18%, 40%))',
   fontColorForTagRemoveIconWhenHovered:
     'var(--font-color-for-tag-remove-icon-when-hovered, #e60050)',
   fontColorForTagWhenDisabled:
-    'var(--font-color-for-tag-when-disabled, hsl(0, 0%, 60%))',
+    'var(--font-color-for-tag-when-disabled, hsl(232, 18%, 60%))',
   fontColorForTextWhenInverted:
     'var(--font-color-for-text-when-inverted, #fff)',
   fontColorForLinkAsInverted: 'var(--font-color-for-link-as-inverted, #fff)',
   fontColorForLinkAsPrimary:
-    'var(--font-color-for-link-as-primary, hsl(172.9608938547486, 100%, 25%))',
+    'var(--font-color-for-link-as-primary, hsl(175, 55%, 25%))',
   fontColorForLinkAsSecondary:
     'var(--font-color-for-link-as-secondary, #1a1a1a)',
   fontColorForLinkAsPrimaryWhenActive:
-    'var(--font-color-for-link-as-primary-when-active, #00b39e)',
+    'var(--font-color-for-link-as-primary-when-active, hsl(175, 55%, 45%))',
   fontColorForLinkAsSecondaryWhenActive:
-    'var(--font-color-for-link-as-secondary-when-active, #00b39e)',
+    'var(--font-color-for-link-as-secondary-when-active, hsl(175, 55%, 45%))',
   fontColorForTableHeader: 'var(--font-color-for-table-header, #1a1a1a)',
   fontColorForLocalizedInputLabel:
-    'var(--font-color-for-localized-input-label, hsl(0, 0%, 60%))',
+    'var(--font-color-for-localized-input-label, hsl(232, 18%, 60%))',
   fontColorForViewSwitcher:
-    'var(--font-color-for-view-switcher, hsl(0, 0%, 40%))',
+    'var(--font-color-for-view-switcher, hsl(232, 18%, 40%))',
   fontColorForViewSwitcherWhenDisabled:
-    'var(--font-color-for-view-switcher-when-disabled, hsl(0, 0%, 60%))',
+    'var(--font-color-for-view-switcher-when-disabled, hsl(232, 18%, 60%))',
   fontColorForViewSwitcherWhenSelected:
     'var(--font-color-for-view-switcher-when-selected, #1a1a1a)',
   fontColorForClearInputIcon:
-    'var(--font-color-for-clear-input-icon, hsl(0, 0%, 40%))',
+    'var(--font-color-for-clear-input-icon, hsl(232, 18%, 40%))',
   fontColorForClearInputIconWhenHovered:
     'var(--font-color-for-clear-input-icon-when-hovered, #e60050)',
   fontColorForContentNotification:
@@ -1023,15 +1082,15 @@ const designTokens = {
   fontColorForContentNotificationIconWhenWarning:
     'var(--font-color-for-content-notification-icon-when-warning, #f16d0e)',
   fontColorForContentNotificationIconWhenSuccess:
-    'var(--font-color-for-content-notification-icon-when-success, #00b39e)',
+    'var(--font-color-for-content-notification-icon-when-success, hsl(175, 55%, 45%))',
   fontColorForContentNotificationIconWhenInfo:
     'var(--font-color-for-content-notification-icon-when-info, #078cdf)',
   fontColorForSearchInputIcon:
-    'var(--font-color-for-search-input-icon, hsl(0, 0%, 60%))',
+    'var(--font-color-for-search-input-icon, hsl(232, 18%, 60%))',
   fontColorForSearchInputIconWhenHovered:
-    'var(--font-color-for-search-input-icon-when-hovered, #00b39e)',
+    'var(--font-color-for-search-input-icon-when-hovered, hsl(175, 55%, 45%))',
   fontColorForSelectInputIcon:
-    'var(--font-color-for-select-input-icon, hsl(0, 0%, 60%))',
+    'var(--font-color-for-select-input-icon, hsl(232, 18%, 60%))',
   fontColorForSelectInputWhenError:
     'var(--font-color-for-select-input-when-error, #e60050)',
   fontColorForSelectInputWhenWarning:
@@ -1041,29 +1100,29 @@ const designTokens = {
   fontColorForSelectInputIconWhenWarning:
     'var(--font-color-for-select-input-icon-when-warning, #f16d0e)',
   fontColorForMoneyInputCurrencyDropdownIndicator:
-    'var(--font-color-for-money-input-currency-dropdown-indicator, hsl(0, 0%, 40%))',
+    'var(--font-color-for-money-input-currency-dropdown-indicator, hsl(232, 18%, 40%))',
   fontColorForSearchInputIconWhenReadonly:
-    'var(--font-color-for-search-input-icon-when-readonly, hsl(0, 0%, 60%))',
+    'var(--font-color-for-search-input-icon-when-readonly, hsl(232, 18%, 60%))',
   fontColorForCheckboxInputLabel:
     'var(--font-color-for-checkbox-input-label, #1a1a1a)',
   fontColorForCheckboxInputLabelWhenError:
     'var(--font-color-for-checkbox-input-label-when-error, #e60050)',
   fontColorForCheckboxInputLabelWhenDisabled:
-    'var(--font-color-for-checkbox-input-label-when-disabled, hsl(0, 0%, 60%))',
+    'var(--font-color-for-checkbox-input-label-when-disabled, hsl(232, 18%, 60%))',
   fontColorForCheckboxInputLabelWhenReadonly:
-    'var(--font-color-for-checkbox-input-label-when-readonly, hsl(0, 0%, 40%))',
+    'var(--font-color-for-checkbox-input-label-when-readonly, hsl(232, 18%, 40%))',
   fontColorForRadioInputWhenDisabled:
-    'var(--font-color-for-radio-input-when-disabled, hsl(0, 0%, 60%))',
+    'var(--font-color-for-radio-input-when-disabled, hsl(232, 18%, 60%))',
   fontColorForRadioInputWhenError:
     'var(--font-color-for-radio-input-when-error, #e60050)',
   fontColorForRadioInputWhenReadonly:
-    'var(--font-color-for-radio-input-when-readonly, hsl(0, 0%, 60%))',
+    'var(--font-color-for-radio-input-when-readonly, hsl(232, 18%, 60%))',
   fontColorForRadioInputWhenWarning:
     'var(--font-color-for-radio-input-when-warning, #f16d0e)',
   fontColorForFlatButtonAsPrimary:
-    'var(--font-color-for-flat-button-as-primary, hsl(172.9608938547486, 100%, 25%))',
+    'var(--font-color-for-flat-button-as-primary, hsl(175, 55%, 25%))',
   fontColorForFlatButtonAsPrimaryWhenHovered:
-    'var(--font-color-for-flat-button-as-primary-when-hovered, #00b39e)',
+    'var(--font-color-for-flat-button-as-primary-when-hovered, hsl(175, 55%, 45%))',
   fontColorForFlatButtonAsCritical:
     'var(--font-color-for-flat-button-as-critical, #e60050)',
   fontColorForFlatButtonAsCriticalWhenHovered:
@@ -1073,11 +1132,11 @@ const designTokens = {
   fontColorForFlatButtonAsInverted:
     'var(--font-color-for-flat-button-as-inverted, #fff)',
   fontColorForFlatButtonIconWhenDisabled:
-    'var(--font-color-for-flat-button-icon-when-disabled, hsl(0, 0%, 60%))',
+    'var(--font-color-for-flat-button-icon-when-disabled, hsl(232, 18%, 60%))',
   fontColorForSecondaryIconButtonAsPrimary:
-    'var(--font-color-for-secondary-icon-button-as-primary, hsl(172.9608938547486, 100%, 25%))',
+    'var(--font-color-for-secondary-icon-button-as-primary, hsl(175, 55%, 25%))',
   fontColorForSecondaryIconButtonAsPrimaryWhenHovered:
-    'var(--font-color-for-secondary-icon-button-as-primary-when-hovered, #00b39e)',
+    'var(--font-color-for-secondary-icon-button-as-primary-when-hovered, hsl(175, 55%, 45%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForButtonAsIconAsBig: 'var(--height-for-button-as-icon-as-big, 40px)',
@@ -1099,7 +1158,7 @@ const designTokens = {
   minWidthForMoneyInputCurrencyDropdown:
     'var(--min-width-for-money-input-currency-dropdown, 80px)',
   placeholderFontColorForInput:
-    'var(--placeholder-font-color-for-input, hsl(0, 0%, 60%))',
+    'var(--placeholder-font-color-for-input, hsl(232, 18%, 60%))',
   fontSizeForButton: 'var(--font-size-for-button, 0.875rem)',
   fontSizeForInput: 'var(--font-size-for-input, 1rem)',
   fontSizeForTextAsH1: 'var(--font-size-for-text-as-h-1, 1.5rem)',
@@ -1124,7 +1183,7 @@ const designTokens = {
     'var(--font-size-for-content-notification, 1rem)',
   fontSizeForSelectInputTag: 'var(--font-size-for-select-input-tag, 1rem)',
   iconColorForDatetimeInputIcon:
-    'var(--icon-color-for-datetime-input-icon, hsl(0, 0%, 40%))',
+    'var(--icon-color-for-datetime-input-icon, hsl(232, 18%, 40%))',
   iconColorForDatetimeInputIconWhenHovered:
     'var(--icon-color-for-datetime-input-icon-when-hovered, #e60050)',
   lineHeightForTextAsH1: 'var(--line-height-for-text-as-h-1, 2.125rem)',

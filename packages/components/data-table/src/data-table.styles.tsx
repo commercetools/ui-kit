@@ -48,6 +48,10 @@ type TTableContainer = {
 const TableContainer = styled.div<TTableContainer>`
   position: relative;
   z-index: 0;
+  box-shadow: ${designTokens.boxShadowForTable};
+  border: 1px solid ${designTokens.colorNeutral95};
+  border-radius: ${designTokens.borderRadius4};
+
   ${(props) =>
     // this is needed in order to have a sticky header
     props.maxHeight ? `overflow-x: auto;` : ''}
