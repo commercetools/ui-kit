@@ -23,6 +23,10 @@ export type TAvatarProps = {
    * The size of the rendered avatar.
    */
   size: 's' | 'm' | 'l';
+  /**
+   * The color of the avatar.
+   */
+  color: 'accent' | 'purple' | 'turquoise' | 'brown';
 };
 
 export type TGravatarImgProps = Pick<
@@ -35,18 +39,40 @@ export type TInitialsProps = Pick<
   'firstName' | 'lastName' | 'size'
 >;
 
+type TSizeProp = Pick<TAvatarProps, 'size'>;
+const fontSizePerInitialsLength = ({ size }: TSizeProp) => {
+  return (initials: string) => {
+    const initialsLength = initials?.length;
+
+    if (size === 's') {
+      return initialsLength > 1
+        ? designTokens.fontSizeForAvatarAsSmallWhenTwoChars
+        : designTokens.fontSizeForAvatarAsSmallWhenOneChar;
+    } else if (size === 'm') {
+      return initialsLength > 1
+        ? designTokens.fontSizeForAvatarAsMediumWhenTwoChars
+        : designTokens.fontSizeForAvatarAsMediumWhenOneChar;
+    } else if (size === 'l') {
+      return initialsLength > 1
+        ? designTokens.fontSizeForAvatarAsBigWhenTwoChars
+        : designTokens.fontSizeForAvatarAsBigWhenOneChar;
+    }
+    return;
+  };
+};
+
 const avatarSizes = {
   s: {
-    width: '26px',
-    fontSize: designTokens.fontSizeForAvatarAsSmall,
+    width: '32px',
+    fontSize: fontSizePerInitialsLength({ size: 's' }),
   },
   m: {
     width: designTokens.widthForAvatarAsMedium,
-    fontSize: designTokens.fontSizeForAvatarAsMedium,
+    fontSize: fontSizePerInitialsLength({ size: 'm' }),
   },
   l: {
     width: '100px',
-    fontSize: designTokens.fontSizeForAvatarAsBig,
+    fontSize: fontSizePerInitialsLength({ size: 'l' }),
   },
 };
 
@@ -110,19 +136,22 @@ const GravatarImg = (props: TGravatarImgProps) => (
 );
 GravatarImg.displayName = 'GravatarImg';
 
-const Initials = (props: TInitialsProps) => (
-  <div
-    css={css`
-      position: absolute;
-      font-size: ${avatarSizes[props.size].fontSize};
-    `}
-  >
-    {getInitialsFromName({
-      firstName: props.firstName,
-      lastName: props.lastName,
-    })}
-  </div>
-);
+const Initials = (props: TInitialsProps) => {
+  const initialsFromName = getInitialsFromName({
+    firstName: props.firstName,
+    lastName: props.lastName,
+  });
+  return (
+    <div
+      css={css`
+        position: absolute;
+        font-size: ${avatarSizes[props.size].fontSize(initialsFromName)};
+      `}
+    >
+      {initialsFromName}
+    </div>
+  );
+};
 Initials.displayName = 'Initials';
 
 const Avatar = (props: TAvatarProps) => (
@@ -132,6 +161,7 @@ const Avatar = (props: TAvatarProps) => (
       background-color: ${designTokens.backgroundColorForAvatar};
       border-radius: 100%;
       font-size: ${designTokens.fontSizeDefault};
+      font-weight: ${designTokens.fontWeight600};
       color: ${designTokens.colorSurface};
       display: flex;
       justify-content: center;
