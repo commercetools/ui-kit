@@ -10,7 +10,13 @@ export const component = () => (
     <Spec label="minimal">
       <Label>Hello</Label>
     </Spec>
-    <Spec label="when bold">
+    <Spec label="when fontWeight regular">
+      <Label fontWeight="regular">Hello</Label>
+    </Spec>
+    <Spec label="when fontWeight medium">
+      <Label fontWeight="medium">Hello</Label>
+    </Spec>
+    <Spec label="when fontWeight bold">
       <Label fontWeight="bold">Hello</Label>
     </Spec>
     <Spec label="with required indicator">

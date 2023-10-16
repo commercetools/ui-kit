@@ -225,9 +225,7 @@ Body.displayName = 'TextBody';
 
 export type TDetailProps = {
   /**
-   * @deprecated
-   *
-   * `isBold` prop is being deprecatied in favor of the new `fontWeight` prop.
+   * @deprecated: use the new `fontWeight` prop
    */
   isBold?: boolean;
   isItalic?: boolean;

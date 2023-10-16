@@ -99,7 +99,13 @@ export const component = () => (
     <Spec label="Body">
       <Text.Body>Body text</Text.Body>
     </Spec>
-    <Spec label="Body - bold">
+    <Spec label="Body - fontWeight - regular">
+      <Text.Body fontWeight="regular">Body text regular</Text.Body>
+    </Spec>
+    <Spec label="Body - fontWeight - medium">
+      <Text.Body fontWeight="medium">Body text medium</Text.Body>
+    </Spec>
+    <Spec label="Body - fontWeight - bold">
       <Text.Body fontWeight="bold">Body text bold</Text.Body>
     </Spec>
     <Spec label="Body - italic">
@@ -144,7 +150,13 @@ export const component = () => (
     <Spec label="Detail">
       <Text.Detail>Detail text</Text.Detail>
     </Spec>
-    <Spec label="Detail - bold">
+    <Spec label="Detail - fontWeight - regular">
+      <Text.Detail fontWeight="regular">Detail text regular</Text.Detail>
+    </Spec>
+    <Spec label="Detail - fontWeight - medium">
+      <Text.Detail fontWeight="medium">Detail text medium</Text.Detail>
+    </Spec>
+    <Spec label="Detail - fontWeight - bold">
       <Text.Detail fontWeight="bold">Detail text bold</Text.Detail>
     </Spec>
     <Spec label="Detail - italic">
@@ -184,6 +196,55 @@ export const component = () => (
         </Text.Detail>
       </Spec>
     </NarrowBox>
+    <Spec label="Caption">
+      <Text.Caption>Caption text</Text.Caption>
+    </Spec>
+    <Spec label="Caption - fontWeight - regular">
+      <Text.Caption fontWeight="regular">Caption text regular</Text.Caption>
+    </Spec>
+    <Spec label="Caption - fontWeight - medium">
+      <Text.Caption fontWeight="medium">Caption text medium</Text.Caption>
+    </Spec>
+    <Spec label="Caption - fontWeight - bold">
+      <Text.Caption fontWeight="bold">Caption text bold</Text.Caption>
+    </Spec>
+    <Spec label="Caption - italic">
+      <Text.Caption isItalic={true}>Caption text italic</Text.Caption>
+    </Spec>
+    <Spec label="Caption - strikethrough">
+      <Text.Caption isStrikethrough={true}>
+        Caption text strikethrough
+      </Text.Caption>
+    </Spec>
+    <Spec label="Caption - tone - primary">
+      <Text.Caption tone="primary">Caption text primary</Text.Caption>
+    </Spec>
+    <Spec label="Caption - tone - secondary">
+      <Text.Caption tone="secondary">Caption text secondary</Text.Caption>
+    </Spec>
+    <Spec label="Caption - tone - information">
+      <Text.Caption tone="information">Caption text information</Text.Caption>
+    </Spec>
+    <Spec label="Caption - tone - positive">
+      <Text.Caption tone="positive">Caption text positive</Text.Caption>
+    </Spec>
+    <Spec label="Caption - tone - negative">
+      <Text.Caption tone="negative">Caption text negative</Text.Caption>
+    </Spec>
+    <NarrowBox>
+      <Spec label="Caption - truncate">
+        <Text.Caption truncate={true}>
+          A longer caption text that needs to be truncated.
+        </Text.Caption>
+      </Spec>
+    </NarrowBox>
+    <NarrowBox>
+      <Spec label="Caption - nowrap">
+        <Text.Caption nowrap={true}>
+          A longer title that should not be new line
+        </Text.Caption>
+      </Spec>
+    </NarrowBox>
     <Spec label="Headline - h1 (intl message)">
       <Text.Headline as="h1" intlMessage={intlMessage} />
     </Spec>
@@ -213,6 +274,9 @@ export const component = () => (
     </Spec>
     <Spec label="Detail (intl message)">
       <Text.Detail intlMessage={intlMessage} />
+    </Spec>
+    <Spec label="Caption (intl message)">
+      <Text.Caption intlMessage={intlMessage} />
     </Spec>
   </Suite>
 );
