@@ -9,7 +9,6 @@
 '@commercetools-uikit/design-system': minor
 ---
 
-feat(Typography): update Text.Body/Detail components and create Caption component
 
 Introducing a new Text component named Caption which will render the smallest text available.
 Example:
