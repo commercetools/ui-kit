@@ -193,18 +193,18 @@ const Avatar = (props: TAvatarProps) => {
         size={props.size}
         isHighlighted={props.isHighlighted}
       />
-      <Initials
-        size={props.size}
-        firstName={props.firstName}
-        lastName={props.lastName}
-      />
-      <>
-        {props.icon &&
-          cloneElement(props.icon, {
-            size: 'scale',
-            color: designTokens[iconColor],
-          })}
-      </>
+      {props.icon ? (
+        cloneElement(props.icon, {
+          size: 'scale',
+          color: designTokens[iconColor],
+        })
+      ) : (
+        <Initials
+          size={props.size}
+          firstName={props.firstName}
+          lastName={props.lastName}
+        />
+      )}
     </div>
   );
 };
