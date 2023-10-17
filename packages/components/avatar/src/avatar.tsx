@@ -154,6 +154,10 @@ const Initials = (props: TInitialsProps) => {
 };
 Initials.displayName = 'Initials';
 
+// background-color: ${designTokens[
+//   `backgroundColor${props.color}ForAvatar`
+// ]};
+
 const Avatar = (props: TAvatarProps) => (
   <div
     css={css`
