@@ -37,7 +37,7 @@ export type TLabelProps = {
    */
   htmlFor?: string;
   // Indicates the weight (or boldness) of the font.
-  fontWeight?: 'regular' | 'medium' | 'bold';
+  fontWeight?: 'medium' | 'bold';
   /**
    * @deprecated: Use the new `fontWeight` prop.
    */
@@ -85,7 +85,7 @@ const Label = (props: TLabelProps) => {
       css={css`
         > div {
           font-weight: ${props.isBold !== true &&
-          props.fontWeight !== undefined &&
+          props.fontWeight !== 'bold' &&
           designTokens.fontWeight500};
           display: flex;
         }
@@ -95,6 +95,7 @@ const Label = (props: TLabelProps) => {
     >
       <Text.Detail
         tone={props.tone}
+        // TODO: remove passing `isBold` prop here once deprecated
         isBold={props.isBold}
         fontWeight={props.fontWeight}
       >
