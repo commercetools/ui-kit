@@ -8,7 +8,7 @@ export const themes = {
     colorPrimary: 'hsl(175, 55%, 45%)',
     colorPrimary20: 'hsl(175, 55%, 20%)',
     colorPrimary25: 'hsl(175, 55%, 25%)',
-    colorPrimary30: 'hsl(175, 55%, 33%)',
+    colorPrimary30: 'hsl(175, 55%, 30%)',
     colorPrimary40: 'hsl(175, 55%, 40%)',
     colorPrimary85: 'hsl(175, 70%, 85%)',
     colorPrimary95: 'hsl(175, 90%, 95%)',
@@ -206,8 +206,15 @@ export const themes = {
     backgroundColorForTagWhenHovered: 'hsl(232, 18%, 90%)',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(232, 18%, 98%)',
-    backgroundColorForAvatar: '#213c45',
-    backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
+    backgroundColorAccentForAvatar: 'hsl(195, 35.2941176471%, 90%)',
+    backgroundColorAccentForAvatarWhenHighlighted:
+      'hsl(195, 35.2941176471%, 95%)',
+    backgroundColorPurpleForAvatar: 'hsl(248, 50%, 90%)',
+    backgroundColorPurpleForAvatarWhenHighlighted: 'hsl(248, 80%, 95%)',
+    backgroundColorTurquoiseForAvatar: 'hsl(180, 40%, 90%)',
+    backgroundColorTurquoiseForAvatarWhenHighlighted: 'hsl(180, 80%, 95%)',
+    backgroundColorBrownForAvatar: 'hsl(35, 90%, 90%)',
+    backgroundColorBrownForAvatarWhenHighlighted: 'hsl(35, 80%, 95%)',
     backgroundColorForStampAsPositive: 'hsl(175, 90%, 95%)',
     backgroundColorForLocalizedInputLabel: '#fff',
     backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(232, 18%, 95%)',
@@ -569,7 +576,7 @@ const designTokens = {
   colorPrimary: 'var(--color-primary, hsl(175, 55%, 45%))',
   colorPrimary20: 'var(--color-primary-20, hsl(175, 55%, 20%))',
   colorPrimary25: 'var(--color-primary-25, hsl(175, 55%, 25%))',
-  colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 33%))',
+  colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 30%))',
   colorPrimary40: 'var(--color-primary-40, hsl(175, 55%, 40%))',
   colorPrimary85: 'var(--color-primary-85, hsl(175, 70%, 85%))',
   colorPrimary95: 'var(--color-primary-95, hsl(175, 90%, 95%))',
@@ -805,9 +812,22 @@ const designTokens = {
     'var(--background-color-for-collapsible-panel-header-icon-when-disabled, #fff)',
   backgroundColorForSelectInputOptionWhenHovered:
     'var(--background-color-for-select-input-option-when-hovered, hsl(232, 18%, 98%))',
-  backgroundColorForAvatar: 'var(--background-color-for-avatar, #213c45)',
-  backgroundColorForAvatarWhenHighlighted:
-    'var(--background-color-for-avatar-when-highlighted, hsl(195, 35.2941176471%, 30%))',
+  backgroundColorAccentForAvatar:
+    'var(--background-color-accent-for-avatar, hsl(195, 35.2941176471%, 90%))',
+  backgroundColorAccentForAvatarWhenHighlighted:
+    'var(--background-color-accent-for-avatar-when-highlighted, hsl(195, 35.2941176471%, 95%))',
+  backgroundColorPurpleForAvatar:
+    'var(--background-color-purple-for-avatar, hsl(248, 50%, 90%))',
+  backgroundColorPurpleForAvatarWhenHighlighted:
+    'var(--background-color-purple-for-avatar-when-highlighted, hsl(248, 80%, 95%))',
+  backgroundColorTurquoiseForAvatar:
+    'var(--background-color-turquoise-for-avatar, hsl(180, 40%, 90%))',
+  backgroundColorTurquoiseForAvatarWhenHighlighted:
+    'var(--background-color-turquoise-for-avatar-when-highlighted, hsl(180, 80%, 95%))',
+  backgroundColorBrownForAvatar:
+    'var(--background-color-brown-for-avatar, hsl(35, 90%, 90%))',
+  backgroundColorBrownForAvatarWhenHighlighted:
+    'var(--background-color-brown-for-avatar-when-highlighted, hsl(35, 80%, 95%))',
   backgroundColorForStampAsPositive:
     'var(--background-color-for-stamp-as-positive, hsl(175, 90%, 95%))',
   backgroundColorForLocalizedInputLabel:
