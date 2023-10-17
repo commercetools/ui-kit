@@ -561,10 +561,10 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-select-input-option-when-hovered:
           choice: color-neutral-98
-        background-color-for-avatar:
-          choice: color-accent
-        background-color-for-avatar-when-highlighted:
-          choice: color-accent-30
+        background-color-accent-for-avatar:
+          choice: color-accent-90
+        background-color-accent-for-avatar-when-highlighted:
+          choice: color-accent-95
         background-color-for-stamp-as-positive:
           choice: color-primary-95
         background-color-for-localized-input-label:
