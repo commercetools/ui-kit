@@ -1,6 +1,8 @@
+import { ReactElement, cloneElement } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import startCase from 'lodash/startCase';
 
 export type TAvatarProps = {
   /**
@@ -27,6 +29,9 @@ export type TAvatarProps = {
    * The color of the avatar.
    */
   color: 'accent' | 'purple' | 'turquoise' | 'brown';
+  /** an <Icon /> component
+   */
+  icon?: ReactElement;
 };
 
 export type TGravatarImgProps = Pick<
@@ -94,7 +99,6 @@ const getInitialsFromName = ({
   lastName = '',
 }: Pick<TAvatarProps, 'firstName' | 'lastName'>) =>
   `${getFirstChar(firstName)}${getFirstChar(lastName)}`;
-
 /**
  * `s` - defines the size. We want a bigger one if the user is on a retina-display
  * `d` - defines the default if the user is not known to Gravatar. It returns a blank image,
@@ -154,46 +158,56 @@ const Initials = (props: TInitialsProps) => {
 };
 Initials.displayName = 'Initials';
 
-// background-color: ${designTokens[
-//   `backgroundColor${props.color}ForAvatar`
-// ]};
+const Avatar = (props: TAvatarProps) => {
+  const capitalizedColor = startCase(props.color);
+  const backgroundColor =
+    `backgroundColor${capitalizedColor}ForAvatar` as keyof typeof designTokens;
+  const backgroundColorWhenHighlighted =
+    `backgroundColor${capitalizedColor}ForAvatarWhenHighlighted` as keyof typeof designTokens;
+  const iconColor = `color${capitalizedColor}-50` as keyof typeof designTokens;
+  return (
+    <div
+      css={css`
+        align-items: center;
+        background-color: ${designTokens[backgroundColor]};
+        border-radius: 100%;
+        font-size: ${designTokens.fontSizeDefault};
+        font-weight: ${designTokens.fontWeight600};
+        color: ${designTokens.colorSurface};
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
 
-const Avatar = (props: TAvatarProps) => (
-  <div
-    css={css`
-      align-items: center;
-      background-color: ${designTokens.backgroundColorForAvatar};
-      border-radius: 100%;
-      font-size: ${designTokens.fontSizeDefault};
-      font-weight: ${designTokens.fontWeight600};
-      color: ${designTokens.colorSurface};
-      display: flex;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
+        height: ${avatarSizes[props.size].width};
+        width: ${avatarSizes[props.size].width};
 
-      height: ${avatarSizes[props.size].width};
-      width: ${avatarSizes[props.size].width};
-
-      ${props.isHighlighted
-        ? `background-color: ${designTokens.backgroundColorForAvatarWhenHighlighted};`
-        : ''}
-    `}
-    {...filterDataAttributes(props)}
-  >
-    <GravatarImg
-      gravatarHash={props.gravatarHash}
-      size={props.size}
-      isHighlighted={props.isHighlighted}
-    />
-    <Initials
-      size={props.size}
-      firstName={props.firstName}
-      lastName={props.lastName}
-    />
-  </div>
-);
-
+        ${props.isHighlighted
+          ? `background-color: ${designTokens[backgroundColorWhenHighlighted]};`
+          : ''}
+      `}
+      {...filterDataAttributes(props)}
+    >
+      <GravatarImg
+        gravatarHash={props.gravatarHash}
+        size={props.size}
+        isHighlighted={props.isHighlighted}
+      />
+      <Initials
+        size={props.size}
+        firstName={props.firstName}
+        lastName={props.lastName}
+      />
+      <>
+        {props.icon &&
+          cloneElement(props.icon, {
+            size: 'scale',
+            color: designTokens[iconColor],
+          })}
+      </>
+    </div>
+  );
+};
 Avatar.displayName = 'Avatar';
 Avatar.defaultProps = defaultProps;
 
