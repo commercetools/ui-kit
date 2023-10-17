@@ -93,7 +93,8 @@ const Label = (props: TLabelProps) => {
         tone={props.tone}
         // TODO: remove passing `isBold` prop here once deprecated
         isBold={props.isBold}
-        fontWeight={props.fontWeight}
+        // insure that fontWeight defaults to 'medium' even if user passes 'regular'
+        fontWeight={props.fontWeight === 'bold' ? 'bold' : 'medium'}
       >
         {props.intlMessage ? (
           <FormattedMessage {...props.intlMessage} />
@@ -107,12 +108,5 @@ const Label = (props: TLabelProps) => {
 };
 
 Label.displayName = 'Label';
-
-const labelDefaultProps: Pick<TLabelProps, 'fontWeight'> = {
-  // enforces the 'medium'/500 font-weight on child Text.Detail
-  fontWeight: 'medium',
-};
-
-Label.defaultProps = labelDefaultProps;
 
 export default Label;
