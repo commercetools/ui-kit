@@ -6,7 +6,6 @@ import { warning } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
 import RequiredIndicator from './required-indicator';
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
 
 export type TLabelProps = {
   /**
@@ -84,9 +83,6 @@ const Label = (props: TLabelProps) => {
     <label
       css={css`
         > div {
-          font-weight: ${props.isBold !== true &&
-          props.fontWeight !== 'bold' &&
-          designTokens.fontWeight500};
           display: flex;
         }
       `}
@@ -111,5 +107,12 @@ const Label = (props: TLabelProps) => {
 };
 
 Label.displayName = 'Label';
+
+const labelDefaultProps: Pick<TLabelProps, 'fontWeight'> = {
+  // enforces the 'medium'/500 font-weight on child Text.Detail
+  fontWeight: 'medium',
+};
+
+Label.defaultProps = labelDefaultProps;
 
 export default Label;
