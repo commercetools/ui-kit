@@ -565,6 +565,18 @@ decisionGroupsByTheme:
           choice: color-accent-90
         background-color-accent-for-avatar-when-highlighted:
           choice: color-accent-95
+        background-color-purple-for-avatar:
+          choice: color-purple-90
+        background-color-purple-for-avatar-when-highlighted:
+          choice: color-purple-95
+        background-color-turquoise-for-avatar:
+          choice: color-turquoise-90
+        background-color-turquoise-for-avatar-when-highlighted:
+          choice: color-turquoise-95
+        background-color-brown-for-avatar:
+          choice: color-brown-90
+        background-color-brown-for-avatar-when-highlighted:
+          choice: color-brown-95
         background-color-for-stamp-as-positive:
           choice: color-primary-95
         background-color-for-localized-input-label:
