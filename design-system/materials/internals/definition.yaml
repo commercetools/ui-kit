@@ -138,6 +138,7 @@ choiceGroupsByTheme:
       prefix: font-size
       choices:
         font-size-10: '0.75rem'
+        font-size-12: '0.8rem'
         font-size-20: '0.875rem'
         font-size-30: '1rem'
         font-size-40: '1.125rem'
@@ -169,6 +170,7 @@ choiceGroupsByTheme:
       prefix: line-height
       choices:
         line-height-10: '1.25rem'
+        line-height-18: '1.3rem'
         line-height-20: '1.375rem'
         line-height-30: '1.5rem'
         line-height-40: '1.625rem'
@@ -305,6 +307,8 @@ variants:
     description: 'H5 text element'
   body:
     description: 'Body text element'
+  caption:
+    description: 'Caption text element'
   detail:
     description: 'Detail text element'
   icon:
@@ -1015,6 +1019,8 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-text-as-body:
           choice: font-size-30
+        font-size-for-text-as-caption:
+          choice: font-size-12
         font-size-for-text-as-detail:
           choice: font-size-20
         font-size-for-body:
@@ -1065,6 +1071,8 @@ decisionGroupsByTheme:
           choice: line-height-20
         line-height-for-text-as-body:
           choice: line-height-40
+        line-height-for-text-as-caption:
+          choice: line-height-18
         line-height-for-text-as-detail:
           choice: line-height-20
         line-height-for-select-input-options:
@@ -1087,6 +1095,8 @@ decisionGroupsByTheme:
         font-weight-for-text-as-h5:
           choice: font-weight-500
         font-weight-for-text-as-body:
+          choice: font-weight-400
+        font-weight-for-text-as-caption:
           choice: font-weight-400
         font-weight-for-text-as-detail:
           choice: font-weight-400

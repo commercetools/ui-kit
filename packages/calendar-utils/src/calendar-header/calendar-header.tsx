@@ -82,7 +82,7 @@ const CalendarHeader = (props: TCalendarHeader) => {
             size="medium"
           />
         </Tooltip>
-        <Text.Body as="span" isBold={true}>
+        <Text.Body as="span" fontWeight="bold">
           {props.monthLabel}
         </Text.Body>
       </Inline>
@@ -98,7 +98,7 @@ const CalendarHeader = (props: TCalendarHeader) => {
             size="medium"
           />
         </Tooltip>
-        <Text.Body isBold={true}>{props.yearLabel}</Text.Body>
+        <Text.Body fontWeight="bold">{props.yearLabel}</Text.Body>
         <Tooltip
           title={intl.formatMessage(messages.nextYearTooltip)}
           components={{ WrapperComponent }}
