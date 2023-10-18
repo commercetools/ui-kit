@@ -165,7 +165,7 @@ const Avatar = (props: TAvatarProps) => {
     `backgroundColor${capitalizedColor}ForAvatar` as keyof typeof designTokens;
   const backgroundColorWhenHighlighted =
     `backgroundColor${capitalizedColor}ForAvatarWhenHighlighted` as keyof typeof designTokens;
-  const iconColor = `color${capitalizedColor}-50` as keyof typeof designTokens;
+  const iconColor = `color${capitalizedColor}50` as keyof typeof designTokens;
   return (
     <div
       css={css`
@@ -174,11 +174,12 @@ const Avatar = (props: TAvatarProps) => {
         border-radius: 100%;
         font-size: ${designTokens.fontSizeDefault};
         font-weight: ${designTokens.fontWeight600};
-        color: ${designTokens.colorSurface};
+        color: ${designTokens[iconColor]};
         display: flex;
         justify-content: center;
         overflow: hidden;
         position: relative;
+        fill: ${designTokens[iconColor]};
 
         height: ${avatarSizes[props.size].width};
         width: ${avatarSizes[props.size].width};
@@ -189,22 +190,25 @@ const Avatar = (props: TAvatarProps) => {
       `}
       {...filterDataAttributes(props)}
     >
-      <GravatarImg
-        gravatarHash={props.gravatarHash}
-        size={props.size}
-        isHighlighted={props.isHighlighted}
-      />
-      {props.icon ? (
-        cloneElement(props.icon, {
+      {props?.icon ? (
+        cloneElement(props?.icon, {
           size: 'scale',
           color: designTokens[iconColor],
+          backgroundColor: designTokens[iconColor],
         })
       ) : (
-        <Initials
-          size={props.size}
-          firstName={props.firstName}
-          lastName={props.lastName}
-        />
+        <>
+          <GravatarImg
+            gravatarHash={props.gravatarHash}
+            size={props.size}
+            isHighlighted={props.isHighlighted}
+          />
+          <Initials
+            size={props.size}
+            firstName={props.firstName}
+            lastName={props.lastName}
+          />
+        </>
       )}
     </div>
   );
