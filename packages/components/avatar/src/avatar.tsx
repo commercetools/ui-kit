@@ -28,7 +28,7 @@ export type TAvatarProps = {
   /**
    * The color of the avatar.
    */
-  color: 'accent' | 'purple' | 'turquoise' | 'brown';
+  color?: 'accent' | 'purple' | 'turquoise' | 'brown';
   /** an <Icon /> component
    */
   icon?: ReactElement;
@@ -83,12 +83,13 @@ const avatarSizes = {
 
 const defaultProps: Pick<
   TAvatarProps,
-  'firstName' | 'lastName' | 'isHighlighted' | 'size'
+  'firstName' | 'lastName' | 'isHighlighted' | 'size' | 'color'
 > = {
   firstName: '',
   lastName: '',
   isHighlighted: false,
   size: 's',
+  color: 'accent',
 };
 
 const getFirstChar = (str: string) =>
