@@ -1,4 +1,4 @@
-import { Avatar } from '@commercetools-frontend/ui-kit';
+import { Avatar, PlusBoldIcon } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/avatar';
@@ -52,6 +52,51 @@ export const component = () => (
         lastName="Doe"
         size="m"
         isHighlighted={true}
+      />
+    </Spec>
+    <Spec label="when icon exist">
+      <Avatar
+        gravatarHash="205e460b479e2e5b48aec07710c08d50"
+        firstName="John"
+        lastName="Doe"
+        size="m"
+        icon={<PlusBoldIcon />}
+      />
+    </Spec>
+    <Spec label="when color is accent">
+      <Avatar
+        gravatarHash="205e460b479e2e5b48aec07710c08d50"
+        firstName="John"
+        lastName="Doe"
+        size="m"
+        color="accent"
+      />
+    </Spec>
+    <Spec label="when color is purple">
+      <Avatar
+        gravatarHash="205e460b479e2e5b48aec07710c08d50"
+        firstName="John"
+        lastName="Doe"
+        size="m"
+        color="purple"
+      />
+    </Spec>
+    <Spec label="when color is turquoise">
+      <Avatar
+        gravatarHash="205e460b479e2e5b48aec07710c08d50"
+        firstName="John"
+        lastName="Doe"
+        size="m"
+        color="turquoise"
+      />
+    </Spec>
+    <Spec label="when color is brown">
+      <Avatar
+        gravatarHash="205e460b479e2e5b48aec07710c08d50"
+        firstName="John"
+        lastName="Doe"
+        size="m"
+        color="brown"
       />
     </Spec>
   </Suite>
