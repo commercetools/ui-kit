@@ -54,7 +54,7 @@ export const component = () => (
         isHighlighted={true}
       />
     </Spec>
-    <Spec label="when icon exist">
+    <Spec label="when icon exists">
       <Avatar
         gravatarHash="205e460b479e2e5b48aec07710c08d50"
         firstName="John"
