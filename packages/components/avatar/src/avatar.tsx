@@ -191,11 +191,18 @@ const Avatar = (props: TAvatarProps) => {
       {...filterDataAttributes(props)}
     >
       {props?.icon ? (
-        cloneElement(props?.icon, {
-          size: 'scale',
-          color: designTokens[iconColor],
-          backgroundColor: designTokens[iconColor],
-        })
+        <div
+          css={css`
+            height: calc(${avatarSizes[props.size].width} - 45%);
+            width: calc(${avatarSizes[props.size].width} - 45%);
+          `}
+        >
+          {cloneElement(props?.icon, {
+            size: 'scale',
+            color: designTokens[iconColor],
+            backgroundColor: designTokens[iconColor],
+          })}
+        </div>
       ) : (
         <>
           <GravatarImg
