@@ -1027,10 +1027,6 @@ decisionGroupsByTheme:
           choice: '16px'
         font-size-for-link:
           choice: font-size-30
-        font-size-for-stamp:
-          choice: font-size-20
-        font-size-for-stamp-as-condensed:
-          choice: font-size-10
         font-size-for-view-switcher:
           choice: font-size-20
         font-size-for-table:
@@ -1097,8 +1093,6 @@ decisionGroupsByTheme:
         font-weight-for-text-as-detail:
           choice: font-weight-400
         font-weight-for-button:
-          choice: font-weight-500
-        font-weight-for-stamp:
           choice: font-weight-500
         font-weight-for-table-header:
           choice: font-weight-600

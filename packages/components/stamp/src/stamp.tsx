@@ -137,6 +137,7 @@ const getToneStyles = (props: StylesFunctionParams) => {
   const toneProps = tonesPropsMap[props.tone];
   return css`
     background-color: ${toneProps.styles.backgroundColor};
+
     &,
     & * {
       color: ${props.overrideTextColor ? toneProps.styles.color : 'inherit'};
@@ -148,10 +149,6 @@ const getStampStyles = (props: StylesFunctionParams) => {
   return css`
     color: ${props.overrideTextColor ? 'inherit' : designTokens.colorSolid};
     display: inline-block;
-    font-size: ${props.isCondensed
-      ? designTokens.fontSizeForStampAsCondensed
-      : designTokens.fontSizeForStamp};
-    font-weight: ${designTokens.fontWeightForStamp};
     border-radius: ${props.isCondensed
       ? designTokens.borderRadiusForStampAsCondensed
       : designTokens.borderRadiusForStamp};
@@ -173,6 +170,17 @@ const Stamp = (props: TStampProps) => {
     'Please use `label` and `icon` properties instead.'
   );
 
+  const StampLabel = ({ children }: { children: string }): ReactElement =>
+    props.isCondensed ? (
+      <Text.Caption tone="inherit" fontWeight="medium">
+        {children}
+      </Text.Caption>
+    ) : (
+      <Text.Detail tone="inherit" fontWeight="medium">
+        {children}
+      </Text.Detail>
+    );
+
   return (
     <div
       css={[
@@ -183,11 +191,7 @@ const Stamp = (props: TStampProps) => {
     >
       <SpacingsInline alignItems="center">
         {Icon}
-        {props.label ? (
-          <Text.Detail tone="inherit">{props.label}</Text.Detail>
-        ) : (
-          props.children
-        )}
+        {props.label ? <StampLabel>{props.label}</StampLabel> : props.children}
       </SpacingsInline>
     </div>
   );
