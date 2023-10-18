@@ -6,7 +6,11 @@ import * as icons from '../../icons';
 import Avatar from './avatar';
 import Readme from '../README.md';
 
-const iconNames = Object.keys(icons);
+const iconNames = [null, ...Object.keys(icons)];
+const selectedIcon = () => {
+  const icon = select('icon', iconNames, iconNames[0]);
+  return icon && createElement(icons[select('icon', iconNames)]);
+};
 
 storiesOf('Components|Avatar', module)
   .addDecorator(withKnobs)
@@ -24,7 +28,7 @@ storiesOf('Components|Avatar', module)
         gravatarHash={text('gravatarHash', '')}
         isHighlighted={boolean('isHighlighted', false)}
         size={select('size', ['s', 'm', 'l'], 'l')}
-        icon={createElement(icons[select('icon', iconNames, iconNames[0])])}
+        icon={selectedIcon()}
         color={select(
           'color',
           ['accent', 'purple', 'turquoise', 'brown'],
