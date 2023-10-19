@@ -1035,8 +1035,6 @@ decisionGroupsByTheme:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
-        font-size-for-table-header:
-          choice: font-size-10
         font-size-for-avatar-as-small:
           choice: font-size-20
         font-size-for-avatar-as-medium:
