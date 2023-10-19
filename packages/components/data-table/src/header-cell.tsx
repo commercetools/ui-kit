@@ -145,7 +145,6 @@ const HeaderCell = (props: THeaderCell) => {
         props.onClick && props.onClick(props.columnKey, nextSortDirection),
       isActive,
       isSortable: true,
-      nextSortDirection,
     };
 
     warning(
