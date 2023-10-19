@@ -60,9 +60,11 @@ export const getBackgroundColor = (
 ) => colorsMap[avatarColor][isHighlighted ? 'highlighted' : 'normal'];
 
 export const getForegroundColor = (avatarColor: TAvatarProps['color']) => {
-  return designTokens[
-    `color${startCase(avatarColor)}50` as keyof typeof designTokens
-  ];
+  return avatarColor === 'accent'
+    ? designTokens.colorAccent40
+    : designTokens[
+        `color${startCase(avatarColor)}50` as keyof typeof designTokens
+      ];
 };
 
 export const getAvatarStyles = (avatarProps: TAvatarProps) => {
