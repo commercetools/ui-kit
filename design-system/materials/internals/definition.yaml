@@ -42,6 +42,7 @@ choiceGroupsByTheme:
         color-primary-30: 'hsl(175, 55%, 30%)'
         color-primary-40: 'hsl(175, 55%, 40%)'
         color-primary-85: 'hsl(175, 70%, 85%)'
+        color-primary-90: 'hsl(175, 70%, 90%)'
         color-primary-95: 'hsl(175, 90%, 95%)'
         color-accent: '#213c45'
         color-accent-10: 'hsl(195, 35.2941176471%, 10%)'
@@ -562,7 +563,9 @@ decisionGroupsByTheme:
         background-color-for-select-input-option-when-hovered:
           choice: color-neutral-98
         background-color-for-stamp-as-positive:
-          choice: color-primary-95
+          choice: color-primary-90
+        background-color-for-stamp-as-primary:
+          choice: color-primary-90
         background-color-for-localized-input-label:
           choice: color-surface
         background-color-for-localized-input-label-when-readonly:
@@ -1020,7 +1023,7 @@ decisionGroupsByTheme:
         font-size-for-text-as-body:
           choice: font-size-30
         font-size-for-text-as-caption:
-          choice: font-size-12
+          choice: font-size-10
         font-size-for-text-as-detail:
           choice: font-size-20
         font-size-for-body:

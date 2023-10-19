@@ -11,6 +11,7 @@ export const themes = {
     colorPrimary30: 'hsl(175, 55%, 30%)',
     colorPrimary40: 'hsl(175, 55%, 40%)',
     colorPrimary85: 'hsl(175, 70%, 85%)',
+    colorPrimary90: 'hsl(175, 70%, 90%)',
     colorPrimary95: 'hsl(175, 90%, 95%)',
     colorAccent: '#213c45',
     colorAccent10: 'hsl(195, 35.2941176471%, 10%)',
@@ -208,7 +209,8 @@ export const themes = {
     backgroundColorForTagWhenHovered: 'hsl(232, 18%, 90%)',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(232, 18%, 98%)',
-    backgroundColorForStampAsPositive: 'hsl(175, 90%, 95%)',
+    backgroundColorForStampAsPositive: 'hsl(175, 70%, 90%)',
+    backgroundColorForStampAsPrimary: 'hsl(175, 70%, 90%)',
     backgroundColorForLocalizedInputLabel: '#fff',
     backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(232, 18%, 95%)',
     backgroundColorForLocalizedInputLabelWhenDisabled: 'hsl(232, 18%, 95%)',
@@ -427,7 +429,7 @@ export const themes = {
     fontSizeForTextAsH4: '1rem',
     fontSizeForTextAsH5: '1rem',
     fontSizeForTextAsBody: '1rem',
-    fontSizeForTextAsCaption: '0.8rem',
+    fontSizeForTextAsCaption: '0.75rem',
     fontSizeForTextAsDetail: '0.875rem',
     fontSizeForBody: '16px',
     fontSizeForLink: '1rem',
@@ -566,6 +568,7 @@ const designTokens = {
   colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 30%))',
   colorPrimary40: 'var(--color-primary-40, hsl(175, 55%, 40%))',
   colorPrimary85: 'var(--color-primary-85, hsl(175, 70%, 85%))',
+  colorPrimary90: 'var(--color-primary-90, hsl(175, 70%, 90%))',
   colorPrimary95: 'var(--color-primary-95, hsl(175, 90%, 95%))',
   colorAccent: 'var(--color-accent, #213c45)',
   colorAccent10: 'var(--color-accent-10, hsl(195, 35.2941176471%, 10%))',
@@ -802,7 +805,9 @@ const designTokens = {
   backgroundColorForSelectInputOptionWhenHovered:
     'var(--background-color-for-select-input-option-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForStampAsPositive:
-    'var(--background-color-for-stamp-as-positive, hsl(175, 90%, 95%))',
+    'var(--background-color-for-stamp-as-positive, hsl(175, 70%, 90%))',
+  backgroundColorForStampAsPrimary:
+    'var(--background-color-for-stamp-as-primary, hsl(175, 70%, 90%))',
   backgroundColorForLocalizedInputLabel:
     'var(--background-color-for-localized-input-label, #fff)',
   backgroundColorForLocalizedInputLabelWhenReadonly:
@@ -1165,7 +1170,7 @@ const designTokens = {
   fontSizeForTextAsH4: 'var(--font-size-for-text-as-h-4, 1rem)',
   fontSizeForTextAsH5: 'var(--font-size-for-text-as-h-5, 1rem)',
   fontSizeForTextAsBody: 'var(--font-size-for-text-as-body, 1rem)',
-  fontSizeForTextAsCaption: 'var(--font-size-for-text-as-caption, 0.8rem)',
+  fontSizeForTextAsCaption: 'var(--font-size-for-text-as-caption, 0.75rem)',
   fontSizeForTextAsDetail: 'var(--font-size-for-text-as-detail, 0.875rem)',
   fontSizeForBody: 'var(--font-size-for-body, 16px)',
   fontSizeForLink: 'var(--font-size-for-link, 1rem)',

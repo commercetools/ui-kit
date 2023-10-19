@@ -83,7 +83,7 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   },
   primary: {
     styles: {
-      backgroundColor: designTokens.colorPrimary95,
+      backgroundColor: designTokens.backgroundColorForStampAsPrimary,
       borderColor: designTokens.borderColorForStampAsPrimary,
       color: designTokens.colorPrimary25,
     },

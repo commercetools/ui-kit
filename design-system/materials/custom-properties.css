@@ -12,6 +12,7 @@
   --color-primary-30: hsl(175, 55%, 30%);
   --color-primary-40: hsl(175, 55%, 40%);
   --color-primary-85: hsl(175, 70%, 85%);
+  --color-primary-90: hsl(175, 70%, 90%);
   --color-primary-95: hsl(175, 90%, 95%);
   --color-accent: #213c45;
   --color-accent-10: hsl(195, 35.2941176471%, 10%);
@@ -219,7 +220,8 @@
   --background-color-for-tag-when-hovered: hsl(232, 18%, 90%);
   --background-color-for-collapsible-panel-header-icon-when-disabled: #fff;
   --background-color-for-select-input-option-when-hovered: hsl(232, 18%, 98%);
-  --background-color-for-stamp-as-positive: hsl(175, 90%, 95%);
+  --background-color-for-stamp-as-positive: hsl(175, 70%, 90%);
+  --background-color-for-stamp-as-primary: hsl(175, 70%, 90%);
   --background-color-for-localized-input-label: #fff;
   --background-color-for-localized-input-label-when-readonly: hsl(
     232,
@@ -506,7 +508,7 @@
   --font-size-for-text-as-h4: 1rem;
   --font-size-for-text-as-h5: 1rem;
   --font-size-for-text-as-body: 1rem;
-  --font-size-for-text-as-caption: 0.8rem;
+  --font-size-for-text-as-caption: 0.75rem;
   --font-size-for-text-as-detail: 0.875rem;
   --font-size-for-body: 16px;
   --font-size-for-link: 1rem;
