@@ -1,8 +1,6 @@
 import {
   useReducer,
   useCallback,
-  useEffect,
-  useState,
   forwardRef,
   useRef,
   useImperativeHandle,
@@ -31,10 +29,6 @@ import { localized } from '@commercetools-uikit/rich-text-utils';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import RichTextInput from './rich-text-input';
 import RequiredValueErrorMessage from './required-value-error-message';
-import {
-  RichTextInputVisibilityWrapper,
-  LocalizedInputToggleContainer,
-} from './editor.styles';
 
 type TErrors = Record<string, string>;
 type TWarnings = Record<string, ReactNode>;
@@ -316,103 +310,79 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
     const shouldRenderLanguagesControl =
       languages.length > 1 && !props.hideLanguageExpansionControls;
 
-    const [firstEditorHeight, setFirstEditorHeight] = useState(0);
-    const updateFirstEditorHeight = useCallback(
-      () =>
-        setFirstEditorHeight(
-          document.querySelector(`label[for="rich-text.${languages[0]}"]`)
-            ?.clientHeight ?? 0
-        ),
-      []
-    );
-    useEffect(() => {
-      updateFirstEditorHeight();
-    });
-
     return (
       <Constraints.Horizontal max={props.horizontalConstraint}>
         <Stack scale="xs">
           <Stack>
             {languages.map((language, index) => {
               const isFirstLanguage = index === 0;
+              if (!isFirstLanguage && !areLanguagesOpened) return null;
               const isLastLanguage = index === languages.length - 1;
 
               const hasLanguagesControl =
                 (isFirstLanguage && !areLanguagesOpened) || isLastLanguage;
 
               return (
-                <RichTextInputVisibilityWrapper
-                  isVisible={!(!isFirstLanguage && !areLanguagesOpened)}
+                <RichTextInput
+                  {...filterDataAttributes(props)}
                   key={language}
-                >
-                  <RichTextInput
-                    {...filterDataAttributes(props)}
-                    id={getId(props.id, language)}
-                    name={getName(props.name, language)}
-                    value={props.value[language]}
-                    onChange={createChangeHandler(language)}
-                    language={language}
-                    isOpen={expandedTranslationsState[language]}
-                    toggleLanguage={toggleLanguage}
-                    placeholder={
-                      props.placeholder
-                        ? props.placeholder[language]
-                        : undefined
-                    }
-                    onBlur={props.onBlur}
-                    onFocus={props.onFocus}
-                    isDisabled={props.isDisabled}
-                    isReadOnly={props.isReadOnly}
-                    hasError={Boolean(
-                      props.hasError || (props.errors && props.errors[language])
-                    )}
-                    hasWarning={Boolean(
-                      props.hasWarning ||
-                        (props.warnings && props.warnings[language])
-                    )}
-                    warning={props.warnings && props.warnings[language]}
-                    error={props.errors && props.errors[language]}
-                    showExpandIcon={props.showExpandIcon}
-                    onClickExpand={props.onClickExpand}
-                    hasLanguagesControl={hasLanguagesControl}
-                    defaultExpandMultilineText={Boolean(
-                      props.defaultExpandMultilineText
-                    )}
-                    ref={(el: RefWithImperativeResetHandler) =>
-                      langRefs.current.set(language, el)
-                    }
-                    {...createLocalizedDataAttributes(props, language)}
-                  />
-                </RichTextInputVisibilityWrapper>
+                  id={getId(props.id, language)}
+                  name={getName(props.name, language)}
+                  value={props.value[language]}
+                  onChange={createChangeHandler(language)}
+                  language={language}
+                  isOpen={expandedTranslationsState[language]}
+                  toggleLanguage={toggleLanguage}
+                  placeholder={
+                    props.placeholder ? props.placeholder[language] : undefined
+                  }
+                  onBlur={props.onBlur}
+                  onFocus={props.onFocus}
+                  isDisabled={props.isDisabled}
+                  isReadOnly={props.isReadOnly}
+                  hasError={Boolean(
+                    props.hasError || (props.errors && props.errors[language])
+                  )}
+                  hasWarning={Boolean(
+                    props.hasWarning ||
+                      (props.warnings && props.warnings[language])
+                  )}
+                  warning={props.warnings && props.warnings[language]}
+                  error={props.errors && props.errors[language]}
+                  showExpandIcon={props.showExpandIcon}
+                  onClickExpand={props.onClickExpand}
+                  hasLanguagesControl={hasLanguagesControl}
+                  defaultExpandMultilineText={Boolean(
+                    props.defaultExpandMultilineText
+                  )}
+                  ref={(el: RefWithImperativeResetHandler) =>
+                    langRefs.current.set(language, el)
+                  }
+                  {...createLocalizedDataAttributes(props, language)}
+                />
               );
             })}
           </Stack>
-          <LocalizedInputToggleContainer
-            shouldUseAbsolutePosition={!areLanguagesOpened}
-            top={firstEditorHeight}
-          >
-            {shouldRenderLanguagesControl && (
-              <LocalizedInputToggle
-                isOpen={areLanguagesOpened}
-                onClick={
-                  toggleLanguages as (
-                    event:
-                      | MouseEvent<HTMLButtonElement>
-                      | KeyboardEvent<HTMLButtonElement>
-                      | boolean
-                  ) => void
-                }
-                isDisabled={
-                  areLanguagesOpened &&
-                  Boolean(
-                    hasErrorInRemainingLanguages ||
-                      hasWarningInRemainingLanguages
-                  )
-                }
-                remainingLocalizations={languages.length - 1}
-              />
-            )}
-          </LocalizedInputToggleContainer>
+          {shouldRenderLanguagesControl && (
+            <LocalizedInputToggle
+              isOpen={areLanguagesOpened}
+              onClick={
+                toggleLanguages as (
+                  event:
+                    | MouseEvent<HTMLButtonElement>
+                    | KeyboardEvent<HTMLButtonElement>
+                    | boolean
+                ) => void
+              }
+              isDisabled={
+                areLanguagesOpened &&
+                Boolean(
+                  hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
+                )
+              }
+              remainingLocalizations={languages.length - 1}
+            />
+          )}
         </Stack>
       </Constraints.Horizontal>
     );
