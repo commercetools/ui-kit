@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TEditorProps } from './editor';
 
@@ -73,4 +74,32 @@ const ToggleButtonWrapper = styled.div`
   display: flex;
 `;
 
-export { EditorLanguageLabel, EditorWrapper, ToggleButtonWrapper };
+const RichTextInputVisibilityWrapper = styled.div<{ isVisible: boolean }>`
+  visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')} !important;
+
+  > div > div > div > div {
+    visibility: ${(props) =>
+      props.isVisible ? 'visible' : 'hidden'} !important;
+  }
+`;
+
+const LocalizedInputToggleContainer = styled.div<{
+  shouldUseAbsolutePosition: boolean;
+  top?: number;
+}>`
+  ${(props) =>
+    props.shouldUseAbsolutePosition &&
+    props.top &&
+    css`
+      position: absolute;
+      top: ${props.top}px;
+    `};
+`;
+
+export {
+  EditorLanguageLabel,
+  EditorWrapper,
+  ToggleButtonWrapper,
+  RichTextInputVisibilityWrapper,
+  LocalizedInputToggleContainer,
+};
