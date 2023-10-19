@@ -5,16 +5,16 @@ import { TAvatarProps } from './avatar';
 
 const fontSizeMap = {
   s: {
-    narrow: designTokens.fontSize30, // '16px',
-    wide: designTokens.fontSize10, // '12px',
+    narrow: designTokens.fontSize30,
+    wide: designTokens.fontSize10,
   },
   m: {
-    narrow: designTokens.fontSize50, // '20px',
-    wide: designTokens.fontSize30, // '16px',
+    narrow: designTokens.fontSize50,
+    wide: designTokens.fontSize30,
   },
   l: {
-    narrow: designTokens.fontSize90, //'48px',
-    wide: designTokens.fontSize80, // '40px',
+    narrow: designTokens.fontSize90,
+    wide: designTokens.fontSize80,
   },
 };
 
