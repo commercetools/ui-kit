@@ -45,6 +45,51 @@ export const component = () => (
       />
     </Spec>
 
+    <Spec label='when size is "s" and name is long'>
+      <Avatar
+        firstName="John"
+        lastName="Doe"
+        size="s"
+      />
+    </Spec>
+
+    <Spec label='when size is "m" and name is long'>
+      <Avatar
+        firstName="John"
+        lastName="Doe"
+        size="m"
+      />
+    </Spec>
+
+    <Spec label='when size is "l" and name is long'>
+      <Avatar
+        firstName="John"
+        lastName="Doe"
+        size="l"
+      />
+    </Spec>
+
+    <Spec label='when size is "s" and name is short'>
+      <Avatar
+        firstName="John"
+        size="s"
+      />
+    </Spec>
+
+    <Spec label='when size is "m" and name is short'>
+      <Avatar
+        firstName="John"
+        size="m"
+      />
+    </Spec>
+
+    <Spec label='when size is "l" and name is short'>
+      <Avatar
+        firstName="John"
+        size="l"
+      />
+    </Spec>
+
     <Spec label="when highlighted">
       <Avatar
         gravatarHash="205e460b479e2e5b48aec07710c08d50"
@@ -65,7 +110,6 @@ export const component = () => (
     </Spec>
     <Spec label="when color is accent">
       <Avatar
-        gravatarHash="205e460b479e2e5b48aec07710c08d50"
         firstName="John"
         lastName="Doe"
         size="m"
@@ -74,7 +118,6 @@ export const component = () => (
     </Spec>
     <Spec label="when color is purple">
       <Avatar
-        gravatarHash="205e460b479e2e5b48aec07710c08d50"
         firstName="John"
         lastName="Doe"
         size="m"
@@ -83,7 +126,6 @@ export const component = () => (
     </Spec>
     <Spec label="when color is turquoise">
       <Avatar
-        gravatarHash="205e460b479e2e5b48aec07710c08d50"
         firstName="John"
         lastName="Doe"
         size="m"
@@ -92,7 +134,6 @@ export const component = () => (
     </Spec>
     <Spec label="when color is brown">
       <Avatar
-        gravatarHash="205e460b479e2e5b48aec07710c08d50"
         firstName="John"
         lastName="Doe"
         size="m"

@@ -96,6 +96,7 @@ export const themes = {
     fontSize60: '1.5rem',
     fontSize70: '2rem',
     fontSize80: '2.5rem',
+    fontSize90: '3rem',
     fontSize15: '0.9231rem',
     fontSize35: '1.0769rem',
     fontSize45: '1.2308rem',
@@ -206,15 +207,6 @@ export const themes = {
     backgroundColorForTagWhenHovered: 'hsl(232, 18%, 90%)',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(232, 18%, 98%)',
-    backgroundColorAccentForAvatar: 'hsl(195, 35.2941176471%, 90%)',
-    backgroundColorAccentForAvatarWhenHighlighted:
-      'hsl(195, 35.2941176471%, 95%)',
-    backgroundColorPurpleForAvatar: 'hsl(248, 50%, 90%)',
-    backgroundColorPurpleForAvatarWhenHighlighted: 'hsl(248, 80%, 95%)',
-    backgroundColorTurquoiseForAvatar: 'hsl(180, 40%, 90%)',
-    backgroundColorTurquoiseForAvatarWhenHighlighted: 'hsl(180, 80%, 95%)',
-    backgroundColorBrownForAvatar: 'hsl(35, 90%, 90%)',
-    backgroundColorBrownForAvatarWhenHighlighted: 'hsl(35, 80%, 95%)',
     backgroundColorForStampAsPositive: 'hsl(175, 90%, 95%)',
     backgroundColorForLocalizedInputLabel: '#fff',
     backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(232, 18%, 95%)',
@@ -440,12 +432,6 @@ export const themes = {
     fontSizeForStamp: '0.875rem',
     fontSizeForViewSwitcher: '0.875rem',
     fontSizeForTable: '0.875rem',
-    fontSizeForAvatarAsSmallWhenTwoChars: '0.75rem',
-    fontSizeForAvatarAsSmallWhenOneChar: '1rem',
-    fontSizeForAvatarAsMediumWhenTwoChars: '1rem',
-    fontSizeForAvatarAsMediumWhenOneChar: '1.25rem',
-    fontSizeForAvatarAsBigWhenTwoChars: '2.5rem',
-    fontSizeForAvatarAsBigWhenOneChar: '3rem',
     fontSizeForLocalizedInputLabel: '1rem',
     fontSizeForContentNotification: '1rem',
     fontSizeForSelectInputTag: '1rem',
@@ -671,6 +657,7 @@ const designTokens = {
   fontSize60: 'var(--font-size-60, 1.5rem)',
   fontSize70: 'var(--font-size-70, 2rem)',
   fontSize80: 'var(--font-size-80, 2.5rem)',
+  fontSize90: 'var(--font-size-90, 3rem)',
   fontSize15: 'var(--font-size-15, 0.9231rem)',
   fontSize35: 'var(--font-size-35, 1.0769rem)',
   fontSize45: 'var(--font-size-45, 1.2308rem)',
@@ -812,22 +799,6 @@ const designTokens = {
     'var(--background-color-for-collapsible-panel-header-icon-when-disabled, #fff)',
   backgroundColorForSelectInputOptionWhenHovered:
     'var(--background-color-for-select-input-option-when-hovered, hsl(232, 18%, 98%))',
-  backgroundColorAccentForAvatar:
-    'var(--background-color-accent-for-avatar, hsl(195, 35.2941176471%, 90%))',
-  backgroundColorAccentForAvatarWhenHighlighted:
-    'var(--background-color-accent-for-avatar-when-highlighted, hsl(195, 35.2941176471%, 95%))',
-  backgroundColorPurpleForAvatar:
-    'var(--background-color-purple-for-avatar, hsl(248, 50%, 90%))',
-  backgroundColorPurpleForAvatarWhenHighlighted:
-    'var(--background-color-purple-for-avatar-when-highlighted, hsl(248, 80%, 95%))',
-  backgroundColorTurquoiseForAvatar:
-    'var(--background-color-turquoise-for-avatar, hsl(180, 40%, 90%))',
-  backgroundColorTurquoiseForAvatarWhenHighlighted:
-    'var(--background-color-turquoise-for-avatar-when-highlighted, hsl(180, 80%, 95%))',
-  backgroundColorBrownForAvatar:
-    'var(--background-color-brown-for-avatar, hsl(35, 90%, 90%))',
-  backgroundColorBrownForAvatarWhenHighlighted:
-    'var(--background-color-brown-for-avatar-when-highlighted, hsl(35, 80%, 95%))',
   backgroundColorForStampAsPositive:
     'var(--background-color-for-stamp-as-positive, hsl(175, 90%, 95%))',
   backgroundColorForLocalizedInputLabel:
@@ -1197,18 +1168,6 @@ const designTokens = {
   fontSizeForStamp: 'var(--font-size-for-stamp, 0.875rem)',
   fontSizeForViewSwitcher: 'var(--font-size-for-view-switcher, 0.875rem)',
   fontSizeForTable: 'var(--font-size-for-table, 0.875rem)',
-  fontSizeForAvatarAsSmallWhenTwoChars:
-    'var(--font-size-for-avatar-as-small-when-two-chars, 0.75rem)',
-  fontSizeForAvatarAsSmallWhenOneChar:
-    'var(--font-size-for-avatar-as-small-when-one-char, 1rem)',
-  fontSizeForAvatarAsMediumWhenTwoChars:
-    'var(--font-size-for-avatar-as-medium-when-two-chars, 1rem)',
-  fontSizeForAvatarAsMediumWhenOneChar:
-    'var(--font-size-for-avatar-as-medium-when-one-char, 1.25rem)',
-  fontSizeForAvatarAsBigWhenTwoChars:
-    'var(--font-size-for-avatar-as-big-when-two-chars, 2.5rem)',
-  fontSizeForAvatarAsBigWhenOneChar:
-    'var(--font-size-for-avatar-as-big-when-one-char, 3rem)',
   fontSizeForLocalizedInputLabel:
     'var(--font-size-for-localized-input-label, 1rem)',
   fontSizeForContentNotification:

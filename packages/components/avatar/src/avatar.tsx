@@ -1,8 +1,12 @@
 import { ReactElement, cloneElement } from 'react';
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
-import startCase from 'lodash/startCase';
+import {
+  getAvatarStyles,
+  getFontSize,
+  getForegroundColor,
+  getWidthSize,
+} from './avatar.styles';
 
 export type TAvatarProps = {
   /**
@@ -44,43 +48,6 @@ export type TInitialsProps = Pick<
   'firstName' | 'lastName' | 'size'
 >;
 
-type TSizeProp = Pick<TAvatarProps, 'size'>;
-const fontSizePerInitialsLength = ({ size }: TSizeProp) => {
-  return (initials: string) => {
-    const initialsLength = initials?.length;
-
-    if (size === 's') {
-      return initialsLength > 1
-        ? designTokens.fontSizeForAvatarAsSmallWhenTwoChars
-        : designTokens.fontSizeForAvatarAsSmallWhenOneChar;
-    } else if (size === 'm') {
-      return initialsLength > 1
-        ? designTokens.fontSizeForAvatarAsMediumWhenTwoChars
-        : designTokens.fontSizeForAvatarAsMediumWhenOneChar;
-    } else if (size === 'l') {
-      return initialsLength > 1
-        ? designTokens.fontSizeForAvatarAsBigWhenTwoChars
-        : designTokens.fontSizeForAvatarAsBigWhenOneChar;
-    }
-    return;
-  };
-};
-
-const avatarSizes = {
-  s: {
-    width: '32px',
-    fontSize: fontSizePerInitialsLength({ size: 's' }),
-  },
-  m: {
-    width: designTokens.widthForAvatarAsMedium,
-    fontSize: fontSizePerInitialsLength({ size: 'm' }),
-  },
-  l: {
-    width: '100px',
-    fontSize: fontSizePerInitialsLength({ size: 'l' }),
-  },
-};
-
 const defaultProps: Pick<
   TAvatarProps,
   'firstName' | 'lastName' | 'isHighlighted' | 'size' | 'color'
@@ -112,7 +79,8 @@ const createGravatarImgUrl = (
   size: TAvatarProps['size'],
   multiplyBy: number = 1
 ) => {
-  const sizeAsInt = parseInt(avatarSizes[size].width.replace(/px$/, ''), 10);
+  const imageSize = getWidthSize(size);
+  const sizeAsInt = parseInt(imageSize.replace(/px$/, ''), 10);
   const gravatarSize = sizeAsInt * multiplyBy;
   return `https://www.gravatar.com/avatar/${md5Hash}?s=${gravatarSize}&d=blank`;
 };
@@ -150,7 +118,7 @@ const Initials = (props: TInitialsProps) => {
     <div
       css={css`
         position: absolute;
-        font-size: ${avatarSizes[props.size].fontSize(initialsFromName)};
+        font-size: ${getFontSize(initialsFromName, props.size)};
       `}
     >
       {initialsFromName}
@@ -160,47 +128,21 @@ const Initials = (props: TInitialsProps) => {
 Initials.displayName = 'Initials';
 
 const Avatar = (props: TAvatarProps) => {
-  const capitalizedColor = startCase(props.color);
-  const backgroundColor =
-    `backgroundColor${capitalizedColor}ForAvatar` as keyof typeof designTokens;
-  const backgroundColorWhenHighlighted =
-    `backgroundColor${capitalizedColor}ForAvatarWhenHighlighted` as keyof typeof designTokens;
-  const iconColor = `color${capitalizedColor}50` as keyof typeof designTokens;
+  const avatarSize = getWidthSize(props.size);
+  const foregroundColor = getForegroundColor(props.color);
   return (
-    <div
-      css={css`
-        align-items: center;
-        background-color: ${designTokens[backgroundColor]};
-        border-radius: 100%;
-        font-size: ${designTokens.fontSizeDefault};
-        font-weight: ${designTokens.fontWeight600};
-        color: ${designTokens[iconColor]};
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
-        fill: ${designTokens[iconColor]};
-
-        height: ${avatarSizes[props.size].width};
-        width: ${avatarSizes[props.size].width};
-
-        ${props.isHighlighted
-          ? `background-color: ${designTokens[backgroundColorWhenHighlighted]};`
-          : ''}
-      `}
-      {...filterDataAttributes(props)}
-    >
+    <div css={getAvatarStyles(props)} {...filterDataAttributes(props)}>
       {props?.icon ? (
         <div
           css={css`
-            height: calc(${avatarSizes[props.size].width} - 45%);
-            width: calc(${avatarSizes[props.size].width} - 45%);
+            height: calc(${avatarSize} - 45%);
+            width: calc(${avatarSize} - 45%);
           `}
         >
           {cloneElement(props?.icon, {
             size: 'scale',
-            color: designTokens[iconColor],
-            backgroundColor: designTokens[iconColor],
+            color: foregroundColor,
+            backgroundcolor: foregroundColor,
           })}
         </div>
       ) : (
