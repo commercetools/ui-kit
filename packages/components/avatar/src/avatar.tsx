@@ -142,7 +142,7 @@ const Avatar = (props: TAvatarProps) => {
           {cloneElement(props?.icon, {
             size: 'scale',
             color: foregroundColor,
-            backgroundColor: foregroundColor,
+            backgroundcolor: foregroundColor,
           })}
         </div>
       ) : (

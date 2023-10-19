@@ -5,23 +5,23 @@ import { TAvatarProps } from './avatar';
 
 const fontSizeMap = {
   s: {
-    narrow: designTokens.fontSize10, // '12px',
-    wide: designTokens.fontSize30, // '16px',
+    narrow: designTokens.fontSize30, // '16px',
+    wide: designTokens.fontSize10, // '12px',
   },
   m: {
-    narrow: designTokens.fontSize30, // '16px',
-    wide: designTokens.fontSize50, // '20px',
+    narrow: designTokens.fontSize50, // '20px',
+    wide: designTokens.fontSize30, // '16px',
   },
   l: {
-    narrow: designTokens.fontSize80, // '40px',
-    wide: designTokens.fontSize90, //'48px',
+    narrow: designTokens.fontSize90, //'48px',
+    wide: designTokens.fontSize80, // '40px',
   },
 };
 
 const widthSizeMap = {
   s: '32px',
   m: '40px',
-  l: '80px',
+  l: '100px',
 };
 
 const colorsMap = {
