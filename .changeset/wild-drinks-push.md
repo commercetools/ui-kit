@@ -3,4 +3,4 @@
 '@commercetools-uikit/spacings-inset': patch
 ---
 
-Inset and Inset Squish property should have a height of 100% to inherit the height of the parent.
+Updated Inset and InsetSquish components styles so they both use all available vertical space from their parent components.
