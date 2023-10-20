@@ -9,7 +9,7 @@
   --color-primary: hsl(175, 55%, 45%);
   --color-primary-20: hsl(175, 55%, 20%);
   --color-primary-25: hsl(175, 55%, 25%);
-  --color-primary-30: hsl(175, 55%, 33%);
+  --color-primary-30: hsl(175, 55%, 30%);
   --color-primary-40: hsl(175, 55%, 40%);
   --color-primary-85: hsl(175, 70%, 85%);
   --color-primary-95: hsl(175, 90%, 95%);
@@ -97,6 +97,7 @@
   --font-size-60: 1.5rem;
   --font-size-70: 2rem;
   --font-size-80: 2.5rem;
+  --font-size-90: 3rem;
   --font-size-15: 0.9231rem;
   --font-size-35: 1.0769rem;
   --font-size-45: 1.2308rem;
@@ -217,8 +218,6 @@
   --background-color-for-tag-when-hovered: hsl(232, 18%, 90%);
   --background-color-for-collapsible-panel-header-icon-when-disabled: #fff;
   --background-color-for-select-input-option-when-hovered: hsl(232, 18%, 98%);
-  --background-color-for-avatar: #213c45;
-  --background-color-for-avatar-when-highlighted: hsl(195, 35.2941176471%, 30%);
   --background-color-for-stamp-as-positive: hsl(175, 90%, 95%);
   --background-color-for-localized-input-label: #fff;
   --background-color-for-localized-input-label-when-readonly: hsl(
@@ -512,9 +511,6 @@
   --font-size-for-stamp: 0.875rem;
   --font-size-for-view-switcher: 0.875rem;
   --font-size-for-table: 0.875rem;
-  --font-size-for-avatar-as-small: 0.875rem;
-  --font-size-for-avatar-as-medium: 1rem;
-  --font-size-for-avatar-as-big: 2.5rem;
   --font-size-for-localized-input-label: 1rem;
   --font-size-for-content-notification: 1rem;
   --font-size-for-select-input-tag: 1rem;

@@ -8,7 +8,7 @@ export const themes = {
     colorPrimary: 'hsl(175, 55%, 45%)',
     colorPrimary20: 'hsl(175, 55%, 20%)',
     colorPrimary25: 'hsl(175, 55%, 25%)',
-    colorPrimary30: 'hsl(175, 55%, 33%)',
+    colorPrimary30: 'hsl(175, 55%, 30%)',
     colorPrimary40: 'hsl(175, 55%, 40%)',
     colorPrimary85: 'hsl(175, 70%, 85%)',
     colorPrimary95: 'hsl(175, 90%, 95%)',
@@ -96,6 +96,7 @@ export const themes = {
     fontSize60: '1.5rem',
     fontSize70: '2rem',
     fontSize80: '2.5rem',
+    fontSize90: '3rem',
     fontSize15: '0.9231rem',
     fontSize35: '1.0769rem',
     fontSize45: '1.2308rem',
@@ -206,8 +207,6 @@ export const themes = {
     backgroundColorForTagWhenHovered: 'hsl(232, 18%, 90%)',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(232, 18%, 98%)',
-    backgroundColorForAvatar: '#213c45',
-    backgroundColorForAvatarWhenHighlighted: 'hsl(195, 35.2941176471%, 30%)',
     backgroundColorForStampAsPositive: 'hsl(175, 90%, 95%)',
     backgroundColorForLocalizedInputLabel: '#fff',
     backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(232, 18%, 95%)',
@@ -433,9 +432,6 @@ export const themes = {
     fontSizeForStamp: '0.875rem',
     fontSizeForViewSwitcher: '0.875rem',
     fontSizeForTable: '0.875rem',
-    fontSizeForAvatarAsSmall: '0.875rem',
-    fontSizeForAvatarAsMedium: '1rem',
-    fontSizeForAvatarAsBig: '2.5rem',
     fontSizeForLocalizedInputLabel: '1rem',
     fontSizeForContentNotification: '1rem',
     fontSizeForSelectInputTag: '1rem',
@@ -566,7 +562,7 @@ const designTokens = {
   colorPrimary: 'var(--color-primary, hsl(175, 55%, 45%))',
   colorPrimary20: 'var(--color-primary-20, hsl(175, 55%, 20%))',
   colorPrimary25: 'var(--color-primary-25, hsl(175, 55%, 25%))',
-  colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 33%))',
+  colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 30%))',
   colorPrimary40: 'var(--color-primary-40, hsl(175, 55%, 40%))',
   colorPrimary85: 'var(--color-primary-85, hsl(175, 70%, 85%))',
   colorPrimary95: 'var(--color-primary-95, hsl(175, 90%, 95%))',
@@ -661,6 +657,7 @@ const designTokens = {
   fontSize60: 'var(--font-size-60, 1.5rem)',
   fontSize70: 'var(--font-size-70, 2rem)',
   fontSize80: 'var(--font-size-80, 2.5rem)',
+  fontSize90: 'var(--font-size-90, 3rem)',
   fontSize15: 'var(--font-size-15, 0.9231rem)',
   fontSize35: 'var(--font-size-35, 1.0769rem)',
   fontSize45: 'var(--font-size-45, 1.2308rem)',
@@ -802,9 +799,6 @@ const designTokens = {
     'var(--background-color-for-collapsible-panel-header-icon-when-disabled, #fff)',
   backgroundColorForSelectInputOptionWhenHovered:
     'var(--background-color-for-select-input-option-when-hovered, hsl(232, 18%, 98%))',
-  backgroundColorForAvatar: 'var(--background-color-for-avatar, #213c45)',
-  backgroundColorForAvatarWhenHighlighted:
-    'var(--background-color-for-avatar-when-highlighted, hsl(195, 35.2941176471%, 30%))',
   backgroundColorForStampAsPositive:
     'var(--background-color-for-stamp-as-positive, hsl(175, 90%, 95%))',
   backgroundColorForLocalizedInputLabel:
@@ -1174,9 +1168,6 @@ const designTokens = {
   fontSizeForStamp: 'var(--font-size-for-stamp, 0.875rem)',
   fontSizeForViewSwitcher: 'var(--font-size-for-view-switcher, 0.875rem)',
   fontSizeForTable: 'var(--font-size-for-table, 0.875rem)',
-  fontSizeForAvatarAsSmall: 'var(--font-size-for-avatar-as-small, 0.875rem)',
-  fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1rem)',
-  fontSizeForAvatarAsBig: 'var(--font-size-for-avatar-as-big, 2.5rem)',
   fontSizeForLocalizedInputLabel:
     'var(--font-size-for-localized-input-label, 1rem)',
   fontSizeForContentNotification:

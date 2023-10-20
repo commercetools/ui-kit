@@ -146,6 +146,7 @@ choiceGroupsByTheme:
         font-size-60: '1.5rem'
         font-size-70: '2rem'
         font-size-80: '2.5rem'
+        font-size-90: '3rem'
         # These font sizes are in rems based on a root font-size of 13px and they will be removed when we replace the default theme.
         font-size-15: '0.9231rem'
         font-size-35: '1.0769rem'
@@ -559,10 +560,6 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-select-input-option-when-hovered:
           choice: color-neutral-98
-        background-color-for-avatar:
-          choice: color-accent
-        background-color-for-avatar-when-highlighted:
-          choice: color-accent-30
         background-color-for-stamp-as-positive:
           choice: color-primary-95
         background-color-for-localized-input-label:
@@ -1033,12 +1030,6 @@ decisionGroupsByTheme:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
-        font-size-for-avatar-as-small:
-          choice: font-size-20
-        font-size-for-avatar-as-medium:
-          choice: font-size-30
-        font-size-for-avatar-as-big:
-          choice: font-size-80
         font-size-for-localized-input-label:
           choice: font-size-30
         font-size-for-content-notification:
