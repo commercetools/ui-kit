@@ -295,7 +295,7 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
     const resetValue = useCallback(
       (newValue: string | Record<string, string>) => {
         langRefs.current.forEach((langRef) => {
-          langRef.resetValue(newValue);
+          langRef?.resetValue(newValue);
         });
       },
       []
