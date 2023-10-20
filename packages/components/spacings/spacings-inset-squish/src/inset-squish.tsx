@@ -26,6 +26,7 @@ const InsetSquish = (props: TInsetSquishProps) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
+      height: 100%;
     `}
     {...filterDataAttributes(props)}
   >
