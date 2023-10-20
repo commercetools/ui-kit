@@ -171,6 +171,7 @@ choiceGroupsByTheme:
       label: Line heights
       prefix: line-height
       choices:
+        line-height-05: '1.125rem'
         line-height-10: '1.25rem'
         line-height-18: '1.3rem'
         line-height-20: '1.375rem'
@@ -1067,7 +1068,7 @@ decisionGroupsByTheme:
         line-height-for-text-as-body:
           choice: line-height-40
         line-height-for-text-as-caption:
-          choice: line-height-18
+          choice: line-height-05
         line-height-for-text-as-detail:
           choice: line-height-20
         line-height-for-select-input-options:
