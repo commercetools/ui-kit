@@ -375,6 +375,8 @@ componentGroups:
     description: 'Table elements'
   table-header:
     description: 'Table header elements'
+  table-header-sort-icons:
+    description: 'Table header sort icons'
   table-cell:
     description: 'Table cell elements'
   table-manager-droppable-list:
@@ -552,7 +554,7 @@ decisionGroupsByTheme:
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-98
         background-color-for-table-header:
-          choice: color-neutral-95
+          choice: color-neutral-98
         background-color-for-tag:
           choice: color-neutral-95
         background-color-for-tag-warning:
@@ -658,6 +660,8 @@ decisionGroupsByTheme:
           choice: border-width-2
         border-for-calendar-menu-when-focused:
           choice: 'none'
+        border-bottom-for-table-header:
+          choice: 'var(--border-width-1) solid var(--border-color-for-table-header-as-bottom)'
 
     borderColors:
       label: Border Colors
@@ -696,7 +700,7 @@ decisionGroupsByTheme:
         border-color-for-table-header:
           choice: color-surface
         border-color-for-table-header-as-bottom:
-          choice: color-neutral-90
+          choice: color-neutral-95
         border-color-for-table-manager-droppable-list:
           choice: color-neutral
         border-color-for-collapsible-panel-header:
@@ -876,7 +880,9 @@ decisionGroupsByTheme:
         font-color-for-link-as-secondary-when-active:
           choice: color-primary
         font-color-for-table-header:
-          choice: color-solid
+          choice: color-neutral-40
+        font-color-for-table-header-sort-icons:
+          choice: color-neutral-60
         font-color-for-localized-input-label:
           choice: color-neutral-60
         font-color-for-view-switcher:
@@ -1035,6 +1041,14 @@ decisionGroupsByTheme:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
+        font-size-for-table-header:
+          choice: font-size-10
+        font-size-for-avatar-as-small:
+          choice: font-size-20
+        font-size-for-avatar-as-medium:
+          choice: font-size-30
+        font-size-for-avatar-as-big:
+          choice: font-size-80
         font-size-for-localized-input-label:
           choice: font-size-30
         font-size-for-content-notification:
@@ -1099,7 +1113,7 @@ decisionGroupsByTheme:
         font-weight-for-button:
           choice: font-weight-500
         font-weight-for-table-header:
-          choice: font-weight-600
+          choice: font-weight-500
         font-weight-for-text-as-bold:
           choice: font-weight-600
 

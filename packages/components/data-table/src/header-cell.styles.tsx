@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { getCellInnerStyles } from './cell.styles';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -13,21 +13,47 @@ const getButtonStyle = () => css`
   text-decoration: none;
   color: inherit;
   font: inherit;
-  font-size: ${designTokens.fontSizeForTable};
+  font-size: ${designTokens.fontSizeForTableHeader};
   font-family: inherit;
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const rotateClockwise = keyframes`
+  from {
+    transform: rotate(-180deg);
+  } to {
+    transform: rotate(0deg);
+  }
+`;
+
+const rotateCounterClockwise = keyframes`
+  from {
+    transform: rotate(180deg);
+  } to {
+    transform: rotate(0deg);
+  }
 `;
 
 /* A sortable header has the two arrow svg icons
  * GIVEN column is sortable and is not focused
  * THEN AngleUpDown icon is shown (default behaviour)
- * AND AngleUp or AngleDown icon is not shown
+ * AND ArrowUp or ArrowDown icon is not shown
  *
- * GIVEN column is sortable and foucsed
+ * GIVEN column is sortable and foucsed or hovered
  * THEN AngleUpDown icon is hidden
- * AND AngleUp or AngleDown icon is shown
+ * AND ArrowUp or ArrowDown icon is shown
  */
 type TGetSortableHeaderStyles = {
   isActive?: boolean;
+  label?: 'asc' | 'desc';
 };
 
 const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
@@ -37,18 +63,25 @@ const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
 
   svg[data-icon-state='inactive'],
   svg[data-icon-state='active'] {
-    margin-left: ${designTokens.spacing20};
+    margin-left: ${designTokens.spacing10};
     flex-shrink: 0;
   }
   svg[data-icon-state='inactive'] {
     display: ${props.isActive ? 'none' : 'inline-block'};
+    animation: ${fadeIn} 150ms ease-in-out;
   }
   svg[data-icon-state='active'] {
     display: ${props.isActive ? 'inline-block' : 'none'};
+    animation: ${props.isActive &&
+    css`
+      ${props.label === 'asc'
+        ? rotateCounterClockwise
+        : rotateClockwise} 150ms ease-in-out
+    `};
   }
   /* for cases where svgs have a predefined fill */
   > svg * {
-    fill: ${designTokens.fontColorForTableHeader} !important;
+    fill: ${designTokens.fontColorForTableHeaderSortIcons} !important;
   }
 
   :hover,
@@ -58,6 +91,10 @@ const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
     }
     svg[data-icon-state='active'] {
       display: inline-block;
+      animation: ${!props.isActive &&
+      css`
+        ${fadeIn} 150ms ease-in-out
+      `};
     }
   }
 `;
@@ -101,7 +138,7 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   /* remove user-agent styles */
   padding: 0;
   font-weight: ${designTokens.fontWeightForTableHeader};
-  font-size: ${designTokens.fontSizeForTable};
+  font-size: ${designTokens.fontSizeForTableHeader};
 
   /* this ensures that, when dragging this header's column resizer
   it remains above the rest of the headers, preventing accidental hovers/flickering */
@@ -116,11 +153,23 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
 `;
 
 const HeaderLabelWrapper = styled.div`
+  display: inline-flex;
   /* ensure height stays the same even if label is empty
      1.4em = default line-height */
   min-height: 1.4em;
   margin: ${designTokens.marginForTableHeader} 0;
-  flex: 1;
+  flex: 0 0 fit-content;
+`;
+
+const HeaderLabelTextWrapper = styled.span`
+  /* ensure that the header text truncates on the second line
+  https://css-tricks.com/line-clampin/#aa-the-standardized-way
+*/
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
 `;
 
 const HeaderIconWrapper = styled.div`
@@ -135,5 +184,6 @@ export {
   HeaderCellInner,
   BaseHeaderCell,
   HeaderLabelWrapper,
+  HeaderLabelTextWrapper,
   HeaderIconWrapper,
 };
