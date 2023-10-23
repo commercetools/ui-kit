@@ -11,6 +11,7 @@ export const themes = {
     colorPrimary30: 'hsl(175, 55%, 30%)',
     colorPrimary40: 'hsl(175, 55%, 40%)',
     colorPrimary85: 'hsl(175, 70%, 85%)',
+    colorPrimary90: 'hsl(175, 70%, 90%)',
     colorPrimary95: 'hsl(175, 90%, 95%)',
     colorAccent: '#213c45',
     colorAccent10: 'hsl(195, 35.2941176471%, 10%)',
@@ -109,6 +110,7 @@ export const themes = {
     fontWeight500: '500',
     fontWeight600: '600',
     fontWeight700: '700',
+    lineHeight05: '1.125rem',
     lineHeight10: '1.25rem',
     lineHeight18: '1.3rem',
     lineHeight20: '1.375rem',
@@ -161,6 +163,7 @@ export const themes = {
     spacingM: '16px',
     spacingL: '24px',
     spacingXl: '32px',
+    spacing05: '2px',
     spacing10: '4px',
     spacing20: '8px',
     spacing25: '12px',
@@ -207,7 +210,8 @@ export const themes = {
     backgroundColorForTagWhenHovered: 'hsl(232, 18%, 90%)',
     backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
     backgroundColorForSelectInputOptionWhenHovered: 'hsl(232, 18%, 98%)',
-    backgroundColorForStampAsPositive: 'hsl(175, 90%, 95%)',
+    backgroundColorForStampAsPositive: 'hsl(175, 70%, 90%)',
+    backgroundColorForStampAsPrimary: 'hsl(175, 70%, 90%)',
     backgroundColorForLocalizedInputLabel: '#fff',
     backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(232, 18%, 95%)',
     backgroundColorForLocalizedInputLabelWhenDisabled: 'hsl(232, 18%, 95%)',
@@ -322,7 +326,8 @@ export const themes = {
     borderRadiusForTag: '2px',
     borderRadiusForCard: '4px',
     borderRadiusForTableManagerDroppableList: '4px',
-    borderRadiusForStamp: '20px',
+    borderRadiusForStamp: '4px',
+    borderRadiusForStampAsCondensed: '2px',
     borderRadiusForViewSwitcher: '4px',
     borderRadiusForContentNotification: '4px',
     borderRadiusForPrimaryActionDropdown:
@@ -425,11 +430,10 @@ export const themes = {
     fontSizeForTextAsH4: '1rem',
     fontSizeForTextAsH5: '1rem',
     fontSizeForTextAsBody: '1rem',
-    fontSizeForTextAsCaption: '0.8rem',
+    fontSizeForTextAsCaption: '0.75rem',
     fontSizeForTextAsDetail: '0.875rem',
     fontSizeForBody: '16px',
     fontSizeForLink: '1rem',
-    fontSizeForStamp: '0.875rem',
     fontSizeForViewSwitcher: '0.875rem',
     fontSizeForTable: '0.875rem',
     fontSizeForLocalizedInputLabel: '1rem',
@@ -443,7 +447,7 @@ export const themes = {
     lineHeightForTextAsH4: '1.375rem',
     lineHeightForTextAsH5: '1.375rem',
     lineHeightForTextAsBody: '1.625rem',
-    lineHeightForTextAsCaption: '1.3rem',
+    lineHeightForTextAsCaption: '1.125rem',
     lineHeightForTextAsDetail: '1.375rem',
     lineHeightForSelectInputOptions: '1.625rem',
     lineHeightForTableHeader: '26px',
@@ -475,7 +479,7 @@ export const themes = {
     marginForRichTextDropdownItemLabel: '0 0 0 var(--spacing-20)',
     marginForTagList: '0 var(--spacing-20) var(--spacing-20) 0',
     paddingForStamp: '4px 12px',
-    paddingForStampAsCondensed: '0 var(--spacing-20)',
+    paddingForStampAsCondensed: 'var(--spacing-05) var(--spacing-10)',
     paddingForTag: '2px 12px',
     paddingForTableHeader: '24px',
     paddingForTableHeaderAsCondensed: '24px',
@@ -565,6 +569,7 @@ const designTokens = {
   colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 30%))',
   colorPrimary40: 'var(--color-primary-40, hsl(175, 55%, 40%))',
   colorPrimary85: 'var(--color-primary-85, hsl(175, 70%, 85%))',
+  colorPrimary90: 'var(--color-primary-90, hsl(175, 70%, 90%))',
   colorPrimary95: 'var(--color-primary-95, hsl(175, 90%, 95%))',
   colorAccent: 'var(--color-accent, #213c45)',
   colorAccent10: 'var(--color-accent-10, hsl(195, 35.2941176471%, 10%))',
@@ -670,6 +675,7 @@ const designTokens = {
   fontWeight500: 'var(--font-weight-500, 500)',
   fontWeight600: 'var(--font-weight-600, 600)',
   fontWeight700: 'var(--font-weight-700, 700)',
+  lineHeight05: 'var(--line-height-05, 1.125rem)',
   lineHeight10: 'var(--line-height-10, 1.25rem)',
   lineHeight18: 'var(--line-height-18, 1.3rem)',
   lineHeight20: 'var(--line-height-20, 1.375rem)',
@@ -728,6 +734,7 @@ const designTokens = {
   spacingM: 'var(--spacing-m, 16px)',
   spacingL: 'var(--spacing-l, 24px)',
   spacingXl: 'var(--spacing-xl, 32px)',
+  spacing05: 'var(--spacing-05, 2px)',
   spacing10: 'var(--spacing-10, 4px)',
   spacing20: 'var(--spacing-20, 8px)',
   spacing25: 'var(--spacing-25, 12px)',
@@ -800,7 +807,9 @@ const designTokens = {
   backgroundColorForSelectInputOptionWhenHovered:
     'var(--background-color-for-select-input-option-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForStampAsPositive:
-    'var(--background-color-for-stamp-as-positive, hsl(175, 90%, 95%))',
+    'var(--background-color-for-stamp-as-positive, hsl(175, 70%, 90%))',
+  backgroundColorForStampAsPrimary:
+    'var(--background-color-for-stamp-as-primary, hsl(175, 70%, 90%))',
   backgroundColorForLocalizedInputLabel:
     'var(--background-color-for-localized-input-label, #fff)',
   backgroundColorForLocalizedInputLabelWhenReadonly:
@@ -990,7 +999,9 @@ const designTokens = {
   borderRadiusForCard: 'var(--border-radius-for-card, 4px)',
   borderRadiusForTableManagerDroppableList:
     'var(--border-radius-for-table-manager-droppable-list, 4px)',
-  borderRadiusForStamp: 'var(--border-radius-for-stamp, 20px)',
+  borderRadiusForStamp: 'var(--border-radius-for-stamp, 4px)',
+  borderRadiusForStampAsCondensed:
+    'var(--border-radius-for-stamp-as-condensed, 2px)',
   borderRadiusForViewSwitcher: 'var(--border-radius-for-view-switcher, 4px)',
   borderRadiusForContentNotification:
     'var(--border-radius-for-content-notification, 4px)',
@@ -1161,11 +1172,10 @@ const designTokens = {
   fontSizeForTextAsH4: 'var(--font-size-for-text-as-h-4, 1rem)',
   fontSizeForTextAsH5: 'var(--font-size-for-text-as-h-5, 1rem)',
   fontSizeForTextAsBody: 'var(--font-size-for-text-as-body, 1rem)',
-  fontSizeForTextAsCaption: 'var(--font-size-for-text-as-caption, 0.8rem)',
+  fontSizeForTextAsCaption: 'var(--font-size-for-text-as-caption, 0.75rem)',
   fontSizeForTextAsDetail: 'var(--font-size-for-text-as-detail, 0.875rem)',
   fontSizeForBody: 'var(--font-size-for-body, 16px)',
   fontSizeForLink: 'var(--font-size-for-link, 1rem)',
-  fontSizeForStamp: 'var(--font-size-for-stamp, 0.875rem)',
   fontSizeForViewSwitcher: 'var(--font-size-for-view-switcher, 0.875rem)',
   fontSizeForTable: 'var(--font-size-for-table, 0.875rem)',
   fontSizeForLocalizedInputLabel:
@@ -1183,7 +1193,8 @@ const designTokens = {
   lineHeightForTextAsH4: 'var(--line-height-for-text-as-h-4, 1.375rem)',
   lineHeightForTextAsH5: 'var(--line-height-for-text-as-h-5, 1.375rem)',
   lineHeightForTextAsBody: 'var(--line-height-for-text-as-body, 1.625rem)',
-  lineHeightForTextAsCaption: 'var(--line-height-for-text-as-caption, 1.3rem)',
+  lineHeightForTextAsCaption:
+    'var(--line-height-for-text-as-caption, 1.125rem)',
   lineHeightForTextAsDetail: 'var(--line-height-for-text-as-detail, 1.375rem)',
   lineHeightForSelectInputOptions:
     'var(--line-height-for-select-input-options, 1.625rem)',
@@ -1228,7 +1239,7 @@ const designTokens = {
     'var(--margin-for-tag-list, 0 var(--spacing-20) var(--spacing-20) 0)',
   paddingForStamp: 'var(--padding-for-stamp, 4px 12px)',
   paddingForStampAsCondensed:
-    'var(--padding-for-stamp-as-condensed, 0 var(--spacing-20))',
+    'var(--padding-for-stamp-as-condensed, var(--spacing-05) var(--spacing-10))',
   paddingForTag: 'var(--padding-for-tag, 2px 12px)',
   paddingForTableHeader: 'var(--padding-for-table-header, 24px)',
   paddingForTableHeaderAsCondensed:
