@@ -375,8 +375,6 @@ componentGroups:
     description: 'Table elements'
   table-header:
     description: 'Table header elements'
-  table-header-sort-icons:
-    description: 'Table header sort icons'
   table-cell:
     description: 'Table cell elements'
   table-manager-droppable-list:
@@ -660,8 +658,6 @@ decisionGroupsByTheme:
           choice: border-width-2
         border-for-calendar-menu-when-focused:
           choice: 'none'
-        border-bottom-for-table-header:
-          choice: 'var(--border-width-1) solid var(--border-color-for-table-header-as-bottom)'
 
     borderColors:
       label: Border Colors
@@ -881,8 +877,6 @@ decisionGroupsByTheme:
           choice: color-primary
         font-color-for-table-header:
           choice: color-neutral-40
-        font-color-for-table-header-sort-icons:
-          choice: color-neutral-60
         font-color-for-localized-input-label:
           choice: color-neutral-60
         font-color-for-view-switcher:

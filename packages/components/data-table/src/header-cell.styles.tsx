@@ -6,17 +6,24 @@ import type { THeaderCell } from './header-cell';
 
 const getButtonStyle = () => css`
   cursor: pointer;
-
   /* remove user-agent button styles */
   border: none;
   background: none;
   text-decoration: none;
   color: inherit;
   font: inherit;
-  font-size: ${designTokens.fontSizeForTableHeader};
+  font-size: ${designTokens.fontSize10};
   font-family: inherit;
 `;
 
+/* When a sortable header is deselected,
+ *  (i.e. when another sortable header is selected)
+ *  the AngleUpDown is animated with fadeIn
+ *
+ *  When the user hovers over a sortable header that
+ *  is not the active sorted column, the icon for
+ *  the current sort direction is animated with fadeIn
+ */
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -26,6 +33,10 @@ const fadeIn = keyframes`
   }
 `;
 
+/* When a sortable header is activated/selected,
+ *  and the sort direction is 'desc', the ArrowDown
+ *  icon is animated with rotateClockwise
+ */
 const rotateClockwise = keyframes`
   from {
     transform: rotate(-180deg);
@@ -34,6 +45,10 @@ const rotateClockwise = keyframes`
   }
 `;
 
+/* When a sortable header is activated/selected,
+ *  and the sort direction is 'asc', the ArrowUp
+ *  icon is animated with rotateCounterClockwise
+ */
 const rotateCounterClockwise = keyframes`
   from {
     transform: rotate(180deg);
@@ -81,7 +96,7 @@ const getSortableHeaderStyles = (props: TGetSortableHeaderStyles) => css`
   }
   /* for cases where svgs have a predefined fill */
   > svg * {
-    fill: ${designTokens.fontColorForTableHeaderSortIcons} !important;
+    fill: ${designTokens.colorNeutral60} !important;
   }
 
   :hover,
@@ -108,7 +123,7 @@ type THeaderCellInner = Pick<
 const HeaderCellInner = styled.div<THeaderCellInner>`
   box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0
     ${(props) =>
       props.isCondensed
@@ -126,8 +141,8 @@ type TBaseHeaderCell = {
   shouldClipContent?: boolean;
 };
 const BaseHeaderCell = styled.th<TBaseHeaderCell>`
-  color: ${designTokens.fontColorForTableHeader};
-  background-color: ${designTokens.backgroundColorForTableHeader};
+  color: ${designTokens.colorNeutral40};
+  background-color: ${designTokens.colorNeutral98};
 
   position: ${(props) =>
     props.disableHeaderStickiness ? 'relative' : 'sticky'};
@@ -137,8 +152,8 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
 
   /* remove user-agent styles */
   padding: 0;
-  font-weight: ${designTokens.fontWeightForTableHeader};
-  font-size: ${designTokens.fontSizeForTableHeader};
+  font-weight: ${designTokens.fontWeight500};
+  font-size: ${designTokens.fontSize10};
 
   /* this ensures that, when dragging this header's column resizer
   it remains above the rest of the headers, preventing accidental hovers/flickering */
@@ -163,8 +178,7 @@ const HeaderLabelWrapper = styled.div`
 
 const HeaderLabelTextWrapper = styled.span`
   /* ensure that the header text truncates on the second line
-  https://css-tricks.com/line-clampin/#aa-the-standardized-way
-*/
+  https://css-tricks.com/line-clampin/#aa-the-standardized-way */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

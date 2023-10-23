@@ -264,8 +264,6 @@ export const themes = {
     borderForSelectInputTag: '1px solid var(--color-neutral-85)',
     borderForRadioInputOption: '2px',
     borderForCalendarMenuWhenFocused: 'none',
-    borderBottomForTableHeader:
-      'var(--border-width-1) solid var(--border-color-for-table-header-as-bottom)',
     borderColorForInput: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenFocused: 'hsl(175, 55%, 45%)',
     borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
@@ -371,7 +369,6 @@ export const themes = {
     fontColorForLinkAsPrimaryWhenActive: 'hsl(175, 55%, 45%)',
     fontColorForLinkAsSecondaryWhenActive: 'hsl(175, 55%, 45%)',
     fontColorForTableHeader: 'hsl(232, 18%, 40%)',
-    fontColorForTableHeaderSortIcons: 'hsl(232, 18%, 60%)',
     fontColorForLocalizedInputLabel: 'hsl(232, 18%, 60%)',
     fontColorForViewSwitcher: 'hsl(232, 18%, 40%)',
     fontColorForViewSwitcherWhenDisabled: 'hsl(232, 18%, 60%)',
@@ -902,8 +899,6 @@ const designTokens = {
   borderForRadioInputOption: 'var(--border-for-radio-input-option, 2px)',
   borderForCalendarMenuWhenFocused:
     'var(--border-for-calendar-menu-when-focused, none)',
-  borderBottomForTableHeader:
-    'var(--border-bottom-for-table-header, var(--border-width-1) solid var(--border-color-for-table-header-as-bottom))',
   borderColorForInput: 'var(--border-color-for-input, hsl(232, 18%, 80%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, hsl(175, 55%, 45%))',
@@ -1078,8 +1073,6 @@ const designTokens = {
     'var(--font-color-for-link-as-secondary-when-active, hsl(175, 55%, 45%))',
   fontColorForTableHeader:
     'var(--font-color-for-table-header, hsl(232, 18%, 40%))',
-  fontColorForTableHeaderSortIcons:
-    'var(--font-color-for-table-header-sort-icons, hsl(232, 18%, 60%))',
   fontColorForLocalizedInputLabel:
     'var(--font-color-for-localized-input-label, hsl(232, 18%, 60%))',
   fontColorForViewSwitcher:
