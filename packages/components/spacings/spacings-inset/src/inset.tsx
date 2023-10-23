@@ -31,6 +31,7 @@ const Inset = (props: TInsetProps) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
+      height: 100%;
     `}
     {...filterDataAttributes(props)}
   >

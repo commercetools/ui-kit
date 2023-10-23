@@ -42,6 +42,7 @@ choiceGroupsByTheme:
         color-primary-30: 'hsl(175, 55%, 30%)'
         color-primary-40: 'hsl(175, 55%, 40%)'
         color-primary-85: 'hsl(175, 70%, 85%)'
+        color-primary-90: 'hsl(175, 70%, 90%)'
         color-primary-95: 'hsl(175, 90%, 95%)'
         color-accent: '#213c45'
         color-accent-10: 'hsl(195, 35.2941176471%, 10%)'
@@ -146,6 +147,7 @@ choiceGroupsByTheme:
         font-size-60: '1.5rem'
         font-size-70: '2rem'
         font-size-80: '2.5rem'
+        font-size-90: '3rem'
         # These font sizes are in rems based on a root font-size of 13px and they will be removed when we replace the default theme.
         font-size-15: '0.9231rem'
         font-size-35: '1.0769rem'
@@ -169,6 +171,7 @@ choiceGroupsByTheme:
       label: Line heights
       prefix: line-height
       choices:
+        line-height-05: '1.125rem'
         line-height-10: '1.25rem'
         line-height-18: '1.3rem'
         line-height-20: '1.375rem'
@@ -232,6 +235,7 @@ choiceGroupsByTheme:
         spacing-l: 24px
         spacing-xl: 32px
         # New tokens
+        spacing-05: 2px
         spacing-10: 4px
         spacing-20: 8px
         spacing-25: 12px
@@ -559,12 +563,10 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-select-input-option-when-hovered:
           choice: color-neutral-98
-        background-color-for-avatar:
-          choice: color-accent
-        background-color-for-avatar-when-highlighted:
-          choice: color-accent-30
         background-color-for-stamp-as-positive:
-          choice: color-primary-95
+          choice: color-primary-90
+        background-color-for-stamp-as-primary:
+          choice: color-primary-90
         background-color-for-localized-input-label:
           choice: color-surface
         background-color-for-localized-input-label-when-readonly:
@@ -779,7 +781,9 @@ decisionGroupsByTheme:
         border-radius-for-table-manager-droppable-list:
           choice: border-radius-4
         border-radius-for-stamp:
-          choice: border-radius-20
+          choice: border-radius-4
+        border-radius-for-stamp-as-condensed:
+          choice: border-radius-2
         border-radius-for-view-switcher:
           choice: border-radius-4
         border-radius-for-content-notification:
@@ -1020,25 +1024,17 @@ decisionGroupsByTheme:
         font-size-for-text-as-body:
           choice: font-size-30
         font-size-for-text-as-caption:
-          choice: font-size-12
+          choice: font-size-10
         font-size-for-text-as-detail:
           choice: font-size-20
         font-size-for-body:
           choice: '16px'
         font-size-for-link:
           choice: font-size-30
-        font-size-for-stamp:
-          choice: font-size-20
         font-size-for-view-switcher:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
-        font-size-for-avatar-as-small:
-          choice: font-size-20
-        font-size-for-avatar-as-medium:
-          choice: font-size-30
-        font-size-for-avatar-as-big:
-          choice: font-size-80
         font-size-for-localized-input-label:
           choice: font-size-30
         font-size-for-content-notification:
@@ -1072,7 +1068,7 @@ decisionGroupsByTheme:
         line-height-for-text-as-body:
           choice: line-height-40
         line-height-for-text-as-caption:
-          choice: line-height-18
+          choice: line-height-05
         line-height-for-text-as-detail:
           choice: line-height-20
         line-height-for-select-input-options:
@@ -1151,7 +1147,7 @@ decisionGroupsByTheme:
         padding-for-stamp:
           choice: '4px 12px'
         padding-for-stamp-as-condensed:
-          choice: '0 var(--spacing-20)'
+          choice: 'var(--spacing-05) var(--spacing-10)'
         padding-for-tag:
           choice: '2px 12px'
         padding-for-table-header:
