@@ -1035,12 +1035,6 @@ decisionGroupsByTheme:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
-        font-size-for-avatar-as-small:
-          choice: font-size-20
-        font-size-for-avatar-as-medium:
-          choice: font-size-30
-        font-size-for-avatar-as-big:
-          choice: font-size-80
         font-size-for-localized-input-label:
           choice: font-size-30
         font-size-for-content-notification:

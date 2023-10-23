@@ -436,9 +436,6 @@ export const themes = {
     fontSizeForLink: '1rem',
     fontSizeForViewSwitcher: '0.875rem',
     fontSizeForTable: '0.875rem',
-    fontSizeForAvatarAsSmall: '0.875rem',
-    fontSizeForAvatarAsMedium: '1rem',
-    fontSizeForAvatarAsBig: '2.5rem',
     fontSizeForLocalizedInputLabel: '1rem',
     fontSizeForContentNotification: '1rem',
     fontSizeForSelectInputTag: '1rem',
@@ -1182,9 +1179,6 @@ const designTokens = {
   fontSizeForLink: 'var(--font-size-for-link, 1rem)',
   fontSizeForViewSwitcher: 'var(--font-size-for-view-switcher, 0.875rem)',
   fontSizeForTable: 'var(--font-size-for-table, 0.875rem)',
-  fontSizeForAvatarAsSmall: 'var(--font-size-for-avatar-as-small, 0.875rem)',
-  fontSizeForAvatarAsMedium: 'var(--font-size-for-avatar-as-medium, 1rem)',
-  fontSizeForAvatarAsBig: 'var(--font-size-for-avatar-as-big, 2.5rem)',
   fontSizeForLocalizedInputLabel:
     'var(--font-size-for-localized-input-label, 1rem)',
   fontSizeForContentNotification:
