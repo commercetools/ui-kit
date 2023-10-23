@@ -155,6 +155,20 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
   font-weight: ${designTokens.fontWeight500};
   font-size: ${designTokens.fontSize10};
 
+  /**
+   * bottom border that doesn't overshadow the resize indicator
+   */
+  :after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: ${designTokens.borderWidth1};
+    bottom: 0;
+    left: 0;
+    background-color: ${designTokens.colorNeutral95};
+  }
+
   /* this ensures that, when dragging this header's column resizer
   it remains above the rest of the headers, preventing accidental hovers/flickering */
   :hover,
