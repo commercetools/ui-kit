@@ -1,5 +1,32 @@
 # @commercetools-uikit/design-system
 
+## 16.8.0
+
+### Minor Changes
+
+- [#2612](https://github.com/commercetools/ui-kit/pull/2612) [`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7) Thanks [@valoriecarli](https://github.com/valoriecarli)! - Update neutral and primary colors. Add new colors for accents: purple, turquoise and brown.
+
+- [#2610](https://github.com/commercetools/ui-kit/pull/2610) [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Update styling of stamp components
+
+- [#2613](https://github.com/commercetools/ui-kit/pull/2613) [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Introducing a new `Text` component named `Caption` which will render the smallest text available.
+  Example:
+
+  ```jsx
+  <Text.Caption>your small text</Text.Caption>
+  ```
+
+  Also, we've deprecated the `isBold` property in these components in favour of a new property called `fontWeight`.
+  The former property only supported two values whereas the new one supports three: `regular`, `medium` and `bold`.
+
+- [#2621](https://github.com/commercetools/ui-kit/pull/2621) [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd) Thanks [@kterry1](https://github.com/kterry1)! - Added color and icon props for `Avatar` component as well as updated font size/weight/color
+
+- [#2629](https://github.com/commercetools/ui-kit/pull/2629) [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Update data table header styles, clamp header cell label to not extend past 2 lines in height, update and animate header cell sorting icons
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.8.0
+
 ## 16.7.5
 
 ### Patch Changes

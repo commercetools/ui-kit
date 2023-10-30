@@ -1,5 +1,19 @@
 # @commercetools-uikit/money-input
 
+## 16.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7), [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d), [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba), [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd), [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9), [`bc14d604d`](https://github.com/commercetools/ui-kit/commit/bc14d604d75e29a2bc320aec7550efdac662e2f9)]:
+  - @commercetools-uikit/design-system@16.8.0
+  - @commercetools-uikit/select-utils@16.8.0
+  - @commercetools-uikit/icons@16.8.0
+  - @commercetools-uikit/tooltip@16.8.0
+  - @commercetools-uikit/constraints@16.8.0
+  - @commercetools-uikit/input-utils@16.8.0
+  - @commercetools-uikit/hooks@16.8.0
+  - @commercetools-uikit/utils@16.8.0
+
 ## 16.7.5
 
 ### Patch Changes
