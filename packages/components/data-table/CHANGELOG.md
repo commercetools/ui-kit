@@ -1,5 +1,25 @@
 # @commercetools-uikit/data-table
 
+## 16.8.0
+
+### Minor Changes
+
+- [#2629](https://github.com/commercetools/ui-kit/pull/2629) [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Update data table header styles, clamp header cell label to not extend past 2 lines in height, update and animate header cell sorting icons
+
+- [#2630](https://github.com/commercetools/ui-kit/pull/2630) [`4e6399fe9`](https://github.com/commercetools/ui-kit/commit/4e6399fe92d3926e6cfdce57f417ab5842123699) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Display table header cell border for each cell on hover of table header
+
+### Patch Changes
+
+- [#2617](https://github.com/commercetools/ui-kit/pull/2617) [`cf30ddfda`](https://github.com/commercetools/ui-kit/commit/cf30ddfdae4799f225e0983763bac3ff3806b081) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Update styling of data table container and table cells
+
+- Updated dependencies [[`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7), [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d), [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba), [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd), [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9)]:
+  - @commercetools-uikit/design-system@16.8.0
+  - @commercetools-uikit/icons@16.8.0
+  - @commercetools-uikit/accessible-button@16.8.0
+  - @commercetools-uikit/secondary-icon-button@16.8.0
+  - @commercetools-uikit/hooks@16.8.0
+  - @commercetools-uikit/utils@16.8.0
+
 ## 16.7.5
 
 ### Patch Changes
