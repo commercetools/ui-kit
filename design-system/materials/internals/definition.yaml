@@ -552,7 +552,7 @@ decisionGroupsByTheme:
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-98
         background-color-for-table-header:
-          choice: color-neutral-95
+          choice: color-neutral-98
         background-color-for-tag:
           choice: color-neutral-95
         background-color-for-tag-warning:
@@ -696,7 +696,7 @@ decisionGroupsByTheme:
         border-color-for-table-header:
           choice: color-surface
         border-color-for-table-header-as-bottom:
-          choice: color-neutral-90
+          choice: color-neutral-95
         border-color-for-table-manager-droppable-list:
           choice: color-neutral
         border-color-for-collapsible-panel-header:
@@ -876,7 +876,7 @@ decisionGroupsByTheme:
         font-color-for-link-as-secondary-when-active:
           choice: color-primary
         font-color-for-table-header:
-          choice: color-solid
+          choice: color-neutral-40
         font-color-for-localized-input-label:
           choice: color-neutral-60
         font-color-for-view-switcher:
@@ -1099,7 +1099,7 @@ decisionGroupsByTheme:
         font-weight-for-button:
           choice: font-weight-500
         font-weight-for-table-header:
-          choice: font-weight-600
+          choice: font-weight-500
         font-weight-for-text-as-bold:
           choice: font-weight-600
 

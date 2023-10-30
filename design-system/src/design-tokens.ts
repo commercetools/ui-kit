@@ -203,7 +203,7 @@ export const themes = {
     backgroundColorForInputWhenActive:
       'hsl(203.05555555555554, 93.9130434783%, 95%)',
     backgroundColorForTableCellWhenHovered: 'hsl(232, 18%, 98%)',
-    backgroundColorForTableHeader: 'hsl(232, 18%, 95%)',
+    backgroundColorForTableHeader: 'hsl(232, 18%, 98%)',
     backgroundColorForTag: 'hsl(232, 18%, 95%)',
     backgroundColorForTagWarning:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
@@ -280,7 +280,7 @@ export const themes = {
     borderColorForButtonAsIconAsPrimary: 'hsl(232, 18%, 80%)',
     borderColorForButtonAsIconWhenDisabled: '#fff',
     borderColorForTableHeader: '#fff',
-    borderColorForTableHeaderAsBottom: 'hsl(232, 18%, 90%)',
+    borderColorForTableHeaderAsBottom: 'hsl(232, 18%, 95%)',
     borderColorForTableManagerDroppableList: 'hsl(232, 18%, 80%)',
     borderColorForCollapsiblePanelHeader: 'hsl(232, 18%, 90%)',
     borderColorForStampWhenError: 'hsl(339.1304347826087, 100%, 85%)',
@@ -368,7 +368,7 @@ export const themes = {
     fontColorForLinkAsSecondary: '#1a1a1a',
     fontColorForLinkAsPrimaryWhenActive: 'hsl(175, 55%, 45%)',
     fontColorForLinkAsSecondaryWhenActive: 'hsl(175, 55%, 45%)',
-    fontColorForTableHeader: '#1a1a1a',
+    fontColorForTableHeader: 'hsl(232, 18%, 40%)',
     fontColorForLocalizedInputLabel: 'hsl(232, 18%, 60%)',
     fontColorForViewSwitcher: 'hsl(232, 18%, 40%)',
     fontColorForViewSwitcherWhenDisabled: 'hsl(232, 18%, 60%)',
@@ -460,7 +460,7 @@ export const themes = {
     fontWeightForTextAsCaption: '400',
     fontWeightForTextAsDetail: '400',
     fontWeightForButton: '500',
-    fontWeightForTableHeader: '600',
+    fontWeightForTableHeader: '500',
     fontWeightForTextAsBold: '600',
     marginForTableHeader: '8px',
     marginForTableCellAsCondensed: '8px',
@@ -796,7 +796,7 @@ const designTokens = {
   backgroundColorForTableCellWhenHovered:
     'var(--background-color-for-table-cell-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForTableHeader:
-    'var(--background-color-for-table-header, hsl(232, 18%, 95%))',
+    'var(--background-color-for-table-header, hsl(232, 18%, 98%))',
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(232, 18%, 95%))',
   backgroundColorForTagWarning:
     'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
@@ -924,7 +924,7 @@ const designTokens = {
     'var(--border-color-for-button-as-icon-when-disabled, #fff)',
   borderColorForTableHeader: 'var(--border-color-for-table-header, #fff)',
   borderColorForTableHeaderAsBottom:
-    'var(--border-color-for-table-header-as-bottom, hsl(232, 18%, 90%))',
+    'var(--border-color-for-table-header-as-bottom, hsl(232, 18%, 95%))',
   borderColorForTableManagerDroppableList:
     'var(--border-color-for-table-manager-droppable-list, hsl(232, 18%, 80%))',
   borderColorForCollapsiblePanelHeader:
@@ -1067,7 +1067,8 @@ const designTokens = {
     'var(--font-color-for-link-as-primary-when-active, hsl(175, 55%, 45%))',
   fontColorForLinkAsSecondaryWhenActive:
     'var(--font-color-for-link-as-secondary-when-active, hsl(175, 55%, 45%))',
-  fontColorForTableHeader: 'var(--font-color-for-table-header, #1a1a1a)',
+  fontColorForTableHeader:
+    'var(--font-color-for-table-header, hsl(232, 18%, 40%))',
   fontColorForLocalizedInputLabel:
     'var(--font-color-for-localized-input-label, hsl(232, 18%, 60%))',
   fontColorForViewSwitcher:
@@ -1208,7 +1209,7 @@ const designTokens = {
   fontWeightForTextAsCaption: 'var(--font-weight-for-text-as-caption, 400)',
   fontWeightForTextAsDetail: 'var(--font-weight-for-text-as-detail, 400)',
   fontWeightForButton: 'var(--font-weight-for-button, 500)',
-  fontWeightForTableHeader: 'var(--font-weight-for-table-header, 600)',
+  fontWeightForTableHeader: 'var(--font-weight-for-table-header, 500)',
   fontWeightForTextAsBold: 'var(--font-weight-for-text-as-bold, 600)',
   marginForTableHeader: 'var(--margin-for-table-header, 8px)',
   marginForTableCellAsCondensed:
