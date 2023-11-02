@@ -17,10 +17,11 @@ const WrappedCard = (props) => (
     css={css`
       margin: 16px;
       width: 300px;
+      height: ${props.height || 'auto'};
     `}
     {...props}
   >
-    <Text.Body>{props.children}</Text.Body>
+    {props.children}
   </Card>
 );
 
@@ -28,74 +29,94 @@ export const component = () => (
   <Suite>
     <Spec label="Type - Raised, Theme - Light, InsetScale - None">
       <WrappedCard type="raised" theme="light" insetScale="none">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Raised, Theme - Dark, InsetScale - None">
       <WrappedCard type="raised" theme="dark" insetScale="none">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Flat, Theme - Light, InsetScale - None">
       <WrappedCard type="flat" theme="light" insetScale="none">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Flat, Theme - Dark, InsetScale - None">
       <WrappedCard type="flat" theme="dark" insetScale="none">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
 
     <Spec label="Type - Raised, Theme - Light, InsetScale - S">
       <WrappedCard type="raised" theme="light" insetScale="s">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Raised, Theme - Dark, InsetScale - S">
       <WrappedCard type="raised" theme="dark" insetScale="s">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Flat, Theme - Light, InsetScale - S">
       <WrappedCard type="flat" theme="light" insetScale="s">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Flat, Theme - Dark, InsetScale - S">
       <WrappedCard type="flat" theme="dark" insetScale="s">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
 
     <Spec label="Type - Raised, Theme - Light, InsetScale - M">
       <WrappedCard type="raised" theme="light" insetScale="m">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Raised, Theme - Dark, InsetScale - M">
       <WrappedCard type="raised" theme="dark" insetScale="m">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Flat, Theme - Light, InsetScale - M">
       <WrappedCard type="flat" theme="light" insetScale="m">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Flat, Theme - Dark, InsetScale - M">
       <WrappedCard type="flat" theme="dark" insetScale="m">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Raised, Theme - Light, InsetScale - L">
       <WrappedCard type="raised" theme="light" insetScale="l">
-        {text}
+        <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Raised, Theme - Light, InsetScale - XL">
       <WrappedCard type="raised" theme="light" insetScale="xl">
-        {text}
+        <Text.Body>{text}</Text.Body>
+      </WrappedCard>
+    </Spec>
+
+    <Spec label="Content using all vertical space from the parent">
+      <WrappedCard type="raised" theme="light" insetScale="m" height="400px">
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+          `}
+        >
+          <div>
+            {text}
+          </div>
+          <div>
+            {text}
+          </div>
+        </div>
       </WrappedCard>
     </Spec>
   </Suite>
