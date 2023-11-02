@@ -36,10 +36,11 @@ import Spacings from '@commercetools-uikit/spacings';
 
 ## Properties
 
-| Props      | Type             | Required | Values            | Default |
-| ---------- | ---------------- | :------: | ----------------- | ------- |
-| `scale`    | `String`         |    -     | `['s', 'm', 'l']` | `m`     |
-| `children` | `PropTypes.node` |    -     | -                 | -       |
+| Props                   | Type             | Required | Values            | Default |
+| ----------------------- | ---------------- | :------: | ----------------- | ------- |
+| `scale`                 | `String`         |    -     | `['s', 'm', 'l']` | `m`     |
+| `useAllAvailableHeight` | `boolean`        |    -     | `true`            | `false` |
+| `children`              | `PropTypes.node` |    -     | -                 | -       |
 
 ## Scales
 
