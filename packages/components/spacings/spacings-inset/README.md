@@ -29,7 +29,7 @@ import Spacings from '@commercetools-uikit/spacings';
 | Props                   | Type             | Required | Values                        | Default |
 | ----------------------- | ---------------- | :------: | ----------------------------- | ------- |
 | `scale`                 | `String`         |    -     | `['xs', 's', 'm', 'l', 'xl']` | `x`     |
-| `useAllAvailableHeight` | `boolean`        |    -     | `true`                        | `false` |
+| `useAllAvailableHeight` | `boolean`        |    -     | `true`, `false`               | `false` |
 | `children`              | `PropTypes.node` |    -     | -                             | -       |
 
 ## Scales
