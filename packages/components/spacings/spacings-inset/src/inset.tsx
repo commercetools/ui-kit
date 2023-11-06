@@ -24,6 +24,7 @@ const getPadding = (scale?: TScale) => {
 
 export type TInsetProps = {
   scale: TScale;
+  height: 'auto' | '100%';
   children?: ReactNode;
 };
 
@@ -31,15 +32,16 @@ const Inset = (props: TInsetProps) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
-      height: 100%;
+      height: ${props.height};
     `}
     {...filterDataAttributes(props)}
   >
     {props.children}
   </div>
 );
-const defaultProps: Pick<TInsetProps, 'scale'> = {
+const defaultProps: Pick<TInsetProps, 'scale' | 'height'> = {
   scale: 'm',
+  height: 'auto',
 };
 Inset.displayName = 'Inset';
 Inset.defaultProps = defaultProps;
