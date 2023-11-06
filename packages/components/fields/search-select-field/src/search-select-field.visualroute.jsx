@@ -1,5 +1,6 @@
 import { SearchSelectField } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
+import { WorldIcon } from '../../../icons';
 
 const loadOptions = (input) =>
   input
@@ -23,6 +24,17 @@ export const component = () => (
         onChange={() => {}}
         loadOptions={loadOptions}
         horizontalConstraint={7}
+      />
+    </Spec>
+    <Spec label="with iconLeft">
+      <SearchSelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+        iconLeft={<WorldIcon />}
       />
     </Spec>
     <Spec label="when disabled">
