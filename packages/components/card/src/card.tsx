@@ -55,7 +55,7 @@ const Card = (props: TCardProps) => (
       // This is mostly useful in case custom styles are targeting this element.
       <div>{props.children}</div>
     ) : (
-      <Inset scale={props.insetScale} height="max-content">
+      <Inset scale={props.insetScale} height="100%">
         {props.children}
       </Inset>
     )}

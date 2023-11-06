@@ -5,5 +5,4 @@
 
 Refactor vertical space usage so consumers can control it.
 
-There's a new property named `height` (available values: `min-content` and `max-content`; the former is the default) that will allow consumers to control the vertical space usage of the component.
-When using the `max-content` value, it will force the component main container to use `100%` of the available height.
+There's a new property named `height` (available values: `auto` and `100%`; the former is the default) that will allow consumers to control the vertical space usage of the component.
