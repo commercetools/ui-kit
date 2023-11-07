@@ -20,11 +20,11 @@ npm --save install @commercetools-uikit/select-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl
+yarn add react react-dom react-intl
 ```
 
 ```
-npm --save install react react-intl
+npm --save install react react-dom react-intl
 ```
 
 ## Usage
@@ -82,6 +82,7 @@ export default Example;
 | `isOptionDisabled`         | `ReactSelectProps['isOptionDisabled']`                                                                |          |         | Override the built-in logic to detect whether an option is disabled&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                      |
 | `isMulti`                  | `ReactSelectProps['isMulti']`                                                                         |          |         | Support multiple selected options&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                                        |
 | `isSearchable`             | `ReactSelectProps['isSearchable']`                                                                    |          |         | Whether to enable search functionality&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                                   |
+| `menuIsOpen`               | `ReactSelectProps['menuIsOpen']`                                                                      |          |         | Can be used to enforce the select input to be opened&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                     |
 | `maxMenuHeight`            | `ReactSelectProps['maxMenuHeight']`                                                                   |          | `220`   | Maximum height of the menu before scrolling&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                              |
 | `menuPortalTarget`         | `ReactSelectProps['menuPortalTarget']`                                                                |          |         | Dom element to portal the select menu to&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                                 |
 | `menuPortalZIndex`         | `number`                                                                                              |          | `1`     | z-index value for the menu portal&#xA;<br>&#xA;Use in conjunction with `menuPortalTarget`                                                                                                                                                                                                                                                                                                |

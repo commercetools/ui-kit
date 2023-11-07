@@ -207,15 +207,17 @@ export type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   isSearchable?: ReactSelectProps['isSearchable'];
+  // menuIsOpen: PropTypes.bool,
   /**
-   * Whether to enable search functionality
+   * Can be used to enforce the select input to be opened
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   menuIsOpen?: ReactSelectProps['menuIsOpen'];
-  // menuIsOpen: PropTypes.bool,
+  // loadingMessage: PropTypes.func,
+  // minMenuHeight: PropTypes.number,
   /**
-   * Whether the menu is open
+   * Maximum height of the menu before scrolling
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */

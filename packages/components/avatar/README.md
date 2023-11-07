@@ -38,7 +38,6 @@ const Example = () => (
     firstName="John"
     lastName="Doe"
     size="s"
-    color="accent"
   />
 );
 
@@ -47,12 +46,12 @@ export default Example;
 
 ## Properties
 
-| Props           | Type                                                                          | Required | Default    | Description                             |
-| --------------- | ----------------------------------------------------------------------------- | :------: | ---------- | --------------------------------------- |
-| `firstName`     | `string`                                                                      |          | `''`       | The first name of the user.             |
-| `lastName`      | `string`                                                                      |          | `''`       | The last name of the user.              |
-| `gravatarHash`  | `string`                                                                      |    ✅    |            | The hashed string of the user gravatar. |
-| `isHighlighted` | `boolean`                                                                     |          | `false`    | Enhances the appearance of the avatar.  |
-| `size`          | `union`<br/>Possible values:<br/>`'s' , 'm' , 'l'`                            |          | `'s'`      | The size of the rendered avatar.        |
-| `color`         | `union`<br/>Possible values:<br/>`'accent' , 'purple' , 'turquoise', 'brown'` |          | `'accent'` | The color of the rendered avatar.       |
-| `icon`          | `ReactElement`                                                                |          |            | an `<Icon />` component                 |
+| Props           | Type                                                                           | Required | Default    | Description                             |
+| --------------- | ------------------------------------------------------------------------------ | :------: | ---------- | --------------------------------------- |
+| `firstName`     | `string`                                                                       |          | `''`       | The first name of the user.             |
+| `lastName`      | `string`                                                                       |          | `''`       | The last name of the user.              |
+| `gravatarHash`  | `string`                                                                       |    ✅    |            | The hashed string of the user gravatar. |
+| `isHighlighted` | `boolean`                                                                      |          | `false`    | Enhances the appearance of the avatar.  |
+| `size`          | `union`<br/>Possible values:<br/>`'s' , 'm' , 'l'`                             |          | `'s'`      | The size of the rendered avatar.        |
+| `color`         | `union`<br/>Possible values:<br/>`'accent' , 'purple' , 'turquoise' , 'brown'` |          | `'accent'` | The color of the avatar.                |
+| `icon`          | `ReactElement`                                                                 |          |            | an <Icon /> component                   |
