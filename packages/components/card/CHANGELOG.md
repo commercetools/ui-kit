@@ -1,5 +1,18 @@
 # @commercetools-uikit/card
 
+## 16.9.0
+
+### Minor Changes
+
+- [#2635](https://github.com/commercetools/ui-kit/pull/2635) [`a743bcf18`](https://github.com/commercetools/ui-kit/commit/a743bcf18470c32baa993482e70d5235652c0144) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Make card content to always use all available vertical space.
+
+### Patch Changes
+
+- Updated dependencies [[`a743bcf18`](https://github.com/commercetools/ui-kit/commit/a743bcf18470c32baa993482e70d5235652c0144)]:
+  - @commercetools-uikit/spacings-inset@16.9.0
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
 ## 16.8.0
 
 ### Minor Changes
