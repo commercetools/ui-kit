@@ -207,15 +207,19 @@ export type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   isSearchable?: ReactSelectProps['isSearchable'];
-  // loadingMessage: PropTypes.func,
-  // minMenuHeight: PropTypes.number,
   /**
-   * Maximum height of the menu before scrolling
+   * Whether to enable search functionality
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  menuIsOpen?: ReactSelectProps['menuIsOpen'];
+  // menuIsOpen: PropTypes.bool,
+  /**
+   * Whether the menu is open
    * <br>
    * [Props from React select was used](https://react-select.com/props)
    */
   maxMenuHeight?: ReactSelectProps['maxMenuHeight'];
-  // menuIsOpen: PropTypes.bool,
   // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
   // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
   /**
@@ -403,7 +407,13 @@ const SelectInput = (props: TSelectInputProps) => {
               ...props.components,
             } as ReactSelectProps['components']
           }
-          menuIsOpen={props.isReadOnly ? false : undefined}
+          menuIsOpen={
+            props?.menuIsOpen && !props.isReadOnly
+              ? props.menuIsOpen
+              : props.isReadOnly
+              ? false
+              : undefined
+          }
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,

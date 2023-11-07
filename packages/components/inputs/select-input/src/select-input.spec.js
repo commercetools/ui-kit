@@ -77,6 +77,30 @@ it('should have focus automatically when isAutofocussed is passed', () => {
   expect(getByLabelText('Fruit')).toHaveFocus();
 });
 
+it('should have a open menu if menuIsOpen is true', () => {
+  const { getByLabelText, getByText } = renderInput({
+    menuIsOpen: true,
+  });
+  const input = getByLabelText('Fruit');
+
+  expect(getByText('Mango')).toBeInTheDocument();
+});
+
+it('should not have a open menu if menuIsOpen is true and isReadOnly is true', () => {
+  const { getByLabelText, queryByText } = renderInput({
+    menuIsOpen: true,
+    isReadOnly: true,
+  });
+
+  const input = getByLabelText('Fruit');
+
+  fireEvent.keyDown(input, {
+    key: 'ArrowDown',
+  });
+
+  expect(queryByText('Mango')).not.toBeInTheDocument();
+});
+
 it('should call onFocus when the input is focused', () => {
   const onFocus = jest.fn();
   const { getByLabelText } = renderInput({ onFocus });
