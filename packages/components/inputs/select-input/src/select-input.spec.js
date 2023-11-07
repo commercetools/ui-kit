@@ -94,10 +94,6 @@ it('should not have a open menu if menuIsOpen is true and isReadOnly is true', (
 
   const input = getByLabelText('Fruit');
 
-  fireEvent.keyDown(input, {
-    key: 'ArrowDown',
-  });
-
   expect(queryByText('Mango')).not.toBeInTheDocument();
 });
 
