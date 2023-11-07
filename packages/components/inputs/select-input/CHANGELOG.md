@@ -1,5 +1,16 @@
 # @commercetools-uikit/select-input
 
+## 16.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-utils@16.9.0
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/constraints@16.9.0
+  - @commercetools-uikit/icons@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
 ## 16.8.0
 
 ### Patch Changes

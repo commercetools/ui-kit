@@ -1,5 +1,7 @@
 # @commercetools-uikit/i18n
 
+## 16.9.0
+
 ## 16.8.0
 
 ## 16.7.5

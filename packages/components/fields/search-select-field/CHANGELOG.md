@@ -1,5 +1,23 @@
 # @commercetools-uikit/search-select-field
 
+## 16.9.0
+
+### Minor Changes
+
+- [#2636](https://github.com/commercetools/ui-kit/pull/2636) [`7b354d8e5`](https://github.com/commercetools/ui-kit/commit/7b354d8e59f704b4851456e515af102600c9a3cd) Thanks [@chloe0592](https://github.com/chloe0592)! - Making iconLeft prop available for SearchSelectInput and SearchSelectField component.
+
+### Patch Changes
+
+- Updated dependencies [[`7b354d8e5`](https://github.com/commercetools/ui-kit/commit/7b354d8e59f704b4851456e515af102600c9a3cd)]:
+  - @commercetools-uikit/search-select-input@16.9.0
+  - @commercetools-uikit/spacings@16.9.0
+  - @commercetools-uikit/field-label@16.9.0
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/constraints@16.9.0
+  - @commercetools-uikit/field-errors@16.9.0
+  - @commercetools-uikit/hooks@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
 ## 16.8.0
 
 ### Patch Changes

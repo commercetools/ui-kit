@@ -1,5 +1,19 @@
 # @commercetools-uikit/spacings-inset
 
+## 16.9.0
+
+### Minor Changes
+
+- [#2635](https://github.com/commercetools/ui-kit/pull/2635) [`a743bcf18`](https://github.com/commercetools/ui-kit/commit/a743bcf18470c32baa993482e70d5235652c0144) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Refactor vertical space usage so consumers can control it.
+
+  There's a new property named `height` (available values: `expanded` and `collapsed`; the former is the default) that will allow consumers to control the vertical space usage of the component.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
 ## 16.8.0
 
 ### Patch Changes

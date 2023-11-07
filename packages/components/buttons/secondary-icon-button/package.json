@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/secondary-icon-button",
   "description": "Secondary Icon Buttons are \"icon-only\" buttons and a restricted version of the `<IconButton>`. They trigger an action when clicked (`onClick` prop). You must also pass a label for accessibility reasons.",
-  "version": "16.8.0",
+  "version": "16.9.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,11 +21,11 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/accessible-button": "16.8.0",
-    "@commercetools-uikit/design-system": "16.8.0",
-    "@commercetools-uikit/spacings": "16.8.0",
-    "@commercetools-uikit/text": "16.8.0",
-    "@commercetools-uikit/utils": "16.8.0",
+    "@commercetools-uikit/accessible-button": "16.9.0",
+    "@commercetools-uikit/design-system": "16.9.0",
+    "@commercetools-uikit/spacings": "16.9.0",
+    "@commercetools-uikit/text": "16.9.0",
+    "@commercetools-uikit/utils": "16.9.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",

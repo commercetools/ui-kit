@@ -1,5 +1,18 @@
 # @commercetools-uikit/primary-action-dropdown
 
+## 16.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/buttons@16.9.0
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/accessible-button@16.9.0
+  - @commercetools-uikit/icons@16.9.0
+  - @commercetools-uikit/text@16.9.0
+  - @commercetools-uikit/hooks@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
 ## 16.8.0
 
 ### Patch Changes
