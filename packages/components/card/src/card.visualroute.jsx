@@ -110,12 +110,8 @@ export const component = () => (
             height: 100%;
           `}
         >
-          <div>
-            {text}
-          </div>
-          <div>
-            {text}
-          </div>
+          <div>{text}</div>
+          <div>{text}</div>
         </div>
       </WrappedCard>
     </Spec>
