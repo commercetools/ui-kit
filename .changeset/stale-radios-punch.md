@@ -5,4 +5,4 @@
 
 Refactor vertical space usage so consumers can control it.
 
-There's a new property named `height` (available values: `auto` and `100%`; the former is the default) that will allow consumers to control the vertical space usage of the component.
+There's a new property named `height` (available values: `expanded` and `collapsed`; the former is the default) that will allow consumers to control the vertical space usage of the component.
