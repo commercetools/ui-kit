@@ -6,6 +6,7 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 export type TScale = 's' | 'm' | 'l';
 export type TInsetSquishProps = {
   scale: TScale;
+  height: 'collapsed' | 'expanded';
   children: ReactNode;
 };
 
@@ -26,15 +27,16 @@ const InsetSquish = (props: TInsetSquishProps) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
-      height: 100%;
+      height: ${props.height === 'expanded' ? '100%' : 'auto'};
     `}
     {...filterDataAttributes(props)}
   >
     {props.children}
   </div>
 );
-const defaultProps: Pick<TInsetSquishProps, 'scale'> = {
+const defaultProps: Pick<TInsetSquishProps, 'scale' | 'height'> = {
   scale: 'm',
+  height: 'collapsed',
 };
 InsetSquish.displayName = 'InsetSquish';
 InsetSquish.defaultProps = defaultProps;
