@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import type { ActionMeta, GroupBase, OptionProps } from 'react-select';
 import type { AsyncProps } from 'react-select/async';
@@ -258,6 +258,10 @@ export type TSearchSelectInputProps = {
    * The style of the an option in the dropdown menu. It could be single lined option or an option with more and custom info
    */
   optionType?: 'single-property' | 'double-property' | 'multiple-properties';
+  /**
+   * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
+   */
+  iconLeft?: ReactNode;
 };
 
 type TOptionInnerPropsData = {
@@ -332,7 +336,7 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
         {...props}
         components={components as ReactSelectAsyncProps['components']}
         placeholder={placeholder}
-        iconLeft={undefined}
+        iconLeft={props.iconLeft}
         loadingMessage={loadingMessage}
         noOptionsMessage={noOptionsMessage}
         isSearchable={true}
