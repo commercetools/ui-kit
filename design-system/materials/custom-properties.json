@@ -334,7 +334,7 @@
   "--font-color-for-tag-when-disabled": "hsl(232, 18%, 60%)",
   "--font-color-for-text-when-inverted": "#fff",
   "--font-color-for-link-as-inverted": "#fff",
-  "--font-color-for-link-as-primary": "hsl(175, 55%, 25%)",
+  "--font-color-for-link-as-primary": "hsl(175, 55%, 30%)",
   "--font-color-for-link-as-secondary": "#1a1a1a",
   "--font-color-for-link-as-primary-when-active": "hsl(175, 55%, 45%)",
   "--font-color-for-link-as-secondary-when-active": "hsl(175, 55%, 45%)",
