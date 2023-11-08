@@ -164,6 +164,13 @@ export type TSearchSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   noOptionsMessage?: ReactSelectAsyncProps['noOptionsMessage'];
+  // menuIsOpen: PropTypes.bool,
+  /**
+   * Can be used to enforce the select input to be opened
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  menuIsOpen?: ReactSelectAsyncProps['menuIsOpen'];
   /**
    * Maximum height of the menu before scrolling
    * <br>
