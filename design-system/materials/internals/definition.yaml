@@ -860,7 +860,7 @@ decisionGroupsByTheme:
         font-color-for-link-as-inverted:
           choice: color-surface
         font-color-for-link-as-primary:
-          choice: color-primary-25
+          choice: color-primary-30
         font-color-for-link-as-secondary:
           choice: color-solid
         font-color-for-link-as-primary-when-active:

@@ -8,7 +8,7 @@ export const themes = {
     colorPrimary: 'hsl(175, 55%, 45%)',
     colorPrimary20: 'hsl(175, 55%, 20%)',
     colorPrimary25: 'hsl(175, 55%, 25%)',
-    colorPrimary30: 'hsl(175, 55%, 33%)',
+    colorPrimary30: 'hsl(175, 55%, 30%)',
     colorPrimary40: 'hsl(175, 55%, 40%)',
     colorPrimary85: 'hsl(175, 70%, 85%)',
     colorPrimary95: 'hsl(175, 90%, 95%)',
@@ -358,7 +358,7 @@ export const themes = {
     fontColorForTagWhenDisabled: 'hsl(232, 18%, 60%)',
     fontColorForTextWhenInverted: '#fff',
     fontColorForLinkAsInverted: '#fff',
-    fontColorForLinkAsPrimary: 'hsl(175, 55%, 25%)',
+    fontColorForLinkAsPrimary: 'hsl(175, 55%, 30%)',
     fontColorForLinkAsSecondary: '#1a1a1a',
     fontColorForLinkAsPrimaryWhenActive: 'hsl(175, 55%, 45%)',
     fontColorForLinkAsSecondaryWhenActive: 'hsl(175, 55%, 45%)',
@@ -561,7 +561,7 @@ const designTokens = {
   colorPrimary: 'var(--color-primary, hsl(175, 55%, 45%))',
   colorPrimary20: 'var(--color-primary-20, hsl(175, 55%, 20%))',
   colorPrimary25: 'var(--color-primary-25, hsl(175, 55%, 25%))',
-  colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 33%))',
+  colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 30%))',
   colorPrimary40: 'var(--color-primary-40, hsl(175, 55%, 40%))',
   colorPrimary85: 'var(--color-primary-85, hsl(175, 70%, 85%))',
   colorPrimary95: 'var(--color-primary-95, hsl(175, 90%, 95%))',
@@ -1048,7 +1048,7 @@ const designTokens = {
     'var(--font-color-for-text-when-inverted, #fff)',
   fontColorForLinkAsInverted: 'var(--font-color-for-link-as-inverted, #fff)',
   fontColorForLinkAsPrimary:
-    'var(--font-color-for-link-as-primary, hsl(175, 55%, 25%))',
+    'var(--font-color-for-link-as-primary, hsl(175, 55%, 30%))',
   fontColorForLinkAsSecondary:
     'var(--font-color-for-link-as-secondary, #1a1a1a)',
   fontColorForLinkAsPrimaryWhenActive:
