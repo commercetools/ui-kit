@@ -934,7 +934,7 @@ decisionGroupsByTheme:
         font-color-for-radio-input-when-warning:
           choice: color-warning
         font-color-for-flat-button-as-primary:
-          choice: color-primary-25
+          choice: color-primary-30
         font-color-for-flat-button-as-primary-when-hovered:
           choice: color-primary
         font-color-for-flat-button-as-critical:

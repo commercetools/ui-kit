@@ -397,7 +397,7 @@ export const themes = {
     fontColorForRadioInputWhenError: '#e60050',
     fontColorForRadioInputWhenReadonly: 'hsl(232, 18%, 60%)',
     fontColorForRadioInputWhenWarning: '#f16d0e',
-    fontColorForFlatButtonAsPrimary: 'hsl(175, 55%, 25%)',
+    fontColorForFlatButtonAsPrimary: 'hsl(175, 55%, 30%)',
     fontColorForFlatButtonAsPrimaryWhenHovered: 'hsl(175, 55%, 45%)',
     fontColorForFlatButtonAsCritical: '#e60050',
     fontColorForFlatButtonAsCriticalWhenHovered:
@@ -1126,7 +1126,7 @@ const designTokens = {
   fontColorForRadioInputWhenWarning:
     'var(--font-color-for-radio-input-when-warning, #f16d0e)',
   fontColorForFlatButtonAsPrimary:
-    'var(--font-color-for-flat-button-as-primary, hsl(175, 55%, 25%))',
+    'var(--font-color-for-flat-button-as-primary, hsl(175, 55%, 30%))',
   fontColorForFlatButtonAsPrimaryWhenHovered:
     'var(--font-color-for-flat-button-as-primary-when-hovered, hsl(175, 55%, 45%))',
   fontColorForFlatButtonAsCritical:
