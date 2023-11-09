@@ -187,7 +187,6 @@ export type TAsyncSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   isSearchable?: ReactSelectAsyncProps['isSearchable'];
-  // menuIsOpen: PropTypes.bool,
   /**
    * Can be used to enforce the select input to be opened
    * <br>
@@ -377,13 +376,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               ...props.components,
             } as ReactSelectAsyncProps['components']
           }
-          menuIsOpen={
-            props?.menuIsOpen && !props.isReadOnly
-              ? props.menuIsOpen
-              : props.isReadOnly
-              ? false
-              : undefined
-          }
+          menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,

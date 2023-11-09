@@ -207,7 +207,6 @@ export type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   isSearchable?: ReactSelectProps['isSearchable'];
-  // menuIsOpen: PropTypes.bool,
   /**
    * Can be used to enforce the select input to be opened
    * <br>
@@ -409,13 +408,7 @@ const SelectInput = (props: TSelectInputProps) => {
               ...props.components,
             } as ReactSelectProps['components']
           }
-          menuIsOpen={
-            props?.menuIsOpen && !props.isReadOnly
-              ? props.menuIsOpen
-              : props.isReadOnly
-              ? false
-              : undefined
-          }
+          menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
