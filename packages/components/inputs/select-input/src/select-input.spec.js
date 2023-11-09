@@ -77,7 +77,7 @@ it('should have focus automatically when isAutofocussed is passed', () => {
   expect(getByLabelText('Fruit')).toHaveFocus();
 });
 
-it('should have a open menu if menuIsOpen is true', () => {
+it('should have an open menu if menuIsOpen is true', () => {
   const { getByLabelText, getByText } = renderInput({
     menuIsOpen: true,
   });
@@ -86,7 +86,7 @@ it('should have a open menu if menuIsOpen is true', () => {
   expect(getByText('Mango')).toBeInTheDocument();
 });
 
-it('should not have a open menu if menuIsOpen is true and isReadOnly is true', () => {
+it('should not have an open menu if menuIsOpen is true and isReadOnly is true', () => {
   const { getByLabelText, queryByText } = renderInput({
     menuIsOpen: true,
     isReadOnly: true,

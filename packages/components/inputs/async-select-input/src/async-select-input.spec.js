@@ -79,7 +79,7 @@ it('should have focus automatically when isAutofocussed is passed', async () => 
   expect(await findByLabelText('Fruit')).toHaveFocus();
 });
 
-it('should have a open menu if menuIsOpen is true', async () => {
+it('should have an open menu if menuIsOpen is true', async () => {
   const { findByLabelText, getByText } = renderInput({
     menuIsOpen: true,
   });
@@ -88,7 +88,7 @@ it('should have a open menu if menuIsOpen is true', async () => {
   expect(getByText('Mango')).toBeInTheDocument();
 });
 
-it('should not have a open menu if menuIsOpen is true and isReadOnly is true', async () => {
+it('should not have an open menu if menuIsOpen is true and isReadOnly is true', async () => {
   const { findByLabelText, queryByText } = renderInput({
     menuIsOpen: true,
     isReadOnly: true,
