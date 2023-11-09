@@ -377,7 +377,13 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               ...props.components,
             } as ReactSelectAsyncProps['components']
           }
-          menuIsOpen={props.isReadOnly ? false : !!props.menuIsOpen}
+          menuIsOpen={
+            props?.menuIsOpen && !props.isReadOnly
+              ? props.menuIsOpen
+              : props.isReadOnly
+              ? false
+              : undefined
+          }
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
