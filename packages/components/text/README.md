@@ -163,3 +163,36 @@ The component further forwards all `data-` attributes to the underlying componen
 ### Where to use
 
 Details text of form boxes.
+
+## `<Text.Caption>`
+
+//TODO: Additional information
+
+### Usage
+
+```js
+import Text from '@commercetools-uikit/text';
+
+<Text.Caption as="h4">{'The caption'}</Text.Caption>;
+```
+
+### Properties
+
+| Props             | Type             | Required | Values                                                                                                                   | Default   |                                                                                           |
+| ----------------- | ---------------- | :------: | ------------------------------------------------------------------------------------------------------------------------ | --------- | ----------------------------------------------------------------------------------------- | --- | ---------- | --------- | --- | --- | ------- | --- |
+| `id`              | `String`         |    -     | -                                                                                                                        | -         | Used as HTML id property                                                                  |     | `isItalic` | `Boolean` | -   | -   | `false` |     |
+| `isStrikethrough` | `Boolean`        |    -     | -                                                                                                                        | `false`   |                                                                                           |
+| `tone`            | `String`         |    -     | `['primary',  'secondary','tertiary', 'information', 'positive','negative', 'critical', 'inherit','warning','inverted']` | -         |
+| `fontWeight`      | `String`         |    -     | `['regular', 'medium', 'bold']`                                                                                          | `regular` |                                                                                           |
+| `truncate`        | `Bool`           |    -     | -                                                                                                                        | `false`   |                                                                                           |
+| `nowrap`          | `Bool`           |    -     | -                                                                                                                        | `false`   | The content in the element will not be wrapped to a new line unless explicitly specified. |
+| `aria-labelledby` | `String`         |    -     | -                                                                                                                        | -         | HTML ID of an element containing the label for the text rendered in this component        |
+| `title`           | `String`         |    -     | -                                                                                                                        | -         |                                                                                           |
+| `children`        | `PropTypes.node` | ✅ (\*)  | -                                                                                                                        | -         |                                                                                           |
+| `intlMessage`     | `intl message`   | ✅ (\*)  | -                                                                                                                        | -         | An `intl` message object that will be rendered with `FormattedMessage`                    |
+
+> `*`: `children` is required only if `intlMessage` is not provided.
+
+### Where to use
+
+//TODO: Additional information
