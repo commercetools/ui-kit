@@ -68,6 +68,11 @@ export const component = () => (
         {'Subheadline tone secondary'}
       </Text.Subheadline>
     </Spec>
+    <Spec label="Subheadline - tone - tertiary">
+      <Text.Subheadline tone="tertiary" as="h4">
+        {'Subheadline tone tertiary'}
+      </Text.Subheadline>
+    </Spec>
     <Spec label="Subheadline - tone - information">
       <Text.Subheadline tone="information" as="h4">
         {'Subheadline tone information'}
@@ -119,6 +124,9 @@ export const component = () => (
     </Spec>
     <Spec label="Body - tone - secondary">
       <Text.Body tone="secondary">Body text secondary</Text.Body>
+    </Spec>
+    <Spec label="Body - tone - tertiary">
+      <Text.Body tone="tertiary">Body text tertiary</Text.Body>
     </Spec>
     <Spec label="Body - tone - information">
       <Text.Body tone="information">Body text information</Text.Body>
@@ -173,6 +181,9 @@ export const component = () => (
     <Spec label="Detail - tone - secondary">
       <Text.Detail tone="secondary">Detail text secondary</Text.Detail>
     </Spec>
+    <Spec label="Detail - tone - tertiary">
+      <Text.Detail tone="tertiary">Detail text tertiary</Text.Detail>
+    </Spec>
     <Spec label="Detail - tone - information">
       <Text.Detail tone="information">Detail text information</Text.Detail>
     </Spec>
@@ -221,6 +232,9 @@ export const component = () => (
     </Spec>
     <Spec label="Caption - tone - secondary">
       <Text.Caption tone="secondary">Caption text secondary</Text.Caption>
+    </Spec>
+    <Spec label="Caption - tone - tertiary">
+      <Text.Caption tone="tertiary">Caption text tertiary</Text.Caption>
     </Spec>
     <Spec label="Caption - tone - information">
       <Text.Caption tone="information">Caption text information</Text.Caption>
