@@ -21,6 +21,7 @@ type TProps = {
   isMulti?: boolean;
   hasValue?: boolean;
   controlShouldRenderValue?: boolean;
+  appearance?: 'default' | 'quite';
   horizontalConstraint?:
     | 3
     | 4
@@ -57,7 +58,45 @@ type TState = {
   isSelected?: boolean;
 };
 
-const getControlBorderColor = (props: TProps, defaultColor: string) => {
+const getInputBackgroundColor = (props: TProps) => {
+  if (props.appearance === 'quite') {
+    return 'transparent';
+  }
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForInputWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForInputWhenReadonly;
+  }
+  return designTokens.backgroundColorForInput;
+};
+
+const getInputBorderColor = (props: TProps, state: TState) => {
+  if (props.appearance === 'quite') {
+    return 'transparent';
+  }
+  if (props.isDisabled) {
+    return designTokens.borderColorForInputWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.borderColorForSelectInputWhenReadonly;
+  }
+  if (state.isFocused) {
+    return designTokens.borderColorForInputWhenFocused;
+  }
+  if (props.hasError) {
+    return designTokens.borderColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.borderColorForInputWhenWarning;
+  }
+  return designTokens.borderColorForInput;
+};
+
+const getHoverInputBorderColor = (props: TProps) => {
+  if (props.appearance === 'quite') {
+    return 'transparent';
+  }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
@@ -70,32 +109,23 @@ const getControlBorderColor = (props: TProps, defaultColor: string) => {
   if (props.hasWarning) {
     return designTokens.borderColorForInputWhenWarning;
   }
-  return defaultColor;
+  return designTokens.borderColorForInputWhenHovered;
 };
 
 const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
     fontSize: designTokens.fontSizeForInput,
-    backgroundColor: (() => {
-      if (props.isDisabled)
-        return designTokens.backgroundColorForInputWhenDisabled;
-      if (props.isReadOnly)
-        return designTokens.backgroundColorForInputWhenReadonly;
-      return designTokens.backgroundColorForInput;
-    })(),
-    borderColor: (() => {
-      if (props.isDisabled) return designTokens.borderColorForInputWhenDisabled;
-      if (props.isReadOnly)
-        return designTokens.borderColorForSelectInputWhenReadonly;
-      if (state.isFocused) return designTokens.borderColorForInputWhenFocused;
-      if (props.hasError) return designTokens.borderColorForInputWhenError;
-      if (props.hasWarning) return designTokens.borderColorForInputWhenWarning;
-      return designTokens.borderColorForInput;
-    })(),
+    backgroundColor: getInputBackgroundColor(props),
+    borderColor: getInputBorderColor(props, state),
     borderWidth: (() => {
-      if (props.hasWarning || props.hasError)
-        return designTokens.borderWidthForSelectInput;
+      if (props.hasWarning || props.hasError) {
+        if (props.appearance === 'quite') {
+          return 'unset';
+        } else {
+          return designTokens.borderWidthForSelectInput;
+        }
+      }
       return designTokens.borderWidth1;
     })(),
     borderRadius: designTokens.borderRadiusForInput,
@@ -128,13 +158,15 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     },
 
     '&:hover': {
-      borderColor: getControlBorderColor(
-        props,
-        designTokens.borderColorForInputWhenHovered
-      ),
+      borderColor: getHoverInputBorderColor(props),
       backgroundColor: (() => {
-        if (!props.isDisabled && !props.isReadOnly)
-          return designTokens.backgroundColorForInputWhenHovered;
+        if (!props.isDisabled && !props.isReadOnly) {
+          if (props.appearance === 'quite') {
+            return 'rgba(0, 0, 0, 0.05)';
+          } else {
+            return designTokens.backgroundColorForInputWhenHovered;
+          }
+        }
         return null;
       })(),
     },
