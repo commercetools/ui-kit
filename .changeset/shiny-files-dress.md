@@ -2,4 +2,4 @@
 '@commercetools-uikit/text': minor
 ---
 
-Add new option for the Text tone property for text.caption, text.detail text.body and text.subheadline.
+Add a new option (**tertiary**) for the `tone` property of `Text.Caption`, `Text.Detail`, `Text.Body` and `Text.Subheadline` component
