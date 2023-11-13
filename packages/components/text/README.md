@@ -178,20 +178,21 @@ import Text from '@commercetools-uikit/text';
 
 ### Properties
 
-| Props             | Type             | Required | Values                                                                                                                   | Default   |                                                                                           |
-| ----------------- | ---------------- | :------: | ------------------------------------------------------------------------------------------------------------------------ | --------- | ----------------------------------------------------------------------------------------- | --- | ---------- | --------- | --- | --- | ------- | --- |
-| `id`              | `String`         |    -     | -                                                                                                                        | -         | Used as HTML id property                                                                  |     | `isItalic` | `Boolean` | -   | -   | `false` |     |
+| Props             | Type             | Required | Values                                                                                                                   | Default   | Description                                                                               |
+| ----------------- | ---------------- | :------: | ------------------------------------------------------------------------------------------------------------------------ | --------- | ----------------------------------------------------------------------------------------- |
+| `id`              | `String`         |    -     | -                                                                                                                        | -         | Used as HTML id property                                                                  |
+| `isItalic`        | `Boolean`        |    -     | -                                                                                                                        | `false`   |                                                                                           |
 | `isStrikethrough` | `Boolean`        |    -     | -                                                                                                                        | `false`   |                                                                                           |
-| `tone`            | `String`         |    -     | `['primary',  'secondary','tertiary', 'information', 'positive','negative', 'critical', 'inherit','warning','inverted']` | -         |
+| `tone`            | `String`         |    -     | `['primary',  'secondary','tertiary', 'information', 'positive','negative', 'critical', 'inherit','warning','inverted']` |           |                                                                                           |
 | `fontWeight`      | `String`         |    -     | `['regular', 'medium', 'bold']`                                                                                          | `regular` |                                                                                           |
-| `truncate`        | `Bool`           |    -     | -                                                                                                                        | `false`   |                                                                                           |
+| `truncate`        | `Bool`           |    -     | -                                                                                                                        | `false`   | Option for truncate content in case the screen has small width                            |
 | `nowrap`          | `Bool`           |    -     | -                                                                                                                        | `false`   | The content in the element will not be wrapped to a new line unless explicitly specified. |
 | `aria-labelledby` | `String`         |    -     | -                                                                                                                        | -         | HTML ID of an element containing the label for the text rendered in this component        |
-| `title`           | `String`         |    -     | -                                                                                                                        | -         |                                                                                           |
-| `children`        | `PropTypes.node` | ✅ (\*)  | -                                                                                                                        | -         |                                                                                           |
+| `title`           | `String`         |    -     | -                                                                                                                        | -         | Text to show in a tooltip on hover over the element                                       |
+| `children`        | `PropTypes.node` | ✅ (\*)  | -                                                                                                                        | -         | -                                                                                         |
 | `intlMessage`     | `intl message`   | ✅ (\*)  | -                                                                                                                        | -         | An `intl` message object that will be rendered with `FormattedMessage`                    |
 
-> `*`: `children` is required only if `intlMessage` is not provided.
+> `*`: `children` is required only if `intlMessage` is not provided
 
 ### Where to use
 
