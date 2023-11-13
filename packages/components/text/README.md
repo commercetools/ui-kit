@@ -166,7 +166,7 @@ Details text of form boxes.
 
 ## `<Text.Caption>`
 
-//TODO: Additional information
+Wraps the text in the smallest available font size and accepts `tone` and `fontWeight` props.
 
 ### Usage
 
@@ -195,4 +195,9 @@ import Text from '@commercetools-uikit/text';
 
 ### Where to use
 
-//TODO: Additional information
+Text.Caption is the smallest available font size in our design system. From the visual hierarchy perspective, it sits on the last spot of the importance scale and therefor should be used sparingly only in specific situations:
+
+- The text does not have high importance and is not crucial to complete a task.
+- In an information dense UI where using a bigger font size would harm the visual hierarchy of the page.
+- For small descriptive labels, or tooltips, that provide helpful additional information in a given context.
+- Text.Caption should not be used in text paragraphs longer than 1-2 sentences.
