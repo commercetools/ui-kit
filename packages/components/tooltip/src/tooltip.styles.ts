@@ -59,7 +59,7 @@ export const Body = styled.div`
   padding: ${designTokens.paddingForTooltip};
   border: none;
   box-shadow: ${designTokens.shadowForTooltip};
-  font-size: ${designTokens.fontSize20};
+  font-size: ${designTokens.fontSize12};
   opacity: 0.95;
   color: ${designTokens.colorSurface};
   background-color: ${designTokens.backgroundColorForTooltip};
