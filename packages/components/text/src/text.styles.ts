@@ -45,7 +45,7 @@ const getTone = (tone: string) => {
     case 'positive':
       return `color: ${designTokens.colorPrimary25};`;
     case 'primary':
-      return `color: ${designTokens.colorPrimary};`;
+      return `color: ${designTokens.colorPrimary30};`;
     case 'negative':
       return `color: ${designTokens.colorError};`;
     case 'inverted':
@@ -54,6 +54,8 @@ const getTone = (tone: string) => {
       return `color: ${designTokens.colorWarning};`;
     case 'critical':
       return `color: ${designTokens.colorError40};`;
+    case 'tertiary':
+      return `color: ${designTokens.colorNeutral60};`;
     case 'inherit':
       return 'color: inherit;';
     default:

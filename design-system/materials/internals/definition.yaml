@@ -878,7 +878,7 @@ decisionGroupsByTheme:
         font-color-for-link-as-inverted:
           choice: color-surface
         font-color-for-link-as-primary:
-          choice: color-primary-25
+          choice: color-primary-30
         font-color-for-link-as-secondary:
           choice: color-solid
         font-color-for-link-as-primary-when-active:
@@ -944,7 +944,7 @@ decisionGroupsByTheme:
         font-color-for-radio-input-when-warning:
           choice: color-warning
         font-color-for-flat-button-as-primary:
-          choice: color-primary-25
+          choice: color-primary-30
         font-color-for-flat-button-as-primary-when-hovered:
           choice: color-primary
         font-color-for-flat-button-as-critical:

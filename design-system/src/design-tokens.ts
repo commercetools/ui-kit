@@ -369,7 +369,7 @@ export const themes = {
     fontColorForTagWhenDisabled: 'hsl(232, 18%, 60%)',
     fontColorForTextWhenInverted: '#fff',
     fontColorForLinkAsInverted: '#fff',
-    fontColorForLinkAsPrimary: 'hsl(175, 55%, 25%)',
+    fontColorForLinkAsPrimary: 'hsl(175, 55%, 30%)',
     fontColorForLinkAsSecondary: '#1a1a1a',
     fontColorForLinkAsPrimaryWhenActive: 'hsl(175, 55%, 45%)',
     fontColorForLinkAsSecondaryWhenActive: 'hsl(175, 55%, 45%)',
@@ -402,7 +402,7 @@ export const themes = {
     fontColorForRadioInputWhenError: '#e60050',
     fontColorForRadioInputWhenReadonly: 'hsl(232, 18%, 60%)',
     fontColorForRadioInputWhenWarning: '#f16d0e',
-    fontColorForFlatButtonAsPrimary: 'hsl(175, 55%, 25%)',
+    fontColorForFlatButtonAsPrimary: 'hsl(175, 55%, 30%)',
     fontColorForFlatButtonAsPrimaryWhenHovered: 'hsl(175, 55%, 45%)',
     fontColorForFlatButtonAsCritical: '#e60050',
     fontColorForFlatButtonAsCriticalWhenHovered:
@@ -1073,7 +1073,7 @@ const designTokens = {
     'var(--font-color-for-text-when-inverted, #fff)',
   fontColorForLinkAsInverted: 'var(--font-color-for-link-as-inverted, #fff)',
   fontColorForLinkAsPrimary:
-    'var(--font-color-for-link-as-primary, hsl(175, 55%, 25%))',
+    'var(--font-color-for-link-as-primary, hsl(175, 55%, 30%))',
   fontColorForLinkAsSecondary:
     'var(--font-color-for-link-as-secondary, #1a1a1a)',
   fontColorForLinkAsPrimaryWhenActive:
@@ -1139,7 +1139,7 @@ const designTokens = {
   fontColorForRadioInputWhenWarning:
     'var(--font-color-for-radio-input-when-warning, #f16d0e)',
   fontColorForFlatButtonAsPrimary:
-    'var(--font-color-for-flat-button-as-primary, hsl(175, 55%, 25%))',
+    'var(--font-color-for-flat-button-as-primary, hsl(175, 55%, 30%))',
   fontColorForFlatButtonAsPrimaryWhenHovered:
     'var(--font-color-for-flat-button-as-primary-when-hovered, hsl(175, 55%, 45%))',
   fontColorForFlatButtonAsCritical:
