@@ -150,6 +150,75 @@ const DefaultRoute = () => (
         iconLeft={<WorldIcon />}
       />
     </Spec>
+    <Spec label="Quite appearance">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        appearance='quite'
+      />
+    </Spec>
+    <Spec label="Quite disabled">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        appearance='quite'
+        isDisabled={true}
+      />
+    </Spec>
+    <Spec label="Quite read-only">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        appearance='quite'
+        isReadOnly={true}
+      />
+    </Spec>
+    <Spec label="Quite error">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        appearance='quite'
+        hasError={true}
+      />
+    </Spec>
+    <Spec label="Quite warning">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        appearance='quite'
+        hasWarning={true}
+      />
+    </Spec>
+    <Spec label="Quite with multiple values selected">
+      <SelectInput
+        value={['one', 'two']}
+        onChange={() => {}}
+        options={options}
+        isMulti={true}
+        horizontalConstraint={7}
+        appearance='quite'
+      />
+    </Spec>
+    <Spec label={'Quite with iconLeft'}>
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        iconLeft={<WorldIcon />}
+        appearance='quite'
+      />
+    </Spec>
   </Suite>
 );
 
