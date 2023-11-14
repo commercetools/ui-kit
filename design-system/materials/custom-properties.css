@@ -77,9 +77,11 @@
   --color-error-85: hsl(339.1304347826087, 100%, 85%);
   --color-error-95: hsl(339.1304347826087, 100%, 95%);
   --color-solid: #1a1a1a;
+  --color-solid-02: hsl(0deg 0% 10% / 2%);
   --color-solid-05: hsl(0deg 0% 10% / 5%);
   --color-solid-10: hsl(0deg 0% 10% / 10%);
   --color-surface: #fff;
+  --color-transparent: transparent;
   --border-radius-1: 1px;
   --border-radius-2: 2px;
   --border-radius-4: 4px;
@@ -210,6 +212,8 @@
     93.9130434783%,
     95%
   );
+  --background-color-for-input-as-quite: transparent;
+  --background-color-for-input-as-quite-when-hovered: hsl(0deg 0% 10% / 2%);
   --background-color-for-table-cell-when-hovered: hsl(232, 18%, 98%);
   --background-color-for-table-header: hsl(232, 18%, 98%);
   --background-color-for-tag: hsl(232, 18%, 95%);
@@ -325,6 +329,7 @@
   --border-color-for-input-when-error: #e60050;
   --border-color-for-input-when-warning: #f16d0e;
   --border-color-for-input-when-hovered: hsl(232, 18%, 80%);
+  --border-color-for-input-as-quite: transparent;
   --border-color-for-tag: hsl(232, 18%, 80%);
   --border-color-for-tag-warning: #f16d0e;
   --border-color-for-tag-when-focused: hsl(232, 18%, 80%);

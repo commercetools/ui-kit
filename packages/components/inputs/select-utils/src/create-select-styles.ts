@@ -60,7 +60,7 @@ type TState = {
 
 const getInputBackgroundColor = (props: TProps) => {
   if (props.appearance === 'quite') {
-    return 'transparent';
+    return designTokens.backgroundColorForInputAsQuite;
   }
   if (props.isDisabled) {
     return designTokens.backgroundColorForInputWhenDisabled;
@@ -73,7 +73,7 @@ const getInputBackgroundColor = (props: TProps) => {
 
 const getInputBorderColor = (props: TProps, state: TState) => {
   if (props.appearance === 'quite') {
-    return 'transparent';
+    return designTokens.borderColorForInputAsQuite;
   }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
@@ -95,7 +95,7 @@ const getInputBorderColor = (props: TProps, state: TState) => {
 
 const getHoverInputBorderColor = (props: TProps) => {
   if (props.appearance === 'quite') {
-    return 'transparent';
+    return designTokens.borderColorForInputAsQuite;
   }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
@@ -162,7 +162,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       backgroundColor: (() => {
         if (!props.isDisabled && !props.isReadOnly) {
           if (props.appearance === 'quite') {
-            return 'rgba(0, 0, 0, 0.05)';
+            return designTokens.backgroundColorForInputAsQuiteWhenHovered;
           } else {
             return designTokens.backgroundColorForInputWhenHovered;
           }
