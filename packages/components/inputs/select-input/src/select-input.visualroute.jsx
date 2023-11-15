@@ -155,7 +155,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint={7}
+        horizontalConstraint={"auto"}
         appearance='quiet'
       />
     </Spec>
@@ -164,7 +164,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint={7}
+        horizontalConstraint={"auto"}
         appearance='quiet'
         isDisabled={true}
       />
@@ -174,7 +174,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint={7}
+        horizontalConstraint={"auto"}
         appearance='quiet'
         isReadOnly={true}
       />
@@ -184,7 +184,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint={7}
+        horizontalConstraint={"auto"}
         appearance='quiet'
         hasError={true}
       />
@@ -194,7 +194,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint={7}
+        horizontalConstraint={"auto"}
         appearance='quiet'
         hasWarning={true}
       />
@@ -205,7 +205,7 @@ const DefaultRoute = () => (
         onChange={() => {}}
         options={options}
         isMulti={true}
-        horizontalConstraint={7}
+        horizontalConstraint={"auto"}
         appearance='quiet'
       />
     </Spec>
@@ -214,7 +214,7 @@ const DefaultRoute = () => (
         value={value}
         onChange={() => {}}
         options={options}
-        horizontalConstraint={7}
+        horizontalConstraint={"auto"}
         iconLeft={<WorldIcon />}
         appearance='quiet'
       />
