@@ -119,12 +119,13 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     backgroundColor: getInputBackgroundColor(props),
     borderColor: getInputBorderColor(props, state),
     borderWidth: (() => {
-      if (props.hasWarning || props.hasError) {
-        if (props.appearance === 'quiet') {
-          return 'unset';
-        } else {
-          return designTokens.borderWidthForSelectInput;
-        }
+      if (
+        props.hasWarning ||
+        props.hasError ||
+        state.isFocused ||
+        props.appearance === 'quiet'
+      ) {
+        return designTokens.borderWidthForSelectInput;
       }
       return designTokens.borderWidth1;
     })(),
@@ -145,11 +146,6 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       : {}),
 
     '&:focus-within': {
-      boxShadow: (() => {
-        if (!props.isDisabled && !props.isReadOnly)
-          return `${designTokens.boxShadowForSelectInputWhenFocused} ${designTokens.borderColorForInputWhenFocused}`;
-        return null;
-      })(),
       borderColor: (() => {
         if (!props.isDisabled && !props.isReadOnly)
           return designTokens.borderColorForInputWhenFocused;
