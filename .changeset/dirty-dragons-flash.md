@@ -4,4 +4,4 @@
 '@commercetools-uikit/design-system': minor
 ---
 
-Creating a new appearance 'Quite' for the `SelectInput` component.
+Creating a new appearance 'Quiet' for the `SelectInput` component.

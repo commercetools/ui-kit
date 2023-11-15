@@ -204,8 +204,8 @@ export const themes = {
     backgroundColorForInputWhenReadonly: 'hsl(232, 18%, 95%)',
     backgroundColorForInputWhenActive:
       'hsl(203.05555555555554, 93.9130434783%, 95%)',
-    backgroundColorForInputAsQuite: 'transparent',
-    backgroundColorForInputAsQuiteWhenHovered: 'hsl(0deg 0% 10% / 2%)',
+    backgroundColorForInputAsQuiet: 'transparent',
+    backgroundColorForInputAsQuietWhenHovered: 'hsl(0deg 0% 10% / 2%)',
     backgroundColorForTableCellWhenHovered: 'hsl(232, 18%, 98%)',
     backgroundColorForTableHeader: 'hsl(232, 18%, 98%)',
     backgroundColorForTag: 'hsl(232, 18%, 95%)',
@@ -275,7 +275,7 @@ export const themes = {
     borderColorForInputWhenError: '#e60050',
     borderColorForInputWhenWarning: '#f16d0e',
     borderColorForInputWhenHovered: 'hsl(232, 18%, 80%)',
-    borderColorForInputAsQuite: 'transparent',
+    borderColorForInputAsQuiet: 'transparent',
     borderColorForTag: 'hsl(232, 18%, 80%)',
     borderColorForTagWarning: '#f16d0e',
     borderColorForTagWhenFocused: 'hsl(232, 18%, 80%)',
@@ -800,10 +800,10 @@ const designTokens = {
     'var(--background-color-for-input-when-readonly, hsl(232, 18%, 95%))',
   backgroundColorForInputWhenActive:
     'var(--background-color-for-input-when-active, hsl(203.05555555555554, 93.9130434783%, 95%))',
-  backgroundColorForInputAsQuite:
-    'var(--background-color-for-input-as-quite, transparent)',
-  backgroundColorForInputAsQuiteWhenHovered:
-    'var(--background-color-for-input-as-quite-when-hovered, hsl(0deg 0% 10% / 2%))',
+  backgroundColorForInputAsQuiet:
+    'var(--background-color-for-input-as-quiet, transparent)',
+  backgroundColorForInputAsQuietWhenHovered:
+    'var(--background-color-for-input-as-quiet-when-hovered, hsl(0deg 0% 10% / 2%))',
   backgroundColorForTableCellWhenHovered:
     'var(--background-color-for-table-cell-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForTableHeader:
@@ -919,8 +919,8 @@ const designTokens = {
     'var(--border-color-for-input-when-warning, #f16d0e)',
   borderColorForInputWhenHovered:
     'var(--border-color-for-input-when-hovered, hsl(232, 18%, 80%))',
-  borderColorForInputAsQuite:
-    'var(--border-color-for-input-as-quite, transparent)',
+  borderColorForInputAsQuiet:
+    'var(--border-color-for-input-as-quiet, transparent)',
   borderColorForTag: 'var(--border-color-for-tag, hsl(232, 18%, 80%))',
   borderColorForTagWarning: 'var(--border-color-for-tag-warning, #f16d0e)',
   borderColorForTagWhenFocused:

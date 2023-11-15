@@ -150,73 +150,73 @@ const DefaultRoute = () => (
         iconLeft={<WorldIcon />}
       />
     </Spec>
-    <Spec label="Quite appearance">
+    <Spec label="Quiet appearance">
       <SelectInput
         value={value}
         onChange={() => {}}
         options={options}
         horizontalConstraint={7}
-        appearance='quite'
+        appearance='quiet'
       />
     </Spec>
-    <Spec label="Quite disabled">
+    <Spec label="Quiet disabled">
       <SelectInput
         value={value}
         onChange={() => {}}
         options={options}
         horizontalConstraint={7}
-        appearance='quite'
+        appearance='quiet'
         isDisabled={true}
       />
     </Spec>
-    <Spec label="Quite read-only">
+    <Spec label="Quiet read-only">
       <SelectInput
         value={value}
         onChange={() => {}}
         options={options}
         horizontalConstraint={7}
-        appearance='quite'
+        appearance='quiet'
         isReadOnly={true}
       />
     </Spec>
-    <Spec label="Quite error">
+    <Spec label="Quiet error">
       <SelectInput
         value={value}
         onChange={() => {}}
         options={options}
         horizontalConstraint={7}
-        appearance='quite'
+        appearance='quiet'
         hasError={true}
       />
     </Spec>
-    <Spec label="Quite warning">
+    <Spec label="Quiet warning">
       <SelectInput
         value={value}
         onChange={() => {}}
         options={options}
         horizontalConstraint={7}
-        appearance='quite'
+        appearance='quiet'
         hasWarning={true}
       />
     </Spec>
-    <Spec label="Quite with multiple values selected">
+    <Spec label="Quiet with multiple values selected">
       <SelectInput
         value={['one', 'two']}
         onChange={() => {}}
         options={options}
         isMulti={true}
         horizontalConstraint={7}
-        appearance='quite'
+        appearance='quiet'
       />
     </Spec>
-    <Spec label={'Quite with iconLeft'}>
+    <Spec label={'Quiet with iconLeft'}>
       <SelectInput
         value={value}
         onChange={() => {}}
         options={options}
         horizontalConstraint={7}
         iconLeft={<WorldIcon />}
-        appearance='quite'
+        appearance='quiet'
       />
     </Spec>
   </Suite>

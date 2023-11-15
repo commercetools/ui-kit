@@ -212,8 +212,8 @@
     93.9130434783%,
     95%
   );
-  --background-color-for-input-as-quite: transparent;
-  --background-color-for-input-as-quite-when-hovered: hsl(0deg 0% 10% / 2%);
+  --background-color-for-input-as-quiet: transparent;
+  --background-color-for-input-as-quiet-when-hovered: hsl(0deg 0% 10% / 2%);
   --background-color-for-table-cell-when-hovered: hsl(232, 18%, 98%);
   --background-color-for-table-header: hsl(232, 18%, 98%);
   --background-color-for-tag: hsl(232, 18%, 95%);
@@ -329,7 +329,7 @@
   --border-color-for-input-when-error: #e60050;
   --border-color-for-input-when-warning: #f16d0e;
   --border-color-for-input-when-hovered: hsl(232, 18%, 80%);
-  --border-color-for-input-as-quite: transparent;
+  --border-color-for-input-as-quiet: transparent;
   --border-color-for-tag: hsl(232, 18%, 80%);
   --border-color-for-tag-warning: #f16d0e;
   --border-color-for-tag-when-focused: hsl(232, 18%, 80%);

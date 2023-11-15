@@ -347,8 +347,8 @@ variants:
     description: 'To differentiate component critical style'
   bold:
     description: 'When the element is bold'
-  quite:
-    description: 'When the element is quite style'
+  quiet:
+    description: 'When the element is quiet style'
 
 componentGroups:
   button:
@@ -553,9 +553,9 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-input-when-active:
           choice: color-info-95
-        background-color-for-input-as-quite:
+        background-color-for-input-as-quiet:
           choice: color-transparent
-        background-color-for-input-as-quite-when-hovered:
+        background-color-for-input-as-quiet-when-hovered:
           choice: color-solid-02
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-98
@@ -685,7 +685,7 @@ decisionGroupsByTheme:
           choice: color-warning
         border-color-for-input-when-hovered:
           choice: color-neutral
-        border-color-for-input-as-quite:
+        border-color-for-input-as-quiet:
           choice: color-transparent
         border-color-for-tag:
           choice: color-neutral

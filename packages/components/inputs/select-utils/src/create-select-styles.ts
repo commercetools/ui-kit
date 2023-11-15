@@ -21,7 +21,7 @@ type TProps = {
   isMulti?: boolean;
   hasValue?: boolean;
   controlShouldRenderValue?: boolean;
-  appearance?: 'default' | 'quite';
+  appearance?: 'default' | 'quiet';
   horizontalConstraint?:
     | 3
     | 4
@@ -59,8 +59,8 @@ type TState = {
 };
 
 const getInputBackgroundColor = (props: TProps) => {
-  if (props.appearance === 'quite') {
-    return designTokens.backgroundColorForInputAsQuite;
+  if (props.appearance === 'quiet') {
+    return designTokens.backgroundColorForInputAsQuiet;
   }
   if (props.isDisabled) {
     return designTokens.backgroundColorForInputWhenDisabled;
@@ -72,8 +72,8 @@ const getInputBackgroundColor = (props: TProps) => {
 };
 
 const getInputBorderColor = (props: TProps, state: TState) => {
-  if (props.appearance === 'quite') {
-    return designTokens.borderColorForInputAsQuite;
+  if (props.appearance === 'quiet') {
+    return designTokens.borderColorForInputAsQuiet;
   }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
@@ -94,8 +94,8 @@ const getInputBorderColor = (props: TProps, state: TState) => {
 };
 
 const getHoverInputBorderColor = (props: TProps) => {
-  if (props.appearance === 'quite') {
-    return designTokens.borderColorForInputAsQuite;
+  if (props.appearance === 'quiet') {
+    return designTokens.borderColorForInputAsQuiet;
   }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
@@ -120,7 +120,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     borderColor: getInputBorderColor(props, state),
     borderWidth: (() => {
       if (props.hasWarning || props.hasError) {
-        if (props.appearance === 'quite') {
+        if (props.appearance === 'quiet') {
           return 'unset';
         } else {
           return designTokens.borderWidthForSelectInput;
@@ -161,8 +161,8 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       borderColor: getHoverInputBorderColor(props),
       backgroundColor: (() => {
         if (!props.isDisabled && !props.isReadOnly) {
-          if (props.appearance === 'quite') {
-            return designTokens.backgroundColorForInputAsQuiteWhenHovered;
+          if (props.appearance === 'quiet') {
+            return designTokens.backgroundColorForInputAsQuietWhenHovered;
           } else {
             return designTokens.backgroundColorForInputWhenHovered;
           }

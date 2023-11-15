@@ -48,7 +48,7 @@ export type TSelectInputProps = {
   /**
    * Indicates the appearance of the input.
    */
-  appearance?: 'default' | 'quite';
+  appearance?: 'default' | 'quiet';
   horizontalConstraint?:
     | 3
     | 4
