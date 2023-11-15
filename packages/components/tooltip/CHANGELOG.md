@@ -1,5 +1,19 @@
 # @commercetools-uikit/tooltip
 
+## 16.10.0
+
+### Minor Changes
+
+- [#2645](https://github.com/commercetools/ui-kit/pull/2645) [`22784a627`](https://github.com/commercetools/ui-kit/commit/22784a627f2f8680383d7dfbd45cfef8f63fd10a) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Updated default font size (`0.75rem`) for the tooltip text.
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70)]:
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/constraints@16.10.0
+  - @commercetools-uikit/hooks@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
 ## 16.9.0
 
 ### Patch Changes
