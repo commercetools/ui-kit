@@ -4,4 +4,4 @@
 '@commercetools-uikit/select-input': minor
 ---
 
-Added menuIsOpen property to SelectInputs
+We introduced a new (_boolean_) property (**menuIsOpen**) to Select Inputs components which allows to control the dropdown visibility.
