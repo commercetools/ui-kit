@@ -1,7 +1,7 @@
 ---
-'@commercetools-uikit/search-select-input': major
-'@commercetools-uikit/async-select-input': major
-'@commercetools-uikit/select-input': major
+'@commercetools-uikit/search-select-input': minor
+'@commercetools-uikit/async-select-input': minor
+'@commercetools-uikit/select-input': minor
 ---
 
-Added menuIsOpen property
+Added menuIsOpen property to SelectInputs
