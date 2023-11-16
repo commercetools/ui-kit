@@ -88,6 +88,11 @@ export type TSelectFieldProps = {
 
   // SelectInput
   /**
+   * Indicates the appearance of the input.
+   * Quite appearence is meant to be used with the `horizontalConstraint="auto"`.
+   */
+  appearance?: 'default' | 'quiet';
+  /**
    * Aria label (for assistive tech)
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
@@ -364,6 +369,7 @@ export default class SelectField extends Component<TSelectFieldProps> {
             horizontalConstraint="scale"
             hasError={hasError}
             hasWarning={this.props.hasWarning}
+            appearance={this.props.appearance}
             aria-label={this.props['aria-label']}
             aria-labelledby={this.props['aria-labelledby']}
             isAutofocussed={this.props.isAutofocussed}
