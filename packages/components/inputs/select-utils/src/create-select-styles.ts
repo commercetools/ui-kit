@@ -278,6 +278,18 @@ const placeholderStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
     color: (() => {
+      if (
+        props.appearance === 'quiet' &&
+        !props.isReadOnly &&
+        !props.isDisabled
+      ) {
+        if (props.hasError) {
+          return designTokens.fontColorForSelectInputWhenError;
+        }
+        if (props.hasWarning) {
+          return designTokens.fontColorForSelectInputWhenWarning;
+        }
+      }
       return designTokens.placeholderFontColorForInput;
     })(),
     width: '100%',
