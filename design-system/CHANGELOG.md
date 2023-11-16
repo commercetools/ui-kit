@@ -1,5 +1,18 @@
 # @commercetools-uikit/design-system
 
+## 16.10.0
+
+### Minor Changes
+
+- [#2641](https://github.com/commercetools/ui-kit/pull/2641) [`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70) Thanks [@valoriecarli](https://github.com/valoriecarli)! - Updated `Link` & `FlatButton` components to use `color-primary-30` as the font color.
+
+  Updated the following to use `color-primary-30` for the tone primary font color: `text.caption`, `text.detail`, `text.body` & `text.subheadline`
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.10.0
+
 ## 16.9.0
 
 ### Patch Changes
