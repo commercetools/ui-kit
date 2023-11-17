@@ -76,9 +76,11 @@ export const themes = {
     colorError85: 'hsl(339.1304347826087, 100%, 85%)',
     colorError95: 'hsl(339.1304347826087, 100%, 95%)',
     colorSolid: '#1a1a1a',
+    colorSolid02: 'hsl(0deg 0% 10% / 2%)',
     colorSolid05: 'hsl(0deg 0% 10% / 5%)',
     colorSolid10: 'hsl(0deg 0% 10% / 10%)',
     colorSurface: '#fff',
+    colorTransparent: 'transparent',
     borderRadius1: '1px',
     borderRadius2: '2px',
     borderRadius4: '4px',
@@ -202,6 +204,8 @@ export const themes = {
     backgroundColorForInputWhenReadonly: 'hsl(232, 18%, 95%)',
     backgroundColorForInputWhenActive:
       'hsl(203.05555555555554, 93.9130434783%, 95%)',
+    backgroundColorForInputAsQuiet: 'transparent',
+    backgroundColorForInputAsQuietWhenHovered: 'hsl(0deg 0% 10% / 2%)',
     backgroundColorForTableCellWhenHovered: 'hsl(232, 18%, 98%)',
     backgroundColorForTableHeader: 'hsl(232, 18%, 98%)',
     backgroundColorForTag: 'hsl(232, 18%, 95%)',
@@ -271,6 +275,7 @@ export const themes = {
     borderColorForInputWhenError: '#e60050',
     borderColorForInputWhenWarning: '#f16d0e',
     borderColorForInputWhenHovered: 'hsl(232, 18%, 80%)',
+    borderColorForInputAsQuiet: 'transparent',
     borderColorForTag: 'hsl(232, 18%, 80%)',
     borderColorForTagWarning: '#f16d0e',
     borderColorForTagWhenFocused: 'hsl(232, 18%, 80%)',
@@ -641,9 +646,11 @@ const designTokens = {
   colorError85: 'var(--color-error-85, hsl(339.1304347826087, 100%, 85%))',
   colorError95: 'var(--color-error-95, hsl(339.1304347826087, 100%, 95%))',
   colorSolid: 'var(--color-solid, #1a1a1a)',
+  colorSolid02: 'var(--color-solid-02, hsl(0deg 0% 10% / 2%))',
   colorSolid05: 'var(--color-solid-05, hsl(0deg 0% 10% / 5%))',
   colorSolid10: 'var(--color-solid-10, hsl(0deg 0% 10% / 10%))',
   colorSurface: 'var(--color-surface, #fff)',
+  colorTransparent: 'var(--color-transparent, transparent)',
   borderRadius1: 'var(--border-radius-1, 1px)',
   borderRadius2: 'var(--border-radius-2, 2px)',
   borderRadius4: 'var(--border-radius-4, 4px)',
@@ -793,6 +800,10 @@ const designTokens = {
     'var(--background-color-for-input-when-readonly, hsl(232, 18%, 95%))',
   backgroundColorForInputWhenActive:
     'var(--background-color-for-input-when-active, hsl(203.05555555555554, 93.9130434783%, 95%))',
+  backgroundColorForInputAsQuiet:
+    'var(--background-color-for-input-as-quiet, transparent)',
+  backgroundColorForInputAsQuietWhenHovered:
+    'var(--background-color-for-input-as-quiet-when-hovered, hsl(0deg 0% 10% / 2%))',
   backgroundColorForTableCellWhenHovered:
     'var(--background-color-for-table-cell-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForTableHeader:
@@ -908,6 +919,8 @@ const designTokens = {
     'var(--border-color-for-input-when-warning, #f16d0e)',
   borderColorForInputWhenHovered:
     'var(--border-color-for-input-when-hovered, hsl(232, 18%, 80%))',
+  borderColorForInputAsQuiet:
+    'var(--border-color-for-input-as-quiet, transparent)',
   borderColorForTag: 'var(--border-color-for-tag, hsl(232, 18%, 80%))',
   borderColorForTagWarning: 'var(--border-color-for-tag-warning, #f16d0e)',
   borderColorForTagWhenFocused:

@@ -107,9 +107,11 @@ choiceGroupsByTheme:
         color-error-85: 'hsl(339.1304347826087, 100%, 85%)'
         color-error-95: 'hsl(339.1304347826087, 100%, 95%)'
         color-solid: '#1a1a1a'
+        color-solid-02: 'hsl(0deg 0% 10% / 2%)'
         color-solid-05: 'hsl(0deg 0% 10% / 5%)'
         color-solid-10: 'hsl(0deg 0% 10% / 10%)'
         color-surface: '#fff'
+        color-transparent: 'transparent'
 
     borderRadiuses:
       label: Border Radiuses
@@ -345,6 +347,8 @@ variants:
     description: 'To differentiate component critical style'
   bold:
     description: 'When the element is bold'
+  quiet:
+    description: 'When the element is quiet style'
 
 componentGroups:
   button:
@@ -549,6 +553,10 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-input-when-active:
           choice: color-info-95
+        background-color-for-input-as-quiet:
+          choice: color-transparent
+        background-color-for-input-as-quiet-when-hovered:
+          choice: color-solid-02
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-98
         background-color-for-table-header:
@@ -677,6 +685,8 @@ decisionGroupsByTheme:
           choice: color-warning
         border-color-for-input-when-hovered:
           choice: color-neutral
+        border-color-for-input-as-quiet:
+          choice: color-transparent
         border-color-for-tag:
           choice: color-neutral
         border-color-for-tag-warning:
