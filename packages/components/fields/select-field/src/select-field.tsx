@@ -89,7 +89,7 @@ export type TSelectFieldProps = {
   // SelectInput
   /**
    * Indicates the appearance of the input.
-   * Quite appearence is meant to be used with the `horizontalConstraint="auto"`.
+   * Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.
    */
   appearance?: 'default' | 'quiet';
   /**

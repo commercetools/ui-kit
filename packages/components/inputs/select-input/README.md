@@ -20,11 +20,11 @@ npm --save install @commercetools-uikit/select-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl
+yarn add react react-dom react-intl
 ```
 
 ```
-npm --save install react react-intl
+npm --save install react react-dom react-intl
 ```
 
 ## Usage
@@ -60,7 +60,7 @@ export default Example;
 
 | Props                      | Type                                                                                                  | Required | Default     | Description                                                                                                                                                                                                                                                                                                                                                                              |
 | -------------------------- | ----------------------------------------------------------------------------------------------------- | :------: | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `appearance`               | `union`<br/>Possible values:<br/>`'default' , 'quiet'`                                                |          | `'default'` | Indicates the appearance of the input.&#xA;Quite appearence is meant to be used with the `horizontalConstraint="auto"`.                                                                                                                                                                                                                                                                  |
+| `appearance`               | `union`<br/>Possible values:<br/>`'default' , 'quiet'`                                                |          | `'default'` | Indicates the appearance of the input.&#xA;Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.                                                                                                                                                                                                                                                                  |
 | `horizontalConstraint`     | `union`<br/>Possible values:<br/>`, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          |             |                                                                                                                                                                                                                                                                                                                                                                                          |
 | `hasError`                 | `boolean`                                                                                             |          |             | Indicates that input has errors                                                                                                                                                                                                                                                                                                                                                          |
 | `isReadOnly`               | `boolean`                                                                                             |          |             | Is the select read-only                                                                                                                                                                                                                                                                                                                                                                  |
