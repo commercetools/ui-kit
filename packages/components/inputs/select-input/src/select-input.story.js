@@ -119,6 +119,11 @@ storiesOf('Components|Inputs/SelectInputs', module)
                   />
                 )}
                 <SelectInput
+                  appearance={select(
+                    'appearance',
+                    ['default', 'quiet'],
+                    'default'
+                  )}
                   horizontalConstraint={select(
                     'horizontalConstraint',
                     Constraints.getAcceptedMaxPropValues(3),

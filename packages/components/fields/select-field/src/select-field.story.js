@@ -116,6 +116,11 @@ storiesOf('Components|Fields/SelectFields', module)
                 }}
                 isRequired={boolean('isRequired', false)}
                 touched={boolean('touched', false)}
+                appearance={select(
+                  'appearance',
+                  ['default', 'quiet'],
+                  'default'
+                )}
                 aria-label={text('aria-label', '')}
                 aria-labelledby={text('aria-labelledby', '')}
                 backspaceRemovesValue={boolean('backspaceRemovesValue', true)}

@@ -45,6 +45,11 @@ export type TCustomEvent = {
 };
 
 export type TSelectInputProps = {
+  /**
+   * Indicates the appearance of the input.
+   * Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.
+   */
+  appearance?: 'default' | 'quiet';
   horizontalConstraint?:
     | 3
     | 4
@@ -322,8 +327,9 @@ export type TSelectInputProps = {
 
 const defaultProps: Pick<
   TSelectInputProps,
-  'maxMenuHeight' | 'menuPortalZIndex' | 'options'
+  'appearance' | 'maxMenuHeight' | 'menuPortalZIndex' | 'options'
 > = {
+  appearance: 'default',
   maxMenuHeight: 220,
   menuPortalZIndex: 1,
   options: [],
@@ -410,6 +416,7 @@ const SelectInput = (props: TSelectInputProps) => {
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
               menuPortalZIndex: props.menuPortalZIndex,
+              appearance: props.appearance,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
