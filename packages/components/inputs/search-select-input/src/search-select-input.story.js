@@ -52,6 +52,7 @@ class SearchSelectInputStory extends Component {
   static displayName = 'SearchSelectInputStory';
   render() {
     const isMulti = boolean('isMulti', false);
+    const menuIsOpen = boolean('menuIsOpen', false);
     const noOptionsMessage = text(
       'No options message',
       'No matches found for your search term'
@@ -100,6 +101,7 @@ class SearchSelectInputStory extends Component {
                   isMulti={isMulti}
                   noOptionsMessage={() => noOptionsMessage}
                   loadingMessage={loadingMessage}
+                  menuIsOpen={menuIsOpen}
                   maxMenuHeight={number('maxMenuHeight', 220)}
                   closeMenuOnSelect={boolean('closeMenuOnSelect', true)}
                   name={text('name', 'form-field-name')}
