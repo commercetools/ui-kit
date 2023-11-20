@@ -1,5 +1,44 @@
 # @commercetools-uikit/tag
 
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70), [`0a5594d1c`](https://github.com/commercetools/ui-kit/commit/0a5594d1c8c211fd4d3d5038f955fe8bd1372d4b)]:
+  - @commercetools-uikit/text@16.10.0
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/accessible-button@16.10.0
+  - @commercetools-uikit/constraints@16.10.0
+  - @commercetools-uikit/icons@16.10.0
+  - @commercetools-uikit/spacings@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
+## 16.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings@16.9.0
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/accessible-button@16.9.0
+  - @commercetools-uikit/constraints@16.9.0
+  - @commercetools-uikit/icons@16.9.0
+  - @commercetools-uikit/text@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
+## 16.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7), [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d), [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba), [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd), [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9)]:
+  - @commercetools-uikit/design-system@16.8.0
+  - @commercetools-uikit/icons@16.8.0
+  - @commercetools-uikit/text@16.8.0
+  - @commercetools-uikit/accessible-button@16.8.0
+  - @commercetools-uikit/constraints@16.8.0
+  - @commercetools-uikit/spacings@16.8.0
+  - @commercetools-uikit/utils@16.8.0
+
 ## 16.7.5
 
 ### Patch Changes

@@ -1,5 +1,49 @@
 # @commercetools-uikit/text
 
+## 16.10.0
+
+### Minor Changes
+
+- [#2641](https://github.com/commercetools/ui-kit/pull/2641) [`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70) Thanks [@valoriecarli](https://github.com/valoriecarli)! - Updated `Link` & `FlatButton` components to use `color-primary-30` as the font color.
+
+  Updated the following to use `color-primary-30` for the tone primary font color: `text.caption`, `text.detail`, `text.body` & `text.subheadline`
+
+- [#2643](https://github.com/commercetools/ui-kit/pull/2643) [`0a5594d1c`](https://github.com/commercetools/ui-kit/commit/0a5594d1c8c211fd4d3d5038f955fe8bd1372d4b) Thanks [@valoriecarli](https://github.com/valoriecarli)! - Add a new option (**tertiary**) for the `tone` property of `Text.Caption`, `Text.Detail`, `Text.Body` and `Text.Subheadline` component
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70)]:
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
+## 16.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
+## 16.8.0
+
+### Minor Changes
+
+- [#2613](https://github.com/commercetools/ui-kit/pull/2613) [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Introducing a new `Text` component named `Caption` which will render the smallest text available.
+  Example:
+
+  ```jsx
+  <Text.Caption>your small text</Text.Caption>
+  ```
+
+  Also, we've deprecated the `isBold` property in these components in favour of a new property called `fontWeight`.
+  The former property only supported two values whereas the new one supports three: `regular`, `medium` and `bold`.
+
+### Patch Changes
+
+- Updated dependencies [[`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7), [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d), [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba), [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd), [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9)]:
+  - @commercetools-uikit/design-system@16.8.0
+  - @commercetools-uikit/utils@16.8.0
+
 ## 16.7.5
 
 ### Patch Changes

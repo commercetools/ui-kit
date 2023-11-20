@@ -302,6 +302,10 @@ export type TSearchSelectFieldProps = {
    * Might be used to display additional information about the content of the field (E.g verified email)
    */
   badge?: ReactNode;
+  /**
+   * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
+   */
+  iconLeft?: ReactNode;
 };
 
 const defaultProps: Pick<TSearchSelectFieldProps, 'controlShouldRenderValue'> =
@@ -393,6 +397,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           showOptionGroupDivider={props.showOptionGroupDivider}
           optionType={props.optionType}
           controlShouldRenderValue={props.controlShouldRenderValue}
+          iconLeft={props.iconLeft}
         />
         <FieldErrors
           id={sequentialErrorsId}

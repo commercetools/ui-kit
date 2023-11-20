@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { RowExpandCollapseButton } from './cell.styles';
+import { BaseHeaderCell } from './header-cell.styles';
 import convertNumericDimensionToPixelValue from './utils/convert-numeric-dimension-to-pixel-value';
 import type { TDataTableProps } from './data-table';
 
@@ -103,6 +104,23 @@ const TableGrid = styled.table<TTableGrid>`
 
 const TableHeader = styled.thead`
   display: contents;
+  /* Adds right border that doesn't affect column width
+  *  to each header cell when table header is hovered
+  */
+  :hover {
+    ${BaseHeaderCell}:before {
+      content: '';
+      position: absolute;
+      border-right: 1px solid ${designTokens.colorNeutral};
+      top: ${designTokens.spacing20};
+      right: 0;
+      bottom: ${designTokens.spacing20};
+    }
+    /* Does not display border on far right (last) header cell */
+    ${BaseHeaderCell}:last-child:before {
+      display: none;
+    }
+  }
 `;
 
 const TableBody = styled.tbody`

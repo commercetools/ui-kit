@@ -76,6 +76,7 @@ storiesOf('Components|Fields/SelectFields', module)
     // hintIcon will only render when hint exists
     const iconNames = Object.keys(icons);
     const icon = select('hintIcon', ['', ...iconNames], '');
+    const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
     const hintIcon = icon ? createElement(icons[icon]) : undefined;
     const name = text('name', 'color');
     const id = text('id', '');
@@ -150,6 +151,7 @@ storiesOf('Components|Fields/SelectFields', module)
                 }
                 hintIcon={hintIcon}
                 badge={text('badge', '')}
+                iconLeft={iconLeft ? createElement(iconLeft) : undefined}
                 {...addMenuPortalProps()}
               />
               <NeighbouringStackingContext />

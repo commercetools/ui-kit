@@ -42,6 +42,7 @@ choiceGroupsByTheme:
         color-primary-30: 'hsl(175, 55%, 30%)'
         color-primary-40: 'hsl(175, 55%, 40%)'
         color-primary-85: 'hsl(175, 70%, 85%)'
+        color-primary-90: 'hsl(175, 70%, 90%)'
         color-primary-95: 'hsl(175, 90%, 95%)'
         color-accent: '#213c45'
         color-accent-10: 'hsl(195, 35.2941176471%, 10%)'
@@ -106,9 +107,11 @@ choiceGroupsByTheme:
         color-error-85: 'hsl(339.1304347826087, 100%, 85%)'
         color-error-95: 'hsl(339.1304347826087, 100%, 95%)'
         color-solid: '#1a1a1a'
+        color-solid-02: 'hsl(0deg 0% 10% / 2%)'
         color-solid-05: 'hsl(0deg 0% 10% / 5%)'
         color-solid-10: 'hsl(0deg 0% 10% / 10%)'
         color-surface: '#fff'
+        color-transparent: 'transparent'
 
     borderRadiuses:
       label: Border Radiuses
@@ -138,6 +141,7 @@ choiceGroupsByTheme:
       prefix: font-size
       choices:
         font-size-10: '0.75rem'
+        font-size-12: '0.8rem'
         font-size-20: '0.875rem'
         font-size-30: '1rem'
         font-size-40: '1.125rem'
@@ -145,6 +149,7 @@ choiceGroupsByTheme:
         font-size-60: '1.5rem'
         font-size-70: '2rem'
         font-size-80: '2.5rem'
+        font-size-90: '3rem'
         # These font sizes are in rems based on a root font-size of 13px and they will be removed when we replace the default theme.
         font-size-15: '0.9231rem'
         font-size-35: '1.0769rem'
@@ -168,7 +173,9 @@ choiceGroupsByTheme:
       label: Line heights
       prefix: line-height
       choices:
+        line-height-05: '1.125rem'
         line-height-10: '1.25rem'
+        line-height-18: '1.3rem'
         line-height-20: '1.375rem'
         line-height-30: '1.5rem'
         line-height-40: '1.625rem'
@@ -230,6 +237,7 @@ choiceGroupsByTheme:
         spacing-l: 24px
         spacing-xl: 32px
         # New tokens
+        spacing-05: 2px
         spacing-10: 4px
         spacing-20: 8px
         spacing-25: 12px
@@ -305,6 +313,8 @@ variants:
     description: 'H5 text element'
   body:
     description: 'Body text element'
+  caption:
+    description: 'Caption text element'
   detail:
     description: 'Detail text element'
   icon:
@@ -337,6 +347,8 @@ variants:
     description: 'To differentiate component critical style'
   bold:
     description: 'When the element is bold'
+  quiet:
+    description: 'When the element is quiet style'
 
 componentGroups:
   button:
@@ -541,10 +553,14 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-input-when-active:
           choice: color-info-95
+        background-color-for-input-as-quiet:
+          choice: color-transparent
+        background-color-for-input-as-quiet-when-hovered:
+          choice: color-solid-02
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-98
         background-color-for-table-header:
-          choice: color-neutral-95
+          choice: color-neutral-98
         background-color-for-tag:
           choice: color-neutral-95
         background-color-for-tag-warning:
@@ -555,12 +571,10 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-select-input-option-when-hovered:
           choice: color-neutral-98
-        background-color-for-avatar:
-          choice: color-accent
-        background-color-for-avatar-when-highlighted:
-          choice: color-accent-30
         background-color-for-stamp-as-positive:
-          choice: color-primary-95
+          choice: color-primary-90
+        background-color-for-stamp-as-primary:
+          choice: color-primary-90
         background-color-for-localized-input-label:
           choice: color-surface
         background-color-for-localized-input-label-when-readonly:
@@ -671,6 +685,8 @@ decisionGroupsByTheme:
           choice: color-warning
         border-color-for-input-when-hovered:
           choice: color-neutral
+        border-color-for-input-as-quiet:
+          choice: color-transparent
         border-color-for-tag:
           choice: color-neutral
         border-color-for-tag-warning:
@@ -690,7 +706,7 @@ decisionGroupsByTheme:
         border-color-for-table-header:
           choice: color-surface
         border-color-for-table-header-as-bottom:
-          choice: color-neutral-90
+          choice: color-neutral-95
         border-color-for-table-manager-droppable-list:
           choice: color-neutral
         border-color-for-collapsible-panel-header:
@@ -775,7 +791,9 @@ decisionGroupsByTheme:
         border-radius-for-table-manager-droppable-list:
           choice: border-radius-4
         border-radius-for-stamp:
-          choice: border-radius-20
+          choice: border-radius-4
+        border-radius-for-stamp-as-condensed:
+          choice: border-radius-2
         border-radius-for-view-switcher:
           choice: border-radius-4
         border-radius-for-content-notification:
@@ -860,7 +878,7 @@ decisionGroupsByTheme:
         font-color-for-link-as-inverted:
           choice: color-surface
         font-color-for-link-as-primary:
-          choice: color-primary-25
+          choice: color-primary-30
         font-color-for-link-as-secondary:
           choice: color-solid
         font-color-for-link-as-primary-when-active:
@@ -868,7 +886,7 @@ decisionGroupsByTheme:
         font-color-for-link-as-secondary-when-active:
           choice: color-primary
         font-color-for-table-header:
-          choice: color-solid
+          choice: color-neutral-40
         font-color-for-localized-input-label:
           choice: color-neutral-60
         font-color-for-view-switcher:
@@ -926,7 +944,7 @@ decisionGroupsByTheme:
         font-color-for-radio-input-when-warning:
           choice: color-warning
         font-color-for-flat-button-as-primary:
-          choice: color-primary-25
+          choice: color-primary-30
         font-color-for-flat-button-as-primary-when-hovered:
           choice: color-primary
         font-color-for-flat-button-as-critical:
@@ -1015,24 +1033,18 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-text-as-body:
           choice: font-size-30
+        font-size-for-text-as-caption:
+          choice: font-size-10
         font-size-for-text-as-detail:
           choice: font-size-20
         font-size-for-body:
           choice: '16px'
         font-size-for-link:
           choice: font-size-30
-        font-size-for-stamp:
-          choice: font-size-20
         font-size-for-view-switcher:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
-        font-size-for-avatar-as-small:
-          choice: font-size-20
-        font-size-for-avatar-as-medium:
-          choice: font-size-30
-        font-size-for-avatar-as-big:
-          choice: font-size-80
         font-size-for-localized-input-label:
           choice: font-size-30
         font-size-for-content-notification:
@@ -1065,6 +1077,8 @@ decisionGroupsByTheme:
           choice: line-height-20
         line-height-for-text-as-body:
           choice: line-height-40
+        line-height-for-text-as-caption:
+          choice: line-height-05
         line-height-for-text-as-detail:
           choice: line-height-20
         line-height-for-select-input-options:
@@ -1088,12 +1102,14 @@ decisionGroupsByTheme:
           choice: font-weight-500
         font-weight-for-text-as-body:
           choice: font-weight-400
+        font-weight-for-text-as-caption:
+          choice: font-weight-400
         font-weight-for-text-as-detail:
           choice: font-weight-400
         font-weight-for-button:
           choice: font-weight-500
         font-weight-for-table-header:
-          choice: font-weight-600
+          choice: font-weight-500
         font-weight-for-text-as-bold:
           choice: font-weight-600
 
@@ -1141,7 +1157,7 @@ decisionGroupsByTheme:
         padding-for-stamp:
           choice: '4px 12px'
         padding-for-stamp-as-condensed:
-          choice: '0 var(--spacing-20)'
+          choice: 'var(--spacing-05) var(--spacing-10)'
         padding-for-tag:
           choice: '2px 12px'
         padding-for-table-header:

@@ -1,5 +1,45 @@
 # @commercetools-uikit/search-select-input
 
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70), [`0a5594d1c`](https://github.com/commercetools/ui-kit/commit/0a5594d1c8c211fd4d3d5038f955fe8bd1372d4b)]:
+  - @commercetools-uikit/text@16.10.0
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/async-select-input@16.10.0
+  - @commercetools-uikit/select-utils@16.10.0
+  - @commercetools-uikit/spacings@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
+## 16.9.0
+
+### Minor Changes
+
+- [#2636](https://github.com/commercetools/ui-kit/pull/2636) [`7b354d8e5`](https://github.com/commercetools/ui-kit/commit/7b354d8e59f704b4851456e515af102600c9a3cd) Thanks [@chloe0592](https://github.com/chloe0592)! - Making iconLeft prop available for SearchSelectInput and SearchSelectField component.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings@16.9.0
+  - @commercetools-uikit/async-select-input@16.9.0
+  - @commercetools-uikit/select-utils@16.9.0
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/text@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
+## 16.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7), [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d), [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba), [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd), [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9)]:
+  - @commercetools-uikit/design-system@16.8.0
+  - @commercetools-uikit/select-utils@16.8.0
+  - @commercetools-uikit/text@16.8.0
+  - @commercetools-uikit/async-select-input@16.8.0
+  - @commercetools-uikit/spacings@16.8.0
+  - @commercetools-uikit/utils@16.8.0
+
 ## 16.7.5
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @commercetools-uikit/accessible-hidden
 
+## 16.10.0
+
+## 16.9.0
+
+## 16.8.0
+
 ## 16.7.5
 
 ## 16.7.4

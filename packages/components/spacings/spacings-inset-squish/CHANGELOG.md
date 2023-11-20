@@ -1,5 +1,37 @@
 # @commercetools-uikit/spacings-inset-squish
 
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70)]:
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
+## 16.9.0
+
+### Minor Changes
+
+- [#2635](https://github.com/commercetools/ui-kit/pull/2635) [`a743bcf18`](https://github.com/commercetools/ui-kit/commit/a743bcf18470c32baa993482e70d5235652c0144) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Refactor vertical space usage so consumers can control it.
+
+  There's a new property named `height` (available values: `expanded` and `collapsed`; the former is the default) that will allow consumers to control the vertical space usage of the component.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
+## 16.8.0
+
+### Patch Changes
+
+- [#2624](https://github.com/commercetools/ui-kit/pull/2624) [`50242964d`](https://github.com/commercetools/ui-kit/commit/50242964d2cab34b1cc570eeaa2726af4255634e) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Updated `Inset` and `InsetSquish` components styles so they both use all available vertical space from their parent components.
+
+- Updated dependencies [[`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7), [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d), [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba), [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd), [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9)]:
+  - @commercetools-uikit/design-system@16.8.0
+  - @commercetools-uikit/utils@16.8.0
+
 ## 16.7.5
 
 ### Patch Changes

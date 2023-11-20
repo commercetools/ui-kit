@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, createElement } from 'react';
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -16,6 +16,7 @@ import Section from '../../../../../docs/.storybook/decorators/section';
 import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
 import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import SearchSelectInput from './search-select-input';
+import * as icons from '../../../icons';
 import Readme from '../README.md';
 
 const colourOptions = [
@@ -51,6 +52,7 @@ class SearchSelectInputStory extends Component {
   static displayName = 'SearchSelectInputStory';
   render() {
     const isMulti = boolean('isMulti', false);
+    const menuIsOpen = boolean('menuIsOpen', false);
     const noOptionsMessage = text(
       'No options message',
       'No matches found for your search term'
@@ -64,6 +66,8 @@ class SearchSelectInputStory extends Component {
       Object.values(SELECT_DROPDOWN_OPTION_TYPES),
       SELECT_DROPDOWN_OPTION_TYPES.SINGLE_PROPERTY
     );
+    const iconNames = Object.keys(icons);
+    const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
     return (
       <>
         <Section>
@@ -97,6 +101,7 @@ class SearchSelectInputStory extends Component {
                   isMulti={isMulti}
                   noOptionsMessage={() => noOptionsMessage}
                   loadingMessage={loadingMessage}
+                  menuIsOpen={menuIsOpen}
                   maxMenuHeight={number('maxMenuHeight', 220)}
                   closeMenuOnSelect={boolean('closeMenuOnSelect', true)}
                   name={text('name', 'form-field-name')}
@@ -114,6 +119,7 @@ class SearchSelectInputStory extends Component {
                   // Async props
                   loadOptions={loadOptions}
                   cacheOptions={boolean('cacheOptions', false)}
+                  iconLeft={iconLeft ? createElement(iconLeft) : undefined}
                   {...addMenuPortalProps()}
                 />
                 <NeighbouringStackingContext />

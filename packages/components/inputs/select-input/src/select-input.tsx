@@ -45,6 +45,11 @@ export type TCustomEvent = {
 };
 
 export type TSelectInputProps = {
+  /**
+   * Indicates the appearance of the input.
+   * Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.
+   */
+  appearance?: 'default' | 'quiet';
   horizontalConstraint?:
     | 3
     | 4
@@ -207,6 +212,12 @@ export type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   isSearchable?: ReactSelectProps['isSearchable'];
+  /**
+   * Can be used to enforce the select input to be opened
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  menuIsOpen?: ReactSelectProps['menuIsOpen'];
   // loadingMessage: PropTypes.func,
   // minMenuHeight: PropTypes.number,
   /**
@@ -215,7 +226,6 @@ export type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   maxMenuHeight?: ReactSelectProps['maxMenuHeight'];
-  // menuIsOpen: PropTypes.bool,
   // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
   // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
   /**
@@ -322,8 +332,9 @@ export type TSelectInputProps = {
 
 const defaultProps: Pick<
   TSelectInputProps,
-  'maxMenuHeight' | 'menuPortalZIndex' | 'options'
+  'appearance' | 'maxMenuHeight' | 'menuPortalZIndex' | 'options'
 > = {
+  appearance: 'default',
   maxMenuHeight: 220,
   menuPortalZIndex: 1,
   options: [],
@@ -403,13 +414,14 @@ const SelectInput = (props: TSelectInputProps) => {
               ...props.components,
             } as ReactSelectProps['components']
           }
-          menuIsOpen={props.isReadOnly ? false : undefined}
+          menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
               menuPortalZIndex: props.menuPortalZIndex,
+              appearance: props.appearance,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
