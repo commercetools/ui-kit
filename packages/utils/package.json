@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/utils",
   "description": "A collection of utilities shared across the other packages.",
-  "version": "16.10.0",
+  "version": "16.11.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",

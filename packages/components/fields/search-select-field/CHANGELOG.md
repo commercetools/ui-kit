@@ -1,5 +1,19 @@
 # @commercetools-uikit/search-select-field
 
+## 16.11.0
+
+### Patch Changes
+
+- Updated dependencies [[`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38), [`c752724a5`](https://github.com/commercetools/ui-kit/commit/c752724a58eab743f02d3e886bdb38b4ad4860dd)]:
+  - @commercetools-uikit/design-system@16.11.0
+  - @commercetools-uikit/search-select-input@16.11.0
+  - @commercetools-uikit/constraints@16.11.0
+  - @commercetools-uikit/field-label@16.11.0
+  - @commercetools-uikit/spacings@16.11.0
+  - @commercetools-uikit/field-errors@16.11.0
+  - @commercetools-uikit/hooks@16.11.0
+  - @commercetools-uikit/utils@16.11.0
+
 ## 16.10.0
 
 ### Patch Changes
