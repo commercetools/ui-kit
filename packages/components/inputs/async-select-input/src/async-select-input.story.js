@@ -60,6 +60,7 @@ class SelectStory extends Component {
   static displayName = 'SelectStory';
   render() {
     const isMulti = boolean('isMulti', false);
+    const menuIsOpen = boolean('menuIsOpen', false);
     const defaultOptions = boolean('defaultOptions', true)
       ? colourOptions
       : false;
@@ -97,6 +98,7 @@ class SelectStory extends Component {
                   isDisabled={boolean('isDisabled', false)}
                   isReadOnly={boolean('isReadOnly', false)}
                   isMulti={isMulti}
+                  menuIsOpen={menuIsOpen}
                   isSearchable={boolean('isSearchable', true)}
                   maxMenuHeight={number('maxMenuHeight', 220)}
                   closeMenuOnSelect={boolean('closeMenuOnSelect', true)}

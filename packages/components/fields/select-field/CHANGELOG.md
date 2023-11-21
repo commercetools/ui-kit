@@ -1,5 +1,36 @@
 # @commercetools-uikit/select-field
 
+## 16.11.0
+
+### Minor Changes
+
+- [#2644](https://github.com/commercetools/ui-kit/pull/2644) [`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38) Thanks [@chloe0592](https://github.com/chloe0592)! - A new property `appearance` has been added to the `SelectInput` and `SelectField` components to control its main styles.
+  Available values are `default` and `quiet`: the first one will just render the component as usual and the latter will render a cleaner version of it.Bear in mind when using the `quiet` value that it is expected you also use the `auto` value for the `horizontalConstraint` property.
+
+### Patch Changes
+
+- Updated dependencies [[`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38), [`c752724a5`](https://github.com/commercetools/ui-kit/commit/c752724a58eab743f02d3e886bdb38b4ad4860dd)]:
+  - @commercetools-uikit/select-input@16.11.0
+  - @commercetools-uikit/design-system@16.11.0
+  - @commercetools-uikit/constraints@16.11.0
+  - @commercetools-uikit/field-label@16.11.0
+  - @commercetools-uikit/spacings@16.11.0
+  - @commercetools-uikit/field-errors@16.11.0
+  - @commercetools-uikit/utils@16.11.0
+
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70)]:
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/field-label@16.10.0
+  - @commercetools-uikit/constraints@16.10.0
+  - @commercetools-uikit/select-input@16.10.0
+  - @commercetools-uikit/field-errors@16.10.0
+  - @commercetools-uikit/spacings@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
 ## 16.9.0
 
 ### Patch Changes

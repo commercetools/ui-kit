@@ -15,6 +15,7 @@ import {
 export type TTone =
   | 'primary'
   | 'secondary'
+  | 'tertiary'
   | 'information'
   | 'positive'
   | 'negative'

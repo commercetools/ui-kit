@@ -1,5 +1,34 @@
 # @commercetools-uikit/select-utils
 
+## 16.11.0
+
+### Minor Changes
+
+- [#2644](https://github.com/commercetools/ui-kit/pull/2644) [`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38) Thanks [@chloe0592](https://github.com/chloe0592)! - A new property `appearance` has been added to the `SelectInput` and `SelectField` components to control its main styles.
+  Available values are `default` and `quiet`: the first one will just render the component as usual and the latter will render a cleaner version of it.Bear in mind when using the `quiet` value that it is expected you also use the `auto` value for the `horizontalConstraint` property.
+
+### Patch Changes
+
+- Updated dependencies [[`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38)]:
+  - @commercetools-uikit/design-system@16.11.0
+  - @commercetools-uikit/accessible-button@16.11.0
+  - @commercetools-uikit/icons@16.11.0
+  - @commercetools-uikit/text@16.11.0
+  - @commercetools-uikit/spacings@16.11.0
+  - @commercetools-uikit/utils@16.11.0
+
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70), [`0a5594d1c`](https://github.com/commercetools/ui-kit/commit/0a5594d1c8c211fd4d3d5038f955fe8bd1372d4b)]:
+  - @commercetools-uikit/text@16.10.0
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/accessible-button@16.10.0
+  - @commercetools-uikit/icons@16.10.0
+  - @commercetools-uikit/spacings@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
 ## 16.9.0
 
 ### Patch Changes

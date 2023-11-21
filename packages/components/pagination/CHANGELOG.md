@@ -1,5 +1,37 @@
 # @commercetools-uikit/pagination
 
+## 16.11.0
+
+### Patch Changes
+
+- Updated dependencies [[`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38), [`c752724a5`](https://github.com/commercetools/ui-kit/commit/c752724a58eab743f02d3e886bdb38b4ad4860dd)]:
+  - @commercetools-uikit/select-input@16.11.0
+  - @commercetools-uikit/design-system@16.11.0
+  - @commercetools-uikit/secondary-icon-button@16.11.0
+  - @commercetools-uikit/constraints@16.11.0
+  - @commercetools-uikit/icons@16.11.0
+  - @commercetools-uikit/number-input@16.11.0
+  - @commercetools-uikit/label@16.11.0
+  - @commercetools-uikit/text@16.11.0
+  - @commercetools-uikit/spacings@16.11.0
+  - @commercetools-uikit/utils@16.11.0
+
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70), [`0a5594d1c`](https://github.com/commercetools/ui-kit/commit/0a5594d1c8c211fd4d3d5038f955fe8bd1372d4b)]:
+  - @commercetools-uikit/text@16.10.0
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/secondary-icon-button@16.10.0
+  - @commercetools-uikit/label@16.10.0
+  - @commercetools-uikit/constraints@16.10.0
+  - @commercetools-uikit/icons@16.10.0
+  - @commercetools-uikit/number-input@16.10.0
+  - @commercetools-uikit/select-input@16.10.0
+  - @commercetools-uikit/spacings@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
 ## 16.9.0
 
 ### Patch Changes

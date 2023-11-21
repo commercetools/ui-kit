@@ -1,5 +1,51 @@
 # @commercetools-uikit/fields
 
+## 16.11.0
+
+### Patch Changes
+
+- Updated dependencies [[`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38)]:
+  - @commercetools-uikit/select-field@16.11.0
+  - @commercetools-uikit/async-creatable-select-field@16.11.0
+  - @commercetools-uikit/async-select-field@16.11.0
+  - @commercetools-uikit/creatable-select-field@16.11.0
+  - @commercetools-uikit/date-field@16.11.0
+  - @commercetools-uikit/date-range-field@16.11.0
+  - @commercetools-uikit/date-time-field@16.11.0
+  - @commercetools-uikit/localized-multiline-text-field@16.11.0
+  - @commercetools-uikit/localized-text-field@16.11.0
+  - @commercetools-uikit/money-field@16.11.0
+  - @commercetools-uikit/multiline-text-field@16.11.0
+  - @commercetools-uikit/number-field@16.11.0
+  - @commercetools-uikit/password-field@16.11.0
+  - @commercetools-uikit/radio-field@16.11.0
+  - @commercetools-uikit/search-select-field@16.11.0
+  - @commercetools-uikit/text-field@16.11.0
+  - @commercetools-uikit/time-field@16.11.0
+
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@16.10.0
+  - @commercetools-uikit/async-select-field@16.10.0
+  - @commercetools-uikit/creatable-select-field@16.10.0
+  - @commercetools-uikit/date-field@16.10.0
+  - @commercetools-uikit/date-range-field@16.10.0
+  - @commercetools-uikit/date-time-field@16.10.0
+  - @commercetools-uikit/localized-multiline-text-field@16.10.0
+  - @commercetools-uikit/localized-text-field@16.10.0
+  - @commercetools-uikit/money-field@16.10.0
+  - @commercetools-uikit/multiline-text-field@16.10.0
+  - @commercetools-uikit/number-field@16.10.0
+  - @commercetools-uikit/password-field@16.10.0
+  - @commercetools-uikit/radio-field@16.10.0
+  - @commercetools-uikit/search-select-field@16.10.0
+  - @commercetools-uikit/select-field@16.10.0
+  - @commercetools-uikit/text-field@16.10.0
+  - @commercetools-uikit/time-field@16.10.0
+
 ## 16.9.0
 
 ### Patch Changes
