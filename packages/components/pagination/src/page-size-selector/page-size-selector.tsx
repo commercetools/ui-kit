@@ -9,7 +9,7 @@ import messages from './messages';
 
 export type TPageRangeSize = 's' | 'm' | 'l';
 
-type TPageSizeSelectorProps = {
+export type TPageSizeSelectorProps = {
   /**
    * Number of items per page, according to the pre-defined range values.
    */
@@ -74,9 +74,10 @@ const PageSizeSelector = (props: TPageSizeSelectorProps) => {
 
   return (
     <Spacings.Inline alignItems="center">
-      <Constraints.Horizontal max={2}>
+      <Constraints.Horizontal max="auto">
         <SelectInput
           id={perPageSelectorId}
+          isSearchable={false}
           name="per-page-selector"
           value={props.perPage.toString()}
           options={options.map((option) => ({

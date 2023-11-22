@@ -1,4 +1,10 @@
-import { useLayoutEffect, useState, useRef, useEffect } from 'react';
+import {
+  useLayoutEffect,
+  useRef,
+  useCallback,
+  type ReactNode,
+  type JSXElementConstructor,
+} from 'react';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import isEqual from 'lodash/isEqual';
@@ -13,7 +19,7 @@ type ThemeName = keyof typeof themes;
 const isBrowser = typeof window !== 'undefined';
 
 const defaultParentSelector = (): HTMLElement | null =>
-  document.querySelector(':root');
+  isBrowser ? document.querySelector(':root') : null;
 
 type TApplyTheme = {
   newTheme?: string;
@@ -26,7 +32,7 @@ const applyTheme = ({
   parentSelector = defaultParentSelector,
   themeOverrides,
 }: TApplyTheme): void => {
-  const target = isBrowser ? parentSelector() : null;
+  const target = parentSelector();
 
   // With no target we can't change themes
   if (!target) return;
@@ -92,17 +98,41 @@ ThemeProvider.defaultProps = {
   theme: 'default',
 };
 
-const useTheme = (parentSelector = defaultParentSelector) => {
-  const [theme, setTheme] = useState<string>('default');
-  const parentSelectorRef = useRef(parentSelector);
+type TUseThemeResult = {
+  theme: ThemeName;
+  /** @deprecated */
+  themedValue: <
+    Old extends string | ReactNode | undefined,
+    New extends string | ReactNode | undefined
+  >(
+    defaultThemeValue: Old,
+    newThemeValue: New
+  ) => Old | New;
+  /** @deprecated */
+  isNewTheme: boolean;
+};
+const useTheme = (_parentSelector = defaultParentSelector): TUseThemeResult => {
+  const themedValue: TUseThemeResult['themedValue'] = useCallback(
+    (_defaultThemeValue, newThemeValue) => newThemeValue,
+    []
+  );
 
-  // If we use 'useLayoutEffect' here, we would be trying to read the
-  // data attribute before it gets set from the effect in the ThemeProvider
-  useEffect(() => {
-    setTheme(parentSelectorRef.current()?.dataset.theme || 'default');
-  }, []);
-
-  return theme;
+  return {
+    theme: 'default',
+    themedValue,
+    isNewTheme: true,
+  };
 };
 
-export { ThemeProvider, useTheme };
+const withThemeContext = (
+  WrappedComponent: JSXElementConstructor<TUseThemeResult>
+) => {
+  // eslint-disable-next-line react/display-name
+  return (props: Record<string, unknown>) => {
+    const themeUtilties = useTheme();
+    return <WrappedComponent {...props} {...themeUtilties} />;
+  };
+};
+
+export { ThemeProvider, useTheme, withThemeContext };
+export type { ThemeName, TUseThemeResult };

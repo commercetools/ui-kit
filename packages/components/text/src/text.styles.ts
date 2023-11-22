@@ -20,8 +20,12 @@ const truncate = `
   text-overflow: ellipsis;
 `;
 
+const nowrap = `
+  white-space: nowrap;
+`;
+
 const bold = `
-  font-weight: bold;
+  font-weight: ${designTokens.fontWeightForTextAsBold};
 `;
 
 const italic = `
@@ -41,14 +45,36 @@ const getTone = (tone: string) => {
     case 'positive':
       return `color: ${designTokens.colorPrimary25};`;
     case 'primary':
-      return `color: ${designTokens.colorPrimary};`;
+      return `color: ${designTokens.colorPrimary30};`;
     case 'negative':
       return `color: ${designTokens.colorError};`;
     case 'inverted':
       return `color: ${designTokens.colorSurface};`;
     case 'warning':
       return `color: ${designTokens.colorWarning};`;
+    case 'critical':
+      return `color: ${designTokens.colorError40};`;
+    case 'tertiary':
+      return `color: ${designTokens.colorNeutral60};`;
+    case 'inherit':
+      return 'color: inherit;';
     default:
+      return ``;
+  }
+};
+
+const getFontWeight = (props: { isBold?: boolean; fontWeight?: string }) => {
+  switch (props.fontWeight) {
+    case 'regular':
+      return `font-weight: ${designTokens.fontWeight400};`;
+    case 'medium':
+      return `font-weight: ${designTokens.fontWeight500};`;
+    case 'bold':
+      return `font-weight: ${designTokens.fontWeight600};`;
+    default:
+      if (props.isBold) {
+        return `font-weight: ${designTokens.fontWeight600};`;
+      }
       return ``;
   }
 };
@@ -110,11 +136,12 @@ export const bodyStyles = (props: TBodyProps) => css`
   font-size: ${designTokens.fontSizeForTextAsBody};
   line-height: ${designTokens.lineHeightForTextAsBody};
   font-weight: ${designTokens.fontWeightForTextAsBody};
-  ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
+  ${getFontWeight(props)}
   ${props.truncate && truncate}
+  ${props.nowrap && nowrap}
 `;
 
 export const headlineStyles = (props: THeadlineProps) => css`
@@ -124,6 +151,7 @@ export const headlineStyles = (props: THeadlineProps) => css`
   line-height: ${getElementLineHeight(props.as)};
   font-weight: ${getElementFontWeight(props.as)};
   ${props.truncate && truncate}
+  ${props.nowrap && nowrap}
 `;
 
 export const subheadlineStyles = (props: TSubheadlineProps) => css`
@@ -133,6 +161,7 @@ export const subheadlineStyles = (props: TSubheadlineProps) => css`
   line-height: ${getElementLineHeight(props.as)};
   font-weight: ${getElementFontWeight(props.as)};
   ${props.truncate && truncate}
+  ${props.nowrap && nowrap}
   ${props.isBold && bold}
   ${props.tone && getTone(props.tone)}
 `;
@@ -148,9 +177,23 @@ export const detailStyles = (props: TDetailProps) => css`
   font-size: ${designTokens.fontSizeForTextAsDetail};
   line-height: ${designTokens.lineHeightForTextAsDetail};
   font-weight: ${designTokens.fontWeightForTextAsDetail};
-  ${props.isBold && bold}
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
+  ${getFontWeight(props)}
   ${props.truncate && truncate}
+  ${props.nowrap && nowrap}
+`;
+
+export const captionStyles = (props: TDetailProps) => css`
+  ${getBaseStyles()}
+  font-size: ${designTokens.fontSizeForTextAsCaption};
+  line-height: ${designTokens.lineHeightForTextAsCaption};
+  font-weight: ${designTokens.fontWeightForTextAsCaption};
+  ${props.isItalic && italic}
+  ${props.isStrikethrough && strikethrough}
+  ${props.tone && getTone(props.tone)}
+  ${getFontWeight(props)}
+  ${props.truncate && truncate}
+  ${props.nowrap && nowrap}
 `;

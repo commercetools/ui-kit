@@ -24,6 +24,7 @@ storiesOf('Basics|Typography/Text', module)
         as={select('as', ['h1', 'h2', 'h3'], 'h1')}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        nowrap={boolean('nowrap', false)}
       >
         {text('Text', 'Sample text Headline')}
       </Text.Headline>
@@ -39,11 +40,13 @@ storiesOf('Basics|Typography/Text', module)
           primary: 'primary',
           information: 'information',
           secondary: 'secondary',
+          tertiary: 'tertiary',
           positive: 'positive',
           negative: 'negative',
         })}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        nowrap={boolean('nowrap', false)}
       >
         {text('Text', 'Sample text Subheadline')}
       </Text.Subheadline>
@@ -79,12 +82,19 @@ storiesOf('Basics|Typography/Text', module)
           primary: 'primary',
           information: 'information',
           secondary: 'secondary',
+          tertiary: 'tertiary',
           positive: 'positive',
           negative: 'negative',
           inverted: 'inverted',
         })}
+        fontWeight={select('Font weight', {
+          regular: 'regular',
+          medium: 'medium',
+          bold: 'bold',
+        })}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        nowrap={boolean('nowrap', false)}
       >
         {text('Text', 'Sample text Body')}
       </Text.Body>
@@ -105,15 +115,50 @@ storiesOf('Basics|Typography/Text', module)
           primary: 'primary',
           information: 'information',
           secondary: 'secondary',
+          tertiary: 'tertiary',
           positive: 'positive',
           negative: 'negative',
           inverted: 'inverted',
           warning: 'warning',
         })}
+        fontWeight={select('Font weight', {
+          regular: 'regular',
+          medium: 'medium',
+          bold: 'bold',
+        })}
         title={text('title', 'Text to be shown as tooltip on hover')}
         truncate={boolean('truncate', false)}
+        nowrap={boolean('nowrap', false)}
       >
         {text('Text', 'Sample text Detail')}
       </Text.Detail>
+    </Section>
+  ))
+  .add('Caption', () => (
+    <Section>
+      <Text.Caption
+        isItalic={boolean('italic', false)}
+        isStrikethrough={boolean('strikethrough', false)}
+        tone={select('Text tone', {
+          none: null,
+          primary: 'primary',
+          information: 'information',
+          secondary: 'secondary',
+          tertiary: 'tertiary',
+          positive: 'positive',
+          negative: 'negative',
+          inverted: 'inverted',
+          warning: 'warning',
+        })}
+        fontWeight={select('Font weight', {
+          regular: 'regular',
+          medium: 'medium',
+          bold: 'bold',
+        })}
+        truncate={boolean('truncate', false)}
+        nowrap={boolean('nowrap', false)}
+      >
+        {text('Text', 'Sample text Caption')}
+      </Text.Caption>
     </Section>
   ));

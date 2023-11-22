@@ -29,7 +29,7 @@ type TCustomFormErrors<Values> = {
 interface HTMLLocalizedInputElement extends HTMLInputElement {
   language: string;
 }
-type TLocalizedTextFieldProps = {
+export type TLocalizedTextFieldProps = {
   // LocalizedTextField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

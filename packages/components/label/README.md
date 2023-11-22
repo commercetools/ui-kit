@@ -12,26 +12,28 @@ In order to improve readability, using `inverted` tone is recommended on dark ba
 
 ```js
 import Label from '@commercetools-uikit/label';
+import { FormattedMessage } from 'react-intl';
 
-<Label
-  isRequiredIndicatorVisible={true}
-  isBold={false}
-  tone="inverted"
-/>
-  <FormattedMessage {...messages.title} />
-</Label>
+const Example = () => (
+  <Label isRequiredIndicatorVisible={true} isBold={false} tone="inverted">
+    <FormattedMessage {...messages.title} />
+  </Label>
+);
+
+export default Example;
 ```
 
 ## Properties
 
-| Props                        | Type           | Required | Values                    | Default | Description                                                                                                     |
-| ---------------------------- | -------------- | :------: | ------------------------- | ------- | --------------------------------------------------------------------------------------------------------------- | --- |
-| `tone`                       | `string`       |    -     | `['primary', 'inverted']` | \_      | Indicates the tone to be applied to the label                                                                   |
-| `children`                   | `node`         | ✅ (\*)  | -                         | -       | Value of the label                                                                                              |
-| `intlMessage`                | `intl message` | ✅ (\*)  | -                         | -       | An intl message object that will be rendered with `FormattedMessage`                                            |
-| `isBold`                     | `bool`         |    -     | -                         | `false` | Indicates if the label title should be in bold text                                                             |
-| `isRequiredIndicatorVisible` | `bool`         |    -     | -                         | `false` | Indicates if the labeled field is required in a form                                                            |     |
-| `htmlFor`                    | `string`       |    -     | -                         | -       | The `for` HTML attribute, used to reference form elements with the related attribute `id` or `aria-labelledby`. |
-| `id`                         | `string`       |    -     | -                         | -       | The `id` HTML attribute, used to reference non-form elements with the related attribute `aria-labelledby`.      |
+| Props                        | Type                                                      | Required | Values | Default   | Description                                                                                                          |
+| ---------------------------- | --------------------------------------------------------- | :------: | ------ | --------- | -------------------------------------------------------------------------------------------------------------------- |
+| `tone`                       | `union`<br/>Possible values:<br/>`'primary' , 'inverted'` |    -     | -      | -         | Indicates the tone to be applied to the label                                                                        |
+| `children`                   | `ReactNode`                                               | ✅ (\*)  | -      | -         | Value of the label                                                                                                   |
+| `intlMessage`                | `MessageDescriptor`                                       | ✅ (\*)  | -      | -         | An intl message object that will be rendered with `FormattedMessage`                                                 |
+| `isBold`                     | `boolean`                                                 |    -     | -      | `false`   | Indicates if the label title should be in bold text. This prop is being deprecated in favor of the `fontWeight` prop |
+| `fontWeight`                 | `union`<br/>Possible values:<br/>`'medium' , 'bold'`      |    -     | -      | `regular` | Indicates if the label title should be in `medium`, or `bold` weighted text, defaults to `medium`                    |
+| `isRequiredIndicatorVisible` | `boolean`                                                 |    -     | -      | `false`   | Indicates if the labeled field is required in a form                                                                 |
+| `htmlFor`                    | `string`                                                  |    -     | -      | -         | The `for` HTML attribute, used to reference form elements with the related attribute `id` or `aria-labelledby`.      |
+| `id`                         | `string`                                                  |    -     | -      | -         | The `id` HTML attribute, used to reference non-form elements with the related attribute `aria-labelledby`.           |
 
 > `*`: `children` is required only if `intlMessage` is not provided, and vice-versa

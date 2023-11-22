@@ -6,12 +6,12 @@ import DraggableTag from '../draggable-tag';
 import TagContainerEditable from './tag-container-editable';
 import messages from './messages';
 
-type TColumnData = {
+export type TColumnData = {
   key: string;
   label: ReactNode;
 };
 
-type TDroppablePanelProps = {
+export type TDroppablePanelProps = {
   droppableId: string;
   noColumnsText: ReactNode;
   columns: TColumnData[];

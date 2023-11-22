@@ -73,6 +73,12 @@ class TestComponent extends Component {
 const renderLocalizedMoneyInput = (props, options) =>
   render(<TestComponent {...props} />, options);
 
+const consoleWarnMock = jest.fn();
+beforeEach(() => {
+  consoleWarnMock.mockClear();
+  console.warn = consoleWarnMock;
+});
+
 it('should forward data-attributes', () => {
   const { container } = renderLocalizedMoneyInput({
     'data-foo': 'bar',
@@ -479,22 +485,23 @@ describe('LocalizedMoneyInput.parseMoneyValues', () => {
     });
   });
   describe('when called with a centPrecision money missing centAmount', () => {
-    it('should throw', () => {
-      expect(() =>
-        LocalizedMoneyInput.parseMoneyValues(
-          [
-            {
-              type: 'centPrecision',
-              currencyCode: 'EUR',
-            },
-          ],
-          'en'
-        )
-      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    it('should warn', () => {
+      LocalizedMoneyInput.parseMoneyValues(
+        [
+          {
+            type: 'centPrecision',
+            currencyCode: 'EUR',
+          },
+        ],
+        'en'
+      );
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: Value must contain "amount"'
+      );
     });
   });
   describe('when called with a centPrecision money using an unknown currenyCode', () => {
-    it('should throw', () => {
+    it('should warn', () => {
       expect(() =>
         LocalizedMoneyInput.parseMoneyValues(
           [
@@ -505,56 +512,58 @@ describe('LocalizedMoneyInput.parseMoneyValues', () => {
           ],
           'en'
         )
-      ).toThrow(
-        'MoneyInput.parseMoneyValue: Value must use known currency code'
+      ).toThrow();
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: Value must use known currency code'
       );
     });
   });
   describe('when called with a highPrecision money missing fractionDigits', () => {
-    it('should throw', () => {
-      expect(() =>
-        LocalizedMoneyInput.parseMoneyValues(
-          [
-            {
-              type: 'highPrecision',
-              currencyCode: 'EUR',
-              preciseAmount: 3,
-            },
-          ],
-          'en'
-        )
-      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
+    it('should warn', () => {
+      LocalizedMoneyInput.parseMoneyValues(
+        [
+          {
+            type: 'highPrecision',
+            currencyCode: 'EUR',
+            preciseAmount: 3,
+          },
+        ],
+        'en'
+      );
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: Value must contain "amount"'
+      );
     });
   });
   describe('when called with a highPrecision money missing preciseAmount', () => {
-    it('should throw', () => {
-      expect(() =>
-        LocalizedMoneyInput.parseMoneyValues(
-          [
-            {
-              type: 'highPrecision',
-              currencyCode: 'EUR',
-              fractionDigits: 2,
-            },
-          ],
-          'en'
-        )
-      ).toThrow('MoneyInput.parseMoneyValue: Value must contain "amount"');
-    });
-  });
-  describe('when called without a locale', () => {
-    it('should throw', () => {
-      expect(() =>
-        LocalizedMoneyInput.parseMoneyValues([
+    it('should warn', () => {
+      LocalizedMoneyInput.parseMoneyValues(
+        [
           {
-            type: 'centPrecision',
-            centAmount: 1234,
+            type: 'highPrecision',
             currencyCode: 'EUR',
             fractionDigits: 2,
           },
-        ])
-      ).toThrow(
-        'MoneyInput.parseMoneyValue: A locale must be passed as the second argument'
+        ],
+        'en'
+      );
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: Value must contain "amount"'
+      );
+    });
+  });
+  describe('when called without a locale', () => {
+    it('should warn', () => {
+      LocalizedMoneyInput.parseMoneyValues([
+        {
+          type: 'centPrecision',
+          centAmount: 1234,
+          currencyCode: 'EUR',
+          fractionDigits: 2,
+        },
+      ]);
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyInput.parseMoneyValue: A locale must be passed as the second argument'
       );
     });
   });
@@ -679,12 +688,13 @@ describe('LocalizedMoneyInput.getHighPrecisionCurrencies', () => {
     });
   });
   describe('when called with an empty money value', () => {
-    it('should throw', () => {
-      expect(() =>
-        LocalizedMoneyInput.getHighPrecisionCurrencies([
-          { amount: '', currencyCode: 'EUR' },
-        ])
-      ).toThrow();
+    it('should warn', () => {
+      LocalizedMoneyInput.getHighPrecisionCurrencies([
+        { amount: '', currencyCode: 'EUR' },
+      ]);
+      expect(consoleWarnMock).toHaveBeenCalledWith(
+        'Warning: MoneyValue.isHighPrecision may not be called with an empty money value.'
+      );
     });
   });
 });

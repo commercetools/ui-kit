@@ -1,5 +1,294 @@
 # @commercetools-uikit/field-errors
 
+## 16.11.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.11.0
+
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.10.0
+
+## 16.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.9.0
+
+## 16.8.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.8.0
+
+## 16.7.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.7.5
+
+## 16.7.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.7.4
+
+## 16.7.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.7.3
+
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.7.2
+
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.7.1
+
+## 16.7.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.7.0
+
+## 16.6.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.6.1
+
+## 16.6.0
+
+### Patch Changes
+
+- [#2559](https://github.com/commercetools/ui-kit/pull/2559) [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad) Thanks [@dependabot](https://github.com/apps/dependabot)! - Updated [semver](https://github.com/npm/node-semver) dependency.
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
+- Updated dependencies [[`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad), [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae)]:
+  - @commercetools-uikit/messages@16.6.0
+
+## 16.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.5.0
+
+## 16.4.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.4.1
+
+## 16.4.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.4.0
+
+## 16.3.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.3.0
+
+## 16.2.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.2.1
+
+## 16.2.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.2.0
+
+## 16.1.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.1.1
+
+## 16.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@16.1.0
+
+## 16.0.0
+
+### Major Changes
+
+- [#2475](https://github.com/commercetools/ui-kit/pull/2475) [`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c) Thanks [@emmenko](https://github.com/emmenko)! - Upgrade `react-intl` to `v6`.
+
+  # Migration
+
+  The peer dependency of `react-intl` should be updated to `v6`. No other migration steps are required.
+
+### Patch Changes
+
+- Updated dependencies [[`8e6c74559`](https://github.com/commercetools/ui-kit/commit/8e6c745597aa0fdf761037e10fa3251797c0e30c)]:
+  - @commercetools-uikit/messages@16.0.0
+
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.15.1
+
+## 15.15.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.15.0
+
+## 15.14.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.14.3
+
+## 15.14.2
+
+### Patch Changes
+
+- [#2467](https://github.com/commercetools/ui-kit/pull/2467) [`56ce7921d`](https://github.com/commercetools/ui-kit/commit/56ce7921db35ec34ba83f4b65b2c1e777e1b0b54) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Refactored the way we export Typescript definitions as there was an issue with generic types.
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.14.2
+
+## 15.14.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.14.1
+
+## 15.14.0
+
+### Patch Changes
+
+- Updated dependencies [[`4c2501b92`](https://github.com/commercetools/ui-kit/commit/4c2501b92dc41777b45bb5c99b4f15cc4e08f224)]:
+  - @commercetools-uikit/messages@15.14.0
+
+## 15.13.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.13.2
+
+## 15.13.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.13.1
+
+## 15.13.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.13.0
+
+## 15.12.0
+
+### Patch Changes
+
+- [#2419](https://github.com/commercetools/ui-kit/pull/2419) [`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies
+
+- Updated dependencies [[`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f)]:
+  - @commercetools-uikit/messages@15.12.0
+
+## 15.11.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.11.2
+
+## 15.11.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.11.1
+
+## 15.11.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.11.0
+
+## 15.10.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.10.0
+
+## 15.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.9.0
+
+## 15.8.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.8.0
+
+## 15.7.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.7.0
+
+## 15.6.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@15.6.0
+
 ## 15.5.1
 
 ### Patch Changes

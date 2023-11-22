@@ -6,7 +6,6 @@ import {
   type FocusEventHandler,
 } from 'react';
 import { useIntl } from 'react-intl';
-import { css } from '@emotion/react';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -27,14 +26,7 @@ import TranslationInput from './translation-input';
 import RequiredValueErrorMessage from './required-value-error-message';
 import { warning } from '@commercetools-uikit/utils';
 
-type TState = {
-  [key: string]: string;
-};
-
-type TExpandedTranslationsReducerState = {
-  state?: TState;
-};
-
+type TExpandedTranslationsReducerState = Record<string, boolean>;
 type TExpandedTranslationsReducerAction = {
   type: string;
   payload: string;
@@ -44,7 +36,7 @@ interface HTMLLocalizedTextAreaElement extends HTMLTextAreaElement {
   language: string;
 }
 
-type TLocalizedMultilineTextInputProps = {
+export type TLocalizedMultilineTextInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`
    */
@@ -199,20 +191,18 @@ const LocalizedMultilineTextInput = (
   const intl = useIntl();
 
   const initialExpandedTranslationsState = Object.keys(props.value).reduce(
-    (translations, locale) => {
-      return {
-        [locale]: Boolean(props.defaultExpandMultilineText),
-        ...translations,
-      };
-    },
-    {}
+    (translations, locale) => ({
+      ...translations,
+      [locale]: Boolean(props.defaultExpandMultilineText),
+    }),
+    {} as TExpandedTranslationsReducerState
   );
 
   const [expandedTranslationsState, expandedTranslationsDispatch] = useReducer<
     (
       prevState: TExpandedTranslationsReducerState,
       action: TExpandedTranslationsReducerAction
-    ) => TState
+    ) => TExpandedTranslationsReducerState
   >(expandedTranslationsReducer, initialExpandedTranslationsState);
 
   const defaultExpansionState =
@@ -325,23 +315,17 @@ const LocalizedMultilineTextInput = (
           })}
         </Stack>
         {shouldRenderLanguagesButton && (
-          <div
-            css={css`
-              align-self: flex-start;
-            `}
-          >
-            <LocalizedInputToggle
-              isOpen={areLanguagesOpened}
-              onClick={onLocalizedInputToggle}
-              isDisabled={
-                areLanguagesOpened &&
-                Boolean(
-                  hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
-                )
-              }
-              remainingLocalizations={languages.length - 1}
-            />
-          </div>
+          <LocalizedInputToggle
+            isOpen={areLanguagesOpened}
+            onClick={onLocalizedInputToggle}
+            isDisabled={
+              areLanguagesOpened &&
+              Boolean(
+                hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
+              )
+            }
+            remainingLocalizations={languages.length - 1}
+          />
         )}
       </Stack>
     </Constraints.Horizontal>

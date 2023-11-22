@@ -17,7 +17,7 @@ storiesOf('Components|Links', module)
     <Router>
       <Section>
         <Link
-          tone={select('Tone', ['primary', 'inverted'])}
+          tone={select('Tone', ['primary', 'inverted', 'secondary'])}
           to={text('to', '/foo/bar')}
           isExternal={boolean('isExternal', false)}
         >

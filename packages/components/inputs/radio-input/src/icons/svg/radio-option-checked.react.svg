@@ -1,7 +1,0 @@
-<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-    <g fill-rule="evenodd">
-        <circle stroke="#AFAFAF" fill="#FFF" cx="8" cy="8" r="7.5"/>
-        <circle data-style="radio-option__border" stroke="#AFAFAF" fill="#FFF" cx="8" cy="8" r="7.5"/>
-        <circle data-style="radio-option__content" fill="#20AD92" cx="8" cy="8" r="4"/>
-    </g>
-</svg>

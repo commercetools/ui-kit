@@ -1,18 +1,25 @@
 import type { MessageDescriptor } from 'react-intl';
 
-import { Children, ReactNode } from 'react';
+import {
+  Children,
+  type ReactNode,
+  type MouseEvent,
+  type KeyboardEvent,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
 import { css } from '@emotion/react';
+import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { designTokens } from '@commercetools-uikit/design-system';
 import {
   ErrorIcon,
   WarningIcon,
-  InfoIcon,
   CheckBoldIcon,
+  CloseBoldIcon,
+  InformationIcon,
 } from '@commercetools-uikit/icons';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 
-type TContentNotificationProps = {
+export type TContentNotificationProps = {
   /**
    * Determines the color/type of notification.
    */
@@ -26,6 +33,14 @@ type TContentNotificationProps = {
   intlMessage?: MessageDescriptor & {
     values?: Record<string, ReactNode>;
   };
+
+  /**
+   * When provided, a close button will be rendered and this callback will be
+   * called when it is clicked.
+   */
+  onRemove?: (
+    event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>
+  ) => void;
 
   /**
    * The content of the notification.
@@ -57,27 +72,12 @@ const warnIfMissingContent = (props: TContentNotificationProps) => {
   );
 };
 
-const getIconContainerBackgroundColour = (props: TContentNotificationProps) => {
-  switch (props.type) {
-    case 'error':
-      return designTokens.colorError;
-    case 'info':
-      return designTokens.colorInfo;
-    case 'warning':
-      return designTokens.colorWarning;
-    case 'success':
-      return designTokens.colorPrimary;
-    default:
-      return '';
-  }
-};
-
 const getIconByType = (props: TContentNotificationProps) => {
   switch (props.type) {
     case 'error':
       return ErrorIcon;
     case 'info':
-      return InfoIcon;
+      return InformationIcon;
     case 'warning':
       return WarningIcon;
     default:
@@ -85,40 +85,85 @@ const getIconByType = (props: TContentNotificationProps) => {
   }
 };
 
-const NotificationIcon = (props: TContentNotificationProps) => {
-  const Icon = getIconByType(props);
+const getIconColor = (props: TContentNotificationProps) => {
+  switch (props.type) {
+    case 'error':
+      return designTokens.fontColorForContentNotificationIconWhenError;
+    case 'info':
+      return designTokens.fontColorForContentNotificationIconWhenInfo;
+    case 'warning':
+      return designTokens.fontColorForContentNotificationIconWhenWarning;
+    case 'success':
+      return designTokens.fontColorForContentNotificationIconWhenSuccess;
+    default:
+      return '';
+  }
+};
 
+const NotificationTypeIcon = (props: TContentNotificationProps) => {
+  const Icon = getIconByType(props);
   return (
     <div
       css={css`
         display: flex;
         align-items: center;
-        border-radius: ${designTokens.borderRadius6} 0 0
-          ${designTokens.borderRadius6};
-        border-width: 0;
-        padding: ${designTokens.spacingS} ${designTokens.spacingM};
-        background-color: ${getIconContainerBackgroundColour(props)};
+        fill: ${getIconColor(props)};
         svg {
           margin: 0 -3px;
         }
       `}
     >
-      <Icon color="surface" />
+      <Icon />
     </div>
   );
 };
-NotificationIcon.displayName = 'NotificationIcon';
+NotificationTypeIcon.displayName = 'NotificationTypeIcon';
+
+const NotificationCloseIcon = (
+  props: Pick<TContentNotificationProps, 'onRemove'>
+) => (
+  <AccessibleButton
+    label="Remove"
+    onClick={props.onRemove}
+    css={css`
+      display: flex;
+      align-items: center;
+      fill: ${designTokens.colorSolid};
+      &:hover {
+        fill: ${designTokens.colorNeutral40};
+      }
+    `}
+  >
+    <CloseBoldIcon size="medium" />
+  </AccessibleButton>
+);
+NotificationCloseIcon.displayName = 'NotificationCloseIcon';
 
 const getContentBorderColor = (props: TContentNotificationProps) => {
   switch (props.type) {
     case 'error':
-      return designTokens.colorError;
+      return designTokens.borderColorForContentNotificationWhenError;
     case 'info':
-      return designTokens.colorInfo;
+      return designTokens.borderColorForContentNotificationWhenInfo;
     case 'warning':
-      return designTokens.colorWarning;
+      return designTokens.borderColorForContentNotificationWhenWarning;
     case 'success':
-      return designTokens.colorPrimary;
+      return designTokens.borderColorForContentNotificationWhenSuccess;
+    default:
+      return '';
+  }
+};
+
+const getContainerBackgroundColor = (props: TContentNotificationProps) => {
+  switch (props.type) {
+    case 'error':
+      return designTokens.backgroundColorForContentNotificationWhenError;
+    case 'info':
+      return designTokens.backgroundColorForContentNotificationWhenInfo;
+    case 'warning':
+      return designTokens.backgroundColorForContentNotificationWhenWarning;
+    case 'success':
+      return designTokens.backgroundColorForContentNotificationWhenSuccess;
     default:
       return '';
   }
@@ -136,24 +181,24 @@ const ContentNotification = (props: TContentNotificationProps) => {
         text-align: left;
         word-break: break-word;
         hyphens: auto;
-        font-size: ${designTokens.fontSizeDefault};
-        color: ${designTokens.colorSolid};
+        font-size: ${designTokens.fontSizeForContentNotification};
+        color: ${designTokens.fontColorForContentNotification};
         font-family: inherit;
+        background-color: ${getContainerBackgroundColor(props)};
+        border-radius: ${designTokens.borderRadiusForContentNotification};
+        border-width: 1px;
+        border-style: solid;
+        border-color: ${getContentBorderColor(props)};
+        padding: ${designTokens.paddingForContentNotification};
       `}
     >
-      <NotificationIcon type={props.type} />
+      <NotificationTypeIcon type={props.type} />
       <div
         css={css`
           flex-grow: 1;
           display: flex;
           align-items: center;
-          padding: ${designTokens.spacingS};
-          background: ${designTokens.colorSurface};
-          border-radius: 0 ${designTokens.borderRadius6}
-            ${designTokens.borderRadius6} 0;
-          border-width: 1px;
-          border-style: solid;
-          border-color: ${getContentBorderColor(props)};
+          padding: ${designTokens.paddingForContentNotificationMessage};
         `}
       >
         {props.intlMessage ? (
@@ -164,6 +209,7 @@ const ContentNotification = (props: TContentNotificationProps) => {
           props.children
         )}
       </div>
+      {props.onRemove && <NotificationCloseIcon onRemove={props.onRemove} />}
     </div>
   );
 };

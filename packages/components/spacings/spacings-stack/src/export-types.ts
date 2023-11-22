@@ -1,1 +1,1 @@
-export type { TProps as TStackProps } from './stack';
+export type { TStackProps, TAlignItem, TScale } from './stack';

@@ -14,12 +14,12 @@ const getTextareaStyles = (props: TMultiLineInputProps) => {
   const baseStyles = [
     getInputStyles(props),
     css`
-      padding: ${designTokens.spacingXs} ${designTokens.spacingS};
+      padding: ${designTokens.paddingForMultilineInput};
       line-height: ${sizeInputLineHeight};
       flex: auto;
       word-break: break-word;
       white-space: pre-wrap;
-      resize: vertical;
+      resize: none;
     `,
   ];
   return baseStyles;

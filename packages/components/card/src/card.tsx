@@ -4,7 +4,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Inset from '@commercetools-uikit/spacings-inset';
 
-type TCardProps = {
+export type TCardProps = {
   /**
    * Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.
    */
@@ -55,7 +55,9 @@ const Card = (props: TCardProps) => (
       // This is mostly useful in case custom styles are targeting this element.
       <div>{props.children}</div>
     ) : (
-      <Inset scale={props.insetScale}>{props.children}</Inset>
+      <Inset scale={props.insetScale} height="expanded">
+        {props.children}
+      </Inset>
     )}
   </div>
 );

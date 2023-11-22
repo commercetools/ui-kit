@@ -190,31 +190,49 @@ const toggleBlock = (editor: TEditor, format: Format) => {
   }
 };
 
+function nonNullable<T>(value: T): value is NonNullable<T> {
+  return value !== null && value !== undefined;
+}
+
 const validSlateStateAdapter = (
   value: Deserialized | Deserialized[]
 ): Descendant[] => {
-  if (SlateElement.isElement(value) || Text.isText(value)) {
-    return [value];
-  }
-  if (SlateElement.isElementList(value) || Text.isTextList(value)) {
-    return value;
+  const valueAsArray: Deserialized[] = Array.isArray(value) ? value : [value];
+  if (
+    SlateElement.isElementList(value) ||
+    Text.isTextList(value) ||
+    // in case of an array of mixed text and element nodes
+    (Array.isArray(value) &&
+      value.every((node) => SlateElement.isElement(node) || Text.isText(node)))
+  ) {
+    return valueAsArray
+      .map((node) =>
+        Text.isText(node) ? { type: 'text', children: [node] } : node
+      )
+      .filter(nonNullable);
   }
   return defaultSlateState;
 };
 
 const resetEditor = (editor: Editor, resetValue?: string) => {
-  const children = [...editor.children];
-  children.forEach((node) =>
-    editor.apply({ type: 'remove_node', path: [0], node })
-  );
+  Transforms.delete(editor, {
+    at: {
+      anchor: Editor.start(editor, []),
+      focus: Editor.end(editor, []),
+    },
+  });
+
+  // remove empty node
+  Transforms.removeNodes(editor, {
+    at: [0],
+  });
+
   const newState = resetValue
     ? validSlateStateAdapter(html.deserialize(resetValue))
     : defaultSlateState;
-  editor.apply({
-    type: 'insert_node',
-    path: [0],
-    node: newState[0],
-  });
+
+  // insert all new nodes
+  Transforms.insertNodes(editor, newState);
 };
 
 const focusEditor = (editor: Editor) => {

@@ -48,7 +48,7 @@ type TCustomEvent = {
   persist: () => void;
 };
 
-type TAsyncCreatableSelectFieldProps = {
+export type TAsyncCreatableSelectFieldProps = {
   // AsyncCreatableSelectField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
@@ -187,6 +187,8 @@ type TAsyncCreatableSelectFieldProps = {
   menuPortalTarget?: ReactSelectAsyncCreatableProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**

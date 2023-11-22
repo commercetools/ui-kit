@@ -13,7 +13,12 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { getStateStyles, getThemeStyles } from './secondary-button.styles';
+import {
+  getStateStyles,
+  getThemeStyles,
+  getSizeStyles,
+  getToneStyles,
+} from './secondary-button.styles';
 
 export type TSecondaryButtonProps<
   TStringOrComponent extends ElementType = 'button'
@@ -56,9 +61,18 @@ export type TSecondaryButtonProps<
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
+   * Indicates the size of the button.
+   */
+  size?: 'medium' | 'big';
+  /**
    * Indicates the color scheme of the button.
+   * @deprecated Use `tone` instead.
    */
   theme?: 'default' | 'info';
+  /**
+   * Indicates the tone of the button.
+   */
+  tone?: 'secondary' | 'info';
 } & /**
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
@@ -85,10 +99,12 @@ export const getIconColor = (
 
 const defaultProps: Pick<
   TSecondaryButtonProps,
-  'type' | 'theme' | 'isToggleButton'
+  'type' | 'theme' | 'size' | 'isToggleButton' | 'tone'
 > = {
   type: 'button',
   theme: 'default',
+  tone: 'secondary',
+  size: 'big',
   isToggleButton: false,
 };
 
@@ -114,7 +130,7 @@ export const SecondaryButton = <
     css`
       display: flex;
       align-items: center;
-      padding: 0 ${designTokens.spacingM};
+      padding: 0 ${designTokens.spacing30};
       height: ${designTokens.heightForButtonAsBig};
     `,
     css`
@@ -129,6 +145,8 @@ export const SecondaryButton = <
     `,
     getThemeStyles(props.theme),
     getStateStyles(props.isDisabled, isActive, props.theme),
+    getSizeStyles(props.size),
+    getToneStyles(props.tone, props.isDisabled),
   ];
 
   return (
@@ -147,7 +165,7 @@ export const SecondaryButton = <
         {Boolean(props.iconLeft) && (
           <span
             css={css`
-              margin: 0 ${designTokens.spacingXs} 0 0;
+              margin: 0 ${designTokens.spacing10} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -156,6 +174,7 @@ export const SecondaryButton = <
             {props.iconLeft &&
               cloneElement(props.iconLeft, {
                 color: getIconColor(props),
+                size: props.size === 'big' ? 'big' : 'medium',
               })}
           </span>
         )}

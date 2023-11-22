@@ -6,7 +6,7 @@ describe('Toggle', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Default');
+    await page.waitForSelector('text/Default');
     await percySnapshot(page, 'Toggle');
   });
 });

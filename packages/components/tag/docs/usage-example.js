@@ -1,4 +1,4 @@
-import Tag from '@commercetools-uikit/tag';
+import { Tag } from '@commercetools-uikit/tag';
 
 const Example = () => (
   <Tag

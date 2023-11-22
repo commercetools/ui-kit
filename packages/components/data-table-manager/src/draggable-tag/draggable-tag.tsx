@@ -1,21 +1,25 @@
 import type { ReactNode } from 'react';
+import styled from '@emotion/styled';
 import { Draggable } from 'react-beautiful-dnd';
-import { DragIcon } from '@commercetools-uikit/icons';
-import Spacings from '@commercetools-uikit/spacings';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Tag from '@commercetools-uikit/tag';
 import DraggingContainer from './draggable-tag.styles';
 
-type TColumnData = {
+export type TColumnData = {
   key: string;
   label: ReactNode;
 };
 
-type TDraggableTagProps = {
+export type TDraggableTagProps = {
   column: TColumnData;
   index: number;
   isDisabled?: boolean;
   onRemove?: (index: number) => void;
 };
+
+const DraggableTagWrapper = styled.div`
+  padding: ${designTokens.paddingForTableManagerDraggableTag};
+`;
 
 const DraggableTag = (props: TDraggableTagProps) => {
   const handleRemoveColumn = () => props.onRemove?.(props.index);
@@ -28,7 +32,7 @@ const DraggableTag = (props: TDraggableTagProps) => {
     >
       {(provided) => {
         return (
-          <Spacings.Inset scale="xs">
+          <DraggableTagWrapper>
             <DraggingContainer
               ref={provided.innerRef}
               {...provided.draggableProps}
@@ -37,14 +41,12 @@ const DraggableTag = (props: TDraggableTagProps) => {
               <Tag
                 onRemove={props.onRemove ? handleRemoveColumn : undefined}
                 isDisabled={props.isDisabled}
+                isDraggable
               >
-                <Spacings.Inline alignItems="center">
-                  <DragIcon data-testid="drag-icon" size="medium" />
-                  {props.column.label}
-                </Spacings.Inline>
+                {props.column.label}
               </Tag>
             </DraggingContainer>
-          </Spacings.Inset>
+          </DraggableTagWrapper>
         );
       }}
     </Draggable>

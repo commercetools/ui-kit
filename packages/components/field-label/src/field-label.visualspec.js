@@ -6,7 +6,7 @@ describe('FieldLabel', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Hello');
+    await page.waitForSelector('text/Hello');
     await percySnapshot(page, 'FieldLabel');
   });
 });

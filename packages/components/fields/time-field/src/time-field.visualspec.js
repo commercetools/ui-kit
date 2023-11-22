@@ -6,7 +6,7 @@ describe('TimeField', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Release Time');
+    await page.waitForSelector('text/Release Time');
     await percySnapshot(page, 'TimeField');
   });
 });

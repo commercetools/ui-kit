@@ -12,7 +12,7 @@ import { keyframes, ClassNames } from '@emotion/react';
 import isNil from 'lodash/isNil';
 import { useToggleState, usePrevious } from '@commercetools-uikit/hooks';
 
-type TContainerStyles = {
+export type TContainerStyles = {
   height?: string | number;
   overflow?: string;
   visibility?: string;
@@ -20,7 +20,7 @@ type TContainerStyles = {
   animation?: string;
 } & CSSProperties;
 
-type TRenderFunctionOptions = {
+export type TRenderFunctionOptions = {
   isOpen: boolean;
   containerStyles: TContainerStyles;
   toggle: () => void;
@@ -35,7 +35,7 @@ export type TCollapsibleMotionProps = {
    * Siganture: `({ isOpen, containerStyles, toggle, registerContentNode }) => React.node`
    */
   children: (options: TRenderFunctionOptions) => ReactNode;
-  /**
+  /**ReactNode
    * Determines the state of the toggle `isOpen`. Setting this prop will make the component **controlled**
    */
   isClosed?: boolean;

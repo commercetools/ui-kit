@@ -2,4 +2,3 @@
 // This file is created with 'yarn generate-icons'.
 export { default as CheckedIcon } from './CheckedReact';
 export { default as IndeterminateIcon } from './IndeterminateReact';
-export { default as UncheckedIcon } from './UncheckedReact';

@@ -5,29 +5,22 @@ import {
   type ReactNode,
   isValidElement,
 } from 'react';
-import styled from '@emotion/styled';
-import { designTokens } from '@commercetools-uikit/design-system';
 import {
   filterDataAttributes,
   filterInvalidAttributes,
   warning,
 } from '@commercetools-uikit/utils';
 import { accessibleHiddenInputStyles } from '@commercetools-uikit/input-utils';
-import { RadioOptionCheckedIcon, RadioOptionUncheckedIcon } from './icons';
 import {
-  getLabelStyles,
-  getContainerStyles,
   LabelTextWrapper,
-  RadioOptionsWrapper,
+  RadioInputWrapper,
   AdditionalTextWrapper,
+  RadioOptionKnob,
+  RadioOptionBorder,
+  RadioOptionLabel,
+  RadioOptionContainer,
 } from './radio-option.styles';
 import SpacingsInset from '@commercetools-uikit/spacings-inset';
-
-const Input = styled.input`
-  &:focus + div > svg *[data-style='radio-option__border'] {
-    stroke: ${designTokens.borderColorForInputWhenFocused};
-  }
-`;
 
 type TComponents = {
   wrapper?: (children: ReactElement) => ReactElement;
@@ -52,12 +45,22 @@ export type TOptionProps = {
   onBlur?: FocusEventHandler<HTMLLabelElement>;
 
   // This prop forces Radio.Option to be rendered in a hovered state (though isDisabled takes
-  // precedence over that). We need that to address a use-case when hovering is comming
+  // precedence over that). We need that to address a use-case when hovering is coming
   // from somewhere up the hierarchy. There is no need to touch this prop in case
   // all you need is a general highlighting on hover of Radio.Option body, which is solved
   // by a corresponding :hover selector in the syles of this component.
   isHovered?: boolean;
 };
+
+export type TStylesProps = Pick<
+  TOptionProps,
+  | 'isDisabled'
+  | 'hasError'
+  | 'hasWarning'
+  | 'isHovered'
+  | 'isReadOnly'
+  | 'isChecked'
+>;
 
 const Option = (props: TOptionProps) => {
   const labelProps = props.id ? { htmlFor: props.id } : {};
@@ -84,17 +87,26 @@ const Option = (props: TOptionProps) => {
     );
   }
 
+  const stylesProps: TStylesProps = {
+    isDisabled: props.isDisabled,
+    hasError: props.hasError,
+    hasWarning: props.hasWarning,
+    isHovered: props.isHovered,
+    isReadOnly: props.isReadOnly,
+    isChecked: props.isChecked,
+  };
+
   return (
-    <label
-      css={getLabelStyles(props)}
+    <RadioOptionLabel
       role="radio"
       aria-checked={props.isChecked}
       onFocus={props.onFocus}
       onBlur={props.onBlur}
+      {...stylesProps}
       {...filterInvalidAttributes(labelProps)}
     >
-      <RadioOptionsWrapper>
-        <Input
+      <RadioInputWrapper>
+        <input
           css={accessibleHiddenInputStyles}
           id={props.id}
           name={props.name}
@@ -108,16 +120,13 @@ const Option = (props: TOptionProps) => {
           checked={props.isChecked}
           type="radio"
           readOnly={props.isReadOnly}
-          aria-readonly={props.isReadOnly}
           {...filterDataAttributes(props)}
         />
-        <div css={getContainerStyles(props)}>
-          {props.isChecked ? (
-            <RadioOptionCheckedIcon size="medium" />
-          ) : (
-            <RadioOptionUncheckedIcon size="medium" />
-          )}
-        </div>
+        <RadioOptionContainer {...stylesProps}>
+          <RadioOptionBorder {...stylesProps}>
+            {props.isChecked ? <RadioOptionKnob {...stylesProps} /> : null}
+          </RadioOptionBorder>
+        </RadioOptionContainer>
         <LabelTextWrapper isDisabled={props.isDisabled}>
           {props.children}
         </LabelTextWrapper>
@@ -126,8 +135,8 @@ const Option = (props: TOptionProps) => {
             <SpacingsInset scale="xs">{props.additionalContent}</SpacingsInset>
           </AdditionalTextWrapper>
         )}
-      </RadioOptionsWrapper>
-    </label>
+      </RadioInputWrapper>
+    </RadioOptionLabel>
   );
 };
 Option.displayName = 'RadioOption';

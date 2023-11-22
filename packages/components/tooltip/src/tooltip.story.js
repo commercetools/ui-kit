@@ -68,7 +68,8 @@ storiesOf('Components|Tooltips', module)
       'top'
     );
 
-    const closeAfter = number('close after', 1000);
+    const showAfter = number('show after', 300);
+    const closeAfter = number('close after', 200);
 
     const fullWidth = boolean('full width wrapper', false);
     const customBodyWrapper = boolean('custom body wrapper', false);
@@ -84,6 +85,7 @@ storiesOf('Components|Tooltips', module)
           <Tooltip
             off={boolean('off', false)}
             title={label}
+            showAfter={showAfter}
             closeAfter={closeAfter}
             placement={placement}
             horizontalConstraint={constraint}

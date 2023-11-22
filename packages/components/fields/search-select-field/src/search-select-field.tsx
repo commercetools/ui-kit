@@ -42,7 +42,7 @@ const hasErrors = (errors?: TFieldErrors) =>
 const sequentialId = createSequentialId('search-select-field-');
 const sequentialErrorsId = createSequentialId('search-select-field-error-')();
 
-type TSearchSelectFieldProps = {
+export type TSearchSelectFieldProps = {
   /**
    *Horizontal size limit of the input fields.
    */
@@ -105,6 +105,12 @@ type TSearchSelectFieldProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   components?: ReactSelectAsyncProps['components'];
+  /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectAsyncProps['controlShouldRenderValue'];
   /**
    * Sets the tabIndex attribute on the input
    * <br>
@@ -179,6 +185,8 @@ type TSearchSelectFieldProps = {
   menuPortalTarget?: ReactSelectAsyncProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
@@ -294,7 +302,16 @@ type TSearchSelectFieldProps = {
    * Might be used to display additional information about the content of the field (E.g verified email)
    */
   badge?: ReactNode;
+  /**
+   * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
+   */
+  iconLeft?: ReactNode;
 };
+
+const defaultProps: Pick<TSearchSelectFieldProps, 'controlShouldRenderValue'> =
+  {
+    controlShouldRenderValue: true,
+  };
 
 const SearchSelectField = (props: TSearchSelectFieldProps) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
@@ -379,6 +396,8 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           cacheOptions={props.cacheOptions}
           showOptionGroupDivider={props.showOptionGroupDivider}
           optionType={props.optionType}
+          controlShouldRenderValue={props.controlShouldRenderValue}
+          iconLeft={props.iconLeft}
         />
         <FieldErrors
           id={sequentialErrorsId}
@@ -390,6 +409,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
     </Constraints.Horizontal>
   );
 };
+SearchSelectField.defaultProps = defaultProps;
 SearchSelectField.displayName = 'SearchSelectField';
 /**
  * Use this function to convert the Formik `errors` object type to

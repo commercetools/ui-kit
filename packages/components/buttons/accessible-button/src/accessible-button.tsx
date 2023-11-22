@@ -25,7 +25,7 @@ const getIsEnterOrSpace = (event: KeyboardEvent<HTMLButtonElement>): boolean =>
 // This needs to be a styled component to be able to use the `as` prop.
 const Button = styled.button``;
 
-type TAccessibleButtonProps = {
+export type TAccessibleButtonProps = {
   /**
    * By default the component renders a `button` element. You can pass an optional `React.ElemenType`
    * in case this needs to be rendered as a different element.

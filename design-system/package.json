@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/design-system",
   "description": "Core package of the commercetools design system.",
-  "version": "15.5.1",
+  "version": "16.11.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -23,13 +23,15 @@
     "build:tokens:watch": "nodemon -e yaml --quiet --watch materials/internals --exec 'yarn build:tokens'"
   },
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
-    "@babel/runtime-corejs3": "^7.19.1",
+    "@babel/runtime": "^7.20.13",
+    "@babel/runtime-corejs3": "^7.20.13",
+    "@commercetools-uikit/hooks": "16.11.0",
+    "@emotion/react": "^11.10.5",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
     "react": "17.0.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^3.0.0"
   }
 }

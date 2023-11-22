@@ -25,7 +25,9 @@ export interface TRow {
   id: string;
 }
 
-const getColumnsLayoutInfo = (columns: TColumn[]) =>
+const getColumnsLayoutInfo = <Row extends TRow = TRow>(
+  columns: TColumn<Row>[]
+) =>
   columns.reduce<Pick<TColumn, 'key' | 'width'>[]>(
     (acc, currentValue) => [
       ...acc,
@@ -55,7 +57,7 @@ const defaultProps: Pick<
   | 'itemRenderer'
 > = {
   columns: [],
-  isCondensed: false,
+  isCondensed: true,
   wrapHeaderLabels: true,
   verticalCellAlignment: 'top',
   horizontalCellAlignment: 'left',
@@ -154,7 +156,7 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    * The list of columns to be rendered.
    * Each column can be customized (see properties below).
    */
-  columns: TColumn[];
+  columns: TColumn<Row>[];
   /**
    * Element to render within the `tfoot` (footer) element of the table.
    */
@@ -166,7 +168,7 @@ export type TDataTableProps<Row extends TRow = TRow> = {
   maxWidth?: number | string;
   /**
    * The max height (a number of pixels or a css value string with units) for which the table
-   * is allowed to grow. If unset, the table will grow vertically to fill its parent.
+   * is allowed to grow. If unset, the table will grow vertically to fill its parent and we are able to have a sticky header.
    */
   maxHeight?: number | string;
   /**
@@ -195,6 +197,7 @@ export type TDataTableProps<Row extends TRow = TRow> = {
   disableSelfContainment?: boolean;
   /**
    * Set this to `true` to prevent the header from being sticky.
+   * The header can be sticky only if the table does not have a `maxHeight` set.
    */
   disableHeaderStickiness?: boolean;
   /**
@@ -273,13 +276,14 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   return (
     <TableContainer
       maxWidth={props.maxWidth}
+      maxHeight={props.maxHeight}
       isBeingResized={columnResizingReducer.getIsAnyColumnBeingResized()}
       disableSelfContainment={!!props.disableSelfContainment}
     >
       <TableGrid
         ref={tableRef as LegacyRef<HTMLTableElement>}
         {...filterDataAttributes(props)}
-        columns={props.columns}
+        columns={props.columns as TColumn<TRow>[]}
         maxHeight={props.maxHeight}
         disableSelfContainment={!!props.disableSelfContainment}
         resizedTotalWidth={resizedTotalWidth}

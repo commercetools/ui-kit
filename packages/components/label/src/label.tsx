@@ -5,8 +5,9 @@ import { FormattedMessage } from 'react-intl';
 import { warning } from '@commercetools-uikit/utils';
 import Text from '@commercetools-uikit/text';
 import RequiredIndicator from './required-indicator';
+import { css } from '@emotion/react';
 
-type TLabelProps = {
+export type TLabelProps = {
   /**
    * The `id` HTML attribute, used to reference non-form elements with the related attribute `aria-labelledby`.
    * <br/>
@@ -34,7 +35,11 @@ type TLabelProps = {
    * ````
    */
   htmlFor?: string;
-  // Indicates if the label title should be in bold text
+  // Indicates the weight (or boldness) of the font.
+  fontWeight?: 'medium' | 'bold';
+  /**
+   * @deprecated: Use the new `fontWeight` prop.
+   */
   isBold?: boolean;
   // Indicates if the labeled field is required in a form
   isRequiredIndicatorVisible?: boolean;
@@ -75,15 +80,29 @@ const Label = (props: TLabelProps) => {
   );
 
   return (
-    <label id={props.id} htmlFor={props.htmlFor}>
-      <Text.Body tone={props.tone} isBold={props.isBold}>
+    <label
+      css={css`
+        > div {
+          display: flex;
+        }
+      `}
+      id={props.id}
+      htmlFor={props.htmlFor}
+    >
+      <Text.Detail
+        tone={props.tone}
+        // TODO: remove passing `isBold` prop here once deprecated
+        isBold={props.isBold}
+        // insure that fontWeight defaults to 'medium' even if user passes 'regular'
+        fontWeight={props.fontWeight === 'bold' ? 'bold' : 'medium'}
+      >
         {props.intlMessage ? (
           <FormattedMessage {...props.intlMessage} />
         ) : (
           props.children
         )}
         {props.isRequiredIndicatorVisible && <RequiredIndicator />}
-      </Text.Body>
+      </Text.Detail>
     </label>
   );
 };

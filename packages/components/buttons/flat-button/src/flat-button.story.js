@@ -20,7 +20,11 @@ storiesOf('Components|Buttons', module)
     <Section>
       <FlatButton
         type={select('type', ['submit', 'reset', 'button'], 'button')}
-        tone={select('tone', ['primary', 'secondary', 'inverted'], 'primary')}
+        tone={select(
+          'tone',
+          ['primary', 'secondary', 'critical', 'inverted'],
+          'primary'
+        )}
         label={text('label', 'Accessibility text')}
         icon={createElement(icons[select('icon', iconNames, iconNames[0])])}
         iconPosition={select('icon position', ['left', 'right'], 'left')}

@@ -4,6 +4,7 @@ import {
   useRef,
   type FocusEventHandler,
   type ChangeEventHandler,
+  type ChangeEvent,
 } from 'react';
 import { useIntl } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
@@ -143,6 +144,7 @@ const TimeInput = (props: TTimeInputProps) => {
   const id = useFieldId(props.id, sequentialId);
   const intl = useIntl();
   const element = useRef<HTMLInputElement>(null);
+  const { onChange } = props;
 
   if (!props.isReadOnly) {
     warning(
@@ -166,7 +168,8 @@ const TimeInput = (props: TTimeInputProps) => {
     if (element.current) {
       dispatchReactChangeEvent(element.current, '');
     }
-  }, []);
+    onChange?.({ target: { value: '' } } as ChangeEvent<HTMLInputElement>);
+  }, [onChange]);
 
   // if locale has changed trigger a new change event
   useEffect(() => {
@@ -185,13 +188,13 @@ const TimeInput = (props: TTimeInputProps) => {
         name={props.name}
         autoComplete={props.autoComplete}
         value={props.value}
-        onChange={props.onChange}
+        onChange={onChange}
         onBlur={handleBlur}
         onFocus={props.onFocus}
         isAutofocussed={props.isAutofocussed}
         isDisabled={props.isDisabled}
-        hasError={props.hasError}
         isReadOnly={props.isReadOnly}
+        hasError={props.hasError}
         onClear={handleClear}
         placeholder={
           typeof props.placeholder === 'string'

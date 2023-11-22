@@ -34,7 +34,7 @@ type TCustomEvent = {
   persist?: () => void;
 };
 
-type TLocalizedMoneyInputProps = {
+export type TLocalizedMoneyInputProps = {
   /**
    * Used as HTML id property.
    */
@@ -125,6 +125,10 @@ type TLocalizedMoneyInputProps = {
    * A map of warnings.
    */
   warnings?: Record<string, ReactNode>;
+  /**
+   * Shows high precision badge in case current value uses high precision.
+   */
+  hasHighPrecisionBadge?: boolean;
 };
 
 type TLocalizedInputProps = {
@@ -186,6 +190,10 @@ type TLocalizedInputProps = {
    * HTML node to display warning
    */
   warning?: ReactNode;
+  /**
+   * Shows high precision badge in case current value uses high precision.
+   */
+  hasHighPrecisionBadge?: boolean;
 };
 
 const sequentialId = createSequentialId('localized-money-input-');
@@ -242,6 +250,7 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
           placeholder={props.placeholder}
           hasError={props.hasError}
           hasWarning={props.hasWarning}
+          hasHighPrecisionBadge={props.hasHighPrecisionBadge}
           {...filterDataAttributes(props)}
         />
       </div>
@@ -338,6 +347,7 @@ const LocalizedMoneyInput = (props: TLocalizedMoneyInputProps) => {
                 warning={props.warnings && props.warnings[currency]}
                 error={props.errors && props.errors[currency]}
                 {...createLocalizedDataAttributes(props, currency)}
+                hasHighPrecisionBadge={props.hasHighPrecisionBadge}
               />
             );
           })}

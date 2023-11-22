@@ -32,8 +32,8 @@ type CustomText = BaseText & {
   subscript?: string;
   strikethrough?: string;
 };
-export type Format = typeof BLOCK_TAGS[keyof typeof BLOCK_TAGS] &
-  typeof MARK_TAGS[keyof typeof MARK_TAGS];
+export type Format = (typeof BLOCK_TAGS)[keyof typeof BLOCK_TAGS] &
+  (typeof MARK_TAGS)[keyof typeof MARK_TAGS];
 
 // Slate's way of providing custom type annotations comes down to extending `CustomTypes` interface
 // more: https://docs.slatejs.org/concepts/12-typescript
@@ -149,6 +149,8 @@ const TEXT_TAGS = {
   EM: () => ({ italic: true }),
   I: () => ({ italic: true }),
   S: () => ({ strikethrough: true }),
+  SUP: () => ({ superscript: true }),
+  SUB: () => ({ subscript: true }),
   STRONG: () => ({ bold: true }),
   U: () => ({ underline: true }),
 };
@@ -276,13 +278,12 @@ const deserializeElement = (
 
   if (TEXT_TAGS[nodeName as keyof typeof TEXT_TAGS]) {
     const attrs = TEXT_TAGS[nodeName as keyof typeof TEXT_TAGS]();
-    return children.map((child) => jsx('text', attrs, child));
+    return children.map((child) =>
+      jsx('text', attrs, Text.isText(child) ? child : 'Invalid markup')
+    );
   }
 
-  // each non-empty text node must be wrapped with a paragraph
-  return children.map((child) =>
-    Text.isText(child) && child.text ? wrapWithParagraph(child) : child
-  );
+  return children;
 };
 const deserialize = (html: Html) => {
   const document = new DOMParser().parseFromString(

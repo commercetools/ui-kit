@@ -8,6 +8,7 @@ import Button from './rich-text-body-button';
 import {
   getButtonStyles,
   DropdownContainer,
+  DropdownItemLabelWrapper,
   DropdownItem as StyledDropdownItem,
 } from './dropdown.styles';
 
@@ -15,7 +16,7 @@ export type TDropdownLabel = {
   children: ReactNode;
 };
 
-type TDropdownProps = {
+export type TDropdownProps = {
   label: string;
   isMulti: boolean;
   isDisabled?: boolean;
@@ -108,7 +109,9 @@ const Dropdown = (props: TDropdownProps) => {
                         value={item.value}
                         isSelected={props.getIsItemSelected(item)}
                       >
-                        {item.label}
+                        <DropdownItemLabelWrapper>
+                          {item.label}
+                        </DropdownItemLabelWrapper>
                       </DropdownItem>
                     );
                   })}

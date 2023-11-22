@@ -171,7 +171,7 @@ const DataTableManager = (props: TDataTableManagerProps) => {
         onSettingsChange={props.onSettingsChange}
         columnManager={props.columnManager}
         displaySettings={props.displaySettings}
-        managerTheme={props.managerTheme}
+        managerTheme="light"
       />
       {cloneElement(props.children, {
         columns,

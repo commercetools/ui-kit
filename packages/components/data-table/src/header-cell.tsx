@@ -1,13 +1,20 @@
-import { useContext, useRef, ReactNode, MouseEvent, RefObject } from 'react';
 import {
-  AngleUpIcon,
-  AngleDownIcon,
+  useContext,
+  useRef,
+  type ReactNode,
+  type MouseEvent,
+  type RefObject,
+} from 'react';
+import {
   AngleUpDownIcon,
+  ArrowDownIcon,
+  ArrowUpIcon,
 } from '@commercetools-uikit/icons';
 import {
   BaseHeaderCell,
   HeaderCellInner,
   HeaderIconWrapper,
+  HeaderLabelTextWrapper,
   HeaderLabelWrapper,
 } from './header-cell.styles';
 import Resizer from './column-resizer';
@@ -123,13 +130,13 @@ const defaultProps: Pick<
 
 const HeaderCell = (props: THeaderCell) => {
   let sortableHeaderProps = {};
-  let SortingIcon!: typeof AngleDownIcon;
+  let SortingIcon!: typeof ArrowDownIcon;
 
   if (props.isSortable) {
     const isActive = props.sortedBy === props.columnKey;
     const nextSortDirection =
       !isActive || props.sortDirection === 'desc' ? 'asc' : 'desc';
-    SortingIcon = props.sortDirection === 'desc' ? AngleDownIcon : AngleUpIcon;
+    SortingIcon = props.sortDirection === 'desc' ? ArrowDownIcon : ArrowUpIcon;
 
     sortableHeaderProps = {
       as: 'button',
@@ -161,7 +168,8 @@ const HeaderCell = (props: THeaderCell) => {
         {...sortableHeaderProps}
       >
         <HeaderLabelWrapper>
-          {props.children}
+          <HeaderLabelTextWrapper>{props.children}</HeaderLabelTextWrapper>
+
           {props.iconComponent && (
             <HeaderIconWrapper>{props.iconComponent}</HeaderIconWrapper>
           )}

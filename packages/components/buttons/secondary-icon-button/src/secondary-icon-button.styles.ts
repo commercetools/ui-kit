@@ -1,6 +1,7 @@
+import type { ElementType } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import type { TSecondaryButtonProps } from './secondary-icon-button';
+import type { TSecondaryButtonIconProps } from './secondary-icon-button';
 
 const getDisabledStyle = () => {
   /* By using the css 'disabled' selector directly, we don't need additional logic to check the isDisabled prop */
@@ -11,7 +12,7 @@ const getDisabledStyle = () => {
   `;
 };
 
-const getColorStyle = (props: Pick<TSecondaryButtonProps, 'color'>) => {
+const getColorStyle = (props: Pick<TSecondaryButtonIconProps, 'color'>) => {
   switch (props.color) {
     case 'solid':
       return css`
@@ -26,11 +27,11 @@ const getColorStyle = (props: Pick<TSecondaryButtonProps, 'color'>) => {
     case 'primary':
       return css`
         & svg {
-          fill: ${designTokens.colorPrimary};
+          fill: ${designTokens.fontColorForSecondaryIconButtonAsPrimary};
         }
         &:focus,
         &:hover svg {
-          fill: ${designTokens.colorPrimary25};
+          fill: ${designTokens.fontColorForSecondaryIconButtonAsPrimaryWhenHovered};
         }
       `;
     default:
@@ -42,7 +43,9 @@ const getColorStyle = (props: Pick<TSecondaryButtonProps, 'color'>) => {
   }
 };
 
-const getBaseStyles = (props: TSecondaryButtonProps) => {
+const getBaseStyles = <TStringOrComponent extends ElementType = 'button'>(
+  props: TSecondaryButtonIconProps<TStringOrComponent>
+) => {
   return [
     css`
       display: inline-flex;

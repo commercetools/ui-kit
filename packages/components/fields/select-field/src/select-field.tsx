@@ -20,15 +20,15 @@ import FieldErrors from '@commercetools-uikit/field-errors';
 import type { Props as ReactSelectProps } from 'react-select';
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
-type TOption = {
+export type TOption = {
   value: string;
   label?: ReactNode;
 };
-type TOptionObject = {
+export type TOptionObject = {
   options: TOption[];
 };
-type TOptions = TOption[] | TOptionObject[];
-type TCustomEvent = {
+export type TOptions = TOption[] | TOptionObject[];
+export type TCustomEvent = {
   target: {
     id?: ReactSelectProps['inputId'];
     name?: ReactSelectProps['name'];
@@ -42,7 +42,7 @@ type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
 };
 
-type TSelectFieldProps = {
+export type TSelectFieldProps = {
   // SelectField
   /**
    * Used as HTML id property. An id is generated automatically when not provided.
@@ -88,6 +88,11 @@ type TSelectFieldProps = {
 
   // SelectInput
   /**
+   * Indicates the appearance of the input.
+   * Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.
+   */
+  appearance?: 'default' | 'quiet';
+  /**
    * Aria label (for assistive tech)
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
@@ -113,6 +118,12 @@ type TSelectFieldProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   components?: ReactSelectProps['components'];
+  /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectProps['controlShouldRenderValue'];
   /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br/>
@@ -161,6 +172,8 @@ type TSelectFieldProps = {
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
@@ -188,7 +201,7 @@ type TSelectFieldProps = {
    * <br/>
    * The value will be the selected option, or an array of options in case isMulti is true.
    */
-  onChange?: (event?: TCustomEvent) => void;
+  onChange?: (event: TCustomEvent) => void;
   /**
    * Handle focus events on the control
    * <br/>
@@ -338,6 +351,7 @@ export default class SelectField extends Component<TSelectFieldProps> {
         `SelectField: "touched" is expected to be an array of booleans when "isMulti" is true, instead got ${this.props.touched}.`
       );
     }
+
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
         <Spacings.Stack scale="xs">
@@ -355,6 +369,7 @@ export default class SelectField extends Component<TSelectFieldProps> {
             horizontalConstraint="scale"
             hasError={hasError}
             hasWarning={this.props.hasWarning}
+            appearance={this.props.appearance}
             aria-label={this.props['aria-label']}
             aria-labelledby={this.props['aria-labelledby']}
             isAutofocussed={this.props.isAutofocussed}
@@ -388,6 +403,7 @@ export default class SelectField extends Component<TSelectFieldProps> {
             iconLeft={this.props.iconLeft}
             inputValue={this.props.inputValue}
             {...filterDataAttributes(this.props)}
+            controlShouldRenderValue={this.props.controlShouldRenderValue}
             /* ARIA */
             aria-invalid={hasError}
             aria-errormessage={sequentialErrorsId}

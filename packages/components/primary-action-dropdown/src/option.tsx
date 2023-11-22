@@ -32,7 +32,7 @@ const Option = (props: TOption) => (
         display: block;
         text-align: left;
         width: 100%;
-        padding: ${designTokens.spacingS};
+        padding: ${designTokens.spacing20};
         background-color: ${designTokens.colorSurface};
         &:first-of-type {
           border-radius: ${designTokens.borderRadius6}

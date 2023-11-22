@@ -1,3 +1,1 @@
-import type { TTooltipProps as TooltipProps } from './tooltip';
-
-export type TTooltipProps = TooltipProps;
+export type { TTooltipProps, TComponents } from './tooltip';

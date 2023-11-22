@@ -15,7 +15,7 @@ import DisplaySettingsManager, {
 import ColumnSettingsManager from '../column-settings-manager';
 import messages from './messages';
 
-type SelectChangeEvent = {
+export type TSelectChangeEvent = {
   target: {
     name?: string;
     value?: string | string[] | null;
@@ -42,7 +42,7 @@ export type TDisplaySettingsProps = {
    * Set this to `true` to reduce the paddings of all cells, allowing the table to display
    * more data in less space.
    *
-   * @@defaultValue@@: false
+   * @@defaultValue@@: true
    */
   isCondensed?: boolean;
 
@@ -198,7 +198,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
     formatMessage: intl.formatMessage,
   });
 
-  const handleDropdownChange = (event: SelectChangeEvent) =>
+  const handleDropdownChange = (event: TSelectChangeEvent) =>
     setOpenedPanelId(
       Array.isArray(event.target.value)
         ? event.target.value[0]
@@ -219,7 +219,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   const handleSettingsPanelChange = () => setOpenedPanelId(null);
 
   return (
-    <Spacings.Stack>
+    <Spacings.Stack scale="xs">
       <Spacings.Inline justifyContent="space-between" alignItems="center">
         <TopBarContainer>{props.topBar}</TopBarContainer>
         {dropdownOptions.length > 0 && (
@@ -237,7 +237,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
               placeholder={intl.formatMessage(messages.placeholder)}
               onChange={handleDropdownChange}
               options={dropdownOptions}
-              iconLeft={<TableIcon />}
+              iconLeft={<TableIcon color="neutral60" />}
             />
           </SelectContainer>
         )}
@@ -261,7 +261,6 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
           managerTheme={props.managerTheme}
         />
       )}
-
       {openedPanelId === COLUMN_MANAGER && (
         <ColumnSettingsManager
           {...(props.columnManager || {})}

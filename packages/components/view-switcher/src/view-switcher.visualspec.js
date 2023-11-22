@@ -6,7 +6,7 @@ describe('ViewSwitcher', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch(/View 1/);
+    await page.waitForSelector('text/View 1');
     await percySnapshot(page, 'ViewSwitcher');
   });
 });

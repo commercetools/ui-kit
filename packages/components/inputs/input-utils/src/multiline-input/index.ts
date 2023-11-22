@@ -2,3 +2,4 @@ import type { TMultiLineInputProps as MultiLineInputProps } from './multiline-in
 
 export { default } from './multiline-input';
 export type TMultiLineInputProps = MultiLineInputProps;
+export * from './export-types';

@@ -150,6 +150,75 @@ const DefaultRoute = () => (
         iconLeft={<WorldIcon />}
       />
     </Spec>
+    <Spec label="Quiet appearance">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={"auto"}
+        appearance='quiet'
+      />
+    </Spec>
+    <Spec label="Quiet disabled">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={"auto"}
+        appearance='quiet'
+        isDisabled={true}
+      />
+    </Spec>
+    <Spec label="Quiet read-only">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={"auto"}
+        appearance='quiet'
+        isReadOnly={true}
+      />
+    </Spec>
+    <Spec label="Quiet error">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={"auto"}
+        appearance='quiet'
+        hasError={true}
+      />
+    </Spec>
+    <Spec label="Quiet warning">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={"auto"}
+        appearance='quiet'
+        hasWarning={true}
+      />
+    </Spec>
+    <Spec label="Quiet with multiple values selected">
+      <SelectInput
+        value={['one', 'two']}
+        onChange={() => {}}
+        options={options}
+        isMulti={true}
+        horizontalConstraint={"auto"}
+        appearance='quiet'
+      />
+    </Spec>
+    <Spec label={'Quiet with iconLeft'}>
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={"auto"}
+        iconLeft={<WorldIcon />}
+        appearance='quiet'
+      />
+    </Spec>
   </Suite>
 );
 

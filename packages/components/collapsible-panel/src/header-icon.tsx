@@ -2,15 +2,13 @@ import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { AngleDownIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 
-const sizeIconContainer = '22px';
-const sizeIconContainerSmall = '14px';
-
 const getArrowColor = ({
   tone,
   isDisabled,
 }: Pick<THeaderIcon, 'isDisabled' | 'tone'>) => {
   if (isDisabled) return 'neutral60';
-  if (tone === 'urgent') return 'surface';
+  if (tone === 'urgent') return 'warning';
+
   return 'solid';
 };
 
@@ -22,10 +20,6 @@ type THeaderIcon = {
 };
 
 const HeaderIcon = (props: THeaderIcon) => {
-  const backgroundColor =
-    props.tone === 'urgent'
-      ? designTokens.colorWarning
-      : designTokens.colorSurface;
   return (
     <div
       css={[
@@ -33,23 +27,13 @@ const HeaderIcon = (props: THeaderIcon) => {
           display: flex;
           align-items: center;
           justify-content: center;
-          height: ${props.size === 'small'
-            ? sizeIconContainerSmall
-            : sizeIconContainer};
-          width: ${props.size === 'small'
-            ? sizeIconContainerSmall
-            : sizeIconContainer};
-          border-radius: 50%;
-          flex-shrink: 0;
-          box-shadow: ${designTokens.shadow7};
-          background-color: ${backgroundColor};
-          border: 1px solid ${backgroundColor};
         `,
         props.isDisabled &&
           css`
             box-shadow: none;
-            border: 1px solid ${designTokens.colorNeutral};
-            background-color: ${designTokens.colorAccent98};
+            border: 1px solid
+              ${designTokens.borderForCollapsiblePanelHeaderIconWhenDisabled};
+            background-color: ${designTokens.backgroundColorForCollapsiblePanelHeaderIconWhenDisabled};
           `,
       ]}
     >

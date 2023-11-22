@@ -37,7 +37,7 @@ npm --save install react react-router-dom
 ## Usage
 
 ```jsx
-import Tag from '@commercetools-uikit/tag';
+import { Tag } from '@commercetools-uikit/tag';
 
 const Example = () => (
   <Tag
@@ -61,6 +61,7 @@ export default Example;
 | `styles`               | `Record`                                                                                                    |          |            | Styles object that is spread into the tag body.                                       |
 | `to`                   | `union`<br/>Possible values:<br/>`string , LocationDescriptor`                                              |          |            | Link of the tag when not disabled                                                     |
 | `isDisabled`           | `boolean`                                                                                                   |          | `false`    | Disable the tag element along with the option to remove it.                           |
+| `isDraggable`          | `boolean`                                                                                                   |          | `false`    | Adds the draggable icon on the left side.                                             |
 | `onRemove`             | `Function`<br/>[See signature.](#signature-onRemove)                                                        |          |            | Called when remove button is clicked.                                                 |
 | `onClick`              | `Function`<br/>[See signature.](#signature-onClick)                                                         |          |            | Called when tag element is clicked. This is not called when remove button is clicked. |
 | `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'`  | Horizontal size limit of the input field.                                             |
@@ -80,4 +81,29 @@ export default Example;
 
 ```ts
 (event: MouseEvent<HTMLElement>) => void
+```
+
+# TagList
+
+## Description
+
+A `TagList` component is used as wrapper for the list of tags. It has predefined spacings and flex display so that tags are grouped next to each other.
+
+## Usage
+
+The `<TagList>` component accepts `<Tag>` element as `children` props.
+Here's an example of how to use them:
+
+```jsx
+import { Tag, TagList } from '@commercetools-uikit/tag';
+
+const Example = () => (
+  <TagList>
+    {['apple', 'orange'].map((tag, index) => (
+      <Tag key={index}>{tag}</Tag>
+    ))}
+  </TagList>
+);
+
+export default Example;
 ```

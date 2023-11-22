@@ -36,17 +36,21 @@ storiesOf('Components|ViewSwitcher', module)
               DEFAULT_BUTTON_ICON,
               buttonName(i)
             );
+            const iconsOnly = boolean('iconsOnly', false, KNOB_GROUP_NAME);
 
             return (
               <ViewSwitcher.Button
                 key={i}
+                label={`View ${i}`}
                 isDisabled={boolean('isDisabled', false, viewSwitcherButton)}
                 value={viewSwitcherButton}
                 {...(selectedIcon
                   ? { icon: createElement(icons[selectedIcon]) }
                   : {})}
               >
-                {text('children', `View ${i}`, viewSwitcherButton)}
+                {!iconsOnly
+                  ? text('children', `View ${i}`, viewSwitcherButton)
+                  : null}
               </ViewSwitcher.Button>
             );
           })}

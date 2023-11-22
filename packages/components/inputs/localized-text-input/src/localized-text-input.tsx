@@ -9,7 +9,6 @@ import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
-import Text from '@commercetools-uikit/text';
 import {
   sortLanguages,
   createLocalizedDataAttributes,
@@ -36,7 +35,7 @@ interface HTMLLocalizedInputElement extends HTMLInputElement {
   language: string;
 }
 
-type TLocalizedTextInputProps = {
+export type TLocalizedTextInputProps = {
   id?: string;
   name?: string;
   autoComplete?: string;
@@ -126,7 +125,7 @@ type TLocalizedTextInputProps = {
   errors?: Record<string, string>;
 };
 
-type TLocalizedInputProps = {
+export type TLocalizedInputProps = {
   /**
    * Used as prefix of HTML `id` property. Each input field id will have the language as a suffix (`${idPrefix}.${lang}`), e.g. `foo.en`. You can use the static `LocalizedTextInput.getId(idPrefix, language)` to create this id string, e.g. for labels.
    */
@@ -194,10 +193,7 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
       `}
     >
       <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
-        {/* FIXME: add proper tone for disabled when tones are refactored */}
-        <Text.Detail tone="secondary">
-          {props.language.toUpperCase()}
-        </Text.Detail>
+        {props.language.toUpperCase()}
       </label>
       <TextInput
         {...props}

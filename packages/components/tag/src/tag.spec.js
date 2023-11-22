@@ -1,9 +1,21 @@
 import { screen, render } from '../../../../test/test-utils';
 import Tag from './tag';
 
-it('should render children', () => {
+it('should render text as children', () => {
   render(<Tag>Bread</Tag>);
   expect(screen.getByText('Bread')).toBeInTheDocument();
+});
+it('should render html markup as children', () => {
+  const error = jest.spyOn(console, 'error').mockImplementation(() => {});
+  render(
+    <Tag>
+      <div>👋</div>
+    </Tag>
+  );
+
+  // ensure is renders correctly without validateDOMNesting warning
+  expect(screen.getByText('👋')).toBeInTheDocument();
+  expect(error).not.toHaveBeenCalled();
 });
 
 it('should call onClick when clicked', () => {
@@ -52,15 +64,30 @@ describe('when disabled', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
-  it('should not call onRemove when clicked', () => {
+  it('should not render the remove icon', () => {
     const onRemove = jest.fn();
     render(
       <Tag onRemove={onRemove} isDisabled={true}>
         Bread
       </Tag>
     );
-    screen.getByLabelText('Remove').click();
-    expect(onRemove).not.toHaveBeenCalled();
+    const removeIcon = screen.queryByLabelText('Remove');
+    expect(removeIcon).not.toBeInTheDocument();
+  });
+});
+
+describe('when draggable', () => {
+  it('should render drag icon', () => {
+    render(<Tag isDraggable>Bread</Tag>);
+    expect(screen.getByTestId('drag-icon')).toBeInTheDocument();
+  });
+  it('should not render drag icon when disabled', () => {
+    render(
+      <Tag isDraggable isDisabled>
+        Bread
+      </Tag>
+    );
+    expect(screen.queryByTestId('drag-icon')).not.toBeInTheDocument();
   });
 });
 

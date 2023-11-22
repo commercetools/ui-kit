@@ -50,7 +50,7 @@ const activationTypes = [
   Downshift.stateChangeTypes.clickItem,
 ];
 
-type TActivationTypes = typeof activationTypes[number];
+type TActivationTypes = (typeof activationTypes)[number];
 
 type TPreventDownshiftDefaultEvent = {
   relatedTarget?: unknown;

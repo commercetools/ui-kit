@@ -54,6 +54,7 @@ export const component = () => (
         theme="default"
       />
     </Spec>
+
     <Spec label='with theme - when toggled with theme "info"'>
       <SecondaryButton
         label="A label text"
@@ -63,6 +64,7 @@ export const component = () => (
         theme="info"
       />
     </Spec>
+
     <Spec label='with theme - when not toggled with theme "default"'>
       <SecondaryButton
         label="A label text"
@@ -72,6 +74,7 @@ export const component = () => (
         theme="default"
       />
     </Spec>
+
     <Spec label='with theme - when not toggled with theme "info"'>
       <SecondaryButton
         label="A label text"
@@ -82,8 +85,20 @@ export const component = () => (
       />
     </Spec>
 
+    <Spec label='size - when "big"'>
+      <SecondaryButton label="A label text" onClick={() => {}} size="big" />
+    </Spec>
+
+    <Spec label='size - when "medium"'>
+      <SecondaryButton label="A label text" onClick={() => {}} size="medium" />
+    </Spec>
+
     <Spec label="when used as link">
       <SecondaryButton label="A label text" to="/" />
+    </Spec>
+
+    <Spec label='when tone is "info"'>
+      <SecondaryButton label="A label text" onClick={() => {}} tone="info" />
     </Spec>
   </Suite>
 );

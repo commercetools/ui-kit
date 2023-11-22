@@ -20,7 +20,7 @@ const getStyles = (props: TCalendarDay) => {
   if (!['heading', 'spacing'].includes(props.type || '')) {
     styles.push(css`
       text-align: center;
-      padding: ${designTokens.spacingS} 0;
+      padding: ${designTokens.spacing20} 0;
       cursor: default;
       border-radius: ${designTokens.borderRadius4};
     `);
@@ -28,7 +28,7 @@ const getStyles = (props: TCalendarDay) => {
   if (['heading', 'spacing'].includes(props.type || '')) {
     styles.push(css`
       text-align: center;
-      padding: ${designTokens.spacingS} 0;
+      padding: ${designTokens.spacing20} 0;
       cursor: default;
       color: ${designTokens.colorNeutral60};
     `);

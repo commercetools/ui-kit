@@ -31,7 +31,8 @@ const getButtonStyles = (isDisabled: boolean) => {
       baseButtonStyles,
       css`
         box-shadow: none;
-        background-color: ${designTokens.colorAccent98};
+        background-color: ${designTokens.backgroundColorForPrimaryActionDropdownWhenDisabled};
+        border: ${`1px solid ${designTokens.colorNeutral}`};
       `,
     ];
   }
@@ -39,13 +40,15 @@ const getButtonStyles = (isDisabled: boolean) => {
     baseButtonStyles,
     css`
       background-color: ${designTokens.colorSurface};
-      box-shadow: ${designTokens.shadow7};
+      box-shadow: ${designTokens.shadowForPrimaryActionDropdown};
+      border: ${`1px solid ${designTokens.colorNeutral}`};
       &:hover {
-        box-shadow: ${designTokens.shadow8};
+        box-shadow: ${designTokens.shadowForPrimaryActionDropdownWhenHovered};
+        background-color: ${designTokens.colorNeutral95};
       }
       &:active {
-        box-shadow: ${designTokens.shadow9};
-        background-color: ${designTokens.colorNeutral95};
+        box-shadow: ${designTokens.shadowForPrimaryActionDropdownWhenActive};
+        background-color: ${designTokens.backgroundColorForPrimaryActionDropdownWhenActive};
       }
     `,
   ];
@@ -60,6 +63,7 @@ type TDropdownHead = {
   isDisabled: boolean;
   chevron: ReactElement;
 };
+
 const DropdownHead = (props: TDropdownHead) => (
   <div
     css={css`
@@ -74,15 +78,14 @@ const DropdownHead = (props: TDropdownHead) => (
       css={[
         ...getButtonStyles(props.isDisabled),
         css`
-          padding: 0 ${designTokens.spacingS};
-          border-radius: ${designTokens.borderRadius6} 0 0
-            ${designTokens.borderRadius6};
+          padding: ${designTokens.paddingForPrimaryActionDropdown};
+          border-radius: ${designTokens.borderRadiusForPrimaryActionDropdown};
         `,
       ]}
     >
       <span
         css={css`
-          margin: 0 ${designTokens.spacingXs} 0 0;
+          margin-right: ${designTokens.marginRightForPrimaryActionDropdown};
           display: flex;
           align-items: center;
           justify-content: center;
@@ -95,7 +98,7 @@ const DropdownHead = (props: TDropdownHead) => (
       </span>
       <span
         css={css`
-          margin: 0 ${designTokens.spacingXs} 0 0;
+          margin: 0 ${designTokens.spacing10} 0 0;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -117,6 +120,7 @@ type TDropdownChevron = {
   isDisabled: boolean;
   isOpen: boolean;
 };
+
 const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
   (props, ref) => (
     <AccessibleButton
@@ -127,10 +131,11 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
       css={[
         ...getButtonStyles(props.isDisabled),
         css`
-          padding: 0 ${designTokens.spacingXs};
-          border-left: 1px solid ${designTokens.colorNeutral};
-          border-radius: 0 ${designTokens.borderRadius6}
-            ${designTokens.borderRadius6} 0;
+          padding: ${designTokens.paddingForPrimaryActionDropdownIcon};
+          border-radius: ${designTokens.borderRadiusForPrimaryActionDropdownIcon};
+          border-color: ${designTokens.colorNeutral};
+          border-width: ${designTokens.borderForPrimaryActionDropdownIcon};
+          border-style: solid;
         `,
       ]}
     >
@@ -155,7 +160,7 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
             <CaretDownIcon />
           ),
           {
-            color: props.isDisabled ? 'neutral60' : 'solid',
+            color: 'neutral60',
             size: 'small',
           }
         )}
@@ -170,11 +175,19 @@ const Options = styled.div`
   position: absolute;
   z-index: 5;
   width: 100%;
-  top: calc(${designTokens.spacingS} + ${designTokens.bigButtonHeight});
-  left: 0;
-  border: 1px solid ${designTokens.colorNeutral};
-  border-radius: ${designTokens.borderRadius6};
-  box-shadow: ${designTokens.shadow1};
+  top: calc(${designTokens.spacing20} + ${designTokens.bigButtonHeight});
+  border: 1px solid ${designTokens.borderColorForPrimaryActionDropdownMenu};
+  border-radius: ${designTokens.borderRadiusForPrimaryActionDropdownMenu};
+  box-shadow: ${designTokens.shadowForPrimaryActionDropdownMenu};
+  margin-top: ${designTokens.marginTopForPrimaryActionDropdown};
+
+  > button {
+    padding-left: ${designTokens.spacing30};
+    white-space: normal;
+    &:active {
+      background-color: ${designTokens.colorInfo95};
+    }
+  }
 `;
 
 /*
@@ -187,7 +200,7 @@ const Options = styled.div`
   when the dropdown trigger itself is clicked. Otherwise it would open and close
   immediately.
  */
-type TPrimaryActionDropdown = {
+export type TPrimaryActionDropdown = {
   /**
    * Any React element.
    */
@@ -250,6 +263,10 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         position: relative;
         display: inline-flex;
         align-items: column;
+
+        > :first-of-type > button {
+          height: ${designTokens.heightForPrimaryActionDropdown};
+        }
       `}
     >
       <DropdownHead

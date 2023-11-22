@@ -1,8 +1,8 @@
 import {
-  MouseEvent,
-  KeyboardEvent,
-  ElementType,
-  ReactElement,
+  type MouseEvent,
+  type KeyboardEvent,
+  type ElementType,
+  type ReactElement,
   ComponentPropsWithRef,
   cloneElement,
 } from 'react';
@@ -11,11 +11,9 @@ import omit from 'lodash/omit';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { getTextColor, getButtonIconColor } from './flat-button.styles';
+import { getTextColor } from './flat-button.styles';
 
 const propsToOmit = ['type'];
-
-export type TDesignTokens = typeof designTokens;
 
 export type TFlatButtonProps<
   TStringOrComponent extends ElementType = 'button'
@@ -30,7 +28,7 @@ export type TFlatButtonProps<
   /**
    * Indicates the color scheme of the button.
    */
-  tone?: 'primary' | 'secondary' | 'inverted';
+  tone?: 'primary' | 'secondary' | 'inverted' | 'critical';
   /**
    * Used as the HTML `type` attribute.
    */
@@ -76,16 +74,11 @@ const defaultProps: Pick<
 };
 
 const ButtonIcon = <TStringOrComponent extends ElementType = 'button'>(
-  props: Pick<
-    TFlatButtonProps<TStringOrComponent>,
-    'as' | 'isDisabled' | 'tone' | 'icon'
-  >
+  props: TFlatButtonProps<TStringOrComponent>
 ) => {
   if (!props.icon) return null;
-  const iconColor = getButtonIconColor(props);
   const Icon = cloneElement(props.icon, {
     size: 'medium',
-    color: iconColor,
   });
   if (props.as && props.as !== 'button') {
     return (
@@ -130,20 +123,21 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
           : ''};
 
         span {
-          color: ${props.isDisabled
-            ? designTokens.colorNeutral
-            : getTextColor(props.tone, false, designTokens)};
+          color: ${getTextColor({
+            tone: props.tone,
+            isDisabled: props.isDisabled,
+          })};
         }
 
-        svg * {
-          fill: ${props.isDisabled
-            ? designTokens.colorNeutral
-            : getTextColor(props.tone, false, designTokens)};
-        }
+        fill: ${getTextColor({
+          tone: props.tone,
+          isDisabled: props.isDisabled,
+          isIcon: true,
+        })};
 
         * + span,
         * + svg {
-          margin-left: ${designTokens.spacingXs};
+          margin-left: ${designTokens.spacing10};
         }
 
         ${!props.isDisabled
@@ -151,10 +145,19 @@ const FlatButton = <TStringOrComponent extends ElementType = 'button'>(
             &:hover,
             &:focus {
               span {
-                color: ${getTextColor(props.tone, true, designTokens)};
+                color: ${getTextColor({
+                  tone: props.tone,
+                  isHover: true,
+                  isDisabled: props.isDisabled,
+                })};
               }
               svg * {
-                fill: ${getTextColor(props.tone, true, designTokens)};
+                fill: ${getTextColor({
+                  tone: props.tone,
+                  isHover: true,
+                  isDisabled: props.isDisabled,
+                  isIcon: true,
+                })};
               }
             }`
           : ''}

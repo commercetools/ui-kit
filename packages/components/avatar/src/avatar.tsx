@@ -1,6 +1,12 @@
+import { ReactElement, cloneElement } from 'react';
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
+import {
+  getAvatarStyles,
+  getFontSize,
+  getForegroundColor,
+  getWidthSize,
+} from './avatar.styles';
 
 export type TAvatarProps = {
   /**
@@ -23,6 +29,13 @@ export type TAvatarProps = {
    * The size of the rendered avatar.
    */
   size: 's' | 'm' | 'l';
+  /**
+   * The color of the avatar.
+   */
+  color?: 'accent' | 'purple' | 'turquoise' | 'brown';
+  /** an <Icon /> component
+   */
+  icon?: ReactElement;
 };
 
 export type TGravatarImgProps = Pick<
@@ -35,20 +48,15 @@ export type TInitialsProps = Pick<
   'firstName' | 'lastName' | 'size'
 >;
 
-const avatarSizes = {
-  s: { width: '26px', fontSize: '1em' },
-  m: { width: '48px', fontSize: '1.5em' },
-  l: { width: '100px', fontSize: '3em' },
-};
-
 const defaultProps: Pick<
   TAvatarProps,
-  'firstName' | 'lastName' | 'isHighlighted' | 'size'
+  'firstName' | 'lastName' | 'isHighlighted' | 'size' | 'color'
 > = {
   firstName: '',
   lastName: '',
   isHighlighted: false,
   size: 's',
+  color: 'accent',
 };
 
 const getFirstChar = (str: string) =>
@@ -59,7 +67,6 @@ const getInitialsFromName = ({
   lastName = '',
 }: Pick<TAvatarProps, 'firstName' | 'lastName'>) =>
   `${getFirstChar(firstName)}${getFirstChar(lastName)}`;
-
 /**
  * `s` - defines the size. We want a bigger one if the user is on a retina-display
  * `d` - defines the default if the user is not known to Gravatar. It returns a blank image,
@@ -72,7 +79,8 @@ const createGravatarImgUrl = (
   size: TAvatarProps['size'],
   multiplyBy: number = 1
 ) => {
-  const sizeAsInt = parseInt(avatarSizes[size].width.replace(/px$/, ''), 10);
+  const imageSize = getWidthSize(size);
+  const sizeAsInt = parseInt(imageSize.replace(/px$/, ''), 10);
   const gravatarSize = sizeAsInt * multiplyBy;
   return `https://www.gravatar.com/avatar/${md5Hash}?s=${gravatarSize}&d=blank`;
 };
@@ -101,55 +109,59 @@ const GravatarImg = (props: TGravatarImgProps) => (
 );
 GravatarImg.displayName = 'GravatarImg';
 
-const Initials = (props: TInitialsProps) => (
-  <div
-    css={css`
-      position: absolute;
-      font-size: ${avatarSizes[props.size].fontSize};
-    `}
-  >
-    {getInitialsFromName({
-      firstName: props.firstName,
-      lastName: props.lastName,
-    })}
-  </div>
-);
+const Initials = (props: TInitialsProps) => {
+  const initialsFromName = getInitialsFromName({
+    firstName: props.firstName,
+    lastName: props.lastName,
+  });
+  return (
+    <div
+      css={css`
+        position: absolute;
+        font-size: ${getFontSize(initialsFromName, props.size)};
+      `}
+    >
+      {initialsFromName}
+    </div>
+  );
+};
 Initials.displayName = 'Initials';
 
-const Avatar = (props: TAvatarProps) => (
-  <div
-    css={css`
-      align-items: center;
-      background-color: ${designTokens.colorNeutral60};
-      border-radius: 100%;
-      font-size: ${designTokens.fontSizeDefault};
-      color: ${designTokens.colorSurface};
-      display: flex;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-
-      height: ${avatarSizes[props.size].width};
-      width: ${avatarSizes[props.size].width};
-
-      ${props.isHighlighted
-        ? `background-color: ${designTokens.colorNeutral};`
-        : ''}
-    `}
-    {...filterDataAttributes(props)}
-  >
-    <GravatarImg
-      gravatarHash={props.gravatarHash}
-      size={props.size}
-      isHighlighted={props.isHighlighted}
-    />
-    <Initials
-      size={props.size}
-      firstName={props.firstName}
-      lastName={props.lastName}
-    />
-  </div>
-);
+const Avatar = (props: TAvatarProps) => {
+  const avatarSize = getWidthSize(props.size);
+  const foregroundColor = getForegroundColor(props.color);
+  return (
+    <div css={getAvatarStyles(props)} {...filterDataAttributes(props)}>
+      {props?.icon ? (
+        <div
+          css={css`
+            height: calc(${avatarSize} - 45%);
+            width: calc(${avatarSize} - 45%);
+          `}
+        >
+          {cloneElement(props?.icon, {
+            size: 'scale',
+            color: foregroundColor,
+            backgroundcolor: foregroundColor,
+          })}
+        </div>
+      ) : (
+        <>
+          <GravatarImg
+            gravatarHash={props.gravatarHash}
+            size={props.size}
+            isHighlighted={props.isHighlighted}
+          />
+          <Initials
+            size={props.size}
+            firstName={props.firstName}
+            lastName={props.lastName}
+          />
+        </>
+      )}
+    </div>
+  );
+};
 Avatar.displayName = 'Avatar';
 Avatar.defaultProps = defaultProps;
 

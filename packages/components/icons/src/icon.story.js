@@ -53,8 +53,8 @@ const LegacyBadge = () => (
       border: 1px solid ${designTokens.colorWarning};
       border-radius: ${designTokens.borderRadius2};
       font-size: ${designTokens.fontSizeSmall};
-      margin-top: ${designTokens.spacingXs};
-      padding: 0 ${designTokens.spacingXs};
+      margin-top: ${designTokens.spacing10};
+      padding: 0 ${designTokens.spacing10};
     `}
   >
     Legacy
@@ -81,7 +81,7 @@ const svgFixtures = {
 const SelectSvgFixtureOption = (props) => (
   <SelectInput.Option {...props}>
     <Spacings.Stack scale="xs">
-      <Text.Body isBold>{props.data.label ?? '---'}</Text.Body>
+      <Text.Body fontWeight="bold">{props.data.label ?? '---'}</Text.Body>
       <Text.Detail>{props.data.value}</Text.Detail>
     </Spacings.Stack>
   </SelectInput.Option>
@@ -149,7 +149,7 @@ const InlineSvgPage = (props) => {
         <Text.Headline as="h2">Rendered:</Text.Headline>
         {colorValues.map((color) => (
           <Spacings.Stack scale="xs" key={color}>
-            <Text.Body isBold>
+            <Text.Body fontWeight="bold">
               <code>color: {color}</code>
             </Text.Body>
             <div
@@ -160,7 +160,7 @@ const InlineSvgPage = (props) => {
               }}
             >
               <Grid
-                gridGap={designTokens.spacingS}
+                gridGap={designTokens.spacing20}
                 gridAutoColumns="1fr"
                 gridTemplateColumns={`repeat(${colorValues.length}, 1fr)`}
                 alignItems="center"

@@ -10,7 +10,10 @@ import omit from 'lodash/omit';
 import { css } from '@emotion/react';
 import Inline from '@commercetools-uikit/spacings-inline';
 import { designTokens } from '@commercetools-uikit/design-system';
-import { filterInvalidAttributes } from '@commercetools-uikit/utils';
+import {
+  filterInvalidAttributes,
+  useWarning,
+} from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { getButtonStyles } from './primary-button.styles';
 
@@ -59,13 +62,15 @@ export type TPrimaryButtonProps<
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * Indicates the size of the icon.
+   * Indicates the size of the button.
+   * <br />
+   * `small` value has been deprecated. Please use `medium` value instead as a replacement.
    */
-  size?: 'small' | 'big';
+  size?: 'small' | 'medium' | 'big';
   /**
    * Indicates the color scheme of the button.
    */
-  tone?: 'urgent' | 'primary';
+  tone?: 'urgent' | 'primary' | 'critical';
 } & /**
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
@@ -93,6 +98,11 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
     disabled: props.isDisabled,
   };
 
+  useWarning(
+    !Boolean(props.size === 'small'),
+    'PrimaryButton `small` value for `size` property has been renamed to `medium`. Please update that value when using this component'
+  );
+
   const isActive = Boolean(props.isToggleButton && props.isToggled);
   return (
     <AccessibleButton
@@ -110,7 +120,7 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
         {Boolean(props.iconLeft) && (
           <span
             css={css`
-              margin: 0 ${designTokens.spacingXs} 0 0;
+              margin: 0 ${designTokens.spacing10} 0 0;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -119,7 +129,7 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
             {props.iconLeft &&
               cloneElement(props.iconLeft, {
                 color: props.isDisabled ? 'neutral60' : 'surface',
-                size: props.size === 'small' ? 'medium' : 'big',
+                size: props.size === 'big' ? 'big' : 'medium',
               })}
           </span>
         )}

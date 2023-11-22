@@ -13,6 +13,8 @@ import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import LinkTo from '@storybook/addon-links/react';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import SelectInput from './select-input';
 import * as icons from '../../../icons';
@@ -96,7 +98,9 @@ storiesOf('Components|Inputs/SelectInputs', module)
       },
     ];
     const isMulti = boolean('isMulti', false);
+    const menuIsOpen = boolean('menuIsOpen', false);
     const showOptionGroupDivider = boolean('Show option group divider', false);
+    const shouldMenuFlip = boolean('Show menu flipping above the input', false);
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
 
     return (
@@ -106,43 +110,65 @@ storiesOf('Components|Inputs/SelectInputs', module)
             key={isMulti}
             defaultValue={isMulti ? [] : undefined}
             render={(value, onChange) => (
-              <SelectInput
-                horizontalConstraint={select(
-                  'horizontalConstraint',
-                  Constraints.getAcceptedMaxPropValues(3),
-                  'scale'
+              <Spacings.Stack scale="m">
+                {shouldMenuFlip && (
+                  <div
+                    style={{
+                      height: `${window.innerHeight - 200}px`,
+                      display: 'block',
+                    }}
+                  />
                 )}
-                hasError={boolean('hasError', false)}
-                hasWarning={boolean('hasWarning', false)}
-                aria-label={text('aria-label', '')}
-                aria-labelledby={text('aria-labelledby', '')}
-                isAutofocussed={boolean('isAutofocussed', false)}
-                backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
-                id={text('id', '')}
-                containerId={text('containerId', '')}
-                isClearable={boolean('isClearable', false)}
-                isDisabled={boolean('isDisabled', false)}
-                isReadOnly={boolean('isReadOnly', false)}
-                isMulti={isMulti}
-                isSearchable={boolean('isSearchable', false)}
-                maxMenuHeight={number('maxMenuHeight', 220)}
-                closeMenuOnSelect={boolean('closeMenuOnSelect', true)}
-                name={text('name', 'form-field-name')}
-                onBlur={action('onBlur')}
-                onChange={(event, ...args) => {
-                  action('onChange')(event, ...args);
-                  onChange(event.target.value);
-                }}
-                onFocus={action('onFocus')}
-                onInputChange={action('onInputChange')}
-                options={options}
-                placeholder={text('placeholder', 'Select..')}
-                tabIndex={text('tabIndex', '0')}
-                tabSelectsValue={boolean('tabSelectsValue', true)}
-                value={value}
-                showOptionGroupDivider={showOptionGroupDivider}
-                iconLeft={iconLeft ? createElement(iconLeft) : undefined}
-              />
+                <SelectInput
+                  appearance={select(
+                    'appearance',
+                    ['default', 'quiet'],
+                    'default'
+                  )}
+                  horizontalConstraint={select(
+                    'horizontalConstraint',
+                    Constraints.getAcceptedMaxPropValues(3),
+                    'scale'
+                  )}
+                  hasError={boolean('hasError', false)}
+                  hasWarning={boolean('hasWarning', false)}
+                  aria-label={text('aria-label', '')}
+                  aria-labelledby={text('aria-labelledby', '')}
+                  isAutofocussed={boolean('isAutofocussed', false)}
+                  backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
+                  controlShouldRenderValue={boolean(
+                    'controlShouldRenderValue',
+                    true
+                  )}
+                  id={text('id', '')}
+                  containerId={text('containerId', '')}
+                  isClearable={boolean('isClearable', false)}
+                  isDisabled={boolean('isDisabled', false)}
+                  isReadOnly={boolean('isReadOnly', false)}
+                  isMulti={isMulti}
+                  menuIsOpen={menuIsOpen}
+                  isSearchable={boolean('isSearchable', false)}
+                  maxMenuHeight={number('maxMenuHeight', 220)}
+                  closeMenuOnSelect={boolean('closeMenuOnSelect', true)}
+                  name={text('name', 'form-field-name')}
+                  onBlur={action('onBlur')}
+                  onChange={(event, ...args) => {
+                    action('onChange')(event, ...args);
+                    onChange(event.target.value);
+                  }}
+                  onFocus={action('onFocus')}
+                  onInputChange={action('onInputChange')}
+                  options={options}
+                  placeholder={text('placeholder', 'Select..')}
+                  tabIndex={text('tabIndex', '0')}
+                  tabSelectsValue={boolean('tabSelectsValue', true)}
+                  value={value}
+                  showOptionGroupDivider={showOptionGroupDivider}
+                  iconLeft={iconLeft ? createElement(iconLeft) : undefined}
+                  {...addMenuPortalProps()}
+                />
+                <NeighbouringStackingContext />
+              </Spacings.Stack>
             )}
           />
         </Section>

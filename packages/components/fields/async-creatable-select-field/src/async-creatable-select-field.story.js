@@ -11,7 +11,10 @@ import {
   number,
 } from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import * as icons from '../../../icons';
 import Readme from '../README.md';
 import AsyncCreatableSelectField from './async-creatable-select-field';
@@ -109,75 +112,79 @@ storiesOf('Components|Fields/SelectFields', module)
           key={isMulti}
           defaultValue={isMulti ? [] : undefined}
           render={(value, onChange) => (
-            <AsyncCreatableSelectField
-              horizontalConstraint={select(
-                'horizontalConstraint',
-                Constraints.getAcceptedMaxPropValues(3),
-                7
-              )}
-              errors={object('errors', { missing: true, customError: true })}
-              renderError={(key) => {
-                switch (key) {
-                  case 'customError':
-                    return 'A custom error.';
-                  default:
-                    return null;
+            <Spacings.Stack scale="m">
+              <AsyncCreatableSelectField
+                horizontalConstraint={select(
+                  'horizontalConstraint',
+                  Constraints.getAcceptedMaxPropValues(3),
+                  7
+                )}
+                errors={object('errors', { missing: true, customError: true })}
+                renderError={(key) => {
+                  switch (key) {
+                    case 'customError':
+                      return 'A custom error.';
+                    default:
+                      return null;
+                  }
+                }}
+                isRequired={boolean('isRequired', false)}
+                touched={boolean('touched', false)}
+                aria-label={text('aria-label', '')}
+                aria-labelledby={text('aria-labelledby', '')}
+                backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
+                containerId={text('containerId', '')}
+                id={id || undefined}
+                name={name}
+                value={value}
+                onChange={(event) => {
+                  action('onChange')(event);
+                  onChange(event.target.value);
+                }}
+                onBlur={action('onBlur')}
+                onFocus={action('onFocus')}
+                onInputChange={action('onInputChange')}
+                isAutofocussed={boolean('isAutofocussed', false)}
+                isDisabled={boolean('isDisabled', false)}
+                isReadOnly={boolean('isReadOnly', false)}
+                isMulti={isMulti}
+                hasWarning={boolean('hasWarning', false)}
+                placeholder={text('placeholder', 'Select...')}
+                title={text('title', 'Favourite animal')}
+                maxMenuHeight={number('maxMenuHeight', 220)}
+                isSearchable={boolean('isSearchable', false)}
+                isClearable={boolean('isClearable', false)}
+                tabIndex={text('tabIndex', '0')}
+                tabSelectsValue={boolean('tabSelectsValue', true)}
+                // Async props
+                defaultOptions={defaultOptions}
+                loadOptions={loadOptions}
+                cacheOptions={boolean('cacheOptions', false)}
+                // Creatable props
+                allowCreateWhileLoading={boolean(
+                  'allowCreateWhileLoading',
+                  false
+                )}
+                createOptionPosition={select(
+                  'createOptionPosition',
+                  ['first', 'last'],
+                  'last'
+                )}
+                // FieldLabel
+                hint={hint}
+                description={text('description', '')}
+                onInfoButtonClick={
+                  boolean('show info button', false)
+                    ? action('onInfoButtonClick')
+                    : undefined
                 }
-              }}
-              isRequired={boolean('isRequired', false)}
-              touched={boolean('touched', false)}
-              aria-label={text('aria-label', '')}
-              aria-labelledby={text('aria-labelledby', '')}
-              backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
-              containerId={text('containerId', '')}
-              id={id || undefined}
-              name={name}
-              value={value}
-              onChange={(event) => {
-                action('onChange')(event);
-                onChange(event.target.value);
-              }}
-              onBlur={action('onBlur')}
-              onFocus={action('onFocus')}
-              onInputChange={action('onInputChange')}
-              isAutofocussed={boolean('isAutofocussed', false)}
-              isDisabled={boolean('isDisabled', false)}
-              isReadOnly={boolean('isReadOnly', false)}
-              isMulti={isMulti}
-              hasWarning={boolean('hasWarning', false)}
-              placeholder={text('placeholder', 'Select...')}
-              title={text('title', 'Favourite animal')}
-              maxMenuHeight={number('maxMenuHeight', 220)}
-              isSearchable={boolean('isSearchable', false)}
-              isClearable={boolean('isClearable', false)}
-              tabIndex={text('tabIndex', '0')}
-              tabSelectsValue={boolean('tabSelectsValue', true)}
-              // Async props
-              defaultOptions={defaultOptions}
-              loadOptions={loadOptions}
-              cacheOptions={boolean('cacheOptions', false)}
-              // Creatable props
-              allowCreateWhileLoading={boolean(
-                'allowCreateWhileLoading',
-                false
-              )}
-              createOptionPosition={select(
-                'createOptionPosition',
-                ['first', 'last'],
-                'last'
-              )}
-              // FieldLabel
-              hint={hint}
-              description={text('description', '')}
-              onInfoButtonClick={
-                boolean('show info button', false)
-                  ? action('onInfoButtonClick')
-                  : undefined
-              }
-              hintIcon={hintIcon}
-              badge={text('badge', '')}
-              iconLeft={iconLeft ? createElement(iconLeft) : undefined}
-            />
+                hintIcon={hintIcon}
+                badge={text('badge', '')}
+                iconLeft={iconLeft ? createElement(iconLeft) : undefined}
+                {...addMenuPortalProps()}
+              />
+              <NeighbouringStackingContext />
+            </Spacings.Stack>
           )}
         />
       </Section>

@@ -45,6 +45,7 @@ storiesOf('Components|Inputs', module)
               id={text('id', undefined)}
               name={text('name', 'productName')}
               value={value}
+              hasHighPrecisionBadge={boolean('hasHighPrecisionBadge', false)}
               onChange={(event) => {
                 action('onChange')(event);
                 onChange({

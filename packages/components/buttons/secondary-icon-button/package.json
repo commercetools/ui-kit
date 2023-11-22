@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/secondary-icon-button",
   "description": "Secondary Icon Buttons are \"icon-only\" buttons and a restricted version of the `<IconButton>`. They trigger an action when clicked (`onClick` prop). You must also pass a label for accessibility reasons.",
-  "version": "15.5.1",
+  "version": "16.11.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,18 +19,18 @@
   "module": "dist/commercetools-uikit-secondary-icon-button.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
-    "@babel/runtime-corejs3": "^7.19.1",
-    "@commercetools-uikit/accessible-button": "15.5.1",
-    "@commercetools-uikit/design-system": "15.5.1",
-    "@commercetools-uikit/spacings": "15.5.1",
-    "@commercetools-uikit/text": "15.5.1",
-    "@commercetools-uikit/utils": "15.5.1",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
+    "@babel/runtime": "^7.20.13",
+    "@babel/runtime-corejs3": "^7.20.13",
+    "@commercetools-uikit/accessible-button": "16.11.0",
+    "@commercetools-uikit/design-system": "16.11.0",
+    "@commercetools-uikit/spacings": "16.11.0",
+    "@commercetools-uikit/text": "16.11.0",
+    "@commercetools-uikit/utils": "16.11.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-intl": "^5.25.1"
+    "react-intl": "^6.3.2"
   },
   "devDependencies": {
     "react": "17.0.2"

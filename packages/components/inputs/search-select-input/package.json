@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/search-select-input",
   "description": "A search select input component built on top of `@commercetools-uikit/async-select-input` to asynchronously load results (options) using the keyword that the user has entered.",
-  "version": "15.5.1",
+  "version": "16.11.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,26 +19,26 @@
   "module": "dist/commercetools-uikit-search-select-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
-    "@babel/runtime-corejs3": "^7.19.1",
-    "@commercetools-uikit/async-select-input": "15.5.1",
-    "@commercetools-uikit/design-system": "15.5.1",
-    "@commercetools-uikit/select-utils": "15.5.1",
-    "@commercetools-uikit/spacings": "15.5.1",
-    "@commercetools-uikit/text": "15.5.1",
-    "@commercetools-uikit/utils": "15.5.1",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
+    "@babel/runtime": "^7.20.13",
+    "@babel/runtime-corejs3": "^7.20.13",
+    "@commercetools-uikit/async-select-input": "16.11.0",
+    "@commercetools-uikit/design-system": "16.11.0",
+    "@commercetools-uikit/select-utils": "16.11.0",
+    "@commercetools-uikit/spacings": "16.11.0",
+    "@commercetools-uikit/text": "16.11.0",
+    "@commercetools-uikit/utils": "16.11.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "prop-types": "15.8.1"
   },
   "devDependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intl": "^5.25.1"
+    "react-intl": "^6.3.2"
   },
   "peerDependencies": {
     "react": "17.x",
     "react-dom": "17.x",
-    "react-intl": "5.x"
+    "react-intl": "6.x"
   }
 }

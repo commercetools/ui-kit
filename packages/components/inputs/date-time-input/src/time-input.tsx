@@ -12,7 +12,7 @@ const getInputStyles = () => css`
   padding: 10px 0;
   outline: 0;
   font-size: ${designTokens.fontSizeDefault};
-  margin-top: ${designTokens.spacingS};
+  margin-top: ${designTokens.spacing20};
   color: ${designTokens.colorSolid};
 
   :disabled {

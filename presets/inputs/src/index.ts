@@ -20,3 +20,5 @@ export { default as ToggleInput } from '@commercetools-uikit/toggle-input';
 export { default as CheckboxInput } from '@commercetools-uikit/checkbox-input';
 export { default as RadioInput } from '@commercetools-uikit/radio-input';
 export { default as SearchSelectInput } from '@commercetools-uikit/search-select-input';
+export { default as SearchTextInput } from '@commercetools-uikit/search-text-input';
+export { default as SelectableSearchInput } from '@commercetools-uikit/selectable-search-input';

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import type { ActionMeta, GroupBase, OptionProps } from 'react-select';
 import type { AsyncProps } from 'react-select/async';
@@ -7,6 +7,7 @@ import { warning } from '@commercetools-uikit/utils';
 import {
   CustomSelectInputOption,
   SearchIconDropdownIndicator,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import messages from './messages';
 import { SearchSelectInputWrapper } from './search-select-input.styles';
@@ -98,6 +99,12 @@ export type TSearchSelectInputProps = {
    */
   components?: ReactSelectAsyncProps['components'];
   /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectAsyncProps['controlShouldRenderValue'];
+  /**
    * Sets the tabIndex attribute on the input
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -158,6 +165,12 @@ export type TSearchSelectInputProps = {
    */
   noOptionsMessage?: ReactSelectAsyncProps['noOptionsMessage'];
   /**
+   * Can be used to enforce the select input to be opened
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  menuIsOpen?: ReactSelectAsyncProps['menuIsOpen'];
+  /**
    * Maximum height of the menu before scrolling
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -171,6 +184,8 @@ export type TSearchSelectInputProps = {
   menuPortalTarget?: ReactSelectAsyncProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex: number;
   /**
@@ -249,6 +264,10 @@ export type TSearchSelectInputProps = {
    * The style of the an option in the dropdown menu. It could be single lined option or an option with more and custom info
    */
   optionType?: 'single-property' | 'double-property' | 'multiple-properties';
+  /**
+   * Icon to display on the left of the placeholder text and selected value. Has no effect when `isMulti` is enabled.
+   */
+  iconLeft?: ReactNode;
 };
 
 type TOptionInnerPropsData = {
@@ -263,11 +282,12 @@ type TOptionInnerProps = {
 
 const defaultProps: Pick<
   TSearchSelectInputProps,
-  'value' | 'menuPortalZIndex' | 'maxMenuHeight'
+  'value' | 'menuPortalZIndex' | 'maxMenuHeight' | 'controlShouldRenderValue'
 > = {
   value: null,
   menuPortalZIndex: 1,
   maxMenuHeight: 220,
+  controlShouldRenderValue: true,
 };
 
 const SearchSelectInput = (props: TSearchSelectInputProps) => {
@@ -279,6 +299,12 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
       'SearchSelectInput: `onChange` is required when input is not read only.'
     );
   }
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'SearchSelectInput',
+  });
 
   const noOptionsMessage =
     props.noOptionsMessage ||
@@ -316,7 +342,7 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
         {...props}
         components={components as ReactSelectAsyncProps['components']}
         placeholder={placeholder}
-        iconLeft={undefined}
+        iconLeft={props.iconLeft}
         loadingMessage={loadingMessage}
         noOptionsMessage={noOptionsMessage}
         isSearchable={true}

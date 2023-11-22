@@ -6,7 +6,7 @@ describe('MoneyField', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('Price');
+    await page.waitForSelector('text/Price');
     await percySnapshot(page, 'MoneyField');
   });
 });

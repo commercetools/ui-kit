@@ -1,5 +1,4 @@
 import type { LocationDescriptor } from 'history';
-
 import { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 import { css, type SerializedStyles } from '@emotion/react';
 import { Link } from 'react-router-dom';
@@ -26,6 +25,10 @@ export type TTagProps = {
    * Disable the tag element along with the option to remove it.
    */
   isDisabled?: boolean;
+  /**
+   * Adds the draggable icon on the left side.
+   */
+  isDraggable?: boolean;
   /**
    * Called when remove button is clicked.
    */
@@ -66,10 +69,11 @@ export type TTagProps = {
 
 const defaultProps: Pick<
   TTagProps,
-  'type' | 'isDisabled' | 'horizontalConstraint'
+  'type' | 'isDisabled' | 'isDraggable' | 'horizontalConstraint'
 > = {
   type: 'normal',
   isDisabled: false,
+  isDraggable: false,
   horizontalConstraint: 'scale',
 };
 
@@ -90,6 +94,15 @@ const Tag = (props: TTagProps) => {
           background-color: ${props.type === 'warning'
             ? designTokens.backgroundColorForTagWarning
             : designTokens.backgroundColorForTag};
+
+          ${props.onClick &&
+          `&:hover {
+            background-color: ${
+              props.type === 'warning'
+                ? designTokens.backgroundColorForTagWarning
+                : designTokens.backgroundColorForTagWhenHovered
+            };
+          }`}
         `}
       >
         <TagBody
@@ -99,11 +112,12 @@ const Tag = (props: TTagProps) => {
           onClick={props.onClick}
           onRemove={props.onRemove}
           isDisabled={props.isDisabled}
+          isDraggable={props.isDraggable}
         >
           {props.children}
         </TagBody>
 
-        {Boolean(props.onRemove) && (
+        {Boolean(props.onRemove) && !props.isDisabled && (
           <AccessibleButton
             label="Remove"
             isDisabled={props.isDisabled}
@@ -111,28 +125,26 @@ const Tag = (props: TTagProps) => {
             css={[
               css`
                 border-color: ${props.type === 'warning'
-                  ? designTokens.borderColorForTagWarning
+                  ? designTokens.colorWarning
                   : designTokens.borderColorForTag};
-                padding: 0 ${designTokens.spacingXs};
+                padding: ${designTokens.paddingForTagRemoveIcon};
                 border-radius: 0 ${designTokens.borderRadiusForTag}
                   ${designTokens.borderRadiusForTag} 0;
                 display: flex;
                 align-items: center;
                 background: inherit;
                 border-style: solid;
-                border-width: 1px 1px 1px 1px;
+                border-width: ${designTokens.borderWidthForTag};
                 :not(:disabled)&:hover,
                 :not(:disabled)&:focus {
-                  border-color: ${designTokens.borderColorForTagWarning};
+                  border-color: ${props.type === 'warning'
+                    ? designTokens.colorWarning
+                    : designTokens.borderColorForTagWhenHovered};
 
-                  > svg * {
-                    fill: ${designTokens.borderColorForTagWarning};
-                  }
+                  fill: ${designTokens.fontColorForTagRemoveIconWhenHovered};
                 }
-                > svg * {
-                  fill: ${designTokens.fontColorForTag};
-                }
-                &:disabled > svg * {
+                fill: ${designTokens.fontColorForTagRemoveIcon};
+                &:disabled {
                   fill: ${designTokens.fontColorForTagWhenDisabled};
                 }
               `,

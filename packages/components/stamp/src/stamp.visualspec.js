@@ -6,7 +6,7 @@ describe('Stamp', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('when critical');
+    await page.waitForSelector('text/when critical');
     await percySnapshot(page, 'Stamp');
   });
 });

@@ -1,5 +1,51 @@
 # @commercetools-local/generator-package-json
 
+## 3.2.0
+
+### Minor Changes
+
+- [#2526](https://github.com/commercetools/ui-kit/pull/2526) [`86a5f09f2`](https://github.com/commercetools/ui-kit/commit/86a5f09f26e0f2dcac8f61d9333a6043a6ecc39a) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies.
+
+### Patch Changes
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
+## 3.1.0
+
+### Minor Changes
+
+- [#2525](https://github.com/commercetools/ui-kit/pull/2525) [`6e66d69b5`](https://github.com/commercetools/ui-kit/commit/6e66d69b55a5ce3cb709c34d7d88c07335f8c1e7) Thanks [@YahiaElTai](https://github.com/YahiaElTai)! - use cac instead of mri for flags parsing
+
+## 3.0.11
+
+### Patch Changes
+
+- [#2509](https://github.com/commercetools/ui-kit/pull/2509) [`cd36078fa`](https://github.com/commercetools/ui-kit/commit/cd36078fa6f1bf83bd1be03035d916298ad6038e) Thanks [@renovate](https://github.com/apps/renovate)! - Updated all dependencies
+
+## 3.0.10
+
+### Patch Changes
+
+- [#2463](https://github.com/commercetools/ui-kit/pull/2463) [`c03ec4d7d`](https://github.com/commercetools/ui-kit/commit/c03ec4d7d7a927b112392069a606d8c8194046f6) Thanks [@renovate](https://github.com/apps/renovate)! - Update dependencies
+
+## 3.0.9
+
+### Patch Changes
+
+- [#2496](https://github.com/commercetools/ui-kit/pull/2496) [`03cb6a23d`](https://github.com/commercetools/ui-kit/commit/03cb6a23dc0f2709e774e60f46ba610080db47b4) Thanks [@emmenko](https://github.com/emmenko)! - Update TypeScript to v5
+
+## 3.0.8
+
+### Patch Changes
+
+- [#2447](https://github.com/commercetools/ui-kit/pull/2447) [`9d354abe6`](https://github.com/commercetools/ui-kit/commit/9d354abe62009f20138a8c3aeb535aa50060e503) Thanks [@renovate](https://github.com/apps/renovate)! - Upgrade dependencies
+
+## 3.0.7
+
+### Patch Changes
+
+- [#2399](https://github.com/commercetools/ui-kit/pull/2399) [`4ad369848`](https://github.com/commercetools/ui-kit/commit/4ad369848ea9f72e71f615f06339c356d91097b2) Thanks [@renovate](https://github.com/apps/renovate)! - Update all dependencies
+
 ## 3.0.6
 
 ### Patch Changes

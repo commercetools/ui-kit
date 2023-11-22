@@ -20,6 +20,7 @@ import Tooltip from '@commercetools-uikit/tooltip';
 import {
   DropdownIndicator,
   createSelectStyles,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
@@ -46,6 +47,7 @@ type TLabel = {
   id: string;
   children?: ReactNode;
   isDisabled?: boolean;
+  isReadOnly?: boolean;
 };
 
 const Portal = (props: TLabel) => {
@@ -57,7 +59,7 @@ const Portal = (props: TLabel) => {
 };
 
 const CurrencyLabel = (props: TLabel) => (
-  <label htmlFor={props.id} css={getCurrencyLabelStyles()}>
+  <label htmlFor={props.id} css={getCurrencyLabelStyles(props)}>
     {props.children}
   </label>
 );
@@ -77,14 +79,17 @@ const SingleValue = ({ id, ...props }: TSingleValue) => (
 
 SingleValue.displayName = 'SingleValue';
 
-type TCreateCurrencySelectStyles = (input: TInputProps) => void;
+type TCreateCurrencySelectStyles = (
+  input: TInputProps & {
+    currencyHasFocus?: boolean;
+  }
+) => void;
 
 export type TInputProps = {
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
   isReadOnly?: boolean;
-  hasFocus?: boolean;
   menuPortalZIndex?: number;
   /** @deprecated */
   theme?: Theme;
@@ -100,30 +105,36 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
   hasError,
   isDisabled,
   isReadOnly,
-  hasFocus,
   menuPortalZIndex,
+  currencyHasFocus,
 }) => {
   const selectStyles = createSelectStyles({
     hasWarning,
     hasError,
     menuPortalZIndex,
+    isReadOnly,
+    isDisabled,
   });
   return {
     ...selectStyles,
     control: (base: TBase, state: ReactSelectProps) => ({
       ...selectStyles.control(base, state),
+      padding: designTokens.paddingForMoneyInputCurrencyDropdown,
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
       borderRight: '0',
-      minWidth: '72px',
+      minWidth: designTokens.minWidthForMoneyInputCurrencyDropdown,
+      height: '100%',
       borderColor: (() => {
         if (isDisabled)
           return `${designTokens.borderColorForInputWhenDisabled} !important`;
-        if (hasError) return designTokens.borderColorForInputWhenError;
-        if (hasWarning) return designTokens.borderColorForInputWhenWarning;
-        if (hasFocus) return designTokens.borderColorForInputWhenFocused;
         if (isReadOnly)
           return `${designTokens.borderColorForInputWhenReadonly} !important`;
+        if (hasError) return designTokens.borderColorForInputWhenError;
+        if (hasWarning) return designTokens.borderColorForInputWhenWarning;
+        if (currencyHasFocus) {
+          return designTokens.borderColorForInputWhenFocused;
+        }
         return designTokens.borderColorForInput;
       })(),
       cursor: (() => {
@@ -132,9 +143,15 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
         return 'pointer';
       })(),
       backgroundColor: (() => {
-        if (isReadOnly) return designTokens.backgroundColorForInput;
+        if (isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
         return base.backgroundColor;
       })(),
+      '&:hover': {
+        borderColor: designTokens.borderColorForInput,
+      },
+      '&:hover:not(:read-only):not(:disabled)': {
+        backgroundColor: designTokens.backgroundColorForInputWhenHovered,
+      },
     }),
     singleValue: (base: TBase) => ({
       ...base,
@@ -149,7 +166,9 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
       })(),
     }),
     dropdownIndicator: () => ({
-      fill: isReadOnly ? designTokens.fontColorForInputWhenReadonly : '',
+      fill: isReadOnly
+        ? designTokens.fontColorForInputWhenReadonly
+        : designTokens.fontColorForMoneyInputCurrencyDropdownIndicator,
     }),
   };
 };
@@ -255,7 +274,7 @@ export const parseRawAmountToNumber = (rawAmount: string, locale: string) => {
   fractionsSeparator = fractionsSeparator === '.' ? '\\.' : fractionsSeparator; // here we escape the '.' to use it as regex
   // The raw amount with only one sparator
   const normalizedAmount = String(rawAmount)
-    .replace(new RegExp(`[^0-9${fractionsSeparator}]`, 'g'), '') // we just keep the numbers and the fraction symbol
+    .replace(new RegExp(`[^-0-9${fractionsSeparator}]`, 'g'), '') // we just keep the numbers and the fraction symbol
     .replace(fractionsSeparator, '.'); // then we change whatever `fractionsSeparator` was to `.` so we can parse it as float
 
   return parseFloat(normalizedAmount);
@@ -465,6 +484,8 @@ type TMoneyInputProps = {
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
    * z-index value for the currency select menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
@@ -532,6 +553,12 @@ const MoneyInput = (props: TMoneyInputProps) => {
       'MoneyInput: "onChange" is required when is not read only.'
     );
   }
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'MoneyInput',
+  });
 
   const { onFocus } = props;
   const handleAmountFocus = useCallback(() => {
@@ -684,8 +711,8 @@ const MoneyInput = (props: TMoneyInputProps) => {
     hasError: props.hasError,
     isDisabled: props.isDisabled,
     isReadOnly: props.isReadOnly,
-    hasFocus,
     menuPortalZIndex: props.menuPortalZIndex,
+    currencyHasFocus,
   });
   const options = props.currencies.map((currencyCode) => ({
     label: currencyCode,
@@ -759,6 +786,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
           <CurrencyLabel
             id={MoneyInput.getAmountInputId(moneyInputId) as string}
             isDisabled={props.isDisabled}
+            isReadOnly={props.isReadOnly}
           >
             {option && option.label}
           </CurrencyLabel>
@@ -815,7 +843,13 @@ const MoneyInput = (props: TMoneyInputProps) => {
               props.hasHighPrecisionBadge &&
                 isHighPrecision &&
                 css`
-                  padding-right: ${designTokens.spacingL};
+                  padding-right: ${designTokens.spacing40};
+                `,
+              currencyHasFocus &&
+                !props.isDisabled &&
+                !props.isReadOnly &&
+                css`
+                  border-left-color: ${designTokens.borderColorForInputWhenFocused};
                 `,
             ]}
             placeholder={props.placeholder}
@@ -846,7 +880,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
                   // so that the tooltip is flush with the component
                   styles={{
                     body: {
-                      margin: `${designTokens.spacingS} -${designTokens.spacingXs} ${designTokens.spacingS} 0`,
+                      margin: `${designTokens.spacing20} -${designTokens.spacing10} ${designTokens.spacing20} 0`,
                     },
                   }}
                   title={intl.formatMessage(messages.highPrecision)}

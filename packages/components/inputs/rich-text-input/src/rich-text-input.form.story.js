@@ -18,7 +18,7 @@ import TextField from '../../../fields/text-field';
 const initialValue = '';
 
 const RichTextFormikInput = forwardRef((props, ref) => {
-  const [field, meta, helpers] = useField(props.name);
+  const [meta, helpers] = useField(props.name);
   const { value } = meta;
   const { setValue } = helpers;
 

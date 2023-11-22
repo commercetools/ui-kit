@@ -5,13 +5,27 @@ import { FormattedMessage } from 'react-intl';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   bodyStyles,
+  captionStyles,
   detailStyles,
   headlineStyles,
   subheadlineStyles,
   wrapStyles,
 } from './text.styles';
 
-type TBasicTextProps = {
+export type TTone =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'information'
+  | 'positive'
+  | 'negative'
+  | 'critical'
+  | 'inherit';
+
+export type TFontWeight = 'regular' | 'medium' | 'bold';
+
+export type TBasicTextProps = {
+  id?: string;
   intlMessage?: MessageDescriptor & {
     values?: Record<string, React.ReactNode>;
   };
@@ -73,6 +87,7 @@ Text.displayName = 'Text';
 export type THeadlineProps = {
   as?: 'h1' | 'h2' | 'h3';
   truncate?: boolean;
+  nowrap?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -86,10 +101,16 @@ const Headline = (props: THeadlineProps) => {
       false,
       'ui-kit/Text: You attempt to render a TextHeadline without specifying `as` prop.'
     );
-    return <Text intlMessage={props.intlMessage}>{props.children}</Text>;
+
+    return (
+      <span id={props.id}>
+        <Text intlMessage={props.intlMessage}>{props.children}</Text>
+      </span>
+    );
   }
   return (
     <HeadlineElement
+      id={props.id}
       css={headlineStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
@@ -103,8 +124,9 @@ Headline.displayName = 'TextHeadline';
 export type TSubheadlineProps = {
   as?: 'h4' | 'h5';
   truncate?: boolean;
+  nowrap?: boolean;
   isBold?: boolean;
-  tone?: 'primary' | 'secondary' | 'information' | 'positive' | 'negative';
+  tone?: TTone;
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -118,11 +140,16 @@ const Subheadline = (props: TSubheadlineProps) => {
       false,
       'ui-kit/Text: You attempt to render TextSubheadline without specifying `as` prop.'
     );
-    return <Text intlMessage={props.intlMessage}>{props.children}</Text>;
+    return (
+      <Text id={props.id} intlMessage={props.intlMessage}>
+        {props.children}
+      </Text>
+    );
   }
 
   return (
     <SubheadlineElement
+      id={props.id}
       title={props.title}
       css={subheadlineStyles(props)}
       {...filterDataAttributes(props)}
@@ -140,6 +167,7 @@ const Wrap = (props: TWrapProps) => {
   warnIfMissingContent(props, 'TextWrap');
   return (
     <div
+      id={props.id}
       css={wrapStyles()}
       title={props.title}
       {...filterDataAttributes(props)}
@@ -152,17 +180,16 @@ Wrap.displayName = 'TextWrap';
 
 export type TBodyProps = {
   as?: 'span' | 'p';
+  /**
+   * @deprecated: Use the new `fontWeight` prop.
+   */
   isBold?: boolean;
   isItalic?: boolean;
   isStrikethrough?: boolean;
-  tone?:
-    | 'primary'
-    | 'secondary'
-    | 'information'
-    | 'positive'
-    | 'negative'
-    | 'inverted';
+  tone?: TTone | 'inverted';
+  fontWeight?: TFontWeight;
   truncate?: boolean;
+  nowrap?: boolean;
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -174,6 +201,7 @@ const Body = (props: TBodyProps) => {
     const BodyElement = props.as;
     return (
       <BodyElement
+        id={props.id}
         css={bodyStyles(props)}
         title={props.title}
         {...filterDataAttributes(props)}
@@ -185,6 +213,7 @@ const Body = (props: TBodyProps) => {
 
   return (
     <p
+      id={props.id}
       css={bodyStyles(props)}
       title={props.title}
       {...filterDataAttributes(props)}
@@ -196,20 +225,18 @@ const Body = (props: TBodyProps) => {
 Body.displayName = 'TextBody';
 
 export type TDetailProps = {
-  id?: string;
+  /**
+   * @deprecated: use the new `fontWeight` prop
+   */
   isBold?: boolean;
   isItalic?: boolean;
   isStrikethrough?: boolean;
   as?: 'span' | 'small';
-  tone?:
-    | 'primary'
-    | 'secondary'
-    | 'information'
-    | 'positive'
-    | 'negative'
-    | 'warning'
-    | 'inverted';
+  tone?: TTone | 'warning' | 'inverted';
+  fontWeight?: TFontWeight;
   truncate?: boolean;
+  nowrap?: boolean;
+  'aria-labelledby'?: string;
 } & TBasicTextProps &
   TBasicHeadlineProps;
 
@@ -223,6 +250,7 @@ const Detail = (props: TDetailProps) => {
         id={props.id}
         css={detailStyles(props)}
         title={props.title}
+        aria-labelledby={props['aria-labelledby']}
         {...filterDataAttributes(props)}
       >
         <Text intlMessage={props.intlMessage}>{props.children}</Text>
@@ -234,6 +262,7 @@ const Detail = (props: TDetailProps) => {
     <div
       css={detailStyles(props)}
       title={props.title}
+      aria-labelledby={props['aria-labelledby']}
       {...filterDataAttributes(props)}
     >
       <Text intlMessage={props.intlMessage}>{props.children}</Text>
@@ -242,4 +271,31 @@ const Detail = (props: TDetailProps) => {
 };
 Detail.displayName = 'TextDetail';
 
-export default { Headline, Wrap, Subheadline, Detail, Body };
+export type TCaptionProps = {
+  isItalic?: boolean;
+  isStrikethrough?: boolean;
+  tone?: TTone | 'warning' | 'inverted';
+  fontWeight?: TFontWeight;
+  truncate?: boolean;
+  nowrap?: boolean;
+  'aria-labelledby'?: string;
+} & TBasicTextProps &
+  TBasicHeadlineProps;
+
+const Caption = (props: TCaptionProps) => {
+  warnIfMissingTitle(props, 'TextCaption');
+  warnIfMissingContent(props, 'TextCaption');
+  return (
+    <div
+      css={captionStyles(props)}
+      title={props.title}
+      aria-labelledby={props['aria-labelledby']}
+      {...filterDataAttributes(props)}
+    >
+      <Text intlMessage={props.intlMessage}>{props.children}</Text>
+    </div>
+  );
+};
+Caption.displayName = 'TextCaption';
+
+export default { Headline, Wrap, Subheadline, Detail, Body, Caption };

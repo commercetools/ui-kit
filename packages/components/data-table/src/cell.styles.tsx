@@ -17,10 +17,10 @@ type TCellInner = {
 const getPaddingStyle = (props: TCellInner) => {
   if (props.isCondensed)
     return css`
-      padding: ${designTokens.spacingS};
+      padding: ${designTokens.paddingForTableCellAsCondensed};
     `;
   return css`
-    padding: ${designTokens.spacingM};
+    padding: ${designTokens.paddingForTableCell};
   `;
 };
 
@@ -128,8 +128,9 @@ const BaseCell = styled.td<TBaseCell>`
   background-color: ${designTokens.colorSurface};
   border-bottom: ${(props) =>
     props.shouldRenderBottomBorder
-      ? `1px solid ${designTokens.colorNeutral90};`
+      ? `1px solid ${designTokens.colorNeutral95};`
       : 'none'};
+  font-size: ${designTokens.fontSizeForTable};
   ${(props) =>
     props.shouldClipContent
       ? css`

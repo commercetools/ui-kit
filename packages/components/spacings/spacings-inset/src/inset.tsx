@@ -8,37 +8,40 @@ export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
 const getPadding = (scale?: TScale) => {
   switch (scale) {
     case 'xs':
-      return designTokens.spacingXs;
+      return designTokens.spacing10;
     case 's':
-      return designTokens.spacingS;
+      return designTokens.spacing20;
     case 'm':
-      return designTokens.spacingM;
+      return designTokens.spacing30;
     case 'l':
-      return designTokens.spacingL;
+      return designTokens.spacing40;
     case 'xl':
-      return designTokens.spacingXl;
+      return designTokens.spacing50;
     default:
       return 0;
   }
 };
 
-type TProps = {
+export type TInsetProps = {
   scale: TScale;
+  height: 'collapsed' | 'expanded';
   children?: ReactNode;
 };
 
-const Inset = (props: TProps) => (
+const Inset = (props: TInsetProps) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
+      height: ${props.height === 'expanded' ? '100%' : 'auto'};
     `}
     {...filterDataAttributes(props)}
   >
     {props.children}
   </div>
 );
-const defaultProps: Pick<TProps, 'scale'> = {
+const defaultProps: Pick<TInsetProps, 'scale' | 'height'> = {
   scale: 'm',
+  height: 'collapsed',
 };
 Inset.displayName = 'Inset';
 Inset.defaultProps = defaultProps;

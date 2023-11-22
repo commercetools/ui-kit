@@ -6,7 +6,7 @@ describe('ContentNotification', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('when type is error');
+    await page.waitForSelector('text/when type is error');
     await percySnapshot(page, 'ContentNotification');
   });
 });

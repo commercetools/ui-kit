@@ -36,12 +36,12 @@ const noSearch = () => Promise.resolve([]);
 // 'onChange' prop in AsyncSelectInput is required but not needed here
 const voidChangeHandler = () => undefined;
 
-type TColumnData = {
+export type TColumnData = {
   key: string;
   label: ReactNode;
 };
 
-type TColumnSettingsManagerProps = {
+export type TColumnSettingsManagerProps = {
   availableColumns: TColumnData[];
   selectedColumns: TColumnData[];
   onUpdateColumns: (updatedColums: TColumnData[]) => void;
@@ -186,14 +186,14 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
       containerTheme={props.managerTheme}
     >
       <DragDropContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-        <Spacings.Inline scale="m">
+        <Spacings.Inline scale="l">
           <DroppableContainer
             isDragging={isDragging}
             aria-labelledby="hidden-columns"
           >
-            <Spacings.Stack>
-              <Spacings.Inline scale="xs" alignItems="center">
-                <EyeCrossedIcon size="medium" />
+            <Spacings.Stack scale="m">
+              <Spacings.Inline scale="s" alignItems="center">
+                <EyeCrossedIcon size="big" />
                 <FieldLabel
                   id="hidden-columns"
                   title={intl.formatMessage(messages.hiddenColumns)}
@@ -227,7 +227,7 @@ export const ColumnSettingsManager = (props: TColumnSettingsManagerProps) => {
             isDragging={isDragging}
             aria-labelledby="visible-columns"
           >
-            <Spacings.Stack>
+            <Spacings.Stack scale="m">
               <Spacings.Inline scale="xs" alignItems="center">
                 <EyeIcon size="medium" />
                 <FieldLabel

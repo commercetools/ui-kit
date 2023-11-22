@@ -3,27 +3,30 @@ import Text from '@commercetools-uikit/text';
 import { components, OptionProps } from 'react-select';
 import { NO_VALUE_FALLBACK, SELECT_DROPDOWN_OPTION_TYPES } from './constants';
 
-type TData = {
+export type TData = {
   label?: string;
   key?: string;
   id?: string;
 };
 
-type SelectDropdownOptionTypesKeys = keyof typeof SELECT_DROPDOWN_OPTION_TYPES;
-type TProps = {
+export type TSelectDropdownOptionTypesKeys =
+  keyof typeof SELECT_DROPDOWN_OPTION_TYPES;
+export type TDoublePropertySelectInputOptionProps = {
   data?: TData;
   noValueFallback?: string;
-  optionType?: typeof SELECT_DROPDOWN_OPTION_TYPES[SelectDropdownOptionTypesKeys];
+  optionType?: (typeof SELECT_DROPDOWN_OPTION_TYPES)[TSelectDropdownOptionTypesKeys];
 } & OptionProps;
 
-export const MultiplePropertiesSelectInputOption = (props: TProps) => {
+export const MultiplePropertiesSelectInputOption = (
+  props: TDoublePropertySelectInputOptionProps
+) => {
   const { data } = props;
   const noValueFallback = props.noValueFallback || NO_VALUE_FALLBACK;
 
   return (
     <components.Option {...props}>
       <Spacings.Stack scale="xs">
-        <Text.Detail isBold={true}>
+        <Text.Detail fontWeight="bold">
           {data?.label || noValueFallback}
         </Text.Detail>
         <Text.Detail>Key: {data?.key || noValueFallback}</Text.Detail>
@@ -36,13 +39,15 @@ export const MultiplePropertiesSelectInputOption = (props: TProps) => {
 MultiplePropertiesSelectInputOption.displayName =
   'MultiplePropertiesSelectInputOption';
 
-export const DoublePropertySelectInputOption = (props: TProps) => {
+export const DoublePropertySelectInputOption = (
+  props: TDoublePropertySelectInputOptionProps
+) => {
   const { data } = props;
   const noValueFallback = props.noValueFallback || NO_VALUE_FALLBACK;
   return (
     <components.Option {...props}>
       <Spacings.Stack scale="xs">
-        <Text.Detail isBold={true}>
+        <Text.Detail fontWeight="bold">
           {data?.label || noValueFallback}
         </Text.Detail>
         <Text.Detail>Key: {data?.key || noValueFallback}</Text.Detail>
@@ -53,9 +58,9 @@ export const DoublePropertySelectInputOption = (props: TProps) => {
 
 DoublePropertySelectInputOption.displayName = 'DoublePropertySelectInputOption';
 
-type TCustomSelectInputOptionProps = {
-  optionInnerProps: TProps;
-} & TProps;
+export type TCustomSelectInputOptionProps = {
+  optionInnerProps: TDoublePropertySelectInputOptionProps;
+} & TDoublePropertySelectInputOptionProps;
 
 export const CustomSelectInputOption = (
   props: TCustomSelectInputOptionProps

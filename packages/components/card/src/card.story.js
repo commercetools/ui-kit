@@ -23,7 +23,7 @@ const CardStoryTemplate = (props) => (
         <Spacings.Inline>
           {insetScaleValues.map((scale) => (
             <Spacings.Stack key={scale} scale="s">
-              <Text.Body isBold>
+              <Text.Body fontWeight="bold">
                 <code>insetScale: {scale}</code>
               </Text.Body>
               <Card insetScale={scale} type={props.type} theme={theme}>

@@ -97,6 +97,16 @@ const sizes = [
   { name: 'm', pixels: '16px' },
   { name: 'l', pixels: '24px' },
   { name: 'xl', pixels: '32px' },
+  { name: 'xxl', pixels: '48px' },
+  { name: 'xxxl', pixels: '64px' },
+];
+
+const insetSizes = [
+  { name: 'xs', pixels: '4px' },
+  { name: 's', pixels: '8px' },
+  { name: 'm', pixels: '16px' },
+  { name: 'l', pixels: '24px' },
+  { name: 'xl', pixels: '32px' },
 ];
 
 const insetSquishSizes = [
@@ -185,7 +195,7 @@ export const component = () => (
     <Spec label="Inset">
       <View>
         <Spacings.Inline scale="s">
-          {sizes.map((size) => (
+          {insetSizes.map((size) => (
             <InsetColorWrapper key={size.name}>
               <Spacings.Inset scale={size.name}>
                 <Square>

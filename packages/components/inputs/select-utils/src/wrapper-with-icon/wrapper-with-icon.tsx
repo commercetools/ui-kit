@@ -7,13 +7,16 @@ import {
   type PlaceholderProps,
 } from 'react-select';
 
+export type TWrapperWithIconSelectProps = {
+  iconLeft?: ReactElement;
+};
 export type TSingleValueWrapperWithIconProps = {
   type: 'singleValue';
-  selectProps?: TSelectProps;
+  selectProps?: TWrapperWithIconSelectProps;
 } & SingleValueProps;
 export type TPlaceholderWrapperWithIconProps = {
   type: 'placeholder';
-  selectProps?: TSelectProps;
+  selectProps?: TWrapperWithIconSelectProps;
 } & PlaceholderProps;
 export type TWrapperWithIconProps<Type extends 'singleValue' | 'placeholder'> =
   Type extends 'singleValue'
@@ -39,10 +42,6 @@ const getDefaultComponent = <Type extends 'singleValue' | 'placeholder'>(
   return null;
 };
 
-type TSelectProps = {
-  iconLeft?: ReactElement;
-};
-
 const WrapperWithIcon = <Type extends 'singleValue' | 'placeholder'>(
   props: TWrapperWithIconProps<Type>
 ) => {
@@ -63,7 +62,7 @@ const WrapperWithIcon = <Type extends 'singleValue' | 'placeholder'>(
         // the icon has a fixed size of 24px (== SpacingsXl), therefore we can use a fixed margin
         // spacingsXs is the margin between the icon and value
         css={css`
-          margin-left: ${designTokens.spacingXl + designTokens.spacingXs};
+          margin-left: ${designTokens.marginLeftForSelectInputIcon};
         `}
       >
         {/* @ts-ignore */}

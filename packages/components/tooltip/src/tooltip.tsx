@@ -11,17 +11,24 @@ import {
   useEffect,
   useCallback,
   cloneElement,
+  useState,
 } from 'react';
 import { isValidElementType } from 'react-is';
 import isNil from 'lodash/isNil';
 import usePopper from 'use-popper';
-import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
+import { css } from '@emotion/react';
+import { useFieldId } from '@commercetools-uikit/hooks';
 import { createSequentialId, warning } from '@commercetools-uikit/utils';
-import { Wrapper, Body, getBodyStyles } from './tooltip.styles';
+import {
+  Wrapper,
+  Body,
+  getBodyStyles,
+  getTooltipStyles,
+} from './tooltip.styles';
 
 const sequentialId = createSequentialId('tooltip-');
 
-type TComponents = {
+export type TComponents = {
   /**
    * The component rendered as the tooltip body.
    */
@@ -40,9 +47,13 @@ export type TTooltipProps = {
   children: ReactElement;
 
   /**
+   * Delay (in milliseconds) between the start of the user interaction, and showing the tooltip.
+   */
+  showAfter?: number;
+  /**
    * Delay (in milliseconds) between the end of the user interaction, and the closing of the tooltip.
    */
-  closeAfter: number;
+  closeAfter?: number;
   /**
    * Custom css-in-js object styles for the tooltip body.
    */
@@ -116,6 +127,8 @@ export type TTooltipProps = {
     | 'auto';
 };
 
+export type TTooltipState = 'closed' | 'entering' | 'opened' | 'exiting';
+
 const TooltipWrapper = (props: Pick<TTooltipProps, 'children'>) => (
   <>{props.children}</>
 );
@@ -123,17 +136,19 @@ TooltipWrapper.displayName = 'TooltipWrapperComponent';
 
 const tooltipDefaultProps: Pick<
   TTooltipProps,
-  'closeAfter' | 'horizontalConstraint' | 'off' | 'placement'
+  'showAfter' | 'closeAfter' | 'horizontalConstraint' | 'off' | 'placement'
 > = {
-  closeAfter: 0,
+  showAfter: 300,
+  closeAfter: 200,
   horizontalConstraint: 'scale',
   off: false,
   placement: 'top',
 };
 
 const Tooltip = (props: TTooltipProps) => {
+  const enterTimer = useRef<ReturnType<typeof setTimeout>>();
   const leaveTimer = useRef<ReturnType<typeof setTimeout>>();
-  const childrenRef = useRef<ReturnType<typeof setTimeout>>();
+
   if (props.components?.BodyComponent) {
     warning(
       isValidElementType(props.components.BodyComponent),
@@ -155,53 +170,44 @@ const Tooltip = (props: TTooltipProps) => {
 
   useEffect(() => {
     return () => {
+      if (enterTimer.current) {
+        clearTimeout(enterTimer.current);
+      }
       if (leaveTimer.current) {
         clearTimeout(leaveTimer.current);
       }
     };
   }, []);
 
-  const { reference, popper } = usePopper({
+  const { reference, popper, popperInstance } = usePopper({
     placement: props.placement,
     modifiers: props.modifiers,
   });
-  const [isOpen, toggle] = useToggleState(false);
-  const closeTooltip = useCallback(() => {
-    toggle(false);
-  }, [toggle]);
-  const openTooltip = useCallback(() => {
-    toggle(true);
-  }, [toggle]);
+  const [state, setState] = useState<TTooltipState>('closed');
 
   const isControlled = !isNil(props.isOpen);
-  const tooltipIsOpen = isControlled ? props.isOpen : isOpen;
+  const tooltipIsOpen = isControlled
+    ? props.isOpen
+    : state === 'opened' || state === 'exiting';
   const id = useFieldId(props.id, sequentialId);
 
   const { onClose } = props;
   const handleClose = useCallback(
     (event?: ChangeEvent | FocusEvent) => {
       if (!isControlled) {
-        closeTooltip();
+        setState('closed');
       }
       if (onClose) {
         onClose(event);
       }
     },
-    [isControlled, closeTooltip, onClose]
+    [isControlled, onClose]
   );
 
   const { onFocus, onMouseOver } = props.children.props;
-  const { onOpen } = props;
+  const { showAfter, onOpen } = props;
   const handleEnter = useCallback(
     (event?: ChangeEvent | FocusEvent) => {
-      // Remove the title ahead of time.
-      // We don't want to wait for the next render commit.
-      // We would risk displaying two tooltips at the same time (native + this one).
-      if (childrenRef && typeof childrenRef === 'function') {
-        // @ts-ignore
-        childrenRef.setAttribute('title', '');
-      }
-
       if (event) {
         if (event.type === 'mouseover' && onMouseOver) {
           onMouseOver(event);
@@ -211,19 +217,22 @@ const Tooltip = (props: TTooltipProps) => {
           onFocus(event);
         }
 
-        if (!isOpen && !isControlled) {
-          openTooltip();
-        }
+        if (state !== 'opened' && !isControlled) {
+          setState('entering');
+          enterTimer.current = setTimeout(() => {
+            setState('opened');
 
-        if (onOpen) {
-          onOpen(event);
+            if (onOpen) {
+              onOpen(event);
+            }
+          }, showAfter);
         }
 
         event.preventDefault();
         event.stopPropagation();
       }
     },
-    [onFocus, onOpen, onMouseOver, isControlled, isOpen, openTooltip]
+    [onFocus, onOpen, onMouseOver, isControlled, state, showAfter]
   );
 
   const { onBlur, onMouseLeave } = props.children.props;
@@ -231,9 +240,8 @@ const Tooltip = (props: TTooltipProps) => {
 
   const handleLeave = useCallback(
     (event) => {
-      if (leaveTimer.current) {
-        clearTimeout(leaveTimer.current);
-      }
+      clearTimeout(enterTimer.current);
+      clearTimeout(leaveTimer.current);
 
       if (event.type === 'mouseleave' && onMouseLeave) {
         onMouseLeave(event);
@@ -243,21 +251,33 @@ const Tooltip = (props: TTooltipProps) => {
         onBlur(event);
       }
 
-      if (closeAfter) {
+      if (closeAfter && state === 'opened') {
         leaveTimer.current = setTimeout(() => {
-          handleClose(event);
+          const tooltipElement = popperInstance?.popper.querySelector(
+            '[data-testid="tooltip-message-wrapper"]'
+          ) as HTMLElement;
+
+          if (tooltipElement) {
+            tooltipElement.addEventListener('animationend', () =>
+              handleClose()
+            );
+          } else {
+            handleClose();
+          }
+
+          setState('exiting');
         }, closeAfter);
       } else {
         handleClose(event);
       }
     },
-    [closeAfter, onBlur, onMouseLeave, handleClose]
+    [closeAfter, onBlur, onMouseLeave, handleClose, state, popperInstance]
   );
 
   useEffect(() => {
     // if tooltip was open, and then component
     // updated to be off, we should close the tooltip
-    if (isOpen && props.off) {
+    if (state === 'opened' && props.off) {
       if (closeAfter) {
         leaveTimer.current = setTimeout(() => {
           handleClose();
@@ -266,7 +286,7 @@ const Tooltip = (props: TTooltipProps) => {
         handleClose();
       }
     }
-  }, [props.off, closeAfter, handleClose, toggle, isOpen]);
+  }, [props.off, closeAfter, handleClose, state]);
 
   const childrenProps = {
     // don't pass event listeners to children
@@ -282,7 +302,9 @@ const Tooltip = (props: TTooltipProps) => {
         // for seo and accessibility, we add the tooltip's title
         // as a native title when the title is hidden
         title:
-          !tooltipIsOpen && typeof props.title === 'string'
+          !tooltipIsOpen &&
+          state !== 'entering' &&
+          typeof props.title === 'string'
             ? props.title
             : null,
       }
@@ -290,7 +312,7 @@ const Tooltip = (props: TTooltipProps) => {
 
   const eventListeners = !props.off
     ? {
-        onMouseOver: handleEnter,
+        onMouseEnter: handleEnter,
         onMouseLeave: handleLeave,
         onFocus: handleEnter,
         onBlur: handleLeave,
@@ -320,17 +342,24 @@ const Tooltip = (props: TTooltipProps) => {
             // ref accepts `LegacyRef`, which is a union of `RefObject` and `string`
             // propper.ref returns `RefObject`
             ref={popper.ref as LegacyRef<HTMLDivElement>}
-            css={{
+            css={css({
               ...popper.styles,
               ...getBodyStyles({
                 constraint: props.horizontalConstraint,
                 placement: popper.placement,
                 customStyles: props.styles?.body,
               }),
-            }}
+            })}
             data-placement={popper.placement}
           >
-            <BodyComponent>{props.title}</BodyComponent>
+            <div
+              css={css({
+                ...getTooltipStyles(state),
+              })}
+              data-testid="tooltip-message-wrapper"
+            >
+              <BodyComponent>{props.title}</BodyComponent>
+            </div>
           </div>
         </TooltipWrapperComponent>
       )}

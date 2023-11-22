@@ -10,7 +10,10 @@ import {
   number,
 } from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
+import Spacings from '@commercetools-uikit/spacings';
 import Section from '../../../../../docs/.storybook/decorators/section';
+import NeighbouringStackingContext from '../../../../../docs/.storybook/decorators/neighbouring-stacking-context';
+import { addMenuPortalProps } from '../../../../../docs/.storybook/utils';
 import Readme from '../README.md';
 import AsyncSelectInput from './async-select-input';
 import * as icons from '../../../icons';
@@ -57,6 +60,7 @@ class SelectStory extends Component {
   static displayName = 'SelectStory';
   render() {
     const isMulti = boolean('isMulti', false);
+    const menuIsOpen = boolean('menuIsOpen', false);
     const defaultOptions = boolean('defaultOptions', true)
       ? colourOptions
       : false;
@@ -71,7 +75,7 @@ class SelectStory extends Component {
             key={`${isMulti}-${defaultOptions}`}
             defaultValue={isMulti ? [] : undefined}
             render={(value, onChange) => (
-              <div>
+              <Spacings.Stack scale="m">
                 <AsyncSelectInput
                   horizontalConstraint={select(
                     'horizontalConstraint',
@@ -84,12 +88,17 @@ class SelectStory extends Component {
                   aria-labelledby={text('aria-labelledby', '')}
                   isAutofocussed={boolean('isAutofocussed', false)}
                   backspaceRemovesValue={boolean('backspaceRemovesValue', true)}
+                  controlShouldRenderValue={boolean(
+                    'controlShouldRenderValue',
+                    true
+                  )}
                   id={text('id', '')}
                   containerId={text('containerId', '')}
                   isClearable={boolean('isClearable', false)}
                   isDisabled={boolean('isDisabled', false)}
                   isReadOnly={boolean('isReadOnly', false)}
                   isMulti={isMulti}
+                  menuIsOpen={menuIsOpen}
                   isSearchable={boolean('isSearchable', true)}
                   maxMenuHeight={number('maxMenuHeight', 220)}
                   closeMenuOnSelect={boolean('closeMenuOnSelect', true)}
@@ -112,8 +121,10 @@ class SelectStory extends Component {
                   cacheOptions={boolean('cacheOptions', false)}
                   showOptionGroupDivider={showOptionGroupDivider}
                   iconLeft={iconLeft ? createElement(iconLeft) : undefined}
+                  {...addMenuPortalProps()}
                 />
-              </div>
+                <NeighbouringStackingContext />
+              </Spacings.Stack>
             )}
           />
         </Section>

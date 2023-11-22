@@ -6,7 +6,7 @@ describe('Messages', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch('An error message');
+    await page.waitForSelector('text/An error message');
     await percySnapshot(page, 'Messages');
   });
 });

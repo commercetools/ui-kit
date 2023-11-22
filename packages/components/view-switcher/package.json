@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/view-switcher",
   "description": "ViewSwitchers allow users to toggle between two or more different views of the same, similar or related content items within the same space on screen.",
-  "version": "15.5.1",
+  "version": "16.11.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,13 +19,13 @@
   "module": "dist/commercetools-uikit-view-switcher.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
-    "@babel/runtime-corejs3": "^7.19.1",
-    "@commercetools-uikit/accessible-button": "15.5.1",
-    "@commercetools-uikit/design-system": "15.5.1",
-    "@commercetools-uikit/utils": "15.5.1",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
+    "@babel/runtime": "^7.20.13",
+    "@babel/runtime-corejs3": "^7.20.13",
+    "@commercetools-uikit/accessible-button": "16.11.0",
+    "@commercetools-uikit/design-system": "16.11.0",
+    "@commercetools-uikit/utils": "16.11.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
     "prop-types": "15.8.1"
   },

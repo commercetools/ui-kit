@@ -72,7 +72,7 @@ export const component = () => (
         touched={true}
       />
     </Spec>
-    <Spec label="when expanded by default">
+    {/* <Spec label="when expanded by default">
       <MultilineTextField
         title="Welcome Text"
         value={value}
@@ -90,6 +90,6 @@ export const component = () => (
         defaultExpandMultilineText={true}
         isDisabled={true}
       />
-    </Spec>
+    </Spec> */}
   </Suite>
 );

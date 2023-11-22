@@ -17,20 +17,20 @@ export type TAlignItem =
    */
   | 'flexEnd';
 
-export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl';
+export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 
-export type TProps = {
+export type TStackProps = {
   scale: TScale;
   alignItems: TAlignItem;
   children: ReactNode;
 };
 
-const Stack = (props: TProps) => (
+const Stack = (props: TStackProps) => (
   <div css={getStyles(props)} {...filterDataAttributes(props)}>
     {props.children}
   </div>
 );
-const defaultProps: Pick<TProps, 'scale' | 'alignItems'> = {
+const defaultProps: Pick<TStackProps, 'scale' | 'alignItems'> = {
   scale: 's',
   alignItems: 'stretch',
 };

@@ -168,7 +168,7 @@ storiesOf('Components|DataTable', module)
       visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
     });
 
-    const [isCondensed, setIsCondensed] = useState(false);
+    const [isCondensed, setIsCondensed] = useState(true);
     const [isWrappingText, setIsWrappingText] = useState(false);
 
     const {

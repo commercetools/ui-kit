@@ -26,7 +26,7 @@ const sizePerScale = {
 
 const positionOrigin = '20px';
 
-type TLoadingSpinnerProps = {
+export type TLoadingSpinnerProps = {
   /**
    * Set the amount of time to delay the loading spinner before it renders.
    * The default value of is 1000ms.
@@ -59,7 +59,7 @@ const LoadingSpinner = (props: TLoadingSpinnerProps) => {
     return () => clearTimeout(delaySpinnerTimeout);
   }, [props.maxDelayDuration]);
 
-  if (!showSpinner) return null;
+  if (!showSpinner && (props.maxDelayDuration ?? 0) > 0) return null;
 
   return (
     <Inline alignItems="center">

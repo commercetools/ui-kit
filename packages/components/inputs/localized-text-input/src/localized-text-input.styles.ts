@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
+import type { TLocalizedInputProps } from './localized-text-input';
 
 // NOTE: order is important here
 // * a disabled-field currently does not display warning/error-states so it takes precedence
@@ -14,19 +15,42 @@ const getLocalizedInputStyles = () => [
   `,
 ];
 
-const getLanguageLabelStyles = (_props: unknown) => {
+const getLanguageLabelBackgroundColor = (props: TLocalizedInputProps) => {
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForLocalizedInputLabelWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForLocalizedInputLabelWhenReadonly;
+  }
+  return designTokens.backgroundColorForLocalizedInputLabel;
+};
+
+const getLanguageLabelBorderColor = (props: TLocalizedInputProps) => {
+  if (props.isDisabled) {
+    return designTokens.borderColorForInputWhenDisabled;
+  }
+  return props.isReadOnly
+    ? designTokens.borderColorForLocalizedInputLabelWhenReadonly
+    : designTokens.borderColorForLocalizedInputLabel;
+};
+
+const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
   return css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
     box-sizing: border-box;
-    color: ${designTokens.fontColorForInputWhenDisabled};
-    height: ${designTokens.sizeHeightInput};
-    line-height: ${designTokens.sizeHeightInput};
-    background-color: ${designTokens.backgroundColorForInputWhenDisabled};
+    color: ${designTokens.fontColorForLocalizedInputLabel};
+    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
+    height: ${designTokens.heightForInput};
+    font-size: ${designTokens.fontSizeForLocalizedInputLabel};
+    background-color: ${getLanguageLabelBackgroundColor(props)};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
-    border: 1px ${designTokens.borderColorForInputWhenDisabled} solid;
-    padding: 0 ${designTokens.spacingS};
+    border: 1px solid ${getLanguageLabelBorderColor(props)};
+    padding: ${designTokens.paddingForLocalizedInputLabel};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};

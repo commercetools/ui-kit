@@ -6,7 +6,7 @@ describe('Card', () => {
   });
 
   it('Default', async () => {
-    await expect(page).toMatch(/InsetScale/);
+    await page.waitForSelector('text/InsetScale');
     await percySnapshot(page, 'Card');
   });
 });

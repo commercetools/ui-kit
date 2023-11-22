@@ -1,0 +1,4 @@
+{
+  "main": "dist/commercetools-uikit-hooks-polyfills.cjs.js",
+  "module": "dist/commercetools-uikit-hooks-polyfills.esm.js"
+}

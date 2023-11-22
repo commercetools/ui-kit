@@ -18,6 +18,7 @@ import {
   customComponentsWithIcons,
   messages,
   createSelectStyles,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 
 const LoadingIndicator = () => <LoadingSpinner scale="s" />;
@@ -41,7 +42,7 @@ type TCustomEvent = {
 
 type ReactSelectAsyncProps = AsyncProps<unknown, boolean, GroupBase<unknown>>;
 
-type TAsyncSelectInputProps = {
+export type TAsyncSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
@@ -125,6 +126,12 @@ type TAsyncSelectInputProps = {
    */
   components?: ReactSelectAsyncProps['components'];
   /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectAsyncProps['controlShouldRenderValue'];
+  /**
    * Custom method to filter whether an option should be displayed in the menu
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -181,6 +188,12 @@ type TAsyncSelectInputProps = {
    */
   isSearchable?: ReactSelectAsyncProps['isSearchable'];
   /**
+   * Can be used to enforce the select input to be opened
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  menuIsOpen?: ReactSelectAsyncProps['menuIsOpen'];
+  /**
    * Maximum height of the menu before scrolling
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -194,6 +207,8 @@ type TAsyncSelectInputProps = {
   menuPortalTarget?: ReactSelectAsyncProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex: number;
   /**
@@ -296,13 +311,14 @@ type TAsyncSelectInputProps = {
 
 const defaultProps: Pick<
   TAsyncSelectInputProps,
-  'value' | 'isSearchable' | 'menuPortalZIndex'
+  'value' | 'isSearchable' | 'menuPortalZIndex' | 'controlShouldRenderValue'
 > = {
   // Using "null" will ensure that the currently selected value disappears in
   // case "undefined" gets passed as the next value
   value: null,
   isSearchable: true,
   menuPortalZIndex: 1,
+  controlShouldRenderValue: true,
 };
 
 const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
@@ -314,6 +330,12 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
       'AsyncSelectInput: `onChange` is required when input is not read only.'
     );
   }
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'AsyncSelectInput',
+  });
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
@@ -354,7 +376,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               ...props.components,
             } as ReactSelectAsyncProps['components']
           }
-          menuIsOpen={props.isReadOnly ? false : undefined}
+          menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
@@ -366,6 +388,8 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
+              controlShouldRenderValue: props.controlShouldRenderValue,
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectAsyncProps['styles']
           }
           filterOption={props.filterOption}
@@ -448,6 +472,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           // Extra props
           // @ts-ignore: passed to the react-select components via `selectProps`.
           iconLeft={props.iconLeft}
+          controlShouldRenderValue={props.controlShouldRenderValue}
         />
       </div>
     </Constraints.Horizontal>

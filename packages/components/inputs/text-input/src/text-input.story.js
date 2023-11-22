@@ -17,7 +17,16 @@ storiesOf('Components|Inputs', module)
   })
   .add('TextInput', () => {
     return (
-      <Section>
+      <Section
+        backgroundColor={select(
+          'storyBackgroundColor',
+          {
+            Default: null,
+            Contrast: 'aliceblue',
+          },
+          null
+        )}
+      >
         <Value
           defaultValue=""
           render={(value, onChange) => (

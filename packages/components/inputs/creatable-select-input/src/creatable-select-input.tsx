@@ -46,7 +46,7 @@ type ReactSelectCreatableProps = CreatableProps<
   GroupBase<unknown>
 >;
 
-type TCreatableSelectInputProps = {
+export type TCreatableSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
@@ -202,6 +202,8 @@ type TCreatableSelectInputProps = {
   menuPortalTarget?: ReactSelectCreatableProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex: number;
   /**
@@ -392,6 +394,7 @@ const CreatableSelectInput = (props: TCreatableSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectCreatableProps['styles']
           }
           filterOption={props.filterOption}

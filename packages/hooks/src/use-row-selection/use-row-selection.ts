@@ -1,12 +1,12 @@
 import { useReducer, useDebugValue } from 'react';
 
-interface TRowItem {
+export interface TRowItem {
   id: string;
 }
-type TSelectionState = {
+export type TSelectionState = {
   [id: string]: boolean;
 };
-type TSelectionAction =
+export type TSelectionAction =
   | { type: 'toggle'; payload: string }
   | { type: 'select'; payload: string }
   | { type: 'deselect'; payload: string }

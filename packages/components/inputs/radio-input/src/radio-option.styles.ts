@@ -1,36 +1,24 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
-import { TOptionProps } from './radio-option';
-
-type TStylesProps = Pick<
-  TOptionProps,
-  'isDisabled' | 'hasError' | 'hasWarning' | 'isHovered' | 'isReadOnly'
->;
+import type { TStylesProps } from './radio-option';
 
 const LabelTextWrapper = styled.div<TStylesProps>`
   grid-area: label;
-  margin-left: ${designTokens.spacingS};
+  margin-left: ${designTokens.marginLeftForRadioInputLabel};
   font-size: 1rem;
   font-family: inherit;
-  color: ${(props) =>
-    props.isDisabled
-      ? designTokens.fontColorForInputWhenDisabled
-      : designTokens.fontColorForInput};
+  display: flex;
+  align-items: center;
 `;
 
 const AdditionalTextWrapper = styled.div<TStylesProps>`
   grid-area: content;
-  margin-left: ${designTokens.spacingXs};
   font-size: 1rem;
   font-family: inherit;
-  color: ${(props) =>
-    props.isDisabled
-      ? designTokens.fontColorForInputWhenDisabled
-      : designTokens.fontColorForInput};
 `;
 
-const RadioOptionsWrapper = styled.div<TStylesProps>`
+const RadioInputWrapper = styled.div<TStylesProps>`
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
@@ -39,9 +27,12 @@ const RadioOptionsWrapper = styled.div<TStylesProps>`
     '. content';
 `;
 
-const getSvgContainerBorderStroke = (props: TStylesProps) => {
+const getBorderColor = (props: TStylesProps) => {
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.borderColorForRadioInputWhenReadonly;
   }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
@@ -50,17 +41,20 @@ const getSvgContainerBorderStroke = (props: TStylesProps) => {
     return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isHovered && !props.isDisabled) {
-    return designTokens.borderColorForInputWhenFocused;
+    if (props.isChecked) {
+      return designTokens.borderColorForInputWhenFocused;
+    }
+    return designTokens.borderColorForRadioInputWhenFocused;
   }
-  if (props.isReadOnly) {
-    return designTokens.borderColorForInputWhenReadonly;
+  if (props.isChecked) {
+    return designTokens.borderColorForRadioInputWhenChecked;
   }
-  return designTokens.borderColorForInput;
+  return designTokens.borderColorForRadioInput;
 };
 
-const getSvgContainerContentFill = (props: TStylesProps) => {
+const getKnobColor = (props: TStylesProps) => {
   if (props.isDisabled) {
-    return designTokens.fontColorForInputWhenDisabled;
+    return designTokens.borderColorForRadioInputWhenDisabled;
   }
   if (props.hasError) {
     return designTokens.fontColorForInputWhenError;
@@ -69,41 +63,7 @@ const getSvgContainerContentFill = (props: TStylesProps) => {
     return designTokens.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
-    return designTokens.fontColorForInputWhenReadonly;
-  }
-  return designTokens.borderColorForInputWhenFocused;
-};
-
-const getContainerStyles = (props: TOptionProps) => css`
-  display: flex;
-  align-items: center;
-  grid-area: radio;
-  svg {
-    fill: ${props.isDisabled
-      ? designTokens.backgroundColorForInputWhenDisabled
-      : designTokens.backgroundColorForInput};
-  }
-
-  svg *[data-style='radio-option__border'] {
-    stroke: ${getSvgContainerBorderStroke(props)};
-  }
-  svg *[data-style='radio-option__content'] {
-    fill: ${getSvgContainerContentFill(props)};
-  }
-`;
-
-const getSvgLabelBorderStroke = (props: TStylesProps) => {
-  if (props.isDisabled) {
-    return designTokens.borderColorForInputWhenDisabled;
-  }
-  if (props.hasError) {
-    return designTokens.borderColorForInputWhenError;
-  }
-  if (props.hasWarning) {
-    return designTokens.borderColorForInputWhenWarning;
-  }
-  if (props.isReadOnly) {
-    return designTokens.borderColorForInputWhenReadonly;
+    return designTokens.colorNeutral60;
   }
   return designTokens.borderColorForInputWhenFocused;
 };
@@ -112,14 +72,14 @@ const getLabelColor = (props: TStylesProps) => {
   if (props.isDisabled) {
     return designTokens.fontColorForInputWhenDisabled;
   }
+  if (props.isReadOnly) {
+    return designTokens.fontColorForInputWhenReadonly;
+  }
   if (props.hasError) {
     return designTokens.fontColorForInputWhenError;
   }
   if (props.hasWarning) {
     return designTokens.fontColorForInputWhenWarning;
-  }
-  if (props.isReadOnly) {
-    return designTokens.fontColorForInputWhenReadonly;
   }
   return designTokens.fontColorForInput;
 };
@@ -133,25 +93,84 @@ const getLabelCursor = (props: TStylesProps) => {
   return 'pointer';
 };
 
-const getLabelStyles = (props: TStylesProps) => css`
-  align-items: center;
-  color: ${getLabelColor(props)};
-  cursor: ${getLabelCursor(props)};
+const RadioOptionKnob = styled.div<TStylesProps>`
+  width: ${designTokens.heightForRadioInputOptionWhenChecked};
+  height: ${designTokens.heightForRadioInputOptionWhenChecked};
+  border-radius: 50%;
+  background-color: ${(props) => getKnobColor(props)};
+`;
+
+const RadioOptionBorder = styled.div<TStylesProps>`
+  width: ${designTokens.heightForRadioInputOption};
+  height: ${designTokens.heightForRadioInputOption};
+  border-radius: 50%;
+  background-color: ${designTokens.backgroundColorForInput};
+  border-width: ${designTokens.borderForRadioInputOption};
+  border-style: solid;
+  border-color: ${(props) => getBorderColor(props)};
   display: flex;
-  position: relative;
-  &:hover svg *[data-style='radio-option__border'] {
-    stroke: ${getSvgLabelBorderStroke(props)};
-  }
-  :focus-within ${LabelTextWrapper} {
-    outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
-    outline-offset: 3px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const RadioOptionContainer = styled.div<TStylesProps>`
+  display: flex;
+  align-items: center;
+  grid-area: radio;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  ${RadioOptionBorder} {
+    background-color: ${(props) =>
+      props.isDisabled
+        ? designTokens.backgroundColorForInputWhenDisabled
+        : designTokens.backgroundColorForInput};
   }
 `;
 
+const getHoverStyles = (props: TStylesProps) => {
+  const hoverStyles = css`
+    ${RadioOptionContainer} {
+      border-color: ${designTokens.colorNeutral90};
+    }
+  `;
+
+  return [
+    !props.isDisabled &&
+      !props.isReadOnly &&
+      /* prettier-ignore */
+      css`
+        &:hover ${hoverStyles};
+      `,
+    props.isHovered && hoverStyles,
+  ];
+};
+
+const RadioOptionLabel = styled.label<TStylesProps>`
+  align-items: center;
+  color: ${(props) => getLabelColor(props)};
+  cursor: ${(props) => getLabelCursor(props)};
+  display: flex;
+
+  ${(props) =>
+    !props.isReadOnly
+      ? `:focus-within ${LabelTextWrapper} {
+      outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
+      outline-offset: 2px;
+      width: fit-content;
+    }`
+      : ''}
+
+  ${(props) => getHoverStyles(props)}
+`;
+
 export {
-  getContainerStyles,
-  getLabelStyles,
   LabelTextWrapper,
-  RadioOptionsWrapper,
+  RadioInputWrapper,
   AdditionalTextWrapper,
+  RadioOptionKnob,
+  RadioOptionBorder,
+  RadioOptionLabel,
+  RadioOptionContainer,
 };

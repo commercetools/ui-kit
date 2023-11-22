@@ -28,6 +28,8 @@ const sizes = [
   { name: 'm', pixels: '16px' },
   { name: 'l', pixels: '24px' },
   { name: 'xl', pixels: '32px' },
+  { name: 'xxl', pixels: '48px' },
+  { name: 'xxxl', pixels: '64px' },
 ];
 
 storiesOf('Components|Spacings', module)

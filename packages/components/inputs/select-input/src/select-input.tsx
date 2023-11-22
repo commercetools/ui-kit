@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import isEmpty from 'lodash/isEmpty';
 import has from 'lodash/has';
-import flatMap from 'lodash/flatMap';
 import Select, {
   components as defaultComponents,
   type Props as ReactSelectProps,
@@ -15,6 +14,7 @@ import {
   customComponentsWithIcons,
   createSelectStyles,
   messages,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
@@ -24,18 +24,18 @@ const customizedComponents = {
   MultiValueRemove: TagRemove,
 };
 
-type TOption = {
+export type TOption = {
   value: string;
   label?: ReactNode;
 };
 
-type TOptionObject = {
+export type TOptionObject = {
   options: TOption[];
 };
 
-type TOptions = TOption[] | TOptionObject[];
+export type TOptions = TOption[] | TOptionObject[];
 
-type TCustomEvent = {
+export type TCustomEvent = {
   target: {
     id?: ReactSelectProps['inputId'];
     name?: ReactSelectProps['name'];
@@ -44,7 +44,12 @@ type TCustomEvent = {
   persist: () => void;
 };
 
-type TSelectInputProps = {
+export type TSelectInputProps = {
+  /**
+   * Indicates the appearance of the input.
+   * Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.
+   */
+  appearance?: 'default' | 'quiet';
   horizontalConstraint?:
     | 3
     | 4
@@ -134,7 +139,12 @@ type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   components?: ReactSelectProps['components'];
-  // controlShouldRenderValue: PropTypes.bool,
+  /**
+   * Control whether the selected values should be rendered in the control
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  controlShouldRenderValue?: ReactSelectProps['controlShouldRenderValue'];
   // delimiter: PropTypes.string,
   // escapeClearsValue: PropTypes.bool,
   /**
@@ -202,6 +212,12 @@ type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   isSearchable?: ReactSelectProps['isSearchable'];
+  /**
+   * Can be used to enforce the select input to be opened
+   * <br>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  menuIsOpen?: ReactSelectProps['menuIsOpen'];
   // loadingMessage: PropTypes.func,
   // minMenuHeight: PropTypes.number,
   /**
@@ -210,7 +226,6 @@ type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   maxMenuHeight?: ReactSelectProps['maxMenuHeight'];
-  // menuIsOpen: PropTypes.bool,
   // menuPlacement: PropTypes.oneOf(['auto', 'bottom', 'top']),
   // menuPosition: PropTypes.oneOf(['absolute', 'fixed']),
   /**
@@ -221,6 +236,8 @@ type TSelectInputProps = {
   menuPortalTarget?: ReactSelectProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**
@@ -281,7 +298,7 @@ type TSelectInputProps = {
   /**
    * Array of options that populate the select menu
    */
-  options?: TOptions;
+  options: TOptions;
   showOptionGroupDivider?: boolean;
   // pageSize: PropTypes.number,
   /**
@@ -315,14 +332,26 @@ type TSelectInputProps = {
 
 const defaultProps: Pick<
   TSelectInputProps,
-  'maxMenuHeight' | 'menuPortalZIndex'
+  'appearance' | 'maxMenuHeight' | 'menuPortalZIndex' | 'options'
 > = {
+  appearance: 'default',
   maxMenuHeight: 220,
   menuPortalZIndex: 1,
+  options: [],
 };
+
+const isOptionObject = (
+  option: TOption | TOptionObject
+): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
 const SelectInput = (props: TSelectInputProps) => {
   const intl = useIntl();
+
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'SelectInput',
+  });
 
   const placeholder =
     props.placeholder || intl.formatMessage(messages.placeholder);
@@ -334,9 +363,12 @@ const SelectInput = (props: TSelectInputProps) => {
   //     { label: 'Flavours', options: flavourOptions },
   //   ];
   // So we "ungroup" the options by merging them all into one list first.
-  const optionsWithoutGroups = flatMap(props.options, (option) =>
-    has(option, 'value') ? option : (option as TOptionObject).options
-  );
+  const optionsWithoutGroups = props.options.flatMap((option) => {
+    if (isOptionObject(option)) {
+      return option.options;
+    }
+    return option;
+  });
 
   const selectedOptions = props.isMulti
     ? ((props.value || []) as string[])
@@ -382,18 +414,21 @@ const SelectInput = (props: TSelectInputProps) => {
               ...props.components,
             } as ReactSelectProps['components']
           }
-          menuIsOpen={props.isReadOnly ? false : undefined}
+          menuIsOpen={props.isReadOnly ? false : props.menuIsOpen}
           styles={
             createSelectStyles({
               hasWarning: props.hasWarning,
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
               menuPortalZIndex: props.menuPortalZIndex,
+              appearance: props.appearance,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
+              controlShouldRenderValue: props.controlShouldRenderValue,
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectProps['styles']
           }
           filterOption={props.filterOption}
@@ -481,6 +516,8 @@ const SelectInput = (props: TSelectInputProps) => {
           tabSelectsValue={props.tabSelectsValue}
           value={selectedOptions}
           iconLeft={props.iconLeft}
+          controlShouldRenderValue={props.controlShouldRenderValue}
+          menuPlacement="auto"
         />
       </div>
     </Constraints.Horizontal>

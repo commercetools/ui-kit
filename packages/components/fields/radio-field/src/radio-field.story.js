@@ -10,7 +10,6 @@ import {
 } from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
 import { Value } from 'react-value';
-import Spacings from '@commercetools-uikit/spacings';
 import RadioInput from '@commercetools-uikit/radio-input';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
@@ -109,10 +108,8 @@ storiesOf('Components|Fields', module)
                 isHovered={boolean('isHovered #1', false, radioOption1)}
                 additionalContent={text('additionalContent', '', radioOption1)}
               >
-                <Spacings.Inline scale="xs" alignItems="center">
-                  <div>{'🍎'}</div>
-                  <div>{text('label #1', 'Apple', radioOption1)}</div>
-                </Spacings.Inline>
+                <div>{'🍎'}</div>
+                <div>{text('label #1', 'Apple', radioOption1)}</div>
               </RadioInput.Option>
               <RadioInput.Option
                 value={text('value #2', 'banana', radioOption2)}
@@ -124,10 +121,8 @@ storiesOf('Components|Fields', module)
                 isHovered={boolean('isHovered #2', false, radioOption2)}
                 additionalContent={text('additionalContent', '', radioOption2)}
               >
-                <Spacings.Inline scale="xs" alignItems="center">
-                  <div>{'🍌'}</div>
-                  <div>{text('label #2', 'Banana', radioOption2)}</div>
-                </Spacings.Inline>
+                <div>{'🍌'}</div>
+                <div>{text('label #2', 'Banana', radioOption2)}</div>
               </RadioInput.Option>
               <RadioInput.Option
                 value={text('value #3', 'pineapple', radioOption3)}
@@ -139,10 +134,8 @@ storiesOf('Components|Fields', module)
                 isHovered={boolean('isHovered #3', false, radioOption3)}
                 additionalContent={text('additionalContent', '', radioOption3)}
               >
-                <Spacings.Inline scale="xs" alignItems="center">
-                  <div>{'🍍'}</div>
-                  <div>{text('label #3', 'Pineapple', radioOption3)}</div>
-                </Spacings.Inline>
+                <div>{'🍍'}</div>
+                <div>{text('label #3', 'Pineapple', radioOption3)}</div>
               </RadioInput.Option>
             </RadioField>
           );

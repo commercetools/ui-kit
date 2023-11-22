@@ -13,11 +13,14 @@ const getClearSectionStyles = () => {
     align-items: center;
     box-sizing: border-box;
     display: flex;
-    margin: ${designTokens.spacingXs};
+    margin: ${designTokens.spacing10};
     cursor: pointer;
 
+    & svg *:not([fill='none']) {
+      fill: ${designTokens.iconColorForDatetimeInputIcon};
+    }
     &:hover svg * {
-      fill: ${designTokens.colorWarning};
+      fill: ${designTokens.iconColorForDatetimeInputIconWhenHovered};
     }
   `;
 };
@@ -47,31 +50,32 @@ const getClockIconContainerFontColor = (props: TTimeInputProps) => {
   return designTokens.fontColorForInput;
 };
 const getClockIconContainerStyles = (props: TTimeInputProps) => {
-  return css`
-    align-items: center;
-    box-sizing: border-box;
-    background: none;
-    background-color: ${props.isDisabled
-      ? designTokens.backgroundColorForInputWhenDisabled
-      : 'none'};
-    border: 0;
-    border-left: 1px solid ${designTokens.borderColorForInput};
-    border-top-right-radius: ${designTokens.borderRadiusForInput};
-    border-bottom-right-radius: ${designTokens.borderRadiusForInput};
-    border-color: ${getClockIconContainerColor(props)};
-    color: ${getClockIconContainerFontColor(props)};
-    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-    height: 100%;
-    display: flex;
-    padding: ${designTokens.spacingXs};
-    outline: 0;
-    transition: color ${designTokens.transitionStandard},
-      border-color ${designTokens.transitionStandard};
-    &:hover:not(:disabled):not(:read-only),
-    &:focus {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-    }
-  `;
+  return [
+    css`
+      align-items: center;
+      box-sizing: border-box;
+      background: none;
+      background-color: ${props.isDisabled
+        ? designTokens.backgroundColorForInputWhenDisabled
+        : 'none'};
+      border: 0;
+      border-top-right-radius: ${designTokens.borderRadiusForInput};
+      border-bottom-right-radius: ${designTokens.borderRadiusForInput};
+      border-color: ${getClockIconContainerColor(props)};
+      color: ${getClockIconContainerFontColor(props)};
+      cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
+      height: 100%;
+      display: flex;
+      padding: ${designTokens.spacing10};
+      outline: 0;
+      transition: color ${designTokens.transitionStandard},
+        border-color ${designTokens.transitionStandard};
+      &:hover:not(:disabled):not(:read-only),
+      &:focus {
+        border-color: ${designTokens.borderColorForInputWhenFocused};
+      }
+    `,
+  ];
 };
 
 const getInputContainerBorderColor = (props: TTimeInputProps) => {
@@ -86,6 +90,7 @@ const getInputContainerBorderColor = (props: TTimeInputProps) => {
   }
   return designTokens.borderColorForInput;
 };
+
 const getInputContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
     return designTokens.fontColorForInputWhenDisabled;
@@ -98,69 +103,95 @@ const getInputContainerFontColor = (props: TTimeInputProps) => {
   }
   return designTokens.fontColorForInput;
 };
+
+const getInputContainerBackgroundColor = (props: TTimeInputProps) => {
+  if (props.isDisabled) {
+    return designTokens.backgroundColorForInputWhenDisabled;
+  }
+  if (props.isReadOnly) {
+    return designTokens.backgroundColorForInputWhenReadonly;
+  }
+  return designTokens.backgroundColorForInput;
+};
+
+// This styled component is only useful because it's referenced in the styles below
+const StyledClockIconContainer = styled.label``;
 const getInputContainerStyles = (props: TTimeInputProps) => {
-  return css`
-    appearance: none;
-    background-color: ${props.isDisabled
-      ? designTokens.backgroundColorForInputWhenDisabled
-      : designTokens.backgroundColorForInput};
-    border: 1px solid ${getInputContainerBorderColor(props)};
-    border-radius: ${designTokens.borderRadiusForInput};
-    box-sizing: border-box;
-    color: ${getInputContainerFontColor(props)};
-    cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-    width: 100%;
-    height: ${designTokens.sizeHeightInput};
-    align-items: center;
-    display: flex;
-    font-size: ${designTokens.fontSizeDefault};
-    font-family: inherit;
-    transition: border-color ${designTokens.transitionStandard},
-      box-shadow ${designTokens.transitionStandard};
+  return [
+    css`
+      appearance: none;
+      background-color: ${props.isDisabled
+        ? designTokens.backgroundColorForInputWhenDisabled
+        : designTokens.backgroundColorForInput};
+      background-color: ${getInputContainerBackgroundColor(props)};
+      border: 1px solid ${getInputContainerBorderColor(props)};
+      border-radius: ${designTokens.borderRadiusForInput};
+      box-sizing: border-box;
+      color: ${getInputContainerFontColor(props)};
+      cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
+      width: 100%;
+      height: ${designTokens.heightForInput};
+      align-items: center;
+      display: flex;
+      font-size: ${designTokens.fontSizeForInput};
+      font-family: inherit;
+      transition: border-color ${designTokens.transitionStandard},
+        box-shadow ${designTokens.transitionStandard};
 
-    svg {
-      fill: ${props.isReadOnly
-        ? designTokens.fontColorForInputWhenReadonly
-        : 'inherit'};
-    }
+      svg {
+        fill: ${props.isReadOnly
+          ? designTokens.fontColorForInputWhenReadonly
+          : 'inherit'};
+      }
 
-    &:focus-within {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-      box-shadow: inset 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
-    }
+      &:focus {
+        border-color: ${designTokens.borderColorForInputWhenFocused};
+      }
+    `,
+    !props.isDisabled &&
+      !props.isReadOnly &&
+      css`
+        &:hover {
+          background-color: ${designTokens.backgroundColorForInputWhenHovered};
+        }
 
-    :hover:not(:disabled):not(:read-only),
-    :focus {
-      border-color: ${designTokens.borderColorForInputWhenFocused};
-    }
-  `;
+        &:focus-within {
+          border-color: ${designTokens.borderColorForInputWhenFocused};
+          box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+            ${designTokens.borderColorForInputWhenFocused};
+          &:hover {
+            background-color: ${designTokens.colorSurface};
+          }
+        }
+      `,
+    props.hasError &&
+      css`
+        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered};
+      `,
+  ];
 };
 const getTimeInputStyles = (props: TTimeInputProps) => {
   const baseStyles = [
     getInputStyles(props),
     css`
       border: none;
+      box-shadow: none;
       background: none;
-      &:focus {
+      &,
+      &:focus,
+      &:focus:not(:read-only) {
         box-shadow: none;
+      }
+      &:focus,
+      &:hover {
+        background-color: transparent !important;
       }
     `,
   ];
   return baseStyles;
 };
 
-// This styled component is only useful because it's referenced in the `StyledInputContainer`.
-const StyledClockIconContainer = styled.label``;
-
-const StyledInputContainer = styled.div`
-  &:hover,
-  &:hover
-    ${StyledClockIconContainer},
-    &:focus-within
-    ${StyledClockIconContainer} {
-    border-color: ${designTokens.borderColorForInputWhenFocused};
-  }
-`;
+const StyledInputContainer = styled.div``;
 
 export {
   getClearSectionStyles,

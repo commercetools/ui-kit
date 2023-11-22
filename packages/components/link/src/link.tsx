@@ -14,7 +14,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import { ExternalLinkIcon } from '@commercetools-uikit/icons';
 
-type TLinkProps = {
+export type TLinkProps = {
   /**
    * Value of the link.
    * <br />
@@ -42,7 +42,7 @@ type TLinkProps = {
   /**
    * Color of the link
    */
-  tone?: 'primary' | 'inverted';
+  tone?: 'primary' | 'inverted' | 'secondary';
 
   /**
    * Handler when the link is clicked.
@@ -51,7 +51,6 @@ type TLinkProps = {
     event: MouseEvent<HTMLLinkElement> | KeyboardEvent<HTMLLinkElement>
   ) => void;
 };
-type TIconColor = 'primary' | 'surface';
 
 const warnIfMissingContent = (props: TLinkProps) => {
   const hasContent =
@@ -82,54 +81,56 @@ const defaultProps: Pick<TLinkProps, 'tone' | 'isExternal'> = {
 
 const getTextColorValue = (tone: TLinkProps['tone'] = 'primary') => {
   if (tone === 'primary') {
-    return designTokens.colorPrimary;
+    return designTokens.fontColorForLinkAsPrimary;
+  } else if (tone === 'secondary') {
+    return designTokens.fontColorForLinkAsSecondary;
   }
 
-  return designTokens.fontColorForTextWhenInverted;
+  return designTokens.fontColorForLinkAsInverted;
 };
-const getIconColorValue = (
-  tone: TLinkProps['tone'] = 'primary'
-): TIconColor => {
-  if (tone === 'inverted') {
-    return 'surface';
-  }
 
-  return tone;
-};
 const getActiveColorValue = (tone: string = 'primary') => {
   if (tone === 'primary') {
-    return designTokens.colorPrimary25;
+    return designTokens.fontColorForLinkAsPrimaryWhenActive;
+  }
+  if (tone === 'secondary') {
+    return designTokens.fontColorForLinkAsSecondaryWhenActive;
   }
 
-  return designTokens.fontColorForTextWhenInverted;
+  return designTokens.fontColorForLinkAsInverted;
 };
 
 const getLinkStyles = (props: TLinkProps) => {
-  const color = getTextColorValue(props.tone);
-  const hoverColor = getActiveColorValue(props.tone);
+  const iconColor = getTextColorValue(props.tone);
+  const iconHoverColor = getActiveColorValue(props.tone);
 
-  return css`
-    font-family: inherit;
-    color: ${color};
-    font-size: ${designTokens.fontSizeForLink};
-    &:hover,
-    &:focus,
-    &:active {
-      color: ${hoverColor};
-    }
-    text-decoration: underline;
-  `;
+  return [
+    css`
+      font-family: inherit;
+      color: ${iconColor};
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: ${iconHoverColor};
+      }
+      text-decoration: underline;
+    `,
+  ];
 };
 
 const Wrapper = styled.span`
   > svg {
-    margin: 0 0 0 ${designTokens.spacingXs} !important;
-    vertical-align: bottom;
+    margin: 0 0 0 ${designTokens.spacing10} !important;
+    vertical-align: middle;
   }
 `;
 
 const Link = (props: TLinkProps) => {
   const remainingProps = filterInvalidAttributes(props);
+
+  const color = getTextColorValue(props.tone);
+  const hoverColor = getActiveColorValue(props.tone);
 
   // `filterInvalidAttributes` strips off `intlMessage` and `children`
   // so we pass in the "raw" props instead.
@@ -141,7 +142,14 @@ const Link = (props: TLinkProps) => {
     }
 
     return (
-      <Wrapper>
+      <Wrapper
+        css={css`
+          fill: ${color};
+          &:hover {
+            fill: ${hoverColor};
+          }
+        `}
+      >
         <a
           css={getLinkStyles(props)}
           href={props.to}
@@ -155,12 +163,7 @@ const Link = (props: TLinkProps) => {
             props.children
           )}
         </a>
-        {props.isExternal && (
-          <ExternalLinkIcon
-            size="medium"
-            color={getIconColorValue(props.tone)}
-          />
-        )}
+        {props.isExternal && <ExternalLinkIcon size="medium" />}
       </Wrapper>
     );
   }

@@ -33,7 +33,7 @@ type TCustomFormErrors<Values> = {
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-type TNumberFieldProps = {
+export type TNumberFieldProps = {
   // NumberField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.

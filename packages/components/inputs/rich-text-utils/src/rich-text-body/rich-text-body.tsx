@@ -8,6 +8,7 @@ import {
 } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { useSlate } from 'slate-react';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { useIntl } from 'react-intl';
 import { css, type SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -16,7 +17,7 @@ import { CaretDownIcon } from '@commercetools-uikit/icons';
 import Inline from '@commercetools-uikit/spacings-inline';
 import {
   BoldIcon,
-  ExpandFullIcon,
+  ExpandIcon,
   ItalicIcon,
   UnorderedListIcon,
   OrderedListIcon,
@@ -341,7 +342,11 @@ const RichTextEditorBody = forwardRef<
             }}
             getIsItemSelected={getIsMoreStyleMarkItemSelected}
           />
-          <Divider />
+          <Divider
+            css={css`
+              margin: ${designTokens.marginForRichTextDivider};
+            `}
+          />
           <Tooltip
             title={intl.formatMessage(messages.orderedListButtonLabel)}
             placement="bottom"
@@ -413,7 +418,11 @@ const RichTextEditorBody = forwardRef<
           </Tooltip>
           {props.showExpandIcon && (
             <>
-              <Divider />
+              <Divider
+                css={css`
+                  margin: ${designTokens.marginForRichTextDivider};
+                `}
+              />
               <Tooltip
                 title={intl.formatMessage(messages.expandButtonLabel)}
                 placement="bottom-end"
@@ -425,7 +434,7 @@ const RichTextEditorBody = forwardRef<
                   label={intl.formatMessage(messages.expandButtonLabel)}
                   onClick={props.onClickExpand}
                 >
-                  <ExpandFullIcon size="medium" />
+                  <ExpandIcon size="medium" />
                 </Button>
               </Tooltip>
             </>

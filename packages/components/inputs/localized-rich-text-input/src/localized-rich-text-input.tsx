@@ -12,7 +12,6 @@ import {
   type FocusEventHandler,
   type MutableRefObject,
 } from 'react';
-import { css } from '@emotion/react';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -151,10 +150,7 @@ type StaticProps = {
   isTouched: typeof isTouched;
 };
 
-type TReducerState = {
-  [id: string]: boolean;
-};
-
+type TReducerState = Record<string, boolean>;
 type TReducerAction =
   | { type: 'toggle'; payload: string }
   | { type: 'toggleAll'; payload: string };
@@ -229,17 +225,17 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
     }
 
     const initialExpandedTranslationsState = Object.keys(props.value).reduce(
-      (translations, locale) => {
-        return {
-          [locale]: Boolean(props.defaultExpandMultilineText),
-          ...translations,
-        };
-      },
-      {}
+      (translations, locale) => ({
+        ...translations,
+        [locale]: Boolean(props.defaultExpandMultilineText),
+      }),
+      {} as TReducerState
     );
 
     const [expandedTranslationsState, expandedTranslationsDispatch] =
-      useReducer(expandedTranslationsReducer, initialExpandedTranslationsState);
+      useReducer<
+        (state: TReducerState, action: TReducerAction) => TReducerState
+      >(expandedTranslationsReducer, initialExpandedTranslationsState);
 
     const defaultExpansionState = Boolean(
       props.hideLanguageExpansionControls || props.defaultExpandLanguages
@@ -299,7 +295,7 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
     const resetValue = useCallback(
       (newValue: string | Record<string, string>) => {
         langRefs.current.forEach((langRef) => {
-          langRef.resetValue(newValue);
+          langRef?.resetValue(newValue);
         });
       },
       []
@@ -368,31 +364,24 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
             })}
           </Stack>
           {shouldRenderLanguagesControl && (
-            <div
-              css={css`
-                align-self: flex-start;
-              `}
-            >
-              <LocalizedInputToggle
-                isOpen={areLanguagesOpened}
-                onClick={
-                  toggleLanguages as (
-                    event:
-                      | MouseEvent<HTMLButtonElement>
-                      | KeyboardEvent<HTMLButtonElement>
-                      | boolean
-                  ) => void
-                }
-                isDisabled={
-                  areLanguagesOpened &&
-                  Boolean(
-                    hasErrorInRemainingLanguages ||
-                      hasWarningInRemainingLanguages
-                  )
-                }
-                remainingLocalizations={languages.length - 1}
-              />
-            </div>
+            <LocalizedInputToggle
+              isOpen={areLanguagesOpened}
+              onClick={
+                toggleLanguages as (
+                  event:
+                    | MouseEvent<HTMLButtonElement>
+                    | KeyboardEvent<HTMLButtonElement>
+                    | boolean
+                ) => void
+              }
+              isDisabled={
+                areLanguagesOpened &&
+                Boolean(
+                  hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
+                )
+              }
+              remainingLocalizations={languages.length - 1}
+            />
           )}
         </Stack>
       </Constraints.Horizontal>

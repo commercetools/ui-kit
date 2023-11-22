@@ -5,14 +5,20 @@ import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 import Constraints from '@commercetools-uikit/constraints';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Tag from './tag';
+import TagList from './tag-list/tag-list';
 import Readme from '../README.md';
 
-const Story = () => (
+const examples = Array(15)
+  .fill()
+  .map((_, i) => i + ' fish');
+
+const TagStory = () => (
   <Section>
     <Tag
       type={select('type', ['normal', 'warning'], 'normal')}
       to={select('to', { '/foo': '/foo', Null: null }, '/foo')}
       isDisabled={boolean('isDisabled', false)}
+      isDraggable={boolean('isDraggable', false)}
       onClick={boolean('onClick', false) ? action('onClick') : undefined}
       horizontalConstraint={select(
         'horizontalConstraint',
@@ -25,7 +31,27 @@ const Story = () => (
     </Tag>
   </Section>
 );
-Story.displayName = 'Story';
+TagStory.displayName = 'TagStory';
+
+const TagListStory = () => (
+  <Section>
+    <Constraints.Horizontal max={10}>
+      <TagList>
+        {examples.map((tag, index) => (
+          <Tag
+            onRemove={
+              boolean('onRemove', false) ? action('onRemove') : undefined
+            }
+            key={index}
+          >
+            {tag}
+          </Tag>
+        ))}
+      </TagList>
+    </Constraints.Horizontal>
+  </Section>
+);
+TagListStory.displayName = 'TagListStory';
 
 storiesOf('Components|Tags', module)
   .addDecorator(withKnobs)
@@ -38,6 +64,11 @@ storiesOf('Components|Tags', module)
   // Router is required to support the Link component used by Tag
   .add('Tag', () => (
     <Router>
-      <Story />
+      <TagStory />
+    </Router>
+  ))
+  .add('TagList', () => (
+    <Router>
+      <TagListStory />
     </Router>
   ));

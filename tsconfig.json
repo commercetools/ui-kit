@@ -32,6 +32,14 @@
       "@types",
       // "@types-extensions",
       "node_modules/@types"
-    ]
+    ],
+    // FIXME: Somehow TS picks some of the types from the docs/storybook
+    // which might contain outdated packages (e.g. Emotion).
+    // As a workaround, we can map the affected imports to point to the main node_modules.
+    "paths": {
+      // Original: docs/node_modules/@storybook/api/node_modules/@emotion/core/types/index.d.ts
+      // Since `@emotion/core` does not exist anymore, let's resolve it to `@emotion/react`.
+      "@emotion/core": ["./node_modules/@emotion/react"]
+    }
   }
 }

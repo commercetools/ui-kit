@@ -12,7 +12,6 @@ import { AngleUpIcon } from '@commercetools-uikit/icons';
 import Stack from '@commercetools-uikit/spacings-stack';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import { designTokens } from '@commercetools-uikit/design-system';
-import Text from '@commercetools-uikit/text';
 import {
   MultilineInput,
   messagesMultilineInput,
@@ -83,15 +82,15 @@ const Row = styled.div`
 `;
 
 const TranslationInput = (props: TranslationInputProps) => {
-  const [contentRowCount, setContentRowCount] = useState(
-    TranslationInput.MIN_ROW_COUNT
-  );
+  const [inputHasSeveralRows, setInputHasSeveralRows] = useState(false);
 
   const handleHeightChange = useCallback(
     (_, rowCount) => {
-      setContentRowCount(rowCount);
+      // This checks if the content in the textarea is greater than one row. If it is, then the toggle button will be shown.
+      // This is to prevent the toggle button from showing when there is not enough content to expand/collapse.
+      setInputHasSeveralRows(rowCount > 1);
     },
-    [setContentRowCount]
+    [setInputHasSeveralRows]
   );
 
   const { onChange } = props;
@@ -123,11 +122,6 @@ const TranslationInput = (props: TranslationInputProps) => {
     if (onFocus) onFocus();
   }, [props.isCollapsed, onFocus, onToggle]);
 
-  // This checks if the content in the textarea overflows the minimum
-  // amount of lines it should have when collapsed
-  const contentExceedsShownRows =
-    contentRowCount > TranslationInput.MIN_ROW_COUNT;
-
   const shouldToggleButtonTakeSpace =
     /*
       - if hasLanguagesControl and there are no errors/warnings to display
@@ -137,9 +131,7 @@ const TranslationInput = (props: TranslationInputProps) => {
       then it can be placed statically because it will then be a sibling to the error/warning message
       and LocalizedInputToggle is placed below the errors/warnings.
     */
-    (!props.isCollapsed &&
-      contentExceedsShownRows &&
-      !props.hasLanguagesControl) ||
+    (!props.isCollapsed && inputHasSeveralRows && !props.hasLanguagesControl) ||
     props.error ||
     props.warning;
 
@@ -161,10 +153,7 @@ const TranslationInput = (props: TranslationInputProps) => {
         `}
       >
         <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
-          {/* FIXME: add proper tone for disabled when tones are refactored */}
-          <Text.Detail tone="secondary">
-            {props.language.toUpperCase()}
-          </Text.Detail>
+          {props.language.toUpperCase()}
         </label>
         <MultilineInput
           id={props.id}
@@ -218,7 +207,7 @@ const TranslationInput = (props: TranslationInputProps) => {
             );
           return null;
         })()}
-        {!props.isCollapsed && contentExceedsShownRows && (
+        {!props.isCollapsed && inputHasSeveralRows && (
           <>
             <LeftColumn />
             <RightColumn>
@@ -229,7 +218,7 @@ const TranslationInput = (props: TranslationInputProps) => {
                       position: absolute;
                       top: 0;
                       right: 0;
-                      margin-top: ${designTokens.spacingXs};
+                      margin-top: ${designTokens.spacing10};
                     `,
                 ]}
               >
@@ -251,10 +240,5 @@ const TranslationInput = (props: TranslationInputProps) => {
 };
 
 TranslationInput.displayName = 'TranslationInput';
-
-// The minimum ammount of rows the MultilineTextInput will show.
-// When the input is closed, this is used as the maximum row count as well
-// so that the input "collapses".
-TranslationInput.MIN_ROW_COUNT = 1;
 
 export default TranslationInput;

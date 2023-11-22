@@ -35,7 +35,7 @@ export const ClearSection = (props: TClearSection) => {
       onClick={props.onClear}
       aria-label="clear"
     >
-      <CloseIcon size="medium" color="solid" />
+      <CloseIcon size="medium" />
     </AccessibleButton>
   );
 };
@@ -160,9 +160,9 @@ export const CalendarBody = (props: TCalendarBody) => {
           tabIndex={-1}
         >
           {props.icon === 'clock' ? (
-            <ClockIcon color={disabledOrReadOnly ? 'neutral60' : 'solid'} />
+            <ClockIcon color="neutral60" />
           ) : (
-            <CalendarIcon color={disabledOrReadOnly ? 'neutral60' : 'solid'} />
+            <CalendarIcon color="neutral60" />
           )}
         </button>
       </div>

@@ -1,5 +1,101 @@
 # @commercetools-uikit/i18n
 
+## 16.11.0
+
+## 16.10.0
+
+## 16.9.0
+
+## 16.8.0
+
+## 16.7.5
+
+## 16.7.4
+
+## 16.7.3
+
+## 16.7.2
+
+## 16.7.1
+
+### Patch Changes
+
+- [#2589](https://github.com/commercetools/ui-kit/pull/2589) [`cc651012d`](https://github.com/commercetools/ui-kit/commit/cc651012d5f4b3524e62c310e85343ee40433a6e) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Add translations for `pt-BR`
+
+## 16.7.0
+
+### Minor Changes
+
+- [#2583](https://github.com/commercetools/ui-kit/pull/2583) [`a095b5d1b`](https://github.com/commercetools/ui-kit/commit/a095b5d1b4742c5b16aeba2003a7bb402fc75e68) Thanks [@emmenko](https://github.com/emmenko)! - Support new application locale `pt-BR`
+
+## 16.6.1
+
+## 16.6.0
+
+### Patch Changes
+
+- [#2559](https://github.com/commercetools/ui-kit/pull/2559) [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad) Thanks [@dependabot](https://github.com/apps/dependabot)! - Updated [semver](https://github.com/npm/node-semver) dependency.
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
+## 16.5.0
+
+## 16.4.1
+
+## 16.4.0
+
+## 16.3.0
+
+## 16.2.1
+
+## 16.2.0
+
+## 16.1.1
+
+## 16.1.0
+
+## 16.0.0
+
+## 15.15.1
+
+## 15.15.0
+
+## 15.14.3
+
+## 15.14.2
+
+## 15.14.1
+
+## 15.14.0
+
+## 15.13.2
+
+## 15.13.1
+
+## 15.13.0
+
+## 15.12.0
+
+### Patch Changes
+
+- [#2419](https://github.com/commercetools/ui-kit/pull/2419) [`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies
+
+## 15.11.2
+
+## 15.11.1
+
+## 15.11.0
+
+## 15.10.0
+
+## 15.9.0
+
+## 15.8.0
+
+## 15.7.0
+
+## 15.6.0
+
 ## 15.5.1
 
 ## 15.5.0

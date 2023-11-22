@@ -52,7 +52,7 @@ const sequentialErrorsId = createSequentialId(
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
-type TCreatableSelectFieldProps = {
+export type TCreatableSelectFieldProps = {
   // CreatableSelectField
   /**
    * Used as HTML id property. An id is auto-generated when it is not specified.
@@ -192,6 +192,8 @@ type TCreatableSelectFieldProps = {
   menuPortalTarget?: ReactSelectCreatableProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex?: number;
   /**

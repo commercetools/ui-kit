@@ -10,11 +10,11 @@ type TInnerProps = {
   ref: LegacyRef<HTMLButtonElement>;
 } & JSX.IntrinsicElements['button'];
 
-type TClearIndicator = {
+export type TClearIndicatorProps = {
   innerProps: TInnerProps;
 } & ClearIndicatorProps;
 
-const ClearIndicator = (props: TClearIndicator) => {
+const ClearIndicator = (props: TClearIndicatorProps) => {
   const intl = useIntl();
   const {
     getStyles,
@@ -30,8 +30,9 @@ const ClearIndicator = (props: TClearIndicator) => {
         background: none;
         box-sizing: border-box;
         text-decoration: none;
+        fill: ${designTokens.fontColorForClearInputIcon};
         :hover svg * {
-          fill: ${designTokens.colorWarning};
+          fill: ${designTokens.fontColorForClearInputIconWhenHovered};
         }
       `}
       style={getStyles('clearIndicator', props) as CSSProperties}
@@ -42,7 +43,7 @@ const ClearIndicator = (props: TClearIndicator) => {
       // only onMouseDown and onTouchEnd event handlers are passed by `react-select` to the component by default, which makes it not accessible by keyboard
       onClick={onMouseDown}
     >
-      <CloseIcon color="solid" size="medium" />
+      <CloseIcon size="medium" />
     </button>
   );
 };

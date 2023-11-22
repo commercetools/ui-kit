@@ -1,1 +1,6 @@
-export type { TProps as TInlineProps } from './inline';
+export type {
+  TInlineProps,
+  TAlignItem,
+  TJustifyContent,
+  TScale,
+} from './inline';

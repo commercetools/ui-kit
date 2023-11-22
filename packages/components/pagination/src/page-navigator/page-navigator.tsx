@@ -6,7 +6,6 @@ import { AngleLeftIcon, AngleRightIcon } from '@commercetools-uikit/icons';
 import NumberInput from '@commercetools-uikit/number-input';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Spacings from '@commercetools-uikit/spacings';
-import Text from '@commercetools-uikit/text';
 import Label from '@commercetools-uikit/label';
 import { isValid, normalizePageValue } from './utils';
 import messages from './messages';
@@ -96,7 +95,7 @@ const PageNavigator = (props: TPageNavigatorProps) => {
             horizontalConstraint={2}
           />
         </div>
-        <Text.Body
+        <Label
           intlMessage={{
             ...messages.pageCount,
             values: {

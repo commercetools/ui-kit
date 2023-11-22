@@ -61,3 +61,14 @@ export const Error = () => (
 | `type`        | `union`<br/>Possible values:<br/>`'error' , 'info' , 'warning' , 'success'` |    ✅    |         | Determines the color/type of notification.                                                                                     |
 | `intlMessage` | `MessageDescriptor`                                                         |          |         | An `intl` message object that will be rendered with `FormattedMessage`.&#xA;<br />&#xA;Required if `children` is not provided. |
 | `children`    | `ReactNode`                                                                 |          |         | The content of the notification.&#xA;<br />&#xA;Required if `intlMessage` is not provided.                                     |
+| `onRemove`    | `Function`<br/>[See signature.](#signature-onRemove)                        |          |         | When provided, a close icon will be rendered and this callback will be called when it is clicked.                              |
+
+## Signatures
+
+### Signature `onRemove`
+
+```ts
+(
+  event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>
+) => void
+```

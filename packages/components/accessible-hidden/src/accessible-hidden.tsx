@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import { css } from '@emotion/react';
 
-type Props = {
+export type TAccessibleHiddenProps = {
   children: ReactNode;
 };
 
-const AccessibleHidden = (props: Props) => (
+const AccessibleHidden = (props: TAccessibleHiddenProps) => (
   <div
     css={css`
       clip: rect(0 0 0 0);

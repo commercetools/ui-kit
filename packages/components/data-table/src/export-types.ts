@@ -1,1 +1,1 @@
-export type { TRow, TColumn } from './data-table';
+export type { TRow, TColumn, TDataTableProps } from './data-table';

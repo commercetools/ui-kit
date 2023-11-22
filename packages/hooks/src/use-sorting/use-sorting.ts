@@ -1,16 +1,16 @@
 import { useState, useDebugValue } from 'react';
 import sortBy from 'lodash/sortBy';
 
-interface TItem {
+export interface TItem {
   id: string;
 }
-type TSortDirection = 'asc' | 'desc';
-type TSortingState<Item extends TItem = TItem> = {
+export type TSortDirection = 'asc' | 'desc';
+export type TSortingState<Item extends TItem = TItem> = {
   items: Item[];
   sortedBy?: string;
   sortDirection?: TSortDirection;
 };
-type TSortingFn = typeof sortBy;
+export type TSortingFn = typeof sortBy;
 
 // we're using lodash sortBy as our default sorting fn
 const sortItems = <Item extends TItem = TItem>(

@@ -3,37 +3,40 @@ import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-type TScale = 's' | 'm' | 'l';
-type TProps = {
+export type TScale = 's' | 'm' | 'l';
+export type TInsetSquishProps = {
   scale: TScale;
+  height: 'collapsed' | 'expanded';
   children: ReactNode;
 };
 
 const getPadding = (scale?: TScale) => {
   switch (scale) {
     case 's':
-      return `${designTokens.spacingXs} ${designTokens.spacingS}`;
+      return `${designTokens.spacing10} ${designTokens.spacing20}`;
     case 'm':
-      return `${designTokens.spacingS} ${designTokens.spacingM}`;
+      return `${designTokens.spacing20} ${designTokens.spacing30}`;
     case 'l':
-      return `${designTokens.spacingM} ${designTokens.spacingXl}`;
+      return `${designTokens.spacing30} ${designTokens.spacing50}`;
     default:
       return 0;
   }
 };
 
-const InsetSquish = (props: TProps) => (
+const InsetSquish = (props: TInsetSquishProps) => (
   <div
     css={css`
       padding: ${getPadding(props.scale)};
+      height: ${props.height === 'expanded' ? '100%' : 'auto'};
     `}
     {...filterDataAttributes(props)}
   >
     {props.children}
   </div>
 );
-const defaultProps: Pick<TProps, 'scale'> = {
+const defaultProps: Pick<TInsetSquishProps, 'scale' | 'height'> = {
   scale: 'm',
+  height: 'collapsed',
 };
 InsetSquish.displayName = 'InsetSquish';
 InsetSquish.defaultProps = defaultProps;

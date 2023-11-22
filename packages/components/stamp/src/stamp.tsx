@@ -1,8 +1,11 @@
-import type { ReactNode } from 'react';
+import { cloneElement, type ReactElement, type ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
+import Text from '@commercetools-uikit/text';
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+import { useWarnDeprecatedProp } from '@commercetools-uikit/utils';
 
-type Tone =
+export type TTone =
   | 'critical'
   | 'warning'
   | 'positive'
@@ -10,19 +13,93 @@ type Tone =
   | 'primary'
   | 'secondary';
 
-type Props = {
+export type TStampProps = {
   /**
    * Indicates the color scheme of stamp
    */
-  tone?: Tone;
+  tone?: TTone;
   /**
    * If `true`, renders a condensed version of the stamp.
    */
   isCondensed: boolean;
-  children: ReactNode;
+  /**
+   * Content to render within the stamp.
+   * This property has been **deprecated** in favor of `label`.
+   */
+  children?: ReactNode;
+  /**
+   * Icon to render beside (left) the stamp text.
+   */
+  icon?: ReactElement;
+  /**
+   * Text to render within the stamp.
+   */
+  label?: string;
 };
 
-export const availableTones: Tone[] = [
+type ToneRelatedProps = {
+  styles: {
+    backgroundColor: string;
+    borderColor: string;
+    color: string;
+  };
+  iconColor: string;
+};
+
+type StylesFunctionParams = TStampProps & { overrideTextColor?: boolean };
+
+const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
+  critical: {
+    styles: {
+      backgroundColor: designTokens.colorError95,
+      borderColor: designTokens.borderColorForStampWhenError,
+      color: designTokens.colorError40,
+    },
+    iconColor: 'error',
+  },
+  warning: {
+    styles: {
+      backgroundColor: designTokens.colorWarning95,
+      borderColor: designTokens.borderColorForStampWhenWarning,
+      color: designTokens.colorWarning40,
+    },
+    iconColor: 'warning',
+  },
+  positive: {
+    styles: {
+      backgroundColor: designTokens.backgroundColorForStampAsPositive,
+      borderColor: designTokens.borderColorForStampAsPositive,
+      color: designTokens.colorPrimary25,
+    },
+    iconColor: 'primary',
+  },
+  information: {
+    styles: {
+      backgroundColor: designTokens.colorInfo95,
+      borderColor: designTokens.borderColorForStampAsInformation,
+      color: designTokens.colorInfo40,
+    },
+    iconColor: 'info',
+  },
+  primary: {
+    styles: {
+      backgroundColor: designTokens.backgroundColorForStampAsPrimary,
+      borderColor: designTokens.borderColorForStampAsPrimary,
+      color: designTokens.colorPrimary25,
+    },
+    iconColor: 'primary40',
+  },
+  secondary: {
+    styles: {
+      backgroundColor: designTokens.colorNeutral95,
+      borderColor: designTokens.borderColorForStampAsSecondary,
+      color: designTokens.colorNeutral40,
+    },
+    iconColor: 'neutral60',
+  },
+};
+
+export const availableTones: TTone[] = [
   'critical',
   'warning',
   'positive',
@@ -30,82 +107,98 @@ export const availableTones: Tone[] = [
   'primary',
   'secondary',
 ];
-const getPaddingStyle = (props: Props) => {
+const getPaddingStyle = (props: StylesFunctionParams) => {
   if (props.isCondensed)
     return css`
-      padding: 1px ${designTokens.spacingXs};
+      padding: ${designTokens.paddingForStampAsCondensed};
     `;
   return css`
-    padding: ${designTokens.spacingXs} ${designTokens.spacingS};
+    padding: ${designTokens.paddingForStamp};
   `;
 };
 
-const getToneStyles = (props: Props) => {
-  switch (props.tone) {
-    case 'critical': {
-      return css`
-        background-color: ${designTokens.colorError95};
-        border: 1px solid ${designTokens.colorError};
-      `;
-    }
-    case 'warning': {
-      return css`
-        background-color: ${designTokens.colorWarning95};
-        border: 1px solid ${designTokens.colorWarning};
-      `;
-    }
-    case 'positive': {
-      return css`
-        background-color: ${designTokens.colorPrimary85};
-        border: 1px solid ${designTokens.colorPrimary40};
-      `;
-    }
-    case 'information': {
-      return css`
-        background-color: ${designTokens.colorInfo95};
-        border: 1px solid ${designTokens.colorInfo};
-      `;
-    }
-    case 'primary': {
-      return css`
-        background-color: ${designTokens.colorPrimary95};
-        border: 1px solid ${designTokens.colorPrimary25};
-      `;
-    }
-    case 'secondary': {
-      return css`
-        background-color: ${designTokens.colorNeutral90};
-        border: 1px solid ${designTokens.colorNeutral60};
-      `;
-    }
-    default:
-      return css``;
+const getIconColor = (
+  props: StylesFunctionParams,
+  overrideTextColor: boolean
+) => {
+  if (!overrideTextColor) {
+    return 'inherit';
   }
+
+  const toneProps = props.tone && tonesPropsMap[props.tone];
+  return toneProps ? toneProps.iconColor : '';
 };
 
-const getStampStyles = (_props: Props) => {
+const getToneStyles = (props: StylesFunctionParams) => {
+  if (!props.tone || !tonesPropsMap[props.tone]) {
+    return css``;
+  }
+
+  const toneProps = tonesPropsMap[props.tone];
   return css`
-    color: ${designTokens.colorSolid};
-    font-size: ${designTokens.fontSizeDefault};
-    border-radius: ${designTokens.borderRadius2};
+    background-color: ${toneProps.styles.backgroundColor};
+
+    &,
+    & * {
+      color: ${props.overrideTextColor ? toneProps.styles.color : 'inherit'};
+    }
   `;
 };
 
-const Stamp = (props: Props) => {
+const getStampStyles = (props: StylesFunctionParams) => {
+  return css`
+    color: ${props.overrideTextColor ? 'inherit' : designTokens.colorSolid};
+    display: inline-block;
+    border-radius: ${props.isCondensed
+      ? designTokens.borderRadiusForStampAsCondensed
+      : designTokens.borderRadiusForStamp};
+  `;
+};
+
+const Stamp = (props: TStampProps) => {
+  const Icon =
+    props.icon &&
+    cloneElement(props.icon, {
+      size: 'medium',
+      color: getIconColor(props, true),
+    });
+
+  useWarnDeprecatedProp(
+    !Boolean(props.children),
+    'children',
+    'Stamp',
+    'Please use `label` and `icon` properties instead.'
+  );
+
+  const StampLabel = ({ children }: { children: string }): ReactElement =>
+    props.isCondensed ? (
+      <Text.Caption tone="inherit" fontWeight="medium">
+        {children}
+      </Text.Caption>
+    ) : (
+      <Text.Detail tone="inherit" fontWeight="medium">
+        {children}
+      </Text.Detail>
+    );
+
   return (
     <div
       css={[
-        getStampStyles(props),
-        getToneStyles(props),
+        getStampStyles({ ...props, overrideTextColor: true }),
+        getToneStyles({ ...props, overrideTextColor: true }),
         getPaddingStyle(props),
       ]}
     >
-      {props.children}
+      <SpacingsInline alignItems="center">
+        {Icon}
+        {props.label ? <StampLabel>{props.label}</StampLabel> : props.children}
+      </SpacingsInline>
     </div>
   );
 };
-const defaultProps: Pick<Props, 'isCondensed'> = {
+const defaultProps: Pick<TStampProps, 'isCondensed' | 'tone'> = {
   isCondensed: false,
+  tone: 'information',
 };
 Stamp.displayName = 'Stamp';
 Stamp.defaultProps = defaultProps;

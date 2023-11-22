@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { RowExpandCollapseButton } from './cell.styles';
+import { BaseHeaderCell } from './header-cell.styles';
 import convertNumericDimensionToPixelValue from './utils/convert-numeric-dimension-to-pixel-value';
 import type { TDataTableProps } from './data-table';
 
@@ -14,7 +15,7 @@ const getClickableRowStyle = (props: TGetClickableRowStyleProps) => {
     return css`
       cursor: pointer;
       &:hover td {
-        background: ${designTokens.backgroundColorForInputWhenHovered};
+        background: ${designTokens.backgroundColorForTableCellWhenHovered};
       }
     `;
   }
@@ -41,13 +42,20 @@ const getDisabledSelfContainmentStyles = (
 type TTableContainer = {
   isBeingResized?: boolean;
   maxWidth?: string | number;
+  maxHeight?: string | number;
   disableSelfContainment: boolean;
 };
 
 const TableContainer = styled.div<TTableContainer>`
   position: relative;
   z-index: 0;
-  overflow-x: auto;
+  box-shadow: ${designTokens.boxShadowForTable};
+  border: 1px solid ${designTokens.colorNeutral95};
+  border-radius: ${designTokens.borderRadius4};
+
+  ${(props) =>
+    // this is needed in order to have a sticky header
+    props.maxHeight ? `overflow-x: auto;` : ''}
 
   ${(props) =>
     props.maxWidth && !props.disableSelfContainment
@@ -79,7 +87,9 @@ const TableGrid = styled.table<TTableGrid>`
     props.columns.map((column) => column.width || 'auto').join(' ')};
   /* stylelint-enable function-whitespace-after */
 
-  overflow-y: auto;
+  ${(props) =>
+    // this is needed in order to have a sticky header
+    props.maxHeight ? `overflow-y: auto;` : ''}
 
   ${(props) =>
     props.maxHeight && !props.disableSelfContainment
@@ -94,6 +104,23 @@ const TableGrid = styled.table<TTableGrid>`
 
 const TableHeader = styled.thead`
   display: contents;
+  /* Adds right border that doesn't affect column width
+  *  to each header cell when table header is hovered
+  */
+  :hover {
+    ${BaseHeaderCell}:before {
+      content: '';
+      position: absolute;
+      border-right: 1px solid ${designTokens.colorNeutral};
+      top: ${designTokens.spacing20};
+      right: 0;
+      bottom: ${designTokens.spacing20};
+    }
+    /* Does not display border on far right (last) header cell */
+    ${BaseHeaderCell}:last-child:before {
+      display: none;
+    }
+  }
 `;
 
 const TableBody = styled.tbody`

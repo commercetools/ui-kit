@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/async-select-input",
   "description": "An input component getting a selection from an asynchronously loaded list from the user.",
-  "version": "15.5.1",
+  "version": "16.11.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,30 +19,30 @@
   "module": "dist/commercetools-uikit-async-select-input.esm.js",
   "files": ["dist"],
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
-    "@babel/runtime-corejs3": "^7.19.1",
-    "@commercetools-uikit/constraints": "15.5.1",
-    "@commercetools-uikit/design-system": "15.5.1",
-    "@commercetools-uikit/icons": "15.5.1",
-    "@commercetools-uikit/loading-spinner": "15.5.1",
-    "@commercetools-uikit/select-utils": "15.5.1",
-    "@commercetools-uikit/spacings": "15.5.1",
-    "@commercetools-uikit/text": "15.5.1",
-    "@commercetools-uikit/utils": "15.5.1",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
+    "@babel/runtime": "^7.20.13",
+    "@babel/runtime-corejs3": "^7.20.13",
+    "@commercetools-uikit/constraints": "16.11.0",
+    "@commercetools-uikit/design-system": "16.11.0",
+    "@commercetools-uikit/icons": "16.11.0",
+    "@commercetools-uikit/loading-spinner": "16.11.0",
+    "@commercetools-uikit/select-utils": "16.11.0",
+    "@commercetools-uikit/spacings": "16.11.0",
+    "@commercetools-uikit/text": "16.11.0",
+    "@commercetools-uikit/utils": "16.11.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-select": "5.5.2"
+    "react-select": "5.8.0"
   },
   "devDependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intl": "^5.25.1"
+    "react-intl": "^6.3.2"
   },
   "peerDependencies": {
     "react": "17.x",
     "react-dom": "17.x",
-    "react-intl": "5.x"
+    "react-intl": "6.x"
   }
 }

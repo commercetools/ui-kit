@@ -5,18 +5,20 @@ import type { TPrimaryButtonProps } from './primary-button';
 
 const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
   switch (size) {
+    // rendering the same style for now to not introduce a breaking change
     case 'small':
+    case 'medium':
       return css`
-        border-radius: ${designTokens.borderRadiusForButtonAsSmall};
-        padding: 0 ${designTokens.spacingS} 0 ${designTokens.spacingS};
-        height: ${designTokens.heightForButtonAsSmall};
+        height: ${designTokens.heightForButtonAsMedium};
+        border-radius: ${designTokens.borderRadiusForButtonAsMedium};
+        padding: ${designTokens.paddingForButtonAsMedium};
       `;
 
     case 'big':
       return css`
-        padding: 0 ${designTokens.spacingM} 0 ${designTokens.spacingM};
         height: ${designTokens.heightForButtonAsBig};
         border-radius: ${designTokens.borderRadiusForButtonAsBig};
+        padding: ${designTokens.paddingForButtonAsBig};
       `;
 
     default:
@@ -85,6 +87,17 @@ const getButtonStyles = (
             }
           `,
         ];
+      case 'critical':
+        return [
+          baseActiveStyles,
+          css`
+            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenActive};
+            &:focus,
+            &:hover {
+              background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenHovered};
+            }
+          `,
+        ];
       default:
         return baseActiveStyles;
     }
@@ -128,6 +141,20 @@ const getButtonStyles = (
           }
           &:active {
             background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenActive};
+          }
+        `,
+      ];
+    case 'critical':
+      return [
+        baseDefaultStyles,
+        css`
+          background-color: ${designTokens.colorError};
+          &:focus,
+          &:hover {
+            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenHovered};
+          }
+          &:active {
+            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenActive};
           }
         `,
       ];

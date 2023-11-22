@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, cloneElement } from 'react';
 import isNil from 'lodash/isNil';
 import styled from '@emotion/styled';
 import {
@@ -20,6 +20,7 @@ import {
   HeaderControlsWrapper,
   SectionWrapper,
   SectionContent,
+  SectionDescriptionWrapper,
 } from './collapsible-panel.styles';
 import CollapsiblePanelHeader from './collapsible-panel-header';
 
@@ -144,6 +145,25 @@ const defaultProps: Pick<
   horizontalConstraint: 'scale',
 };
 
+const HeadLineText = (
+  props: Pick<TCollapsiblePanel, 'condensed' | 'header'>
+) => {
+  if (!props.condensed) {
+    return <>{props.header}</>;
+  }
+
+  return (
+    <Text.Subheadline as="h4" truncate>
+      {/* TODO: this is a temporary fix, which will be refactored after we align with the desing team on how to proceed */}
+      {typeof props.header === 'string'
+        ? props.header
+        : cloneElement(props.header as React.ReactElement, {
+            isCondensed: props.condensed,
+          })}
+    </Text.Subheadline>
+  );
+};
+
 // When `isClosed` is provided the component behaves as a controlled component,
 // otherwise it will behave like an uncontrolled component.
 const CollapsiblePanel = (props: TCollapsiblePanel) => {
@@ -188,7 +208,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
       {({ isOpen, toggle, containerStyles, registerContentNode }) => (
         <Constraints.Horizontal max={props.horizontalConstraint}>
           <div
-            css={[baseContainerStyles, getThemeStyle(props.theme)]}
+            css={[baseContainerStyles, getThemeStyle('light')]}
             // Allow to override the styles by passing a `className` prop.
             // Custom styles can also be passed using the `css` prop from emotion.
             // https://emotion.sh/docs/css-prop#style-precedence
@@ -198,7 +218,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               as="div"
               css={[
                 getHeaderContainerStyles(props, isOpen),
-                getThemeStyle(props.theme),
+                getThemeStyle('light'),
               ]}
               id={panelButtonId}
               label=""
@@ -208,23 +228,20 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               aria-controls={panelContentId}
               aria-expanded={isOpen ? 'true' : 'false'}
             >
-              <Spacings.Inline alignItems="center" scale="s">
+              <Spacings.Inline alignItems="center" scale="xs">
                 {!props.hideExpansionControls && (
                   <HeaderIcon
                     isClosed={!isOpen}
                     isDisabled={props.isDisabled || false}
                     tone={props.tone}
-                    size={props.condensed ? 'small' : 'medium'}
+                    size={'medium'}
                   />
                 )}
-                <Spacings.Inline alignItems="center" scale={scale}>
-                  {props.condensed ? (
-                    <Text.Detail as="span" isBold truncate>
-                      {props.header}
-                    </Text.Detail>
-                  ) : (
-                    props.header
-                  )}
+                <Spacings.Inline alignItems="baseline" scale={scale}>
+                  <HeadLineText
+                    header={props.header}
+                    condensed={props.condensed}
+                  />
                   {props.secondaryHeader && (
                     <Text.Detail tone="secondary" truncate={true}>
                       {props.secondaryHeader}
@@ -241,13 +258,20 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
               )}
             </HeaderContainer>
             <div style={containerStyles}>
-              <SectionWrapper ref={registerContentNode}>
+              <SectionWrapper
+                // @ts-ignore
+                ref={registerContentNode}
+                condensed={props.condensed}
+                isExpandControlHidden={props.hideExpansionControls}
+              >
                 {props.description && (
-                  <Spacings.Inset scale={scale}>
-                    <Text.Detail>{props.description}</Text.Detail>
-                  </Spacings.Inset>
+                  <SectionDescriptionWrapper condensed={props.condensed}>
+                    <Text.Detail tone="secondary">
+                      {props.description}
+                    </Text.Detail>
+                  </SectionDescriptionWrapper>
                 )}
-                <Spacings.Inset scale={scale}>
+                <Spacings.Stack scale={scale}>
                   <SectionContent
                     id={panelContentId}
                     role="region"
@@ -256,7 +280,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                   >
                     {props.children}
                   </SectionContent>
-                </Spacings.Inset>
+                </Spacings.Stack>
               </SectionWrapper>
             </div>
           </div>

@@ -75,7 +75,7 @@ const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
               : {})}
           />
 
-          {!props.isDisabled && !props.isReadOnly && (
+          {!props.isDisabled && !props.isReadOnly && Boolean(props.value) && (
             <ClearSection
               isDisabled={props.isDisabled}
               hasError={props.hasError}
@@ -88,11 +88,7 @@ const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
             htmlFor={props.id}
             data-toggle
           >
-            <ClockIcon
-              color={
-                props.isDisabled || props.isReadOnly ? 'neutral60' : 'solid'
-              }
-            />
+            <ClockIcon color="neutral60" />
           </StyledClockIconContainer>
         </StyledInputContainer>
       </Inline>

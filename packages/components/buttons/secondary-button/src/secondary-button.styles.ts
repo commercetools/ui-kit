@@ -3,6 +3,7 @@ import type { Theme } from '@emotion/react';
 import { warning } from '@commercetools-uikit/utils';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
+import type { TSecondaryButtonProps } from './secondary-button';
 
 const getStateStyles = (
   isDisabled: boolean,
@@ -103,4 +104,55 @@ const getThemeStyles = (theme: Theme) => {
   }
 };
 
-export { getStateStyles, getThemeStyles };
+const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
+  switch (size) {
+    case 'medium':
+      return css`
+        height: ${designTokens.heightForButtonAsMedium};
+        border-radius: ${designTokens.borderRadiusForButtonAsMedium};
+        padding: ${designTokens.paddingForButtonAsMedium};
+      `;
+
+    case 'big':
+      return css`
+        height: ${designTokens.heightForButtonAsBig};
+        border-radius: ${designTokens.borderRadiusForButtonAsBig};
+        padding: ${designTokens.paddingForButtonAsBig};
+      `;
+
+    default:
+      return css``;
+  }
+};
+
+const getToneStyles = (
+  tone: TSecondaryButtonProps['tone'],
+  isDisabled: boolean
+) => {
+  switch (tone) {
+    case 'info':
+      return [
+        !isDisabled &&
+          css`
+            background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfo};
+            border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            &:hover {
+              background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndHovered};
+              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            }
+            &:focus {
+              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            }
+            &:active {
+              background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndActive};
+              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            }
+          `,
+      ];
+
+    default:
+      return css``;
+  }
+};
+
+export { getStateStyles, getThemeStyles, getSizeStyles, getToneStyles };

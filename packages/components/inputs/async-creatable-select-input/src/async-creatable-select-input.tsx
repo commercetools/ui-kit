@@ -18,6 +18,7 @@ import {
   customComponentsWithIcons,
   messages,
   createSelectStyles,
+  warnIfMenuPortalPropsAreMissing,
 } from '@commercetools-uikit/select-utils';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 
@@ -46,7 +47,7 @@ type ReactSelectAsyncCreatableProps = AsyncCreatableProps<
   GroupBase<unknown>
 >;
 
-type TAsyncCreatableSelectInputProps = {
+export type TAsyncCreatableSelectInputProps = {
   /**
    * Horizontal size limit of the input fields.
    */
@@ -202,6 +203,8 @@ type TAsyncCreatableSelectInputProps = {
   menuPortalTarget?: ReactSelectAsyncCreatableProps['menuPortalTarget'];
   /**
    * z-index value for the menu portal
+   * <br>
+   * Use in conjunction with `menuPortalTarget`
    */
   menuPortalZIndex: number;
   /**
@@ -366,6 +369,12 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
     );
   }
 
+  warnIfMenuPortalPropsAreMissing({
+    menuPortalZIndex: props.menuPortalZIndex,
+    menuPortalTarget: props.menuPortalTarget,
+    componentName: 'AsyncCreatableSelectInput',
+  });
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <div {...filterDataAttributes(props)}>
@@ -407,6 +416,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(props.value),
+              horizontalConstraint: props.horizontalConstraint,
             }) as ReactSelectAsyncCreatableProps['styles']
           }
           filterOption={props.filterOption}

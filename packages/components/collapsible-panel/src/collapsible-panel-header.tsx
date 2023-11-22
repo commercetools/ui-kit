@@ -3,12 +3,16 @@ import Text from '@commercetools-uikit/text';
 
 type TCollapsiblePanelHeader = {
   children: ReactNode;
+  isCondensed?: boolean;
 };
-const CollapsiblePanelHeader = (props: TCollapsiblePanelHeader) => (
-  <Text.Subheadline as="h4" isBold={true} truncate={true}>
-    {props.children}
-  </Text.Subheadline>
-);
+const CollapsiblePanelHeader = (props: TCollapsiblePanelHeader) =>
+  props.isCondensed ? (
+    <>{props.children}</>
+  ) : (
+    <Text.Headline as="h2" truncate={true}>
+      {props.children}
+    </Text.Headline>
+  );
 
 CollapsiblePanelHeader.displayName = 'CollapsiblePanelHeader';
 

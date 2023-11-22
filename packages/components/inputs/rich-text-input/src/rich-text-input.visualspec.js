@@ -8,6 +8,7 @@ jest.setTimeout(20000);
 
 beforeEach(async () => {
   browser = await puppeteer.launch({
+    headless: 'new',
     slowMo: 10, // Launching the browser in slow motion is necessary due to race conditions. Otherwise browser closes prematurely and tests fail.
   });
   page = await browser.newPage();
@@ -47,7 +48,7 @@ describe('RichTextInput', () => {
 
   it('Default', async () => {
     await page.goto(`${globalThis.HOST}/rich-text-input`);
-    await expect(page).toMatch('minimal');
+    await page.waitForSelector('text/minimal');
     // TODO: uncomment when issue with Percy is resolved
     // await percySnapshot(page, 'RichTextInput');
   });

@@ -1,5 +1,419 @@
 # @commercetools-uikit/design-system
 
+## 16.11.0
+
+### Minor Changes
+
+- [#2644](https://github.com/commercetools/ui-kit/pull/2644) [`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38) Thanks [@chloe0592](https://github.com/chloe0592)! - A new property `appearance` has been added to the `SelectInput` and `SelectField` components to control its main styles.
+  Available values are `default` and `quiet`: the first one will just render the component as usual and the latter will render a cleaner version of it.Bear in mind when using the `quiet` value that it is expected you also use the `auto` value for the `horizontalConstraint` property.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.11.0
+
+## 16.10.0
+
+### Minor Changes
+
+- [#2641](https://github.com/commercetools/ui-kit/pull/2641) [`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70) Thanks [@valoriecarli](https://github.com/valoriecarli)! - Updated `Link` & `FlatButton` components to use `color-primary-30` as the font color.
+
+  Updated the following to use `color-primary-30` for the tone primary font color: `text.caption`, `text.detail`, `text.body` & `text.subheadline`
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.10.0
+
+## 16.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.9.0
+
+## 16.8.0
+
+### Minor Changes
+
+- [#2612](https://github.com/commercetools/ui-kit/pull/2612) [`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7) Thanks [@valoriecarli](https://github.com/valoriecarli)! - Update neutral and primary colors. Add new colors for accents: purple, turquoise and brown.
+
+- [#2610](https://github.com/commercetools/ui-kit/pull/2610) [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Update styling of stamp components
+
+- [#2613](https://github.com/commercetools/ui-kit/pull/2613) [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Introducing a new `Text` component named `Caption` which will render the smallest text available.
+  Example:
+
+  ```jsx
+  <Text.Caption>your small text</Text.Caption>
+  ```
+
+  Also, we've deprecated the `isBold` property in these components in favour of a new property called `fontWeight`.
+  The former property only supported two values whereas the new one supports three: `regular`, `medium` and `bold`.
+
+- [#2621](https://github.com/commercetools/ui-kit/pull/2621) [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd) Thanks [@kterry1](https://github.com/kterry1)! - Added color and icon props for `Avatar` component as well as updated font size/weight/color
+
+- [#2629](https://github.com/commercetools/ui-kit/pull/2629) [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9) Thanks [@ByronDWall](https://github.com/ByronDWall)! - Update data table header styles, clamp header cell label to not extend past 2 lines in height, update and animate header cell sorting icons
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.8.0
+
+## 16.7.5
+
+### Patch Changes
+
+- Updated dependencies [[`1f7f2e06c`](https://github.com/commercetools/ui-kit/commit/1f7f2e06c78a7e11e7d2c2a9dad22642418bb796)]:
+  - @commercetools-uikit/hooks@16.7.5
+
+## 16.7.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.7.4
+
+## 16.7.3
+
+### Patch Changes
+
+- [#2595](https://github.com/commercetools/ui-kit/pull/2595) [`9cfdcbb22`](https://github.com/commercetools/ui-kit/commit/9cfdcbb2272e16677056f0aebe812ad6caf18ff7) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding design tokens `border-radius-8` and `spacing-25`
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.7.3
+
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.7.2
+
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.7.1
+
+## 16.7.0
+
+### Patch Changes
+
+- [#2584](https://github.com/commercetools/ui-kit/pull/2584) [`be20cc204`](https://github.com/commercetools/ui-kit/commit/be20cc2045128dcabd96e86b7979c22540d260c9) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding new color `primary-20`
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.7.0
+
+## 16.6.1
+
+### Patch Changes
+
+- [#2581](https://github.com/commercetools/ui-kit/pull/2581) [`27c002aad`](https://github.com/commercetools/ui-kit/commit/27c002aadf38ffbc5d827c425f239d46dfa71b7f) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding new color (primary-30) and icons for representing expand/collapse actions.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.6.1
+
+## 16.6.0
+
+### Patch Changes
+
+- [#2576](https://github.com/commercetools/ui-kit/pull/2576) [`0697dc48c`](https://github.com/commercetools/ui-kit/commit/0697dc48c6dfa858bcc7f2fabd841711a20795fa) Thanks [@Rhotimee](https://github.com/Rhotimee)! - A new property called **tone** has been added to the component so consumers can use it with different color schemes (**secondary** and **info** by now).
+  Also, the **theme** property has been deprecated and it will be removed in the future, so please don't use it anymore (use the new one instead if needed).
+
+- [#2559](https://github.com/commercetools/ui-kit/pull/2559) [`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad) Thanks [@dependabot](https://github.com/apps/dependabot)! - Updated [semver](https://github.com/npm/node-semver) dependency.
+
+- [#2557](https://github.com/commercetools/ui-kit/pull/2557) [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update [semver](https://github.com/salesforce/tough-cookie) dependency.
+
+- [#2571](https://github.com/commercetools/ui-kit/pull/2571) [`ea757c503`](https://github.com/commercetools/ui-kit/commit/ea757c503af763a845d9ae8c4370c94bd77dd9ab) Thanks [@renovate](https://github.com/apps/renovate)! - Update [nodemon](https://github.com/remy/nodemon/) dependency.
+
+- Updated dependencies [[`2fde27808`](https://github.com/commercetools/ui-kit/commit/2fde27808abbf0850d0c901889c649b76d3c3bad), [`af871d072`](https://github.com/commercetools/ui-kit/commit/af871d0726c8aeae14f0563d73147512ea9e96ae)]:
+  - @commercetools-uikit/hooks@16.6.0
+
+## 16.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.5.0
+
+## 16.4.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.4.1
+
+## 16.4.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.4.0
+
+## 16.3.0
+
+### Minor Changes
+
+- [#2540](https://github.com/commercetools/ui-kit/pull/2540) [`0105a8b4a`](https://github.com/commercetools/ui-kit/commit/0105a8b4af8e214e586ab1e69aae3daf879c4a5a) Thanks [@chloe0592](https://github.com/chloe0592)! - Added 'critical' tone to the Primary Button
+
+### Patch Changes
+
+- [#2532](https://github.com/commercetools/ui-kit/pull/2532) [`767267936`](https://github.com/commercetools/ui-kit/commit/767267936f2900f08e94d19811cbe6b8f8c9cbd7) Thanks [@chloe0592](https://github.com/chloe0592)! - Changing `isCondensed` to true by default
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.3.0
+
+## 16.2.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.2.1
+
+## 16.2.0
+
+### Patch Changes
+
+- [#2531](https://github.com/commercetools/ui-kit/pull/2531) [`c3a505a94`](https://github.com/commercetools/ui-kit/commit/c3a505a941958e095799db6f9eab02a872b9b0fd) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update `ContentNotification` design tokens.
+
+- Updated dependencies [[`b6fae35c8`](https://github.com/commercetools/ui-kit/commit/b6fae35c8cc0de405a4d8aacbffac4f46a369fc4)]:
+  - @commercetools-uikit/hooks@16.2.0
+
+## 16.1.1
+
+### Patch Changes
+
+- [#2521](https://github.com/commercetools/ui-kit/pull/2521) [`251c0dd89`](https://github.com/commercetools/ui-kit/commit/251c0dd89dc9d2228ffe23f05e25178ec3662f45) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Remove supporting code for look and feel migration.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.1.1
+
+## 16.1.0
+
+### Patch Changes
+
+- [#2508](https://github.com/commercetools/ui-kit/pull/2508) [`9ec1a6f9a`](https://github.com/commercetools/ui-kit/commit/9ec1a6f9a72ccb08a8d058396db48a6347861887) Thanks [@ragafus](https://github.com/ragafus)! - Memoized `useTheme.themedValue` helper
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.1.0
+
+## 16.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.0.0
+
+## 15.15.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.15.1
+
+## 15.15.0
+
+### Minor Changes
+
+- [#2489](https://github.com/commercetools/ui-kit/pull/2489) [`def5354db`](https://github.com/commercetools/ui-kit/commit/def5354db2c351e4f035d395de44c0666f0a92d1) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding `TagList` component
+
+### Patch Changes
+
+- [#2485](https://github.com/commercetools/ui-kit/pull/2485) [`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84) Thanks [@emmenko](https://github.com/emmenko)! - Fix issue with SSR
+
+- [#2479](https://github.com/commercetools/ui-kit/pull/2479) [`b9f80bf64`](https://github.com/commercetools/ui-kit/commit/b9f80bf64a5a483bfd93c5d8e856fcd587ced281) Thanks [@emmenko](https://github.com/emmenko)! - Fix types
+
+- Updated dependencies [[`ee66b4b6d`](https://github.com/commercetools/ui-kit/commit/ee66b4b6db56b2fbef54f9196de5b66645af7d84)]:
+  - @commercetools-uikit/hooks@15.15.0
+
+## 15.14.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.14.3
+
+## 15.14.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.14.2
+
+## 15.14.1
+
+### Patch Changes
+
+- [#2461](https://github.com/commercetools/ui-kit/pull/2461) [`8fb88a98d`](https://github.com/commercetools/ui-kit/commit/8fb88a98da1b2267d05e14c1b65f99569df06974) Thanks [@emmenko](https://github.com/emmenko)! - Remove padding bottom from `<CollapsiblePanel>` content (new design). The spacing between elements should be determined by the parent component. It is recommended to use `spacing-70` to separate multiple panels between each other.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.14.1
+
+## 15.14.0
+
+### Minor Changes
+
+- [#2449](https://github.com/commercetools/ui-kit/pull/2449) [`12d05bc50`](https://github.com/commercetools/ui-kit/commit/12d05bc502490f271e4255463f2e226af24387bd) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Theming support for rich text input and localized rich text input
+
+### Patch Changes
+
+- [#2443](https://github.com/commercetools/ui-kit/pull/2443) [`500ba82ca`](https://github.com/commercetools/ui-kit/commit/500ba82ca036c73b4bb3892b5c9b607eb22465bb) Thanks [@chloe0592](https://github.com/chloe0592)! - Unifying sizes of the buttons
+
+- [#2452](https://github.com/commercetools/ui-kit/pull/2452) [`44a6d6a4e`](https://github.com/commercetools/ui-kit/commit/44a6d6a4ec63a058c6329f52868894fa95810b59) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Style update for new theme
+
+- [#2429](https://github.com/commercetools/ui-kit/pull/2429) [`4c2501b92`](https://github.com/commercetools/ui-kit/commit/4c2501b92dc41777b45bb5c99b4f15cc4e08f224) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Export component props typescript definition for uikit components. This will give users access to the Typescript definitions for the components props.
+
+- Updated dependencies [[`4c2501b92`](https://github.com/commercetools/ui-kit/commit/4c2501b92dc41777b45bb5c99b4f15cc4e08f224)]:
+  - @commercetools-uikit/hooks@15.14.0
+
+## 15.13.2
+
+### Patch Changes
+
+- [#2450](https://github.com/commercetools/ui-kit/pull/2450) [`29964960c`](https://github.com/commercetools/ui-kit/commit/29964960c78206aa7b766b2a173f46f0743d8b5c) Thanks [@chloe0592](https://github.com/chloe0592)! - Apply new design tokens to the primary-action-dropdown
+
+- [#2442](https://github.com/commercetools/ui-kit/pull/2442) [`9a1fe4877`](https://github.com/commercetools/ui-kit/commit/9a1fe4877cc429e0b1c4f7dfe1ca89aeec9d75d2) Thanks [@kark](https://github.com/kark)! - Apply new design tokens.
+  Export `TUseThemeResult` type.
+
+- [#2420](https://github.com/commercetools/ui-kit/pull/2420) [`e539cb497`](https://github.com/commercetools/ui-kit/commit/e539cb497ae74a2f557b8fdad3656f2814229aca) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update common input styles in the new theme (`background-color` on hover and read-only state styles).
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.13.2
+
+## 15.13.1
+
+### Patch Changes
+
+- [#2441](https://github.com/commercetools/ui-kit/pull/2441) [`5e3708319`](https://github.com/commercetools/ui-kit/commit/5e37083198755a7b94a77d0c4c843e5609d5f2d0) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix `font-size` for `Link` component in the new theme.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.13.1
+
+## 15.13.0
+
+### Patch Changes
+
+- [#2422](https://github.com/commercetools/ui-kit/pull/2422) [`884d209e8`](https://github.com/commercetools/ui-kit/commit/884d209e81f6965fb4c12d90b4a20fb3d0b7a4d0) Thanks [@kark](https://github.com/kark)! - Apply new design tokens and UI changes
+
+- [#2424](https://github.com/commercetools/ui-kit/pull/2424) [`8530369b3`](https://github.com/commercetools/ui-kit/commit/8530369b3e84bc108e318f9ec73711cea9af13f0) Thanks [@emmenko](https://github.com/emmenko)! - Apply new design tokens and UI changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@15.13.0
+
+## 15.12.0
+
+### Patch Changes
+
+- [#2419](https://github.com/commercetools/ui-kit/pull/2419) [`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies
+
+- [#2351](https://github.com/commercetools/ui-kit/pull/2351) [`6e0ade9bb`](https://github.com/commercetools/ui-kit/commit/6e0ade9bb909e09bb40e7804b88e06f2f8f7e6d0) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Use SSR compatible mutation observer
+
+- [#2418](https://github.com/commercetools/ui-kit/pull/2418) [`d57bb956d`](https://github.com/commercetools/ui-kit/commit/d57bb956d529ddc8f328e3189901b680f6d2b296) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Add new design tokens for select inputs tags
+
+- [#2397](https://github.com/commercetools/ui-kit/pull/2397) [`b1a12348e`](https://github.com/commercetools/ui-kit/commit/b1a12348e79188cc62e3ac5d7fb6c7f464f34dec) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Add tokens for money input component new design
+
+- Updated dependencies [[`3ed7853ce`](https://github.com/commercetools/ui-kit/commit/3ed7853ce5a59c20c347450d1f0190e996d43f9f), [`6e0ade9bb`](https://github.com/commercetools/ui-kit/commit/6e0ade9bb909e09bb40e7804b88e06f2f8f7e6d0)]:
+  - @commercetools-uikit/hooks@15.12.0
+
+## 15.11.2
+
+## 15.11.1
+
+## 15.11.0
+
+### Minor Changes
+
+- [#2392](https://github.com/commercetools/ui-kit/pull/2392) [`5a4670f37`](https://github.com/commercetools/ui-kit/commit/5a4670f3777a77fa43ca2067f61e5063f6eb34fa) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Include new design token for an error color variation (`color-error-25`).
+
+### Patch Changes
+
+- [#2373](https://github.com/commercetools/ui-kit/pull/2373) [`a527b20f3`](https://github.com/commercetools/ui-kit/commit/a527b20f3fbbf2aafd4f4c36d24f901ef53763d3) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Add new design tokens for the selectInput components:
+
+  - AsyncCreatableSelectInput
+  - AsyncSelectInput
+  - CreatableSelectInput
+  - SearchSelectInput
+  - SelectInput
+  - MoneyInput
+
+- [#2396](https://github.com/commercetools/ui-kit/pull/2396) [`6fe1cc47f`](https://github.com/commercetools/ui-kit/commit/6fe1cc47f5c45389d9f497267bc860223c81589b) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Add tokens for content-notification component new design
+
+## 15.10.0
+
+### Minor Changes
+
+- [#2391](https://github.com/commercetools/ui-kit/pull/2391) [`ff410e358`](https://github.com/commercetools/ui-kit/commit/ff410e358dcce1eb0c30a873969765c9adadcbd3) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Export a new HOC (`withThemeContext`) which allows React class components to access same utilities as `useTheme` hook.
+
+### Patch Changes
+
+- [#2388](https://github.com/commercetools/ui-kit/pull/2388) [`1926e229d`](https://github.com/commercetools/ui-kit/commit/1926e229da10a13be9f9e8b9da9331418f0c7e39) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Add and use new design tokens for the `Tooltip` component.
+
+- [#2375](https://github.com/commercetools/ui-kit/pull/2375) [`2937a74d0`](https://github.com/commercetools/ui-kit/commit/2937a74d0d5f669e8cc74af571b330bac6a038ee) Thanks [@chloe0592](https://github.com/chloe0592)! - Add new theme tokens for Tag component
+
+- [#2382](https://github.com/commercetools/ui-kit/pull/2382) [`64aab564d`](https://github.com/commercetools/ui-kit/commit/64aab564d2e66ecf7841b8e4b0cdb2d357d54ff6) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix `TextInput` component background color when hovered.
+
+- [#2390](https://github.com/commercetools/ui-kit/pull/2390) [`6d4075b75`](https://github.com/commercetools/ui-kit/commit/6d4075b754029eda6b54d2b9a2845fbddbb6faa7) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Add new design tokens for `ViewSwitcher` component
+
+## 15.9.0
+
+### Minor Changes
+
+- [#2368](https://github.com/commercetools/ui-kit/pull/2368) [`0276b8dbc`](https://github.com/commercetools/ui-kit/commit/0276b8dbc5778ec6e37922835448d76ae314332e) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - New design tokens for date & time input components.
+
+### Patch Changes
+
+- [#2370](https://github.com/commercetools/ui-kit/pull/2370) [`3647dbbc0`](https://github.com/commercetools/ui-kit/commit/3647dbbc0fd00b51536474631e8dcb15795e69ff) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Add new design tokens for stamp component.
+
+- [#2372](https://github.com/commercetools/ui-kit/pull/2372) [`f2171bf37`](https://github.com/commercetools/ui-kit/commit/f2171bf373a1e001f20f8ef59286d126af508808) Thanks [@emmenko](https://github.com/emmenko)! - Add new design tokens for color accent
+
+- [#2366](https://github.com/commercetools/ui-kit/pull/2366) [`ae3c97a59`](https://github.com/commercetools/ui-kit/commit/ae3c97a59c9b63a77ea006ad3022399642b7ac20) Thanks [@chloe0592](https://github.com/chloe0592)! - Updating design tokens for `avatar` component
+
+- [#2371](https://github.com/commercetools/ui-kit/pull/2371) [`251e3bc4e`](https://github.com/commercetools/ui-kit/commit/251e3bc4e1b4496c02721f986a05b4fa86596610) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update design tokens for `Text.Headline` component when used as an H2 element.
+
+- [#2367](https://github.com/commercetools/ui-kit/pull/2367) [`825788e93`](https://github.com/commercetools/ui-kit/commit/825788e934a73f722c04eb0784c7e13199bd23d7) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Added new design tokens to fix input components issues in new theme.
+
+- [#2374](https://github.com/commercetools/ui-kit/pull/2374) [`e8fdf8925`](https://github.com/commercetools/ui-kit/commit/e8fdf8925e75214ad3c07f12d8ac218a64e3818d) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Update design tokens related to the LocalizedMultilineInput component for the new theme
+
+## 15.8.0
+
+### Minor Changes
+
+- [#2359](https://github.com/commercetools/ui-kit/pull/2359) [`806754794`](https://github.com/commercetools/ui-kit/commit/806754794ba1afd0c43370da125d6b4163123814) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Added new design tokens for `DataTableManager` so it supports the new upcoming theme.
+  fix `Card` component shadow when _raised_ in the new theme.
+
+### Patch Changes
+
+- [#2354](https://github.com/commercetools/ui-kit/pull/2354) [`9701afa72`](https://github.com/commercetools/ui-kit/commit/9701afa729b83e5ee0064d0fc12ca73c59c91813) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Add new design tokens for collapsible panel component.
+
+## 15.7.0
+
+### Minor Changes
+
+- [#2361](https://github.com/commercetools/ui-kit/pull/2361) [`5ba1b2bb4`](https://github.com/commercetools/ui-kit/commit/5ba1b2bb486e94981da3a226a72a23957402c3f5) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Added internal temporary helper to `useTheme` hook which will help with new theme migration
+
+### Patch Changes
+
+- [#2347](https://github.com/commercetools/ui-kit/pull/2347) [`42d9ea5a2`](https://github.com/commercetools/ui-kit/commit/42d9ea5a251c1fac374c819f17438fbaa254260b) Thanks [@Rhotimee](https://github.com/Rhotimee)! - Add new tokens for `<TextInput>` component
+
+- [#2355](https://github.com/commercetools/ui-kit/pull/2355) [`8f467aa28`](https://github.com/commercetools/ui-kit/commit/8f467aa283c5888aa55755a2b3e2c549c0d4222a) Thanks [@kark](https://github.com/kark)! - Fix `<DataTable>` column separator color in the new theme
+
+## 15.6.0
+
+### Minor Changes
+
+- [#2343](https://github.com/commercetools/ui-kit/pull/2343) [`456712a7c`](https://github.com/commercetools/ui-kit/commit/456712a7cb697fde97422a2ebedaefa81f69f948) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Add new design tokens related to spacing components, `Stamp` and `Tag`.
+
+### Patch Changes
+
+- [#2349](https://github.com/commercetools/ui-kit/pull/2349) [`70dcbf909`](https://github.com/commercetools/ui-kit/commit/70dcbf9093a96251149f960f68d67dfee28aaea0) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix `useTheme` hook to keep the returned current selected theme name in sync with the provider.
+
+- [#2348](https://github.com/commercetools/ui-kit/pull/2348) [`9340db5e2`](https://github.com/commercetools/ui-kit/commit/9340db5e268fd83d478c1419361b1719800fd4cd) Thanks [@kark](https://github.com/kark)! - Adding new design tokens to `<DataTable>` component
+
+- [#2342](https://github.com/commercetools/ui-kit/pull/2342) [`ecd88cf12`](https://github.com/commercetools/ui-kit/commit/ecd88cf12d8d4d5324c9a0cb8f126ba130b9652a) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix `Tag` component design tokens
+
+- [#2346](https://github.com/commercetools/ui-kit/pull/2346) [`f33e1107a`](https://github.com/commercetools/ui-kit/commit/f33e1107a0e0cb3eb12fbcfeec848db00e1334b4) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Internal refactor to migrate spacing design tokens naming.
+
 ## 15.5.1
 
 ### Patch Changes

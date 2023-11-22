@@ -1,4 +1,4 @@
-import type { TAlignItem, TProps, TScale } from './inline';
+import type { TAlignItem, TInlineProps, TScale } from './inline';
 
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -18,15 +18,19 @@ const getAlignItem = (alignment?: TAlignItem) => {
 const getMargin = (scale?: TScale): string | number => {
   switch (scale) {
     case 'xs':
-      return designTokens.spacingXs;
+      return designTokens.spacing10;
     case 's':
-      return designTokens.spacingS;
+      return designTokens.spacing20;
     case 'm':
-      return designTokens.spacingM;
+      return designTokens.spacing30;
     case 'l':
-      return designTokens.spacingL;
+      return designTokens.spacing40;
     case 'xl':
-      return designTokens.spacingXl;
+      return designTokens.spacing50;
+    case 'xxl':
+      return designTokens.spacing60;
+    case 'xxxl':
+      return designTokens.spacing70;
     default:
       return 0;
   }
@@ -38,7 +42,7 @@ const getMargin = (scale?: TScale): string | number => {
  * causing the margings of the spacing components to be ignored.
  * See https://github.com/commercetools/ui-kit/issues/542
  */
-const getStyles = (props: TProps) => css`
+const getStyles = (props: TInlineProps) => css`
   display: flex;
   align-items: ${getAlignItem(props.alignItems)};
   justify-content: ${props.justifyContent};
