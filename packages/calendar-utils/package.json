@@ -35,7 +35,7 @@
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react-select": "5.7.3"
+    "react-select": "5.8.0"
   },
   "devDependencies": {
     "moment": "2.29.4",

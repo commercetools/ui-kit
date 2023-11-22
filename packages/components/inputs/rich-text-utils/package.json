@@ -32,17 +32,17 @@
     "@commercetools-uikit/utils": "16.11.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@types/escape-html": "1.0.2",
+    "@types/escape-html": "1.0.4",
     "downshift": "6.1.12",
     "escape-html": "1.0.3",
     "is-hotkey": "0.2.0",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
     "slate": "0.75.0",
-    "slate-history": "0.93.0",
-    "slate-hyperscript": "0.77.0",
+    "slate-history": "0.100.0",
+    "slate-hyperscript": "0.100.0",
     "slate-react": "0.75.0",
-    "style-to-object": "0.4.1"
+    "style-to-object": "0.4.4"
   },
   "devDependencies": {
     "react": "17.0.2",
