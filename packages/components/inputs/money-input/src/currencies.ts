@@ -219,6 +219,6 @@ const currencies = {
   ZWL: { fractionDigits: 2 },
   ZWN: { fractionDigits: 2 },
   ZWR: { fractionDigits: 2 },
-};
+} as const;
 
 export default currencies;
