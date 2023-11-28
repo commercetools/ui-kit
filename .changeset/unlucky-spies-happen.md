@@ -2,4 +2,4 @@
 '@commercetools-uikit/icons': minor
 ---
 
-Add `CustomViewsSelector` icon
+Add `WindowEyeReact` icon
