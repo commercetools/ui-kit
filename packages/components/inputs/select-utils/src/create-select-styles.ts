@@ -192,6 +192,7 @@ const menuStyles = (props: TProps) => (base: TBase) => {
       return base.borderColorForInput;
     })(),
     width: props.horizontalConstraint === 'auto' ? 'auto' : '100%',
+    minWidth: designTokens.constraint3,
   };
 };
 
