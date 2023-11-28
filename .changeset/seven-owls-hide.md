@@ -2,4 +2,4 @@
 '@commercetools-uikit/select-utils': patch
 ---
 
-Added min-width property to `SelectInput` component
+Updated `SelectInput` based components so the dropdown layer has a minimum width (`constraint 3`).
