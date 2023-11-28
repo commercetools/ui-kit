@@ -1,5 +1,15 @@
 # @commercetools-uikit/password-input
 
+## 16.12.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/input-utils@16.12.0
+  - @commercetools-uikit/design-system@16.12.0
+  - @commercetools-uikit/constraints@16.12.0
+  - @commercetools-uikit/utils@16.12.0
+
 ## 16.11.0
 
 ### Patch Changes
