@@ -125,4 +125,5 @@ export { default as UserLinearIcon } from './UserLinearReact';
 export { default as VerifiedIcon } from './VerifiedReact';
 export { default as ViewGridPlusIcon } from './ViewGridPlusReact';
 export { default as WarningIcon } from './WarningReact';
+export { default as WindowEyeIcon } from './WindowEyeReact';
 export { default as WorldIcon } from './WorldReact';
