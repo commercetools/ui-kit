@@ -1,5 +1,18 @@
 # @commercetools-uikit/text-field
 
+## 16.12.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-label@16.12.0
+  - @commercetools-uikit/text-input@16.12.0
+  - @commercetools-uikit/design-system@16.12.0
+  - @commercetools-uikit/constraints@16.12.0
+  - @commercetools-uikit/field-errors@16.12.0
+  - @commercetools-uikit/spacings-stack@16.12.0
+  - @commercetools-uikit/utils@16.12.0
+
 ## 16.11.0
 
 ### Patch Changes

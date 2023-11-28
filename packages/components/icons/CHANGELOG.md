@@ -1,5 +1,17 @@
 # @commercetools-uikit/icons
 
+## 16.12.0
+
+### Minor Changes
+
+- [#2656](https://github.com/commercetools/ui-kit/pull/2656) [`5fc86c87a`](https://github.com/commercetools/ui-kit/commit/5fc86c87a0533f4ae744ad59ca6a4981f61b2bf4) Thanks [@kark](https://github.com/kark)! - Add `WindowEyeReact` icon
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.12.0
+  - @commercetools-uikit/utils@16.12.0
+
 ## 16.11.0
 
 ### Patch Changes
