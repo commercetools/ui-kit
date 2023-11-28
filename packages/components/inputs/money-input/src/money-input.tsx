@@ -25,7 +25,7 @@ import {
 import { FractionDigitsIcon } from '@commercetools-uikit/icons';
 import Constraints from '@commercetools-uikit/constraints';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
-import currencies from './currencies.json';
+import currencies from './currencies';
 import {
   getHighPrecisionWrapperStyles,
   getCurrencyLabelStyles,
