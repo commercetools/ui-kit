@@ -585,6 +585,7 @@
   --padding-for-collapsible-panel-section-description-as-condensed: 0 0
     var(--spacing-40);
   --padding-for-input: 16px;
+  --padding-for-input-as-quiet: 8px;
   --padding-for-multiline-input: 8px;
   --padding-for-localized-rich-text-input-label: var(--spacing-20) 12px;
   --padding-for-localized-rich-text-dropdown-button: 5px var(--spacing-20);
