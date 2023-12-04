@@ -1,5 +1,19 @@
 # @commercetools-uikit/data-table
 
+## 16.12.1
+
+### Patch Changes
+
+- [#2661](https://github.com/commercetools/ui-kit/pull/2661) [`237f5bd6e`](https://github.com/commercetools/ui-kit/commit/237f5bd6eef974b99ca9a1529ba7811f11ed2ad5) Thanks [@jaikumar-tj](https://github.com/jaikumar-tj)! - Updated table columns width calculation to take into account only main table header. This allows for having nested tables in its rows.
+
+- Updated dependencies [[`e7981d960`](https://github.com/commercetools/ui-kit/commit/e7981d960919a5de7e59470ae5ecc33d308c1e9b)]:
+  - @commercetools-uikit/design-system@16.12.1
+  - @commercetools-uikit/accessible-button@16.12.1
+  - @commercetools-uikit/secondary-icon-button@16.12.1
+  - @commercetools-uikit/icons@16.12.1
+  - @commercetools-uikit/hooks@16.12.1
+  - @commercetools-uikit/utils@16.12.1
+
 ## 16.12.0
 
 ### Patch Changes
