@@ -2,5 +2,5 @@
 '@commercetools-uikit/data-table': patch
 ---
 
-Change query selector to target only the `th` element of outer table  
+Updated table columns width calculation to take into account only main table header. This allows for having nested tables in its rows.
 
