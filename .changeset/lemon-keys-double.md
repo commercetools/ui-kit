@@ -3,4 +3,4 @@
 '@commercetools-uikit/design-system': patch
 ---
 
-Use smaller padding for `selectInput` component when the appearance is `quiet`.
+Use smaller padding for `SelectInput` component when the appearance is `quiet`.
