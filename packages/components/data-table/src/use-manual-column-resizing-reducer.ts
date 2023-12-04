@@ -123,12 +123,14 @@ const useManualColumnResizing = (tableRef?: TTableRef) => {
   // if the table element has been rendered and we haven't yet measured the columns
   if (state.tableRef?.current && !state.sizes) {
     const renderedColumnMeasurements: TRenderedColumnMeasurements[] = [];
-    state.tableRef.current.querySelectorAll('th').forEach((header) => {
-      renderedColumnMeasurements.push({
-        key: header.getAttribute('data-id'),
-        width: header.getBoundingClientRect().width,
+    state.tableRef.current
+      .querySelectorAll(':scope > thead > tr > th')
+      .forEach((header) => {
+        renderedColumnMeasurements.push({
+          key: header.getAttribute('data-id'),
+          width: header.getBoundingClientRect().width,
+        });
       });
-    });
 
     dispatch({
       type: 'registerColumnMeasurements',
