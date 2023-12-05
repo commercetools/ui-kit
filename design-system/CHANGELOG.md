@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 16.12.1
+
+### Patch Changes
+
+- [#2658](https://github.com/commercetools/ui-kit/pull/2658) [`e7981d960`](https://github.com/commercetools/ui-kit/commit/e7981d960919a5de7e59470ae5ecc33d308c1e9b) Thanks [@chloe0592](https://github.com/chloe0592)! - Use smaller padding for `SelectInput` component when the appearance is `quiet`.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@16.12.1
+
 ## 16.12.0
 
 ### Patch Changes

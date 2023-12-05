@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/icons",
   "description": "All SVG icons are rendered as React components.",
-  "version": "16.12.0",
+  "version": "16.12.1",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -27,8 +27,8 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/design-system": "16.12.0",
-    "@commercetools-uikit/utils": "16.12.0",
+    "@commercetools-uikit/design-system": "16.12.1",
+    "@commercetools-uikit/utils": "16.12.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@types/dompurify": "^2.4.0",
