@@ -14,7 +14,7 @@ export interface TRow {
   id: string;
 }
 
-export type TColumnProps = {
+export type TColumnProps<Row extends TRow = TRow> = {
   /**
    * The unique key of the column that is used to identify your data type.
    * You can use this value to determine which value from a row item should be rendered.
@@ -56,7 +56,7 @@ export type TColumnProps = {
    * A callback function to render the content of cells under this column, overriding
    * the default `itemRenderer` prop of the table.
    */
-  renderItem?: <T extends TRow>(row: T, isRowCollapsed: boolean) => ReactNode;
+  renderItem?: (row: Row, isRowCollapsed: boolean) => ReactNode;
 
   /**
    * Use this prop to place an `Icon` or `IconButton` on the left of the column label.
@@ -100,7 +100,7 @@ export type TColumnProps = {
   shouldIgnoreRowClick?: boolean;
 };
 
-type TDataTableManagerProps = {
+type TDataTableManagerProps<Row extends TRow = TRow> = {
   /**
    * Each object requires a unique `key` which should correspond to property key of
    * the items of `rows` that you want to render under this column, and a `label`
@@ -108,7 +108,7 @@ type TDataTableManagerProps = {
    * The list of columns to be rendered.
    * Each column can be customized (see properties below).
    */
-  columns: TColumnProps[];
+  columns: TColumnProps<Row>[];
 
   /**
    * Any React node. Usually you want to render the `<DataTable>` component.
@@ -146,7 +146,9 @@ type TDataTableManagerProps = {
   managerTheme?: 'light' | 'dark';
 };
 
-const DataTableManager = (props: TDataTableManagerProps) => {
+const DataTableManager = <Row extends TRow = TRow>(
+  props: TDataTableManagerProps<Row>
+) => {
   const areDisplaySettingsEnabled = Boolean(
     props.displaySettings && !props.displaySettings.disableDisplaySettings
   );
