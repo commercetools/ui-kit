@@ -1,5 +1,4 @@
 import moment from 'moment';
-import inRange from 'lodash/inRange';
 import type { MomentInput, DurationInputArg1 } from 'moment';
 
 export const getDaysInMonth = (day: MomentInput) => moment(day).daysInMonth();
@@ -20,8 +19,7 @@ export const getPaddingDayCount = (day: MomentInput, locale: string) => {
   const firstDayOfMonth = moment(day).startOf('month').day();
   const paddingDayCount = (firstDayOfMonth - firstDayOfWeek + 7) % 7;
 
-  // ensure number is always positive
-  return inRange(paddingDayCount, 0, 6) ? paddingDayCount : 0;
+  return Number.isNaN(paddingDayCount) ? 0 : paddingDayCount;
 };
 
 export const getWeekdayNames = (locale: string) => {
