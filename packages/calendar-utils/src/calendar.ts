@@ -19,7 +19,6 @@ export const getPaddingDayCount = (day: MomentInput, locale: string) => {
   const firstDayOfMonth = moment(day).startOf('month').day();
   const paddingDayCount = (firstDayOfMonth - firstDayOfWeek + 7) % 7;
 
-  // ensure number is always positive
   return Number.isNaN(paddingDayCount) ? 0 : paddingDayCount;
 };
 
