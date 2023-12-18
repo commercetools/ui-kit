@@ -88,7 +88,7 @@ describe('getPaddingDayCount', () => {
     expect(getPaddingDayCount('2019-01-01')).toEqual(2);
     expect(getPaddingDayCount(NaN)).toEqual(0);
   });
-  it('in a month where for en-US locale first day of the month is also first day of the week (and getPaddingDayCount is 0) should return a positive value for en-GB locale due to a different first day of week', () => {
+  it('should return different values for different locale', () => {
     expect(getPaddingDayCount('2023-10-23', 'en-US')).toEqual(0);
     expect(getPaddingDayCount('2023-10-23', 'en-GB')).toEqual(6);
   });
