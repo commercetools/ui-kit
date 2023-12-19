@@ -148,7 +148,6 @@
 //     );
 //   });
 
-
 import { ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import * as icons from '@commercetools-uikit/icons';
@@ -233,19 +232,22 @@ const meta = {
   argTypes: {
     iconLeft: {
       options: ['', ...Object.keys(icons)],
-      mapping: Object.entries(icons).reduce<Record<string, ReactNode>>((acc, [iconName, IconComponent]) => {
-        acc[iconName] = <IconComponent />;
-        return acc;
-      }, {}),
-    }
+      mapping: Object.entries(icons).reduce<Record<string, ReactNode>>(
+        (acc, [iconName, IconComponent]) => {
+          acc[iconName] = <IconComponent />;
+          return acc;
+        },
+        {}
+      ),
+    },
   },
   decorators: [
     (Story) => (
-      <div style={{ margin: '24px'}}>
+      <div style={{ margin: '24px' }}>
         <Story />
       </div>
-    )
-  ]
+    ),
+  ],
 } satisfies Meta<typeof SelectInput>;
 
 export default meta;
