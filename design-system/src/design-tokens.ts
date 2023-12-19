@@ -503,6 +503,7 @@ export const themes = {
     paddingForCollapsiblePanelSectionDescriptionAsCondensed:
       '0 0 var(--spacing-40)',
     paddingForInput: '16px',
+    paddingForInputAsQuiet: '8px',
     paddingForMultilineInput: '8px',
     paddingForLocalizedRichTextInputLabel: 'var(--spacing-20) 12px',
     paddingForLocalizedRichTextDropdownButton: '5px var(--spacing-20)',
@@ -1281,6 +1282,7 @@ const designTokens = {
   paddingForCollapsiblePanelSectionDescriptionAsCondensed:
     'var(--padding-for-collapsible-panel-section-description-as-condensed, 0 0 var(--spacing-40))',
   paddingForInput: 'var(--padding-for-input, 16px)',
+  paddingForInputAsQuiet: 'var(--padding-for-input-as-quiet, 8px)',
   paddingForMultilineInput: 'var(--padding-for-multiline-input, 8px)',
   paddingForLocalizedRichTextInputLabel:
     'var(--padding-for-localized-rich-text-input-label, var(--spacing-20) 12px)',

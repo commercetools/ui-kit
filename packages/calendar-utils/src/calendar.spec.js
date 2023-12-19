@@ -88,4 +88,8 @@ describe('getPaddingDayCount', () => {
     expect(getPaddingDayCount('2019-01-01')).toEqual(2);
     expect(getPaddingDayCount(NaN)).toEqual(0);
   });
+  it('should return different values for different locale', () => {
+    expect(getPaddingDayCount('2023-10-23', 'en-US')).toEqual(0);
+    expect(getPaddingDayCount('2023-10-23', 'en-GB')).toEqual(6);
+  });
 });

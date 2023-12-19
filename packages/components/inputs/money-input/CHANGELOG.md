@@ -1,5 +1,35 @@
 # @commercetools-uikit/money-input
 
+## 16.12.1
+
+### Patch Changes
+
+- Updated dependencies [[`e7981d960`](https://github.com/commercetools/ui-kit/commit/e7981d960919a5de7e59470ae5ecc33d308c1e9b)]:
+  - @commercetools-uikit/select-utils@16.12.1
+  - @commercetools-uikit/design-system@16.12.1
+  - @commercetools-uikit/constraints@16.12.1
+  - @commercetools-uikit/icons@16.12.1
+  - @commercetools-uikit/input-utils@16.12.1
+  - @commercetools-uikit/tooltip@16.12.1
+  - @commercetools-uikit/hooks@16.12.1
+  - @commercetools-uikit/utils@16.12.1
+
+## 16.12.0
+
+### Patch Changes
+
+- [#2649](https://github.com/commercetools/ui-kit/pull/2649) [`b8ed8e4f5`](https://github.com/commercetools/ui-kit/commit/b8ed8e4f527c69c18ab5c6f536a1b0cbffa92eea) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Refactor internal JSON data file to be a TS file exporting the same data object.
+
+- Updated dependencies [[`e5f42ff8a`](https://github.com/commercetools/ui-kit/commit/e5f42ff8ab4bafbcc0c7e111b4aab462dfaa3e8c), [`5fc86c87a`](https://github.com/commercetools/ui-kit/commit/5fc86c87a0533f4ae744ad59ca6a4981f61b2bf4)]:
+  - @commercetools-uikit/select-utils@16.12.0
+  - @commercetools-uikit/icons@16.12.0
+  - @commercetools-uikit/input-utils@16.12.0
+  - @commercetools-uikit/design-system@16.12.0
+  - @commercetools-uikit/constraints@16.12.0
+  - @commercetools-uikit/tooltip@16.12.0
+  - @commercetools-uikit/hooks@16.12.0
+  - @commercetools-uikit/utils@16.12.0
+
 ## 16.11.0
 
 ### Patch Changes

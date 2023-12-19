@@ -1188,6 +1188,8 @@ decisionGroupsByTheme:
           choice: '0 0 var(--spacing-40)'
         padding-for-input:
           choice: spacing-30
+        padding-for-input-as-quiet:
+          choice: spacing-20
         padding-for-multiline-input:
           choice: spacing-20
         padding-for-localized-rich-text-input-label:

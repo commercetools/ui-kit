@@ -1,5 +1,41 @@
 # @commercetools-uikit/rich-text-input
 
+## 16.12.1
+
+### Patch Changes
+
+- Updated dependencies [[`e7981d960`](https://github.com/commercetools/ui-kit/commit/e7981d960919a5de7e59470ae5ecc33d308c1e9b)]:
+  - @commercetools-uikit/design-system@16.12.1
+  - @commercetools-uikit/flat-button@16.12.1
+  - @commercetools-uikit/constraints@16.12.1
+  - @commercetools-uikit/icons@16.12.1
+  - @commercetools-uikit/input-utils@16.12.1
+  - @commercetools-uikit/rich-text-utils@16.12.1
+  - @commercetools-uikit/spacings-inline@16.12.1
+  - @commercetools-uikit/spacings-stack@16.12.1
+  - @commercetools-uikit/tooltip@16.12.1
+  - @commercetools-uikit/collapsible-motion@16.12.1
+  - @commercetools-uikit/hooks@16.12.1
+  - @commercetools-uikit/utils@16.12.1
+
+## 16.12.0
+
+### Patch Changes
+
+- Updated dependencies [[`5fc86c87a`](https://github.com/commercetools/ui-kit/commit/5fc86c87a0533f4ae744ad59ca6a4981f61b2bf4)]:
+  - @commercetools-uikit/icons@16.12.0
+  - @commercetools-uikit/input-utils@16.12.0
+  - @commercetools-uikit/rich-text-utils@16.12.0
+  - @commercetools-uikit/design-system@16.12.0
+  - @commercetools-uikit/flat-button@16.12.0
+  - @commercetools-uikit/collapsible-motion@16.12.0
+  - @commercetools-uikit/constraints@16.12.0
+  - @commercetools-uikit/spacings-inline@16.12.0
+  - @commercetools-uikit/spacings-stack@16.12.0
+  - @commercetools-uikit/tooltip@16.12.0
+  - @commercetools-uikit/hooks@16.12.0
+  - @commercetools-uikit/utils@16.12.0
+
 ## 16.11.0
 
 ### Patch Changes

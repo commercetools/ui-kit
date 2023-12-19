@@ -98,7 +98,6 @@ storiesOf('Components|Inputs/SelectInputs', module)
       },
     ];
     const isMulti = boolean('isMulti', false);
-    const menuIsOpen = boolean('menuIsOpen', false);
     const showOptionGroupDivider = boolean('Show option group divider', false);
     const shouldMenuFlip = boolean('Show menu flipping above the input', false);
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
@@ -146,7 +145,6 @@ storiesOf('Components|Inputs/SelectInputs', module)
                   isDisabled={boolean('isDisabled', false)}
                   isReadOnly={boolean('isReadOnly', false)}
                   isMulti={isMulti}
-                  menuIsOpen={menuIsOpen}
                   isSearchable={boolean('isSearchable', false)}
                   maxMenuHeight={number('maxMenuHeight', 220)}
                   closeMenuOnSelect={boolean('closeMenuOnSelect', true)}
