@@ -1,0 +1,108 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as AsyncCreatableSelectInput from './src/async-creatable-select-input.stories';
+
+<Meta of={AsyncCreatableSelectInput} />
+
+# AsyncCreatableSelectInput
+
+## Description
+
+An input component getting a selection from an asynchronously loaded list from the user, and where options can be created by the user.
+
+This input is built on top of [`react-select`](https://github.com/JedWatson/react-select) v2.
+It supports mostly same properties as `react-select`. Behaviour for some props was changed, and support for others was dropped.
+
+In case you need one of the currently excluded props, feel free to open a PR adding them.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/async-creatable-select-input
+```
+
+```
+npm --save install @commercetools-uikit/async-creatable-select-input
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react react-dom react-intl
+```
+
+```
+npm --save install react react-dom react-intl
+```
+
+## Usage
+
+```jsx
+import PropTypes from 'prop-types';
+import AsyncCreatableSelectInput from '@commercetools-uikit/async-creatable-select-input';
+
+const Example = (props) => (
+  <AsyncCreatableSelectInput
+    name="form-field-name"
+    value={props.value}
+    onChange={
+      (/** event */) => {
+        // console.log(event)
+      }
+    }
+    options={[
+      { value: 'one', label: 'One' },
+      { value: 'two', label: 'Two' },
+    ]}
+  />
+);
+
+Example.propTypes = {
+  value: PropTypes.string,
+};
+
+export default Example;
+```
+
+### Static Properties
+
+#### `isTouched(touched)`
+
+Returns truthy value for the Formik `touched` value of this input field.
+
+## Components
+
+It is possible to customize `AsyncCreatableSelectInput` by passing the `components` property.
+`AsyncCreatableSelectInput` exports the default underlying components as static exports.
+
+Components available as static exports are:
+
+- `ClearIndicator`
+- `Control`
+- `CrossIcon`
+- `DownChevron`
+- `DropdownIndicator`
+- `Group`
+- `GroupHeading`
+- `IndicatorsContainer`
+- `IndicatorSeparator`
+- `Input`
+- `LoadingIndicator`
+- `LoadingMessage`
+- `Menu`
+- `MenuList`
+- `MenuPortal`
+- `MultiValue`
+- `MultiValueContainer`
+- `MultiValueLabel`
+- `MultiValueRemove`
+- `NoOptionsMessage`
+- `Option`
+- `Placeholder`
+- `SelectContainer`
+- `SingleValue`
+- `ValueContainer`
+
+See the [official documentation](https://react-select.com/components) for more information about the props they receive.
+
+<Canvas of={AsyncCreatableSelectInput.Default} />

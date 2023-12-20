@@ -19,6 +19,12 @@ const preview: Preview = {
       },
     },
   },
+  argTypes: {
+    onBlur: { action: 'onBlur' },
+    onChange: { action: 'onChange' },
+    onFocus: { action: 'onFocus' },
+    onInputChange: { action: 'onInputChange' },
+  },
   decorators: [withThemeDecorator, withIntlDecorator],
 };
 
