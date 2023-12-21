@@ -1,11 +1,7 @@
-import { ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
-import * as icons from '../../../icons';
+import { iconArgType, withControlledValue } from '@/storybook-helpers';
 
-import AsyncCreatableSelectInput, { TCustomEvent } from './async-creatable-select-input';
-
-const iconNames = Object.keys(icons);
+import AsyncCreatableSelectInput, { type TAsyncCreatableSelectInputProps } from './async-creatable-select-input';
 
 const colourOptions = [
   {
@@ -53,17 +49,7 @@ const meta = {
       options: ['first', 'last'],
       defaultValue: 'last',
     },
-    iconLeft: {
-      control: { type: 'select' },
-      options: ['', ...iconNames],
-      mapping: Object.entries(icons).reduce<Record<string, ReactNode>>(
-        (acc, [iconName, IconComponent]) => {
-          acc[iconName] = <IconComponent />;
-          return acc;
-        },
-        {}
-      ),
-    },
+    iconLeft: iconArgType,
   },
   tags: ['autodocs'],
 } satisfies Meta<typeof AsyncCreatableSelectInput>;
@@ -97,23 +83,8 @@ export const Default: Story = {
     name: 'form-field-name',
     placeholder: 'Select..',
     showOptionGroupDivider: false, // Creatable prop
-    tabIndex: '0',
+    tabIndex: 0,
     tabSelectsValue: true,
   },
-  render: (args) => {
-    const [{ value, onChange }, updateArgs] = useArgs();
-
-    const _onChange = (event: TCustomEvent) => {
-      updateArgs({ value: event.target.value });
-      onChange(event);
-    }
-
-    return (
-      <AsyncCreatableSelectInput
-        {...args}
-        value={value}
-        onChange={_onChange}
-      />
-    );
-  },
+  render: withControlledValue<TAsyncCreatableSelectInputProps>(AsyncCreatableSelectInput),
 };

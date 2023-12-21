@@ -1,12 +1,10 @@
-import { type ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Constraints from '@commercetools-uikit/constraints';
 import FlatButton from '@commercetools-uikit/flat-button';
 import * as icons from '@commercetools-uikit/icons';
+import { iconArgType } from '@/storybook-helpers';
 
 import FieldLabel from './field-label';
-
-const iconNames = Object.keys(icons);
 
 const meta = {
   title: 'Components/FieldLabel',
@@ -16,16 +14,7 @@ const meta = {
     horizontalConstraint: 'scale',
   },
   argTypes: {
-    hintIcon: {
-      options: ['', ...iconNames],
-      mapping: Object.entries(icons).reduce<Record<string, ReactNode>>(
-        (acc, [iconName, IconComponent]) => {
-          acc[iconName] = <IconComponent />;
-          return acc;
-        },
-        {}
-      ),
-    },
+    hintIcon: iconArgType,
   },
 } satisfies Meta<typeof FieldLabel>;
 

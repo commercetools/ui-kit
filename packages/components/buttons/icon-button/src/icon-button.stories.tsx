@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import * as icons from '@commercetools-uikit/icons';
+import { iconArgType } from '@/storybook-helpers';
 
 import IconButton from './icon-button';
 
@@ -14,16 +14,7 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    icon: {
-      options: ['', ...iconNames],
-      mapping: Object.entries(icons).reduce<Record<string, ReactNode>>(
-        (acc, [iconName, IconComponent]) => {
-          acc[iconName] = <IconComponent />;
-          return acc;
-        },
-        {}
-      ),
-    },
+    icon: iconArgType,
   },
 } satisfies Meta<typeof IconButton>;
 

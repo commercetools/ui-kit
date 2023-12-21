@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import * as icons from '@commercetools-uikit/icons';
+import { iconArgType } from '@/storybook-helpers';
 
 import PrimaryButton from './primary-button';
 
@@ -14,16 +14,7 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    iconLeft: {
-      options: ['', ...iconNames],
-      mapping: Object.entries(icons).reduce<Record<string, ReactNode>>(
-        (acc, [iconName, IconComponent]) => {
-          acc[iconName] = <IconComponent />;
-          return acc;
-        },
-        {}
-      ),
-    },
+    iconLeft: iconArgType,
   },
 } satisfies Meta<typeof PrimaryButton>;
 
