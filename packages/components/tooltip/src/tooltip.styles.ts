@@ -99,7 +99,6 @@ export const getTooltipStyles = (tooltipState: TTooltipState) =>
 
 export const Wrapper = styled.div`
   display: inline-block;
-  cursor: not-allowed;
   > :disabled {
     pointer-events: none;
   }

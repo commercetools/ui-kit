@@ -21,7 +21,6 @@ const CustomWrapper = styled.div`
 
 const CustomButtonWrapper = styled.div`
   width: min-content;
-  cursor: not-allowed;
   > :disabled {
     pointer-events: none;
   }
