@@ -1,4 +1,4 @@
-import { dirname, join } from 'path';
+import { dirname, join, resolve } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 function getAbsolutePath(value: string): any {
@@ -21,11 +21,20 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: true,
   },
   core: {
     disableTelemetry: true,
   },
+  viteFinal: async (config, options) => {
+    // Add your custom vite config here
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@/storybook-helpers': resolve(__dirname, './helpers'),
+    }
+    return config;
+  }
 };
 
 export default config;
