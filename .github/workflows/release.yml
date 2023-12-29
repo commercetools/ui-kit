@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -51,6 +54,7 @@ jobs:
       - name: Creating .npmrc
         run: |
           cat << EOF > "$HOME/.npmrc"
+            provenance=true
             email=npmjs@commercetools.com
             //registry.npmjs.org/:_authToken=$NPM_TOKEN
           EOF
