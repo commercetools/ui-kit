@@ -143,6 +143,10 @@ storiesOf('Components|Inputs', module)
             onSubmit={(submitValues) => {
               alert(JSON.stringify(submitValues));
             }}
+            optionSelector={[
+              { 'option-selector-1': 'value-1' },
+              { 'option-selector-2': 'value-2' },
+            ]}
             {...addMenuPortalProps()}
           />
           <NeighbouringStackingContext />

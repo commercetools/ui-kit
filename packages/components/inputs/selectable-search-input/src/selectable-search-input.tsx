@@ -22,7 +22,7 @@ import {
   getSelectableSearchInputContainerStyles,
   getSelectableSearchInputStyles,
 } from './selectable-search-input.styles';
-import SelectableSelect from './selectable-select';
+import SelectableSelect, { type TOptionSelector } from './selectable-select';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -206,6 +206,10 @@ export type TSelectableSearchInputProps = {
    * Show submit button in the input
    */
   showSubmitButton?: boolean;
+  /**
+   * array of selector options that can be used to pass selectors to the options dropdown
+   */
+  optionSelector?: TOptionSelector[];
 };
 
 const defaultProps: Pick<
@@ -397,6 +401,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             handleDropdownBlur={handleDropdownBlur}
             textInputRef={textInputRef}
             selectedOption={selectedOption}
+            optionSelector={props.optionSelector}
           />
         </Constraints.Horizontal>
         <div

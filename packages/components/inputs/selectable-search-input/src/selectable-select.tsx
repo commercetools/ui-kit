@@ -12,23 +12,36 @@ import type {
 } from './selectable-search-input';
 import { createSelectableSelectStyles } from './selectable-search-input.styles';
 
+export type TOptionSelector = {
+  [key: string]: string;
+};
+
 type TSingleValue = {
-  id?: string;
   children?: ReactNode;
+  optionSelector?: TOptionSelector[];
+  id?: string;
 } & SingleValueProps;
 
-const SingleValue = ({ id, ...props }: TSingleValue) => (
-  <components.SingleValue {...props}>
-    <label htmlFor={id}>{props.children}</label>
-  </components.SingleValue>
-);
+const SingleValue = ({ optionSelector, id, ...props }: TSingleValue) => {
+  const transformedSelectors = optionSelector
+    ? Object.assign({}, ...optionSelector)
+    : {};
 
+  return (
+    <components.SingleValue {...props}>
+      <label htmlFor={id} {...transformedSelectors}>
+        {props.children}
+      </label>
+    </components.SingleValue>
+  );
+};
 type TSelectableSelect = {
   dropdownHasFocus: boolean;
   handleDropdownFocus: () => void;
   handleDropdownBlur: () => void;
   textInputRef: React.RefObject<HTMLInputElement>;
   selectedOption?: TOption;
+  optionSelector?: TOptionSelector[];
 } & TSelectableSearchInputProps;
 
 const SelectableSelect = (props: TSelectableSelect) => {
@@ -71,7 +84,11 @@ const SelectableSelect = (props: TSelectableSelect) => {
       closeMenuOnSelect={props.closeMenuOnSelect}
       components={{
         SingleValue: (innerProps) => (
-          <SingleValue {...innerProps} id={props.id} />
+          <SingleValue
+            {...innerProps}
+            id={props.id}
+            optionSelector={props.optionSelector}
+          />
         ),
         DropdownIndicator,
       }}
