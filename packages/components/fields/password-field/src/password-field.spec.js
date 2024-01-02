@@ -141,12 +141,26 @@ describe('when disabled', () => {
     const { getByLabelText } = renderPasswordField({ isDisabled: true });
     expect(getByLabelText('PasswordField')).toBeDisabled();
   });
+  it('should set the input type to password', () => {
+    const { container } = renderPasswordField({ isDisabled: true });
+    expect(container.querySelector('input')).toHaveAttribute(
+      'type',
+      'password'
+    );
+  });
 });
 
 describe('when readOnly', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderPasswordField({ isReadOnly: true });
     expect(getByLabelText('PasswordField')).toHaveAttribute('readonly');
+  });
+  it('should set the input type to password', () => {
+    const { container } = renderPasswordField({ isReadOnly: true });
+    expect(container.querySelector('input')).toHaveAttribute(
+      'type',
+      'password'
+    );
   });
 });
 
