@@ -142,11 +142,20 @@ describe('when disabled', () => {
     expect(getByLabelText('PasswordField')).toBeDisabled();
   });
   it('should set the input type to password', () => {
-    const { container } = renderPasswordField({ isDisabled: true });
-    expect(container.querySelector('input')).toHaveAttribute(
+    const { getByLabelText } = renderPasswordField({ isDisabled: true });
+    expect(getByLabelText('PasswordField')).toHaveAttribute(
       'type',
       'password'
     );
+  });
+  descrbe('when has value', () => {
+    it('should set the input type to password', () => {
+      const { getByLabelText } = renderPasswordField({ value: 'foo', isDisabled: true });
+      expect(getByLabelText('PasswordField')).toHaveAttribute(
+        'type',
+        'password'
+      );
+    });
   });
 });
 
@@ -156,11 +165,39 @@ describe('when readOnly', () => {
     expect(getByLabelText('PasswordField')).toHaveAttribute('readonly');
   });
   it('should set the input type to password', () => {
-    const { container } = renderPasswordField({ isReadOnly: true });
-    expect(container.querySelector('input')).toHaveAttribute(
+    const { getByLabelText } = renderPasswordField({ isReadOnly: true });
+    expect(getByLabelText('PasswordField')).toHaveAttribute(
       'type',
       'password'
     );
+  });
+  descrbe('when has value', () => {
+    it('should set the input type to password', () => {
+      const { getByLabelText } = renderPasswordField({ value: 'foo', isReadOnly: true });
+      expect(getByLabelText('PasswordField')).toHaveAttribute(
+        'type',
+        'password'
+      );
+    });
+  });
+});
+
+describe('when disabled and readOnly', () => {
+  it('should set the input type to password', () => {
+    const { getByLabelText } = renderPasswordField({ isDisabled: true, isReadOnly: true });
+    expect(getByLabelText('PasswordField')).toHaveAttribute(
+      'type',
+      'password'
+    );
+  })
+  describe('when has value', () => {
+    it('should set the input type to password', () => {
+      const { getByLabelText } = renderPasswordField({ value: 'foo', isDisabled: true, isReadOnly: true });
+      expect(getByLabelText('PasswordField')).toHaveAttribute(
+        'type',
+        'password'
+      );
+    });
   });
 });
 
