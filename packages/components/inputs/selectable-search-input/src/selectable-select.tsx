@@ -11,6 +11,7 @@ import type {
   TOption,
 } from './selectable-search-input';
 import { createSelectableSelectStyles } from './selectable-search-input.styles';
+import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 export type TOptionSelector = {
   [key: string]: string;
@@ -26,10 +27,11 @@ const SingleValue = ({ optionSelector, id, ...props }: TSingleValue) => {
   const transformedSelectors = optionSelector
     ? Object.assign({}, ...optionSelector)
     : {};
+  const filteredDataAttributes = filterDataAttributes(transformedSelectors);
 
   return (
     <components.SingleValue {...props}>
-      <label htmlFor={id} {...transformedSelectors}>
+      <label htmlFor={id} {...filteredDataAttributes}>
         {props.children}
       </label>
     </components.SingleValue>
