@@ -207,7 +207,7 @@ export type TSelectableSearchInputProps = {
    */
   showSubmitButton?: boolean;
   /**
-   * array of selector options that can be used to pass selectors to the options dropdown
+   * array of selector options that can be used to pass `data-*` props selectors to the options dropdown
    */
   optionSelector?: TOptionSelector[];
 };
