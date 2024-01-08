@@ -143,14 +143,14 @@ describe('when disabled', () => {
   });
   it('should set the input type to password', () => {
     const { getByLabelText } = renderPasswordField({ isDisabled: true });
-    expect(getByLabelText('PasswordField')).toHaveAttribute(
-      'type',
-      'password'
-    );
+    expect(getByLabelText('PasswordField')).toHaveAttribute('type', 'password');
   });
-  descrbe('when has value', () => {
+  describe('when has value', () => {
     it('should set the input type to password', () => {
-      const { getByLabelText } = renderPasswordField({ value: 'foo', isDisabled: true });
+      const { getByLabelText } = renderPasswordField({
+        value: 'foo',
+        isDisabled: true,
+      });
       expect(getByLabelText('PasswordField')).toHaveAttribute(
         'type',
         'password'
@@ -166,14 +166,14 @@ describe('when readOnly', () => {
   });
   it('should set the input type to password', () => {
     const { getByLabelText } = renderPasswordField({ isReadOnly: true });
-    expect(getByLabelText('PasswordField')).toHaveAttribute(
-      'type',
-      'password'
-    );
+    expect(getByLabelText('PasswordField')).toHaveAttribute('type', 'password');
   });
-  descrbe('when has value', () => {
+  describe('when has value', () => {
     it('should set the input type to password', () => {
-      const { getByLabelText } = renderPasswordField({ value: 'foo', isReadOnly: true });
+      const { getByLabelText } = renderPasswordField({
+        value: 'foo',
+        isReadOnly: true,
+      });
       expect(getByLabelText('PasswordField')).toHaveAttribute(
         'type',
         'password'
@@ -184,15 +184,19 @@ describe('when readOnly', () => {
 
 describe('when disabled and readOnly', () => {
   it('should set the input type to password', () => {
-    const { getByLabelText } = renderPasswordField({ isDisabled: true, isReadOnly: true });
-    expect(getByLabelText('PasswordField')).toHaveAttribute(
-      'type',
-      'password'
-    );
-  })
+    const { getByLabelText } = renderPasswordField({
+      isDisabled: true,
+      isReadOnly: true,
+    });
+    expect(getByLabelText('PasswordField')).toHaveAttribute('type', 'password');
+  });
   describe('when has value', () => {
     it('should set the input type to password', () => {
-      const { getByLabelText } = renderPasswordField({ value: 'foo', isDisabled: true, isReadOnly: true });
+      const { getByLabelText } = renderPasswordField({
+        value: 'foo',
+        isDisabled: true,
+        isReadOnly: true,
+      });
       expect(getByLabelText('PasswordField')).toHaveAttribute(
         'type',
         'password'
