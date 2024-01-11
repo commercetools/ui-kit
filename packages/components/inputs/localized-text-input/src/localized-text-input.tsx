@@ -122,7 +122,7 @@ export type TLocalizedTextInputProps = {
    */
   hasError?: boolean;
   /**
-   * Control to indicate on the input if there are values that are potentially invalid
+   * Indicates the input field has a warning
    */
   hasWarning?: boolean;
   /**
@@ -161,7 +161,7 @@ export type TLocalizedInputProps = {
   isReadOnly?: boolean;
   hasError?: boolean;
   /**
-   * Control to indicate on the input if there are values that are potentially invalid
+   * Indicates the input field has a warning
    */
   hasWarning?: boolean;
   /**
