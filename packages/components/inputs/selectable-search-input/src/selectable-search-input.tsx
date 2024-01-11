@@ -22,7 +22,7 @@ import {
   getSelectableSearchInputContainerStyles,
   getSelectableSearchInputStyles,
 } from './selectable-search-input.styles';
-import SelectableSelect, { type TOptionSelector } from './selectable-select';
+import SelectableSelect, { type TDataProps } from './selectable-select';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -207,9 +207,13 @@ export type TSelectableSearchInputProps = {
    */
   showSubmitButton?: boolean;
   /**
-   * array of selector options that can be used to pass `data-*` props selectors to the options dropdown
+   *  used to pass `data-*` props to the select component
    */
-  optionSelector?: TOptionSelector[];
+  selectDataProps?: TDataProps[];
+  /**
+   *  used to pass `data-*` props to the input element
+   */
+  inputDataProps?: TDataProps[];
 };
 
 const defaultProps: Pick<
@@ -242,6 +246,14 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const [searchValue, setSearchValue] = useState(props.value.text || '');
   const containerRef = useRef<HTMLDivElement>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
+
+  const getFilteredDataAttributes = (data?: TDataProps[]) => {
+    const transformedSelectors = data ? Object.assign({}, ...data) : {};
+    return {
+      ...filterDataAttributes(transformedSelectors),
+      ...filterDataAttributes(props),
+    };
+  };
 
   const optionsWithoutGroups = props.options.flatMap((option) => {
     if (isOptionObject(option)) {
@@ -401,7 +413,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             handleDropdownBlur={handleDropdownBlur}
             textInputRef={textInputRef}
             selectedOption={selectedOption}
-            optionSelector={props.optionSelector}
+            selectDataProps={props.selectDataProps}
           />
         </Constraints.Horizontal>
         <div
@@ -434,7 +446,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             aria-readonly={props.isReadOnly}
             contentEditable={!props.isReadOnly}
             css={getSelectableSearchInputStyles(props)}
-            {...filterDataAttributes(props)}
+            {...getFilteredDataAttributes(props.inputDataProps)}
             /* ARIA */
             aria-invalid={props['aria-invalid']}
             aria-errormessage={props['aria-errormessage']}

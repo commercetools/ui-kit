@@ -15,9 +15,13 @@ const Example = () => (
       { value: 'one', label: 'One' },
       { value: 'two', label: 'Two' },
     ]}
-    optionSelector={[
-      { 'data-option-selector-1': 'value-1' },
-      { 'data-option-selector-2': 'value-2' },
+    selectDataProps={[
+      { 'data-select-1': 'value-1' },
+      { 'data-select-2': 'value-2' },
+    ]}
+    inputDataProps={[
+      { 'data-input-1': 'value-1' },
+      { 'data-input-2': 'value-2' },
     ]}
   />
 );

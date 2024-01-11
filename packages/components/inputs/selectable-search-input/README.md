@@ -47,9 +47,13 @@ const Example = () => (
       { value: 'one', label: 'One' },
       { value: 'two', label: 'Two' },
     ]}
-    optionSelector={[
-      { 'data-option-selector-1': 'value-1' },
-      { 'data-option-selector-2': 'value-2' },
+    selectDataProps={[
+      { 'data-select-1': 'value-1' },
+      { 'data-select-2': 'value-2' },
+    ]}
+    inputDataProps={[
+      { 'data-input-1': 'value-1' },
+      { 'data-input-2': 'value-2' },
     ]}
   />
 );
@@ -91,7 +95,8 @@ export default Example;
 | `closeMenuOnSelect`        | `ReactSelectProps['closeMenuOnSelect']`                                                |          |           | Whether the menu should close after a value is selected. Defaults to `true`.&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                             |
 | `menuHorizontalConstraint` | `union`<br/>Possible values:<br/>`3 , 4 , 5`                                           |          | `3`       | Horizontal size limit for the dropdown menu.                                                                                                                                                                                                                                                                                                                                             |
 | `showSubmitButton`         | `boolean`                                                                              |          | `true`    | Show submit button in the input                                                                                                                                                                                                                                                                                                                                                          |
-| `optionSelector`           | `Array: TOptionSelector[]`                                                             |          |           | array of selector options that can be used to pass `data-*` props selectors to the options dropdown                                                                                                                                                                                                                                                                                      |
+| `selectDataProps`          | `Array: TDataProps[]`                                                                  |          |           | used to pass `data-*` props to the select component                                                                                                                                                                                                                                                                                                                                      |
+| `inputDataProps`           | `Array: TDataProps[]`                                                                  |          |           | used to pass `data-*` props to the input element                                                                                                                                                                                                                                                                                                                                         |
 
 ## Signatures
 

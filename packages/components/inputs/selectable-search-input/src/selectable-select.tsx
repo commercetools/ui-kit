@@ -13,19 +13,19 @@ import type {
 import { createSelectableSelectStyles } from './selectable-search-input.styles';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 
-export type TOptionSelector = {
+export type TDataProps = {
   [key: string]: string;
 };
 
 type TSingleValue = {
   children?: ReactNode;
-  optionSelector?: TOptionSelector[];
+  selectDataProps?: TDataProps[];
   id?: string;
 } & SingleValueProps;
 
-const SingleValue = ({ optionSelector, id, ...props }: TSingleValue) => {
-  const transformedSelectors = optionSelector
-    ? Object.assign({}, ...optionSelector)
+const SingleValue = ({ selectDataProps, id, ...props }: TSingleValue) => {
+  const transformedSelectors = selectDataProps
+    ? Object.assign({}, ...selectDataProps)
     : {};
   const filteredDataAttributes = filterDataAttributes(transformedSelectors);
 
@@ -43,7 +43,7 @@ type TSelectableSelect = {
   handleDropdownBlur: () => void;
   textInputRef: React.RefObject<HTMLInputElement>;
   selectedOption?: TOption;
-  optionSelector?: TOptionSelector[];
+  selectDataProps?: TDataProps[];
 } & TSelectableSearchInputProps;
 
 const SelectableSelect = (props: TSelectableSelect) => {
@@ -89,7 +89,7 @@ const SelectableSelect = (props: TSelectableSelect) => {
           <SingleValue
             {...innerProps}
             id={props.id}
-            optionSelector={props.optionSelector}
+            selectDataProps={props.selectDataProps}
           />
         ),
         DropdownIndicator,
