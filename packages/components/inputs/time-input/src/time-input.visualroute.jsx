@@ -26,6 +26,14 @@ export const component = () => (
         placeholder="Select something"
       />
     </Spec>
+    <Spec label="with warning">
+      <TimeInput
+        value={null}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        hasWarning={true}
+      />
+    </Spec>
     <Spec label="with error">
       <TimeInput
         value={null}

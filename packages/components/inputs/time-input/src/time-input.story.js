@@ -36,6 +36,7 @@ storiesOf('Components|Inputs', module)
               onFocus={action('onFocus')}
               onBlur={action('onBlur')}
               hasError={boolean('hasError', false)}
+              hasWarning={boolean('hasWarning', false)}
               horizontalConstraint={select(
                 'horizontalConstraint',
                 Constraints.getAcceptedMaxPropValues(3),

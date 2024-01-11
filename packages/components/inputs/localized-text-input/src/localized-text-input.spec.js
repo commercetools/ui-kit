@@ -263,3 +263,48 @@ describe('when the error is on the selected language', () => {
     expect(getByText('Some error')).toBeInTheDocument();
   });
 });
+
+describe('when every field should display a warning', () => {
+  const warnings = {
+    en: 'This field has a warning',
+    fr: 'Ce champ contient un avertissement',
+  };
+  it('should open all fields and render warnings', () => {
+    const { getByLabelText, getByText } = renderLocalizedTextInput({
+      warnings,
+    });
+    expect(getByLabelText('EN')).toBeInTheDocument();
+    expect(getByLabelText('FR')).toBeInTheDocument();
+    expect(getByText(warnings.en)).toBeInTheDocument();
+    expect(getByText(warnings.fr)).toBeInTheDocument();
+  });
+});
+
+describe('when the warning is not on the selected language', () => {
+  const warnings = {
+    en: '',
+    fr: 'Ce champ contient un avertissement',
+  };
+  it('should open all fields and render warnings', () => {
+    const { getByLabelText, getByText } = renderLocalizedTextInput({
+      warnings,
+    });
+    expect(getByLabelText('EN')).toBeInTheDocument();
+    expect(getByLabelText('FR')).toBeInTheDocument();
+    expect(getByText(warnings.fr)).toBeInTheDocument();
+  });
+});
+
+describe('when the warnings is on the selected language', () => {
+  it('should display the warnings without expanding', () => {
+    const { getByLabelText, getByText, queryByLabelText } =
+      renderLocalizedTextInput({
+        warnings: {
+          en: 'Some warning',
+        },
+      });
+    expect(getByLabelText('EN')).toBeInTheDocument();
+    expect(queryByLabelText('FR')).not.toBeInTheDocument();
+    expect(getByText('Some warning')).toBeInTheDocument();
+  });
+});

@@ -1,6 +1,7 @@
 import {
   LocalizedTextInput,
   ErrorMessage,
+  WarningMessage
 } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
@@ -93,6 +94,24 @@ export const component = () => (
         selectedLanguage="en"
         horizontalConstraint={7}
         errors={{ de: <ErrorMessage>foo</ErrorMessage> }}
+      />
+    </Spec>
+    <Spec label="when there is a warning for a specific language (first one)">
+      <LocalizedTextInput
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        warnings={{ en: <WarningMessage>foo</WarningMessage> }}
+      />
+    </Spec>
+    <Spec label="when there is a warning for a specific language (second one)">
+      <LocalizedTextInput
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        warnings={{ de: <WarningMessage>foo</WarningMessage> }}
       />
     </Spec>
     <Spec label="when there is a general error">

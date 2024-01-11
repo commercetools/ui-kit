@@ -9,7 +9,7 @@ import {
   object,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
-import { ErrorMessage } from '@commercetools-uikit/messages';
+import { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import LocalizedTextInput from './localized-text-input';
@@ -29,6 +29,7 @@ storiesOf('Components|Inputs', module)
     // We do this by changing the key.
     const key = defaultExpandLanguages ? 'yes' : 'no';
     const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
+    const warnings = object('warnings', { en: '', de: '', 'nan-Hant-TW': '' });
     return (
       <Section>
         <Value
@@ -68,6 +69,7 @@ storiesOf('Components|Inputs', module)
                 7
               )}
               hasError={boolean('hasError', false)}
+              hasWarning={boolean('hasWarning', false)}
               errors={
                 Object.values(errors).some((error) => error.length > 0)
                   ? Object.entries(errors).reduce((acc, [language, error]) => {
@@ -75,6 +77,20 @@ storiesOf('Components|Inputs', module)
                       acc[language] = <ErrorMessage>{error}</ErrorMessage>;
                       return acc;
                     }, {})
+                  : undefined
+              }
+              warnings={
+                Object.values(warnings).some((warning) => warning.length > 0)
+                  ? Object.entries(warnings).reduce(
+                      (acc, [language, warning]) => {
+                        if (warning.length === 0) return acc;
+                        acc[language] = (
+                          <WarningMessage>{warning}</WarningMessage>
+                        );
+                        return acc;
+                      },
+                      {}
+                    )
                   : undefined
               }
               data-test="foo"
