@@ -264,7 +264,7 @@ describe('when the error is on the selected language', () => {
   });
 });
 
-describe('when every field should display a warning', () => {
+describe('when every field has a warning', () => {
   const warnings = {
     en: 'This field has a warning',
     fr: 'Ce champ contient un avertissement',

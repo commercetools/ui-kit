@@ -202,26 +202,23 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
   }
 
   return (
-    <Stack scale="xs">
-      <div
-        key={props.language}
-        css={css`
-          width: 100%;
-          position: relative;
-          display: flex;
-        `}
-      >
-        <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
-          {props.language.toUpperCase()}
-        </label>
-        <TextInput
-          {...props}
-          onChange={handleChange}
-          css={getLocalizedInputStyles}
-        />
-      </div>
-      {props.warning && <div>{props.warning}</div>}
-    </Stack>
+    <div
+      key={props.language}
+      css={css`
+        width: 100%;
+        position: relative;
+        display: flex;
+      `}
+    >
+      <label htmlFor={props.id} css={getLanguageLabelStyles(props)}>
+        {props.language.toUpperCase()}
+      </label>
+      <TextInput
+        {...props}
+        onChange={handleChange}
+        css={getLocalizedInputStyles}
+      />
+    </div>
   );
 };
 
@@ -332,6 +329,7 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                     aria-errormessage={props['aria-errormessage']}
                   />
                   {props.errors && props.errors[language]}
+                  {props.warnings && props.warnings[language]}
                 </Stack>
               </div>
             );
