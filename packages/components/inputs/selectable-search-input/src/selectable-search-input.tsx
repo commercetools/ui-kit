@@ -22,7 +22,7 @@ import {
   getSelectableSearchInputContainerStyles,
   getSelectableSearchInputStyles,
 } from './selectable-search-input.styles';
-import SelectableSelect, { type TDataProps } from './selectable-select';
+import SelectableSelect from './selectable-select';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import styled from '@emotion/styled';
 import { designTokens } from '@commercetools-uikit/design-system';
@@ -209,11 +209,11 @@ export type TSelectableSearchInputProps = {
   /**
    *  used to pass `data-*` props to the select component
    */
-  selectDataProps?: TDataProps[];
+  selectDataProps?: Record<string, string>;
   /**
    *  used to pass `data-*` props to the input element
    */
-  inputDataProps?: TDataProps[];
+  inputDataProps?: Record<string, string>;
 };
 
 const defaultProps: Pick<
@@ -241,33 +241,23 @@ const isOptionObject = (
   option: TOption | TOptionObject
 ): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
+const transformDataProps = (dataProps?: Record<string, string>) =>
+  Object.fromEntries(
+    Object.entries(dataProps || {}).map(([key, value]) => [
+      `data-${key}`,
+      value,
+    ])
+  );
+
 const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const [dropdownHasFocus, toggleDropdownHasFocus] = useToggleState(false);
   const [searchValue, setSearchValue] = useState(props.value.text || '');
   const containerRef = useRef<HTMLDivElement>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
 
-  const getDataProps = (data?: TDataProps[]) => {
-    const addPrefixToKeys = (obj: Record<string, string>) => {
-      const newObj = {} as TDataProps;
-
-      for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-          const newKey = `data-${key}`;
-          newObj[newKey] = obj[key];
-        }
-      }
-
-      return newObj;
-    };
-
-    const dataProps = data ? Object.assign({}, ...data) : {};
-
-    return {
-      ...addPrefixToKeys(dataProps),
-      ...filterDataAttributes(props),
-    };
-  };
+  const legacyDataProps = filterDataAttributes(props);
+  const transformedSelectDataProps = transformDataProps(props.selectDataProps);
+  const transformedInputDataProps = transformDataProps(props.inputDataProps);
 
   const optionsWithoutGroups = props.options.flatMap((option) => {
     if (isOptionObject(option)) {
@@ -427,7 +417,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             handleDropdownBlur={handleDropdownBlur}
             textInputRef={textInputRef}
             selectedOption={selectedOption}
-            selectDataProps={props.selectDataProps}
+            dataProps={transformedSelectDataProps}
           />
         </Constraints.Horizontal>
         <div
@@ -460,7 +450,8 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             aria-readonly={props.isReadOnly}
             contentEditable={!props.isReadOnly}
             css={getSelectableSearchInputStyles(props)}
-            {...getDataProps(props.inputDataProps)}
+            {...transformedInputDataProps}
+            {...legacyDataProps}
             /* ARIA */
             aria-invalid={props['aria-invalid']}
             aria-errormessage={props['aria-errormessage']}
