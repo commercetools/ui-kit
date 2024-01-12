@@ -23,6 +23,7 @@ type TTimeInputBodyProps = TTimeInputProps & {
 type TClearSectionProps = {
   isDisabled?: boolean;
   hasError?: boolean;
+  hasWarning?: boolean;
   isReadOnly?: boolean;
   onClear: (
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
@@ -79,6 +80,7 @@ const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
             <ClearSection
               isDisabled={props.isDisabled}
               hasError={props.hasError}
+              hasWarning={props.hasWarning}
               isReadOnly={props.isReadOnly}
               onClear={props.onClear}
             />

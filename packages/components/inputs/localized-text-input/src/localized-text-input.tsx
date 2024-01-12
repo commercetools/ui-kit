@@ -1,6 +1,7 @@
 import {
   type FocusEventHandler,
   type ChangeEventHandler,
+  type ReactNode,
   useCallback,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -13,6 +14,7 @@ import {
   sortLanguages,
   createLocalizedDataAttributes,
   getHasErrorOnRemainingLanguages,
+  getHasWarningOnRemainingLanguages,
   isTouched,
   omitEmptyTranslations,
   isEmpty,
@@ -120,9 +122,17 @@ export type TLocalizedTextInputProps = {
    */
   hasError?: boolean;
   /**
+   * Indicates the input field has a warning
+   */
+  hasWarning?: boolean;
+  /**
    * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
    */
   errors?: Record<string, string>;
+  /**
+   * A map of warnings.
+   */
+  warnings?: Record<string, ReactNode>;
 };
 
 export type TLocalizedInputProps = {
@@ -150,6 +160,14 @@ export type TLocalizedInputProps = {
   isDisabled?: boolean;
   isReadOnly?: boolean;
   hasError?: boolean;
+  /**
+   * Indicates the input field has a warning
+   */
+  hasWarning?: boolean;
+  /**
+   * HTML node to display warning
+   */
+  warning?: ReactNode;
   placeholder?: string;
 };
 
@@ -240,10 +258,14 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
     props.hasError ||
     getHasErrorOnRemainingLanguages(props.errors, props.selectedLanguage);
 
-  if (hasErrorInRemainingLanguages) {
+  const hasWarningInRemainingLanguages =
+    props.hasWarning ||
+    getHasWarningOnRemainingLanguages(props.warnings, props.selectedLanguage);
+
+  if (hasErrorInRemainingLanguages || hasWarningInRemainingLanguages) {
     // this update within render replaces the old `getDerivedStateFromProps` functionality
     // https://reactjs.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops
-    if (hasErrorInRemainingLanguages !== areLanguagesExpanded) {
+    if (!areLanguagesExpanded) {
       toggleLanguages();
     }
   }
@@ -296,12 +318,18 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                     hasError={Boolean(
                       props.hasError || (props.errors && props.errors[language])
                     )}
+                    hasWarning={Boolean(
+                      props.hasWarning ||
+                        (props.warnings && props.warnings[language])
+                    )}
+                    warning={props.warnings && props.warnings[language]}
                     {...createLocalizedDataAttributes(props, language)}
                     /* ARIA */
                     aria-invalid={props['aria-invalid']}
                     aria-errormessage={props['aria-errormessage']}
                   />
                   {props.errors && props.errors[language]}
+                  {props.warnings && props.warnings[language]}
                 </Stack>
               </div>
             );
@@ -311,7 +339,12 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
           <LocalizedInputToggle
             isOpen={areLanguagesExpanded}
             onClick={onLocalizedInputToggle}
-            isDisabled={areLanguagesExpanded && hasErrorInRemainingLanguages}
+            isDisabled={
+              areLanguagesExpanded &&
+              Boolean(
+                hasErrorInRemainingLanguages || hasWarningInRemainingLanguages
+              )
+            }
             remainingLocalizations={languages.length - 1}
           />
         )}
