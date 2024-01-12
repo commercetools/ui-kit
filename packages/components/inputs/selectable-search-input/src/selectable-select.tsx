@@ -11,7 +11,6 @@ import type {
   TOption,
 } from './selectable-search-input';
 import { createSelectableSelectStyles } from './selectable-search-input.styles';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 export type TDataProps = {
   [key: string]: string;
@@ -24,14 +23,28 @@ type TSingleValue = {
 } & SingleValueProps;
 
 const SingleValue = ({ selectDataProps, id, ...props }: TSingleValue) => {
+  const addPrefixToKeys = (obj: Record<string, string>) => {
+    const newObj = {} as TDataProps;
+
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        const newKey = `data-${key}`;
+        newObj[newKey] = obj[key];
+      }
+    }
+
+    return newObj;
+  };
+
   const transformedSelectors = selectDataProps
     ? Object.assign({}, ...selectDataProps)
     : {};
-  const filteredDataAttributes = filterDataAttributes(transformedSelectors);
+
+  const dataProps = addPrefixToKeys(transformedSelectors);
 
   return (
     <components.SingleValue {...props}>
-      <label htmlFor={id} {...filteredDataAttributes}>
+      <label htmlFor={id} {...dataProps}>
         {props.children}
       </label>
     </components.SingleValue>

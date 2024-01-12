@@ -247,10 +247,24 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
 
-  const getFilteredDataAttributes = (data?: TDataProps[]) => {
-    const transformedSelectors = data ? Object.assign({}, ...data) : {};
+  const getDataProps = (data?: TDataProps[]) => {
+    const addPrefixToKeys = (obj: Record<string, string>) => {
+      const newObj = {} as TDataProps;
+
+      for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          const newKey = `data-${key}`;
+          newObj[newKey] = obj[key];
+        }
+      }
+
+      return newObj;
+    };
+
+    const dataProps = data ? Object.assign({}, ...data) : {};
+
     return {
-      ...filterDataAttributes(transformedSelectors),
+      ...addPrefixToKeys(dataProps),
       ...filterDataAttributes(props),
     };
   };
@@ -446,7 +460,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             aria-readonly={props.isReadOnly}
             contentEditable={!props.isReadOnly}
             css={getSelectableSearchInputStyles(props)}
-            {...getFilteredDataAttributes(props.inputDataProps)}
+            {...getDataProps(props.inputDataProps)}
             /* ARIA */
             aria-invalid={props['aria-invalid']}
             aria-errormessage={props['aria-errormessage']}
