@@ -22,6 +22,8 @@ type TProps = {
   hasValue?: boolean;
   controlShouldRenderValue?: boolean;
   appearance?: 'default' | 'quiet';
+  minWidth?: number | string;
+  maxWidth?: number | string;
   horizontalConstraint?:
     | 3
     | 4
@@ -374,7 +376,7 @@ const groupHeadingStyles = () => (base: TBase) => {
   };
 };
 
-const containerStyles = () => (base: TBase, state: TState) => {
+const containerStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
     fontFamily: 'inherit',
@@ -385,6 +387,8 @@ const containerStyles = () => (base: TBase, state: TState) => {
       : base.borderColor,
 
     boxShadow: state.isFocused ? 'none' : base.boxShadow,
+    maxWidth: props.maxWidth,
+    minWidth: props.minWidth ? props.minWidth : designTokens.constraint3,
   };
 };
 
@@ -481,6 +485,6 @@ export default function createSelectStyles(props: TProps) {
     singleValue: singleValueStyles(props),
     group: groupStyles(props),
     groupHeading: groupHeadingStyles(),
-    container: containerStyles(),
+    container: containerStyles(props),
   };
 }

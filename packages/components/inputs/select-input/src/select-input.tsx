@@ -328,6 +328,16 @@ export type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   value?: ReactSelectProps['value'];
+  /**
+   * The min width (a number of pixels or a css value string with units) for which the select-input
+   * is allowed to shrink. If unset, the table will shrink to a default value.
+   */
+  minWidth?: number | string;
+  /**
+   * The max height (a number of pixels or a css value string with units) for which the select-input
+   * is allowed to grow. If unset, the table will grow horrizontally to fill its parent.
+   */
+  maxWidth?: number | string;
 };
 
 const defaultProps: Pick<
@@ -429,6 +439,8 @@ const SelectInput = (props: TSelectInputProps) => {
               hasValue: !isEmpty(selectedOptions),
               controlShouldRenderValue: props.controlShouldRenderValue,
               horizontalConstraint: props.horizontalConstraint,
+              minWidth: props.minWidth,
+              maxWidth: props.maxWidth,
             }) as ReactSelectProps['styles']
           }
           filterOption={props.filterOption}
