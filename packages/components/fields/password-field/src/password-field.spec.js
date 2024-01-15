@@ -141,12 +141,67 @@ describe('when disabled', () => {
     const { getByLabelText } = renderPasswordField({ isDisabled: true });
     expect(getByLabelText('PasswordField')).toBeDisabled();
   });
+  it('should set the input type to password', () => {
+    const { getByLabelText } = renderPasswordField({ isDisabled: true });
+    expect(getByLabelText('PasswordField')).toHaveAttribute('type', 'password');
+  });
+  describe('when has value', () => {
+    it('should set the input type to password', () => {
+      const { getByLabelText } = renderPasswordField({
+        value: 'foo',
+        isDisabled: true,
+      });
+      expect(getByLabelText('PasswordField')).toHaveAttribute(
+        'type',
+        'password'
+      );
+    });
+  });
 });
 
 describe('when readOnly', () => {
   it('should disable the input', () => {
     const { getByLabelText } = renderPasswordField({ isReadOnly: true });
     expect(getByLabelText('PasswordField')).toHaveAttribute('readonly');
+  });
+  it('should set the input type to password', () => {
+    const { getByLabelText } = renderPasswordField({ isReadOnly: true });
+    expect(getByLabelText('PasswordField')).toHaveAttribute('type', 'password');
+  });
+  describe('when has value', () => {
+    it('should set the input type to password', () => {
+      const { getByLabelText } = renderPasswordField({
+        value: 'foo',
+        isReadOnly: true,
+      });
+      expect(getByLabelText('PasswordField')).toHaveAttribute(
+        'type',
+        'password'
+      );
+    });
+  });
+});
+
+describe('when disabled and readOnly', () => {
+  it('should set the input type to password', () => {
+    const { getByLabelText } = renderPasswordField({
+      isDisabled: true,
+      isReadOnly: true,
+    });
+    expect(getByLabelText('PasswordField')).toHaveAttribute('type', 'password');
+  });
+  describe('when has value', () => {
+    it('should set the input type to password', () => {
+      const { getByLabelText } = renderPasswordField({
+        value: 'foo',
+        isDisabled: true,
+        isReadOnly: true,
+      });
+      expect(getByLabelText('PasswordField')).toHaveAttribute(
+        'type',
+        'password'
+      );
+    });
   });
 });
 

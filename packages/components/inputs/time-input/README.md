@@ -55,6 +55,7 @@ export default Example;
 | `isAutofocussed`       | `boolean`                                                                                             |          |           | Focus the input on initial render                                                              |
 | `isDisabled`           | `boolean`                                                                                             |          |           | Indicates that the input cannot be modified (e.g not authorized, or changes currently saving). |
 | `placeholder`          | `string`                                                                                              |          |           | Placeholder text for the input                                                                 |
+| `hasWarning`           | `boolean`                                                                                             |          |           | Indicates the input field has a warning                                                        |
 | `hasError`             | `boolean`                                                                                             |          |           | Indicates if the input has invalid values                                                      |
 | `isReadOnly`           | `boolean`                                                                                             |          |           | Indicates that the field is displaying read-only content                                       |
 

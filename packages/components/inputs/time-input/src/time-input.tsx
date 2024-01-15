@@ -95,12 +95,17 @@ export type TTimeInputProps = {
    */
   placeholder?: string;
   /**
+   * Indicates the input field has a warning
+   */
+  hasWarning?: boolean;
+  /**
    * Indicates if the input has invalid values
    */
   hasError?: boolean;
   /**
    * Indicates that the field is displaying read-only content
    */
+
   isReadOnly?: boolean;
 };
 
@@ -195,6 +200,7 @@ const TimeInput = (props: TTimeInputProps) => {
         isDisabled={props.isDisabled}
         isReadOnly={props.isReadOnly}
         hasError={props.hasError}
+        hasWarning={props.hasWarning}
         onClear={handleClear}
         placeholder={
           typeof props.placeholder === 'string'
