@@ -387,8 +387,8 @@ const containerStyles = (props: TProps) => (base: TBase, state: TState) => {
       : base.borderColor,
 
     boxShadow: state.isFocused ? 'none' : base.boxShadow,
-    maxWidth: props.maxWidth,
-    minWidth: props.minWidth ? props.minWidth : designTokens.constraint3,
+    maxWidth: props.maxWidth ?? props.maxWidth,
+    minWidth: props.minWidth ?? props.minWidth,
   };
 };
 
