@@ -9,6 +9,7 @@ export type TIntlMessageDescriptor = {
 };
 
 export type TWarningMessageProps = {
+  id?: string;
   intlMessage?: TIntlMessageDescriptor;
   children?: ReactNode;
 };
