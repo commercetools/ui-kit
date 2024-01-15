@@ -334,7 +334,7 @@ export type TSelectInputProps = {
    */
   minWidth?: number | string;
   /**
-   * The max height (a number of pixels or a css value string with units) for which the select-input
+   * The max width (a number of pixels or a css value string with units) for which the select-input
    * is allowed to grow. If unset, the table will grow horrizontally to fill its parent.
    */
   maxWidth?: number | string;
