@@ -12,36 +12,13 @@ import type {
 } from './selectable-search-input';
 import { createSelectableSelectStyles } from './selectable-search-input.styles';
 
-export type TDataProps = {
-  [key: string]: string;
-};
-
 type TSingleValue = {
   children?: ReactNode;
-  selectDataProps?: TDataProps[];
+  dataProps?: Record<string, string>;
   id?: string;
 } & SingleValueProps;
 
-const SingleValue = ({ selectDataProps, id, ...props }: TSingleValue) => {
-  const addPrefixToKeys = (obj: Record<string, string>) => {
-    const newObj = {} as TDataProps;
-
-    for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        const newKey = `data-${key}`;
-        newObj[newKey] = obj[key];
-      }
-    }
-
-    return newObj;
-  };
-
-  const transformedSelectors = selectDataProps
-    ? Object.assign({}, ...selectDataProps)
-    : {};
-
-  const dataProps = addPrefixToKeys(transformedSelectors);
-
+const SingleValue = ({ id, dataProps, ...props }: TSingleValue) => {
   return (
     <components.SingleValue {...props}>
       <label htmlFor={id} {...dataProps}>
@@ -56,7 +33,7 @@ type TSelectableSelect = {
   handleDropdownBlur: () => void;
   textInputRef: React.RefObject<HTMLInputElement>;
   selectedOption?: TOption;
-  selectDataProps?: TDataProps[];
+  dataProps?: Record<string, string>;
 } & TSelectableSearchInputProps;
 
 const SelectableSelect = (props: TSelectableSelect) => {
@@ -100,9 +77,9 @@ const SelectableSelect = (props: TSelectableSelect) => {
       components={{
         SingleValue: (innerProps) => (
           <SingleValue
-            {...innerProps}
             id={props.id}
-            selectDataProps={props.selectDataProps}
+            dataProps={props.dataProps}
+            {...innerProps}
           />
         ),
         DropdownIndicator,
