@@ -126,13 +126,13 @@ const SvgChecked = (props: SVGProps) => (
     <path
       fill="#000"
       fillRule="evenodd"
-      d="M.293 4.293a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414Z"
+      d="M.293 4.293a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414"
       clipRule="evenodd"
     />
     <path
       fill="#000"
       fillRule="evenodd"
-      d="M11.707.293a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414l7-7a1 1 0 0 1 1.414 0Z"
+      d="M11.707.293a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414-1.414l7-7a1 1 0 0 1 1.414 0"
       clipRule="evenodd"
     />
   </svg>
