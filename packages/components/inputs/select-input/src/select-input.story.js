@@ -163,8 +163,16 @@ storiesOf('Components|Inputs/SelectInputs', module)
                   value={value}
                   showOptionGroupDivider={showOptionGroupDivider}
                   iconLeft={iconLeft ? createElement(iconLeft) : undefined}
-                  minWidth={number('minWidth', 120)}
-                  maxWidth={number('maxWidth', 520)}
+                  minMenuWidth={select(
+                    'minWidth',
+                    Constraints.getAcceptedMaxPropValues(),
+                    'scale'
+                  )}
+                  maxMenuWidth={select(
+                    'maxWidth',
+                    Constraints.getAcceptedMaxPropValues(),
+                    'scale'
+                  )}
                   {...addMenuPortalProps()}
                 />
                 <NeighbouringStackingContext />

@@ -10,6 +10,26 @@
 import { ReactNode } from 'react';
 import { designTokens } from '@commercetools-uikit/design-system';
 
+export type THorizontalConstraint =
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | 'scale'
+  | 'auto';
+
 type TProps = {
   isDisabled?: boolean;
   hasError?: boolean;
@@ -22,25 +42,9 @@ type TProps = {
   hasValue?: boolean;
   controlShouldRenderValue?: boolean;
   appearance?: 'default' | 'quiet';
-  minMenuWidth?: number | string;
-  maxMenuWidth?: number | string;
-  horizontalConstraint?:
-    | 3
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 'scale'
-    | 'auto';
+  minMenuWidth?: THorizontalConstraint;
+  maxMenuWidth?: THorizontalConstraint;
+  horizontalConstraint?: THorizontalConstraint;
 };
 
 type TBase = {
@@ -58,6 +62,17 @@ type TState = {
   isFocused?: boolean;
   isDisabled?: boolean;
   isSelected?: boolean;
+};
+
+type TDesignTokenName = keyof typeof designTokens;
+
+const getHorrizontalConstraintValue = (value?: THorizontalConstraint) => {
+  if (!value) return null;
+  const tokenName = `constraint${value}`;
+  if (tokenName in designTokens) {
+    return designTokens[tokenName as TDesignTokenName];
+  }
+  return null;
 };
 
 const getInputBackgroundColor = (props: TProps) => {
@@ -197,10 +212,11 @@ const menuStyles = (props: TProps) => (base: TBase) => {
       return base.borderColorForInput;
     })(),
     width: props.horizontalConstraint === 'auto' ? 'auto' : '100%',
-    minMenuWidth: props.minMenuWidth
-      ? props.minMenuWidth
+    minWidth: props.minMenuWidth
+      ? getHorrizontalConstraintValue(props.minMenuWidth)
       : designTokens.constraint3,
-    maxMenuWidth: props.maxMenuWidth ?? props.maxMenuWidth,
+    maxWidth:
+      props.maxMenuWidth ?? getHorrizontalConstraintValue(props.maxMenuWidth),
   };
 };
 
