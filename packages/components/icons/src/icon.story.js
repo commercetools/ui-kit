@@ -18,6 +18,7 @@ import Readme from '../README.md';
 import xssFixtures from './fixtures/xss';
 import InlineSvg from './inline-svg';
 import * as icons from '.';
+import LeadingIcon from './leading-icon/leading-icon';
 
 const DEPRECATED_ICONS_NAMES = [
   'ArrowTriangleDownIcon',
@@ -271,4 +272,42 @@ storiesOf('Components|Icons', module)
     <Section>
       <InlineSvgPage />
     </Section>
-  ));
+  ))
+  .add('Leading Icon', () => {
+    const uiKitIcons = [
+      icons.ArrowRightIcon,
+      icons.BinLinearIcon,
+      icons.CheckInactiveIcon,
+      icons.StarIcon,
+    ];
+    return (
+      <Section>
+        <Text.Body>
+          This is a text with a leading icon <br />
+          <br />
+          <Spacings.Inline scale="l">
+            {uiKitIcons.map((Icon, index) => (
+              <LeadingIcon
+                key={index}
+                icon={<Icon />}
+                color={select(
+                  'color',
+                  [
+                    'white',
+                    'neutral',
+                    'purple',
+                    'turquoise',
+                    'accent',
+                    'brown',
+                  ],
+                  'purple'
+                )}
+                size={select('size', ['10', '20', '30', '40'], '40')}
+              />
+            ))}
+            <LeadingIcon svg={svgFixtures.cleanSvg} color="purple" size="40" />
+          </Spacings.Inline>
+        </Text.Body>
+      </Section>
+    );
+  });
