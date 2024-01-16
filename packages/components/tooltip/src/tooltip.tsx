@@ -256,7 +256,14 @@ const Tooltip = (props: TTooltipProps) => {
           const tooltipElement = popperInstance?.popper.querySelector(
             '[data-testid="tooltip-message-wrapper"]'
           ) as HTMLElement;
-          tooltipElement.addEventListener('animationend', () => handleClose());
+
+          if (tooltipElement) {
+            tooltipElement.addEventListener('animationend', () =>
+              handleClose()
+            );
+          } else {
+            handleClose();
+          }
 
           setState('exiting');
         }, closeAfter);

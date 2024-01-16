@@ -1,5 +1,159 @@
 # @commercetools-uikit/select-input
 
+## 16.12.1
+
+### Patch Changes
+
+- Updated dependencies [[`e7981d960`](https://github.com/commercetools/ui-kit/commit/e7981d960919a5de7e59470ae5ecc33d308c1e9b)]:
+  - @commercetools-uikit/select-utils@16.12.1
+  - @commercetools-uikit/design-system@16.12.1
+  - @commercetools-uikit/constraints@16.12.1
+  - @commercetools-uikit/icons@16.12.1
+  - @commercetools-uikit/utils@16.12.1
+
+## 16.12.0
+
+### Patch Changes
+
+- Updated dependencies [[`e5f42ff8a`](https://github.com/commercetools/ui-kit/commit/e5f42ff8ab4bafbcc0c7e111b4aab462dfaa3e8c), [`5fc86c87a`](https://github.com/commercetools/ui-kit/commit/5fc86c87a0533f4ae744ad59ca6a4981f61b2bf4)]:
+  - @commercetools-uikit/select-utils@16.12.0
+  - @commercetools-uikit/icons@16.12.0
+  - @commercetools-uikit/design-system@16.12.0
+  - @commercetools-uikit/constraints@16.12.0
+  - @commercetools-uikit/utils@16.12.0
+
+## 16.11.0
+
+### Minor Changes
+
+- [#2644](https://github.com/commercetools/ui-kit/pull/2644) [`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38) Thanks [@chloe0592](https://github.com/chloe0592)! - A new property `appearance` has been added to the `SelectInput` and `SelectField` components to control its main styles.
+  Available values are `default` and `quiet`: the first one will just render the component as usual and the latter will render a cleaner version of it.Bear in mind when using the `quiet` value that it is expected you also use the `auto` value for the `horizontalConstraint` property.
+
+- [#2639](https://github.com/commercetools/ui-kit/pull/2639) [`c752724a5`](https://github.com/commercetools/ui-kit/commit/c752724a58eab743f02d3e886bdb38b4ad4860dd) Thanks [@LucasGrahn](https://github.com/LucasGrahn)! - We introduced a new (_boolean_) property (**menuIsOpen**) to Select Inputs components which allows to control the dropdown visibility.
+
+### Patch Changes
+
+- Updated dependencies [[`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38)]:
+  - @commercetools-uikit/select-utils@16.11.0
+  - @commercetools-uikit/design-system@16.11.0
+  - @commercetools-uikit/constraints@16.11.0
+  - @commercetools-uikit/icons@16.11.0
+  - @commercetools-uikit/utils@16.11.0
+
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70)]:
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/select-utils@16.10.0
+  - @commercetools-uikit/constraints@16.10.0
+  - @commercetools-uikit/icons@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
+## 16.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-utils@16.9.0
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/constraints@16.9.0
+  - @commercetools-uikit/icons@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
+## 16.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7), [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d), [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba), [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd), [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9)]:
+  - @commercetools-uikit/design-system@16.8.0
+  - @commercetools-uikit/select-utils@16.8.0
+  - @commercetools-uikit/icons@16.8.0
+  - @commercetools-uikit/constraints@16.8.0
+  - @commercetools-uikit/utils@16.8.0
+
+## 16.7.5
+
+### Patch Changes
+
+- [#2603](https://github.com/commercetools/ui-kit/pull/2603) [`1f7f2e06c`](https://github.com/commercetools/ui-kit/commit/1f7f2e06c78a7e11e7d2c2a9dad22642418bb796) Thanks [@kark](https://github.com/kark)! - Add missing peer dependencies
+
+- Updated dependencies [[`1f7f2e06c`](https://github.com/commercetools/ui-kit/commit/1f7f2e06c78a7e11e7d2c2a9dad22642418bb796)]:
+  - @commercetools-uikit/select-utils@16.7.5
+  - @commercetools-uikit/design-system@16.7.5
+  - @commercetools-uikit/constraints@16.7.5
+  - @commercetools-uikit/icons@16.7.5
+  - @commercetools-uikit/utils@16.7.5
+
+## 16.7.4
+
+### Patch Changes
+
+- [#2599](https://github.com/commercetools/ui-kit/pull/2599) [`83e781749`](https://github.com/commercetools/ui-kit/commit/83e781749dbdc5d9fac402b16c1ba5c6c4c8f6ac) Thanks [@kark](https://github.com/kark)! - Set menu placement to "auto" to make it flip when there isn't enough space below the input
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.4
+  - @commercetools-uikit/constraints@16.7.4
+  - @commercetools-uikit/icons@16.7.4
+  - @commercetools-uikit/select-utils@16.7.4
+  - @commercetools-uikit/utils@16.7.4
+
+## 16.7.3
+
+### Patch Changes
+
+- Updated dependencies [[`9cfdcbb22`](https://github.com/commercetools/ui-kit/commit/9cfdcbb2272e16677056f0aebe812ad6caf18ff7)]:
+  - @commercetools-uikit/design-system@16.7.3
+  - @commercetools-uikit/constraints@16.7.3
+  - @commercetools-uikit/icons@16.7.3
+  - @commercetools-uikit/select-utils@16.7.3
+  - @commercetools-uikit/utils@16.7.3
+
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.2
+  - @commercetools-uikit/constraints@16.7.2
+  - @commercetools-uikit/icons@16.7.2
+  - @commercetools-uikit/select-utils@16.7.2
+  - @commercetools-uikit/utils@16.7.2
+
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.1
+  - @commercetools-uikit/constraints@16.7.1
+  - @commercetools-uikit/icons@16.7.1
+  - @commercetools-uikit/select-utils@16.7.1
+  - @commercetools-uikit/utils@16.7.1
+
+## 16.7.0
+
+### Patch Changes
+
+- Updated dependencies [[`be20cc204`](https://github.com/commercetools/ui-kit/commit/be20cc2045128dcabd96e86b7979c22540d260c9)]:
+  - @commercetools-uikit/design-system@16.7.0
+  - @commercetools-uikit/constraints@16.7.0
+  - @commercetools-uikit/icons@16.7.0
+  - @commercetools-uikit/select-utils@16.7.0
+  - @commercetools-uikit/utils@16.7.0
+
+## 16.6.1
+
+### Patch Changes
+
+- Updated dependencies [[`27c002aad`](https://github.com/commercetools/ui-kit/commit/27c002aadf38ffbc5d827c425f239d46dfa71b7f)]:
+  - @commercetools-uikit/icons@16.6.1
+  - @commercetools-uikit/design-system@16.6.1
+  - @commercetools-uikit/select-utils@16.6.1
+  - @commercetools-uikit/constraints@16.6.1
+  - @commercetools-uikit/utils@16.6.1
+
 ## 16.6.0
 
 ### Patch Changes

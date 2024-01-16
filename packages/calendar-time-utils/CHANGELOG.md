@@ -1,5 +1,100 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 16.12.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.12.1
+
+## 16.12.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.12.0
+
+## 16.11.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.11.0
+
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.10.0
+
+## 16.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.9.0
+
+## 16.8.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.8.0
+
+## 16.7.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.7.5
+
+## 16.7.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.7.4
+
+## 16.7.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.7.3
+
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.7.2
+
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.7.1
+
+## 16.7.0
+
+### Minor Changes
+
+- [#2583](https://github.com/commercetools/ui-kit/pull/2583) [`a095b5d1b`](https://github.com/commercetools/ui-kit/commit/a095b5d1b4742c5b16aeba2003a7bb402fc75e68) Thanks [@emmenko](https://github.com/emmenko)! - Support new application locale `pt-BR`
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.7.0
+
+## 16.6.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@16.6.1
+
 ## 16.6.0
 
 ### Patch Changes

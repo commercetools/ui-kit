@@ -59,10 +59,11 @@ export const Body = styled.div`
   padding: ${designTokens.paddingForTooltip};
   border: none;
   box-shadow: ${designTokens.shadowForTooltip};
-  font-size: ${designTokens.fontSize20};
+  font-size: ${designTokens.fontSize10};
   opacity: 0.95;
   color: ${designTokens.colorSurface};
   background-color: ${designTokens.backgroundColorForTooltip};
+  white-space: break-spaces;
 `;
 
 // here we use object styles so we can spread these
@@ -98,7 +99,6 @@ export const getTooltipStyles = (tooltipState: TTooltipState) =>
 
 export const Wrapper = styled.div`
   display: inline-block;
-  cursor: not-allowed;
   > :disabled {
     pointer-events: none;
   }

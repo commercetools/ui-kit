@@ -58,6 +58,18 @@ We rely on [Preconstruct](https://preconstruct.tools/) to build the packages.
 
 Commit messages should follow a [conventional commit format](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional).
 
+## Testing
+
+Different forms of testing occur an different levels to ensure the workings of UI Kit.
+
+### Testing behavior
+
+Components in UI Kit are integration tested to ensure they meet requirements over time. For this [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/) is used. Using [Behavior driven development](https://en.wikipedia.org/wiki/Behavior-driven_development) and Jest you specify your acceptance criteria and write expectations based on the component’s state. There are numerous examples in code for existing components. There are many examples of tests when you search for `.spec.js` files.
+
+### Testing visuals
+
+It is crucial for a Design System to not introduce visual regressions. To achieve this UI Kit performs Visual Regression Testing using [Percy](https://percy.io/). Every component must have a so called visual specification alongside it. This is just a React component conveniently defining all visual states such placeholder being filled, a warning being triggered or a component being in readonly state. An example can be found here. This specification is rendered and sent to Percy via a GitHub Action. Once regressions are detected, they will be reported on a subsequent change and have to be approved by a UI/UX Designer.
+
 ## Opening an Issue
 
 In general, it's a good idea to open an issue first, no matter if it's a bug report, a new feature, etc. Doing so allows maintainers and other contributors to be aware of the context when an associated pull request is provided. It also gives a chance to provide early feedback and suggestions on what the pull request should focus on and what the expectations, avoiding unnecessary work during a pull request.

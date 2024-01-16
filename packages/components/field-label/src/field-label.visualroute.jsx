@@ -33,6 +33,13 @@ export const component = () => (
         horizontalConstraint={7}
       />
     </Spec>
+    <Spec label="with required indicator and ReactNode as title">
+      <FieldLabel
+        title={<div>Hello</div>}
+        hasRequiredIndicator={true}
+        horizontalConstraint={7}
+      />
+    </Spec>
     <Spec label="with all options">
       <FieldLabel
         title="Hello"

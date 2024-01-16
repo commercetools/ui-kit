@@ -12,7 +12,7 @@ const templateCreateStyledIcon = fs.readFileSync(
 );
 
 const indexTemplate = (filePaths) => {
-  const exportEntries = filePaths.map((filePath) => {
+  const exportEntries = filePaths.map(({ path: filePath }) => {
     const basename = path.basename(filePath, path.extname(filePath));
     const exportName = `${basename.replace(/react/i, 'Icon')}`;
     return `export { default as ${exportName} } from './${basename}'`;

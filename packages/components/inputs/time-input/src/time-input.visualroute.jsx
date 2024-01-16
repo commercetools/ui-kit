@@ -42,5 +42,13 @@ export const component = () => (
         isReadOnly={true}
       />
     </Spec>
+    <Spec label="with warning">
+      <TimeInput
+        value={null}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        hasWarning={true}
+      />
+    </Spec>
   </Suite>
 );

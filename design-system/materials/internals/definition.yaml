@@ -36,29 +36,61 @@ choiceGroupsByTheme:
       prefix: color
       description: All colors in the system
       choices:
-        color-primary: '#00b39e'
-        color-primary-25: 'hsl(172.9608938547486, 100%, 25%)'
-        color-primary-40: 'hsl(172.9608938547486, 100%, 40%)'
-        color-primary-85: 'hsl(172.9608938547486, 100%, 85%)'
-        color-primary-95: 'hsl(172.9608938547486, 100%, 95%)'
+        color-primary: 'hsl(175, 55%, 45%)'
+        color-primary-20: 'hsl(175, 55%, 20%)'
+        color-primary-25: 'hsl(175, 55%, 25%)'
+        color-primary-30: 'hsl(175, 55%, 30%)'
+        color-primary-40: 'hsl(175, 55%, 40%)'
+        color-primary-85: 'hsl(175, 70%, 85%)'
+        color-primary-90: 'hsl(175, 70%, 90%)'
+        color-primary-95: 'hsl(175, 90%, 95%)'
         color-accent: '#213c45'
         color-accent-10: 'hsl(195, 35.2941176471%, 10%)'
         color-accent-20: 'hsl(195, 35.2941176471%, 20%)'
         color-accent-30: 'hsl(195, 35.2941176471%, 30%)'
         color-accent-40: 'hsl(195, 35.2941176471%, 40%)'
+        color-accent-50: 'hsl(195, 35%, 50%)'
         color-accent-60: 'hsl(195, 35.2941176471%, 60%)'
+        color-accent-85: 'hsl(195, 35%, 85%)'
         color-accent-90: 'hsl(195, 35.2941176471%, 90%)'
         color-accent-95: 'hsl(195, 35.2941176471%, 95%)'
         color-accent-98: 'hsl(195, 35.2941176471%, 98%)'
-        color-neutral: '#ccc'
+        color-brown-10: 'hsl(35, 90%, 10%)'
+        color-brown-20: 'hsl(35, 50%, 20%)'
+        color-brown-35: 'hsl(35, 25%, 35%)'
+        color-brown-50: 'hsl(35, 30%, 50%)'
+        color-brown-70: 'hsl(35, 40%, 70%)'
+        color-brown-85: 'hsl(35, 60%, 85%)'
+        color-brown-90: 'hsl(35, 90%, 90%)'
+        color-brown-95: 'hsl(35, 80%, 95%)'
+        color-brown-98: 'hsl(35, 90%, 98%)'
+        color-purple-10: 'hsl(248, 90%, 10%)'
+        color-purple-20: 'hsl(248, 50%, 20%)'
+        color-purple-35: 'hsl(248, 25%, 35%)'
+        color-purple-50: 'hsl(248, 30%,50%)'
+        color-purple-70: 'hsl(248, 40%, 70%)'
+        color-purple-85: 'hsl(248, 60%, 85%)'
+        color-purple-90: 'hsl(248, 50%, 90%)'
+        color-purple-95: 'hsl(248, 80%, 95%)'
+        color-purple-98: 'hsl(248, 90%, 98%)'
+        color-turquoise-10: 'hsl(180, 90%, 10%)'
+        color-turquoise-20: 'hsl(180, 50%, 20%)'
+        color-turquoise-35: 'hsl(180, 25%, 35%)'
+        color-turquoise-50: 'hsl(180, 30%, 45%)'
+        color-turquoise-70: 'hsl(180, 40%, 70%)'
+        color-turquoise-85: 'hsl(180, 60%, 85%)'
+        color-turquoise-90: 'hsl(180, 40%, 90%)'
+        color-turquoise-95: 'hsl(180, 80%, 95%)'
+        color-turquoise-98: 'hsl(180, 90%, 98%)'
+        color-neutral: 'hsl(232, 18%, 80%)'
         color-neutral-05: 'hsl(0deg 0% 80% / 5%)'
         color-neutral-10: 'hsl(0deg 0% 80% / 10%)'
-        color-neutral-40: 'hsl(0, 0%, 40%)'
-        color-neutral-60: 'hsl(0, 0%, 60%)'
-        color-neutral-85: 'hsl(0, 0%, 85%)'
-        color-neutral-90: 'hsl(0, 0%, 90%)'
-        color-neutral-95: 'hsl(0, 0%, 95%)'
-        color-neutral-98: 'hsl(0, 0%, 98%)'
+        color-neutral-40: 'hsl(232, 18%, 40%)'
+        color-neutral-60: 'hsl(232, 18%, 60%)'
+        color-neutral-85: 'hsl(232, 18%, 85%)'
+        color-neutral-90: 'hsl(232, 18%, 90%)'
+        color-neutral-95: 'hsl(232, 18%, 95%)'
+        color-neutral-98: 'hsl(232, 18%, 98%)'
         color-info: '#078cdf'
         color-info-40: 'hsl(203.05555555555554, 93.9130434783%, 40%)'
         color-info-85: 'hsl(203.05555555555554, 93.9130434783%, 85%)'
@@ -75,9 +107,11 @@ choiceGroupsByTheme:
         color-error-85: 'hsl(339.1304347826087, 100%, 85%)'
         color-error-95: 'hsl(339.1304347826087, 100%, 95%)'
         color-solid: '#1a1a1a'
+        color-solid-02: 'hsl(0deg 0% 10% / 2%)'
         color-solid-05: 'hsl(0deg 0% 10% / 5%)'
         color-solid-10: 'hsl(0deg 0% 10% / 10%)'
         color-surface: '#fff'
+        color-transparent: 'transparent'
 
     borderRadiuses:
       label: Border Radiuses
@@ -87,6 +121,7 @@ choiceGroupsByTheme:
         border-radius-2: 2px
         border-radius-4: 4px
         border-radius-6: 6px
+        border-radius-8: 8px
         border-radius-20: 20px
 
     borderWidths:
@@ -106,6 +141,7 @@ choiceGroupsByTheme:
       prefix: font-size
       choices:
         font-size-10: '0.75rem'
+        font-size-12: '0.8rem'
         font-size-20: '0.875rem'
         font-size-30: '1rem'
         font-size-40: '1.125rem'
@@ -113,6 +149,7 @@ choiceGroupsByTheme:
         font-size-60: '1.5rem'
         font-size-70: '2rem'
         font-size-80: '2.5rem'
+        font-size-90: '3rem'
         # These font sizes are in rems based on a root font-size of 13px and they will be removed when we replace the default theme.
         font-size-15: '0.9231rem'
         font-size-35: '1.0769rem'
@@ -136,7 +173,9 @@ choiceGroupsByTheme:
       label: Line heights
       prefix: line-height
       choices:
+        line-height-05: '1.125rem'
         line-height-10: '1.25rem'
+        line-height-18: '1.3rem'
         line-height-20: '1.375rem'
         line-height-30: '1.5rem'
         line-height-40: '1.625rem'
@@ -164,6 +203,7 @@ choiceGroupsByTheme:
         shadow-14: '0 0 0.5px rgba(0, 0, 0, 0.1)'
         shadow-15: '0 2px 2px rgba(0, 0, 0, 0.24), 0 1px 4.75px rgba(0, 0, 0, 0.12)'
         shadow-16: '0.5px 1.5px 4px 1px rgba(0, 0, 0, 0.25), -0.5px -0.5px 4px 1px rgba(0, 0, 0, 0.25)'
+        shadow-17: '0 1px 5px 0 rgba(0, 0, 0, 0.05)'
     constraints:
       label: Constraints
       prefix: constraint
@@ -197,8 +237,10 @@ choiceGroupsByTheme:
         spacing-l: 24px
         spacing-xl: 32px
         # New tokens
+        spacing-05: 2px
         spacing-10: 4px
         spacing-20: 8px
+        spacing-25: 12px
         spacing-30: 16px
         spacing-40: 24px
         spacing-50: 32px
@@ -271,6 +313,8 @@ variants:
     description: 'H5 text element'
   body:
     description: 'Body text element'
+  caption:
+    description: 'Caption text element'
   detail:
     description: 'Detail text element'
   icon:
@@ -303,6 +347,8 @@ variants:
     description: 'To differentiate component critical style'
   bold:
     description: 'When the element is bold'
+  quiet:
+    description: 'When the element is quiet style'
 
 componentGroups:
   button:
@@ -507,10 +553,14 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-input-when-active:
           choice: color-info-95
+        background-color-for-input-as-quiet:
+          choice: color-transparent
+        background-color-for-input-as-quiet-when-hovered:
+          choice: color-solid-02
         background-color-for-table-cell-when-hovered:
           choice: color-neutral-98
         background-color-for-table-header:
-          choice: color-neutral-95
+          choice: color-neutral-98
         background-color-for-tag:
           choice: color-neutral-95
         background-color-for-tag-warning:
@@ -521,12 +571,10 @@ decisionGroupsByTheme:
           choice: color-surface
         background-color-for-select-input-option-when-hovered:
           choice: color-neutral-98
-        background-color-for-avatar:
-          choice: color-accent
-        background-color-for-avatar-when-highlighted:
-          choice: color-accent-30
         background-color-for-stamp-as-positive:
-          choice: color-primary-95
+          choice: color-primary-90
+        background-color-for-stamp-as-primary:
+          choice: color-primary-90
         background-color-for-localized-input-label:
           choice: color-surface
         background-color-for-localized-input-label-when-readonly:
@@ -637,6 +685,8 @@ decisionGroupsByTheme:
           choice: color-warning
         border-color-for-input-when-hovered:
           choice: color-neutral
+        border-color-for-input-as-quiet:
+          choice: color-transparent
         border-color-for-tag:
           choice: color-neutral
         border-color-for-tag-warning:
@@ -656,7 +706,7 @@ decisionGroupsByTheme:
         border-color-for-table-header:
           choice: color-surface
         border-color-for-table-header-as-bottom:
-          choice: color-neutral-90
+          choice: color-neutral-95
         border-color-for-table-manager-droppable-list:
           choice: color-neutral
         border-color-for-collapsible-panel-header:
@@ -741,7 +791,9 @@ decisionGroupsByTheme:
         border-radius-for-table-manager-droppable-list:
           choice: border-radius-4
         border-radius-for-stamp:
-          choice: border-radius-20
+          choice: border-radius-4
+        border-radius-for-stamp-as-condensed:
+          choice: border-radius-2
         border-radius-for-view-switcher:
           choice: border-radius-4
         border-radius-for-content-notification:
@@ -790,6 +842,8 @@ decisionGroupsByTheme:
           choice: 'inset 0 0 0 1px'
         box-shadow-for-calendar-menu-when-focused:
           choice: '0 2px 5px 0px rgba(0, 0, 0, 0.15)'
+        box-shadow-for-table:
+          choice: shadow-17
 
     fontColors:
       label: Font Colors
@@ -824,7 +878,7 @@ decisionGroupsByTheme:
         font-color-for-link-as-inverted:
           choice: color-surface
         font-color-for-link-as-primary:
-          choice: color-primary-25
+          choice: color-primary-30
         font-color-for-link-as-secondary:
           choice: color-solid
         font-color-for-link-as-primary-when-active:
@@ -832,7 +886,7 @@ decisionGroupsByTheme:
         font-color-for-link-as-secondary-when-active:
           choice: color-primary
         font-color-for-table-header:
-          choice: color-solid
+          choice: color-neutral-40
         font-color-for-localized-input-label:
           choice: color-neutral-60
         font-color-for-view-switcher:
@@ -890,7 +944,7 @@ decisionGroupsByTheme:
         font-color-for-radio-input-when-warning:
           choice: color-warning
         font-color-for-flat-button-as-primary:
-          choice: color-primary-25
+          choice: color-primary-30
         font-color-for-flat-button-as-primary-when-hovered:
           choice: color-primary
         font-color-for-flat-button-as-critical:
@@ -979,24 +1033,18 @@ decisionGroupsByTheme:
           choice: font-size-30
         font-size-for-text-as-body:
           choice: font-size-30
+        font-size-for-text-as-caption:
+          choice: font-size-10
         font-size-for-text-as-detail:
           choice: font-size-20
         font-size-for-body:
           choice: '16px'
         font-size-for-link:
           choice: font-size-30
-        font-size-for-stamp:
-          choice: font-size-20
         font-size-for-view-switcher:
           choice: font-size-20
         font-size-for-table:
           choice: font-size-20
-        font-size-for-avatar-as-small:
-          choice: font-size-20
-        font-size-for-avatar-as-medium:
-          choice: font-size-30
-        font-size-for-avatar-as-big:
-          choice: font-size-80
         font-size-for-localized-input-label:
           choice: font-size-30
         font-size-for-content-notification:
@@ -1029,6 +1077,8 @@ decisionGroupsByTheme:
           choice: line-height-20
         line-height-for-text-as-body:
           choice: line-height-40
+        line-height-for-text-as-caption:
+          choice: line-height-05
         line-height-for-text-as-detail:
           choice: line-height-20
         line-height-for-select-input-options:
@@ -1052,12 +1102,14 @@ decisionGroupsByTheme:
           choice: font-weight-500
         font-weight-for-text-as-body:
           choice: font-weight-400
+        font-weight-for-text-as-caption:
+          choice: font-weight-400
         font-weight-for-text-as-detail:
           choice: font-weight-400
         font-weight-for-button:
           choice: font-weight-500
         font-weight-for-table-header:
-          choice: font-weight-600
+          choice: font-weight-500
         font-weight-for-text-as-bold:
           choice: font-weight-600
 
@@ -1105,7 +1157,7 @@ decisionGroupsByTheme:
         padding-for-stamp:
           choice: '4px 12px'
         padding-for-stamp-as-condensed:
-          choice: '0 var(--spacing-20)'
+          choice: 'var(--spacing-05) var(--spacing-10)'
         padding-for-tag:
           choice: '2px 12px'
         padding-for-table-header:
@@ -1136,6 +1188,8 @@ decisionGroupsByTheme:
           choice: '0 0 var(--spacing-40)'
         padding-for-input:
           choice: spacing-30
+        padding-for-input-as-quiet:
+          choice: spacing-20
         padding-for-multiline-input:
           choice: spacing-20
         padding-for-localized-rich-text-input-label:
@@ -1214,7 +1268,7 @@ decisionGroupsByTheme:
         shadow-for-button-when-disabled:
           choice: shadow-0
         shadow-for-card-when-raised:
-          choice: '0 1px 5px 0 rgba(0, 0, 0, 0.05)'
+          choice: shadow-17
         shadow-for-input:
           choice: shadow-0
         shadow-for-input-when-focused:

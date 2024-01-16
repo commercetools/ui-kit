@@ -176,6 +176,7 @@ const PasswordField = (props: TPasswordField) => {
   const [isPasswordVisible, togglePasswordVisibility] = useToggleState(false);
   const id = useFieldId(props.id, sequentialId);
   const hasError = props.touched && hasErrors(props.errors);
+  const canInteract = !props.isDisabled && !props.isReadOnly;
 
   if (!props.isReadOnly) {
     warning(
@@ -205,7 +206,7 @@ const PasswordField = (props: TPasswordField) => {
             onInfoButtonClick={props.onInfoButtonClick}
             hasRequiredIndicator={props.isRequired}
           />
-          {!props.isDisabled && !props.isReadOnly && (
+          {canInteract && (
             <FlatButton
               icon={isPasswordVisible ? <EyeCrossedIcon /> : <EyeIcon />}
               label={
@@ -228,7 +229,7 @@ const PasswordField = (props: TPasswordField) => {
           onBlur={props.onBlur}
           onFocus={props.onFocus}
           isAutofocussed={props.isAutofocussed}
-          isPasswordVisible={isPasswordVisible}
+          isPasswordVisible={canInteract ? isPasswordVisible : false}
           isDisabled={props.isDisabled}
           isReadOnly={props.isReadOnly}
           hasError={hasError}

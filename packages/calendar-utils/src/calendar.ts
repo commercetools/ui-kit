@@ -17,9 +17,9 @@ export const getPreviousDay = (day: MomentInput) =>
 export const getPaddingDayCount = (day: MomentInput, locale: string) => {
   const firstDayOfWeek = moment.localeData(locale).firstDayOfWeek();
   const firstDayOfMonth = moment(day).startOf('month').day();
+  const paddingDayCount = (firstDayOfMonth - firstDayOfWeek + 7) % 7;
 
-  // ensure number is always positive
-  return (firstDayOfMonth - firstDayOfWeek + 7) % 7;
+  return Number.isNaN(paddingDayCount) ? 0 : paddingDayCount;
 };
 
 export const getWeekdayNames = (locale: string) => {

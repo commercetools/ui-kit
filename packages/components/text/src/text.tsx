@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import {
   bodyStyles,
+  captionStyles,
   detailStyles,
   headlineStyles,
   subheadlineStyles,
@@ -14,11 +15,14 @@ import {
 export type TTone =
   | 'primary'
   | 'secondary'
+  | 'tertiary'
   | 'information'
   | 'positive'
   | 'negative'
   | 'critical'
   | 'inherit';
+
+export type TFontWeight = 'regular' | 'medium' | 'bold';
 
 export type TBasicTextProps = {
   id?: string;
@@ -176,10 +180,14 @@ Wrap.displayName = 'TextWrap';
 
 export type TBodyProps = {
   as?: 'span' | 'p';
+  /**
+   * @deprecated: Use the new `fontWeight` prop.
+   */
   isBold?: boolean;
   isItalic?: boolean;
   isStrikethrough?: boolean;
   tone?: TTone | 'inverted';
+  fontWeight?: TFontWeight;
   truncate?: boolean;
   nowrap?: boolean;
 } & TBasicTextProps &
@@ -217,11 +225,15 @@ const Body = (props: TBodyProps) => {
 Body.displayName = 'TextBody';
 
 export type TDetailProps = {
+  /**
+   * @deprecated: use the new `fontWeight` prop
+   */
   isBold?: boolean;
   isItalic?: boolean;
   isStrikethrough?: boolean;
   as?: 'span' | 'small';
   tone?: TTone | 'warning' | 'inverted';
+  fontWeight?: TFontWeight;
   truncate?: boolean;
   nowrap?: boolean;
   'aria-labelledby'?: string;
@@ -259,4 +271,31 @@ const Detail = (props: TDetailProps) => {
 };
 Detail.displayName = 'TextDetail';
 
-export default { Headline, Wrap, Subheadline, Detail, Body };
+export type TCaptionProps = {
+  isItalic?: boolean;
+  isStrikethrough?: boolean;
+  tone?: TTone | 'warning' | 'inverted';
+  fontWeight?: TFontWeight;
+  truncate?: boolean;
+  nowrap?: boolean;
+  'aria-labelledby'?: string;
+} & TBasicTextProps &
+  TBasicHeadlineProps;
+
+const Caption = (props: TCaptionProps) => {
+  warnIfMissingTitle(props, 'TextCaption');
+  warnIfMissingContent(props, 'TextCaption');
+  return (
+    <div
+      css={captionStyles(props)}
+      title={props.title}
+      aria-labelledby={props['aria-labelledby']}
+      {...filterDataAttributes(props)}
+    >
+      <Text intlMessage={props.intlMessage}>{props.children}</Text>
+    </div>
+  );
+};
+Caption.displayName = 'TextCaption';
+
+export default { Headline, Wrap, Subheadline, Detail, Body, Caption };

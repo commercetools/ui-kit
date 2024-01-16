@@ -20,11 +20,11 @@ npm --save install @commercetools-uikit/selectable-search-input
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react react-intl
+yarn add react react-dom react-intl
 ```
 
 ```
-npm --save install react react-intl
+npm --save install react react-dom react-intl
 ```
 
 ## Usage

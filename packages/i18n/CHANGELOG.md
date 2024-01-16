@@ -1,5 +1,39 @@
 # @commercetools-uikit/i18n
 
+## 16.12.1
+
+## 16.12.0
+
+## 16.11.0
+
+## 16.10.0
+
+## 16.9.0
+
+## 16.8.0
+
+## 16.7.5
+
+## 16.7.4
+
+## 16.7.3
+
+## 16.7.2
+
+## 16.7.1
+
+### Patch Changes
+
+- [#2589](https://github.com/commercetools/ui-kit/pull/2589) [`cc651012d`](https://github.com/commercetools/ui-kit/commit/cc651012d5f4b3524e62c310e85343ee40433a6e) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Add translations for `pt-BR`
+
+## 16.7.0
+
+### Minor Changes
+
+- [#2583](https://github.com/commercetools/ui-kit/pull/2583) [`a095b5d1b`](https://github.com/commercetools/ui-kit/commit/a095b5d1b4742c5b16aeba2003a7bb402fc75e68) Thanks [@emmenko](https://github.com/emmenko)! - Support new application locale `pt-BR`
+
+## 16.6.1
+
 ## 16.6.0
 
 ### Patch Changes

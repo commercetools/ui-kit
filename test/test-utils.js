@@ -13,10 +13,10 @@ const getMessagesForLocale = (locale) => {
       return require('@commercetools-uikit/i18n/compiled-data/es.json');
     case 'fr-FR':
       return require('@commercetools-uikit/i18n/compiled-data/fr-FR.json');
+    case 'pt-BR':
+      return require('@commercetools-uikit/i18n/compiled-data/pt-BR.json');
     case 'zh-CN':
       return require('@commercetools-uikit/i18n/compiled-data/zh-CN.json');
-    case 'ja':
-      return require('@commercetools-uikit/i18n/compiled-data/ja.json');
     default:
       return require('@commercetools-uikit/i18n/compiled-data/en.json');
   }

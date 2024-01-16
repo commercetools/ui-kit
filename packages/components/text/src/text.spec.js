@@ -10,8 +10,8 @@ jest.mock('@commercetools-uikit/utils', () => ({
 const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
 
 describe('exports', () => {
-  it('should export 5 components', () => {
-    expect(Object.keys(Text)).toHaveLength(5);
+  it('should export 6 components', () => {
+    expect(Object.keys(Text)).toHaveLength(6);
   });
   it('should export <Headline> component', () => {
     expect(Text).toHaveProperty('Headline');
@@ -27,6 +27,9 @@ describe('exports', () => {
   });
   it('should export <Detail> component', () => {
     expect(Text).toHaveProperty('Detail');
+  });
+  it('should export <Caption> component', () => {
+    expect(Text).toHaveProperty('Caption');
   });
 });
 
@@ -332,6 +335,48 @@ describe('<Detail>', () => {
       );
 
       expect(screen.getByLabelText(labelText)).toHaveTextContent(textContent);
+    });
+  });
+});
+
+describe('<Caption>', () => {
+  it('should render element tag div', () => {
+    const { container } = render(
+      <Text.Caption title="tooltip text">{'Caption'}</Text.Caption>
+    );
+    expect(container.querySelector('div')).toBeInTheDocument();
+  });
+
+  it('should render given text', () => {
+    render(<Text.Caption title="tooltip text">Text</Text.Caption>);
+    expect(screen.getByText('Text')).toBeInTheDocument();
+  });
+
+  it('should render given text with react-intl', () => {
+    render(<Text.Caption title="tooltip text" intlMessage={intlMessage} />);
+    expect(screen.getByText('Hello')).toBeInTheDocument();
+  });
+
+  it('should forward data attributes', () => {
+    render(
+      <Text.Caption data-foo="bar" title="caption">
+        Title
+      </Text.Caption>
+    );
+    expect(screen.getByTitle('caption')).toHaveAttribute('data-foo', 'bar');
+  });
+  describe('when no text is provided', () => {
+    it('should warn but not crash', () => {
+      render(<Text.Caption />);
+      expect(warning).toHaveBeenCalledTimes(2);
+      expect(warning).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/is marked as required in/i)
+      );
+      expect(warning).toHaveBeenCalledWith(
+        expect.any(Boolean),
+        expect.stringMatching(/TextCaption/i)
+      );
     });
   });
 });

@@ -1,5 +1,304 @@
 # @commercetools-uikit/fields
 
+## 16.12.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@16.12.1
+  - @commercetools-uikit/async-select-field@16.12.1
+  - @commercetools-uikit/creatable-select-field@16.12.1
+  - @commercetools-uikit/date-field@16.12.1
+  - @commercetools-uikit/date-range-field@16.12.1
+  - @commercetools-uikit/date-time-field@16.12.1
+  - @commercetools-uikit/localized-multiline-text-field@16.12.1
+  - @commercetools-uikit/localized-text-field@16.12.1
+  - @commercetools-uikit/money-field@16.12.1
+  - @commercetools-uikit/multiline-text-field@16.12.1
+  - @commercetools-uikit/number-field@16.12.1
+  - @commercetools-uikit/password-field@16.12.1
+  - @commercetools-uikit/radio-field@16.12.1
+  - @commercetools-uikit/search-select-field@16.12.1
+  - @commercetools-uikit/select-field@16.12.1
+  - @commercetools-uikit/text-field@16.12.1
+  - @commercetools-uikit/time-field@16.12.1
+
+## 16.12.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/money-field@16.12.0
+  - @commercetools-uikit/password-field@16.12.0
+  - @commercetools-uikit/async-creatable-select-field@16.12.0
+  - @commercetools-uikit/async-select-field@16.12.0
+  - @commercetools-uikit/creatable-select-field@16.12.0
+  - @commercetools-uikit/date-field@16.12.0
+  - @commercetools-uikit/date-range-field@16.12.0
+  - @commercetools-uikit/date-time-field@16.12.0
+  - @commercetools-uikit/search-select-field@16.12.0
+  - @commercetools-uikit/select-field@16.12.0
+  - @commercetools-uikit/localized-multiline-text-field@16.12.0
+  - @commercetools-uikit/localized-text-field@16.12.0
+  - @commercetools-uikit/multiline-text-field@16.12.0
+  - @commercetools-uikit/number-field@16.12.0
+  - @commercetools-uikit/radio-field@16.12.0
+  - @commercetools-uikit/text-field@16.12.0
+  - @commercetools-uikit/time-field@16.12.0
+
+## 16.11.0
+
+### Patch Changes
+
+- Updated dependencies [[`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38)]:
+  - @commercetools-uikit/select-field@16.11.0
+  - @commercetools-uikit/async-creatable-select-field@16.11.0
+  - @commercetools-uikit/async-select-field@16.11.0
+  - @commercetools-uikit/creatable-select-field@16.11.0
+  - @commercetools-uikit/date-field@16.11.0
+  - @commercetools-uikit/date-range-field@16.11.0
+  - @commercetools-uikit/date-time-field@16.11.0
+  - @commercetools-uikit/localized-multiline-text-field@16.11.0
+  - @commercetools-uikit/localized-text-field@16.11.0
+  - @commercetools-uikit/money-field@16.11.0
+  - @commercetools-uikit/multiline-text-field@16.11.0
+  - @commercetools-uikit/number-field@16.11.0
+  - @commercetools-uikit/password-field@16.11.0
+  - @commercetools-uikit/radio-field@16.11.0
+  - @commercetools-uikit/search-select-field@16.11.0
+  - @commercetools-uikit/text-field@16.11.0
+  - @commercetools-uikit/time-field@16.11.0
+
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@16.10.0
+  - @commercetools-uikit/async-select-field@16.10.0
+  - @commercetools-uikit/creatable-select-field@16.10.0
+  - @commercetools-uikit/date-field@16.10.0
+  - @commercetools-uikit/date-range-field@16.10.0
+  - @commercetools-uikit/date-time-field@16.10.0
+  - @commercetools-uikit/localized-multiline-text-field@16.10.0
+  - @commercetools-uikit/localized-text-field@16.10.0
+  - @commercetools-uikit/money-field@16.10.0
+  - @commercetools-uikit/multiline-text-field@16.10.0
+  - @commercetools-uikit/number-field@16.10.0
+  - @commercetools-uikit/password-field@16.10.0
+  - @commercetools-uikit/radio-field@16.10.0
+  - @commercetools-uikit/search-select-field@16.10.0
+  - @commercetools-uikit/select-field@16.10.0
+  - @commercetools-uikit/text-field@16.10.0
+  - @commercetools-uikit/time-field@16.10.0
+
+## 16.9.0
+
+### Patch Changes
+
+- Updated dependencies [[`7b354d8e5`](https://github.com/commercetools/ui-kit/commit/7b354d8e59f704b4851456e515af102600c9a3cd)]:
+  - @commercetools-uikit/search-select-field@16.9.0
+  - @commercetools-uikit/async-creatable-select-field@16.9.0
+  - @commercetools-uikit/async-select-field@16.9.0
+  - @commercetools-uikit/creatable-select-field@16.9.0
+  - @commercetools-uikit/date-field@16.9.0
+  - @commercetools-uikit/date-range-field@16.9.0
+  - @commercetools-uikit/date-time-field@16.9.0
+  - @commercetools-uikit/localized-multiline-text-field@16.9.0
+  - @commercetools-uikit/localized-text-field@16.9.0
+  - @commercetools-uikit/money-field@16.9.0
+  - @commercetools-uikit/multiline-text-field@16.9.0
+  - @commercetools-uikit/select-field@16.9.0
+  - @commercetools-uikit/radio-field@16.9.0
+  - @commercetools-uikit/number-field@16.9.0
+  - @commercetools-uikit/password-field@16.9.0
+  - @commercetools-uikit/text-field@16.9.0
+  - @commercetools-uikit/time-field@16.9.0
+
+## 16.8.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@16.8.0
+  - @commercetools-uikit/async-select-field@16.8.0
+  - @commercetools-uikit/creatable-select-field@16.8.0
+  - @commercetools-uikit/date-field@16.8.0
+  - @commercetools-uikit/date-range-field@16.8.0
+  - @commercetools-uikit/date-time-field@16.8.0
+  - @commercetools-uikit/localized-multiline-text-field@16.8.0
+  - @commercetools-uikit/localized-text-field@16.8.0
+  - @commercetools-uikit/money-field@16.8.0
+  - @commercetools-uikit/multiline-text-field@16.8.0
+  - @commercetools-uikit/number-field@16.8.0
+  - @commercetools-uikit/password-field@16.8.0
+  - @commercetools-uikit/radio-field@16.8.0
+  - @commercetools-uikit/search-select-field@16.8.0
+  - @commercetools-uikit/select-field@16.8.0
+  - @commercetools-uikit/text-field@16.8.0
+  - @commercetools-uikit/time-field@16.8.0
+
+## 16.7.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-field@16.7.5
+  - @commercetools-uikit/password-field@16.7.5
+  - @commercetools-uikit/search-select-field@16.7.5
+  - @commercetools-uikit/async-creatable-select-field@16.7.5
+  - @commercetools-uikit/async-select-field@16.7.5
+  - @commercetools-uikit/creatable-select-field@16.7.5
+  - @commercetools-uikit/date-field@16.7.5
+  - @commercetools-uikit/date-range-field@16.7.5
+  - @commercetools-uikit/date-time-field@16.7.5
+  - @commercetools-uikit/money-field@16.7.5
+  - @commercetools-uikit/localized-multiline-text-field@16.7.5
+  - @commercetools-uikit/localized-text-field@16.7.5
+  - @commercetools-uikit/multiline-text-field@16.7.5
+  - @commercetools-uikit/number-field@16.7.5
+  - @commercetools-uikit/radio-field@16.7.5
+  - @commercetools-uikit/text-field@16.7.5
+  - @commercetools-uikit/time-field@16.7.5
+
+## 16.7.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/select-field@16.7.4
+  - @commercetools-uikit/date-field@16.7.4
+  - @commercetools-uikit/date-range-field@16.7.4
+  - @commercetools-uikit/date-time-field@16.7.4
+  - @commercetools-uikit/async-creatable-select-field@16.7.4
+  - @commercetools-uikit/async-select-field@16.7.4
+  - @commercetools-uikit/creatable-select-field@16.7.4
+  - @commercetools-uikit/localized-multiline-text-field@16.7.4
+  - @commercetools-uikit/localized-text-field@16.7.4
+  - @commercetools-uikit/money-field@16.7.4
+  - @commercetools-uikit/multiline-text-field@16.7.4
+  - @commercetools-uikit/number-field@16.7.4
+  - @commercetools-uikit/password-field@16.7.4
+  - @commercetools-uikit/radio-field@16.7.4
+  - @commercetools-uikit/search-select-field@16.7.4
+  - @commercetools-uikit/text-field@16.7.4
+  - @commercetools-uikit/time-field@16.7.4
+
+## 16.7.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@16.7.3
+  - @commercetools-uikit/async-select-field@16.7.3
+  - @commercetools-uikit/creatable-select-field@16.7.3
+  - @commercetools-uikit/date-field@16.7.3
+  - @commercetools-uikit/date-range-field@16.7.3
+  - @commercetools-uikit/date-time-field@16.7.3
+  - @commercetools-uikit/localized-multiline-text-field@16.7.3
+  - @commercetools-uikit/localized-text-field@16.7.3
+  - @commercetools-uikit/money-field@16.7.3
+  - @commercetools-uikit/multiline-text-field@16.7.3
+  - @commercetools-uikit/number-field@16.7.3
+  - @commercetools-uikit/password-field@16.7.3
+  - @commercetools-uikit/radio-field@16.7.3
+  - @commercetools-uikit/search-select-field@16.7.3
+  - @commercetools-uikit/select-field@16.7.3
+  - @commercetools-uikit/text-field@16.7.3
+  - @commercetools-uikit/time-field@16.7.3
+
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@16.7.2
+  - @commercetools-uikit/async-select-field@16.7.2
+  - @commercetools-uikit/creatable-select-field@16.7.2
+  - @commercetools-uikit/date-field@16.7.2
+  - @commercetools-uikit/date-range-field@16.7.2
+  - @commercetools-uikit/date-time-field@16.7.2
+  - @commercetools-uikit/localized-multiline-text-field@16.7.2
+  - @commercetools-uikit/localized-text-field@16.7.2
+  - @commercetools-uikit/money-field@16.7.2
+  - @commercetools-uikit/multiline-text-field@16.7.2
+  - @commercetools-uikit/number-field@16.7.2
+  - @commercetools-uikit/password-field@16.7.2
+  - @commercetools-uikit/radio-field@16.7.2
+  - @commercetools-uikit/search-select-field@16.7.2
+  - @commercetools-uikit/select-field@16.7.2
+  - @commercetools-uikit/text-field@16.7.2
+  - @commercetools-uikit/time-field@16.7.2
+
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@16.7.1
+  - @commercetools-uikit/async-select-field@16.7.1
+  - @commercetools-uikit/creatable-select-field@16.7.1
+  - @commercetools-uikit/date-field@16.7.1
+  - @commercetools-uikit/date-range-field@16.7.1
+  - @commercetools-uikit/date-time-field@16.7.1
+  - @commercetools-uikit/localized-multiline-text-field@16.7.1
+  - @commercetools-uikit/localized-text-field@16.7.1
+  - @commercetools-uikit/money-field@16.7.1
+  - @commercetools-uikit/multiline-text-field@16.7.1
+  - @commercetools-uikit/number-field@16.7.1
+  - @commercetools-uikit/password-field@16.7.1
+  - @commercetools-uikit/radio-field@16.7.1
+  - @commercetools-uikit/search-select-field@16.7.1
+  - @commercetools-uikit/select-field@16.7.1
+  - @commercetools-uikit/text-field@16.7.1
+  - @commercetools-uikit/time-field@16.7.1
+
+## 16.7.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-field@16.7.0
+  - @commercetools-uikit/async-select-field@16.7.0
+  - @commercetools-uikit/creatable-select-field@16.7.0
+  - @commercetools-uikit/date-field@16.7.0
+  - @commercetools-uikit/date-range-field@16.7.0
+  - @commercetools-uikit/date-time-field@16.7.0
+  - @commercetools-uikit/localized-multiline-text-field@16.7.0
+  - @commercetools-uikit/localized-text-field@16.7.0
+  - @commercetools-uikit/money-field@16.7.0
+  - @commercetools-uikit/multiline-text-field@16.7.0
+  - @commercetools-uikit/number-field@16.7.0
+  - @commercetools-uikit/password-field@16.7.0
+  - @commercetools-uikit/radio-field@16.7.0
+  - @commercetools-uikit/search-select-field@16.7.0
+  - @commercetools-uikit/select-field@16.7.0
+  - @commercetools-uikit/text-field@16.7.0
+  - @commercetools-uikit/time-field@16.7.0
+
+## 16.6.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/password-field@16.6.1
+  - @commercetools-uikit/async-creatable-select-field@16.6.1
+  - @commercetools-uikit/async-select-field@16.6.1
+  - @commercetools-uikit/creatable-select-field@16.6.1
+  - @commercetools-uikit/date-field@16.6.1
+  - @commercetools-uikit/date-range-field@16.6.1
+  - @commercetools-uikit/date-time-field@16.6.1
+  - @commercetools-uikit/localized-multiline-text-field@16.6.1
+  - @commercetools-uikit/localized-text-field@16.6.1
+  - @commercetools-uikit/money-field@16.6.1
+  - @commercetools-uikit/multiline-text-field@16.6.1
+  - @commercetools-uikit/number-field@16.6.1
+  - @commercetools-uikit/radio-field@16.6.1
+  - @commercetools-uikit/search-select-field@16.6.1
+  - @commercetools-uikit/select-field@16.6.1
+  - @commercetools-uikit/text-field@16.6.1
+  - @commercetools-uikit/time-field@16.6.1
+
 ## 16.6.0
 
 ### Patch Changes

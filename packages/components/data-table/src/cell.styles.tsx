@@ -128,7 +128,7 @@ const BaseCell = styled.td<TBaseCell>`
   background-color: ${designTokens.colorSurface};
   border-bottom: ${(props) =>
     props.shouldRenderBottomBorder
-      ? `1px solid ${designTokens.colorNeutral90};`
+      ? `1px solid ${designTokens.colorNeutral95};`
       : 'none'};
   font-size: ${designTokens.fontSizeForTable};
   ${(props) =>

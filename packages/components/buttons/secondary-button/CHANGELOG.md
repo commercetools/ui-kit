@@ -1,5 +1,148 @@
 # @commercetools-uikit/secondary-button
 
+## 16.12.1
+
+### Patch Changes
+
+- Updated dependencies [[`e7981d960`](https://github.com/commercetools/ui-kit/commit/e7981d960919a5de7e59470ae5ecc33d308c1e9b)]:
+  - @commercetools-uikit/design-system@16.12.1
+  - @commercetools-uikit/accessible-button@16.12.1
+  - @commercetools-uikit/spacings-inline@16.12.1
+  - @commercetools-uikit/text@16.12.1
+  - @commercetools-uikit/utils@16.12.1
+
+## 16.12.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.12.0
+  - @commercetools-uikit/accessible-button@16.12.0
+  - @commercetools-uikit/spacings-inline@16.12.0
+  - @commercetools-uikit/text@16.12.0
+  - @commercetools-uikit/utils@16.12.0
+
+## 16.11.0
+
+### Patch Changes
+
+- Updated dependencies [[`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38)]:
+  - @commercetools-uikit/design-system@16.11.0
+  - @commercetools-uikit/accessible-button@16.11.0
+  - @commercetools-uikit/spacings-inline@16.11.0
+  - @commercetools-uikit/text@16.11.0
+  - @commercetools-uikit/utils@16.11.0
+
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70), [`0a5594d1c`](https://github.com/commercetools/ui-kit/commit/0a5594d1c8c211fd4d3d5038f955fe8bd1372d4b)]:
+  - @commercetools-uikit/text@16.10.0
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/accessible-button@16.10.0
+  - @commercetools-uikit/spacings-inline@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
+## 16.9.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/accessible-button@16.9.0
+  - @commercetools-uikit/spacings-inline@16.9.0
+  - @commercetools-uikit/text@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
+## 16.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7), [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d), [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba), [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd), [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9)]:
+  - @commercetools-uikit/design-system@16.8.0
+  - @commercetools-uikit/text@16.8.0
+  - @commercetools-uikit/accessible-button@16.8.0
+  - @commercetools-uikit/spacings-inline@16.8.0
+  - @commercetools-uikit/utils@16.8.0
+
+## 16.7.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.5
+  - @commercetools-uikit/accessible-button@16.7.5
+  - @commercetools-uikit/spacings-inline@16.7.5
+  - @commercetools-uikit/text@16.7.5
+  - @commercetools-uikit/utils@16.7.5
+
+## 16.7.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.4
+  - @commercetools-uikit/accessible-button@16.7.4
+  - @commercetools-uikit/spacings-inline@16.7.4
+  - @commercetools-uikit/text@16.7.4
+  - @commercetools-uikit/utils@16.7.4
+
+## 16.7.3
+
+### Patch Changes
+
+- Updated dependencies [[`9cfdcbb22`](https://github.com/commercetools/ui-kit/commit/9cfdcbb2272e16677056f0aebe812ad6caf18ff7)]:
+  - @commercetools-uikit/design-system@16.7.3
+  - @commercetools-uikit/accessible-button@16.7.3
+  - @commercetools-uikit/spacings-inline@16.7.3
+  - @commercetools-uikit/text@16.7.3
+  - @commercetools-uikit/utils@16.7.3
+
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.2
+  - @commercetools-uikit/accessible-button@16.7.2
+  - @commercetools-uikit/spacings-inline@16.7.2
+  - @commercetools-uikit/text@16.7.2
+  - @commercetools-uikit/utils@16.7.2
+
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.1
+  - @commercetools-uikit/accessible-button@16.7.1
+  - @commercetools-uikit/spacings-inline@16.7.1
+  - @commercetools-uikit/text@16.7.1
+  - @commercetools-uikit/utils@16.7.1
+
+## 16.7.0
+
+### Patch Changes
+
+- Updated dependencies [[`be20cc204`](https://github.com/commercetools/ui-kit/commit/be20cc2045128dcabd96e86b7979c22540d260c9)]:
+  - @commercetools-uikit/design-system@16.7.0
+  - @commercetools-uikit/accessible-button@16.7.0
+  - @commercetools-uikit/spacings-inline@16.7.0
+  - @commercetools-uikit/text@16.7.0
+  - @commercetools-uikit/utils@16.7.0
+
+## 16.6.1
+
+### Patch Changes
+
+- Updated dependencies [[`27c002aad`](https://github.com/commercetools/ui-kit/commit/27c002aadf38ffbc5d827c425f239d46dfa71b7f)]:
+  - @commercetools-uikit/design-system@16.6.1
+  - @commercetools-uikit/accessible-button@16.6.1
+  - @commercetools-uikit/spacings-inline@16.6.1
+  - @commercetools-uikit/text@16.6.1
+  - @commercetools-uikit/utils@16.6.1
+
 ## 16.6.0
 
 ### Patch Changes

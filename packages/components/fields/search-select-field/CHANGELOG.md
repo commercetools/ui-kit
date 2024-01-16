@@ -1,5 +1,191 @@
 # @commercetools-uikit/search-select-field
 
+## 16.12.1
+
+### Patch Changes
+
+- Updated dependencies [[`e7981d960`](https://github.com/commercetools/ui-kit/commit/e7981d960919a5de7e59470ae5ecc33d308c1e9b)]:
+  - @commercetools-uikit/design-system@16.12.1
+  - @commercetools-uikit/search-select-input@16.12.1
+  - @commercetools-uikit/constraints@16.12.1
+  - @commercetools-uikit/field-label@16.12.1
+  - @commercetools-uikit/spacings@16.12.1
+  - @commercetools-uikit/field-errors@16.12.1
+  - @commercetools-uikit/hooks@16.12.1
+  - @commercetools-uikit/utils@16.12.1
+
+## 16.12.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/search-select-input@16.12.0
+  - @commercetools-uikit/field-label@16.12.0
+  - @commercetools-uikit/design-system@16.12.0
+  - @commercetools-uikit/constraints@16.12.0
+  - @commercetools-uikit/field-errors@16.12.0
+  - @commercetools-uikit/hooks@16.12.0
+  - @commercetools-uikit/utils@16.12.0
+  - @commercetools-uikit/spacings@16.12.0
+
+## 16.11.0
+
+### Patch Changes
+
+- Updated dependencies [[`36ab2f477`](https://github.com/commercetools/ui-kit/commit/36ab2f477f16b3b348a481be40a9e5f0968c1e38), [`c752724a5`](https://github.com/commercetools/ui-kit/commit/c752724a58eab743f02d3e886bdb38b4ad4860dd)]:
+  - @commercetools-uikit/design-system@16.11.0
+  - @commercetools-uikit/search-select-input@16.11.0
+  - @commercetools-uikit/constraints@16.11.0
+  - @commercetools-uikit/field-label@16.11.0
+  - @commercetools-uikit/spacings@16.11.0
+  - @commercetools-uikit/field-errors@16.11.0
+  - @commercetools-uikit/hooks@16.11.0
+  - @commercetools-uikit/utils@16.11.0
+
+## 16.10.0
+
+### Patch Changes
+
+- Updated dependencies [[`6e53b7a63`](https://github.com/commercetools/ui-kit/commit/6e53b7a63289f00e6ecd522eac917c20ca31ac70)]:
+  - @commercetools-uikit/design-system@16.10.0
+  - @commercetools-uikit/field-label@16.10.0
+  - @commercetools-uikit/search-select-input@16.10.0
+  - @commercetools-uikit/constraints@16.10.0
+  - @commercetools-uikit/field-errors@16.10.0
+  - @commercetools-uikit/spacings@16.10.0
+  - @commercetools-uikit/hooks@16.10.0
+  - @commercetools-uikit/utils@16.10.0
+
+## 16.9.0
+
+### Minor Changes
+
+- [#2636](https://github.com/commercetools/ui-kit/pull/2636) [`7b354d8e5`](https://github.com/commercetools/ui-kit/commit/7b354d8e59f704b4851456e515af102600c9a3cd) Thanks [@chloe0592](https://github.com/chloe0592)! - Making iconLeft prop available for SearchSelectInput and SearchSelectField component.
+
+### Patch Changes
+
+- Updated dependencies [[`7b354d8e5`](https://github.com/commercetools/ui-kit/commit/7b354d8e59f704b4851456e515af102600c9a3cd)]:
+  - @commercetools-uikit/search-select-input@16.9.0
+  - @commercetools-uikit/spacings@16.9.0
+  - @commercetools-uikit/field-label@16.9.0
+  - @commercetools-uikit/design-system@16.9.0
+  - @commercetools-uikit/constraints@16.9.0
+  - @commercetools-uikit/field-errors@16.9.0
+  - @commercetools-uikit/hooks@16.9.0
+  - @commercetools-uikit/utils@16.9.0
+
+## 16.8.0
+
+### Patch Changes
+
+- Updated dependencies [[`1713d8450`](https://github.com/commercetools/ui-kit/commit/1713d8450b9230f197421e97a905754e35fe08f7), [`31c790812`](https://github.com/commercetools/ui-kit/commit/31c7908124bbe95ffc5272a013a87793cc5b0a0d), [`1112bdf5a`](https://github.com/commercetools/ui-kit/commit/1112bdf5a26dcd2bab76172d03a7314365a930ba), [`fbd12e273`](https://github.com/commercetools/ui-kit/commit/fbd12e2738b8156e7b783103497cd90e41a229dd), [`f69f39684`](https://github.com/commercetools/ui-kit/commit/f69f396843708a5c00dea7059a3f45ac5f1985c9)]:
+  - @commercetools-uikit/design-system@16.8.0
+  - @commercetools-uikit/constraints@16.8.0
+  - @commercetools-uikit/field-label@16.8.0
+  - @commercetools-uikit/search-select-input@16.8.0
+  - @commercetools-uikit/spacings@16.8.0
+  - @commercetools-uikit/field-errors@16.8.0
+  - @commercetools-uikit/hooks@16.8.0
+  - @commercetools-uikit/utils@16.8.0
+
+## 16.7.5
+
+### Patch Changes
+
+- Updated dependencies [[`1f7f2e06c`](https://github.com/commercetools/ui-kit/commit/1f7f2e06c78a7e11e7d2c2a9dad22642418bb796)]:
+  - @commercetools-uikit/hooks@16.7.5
+  - @commercetools-uikit/search-select-input@16.7.5
+  - @commercetools-uikit/design-system@16.7.5
+  - @commercetools-uikit/constraints@16.7.5
+  - @commercetools-uikit/field-label@16.7.5
+  - @commercetools-uikit/spacings@16.7.5
+  - @commercetools-uikit/field-errors@16.7.5
+  - @commercetools-uikit/utils@16.7.5
+
+## 16.7.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.4
+  - @commercetools-uikit/constraints@16.7.4
+  - @commercetools-uikit/field-errors@16.7.4
+  - @commercetools-uikit/field-label@16.7.4
+  - @commercetools-uikit/search-select-input@16.7.4
+  - @commercetools-uikit/hooks@16.7.4
+  - @commercetools-uikit/utils@16.7.4
+  - @commercetools-uikit/spacings@16.7.4
+
+## 16.7.3
+
+### Patch Changes
+
+- Updated dependencies [[`9cfdcbb22`](https://github.com/commercetools/ui-kit/commit/9cfdcbb2272e16677056f0aebe812ad6caf18ff7)]:
+  - @commercetools-uikit/design-system@16.7.3
+  - @commercetools-uikit/constraints@16.7.3
+  - @commercetools-uikit/field-label@16.7.3
+  - @commercetools-uikit/search-select-input@16.7.3
+  - @commercetools-uikit/spacings@16.7.3
+  - @commercetools-uikit/field-errors@16.7.3
+  - @commercetools-uikit/hooks@16.7.3
+  - @commercetools-uikit/utils@16.7.3
+
+## 16.7.2
+
+### Patch Changes
+
+- Updated dependencies [[`60c80f16d`](https://github.com/commercetools/ui-kit/commit/60c80f16ddffe15d05d14e0c1238d3136db609b7)]:
+  - @commercetools-uikit/field-label@16.7.2
+  - @commercetools-uikit/design-system@16.7.2
+  - @commercetools-uikit/constraints@16.7.2
+  - @commercetools-uikit/field-errors@16.7.2
+  - @commercetools-uikit/search-select-input@16.7.2
+  - @commercetools-uikit/hooks@16.7.2
+  - @commercetools-uikit/utils@16.7.2
+  - @commercetools-uikit/spacings@16.7.2
+
+## 16.7.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@16.7.1
+  - @commercetools-uikit/constraints@16.7.1
+  - @commercetools-uikit/field-errors@16.7.1
+  - @commercetools-uikit/field-label@16.7.1
+  - @commercetools-uikit/search-select-input@16.7.1
+  - @commercetools-uikit/hooks@16.7.1
+  - @commercetools-uikit/utils@16.7.1
+  - @commercetools-uikit/spacings@16.7.1
+
+## 16.7.0
+
+### Patch Changes
+
+- Updated dependencies [[`be20cc204`](https://github.com/commercetools/ui-kit/commit/be20cc2045128dcabd96e86b7979c22540d260c9)]:
+  - @commercetools-uikit/design-system@16.7.0
+  - @commercetools-uikit/constraints@16.7.0
+  - @commercetools-uikit/field-label@16.7.0
+  - @commercetools-uikit/search-select-input@16.7.0
+  - @commercetools-uikit/spacings@16.7.0
+  - @commercetools-uikit/field-errors@16.7.0
+  - @commercetools-uikit/hooks@16.7.0
+  - @commercetools-uikit/utils@16.7.0
+
+## 16.6.1
+
+### Patch Changes
+
+- Updated dependencies [[`27c002aad`](https://github.com/commercetools/ui-kit/commit/27c002aadf38ffbc5d827c425f239d46dfa71b7f)]:
+  - @commercetools-uikit/design-system@16.6.1
+  - @commercetools-uikit/field-label@16.6.1
+  - @commercetools-uikit/constraints@16.6.1
+  - @commercetools-uikit/search-select-input@16.6.1
+  - @commercetools-uikit/spacings@16.6.1
+  - @commercetools-uikit/field-errors@16.6.1
+  - @commercetools-uikit/hooks@16.6.1
+  - @commercetools-uikit/utils@16.6.1
+
 ## 16.6.0
 
 ### Patch Changes

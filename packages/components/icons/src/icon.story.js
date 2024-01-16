@@ -81,7 +81,7 @@ const svgFixtures = {
 const SelectSvgFixtureOption = (props) => (
   <SelectInput.Option {...props}>
     <Spacings.Stack scale="xs">
-      <Text.Body isBold>{props.data.label ?? '---'}</Text.Body>
+      <Text.Body fontWeight="bold">{props.data.label ?? '---'}</Text.Body>
       <Text.Detail>{props.data.value}</Text.Detail>
     </Spacings.Stack>
   </SelectInput.Option>
@@ -149,7 +149,7 @@ const InlineSvgPage = (props) => {
         <Text.Headline as="h2">Rendered:</Text.Headline>
         {colorValues.map((color) => (
           <Spacings.Stack scale="xs" key={color}>
-            <Text.Body isBold>
+            <Text.Body fontWeight="bold">
               <code>color: {color}</code>
             </Text.Body>
             <div
