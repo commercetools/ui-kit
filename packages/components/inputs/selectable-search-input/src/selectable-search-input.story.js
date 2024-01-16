@@ -143,6 +143,15 @@ storiesOf('Components|Inputs', module)
             onSubmit={(submitValues) => {
               alert(JSON.stringify(submitValues));
             }}
+            inputDataProps={{
+              'track-component': 'InputElement',
+              foo: 'bar',
+            }}
+            selectDataProps={{
+              'track-component': 'SelectElement',
+              bar: 'foo',
+            }}
+            data-legacy-prop="foobar"
             {...addMenuPortalProps()}
           />
           <NeighbouringStackingContext />

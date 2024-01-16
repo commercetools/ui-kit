@@ -15,6 +15,8 @@ const Example = () => (
       { value: 'one', label: 'One' },
       { value: 'two', label: 'Two' },
     ]}
+    selectDataProps={[{ 'prop-1': 'value-1' }, { 'prop-2': 'value-2' }]}
+    inputDataProps={[{ 'prop-3': 'value-1' }, { 'prop-4': 'value-2' }]}
   />
 );
 
