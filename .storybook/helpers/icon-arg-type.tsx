@@ -1,3 +1,4 @@
+// @ts-ignore
 import React, { ReactNode } from 'react';
 import * as icons from '@commercetools-uikit/icons';
 

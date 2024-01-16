@@ -12,7 +12,6 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
   argTypes: {
     iconLeft: iconArgType,
   },
