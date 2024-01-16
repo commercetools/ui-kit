@@ -1,14 +1,11 @@
 import type { ComponentProps } from 'react';
-import { createElement } from 'react';
-import * as icons from '@commercetools-uikit/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import ViewSwitcher from '.';
 import type { TViewSwitcherButtonProps } from './view-switcher-button';
+import { iconArgType } from '@/storybook-helpers';
 
 const BUTTONS_COUNT = 4;
 const DEFAULT_BUTTON_ICON = 'WorldIcon';
-
-const iconNames = Object.keys(icons);
 
 type ViewSwitcherPropsAndCustomArgs = ComponentProps<
   typeof ViewSwitcher.Group
@@ -65,22 +62,10 @@ export const Default: Story = {
         disable: true,
       },
     },
-    iconViewSwitcherButton1: {
-      control: 'select',
-      options: iconNames,
-    },
-    iconViewSwitcherButton2: {
-      control: 'select',
-      options: iconNames,
-    },
-    iconViewSwitcherButton3: {
-      control: 'select',
-      options: iconNames,
-    },
-    iconViewSwitcherButton4: {
-      control: 'select',
-      options: iconNames,
-    },
+    iconViewSwitcherButton1: iconArgType,
+    iconViewSwitcherButton2: iconArgType,
+    iconViewSwitcherButton3: iconArgType,
+    iconViewSwitcherButton4: iconArgType,
   },
   render: (args) => (
     <ViewSwitcher.Group {...args}>
@@ -97,13 +82,11 @@ export const Default: Story = {
               ] as TViewSwitcherButtonProps['isDisabled']
             }
             value={`Button ${i}`}
-            icon={createElement(
-              icons[
-                args[
-                  `iconViewSwitcherButton${i}` as keyof typeof args
-                ] as keyof typeof icons
-              ]
-            )}
+            icon={
+              args[
+                `iconViewSwitcherButton${i}` as keyof typeof args
+              ] as TViewSwitcherButtonProps['icon']
+            }
           >
             {!args[`iconOnlyButton${i}` as keyof typeof args]
               ? `View ${i}`
