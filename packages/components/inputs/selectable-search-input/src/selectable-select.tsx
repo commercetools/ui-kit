@@ -13,22 +13,27 @@ import type {
 import { createSelectableSelectStyles } from './selectable-search-input.styles';
 
 type TSingleValue = {
-  id?: string;
   children?: ReactNode;
+  dataProps?: Record<string, string>;
+  id?: string;
 } & SingleValueProps;
 
-const SingleValue = ({ id, ...props }: TSingleValue) => (
-  <components.SingleValue {...props}>
-    <label htmlFor={id}>{props.children}</label>
-  </components.SingleValue>
-);
-
+const SingleValue = ({ id, dataProps, ...props }: TSingleValue) => {
+  return (
+    <components.SingleValue {...props}>
+      <label htmlFor={id} {...dataProps}>
+        {props.children}
+      </label>
+    </components.SingleValue>
+  );
+};
 type TSelectableSelect = {
   dropdownHasFocus: boolean;
   handleDropdownFocus: () => void;
   handleDropdownBlur: () => void;
   textInputRef: React.RefObject<HTMLInputElement>;
   selectedOption?: TOption;
+  dataProps?: Record<string, string>;
 } & TSelectableSearchInputProps;
 
 const SelectableSelect = (props: TSelectableSelect) => {
@@ -71,7 +76,11 @@ const SelectableSelect = (props: TSelectableSelect) => {
       closeMenuOnSelect={props.closeMenuOnSelect}
       components={{
         SingleValue: (innerProps) => (
-          <SingleValue {...innerProps} id={props.id} />
+          <SingleValue
+            id={props.id}
+            dataProps={props.dataProps}
+            {...innerProps}
+          />
         ),
         DropdownIndicator,
       }}
