@@ -1,0 +1,115 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as ViewSwitcherStories from './src/view-switcher.stories';
+
+<Meta of={ViewSwitcherStories} />
+
+# ViewSwitcher
+
+## Description
+
+The `<ViewSwitcher>` component allow users to toggle between two or more different views of the same, similar or related content items within the same space on screen.
+
+## When to use
+
+Let users toggle between different formatting's, like with a grid view and a table view.
+
+## When not to use
+
+**Do not use the `<ViewSwitcher>` as tabs.**
+Tabs should be used when the content on the page is divided into related sections but without any overlap.
+
+**Do not use the `<ViewSwitcher>` as toggle.**
+Toggles are used for "yes/no" or "on/off" binary decisions.
+
+## Do's and Don'ts
+
+- If you use an icon within the `<ViewSwitcher>`, each switch needs to have an icon.
+- No colored icons are allowed. Only `--color-solid` (black).
+- Do not use two lines of text in one switch field.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/view-switcher
+```
+
+```
+npm --save install @commercetools-uikit/view-switcher
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import { useState } from 'react';
+import ViewSwitcher from '@commercetools-uikit/view-switcher';
+
+/**
+ * 1. Uncontrolled mode
+ *
+ * The component controls its own internal state and switching between options.
+ * The `defaultSelected` value is only used on the initial render. Changes to that value
+ * are not reflected in the component state.
+ */
+const UncontrolledExample = () => (
+  <ViewSwitcher.Group
+    defaultSelected="button 2"
+    onChange={(value) => console.log(value)}
+  >
+    <ViewSwitcher.Button isDisabled value="button 1">
+      View 1
+    </ViewSwitcher.Button>
+    <ViewSwitcher.Button value="button 2">View 2</ViewSwitcher.Button>
+    <ViewSwitcher.Button value="button 3">View 3</ViewSwitcher.Button>
+  </ViewSwitcher.Group>
+);
+
+/**
+ * 2. Controlled mode
+ *
+ * The component is controlled from a parent component, using the prop `selectedValue`.
+ * The component does not use an internal state and the parent must implement the `onChange` callback.
+ */
+const ControlledExample = () => {
+  const [seletedValue, setSelectedValue] = useState('button 1');
+
+  return (
+    <ViewSwitcher.Group
+      selectedValue={seletedValue}
+      onChange={setSelectedValue}
+    >
+      <ViewSwitcher.Button isDisabled value="button 1">
+        View 1
+      </ViewSwitcher.Button>
+      <ViewSwitcher.Button value="button 2">View 2</ViewSwitcher.Button>
+      <ViewSwitcher.Button value="button 3">View 3</ViewSwitcher.Button>
+    </ViewSwitcher.Group>
+  );
+};
+
+export { UncontrolledExample, ControlledExample };
+```
+
+## Signatures
+
+### Signature `onChange`
+
+```ts
+(value: string) => void
+```
+
+## Invariants
+
+1. The `ViewSwitcher.Group` must have at least one `ViewSwitcher.Button` element as `children`
+
+<Canvas of={ViewSwitcherStories.Default} />
