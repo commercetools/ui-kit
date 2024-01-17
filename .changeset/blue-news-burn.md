@@ -2,4 +2,4 @@
 '@commercetools-uikit/messages': minor
 ---
 
-"Forward Id prop to WarningMessage Text Detail"
+We have introduced a new property (`id`) so consumers can provide an HTML id to be included in the element containing the message.
