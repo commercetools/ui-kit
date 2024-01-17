@@ -5,7 +5,7 @@
 
 ## Description
 
-Renders warnings based on configuration.
+The `FieldWarnings` component allows the user to display field warnings.
 
 ## Installation
 

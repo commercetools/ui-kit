@@ -1,15 +1,5 @@
-import { createElement } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  boolean,
-  text,
-  select,
-  object,
-} from '@storybook/addon-knobs/react';
-import Constraints from '@commercetools-uikit/constraints';
-import FlatButton from '@commercetools-uikit/flat-button';
+import { withKnobs, boolean, text, object } from '@storybook/addon-knobs/react';
 import Section from '../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import FieldWarning from './field-warnings';
