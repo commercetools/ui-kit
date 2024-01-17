@@ -10,26 +10,6 @@
 import { ReactNode } from 'react';
 import { designTokens } from '@commercetools-uikit/design-system';
 
-export type THorizontalConstraint =
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 'scale'
-  | 'auto';
-
 type TProps = {
   isDisabled?: boolean;
   hasError?: boolean;
@@ -42,9 +22,57 @@ type TProps = {
   hasValue?: boolean;
   controlShouldRenderValue?: boolean;
   appearance?: 'default' | 'quiet';
-  minMenuWidth?: THorizontalConstraint;
-  maxMenuWidth?: THorizontalConstraint;
-  horizontalConstraint?: THorizontalConstraint;
+  minMenuWidth?:
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  maxMenuWidth?:
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
 };
 
 type TBase = {
@@ -66,13 +94,11 @@ type TState = {
 
 type TDesignTokenName = keyof typeof designTokens;
 
-const getHorrizontalConstraintValue = (value?: THorizontalConstraint) => {
-  if (!value) return null;
-  const tokenName = `constraint${value}`;
-  if (tokenName in designTokens) {
-    return designTokens[tokenName as TDesignTokenName];
-  }
-  return null;
+const getHorizontalConstraintValue = (value?: string | number) => {
+  return (
+    designTokens[`constraint${value}` as TDesignTokenName] ||
+    designTokens.constraint3
+  );
 };
 
 const getInputBackgroundColor = (props: TProps) => {
@@ -213,10 +239,10 @@ const menuStyles = (props: TProps) => (base: TBase) => {
     })(),
     width: props.horizontalConstraint === 'auto' ? 'auto' : '100%',
     minWidth: props.minMenuWidth
-      ? getHorrizontalConstraintValue(props.minMenuWidth)
+      ? getHorizontalConstraintValue(props.minMenuWidth)
       : designTokens.constraint3,
     maxWidth:
-      props.maxMenuWidth ?? getHorrizontalConstraintValue(props.maxMenuWidth),
+      props.maxMenuWidth ?? getHorizontalConstraintValue(props.maxMenuWidth),
   };
 };
 

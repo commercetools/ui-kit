@@ -44,33 +44,29 @@ export type TCustomEvent = {
   persist: () => void;
 };
 
-export type THorizontalConstraint =
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 'scale'
-  | 'auto';
-
 export type TSelectInputProps = {
   /**
    * Indicates the appearance of the input.
    * Quiet appearance is meant to be used with the `horizontalConstraint="auto"`.
    */
   appearance?: 'default' | 'quiet';
-  horizontalConstraint?: THorizontalConstraint;
+  horizontalConstraint?:
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
   /**
    * Indicates that input has errors
    */
@@ -333,15 +329,47 @@ export type TSelectInputProps = {
    */
   value?: ReactSelectProps['value'];
   /**
-   * The min width (a number of pixels or a css value string with units) for which the select-input menu
+   * The min width (a range of values from the horizontalConrtaint set of values) for which the select-input menu
    * is allowed to shrink. If unset, the menu will shrink to a default value.
    */
-  minMenuWidth?: THorizontalConstraint;
+  minMenuWidth?:
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
   /**
-   * The max width (a number of pixels or a css value string with units) for which the select-input menu
+   * The max width (a range of values from the horizontalConrtaint set of values) for which the select-input menu
    * is allowed to grow. If unset, the menu will grow horrizontally to fill its parent.
    */
-  maxMenuWidth?: THorizontalConstraint;
+  maxMenuWidth?:
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
 };
 
 const defaultProps: Pick<
