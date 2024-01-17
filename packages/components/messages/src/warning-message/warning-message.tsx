@@ -15,7 +15,7 @@ export type TWarningMessageProps = {
 };
 
 const WarningMessage = (props: TWarningMessageProps) => (
-  <Text.Detail intlMessage={props.intlMessage} tone="warning">
+  <Text.Detail id={props.id} intlMessage={props.intlMessage} tone="warning">
     {props.children}
   </Text.Detail>
 );
