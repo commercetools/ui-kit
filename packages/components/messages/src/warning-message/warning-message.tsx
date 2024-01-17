@@ -9,12 +9,13 @@ export type TIntlMessageDescriptor = {
 };
 
 export type TWarningMessageProps = {
+  id?: string;
   intlMessage?: TIntlMessageDescriptor;
   children?: ReactNode;
 };
 
 const WarningMessage = (props: TWarningMessageProps) => (
-  <Text.Detail intlMessage={props.intlMessage} tone="warning">
+  <Text.Detail id={props.id} intlMessage={props.intlMessage} tone="warning">
     {props.children}
   </Text.Detail>
 );

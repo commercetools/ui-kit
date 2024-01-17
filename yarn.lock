@@ -3043,6 +3043,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@commercetools-uikit/field-warnings@workspace:packages/components/field-warnings":
+  version: 0.0.0-use.local
+  resolution: "@commercetools-uikit/field-warnings@workspace:packages/components/field-warnings"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/messages": 16.12.1
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    prop-types: 15.8.1
+    react: 17.0.2
+    react-intl: ^6.3.2
+  peerDependencies:
+    react: 17.x
+    react-intl: 6.x
+  languageName: unknown
+  linkType: soft
+
 "@commercetools-uikit/fields@16.12.1, @commercetools-uikit/fields@workspace:presets/fields":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/fields@workspace:presets/fields"
