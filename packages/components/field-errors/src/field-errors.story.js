@@ -35,7 +35,7 @@ storiesOf('Components|FieldError', module)
           renderDefaultError={(key) => {
             switch (key) {
               case 'minLength':
-                return 'This thing is too short.';
+                return 'This is too short.';
               default:
                 // When null is returned then the error handling defined in
                 // FieldError itself will kick in
