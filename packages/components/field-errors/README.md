@@ -46,7 +46,7 @@ const Example = () => (
     renderError={(key) => {
       switch (key) {
         case 'duplicate':
-          return 'This thing is already in use. It must be unique.';
+          return 'This is already in use. It must be unique.';
         default:
           // When null is returned then the default error handling from
           // renderDefaultError will kick in for that error.
@@ -56,7 +56,7 @@ const Example = () => (
     renderDefaultError={(key) => {
       switch (key) {
         case 'minLength':
-          return 'This thing is too short.';
+          return 'This is too short.';
         default:
           // When null is returned then the error handling defined in
           // FieldError itself will kick in
