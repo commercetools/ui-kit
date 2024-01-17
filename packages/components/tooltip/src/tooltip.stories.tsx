@@ -37,8 +37,6 @@ export const Default: Story = {
     title: 'Tooltip text.',
     showAfter: 300,
     closeAfter: 200,
-    placement: 'top',
-    horizontalConstraint: 'scale',
     children: (
       <div
         css={css`
@@ -72,10 +70,12 @@ export const Default: Story = {
         'left-start',
         'left-end',
       ],
+      defaultValue: 'top',
     },
     horizontalConstraint: {
       control: 'select',
       options: Constraints.getAcceptedMaxPropValues(),
+      defaultValue: 'scale',
     },
     components: {
       table: {
