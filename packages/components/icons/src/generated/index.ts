@@ -14,6 +14,7 @@ export { default as ArrowRightIcon } from './ArrowRightReact';
 export { default as ArrowTriangleDownIcon } from './ArrowTriangleDownReact';
 export { default as ArrowTriangleUpIcon } from './ArrowTriangleUpReact';
 export { default as ArrowUpIcon } from './ArrowUpReact';
+export { default as ArrowsMinimizeIcon } from './ArrowsMinimizeReact';
 export { default as ArrowsIcon } from './ArrowsReact';
 export { default as BackIcon } from './BackReact';
 export { default as BidirectionalArrowIcon } from './BidirectionalArrowReact';
