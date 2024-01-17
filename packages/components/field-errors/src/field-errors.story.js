@@ -25,7 +25,7 @@ storiesOf('Components|FieldError', module)
           renderError={(key) => {
             switch (key) {
               case 'duplicate':
-                return 'This thing is already in use. It must be unique.';
+                return 'This is already in use. It must be unique.';
               default:
                 // When null is returned then the default error handling from
                 // renderDefaultError will kick in for that error.
