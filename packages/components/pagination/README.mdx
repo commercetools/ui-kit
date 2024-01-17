@@ -1,0 +1,53 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as PaginationStories from './src/pagination.stories';
+
+<Meta of={PaginationStories} />
+
+# Pagination
+
+## Description
+
+Components for navigating through pages of items
+
+## Installation
+
+```
+yarn add @commercetools-uikit/pagination
+```
+
+```
+npm --save install @commercetools-uikit/pagination
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react react-intl
+```
+
+```
+npm --save install react react-intl
+```
+
+## Usage
+
+```jsx
+import { Pagination } from '@commercetools-uikit/pagination';
+
+const Example = () => {
+  const items = [{ id: '1' }, { id: '2' }];
+  return (
+    <Pagination
+      totalItems={items.length}
+      page={1}
+      onPageChange={() => {}}
+      onPerPageChange={() => {}}
+    />
+  );
+};
+
+export default Example;
+```
+
+<Canvas of={PaginationStories.Default} />
