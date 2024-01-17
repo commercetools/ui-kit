@@ -1,0 +1,60 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as PrimaryActionDropdownStories from './src/primary-action-dropdown.stories';
+
+<Meta of={PrimaryActionDropdownStories} />
+
+# PrimaryActionDropdown
+
+## Description
+
+A `PrimaryActionDropdown` is a dropdown with any number of action whereas the first action of the dropdown can be triggered without opening the dropdown
+itself.
+
+The primary action, rendered as the head of the dropdown, is always the first non-disabled `<Option />`. If all `<Option />`s are disabled, the head of the
+dropdown will be disabled.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/primary-action-dropdown
+```
+
+```
+npm --save install @commercetools-uikit/primary-action-dropdown
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import PrimaryActionDropdown, {
+  Option,
+} from '@commercetools-uikit/primary-action-dropdown';
+import { PlusBoldIcon } from '@commercetools-uikit/icons';
+
+const Example = () => (
+  <PrimaryActionDropdown>
+    <Option iconLeft={<PlusBoldIcon />} onClick={() => {}}>
+      Primary option
+    </Option>
+    <Option onClick={() => {}}>Another option</Option>
+    <Option isDisabled={true} onClick={() => {}}>
+      Even another option
+    </Option>
+  </PrimaryActionDropdown>
+);
+
+export default Example;
+```
+
+<Canvas of={PrimaryActionDropdownStories.Default} />

@@ -1,0 +1,48 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as LinkStories from './src/link.stories';
+
+<Meta of={LinkStories} />
+
+# Link
+
+## Description
+
+Links are used either to link to other UI routes, or to link to external pages. This component is a very thin wrapper over either a React Router Link, or a normal HTML \<a> tag.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/link
+```
+
+```
+npm --save install @commercetools-uikit/link
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react react-intl react-router-dom
+```
+
+```
+npm --save install react react-intl react-router-dom
+```
+
+## Usage
+
+```jsx
+import Link from '@commercetools-uikit/link';
+
+const Example = () => <Link to={'/foo/bar'}>Go to foo bar</Link>;
+const ExampleWithExternal = () => (
+  <Link isExternal={true} to={'https://kanyetothe.com'}>
+    Go to external link
+  </Link>
+);
+
+export default Example;
+```
+
+<Canvas of={LinkStories.Default} />
