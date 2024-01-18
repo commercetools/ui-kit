@@ -94,7 +94,9 @@ type TState = {
 
 type TDesignTokenName = keyof typeof designTokens;
 
-const getHorizontalConstraintValue = (value?: string | number) => {
+const getHorizontalConstraintValue = (
+  value?: TProps['minMenuWidth'] | TProps['maxMenuWidth']
+) => {
   return (
     designTokens[`constraint${value}` as TDesignTokenName] ||
     designTokens.constraint3

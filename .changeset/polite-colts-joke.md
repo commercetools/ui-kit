@@ -3,4 +3,4 @@
 '@commercetools-uikit/select-utils': minor
 ---
 
-provide min and max width props to the select input component. These props are a range of values from the set of horizontal constraints that control the min and max width of the select dropdown menu.
+We're introducing two new props (`minMenuWidth` and `maxMenuWidth`) which allows the control of the minimum and maximum widths of the select dropdown menu.
