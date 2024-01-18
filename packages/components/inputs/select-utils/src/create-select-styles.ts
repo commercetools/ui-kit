@@ -414,8 +414,9 @@ const groupHeadingStyles = () => (base: TBase) => {
     ...base,
     color: designTokens.fontColorForInputWhenReadonly,
     fontSize: designTokens.fontSizeSmall,
+    borderBottom: `1px solid ${designTokens.borderColorForGroupHeadingSelectInputOptions}`,
     textTransform: 'none',
-    fontWeight: 'bold',
+    fontWeight: designTokens.fontWeight500,
     padding: `${designTokens.spacing20} ${designTokens.paddingForGroupHeadingSelectInputOptions}`,
     '&:empty': {
       padding: 0,
