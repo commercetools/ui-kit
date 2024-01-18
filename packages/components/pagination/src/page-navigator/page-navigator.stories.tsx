@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Value } from 'react-value';
-import PageNavigator from './page-navigator';
+import { withControlledValue } from '@/storybook-helpers';
+import PageNavigator, { type TPageNavigatorProps } from './page-navigator';
 
 const meta = {
   title: 'Components/Pagination/PageNavigator',
@@ -16,18 +16,9 @@ export const Default: Story = {
     totalPages: 10,
     page: 1,
   },
-  render: (args) => {
-    return (
-      <Value
-        defaultValue={args.page}
-        render={(page, onPageChange) => (
-          <PageNavigator
-            totalPages={args.totalPages}
-            page={page}
-            onPageChange={onPageChange}
-          />
-        )}
-      />
-    );
-  },
+  render: withControlledValue<TPageNavigatorProps>(
+    PageNavigator,
+    'page',
+    'onPageChange'
+  ),
 };
