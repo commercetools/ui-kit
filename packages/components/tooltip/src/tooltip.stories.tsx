@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import Constraints from '@commercetools-uikit/constraints';
+import { horizontalConstraintArgType } from '@/storybook-helpers';
 import { PrimaryButton } from '@commercetools-uikit/buttons';
 import type { Meta, StoryObj } from '@storybook/react';
 import Tooltip from './tooltip';
@@ -72,21 +72,9 @@ export const Default: Story = {
       ],
       defaultValue: 'top',
     },
-    horizontalConstraint: {
-      control: 'select',
-      options: Constraints.getAcceptedMaxPropValues(),
+    horizontalConstraint: horizontalConstraintArgType({
       defaultValue: 'scale',
-    },
-    components: {
-      table: {
-        disable: true,
-      },
-    },
-    children: {
-      table: {
-        disable: true,
-      },
-    },
+    }),
   },
   decorators: [
     (Story) => (
@@ -100,6 +88,7 @@ export const Default: Story = {
       </div>
     ),
   ],
+  parameters: { controls: { exclude: ['children', 'defaultSelected'] } },
   render: (args) => {
     const { fullWidth, customBodyWrapper } = args;
     return (
