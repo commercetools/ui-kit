@@ -9,7 +9,7 @@ type ExtractNumericValues<T> = T extends infer U
 type TMinMax = ExtractNumericValues<TMaxProp>;
 
 type THorizontalConstraintArgType = {
-  defaultValue: TMaxProp;
+  defaultValue?: TMaxProp;
   min?: TMinMax;
   max?: TMinMax;
 };

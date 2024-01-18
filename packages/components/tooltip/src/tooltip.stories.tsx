@@ -52,6 +52,7 @@ export const Default: Story = {
     ),
     fullWidth: false,
     customBodyWrapper: false,
+    horizontalConstraint: 'scale',
   },
   argTypes: {
     placement: {
@@ -72,9 +73,7 @@ export const Default: Story = {
       ],
       defaultValue: 'top',
     },
-    horizontalConstraint: horizontalConstraintArgType({
-      defaultValue: 'scale',
-    }),
+    horizontalConstraint: horizontalConstraintArgType(),
   },
   decorators: [
     (Story) => (

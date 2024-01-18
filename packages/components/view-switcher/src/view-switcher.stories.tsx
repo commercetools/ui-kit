@@ -62,10 +62,31 @@ export const Default: Story = {
         disable: true,
       },
     },
-    iconViewSwitcherButton1: iconArgType,
-    iconViewSwitcherButton2: iconArgType,
-    iconViewSwitcherButton3: iconArgType,
-    iconViewSwitcherButton4: iconArgType,
+    ...[...Array(BUTTONS_COUNT).keys()].reduce((acc, index) => {
+      const i = index + 1;
+      const temp = {
+        ...acc,
+        ...{
+          [`iconViewSwitcherButton${i}`]: {
+            ...iconArgType,
+            table: {
+              subcategory: `View Switcher Button ${i}`,
+            },
+          },
+          [`iconOnlyButton${i}`]: {
+            table: {
+              subcategory: `View Switcher Button ${i}`,
+            },
+          },
+          [`isDisabledButton${i}`]: {
+            table: {
+              subcategory: `View Switcher Button ${i}`,
+            },
+          },
+        },
+      };
+      return temp;
+    }, {}),
   },
   render: (args) => (
     <ViewSwitcher.Group {...args}>
