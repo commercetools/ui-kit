@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Value } from 'react-value';
 import Pagination from './pagination';
 
 const meta = {
@@ -24,7 +25,27 @@ export const Default: Story = {
     page: 1,
     perPage: 20,
     perPageRange: 's',
-    onPageChange: () => {},
-    onPerPageChange: () => {},
+  },
+  render: (args) => {
+    return (
+      <Value
+        defaultValue={args.perPage}
+        render={(perPage, onPerPageChange) => (
+          <Value
+            defaultValue={args.page}
+            render={(page, onPageChange) => (
+              <Pagination
+                totalItems={args.totalItems}
+                page={page}
+                perPageRange={args.perPageRange}
+                onPageChange={onPageChange}
+                perPage={perPage}
+                onPerPageChange={onPerPageChange}
+              />
+            )}
+          />
+        )}
+      />
+    );
   },
 };

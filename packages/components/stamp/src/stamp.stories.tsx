@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import * as icons from '@commercetools-uikit/icons';
-import Spacings from '@commercetools-uikit/spacings';
+import SpacingsStack from '../../spacings/spacings-stack';
+import SpacingsInline from '../../spacings/spacings-inline';
 import Stamp, { availableTones } from './stamp';
 
 const iconNames = Object.keys(icons);
@@ -21,36 +22,15 @@ export const Default: Story = {
   args: {
     isCondensed: false,
   },
-  argTypes: {
-    tone: {
-      table: {
-        disable: true,
-      },
-    },
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-    icon: {
-      table: {
-        disable: true,
-      },
-    },
-    label: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  parameters: { controls: { exclude: ['tone', 'children', 'icon', 'label'] } },
   render: (args) => {
     return (
-      <Spacings.Stack>
+      <SpacingsStack>
         {availableTones.map((tone) => {
           const iconIndex = getRandomIndex(0, numberOfIcons);
           const Icon = icons[iconNames[iconIndex] as keyof typeof icons];
           return (
-            <Spacings.Inline key={tone} alignItems="center">
+            <SpacingsInline key={tone} alignItems="center">
               <Stamp
                 tone={tone}
                 isCondensed={args.isCondensed}
@@ -62,10 +42,10 @@ export const Default: Story = {
                 isCondensed={args.isCondensed}
                 label={`tone="${tone}"`}
               />
-            </Spacings.Inline>
+            </SpacingsInline>
           );
         })}
-      </Spacings.Stack>
+      </SpacingsStack>
     );
   },
 };

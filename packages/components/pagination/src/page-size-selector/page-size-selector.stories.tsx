@@ -1,5 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import PageSizeSelector from './page-size-selector';
+import PageSizeSelector, { type TPageRangeSize } from './page-size-selector';
+
+const getMinimumPageSizeFromRange = (selectedRange: TPageRangeSize) => {
+  switch (selectedRange) {
+    case 'l':
+      return 200;
+    default:
+      return 20;
+  }
+};
 
 const meta = {
   title: 'Components/Pagination/PageSizeSelector',
@@ -19,10 +28,20 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  // @ts-ignore Not providing `perPage` as it's computed based on the provided `perPageRange`
   args: {
     pageItems: 18,
-    perPage: 20,
     perPageRange: 's',
-    onPerPageChange: () => {},
+  },
+  parameters: { controls: { exclude: ['perPage'] } },
+  render: (args) => {
+    return (
+      <PageSizeSelector
+        pageItems={args.pageItems}
+        perPage={getMinimumPageSizeFromRange(args.perPageRange)}
+        perPageRange={args.perPageRange}
+        onPerPageChange={() => {}}
+      />
+    );
   },
 };
