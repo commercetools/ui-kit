@@ -163,7 +163,7 @@ type TDateFieldState = Pick<TDateFieldProps, 'id'>;
 class DateField extends Component<TDateFieldProps, TDateFieldState> {
   static displayName = 'DateField';
 
-  static defaultProps = {
+  static defaultProps: Pick<TDateFieldProps, 'horizontalConstraint'> = {
     horizontalConstraint: 'scale',
   };
 

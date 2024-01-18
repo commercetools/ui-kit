@@ -1,0 +1,53 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as LocalizedMultilineTextFieldStories from './src/localized-multiline-text-field.stories';
+
+<Meta of={LocalizedMultilineTextFieldStories} />
+
+# LocalizedMultilineTextField
+
+## Description
+
+A controlled text input component for localized multi-line strings with validation states.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/localized-multiline-text-field
+```
+
+```
+npm --save install @commercetools-uikit/localized-multiline-text-field
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import LocalizedMultilineTextField from '@commercetools-uikit/localized-multiline-text-field';
+
+const Example = () => (
+  <LocalizedMultilineTextField
+    title="Description"
+    value={{
+      en: 'Parrot that knows how to party',
+      de: 'Papagei der ordentlich abfeiert',
+    }}
+    selectedLanguage="en"
+    onChange={(event) => alert(event.target.value)}
+  />
+);
+
+export default Example;
+```
+
+<Canvas of={LocalizedMultilineTextFieldStories.Default} />

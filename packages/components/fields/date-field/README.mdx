@@ -1,0 +1,49 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as DateFieldStories from './src/date-field.stories';
+
+<Meta of={DateFieldStories} />
+
+# DateField
+
+## Description
+
+A controlled date input component for single date, with validation states and a label.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/date-field
+```
+
+```
+npm --save install @commercetools-uikit/date-field
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import DateField from '@commercetools-uikit/date-field';
+
+const Example = () => (
+  <DateField
+    title="Release Date"
+    value="2018-10-30"
+    onChange={(event) => alert(event.target.value)}
+  />
+);
+
+export default Example;
+```
+
+<Canvas of={DateFieldStories.Default} />
