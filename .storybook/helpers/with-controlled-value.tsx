@@ -16,20 +16,22 @@ type TControlledComponentProps = {
 };
 
 const withControlledValue = <T extends {}>(
-  Component: FunctionComponent<T & TControlledComponentProps>
+  Component: FunctionComponent<T & TControlledComponentProps>,
+  controlledArgName = 'value',
+  controlledArgHandlerName = 'onChange'
 ) => {
-  const WithControlledValue: StoryObj['render'] = (args) => {
-    const [{ value, onChange }, updateArgs] = useArgs();
+  const WithControlledValue: StoryObj['render'] = (allStoryArgs) => {
+    const [args, updateArgs] = useArgs();
 
     const _onChange = (event: TCustomEvent) => {
       updateArgs({ value: event.target.value });
-      onChange(event);
+      args[controlledArgHandlerName](event);
     };
 
     const props = {
-      ...(args as T),
-      value,
-      onChange: _onChange,
+      ...(allStoryArgs as T),
+      [controlledArgName]: args[controlledArgName],
+      [controlledArgHandlerName]: _onChange,
     };
 
     return <Component {...props} />;
