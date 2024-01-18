@@ -1,5 +1,17 @@
 # @commercetools-uikit/tooltip
 
+## 17.0.0
+
+### Patch Changes
+
+- [#2672](https://github.com/commercetools/ui-kit/pull/2672) [`4967fde15`](https://github.com/commercetools/ui-kit/commit/4967fde154ad85f1629da9c21837d43c1ea0b6ba) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unnecessary cursor css property from tooltip wrapper
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/constraints@17.0.0
+  - @commercetools-uikit/hooks@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

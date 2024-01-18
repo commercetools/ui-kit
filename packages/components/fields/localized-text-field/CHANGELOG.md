@@ -1,5 +1,18 @@
 # @commercetools-uikit/localized-text-field
 
+## 17.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`22c8c05fe`](https://github.com/commercetools/ui-kit/commit/22c8c05fea97de1866d44fbf01c3fae6d032e288)]:
+  - @commercetools-uikit/localized-text-input@17.0.0
+  - @commercetools-uikit/field-errors@17.0.0
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/constraints@17.0.0
+  - @commercetools-uikit/field-label@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+  - @commercetools-uikit/spacings@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

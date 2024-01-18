@@ -1,5 +1,17 @@
 # @commercetools-uikit/messages
 
+## 17.0.0
+
+### Minor Changes
+
+- [#2686](https://github.com/commercetools/ui-kit/pull/2686) [`b80555d10`](https://github.com/commercetools/ui-kit/commit/b80555d104c59828530bdb68a362582a085ff116) Thanks [@obulaworld](https://github.com/obulaworld)! - We have introduced a new property (`id`) so consumers can provide an HTML id to be included in the element containing the message.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/text@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

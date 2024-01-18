@@ -1,5 +1,45 @@
 # @commercetools-frontend/ui-kit
 
+## 17.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`b80555d10`](https://github.com/commercetools/ui-kit/commit/b80555d104c59828530bdb68a362582a085ff116), [`33cccc8eb`](https://github.com/commercetools/ui-kit/commit/33cccc8eb396116150e20b07a5802f064871d706), [`39c71b647`](https://github.com/commercetools/ui-kit/commit/39c71b647a463ea69fe99d245faca7f8526ea3f3), [`4967fde15`](https://github.com/commercetools/ui-kit/commit/4967fde154ad85f1629da9c21837d43c1ea0b6ba)]:
+  - @commercetools-uikit/messages@17.0.0
+  - @commercetools-uikit/data-table-manager@17.0.0
+  - @commercetools-uikit/selectable-search-input@17.0.0
+  - @commercetools-uikit/tooltip@17.0.0
+  - @commercetools-uikit/field-errors@17.0.0
+  - @commercetools-uikit/pagination@17.0.0
+  - @commercetools-uikit/inputs@17.0.0
+  - @commercetools-uikit/fields@17.0.0
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/accessible-hidden@17.0.0
+  - @commercetools-uikit/avatar@17.0.0
+  - @commercetools-uikit/card@17.0.0
+  - @commercetools-uikit/collapsible@17.0.0
+  - @commercetools-uikit/collapsible-motion@17.0.0
+  - @commercetools-uikit/collapsible-panel@17.0.0
+  - @commercetools-uikit/constraints@17.0.0
+  - @commercetools-uikit/data-table@17.0.0
+  - @commercetools-uikit/field-label@17.0.0
+  - @commercetools-uikit/grid@17.0.0
+  - @commercetools-uikit/icons@17.0.0
+  - @commercetools-uikit/label@17.0.0
+  - @commercetools-uikit/link@17.0.0
+  - @commercetools-uikit/loading-spinner@17.0.0
+  - @commercetools-uikit/notifications@17.0.0
+  - @commercetools-uikit/primary-action-dropdown@17.0.0
+  - @commercetools-uikit/stamp@17.0.0
+  - @commercetools-uikit/tag@17.0.0
+  - @commercetools-uikit/text@17.0.0
+  - @commercetools-uikit/view-switcher@17.0.0
+  - @commercetools-uikit/hooks@17.0.0
+  - @commercetools-uikit/i18n@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+  - @commercetools-uikit/buttons@17.0.0
+  - @commercetools-uikit/spacings@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

@@ -1,5 +1,32 @@
 # @commercetools-uikit/data-table-manager
 
+## 17.0.0
+
+### Patch Changes
+
+- [#2667](https://github.com/commercetools/ui-kit/pull/2667) [`33cccc8eb`](https://github.com/commercetools/ui-kit/commit/33cccc8eb396116150e20b07a5802f064871d706) Thanks [@emmenko](https://github.com/emmenko)! - Table row type can be passed to `DataTableManager` and `TColumnProps`.
+
+- Updated dependencies [[`6803787a0`](https://github.com/commercetools/ui-kit/commit/6803787a03e07020b8a2437483fc6fe7fac488f5)]:
+  - @commercetools-uikit/select-input@17.0.0
+  - @commercetools-uikit/async-select-input@17.0.0
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/accessible-hidden@17.0.0
+  - @commercetools-uikit/accessible-button@17.0.0
+  - @commercetools-uikit/primary-button@17.0.0
+  - @commercetools-uikit/secondary-button@17.0.0
+  - @commercetools-uikit/secondary-icon-button@17.0.0
+  - @commercetools-uikit/card@17.0.0
+  - @commercetools-uikit/collapsible-motion@17.0.0
+  - @commercetools-uikit/field-label@17.0.0
+  - @commercetools-uikit/grid@17.0.0
+  - @commercetools-uikit/icons@17.0.0
+  - @commercetools-uikit/radio-input@17.0.0
+  - @commercetools-uikit/tag@17.0.0
+  - @commercetools-uikit/text@17.0.0
+  - @commercetools-uikit/hooks@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+  - @commercetools-uikit/spacings@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

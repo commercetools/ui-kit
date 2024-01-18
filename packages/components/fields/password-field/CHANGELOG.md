@@ -1,5 +1,24 @@
 # @commercetools-uikit/password-field
 
+## 17.0.0
+
+### Patch Changes
+
+- [#2677](https://github.com/commercetools/ui-kit/pull/2677) [`bca5ba999`](https://github.com/commercetools/ui-kit/commit/bca5ba999feeaf2664aaa135c13d947c543ab3c6) Thanks [@serge-st](https://github.com/serge-st)! - Fix password visibility in Disabled and ReadOnly states
+
+- Updated dependencies []:
+  - @commercetools-uikit/field-errors@17.0.0
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/flat-button@17.0.0
+  - @commercetools-uikit/constraints@17.0.0
+  - @commercetools-uikit/field-label@17.0.0
+  - @commercetools-uikit/icons@17.0.0
+  - @commercetools-uikit/password-input@17.0.0
+  - @commercetools-uikit/spacings-inline@17.0.0
+  - @commercetools-uikit/spacings-stack@17.0.0
+  - @commercetools-uikit/hooks@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

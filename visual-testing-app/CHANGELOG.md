@@ -1,5 +1,14 @@
 # visual-testing-app
 
+## 12.1.14
+
+### Patch Changes
+
+- [#2665](https://github.com/commercetools/ui-kit/pull/2665) [`335534c4b`](https://github.com/commercetools/ui-kit/commit/335534c4bad0ec3fc2c188e28e64439fe228d02d) Thanks [@renovate](https://github.com/apps/renovate)! - Update `vite` dependency
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.0
+
 ## 12.1.13
 
 ### Patch Changes

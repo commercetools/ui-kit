@@ -1,5 +1,23 @@
 # @commercetools-uikit/selectable-search-input
 
+## 17.0.0
+
+### Patch Changes
+
+- [#2678](https://github.com/commercetools/ui-kit/pull/2678) [`39c71b647`](https://github.com/commercetools/ui-kit/commit/39c71b647a463ea69fe99d245faca7f8526ea3f3) Thanks [@ddouglasz](https://github.com/ddouglasz)! - We included two new props (`selectDataProps`, `inputDataProps`) which allow consumers to forward `data-*` html props independently to both the `select` and `input` HTML elements.
+
+  If you were providing `data-*` props directly to these component, those will keep being forwarded to the `input` HTML element the same way they currently do but we will intend to remove that behaviour in the future in favour of the new added props.
+
+- Updated dependencies [[`6803787a0`](https://github.com/commercetools/ui-kit/commit/6803787a03e07020b8a2437483fc6fe7fac488f5), [`475df2d59`](https://github.com/commercetools/ui-kit/commit/475df2d59bf73d91ce955be3ce63eef7e1a4c8ba)]:
+  - @commercetools-uikit/select-utils@17.0.0
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/secondary-icon-button@17.0.0
+  - @commercetools-uikit/constraints@17.0.0
+  - @commercetools-uikit/icons@17.0.0
+  - @commercetools-uikit/input-utils@17.0.0
+  - @commercetools-uikit/hooks@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

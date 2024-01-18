@@ -1,5 +1,23 @@
 # @commercetools-uikit/calendar-utils
 
+## 17.0.0
+
+### Patch Changes
+
+- [#2669](https://github.com/commercetools/ui-kit/pull/2669) [`6bec284ee`](https://github.com/commercetools/ui-kit/commit/6bec284ee0cad2a90ddacd90124bc8e236d3c785) Thanks [@kark](https://github.com/kark)! - Fix `getPaddingDayCount` helper function
+
+- Updated dependencies [[`4967fde15`](https://github.com/commercetools/ui-kit/commit/4967fde154ad85f1629da9c21837d43c1ea0b6ba)]:
+  - @commercetools-uikit/tooltip@17.0.0
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/accessible-button@17.0.0
+  - @commercetools-uikit/secondary-icon-button@17.0.0
+  - @commercetools-uikit/icons@17.0.0
+  - @commercetools-uikit/input-utils@17.0.0
+  - @commercetools-uikit/spacings-inline@17.0.0
+  - @commercetools-uikit/text@17.0.0
+  - @commercetools-uikit/hooks@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes
