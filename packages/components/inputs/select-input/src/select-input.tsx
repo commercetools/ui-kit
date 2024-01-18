@@ -328,6 +328,48 @@ export type TSelectInputProps = {
    * [Props from React select was used](https://react-select.com/props)
    */
   value?: ReactSelectProps['value'];
+  /**
+   * The min width (a range of values from the horizontalConrtaint set of values) for which the select-input menu
+   * is allowed to shrink. If unset, the menu will shrink to a default value.
+   */
+  minMenuWidth?:
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  /**
+   * The max width (a range of values from the horizontalConrtaint set of values) for which the select-input menu
+   * is allowed to grow. If unset, the menu will grow horrizontally to fill its parent.
+   */
+  maxMenuWidth?:
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
 };
 
 const defaultProps: Pick<
@@ -429,6 +471,8 @@ const SelectInput = (props: TSelectInputProps) => {
               hasValue: !isEmpty(selectedOptions),
               controlShouldRenderValue: props.controlShouldRenderValue,
               horizontalConstraint: props.horizontalConstraint,
+              minMenuWidth: props.minMenuWidth,
+              maxMenuWidth: props.maxMenuWidth,
             }) as ReactSelectProps['styles']
           }
           filterOption={props.filterOption}

@@ -22,6 +22,40 @@ type TProps = {
   hasValue?: boolean;
   controlShouldRenderValue?: boolean;
   appearance?: 'default' | 'quiet';
+  minMenuWidth?:
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  maxMenuWidth?:
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
   horizontalConstraint?:
     | 3
     | 4
@@ -56,6 +90,17 @@ type TState = {
   isFocused?: boolean;
   isDisabled?: boolean;
   isSelected?: boolean;
+};
+
+type TDesignTokenName = keyof typeof designTokens;
+
+const getHorizontalConstraintValue = (
+  value?: TProps['minMenuWidth'] | TProps['maxMenuWidth']
+) => {
+  return (
+    designTokens[`constraint${value}` as TDesignTokenName] ||
+    designTokens.constraint3
+  );
 };
 
 const getInputBackgroundColor = (props: TProps) => {
@@ -195,7 +240,11 @@ const menuStyles = (props: TProps) => (base: TBase) => {
       return base.borderColorForInput;
     })(),
     width: props.horizontalConstraint === 'auto' ? 'auto' : '100%',
-    minWidth: designTokens.constraint3,
+    minWidth: props.minMenuWidth
+      ? getHorizontalConstraintValue(props.minMenuWidth)
+      : designTokens.constraint3,
+    maxWidth:
+      props.maxMenuWidth ?? getHorizontalConstraintValue(props.maxMenuWidth),
   };
 };
 

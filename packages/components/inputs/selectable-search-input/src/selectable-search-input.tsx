@@ -207,11 +207,13 @@ export type TSelectableSearchInputProps = {
    */
   showSubmitButton?: boolean;
   /**
-   *  used to pass `data-*` props to the select component
+   *  used to pass data-* props to the select component.
+   * eg: selectDataProps={[{ 'prop-1': 'value-1' }, { 'prop-2': 'value-2' }]}
    */
   selectDataProps?: Record<string, string>;
   /**
-   *  used to pass `data-*` props to the input element
+   *  used to pass data-* props to the input element.
+   * eg: inputDataProps={[{ 'prop-1': 'value-1' }, { 'prop-2': 'value-2' }]}
    */
   inputDataProps?: Record<string, string>;
 };
