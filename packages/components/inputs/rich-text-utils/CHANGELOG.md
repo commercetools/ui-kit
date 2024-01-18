@@ -1,5 +1,17 @@
 # @commercetools-uikit/rich-text-utils
 
+## 17.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`4967fde15`](https://github.com/commercetools/ui-kit/commit/4967fde154ad85f1629da9c21837d43c1ea0b6ba)]:
+  - @commercetools-uikit/tooltip@17.0.0
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/icons@17.0.0
+  - @commercetools-uikit/input-utils@17.0.0
+  - @commercetools-uikit/spacings-inline@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

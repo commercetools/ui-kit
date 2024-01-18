@@ -1,5 +1,19 @@
 # @commercetools-uikit/buttons
 
+## 17.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/accessible-button@17.0.0
+  - @commercetools-uikit/flat-button@17.0.0
+  - @commercetools-uikit/icon-button@17.0.0
+  - @commercetools-uikit/link-button@17.0.0
+  - @commercetools-uikit/primary-button@17.0.0
+  - @commercetools-uikit/secondary-button@17.0.0
+  - @commercetools-uikit/secondary-icon-button@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes
