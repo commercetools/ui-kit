@@ -4,6 +4,8 @@ import { BoxIcon, BrainIcon, FlameIcon } from '@commercetools-uikit/icons';
 import PrimaryActionDropdown from './primary-action-dropdown';
 import Option from './option';
 
+const OPTIONS_COUNT = 3;
+
 type PrimaryActionDropdownPropsAndCustomArgs = ComponentProps<
   typeof PrimaryActionDropdown
 > & {
@@ -40,6 +42,27 @@ export const Default: Story = {
     labelOption1: 'Option 1',
     labelOption2: 'Option 2',
     labelOption3: 'Option 3',
+  },
+  argTypes: {
+    ...[...Array(OPTIONS_COUNT).keys()].reduce((acc, index) => {
+      const i = index + 1;
+      const temp = {
+        ...acc,
+        ...{
+          [`isDisabledOption${i}`]: {
+            table: {
+              subcategory: `Option ${i}`,
+            },
+          },
+          [`labelOption${i}`]: {
+            table: {
+              subcategory: `Option ${i}`,
+            },
+          },
+        },
+      };
+      return temp;
+    }, {}),
   },
   render: (args) => {
     return (
