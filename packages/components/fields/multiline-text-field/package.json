@@ -24,6 +24,7 @@
     "@commercetools-uikit/constraints": "17.0.0",
     "@commercetools-uikit/design-system": "17.0.0",
     "@commercetools-uikit/field-errors": "17.0.0",
+    "@commercetools-uikit/field-warnings": "17.0.0",
     "@commercetools-uikit/field-label": "17.0.0",
     "@commercetools-uikit/multiline-text-input": "17.0.0",
     "@commercetools-uikit/spacings": "17.0.0",

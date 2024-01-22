@@ -2390,6 +2390,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
     "@emotion/react": ^11.10.5
@@ -2443,6 +2444,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
     "@emotion/react": ^11.10.5
@@ -2701,6 +2703,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
     "@emotion/react": ^11.10.5
@@ -2821,6 +2824,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
     "@emotion/react": ^11.10.5
@@ -2879,6 +2883,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
     "@emotion/react": ^11.10.5
@@ -2937,6 +2942,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
     "@emotion/react": ^11.10.5
@@ -3042,7 +3048,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@commercetools-uikit/field-warnings@workspace:packages/components/field-warnings":
+"@commercetools-uikit/field-warnings@17.0.0, @commercetools-uikit/field-warnings@workspace:packages/components/field-warnings":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/field-warnings@workspace:packages/components/field-warnings"
   dependencies:
@@ -3393,6 +3399,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/localized-multiline-text-input": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
@@ -3490,6 +3497,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/localized-text-input": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
@@ -3571,6 +3579,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/money-input": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
@@ -3624,6 +3633,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/multiline-text-input": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
@@ -3696,6 +3706,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/number-input": 17.0.0
     "@commercetools-uikit/spacings-stack": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
@@ -3767,6 +3778,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/flat-button": 17.0.0
     "@commercetools-uikit/hooks": 17.0.0
     "@commercetools-uikit/icons": 17.0.0
@@ -3860,6 +3872,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/radio-input": 17.0.0
     "@commercetools-uikit/spacings-stack": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
@@ -3980,6 +3993,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/hooks": 17.0.0
     "@commercetools-uikit/search-select-input": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
@@ -4097,6 +4111,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/select-input": 17.0.0
     "@commercetools-uikit/spacings": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
@@ -4326,6 +4341,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/spacings-stack": 17.0.0
     "@commercetools-uikit/text-input": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
@@ -4388,6 +4404,7 @@ __metadata:
     "@commercetools-uikit/design-system": 17.0.0
     "@commercetools-uikit/field-errors": 17.0.0
     "@commercetools-uikit/field-label": 17.0.0
+    "@commercetools-uikit/field-warnings": 17.0.0
     "@commercetools-uikit/spacings-stack": 17.0.0
     "@commercetools-uikit/time-input": 17.0.0
     "@commercetools-uikit/utils": 17.0.0
