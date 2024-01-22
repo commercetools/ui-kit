@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { horizontalConstraintArgType } from '@/storybook-helpers';
+import { horizontalConstraintArgType, hideControls } from '@/storybook-helpers';
 import { PrimaryButton } from '@commercetools-uikit/buttons';
 import type { Meta, StoryObj } from '@storybook/react';
 import Tooltip from './tooltip';
@@ -75,6 +75,7 @@ export const Default: Story = {
     horizontalConstraint: horizontalConstraintArgType({
       defaultValue: 'scale',
     }),
+    ...hideControls(['children', 'defaultSelected']),
   },
   decorators: [
     (Story) => (
@@ -88,7 +89,6 @@ export const Default: Story = {
       </div>
     ),
   ],
-  parameters: { controls: { exclude: ['children', 'defaultSelected'] } },
   render: (args) => {
     const { fullWidth, customBodyWrapper } = args;
     return (

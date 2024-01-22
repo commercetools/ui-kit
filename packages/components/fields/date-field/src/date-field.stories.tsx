@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Value } from 'react-value';
 import { getExampleDateStrings } from '@commercetools-uikit/calendar-utils';
-import { iconArgType, horizontalConstraintArgType } from '@/storybook-helpers';
+import {
+  iconArgType,
+  horizontalConstraintArgType,
+  hideControls,
+} from '@/storybook-helpers';
 import DateField, { type TDateFieldProps } from './date-field';
 
 const exampleDates = getExampleDateStrings();
@@ -53,8 +57,8 @@ export const Default: Story = {
     horizontalConstraint: horizontalConstraintArgType({
       min: 6,
     }),
+    ...hideControls(['onChange', 'value', 'id']),
   },
-  parameters: { controls: { exclude: ['onChange', 'value', 'id'] } },
   render: (args) => {
     return (
       <Value

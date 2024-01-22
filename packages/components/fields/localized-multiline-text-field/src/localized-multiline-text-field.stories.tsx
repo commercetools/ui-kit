@@ -1,7 +1,11 @@
 import type { ReactElement } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Value } from 'react-value';
-import { iconArgType, horizontalConstraintArgType } from '@/storybook-helpers';
+import {
+  iconArgType,
+  horizontalConstraintArgType,
+  hideControls,
+} from '@/storybook-helpers';
 import { ErrorMessage } from '@commercetools-uikit/messages';
 import LocalizedMultilineTextField, {
   type TLocalizedMultilineTextFieldProps,
@@ -57,9 +61,7 @@ export const Default: Story = {
       control: 'select',
       options: Object.keys(defaultValue),
     },
-  },
-  parameters: {
-    controls: { exclude: ['onChange', 'value', 'id', 'errorsByLanguage'] },
+    ...hideControls(['onChange', 'value', 'id', 'errorsByLanguage']),
   },
   render: (args) => {
     return (
