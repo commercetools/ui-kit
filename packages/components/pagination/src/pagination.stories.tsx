@@ -9,8 +9,7 @@ const meta = {
   parameters: {
     docs: {
       story: {
-        inline: false,
-        iframeHeight: 180,
+        height: '280px',
       },
     },
   },

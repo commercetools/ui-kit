@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import * as icons from '@commercetools-uikit/icons';
 import SpacingsStack from '../../spacings/spacings-stack';
 import SpacingsInline from '../../spacings/spacings-inline';
+import { hideControls } from '@/storybook-helpers';
 import Stamp, { availableTones } from './stamp';
 
 const iconNames = Object.keys(icons);
@@ -22,7 +23,9 @@ export const Default: Story = {
   args: {
     isCondensed: false,
   },
-  parameters: { controls: { exclude: ['tone', 'children', 'icon', 'label'] } },
+  argTypes: {
+    ...hideControls(['tone', 'children', 'icon', 'label']),
+  },
   render: (args) => {
     return (
       <SpacingsStack>

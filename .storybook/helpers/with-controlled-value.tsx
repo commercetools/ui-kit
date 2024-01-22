@@ -1,5 +1,6 @@
 // @ts-ignore
 import React, { type FunctionComponent } from 'react';
+import type { ActionMeta } from 'react-select';
 import type { StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
@@ -9,8 +10,13 @@ export type TCustomEvent = {
   };
 };
 
+type TControlledComponentProps = {
+  value?: unknown;
+  onChange?: (event: TCustomEvent, info: ActionMeta<unknown>) => void;
+};
+
 type TWithControlledValueProps<T> = {
-  Component: FunctionComponent<T>;
+  Component: FunctionComponent<T> & TControlledComponentProps;
   controlledArgName?: string;
   controlledArgHandlerName?: string;
 };
