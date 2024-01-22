@@ -38,8 +38,6 @@ const withControlledValue = <T extends {}>({
       [controlledArgHandlerNameOrDefault]: _onChange,
     };
 
-    console.log(props);
-
     return <Component {...props} />;
   };
 
