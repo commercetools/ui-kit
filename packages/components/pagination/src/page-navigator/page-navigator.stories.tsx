@@ -16,9 +16,9 @@ export const Default: Story = {
     totalPages: 10,
     page: 1,
   },
-  render: withControlledValue<TPageNavigatorProps>(
-    PageNavigator,
-    'page',
-    'onPageChange'
-  ),
+  render: withControlledValue<TPageNavigatorProps>({
+    Component: PageNavigator,
+    controlledArgName: 'page',
+    controlledArgHandlerName: 'onPageChange',
+  }),
 };

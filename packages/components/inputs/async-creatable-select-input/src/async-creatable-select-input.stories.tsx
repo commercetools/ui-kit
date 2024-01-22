@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { iconArgType, withControlledValue } from '@/storybook-helpers';
 
-import AsyncCreatableSelectInput, { type TAsyncCreatableSelectInputProps } from './async-creatable-select-input';
+import AsyncCreatableSelectInput, {
+  type TAsyncCreatableSelectInputProps,
+} from './async-creatable-select-input';
 
 const colourOptions = [
   {
@@ -38,7 +40,6 @@ const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const loadOptions = (inputValue: string) =>
   delay(500).then(() => filterColors(inputValue));
-
 
 const meta = {
   title: 'Components/Inputs/SelectInputs/AsyncCreatableSelectInput',
@@ -86,5 +87,7 @@ export const Default: Story = {
     tabIndex: 0,
     tabSelectsValue: true,
   },
-  render: withControlledValue<TAsyncCreatableSelectInputProps>(AsyncCreatableSelectInput),
+  render: withControlledValue<TAsyncCreatableSelectInputProps>({
+    Component: AsyncCreatableSelectInput,
+  }),
 };

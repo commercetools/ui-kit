@@ -1,6 +1,5 @@
 // @ts-ignore
 import React, { type FunctionComponent } from 'react';
-import type { ActionMeta } from 'react-select';
 import type { StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
@@ -10,29 +9,36 @@ export type TCustomEvent = {
   };
 };
 
-type TControlledComponentProps = {
-  value?: unknown;
-  onChange?: (event: TCustomEvent, info: ActionMeta<unknown>) => void;
+type TWithControlledValueProps<T> = {
+  Component: FunctionComponent<T>;
+  controlledArgName?: string;
+  controlledArgHandlerName?: string;
 };
 
-const withControlledValue = <T extends {}>(
-  Component: FunctionComponent<T & TControlledComponentProps>,
-  controlledArgName = 'value',
-  controlledArgHandlerName = 'onChange'
-) => {
+const withControlledValue = <T extends {}>({
+  Component,
+  controlledArgName,
+  controlledArgHandlerName,
+}: TWithControlledValueProps<T>) => {
   const WithControlledValue: StoryObj['render'] = (allStoryArgs) => {
     const [args, updateArgs] = useArgs();
 
+    const controlledArgNameOrDefault = controlledArgName || 'value';
+    const controlledArgHandlerNameOrDefault =
+      controlledArgHandlerName || 'onChange';
+
     const _onChange = (event: TCustomEvent) => {
       updateArgs({ value: event.target.value });
-      args[controlledArgHandlerName](event);
+      args[controlledArgHandlerNameOrDefault](event);
     };
 
     const props = {
       ...(allStoryArgs as T),
-      [controlledArgName]: args[controlledArgName],
-      [controlledArgHandlerName]: _onChange,
+      [controlledArgNameOrDefault]: args[controlledArgNameOrDefault],
+      [controlledArgHandlerNameOrDefault]: _onChange,
     };
+
+    console.log(props);
 
     return <Component {...props} />;
   };
