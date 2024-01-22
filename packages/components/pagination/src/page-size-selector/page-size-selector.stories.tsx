@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { hideControls } from '@/storybook-helpers';
 import PageSizeSelector, { type TPageRangeSize } from './page-size-selector';
 
 const getMinimumPageSizeFromRange = (selectedRange: TPageRangeSize) => {
@@ -17,8 +18,7 @@ const meta = {
   parameters: {
     docs: {
       story: {
-        inline: false,
-        iframeHeight: 180,
+        height: '280px',
       },
     },
   },
@@ -33,7 +33,9 @@ export const Default: Story = {
     pageItems: 18,
     perPageRange: 's',
   },
-  parameters: { controls: { exclude: ['perPage'] } },
+  argTypes: {
+    ...hideControls('perPage'),
+  },
   render: (args) => {
     return (
       <PageSizeSelector
