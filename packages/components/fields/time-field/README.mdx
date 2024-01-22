@@ -1,0 +1,49 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as TimeFieldStories from './src/time-field.stories';
+
+<Meta of={TimeFieldStories} />
+
+# TimeField
+
+## Description
+
+A controlled date input component for single date.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/time-field
+```
+
+```
+npm --save install @commercetools-uikit/time-field
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import TimeField from '@commercetools-uikit/time-field';
+
+const Example = () => (
+  <TimeField
+    title="Release Date"
+    value="15:30"
+    onChange={(event) => alert(event.target.value)}
+  />
+);
+
+export default Example;
+```
+
+<Canvas of={TimeFieldStories.Default} />

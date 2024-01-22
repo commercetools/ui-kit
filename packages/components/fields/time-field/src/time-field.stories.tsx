@@ -4,32 +4,32 @@ import {
   withControlledValue,
 } from '@/storybook-helpers';
 import type { Meta, StoryObj } from '@storybook/react';
-import NumberField, { type TNumberFieldProps } from './number-field';
+import TimeField, { type TTimeFieldProps } from './time-field';
 
-type TNumberFieldPropsAndCustomArgs = TNumberFieldProps & {
+type TTimeFieldPropsAndCustomArgs = TTimeFieldProps & {
   showInfoButton?: boolean;
 };
 
 const meta = {
-  title: 'Components/Fields/NumberField',
-  component: NumberField,
+  title: 'Components/Fields/TimeField',
+  component: TimeField,
   tags: ['autodocs'],
-} satisfies Meta<TNumberFieldPropsAndCustomArgs>;
+} satisfies Meta<TTimeFieldPropsAndCustomArgs>;
 
 export default meta;
-type Story = StoryObj<TNumberFieldPropsAndCustomArgs>;
+type Story = StoryObj<TTimeFieldPropsAndCustomArgs>;
 
 export const Default: Story = {
   args: {
     name: '',
-    hint: 'Enter your age',
+    hint: 'Select the time of publication',
     badge: '',
     isDisabled: false,
     isReadOnly: false,
     isRequired: false,
     touched: false,
     placeholder: 'Placeholder',
-    title: 'Age',
+    title: 'Release Date',
     description: '',
     showInfoButton: false,
     errors: {
@@ -40,12 +40,12 @@ export const Default: Story = {
   },
   argTypes: {
     hintIcon: iconArgType,
-    horizontalConstraint: horizontalConstraintArgType(),
+    horizontalConstraint: horizontalConstraintArgType({ min: 3 }),
   },
-  render: withControlledValue<TNumberFieldPropsAndCustomArgs>({
+  render: withControlledValue<TTimeFieldPropsAndCustomArgs>({
     Component: (args) => (
       // @ts-ignore value and onChange props are passed within the withControlledValue HOC
-      <NumberField
+      <TimeField
         id={args.name?.trim() === '' ? undefined : args.name}
         horizontalConstraint={args.horizontalConstraint}
         errors={args.errors}
