@@ -1,0 +1,49 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as NumberFieldStories from './src/number-field.stories';
+
+<Meta of={NumberFieldStories} />
+
+# NumberField
+
+## Description
+
+A controlled input component for numbers with validation states and a label.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/number-field
+```
+
+```
+npm --save install @commercetools-uikit/number-field
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import NumberField from '@commercetools-uikit/number-field';
+
+const Example = () => (
+  <NumberField
+    title="Age"
+    value={5}
+    onChange={(event) => alert(event.target.value)}
+  />
+);
+
+export default Example;
+```
+
+<Canvas of={NumberFieldStories.Default} />
