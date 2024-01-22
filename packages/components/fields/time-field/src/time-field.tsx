@@ -19,8 +19,10 @@ import Stack from '@commercetools-uikit/spacings-stack';
 import FieldLabel from '@commercetools-uikit/field-label';
 import TimeInput from '@commercetools-uikit/time-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 type TFieldErrors = Record<string, boolean>;
+type TFieldWarnings = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
@@ -62,11 +64,29 @@ export type TTimeFieldProps = {
   errors?: TFieldErrors;
 
   /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br/>
+   * Unknown warnings will be forwarded to renderWarning.
+   */
+  warnings?: TFieldWarnings;
+
+  /**
    * Called with custom errors, as renderError(key, error). This function can return a message which will be wrapped in an ErrorMessage.
    * <br />
    * It can also return null to show no error.
    */
   renderError?: (key: string, error?: boolean) => ReactNode;
+
+  /**
+   * Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.
+   * <br />
+   * It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
+  /**
+   * Called with default warnings. This function can return a message which will be wrapped in an WarningMessage. It can also return null to show no warning.
+   */
+  renderDefaultWarning?: (key: string, warning?: boolean) => ReactNode;
 
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
@@ -170,9 +190,13 @@ type TTimeFieldState = Pick<TTimeFieldProps, 'id'>;
 
 const sequentialId = createSequentialId('time-field-');
 const sequentialErrorsId = createSequentialId('time-field-error-')();
+const sequentialWarningsId = createSequentialId('time-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 class TimeField extends Component<TTimeFieldProps, TTimeFieldState> {
   static displayName = 'TimeField';
@@ -207,6 +231,7 @@ class TimeField extends Component<TTimeFieldProps, TTimeFieldState> {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
     if (!this.props.isReadOnly) {
       warning(
@@ -245,6 +270,7 @@ class TimeField extends Component<TTimeFieldProps, TTimeFieldState> {
             onBlur={this.props.onBlur}
             isAutofocussed={this.props.isAutofocussed}
             isDisabled={this.props.isDisabled}
+            hasWarning={hasWarning}
             hasError={hasError}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
@@ -258,6 +284,13 @@ class TimeField extends Component<TTimeFieldProps, TTimeFieldState> {
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
+            renderDefaultWarning={this.props.renderDefaultWarning}
           />
         </Stack>
       </Constraints.Horizontal>

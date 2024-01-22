@@ -90,7 +90,7 @@ export const component = () => (
         isReadOnly={true}
       />
     </Spec>
-    <Spec label="when has warning">
+    <Spec label="with warning when not touched">
       <SearchSelectField
         title="State"
         name="form-field-name"
@@ -98,7 +98,21 @@ export const component = () => (
         onChange={() => {}}
         loadOptions={loadOptions}
         horizontalConstraint={7}
-        hasWarning={true}
+        warnings={{ defaultWarning: true }}
+        renderDefaultWarning={() => 'Default warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <SearchSelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+        warnings={{ defaultWarning: true }}
+        touched={true}
+        renderDefaultWarning={() => 'Default warning'}
       />
     </Spec>
   </Suite>

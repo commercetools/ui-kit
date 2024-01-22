@@ -19,9 +19,11 @@ import Stack, { type TStackProps } from '@commercetools-uikit/spacings-stack';
 import FieldLabel from '@commercetools-uikit/field-label';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import RadioInput from '@commercetools-uikit/radio-input';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TFieldErrors = Record<string, boolean>;
+type TFieldWarnings = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
@@ -29,9 +31,12 @@ type TCustomFormErrors<Values> = {
 
 const sequentialId = createSequentialId('radio-field-');
 const sequentialErrorsId = createSequentialId('radio-field-error-')();
+const sequentialWarningsId = createSequentialId('radio-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 export type TRadioFieldProps = {
   // RadioField
@@ -60,11 +65,27 @@ export type TRadioFieldProps = {
    */
   errors?: TFieldErrors;
   /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br/>
+   * Unknown warnings will be forwarded to renderWarning.
+   */
+  warnings?: TFieldWarnings;
+  /**
    * Called with custom errors.
    * <br/>
    * This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
+  /**
+   * Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.
+   * <br />
+   * It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
+  /**
+   * Called with default warnings. This function can return a message which will be wrapped in an WarningMessage. It can also return null to show no warning.
+   */
+  renderDefaultWarning?: (key: string, warning?: boolean) => ReactNode;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -188,6 +209,7 @@ class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
     if (!this.props.isReadOnly) {
       warning(
@@ -226,6 +248,7 @@ class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasError={hasError}
+            hasWarning={hasWarning}
             horizontalConstraint={this.props.horizontalConstraint}
             direction={this.props.direction}
             directionProps={this.props.directionProps}
@@ -240,6 +263,13 @@ class RadioField extends Component<TRadioFieldProps, TRadioFieldStates> {
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
+            renderDefaultWarning={this.props.renderDefaultWarning}
           />
         </Stack>
       </Constraints.Horizontal>

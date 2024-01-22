@@ -128,6 +128,26 @@ storiesOf('Components|Fields/SelectFields', module)
                       return null;
                   }
                 }}
+                warnings={object('warnings', {
+                  defaultWarning: true,
+                  customWarning: true,
+                })}
+                renderWarning={(key) => {
+                  switch (key) {
+                    case 'customWarning':
+                      return 'A custom warning.';
+                    default:
+                      return null;
+                  }
+                }}
+                renderDefaultWarning={(key) => {
+                  switch (key) {
+                    case 'defaultWarning':
+                      return 'A default warning.';
+                    default:
+                      return null;
+                  }
+                }}
                 isRequired={boolean('isRequired', false)}
                 touched={boolean('touched', false)}
                 aria-label={text('aria-label', '')}

@@ -117,5 +117,28 @@ export const component = () => (
         isReadOnly={true}
       />
     </Spec>
+    <Spec label="with warning when not touched">
+      <MoneyField
+        title="Price"
+        horizontalConstraint={7}
+        value={emptyValue}
+        onChange={() => {}}
+        currencies={currencies}
+        warnings={{ defaultWarning: true }}
+        renderDefaultWarning={() => 'Default warning'}
+      />
+    </Spec>
+    <Spec label="with error when touched">
+      <MoneyField
+        title="Price"
+        horizontalConstraint={7}
+        value={emptyValue}
+        onChange={() => {}}
+        currencies={currencies}
+        warnings={{ defaultWarning: true }}
+        touched={{ amount: true, currencyCode: true }}
+        renderDefaultWarning={() => 'Default warning'}
+      />
+    </Spec>
   </Suite>
 );

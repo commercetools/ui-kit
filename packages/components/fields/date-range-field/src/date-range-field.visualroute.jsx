@@ -79,5 +79,26 @@ export const component = () => (
         isReadOnly
       />
     </Spec>
+    <Spec label="with warning when not touched">
+      <DateRangeField
+        title="Discounted days"
+        horizontalConstraint={7}
+        value={[]}
+        onChange={() => {}}
+        warnings={{ defaultWarning: true }}
+        renderDefaultWarning={() => 'Default warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <DateRangeField
+        title="Discounted days"
+        horizontalConstraint={7}
+        value={[]}
+        onChange={() => {}}
+        warnings={{ defaultWarning: true }}
+        touched={true}
+        renderDefaultWarning={() => 'Default warning'}
+      />
+    </Spec>
   </Suite>
 );

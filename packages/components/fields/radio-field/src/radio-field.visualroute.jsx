@@ -79,5 +79,33 @@ export const component = () => (
         <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
       </RadioField>
     </Spec>
+
+    <Spec label="with warning when not touched">
+      <RadioField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        warnings={{ defaultWarning: true }}
+        renderDefaultWarning={() => 'Default warning'}
+      >
+        <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+        <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
+      </RadioField>
+    </Spec>
+    <Spec label="with warning when touched">
+      <RadioField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        warnings={{ defaultWarning: true }}
+        touched={true}
+        renderDefaultWarning={() => 'Default warning'}
+      >
+        <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
+        <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
+      </RadioField>
+    </Spec>
   </Suite>
 );

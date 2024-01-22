@@ -87,5 +87,28 @@ export const component = () => (
         isReadOnly
       />
     </Spec>
+    <Spec label="with warning when not touched">
+      <DateTimeField
+        timeZone="UTC"
+        title="Release Date"
+        horizontalConstraint={7}
+        value=""
+        onChange={() => {}}
+        warnings={{ defaultWarning: true }}
+        renderDefaultWarning={() => 'Default warning'}
+      />
+    </Spec>
+    <Spec label="with error when touched">
+      <DateTimeField
+        timeZone="UTC"
+        title="Release Date"
+        horizontalConstraint={7}
+        value=""
+        onChange={() => {}}
+        warnings={{ defaultWarning: true }}
+        touched={true}
+        renderDefaultWarning={() => 'Default warning'}
+      />
+    </Spec>
   </Suite>
 );

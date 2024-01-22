@@ -196,6 +196,29 @@ describe('when field is touched and has errors', () => {
   });
 });
 
+describe('when field is touched and has warnings', () => {
+  describe('when field empty', () => {
+    it('should render a default warning', () => {
+      const { getByText } = renderSearchSelectField({
+        touched: true,
+        warnings: { defaultWarning: true },
+        renderDefaultWarning: () => 'Default warning',
+      });
+      expect(getByText(/Default warning/i)).toBeInTheDocument();
+    });
+  });
+  describe('when there is a custom warning', () => {
+    it('should render the custom warning message', () => {
+      const { getByText } = renderSearchSelectField({
+        touched: true,
+        warnings: { customWarning: true },
+        renderWarning: () => 'Custom warning',
+      });
+      expect(getByText('Custom warning')).toBeInTheDocument();
+    });
+  });
+});
+
 describe('when `hintIcon` is passed', () => {
   it('should render hintIcon and hint', async () => {
     const { findByText } = renderSearchSelectField({
