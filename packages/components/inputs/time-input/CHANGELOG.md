@@ -1,5 +1,19 @@
 # @commercetools-uikit/time-input
 
+## 17.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.1
+  - @commercetools-uikit/accessible-button@17.0.1
+  - @commercetools-uikit/constraints@17.0.1
+  - @commercetools-uikit/icons@17.0.1
+  - @commercetools-uikit/input-utils@17.0.1
+  - @commercetools-uikit/spacings-inline@17.0.1
+  - @commercetools-uikit/hooks@17.0.1
+  - @commercetools-uikit/utils@17.0.1
+
 ## 17.0.0
 
 ### Minor Changes
