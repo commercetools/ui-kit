@@ -164,13 +164,13 @@ storiesOf('Components|Inputs/SelectInputs', module)
                   showOptionGroupDivider={showOptionGroupDivider}
                   iconLeft={iconLeft ? createElement(iconLeft) : undefined}
                   minMenuWidth={select(
-                    'minWidth',
-                    Constraints.getAcceptedMaxPropValues(),
-                    'scale'
+                    'minMenuWidth',
+                    Constraints.getAcceptedMaxPropValues(2),
+                    3
                   )}
                   maxMenuWidth={select(
-                    'maxWidth',
-                    Constraints.getAcceptedMaxPropValues(),
+                    'maxMenuWidth',
+                    Constraints.getAcceptedMaxPropValues(4),
                     'scale'
                   )}
                   {...addMenuPortalProps()}
