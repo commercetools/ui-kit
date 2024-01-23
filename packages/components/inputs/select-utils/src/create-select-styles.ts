@@ -94,17 +94,18 @@ type TState = {
 
 type TDesignTokenName = keyof typeof designTokens;
 
-const upperFirst = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
-
 const getHorizontalConstraintValue = (
   value?: TProps['minMenuWidth'] | TProps['maxMenuWidth']
 ) => {
-  const designTokenSuffix =
-    typeof value === 'string' ? upperFirst(value) : value;
-  const constraintValue =
-    designTokens[`constraint${designTokenSuffix}` as TDesignTokenName] ||
-    designTokens.constraint3;
-  return constraintValue;
+  switch (value) {
+    case 'auto':
+      return 'initial';
+    default:
+      return (
+        designTokens[`constraint${value}` as TDesignTokenName] ||
+        designTokens.constraintScale
+      );
+  }
 };
 
 const getInputBackgroundColor = (props: TProps) => {
