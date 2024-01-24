@@ -9,17 +9,13 @@ type ExtractNumericValues<T> = T extends infer U
 type TMinMax = ExtractNumericValues<TMaxProp>;
 
 type THorizontalConstraintArgType = {
-  defaultValue?: TMaxProp;
   min?: TMinMax;
   max?: TMinMax;
 };
 
-const horizontalConstraintArgType = (
-  { defaultValue, min, max }: THorizontalConstraintArgType = { defaultValue: 7 }
-) => ({
+const horizontalConstraintArgType = (args?: THorizontalConstraintArgType) => ({
   control: 'select',
-  options: Constraints.getAcceptedMaxPropValues(min, max),
-  defaultValue: defaultValue,
+  options: Constraints.getAcceptedMaxPropValues(args?.min, args?.max),
 });
 
 export default horizontalConstraintArgType;
