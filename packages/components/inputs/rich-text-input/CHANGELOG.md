@@ -1,5 +1,23 @@
 # @commercetools-uikit/rich-text-input
 
+## 17.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.1
+  - @commercetools-uikit/flat-button@17.0.1
+  - @commercetools-uikit/collapsible-motion@17.0.1
+  - @commercetools-uikit/constraints@17.0.1
+  - @commercetools-uikit/icons@17.0.1
+  - @commercetools-uikit/input-utils@17.0.1
+  - @commercetools-uikit/rich-text-utils@17.0.1
+  - @commercetools-uikit/spacings-inline@17.0.1
+  - @commercetools-uikit/spacings-stack@17.0.1
+  - @commercetools-uikit/tooltip@17.0.1
+  - @commercetools-uikit/hooks@17.0.1
+  - @commercetools-uikit/utils@17.0.1
+
 ## 17.0.0
 
 ### Patch Changes

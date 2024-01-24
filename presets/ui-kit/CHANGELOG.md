@@ -1,5 +1,45 @@
 # @commercetools-frontend/ui-kit
 
+## 17.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/data-table-manager@17.0.1
+  - @commercetools-uikit/pagination@17.0.1
+  - @commercetools-uikit/inputs@17.0.1
+  - @commercetools-uikit/selectable-search-input@17.0.1
+  - @commercetools-uikit/fields@17.0.1
+  - @commercetools-uikit/design-system@17.0.1
+  - @commercetools-uikit/accessible-hidden@17.0.1
+  - @commercetools-uikit/avatar@17.0.1
+  - @commercetools-uikit/card@17.0.1
+  - @commercetools-uikit/collapsible@17.0.1
+  - @commercetools-uikit/collapsible-motion@17.0.1
+  - @commercetools-uikit/collapsible-panel@17.0.1
+  - @commercetools-uikit/constraints@17.0.1
+  - @commercetools-uikit/data-table@17.0.1
+  - @commercetools-uikit/field-errors@17.0.1
+  - @commercetools-uikit/field-label@17.0.1
+  - @commercetools-uikit/grid@17.0.1
+  - @commercetools-uikit/icons@17.0.1
+  - @commercetools-uikit/label@17.0.1
+  - @commercetools-uikit/link@17.0.1
+  - @commercetools-uikit/loading-spinner@17.0.1
+  - @commercetools-uikit/messages@17.0.1
+  - @commercetools-uikit/notifications@17.0.1
+  - @commercetools-uikit/primary-action-dropdown@17.0.1
+  - @commercetools-uikit/stamp@17.0.1
+  - @commercetools-uikit/tag@17.0.1
+  - @commercetools-uikit/text@17.0.1
+  - @commercetools-uikit/tooltip@17.0.1
+  - @commercetools-uikit/view-switcher@17.0.1
+  - @commercetools-uikit/hooks@17.0.1
+  - @commercetools-uikit/i18n@17.0.1
+  - @commercetools-uikit/utils@17.0.1
+  - @commercetools-uikit/buttons@17.0.1
+  - @commercetools-uikit/spacings@17.0.1
+
 ## 17.0.0
 
 ### Patch Changes
