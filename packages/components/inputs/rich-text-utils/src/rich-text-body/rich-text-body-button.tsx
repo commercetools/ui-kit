@@ -43,8 +43,9 @@ const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
           justify-content: center;
           align-items: center;
           border-radius: ${designTokens.spacing10};
-          padding: ${designTokens.paddingForLocalizedRichTextBodyButton};
-          margin: ${designTokens.marginForLocalizedRichTextBodyButton};
+          padding: ${designTokens.spacing20};
+          margin: 0 ${designTokens.spacing05} ${designTokens.spacing20}
+            ${designTokens.spacing05};
 
           &:focus {
             outline: none;

@@ -40,14 +40,14 @@ const getButtonStyles = (isDisabled: boolean) => {
     baseButtonStyles,
     css`
       background-color: ${designTokens.colorSurface};
-      box-shadow: ${designTokens.shadowForPrimaryActionDropdown};
+      box-shadow: ${designTokens.shadow0};
       border: ${`1px solid ${designTokens.colorNeutral}`};
       &:hover {
-        box-shadow: ${designTokens.shadowForPrimaryActionDropdownWhenHovered};
+        box-shadow: ${designTokens.shadow0};
         background-color: ${designTokens.colorNeutral95};
       }
       &:active {
-        box-shadow: ${designTokens.shadowForPrimaryActionDropdownWhenActive};
+        box-shadow: ${designTokens.shadow0};
         background-color: ${designTokens.backgroundColorForPrimaryActionDropdownWhenActive};
       }
     `,
@@ -78,14 +78,14 @@ const DropdownHead = (props: TDropdownHead) => (
       css={[
         ...getButtonStyles(props.isDisabled),
         css`
-          padding: ${designTokens.paddingForPrimaryActionDropdown};
+          padding: 0 ${designTokens.spacing30};
           border-radius: ${designTokens.borderRadiusForPrimaryActionDropdown};
         `,
       ]}
     >
       <span
         css={css`
-          margin-right: ${designTokens.marginRightForPrimaryActionDropdown};
+          margin-right: ${designTokens.spacing20};
           display: flex;
           align-items: center;
           justify-content: center;
@@ -131,10 +131,10 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
       css={[
         ...getButtonStyles(props.isDisabled),
         css`
-          padding: ${designTokens.paddingForPrimaryActionDropdownIcon};
+          padding: 0 ${designTokens.spacing20};
           border-radius: ${designTokens.borderRadiusForPrimaryActionDropdownIcon};
           border-color: ${designTokens.colorNeutral};
-          border-width: ${designTokens.borderForPrimaryActionDropdownIcon};
+          border-width: 1px 1px 1px 0px;
           border-style: solid;
         `,
       ]}
@@ -178,8 +178,8 @@ const Options = styled.div`
   top: calc(${designTokens.spacing20} + ${designTokens.bigButtonHeight});
   border: 1px solid ${designTokens.borderColorForPrimaryActionDropdownMenu};
   border-radius: ${designTokens.borderRadiusForPrimaryActionDropdownMenu};
-  box-shadow: ${designTokens.shadowForPrimaryActionDropdownMenu};
-  margin-top: ${designTokens.marginTopForPrimaryActionDropdown};
+  box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.15);
+  margin-top: ${designTokens.spacing20};
 
   > button {
     padding-left: ${designTokens.spacing30};
@@ -265,7 +265,7 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         align-items: column;
 
         > :first-of-type > button {
-          height: ${designTokens.heightForPrimaryActionDropdown};
+          height: 40px;
         }
       `}
     >

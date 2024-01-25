@@ -165,7 +165,7 @@ const getHoverInputBorderColor = (props: TProps) => {
 const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
-    fontSize: designTokens.fontSizeForInput,
+    fontSize: designTokens.fontSize30,
     backgroundColor: getInputBackgroundColor(props),
     borderColor: getInputBorderColor(props, state),
     borderWidth: (() => {
@@ -175,12 +175,12 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
         state.isFocused ||
         props.appearance === 'quiet'
       ) {
-        return designTokens.borderWidthForSelectInput;
+        return designTokens.borderWidth2;
       }
       return designTokens.borderWidth1;
     })(),
     borderRadius: designTokens.borderRadiusForInput,
-    minHeight: designTokens.heightForInput,
+    minHeight: '40px',
     cursor: (() => {
       if (props.isDisabled) return 'not-allowed';
       if (props.isReadOnly) return 'default';
@@ -188,8 +188,8 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     })(),
     padding:
       props.appearance === 'quiet'
-        ? `0 ${designTokens.paddingForInputAsQuiet}`
-        : `0 ${designTokens.paddingForInput}`,
+        ? `0 ${designTokens.spacing20}`
+        : `0 ${designTokens.spacing30}`,
     transition: `border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard}`,
     outline: 0,
@@ -233,8 +233,8 @@ const menuStyles = (props: TProps) => (base: TBase) => {
     border: `1px solid ${designTokens.borderColorForSelectInputMenu}`,
     borderRadius: designTokens.borderRadiusForInput,
     backgroundColor: designTokens.backgroundColorForInput,
-    boxShadow: designTokens.shadowForSelectInputMenu,
-    fontSize: designTokens.fontSizeForInput,
+    boxShadow: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
+    fontSize: designTokens.fontSize30,
     fontFamily: 'inherit',
     margin: `${designTokens.spacing10} 0 0 0`,
     borderColor: (() => {
@@ -270,15 +270,13 @@ const dropdownIndicatorStyles = (props: TProps) => (base: TBase) => {
     color: designTokens.fontColorForInput,
     margin: '0',
     padding: '0',
-    marginLeft: designTokens.marginForSelectInputIcon,
+    marginLeft: designTokens.spacing20,
     fill: (() => {
       if (props.isDisabled || props.isReadOnly)
         return designTokens.fontColorForInputWhenDisabled;
-      if (props.hasError)
-        return designTokens.fontColorForSelectInputIconWhenError;
-      if (props.hasWarning)
-        return designTokens.fontColorForSelectInputIconWhenWarning;
-      return designTokens.fontColorForSelectInputIcon;
+      if (props.hasError) return designTokens.colorError;
+      if (props.hasWarning) return designTokens.colorWarning;
+      return designTokens.colorNeutral60;
     })(),
   };
 };
@@ -287,13 +285,13 @@ const clearIndicatorStyles = () => (base: TBase) => ({
   ...base,
   display: 'flex',
   padding: 0,
-  marginLeft: designTokens.marginForSelectInputIcon,
+  marginLeft: designTokens.spacing20,
 });
 
 const menuListStyles = () => (base: TBase) => {
   return {
     ...base,
-    padding: designTokens.paddingForSelectInputMenu,
+    padding: `${designTokens.spacing10} 0`,
     borderRadius: designTokens.borderRadiusForInput,
     backgroundColor: designTokens.backgroundColorForInput,
   };
@@ -305,11 +303,8 @@ const optionStyles = () => (base: TBase, state: TState) => {
     transition: `border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard}`,
-    paddingLeft: designTokens.paddingLeftForSelectInputOptions,
-    paddingRight: designTokens.paddingRightForSelectInputOptions,
-    paddingTop: designTokens.paddingTopForSelectInputOptions,
-    paddingBottom: designTokens.paddingBottomForSelectInputOptions,
-    lineHeight: designTokens.lineHeightForSelectInputOptions,
+    padding: `${designTokens.spacing20} ${designTokens.spacing30}`,
+    lineHeight: designTokens.lineHeight40,
     color: (() => {
       if (!state.isDisabled) return designTokens.fontColorForInput;
       if (state.isSelected) return designTokens.fontColorForInput;
@@ -343,13 +338,13 @@ const placeholderStyles = (props: TProps) => (base: TBase) => {
         !props.isDisabled
       ) {
         if (props.hasError) {
-          return designTokens.fontColorForSelectInputWhenError;
+          return designTokens.colorError;
         }
         if (props.hasWarning) {
-          return designTokens.fontColorForSelectInputWhenWarning;
+          return designTokens.colorWarning;
         }
       }
-      return designTokens.placeholderFontColorForInput;
+      return designTokens.colorNeutral60;
     })(),
     width: '100%',
     overflow: 'hidden',
@@ -381,7 +376,7 @@ const valueContainerStyles = (props: TProps) => (base: TBase) => {
     fill:
       props.isDisabled || props.isReadOnly
         ? designTokens.fontColorForInputWhenDisabled
-        : designTokens.fontColorForSelectInputIcon,
+        : designTokens.colorNeutral60,
   };
 };
 
@@ -395,9 +390,8 @@ const singleValueStyles = (props: TProps) => (base: TBase) => {
       if (props.isReadOnly) {
         return designTokens.fontColorForInputWhenReadonly;
       }
-      if (props.hasError) return designTokens.fontColorForSelectInputWhenError;
-      if (props.hasWarning)
-        return designTokens.fontColorForSelectInputWhenWarning;
+      if (props.hasError) return designTokens.colorError;
+      if (props.hasWarning) return designTokens.colorWarning;
       return designTokens.fontColorForInput;
     })(),
   };
@@ -423,7 +417,7 @@ const groupHeadingStyles = () => (base: TBase) => {
     borderBottom: `1px solid ${designTokens.borderColorForGroupHeadingSelectInputOptions}`,
     textTransform: 'none',
     fontWeight: designTokens.fontWeight500,
-    padding: `${designTokens.spacing20} ${designTokens.paddingForGroupHeadingSelectInputOptions}`,
+    padding: `${designTokens.spacing20} ${designTokens.spacing30}`,
     '&:empty': {
       padding: 0,
     },
@@ -459,18 +453,18 @@ const multiValueStyles = () => (base: TBase) => {
   return {
     ...base,
     display: 'flex',
-    alignItems: designTokens.alignItemsForSelectInputTag,
-    height: designTokens.heightForSelectInputTag,
+    alignItems: 'center',
+    height: '32px',
     backgroundColor: designTokens.backgroundColorForTag,
     padding: '0',
-    border: designTokens.borderForSelectInputTag,
+    border: '1px solid var(--color-neutral-85)',
   };
 };
 
 const multiValueLabelStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    fontSize: designTokens.fontSizeForSelectInputTag,
+    fontSize: designTokens.fontSize30,
     color: (() => {
       if (props.isDisabled) return designTokens.fontColorForInputWhenDisabled;
       if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
@@ -512,7 +506,7 @@ const multiValueRemoveStyles =
         backgroundColor: designTokens.backgroundColorForTag,
 
         'svg *': {
-          fill: designTokens.fontColorForClearInputIconWhenHovered,
+          fill: designTokens.colorError,
         },
       },
     };

@@ -30,12 +30,12 @@ const getInputContainerBorderColor = (
 
 const getInputBoxShadow = (props: TInputProps) => {
   if (props.hasError) {
-    return designTokens.shadowForInputWhenError;
+    return 'inset 0 0 0 1px var(--color-error)';
   }
   if (props.hasWarning) {
-    return designTokens.shadowForInputWhenWarning;
+    return 'inset 0 0 0 1px var(--color-warning)';
   }
-  return designTokens.shadowForInput;
+  return designTokens.shadow0;
 };
 
 const getSearchTextInputStyles = (props: TInputProps) => [
@@ -75,7 +75,7 @@ const getIconColor = (props: TInputProps, defaultColor: string) => {
     return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.fontColorForSearchInputIconWhenReadonly;
+    return designTokens.colorNeutral60;
   }
   return defaultColor;
 };
@@ -83,13 +83,10 @@ const getIconColor = (props: TInputProps, defaultColor: string) => {
 const getClearIconButtonStyles = (props: TInputProps) => [
   getButtonStyles(),
   css`
-    margin-right: ${designTokens.marginRightForClearInputIcon};
-    fill: ${getIconColor(props, designTokens.fontColorForClearInputIcon)};
+    margin-right: ${designTokens.spacing20};
+    fill: ${getIconColor(props, designTokens.colorNeutral60)};
     &:hover {
-      fill: ${getIconColor(
-        props,
-        designTokens.fontColorForClearInputIconWhenHovered
-      )};
+      fill: ${getIconColor(props, designTokens.colorPrimary)};
     }
   `,
 ];
@@ -97,14 +94,11 @@ const getClearIconButtonStyles = (props: TInputProps) => [
 const getSearchIconButtonStyles = (props: TInputProps) => [
   getButtonStyles(),
   css`
-    margin-right: ${designTokens.marginRightForSearchInputIcon};
-    fill: ${getIconColor(props, designTokens.fontColorForSearchInputIcon)};
+    margin-right: ${designTokens.spacing25};
+    fill: ${getIconColor(props, designTokens.colorNeutral60)};
     cursor: ${props.isReadOnly ? 'default' : 'pointer'};
     &:hover {
-      fill: ${getIconColor(
-        props,
-        designTokens.fontColorForSearchInputIconWhenHovered
-      )};
+      fill: ${getIconColor(props, designTokens.colorPrimary)};
     }
   `,
 ];
@@ -130,7 +124,7 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
     border: 1px solid ${getInputContainerBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-shadow: ${getInputBoxShadow(props)};
-    height: ${designTokens.heightForInput};
+    height: 40px;
     box-sizing: border-box;
     &:hover {
       border-color: ${getInputContainerBorderColor(
@@ -151,7 +145,7 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
     css`
       &:focus-within {
         border-color: ${designTokens.borderColorForInputWhenFocused};
-        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+        box-shadow: inset 0 0 0 1px
           ${designTokens.borderColorForInputWhenFocused};
         &:hover {
           background-color: ${designTokens.colorSurface};

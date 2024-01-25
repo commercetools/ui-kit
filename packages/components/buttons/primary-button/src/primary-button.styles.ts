@@ -9,16 +9,14 @@ const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
     case 'small':
     case 'medium':
       return css`
-        height: ${designTokens.heightForButtonAsMedium};
+        height: 32px;
         border-radius: ${designTokens.borderRadiusForButtonAsMedium};
-        padding: ${designTokens.paddingForButtonAsMedium};
       `;
 
     case 'big':
       return css`
-        height: ${designTokens.heightForButtonAsBig};
+        height: 40px;
         border-radius: ${designTokens.borderRadiusForButtonAsBig};
-        padding: ${designTokens.paddingForButtonAsBig};
       `;
 
     default:
@@ -36,6 +34,7 @@ const getButtonStyles = (
     align-items: center;
     color: ${designTokens.colorSurface};
     transition: background-color ${designTokens.transitionLinear80Ms};
+    padding: 0 var(--spacing-30);
     ${getSizeStyles(size)}
   `;
   // "disabled" takes precendece over "active"
@@ -48,7 +47,7 @@ const getButtonStyles = (
         &:hover {
           background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
           color: ${designTokens.colorNeutral60};
-          box-shadow: ${designTokens.shadowForButtonWhenDisabled};
+          box-shadow: ${designTokens.shadow0};
         }
       `,
     ];
@@ -57,10 +56,10 @@ const getButtonStyles = (
     const baseActiveStyles = [
       baseStyles,
       css`
-        box-shadow: ${designTokens.shadowForButtonWhenActive};
+        box-shadow: ${designTokens.shadow0};
         &:hover,
         &:focus {
-          box-shadow: ${designTokens.shadowForButtonWhenFocused};
+          box-shadow: ${designTokens.shadow0};
         }
       `,
     ];
@@ -105,13 +104,13 @@ const getButtonStyles = (
   const baseDefaultStyles = [
     baseStyles,
     css`
-      box-shadow: ${designTokens.shadowForButton};
+      box-shadow: ${designTokens.shadow0};
       &:hover,
       &:focus {
-        box-shadow: ${designTokens.shadowForButtonWhenFocused};
+        box-shadow: ${designTokens.shadow0};
       }
       &:active {
-        box-shadow: ${designTokens.shadowForButtonWhenActive};
+        box-shadow: ${designTokens.shadow0};
       }
     `,
   ];

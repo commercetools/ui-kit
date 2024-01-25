@@ -34,12 +34,10 @@ const Card = (props: TCardProps) => (
       box-sizing: border-box;
       width: 100%;
       font-size: 1rem;
-      box-shadow: ${props.type === 'raised'
-        ? designTokens.shadowForCardWhenRaised
-        : 'none'};
+      box-shadow: ${props.type === 'raised' ? designTokens.shadow17 : 'none'};
       border-radius: ${designTokens.borderRadiusForCard};
       border: ${props.type === 'raised'
-        ? designTokens.borderForCardWhenRaised
+        ? '1px solid var(--color-neutral-90)'
         : 'none'};
       background: ${props.theme === 'dark'
         ? designTokens.colorNeutral95

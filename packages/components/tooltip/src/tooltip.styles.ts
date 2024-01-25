@@ -56,9 +56,9 @@ const getOffsetMargin = ({ placement }: { placement: string }) => {
 export const Body = styled.div`
   font-family: inherit;
   border-radius: ${designTokens.borderRadius6};
-  padding: ${designTokens.paddingForTooltip};
+  padding: ${designTokens.spacing20} ${designTokens.spacing25};
   border: none;
-  box-shadow: ${designTokens.shadowForTooltip};
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
   font-size: ${designTokens.fontSize10};
   opacity: 0.95;
   color: ${designTokens.colorSurface};

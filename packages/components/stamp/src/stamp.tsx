@@ -110,10 +110,10 @@ export const availableTones: TTone[] = [
 const getPaddingStyle = (props: StylesFunctionParams) => {
   if (props.isCondensed)
     return css`
-      padding: ${designTokens.paddingForStampAsCondensed};
+      padding: ${designTokens.spacing05} ${designTokens.spacing10};
     `;
   return css`
-    padding: ${designTokens.paddingForStamp};
+    padding: ${designTokens.spacing10} ${designTokens.spacing25};
   `;
 };
 

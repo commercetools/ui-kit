@@ -130,7 +130,7 @@ const Span = styled.span<TStyledSpanProps>`
     height: ${getThumbSize};
     width: ${getThumbSize};
     background-color: ${designTokens.colorSurface};
-    box-shadow: ${designTokens.shadowForToggleInputThumb};
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
     transition: transform 0.2s ease, background 0.2s ease;
   }
@@ -160,7 +160,7 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
       background: ${
         designTokens.backgroundColorForToggleInputThumbWhenDisabled
       };
-      box-shadow: ${designTokens.shadowForToggleInputThumb};
+      box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
     }
   }
 

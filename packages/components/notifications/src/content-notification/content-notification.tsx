@@ -88,13 +88,13 @@ const getIconByType = (props: TContentNotificationProps) => {
 const getIconColor = (props: TContentNotificationProps) => {
   switch (props.type) {
     case 'error':
-      return designTokens.fontColorForContentNotificationIconWhenError;
+      return designTokens.colorError;
     case 'info':
-      return designTokens.fontColorForContentNotificationIconWhenInfo;
+      return designTokens.colorInfo;
     case 'warning':
-      return designTokens.fontColorForContentNotificationIconWhenWarning;
+      return designTokens.colorWarning;
     case 'success':
-      return designTokens.fontColorForContentNotificationIconWhenSuccess;
+      return designTokens.colorPrimary;
     default:
       return '';
   }
@@ -181,15 +181,15 @@ const ContentNotification = (props: TContentNotificationProps) => {
         text-align: left;
         word-break: break-word;
         hyphens: auto;
-        font-size: ${designTokens.fontSizeForContentNotification};
-        color: ${designTokens.fontColorForContentNotification};
+        font-size: ${designTokens.fontSize30};
+        color: ${designTokens.colorSolid};
         font-family: inherit;
         background-color: ${getContainerBackgroundColor(props)};
         border-radius: ${designTokens.borderRadiusForContentNotification};
         border-width: 1px;
         border-style: solid;
         border-color: ${getContentBorderColor(props)};
-        padding: ${designTokens.paddingForContentNotification};
+        padding: ${designTokens.spacing20} ${designTokens.spacing30};
       `}
     >
       <NotificationTypeIcon type={props.type} />
@@ -198,7 +198,7 @@ const ContentNotification = (props: TContentNotificationProps) => {
           flex-grow: 1;
           display: flex;
           align-items: center;
-          padding: ${designTokens.paddingForContentNotificationMessage};
+          padding: 0 ${designTokens.spacing30}) 0 ${designTokens.spacing20};
         `}
       >
         {props.intlMessage ? (

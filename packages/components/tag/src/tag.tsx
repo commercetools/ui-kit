@@ -127,25 +127,25 @@ const Tag = (props: TTagProps) => {
                 border-color: ${props.type === 'warning'
                   ? designTokens.colorWarning
                   : designTokens.borderColorForTag};
-                padding: ${designTokens.paddingForTagRemoveIcon};
+                padding: 0 ${designTokens.spacing25};
                 border-radius: 0 ${designTokens.borderRadiusForTag}
                   ${designTokens.borderRadiusForTag} 0;
                 display: flex;
                 align-items: center;
                 background: inherit;
                 border-style: solid;
-                border-width: ${designTokens.borderWidthForTag};
+                border-width: 1px 1px 1px 0;
                 :not(:disabled)&:hover,
                 :not(:disabled)&:focus {
                   border-color: ${props.type === 'warning'
                     ? designTokens.colorWarning
                     : designTokens.borderColorForTagWhenHovered};
 
-                  fill: ${designTokens.fontColorForTagRemoveIconWhenHovered};
+                  fill: ${designTokens.colorError};
                 }
-                fill: ${designTokens.fontColorForTagRemoveIcon};
+                fill: ${designTokens.colorNeutral40};
                 &:disabled {
-                  fill: ${designTokens.fontColorForTagWhenDisabled};
+                  fill: ${designTokens.colorNeutral60};
                 }
               `,
             ]}

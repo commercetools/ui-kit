@@ -52,17 +52,15 @@ const getLanguageLabelStyles = (props: TTranslationInputStylesProps) => {
   return css`
     /* avoid wrapping label onto new lines */
     flex: 1 0 auto;
-    color: ${designTokens.fontColorForLocalizedInputLabel};
+    color: ${designTokens.colorNeutral60};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-    line-height: calc(
-      ${designTokens.heightForInput} - 2 * ${designTokens.borderRadius1}
-    );
+    line-height: calc(40px - 2 * ${designTokens.borderRadius1});
     background-color: ${getLanguageLabelBackgroundColor(props)};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
     border: 1px ${getLanguageLabelBorderColor(props)} solid;
-    padding: ${designTokens.paddingForLocalizedInputLabel};
-    font-size: ${designTokens.fontSizeForLocalizedInputLabel};
+    padding: 0 ${designTokens.spacing25};
+    font-size: ${designTokens.fontSize30};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};

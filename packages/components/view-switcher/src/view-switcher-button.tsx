@@ -6,7 +6,6 @@ import {
 } from 'react';
 import { css } from '@emotion/react';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { designTokens } from '@commercetools-uikit/design-system';
 import { warning } from '@commercetools-uikit/utils';
 import { getButtonStyles } from './view-switcher.styles';
 
@@ -52,9 +51,7 @@ const ViewSwitcherButton = (props: TViewSwitcherButtonProps) => {
       {props.icon && (
         <span
           css={css`
-            margin: ${props.children
-              ? designTokens.marginForViewSwitcherIcon
-              : '0'};
+            margin: ${props.children ? '0 var(--spacing-20) 0 0' : '0'};
             display: flex;
             align-items: center;
             justify-content: center;

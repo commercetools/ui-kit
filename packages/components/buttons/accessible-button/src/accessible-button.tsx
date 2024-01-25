@@ -160,8 +160,8 @@ const AccessibleButton = forwardRef<HTMLButtonElement, TAccessibleButtonProps>(
         css={css`
           ${normalizedButtonStyles}
           display: inline-flex;
-          font-size: ${designTokens.fontSizeForButton};
-          font-weight: ${designTokens.fontWeightForButton};
+          font-size: ${designTokens.fontSize20};
+          font-weight: ${designTokens.fontWeight500};
           cursor: ${props.isDisabled ? 'not-allowed' : 'pointer'};
           &:disabled {
             cursor: not-allowed;

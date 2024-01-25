@@ -29,16 +29,16 @@ const getBorderColor = (
 
 const getInputBoxShadow = (
   props: TRichTextBodyStylesProps,
-  defaultBoxShadow: string = designTokens.shadowForInput
+  defaultBoxShadow: string = designTokens.shadow0
 ) => {
   if (props.hasError) {
     return css`
-      box-shadow: ${designTokens.shadowForInputWhenError};
+      box-shadow: inset 0 0 0 1px var(--color-error);
     `;
   }
   if (props.hasWarning) {
     return css`
-      box-shadow: ${designTokens.shadowForInputWhenWarning};
+      box-shadow: inset 0 0 0 1px var(--color-warning);
     `;
   }
   return css`
@@ -96,8 +96,8 @@ export const Toolbar = styled.div`
   font-family: ${designTokens.fontFamilyDefault};
   border-radius: ${designTokens.borderRadiusForInput};
   border-bottom: 0;
-  padding: ${designTokens.paddingForRichTextToolbar};
-  padding-left: ${designTokens.paddingLeftForRichTextToolbar};
+  padding: none;
+  padding-left: none;
   align-items: flex-start;
   align-content: stretch;
 
@@ -146,7 +146,7 @@ const reset = (props: TRichTextBodyStylesProps) => [
 ];
 
 export const EditorContainer = styled.div<TRichTextBodyStylesProps>`
-  padding: ${designTokens.paddingForRichTextEditorContainer};
+  padding: ${designTokens.spacing20} 0 0;
   border-radius: ${designTokens.borderRadiusForInput};
   font-family: ${designTokens.fontFamilyDefault};
   border-color: ${(props) => getBorderColor(props)};
@@ -159,7 +159,7 @@ export const Container = styled.div<TRichTextBodyStylesProps>`
   border-radius: ${designTokens.borderRadiusForInput};
   border: 1px solid ${designTokens.borderColorForInput};
   transition: ${designTokens.transitionStandard};
-  padding: ${designTokens.paddingForRichTextInput};
+  padding: ${designTokens.spacing20} ${designTokens.spacing30};
   background-color: ${(props) => getContainerBackgroundColor(props)};
   ${(props) => getInputBoxShadow(props)}
   border-color: ${(props) => getBorderColor(props)};
@@ -187,7 +187,7 @@ export const Container = styled.div<TRichTextBodyStylesProps>`
 
   &:focus-within {
     border-color: ${designTokens.borderColorForInputWhenFocused};
-    box-shadow: ${designTokens.shadowForInputWhenFocused};
+    box-shadow: inset 0 0 0 1px var(--color-primary);
     ${Toolbar} {
       border-color: ${designTokens.borderColorForInputWhenFocused};
     }

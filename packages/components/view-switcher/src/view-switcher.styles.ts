@@ -7,21 +7,21 @@ const getSizeStyles = (
 ) => {
   if (isCondensed) {
     return css`
-      padding: ${designTokens.paddingForViewSwitcherWhenCondensed};
-      height: ${designTokens.heightForViewSwitcherWhenCondensed};
+      padding: 0 ${designTokens.spacing25};
+      height: 32px;
     `;
   }
 
   return css`
-    padding: ${designTokens.paddingForViewSwitcher};
-    height: ${designTokens.heightForViewSwitcher};
+    padding: 0 ${designTokens.spacing30};
+    height: 40px;
   `;
 };
 
 const getFontColor = (isDisabled?: boolean, isActive?: boolean) => {
-  if (isDisabled) return designTokens.fontColorForViewSwitcherWhenDisabled;
-  if (isActive) return designTokens.fontColorForViewSwitcherWhenSelected;
-  return designTokens.fontColorForViewSwitcher;
+  if (isDisabled) return designTokens.colorNeutral60;
+  if (isActive) return designTokens.colorSolid;
+  return designTokens.colorNeutral40;
 };
 
 export const getButtonStyles = (
@@ -48,10 +48,10 @@ export const getButtonStyles = (
       fill: ${fontColor};
       transition: background-color ${designTokens.transitionLinear80Ms};
       font-size: ${designTokens.fontSizeDefault};
-      border: ${designTokens.borderForViewSwitcher};
-      border-left: ${isFirstButton ? designTokens.borderForViewSwitcher : '0'};
+      border: 1px solid var(--color-neutral);
+      border-left: ${isFirstButton ? '1px solid var(--color-neutral)' : '0'};
       border-radius: ${borderRadius};
-      box-shadow: ${designTokens.boxShadowForViewSwitcher};
+      box-shadow: ${designTokens.shadow0};
       background-color: ${designTokens.backgroundColorForViewSwitcher};
       &:hover {
         background-color: ${designTokens.backgroundColorForViewSwitcherWhenHovered};
@@ -64,7 +64,7 @@ export const getButtonStyles = (
     isDisabled &&
       css`
         background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
-        color: ${designTokens.fontColorForViewSwitcherWhenDisabled};
+        color: ${designTokens.colorNeutral60};
         &:hover {
           background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
         }
@@ -72,7 +72,7 @@ export const getButtonStyles = (
     isActive &&
       css`
         background-color: ${designTokens.backgroundColorForViewSwitcherWhenSelected};
-        box-shadow: ${designTokens.boxShadowForViewSwitcherWhenSelected};
+        box-shadow: ${designTokens.shadow0};
       `,
   ];
 };

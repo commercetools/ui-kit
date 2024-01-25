@@ -41,7 +41,7 @@ const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   border-top-left-radius: ${designTokens.borderRadiusForInput};
   border-bottom-left-radius: ${designTokens.borderRadiusForInput};
   border: ${(props) => getEditorLanguageLabelBorderColor(props)};
-  padding: ${designTokens.paddingForLocalizedRichTextInputLabel};
+  padding: ${designTokens.spacing20} ${designTokens.spacing25};
   transition: border-color ${designTokens.transitionStandard},
     background-color ${designTokens.transitionStandard},
     color ${designTokens.transitionStandard};

@@ -31,8 +31,7 @@ const HeaderIcon = (props: THeaderIcon) => {
         props.isDisabled &&
           css`
             box-shadow: none;
-            border: 1px solid
-              ${designTokens.borderForCollapsiblePanelHeaderIconWhenDisabled};
+            border: none;
             background-color: ${designTokens.backgroundColorForCollapsiblePanelHeaderIconWhenDisabled};
           `,
       ]}

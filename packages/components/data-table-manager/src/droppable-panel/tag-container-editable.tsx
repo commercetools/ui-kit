@@ -5,7 +5,7 @@ const TagContainerEditable = styled.div`
   background-color: ${designTokens.backgroundColorForInput};
   border: 1px solid ${designTokens.borderColorForTableManagerDroppableList};
   border-radius: ${designTokens.borderRadiusForTableManagerDroppableList};
-  padding: ${designTokens.paddingForTableManagerDroppableList};
+  padding: ${designTokens.spacing30};
   height: ${designTokens.constraint7};
   overflow: auto;
 `;

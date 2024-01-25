@@ -8,7 +8,6 @@ import {
 } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { useSlate } from 'slate-react';
-import { designTokens } from '@commercetools-uikit/design-system';
 import { useIntl } from 'react-intl';
 import { css, type SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -344,7 +343,7 @@ const RichTextEditorBody = forwardRef<
           />
           <Divider
             css={css`
-              margin: ${designTokens.marginForRichTextDivider};
+              margin: var(--spacing-10) var(--spacing-05);
             `}
           />
           <Tooltip
@@ -420,7 +419,7 @@ const RichTextEditorBody = forwardRef<
             <>
               <Divider
                 css={css`
-                  margin: ${designTokens.marginForRichTextDivider};
+                  margin: var(--spacing-10) var(--spacing-05);
                 `}
               />
               <Tooltip

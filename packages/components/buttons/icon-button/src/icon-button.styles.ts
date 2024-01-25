@@ -60,18 +60,18 @@ const getSizeStyles = (size: TIconButtonProps['size']) => {
   switch (size) {
     case 'small':
       return css`
-        height: ${designTokens.heightForButtonAsIconAsSmall};
-        width: ${designTokens.heightForButtonAsIconAsSmall};
+        height: 16px;
+        width: 16px;
       `;
     case 'medium':
       return css`
-        height: ${designTokens.heightForButtonAsIconAsMedium};
-        width: ${designTokens.heightForButtonAsIconAsMedium};
+        height: 32px;
+        width: 32px;
       `;
     case 'big':
       return css`
-        height: ${designTokens.heightForButtonAsIconAsBig};
-        width: ${designTokens.heightForButtonAsIconAsBig};
+        height: 40px;
+        width: 40px;
       `;
     default:
       return css``;
@@ -99,12 +99,12 @@ const getBaseStyles = (
     return css`
       &:hover {
         background-color: ${designTokens.backgroundColorForButtonWhenHovered};
-        box-shadow: ${designTokens.shadowForButtonWhenHovered};
+        box-shadow: ${designTokens.shadow0};
       }
       ${isActive ? '&,' : ''}
       &:active {
         background-color: ${designTokens.backgroundColorForButtonWhenActive};
-        box-shadow: ${designTokens.shadowForButtonWhenActive};
+        box-shadow: ${designTokens.shadow0};
         border-color: ${designTokens.borderColorForButtonAsIcon};
       }
     `;
@@ -115,12 +115,12 @@ const getBaseStyles = (
       return css`
         &:hover {
           background-color: ${designTokens.backgroundColorForButtonAsIconAsPrimaryWhenHovered};
-          box-shadow: ${designTokens.shadowForButtonWhenHovered};
+          box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
           background-color: ${designTokens.backgroundColorForButtonAsIconAsPrimaryWhenActive};
-          box-shadow: ${designTokens.shadowForButtonWhenActive};
+          box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:hover,
@@ -132,12 +132,12 @@ const getBaseStyles = (
       return css`
         &:hover {
           background-color: ${designTokens.backgroundColorForButtonAsIconAsInfoWhenHovered};
-          box-shadow: ${designTokens.shadowForButtonWhenHovered};
+          box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
           background-color: ${designTokens.backgroundColorForButtonAsIconAsInfoWhenActive};
-          box-shadow: ${designTokens.shadowForButtonWhenActive};
+          box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:hover,
