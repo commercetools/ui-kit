@@ -1,7 +1,12 @@
+import type { LocationDescriptor } from 'history';
 import { ReactNode } from 'react';
+import { Link as ReactRouterLink } from 'react-router-dom';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import {
+  filterDataAttributes,
+  filterInvalidAttributes,
+} from '@commercetools-uikit/utils';
 import Inset from '@commercetools-uikit/spacings-inset';
 
 export type TCardProps = {
@@ -25,47 +30,84 @@ export type TCardProps = {
    */
   className?: string;
   children?: ReactNode;
+  to?: string | LocationDescriptor;
+  isExternal?: boolean;
+  isDisabled: boolean;
+};
+
+const ClickableCardWrapper = (props: TCardProps) => {
+  const remainingProps = filterInvalidAttributes(props);
+  if (props.isDisabled) {
+    return <>{props.children}</>;
+  }
+  if (props.isExternal) {
+    if (typeof props.to !== 'string') {
+      throw new Error('`to` must be a `string` when `isExternal` is provided.');
+    }
+
+    return (
+      <a
+        href={props.to}
+        target="_blank"
+        rel="noopener noreferrer"
+        {...remainingProps}
+      >
+        {props.children}
+      </a>
+    );
+  }
+  return (
+    <ReactRouterLink to={props.to!} {...remainingProps}>
+      {props.children}
+    </ReactRouterLink>
+  );
 };
 
 const Card = (props: TCardProps) => (
-  <div
-    {...filterDataAttributes(props)}
-    css={css`
-      box-sizing: border-box;
-      width: 100%;
-      font-size: 1rem;
-      box-shadow: ${props.type === 'raised'
-        ? designTokens.shadowForCardWhenRaised
-        : 'none'};
-      border-radius: ${designTokens.borderRadiusForCard};
-      border: ${props.type === 'raised'
-        ? designTokens.borderForCardWhenRaised
-        : 'none'};
-      background: ${props.theme === 'dark'
-        ? designTokens.colorNeutral95
-        : designTokens.colorSurface};
-    `}
-    // Allow to override the styles by passing a `className` prop.
-    // Custom styles can also be passed using the `css` prop from emotion.
-    // https://emotion.sh/docs/css-prop#style-precedence
-    className={props.className}
-  >
-    {props.insetScale === 'none' ? (
-      // Use a `<div>` to ensure that there is always a wrapper container.
-      // This is mostly useful in case custom styles are targeting this element.
-      <div>{props.children}</div>
-    ) : (
-      <Inset scale={props.insetScale} height="expanded">
-        {props.children}
-      </Inset>
-    )}
-  </div>
+  <ClickableCardWrapper {...props}>
+    <div
+      {...filterDataAttributes(props)}
+      css={css`
+        box-sizing: border-box;
+        width: 100%;
+        font-size: 1rem;
+        box-shadow: ${props.type === 'raised'
+          ? designTokens.shadowForCardWhenRaised
+          : 'none'};
+        border-radius: ${designTokens.borderRadiusForCard};
+        border: ${props.type === 'raised'
+          ? designTokens.borderForCardWhenRaised
+          : 'none'};
+        background: ${props.theme === 'dark'
+          ? designTokens.colorNeutral95
+          : designTokens.colorSurface};
+      `}
+      // Allow to override the styles by passing a `className` prop.
+      // Custom styles can also be passed using the `css` prop from emotion.
+      // https://emotion.sh/docs/css-prop#style-precedence
+      className={props.className}
+    >
+      {props.insetScale === 'none' ? (
+        // Use a `<div>` to ensure that there is always a wrapper container.
+        // This is mostly useful in case custom styles are targeting this element.
+        <div>{props.children}</div>
+      ) : (
+        <Inset scale={props.insetScale} height="expanded">
+          {props.children}
+        </Inset>
+      )}
+    </div>
+  </ClickableCardWrapper>
 );
 
-const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'insetScale'> = {
+const defaultProps: Pick<
+  TCardProps,
+  'type' | 'theme' | 'insetScale' | 'isDisabled'
+> = {
   type: 'raised',
   theme: 'light',
   insetScale: 'm',
+  isDisabled: true,
 };
 
 Card.displayName = 'Card';

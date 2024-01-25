@@ -115,5 +115,10 @@ export const component = () => (
         </div>
       </WrappedCard>
     </Spec>
+    <Spec label="Clickable">
+      <WrappedCard isDisabled={false} isExternal={true} to="/saif/soif">
+        <Text.Body>{text}</Text.Body>
+      </WrappedCard>
+    </Spec>
   </Suite>
 );
