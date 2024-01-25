@@ -116,7 +116,7 @@ export const component = () => (
       </WrappedCard>
     </Spec>
     <Spec label="Clickable">
-      <WrappedCard isDisabled={false} isExternal={true} to="/saif/soif">
+      <WrappedCard isDisabled={true} isExternal={false} to="/saif/soif">
         <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>

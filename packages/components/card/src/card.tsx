@@ -32,35 +32,49 @@ export type TCardProps = {
   children?: ReactNode;
   to?: string | LocationDescriptor;
   isExternal?: boolean;
-  isDisabled: boolean;
+  isDisabled?: boolean;
 };
+
+const disableA = (props: TCardProps) =>
+  props.isDisabled && {
+    css: css`
+      cursor: not-allowed;
+      a {
+        display: block;
+        pointer-events: none;
+      }
+    `,
+  };
 
 const ClickableCardWrapper = (props: TCardProps) => {
   const remainingProps = filterInvalidAttributes(props);
-  if (props.isDisabled) {
-    return <>{props.children}</>;
-  }
-  if (props.isExternal) {
-    if (typeof props.to !== 'string') {
-      throw new Error('`to` must be a `string` when `isExternal` is provided.');
-    }
+  if (props.to) {
+    if (props.isExternal) {
+      if (typeof props.to !== 'string') {
+        throw new Error(
+          '`to` must be a `string` when `isExternal` is provided.'
+        );
+      }
 
+      return (
+        <a
+          href={props.to}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...disableA(props)}
+          {...remainingProps}
+        >
+          {props.children}
+        </a>
+      );
+    }
     return (
-      <a
-        href={props.to}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...remainingProps}
-      >
+      <ReactRouterLink to={props.to} {...disableA(props)} {...remainingProps}>
         {props.children}
-      </a>
+      </ReactRouterLink>
     );
   }
-  return (
-    <ReactRouterLink to={props.to!} {...remainingProps}>
-      {props.children}
-    </ReactRouterLink>
-  );
+  return <>{props.children}</>;
 };
 
 const Card = (props: TCardProps) => (
@@ -107,7 +121,7 @@ const defaultProps: Pick<
   type: 'raised',
   theme: 'light',
   insetScale: 'm',
-  isDisabled: true,
+  isDisabled: false,
 };
 
 Card.displayName = 'Card';
