@@ -86,8 +86,8 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
-        warnings={{ defaultWarning: true }}
-        renderDefaultWarning={() => 'Default warning'}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
       >
         <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
         <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>
@@ -99,9 +99,9 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
-        warnings={{ defaultWarning: true }}
+        warnings={{ customWarning: true }}
         touched={true}
-        renderDefaultWarning={() => 'Default warning'}
+        renderWarning={() => 'Custom warning'}
       >
         <RadioInput.Option value="apple">{'Apple'}</RadioInput.Option>
         <RadioInput.Option value="orange">{'Banana'}</RadioInput.Option>

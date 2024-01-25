@@ -129,21 +129,12 @@ storiesOf('Components|Fields/SelectFields', module)
                   }
                 }}
                 warnings={object('warnings', {
-                  defaultWarning: true,
                   customWarning: true,
                 })}
                 renderWarning={(key) => {
                   switch (key) {
                     case 'customWarning':
                       return 'A custom warning.';
-                    default:
-                      return null;
-                  }
-                }}
-                renderDefaultWarning={(key) => {
-                  switch (key) {
-                    case 'defaultWarning':
-                      return 'A default warning.';
                     default:
                       return null;
                   }

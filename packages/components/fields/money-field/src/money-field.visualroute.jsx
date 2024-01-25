@@ -124,8 +124,8 @@ export const component = () => (
         value={emptyValue}
         onChange={() => {}}
         currencies={currencies}
-        warnings={{ defaultWarning: true }}
-        renderDefaultWarning={() => 'Default warning'}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
       />
     </Spec>
     <Spec label="with error when touched">
@@ -135,9 +135,9 @@ export const component = () => (
         value={emptyValue}
         onChange={() => {}}
         currencies={currencies}
-        warnings={{ defaultWarning: true }}
+        warnings={{ customWarning: true }}
         touched={{ amount: true, currencyCode: true }}
-        renderDefaultWarning={() => 'Default warning'}
+        renderWarning={() => 'Custom warning'}
       />
     </Spec>
   </Suite>

@@ -92,10 +92,6 @@ export type TDateTimeFieldProps = {
    */
   renderWarning?: (key: string, warning?: boolean) => ReactNode;
   /**
-   * Called with default warnings. This function can return a message which will be wrapped in an WarningMessage. It can also return null to show no warning.
-   */
-  renderDefaultWarning?: (key: string, warning?: boolean) => ReactNode;
-  /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
   isRequired?: boolean;
@@ -277,7 +273,6 @@ class DateTimeField extends Component<
             warnings={this.props.warnings}
             isVisible={hasWarning}
             renderWarning={this.props.renderWarning}
-            renderDefaultWarning={this.props.renderDefaultWarning}
           />
         </Spacings.Stack>
       </Constraints.Horizontal>

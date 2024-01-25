@@ -86,19 +86,19 @@ export const component = () => (
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
-        warnings={{ defaultWarning: true }}
-        renderDefaultWarning={() => 'Default warning'}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
       />
     </Spec>
-    <Spec label="with error when touched">
+    <Spec label="with warning when touched">
       <NumberField
         title="Age"
         value={value}
         onChange={() => {}}
         horizontalConstraint={7}
-        warnings={{ defaultWarning: true }}
+        warnings={{ customWarning: true }}
         touched={true}
-        renderDefaultWarning={() => 'Default warning'}
+        renderWarning={() => 'Custom warning'}
       />
     </Spec>
   </Suite>

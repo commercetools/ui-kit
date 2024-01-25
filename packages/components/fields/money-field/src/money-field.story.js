@@ -73,7 +73,6 @@ class MoneyFieldStory extends Component {
               7
             )}
             warnings={object('warnings', {
-              defaultWarning: true,
               customWarning: true,
             })}
             errors={object('errors', { missing: true, customError: true })}
@@ -89,14 +88,6 @@ class MoneyFieldStory extends Component {
               switch (key) {
                 case 'customWarning':
                   return 'A custom warning.';
-                default:
-                  return null;
-              }
-            }}
-            renderDefaultWarning={(key) => {
-              switch (key) {
-                case 'defaultWarning':
-                  return 'A default warning.';
                 default:
                   return null;
               }

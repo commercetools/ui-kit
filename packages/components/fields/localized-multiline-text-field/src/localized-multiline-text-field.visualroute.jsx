@@ -134,8 +134,8 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        warnings={{ defaultWarning: true }}
-        renderDefaultWarning={() => 'Default warning'}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
       />
     </Spec>
     <Spec label="with error when touched">
@@ -145,9 +145,9 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        warnings={{ defaultWarning: true }}
+        warnings={{ customWarning: true }}
         touched={true}
-        renderDefaultWarning={() => 'Default warning'}
+        renderWarning={() => 'Custom warning'}
       />
     </Spec>
   </Suite>

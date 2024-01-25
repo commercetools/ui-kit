@@ -56,7 +56,6 @@ storiesOf('Components|Fields', module)
               warnings={object(
                 'warnings',
                 {
-                  defaultWarning: true,
                   customWarning: true,
                 },
                 radioField
@@ -73,14 +72,6 @@ storiesOf('Components|Fields', module)
                 switch (key) {
                   case 'customWarning':
                     return 'A custom warning.';
-                  default:
-                    return null;
-                }
-              }}
-              renderDefaultWarning={(key) => {
-                switch (key) {
-                  case 'defaultWarning':
-                    return 'A default warning.';
                   default:
                     return null;
                 }

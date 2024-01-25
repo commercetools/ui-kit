@@ -66,7 +66,6 @@ export default Example;
 | `warnings`              | `Record`                                                                                              |          |           | A map of warnings. Warning messages for known warnings are rendered automatically.&#xA;<br/>&#xA;Unknown warnings will be forwarded to renderWarning.                                                                                                                 |
 | `renderError`           | `Function`<br/>[See signature.](#signature-renderError)                                               |          |           | Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.                                                                                                                     |
 | `renderWarning`         | `Function`<br/>[See signature.](#signature-renderWarning)                                             |          |           | Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.&#xA;<br />&#xA;It can also return null to show no warning.                                                                 |
-| `renderDefaultWarning`  | `Function`<br/>[See signature.](#signature-renderDefaultWarning)                                      |          |           | Called with default warnings. This function can return a message which will be wrapped in an WarningMessage. It can also return null to show no warning.                                                                                                              |
 | `isRequired`            | `boolean`                                                                                             |          |           | Indicates if the value is required. Shows an the "required asterisk" if so.                                                                                                                                                                                           |
 | `touched`               | `Object`<br/>[See signature.](#signature-touched)                                                     |          |           | Indicates whether the `currencyCode` or `amount` fields were touched.&#xA;<br />&#xA;Errors will only be shown when the field was touched.                                                                                                                            |
 | `isTouched`             | `unknown`                                                                                             |          |           |                                                                                                                                                                                                                                                                       |
@@ -100,12 +99,6 @@ export default Example;
 ```
 
 ### Signature `renderWarning`
-
-```ts
-(key: string, warning?: boolean) => ReactNode;
-```
-
-### Signature `renderDefaultWarning`
 
 ```ts
 (key: string, warning?: boolean) => ReactNode;

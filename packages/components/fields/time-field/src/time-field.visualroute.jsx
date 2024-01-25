@@ -76,8 +76,8 @@ export const component = () => (
         horizontalConstraint={7}
         value=""
         onChange={() => {}}
-        warnings={{ defaultWarning: true }}
-        renderDefaultWarning={() => 'Default warning'}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
       />
     </Spec>
     <Spec label="with warning when touched">
@@ -86,9 +86,9 @@ export const component = () => (
         horizontalConstraint={7}
         value=""
         onChange={() => {}}
-        warnings={{ defaultWarning: true }}
+        warnings={{ customWarning: true }}
         touched={true}
-        renderDefaultWarning={() => 'Default warning'}
+        renderWarning={() => 'Custom warning'}
       />
     </Spec>
   </Suite>

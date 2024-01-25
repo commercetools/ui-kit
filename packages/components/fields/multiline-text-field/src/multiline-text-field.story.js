@@ -53,7 +53,6 @@ storiesOf('Components|Fields', module)
                 7
               )}
               warnings={object('warnings', {
-                defaultWarning: true,
                 customWarning: true,
               })}
               errors={object('errors', { missing: true, customError: true })}
@@ -69,14 +68,6 @@ storiesOf('Components|Fields', module)
                 switch (key) {
                   case 'customWarning':
                     return 'A custom warning.';
-                  default:
-                    return null;
-                }
-              }}
-              renderDefaultWarning={(key) => {
-                switch (key) {
-                  case 'defaultWarning':
-                    return 'A default warning.';
                   default:
                     return null;
                 }
