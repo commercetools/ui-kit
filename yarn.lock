@@ -2071,6 +2071,7 @@ __metadata:
     "@commercetools-uikit/notifications": 17.0.1
     "@commercetools-uikit/pagination": 17.0.1
     "@commercetools-uikit/primary-action-dropdown": 17.0.1
+    "@commercetools-uikit/progress-bar": 17.0.0
     "@commercetools-uikit/selectable-search-input": 17.0.1
     "@commercetools-uikit/spacings": 17.0.1
     "@commercetools-uikit/stamp": 17.0.1
@@ -3664,6 +3665,29 @@ __metadata:
     "@commercetools-uikit/utils": 17.0.1
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
+    lodash: 4.17.21
+    prop-types: 15.8.1
+    react: 17.0.2
+    react-intl: ^6.3.2
+  peerDependencies:
+    react: 17.x
+  languageName: unknown
+  linkType: soft
+
+"@commercetools-uikit/progress-bar@17.0.0, @commercetools-uikit/progress-bar@workspace:packages/components/progress-bar":
+  version: 0.0.0-use.local
+  resolution: "@commercetools-uikit/progress-bar@workspace:packages/components/progress-bar"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/constraints": 17.0.0
+    "@commercetools-uikit/design-system": 17.0.0
+    "@commercetools-uikit/label": 17.0.0
+    "@commercetools-uikit/spacings-inline": 17.0.0
+    "@commercetools-uikit/spacings-stack": 17.0.0
+    "@commercetools-uikit/text": 17.0.0
+    "@commercetools-uikit/utils": 17.0.0
+    "@emotion/react": ^11.10.5
     lodash: 4.17.21
     prop-types: 15.8.1
     react: 17.0.2
