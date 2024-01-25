@@ -3682,7 +3682,6 @@ __metadata:
     "@babel/runtime-corejs3": ^7.20.13
     "@commercetools-uikit/constraints": 17.0.0
     "@commercetools-uikit/design-system": 17.0.0
-    "@commercetools-uikit/label": 17.0.0
     "@commercetools-uikit/spacings-inline": 17.0.0
     "@commercetools-uikit/spacings-stack": 17.0.0
     "@commercetools-uikit/text": 17.0.0
