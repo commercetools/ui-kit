@@ -41,7 +41,6 @@ const iconSizes = {
 } as const;
 
 function getSize(size: TLeadingIconProps['size'] = '20') {
-  // 10:32px, 20:48px, 30:56px, 40:72px - NOTE: all icons have 8px padding in figma file
   switch (size) {
     case '10':
       return {
