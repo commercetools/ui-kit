@@ -1,0 +1,4 @@
+{
+  "main": "dist/commercetools-uikit-icons-leading-icon.cjs.js",
+  "module": "dist/commercetools-uikit-icons-leading-icon.esm.js"
+}
