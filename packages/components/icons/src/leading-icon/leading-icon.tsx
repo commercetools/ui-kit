@@ -146,11 +146,14 @@ const defaultProps: Pick<TLeadingIconProps, 'color' | 'size' | 'isInverted'> = {
 };
 
 const LeadingIcon = (props: TLeadingIconProps) => {
-  console.log(props.svg);
-  warning(
-    !props.icon || !props.svg,
-    'LeadingIcon: you must pass either an icon or svg prop to the LeadingIcon component'
-  );
+  if (!props.svg && !props.icon) {
+    warning(
+      !props.icon && !props.svg,
+      'LeadingIcon: you must pass either an icon or svg prop to the LeadingIcon component'
+    );
+    return null;
+  }
+
   const dimensions = getSize(props.size);
   const theme = getColor({ color: props.color, isInverted: props.isInverted });
   return (
