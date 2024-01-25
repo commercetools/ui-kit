@@ -50,6 +50,7 @@
     "@commercetools-uikit/notifications": "17.0.1",
     "@commercetools-uikit/pagination": "17.0.1",
     "@commercetools-uikit/primary-action-dropdown": "17.0.1",
+    "@commercetools-uikit/progress-bar": "17.0.0",
     "@commercetools-uikit/selectable-search-input": "17.0.1",
     "@commercetools-uikit/spacings": "17.0.1",
     "@commercetools-uikit/stamp": "17.0.1",
