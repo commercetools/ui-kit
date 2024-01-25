@@ -18,9 +18,13 @@
   "main": "dist/commercetools-uikit-icons.cjs.js",
   "module": "dist/commercetools-uikit-icons.esm.js",
   "preconstruct": {
-    "entrypoints": ["./index.ts", "./inline-svg/index.ts"]
+    "entrypoints": [
+      "./index.ts",
+      "./inline-svg/index.ts",
+      "./leading-icon/index.ts"
+    ]
   },
-  "files": ["dist", "inline-svg"],
+  "files": ["dist", "inline-svg", "leading-icon"],
   "scripts": {
     "generate-icons": "svgr -d src/generated -- src/svg"
   },
