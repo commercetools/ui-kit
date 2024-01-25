@@ -41,29 +41,10 @@ const iconSizes = {
 } as const;
 
 function getSize(size: TLeadingIconProps['size'] = '20') {
-  switch (size) {
-    case '10':
-      return {
-        height: iconSizes[size],
-        width: iconSizes[size],
-      };
-    case '20':
-    default:
-      return {
-        height: iconSizes[size],
-        width: iconSizes[size],
-      };
-    case '30':
-      return {
-        height: iconSizes[size],
-        width: iconSizes[size],
-      };
-    case '40':
-      return {
-        height: iconSizes[size],
-        width: iconSizes[size],
-      };
-  }
+  return {
+    height: iconSizes[size],
+    width: iconSizes[size],
+  };
 }
 
 function getColor({
