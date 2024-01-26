@@ -82,7 +82,7 @@ export const component = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
-    <Spec label="with error when touched">
+    <Spec label="with warning when touched">
       <MultilineTextField
         title="Welcome Text"
         value={value}
