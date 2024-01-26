@@ -51,6 +51,7 @@ const Card = (props: TCardProps) => {
     ...filterDataAttributes(props),
     onClick: isClickable ? props.onClick : undefined,
     role: isClickable ? 'button' : undefined,
+    ['aria-disabled']: props.isDisabled ? true : undefined,
     css: css`
       box-sizing: border-box;
       width: 100%;
