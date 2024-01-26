@@ -198,7 +198,7 @@ const ContentNotification = (props: TContentNotificationProps) => {
           flex-grow: 1;
           display: flex;
           align-items: center;
-          padding: 0 ${designTokens.spacing30}) 0 ${designTokens.spacing20};
+          padding: 0 ${designTokens.spacing30} 0 ${designTokens.spacing20};
         `}
       >
         {props.intlMessage ? (

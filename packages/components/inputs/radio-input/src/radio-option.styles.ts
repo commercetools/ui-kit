@@ -105,7 +105,7 @@ const RadioOptionBorder = styled.div<TStylesProps>`
   height: 18px;
   border-radius: 50%;
   background-color: ${designTokens.backgroundColorForInput};
-  border-width: border-width-2;
+  border-width: ${designTokens.borderWidth2};
   border-style: solid;
   border-color: ${(props) => getBorderColor(props)};
   display: flex;
