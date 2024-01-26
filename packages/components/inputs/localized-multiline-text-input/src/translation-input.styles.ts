@@ -54,7 +54,9 @@ const getLanguageLabelStyles = (props: TTranslationInputStylesProps) => {
     flex: 1 0 auto;
     color: ${designTokens.colorNeutral60};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-    line-height: calc(40px - 2 * ${designTokens.borderRadius1});
+    line-height: calc(
+      ${designTokens.heightForInput} - 2 * ${designTokens.borderRadius1}
+    );
     background-color: ${getLanguageLabelBackgroundColor(props)};
     border-top-left-radius: ${designTokens.borderRadiusForInput};
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};

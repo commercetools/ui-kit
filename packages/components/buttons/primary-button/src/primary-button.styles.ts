@@ -9,13 +9,13 @@ const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
     case 'small':
     case 'medium':
       return css`
-        height: 32px;
+        height: ${designTokens.heightForButtonAsMedium};
         border-radius: ${designTokens.borderRadiusForButtonAsMedium};
       `;
 
     case 'big':
       return css`
-        height: 40px;
+        height: ${designTokens.heightForButtonAsBig};
         border-radius: ${designTokens.borderRadiusForButtonAsBig};
       `;
 
@@ -34,7 +34,7 @@ const getButtonStyles = (
     align-items: center;
     color: ${designTokens.colorSurface};
     transition: background-color ${designTokens.transitionLinear80Ms};
-    padding: 0 var(--spacing-30);
+    padding: ${designTokens.paddingForButton};
     ${getSizeStyles(size)}
   `;
   // "disabled" takes precendece over "active"

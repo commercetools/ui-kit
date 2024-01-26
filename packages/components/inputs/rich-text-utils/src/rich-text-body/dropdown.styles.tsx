@@ -100,7 +100,7 @@ const DropdownContainer = styled.div`
 `;
 
 const DropdownItemLabelWrapper = styled.div`
-  margin: 0 0 0 var(--spacing-20);
+  margin: 0 0 0 ${designTokens.spacing20};
 `;
 
 export {

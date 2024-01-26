@@ -53,14 +53,14 @@ const getStateStyles = (
   return css`
     &:focus,
     &:hover {
-      border: 1px solid var(--color-neutral);
+      border: 1px solid ${designTokens.colorNeutral};
       box-shadow: ${designTokens.shadow0};
     }
     &:hover {
       background-color: ${designTokens.colorSolid05};
     }
     &:active {
-      border: 1px solid var(--color-neutral);
+      border: 1px solid ${designTokens.colorNeutral};
       box-shadow: ${designTokens.shadow0};
       background-color: ${designTokens.colorSolid10};
     }
@@ -108,13 +108,13 @@ const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
   switch (size) {
     case 'medium':
       return css`
-        height: 32px;
+        height: ${designTokens.heightForButtonAsMedium};
         border-radius: ${designTokens.borderRadiusForButtonAsMedium};
       `;
 
     case 'big':
       return css`
-        height: 40px;
+        height: ${designTokens.heightForButtonAsBig};
         border-radius: ${designTokens.borderRadiusForButtonAsBig};
       `;
 

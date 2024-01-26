@@ -57,18 +57,18 @@ const getSizeStyles = (size: TIconButtonProps['size']) => {
   switch (size) {
     case 'small':
       return css`
-        height: 16px;
-        width: 16px;
+        height: ${designTokens.heightForButtonAsSmall};
+        width: ${designTokens.heightForButtonAsSmall};
       `;
     case 'medium':
       return css`
-        height: 32px;
-        width: 32px;
+        height: ${designTokens.heightForButtonAsMedium};
+        width: ${designTokens.heightForButtonAsMedium};
       `;
     case 'big':
       return css`
-        height: 40px;
-        width: 40px;
+        height: ${designTokens.heightForButtonAsBig};
+        width: ${designTokens.heightForButtonAsBig};
       `;
     default:
       return css``;

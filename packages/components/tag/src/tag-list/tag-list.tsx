@@ -1,4 +1,5 @@
 import { type ReactNode, Children } from 'react';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import styled from '@emotion/styled';
 
@@ -21,7 +22,7 @@ const TagListContainer = styled.div`
 `;
 
 const TagListItem = styled.div`
-  margin: 0 var(--spacing-20) var(--spacing-20) 0;
+  margin: 0 ${designTokens.spacing20} ${designTokens.spacing20} 0;
 `;
 
 const TagList = (props: TTagListProps) => {

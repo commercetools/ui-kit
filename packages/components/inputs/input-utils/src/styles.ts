@@ -47,12 +47,12 @@ const getInputFontColor = (props: TInputProps) => {
 
 const getInputBoxShadow = (props: TInputProps) => {
   if (props.hasError) {
-    return 'inset 0 0 0 1px var(--color-error)';
+    return designTokens.shadowForInputWhenError;
   }
   if (props.hasWarning) {
-    return 'inset 0 0 0 1px var(--color-warning)';
+    return designTokens.shadowForInputWhenWarning;
   }
-  return designTokens.shadow0;
+  return designTokens.shadowForInput;
 };
 
 const getInputBackgroundColor = (props: TInputProps) => {
@@ -79,14 +79,14 @@ const getInputStyles = (props: TInputProps) => {
     flex: 1;
     font-family: inherit;
     font-size: ${designTokens.fontSize30};
-    height: 40px;
-    min-height: 40px;
+    height: ${designTokens.heightForInput};
+    min-height: ${designTokens.heightForInput};
     opacity: ${props.isDisabled || props.disabled
       ? '1'
       : 'unset'}; /* fix for mobile safari */
     outline: none;
     overflow: hidden;
-    padding: 0 ${designTokens.spacing30};
+    padding: ${designTokens.paddingForInput};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard},
@@ -105,7 +105,7 @@ const getInputStyles = (props: TInputProps) => {
       background-color: ${designTokens.backgroundColorForInputWhenHovered};
     }
     :focus:not(:read-only) {
-      box-shadow: inset 0 0 0 1px var(--color-primary);
+      box-shadow: ${designTokens.shadowForInputWhenFocused};
       border-color: ${designTokens.borderColorForInputWhenFocused};
       background-color: ${designTokens.backgroundColorForInputWhenFocused};
     }

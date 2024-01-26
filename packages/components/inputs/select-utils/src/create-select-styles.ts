@@ -180,7 +180,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       return designTokens.borderWidth1;
     })(),
     borderRadius: designTokens.borderRadiusForInput,
-    minHeight: '40px',
+    minHeight: designTokens.heightForInput,
     cursor: (() => {
       if (props.isDisabled) return 'not-allowed';
       if (props.isReadOnly) return 'default';
@@ -188,8 +188,8 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     })(),
     padding:
       props.appearance === 'quiet'
-        ? `0 ${designTokens.spacing20}`
-        : `0 ${designTokens.spacing30}`,
+        ? designTokens.paddingForInputAsQuiet
+        : designTokens.paddingForInput,
     transition: `border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard}`,
     outline: 0,
@@ -455,7 +455,7 @@ const multiValueStyles = () => (base: TBase) => {
     height: '32px',
     backgroundColor: designTokens.colorNeutral95,
     padding: '0',
-    border: '1px solid var(--color-neutral-85)',
+    border: `1px solid ${designTokens.colorNeutral85}`,
   };
 };
 

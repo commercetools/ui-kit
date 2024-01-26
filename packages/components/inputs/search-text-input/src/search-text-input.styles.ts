@@ -30,12 +30,12 @@ const getInputContainerBorderColor = (
 
 const getInputBoxShadow = (props: TInputProps) => {
   if (props.hasError) {
-    return 'inset 0 0 0 1px var(--color-error)';
+    return designTokens.shadowForInputWhenError;
   }
   if (props.hasWarning) {
-    return 'inset 0 0 0 1px var(--color-warning)';
+    return designTokens.shadowForInputWhenWarning;
   }
-  return designTokens.shadow0;
+  return designTokens.shadowForInput;
 };
 
 const getSearchTextInputStyles = (props: TInputProps) => [
@@ -124,7 +124,7 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
     border: 1px solid ${getInputContainerBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-shadow: ${getInputBoxShadow(props)};
-    height: 40px;
+    height: ${designTokens.heightForInput};
     box-sizing: border-box;
     &:hover {
       border-color: ${getInputContainerBorderColor(

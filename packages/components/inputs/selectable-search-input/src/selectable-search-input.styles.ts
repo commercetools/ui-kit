@@ -65,12 +65,12 @@ const getInputFontColor = (props: TInputProps) => {
 
 const getInputBoxShadow = (props: TInputProps) => {
   if (props.hasError) {
-    return 'inset 0 0 0 1px var(--color-error)';
+    return designTokens.shadowForInputWhenError;
   }
   if (props.hasWarning) {
-    return 'inset 0 0 0 1px var(--color-warning)';
+    return designTokens.shadowForInputWhenWarning;
   }
-  return designTokens.shadow0;
+  return designTokens.shadowForInput;
 };
 
 const getSelectableSearchInputStyles = (props: TInputProps) => [
@@ -161,7 +161,7 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
     border: 1px solid ${getInputContainerBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-shadow: ${getInputBoxShadow(props)};
-    height: 40px;
+    height: ${designTokens.heightForInput};
     box-sizing: border-box;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;

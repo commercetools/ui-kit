@@ -44,8 +44,10 @@ export const getButtonStyles = (
       fill: ${fontColor};
       transition: background-color ${designTokens.transitionLinear80Ms};
       font-size: ${designTokens.fontSizeDefault};
-      border: 1px solid var(--color-neutral);
-      border-left: ${isFirstButton ? '1px solid var(--color-neutral)' : '0'};
+      border: 1px solid ${designTokens.colorNeutral};
+      border-left: ${isFirstButton
+        ? `1px solid ${designTokens.colorNeutral}`
+        : '0'};
       border-radius: ${borderRadius};
       box-shadow: ${designTokens.shadow0};
       background-color: ${designTokens.colorSurface};

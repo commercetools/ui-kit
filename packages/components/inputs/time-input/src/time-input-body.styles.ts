@@ -142,7 +142,7 @@ const getInputContainerStyles = (props: TTimeInputProps) => {
       color: ${getInputContainerFontColor(props)};
       cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
       width: 100%;
-      height: 40px;
+      height: ${designTokens.heightForInput};
       align-items: center;
       display: flex;
       font-size: ${designTokens.fontSize30};

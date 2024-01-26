@@ -267,7 +267,7 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         align-items: column;
 
         > :first-of-type > button {
-          height: 40px;
+          height: ${designTokens.heightForButtonAsBig};
         }
       `}
     >

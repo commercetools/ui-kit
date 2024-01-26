@@ -44,7 +44,7 @@ const getLanguageLabelStyles = (props: TLocalizedInputProps) => {
     box-sizing: border-box;
     color: ${designTokens.colorNeutral60};
     cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
-    height: 40px;
+    height: ${designTokens.heightForInput};
     font-size: ${designTokens.fontSize30};
     background-color: ${getLanguageLabelBackgroundColor(props)};
     border-top-left-radius: ${designTokens.borderRadiusForInput};

@@ -29,16 +29,16 @@ const getBorderColor = (
 
 const getInputBoxShadow = (
   props: TRichTextBodyStylesProps,
-  defaultBoxShadow: string = designTokens.shadow0
+  defaultBoxShadow: string = designTokens.shadowForInput
 ) => {
   if (props.hasError) {
     return css`
-      box-shadow: inset 0 0 0 1px var(--color-error);
+      box-shadow: ${designTokens.shadowForInputWhenError};
     `;
   }
   if (props.hasWarning) {
     return css`
-      box-shadow: inset 0 0 0 1px var(--color-warning);
+      box-shadow: ${designTokens.shadowForInputWhenWarning};
     `;
   }
   return css`
@@ -187,7 +187,7 @@ export const Container = styled.div<TRichTextBodyStylesProps>`
 
   &:focus-within {
     border-color: ${designTokens.borderColorForInputWhenFocused};
-    box-shadow: inset 0 0 0 1px var(--color-primary);
+    box-shadow: ${designTokens.shadowForInputWhenFocused};
     ${Toolbar} {
       border-color: ${designTokens.borderColorForInputWhenFocused};
     }
