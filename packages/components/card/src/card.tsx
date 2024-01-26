@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Inset from '@commercetools-uikit/spacings-inset';
+import { Link } from 'react-router-dom';
 
 export type TCardProps = {
   /**
@@ -25,12 +26,31 @@ export type TCardProps = {
    */
   className?: string;
   children?: ReactNode;
+  /**
+   * The callback function to be executed when the Card component is clicked. Prefer this for managing side effects rather than navigation.
+   */
+  onClick?: () => void;
+  /**
+   * The URL that the Card should point to. If provided, the Card will be rendered as an anchor element.
+   */
+  to?: string;
+  /**
+   * A flag to indicate if the Card points to an external source.
+   */
+  isExternal?: boolean;
+  /**
+   * Indicates that a clickable Card should not allow clicks. This allows consumers to temporarily disable a clickable Card.
+   */
+  isDisabled?: boolean;
 };
 
-const Card = (props: TCardProps) => (
-  <div
-    {...filterDataAttributes(props)}
-    css={css`
+const Card = (props: TCardProps) => {
+  const isClickable = Boolean(!props.isDisabled && (props.onClick || props.to));
+
+  const commonProps = {
+    ...filterDataAttributes(props),
+    onClick: isClickable ? props.onClick : undefined,
+    css: css`
       box-sizing: border-box;
       width: 100%;
       font-size: 1rem;
@@ -44,23 +64,63 @@ const Card = (props: TCardProps) => (
       background: ${props.theme === 'dark'
         ? designTokens.colorNeutral95
         : designTokens.colorSurface};
-    `}
-    // Allow to override the styles by passing a `className` prop.
-    // Custom styles can also be passed using the `css` prop from emotion.
-    // https://emotion.sh/docs/css-prop#style-precedence
-    className={props.className}
-  >
-    {props.insetScale === 'none' ? (
-      // Use a `<div>` to ensure that there is always a wrapper container.
-      // This is mostly useful in case custom styles are targeting this element.
+      cursor: ${props.isDisabled
+        ? 'not-allowed'
+        : isClickable
+        ? 'pointer'
+        : 'default'};
+      pointer-events: ${props.isDisabled ? 'none' : 'auto'};
+      :hover {
+        background: ${props.theme === 'dark'
+          ? isClickable
+            ? designTokens.colorNeutral90
+            : undefined
+          : isClickable
+          ? designTokens.colorNeutral98
+          : undefined};
+      }
+      // Disables link text styling
+      color: inherit;
+      // Change the opacity of the content, not the card itself
+      & > div {
+        opacity: ${props.isDisabled ? 0.5 : 1};
+      }
+    `,
+    className: props.className,
+  };
+
+  const content =
+    props.insetScale === 'none' ? (
       <div>{props.children}</div>
     ) : (
       <Inset scale={props.insetScale} height="expanded">
         {props.children}
       </Inset>
-    )}
-  </div>
-);
+    );
+
+  if (props.to) {
+    if (props.isExternal) {
+      return (
+        <a
+          {...commonProps}
+          href={props.to}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {content}
+        </a>
+      );
+    } else {
+      return (
+        <Link {...commonProps} to={props.to}>
+          {content}
+        </Link>
+      );
+    }
+  }
+
+  return <div {...commonProps}>{content}</div>;
+};
 
 const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'insetScale'> = {
   type: 'raised',
