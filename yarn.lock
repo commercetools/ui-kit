@@ -2393,10 +2393,13 @@ __metadata:
     "@commercetools-uikit/utils": 17.0.1
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
+    "@types/react-router-dom": ^5.3.3
     prop-types: 15.8.1
     react: 17.0.2
+    react-router-dom: 5.3.4
   peerDependencies:
     react: 17.x
+    react-router-dom: 5.x
   languageName: unknown
   linkType: soft
 
