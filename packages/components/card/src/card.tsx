@@ -50,6 +50,7 @@ const Card = (props: TCardProps) => {
   const commonProps = {
     ...filterDataAttributes(props),
     onClick: isClickable ? props.onClick : undefined,
+    role: isClickable ? 'button' : undefined,
     css: css`
       box-sizing: border-box;
       width: 100%;
