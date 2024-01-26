@@ -1,7 +1,6 @@
 import { type ReactElement, type ReactNode } from 'react';
-import { type MessageDescriptor } from 'react-intl';
+import { FormattedMessage, type MessageDescriptor } from 'react-intl';
 import { css, keyframes } from '@emotion/react';
-import { FormattedMessage } from 'react-intl';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -81,8 +80,7 @@ const heightPerScale = {
   '20': designTokens.spacing40,
 };
 
-const getLabel = (label: TProgressBarProps['label']) => {
-  if (isNil(label)) return null;
+const getLabel = (label: NonNullable<TProgressBarProps['label']>) => {
   if (typeof label === 'string') return label;
   // Here the label is a ReactElement or a MessageDescriptor
   return label.hasOwnProperty('defaultMessage') ? (
