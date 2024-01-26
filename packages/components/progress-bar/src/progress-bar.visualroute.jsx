@@ -71,12 +71,30 @@ export const component = () => (
         progress={50}
       />
     </Spec>
+    <Spec label="when label position is left and label is long">
+      <ProgressBar
+        labelPosition="left"
+        label={`super long label title that exceeds the width of the constraint`}
+        progress={50}
+        labelWidth={6}
+        barWidth={4}
+      />
+    </Spec>
     <Spec label="when label is long">
       <ProgressBar
         label={`super long label title that exceeds the width of the constraint`}
         progress={50}
         labelWidth={6}
         barWidth={4}
+      />
+    </Spec>
+    <Spec label="when label is long and label position is bottom">
+      <ProgressBar
+        labelPosition='bottom'
+        label={`super long label title that exceeds the width of the constraint`}
+        progress={50}
+        labelWidth={6}
+        barWidth={6}
       />
     </Spec>
     <Spec label="when inverted">
@@ -104,7 +122,7 @@ export const component = () => (
         />
       </div>
     </Spec>
-    <Spec label="when invertedand label is bottom">
+    <Spec label="when inverted and label is bottom">
       <div style={{ backgroundColor: 'black', height: '100px' }}>
         <ProgressBar
           labelPosition="bottom"
