@@ -15,7 +15,7 @@ const getClickableRowStyle = (props: TGetClickableRowStyleProps) => {
     return css`
       cursor: pointer;
       &:hover td {
-        background: ${designTokens.backgroundColorForTableCellWhenHovered};
+        background: ${designTokens.colorNeutral98};
       }
     `;
   }

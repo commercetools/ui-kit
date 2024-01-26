@@ -52,7 +52,7 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   critical: {
     styles: {
       backgroundColor: designTokens.colorError95,
-      borderColor: designTokens.borderColorForStampWhenError,
+      borderColor: designTokens.colorError85,
       color: designTokens.colorError40,
     },
     iconColor: 'error',
@@ -60,15 +60,15 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   warning: {
     styles: {
       backgroundColor: designTokens.colorWarning95,
-      borderColor: designTokens.borderColorForStampWhenWarning,
+      borderColor: designTokens.colorWarning85,
       color: designTokens.colorWarning40,
     },
     iconColor: 'warning',
   },
   positive: {
     styles: {
-      backgroundColor: designTokens.backgroundColorForStampAsPositive,
-      borderColor: designTokens.borderColorForStampAsPositive,
+      backgroundColor: designTokens.colorPrimary90,
+      borderColor: designTokens.colorPrimary85,
       color: designTokens.colorPrimary25,
     },
     iconColor: 'primary',
@@ -76,15 +76,15 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   information: {
     styles: {
       backgroundColor: designTokens.colorInfo95,
-      borderColor: designTokens.borderColorForStampAsInformation,
+      borderColor: designTokens.colorInfo85,
       color: designTokens.colorInfo40,
     },
     iconColor: 'info',
   },
   primary: {
     styles: {
-      backgroundColor: designTokens.backgroundColorForStampAsPrimary,
-      borderColor: designTokens.borderColorForStampAsPrimary,
+      backgroundColor: designTokens.colorPrimary90,
+      borderColor: designTokens.colorPrimary85,
       color: designTokens.colorPrimary25,
     },
     iconColor: 'primary40',
@@ -92,7 +92,7 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   secondary: {
     styles: {
       backgroundColor: designTokens.colorNeutral95,
-      borderColor: designTokens.borderColorForStampAsSecondary,
+      borderColor: designTokens.colorNeutral85,
       color: designTokens.colorNeutral40,
     },
     iconColor: 'neutral60',
@@ -150,8 +150,8 @@ const getStampStyles = (props: StylesFunctionParams) => {
     color: ${props.overrideTextColor ? 'inherit' : designTokens.colorSolid};
     display: inline-block;
     border-radius: ${props.isCondensed
-      ? designTokens.borderRadiusForStampAsCondensed
-      : designTokens.borderRadiusForStamp};
+      ? designTokens.borderRadius2
+      : designTokens.borderRadius4};
   `;
 };
 

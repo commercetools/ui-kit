@@ -142,13 +142,13 @@ NotificationCloseIcon.displayName = 'NotificationCloseIcon';
 const getContentBorderColor = (props: TContentNotificationProps) => {
   switch (props.type) {
     case 'error':
-      return designTokens.borderColorForContentNotificationWhenError;
+      return designTokens.colorError85;
     case 'info':
-      return designTokens.borderColorForContentNotificationWhenInfo;
+      return designTokens.colorInfo85;
     case 'warning':
-      return designTokens.borderColorForContentNotificationWhenWarning;
+      return designTokens.colorWarning85;
     case 'success':
-      return designTokens.borderColorForContentNotificationWhenSuccess;
+      return designTokens.colorPrimary85;
     default:
       return '';
   }
@@ -157,13 +157,13 @@ const getContentBorderColor = (props: TContentNotificationProps) => {
 const getContainerBackgroundColor = (props: TContentNotificationProps) => {
   switch (props.type) {
     case 'error':
-      return designTokens.backgroundColorForContentNotificationWhenError;
+      return designTokens.colorError95;
     case 'info':
-      return designTokens.backgroundColorForContentNotificationWhenInfo;
+      return designTokens.colorInfo95;
     case 'warning':
-      return designTokens.backgroundColorForContentNotificationWhenWarning;
+      return designTokens.colorWarning95;
     case 'success':
-      return designTokens.backgroundColorForContentNotificationWhenSuccess;
+      return designTokens.colorPrimary95;
     default:
       return '';
   }
@@ -185,7 +185,7 @@ const ContentNotification = (props: TContentNotificationProps) => {
         color: ${designTokens.colorSolid};
         font-family: inherit;
         background-color: ${getContainerBackgroundColor(props)};
-        border-radius: ${designTokens.borderRadiusForContentNotification};
+        border-radius: ${designTokens.borderRadius4};
         border-width: 1px;
         border-style: solid;
         border-color: ${getContentBorderColor(props)};

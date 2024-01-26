@@ -32,7 +32,7 @@ const HeaderIcon = (props: THeaderIcon) => {
           css`
             box-shadow: none;
             border: none;
-            background-color: ${designTokens.backgroundColorForCollapsiblePanelHeaderIconWhenDisabled};
+            background-color: ${designTokens.colorSurface};
           `,
       ]}
     >

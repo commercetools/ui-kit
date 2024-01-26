@@ -31,7 +31,7 @@ const getButtonStyles = (isDisabled: boolean) => {
       baseButtonStyles,
       css`
         box-shadow: none;
-        background-color: ${designTokens.backgroundColorForPrimaryActionDropdownWhenDisabled};
+        background-color: ${designTokens.colorNeutral95};
         border: ${`1px solid ${designTokens.colorNeutral}`};
       `,
     ];
@@ -48,7 +48,7 @@ const getButtonStyles = (isDisabled: boolean) => {
       }
       &:active {
         box-shadow: ${designTokens.shadow0};
-        background-color: ${designTokens.backgroundColorForPrimaryActionDropdownWhenActive};
+        background-color: ${designTokens.colorNeutral90};
       }
     `,
   ];
@@ -79,7 +79,8 @@ const DropdownHead = (props: TDropdownHead) => (
         ...getButtonStyles(props.isDisabled),
         css`
           padding: 0 ${designTokens.spacing30};
-          border-radius: ${designTokens.borderRadiusForPrimaryActionDropdown};
+          border-radius: ${designTokens.borderRadius4} 0 0
+            ${designTokens.borderRadius4};
         `,
       ]}
     >
@@ -132,7 +133,8 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
         ...getButtonStyles(props.isDisabled),
         css`
           padding: 0 ${designTokens.spacing20};
-          border-radius: ${designTokens.borderRadiusForPrimaryActionDropdownIcon};
+          border-radius: 0 ${designTokens.borderRadius4}
+            ${designTokens.borderRadius4} 0;
           border-color: ${designTokens.colorNeutral};
           border-width: 1px 1px 1px 0px;
           border-style: solid;
@@ -176,8 +178,8 @@ const Options = styled.div`
   z-index: 5;
   width: 100%;
   top: calc(${designTokens.spacing20} + ${designTokens.bigButtonHeight});
-  border: 1px solid ${designTokens.borderColorForPrimaryActionDropdownMenu};
-  border-radius: ${designTokens.borderRadiusForPrimaryActionDropdownMenu};
+  border: 1px solid ${designTokens.colorSurface};
+  border-radius: ${designTokens.borderRadius4};
   box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.15);
   margin-top: ${designTokens.spacing20};
 

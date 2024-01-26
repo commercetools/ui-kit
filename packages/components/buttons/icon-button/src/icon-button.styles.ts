@@ -39,15 +39,12 @@ const getShapeStyles = (
       switch (size) {
         case 'small':
           return css`
-            border-radius: ${designTokens.borderRadiusForButtonAsIconAsSmall};
+            border-radius: ${designTokens.borderRadius2};
           `;
         case 'medium':
-          return css`
-            border-radius: ${designTokens.borderRadiusForButtonAsIconAsMedium};
-          `;
         case 'big':
           return css`
-            border-radius: ${designTokens.borderRadiusForButtonAsIconAsBig};
+            border-radius: ${designTokens.borderRadius4};
           `;
         default:
           return css``;
@@ -88,7 +85,7 @@ const getBaseStyles = (
       &,
       &:hover {
         background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
-        border-color: ${designTokens.borderColorForButtonAsIconWhenDisabled};
+        border-color: ${designTokens.colorSurface};
         color: ${designTokens.colorNeutral60};
         box-shadow: none;
       }
@@ -103,46 +100,50 @@ const getBaseStyles = (
       }
       ${isActive ? '&,' : ''}
       &:active {
-        background-color: ${designTokens.backgroundColorForButtonWhenActive};
+        background-color: ${designTokens.colorSolid10};
         box-shadow: ${designTokens.shadow0};
-        border-color: ${designTokens.borderColorForButtonAsIcon};
+        border-color: ${designTokens.colorNeutral};
       }
     `;
   }
 
   switch (theme) {
+    // TODO: These custom colors where itroduced in the Merchant Center redign 2023
+    // We need to check with designers if we want to introduce them in our color palette
+    // #15A390 -> color-primary with 10% black opacity
+    // #057FCC -> color-info with 10% black opacity
     case 'primary':
       return css`
         &:hover {
-          background-color: ${designTokens.backgroundColorForButtonAsIconAsPrimaryWhenHovered};
+          background-color: ${designTokens.colorPrimary};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
-          background-color: ${designTokens.backgroundColorForButtonAsIconAsPrimaryWhenActive};
+          background-color: #15a390;
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:hover,
         &:active {
-          border-color: ${designTokens.borderColorForButtonAsIconAsPrimary};
+          border-color: ${designTokens.colorNeutral};
         }
       `;
     case 'info':
       return css`
         &:hover {
-          background-color: ${designTokens.backgroundColorForButtonAsIconAsInfoWhenHovered};
+          background-color: ${designTokens.colorInfo};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
-          background-color: ${designTokens.backgroundColorForButtonAsIconAsInfoWhenActive};
+          background-color: #057fcc;
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:hover,
         &:active {
-          border-color: ${designTokens.borderColorForButtonAsIconAsInfo};
+          border-color: ${designTokens.colorNeutral};
         }
       `;
     default: {

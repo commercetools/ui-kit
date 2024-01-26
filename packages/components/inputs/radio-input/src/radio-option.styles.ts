@@ -29,10 +29,10 @@ const RadioInputWrapper = styled.div<TStylesProps>`
 
 const getBorderColor = (props: TStylesProps) => {
   if (props.isDisabled) {
-    return designTokens.borderColorForInputWhenDisabled;
+    return designTokens.colorNeutral;
   }
   if (props.isReadOnly) {
-    return designTokens.borderColorForRadioInputWhenReadonly;
+    return designTokens.colorNeutral60;
   }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
@@ -44,17 +44,17 @@ const getBorderColor = (props: TStylesProps) => {
     if (props.isChecked) {
       return designTokens.borderColorForInputWhenFocused;
     }
-    return designTokens.borderColorForRadioInputWhenFocused;
+    return designTokens.colorNeutral60;
   }
   if (props.isChecked) {
-    return designTokens.borderColorForRadioInputWhenChecked;
+    return designTokens.colorPrimary;
   }
-  return designTokens.borderColorForRadioInput;
+  return designTokens.colorNeutral60;
 };
 
 const getKnobColor = (props: TStylesProps) => {
   if (props.isDisabled) {
-    return designTokens.borderColorForRadioInputWhenDisabled;
+    return designTokens.colorNeutral;
   }
   if (props.hasError) {
     return designTokens.fontColorForInputWhenError;

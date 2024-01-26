@@ -13,7 +13,7 @@ const getStateStyles = (
   if (isDisabled) {
     return css`
       box-shadow: ${designTokens.shadow0};
-      background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
+      background-color: ${designTokens.colorAccent95};
       border: none;
       color: ${designTokens.colorNeutral60};
       &:focus,
@@ -34,7 +34,7 @@ const getStateStyles = (
         background-color: ${designTokens.colorSurface};
         &:focus,
         &:hover {
-          background-color: ${designTokens.backgroundColorForButtonWhenActive};
+          background-color: ${designTokens.colorSolid10};
         }
       `,
     ];
@@ -57,12 +57,12 @@ const getStateStyles = (
       box-shadow: ${designTokens.shadow0};
     }
     &:hover {
-      background-color: ${designTokens.backgroundColorForButtonWhenHovered};
+      background-color: ${designTokens.colorSolid05};
     }
     &:active {
       border: 1px solid var(--color-neutral);
       box-shadow: ${designTokens.shadow0};
-      background-color: ${designTokens.backgroundColorForButtonWhenActive};
+      background-color: ${designTokens.colorSolid10};
     }
   `;
 };
@@ -93,11 +93,11 @@ const getThemeStyles = (theme: Theme) => {
         &:focus,
         &:hover {
           box-shadow: ${designTokens.shadow0};
-          background-color: ${designTokens.backgroundColorForButtonWhenHovered};
+          background-color: ${designTokens.colorSolid05};
         }
         &:active {
           box-shadow: ${designTokens.shadow0};
-          background-color: ${designTokens.backgroundColorForButtonWhenActive};
+          background-color: ${designTokens.colorSolid10};
         }
       `;
     }
@@ -132,18 +132,18 @@ const getToneStyles = (
       return [
         !isDisabled &&
           css`
-            background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfo};
-            border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            background-color: ${designTokens.colorInfo95};
+            border-color: ${designTokens.colorInfo85};
             &:hover {
-              background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndHovered};
-              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+              background-color: ${designTokens.colorInfo90};
+              border-color: ${designTokens.colorInfo85};
             }
             &:focus {
-              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+              border-color: ${designTokens.colorInfo85};
             }
             &:active {
-              background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndActive};
-              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+              background-color: ${designTokens.colorInfo85};
+              border-color: ${designTokens.colorInfo85};
             }
           `,
       ];

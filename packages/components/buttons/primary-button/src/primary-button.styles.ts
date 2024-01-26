@@ -65,35 +65,44 @@ const getButtonStyles = (
     ];
     switch (tone) {
       case 'primary':
+        // TODO: This custom colors where itroduced in the Merchant Center redign 2023
+        // We need to check with designers if we want to introduce them in our color palette
+        // They are 'color-primary' with 10% and 5% black opacity
         return [
           baseActiveStyles,
           css`
-            background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenActive};
+            background-color: #15a390;
             &:focus,
             &:hover {
-              background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenHovered};
+              background-color: #17ab97;
             }
           `,
         ];
       case 'urgent':
+        // TODO: This custom colors where itroduced in the Merchant Center redign 2023
+        // We need to check with designers if we want to introduce them in our color palette
+        // They are 'color-warning' with 10% and 5% black opacity
         return [
           baseActiveStyles,
           css`
-            background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenActive};
+            background-color: #dc630a;
             &:focus,
             &:hover {
-              background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenHovered};
+              background-color: #e7680d;
             }
           `,
         ];
       case 'critical':
+        // TODO: This custom colors where itroduced in the Merchant Center redign 2023
+        // We need to check with designers if we want to introduce them in our color palette
+        // They are 'color-error' with 10% and 5% black opacity
         return [
           baseActiveStyles,
           css`
-            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenActive};
+            background-color: #b3003e;
             &:focus,
             &:hover {
-              background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenHovered};
+              background-color: #cc0047;
             }
           `,
         ];
@@ -116,44 +125,53 @@ const getButtonStyles = (
   ];
   switch (tone) {
     case 'primary':
+      // TODO: This custom colors where itroduced in the Merchant Center redign 2023
+      // We need to check with designers if we want to introduce them in our color palette
+      // They are 'color-primary' with 10% and 5% black opacity
       return [
         baseDefaultStyles,
         css`
           background-color: ${designTokens.colorPrimary};
           &:focus,
           &:hover {
-            background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenHovered};
+            background-color: #17ab97;
           }
           &:active {
-            background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenActive};
+            background-color: #15a390;
           }
         `,
       ];
     case 'urgent':
+      // TODO: This custom colors where itroduced in the Merchant Center redign 2023
+      // We need to check with designers if we want to introduce them in our color palette
+      // They are 'color-warning' with 10% and 5% black opacity
       return [
         baseDefaultStyles,
         css`
           background-color: ${designTokens.colorWarning};
           &:focus,
           &:hover {
-            background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenHovered};
+            background-color: #e7680d;
           }
           &:active {
-            background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenActive};
+            background-color: #dc630a;
           }
         `,
       ];
     case 'critical':
+      // TODO: These custom colors where itroduced in the Merchant Center redign 2023
+      // We need to check with designers if we want to introduce them in our color palette
+      // They are 'color-error' with 10% and 5% black opacity
       return [
         baseDefaultStyles,
         css`
           background-color: ${designTokens.colorError};
           &:focus,
           &:hover {
-            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenHovered};
+            background-color: #cc0047;
           }
           &:active {
-            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenActive};
+            background-color: #b3003e;
           }
         `,
       ];

@@ -35,7 +35,7 @@ const Card = (props: TCardProps) => (
       width: 100%;
       font-size: 1rem;
       box-shadow: ${props.type === 'raised' ? designTokens.shadow17 : 'none'};
-      border-radius: ${designTokens.borderRadiusForCard};
+      border-radius: ${designTokens.borderRadius4};
       border: ${props.type === 'raised'
         ? '1px solid var(--color-neutral-90)'
         : 'none'};

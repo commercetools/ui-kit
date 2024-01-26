@@ -30,8 +30,8 @@ const getLanguageLabelBorderColor = (props: TLocalizedInputProps) => {
     return designTokens.borderColorForInputWhenDisabled;
   }
   return props.isReadOnly
-    ? designTokens.borderColorForLocalizedInputLabelWhenReadonly
-    : designTokens.borderColorForLocalizedInputLabel;
+    ? designTokens.colorSurface
+    : designTokens.colorNeutral;
 };
 
 const getLanguageLabelStyles = (props: TLocalizedInputProps) => {

@@ -109,7 +109,7 @@ const Span = styled.span<TStyledSpanProps>`
   &::before {
     border-radius: 12px;
     box-shadow: none;
-    background-color: ${designTokens.backgroundColorForToggleInputTrack};
+    background-color: ${designTokens.colorNeutral};
     left: 0;
     top: 50%;
     transition: background 0.2s ease-in-out;
@@ -140,10 +140,10 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
   /* when checked */
   &:checked {
     + span::before {
-      background: ${designTokens.backgroundColorForToggleInputTrackWhenChecked};
+      background: ${designTokens.colorPrimary40};
     }
     & + span::after {
-      background: ${designTokens.backgroundColorForToggleInputThumbWhenChecked};
+      background: ${designTokens.colorPrimary25};
       transform: translate(${props.thumbSizes[props.size].diameter}, -50%);
     }
   }
@@ -151,15 +151,11 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
   /* when disabled */
   &:disabled {
     & + span::before {
-      background: ${
-        designTokens.backgroundColorForToggleInputTrackWhenDisabled
-      };
+      background: ${designTokens.colorNeutral90};
       box-shadow: none;
     }
     & + span::after {
-      background: ${
-        designTokens.backgroundColorForToggleInputThumbWhenDisabled
-      };
+      background: ${designTokens.colorNeutral60};
       box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
     }
   }
@@ -167,14 +163,10 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
   /* when disabled and checked */
   &:disabled&:checked {
     & + span::before {
-      background: ${
-        designTokens.backgroundColorForToggleInputTrackWhenCheckedAndDisabled
-      };
+      background: ${designTokens.colorAccent90};
     }
     & + span::after {
-      background: ${
-        designTokens.backgroundColorForToggleInputThumbWhenCheckedAndDisabled
-      };
+      background: ${designTokens.colorAccent60};
     }
   }
 

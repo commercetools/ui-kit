@@ -92,15 +92,15 @@ const Tag = (props: TTagProps) => {
           min-width: 0;
           display: flex;
           background-color: ${props.type === 'warning'
-            ? designTokens.backgroundColorForTagWarning
-            : designTokens.backgroundColorForTag};
+            ? designTokens.colorWarning95
+            : designTokens.colorNeutral95};
 
           ${props.onClick &&
           `&:hover {
             background-color: ${
               props.type === 'warning'
-                ? designTokens.backgroundColorForTagWarning
-                : designTokens.backgroundColorForTagWhenHovered
+                ? designTokens.colorWarning95
+                : designTokens.colorNeutral90
             };
           }`}
         `}
@@ -126,10 +126,10 @@ const Tag = (props: TTagProps) => {
               css`
                 border-color: ${props.type === 'warning'
                   ? designTokens.colorWarning
-                  : designTokens.borderColorForTag};
+                  : designTokens.colorNeutral};
                 padding: 0 ${designTokens.spacing25};
-                border-radius: 0 ${designTokens.borderRadiusForTag}
-                  ${designTokens.borderRadiusForTag} 0;
+                border-radius: 0 ${designTokens.borderRadius2}
+                  ${designTokens.borderRadius2} 0;
                 display: flex;
                 align-items: center;
                 background: inherit;
@@ -139,7 +139,7 @@ const Tag = (props: TTagProps) => {
                 :not(:disabled)&:focus {
                   border-color: ${props.type === 'warning'
                     ? designTokens.colorWarning
-                    : designTokens.borderColorForTagWhenHovered};
+                    : designTokens.colorNeutral};
 
                   fill: ${designTokens.colorError};
                 }

@@ -27,7 +27,7 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${designTokens.backgroundColorForSelectInputOptionWhenHovered};
+    background-color: ${designTokens.colorNeutral98};
   }
 `;
 
@@ -47,7 +47,7 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
       : `${designTokens.spacing20}`};
 
     &:hover {
-      background-color: ${designTokens.backgroundColorForRichTextDropdownWhenHovered};
+      background-color: ${designTokens.colorNeutral95};
     }
   `,
   props.isIndeterminate &&
@@ -57,7 +57,7 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
   props.isOpen &&
     css`
       &:not(:hover) {
-        background-color: ${designTokens.backgroundColorForRichTextButton};
+        background-color: ${designTokens.colorAccent20};
         color: ${designTokens.colorSurface};
 
         svg {
@@ -94,7 +94,7 @@ const DropdownContainer = styled.div`
   background: ${designTokens.colorSurface};
   overflow: hidden;
   z-index: 9999;
-  border: 1px solid ${designTokens.borderColorForSelectInputMenu};
+  border: 1px solid ${designTokens.colorSurface};
   box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.15);
   border-radius: ${designTokens.borderRadius6};
 `;

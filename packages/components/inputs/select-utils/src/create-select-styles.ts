@@ -129,7 +129,7 @@ const getInputBorderColor = (props: TProps, state: TState) => {
     return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.borderColorForSelectInputWhenReadonly;
+    return designTokens.colorNeutral95;
   }
   if (state.isFocused) {
     return designTokens.borderColorForInputWhenFocused;
@@ -151,7 +151,7 @@ const getHoverInputBorderColor = (props: TProps) => {
     return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.borderColorForSelectInputWhenReadonly;
+    return designTokens.colorNeutral95;
   }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
@@ -230,7 +230,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
 const menuStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    border: `1px solid ${designTokens.borderColorForSelectInputMenu}`,
+    border: `1px solid ${designTokens.colorSurface}`,
     borderRadius: designTokens.borderRadiusForInput,
     backgroundColor: designTokens.backgroundColorForInput,
     boxShadow: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
@@ -238,10 +238,9 @@ const menuStyles = (props: TProps) => (base: TBase) => {
     fontFamily: 'inherit',
     margin: `${designTokens.spacing10} 0 0 0`,
     borderColor: (() => {
-      if (props.hasError)
-        return designTokens.borderColorForSelectInputMenuWhenError;
-      if (props.hasWarning)
-        return designTokens.borderColorForSelectInputMenuWhenWarning;
+      if (props.hasError || props.hasWarning) {
+        return designTokens.colorSurface;
+      }
       return base.borderColorForInput;
     })(),
     width: props.horizontalConstraint === 'auto' ? 'auto' : '100%',
@@ -313,8 +312,7 @@ const optionStyles = () => (base: TBase, state: TState) => {
     backgroundColor: (() => {
       if (state.isSelected)
         return designTokens.backgroundColorForInputWhenSelected;
-      if (state.isFocused)
-        return designTokens.backgroundColorForSelectInputOptionWhenHovered;
+      if (state.isFocused) return designTokens.colorNeutral98;
       return base.backgroundColor;
     })(),
 
@@ -403,7 +401,7 @@ const groupStyles = (props: TProps) => (base: TBase) => {
     padding: 0,
     '&:not(:first-of-type)': {
       borderTop: props.showOptionGroupDivider
-        ? `1px solid ${designTokens.borderColorForGroupHeadingSelectInputOptions}`
+        ? `1px solid ${designTokens.colorNeutral90}`
         : base.borderTop,
     },
   };
@@ -414,7 +412,7 @@ const groupHeadingStyles = () => (base: TBase) => {
     ...base,
     color: designTokens.fontColorForInputWhenReadonly,
     fontSize: designTokens.fontSizeSmall,
-    borderBottom: `1px solid ${designTokens.borderColorForGroupHeadingSelectInputOptions}`,
+    borderBottom: `1px solid ${designTokens.colorNeutral90}`,
     textTransform: 'none',
     fontWeight: designTokens.fontWeight500,
     padding: `${designTokens.spacing20} ${designTokens.spacing30}`,
@@ -455,7 +453,7 @@ const multiValueStyles = () => (base: TBase) => {
     display: 'flex',
     alignItems: 'center',
     height: '32px',
-    backgroundColor: designTokens.backgroundColorForTag,
+    backgroundColor: designTokens.colorNeutral95,
     padding: '0',
     border: '1px solid var(--color-neutral-85)',
   };
@@ -471,12 +469,12 @@ const multiValueLabelStyles = (props: TProps) => (base: TBase) => {
       return base.color;
     })(),
     padding: `${designTokens.spacing10} ${designTokens.spacing20}`,
-    borderRadius: `${designTokens.borderRadiusForTag} 0 0 ${designTokens.borderRadiusForTag}`,
+    borderRadius: `${designTokens.borderRadius2} 0 0 ${designTokens.borderRadius2}`,
     border: 'none',
     borderWidth: '1px 0 1px 1px',
 
     '&:last-child': {
-      borderRadius: designTokens.borderRadiusForTag,
+      borderRadius: designTokens.borderRadius2,
       borderWidth: designTokens.borderWidth1,
     },
   };
@@ -486,14 +484,14 @@ const multiValueRemoveStyles =
   (props: TProps) => (base: TBase, state: TState) => {
     return {
       ...base,
-      borderColor: designTokens.borderColorForTag,
+      borderColor: designTokens.colorNeutral,
       padding: `0 ${designTokens.spacing10}`,
-      borderRadius: `0 ${designTokens.borderRadiusForTag} ${designTokens.borderRadiusForTag} 0`,
+      borderRadius: `0 ${designTokens.borderRadius2} ${designTokens.borderRadius2} 0`,
       borderStyle: 'none',
       borderWidth: '0',
       pointerEvents:
         state.isDisabled || props.isReadOnly ? 'none' : base.pointerEvents,
-      backgroundColor: designTokens.backgroundColorForTag,
+      backgroundColor: designTokens.colorNeutral95,
 
       'svg *': {
         fill: props.isReadOnly
@@ -502,8 +500,8 @@ const multiValueRemoveStyles =
       },
 
       '&:hover, &:focus': {
-        borderColor: designTokens.borderColorForTagWarning,
-        backgroundColor: designTokens.backgroundColorForTag,
+        borderColor: designTokens.colorWarning,
+        backgroundColor: designTokens.colorNeutral95,
 
         'svg *': {
           fill: designTokens.colorError,

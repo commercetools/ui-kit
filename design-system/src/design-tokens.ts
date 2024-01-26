@@ -184,16 +184,6 @@ export const themes = {
     breakPointJumbodesktop: '1920px',
     backgroundColorForButtonWhenActive: 'hsl(0deg 0% 10% / 10%)',
     backgroundColorForButtonWhenHovered: 'hsl(0deg 0% 10% / 5%)',
-    backgroundColorForButtonAsPrimaryWhenActive: '#15A390',
-    backgroundColorForButtonAsPrimaryWhenHovered: '#17AB97',
-    backgroundColorForButtonAsIconAsPrimaryWhenActive: '#15A390',
-    backgroundColorForButtonAsIconAsPrimaryWhenHovered: 'hsl(175, 55%, 45%)',
-    backgroundColorForButtonAsIconAsInfoWhenActive: '#057FCC',
-    backgroundColorForButtonAsIconAsInfoWhenHovered: '#078cdf',
-    backgroundColorForButtonAsUrgentWhenActive: '#DC630A',
-    backgroundColorForButtonAsUrgentWhenHovered: '#E7680D',
-    backgroundColorForButtonAsCriticalWhenActive: '#B3003E',
-    backgroundColorForButtonAsCriticalWhenHovered: '#CC0047',
     backgroundColorForButtonWhenDisabled: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInput: '#fff',
     backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
@@ -205,59 +195,9 @@ export const themes = {
       'hsl(203.05555555555554, 93.9130434783%, 95%)',
     backgroundColorForInputAsQuiet: 'transparent',
     backgroundColorForInputAsQuietWhenHovered: 'hsl(0deg 0% 10% / 2%)',
-    backgroundColorForTableCellWhenHovered: 'hsl(232, 18%, 98%)',
-    backgroundColorForTableHeader: 'hsl(232, 18%, 98%)',
-    backgroundColorForTag: 'hsl(232, 18%, 95%)',
-    backgroundColorForTagWarning:
-      'hsl(25.110132158590307, 89.0196078431%, 95%)',
-    backgroundColorForTagWhenHovered: 'hsl(232, 18%, 90%)',
-    backgroundColorForCollapsiblePanelHeaderIconWhenDisabled: '#fff',
-    backgroundColorForSelectInputOptionWhenHovered: 'hsl(232, 18%, 98%)',
-    backgroundColorForStampAsPositive: 'hsl(175, 70%, 90%)',
-    backgroundColorForStampAsPrimary: 'hsl(175, 70%, 90%)',
     backgroundColorForLocalizedInputLabel: '#fff',
     backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(232, 18%, 95%)',
     backgroundColorForLocalizedInputLabelWhenDisabled: 'hsl(232, 18%, 95%)',
-    backgroundColorForLocalizedRichTextBodyButtonWhenActive:
-      'hsl(195, 35.2941176471%, 20%)',
-    backgroundColorForLocalizedRichTextBodyButton: 'hsl(232, 18%, 95%)',
-    backgroundColorForRichTextDropdownWhenHovered: 'hsl(232, 18%, 95%)',
-    backgroundColorForRichTextMoreStylesDropdownWhenHovered:
-      'hsl(203.05555555555554, 93.9130434783%, 95%)',
-    backgroundColorForRichTextButton: 'hsl(195, 35.2941176471%, 20%)',
-    backgroundColorForTooltip: 'hsl(195, 35.2941176471%, 10%)',
-    backgroundColorForViewSwitcher: '#fff',
-    backgroundColorForViewSwitcherWhenDisabled: '#fff',
-    backgroundColorForViewSwitcherWhenSelected: 'hsl(232, 18%, 95%)',
-    backgroundColorForViewSwitcherWhenHovered: 'hsl(232, 18%, 95%)',
-    backgroundColorForContentNotificationWhenError:
-      'hsl(339.1304347826087, 100%, 95%)',
-    backgroundColorForContentNotificationWhenInfo:
-      'hsl(203.05555555555554, 93.9130434783%, 95%)',
-    backgroundColorForContentNotificationWhenWarning:
-      'hsl(25.110132158590307, 89.0196078431%, 95%)',
-    backgroundColorForContentNotificationWhenSuccess: 'hsl(175, 90%, 95%)',
-    backgroundColorForCheckboxInputIcon: 'hsl(175, 55%, 45%)',
-    backgroundColorForCheckboxInputIconWhenDisabled: 'hsl(232, 18%, 80%)',
-    backgroundColorForCheckboxInputIconWhenReadonly: 'hsl(232, 18%, 60%)',
-    backgroundColorForCheckboxInputIconWhenError: '#e60050',
-    backgroundColorForCheckboxInputIconWhenHovered: 'hsl(232, 18%, 90%)',
-    backgroundColorForPrimaryActionDropdownWhenActive: 'hsl(232, 18%, 90%)',
-    backgroundColorForPrimaryActionDropdownWhenDisabled: 'hsl(232, 18%, 95%)',
-    backgroundColorForToggleInputTrack: 'hsl(232, 18%, 80%)',
-    backgroundColorForToggleInputTrackWhenDisabled: 'hsl(232, 18%, 90%)',
-    backgroundColorForToggleInputThumbWhenDisabled: 'hsl(232, 18%, 60%)',
-    backgroundColorForToggleInputTrackWhenChecked: 'hsl(175, 55%, 40%)',
-    backgroundColorForToggleInputThumbWhenChecked: 'hsl(175, 55%, 25%)',
-    backgroundColorForToggleInputTrackWhenCheckedAndDisabled:
-      'hsl(195, 35.2941176471%, 90%)',
-    backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
-      'hsl(195, 35.2941176471%, 60%)',
-    backgroundColorForButtonAsSecondaryWhenInfo:
-      'hsl(203.05555555555554, 93.9130434783%, 95%)',
-    backgroundColorForButtonAsSecondaryWhenInfoAndHovered: '#CEEBFD',
-    backgroundColorForButtonAsSecondaryWhenInfoAndActive:
-      'hsl(203.05555555555554, 93.9130434783%, 85%)',
     borderColorForInput: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenFocused: 'hsl(175, 55%, 45%)',
     borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
@@ -266,70 +206,9 @@ export const themes = {
     borderColorForInputWhenWarning: '#f16d0e',
     borderColorForInputWhenHovered: 'hsl(232, 18%, 80%)',
     borderColorForInputAsQuiet: 'transparent',
-    borderColorForTag: 'hsl(232, 18%, 80%)',
-    borderColorForTagWarning: '#f16d0e',
-    borderColorForTagWhenFocused: 'hsl(232, 18%, 80%)',
-    borderColorForTagWhenHovered: 'hsl(232, 18%, 80%)',
-    borderColorForButtonAsIcon: 'hsl(232, 18%, 80%)',
-    borderColorForButtonAsIconAsInfo: 'hsl(232, 18%, 80%)',
-    borderColorForButtonAsIconAsPrimary: 'hsl(232, 18%, 80%)',
-    borderColorForButtonAsIconWhenDisabled: '#fff',
-    borderColorForTableHeader: '#fff',
-    borderColorForTableHeaderAsBottom: 'hsl(232, 18%, 95%)',
-    borderColorForTableManagerDroppableList: 'hsl(232, 18%, 80%)',
-    borderColorForCollapsiblePanelHeader: 'hsl(232, 18%, 90%)',
-    borderColorForStampWhenError: 'hsl(339.1304347826087, 100%, 85%)',
-    borderColorForStampWhenWarning:
-      'hsl(25.110132158590307, 89.0196078431%, 85%)',
-    borderColorForStampAsPositive: 'hsl(175, 70%, 85%)',
-    borderColorForStampAsInformation:
-      'hsl(203.05555555555554, 93.9130434783%, 85%)',
-    borderColorForStampAsPrimary: 'hsl(175, 70%, 85%)',
-    borderColorForStampAsSecondary: 'hsl(232, 18%, 85%)',
-    borderColorForLocalizedInputLabel: 'hsl(232, 18%, 80%)',
-    borderColorForLocalizedInputLabelWhenReadonly: '#fff',
-    borderColorForContentNotificationWhenError:
-      'hsl(339.1304347826087, 100%, 85%)',
-    borderColorForContentNotificationWhenInfo:
-      'hsl(203.05555555555554, 93.9130434783%, 85%)',
-    borderColorForContentNotificationWhenWarning:
-      'hsl(25.110132158590307, 89.0196078431%, 85%)',
-    borderColorForContentNotificationWhenSuccess: 'hsl(175, 70%, 85%)',
-    borderColorForGroupHeadingSelectInputOptions: 'hsl(232, 18%, 90%)',
-    borderColorForSelectInputMenu: '#fff',
-    borderColorForSelectInputWhenReadonly: 'hsl(232, 18%, 95%)',
-    borderColorForSelectInputMenuWhenWarning: '#fff',
-    borderColorForSelectInputMenuWhenError: '#fff',
-    borderColorForCheckboxInputIcon: 'hsl(175, 55%, 45%)',
-    borderColorForCheckboxInputIconWhenDisabled: 'hsl(232, 18%, 80%)',
-    borderColorForCheckboxInputIconWhenReadonly: 'hsl(232, 18%, 60%)',
-    borderColorForCheckboxInputIconWhenError: '#e60050',
-    borderColorForRadioInput: 'hsl(232, 18%, 60%)',
-    borderColorForRadioInputWhenDisabled: 'hsl(232, 18%, 80%)',
-    borderColorForRadioInputWhenReadonly: 'hsl(232, 18%, 60%)',
-    borderColorForRadioInputWhenChecked: 'hsl(175, 55%, 45%)',
-    borderColorForRadioInputWhenFocused: 'hsl(232, 18%, 60%)',
-    borderColorForPrimaryActionDropdownMenu: '#fff',
-    borderColorForButtonAsSecondaryWhenInfo:
-      'hsl(203.05555555555554, 93.9130434783%, 85%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsMedium: '4px',
-    borderRadiusForButtonAsIconAsBig: '4px',
-    borderRadiusForButtonAsIconAsMedium: '4px',
-    borderRadiusForButtonAsIconAsSmall: '2px',
     borderRadiusForInput: '4px',
-    borderRadiusForTag: '2px',
-    borderRadiusForCard: '4px',
-    borderRadiusForTableManagerDroppableList: '4px',
-    borderRadiusForStamp: '4px',
-    borderRadiusForStampAsCondensed: '2px',
-    borderRadiusForViewSwitcher: '4px',
-    borderRadiusForContentNotification: '4px',
-    borderRadiusForPrimaryActionDropdown:
-      'var(--border-radius-4) 0 0 var(--border-radius-4)',
-    borderRadiusForPrimaryActionDropdownIcon:
-      '0 var(--border-radius-4) var(--border-radius-4) 0',
-    borderRadiusForPrimaryActionDropdownMenu: '4px',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(232, 18%, 60%)',
     fontColorForInputWhenError: '#e60050',
@@ -544,26 +423,6 @@ const designTokens = {
     'var(--background-color-for-button-when-active, hsl(0deg 0% 10% / 10%))',
   backgroundColorForButtonWhenHovered:
     'var(--background-color-for-button-when-hovered, hsl(0deg 0% 10% / 5%))',
-  backgroundColorForButtonAsPrimaryWhenActive:
-    'var(--background-color-for-button-as-primary-when-active, #15A390)',
-  backgroundColorForButtonAsPrimaryWhenHovered:
-    'var(--background-color-for-button-as-primary-when-hovered, #17AB97)',
-  backgroundColorForButtonAsIconAsPrimaryWhenActive:
-    'var(--background-color-for-button-as-icon-as-primary-when-active, #15A390)',
-  backgroundColorForButtonAsIconAsPrimaryWhenHovered:
-    'var(--background-color-for-button-as-icon-as-primary-when-hovered, hsl(175, 55%, 45%))',
-  backgroundColorForButtonAsIconAsInfoWhenActive:
-    'var(--background-color-for-button-as-icon-as-info-when-active, #057FCC)',
-  backgroundColorForButtonAsIconAsInfoWhenHovered:
-    'var(--background-color-for-button-as-icon-as-info-when-hovered, #078cdf)',
-  backgroundColorForButtonAsUrgentWhenActive:
-    'var(--background-color-for-button-as-urgent-when-active, #DC630A)',
-  backgroundColorForButtonAsUrgentWhenHovered:
-    'var(--background-color-for-button-as-urgent-when-hovered, #E7680D)',
-  backgroundColorForButtonAsCriticalWhenActive:
-    'var(--background-color-for-button-as-critical-when-active, #B3003E)',
-  backgroundColorForButtonAsCriticalWhenHovered:
-    'var(--background-color-for-button-as-critical-when-hovered, #CC0047)',
   backgroundColorForButtonWhenDisabled:
     'var(--background-color-for-button-when-disabled, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForInput: 'var(--background-color-for-input, #fff)',
@@ -583,91 +442,12 @@ const designTokens = {
     'var(--background-color-for-input-as-quiet, transparent)',
   backgroundColorForInputAsQuietWhenHovered:
     'var(--background-color-for-input-as-quiet-when-hovered, hsl(0deg 0% 10% / 2%))',
-  backgroundColorForTableCellWhenHovered:
-    'var(--background-color-for-table-cell-when-hovered, hsl(232, 18%, 98%))',
-  backgroundColorForTableHeader:
-    'var(--background-color-for-table-header, hsl(232, 18%, 98%))',
-  backgroundColorForTag: 'var(--background-color-for-tag, hsl(232, 18%, 95%))',
-  backgroundColorForTagWarning:
-    'var(--background-color-for-tag-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
-  backgroundColorForTagWhenHovered:
-    'var(--background-color-for-tag-when-hovered, hsl(232, 18%, 90%))',
-  backgroundColorForCollapsiblePanelHeaderIconWhenDisabled:
-    'var(--background-color-for-collapsible-panel-header-icon-when-disabled, #fff)',
-  backgroundColorForSelectInputOptionWhenHovered:
-    'var(--background-color-for-select-input-option-when-hovered, hsl(232, 18%, 98%))',
-  backgroundColorForStampAsPositive:
-    'var(--background-color-for-stamp-as-positive, hsl(175, 70%, 90%))',
-  backgroundColorForStampAsPrimary:
-    'var(--background-color-for-stamp-as-primary, hsl(175, 70%, 90%))',
   backgroundColorForLocalizedInputLabel:
     'var(--background-color-for-localized-input-label, #fff)',
   backgroundColorForLocalizedInputLabelWhenReadonly:
     'var(--background-color-for-localized-input-label-when-readonly, hsl(232, 18%, 95%))',
   backgroundColorForLocalizedInputLabelWhenDisabled:
     'var(--background-color-for-localized-input-label-when-disabled, hsl(232, 18%, 95%))',
-  backgroundColorForLocalizedRichTextBodyButtonWhenActive:
-    'var(--background-color-for-localized-rich-text-body-button-when-active, hsl(195, 35.2941176471%, 20%))',
-  backgroundColorForLocalizedRichTextBodyButton:
-    'var(--background-color-for-localized-rich-text-body-button, hsl(232, 18%, 95%))',
-  backgroundColorForRichTextDropdownWhenHovered:
-    'var(--background-color-for-rich-text-dropdown-when-hovered, hsl(232, 18%, 95%))',
-  backgroundColorForRichTextMoreStylesDropdownWhenHovered:
-    'var(--background-color-for-rich-text-more-styles-dropdown-when-hovered, hsl(203.05555555555554, 93.9130434783%, 95%))',
-  backgroundColorForRichTextButton:
-    'var(--background-color-for-rich-text-button, hsl(195, 35.2941176471%, 20%))',
-  backgroundColorForTooltip:
-    'var(--background-color-for-tooltip, hsl(195, 35.2941176471%, 10%))',
-  backgroundColorForViewSwitcher:
-    'var(--background-color-for-view-switcher, #fff)',
-  backgroundColorForViewSwitcherWhenDisabled:
-    'var(--background-color-for-view-switcher-when-disabled, #fff)',
-  backgroundColorForViewSwitcherWhenSelected:
-    'var(--background-color-for-view-switcher-when-selected, hsl(232, 18%, 95%))',
-  backgroundColorForViewSwitcherWhenHovered:
-    'var(--background-color-for-view-switcher-when-hovered, hsl(232, 18%, 95%))',
-  backgroundColorForContentNotificationWhenError:
-    'var(--background-color-for-content-notification-when-error, hsl(339.1304347826087, 100%, 95%))',
-  backgroundColorForContentNotificationWhenInfo:
-    'var(--background-color-for-content-notification-when-info, hsl(203.05555555555554, 93.9130434783%, 95%))',
-  backgroundColorForContentNotificationWhenWarning:
-    'var(--background-color-for-content-notification-when-warning, hsl(25.110132158590307, 89.0196078431%, 95%))',
-  backgroundColorForContentNotificationWhenSuccess:
-    'var(--background-color-for-content-notification-when-success, hsl(175, 90%, 95%))',
-  backgroundColorForCheckboxInputIcon:
-    'var(--background-color-for-checkbox-input-icon, hsl(175, 55%, 45%))',
-  backgroundColorForCheckboxInputIconWhenDisabled:
-    'var(--background-color-for-checkbox-input-icon-when-disabled, hsl(232, 18%, 80%))',
-  backgroundColorForCheckboxInputIconWhenReadonly:
-    'var(--background-color-for-checkbox-input-icon-when-readonly, hsl(232, 18%, 60%))',
-  backgroundColorForCheckboxInputIconWhenError:
-    'var(--background-color-for-checkbox-input-icon-when-error, #e60050)',
-  backgroundColorForCheckboxInputIconWhenHovered:
-    'var(--background-color-for-checkbox-input-icon-when-hovered, hsl(232, 18%, 90%))',
-  backgroundColorForPrimaryActionDropdownWhenActive:
-    'var(--background-color-for-primary-action-dropdown-when-active, hsl(232, 18%, 90%))',
-  backgroundColorForPrimaryActionDropdownWhenDisabled:
-    'var(--background-color-for-primary-action-dropdown-when-disabled, hsl(232, 18%, 95%))',
-  backgroundColorForToggleInputTrack:
-    'var(--background-color-for-toggle-input-track, hsl(232, 18%, 80%))',
-  backgroundColorForToggleInputTrackWhenDisabled:
-    'var(--background-color-for-toggle-input-track-when-disabled, hsl(232, 18%, 90%))',
-  backgroundColorForToggleInputThumbWhenDisabled:
-    'var(--background-color-for-toggle-input-thumb-when-disabled, hsl(232, 18%, 60%))',
-  backgroundColorForToggleInputTrackWhenChecked:
-    'var(--background-color-for-toggle-input-track-when-checked, hsl(175, 55%, 40%))',
-  backgroundColorForToggleInputThumbWhenChecked:
-    'var(--background-color-for-toggle-input-thumb-when-checked, hsl(175, 55%, 25%))',
-  backgroundColorForToggleInputTrackWhenCheckedAndDisabled:
-    'var(--background-color-for-toggle-input-track-when-checked-and-disabled, hsl(195, 35.2941176471%, 90%))',
-  backgroundColorForToggleInputThumbWhenCheckedAndDisabled:
-    'var(--background-color-for-toggle-input-thumb-when-checked-and-disabled, hsl(195, 35.2941176471%, 60%))',
-  backgroundColorForButtonAsSecondaryWhenInfo:
-    'var(--background-color-for-button-as-secondary-when-info, hsl(203.05555555555554, 93.9130434783%, 95%))',
-  backgroundColorForButtonAsSecondaryWhenInfoAndHovered:
-    'var(--background-color-for-button-as-secondary-when-info-and-hovered, #CEEBFD)',
-  backgroundColorForButtonAsSecondaryWhenInfoAndActive:
-    'var(--background-color-for-button-as-secondary-when-info-and-active, hsl(203.05555555555554, 93.9130434783%, 85%))',
   borderColorForInput: 'var(--border-color-for-input, hsl(232, 18%, 80%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, hsl(175, 55%, 45%))',
@@ -683,109 +463,10 @@ const designTokens = {
     'var(--border-color-for-input-when-hovered, hsl(232, 18%, 80%))',
   borderColorForInputAsQuiet:
     'var(--border-color-for-input-as-quiet, transparent)',
-  borderColorForTag: 'var(--border-color-for-tag, hsl(232, 18%, 80%))',
-  borderColorForTagWarning: 'var(--border-color-for-tag-warning, #f16d0e)',
-  borderColorForTagWhenFocused:
-    'var(--border-color-for-tag-when-focused, hsl(232, 18%, 80%))',
-  borderColorForTagWhenHovered:
-    'var(--border-color-for-tag-when-hovered, hsl(232, 18%, 80%))',
-  borderColorForButtonAsIcon:
-    'var(--border-color-for-button-as-icon, hsl(232, 18%, 80%))',
-  borderColorForButtonAsIconAsInfo:
-    'var(--border-color-for-button-as-icon-as-info, hsl(232, 18%, 80%))',
-  borderColorForButtonAsIconAsPrimary:
-    'var(--border-color-for-button-as-icon-as-primary, hsl(232, 18%, 80%))',
-  borderColorForButtonAsIconWhenDisabled:
-    'var(--border-color-for-button-as-icon-when-disabled, #fff)',
-  borderColorForTableHeader: 'var(--border-color-for-table-header, #fff)',
-  borderColorForTableHeaderAsBottom:
-    'var(--border-color-for-table-header-as-bottom, hsl(232, 18%, 95%))',
-  borderColorForTableManagerDroppableList:
-    'var(--border-color-for-table-manager-droppable-list, hsl(232, 18%, 80%))',
-  borderColorForCollapsiblePanelHeader:
-    'var(--border-color-for-collapsible-panel-header, hsl(232, 18%, 90%))',
-  borderColorForStampWhenError:
-    'var(--border-color-for-stamp-when-error, hsl(339.1304347826087, 100%, 85%))',
-  borderColorForStampWhenWarning:
-    'var(--border-color-for-stamp-when-warning, hsl(25.110132158590307, 89.0196078431%, 85%))',
-  borderColorForStampAsPositive:
-    'var(--border-color-for-stamp-as-positive, hsl(175, 70%, 85%))',
-  borderColorForStampAsInformation:
-    'var(--border-color-for-stamp-as-information, hsl(203.05555555555554, 93.9130434783%, 85%))',
-  borderColorForStampAsPrimary:
-    'var(--border-color-for-stamp-as-primary, hsl(175, 70%, 85%))',
-  borderColorForStampAsSecondary:
-    'var(--border-color-for-stamp-as-secondary, hsl(232, 18%, 85%))',
-  borderColorForLocalizedInputLabel:
-    'var(--border-color-for-localized-input-label, hsl(232, 18%, 80%))',
-  borderColorForLocalizedInputLabelWhenReadonly:
-    'var(--border-color-for-localized-input-label-when-readonly, #fff)',
-  borderColorForContentNotificationWhenError:
-    'var(--border-color-for-content-notification-when-error, hsl(339.1304347826087, 100%, 85%))',
-  borderColorForContentNotificationWhenInfo:
-    'var(--border-color-for-content-notification-when-info, hsl(203.05555555555554, 93.9130434783%, 85%))',
-  borderColorForContentNotificationWhenWarning:
-    'var(--border-color-for-content-notification-when-warning, hsl(25.110132158590307, 89.0196078431%, 85%))',
-  borderColorForContentNotificationWhenSuccess:
-    'var(--border-color-for-content-notification-when-success, hsl(175, 70%, 85%))',
-  borderColorForGroupHeadingSelectInputOptions:
-    'var(--border-color-for-group-heading-select-input-options, hsl(232, 18%, 90%))',
-  borderColorForSelectInputMenu:
-    'var(--border-color-for-select-input-menu, #fff)',
-  borderColorForSelectInputWhenReadonly:
-    'var(--border-color-for-select-input-when-readonly, hsl(232, 18%, 95%))',
-  borderColorForSelectInputMenuWhenWarning:
-    'var(--border-color-for-select-input-menu-when-warning, #fff)',
-  borderColorForSelectInputMenuWhenError:
-    'var(--border-color-for-select-input-menu-when-error, #fff)',
-  borderColorForCheckboxInputIcon:
-    'var(--border-color-for-checkbox-input-icon, hsl(175, 55%, 45%))',
-  borderColorForCheckboxInputIconWhenDisabled:
-    'var(--border-color-for-checkbox-input-icon-when-disabled, hsl(232, 18%, 80%))',
-  borderColorForCheckboxInputIconWhenReadonly:
-    'var(--border-color-for-checkbox-input-icon-when-readonly, hsl(232, 18%, 60%))',
-  borderColorForCheckboxInputIconWhenError:
-    'var(--border-color-for-checkbox-input-icon-when-error, #e60050)',
-  borderColorForRadioInput:
-    'var(--border-color-for-radio-input, hsl(232, 18%, 60%))',
-  borderColorForRadioInputWhenDisabled:
-    'var(--border-color-for-radio-input-when-disabled, hsl(232, 18%, 80%))',
-  borderColorForRadioInputWhenReadonly:
-    'var(--border-color-for-radio-input-when-readonly, hsl(232, 18%, 60%))',
-  borderColorForRadioInputWhenChecked:
-    'var(--border-color-for-radio-input-when-checked, hsl(175, 55%, 45%))',
-  borderColorForRadioInputWhenFocused:
-    'var(--border-color-for-radio-input-when-focused, hsl(232, 18%, 60%))',
-  borderColorForPrimaryActionDropdownMenu:
-    'var(--border-color-for-primary-action-dropdown-menu, #fff)',
-  borderColorForButtonAsSecondaryWhenInfo:
-    'var(--border-color-for-button-as-secondary-when-info, hsl(203.05555555555554, 93.9130434783%, 85%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 4px)',
   borderRadiusForButtonAsMedium:
     'var(--border-radius-for-button-as-medium, 4px)',
-  borderRadiusForButtonAsIconAsBig:
-    'var(--border-radius-for-button-as-icon-as-big, 4px)',
-  borderRadiusForButtonAsIconAsMedium:
-    'var(--border-radius-for-button-as-icon-as-medium, 4px)',
-  borderRadiusForButtonAsIconAsSmall:
-    'var(--border-radius-for-button-as-icon-as-small, 2px)',
   borderRadiusForInput: 'var(--border-radius-for-input, 4px)',
-  borderRadiusForTag: 'var(--border-radius-for-tag, 2px)',
-  borderRadiusForCard: 'var(--border-radius-for-card, 4px)',
-  borderRadiusForTableManagerDroppableList:
-    'var(--border-radius-for-table-manager-droppable-list, 4px)',
-  borderRadiusForStamp: 'var(--border-radius-for-stamp, 4px)',
-  borderRadiusForStampAsCondensed:
-    'var(--border-radius-for-stamp-as-condensed, 2px)',
-  borderRadiusForViewSwitcher: 'var(--border-radius-for-view-switcher, 4px)',
-  borderRadiusForContentNotification:
-    'var(--border-radius-for-content-notification, 4px)',
-  borderRadiusForPrimaryActionDropdown:
-    'var(--border-radius-for-primary-action-dropdown, var(--border-radius-4) 0 0 var(--border-radius-4))',
-  borderRadiusForPrimaryActionDropdownIcon:
-    'var(--border-radius-for-primary-action-dropdown-icon, 0 var(--border-radius-4) var(--border-radius-4) 0)',
-  borderRadiusForPrimaryActionDropdownMenu:
-    'var(--border-radius-for-primary-action-dropdown-menu, 4px)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
     'var(--font-color-for-input-when-disabled, hsl(232, 18%, 60%))',

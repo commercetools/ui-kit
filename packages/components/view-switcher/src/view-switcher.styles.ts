@@ -31,13 +31,9 @@ export const getButtonStyles = (
   isFirstButton?: TViewSwitcherButtonProps['isFirstButton'],
   isLastButton?: TViewSwitcherButtonProps['isLastButton']
 ) => {
-  const borderRadius = `${
-    isFirstButton ? designTokens.borderRadiusForViewSwitcher : '0'
-  } ${
-    isLastButton
-      ? `${designTokens.borderRadiusForViewSwitcher} ${designTokens.borderRadiusForViewSwitcher}`
-      : '0 0'
-  } ${isFirstButton ? designTokens.borderRadiusForViewSwitcher : '0'}`;
+  const borderRadius = `${isFirstButton ? designTokens.borderRadius4 : '0'} ${
+    isLastButton ? `${designTokens.borderRadius4}` : '0 0'
+  } ${isFirstButton ? designTokens.borderRadius4 : '0'}`;
 
   const fontColor = getFontColor(isDisabled, isActive);
 
@@ -52,26 +48,26 @@ export const getButtonStyles = (
       border-left: ${isFirstButton ? '1px solid var(--color-neutral)' : '0'};
       border-radius: ${borderRadius};
       box-shadow: ${designTokens.shadow0};
-      background-color: ${designTokens.backgroundColorForViewSwitcher};
+      background-color: ${designTokens.colorSurface};
       &:hover {
-        background-color: ${designTokens.backgroundColorForViewSwitcherWhenHovered};
+        background-color: ${designTokens.colorNeutral95};
       }
       &:active {
-        background-color: ${designTokens.backgroundColorForViewSwitcherWhenSelected};
+        background-color: ${designTokens.colorNeutral95};
       }
       ${getSizeStyles(isCondensed)}
     `,
     isDisabled &&
       css`
-        background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
+        background-color: ${designTokens.colorSurface};
         color: ${designTokens.colorNeutral60};
         &:hover {
-          background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
+          background-color: ${designTokens.colorSurface};
         }
       `,
     isActive &&
       css`
-        background-color: ${designTokens.backgroundColorForViewSwitcherWhenSelected};
+        background-color: ${designTokens.colorNeutral95};
         box-shadow: ${designTokens.shadow0};
       `,
   ];

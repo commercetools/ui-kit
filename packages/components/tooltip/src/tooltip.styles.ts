@@ -62,7 +62,7 @@ export const Body = styled.div`
   font-size: ${designTokens.fontSize10};
   opacity: 0.95;
   color: ${designTokens.colorSurface};
-  background-color: ${designTokens.backgroundColorForTooltip};
+  background-color: ${designTokens.colorAccent10};
   white-space: break-spaces;
 `;
 
