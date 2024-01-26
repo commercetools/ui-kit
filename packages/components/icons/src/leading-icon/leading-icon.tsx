@@ -34,24 +34,24 @@ export type TLeadingIconProps = {
 };
 
 const iconSizes = {
-  10: designTokens.spacing50, // 24px
+  10: designTokens.spacing50, // 32px
   20: `calc(${designTokens.spacing50} + ${designTokens.spacing20}`, // 40px
   30: designTokens.spacing60, //48px
   40: designTokens.spacing70, //64px
 } as const;
 
-function getSize(size: TLeadingIconProps['size'] = '20') {
+function getSizeStyles(size: TLeadingIconProps['size'] = '20') {
   return {
     height: iconSizes[size],
     width: iconSizes[size],
   };
 }
 
-function getColor({
+function getColorStyles({
   color = 'neutral',
   isInverted = false,
 }: {
-  color: TLeadingIconProps['color'];
+  color: TLeadingIconProps['color'] | 'customSvg';
   isInverted: TLeadingIconProps['isInverted'];
 }) {
   switch (color) {
@@ -62,7 +62,8 @@ function getColor({
             fill: designTokens.colorNeutral90,
           }
         : {
-            background: designTokens.colorNeutral90,
+            background: designTokens.colorSurface,
+            border: `solid ${designTokens.borderWidth1} ${designTokens.colorNeutral90}`,
             fill: designTokens.colorNeutral60,
           };
     case 'neutral':
@@ -116,6 +117,12 @@ function getColor({
             background: designTokens.colorBrown90,
             fill: designTokens.colorBrown50,
           };
+    case 'customSvg':
+      return {
+        background: designTokens.colorSurface,
+        border: `solid ${designTokens.borderWidth1} ${designTokens.colorNeutral90}`,
+        fill: null,
+      };
   }
 }
 
@@ -134,32 +141,40 @@ const LeadingIcon = (props: TLeadingIconProps) => {
     return null;
   }
 
-  const dimensions = getSize(props.size);
-  const theme = getColor({ color: props.color, isInverted: props.isInverted });
+  const sizeStyles = getSizeStyles(props.size);
+  const colorStyles = getColorStyles({
+    color: props.svg ? 'customSvg' : props.color,
+    isInverted: props.isInverted,
+  });
   return (
     <div
       // https://emotion.sh/docs/best-practices#use-the-style-prop-for-dynamic-styles
       // https://emotion.sh/docs/best-practices#advanced-css-variables-with-style
       style={
         {
-          '--leading-icon-background-color': theme.background,
-          '--leading-icon-fill-color': theme.fill,
-          '--leading-icon-height': dimensions.height,
-          '--leading-icon-width': dimensions.width,
+          '--leading-icon-background-color': colorStyles.background,
+          '--leading-icon-fill-color': colorStyles.fill,
+          '--leading-icon-height': sizeStyles.height,
+          '--leading-icon-width': sizeStyles.width,
+          '--leading-icon-padding': props.svg ? null : designTokens.spacing20,
+          '--leading-icon-border': colorStyles.border,
         } as TCustomCSS
       }
+      // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role
+      role="img"
       css={css`
         display: flex;
         flex: 0 0 auto;
         justify-content: center;
         align-items: center;
-        padding: ${designTokens.spacing20};
+        padding: var(--leading-icon-padding);
         height: var(--leading-icon-height);
         width: var(--leading-icon-width);
         border-radius: ${designTokens.borderRadius4};
         color: var(--leading-icon-fill-color);
         fill: var(--leading-icon-fill-color);
         background-color: var(--leading-icon-background-color);
+        border: var(--leading-icon-border);
       `}
       {...filterDataAttributes(props)}
       {...filterAriaAttributes(props)}

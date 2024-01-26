@@ -72,3 +72,36 @@ The `data` passed to the component is run through a DOM sanitizer to prevent unw
 ### Where to use
 
 This component can be used whenever the icon has to be rendered dynamically on runtime. For example in the Merchant Center this can be the case for the navigation menu icons, etc.
+
+## Leading Icon
+
+For use when you need to render an icon with a themed bounding-box. Icons can be either from the default set of icons, or custom SVG's.
+
+The component is exported as a separate entry point:
+
+```js
+import LeadingIcon from '@commercetools-uikit/icons/leading-icon';
+```
+
+### Usage
+
+```js
+import LeadingIcon from '@commercetools-uikit/icons/leading-icon';
+import { ExportIcon } from '@commercetools-uikit/icons';
+
+const app = () => <LeadingIcon icon={<ExportIcon />} />;
+```
+
+### Properties
+
+| Props        | Type           | Required | Values                                                       | Default   | Description                                                                                                                 |
+| ------------ | -------------- | :------: | ------------------------------------------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `size`       | `string`       |          | '10', '20', '30', '40'                                       | '20'      | Specifies the icon size                                                                                                     |
+| `color`      | `string`       |          | 'accent', 'brown', 'neutral', 'purple', 'turquoise', 'white' | 'neutral' | Specifies the icon's background color and fill color                                                                        |
+| `isInverted` | `boolean`      |          | `true`, `false`                                              | `false`   | Specifies whether the icon has a light background and dark fill (`false`), or dark background and light fill (`true`)       |
+| `icon`       | `ReactElement` |          | UI Kit `<Icon/>` component                                   |           | Icon that is displayed within the component, you must supply a child icon with with this prop or the `svg` prop             |
+| `svg`        | `string`       |          | A custom SVG to display                                      |           | Icon that is displayed using the `InlineSvg` component, you must supply a child icon with with this prop or the `icon` prop |
+
+### Where to use
+
+This component can be used wherever it is necessary to display a themed icon.
