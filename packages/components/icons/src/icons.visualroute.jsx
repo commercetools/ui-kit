@@ -6,17 +6,17 @@ import InlineSvg from '@commercetools-uikit/icons/inline-svg';
 import LeadingIcon from '@commercetools-uikit/icons/leading-icon';
 import Text from '@commercetools-uikit/text';
 import Spacings from '@commercetools-uikit/spacings';
-import svg from './fixtures/svg';
+import rawSvg from './fixtures/raw-svg';
 import { Suite, Spec } from '../../../../test/percy';
 
 const IconList = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(8, 1fr);
 `;
 
 const LeadingIconList = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
   gap: 16px;
 `;
 
@@ -137,7 +137,7 @@ export const component = () => (
                     }}
                     key={`${size}-${color}`}
                   >
-                    <InlineSvg data={svg.clock} color={color} size={size} />
+                    <InlineSvg data={rawSvg.clock} color={color} size={size} />
                   </div>
                 ))}
               </IconList>
@@ -180,7 +180,7 @@ export const component = () => (
             {leadingIconSizes.map((size) => (
               <LeadingIconItem key={size}>
                 <Spacings.Stack alignItems="center">
-                  <LeadingIcon size={size} svg={svg.clock} />
+                  <LeadingIcon size={size} svg={rawSvg.clock} />
                   <Text.Detail>{`custom svg size ${size}`}</Text.Detail>
                 </Spacings.Stack>
               </LeadingIconItem>

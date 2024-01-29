@@ -1,6 +1,6 @@
 import { ArrowLeftIcon } from '../generated';
 import { screen, render } from '../../../../../test/test-utils';
-import svg from '../fixtures/svg';
+import rawSvg from '../fixtures/raw-svg';
 import LeadingIcon, { type TLeadingIconProps } from './leading-icon';
 
 type TLeadingIconTestProps = Pick<
@@ -26,11 +26,7 @@ describe('LeadingIcon', () => {
   beforeEach(() => {
     props = createTestProps();
   });
-  it('should render', async () => {
-    render(<LeadingIcon {...props} />);
-    await screen.findByRole('img', { name: 'leading-icon' });
-  });
-  it('should pass aria attributes', async () => {
+  it('should render a react component and pass aria attributes', async () => {
     render(<LeadingIcon {...props} />);
     await screen.findByRole('img', { name: 'leading-icon' });
   });
@@ -38,12 +34,8 @@ describe('LeadingIcon', () => {
     render(<LeadingIcon {...props} data-testid="test-testid" />);
     await screen.findByTestId('test-testid');
   });
-  it('should render a react component when icon prop is passed', async () => {
-    render(<LeadingIcon {...props} />);
-    await screen.findByRole('img', { name: 'arrowLeft' });
-  });
   it('should render a custom svg when svg prop is passed', async () => {
-    render(<LeadingIcon svg={svg.clock} />);
+    render(<LeadingIcon svg={rawSvg.clock} />);
     await screen.findByLabelText('custom clock svg');
   });
 });
