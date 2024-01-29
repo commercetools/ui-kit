@@ -37,7 +37,7 @@ export type TCardProps = {
   /**
    * A flag to indicate if the Card points to an external source.
    */
-  isExternal?: boolean;
+  isExternalLink?: boolean;
   /**
    * Indicates that a clickable Card should not allow clicks. This allows consumers to temporarily disable a clickable Card.
    */
@@ -100,7 +100,7 @@ const Card = (props: TCardProps) => {
     );
 
   if (props.to) {
-    if (props.isExternal) {
+    if (props.isExternalLink) {
       return (
         <a
           {...commonProps}

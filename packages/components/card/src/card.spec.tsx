@@ -46,10 +46,10 @@ it('should render as a react-router `Link` when `to` prop is provided', () => {
   expect(link).not.toHaveAttribute('rel', 'noopener noreferrer');
 });
 
-it('should render as an external link when `to` and `isExternal` props are provided', () => {
+it('should render as an external link when `to` and `isExternalLink` props are provided', () => {
   const content = 'External Link';
   render(
-    <Card to="https://external.com" isExternal>
+    <Card to="https://external.com" isExternalLink>
       {content}
     </Card>
   );
@@ -84,7 +84,7 @@ it('should support accessibility as a button when the `onClick` prop is provided
 it('should support accessibility as a link when the `to` prop is provided', () => {
   const content = 'Link';
   render(
-    <Card to="https://external.com" isExternal>
+    <Card to="https://external.com" isExternalLink>
       {content}
     </Card>
   );
