@@ -69,3 +69,26 @@ it('should visually indicate when the card is disabled', () => {
   // Card should not be clickable
   expect(card).toHaveStyle(`pointer-events: none`);
 });
+
+it('should support accessibility as a button when the `onClick` prop is provided', () => {
+  render(
+    <Card data-testid="hefe" onClick={() => {}}>
+      Content
+    </Card>
+  );
+
+  const card = screen.getByTestId('hefe');
+  expect(card).toHaveAttribute('role', 'button');
+});
+
+it('should support accessibility as a link when the `to` prop is provided', () => {
+  const content = 'Link';
+  render(
+    <Card to="https://external.com" isExternal>
+      {content}
+    </Card>
+  );
+
+  const link = screen.getByText(content).closest('a');
+  expect(link).toHaveAttribute('role', 'link');
+});

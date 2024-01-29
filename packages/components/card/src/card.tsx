@@ -50,7 +50,6 @@ const Card = (props: TCardProps) => {
   const commonProps = {
     ...filterDataAttributes(props),
     onClick: isClickable ? props.onClick : undefined,
-    role: isClickable ? 'button' : undefined,
     ['aria-disabled']: props.isDisabled ? true : undefined,
     css: css`
       box-sizing: border-box;
@@ -105,6 +104,7 @@ const Card = (props: TCardProps) => {
       return (
         <a
           {...commonProps}
+          role="link"
           href={props.to}
           target="_blank"
           rel="noopener noreferrer"
@@ -121,7 +121,11 @@ const Card = (props: TCardProps) => {
     }
   }
 
-  return <div {...commonProps}>{content}</div>;
+  return (
+    <div {...commonProps} role={props.onClick ? 'button' : undefined}>
+      {content}
+    </div>
+  );
 };
 
 const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'insetScale'> = {
