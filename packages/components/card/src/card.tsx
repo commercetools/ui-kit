@@ -4,6 +4,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes } from '@commercetools-uikit/utils';
 import Inset from '@commercetools-uikit/spacings-inset';
 import { Link } from 'react-router-dom';
+import type { LocationDescriptor } from 'history';
 
 export type TCardProps = {
   /**
@@ -33,7 +34,7 @@ export type TCardProps = {
   /**
    * The URL that the Card should point to. If provided, the Card will be rendered as an anchor element.
    */
-  to?: string;
+  to?: string | LocationDescriptor;
   /**
    * A flag to indicate if the Card points to an external source.
    */
@@ -101,6 +102,12 @@ const Card = (props: TCardProps) => {
 
   if (props.to) {
     if (props.isExternalLink) {
+      if (typeof props.to !== 'string') {
+        throw new Error(
+          '`to` must be a `string` when `isExternal` is provided.'
+        );
+      }
+
       return (
         <a
           {...commonProps}
