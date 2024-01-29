@@ -194,6 +194,7 @@ export type TCreatableSelectFieldProps = {
   isSearchable?: ReactSelectCreatableProps['isSearchable'];
   /**
    * Indicates the input field has an error
+   * @deprecated Please use the `warnings` prop instead so users know the reason why the field is in warning state.
    */
   hasWarning?: boolean;
   /**

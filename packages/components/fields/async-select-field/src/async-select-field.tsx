@@ -190,6 +190,7 @@ export type TAsyncSelectFieldProps = {
   isSearchable?: ReactSelectAsyncProps['isSearchable'];
   /**
    * Indicates the input field has a warning
+   * @deprecated Please use the `warnings` prop instead so users know the reason why the field is in warning state.
    */
   hasWarning?: boolean;
   /**

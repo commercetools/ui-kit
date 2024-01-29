@@ -287,6 +287,7 @@ export type TSelectFieldProps = {
   badge?: ReactNode;
   /**
    * Control to indicate on the input if there are selected values that are potentially invalid
+   * @deprecated Please use the `warnings` prop instead so users know the reason why the field is in warning state.
    */
   hasWarning?: boolean;
   /**
