@@ -110,12 +110,12 @@ export const component = () => (
         <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
-    <Spec label="Type - Raised, Theme - Dark, Disabled: true">
+    <Spec label="Type - Raised, Theme - Dark, Disabled: false">
       <WrappedCard type="raised" theme="dark" insetScale="s">
         <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
-    <Spec label="Type - Raised, Theme - Light, Disabled: true">
+    <Spec label="Type - Raised, Theme - Light, Disabled: false">
       <WrappedCard type="raised" theme="light" insetScale="s">
         <Text.Body>{text}</Text.Body>
       </WrappedCard>
