@@ -350,8 +350,9 @@ export default class SelectField extends Component<TSelectFieldProps> {
       hasErrors(this.props.errors);
 
     const hasWarning =
-      SelectInput.isTouched(this.props.touched!) &&
-      hasWarnings(this.props.warnings);
+      this.props.hasWarning ||
+      (SelectInput.isTouched(this.props.touched!) &&
+        hasWarnings(this.props.warnings));
 
     if (this.props.hintIcon) {
       warning(

@@ -406,8 +406,9 @@ export default class CreatableSelectField extends Component<
       hasErrors(this.props.errors);
 
     const hasWarning =
-      CreatableSelectInput.isTouched(this.props.touched) &&
-      hasWarnings(this.props.warnings);
+      this.props.hasWarning ||
+      (CreatableSelectInput.isTouched(this.props.touched) &&
+        hasWarnings(this.props.warnings));
 
     if (!this.props.isReadOnly) {
       warning(

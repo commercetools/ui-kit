@@ -334,7 +334,8 @@ const defaultProps: Pick<TSearchSelectFieldProps, 'controlShouldRenderValue'> =
 
 const SearchSelectField = (props: TSearchSelectFieldProps) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
-  const hasWarning = Boolean(props.touched) && hasWarnings(props.warnings);
+  const hasWarning =
+    props.hasWarning || (Boolean(props.touched) && hasWarnings(props.warnings));
   const id = useFieldId(props.id, sequentialId);
 
   if (!props.isReadOnly) {

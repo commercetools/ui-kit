@@ -383,8 +383,9 @@ export default class AsyncSelectField extends Component<
       hasErrors(this.props.errors);
 
     const hasWarning =
-      AsyncSelectInput.isTouched(this.props.touched) &&
-      hasWarnings(this.props.warnings);
+      this.props.hasWarning ||
+      (AsyncSelectInput.isTouched(this.props.touched) &&
+        hasWarnings(this.props.warnings));
 
     if (!this.props.isReadOnly) {
       warning(
