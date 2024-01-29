@@ -23,4 +23,4 @@
 We've included a new property in all `*Field` components so consumers can not only render errors (below the input) but also warnings.
 The main difference between them is the color used for the text.
 
-Please take a look at the RADME files of the fields components to learn how to use this new property.
+Please take a look at the README files of the fields components to learn how to use this new property.
