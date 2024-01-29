@@ -50,11 +50,22 @@ storiesOf('Components|Fields', module)
                 Constraints.getAcceptedMaxPropValues(),
                 7
               )}
+              warnings={object('warnings', {
+                customWarning: true,
+              })}
               errors={object('errors', { missing: true, customError: true })}
               renderError={(key) => {
                 switch (key) {
                   case 'customError':
                     return 'A custom error.';
+                  default:
+                    return null;
+                }
+              }}
+              renderWarning={(key) => {
+                switch (key) {
+                  case 'customWarning':
+                    return 'A custom warning.';
                   default:
                     return null;
                 }

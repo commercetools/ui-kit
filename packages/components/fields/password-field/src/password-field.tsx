@@ -22,11 +22,14 @@ import PasswordInput from '@commercetools-uikit/password-input';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { EyeIcon, EyeCrossedIcon } from '@commercetools-uikit/icons';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 import messages from './messages';
 
 const sequentialId = createSequentialId('password-field-');
 const sequentialErrorsId = createSequentialId('password-field-error-')();
+const sequentialWarningsId = createSequentialId('password-field-warning-')();
 
+type TFieldWarnings = Record<string, boolean>;
 type TFieldErrors = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
@@ -35,6 +38,9 @@ type TCustomFormErrors<Values> = {
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
@@ -71,9 +77,21 @@ export type TPasswordField = {
    */
   errors?: TFieldErrors;
   /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br/>
+   * Unknown warnings will be forwarded to renderWarning.
+   */
+  warnings?: TFieldWarnings;
+  /**
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
+  /**
+   * Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.
+   * <br />
+   * It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -176,6 +194,7 @@ const PasswordField = (props: TPasswordField) => {
   const [isPasswordVisible, togglePasswordVisibility] = useToggleState(false);
   const id = useFieldId(props.id, sequentialId);
   const hasError = props.touched && hasErrors(props.errors);
+  const hasWarning = props.touched && hasWarnings(props.warnings);
   const canInteract = !props.isDisabled && !props.isReadOnly;
 
   if (!props.isReadOnly) {
@@ -233,6 +252,7 @@ const PasswordField = (props: TPasswordField) => {
           isDisabled={props.isDisabled}
           isReadOnly={props.isReadOnly}
           hasError={hasError}
+          hasWarning={hasWarning}
           placeholder={props.placeholder}
           autoComplete={props.autoComplete}
           horizontalConstraint="scale"
@@ -246,6 +266,12 @@ const PasswordField = (props: TPasswordField) => {
           errors={props.errors}
           isVisible={hasError}
           renderError={props.renderError}
+        />
+        <FieldWarnings
+          id={sequentialWarningsId}
+          warnings={props.warnings}
+          isVisible={hasWarning}
+          renderWarning={props.renderWarning}
         />
       </Stack>
     </Constraints.Horizontal>

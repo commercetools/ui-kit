@@ -70,5 +70,26 @@ export const component = () => (
         touched={true}
       />
     </Spec>
+    <Spec label="with warning when not touched">
+      <TimeField
+        title="Release Time"
+        horizontalConstraint={7}
+        value=""
+        onChange={() => {}}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <TimeField
+        title="Release Time"
+        horizontalConstraint={7}
+        value=""
+        onChange={() => {}}
+        warnings={{ customWarning: true }}
+        touched={true}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
   </Suite>
 );

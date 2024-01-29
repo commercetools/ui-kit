@@ -17,8 +17,10 @@ import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import MultilineTextInput from '@commercetools-uikit/multiline-text-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 export type TFieldErrors = Record<string, boolean>;
+type TFieldWarnings = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
@@ -51,6 +53,12 @@ export type TMultiTextFieldProps = {
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
+  /**
+   * Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.
+   * <br />
+   * It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -111,6 +119,12 @@ export type TMultiTextFieldProps = {
    * Unknown errors will be forwarded to `renderError`
    */
   errors?: TFieldErrors;
+  /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br/>
+   * Unknown warnings will be forwarded to renderWarning.
+   */
+  warnings?: TFieldWarnings;
 
   // LabelField
   /**
@@ -151,9 +165,15 @@ type TState = {
 
 const sequentialId = createSequentialId('multiline-text-field-');
 const sequentialErrorsId = createSequentialId('multiline-text-field-error-')();
+const sequentialWarningsId = createSequentialId(
+  'multiline-text-field-warning-'
+)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
@@ -190,6 +210,7 @@ class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
     if (!this.props.isReadOnly) {
       warning(
@@ -230,6 +251,7 @@ class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasError={hasError}
+            hasWarning={hasWarning}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
@@ -241,6 +263,12 @@ class MultilineTextField extends Component<TMultiTextFieldProps, TState> {
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
           />
         </Spacings.Stack>
       </Constraints.Horizontal>

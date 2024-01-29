@@ -229,3 +229,16 @@ describe('when field is touched and has errors', () => {
     });
   });
 });
+
+describe('when field is touched and has warnings', () => {
+  describe('when there is a custom warning', () => {
+    it('should render the custom warning message', async () => {
+      const { findByText } = renderAsyncCreatableSelectField({
+        touched: true,
+        warnings: { customWarning: true },
+        renderWarning: () => 'Custom warning',
+      });
+      expect(await findByText('Custom warning')).toBeInTheDocument();
+    });
+  });
+});

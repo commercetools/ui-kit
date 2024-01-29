@@ -16,12 +16,16 @@ import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import DateInput from '@commercetools-uikit/date-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 const sequentialId = createSequentialId('date-field-');
 const sequentialErrorsId = createSequentialId('date-field-error-')();
+const sequentialWarningsId = createSequentialId('date-field-warning-')();
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+type TWarningRenderer = (key: string, warning?: boolean) => ReactNode;
 type TFieldErrors = Record<string, boolean>;
+type TFieldWarnings = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
@@ -29,6 +33,9 @@ type TCustomFormErrors<Values> = {
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 type TCustomEvent = {
   target: {
@@ -71,6 +78,16 @@ export type TDateFieldProps = {
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
+  /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br />
+   * Unknown warnings will be forwarded to `renderWarning`
+   */
+  warnings?: TFieldWarnings;
+  /**
+   * Called with custom warnings. This function can return a message which will be wrapped in an WarningMessage. It can also return null to show no warning.
+   */
+  renderWarning?: TWarningRenderer;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -193,6 +210,7 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
     if (!this.props.isReadOnly) {
       warning(
@@ -232,6 +250,7 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
             onChange={this.props.onChange}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
+            hasWarning={hasWarning}
             hasError={hasError}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
@@ -245,6 +264,12 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
           />
         </Spacings.Stack>
       </Constraints.Horizontal>

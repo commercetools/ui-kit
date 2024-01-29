@@ -79,5 +79,26 @@ export const component = () => (
         isReadOnly
       />
     </Spec>
+    <Spec label="with warning when not touched">
+      <DateField
+        title="Release Date"
+        horizontalConstraint={7}
+        value=""
+        onChange={() => {}}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <DateField
+        title="Release Date"
+        horizontalConstraint={7}
+        value=""
+        onChange={() => {}}
+        warnings={{ customWarning: true }}
+        touched={true}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
   </Suite>
 );

@@ -19,8 +19,10 @@ import MoneyInput, {
   type TCurrencyCode,
 } from '@commercetools-uikit/money-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+type TFieldWarnings = Record<string, boolean>;
 type TFieldErrors = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
@@ -34,9 +36,13 @@ type TTouched = {
 
 const sequentialId = createSequentialId('money-field-');
 const sequentialErrorsId = createSequentialId('money-field-error-')();
+const sequentialWarningsId = createSequentialId('money-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 type TValue = {
   amount: string;
@@ -85,9 +91,21 @@ export type TMoneyFieldProps = {
    */
   errors?: TFieldErrors;
   /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br/>
+   * Unknown warnings will be forwarded to renderWarning.
+   */
+  warnings?: TFieldWarnings;
+  /**
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
+  /**
+   * Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.
+   * <br />
+   * It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -239,6 +257,10 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
     const hasError =
       MoneyInput.isTouched(this.props.touched) && hasErrors(this.props.errors);
 
+    const hasWarning =
+      MoneyInput.isTouched(this.props.touched) &&
+      hasWarnings(this.props.warnings);
+
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
@@ -284,6 +306,7 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
             isReadOnly={this.props.isReadOnly}
             onChange={this.props.onChange}
             hasError={hasError}
+            hasWarning={hasWarning}
             hasHighPrecisionBadge={this.props.hasHighPrecisionBadge}
             menuPortalTarget={this.props.menuPortalTarget}
             menuPortalZIndex={this.props.menuPortalZIndex}
@@ -297,6 +320,12 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
           />
         </Spacings.Stack>
       </Constraints.Horizontal>
