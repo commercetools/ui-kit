@@ -77,6 +77,17 @@ const DefaultRoute = () => (
         isReadOnly={true}
       />
     </Spec>
+    <Spec label="when has warning">
+      <AsyncCreatableSelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+        hasWarning={true}
+      />
+    </Spec>
     <Spec label="with warning when not touched">
       <AsyncCreatableSelectField
         title="State"

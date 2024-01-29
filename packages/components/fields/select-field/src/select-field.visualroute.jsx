@@ -75,6 +75,17 @@ export const component = () => (
         isReadOnly={true}
       />
     </Spec>
+    <Spec label="when has warning">
+      <SelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        hasWarning={true}
+      />
+    </Spec>
     <Spec label="with warning when not touched">
       <SelectField
         title="State"
