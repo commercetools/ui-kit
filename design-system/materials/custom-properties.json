@@ -161,6 +161,7 @@
   "--spacing-30": "16px",
   "--spacing-40": "24px",
   "--spacing-50": "32px",
+  "--spacing-55": "40px",
   "--spacing-60": "48px",
   "--spacing-70": "64px",
   "--transition-linear-80ms": "80ms linear",
