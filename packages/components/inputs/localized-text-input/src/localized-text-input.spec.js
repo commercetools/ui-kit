@@ -121,9 +121,9 @@ describe('when input is expanded', () => {
     getByLabelText(/show all languages/i).click();
     expect(getByLabelText('FR')).toBeInTheDocument();
   });
-  it('should display all descriptions', () => {
+  it('should display all additionalInfo', () => {
     const { getByLabelText, getByText } = renderLocalizedTextInput({
-      descriptions: {
+      additionalInfo: {
         en: 'cool description',
         fr: 'une description',
       },
@@ -320,11 +320,11 @@ describe('when the warnings is on the selected language', () => {
   });
 });
 
-describe('when the descriptions is on the selected language', () => {
-  it('should display the descriptions without expanding', () => {
+describe('when the additionalInfo is on the selected language', () => {
+  it('should display only the first additionalInfo without expanding', () => {
     const { getByLabelText, getByText, queryByLabelText } =
       renderLocalizedTextInput({
-        descriptions: {
+        additionalInfo: {
           en: 'Some description',
         },
       });

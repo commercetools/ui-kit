@@ -5,7 +5,7 @@ import {
   type ChangeEventHandler,
   type FocusEventHandler,
 } from 'react';
-import { useIntl } from 'react-intl';
+import { useIntl, MessageDescriptor } from 'react-intl';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -152,6 +152,17 @@ export type TLocalizedMultilineTextInputProps = {
   warnings?: {
     [key: string]: ReactNode;
   };
+  /**
+   * A map of additional information
+   */
+  additionalInfo?: Record<
+    string,
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      })
+  >;
 };
 
 const expandedTranslationsReducer = (
@@ -305,6 +316,9 @@ const LocalizedMultilineTextInput = (
                 intl={intl}
                 warning={props.warnings && props.warnings[language]}
                 error={props.errors && props.errors[language]}
+                additionalInfo={
+                  props.additionalInfo && props.additionalInfo[language]
+                }
                 hasLanguagesControl={hasLanguagesControl}
                 {...createLocalizedDataAttributes(props, language)}
                 /* ARIA */

@@ -88,6 +88,7 @@ export type TEditorProps = {
   hasError?: boolean;
   error?: ReactNode;
   warning?: ReactNode;
+  additionalInfo?: ReactNode;
   defaultExpandMultilineText: boolean;
   toggleLanguage: (language: string) => void;
   language: string;
@@ -312,6 +313,14 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                   return (
                     <LeftColumn>
                       <div>{props.warning}</div>
+                    </LeftColumn>
+                  );
+                if (props.additionalInfo)
+                  return (
+                    <LeftColumn>
+                      <Text.Detail tone="tertiary">
+                        {props.additionalInfo}
+                      </Text.Detail>
                     </LeftColumn>
                   );
                 return null;

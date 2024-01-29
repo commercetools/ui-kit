@@ -4,7 +4,7 @@ import {
   type ReactNode,
   useCallback,
 } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, MessageDescriptor } from 'react-intl';
 import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import { ErrorMessage } from '@commercetools-uikit/messages';
@@ -23,7 +23,7 @@ import {
   getName,
 } from '@commercetools-uikit/localized-utils';
 import { createSequentialId, warning } from '@commercetools-uikit/utils';
-import text from '@commercetools-uikit/text/src/text';
+import Text from '@commercetools-uikit/text';
 import TextInput from '@commercetools-uikit/text-input';
 import {
   LocalizedInputToggle,
@@ -135,9 +135,16 @@ export type TLocalizedTextInputProps = {
    */
   warnings?: Record<string, ReactNode>;
   /**
-   * A map of descriptions.
+   * A map of additional information
    */
-  descriptions?: Record<string, string>;
+  additionalInfo?: Record<
+    string,
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      })
+  >;
 };
 
 export type TLocalizedInputProps = {
@@ -332,10 +339,10 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                   />
                   {props.errors && props.errors[language]}
                   {props.warnings && props.warnings[language]}
-                  {props.descriptions && (
-                    <text.Detail tone="tertiary">
-                      {props.descriptions[language]}
-                    </text.Detail>
+                  {props.additionalInfo && (
+                    <Text.Detail tone="tertiary">
+                      {props.additionalInfo[language]}
+                    </Text.Detail>
                   )}
                 </Stack>
               </div>

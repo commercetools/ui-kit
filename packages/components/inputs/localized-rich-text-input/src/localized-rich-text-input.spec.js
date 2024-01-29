@@ -121,6 +121,22 @@ describe('LocalizedRichTextInput', () => {
           'false'
         );
       });
+      it('should display all additionalInfo', () => {
+        render(
+          <LocalizedRichTextInput
+            {...baseProps}
+            selectedLanguage="en"
+            isReadOnly={true}
+            additionalInfo={{
+              en: 'cool description',
+              de: 'eine beschreibung',
+            }}
+          />
+        );
+        screen.getByLabelText(/show all languages/i).click();
+        expect(screen.getByText('cool description')).toBeInTheDocument();
+        expect(screen.getByText('eine beschreibung')).toBeInTheDocument();
+      });
     });
     describe('when not expanded', () => {
       it('should render a disabled input', () => {
@@ -135,6 +151,23 @@ describe('LocalizedRichTextInput', () => {
           'contenteditable',
           'false'
         );
+      });
+      it('should display only display the first additionalInfo entry', () => {
+        render(
+          <LocalizedRichTextInput
+            {...baseProps}
+            selectedLanguage="en"
+            isReadOnly={true}
+            additionalInfo={{
+              en: 'cool description',
+              de: 'eine beschreibung',
+            }}
+          />
+        );
+        expect(screen.getByText('cool description')).toBeInTheDocument();
+        expect(
+          screen.queryByLabelText('eine beschreibung')
+        ).not.toBeInTheDocument();
       });
     });
   });

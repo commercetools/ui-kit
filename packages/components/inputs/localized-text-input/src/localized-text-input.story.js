@@ -30,7 +30,7 @@ storiesOf('Components|Inputs', module)
     const key = defaultExpandLanguages ? 'yes' : 'no';
     const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
     const warnings = object('warnings', { en: '', de: '', 'nan-Hant-TW': '' });
-    const descriptions = object('descriptions', {
+    const additionalInfo = object('additionalInfo', {
       en: '',
       de: '',
       'nan-Hant-TW': '',
@@ -99,14 +99,14 @@ storiesOf('Components|Inputs', module)
                     )
                   : undefined
               }
-              descriptions={
-                Object.values(descriptions).some(
-                  (description) => description.length > 0
+              additionalInfo={
+                Object.values(additionalInfo).some(
+                  (additionalInfo) => additionalInfo.length > 0
                 )
-                  ? Object.entries(descriptions).reduce(
-                      (acc, [language, description]) => {
-                        if (description.length === 0) return acc;
-                        acc[language] = description;
+                  ? Object.entries(additionalInfo).reduce(
+                      (acc, [language, additionalInfoEntry]) => {
+                        if (additionalInfo.length === 0) return acc;
+                        acc[language] = additionalInfoEntry;
                         return acc;
                       },
                       {}

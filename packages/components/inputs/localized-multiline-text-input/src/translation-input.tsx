@@ -16,6 +16,7 @@ import {
   MultilineInput,
   messagesMultilineInput,
 } from '@commercetools-uikit/input-utils';
+import Text from '@commercetools-uikit/text';
 import {
   getTextareaStyles,
   getLanguageLabelStyles,
@@ -43,6 +44,7 @@ type TranslationInputProps = {
   hasLanguagesControl?: boolean;
   warning?: ReactNode;
   error?: ReactNode;
+  additionalInfo?: ReactNode;
   id?: string;
   name?: string;
   autoComplete?: string;
@@ -203,6 +205,14 @@ const TranslationInput = (props: TranslationInputProps) => {
             return (
               <LeftColumn>
                 <div>{props.warning}</div>
+              </LeftColumn>
+            );
+          if (props.additionalInfo)
+            return (
+              <LeftColumn>
+                <Text.Detail tone="tertiary">
+                  {props.additionalInfo}
+                </Text.Detail>
               </LeftColumn>
             );
           return null;
