@@ -19,22 +19,30 @@ jest.mock('@commercetools-uikit/utils', () => ({
 
 const TestProp = () => (
   <Text.Body data-testid="test-prop">
-    <BoxIcon /> Unpacking the boxes
+    <BoxIcon />
+    <span>Unpacking the boxes</span>
   </Text.Body>
 );
 
-it('should render the inline props', () => {
-  render(<ProgressBar label="Hello" />);
-  expect(screen.getByText('Hello')).toBeInTheDocument();
-});
+describe('ProgressBar', () => {
+  it('should render the inline props', () => {
+    render(<ProgressBar label="Hello" />);
+    expect(screen.getByText('Hello')).toBeInTheDocument();
+  });
 
-it('should render a component as a label', () => {
-  render(<ProgressBar label={<TestProp />} />);
-  expect(screen.getByTestId('test-prop')).toBeInTheDocument();
-  expect(screen.getByText('Unpacking the boxes')).toBeInTheDocument();
-});
+  it('should render a component as a label', () => {
+    render(<ProgressBar label={<TestProp />} />);
+    expect(screen.getByTestId('test-prop')).toBeInTheDocument();
+    expect(screen.getByText('Unpacking the boxes')).toBeInTheDocument();
+  });
 
-it('should render a message descriptor as a label', () => {
-  render(<ProgressBar label={messages.text} />);
-  expect(screen.getByText('this is great progress')).toBeInTheDocument();
+  it('should render a message descriptor as a label', () => {
+    render(<ProgressBar label={messages.text} />);
+    expect(screen.getByText('this is great progress')).toBeInTheDocument();
+  });
+
+  it('should render an aria-label', () => {
+    render(<ProgressBar />);
+    expect(screen.getByLabelText('Progress bar')).toBeInTheDocument();
+  });
 });

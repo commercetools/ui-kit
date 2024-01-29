@@ -1,7 +1,13 @@
+import styled from '@emotion/styled';
 import { ProgressBar } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/progress-bar';
+
+const InvertedContainer = styled.div`
+  background-color: black;
+  height: 100px;
+`;
 
 export const component = () => (
   <Suite>
@@ -98,39 +104,39 @@ export const component = () => (
       />
     </Spec>
     <Spec label="when inverted">
-      <div style={{ backgroundColor: 'black', height: '100px' }}>
+      <InvertedContainer >
         <ProgressBar label={`${75}% completed`} progress={75} isInverted />
-      </div>
+      </InvertedContainer>
     </Spec>
     <Spec label="when inverted and label is left">
-      <div style={{ backgroundColor: 'black', height: '100px' }}>
+      <InvertedContainer >
         <ProgressBar
           labelPosition="left"
           label={`${75}% completed`}
           progress={75}
           isInverted
         />
-      </div>
+      </InvertedContainer>
     </Spec>
     <Spec label="when inverted and label is right">
-      <div style={{ backgroundColor: 'black', height: '100px' }}>
+      <InvertedContainer >
         <ProgressBar
           labelPosition="right"
           label={`${75}% completed`}
           progress={75}
           isInverted
         />
-      </div>
+      </InvertedContainer>
     </Spec>
     <Spec label="when inverted and label is bottom">
-      <div style={{ backgroundColor: 'black', height: '100px' }}>
+      <InvertedContainer >
         <ProgressBar
           labelPosition="bottom"
           label={`${75}% completed`}
           progress={75}
           isInverted
         />
-      </div>
+      </InvertedContainer>
     </Spec>
   </Suite>
 );

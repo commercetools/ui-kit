@@ -1,6 +1,7 @@
 import { type ReactElement, type ReactNode } from 'react';
 import { FormattedMessage, type MessageDescriptor } from 'react-intl';
 import { css, keyframes } from '@emotion/react';
+import { filterAriaAttributes } from '@commercetools-uikit/utils';
 import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
@@ -80,9 +81,9 @@ const heightPerScale = {
   '20': designTokens.spacing40,
 };
 
+// This function is not called with null or undefined
 const getLabel = (label: NonNullable<TProgressBarProps['label']>) => {
   if (typeof label === 'string') return label;
-  // Here the label is a ReactElement or a MessageDescriptor
   return label.hasOwnProperty('defaultMessage') ? (
     <FormattedMessage {...label} />
   ) : (
@@ -153,6 +154,10 @@ const Bar = (
           height: ${heightPerScale[props.height ?? '20']};
           overflow: hidden;
         `}
+        role="progressbar"
+        aria-valuenow={props.progress}
+        aria-label="Progress bar"
+        {...filterAriaAttributes(props)}
       >
         <div
           css={css`
@@ -182,7 +187,7 @@ const Bar = (
   );
 };
 
-const LabelPositionContainer = (props: TProgressBarProps) => {
+const ProgressBar = (props: TProgressBarProps) => {
   switch (props.labelPosition) {
     case 'bottom':
       return (
@@ -194,15 +199,13 @@ const LabelPositionContainer = (props: TProgressBarProps) => {
             height={props.height}
             isAnimated={props.isAnimated}
           />
-          <SpacingsInline justifyContent="center">
-            <ProgressBarLabel
-              label={props.label}
-              labelWidth={props.labelWidth}
-              labelPosition={props.labelPosition}
-              isInverted={props.isInverted}
-              height={props.height}
-            />
-          </SpacingsInline>
+          <ProgressBarLabel
+            label={props.label}
+            labelWidth={props.labelWidth}
+            labelPosition={props.labelPosition}
+            isInverted={props.isInverted}
+            height={props.height}
+          />
         </SpacingsStack>
       );
     case 'left':
@@ -257,15 +260,13 @@ const LabelPositionContainer = (props: TProgressBarProps) => {
     default:
       return (
         <SpacingsStack scale="m" alignItems="center">
-          <SpacingsInline justifyContent="center">
-            <ProgressBarLabel
-              label={props.label}
-              labelWidth={props.labelWidth}
-              labelPosition={props.labelPosition}
-              isInverted={props.isInverted}
-              height={props.height}
-            />
-          </SpacingsInline>
+          <ProgressBarLabel
+            label={props.label}
+            labelWidth={props.labelWidth}
+            labelPosition={props.labelPosition}
+            isInverted={props.isInverted}
+            height={props.height}
+          />
           <Bar
             progress={props.progress}
             barWidth={props.barWidth}
@@ -276,10 +277,6 @@ const LabelPositionContainer = (props: TProgressBarProps) => {
         </SpacingsStack>
       );
   }
-};
-
-const ProgressBar = (props: TProgressBarProps) => {
-  return <LabelPositionContainer {...props} />;
 };
 
 const defaultProps: TProgressBarProps = {
