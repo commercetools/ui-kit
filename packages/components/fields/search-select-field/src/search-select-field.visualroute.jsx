@@ -101,5 +101,30 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="with warning when not touched">
+      <SearchSelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <SearchSelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        touched={true}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
   </Suite>
 );

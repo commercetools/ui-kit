@@ -103,5 +103,28 @@ export const component = () => (
         touched={true}
       />
     </Spec>
+    <Spec label="with warning when not touched">
+      <LocalizedTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <LocalizedTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        touched={true}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
   </Suite>
 );

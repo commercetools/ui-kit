@@ -85,6 +85,28 @@ export const component = () => (
         horizontalConstraint={7}
         hasWarning={true}
       />
+    </Spec><Spec label="with warning when not touched">
+      <CreatableSelectField
+        title="State"
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <CreatableSelectField
+        title="State"
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        touched={true}
+        renderWarning={() => 'Custom warning'}
+      />
     </Spec>
   </Suite>
 );

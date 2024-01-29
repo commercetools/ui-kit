@@ -88,6 +88,29 @@ const DefaultRoute = () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="with warning when not touched">
+      <AsyncCreatableSelectField
+        title="State"
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <AsyncCreatableSelectField
+        title="State"
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        touched={true}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
   </Suite>
 );
 

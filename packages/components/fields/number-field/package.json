@@ -25,6 +25,7 @@
     "@commercetools-uikit/design-system": "17.0.1",
     "@commercetools-uikit/field-errors": "17.0.1",
     "@commercetools-uikit/field-label": "17.0.1",
+    "@commercetools-uikit/field-warnings": "17.0.1",
     "@commercetools-uikit/number-input": "17.0.1",
     "@commercetools-uikit/spacings-stack": "17.0.1",
     "@commercetools-uikit/utils": "17.0.1",
