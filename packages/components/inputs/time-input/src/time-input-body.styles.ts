@@ -29,11 +29,11 @@ const getClockIconContainerColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
-  if (props.hasWarning) {
-    return designTokens.borderColorForInputWhenWarning;
-  }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
     return designTokens.borderColorForInputWhenReadonly;
@@ -44,11 +44,11 @@ const getClockIconContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
     return designTokens.fontColorForInputWhenDisabled;
   }
-  if (props.hasWarning) {
-    return designTokens.fontColorForInputWhenWarning;
-  }
   if (props.hasError) {
     return designTokens.fontColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
     return designTokens.fontColorForInputWhenReadonly;
@@ -88,11 +88,11 @@ const getInputContainerBorderColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
-  if (props.hasWarning) {
-    return designTokens.borderColorForInputWhenWarning;
-  }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
     return designTokens.borderColorForInputWhenReadonly;
@@ -104,11 +104,11 @@ const getInputContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
     return designTokens.fontColorForInputWhenDisabled;
   }
-  if (props.hasWarning) {
-    return designTokens.fontColorForInputWhenWarning;
-  }
   if (props.hasError) {
     return designTokens.fontColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
     return designTokens.fontColorForInputWhenReadonly;
