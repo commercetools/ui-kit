@@ -23,6 +23,7 @@ import {
   getName,
 } from '@commercetools-uikit/localized-utils';
 import { createSequentialId, warning } from '@commercetools-uikit/utils';
+import text from '@commercetools-uikit/text/src/text';
 import TextInput from '@commercetools-uikit/text-input';
 import {
   LocalizedInputToggle,
@@ -133,6 +134,10 @@ export type TLocalizedTextInputProps = {
    * A map of warnings.
    */
   warnings?: Record<string, ReactNode>;
+  /**
+   * A map of descriptions.
+   */
+  descriptions?: Record<string, string>;
 };
 
 export type TLocalizedInputProps = {
@@ -164,9 +169,6 @@ export type TLocalizedInputProps = {
    * Indicates the input field has a warning
    */
   hasWarning?: boolean;
-  /**
-   * HTML node to display warning
-   */
   warning?: ReactNode;
   placeholder?: string;
 };
@@ -330,6 +332,11 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                   />
                   {props.errors && props.errors[language]}
                   {props.warnings && props.warnings[language]}
+                  {props.descriptions && (
+                    <text.Detail tone="tertiary">
+                      {props.descriptions[language]}
+                    </text.Detail>
+                  )}
                 </Stack>
               </div>
             );

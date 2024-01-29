@@ -121,6 +121,17 @@ describe('when input is expanded', () => {
     getByLabelText(/show all languages/i).click();
     expect(getByLabelText('FR')).toBeInTheDocument();
   });
+  it('should display all descriptions', () => {
+    const { getByLabelText, getByText } = renderLocalizedTextInput({
+      descriptions: {
+        en: 'cool description',
+        fr: 'une description',
+      },
+    });
+    getByLabelText(/show all languages/i).click();
+    expect(getByText('cool description')).toBeInTheDocument();
+    expect(getByText('une description')).toBeInTheDocument();
+  });
   it('should allow changing the french input', () => {
     const { getByLabelText } = renderLocalizedTextInput();
     getByLabelText(/show all languages/i).click();
@@ -306,5 +317,19 @@ describe('when the warnings is on the selected language', () => {
     expect(getByLabelText('EN')).toBeInTheDocument();
     expect(queryByLabelText('FR')).not.toBeInTheDocument();
     expect(getByText('Some warning')).toBeInTheDocument();
+  });
+});
+
+describe('when the descriptions is on the selected language', () => {
+  it('should display the descriptions without expanding', () => {
+    const { getByLabelText, getByText, queryByLabelText } =
+      renderLocalizedTextInput({
+        descriptions: {
+          en: 'Some description',
+        },
+      });
+    expect(getByLabelText('EN')).toBeInTheDocument();
+    expect(queryByLabelText('FR')).not.toBeInTheDocument();
+    expect(getByText('Some description')).toBeInTheDocument();
   });
 });
