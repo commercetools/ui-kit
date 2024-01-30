@@ -40,7 +40,9 @@ export const getForegroundBarStyles = (props: TProgressBarProps) => css`
     )`};
   background-size: 200% 100%;
   animation: ${props.isAnimated && !props.isInverted
-    ? `${progressPulse} 2s linear infinite`
+    ? css`
+        ${progressPulse} 2s linear infinite
+      `
     : 'none'};
   border-radius: ${designTokens.spacingL};
 `;
