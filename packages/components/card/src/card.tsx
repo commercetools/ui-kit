@@ -51,7 +51,7 @@ const Card = (props: TCardProps) => {
   const commonProps = {
     ...filterDataAttributes(props),
     onClick: isClickable ? props.onClick : undefined,
-    ['aria-disabled']: props.isDisabled ? true : undefined,
+    'aria-disabled': props.isDisabled ? true : undefined,
     css: css`
       box-sizing: border-box;
       width: 100%;
