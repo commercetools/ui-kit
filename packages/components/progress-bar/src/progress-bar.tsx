@@ -1,13 +1,17 @@
-import { type ReactElement, type ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import { FormattedMessage, type MessageDescriptor } from 'react-intl';
-import { css, keyframes } from '@emotion/react';
+import { css } from '@emotion/react';
 import { filterAriaAttributes } from '@commercetools-uikit/utils';
-import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import Text from '@commercetools-uikit/text';
 import isNil from 'lodash/isNil';
+import {
+  heightPerScale,
+  getBackgroundBarStyles,
+  getForegroundBarStyles,
+} from './progress-bar.styles';
 
 export type TProgressBarProps = {
   /**
@@ -76,43 +80,31 @@ export type TProgressBarProps = {
     | 'auto';
 };
 
-const heightPerScale = {
-  '10': designTokens.spacing25,
-  '20': designTokens.spacing40,
-};
-
-// This function is not called with null or undefined
-const getLabel = (label: NonNullable<TProgressBarProps['label']>) => {
-  if (typeof label === 'string') return label;
-  return label.hasOwnProperty('defaultMessage') ? (
-    <FormattedMessage {...label} />
-  ) : (
-    label
-  );
-};
-
 const ProgressBarLabel = (
   props: Pick<
     TProgressBarProps,
     'label' | 'labelWidth' | 'isInverted' | 'height' | 'labelPosition'
-  >
+  > & { textAlignment: string }
 ) => {
   if (isNil(props.label)) return null;
+
+  const label = props.label.hasOwnProperty('defaultMessage') ? (
+    <FormattedMessage {...(props.label as MessageDescriptor)} />
+  ) : (
+    props.label
+  );
+
   return (
     <Constraints.Horizontal max={props.labelWidth}>
       <div
         css={css`
           min-height: ${heightPerScale[props.height ?? '20']};
-          ${(props.labelPosition === 'top' ||
-            props.labelPosition === 'bottom') &&
-          css`
-            text-align: center;
-          `}
+          text-align: ${props.textAlignment};
         `}
       >
         {props.height === '10' ? (
           <Text.Detail tone={props.isInverted ? 'inverted' : undefined}>
-            {getLabel(props.label)}
+            {label}
           </Text.Detail>
         ) : (
           <Text.Body
@@ -120,22 +112,13 @@ const ProgressBarLabel = (
             tone={props.isInverted ? 'inverted' : undefined}
             fontWeight="medium"
           >
-            {getLabel(props.label)}
+            {label}
           </Text.Body>
         )}
       </div>
     </Constraints.Horizontal>
   );
 };
-
-const progressPulse = keyframes`
-  0% {
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: -100% 0;
-  }
-`;
 
 const Bar = (
   props: Pick<
@@ -146,137 +129,76 @@ const Bar = (
   return (
     <Constraints.Horizontal max={props.barWidth}>
       <div
-        css={css`
-          background-color: ${props.isInverted
-            ? 'rgba(255, 255, 255, 0.4)'
-            : designTokens.colorNeutral90};
-          border-radius: ${designTokens.spacingL};
-          height: ${heightPerScale[props.height ?? '20']};
-          overflow: hidden;
-        `}
+        css={getBackgroundBarStyles(props)}
         role="progressbar"
         aria-valuenow={props.progress}
         aria-label="Progress bar"
         {...filterAriaAttributes(props)}
       >
-        <div
-          css={css`
-            width: ${props.progress}%;
-            transition: width 500ms ease-in-out;
-            display: block;
-            height: ${heightPerScale[props.height ?? '20']};
-            background: ${props.isInverted
-              ? designTokens.colorSurface
-              : `linear-gradient(
-                to right,
-                #00E5CB,
-                ${designTokens.colorPrimary25},
-                #00E5CB
-              )`};
-            background-size: 200% 100%;
-            animation: ${props.isAnimated && !props.isInverted
-              ? css`
-                  ${progressPulse} 2s linear infinite
-                `
-              : 'none'};
-            border-radius: ${designTokens.spacingL};
-          `}
-        />
+        <div css={getForegroundBarStyles(props)} />
       </div>
     </Constraints.Horizontal>
   );
 };
 
+const layoutConfigMapping = {
+  top: {
+    textAlignment: 'center',
+    wrappingComponent: SpacingsStack,
+  },
+  bottom: {
+    textAlignment: 'center',
+    wrappingComponent: SpacingsStack,
+  },
+  left: {
+    textAlignment: 'right',
+    wrappingComponent: SpacingsInline,
+  },
+  right: {
+    textAlignment: 'left',
+    wrappingComponent: SpacingsInline,
+  },
+} as const;
+
 const ProgressBar = (props: TProgressBarProps) => {
-  switch (props.labelPosition) {
-    case 'bottom':
-      return (
-        <SpacingsStack scale="m" alignItems="center">
-          <Bar
-            progress={props.progress}
-            barWidth={props.barWidth}
-            isInverted={props.isInverted}
-            height={props.height}
-            isAnimated={props.isAnimated}
-          />
-          <ProgressBarLabel
-            label={props.label}
-            labelWidth={props.labelWidth}
-            labelPosition={props.labelPosition}
-            isInverted={props.isInverted}
-            height={props.height}
-          />
-        </SpacingsStack>
-      );
-    case 'left':
-      return (
-        <SpacingsInline scale="m" alignItems="center">
-          <div
-            css={css`
-              text-align: right;
-            `}
-          >
-            <SpacingsInline justifyContent="center">
-              <ProgressBarLabel
-                label={props.label}
-                labelWidth={props.labelWidth}
-                labelPosition={props.labelPosition}
-                isInverted={props.isInverted}
-                height={props.height}
-              />
-            </SpacingsInline>
-          </div>
-          <Bar
-            progress={props.progress}
-            barWidth={props.barWidth}
-            isInverted={props.isInverted}
-            height={props.height}
-            isAnimated={props.isAnimated}
-          />
-        </SpacingsInline>
-      );
-    case 'right':
-      return (
-        <SpacingsInline scale="m" alignItems="center">
-          <Bar
-            progress={props.progress}
-            barWidth={props.barWidth}
-            isInverted={props.isInverted}
-            height={props.height}
-            isAnimated={props.isAnimated}
-          />
-          <SpacingsInline justifyContent="center">
-            <ProgressBarLabel
-              label={props.label}
-              labelWidth={props.labelWidth}
-              labelPosition={props.labelPosition}
-              isInverted={props.isInverted}
-              height={props.height}
-            />
-          </SpacingsInline>
-        </SpacingsInline>
-      );
-    case 'top':
-    default:
-      return (
-        <SpacingsStack scale="m" alignItems="center">
-          <ProgressBarLabel
-            label={props.label}
-            labelWidth={props.labelWidth}
-            labelPosition={props.labelPosition}
-            isInverted={props.isInverted}
-            height={props.height}
-          />
-          <Bar
-            progress={props.progress}
-            barWidth={props.barWidth}
-            isInverted={props.isInverted}
-            height={props.height}
-            isAnimated={props.isAnimated}
-          />
-        </SpacingsStack>
-      );
+  const layoutConfig = layoutConfigMapping[props.labelPosition || 'top'];
+
+  const BarWithProps = (
+    <Bar
+      progress={props.progress}
+      barWidth={props.barWidth}
+      isInverted={props.isInverted}
+      height={props.height}
+      isAnimated={props.isAnimated}
+    />
+  );
+
+  const LabelWithWithProps = (
+    <ProgressBarLabel
+      label={props.label}
+      labelWidth={props.labelWidth}
+      labelPosition={props.labelPosition}
+      isInverted={props.isInverted}
+      height={props.height}
+      textAlignment={layoutConfig.textAlignment}
+    />
+  );
+
+  const WrappingComponent = layoutConfig.wrappingComponent;
+  let firstComponent = LabelWithWithProps;
+  let secondComponent = BarWithProps;
+
+  if (props.labelPosition === 'right' || props.labelPosition === 'bottom') {
+    firstComponent = BarWithProps;
+    secondComponent = LabelWithWithProps;
   }
+
+  return (
+    <WrappingComponent scale="m" alignItems="center">
+      {firstComponent}
+      {secondComponent}
+    </WrappingComponent>
+  );
 };
 
 const defaultProps: TProgressBarProps = {
