@@ -2,6 +2,12 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
 import { type TLeadingIconProps } from './leading-icon';
 
+type TColorThemeConfiguration = {
+  background: string;
+  fill?: string;
+  border?: string;
+};
+
 const sizeMap = {
   10: designTokens.spacing50,
   20: `calc(${designTokens.spacing50} + ${designTokens.spacing20})`,
@@ -111,11 +117,7 @@ export const getLeadingIconStyles = (props: TLeadingIconProps) => {
 
   const colorThemeStyles = colorThemeMap[
     props.svg ? 'customSvg' : props.color!
-  ][props.isInverted ? 'dark' : 'light'] as {
-    background: string;
-    fill?: string;
-    border?: string;
-  };
+  ][props.isInverted ? 'dark' : 'light'] as TColorThemeConfiguration;
 
   const paddingStyle = getPaddingStyles({
     size: props.svg ? 'customSvg' : props.size,
