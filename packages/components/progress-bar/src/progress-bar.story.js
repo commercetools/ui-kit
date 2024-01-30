@@ -26,7 +26,7 @@ storiesOf('Components|ProgressBar', module)
     return (
       <Section>
         <SpacingsStack>
-          <div style={{ backgroundColor, height: '100px' }}>
+          <div style={{ backgroundColor, height: '100px', width: '100%' }}>
             <ProgressBar
               label={text('label', '50% completed')}
               progress={number('Progress', 50, {

@@ -17,6 +17,7 @@ const progressPulse = keyframes`
 `;
 
 export const getBackgroundBarStyles = (props: TProgressBarProps) => css`
+  width: 100%;
   background-color: ${props.isInverted
     ? 'rgba(255, 255, 255, 0.4)'
     : designTokens.colorNeutral90};
