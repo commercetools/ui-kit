@@ -49,24 +49,38 @@ it('should render as a react-router `Link` when `to` prop is provided', () => {
 it('should render as an external link when `to` and `isExternalLink` props are provided', () => {
   const content = 'External Link';
   render(
-    <Card to="https://external.com" isExternalLink>
+    <Card to="http://www.commercetools.com" isExternalLink>
       {content}
     </Card>
   );
 
   const link = screen.getByText(content).closest('a');
-  expect(link).toHaveAttribute('href', 'https://external.com');
+  expect(link).toHaveAttribute('href', 'http://www.commercetools.com');
   expect(link).toHaveAttribute('target', '_blank');
   expect(link).toHaveAttribute('rel', 'noopener noreferrer');
 });
 
-it('should visually indicate when the card is disabled', () => {
+it('should not trigger disabled styling without `to` or `onClick` props', () => {
   const { container } = render(<Card isDisabled>Disabled Card</Card>);
+
+  const card = container.firstChild;
+  // Content should not have opacity change, not the card container
+  expect(card?.firstChild).not.toHaveStyle(`opacity: 0.5`);
+  // Cursor should be unaffected
+  expect(card).not.toHaveStyle(`cursor: not-allowed`);
+});
+
+it('should trigger disabled styling when `to` or `onClick` props are provided', () => {
+  const { container } = render(
+    <Card to="http://www.commercetools.com" isDisabled>
+      Disabled Card
+    </Card>
+  );
 
   const card = container.firstChild;
   // Content should have opacity change, not the card container
   expect(card?.firstChild).toHaveStyle(`opacity: 0.5`);
-  // Card should not be clickable
+  // Cursor should be affected
   expect(card).toHaveStyle(`cursor: not-allowed`);
 });
 

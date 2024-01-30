@@ -47,6 +47,8 @@ export type TCardProps = {
 
 const Card = (props: TCardProps) => {
   const isClickable = Boolean(!props.isDisabled && (props.onClick || props.to));
+  // Only disable styling if the card is not clickable
+  const isDisableEnabled = props.isDisabled && (props.onClick || props.to);
 
   const commonProps = {
     ...filterDataAttributes(props),
@@ -66,7 +68,7 @@ const Card = (props: TCardProps) => {
       background: ${props.theme === 'dark'
         ? designTokens.colorNeutral95
         : designTokens.colorSurface};
-      cursor: ${props.isDisabled
+      cursor: ${isDisableEnabled
         ? 'not-allowed'
         : isClickable
         ? 'pointer'
@@ -84,7 +86,7 @@ const Card = (props: TCardProps) => {
       color: inherit;
       // Changes the opacity of the content, not the card itself
       & > div {
-        opacity: ${props.isDisabled ? 0.5 : 1};
+        opacity: ${isDisableEnabled ? 0.5 : 1};
       }
     `,
     className: props.className,
