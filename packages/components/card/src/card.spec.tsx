@@ -64,7 +64,7 @@ it('should not trigger disabled styling without `to` or `onClick` props', () => 
   const { container } = render(<Card isDisabled>Disabled Card</Card>);
 
   const card = container.firstChild;
-  // Content should not have opacity change, not the card container
+  // Content should not have opacity change
   expect(card?.firstChild).not.toHaveStyle(`opacity: 0.5`);
   // Cursor should be unaffected
   expect(card).not.toHaveStyle(`cursor: not-allowed`);
