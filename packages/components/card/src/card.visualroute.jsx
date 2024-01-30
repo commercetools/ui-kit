@@ -101,12 +101,24 @@ export const component = () => (
     </Spec>
 
     <Spec label="Type - Flat, Theme - Dark, Disabled: true">
-      <WrappedCard type="flat" theme="dark" insetScale="s" isDisabled>
+      <WrappedCard
+        type="flat"
+        theme="dark"
+        insetScale="s"
+        isDisabled
+        to="http://www.commercetools.com"
+      >
         <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
     <Spec label="Type - Flat, Theme - Light, Disabled: true">
-      <WrappedCard type="flat" theme="light" insetScale="s" isDisabled>
+      <WrappedCard
+        type="flat"
+        theme="light"
+        insetScale="s"
+        isDisabled
+        to="http://www.commercetools.com"
+      >
         <Text.Body>{text}</Text.Body>
       </WrappedCard>
     </Spec>
