@@ -173,7 +173,7 @@ const ProgressBar = (props: TProgressBarProps) => {
     />
   );
 
-  const LabelWithWithProps = (
+  const LabelWithProps = (
     <ProgressBarLabel
       label={props.label}
       labelWidth={props.labelWidth}
@@ -185,12 +185,12 @@ const ProgressBar = (props: TProgressBarProps) => {
   );
 
   const WrappingComponent = layoutConfig.wrappingComponent;
-  let firstComponent = LabelWithWithProps;
+  let firstComponent = LabelWithProps;
   let secondComponent = BarWithProps;
 
   if (props.labelPosition === 'right' || props.labelPosition === 'bottom') {
     firstComponent = BarWithProps;
-    secondComponent = LabelWithWithProps;
+    secondComponent = LabelWithProps;
   }
 
   return (
@@ -205,7 +205,7 @@ const defaultProps: TProgressBarProps = {
   progress: 0,
   label: null,
   labelPosition: 'top',
-  labelWidth: 6,
+  labelWidth: 'scale',
   isInverted: false,
   isAnimated: true,
   height: '20',
