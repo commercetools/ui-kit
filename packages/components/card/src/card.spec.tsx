@@ -80,3 +80,19 @@ it('should support accessibility as a button when the `onClick` prop is provided
   const card = screen.getByTestId('hefe');
   expect(card).toHaveAttribute('role', 'button');
 });
+
+it('should render a `<div>` parent container when disabled', () => {
+  render(
+    <Card
+      data-testid="hefe"
+      to="http://www.commercetools.com"
+      isExternalLink
+      isDisabled
+    >
+      Content
+    </Card>
+  );
+
+  const card = screen.getByTestId('hefe');
+  expect(card.tagName).toBe('DIV');
+});
