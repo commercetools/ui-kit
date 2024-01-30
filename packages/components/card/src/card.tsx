@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Inset from '@commercetools-uikit/spacings-inset';
 import { Link } from 'react-router-dom';
 import type { LocationDescriptor } from 'history';
@@ -102,16 +102,16 @@ const Card = (props: TCardProps) => {
 
   if (props.to) {
     if (props.isExternalLink) {
-      if (typeof props.to !== 'string') {
-        throw new Error(
-          '`to` must be a `string` when `isExternal` is provided.'
-        );
-      }
+      warning(
+        typeof props.to === 'string',
+        'ui-kit/Card: "to" property must be a string when "isExternal" value is true'
+      );
 
       return (
         <a
           {...commonProps}
           role="link"
+          // @ts-ignore
           href={props.to}
           target="_blank"
           rel="noopener noreferrer"
