@@ -181,7 +181,15 @@ export const component = () => (
               <LeadingIconItem key={size}>
                 <Spacings.Stack alignItems="center">
                   <LeadingIcon size={size} svg={rawSvg.clock} />
-                  <Text.Detail>{`custom svg size ${size}`}</Text.Detail>
+                  <Text.Detail>{`custom-svg size ${size}`}</Text.Detail>
+                </Spacings.Stack>
+                <Spacings.Stack alignItems="center">
+                  <LeadingIcon
+                    size={size}
+                    svg={rawSvg.clock}
+                    isInverted={true}
+                  />
+                  <Text.Detail>{`inverted`}</Text.Detail>
                 </Spacings.Stack>
               </LeadingIconItem>
             ))}

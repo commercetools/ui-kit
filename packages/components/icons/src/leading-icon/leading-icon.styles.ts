@@ -37,8 +37,7 @@ const colorThemeMap = {
       fill: 'inherit',
     },
     dark: {
-      background: designTokens.colorSurface,
-      border: `solid ${designTokens.borderWidth1} ${designTokens.colorNeutral90}`,
+      background: designTokens.colorSolid,
       fill: 'inherit',
     },
   },
