@@ -18,7 +18,7 @@ const CardStoryTemplate = (props) => {
   const onClickEnabled = boolean('onClick enabled', false);
   const isDisabled = boolean('isDisabled', false);
   const to = text('to', '');
-  const isExternal = boolean('isExternal', false);
+  const isExternalLink = boolean('isExternalLink', false);
 
   const handleClick = onClickEnabled ? () => alert('Card clicked') : undefined;
 
@@ -43,7 +43,7 @@ const CardStoryTemplate = (props) => {
                     onClick={handleClick}
                     isDisabled={isDisabled}
                     to={to ? to : undefined}
-                    isExternal={isExternal}
+                    isExternalLink={isExternalLink}
                   >
                     {text('content', content)}
                   </Card>
