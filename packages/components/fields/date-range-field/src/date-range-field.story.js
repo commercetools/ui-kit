@@ -53,6 +53,17 @@ storiesOf('Components|Fields', module)
                     return null;
                 }
               }}
+              warnings={object('warnings', {
+                customWarning: true,
+              })}
+              renderWarning={(key) => {
+                switch (key) {
+                  case 'customWarning':
+                    return 'A custom warning.';
+                  default:
+                    return null;
+                }
+              }}
               isRequired={boolean('isRequired', false)}
               touched={boolean('touched', false)}
               name={text('name', '')}

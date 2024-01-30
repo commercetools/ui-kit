@@ -103,6 +103,17 @@ storiesOf('Components|Fields/SelectFields', module)
                       return null;
                   }
                 }}
+                warnings={object('warnings', {
+                  customWarning: true,
+                })}
+                renderWarning={(key) => {
+                  switch (key) {
+                    case 'customWarning':
+                      return 'A custom warning.';
+                    default:
+                      return null;
+                  }
+                }}
                 isRequired={boolean('isRequired', false)}
                 touched={boolean('touched', false)}
                 aria-label={text('aria-label', '')}
@@ -128,7 +139,6 @@ storiesOf('Components|Fields/SelectFields', module)
                 isDisabled={boolean('isDisabled', false)}
                 isReadOnly={boolean('isReadOnly', false)}
                 isMulti={isMulti}
-                hasWarning={boolean('hasWarning', false)}
                 placeholder={text('placeholder', 'Search by...')}
                 loadingMessage={loadingMessage}
                 noOptionsMessage={() => noOptionsMessage}

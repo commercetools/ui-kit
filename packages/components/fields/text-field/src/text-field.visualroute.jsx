@@ -71,5 +71,26 @@ export const component = () => (
         touched={true}
       />
     </Spec>
+    <Spec label="with warning when not touched">
+      <TextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <TextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        touched={true}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
   </Suite>
 );

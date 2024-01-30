@@ -17,15 +17,21 @@ import {
   warning,
 } from '@commercetools-uikit/utils';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 const sequentialId = createSequentialId('text-field-');
 const sequentialErrorsId = createSequentialId('text-field-error-')();
+const sequentialWarningsId = createSequentialId('text-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
 
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
+
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 
+type TFieldWarnings = Record<string, boolean>;
 type TFieldErrors = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
@@ -65,9 +71,21 @@ export type TTextFieldProps = {
    */
   errors?: TFieldErrors;
   /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br/>
+   * Unknown warnings will be forwarded to renderWarning.
+   */
+  warnings?: TFieldWarnings;
+  /**
    * This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
+  /**
+   * Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.
+   * <br />
+   * It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -195,6 +213,7 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
     }
 
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
@@ -220,6 +239,7 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
             isAutofocussed={this.props.isAutofocussed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
+            hasWarning={hasWarning}
             hasError={hasError}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
@@ -233,6 +253,12 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
           />
         </Stack>
       </Constraints.Horizontal>

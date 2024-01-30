@@ -53,10 +53,25 @@ storiesOf('Components|Fields', module)
                 { missing: true, customError: true },
                 radioField
               )}
+              warnings={object(
+                'warnings',
+                {
+                  customWarning: true,
+                },
+                radioField
+              )}
               renderError={(key) => {
                 switch (key) {
                   case 'customError':
                     return 'A custom error.';
+                  default:
+                    return null;
+                }
+              }}
+              renderWarning={(key) => {
+                switch (key) {
+                  case 'customWarning':
+                    return 'A custom warning.';
                   default:
                     return null;
                 }

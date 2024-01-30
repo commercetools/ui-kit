@@ -51,6 +51,8 @@ export default Example;
 | `horizontalConstraint` | `union`<br/>Possible values:<br/>`, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 'scale', 'auto'` |          | `'scale'` | Horizontal size limit of the input fields.                                                                                                                                                                                                                            |
 | `errors`               | `Record`                                                                                     |          |           | A map of errors. Error messages for known errors are rendered automatically.&#xA;<br />&#xA;Unknown errors will be forwarded to `renderError`                                                                                                                         |
 | `renderError`          | `Function`<br/>[See signature.](#signature-renderError)                                      |          |           | Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.                                                                                                                     |
+| `warnings`             | `Record`                                                                                     |          |           | A map of warnings. Warning messages for known warnings are rendered automatically.&#xA;<br/>&#xA;Unknown warnings will be forwarded to renderWarning.                                                                                                                 |
+| `renderWarning`        | `Function`<br/>[See signature.](#signature-renderWarning)                                    |          |           | Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.&#xA;<br />&#xA;It can also return null to show no warning.                                                                 |
 | `isRequired`           | `boolean`                                                                                    |          |           | Indicates if the value is required. Shows an the "required asterisk" if so.                                                                                                                                                                                           |
 | `touched`              | `boolean`                                                                                    |          |           | Indicates whether the field was touched. Errors will only be shown when the field was touched.                                                                                                                                                                        |
 | `name`                 | `string`                                                                                     |          |           | Used as HTML name of the input component.                                                                                                                                                                                                                             |
@@ -75,6 +77,12 @@ export default Example;
 
 ```ts
 (key: string, error?: boolean) => ReactNode;
+```
+
+### Signature `renderWarning`
+
+```ts
+(key: string, warning?: boolean) => ReactNode;
 ```
 
 ### Signature `onChange`
