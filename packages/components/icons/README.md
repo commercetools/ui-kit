@@ -71,11 +71,11 @@ The `data` passed to the component is run through a DOM sanitizer to prevent unw
 
 ### Where to use
 
-The leading icon is a an eye-catchy visual element that should be used when an additional visual prominence is needed for a content section in the UI. The different colours in combination with the icons can be utilised to create certain categorisation of the elements in the UI.
+This component can be used whenever the icon has to be rendered dynamically on runtime. For example in the Merchant Center this can be the case for the navigation menu icons, etc.
 
 ## Leading Icon
 
-For use when you need to render an icon with a themed bounding-box. Icons can be either from the default set of icons, or custom SVG's.
+The leading icon is a an eye-catchy visual element that should be used when an additional visual prominence is needed for a content section in the UI. The different colours in combination with the icons can be utilised to create certain categorisation of the elements in the UI.
 
 The component is exported as a separate entry point:
 
