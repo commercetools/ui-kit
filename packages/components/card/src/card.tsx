@@ -110,8 +110,7 @@ const Card = (props: TCardProps) => {
         return (
           <a
             {...commonProps}
-            // @ts-ignore
-            href={props.to}
+            href={props.to as string}
             target="_blank"
             rel="noopener noreferrer"
           >
