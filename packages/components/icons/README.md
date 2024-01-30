@@ -75,7 +75,7 @@ This component can be used whenever the icon has to be rendered dynamically on r
 
 ## Leading Icon
 
-The leading icon is a an eye-catchy visual element that should be used when an additional visual prominence is needed for a content section in the UI. The different colours in combination with the icons can be utilised to create certain categorisation of the elements in the UI.
+The leading icon is a an eye-catching visual element that should be used when an additional visual prominence is needed for a content section in the UI. The different colours in combination with the icons can be utilised to create certain categorisation of the elements in the UI.
 
 The component is exported as a separate entry point:
 
