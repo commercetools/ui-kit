@@ -84,26 +84,6 @@ const colorThemeMap = {
   },
 };
 
-function getSizeStyles(size: TLeadingIconProps['size']): {
-  height: string;
-  width: string;
-} {
-  return {
-    height: sizeMap[size!],
-    width: sizeMap[size!],
-  };
-}
-
-function getColorThemeStyles({
-  color,
-  isInverted,
-}: {
-  color: TLeadingIconProps['color'] | 'customSvg';
-  isInverted: TLeadingIconProps['isInverted'];
-}): { background: string; fill?: string; border?: string; margin?: string } {
-  return colorThemeMap[color!][isInverted ? 'dark' : 'light'];
-}
-
 function getPaddingStyles({
   size,
   hasBorder,
@@ -124,11 +104,19 @@ function getPaddingStyles({
 }
 
 export const getLeadingIconStyles = (props: TLeadingIconProps) => {
-  const sizeStyles = getSizeStyles(props.size);
-  const colorThemeStyles = getColorThemeStyles({
-    color: props.svg ? 'customSvg' : props.color,
-    isInverted: props.isInverted,
-  });
+  const sizeStyles = {
+    height: sizeMap[props.size!],
+    width: sizeMap[props.size!],
+  };
+
+  const colorThemeStyles = colorThemeMap[
+    props.svg ? 'customSvg' : props.color!
+  ][props.isInverted ? 'dark' : 'light'] as {
+    background: string;
+    fill?: string;
+    border?: string;
+  };
+
   const paddingStyle = getPaddingStyles({
     size: props.svg ? 'customSvg' : props.size,
     hasBorder: Boolean(
@@ -141,7 +129,6 @@ export const getLeadingIconStyles = (props: TLeadingIconProps) => {
     flex: 0 0 auto;
     justify-content: center;
     align-items: center;
-    margin: ${colorThemeStyles.margin};
     padding: ${paddingStyle};
     height: ${sizeStyles.height};
     width: ${sizeStyles.width};

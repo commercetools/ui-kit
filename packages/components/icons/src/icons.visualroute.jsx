@@ -168,7 +168,7 @@ export const component = () => (
                       icon={<IconForLeadingIcon />}
                       isInverted={true}
                     />
-                    <Text.Detail>{`${color} inverted`}</Text.Detail>
+                    <Text.Detail>{`inverted`}</Text.Detail>
                   </Spacings.Stack>
                 </LeadingIconItem>
               ))}
