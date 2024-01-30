@@ -80,15 +80,3 @@ it('should support accessibility as a button when the `onClick` prop is provided
   const card = screen.getByTestId('hefe');
   expect(card).toHaveAttribute('role', 'button');
 });
-
-it('should support accessibility as a link when the `to` prop is provided', () => {
-  const content = 'Link';
-  render(
-    <Card to="https://external.com" isExternalLink>
-      {content}
-    </Card>
-  );
-
-  const link = screen.getByText(content).closest('a');
-  expect(link).toHaveAttribute('role', 'link');
-});

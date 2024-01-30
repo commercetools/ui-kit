@@ -110,7 +110,6 @@ const Card = (props: TCardProps) => {
       return (
         <a
           {...commonProps}
-          role="link"
           // @ts-ignore
           href={props.to}
           target="_blank"
