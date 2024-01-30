@@ -71,7 +71,6 @@ const Card = (props: TCardProps) => {
         : isClickable
         ? 'pointer'
         : 'default'};
-      pointer-events: ${props.isDisabled ? 'none' : 'auto'};
       :hover {
         background: ${props.theme === 'dark'
           ? isClickable
@@ -83,7 +82,7 @@ const Card = (props: TCardProps) => {
       }
       // Disables link text styling
       color: inherit;
-      // Change the opacity of the content, not the card itself
+      // Changes the opacity of the content, not the card itself
       & > div {
         opacity: ${props.isDisabled ? 0.5 : 1};
       }
@@ -100,35 +99,37 @@ const Card = (props: TCardProps) => {
       </Inset>
     );
 
-  if (props.to) {
-    if (props.isExternalLink) {
-      warning(
-        typeof props.to === 'string',
-        'ui-kit/Card: "to" property must be a string when "isExternal" value is true'
-      );
+  if (isClickable) {
+    if (props.to) {
+      if (props.isExternalLink) {
+        warning(
+          typeof props.to === 'string',
+          'ui-kit/Card: "to" property must be a string when "isExternal" value is true'
+        );
 
-      return (
-        <a
-          {...commonProps}
-          // @ts-ignore
-          href={props.to}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {content}
-        </a>
-      );
-    } else {
-      return (
-        <Link {...commonProps} to={props.to}>
-          {content}
-        </Link>
-      );
+        return (
+          <a
+            {...commonProps}
+            // @ts-ignore
+            href={props.to}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {content}
+          </a>
+        );
+      } else {
+        return (
+          <Link {...commonProps} to={props.to}>
+            {content}
+          </Link>
+        );
+      }
     }
   }
 
   return (
-    <div {...commonProps} role={props.onClick ? 'button' : undefined}>
+    <div {...commonProps} role={isClickable ? 'button' : undefined}>
       {content}
     </div>
   );

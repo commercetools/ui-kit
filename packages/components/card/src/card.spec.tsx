@@ -67,7 +67,7 @@ it('should visually indicate when the card is disabled', () => {
   // Content should have opacity change, not the card container
   expect(card?.firstChild).toHaveStyle(`opacity: 0.5`);
   // Card should not be clickable
-  expect(card).toHaveStyle(`pointer-events: none`);
+  expect(card).toHaveStyle(`cursor: not-allowed`);
 });
 
 it('should support accessibility as a button when the `onClick` prop is provided', () => {
