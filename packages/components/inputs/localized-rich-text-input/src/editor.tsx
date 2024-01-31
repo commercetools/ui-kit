@@ -316,12 +316,6 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                       <div>{props.warning}</div>
                     </LeftColumn>
                   );
-                if (props.additionalInfo)
-                  return (
-                    <LeftColumn>
-                      <InfoMessage>{props.additionalInfo}</InfoMessage>
-                    </LeftColumn>
-                  );
                 return null;
               })()}
               {renderToggleButton && (
@@ -356,6 +350,11 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                 </RightColumn>
               )}
             </Row>
+            {props.additionalInfo && (
+              <LeftColumn>
+                <InfoMessage>{props.additionalInfo}</InfoMessage>
+              </LeftColumn>
+            )}
           </Stack>
         );
       }}

@@ -207,12 +207,6 @@ const TranslationInput = (props: TranslationInputProps) => {
                 <div>{props.warning}</div>
               </LeftColumn>
             );
-          if (props.additionalInfo)
-            return (
-              <LeftColumn>
-                <InfoMessage>{props.additionalInfo}</InfoMessage>
-              </LeftColumn>
-            );
           return null;
         })()}
         {!props.isCollapsed && inputHasSeveralRows && (
@@ -243,6 +237,13 @@ const TranslationInput = (props: TranslationInputProps) => {
           </>
         )}
       </Row>
+      {props.additionalInfo && (
+        <Row>
+          <LeftColumn>
+            <InfoMessage>{props.additionalInfo}</InfoMessage>
+          </LeftColumn>
+        </Row>
+      )}
     </Stack>
   );
 };
