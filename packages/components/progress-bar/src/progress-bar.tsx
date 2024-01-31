@@ -62,22 +62,7 @@ export type TProgressBarProps = {
   /**
    * The scale of the width for the label, uses values available in the Constraints.Horizontal component.
    */
-  barWidth?:
-    | 4
-    | 5
-    | 6
-    | 7
-    | 8
-    | 9
-    | 10
-    | 11
-    | 12
-    | 13
-    | 14
-    | 15
-    | 16
-    | 'scale'
-    | 'auto';
+  barWidth?: 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 'scale';
 };
 
 const ProgressBarLabel = (
@@ -126,8 +111,8 @@ const Bar = (
     'progress' | 'height' | 'barWidth' | 'isInverted' | 'isAnimated'
   >
 ) => {
-  const BarChildren = () => {
-    return (
+  return (
+    <Constraints.Horizontal max={props.barWidth}>
       <div
         css={getBackgroundBarStyles(props)}
         role="progressbar"
@@ -137,15 +122,6 @@ const Bar = (
       >
         <div css={getForegroundBarStyles(props)} />
       </div>
-    );
-  };
-  // We need a special case for 'auto' as a Constraint with `width: auto` will hide the bar
-  if (props.barWidth === 'auto') {
-    return <BarChildren />;
-  }
-  return (
-    <Constraints.Horizontal max={props.barWidth}>
-      <BarChildren />
     </Constraints.Horizontal>
   );
 };

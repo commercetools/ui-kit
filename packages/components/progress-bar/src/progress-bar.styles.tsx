@@ -1,6 +1,6 @@
 import { css, keyframes } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import { TProgressBarProps } from './progress-bar';
+import { type TProgressBarProps } from './progress-bar';
 
 export const heightPerScale = {
   '10': designTokens.spacing25,
