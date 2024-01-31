@@ -155,5 +155,25 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="when there is a additional info set for a locale">
+      <LocalizedMultilineTextInput
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        additionalInfo={{ en: 'This is a foo field' }}
+      />
+    </Spec>
+    <Spec label="when there is a additional info and error for a locale">
+      <LocalizedMultilineTextInput
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        hasError={true}
+        errors={{ en: <ErrorMessage>Error error error e e e</ErrorMessage> }}
+        additionalInfo={{ en: 'This is a foo field' }}
+      />
+    </Spec>
   </Suite>
 );
