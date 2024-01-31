@@ -23,7 +23,7 @@ import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { messagesMultilineInput } from '@commercetools-uikit/input-utils';
-import InfoMessage from '../../../messages/src/info-message/info-message';
+import { InfoMessage } from '@commercetools-uikit/messages';
 import {
   RichTextBody,
   HiddenInput,

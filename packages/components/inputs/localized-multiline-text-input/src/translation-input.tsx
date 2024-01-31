@@ -16,7 +16,7 @@ import {
   MultilineInput,
   messagesMultilineInput,
 } from '@commercetools-uikit/input-utils';
-import InfoMessage from '../../../messages/src/info-message/info-message';
+import { InfoMessage } from '@commercetools-uikit/messages';
 import {
   getTextareaStyles,
   getLanguageLabelStyles,

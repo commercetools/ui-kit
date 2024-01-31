@@ -7,7 +7,7 @@ import {
 import { FormattedMessage, MessageDescriptor } from 'react-intl';
 import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
-import { ErrorMessage } from '@commercetools-uikit/messages';
+import { ErrorMessage, InfoMessage } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import {
@@ -24,7 +24,6 @@ import {
 } from '@commercetools-uikit/localized-utils';
 import { createSequentialId, warning } from '@commercetools-uikit/utils';
 import TextInput from '@commercetools-uikit/text-input';
-import InfoMessage from '../../../messages/src/info-message/info-message';
 import {
   LocalizedInputToggle,
   messagesLocalizedInput,
