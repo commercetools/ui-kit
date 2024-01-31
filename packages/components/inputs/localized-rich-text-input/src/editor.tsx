@@ -23,6 +23,7 @@ import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { messagesMultilineInput } from '@commercetools-uikit/input-utils';
+import InfoMessage from '../../../messages/src/info-message/info-message';
 import {
   RichTextBody,
   HiddenInput,
@@ -318,9 +319,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                 if (props.additionalInfo)
                   return (
                     <LeftColumn>
-                      <Text.Detail tone="tertiary">
-                        {props.additionalInfo}
-                      </Text.Detail>
+                      <InfoMessage>{props.additionalInfo}</InfoMessage>
                     </LeftColumn>
                   );
                 return null;

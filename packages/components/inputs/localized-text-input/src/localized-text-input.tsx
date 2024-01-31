@@ -23,8 +23,8 @@ import {
   getName,
 } from '@commercetools-uikit/localized-utils';
 import { createSequentialId, warning } from '@commercetools-uikit/utils';
-import Text from '@commercetools-uikit/text';
 import TextInput from '@commercetools-uikit/text-input';
+import InfoMessage from '../../../messages/src/info-message/info-message';
 import {
   LocalizedInputToggle,
   messagesLocalizedInput,
@@ -127,7 +127,7 @@ export type TLocalizedTextInputProps = {
    */
   hasWarning?: boolean;
   /**
-   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
+   * Used to show errors underneath the inputs of specific locales. Pass an object whose key is a locale and whose value is the error to show for that key.
    */
   errors?: Record<string, string>;
   /**
@@ -135,7 +135,12 @@ export type TLocalizedTextInputProps = {
    */
   warnings?: Record<string, ReactNode>;
   /**
-   * A map of additional information
+   * An object mapping locales to additional messages to be rendered below each input element.
+    Example:
+    {
+      en: 'Some value (EN)',
+      es: 'Algún valor',
+    }
    */
   additionalInfo?: Record<
     string,
@@ -340,9 +345,7 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                   {props.errors && props.errors[language]}
                   {props.warnings && props.warnings[language]}
                   {props.additionalInfo && (
-                    <Text.Detail tone="tertiary">
-                      {props.additionalInfo[language]}
-                    </Text.Detail>
+                    <InfoMessage>{props.additionalInfo[language]}</InfoMessage>
                   )}
                 </Stack>
               </div>

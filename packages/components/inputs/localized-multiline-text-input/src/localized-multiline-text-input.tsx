@@ -141,19 +141,24 @@ export type TLocalizedMultilineTextInputProps = {
    */
   hasWarning?: boolean;
   /**
-   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
+   * Used to show errors underneath the inputs of specific locales. Pass an object whose key is a locale and whose value is the error to show for that key.
    */
   errors?: {
     [key: string]: ReactNode;
   };
   /**
-   * Used to show warnings underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the warning to show for that key.
+   * Used to show warnings underneath the inputs of specific locales. Pass an object whose key is a locale and whose value is the warning to show for that key.
    */
   warnings?: {
     [key: string]: ReactNode;
   };
   /**
-   * A map of additional information
+   * An object mapping locales to additional messages to be rendered below each input element.
+    Example:
+    {
+      en: 'Some value (EN)',
+      es: 'Algún valor',
+    }
    */
   additionalInfo?: Record<
     string,

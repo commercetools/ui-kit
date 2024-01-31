@@ -131,7 +131,12 @@ export type TLocalizedRichTextInputProps = {
    */
   warnings?: TWarnings;
   /**
-   * A map of additional information
+   * An object mapping locales to additional messages to be rendered below each input element.
+    Example:
+    {
+      en: 'Some value (EN)',
+      es: 'Algún valor',
+    }
    */
   additionalInfo?: Record<
     string,
