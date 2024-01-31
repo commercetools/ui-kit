@@ -100,6 +100,39 @@ export const component = () => (
       </WrappedCard>
     </Spec>
 
+    <Spec label="Type - Flat, Theme - Dark, Disabled: true">
+      <WrappedCard
+        type="flat"
+        theme="dark"
+        insetScale="s"
+        isDisabled
+        to="http://www.commercetools.com"
+      >
+        <Text.Body>{text}</Text.Body>
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Flat, Theme - Light, Disabled: true">
+      <WrappedCard
+        type="flat"
+        theme="light"
+        insetScale="s"
+        isDisabled
+        to="http://www.commercetools.com"
+      >
+        <Text.Body>{text}</Text.Body>
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Raised, Theme - Dark, Disabled: false">
+      <WrappedCard type="raised" theme="dark" insetScale="s">
+        <Text.Body>{text}</Text.Body>
+      </WrappedCard>
+    </Spec>
+    <Spec label="Type - Raised, Theme - Light, Disabled: false">
+      <WrappedCard type="raised" theme="light" insetScale="s">
+        <Text.Body>{text}</Text.Body>
+      </WrappedCard>
+    </Spec>
+
     <Spec label="Content using all vertical space from the parent">
       <WrappedCard type="raised" theme="light" insetScale="m" height="400px">
         <div
