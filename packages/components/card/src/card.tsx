@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { KeyboardEvent, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
@@ -130,7 +130,17 @@ const Card = (props: TCardProps) => {
   }
 
   return (
-    <div {...commonProps} role={isClickable ? 'button' : undefined}>
+    <div
+      {...commonProps}
+      // Support accessibility as a button when the `onClick` prop is provided
+      role={isClickable ? 'button' : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+        if (isClickable && props.onClick && event.key === 'Enter') {
+          props.onClick();
+        }
+      }}
+    >
       {content}
     </div>
   );

@@ -110,3 +110,13 @@ it('should render a `<div>` parent container when disabled', () => {
   const card = screen.getByTestId('hefe');
   expect(card.tagName).toBe('DIV');
 });
+
+it('should call `onClick` when "Enter" key is pressed', () => {
+  const handleClick = jest.fn();
+  render(<Card onClick={handleClick}>Accessible button</Card>);
+
+  const card = screen.getByText('Accessible button');
+  fireEvent.keyDown(card, { key: 'Enter', code: 'Enter' });
+
+  expect(handleClick).toHaveBeenCalledTimes(1);
+});
