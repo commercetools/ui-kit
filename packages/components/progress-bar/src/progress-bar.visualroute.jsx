@@ -20,9 +20,6 @@ export const component = () => (
     <Spec label="when bar width is scale">
       <ProgressBar label={`${25}% completed`} progress={25} height="10" barWidth={'scale'}/>
     </Spec>
-    <Spec label="when bar width is auto">
-      <ProgressBar label={`${25}% completed`} progress={25} height="10" barWidth={'auto'}/>
-    </Spec>
     <Spec label="when isAnimated is false">
       <ProgressBar
         label={`${50}% completed`}
@@ -57,14 +54,6 @@ export const component = () => (
         label={`${25}% completed`}
         progress={25}
         labelWidth={4}
-      />
-    </Spec>
-    <Spec label="when label position is right and bar width is auto">
-      <ProgressBar
-        labelPosition="right"
-        label={`${50}% completed`}
-        progress={50}
-        barWidth={'auto'}
       />
     </Spec>
     <Spec label="when label position is right and bar width is 4">

@@ -2,6 +2,7 @@ import type { ReactElement, ReactNode } from 'react';
 import { FormattedMessage, type MessageDescriptor } from 'react-intl';
 import { css } from '@emotion/react';
 import { filterAriaAttributes } from '@commercetools-uikit/utils';
+import { getMaxPropTokenValue } from '../helpers';
 import Constraints from '@commercetools-uikit/constraints';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
@@ -80,28 +81,27 @@ const ProgressBarLabel = (
   );
 
   return (
-    <Constraints.Horizontal max={props.labelWidth}>
-      <div
-        css={css`
-          min-height: ${heightPerScale[props.height ?? '20']};
-          text-align: ${props.textAlignment};
-        `}
-      >
-        {props.height === '10' ? (
-          <Text.Detail tone={props.isInverted ? 'inverted' : undefined}>
-            {label}
-          </Text.Detail>
-        ) : (
-          <Text.Body
-            as="span"
-            tone={props.isInverted ? 'inverted' : undefined}
-            fontWeight="medium"
-          >
-            {label}
-          </Text.Body>
-        )}
-      </div>
-    </Constraints.Horizontal>
+    <div
+      css={css`
+        min-height: ${heightPerScale[props.height ?? '20']};
+        text-align: ${props.textAlignment};
+        max-width: ${getMaxPropTokenValue(props.labelWidth!)};
+      `}
+    >
+      {props.height === '10' ? (
+        <Text.Detail tone={props.isInverted ? 'inverted' : undefined}>
+          {label}
+        </Text.Detail>
+      ) : (
+        <Text.Body
+          as="span"
+          tone={props.isInverted ? 'inverted' : undefined}
+          fontWeight="medium"
+        >
+          {label}
+        </Text.Body>
+      )}
+    </div>
   );
 };
 
