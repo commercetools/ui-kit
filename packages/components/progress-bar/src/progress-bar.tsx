@@ -1,15 +1,13 @@
 import type { ReactElement, ReactNode } from 'react';
 import { FormattedMessage, type MessageDescriptor } from 'react-intl';
-import { css } from '@emotion/react';
 import { filterAriaAttributes } from '@commercetools-uikit/utils';
-import { getMaxPropTokenValue } from '../helpers';
 import Constraints from '@commercetools-uikit/constraints';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import Text from '@commercetools-uikit/text';
 import isNil from 'lodash/isNil';
 import {
-  heightPerScale,
+  getLabelStyles,
   getBackgroundBarStyles,
   getForegroundBarStyles,
 } from './progress-bar.styles';
@@ -81,13 +79,7 @@ const ProgressBarLabel = (
   );
 
   return (
-    <div
-      css={css`
-        min-height: ${heightPerScale[props.height ?? '20']};
-        text-align: ${props.textAlignment};
-        max-width: ${getMaxPropTokenValue(props.labelWidth!)};
-      `}
-    >
+    <div css={getLabelStyles(props)}>
       {props.height === '10' ? (
         <Text.Detail tone={props.isInverted ? 'inverted' : undefined}>
           {label}

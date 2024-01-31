@@ -1,5 +1,6 @@
 import { css, keyframes } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
+import { getMaxPropTokenValue } from '../helpers';
 import { type TProgressBarProps } from './progress-bar';
 
 export const heightPerScale = {
@@ -13,6 +14,18 @@ const progressPulse = keyframes`
   }
   100% {
     background-position: -100% 0;
+  }
+`;
+
+export const getLabelStyles = (
+  props: TProgressBarProps & { textAlignment: string }
+) => css`
+  min-height: ${heightPerScale[props.height ?? '20']};
+  text-align: ${props.textAlignment};
+  max-width: ${getMaxPropTokenValue(props.labelWidth!)};
+  display: inline-flex;
+  > span {
+    width: max-content;
   }
 `;
 
