@@ -300,7 +300,6 @@ const DefaultRoute = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        hasError={true}
         errors={{ en: <ErrorMessage>Error error error e e e</ErrorMessage> }}
         additionalInfo={{ en: 'This is a foo field' }}
       />
