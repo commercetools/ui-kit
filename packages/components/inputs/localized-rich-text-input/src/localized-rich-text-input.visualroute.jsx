@@ -287,7 +287,7 @@ const DefaultRoute = () => (
     </Spec>
     <Spec label="when there is a additional info set for a locale">
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
@@ -296,7 +296,7 @@ const DefaultRoute = () => (
     </Spec>
     <Spec label="when there is a additional info and error for a locale">
       <LocalizedRichTextInput
-        value={value}
+        value={initialValue}
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
