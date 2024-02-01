@@ -7,7 +7,10 @@ import {
 import { FormattedMessage, MessageDescriptor } from 'react-intl';
 import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
-import { ErrorMessage, InfoMessage } from '@commercetools-uikit/messages';
+import {
+  ErrorMessage,
+  AdditionalInfoMessage,
+} from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import {
@@ -344,7 +347,9 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                   {props.errors && props.errors[language]}
                   {props.warnings && props.warnings[language]}
                   {props.additionalInfo && (
-                    <InfoMessage>{props.additionalInfo[language]}</InfoMessage>
+                    <AdditionalInfoMessage>
+                      {props.additionalInfo[language]}
+                    </AdditionalInfoMessage>
                   )}
                 </Stack>
               </div>

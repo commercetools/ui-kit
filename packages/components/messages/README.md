@@ -1,3 +1,30 @@
+# Messages: AdditionalInfoMessage
+
+## Description
+
+Represents an additional info message.
+
+## Usage
+
+```js
+import { AdditionalInfoMessage } from '@commercetools-uikit/messages';
+
+<AdditionalInfoMessage>Something went wrong</AdditionalInfoMessage>;
+```
+
+## Properties
+
+| Props         | Type           | Required | Values | Default | Description                                                          |
+| ------------- | -------------- | :------: | ------ | ------- | -------------------------------------------------------------------- |
+| `children`    | `node`         | ✅ (\*)  | -      | -       | Info message, either as string or node                               |
+| `intlMessage` | `intl message` | ✅ (\*)  | -      | -       | An intl message object that will be rendered with `FormattedMessage` |
+
+> `*`: `children` is required only if `intlMessage` is not provided
+
+Main functions and use cases are:
+
+- Display neutral information of input fields
+
 # Messages: ErrorMessage
 
 ## Description
@@ -24,33 +51,6 @@ import { ErrorMessage } from '@commercetools-uikit/messages';
 Main functions and use cases are:
 
 - Display validation errors of input fields
-
-# Messages: InfoMessage
-
-## Description
-
-Represents an info message.
-
-## Usage
-
-```js
-import { InfoMessage } from '@commercetools-uikit/messages';
-
-<InfoMessage>Something went wrong</InfoMessage>;
-```
-
-## Properties
-
-| Props         | Type           | Required | Values | Default | Description                                                          |
-| ------------- | -------------- | :------: | ------ | ------- | -------------------------------------------------------------------- |
-| `children`    | `node`         | ✅ (\*)  | -      | -       | Info message, either as string or node                               |
-| `intlMessage` | `intl message` | ✅ (\*)  | -      | -       | An intl message object that will be rendered with `FormattedMessage` |
-
-> `*`: `children` is required only if `intlMessage` is not provided
-
-Main functions and use cases are:
-
-- Display neutral information of input fields
 
 # Messages: WarningMessage
 

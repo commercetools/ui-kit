@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, text } from '@storybook/addon-knobs/react';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../../README.md';
-import InfoMessage from './info-message';
+import AdditionalInfoMessage from './additional-info-message';
 
 storiesOf('Components|Messages', module)
   .addDecorator(withKnobs)
@@ -12,10 +12,10 @@ storiesOf('Components|Messages', module)
       sidebar: Readme,
     },
   })
-  .add('InfoMessage', () => (
+  .add('AdditionalInfoMessage', () => (
     <Section>
-      <InfoMessage>
+      <AdditionalInfoMessage>
         {text('children', 'This is an information message')}
-      </InfoMessage>
+      </AdditionalInfoMessage>
     </Section>
   ));

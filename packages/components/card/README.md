@@ -20,11 +20,11 @@ npm --save install @commercetools-uikit/card
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+yarn add react react-router-dom
 ```
 
 ```
-npm --save install react
+npm --save install react react-router-dom
 ```
 
 ## Usage
@@ -50,7 +50,15 @@ export default Example;
 | `theme`          | `union`<br/>Possible values:<br/>`'light' , 'dark'`                |          | `'light'`  | Determines the background color of the card.                                                                                                                                                       |
 | `className`      | `string`                                                           |          |            | Pass a custom CSS class, useful to override the styles.&#xA;<br>&#xA;NOTE: This is not recommended and should only be used for building new components&#xA;that require special style adjustments. |
 | `children`       | `ReactNode`                                                        |          |            |                                                                                                                                                                                                    |
-| `onClick`        | `() => void`                                                       |          |            | The callback function to be executed when the Card component is clicked. Prefer this for managing side effects rather than navigation.                                                             |
-| `to`             | `union`<br/>Possible values:<br/>`string , LocationDescriptor`     |          |            | The URL that the Card should point to. When provided, the Card will render as a react-router `<Link>`. Use with `isExternal` to determine if an internal or external link should be used.          |
-| `isExternalLink` | `boolean`                                                          |          |            | A flag to indicate if the Card points to an external source. When true, the Card will render as an `<a>` tag with appropriate attributes for external links.                                       |
-| `isDisabled`     | `boolean`                                                          |          |            | Indicates that a clickable Card should not allow clicks. This is useful for temporarily disabling a clickable Card. Use in conjunction with `to` and/or `onClick`.                                 |
+| `onClick`        | `Function`<br/>[See signature.](#signature-onClick)                |          |            | The callback function to be executed when the Card component is clicked. Prefer this for managing side effects rather than navigation.                                                             |
+| `to`             | `union`<br/>Possible values:<br/>`string , LocationDescriptor`     |          |            | The URL that the Card should point to. If provided, the Card will be rendered as an anchor element.                                                                                                |
+| `isExternalLink` | `boolean`                                                          |          |            | A flag to indicate if the Card points to an external source.                                                                                                                                       |
+| `isDisabled`     | `boolean`                                                          |          |            | Indicates that a clickable Card should not allow clicks. This allows consumers to temporarily disable a clickable Card.                                                                            |
+
+## Signatures
+
+### Signature `onClick`
+
+```ts
+() => void
+```

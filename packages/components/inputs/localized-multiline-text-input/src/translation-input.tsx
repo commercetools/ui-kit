@@ -16,7 +16,7 @@ import {
   MultilineInput,
   messagesMultilineInput,
 } from '@commercetools-uikit/input-utils';
-import { InfoMessage } from '@commercetools-uikit/messages';
+import { AdditionalInfoMessage } from '@commercetools-uikit/messages';
 import {
   getTextareaStyles,
   getLanguageLabelStyles,
@@ -240,7 +240,9 @@ const TranslationInput = (props: TranslationInputProps) => {
       {props.additionalInfo && (
         <Row>
           <LeftColumn>
-            <InfoMessage>{props.additionalInfo}</InfoMessage>
+            <AdditionalInfoMessage>
+              {props.additionalInfo}
+            </AdditionalInfoMessage>
           </LeftColumn>
         </Row>
       )}

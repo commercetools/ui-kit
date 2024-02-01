@@ -8,18 +8,18 @@ export type TIntlMessageDescriptor = {
   values?: Record<string, ReactNode>;
 };
 
-export type TInfoMessageProps = {
+export type TAdditionalInfoMessageProps = {
   id?: string;
   intlMessage?: TIntlMessageDescriptor;
   children?: ReactNode;
 };
 
-const InfoMessage = (props: TInfoMessageProps) => (
+const AdditionalInfoMessage = (props: TAdditionalInfoMessageProps) => (
   <Text.Detail id={props.id} intlMessage={props.intlMessage} tone="tertiary">
     {props.children}
   </Text.Detail>
 );
 
-InfoMessage.displayName = 'InfoMessage';
+AdditionalInfoMessage.displayName = 'AdditionalInfoMessage';
 
-export default InfoMessage;
+export default AdditionalInfoMessage;
