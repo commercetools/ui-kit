@@ -5,7 +5,7 @@ import {
   type ChangeEventHandler,
   type FocusEventHandler,
 } from 'react';
-import { useIntl, MessageDescriptor } from 'react-intl';
+import { useIntl, type MessageDescriptor } from 'react-intl';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -156,7 +156,7 @@ export type TLocalizedMultilineTextInputProps = {
    * An object mapping locales to additional messages to be rendered below each input element.
     Example:
     {
-      en: 'Some value (EN)',
+      en: 'Some value',
       es: 'Algún valor',
     }
    */

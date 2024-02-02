@@ -4,7 +4,7 @@ import {
   type ReactNode,
   useCallback,
 } from 'react';
-import { FormattedMessage, MessageDescriptor } from 'react-intl';
+import { FormattedMessage, type MessageDescriptor } from 'react-intl';
 import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import {
@@ -140,7 +140,7 @@ export type TLocalizedTextInputProps = {
    * An object mapping locales to additional messages to be rendered below each input element.
     Example:
     {
-      en: 'Some value (EN)',
+      en: 'Some value',
       es: 'Algún valor',
     }
    */

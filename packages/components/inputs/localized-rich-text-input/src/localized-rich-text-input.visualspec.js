@@ -4,7 +4,7 @@ import { getDocument, queries } from 'pptr-testing-library';
 let browser;
 let page;
 
-jest.setTimeout(30000);
+jest.setTimeout(20000);
 
 beforeEach(async () => {
   browser = await puppeteer.launch({

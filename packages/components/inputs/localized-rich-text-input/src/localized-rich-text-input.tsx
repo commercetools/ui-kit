@@ -12,7 +12,7 @@ import {
   type FocusEventHandler,
   type MutableRefObject,
 } from 'react';
-import { MessageDescriptor } from 'react-intl';
+import { type MessageDescriptor } from 'react-intl';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -134,7 +134,7 @@ export type TLocalizedRichTextInputProps = {
    * An object mapping locales to additional messages to be rendered below each input element.
     Example:
     {
-      en: 'Some value (EN)',
+      en: 'Some value',
       es: 'Algún valor',
     }
    */
