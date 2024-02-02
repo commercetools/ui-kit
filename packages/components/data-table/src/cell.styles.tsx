@@ -76,7 +76,7 @@ const outlineStyles = css`
   /* to avoid getting cut by overflow:hidden */
   outline-offset: -3px;
 
-  :not(:focus):focus-within {
+  :has(:focus-visible) {
     outline-style: auto;
 
     /* try using the default user-agent color */
