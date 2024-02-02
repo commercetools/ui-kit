@@ -22,10 +22,10 @@ export const getLabelStyles = (
 ) => css`
   min-height: ${heightPerScale[props.height ?? '20']};
   text-align: ${props.textAlignment};
-  max-width: ${getMaxPropTokenValue(props.labelWidth!)};
   display: inline-flex;
   > span {
     width: max-content;
+    max-width: ${getMaxPropTokenValue(props.labelWidth!)};
   }
 `;
 
