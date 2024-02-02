@@ -210,6 +210,10 @@ export const themes = {
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsMedium: '4px',
     borderRadiusForInput: '4px',
+    borderWidthForInput: '1px',
+    borderWidthForInputWhenWarning: '1px',
+    borderWidthForInputWhenError: '1px',
+    borderWidthForInputWhenFocused: '1px',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(232, 18%, 60%)',
     fontColorForInputWhenError: '#e60050',
@@ -219,6 +223,7 @@ export const themes = {
     heightForButtonAsMedium: '32px',
     heightForButtonAsSmall: '16px',
     heightForInput: '40px',
+    placeholderFontColorForInput: 'hsl(232, 18%, 60%)',
     fontSizeForButton: '0.875rem',
     fontSizeForInput: '1rem',
     paddingForInput: '0 var(--spacing-30)',
@@ -482,6 +487,12 @@ const designTokens = {
   borderRadiusForButtonAsMedium:
     'var(--border-radius-for-button-as-medium, 4px)',
   borderRadiusForInput: 'var(--border-radius-for-input, 4px)',
+  borderWidthForInput: 'var(--border-width-for-input, 1px)',
+  borderWidthForInputWhenWarning:
+    'var(--border-width-for-input-when-warning, 1px)',
+  borderWidthForInputWhenError: 'var(--border-width-for-input-when-error, 1px)',
+  borderWidthForInputWhenFocused:
+    'var(--border-width-for-input-when-focused, 1px)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
     'var(--font-color-for-input-when-disabled, hsl(232, 18%, 60%))',
@@ -494,6 +505,8 @@ const designTokens = {
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',
   heightForInput: 'var(--height-for-input, 40px)',
+  placeholderFontColorForInput:
+    'var(--placeholder-font-color-for-input, hsl(232, 18%, 60%))',
   fontSizeForButton: 'var(--font-size-for-button, 0.875rem)',
   fontSizeForInput: 'var(--font-size-for-input, 1rem)',
   paddingForInput: 'var(--padding-for-input, 0 var(--spacing-30))',

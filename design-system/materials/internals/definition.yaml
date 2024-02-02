@@ -373,6 +373,19 @@ decisionGroupsByTheme:
         border-radius-for-input:
           choice: border-radius-4
 
+    borderWidths:
+      label: Border width
+      prefix: border-width
+      decisions:
+        border-width-for-input:
+          choice: border-width-1
+        border-width-for-input-when-warning:
+          choice: border-width-1
+        border-width-for-input-when-error:
+          choice: border-width-1
+        border-width-for-input-when-focused:
+          choice: border-width-1
+
     fontColors:
       label: Font Colors
       prefix: font-color
@@ -400,6 +413,14 @@ decisionGroupsByTheme:
           choice: '16px'
         height-for-input:
           choice: '40px'
+
+    placeholderFontColors:
+      label: Placeholder font colors
+      prefix: placeholder-font-color
+      decisions:
+        placeholder-font-color-for-input:
+          description: ''
+          choice: color-neutral-60
 
     fontSizes:
       label: Font Sizes
