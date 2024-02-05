@@ -71,7 +71,7 @@ export default Example;
 | `hasWarning`                    | `boolean`                                                                                                   |          |           | Indicates the input field has a warning                                                                                                                                       |
 | `errors`                        | `Record`                                                                                                    |          |           | Used to show errors underneath the inputs of specific locales. Pass an object whose key is a locale and whose value is the error to show for that key.                        |
 | `warnings`                      | `Record`                                                                                                    |          |           | A map of warnings.                                                                                                                                                            |
-| `additionalInfo`                | `Record`                                                                                                    |          |           | An object mapping locales to additional messages to be rendered below each input element.&#xA;Example:&#xA;{&#xA;en: 'Some value (EN)',&#xA;es: 'Algún valor',&#xA;}          |
+| `additionalInfo`                | `Record`                                                                                                    |          |           | An object mapping locales to additional messages to be rendered below each input element.&#xA;Example:&#xA;{&#xA;en: 'Some value',&#xA;es: 'Algún valor',&#xA;}               |
 
 ## `data-*` props
 

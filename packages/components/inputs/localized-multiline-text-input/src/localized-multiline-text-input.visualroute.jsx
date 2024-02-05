@@ -175,5 +175,24 @@ export const component = () => (
         additionalInfo={{ en: 'This is a foo field' }}
       />
     </Spec>
+    <Spec label="when there is a additional info set for a locale without collapse control btn">
+      <LocalizedMultilineTextInput
+        value={{ en: 'short text' }}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        additionalInfo={{ en: 'This is a foo field' }}
+      />
+    </Spec>
+    <Spec label="when there is a additional info set for a locale without collapse control btn and an error">
+      <LocalizedMultilineTextInput
+        value={{ en: 'short text' }}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        additionalInfo={{ en: 'This is a foo field' }}
+        errors={{ en: <ErrorMessage>Error error error e e e</ErrorMessage> }}
+      />
+    </Spec>
   </Suite>
 );
