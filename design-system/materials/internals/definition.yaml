@@ -514,9 +514,9 @@ decisionGroupsByTheme:
       prefix: background-color
       decisions:
         background-color-for-button-when-active:
-          choice: color-solid-10
+          choice: color-neutral-95
         background-color-for-button-when-hovered:
-          choice: color-solid-05
+          choice: color-neutral-98
         background-color-for-button-as-primary-when-active:
           choice: '#15A390' # color-primary with 10% black opacity
         background-color-for-button-as-primary-when-hovered:

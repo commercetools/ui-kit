@@ -183,8 +183,8 @@ export const themes = {
     breakPointGiantdesktop: '1680px',
     breakPointJumbodesktop: '1920px',
     alignItemsForSelectInputTag: 'center',
-    backgroundColorForButtonWhenActive: 'hsl(0deg 0% 10% / 10%)',
-    backgroundColorForButtonWhenHovered: 'hsl(0deg 0% 10% / 5%)',
+    backgroundColorForButtonWhenActive: 'hsl(232, 18%, 95%)',
+    backgroundColorForButtonWhenHovered: 'hsl(232, 18%, 98%)',
     backgroundColorForButtonAsPrimaryWhenActive: '#15A390',
     backgroundColorForButtonAsPrimaryWhenHovered: '#17AB97',
     backgroundColorForButtonAsIconAsPrimaryWhenActive: '#15A390',
@@ -763,9 +763,9 @@ const designTokens = {
   alignItemsForSelectInputTag:
     'var(--align-items-for-select-input-tag, center)',
   backgroundColorForButtonWhenActive:
-    'var(--background-color-for-button-when-active, hsl(0deg 0% 10% / 10%))',
+    'var(--background-color-for-button-when-active, hsl(232, 18%, 95%))',
   backgroundColorForButtonWhenHovered:
-    'var(--background-color-for-button-when-hovered, hsl(0deg 0% 10% / 5%))',
+    'var(--background-color-for-button-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForButtonAsPrimaryWhenActive:
     'var(--background-color-for-button-as-primary-when-active, #15A390)',
   backgroundColorForButtonAsPrimaryWhenHovered:
