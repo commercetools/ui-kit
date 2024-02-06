@@ -5,6 +5,7 @@ import {
   type FocusEventHandler,
   type ReactNode,
 } from 'react';
+import { MessageDescriptor } from 'react-intl';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import FlatButton from '@commercetools-uikit/flat-button';
@@ -44,7 +45,12 @@ type TranslationInputProps = {
   hasLanguagesControl?: boolean;
   warning?: ReactNode;
   error?: ReactNode;
-  additionalInfo?: ReactNode;
+  additionalInfo?:
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      });
   id?: string;
   name?: string;
   autoComplete?: string;
@@ -240,9 +246,7 @@ const TranslationInput = (props: TranslationInputProps) => {
       {props.additionalInfo && (
         <Row>
           <LeftColumn>
-            <AdditionalInfoMessage>
-              {props.additionalInfo}
-            </AdditionalInfoMessage>
+            <AdditionalInfoMessage message={props.additionalInfo} />
           </LeftColumn>
         </Row>
       )}

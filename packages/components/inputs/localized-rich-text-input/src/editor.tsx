@@ -14,7 +14,7 @@ import {
 } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useIntl } from 'react-intl';
+import { MessageDescriptor, useIntl } from 'react-intl';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
@@ -89,7 +89,12 @@ export type TEditorProps = {
   hasError?: boolean;
   error?: ReactNode;
   warning?: ReactNode;
-  additionalInfo?: ReactNode;
+  additionalInfo?:
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      });
   defaultExpandMultilineText: boolean;
   toggleLanguage: (language: string) => void;
   language: string;
@@ -352,9 +357,7 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
             </Row>
             {props.additionalInfo && (
               <LeftColumn>
-                <AdditionalInfoMessage>
-                  {props.additionalInfo}
-                </AdditionalInfoMessage>
+                <AdditionalInfoMessage message={props.additionalInfo} />
               </LeftColumn>
             )}
           </Stack>

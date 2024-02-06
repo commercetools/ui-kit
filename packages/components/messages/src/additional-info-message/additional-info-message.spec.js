@@ -5,13 +5,13 @@ const intlMessage = { id: 'Title', defaultMessage: 'Hello' };
 
 describe('AdditionalInfoMessage', () => {
   it('should render children', () => {
-    render(<AdditionalInfoMessage>Some info message</AdditionalInfoMessage>);
+    render(<AdditionalInfoMessage message="Some info message" />);
 
     expect(screen.getByText('Some info message')).toBeInTheDocument();
   });
 
   it('should render given text with react-intl', () => {
-    render(<AdditionalInfoMessage intlMessage={intlMessage} />);
+    render(<AdditionalInfoMessage message={intlMessage} />);
     expect(screen.getByText('Hello')).toBeInTheDocument();
   });
 });

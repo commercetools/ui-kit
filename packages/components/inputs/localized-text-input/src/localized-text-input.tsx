@@ -347,9 +347,9 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                   {props.errors && props.errors[language]}
                   {props.warnings && props.warnings[language]}
                   {props.additionalInfo && (
-                    <AdditionalInfoMessage>
-                      {props.additionalInfo[language]}
-                    </AdditionalInfoMessage>
+                    <AdditionalInfoMessage
+                      message={props.additionalInfo[language]}
+                    />
                   )}
                 </Stack>
               </div>

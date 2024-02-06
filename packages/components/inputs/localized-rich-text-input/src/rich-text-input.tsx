@@ -36,14 +36,12 @@ type TRichTextInputProps = {
   toggleLanguage: (language: string) => void;
   warning?: ReactNode;
   error?: string;
-  additionalInfo?: Record<
-    string,
+  additionalInfo?:
     | string
     | ReactNode
     | (MessageDescriptor & {
         values: Record<string, ReactNode>;
-      })
-  >;
+      });
 };
 
 class RichTextInput extends PureComponent<TRichTextInputProps> {
