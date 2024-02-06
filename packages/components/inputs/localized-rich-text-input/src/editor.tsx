@@ -196,7 +196,8 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
 
     (renderToggleButton && !props.hasLanguagesControl) ||
     props.error ||
-    props.warning;
+    props.warning ||
+    props.additionalInfo;
 
   return (
     <CollapsibleMotion
