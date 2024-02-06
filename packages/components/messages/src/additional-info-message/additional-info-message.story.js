@@ -14,7 +14,9 @@ storiesOf('Components|Messages', module)
   })
   .add('AdditionalInfoMessage', () => (
     <Section>
-      <AdditionalInfoMessage>
+      <AdditionalInfoMessage
+        message={{ id: 'test', defaultMessage: 'test123' }}
+      >
         {text('children', 'This is an information message')}
       </AdditionalInfoMessage>
     </Section>

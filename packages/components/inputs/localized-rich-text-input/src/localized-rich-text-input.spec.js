@@ -152,22 +152,58 @@ describe('LocalizedRichTextInput', () => {
           'false'
         );
       });
-      it('should display only display the first additionalInfo entry', () => {
-        render(
-          <LocalizedRichTextInput
-            {...baseProps}
-            selectedLanguage="en"
-            isReadOnly={true}
-            additionalInfo={{
-              en: 'cool description',
-              de: 'eine beschreibung',
-            }}
-          />
-        );
-        expect(screen.getByText('cool description')).toBeInTheDocument();
-        expect(
-          screen.queryByLabelText('eine beschreibung')
-        ).not.toBeInTheDocument();
+      describe('should display only display the first additionalInfo entry', () => {
+        it('when given localized data', () => {
+          render(
+            <LocalizedRichTextInput
+              {...baseProps}
+              selectedLanguage="en"
+              isReadOnly={true}
+              additionalInfo={{
+                en: 'cool description',
+                de: 'eine beschreibung',
+              }}
+            />
+          );
+          expect(screen.getByText('cool description')).toBeInTheDocument();
+          expect(
+            screen.queryByLabelText('eine beschreibung')
+          ).not.toBeInTheDocument();
+        });
+        it('when given localized data', () => {
+          render(
+            <LocalizedRichTextInput
+              {...baseProps}
+              selectedLanguage="en"
+              isReadOnly={true}
+              additionalInfo={{
+                en: { id: 'i18en', defaultMessage: 'english i18n message' },
+                fr: { id: 'i18fr', defaultMessage: 'french i18n message' },
+              }}
+            />
+          );
+          expect(screen.getByText('english i18n message')).toBeInTheDocument();
+          expect(
+            screen.queryByLabelText('french i18n message')
+          ).not.toBeInTheDocument();
+        });
+        it('when given localized data', () => {
+          render(
+            <LocalizedRichTextInput
+              {...baseProps}
+              selectedLanguage="en"
+              isReadOnly={true}
+              additionalInfo={{
+                en: <span>english span element</span>,
+                fr: <span>french span element</span>,
+              }}
+            />
+          );
+          expect(screen.getByText('english span element')).toBeInTheDocument();
+          expect(
+            screen.queryByLabelText('french span element')
+          ).not.toBeInTheDocument();
+        });
       });
     });
   });
