@@ -72,27 +72,22 @@ const ProgressBarLabel = (
 ) => {
   if (isNil(props.label)) return null;
 
-  const label = props.label.hasOwnProperty('defaultMessage') ? (
-    <FormattedMessage {...(props.label as MessageDescriptor)} />
-  ) : (
-    props.label
-  );
+  const TextComponent = props.height !== '10' ? Text.Body : Text.Detail;
+
+  const textProps = {
+    tone: props.isInverted ? 'inverted' : undefined,
+    as: props.height !== '10' ? 'span' : undefined,
+    fontWegith: props.height !== '10' ? 'medium' : undefined,
+    children: props.label.hasOwnProperty('defaultMessage') ? (
+      <FormattedMessage {...(props.label as MessageDescriptor)} />
+    ) : (
+      props.label
+    ),
+  } as const;
 
   return (
     <div css={getLabelStyles(props)}>
-      {props.height === '10' ? (
-        <Text.Detail tone={props.isInverted ? 'inverted' : undefined}>
-          {label}
-        </Text.Detail>
-      ) : (
-        <Text.Body
-          as="span"
-          tone={props.isInverted ? 'inverted' : undefined}
-          fontWeight="medium"
-        >
-          {label}
-        </Text.Body>
-      )}
+      <TextComponent {...textProps} />
     </div>
   );
 };
@@ -181,7 +176,7 @@ const ProgressBar = (props: TProgressBarProps) => {
   );
 };
 
-const defaultProps: TProgressBarProps = {
+export const defaultProps: TProgressBarProps = {
   progress: 0,
   label: null,
   labelPosition: 'top',
