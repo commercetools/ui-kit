@@ -4,7 +4,7 @@ import { ThemeProvider } from '../../../../design-system';
 const ThemeWrapper = (storyFn) => {
   return (
     <>
-      <ThemeProvider theme="test" />
+      <ThemeProvider theme="default" />
       {storyFn()}
     </>
   );
