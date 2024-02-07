@@ -99,13 +99,7 @@ export const Default: Story = {
     iconViewSwitcherButton4: DEFAULT_BUTTON_ICON,
     iconOnlyButton4: false,
   },
-  render: (args) => {
-    return (
-      <ViewSwitcherStoryWrapper {...args}>
-        {(index) => `View ${index}`}
-      </ViewSwitcherStoryWrapper>
-    );
-  },
+  render: ViewSwitcherStoryWrapper,
 };
 
 export const WithoutIcons: Story = {
