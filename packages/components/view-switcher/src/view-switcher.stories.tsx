@@ -2,8 +2,9 @@ import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import ViewSwitcher from '.';
 import type { TViewSwitcherButtonProps } from './view-switcher-button';
-import { iconArgType } from '@/storybook-helpers';
+import { iconArgType, categorize, hideControls } from '@/storybook-helpers';
 
+const BASE_CATEGORY = 'View Switcher Button';
 const BUTTONS_COUNT = 4;
 const DEFAULT_BUTTON_ICON = 'WorldIcon';
 
@@ -52,41 +53,31 @@ export const Default: Story = {
     isDisabledButton4: false,
   },
   argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
+    ...hideControls('defaultSelected'),
+    iconViewSwitcherButton1: {
+      ...iconArgType,
+      ...categorize(BASE_CATEGORY, 1),
     },
-    defaultSelected: {
-      table: {
-        disable: true,
-      },
+    iconOnlyButton1: categorize(BASE_CATEGORY, 1),
+    isDisabledButton1: categorize(BASE_CATEGORY, 1),
+    iconViewSwitcherButton2: {
+      ...iconArgType,
+      ...categorize(BASE_CATEGORY, 2),
     },
-    ...[...Array(BUTTONS_COUNT).keys()].reduce((acc, index) => {
-      const i = index + 1;
-      const temp = {
-        ...acc,
-        ...{
-          [`iconViewSwitcherButton${i}`]: {
-            ...iconArgType,
-            table: {
-              subcategory: `View Switcher Button ${i}`,
-            },
-          },
-          [`iconOnlyButton${i}`]: {
-            table: {
-              subcategory: `View Switcher Button ${i}`,
-            },
-          },
-          [`isDisabledButton${i}`]: {
-            table: {
-              subcategory: `View Switcher Button ${i}`,
-            },
-          },
-        },
-      };
-      return temp;
-    }, {}),
+    iconOnlyButton2: categorize(BASE_CATEGORY, 2),
+    isDisabledButton2: categorize(BASE_CATEGORY, 2),
+    iconViewSwitcherButton3: {
+      ...iconArgType,
+      ...categorize(BASE_CATEGORY, 3),
+    },
+    iconOnlyButton3: categorize(BASE_CATEGORY, 3),
+    isDisabledButton3: categorize(BASE_CATEGORY, 3),
+    iconViewSwitcherButton4: {
+      ...iconArgType,
+      ...categorize(BASE_CATEGORY, 4),
+    },
+    iconOnlyButton4: categorize(BASE_CATEGORY, 4),
+    isDisabledButton4: categorize(BASE_CATEGORY, 4),
   },
   render: (args) => (
     <ViewSwitcher.Group {...args}>
@@ -128,18 +119,7 @@ export const WithoutIcons: Story = {
     isDisabledButton3: false,
     isDisabledButton4: false,
   },
-  argTypes: {
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-    defaultSelected: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  argTypes: hideControls('defaultSelected'),
   render: (args) => (
     <ViewSwitcher.Group {...args}>
       {[...Array(BUTTONS_COUNT).keys()].map((index) => {
