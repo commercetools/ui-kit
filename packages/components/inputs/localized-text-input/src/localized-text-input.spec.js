@@ -122,7 +122,7 @@ describe('when input is expanded', () => {
     expect(getByLabelText('FR')).toBeInTheDocument();
   });
   describe('should display all additional field data', () => {
-    it('when given localized data', () => {
+    it('when given string', () => {
       const { getByLabelText, getByText } = renderLocalizedTextInput({
         additionalInfo: {
           en: 'cool description',

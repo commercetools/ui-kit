@@ -285,7 +285,7 @@ describe('when the error is on the selected language', () => {
 });
 
 describe('when the additionalInfo exists on the selected locale should display', () => {
-  it('when given localized data', () => {
+  it('when given string', () => {
     const { getByLabelText, getByText, queryByLabelText } =
       renderLocalizedMultilineTextInput({
         additionalInfo: {
@@ -296,7 +296,7 @@ describe('when the additionalInfo exists on the selected locale should display',
     expect(queryByLabelText('FR')).not.toBeInTheDocument();
     expect(getByText('Some description')).toBeInTheDocument();
   });
-  it('when given localized data', () => {
+  it('when given intl data', () => {
     const { getByLabelText, getByText, queryByLabelText } =
       renderLocalizedMultilineTextInput({
         additionalInfo: {
@@ -309,7 +309,7 @@ describe('when the additionalInfo exists on the selected locale should display',
     expect(getByText('english i18n message')).toBeInTheDocument();
     expect(queryByLabelText('french i18n message')).not.toBeInTheDocument();
   });
-  it('when given localized data', () => {
+  it('when given react element', () => {
     const { getByLabelText, getByText, queryByLabelText } =
       renderLocalizedMultilineTextInput({
         additionalInfo: {

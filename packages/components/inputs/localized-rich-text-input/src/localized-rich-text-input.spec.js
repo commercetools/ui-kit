@@ -153,7 +153,7 @@ describe('LocalizedRichTextInput', () => {
         );
       });
       describe('should display only display the first additionalInfo entry', () => {
-        it('when given localized data', () => {
+        it('when given string', () => {
           render(
             <LocalizedRichTextInput
               {...baseProps}
@@ -170,7 +170,7 @@ describe('LocalizedRichTextInput', () => {
             screen.queryByLabelText('eine beschreibung')
           ).not.toBeInTheDocument();
         });
-        it('when given localized data', () => {
+        it('when given intl data', () => {
           render(
             <LocalizedRichTextInput
               {...baseProps}
@@ -187,7 +187,7 @@ describe('LocalizedRichTextInput', () => {
             screen.queryByLabelText('french i18n message')
           ).not.toBeInTheDocument();
         });
-        it('when given localized data', () => {
+        it('when given react element', () => {
           render(
             <LocalizedRichTextInput
               {...baseProps}
