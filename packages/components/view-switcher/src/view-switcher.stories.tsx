@@ -1,56 +1,40 @@
-import type { ComponentProps } from 'react';
+import type { ReactElement } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import ViewSwitcher from '.';
-import type { TViewSwitcherButtonProps } from './view-switcher-button';
 import { iconArgType, categorize, hideControls } from '@/storybook-helpers';
+import ViewSwitcher, { type TViewSwitcherProps } from '.';
 
 const BASE_CATEGORY = 'View Switcher Button';
 const BUTTONS_COUNT = 4;
 const DEFAULT_BUTTON_ICON = 'WorldIcon';
 
-type ViewSwitcherPropsAndCustomArgs = ComponentProps<
-  typeof ViewSwitcher.Group
-> & {
-  iconViewSwitcherButton1: string;
-  iconViewSwitcherButton2: string;
-  iconViewSwitcherButton3: string;
-  iconViewSwitcherButton4: string;
-  iconOnlyButton1: boolean;
-  iconOnlyButton2: boolean;
-  iconOnlyButton3: boolean;
-  iconOnlyButton4: boolean;
-  isDisabledButton1: boolean;
-  isDisabledButton2: boolean;
-  isDisabledButton3: boolean;
-  isDisabledButton4: boolean;
+type StoryAttributeName =
+  | `iconViewSwitcherButton${number}`
+  | `iconOnlyButton${number}`
+  | `isDisabledButton${number}`;
+type StoryAttributes = {
+  [K in StoryAttributeName]: K extends `iconViewSwitcherButton${number}`
+    ? string
+    : boolean;
 };
+type ViewSwitcherPropsAndCustomArgs = TViewSwitcherProps &
+  StoryAttributes & {
+    children: (index: number) => string;
+  };
 
 const meta = {
   title: 'Components/ViewSwitcher',
   component: ViewSwitcher.Group,
-  tags: ['autodocs'],
-} satisfies Meta<ViewSwitcherPropsAndCustomArgs>;
-
-export default meta;
-
-type Story = StoryObj<ViewSwitcherPropsAndCustomArgs>;
-
-export const Default: Story = {
   args: {
     isCondensed: false,
-    defaultSelected: 'Button 3',
-    iconViewSwitcherButton1: DEFAULT_BUTTON_ICON,
+    defaultSelected: 'Button 2',
     iconOnlyButton1: false,
     isDisabledButton1: false,
-    iconViewSwitcherButton2: DEFAULT_BUTTON_ICON,
     iconOnlyButton2: false,
     isDisabledButton2: false,
-    iconViewSwitcherButton3: DEFAULT_BUTTON_ICON,
     iconOnlyButton3: false,
     isDisabledButton3: false,
-    iconViewSwitcherButton4: DEFAULT_BUTTON_ICON,
     iconOnlyButton4: false,
-    isDisabledButton4: false,
+    isDisabledButton4: true,
   },
   argTypes: {
     ...hideControls('defaultSelected'),
@@ -79,67 +63,65 @@ export const Default: Story = {
     iconOnlyButton4: categorize(BASE_CATEGORY, 4),
     isDisabledButton4: categorize(BASE_CATEGORY, 4),
   },
-  render: (args) => (
-    <ViewSwitcher.Group {...args}>
-      {[...Array(BUTTONS_COUNT).keys()].map((index) => {
-        const i = index + 1;
+} satisfies Meta<ViewSwitcherPropsAndCustomArgs>;
 
-        return (
-          <ViewSwitcher.Button
-            key={i}
-            label={`View ${i}`}
-            isDisabled={
-              args[
-                `isDisabledButton${i}` as keyof typeof args
-              ] as TViewSwitcherButtonProps['isDisabled']
-            }
-            value={`Button ${i}`}
-            icon={
-              args[
-                `iconViewSwitcherButton${i}` as keyof typeof args
-              ] as TViewSwitcherButtonProps['icon']
-            }
-          >
-            {!args[`iconOnlyButton${i}` as keyof typeof args]
-              ? `View ${i}`
-              : undefined}
-          </ViewSwitcher.Button>
-        );
-      })}
-    </ViewSwitcher.Group>
-  ),
+export default meta;
+
+type Story = StoryObj<ViewSwitcherPropsAndCustomArgs>;
+
+const ViewSwitcherStoryWrapper = (props: ViewSwitcherPropsAndCustomArgs) => (
+  <ViewSwitcher.Group {...props}>
+    {[...Array(BUTTONS_COUNT).keys()].map((index) => {
+      const i = index + 1;
+      return (
+        <ViewSwitcher.Button
+          key={i}
+          label={`View ${i}`}
+          isDisabled={props[`isDisabledButton${i}`]}
+          value={`Button ${i}`}
+          icon={props[`iconViewSwitcherButton${i}`] as unknown as ReactElement}
+        >
+          {!props[`iconOnlyButton${i}`] ? `View ${index + 1}` : undefined}
+        </ViewSwitcher.Button>
+      );
+    })}
+  </ViewSwitcher.Group>
+);
+
+export const Default: Story = {
+  args: {
+    iconViewSwitcherButton1: DEFAULT_BUTTON_ICON,
+    iconOnlyButton1: false,
+    iconViewSwitcherButton2: DEFAULT_BUTTON_ICON,
+    iconOnlyButton2: false,
+    iconViewSwitcherButton3: DEFAULT_BUTTON_ICON,
+    iconOnlyButton3: false,
+    iconViewSwitcherButton4: DEFAULT_BUTTON_ICON,
+    iconOnlyButton4: false,
+  },
+  render: (args) => {
+    return (
+      <ViewSwitcherStoryWrapper {...args}>
+        {(index) => `View ${index}`}
+      </ViewSwitcherStoryWrapper>
+    );
+  },
 };
 
 export const WithoutIcons: Story = {
-  args: {
-    isCondensed: false,
-    defaultSelected: 'Button 3',
-    isDisabledButton1: false,
-    isDisabledButton2: false,
-    isDisabledButton3: false,
-    isDisabledButton4: false,
-  },
-  argTypes: hideControls('defaultSelected'),
-  render: (args) => (
-    <ViewSwitcher.Group {...args}>
-      {[...Array(BUTTONS_COUNT).keys()].map((index) => {
-        const i = index + 1;
+  render: ViewSwitcherStoryWrapper,
+};
 
-        return (
-          <ViewSwitcher.Button
-            key={i}
-            label={`View ${i}`}
-            isDisabled={
-              args[
-                `isDisabledButton${i}` as keyof typeof args
-              ] as TViewSwitcherButtonProps['isDisabled']
-            }
-            value={`Button ${i}`}
-          >
-            {`View ${i}`}
-          </ViewSwitcher.Button>
-        );
-      })}
-    </ViewSwitcher.Group>
-  ),
+export const OnlyIcons: Story = {
+  args: {
+    iconViewSwitcherButton1: DEFAULT_BUTTON_ICON,
+    iconOnlyButton1: true,
+    iconViewSwitcherButton2: DEFAULT_BUTTON_ICON,
+    iconOnlyButton2: true,
+    iconViewSwitcherButton3: DEFAULT_BUTTON_ICON,
+    iconOnlyButton3: true,
+    iconViewSwitcherButton4: DEFAULT_BUTTON_ICON,
+    iconOnlyButton4: true,
+  },
+  render: ViewSwitcherStoryWrapper,
 };
