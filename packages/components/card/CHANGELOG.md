@@ -1,5 +1,16 @@
 # @commercetools-uikit/card
 
+## 17.1.0
+
+### Patch Changes
+
+- [#2706](https://github.com/commercetools/ui-kit/pull/2706) [`7f42b3d`](https://github.com/commercetools/ui-kit/commit/7f42b3d9ff3ae5c9beebdc812cc1aa1a141b1620) Thanks [@jaikamat](https://github.com/jaikamat)! - We've extended the Card component with onClick and internal/external linking functionality, along with disabled functionality and styling.
+
+- Updated dependencies [[`3425f6c`](https://github.com/commercetools/ui-kit/commit/3425f6c371e2b386d60aa04c97ca8ffbf43f6cb1)]:
+  - @commercetools-uikit/design-system@17.1.0
+  - @commercetools-uikit/spacings-inset@17.1.0
+  - @commercetools-uikit/utils@17.1.0
+
 ## 17.0.1
 
 ### Patch Changes

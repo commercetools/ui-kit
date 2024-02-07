@@ -1,5 +1,50 @@
 # @commercetools-frontend/ui-kit
 
+## 17.1.0
+
+### Minor Changes
+
+- [#2702](https://github.com/commercetools/ui-kit/pull/2702) [`8ba22f1`](https://github.com/commercetools/ui-kit/commit/8ba22f109d50d171b1d7f6f0bdc751c4689e0f11) Thanks [@tylermorrisford](https://github.com/tylermorrisford)! - now the preset also exports the newly created `ProgressBar` component.
+
+### Patch Changes
+
+- Updated dependencies [[`a0abf51`](https://github.com/commercetools/ui-kit/commit/a0abf51483dcf26861f6af506b3acf10cb9fcd2c), [`d263f01`](https://github.com/commercetools/ui-kit/commit/d263f01990551a3a0dcb6c0886b9d2b35c7f7cf5), [`8ba22f1`](https://github.com/commercetools/ui-kit/commit/8ba22f109d50d171b1d7f6f0bdc751c4689e0f11), [`3425f6c`](https://github.com/commercetools/ui-kit/commit/3425f6c371e2b386d60aa04c97ca8ffbf43f6cb1), [`8ba22f1`](https://github.com/commercetools/ui-kit/commit/8ba22f109d50d171b1d7f6f0bdc751c4689e0f11), [`7f42b3d`](https://github.com/commercetools/ui-kit/commit/7f42b3d9ff3ae5c9beebdc812cc1aa1a141b1620), [`92008b2`](https://github.com/commercetools/ui-kit/commit/92008b25d466d7a0402dfb5795deabcd7850cb42)]:
+  - @commercetools-uikit/icons@17.1.0
+  - @commercetools-uikit/selectable-search-input@17.1.0
+  - @commercetools-uikit/collapsible-panel@17.1.0
+  - @commercetools-uikit/progress-bar@17.1.0
+  - @commercetools-uikit/design-system@17.1.0
+  - @commercetools-uikit/constraints@17.1.0
+  - @commercetools-uikit/card@17.1.0
+  - @commercetools-uikit/data-table@17.1.0
+  - @commercetools-uikit/data-table-manager@17.1.0
+  - @commercetools-uikit/field-label@17.1.0
+  - @commercetools-uikit/link@17.1.0
+  - @commercetools-uikit/notifications@17.1.0
+  - @commercetools-uikit/pagination@17.1.0
+  - @commercetools-uikit/primary-action-dropdown@17.1.0
+  - @commercetools-uikit/tag@17.1.0
+  - @commercetools-uikit/fields@17.1.0
+  - @commercetools-uikit/inputs@17.1.0
+  - @commercetools-uikit/avatar@17.1.0
+  - @commercetools-uikit/label@17.1.0
+  - @commercetools-uikit/loading-spinner@17.1.0
+  - @commercetools-uikit/stamp@17.1.0
+  - @commercetools-uikit/text@17.1.0
+  - @commercetools-uikit/tooltip@17.1.0
+  - @commercetools-uikit/view-switcher@17.1.0
+  - @commercetools-uikit/buttons@17.1.0
+  - @commercetools-uikit/spacings@17.1.0
+  - @commercetools-uikit/messages@17.1.0
+  - @commercetools-uikit/field-errors@17.1.0
+  - @commercetools-uikit/accessible-hidden@17.1.0
+  - @commercetools-uikit/collapsible@17.1.0
+  - @commercetools-uikit/collapsible-motion@17.1.0
+  - @commercetools-uikit/grid@17.1.0
+  - @commercetools-uikit/hooks@17.1.0
+  - @commercetools-uikit/i18n@17.1.0
+  - @commercetools-uikit/utils@17.1.0
+
 ## 17.0.1
 
 ### Patch Changes
