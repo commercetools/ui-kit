@@ -244,6 +244,13 @@ export const themes = {
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     sizeHeightTag: '26px',
   },
+  rebranding: {
+    colorPrimary: '#f78d26',
+    colorSolid: '#fff',
+    colorSurface: '#1a1a1a',
+    backgroundColorForTag: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
+    backgroundColorForTagWarning: 'hsl(232, 18%, 95%)',
+  },
 } as const;
 
 const designTokens = {

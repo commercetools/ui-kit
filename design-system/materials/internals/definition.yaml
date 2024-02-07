@@ -264,6 +264,15 @@ choiceGroupsByTheme:
         break-point-giantdesktop: 1680px
         break-point-jumbodesktop: 1920px
 
+  rebranding:
+    colors:
+      label: Colors
+      prefix: color
+      choices:
+        color-primary: '#f78d26'
+        color-solid: '#fff'
+        color-surface: '#1a1a1a'
+
 states:
   active:
     description: 'Trigged while the user is currently interacting with the element'
@@ -454,6 +463,18 @@ decisionGroupsByTheme:
           choice: 'inset 0 0 0 1px var(--color-error)'
         shadow-for-input-when-warning:
           choice: 'inset 0 0 0 1px var(--color-warning)'
+
+  rebranding:
+    backgroundColors:
+      label: Background Colors
+      prefix: background-color
+      decisions:
+        background-color-for-tag:
+          description: ''
+          choice: color-warning-95
+        background-color-for-tag-warning:
+          description: ''
+          choice: color-neutral-95
 
 # These tokens are deprecated as they don't follow our naming patterns.
 # Ideally they should be replaced with new tokens and not be used anymore.

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTheme, designTokens } from '@commercetools-uikit/design-system';
 import { Switch, Route } from 'react-router';
 import kebabCase from 'lodash/kebabCase';
@@ -8,6 +9,7 @@ import {
   LocalDarkThemeProvider,
   LocalThemeProvider,
 } from '../../test/percy';
+import { ThemeProvider } from './theme-provider';
 
 export const routePath = '/theme-provider';
 
@@ -15,9 +17,7 @@ const parentSelector = (id) => () => document.getElementById(id);
 
 const DummyComponent = (props) => {
   const { theme } = useTheme(
-    props.parentId
-      ? parentSelector(props.parentId)
-      : undefined
+    props.parentId ? parentSelector(props.parentId) : undefined
   );
 
   return (
@@ -135,8 +135,64 @@ TestComponent.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
+const localThemeParentSelector = () => document.getElementById('local');
+
+const InteractiveRoute = () => {
+  const [globalTheme, setGlobalTheme] = useState({
+    name: 'default',
+    overrides: {},
+  });
+  const [localTheme, setLocalTheme] = useState({
+    name: 'default',
+    overrides: {},
+  });
+
+  return (
+    <>
+      <button
+        onClick={() => {
+          setGlobalTheme({
+            name: 'rebranding',
+            overrides: {
+              colorSolid: 'red',
+              colorSurface: 'yellow',
+              customColor: '#BADA55',
+            },
+          });
+        }}
+      >
+        change global theme
+      </button>
+      <button
+        onClick={() => {
+          setLocalTheme({
+            name: 'rebranding',
+            overrides: { colorSolid: 'green', colorSurface: 'tomato' },
+          });
+        }}
+      >
+        change local theme
+      </button>
+      <ThemeProvider
+        theme={globalTheme.name}
+        themeOverrides={globalTheme.overrides}
+      />
+      <TestComponent text="global" />
+      <div id="local">
+        <ThemeProvider
+          theme={localTheme.name}
+          themeOverrides={localTheme.overrides}
+          parentSelector={localThemeParentSelector}
+        />
+        <TestComponent text="local" />
+      </div>
+    </>
+  );
+};
+
 export const component = () => (
   <Switch>
+    <Route path={`${routePath}/interactive`} component={InteractiveRoute} />
     <Route path={routePath} component={DefaultRoute} />
   </Switch>
 );
