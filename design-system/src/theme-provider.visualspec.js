@@ -20,7 +20,7 @@ describe('Interactive', () => {
     );
 
     await globalThemeChangeButton.click();
-    await page.waitForSelector('[data-theme="test"]');
+    await page.waitForSelector('[data-theme="rebranding"]');
     // TODO: uncomment when issue with Percy is resolved
     // await percySnapshot(page, 'ThemeProvider - after global theme change');
 
@@ -30,7 +30,7 @@ describe('Interactive', () => {
       'change local theme'
     );
     await localThemeChangeButton.click();
-    await page.waitForSelector('[data-theme="test"]');
+    await page.waitForSelector('[data-theme="rebranding"]');
     // TODO: uncomment when issue with Percy is resolved
     // await percySnapshot(page, 'ThemeProvider - after local theme change');
   });
