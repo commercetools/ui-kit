@@ -29,15 +29,11 @@ export const component = () => (
         Secondary
       </Stamp>
     </Spec>
-    <Spec label="when condensed with icon">
-      <Stamp icon={<ClockIcon />} tone="information" isCondensed={true}>
-        Hello
-      </Stamp>
+    <Spec label="when condensed with icon and label">
+      <Stamp tone="information" isCondensed={true} label="Hello" icon={<ClockIcon />} />
     </Spec>
-    <Spec label="when not condensed with icon">
-      <Stamp icon={<ClockIcon />} tone="information" isCondensed={false}>
-        Hello
-      </Stamp>
+    <Spec label="when not condensed with icon and label">
+      <Stamp tone="information" isCondensed={false} label="Hello" icon={<ClockIcon />} />
     </Spec>
   </Suite>
 );
