@@ -126,5 +126,17 @@ export const component = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
+    <Spec label="with error and additional info when touched">
+      <LocalizedTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        errors={{ missing: true }}
+        additionalInfo={{ en: 'Some intel' }}
+        touched={true}
+      />
+    </Spec>
   </Suite>
 );

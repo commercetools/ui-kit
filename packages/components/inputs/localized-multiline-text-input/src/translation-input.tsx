@@ -141,7 +141,8 @@ const TranslationInput = (props: TranslationInputProps) => {
     */
     (!props.isCollapsed && inputHasSeveralRows && !props.hasLanguagesControl) ||
     props.error ||
-    props.warning;
+    props.warning ||
+    (props.additionalInfo && !props.isCollapsed);
 
   if (!props.isReadOnly) {
     warning(

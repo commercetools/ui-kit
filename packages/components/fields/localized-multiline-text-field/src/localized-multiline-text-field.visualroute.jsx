@@ -150,5 +150,28 @@ export const component = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
+    <Spec label="with additional info">
+      <LocalizedMultilineTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        touched={true}
+        additionalInfo={{ en: 'hello here is an info' }}
+      />
+    </Spec>
+    <Spec label="with additional info and error">
+      <LocalizedMultilineTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        touched={true}
+        errorsByLanguage={{ en: 'Invalid input' }}
+        additionalInfo={{ en: 'hello here is an info' }}
+      />
+    </Spec>
   </Suite>
 );
