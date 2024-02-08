@@ -16,10 +16,7 @@ type StoryAttributes = {
     ? string
     : boolean;
 };
-type ViewSwitcherPropsAndCustomArgs = TViewSwitcherProps &
-  StoryAttributes & {
-    children: (index: number) => string;
-  };
+type ViewSwitcherPropsAndCustomArgs = TViewSwitcherProps & StoryAttributes;
 
 const meta = {
   title: 'Components/ViewSwitcher',
