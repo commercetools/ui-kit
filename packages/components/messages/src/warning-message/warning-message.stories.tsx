@@ -4,7 +4,6 @@ import WarningMessage from './warning-message';
 const meta = {
   title: 'Components/Messages/WarningMessage',
   component: WarningMessage,
-  tags: ['autodocs'],
 } satisfies Meta<typeof WarningMessage>;
 
 export default meta;

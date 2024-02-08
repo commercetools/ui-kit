@@ -4,7 +4,6 @@ import ErrorMessage from './error-message';
 const meta = {
   title: 'Components/Messages/ErrorMessage',
   component: ErrorMessage,
-  tags: ['autodocs'],
 } satisfies Meta<typeof ErrorMessage>;
 
 export default meta;

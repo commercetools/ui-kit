@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { horizontalConstraintArgType } from '@/storybook-helpers';
+import { horizontalConstraintArgType, hideControls } from '@/storybook-helpers';
 import { PrimaryButton } from '@commercetools-uikit/buttons';
 import type { Meta, StoryObj } from '@storybook/react';
 import Tooltip from './tooltip';
@@ -24,38 +24,8 @@ type TooltipPropsAndCustomArgs = ComponentProps<typeof Tooltip> & {
 const meta = {
   title: 'Components/Tooltip',
   component: Tooltip,
-  tags: ['autodocs'],
-} satisfies Meta<TooltipPropsAndCustomArgs>;
-
-export default meta;
-
-type Story = StoryObj<TooltipPropsAndCustomArgs>;
-
-export const Default: Story = {
-  args: {
-    off: false,
-    title: 'Tooltip text.',
-    showAfter: 300,
-    closeAfter: 200,
-    children: (
-      <div
-        css={css`
-          width: min-content;
-          cursor: not-allowed;
-          > :disabled {
-            pointer-events: none;
-          }
-        `}
-      >
-        <PrimaryButton onClick={() => {}} label="Submit" />
-      </div>
-    ),
-    fullWidth: false,
-    customBodyWrapper: false,
-    horizontalConstraint: 'scale',
-    placement: 'top',
-  },
   argTypes: {
+    ...hideControls(['children']),
     placement: {
       control: 'select',
       options: [
@@ -87,7 +57,36 @@ export const Default: Story = {
       </div>
     ),
   ],
-  parameters: { controls: { exclude: ['children', 'defaultSelected'] } },
+} satisfies Meta<TooltipPropsAndCustomArgs>;
+
+export default meta;
+
+type Story = StoryObj<TooltipPropsAndCustomArgs>;
+
+export const Default: Story = {
+  args: {
+    off: false,
+    title: 'Tooltip text.',
+    showAfter: 300,
+    closeAfter: 200,
+    children: (
+      <div
+        css={css`
+          width: min-content;
+          cursor: not-allowed;
+          > :disabled {
+            pointer-events: none;
+          }
+        `}
+      >
+        <PrimaryButton onClick={() => {}} label="Submit" />
+      </div>
+    ),
+    fullWidth: false,
+    customBodyWrapper: false,
+    horizontalConstraint: 'scale',
+    placement: 'top',
+  },
   render: (args) => {
     const { fullWidth, customBodyWrapper } = args;
     return (
