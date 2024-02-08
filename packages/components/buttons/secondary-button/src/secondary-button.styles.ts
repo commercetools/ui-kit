@@ -12,7 +12,7 @@ const getStateStyles = (
 ) => {
   if (isDisabled) {
     return css`
-      box-shadow: ${designTokens.shadowForButtonWhenDisabled};
+      box-shadow: ${designTokens.shadow0};
       background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
       border: none;
       color: ${designTokens.colorNeutral60};
@@ -29,8 +29,8 @@ const getStateStyles = (
   if (isActive) {
     const baseActiveStyles = [
       css`
-        border: ${designTokens.borderForButtonAsSecondaryWhenActive};
-        box-shadow: ${designTokens.shadowForButtonWhenActive};
+        border: 1px solid ${designTokens.colorNeutral};
+        box-shadow: ${designTokens.shadow0};
         background-color: ${designTokens.colorSurface};
         &:focus,
         &:hover {
@@ -53,15 +53,15 @@ const getStateStyles = (
   return css`
     &:focus,
     &:hover {
-      border: ${designTokens.borderForButtonAsSecondaryWhenHovered};
-      box-shadow: ${designTokens.shadowForButtonWhenFocused};
+      border: 1px solid ${designTokens.colorNeutral};
+      box-shadow: ${designTokens.shadow0};
     }
     &:hover {
-      background-color: ${designTokens.backgroundColorForButtonWhenHovered};
+      background-color: ${designTokens.backgroundColorForButtonWhenActive};
     }
     &:active {
-      border: ${designTokens.borderForButtonAsSecondaryWhenActive};
-      box-shadow: ${designTokens.shadowForButtonWhenActive};
+      border: 1px solid ${designTokens.colorNeutral};
+      box-shadow: ${designTokens.shadow0};
       background-color: ${designTokens.backgroundColorForButtonWhenActive};
     }
   `;
@@ -92,11 +92,11 @@ const getThemeStyles = (theme: Theme) => {
       return css`
         &:focus,
         &:hover {
-          box-shadow: ${designTokens.shadowForButtonWhenFocused};
+          box-shadow: ${designTokens.shadow0};
           background-color: ${designTokens.backgroundColorForButtonWhenHovered};
         }
         &:active {
-          box-shadow: ${designTokens.shadowForButtonWhenActive};
+          box-shadow: ${designTokens.shadow0};
           background-color: ${designTokens.backgroundColorForButtonWhenActive};
         }
       `;
@@ -110,14 +110,12 @@ const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
       return css`
         height: ${designTokens.heightForButtonAsMedium};
         border-radius: ${designTokens.borderRadiusForButtonAsMedium};
-        padding: ${designTokens.paddingForButtonAsMedium};
       `;
 
     case 'big':
       return css`
         height: ${designTokens.heightForButtonAsBig};
         border-radius: ${designTokens.borderRadiusForButtonAsBig};
-        padding: ${designTokens.paddingForButtonAsBig};
       `;
 
     default:
@@ -134,18 +132,18 @@ const getToneStyles = (
       return [
         !isDisabled &&
           css`
-            background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfo};
-            border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+            background-color: ${designTokens.colorInfo95};
+            border-color: ${designTokens.colorInfo85};
             &:hover {
-              background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndHovered};
-              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+              background-color: ${designTokens.colorInfo90};
+              border-color: ${designTokens.colorInfo85};
             }
             &:focus {
-              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+              border-color: ${designTokens.colorInfo85};
             }
             &:active {
-              background-color: ${designTokens.backgroundColorForButtonAsSecondaryWhenInfoAndActive};
-              border-color: ${designTokens.borderColorForButtonAsSecondaryWhenInfo};
+              background-color: ${designTokens.colorInfo85};
+              border-color: ${designTokens.colorInfo85};
             }
           `,
       ];

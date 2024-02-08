@@ -25,9 +25,9 @@ const getCurrencyLabelStyles = (props: TInputProps) => css`
       ? designTokens.borderColorForInputWhenReadonly
       : designTokens.borderColorForInputWhenDisabled};
   border-right: 0;
-  padding: ${designTokens.paddingForMoneyInputCurrencyDropdown};
+  padding: 0 ${designTokens.spacing25};
   align-items: center;
-  font-size: ${designTokens.fontSizeForLocalizedInputLabel};
+  font-size: ${designTokens.fontSize30};
   box-sizing: border-box;
 
   &:focus-within: {
@@ -46,7 +46,7 @@ const getAmountInputStyles = (props: TGetAmountInputStyles) => [
     margin-left: 0;
 
     &::placeholder {
-      color: ${designTokens.placeholderFontColorForInput};
+      color: ${designTokens.colorNeutral60};
     }
   `,
 ];
@@ -61,7 +61,7 @@ const getHighPrecisionWrapperStyles = ({
   position: absolute;
   top: 0;
   right: 0;
-  margin-right: ${designTokens.marginRightForMoneyInputPrecisionBadge};
+  margin-right: ${designTokens.spacing25};
   height: 100%;
   display: flex;
   align-items: center;

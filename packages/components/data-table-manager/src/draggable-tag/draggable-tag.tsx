@@ -18,7 +18,7 @@ export type TDraggableTagProps = {
 };
 
 const DraggableTagWrapper = styled.div`
-  padding: ${designTokens.paddingForTableManagerDraggableTag};
+  padding: ${designTokens.spacing10} 0;
 `;
 
 const DraggableTag = (props: TDraggableTagProps) => {

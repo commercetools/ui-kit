@@ -124,11 +124,7 @@ const HeaderCellInner = styled.div<THeaderCellInner>`
   box-sizing: border-box;
   display: flex;
   justify-content: flex-start;
-  padding: 0
-    ${(props) =>
-      props.isCondensed
-        ? designTokens.paddingForTableHeaderAsCondensed
-        : designTokens.paddingForTableHeader};
+  padding: 0 ${designTokens.spacing40};
 
   ${getCellInnerStyles}
   ${(props) => (props.isSortable ? getSortableHeaderStyles(props) : '')};
@@ -148,7 +144,7 @@ const BaseHeaderCell = styled.th<TBaseHeaderCell>`
     props.disableHeaderStickiness ? 'relative' : 'sticky'};
   top: 0;
   z-index: 1;
-  line-height: ${designTokens.lineHeightForTableHeader};
+  line-height: ${designTokens.lineHeight40};
 
   /* remove user-agent styles */
   padding: 0;
@@ -186,7 +182,7 @@ const HeaderLabelWrapper = styled.div`
   /* ensure height stays the same even if label is empty
      1.4em = default line-height */
   min-height: 1.4em;
-  margin: ${designTokens.marginForTableHeader} 0;
+  margin: ${designTokens.spacing20} 0;
   flex: 0 0 fit-content;
 `;
 

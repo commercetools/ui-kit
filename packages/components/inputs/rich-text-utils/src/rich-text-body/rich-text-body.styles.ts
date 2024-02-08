@@ -96,8 +96,8 @@ export const Toolbar = styled.div`
   font-family: ${designTokens.fontFamilyDefault};
   border-radius: ${designTokens.borderRadiusForInput};
   border-bottom: 0;
-  padding: ${designTokens.paddingForRichTextToolbar};
-  padding-left: ${designTokens.paddingLeftForRichTextToolbar};
+  padding: none;
+  padding-left: none;
   align-items: flex-start;
   align-content: stretch;
 
@@ -146,7 +146,7 @@ const reset = (props: TRichTextBodyStylesProps) => [
 ];
 
 export const EditorContainer = styled.div<TRichTextBodyStylesProps>`
-  padding: ${designTokens.paddingForRichTextEditorContainer};
+  padding: ${designTokens.spacing20} 0 0;
   border-radius: ${designTokens.borderRadiusForInput};
   font-family: ${designTokens.fontFamilyDefault};
   border-color: ${(props) => getBorderColor(props)};
@@ -159,7 +159,7 @@ export const Container = styled.div<TRichTextBodyStylesProps>`
   border-radius: ${designTokens.borderRadiusForInput};
   border: 1px solid ${designTokens.borderColorForInput};
   transition: ${designTokens.transitionStandard};
-  padding: ${designTokens.paddingForRichTextInput};
+  padding: ${designTokens.spacing20} ${designTokens.spacing30};
   background-color: ${(props) => getContainerBackgroundColor(props)};
   ${(props) => getInputBoxShadow(props)}
   border-color: ${(props) => getBorderColor(props)};

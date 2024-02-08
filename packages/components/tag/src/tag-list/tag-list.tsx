@@ -22,7 +22,7 @@ const TagListContainer = styled.div`
 `;
 
 const TagListItem = styled.div`
-  margin: ${designTokens.marginForTagList};
+  margin: 0 ${designTokens.spacing20} ${designTokens.spacing20} 0;
 `;
 
 const TagList = (props: TTagListProps) => {
