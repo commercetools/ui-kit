@@ -80,56 +80,54 @@ const defaultProps: Pick<
 
 const getBorderColor = (props: TLabelProps) => {
   if (props.hasError) {
-    return designTokens.borderColorForCheckboxInputIconWhenError;
+    return designTokens.colorError;
   }
   if (props.isDisabled) {
-    return designTokens.borderColorForCheckboxInputIconWhenDisabled;
+    return designTokens.colorNeutral;
   }
   if (props.isReadOnly) {
-    return designTokens.borderColorForCheckboxInputIconWhenReadonly;
+    return designTokens.colorNeutral60;
   }
-  return designTokens.borderColorForCheckboxInputIcon;
+  return designTokens.colorPrimary;
 };
 
 const getBackgroundColor = (props: TLabelProps) => {
   if (props.isChecked || props.isIndeterminate) {
     if (props.hasError) {
-      return designTokens.backgroundColorForCheckboxInputIconWhenError;
+      return designTokens.colorError;
     }
     if (props.isDisabled) {
-      return designTokens.backgroundColorForCheckboxInputIconWhenDisabled;
+      return designTokens.colorNeutral;
     }
     if (props.isReadOnly) {
-      return designTokens.backgroundColorForCheckboxInputIconWhenReadonly;
+      return designTokens.colorNeutral60;
     }
-    return designTokens.backgroundColorForCheckboxInputIcon;
+    return designTokens.colorPrimary;
   }
   return designTokens.colorSurface;
 };
 
 const getTextColor = (props: TLabelProps) => {
   if (props.hasError) {
-    return designTokens.fontColorForCheckboxInputLabelWhenError;
+    return designTokens.colorError;
   }
   if (props.isDisabled) {
-    return designTokens.fontColorForCheckboxInputLabelWhenDisabled;
+    return designTokens.colorNeutral60;
   }
   if (props.isReadOnly) {
-    return designTokens.fontColorForCheckboxInputLabelWhenReadonly;
+    return designTokens.colorNeutral40;
   }
-  return designTokens.fontColorForCheckboxInputLabel;
+  return designTokens.colorSolid;
 };
 
 const LabelTextWrapper = styled.div<TLabelProps>`
-  margin-left: calc(
-    ${designTokens.spacing20} - ${designTokens.borderWidthForCheckboxInputIcon}
-  );
+  margin-left: calc(${designTokens.spacing20} - ${designTokens.borderWidth2});
   outline: none;
-  border-radius: ${designTokens.borderRadiusForTag};
+  border-radius: ${designTokens.borderRadius2};
 
-  font-size: ${designTokens.fontSizeForTextAsBody};
-  line-height: ${designTokens.lineHeightForTextAsBody};
-  font-weight: ${designTokens.fontWeightForTextAsBody};
+  font-size: ${designTokens.fontSize30};
+  line-height: ${designTokens.lineHeight40};
+  font-weight: ${designTokens.fontWeight400};
   color: ${(props) => getTextColor(props)};
 `;
 
@@ -150,7 +148,7 @@ const CheckboxIconWrapper = styled.div<TCheckboxIconWrapperProps>`
   ${(props) =>
     props.isHovered
       ? css`
-          background-color: ${designTokens.backgroundColorForCheckboxInputIconWhenHovered};
+          background-color: ${designTokens.colorNeutral90};
         `
       : ''}
 `;
@@ -169,7 +167,7 @@ const CheckboxIcon = (props: TLabelProps) => {
       <div
         css={[
           css`
-            border-width: ${designTokens.borderWidthForCheckboxInputIcon};
+            border-width: ${designTokens.borderWidth2};
             border-radius: ${designTokens.borderRadius2};
             border-color: ${getBorderColor(props)};
             border-style: solid;
@@ -217,7 +215,7 @@ const Label = styled.label<TLabelProps>`
     background-color: ${(props) =>
       props.isDisabled || props.isReadOnly
         ? 'unset'
-        : designTokens.backgroundColorForCheckboxInputIconWhenHovered};
+        : designTokens.colorNeutral90};
   }
 `;
 

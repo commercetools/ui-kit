@@ -105,7 +105,7 @@ const getButtonStyles = () => css`
     background-color ${designTokens.transitionStandard};
   transition: border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard};
-  margin-right: ${designTokens.marginRightForClearInputIcon};
+  margin-right: ${designTokens.spacing20};
 `;
 
 const getIconColor = (props: TInputProps, defaultColor: string) => {
@@ -113,7 +113,7 @@ const getIconColor = (props: TInputProps, defaultColor: string) => {
     return designTokens.fontColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.fontColorForSearchInputIconWhenReadonly;
+    return designTokens.colorNeutral60;
   }
   return defaultColor;
 };
@@ -121,12 +121,9 @@ const getIconColor = (props: TInputProps, defaultColor: string) => {
 const getClearIconButtonStyles = (props: TInputProps) => [
   getButtonStyles(),
   css`
-    fill: ${getIconColor(props, designTokens.fontColorForClearInputIcon)};
+    fill: ${getIconColor(props, designTokens.colorNeutral40)};
     &:hover {
-      fill: ${getIconColor(
-        props,
-        designTokens.fontColorForClearInputIconWhenHovered
-      )};
+      fill: ${getIconColor(props, designTokens.colorError)};
     }
   `,
 ];
@@ -134,14 +131,11 @@ const getClearIconButtonStyles = (props: TInputProps) => [
 const getSearchIconButtonStyles = (props: TInputProps) => [
   getButtonStyles(),
   css`
-    margin-right: ${designTokens.marginRightForSearchInputIcon};
-    fill: ${getIconColor(props, designTokens.fontColorForSearchInputIcon)};
+    margin-right: ${designTokens.spacing25};
+    fill: ${getIconColor(props, designTokens.colorNeutral60)};
     cursor: ${props.isReadOnly ? 'default' : 'pointer'};
     &:hover {
-      fill: ${getIconColor(
-        props,
-        designTokens.fontColorForSearchInputIconWhenHovered
-      )};
+      fill: ${getIconColor(props, designTokens.colorPrimary)};
     }
   `,
 ];
@@ -177,7 +171,7 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
       background-color ${designTokens.transitionStandard};
 
     &::placeholder {
-      color: ${designTokens.placeholderFontColorForInput};
+      color: ${designTokens.colorNeutral60};
     }
 
     &:hover {
@@ -200,7 +194,7 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
     css`
       &:focus-within {
         border-color: ${designTokens.borderColorForInputWhenFocused};
-        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+        box-shadow: inset 0 0 0 1px
           ${designTokens.borderColorForInputWhenFocused};
       }
     `,
@@ -259,7 +253,7 @@ const createSelectableSelectStyles = ({
     ...selectStyles,
     control: (base: TBase, state: ReactSelectProps) => ({
       ...selectStyles.control(base, state),
-      padding: designTokens.paddingForSelectableSearchInputDropdown,
+      padding: `0 ${designTokens.spacing25}`,
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0',
       borderRight: '0',
@@ -312,7 +306,7 @@ const createSelectableSelectStyles = ({
     dropdownIndicator: () => ({
       fill: isReadOnly
         ? designTokens.fontColorForInputWhenDisabled
-        : designTokens.fontColorForSelectInputIcon,
+        : designTokens.colorNeutral60,
     }),
   };
 };

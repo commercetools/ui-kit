@@ -45,16 +45,6 @@ const getInputFontColor = (props: TInputProps) => {
   return designTokens.fontColorForInput;
 };
 
-const getInputBorderWidth = (props: TInputProps) => {
-  if (props.hasError) {
-    return designTokens.borderWidthForInputWhenError;
-  }
-  if (props.hasWarning) {
-    return designTokens.borderWidthForInputWhenWarning;
-  }
-  return designTokens.borderWidthForInput;
-};
-
 const getInputBoxShadow = (props: TInputProps) => {
   if (props.hasError) {
     return designTokens.shadowForInputWhenError;
@@ -79,7 +69,7 @@ const getInputStyles = (props: TInputProps) => {
   return css`
     appearance: none;
     background-color: ${getInputBackgroundColor(props)};
-    border: ${getInputBorderWidth(props)} solid ${getInputBorderColor(props)};
+    border: ${designTokens.borderWidth1} solid ${getInputBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-sizing: border-box;
     box-shadow: ${getInputBoxShadow(props)};
@@ -88,7 +78,7 @@ const getInputStyles = (props: TInputProps) => {
     display: flex;
     flex: 1;
     font-family: inherit;
-    font-size: ${designTokens.fontSizeForInput};
+    font-size: ${designTokens.fontSize30};
     height: ${designTokens.heightForInput};
     min-height: ${designTokens.heightForInput};
     opacity: ${props.isDisabled || props.disabled
@@ -96,7 +86,7 @@ const getInputStyles = (props: TInputProps) => {
       : 'unset'}; /* fix for mobile safari */
     outline: none;
     overflow: hidden;
-    padding: 0 ${designTokens.paddingForInput};
+    padding: ${designTokens.paddingForInput};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard},
@@ -104,7 +94,7 @@ const getInputStyles = (props: TInputProps) => {
     width: 100%;
 
     &::placeholder {
-      color: ${designTokens.placeholderFontColorForInput};
+      color: ${designTokens.colorNeutral60};
     }
     :active:not(:disabled):not(:read-only),
     :hover:not(:disabled):not(:read-only):not(:focus) {

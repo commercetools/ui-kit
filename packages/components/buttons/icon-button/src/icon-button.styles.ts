@@ -39,15 +39,12 @@ const getShapeStyles = (
       switch (size) {
         case 'small':
           return css`
-            border-radius: ${designTokens.borderRadiusForButtonAsIconAsSmall};
+            border-radius: ${designTokens.borderRadius2};
           `;
         case 'medium':
-          return css`
-            border-radius: ${designTokens.borderRadiusForButtonAsIconAsMedium};
-          `;
         case 'big':
           return css`
-            border-radius: ${designTokens.borderRadiusForButtonAsIconAsBig};
+            border-radius: ${designTokens.borderRadius4};
           `;
         default:
           return css``;
@@ -60,18 +57,18 @@ const getSizeStyles = (size: TIconButtonProps['size']) => {
   switch (size) {
     case 'small':
       return css`
-        height: ${designTokens.heightForButtonAsIconAsSmall};
-        width: ${designTokens.heightForButtonAsIconAsSmall};
+        height: ${designTokens.heightForButtonAsSmall};
+        width: ${designTokens.heightForButtonAsSmall};
       `;
     case 'medium':
       return css`
-        height: ${designTokens.heightForButtonAsIconAsMedium};
-        width: ${designTokens.heightForButtonAsIconAsMedium};
+        height: ${designTokens.heightForButtonAsMedium};
+        width: ${designTokens.heightForButtonAsMedium};
       `;
     case 'big':
       return css`
-        height: ${designTokens.heightForButtonAsIconAsBig};
-        width: ${designTokens.heightForButtonAsIconAsBig};
+        height: ${designTokens.heightForButtonAsBig};
+        width: ${designTokens.heightForButtonAsBig};
       `;
     default:
       return css``;
@@ -88,7 +85,7 @@ const getBaseStyles = (
       &,
       &:hover {
         background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
-        border-color: ${designTokens.borderColorForButtonAsIconWhenDisabled};
+        border-color: ${designTokens.colorSurface};
         color: ${designTokens.colorNeutral60};
         box-shadow: none;
       }
@@ -99,50 +96,54 @@ const getBaseStyles = (
     return css`
       &:hover {
         background-color: ${designTokens.backgroundColorForButtonWhenHovered};
-        box-shadow: ${designTokens.shadowForButtonWhenHovered};
+        box-shadow: ${designTokens.shadow0};
       }
       ${isActive ? '&,' : ''}
       &:active {
         background-color: ${designTokens.backgroundColorForButtonWhenActive};
-        box-shadow: ${designTokens.shadowForButtonWhenActive};
-        border-color: ${designTokens.borderColorForButtonAsIcon};
+        box-shadow: ${designTokens.shadow0};
+        border-color: ${designTokens.colorNeutral};
       }
     `;
   }
 
   switch (theme) {
+    // TODO: These custom colors where itroduced in the Merchant Center redign 2023
+    // We need to check with designers if we want to introduce them in our color palette
+    // #15A390 -> color-primary with 10% black opacity
+    // #057FCC -> color-info with 10% black opacity
     case 'primary':
       return css`
         &:hover {
-          background-color: ${designTokens.backgroundColorForButtonAsIconAsPrimaryWhenHovered};
-          box-shadow: ${designTokens.shadowForButtonWhenHovered};
+          background-color: ${designTokens.colorPrimary};
+          box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
-          background-color: ${designTokens.backgroundColorForButtonAsIconAsPrimaryWhenActive};
-          box-shadow: ${designTokens.shadowForButtonWhenActive};
+          background-color: #15a390;
+          box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:hover,
         &:active {
-          border-color: ${designTokens.borderColorForButtonAsIconAsPrimary};
+          border-color: ${designTokens.colorNeutral};
         }
       `;
     case 'info':
       return css`
         &:hover {
-          background-color: ${designTokens.backgroundColorForButtonAsIconAsInfoWhenHovered};
-          box-shadow: ${designTokens.shadowForButtonWhenHovered};
+          background-color: ${designTokens.colorInfo};
+          box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
-          background-color: ${designTokens.backgroundColorForButtonAsIconAsInfoWhenActive};
-          box-shadow: ${designTokens.shadowForButtonWhenActive};
+          background-color: #057fcc;
+          box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:hover,
         &:active {
-          border-color: ${designTokens.borderColorForButtonAsIconAsInfo};
+          border-color: ${designTokens.colorNeutral};
         }
       `;
     default: {

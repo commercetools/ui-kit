@@ -30,9 +30,9 @@ const ClearIndicator = (props: TClearIndicatorProps) => {
         background: none;
         box-sizing: border-box;
         text-decoration: none;
-        fill: ${designTokens.fontColorForClearInputIcon};
+        fill: ${designTokens.colorNeutral40};
         :hover svg * {
-          fill: ${designTokens.fontColorForClearInputIconWhenHovered};
+          fill: ${designTokens.colorError};
         }
       `}
       style={getStyles('clearIndicator', props) as CSSProperties}

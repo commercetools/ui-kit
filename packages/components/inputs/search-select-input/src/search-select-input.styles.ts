@@ -15,10 +15,10 @@ const SearchSelectInputWrapper = styled.div<
         div[class$='indicatorContainer' i] {
           cursor: pointer;
           svg * {
-            fill: ${designTokens.fontColorForSearchInputIcon};
+            fill: ${designTokens.colorNeutral60};
           }
           :hover svg * {
-            fill: ${designTokens.fontColorForSearchInputIconWhenHovered};
+            fill: ${designTokens.colorPrimary};
           }
         }
       }`

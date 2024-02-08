@@ -36,14 +36,14 @@ const getClickableContentWrapperStyles = (type: TTagBodyProps['type']) => {
     : [
         css`
           &:hover {
-            border-color: ${designTokens.borderColorForTagWhenFocused};
+            border-color: ${designTokens.colorNeutral};
           }
         `,
       ];
 };
 
 const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
-  if (isDisabled) return designTokens.fontColorForTagWhenDisabled;
+  if (isDisabled) return designTokens.colorNeutral60;
   return designTokens.colorSolid;
 };
 
@@ -54,7 +54,7 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     box-sizing: border-box;
     align-items: center;
     border-radius: ${designTokens.borderRadius2};
-    padding: ${designTokens.paddingForTag};
+    padding: ${designTokens.spacing05} ${designTokens.spacing25};
     white-space: normal;
     text-align: left;
     min-width: 0;
@@ -64,9 +64,9 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     border-width: 1px;
     border-color: ${props.type === 'warning'
       ? designTokens.colorWarning
-      : designTokens.borderColorForTag};
-    color: ${designTokens.fontColorForTag};
-    fill: ${designTokens.fontColorForTagDragIcon};
+      : designTokens.colorNeutral};
+    color: ${designTokens.colorSolid};
+    fill: ${designTokens.colorNeutral40};
 
     /* fixing things for IE11 ... */
     width: 100%;
@@ -106,7 +106,7 @@ const TagBody = (props: TTagBodyProps) => {
           Boolean(props.onClick) &&
           css`
             &:hover {
-              box-shadow: ${designTokens.shadowForTagWhenHovered};
+              box-shadow: ${designTokens.shadow0};
             }
           `,
         props.styles?.body,

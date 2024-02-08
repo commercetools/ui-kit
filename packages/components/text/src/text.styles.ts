@@ -25,7 +25,7 @@ const nowrap = `
 `;
 
 const bold = `
-  font-weight: ${designTokens.fontWeightForTextAsBold};
+  font-weight: ${designTokens.fontWeight600};
 `;
 
 const italic = `
@@ -82,15 +82,15 @@ const getFontWeight = (props: { isBold?: boolean; fontWeight?: string }) => {
 const getElementFontSize = (elementType?: string) => {
   switch (elementType) {
     case 'h1':
-      return designTokens.fontSizeForTextAsH1;
+      return designTokens.fontSize60;
     case 'h2':
-      return designTokens.fontSizeForTextAsH2;
+      return designTokens.fontSize50;
     case 'h3':
-      return designTokens.fontSizeForTextAsH3;
+      return designTokens.fontSize40;
     case 'h4':
-      return designTokens.fontSizeForTextAsH4;
+      return designTokens.fontSize30;
     case 'h5':
-      return designTokens.fontSizeForTextAsH5;
+      return designTokens.fontSize30;
     default:
       return '1rem';
   }
@@ -99,15 +99,15 @@ const getElementFontSize = (elementType?: string) => {
 const getElementLineHeight = (elementType?: string) => {
   switch (elementType) {
     case 'h1':
-      return designTokens.lineHeightForTextAsH1;
+      return designTokens.lineHeight60;
     case 'h2':
-      return designTokens.lineHeightForTextAsH2;
+      return designTokens.lineHeight50;
     case 'h3':
-      return designTokens.lineHeightForTextAsH3;
+      return designTokens.lineHeight30;
     case 'h4':
-      return designTokens.lineHeightForTextAsH4;
+      return designTokens.lineHeight20;
     case 'h5':
-      return designTokens.lineHeightForTextAsH5;
+      return designTokens.lineHeight20;
     default:
       return designTokens.lineHeight40;
   }
@@ -116,15 +116,12 @@ const getElementLineHeight = (elementType?: string) => {
 const getElementFontWeight = (elementType?: string) => {
   switch (elementType) {
     case 'h1':
-      return designTokens.fontWeightForTextAsH1;
+      return designTokens.fontWeight600;
     case 'h2':
-      return designTokens.fontWeightForTextAsH2;
     case 'h3':
-      return designTokens.fontWeightForTextAsH3;
     case 'h4':
-      return designTokens.fontWeightForTextAsH4;
     case 'h5':
-      return designTokens.fontWeightForTextAsH5;
+      return designTokens.fontWeight500;
     default:
       return 'normal';
   }
@@ -133,9 +130,9 @@ const getElementFontWeight = (elementType?: string) => {
 export const bodyStyles = (props: TBodyProps) => css`
   ${getBaseStyles()}
   margin: 0;
-  font-size: ${designTokens.fontSizeForTextAsBody};
-  line-height: ${designTokens.lineHeightForTextAsBody};
-  font-weight: ${designTokens.fontWeightForTextAsBody};
+  font-size: ${designTokens.fontSize30};
+  line-height: ${designTokens.lineHeight40};
+  font-weight: ${designTokens.fontWeight400};
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
@@ -174,9 +171,9 @@ export const wrapStyles = () => css`
 
 export const detailStyles = (props: TDetailProps) => css`
   ${getBaseStyles()}
-  font-size: ${designTokens.fontSizeForTextAsDetail};
-  line-height: ${designTokens.lineHeightForTextAsDetail};
-  font-weight: ${designTokens.fontWeightForTextAsDetail};
+  font-size: ${designTokens.fontSize20};
+  line-height: ${designTokens.lineHeight20};
+  font-weight: ${designTokens.fontWeight400};
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}
@@ -187,9 +184,9 @@ export const detailStyles = (props: TDetailProps) => css`
 
 export const captionStyles = (props: TDetailProps) => css`
   ${getBaseStyles()}
-  font-size: ${designTokens.fontSizeForTextAsCaption};
-  line-height: ${designTokens.lineHeightForTextAsCaption};
-  font-weight: ${designTokens.fontWeightForTextAsCaption};
+  font-size: ${designTokens.fontSize10};
+  line-height: ${designTokens.lineHeight05};
+  font-weight: ${designTokens.fontWeight400};
   ${props.isItalic && italic}
   ${props.isStrikethrough && strikethrough}
   ${props.tone && getTone(props.tone)}

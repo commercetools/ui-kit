@@ -24,7 +24,7 @@ const getHeaderContainerStyles = (
 ) => {
   const baseStyles = css`
     background-color: ${designTokens.colorSurface};
-    border-bottom: ${`1px solid ${designTokens.borderColorForCollapsiblePanelHeader}`};
+    border-bottom: ${`1px solid ${designTokens.colorNeutral90}`};
     position: relative;
     border-top-left-radius: ${designTokens.borderRadius6};
     border-top-right-radius: ${designTokens.borderRadius6};
@@ -36,8 +36,8 @@ const getHeaderContainerStyles = (
       ? 'flex-start'
       : 'space-between'};
     padding: ${props.condensed
-      ? `${designTokens.paddingForCollapsiblePanelHeaderAsCondensed}`
-      : `${designTokens.paddingForCollapsiblePanelHeader}`};
+      ? `${designTokens.spacing20} 0`
+      : `${designTokens.spacing30} 0`};
   `;
   return [
     baseStyles,
@@ -90,11 +90,8 @@ const SectionContent = styled.div`
   align-items: flex-start;
 `;
 
-const SectionDescriptionWrapper = styled.div<{ condensed?: boolean }>`
-  padding: ${({ condensed }) =>
-    condensed
-      ? designTokens.paddingForCollapsiblePanelSectionDescriptionAsCondensed
-      : designTokens.paddingForCollapsiblePanelSectionDescription};
+const SectionDescriptionWrapper = styled.div`
+  padding: 0 0 ${designTokens.spacing40};
 `;
 
 type TSectionWrapper = {
@@ -111,9 +108,10 @@ const SectionWrapper = forwardRef<HTMLDivElement, TSectionWrapper>(
           `
           padding: ${
             props.condensed
-              ? designTokens.paddingForCollapsiblePanelSectionWrapperAsCondensed
-              : designTokens.paddingForCollapsiblePanelSectionWrapper
+              ? `${designTokens.spacing40} 0 0 calc(${designTokens.spacing30} + ${designTokens.spacing10})`
+              : `${designTokens.spacing50} 0 0 calc(${designTokens.spacing30} + ${designTokens.spacing10})`
           };
+
         `,
           props.isExpandControlHidden && 'padding-left: 0;',
         ]}
