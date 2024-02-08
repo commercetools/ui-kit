@@ -1,5 +1,26 @@
 # @commercetools-uikit/localized-text-field
 
+## 17.1.0
+
+### Minor Changes
+
+- [#2698](https://github.com/commercetools/ui-kit/pull/2698) [`d263f01`](https://github.com/commercetools/ui-kit/commit/d263f01990551a3a0dcb6c0886b9d2b35c7f7cf5) Thanks [@obulaworld](https://github.com/obulaworld)! - We've included a new property in all `*Field` components so consumers can not only render errors (below the input) but also warnings.
+  The main difference between them is the color used for the text.
+
+  Please take a look at the README files of the fields components to learn how to use this new property.
+
+### Patch Changes
+
+- Updated dependencies [[`3425f6c`](https://github.com/commercetools/ui-kit/commit/3425f6c371e2b386d60aa04c97ca8ffbf43f6cb1), [`8ba22f1`](https://github.com/commercetools/ui-kit/commit/8ba22f109d50d171b1d7f6f0bdc751c4689e0f11)]:
+  - @commercetools-uikit/design-system@17.1.0
+  - @commercetools-uikit/constraints@17.1.0
+  - @commercetools-uikit/field-label@17.1.0
+  - @commercetools-uikit/localized-text-input@17.1.0
+  - @commercetools-uikit/spacings@17.1.0
+  - @commercetools-uikit/field-errors@17.1.0
+  - @commercetools-uikit/field-warnings@17.1.0
+  - @commercetools-uikit/utils@17.1.0
+
 ## 17.0.1
 
 ### Patch Changes

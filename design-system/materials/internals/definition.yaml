@@ -311,9 +311,9 @@ decisionGroupsByTheme:
       prefix: background-color
       decisions:
         background-color-for-button-when-active:
-          choice: color-solid-10
+          choice: color-neutral-95
         background-color-for-button-when-hovered:
-          choice: color-solid-05
+          choice: color-neutral-98
         background-color-for-button-when-disabled:
           choice: color-accent-95
         background-color-for-input:

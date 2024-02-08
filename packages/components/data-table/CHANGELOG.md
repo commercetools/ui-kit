@@ -1,5 +1,19 @@
 # @commercetools-uikit/data-table
 
+## 17.1.0
+
+### Patch Changes
+
+- [#2712](https://github.com/commercetools/ui-kit/pull/2712) [`92008b2`](https://github.com/commercetools/ui-kit/commit/92008b25d466d7a0402dfb5795deabcd7850cb42) Thanks [@chloe0592](https://github.com/chloe0592)! - Fix the focus selector in DataTables
+
+- Updated dependencies [[`a0abf51`](https://github.com/commercetools/ui-kit/commit/a0abf51483dcf26861f6af506b3acf10cb9fcd2c), [`3425f6c`](https://github.com/commercetools/ui-kit/commit/3425f6c371e2b386d60aa04c97ca8ffbf43f6cb1)]:
+  - @commercetools-uikit/icons@17.1.0
+  - @commercetools-uikit/design-system@17.1.0
+  - @commercetools-uikit/accessible-button@17.1.0
+  - @commercetools-uikit/secondary-icon-button@17.1.0
+  - @commercetools-uikit/hooks@17.1.0
+  - @commercetools-uikit/utils@17.1.0
+
 ## 17.0.1
 
 ### Patch Changes

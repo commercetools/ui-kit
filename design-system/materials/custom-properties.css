@@ -184,8 +184,8 @@
   --break-point-biggerdesktop: 1280px;
   --break-point-giantdesktop: 1680px;
   --break-point-jumbodesktop: 1920px;
-  --background-color-for-button-when-active: hsl(0deg 0% 10% / 10%);
-  --background-color-for-button-when-hovered: hsl(0deg 0% 10% / 5%);
+  --background-color-for-button-when-active: hsl(232, 18%, 95%);
+  --background-color-for-button-when-hovered: hsl(232, 18%, 98%);
   --background-color-for-button-when-disabled: hsl(195, 35.2941176471%, 95%);
   --background-color-for-input: #fff;
   --background-color-for-input-when-selected: hsl(195, 35.2941176471%, 95%);

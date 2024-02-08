@@ -183,8 +183,8 @@ export const themes = {
     breakPointBiggerdesktop: '1280px',
     breakPointGiantdesktop: '1680px',
     breakPointJumbodesktop: '1920px',
-    backgroundColorForButtonWhenActive: 'hsl(0deg 0% 10% / 10%)',
-    backgroundColorForButtonWhenHovered: 'hsl(0deg 0% 10% / 5%)',
+    backgroundColorForButtonWhenActive: 'hsl(232, 18%, 95%)',
+    backgroundColorForButtonWhenHovered: 'hsl(232, 18%, 98%)',
     backgroundColorForButtonWhenDisabled: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInput: '#fff',
     backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
@@ -440,9 +440,9 @@ const designTokens = {
   breakPointGiantdesktop: 'var(--break-point-giantdesktop, 1680px)',
   breakPointJumbodesktop: 'var(--break-point-jumbodesktop, 1920px)',
   backgroundColorForButtonWhenActive:
-    'var(--background-color-for-button-when-active, hsl(0deg 0% 10% / 10%))',
+    'var(--background-color-for-button-when-active, hsl(232, 18%, 95%))',
   backgroundColorForButtonWhenHovered:
-    'var(--background-color-for-button-when-hovered, hsl(0deg 0% 10% / 5%))',
+    'var(--background-color-for-button-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForButtonWhenDisabled:
     'var(--background-color-for-button-when-disabled, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForInput: 'var(--background-color-for-input, #fff)',

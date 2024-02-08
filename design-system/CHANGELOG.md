@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 17.1.0
+
+### Patch Changes
+
+- [#2713](https://github.com/commercetools/ui-kit/pull/2713) [`3425f6c`](https://github.com/commercetools/ui-kit/commit/3425f6c371e2b386d60aa04c97ca8ffbf43f6cb1) Thanks [@kark](https://github.com/kark)! - Fix background color tokens for `<SecondaryButton>` and `<IconButton>` components
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@17.1.0
+
 ## 17.0.1
 
 ### Patch Changes

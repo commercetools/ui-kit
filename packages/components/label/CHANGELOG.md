@@ -1,5 +1,14 @@
 # @commercetools-uikit/label
 
+## 17.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`3425f6c`](https://github.com/commercetools/ui-kit/commit/3425f6c371e2b386d60aa04c97ca8ffbf43f6cb1)]:
+  - @commercetools-uikit/design-system@17.1.0
+  - @commercetools-uikit/text@17.1.0
+  - @commercetools-uikit/utils@17.1.0
+
 ## 17.0.1
 
 ### Patch Changes

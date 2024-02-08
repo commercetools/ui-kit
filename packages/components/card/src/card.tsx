@@ -1,8 +1,10 @@
-import { ReactNode } from 'react';
+import { KeyboardEvent, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import { filterDataAttributes } from '@commercetools-uikit/utils';
+import { filterDataAttributes, warning } from '@commercetools-uikit/utils';
 import Inset from '@commercetools-uikit/spacings-inset';
+import { Link } from 'react-router-dom';
+import type { LocationDescriptor } from 'history';
 
 export type TCardProps = {
   /**
@@ -25,12 +27,34 @@ export type TCardProps = {
    */
   className?: string;
   children?: ReactNode;
+  /**
+   * The callback function to be executed when the Card component is clicked. Prefer this for managing side effects rather than navigation.
+   */
+  onClick?: () => void;
+  /**
+   * The URL that the Card should point to. If provided, the Card will be rendered as an anchor element.
+   */
+  to?: string | LocationDescriptor;
+  /**
+   * A flag to indicate if the Card points to an external source.
+   */
+  isExternalLink?: boolean;
+  /**
+   * Indicates that a clickable Card should not allow clicks. This allows consumers to temporarily disable a clickable Card.
+   */
+  isDisabled?: boolean;
 };
 
-const Card = (props: TCardProps) => (
-  <div
-    {...filterDataAttributes(props)}
-    css={css`
+const Card = (props: TCardProps) => {
+  const isClickable = Boolean(!props.isDisabled && (props.onClick || props.to));
+  // Only disable styling if the card is not clickable
+  const shouldBeDisabled = props.isDisabled && (props.onClick || props.to);
+
+  const commonProps = {
+    ...filterDataAttributes(props),
+    onClick: isClickable ? props.onClick : undefined,
+    'aria-disabled': props.isDisabled ? true : undefined,
+    css: css`
       box-sizing: border-box;
       width: 100%;
       font-size: 1rem;
@@ -42,23 +66,83 @@ const Card = (props: TCardProps) => (
       background: ${props.theme === 'dark'
         ? designTokens.colorNeutral95
         : designTokens.colorSurface};
-    `}
-    // Allow to override the styles by passing a `className` prop.
-    // Custom styles can also be passed using the `css` prop from emotion.
-    // https://emotion.sh/docs/css-prop#style-precedence
-    className={props.className}
-  >
-    {props.insetScale === 'none' ? (
-      // Use a `<div>` to ensure that there is always a wrapper container.
-      // This is mostly useful in case custom styles are targeting this element.
+      cursor: ${shouldBeDisabled
+        ? 'not-allowed'
+        : isClickable
+        ? 'pointer'
+        : 'default'};
+      :hover {
+        background: ${props.theme === 'dark'
+          ? isClickable
+            ? designTokens.colorNeutral90
+            : undefined
+          : isClickable
+          ? designTokens.colorNeutral98
+          : undefined};
+      }
+      // Disables link text styling
+      color: inherit;
+      // Changes the opacity of the content, not the card itself
+      & > div {
+        opacity: ${shouldBeDisabled ? 0.5 : 1};
+      }
+    `,
+    className: props.className,
+  };
+
+  const content =
+    props.insetScale === 'none' ? (
       <div>{props.children}</div>
     ) : (
       <Inset scale={props.insetScale} height="expanded">
         {props.children}
       </Inset>
-    )}
-  </div>
-);
+    );
+
+  if (isClickable) {
+    if (props.to) {
+      if (props.isExternalLink) {
+        warning(
+          typeof props.to === 'string',
+          'ui-kit/Card: "to" property must be a string when "isExternal" value is true'
+        );
+
+        return (
+          <a
+            {...commonProps}
+            href={props.to as string}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {content}
+          </a>
+        );
+      } else {
+        return (
+          <Link {...commonProps} to={props.to}>
+            {content}
+          </Link>
+        );
+      }
+    }
+  }
+
+  return (
+    <div
+      {...commonProps}
+      // Support accessibility as a button when the `onClick` prop is provided
+      role={isClickable ? 'button' : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+        if (isClickable && props.onClick && event.key === 'Enter') {
+          props.onClick();
+        }
+      }}
+    >
+      {content}
+    </div>
+  );
+};
 
 const defaultProps: Pick<TCardProps, 'type' | 'theme' | 'insetScale'> = {
   type: 'raised',
