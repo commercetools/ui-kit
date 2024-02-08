@@ -100,7 +100,7 @@ const getBaseStyles = (
       }
       ${isActive ? '&,' : ''}
       &:active {
-        background-color: ${designTokens.colorSolid10};
+        background-color: ${designTokens.backgroundColorForButtonWhenActive};
         box-shadow: ${designTokens.shadow0};
         border-color: ${designTokens.colorNeutral};
       }
