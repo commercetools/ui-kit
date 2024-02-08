@@ -69,19 +69,6 @@ export const Default: Story = {
     title: 'Tooltip text.',
     showAfter: 300,
     closeAfter: 200,
-    children: (
-      <div
-        css={css`
-          width: min-content;
-          cursor: not-allowed;
-          > :disabled {
-            pointer-events: none;
-          }
-        `}
-      >
-        <PrimaryButton onClick={() => {}} label="Submit" />
-      </div>
-    ),
     fullWidth: false,
     customBodyWrapper: false,
     horizontalConstraint: 'scale',
@@ -96,7 +83,19 @@ export const Default: Story = {
           WrapperComponent: fullWidth ? CustomWrapper : undefined,
           BodyComponent: customBodyWrapper ? CustomBody : undefined,
         }}
-      />
+      >
+        <div
+          css={css`
+            width: min-content;
+            cursor: not-allowed;
+            > :disabled {
+              pointer-events: none;
+            }
+          `}
+        >
+          <PrimaryButton onClick={() => {}} label="Submit" />
+        </div>
+      </Tooltip>
     );
   },
 };
