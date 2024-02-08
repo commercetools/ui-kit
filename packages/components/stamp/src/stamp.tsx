@@ -189,7 +189,10 @@ const Stamp = (props: TStampProps) => {
         getPaddingStyle(props),
       ]}
     >
-      <SpacingsInline alignItems="center">
+      <SpacingsInline
+        alignItems="center"
+        scale={props.isCondensed ? 'xs' : 's'}
+      >
         {Icon}
         {props.label ? <StampLabel>{props.label}</StampLabel> : props.children}
       </SpacingsInline>
