@@ -169,7 +169,7 @@ export const component = () => (
         selectedLanguage="en"
         horizontalConstraint={7}
         touched={true}
-        errorsByLanguage={{ en: 'Invalid input' }}
+        errors={{ missing: true }}
         additionalInfo={{ en: 'hello here is an info' }}
       />
     </Spec>
