@@ -6,4 +6,5 @@
 '@commercetools-uikit/localized-text-input': minor
 ---
 
-Add new property called `additionalInfo` that allows the user to render a message below the input. If a warning and/or an error is specified for the field the `additionalInfo` will be rendered below that. 
+We've added a new property named `additionalInfo` to the component so consumers can provide some more contextual text.
+The content will be rendered below each input using the [Text.Detail](https://uikit.commercetools.com/?path=/story/basics-typography-text--detail) component (`tertiary` tone) by default.
