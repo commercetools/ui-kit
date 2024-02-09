@@ -244,10 +244,15 @@ export const themes = {
       '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     sizeHeightTag: '26px',
   },
-  rebranding: {
-    colorPrimary: '#f78d26',
-    colorSolid: '#fff',
-    colorSurface: '#1a1a1a',
+  recolouring: {
+    colorPrimary: 'hsl(240, 100%, 58%)',
+    colorPrimary20: 'hsl(240, 46%, 27%)',
+    colorPrimary25: 'hsl(240, 46%, 48%)',
+    colorPrimary30: 'hsl(240, 46%, 53%)',
+    colorPrimary40: 'hsl(240, 100%, 67%)',
+    colorPrimary85: 'hsl(244, 100%, 93%)',
+    colorPrimary90: 'hsl(244, 100%, 93%)',
+    colorPrimary95: 'hsl(244, 100%, 97%)',
     backgroundColorForButtonWhenActive:
       'hsl(25.110132158590307, 89.0196078431%, 95%)',
     backgroundColorForButtonWhenHovered: 'hsl(232, 18%, 95%)',

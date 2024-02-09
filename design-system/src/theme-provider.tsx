@@ -112,7 +112,7 @@ type TUseThemeResult = {
   ) => Old | New;
   /** @deprecated */
   isNewTheme: boolean;
-  isRebrandingTheme: boolean;
+  isRecolouringTheme: boolean;
 };
 const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
   const [theme, setTheme] = useState<ThemeName>('default');
@@ -152,7 +152,7 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
     theme: 'default',
     themedValue,
     isNewTheme: false,
-    isRebrandingTheme: theme === 'rebranding',
+    isRecolouringTheme: theme === 'recolouring',
   };
 };
 

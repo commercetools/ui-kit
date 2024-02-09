@@ -264,14 +264,20 @@ choiceGroupsByTheme:
         break-point-giantdesktop: 1680px
         break-point-jumbodesktop: 1920px
 
-  rebranding:
+  recolouring:
     colors:
       label: Colors
       prefix: color
+      description: All colors in the system
       choices:
-        color-primary: '#f78d26'
-        color-solid: '#fff'
-        color-surface: '#1a1a1a'
+        color-primary: 'hsl(240, 100%, 58%)'
+        color-primary-20: 'hsl(240, 46%, 27%)'
+        color-primary-25: 'hsl(240, 46%, 48%)'
+        color-primary-30: 'hsl(240, 46%, 53%)'
+        color-primary-40: 'hsl(240, 100%, 67%)'
+        color-primary-85: 'hsl(244, 100%, 93%)'
+        color-primary-90: 'hsl(244, 100%, 93%)'
+        color-primary-95: 'hsl(244, 100%, 97%)'
 
 states:
   active:
@@ -464,7 +470,7 @@ decisionGroupsByTheme:
         shadow-for-input-when-warning:
           choice: 'inset 0 0 0 1px var(--color-warning)'
 
-  rebranding:
+  recolouring:
     backgroundColors:
       label: Background Colors
       prefix: background-color

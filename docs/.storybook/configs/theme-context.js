@@ -24,7 +24,7 @@ const themeParams = [
   },
   {
     name: 'Custom Theme',
-    props: { themeName: 'rebranding' },
+    props: { themeName: 'recolouring' },
   },
 ];
 
