@@ -469,10 +469,10 @@ decisionGroupsByTheme:
       label: Background Colors
       prefix: background-color
       decisions:
-        background-color-for-tag:
+        background-color-for-button-when-active:
           description: ''
           choice: color-warning-95
-        background-color-for-tag-warning:
+        background-color-for-button-when-hovered:
           description: ''
           choice: color-neutral-95
 
