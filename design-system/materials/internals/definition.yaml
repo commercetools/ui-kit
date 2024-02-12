@@ -413,6 +413,10 @@ decisionGroupsByTheme:
           choice: '16px'
         height-for-input:
           choice: '40px'
+        # This is a temporary one to be able to remove the legay 'size-height-for-input'
+        height-for-input-as-small:
+          choice: '32px'
+          description: 'Legacy token to be removed'
 
     placeholderFontColors:
       label: Placeholder font colors

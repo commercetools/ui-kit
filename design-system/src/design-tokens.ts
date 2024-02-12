@@ -223,6 +223,7 @@ export const themes = {
     heightForButtonAsMedium: '32px',
     heightForButtonAsSmall: '16px',
     heightForInput: '40px',
+    heightForInputAsSmall: '32px',
     placeholderFontColorForInput: 'hsl(232, 18%, 60%)',
     fontSizeForButton: '0.875rem',
     fontSizeForInput: '1rem',
@@ -495,6 +496,7 @@ const designTokens = {
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',
   heightForInput: 'var(--height-for-input, 40px)',
+  heightForInputAsSmall: 'var(--height-for-input-as-small, 32px)',
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(232, 18%, 60%))',
   fontSizeForButton: 'var(--font-size-for-button, 0.875rem)',

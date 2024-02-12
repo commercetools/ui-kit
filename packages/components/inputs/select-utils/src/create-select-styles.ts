@@ -426,7 +426,7 @@ const containerStyles = () => (base: TBase, state: TState) => {
   return {
     ...base,
     fontFamily: 'inherit',
-    minHeight: designTokens.heightForInput,
+    minHeight: designTokens.heightForInputAsSmall,
     borderRadius: designTokens.borderRadiusForInput,
     borderColor: state.isFocused
       ? designTokens.borderColorForInputWhenFocused

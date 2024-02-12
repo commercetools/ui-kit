@@ -211,6 +211,7 @@
   "--height-for-button-as-medium": "32px",
   "--height-for-button-as-small": "16px",
   "--height-for-input": "40px",
+  "--height-for-input-as-small": "32px",
   "--placeholder-font-color-for-input": "hsl(232, 18%, 60%)",
   "--font-size-for-button": "0.875rem",
   "--font-size-for-input": "1rem",
