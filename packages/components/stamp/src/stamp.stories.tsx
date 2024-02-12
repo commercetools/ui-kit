@@ -13,7 +13,6 @@ const getRandomIndex = (min: number, max: number) =>
 const meta = {
   title: 'Components/Stamp',
   component: Stamp,
-  tags: ['autodocs'],
 } satisfies Meta<typeof Stamp>;
 
 export default meta;

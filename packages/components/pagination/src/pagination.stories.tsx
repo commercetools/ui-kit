@@ -5,7 +5,6 @@ import Pagination from './pagination';
 const meta = {
   title: 'Components/Pagination/Pagination',
   component: Pagination,
-  tags: ['autodocs'],
   parameters: {
     docs: {
       story: {

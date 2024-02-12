@@ -14,7 +14,6 @@ const getMinimumPageSizeFromRange = (selectedRange: TPageRangeSize) => {
 const meta = {
   title: 'Components/Pagination/PageSizeSelector',
   component: PageSizeSelector,
-  tags: ['autodocs'],
   parameters: {
     docs: {
       story: {
