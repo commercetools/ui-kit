@@ -27,7 +27,7 @@ export default class CalendarMenu extends Component<TCalendarMenu> {
             box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.15);
             border-radius: ${designTokens.borderRadiusForInput};
             margin-top: ${designTokens.spacing10};
-            font-size: ${designTokens.fontSizeDefault};
+            font-size: ${designTokens.fontSize30};
             position: absolute;
             box-sizing: border-box;
             width: 100%;

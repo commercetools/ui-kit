@@ -17,7 +17,7 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   font-size: 1rem;
   cursor: pointer;
   padding: ${designTokens.spacing20} ${designTokens.spacing30};
-  font-family: ${designTokens.fontFamilyDefault};
+  font-family: ${designTokens.fontFamily};
   display: block;
   background-color: ${(props) =>
     props.isSelected
@@ -34,7 +34,7 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
 const getButtonStyles = (props: TDropdownStylesProps) => [
   css`
     border: 0;
-    font-family: ${designTokens.fontFamilyDefault};
+    font-family: ${designTokens.fontFamily};
     border-radius: ${designTokens.borderRadius4};
     cursor: pointer;
     font-size: ${designTokens.fontSize30};

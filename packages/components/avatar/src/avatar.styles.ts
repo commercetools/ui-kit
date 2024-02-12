@@ -78,7 +78,7 @@ export const getAvatarStyles = (avatarProps: TAvatarProps) => {
     align-items: center;
     background-color: ${backgroundColor};
     border-radius: 100%;
-    font-size: ${designTokens.fontSizeDefault};
+    font-size: ${designTokens.fontSize30};
     font-weight: ${designTokens.fontWeight600};
     color: ${foregroundColor};
     display: flex;

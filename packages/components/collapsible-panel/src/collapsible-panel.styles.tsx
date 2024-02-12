@@ -57,7 +57,7 @@ const getHeaderContainerStyles = (
     !props.condensed &&
       // To understand why this min-height see: https://github.com/commercetools/ui-kit/pull/616
       css`
-        min-height: ${designTokens.bigButtonHeight};
+        min-height: ${designTokens.heightForButtonAsMedium};
         box-sizing: content-box; /* makes the padding extend beyond the min-height */
       `,
   ];
@@ -71,7 +71,7 @@ const baseContainerStyles = css`
   flex-direction: column;
   color: ${designTokens.colorSolid};
   font-family: inherit;
-  font-size: ${designTokens.fontSizeDefault};
+  font-size: ${designTokens.fontSize30};
 `;
 
 const HeaderControlsWrapper = styled.div`
