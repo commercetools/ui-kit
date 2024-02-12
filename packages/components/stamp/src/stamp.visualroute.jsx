@@ -1,4 +1,5 @@
 import { Stamp } from '@commercetools-frontend/ui-kit';
+import { ClockIcon } from '@commercetools-uikit/icons';
 import { Suite, Spec } from '../../../../test/percy';
 
 export const routePath = '/stamp';
@@ -27,6 +28,12 @@ export const component = () => (
       <Stamp tone="information" isCondensed={true}>
         Secondary
       </Stamp>
+    </Spec>
+    <Spec label="when condensed with icon and label">
+      <Stamp tone="information" isCondensed={true} label="Hello" icon={<ClockIcon />} />
+    </Spec>
+    <Spec label="when not condensed with icon and label">
+      <Stamp tone="information" isCondensed={false} label="Hello" icon={<ClockIcon />} />
     </Spec>
   </Suite>
 );
