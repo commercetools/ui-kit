@@ -24,7 +24,7 @@ const getButtonStyles = (isDisabled: boolean) => {
   const baseButtonStyles = css`
     display: flex;
     align-items: center;
-    height: ${designTokens.bigButtonHeight};
+    height: ${designTokens.heightForButtonAsMedium};
   `;
   if (isDisabled) {
     return [
@@ -177,7 +177,9 @@ const Options = styled.div`
   position: absolute;
   z-index: 5;
   width: 100%;
-  top: calc(${designTokens.spacing20} + ${designTokens.bigButtonHeight});
+  top: calc(
+    ${designTokens.spacing20} + ${designTokens.heightForButtonAsMedium}
+  );
   border: 1px solid ${designTokens.colorSurface};
   border-radius: ${designTokens.borderRadius4};
   box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.15);

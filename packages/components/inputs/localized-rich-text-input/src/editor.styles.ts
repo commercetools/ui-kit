@@ -35,7 +35,7 @@ const EditorLanguageLabel = styled.label<TEditorLanguageLabelProps>`
   flex: 0;
   color: ${designTokens.fontColorForInputWhenDisabled};
   line-height: calc(
-    ${designTokens.sizeHeightInput} - 2 * ${designTokens.borderRadius1}
+    ${designTokens.heightForInputAsSmall} - 2 * ${designTokens.borderRadius1}
   );
   background-color: ${(props) => getBackgroundColor(props)};
   border-top-left-radius: ${designTokens.borderRadiusForInput};
