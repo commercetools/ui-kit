@@ -1,4 +1,4 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Canvas, Meta, DocsContainer, Story } from '@storybook/blocks';
 
 import * as PaginationStories from './src/pagination.stories';
 
@@ -49,3 +49,7 @@ const Example = () => {
 
 export default Example;
 ```
+
+<Canvas>
+  <Story of={PaginationStories.Default} height="100vh" />
+</Canvas>
