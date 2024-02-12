@@ -15,7 +15,7 @@ const Placeholder = styled.div`
   background-color: pink;
   padding: 16px;
   font-size: 16px;
-  font-family: ${designTokens.fontFamilyDefault};
+  font-family: ${designTokens.fontFamily};
 `;
 
 export const component = () => (

@@ -53,7 +53,7 @@ const LegacyBadge = () => (
       background-color: ${designTokens.colorWarning95};
       border: 1px solid ${designTokens.colorWarning};
       border-radius: ${designTokens.borderRadius2};
-      font-size: ${designTokens.fontSizeSmall};
+      font-size: ${designTokens.fontSize10};
       margin-top: ${designTokens.spacing10};
       padding: 0 ${designTokens.spacing10};
     `}

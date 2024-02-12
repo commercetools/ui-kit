@@ -24,7 +24,7 @@ const findChoiceValue = (theme, choiceName) => {
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.01);
-  font-family: ${designTokens.fontFamilyDefault};
+  font-family: ${designTokens.fontFamily};
   color: ${designTokens.colorSolid}
   margin: 10px;
   > * + * {
