@@ -235,6 +235,7 @@
   --height-for-button-as-medium: 32px;
   --height-for-button-as-small: 16px;
   --height-for-input: 40px;
+  --height-for-input-as-small: 32px;
   --placeholder-font-color-for-input: hsl(232, 18%, 60%);
   --font-size-for-button: 0.875rem;
   --font-size-for-input: 1rem;
@@ -245,14 +246,4 @@
   --shadow-for-input-when-focused: inset 0 0 0 1px var(--color-primary);
   --shadow-for-input-when-error: inset 0 0 0 1px var(--color-error);
   --shadow-for-input-when-warning: inset 0 0 0 1px var(--color-warning);
-  --font-size-m: 1rem;
-  --big-button-height: 32px;
-  --small-button-height: 24px;
-  --size-height-input: 32px;
-  --font-family-default: 'Open Sans', sans-serif;
-  --font-size-default: 1rem;
-  --font-size-small: 0.9231rem;
-  --shadow-box-tag-hover: 0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.24);
-  --size-height-tag: 26px;
 }

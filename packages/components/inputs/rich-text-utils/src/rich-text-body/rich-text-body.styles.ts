@@ -93,7 +93,7 @@ export const ToolbarRightControls = styled.div``;
 export const Toolbar = styled.div`
   display: flex;
   flex-wrap: wrap;
-  font-family: ${designTokens.fontFamilyDefault};
+  font-family: ${designTokens.fontFamily};
   border-radius: ${designTokens.borderRadiusForInput};
   border-bottom: 0;
   padding: none;
@@ -148,7 +148,7 @@ const reset = (props: TRichTextBodyStylesProps) => [
 export const EditorContainer = styled.div<TRichTextBodyStylesProps>`
   padding: ${designTokens.spacing20} 0 0;
   border-radius: ${designTokens.borderRadiusForInput};
-  font-family: ${designTokens.fontFamilyDefault};
+  font-family: ${designTokens.fontFamily};
   border-color: ${(props) => getBorderColor(props)};
   overflow-y: scroll;
   ${reset}

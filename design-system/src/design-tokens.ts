@@ -223,6 +223,7 @@ export const themes = {
     heightForButtonAsMedium: '32px',
     heightForButtonAsSmall: '16px',
     heightForInput: '40px',
+    heightForInputAsSmall: '32px',
     placeholderFontColorForInput: 'hsl(232, 18%, 60%)',
     fontSizeForButton: '0.875rem',
     fontSizeForInput: '1rem',
@@ -233,16 +234,6 @@ export const themes = {
     shadowForInputWhenFocused: 'inset 0 0 0 1px var(--color-primary)',
     shadowForInputWhenError: 'inset 0 0 0 1px var(--color-error)',
     shadowForInputWhenWarning: 'inset 0 0 0 1px var(--color-warning)',
-    fontSizeM: '1rem',
-    bigButtonHeight: '32px',
-    smallButtonHeight: '24px',
-    sizeHeightInput: '32px',
-    fontFamilyDefault: "'Open Sans', sans-serif",
-    fontSizeDefault: '1rem',
-    fontSizeSmall: '0.9231rem',
-    shadowBoxTagHover:
-      '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
-    sizeHeightTag: '26px',
   },
 } as const;
 
@@ -505,6 +496,7 @@ const designTokens = {
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',
   heightForInput: 'var(--height-for-input, 40px)',
+  heightForInputAsSmall: 'var(--height-for-input-as-small, 32px)',
   placeholderFontColorForInput:
     'var(--placeholder-font-color-for-input, hsl(232, 18%, 60%))',
   fontSizeForButton: 'var(--font-size-for-button, 0.875rem)',
@@ -520,16 +512,6 @@ const designTokens = {
     'var(--shadow-for-input-when-error, inset 0 0 0 1px var(--color-error))',
   shadowForInputWhenWarning:
     'var(--shadow-for-input-when-warning, inset 0 0 0 1px var(--color-warning))',
-  fontSizeM: 'var(--font-size-m, 1rem)',
-  bigButtonHeight: 'var(--big-button-height, 32px)',
-  smallButtonHeight: 'var(--small-button-height, 24px)',
-  sizeHeightInput: 'var(--size-height-input, 32px)',
-  fontFamilyDefault: "var(--font-family-default, 'Open Sans', sans-serif)",
-  fontSizeDefault: 'var(--font-size-default, 1rem)',
-  fontSizeSmall: 'var(--font-size-small, 0.9231rem)',
-  shadowBoxTagHover:
-    'var(--shadow-box-tag-hover, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))',
-  sizeHeightTag: 'var(--size-height-tag, 26px)',
 } as const;
 
 export default designTokens;

@@ -11,7 +11,7 @@ const getInputStyles = () => css`
   border-top: 1px solid ${designTokens.colorNeutral90};
   padding: 10px 0;
   outline: 0;
-  font-size: ${designTokens.fontSizeDefault};
+  font-size: ${designTokens.fontSize30};
   margin-top: ${designTokens.spacing20};
   color: ${designTokens.colorSolid};
 

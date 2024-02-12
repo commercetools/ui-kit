@@ -413,6 +413,10 @@ decisionGroupsByTheme:
           choice: '16px'
         height-for-input:
           choice: '40px'
+        # This is a temporary one to be able to remove the legay 'size-height-for-input'
+        height-for-input-as-small:
+          choice: '32px'
+          description: 'Legacy token to be removed'
 
     placeholderFontColors:
       label: Placeholder font colors
@@ -454,25 +458,3 @@ decisionGroupsByTheme:
           choice: 'inset 0 0 0 1px var(--color-error)'
         shadow-for-input-when-warning:
           choice: 'inset 0 0 0 1px var(--color-warning)'
-
-# These tokens are deprecated as they don't follow our naming patterns.
-# Ideally they should be replaced with new tokens and not be used anymore.
-# But since we have not yet introduced alternatives for them it's still okay to
-# use them.
-#
-# We aim to remove each token from here as soon as we introduce an alternative,
-# but sometimes that's not possible because the usage of the tokens is invalid
-# as well (e.g. the shadows are being combined in invalid ways by ui-kit
-# consumers. We already have new shadow tokens, but those invalid useages would
-# break. Upgrading those parts is not something the ui-kit teams can do on their
-# own so we kept the old tokens around even though proper shadow tokens exist).
-plainTokens:
-  font-size-m: '1rem'
-  big-button-height: 32px
-  small-button-height: 24px
-  size-height-input: 32px
-  font-family-default: "'Open Sans', sans-serif"
-  font-size-default: 1rem
-  font-size-small: 0.9231rem
-  shadow-box-tag-hover: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
-  size-height-tag: 26px

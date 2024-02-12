@@ -411,7 +411,7 @@ const groupHeadingStyles = () => (base: TBase) => {
   return {
     ...base,
     color: designTokens.fontColorForInputWhenReadonly,
-    fontSize: designTokens.fontSizeSmall,
+    fontSize: designTokens.fontSize30,
     borderBottom: `1px solid ${designTokens.colorNeutral90}`,
     textTransform: 'none',
     fontWeight: designTokens.fontWeight500,
@@ -426,7 +426,7 @@ const containerStyles = () => (base: TBase, state: TState) => {
   return {
     ...base,
     fontFamily: 'inherit',
-    minHeight: designTokens.sizeHeightInput,
+    minHeight: designTokens.heightForInputAsSmall,
     borderRadius: designTokens.borderRadiusForInput,
     borderColor: state.isFocused
       ? designTokens.borderColorForInputWhenFocused

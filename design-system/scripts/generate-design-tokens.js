@@ -214,14 +214,6 @@ Object.entries(definitions.decisionGroupsByTheme).forEach(
   }
 );
 
-// Copy over plain tokens (only needed in default theme)
-Object.entries(definitions.plainTokens).forEach(([key, value]) => {
-  if (designTokens.default[key])
-    endProgram(`Token called "${key} already exists!"`);
-
-  designTokens.default[key] = value;
-});
-
 // Write files
 const printJson = (data) =>
   JSON.stringify(

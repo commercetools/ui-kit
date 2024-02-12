@@ -16,17 +16,17 @@ const SpecContainer = styled.div`
 `;
 
 const Label = styled.div`
-  font-family: ${designTokens.fontFamilyDefault};
+  font-family: var(--font-family-vrt);
   font-weight: bold;
   box-sizing: border-box;
   background-color: #774caf;
   padding: 5px;
   color: ${designTokens.colorSurface};
-  font-size: ${designTokens.fontSizeDefault};
+  font-size: ${designTokens.fontSize30};
 `;
 
 const PropList = styled.div`
-  font-family: ${designTokens.fontFamilyDefault};
+  font-family: var(--font-family-vrt);
   background-color: #894ac3;
   padding: 5px;
   box-sizing: border-box;
