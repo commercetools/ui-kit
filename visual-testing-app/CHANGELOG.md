@@ -1,5 +1,16 @@
 # visual-testing-app
 
+## 12.2.0
+
+### Minor Changes
+
+- [#2714](https://github.com/commercetools/ui-kit/pull/2714) [`568c28e`](https://github.com/commercetools/ui-kit/commit/568c28ef90c5b7f97d1cc37a1a402cfe6f001c45) Thanks [@kark](https://github.com/kark)! - Restore theming support
+
+### Patch Changes
+
+- Updated dependencies [[`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6), [`568c28e`](https://github.com/commercetools/ui-kit/commit/568c28ef90c5b7f97d1cc37a1a402cfe6f001c45), [`db371ba`](https://github.com/commercetools/ui-kit/commit/db371bab2237b82035a227af3d9227926448cb99)]:
+  - @commercetools-uikit/design-system@18.0.0
+
 ## 12.1.16
 
 ### Patch Changes

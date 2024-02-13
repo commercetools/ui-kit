@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/text",
   "description": "The Text component implements the typography elements such as headings, paragraphs, etc.",
-  "version": "17.1.0",
+  "version": "18.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,8 +21,8 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/design-system": "17.1.0",
-    "@commercetools-uikit/utils": "17.1.0",
+    "@commercetools-uikit/design-system": "18.0.0",
+    "@commercetools-uikit/utils": "18.0.0",
     "@emotion/react": "^11.10.5",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
