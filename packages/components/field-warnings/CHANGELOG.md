@@ -1,5 +1,12 @@
 # @commercetools-uikit/field-warnings
 
+## 18.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/messages@18.0.0
+
 ## 17.1.0
 
 ### Patch Changes

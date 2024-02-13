@@ -1,5 +1,20 @@
 # @commercetools-uikit/card
 
+## 18.0.0
+
+### Minor Changes
+
+- [#2703](https://github.com/commercetools/ui-kit/pull/2703) [`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update design tokens usage.
+
+### Patch Changes
+
+- [#2719](https://github.com/commercetools/ui-kit/pull/2719) [`d5ae8ef`](https://github.com/commercetools/ui-kit/commit/d5ae8eff56497c6a48adc2b35dceed605d224955) Thanks [@jaikamat](https://github.com/jaikamat)! - Fixes a display error when using clickable Card functionality
+
+- Updated dependencies [[`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6), [`568c28e`](https://github.com/commercetools/ui-kit/commit/568c28ef90c5b7f97d1cc37a1a402cfe6f001c45), [`db371ba`](https://github.com/commercetools/ui-kit/commit/db371bab2237b82035a227af3d9227926448cb99)]:
+  - @commercetools-uikit/design-system@18.0.0
+  - @commercetools-uikit/spacings-inset@18.0.0
+  - @commercetools-uikit/utils@18.0.0
+
 ## 17.1.0
 
 ### Patch Changes

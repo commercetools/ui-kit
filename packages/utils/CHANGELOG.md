@@ -1,5 +1,7 @@
 # @commercetools-uikit/utils
 
+## 18.0.0
+
 ## 17.1.0
 
 ## 17.0.1

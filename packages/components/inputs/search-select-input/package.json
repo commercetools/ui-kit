@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/search-select-input",
   "description": "A search select input component built on top of `@commercetools-uikit/async-select-input` to asynchronously load results (options) using the keyword that the user has entered.",
-  "version": "17.1.0",
+  "version": "18.0.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,12 +21,12 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/async-select-input": "17.1.0",
-    "@commercetools-uikit/design-system": "17.1.0",
-    "@commercetools-uikit/select-utils": "17.1.0",
-    "@commercetools-uikit/spacings": "17.1.0",
-    "@commercetools-uikit/text": "17.1.0",
-    "@commercetools-uikit/utils": "17.1.0",
+    "@commercetools-uikit/async-select-input": "18.0.0",
+    "@commercetools-uikit/design-system": "18.0.0",
+    "@commercetools-uikit/select-utils": "18.0.0",
+    "@commercetools-uikit/spacings": "18.0.0",
+    "@commercetools-uikit/text": "18.0.0",
+    "@commercetools-uikit/utils": "18.0.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "prop-types": "15.8.1"

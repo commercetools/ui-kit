@@ -1,5 +1,31 @@
 # @commercetools-uikit/design-system
 
+## 18.0.0
+
+### Major Changes
+
+- [#2703](https://github.com/commercetools/ui-kit/pull/2703) [`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - **BREAKING CHANGE**
+
+  Last year we worked on a new look and field for the UI-Kit and, in order to help transitioning from the old to the new one, we introduced many new design tokens so we could have two UI versions for the components.
+  This was a temporary solution and those tokens are now being removed.
+
+  We're releasing a breaking change version because those tokens that we had introduced are now being removed and they were technically publicly available by using the `@commercetools-uikit/design-system` package.
+
+  We don't expect this change to affect many users as we didn't announced those new tokens when we introduced them, but we want to be transparent and let everyone know about this change.
+
+  You can check the list of removed design tokens by taking a look at [this PR](https://github.com/commercetools/ui-kit/pull/2703/), focusing in the [`definition.yml` file](https://github.com/commercetools/ui-kit/pull/2703/files#diff-0a1f6474acc1533b80254d0ada759d9fc9e40138445deec296b1030247d37fae).
+
+- [#2718](https://github.com/commercetools/ui-kit/pull/2718) [`db371ba`](https://github.com/commercetools/ui-kit/commit/db371bab2237b82035a227af3d9227926448cb99) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Removed deprecated legacy design tokens.
+
+### Minor Changes
+
+- [#2714](https://github.com/commercetools/ui-kit/pull/2714) [`568c28e`](https://github.com/commercetools/ui-kit/commit/568c28ef90c5b7f97d1cc37a1a402cfe6f001c45) Thanks [@kark](https://github.com/kark)! - Restore theming support
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@18.0.0
+
 ## 17.1.0
 
 ### Patch Changes
