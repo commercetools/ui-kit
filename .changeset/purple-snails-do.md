@@ -1,5 +1,5 @@
 ---
-'visual-testing-app': patch
+'visual-testing-app': minor
 '@commercetools-uikit/design-system': minor
 ---
 
