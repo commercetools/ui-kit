@@ -1,5 +1,46 @@
 # @commercetools-frontend/ui-kit
 
+## 18.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`78d878c`](https://github.com/commercetools/ui-kit/commit/78d878cdb62bf46e1596f0df72fc6871a847ecb9)]:
+  - @commercetools-uikit/design-system@18.1.0
+  - @commercetools-uikit/avatar@18.1.0
+  - @commercetools-uikit/card@18.1.0
+  - @commercetools-uikit/collapsible-panel@18.1.0
+  - @commercetools-uikit/constraints@18.1.0
+  - @commercetools-uikit/data-table@18.1.0
+  - @commercetools-uikit/data-table-manager@18.1.0
+  - @commercetools-uikit/field-label@18.1.0
+  - @commercetools-uikit/icons@18.1.0
+  - @commercetools-uikit/selectable-search-input@18.1.0
+  - @commercetools-uikit/label@18.1.0
+  - @commercetools-uikit/link@18.1.0
+  - @commercetools-uikit/loading-spinner@18.1.0
+  - @commercetools-uikit/notifications@18.1.0
+  - @commercetools-uikit/pagination@18.1.0
+  - @commercetools-uikit/primary-action-dropdown@18.1.0
+  - @commercetools-uikit/progress-bar@18.1.0
+  - @commercetools-uikit/stamp@18.1.0
+  - @commercetools-uikit/tag@18.1.0
+  - @commercetools-uikit/text@18.1.0
+  - @commercetools-uikit/tooltip@18.1.0
+  - @commercetools-uikit/view-switcher@18.1.0
+  - @commercetools-uikit/buttons@18.1.0
+  - @commercetools-uikit/fields@18.1.0
+  - @commercetools-uikit/inputs@18.1.0
+  - @commercetools-uikit/spacings@18.1.0
+  - @commercetools-uikit/messages@18.1.0
+  - @commercetools-uikit/field-errors@18.1.0
+  - @commercetools-uikit/accessible-hidden@18.1.0
+  - @commercetools-uikit/collapsible@18.1.0
+  - @commercetools-uikit/collapsible-motion@18.1.0
+  - @commercetools-uikit/grid@18.1.0
+  - @commercetools-uikit/hooks@18.1.0
+  - @commercetools-uikit/i18n@18.1.0
+  - @commercetools-uikit/utils@18.1.0
+
 ## 18.0.0
 
 ### Patch Changes

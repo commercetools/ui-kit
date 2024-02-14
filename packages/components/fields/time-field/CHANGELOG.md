@@ -1,5 +1,19 @@
 # @commercetools-uikit/time-field
 
+## 18.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`78d878c`](https://github.com/commercetools/ui-kit/commit/78d878cdb62bf46e1596f0df72fc6871a847ecb9)]:
+  - @commercetools-uikit/design-system@18.1.0
+  - @commercetools-uikit/constraints@18.1.0
+  - @commercetools-uikit/field-label@18.1.0
+  - @commercetools-uikit/time-input@18.1.0
+  - @commercetools-uikit/spacings-stack@18.1.0
+  - @commercetools-uikit/field-errors@18.1.0
+  - @commercetools-uikit/field-warnings@18.1.0
+  - @commercetools-uikit/utils@18.1.0
+
 ## 18.0.0
 
 ### Patch Changes

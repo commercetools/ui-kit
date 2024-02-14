@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 18.1.0
+
+### Patch Changes
+
+- [#2722](https://github.com/commercetools/ui-kit/pull/2722) [`78d878c`](https://github.com/commercetools/ui-kit/commit/78d878cdb62bf46e1596f0df72fc6871a847ecb9) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix invalid CSS variable usage in reset.css exported file.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@18.1.0
+
 ## 18.0.0
 
 ### Major Changes

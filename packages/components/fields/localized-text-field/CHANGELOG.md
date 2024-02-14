@@ -1,5 +1,24 @@
 # @commercetools-uikit/localized-text-field
 
+## 18.1.0
+
+### Minor Changes
+
+- [#2710](https://github.com/commercetools/ui-kit/pull/2710) [`da971d1`](https://github.com/commercetools/ui-kit/commit/da971d1befcf9af6697bbde199537f1406885d1f) Thanks [@LucasGrahn](https://github.com/LucasGrahn)! - We've added a new property named `additionalInfo` to the component so consumers can provide some more contextual text.
+  The content will be rendered below each input using the [Text.Detail](https://uikit.commercetools.com/?path=/story/basics-typography-text--detail) component (`tertiary` tone) by default.
+
+### Patch Changes
+
+- Updated dependencies [[`78d878c`](https://github.com/commercetools/ui-kit/commit/78d878cdb62bf46e1596f0df72fc6871a847ecb9), [`da971d1`](https://github.com/commercetools/ui-kit/commit/da971d1befcf9af6697bbde199537f1406885d1f)]:
+  - @commercetools-uikit/design-system@18.1.0
+  - @commercetools-uikit/localized-text-input@18.1.0
+  - @commercetools-uikit/constraints@18.1.0
+  - @commercetools-uikit/field-label@18.1.0
+  - @commercetools-uikit/spacings@18.1.0
+  - @commercetools-uikit/field-errors@18.1.0
+  - @commercetools-uikit/field-warnings@18.1.0
+  - @commercetools-uikit/utils@18.1.0
+
 ## 18.0.0
 
 ### Patch Changes
