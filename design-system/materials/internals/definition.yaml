@@ -331,6 +331,8 @@ variants:
     description: 'To differentiate component secondary type'
   primary:
     description: 'To differentiate component primary type'
+  flat:
+    description: 'To differentiate component flat type'
 
 componentGroups:
   button:
@@ -444,6 +446,8 @@ decisionGroupsByTheme:
           choice: color-warning
         font-color-for-button-as-secondary:
           choice: color-solid
+        font-color-for-button-as-flat-when-hovered:
+          choice: color-primary
 
     heights:
       label: Height
@@ -530,3 +534,5 @@ decisionGroupsByTheme:
       decisions:
         font-color-for-button-as-secondary:
           choice: color-primary
+        font-color-for-button-as-flat-when-hovered:
+          choice: color-primary-40

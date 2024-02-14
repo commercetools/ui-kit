@@ -223,6 +223,7 @@ export const themes = {
     fontColorForInputWhenReadonly: 'hsl(232, 18%, 40%)',
     fontColorForInputWhenWarning: '#f16d0e',
     fontColorForButtonAsSecondary: '#1a1a1a',
+    fontColorForButtonAsFlatWhenHovered: 'hsl(175, 55%, 45%)',
     heightForButtonAsBig: '40px',
     heightForButtonAsMedium: '32px',
     heightForButtonAsSmall: '16px',
@@ -271,6 +272,7 @@ export const themes = {
     backgroundColorForButtonAsPrimary: 'hsl(240, 64%, 58%)',
     backgroundColorForButtonAsPrimaryWhenHovered: 'hsl(240, 100%, 67%)',
     fontColorForButtonAsSecondary: 'hsl(240, 64%, 58%)',
+    fontColorForButtonAsFlatWhenHovered: 'hsl(240, 100%, 67%)',
   },
 } as const;
 
@@ -537,6 +539,8 @@ const designTokens = {
     'var(--font-color-for-input-when-warning, #f16d0e)',
   fontColorForButtonAsSecondary:
     'var(--font-color-for-button-as-secondary, #1a1a1a)',
+  fontColorForButtonAsFlatWhenHovered:
+    'var(--font-color-for-button-as-flat-when-hovered, hsl(175, 55%, 45%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',

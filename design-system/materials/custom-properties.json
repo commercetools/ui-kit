@@ -211,6 +211,7 @@
   "--font-color-for-input-when-readonly": "hsl(232, 18%, 40%)",
   "--font-color-for-input-when-warning": "#f16d0e",
   "--font-color-for-button-as-secondary": "#1a1a1a",
+  "--font-color-for-button-as-flat-when-hovered": "hsl(175, 55%, 45%)",
   "--height-for-button-as-big": "40px",
   "--height-for-button-as-medium": "32px",
   "--height-for-button-as-small": "16px",
