@@ -199,6 +199,8 @@ export const themes = {
     backgroundColorForLocalizedInputLabel: '#fff',
     backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(232, 18%, 95%)',
     backgroundColorForLocalizedInputLabelWhenDisabled: 'hsl(232, 18%, 95%)',
+    backgroundColorForButtonAsPrimary: '#15a390',
+    backgroundColorForButtonAsPrimaryWhenHovered: 'hsl(175, 55%, 45%)',
     borderColorForInput: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenFocused: 'hsl(175, 55%, 45%)',
     borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
@@ -207,6 +209,7 @@ export const themes = {
     borderColorForInputWhenWarning: '#f16d0e',
     borderColorForInputWhenHovered: 'hsl(232, 18%, 80%)',
     borderColorForInputAsQuiet: 'transparent',
+    borderColorForButtonAsSecondary: 'hsl(232, 18%, 80%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsMedium: '4px',
     borderRadiusForInput: '4px',
@@ -219,6 +222,7 @@ export const themes = {
     fontColorForInputWhenError: '#e60050',
     fontColorForInputWhenReadonly: 'hsl(232, 18%, 40%)',
     fontColorForInputWhenWarning: '#f16d0e',
+    fontColorForButtonAsSecondary: '#1a1a1a',
     heightForButtonAsBig: '40px',
     heightForButtonAsMedium: '32px',
     heightForButtonAsSmall: '16px',
@@ -261,6 +265,12 @@ export const themes = {
     colorError40: 'hsl(3, 60%, 46%)',
     colorError85: 'hsl(1, 55%, 74%)',
     colorError95: 'hsl(349, 66%, 92%)',
+    borderColorForButtonAsSecondary: 'hsl(244, 100%, 84%)',
+    backgroundColorForButtonWhenActive: 'hsl(243, 100%, 93%)',
+    backgroundColorForButtonWhenHovered: 'hsl(244, 100%, 97%)',
+    backgroundColorForButtonAsPrimary: 'hsl(240, 64%, 58%)',
+    backgroundColorForButtonAsPrimaryWhenHovered: 'hsl(240, 100%, 67%)',
+    fontColorForButtonAsSecondary: 'hsl(240, 64%, 58%)',
   },
 } as const;
 
@@ -486,6 +496,10 @@ const designTokens = {
     'var(--background-color-for-localized-input-label-when-readonly, hsl(232, 18%, 95%))',
   backgroundColorForLocalizedInputLabelWhenDisabled:
     'var(--background-color-for-localized-input-label-when-disabled, hsl(232, 18%, 95%))',
+  backgroundColorForButtonAsPrimary:
+    'var(--background-color-for-button-as-primary, #15a390)',
+  backgroundColorForButtonAsPrimaryWhenHovered:
+    'var(--background-color-for-button-as-primary-when-hovered, hsl(175, 55%, 45%))',
   borderColorForInput: 'var(--border-color-for-input, hsl(232, 18%, 80%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, hsl(175, 55%, 45%))',
@@ -501,6 +515,8 @@ const designTokens = {
     'var(--border-color-for-input-when-hovered, hsl(232, 18%, 80%))',
   borderColorForInputAsQuiet:
     'var(--border-color-for-input-as-quiet, transparent)',
+  borderColorForButtonAsSecondary:
+    'var(--border-color-for-button-as-secondary, hsl(232, 18%, 80%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 4px)',
   borderRadiusForButtonAsMedium:
     'var(--border-radius-for-button-as-medium, 4px)',
@@ -519,6 +535,8 @@ const designTokens = {
     'var(--font-color-for-input-when-readonly, hsl(232, 18%, 40%))',
   fontColorForInputWhenWarning:
     'var(--font-color-for-input-when-warning, #f16d0e)',
+  fontColorForButtonAsSecondary:
+    'var(--font-color-for-button-as-secondary, #1a1a1a)',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',

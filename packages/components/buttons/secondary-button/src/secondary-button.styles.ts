@@ -29,7 +29,12 @@ const getStateStyles = (
   if (isActive) {
     const baseActiveStyles = [
       css`
-        border: 1px solid ${designTokens.colorNeutral};
+        color: ${designTokens.fontColorForButtonAsSecondary};
+
+        * {
+          fill: ${designTokens.fontColorForButtonAsSecondary};
+        }
+        border: 1px solid ${designTokens.borderColorForButtonAsSecondary};
         box-shadow: ${designTokens.shadow0};
         background-color: ${designTokens.colorSurface};
         &:focus,
@@ -51,16 +56,26 @@ const getStateStyles = (
     }
   }
   return css`
+    color: ${designTokens.fontColorForButtonAsSecondary};
+
+    * {
+      fill: ${designTokens.fontColorForButtonAsSecondary};
+    }
+    &:not(:focus),
+    &:not(:hover),
+    &:not(:active) {
+      border: 1px solid ${designTokens.borderColorForButtonAsSecondary};
+    }
     &:focus,
     &:hover {
-      border: 1px solid ${designTokens.colorNeutral};
+      border: 1px solid ${designTokens.borderColorForButtonAsSecondary};
       box-shadow: ${designTokens.shadow0};
     }
     &:hover {
-      background-color: ${designTokens.backgroundColorForButtonWhenActive};
+      background-color: ${designTokens.backgroundColorForButtonWhenHovered};
     }
     &:active {
-      border: 1px solid ${designTokens.colorNeutral};
+      border: 1px solid ${designTokens.borderColorForButtonAsSecondary};
       box-shadow: ${designTokens.shadow0};
       background-color: ${designTokens.backgroundColorForButtonWhenActive};
     }
@@ -133,7 +148,13 @@ const getToneStyles = (
         !isDisabled &&
           css`
             background-color: ${designTokens.colorInfo95};
-            border-color: ${designTokens.colorInfo85};
+            border-color: ${designTokens.colorInfo85} !important;
+            color: ${designTokens.colorSolid};
+
+            * {
+              fill: ${designTokens.colorSolid};
+            }
+
             &:hover {
               background-color: ${designTokens.colorInfo90};
               border-color: ${designTokens.colorInfo85};

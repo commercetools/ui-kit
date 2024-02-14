@@ -115,12 +115,12 @@ const getBaseStyles = (
     case 'primary':
       return css`
         &:hover {
-          background-color: ${designTokens.colorPrimary};
+          background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenHovered};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
-          background-color: #15a390;
+          background-color: ${designTokens.backgroundColorForButtonAsPrimary};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
