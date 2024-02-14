@@ -121,6 +121,41 @@ describe('when input is expanded', () => {
     getByLabelText(/show all languages/i).click();
     expect(getByLabelText('FR')).toBeInTheDocument();
   });
+  describe('should display all additional field data', () => {
+    it('when given string', () => {
+      const { getByLabelText, getByText } = renderLocalizedTextInput({
+        additionalInfo: {
+          en: 'cool description',
+          fr: 'une description',
+        },
+      });
+      getByLabelText(/show all languages/i).click();
+      expect(getByText('cool description')).toBeInTheDocument();
+      expect(getByText('une description')).toBeInTheDocument();
+    });
+    it('when given i18n message', () => {
+      const { getByLabelText, getByText } = renderLocalizedTextInput({
+        additionalInfo: {
+          en: { id: 'i18en', defaultMessage: 'english i18n message' },
+          fr: { id: 'i18fr', defaultMessage: 'french i18n message' },
+        },
+      });
+      getByLabelText(/show all languages/i).click();
+      expect(getByText('english i18n message')).toBeInTheDocument();
+      expect(getByText('french i18n message')).toBeInTheDocument();
+    });
+    it('when given react element', () => {
+      const { getByLabelText, getByText } = renderLocalizedTextInput({
+        additionalInfo: {
+          en: <span>english span element</span>,
+          fr: <span>french span element</span>,
+        },
+      });
+      getByLabelText(/show all languages/i).click();
+      expect(getByText('english span element')).toBeInTheDocument();
+      expect(getByText('french span element')).toBeInTheDocument();
+    });
+  });
   it('should allow changing the french input', () => {
     const { getByLabelText } = renderLocalizedTextInput();
     getByLabelText(/show all languages/i).click();
@@ -306,5 +341,19 @@ describe('when the warnings is on the selected language', () => {
     expect(getByLabelText('EN')).toBeInTheDocument();
     expect(queryByLabelText('FR')).not.toBeInTheDocument();
     expect(getByText('Some warning')).toBeInTheDocument();
+  });
+});
+
+describe('when the additionalInfo is on the selected language', () => {
+  it('should display only the first additionalInfo without expanding', () => {
+    const { getByLabelText, getByText, queryByLabelText } =
+      renderLocalizedTextInput({
+        additionalInfo: {
+          en: 'Some description',
+        },
+      });
+    expect(getByLabelText('EN')).toBeInTheDocument();
+    expect(queryByLabelText('FR')).not.toBeInTheDocument();
+    expect(getByText('Some description')).toBeInTheDocument();
   });
 });

@@ -43,7 +43,10 @@ storiesOf('Components|Fields', module)
           const key = defaultExpandLanguages;
 
           const errorsByLanguage = boolean('errorsByLanguage', false);
-
+          const additionalInfo = object('additionalInfo', {
+            en: '',
+            de: '',
+          });
           // hintIcon will only render when hint exists
           const iconNames = Object.keys(icons);
           const icon = select('hintIcon', ['', ...iconNames], '');
@@ -116,6 +119,20 @@ storiesOf('Components|Fields', module)
                       );
                       return acc;
                     }, {})
+                  : undefined
+              }
+              additionalInfo={
+                Object.values(additionalInfo).some(
+                  (additionalInfo) => additionalInfo.length > 0
+                )
+                  ? Object.entries(additionalInfo).reduce(
+                      (acc, [language, additionalInfoEntry]) => {
+                        if (additionalInfo.length === 0) return acc;
+                        acc[language] = additionalInfoEntry;
+                        return acc;
+                      },
+                      {}
+                    )
                   : undefined
               }
               title={text('title', 'Description')}

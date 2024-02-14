@@ -62,6 +62,11 @@ const StoryWrapper = (props) => {
   );
   const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
   const warnings = object('warnings', { en: '', de: '', 'nan-Hant-TW': '' });
+  const additionalInfo = object('additionalInfo', {
+    en: '',
+    de: '',
+    'nan-Hant-TW': '',
+  });
   // We need to force the component to rerender in case a default value
   // is changed. Otherwise the knob would have no effect.
   // We do this by changing the key.
@@ -153,6 +158,20 @@ const StoryWrapper = (props) => {
                 acc[language] = <WarningMessage>{warning}</WarningMessage>;
                 return acc;
               }, {})
+            : undefined
+        }
+        additionalInfo={
+          Object.values(additionalInfo).some(
+            (additionalInfo) => additionalInfo.length > 0
+          )
+            ? Object.entries(additionalInfo).reduce(
+                (acc, [language, additionalInfoEntry]) => {
+                  if (additionalInfo.length === 0) return acc;
+                  acc[language] = additionalInfoEntry;
+                  return acc;
+                },
+                {}
+              )
             : undefined
         }
         value={value}

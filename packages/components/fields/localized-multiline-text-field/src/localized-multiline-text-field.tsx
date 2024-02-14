@@ -12,6 +12,7 @@ import {
   createSequentialId,
   warning,
 } from '@commercetools-uikit/utils';
+import { type MessageDescriptor } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
@@ -75,6 +76,22 @@ export type TLocalizedMultilineTextFieldProps = {
    * It can also return null to show no warning.
    */
   renderWarning?: (key: string, warning?: boolean) => ReactNode;
+  /**
+   * An object mapping locales to additional messages to be rendered below each input element.
+    Example:
+    {
+      en: 'Some value',
+      es: 'Algún valor',
+    }
+   */
+  additionalInfo?: Record<
+    string,
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      })
+  >;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -298,6 +315,9 @@ class LocalizedMultilineTextField extends Component<
             /* ARIA */
             aria-invalid={hasError}
             aria-errormessage={sequentialErrorsId}
+            additionalInfo={
+              this.props.additionalInfo && this.props.additionalInfo
+            }
           />
           <FieldErrors
             id={sequentialErrorsId}

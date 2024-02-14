@@ -4,10 +4,13 @@ import {
   type ReactNode,
   useCallback,
 } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, type MessageDescriptor } from 'react-intl';
 import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
-import { ErrorMessage } from '@commercetools-uikit/messages';
+import {
+  ErrorMessage,
+  AdditionalInfoMessage,
+} from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import {
@@ -126,13 +129,29 @@ export type TLocalizedTextInputProps = {
    */
   hasWarning?: boolean;
   /**
-   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
+   * Used to show errors underneath the inputs of specific locales. Pass an object whose key is a locale and whose value is the error to show for that key.
    */
   errors?: Record<string, string>;
   /**
    * A map of warnings.
    */
   warnings?: Record<string, ReactNode>;
+  /**
+   * An object mapping locales to additional messages to be rendered below each input element.
+    Example:
+    {
+      en: 'Some value',
+      es: 'Algún valor',
+    }
+   */
+  additionalInfo?: Record<
+    string,
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      })
+  >;
 };
 
 export type TLocalizedInputProps = {
@@ -164,9 +183,6 @@ export type TLocalizedInputProps = {
    * Indicates the input field has a warning
    */
   hasWarning?: boolean;
-  /**
-   * HTML node to display warning
-   */
   warning?: ReactNode;
   placeholder?: string;
 };
@@ -330,6 +346,11 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                   />
                   {props.errors && props.errors[language]}
                   {props.warnings && props.warnings[language]}
+                  {props.additionalInfo && (
+                    <AdditionalInfoMessage
+                      message={props.additionalInfo[language]}
+                    />
+                  )}
                 </Stack>
               </div>
             );

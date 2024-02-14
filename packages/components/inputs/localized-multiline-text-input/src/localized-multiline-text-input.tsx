@@ -5,7 +5,7 @@ import {
   type ChangeEventHandler,
   type FocusEventHandler,
 } from 'react';
-import { useIntl } from 'react-intl';
+import { useIntl, type MessageDescriptor } from 'react-intl';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -141,17 +141,33 @@ export type TLocalizedMultilineTextInputProps = {
    */
   hasWarning?: boolean;
   /**
-   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
+   * Used to show errors underneath the inputs of specific locales. Pass an object whose key is a locale and whose value is the error to show for that key.
    */
   errors?: {
     [key: string]: ReactNode;
   };
   /**
-   * Used to show warnings underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the warning to show for that key.
+   * Used to show warnings underneath the inputs of specific locales. Pass an object whose key is a locale and whose value is the warning to show for that key.
    */
   warnings?: {
     [key: string]: ReactNode;
   };
+  /**
+   * An object mapping locales to additional messages to be rendered below each input element.
+    Example:
+    {
+      en: 'Some value',
+      es: 'Algún valor',
+    }
+   */
+  additionalInfo?: Record<
+    string,
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      })
+  >;
 };
 
 const expandedTranslationsReducer = (
@@ -305,6 +321,9 @@ const LocalizedMultilineTextInput = (
                 intl={intl}
                 warning={props.warnings && props.warnings[language]}
                 error={props.errors && props.errors[language]}
+                additionalInfo={
+                  props.additionalInfo && props.additionalInfo[language]
+                }
                 hasLanguagesControl={hasLanguagesControl}
                 {...createLocalizedDataAttributes(props, language)}
                 /* ARIA */

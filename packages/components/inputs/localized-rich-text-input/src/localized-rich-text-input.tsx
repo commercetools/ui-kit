@@ -12,6 +12,7 @@ import {
   type FocusEventHandler,
   type MutableRefObject,
 } from 'react';
+import { type MessageDescriptor } from 'react-intl';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import { useToggleState } from '@commercetools-uikit/hooks';
@@ -129,6 +130,22 @@ export type TLocalizedRichTextInputProps = {
    * Used to show warnings underneath the inputs of specific languages. Pass an object whose key is a language and whose value is the warning to show for that key.
    */
   warnings?: TWarnings;
+  /**
+   * An object mapping locales to additional messages to be rendered below each input element.
+    Example:
+    {
+      en: 'Some value',
+      es: 'Algún valor',
+    }
+   */
+  additionalInfo?: Record<
+    string,
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      })
+  >;
   /**
    * Shows an `expand` icon in the toolbar
    */
@@ -349,6 +366,9 @@ const LocalizedRichTextInput: ForwardRefExoticComponent<
                   )}
                   warning={props.warnings && props.warnings[language]}
                   error={props.errors && props.errors[language]}
+                  additionalInfo={
+                    props.additionalInfo && props.additionalInfo[language]
+                  }
                   showExpandIcon={props.showExpandIcon}
                   onClickExpand={props.onClickExpand}
                   hasLanguagesControl={hasLanguagesControl}

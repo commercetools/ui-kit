@@ -30,6 +30,12 @@ storiesOf('Components|Inputs', module)
     const key = defaultExpandLanguages ? 'yes' : 'no';
     const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
     const warnings = object('warnings', { en: '', de: '', 'nan-Hant-TW': '' });
+    const additionalInfo = object('additionalInfo', {
+      en: '',
+      de: '',
+      'nan-Hant-TW': '',
+    });
+
     return (
       <Section>
         <Value
@@ -87,6 +93,20 @@ storiesOf('Components|Inputs', module)
                         acc[language] = (
                           <WarningMessage>{warning}</WarningMessage>
                         );
+                        return acc;
+                      },
+                      {}
+                    )
+                  : undefined
+              }
+              additionalInfo={
+                Object.values(additionalInfo).some(
+                  (additionalInfo) => additionalInfo.length > 0
+                )
+                  ? Object.entries(additionalInfo).reduce(
+                      (acc, [language, additionalInfoEntry]) => {
+                        if (additionalInfo.length === 0) return acc;
+                        acc[language] = additionalInfoEntry;
                         return acc;
                       },
                       {}
