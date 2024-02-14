@@ -6,7 +6,7 @@
 
 html,
 body {
-  color: var(--font-color-for-text);
+  color: var(--color-solid);
   font-family: var(--font-family);
   margin: 0;
   padding: 0;
