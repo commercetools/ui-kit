@@ -18,6 +18,7 @@ import {
 import {
   changeTime,
   formatTime,
+  formatDefaultTime,
   getDateInMonth,
   getToday,
   changeMonth,
@@ -160,6 +161,10 @@ export type TDateTimeInputProps = {
    * Indicates the input field has a warning
    */
   hasWarning?: boolean;
+  /**
+   * The time that will be used by default when a user selects a calendar day for the first time
+   */
+  defaultDaySelectionTime?: string;
 } & WrappedComponentProps;
 
 type TDateTimeInputState = {
@@ -186,8 +191,15 @@ class DateTimeInput extends Component<
       this.props.value === ''
         ? null
         : getDateInMonth(this.props.value, this.props.timeZone) - 1,
-    timeString: '',
+    timeString: this.props.defaultDaySelectionTime
+      ? formatDefaultTime(
+          this.props.defaultDaySelectionTime,
+          this.props.intl.locale,
+          this.props.timeZone
+        )
+      : '',
   };
+
   jumpMonths = (amount: DurationInputArg1, dayToHighlight = 0) => {
     this.setState((prevState) => {
       const nextDate = changeMonth(
@@ -288,7 +300,8 @@ class DateTimeInput extends Component<
                     startDate: changes.isOpen ? prevState.startDate : null,
                     inputValue: changes.inputValue || prevState.inputValue,
                     timeString: changes.selectedItem
-                      ? formatTime(
+                      ? this.state.timeString ||
+                        formatTime(
                           changes.selectedItem,
                           this.props.intl.locale,
                           this.props.timeZone
@@ -320,7 +333,7 @@ class DateTimeInput extends Component<
                             this.props.intl.locale,
                             this.props.timeZone
                           )
-                        : '',
+                        : this.state.timeString,
                     // ensure calendar always opens on selected item, or on
                     // current month when there is no selected item
                     calendarDate:

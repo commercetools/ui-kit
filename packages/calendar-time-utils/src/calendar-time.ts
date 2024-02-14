@@ -43,6 +43,20 @@ export const changeTime = (
 export const getPreviousDay = (day: MomentInput) =>
   moment(day).subtract(1, 'day').format('YYYY-MM-DD');
 
+export const formatDefaultTime = (
+  time: MomentInput,
+  locale: LocaleSpecifier,
+  timeZone: string
+) => {
+  const today = moment();
+  const [hour, minute] = (time as string)?.toString().split(':');
+  today.set({
+    hour: parseInt(hour, 10),
+    minute: parseInt(minute, 10),
+  });
+  return moment.tz(today, timeZone).locale(locale).format('LT'); // 5:13 PM
+};
+
 export const formatTime = (
   day: MomentInput,
   locale: LocaleSpecifier,
