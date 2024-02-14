@@ -28,8 +28,8 @@ export const getTextColor = (props: TGetTextColor): string => {
       return designTokens.colorSurface;
     case 'critical':
       return props.isHover
-        ? designTokens.colorError25
-        : designTokens.colorError;
+        ? designTokens.fontColorForButtonAsFlatAsCriticalWhenHovered
+        : designTokens.fontColorForButtonAsFlatAsCritical;
     default:
       return 'inherit';
   }

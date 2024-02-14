@@ -213,6 +213,9 @@
   );
   --background-color-for-button-as-primary: #15a390;
   --background-color-for-button-as-primary-when-hovered: hsl(175, 55%, 45%);
+  --background-color-for-button-as-primary-as-default-when-hovered: #17ab97;
+  --background-color-for-button-as-primary-as-default-when-active: #15a390;
+  --background-color-for-button-as-primary-as-urgent: #f16d0e;
   --border-color-for-input: hsl(232, 18%, 80%);
   --border-color-for-input-when-focused: hsl(175, 55%, 45%);
   --border-color-for-input-when-disabled: hsl(232, 18%, 80%);
@@ -236,6 +239,12 @@
   --font-color-for-input-when-warning: #f16d0e;
   --font-color-for-button-as-secondary: #1a1a1a;
   --font-color-for-button-as-flat-when-hovered: hsl(175, 55%, 45%);
+  --font-color-for-button-as-flat-as-critical: #e60050;
+  --font-color-for-button-as-flat-as-critical-when-hovered: hsl(
+    339.1304347826087,
+    100%,
+    25%
+  );
   --height-for-button-as-big: 40px;
   --height-for-button-as-medium: 32px;
   --height-for-button-as-small: 16px;
