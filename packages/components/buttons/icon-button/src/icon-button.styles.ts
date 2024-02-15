@@ -102,7 +102,7 @@ const getBaseStyles = (
       &:active {
         background-color: ${designTokens.backgroundColorForButtonWhenActive};
         box-shadow: ${designTokens.shadow0};
-        border-color: ${designTokens.colorNeutral};
+        border-color: ${designTokens.borderColorForButtonAsSecondary};
       }
     `;
   }
