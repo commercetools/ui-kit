@@ -205,6 +205,8 @@ export const themes = {
     backgroundColorForButtonAsPrimaryAsDefaultWhenHovered: '#17ab97',
     backgroundColorForButtonAsPrimaryAsDefaultWhenActive: '#15a390',
     backgroundColorForButtonAsPrimaryAsUrgent: '#f16d0e',
+    backgroundColorForStampAsPrimary: 'hsl(175, 70%, 90%)',
+    backgroundColorForStampAsPositive: 'hsl(175, 70%, 90%)',
     borderColorForInput: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenFocused: 'hsl(175, 55%, 45%)',
     borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
@@ -232,6 +234,7 @@ export const themes = {
     fontColorForButtonAsFlatAsCriticalWhenHovered:
       'hsl(339.1304347826087, 100%, 25%)',
     fontColorForViewSwitcherButton: 'hsl(232, 18%, 40%)',
+    fontColorForStampAsPositive: 'hsl(175, 55%, 25%)',
     heightForButtonAsBig: '40px',
     heightForButtonAsMedium: '32px',
     heightForButtonAsSmall: '16px',
@@ -285,12 +288,15 @@ export const themes = {
     backgroundColorForButtonAsPrimaryAsDefaultWhenActive: 'hsl(240, 46%, 48%)',
     backgroundColorForButtonAsPrimaryAsUrgent: 'hsl(35, 90%, 55%)',
     backgroundColorForInputWhenSelected: 'hsl(244, 100%, 97%)',
+    backgroundColorForStampAsPrimary: 'hsl(244, 100%, 97%)',
+    backgroundColorForStampAsPositive: 'hsl(141, 76%, 92%)',
     fontColorForButtonAsSecondary: 'hsl(240, 64%, 58%)',
     fontColorForButtonAsFlatWhenHovered: 'hsl(240, 100%, 67%)',
     fontColorForButtonAsFlatAsCritical: 'hsl(3, 60%, 46%)',
     fontColorForButtonAsFlatAsCriticalWhenHovered: 'hsl(3, 65%, 58%)',
     fontColorForViewSwitcherButton: 'hsl(240, 64%, 58%)',
     fontColorForInputWhenError: 'hsl(3, 60%, 46%)',
+    fontColorForStampAsPositive: 'hsl(155, 90%, 24%)',
   },
 } as const;
 
@@ -527,6 +533,10 @@ const designTokens = {
     'var(--background-color-for-button-as-primary-as-default-when-active, #15a390)',
   backgroundColorForButtonAsPrimaryAsUrgent:
     'var(--background-color-for-button-as-primary-as-urgent, #f16d0e)',
+  backgroundColorForStampAsPrimary:
+    'var(--background-color-for-stamp-as-primary, hsl(175, 70%, 90%))',
+  backgroundColorForStampAsPositive:
+    'var(--background-color-for-stamp-as-positive, hsl(175, 70%, 90%))',
   borderColorForInput: 'var(--border-color-for-input, hsl(232, 18%, 80%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, hsl(175, 55%, 45%))',
@@ -572,6 +582,8 @@ const designTokens = {
     'var(--font-color-for-button-as-flat-as-critical-when-hovered, hsl(339.1304347826087, 100%, 25%))',
   fontColorForViewSwitcherButton:
     'var(--font-color-for-view-switcher-button, hsl(232, 18%, 40%))',
+  fontColorForStampAsPositive:
+    'var(--font-color-for-stamp-as-positive, hsl(175, 55%, 25%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',

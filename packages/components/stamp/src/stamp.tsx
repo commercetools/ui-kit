@@ -67,9 +67,9 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   },
   positive: {
     styles: {
-      backgroundColor: designTokens.colorPrimary90,
+      backgroundColor: designTokens.backgroundColorForStampAsPositive,
       borderColor: designTokens.colorPrimary85,
-      color: designTokens.colorPrimary25,
+      color: designTokens.fontColorForStampAsPositive,
     },
     iconColor: 'primary',
   },
@@ -83,7 +83,7 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   },
   primary: {
     styles: {
-      backgroundColor: designTokens.colorPrimary90,
+      backgroundColor: designTokens.backgroundColorForStampAsPrimary,
       borderColor: designTokens.colorPrimary85,
       color: designTokens.colorPrimary25,
     },

@@ -217,6 +217,8 @@
   --background-color-for-button-as-primary-as-default-when-hovered: #17ab97;
   --background-color-for-button-as-primary-as-default-when-active: #15a390;
   --background-color-for-button-as-primary-as-urgent: #f16d0e;
+  --background-color-for-stamp-as-primary: hsl(175, 70%, 90%);
+  --background-color-for-stamp-as-positive: hsl(175, 70%, 90%);
   --border-color-for-input: hsl(232, 18%, 80%);
   --border-color-for-input-when-focused: hsl(175, 55%, 45%);
   --border-color-for-input-when-disabled: hsl(232, 18%, 80%);
@@ -247,6 +249,7 @@
     25%
   );
   --font-color-for-view-switcher-button: hsl(232, 18%, 40%);
+  --font-color-for-stamp-as-positive: hsl(175, 55%, 25%);
   --height-for-button-as-big: 40px;
   --height-for-button-as-medium: 32px;
   --height-for-button-as-small: 16px;
