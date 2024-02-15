@@ -343,6 +343,8 @@ variants:
 componentGroups:
   button:
     description: 'Button elements'
+  view-switcher-button:
+    description: 'Viewswitcher Button elements'
   input:
     description: 'Input elements'
   localized-input-label:
@@ -464,6 +466,8 @@ decisionGroupsByTheme:
           choice: color-error
         font-color-for-button-as-flat-as-critical-when-hovered:
           choice: color-error-25
+        font-color-for-view-switcher-button:
+          choice: color-neutral-40
 
     heights:
       label: Height
@@ -562,3 +566,5 @@ decisionGroupsByTheme:
           choice: color-error-40
         font-color-for-button-as-flat-as-critical-when-hovered:
           choice: color-error
+        font-color-for-view-switcher-button:
+          choice: color-primary

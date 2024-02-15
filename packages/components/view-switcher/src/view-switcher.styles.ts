@@ -20,8 +20,9 @@ const getSizeStyles = (
 
 const getFontColor = (isDisabled?: boolean, isActive?: boolean) => {
   if (isDisabled) return designTokens.colorNeutral60;
-  if (isActive) return designTokens.colorSolid;
-  return designTokens.colorNeutral40;
+  if (isActive) return designTokens.fontColorForButtonAsSecondary;
+  // TODO: ask Filip
+  return designTokens.fontColorForViewSwitcherButton;
 };
 
 export const getButtonStyles = (
@@ -44,18 +45,18 @@ export const getButtonStyles = (
       fill: ${fontColor};
       transition: background-color ${designTokens.transitionLinear80Ms};
       font-size: ${designTokens.fontSize30};
-      border: 1px solid ${designTokens.colorNeutral};
+      border: 1px solid ${designTokens.borderColorForButtonAsSecondary};
       border-left: ${isFirstButton
-        ? `1px solid ${designTokens.colorNeutral}`
+        ? `1px solid ${designTokens.borderColorForButtonAsSecondary}`
         : '0'};
       border-radius: ${borderRadius};
       box-shadow: ${designTokens.shadow0};
       background-color: ${designTokens.colorSurface};
       &:hover {
-        background-color: ${designTokens.colorNeutral95};
+        background-color: ${designTokens.backgroundColorForButtonWhenHovered};
       }
       &:active {
-        background-color: ${designTokens.colorNeutral95};
+        background-color: ${designTokens.backgroundColorForButtonWhenActive};
       }
       ${getSizeStyles(isCondensed)}
     `,
@@ -66,10 +67,11 @@ export const getButtonStyles = (
         &:hover {
           background-color: ${designTokens.colorSurface};
         }
+        border-color: ${designTokens.colorNeutral};
       `,
     isActive &&
       css`
-        background-color: ${designTokens.colorNeutral95};
+        background-color: ${designTokens.backgroundColorForButtonWhenActive};
         box-shadow: ${designTokens.shadow0};
       `,
   ];

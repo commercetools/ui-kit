@@ -217,6 +217,7 @@
   "--font-color-for-button-as-flat-when-hovered": "hsl(175, 55%, 45%)",
   "--font-color-for-button-as-flat-as-critical": "#e60050",
   "--font-color-for-button-as-flat-as-critical-when-hovered": "hsl(339.1304347826087, 100%, 25%)",
+  "--font-color-for-view-switcher-button": "hsl(232, 18%, 40%)",
   "--height-for-button-as-big": "40px",
   "--height-for-button-as-medium": "32px",
   "--height-for-button-as-small": "16px",

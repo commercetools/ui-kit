@@ -230,6 +230,7 @@ export const themes = {
     fontColorForButtonAsFlatAsCritical: '#e60050',
     fontColorForButtonAsFlatAsCriticalWhenHovered:
       'hsl(339.1304347826087, 100%, 25%)',
+    fontColorForViewSwitcherButton: 'hsl(232, 18%, 40%)',
     heightForButtonAsBig: '40px',
     heightForButtonAsMedium: '32px',
     heightForButtonAsSmall: '16px',
@@ -285,6 +286,7 @@ export const themes = {
     fontColorForButtonAsFlatWhenHovered: 'hsl(240, 100%, 67%)',
     fontColorForButtonAsFlatAsCritical: 'hsl(3, 60%, 46%)',
     fontColorForButtonAsFlatAsCriticalWhenHovered: 'hsl(3, 65%, 58%)',
+    fontColorForViewSwitcherButton: 'hsl(240, 64%, 58%)',
   },
 } as const;
 
@@ -563,6 +565,8 @@ const designTokens = {
     'var(--font-color-for-button-as-flat-as-critical, #e60050)',
   fontColorForButtonAsFlatAsCriticalWhenHovered:
     'var(--font-color-for-button-as-flat-as-critical-when-hovered, hsl(339.1304347826087, 100%, 25%))',
+  fontColorForViewSwitcherButton:
+    'var(--font-color-for-view-switcher-button, hsl(232, 18%, 40%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',
