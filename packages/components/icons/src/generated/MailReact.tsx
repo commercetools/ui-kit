@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgMail = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="M4.8 19.4c-.495 0-.919-.176-1.27-.528A1.734 1.734 0 0 1 3 17.6V6.8c0-.495.176-.919.53-1.27C3.88 5.175 4.304 5 4.8 5h14.4c.495 0 .919.176 1.272.53.352.351.528.775.528 1.27v10.8c0 .495-.176.919-.528 1.272a1.736 1.736 0 0 1-1.272.528H4.8ZM19.2 8.6l-6.727 4.207a.922.922 0 0 1-.237.101.882.882 0 0 1-.236.035.882.882 0 0 1-.236-.035.922.922 0 0 1-.236-.1L4.8 8.6v9h14.4v-9ZM12 11.3l7.2-4.5H4.8l7.2 4.5ZM4.8 8.6v.225-1.327.022-.72.72-.012 1.317V8.6v9-9Z" />
+    <path d="M4.8 19.4q-.743 0-1.27-.528A1.73 1.73 0 0 1 3 17.6V6.8q0-.743.53-1.27Q4.056 5 4.8 5h14.4q.743 0 1.272.53Q21 6.056 21 6.8v10.8q0 .742-.528 1.272a1.74 1.74 0 0 1-1.272.528zM19.2 8.6l-6.727 4.208a1 1 0 0 1-.237.1 1 1 0 0 1-.236.035 1 1 0 0 1-.236-.035 1 1 0 0 1-.236-.1L4.8 8.6v9h14.4zM12 11.3l7.2-4.5H4.8zM4.8 8.6v.225-1.327.022-.72.72-.012 1.317zv9z" />
   </svg>
 );
 SvgMail.displayName = 'SvgMail';

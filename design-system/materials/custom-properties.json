@@ -75,6 +75,7 @@
   "--color-solid-10": "hsl(0deg 0% 10% / 10%)",
   "--color-surface": "#fff",
   "--color-transparent": "transparent",
+  "--color-success": "hsl(152, 77%, 39%)",
   "--border-radius-1": "1px",
   "--border-radius-2": "2px",
   "--border-radius-4": "4px",

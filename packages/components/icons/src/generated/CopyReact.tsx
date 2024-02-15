@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgCopy = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="M17.91 17.727h-9c-.45 0-.836-.16-1.156-.48a1.576 1.576 0 0 1-.481-1.156V4.636c0-.45.16-.835.48-1.156C8.075 3.16 8.46 3 8.91 3h5.727l4.91 4.91v8.18c0 .45-.16.836-.48 1.157-.322.32-.707.48-1.157.48Zm-4.092-9v-4.09H8.91V16.09h9V8.727h-4.09ZM5.636 21c-.45 0-.835-.16-1.155-.48A1.576 1.576 0 0 1 4 19.364V7.909h1.636v11.455h9V21h-9ZM8.91 4.636v4.091-4.09V16.09 4.636Z" />
+    <path d="M17.91 17.727h-9q-.675 0-1.156-.48a1.58 1.58 0 0 1-.481-1.156V4.636q0-.675.48-1.156Q8.235 3 8.91 3h5.727l4.91 4.91v8.18q0 .675-.48 1.157-.482.48-1.157.48m-4.092-9v-4.09H8.91V16.09h9V8.727zM5.636 21q-.675 0-1.155-.48A1.58 1.58 0 0 1 4 19.364V7.909h1.636v11.455h9V21zM8.91 4.636v4.091zV16.09z" />
   </svg>
 );
 SvgCopy.displayName = 'SvgCopy';

@@ -112,6 +112,7 @@ choiceGroupsByTheme:
         color-solid-10: 'hsl(0deg 0% 10% / 10%)'
         color-surface: '#fff'
         color-transparent: 'transparent'
+        color-success: 'hsl(152, 77%, 39%)'
 
     borderRadiuses:
       label: Border Radiuses

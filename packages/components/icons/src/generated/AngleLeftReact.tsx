@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgAngleLeft = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="m15.264 20.644-8.003-7.98a.828.828 0 0 1-.201-.308c-.04-.11-.06-.23-.06-.356 0-.127.02-.245.06-.356a.828.828 0 0 1 .201-.309l8.003-8.003c.222-.221.498-.332.831-.332.332 0 .617.119.855.356.237.238.356.515.356.831 0 .317-.119.594-.356.831L9.968 12l6.982 6.982c.222.221.332.494.332.818 0 .325-.118.606-.356.844a1.139 1.139 0 0 1-.831.356c-.317 0-.594-.119-.831-.356Z" />
+    <path d="m15.264 20.644-8.003-7.98a.8.8 0 0 1-.201-.308Q7 12.19 7 12t.06-.356a.8.8 0 0 1 .201-.309l8.003-8.003Q15.596 3 16.095 3t.855.356.356.831q0 .476-.356.831L9.968 12l6.982 6.982q.333.332.332.818 0 .487-.356.844a1.14 1.14 0 0 1-.831.356q-.476 0-.831-.356" />
   </svg>
 );
 SvgAngleLeft.displayName = 'SvgAngleLeft';

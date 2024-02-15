@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgDomain = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="M4.8 20.2c-.495 0-.919-.176-1.27-.528A1.734 1.734 0 0 1 3 18.4V5.8c0-.495.176-.919.53-1.272A1.733 1.733 0 0 1 4.8 4h5.4c.495 0 .919.176 1.272.528.352.353.528.777.528 1.272v1.8h7.2c.495 0 .919.176 1.272.528.352.353.528.777.528 1.272v9c0 .495-.176.919-.528 1.272a1.736 1.736 0 0 1-1.272.528H4.8Zm0-1.8h1.8v-1.8H4.8v1.8Zm0-3.6h1.8V13H4.8v1.8Zm0-3.6h1.8V9.4H4.8v1.8Zm0-3.6h1.8V5.8H4.8v1.8Zm3.6 10.8h1.8v-1.8H8.4v1.8Zm0-3.6h1.8V13H8.4v1.8Zm0-3.6h1.8V9.4H8.4v1.8Zm0-3.6h1.8V5.8H8.4v1.8ZM12 18.4h7.2v-9H12v1.8h1.8V13H12v1.8h1.8v1.8H12v1.8Zm3.6-5.4v-1.8h1.8V13h-1.8Zm0 3.6v-1.8h1.8v1.8h-1.8Z" />
+    <path d="M4.8 20.2q-.743 0-1.27-.528A1.73 1.73 0 0 1 3 18.4V5.8q0-.742.53-1.272A1.73 1.73 0 0 1 4.8 4h5.4q.742 0 1.272.528Q12 5.058 12 5.8v1.8h7.2q.743 0 1.272.528Q21 8.658 21 9.4v9q0 .742-.528 1.272a1.74 1.74 0 0 1-1.272.528zm0-1.8h1.8v-1.8H4.8zm0-3.6h1.8V13H4.8zm0-3.6h1.8V9.4H4.8zm0-3.6h1.8V5.8H4.8zm3.6 10.8h1.8v-1.8H8.4zm0-3.6h1.8V13H8.4zm0-3.6h1.8V9.4H8.4zm0-3.6h1.8V5.8H8.4zM12 18.4h7.2v-9H12v1.8h1.8V13H12v1.8h1.8v1.8H12zm3.6-5.4v-1.8h1.8V13zm0 3.6v-1.8h1.8v1.8z" />
   </svg>
 );
 SvgDomain.displayName = 'SvgDomain';

@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgEdit = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="M3 17.541 6.58 21H3v-3.459ZM14.322 6.635l3.58 3.46-10.068 9.728-3.58-3.46 10.068-9.728Zm4.976-3.161 1.212 1.17a1.58 1.58 0 0 1 0 2.289l-1.39 1.342-3.58-3.459 1.39-1.342a1.716 1.716 0 0 1 2.368 0Z" />
+    <path d="M3 17.541 6.58 21H3zM14.322 6.635l3.58 3.46-10.068 9.728-3.58-3.46zm4.976-3.161 1.212 1.17a1.58 1.58 0 0 1 0 2.289l-1.39 1.342-3.58-3.459 1.39-1.342a1.716 1.716 0 0 1 2.368 0" />
   </svg>
 );
 SvgEdit.displayName = 'SvgEdit';

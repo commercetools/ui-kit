@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgArrowLongDown = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="M11.084 17.7V3.97c0-.275.093-.505.279-.69a.935.935 0 0 1 .69-.279c.274 0 .504.093.69.279a.937.937 0 0 1 .278.69V17.7l1.356-1.356a.863.863 0 0 1 .667-.254.985.985 0 0 1 .69.302.919.919 0 0 1 .266.679c0 .274-.089.5-.266.678l-3.003 2.979c-.097.096-.202.17-.315.217a.689.689 0 0 1-.364.049c-.129 0-.25-.02-.363-.06a.855.855 0 0 1-.315-.207l-3.003-3.003a.9.9 0 0 1-.278-.69.945.945 0 0 1 .278-.666.944.944 0 0 1 .691-.29c.266 0 .488.088.666.266l1.356 1.356Z" />
+    <path d="M11.084 17.7V3.97q0-.412.279-.69a.94.94 0 0 1 .69-.279q.411 0 .69.279a.94.94 0 0 1 .278.69V17.7l1.356-1.356a.86.86 0 0 1 .667-.254.99.99 0 0 1 .69.302.92.92 0 0 1 .266.679q0 .411-.266.678l-3.003 2.979q-.146.145-.315.217a.7.7 0 0 1-.364.049q-.194 0-.363-.06a.86.86 0 0 1-.315-.207l-3.003-3.003a.9.9 0 0 1-.278-.69.95.95 0 0 1 .278-.666.94.94 0 0 1 .691-.29q.399 0 .666.266z" />
   </svg>
 );
 SvgArrowLongDown.displayName = 'SvgArrowLongDown';
