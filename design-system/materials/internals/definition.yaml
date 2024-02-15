@@ -534,6 +534,8 @@ decisionGroupsByTheme:
       decisions:
         border-color-for-button-as-secondary:
           choice: color-primary-85
+        border-color-for-input-when-focused:
+          choice: color-primary-40
 
     backgroundColors:
       label: Background Colors
@@ -568,3 +570,5 @@ decisionGroupsByTheme:
           choice: color-error
         font-color-for-view-switcher-button:
           choice: color-primary
+        font-color-for-input-when-error:
+          choice: color-error-40

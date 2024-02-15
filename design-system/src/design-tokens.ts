@@ -274,6 +274,7 @@ export const themes = {
     colorError85: 'hsl(1, 55%, 74%)',
     colorError95: 'hsl(349, 66%, 92%)',
     borderColorForButtonAsSecondary: 'hsl(244, 100%, 84%)',
+    borderColorForInputWhenFocused: 'hsl(240, 100%, 67%)',
     backgroundColorForButtonWhenActive: 'hsl(243, 100%, 93%)',
     backgroundColorForButtonWhenHovered: 'hsl(244, 100%, 97%)',
     backgroundColorForButtonAsPrimary: 'hsl(240, 64%, 58%)',
@@ -287,6 +288,7 @@ export const themes = {
     fontColorForButtonAsFlatAsCritical: 'hsl(3, 60%, 46%)',
     fontColorForButtonAsFlatAsCriticalWhenHovered: 'hsl(3, 65%, 58%)',
     fontColorForViewSwitcherButton: 'hsl(240, 64%, 58%)',
+    fontColorForInputWhenError: 'hsl(3, 60%, 46%)',
   },
 } as const;
 
