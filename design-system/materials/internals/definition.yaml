@@ -555,6 +555,8 @@ decisionGroupsByTheme:
           choice: color-primary-25
         background-color-for-button-as-primary-as-urgent:
           choice: color-warning-60
+        background-color-for-input-when-selected:
+          choice: color-primary-95
 
     fontColors:
       label: Font Colors

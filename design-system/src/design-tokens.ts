@@ -283,6 +283,7 @@ export const themes = {
       'hsl(240, 100%, 67%)',
     backgroundColorForButtonAsPrimaryAsDefaultWhenActive: 'hsl(240, 46%, 48%)',
     backgroundColorForButtonAsPrimaryAsUrgent: 'hsl(35, 90%, 55%)',
+    backgroundColorForInputWhenSelected: 'hsl(244, 100%, 97%)',
     fontColorForButtonAsSecondary: 'hsl(240, 64%, 58%)',
     fontColorForButtonAsFlatWhenHovered: 'hsl(240, 100%, 67%)',
     fontColorForButtonAsFlatAsCritical: 'hsl(3, 60%, 46%)',
