@@ -23,7 +23,9 @@ export const getTextColor = (props: TGetTextColor): string => {
         ? designTokens.fontColorForButtonAsFlatWhenHovered
         : designTokens.colorPrimary30;
     case 'secondary':
-      return designTokens.colorSolid;
+      return props.isHover
+        ? designTokens.colorPrimary25
+        : designTokens.colorSolid;
     case 'inverted':
       return designTokens.colorSurface;
     case 'critical':
