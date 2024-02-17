@@ -49,12 +49,23 @@ export const formatDefaultTime = (
   timeZone: string
 ) => {
   const today = moment();
-  const [hour, minute] = (time as string)?.toString().split(':');
-  today.set({
-    hour: parseInt(hour, 10),
-    minute: parseInt(minute, 10),
-  });
-  return moment.tz(today, timeZone).locale(locale).format('LT'); // 5:13 PM
+  if (moment(time, 'hh:mm', true).isValid()) {
+    const [hour, minute] = (time as string)?.toString().split(':');
+    today.set({
+      hour: parseInt(hour, 10),
+      minute: parseInt(minute, 10),
+    });
+    return moment.tz(today, timeZone).locale(locale).format('LT'); // 5:13 PM
+  } else {
+    console.warn(
+      `DataTimeInput: the specified defaultDaySelectionTime '${time}' is not supported. The format should be hh:mm, e.g. 11:10. Using 00:00 as default time.`
+    );
+    today.set({
+      hour: 0,
+      minute: 0,
+    });
+    return moment(today).format('LT'); // 12:00 AM
+  }
 };
 
 export const formatTime = (

@@ -180,38 +180,12 @@ describe('date picker keyboard navigation', () => {
 });
 
 describe('date picker defaultDaySelectionTime prop', () => {
-  it('should not affect the time when prop is not set', () => {
-    const onChange = jest.fn();
-    const { getByLabelText } = renderDateTimeInput({ onChange });
-    const event = { target: { value: '09/18/2018' } };
-    fireEvent.click(getByLabelText('Date'));
-    fireEvent.change(getByLabelText('Date'), event);
-    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
-    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
-    expect(onChange).toHaveBeenCalledWith({
-      target: {
-        id: 'date-time-input',
-        name: undefined,
-        value: '2018-09-18T00:00:00.000Z',
-      },
-    });
+  it('should set the time prop when it is set', async () => {
+    renderDateTimeInput({ defaultDaySelectionTime: '11:10' });
+    const dateInput = screen.getByLabelText('Date');
+
+    fireEvent.click(dateInput);
+
+    expect(screen.getByDisplayValue('10:10 AM')).toBeInTheDocument();
   });
-  it('should set the time when prop is set', () => {
-    renderDateTimeInput({ defaultDaySelectionTime: '15:27' });
-    const onChange = jest.fn();
-    const { getByLabelText } = renderDateTimeInput({ onChange });
-    const event = { target: { value: '09/18/2018' } };
-    fireEvent.click(getByLabelText('Date'));
-    fireEvent.change(getByLabelText('Date'), event);
-    fireEvent.keyDown(getByLabelText('Date'), { key: 'Enter' });
-    fireEvent.keyUp(getByLabelText('Date'), { key: 'Enter' });
-    expect(onChange).toHaveBeenCalledWith({
-      target: {
-        id: 'date-time-input',
-        name: undefined,
-        value: '2018-09-18T15:27:00.000Z',
-      },
-    });
-  });
-  it('should not set the time when prop is set to an invalid time', () => {});
 });

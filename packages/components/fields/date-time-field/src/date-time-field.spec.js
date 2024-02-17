@@ -184,3 +184,15 @@ describe('when field is touched and has warnings', () => {
     });
   });
 });
+
+describe('date picker defaultDaySelectionTime prop', () => {
+  it('should set the time prop when it is set', async () => {
+    const { getByLabelText } = renderDateTimeField({
+      defaultDaySelectionTime: '11:10',
+    });
+
+    fireEvent.click(getByLabelText);
+
+    expect(getByLabelText.getByDisplayValue('10:10 AM')).toBeInTheDocument();
+  });
+});

@@ -175,6 +175,10 @@ export type TDateTimeFieldProps = {
    * Might be used to display additional information about the content of the field (E.g verified email)
    */
   badge?: ReactNode;
+  /**
+   * The time that will be used by default when a user selects a calendar day for the first time
+   */
+  defaultDaySelectionTime?: string;
 };
 
 type TDateTimeFieldState = Pick<TDateTimeFieldProps, 'id'>;
@@ -261,6 +265,7 @@ class DateTimeField extends Component<
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
             aria-errormessage={sequentialErrorsId}
+            defaultDaySelectionTime={this.props.defaultDaySelectionTime}
           />
           <FieldErrors
             id={sequentialErrorsId}
