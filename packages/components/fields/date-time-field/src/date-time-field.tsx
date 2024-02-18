@@ -176,7 +176,7 @@ export type TDateTimeFieldProps = {
    */
   badge?: ReactNode;
   /**
-   * The time that will be used by default when a user selects a calendar day for the first time
+   * The time that will be used by default when a user selects a calendar day
    */
   defaultDaySelectionTime?: string;
 };

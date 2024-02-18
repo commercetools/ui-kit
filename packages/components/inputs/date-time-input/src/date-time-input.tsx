@@ -162,7 +162,7 @@ export type TDateTimeInputProps = {
    */
   hasWarning?: boolean;
   /**
-   * The time that will be used by default when a user selects a calendar day for the first time
+   * The time that will be used by default when a user selects a calendar day
    */
   defaultDaySelectionTime?: string;
 } & WrappedComponentProps;
@@ -300,8 +300,7 @@ class DateTimeInput extends Component<
                     startDate: changes.isOpen ? prevState.startDate : null,
                     inputValue: changes.inputValue || prevState.inputValue,
                     timeString: changes.selectedItem
-                      ? this.state.timeString ||
-                        formatTime(
+                      ? formatTime(
                           changes.selectedItem,
                           this.props.intl.locale,
                           this.props.timeZone
@@ -326,6 +325,7 @@ class DateTimeInput extends Component<
                     inputValue: changes.inputValue || prevState.inputValue,
                     startDate: changes.isOpen ? prevState.startDate : null,
                     // set time input value to time from value when menu is opened
+                    // or to the current timeString which equals to defaultDaySelectionTime prop
                     timeString:
                       changes.isOpen && this.props.value !== ''
                         ? formatTime(
