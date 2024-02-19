@@ -354,6 +354,10 @@ componentGroups:
     description: 'Viewswitcher Button elements'
   stamp:
     description: 'Stamp elements'
+  toggle-track:
+    description: 'Toggle track elements'
+  toggle-thumb:
+    description: 'Toggle thumb elements'
 
 decisionGroupsByTheme:
   default:
@@ -405,6 +409,14 @@ decisionGroupsByTheme:
           choice: color-primary-90
         background-color-for-stamp-as-positive:
           choice: color-primary-90
+        background-color-for-toggle-thumb-when-active:
+          choice: color-primary-25
+        background-color-for-toggle-track-when-active:
+          choice: color-primary-40
+        background-color-for-toggle-thumb-when-disabled:
+          choice: color-neutral-60
+        background-color-for-toggle-track-when-disabled:
+          choice: color-neutral-90
 
     borderColors:
       label: Border Colors
@@ -572,6 +584,14 @@ decisionGroupsByTheme:
           choice: color-primary-95
         background-color-for-stamp-as-positive:
           choice: color-success-95
+        background-color-for-toggle-thumb-when-active:
+          choice: color-primary-40
+        background-color-for-toggle-track-when-active:
+          choice: color-primary-85
+        background-color-for-toggle-thumb-when-disabled:
+          choice: color-primary-85
+        background-color-for-toggle-track-when-disabled:
+          choice: color-primary-90
 
     fontColors:
       label: Font Colors

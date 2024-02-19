@@ -140,10 +140,10 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
   /* when checked */
   &:checked {
     + span::before {
-      background: ${designTokens.colorPrimary40};
+      background: ${designTokens.backgroundColorForToggleTrackWhenActive};
     }
     & + span::after {
-      background: ${designTokens.colorPrimary25};
+      background: ${designTokens.backgroundColorForToggleThumbWhenActive};
       transform: translate(${props.thumbSizes[props.size].diameter}, -50%);
     }
   }
@@ -151,11 +151,11 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
   /* when disabled */
   &:disabled {
     & + span::before {
-      background: ${designTokens.colorNeutral90};
+      background: ${designTokens.backgroundColorForToggleTrackWhenDisabled};
       box-shadow: none;
     }
     & + span::after {
-      background: ${designTokens.colorNeutral60};
+      background: ${designTokens.backgroundColorForToggleThumbWhenDisabled};
       box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
     }
   }

@@ -207,6 +207,10 @@ export const themes = {
     backgroundColorForButtonAsPrimaryAsUrgent: '#f16d0e',
     backgroundColorForStampAsPrimary: 'hsl(175, 70%, 90%)',
     backgroundColorForStampAsPositive: 'hsl(175, 70%, 90%)',
+    backgroundColorForToggleThumbWhenActive: 'hsl(175, 55%, 25%)',
+    backgroundColorForToggleTrackWhenActive: 'hsl(175, 55%, 40%)',
+    backgroundColorForToggleThumbWhenDisabled: 'hsl(232, 18%, 60%)',
+    backgroundColorForToggleTrackWhenDisabled: 'hsl(232, 18%, 90%)',
     borderColorForInput: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenFocused: 'hsl(175, 55%, 45%)',
     borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
@@ -290,6 +294,10 @@ export const themes = {
     backgroundColorForInputWhenSelected: 'hsl(244, 100%, 97%)',
     backgroundColorForStampAsPrimary: 'hsl(244, 100%, 97%)',
     backgroundColorForStampAsPositive: 'hsl(141, 76%, 92%)',
+    backgroundColorForToggleThumbWhenActive: 'hsl(240, 100%, 67%)',
+    backgroundColorForToggleTrackWhenActive: 'hsl(244, 100%, 84%)',
+    backgroundColorForToggleThumbWhenDisabled: 'hsl(244, 100%, 84%)',
+    backgroundColorForToggleTrackWhenDisabled: 'hsl(243, 100%, 93%)',
     fontColorForButtonAsSecondary: 'hsl(240, 64%, 58%)',
     fontColorForButtonAsFlatWhenHovered: 'hsl(240, 100%, 67%)',
     fontColorForButtonAsFlatAsCritical: 'hsl(3, 60%, 46%)',
@@ -537,6 +545,14 @@ const designTokens = {
     'var(--background-color-for-stamp-as-primary, hsl(175, 70%, 90%))',
   backgroundColorForStampAsPositive:
     'var(--background-color-for-stamp-as-positive, hsl(175, 70%, 90%))',
+  backgroundColorForToggleThumbWhenActive:
+    'var(--background-color-for-toggle-thumb-when-active, hsl(175, 55%, 25%))',
+  backgroundColorForToggleTrackWhenActive:
+    'var(--background-color-for-toggle-track-when-active, hsl(175, 55%, 40%))',
+  backgroundColorForToggleThumbWhenDisabled:
+    'var(--background-color-for-toggle-thumb-when-disabled, hsl(232, 18%, 60%))',
+  backgroundColorForToggleTrackWhenDisabled:
+    'var(--background-color-for-toggle-track-when-disabled, hsl(232, 18%, 90%))',
   borderColorForInput: 'var(--border-color-for-input, hsl(232, 18%, 80%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, hsl(175, 55%, 45%))',
