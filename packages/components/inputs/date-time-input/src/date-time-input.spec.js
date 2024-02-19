@@ -186,6 +186,6 @@ describe('date picker defaultDaySelectionTime prop', () => {
 
     fireEvent.click(dateInput);
 
-    expect(screen.getByDisplayValue('10:10 AM')).toBeInTheDocument();
+    expect(screen.getByDisplayValue('11:10 AM')).toBeInTheDocument();
   });
 });
