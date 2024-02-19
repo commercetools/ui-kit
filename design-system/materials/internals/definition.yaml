@@ -358,6 +358,10 @@ componentGroups:
     description: 'Toggle track elements'
   toggle-thumb:
     description: 'Toggle thumb elements'
+  loading-spinner-track:
+    description: 'Loading spinner track elements'
+  loading-spinner-dot:
+    description: 'Loading spinner dot elements'
 
 decisionGroupsByTheme:
   default:
@@ -417,6 +421,10 @@ decisionGroupsByTheme:
           choice: color-neutral-60
         background-color-for-toggle-track-when-disabled:
           choice: color-neutral-90
+        background-color-for-loading-spinner-track:
+          choice: color-accent
+        background-color-for-loading-spinner-dot:
+          choice: color-accent
 
     borderColors:
       label: Border Colors
@@ -592,6 +600,10 @@ decisionGroupsByTheme:
           choice: color-primary-85
         background-color-for-toggle-track-when-disabled:
           choice: color-primary-90
+        background-color-for-loading-spinner-track:
+          choice: color-primary-90
+        background-color-for-loading-spinner-dot:
+          choice: color-primary
 
     fontColors:
       label: Font Colors

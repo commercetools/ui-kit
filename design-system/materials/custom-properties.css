@@ -223,6 +223,8 @@
   --background-color-for-toggle-track-when-active: hsl(175, 55%, 40%);
   --background-color-for-toggle-thumb-when-disabled: hsl(232, 18%, 60%);
   --background-color-for-toggle-track-when-disabled: hsl(232, 18%, 90%);
+  --background-color-for-loading-spinner-track: #213c45;
+  --background-color-for-loading-spinner-dot: #213c45;
   --border-color-for-input: hsl(232, 18%, 80%);
   --border-color-for-input-when-focused: hsl(175, 55%, 45%);
   --border-color-for-input-when-disabled: hsl(232, 18%, 80%);
