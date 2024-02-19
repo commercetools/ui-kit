@@ -213,6 +213,7 @@ export const themes = {
     backgroundColorForToggleTrackWhenDisabled: 'hsl(232, 18%, 90%)',
     backgroundColorForLoadingSpinnerTrack: '#213c45',
     backgroundColorForLoadingSpinnerDot: '#213c45',
+    backgroundColorForContentNotificationWhenSuccess: 'hsl(175, 90%, 95%)',
     borderColorForInput: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenFocused: 'hsl(175, 55%, 45%)',
     borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
@@ -222,6 +223,7 @@ export const themes = {
     borderColorForInputWhenHovered: 'hsl(232, 18%, 80%)',
     borderColorForInputAsQuiet: 'transparent',
     borderColorForButtonAsSecondary: 'hsl(232, 18%, 80%)',
+    borderColorForContentNotificationWhenSuccess: 'hsl(175, 70%, 85%)',
     borderRadiusForButtonAsBig: '4px',
     borderRadiusForButtonAsMedium: '4px',
     borderRadiusForInput: '4px',
@@ -241,6 +243,7 @@ export const themes = {
       'hsl(339.1304347826087, 100%, 25%)',
     fontColorForViewSwitcherButton: 'hsl(232, 18%, 40%)',
     fontColorForStampAsPositive: 'hsl(175, 55%, 25%)',
+    fontColorForContentNotificationWhenSuccess: 'hsl(175, 55%, 45%)',
     heightForButtonAsBig: '40px',
     heightForButtonAsMedium: '32px',
     heightForButtonAsSmall: '16px',
@@ -285,6 +288,7 @@ export const themes = {
     colorError95: 'hsl(349, 66%, 92%)',
     borderColorForButtonAsSecondary: 'hsl(244, 100%, 84%)',
     borderColorForInputWhenFocused: 'hsl(240, 100%, 67%)',
+    borderColorForContentNotificationWhenSuccess: 'hsl(144, 69%, 80%)',
     backgroundColorForButtonWhenActive: 'hsl(243, 100%, 93%)',
     backgroundColorForButtonWhenHovered: 'hsl(244, 100%, 97%)',
     backgroundColorForButtonAsPrimary: 'hsl(240, 64%, 58%)',
@@ -302,6 +306,7 @@ export const themes = {
     backgroundColorForToggleTrackWhenDisabled: 'hsl(243, 100%, 93%)',
     backgroundColorForLoadingSpinnerTrack: 'hsl(243, 100%, 93%)',
     backgroundColorForLoadingSpinnerDot: 'hsl(240, 64%, 58%)',
+    backgroundColorForContentNotificationWhenSuccess: 'hsl(141, 76%, 92%)',
     fontColorForButtonAsSecondary: 'hsl(240, 64%, 58%)',
     fontColorForButtonAsFlatWhenHovered: 'hsl(240, 100%, 67%)',
     fontColorForButtonAsFlatAsCritical: 'hsl(3, 60%, 46%)',
@@ -309,6 +314,7 @@ export const themes = {
     fontColorForViewSwitcherButton: 'hsl(240, 64%, 58%)',
     fontColorForInputWhenError: 'hsl(3, 60%, 46%)',
     fontColorForStampAsPositive: 'hsl(155, 90%, 24%)',
+    fontColorForContentNotificationWhenSuccess: 'hsl(152, 77%, 39%)',
   },
 } as const;
 
@@ -561,6 +567,8 @@ const designTokens = {
     'var(--background-color-for-loading-spinner-track, #213c45)',
   backgroundColorForLoadingSpinnerDot:
     'var(--background-color-for-loading-spinner-dot, #213c45)',
+  backgroundColorForContentNotificationWhenSuccess:
+    'var(--background-color-for-content-notification-when-success, hsl(175, 90%, 95%))',
   borderColorForInput: 'var(--border-color-for-input, hsl(232, 18%, 80%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, hsl(175, 55%, 45%))',
@@ -578,6 +586,8 @@ const designTokens = {
     'var(--border-color-for-input-as-quiet, transparent)',
   borderColorForButtonAsSecondary:
     'var(--border-color-for-button-as-secondary, hsl(232, 18%, 80%))',
+  borderColorForContentNotificationWhenSuccess:
+    'var(--border-color-for-content-notification-when-success, hsl(175, 70%, 85%))',
   borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 4px)',
   borderRadiusForButtonAsMedium:
     'var(--border-radius-for-button-as-medium, 4px)',
@@ -608,6 +618,8 @@ const designTokens = {
     'var(--font-color-for-view-switcher-button, hsl(232, 18%, 40%))',
   fontColorForStampAsPositive:
     'var(--font-color-for-stamp-as-positive, hsl(175, 55%, 25%))',
+  fontColorForContentNotificationWhenSuccess:
+    'var(--font-color-for-content-notification-when-success, hsl(175, 55%, 45%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',

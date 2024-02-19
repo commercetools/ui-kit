@@ -362,6 +362,8 @@ componentGroups:
     description: 'Loading spinner track elements'
   loading-spinner-dot:
     description: 'Loading spinner dot elements'
+  content-notification:
+    description: 'Content notification elements'
 
 decisionGroupsByTheme:
   default:
@@ -425,6 +427,8 @@ decisionGroupsByTheme:
           choice: color-accent
         background-color-for-loading-spinner-dot:
           choice: color-accent
+        background-color-for-content-notification-when-success:
+          choice: color-primary-95
 
     borderColors:
       label: Border Colors
@@ -448,6 +452,8 @@ decisionGroupsByTheme:
           choice: color-transparent
         border-color-for-button-as-secondary:
           choice: color-neutral
+        border-color-for-content-notification-when-success:
+          choice: color-primary-85
 
     borderRadiuses:
       label: Border Radius
@@ -499,6 +505,8 @@ decisionGroupsByTheme:
           choice: color-neutral-40
         font-color-for-stamp-as-positive:
           choice: color-primary-25
+        font-color-for-content-notification-when-success:
+          choice: color-primary
 
     heights:
       label: Height
@@ -567,6 +575,8 @@ decisionGroupsByTheme:
           choice: color-primary-85
         border-color-for-input-when-focused:
           choice: color-primary-40
+        border-color-for-content-notification-when-success:
+          choice: color-success-85
 
     backgroundColors:
       label: Background Colors
@@ -604,6 +614,8 @@ decisionGroupsByTheme:
           choice: color-primary-90
         background-color-for-loading-spinner-dot:
           choice: color-primary
+        background-color-for-content-notification-when-success:
+          choice: color-success-95
 
     fontColors:
       label: Font Colors
@@ -623,3 +635,5 @@ decisionGroupsByTheme:
           choice: color-error-40
         font-color-for-stamp-as-positive:
           choice: color-success-40
+        font-color-for-content-notification-when-success:
+          choice: color-success
