@@ -44,13 +44,13 @@ export const getPreviousDay = (day: MomentInput) =>
   moment(day).subtract(1, 'day').format('YYYY-MM-DD');
 
 export const formatDefaultTime = (
-  time: MomentInput,
+  time: string,
   locale: LocaleSpecifier,
   timeZone: string
 ) => {
   const today = moment();
   if (moment(time, 'hh:mm', true).isValid()) {
-    const [hour, minute] = (time as string)?.toString().split(':');
+    const [hour, minute] = time.split(':');
     today.set({
       hour: parseInt(hour, 10),
       minute: parseInt(minute, 10),
