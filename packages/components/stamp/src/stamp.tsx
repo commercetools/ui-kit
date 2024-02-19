@@ -1,6 +1,10 @@
 import { cloneElement, type ReactElement, type ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
+import {
+  designTokens,
+  useTheme,
+  type TUseThemeResult,
+} from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { useWarnDeprecatedProp } from '@commercetools-uikit/utils';
@@ -48,7 +52,9 @@ type ToneRelatedProps = {
 
 type StylesFunctionParams = TStampProps & { overrideTextColor?: boolean };
 
-const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
+const tonesPropsMap = (
+  themedValue: TUseThemeResult['themedValue']
+): Record<TTone, ToneRelatedProps> => ({
   critical: {
     styles: {
       backgroundColor: designTokens.colorError95,
@@ -71,7 +77,7 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
       borderColor: designTokens.colorPrimary85,
       color: designTokens.fontColorForStampAsPositive,
     },
-    iconColor: 'primary',
+    iconColor: themedValue('primary', 'success'),
   },
   information: {
     styles: {
@@ -97,7 +103,7 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
     },
     iconColor: 'neutral60',
   },
-};
+});
 
 export const availableTones: TTone[] = [
   'critical',
@@ -119,22 +125,26 @@ const getPaddingStyle = (props: StylesFunctionParams) => {
 
 const getIconColor = (
   props: StylesFunctionParams,
-  overrideTextColor: boolean
+  overrideTextColor: boolean,
+  themedValue: TUseThemeResult['themedValue']
 ) => {
   if (!overrideTextColor) {
     return 'inherit';
   }
 
-  const toneProps = props.tone && tonesPropsMap[props.tone];
+  const toneProps = props.tone && tonesPropsMap(themedValue)[props.tone];
   return toneProps ? toneProps.iconColor : '';
 };
 
-const getToneStyles = (props: StylesFunctionParams) => {
-  if (!props.tone || !tonesPropsMap[props.tone]) {
+const getToneStyles = (
+  props: StylesFunctionParams,
+  themedValue: TUseThemeResult['themedValue']
+) => {
+  if (!props.tone || !tonesPropsMap(themedValue)[props.tone]) {
     return css``;
   }
 
-  const toneProps = tonesPropsMap[props.tone];
+  const toneProps = tonesPropsMap(themedValue)[props.tone];
   return css`
     background-color: ${toneProps.styles.backgroundColor};
 
@@ -156,11 +166,12 @@ const getStampStyles = (props: StylesFunctionParams) => {
 };
 
 const Stamp = (props: TStampProps) => {
+  const { themedValue } = useTheme();
   const Icon =
     props.icon &&
     cloneElement(props.icon, {
       size: 'medium',
-      color: getIconColor(props, true),
+      color: getIconColor(props, true, themedValue),
     });
 
   useWarnDeprecatedProp(
@@ -185,7 +196,7 @@ const Stamp = (props: TStampProps) => {
     <div
       css={[
         getStampStyles({ ...props, overrideTextColor: true }),
-        getToneStyles({ ...props, overrideTextColor: true }),
+        getToneStyles({ ...props, overrideTextColor: true }, themedValue),
         getPaddingStyle(props),
       ]}
     >
