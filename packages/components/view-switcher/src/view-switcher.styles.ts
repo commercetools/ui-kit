@@ -21,7 +21,6 @@ const getSizeStyles = (
 const getFontColor = (isDisabled?: boolean, isActive?: boolean) => {
   if (isDisabled) return designTokens.colorNeutral60;
   if (isActive) return designTokens.fontColorForButtonAsSecondary;
-  // TODO: ask Filip
   return designTokens.fontColorForViewSwitcherButton;
 };
 
