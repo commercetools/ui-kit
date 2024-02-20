@@ -49,7 +49,7 @@ export const formatDefaultTime = (
   timeZone: string
 ) => {
   const today = moment();
-  if (moment(time, 'hh:mm', true).isValid()) {
+  if (moment(time, 'HH:mm', true).isValid()) {
     const [hour, minute] = time.split(':');
     today.set({
       hour: parseInt(hour, 10),
