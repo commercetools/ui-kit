@@ -83,6 +83,10 @@
   --color-surface: #fff;
   --color-transparent: transparent;
   --color-success: hsl(152, 77%, 39%);
+  --color-success-25: hsl(155, 84%, 20%);
+  --color-success-40: hsl(155, 90%, 24%);
+  --color-success-85: hsl(144, 69%, 80%);
+  --color-success-95: hsl(141, 76%, 92%);
   --border-radius-1: 1px;
   --border-radius-2: 2px;
   --border-radius-4: 4px;
