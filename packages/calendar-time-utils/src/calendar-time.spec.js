@@ -1,4 +1,7 @@
-import { getLocalizedDateTimeFormatPattern } from './calendar-time';
+import {
+  getLocalizedDateTimeFormatPattern,
+  formatDefaultTime,
+} from './calendar-time';
 
 describe('getLocalizedDateTimeFormatPattern', () => {
   const DATE_LOCALIZED_FORMATS = {
@@ -77,5 +80,20 @@ describe('getLocalizedDateTimeFormatPattern', () => {
         "CalendarTime.getLocalizedDateTimeFormatPattern: Unknown format type 'unknownFormatType'"
       );
     });
+  });
+});
+
+describe('formatDefaultTime', () => {
+  it('should format the time', () => {
+    expect(formatDefaultTime('09:00', 'en')).toBe('9:00 AM');
+    expect(formatDefaultTime('13:00', 'en')).toBe('1:00 PM');
+  });
+
+  it('should return 12:00 AM for incorrect time format', () => {
+    console.warn = jest.fn();
+    expect(formatDefaultTime('1221', 'en')).toBe('12:00 AM');
+    expect(console.warn).toHaveBeenCalledWith(
+      "DataTimeInput: the specified defaultDaySelectionTime '1221' is not supported. The format should be hh:mm, e.g. 11:10. Using 00:00 as default time."
+    );
   });
 });

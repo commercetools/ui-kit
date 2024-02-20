@@ -194,8 +194,7 @@ class DateTimeInput extends Component<
     timeString: this.props.defaultDaySelectionTime
       ? formatDefaultTime(
           this.props.defaultDaySelectionTime,
-          this.props.intl.locale,
-          this.props.timeZone
+          this.props.intl.locale
         )
       : '',
   };

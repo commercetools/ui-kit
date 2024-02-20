@@ -43,11 +43,7 @@ export const changeTime = (
 export const getPreviousDay = (day: MomentInput) =>
   moment(day).subtract(1, 'day').format('YYYY-MM-DD');
 
-export const formatDefaultTime = (
-  time: string,
-  locale: LocaleSpecifier,
-  timeZone: string
-) => {
+export const formatDefaultTime = (time: string, locale: LocaleSpecifier) => {
   const today = moment();
   if (moment(time, 'HH:mm', true).isValid()) {
     const [hour, minute] = time.split(':');
@@ -55,7 +51,7 @@ export const formatDefaultTime = (
       hour: parseInt(hour, 10),
       minute: parseInt(minute, 10),
     });
-    return moment.tz(today, timeZone).locale(locale).format('LT'); // 5:13 PM
+    return moment(today).locale(locale).format('LT'); // 5:13 PM
   } else {
     console.warn(
       `DataTimeInput: the specified defaultDaySelectionTime '${time}' is not supported. The format should be hh:mm, e.g. 11:10. Using 00:00 as default time.`
