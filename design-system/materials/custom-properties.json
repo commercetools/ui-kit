@@ -1,5 +1,6 @@
 {
   "--color-primary": "hsl(175, 55%, 45%)",
+  "--color-primary-10": "hsl(240, 66%, 19%)",
   "--color-primary-20": "hsl(175, 55%, 20%)",
   "--color-primary-25": "hsl(175, 55%, 25%)",
   "--color-primary-30": "hsl(175, 55%, 30%)",
@@ -62,6 +63,7 @@
   "--color-warning": "#f16d0e",
   "--color-warning-25": "hsl(25.110132158590307, 89.0196078431%, 25%)",
   "--color-warning-40": "hsl(25.110132158590307, 89.0196078431%, 40%)",
+  "--color-warning-60": "hsl(35, 90%, 55%)",
   "--color-warning-85": "hsl(25.110132158590307, 89.0196078431%, 85%)",
   "--color-warning-95": "hsl(25.110132158590307, 89.0196078431%, 95%)",
   "--color-error": "#e60050",

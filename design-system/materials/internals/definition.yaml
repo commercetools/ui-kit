@@ -37,6 +37,7 @@ choiceGroupsByTheme:
       description: All colors in the system
       choices:
         color-primary: 'hsl(175, 55%, 45%)'
+        color-primary-10: 'hsl(240, 66%, 19%)' # design token copied from recolouring theme for export
         color-primary-20: 'hsl(175, 55%, 20%)'
         color-primary-25: 'hsl(175, 55%, 25%)'
         color-primary-30: 'hsl(175, 55%, 30%)'
@@ -99,6 +100,7 @@ choiceGroupsByTheme:
         color-warning: '#f16d0e'
         color-warning-25: 'hsl(25.110132158590307, 89.0196078431%, 25%)'
         color-warning-40: 'hsl(25.110132158590307, 89.0196078431%, 40%)'
+        color-warning-60: 'hsl(35, 90%, 55%)' # design token copied from recolouring theme for export
         color-warning-85: 'hsl(25.110132158590307, 89.0196078431%, 85%)'
         color-warning-95: 'hsl(25.110132158590307, 89.0196078431%, 95%)'
         color-error: '#e60050'
@@ -112,11 +114,11 @@ choiceGroupsByTheme:
         color-solid-10: 'hsl(0deg 0% 10% / 10%)'
         color-surface: '#fff'
         color-transparent: 'transparent'
-        color-success: 'hsl(152, 77%, 39%)'
-        color-success-25: 'hsl(155, 84%, 20%)'
-        color-success-40: 'hsl(155, 90%, 24%)'
-        color-success-85: 'hsl(144, 69%, 80%)'
-        color-success-95: 'hsl(141, 76%, 92%)'
+        color-success: 'hsl(152, 77%, 39%)' # design token copied from recolouring theme for export
+        color-success-25: 'hsl(155, 84%, 20%)' # design token copied from recolouring theme for export
+        color-success-40: 'hsl(155, 90%, 24%)' # design token copied from recolouring theme for export
+        color-success-85: 'hsl(144, 69%, 80%)' # design token copied from recolouring theme for export
+        color-success-95: 'hsl(141, 76%, 92%)' # design token copied from recolouring theme for export
 
     borderRadiuses:
       label: Border Radiuses

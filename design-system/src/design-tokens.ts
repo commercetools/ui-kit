@@ -6,6 +6,7 @@
 export const themes = {
   default: {
     colorPrimary: 'hsl(175, 55%, 45%)',
+    colorPrimary10: 'hsl(240, 66%, 19%)',
     colorPrimary20: 'hsl(175, 55%, 20%)',
     colorPrimary25: 'hsl(175, 55%, 25%)',
     colorPrimary30: 'hsl(175, 55%, 30%)',
@@ -68,6 +69,7 @@ export const themes = {
     colorWarning: '#f16d0e',
     colorWarning25: 'hsl(25.110132158590307, 89.0196078431%, 25%)',
     colorWarning40: 'hsl(25.110132158590307, 89.0196078431%, 40%)',
+    colorWarning60: 'hsl(35, 90%, 55%)',
     colorWarning85: 'hsl(25.110132158590307, 89.0196078431%, 85%)',
     colorWarning95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     colorError: '#e60050',
@@ -324,6 +326,7 @@ export const themes = {
 
 const designTokens = {
   colorPrimary: 'var(--color-primary, hsl(175, 55%, 45%))',
+  colorPrimary10: 'var(--color-primary-10, hsl(240, 66%, 19%))',
   colorPrimary20: 'var(--color-primary-20, hsl(175, 55%, 20%))',
   colorPrimary25: 'var(--color-primary-25, hsl(175, 55%, 25%))',
   colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 30%))',
@@ -391,6 +394,7 @@ const designTokens = {
     'var(--color-warning-25, hsl(25.110132158590307, 89.0196078431%, 25%))',
   colorWarning40:
     'var(--color-warning-40, hsl(25.110132158590307, 89.0196078431%, 40%))',
+  colorWarning60: 'var(--color-warning-60, hsl(35, 90%, 55%))',
   colorWarning85:
     'var(--color-warning-85, hsl(25.110132158590307, 89.0196078431%, 85%))',
   colorWarning95:
