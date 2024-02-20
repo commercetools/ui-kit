@@ -328,6 +328,7 @@ variants:
     description: 'To differentiate component big size'
   quiet:
     description: 'When the element is quiet style'
+  # recolouring rollout
   secondary:
     description: 'To differentiate component secondary type'
   primary:
@@ -350,6 +351,7 @@ componentGroups:
     description: 'Input elements'
   localized-input-label:
     description: 'Localized multiline text input label elements'
+  # recolouring rollout
   view-switcher-button:
     description: 'Viewswitcher Button elements'
   stamp:
@@ -401,6 +403,7 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-localized-input-label-when-disabled:
           choice: color-neutral-95
+        # recolouring rollout
         background-color-for-button-as-primary:
           choice: '#15a390'
         background-color-for-button-as-primary-when-hovered:
@@ -450,6 +453,7 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-input-as-quiet:
           choice: color-transparent
+        # recolouring rollout
         border-color-for-button-as-secondary:
           choice: color-neutral
         border-color-for-content-notification-when-success:
@@ -493,6 +497,7 @@ decisionGroupsByTheme:
           choice: color-neutral-40
         font-color-for-input-when-warning:
           choice: color-warning
+        # recolouring rollout
         font-color-for-button-as-secondary:
           choice: color-solid
         font-color-for-button-as-flat-when-hovered:
