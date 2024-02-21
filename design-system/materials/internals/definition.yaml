@@ -37,6 +37,7 @@ choiceGroupsByTheme:
       description: All colors in the system
       choices:
         color-primary: 'hsl(175, 55%, 45%)'
+        color-primary-10: 'hsl(240, 66%, 19%)' # design token copied from recolouring theme for export
         color-primary-20: 'hsl(175, 55%, 20%)'
         color-primary-25: 'hsl(175, 55%, 25%)'
         color-primary-30: 'hsl(175, 55%, 30%)'
@@ -99,6 +100,7 @@ choiceGroupsByTheme:
         color-warning: '#f16d0e'
         color-warning-25: 'hsl(25.110132158590307, 89.0196078431%, 25%)'
         color-warning-40: 'hsl(25.110132158590307, 89.0196078431%, 40%)'
+        color-warning-60: 'hsl(35, 90%, 55%)' # design token copied from recolouring theme for export
         color-warning-85: 'hsl(25.110132158590307, 89.0196078431%, 85%)'
         color-warning-95: 'hsl(25.110132158590307, 89.0196078431%, 95%)'
         color-error: '#e60050'
@@ -112,6 +114,11 @@ choiceGroupsByTheme:
         color-solid-10: 'hsl(0deg 0% 10% / 10%)'
         color-surface: '#fff'
         color-transparent: 'transparent'
+        color-success: 'hsl(152, 77%, 39%)' # design token copied from recolouring theme for export
+        color-success-25: 'hsl(155, 84%, 20%)' # design token copied from recolouring theme for export
+        color-success-40: 'hsl(155, 90%, 24%)' # design token copied from recolouring theme for export
+        color-success-85: 'hsl(144, 69%, 80%)' # design token copied from recolouring theme for export
+        color-success-95: 'hsl(141, 76%, 92%)' # design token copied from recolouring theme for export
 
     borderRadiuses:
       label: Border Radiuses
@@ -327,6 +334,21 @@ variants:
     description: 'To differentiate component big size'
   quiet:
     description: 'When the element is quiet style'
+  # recolouring rollout
+  secondary:
+    description: 'To differentiate component secondary type'
+  primary:
+    description: 'To differentiate component primary type'
+  flat:
+    description: 'To differentiate component flat type'
+  default:
+    description: 'To differentiate component default type'
+  critical:
+    description: 'To differentiate component critical type'
+  urgent:
+    description: 'To differentiate component urgent type'
+  positive:
+    description: 'To differentiate component positive type'
 
 componentGroups:
   button:
@@ -335,6 +357,21 @@ componentGroups:
     description: 'Input elements'
   localized-input-label:
     description: 'Localized multiline text input label elements'
+  # recolouring rollout
+  view-switcher-button:
+    description: 'Viewswitcher Button elements'
+  stamp:
+    description: 'Stamp elements'
+  toggle-track:
+    description: 'Toggle track elements'
+  toggle-thumb:
+    description: 'Toggle thumb elements'
+  loading-spinner-track:
+    description: 'Loading spinner track elements'
+  loading-spinner-dot:
+    description: 'Loading spinner dot elements'
+  content-notification:
+    description: 'Content notification elements'
 
 decisionGroupsByTheme:
   default:
@@ -372,6 +409,35 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-localized-input-label-when-disabled:
           choice: color-neutral-95
+        # recolouring rollout
+        background-color-for-button-as-primary:
+          choice: '#15a390'
+        background-color-for-button-as-primary-when-hovered:
+          choice: color-primary
+        background-color-for-button-as-primary-as-default-when-hovered:
+          choice: '#17ab97'
+        background-color-for-button-as-primary-as-default-when-active:
+          choice: '#15a390'
+        background-color-for-button-as-primary-as-urgent:
+          choice: color-warning
+        background-color-for-stamp-as-primary:
+          choice: color-primary-90
+        background-color-for-stamp-as-positive:
+          choice: color-primary-90
+        background-color-for-toggle-thumb-when-active:
+          choice: color-primary-25
+        background-color-for-toggle-track-when-active:
+          choice: color-primary-40
+        background-color-for-toggle-thumb-when-disabled:
+          choice: color-neutral-60
+        background-color-for-toggle-track-when-disabled:
+          choice: color-neutral-90
+        background-color-for-loading-spinner-track:
+          choice: color-accent
+        background-color-for-loading-spinner-dot:
+          choice: color-accent
+        background-color-for-content-notification-when-success:
+          choice: color-primary-95
 
     borderColors:
       label: Border Colors
@@ -393,6 +459,11 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-input-as-quiet:
           choice: color-transparent
+        # recolouring rollout
+        border-color-for-button-as-secondary:
+          choice: color-neutral
+        border-color-for-content-notification-when-success:
+          choice: color-primary-85
 
     borderRadiuses:
       label: Border Radius
@@ -432,6 +503,21 @@ decisionGroupsByTheme:
           choice: color-neutral-40
         font-color-for-input-when-warning:
           choice: color-warning
+        # recolouring rollout
+        font-color-for-button-as-secondary:
+          choice: color-solid
+        font-color-for-button-as-flat-when-hovered:
+          choice: color-primary
+        font-color-for-button-as-flat-as-critical:
+          choice: color-error
+        font-color-for-button-as-flat-as-critical-when-hovered:
+          choice: color-error-25
+        font-color-for-view-switcher-button:
+          choice: color-neutral-40
+        font-color-for-stamp-as-positive:
+          choice: color-primary-25
+        font-color-for-content-notification-when-success:
+          choice: color-primary
 
     heights:
       label: Height
@@ -490,3 +576,75 @@ decisionGroupsByTheme:
           choice: 'inset 0 0 0 1px var(--color-error)'
         shadow-for-input-when-warning:
           choice: 'inset 0 0 0 1px var(--color-warning)'
+
+  recolouring:
+    borderColors:
+      label: Border Colors
+      prefix: border-color
+      decisions:
+        border-color-for-button-as-secondary:
+          choice: color-primary-85
+        border-color-for-input-when-focused:
+          choice: color-primary-40
+        border-color-for-content-notification-when-success:
+          choice: color-success-85
+
+    backgroundColors:
+      label: Background Colors
+      prefix: background-color
+      decisions:
+        background-color-for-button-when-active:
+          choice: color-primary-90
+        background-color-for-button-when-hovered:
+          choice: color-primary-95
+        background-color-for-button-as-primary:
+          choice: color-primary
+        background-color-for-button-as-primary-when-hovered:
+          choice: color-primary-40
+        background-color-for-button-as-primary-as-default-when-hovered:
+          choice: color-primary-40
+        background-color-for-button-as-primary-as-default-when-active:
+          choice: color-primary-25
+        background-color-for-button-as-primary-as-urgent:
+          choice: color-warning-60
+        background-color-for-input-when-selected:
+          choice: color-primary-95
+        background-color-for-stamp-as-primary:
+          choice: color-primary-95
+        background-color-for-stamp-as-positive:
+          choice: color-success-95
+        background-color-for-toggle-thumb-when-active:
+          choice: color-primary-40
+        background-color-for-toggle-track-when-active:
+          choice: color-primary-85
+        background-color-for-toggle-thumb-when-disabled:
+          choice: color-primary-85
+        background-color-for-toggle-track-when-disabled:
+          choice: color-primary-90
+        background-color-for-loading-spinner-track:
+          choice: color-primary-90
+        background-color-for-loading-spinner-dot:
+          choice: color-primary
+        background-color-for-content-notification-when-success:
+          choice: color-success-95
+
+    fontColors:
+      label: Font Colors
+      prefix: font-color
+      decisions:
+        font-color-for-button-as-secondary:
+          choice: color-primary
+        font-color-for-button-as-flat-when-hovered:
+          choice: color-primary-40
+        font-color-for-button-as-flat-as-critical:
+          choice: color-error-40
+        font-color-for-button-as-flat-as-critical-when-hovered:
+          choice: color-error
+        font-color-for-view-switcher-button:
+          choice: color-primary
+        font-color-for-input-when-error:
+          choice: color-error-40
+        font-color-for-stamp-as-positive:
+          choice: color-success-40
+        font-color-for-content-notification-when-success:
+          choice: color-success

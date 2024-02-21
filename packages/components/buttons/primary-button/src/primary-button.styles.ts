@@ -71,10 +71,10 @@ const getButtonStyles = (
         return [
           baseActiveStyles,
           css`
-            background-color: #15a390;
+            background-color: ${designTokens.backgroundColorForButtonAsPrimary};
             &:focus,
             &:hover {
-              background-color: #17ab97;
+              background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsDefaultWhenHovered};
             }
           `,
         ];
@@ -134,10 +134,10 @@ const getButtonStyles = (
           background-color: ${designTokens.colorPrimary};
           &:focus,
           &:hover {
-            background-color: #17ab97;
+            background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsDefaultWhenHovered};
           }
           &:active {
-            background-color: #15a390;
+            background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsDefaultWhenActive};
           }
         `,
       ];
@@ -148,7 +148,7 @@ const getButtonStyles = (
       return [
         baseDefaultStyles,
         css`
-          background-color: ${designTokens.colorWarning};
+          background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsUrgent};
           &:focus,
           &:hover {
             background-color: #e7680d;

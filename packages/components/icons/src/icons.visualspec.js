@@ -13,6 +13,7 @@ const colors = [
   'primary40',
   'warning',
   'error',
+  'success',
 ];
 
 describe('Icons', () => {

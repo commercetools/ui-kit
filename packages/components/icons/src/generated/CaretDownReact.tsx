@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -124,7 +128,7 @@ const SvgCaretDown = (props: SVGProps) => (
   >
     <path
       fillRule="evenodd"
-      d="M20.666 7.405a1.052 1.052 0 0 0-.791-.353H4.125c-.305 0-.568.117-.791.353A1.18 1.18 0 0 0 3 8.243c0 .323.111.602.334.838l7.875 8.34c.223.236.486.354.791.354.305 0 .568-.118.791-.354l7.875-8.34A1.18 1.18 0 0 0 21 8.243c0-.322-.112-.602-.334-.838Z"
+      d="M20.666 7.405a1.05 1.05 0 0 0-.791-.353H4.125q-.457 0-.791.353A1.18 1.18 0 0 0 3 8.243q0 .484.334.838l7.875 8.34q.334.354.791.354t.791-.354l7.875-8.34A1.18 1.18 0 0 0 21 8.243q0-.483-.334-.838"
     />
   </svg>
 );

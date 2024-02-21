@@ -91,7 +91,7 @@ const getTextColorValue = (tone: TLinkProps['tone'] = 'primary') => {
 
 const getActiveColorValue = (tone: string = 'primary') => {
   if (tone === 'primary' || tone === 'secondary') {
-    return designTokens.colorPrimary;
+    return designTokens.fontColorForButtonAsFlatWhenHovered;
   }
 
   return designTokens.colorSurface;

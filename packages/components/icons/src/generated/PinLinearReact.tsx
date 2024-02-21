@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgPinLinear = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="m16 11.1 1.8 1.8v1.8h-4.5v5.4l-.9.9-.9-.9v-5.4H7v-1.8l1.8-1.8V4.8h-.9V3h9v1.8H16v6.3Zm-6.435 1.8h5.67L14.2 11.865V4.8h-3.6v7.065L9.565 12.9Z" />
+    <path d="m16 11.1 1.8 1.8v1.8h-4.5v5.4l-.9.9-.9-.9v-5.4H7v-1.8l1.8-1.8V4.8h-.9V3h9v1.8H16zm-6.435 1.8h5.67L14.2 11.865V4.8h-3.6v7.065z" />
   </svg>
 );
 SvgPinLinear.displayName = 'SvgPinLinear';

@@ -73,6 +73,7 @@ const colorValues = [
   'primary40',
   'warning',
   'error',
+  'success',
 ];
 
 const sizeValues = ['small', 'medium', 'big', 'scale'];
@@ -254,6 +255,7 @@ storiesOf('Components|Icons', module)
                       'primary40',
                       'warning',
                       'error',
+                      'success',
                     ],
                     'solid'
                   )}

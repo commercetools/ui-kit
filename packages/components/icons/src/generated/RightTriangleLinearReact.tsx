@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgRightTriangleLinear = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="M5.425 19.575h14.15V5.425l-14.15 14.15ZM3.715 21c-.317 0-.534-.146-.653-.44-.119-.292-.067-.55.154-.77L19.79 3.215c.222-.221.479-.273.772-.154.293.119.439.336.439.653v16.573a.692.692 0 0 1-.712.712H3.715Z" />
+    <path d="M5.425 19.575h14.15V5.425zM3.715 21q-.475 0-.653-.44-.178-.439.154-.77L19.79 3.215q.333-.332.772-.154.44.178.439.653v16.573a.69.69 0 0 1-.712.712z" />
   </svg>
 );
 SvgRightTriangleLinear.displayName = 'SvgRightTriangleLinear';

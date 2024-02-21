@@ -47,7 +47,7 @@ const getTone = (tone: string) => {
     case 'primary':
       return `color: ${designTokens.colorPrimary30};`;
     case 'negative':
-      return `color: ${designTokens.colorError};`;
+      return `color: ${designTokens.fontColorForInputWhenError};`;
     case 'inverted':
       return `color: ${designTokens.colorSurface};`;
     case 'warning':

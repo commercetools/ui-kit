@@ -123,6 +123,7 @@ export { default as TreeStructureIcon } from './TreeStructureReact';
 export { default as TruckIcon } from './TruckReact';
 export { default as UserFilledIcon } from './UserFilledReact';
 export { default as UserLinearIcon } from './UserLinearReact';
+export { default as UsersIcon } from './UsersReact';
 export { default as VerifiedIcon } from './VerifiedReact';
 export { default as ViewGridPlusIcon } from './ViewGridPlusReact';
 export { default as WarningIcon } from './WarningReact';
