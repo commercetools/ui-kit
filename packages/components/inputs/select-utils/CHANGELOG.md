@@ -1,5 +1,17 @@
 # @commercetools-uikit/select-utils
 
+## 18.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`a414fb5`](https://github.com/commercetools/ui-kit/commit/a414fb5d2d63edc988ad1c8ccc32e2ce2d646fa3), [`5518760`](https://github.com/commercetools/ui-kit/commit/5518760cc2ba912312386aa370ec2b5c281c5377)]:
+  - @commercetools-uikit/icons@18.2.0
+  - @commercetools-uikit/text@18.2.0
+  - @commercetools-uikit/design-system@18.2.0
+  - @commercetools-uikit/accessible-button@18.2.0
+  - @commercetools-uikit/spacings@18.2.0
+  - @commercetools-uikit/utils@18.2.0
+
 ## 18.1.0
 
 ### Patch Changes
