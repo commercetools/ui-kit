@@ -180,7 +180,7 @@ describe('date picker keyboard navigation', () => {
 });
 
 describe('date picker defaultDaySelectionTime prop', () => {
-  it('should set the time prop when it is set', async () => {
+  it('should set the time prop when it is set', () => {
     renderDateTimeInput({ defaultDaySelectionTime: '11:10' });
     const dateInput = screen.getByLabelText('Date');
 
