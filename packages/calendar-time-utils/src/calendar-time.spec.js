@@ -87,6 +87,7 @@ describe('formatDefaultTime', () => {
   it('should format the time', () => {
     expect(formatDefaultTime('09:00', 'en')).toBe('9:00 AM');
     expect(formatDefaultTime('13:00', 'en')).toBe('1:00 PM');
+    expect(formatDefaultTime('13:00', 'es')).toBe('13:00');
   });
 
   it('should return 12:00 AM for incorrect time format', () => {
