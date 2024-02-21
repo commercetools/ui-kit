@@ -13,7 +13,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & { className: string };
@@ -81,6 +82,9 @@ const getColor = (color: Props['color']) => {
       break;
     case 'error':
       iconColor = designTokens.colorError;
+      break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
       break;
     default:
       break;

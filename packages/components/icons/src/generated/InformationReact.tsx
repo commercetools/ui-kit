@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -124,7 +128,7 @@ const SvgInformation = (props: SVGProps) => (
   >
     <path
       fillRule="evenodd"
-      d="M11.856 4.773a1.932 1.932 0 1 1 0 3.863 1.932 1.932 0 0 1 0-3.863Zm3.112 14.81H9.173a.966.966 0 1 1 0-1.932h.966v-5.795h-.966a.966.966 0 1 1 0-1.932h3.864c.533 0 .966.433.966.966v6.761h.965a.966.966 0 0 1 0 1.932Z"
+      d="M11.856 4.773a1.932 1.932 0 1 1 0 3.863 1.932 1.932 0 0 1 0-3.863m3.112 14.81H9.173a.966.966 0 1 1 0-1.932h.966v-5.795h-.966a.966.966 0 1 1 0-1.932h3.864c.533 0 .966.433.966.966v6.761h.965a.966.966 0 0 1 0 1.932"
     />
   </svg>
 );

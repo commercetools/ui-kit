@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgColumns = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="M3 17.017V7.003c0-.551.196-1.022.588-1.414A1.93 1.93 0 0 1 5.003 5h13.994c.551 0 1.023.196 1.415.589.392.392.588.863.588 1.414v10.014c0 .55-.196 1.022-.588 1.415a1.931 1.931 0 0 1-1.415.588H5.003c-.551 0-1.023-.197-1.415-.588A1.931 1.931 0 0 1 3 17.017Zm2.003 0h3.33V7.003h-3.33v10.014Zm5.332 0h3.33V7.003h-3.33v10.014Zm5.333 0h3.33V7.003h-3.33v10.014Z" />
+    <path d="M3 17.017V7.003q0-.826.588-1.414A1.93 1.93 0 0 1 5.003 5h13.994q.827 0 1.415.589.588.588.588 1.414v10.014q0 .825-.588 1.415a1.93 1.93 0 0 1-1.415.588H5.003q-.827 0-1.415-.588A1.93 1.93 0 0 1 3 17.017m2.003 0h3.33V7.003h-3.33zm5.332 0h3.33V7.003h-3.33zm5.333 0h3.33V7.003h-3.33z" />
   </svg>
 );
 SvgColumns.displayName = 'SvgColumns';

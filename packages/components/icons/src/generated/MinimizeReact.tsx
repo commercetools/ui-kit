@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgMinimize = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="M4.463 13c-.426 0-.776-.144-1.05-.432A1.484 1.484 0 0 1 3 11.5c0-.425.143-.781.43-1.068A1.453 1.453 0 0 1 4.5 10h15.038c.424 0 .774.144 1.05.432.274.287.412.643.412 1.068 0 .425-.144.781-.432 1.068A1.448 1.448 0 0 1 19.5 13H4.463Z" />
+    <path d="M4.463 13q-.639 0-1.05-.432A1.48 1.48 0 0 1 3 11.5q0-.638.43-1.068A1.45 1.45 0 0 1 4.5 10h15.038q.636 0 1.05.432.412.43.412 1.068t-.432 1.068A1.45 1.45 0 0 1 19.5 13z" />
   </svg>
 );
 SvgMinimize.displayName = 'SvgMinimize';

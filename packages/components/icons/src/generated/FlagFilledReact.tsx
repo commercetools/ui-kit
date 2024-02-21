@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -122,7 +126,7 @@ const SvgFlagFilled = (props: SVGProps) => (
     role="img"
     {...props}
   >
-    <path d="M5.059 21c-.3 0-.552-.102-.755-.305A1.024 1.024 0 0 1 4 19.941V4.06c0-.3.101-.552.304-.755C4.507 3.1 4.759 3 5.059 3h7.597c.247 0 .467.08.662.238.194.16.317.362.37.61l.265 1.27h4.87c.3 0 .552.1.754.304.204.203.305.454.305.754v8.471c0 .3-.101.551-.305.754a1.022 1.022 0 0 1-.754.305h-5.479c-.247 0-.467-.08-.662-.238a1.048 1.048 0 0 1-.37-.61l-.265-1.27h-5.93v6.353c0 .3-.1.552-.303.754a1.025 1.025 0 0 1-.755.305Z" />
+    <path d="M5.059 21q-.45 0-.755-.305A1.02 1.02 0 0 1 4 19.941V4.06q0-.45.304-.755Q4.609 3 5.059 3h7.597q.37 0 .662.238.29.239.37.61l.265 1.27h4.87q.45-.001.754.304.305.304.305.754v8.471q0 .45-.305.754a1.02 1.02 0 0 1-.754.305h-5.479q-.37 0-.662-.238a1.05 1.05 0 0 1-.37-.61l-.265-1.27h-5.93v6.353q0 .45-.303.754a1.02 1.02 0 0 1-.755.305" />
   </svg>
 );
 SvgFlagFilled.displayName = 'SvgFlagFilled';

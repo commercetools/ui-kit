@@ -14,7 +14,8 @@ export type Props = {
     | 'primary'
     | 'primary40'
     | 'warning'
-    | 'error';
+    | 'error'
+    | 'success';
   size?: 'small' | 'medium' | 'big' | 'scale';
 };
 export type SVGProps = Props & {
@@ -91,6 +92,9 @@ const getColor = (color: Props['color']) => {
     case 'error':
       iconColor = designTokens.colorError;
       break;
+    case 'success':
+      iconColor = designTokens.colorSuccess;
+      break;
     default:
       break;
   }
@@ -124,7 +128,7 @@ const SvgAngleThinLeft = (props: SVGProps) => (
   >
     <path
       fillRule="evenodd"
-      d="M16.336 20.888c-.117 0-.195-.038-.273-.15l-8.634-8.25a.353.353 0 0 1 0-.525l8.633-8.288c.157-.15.391-.15.547 0a.353.353 0 0 1 0 .525L8.25 12.225l8.36 7.988a.353.353 0 0 1 0 .525.342.342 0 0 1-.274.15Z"
+      d="M16.336 20.888c-.117 0-.195-.038-.273-.15l-8.634-8.25a.353.353 0 0 1 0-.525l8.634-8.288c.156-.15.39-.15.546 0a.353.353 0 0 1 0 .525L8.25 12.225l8.36 7.988a.353.353 0 0 1 0 .525.34.34 0 0 1-.274.15"
     />
   </svg>
 );
