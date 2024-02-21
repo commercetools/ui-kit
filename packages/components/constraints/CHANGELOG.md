@@ -1,5 +1,13 @@
 # @commercetools-uikit/constraints
 
+## 18.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`5518760`](https://github.com/commercetools/ui-kit/commit/5518760cc2ba912312386aa370ec2b5c281c5377)]:
+  - @commercetools-uikit/design-system@18.2.0
+  - @commercetools-uikit/utils@18.2.0
+
 ## 18.1.0
 
 ### Patch Changes

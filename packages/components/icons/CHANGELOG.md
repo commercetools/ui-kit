@@ -1,5 +1,19 @@
 # @commercetools-uikit/icons
 
+## 18.2.0
+
+### Minor Changes
+
+- [#2724](https://github.com/commercetools/ui-kit/pull/2724) [`a414fb5`](https://github.com/commercetools/ui-kit/commit/a414fb5d2d63edc988ad1c8ccc32e2ce2d646fa3) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Add `Users` icon
+
+- [#2720](https://github.com/commercetools/ui-kit/pull/2720) [`5518760`](https://github.com/commercetools/ui-kit/commit/5518760cc2ba912312386aa370ec2b5c281c5377) Thanks [@kark](https://github.com/kark)! - Implement updated color scheme across all UI-kit components
+
+### Patch Changes
+
+- Updated dependencies [[`5518760`](https://github.com/commercetools/ui-kit/commit/5518760cc2ba912312386aa370ec2b5c281c5377)]:
+  - @commercetools-uikit/design-system@18.2.0
+  - @commercetools-uikit/utils@18.2.0
+
 ## 18.1.0
 
 ### Patch Changes
