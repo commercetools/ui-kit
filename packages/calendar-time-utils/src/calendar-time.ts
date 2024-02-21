@@ -60,7 +60,7 @@ export const formatDefaultTime = (time: string, locale: LocaleSpecifier) => {
       hour: 0,
       minute: 0,
     });
-    return moment(today).format('LT'); // 12:00 AM
+    return moment(today).locale(locale).format('LT'); // 12:00 AM
   }
 };
 
