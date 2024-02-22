@@ -56,7 +56,6 @@ class DateTimeInputStory extends Component {
           hasWarning={boolean('hasWarning', false)}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          defaultDaySelectionTime={text('defaultDaySelectionTime', '')}
         />
       </Section>
     );

@@ -7,7 +7,7 @@ import moment, {
   MomentInput,
   LocaleSpecifier,
 } from 'moment-timezone';
-import { parseTime } from '@commercetools-uikit/utils';
+import { parseTime, warning } from '@commercetools-uikit/utils';
 import { DATE_FORMAT_LOCALIZED_MAPPINGS } from './formats';
 
 type ParsedTime = {
@@ -53,7 +53,8 @@ export const formatDefaultTime = (time: string, locale: LocaleSpecifier) => {
     });
     return moment(today).locale(locale).format('LT'); // 5:13 PM
   } else {
-    console.warn(
+    warning(
+      false,
       `DataTimeInput: the specified defaultDaySelectionTime '${time}' is not supported. The format should be hh:mm, e.g. 11:10. Using 00:00 as default time.`
     );
     today.set({

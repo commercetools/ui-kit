@@ -2,6 +2,12 @@ import {
   getLocalizedDateTimeFormatPattern,
   formatDefaultTime,
 } from './calendar-time';
+import { warning } from '@commercetools-uikit/utils';
+
+jest.mock('@commercetools-uikit/utils', () => ({
+  ...jest.requireActual('@commercetools-uikit/utils'),
+  warning: jest.fn(),
+}));
 
 describe('getLocalizedDateTimeFormatPattern', () => {
   const DATE_LOCALIZED_FORMATS = {
@@ -91,9 +97,9 @@ describe('formatDefaultTime', () => {
   });
 
   it('should return 12:00 AM for incorrect time format', () => {
-    console.warn = jest.fn();
     expect(formatDefaultTime('1221', 'en')).toBe('12:00 AM');
-    expect(console.warn).toHaveBeenCalledWith(
+    expect(warning).toHaveBeenCalledWith(
+      false,
       "DataTimeInput: the specified defaultDaySelectionTime '1221' is not supported. The format should be hh:mm, e.g. 11:10. Using 00:00 as default time."
     );
   });
