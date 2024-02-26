@@ -321,7 +321,7 @@ export type TAsyncSelectFieldProps = {
 
 type TAsyncSelectFieldState = Pick<TAsyncSelectFieldProps, 'id'>;
 
-export default class AsyncSelectField extends Component<
+class AsyncSelectField extends Component<
   TAsyncSelectFieldProps,
   TAsyncSelectFieldState
 > {
@@ -459,3 +459,5 @@ export default class AsyncSelectField extends Component<
     );
   }
 }
+
+export default AsyncSelectField;
