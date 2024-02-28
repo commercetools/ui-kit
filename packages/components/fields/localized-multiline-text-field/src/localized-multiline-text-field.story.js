@@ -120,9 +120,7 @@ storiesOf('Components|Fields', module)
               errorsByLanguage={
                 errorsByLanguage
                   ? Object.keys(value).reduce((acc, language) => {
-                      acc[language] = (
-                        <ErrorMessage>An error for language</ErrorMessage>
-                      );
+                      acc[language] = 'An error for language';
                       return acc;
                     }, {})
                   : undefined

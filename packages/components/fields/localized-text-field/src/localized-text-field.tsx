@@ -160,7 +160,7 @@ export type TLocalizedTextFieldProps = {
   /**
    * Errors for each translation. These are forwarded to the `errors` prop of `LocalizedTextInput`.
    */
-  errorsByLanguage?: Record<string, string>;
+  errorsByLanguage?: Record<string, ReactNode>;
 
   // LabelField
   /**
