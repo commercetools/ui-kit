@@ -86,7 +86,7 @@ storiesOf('Components|Inputs', module)
                 Object.values(errors).some((error) => error.length > 0)
                   ? Object.entries(errors).reduce((acc, [currency, error]) => {
                       if (error.length === 0) return acc;
-                      acc[currency] = <ErrorMessage>{error}</ErrorMessage>;
+                      acc[currency] = error;
                       return acc;
                     }, {})
                   : undefined
@@ -96,9 +96,7 @@ storiesOf('Components|Inputs', module)
                   ? Object.entries(warnings).reduce(
                       (acc, [currency, warning]) => {
                         if (warning.length === 0) return acc;
-                        acc[currency] = (
-                          <WarningMessage>{warning}</WarningMessage>
-                        );
+                        acc[currency] = warning;
                         return acc;
                       },
                       {}
