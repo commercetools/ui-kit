@@ -28,6 +28,7 @@
     "@commercetools-uikit/icons": "18.2.0",
     "@commercetools-uikit/input-utils": "18.2.0",
     "@commercetools-uikit/localized-utils": "18.2.0",
+    "@commercetools-uikit/messages": "18.2.0",
     "@commercetools-uikit/money-input": "18.2.0",
     "@commercetools-uikit/select-utils": "18.2.0",
     "@commercetools-uikit/spacings-stack": "18.2.0",
