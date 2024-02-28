@@ -304,6 +304,7 @@ const optionStyles = () => (base: TBase, state: TState) => {
       color ${designTokens.transitionStandard}`,
     padding: `${designTokens.spacing20} ${designTokens.spacing30}`,
     lineHeight: designTokens.lineHeight40,
+    cursor: state.isDisabled ? 'not-allowed' : 'pointer',
     color: (() => {
       if (!state.isDisabled) return designTokens.fontColorForInput;
       if (state.isSelected) return designTokens.fontColorForInput;
@@ -411,7 +412,7 @@ const groupHeadingStyles = () => (base: TBase) => {
   return {
     ...base,
     color: designTokens.fontColorForInputWhenReadonly,
-    fontSize: designTokens.fontSize30,
+    fontSize: designTokens.fontSize20,
     borderBottom: `1px solid ${designTokens.colorNeutral90}`,
     textTransform: 'none',
     fontWeight: designTokens.fontWeight500,
