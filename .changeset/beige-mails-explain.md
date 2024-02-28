@@ -12,7 +12,7 @@
 
 We've changed how we internally manage the `errors` and `warnings` properties to make it easy for consumers to style them.
 
-In you currently want to render an error for an specific language, you need to use the `WarningMessage` component to wrap the error text you provide to the component:
+If you currently want to render an error for an specific language, you need to use the `WarningMessage` component to wrap the error text you provide to the component:
 
 ```jsx
 <LocalizexTextInput
