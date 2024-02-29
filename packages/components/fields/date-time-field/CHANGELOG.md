@@ -1,5 +1,23 @@
 # @commercetools-uikit/date-time-field
 
+## 18.3.0
+
+### Minor Changes
+
+- [#2725](https://github.com/commercetools/ui-kit/pull/2725) [`75fcd4f`](https://github.com/commercetools/ui-kit/commit/75fcd4feef3979b0939bfe5a712742b51038e6a5) Thanks [@leventekobor](https://github.com/leventekobor)! - We've included a new property in the `DateTimeInput` and `DateTimeField` components for consumers to be able to set the default time the calendar will show upon users opening it.
+
+### Patch Changes
+
+- Updated dependencies [[`75fcd4f`](https://github.com/commercetools/ui-kit/commit/75fcd4feef3979b0939bfe5a712742b51038e6a5)]:
+  - @commercetools-uikit/date-time-input@18.3.0
+  - @commercetools-uikit/design-system@18.3.0
+  - @commercetools-uikit/constraints@18.3.0
+  - @commercetools-uikit/field-errors@18.3.0
+  - @commercetools-uikit/field-label@18.3.0
+  - @commercetools-uikit/field-warnings@18.3.0
+  - @commercetools-uikit/utils@18.3.0
+  - @commercetools-uikit/spacings@18.3.0
+
 ## 18.2.0
 
 ### Patch Changes

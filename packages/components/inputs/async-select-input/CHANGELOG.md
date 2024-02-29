@@ -1,5 +1,19 @@
 # @commercetools-uikit/async-select-input
 
+## 18.3.0
+
+### Patch Changes
+
+- Updated dependencies [[`e0038e4`](https://github.com/commercetools/ui-kit/commit/e0038e4e9ed158d70107147ffe9540e36f41a576)]:
+  - @commercetools-uikit/select-utils@18.3.0
+  - @commercetools-uikit/design-system@18.3.0
+  - @commercetools-uikit/constraints@18.3.0
+  - @commercetools-uikit/icons@18.3.0
+  - @commercetools-uikit/loading-spinner@18.3.0
+  - @commercetools-uikit/text@18.3.0
+  - @commercetools-uikit/utils@18.3.0
+  - @commercetools-uikit/spacings@18.3.0
+
 ## 18.2.0
 
 ### Patch Changes

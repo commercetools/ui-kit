@@ -1,5 +1,17 @@
 # @commercetools-uikit/data-table
 
+## 18.3.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@18.3.0
+  - @commercetools-uikit/accessible-button@18.3.0
+  - @commercetools-uikit/secondary-icon-button@18.3.0
+  - @commercetools-uikit/icons@18.3.0
+  - @commercetools-uikit/hooks@18.3.0
+  - @commercetools-uikit/utils@18.3.0
+
 ## 18.2.0
 
 ### Patch Changes
