@@ -17,7 +17,11 @@ import {
   MultilineInput,
   messagesMultilineInput,
 } from '@commercetools-uikit/input-utils';
-import { AdditionalInfoMessage } from '@commercetools-uikit/messages';
+import {
+  AdditionalInfoMessage,
+  ErrorMessage,
+  WarningMessage,
+} from '@commercetools-uikit/messages';
 import {
   getTextareaStyles,
   getLanguageLabelStyles,
@@ -205,13 +209,13 @@ const TranslationInput = (props: TranslationInputProps) => {
           if (props.error)
             return (
               <LeftColumn>
-                <div>{props.error}</div>
+                <ErrorMessage>{props.error}</ErrorMessage>
               </LeftColumn>
             );
           if (props.warning)
             return (
               <LeftColumn>
-                <div>{props.warning}</div>
+                <WarningMessage>{props.warning}</WarningMessage>
               </LeftColumn>
             );
           return null;

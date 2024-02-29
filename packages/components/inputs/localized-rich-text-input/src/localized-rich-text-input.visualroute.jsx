@@ -2,8 +2,6 @@ import { Switch, Route } from 'react-router-dom';
 import { useState, useCallback, useRef, forwardRef } from 'react';
 import {
   LocalizedRichTextInput,
-  ErrorMessage,
-  WarningMessage,
 } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
@@ -189,7 +187,7 @@ const DefaultRoute = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        errors={{ en: <ErrorMessage>foo</ErrorMessage> }}
+        errors={{ en: 'foo' }}
       />
     </Spec>
     <Spec
@@ -201,7 +199,7 @@ const DefaultRoute = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        errors={{ de: <ErrorMessage>foo</ErrorMessage> }}
+        errors={{ de: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a general error" omitPropsList>
@@ -222,7 +220,7 @@ const DefaultRoute = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        warnings={{ en: <WarningMessage>foo</WarningMessage> }}
+        warnings={{ en: 'foo' }}
       />
     </Spec>
     <Spec
@@ -234,7 +232,7 @@ const DefaultRoute = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        warnings={{ de: <WarningMessage>foo</WarningMessage> }}
+        warnings={{ de: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a general warning" omitPropsList>
@@ -300,7 +298,7 @@ const DefaultRoute = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        errors={{ en: <ErrorMessage>Error error error e e e</ErrorMessage> }}
+        errors={{ en: 'Error error error e e e' }}
         additionalInfo={{ en: 'This is a foo field' }}
       />
     </Spec>

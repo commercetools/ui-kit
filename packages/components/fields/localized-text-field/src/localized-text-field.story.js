@@ -10,7 +10,6 @@ import {
   object,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
-import { ErrorMessage } from '@commercetools-uikit/messages';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import * as icons from '../../../icons';
@@ -114,9 +113,7 @@ storiesOf('Components|Fields', module)
               errorsByLanguage={
                 errorsByLanguage
                   ? Object.keys(value).reduce((acc, language) => {
-                      acc[language] = (
-                        <ErrorMessage>An error for language</ErrorMessage>
-                      );
+                      acc[language] = 'An error for language';
                       return acc;
                     }, {})
                   : undefined

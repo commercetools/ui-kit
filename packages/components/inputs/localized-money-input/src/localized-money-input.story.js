@@ -9,7 +9,6 @@ import {
   object,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
-import { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import LocalizedMoneyInput from './localized-money-input';
@@ -86,7 +85,7 @@ storiesOf('Components|Inputs', module)
                 Object.values(errors).some((error) => error.length > 0)
                   ? Object.entries(errors).reduce((acc, [currency, error]) => {
                       if (error.length === 0) return acc;
-                      acc[currency] = <ErrorMessage>{error}</ErrorMessage>;
+                      acc[currency] = error;
                       return acc;
                     }, {})
                   : undefined
@@ -96,9 +95,7 @@ storiesOf('Components|Inputs', module)
                   ? Object.entries(warnings).reduce(
                       (acc, [currency, warning]) => {
                         if (warning.length === 0) return acc;
-                        acc[currency] = (
-                          <WarningMessage>{warning}</WarningMessage>
-                        );
+                        acc[currency] = warning;
                         return acc;
                       },
                       {}

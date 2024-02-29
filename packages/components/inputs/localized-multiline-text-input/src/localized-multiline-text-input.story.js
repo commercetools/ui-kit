@@ -9,7 +9,6 @@ import {
   object,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
-import { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import LocalizedMultilineTextInput from './localized-multiline-text-input';
@@ -84,7 +83,7 @@ storiesOf('Components|Inputs', module)
                 Object.values(errors).some((error) => error.length > 0)
                   ? Object.entries(errors).reduce((acc, [language, error]) => {
                       if (error.length === 0) return acc;
-                      acc[language] = <ErrorMessage>{error}</ErrorMessage>;
+                      acc[language] = error;
                       return acc;
                     }, {})
                   : undefined
@@ -94,9 +93,7 @@ storiesOf('Components|Inputs', module)
                   ? Object.entries(warnings).reduce(
                       (acc, [language, warning]) => {
                         if (warning.length === 0) return acc;
-                        acc[language] = (
-                          <WarningMessage>{warning}</WarningMessage>
-                        );
+                        acc[language] = warning;
                         return acc;
                       },
                       {}

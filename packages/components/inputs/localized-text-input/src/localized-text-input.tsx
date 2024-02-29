@@ -10,6 +10,7 @@ import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
 import {
   ErrorMessage,
   AdditionalInfoMessage,
+  WarningMessage,
 } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
@@ -131,7 +132,7 @@ export type TLocalizedTextInputProps = {
   /**
    * Used to show errors underneath the inputs of specific locales. Pass an object whose key is a locale and whose value is the error to show for that key.
    */
-  errors?: Record<string, string>;
+  errors?: Record<string, ReactNode>;
   /**
    * A map of warnings.
    */
@@ -344,9 +345,13 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                     aria-invalid={props['aria-invalid']}
                     aria-errormessage={props['aria-errormessage']}
                   />
-                  {props.errors && props.errors[language]}
-                  {props.warnings && props.warnings[language]}
-                  {props.additionalInfo && (
+                  {props.errors?.[language] && (
+                    <ErrorMessage>{props.errors[language]}</ErrorMessage>
+                  )}
+                  {props.warnings?.[language] && (
+                    <WarningMessage>{props.warnings[language]}</WarningMessage>
+                  )}
+                  {props.additionalInfo?.[language] && (
                     <AdditionalInfoMessage
                       message={props.additionalInfo[language]}
                     />

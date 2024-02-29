@@ -1,7 +1,5 @@
 import {
   LocalizedMultilineTextInput,
-  ErrorMessage,
-  WarningMessage,
 } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
@@ -107,7 +105,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        errors={{ en: <ErrorMessage>foo</ErrorMessage> }}
+        errors={{ en: 'foo' }}
       />
     </Spec>
     <Spec label="when there is an error for a specific language (second one)">
@@ -116,7 +114,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        errors={{ de: <ErrorMessage>foo</ErrorMessage> }}
+        errors={{ de: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a general error">
@@ -134,7 +132,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        warnings={{ en: <WarningMessage>foo</WarningMessage> }}
+        warnings={{ en: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a warning for a specific language (second one)">
@@ -143,7 +141,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        warnings={{ de: <WarningMessage>foo</WarningMessage> }}
+        warnings={{ de: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a general warning">
@@ -171,7 +169,7 @@ export const component = () => (
         selectedLanguage="en"
         horizontalConstraint={7}
         hasError={true}
-        errors={{ en: <ErrorMessage>Error error error e e e</ErrorMessage> }}
+        errors={{ en: 'Error error error e e e' }}
         additionalInfo={{ en: 'This is a foo field' }}
       />
     </Spec>
@@ -191,7 +189,7 @@ export const component = () => (
         selectedLanguage="en"
         horizontalConstraint={7}
         additionalInfo={{ en: 'This is a foo field' }}
-        errors={{ en: <ErrorMessage>Error error error e e e</ErrorMessage> }}
+        errors={{ en: 'Error error error e e e' }}
       />
     </Spec>
   </Suite>
