@@ -14,7 +14,6 @@ import Spacings from '@commercetools-uikit/spacings';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 import Text from '@commercetools-uikit/text';
-import { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
 import Readme from '../README.md';
 import LocalizedRichTextInput from './localized-rich-text-input';
 

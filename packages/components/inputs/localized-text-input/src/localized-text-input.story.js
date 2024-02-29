@@ -9,7 +9,6 @@ import {
   object,
 } from '@storybook/addon-knobs/react';
 import Constraints from '@commercetools-uikit/constraints';
-import { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
 import Section from '../../../../../docs/.storybook/decorators/section';
 import Readme from '../README.md';
 import LocalizedTextInput from './localized-text-input';
