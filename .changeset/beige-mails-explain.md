@@ -33,7 +33,7 @@ With the new update, you no longer need to wrap the error text so you can provid
   value={value}
   onChange={handleChange}
   warnings={{
-    en: 'This is a warning</WarningMessage',
+    en: 'This is a warning',
   }}
 >
 ```
