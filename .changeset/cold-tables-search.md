@@ -1,6 +1,6 @@
 ---
-'@commercetools-uikit/localized-multiline-text-field': patch
-'@commercetools-uikit/localized-text-field': patch
+'@commercetools-uikit/localized-multiline-text-field': minor
+'@commercetools-uikit/localized-text-field': minor
 ---
 
 We've changed how we internally manage the `errorsByLanguage` property to make it easy for consumers to style them.
