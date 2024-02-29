@@ -29,7 +29,7 @@
     "@commercetools-uikit/spacings": "18.3.0",
     "@commercetools-uikit/text": "18.3.0",
     "@commercetools-uikit/utils": "18.3.0",
-    "@emotion/is-prop-valid": "1.2.1",
+    "@emotion/is-prop-valid": "1.2.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
