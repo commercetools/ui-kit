@@ -1,5 +1,51 @@
 # @commercetools-uikit/localized-multiline-text-field
 
+## 18.3.0
+
+### Minor Changes
+
+- [#2732](https://github.com/commercetools/ui-kit/pull/2732) [`de3776d`](https://github.com/commercetools/ui-kit/commit/de3776de7692fd606c938768a8a0e8b91bd32d48) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - We've changed how we internally manage the `errorsByLanguage` property to make it easy for consumers to style them.
+
+  If you currently want to render an error for an specific language, you need to use the `ErrorMessage` component to wrap the error text you provide to the component:
+
+  ```jsx
+  <LocalizedTextField
+    title="Title"
+    value={value}
+    onChange={handleChange}
+    errorsByLanguage={{
+      en: <ErrorMessage>This is an error</ErrorMessage>,
+    }}
+  />
+  ```
+
+  With the new update, you no longer need to wrap the error text so you can provide it as it is:
+
+  ```jsx
+  <LocalizedTextField
+    title="Title"
+    value={value}
+    onChange={handleChange}
+    errorsByLanguage={{
+      en: 'This is an error',
+    }}
+  />
+  ```
+
+  We still support the former, but we encourage using the new way to provide errors.
+
+### Patch Changes
+
+- Updated dependencies [[`de3776d`](https://github.com/commercetools/ui-kit/commit/de3776de7692fd606c938768a8a0e8b91bd32d48)]:
+  - @commercetools-uikit/localized-multiline-text-input@18.3.0
+  - @commercetools-uikit/design-system@18.3.0
+  - @commercetools-uikit/constraints@18.3.0
+  - @commercetools-uikit/field-errors@18.3.0
+  - @commercetools-uikit/field-label@18.3.0
+  - @commercetools-uikit/field-warnings@18.3.0
+  - @commercetools-uikit/utils@18.3.0
+  - @commercetools-uikit/spacings@18.3.0
+
 ## 18.2.0
 
 ### Patch Changes

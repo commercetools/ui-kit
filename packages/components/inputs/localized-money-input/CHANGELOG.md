@@ -1,5 +1,56 @@
 # @commercetools-uikit/localized-money-input
 
+## 18.3.0
+
+### Minor Changes
+
+- [#2732](https://github.com/commercetools/ui-kit/pull/2732) [`de3776d`](https://github.com/commercetools/ui-kit/commit/de3776de7692fd606c938768a8a0e8b91bd32d48) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - We've changed how we internally manage the `errors` and `warnings` properties to make it easy for consumers to style them.
+
+  If you currently want to render an error for an specific language, you need to use the `WarningMessage` component to wrap the error text you provide to the component:
+
+  ```jsx
+  <LocalizexTextInput
+    title="Title"
+    value={value}
+    onChange={handleChange}
+    warnings={{
+      en: <WarningMessage>This is a warning</WarningMessage>,
+    }}
+  >
+  ```
+
+  With the new update, you no longer need to wrap the error text so you can provide it as it is:
+
+  ```jsx
+  <LocalizexTextInput
+    title="Title"
+    value={value}
+    onChange={handleChange}
+    warnings={{
+      en: 'This is a warning',
+    }}
+  >
+  ```
+
+  We still support the former, but we encourage using the new way to provide errors and warnings.
+
+### Patch Changes
+
+- Updated dependencies [[`e0038e4`](https://github.com/commercetools/ui-kit/commit/e0038e4e9ed158d70107147ffe9540e36f41a576)]:
+  - @commercetools-uikit/select-utils@18.3.0
+  - @commercetools-uikit/money-input@18.3.0
+  - @commercetools-uikit/design-system@18.3.0
+  - @commercetools-uikit/flat-button@18.3.0
+  - @commercetools-uikit/constraints@18.3.0
+  - @commercetools-uikit/icons@18.3.0
+  - @commercetools-uikit/input-utils@18.3.0
+  - @commercetools-uikit/messages@18.3.0
+  - @commercetools-uikit/spacings-stack@18.3.0
+  - @commercetools-uikit/tooltip@18.3.0
+  - @commercetools-uikit/hooks@18.3.0
+  - @commercetools-uikit/localized-utils@18.3.0
+  - @commercetools-uikit/utils@18.3.0
+
 ## 18.2.0
 
 ### Patch Changes
