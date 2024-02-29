@@ -15,7 +15,7 @@ const getClickableRowStyle = (props: TGetClickableRowStyleProps) => {
     return css`
       cursor: pointer;
       &:hover td {
-        background: ${designTokens.backgroundColorForTableCellWhenHovered};
+        background: ${designTokens.colorNeutral98};
       }
     `;
   }
@@ -49,7 +49,7 @@ type TTableContainer = {
 const TableContainer = styled.div<TTableContainer>`
   position: relative;
   z-index: 0;
-  box-shadow: ${designTokens.boxShadowForTable};
+  box-shadow: ${designTokens.shadow17};
   border: 1px solid ${designTokens.colorNeutral95};
   border-radius: ${designTokens.borderRadius4};
 

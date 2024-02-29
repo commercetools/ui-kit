@@ -1,5 +1,65 @@
 # @commercetools-uikit/spacings
 
+## 18.2.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings-inline@18.2.0
+  - @commercetools-uikit/spacings-inset@18.2.0
+  - @commercetools-uikit/spacings-inset-squish@18.2.0
+  - @commercetools-uikit/spacings-stack@18.2.0
+
+## 18.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings-inline@18.1.0
+  - @commercetools-uikit/spacings-inset@18.1.0
+  - @commercetools-uikit/spacings-inset-squish@18.1.0
+  - @commercetools-uikit/spacings-stack@18.1.0
+
+## 18.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings-inline@18.0.0
+  - @commercetools-uikit/spacings-inset@18.0.0
+  - @commercetools-uikit/spacings-inset-squish@18.0.0
+  - @commercetools-uikit/spacings-stack@18.0.0
+
+## 17.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings-inline@17.1.0
+  - @commercetools-uikit/spacings-inset@17.1.0
+  - @commercetools-uikit/spacings-inset-squish@17.1.0
+  - @commercetools-uikit/spacings-stack@17.1.0
+
+## 17.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings-inline@17.0.1
+  - @commercetools-uikit/spacings-inset@17.0.1
+  - @commercetools-uikit/spacings-inset-squish@17.0.1
+  - @commercetools-uikit/spacings-stack@17.0.1
+
+## 17.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/spacings-inline@17.0.0
+  - @commercetools-uikit/spacings-inset@17.0.0
+  - @commercetools-uikit/spacings-inset-squish@17.0.0
+  - @commercetools-uikit/spacings-stack@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

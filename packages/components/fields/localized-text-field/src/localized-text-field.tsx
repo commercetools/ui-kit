@@ -15,12 +15,15 @@ import {
   warning,
 } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
+import { type MessageDescriptor } from 'react-intl';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import LocalizedTextInput from '@commercetools-uikit/localized-text-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+type TFieldWarnings = Record<string, boolean>;
 type TFieldErrors = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
@@ -62,6 +65,34 @@ export type TLocalizedTextFieldProps = {
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
+  /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br/>
+   * Unknown warnings will be forwarded to renderWarning.
+   */
+  warnings?: TFieldWarnings;
+  /**
+   * Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.
+   * <br />
+   * It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
+  /**
+   * An object mapping locales to additional messages to be rendered below each input element.
+    Example:
+    {
+      en: 'Some value',
+      es: 'Algún valor',
+    }
+   */
+  additionalInfo?: Record<
+    string,
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      })
+  >;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -129,7 +160,7 @@ export type TLocalizedTextFieldProps = {
   /**
    * Errors for each translation. These are forwarded to the `errors` prop of `LocalizedTextInput`.
    */
-  errorsByLanguage?: Record<string, string>;
+  errorsByLanguage?: Record<string, ReactNode>;
 
   // LabelField
   /**
@@ -170,9 +201,15 @@ type TLocalizedTextFieldSTate = Pick<TLocalizedTextFieldProps, 'id'>;
 
 const sequentialId = createSequentialId('localized-text-field-');
 const sequentialErrorsId = createSequentialId('localized-text-field-error-')();
+const sequentialWarningsId = createSequentialId(
+  'localized-text-field-warning-'
+)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 class LocalizedTextField extends Component<
   TLocalizedTextFieldProps,
@@ -211,6 +248,7 @@ class LocalizedTextField extends Component<
 
   render() {
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
     if (this.props.hintIcon) {
       warning(
@@ -257,17 +295,27 @@ class LocalizedTextField extends Component<
             isReadOnly={this.props.isReadOnly}
             errors={this.props.errorsByLanguage}
             hasError={hasError}
+            hasWarning={hasWarning}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
             aria-invalid={hasError}
             aria-errormessage={sequentialErrorsId}
+            additionalInfo={
+              this.props.additionalInfo && this.props.additionalInfo
+            }
           />
           <FieldErrors
             id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
           />
         </Spacings.Stack>
       </Constraints.Horizontal>

@@ -5,7 +5,7 @@ import type { TStylesProps } from './radio-option';
 
 const LabelTextWrapper = styled.div<TStylesProps>`
   grid-area: label;
-  margin-left: ${designTokens.marginLeftForRadioInputLabel};
+  margin-left: ${designTokens.spacing10};
   font-size: 1rem;
   font-family: inherit;
   display: flex;
@@ -29,10 +29,10 @@ const RadioInputWrapper = styled.div<TStylesProps>`
 
 const getBorderColor = (props: TStylesProps) => {
   if (props.isDisabled) {
-    return designTokens.borderColorForInputWhenDisabled;
+    return designTokens.colorNeutral;
   }
   if (props.isReadOnly) {
-    return designTokens.borderColorForRadioInputWhenReadonly;
+    return designTokens.colorNeutral60;
   }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
@@ -44,17 +44,17 @@ const getBorderColor = (props: TStylesProps) => {
     if (props.isChecked) {
       return designTokens.borderColorForInputWhenFocused;
     }
-    return designTokens.borderColorForRadioInputWhenFocused;
+    return designTokens.colorNeutral60;
   }
   if (props.isChecked) {
-    return designTokens.borderColorForRadioInputWhenChecked;
+    return designTokens.colorPrimary;
   }
-  return designTokens.borderColorForRadioInput;
+  return designTokens.colorNeutral60;
 };
 
 const getKnobColor = (props: TStylesProps) => {
   if (props.isDisabled) {
-    return designTokens.borderColorForRadioInputWhenDisabled;
+    return designTokens.colorNeutral;
   }
   if (props.hasError) {
     return designTokens.fontColorForInputWhenError;
@@ -94,18 +94,18 @@ const getLabelCursor = (props: TStylesProps) => {
 };
 
 const RadioOptionKnob = styled.div<TStylesProps>`
-  width: ${designTokens.heightForRadioInputOptionWhenChecked};
-  height: ${designTokens.heightForRadioInputOptionWhenChecked};
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: ${(props) => getKnobColor(props)};
 `;
 
 const RadioOptionBorder = styled.div<TStylesProps>`
-  width: ${designTokens.heightForRadioInputOption};
-  height: ${designTokens.heightForRadioInputOption};
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background-color: ${designTokens.backgroundColorForInput};
-  border-width: ${designTokens.borderForRadioInputOption};
+  border-width: ${designTokens.borderWidth2};
   border-style: solid;
   border-color: ${(props) => getBorderColor(props)};
   display: flex;

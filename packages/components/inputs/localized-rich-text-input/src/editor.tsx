@@ -14,7 +14,7 @@ import {
 } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useIntl } from 'react-intl';
+import { MessageDescriptor, useIntl } from 'react-intl';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import CollapsibleMotion from '@commercetools-uikit/collapsible-motion';
@@ -23,6 +23,11 @@ import { AngleUpIcon, AngleDownIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';
 import FlatButton from '@commercetools-uikit/flat-button';
 import { messagesMultilineInput } from '@commercetools-uikit/input-utils';
+import {
+  AdditionalInfoMessage,
+  ErrorMessage,
+  WarningMessage,
+} from '@commercetools-uikit/messages';
 import {
   RichTextBody,
   HiddenInput,
@@ -88,6 +93,12 @@ export type TEditorProps = {
   hasError?: boolean;
   error?: ReactNode;
   warning?: ReactNode;
+  additionalInfo?:
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      });
   defaultExpandMultilineText: boolean;
   toggleLanguage: (language: string) => void;
   language: string;
@@ -189,7 +200,8 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
 
     (renderToggleButton && !props.hasLanguagesControl) ||
     props.error ||
-    props.warning;
+    props.warning ||
+    props.additionalInfo;
 
   return (
     <CollapsibleMotion
@@ -305,13 +317,13 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                 if (props.error)
                   return (
                     <LeftColumn>
-                      <div>{props.error}</div>
+                      <ErrorMessage>{props.error}</ErrorMessage>
                     </LeftColumn>
                   );
                 if (props.warning)
                   return (
                     <LeftColumn>
-                      <div>{props.warning}</div>
+                      <WarningMessage>{props.warning}</WarningMessage>
                     </LeftColumn>
                   );
                 return null;
@@ -348,6 +360,11 @@ const Editor = forwardRef((props: TEditorProps, forwardedRef) => {
                 </RightColumn>
               )}
             </Row>
+            {props.additionalInfo && (
+              <LeftColumn>
+                <AdditionalInfoMessage message={props.additionalInfo} />
+              </LeftColumn>
+            )}
           </Stack>
         );
       }}

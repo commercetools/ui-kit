@@ -127,5 +127,51 @@ export const component = () => (
         touched={true}
       />
     </Spec>
+    <Spec label="with warning when not touched">
+      <LocalizedMultilineTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <LocalizedMultilineTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        touched={true}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
+    <Spec label="with additional info">
+      <LocalizedMultilineTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        touched={true}
+        additionalInfo={{ en: 'hello here is an info' }}
+      />
+    </Spec>
+    <Spec label="with additional info and error">
+      <LocalizedMultilineTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        touched={true}
+        errors={{ missing: true }}
+        additionalInfo={{ en: 'hello here is an info' }}
+      />
+    </Spec>
   </Suite>
 );

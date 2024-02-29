@@ -14,7 +14,6 @@ import Spacings from '@commercetools-uikit/spacings';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import CollapsiblePanel from '@commercetools-uikit/collapsible-panel';
 import Text from '@commercetools-uikit/text';
-import { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
 import Readme from '../README.md';
 import LocalizedRichTextInput from './localized-rich-text-input';
 
@@ -62,6 +61,11 @@ const StoryWrapper = (props) => {
   );
   const errors = object('errors', { en: '', de: '', 'nan-Hant-TW': '' });
   const warnings = object('warnings', { en: '', de: '', 'nan-Hant-TW': '' });
+  const additionalInfo = object('additionalInfo', {
+    en: '',
+    de: '',
+    'nan-Hant-TW': '',
+  });
   // We need to force the component to rerender in case a default value
   // is changed. Otherwise the knob would have no effect.
   // We do this by changing the key.
@@ -141,7 +145,7 @@ const StoryWrapper = (props) => {
           Object.values(errors).some((error) => error.length > 0)
             ? Object.entries(errors).reduce((acc, [language, error]) => {
                 if (error.length === 0) return acc;
-                acc[language] = <ErrorMessage>{error}</ErrorMessage>;
+                acc[language] = error;
                 return acc;
               }, {})
             : undefined
@@ -150,9 +154,23 @@ const StoryWrapper = (props) => {
           Object.values(warnings).some((warning) => warning.length > 0)
             ? Object.entries(warnings).reduce((acc, [language, warning]) => {
                 if (warning.length === 0) return acc;
-                acc[language] = <WarningMessage>{warning}</WarningMessage>;
+                acc[language] = warning;
                 return acc;
               }, {})
+            : undefined
+        }
+        additionalInfo={
+          Object.values(additionalInfo).some(
+            (additionalInfo) => additionalInfo.length > 0
+          )
+            ? Object.entries(additionalInfo).reduce(
+                (acc, [language, additionalInfoEntry]) => {
+                  if (additionalInfo.length === 0) return acc;
+                  acc[language] = additionalInfoEntry;
+                  return acc;
+                },
+                {}
+              )
             : undefined
         }
         value={value}

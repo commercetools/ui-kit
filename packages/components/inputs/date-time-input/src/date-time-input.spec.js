@@ -178,3 +178,14 @@ describe('date picker keyboard navigation', () => {
     expect(screen.getByText('August')).toBeInTheDocument();
   });
 });
+
+describe('date picker defaultDaySelectionTime prop', () => {
+  it('should set the time prop when it is set', () => {
+    renderDateTimeInput({ defaultDaySelectionTime: '11:10' });
+    const dateInput = screen.getByLabelText('Date');
+
+    fireEvent.click(dateInput);
+
+    expect(screen.getByDisplayValue('11:10 AM')).toBeInTheDocument();
+  });
+});

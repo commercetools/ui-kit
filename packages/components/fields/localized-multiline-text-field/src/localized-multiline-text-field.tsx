@@ -12,13 +12,16 @@ import {
   createSequentialId,
   warning,
 } from '@commercetools-uikit/utils';
+import { type MessageDescriptor } from 'react-intl';
 import Constraints from '@commercetools-uikit/constraints';
 import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import LocalizedMultilineTextInput from '@commercetools-uikit/localized-multiline-text-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+type TFieldWarnings = Record<string, boolean>;
 type TFieldErrors = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
@@ -61,6 +64,34 @@ export type TLocalizedMultilineTextFieldProps = {
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
+  /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br/>
+   * Unknown warnings will be forwarded to renderWarning.
+   */
+  warnings?: TFieldWarnings;
+  /**
+   * Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.
+   * <br />
+   * It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
+  /**
+   * An object mapping locales to additional messages to be rendered below each input element.
+    Example:
+    {
+      en: 'Some value',
+      es: 'Algún valor',
+    }
+   */
+  additionalInfo?: Record<
+    string,
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      })
+  >;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -180,9 +211,15 @@ const sequentialId = createSequentialId('localized-multiline-text-field-');
 const sequentialErrorsId = createSequentialId(
   'localized-multiline-text-field-error-'
 )();
+const sequentialWarningsId = createSequentialId(
+  'localized-multiline-text-field-warning-'
+)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 class LocalizedMultilineTextField extends Component<
   TLocalizedMultilineTextFieldProps,
@@ -237,6 +274,7 @@ class LocalizedMultilineTextField extends Component<
     }
 
     const hasError = this.props.touched && hasErrors(this.props.errors);
+    const hasWarning = this.props.touched && hasWarnings(this.props.warnings);
 
     return (
       <Constraints.Horizontal max={this.props.horizontalConstraint}>
@@ -270,18 +308,28 @@ class LocalizedMultilineTextField extends Component<
             isReadOnly={this.props.isReadOnly}
             errors={this.props.errorsByLanguage}
             hasError={hasError}
+            hasWarning={hasWarning}
             placeholder={this.props.placeholder}
             horizontalConstraint="scale"
             {...filterDataAttributes(this.props)}
             /* ARIA */
             aria-invalid={hasError}
             aria-errormessage={sequentialErrorsId}
+            additionalInfo={
+              this.props.additionalInfo && this.props.additionalInfo
+            }
           />
           <FieldErrors
             id={sequentialErrorsId}
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
           />
         </Spacings.Stack>
       </Constraints.Horizontal>

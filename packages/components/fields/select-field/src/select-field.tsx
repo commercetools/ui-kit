@@ -18,6 +18,7 @@ import FieldLabel from '@commercetools-uikit/field-label';
 import SelectInput from '@commercetools-uikit/select-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
 import type { Props as ReactSelectProps } from 'react-select';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 export type TOption = {
@@ -37,6 +38,7 @@ export type TCustomEvent = {
   persist: () => void;
 };
 type TFieldErrors = Record<string, boolean>;
+type TFieldWarnings = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
@@ -77,6 +79,18 @@ export type TSelectFieldProps = {
    * <br/>
    */
   renderError?: TErrorRenderer;
+  /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br/>
+   * Unknown warnings will be forwarded to renderWarning.
+   */
+  warnings?: TFieldWarnings;
+  /**
+   * Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.
+   * <br />
+   * It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -273,6 +287,7 @@ export type TSelectFieldProps = {
   badge?: ReactNode;
   /**
    * Control to indicate on the input if there are selected values that are potentially invalid
+   * @deprecated Please use the `warnings` prop instead so users know the reason why the field is in warning state.
    */
   hasWarning?: boolean;
   /**
@@ -291,9 +306,13 @@ type TFieldState = Pick<TSelectFieldProps, 'id'>;
 
 const sequentialId = createSequentialId('select-field-');
 const sequentialErrorsId = createSequentialId('select-field-error-')();
+const sequentialWarningsId = createSequentialId('select-field-warning-')();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 export default class SelectField extends Component<TSelectFieldProps> {
   static displayName = 'SelectField';
@@ -330,6 +349,11 @@ export default class SelectField extends Component<TSelectFieldProps> {
     const hasError =
       SelectInput.isTouched(this.props.touched!) &&
       hasErrors(this.props.errors);
+
+    const hasWarning =
+      this.props.hasWarning ||
+      (SelectInput.isTouched(this.props.touched!) &&
+        hasWarnings(this.props.warnings));
 
     if (this.props.hintIcon) {
       warning(
@@ -368,7 +392,7 @@ export default class SelectField extends Component<TSelectFieldProps> {
           <SelectInput
             horizontalConstraint="scale"
             hasError={hasError}
-            hasWarning={this.props.hasWarning}
+            hasWarning={hasWarning}
             appearance={this.props.appearance}
             aria-label={this.props['aria-label']}
             aria-labelledby={this.props['aria-labelledby']}
@@ -412,6 +436,12 @@ export default class SelectField extends Component<TSelectFieldProps> {
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
           />
         </Spacings.Stack>
       </Constraints.Horizontal>

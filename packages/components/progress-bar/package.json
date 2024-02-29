@@ -1,0 +1,41 @@
+{
+  "name": "@commercetools-uikit/progress-bar",
+  "description": "A progress bar component used to visualize the progression of an extended operation",
+  "version": "18.2.0",
+  "bugs": "https://github.com/commercetools/ui-kit/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercetools/ui-kit.git",
+    "directory": "packages/components/progress-bar"
+  },
+  "homepage": "https://uikit.commercetools.com",
+  "keywords": ["javascript", "typescript", "design-system", "react", "uikit"],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "main": "dist/commercetools-uikit-progress-bar.cjs.js",
+  "module": "dist/commercetools-uikit-progress-bar.esm.js",
+  "files": ["dist"],
+  "dependencies": {
+    "@babel/runtime": "^7.20.13",
+    "@babel/runtime-corejs3": "^7.20.13",
+    "@commercetools-uikit/constraints": "18.2.0",
+    "@commercetools-uikit/design-system": "18.2.0",
+    "@commercetools-uikit/spacings-inline": "18.2.0",
+    "@commercetools-uikit/spacings-stack": "18.2.0",
+    "@commercetools-uikit/text": "18.2.0",
+    "@commercetools-uikit/utils": "18.2.0",
+    "@emotion/react": "^11.10.5",
+    "lodash": "4.17.21",
+    "prop-types": "15.8.1",
+    "react-intl": "^6.3.2"
+  },
+  "devDependencies": {
+    "react": "17.0.2"
+  },
+  "peerDependencies": {
+    "react": "17.x"
+  }
+}

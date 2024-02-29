@@ -1,5 +1,161 @@
 # @commercetools-uikit/data-table-manager
 
+## 18.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`a414fb5`](https://github.com/commercetools/ui-kit/commit/a414fb5d2d63edc988ad1c8ccc32e2ce2d646fa3), [`5518760`](https://github.com/commercetools/ui-kit/commit/5518760cc2ba912312386aa370ec2b5c281c5377)]:
+  - @commercetools-uikit/icons@18.2.0
+  - @commercetools-uikit/secondary-button@18.2.0
+  - @commercetools-uikit/primary-button@18.2.0
+  - @commercetools-uikit/text@18.2.0
+  - @commercetools-uikit/design-system@18.2.0
+  - @commercetools-uikit/field-label@18.2.0
+  - @commercetools-uikit/async-select-input@18.2.0
+  - @commercetools-uikit/radio-input@18.2.0
+  - @commercetools-uikit/select-input@18.2.0
+  - @commercetools-uikit/tag@18.2.0
+  - @commercetools-uikit/secondary-icon-button@18.2.0
+  - @commercetools-uikit/accessible-button@18.2.0
+  - @commercetools-uikit/card@18.2.0
+  - @commercetools-uikit/spacings@18.2.0
+  - @commercetools-uikit/accessible-hidden@18.2.0
+  - @commercetools-uikit/collapsible-motion@18.2.0
+  - @commercetools-uikit/grid@18.2.0
+  - @commercetools-uikit/hooks@18.2.0
+  - @commercetools-uikit/utils@18.2.0
+
+## 18.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`78d878c`](https://github.com/commercetools/ui-kit/commit/78d878cdb62bf46e1596f0df72fc6871a847ecb9)]:
+  - @commercetools-uikit/design-system@18.1.0
+  - @commercetools-uikit/accessible-button@18.1.0
+  - @commercetools-uikit/primary-button@18.1.0
+  - @commercetools-uikit/secondary-button@18.1.0
+  - @commercetools-uikit/secondary-icon-button@18.1.0
+  - @commercetools-uikit/card@18.1.0
+  - @commercetools-uikit/field-label@18.1.0
+  - @commercetools-uikit/icons@18.1.0
+  - @commercetools-uikit/async-select-input@18.1.0
+  - @commercetools-uikit/radio-input@18.1.0
+  - @commercetools-uikit/select-input@18.1.0
+  - @commercetools-uikit/tag@18.1.0
+  - @commercetools-uikit/text@18.1.0
+  - @commercetools-uikit/spacings@18.1.0
+  - @commercetools-uikit/accessible-hidden@18.1.0
+  - @commercetools-uikit/collapsible-motion@18.1.0
+  - @commercetools-uikit/grid@18.1.0
+  - @commercetools-uikit/hooks@18.1.0
+  - @commercetools-uikit/utils@18.1.0
+
+## 18.0.0
+
+### Minor Changes
+
+- [#2703](https://github.com/commercetools/ui-kit/pull/2703) [`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update design tokens usage.
+
+### Patch Changes
+
+- Updated dependencies [[`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6), [`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6), [`568c28e`](https://github.com/commercetools/ui-kit/commit/568c28ef90c5b7f97d1cc37a1a402cfe6f001c45), [`d5ae8ef`](https://github.com/commercetools/ui-kit/commit/d5ae8eff56497c6a48adc2b35dceed605d224955), [`db371ba`](https://github.com/commercetools/ui-kit/commit/db371bab2237b82035a227af3d9227926448cb99)]:
+  - @commercetools-uikit/secondary-icon-button@18.0.0
+  - @commercetools-uikit/accessible-button@18.0.0
+  - @commercetools-uikit/secondary-button@18.0.0
+  - @commercetools-uikit/primary-button@18.0.0
+  - @commercetools-uikit/radio-input@18.0.0
+  - @commercetools-uikit/card@18.0.0
+  - @commercetools-uikit/text@18.0.0
+  - @commercetools-uikit/tag@18.0.0
+  - @commercetools-uikit/design-system@18.0.0
+  - @commercetools-uikit/field-label@18.0.0
+  - @commercetools-uikit/async-select-input@18.0.0
+  - @commercetools-uikit/select-input@18.0.0
+  - @commercetools-uikit/icons@18.0.0
+  - @commercetools-uikit/spacings@18.0.0
+  - @commercetools-uikit/accessible-hidden@18.0.0
+  - @commercetools-uikit/collapsible-motion@18.0.0
+  - @commercetools-uikit/grid@18.0.0
+  - @commercetools-uikit/hooks@18.0.0
+  - @commercetools-uikit/utils@18.0.0
+
+## 17.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`a0abf51`](https://github.com/commercetools/ui-kit/commit/a0abf51483dcf26861f6af506b3acf10cb9fcd2c), [`3425f6c`](https://github.com/commercetools/ui-kit/commit/3425f6c371e2b386d60aa04c97ca8ffbf43f6cb1), [`7f42b3d`](https://github.com/commercetools/ui-kit/commit/7f42b3d9ff3ae5c9beebdc812cc1aa1a141b1620)]:
+  - @commercetools-uikit/icons@17.1.0
+  - @commercetools-uikit/design-system@17.1.0
+  - @commercetools-uikit/card@17.1.0
+  - @commercetools-uikit/field-label@17.1.0
+  - @commercetools-uikit/async-select-input@17.1.0
+  - @commercetools-uikit/radio-input@17.1.0
+  - @commercetools-uikit/select-input@17.1.0
+  - @commercetools-uikit/tag@17.1.0
+  - @commercetools-uikit/accessible-button@17.1.0
+  - @commercetools-uikit/primary-button@17.1.0
+  - @commercetools-uikit/secondary-button@17.1.0
+  - @commercetools-uikit/secondary-icon-button@17.1.0
+  - @commercetools-uikit/text@17.1.0
+  - @commercetools-uikit/spacings@17.1.0
+  - @commercetools-uikit/accessible-hidden@17.1.0
+  - @commercetools-uikit/collapsible-motion@17.1.0
+  - @commercetools-uikit/grid@17.1.0
+  - @commercetools-uikit/hooks@17.1.0
+  - @commercetools-uikit/utils@17.1.0
+
+## 17.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`20dc5bb`](https://github.com/commercetools/ui-kit/commit/20dc5bb6e331d2737439d87299057c773669f72e)]:
+  - @commercetools-uikit/select-input@17.0.1
+  - @commercetools-uikit/async-select-input@17.0.1
+  - @commercetools-uikit/design-system@17.0.1
+  - @commercetools-uikit/accessible-hidden@17.0.1
+  - @commercetools-uikit/accessible-button@17.0.1
+  - @commercetools-uikit/primary-button@17.0.1
+  - @commercetools-uikit/secondary-button@17.0.1
+  - @commercetools-uikit/secondary-icon-button@17.0.1
+  - @commercetools-uikit/card@17.0.1
+  - @commercetools-uikit/collapsible-motion@17.0.1
+  - @commercetools-uikit/field-label@17.0.1
+  - @commercetools-uikit/grid@17.0.1
+  - @commercetools-uikit/icons@17.0.1
+  - @commercetools-uikit/radio-input@17.0.1
+  - @commercetools-uikit/tag@17.0.1
+  - @commercetools-uikit/text@17.0.1
+  - @commercetools-uikit/hooks@17.0.1
+  - @commercetools-uikit/utils@17.0.1
+  - @commercetools-uikit/spacings@17.0.1
+
+## 17.0.0
+
+### Patch Changes
+
+- [#2667](https://github.com/commercetools/ui-kit/pull/2667) [`33cccc8eb`](https://github.com/commercetools/ui-kit/commit/33cccc8eb396116150e20b07a5802f064871d706) Thanks [@emmenko](https://github.com/emmenko)! - Table row type can be passed to `DataTableManager` and `TColumnProps`.
+
+- Updated dependencies [[`6803787a0`](https://github.com/commercetools/ui-kit/commit/6803787a03e07020b8a2437483fc6fe7fac488f5)]:
+  - @commercetools-uikit/select-input@17.0.0
+  - @commercetools-uikit/async-select-input@17.0.0
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/accessible-hidden@17.0.0
+  - @commercetools-uikit/accessible-button@17.0.0
+  - @commercetools-uikit/primary-button@17.0.0
+  - @commercetools-uikit/secondary-button@17.0.0
+  - @commercetools-uikit/secondary-icon-button@17.0.0
+  - @commercetools-uikit/card@17.0.0
+  - @commercetools-uikit/collapsible-motion@17.0.0
+  - @commercetools-uikit/field-label@17.0.0
+  - @commercetools-uikit/grid@17.0.0
+  - @commercetools-uikit/icons@17.0.0
+  - @commercetools-uikit/radio-input@17.0.0
+  - @commercetools-uikit/tag@17.0.0
+  - @commercetools-uikit/text@17.0.0
+  - @commercetools-uikit/hooks@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+  - @commercetools-uikit/spacings@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

@@ -10,26 +10,28 @@ type TGetTextColor = {
 
 export const getTextColor = (props: TGetTextColor): string => {
   if (props.isIcon && props.isDisabled) {
-    return designTokens.fontColorForFlatButtonIconWhenDisabled;
+    return designTokens.colorNeutral60;
   }
 
   if (props.isDisabled) {
-    return designTokens.fontColorForTextWhenDisabled;
+    return designTokens.colorNeutral60;
   }
 
   switch (props.tone) {
     case 'primary':
       return props.isHover
-        ? designTokens.fontColorForFlatButtonAsPrimaryWhenHovered
-        : designTokens.fontColorForFlatButtonAsPrimary;
+        ? designTokens.fontColorForButtonAsFlatWhenHovered
+        : designTokens.colorPrimary30;
     case 'secondary':
-      return designTokens.fontColorForFlatButtonAsSecondary;
+      return props.isHover
+        ? designTokens.colorPrimary25
+        : designTokens.colorSolid;
     case 'inverted':
-      return designTokens.fontColorForFlatButtonAsInverted;
+      return designTokens.colorSurface;
     case 'critical':
       return props.isHover
-        ? designTokens.fontColorForFlatButtonAsCriticalWhenHovered
-        : designTokens.fontColorForFlatButtonAsCritical;
+        ? designTokens.fontColorForButtonAsFlatAsCriticalWhenHovered
+        : designTokens.fontColorForButtonAsFlatAsCritical;
     default:
       return 'inherit';
   }

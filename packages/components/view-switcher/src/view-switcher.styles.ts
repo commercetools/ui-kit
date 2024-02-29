@@ -7,21 +7,21 @@ const getSizeStyles = (
 ) => {
   if (isCondensed) {
     return css`
-      padding: ${designTokens.paddingForViewSwitcherWhenCondensed};
-      height: ${designTokens.heightForViewSwitcherWhenCondensed};
+      padding: 0 ${designTokens.spacing25};
+      height: 32px;
     `;
   }
 
   return css`
-    padding: ${designTokens.paddingForViewSwitcher};
-    height: ${designTokens.heightForViewSwitcher};
+    padding: 0 ${designTokens.spacing30};
+    height: 40px;
   `;
 };
 
 const getFontColor = (isDisabled?: boolean, isActive?: boolean) => {
-  if (isDisabled) return designTokens.fontColorForViewSwitcherWhenDisabled;
-  if (isActive) return designTokens.fontColorForViewSwitcherWhenSelected;
-  return designTokens.fontColorForViewSwitcher;
+  if (isDisabled) return designTokens.colorNeutral60;
+  if (isActive) return designTokens.fontColorForButtonAsSecondary;
+  return designTokens.fontColorForViewSwitcherButton;
 };
 
 export const getButtonStyles = (
@@ -31,13 +31,9 @@ export const getButtonStyles = (
   isFirstButton?: TViewSwitcherButtonProps['isFirstButton'],
   isLastButton?: TViewSwitcherButtonProps['isLastButton']
 ) => {
-  const borderRadius = `${
-    isFirstButton ? designTokens.borderRadiusForViewSwitcher : '0'
-  } ${
-    isLastButton
-      ? `${designTokens.borderRadiusForViewSwitcher} ${designTokens.borderRadiusForViewSwitcher}`
-      : '0 0'
-  } ${isFirstButton ? designTokens.borderRadiusForViewSwitcher : '0'}`;
+  const borderRadius = `${isFirstButton ? designTokens.borderRadius4 : '0'} ${
+    isLastButton ? `${designTokens.borderRadius4}` : '0 0'
+  } ${isFirstButton ? designTokens.borderRadius4 : '0'}`;
 
   const fontColor = getFontColor(isDisabled, isActive);
 
@@ -47,32 +43,35 @@ export const getButtonStyles = (
       color: ${fontColor};
       fill: ${fontColor};
       transition: background-color ${designTokens.transitionLinear80Ms};
-      font-size: ${designTokens.fontSizeDefault};
-      border: ${designTokens.borderForViewSwitcher};
-      border-left: ${isFirstButton ? designTokens.borderForViewSwitcher : '0'};
+      font-size: ${designTokens.fontSize30};
+      border: 1px solid ${designTokens.borderColorForButtonAsSecondary};
+      border-left: ${isFirstButton
+        ? `1px solid ${designTokens.borderColorForButtonAsSecondary}`
+        : '0'};
       border-radius: ${borderRadius};
-      box-shadow: ${designTokens.boxShadowForViewSwitcher};
-      background-color: ${designTokens.backgroundColorForViewSwitcher};
+      box-shadow: ${designTokens.shadow0};
+      background-color: ${designTokens.colorSurface};
       &:hover {
-        background-color: ${designTokens.backgroundColorForViewSwitcherWhenHovered};
+        background-color: ${designTokens.backgroundColorForButtonWhenHovered};
       }
       &:active {
-        background-color: ${designTokens.backgroundColorForViewSwitcherWhenSelected};
+        background-color: ${designTokens.backgroundColorForButtonWhenActive};
       }
       ${getSizeStyles(isCondensed)}
     `,
     isDisabled &&
       css`
-        background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
-        color: ${designTokens.fontColorForViewSwitcherWhenDisabled};
+        background-color: ${designTokens.colorSurface};
+        color: ${designTokens.colorNeutral60};
         &:hover {
-          background-color: ${designTokens.backgroundColorForViewSwitcherWhenDisabled};
+          background-color: ${designTokens.colorSurface};
         }
+        border-color: ${designTokens.colorNeutral};
       `,
     isActive &&
       css`
-        background-color: ${designTokens.backgroundColorForViewSwitcherWhenSelected};
-        box-shadow: ${designTokens.boxShadowForViewSwitcherWhenSelected};
+        background-color: ${designTokens.backgroundColorForButtonWhenActive};
+        box-shadow: ${designTokens.shadow0};
       `,
   ];
 };

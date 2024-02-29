@@ -1,7 +1,5 @@
 import {
   LocalizedMultilineTextInput,
-  ErrorMessage,
-  WarningMessage,
 } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
@@ -107,7 +105,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        errors={{ en: <ErrorMessage>foo</ErrorMessage> }}
+        errors={{ en: 'foo' }}
       />
     </Spec>
     <Spec label="when there is an error for a specific language (second one)">
@@ -116,7 +114,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        errors={{ de: <ErrorMessage>foo</ErrorMessage> }}
+        errors={{ de: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a general error">
@@ -134,7 +132,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        warnings={{ en: <WarningMessage>foo</WarningMessage> }}
+        warnings={{ en: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a warning for a specific language (second one)">
@@ -143,7 +141,7 @@ export const component = () => (
         onChange={() => {}}
         selectedLanguage="en"
         horizontalConstraint={7}
-        warnings={{ de: <WarningMessage>foo</WarningMessage> }}
+        warnings={{ de: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a general warning">
@@ -153,6 +151,45 @@ export const component = () => (
         selectedLanguage="en"
         horizontalConstraint={7}
         hasWarning={true}
+      />
+    </Spec>
+    <Spec label="when there is a additional info set for a locale">
+      <LocalizedMultilineTextInput
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        additionalInfo={{ en: 'This is a foo field' }}
+      />
+    </Spec>
+    <Spec label="when there is a additional info and error for a locale">
+      <LocalizedMultilineTextInput
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        hasError={true}
+        errors={{ en: 'Error error error e e e' }}
+        additionalInfo={{ en: 'This is a foo field' }}
+      />
+    </Spec>
+    <Spec label="when there is a additional info set for a locale without collapse control btn">
+      <LocalizedMultilineTextInput
+        value={{ en: 'short text' }}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        additionalInfo={{ en: 'This is a foo field' }}
+      />
+    </Spec>
+    <Spec label="when there is a additional info set for a locale without collapse control btn and an error">
+      <LocalizedMultilineTextInput
+        value={{ en: 'short text' }}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        additionalInfo={{ en: 'This is a foo field' }}
+        errors={{ en: 'Error error error e e e' }}
       />
     </Spec>
   </Suite>

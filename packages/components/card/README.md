@@ -20,11 +20,11 @@ npm --save install @commercetools-uikit/card
 Additionally install the peer dependencies (if not present)
 
 ```
-yarn add react
+yarn add react react-router-dom
 ```
 
 ```
-npm --save install react
+npm --save install react react-router-dom
 ```
 
 ## Usage
@@ -43,10 +43,22 @@ export default Example;
 
 ## Properties
 
-| Props        | Type                                                               | Required | Default    | Description                                                                                                                                                                                        |
-| ------------ | ------------------------------------------------------------------ | :------: | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`       | `union`<br/>Possible values:<br/>`'raised' , 'flat'`               |          | `'raised'` | Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.                                                                                      |
-| `insetScale` | `union`<br/>Possible values:<br/>`'none' , 's' , 'm' , 'l' , 'xl'` |          | `'m'`      | Determines the spacing (padding) that the content should have from the card borders. In case there is no space needed, you can pass `none`.                                                        |
-| `theme`      | `union`<br/>Possible values:<br/>`'light' , 'dark'`                |          | `'light'`  | Determines the background color of the card.                                                                                                                                                       |
-| `className`  | `string`                                                           |          |            | Pass a custom CSS class, useful to override the styles.&#xA;<br>&#xA;NOTE: This is not recommended and should only be used for building new components&#xA;that require special style adjustments. |
-| `children`   | `ReactNode`                                                        |          |            |                                                                                                                                                                                                    |
+| Props            | Type                                                               | Required | Default    | Description                                                                                                                                                                                        |
+| ---------------- | ------------------------------------------------------------------ | :------: | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`           | `union`<br/>Possible values:<br/>`'raised' , 'flat'`               |          | `'raised'` | Determines the visual effect of the card. A raised card has a box shadow while a flat card has just a border.                                                                                      |
+| `insetScale`     | `union`<br/>Possible values:<br/>`'none' , 's' , 'm' , 'l' , 'xl'` |          | `'m'`      | Determines the spacing (padding) that the content should have from the card borders. In case there is no space needed, you can pass `none`.                                                        |
+| `theme`          | `union`<br/>Possible values:<br/>`'light' , 'dark'`                |          | `'light'`  | Determines the background color of the card.                                                                                                                                                       |
+| `className`      | `string`                                                           |          |            | Pass a custom CSS class, useful to override the styles.&#xA;<br>&#xA;NOTE: This is not recommended and should only be used for building new components&#xA;that require special style adjustments. |
+| `children`       | `ReactNode`                                                        |          |            |                                                                                                                                                                                                    |
+| `onClick`        | `Function`<br/>[See signature.](#signature-onClick)                |          |            | The callback function to be executed when the Card component is clicked. Prefer this for managing side effects rather than navigation.                                                             |
+| `to`             | `union`<br/>Possible values:<br/>`string , LocationDescriptor`     |          |            | The URL that the Card should point to. If provided, the Card will be rendered as an anchor element.                                                                                                |
+| `isExternalLink` | `boolean`                                                          |          |            | A flag to indicate if the Card points to an external source.                                                                                                                                       |
+| `isDisabled`     | `boolean`                                                          |          |            | Indicates that a clickable Card should not allow clicks. This allows consumers to temporarily disable a clickable Card.                                                                            |
+
+## Signatures
+
+### Signature `onClick`
+
+```ts
+() => void
+```

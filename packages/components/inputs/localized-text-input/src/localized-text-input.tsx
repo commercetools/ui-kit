@@ -4,10 +4,14 @@ import {
   type ReactNode,
   useCallback,
 } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, type MessageDescriptor } from 'react-intl';
 import { css } from '@emotion/react';
 import { useFieldId, useToggleState } from '@commercetools-uikit/hooks';
-import { ErrorMessage } from '@commercetools-uikit/messages';
+import {
+  ErrorMessage,
+  AdditionalInfoMessage,
+  WarningMessage,
+} from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import {
@@ -126,13 +130,29 @@ export type TLocalizedTextInputProps = {
    */
   hasWarning?: boolean;
   /**
-   * Used to show errors underneath the inputs of specific currencies. Pass an object whose key is a currency and whose value is the error to show for that key.
+   * Used to show errors underneath the inputs of specific locales. Pass an object whose key is a locale and whose value is the error to show for that key.
    */
-  errors?: Record<string, string>;
+  errors?: Record<string, ReactNode>;
   /**
    * A map of warnings.
    */
   warnings?: Record<string, ReactNode>;
+  /**
+   * An object mapping locales to additional messages to be rendered below each input element.
+    Example:
+    {
+      en: 'Some value',
+      es: 'Algún valor',
+    }
+   */
+  additionalInfo?: Record<
+    string,
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      })
+  >;
 };
 
 export type TLocalizedInputProps = {
@@ -164,9 +184,6 @@ export type TLocalizedInputProps = {
    * Indicates the input field has a warning
    */
   hasWarning?: boolean;
-  /**
-   * HTML node to display warning
-   */
   warning?: ReactNode;
   placeholder?: string;
 };
@@ -328,8 +345,17 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                     aria-invalid={props['aria-invalid']}
                     aria-errormessage={props['aria-errormessage']}
                   />
-                  {props.errors && props.errors[language]}
-                  {props.warnings && props.warnings[language]}
+                  {props.errors?.[language] && (
+                    <ErrorMessage>{props.errors[language]}</ErrorMessage>
+                  )}
+                  {props.warnings?.[language] && (
+                    <WarningMessage>{props.warnings[language]}</WarningMessage>
+                  )}
+                  {props.additionalInfo?.[language] && (
+                    <AdditionalInfoMessage
+                      message={props.additionalInfo[language]}
+                    />
+                  )}
                 </Stack>
               </div>
             );

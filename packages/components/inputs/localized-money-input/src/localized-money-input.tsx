@@ -7,6 +7,7 @@ import MoneyInput, {
   type TMoneyValue,
   type TValue,
 } from '@commercetools-uikit/money-input';
+import { ErrorMessage, WarningMessage } from '@commercetools-uikit/messages';
 import Stack from '@commercetools-uikit/spacings-stack';
 import Constraints from '@commercetools-uikit/constraints';
 import { CoinsIcon } from '@commercetools-uikit/icons';
@@ -254,9 +255,8 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
           {...filterDataAttributes(props)}
         />
       </div>
-      {(props.error || props.warning) && (
-        <div>{props.error ? props.error : props.warning}</div>
-      )}
+      {props.error && <ErrorMessage>{props.error}</ErrorMessage>}
+      {props.warning && <WarningMessage>{props.warning}</WarningMessage>}
     </Stack>
   );
 };

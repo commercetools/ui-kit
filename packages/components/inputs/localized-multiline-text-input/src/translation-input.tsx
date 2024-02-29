@@ -5,6 +5,7 @@ import {
   type FocusEventHandler,
   type ReactNode,
 } from 'react';
+import { MessageDescriptor } from 'react-intl';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import FlatButton from '@commercetools-uikit/flat-button';
@@ -16,6 +17,11 @@ import {
   MultilineInput,
   messagesMultilineInput,
 } from '@commercetools-uikit/input-utils';
+import {
+  AdditionalInfoMessage,
+  ErrorMessage,
+  WarningMessage,
+} from '@commercetools-uikit/messages';
 import {
   getTextareaStyles,
   getLanguageLabelStyles,
@@ -43,6 +49,12 @@ type TranslationInputProps = {
   hasLanguagesControl?: boolean;
   warning?: ReactNode;
   error?: ReactNode;
+  additionalInfo?:
+    | string
+    | ReactNode
+    | (MessageDescriptor & {
+        values: Record<string, ReactNode>;
+      });
   id?: string;
   name?: string;
   autoComplete?: string;
@@ -133,7 +145,8 @@ const TranslationInput = (props: TranslationInputProps) => {
     */
     (!props.isCollapsed && inputHasSeveralRows && !props.hasLanguagesControl) ||
     props.error ||
-    props.warning;
+    props.warning ||
+    (props.additionalInfo && !props.isCollapsed);
 
   if (!props.isReadOnly) {
     warning(
@@ -196,13 +209,13 @@ const TranslationInput = (props: TranslationInputProps) => {
           if (props.error)
             return (
               <LeftColumn>
-                <div>{props.error}</div>
+                <ErrorMessage>{props.error}</ErrorMessage>
               </LeftColumn>
             );
           if (props.warning)
             return (
               <LeftColumn>
-                <div>{props.warning}</div>
+                <WarningMessage>{props.warning}</WarningMessage>
               </LeftColumn>
             );
           return null;
@@ -235,6 +248,13 @@ const TranslationInput = (props: TranslationInputProps) => {
           </>
         )}
       </Row>
+      {props.additionalInfo && (
+        <Row>
+          <LeftColumn>
+            <AdditionalInfoMessage message={props.additionalInfo} />
+          </LeftColumn>
+        </Row>
+      )}
     </Stack>
   );
 };

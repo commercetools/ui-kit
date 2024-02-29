@@ -254,3 +254,29 @@ describe('when field is touched and has errors', () => {
     });
   });
 });
+
+describe('when field has additional info and error', () => {
+  it('should render the info and error', () => {
+    const { getByText } = renderLocalizedMultilineTextField({
+      touched: true,
+      additionalInfo: { en: 'hello info' },
+      errors: { custom: true },
+      renderError: () => 'Custom error',
+    });
+    expect(getByText('hello info')).toBeInTheDocument();
+    expect(getByText('Custom error')).toBeInTheDocument();
+  });
+});
+
+describe('when field is touched and has warnings', () => {
+  describe('when there is a custom warning', () => {
+    it('should render the custom warning message', () => {
+      const { getByText } = renderLocalizedMultilineTextField({
+        touched: true,
+        warnings: { customWarning: true },
+        renderWarning: () => 'Custom warning',
+      });
+      expect(getByText('Custom warning')).toBeInTheDocument();
+    });
+  });
+});

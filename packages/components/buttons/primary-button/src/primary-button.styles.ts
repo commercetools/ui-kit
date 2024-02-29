@@ -11,14 +11,12 @@ const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
       return css`
         height: ${designTokens.heightForButtonAsMedium};
         border-radius: ${designTokens.borderRadiusForButtonAsMedium};
-        padding: ${designTokens.paddingForButtonAsMedium};
       `;
 
     case 'big':
       return css`
         height: ${designTokens.heightForButtonAsBig};
         border-radius: ${designTokens.borderRadiusForButtonAsBig};
-        padding: ${designTokens.paddingForButtonAsBig};
       `;
 
     default:
@@ -36,6 +34,7 @@ const getButtonStyles = (
     align-items: center;
     color: ${designTokens.colorSurface};
     transition: background-color ${designTokens.transitionLinear80Ms};
+    padding: ${designTokens.paddingForButton};
     ${getSizeStyles(size)}
   `;
   // "disabled" takes precendece over "active"
@@ -48,7 +47,7 @@ const getButtonStyles = (
         &:hover {
           background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
           color: ${designTokens.colorNeutral60};
-          box-shadow: ${designTokens.shadowForButtonWhenDisabled};
+          box-shadow: ${designTokens.shadow0};
         }
       `,
     ];
@@ -57,44 +56,53 @@ const getButtonStyles = (
     const baseActiveStyles = [
       baseStyles,
       css`
-        box-shadow: ${designTokens.shadowForButtonWhenActive};
+        box-shadow: ${designTokens.shadow0};
         &:hover,
         &:focus {
-          box-shadow: ${designTokens.shadowForButtonWhenFocused};
+          box-shadow: ${designTokens.shadow0};
         }
       `,
     ];
     switch (tone) {
       case 'primary':
+        // TODO: This custom colors where itroduced in the Merchant Center redign 2023
+        // We need to check with designers if we want to introduce them in our color palette
+        // They are 'color-primary' with 10% and 5% black opacity
         return [
           baseActiveStyles,
           css`
-            background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenActive};
+            background-color: ${designTokens.backgroundColorForButtonAsPrimary};
             &:focus,
             &:hover {
-              background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenHovered};
+              background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsDefaultWhenHovered};
             }
           `,
         ];
       case 'urgent':
+        // TODO: This custom colors where itroduced in the Merchant Center redign 2023
+        // We need to check with designers if we want to introduce them in our color palette
+        // They are 'color-warning' with 10% and 5% black opacity
         return [
           baseActiveStyles,
           css`
-            background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenActive};
+            background-color: #dc630a;
             &:focus,
             &:hover {
-              background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenHovered};
+              background-color: #e7680d;
             }
           `,
         ];
       case 'critical':
+        // TODO: This custom colors where itroduced in the Merchant Center redign 2023
+        // We need to check with designers if we want to introduce them in our color palette
+        // They are 'color-error' with 10% and 5% black opacity
         return [
           baseActiveStyles,
           css`
-            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenActive};
+            background-color: #b3003e;
             &:focus,
             &:hover {
-              background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenHovered};
+              background-color: #cc0047;
             }
           `,
         ];
@@ -105,56 +113,65 @@ const getButtonStyles = (
   const baseDefaultStyles = [
     baseStyles,
     css`
-      box-shadow: ${designTokens.shadowForButton};
+      box-shadow: ${designTokens.shadow0};
       &:hover,
       &:focus {
-        box-shadow: ${designTokens.shadowForButtonWhenFocused};
+        box-shadow: ${designTokens.shadow0};
       }
       &:active {
-        box-shadow: ${designTokens.shadowForButtonWhenActive};
+        box-shadow: ${designTokens.shadow0};
       }
     `,
   ];
   switch (tone) {
     case 'primary':
+      // TODO: This custom colors where itroduced in the Merchant Center redign 2023
+      // We need to check with designers if we want to introduce them in our color palette
+      // They are 'color-primary' with 10% and 5% black opacity
       return [
         baseDefaultStyles,
         css`
           background-color: ${designTokens.colorPrimary};
           &:focus,
           &:hover {
-            background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenHovered};
+            background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsDefaultWhenHovered};
           }
           &:active {
-            background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenActive};
+            background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsDefaultWhenActive};
           }
         `,
       ];
     case 'urgent':
+      // TODO: This custom colors where itroduced in the Merchant Center redign 2023
+      // We need to check with designers if we want to introduce them in our color palette
+      // They are 'color-warning' with 10% and 5% black opacity
       return [
         baseDefaultStyles,
         css`
-          background-color: ${designTokens.colorWarning};
+          background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsUrgent};
           &:focus,
           &:hover {
-            background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenHovered};
+            background-color: #e7680d;
           }
           &:active {
-            background-color: ${designTokens.backgroundColorForButtonAsUrgentWhenActive};
+            background-color: #dc630a;
           }
         `,
       ];
     case 'critical':
+      // TODO: These custom colors where itroduced in the Merchant Center redign 2023
+      // We need to check with designers if we want to introduce them in our color palette
+      // They are 'color-error' with 10% and 5% black opacity
       return [
         baseDefaultStyles,
         css`
           background-color: ${designTokens.colorError};
           &:focus,
           &:hover {
-            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenHovered};
+            background-color: #cc0047;
           }
           &:active {
-            background-color: ${designTokens.backgroundColorForButtonAsCriticalWhenActive};
+            background-color: #b3003e;
           }
         `,
       ];

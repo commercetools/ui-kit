@@ -81,23 +81,20 @@ const defaultProps: Pick<TLinkProps, 'tone' | 'isExternal'> = {
 
 const getTextColorValue = (tone: TLinkProps['tone'] = 'primary') => {
   if (tone === 'primary') {
-    return designTokens.fontColorForLinkAsPrimary;
+    return designTokens.colorPrimary30;
   } else if (tone === 'secondary') {
-    return designTokens.fontColorForLinkAsSecondary;
+    return designTokens.colorSolid;
   }
 
-  return designTokens.fontColorForLinkAsInverted;
+  return designTokens.colorSurface;
 };
 
 const getActiveColorValue = (tone: string = 'primary') => {
-  if (tone === 'primary') {
-    return designTokens.fontColorForLinkAsPrimaryWhenActive;
-  }
-  if (tone === 'secondary') {
-    return designTokens.fontColorForLinkAsSecondaryWhenActive;
+  if (tone === 'primary' || tone === 'secondary') {
+    return designTokens.fontColorForButtonAsFlatWhenHovered;
   }
 
-  return designTokens.fontColorForLinkAsInverted;
+  return designTokens.colorSurface;
 };
 
 const getLinkStyles = (props: TLinkProps) => {

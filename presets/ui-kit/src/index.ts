@@ -33,6 +33,7 @@ export {
   PageSizeSelector,
   Pagination,
 } from '@commercetools-uikit/pagination';
+export { default as ProgressBar } from '@commercetools-uikit/progress-bar';
 export { default as Spacings } from '@commercetools-uikit/spacings';
 export { default as Stamp } from '@commercetools-uikit/stamp';
 export { default as DataTable } from '@commercetools-uikit/data-table';

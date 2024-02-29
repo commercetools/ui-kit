@@ -1,5 +1,63 @@
 # @commercetools-uikit/icons
 
+## 18.2.0
+
+### Minor Changes
+
+- [#2724](https://github.com/commercetools/ui-kit/pull/2724) [`a414fb5`](https://github.com/commercetools/ui-kit/commit/a414fb5d2d63edc988ad1c8ccc32e2ce2d646fa3) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Add `Users` icon
+
+- [#2720](https://github.com/commercetools/ui-kit/pull/2720) [`5518760`](https://github.com/commercetools/ui-kit/commit/5518760cc2ba912312386aa370ec2b5c281c5377) Thanks [@kark](https://github.com/kark)! - Implement updated color scheme across all UI-kit components
+
+### Patch Changes
+
+- Updated dependencies [[`5518760`](https://github.com/commercetools/ui-kit/commit/5518760cc2ba912312386aa370ec2b5c281c5377)]:
+  - @commercetools-uikit/design-system@18.2.0
+  - @commercetools-uikit/utils@18.2.0
+
+## 18.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`78d878c`](https://github.com/commercetools/ui-kit/commit/78d878cdb62bf46e1596f0df72fc6871a847ecb9)]:
+  - @commercetools-uikit/design-system@18.1.0
+  - @commercetools-uikit/utils@18.1.0
+
+## 18.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6), [`568c28e`](https://github.com/commercetools/ui-kit/commit/568c28ef90c5b7f97d1cc37a1a402cfe6f001c45), [`db371ba`](https://github.com/commercetools/ui-kit/commit/db371bab2237b82035a227af3d9227926448cb99)]:
+  - @commercetools-uikit/design-system@18.0.0
+  - @commercetools-uikit/utils@18.0.0
+
+## 17.1.0
+
+### Minor Changes
+
+- [#2701](https://github.com/commercetools/ui-kit/pull/2701) [`a0abf51`](https://github.com/commercetools/ui-kit/commit/a0abf51483dcf26861f6af506b3acf10cb9fcd2c) Thanks [@ByronDWall](https://github.com/ByronDWall)! - We've added a new component to manage icons when you need to render an icon with a themed bounding-box. Icons can be either from the `ui-kit` icons set or a custom SVG.
+
+### Patch Changes
+
+- Updated dependencies [[`3425f6c`](https://github.com/commercetools/ui-kit/commit/3425f6c371e2b386d60aa04c97ca8ffbf43f6cb1)]:
+  - @commercetools-uikit/design-system@17.1.0
+  - @commercetools-uikit/utils@17.1.0
+
+## 17.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.1
+  - @commercetools-uikit/utils@17.0.1
+
+## 17.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

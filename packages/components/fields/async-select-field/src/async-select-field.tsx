@@ -18,10 +18,12 @@ import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import AsyncSelectInput from '@commercetools-uikit/async-select-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 type ReactSelectAsyncProps = AsyncProps<unknown, boolean, GroupBase<unknown>>;
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
 type TFieldErrors = Record<string, boolean>;
+type TFieldWarnings = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
   [K in keyof Values]?: TFieldErrors;
@@ -38,9 +40,15 @@ type TCustomEvent = {
 
 const sequentialId = createSequentialId('async-select-field-');
 const sequentialErrorsId = createSequentialId('async-select-field-error-')();
+const sequentialWarningsId = createSequentialId(
+  'async-select-field-warning-'
+)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 export type TAsyncSelectFieldProps = {
   // AsyncSelectField
@@ -80,6 +88,16 @@ export type TAsyncSelectFieldProps = {
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
+  /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br />
+   * Unknown warnings will be forwarded to `renderWarning`
+   */
+  warnings?: TFieldWarnings;
+  /**
+   * Called with custom warnings. This function can return a message which will be wrapped in an WarningMessage. It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -172,6 +190,7 @@ export type TAsyncSelectFieldProps = {
   isSearchable?: ReactSelectAsyncProps['isSearchable'];
   /**
    * Indicates the input field has a warning
+   * @deprecated Please use the `warnings` prop instead so users know the reason why the field is in warning state.
    */
   hasWarning?: boolean;
   /**
@@ -364,6 +383,11 @@ export default class AsyncSelectField extends Component<
       AsyncSelectInput.isTouched(this.props.touched) &&
       hasErrors(this.props.errors);
 
+    const hasWarning =
+      this.props.hasWarning ||
+      (AsyncSelectInput.isTouched(this.props.touched) &&
+        hasWarnings(this.props.warnings));
+
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
@@ -423,7 +447,7 @@ export default class AsyncSelectField extends Component<
             isOptionDisabled={this.props.isOptionDisabled}
             isMulti={this.props.isMulti}
             isSearchable={this.props.isSearchable}
-            hasWarning={this.props.hasWarning}
+            hasWarning={hasWarning}
             maxMenuHeight={this.props.maxMenuHeight}
             menuPortalTarget={this.props.menuPortalTarget}
             menuPortalZIndex={this.props.menuPortalZIndex}
@@ -453,6 +477,12 @@ export default class AsyncSelectField extends Component<
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
           />
         </Spacings.Stack>
       </Constraints.Horizontal>

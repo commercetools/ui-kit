@@ -1,6 +1,10 @@
 import { cloneElement, type ReactElement, type ReactNode } from 'react';
 import { css } from '@emotion/react';
-import { designTokens } from '@commercetools-uikit/design-system';
+import {
+  designTokens,
+  useTheme,
+  type TUseThemeResult,
+} from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import SpacingsInline from '@commercetools-uikit/spacings-inline';
 import { useWarnDeprecatedProp } from '@commercetools-uikit/utils';
@@ -48,11 +52,13 @@ type ToneRelatedProps = {
 
 type StylesFunctionParams = TStampProps & { overrideTextColor?: boolean };
 
-const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
+const tonesPropsMap = (
+  themedValue: TUseThemeResult['themedValue']
+): Record<TTone, ToneRelatedProps> => ({
   critical: {
     styles: {
       backgroundColor: designTokens.colorError95,
-      borderColor: designTokens.borderColorForStampWhenError,
+      borderColor: designTokens.colorError85,
       color: designTokens.colorError40,
     },
     iconColor: 'error',
@@ -60,7 +66,7 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   warning: {
     styles: {
       backgroundColor: designTokens.colorWarning95,
-      borderColor: designTokens.borderColorForStampWhenWarning,
+      borderColor: designTokens.colorWarning85,
       color: designTokens.colorWarning40,
     },
     iconColor: 'warning',
@@ -68,15 +74,15 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   positive: {
     styles: {
       backgroundColor: designTokens.backgroundColorForStampAsPositive,
-      borderColor: designTokens.borderColorForStampAsPositive,
-      color: designTokens.colorPrimary25,
+      borderColor: designTokens.colorPrimary85,
+      color: designTokens.fontColorForStampAsPositive,
     },
-    iconColor: 'primary',
+    iconColor: themedValue('primary', 'success'),
   },
   information: {
     styles: {
       backgroundColor: designTokens.colorInfo95,
-      borderColor: designTokens.borderColorForStampAsInformation,
+      borderColor: designTokens.colorInfo85,
       color: designTokens.colorInfo40,
     },
     iconColor: 'info',
@@ -84,7 +90,7 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   primary: {
     styles: {
       backgroundColor: designTokens.backgroundColorForStampAsPrimary,
-      borderColor: designTokens.borderColorForStampAsPrimary,
+      borderColor: designTokens.colorPrimary85,
       color: designTokens.colorPrimary25,
     },
     iconColor: 'primary40',
@@ -92,12 +98,12 @@ const tonesPropsMap: Record<TTone, ToneRelatedProps> = {
   secondary: {
     styles: {
       backgroundColor: designTokens.colorNeutral95,
-      borderColor: designTokens.borderColorForStampAsSecondary,
+      borderColor: designTokens.colorNeutral85,
       color: designTokens.colorNeutral40,
     },
     iconColor: 'neutral60',
   },
-};
+});
 
 export const availableTones: TTone[] = [
   'critical',
@@ -110,31 +116,35 @@ export const availableTones: TTone[] = [
 const getPaddingStyle = (props: StylesFunctionParams) => {
   if (props.isCondensed)
     return css`
-      padding: ${designTokens.paddingForStampAsCondensed};
+      padding: ${designTokens.spacing05} ${designTokens.spacing10};
     `;
   return css`
-    padding: ${designTokens.paddingForStamp};
+    padding: ${designTokens.spacing10} ${designTokens.spacing25};
   `;
 };
 
 const getIconColor = (
   props: StylesFunctionParams,
-  overrideTextColor: boolean
+  overrideTextColor: boolean,
+  themedValue: TUseThemeResult['themedValue']
 ) => {
   if (!overrideTextColor) {
     return 'inherit';
   }
 
-  const toneProps = props.tone && tonesPropsMap[props.tone];
+  const toneProps = props.tone && tonesPropsMap(themedValue)[props.tone];
   return toneProps ? toneProps.iconColor : '';
 };
 
-const getToneStyles = (props: StylesFunctionParams) => {
-  if (!props.tone || !tonesPropsMap[props.tone]) {
+const getToneStyles = (
+  props: StylesFunctionParams,
+  themedValue: TUseThemeResult['themedValue']
+) => {
+  if (!props.tone || !tonesPropsMap(themedValue)[props.tone]) {
     return css``;
   }
 
-  const toneProps = tonesPropsMap[props.tone];
+  const toneProps = tonesPropsMap(themedValue)[props.tone];
   return css`
     background-color: ${toneProps.styles.backgroundColor};
 
@@ -150,17 +160,18 @@ const getStampStyles = (props: StylesFunctionParams) => {
     color: ${props.overrideTextColor ? 'inherit' : designTokens.colorSolid};
     display: inline-block;
     border-radius: ${props.isCondensed
-      ? designTokens.borderRadiusForStampAsCondensed
-      : designTokens.borderRadiusForStamp};
+      ? designTokens.borderRadius2
+      : designTokens.borderRadius4};
   `;
 };
 
 const Stamp = (props: TStampProps) => {
+  const { themedValue } = useTheme();
   const Icon =
     props.icon &&
     cloneElement(props.icon, {
       size: 'medium',
-      color: getIconColor(props, true),
+      color: getIconColor(props, true, themedValue),
     });
 
   useWarnDeprecatedProp(
@@ -185,11 +196,14 @@ const Stamp = (props: TStampProps) => {
     <div
       css={[
         getStampStyles({ ...props, overrideTextColor: true }),
-        getToneStyles({ ...props, overrideTextColor: true }),
+        getToneStyles({ ...props, overrideTextColor: true }, themedValue),
         getPaddingStyle(props),
       ]}
     >
-      <SpacingsInline alignItems="center">
+      <SpacingsInline
+        alignItems="center"
+        scale={props.isCondensed ? 'xs' : 's'}
+      >
         {Icon}
         {props.label ? <StampLabel>{props.label}</StampLabel> : props.children}
       </SpacingsInline>

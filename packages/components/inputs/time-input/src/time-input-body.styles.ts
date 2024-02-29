@@ -17,10 +17,10 @@ const getClearSectionStyles = () => {
     cursor: pointer;
 
     & svg *:not([fill='none']) {
-      fill: ${designTokens.iconColorForDatetimeInputIcon};
+      fill: ${designTokens.colorNeutral40};
     }
     &:hover svg * {
-      fill: ${designTokens.iconColorForDatetimeInputIconWhenHovered};
+      fill: ${designTokens.colorError};
     }
   `;
 };
@@ -29,11 +29,11 @@ const getClockIconContainerColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
-  if (props.hasWarning) {
-    return designTokens.borderColorForInputWhenWarning;
-  }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
     return designTokens.borderColorForInputWhenReadonly;
@@ -44,11 +44,11 @@ const getClockIconContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
     return designTokens.fontColorForInputWhenDisabled;
   }
-  if (props.hasWarning) {
-    return designTokens.fontColorForInputWhenWarning;
-  }
   if (props.hasError) {
     return designTokens.fontColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
     return designTokens.fontColorForInputWhenReadonly;
@@ -88,11 +88,11 @@ const getInputContainerBorderColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
   }
-  if (props.hasWarning) {
-    return designTokens.borderColorForInputWhenWarning;
-  }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.borderColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
     return designTokens.borderColorForInputWhenReadonly;
@@ -104,11 +104,11 @@ const getInputContainerFontColor = (props: TTimeInputProps) => {
   if (props.isDisabled) {
     return designTokens.fontColorForInputWhenDisabled;
   }
-  if (props.hasWarning) {
-    return designTokens.fontColorForInputWhenWarning;
-  }
   if (props.hasError) {
     return designTokens.fontColorForInputWhenError;
+  }
+  if (props.hasWarning) {
+    return designTokens.fontColorForInputWhenWarning;
   }
   if (props.isReadOnly) {
     return designTokens.fontColorForInputWhenReadonly;
@@ -145,7 +145,7 @@ const getInputContainerStyles = (props: TTimeInputProps) => {
       height: ${designTokens.heightForInput};
       align-items: center;
       display: flex;
-      font-size: ${designTokens.fontSizeForInput};
+      font-size: ${designTokens.fontSize30};
       font-family: inherit;
       transition: border-color ${designTokens.transitionStandard},
         box-shadow ${designTokens.transitionStandard};
@@ -169,7 +169,7 @@ const getInputContainerStyles = (props: TTimeInputProps) => {
 
         &:focus-within {
           border-color: ${designTokens.borderColorForInputWhenFocused};
-          box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered}
+          box-shadow: inset 0 0 0 1px
             ${designTokens.borderColorForInputWhenFocused};
           &:hover {
             background-color: ${designTokens.colorSurface};
@@ -178,7 +178,7 @@ const getInputContainerStyles = (props: TTimeInputProps) => {
       `,
     (props.hasError || props.hasWarning) &&
       css`
-        box-shadow: ${designTokens.boxShadowForDatetimeInputWhenHovered};
+        box-shadow: inset 0 0 0 1px;
       `,
   ];
 };

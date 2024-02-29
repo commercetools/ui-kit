@@ -109,7 +109,7 @@ const Span = styled.span<TStyledSpanProps>`
   &::before {
     border-radius: 12px;
     box-shadow: none;
-    background-color: ${designTokens.backgroundColorForToggleInputTrack};
+    background-color: ${designTokens.colorNeutral};
     left: 0;
     top: 50%;
     transition: background 0.2s ease-in-out;
@@ -130,7 +130,7 @@ const Span = styled.span<TStyledSpanProps>`
     height: ${getThumbSize};
     width: ${getThumbSize};
     background-color: ${designTokens.colorSurface};
-    box-shadow: ${designTokens.shadowForToggleInputThumb};
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
     transition: transform 0.2s ease, background 0.2s ease;
   }
@@ -140,10 +140,10 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
   /* when checked */
   &:checked {
     + span::before {
-      background: ${designTokens.backgroundColorForToggleInputTrackWhenChecked};
+      background: ${designTokens.backgroundColorForToggleTrackWhenActive};
     }
     & + span::after {
-      background: ${designTokens.backgroundColorForToggleInputThumbWhenChecked};
+      background: ${designTokens.backgroundColorForToggleThumbWhenActive};
       transform: translate(${props.thumbSizes[props.size].diameter}, -50%);
     }
   }
@@ -151,30 +151,22 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
   /* when disabled */
   &:disabled {
     & + span::before {
-      background: ${
-        designTokens.backgroundColorForToggleInputTrackWhenDisabled
-      };
+      background: ${designTokens.colorAccent90};
       box-shadow: none;
     }
     & + span::after {
-      background: ${
-        designTokens.backgroundColorForToggleInputThumbWhenDisabled
-      };
-      box-shadow: ${designTokens.shadowForToggleInputThumb};
+      background: ${designTokens.colorAccent60};
+      box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
     }
   }
 
   /* when disabled and checked */
   &:disabled&:checked {
     & + span::before {
-      background: ${
-        designTokens.backgroundColorForToggleInputTrackWhenCheckedAndDisabled
-      };
+      background: ${designTokens.backgroundColorForToggleTrackWhenDisabled};
     }
     & + span::after {
-      background: ${
-        designTokens.backgroundColorForToggleInputThumbWhenCheckedAndDisabled
-      };
+      background: ${designTokens.backgroundColorForToggleThumbWhenDisabled};
     }
   }
 

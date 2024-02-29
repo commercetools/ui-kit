@@ -22,6 +22,40 @@ type TProps = {
   hasValue?: boolean;
   controlShouldRenderValue?: boolean;
   appearance?: 'default' | 'quiet';
+  minMenuWidth?:
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
+  maxMenuWidth?:
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 'scale'
+    | 'auto';
   horizontalConstraint?:
     | 3
     | 4
@@ -58,6 +92,22 @@ type TState = {
   isSelected?: boolean;
 };
 
+type TDesignTokenName = keyof typeof designTokens;
+
+const getHorizontalConstraintValue = (
+  value?: TProps['minMenuWidth'] | TProps['maxMenuWidth']
+) => {
+  switch (value) {
+    case 'auto':
+      return 'initial';
+    default:
+      return (
+        designTokens[`constraint${value}` as TDesignTokenName] ||
+        designTokens.constraintScale
+      );
+  }
+};
+
 const getInputBackgroundColor = (props: TProps) => {
   if (props.appearance === 'quiet') {
     return designTokens.backgroundColorForInputAsQuiet;
@@ -79,7 +129,7 @@ const getInputBorderColor = (props: TProps, state: TState) => {
     return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.borderColorForSelectInputWhenReadonly;
+    return designTokens.colorNeutral95;
   }
   if (state.isFocused) {
     return designTokens.borderColorForInputWhenFocused;
@@ -101,7 +151,7 @@ const getHoverInputBorderColor = (props: TProps) => {
     return designTokens.borderColorForInputWhenDisabled;
   }
   if (props.isReadOnly) {
-    return designTokens.borderColorForSelectInputWhenReadonly;
+    return designTokens.colorNeutral95;
   }
   if (props.hasError) {
     return designTokens.borderColorForInputWhenError;
@@ -115,7 +165,7 @@ const getHoverInputBorderColor = (props: TProps) => {
 const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
-    fontSize: designTokens.fontSizeForInput,
+    fontSize: designTokens.fontSize30,
     backgroundColor: getInputBackgroundColor(props),
     borderColor: getInputBorderColor(props, state),
     borderWidth: (() => {
@@ -125,7 +175,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
         state.isFocused ||
         props.appearance === 'quiet'
       ) {
-        return designTokens.borderWidthForSelectInput;
+        return designTokens.borderWidth2;
       }
       return designTokens.borderWidth1;
     })(),
@@ -138,8 +188,8 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     })(),
     padding:
       props.appearance === 'quiet'
-        ? `0 ${designTokens.paddingForInputAsQuiet}`
-        : `0 ${designTokens.paddingForInput}`,
+        ? designTokens.paddingForInputAsQuiet
+        : designTokens.paddingForInput,
     transition: `border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard}`,
     outline: 0,
@@ -180,22 +230,26 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
 const menuStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    border: `1px solid ${designTokens.borderColorForSelectInputMenu}`,
+    border: `1px solid ${designTokens.colorSurface}`,
     borderRadius: designTokens.borderRadiusForInput,
     backgroundColor: designTokens.backgroundColorForInput,
-    boxShadow: designTokens.shadowForSelectInputMenu,
-    fontSize: designTokens.fontSizeForInput,
+    boxShadow: '0 2px 5px 0px rgba(0, 0, 0, 0.15)',
+    fontSize: designTokens.fontSize30,
     fontFamily: 'inherit',
     margin: `${designTokens.spacing10} 0 0 0`,
     borderColor: (() => {
-      if (props.hasError)
-        return designTokens.borderColorForSelectInputMenuWhenError;
-      if (props.hasWarning)
-        return designTokens.borderColorForSelectInputMenuWhenWarning;
+      if (props.hasError || props.hasWarning) {
+        return designTokens.colorSurface;
+      }
       return base.borderColorForInput;
     })(),
     width: props.horizontalConstraint === 'auto' ? 'auto' : '100%',
-    minWidth: designTokens.constraint3,
+    minWidth: props.minMenuWidth
+      ? getHorizontalConstraintValue(props.minMenuWidth)
+      : designTokens.constraint3,
+    maxWidth: props.maxMenuWidth
+      ? getHorizontalConstraintValue(props.maxMenuWidth)
+      : designTokens.constraintScale,
   };
 };
 
@@ -215,15 +269,13 @@ const dropdownIndicatorStyles = (props: TProps) => (base: TBase) => {
     color: designTokens.fontColorForInput,
     margin: '0',
     padding: '0',
-    marginLeft: designTokens.marginForSelectInputIcon,
+    marginLeft: designTokens.spacing20,
     fill: (() => {
       if (props.isDisabled || props.isReadOnly)
         return designTokens.fontColorForInputWhenDisabled;
-      if (props.hasError)
-        return designTokens.fontColorForSelectInputIconWhenError;
-      if (props.hasWarning)
-        return designTokens.fontColorForSelectInputIconWhenWarning;
-      return designTokens.fontColorForSelectInputIcon;
+      if (props.hasError) return designTokens.colorError;
+      if (props.hasWarning) return designTokens.colorWarning;
+      return designTokens.colorNeutral60;
     })(),
   };
 };
@@ -232,13 +284,13 @@ const clearIndicatorStyles = () => (base: TBase) => ({
   ...base,
   display: 'flex',
   padding: 0,
-  marginLeft: designTokens.marginForSelectInputIcon,
+  marginLeft: designTokens.spacing20,
 });
 
 const menuListStyles = () => (base: TBase) => {
   return {
     ...base,
-    padding: designTokens.paddingForSelectInputMenu,
+    padding: `${designTokens.spacing10} 0`,
     borderRadius: designTokens.borderRadiusForInput,
     backgroundColor: designTokens.backgroundColorForInput,
   };
@@ -250,11 +302,9 @@ const optionStyles = () => (base: TBase, state: TState) => {
     transition: `border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard}`,
-    paddingLeft: designTokens.paddingLeftForSelectInputOptions,
-    paddingRight: designTokens.paddingRightForSelectInputOptions,
-    paddingTop: designTokens.paddingTopForSelectInputOptions,
-    paddingBottom: designTokens.paddingBottomForSelectInputOptions,
-    lineHeight: designTokens.lineHeightForSelectInputOptions,
+    padding: `${designTokens.spacing20} ${designTokens.spacing30}`,
+    lineHeight: designTokens.lineHeight40,
+    cursor: state.isDisabled ? 'not-allowed' : 'pointer',
     color: (() => {
       if (!state.isDisabled) return designTokens.fontColorForInput;
       if (state.isSelected) return designTokens.fontColorForInput;
@@ -263,8 +313,7 @@ const optionStyles = () => (base: TBase, state: TState) => {
     backgroundColor: (() => {
       if (state.isSelected)
         return designTokens.backgroundColorForInputWhenSelected;
-      if (state.isFocused)
-        return designTokens.backgroundColorForSelectInputOptionWhenHovered;
+      if (state.isFocused) return designTokens.colorNeutral98;
       return base.backgroundColor;
     })(),
 
@@ -288,13 +337,13 @@ const placeholderStyles = (props: TProps) => (base: TBase) => {
         !props.isDisabled
       ) {
         if (props.hasError) {
-          return designTokens.fontColorForSelectInputWhenError;
+          return designTokens.colorError;
         }
         if (props.hasWarning) {
-          return designTokens.fontColorForSelectInputWhenWarning;
+          return designTokens.colorWarning;
         }
       }
-      return designTokens.placeholderFontColorForInput;
+      return designTokens.colorNeutral60;
     })(),
     width: '100%',
     overflow: 'hidden',
@@ -326,7 +375,7 @@ const valueContainerStyles = (props: TProps) => (base: TBase) => {
     fill:
       props.isDisabled || props.isReadOnly
         ? designTokens.fontColorForInputWhenDisabled
-        : designTokens.fontColorForSelectInputIcon,
+        : designTokens.colorNeutral60,
   };
 };
 
@@ -340,9 +389,8 @@ const singleValueStyles = (props: TProps) => (base: TBase) => {
       if (props.isReadOnly) {
         return designTokens.fontColorForInputWhenReadonly;
       }
-      if (props.hasError) return designTokens.fontColorForSelectInputWhenError;
-      if (props.hasWarning)
-        return designTokens.fontColorForSelectInputWhenWarning;
+      if (props.hasError) return designTokens.colorError;
+      if (props.hasWarning) return designTokens.colorWarning;
       return designTokens.fontColorForInput;
     })(),
   };
@@ -354,7 +402,7 @@ const groupStyles = (props: TProps) => (base: TBase) => {
     padding: 0,
     '&:not(:first-of-type)': {
       borderTop: props.showOptionGroupDivider
-        ? `1px solid ${designTokens.borderColorForGroupHeadingSelectInputOptions}`
+        ? `1px solid ${designTokens.colorNeutral90}`
         : base.borderTop,
     },
   };
@@ -364,10 +412,11 @@ const groupHeadingStyles = () => (base: TBase) => {
   return {
     ...base,
     color: designTokens.fontColorForInputWhenReadonly,
-    fontSize: designTokens.fontSizeSmall,
+    fontSize: designTokens.fontSize20,
+    borderBottom: `1px solid ${designTokens.colorNeutral90}`,
     textTransform: 'none',
-    fontWeight: 'bold',
-    padding: `${designTokens.spacing20} ${designTokens.paddingForGroupHeadingSelectInputOptions}`,
+    fontWeight: designTokens.fontWeight500,
+    padding: `${designTokens.spacing20} ${designTokens.spacing30}`,
     '&:empty': {
       padding: 0,
     },
@@ -378,7 +427,7 @@ const containerStyles = () => (base: TBase, state: TState) => {
   return {
     ...base,
     fontFamily: 'inherit',
-    minHeight: designTokens.sizeHeightInput,
+    minHeight: designTokens.heightForInputAsSmall,
     borderRadius: designTokens.borderRadiusForInput,
     borderColor: state.isFocused
       ? designTokens.borderColorForInputWhenFocused
@@ -403,30 +452,30 @@ const multiValueStyles = () => (base: TBase) => {
   return {
     ...base,
     display: 'flex',
-    alignItems: designTokens.alignItemsForSelectInputTag,
-    height: designTokens.heightForSelectInputTag,
-    backgroundColor: designTokens.backgroundColorForTag,
+    alignItems: 'center',
+    height: '32px',
+    backgroundColor: designTokens.colorNeutral95,
     padding: '0',
-    border: designTokens.borderForSelectInputTag,
+    border: `1px solid ${designTokens.colorNeutral85}`,
   };
 };
 
 const multiValueLabelStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    fontSize: designTokens.fontSizeForSelectInputTag,
+    fontSize: designTokens.fontSize30,
     color: (() => {
       if (props.isDisabled) return designTokens.fontColorForInputWhenDisabled;
       if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
       return base.color;
     })(),
     padding: `${designTokens.spacing10} ${designTokens.spacing20}`,
-    borderRadius: `${designTokens.borderRadiusForTag} 0 0 ${designTokens.borderRadiusForTag}`,
+    borderRadius: `${designTokens.borderRadius2} 0 0 ${designTokens.borderRadius2}`,
     border: 'none',
     borderWidth: '1px 0 1px 1px',
 
     '&:last-child': {
-      borderRadius: designTokens.borderRadiusForTag,
+      borderRadius: designTokens.borderRadius2,
       borderWidth: designTokens.borderWidth1,
     },
   };
@@ -436,14 +485,14 @@ const multiValueRemoveStyles =
   (props: TProps) => (base: TBase, state: TState) => {
     return {
       ...base,
-      borderColor: designTokens.borderColorForTag,
+      borderColor: designTokens.colorNeutral,
       padding: `0 ${designTokens.spacing10}`,
-      borderRadius: `0 ${designTokens.borderRadiusForTag} ${designTokens.borderRadiusForTag} 0`,
+      borderRadius: `0 ${designTokens.borderRadius2} ${designTokens.borderRadius2} 0`,
       borderStyle: 'none',
       borderWidth: '0',
       pointerEvents:
         state.isDisabled || props.isReadOnly ? 'none' : base.pointerEvents,
-      backgroundColor: designTokens.backgroundColorForTag,
+      backgroundColor: designTokens.colorNeutral95,
 
       'svg *': {
         fill: props.isReadOnly
@@ -452,11 +501,11 @@ const multiValueRemoveStyles =
       },
 
       '&:hover, &:focus': {
-        borderColor: designTokens.borderColorForTagWarning,
-        backgroundColor: designTokens.backgroundColorForTag,
+        borderColor: designTokens.colorWarning,
+        backgroundColor: designTokens.colorNeutral95,
 
         'svg *': {
-          fill: designTokens.fontColorForClearInputIconWhenHovered,
+          fill: designTokens.colorError,
         },
       },
     };

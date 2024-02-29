@@ -130,15 +130,15 @@ export const SecondaryButton = <
     css`
       display: flex;
       align-items: center;
-      padding: 0 ${designTokens.spacing30};
+      padding: ${designTokens.paddingForButton};
       height: ${designTokens.heightForButtonAsBig};
     `,
     css`
       display: inline-flex;
       background-color: ${designTokens.colorSurface};
-      border: ${designTokens.borderForButtonAsSecondary};
+      border: 1px solid ${designTokens.colorNeutral};
       border-radius: ${designTokens.borderRadiusForButtonAsBig};
-      box-shadow: ${designTokens.shadowForButton};
+      box-shadow: ${designTokens.shadow0};
       color: ${designTokens.colorSolid};
       transition: background-color ${designTokens.transitionLinear80Ms},
         box-shadow ${designTokens.transitionEaseinout150Ms};

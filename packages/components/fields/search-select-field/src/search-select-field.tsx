@@ -18,6 +18,7 @@ import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import SearchSelectInput from '@commercetools-uikit/search-select-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 type ReactSelectAsyncProps = AsyncProps<unknown, boolean, GroupBase<unknown>>;
 
@@ -31,6 +32,7 @@ type TCustomEvent = {
 };
 
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+type TFieldWarnings = Record<string, boolean>;
 type TFieldErrors = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
@@ -39,8 +41,13 @@ type TCustomFormErrors<Values> = {
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 const sequentialId = createSequentialId('search-select-field-');
 const sequentialErrorsId = createSequentialId('search-select-field-error-')();
+const sequentialWarningsId = createSequentialId(
+  'search-select-field-warning-'
+)();
 
 export type TSearchSelectFieldProps = {
   /**
@@ -135,6 +142,7 @@ export type TSearchSelectFieldProps = {
   hasError?: boolean;
   /**
    * Indicates the input field has a warning
+   * @deprecated Please use the `warnings` prop instead so users know the reason why the field is in warning state.
    */
   hasWarning?: boolean;
   /**
@@ -262,6 +270,18 @@ export type TSearchSelectFieldProps = {
    */
   renderError?: TErrorRenderer;
   /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br/>
+   * Unknown warnings will be forwarded to renderWarning.
+   */
+  warnings?: TFieldWarnings;
+  /**
+   * Called with custom warnings, as renderWarning(key, warning). This function can return a message which will be wrapped in a WarningMessage.
+   * <br />
+   * It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
+  /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
   isRequired?: boolean;
@@ -315,6 +335,8 @@ const defaultProps: Pick<TSearchSelectFieldProps, 'controlShouldRenderValue'> =
 
 const SearchSelectField = (props: TSearchSelectFieldProps) => {
   const hasError = Boolean(props.touched) && hasErrors(props.errors);
+  const hasWarning =
+    props.hasWarning || (Boolean(props.touched) && hasWarnings(props.warnings));
   const id = useFieldId(props.id, sequentialId);
 
   if (!props.isReadOnly) {
@@ -375,7 +397,7 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           isReadOnly={props.isReadOnly}
           isOptionDisabled={props.isOptionDisabled}
           isMulti={props.isMulti}
-          hasWarning={props.hasWarning}
+          hasWarning={hasWarning}
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuPortalZIndex={props.menuPortalZIndex}
@@ -404,6 +426,12 @@ const SearchSelectField = (props: TSearchSelectFieldProps) => {
           errors={props.errors}
           isVisible={hasError}
           renderError={props.renderError}
+        />
+        <FieldWarnings
+          id={sequentialWarningsId}
+          warnings={props.warnings}
+          isVisible={hasWarning}
+          renderWarning={props.renderWarning}
         />
       </Spacings.Stack>
     </Constraints.Horizontal>

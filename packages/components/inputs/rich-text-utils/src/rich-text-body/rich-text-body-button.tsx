@@ -37,14 +37,15 @@ const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
           border: 0;
           cursor: pointer;
           background: ${props.isActive
-            ? designTokens.backgroundColorForLocalizedRichTextBodyButtonWhenActive
+            ? designTokens.colorAccent20
             : 'transparent'};
           display: flex;
           justify-content: center;
           align-items: center;
           border-radius: ${designTokens.spacing10};
-          padding: ${designTokens.paddingForLocalizedRichTextBodyButton};
-          margin: ${designTokens.marginForLocalizedRichTextBodyButton};
+          padding: ${designTokens.spacing20};
+          margin: 0 ${designTokens.spacing05} ${designTokens.spacing20}
+            ${designTokens.spacing05};
 
           &:focus {
             outline: none;
@@ -53,8 +54,8 @@ const RichTextBodyButton = (props: TRichTextBodyButtonProps) => {
           &:hover,
           &:focus {
             background: ${props.isActive
-              ? designTokens.backgroundColorForLocalizedRichTextBodyButtonWhenActive
-              : designTokens.backgroundColorForLocalizedRichTextBodyButton};
+              ? designTokens.colorAccent20
+              : designTokens.colorNeutral95};
           }
 
           svg {

@@ -206,6 +206,16 @@ export type TSelectableSearchInputProps = {
    * Show submit button in the input
    */
   showSubmitButton?: boolean;
+  /**
+   *  used to pass data-* props to the select component.
+   * eg: selectDataProps={[{ 'prop-1': 'value-1' }, { 'prop-2': 'value-2' }]}
+   */
+  selectDataProps?: Record<string, string>;
+  /**
+   *  used to pass data-* props to the input element.
+   * eg: inputDataProps={[{ 'prop-1': 'value-1' }, { 'prop-2': 'value-2' }]}
+   */
+  inputDataProps?: Record<string, string>;
 };
 
 const defaultProps: Pick<
@@ -233,11 +243,23 @@ const isOptionObject = (
   option: TOption | TOptionObject
 ): option is TOptionObject => (option as TOptionObject).options !== undefined;
 
+const transformDataProps = (dataProps?: Record<string, string>) =>
+  Object.fromEntries(
+    Object.entries(dataProps || {}).map(([key, value]) => [
+      `data-${key}`,
+      value,
+    ])
+  );
+
 const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const [dropdownHasFocus, toggleDropdownHasFocus] = useToggleState(false);
   const [searchValue, setSearchValue] = useState(props.value.text || '');
   const containerRef = useRef<HTMLDivElement>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
+
+  const legacyDataProps = filterDataAttributes(props);
+  const transformedSelectDataProps = transformDataProps(props.selectDataProps);
+  const transformedInputDataProps = transformDataProps(props.inputDataProps);
 
   const optionsWithoutGroups = props.options.flatMap((option) => {
     if (isOptionObject(option)) {
@@ -397,6 +419,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             handleDropdownBlur={handleDropdownBlur}
             textInputRef={textInputRef}
             selectedOption={selectedOption}
+            dataProps={transformedSelectDataProps}
           />
         </Constraints.Horizontal>
         <div
@@ -429,7 +452,8 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             aria-readonly={props.isReadOnly}
             contentEditable={!props.isReadOnly}
             css={getSelectableSearchInputStyles(props)}
-            {...filterDataAttributes(props)}
+            {...transformedInputDataProps}
+            {...legacyDataProps}
             /* ARIA */
             aria-invalid={props['aria-invalid']}
             aria-errormessage={props['aria-errormessage']}

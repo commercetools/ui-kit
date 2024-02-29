@@ -32,7 +32,7 @@ const HeaderContainer = styled.div`
 `;
 
 const CardContentWrapper = styled.div`
-  padding: ${designTokens.paddingForTableManagerSettingsPanel};
+  padding: ${designTokens.spacing40} ${designTokens.spacing50};
 `;
 
 const SettingsContainer = (props: TSettingsContainerProps) => {

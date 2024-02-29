@@ -16,8 +16,8 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   border: 0;
   font-size: 1rem;
   cursor: pointer;
-  padding: ${designTokens.paddingForLocalizedRichTextDropdownItem};
-  font-family: ${designTokens.fontFamilyDefault};
+  padding: ${designTokens.spacing20} ${designTokens.spacing30};
+  font-family: ${designTokens.fontFamily};
   display: block;
   background-color: ${(props) =>
     props.isSelected
@@ -27,27 +27,27 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${designTokens.backgroundColorForSelectInputOptionWhenHovered};
+    background-color: ${designTokens.colorNeutral98};
   }
 `;
 
 const getButtonStyles = (props: TDropdownStylesProps) => [
   css`
     border: 0;
-    font-family: ${designTokens.fontFamilyDefault};
+    font-family: ${designTokens.fontFamily};
     border-radius: ${designTokens.borderRadius4};
     cursor: pointer;
-    font-size: ${designTokens.fontSizeForInput};
+    font-size: ${designTokens.fontSize30};
     color: ${designTokens.colorSolid};
     display: flex;
     justify-content: center;
     align-items: center;
     padding: ${props.isStyleButton
-      ? `${designTokens.paddingForLocalizedRichTextDropdownButton}`
-      : designTokens.paddingForLocalizedRichTextBodyButton};
+      ? `5px ${designTokens.spacing20}`
+      : `${designTokens.spacing20}`};
 
     &:hover {
-      background-color: ${designTokens.backgroundColorForRichTextDropdownWhenHovered};
+      background-color: ${designTokens.colorNeutral95};
     }
   `,
   props.isIndeterminate &&
@@ -57,7 +57,7 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
   props.isOpen &&
     css`
       &:not(:hover) {
-        background-color: ${designTokens.backgroundColorForRichTextButton};
+        background-color: ${designTokens.colorAccent20};
         color: ${designTokens.colorSurface};
 
         svg {
@@ -86,7 +86,7 @@ const getButtonStyles = (props: TDropdownStylesProps) => [
 const DropdownContainer = styled.div`
   position: absolute;
   cursor: pointer;
-  font-size: ${designTokens.fontSizeForInput};
+  font-size: ${designTokens.fontSize30};
   top: ${designTokens.spacing10};
   margin-top: ${designTokens.spacing10};
   left: 0;
@@ -94,13 +94,13 @@ const DropdownContainer = styled.div`
   background: ${designTokens.colorSurface};
   overflow: hidden;
   z-index: 9999;
-  border: 1px solid ${designTokens.borderColorForSelectInputMenu};
-  box-shadow: ${designTokens.shadowForSelectInputMenu};
+  border: 1px solid ${designTokens.colorSurface};
+  box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.15);
   border-radius: ${designTokens.borderRadius6};
 `;
 
 const DropdownItemLabelWrapper = styled.div`
-  margin: ${designTokens.marginForRichTextDropdownItemLabel};
+  margin: 0 0 0 ${designTokens.spacing20};
 `;
 
 export {

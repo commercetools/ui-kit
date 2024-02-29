@@ -121,6 +121,22 @@ describe('LocalizedRichTextInput', () => {
           'false'
         );
       });
+      it('should display all additionalInfo', () => {
+        render(
+          <LocalizedRichTextInput
+            {...baseProps}
+            selectedLanguage="en"
+            isReadOnly={true}
+            additionalInfo={{
+              en: 'cool description',
+              de: 'eine beschreibung',
+            }}
+          />
+        );
+        screen.getByLabelText(/show all languages/i).click();
+        expect(screen.getByText('cool description')).toBeInTheDocument();
+        expect(screen.getByText('eine beschreibung')).toBeInTheDocument();
+      });
     });
     describe('when not expanded', () => {
       it('should render a disabled input', () => {
@@ -135,6 +151,59 @@ describe('LocalizedRichTextInput', () => {
           'contenteditable',
           'false'
         );
+      });
+      describe('should display only display the first additionalInfo entry', () => {
+        it('when given string', () => {
+          render(
+            <LocalizedRichTextInput
+              {...baseProps}
+              selectedLanguage="en"
+              isReadOnly={true}
+              additionalInfo={{
+                en: 'cool description',
+                de: 'eine beschreibung',
+              }}
+            />
+          );
+          expect(screen.getByText('cool description')).toBeInTheDocument();
+          expect(
+            screen.queryByLabelText('eine beschreibung')
+          ).not.toBeInTheDocument();
+        });
+        it('when given intl data', () => {
+          render(
+            <LocalizedRichTextInput
+              {...baseProps}
+              selectedLanguage="en"
+              isReadOnly={true}
+              additionalInfo={{
+                en: { id: 'i18en', defaultMessage: 'english i18n message' },
+                fr: { id: 'i18fr', defaultMessage: 'french i18n message' },
+              }}
+            />
+          );
+          expect(screen.getByText('english i18n message')).toBeInTheDocument();
+          expect(
+            screen.queryByLabelText('french i18n message')
+          ).not.toBeInTheDocument();
+        });
+        it('when given react element', () => {
+          render(
+            <LocalizedRichTextInput
+              {...baseProps}
+              selectedLanguage="en"
+              isReadOnly={true}
+              additionalInfo={{
+                en: <span>english span element</span>,
+                fr: <span>french span element</span>,
+              }}
+            />
+          );
+          expect(screen.getByText('english span element')).toBeInTheDocument();
+          expect(
+            screen.queryByLabelText('french span element')
+          ).not.toBeInTheDocument();
+        });
       });
     });
   });

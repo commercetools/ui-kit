@@ -128,6 +128,17 @@ describe('when input is expanded', () => {
     getByLabelText(/show all languages/i).click();
     expect(getByLabelText('FR')).toBeInTheDocument();
   });
+  it('should display all additionalInfo', () => {
+    const { getByLabelText, getByText } = renderLocalizedMultilineTextInput({
+      additionalInfo: {
+        en: 'cool description',
+        fr: 'une description',
+      },
+    });
+    getByLabelText(/show all languages/i).click();
+    expect(getByText('cool description')).toBeInTheDocument();
+    expect(getByText('une description')).toBeInTheDocument();
+  });
   it('should allow changing the french input', () => {
     const { getByLabelText } = renderLocalizedMultilineTextInput();
     getByLabelText(/show all languages/i).click();
@@ -270,5 +281,45 @@ describe('when the error is on the selected language', () => {
     expect(getByLabelText('EN')).toBeInTheDocument();
     expect(queryByLabelText('FR')).not.toBeInTheDocument();
     expect(getByText('Some error')).toBeInTheDocument();
+  });
+});
+
+describe('when the additionalInfo exists on the selected locale should display', () => {
+  it('when given string', () => {
+    const { getByLabelText, getByText, queryByLabelText } =
+      renderLocalizedMultilineTextInput({
+        additionalInfo: {
+          en: 'Some description',
+        },
+      });
+    expect(getByLabelText('EN')).toBeInTheDocument();
+    expect(queryByLabelText('FR')).not.toBeInTheDocument();
+    expect(getByText('Some description')).toBeInTheDocument();
+  });
+  it('when given intl data', () => {
+    const { getByLabelText, getByText, queryByLabelText } =
+      renderLocalizedMultilineTextInput({
+        additionalInfo: {
+          en: { id: 'i18en', defaultMessage: 'english i18n message' },
+          fr: { id: 'i18fr', defaultMessage: 'french i18n message' },
+        },
+      });
+    expect(getByLabelText('EN')).toBeInTheDocument();
+    expect(queryByLabelText('FR')).not.toBeInTheDocument();
+    expect(getByText('english i18n message')).toBeInTheDocument();
+    expect(queryByLabelText('french i18n message')).not.toBeInTheDocument();
+  });
+  it('when given react element', () => {
+    const { getByLabelText, getByText, queryByLabelText } =
+      renderLocalizedMultilineTextInput({
+        additionalInfo: {
+          en: <span>english span element</span>,
+          fr: <span>french span element</span>,
+        },
+      });
+    expect(getByLabelText('EN')).toBeInTheDocument();
+    expect(queryByLabelText('FR')).not.toBeInTheDocument();
+    expect(getByText('english span element')).toBeInTheDocument();
+    expect(queryByLabelText('french span element')).not.toBeInTheDocument();
   });
 });

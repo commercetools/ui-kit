@@ -17,6 +17,7 @@ import Spacings from '@commercetools-uikit/spacings';
 import FieldLabel from '@commercetools-uikit/field-label';
 import CreatableSelectInput from '@commercetools-uikit/creatable-select-input';
 import FieldErrors from '@commercetools-uikit/field-errors';
+import FieldWarnings from '@commercetools-uikit/field-warnings';
 
 type ReactSelectCreatableProps = CreatableProps<
   unknown,
@@ -24,6 +25,7 @@ type ReactSelectCreatableProps = CreatableProps<
   GroupBase<unknown>
 >;
 type TErrorRenderer = (key: string, error?: boolean) => ReactNode;
+type TFieldWarnings = Record<string, boolean>;
 type TFieldErrors = Record<string, boolean>;
 // Similar shape of `FormikErrors` but values are `TFieldErrors` objects.
 type TCustomFormErrors<Values> = {
@@ -48,9 +50,15 @@ const sequentialId = createSequentialId('creatable-select-field-');
 const sequentialErrorsId = createSequentialId(
   'creatable-select-field-error-'
 )();
+const sequentialWarningsId = createSequentialId(
+  'creatable-select-field-warning-'
+)();
 
 const hasErrors = (errors?: TFieldErrors) =>
   errors && Object.values(errors).some(Boolean);
+
+const hasWarnings = (warnings?: TFieldWarnings) =>
+  warnings && Object.values(warnings).some(Boolean);
 
 export type TCreatableSelectFieldProps = {
   // CreatableSelectField
@@ -90,6 +98,16 @@ export type TCreatableSelectFieldProps = {
    * Called with custom errors. This function can return a message which will be wrapped in an ErrorMessage. It can also return null to show no error.
    */
   renderError?: TErrorRenderer;
+  /**
+   * A map of warnings. Warning messages for known warnings are rendered automatically.
+   * <br />
+   * Unknown warnings will be forwarded to `renderWarning`
+   */
+  warnings?: TFieldWarnings;
+  /**
+   * Called with custom warnings. This function can return a message which will be wrapped in an WarningMessage. It can also return null to show no warning.
+   */
+  renderWarning?: (key: string, warning?: boolean) => ReactNode;
   /**
    * Indicates if the value is required. Shows an the "required asterisk" if so.
    */
@@ -176,6 +194,7 @@ export type TCreatableSelectFieldProps = {
   isSearchable?: ReactSelectCreatableProps['isSearchable'];
   /**
    * Indicates the input field has an error
+   * @deprecated Please use the `warnings` prop instead so users know the reason why the field is in warning state.
    */
   hasWarning?: boolean;
   /**
@@ -387,6 +406,11 @@ export default class CreatableSelectField extends Component<
       CreatableSelectInput.isTouched(this.props.touched) &&
       hasErrors(this.props.errors);
 
+    const hasWarning =
+      this.props.hasWarning ||
+      (CreatableSelectInput.isTouched(this.props.touched) &&
+        hasWarnings(this.props.warnings));
+
     if (!this.props.isReadOnly) {
       warning(
         typeof this.props.onChange === 'function',
@@ -445,7 +469,7 @@ export default class CreatableSelectField extends Component<
             isOptionDisabled={this.props.isOptionDisabled}
             isMulti={this.props.isMulti}
             isSearchable={this.props.isSearchable}
-            hasWarning={this.props.hasWarning}
+            hasWarning={hasWarning}
             maxMenuHeight={this.props.maxMenuHeight}
             menuPortalTarget={this.props.menuPortalTarget}
             menuPortalZIndex={this.props.menuPortalZIndex}
@@ -477,6 +501,12 @@ export default class CreatableSelectField extends Component<
             errors={this.props.errors}
             isVisible={hasError}
             renderError={this.props.renderError}
+          />
+          <FieldWarnings
+            id={sequentialWarningsId}
+            warnings={this.props.warnings}
+            isVisible={hasWarning}
+            renderWarning={this.props.renderWarning}
           />
         </Spacings.Stack>
       </Constraints.Horizontal>

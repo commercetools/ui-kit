@@ -81,5 +81,26 @@ export const component = () => (
         description="Your secret password"
       />
     </Spec>
+     <Spec label="with warning when not touched">
+      <PasswordField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
+    <Spec label="with warning when touched">
+      <PasswordField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        warnings={{ customWarning: true }}
+        touched={true}
+        renderWarning={() => 'Custom warning'}
+      />
+    </Spec>
   </Suite>
 );

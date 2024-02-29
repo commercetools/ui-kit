@@ -1,5 +1,106 @@
 # @commercetools-uikit/collapsible-panel
 
+## 18.2.0
+
+### Patch Changes
+
+- Updated dependencies [[`a414fb5`](https://github.com/commercetools/ui-kit/commit/a414fb5d2d63edc988ad1c8ccc32e2ce2d646fa3), [`5518760`](https://github.com/commercetools/ui-kit/commit/5518760cc2ba912312386aa370ec2b5c281c5377)]:
+  - @commercetools-uikit/icons@18.2.0
+  - @commercetools-uikit/text@18.2.0
+  - @commercetools-uikit/design-system@18.2.0
+  - @commercetools-uikit/accessible-button@18.2.0
+  - @commercetools-uikit/constraints@18.2.0
+  - @commercetools-uikit/spacings@18.2.0
+  - @commercetools-uikit/collapsible-motion@18.2.0
+  - @commercetools-uikit/hooks@18.2.0
+  - @commercetools-uikit/utils@18.2.0
+
+## 18.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`78d878c`](https://github.com/commercetools/ui-kit/commit/78d878cdb62bf46e1596f0df72fc6871a847ecb9)]:
+  - @commercetools-uikit/design-system@18.1.0
+  - @commercetools-uikit/accessible-button@18.1.0
+  - @commercetools-uikit/constraints@18.1.0
+  - @commercetools-uikit/icons@18.1.0
+  - @commercetools-uikit/text@18.1.0
+  - @commercetools-uikit/spacings@18.1.0
+  - @commercetools-uikit/collapsible-motion@18.1.0
+  - @commercetools-uikit/hooks@18.1.0
+  - @commercetools-uikit/utils@18.1.0
+
+## 18.0.0
+
+### Minor Changes
+
+- [#2703](https://github.com/commercetools/ui-kit/pull/2703) [`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update design tokens usage.
+
+### Patch Changes
+
+- Updated dependencies [[`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6), [`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6), [`568c28e`](https://github.com/commercetools/ui-kit/commit/568c28ef90c5b7f97d1cc37a1a402cfe6f001c45), [`db371ba`](https://github.com/commercetools/ui-kit/commit/db371bab2237b82035a227af3d9227926448cb99)]:
+  - @commercetools-uikit/accessible-button@18.0.0
+  - @commercetools-uikit/text@18.0.0
+  - @commercetools-uikit/design-system@18.0.0
+  - @commercetools-uikit/constraints@18.0.0
+  - @commercetools-uikit/icons@18.0.0
+  - @commercetools-uikit/spacings@18.0.0
+  - @commercetools-uikit/collapsible-motion@18.0.0
+  - @commercetools-uikit/hooks@18.0.0
+  - @commercetools-uikit/utils@18.0.0
+
+## 17.1.0
+
+### Minor Changes
+
+- [#2698](https://github.com/commercetools/ui-kit/pull/2698) [`d263f01`](https://github.com/commercetools/ui-kit/commit/d263f01990551a3a0dcb6c0886b9d2b35c7f7cf5) Thanks [@obulaworld](https://github.com/obulaworld)! - We've included a new property in all `*Field` components so consumers can not only render errors (below the input) but also warnings.
+  The main difference between them is the color used for the text.
+
+  Please take a look at the README files of the fields components to learn how to use this new property.
+
+### Patch Changes
+
+- Updated dependencies [[`a0abf51`](https://github.com/commercetools/ui-kit/commit/a0abf51483dcf26861f6af506b3acf10cb9fcd2c), [`3425f6c`](https://github.com/commercetools/ui-kit/commit/3425f6c371e2b386d60aa04c97ca8ffbf43f6cb1), [`8ba22f1`](https://github.com/commercetools/ui-kit/commit/8ba22f109d50d171b1d7f6f0bdc751c4689e0f11)]:
+  - @commercetools-uikit/icons@17.1.0
+  - @commercetools-uikit/design-system@17.1.0
+  - @commercetools-uikit/constraints@17.1.0
+  - @commercetools-uikit/accessible-button@17.1.0
+  - @commercetools-uikit/text@17.1.0
+  - @commercetools-uikit/spacings@17.1.0
+  - @commercetools-uikit/collapsible-motion@17.1.0
+  - @commercetools-uikit/hooks@17.1.0
+  - @commercetools-uikit/utils@17.1.0
+
+## 17.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.1
+  - @commercetools-uikit/accessible-button@17.0.1
+  - @commercetools-uikit/collapsible-motion@17.0.1
+  - @commercetools-uikit/constraints@17.0.1
+  - @commercetools-uikit/icons@17.0.1
+  - @commercetools-uikit/text@17.0.1
+  - @commercetools-uikit/hooks@17.0.1
+  - @commercetools-uikit/utils@17.0.1
+  - @commercetools-uikit/spacings@17.0.1
+
+## 17.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.0
+  - @commercetools-uikit/accessible-button@17.0.0
+  - @commercetools-uikit/collapsible-motion@17.0.0
+  - @commercetools-uikit/constraints@17.0.0
+  - @commercetools-uikit/icons@17.0.0
+  - @commercetools-uikit/text@17.0.0
+  - @commercetools-uikit/hooks@17.0.0
+  - @commercetools-uikit/utils@17.0.0
+  - @commercetools-uikit/spacings@17.0.0
+
 ## 16.12.1
 
 ### Patch Changes

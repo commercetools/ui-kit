@@ -265,7 +265,7 @@ const CollapsiblePanel = (props: TCollapsiblePanel) => {
                 isExpandControlHidden={props.hideExpansionControls}
               >
                 {props.description && (
-                  <SectionDescriptionWrapper condensed={props.condensed}>
+                  <SectionDescriptionWrapper>
                     <Text.Detail tone="secondary">
                       {props.description}
                     </Text.Detail>

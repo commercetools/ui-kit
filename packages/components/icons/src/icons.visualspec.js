@@ -13,6 +13,7 @@ const colors = [
   'primary40',
   'warning',
   'error',
+  'success',
 ];
 
 describe('Icons', () => {
@@ -29,5 +30,10 @@ describe('Icons', () => {
     await page.goto(`${globalThis.HOST}/icons/inline-svg`);
     await page.waitForSelector('text/Inline SVG');
     await percySnapshot(page, `Icons - Inline SVG`);
+  });
+  it('Leading Icon', async () => {
+    await page.goto(`${globalThis.HOST}/icons/leading-icon`);
+    await page.waitForSelector('text/Leading Icon');
+    await percySnapshot(page, `Icons - Leading Icon`);
   });
 });

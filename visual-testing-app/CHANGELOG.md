@@ -1,5 +1,57 @@
 # visual-testing-app
 
+## 12.3.0
+
+### Minor Changes
+
+- [#2720](https://github.com/commercetools/ui-kit/pull/2720) [`5518760`](https://github.com/commercetools/ui-kit/commit/5518760cc2ba912312386aa370ec2b5c281c5377) Thanks [@kark](https://github.com/kark)! - Implement updated color scheme across all UI-kit components
+
+### Patch Changes
+
+- Updated dependencies [[`5518760`](https://github.com/commercetools/ui-kit/commit/5518760cc2ba912312386aa370ec2b5c281c5377)]:
+  - @commercetools-uikit/design-system@18.2.0
+
+## 12.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`78d878c`](https://github.com/commercetools/ui-kit/commit/78d878cdb62bf46e1596f0df72fc6871a847ecb9)]:
+  - @commercetools-uikit/design-system@18.1.0
+
+## 12.2.0
+
+### Minor Changes
+
+- [#2714](https://github.com/commercetools/ui-kit/pull/2714) [`568c28e`](https://github.com/commercetools/ui-kit/commit/568c28ef90c5b7f97d1cc37a1a402cfe6f001c45) Thanks [@kark](https://github.com/kark)! - Restore theming support
+
+### Patch Changes
+
+- Updated dependencies [[`c029c7c`](https://github.com/commercetools/ui-kit/commit/c029c7cc9f8f96b01089822b54405ebc8fedb9d6), [`568c28e`](https://github.com/commercetools/ui-kit/commit/568c28ef90c5b7f97d1cc37a1a402cfe6f001c45), [`db371ba`](https://github.com/commercetools/ui-kit/commit/db371bab2237b82035a227af3d9227926448cb99)]:
+  - @commercetools-uikit/design-system@18.0.0
+
+## 12.1.16
+
+### Patch Changes
+
+- Updated dependencies [[`3425f6c`](https://github.com/commercetools/ui-kit/commit/3425f6c371e2b386d60aa04c97ca8ffbf43f6cb1)]:
+  - @commercetools-uikit/design-system@17.1.0
+
+## 12.1.15
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.1
+
+## 12.1.14
+
+### Patch Changes
+
+- [#2665](https://github.com/commercetools/ui-kit/pull/2665) [`335534c4b`](https://github.com/commercetools/ui-kit/commit/335534c4bad0ec3fc2c188e28e64439fe228d02d) Thanks [@renovate](https://github.com/apps/renovate)! - Update `vite` dependency
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@17.0.0
+
 ## 12.1.13
 
 ### Patch Changes

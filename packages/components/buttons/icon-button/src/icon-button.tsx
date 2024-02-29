@@ -118,10 +118,13 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid ${designTokens.borderColorForButtonAsIcon};
+          border: 1px solid ${designTokens.borderColorForButtonAsSecondary};
           background-color: ${designTokens.colorSurface};
-          box-shadow: ${designTokens.shadowForButton};
-          color: ${designTokens.colorSolid};
+          box-shadow: ${designTokens.shadow0};
+          color: ${designTokens.fontColorForButtonAsSecondary};
+          * {
+            fill: ${designTokens.fontColorForButtonAsSecondary};
+          }
           transition: background-color ${designTokens.transitionLinear80Ms},
             box-shadow 150ms ease-in-out;
         `,
