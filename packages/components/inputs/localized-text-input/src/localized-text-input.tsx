@@ -345,13 +345,13 @@ const LocalizedTextInput = (props: TLocalizedTextInputProps) => {
                     aria-invalid={props['aria-invalid']}
                     aria-errormessage={props['aria-errormessage']}
                   />
-                  {props.errors && (
+                  {props.errors?.[language] && (
                     <ErrorMessage>{props.errors[language]}</ErrorMessage>
                   )}
-                  {props.warnings && (
+                  {props.warnings?.[language] && (
                     <WarningMessage>{props.warnings[language]}</WarningMessage>
                   )}
-                  {props.additionalInfo && (
+                  {props.additionalInfo?.[language] && (
                     <AdditionalInfoMessage
                       message={props.additionalInfo[language]}
                     />
