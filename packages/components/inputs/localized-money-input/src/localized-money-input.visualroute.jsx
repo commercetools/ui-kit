@@ -1,7 +1,5 @@
 import {
   LocalizedMoneyInput,
-  ErrorMessage,
-  WarningMessage,
 } from '@commercetools-frontend/ui-kit';
 import { Suite, Spec } from '../../../../../test/percy';
 
@@ -99,7 +97,7 @@ export const component = () => (
         onChange={() => {}}
         selectedCurrency="CAD"
         horizontalConstraint={7}
-        errors={{ CAD: <ErrorMessage>foo</ErrorMessage> }}
+        errors={{ CAD: 'foo' }}
       />
     </Spec>
     <Spec label="when there is an error for a specific currency (second one)">
@@ -108,7 +106,7 @@ export const component = () => (
         onChange={() => {}}
         selectedCurrency="CAD"
         horizontalConstraint={7}
-        errors={{ EUR: <ErrorMessage>foo</ErrorMessage> }}
+        errors={{ EUR: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a warning for a specific currency (first one)">
@@ -117,7 +115,7 @@ export const component = () => (
         onChange={() => {}}
         selectedCurrency="CAD"
         horizontalConstraint={7}
-        warnings={{ CAD: <WarningMessage>foo</WarningMessage> }}
+        warnings={{ CAD: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a warning for a specific currency (second one)">
@@ -126,7 +124,7 @@ export const component = () => (
         onChange={() => {}}
         selectedCurrency="CAD"
         horizontalConstraint={7}
-        warnings={{ EUR: <WarningMessage>foo</WarningMessage> }}
+        warnings={{ EUR: 'foo' }}
       />
     </Spec>
     <Spec label="when there is a general error">
