@@ -1,0 +1,21 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as ErrorMessageStories from './error-message.stories';
+
+<Meta of={ErrorMessageStories} />
+
+# Messages: ErrorMessage
+
+## Description
+
+Represents an error message.
+
+## Usage
+
+```js
+import { ErrorMessage } from '@commercetools-uikit/messages';
+
+<ErrorMessage>Something went wrong</ErrorMessage>;
+```
+
+<Canvas of={ErrorMessageStories.Default} />

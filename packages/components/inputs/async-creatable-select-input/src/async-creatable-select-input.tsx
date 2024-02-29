@@ -32,7 +32,7 @@ const customizedComponents = {
   MultiValueRemove: TagRemove,
 };
 
-type TCustomEvent = {
+export type TCustomEvent = {
   target: {
     id?: string;
     name?: string;

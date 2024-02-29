@@ -1,0 +1,55 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as IconButtonStories from './src/icon-button.stories';
+
+<Meta of={IconButtonStories} />
+
+# IconButton
+
+## Description
+
+Icon buttons are icon-only buttons. They trigger an action when clicked (\`onClick\` prop). You must also pass a label for accessibility reasons.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/icon-button
+```
+
+```
+npm --save install @commercetools-uikit/icon-button
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import IconButton from '@commercetools-uikit/icon-button';
+import { InformationIcon } from '@commercetools-uikit/icons';
+
+const Example = () => (
+  <IconButton
+    icon={<InformationIcon />}
+    label="A label text"
+    onClick={() => alert('Button clicked')}
+  />
+);
+
+export default Example;
+```
+
+### Examples in the Merchant Center
+
+- Secondary action example: Delete product
+- Minimize effect example: Reordering table
+
+<Canvas of={IconButtonStories.Default} />

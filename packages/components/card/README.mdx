@@ -1,0 +1,47 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as CardStories from './src/card.stories';
+
+<Meta of={CardStories} />
+
+# Card
+
+## Description
+
+Cards are used to display content and actions on a single topic.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/card
+```
+
+```
+npm --save install @commercetools-uikit/card
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import Card from '@commercetools-uikit/card';
+
+const Example = () => (
+  <Card theme="light" type="raised">
+    <p>{`You'll never guess where I've been!`}</p>
+  </Card>
+);
+
+export default Example;
+```
+
+<Canvas of={CardStories.Default} />

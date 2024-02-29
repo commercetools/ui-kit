@@ -1,0 +1,21 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as WarningMessageStories from './warning-message.stories';
+
+<Meta of={WarningMessageStories} />
+
+# Messages: WarningMessage
+
+## Description
+
+Represents an warning message.
+
+## Usage
+
+```js
+import { WarningMessage } from '@commercetools-uikit/messages';
+
+<WarningMessage>This is a duplicate of {`${duplicate}`}</WarningMessage>;
+```
+
+<Canvas of={WarningMessageStories.Default} />
