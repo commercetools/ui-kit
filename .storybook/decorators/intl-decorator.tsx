@@ -1,4 +1,5 @@
-import { StoryContext } from '@storybook/react';
+import type { Decorator } from '@storybook/react';
+// @ts-ignore
 import React, { useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
@@ -23,11 +24,13 @@ const getMessagesForLocale = (locale: string) => {
   }
 };
 
-const withIntlDecorator = (Story, context: StoryContext) => {
+const withIntlDecorator: Decorator = (Story, context) => {
   const [messages, setMessages] = useState({});
   const locale = context.globals.locale;
   useEffect(() => {
-    getMessagesForLocale(locale).then((_messages) => setMessages(_messages.default));
+    getMessagesForLocale(locale).then((_messages) =>
+      setMessages(_messages.default)
+    );
   }, [locale]);
 
   return (

@@ -1,6 +1,6 @@
 export const locales = ['en', 'en-GB', 'de', 'es', 'fr-FR', 'zh-CN'];
 
-const namifyLocale = (locale) => {
+const namifyLocale = (locale: string) => {
   switch (locale) {
     case 'en':
       return 'English (US)';
@@ -32,7 +32,7 @@ const intlGlobalType = {
     icon: 'globe',
     items: intlParams,
     dynamicTitle: true,
-  }
+  },
 };
 
 export default intlGlobalType;

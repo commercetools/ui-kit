@@ -8,7 +8,7 @@ import '../design-system/materials/resets.css';
 
 const preview: Preview = {
   globalTypes: {
-    locale: intlGlobalType
+    locale: intlGlobalType,
   },
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -19,12 +19,12 @@ const preview: Preview = {
       },
     },
   },
-  argTypes: {
-    onBlur: { action: 'onBlur' },
-    onChange: { action: 'onChange' },
-    onFocus: { action: 'onFocus' },
-    onInputChange: { action: 'onInputChange' },
-  },
+  // argTypes: {
+  //   onBlur: { action: 'onBlur' },
+  //   onChange: { action: 'onChange' },
+  //   onFocus: { action: 'onFocus' },
+  //   onInputChange: { action: 'onInputChange' },
+  // },
   decorators: [withThemeDecorator, withIntlDecorator],
 };
 

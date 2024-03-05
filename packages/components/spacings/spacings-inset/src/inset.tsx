@@ -23,7 +23,15 @@ const getPadding = (scale?: TScale) => {
 };
 
 export type TInsetProps = {
+  /**
+   * Sets the padding of the inset
+   */
   scale: TScale;
+  /**
+   * Sets the height of the inset.
+   * If set to `expanded`, the height will be 100%.
+   * If set to `collapsed`, the height will be auto.
+   */
   height: 'collapsed' | 'expanded';
   children?: ReactNode;
 };
