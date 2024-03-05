@@ -28,8 +28,17 @@ export type TJustifyContent =
 export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 
 export type TInlineProps = {
+  /**
+   * Spacing between the children
+   */
   scale: TScale;
+  /**
+   * Translates to `align-items` in CSS
+   */
   alignItems: TAlignItem;
+  /**
+   * Translates to `justify-content` in CSS
+   */
   justifyContent: TJustifyContent;
   children: ReactNode;
 };

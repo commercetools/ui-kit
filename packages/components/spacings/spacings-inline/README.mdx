@@ -1,0 +1,49 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as InlineStories from './src/inline.stories';
+
+<Meta of={InlineStories} />
+
+## Description
+
+If you want to learn more about the spacing components take a look at
+[this](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
+article.
+
+## Usage
+
+```jsx
+import SpacingsInline from '@commercetools-uikit/spacings-inline';
+
+<SpacingsInline scale="m">
+  <FlatButton />
+  <FlatButton />
+  <FlatButton />
+</SpacingsInline>;
+```
+
+### Using Spacings preset
+
+Inline spacing can be imported and used via `spacings` preset as well.
+
+```jsx
+import Spacings from '@commercetools-uikit/spacings';
+
+<Spacings.Inline scale="m">
+  <FlatButton />
+  <FlatButton />
+  <FlatButton />
+</Spacings.Inline>;
+```
+
+## Scales
+
+| Scale | Pixel |
+| :---- | :---- |
+| xs    | `4`   |
+| s     | `8`   |
+| m     | `16`  |
+| l     | `24`  |
+| xl    | `32`  |
+
+<Canvas of={InlineStories.Default} />
