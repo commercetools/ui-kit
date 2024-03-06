@@ -1,5 +1,5 @@
 // @ts-ignore
-import React, { type FunctionComponent } from 'react';
+import React, { type ComponentType, type FunctionComponent } from 'react';
 import type { ActionMeta } from 'react-select';
 import type { StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
@@ -8,6 +8,7 @@ export type TCustomEvent = {
   target: {
     value: string;
   };
+  persist: () => void;
 };
 
 type TControlledComponentProps = {
@@ -16,7 +17,7 @@ type TControlledComponentProps = {
 };
 
 const withControlledValue = <T extends {}>(
-  Component: FunctionComponent<T & TControlledComponentProps>
+  Component: ComponentType<T & TControlledComponentProps>
 ) => {
   const WithControlledValue: StoryObj['render'] = (args) => {
     const [{ value, onChange }, updateArgs] = useArgs();

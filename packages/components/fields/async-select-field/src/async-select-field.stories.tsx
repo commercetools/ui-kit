@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import {
+  hideControls,
   horizontalConstraintArgType,
   iconArgType,
   withControlledValue,
@@ -75,6 +76,14 @@ const loadOptions = (inputValue: string) =>
 const meta = {
   title: 'Components/Fields/SelectFields/AsyncSelectField',
   argTypes: {
+    ...hideControls([
+      'renderError',
+      'tabIndex',
+      'defaultOptions',
+      'loadOptions',
+      'cacheOptions',
+      'menuPortalTarget',
+    ]),
     hintIcon: iconArgType,
     horizontalConstraint: horizontalConstraintArgType(),
     iconLeft: iconArgType,
@@ -82,7 +91,7 @@ const meta = {
 } satisfies Meta<TAsyncSelectFieldProps>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<TAsyncSelectFieldProps>;
 
 export const Default: Story = {
   args: {
@@ -97,8 +106,8 @@ export const Default: Story = {
     },
     isRequired: false,
     touched: false,
-    ariaLabel: '',
-    ariaLabelledBy: '',
+    'aria-label': '',
+    'aria-labelledby': '',
     backspaceRemovesValue: true,
     containerId: '',
     controlShouldRenderValue: true,
@@ -115,7 +124,7 @@ export const Default: Story = {
     maxMenuHeight: 220,
     isSearchable: true,
     isClearable: false,
-    tabIndex: '0',
+    tabIndex: 0,
     tabSelectsValue: true,
     // Async props
     defaultOptions: animalOptions,

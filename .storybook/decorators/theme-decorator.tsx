@@ -1,7 +1,7 @@
-import React from 'react';
+import type { Decorator } from '@storybook/react';
 import { ThemeProvider } from '../../design-system';
 
-const withThemeDecorator = (Story) => (
+const withThemeDecorator: Decorator = (Story) => (
   <div>
     <ThemeProvider theme="default" />
     <Story />
