@@ -366,7 +366,7 @@ type TAsyncCreatableSelectFieldState = Pick<
   'id'
 >;
 
-export default class AsyncCreatableSelectField extends Component<
+class AsyncCreatableSelectField extends Component<
   TAsyncCreatableSelectFieldProps,
   TAsyncCreatableSelectFieldState
 > {
@@ -508,3 +508,5 @@ export default class AsyncCreatableSelectField extends Component<
     );
   }
 }
+
+export default AsyncCreatableSelectField;

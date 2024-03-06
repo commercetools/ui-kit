@@ -1,0 +1,97 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as AsyncCreatableSelectFieldStories from './src/async-creatable-select-field.stories';
+
+<Meta of={AsyncCreatableSelectFieldStories} />
+
+# AsyncCreatableSelectField
+
+## Description
+
+An input component with validation states and a label getting a selection from an asynchronously loaded list from the user, and where options can be created by the user.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/async-creatable-select-field
+```
+
+```
+npm --save install @commercetools-uikit/async-creatable-select-field
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import AsyncCreatableSelectField from '@commercetools-uikit/async-creatable-select-field';
+
+const Example = () => (
+  <AsyncCreatableSelectField
+    title="State"
+    name="form-field-name"
+    value={{ value: 'one', label: 'One' }}
+    onChange={(event) => alert(event.target.value)}
+    loadOptions={() =>
+      Promise.resolve([
+        { value: 'one', label: 'One' },
+        { value: 'two', label: 'Two' },
+      ])
+    }
+  />
+);
+
+export default Example;
+```
+
+## `data-*` props
+
+The component further forwards all `data-` attributes to the underlying `AsyncCreatableSelectInput` component.
+
+This input is built on top of [`react-select`](https://github.com/JedWatson/react-select) v2.
+It supports mostly same properties as `react-select`. Behaviour for some props was changed, and support for others was dropped.
+
+In case you need one of the currently excluded props, feel free to open a PR adding them.
+
+## `errors`
+
+This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
+
+The `AsyncCreatableSelectField` supports some errors out of the box. Return `undefined` from `renderError` for these and the default errors will be shown instead. This prevents consumers from having to reimplement the same error messages for known errors while still keeping the flexibility of showing custom error messages for them.
+
+When the `key` is known, and when the value is truthy, and when `renderError` returned `undefined` for that error entry, then the `AsyncCreatableSelectField` will render an appropriate error automatically.
+
+Known error keys are:
+
+- `missing`: tells the user that this field is required
+
+## Static methods
+
+### `AsyncCreatableSelectField.toFieldErrors`
+
+Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+```ts
+type FormValues = {
+  myField: string;
+};
+
+<AsyncCreatableSelectField
+  // ...
+  name="my-field"
+  errors={
+    AsyncCreatableSelectField.toFieldErrors<FormValues>(formik.errors).myField
+  }
+/>;
+```
+
+<Canvas of={AsyncCreatableSelectFieldStories.Default} />
