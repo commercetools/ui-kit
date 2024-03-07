@@ -155,7 +155,7 @@ export type TCreatableSelectFieldProps = {
   /**
    * Is the select read-only
    */
-  isReadOnly?: ConstrainBooleanParameters;
+  isReadOnly?: boolean;
   /**
    * Override the built-in logic to detect whether an option is disabled
    * <br>
@@ -348,14 +348,15 @@ export type TCreatableSelectFieldProps = {
 
 type TCreatableSelectFieldState = Pick<TCreatableSelectFieldProps, 'id'>;
 
-export default class CreatableSelectField extends Component<
+class CreatableSelectField extends Component<
   TCreatableSelectFieldProps,
   TCreatableSelectFieldState
 > {
   static displayName = 'CreatableSelectField';
 
   static defaultProps = {
-    horizontalConstraint: 'scale',
+    horizontalConstraint:
+      'scale' as TCreatableSelectFieldProps['horizontalConstraint'],
   };
 
   state = {
@@ -483,3 +484,5 @@ export default class CreatableSelectField extends Component<
     );
   }
 }
+
+export default CreatableSelectField;

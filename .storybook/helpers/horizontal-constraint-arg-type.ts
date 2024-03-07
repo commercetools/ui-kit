@@ -15,7 +15,10 @@ type THorizontalConstraintArgType = {
 
 const horizontalConstraintArgType = (args?: THorizontalConstraintArgType) => ({
   control: 'select',
-  options: Constraints.getAcceptedMaxPropValues(args?.min, args?.max),
+  options: Constraints.getAcceptedMaxPropValues(
+    args?.min,
+    args?.max
+  ) as TMaxProp[],
 });
 
 export default horizontalConstraintArgType;
