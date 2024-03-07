@@ -5,8 +5,17 @@ import { filterDataAttributes } from '@commercetools-uikit/utils';
 
 export type TScale = 's' | 'm' | 'l';
 export type TInsetSquishProps = {
+  /**
+   * Spacing between the children
+   */
   scale: TScale;
+  /**
+   * Height of the container
+   */
   height: 'collapsed' | 'expanded';
+  /**
+   * Elements to be wrapped
+   */
   children: ReactNode;
 };
 

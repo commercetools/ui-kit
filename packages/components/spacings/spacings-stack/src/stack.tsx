@@ -20,8 +20,17 @@ export type TAlignItem =
 export type TScale = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
 
 export type TStackProps = {
+  /**
+   * Spacing between the children
+   */
   scale: TScale;
+  /**
+   * Translates to `align-items` in CSS
+   */
   alignItems: TAlignItem;
+  /**
+   * Elements to be stacked
+   */
   children: ReactNode;
 };
 

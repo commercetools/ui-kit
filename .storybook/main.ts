@@ -1,6 +1,7 @@
 import { dirname, join, resolve } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 import react from '@vitejs/plugin-react';
+import remarkGfm from 'remark-gfm';
 
 function getAbsolutePath(value: string): any {
   return dirname(require.resolve(join(value, 'package.json')));
@@ -16,6 +17,16 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('@storybook/addon-links'),
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
   ],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
