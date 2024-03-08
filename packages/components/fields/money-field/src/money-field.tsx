@@ -44,12 +44,12 @@ const hasErrors = (errors?: TFieldErrors) =>
 const hasWarnings = (warnings?: TFieldWarnings) =>
   warnings && Object.values(warnings).some(Boolean);
 
-type TValue = {
+export type TValue = {
   amount: string;
   currencyCode: TCurrencyCode;
 };
 
-type TCustomEvent = {
+export type TCustomEvent = {
   target: {
     id?: string;
     name?: string;
@@ -223,7 +223,7 @@ class MoneyField extends Component<TMoneyFieldProps, TMoneyFieldState> {
   static displayName = 'MoneyField';
 
   static defaultProps = {
-    horizontalConstraint: 'scale',
+    horizontalConstraint: 'scale' as TMoneyFieldProps['horizontalConstraint'],
   };
 
   state = {

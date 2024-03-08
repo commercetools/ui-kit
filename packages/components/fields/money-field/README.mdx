@@ -1,0 +1,100 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as MoneyFieldrStories from './src/money-field.stories';
+
+<Meta of={MoneyFieldrStories} />
+
+# MoneyField
+
+## Description
+
+A controlled input component for money values with validation states and a label.
+
+## High Precision Money Values
+
+The `MoneyField` component always operates on a value consisting of
+
+```js
+{ amount: String, currencyCode: String }
+```
+
+The amount can have an arbitrary precision. When the precision of the amount exceeds the precision of that currency, then that Money Value is referred to as being "high precision".
+
+> ⚠️ The `MoneyField` will allow high precision money values by default. If you want to discourage them, you need to add validation as shown in the example below, or the Examples/Forms story.
+
+## Installation
+
+```
+yarn add @commercetools-uikit/money-field
+```
+
+```
+npm --save install @commercetools-uikit/money-field
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import MoneyField from '@commercetools-uikit/money-field';
+
+const Example = () => (
+  <MoneyField
+    title="Price"
+    value={{ amount: '20', currencyCode: 'EUR' }}
+    onChange={(event) => alert(event.target.value)}
+    currencies={['EUR', 'USD']}
+  />
+);
+
+export default Example;
+```
+
+## `data-*` props
+
+The component further forwards all `data-` attributes to the underlying `input` component.
+
+## `errors`
+
+This object is a key-value map. The `renderError` prop will be called for each entry with the key and the value. The return value will be rendered inside an `ErrorMessage` component underneath the input.
+
+The `MoneyField` supports some errors out of the box. Return `undefined` from `renderError` for these and the default errors will be shown instead. This prevents consumers from having to reimplement the same error messages for known errors while still keeping the flexibility of showing custom error messages for them.
+
+When the `key` is known, and when the value is truthy, and when `renderError` returned `undefined` for that error entry, then the `MoneyField` will render an appropriate error automatically.
+
+Known error keys are:
+
+- `missing`: tells the user that this field is required but no value was provided
+
+## Main Functions and use cases are:
+
+- Getting monetary value input with a currency from users (with cent precision or high precision)
+
+## Static methods
+
+### `MoneyField.toFieldErrors`
+
+Use this function to convert the Formik `errors` object type to our custom field errors type. This is primarily useful when using TypeScript.
+
+```ts
+type FormValues = {
+  myField: string;
+};
+
+<MoneyField
+  // ...
+  name="my-field"
+  errors={MoneyField.toFieldErrors<FormValues>(formik.errors).myField}
+/>;
+```
+
+<Canvas of={MoneyFieldrStories.Default} />
