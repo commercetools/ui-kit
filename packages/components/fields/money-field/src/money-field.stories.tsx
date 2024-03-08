@@ -15,9 +15,6 @@ import { useState } from 'react';
 const meta = {
   title: 'Components/Fields/MoneyField',
   component: MoneyField,
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {
     ...hideControls([
       'currencies',
