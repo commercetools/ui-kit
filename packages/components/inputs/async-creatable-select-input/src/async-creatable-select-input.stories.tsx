@@ -53,6 +53,13 @@ const meta = {
     iconLeft: iconArgType,
   },
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      story: {
+        height: '280px',
+      },
+    },
+  },
 } satisfies Meta<typeof AsyncCreatableSelectInput>;
 
 export default meta;

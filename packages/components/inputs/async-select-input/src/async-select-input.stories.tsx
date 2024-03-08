@@ -45,6 +45,13 @@ const meta = {
   argTypes: {
     iconLeft: iconArgType,
   },
+  parameters: {
+    docs: {
+      story: {
+        height: '280px',
+      },
+    },
+  },
 } satisfies Meta<typeof AsyncSelectInput>;
 
 export default meta;
