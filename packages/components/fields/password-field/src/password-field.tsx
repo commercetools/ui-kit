@@ -212,7 +212,10 @@ const PasswordField = (props: TPasswordField) => {
   }
 
   return (
-    <Constraints.Horizontal max={props.horizontalConstraint}>
+    <Constraints.Horizontal
+      max={props.horizontalConstraint}
+      data-constraint={props.horizontalConstraint}
+    >
       <Stack scale="xs">
         <Inline alignItems="flex-end" justifyContent="space-between">
           <FieldLabel
