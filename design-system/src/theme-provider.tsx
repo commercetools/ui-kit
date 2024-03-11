@@ -94,16 +94,6 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     }
   }, [props.theme, props.themeOverrides]);
 
-  // The previous hook call is not executed on the server, so we just
-  // apply the theme directly if we are on the server.
-  if (typeof window === 'undefined') {
-    applyTheme({
-      newTheme: props.theme,
-      parentSelector: parentSelectorRef.current,
-      themeOverrides: props.themeOverrides,
-    });
-  }
-
   return null;
 };
 ThemeProvider.defaultProps = {
