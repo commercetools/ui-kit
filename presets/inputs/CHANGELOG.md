@@ -1,5 +1,35 @@
 # @commercetools-uikit/inputs
 
+## 18.4.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/async-creatable-select-input@18.4.0
+  - @commercetools-uikit/async-select-input@18.4.0
+  - @commercetools-uikit/checkbox-input@18.4.0
+  - @commercetools-uikit/creatable-select-input@18.4.0
+  - @commercetools-uikit/date-input@18.4.0
+  - @commercetools-uikit/date-range-input@18.4.0
+  - @commercetools-uikit/date-time-input@18.4.0
+  - @commercetools-uikit/localized-money-input@18.4.0
+  - @commercetools-uikit/localized-multiline-text-input@18.4.0
+  - @commercetools-uikit/localized-rich-text-input@18.4.0
+  - @commercetools-uikit/localized-text-input@18.4.0
+  - @commercetools-uikit/money-input@18.4.0
+  - @commercetools-uikit/multiline-text-input@18.4.0
+  - @commercetools-uikit/radio-input@18.4.0
+  - @commercetools-uikit/rich-text-input@18.4.0
+  - @commercetools-uikit/search-text-input@18.4.0
+  - @commercetools-uikit/select-input@18.4.0
+  - @commercetools-uikit/selectable-search-input@18.4.0
+  - @commercetools-uikit/time-input@18.4.0
+  - @commercetools-uikit/number-input@18.4.0
+  - @commercetools-uikit/password-input@18.4.0
+  - @commercetools-uikit/search-select-input@18.4.0
+  - @commercetools-uikit/text-input@18.4.0
+  - @commercetools-uikit/toggle-input@18.4.0
+
 ## 18.3.0
 
 ### Patch Changes

@@ -1,5 +1,30 @@
 # @commercetools-uikit/design-system
 
+## 18.4.0
+
+### Minor Changes
+
+- [#2739](https://github.com/commercetools/ui-kit/pull/2739) [`dd36868`](https://github.com/commercetools/ui-kit/commit/dd368687280284ee49801aaf3f1a61adb8e575d5) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - This package now contains a CSS file with all CSS variables per theme.
+
+  We still support the `custom-properties.css` file for backwards compatibility, but we now create other files based on each theme using their names as suffix.
+
+  Pattern:
+
+  ```
+  custom-properties_<theme-name>.css
+  ```
+
+  Example:
+
+  ```
+  custom-properties_default.css
+  ```
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@18.4.0
+
 ## 18.3.0
 
 ### Patch Changes

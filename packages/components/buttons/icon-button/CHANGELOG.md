@@ -1,5 +1,16 @@
 # @commercetools-uikit/icon-button
 
+## 18.4.0
+
+### Patch Changes
+
+- Updated dependencies [[`dd36868`](https://github.com/commercetools/ui-kit/commit/dd368687280284ee49801aaf3f1a61adb8e575d5)]:
+  - @commercetools-uikit/design-system@18.4.0
+  - @commercetools-uikit/accessible-button@18.4.0
+  - @commercetools-uikit/text@18.4.0
+  - @commercetools-uikit/spacings@18.4.0
+  - @commercetools-uikit/utils@18.4.0
+
 ## 18.3.0
 
 ### Patch Changes
