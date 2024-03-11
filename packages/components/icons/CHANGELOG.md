@@ -1,5 +1,17 @@
 # @commercetools-uikit/icons
 
+## 18.4.0
+
+### Minor Changes
+
+- [#2737](https://github.com/commercetools/ui-kit/pull/2737) [`7c35211`](https://github.com/commercetools/ui-kit/commit/7c35211111f2b4a042d6cbca78fb59298f7fcf27) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Add `Diamond` icon
+
+### Patch Changes
+
+- Updated dependencies [[`dd36868`](https://github.com/commercetools/ui-kit/commit/dd368687280284ee49801aaf3f1a61adb8e575d5)]:
+  - @commercetools-uikit/design-system@18.4.0
+  - @commercetools-uikit/utils@18.4.0
+
 ## 18.3.0
 
 ### Patch Changes
