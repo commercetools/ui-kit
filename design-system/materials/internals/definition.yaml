@@ -45,6 +45,7 @@ choiceGroupsByTheme:
         color-primary-85: 'hsl(175, 70%, 85%)'
         color-primary-90: 'hsl(175, 70%, 90%)'
         color-primary-95: 'hsl(175, 90%, 95%)'
+        color-primary-98: 'hsl(244, 100%, 99%)' # design token copied from recolouring theme for export
         color-accent: '#213c45'
         color-accent-10: 'hsl(195, 35.2941176471%, 10%)'
         color-accent-20: 'hsl(195, 35.2941176471%, 20%)'
@@ -286,6 +287,44 @@ choiceGroupsByTheme:
         color-primary-85: 'hsl(244, 100%, 84%)'
         color-primary-90: 'hsl(243, 100%, 93%)'
         color-primary-95: 'hsl(244, 100%, 97%)'
+        color-primary-98: 'hsl(244, 100%, 99%)'
+        color-accent-10: 'hsl(195, 100%, 10%)'
+        color-accent-20: 'hsl(195, 80%, 20%)'
+        color-accent-30: 'hsl(195, 70%, 30%)'
+        color-accent-40: 'hsl(195, 70%, 40%)'
+        color-accent-50: 'hsl(195, 70%, 50%)'
+        color-accent-60: 'hsl(195, 70%, 60%)'
+        color-accent-85: 'hsl(195, 85%, 85%)'
+        color-accent-90: 'hsl(200, 90%, 90%)'
+        color-accent-95: 'hsl(200, 95%, 95%)'
+        color-accent-98: 'hsl(195, 100%, 98%)'
+        color-brown-10: 'hsl(41, 100%, 10%)'
+        color-brown-20: 'hsl(41, 100%, 20%)'
+        color-brown-35: 'hsl(41, 96%, 35%)'
+        color-brown-50: 'hsl(41, 95%, 44%)'
+        color-brown-70: 'hsl(47, 95%, 70%)'
+        color-brown-85: 'hsl(47, 100%, 85%)'
+        color-brown-90: 'hsl(47, 100%, 90%)'
+        # color-brown-95: 'hsl(35, 80%, 95%)' - not provided for recolouring
+        color-brown-98: 'hsl(48, 100%, 97%)'
+        color-purple-10: 'hsl(248, 88%, 10%)'
+        color-purple-20: 'hsl(248, 50%, 20%)'
+        color-purple-35: 'hsl(248, 25%, 35%)'
+        color-purple-50: 'hsl(248, 64%, 58%)'
+        color-purple-70: 'hsl(248, 80%, 70%)'
+        color-purple-85: 'hsl(249, 100%, 85%)'
+        color-purple-90: 'hsl(248, 100%, 90%)'
+        # color-purple-95: 'hsl(248, 80%, 95%)' - not provided for recolouring
+        color-purple-98: 'hsl(246, 100%, 98%)'
+        color-turquoise-10: 'hsl(180, 88%, 10%)'
+        color-turquoise-20: 'hsl(180, 90%, 20%)'
+        color-turquoise-35: 'hsl(178, 88%, 35%)'
+        color-turquoise-50: 'hsl(178, 67%, 50%)'
+        color-turquoise-70: 'hsl(180, 75%, 70%)'
+        color-turquoise-85: 'hsl(180, 90%, 85%)'
+        color-turquoise-90: 'hsl(180, 88%, 90%)'
+        # color-turquoise-95: 'hsl(180, 80%, 95%)' - not provided for recolouring
+        color-turquoise-98: 'hsl(180, 100%, 98%)'
         color-success: 'hsl(152, 77%, 39%)'
         color-success-25: 'hsl(155, 84%, 20%)'
         color-success-40: 'hsl(155, 90%, 24%)'
@@ -310,6 +349,8 @@ states:
     description: 'When the mouse is over the element'
   disabled:
     description: 'When the element can not be interacted with'
+  active-disabled:
+    description: 'When the element is active but can not be interacted with'
   focused:
     description: 'When the element is currently selected to receive input'
   readonly:
@@ -349,6 +390,12 @@ variants:
     description: 'To differentiate component urgent type'
   positive:
     description: 'To differentiate component positive type'
+  turquoise:
+    description: 'To differentiate component turquoise type'
+  from:
+    description: 'To differentiate component from type'
+  to:
+    description: 'To differentiate component to type'
 
 componentGroups:
   button:
@@ -372,6 +419,14 @@ componentGroups:
     description: 'Loading spinner dot elements'
   content-notification:
     description: 'Content notification elements'
+  avatar:
+    description: 'Avatar elements'
+  checkbox-input:
+    description: 'Checkbox input elements'
+  progress-bar:
+    description: 'ProgressBar elements'
+  tag:
+    description: 'Tag elements'
 
 decisionGroupsByTheme:
   default:
@@ -429,15 +484,35 @@ decisionGroupsByTheme:
         background-color-for-toggle-track-when-active:
           choice: color-primary-40
         background-color-for-toggle-thumb-when-disabled:
-          choice: color-neutral-60
+          choice: color-accent-60
         background-color-for-toggle-track-when-disabled:
+          choice: color-accent-90
+        background-color-for-toggle-thumb-when-active-when-disabled:
+          choice: color-neutral-60
+          deprecated: true
+        background-color-for-toggle-track-when-active-when-disabled:
           choice: color-neutral-90
+          deprecated: true
+        background-color-for-toggle-thumb-when-hovered:
+          choice: 'rgba(0, 0, 0, 0.1)'
         background-color-for-loading-spinner-track:
           choice: color-accent
         background-color-for-loading-spinner-dot:
           choice: color-accent
         background-color-for-content-notification-when-success:
           choice: color-primary-95
+        background-color-for-view-switcher-button-when-active:
+          choice: color-neutral-95
+        background-color-for-checkbox-input-when-hovered:
+          choice: color-neutral-90
+        background-color-for-progress-bar-as-from:
+          choice: '#00E5CB'
+        background-color-for-progress-bar-as-to:
+          choice: '#00E5CB'
+        background-color-for-tag:
+          choice: color-neutral-95
+        background-color-for-tag-when-hovered:
+          choice: color-neutral-90
 
     borderColors:
       label: Border Colors
@@ -464,6 +539,12 @@ decisionGroupsByTheme:
           choice: color-neutral
         border-color-for-content-notification-when-success:
           choice: color-primary-85
+        border-color-for-checkbox-input:
+          choice: color-primary
+        border-color-for-checkbox-input-when-active:
+          choice: color-primary
+        border-color-for-tag:
+          choice: color-neutral-85
 
     borderRadiuses:
       label: Border Radius
@@ -518,6 +599,8 @@ decisionGroupsByTheme:
           choice: color-primary-25
         font-color-for-content-notification-when-success:
           choice: color-primary
+        font-color-for-avatar-as-turquoise:
+          choice: color-turquoise-50
 
     heights:
       label: Height
@@ -588,6 +671,12 @@ decisionGroupsByTheme:
           choice: color-primary-40
         border-color-for-content-notification-when-success:
           choice: color-success-85
+        border-color-for-checkbox-input:
+          choice: color-neutral-60
+        border-color-for-checkbox-input-when-active:
+          choice: color-primary
+        border-color-for-tag:
+          choice: color-primary-90
 
     backgroundColors:
       label: Background Colors
@@ -618,15 +707,35 @@ decisionGroupsByTheme:
         background-color-for-toggle-track-when-active:
           choice: color-primary-85
         background-color-for-toggle-thumb-when-disabled:
-          choice: color-primary-85
+          choice: color-neutral-60
         background-color-for-toggle-track-when-disabled:
+          choice: color-neutral-90
+        background-color-for-toggle-thumb-when-active-when-disabled:
+          choice: color-primary-85
+          deprecated: true
+        background-color-for-toggle-track-when-active-when-disabled:
           choice: color-primary-90
+          deprecated: true
+        background-color-for-toggle-thumb-when-hovered:
+          choice: 'hsla(240, 64%, 58%, 4%)'
         background-color-for-loading-spinner-track:
           choice: color-primary-90
         background-color-for-loading-spinner-dot:
           choice: color-primary
         background-color-for-content-notification-when-success:
           choice: color-success-95
+        background-color-for-view-switcher-button-when-active:
+          choice: color-primary-95
+        background-color-for-checkbox-input-when-hovered:
+          choice: color-primary-95
+        background-color-for-progress-bar-as-from:
+          choice: color-primary-85
+        background-color-for-progress-bar-as-to:
+          choice: color-primary
+        background-color-for-tag:
+          choice: color-primary-95
+        background-color-for-tag-when-hovered:
+          choice: color-primary-90
 
     fontColors:
       label: Font Colors
@@ -648,3 +757,5 @@ decisionGroupsByTheme:
           choice: color-success-40
         font-color-for-content-notification-when-success:
           choice: color-success
+        font-color-for-avatar-as-turquoise:
+          choice: color-turquoise-35
