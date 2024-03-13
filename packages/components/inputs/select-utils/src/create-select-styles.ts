@@ -318,9 +318,6 @@ const optionStyles = () => (base: TBase, state: TState) => {
       return base.backgroundColor;
     })(),
 
-    // '&:hover, &:focus': {
-    //   backgroundColor: designTokens.backgroundColorForInputWhenHovered,
-    // },
     '&:active': {
       color: (() => {
         if (!state.isDisabled) return designTokens.fontColorForInput;
