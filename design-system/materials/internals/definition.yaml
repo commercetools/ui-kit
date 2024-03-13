@@ -738,6 +738,12 @@ decisionGroupsByTheme:
           choice: color-primary-90
         background-color-for-dropdown-option-when-active:
           choice: color-primary-95
+        background-color-for-input-as-quiet-when-hovered:
+          choice: 'hsla(240, 64%, 58%, 4%)'
+        background-color-for-input-when-active:
+          choice: color-primary-95
+        background-color-for-input-when-hovered:
+          choice: color-primary-98
 
     fontColors:
       label: Font Colors

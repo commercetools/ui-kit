@@ -198,16 +198,12 @@
   --background-color-for-input: #fff;
   --background-color-for-input-when-selected: hsl(244, 100%, 97%);
   --background-color-for-input-when-disabled: hsl(232, 18%, 95%);
-  --background-color-for-input-when-hovered: hsl(232, 18%, 98%);
+  --background-color-for-input-when-hovered: hsl(244, 100%, 99%);
   --background-color-for-input-when-focused: #fff;
   --background-color-for-input-when-readonly: hsl(232, 18%, 95%);
-  --background-color-for-input-when-active: hsl(
-    203.05555555555554,
-    93.9130434783%,
-    95%
-  );
+  --background-color-for-input-when-active: hsl(244, 100%, 97%);
   --background-color-for-input-as-quiet: transparent;
-  --background-color-for-input-as-quiet-when-hovered: hsl(0deg 0% 10% / 2%);
+  --background-color-for-input-as-quiet-when-hovered: hsla(240, 64%, 58%, 4%);
   --background-color-for-localized-input-label: #fff;
   --background-color-for-localized-input-label-when-readonly: hsl(
     232,
