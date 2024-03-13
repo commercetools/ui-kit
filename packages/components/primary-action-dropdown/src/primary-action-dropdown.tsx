@@ -14,7 +14,7 @@ import {
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { warning } from '@commercetools-uikit/utils';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
@@ -41,14 +41,14 @@ const getButtonStyles = (isDisabled: boolean) => {
     css`
       background-color: ${designTokens.colorSurface};
       box-shadow: ${designTokens.shadow0};
-      border: ${`1px solid ${designTokens.colorNeutral}`};
+      border: 1px solid ${designTokens.borderColorForButtonAsSecondary};
       &:hover {
         box-shadow: ${designTokens.shadow0};
-        background-color: ${designTokens.colorNeutral95};
+        background-color: ${designTokens.backgroundColorForDropdownWhenHovered};
       }
       &:active {
         box-shadow: ${designTokens.shadow0};
-        background-color: ${designTokens.colorNeutral90};
+        background-color: ${designTokens.backgroundColorForDropdownWhenActive};
       }
     `,
   ];
@@ -64,55 +64,67 @@ type TDropdownHead = {
   chevron: ReactElement;
 };
 
-const DropdownHead = (props: TDropdownHead) => (
-  <div
-    css={css`
-      display: flex;
-      align-items: center;
-    `}
-  >
-    <AccessibleButton
-      label={props.children}
-      onClick={props.onClick}
-      isDisabled={props.isDisabled}
-      css={[
-        ...getButtonStyles(props.isDisabled),
-        css`
-          padding: 0 ${designTokens.spacing30};
-          border-radius: ${designTokens.borderRadius4} 0 0
-            ${designTokens.borderRadius4};
-        `,
-      ]}
+const DropdownHead = (props: TDropdownHead) => {
+  const { themedValue } = useTheme();
+  return (
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+      `}
     >
-      <span
-        css={css`
-          margin-right: ${designTokens.spacing20};
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        `}
+      <AccessibleButton
+        label={props.children}
+        onClick={props.onClick}
+        isDisabled={props.isDisabled}
+        css={[
+          ...getButtonStyles(props.isDisabled),
+          css`
+            padding: 0 ${designTokens.spacing30};
+            border-radius: ${designTokens.borderRadius4} 0 0
+              ${designTokens.borderRadius4};
+          `,
+        ]}
       >
-        {cloneElement(props.iconLeft, {
-          size: 'big',
-          color: props.isDisabled ? 'neutral60' : 'solid',
-        })}
-      </span>
-      <span
-        css={css`
-          margin: 0 ${designTokens.spacing10} 0 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        `}
-      >
-        <Text.Detail tone={props.isDisabled ? 'secondary' : undefined}>
-          {props.children}
-        </Text.Detail>
-      </span>
-    </AccessibleButton>
-    {props.chevron}
-  </div>
-);
+        <span
+          css={css`
+            margin-right: ${designTokens.spacing20};
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          `}
+        >
+          {cloneElement(props.iconLeft, {
+            size: 'big',
+            color: props.isDisabled
+              ? 'neutral60'
+              : themedValue('solid', 'primary'),
+          })}
+        </span>
+        <span
+          css={css`
+            margin: 0 ${designTokens.spacing10} 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            ${!props.isDisabled &&
+            css`
+              > div {
+                color: ${designTokens.fontColorForButtonAsSecondary} !important;
+              }
+            `}
+          `}
+        >
+          <Text.Detail tone={props.isDisabled ? 'secondary' : undefined}>
+            {props.children}
+          </Text.Detail>
+        </span>
+      </AccessibleButton>
+      {props.chevron}
+    </div>
+  );
+};
 
 DropdownHead.displayName = 'DropdownHead';
 
@@ -135,7 +147,9 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
           padding: 0 ${designTokens.spacing20};
           border-radius: 0 ${designTokens.borderRadius4}
             ${designTokens.borderRadius4} 0;
-          border-color: ${designTokens.colorNeutral};
+          border-color: ${props.isDisabled
+            ? designTokens.colorNeutral
+            : designTokens.borderColorForButtonAsSecondary};
           border-width: 1px 1px 1px 0px;
           border-style: solid;
         `,
@@ -173,7 +187,7 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
 
 DropdownChevron.displayName = 'DropdownChevron';
 
-const Options = styled.div`
+const Options = styled.div<{ isRecolouringTheme: boolean }>`
   position: absolute;
   z-index: 5;
   width: 100%;
@@ -189,8 +203,15 @@ const Options = styled.div`
     padding-left: ${designTokens.spacing30};
     white-space: normal;
     &:active {
-      background-color: ${designTokens.colorInfo95};
+      background-color: ${designTokens.backgroundColorForDropdownOptionWhenActive};
     }
+    ${(props) =>
+      props.isRecolouringTheme &&
+      css`
+        &:hover {
+          background-color: ${designTokens.colorPrimary98};
+        }
+      `}
   }
 `;
 
@@ -228,6 +249,7 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
     },
     [ref, toggle]
   );
+  const { isRecolouringTheme } = useTheme();
   useEffect(() => {
     window.addEventListener('click', handleGlobalClick);
     return () => {
@@ -289,7 +311,9 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         {primaryOption.props.children}
       </DropdownHead>
       {isOpen && !primaryOption.props.isDisabled && (
-        <Options>{childrenAsArray}</Options>
+        <Options isRecolouringTheme={isRecolouringTheme}>
+          {childrenAsArray}
+        </Options>
       )}
     </div>
   );

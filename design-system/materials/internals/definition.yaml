@@ -305,7 +305,7 @@ choiceGroupsByTheme:
         color-brown-70: 'hsl(47, 95%, 70%)'
         color-brown-85: 'hsl(47, 100%, 85%)'
         color-brown-90: 'hsl(47, 100%, 90%)'
-        # color-brown-95: 'hsl(35, 80%, 95%)' - not provided for recolouring
+        color-brown-95: 'hsl(47, 100%, 95%)'
         color-brown-98: 'hsl(48, 100%, 97%)'
         color-purple-10: 'hsl(248, 88%, 10%)'
         color-purple-20: 'hsl(248, 50%, 20%)'
@@ -314,7 +314,7 @@ choiceGroupsByTheme:
         color-purple-70: 'hsl(248, 80%, 70%)'
         color-purple-85: 'hsl(249, 100%, 85%)'
         color-purple-90: 'hsl(248, 100%, 90%)'
-        # color-purple-95: 'hsl(248, 80%, 95%)' - not provided for recolouring
+        color-purple-95: 'hsl(248, 100%, 95%)'
         color-purple-98: 'hsl(246, 100%, 98%)'
         color-turquoise-10: 'hsl(180, 88%, 10%)'
         color-turquoise-20: 'hsl(180, 90%, 20%)'
@@ -323,7 +323,7 @@ choiceGroupsByTheme:
         color-turquoise-70: 'hsl(180, 75%, 70%)'
         color-turquoise-85: 'hsl(180, 90%, 85%)'
         color-turquoise-90: 'hsl(180, 88%, 90%)'
-        # color-turquoise-95: 'hsl(180, 80%, 95%)' - not provided for recolouring
+        color-turquoise-95: 'hsl(180, 88%, 95%)'
         color-turquoise-98: 'hsl(180, 100%, 98%)'
         color-success: 'hsl(152, 77%, 39%)'
         color-success-25: 'hsl(155, 84%, 20%)'
@@ -392,10 +392,6 @@ variants:
     description: 'To differentiate component positive type'
   turquoise:
     description: 'To differentiate component turquoise type'
-  from:
-    description: 'To differentiate component from type'
-  to:
-    description: 'To differentiate component to type'
 
 componentGroups:
   button:
@@ -423,10 +419,12 @@ componentGroups:
     description: 'Avatar elements'
   checkbox-input:
     description: 'Checkbox input elements'
-  progress-bar:
-    description: 'ProgressBar elements'
   tag:
     description: 'Tag elements'
+  dropdown:
+    description: 'Dropdown elements'
+  dropdown-option:
+    description: 'Dropdown option elements'
 
 decisionGroupsByTheme:
   default:
@@ -505,14 +503,16 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-checkbox-input-when-hovered:
           choice: color-neutral-90
-        background-color-for-progress-bar-as-from:
-          choice: '#00E5CB'
-        background-color-for-progress-bar-as-to:
-          choice: '#00E5CB'
         background-color-for-tag:
           choice: color-neutral-95
         background-color-for-tag-when-hovered:
           choice: color-neutral-90
+        background-color-for-dropdown-when-hovered:
+          choice: color-neutral-95
+        background-color-for-dropdown-when-active:
+          choice: color-neutral-90
+        background-color-for-dropdown-option-when-active:
+          choice: color-info-95
 
     borderColors:
       label: Border Colors
@@ -728,14 +728,16 @@ decisionGroupsByTheme:
           choice: color-primary-95
         background-color-for-checkbox-input-when-hovered:
           choice: color-primary-95
-        background-color-for-progress-bar-as-from:
-          choice: color-primary-85
-        background-color-for-progress-bar-as-to:
-          choice: color-primary
         background-color-for-tag:
           choice: color-primary-95
         background-color-for-tag-when-hovered:
           choice: color-primary-90
+        background-color-for-dropdown-when-hovered:
+          choice: color-primary-95
+        background-color-for-dropdown-when-active:
+          choice: color-primary-90
+        background-color-for-dropdown-option-when-active:
+          choice: color-primary-95
 
     fontColors:
       label: Font Colors

@@ -254,10 +254,15 @@
   --background-color-for-content-notification-when-success: hsl(175, 90%, 95%);
   --background-color-for-view-switcher-button-when-active: hsl(232, 18%, 95%);
   --background-color-for-checkbox-input-when-hovered: hsl(232, 18%, 90%);
-  --background-color-for-progress-bar-as-from: #00e5cb;
-  --background-color-for-progress-bar-as-to: #00e5cb;
   --background-color-for-tag: hsl(232, 18%, 95%);
   --background-color-for-tag-when-hovered: hsl(232, 18%, 90%);
+  --background-color-for-dropdown-when-hovered: hsl(232, 18%, 95%);
+  --background-color-for-dropdown-when-active: hsl(232, 18%, 90%);
+  --background-color-for-dropdown-option-when-active: hsl(
+    203.05555555555554,
+    93.9130434783%,
+    95%
+  );
   --border-color-for-input: hsl(232, 18%, 80%);
   --border-color-for-input-when-focused: hsl(175, 55%, 45%);
   --border-color-for-input-when-disabled: hsl(232, 18%, 80%);

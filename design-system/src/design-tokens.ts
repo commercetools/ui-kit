@@ -226,10 +226,12 @@ export const themes = {
     backgroundColorForContentNotificationWhenSuccess: 'hsl(175, 90%, 95%)',
     backgroundColorForViewSwitcherButtonWhenActive: 'hsl(232, 18%, 95%)',
     backgroundColorForCheckboxInputWhenHovered: 'hsl(232, 18%, 90%)',
-    backgroundColorForProgressBarAsFrom: '#00E5CB',
-    backgroundColorForProgressBarAsTo: '#00E5CB',
     backgroundColorForTag: 'hsl(232, 18%, 95%)',
     backgroundColorForTagWhenHovered: 'hsl(232, 18%, 90%)',
+    backgroundColorForDropdownWhenHovered: 'hsl(232, 18%, 95%)',
+    backgroundColorForDropdownWhenActive: 'hsl(232, 18%, 90%)',
+    backgroundColorForDropdownOptionWhenActive:
+      'hsl(203.05555555555554, 93.9130434783%, 95%)',
     borderColorForInput: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenFocused: 'hsl(175, 55%, 45%)',
     borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
@@ -308,6 +310,7 @@ export const themes = {
     colorBrown70: 'hsl(47, 95%, 70%)',
     colorBrown85: 'hsl(47, 100%, 85%)',
     colorBrown90: 'hsl(47, 100%, 90%)',
+    colorBrown95: 'hsl(47, 100%, 95%)',
     colorBrown98: 'hsl(48, 100%, 97%)',
     colorPurple10: 'hsl(248, 88%, 10%)',
     colorPurple20: 'hsl(248, 50%, 20%)',
@@ -316,6 +319,7 @@ export const themes = {
     colorPurple70: 'hsl(248, 80%, 70%)',
     colorPurple85: 'hsl(249, 100%, 85%)',
     colorPurple90: 'hsl(248, 100%, 90%)',
+    colorPurple95: 'hsl(248, 100%, 95%)',
     colorPurple98: 'hsl(246, 100%, 98%)',
     colorTurquoise10: 'hsl(180, 88%, 10%)',
     colorTurquoise20: 'hsl(180, 90%, 20%)',
@@ -324,6 +328,7 @@ export const themes = {
     colorTurquoise70: 'hsl(180, 75%, 70%)',
     colorTurquoise85: 'hsl(180, 90%, 85%)',
     colorTurquoise90: 'hsl(180, 88%, 90%)',
+    colorTurquoise95: 'hsl(180, 88%, 95%)',
     colorTurquoise98: 'hsl(180, 100%, 98%)',
     colorSuccess: 'hsl(152, 77%, 39%)',
     colorSuccess25: 'hsl(155, 84%, 20%)',
@@ -370,10 +375,11 @@ export const themes = {
     backgroundColorForContentNotificationWhenSuccess: 'hsl(141, 76%, 92%)',
     backgroundColorForViewSwitcherButtonWhenActive: 'hsl(244, 100%, 97%)',
     backgroundColorForCheckboxInputWhenHovered: 'hsl(244, 100%, 97%)',
-    backgroundColorForProgressBarAsFrom: 'hsl(244, 100%, 84%)',
-    backgroundColorForProgressBarAsTo: 'hsl(240, 64%, 58%)',
     backgroundColorForTag: 'hsl(244, 100%, 97%)',
     backgroundColorForTagWhenHovered: 'hsl(243, 100%, 93%)',
+    backgroundColorForDropdownWhenHovered: 'hsl(244, 100%, 97%)',
+    backgroundColorForDropdownWhenActive: 'hsl(243, 100%, 93%)',
+    backgroundColorForDropdownOptionWhenActive: 'hsl(244, 100%, 97%)',
     fontColorForButtonAsSecondary: 'hsl(240, 64%, 58%)',
     fontColorForButtonAsFlatWhenHovered: 'hsl(240, 100%, 67%)',
     fontColorForButtonAsFlatAsCritical: 'hsl(3, 60%, 46%)',
@@ -654,13 +660,15 @@ const designTokens = {
     'var(--background-color-for-view-switcher-button-when-active, hsl(232, 18%, 95%))',
   backgroundColorForCheckboxInputWhenHovered:
     'var(--background-color-for-checkbox-input-when-hovered, hsl(232, 18%, 90%))',
-  backgroundColorForProgressBarAsFrom:
-    'var(--background-color-for-progress-bar-as-from, #00E5CB)',
-  backgroundColorForProgressBarAsTo:
-    'var(--background-color-for-progress-bar-as-to, #00E5CB)',
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(232, 18%, 95%))',
   backgroundColorForTagWhenHovered:
     'var(--background-color-for-tag-when-hovered, hsl(232, 18%, 90%))',
+  backgroundColorForDropdownWhenHovered:
+    'var(--background-color-for-dropdown-when-hovered, hsl(232, 18%, 95%))',
+  backgroundColorForDropdownWhenActive:
+    'var(--background-color-for-dropdown-when-active, hsl(232, 18%, 90%))',
+  backgroundColorForDropdownOptionWhenActive:
+    'var(--background-color-for-dropdown-option-when-active, hsl(203.05555555555554, 93.9130434783%, 95%))',
   borderColorForInput: 'var(--border-color-for-input, hsl(232, 18%, 80%))',
   borderColorForInputWhenFocused:
     'var(--border-color-for-input-when-focused, hsl(175, 55%, 45%))',
