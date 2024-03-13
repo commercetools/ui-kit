@@ -425,6 +425,8 @@ componentGroups:
     description: 'Dropdown elements'
   dropdown-option:
     description: 'Dropdown option elements'
+  text:
+    description: 'Text elements'
 
 decisionGroupsByTheme:
   default:
@@ -601,6 +603,8 @@ decisionGroupsByTheme:
           choice: color-primary
         font-color-for-avatar-as-turquoise:
           choice: color-turquoise-50
+        font-color-for-text-as-positive:
+          choice: color-primary-25
 
     heights:
       label: Height
@@ -767,3 +771,5 @@ decisionGroupsByTheme:
           choice: color-success
         font-color-for-avatar-as-turquoise:
           choice: color-turquoise-35
+        font-color-for-text-as-positive:
+          choice: color-success-40

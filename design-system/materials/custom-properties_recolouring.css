@@ -288,6 +288,7 @@
   --font-color-for-stamp-as-positive: hsl(155, 90%, 24%);
   --font-color-for-content-notification-when-success: hsl(152, 77%, 39%);
   --font-color-for-avatar-as-turquoise: hsl(178, 88%, 35%);
+  --font-color-for-text-as-positive: hsl(155, 90%, 24%);
   --height-for-button-as-big: 40px;
   --height-for-button-as-medium: 32px;
   --height-for-button-as-small: 16px;

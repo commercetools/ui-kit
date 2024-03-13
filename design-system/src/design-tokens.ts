@@ -266,6 +266,7 @@ export const themes = {
     fontColorForStampAsPositive: 'hsl(175, 55%, 25%)',
     fontColorForContentNotificationWhenSuccess: 'hsl(175, 55%, 45%)',
     fontColorForAvatarAsTurquoise: 'hsl(180, 30%, 45%)',
+    fontColorForTextAsPositive: 'hsl(175, 55%, 25%)',
     heightForButtonAsBig: '40px',
     heightForButtonAsMedium: '32px',
     heightForButtonAsSmall: '16px',
@@ -392,6 +393,7 @@ export const themes = {
     fontColorForStampAsPositive: 'hsl(155, 90%, 24%)',
     fontColorForContentNotificationWhenSuccess: 'hsl(152, 77%, 39%)',
     fontColorForAvatarAsTurquoise: 'hsl(178, 88%, 35%)',
+    fontColorForTextAsPositive: 'hsl(155, 90%, 24%)',
   },
 } as const;
 
@@ -730,6 +732,8 @@ const designTokens = {
     'var(--font-color-for-content-notification-when-success, hsl(175, 55%, 45%))',
   fontColorForAvatarAsTurquoise:
     'var(--font-color-for-avatar-as-turquoise, hsl(180, 30%, 45%))',
+  fontColorForTextAsPositive:
+    'var(--font-color-for-text-as-positive, hsl(175, 55%, 25%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',

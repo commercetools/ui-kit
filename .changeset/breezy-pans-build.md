@@ -9,6 +9,7 @@
 '@commercetools-uikit/data-table': minor
 '@commercetools-uikit/avatar': minor
 '@commercetools-uikit/icons': minor
+'@commercetools-uikit/text': minor
 '@commercetools-uikit/tag': minor
 '@commercetools-uikit/design-system': minor
 ---
