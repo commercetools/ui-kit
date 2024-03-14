@@ -6,7 +6,7 @@
 export const themes = {
   default: {
     colorPrimary: 'hsl(175, 55%, 45%)',
-    colorPrimary10: 'hsl(240, 66%, 19%)',
+    colorPrimary10: 'hsl(175, 55%, 10%)',
     colorPrimary20: 'hsl(175, 55%, 20%)',
     colorPrimary25: 'hsl(175, 55%, 25%)',
     colorPrimary30: 'hsl(175, 55%, 30%)',
@@ -14,7 +14,7 @@ export const themes = {
     colorPrimary85: 'hsl(175, 70%, 85%)',
     colorPrimary90: 'hsl(175, 70%, 90%)',
     colorPrimary95: 'hsl(175, 90%, 95%)',
-    colorPrimary98: 'hsl(244, 100%, 99%)',
+    colorPrimary98: 'hsl(175, 100%, 99%)',
     colorAccent: '#213c45',
     colorAccent10: 'hsl(195, 35.2941176471%, 10%)',
     colorAccent20: 'hsl(195, 35.2941176471%, 20%)',
@@ -70,7 +70,7 @@ export const themes = {
     colorWarning: '#f16d0e',
     colorWarning25: 'hsl(25.110132158590307, 89.0196078431%, 25%)',
     colorWarning40: 'hsl(25.110132158590307, 89.0196078431%, 40%)',
-    colorWarning60: 'hsl(35, 90%, 55%)',
+    colorWarning60: 'hsl(25.110132158590307, 90%, 60%)',
     colorWarning85: 'hsl(25.110132158590307, 89.0196078431%, 85%)',
     colorWarning95: 'hsl(25.110132158590307, 89.0196078431%, 95%)',
     colorError: '#e60050',
@@ -405,7 +405,7 @@ export const themes = {
 
 const designTokens = {
   colorPrimary: 'var(--color-primary, hsl(175, 55%, 45%))',
-  colorPrimary10: 'var(--color-primary-10, hsl(240, 66%, 19%))',
+  colorPrimary10: 'var(--color-primary-10, hsl(175, 55%, 10%))',
   colorPrimary20: 'var(--color-primary-20, hsl(175, 55%, 20%))',
   colorPrimary25: 'var(--color-primary-25, hsl(175, 55%, 25%))',
   colorPrimary30: 'var(--color-primary-30, hsl(175, 55%, 30%))',
@@ -413,7 +413,7 @@ const designTokens = {
   colorPrimary85: 'var(--color-primary-85, hsl(175, 70%, 85%))',
   colorPrimary90: 'var(--color-primary-90, hsl(175, 70%, 90%))',
   colorPrimary95: 'var(--color-primary-95, hsl(175, 90%, 95%))',
-  colorPrimary98: 'var(--color-primary-98, hsl(244, 100%, 99%))',
+  colorPrimary98: 'var(--color-primary-98, hsl(175, 100%, 99%))',
   colorAccent: 'var(--color-accent, #213c45)',
   colorAccent10: 'var(--color-accent-10, hsl(195, 35.2941176471%, 10%))',
   colorAccent20: 'var(--color-accent-20, hsl(195, 35.2941176471%, 20%))',
@@ -474,7 +474,7 @@ const designTokens = {
     'var(--color-warning-25, hsl(25.110132158590307, 89.0196078431%, 25%))',
   colorWarning40:
     'var(--color-warning-40, hsl(25.110132158590307, 89.0196078431%, 40%))',
-  colorWarning60: 'var(--color-warning-60, hsl(35, 90%, 55%))',
+  colorWarning60: 'var(--color-warning-60, hsl(25.110132158590307, 90%, 60%))',
   colorWarning85:
     'var(--color-warning-85, hsl(25.110132158590307, 89.0196078431%, 85%))',
   colorWarning95:
