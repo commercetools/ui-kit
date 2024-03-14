@@ -41,7 +41,7 @@ const getButtonStyles = (isDisabled: boolean) => {
     css`
       background-color: ${designTokens.colorSurface};
       box-shadow: ${designTokens.shadow0};
-      border: 1px solid ${designTokens.borderColorForButtonAsSecondary};
+      border: 1px solid ${designTokens.borderColorForDropdown};
       &:hover {
         box-shadow: ${designTokens.shadow0};
         background-color: ${designTokens.backgroundColorForDropdownWhenHovered};
