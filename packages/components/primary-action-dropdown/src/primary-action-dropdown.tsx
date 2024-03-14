@@ -149,7 +149,7 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
             ${designTokens.borderRadius4} 0;
           border-color: ${props.isDisabled
             ? designTokens.colorNeutral
-            : designTokens.borderColorForButtonAsSecondary};
+            : designTokens.borderColorForDropdown};
           border-width: 1px 1px 1px 0px;
           border-style: solid;
         `,

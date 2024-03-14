@@ -417,8 +417,12 @@ componentGroups:
     description: 'Content notification elements'
   avatar:
     description: 'Avatar elements'
+  leading-icon:
+    description: 'Leading icon elements'
   checkbox-input:
     description: 'Checkbox input elements'
+  radio-option:
+    description: 'Radio option elements'
   tag:
     description: 'Tag elements'
   dropdown:
@@ -505,6 +509,8 @@ decisionGroupsByTheme:
           choice: color-neutral-95
         background-color-for-checkbox-input-when-hovered:
           choice: color-neutral-90
+        background-color-for-radio-option-when-hovered:
+          choice: color-neutral-90
         background-color-for-tag:
           choice: color-neutral-95
         background-color-for-tag-when-hovered:
@@ -538,6 +544,8 @@ decisionGroupsByTheme:
           choice: color-transparent
         # recolouring rollout
         border-color-for-button-as-secondary:
+          choice: color-neutral
+        border-color-for-dropdown:
           choice: color-neutral
         border-color-for-content-notification-when-success:
           choice: color-primary-85
@@ -602,6 +610,8 @@ decisionGroupsByTheme:
         font-color-for-content-notification-when-success:
           choice: color-primary
         font-color-for-avatar-as-turquoise:
+          choice: color-turquoise-50
+        font-color-for-leading-icon-as-turquoise:
           choice: color-turquoise-50
         font-color-for-text-as-positive:
           choice: color-primary-25
@@ -671,6 +681,8 @@ decisionGroupsByTheme:
       decisions:
         border-color-for-button-as-secondary:
           choice: color-primary-85
+        border-color-for-dropdown:
+          choice: color-primary-85
         border-color-for-input-when-focused:
           choice: color-primary-40
         border-color-for-content-notification-when-success:
@@ -732,6 +744,8 @@ decisionGroupsByTheme:
           choice: color-primary-95
         background-color-for-checkbox-input-when-hovered:
           choice: color-primary-95
+        background-color-for-radio-option-when-hovered:
+          choice: color-primary-95
         background-color-for-tag:
           choice: color-primary-95
         background-color-for-tag-when-hovered:
@@ -770,6 +784,8 @@ decisionGroupsByTheme:
         font-color-for-content-notification-when-success:
           choice: color-success
         font-color-for-avatar-as-turquoise:
+          choice: color-turquoise-35
+        font-color-for-leading-icon-as-turquoise:
           choice: color-turquoise-35
         font-color-for-text-as-positive:
           choice: color-success-40

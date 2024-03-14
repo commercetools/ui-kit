@@ -226,6 +226,7 @@ export const themes = {
     backgroundColorForContentNotificationWhenSuccess: 'hsl(175, 90%, 95%)',
     backgroundColorForViewSwitcherButtonWhenActive: 'hsl(232, 18%, 95%)',
     backgroundColorForCheckboxInputWhenHovered: 'hsl(232, 18%, 90%)',
+    backgroundColorForRadioOptionWhenHovered: 'hsl(232, 18%, 90%)',
     backgroundColorForTag: 'hsl(232, 18%, 95%)',
     backgroundColorForTagWhenHovered: 'hsl(232, 18%, 90%)',
     backgroundColorForDropdownWhenHovered: 'hsl(232, 18%, 95%)',
@@ -241,6 +242,7 @@ export const themes = {
     borderColorForInputWhenHovered: 'hsl(232, 18%, 80%)',
     borderColorForInputAsQuiet: 'transparent',
     borderColorForButtonAsSecondary: 'hsl(232, 18%, 80%)',
+    borderColorForDropdown: 'hsl(232, 18%, 80%)',
     borderColorForContentNotificationWhenSuccess: 'hsl(175, 70%, 85%)',
     borderColorForCheckboxInput: 'hsl(175, 55%, 45%)',
     borderColorForCheckboxInputWhenActive: 'hsl(175, 55%, 45%)',
@@ -266,6 +268,7 @@ export const themes = {
     fontColorForStampAsPositive: 'hsl(175, 55%, 25%)',
     fontColorForContentNotificationWhenSuccess: 'hsl(175, 55%, 45%)',
     fontColorForAvatarAsTurquoise: 'hsl(180, 30%, 45%)',
+    fontColorForLeadingIconAsTurquoise: 'hsl(180, 30%, 45%)',
     fontColorForTextAsPositive: 'hsl(175, 55%, 25%)',
     heightForButtonAsBig: '40px',
     heightForButtonAsMedium: '32px',
@@ -348,6 +351,7 @@ export const themes = {
     colorError85: 'hsl(1, 55%, 74%)',
     colorError95: 'hsl(349, 66%, 92%)',
     borderColorForButtonAsSecondary: 'hsl(244, 100%, 84%)',
+    borderColorForDropdown: 'hsl(244, 100%, 84%)',
     borderColorForInputWhenFocused: 'hsl(240, 100%, 67%)',
     borderColorForContentNotificationWhenSuccess: 'hsl(144, 69%, 80%)',
     borderColorForCheckboxInput: 'hsl(232, 18%, 60%)',
@@ -376,6 +380,7 @@ export const themes = {
     backgroundColorForContentNotificationWhenSuccess: 'hsl(141, 76%, 92%)',
     backgroundColorForViewSwitcherButtonWhenActive: 'hsl(244, 100%, 97%)',
     backgroundColorForCheckboxInputWhenHovered: 'hsl(244, 100%, 97%)',
+    backgroundColorForRadioOptionWhenHovered: 'hsl(244, 100%, 97%)',
     backgroundColorForTag: 'hsl(244, 100%, 97%)',
     backgroundColorForTagWhenHovered: 'hsl(243, 100%, 93%)',
     backgroundColorForDropdownWhenHovered: 'hsl(244, 100%, 97%)',
@@ -393,6 +398,7 @@ export const themes = {
     fontColorForStampAsPositive: 'hsl(155, 90%, 24%)',
     fontColorForContentNotificationWhenSuccess: 'hsl(152, 77%, 39%)',
     fontColorForAvatarAsTurquoise: 'hsl(178, 88%, 35%)',
+    fontColorForLeadingIconAsTurquoise: 'hsl(178, 88%, 35%)',
     fontColorForTextAsPositive: 'hsl(155, 90%, 24%)',
   },
 } as const;
@@ -665,6 +671,8 @@ const designTokens = {
     'var(--background-color-for-view-switcher-button-when-active, hsl(232, 18%, 95%))',
   backgroundColorForCheckboxInputWhenHovered:
     'var(--background-color-for-checkbox-input-when-hovered, hsl(232, 18%, 90%))',
+  backgroundColorForRadioOptionWhenHovered:
+    'var(--background-color-for-radio-option-when-hovered, hsl(232, 18%, 90%))',
   backgroundColorForTag: 'var(--background-color-for-tag, hsl(232, 18%, 95%))',
   backgroundColorForTagWhenHovered:
     'var(--background-color-for-tag-when-hovered, hsl(232, 18%, 90%))',
@@ -691,6 +699,8 @@ const designTokens = {
     'var(--border-color-for-input-as-quiet, transparent)',
   borderColorForButtonAsSecondary:
     'var(--border-color-for-button-as-secondary, hsl(232, 18%, 80%))',
+  borderColorForDropdown:
+    'var(--border-color-for-dropdown, hsl(232, 18%, 80%))',
   borderColorForContentNotificationWhenSuccess:
     'var(--border-color-for-content-notification-when-success, hsl(175, 70%, 85%))',
   borderColorForCheckboxInput:
@@ -732,6 +742,8 @@ const designTokens = {
     'var(--font-color-for-content-notification-when-success, hsl(175, 55%, 45%))',
   fontColorForAvatarAsTurquoise:
     'var(--font-color-for-avatar-as-turquoise, hsl(180, 30%, 45%))',
+  fontColorForLeadingIconAsTurquoise:
+    'var(--font-color-for-leading-icon-as-turquoise, hsl(180, 30%, 45%))',
   fontColorForTextAsPositive:
     'var(--font-color-for-text-as-positive, hsl(175, 55%, 25%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',

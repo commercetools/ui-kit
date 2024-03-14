@@ -70,7 +70,7 @@ const colorThemeMap = {
   turquoise: {
     light: {
       background: designTokens.colorTurquoise90,
-      fill: designTokens.fontColorForAvatarAsTurquoise,
+      fill: designTokens.fontColorForLeadingIconAsTurquoise,
     },
     dark: {
       background: designTokens.colorTurquoise50,
