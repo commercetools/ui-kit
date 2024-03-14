@@ -10,7 +10,7 @@ import Label from '@commercetools-uikit/label';
 import { isValid, normalizePageValue } from './utils';
 import messages from './messages';
 
-type TPageNavigatorProps = {
+export type TPageNavigatorProps = {
   /**
    * Total number of pages available
    */

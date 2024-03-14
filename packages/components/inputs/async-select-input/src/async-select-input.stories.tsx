@@ -39,12 +39,18 @@ const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const loadOptions = (inputValue: string) =>
   delay(500).then(() => filterColors(inputValue));
 
-
 const meta = {
   title: 'Components/Inputs/SelectInputs/AsyncSelectInput',
   component: AsyncSelectInput,
   argTypes: {
     iconLeft: iconArgType,
+  },
+  parameters: {
+    docs: {
+      story: {
+        height: '280px',
+      },
+    },
   },
 } satisfies Meta<typeof AsyncSelectInput>;
 
@@ -81,5 +87,7 @@ export const Default: Story = {
     tabSelectsValue: true,
     showOptionGroupDivider: false,
   },
-  render: withControlledValue<TAsyncSelectInputProps>(AsyncSelectInput),
+  render: withControlledValue<TAsyncSelectInputProps>({
+    Component: AsyncSelectInput,
+  }),
 };

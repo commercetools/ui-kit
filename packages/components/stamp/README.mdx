@@ -1,0 +1,43 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as StampStories from './src/stamp.stories';
+
+<Meta of={StampStories} />
+
+# Stamp
+
+## Description
+
+Stamps are visual labels which hold small amounts of information regarding an item. (E.g Indicating if a product is published in a list).
+
+## Installation
+
+```
+yarn add @commercetools-uikit/stamp
+```
+
+```
+npm --save install @commercetools-uikit/stamp
+```
+
+Additionally install the peer dependencies (if not present)
+
+```
+yarn add react
+```
+
+```
+npm --save install react
+```
+
+## Usage
+
+```jsx
+import Stamp from '@commercetools-uikit/stamp';
+
+const Example = () => <Stamp tone="primary" label="Hello" />;
+
+export default Example;
+```
+
+<Canvas of={StampStories.Default} />
