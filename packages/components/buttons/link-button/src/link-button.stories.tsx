@@ -13,7 +13,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  // @ts-ignore
-  args: {},
+  args: {
+    label: '',
+    to: '',
+  },
   render: () => <></>,
 };

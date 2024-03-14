@@ -13,6 +13,9 @@ const getRandomIndex = (min: number, max: number) =>
 const meta = {
   title: 'Components/Stamp',
   component: Stamp,
+  argTypes: {
+    ...hideControls(['tone', 'children', 'icon', 'label']),
+  },
 } satisfies Meta<typeof Stamp>;
 
 export default meta;
@@ -21,9 +24,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     isCondensed: false,
-  },
-  argTypes: {
-    ...hideControls(['tone', 'children', 'icon', 'label']),
   },
   render: (args) => {
     return (

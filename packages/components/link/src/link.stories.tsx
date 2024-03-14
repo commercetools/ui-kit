@@ -5,6 +5,12 @@ import Link from './link';
 const meta = {
   title: 'Components/Link',
   component: Link,
+  argTypes: {
+    tone: {
+      control: 'select',
+      options: ['primary', 'inverted', 'secondary'],
+    },
+  },
 } satisfies Meta<typeof Link>;
 
 export default meta;
@@ -15,12 +21,6 @@ export const Default: Story = {
     to: '/foo/bar',
     isExternal: false,
     children: 'Accessibility text',
-  },
-  argTypes: {
-    tone: {
-      control: 'select',
-      options: ['primary', 'inverted', 'secondary'],
-    },
   },
   render: (args) => {
     return (
