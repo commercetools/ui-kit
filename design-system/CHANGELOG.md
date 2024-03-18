@@ -1,5 +1,16 @@
 # @commercetools-uikit/design-system
 
+## 18.5.0
+
+### Minor Changes
+
+- [#2742](https://github.com/commercetools/ui-kit/pull/2742) [`96dbded`](https://github.com/commercetools/ui-kit/commit/96dbded975ad3abde9366998c87d613ab1f17546) Thanks [@kark](https://github.com/kark)! - Styling adjustments related to the upcoming new colours schema.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@18.5.0
+
 ## 18.4.0
 
 ### Minor Changes

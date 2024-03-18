@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/select-utils",
   "description": "Utilities for working with select components.",
-  "version": "18.4.0",
+  "version": "18.5.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -21,12 +21,12 @@
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
-    "@commercetools-uikit/accessible-button": "18.4.0",
-    "@commercetools-uikit/design-system": "18.4.0",
-    "@commercetools-uikit/icons": "18.4.0",
-    "@commercetools-uikit/spacings": "18.4.0",
-    "@commercetools-uikit/text": "18.4.0",
-    "@commercetools-uikit/utils": "18.4.0",
+    "@commercetools-uikit/accessible-button": "18.5.0",
+    "@commercetools-uikit/design-system": "18.5.0",
+    "@commercetools-uikit/icons": "18.5.0",
+    "@commercetools-uikit/spacings": "18.5.0",
+    "@commercetools-uikit/text": "18.5.0",
+    "@commercetools-uikit/utils": "18.5.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "lodash": "4.17.21",
