@@ -14,7 +14,7 @@
   "UIKit.DataTableManager.ColumnManager.title": "列管理器",
   "UIKit.DataTableManager.ColumnSelectorGroups.visible": "可见列",
   "UIKit.DataTableManager.DensityManager.closeButtonLabel": "关闭",
-  "UIKit.DataTableManager.DensityManager.densityDisplayComfortableOption": "Comfortable",
+  "UIKit.DataTableManager.DensityManager.densityDisplayComfortableOption": "舒适",
   "UIKit.DataTableManager.DensityManager.densityDisplayCompactOption": "紧凑型",
   "UIKit.DataTableManager.DensityManager.densityDisplaySubtitle": "行密度",
   "UIKit.DataTableManager.DensityManager.textWrappingAllWrapVisibleOption": "显示全文。",
