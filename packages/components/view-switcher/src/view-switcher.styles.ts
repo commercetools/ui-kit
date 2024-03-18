@@ -70,7 +70,7 @@ export const getButtonStyles = (
       `,
     isActive &&
       css`
-        background-color: ${designTokens.backgroundColorForButtonWhenActive};
+        background-color: ${designTokens.backgroundColorForViewSwitcherButtonWhenActive};
         box-shadow: ${designTokens.shadow0};
       `,
   ];

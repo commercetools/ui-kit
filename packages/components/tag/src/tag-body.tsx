@@ -64,7 +64,7 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     border-width: 1px;
     border-color: ${props.type === 'warning'
       ? designTokens.colorWarning
-      : designTokens.colorNeutral};
+      : designTokens.borderColorForTag};
     color: ${designTokens.colorSolid};
     fill: ${designTokens.colorNeutral40};
 
