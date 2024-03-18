@@ -17,7 +17,7 @@
     "build": "./scripts/build.sh",
     "build:watch": "./scripts/build_watch.sh",
     "start": "yarn --cwd docs start",
-    "extract-intl": "formatjs extract --format=./packages/i18n/transifex-transformer.js --out-file=./packages/i18n/data/core.json '{packages,src/components}/**/messages.ts'",
+    "extract-intl": "formatjs extract --format=transifex --out-file=./packages/i18n/data/core.json '{packages,src/components}/**/messages.ts'",
     "compile-intl": "yarn workspace @commercetools-uikit/i18n compile-data",
     "lint": "jest --projects jest.eslint.config.js",
     "lint:js": "jest --config jest.eslint.config.js",

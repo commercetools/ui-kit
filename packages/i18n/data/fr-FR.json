@@ -1,75 +1,294 @@
 {
-  "UIKit.CalendarHeader.nextMonthTooltip": "Mois suivant",
-  "UIKit.CalendarHeader.nextYearTooltip": "Année suivante",
-  "UIKit.CalendarHeader.previousMonthTooltip": "Mois précédent",
-  "UIKit.CalendarHeader.previousYearTooltip": "Année précédente",
-  "UIKit.CalendarHeader.todayTooltip": "Aujourd'hui",
-  "UIKit.ClearButton.clearButtonLabel": "Effacer",
-  "UIKit.CreatableSelectInput.createLabel": "Créer \"{inputValue}\"",
-  "UIKit.DataTableManager.ColumnManager.DroppablePanel.loadMoreAttributesHint": "Charger plus d'attributs grâce au champ de recherche ci-dessus",
-  "UIKit.DataTableManager.ColumnManager.closeButtonLabel": "Fermer",
-  "UIKit.DataTableManager.ColumnManager.hiddenColumns": "Colonnes masquées",
-  "UIKit.DataTableManager.ColumnManager.noHiddenColumnsToShow": "Il n'y a aucune colonne masquée à afficher.",
-  "UIKit.DataTableManager.ColumnManager.noSelectedColumnsToShow": "Il n'y a aucune colonne sélectionnée à afficher.",
-  "UIKit.DataTableManager.ColumnManager.title": "Gestionnaire de colonnes",
-  "UIKit.DataTableManager.ColumnSelectorGroups.visible": "Colonnes visibles",
-  "UIKit.DataTableManager.DensityManager.closeButtonLabel": "Fermer",
-  "UIKit.DataTableManager.DensityManager.densityDisplayComfortableOption": "Confortable",
-  "UIKit.DataTableManager.DensityManager.densityDisplayCompactOption": "Compact",
-  "UIKit.DataTableManager.DensityManager.densityDisplaySubtitle": "Densité de la ligne",
-  "UIKit.DataTableManager.DensityManager.textWrappingAllWrapVisibleOption": "Afficher le texte complet.",
-  "UIKit.DataTableManager.DensityManager.textWrappingShowHideOnDemandOption": "Afficher l'aperçu du texte. Le développer à la demande.",
-  "UIKit.DataTableManager.DensityManager.textWrappingSubtitle": "Affichage du texte",
-  "UIKit.DataTableManager.DensityManager.title": "Paramètres de disposition du tableau",
-  "UIKit.DataTableManager.TableSettings.columnManagerOption": "Gestionnaire de colonnes",
-  "UIKit.DataTableManager.TableSettings.displaySettingsOption": "Paramètres de disposition",
-  "UIKit.DataTableManager.TableSettings.placeholder": "Paramètres du tableau",
-  "UIKit.FieldErrors.invalidFractionalNumber": "Un nombre entier est requis.",
-  "UIKit.FieldErrors.invalidNegativeNumber": "Nombre négatif non pris en charge.",
-  "UIKit.FieldErrors.missingRequiredField": "Veuillez indiquer au moins une valeur.",
-  "UIKit.LocalizedMoneyInput.hide": "Masquer les devices ({remainingCurrencies})",
-  "UIKit.LocalizedMoneyInput.missingRequiredField": "Ce champ est requis. Veuillez indiquer une valeur.",
-  "UIKit.LocalizedMoneyInput.show": "Afficher toutes les devises  ({remainingCurrencies})",
-  "UIKit.LocalizedTextInput.hide": "Masquer les langues  ({remainingLanguages})",
-  "UIKit.LocalizedTextInput.missingRequiredField": "Ce champ est requis. Veuillez indiquer au moins une valeur.",
-  "UIKit.LocalizedTextInput.show": "Afficher toutes les langues ({remainingLanguages})",
-  "UIKit.MoneyInput.highPrecision": "Prix haute précision",
-  "UIKit.MultilineTextInput.collapse": "Réduire",
-  "UIKit.MultilineTextInput.expand": "Développer",
-  "UIKit.Pagination.PageNavigator.nextPageLabel": "Page suivante",
-  "UIKit.Pagination.PageNavigator.page": "Page",
-  "UIKit.Pagination.PageNavigator.pageCount": "sur {count}",
-  "UIKit.Pagination.PageNavigator.previousPageLabel": "Page précédente",
-  "UIKit.Pagination.PageSizeSelector.pageSize": "Articles par page ({count} articles)",
-  "UIKit.PasswordField.hide": "masquer",
-  "UIKit.PasswordField.show": "afficher",
-  "UIKit.RichTextBody.boldButtonLabel": "Gras",
-  "UIKit.RichTextBody.expandButtonLabel": "Développer",
-  "UIKit.RichTextBody.italicButtonLabel": "Italique",
-  "UIKit.RichTextBody.moreStylesDropdownLabel": "Plus de styles",
-  "UIKit.RichTextBody.moreStylesDropdownOptionStrikethrough": "Barré",
-  "UIKit.RichTextBody.moreStylesDropdownOptionSubscript": "Indice",
-  "UIKit.RichTextBody.moreStylesDropdownOptionSuperscript": "Exposant",
-  "UIKit.RichTextBody.orderedListButtonLabel": "Liste numérotée",
-  "UIKit.RichTextBody.redoButtonLabel": "Rétablir",
-  "UIKit.RichTextBody.styleDropdownLabel": "Style",
-  "UIKit.RichTextBody.styleDropdownOptionH1": "Titre T1",
-  "UIKit.RichTextBody.styleDropdownOptionH2": "Titre T2",
-  "UIKit.RichTextBody.styleDropdownOptionH3": "Titre T3",
-  "UIKit.RichTextBody.styleDropdownOptionH4": "Titre T4",
-  "UIKit.RichTextBody.styleDropdownOptionH5": "Titre T5",
-  "UIKit.RichTextBody.styleDropdownOptionParagraph": "Paragraphe",
-  "UIKit.RichTextBody.styleDropdownOptionPreformatted": "Préformaté",
-  "UIKit.RichTextBody.styleDropdownOptionQuote": "Citation",
-  "UIKit.RichTextBody.underlinedButtonLabel": "Souligné",
-  "UIKit.RichTextBody.undoButtonLabel": "Annuler",
-  "UIKit.RichTextBody.unorderedListButtonLabel": "Liste à puces",
-  "UIKit.SearchSelectInput.loadingOptionsMessage": "Chargement des correspondances exactes…",
-  "UIKit.SearchSelectInput.noOptionsMessage": "Aucune correspondance trouvée pour le terme recherché",
-  "UIKit.SearchSelectInput.placeholderMessage": "Rechercher par…",
-  "UIKit.SelectInput.loadingOptions": "Chargement en cours…",
-  "UIKit.SelectInput.noOptionsMessageWithInputValue": "Aucune option",
-  "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "Aucune option",
-  "UIKit.SelectInput.placeholder": "Sélectionner...",
-  "UIKit.TimeInput.placeholder": "HH:mm AM/PM"
+  "UIKit.CalendarHeader.nextMonthTooltip": {
+    "developer_comment": "Tooltip title when user hovers the next month button",
+    "string": "Mois suivant"
+  },
+  "UIKit.CalendarHeader.nextYearTooltip": {
+    "developer_comment": "Tooltip title when user hovers the next year button",
+    "string": "Année suivante"
+  },
+  "UIKit.CalendarHeader.previousMonthTooltip": {
+    "developer_comment": "Tooltip title when user hovers the previous month button",
+    "string": "Mois précédent"
+  },
+  "UIKit.CalendarHeader.previousYearTooltip": {
+    "developer_comment": "Tooltip title when user hovers the previous year button",
+    "string": "Année précédente"
+  },
+  "UIKit.CalendarHeader.todayTooltip": {
+    "developer_comment": "Tooltip title when user hovers the today button",
+    "string": "Aujourd'hui"
+  },
+  "UIKit.ClearButton.clearButtonLabel": {
+    "developer_comment": "Label for the clear button",
+    "string": "Effacer"
+  },
+  "UIKit.CreatableSelectInput.createLabel": {
+    "developer_comment": "Text of dropdown when creating option",
+    "string": "Créer \"{inputValue}\""
+  },
+  "UIKit.DataTableManager.ColumnManager.DroppablePanel.loadMoreAttributesHint": {
+    "developer_comment": "Indicate that the user can use the search input to load more attributes",
+    "string": "Charger plus d'attributs grâce au champ de recherche ci-dessus"
+  },
+  "UIKit.DataTableManager.ColumnManager.closeButtonLabel": {
+    "developer_comment": "Label for density manager close button.",
+    "string": "Fermer"
+  },
+  "UIKit.DataTableManager.ColumnManager.hiddenColumns": {
+    "developer_comment": "Message for the hidden columns section",
+    "string": "Colonnes masquées"
+  },
+  "UIKit.DataTableManager.ColumnManager.noHiddenColumnsToShow": {
+    "developer_comment": "Label when there are no hidden columns to show",
+    "string": "Il n'y a aucune colonne masquée à afficher."
+  },
+  "UIKit.DataTableManager.ColumnManager.noSelectedColumnsToShow": {
+    "developer_comment": "Label when there are no selected columns to show",
+    "string": "Il n'y a aucune colonne sélectionnée à afficher."
+  },
+  "UIKit.DataTableManager.ColumnManager.title": {
+    "developer_comment": "Title for the column manager component.",
+    "string": "Gestionnaire de colonnes"
+  },
+  "UIKit.DataTableManager.ColumnSelectorGroups.visible": {
+    "developer_comment": "Message for the visible columns section.",
+    "string": "Colonnes visibles"
+  },
+  "UIKit.DataTableManager.DensityManager.closeButtonLabel": {
+    "developer_comment": "Label for density manager close button.",
+    "string": "Fermer"
+  },
+  "UIKit.DataTableManager.DensityManager.densityDisplayComfortableOption": {
+    "developer_comment": "Density display default option.",
+    "string": "Confortable"
+  },
+  "UIKit.DataTableManager.DensityManager.densityDisplayCompactOption": {
+    "developer_comment": "Density display compact option.",
+    "string": "Compact"
+  },
+  "UIKit.DataTableManager.DensityManager.densityDisplaySubtitle": {
+    "developer_comment": "Subtitle for the density display options.",
+    "string": "Densité de la ligne"
+  },
+  "UIKit.DataTableManager.DensityManager.textWrappingAllWrapVisibleOption": {
+    "developer_comment": "All wrapped texts visible option.",
+    "string": "Afficher le texte complet."
+  },
+  "UIKit.DataTableManager.DensityManager.textWrappingShowHideOnDemandOption": {
+    "developer_comment": "Show or hide texts on demand option.",
+    "string": "Afficher l'aperçu du texte. Le développer à la demande."
+  },
+  "UIKit.DataTableManager.DensityManager.textWrappingSubtitle": {
+    "developer_comment": "Subtitle for the text wrapping options.",
+    "string": "Affichage du texte"
+  },
+  "UIKit.DataTableManager.DensityManager.title": {
+    "developer_comment": "Title for the density manager component.",
+    "string": "Paramètres de disposition du tableau"
+  },
+  "UIKit.DataTableManager.TableSettings.columnManagerOption": {
+    "developer_comment": "Column manager dropdown option label.",
+    "string": "Gestionnaire de colonnes"
+  },
+  "UIKit.DataTableManager.TableSettings.displaySettingsOption": {
+    "developer_comment": "Display settings dropdown option label.",
+    "string": "Paramètres de disposition"
+  },
+  "UIKit.DataTableManager.TableSettings.placeholder": {
+    "developer_comment": "Placeholder for the table settings select component.",
+    "string": "Paramètres du tableau"
+  },
+  "UIKit.FieldErrors.invalidFractionalNumber": {
+    "developer_comment": "Error message when fractional number is used",
+    "string": "Un nombre entier est requis."
+  },
+  "UIKit.FieldErrors.invalidNegativeNumber": {
+    "developer_comment": "Error message when negative number is used",
+    "string": "Nombre négatif non pris en charge."
+  },
+  "UIKit.FieldErrors.missingRequiredField": {
+    "developer_comment": "Error message for missing required value",
+    "string": "Veuillez indiquer au moins une valeur."
+  },
+  "UIKit.LocalizedMoneyInput.hide": {
+    "developer_comment": "Hide currencies button",
+    "string": "Masquer les devices ({remainingCurrencies})"
+  },
+  "UIKit.LocalizedMoneyInput.missingRequiredField": {
+    "developer_comment": "Error message for missing required value",
+    "string": "Ce champ est requis. Veuillez indiquer une valeur."
+  },
+  "UIKit.LocalizedMoneyInput.show": {
+    "developer_comment": "Show all currencies button",
+    "string": "Afficher toutes les devises  ({remainingCurrencies})"
+  },
+  "UIKit.LocalizedTextInput.hide": {
+    "developer_comment": "Label of language collapse button",
+    "string": "Masquer les langues  ({remainingLanguages})"
+  },
+  "UIKit.LocalizedTextInput.missingRequiredField": {
+    "developer_comment": "Error message for missing required value",
+    "string": "Ce champ est requis. Veuillez indiquer au moins une valeur."
+  },
+  "UIKit.LocalizedTextInput.show": {
+    "developer_comment": "Label of language expansion button",
+    "string": "Afficher toutes les langues ({remainingLanguages})"
+  },
+  "UIKit.MoneyInput.highPrecision": {
+    "developer_comment": "Label of high precision tooltip in MoneyInput",
+    "string": "Prix haute précision"
+  },
+  "UIKit.MultilineTextInput.collapse": {
+    "developer_comment": "The label for \"collapse\" action",
+    "string": "Réduire"
+  },
+  "UIKit.MultilineTextInput.expand": {
+    "developer_comment": "The label for \"expand\" action",
+    "string": "Développer"
+  },
+  "UIKit.Pagination.PageNavigator.nextPageLabel": {
+    "developer_comment": "Label for next page button",
+    "string": "Page suivante"
+  },
+  "UIKit.Pagination.PageNavigator.page": {
+    "developer_comment": "Label for page",
+    "string": "Page"
+  },
+  "UIKit.Pagination.PageNavigator.pageCount": {
+    "developer_comment": "Label for total pages",
+    "string": "sur {count}"
+  },
+  "UIKit.Pagination.PageNavigator.previousPageLabel": {
+    "developer_comment": "Label for previous page button",
+    "string": "Page précédente"
+  },
+  "UIKit.Pagination.PageSizeSelector.pageSize": {
+    "developer_comment": "How many items are per page",
+    "string": "Articles par page ({count} articles)"
+  },
+  "UIKit.PasswordField.hide": {
+    "developer_comment": "Label for the button to hide the password",
+    "string": "masquer"
+  },
+  "UIKit.PasswordField.show": {
+    "developer_comment": "Label for the button to show the password",
+    "string": "afficher"
+  },
+  "UIKit.RichTextBody.boldButtonLabel": {
+    "developer_comment": "Label for the bold button",
+    "string": "Gras"
+  },
+  "UIKit.RichTextBody.expandButtonLabel": {
+    "developer_comment": "Label for the expand button",
+    "string": "Développer"
+  },
+  "UIKit.RichTextBody.italicButtonLabel": {
+    "developer_comment": "Label for the italic button",
+    "string": "Italique"
+  },
+  "UIKit.RichTextBody.moreStylesDropdownLabel": {
+    "developer_comment": "Label for the more styles dropdown",
+    "string": "Plus de styles"
+  },
+  "UIKit.RichTextBody.moreStylesDropdownOptionStrikethrough": {
+    "developer_comment": "label for the more styles `strikethrough` option",
+    "string": "Barré"
+  },
+  "UIKit.RichTextBody.moreStylesDropdownOptionSubscript": {
+    "developer_comment": "label for the more styles `subscript` option",
+    "string": "Indice"
+  },
+  "UIKit.RichTextBody.moreStylesDropdownOptionSuperscript": {
+    "developer_comment": "label for the more styles `superscript` option",
+    "string": "Exposant"
+  },
+  "UIKit.RichTextBody.orderedListButtonLabel": {
+    "developer_comment": "Label for the numbered list button",
+    "string": "Liste numérotée"
+  },
+  "UIKit.RichTextBody.redoButtonLabel": {
+    "developer_comment": "Label for the redo button",
+    "string": "Rétablir"
+  },
+  "UIKit.RichTextBody.styleDropdownLabel": {
+    "developer_comment": "Label for the style dropdown",
+    "string": "Style"
+  },
+  "UIKit.RichTextBody.styleDropdownOptionH1": {
+    "developer_comment": "Label for the `headline-one` option",
+    "string": "Titre T1"
+  },
+  "UIKit.RichTextBody.styleDropdownOptionH2": {
+    "developer_comment": "Label for the `headline-two` option",
+    "string": "Titre T2"
+  },
+  "UIKit.RichTextBody.styleDropdownOptionH3": {
+    "developer_comment": "Label for the `headline-three` option",
+    "string": "Titre T3"
+  },
+  "UIKit.RichTextBody.styleDropdownOptionH4": {
+    "developer_comment": "Label for the `headline-four` option",
+    "string": "Titre T4"
+  },
+  "UIKit.RichTextBody.styleDropdownOptionH5": {
+    "developer_comment": "Label for the `headline-five` option",
+    "string": "Titre T5"
+  },
+  "UIKit.RichTextBody.styleDropdownOptionParagraph": {
+    "developer_comment": "Label for the `paragraph` option",
+    "string": "Paragraphe"
+  },
+  "UIKit.RichTextBody.styleDropdownOptionPreformatted": {
+    "developer_comment": "Label for the `code` option",
+    "string": "Préformaté"
+  },
+  "UIKit.RichTextBody.styleDropdownOptionQuote": {
+    "developer_comment": "Label for the `quote` option",
+    "string": "Citation"
+  },
+  "UIKit.RichTextBody.underlinedButtonLabel": {
+    "developer_comment": "Label for the underline button",
+    "string": "Souligné"
+  },
+  "UIKit.RichTextBody.undoButtonLabel": {
+    "developer_comment": "Label for the undo button",
+    "string": "Annuler"
+  },
+  "UIKit.RichTextBody.unorderedListButtonLabel": {
+    "developer_comment": "Label for the bullet list button",
+    "string": "Liste à puces"
+  },
+  "UIKit.SearchSelectInput.loadingOptionsMessage": {
+    "developer_comment": "Text showed while the options are being loaded",
+    "string": "Chargement des correspondances exactes…"
+  },
+  "UIKit.SearchSelectInput.noOptionsMessage": {
+    "developer_comment": "Text of search select dropdown when no options match search text",
+    "string": "Aucune correspondance trouvée pour le terme recherché"
+  },
+  "UIKit.SearchSelectInput.placeholderMessage": {
+    "developer_comment": "Placeholder text for the input",
+    "string": "Rechercher par…"
+  },
+  "UIKit.SelectInput.loadingOptions": {
+    "developer_comment": "Default input loading text",
+    "string": "Chargement en cours…"
+  },
+  "UIKit.SelectInput.noOptionsMessageWithInputValue": {
+    "developer_comment": "Text of dropdown when no options match search text",
+    "string": "Aucune option"
+  },
+  "UIKit.SelectInput.noOptionsMessageWithoutInputValue": {
+    "developer_comment": "Text of dropdown when no options exist",
+    "string": "Aucune option"
+  },
+  "UIKit.SelectInput.placeholder": {
+    "developer_comment": "Default input placeholder text",
+    "string": "Sélectionner..."
+  },
+  "UIKit.TimeInput.placeholder": {
+    "developer_comment": "Placeholder for time input",
+    "string": "HH:mm AM/PM"
+  }
 }
