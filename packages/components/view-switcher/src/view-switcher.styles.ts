@@ -31,9 +31,10 @@ export const getButtonStyles = (
   isFirstButton?: TViewSwitcherButtonProps['isFirstButton'],
   isLastButton?: TViewSwitcherButtonProps['isLastButton']
 ) => {
-  const borderRadius = `${isFirstButton ? designTokens.borderRadius4 : '0'} ${
-    isLastButton ? `${designTokens.borderRadius4}` : '0 0'
-  } ${isFirstButton ? designTokens.borderRadius4 : '0'}`;
+  const borderRadius = `${isFirstButton ? designTokens.borderRadius4 : '0'}
+  ${isLastButton ? `${designTokens.borderRadius4}` : '0'}
+  ${isLastButton ? `${designTokens.borderRadius4}` : '0'}
+  ${isFirstButton ? designTokens.borderRadius4 : '0'}`;
 
   const fontColor = getFontColor(isDisabled, isActive);
 
