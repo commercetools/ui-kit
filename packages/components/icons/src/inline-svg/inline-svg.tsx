@@ -12,7 +12,7 @@ import { ClassNames } from '@emotion/react';
 import { canUseDOM } from '@commercetools-uikit/utils';
 import { getIconStyles } from '../templates/icon.styles';
 
-type InlineSvgProps = Props & {
+export type InlineSvgProps = Props & {
   data: string;
 };
 
