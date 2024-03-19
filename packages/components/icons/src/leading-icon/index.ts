@@ -1,1 +1,1 @@
-export { default } from './leading-icon';
+export { default, type TLeadingIconProps } from './leading-icon';
