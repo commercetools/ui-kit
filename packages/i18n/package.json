@@ -19,7 +19,7 @@
   "module": "dist/commercetools-uikit-i18n.esm.js",
   "files": ["dist", "data", "compiled-data"],
   "scripts": {
-    "compile-data": "formatjs compile-folder --format=./transifex-transformer.js --ast data compiled-data"
+    "compile-data": "formatjs compile-folder --format=./transifex-compiler.js --ast data compiled-data"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.13",
