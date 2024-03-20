@@ -1,7 +1,7 @@
 {
   "name": "@commercetools-uikit/i18n",
   "description": "All translation messages from the UI-Kit components.",
-  "version": "18.4.0",
+  "version": "18.5.0",
   "bugs": "https://github.com/commercetools/ui-kit/issues",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   "module": "dist/commercetools-uikit-i18n.esm.js",
   "files": ["dist", "data", "compiled-data"],
   "scripts": {
-    "compile-data": "formatjs compile-folder --format=./transifex-transformer.js --ast data compiled-data"
+    "compile-data": "formatjs compile-folder --format=transifex --ast data compiled-data"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.13",

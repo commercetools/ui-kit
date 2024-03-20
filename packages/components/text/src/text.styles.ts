@@ -43,7 +43,7 @@ const getTone = (tone: string) => {
     case 'secondary':
       return `color: ${designTokens.colorNeutral40};`;
     case 'positive':
-      return `color: ${designTokens.colorPrimary25};`;
+      return `color: ${designTokens.fontColorForTextAsPositive};`;
     case 'primary':
       return `color: ${designTokens.colorPrimary30};`;
     case 'negative':

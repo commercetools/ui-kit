@@ -22,7 +22,7 @@ const endProgram = (message) => {
 };
 
 const ALLOWED_KEYWORDS_VALUES_IN_CHOICES =
-  /px|none|inherit|hsl|var|unset|center|(#[A-Za-z0-9]{6})/;
+  /px|none|inherit|var|unset|center|(#[A-Za-z0-9]{6})|((rgba|hsl).{1,})/;
 
 const isAllowedCssChoice = (choice) =>
   choice.match(ALLOWED_KEYWORDS_VALUES_IN_CHOICES) !== null;
