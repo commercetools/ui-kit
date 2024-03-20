@@ -138,6 +138,7 @@ const NumberInput = (props: TNumberInputProps) => {
         contentEditable={!props.isReadOnly}
         aria-invalid={props['aria-invalid']}
         aria-errormessage={props['aria-errormessage']}
+        onWheel={(e) => e.currentTarget.blur()}
       />
     </Constraints.Horizontal>
   );
