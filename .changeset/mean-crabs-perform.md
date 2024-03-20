@@ -2,4 +2,4 @@
 '@commercetools-uikit/icons': minor
 ---
 
-export types for leading icon
+We now export props typescript types for both `LeadingIcon` and `InlineSvg` components.
