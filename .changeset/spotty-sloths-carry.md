@@ -3,4 +3,4 @@
 '@commercetools-uikit/icons': patch
 ---
 
-Adding `info` color to `SecondaryIconButton` component and replacing `Icon.svg` with new one.
+Adding `info` color to `SecondaryIconButton` component and replacing `Info.svg` with new one.
