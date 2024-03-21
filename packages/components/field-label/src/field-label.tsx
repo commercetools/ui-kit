@@ -9,12 +9,13 @@ import { warning } from '@commercetools-uikit/utils';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import IconButton from '@commercetools-uikit/icon-button';
-import { InformationIcon } from '@commercetools-uikit/icons';
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import { InformationIcon, InfoIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';
 import Constraints from '@commercetools-uikit/constraints';
 import Inline from '@commercetools-uikit/spacings-inline';
 import Label from '@commercetools-uikit/label';
-import { designTokens } from '@commercetools-uikit/design-system';
+import { designTokens, useTheme } from '@commercetools-uikit/design-system';
 
 export type TFieldLabelProps = {
   /**
@@ -104,6 +105,8 @@ const LabelRowWrapper = styled.div`
 `;
 
 const FieldLabel = (props: TFieldLabelProps) => {
+  const { themedValue } = useTheme();
+
   if (props.hintIcon) {
     warning(
       props.hintIcon.props.size === undefined,
@@ -129,14 +132,22 @@ const FieldLabel = (props: TFieldLabelProps) => {
             {props.title}
           </Label>
         </Text.Wrap>
-        {props.onInfoButtonClick && (
-          <IconButton
-            label="More Info"
-            icon={<InformationIcon />}
-            size="small"
-            onClick={props.onInfoButtonClick}
-          />
-        )}
+        {props.onInfoButtonClick &&
+          themedValue(
+            <IconButton
+              label="More Info"
+              icon={<InformationIcon />}
+              size="small"
+              onClick={props.onInfoButtonClick}
+            />,
+            <SecondaryIconButton
+              label="More Info"
+              icon={<InfoIcon />}
+              size="medium"
+              color="info"
+              onClick={props.onInfoButtonClick}
+            />
+          )}
       </Inline>
 
       {props.hint && (
