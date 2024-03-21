@@ -39,6 +39,14 @@ export const component = () => (
         color="primary"
       />
     </Spec>
+    <Spec label="color - info">
+      <SecondaryIconButton
+        icon={<InformationIcon />}
+        label="A label text"
+        onClick={() => {}}
+        color="info"
+      />
+    </Spec>
     <Spec label="with small Icon">
       <SecondaryIconButton
         icon={<InformationIcon size="small" />}
