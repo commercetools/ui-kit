@@ -84,7 +84,7 @@ const getBaseStyles = (
     return css`
       &,
       &:hover {
-        background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
+        background-color: ${designTokens.backgroundColorForIconButtonWhenDisabled};
         border-color: ${designTokens.colorSurface};
         color: ${designTokens.colorNeutral60};
         box-shadow: none;
@@ -98,7 +98,6 @@ const getBaseStyles = (
         background-color: ${designTokens.backgroundColorForButtonWhenHovered};
         box-shadow: ${designTokens.shadow0};
       }
-      ${isActive ? '&,' : ''}
       &:active {
         background-color: ${designTokens.backgroundColorForButtonWhenActive};
         box-shadow: ${designTokens.shadow0};
