@@ -30,28 +30,19 @@ npm --save install react react-dom react-intl
 ## Usage
 
 ```jsx
-import PropTypes from 'prop-types';
 import AsyncSelectInput from '@commercetools-uikit/async-select-input';
 
 const Example = (props) => (
   <AsyncSelectInput
-    name="form-field-name"
-    value={props.value}
-    onChange={
-      (/** event */) => {
-        // console.log(event)
+    value={{ value: 'ready', label: 'Ready' }}
+    loadOptions={
+      (/* inputValue */) => {
+        // async fetch logic
       }
     }
-    options={[
-      { value: 'one', label: 'One' },
-      { value: 'two', label: 'Two' },
-    ]}
+    onChange={(event) => alert(event.target.value)}
   />
 );
-
-Example.propTypes = {
-  value: PropTypes.string,
-};
 
 export default Example;
 ```
