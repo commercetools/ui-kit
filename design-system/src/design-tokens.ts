@@ -64,6 +64,7 @@ export const themes = {
     colorNeutral98: 'hsl(232, 18%, 98%)',
     colorInfo: '#078cdf',
     colorInfo40: 'hsl(203.05555555555554, 93.9130434783%, 40%)',
+    colorInfo60: 'hsl(203.05555555555554, 93.9130434783%, 60%)',
     colorInfo85: 'hsl(203.05555555555554, 93.9130434783%, 85%)',
     colorInfo90: '#CEEBFD',
     colorInfo95: 'hsl(203.05555555555554, 93.9130434783%, 95%)',
@@ -464,6 +465,8 @@ const designTokens = {
   colorInfo: 'var(--color-info, #078cdf)',
   colorInfo40:
     'var(--color-info-40, hsl(203.05555555555554, 93.9130434783%, 40%))',
+  colorInfo60:
+    'var(--color-info-60, hsl(203.05555555555554, 93.9130434783%, 60%))',
   colorInfo85:
     'var(--color-info-85, hsl(203.05555555555554, 93.9130434783%, 85%))',
   colorInfo90: 'var(--color-info-90, #CEEBFD)',

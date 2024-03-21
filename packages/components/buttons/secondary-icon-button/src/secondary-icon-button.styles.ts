@@ -41,7 +41,7 @@ const getColorStyle = (props: Pick<TSecondaryButtonIconProps, 'color'>) => {
         }
         &:focus,
         &:hover svg {
-          fill: ${designTokens.colorInfo40};
+          fill: ${designTokens.colorInfo60};
         }
       `;
     default:
