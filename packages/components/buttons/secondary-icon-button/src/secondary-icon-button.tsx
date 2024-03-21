@@ -34,7 +34,7 @@ export type TSecondaryButtonIconProps<
   /**
    * Indicates the color scheme of the button.
    */
-  color?: 'solid' | 'primary';
+  color?: 'solid' | 'primary' | 'info';
   /**
    * Should describe what the button does, for accessibility purposes (screen-reader users)
    */
