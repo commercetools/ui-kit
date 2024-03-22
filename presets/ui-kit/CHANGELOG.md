@@ -1,5 +1,46 @@
 # @commercetools-frontend/ui-kit
 
+## 19.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`bfc3902`](https://github.com/commercetools/ui-kit/commit/bfc390219f460e1d5648ac89982f25db4b133bc8), [`4d184f6`](https://github.com/commercetools/ui-kit/commit/4d184f678b8691115c444fc0d7aa8655a52faffd), [`90186d4`](https://github.com/commercetools/ui-kit/commit/90186d48fa136df3c3510b8fc216d7a528294456), [`5606039`](https://github.com/commercetools/ui-kit/commit/5606039ddabfc3f13b10d791490027ea68e2b691), [`12f5f87`](https://github.com/commercetools/ui-kit/commit/12f5f8756ccf88b2bfc0d4059b38752e60048d0b), [`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c)]:
+  - @commercetools-uikit/field-label@19.0.0
+  - @commercetools-uikit/i18n@19.0.0
+  - @commercetools-uikit/icons@19.0.0
+  - @commercetools-uikit/view-switcher@19.0.0
+  - @commercetools-uikit/design-system@19.0.0
+  - @commercetools-uikit/data-table-manager@19.0.0
+  - @commercetools-uikit/pagination@19.0.0
+  - @commercetools-uikit/inputs@19.0.0
+  - @commercetools-uikit/collapsible-panel@19.0.0
+  - @commercetools-uikit/data-table@19.0.0
+  - @commercetools-uikit/selectable-search-input@19.0.0
+  - @commercetools-uikit/link@19.0.0
+  - @commercetools-uikit/notifications@19.0.0
+  - @commercetools-uikit/primary-action-dropdown@19.0.0
+  - @commercetools-uikit/tag@19.0.0
+  - @commercetools-uikit/buttons@19.0.0
+  - @commercetools-uikit/avatar@19.0.0
+  - @commercetools-uikit/card@19.0.0
+  - @commercetools-uikit/constraints@19.0.0
+  - @commercetools-uikit/label@19.0.0
+  - @commercetools-uikit/loading-spinner@19.0.0
+  - @commercetools-uikit/progress-bar@19.0.0
+  - @commercetools-uikit/stamp@19.0.0
+  - @commercetools-uikit/text@19.0.0
+  - @commercetools-uikit/tooltip@19.0.0
+  - @commercetools-uikit/fields@19.0.0
+  - @commercetools-uikit/spacings@19.0.0
+  - @commercetools-uikit/messages@19.0.0
+  - @commercetools-uikit/field-errors@19.0.0
+  - @commercetools-uikit/accessible-hidden@19.0.0
+  - @commercetools-uikit/collapsible@19.0.0
+  - @commercetools-uikit/collapsible-motion@19.0.0
+  - @commercetools-uikit/grid@19.0.0
+  - @commercetools-uikit/hooks@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
 ## 18.5.0
 
 ### Patch Changes
