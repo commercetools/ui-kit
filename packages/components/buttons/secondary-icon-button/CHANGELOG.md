@@ -1,5 +1,18 @@
 # @commercetools-uikit/secondary-icon-button
 
+## 19.0.0
+
+### Patch Changes
+
+- [#2755](https://github.com/commercetools/ui-kit/pull/2755) [`5606039`](https://github.com/commercetools/ui-kit/commit/5606039ddabfc3f13b10d791490027ea68e2b691) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding `info` color to `SecondaryIconButton` component and replacing `Info.svg` with new one.
+
+- Updated dependencies [[`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c)]:
+  - @commercetools-uikit/design-system@19.0.0
+  - @commercetools-uikit/accessible-button@19.0.0
+  - @commercetools-uikit/text@19.0.0
+  - @commercetools-uikit/spacings@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
 ## 18.5.0
 
 ### Patch Changes

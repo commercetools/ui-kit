@@ -1,5 +1,15 @@
 # @commercetools-uikit/password-input
 
+## 19.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c)]:
+  - @commercetools-uikit/design-system@19.0.0
+  - @commercetools-uikit/input-utils@19.0.0
+  - @commercetools-uikit/constraints@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
 ## 18.5.0
 
 ### Patch Changes

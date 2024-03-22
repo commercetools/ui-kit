@@ -1,5 +1,11 @@
 # @commercetools-uikit/i18n
 
+## 19.0.0
+
+### Patch Changes
+
+- [#2743](https://github.com/commercetools/ui-kit/pull/2743) [`4d184f6`](https://github.com/commercetools/ui-kit/commit/4d184f678b8691115c444fc0d7aa8655a52faffd) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Updates translations
+
 ## 18.5.0
 
 ## 18.4.0

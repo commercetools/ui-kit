@@ -1,5 +1,16 @@
 # @commercetools-uikit/design-system
 
+## 19.0.0
+
+### Minor Changes
+
+- [#2758](https://github.com/commercetools/ui-kit/pull/2758) [`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c) Thanks [@ddouglasz](https://github.com/ddouglasz)! - This change removes borders and background color from the icon button when in default or disabled state in the new theme
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@19.0.0
+
 ## 18.5.0
 
 ### Minor Changes

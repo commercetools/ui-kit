@@ -1,5 +1,18 @@
 # @commercetools-uikit/view-switcher
 
+## 19.0.0
+
+### Minor Changes
+
+- [#2751](https://github.com/commercetools/ui-kit/pull/2751) [`12f5f87`](https://github.com/commercetools/ui-kit/commit/12f5f8756ccf88b2bfc0d4059b38752e60048d0b) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Fix viewswitcher border radius
+
+### Patch Changes
+
+- Updated dependencies [[`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c)]:
+  - @commercetools-uikit/design-system@19.0.0
+  - @commercetools-uikit/accessible-button@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
 ## 18.5.0
 
 ### Minor Changes

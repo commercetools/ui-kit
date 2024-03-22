@@ -1,5 +1,19 @@
 # @commercetools-uikit/number-input
 
+## 19.0.0
+
+### Minor Changes
+
+- [#2750](https://github.com/commercetools/ui-kit/pull/2750) [`e7690f2`](https://github.com/commercetools/ui-kit/commit/e7690f250c5bf77672235c8b03e1868575216770) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Preventing the value of the number input to be updated when it has the focus and the user scrolls the page content using the mouse wheel.
+
+### Patch Changes
+
+- Updated dependencies [[`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c)]:
+  - @commercetools-uikit/design-system@19.0.0
+  - @commercetools-uikit/input-utils@19.0.0
+  - @commercetools-uikit/constraints@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
 ## 18.5.0
 
 ### Patch Changes
