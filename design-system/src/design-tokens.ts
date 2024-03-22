@@ -195,6 +195,7 @@ export const themes = {
     backgroundColorForButtonWhenActive: 'hsl(232, 18%, 95%)',
     backgroundColorForButtonWhenHovered: 'hsl(232, 18%, 98%)',
     backgroundColorForButtonWhenDisabled: 'hsl(195, 35.2941176471%, 95%)',
+    backgroundColorForIconButtonWhenDisabled: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInput: '#fff',
     backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInputWhenDisabled: 'hsl(232, 18%, 95%)',
@@ -360,6 +361,7 @@ export const themes = {
     borderColorForTag: 'hsl(243, 100%, 93%)',
     backgroundColorForButtonWhenActive: 'hsl(243, 100%, 93%)',
     backgroundColorForButtonWhenHovered: 'hsl(244, 100%, 97%)',
+    backgroundColorForIconButtonWhenDisabled: 'transparent',
     backgroundColorForButtonAsPrimary: 'hsl(240, 64%, 58%)',
     backgroundColorForButtonAsPrimaryWhenHovered: 'hsl(240, 100%, 67%)',
     backgroundColorForButtonAsPrimaryAsDefaultWhenHovered:
@@ -613,6 +615,8 @@ const designTokens = {
     'var(--background-color-for-button-when-hovered, hsl(232, 18%, 98%))',
   backgroundColorForButtonWhenDisabled:
     'var(--background-color-for-button-when-disabled, hsl(195, 35.2941176471%, 95%))',
+  backgroundColorForIconButtonWhenDisabled:
+    'var(--background-color-for-icon-button-when-disabled, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForInput: 'var(--background-color-for-input, #fff)',
   backgroundColorForInputWhenSelected:
     'var(--background-color-for-input-when-selected, hsl(195, 35.2941176471%, 95%))',
