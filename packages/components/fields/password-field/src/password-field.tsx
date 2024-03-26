@@ -176,7 +176,9 @@ export type TPasswordField = {
    * Might be used to display additional information about the content of the field (E.g verified email)
    */
   badge?: ReactNode;
-  // Determines whether to render the "Show/Hide" button for the password field.
+  /**
+   * Determines whether to render the "Show/Hide" button for the password field.
+   */
   renderShowHideButton?: boolean;
 };
 
