@@ -8373,21 +8373,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:4.22.2":
-  version: 4.22.2
-  resolution: "browserslist@npm:4.22.2"
-  dependencies:
-    caniuse-lite: ^1.0.30001565
-    electron-to-chromium: ^1.4.601
-    node-releases: ^2.0.14
-    update-browserslist-db: ^1.0.13
-  bin:
-    browserslist: cli.js
-  checksum: 33ddfcd9145220099a7a1ac533cecfe5b7548ffeb29b313e1b57be6459000a1f8fa67e781cf4abee97268ac594d44134fcc4a6b2b4750ceddc9796e3a22076d9
-  languageName: node
-  linkType: hard
-
-"browserslist@npm:^4.14.5, browserslist@npm:^4.22.2, browserslist@npm:^4.22.3":
+"browserslist@npm:4.23.0, browserslist@npm:^4.14.5, browserslist@npm:^4.22.2, browserslist@npm:^4.22.3":
   version: 4.23.0
   resolution: "browserslist@npm:4.23.0"
   dependencies:
@@ -8662,7 +8648,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001565, caniuse-lite@npm:^1.0.30001587":
+"caniuse-lite@npm:^1.0.30001587":
   version: 1.0.30001591
   resolution: "caniuse-lite@npm:1.0.30001591"
   checksum: e48f924cdefff86d29d38ee1bffe2cdb1ef55e179d08ae2f1f5546d9d563e030f13755a0096ea87a09498daffd18666d1fe0b2759aea8421bbf4c214b47d410d
@@ -10255,7 +10241,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.4.601, electron-to-chromium@npm:^1.4.668":
+"electron-to-chromium@npm:^1.4.668":
   version: 1.4.687
   resolution: "electron-to-chromium@npm:1.4.687"
   checksum: c4c48db3aa1cc193d106aa3ea9244a1606e5c2873756ff7c8725d6178c903acd9a4c9fe9a613a85a7e9513fcbf3fb4d81832c0e2773419bea27a74b344d93853
@@ -16373,14 +16359,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.33":
-  version: 8.4.33
-  resolution: "postcss@npm:8.4.33"
+"postcss@npm:8.4.38":
+  version: 8.4.38
+  resolution: "postcss@npm:8.4.38"
   dependencies:
     nanoid: ^3.3.7
     picocolors: ^1.0.0
-    source-map-js: ^1.0.2
-  checksum: 6f98b2af4b76632a3de20c4f47bf0e984a1ce1a531cf11adcb0b1d63a6cbda0aae4165e578b66c32ca4879038e3eaad386a6be725a8fb4429c78e3c1ab858fe9
+    source-map-js: ^1.2.0
+  checksum: 649f9e60a763ca4b5a7bbec446a069edf07f057f6d780a5a0070576b841538d1ecf7dd888f2fbfd1f76200e26c969e405aeeae66332e6927dbdc8bdcb90b9451
   languageName: node
   linkType: hard
 
@@ -18158,6 +18144,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"source-map-js@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "source-map-js@npm:1.2.0"
+  checksum: 791a43306d9223792e84293b00458bf102a8946e7188f3db0e4e22d8d530b5f80a4ce468eb5ec0bf585443ad55ebbd630bf379c98db0b1f317fd902500217f97
+  languageName: node
+  linkType: hard
+
 "source-map-support@npm:0.5.13":
   version: 0.5.13
   resolution: "source-map-support@npm:0.5.13"
@@ -19492,7 +19485,7 @@ __metadata:
     babel-jest: 29.7.0
     babel-loader: 8.3.0
     babel-plugin-typescript-to-proptypes: 1.4.2
-    browserslist: 4.22.2
+    browserslist: 4.23.0
     bundlesize: 0.18.1
     cac: 6.7.14
     colors: 1.4.0
@@ -19521,7 +19514,7 @@ __metadata:
     moment-timezone: 0.5.44
     omit-empty-es: 1.2.0
     patch-package: 6.5.1
-    postcss: 8.4.33
+    postcss: 8.4.38
     postcss-syntax: ^0.36.2
     postcss-value-parser: 4.2.0
     pptr-testing-library: 0.7.0
