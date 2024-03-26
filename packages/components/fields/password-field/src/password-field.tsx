@@ -176,6 +176,8 @@ export type TPasswordField = {
    * Might be used to display additional information about the content of the field (E.g verified email)
    */
   badge?: ReactNode;
+  // Determines whether to render the "Show/Hide" button for the password field.
+  renderShowHideButton?: boolean;
 };
 
 type TTogglePasswordVisibilityHandler = (
@@ -185,8 +187,12 @@ type TTogglePasswordVisibilityHandler = (
     | KeyboardEvent<HTMLButtonElement>
 ) => void;
 
-const defaultProps: Pick<TPasswordField, 'horizontalConstraint'> = {
+const defaultProps: Pick<
+  TPasswordField,
+  'horizontalConstraint' | 'renderShowHideButton'
+> = {
   horizontalConstraint: 'scale',
+  renderShowHideButton: true,
 };
 
 const PasswordField = (props: TPasswordField) => {
@@ -195,7 +201,8 @@ const PasswordField = (props: TPasswordField) => {
   const id = useFieldId(props.id, sequentialId);
   const hasError = props.touched && hasErrors(props.errors);
   const hasWarning = props.touched && hasWarnings(props.warnings);
-  const canInteract = !props.isDisabled && !props.isReadOnly;
+  const canInteract =
+    !props.isDisabled && !props.isReadOnly && props.renderShowHideButton;
 
   if (!props.isReadOnly) {
     warning(
