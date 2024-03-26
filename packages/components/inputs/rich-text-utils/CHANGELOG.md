@@ -1,5 +1,17 @@
 # @commercetools-uikit/rich-text-utils
 
+## 19.0.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.0.1
+  - @commercetools-uikit/icons@19.0.1
+  - @commercetools-uikit/input-utils@19.0.1
+  - @commercetools-uikit/spacings-inline@19.0.1
+  - @commercetools-uikit/tooltip@19.0.1
+  - @commercetools-uikit/utils@19.0.1
+
 ## 19.0.0
 
 ### Patch Changes
