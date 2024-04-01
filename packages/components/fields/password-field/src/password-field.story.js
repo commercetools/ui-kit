@@ -92,6 +92,7 @@ storiesOf('Components|Fields', module)
               }
               hintIcon={hintIcon}
               badge={text('badge', '')}
+              renderShowHideButton={boolean('renderShowHideButton', true)}
             />
           );
         }}
