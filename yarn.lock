@@ -2825,6 +2825,29 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@commercetools-uikit/dropdown-menu@workspace:packages/components/dropdowns/dropdown-menu":
+  version: 0.0.0-use.local
+  resolution: "@commercetools-uikit/dropdown-menu@workspace:packages/components/dropdowns/dropdown-menu"
+  dependencies:
+    "@babel/runtime": ^7.20.13
+    "@babel/runtime-corejs3": ^7.20.13
+    "@commercetools-uikit/constraints": 19.0.0
+    "@commercetools-uikit/design-system": 19.0.0
+    "@commercetools-uikit/hooks": 19.0.0
+    "@commercetools-uikit/secondary-button": 19.0.0
+    "@commercetools-uikit/spacings-inline": 19.0.0
+    "@commercetools-uikit/spacings-stack": 19.0.0
+    "@commercetools-uikit/utils": 19.0.0
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    prop-types: 15.8.1
+    react: 17.0.2
+    react-intl: ^6.3.2
+  peerDependencies:
+    react: 17.x
+  languageName: unknown
+  linkType: soft
+
 "@commercetools-uikit/field-errors@19.0.0, @commercetools-uikit/field-errors@workspace:packages/components/field-errors":
   version: 0.0.0-use.local
   resolution: "@commercetools-uikit/field-errors@workspace:packages/components/field-errors"

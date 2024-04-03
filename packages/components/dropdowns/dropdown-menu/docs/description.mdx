@@ -1,0 +1,102 @@
+<DropdownMenu
+  triggerElement={<IconButton icon={<ColumnsIcon />} />}
+>
+  <h2>My complex content</h2>
+</DropdownMenu>;
+
+<DropdownMenu
+  triggerElement={
+    <SecondaryButton
+      label="Filters"
+      iconLeft={<FilterIcon />}
+    />
+  }
+>
+  <h2>My complex content</h2>
+</DropdownMenu>
+
+<DropdownMenu
+  triggerElement={
+    <SecondaryButton
+      label="Filters"
+      iconLeft={<FilterIcon />}
+    />
+  }
+>
+  <Option iconLeft={<PlusBoldIcon />} onClick={() => {}}>
+    Primary option
+  </Option>
+  <Option onClick={() => {}}>Another option</Option>
+  <Option isDisabled={true} onClick={() => {}}>
+    Even another option
+  </Option>
+</DropdownMenu>
+
+
+/* ------------------------------------------------------------------------------ */
+
+
+<DropdownMenu>
+  <DropdownMenu.Trigger>
+    <SecondaryButton
+      label="Filters"
+      iconLeft={<FilterIcon />}
+    />
+  </DropdownMenu.Trigger>
+
+  <Dropdown.ContentMenu>
+    <span>My complex content</span>
+  <Dropdown.ContentMenu>
+</Dropdown>
+
+
+<DropdownMenu>
+  <DropdownMenu.Trigger>
+    <SecondaryButton
+      label="Filters"
+      iconLeft={<FilterIcon />}
+    />
+  </DropdownMenu.Trigger>
+
+  <DropdownMenu.ListMenu>
+    <DropdownMenu.ListMenuItem
+      onClick={() => console.log('clicked')}
+      iconLeft={<FilterIcon />}
+      isDisabled
+    >
+     <span>Option 1</span>
+    </DropdownMenu.ListMenuItem>
+    <DropdownMenu.ListMenuItem
+      onClick={() => console.log('clicked')}
+      iconLeft={<WorldIcon />}
+      isDisabled
+    >
+     <span>Option 2</span>
+    </DropdownMenu.ListMenuItem>
+    <DropdownMenu.ListMenuItem
+      onClick={() => console.log('clicked')}
+      iconLeft={<FilterIcon />}
+      isDisabled
+    >
+     <span>Option 3</span>
+    </DropdownMenu.ListMenuItem>
+  </DropdownMenu.ListMenu>
+</DropdownMenu>
+
+/**
+   * Event handler triggers whenever the option is clicked.
+   */
+  onClick: () => void;
+  /**
+   * Disables the option within the dropdown. If all options are disabled the dropdown will be disabled.
+   */
+  isDisabled?: boolean;
+  /**
+   * Any string which serves as the label.
+   */
+  children: string;
+  /**
+   * Any React node.
+   */
+  iconLeft: ReactNode;
+import { spawn } from "child_process"
