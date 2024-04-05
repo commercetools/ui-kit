@@ -126,7 +126,7 @@ const Tag = (props: TTagProps) => {
             css={[
               css`
                 border-color: ${props.type === 'warning'
-                  ? designTokens.colorWarning
+                  ? designTokens.colorWarning85
                   : designTokens.borderColorForTag};
                 padding: 0 ${designTokens.spacing25};
                 border-radius: 0 ${designTokens.borderRadius20}
@@ -139,7 +139,7 @@ const Tag = (props: TTagProps) => {
                 :not(:disabled)&:hover,
                 :not(:disabled)&:focus {
                   border-color: ${props.type === 'warning'
-                    ? designTokens.colorWarning
+                    ? designTokens.colorWarning85
                     : designTokens.borderColorForTag};
 
                   fill: ${designTokens.colorError};
