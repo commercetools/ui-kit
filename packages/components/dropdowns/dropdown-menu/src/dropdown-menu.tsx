@@ -187,8 +187,32 @@ function DropdownMenu(props: TDropdownMenuProps) {
   const Menu =
     props.menuType === 'default' ? DropDownContentMenu : DropDownListMenu;
 
-  // TODO: block scroll and window click handler to close the dropdown
-  useEffect(() => {}, []);
+  const handleGlobalClick = useCallback(
+    (event) => {
+      const triggerElement = triggerRef.current;
+      if (
+        triggerElement &&
+        event.target !== triggerElement &&
+        !triggerElement.contains(event.target)
+      ) {
+        toggle(false);
+      }
+    },
+    [triggerRef, toggle]
+  );
+  useEffect(() => {
+    window.addEventListener('click', handleGlobalClick);
+    return () => {
+      window.removeEventListener('click', handleGlobalClick);
+    };
+  }, [handleGlobalClick]);
+  useEffect(() => {
+    if (isOpen) {
+      window.document.body.style.overflow = 'hidden';
+    } else {
+      window.document.body.style.overflow = 'initial';
+    }
+  }, [isOpen]);
 
   return (
     <DropdownMenuContext.Provider value={context}>
