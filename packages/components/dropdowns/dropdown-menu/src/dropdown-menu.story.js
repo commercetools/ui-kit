@@ -22,6 +22,78 @@ storiesOf('Components|Dropdowns|DropdownMenu', module)
   //     sidebar: Readme,
   //   },
   // })
+  .add('DropdownMenu - List menu content NEW', () => (
+    <Section align="center">
+      <DropdownMenu
+        triggerElement={<IconButton icon={<ColumnsIcon />} label="list" />}
+        menuType="list"
+        menuPosition={select('Menu position', ['left', 'right'], 'left')}
+        menuHorizontalConstraint={select(
+          'menu horizontalConstraint',
+          Constraints.getAcceptedMaxPropValues(),
+          6
+        )}
+      >
+        <DropdownMenu.ListMenuItem onClick={action('onClick')}>
+          <span>Option 1 of many more to come</span>
+        </DropdownMenu.ListMenuItem>
+        <DropdownMenu.ListMenuItem onClick={action('onClick')} isDisabled>
+          <span>Option 2</span>
+        </DropdownMenu.ListMenuItem>
+        <DropdownMenu.ListMenuItem onClick={action('onClick')}>
+          <span>Option 3</span>
+        </DropdownMenu.ListMenuItem>
+      </DropdownMenu>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+      <h2>Quien te cuida a ti?</h2>
+    </Section>
+  ))
   .add('DropdownMenu - List menu content', () => (
     <Section>
       <DropdownMenu>

@@ -1,10 +1,18 @@
-import React, { useMemo, type ReactNode, useContext } from 'react';
-import { css, type SerializedStyles } from '@emotion/react';
+import React, {
+  forwardRef,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  type CSSProperties,
+  type ReactElement,
+  type ReactNode,
+} from 'react';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
-import { type TMaxProp } from '@commercetools-uikit/constraints';
+import Constraints, { type TMaxProp } from '@commercetools-uikit/constraints';
 import {
   getDropdownListMenuItemStyles,
   getDropdownMenuBaseStyles,
@@ -12,22 +20,27 @@ import {
 
 export type TDropdownMenuProps = {
   menuPosition?: 'left' | 'right';
+  triggerElement: ReactElement;
+  menuType: 'default' | 'default';
+  menuHorizontalConstraint?: TMaxProp;
   children: ReactNode;
 };
 
-const defaultProps: Pick<TDropdownMenuProps, 'menuPosition'> = {
+const defaultProps: Pick<
+  TDropdownMenuProps,
+  'menuPosition' | 'menuHorizontalConstraint'
+> = {
   menuPosition: 'left',
+  menuHorizontalConstraint: 'auto',
 };
 
 type TDropdownMenuContextProps = {
   isOpen: boolean;
   toggle: () => void;
-  menuPosition: 'left' | 'right';
 };
 const DropdownMenuContext = React.createContext<TDropdownMenuContextProps>({
   isOpen: false,
   toggle: () => {},
-  menuPosition: 'left',
 });
 
 export function useDropdownMenuContext() {
@@ -46,63 +59,70 @@ export function useDropdownMenuContext() {
 }
 
 type TDropdownTriggerProps = {
-  onClick?: (toggle: () => void) => void;
+  onClick?: () => void;
   children: ReactNode;
 };
-function DropDownTrigger(props: TDropdownTriggerProps) {
-  const { toggle } = React.useContext(DropdownMenuContext);
-  return (
-    <div onClick={props.onClick ? props.onClick.bind(null, toggle) : toggle}>
-      {props.children}
-    </div>
-  );
-}
+const DropDownTrigger = forwardRef<HTMLDivElement, TDropdownTriggerProps>(
+  (props, ref) => {
+    return (
+      <div onClick={props.onClick} ref={ref}>
+        {props.children}
+      </div>
+    );
+  }
+);
+DropDownTrigger.displayName = 'DropDownTrigger';
 
 type TDropdownBaseMenuProps = {
-  customStyles?: SerializedStyles;
-  horizontalConstraint?: TMaxProp;
   children: ReactNode;
+  customStyles?: CSSProperties;
+  horizontalConstraint?: TMaxProp;
+  menuPosition: 'left' | 'right';
 };
 function DropDownBaseMenu(props: TDropdownBaseMenuProps) {
-  const { isOpen, menuPosition } = React.useContext(DropdownMenuContext);
-
-  if (!isOpen) {
-    return null;
-  }
-
   return (
-    // <Constraints.Horizontal max={props.horizontalConstraint || 'auto'}>
-    <div
-      css={[getDropdownMenuBaseStyles({ menuPosition }), props.customStyles]}
-    >
-      {props.children}
-    </div>
-    // </Constraints.Horizontal>
+    <Constraints.Horizontal max={props.horizontalConstraint || 'auto'}>
+      <div css={getDropdownMenuBaseStyles()} style={props.customStyles}>
+        {props.children}
+      </div>
+    </Constraints.Horizontal>
   );
 }
 
-function DropDownContentMenu(props: {
+type TDropDownContentMenuProps = {
   children: ReactNode;
+  customStyles?: CSSProperties;
   horizontalConstraint?: TMaxProp;
-}) {
+  menuPosition: 'left' | 'right';
+};
+function DropDownContentMenu(props: TDropDownContentMenuProps) {
   return (
     <DropDownBaseMenu
+      customStyles={{
+        padding: designTokens.spacing30,
+        ...props.customStyles,
+      }}
       horizontalConstraint={props.horizontalConstraint}
-      customStyles={css`
-        padding: ${designTokens.spacing30};
-      `}
+      menuPosition={props.menuPosition}
     >
       {props.children}
     </DropDownBaseMenu>
   );
 }
 
-function DropDownListMenu(props: {
+type TDropDownListMenuProps = {
   children: ReactNode;
+  customStyles?: CSSProperties;
   horizontalConstraint?: TMaxProp;
-}) {
+  menuPosition: 'left' | 'right';
+};
+function DropDownListMenu(props: TDropDownListMenuProps) {
   return (
-    <DropDownBaseMenu horizontalConstraint={props.horizontalConstraint}>
+    <DropDownBaseMenu
+      horizontalConstraint={props.horizontalConstraint}
+      menuPosition={props.menuPosition}
+      customStyles={props.customStyles}
+    >
       <SpacingsStack scale="xs">{props.children}</SpacingsStack>
     </DropDownBaseMenu>
   );
@@ -113,9 +133,8 @@ export type TDropdownListMenuItemProps = {
   isDisabled?: boolean;
   children: string;
 };
-
 function DropdownListMenuItem(props: TDropdownListMenuItemProps) {
-  const { toggle } = React.useContext(DropdownMenuContext);
+  const { toggle } = useContext(DropdownMenuContext);
   return (
     <AccessibleButton
       label={props.children}
@@ -131,30 +150,67 @@ function DropdownListMenuItem(props: TDropdownListMenuItemProps) {
   );
 }
 
+const calculateMenuPositionStyles = (
+  triggerElement: HTMLElement,
+  menuPosition: 'left' | 'right'
+): CSSProperties => {
+  const triggerElementCoordinates = triggerElement.getBoundingClientRect();
+  return {
+    top: `${
+      triggerElementCoordinates.top + triggerElementCoordinates.height
+    }px`,
+    ...(menuPosition === 'left'
+      ? { left: `${triggerElementCoordinates.left}px` }
+      : { right: `${triggerElementCoordinates.x}px` }),
+  };
+};
+
 function DropdownMenu(props: TDropdownMenuProps) {
   const [isOpen, toggle] = useToggleState(false);
+  const [menuCustomStyles, setMenuCustomStyles] = React.useState<CSSProperties>(
+    {}
+  );
+  const triggerRef = React.useRef<HTMLDivElement>(null);
+  const toggleHandler = useCallback(() => {
+    setMenuCustomStyles(
+      calculateMenuPositionStyles(triggerRef.current!, props.menuPosition!)
+    );
+    toggle();
+  }, [toggle, props.menuPosition]);
   const context = useMemo(
     () => ({
       isOpen,
-      toggle,
-      menuPosition: props.menuPosition!,
+      toggle: toggleHandler,
     }),
-    [isOpen, toggle, props.menuPosition]
+    [isOpen, toggleHandler]
   );
+  const Menu =
+    props.menuType === 'default' ? DropDownContentMenu : DropDownListMenu;
+
+  // TODO: block scroll and window click handler to close the dropdown
+  useEffect(() => {}, []);
 
   return (
     <DropdownMenuContext.Provider value={context}>
       <div style={{ display: 'inline-block', position: 'relative' }}>
-        {props.children}
+        <DropDownTrigger onClick={toggleHandler} ref={triggerRef}>
+          {props.triggerElement}
+        </DropDownTrigger>
+        {isOpen && (
+          <Menu
+            customStyles={menuCustomStyles}
+            horizontalConstraint={props.menuHorizontalConstraint}
+            menuPosition={props.menuPosition!}
+          >
+            {props.children}
+          </Menu>
+        )}
       </div>
     </DropdownMenuContext.Provider>
   );
 }
 DropdownMenu.defaultProps = defaultProps;
 
-DropdownMenu.Trigger = DropDownTrigger;
-DropdownMenu.ContentMenu = DropDownContentMenu;
-DropdownMenu.ListMenu = DropDownListMenu;
 DropdownMenu.ListMenuItem = DropdownListMenuItem;
 
 export default DropdownMenu;

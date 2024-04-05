@@ -1,21 +1,16 @@
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
-import type {
-  TDropdownMenuProps,
-  TDropdownListMenuItemProps,
-} from './dropdown-menu';
+import type { TDropdownListMenuItemProps } from './dropdown-menu';
 
-export function getDropdownMenuBaseStyles(
-  props: Pick<TDropdownMenuProps, 'menuPosition'>
-) {
+export function getDropdownMenuBaseStyles() {
   return css`
+    background-color: ${designTokens.colorSurface};
     border: 1px solid ${designTokens.colorSurface};
     border-radius: ${designTokens.borderRadius4};
     box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.15);
     margin-top: ${designTokens.spacing20};
-    position: absolute;
+    position: fixed;
     z-index: 5;
-    ${props.menuPosition === 'right' ? 'right' : 'left'}: 0;
   `;
 }
 
