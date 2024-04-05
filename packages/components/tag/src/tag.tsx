@@ -91,6 +91,7 @@ const Tag = (props: TTagProps) => {
           cursor: default;
           min-width: 0;
           display: flex;
+          border-radius: ${designTokens.borderRadius20};
           background-color: ${props.type === 'warning'
             ? designTokens.colorWarning95
             : designTokens.backgroundColorForTag};
@@ -128,8 +129,8 @@ const Tag = (props: TTagProps) => {
                   ? designTokens.colorWarning
                   : designTokens.borderColorForTag};
                 padding: 0 ${designTokens.spacing25};
-                border-radius: 0 ${designTokens.borderRadius2}
-                  ${designTokens.borderRadius2} 0;
+                border-radius: 0 ${designTokens.borderRadius20}
+                  ${designTokens.borderRadius20} 0;
                 display: flex;
                 align-items: center;
                 background: inherit;

@@ -53,7 +53,7 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
     display: flex;
     box-sizing: border-box;
     align-items: center;
-    border-radius: ${designTokens.borderRadius2};
+    border-radius: ${designTokens.borderRadius20};
     padding: ${designTokens.spacing05} ${designTokens.spacing25};
     white-space: normal;
     text-align: left;
@@ -96,8 +96,8 @@ const TagBody = (props: TTagBodyProps) => {
         Boolean(props.onRemove) &&
           css`
             border-right: ${!props.isDisabled && '0'};
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
+            border-top-right-radius: ${designTokens.borderRadius20};
+            border-bottom-right-radius: ${designTokens.borderRadius20};
           `,
         !props.isDisabled &&
           Boolean(props.onClick) &&
