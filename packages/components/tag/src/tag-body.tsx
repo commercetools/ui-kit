@@ -81,6 +81,16 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
         color: ${designTokens.colorNeutral60} !important;
       }
     `}
+
+    ${Boolean(props.onRemove) &&
+    css`
+      border-top-right-radius: ${props.isDisabled
+        ? `${designTokens.borderRadius20}`
+        : 'unset'} !important;
+      border-bottom-right-radius: ${props.isDisabled
+        ? `${designTokens.borderRadius20}`
+        : 'unset'} !important;
+    `}
   `;
 };
 
@@ -96,8 +106,6 @@ const TagBody = (props: TTagBodyProps) => {
         Boolean(props.onRemove) &&
           css`
             border-right: ${!props.isDisabled && '0'};
-            border-top-right-radius: ${designTokens.borderRadius20};
-            border-bottom-right-radius: ${designTokens.borderRadius20};
           `,
         !props.isDisabled &&
           Boolean(props.onClick) &&
