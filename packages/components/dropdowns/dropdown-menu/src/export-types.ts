@@ -1,4 +1,8 @@
+export type { TDropdownMenuProps } from './dropdown-menu';
+export type { TDropdownMenuContextProps } from './context';
 export type {
-  TDropdownMenuProps,
+  TDropdownContentMenuProps,
+  TDropdownListMenuProps,
   TDropdownListMenuItemProps,
-} from './dropdown-menu';
+} from './menu';
+export type { TDropdownTriggerProps } from './trigger';
