@@ -36,7 +36,7 @@ const getClickableContentWrapperStyles = (type: TTagBodyProps['type']) => {
     : [
         css`
           &:hover {
-            border-color: ${designTokens.colorNeutral};
+            border-color: ${designTokens.colorPrimary90};
           }
         `,
       ];
