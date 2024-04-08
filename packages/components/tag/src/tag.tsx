@@ -88,22 +88,25 @@ const Tag = (props: TTagProps) => {
             cursor: pointer;
             text-decoration: none;
           }
-          cursor: default;
           min-width: 0;
           display: flex;
           border-radius: ${designTokens.borderRadius20};
-          background-color: ${props.type === 'warning'
+          background-color: ${props.isDisabled
+            ? designTokens.colorNeutral95
+            : props.type === 'warning'
             ? designTokens.colorWarning95
             : designTokens.backgroundColorForTag};
-
+          border-color: ${props.isDisabled
+            ? designTokens.colorNeutral
+            : designTokens.borderColorForTag};
           ${props.onClick &&
           `&:hover {
-            background-color: ${
-              props.type === 'warning'
-                ? designTokens.colorWarning95
-                : designTokens.backgroundColorForTagWhenHovered
-            };
-          }`}
+      background-color: ${
+        props.type === 'warning'
+          ? designTokens.colorWarning95
+          : designTokens.backgroundColorForTagWhenHovered
+      };
+    }`}
         `}
       >
         <TagBody
