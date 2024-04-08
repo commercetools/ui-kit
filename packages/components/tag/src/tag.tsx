@@ -92,10 +92,10 @@ const Tag = (props: TTagProps) => {
           min-width: 0;
           display: flex;
           border-radius: ${designTokens.borderRadius20};
-          background-color: ${props.isDisabled && props.type === 'warning'
-            ? designTokens.colorWarning95
-            : props.isDisabled
-            ? designTokens.colorNeutral95
+          background-color: ${props.isDisabled
+            ? props.type === 'warning'
+              ? designTokens.colorWarning95
+              : designTokens.colorNeutral95
             : props.type === 'warning'
             ? designTokens.colorWarning95
             : designTokens.backgroundColorForTag};
