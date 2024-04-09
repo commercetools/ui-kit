@@ -15,13 +15,13 @@ export const ListDropdownExample = () => {
       menuType="list"
     >
       <DropdownMenu.ListMenuItem onClick={() => {}}>
-        <span>Option 1</span>
+        Option 1
       </DropdownMenu.ListMenuItem>
       <DropdownMenu.ListMenuItem onClick={() => {}} isDisabled>
-        <span>Option 2</span>
+        Option 2
       </DropdownMenu.ListMenuItem>
       <DropdownMenu.ListMenuItem onClick={() => {}}>
-        <span>Option 3</span>
+        Option 3
       </DropdownMenu.ListMenuItem>
     </DropdownMenu>
   );

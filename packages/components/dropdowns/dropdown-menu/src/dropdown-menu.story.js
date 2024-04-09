@@ -37,13 +37,13 @@ storiesOf('Components|Dropdowns|DropdownMenu', module)
         menuType="list"
       >
         <DropdownMenu.ListMenuItem onClick={action('onClick')}>
-          <span>Option 1</span>
+          Option 1
         </DropdownMenu.ListMenuItem>
         <DropdownMenu.ListMenuItem onClick={action('onClick')} isDisabled>
-          <span>Option 2</span>
+          Option 2
         </DropdownMenu.ListMenuItem>
         <DropdownMenu.ListMenuItem onClick={action('onClick')}>
-          <span>Option 3</span>
+          Option 3
         </DropdownMenu.ListMenuItem>
       </DropdownMenu>
     </Section>
