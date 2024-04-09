@@ -1,6 +1,6 @@
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 
-import { screen, render } from '../../../../../test/test-utils';
+import { screen, render, waitFor } from '../../../../../test/test-utils';
 import DropdownMenu from './dropdown-menu';
 
 describe('DropdownMenu', () => {
@@ -58,8 +58,12 @@ describe('DropdownMenu', () => {
     screen.getByLabelText('Trigger').click();
     expect(await screen.findByText('Content')).toBeVisible();
 
-    // Clicking outside the dropdown should close it
-    screen.getByText('Header').click();
-    expect(await screen.findByText('Content')).not.toBeVisible();
+    await waitFor(() => {
+      // Clicking outside the dropdown should close it
+      screen.getByText('Header').click();
+      // Check if Content is not visible
+      const contentElement = screen.queryByText('Content');
+      expect(contentElement).not.toBeVisible();
+    });
   });
 });
