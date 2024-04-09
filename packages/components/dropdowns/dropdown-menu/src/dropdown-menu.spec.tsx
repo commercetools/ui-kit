@@ -27,18 +27,18 @@ describe('DropdownMenu', () => {
 
     // Open the dropdown
     screen.getByLabelText('Trigger').click();
-    expect(screen.getByText('Option 1')).toBeVisible();
+    expect(await screen.findByText('Option 1')).toBeVisible();
     expect(screen.getByText('Option 2')).toBeVisible();
 
     // Clicking in the disabled options should do nothing
     screen.getByText('Option 2').click();
     expect(secondOptionOnClick).toHaveBeenCalledTimes(0);
-    expect(screen.getByText('Option 1')).toBeVisible();
+    expect(await screen.findByText('Option 1')).toBeVisible();
 
     // Clicking in the enabled option should close the dropdown
     screen.getByText('Option 1').click();
     expect(firstOptionOnClick).toHaveBeenCalledTimes(1);
-    expect(screen.queryByText('Option 1')).not.toBeVisible();
+    expect(await screen.findByText('Option 1')).not.toBeVisible();
   });
 
   it('should render the default menu', async () => {
@@ -56,10 +56,10 @@ describe('DropdownMenu', () => {
 
     // Open the dropdown
     screen.getByLabelText('Trigger').click();
-    expect(screen.getByText('Content')).toBeVisible();
+    expect(await screen.findByText('Content')).toBeVisible();
 
     // Clicking outside the dropdown should close it
     screen.getByText('Header').click();
-    expect(screen.queryByText('Content')).not.toBeVisible();
+    expect(await screen.findByText('Content')).not.toBeVisible();
   });
 });
