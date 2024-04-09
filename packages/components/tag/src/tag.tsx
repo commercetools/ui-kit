@@ -109,7 +109,7 @@ const Tag = (props: TTagProps) => {
           `&:hover {
             background-color: ${
               props.type === 'warning'
-                ? designTokens.colorWarning95
+                ? designTokens.colorWarning85
                 : designTokens.backgroundColorForTagWhenHovered
             };
           }`}
