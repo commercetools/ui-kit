@@ -21,7 +21,7 @@ function getDropdownListMenuItemStyles(props: TDropdownListMenuItemProps) {
           ${designTokens.borderRadius6};
       }
       &:hover {
-        background-color: ${designTokens.colorNeutral95};
+        background-color: ${designTokens.colorPrimary98};
       }
     `,
     props.isDisabled &&
