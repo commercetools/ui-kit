@@ -12,17 +12,18 @@ import SpacingsStack from '@commercetools-uikit/spacings-stack';
 import Text from '@commercetools-uikit/text';
 import Section from '../../../../../docs/.storybook/decorators/section/section';
 import { FilterIcon, ColumnsIcon } from '../../../icons';
+import Readme from '../README.md';
 
 import DropdownMenu from './dropdown-menu';
 
 storiesOf('Components|Dropdowns|DropdownMenu', module)
   .addDecorator(withKnobs)
-  // .addParameters({
-  //   readme: {
-  //     // Show readme at the addons panel
-  //     sidebar: Readme,
-  //   },
-  // })
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: Readme,
+    },
+  })
   .add('DropdownMenu - List menu content', () => (
     <Section align="center">
       <DropdownMenu

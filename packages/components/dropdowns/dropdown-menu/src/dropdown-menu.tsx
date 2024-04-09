@@ -17,10 +17,26 @@ import {
 } from './menu';
 
 export type TDropdownMenuProps = {
+  /**
+   * The position of the menu relative to the trigger element.
+   */
   menuPosition?: 'left' | 'right';
+  /**
+   * The element that triggers the dropdown.
+   */
   triggerElement: ReactElement;
+  /**
+   * The type of the menu.
+   * The 'default' type just renders a dropdown container but the 'list' type is intended to be used with the DropdownMenu.ListMenuItem component.
+   */
   menuType?: 'default' | 'list';
+  /**
+   * The horizontal constraint of the menu.
+   */
   menuHorizontalConstraint?: TMaxProp;
+  /**
+   * The content of the dropdown.
+   */
   children: ReactNode;
 };
 
