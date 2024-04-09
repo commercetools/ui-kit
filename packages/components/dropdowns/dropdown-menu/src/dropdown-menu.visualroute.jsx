@@ -10,7 +10,7 @@ export const routePath = '/dropdown-menu';
 export const component = () => (
   <Suite>
     <Spec label="default dropdown menu">
-      <DropdownMenu triggerElement={<SecondaryButton label="Trigger" />}>
+      <DropdownMenu triggerElement={<SecondaryButton label="Trigger default dropdown" />}>
         <Spacings.Stack>
           <h2>Some headline</h2>
           <p>Some content</p>
@@ -21,7 +21,7 @@ export const component = () => (
     <Spec label="opened default menu dropdown">
       <DropdownMenu
         menuType="list"
-        triggerElement={<SecondaryButton label="Trigger" />}
+        triggerElement={<SecondaryButton label="Trigger list dropdown" />}
       >
         <DropdownMenu.ListMenuItem>
           Option 1

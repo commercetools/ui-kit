@@ -10,7 +10,10 @@ describe('DropdownMenu', () => {
     await page.waitForSelector('text/Trigger');
 
     const doc = await getDocument(page);
-    const triggetButton = await queries.findByLabelText(doc, 'Trigger');
+    const triggetButton = await queries.findByLabelText(
+      doc,
+      'Trigger default dropdown'
+    );
     await triggetButton.click();
 
     await percySnapshot(page, 'DropdownMenu');
