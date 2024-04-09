@@ -9,7 +9,10 @@ describe('DropdownMenu', () => {
     const secondOptionOnClick = jest.fn();
 
     await render(
-      <DropdownMenu triggerElement={<SecondaryButton label="Trigger" />}>
+      <DropdownMenu
+        menuType="list"
+        triggerElement={<SecondaryButton label="Trigger" />}
+      >
         <DropdownMenu.ListMenuItem onClick={firstOptionOnClick}>
           Option 1
         </DropdownMenu.ListMenuItem>
