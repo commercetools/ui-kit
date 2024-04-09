@@ -2064,6 +2064,7 @@ __metadata:
     "@commercetools-uikit/data-table": 19.0.0
     "@commercetools-uikit/data-table-manager": 19.0.0
     "@commercetools-uikit/design-system": 19.0.0
+    "@commercetools-uikit/dropdown-menu": 19.0.0
     "@commercetools-uikit/field-errors": 19.0.0
     "@commercetools-uikit/field-label": 19.0.0
     "@commercetools-uikit/fields": 19.0.0
@@ -2955,6 +2956,7 @@ __metadata:
     "@commercetools-uikit/design-system": 19.0.0
     "@commercetools-uikit/dropdown-menu": 19.0.0
     "@commercetools-uikit/hooks": 19.0.0
+    "@commercetools-uikit/icons": 19.0.0
     "@commercetools-uikit/secondary-button": 19.0.0
     "@commercetools-uikit/spacings": 19.0.0
     "@commercetools-uikit/text": 19.0.0
