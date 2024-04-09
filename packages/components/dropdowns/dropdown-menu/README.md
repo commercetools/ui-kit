@@ -5,7 +5,13 @@
 
 ## Description
 
-The Dropdown Menu component represents a component that triggers the rendering of a floating menu.
+This component should be used whenever you need to display a floating panel after clicking on an element.
+
+It allows to use any component as the element used to trigger the floating panel.
+
+The panel can be customized to render whatever is needed. However, as a common use case would be to render a list of elements and select one of them, this component provides some helpers to easily implement such use case.
+
+Something to bear in mind is that, when the panel is open, the document scroll is blocked.
 
 ## Installation
 
@@ -47,13 +53,13 @@ export const ListDropdownExample = () => {
       menuType="list"
     >
       <DropdownMenu.ListMenuItem onClick={() => {}}>
-        <span>Option 1</span>
+        Option 1
       </DropdownMenu.ListMenuItem>
       <DropdownMenu.ListMenuItem onClick={() => {}} isDisabled>
-        <span>Option 2</span>
+        Option 2
       </DropdownMenu.ListMenuItem>
       <DropdownMenu.ListMenuItem onClick={() => {}}>
-        <span>Option 3</span>
+        Option 3
       </DropdownMenu.ListMenuItem>
     </DropdownMenu>
   );
@@ -88,3 +94,19 @@ export const CustomDropdownExample = () => {
 | `menuType`                 | `union`<br/>Possible values:<br/>`'default' , 'list'` |          | `'default'` | The type of the menu.&#xA;The 'default' type just renders a dropdown container but the 'list' type is intended to be used with the DropdownMenu.ListMenuItem component. |
 | `menuHorizontalConstraint` | `TMaxProp`                                            |          | `'auto'`    | The horizontal constraint of the menu.                                                                                                                                  |
 | `children`                 | `ReactNode`                                           |    ✅    |             | The content of the dropdown.                                                                                                                                            |
+
+# Additional info
+
+## ListMenuItem
+
+When using the list floating panel, the `DropdownMenu` component exposes an inner sub-component called `DropdownMenu.ListMenuItem` that should be used to render each item in the list.
+
+Clicking on an item will close the panel and call the `onClick` callback with the item's value.
+
+### Properties
+
+| Props        | Type                                                | Required | Default | Description                                       |
+| ------------ | --------------------------------------------------- | :------: | ------- | ------------------------------------------------- |
+| `isDisabled` | `union`<br/>Possible values:<br/>`'left' , 'right'` |          | `false` | Whether the item should be disabled.              |
+| `onClick`    | `() => void`                                        |          |         | A callback to be called when the item is clicked. |
+| `children`   | `string`                                            |    ✅    |         | The label for the item.                           |
