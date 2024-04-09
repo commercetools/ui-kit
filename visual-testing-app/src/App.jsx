@@ -29,7 +29,7 @@ const allSortedComponents = Object.keys(allUniqueRouteComponents)
 
 const App = () => (
   <>
-    <ThemeProvider />
+    <ThemeProvider theme="recolouring"/>
     <Router>
       <Switch>
         <Route

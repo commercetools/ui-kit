@@ -4,7 +4,7 @@ import { ThemeProvider } from '../../../../design-system';
 const ThemeWrapper = (storyFn) => {
   return (
     <>
-      <ThemeProvider />
+      <ThemeProvider theme="recolouring" />
       {storyFn()}
     </>
   );
