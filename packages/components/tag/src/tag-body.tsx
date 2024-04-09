@@ -30,18 +30,6 @@ const defaultProps: Pick<TTagProps, 'type' | 'isDisabled' | 'isDraggable'> = {
 type TBody = Pick<TTagBodyProps, 'to' | 'as'>;
 const Body = styled.div<TBody>``;
 
-const getClickableContentWrapperStyles = (type: TTagBodyProps['type']) => {
-  return type === 'warning'
-    ? []
-    : [
-        css`
-          &:hover {
-            border-color: ${designTokens.colorPrimary90};
-          }
-        `,
-      ];
-};
-
 const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
   if (isDisabled) return designTokens.colorNeutral60;
   return designTokens.colorSolid;
@@ -51,22 +39,13 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
   return css`
     position: relative;
     display: flex;
-    box-sizing: border-box;
     align-items: center;
-    border-radius: ${designTokens.borderRadius20};
     padding: ${designTokens.spacing05} ${designTokens.spacing25};
     white-space: normal;
     text-align: left;
     min-width: 0;
     overflow-wrap: break-word;
     hyphens: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-color: ${props.type === 'warning'
-      ? designTokens.colorWarning85
-      : props.isDisabled
-      ? designTokens.colorNeutral
-      : designTokens.borderColorForTag};
     color: ${designTokens.colorSolid};
     fill: ${designTokens.colorNeutral40};
 
@@ -83,16 +62,6 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
         color: ${designTokens.colorNeutral60} !important;
       }
     `}
-
-    ${Boolean(props.onRemove) &&
-    css`
-      border-top-right-radius: ${props.isDisabled
-        ? `${designTokens.borderRadius20}`
-        : 'unset'} !important;
-      border-bottom-right-radius: ${props.isDisabled
-        ? `${designTokens.borderRadius20}`
-        : 'unset'} !important;
-    `}
   `;
 };
 
@@ -105,13 +74,6 @@ const TagBody = (props: TTagBodyProps) => {
       as={props.as}
       css={[
         getContentWrapperStyles(props),
-        Boolean(props.onRemove) &&
-          css`
-            border-right: ${!props.isDisabled && '0'};
-          `,
-        !props.isDisabled &&
-          Boolean(props.onClick) &&
-          getClickableContentWrapperStyles(props.type),
         !props.isDisabled &&
           Boolean(props.onClick) &&
           css`

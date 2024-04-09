@@ -88,28 +88,31 @@ const Tag = (props: TTagProps) => {
             cursor: pointer;
             text-decoration: none;
           }
+          box-sizing: border-box;
           cursor: default;
           min-width: 0;
           display: flex;
           border-radius: ${designTokens.borderRadius20};
+          border-style: solid;
+          border-width: 1px;
           background-color: ${props.isDisabled
-            ? props.type === 'warning'
-              ? designTokens.colorWarning95
-              : designTokens.colorNeutral95
+            ? designTokens.colorNeutral95
             : props.type === 'warning'
             ? designTokens.colorWarning95
             : designTokens.backgroundColorForTag};
           border-color: ${props.isDisabled
             ? designTokens.colorNeutral
+            : props.type === 'warning'
+            ? designTokens.colorWarning85
             : designTokens.borderColorForTag};
           ${props.onClick &&
           `&:hover {
-      background-color: ${
-        props.type === 'warning'
-          ? designTokens.colorWarning95
-          : designTokens.backgroundColorForTagWhenHovered
-      };
-    }`}
+            background-color: ${
+              props.type === 'warning'
+                ? designTokens.colorWarning95
+                : designTokens.backgroundColorForTagWhenHovered
+            };
+          }`}
         `}
       >
         <TagBody
@@ -131,25 +134,9 @@ const Tag = (props: TTagProps) => {
             onClick={props.onRemove}
             css={[
               css`
-                border-color: ${props.type === 'warning'
-                  ? designTokens.colorWarning85
-                  : designTokens.borderColorForTag};
                 padding: 0 ${designTokens.spacing25};
-                border-radius: 0 ${designTokens.borderRadius20}
-                  ${designTokens.borderRadius20} 0;
                 display: flex;
                 align-items: center;
-                background: inherit;
-                border-style: solid;
-                border-width: 1px 1px 1px 0;
-                :not(:disabled)&:hover,
-                :not(:disabled)&:focus {
-                  border-color: ${props.type === 'warning'
-                    ? designTokens.colorWarning85
-                    : designTokens.borderColorForTag};
-
-                  fill: ${designTokens.colorError};
-                }
                 fill: ${designTokens.colorNeutral40};
                 &:disabled {
                   fill: ${designTokens.colorNeutral60};
