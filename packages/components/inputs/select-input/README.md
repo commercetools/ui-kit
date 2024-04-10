@@ -136,12 +136,10 @@ The options support a `isDisabled` property which will render the option with a 
 
 Returns truthy value for the Formik `touched` value of this input field.
 
-## Components
-
 It is possible to customize `SelectInput` by passing the `components` property.
 `SelectInput` exports the default underlying components as static exports.
 
-Components available as static exports are:
+Component available as static exports are:
 
 - `ClearIndicator`
 - `Control`
