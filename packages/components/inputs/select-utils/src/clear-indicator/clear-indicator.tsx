@@ -12,6 +12,7 @@ type TInnerProps = {
 
 export type TClearIndicatorProps = {
   innerProps: TInnerProps;
+  selectProps: { isCondensed: boolean };
 } & ClearIndicatorProps;
 
 const ClearIndicator = (props: TClearIndicatorProps) => {
@@ -19,6 +20,7 @@ const ClearIndicator = (props: TClearIndicatorProps) => {
   const {
     getStyles,
     innerProps: { ref, onMouseDown, ...restInnerProps },
+    selectProps,
   } = props;
   return (
     <button
@@ -43,7 +45,7 @@ const ClearIndicator = (props: TClearIndicatorProps) => {
       // only onMouseDown and onTouchEnd event handlers are passed by `react-select` to the component by default, which makes it not accessible by keyboard
       onClick={onMouseDown}
     >
-      <CloseIcon size="medium" />
+      <CloseIcon size={selectProps.isCondensed ? 'small' : 'medium'} />
     </button>
   );
 };

@@ -140,6 +140,10 @@ export type TSelectInputProps = {
    */
   components?: ReactSelectProps['components'];
   /**
+   * Whether the options appear in a condensed layout
+   */
+  isCondensed?: boolean;
+  /**
    * Control whether the selected values should be rendered in the control
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -466,6 +470,7 @@ const SelectInput = (props: TSelectInputProps) => {
               appearance: props.appearance,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
+              isCondensed: props.isCondensed,
               iconLeft: props.iconLeft,
               isMulti: props.isMulti,
               hasValue: !isEmpty(selectedOptions),
@@ -490,6 +495,7 @@ const SelectInput = (props: TSelectInputProps) => {
           isReadOnly={props.isReadOnly}
           isMulti={props.isMulti}
           isSearchable={props.isSearchable}
+          isCondensed={props.isCondensed}
           maxMenuHeight={props.maxMenuHeight}
           menuPortalTarget={props.menuPortalTarget}
           menuShouldBlockScroll={props.menuShouldBlockScroll}

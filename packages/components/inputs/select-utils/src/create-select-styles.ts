@@ -20,6 +20,7 @@ type TProps = {
   iconLeft?: ReactNode;
   isMulti?: boolean;
   hasValue?: boolean;
+  isCondensed?: boolean;
   controlShouldRenderValue?: boolean;
   appearance?: 'default' | 'quiet';
   minMenuWidth?:
@@ -165,7 +166,9 @@ const getHoverInputBorderColor = (props: TProps) => {
 const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
-    fontSize: designTokens.fontSize30,
+    fontSize: props.isCondensed
+      ? designTokens.fontSize20
+      : designTokens.fontSize30,
     backgroundColor: getInputBackgroundColor(props),
     borderColor: getInputBorderColor(props, state),
     borderWidth: (() => {
@@ -180,7 +183,9 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       return designTokens.borderWidth1;
     })(),
     borderRadius: designTokens.borderRadiusForInput,
-    minHeight: designTokens.heightForInput,
+    minHeight: props.isCondensed
+      ? designTokens.heightForInputAsSmall
+      : designTokens.heightForInput,
     cursor: (() => {
       if (props.isDisabled) return 'not-allowed';
       if (props.isReadOnly) return 'default';
