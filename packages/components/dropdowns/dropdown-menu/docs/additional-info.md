@@ -8,8 +8,8 @@ Clicking on an item will close the panel and call the `onClick` callback with th
 
 ### Properties
 
-| Props        | Type                                                | Required | Default | Description                                       |
-| ------------ | --------------------------------------------------- | :------: | ------- | ------------------------------------------------- |
-| `isDisabled` | `union`<br/>Possible values:<br/>`'left' , 'right'` |          | `false` | Whether the item should be disabled.              |
-| `onClick`    | `() => void`                                        |          |         | A callback to be called when the item is clicked. |
-| `children`   | `string`                                            |    ✅    |         | The label for the item.                           |
+| Props        | Type         | Required | Default | Description                                       |
+| ------------ | ------------ | :------: | ------- | ------------------------------------------------- |
+| `isDisabled` | `boolean`    |          | `false` | Whether the item should be disabled.              |
+| `onClick`    | `() => void` |          |         | A callback to be called when the item is clicked. |
+| `children`   | `string`     |    ✅    |         | The label for the item.                           |

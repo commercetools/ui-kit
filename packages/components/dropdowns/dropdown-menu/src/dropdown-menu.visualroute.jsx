@@ -18,7 +18,7 @@ export const component = () => (
       </DropdownMenu>
     </Spec>
 
-    <Spec label="opened default menu dropdown">
+    <Spec label="list type dropdown menu">
       <DropdownMenu
         menuType="list"
         triggerElement={<SecondaryButton label="Trigger list dropdown" />}
