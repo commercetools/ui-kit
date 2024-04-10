@@ -6,6 +6,7 @@ import {
   useState,
   useCallback,
   useRef,
+  useEffect,
 } from 'react';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Constraints from '@commercetools-uikit/constraints';
@@ -276,6 +277,12 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     props.id,
     selectableSearchInputSequentialId
   );
+
+  useEffect(() => {
+    setSearchValue(
+      props.value.text
+    );
+  }, [props.value.text]);
 
   if (!props.isReadOnly) {
     warning(
