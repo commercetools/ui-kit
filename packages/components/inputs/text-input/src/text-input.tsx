@@ -49,6 +49,10 @@ export type TTextInputProps = {
    */
   isAutofocussed?: boolean;
   /**
+   * Whether the options appear in a condensed layout
+   */
+  isCondensed?: boolean;
+  /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
   isDisabled?: boolean;
@@ -113,6 +117,7 @@ const TextInput = (props: TTextInputProps) => {
         readOnly={props.isReadOnly}
         autoFocus={props.isAutofocussed}
         autoComplete={props.autoComplete}
+        // isCondensed={props.isCondensed}
         css={getInputStyles(props)}
         // Allow to override the styles by passing a `className` prop.
         // Custom styles can also be passed using the `css` prop from emotion.
