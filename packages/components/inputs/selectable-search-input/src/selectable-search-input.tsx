@@ -6,6 +6,7 @@ import {
   useState,
   useCallback,
   useRef,
+  useEffect,
 } from 'react';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Constraints from '@commercetools-uikit/constraints';
@@ -260,6 +261,11 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const legacyDataProps = filterDataAttributes(props);
   const transformedSelectDataProps = transformDataProps(props.selectDataProps);
   const transformedInputDataProps = transformDataProps(props.inputDataProps);
+
+  // Ensure input state is always updated when the input changes
+  useEffect(() => {
+    setSearchValue(props.value.text);
+  }, [props.value.text]);
 
   const optionsWithoutGroups = props.options.flatMap((option) => {
     if (isOptionObject(option)) {
