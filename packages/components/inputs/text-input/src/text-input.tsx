@@ -117,7 +117,6 @@ const TextInput = (props: TTextInputProps) => {
         readOnly={props.isReadOnly}
         autoFocus={props.isAutofocussed}
         autoComplete={props.autoComplete}
-        // isCondensed={props.isCondensed}
         css={getInputStyles(props)}
         // Allow to override the styles by passing a `className` prop.
         // Custom styles can also be passed using the `css` prop from emotion.
