@@ -5,6 +5,20 @@ it('should render text as children', () => {
   render(<Tag>Bread</Tag>);
   expect(screen.getByText('Bread')).toBeInTheDocument();
 });
+
+it('should render multiple text children', () => {
+  render(
+    <Tag>
+      <span>Bread</span>
+      <span>Peanut Butter</span>
+      <span>Honey</span>
+    </Tag>
+  );
+  expect(screen.getByText('Bread')).toBeInTheDocument();
+  expect(screen.getByText('Peanut Butter')).toBeInTheDocument();
+  expect(screen.getByText('Honey')).toBeInTheDocument();
+});
+
 it('should render html markup as children', () => {
   const error = jest.spyOn(console, 'error').mockImplementation(() => {});
   render(
@@ -108,8 +122,24 @@ describe('when `to` is set', () => {
     );
     screen.getByText('Bread').click();
     expect(onClick).toHaveBeenCalled();
-
     expect(history.location.pathname).toBe('/foo');
+  });
+
+  it('should redirect on link click if text children proceed it', () => {
+    const { history } = render(
+      <Tag>
+        <span>Bread</span>
+        <span>Peanut Butter</span>
+        <span onClick={() => history.push('/honey')}>Honey</span>
+      </Tag>
+    );
+
+    expect(screen.getByText('Bread')).toBeInTheDocument();
+    expect(screen.getByText('Peanut Butter')).toBeInTheDocument();
+    expect(screen.getByText('Honey')).toBeInTheDocument();
+
+    screen.getByText('Honey').click();
+    expect(history.location.pathname).toBe('/honey');
   });
 
   it('should not redirect when removed', () => {
@@ -126,7 +156,7 @@ describe('when `to` is set', () => {
     expect(onRemove).toHaveBeenCalled();
 
     // ensure the pathname is not "/foo", otherwise a redirect would have
-    // happend
+    // happened
     expect(history.location.pathname).toBe('/');
   });
 
@@ -140,7 +170,7 @@ describe('when `to` is set', () => {
     screen.getByText('Bread').click();
 
     // ensure the pathname is not "/foo", otherwise a redirect would have
-    // happend
+    // happened
     expect(history.location.pathname).toBe('/');
   });
 });
