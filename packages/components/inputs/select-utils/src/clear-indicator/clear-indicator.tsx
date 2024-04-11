@@ -5,6 +5,7 @@ import { useIntl } from 'react-intl';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
+import { TSelectInputCustomComponentProps } from '../types';
 
 type TInnerProps = {
   ref: LegacyRef<HTMLButtonElement>;
@@ -12,8 +13,7 @@ type TInnerProps = {
 
 export type TClearIndicatorProps = {
   innerProps: TInnerProps;
-  selectProps: { isCondensed: boolean };
-} & ClearIndicatorProps;
+} & TSelectInputCustomComponentProps<ClearIndicatorProps>;
 
 const ClearIndicator = (props: TClearIndicatorProps) => {
   const intl = useIntl();

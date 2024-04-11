@@ -8,3 +8,4 @@ export type {
   TWrapperWithIconSelectProps,
   TDefaultComponent,
 } from './wrapper-with-icon/wrapper-with-icon';
+export * from './types';
