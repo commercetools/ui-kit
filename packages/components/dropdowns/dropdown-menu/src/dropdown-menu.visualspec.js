@@ -15,7 +15,7 @@ describe('DropdownMenu', () => {
       'Trigger default dropdown'
     );
     await triggetButton.click();
-    await queries.findByLabelText(doc, 'Some headline');
+    await queries.findByText(doc, 'Some headline');
 
     await percySnapshot(page, 'DropdownMenu');
   });
