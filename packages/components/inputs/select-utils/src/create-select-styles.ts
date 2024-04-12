@@ -455,9 +455,13 @@ const multiValueStyles = (props: TProps) => (base: TBase) => {
     display: 'flex',
     alignItems: 'center',
     height: '32px',
-    backgroundColor: props.isDisabled
-      ? designTokens.colorNeutral95
-      : designTokens.backgroundColorForTag,
+    backgroundColor: (() => {
+      if (props.isDisabled)
+        return designTokens.backgroundColorForInputWhenDisabled;
+      if (props.isReadOnly)
+        return designTokens.backgroundColorForInputWhenReadonly;
+      return designTokens.colorPrimary95;
+    })(),
     padding: designTokens.spacing20,
     border: `1px solid ${designTokens.colorNeutral85}`,
     borderRadius: designTokens.borderRadius20,
