@@ -449,15 +449,18 @@ const menuPortalStyles = (props: TProps) => (base: TBase) => ({
   zIndex: props.menuPortalZIndex,
 });
 
-const multiValueStyles = () => (base: TBase) => {
+const multiValueStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
     display: 'flex',
     alignItems: 'center',
     height: '32px',
-    backgroundColor: designTokens.colorNeutral95,
-    padding: '0',
+    backgroundColor: props.isDisabled
+      ? designTokens.colorNeutral95
+      : designTokens.backgroundColorForTag,
+    padding: designTokens.spacing20,
     border: `1px solid ${designTokens.colorNeutral85}`,
+    borderRadius: designTokens.borderRadius20,
   };
 };
 
@@ -521,7 +524,7 @@ export default function createSelectStyles(props: TProps) {
     clearIndicator: clearIndicatorStyles(),
     menuList: menuListStyles(),
     menuPortal: menuPortalStyles(props),
-    multiValue: multiValueStyles(),
+    multiValue: multiValueStyles(props),
     multiValueLabel: multiValueLabelStyles(props),
     multiValueRemove: multiValueRemoveStyles(props),
     indicatorsContainer: indicatorsContainerStyles(),
