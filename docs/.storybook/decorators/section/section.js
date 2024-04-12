@@ -8,6 +8,7 @@ const Section = (props) => {
       css={css`
         background-color: ${props.backgroundColor || designTokens.colorSurface};
         padding: 16px;
+        text-align: ${props.align || 'left'};
       `}
     >
       {props.children}
@@ -18,6 +19,7 @@ const Section = (props) => {
 Section.propTypes = {
   children: PropTypes.node.isRequired,
   backgroundColor: PropTypes.string,
+  align: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 export default Section;

@@ -45,6 +45,7 @@ const customRender = (
 
 // re-export everything
 export {
+  act,
   fireEvent,
   screen,
   waitFor,

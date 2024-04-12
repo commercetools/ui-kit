@@ -22,6 +22,7 @@ export {
   default as PrimaryActionDropdown,
   Option as PrimaryActionDropdownOption,
 } from '@commercetools-uikit/primary-action-dropdown';
+export { default as DropdownMenu } from '@commercetools-uikit/dropdown-menu';
 export { default as FieldLabel } from '@commercetools-uikit/field-label';
 export { default as FieldErrors } from '@commercetools-uikit/field-errors';
 export { default as Grid } from '@commercetools-uikit/grid';
