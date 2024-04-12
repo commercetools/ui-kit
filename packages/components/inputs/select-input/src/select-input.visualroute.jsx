@@ -122,6 +122,16 @@ const DefaultRoute = () => (
         horizontalConstraint={7}
       />
     </Spec>
+    <Spec label="with multiple values selected and condensed">
+      <SelectInput
+        value={['one', 'two']}
+        onChange={() => {}}
+        options={options}
+        isMulti={true}
+        isCondensed={true}
+        horizontalConstraint={7}
+      />
+    </Spec>
     <Spec label="when read-only">
       <SelectInput
         value={value}
