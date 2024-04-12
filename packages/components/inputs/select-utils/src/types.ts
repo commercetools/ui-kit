@@ -23,27 +23,11 @@ import type {
   ValueContainerProps,
 } from 'react-select';
 
-export type TReactSelectCustomComponentsProps =
-  | ClearIndicatorProps
-  | ControlProps
-  | DropdownIndicatorProps
-  | GroupProps
-  | GroupHeadingProps
-  | IndicatorsContainerProps
-  | IndicatorSeparatorProps
-  | InputProps
-  | LoadingIndicatorProps
-  | MenuProps
-  | MenuListProps
-  | NoticeProps
-  | MultiValueProps
-  | MultiValueGenericProps
-  | MultiValueRemoveProps
-  | OptionProps
-  | PlaceholderProps
-  | ContainerProps
-  | SingleValueProps
-  | ValueContainerProps;
+type ComponentProps<T> = T extends React.ComponentType<infer P> ? P : never;
+
+export type TReactSelectCustomComponentsProps = {
+  [K in keyof SelectComponents]: ComponentProps<SelectComponents[K]>;
+}[keyof SelectComponents];
 
 export type TSelectInputCustomComponentProps<
   T extends TReactSelectCustomComponentsProps
