@@ -35,6 +35,7 @@
     "@commercetools-uikit/data-table": "19.0.0",
     "@commercetools-uikit/data-table-manager": "19.0.0",
     "@commercetools-uikit/design-system": "19.0.0",
+    "@commercetools-uikit/dropdown-menu": "19.0.0",
     "@commercetools-uikit/field-errors": "19.0.0",
     "@commercetools-uikit/field-label": "19.0.0",
     "@commercetools-uikit/fields": "19.0.0",
