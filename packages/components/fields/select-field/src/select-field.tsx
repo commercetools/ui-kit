@@ -157,9 +157,13 @@ export type TSelectFieldProps = {
    */
   isDisabled?: boolean;
   /**
-   * Is the select read-only
-   */
+   Is the select read-only
+  */
   isReadOnly?: boolean;
+  /**
+   * Is the select displayed in a condensed layout
+   */
+  isCondensed?: boolean;
   /**
    * Override the built-in logic to detect whether an option is disabled
    * <br/>
@@ -405,6 +409,7 @@ export default class SelectField extends Component<TSelectFieldProps> {
             isClearable={this.props.isClearable}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
+            isCondensed={this.props.isCondensed}
             isOptionDisabled={this.props.isOptionDisabled}
             isMulti={this.props.isMulti}
             isSearchable={this.props.isSearchable}
