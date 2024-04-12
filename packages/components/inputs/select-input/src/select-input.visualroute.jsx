@@ -48,6 +48,15 @@ const DefaultRoute = () => (
         isDisabled={true}
       />
     </Spec>
+    <Spec label="when condensed">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        isCondensed={true}
+      />
+    </Spec>
     <Spec label="when placeholder is shown">
       <SelectInput
         value={null}
