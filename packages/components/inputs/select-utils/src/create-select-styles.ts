@@ -301,7 +301,7 @@ const menuListStyles = () => (base: TBase) => {
   };
 };
 
-const optionStyles = () => (base: TBase, state: TState) => {
+const optionStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
     transition: `border-color ${designTokens.transitionStandard},
@@ -309,6 +309,9 @@ const optionStyles = () => (base: TBase, state: TState) => {
       color ${designTokens.transitionStandard}`,
     padding: `${designTokens.spacing20} ${designTokens.spacing30}`,
     lineHeight: designTokens.lineHeight40,
+    fontSize: props.isCondensed
+      ? designTokens.fontSize20
+      : designTokens.fontSize30,
     cursor: state.isDisabled ? 'not-allowed' : 'pointer',
     color: (() => {
       if (!state.isDisabled) return designTokens.fontColorForInput;
@@ -469,13 +472,17 @@ const multiValueStyles = () => (base: TBase) => {
 const multiValueLabelStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    fontSize: designTokens.fontSize30,
+    fontSize: props.isCondensed
+      ? designTokens.fontSize20
+      : designTokens.fontSize30,
     color: (() => {
       if (props.isDisabled) return designTokens.fontColorForInputWhenDisabled;
       if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
       return base.color;
     })(),
-    padding: `${designTokens.spacing10} ${designTokens.spacing20}`,
+    padding: `${
+      props.isCondensed ? designTokens.spacing05 : designTokens.spacing10
+    } ${designTokens.spacing20}`,
     borderRadius: `${designTokens.borderRadius2} 0 0 ${designTokens.borderRadius2}`,
     border: 'none',
     borderWidth: '1px 0 1px 1px',
@@ -530,7 +537,7 @@ export default function createSelectStyles(props: TProps) {
     multiValueLabel: multiValueLabelStyles(props),
     multiValueRemove: multiValueRemoveStyles(props),
     indicatorsContainer: indicatorsContainerStyles(),
-    option: optionStyles(),
+    option: optionStyles(props),
     placeholder: placeholderStyles(props),
     valueContainer: valueContainerStyles(props),
     singleValue: singleValueStyles(props),
