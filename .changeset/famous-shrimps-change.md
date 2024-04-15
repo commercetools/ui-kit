@@ -3,4 +3,4 @@
 '@commercetools-uikit/text-input': minor
 ---
 
-"feat(text-input): add new isCondensed prop"
+Included a new property (**isCondensed**) which allows to render a more visually compact variant of the input.
