@@ -91,6 +91,10 @@ export type TSelectableSearchInputProps = {
    */
   value: TValue;
   /**
+   * Default value of the input. Consists of text input and selected option.
+   */
+  defaultValue: TValue;
+  /**
    * Called with the event of the input or dropdown when either the selectable dropdown or the text input have changed.
    * The change event from the text input has a suffix of `.textInput` and the change event from the dropdown has a suffix of `.dropdown`.
    */
@@ -254,7 +258,7 @@ const transformDataProps = (dataProps?: Record<string, string>) =>
 
 const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const [dropdownHasFocus, toggleDropdownHasFocus] = useToggleState(false);
-  const [searchValue, setSearchValue] = useState(props.value.text || '');
+  const [searchValue, setSearchValue] = useState(props.defaultValue.text || '');
   const containerRef = useRef<HTMLDivElement>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
 
@@ -264,7 +268,9 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
 
   // Ensure input state is always updated when the input changes
   useEffect(() => {
-    setSearchValue(props.value.text);
+    if (props.value.text) {
+      setSearchValue(props.value.text);
+    }
   }, [props.value.text]);
 
   const optionsWithoutGroups = props.options.flatMap((option) => {

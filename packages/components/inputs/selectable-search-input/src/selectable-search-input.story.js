@@ -96,6 +96,11 @@ storiesOf('Components|Inputs', module)
       option: dropdownValue,
     };
 
+    const defaultValue = {
+      text: '',
+      options: [],
+    };
+
     return (
       <Section
         backgroundColor={select(
@@ -112,6 +117,7 @@ storiesOf('Components|Inputs', module)
             id={text('id', '')}
             name={name}
             value={value}
+            defaultValue={defaultValue}
             onChange={(event) => {
               action('onChange')(event);
               if (event.target.name.endsWith('.textInput')) {
