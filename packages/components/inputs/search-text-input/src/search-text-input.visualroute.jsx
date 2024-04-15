@@ -110,5 +110,15 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="with isCondensed">
+      <SearchTextInput
+        value={value}
+        onChange={() => {}}
+        isCondensed={true}
+        horizontalConstraint={7}
+        onSubmit={() => {}}
+        onReset={() => {}}
+      />
+    </Spec>
   </Suite>
 );

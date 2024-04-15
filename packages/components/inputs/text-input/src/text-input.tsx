@@ -49,6 +49,10 @@ export type TTextInputProps = {
    */
   isAutofocussed?: boolean;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
   isDisabled?: boolean;
