@@ -70,7 +70,7 @@ export type TSearchTextInputProps = {
    */
   isAutofocussed?: boolean;
   /**
-   * Whether the options appear in a condensed layout
+   * Use this property to reduce the paddings of the component for a ui compact variant
    */
   isCondensed?: boolean;
   /**
