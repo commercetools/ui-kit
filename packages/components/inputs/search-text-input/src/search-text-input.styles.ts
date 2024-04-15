@@ -3,6 +3,7 @@ import { getInputStyles } from '@commercetools-uikit/input-utils';
 import { designTokens } from '@commercetools-uikit/design-system';
 
 type TInputProps = {
+  isCondensed?: boolean;
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
@@ -53,6 +54,9 @@ const getSearchTextInputStyles = (props: TInputProps) => [
     &:hover {
       background-color: transparent !important;
     }
+    font-size: ${props.isCondensed
+      ? `${designTokens.fontSize20}`
+      : `${designTokens.fontSize30}`};
   `,
 ];
 
@@ -124,7 +128,9 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
     border: 1px solid ${getInputContainerBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-shadow: ${getInputBoxShadow(props)};
-    height: ${designTokens.heightForInput};
+    height: ${props.isCondensed
+      ? `${designTokens.heightForInputAsSmall}`
+      : `${designTokens.heightForInput}`};
     box-sizing: border-box;
     &:hover {
       border-color: ${getInputContainerBorderColor(
