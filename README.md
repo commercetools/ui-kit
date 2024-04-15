@@ -120,9 +120,9 @@ postcss([
 You can also access the JavaScript variables like this
 
 ```js
-import { customProperties } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 
-const primary = customProperties.colorPrimary;
+const primary = designTokens.colorPrimary;
 ```
 
-> Please look at the [`custom-properties.ts`](https://github.com/commercetools/ui-kit/blob/main/design-system/src/custom-properties.ts) itself to inspect which variables are available.
+> Please look at the [`design-tokens.ts`](https://github.com/commercetools/ui-kit/blob/main/design-system/src/design-tokens.ts) itself to inspect which variables are available.
