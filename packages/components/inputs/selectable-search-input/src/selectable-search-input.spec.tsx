@@ -43,6 +43,10 @@ TestComponent.defaultProps = {
     text: 'test-value',
     option: 'foo',
   },
+  defaultValue: {
+    text: '',
+    option: '',
+  },
   options: [
     { value: 'foo', label: 'Foo' },
     { value: 'bar', label: 'Bar' },
