@@ -457,12 +457,12 @@ const menuPortalStyles = (props: TProps) => (base: TBase) => ({
   zIndex: props.menuPortalZIndex,
 });
 
-const multiValueStyles = () => (base: TBase) => {
+const multiValueStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
     display: 'flex',
     alignItems: 'center',
-    height: '32px',
+    height: props.isCondensed ? 'inherit' : '32px',
     backgroundColor: designTokens.colorNeutral95,
     padding: '0',
     border: `1px solid ${designTokens.colorNeutral85}`,
@@ -533,7 +533,7 @@ export default function createSelectStyles(props: TProps) {
     clearIndicator: clearIndicatorStyles(),
     menuList: menuListStyles(),
     menuPortal: menuPortalStyles(props),
-    multiValue: multiValueStyles(),
+    multiValue: multiValueStyles(props),
     multiValueLabel: multiValueLabelStyles(props),
     multiValueRemove: multiValueRemoveStyles(props),
     indicatorsContainer: indicatorsContainerStyles(),
