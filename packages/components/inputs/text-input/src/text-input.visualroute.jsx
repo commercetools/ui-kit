@@ -86,5 +86,15 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="with isCondensed">
+      <TextInput
+        value={value}
+        onChange={() => {}}
+        isCondensed={true}
+        horizontalConstraint={7}
+        isDisabled={true}
+        hasWarning={true}
+      />
+    </Spec>
   </Suite>
 );
