@@ -91,7 +91,7 @@
     "@svgr/plugin-jsx": "8.1.0",
     "@svgr/plugin-svgo": "8.1.0",
     "@testing-library/jest-dom": "5.17.0",
-    "@testing-library/react": "12.1.5",
+    "@testing-library/react": "15.0.2",
     "@testing-library/react-hooks": "8.0.1",
     "@types/is-hotkey": "^0.1.7",
     "@types/node": "18.19.8",
