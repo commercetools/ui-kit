@@ -121,6 +121,12 @@ const getInputBackgroundColor = (props: TProps) => {
   return designTokens.backgroundColorForInput;
 };
 
+const getMultiValueBackgroundColor = (props: TProps) => {
+  if (props.isDisabled) return designTokens.backgroundColorForInputWhenDisabled;
+  if (props.isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
+  return designTokens.colorPrimary95;
+};
+
 const getInputBorderColor = (props: TProps, state: TState) => {
   if (props.appearance === 'quiet') {
     return designTokens.borderColorForInputAsQuiet;
@@ -457,13 +463,7 @@ const multiValueStyles = (props: TProps) => (base: TBase) => {
     display: 'flex',
     alignItems: 'center',
     height: '32px',
-    backgroundColor: (() => {
-      if (props.isDisabled)
-        return designTokens.backgroundColorForInputWhenDisabled;
-      if (props.isReadOnly)
-        return designTokens.backgroundColorForInputWhenReadonly;
-      return designTokens.colorPrimary95;
-    })(),
+    backgroundColor: getMultiValueBackgroundColor(props),
     padding: designTokens.spacing20,
     border: `1px solid ${designTokens.colorNeutral85}`,
     borderRadius: designTokens.borderRadius20,
