@@ -162,6 +162,17 @@ const getHoverInputBorderColor = (props: TProps) => {
   return designTokens.borderColorForInputWhenHovered;
 };
 
+const getHoverInputBackgroundColor = (props: TProps) => {
+  if (!props.isDisabled && !props.isReadOnly) {
+    if (props.appearance === 'quiet') {
+      return designTokens.backgroundColorForInputAsQuietWhenHovered;
+    } else {
+      return designTokens.backgroundColorForInputWhenHovered;
+    }
+  }
+  return null;
+};
+
 const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
@@ -208,16 +219,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
 
     '&:hover': {
       borderColor: getHoverInputBorderColor(props),
-      backgroundColor: (() => {
-        if (!props.isDisabled && !props.isReadOnly) {
-          if (props.appearance === 'quiet') {
-            return designTokens.backgroundColorForInputAsQuietWhenHovered;
-          } else {
-            return designTokens.backgroundColorForInputWhenHovered;
-          }
-        }
-        return null;
-      })(),
+      backgroundColor: getHoverInputBackgroundColor(props),
     },
     pointerEvents: 'auto',
     color:
