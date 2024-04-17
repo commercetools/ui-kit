@@ -161,7 +161,7 @@ export type TSelectFieldProps = {
   */
   isReadOnly?: boolean;
   /**
-   * Is the select displayed in a condensed layout
+   * Whether the input and its options are rendered with condensed paddings
    */
   isCondensed?: boolean;
   /**
