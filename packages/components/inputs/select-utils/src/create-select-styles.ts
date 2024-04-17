@@ -472,7 +472,9 @@ const multiValueStyles = (props: TProps) => (base: TBase) => {
     alignItems: 'center',
     height: props.isCondensed ? 'inherit' : '32px',
     backgroundColor: getMultiValueBackgroundColor(props),
-    padding: designTokens.spacing20,
+    padding: props.isCondensed
+      ? `0 ${designTokens.spacing20} 0 calc(${designTokens.spacing05} + ${designTokens.spacing10})`
+      : designTokens.spacing20,
     border: `1px solid ${designTokens.colorNeutral85}`,
     borderRadius: designTokens.borderRadius20,
   };
@@ -484,14 +486,17 @@ const multiValueLabelStyles = (props: TProps) => (base: TBase) => {
     fontSize: props.isCondensed
       ? designTokens.fontSize20
       : designTokens.fontSize30,
+    lineHeight: props.isCondensed
+      ? designTokens.lineHeight20
+      : designTokens.lineHeight40,
     color: (() => {
       if (props.isDisabled) return designTokens.fontColorForInputWhenDisabled;
       if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
       return base.color;
     })(),
-    padding: `${
-      props.isCondensed ? designTokens.spacing05 : designTokens.spacing10
-    } ${designTokens.spacing20}`,
+    padding: `${props.isCondensed ? '1px' : designTokens.spacing10} ${
+      designTokens.spacing20
+    }`,
     borderRadius: `${designTokens.borderRadius2} 0 0 ${designTokens.borderRadius2}`,
     border: 'none',
     borderWidth: '1px 0 1px 1px',
