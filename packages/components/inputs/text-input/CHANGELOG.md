@@ -1,5 +1,19 @@
 # @commercetools-uikit/text-input
 
+## 19.1.0
+
+### Minor Changes
+
+- [#2778](https://github.com/commercetools/ui-kit/pull/2778) [`2c130c2`](https://github.com/commercetools/ui-kit/commit/2c130c259b0101db34265b5582d7f8388b786172) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Included a new property (**isCondensed**) which allows to render a more visually compact variant of the input.
+
+### Patch Changes
+
+- Updated dependencies [[`2c130c2`](https://github.com/commercetools/ui-kit/commit/2c130c259b0101db34265b5582d7f8388b786172)]:
+  - @commercetools-uikit/input-utils@19.1.0
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/constraints@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+
 ## 19.0.0
 
 ### Patch Changes

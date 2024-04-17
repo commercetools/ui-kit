@@ -1,5 +1,15 @@
 # @commercetools-uikit/stamp
 
+## 19.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/spacings-inline@19.1.0
+  - @commercetools-uikit/text@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+
 ## 19.0.0
 
 ### Patch Changes

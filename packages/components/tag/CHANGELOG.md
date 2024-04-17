@@ -1,5 +1,22 @@
 # @commercetools-uikit/tag
 
+## 19.1.0
+
+### Minor Changes
+
+- [#2767](https://github.com/commercetools/ui-kit/pull/2767) [`0ebf4f8`](https://github.com/commercetools/ui-kit/commit/0ebf4f87866bd6dd0e7cd4c75f97e2adecedb756) Thanks [@valoriecarli](https://github.com/valoriecarli)! - Component UI styling updates.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/accessible-button@19.1.0
+  - @commercetools-uikit/constraints@19.1.0
+  - @commercetools-uikit/icons@19.1.0
+  - @commercetools-uikit/text@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+  - @commercetools-uikit/spacings@19.1.0
+
 ## 19.0.0
 
 ### Patch Changes

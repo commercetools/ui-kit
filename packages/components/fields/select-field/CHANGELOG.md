@@ -1,5 +1,25 @@
 # @commercetools-uikit/select-field
 
+## 19.1.0
+
+### Minor Changes
+
+- [#2782](https://github.com/commercetools/ui-kit/pull/2782) [`1f3cc7e`](https://github.com/commercetools/ui-kit/commit/1f3cc7eb1fe79ad5051d535550ecb40206169d37) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for isCondensed layout for SelectField
+
+- [#2774](https://github.com/commercetools/ui-kit/pull/2774) [`ff349b0`](https://github.com/commercetools/ui-kit/commit/ff349b0d7b16b0de1af9e233f221c432f166bdd8) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for condensed layout to select input
+
+### Patch Changes
+
+- Updated dependencies [[`ff349b0`](https://github.com/commercetools/ui-kit/commit/ff349b0d7b16b0de1af9e233f221c432f166bdd8)]:
+  - @commercetools-uikit/select-input@19.1.0
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/constraints@19.1.0
+  - @commercetools-uikit/field-errors@19.1.0
+  - @commercetools-uikit/field-label@19.1.0
+  - @commercetools-uikit/field-warnings@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+  - @commercetools-uikit/spacings@19.1.0
+
 ## 19.0.0
 
 ### Patch Changes
