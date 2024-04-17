@@ -121,6 +121,12 @@ const getInputBackgroundColor = (props: TProps) => {
   return designTokens.backgroundColorForInput;
 };
 
+const getMultiValueBackgroundColor = (props: TProps) => {
+  if (props.isDisabled) return designTokens.backgroundColorForInputWhenDisabled;
+  if (props.isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
+  return designTokens.colorPrimary95;
+};
+
 const getInputBorderColor = (props: TProps, state: TState) => {
   if (props.appearance === 'quiet') {
     return designTokens.borderColorForInputAsQuiet;
@@ -160,6 +166,17 @@ const getHoverInputBorderColor = (props: TProps) => {
     return designTokens.borderColorForInputWhenWarning;
   }
   return designTokens.borderColorForInputWhenHovered;
+};
+
+const getHoverInputBackgroundColor = (props: TProps) => {
+  if (!props.isDisabled && !props.isReadOnly) {
+    if (props.appearance === 'quiet') {
+      return designTokens.backgroundColorForInputAsQuietWhenHovered;
+    } else {
+      return designTokens.backgroundColorForInputWhenHovered;
+    }
+  }
+  return null;
 };
 
 const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
@@ -208,16 +225,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
 
     '&:hover': {
       borderColor: getHoverInputBorderColor(props),
-      backgroundColor: (() => {
-        if (!props.isDisabled && !props.isReadOnly) {
-          if (props.appearance === 'quiet') {
-            return designTokens.backgroundColorForInputAsQuietWhenHovered;
-          } else {
-            return designTokens.backgroundColorForInputWhenHovered;
-          }
-        }
-        return null;
-      })(),
+      backgroundColor: getHoverInputBackgroundColor(props),
     },
     pointerEvents: 'auto',
     color:
@@ -449,15 +457,16 @@ const menuPortalStyles = (props: TProps) => (base: TBase) => ({
   zIndex: props.menuPortalZIndex,
 });
 
-const multiValueStyles = () => (base: TBase) => {
+const multiValueStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
     display: 'flex',
     alignItems: 'center',
     height: '32px',
-    backgroundColor: designTokens.colorNeutral95,
-    padding: '0',
+    backgroundColor: getMultiValueBackgroundColor(props),
+    padding: designTokens.spacing20,
     border: `1px solid ${designTokens.colorNeutral85}`,
+    borderRadius: designTokens.borderRadius20,
   };
 };
 
@@ -521,7 +530,7 @@ export default function createSelectStyles(props: TProps) {
     clearIndicator: clearIndicatorStyles(),
     menuList: menuListStyles(),
     menuPortal: menuPortalStyles(props),
-    multiValue: multiValueStyles(),
+    multiValue: multiValueStyles(props),
     multiValueLabel: multiValueLabelStyles(props),
     multiValueRemove: multiValueRemoveStyles(props),
     indicatorsContainer: indicatorsContainerStyles(),
