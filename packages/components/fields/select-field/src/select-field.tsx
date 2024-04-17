@@ -157,8 +157,8 @@ export type TSelectFieldProps = {
    */
   isDisabled?: boolean;
   /**
-   Is the select read-only
-  */
+   * Is the select read-only
+   */
   isReadOnly?: boolean;
   /**
    * Whether the input and its options are rendered with condensed paddings
