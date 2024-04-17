@@ -101,6 +101,7 @@ storiesOf('Components|Inputs/SelectInputs', module)
     const showOptionGroupDivider = boolean('Show option group divider', false);
     const shouldMenuFlip = boolean('Show menu flipping above the input', false);
     const iconLeft = icons[select('iconLeft', ['', ...iconNames])];
+    const isCondensed = boolean('isCondensed', false);
 
     return (
       <Spacings.Stack scale="xl">
@@ -173,6 +174,7 @@ storiesOf('Components|Inputs/SelectInputs', module)
                     Constraints.getAcceptedMaxPropValues(4),
                     'scale'
                   )}
+                  isCondensed={isCondensed}
                   {...addMenuPortalProps()}
                 />
                 <NeighbouringStackingContext />

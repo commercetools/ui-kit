@@ -48,6 +48,15 @@ const DefaultRoute = () => (
         isDisabled={true}
       />
     </Spec>
+    <Spec label="when condensed">
+      <SelectInput
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        isCondensed={true}
+      />
+    </Spec>
     <Spec label="when placeholder is shown">
       <SelectInput
         value={null}
@@ -110,6 +119,16 @@ const DefaultRoute = () => (
         options={options}
         isMulti={true}
         isDisabled={true}
+        horizontalConstraint={7}
+      />
+    </Spec>
+    <Spec label="with multiple values selected and condensed">
+      <SelectInput
+        value={['one', 'two']}
+        onChange={() => {}}
+        options={options}
+        isMulti={true}
+        isCondensed={true}
         horizontalConstraint={7}
       />
     </Spec>
