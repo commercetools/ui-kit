@@ -54,3 +54,17 @@ export type TSelectInputCustomComponentProps<
     iconLeft?: ReactElement;
   };
 };
+
+/**
+ * @deprecated Use `TTagRemoveProps['selectProps]` instead
+ */
+export type TTagRemoveSelectProps = {
+  isReadOnly: boolean;
+} & MultiValueGenericProps['selectProps'];
+
+/**
+ * @deprecated Use `TWrapperWithIconProps['selectProps]` instead
+ */
+export type TWrapperWithIconSelectProps = {
+  iconLeft?: ReactElement;
+};
