@@ -140,7 +140,7 @@ export type TSelectInputProps = {
    */
   components?: ReactSelectProps['components'];
   /**
-   * Whether the options appear in a condensed layout
+   * Whether the input and options are rendered with condensed paddings
    */
   isCondensed?: boolean;
   /**
