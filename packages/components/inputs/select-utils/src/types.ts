@@ -23,29 +23,6 @@ import type {
   ValueContainerProps,
 } from 'react-select';
 
-import type {
-  ClearIndicatorProps,
-  ContainerProps,
-  ControlProps,
-  DropdownIndicatorProps,
-  GroupHeadingProps,
-  GroupProps,
-  IndicatorSeparatorProps,
-  IndicatorsContainerProps,
-  InputProps,
-  LoadingIndicatorProps,
-  MenuListProps,
-  MenuProps,
-  MultiValueGenericProps,
-  MultiValueProps,
-  MultiValueRemoveProps,
-  NoticeProps,
-  OptionProps,
-  PlaceholderProps,
-  SingleValueProps,
-  ValueContainerProps,
-} from 'react-select';
-
 export type TReactSelectCustomComponentsProps =
   | ClearIndicatorProps
   | ControlProps
