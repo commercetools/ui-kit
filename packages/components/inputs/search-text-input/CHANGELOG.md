@@ -1,5 +1,21 @@
 # @commercetools-uikit/search-text-input
 
+## 19.1.0
+
+### Minor Changes
+
+- [#2781](https://github.com/commercetools/ui-kit/pull/2781) [`9933003`](https://github.com/commercetools/ui-kit/commit/993300314af0f2f519d1adba75f5377fc3a41c1d) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Add isCondensed prop that when set to true, condenses the input height and font size.
+
+### Patch Changes
+
+- Updated dependencies [[`2c130c2`](https://github.com/commercetools/ui-kit/commit/2c130c259b0101db34265b5582d7f8388b786172)]:
+  - @commercetools-uikit/input-utils@19.1.0
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/secondary-icon-button@19.1.0
+  - @commercetools-uikit/constraints@19.1.0
+  - @commercetools-uikit/icons@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+
 ## 19.0.0
 
 ### Patch Changes

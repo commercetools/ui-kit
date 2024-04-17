@@ -1,5 +1,25 @@
 # @commercetools-uikit/password-field
 
+## 19.1.0
+
+### Patch Changes
+
+- [#2759](https://github.com/commercetools/ui-kit/pull/2759) [`3f91547`](https://github.com/commercetools/ui-kit/commit/3f915479e526b6d9720ac2c6706da2355a02b7cc) Thanks [@chloe0592](https://github.com/chloe0592)! - Adding a prop to `PasswordField` that determines whether to render the "Show/Hide" button for password.
+
+- Updated dependencies []:
+  - @commercetools-uikit/password-input@19.1.0
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/flat-button@19.1.0
+  - @commercetools-uikit/constraints@19.1.0
+  - @commercetools-uikit/field-errors@19.1.0
+  - @commercetools-uikit/field-label@19.1.0
+  - @commercetools-uikit/field-warnings@19.1.0
+  - @commercetools-uikit/icons@19.1.0
+  - @commercetools-uikit/spacings-inline@19.1.0
+  - @commercetools-uikit/spacings-stack@19.1.0
+  - @commercetools-uikit/hooks@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+
 ## 19.0.0
 
 ### Patch Changes

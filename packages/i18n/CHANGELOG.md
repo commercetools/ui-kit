@@ -1,5 +1,7 @@
 # @commercetools-uikit/i18n
 
+## 19.1.0
+
 ## 19.0.0
 
 ### Patch Changes

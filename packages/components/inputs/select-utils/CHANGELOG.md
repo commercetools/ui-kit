@@ -1,5 +1,23 @@
 # @commercetools-uikit/select-utils
 
+## 19.1.0
+
+### Minor Changes
+
+- [#2774](https://github.com/commercetools/ui-kit/pull/2774) [`ff349b0`](https://github.com/commercetools/ui-kit/commit/ff349b0d7b16b0de1af9e233f221c432f166bdd8) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for condensed layout to select input
+
+- [#2780](https://github.com/commercetools/ui-kit/pull/2780) [`cd66594`](https://github.com/commercetools/ui-kit/commit/cd665940c7dbe2e99c4bd70a97fbad102a9dc8b3) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Apply the new tag styles in the select input multi value tags
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/accessible-button@19.1.0
+  - @commercetools-uikit/icons@19.1.0
+  - @commercetools-uikit/text@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+  - @commercetools-uikit/spacings@19.1.0
+
 ## 19.0.0
 
 ### Patch Changes
