@@ -130,14 +130,14 @@ export const SecondaryButton = <
     css`
       display: flex;
       align-items: center;
-      padding: ${designTokens.paddingForButton};
+      padding: 0 var(--spacing-30);
       height: ${designTokens.heightForButtonAsBig};
     `,
     css`
       display: inline-flex;
       background-color: ${designTokens.colorSurface};
       border: 1px solid ${designTokens.colorNeutral};
-      border-radius: ${designTokens.borderRadiusForButtonAsBig};
+      border-radius: ${designTokens.borderRadius4};
       box-shadow: ${designTokens.shadow0};
       color: ${designTokens.colorSolid};
       transition: background-color ${designTokens.transitionLinear80Ms},

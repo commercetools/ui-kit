@@ -111,7 +111,7 @@ const getHorizontalConstraintValue = (
 
 const getInputBackgroundColor = (props: TProps) => {
   if (props.appearance === 'quiet') {
-    return designTokens.backgroundColorForInputAsQuiet;
+    return designTokens.colorTransparent;
   }
   if (props.isDisabled) {
     return designTokens.backgroundColorForInputWhenDisabled;
@@ -130,7 +130,7 @@ const getMultiValueBackgroundColor = (props: TProps) => {
 
 const getInputBorderColor = (props: TProps, state: TState) => {
   if (props.appearance === 'quiet') {
-    return designTokens.borderColorForInputAsQuiet;
+    return designTokens.colorTransparent;
   }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
@@ -152,7 +152,7 @@ const getInputBorderColor = (props: TProps, state: TState) => {
 
 const getHoverInputBorderColor = (props: TProps) => {
   if (props.appearance === 'quiet') {
-    return designTokens.borderColorForInputAsQuiet;
+    return designTokens.colorTransparent;
   }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
@@ -172,7 +172,7 @@ const getHoverInputBorderColor = (props: TProps) => {
 const getHoverInputBackgroundColor = (props: TProps) => {
   if (!props.isDisabled && !props.isReadOnly) {
     if (props.appearance === 'quiet') {
-      return designTokens.backgroundColorForInputAsQuietWhenHovered;
+      return 'hsla(240, 64%, 58%, 4%)';
     } else {
       return designTokens.backgroundColorForInputWhenHovered;
     }
@@ -210,8 +210,8 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     })(),
     padding:
       props.appearance === 'quiet'
-        ? designTokens.paddingForInputAsQuiet
-        : designTokens.paddingForInput,
+        ? '0 var(--spacing-20)'
+        : '0 var(--spacing-30)',
     transition: `border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard}`,
     outline: 0,
@@ -327,8 +327,7 @@ const optionStyles = (props: TProps) => (base: TBase, state: TState) => {
       return base.color;
     })(),
     backgroundColor: (() => {
-      if (state.isSelected)
-        return designTokens.backgroundColorForInputWhenSelected;
+      if (state.isSelected) return designTokens.colorPrimary95;
       if (state.isFocused)
         return designTokens.backgroundColorForInputWhenHovered;
       return base.backgroundColor;
@@ -339,7 +338,7 @@ const optionStyles = (props: TProps) => (base: TBase, state: TState) => {
         if (!state.isDisabled) return designTokens.fontColorForInput;
         return base.color;
       })(),
-      backgroundColor: designTokens.backgroundColorForInputWhenActive,
+      backgroundColor: designTokens.colorPrimary95,
     },
   };
 };

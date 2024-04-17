@@ -73,9 +73,9 @@ const tonesPropsMap = (
   },
   positive: {
     styles: {
-      backgroundColor: designTokens.backgroundColorForStampAsPositive,
+      backgroundColor: designTokens.colorSuccess95,
       borderColor: designTokens.colorPrimary85,
-      color: designTokens.fontColorForStampAsPositive,
+      color: designTokens.colorSuccess40,
     },
     iconColor: themedValue('primary', 'success'),
   },
@@ -89,7 +89,7 @@ const tonesPropsMap = (
   },
   primary: {
     styles: {
-      backgroundColor: designTokens.backgroundColorForStampAsPrimary,
+      backgroundColor: designTokens.colorPrimary95,
       borderColor: designTokens.colorPrimary85,
       color: designTokens.colorPrimary25,
     },

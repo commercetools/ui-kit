@@ -64,7 +64,7 @@ export const getForegroundColor = (avatarColor: TAvatarProps['color']) => {
     case 'accent':
       return designTokens.colorAccent40;
     case 'turquoise':
-      return designTokens.fontColorForAvatarAsTurquoise;
+      return designTokens.colorTurquoise35;
     default:
       return designTokens[
         `color${startCase(avatarColor)}50` as keyof typeof designTokens

@@ -10,13 +10,13 @@ const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
     case 'medium':
       return css`
         height: ${designTokens.heightForButtonAsMedium};
-        border-radius: ${designTokens.borderRadiusForButtonAsMedium};
+        border-radius: ${designTokens.borderRadius4};
       `;
 
     case 'big':
       return css`
         height: ${designTokens.heightForButtonAsBig};
-        border-radius: ${designTokens.borderRadiusForButtonAsBig};
+        border-radius: ${designTokens.borderRadius4};
       `;
 
     default:
@@ -34,7 +34,7 @@ const getButtonStyles = (
     align-items: center;
     color: ${designTokens.colorSurface};
     transition: background-color ${designTokens.transitionLinear80Ms};
-    padding: ${designTokens.paddingForButton};
+    padding: 0 var(--spacing-30);
     ${getSizeStyles(size)}
   `;
   // "disabled" takes precendece over "active"
@@ -45,7 +45,7 @@ const getButtonStyles = (
         &,
         &:active,
         &:hover {
-          background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
+          background-color: ${designTokens.colorAccent95};
           color: ${designTokens.colorNeutral60};
           box-shadow: ${designTokens.shadow0};
         }
@@ -71,10 +71,10 @@ const getButtonStyles = (
         return [
           baseActiveStyles,
           css`
-            background-color: ${designTokens.backgroundColorForButtonAsPrimary};
+            background-color: ${designTokens.colorPrimary};
             &:focus,
             &:hover {
-              background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsDefaultWhenHovered};
+              background-color: ${designTokens.colorPrimary40};
             }
           `,
         ];
@@ -134,10 +134,10 @@ const getButtonStyles = (
           background-color: ${designTokens.colorPrimary};
           &:focus,
           &:hover {
-            background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsDefaultWhenHovered};
+            background-color: ${designTokens.colorPrimary40};
           }
           &:active {
-            background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsDefaultWhenActive};
+            background-color: ${designTokens.colorPrimary25};
           }
         `,
       ];
@@ -148,7 +148,7 @@ const getButtonStyles = (
       return [
         baseDefaultStyles,
         css`
-          background-color: ${designTokens.backgroundColorForButtonAsPrimaryAsUrgent};
+          background-color: ${designTokens.colorWarning60};
           &:focus,
           &:hover {
             background-color: #e7680d;

@@ -192,97 +192,34 @@ export const themes = {
     breakPointBiggerdesktop: '1280px',
     breakPointGiantdesktop: '1680px',
     breakPointJumbodesktop: '1920px',
-    backgroundColorForButtonWhenActive: 'hsl(232, 18%, 95%)',
-    backgroundColorForButtonWhenHovered: 'hsl(232, 18%, 98%)',
-    backgroundColorForButtonWhenDisabled: 'hsl(195, 35.2941176471%, 95%)',
-    backgroundColorForIconButtonWhenDisabled: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInput: '#fff',
-    backgroundColorForInputWhenSelected: 'hsl(195, 35.2941176471%, 95%)',
     backgroundColorForInputWhenDisabled: 'hsl(232, 18%, 95%)',
-    backgroundColorForInputWhenHovered: 'hsl(232, 18%, 98%)',
-    backgroundColorForInputWhenFocused: '#fff',
     backgroundColorForInputWhenReadonly: 'hsl(232, 18%, 95%)',
-    backgroundColorForInputWhenActive:
-      'hsl(203.05555555555554, 93.9130434783%, 95%)',
-    backgroundColorForInputAsQuiet: 'transparent',
-    backgroundColorForInputAsQuietWhenHovered: 'hsl(0deg 0% 10% / 2%)',
+    backgroundColorForInputWhenHovered: 'hsl(175, 100%, 99%)',
     backgroundColorForLocalizedInputLabel: '#fff',
     backgroundColorForLocalizedInputLabelWhenReadonly: 'hsl(232, 18%, 95%)',
     backgroundColorForLocalizedInputLabelWhenDisabled: 'hsl(232, 18%, 95%)',
-    backgroundColorForButtonAsPrimary: '#15a390',
-    backgroundColorForButtonAsPrimaryWhenHovered: 'hsl(175, 55%, 45%)',
-    backgroundColorForButtonAsPrimaryAsDefaultWhenHovered: '#17ab97',
-    backgroundColorForButtonAsPrimaryAsDefaultWhenActive: '#15a390',
-    backgroundColorForButtonAsPrimaryAsUrgent: '#f16d0e',
-    backgroundColorForStampAsPrimary: 'hsl(175, 70%, 90%)',
-    backgroundColorForStampAsPositive: 'hsl(175, 70%, 90%)',
-    backgroundColorForToggleThumbWhenActive: 'hsl(175, 55%, 25%)',
-    backgroundColorForToggleTrackWhenActive: 'hsl(175, 55%, 40%)',
-    backgroundColorForToggleThumbWhenDisabled: 'hsl(195, 35.2941176471%, 60%)',
-    backgroundColorForToggleTrackWhenDisabled: 'hsl(195, 35.2941176471%, 90%)',
-    backgroundColorForToggleThumbWhenActiveWhenDisabled: 'hsl(232, 18%, 60%)',
-    backgroundColorForToggleTrackWhenActiveWhenDisabled: 'hsl(232, 18%, 90%)',
-    backgroundColorForToggleThumbWhenHovered: 'rgba(0, 0, 0, 0.1)',
-    backgroundColorForLoadingSpinnerTrack: '#213c45',
-    backgroundColorForLoadingSpinnerDot: '#213c45',
-    backgroundColorForContentNotificationWhenSuccess: 'hsl(175, 90%, 95%)',
-    backgroundColorForViewSwitcherButtonWhenActive: 'hsl(232, 18%, 95%)',
-    backgroundColorForCheckboxInputWhenHovered: 'hsl(232, 18%, 90%)',
-    backgroundColorForRadioOptionWhenHovered: 'hsl(232, 18%, 90%)',
-    backgroundColorForTag: 'hsl(232, 18%, 95%)',
-    backgroundColorForTagWhenHovered: 'hsl(232, 18%, 90%)',
-    backgroundColorForDropdownWhenHovered: 'hsl(232, 18%, 95%)',
-    backgroundColorForDropdownWhenActive: 'hsl(232, 18%, 90%)',
-    backgroundColorForDropdownOptionWhenActive:
-      'hsl(203.05555555555554, 93.9130434783%, 95%)',
+    backgroundColorForButtonWhenActive: 'hsl(175, 70%, 90%)',
+    backgroundColorForButtonWhenHovered: 'hsl(175, 90%, 95%)',
     borderColorForInput: 'hsl(232, 18%, 80%)',
-    borderColorForInputWhenFocused: 'hsl(175, 55%, 45%)',
     borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenReadonly: '#fff',
     borderColorForInputWhenError: '#e60050',
     borderColorForInputWhenWarning: '#f16d0e',
     borderColorForInputWhenHovered: 'hsl(232, 18%, 80%)',
-    borderColorForInputAsQuiet: 'transparent',
-    borderColorForButtonAsSecondary: 'hsl(232, 18%, 80%)',
-    borderColorForDropdown: 'hsl(232, 18%, 80%)',
-    borderColorForContentNotificationWhenSuccess: 'hsl(175, 70%, 85%)',
-    borderColorForCheckboxInput: 'hsl(175, 55%, 45%)',
-    borderColorForCheckboxInputWhenActive: 'hsl(175, 55%, 45%)',
-    borderColorForTag: 'hsl(232, 18%, 85%)',
-    borderRadiusForButtonAsBig: '4px',
-    borderRadiusForButtonAsMedium: '4px',
+    borderColorForInputWhenFocused: 'hsl(175, 55%, 40%)',
+    borderColorForButtonAsSecondary: 'hsl(175, 70%, 85%)',
     borderRadiusForInput: '4px',
-    borderWidthForInput: '1px',
-    borderWidthForInputWhenWarning: '1px',
-    borderWidthForInputWhenError: '1px',
-    borderWidthForInputWhenFocused: '1px',
     fontColorForInput: '#1a1a1a',
     fontColorForInputWhenDisabled: 'hsl(232, 18%, 60%)',
-    fontColorForInputWhenError: '#e60050',
+    fontColorForInputWhenError: 'hsl(339.1304347826087, 100%, 40%)',
     fontColorForInputWhenReadonly: 'hsl(232, 18%, 40%)',
     fontColorForInputWhenWarning: '#f16d0e',
-    fontColorForButtonAsSecondary: '#1a1a1a',
-    fontColorForButtonAsFlatWhenHovered: 'hsl(175, 55%, 45%)',
-    fontColorForButtonAsFlatAsCritical: '#e60050',
-    fontColorForButtonAsFlatAsCriticalWhenHovered:
-      'hsl(339.1304347826087, 100%, 25%)',
-    fontColorForViewSwitcherButton: 'hsl(232, 18%, 40%)',
-    fontColorForStampAsPositive: 'hsl(175, 55%, 25%)',
-    fontColorForContentNotificationWhenSuccess: 'hsl(175, 55%, 45%)',
-    fontColorForAvatarAsTurquoise: 'hsl(180, 30%, 45%)',
-    fontColorForLeadingIconAsTurquoise: 'hsl(180, 30%, 45%)',
-    fontColorForTextAsPositive: 'hsl(175, 55%, 25%)',
+    fontColorForButtonAsSecondary: 'hsl(175, 55%, 45%)',
     heightForButtonAsBig: '40px',
     heightForButtonAsMedium: '32px',
-    heightForButtonAsSmall: '16px',
     heightForInput: '40px',
     heightForInputAsSmall: '32px',
-    placeholderFontColorForInput: 'hsl(232, 18%, 60%)',
-    fontSizeForButton: '0.875rem',
-    fontSizeForInput: '1rem',
-    paddingForInput: '0 var(--spacing-30)',
-    paddingForInputAsQuiet: '0 var(--spacing-20)',
-    paddingForButton: '0 var(--spacing-30)',
     shadowForInput: 'none',
     shadowForInputWhenFocused: 'inset 0 0 0 1px var(--color-primary)',
     shadowForInputWhenError: 'inset 0 0 0 1px var(--color-error)',
@@ -352,57 +289,6 @@ export const themes = {
     colorError40: 'hsl(3, 60%, 46%)',
     colorError85: 'hsl(1, 55%, 74%)',
     colorError95: 'hsl(349, 66%, 92%)',
-    borderColorForButtonAsSecondary: 'hsl(244, 100%, 84%)',
-    borderColorForDropdown: 'hsl(244, 100%, 84%)',
-    borderColorForInputWhenFocused: 'hsl(240, 100%, 67%)',
-    borderColorForContentNotificationWhenSuccess: 'hsl(144, 69%, 80%)',
-    borderColorForCheckboxInput: 'hsl(232, 18%, 60%)',
-    borderColorForCheckboxInputWhenActive: 'hsl(240, 64%, 58%)',
-    borderColorForTag: 'hsl(243, 100%, 93%)',
-    backgroundColorForButtonWhenActive: 'hsl(243, 100%, 93%)',
-    backgroundColorForButtonWhenHovered: 'hsl(244, 100%, 97%)',
-    backgroundColorForIconButtonWhenDisabled: 'transparent',
-    backgroundColorForButtonAsPrimary: 'hsl(240, 64%, 58%)',
-    backgroundColorForButtonAsPrimaryWhenHovered: 'hsl(240, 100%, 67%)',
-    backgroundColorForButtonAsPrimaryAsDefaultWhenHovered:
-      'hsl(240, 100%, 67%)',
-    backgroundColorForButtonAsPrimaryAsDefaultWhenActive: 'hsl(240, 46%, 48%)',
-    backgroundColorForButtonAsPrimaryAsUrgent: 'hsl(35, 90%, 55%)',
-    backgroundColorForInputWhenSelected: 'hsl(244, 100%, 97%)',
-    backgroundColorForStampAsPrimary: 'hsl(244, 100%, 97%)',
-    backgroundColorForStampAsPositive: 'hsl(141, 76%, 92%)',
-    backgroundColorForToggleThumbWhenActive: 'hsl(240, 100%, 67%)',
-    backgroundColorForToggleTrackWhenActive: 'hsl(244, 100%, 84%)',
-    backgroundColorForToggleThumbWhenDisabled: 'hsl(232, 18%, 60%)',
-    backgroundColorForToggleTrackWhenDisabled: 'hsl(232, 18%, 90%)',
-    backgroundColorForToggleThumbWhenActiveWhenDisabled: 'hsl(244, 100%, 84%)',
-    backgroundColorForToggleTrackWhenActiveWhenDisabled: 'hsl(243, 100%, 93%)',
-    backgroundColorForToggleThumbWhenHovered: 'hsla(240, 64%, 58%, 4%)',
-    backgroundColorForLoadingSpinnerTrack: 'hsl(243, 100%, 93%)',
-    backgroundColorForLoadingSpinnerDot: 'hsl(240, 64%, 58%)',
-    backgroundColorForContentNotificationWhenSuccess: 'hsl(141, 76%, 92%)',
-    backgroundColorForViewSwitcherButtonWhenActive: 'hsl(244, 100%, 97%)',
-    backgroundColorForCheckboxInputWhenHovered: 'hsl(244, 100%, 97%)',
-    backgroundColorForRadioOptionWhenHovered: 'hsl(244, 100%, 97%)',
-    backgroundColorForTag: 'hsl(244, 100%, 97%)',
-    backgroundColorForTagWhenHovered: 'hsl(243, 100%, 93%)',
-    backgroundColorForDropdownWhenHovered: 'hsl(244, 100%, 97%)',
-    backgroundColorForDropdownWhenActive: 'hsl(243, 100%, 93%)',
-    backgroundColorForDropdownOptionWhenActive: 'hsl(244, 100%, 97%)',
-    backgroundColorForInputAsQuietWhenHovered: 'hsla(240, 64%, 58%, 4%)',
-    backgroundColorForInputWhenActive: 'hsl(244, 100%, 97%)',
-    backgroundColorForInputWhenHovered: 'hsl(244, 100%, 99%)',
-    fontColorForButtonAsSecondary: 'hsl(240, 64%, 58%)',
-    fontColorForButtonAsFlatWhenHovered: 'hsl(240, 100%, 67%)',
-    fontColorForButtonAsFlatAsCritical: 'hsl(3, 60%, 46%)',
-    fontColorForButtonAsFlatAsCriticalWhenHovered: 'hsl(3, 65%, 58%)',
-    fontColorForViewSwitcherButton: 'hsl(240, 64%, 58%)',
-    fontColorForInputWhenError: 'hsl(3, 60%, 46%)',
-    fontColorForStampAsPositive: 'hsl(155, 90%, 24%)',
-    fontColorForContentNotificationWhenSuccess: 'hsl(152, 77%, 39%)',
-    fontColorForAvatarAsTurquoise: 'hsl(178, 88%, 35%)',
-    fontColorForLeadingIconAsTurquoise: 'hsl(178, 88%, 35%)',
-    fontColorForTextAsPositive: 'hsl(155, 90%, 24%)',
   },
 } as const;
 
@@ -609,89 +495,24 @@ const designTokens = {
   breakPointBiggerdesktop: 'var(--break-point-biggerdesktop, 1280px)',
   breakPointGiantdesktop: 'var(--break-point-giantdesktop, 1680px)',
   breakPointJumbodesktop: 'var(--break-point-jumbodesktop, 1920px)',
-  backgroundColorForButtonWhenActive:
-    'var(--background-color-for-button-when-active, hsl(232, 18%, 95%))',
-  backgroundColorForButtonWhenHovered:
-    'var(--background-color-for-button-when-hovered, hsl(232, 18%, 98%))',
-  backgroundColorForButtonWhenDisabled:
-    'var(--background-color-for-button-when-disabled, hsl(195, 35.2941176471%, 95%))',
-  backgroundColorForIconButtonWhenDisabled:
-    'var(--background-color-for-icon-button-when-disabled, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForInput: 'var(--background-color-for-input, #fff)',
-  backgroundColorForInputWhenSelected:
-    'var(--background-color-for-input-when-selected, hsl(195, 35.2941176471%, 95%))',
   backgroundColorForInputWhenDisabled:
     'var(--background-color-for-input-when-disabled, hsl(232, 18%, 95%))',
-  backgroundColorForInputWhenHovered:
-    'var(--background-color-for-input-when-hovered, hsl(232, 18%, 98%))',
-  backgroundColorForInputWhenFocused:
-    'var(--background-color-for-input-when-focused, #fff)',
   backgroundColorForInputWhenReadonly:
     'var(--background-color-for-input-when-readonly, hsl(232, 18%, 95%))',
-  backgroundColorForInputWhenActive:
-    'var(--background-color-for-input-when-active, hsl(203.05555555555554, 93.9130434783%, 95%))',
-  backgroundColorForInputAsQuiet:
-    'var(--background-color-for-input-as-quiet, transparent)',
-  backgroundColorForInputAsQuietWhenHovered:
-    'var(--background-color-for-input-as-quiet-when-hovered, hsl(0deg 0% 10% / 2%))',
+  backgroundColorForInputWhenHovered:
+    'var(--background-color-for-input-when-hovered, hsl(175, 100%, 99%))',
   backgroundColorForLocalizedInputLabel:
     'var(--background-color-for-localized-input-label, #fff)',
   backgroundColorForLocalizedInputLabelWhenReadonly:
     'var(--background-color-for-localized-input-label-when-readonly, hsl(232, 18%, 95%))',
   backgroundColorForLocalizedInputLabelWhenDisabled:
     'var(--background-color-for-localized-input-label-when-disabled, hsl(232, 18%, 95%))',
-  backgroundColorForButtonAsPrimary:
-    'var(--background-color-for-button-as-primary, #15a390)',
-  backgroundColorForButtonAsPrimaryWhenHovered:
-    'var(--background-color-for-button-as-primary-when-hovered, hsl(175, 55%, 45%))',
-  backgroundColorForButtonAsPrimaryAsDefaultWhenHovered:
-    'var(--background-color-for-button-as-primary-as-default-when-hovered, #17ab97)',
-  backgroundColorForButtonAsPrimaryAsDefaultWhenActive:
-    'var(--background-color-for-button-as-primary-as-default-when-active, #15a390)',
-  backgroundColorForButtonAsPrimaryAsUrgent:
-    'var(--background-color-for-button-as-primary-as-urgent, #f16d0e)',
-  backgroundColorForStampAsPrimary:
-    'var(--background-color-for-stamp-as-primary, hsl(175, 70%, 90%))',
-  backgroundColorForStampAsPositive:
-    'var(--background-color-for-stamp-as-positive, hsl(175, 70%, 90%))',
-  backgroundColorForToggleThumbWhenActive:
-    'var(--background-color-for-toggle-thumb-when-active, hsl(175, 55%, 25%))',
-  backgroundColorForToggleTrackWhenActive:
-    'var(--background-color-for-toggle-track-when-active, hsl(175, 55%, 40%))',
-  backgroundColorForToggleThumbWhenDisabled:
-    'var(--background-color-for-toggle-thumb-when-disabled, hsl(195, 35.2941176471%, 60%))',
-  backgroundColorForToggleTrackWhenDisabled:
-    'var(--background-color-for-toggle-track-when-disabled, hsl(195, 35.2941176471%, 90%))',
-  backgroundColorForToggleThumbWhenActiveWhenDisabled:
-    'var(--background-color-for-toggle-thumb-when-active-when-disabled, hsl(232, 18%, 60%))',
-  backgroundColorForToggleTrackWhenActiveWhenDisabled:
-    'var(--background-color-for-toggle-track-when-active-when-disabled, hsl(232, 18%, 90%))',
-  backgroundColorForToggleThumbWhenHovered:
-    'var(--background-color-for-toggle-thumb-when-hovered, rgba(0, 0, 0, 0.1))',
-  backgroundColorForLoadingSpinnerTrack:
-    'var(--background-color-for-loading-spinner-track, #213c45)',
-  backgroundColorForLoadingSpinnerDot:
-    'var(--background-color-for-loading-spinner-dot, #213c45)',
-  backgroundColorForContentNotificationWhenSuccess:
-    'var(--background-color-for-content-notification-when-success, hsl(175, 90%, 95%))',
-  backgroundColorForViewSwitcherButtonWhenActive:
-    'var(--background-color-for-view-switcher-button-when-active, hsl(232, 18%, 95%))',
-  backgroundColorForCheckboxInputWhenHovered:
-    'var(--background-color-for-checkbox-input-when-hovered, hsl(232, 18%, 90%))',
-  backgroundColorForRadioOptionWhenHovered:
-    'var(--background-color-for-radio-option-when-hovered, hsl(232, 18%, 90%))',
-  backgroundColorForTag: 'var(--background-color-for-tag, hsl(232, 18%, 95%))',
-  backgroundColorForTagWhenHovered:
-    'var(--background-color-for-tag-when-hovered, hsl(232, 18%, 90%))',
-  backgroundColorForDropdownWhenHovered:
-    'var(--background-color-for-dropdown-when-hovered, hsl(232, 18%, 95%))',
-  backgroundColorForDropdownWhenActive:
-    'var(--background-color-for-dropdown-when-active, hsl(232, 18%, 90%))',
-  backgroundColorForDropdownOptionWhenActive:
-    'var(--background-color-for-dropdown-option-when-active, hsl(203.05555555555554, 93.9130434783%, 95%))',
+  backgroundColorForButtonWhenActive:
+    'var(--background-color-for-button-when-active, hsl(175, 70%, 90%))',
+  backgroundColorForButtonWhenHovered:
+    'var(--background-color-for-button-when-hovered, hsl(175, 90%, 95%))',
   borderColorForInput: 'var(--border-color-for-input, hsl(232, 18%, 80%))',
-  borderColorForInputWhenFocused:
-    'var(--border-color-for-input-when-focused, hsl(175, 55%, 45%))',
   borderColorForInputWhenDisabled:
     'var(--border-color-for-input-when-disabled, hsl(232, 18%, 80%))',
   borderColorForInputWhenReadonly:
@@ -702,70 +523,26 @@ const designTokens = {
     'var(--border-color-for-input-when-warning, #f16d0e)',
   borderColorForInputWhenHovered:
     'var(--border-color-for-input-when-hovered, hsl(232, 18%, 80%))',
-  borderColorForInputAsQuiet:
-    'var(--border-color-for-input-as-quiet, transparent)',
+  borderColorForInputWhenFocused:
+    'var(--border-color-for-input-when-focused, hsl(175, 55%, 40%))',
   borderColorForButtonAsSecondary:
-    'var(--border-color-for-button-as-secondary, hsl(232, 18%, 80%))',
-  borderColorForDropdown:
-    'var(--border-color-for-dropdown, hsl(232, 18%, 80%))',
-  borderColorForContentNotificationWhenSuccess:
-    'var(--border-color-for-content-notification-when-success, hsl(175, 70%, 85%))',
-  borderColorForCheckboxInput:
-    'var(--border-color-for-checkbox-input, hsl(175, 55%, 45%))',
-  borderColorForCheckboxInputWhenActive:
-    'var(--border-color-for-checkbox-input-when-active, hsl(175, 55%, 45%))',
-  borderColorForTag: 'var(--border-color-for-tag, hsl(232, 18%, 85%))',
-  borderRadiusForButtonAsBig: 'var(--border-radius-for-button-as-big, 4px)',
-  borderRadiusForButtonAsMedium:
-    'var(--border-radius-for-button-as-medium, 4px)',
+    'var(--border-color-for-button-as-secondary, hsl(175, 70%, 85%))',
   borderRadiusForInput: 'var(--border-radius-for-input, 4px)',
-  borderWidthForInput: 'var(--border-width-for-input, 1px)',
-  borderWidthForInputWhenWarning:
-    'var(--border-width-for-input-when-warning, 1px)',
-  borderWidthForInputWhenError: 'var(--border-width-for-input-when-error, 1px)',
-  borderWidthForInputWhenFocused:
-    'var(--border-width-for-input-when-focused, 1px)',
   fontColorForInput: 'var(--font-color-for-input, #1a1a1a)',
   fontColorForInputWhenDisabled:
     'var(--font-color-for-input-when-disabled, hsl(232, 18%, 60%))',
-  fontColorForInputWhenError: 'var(--font-color-for-input-when-error, #e60050)',
+  fontColorForInputWhenError:
+    'var(--font-color-for-input-when-error, hsl(339.1304347826087, 100%, 40%))',
   fontColorForInputWhenReadonly:
     'var(--font-color-for-input-when-readonly, hsl(232, 18%, 40%))',
   fontColorForInputWhenWarning:
     'var(--font-color-for-input-when-warning, #f16d0e)',
   fontColorForButtonAsSecondary:
-    'var(--font-color-for-button-as-secondary, #1a1a1a)',
-  fontColorForButtonAsFlatWhenHovered:
-    'var(--font-color-for-button-as-flat-when-hovered, hsl(175, 55%, 45%))',
-  fontColorForButtonAsFlatAsCritical:
-    'var(--font-color-for-button-as-flat-as-critical, #e60050)',
-  fontColorForButtonAsFlatAsCriticalWhenHovered:
-    'var(--font-color-for-button-as-flat-as-critical-when-hovered, hsl(339.1304347826087, 100%, 25%))',
-  fontColorForViewSwitcherButton:
-    'var(--font-color-for-view-switcher-button, hsl(232, 18%, 40%))',
-  fontColorForStampAsPositive:
-    'var(--font-color-for-stamp-as-positive, hsl(175, 55%, 25%))',
-  fontColorForContentNotificationWhenSuccess:
-    'var(--font-color-for-content-notification-when-success, hsl(175, 55%, 45%))',
-  fontColorForAvatarAsTurquoise:
-    'var(--font-color-for-avatar-as-turquoise, hsl(180, 30%, 45%))',
-  fontColorForLeadingIconAsTurquoise:
-    'var(--font-color-for-leading-icon-as-turquoise, hsl(180, 30%, 45%))',
-  fontColorForTextAsPositive:
-    'var(--font-color-for-text-as-positive, hsl(175, 55%, 25%))',
+    'var(--font-color-for-button-as-secondary, hsl(175, 55%, 45%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
-  heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',
   heightForInput: 'var(--height-for-input, 40px)',
   heightForInputAsSmall: 'var(--height-for-input-as-small, 32px)',
-  placeholderFontColorForInput:
-    'var(--placeholder-font-color-for-input, hsl(232, 18%, 60%))',
-  fontSizeForButton: 'var(--font-size-for-button, 0.875rem)',
-  fontSizeForInput: 'var(--font-size-for-input, 1rem)',
-  paddingForInput: 'var(--padding-for-input, 0 var(--spacing-30))',
-  paddingForInputAsQuiet:
-    'var(--padding-for-input-as-quiet, 0 var(--spacing-20))',
-  paddingForButton: 'var(--padding-for-button, 0 var(--spacing-30))',
   shadowForInput: 'var(--shadow-for-input, none)',
   shadowForInputWhenFocused:
     'var(--shadow-for-input-when-focused, inset 0 0 0 1px var(--color-primary))',

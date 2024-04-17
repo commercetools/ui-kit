@@ -41,14 +41,14 @@ const getButtonStyles = (isDisabled: boolean) => {
     css`
       background-color: ${designTokens.colorSurface};
       box-shadow: ${designTokens.shadow0};
-      border: 1px solid ${designTokens.borderColorForDropdown};
+      border: 1px solid ${designTokens.colorPrimary85};
       &:hover {
         box-shadow: ${designTokens.shadow0};
-        background-color: ${designTokens.backgroundColorForDropdownWhenHovered};
+        background-color: ${designTokens.colorPrimary95};
       }
       &:active {
         box-shadow: ${designTokens.shadow0};
-        background-color: ${designTokens.backgroundColorForDropdownWhenActive};
+        background-color: ${designTokens.colorPrimary90};
       }
     `,
   ];
@@ -149,7 +149,7 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
             ${designTokens.borderRadius4} 0;
           border-color: ${props.isDisabled
             ? designTokens.colorNeutral
-            : designTokens.borderColorForDropdown};
+            : designTokens.colorPrimary85};
           border-width: 1px 1px 1px 0px;
           border-style: solid;
         `,
@@ -203,7 +203,7 @@ const Options = styled.div<{ isRecolouringTheme: boolean }>`
     padding-left: ${designTokens.spacing30};
     white-space: normal;
     &:active {
-      background-color: ${designTokens.backgroundColorForDropdownOptionWhenActive};
+      background-color: ${designTokens.colorPrimary95};
     }
     ${(props) =>
       props.isRecolouringTheme &&

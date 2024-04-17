@@ -21,7 +21,7 @@ const getSizeStyles = (
 const getFontColor = (isDisabled?: boolean, isActive?: boolean) => {
   if (isDisabled) return designTokens.colorNeutral60;
   if (isActive) return designTokens.fontColorForButtonAsSecondary;
-  return designTokens.fontColorForViewSwitcherButton;
+  return designTokens.colorPrimary;
 };
 
 export const getButtonStyles = (
@@ -71,7 +71,7 @@ export const getButtonStyles = (
       `,
     isActive &&
       css`
-        background-color: ${designTokens.backgroundColorForViewSwitcherButtonWhenActive};
+        background-color: ${designTokens.colorAccent95};
         box-shadow: ${designTokens.shadow0};
       `,
   ];

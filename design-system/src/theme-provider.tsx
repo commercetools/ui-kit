@@ -130,9 +130,11 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
     attributeFilter: ['data-theme'],
   });
 
+  // TODO - make sure old and new theme return same value as new defaultThemeValue
+  // At least for the remaining places that we still use this function
   const themedValue: TUseThemeResult['themedValue'] = useCallback(
-    (defaultThemeValue, newThemeValue) =>
-      theme === 'default' ? defaultThemeValue : newThemeValue,
+    (defaultThemeValue, _newThemeValue) =>
+      theme === 'default' ? defaultThemeValue : defaultThemeValue,
     [theme]
   );
 
@@ -152,7 +154,7 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
     theme: 'default',
     themedValue,
     isNewTheme: false,
-    isRecolouringTheme: theme === 'recolouring',
+    isRecolouringTheme: true,
   };
 };
 

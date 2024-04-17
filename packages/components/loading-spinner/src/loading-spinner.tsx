@@ -78,7 +78,7 @@ const LoadingSpinner = (props: TLoadingSpinnerProps) => {
         >
           <path
             css={css`
-              fill: ${designTokens.backgroundColorForLoadingSpinnerTrack};
+              fill: ${designTokens.colorPrimary90};
               opacity: 0.2;
             `}
             d={circlePath}
@@ -86,7 +86,7 @@ const LoadingSpinner = (props: TLoadingSpinnerProps) => {
           <path
             css={css`
               animation: ${spin} 0.5s infinite linear;
-              fill: ${designTokens.backgroundColorForLoadingSpinnerDot};
+              fill: ${designTokens.colorPrimary};
               transform-origin: ${positionOrigin} ${positionOrigin} 0;
             `}
             d={pointerPath}

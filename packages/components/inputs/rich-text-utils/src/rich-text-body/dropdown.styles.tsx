@@ -20,9 +20,7 @@ const DropdownItem = styled.button<TDropdownStylesProps>`
   font-family: ${designTokens.fontFamily};
   display: block;
   background-color: ${(props) =>
-    props.isSelected
-      ? designTokens.backgroundColorForInputWhenActive
-      : designTokens.colorSurface};
+    props.isSelected ? designTokens.colorPrimary95 : designTokens.colorSurface};
 
   &:focus,
   &:hover {
