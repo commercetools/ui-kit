@@ -71,7 +71,7 @@ export const getButtonStyles = (
       `,
     isActive &&
       css`
-        background-color: ${designTokens.colorAccent95};
+        background-color: ${designTokens.colorPrimary95};
         box-shadow: ${designTokens.shadow0};
       `,
   ];

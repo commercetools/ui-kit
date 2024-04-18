@@ -34,7 +34,7 @@ const getButtonStyles = (
     align-items: center;
     color: ${designTokens.colorSurface};
     transition: background-color ${designTokens.transitionLinear80Ms};
-    padding: 0 var(--spacing-30);
+    padding: 0 ${designTokens.spacing30};
     ${getSizeStyles(size)}
   `;
   // "disabled" takes precendece over "active"

@@ -130,7 +130,7 @@ export const SecondaryButton = <
     css`
       display: flex;
       align-items: center;
-      padding: 0 var(--spacing-30);
+      padding: 0 ${designTokens.spacing30};
       height: ${designTokens.heightForButtonAsBig};
     `,
     css`
