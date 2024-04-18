@@ -65,7 +65,6 @@ type TDropdownHead = {
 };
 
 const DropdownHead = (props: TDropdownHead) => {
-  const { themedValue } = useTheme();
   return (
     <div
       css={css`
@@ -96,9 +95,7 @@ const DropdownHead = (props: TDropdownHead) => {
         >
           {cloneElement(props.iconLeft, {
             size: 'big',
-            color: props.isDisabled
-              ? 'neutral60'
-              : themedValue('solid', 'primary'),
+            color: props.isDisabled ? 'neutral60' : 'primary',
           })}
         </span>
         <span
