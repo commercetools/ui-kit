@@ -1,5 +1,13 @@
 # @commercetools-local/generator-readme
 
+## 3.2.1
+
+### Patch Changes
+
+- [#2765](https://github.com/commercetools/ui-kit/pull/2765) [`e713af5`](https://github.com/commercetools/ui-kit/commit/e713af5089a82aa0ce8299828457afd322a4f1db) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Update `trim` dependency
+
+- [#2761](https://github.com/commercetools/ui-kit/pull/2761) [`bfb7b52`](https://github.com/commercetools/ui-kit/commit/bfb7b52847cb01389d9c204407b4ed2279632624) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix security issue (https://github.com/commercetools/ui-kit/security/dependabot/106)
+
 ## 3.2.0
 
 ### Minor Changes

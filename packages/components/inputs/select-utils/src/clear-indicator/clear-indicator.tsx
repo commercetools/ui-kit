@@ -5,6 +5,7 @@ import { useIntl } from 'react-intl';
 import { designTokens } from '@commercetools-uikit/design-system';
 import { CloseIcon } from '@commercetools-uikit/icons';
 import messages from './messages';
+import { TSelectInputCustomComponentProps } from '../types';
 
 type TInnerProps = {
   ref: LegacyRef<HTMLButtonElement>;
@@ -12,13 +13,14 @@ type TInnerProps = {
 
 export type TClearIndicatorProps = {
   innerProps: TInnerProps;
-} & ClearIndicatorProps;
+} & TSelectInputCustomComponentProps<ClearIndicatorProps>;
 
 const ClearIndicator = (props: TClearIndicatorProps) => {
   const intl = useIntl();
   const {
     getStyles,
     innerProps: { ref, onMouseDown, ...restInnerProps },
+    selectProps,
   } = props;
   return (
     <button
@@ -43,7 +45,7 @@ const ClearIndicator = (props: TClearIndicatorProps) => {
       // only onMouseDown and onTouchEnd event handlers are passed by `react-select` to the component by default, which makes it not accessible by keyboard
       onClick={onMouseDown}
     >
-      <CloseIcon size="medium" />
+      <CloseIcon size={selectProps.isCondensed ? 'small' : 'medium'} />
     </button>
   );
 };

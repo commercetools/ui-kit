@@ -2,17 +2,13 @@ import omit from 'lodash/omit';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import { CloseBoldIcon } from '@commercetools-uikit/icons';
 import type { MultiValueGenericProps } from 'react-select';
+import { TSelectInputCustomComponentProps } from '../types';
 
 // see https://github.com/JedWatson/react-select/blob/44e9fb29b230e49a754a2f0d6f30c2250aa45009/src/components/MultiValue.js
 const removeProps = ['onClick', 'onTouchEnd', 'onMouseDown'];
 
-export type TTagRemoveSelectProps = {
-  isReadOnly: boolean;
-} & MultiValueGenericProps['selectProps'];
-
-export type TTagRemoveProps = {
-  selectProps: TTagRemoveSelectProps;
-} & MultiValueGenericProps;
+export type TTagRemoveProps =
+  TSelectInputCustomComponentProps<MultiValueGenericProps>;
 
 const TagRemove = (props: TTagRemoveProps) => {
   const isDisabled = Boolean(
@@ -26,7 +22,10 @@ const TagRemove = (props: TTagRemoveProps) => {
 
   return (
     <AccessibleButton label="Remove" {...innerProps}>
-      <CloseBoldIcon color={isDisabled ? 'neutral60' : 'solid'} size="medium" />
+      <CloseBoldIcon
+        color={isDisabled ? 'neutral60' : 'solid'}
+        size={props.selectProps.isCondensed ? 'small' : 'medium'}
+      />
     </AccessibleButton>
   );
 };

@@ -1,4 +1,4 @@
-import { cloneElement, type ReactElement } from 'react';
+import { cloneElement } from 'react';
 import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import {
@@ -6,18 +6,14 @@ import {
   type SingleValueProps,
   type PlaceholderProps,
 } from 'react-select';
+import { TSelectInputCustomComponentProps } from '../types';
 
-export type TWrapperWithIconSelectProps = {
-  iconLeft?: ReactElement;
-};
 export type TSingleValueWrapperWithIconProps = {
   type: 'singleValue';
-  selectProps?: TWrapperWithIconSelectProps;
-} & SingleValueProps;
+} & TSelectInputCustomComponentProps<SingleValueProps>;
 export type TPlaceholderWrapperWithIconProps = {
   type: 'placeholder';
-  selectProps?: TWrapperWithIconSelectProps;
-} & PlaceholderProps;
+} & TSelectInputCustomComponentProps<PlaceholderProps>;
 export type TWrapperWithIconProps<Type extends 'singleValue' | 'placeholder'> =
   Type extends 'singleValue'
     ? TSingleValueWrapperWithIconProps
@@ -55,7 +51,7 @@ const WrapperWithIcon = <Type extends 'singleValue' | 'placeholder'>(
     <>
       {props.selectProps.iconLeft &&
         cloneElement(props.selectProps.iconLeft, {
-          size: 'big',
+          size: props.selectProps.isCondensed ? 'medium' : 'big',
         })}
       <span
         // react-select uses absolute positioning for the SingleValue/Placeholder

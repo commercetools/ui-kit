@@ -75,6 +75,17 @@ export const component = () => (
         isReadOnly={true}
       />
     </Spec>
+    <Spec label="when is condensed">
+      <SelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+        isCondensed={true}
+      />
+    </Spec>
     <Spec label="when has warning">
       <SelectField
         title="State"

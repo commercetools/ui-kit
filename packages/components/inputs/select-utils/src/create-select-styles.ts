@@ -20,6 +20,7 @@ type TProps = {
   iconLeft?: ReactNode;
   isMulti?: boolean;
   hasValue?: boolean;
+  isCondensed?: boolean;
   controlShouldRenderValue?: boolean;
   appearance?: 'default' | 'quiet';
   minMenuWidth?:
@@ -182,7 +183,9 @@ const getHoverInputBackgroundColor = (props: TProps) => {
 const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
-    fontSize: designTokens.fontSize30,
+    fontSize: props.isCondensed
+      ? designTokens.fontSize20
+      : designTokens.fontSize30,
     backgroundColor: getInputBackgroundColor(props),
     borderColor: getInputBorderColor(props, state),
     borderWidth: (() => {
@@ -197,7 +200,9 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       return designTokens.borderWidth1;
     })(),
     borderRadius: designTokens.borderRadiusForInput,
-    minHeight: designTokens.heightForInput,
+    minHeight: props.isCondensed
+      ? designTokens.heightForInputAsSmall
+      : designTokens.heightForInput,
     cursor: (() => {
       if (props.isDisabled) return 'not-allowed';
       if (props.isReadOnly) return 'default';
@@ -304,7 +309,7 @@ const menuListStyles = () => (base: TBase) => {
   };
 };
 
-const optionStyles = () => (base: TBase, state: TState) => {
+const optionStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
     transition: `border-color ${designTokens.transitionStandard},
@@ -312,6 +317,9 @@ const optionStyles = () => (base: TBase, state: TState) => {
       color ${designTokens.transitionStandard}`,
     padding: `${designTokens.spacing20} ${designTokens.spacing30}`,
     lineHeight: designTokens.lineHeight40,
+    fontSize: props.isCondensed
+      ? designTokens.fontSize20
+      : designTokens.fontSize30,
     cursor: state.isDisabled ? 'not-allowed' : 'pointer',
     color: (() => {
       if (!state.isDisabled) return designTokens.fontColorForInput;
@@ -462,9 +470,11 @@ const multiValueStyles = (props: TProps) => (base: TBase) => {
     ...base,
     display: 'flex',
     alignItems: 'center',
-    height: '32px',
+    height: props.isCondensed ? 'inherit' : '32px',
     backgroundColor: getMultiValueBackgroundColor(props),
-    padding: designTokens.spacing20,
+    padding: props.isCondensed
+      ? `0 ${designTokens.spacing20} 0 calc(${designTokens.spacing05} + ${designTokens.spacing10})`
+      : designTokens.spacing20,
     border: `1px solid ${designTokens.colorNeutral85}`,
     borderRadius: designTokens.borderRadius20,
   };
@@ -473,13 +483,20 @@ const multiValueStyles = (props: TProps) => (base: TBase) => {
 const multiValueLabelStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    fontSize: designTokens.fontSize30,
+    fontSize: props.isCondensed
+      ? designTokens.fontSize20
+      : designTokens.fontSize30,
+    lineHeight: props.isCondensed
+      ? designTokens.lineHeight20
+      : designTokens.lineHeight40,
     color: (() => {
       if (props.isDisabled) return designTokens.fontColorForInputWhenDisabled;
       if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
       return base.color;
     })(),
-    padding: `${designTokens.spacing10} ${designTokens.spacing20}`,
+    padding: `${props.isCondensed ? '1px' : designTokens.spacing10} ${
+      designTokens.spacing20
+    }`,
     borderRadius: `${designTokens.borderRadius2} 0 0 ${designTokens.borderRadius2}`,
     border: 'none',
     borderWidth: '1px 0 1px 1px',
@@ -534,7 +551,7 @@ export default function createSelectStyles(props: TProps) {
     multiValueLabel: multiValueLabelStyles(props),
     multiValueRemove: multiValueRemoveStyles(props),
     indicatorsContainer: indicatorsContainerStyles(),
-    option: optionStyles(),
+    option: optionStyles(props),
     placeholder: placeholderStyles(props),
     valueContainer: valueContainerStyles(props),
     singleValue: singleValueStyles(props),

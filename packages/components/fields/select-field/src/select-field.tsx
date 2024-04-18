@@ -161,6 +161,10 @@ export type TSelectFieldProps = {
    */
   isReadOnly?: boolean;
   /**
+   * Whether the input and its options are rendered with condensed paddings
+   */
+  isCondensed?: boolean;
+  /**
    * Override the built-in logic to detect whether an option is disabled
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
@@ -405,6 +409,7 @@ export default class SelectField extends Component<TSelectFieldProps> {
             isClearable={this.props.isClearable}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
+            isCondensed={this.props.isCondensed}
             isOptionDisabled={this.props.isOptionDisabled}
             isMulti={this.props.isMulti}
             isSearchable={this.props.isSearchable}
