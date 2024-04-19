@@ -13,7 +13,7 @@ const getStateStyles = (
   if (isDisabled) {
     return css`
       box-shadow: ${designTokens.shadow0};
-      background-color: ${designTokens.colorAccent95};
+      background-color: ${designTokens.colorNeutral95};
       border: none;
       color: ${designTokens.colorNeutral60};
       &:focus,

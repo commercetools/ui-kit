@@ -45,7 +45,7 @@ const getButtonStyles = (
         &,
         &:active,
         &:hover {
-          background-color: ${designTokens.colorAccent95};
+          background-color: ${designTokens.colorNeutral95};
           color: ${designTokens.colorNeutral60};
           box-shadow: ${designTokens.shadow0};
         }
