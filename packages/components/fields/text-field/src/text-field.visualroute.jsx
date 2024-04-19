@@ -92,5 +92,14 @@ export const component = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
+    <Spec label="with isCondensed">
+      <TextField
+        title="Welcome Text"
+        value={value}
+        isCondensed={true}
+        onChange={() => {}}
+        horizontalConstraint={7}
+      />
+    </Spec>
   </Suite>
 );

@@ -74,6 +74,7 @@ storiesOf('Components|Fields', module)
               onBlur={action('onBlur')}
               onFocus={action('onFocus')}
               isAutofocussed={boolean('isAutofocussed', false)}
+              isCondensed={boolean('isCondensed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               placeholder={text('placeholder', 'Placeholder')}
