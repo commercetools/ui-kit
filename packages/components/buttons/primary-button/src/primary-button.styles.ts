@@ -10,13 +10,11 @@ const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
     case 'medium':
       return css`
         height: ${designTokens.heightForButtonAsMedium};
-        border-radius: ${designTokens.borderRadius4};
       `;
 
     case 'big':
       return css`
         height: ${designTokens.heightForButtonAsBig};
-        border-radius: ${designTokens.borderRadius4};
       `;
 
     default:
@@ -35,6 +33,7 @@ const getButtonStyles = (
     color: ${designTokens.colorSurface};
     transition: background-color ${designTokens.transitionLinear80Ms};
     padding: 0 ${designTokens.spacing30};
+    border-radius: ${designTokens.borderRadius4};
     ${getSizeStyles(size)}
   `;
   // "disabled" takes precendece over "active"
@@ -45,7 +44,7 @@ const getButtonStyles = (
         &,
         &:active,
         &:hover {
-          background-color: ${designTokens.colorNeutral95};
+          background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
           color: ${designTokens.colorNeutral60};
           box-shadow: ${designTokens.shadow0};
         }

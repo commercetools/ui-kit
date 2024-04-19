@@ -172,7 +172,7 @@ const getHoverInputBorderColor = (props: TProps) => {
 const getHoverInputBackgroundColor = (props: TProps) => {
   if (!props.isDisabled && !props.isReadOnly) {
     if (props.appearance === 'quiet') {
-      return 'hsla(240, 64%, 58%, 4%)';
+      return 'hsla(240, 64%, 58%, 4%)'; //this is mainly a combination of our primary color hsl(240, 64%, 58%) and an alpha channel of 4%.
     } else {
       return designTokens.backgroundColorForInputWhenHovered;
     }
@@ -210,8 +210,8 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     })(),
     padding:
       props.appearance === 'quiet'
-        ? '0 var(--spacing-20)'
-        : '0 var(--spacing-30)',
+        ? designTokens.spacing30
+        : designTokens.spacing30,
     transition: `border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard}`,
     outline: 0,

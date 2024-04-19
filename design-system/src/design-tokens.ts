@@ -84,7 +84,7 @@ export const themes = {
     colorWarning60: 'hsl(35, 90%, 55%)',
     colorWarning85: 'hsl(33, 90%, 80%)',
     colorWarning95: 'hsl(45, 100%, 92%)',
-    colorError: '#e60050',
+    colorError: 'hsl(3, 65%, 58%)',
     colorError25: 'hsl(4, 69%, 37%)',
     colorError40: 'hsl(3, 60%, 46%)',
     colorError85: 'hsl(1, 55%, 74%)',
@@ -200,10 +200,11 @@ export const themes = {
     backgroundColorForLocalizedInputLabelWhenDisabled: 'hsl(232, 18%, 95%)',
     backgroundColorForButtonWhenActive: 'hsl(243, 100%, 93%)',
     backgroundColorForButtonWhenHovered: 'hsl(244, 100%, 97%)',
+    backgroundColorForButtonWhenDisabled: 'hsl(232, 18%, 95%)',
     borderColorForInput: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenReadonly: '#fff',
-    borderColorForInputWhenError: '#e60050',
+    borderColorForInputWhenError: 'hsl(3, 65%, 58%)',
     borderColorForInputWhenWarning: 'hsl(35, 90%, 45%)',
     borderColorForInputWhenHovered: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenFocused: 'hsl(240, 100%, 67%)',
@@ -216,6 +217,7 @@ export const themes = {
     fontColorForInputWhenWarning: 'hsl(35, 90%, 45%)',
     fontColorForButtonAsSecondary: 'hsl(240, 64%, 58%)',
     heightForButtonAsBig: '40px',
+    heightForButtonAsSmall: '16px',
     heightForButtonAsMedium: '32px',
     heightForInput: '40px',
     heightForInputAsSmall: '32px',
@@ -310,7 +312,7 @@ const designTokens = {
   colorWarning60: 'var(--color-warning-60, hsl(35, 90%, 55%))',
   colorWarning85: 'var(--color-warning-85, hsl(33, 90%, 80%))',
   colorWarning95: 'var(--color-warning-95, hsl(45, 100%, 92%))',
-  colorError: 'var(--color-error, #e60050)',
+  colorError: 'var(--color-error, hsl(3, 65%, 58%))',
   colorError25: 'var(--color-error-25, hsl(4, 69%, 37%))',
   colorError40: 'var(--color-error-40, hsl(3, 60%, 46%))',
   colorError85: 'var(--color-error-85, hsl(1, 55%, 74%))',
@@ -441,13 +443,15 @@ const designTokens = {
     'var(--background-color-for-button-when-active, hsl(243, 100%, 93%))',
   backgroundColorForButtonWhenHovered:
     'var(--background-color-for-button-when-hovered, hsl(244, 100%, 97%))',
+  backgroundColorForButtonWhenDisabled:
+    'var(--background-color-for-button-when-disabled, hsl(232, 18%, 95%))',
   borderColorForInput: 'var(--border-color-for-input, hsl(232, 18%, 80%))',
   borderColorForInputWhenDisabled:
     'var(--border-color-for-input-when-disabled, hsl(232, 18%, 80%))',
   borderColorForInputWhenReadonly:
     'var(--border-color-for-input-when-readonly, #fff)',
   borderColorForInputWhenError:
-    'var(--border-color-for-input-when-error, #e60050)',
+    'var(--border-color-for-input-when-error, hsl(3, 65%, 58%))',
   borderColorForInputWhenWarning:
     'var(--border-color-for-input-when-warning, hsl(35, 90%, 45%))',
   borderColorForInputWhenHovered:
@@ -469,6 +473,7 @@ const designTokens = {
   fontColorForButtonAsSecondary:
     'var(--font-color-for-button-as-secondary, hsl(240, 64%, 58%))',
   heightForButtonAsBig: 'var(--height-for-button-as-big, 40px)',
+  heightForButtonAsSmall: 'var(--height-for-button-as-small, 16px)',
   heightForButtonAsMedium: 'var(--height-for-button-as-medium, 32px)',
   heightForInput: 'var(--height-for-input, 40px)',
   heightForInputAsSmall: 'var(--height-for-input-as-small, 32px)',

@@ -174,6 +174,7 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
   :not(:disabled)&:focus + span::after {
     box-shadow: none;
     outline: ${props.thumbSizes[props.size].hoverAreaWidth} solid
+      /* this is mainly a combination of our primary color hsl(240, 64%, 58%) and an alpha channel of 4%. */
       hsla(240, 64%, 58%, 4%);
   }
 `;

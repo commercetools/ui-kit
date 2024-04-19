@@ -13,7 +13,7 @@ const getStateStyles = (
   if (isDisabled) {
     return css`
       box-shadow: ${designTokens.shadow0};
-      background-color: ${designTokens.colorNeutral95};
+      background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
       border: none;
       color: ${designTokens.colorNeutral60};
       &:focus,
@@ -124,13 +124,11 @@ const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
     case 'medium':
       return css`
         height: ${designTokens.heightForButtonAsMedium};
-        border-radius: ${designTokens.borderRadius4};
       `;
 
     case 'big':
       return css`
         height: ${designTokens.heightForButtonAsBig};
-        border-radius: ${designTokens.borderRadius4};
       `;
 
     default:
