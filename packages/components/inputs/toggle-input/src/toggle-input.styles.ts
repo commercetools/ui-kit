@@ -151,11 +151,11 @@ const getInputStyles = (props: TToggleInputProps & SizesProps) => css`
   /* when disabled */
   &:disabled {
     & + span::before {
-      background: ${designTokens.colorNeutral60};
+      background: ${designTokens.colorNeutral90};
       box-shadow: none;
     }
     & + span::after {
-      background: ${designTokens.colorAccent60};
+      background: ${designTokens.colorNeutral60};
       box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
     }
   }

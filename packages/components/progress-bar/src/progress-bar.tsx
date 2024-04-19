@@ -1,5 +1,4 @@
 import type { ReactElement, ReactNode } from 'react';
-import { useTheme } from '@commercetools-uikit/design-system';
 import { FormattedMessage, type MessageDescriptor } from 'react-intl';
 import { filterAriaAttributes } from '@commercetools-uikit/utils';
 import Constraints from '@commercetools-uikit/constraints';
@@ -99,7 +98,6 @@ const Bar = (
     'progress' | 'height' | 'barWidth' | 'isInverted' | 'isAnimated'
   >
 ) => {
-  const { themedValue } = useTheme();
   return (
     <Constraints.Horizontal max={props.barWidth}>
       <div
@@ -109,7 +107,7 @@ const Bar = (
         aria-label="Progress bar"
         {...filterAriaAttributes(props)}
       >
-        <div css={getForegroundBarStyles(props, themedValue)} />
+        <div css={getForegroundBarStyles(props)} />
       </div>
     </Constraints.Horizontal>
   );

@@ -84,7 +84,7 @@ export const themes = {
     colorWarning60: 'hsl(35, 90%, 55%)',
     colorWarning85: 'hsl(33, 90%, 80%)',
     colorWarning95: 'hsl(45, 100%, 92%)',
-    colorError: 'hsl(3, 65%, 58%)',
+    colorError: '#e60050',
     colorError25: 'hsl(4, 69%, 37%)',
     colorError40: 'hsl(3, 60%, 46%)',
     colorError85: 'hsl(1, 55%, 74%)',
@@ -203,7 +203,7 @@ export const themes = {
     borderColorForInput: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenDisabled: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenReadonly: '#fff',
-    borderColorForInputWhenError: 'hsl(3, 65%, 58%)',
+    borderColorForInputWhenError: '#e60050',
     borderColorForInputWhenWarning: 'hsl(35, 90%, 45%)',
     borderColorForInputWhenHovered: 'hsl(232, 18%, 80%)',
     borderColorForInputWhenFocused: 'hsl(240, 100%, 67%)',
@@ -310,7 +310,7 @@ const designTokens = {
   colorWarning60: 'var(--color-warning-60, hsl(35, 90%, 55%))',
   colorWarning85: 'var(--color-warning-85, hsl(33, 90%, 80%))',
   colorWarning95: 'var(--color-warning-95, hsl(45, 100%, 92%))',
-  colorError: 'var(--color-error, hsl(3, 65%, 58%))',
+  colorError: 'var(--color-error, #e60050)',
   colorError25: 'var(--color-error-25, hsl(4, 69%, 37%))',
   colorError40: 'var(--color-error-40, hsl(3, 60%, 46%))',
   colorError85: 'var(--color-error-85, hsl(1, 55%, 74%))',
@@ -447,7 +447,7 @@ const designTokens = {
   borderColorForInputWhenReadonly:
     'var(--border-color-for-input-when-readonly, #fff)',
   borderColorForInputWhenError:
-    'var(--border-color-for-input-when-error, hsl(3, 65%, 58%))',
+    'var(--border-color-for-input-when-error, #e60050)',
   borderColorForInputWhenWarning:
     'var(--border-color-for-input-when-warning, hsl(35, 90%, 45%))',
   borderColorForInputWhenHovered:

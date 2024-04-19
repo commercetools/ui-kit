@@ -85,7 +85,7 @@
   --color-warning-60: hsl(35, 90%, 55%);
   --color-warning-85: hsl(33, 90%, 80%);
   --color-warning-95: hsl(45, 100%, 92%);
-  --color-error: hsl(3, 65%, 58%);
+  --color-error: #e60050;
   --color-error-25: hsl(4, 69%, 37%);
   --color-error-40: hsl(3, 60%, 46%);
   --color-error-85: hsl(1, 55%, 74%);
@@ -212,7 +212,7 @@
   --border-color-for-input: hsl(232, 18%, 80%);
   --border-color-for-input-when-disabled: hsl(232, 18%, 80%);
   --border-color-for-input-when-readonly: #fff;
-  --border-color-for-input-when-error: hsl(3, 65%, 58%);
+  --border-color-for-input-when-error: #e60050;
   --border-color-for-input-when-warning: hsl(35, 90%, 45%);
   --border-color-for-input-when-hovered: hsl(232, 18%, 80%);
   --border-color-for-input-when-focused: hsl(240, 100%, 67%);
