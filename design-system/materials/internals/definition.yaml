@@ -280,22 +280,16 @@ states:
     description: 'When the mouse is over the element'
   disabled:
     description: 'When the element can not be interacted with'
-  active-disabled:
-    description: 'When the element is active but can not be interacted with'
   focused:
     description: 'When the element is currently selected to receive input'
   readonly:
     description: 'When the element can not be modified'
-  info:
-    description: 'When the element has an info state'
   warning:
     description: 'When the element shows a warning state'
   success:
     description: 'When the element has a successful state'
   error:
     description: 'When the element has invalid input'
-  selected:
-    description: 'When the element is selected'
 
 variants:
   small:
@@ -304,66 +298,16 @@ variants:
     description: 'To differentiate component medium size'
   big:
     description: 'To differentiate component big size'
-  quiet:
-    description: 'When the element is quiet style'
-  # recolouring rollout
   secondary:
     description: 'To differentiate component secondary type'
-  primary:
-    description: 'To differentiate component primary type'
-  flat:
-    description: 'To differentiate component flat type'
-  default:
-    description: 'To differentiate component default type'
-  critical:
-    description: 'To differentiate component critical type'
-  urgent:
-    description: 'To differentiate component urgent type'
-  positive:
-    description: 'To differentiate component positive type'
-  turquoise:
-    description: 'To differentiate component turquoise type'
 
 componentGroups:
   button:
     description: 'Button elements'
-  icon-button:
-    description: 'Icon button elements'
   input:
     description: 'Input elements'
   localized-input-label:
     description: 'Localized multiline text input label elements'
-  # recolouring rollout
-  view-switcher-button:
-    description: 'Viewswitcher Button elements'
-  stamp:
-    description: 'Stamp elements'
-  toggle-track:
-    description: 'Toggle track elements'
-  toggle-thumb:
-    description: 'Toggle thumb elements'
-  loading-spinner-track:
-    description: 'Loading spinner track elements'
-  loading-spinner-dot:
-    description: 'Loading spinner dot elements'
-  content-notification:
-    description: 'Content notification elements'
-  avatar:
-    description: 'Avatar elements'
-  leading-icon:
-    description: 'Leading icon elements'
-  checkbox-input:
-    description: 'Checkbox input elements'
-  radio-option:
-    description: 'Radio option elements'
-  tag:
-    description: 'Tag elements'
-  dropdown:
-    description: 'Dropdown elements'
-  dropdown-option:
-    description: 'Dropdown option elements'
-  text:
-    description: 'Text elements'
 
 decisionGroupsByTheme:
   default:
