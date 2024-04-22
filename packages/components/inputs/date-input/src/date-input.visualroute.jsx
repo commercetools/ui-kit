@@ -113,5 +113,14 @@ export const component = () => (
         hasError
       />
     </Spec>
+    <Spec label="with isCondensed">
+      <DateInput
+        value=""
+        onChange={() => {}}
+        isCondensed={true}
+        horizontalConstraint={7}
+        placeholder="Select something"
+      />
+    </Spec>
   </Suite>
 );

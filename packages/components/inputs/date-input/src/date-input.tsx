@@ -108,6 +108,10 @@ export type TDateInput = {
    */
   placeholder?: string;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Disables the date picker
    */
   isDisabled?: boolean;
@@ -267,6 +271,7 @@ const DateInput = (props: TDateInput) => {
                   // Unset the aria-labelledby as it interfers with the link
                   // between the <label for> and the <input id>.
                   'aria-labelledby': undefined,
+                  isCondensed: props.isCondensed,
                   name: props.name,
                   placeholder:
                     typeof props.placeholder === 'string'
