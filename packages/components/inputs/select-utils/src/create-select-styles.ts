@@ -210,7 +210,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     })(),
     padding:
       props.appearance === 'quiet'
-        ? designTokens.spacing30
+        ? designTokens.spacing20
         : designTokens.spacing30,
     transition: `border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard}`,
