@@ -14,7 +14,9 @@ const getTextareaStyles = (props: TMultiLineInputProps) => {
   const baseStyles = [
     getInputStyles(props),
     css`
-      padding: ${designTokens.spacing20};
+      padding: ${props.isCondensed
+        ? designTokens.spacing10
+        : designTokens.spacing20};
       line-height: ${sizeInputLineHeight};
       flex: auto;
       word-break: break-word;
