@@ -146,6 +146,10 @@ export type TDateTimeInputProps = {
    */
   placeholder?: string;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Disables the date picker
    */
   isDisabled?: boolean;
@@ -507,6 +511,7 @@ class DateTimeInput extends Component<
                   hasSelection={Boolean(selectedItem)}
                   onClear={clearSelection}
                   isOpen={isOpen}
+                  isCondensed={this.props.isCondensed}
                   isDisabled={this.props.isDisabled}
                   isReadOnly={this.props.isReadOnly}
                   toggleButtonProps={getToggleButtonProps({

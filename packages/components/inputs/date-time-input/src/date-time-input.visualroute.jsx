@@ -131,5 +131,14 @@ export const component = () => (
         hasError
       />
     </Spec>
+    <Spec label="minimal">
+      <DateTimeInput
+        value={value}
+        timeZone="UTC"
+        isCondensed={true}
+        onChange={() => {}}
+        horizontalConstraint={7}
+      />
+    </Spec>
   </Suite>
 );
