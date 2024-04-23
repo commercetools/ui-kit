@@ -14,7 +14,7 @@ import {
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { warning } from '@commercetools-uikit/utils';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
@@ -184,7 +184,7 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
 
 DropdownChevron.displayName = 'DropdownChevron';
 
-const Options = styled.div<{ isRecolouringTheme: boolean }>`
+const Options = styled.div`
   position: absolute;
   z-index: 5;
   width: 100%;
@@ -202,14 +202,9 @@ const Options = styled.div<{ isRecolouringTheme: boolean }>`
     &:active {
       background-color: ${designTokens.colorPrimary95};
     }
-    ${(props) =>
-      props.isRecolouringTheme &&
-      css`
-        &:hover {
-          background-color: ${designTokens.colorPrimary98};
-        }
-      `}
-  }
+    &:hover {
+      background-color: ${designTokens.colorPrimary98};
+    }
 `;
 
 /*
@@ -246,7 +241,6 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
     },
     [ref, toggle]
   );
-  const { isRecolouringTheme } = useTheme();
   useEffect(() => {
     window.addEventListener('click', handleGlobalClick);
     return () => {
@@ -308,9 +302,7 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         {primaryOption.props.children}
       </DropdownHead>
       {isOpen && !primaryOption.props.isDisabled && (
-        <Options isRecolouringTheme={isRecolouringTheme}>
-          {childrenAsArray}
-        </Options>
+        <Options>{childrenAsArray}</Options>
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { createSequentialId } from '@commercetools-uikit/utils';
 import { IndeterminateIcon, CheckedIcon } from './icons';
 import Checkbox from './checkbox';
@@ -78,7 +78,7 @@ const defaultProps: Pick<
   hasError: false,
 };
 
-const getBorderColor = (props: TLabelProps, isRecolouringTheme: boolean) => {
+const getBorderColor = (props: TLabelProps) => {
   if (props.hasError) {
     return designTokens.colorError;
   }
@@ -88,7 +88,7 @@ const getBorderColor = (props: TLabelProps, isRecolouringTheme: boolean) => {
   if (props.isReadOnly) {
     return designTokens.colorNeutral60;
   }
-  if ((props.isChecked || props.isIndeterminate) && isRecolouringTheme) {
+  if (props.isChecked || props.isIndeterminate) {
     return designTokens.colorPrimary;
   }
   return designTokens.colorNeutral60;
@@ -157,7 +157,6 @@ const CheckboxIconWrapper = styled.div<TCheckboxIconWrapperProps>`
 `;
 
 const CheckboxIcon = (props: TLabelProps) => {
-  const { isRecolouringTheme } = useTheme();
   const isDisabledOrReadOnlyState = props.isDisabled || props.isReadOnly;
   const canForcedHoverEffect = Boolean(
     props.isHovered && !isDisabledOrReadOnlyState
@@ -173,7 +172,7 @@ const CheckboxIcon = (props: TLabelProps) => {
           css`
             border-width: ${designTokens.borderWidth2};
             border-radius: ${designTokens.borderRadius2};
-            border-color: ${getBorderColor(props, isRecolouringTheme)};
+            border-color: ${getBorderColor(props)};
             border-style: solid;
             background-color: ${getBackgroundColor(props)};
             padding: 1px;
