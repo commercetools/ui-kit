@@ -156,6 +156,10 @@ export type TLocalizedMultilineTextFieldProps = {
    */
   isAutofocussed?: boolean;
   /**
+   * Whether the text inputs for each localization should render with condensed paddings.
+   */
+  isCondensed?: boolean;
+  /**
    * Disables all input fields.
    */
   isDisabled?: boolean;
@@ -304,6 +308,7 @@ class LocalizedMultilineTextField extends Component<
             }
             defaultExpandLanguages={this.props.defaultExpandLanguages}
             isAutofocussed={this.props.isAutofocussed}
+            isCondensed={this.props.isCondensed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             errors={this.props.errorsByLanguage}

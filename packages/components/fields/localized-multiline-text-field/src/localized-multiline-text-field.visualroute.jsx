@@ -106,6 +106,27 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
+    <Spec label="when condensed and open">
+      <LocalizedMultilineTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        isCondensed={true}
+        defaultExpandLanguages={true}
+      />
+    </Spec>
+    <Spec label="when condensed and closed">
+      <LocalizedMultilineTextField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        isCondensed={true}
+      />
+    </Spec>
     <Spec label="when there is an error and the field is not touched">
       <LocalizedMultilineTextField
         title="Welcome Text"
