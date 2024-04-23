@@ -173,6 +173,10 @@ export type TDateRangeInputProps = {
    */
   placeholder?: string;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Disables the date picker
    */
   isDisabled?: boolean;
@@ -532,6 +536,7 @@ class DateRangeInput extends Component<
                   isOpen={isOpen}
                   isDisabled={this.props.isDisabled}
                   isReadOnly={this.props.isReadOnly}
+                  isCondensed={this.props.isCondensed}
                   toggleButtonProps={getToggleButtonProps()}
                   hasError={this.props.hasError}
                   hasWarning={this.props.hasWarning}
