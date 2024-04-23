@@ -151,7 +151,7 @@ const getInputContainerStyles = (props: TCalendarBody, state: TState) => {
       color: ${getInputFontColor(props)};
       cursor: ${props.isDisabled ? 'not-allowed' : 'default'};
       width: 100%;
-      height: ${props.inputProps?.isCondensed
+      height: ${props.isCondensed
         ? `${designTokens.heightForInputAsSmall}`
         : `${designTokens.heightForInput}`};
       align-items: center;
@@ -205,7 +205,7 @@ const getDateTimeInputStyles = (props: TCalendarBody) => {
       &:focus:not(:read-only) {
         box-shadow: none;
       }
-      font-size: ${props.inputProps?.isCondensed
+      font-size: ${props.isCondensed
         ? `${designTokens.fontSize20}`
         : `${designTokens.fontSize30}`};
     `,

@@ -51,7 +51,6 @@ export type TInputProps = {
    * HTML ID of an element containing an error message related to the input.
    */
   'aria-errormessage'?: string;
-  isCondensed?: boolean;
   onBlur?: FocusEventHandler;
   onFocus?: FocusEventHandler;
   onKeyDown?: (
@@ -70,6 +69,7 @@ export type TCalendarBody = {
   isDisabled?: boolean;
   isReadOnly?: boolean;
   isOpen?: boolean;
+  isCondensed?: boolean;
   hasSelection?: boolean;
   hasWarning?: boolean;
   hasError?: boolean;
@@ -143,7 +143,7 @@ export const CalendarBody = (props: TCalendarBody) => {
         />
         {!disabledOrReadOnly && props.hasSelection && props.isClearable && (
           <ClearSection
-            isCondensed={props.inputProps?.isCondensed}
+            isCondensed={props.isCondensed}
             hasError={props.hasError}
             hasWarning={props.hasWarning}
             isFocused={isFocused}
@@ -167,7 +167,7 @@ export const CalendarBody = (props: TCalendarBody) => {
           ) : (
             <CalendarIcon
               color="neutral60"
-              size={props.inputProps?.isCondensed ? 'medium' : 'big'}
+              size={props.isCondensed ? 'medium' : 'big'}
             />
           )}
         </button>

@@ -271,7 +271,6 @@ const DateInput = (props: TDateInput) => {
                   // Unset the aria-labelledby as it interfers with the link
                   // between the <label for> and the <input id>.
                   'aria-labelledby': undefined,
-                  isCondensed: props.isCondensed,
                   name: props.name,
                   placeholder:
                     typeof props.placeholder === 'string'
@@ -358,6 +357,7 @@ const DateInput = (props: TDateInput) => {
                 isOpen={isOpen}
                 isDisabled={props.isDisabled}
                 isReadOnly={props.isReadOnly}
+                isCondensed={props.isCondensed}
                 toggleButtonProps={getToggleButtonProps()}
                 hasError={props.hasError}
                 hasWarning={props.hasWarning}
