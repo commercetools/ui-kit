@@ -71,7 +71,7 @@ const tonesPropsMap = (): Record<TTone, ToneRelatedProps> => ({
       borderColor: designTokens.colorPrimary85,
       color: designTokens.colorSuccess40,
     },
-    iconColor: 'primary',
+    iconColor: 'success',
   },
   information: {
     styles: {
