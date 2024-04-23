@@ -162,7 +162,8 @@ export type TDateTimeInputProps = {
    */
   hasWarning?: boolean;
   /**
-   * The time that will be used by default when a user selects a calendar day
+   * The time that will be used by default when a user selects a calendar day.
+   * It must follow the “HH:mm” pattern (eg: 04:30, 13:25, 23:59)
    */
   defaultDaySelectionTime?: string;
 } & WrappedComponentProps;
