@@ -14,6 +14,7 @@ export type TMultiLineInputProps = {
   hasWarning?: boolean;
   id?: string;
   isAutofocussed?: boolean;
+  isCondensed?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
   name?: string;

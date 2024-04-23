@@ -60,6 +60,7 @@ type TranslationInputProps = {
   autoComplete?: string;
   value: string;
   onBlur?: FocusEventHandler<HTMLLocalizedTextAreaElement>;
+  isCondensed?: boolean;
   isDisabled?: boolean;
   placeholder?: string;
   hasWarning?: boolean;
@@ -182,6 +183,7 @@ const TranslationInput = (props: TranslationInputProps) => {
           css={getTextareaStyles(props)}
           hasError={props.hasError}
           hasWarning={props.hasWarning}
+          isCondensed={props.isCondensed}
           isReadOnly={props.isReadOnly}
           isAutofocussed={props.isAutofocussed}
           isOpen={!props.isCollapsed}
@@ -194,7 +196,7 @@ const TranslationInput = (props: TranslationInputProps) => {
       <Row
         // NOTE: applying this style withing the `styled` component results in the production
         // bundle to apply the style in the wrong order.
-        // For instance, we need to override the marging of the spacing component, which also
+        // For instance, we need to override the margin of the spacing component, which also
         // uses `!important`.
         // Anyway, apparently by passing the style as a `css` prop to the `styled` component
         // does the trick.

@@ -102,6 +102,10 @@ export type TLocalizedMultilineTextInputProps = {
    */
   isAutofocussed?: boolean;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Disables all input fields.
    */
   isDisabled?: boolean;
@@ -309,6 +313,7 @@ const LocalizedMultilineTextInput = (
                 onBlur={props.onBlur}
                 onFocus={props.onFocus}
                 isAutofocussed={index === 0 && props.isAutofocussed}
+                isCondensed={props.isCondensed}
                 isDisabled={props.isDisabled}
                 isReadOnly={props.isReadOnly}
                 hasError={Boolean(

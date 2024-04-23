@@ -9,6 +9,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 
 type TTranslationInputStylesProps = {
   isCollapsed?: boolean;
+  isCondensed?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
 };
@@ -62,7 +63,9 @@ const getLanguageLabelStyles = (props: TTranslationInputStylesProps) => {
     border-bottom-left-radius: ${designTokens.borderRadiusForInput};
     border: 1px ${getLanguageLabelBorderColor(props)} solid;
     padding: 0 ${designTokens.spacing25};
-    font-size: ${designTokens.fontSize30};
+    font-size: ${props.isCondensed
+      ? designTokens.fontSize20
+      : designTokens.fontSize30};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard};
