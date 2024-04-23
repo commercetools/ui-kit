@@ -146,7 +146,7 @@ export type TLocalizedTextFieldProps = {
    */
   isAutofocussed?: boolean;
   /**
-   * Whether the input and its options are rendered with condensed paddings
+   * Whether the text inputs for each localization should render with condensed paddings.
    */
   isCondensed?: boolean;
   /**
