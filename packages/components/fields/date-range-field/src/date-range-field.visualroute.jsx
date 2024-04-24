@@ -100,5 +100,14 @@ export const component = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
+    <Spec label="is condensed">
+      <DateRangeField
+        title="Discounted days"
+        isCondensed={true}
+        horizontalConstraint={7}
+        value={value}
+        onChange={() => {}}
+      />
+    </Spec>
   </Suite>
 );

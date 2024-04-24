@@ -136,6 +136,10 @@ export type TDateTimeFieldProps = {
    */
   placeholder?: string;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Specifies the time zone in which the calendar and selected values are shown. It also influences how entered dates and times are parsed.
    * <br />
    * See the `DateTimeInput` docs for more information.
@@ -257,6 +261,7 @@ class DateTimeField extends Component<
             onChange={this.props.onChange}
             onFocus={this.props.onFocus}
             onBlur={this.props.onBlur}
+            isCondensed={this.props.isCondensed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasError={hasError}

@@ -134,6 +134,10 @@ export type TDateFieldProps = {
    */
   placeholder?: string;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * A minimum selectable date. Must either be an empty string or a date formatted as "YYYY-MM-DD".
    */
   minValue?: string;
@@ -248,6 +252,7 @@ class DateField extends Component<TDateFieldProps, TDateFieldState> {
             minValue={this.props.minValue}
             maxValue={this.props.maxValue}
             onChange={this.props.onChange}
+            isCondensed={this.props.isCondensed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasWarning={hasWarning}
