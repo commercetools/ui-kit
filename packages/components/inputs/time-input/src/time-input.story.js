@@ -26,6 +26,7 @@ storiesOf('Components|Inputs', module)
               name={text('name', '')}
               placeholder={text('placeholder', 'Enter time')}
               isAutofocussed={boolean('isAutofocussed', false)}
+              isCondensed={boolean('isCondensed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               value={value}

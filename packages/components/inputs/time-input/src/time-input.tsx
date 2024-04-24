@@ -95,6 +95,10 @@ export type TTimeInputProps = {
    */
   placeholder?: string;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Indicates the input field has a warning
    */
   hasWarning?: boolean;
@@ -199,6 +203,7 @@ const TimeInput = (props: TTimeInputProps) => {
         isAutofocussed={props.isAutofocussed}
         isDisabled={props.isDisabled}
         isReadOnly={props.isReadOnly}
+        isCondensed={props.isCondensed}
         hasError={props.hasError}
         hasWarning={props.hasWarning}
         onClear={handleClear}

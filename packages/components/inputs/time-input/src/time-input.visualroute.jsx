@@ -50,5 +50,8 @@ export const component = () => (
         hasWarning={true}
       />
     </Spec>
+    <Spec label="minimal">
+      <TimeInput value={value} onChange={() => {}} horizontalConstraint={7} isCondensed={true}/>
+    </Spec>
   </Suite>
 );
