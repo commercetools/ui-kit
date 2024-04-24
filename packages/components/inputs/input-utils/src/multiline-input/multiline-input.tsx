@@ -104,7 +104,6 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       role="textbox"
       minRows={MIN_ROW_COUNT}
       maxRows={props.isOpen ? undefined : MIN_ROW_COUNT}
-      cacheMeasurements={true}
       {...filterDataAttributes(props)}
     />
   );
