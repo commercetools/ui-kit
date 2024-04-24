@@ -20,7 +20,7 @@ export const getTextColor = (props: TGetTextColor): string => {
   switch (props.tone) {
     case 'primary':
       return props.isHover
-        ? designTokens.fontColorForButtonAsFlatWhenHovered
+        ? designTokens.colorPrimary40
         : designTokens.colorPrimary30;
     case 'secondary':
       return props.isHover
@@ -30,8 +30,8 @@ export const getTextColor = (props: TGetTextColor): string => {
       return designTokens.colorSurface;
     case 'critical':
       return props.isHover
-        ? designTokens.fontColorForButtonAsFlatAsCriticalWhenHovered
-        : designTokens.fontColorForButtonAsFlatAsCritical;
+        ? designTokens.colorError
+        : designTokens.colorError40;
     default:
       return 'inherit';
   }

@@ -94,7 +94,7 @@ const getIconColor = (props: TContentNotificationProps) => {
     case 'warning':
       return designTokens.colorWarning;
     case 'success':
-      return designTokens.fontColorForContentNotificationWhenSuccess;
+      return designTokens.colorSuccess;
     default:
       return '';
   }
@@ -148,7 +148,7 @@ const getContentBorderColor = (props: TContentNotificationProps) => {
     case 'warning':
       return designTokens.colorWarning85;
     case 'success':
-      return designTokens.borderColorForContentNotificationWhenSuccess;
+      return designTokens.colorSuccess85;
     default:
       return '';
   }
@@ -163,7 +163,7 @@ const getContainerBackgroundColor = (props: TContentNotificationProps) => {
     case 'warning':
       return designTokens.colorWarning95;
     case 'success':
-      return designTokens.backgroundColorForContentNotificationWhenSuccess;
+      return designTokens.colorSuccess95;
     default:
       return '';
   }

@@ -14,7 +14,7 @@ import {
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Text from '@commercetools-uikit/text';
 import { warning } from '@commercetools-uikit/utils';
 import { CaretUpIcon, CaretDownIcon } from '@commercetools-uikit/icons';
@@ -41,14 +41,14 @@ const getButtonStyles = (isDisabled: boolean) => {
     css`
       background-color: ${designTokens.colorSurface};
       box-shadow: ${designTokens.shadow0};
-      border: 1px solid ${designTokens.borderColorForDropdown};
+      border: 1px solid ${designTokens.colorPrimary85};
       &:hover {
         box-shadow: ${designTokens.shadow0};
-        background-color: ${designTokens.backgroundColorForDropdownWhenHovered};
+        background-color: ${designTokens.colorPrimary95};
       }
       &:active {
         box-shadow: ${designTokens.shadow0};
-        background-color: ${designTokens.backgroundColorForDropdownWhenActive};
+        background-color: ${designTokens.colorPrimary90};
       }
     `,
   ];
@@ -65,7 +65,6 @@ type TDropdownHead = {
 };
 
 const DropdownHead = (props: TDropdownHead) => {
-  const { themedValue } = useTheme();
   return (
     <div
       css={css`
@@ -96,9 +95,7 @@ const DropdownHead = (props: TDropdownHead) => {
         >
           {cloneElement(props.iconLeft, {
             size: 'big',
-            color: props.isDisabled
-              ? 'neutral60'
-              : themedValue('solid', 'primary'),
+            color: props.isDisabled ? 'neutral60' : 'primary',
           })}
         </span>
         <span
@@ -149,7 +146,7 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
             ${designTokens.borderRadius4} 0;
           border-color: ${props.isDisabled
             ? designTokens.colorNeutral
-            : designTokens.borderColorForDropdown};
+            : designTokens.colorPrimary85};
           border-width: 1px 1px 1px 0px;
           border-style: solid;
         `,
@@ -187,7 +184,7 @@ const DropdownChevron = forwardRef<HTMLButtonElement, TDropdownChevron>(
 
 DropdownChevron.displayName = 'DropdownChevron';
 
-const Options = styled.div<{ isRecolouringTheme: boolean }>`
+const Options = styled.div`
   position: absolute;
   z-index: 5;
   width: 100%;
@@ -203,16 +200,11 @@ const Options = styled.div<{ isRecolouringTheme: boolean }>`
     padding-left: ${designTokens.spacing30};
     white-space: normal;
     &:active {
-      background-color: ${designTokens.backgroundColorForDropdownOptionWhenActive};
+      background-color: ${designTokens.colorPrimary95};
     }
-    ${(props) =>
-      props.isRecolouringTheme &&
-      css`
-        &:hover {
-          background-color: ${designTokens.colorPrimary98};
-        }
-      `}
-  }
+    &:hover {
+      background-color: ${designTokens.colorPrimary98};
+    }
 `;
 
 /*
@@ -249,7 +241,6 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
     },
     [ref, toggle]
   );
-  const { isRecolouringTheme } = useTheme();
   useEffect(() => {
     window.addEventListener('click', handleGlobalClick);
     return () => {
@@ -311,9 +302,7 @@ const PrimaryActionDropdown = (props: TPrimaryActionDropdown) => {
         {primaryOption.props.children}
       </DropdownHead>
       {isOpen && !primaryOption.props.isDisabled && (
-        <Options isRecolouringTheme={isRecolouringTheme}>
-          {childrenAsArray}
-        </Options>
+        <Options>{childrenAsArray}</Options>
       )}
     </div>
   );

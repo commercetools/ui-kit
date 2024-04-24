@@ -1,8 +1,5 @@
 import { css, keyframes } from '@emotion/react';
-import {
-  designTokens,
-  type TUseThemeResult,
-} from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints from '@commercetools-uikit/constraints';
 import { defaultProps, type TProgressBarProps } from './progress-bar';
 
@@ -39,30 +36,19 @@ export const getBackgroundBarStyles = (props: TProgressBarProps) => css`
   overflow: hidden;
 `;
 
-export const getForegroundBarStyles = (
-  props: TProgressBarProps,
-  themedValue: TUseThemeResult['themedValue']
-) => css`
+export const getForegroundBarStyles = (props: TProgressBarProps) => css`
   width: ${props.progress}%;
   transition: width 500ms ease-in-out;
   display: block;
   height: ${heightPerScale[props.height ?? defaultProps.height!]};
   background: ${props.isInverted
     ? designTokens.colorSurface
-    : themedValue(
-        `linear-gradient(
-          to right,
-          #00E5CB,
-          ${designTokens.colorPrimary25},
-          #00E5CB
-        )`,
-        `linear-gradient(
+    : `linear-gradient(
           to right,
           ${designTokens.colorPrimary85},
           ${designTokens.colorPrimary},
           ${designTokens.colorPrimary85}
-        )`
-      )};
+        )`};
   background-size: 200% 100%;
   animation: ${props.isAnimated && !props.isInverted
     ? css`
