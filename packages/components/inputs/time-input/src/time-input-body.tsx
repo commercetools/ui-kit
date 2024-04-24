@@ -21,6 +21,7 @@ type TTimeInputBodyProps = TTimeInputProps & {
 };
 
 type TClearSectionProps = {
+  isCondensed?: boolean;
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
@@ -38,7 +39,7 @@ export const ClearSection = (props: TClearSectionProps) => {
       aria-label="clear"
       onClick={props.onClear}
     >
-      <CloseIcon size="medium" />
+      <CloseIcon size={props.isCondensed ? 'small' : 'medium'} />
     </AccessibleButton>
   );
 };
@@ -79,6 +80,7 @@ const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
           {!props.isDisabled && !props.isReadOnly && Boolean(props.value) && (
             <ClearSection
               isDisabled={props.isDisabled}
+              isCondensed={props.isCondensed}
               hasError={props.hasError}
               hasWarning={props.hasWarning}
               isReadOnly={props.isReadOnly}
@@ -90,7 +92,10 @@ const TimeInputBody = forwardRef<HTMLInputElement, TTimeInputBodyProps>(
             htmlFor={props.id}
             data-toggle
           >
-            <ClockIcon color="neutral60" />
+            <ClockIcon
+              color="neutral60"
+              size={props.isCondensed ? 'medium' : 'big'}
+            />
           </StyledClockIconContainer>
         </StyledInputContainer>
       </Inline>

@@ -35,6 +35,7 @@ class DateRangeInputStory extends Component {
           name={text('name', '')}
           placeholder={placeholder === '' ? undefined : placeholder}
           isClearable={boolean('isClearable', false)}
+          isCondensed={boolean('isCondensed', false)}
           isDisabled={boolean('isDisabled', false)}
           isReadOnly={boolean('isReadOnly', false)}
           hasError={boolean('hasError', false)}
