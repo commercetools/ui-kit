@@ -124,13 +124,11 @@ const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
     case 'medium':
       return css`
         height: ${designTokens.heightForButtonAsMedium};
-        border-radius: ${designTokens.borderRadiusForButtonAsMedium};
       `;
 
     case 'big':
       return css`
         height: ${designTokens.heightForButtonAsBig};
-        border-radius: ${designTokens.borderRadiusForButtonAsBig};
       `;
 
     default:

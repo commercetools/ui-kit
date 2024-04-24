@@ -132,7 +132,7 @@ const RadioOptionContainer = styled.div<TStylesProps>`
 const getHoverStyles = (props: TStylesProps) => {
   const hoverStyles = css`
     ${RadioOptionContainer} {
-      border-color: ${designTokens.backgroundColorForRadioOptionWhenHovered};
+      border-color: ${designTokens.colorPrimary95};
     }
   `;
 
