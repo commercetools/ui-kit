@@ -143,7 +143,7 @@ export type TLocalizedMultilineTextFieldProps = {
    */
   defaultExpandMultilineText?: boolean;
   /**
-   * Use this property to turn off caching layout size of the input
+   * Use this property to turn off caching input measurements.
    */
   cacheMeasurements?: boolean;
   /**
@@ -237,9 +237,10 @@ class LocalizedMultilineTextField extends Component<
 
   static defaultProps: Pick<
     TLocalizedMultilineTextFieldProps,
-    'horizontalConstraint'
+    'horizontalConstraint' | 'cacheMeasurements'
   > = {
     horizontalConstraint: 'scale',
+    cacheMeasurements: true,
   };
 
   state = {
