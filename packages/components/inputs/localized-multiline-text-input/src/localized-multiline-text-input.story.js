@@ -69,7 +69,7 @@ storiesOf('Components|Inputs', module)
               }
               defaultExpandMultilineText={defaultExpandMultilineText}
               isAutofocussed={boolean('isAutofocussed', false)}
-              cacheMeasurements={boolean('cacheMeasurements', true)}
+              cacheMeasurements={boolean('cacheMeasurements', false)}
               isCondensed={boolean('isCondensed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}

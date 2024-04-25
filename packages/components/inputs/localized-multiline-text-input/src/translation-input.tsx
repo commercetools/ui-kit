@@ -264,5 +264,8 @@ const TranslationInput = (props: TranslationInputProps) => {
 };
 
 TranslationInput.displayName = 'TranslationInput';
+TranslationInput.defaultProps = {
+  cacheMeasurements: true,
+};
 
 export default TranslationInput;

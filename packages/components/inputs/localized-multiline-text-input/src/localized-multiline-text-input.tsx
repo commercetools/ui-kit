@@ -89,7 +89,7 @@ export type TLocalizedMultilineTextInputProps = {
    */
   defaultExpandMultilineText?: boolean;
   /**
-   * Use this property to turn off caching layout size of the input
+   * Use this property to turn off caching input measurements.
    */
   cacheMeasurements?: boolean;
   /**
@@ -372,6 +372,7 @@ LocalizedMultilineTextInput.getName = getName;
 
 LocalizedMultilineTextInput.defaultProps = {
   horizontalConstraint: 'scale',
+  cacheMeasurements: true,
 };
 
 LocalizedMultilineTextInput.createLocalizedString = createLocalizedString;
