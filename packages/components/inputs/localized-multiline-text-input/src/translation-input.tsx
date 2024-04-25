@@ -67,6 +67,7 @@ type TranslationInputProps = {
   hasError?: boolean;
   isReadOnly?: boolean;
   isAutofocussed?: boolean;
+  cacheMeasurements?: boolean;
   intl: {
     formatMessage: (messageObject: TMessagesMultilineInput) => string;
   };
@@ -186,6 +187,7 @@ const TranslationInput = (props: TranslationInputProps) => {
           isCondensed={props.isCondensed}
           isReadOnly={props.isReadOnly}
           isAutofocussed={props.isAutofocussed}
+          cacheMeasurements={props.cacheMeasurements}
           isOpen={!props.isCollapsed}
           {...filterDataAttributes(props)}
           /* ARIA */

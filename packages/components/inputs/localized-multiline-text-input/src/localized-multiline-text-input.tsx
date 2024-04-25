@@ -89,6 +89,10 @@ export type TLocalizedMultilineTextInputProps = {
    */
   defaultExpandMultilineText?: boolean;
   /**
+   * Use this property to turn off caching layout size of the input
+   */
+  cacheMeasurements?: boolean;
+  /**
    * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
    */
   hideLanguageExpansionControls?: boolean;
@@ -313,6 +317,7 @@ const LocalizedMultilineTextInput = (
                 onBlur={props.onBlur}
                 onFocus={props.onFocus}
                 isAutofocussed={index === 0 && props.isAutofocussed}
+                cacheMeasurements={props.cacheMeasurements}
                 isCondensed={props.isCondensed}
                 isDisabled={props.isDisabled}
                 isReadOnly={props.isReadOnly}

@@ -1,10 +1,4 @@
-import {
-  useRef,
-  useCallback,
-  ChangeEventHandler,
-  useState,
-  useEffect,
-} from 'react';
+import { useRef, useCallback, ChangeEventHandler } from 'react';
 import TextareaAutosize, {
   TextareaHeightChangeMeta,
 } from 'react-textarea-autosize';
@@ -30,6 +24,7 @@ export type TMultiLineInputProps = {
   placeholder?: string;
   value: string;
   isOpen: boolean;
+  cacheMeasurements?: boolean;
   onHeightChange?: (height: number, rowCount: number) => void;
   /**
    * Indicate if the value entered in the input is invalid.
@@ -58,20 +53,6 @@ const getElementVerticalPadding = (element: Element) => {
 const MultilineInput = (props: TMultiLineInputProps) => {
   const { onHeightChange } = props;
   const ref = useRef<HTMLTextAreaElement | null>(null);
-
-  const [prevIsCondensed, setPrevIsCondensed] = useState(props.isCondensed);
-  const [cacheMeasurements, setCacheMeasurements] = useState(true);
-  useEffect(() => {
-    // If props.isCondensed has changed, the height of the layout will only be automatically recalculated if
-    // cacheMeasurements is set to false. So let's set cacheMeasurements to true by default to get the performance
-    // benefits, unless isCondensed value has changed, in which case we will set it to false for this render.
-    if (props.isCondensed !== prevIsCondensed) {
-      setCacheMeasurements(false);
-    } else {
-      setCacheMeasurements(true);
-    }
-    setPrevIsCondensed(props.isCondensed);
-  }, [props.isCondensed, prevIsCondensed]);
 
   const handleHeightChange = useCallback<
     (height: number, meta: TextareaHeightChangeMeta) => void
@@ -124,7 +105,9 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       role="textbox"
       minRows={MIN_ROW_COUNT}
       maxRows={props.isOpen ? undefined : MIN_ROW_COUNT}
-      cacheMeasurements={cacheMeasurements}
+      cacheMeasurements={
+        props.cacheMeasurements !== undefined ? props.cacheMeasurements : true
+      }
       {...filterDataAttributes(props)}
     />
   );
