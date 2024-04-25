@@ -132,6 +132,10 @@ export type TDateRangeFieldProps = {
    * Placeholder text for the input
    */
   placeholder?: string;
+  /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
 
   // LabelField
   /**
@@ -240,6 +244,7 @@ class DateRangeField extends Component<
             onChange={this.props.onChange}
             onFocus={this.props.onFocus}
             onBlur={this.props.onBlur}
+            isCondensed={this.props.isCondensed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasError={hasError}
