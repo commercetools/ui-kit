@@ -122,14 +122,14 @@ export type TDataTableSettingsProps = {
   managerTheme?: 'light' | 'dark';
 };
 
-const TopBarContainer = styled.div`
-  flex-grow: 1;
-`;
-
 export type TDropdownOption = {
   value: string;
   label: string;
 };
+
+const TopBarContainer = styled.div`
+  flex-grow: 1;
+`;
 
 export const getDropdownOptions = ({
   areColumnSettingsEnabled,
