@@ -224,7 +224,7 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
                   label="Open table manager dropdown"
                 />
               }
-              menuHorizontalConstraint={4}
+              menuHorizontalConstraint={'auto'}
               menuPosition="right"
               menuType="list"
             >
