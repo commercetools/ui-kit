@@ -10,6 +10,9 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints, { type TMaxProp } from '@commercetools-uikit/constraints';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 
+const boxShadowBottomSize = '5px';
+const marginTop = designTokens.spacing20;
+
 export function getDropdownMenuBaseStyles(params: {
   isOpen: boolean;
   horizontalConstraint: TMaxProp;
@@ -18,10 +21,11 @@ export function getDropdownMenuBaseStyles(params: {
     background-color: ${designTokens.colorSurface};
     border: 1px solid ${designTokens.colorSurface};
     border-radius: ${designTokens.borderRadius4};
-    box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px ${boxShadowBottomSize} 0px rgba(0, 0, 0, 0.15);
     display: ${params.isOpen ? 'block' : 'none'};
-    margin-top: ${designTokens.spacing20};
+    margin-top: ${marginTop};
     max-width: ${Constraints.getMaxPropTokenValue(params.horizontalConstraint)};
+    overflow-y: auto;
     position: fixed;
     width: ${params.horizontalConstraint === 'auto' ? 'auto' : '100%'};
     z-index: 5;
@@ -57,6 +61,10 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
               triggerElementCoordinates.width -
               menuElementCoordinates.width
             }px`;
+      menuRef.current.style.maxHeight = `calc(${
+        window.innerHeight -
+        (triggerElementCoordinates.top + triggerElementCoordinates.height)
+      }px - ${marginTop} - ${boxShadowBottomSize})`;
     }
   }, [props.isOpen, props.menuPosition, props.triggerElementRef]);
 

@@ -1,6 +1,6 @@
 import { Value } from 'react-value';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select } from '@storybook/addon-knobs/react';
+import { withKnobs, select, number } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import Constraints from '@commercetools-uikit/constraints';
@@ -24,30 +24,30 @@ storiesOf('Components|Dropdowns|DropdownMenu', module)
       sidebar: Readme,
     },
   })
-  .add('DropdownMenu - List menu content', () => (
-    <Section align="center">
-      <DropdownMenu
-        triggerElement={<IconButton icon={<ColumnsIcon />} label="list" />}
-        menuHorizontalConstraint={select(
-          'menu horizontalConstraint',
-          Constraints.getAcceptedMaxPropValues(),
-          6
-        )}
-        menuPosition={select('Menu position', ['left', 'right'], 'left')}
-        menuType="list"
-      >
-        <DropdownMenu.ListMenuItem onClick={action('onClick')}>
-          Option 1
-        </DropdownMenu.ListMenuItem>
-        <DropdownMenu.ListMenuItem onClick={action('onClick')} isDisabled>
-          Option 2
-        </DropdownMenu.ListMenuItem>
-        <DropdownMenu.ListMenuItem onClick={action('onClick')}>
-          Option 3
-        </DropdownMenu.ListMenuItem>
-      </DropdownMenu>
-    </Section>
-  ))
+  .add('DropdownMenu - List menu content', () => {
+    const optionsCount = number('Options count', 5);
+    return (
+      <Section align="center">
+        <DropdownMenu
+          triggerElement={<IconButton icon={<ColumnsIcon />} label="list" />}
+          menuHorizontalConstraint={select(
+            'menu horizontalConstraint',
+            Constraints.getAcceptedMaxPropValues(),
+            6
+          )}
+          menuPosition={select('Menu position', ['left', 'right'], 'left')}
+          menuType="list"
+        >
+          {new Array(optionsCount).fill().map((_, index) => (
+            <DropdownMenu.ListMenuItem
+              key={index}
+              onClick={action('onClick')}
+            >{`Option ${index + 1}`}</DropdownMenu.ListMenuItem>
+          ))}
+        </DropdownMenu>
+      </Section>
+    );
+  })
   .add('DropdownMenu - Complex menu content', () => (
     <Section align="center">
       <DropdownMenu
