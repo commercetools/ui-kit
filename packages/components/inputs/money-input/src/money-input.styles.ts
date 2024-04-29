@@ -27,7 +27,9 @@ const getCurrencyLabelStyles = (props: TInputProps) => css`
   border-right: 0;
   padding: 0 ${designTokens.spacing25};
   align-items: center;
-  font-size: ${designTokens.fontSize30};
+  font-size: ${props.isCondensed
+    ? designTokens.fontSize20
+    : designTokens.fontSize30};
   box-sizing: border-box;
 
   &:focus-within: {

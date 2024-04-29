@@ -71,6 +71,7 @@ storiesOf('Components|Inputs', module)
                 // warnings in case hideCurrencyExpansionControls is true
                 defaultExpandCurrencies || undefined
               }
+              isCondensed={boolean('isCondensed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               placeholder={object('placeholder', { EUR: '', USD: '' })}

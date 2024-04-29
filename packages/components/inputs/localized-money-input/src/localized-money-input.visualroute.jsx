@@ -91,6 +91,25 @@ export const component = () => (
         isReadOnly={true}
       />
     </Spec>
+    <Spec label="when condensed and open">
+      <LocalizedMoneyInput
+        value={value}
+        onChange={() => {}}
+        selectedCurrency="CAD"
+        horizontalConstraint={7}
+        isCondensed={true}
+        defaultExpandCurrencies={true}
+      />
+    </Spec>
+    <Spec label="when condensed and closed">
+      <LocalizedMoneyInput
+        value={value}
+        onChange={() => {}}
+        selectedCurrency="CAD"
+        horizontalConstraint={7}
+        isCondensed={true}
+      />
+    </Spec>
     <Spec label="when there is an error for a specific currency (first one)">
       <LocalizedMoneyInput
         value={value}
