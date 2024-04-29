@@ -166,6 +166,10 @@ export type TAsyncCreatableSelectInputProps = {
    */
   isClearable?: ReactSelectAsyncCreatableProps['isClearable'];
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Is the select disabled
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -411,6 +415,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
               menuPortalZIndex: props.menuPortalZIndex,
+              isCondensed: props.isCondensed,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
@@ -508,6 +513,7 @@ const AsyncCreatableSelectInput = (props: TAsyncCreatableSelectInputProps) => {
           createOptionPosition={props.createOptionPosition}
           // @ts-ignore
           iconLeft={props.iconLeft}
+          isCondensed={props.isCondensed}
         />
       </div>
     </Constraints.Horizontal>
