@@ -136,6 +136,7 @@ describe('rendering', () => {
     const columnManagerOption = await screen.findByLabelText('Column manager');
     fireEvent.click(columnManagerOption);
 
+    await screen.findByText('Column Manager');
     screen.getByLabelText('Hidden columns');
     expect(
       screen.getByText('There are no hidden columns to show.')
