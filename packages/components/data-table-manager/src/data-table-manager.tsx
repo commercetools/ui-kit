@@ -1,11 +1,12 @@
 import {
   useMemo,
-  cloneElement,
-  type ReactElement,
   type ReactNode,
   type MouseEventHandler,
+  useContext,
+  createContext,
+  useState,
+  useEffect,
 } from 'react';
-import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
@@ -115,7 +116,7 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
    * <br>
    * Note that the child component will implicitly receive the props `columns` and `isCondensed` from the `<DataTableManager>`.
    */
-  children: ReactElement;
+  // children: ReactElement;
 
   /**
    * The managed display settings of the table.
@@ -146,6 +147,38 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
   managerTheme?: 'light' | 'dark';
 };
 
+type TColumns = Pick<TDataTableManagerProps<TRow>, 'columns'>[];
+
+type TDataTableManagerContext = {
+  columns: TColumns;
+  // isCondensed: boolean;
+  // getIsCondensed?: (isCondensed: boolean) => void
+  getColumns?: (columns: TColumns) => void;
+};
+
+export const DataTableManagerContext = createContext<TDataTableManagerContext>({
+  columns: [],
+});
+export const DataTableProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [columns, setColumns] = useState<
+    Pick<TDataTableManagerProps, 'columns'>[]
+  >([]);
+
+  const getColumns = (
+    columnsFromManager: Pick<TDataTableManagerProps, 'columns'>[]
+  ) => setColumns(columnsFromManager);
+
+  return (
+    <DataTableManagerContext.Provider value={{ columns, getColumns }}>
+      {children}
+    </DataTableManagerContext.Provider>
+  );
+};
+
 const DataTableManager = <Row extends TRow = TRow>(
   props: TDataTableManagerProps<Row>
 ) => {
@@ -166,21 +199,22 @@ const DataTableManager = <Row extends TRow = TRow>(
     [areDisplaySettingsEnabled, props.columns, isWrappingText]
   );
 
+  const useDataTableManagerContext = () => useContext(DataTableManagerContext);
+  const { getColumns } = useDataTableManagerContext();
+
+  useEffect(() => {
+    // @ts-ignore
+    getColumns!(columns);
+  }, [columns, getColumns]);
+
   return (
-    <Spacings.Stack>
-      <DataTableSettings
-        topBar={props.topBar}
-        onSettingsChange={props.onSettingsChange}
-        columnManager={props.columnManager}
-        displaySettings={props.displaySettings}
-        managerTheme="light"
-      />
-      {cloneElement(props.children, {
-        columns,
-        isCondensed:
-          areDisplaySettingsEnabled && props.displaySettings!.isCondensed,
-      })}
-    </Spacings.Stack>
+    <DataTableSettings
+      topBar={props.topBar}
+      onSettingsChange={props.onSettingsChange}
+      columnManager={props.columnManager}
+      displaySettings={props.displaySettings}
+      managerTheme="light"
+    />
   );
 };
 

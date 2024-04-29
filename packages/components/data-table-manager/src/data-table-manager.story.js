@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo, useContext } from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean, select, withKnobs } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
@@ -10,7 +10,10 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Readme from '../README.md';
 import { UPDATE_ACTIONS } from './constants';
-import DataTableManager from './data-table-manager';
+import DataTableManager, {
+  DataTableProvider,
+  DataTableManagerContext,
+} from './data-table-manager';
 
 const items = [
   {
@@ -290,33 +293,42 @@ storiesOf('Components|DataTable', module)
       ...columnManagerButtons,
     };
 
+    const useDataTableManagerContext = () =>
+      useContext(DataTableManagerContext);
+
+    const { columns } = useDataTableManagerContext();
+    console.log({ columns_from_manager_provider: columns });
+
     return (
       <>
-        <DataTableManager
-          topBar={topBar}
-          columns={withRowSelection ? columnsWithSelect : visibleColumns}
-          onSettingsChange={(action, nextValue) => {
-            tableSettingsChangeHandler[action](nextValue);
-          }}
-          columnManager={columnManager}
-          displaySettings={displaySettings}
-          managerTheme={select(
-            'managerTheme',
-            {
-              dark: 'dark',
-              light: 'light',
-            },
-            'dark'
-          )}
-        >
+        <DataTableProvider>
+          <DataTableManager
+            topBar={topBar}
+            columns={withRowSelection ? columnsWithSelect : visibleColumns}
+            onSettingsChange={(action, nextValue) => {
+              tableSettingsChangeHandler[action](nextValue);
+            }}
+            columnManager={columnManager}
+            displaySettings={displaySettings}
+            managerTheme={select(
+              'managerTheme',
+              {
+                dark: 'dark',
+                light: 'light',
+              },
+              'dark'
+            )}
+          />
           <DataTable
             rows={withRowSelection ? rowsWithSelection : rows}
             sortedBy={sortedBy}
             onSortChange={onSortChange}
             sortDirection={sortDirection}
             footer={footer}
+            columns={columnsWithSelect}
+            isCondensed={isCondensed}
           />
-        </DataTableManager>
+        </DataTableProvider>
         <br />
         <hr />
       </>
