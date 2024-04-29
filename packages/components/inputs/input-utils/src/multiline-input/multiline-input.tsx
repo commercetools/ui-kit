@@ -14,6 +14,7 @@ export type TMultiLineInputProps = {
   hasWarning?: boolean;
   id?: string;
   isAutofocussed?: boolean;
+  isCondensed?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
   name?: string;
@@ -23,6 +24,7 @@ export type TMultiLineInputProps = {
   placeholder?: string;
   value: string;
   isOpen: boolean;
+  cacheMeasurements?: boolean;
   onHeightChange?: (height: number, rowCount: number) => void;
   /**
    * Indicate if the value entered in the input is invalid.
@@ -103,12 +105,15 @@ const MultilineInput = (props: TMultiLineInputProps) => {
       role="textbox"
       minRows={MIN_ROW_COUNT}
       maxRows={props.isOpen ? undefined : MIN_ROW_COUNT}
-      cacheMeasurements={true}
+      cacheMeasurements={props.cacheMeasurements}
       {...filterDataAttributes(props)}
     />
   );
 };
 
 MultilineInput.displayName = 'MultilineInput';
+MultilineInput.defaultProps = {
+  cacheMeasurements: true,
+};
 
 export default MultilineInput;

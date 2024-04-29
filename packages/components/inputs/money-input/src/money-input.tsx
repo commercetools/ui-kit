@@ -46,6 +46,7 @@ const getPortalNode = (id?: string) =>
 type TLabel = {
   id: string;
   children?: ReactNode;
+  isCondensed?: boolean;
   isDisabled?: boolean;
   isReadOnly?: boolean;
 };
@@ -86,6 +87,7 @@ type TCreateCurrencySelectStyles = (
 ) => void;
 
 export type TInputProps = {
+  isCondensed?: boolean;
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
@@ -103,6 +105,7 @@ type TBase = {
 const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
   hasWarning,
   hasError,
+  isCondensed,
   isDisabled,
   isReadOnly,
   menuPortalZIndex,
@@ -112,6 +115,7 @@ const createCurrencySelectStyles: TCreateCurrencySelectStyles = ({
     hasWarning,
     hasError,
     menuPortalZIndex,
+    isCondensed,
     isReadOnly,
     isDisabled,
   });
@@ -461,6 +465,10 @@ type TMoneyInputProps = {
    */
   onFocus?: (event: TCustomEvent) => void;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
   isDisabled?: boolean;
@@ -709,6 +717,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
   const currencySelectStyles = createCurrencySelectStyles({
     hasWarning: props.hasWarning,
     hasError: props.hasError,
+    isCondensed: props.isCondensed,
     isDisabled: props.isDisabled,
     isReadOnly: props.isReadOnly,
     menuPortalZIndex: props.menuPortalZIndex,
@@ -785,6 +794,7 @@ const MoneyInput = (props: TMoneyInputProps) => {
         {hasNoCurrencies ? (
           <CurrencyLabel
             id={MoneyInput.getAmountInputId(moneyInputId) as string}
+            isCondensed={props.isCondensed}
             isDisabled={props.isDisabled}
             isReadOnly={props.isReadOnly}
           >
