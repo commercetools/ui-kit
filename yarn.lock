@@ -2571,16 +2571,17 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.13
     "@babel/runtime-corejs3": ^7.20.13
-<<<<<<< HEAD
     "@commercetools-uikit/accessible-button": 19.2.0
     "@commercetools-uikit/accessible-hidden": 19.2.0
     "@commercetools-uikit/async-select-input": 19.2.0
     "@commercetools-uikit/card": 19.2.0
     "@commercetools-uikit/collapsible-motion": 19.2.0
     "@commercetools-uikit/design-system": 19.2.0
+    "@commercetools-uikit/dropdown-menu": 19.2.0
     "@commercetools-uikit/field-label": 19.2.0
     "@commercetools-uikit/grid": 19.2.0
     "@commercetools-uikit/hooks": 19.2.0
+    "@commercetools-uikit/icon-button": 19.2.0
     "@commercetools-uikit/icons": 19.2.0
     "@commercetools-uikit/primary-button": 19.2.0
     "@commercetools-uikit/radio-input": 19.2.0
@@ -2590,31 +2591,8 @@ __metadata:
     "@commercetools-uikit/spacings": 19.2.0
     "@commercetools-uikit/tag": 19.2.0
     "@commercetools-uikit/text": 19.2.0
+    "@commercetools-uikit/tooltip": 19.2.0
     "@commercetools-uikit/utils": 19.2.0
-=======
-    "@commercetools-uikit/accessible-button": 19.1.0
-    "@commercetools-uikit/accessible-hidden": 19.1.0
-    "@commercetools-uikit/async-select-input": 19.1.0
-    "@commercetools-uikit/card": 19.1.0
-    "@commercetools-uikit/collapsible-motion": 19.1.0
-    "@commercetools-uikit/design-system": 19.1.0
-    "@commercetools-uikit/dropdown-menu": 19.1.0
-    "@commercetools-uikit/field-label": 19.1.0
-    "@commercetools-uikit/grid": 19.1.0
-    "@commercetools-uikit/hooks": 19.1.0
-    "@commercetools-uikit/icon-button": 19.1.0
-    "@commercetools-uikit/icons": 19.1.0
-    "@commercetools-uikit/primary-button": 19.1.0
-    "@commercetools-uikit/radio-input": 19.1.0
-    "@commercetools-uikit/secondary-button": 19.1.0
-    "@commercetools-uikit/secondary-icon-button": 19.1.0
-    "@commercetools-uikit/select-input": 19.1.0
-    "@commercetools-uikit/spacings": 19.1.0
-    "@commercetools-uikit/tag": 19.1.0
-    "@commercetools-uikit/text": 19.1.0
-    "@commercetools-uikit/tooltip": 19.1.0
-    "@commercetools-uikit/utils": 19.1.0
->>>>>>> 20d76ce14 (chore(yarn.lock): updated per deps)
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@types/debounce-promise": ^3.1.6
