@@ -2,7 +2,6 @@ import { useState, type ReactElement, type ReactNode } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { useIntl, type MessageDescriptor } from 'react-intl';
 import styled from '@emotion/styled';
-import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
 import { ColumnsIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
 import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
@@ -214,34 +213,33 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
       <Spacings.Inline justifyContent="space-between" alignItems="center">
         <TopBarContainer>{props.topBar}</TopBarContainer>
         {dropdownOptions.length > 0 && (
-          <>
-            <AccessibleHidden>
-              <label htmlFor="table-settings-dropdown">
-                Open table manager dropdown
-              </label>
-            </AccessibleHidden>
-            <Tooltip placement="left" title="Table settings">
-              <DropdownMenu
-                triggerElement={
-                  <IconButton icon={<ColumnsIcon />} label="list" />
-                }
-                menuHorizontalConstraint={4}
-                menuPosition="right"
-                menuType="list"
-              >
-                {dropdownOptions?.map((option: TDropdownOption) => (
-                  <DropdownMenu.ListMenuItem
-                    key={option?.label}
-                    onClick={() => {
-                      setOpenedPanelId(option?.value);
-                    }}
-                  >
-                    {option?.label}
-                  </DropdownMenu.ListMenuItem>
-                ))}
-              </DropdownMenu>
-            </Tooltip>
-          </>
+          <Tooltip
+            placement="left"
+            title={intl.formatMessage(messages.placeholder)}
+          >
+            <DropdownMenu
+              triggerElement={
+                <IconButton
+                  icon={<ColumnsIcon />}
+                  label="Open table manager dropdown"
+                />
+              }
+              menuHorizontalConstraint={4}
+              menuPosition="right"
+              menuType="list"
+            >
+              {dropdownOptions?.map((option: TDropdownOption) => (
+                <DropdownMenu.ListMenuItem
+                  key={option?.label}
+                  onClick={() => {
+                    setOpenedPanelId(option?.value);
+                  }}
+                >
+                  {option?.label}
+                </DropdownMenu.ListMenuItem>
+              ))}
+            </DropdownMenu>
+          </Tooltip>
         )}
       </Spacings.Inline>
       {openedPanelId === DISPLAY_SETTINGS && (
