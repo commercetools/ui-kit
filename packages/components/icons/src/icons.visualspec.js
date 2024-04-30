@@ -36,4 +36,9 @@ describe('Icons', () => {
     await page.waitForSelector('text/Leading Icon');
     await percySnapshot(page, `Icons - Leading Icon`);
   });
+  it('Custom Icon', async () => {
+    await page.goto(`${globalThis.HOST}/icons/custom-icon`);
+    await page.waitForSelector('text/Custom Icon');
+    await percySnapshot(page, 'Icons - Custom Icon');
+  });
 });

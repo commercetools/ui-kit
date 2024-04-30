@@ -2,10 +2,12 @@ import styled from '@emotion/styled';
 import { Switch, Route } from 'react-router-dom';
 import { designTokens } from '@commercetools-uikit/design-system';
 import * as icons from '@commercetools-uikit/icons';
+import CustomIcon from '@commercetools-uikit/icons/custom-icon';
 import InlineSvg from '@commercetools-uikit/icons/inline-svg';
 import LeadingIcon from '@commercetools-uikit/icons/leading-icon';
 import Text from '@commercetools-uikit/text';
 import Spacings from '@commercetools-uikit/spacings';
+import CustomReactSvg from './fixtures/CustomIconReact';
 import rawSvg from './fixtures/raw-svg';
 import { Suite, Spec } from '../../../../test/percy';
 
@@ -100,6 +102,9 @@ export const component = () => (
             href={`${routePath}/leading-icon`}
           >{`${routePath}/leading-icon`}</a>
         </li>
+        <li>
+          <a href={`${routePath}/custom-icon`}>{`${routePath}/custom-icon`}</a>
+        </li>
       </ul>
     </Route>
     {colors.map((color) => (
@@ -191,6 +196,50 @@ export const component = () => (
                     isInverted={true}
                   />
                   <Text.Detail>{`inverted`}</Text.Detail>
+                </Spacings.Stack>
+              </LeadingIconItem>
+            ))}
+          </LeadingIconList>
+        </Spec>
+      </Suite>
+    </Route>
+    <Route exact path={`${routePath}/custom-icon`}>
+      <Suite>
+        <Spec label={`Custom Icon - React Element`} omitPropsList>
+          <LeadingIconList label={`Custom Icon - React Element`}>
+            {leadingIconSizes.map((size) => (
+              <LeadingIconItem key={size}>
+                <Spacings.Stack alignItems="center">
+                  <CustomIcon size={size} icon={<CustomReactSvg />} />
+                  <Text.Detail>{`size ${size}`}</Text.Detail>
+                </Spacings.Stack>
+              </LeadingIconItem>
+            ))}
+          </LeadingIconList>
+        </Spec>
+        <Spec label={`Custom Icon - SVG String`} omitPropsList>
+          <LeadingIconList label={`Custom Icon - SVG String`}>
+            {leadingIconSizes.map((size) => (
+              <LeadingIconItem key={size}>
+                <Spacings.Stack alignItems="center">
+                  <CustomIcon size={size} icon={rawSvg.clock} />
+                  <Text.Detail>{` size ${size}`}</Text.Detail>
+                </Spacings.Stack>
+              </LeadingIconItem>
+            ))}
+          </LeadingIconList>
+        </Spec>
+        <Spec label={`Custom Icon - No Border`} omitPropsList>
+          <LeadingIconList label={`Custom Icon - No Border`}>
+            {leadingIconSizes.map((size) => (
+              <LeadingIconItem key={size}>
+                <Spacings.Stack alignItems="center">
+                  <CustomIcon
+                    size={size}
+                    icon={<CustomReactSvg />}
+                    hasBorder={false}
+                  />
+                  <Text.Detail>{`size ${size}`}</Text.Detail>
                 </Spacings.Stack>
               </LeadingIconItem>
             ))}
