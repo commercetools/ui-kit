@@ -4,6 +4,8 @@ import {
   ReactNode,
   MouseEventHandler,
   LegacyRef,
+  useState,
+  useEffect,
 } from 'react';
 import isEqual from 'lodash/isEqual';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
@@ -239,8 +241,19 @@ export type TDataTableProps<Row extends TRow = TRow> = {
 };
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
+  const [columns, setColumns] = useState<TColumn<TRow>[]>();
+
+  useEffect(() => {
+    // @ts-ignore
+    if (window && window.DataTableColumns && window.DataTableColumns.columns) {
+      // @ts-ignore
+      setColumns(window.DataTableColumns.columns);
+    }
+  }, []);
+
+  const columnsData = !props.columns ? columns : props.columns;
   warning(
-    props.columns.length > 0,
+    columnsData!.length > 0,
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
   );
   const tableRef = useRef<HTMLTableElement>();
@@ -249,7 +262,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   // if the table columns have been measured
   // and if the list of columns, their width field, or the isCondensed prop has changed
   // then we need to reset the resized column widths
-  const columnsInfo = getColumnsLayoutInfo(props.columns);
+  const columnsInfo = getColumnsLayoutInfo(columnsData!);
   const prevLayout = usePrevious({
     columns: columnsInfo,
     isCondensed: props.isCondensed,
@@ -283,7 +296,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
       <TableGrid
         ref={tableRef as LegacyRef<HTMLTableElement>}
         {...filterDataAttributes(props)}
-        columns={props.columns as TColumn<TRow>[]}
+        columns={columnsData as TColumn<TRow>[]}
         maxHeight={props.maxHeight}
         disableSelfContainment={!!props.disableSelfContainment}
         resizedTotalWidth={resizedTotalWidth}
@@ -291,7 +304,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         <ColumnResizingContext.Provider value={columnResizingReducer}>
           <TableHeader>
             <TableRow isRowClickable={false}>
-              {props.columns.map((column) => (
+              {columnsData!.map((column) => (
                 <HeaderCell
                   key={column.key}
                   shouldWrap={props.wrapHeaderLabels}
