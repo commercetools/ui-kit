@@ -1,9 +1,11 @@
-import React, {
+import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   type ReactElement,
   type ReactNode,
+  type RefObject,
 } from 'react';
 import { useToggleState } from '@commercetools-uikit/hooks';
 import { type TMaxProp } from '@commercetools-uikit/constraints';
@@ -21,6 +23,11 @@ export type TDropdownMenuProps = {
    * The position of the menu relative to the trigger element.
    */
   menuPosition?: 'left' | 'right';
+  /**
+   * The maximum height for the menu in pixels.
+   * By default, the max height will be the available space between the trigger element and the bottom of the viewport.
+   */
+  menuMaxHeight?: string;
   /**
    * The element that triggers the dropdown.
    */
@@ -40,6 +47,48 @@ export type TDropdownMenuProps = {
   children: ReactNode;
 };
 
+function getScrollableParent(element: HTMLElement | null): HTMLElement | null {
+  if (!element) {
+    return null;
+  }
+  const overflowY = window.getComputedStyle(element).overflowY;
+  const isScrollable = overflowY !== 'visible' && overflowY !== 'hidden';
+  if (isScrollable && element.scrollHeight >= element.clientHeight) {
+    return element;
+  }
+
+  return getScrollableParent(element.parentElement);
+}
+
+function useScrollBlock(isOpen: boolean, triggerRef: RefObject<HTMLElement>) {
+  const scrollableParentRef = useRef<HTMLElement | null>();
+
+  useEffect(() => {
+    if (!scrollableParentRef.current) {
+      scrollableParentRef.current = getScrollableParent(triggerRef.current);
+    }
+
+    const { current: scrollableParent } = scrollableParentRef;
+    if (scrollableParent && isOpen) {
+      scrollableParent.setAttribute(
+        'data-prev-scroll',
+        scrollableParent.style.overflowY
+      );
+      scrollableParent.style.overflowY = 'hidden';
+    }
+    return () => {
+      // The cleanup effect runs after the component is unmounted but also everytime
+      // the dependency array changes. We need to manage both to manage opening/closing
+      // the dropdown but also to manage the the dropdown is opened and the component
+      // is unmounted. For instance, when navigating to another page client-side.
+      if (scrollableParent && isOpen) {
+        const prevScroll = scrollableParent.getAttribute('data-prev-scroll');
+        scrollableParent.style.overflowY = prevScroll || '';
+      }
+    };
+  }, [isOpen, scrollableParentRef, triggerRef]);
+}
+
 const defaultProps: Pick<
   TDropdownMenuProps,
   'menuPosition' | 'menuType' | 'menuHorizontalConstraint'
@@ -56,7 +105,7 @@ const Container = styled.div`
 
 function DropdownMenu(props: TDropdownMenuProps) {
   const [isOpen, toggle] = useToggleState(false);
-  const triggerRef = React.useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
 
   // We use the context so children can toggle the dropdown
   const context = useMemo(
@@ -91,17 +140,10 @@ function DropdownMenu(props: TDropdownMenuProps) {
       window.removeEventListener('click', handleGlobalClick);
     };
   }, [handleGlobalClick]);
-  // Block scrolling when the dropdown is open
-  useEffect(() => {
-    if (isOpen) {
-      window.document.body.style.overflow = 'hidden';
-    } else {
-      window.document.body.style.overflow = 'initial';
-    }
-    return () => {
-      window.document.body.style.overflow = 'initial';
-    };
-  }, [isOpen]);
+
+  // Block scrolling when the dropdown is open.
+  // We do this to avoid requiring dropdown rerendering while the user scrolls.
+  useScrollBlock(isOpen, triggerRef);
 
   return (
     <DropdownMenuContext.Provider value={context}>

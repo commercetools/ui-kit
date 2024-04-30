@@ -10,6 +10,9 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import Constraints, { type TMaxProp } from '@commercetools-uikit/constraints';
 import SpacingsStack from '@commercetools-uikit/spacings-stack';
 
+// We declare this style properties here because we need them both for initial component styling
+// but also for calculating the default max height of the dropdown menu so we make sure it fits
+// within the viewport.
 const boxShadowBottomSize = '5px';
 const marginTop = designTokens.spacing20;
 
