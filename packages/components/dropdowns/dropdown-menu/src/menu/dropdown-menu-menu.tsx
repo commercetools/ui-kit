@@ -41,6 +41,7 @@ type TDropdownBaseMenuProps = {
   horizontalConstraint: TMaxProp;
   isOpen: boolean;
   menuPosition: 'left' | 'right';
+  menuMaxHeight?: number;
   triggerElementRef: RefObject<HTMLElement>;
 };
 function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
@@ -64,12 +65,19 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
               triggerElementCoordinates.width -
               menuElementCoordinates.width
             }px`;
-      menuRef.current.style.maxHeight = `calc(${
-        window.innerHeight -
-        (triggerElementCoordinates.top + triggerElementCoordinates.height)
-      }px - ${marginTop} - ${boxShadowBottomSize})`;
+      menuRef.current.style.maxHeight = props.menuMaxHeight
+        ? `${props.menuMaxHeight}px`
+        : `calc(${
+            window.innerHeight -
+            (triggerElementCoordinates.top + triggerElementCoordinates.height)
+          }px - ${marginTop} - ${boxShadowBottomSize})`;
     }
-  }, [props.isOpen, props.menuPosition, props.triggerElementRef]);
+  }, [
+    props.isOpen,
+    props.menuPosition,
+    props.triggerElementRef,
+    props.menuMaxHeight,
+  ]);
 
   return (
     <div
@@ -86,6 +94,7 @@ export type TDropdownContentMenuProps = {
   children: ReactNode;
   horizontalConstraint: TMaxProp;
   menuPosition: 'left' | 'right';
+  menuMaxHeight?: number;
   isOpen: boolean;
   triggerElementRef: RefObject<HTMLElement>;
 };
@@ -98,6 +107,7 @@ export const DropdownContentMenu = (props: TDropdownContentMenuProps) => {
       horizontalConstraint={props.horizontalConstraint}
       isOpen={props.isOpen}
       menuPosition={props.menuPosition}
+      menuMaxHeight={props.menuMaxHeight}
       triggerElementRef={props.triggerElementRef}
     >
       {props.children}
@@ -109,6 +119,7 @@ export type TDropdownListMenuProps = {
   children: ReactNode;
   horizontalConstraint: TMaxProp;
   menuPosition: 'left' | 'right';
+  menuMaxHeight?: number;
   isOpen: boolean;
   triggerElementRef: RefObject<HTMLElement>;
 };
@@ -118,6 +129,7 @@ export const DropdownListMenu = (props: TDropdownListMenuProps) => {
       horizontalConstraint={props.horizontalConstraint}
       isOpen={props.isOpen}
       menuPosition={props.menuPosition}
+      menuMaxHeight={props.menuMaxHeight}
       triggerElementRef={props.triggerElementRef}
     >
       <SpacingsStack scale="xs">{props.children}</SpacingsStack>

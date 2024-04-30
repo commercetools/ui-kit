@@ -36,6 +36,7 @@ storiesOf('Components|Dropdowns|DropdownMenu', module)
             6
           )}
           menuPosition={select('Menu position', ['left', 'right'], 'left')}
+          menuMaxHeight={number('menuMaxHeight', 0)}
           menuType="list"
         >
           {new Array(optionsCount).fill().map((_, index) => (

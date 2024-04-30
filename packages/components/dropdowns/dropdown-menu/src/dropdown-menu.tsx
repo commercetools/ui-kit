@@ -27,7 +27,7 @@ export type TDropdownMenuProps = {
    * The maximum height for the menu in pixels.
    * By default, the max height will be the available space between the trigger element and the bottom of the viewport.
    */
-  menuMaxHeight?: string;
+  menuMaxHeight?: number;
   /**
    * The element that triggers the dropdown.
    */
@@ -156,6 +156,7 @@ function DropdownMenu(props: TDropdownMenuProps) {
           horizontalConstraint={props.menuHorizontalConstraint!}
           isOpen={isOpen}
           menuPosition={props.menuPosition!}
+          menuMaxHeight={props.menuMaxHeight}
           triggerElementRef={triggerRef}
         >
           {props.children}
