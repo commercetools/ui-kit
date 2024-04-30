@@ -4,7 +4,6 @@ import {
   type ReactElement,
   type ReactNode,
   type MouseEventHandler,
-  useState,
   useEffect,
 } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
@@ -148,31 +147,16 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
   managerTheme?: 'light' | 'dark';
 };
 
-type TColumns = {
-  isTruncated?: boolean;
-  key: string;
-  label: ReactNode;
-  width?: string;
-  align?: 'left' | 'center' | 'right';
-  onClick?: (event: MouseEventHandler) => void;
-  headerIcon?: ReactNode;
-  isSortable?: boolean;
-  disableResizing?: boolean;
-  shouldIgnoreRowClick?: boolean;
-};
-
 const DataTableManager = <Row extends TRow = TRow>(
   props: TDataTableManagerProps<Row>
 ) => {
-  const [columns, setColumns] = useState<TColumns[]>();
-
   const areDisplaySettingsEnabled = Boolean(
     props.displaySettings && !props.displaySettings.disableDisplaySettings
   );
   const isWrappingText =
     areDisplaySettingsEnabled && props.displaySettings!.isWrappingText;
 
-  const updateColumns = useMemo(
+  const columns = useMemo(
     () =>
       props.columns.map((column) => ({
         ...column,
@@ -184,10 +168,9 @@ const DataTableManager = <Row extends TRow = TRow>(
   );
 
   useEffect(() => {
-    setColumns(updateColumns);
-    // @ts-ignore
+    //  @ts-ignore
     window.DataTableColumns = { columns };
-  }, [columns, updateColumns]);
+  }, [columns]);
 
   return props.children ? (
     <Spacings.Stack>
