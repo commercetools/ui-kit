@@ -4,8 +4,6 @@ import {
   ReactNode,
   MouseEventHandler,
   LegacyRef,
-  useState,
-  useEffect,
 } from 'react';
 import isEqual from 'lodash/isEqual';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
@@ -241,17 +239,12 @@ export type TDataTableProps<Row extends TRow = TRow> = {
 };
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
-  const [columns, setColumns] = useState<TColumn<TRow>[]>();
-
-  useEffect(() => {
+  const columns =
     // @ts-ignore
-    if (window && window.DataTableColumns && window.DataTableColumns.columns) {
-      // @ts-ignore
-      setColumns(window.DataTableColumns.columns);
-    }
-  }, []);
+    window && window.DataTableColumns && window.DataTableColumns.columns;
 
-  const columnsData = !props.columns ? columns : props.columns;
+  const columnsData: TColumn<Row>[] =
+    columns && columns.length !== 0 ? columns : props.columns;
   warning(
     columnsData!.length > 0,
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
@@ -285,6 +278,10 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         // if the table has a maxHeight, it might add a scrollbar which takes space inside the container
         (tableRef.current.offsetWidth - tableRef.current.clientWidth)
       : undefined;
+  const updatedProps = {
+    ...props,
+    columns: columnsData,
+  };
 
   return (
     <TableContainer
@@ -304,7 +301,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         <ColumnResizingContext.Provider value={columnResizingReducer}>
           <TableHeader>
             <TableRow isRowClickable={false}>
-              {columnsData!.map((column) => (
+              {columnsData.map((column) => (
                 <HeaderCell
                   key={column.key}
                   shouldWrap={props.wrapHeaderLabels}
@@ -332,7 +329,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
           <TableBody>
             {props.rows.map((row, rowIndex) => (
               <DataRow<Row>
-                {...props}
+                {...updatedProps}
                 row={row}
                 key={row.id}
                 rowIndex={rowIndex}
