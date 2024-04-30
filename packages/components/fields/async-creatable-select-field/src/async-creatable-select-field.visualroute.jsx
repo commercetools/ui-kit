@@ -111,6 +111,17 @@ const DefaultRoute = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
+    <Spec label="is condensed">
+      <AsyncCreatableSelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        isCondensed={true}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+      />
+    </Spec>
   </Suite>
 );
 

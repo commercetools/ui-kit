@@ -1,5 +1,25 @@
 # @commercetools-uikit/async-creatable-select-field
 
+## 19.2.0
+
+### Minor Changes
+
+- [#2799](https://github.com/commercetools/ui-kit/pull/2799) [`52e5c72`](https://github.com/commercetools/ui-kit/commit/52e5c72535ae665dcb1a6410985ec6746be0f435) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Add isCondensed prop that when set to true, condenses the input height, icon size and font size.
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`52e5c72`](https://github.com/commercetools/ui-kit/commit/52e5c72535ae665dcb1a6410985ec6746be0f435), [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/async-creatable-select-input@19.2.0
+  - @commercetools-uikit/field-warnings@19.2.0
+  - @commercetools-uikit/field-errors@19.2.0
+  - @commercetools-uikit/constraints@19.2.0
+  - @commercetools-uikit/field-label@19.2.0
+  - @commercetools-uikit/spacings@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+
 ## 19.1.0
 
 ### Patch Changes

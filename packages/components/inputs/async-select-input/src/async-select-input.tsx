@@ -164,6 +164,10 @@ export type TAsyncSelectInputProps = {
    */
   isClearable?: ReactSelectAsyncProps['isClearable'];
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Is the select disabled
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -383,6 +387,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
               hasError: props.hasError,
               showOptionGroupDivider: props.showOptionGroupDivider,
               menuPortalZIndex: props.menuPortalZIndex,
+              isCondensed: props.isCondensed,
               isDisabled: props.isDisabled,
               isReadOnly: props.isReadOnly,
               iconLeft: props.iconLeft,
@@ -471,6 +476,7 @@ const AsyncSelectInput = (props: TAsyncSelectInputProps) => {
           cacheOptions={props.cacheOptions}
           // Extra props
           // @ts-ignore: passed to the react-select components via `selectProps`.
+          isCondensed={props.isCondensed}
           iconLeft={props.iconLeft}
           controlShouldRenderValue={props.controlShouldRenderValue}
         />
