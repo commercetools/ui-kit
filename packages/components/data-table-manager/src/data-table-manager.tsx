@@ -4,6 +4,8 @@ import {
   type ReactElement,
   type ReactNode,
   type MouseEventHandler,
+  useState,
+  useEffect,
 } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
@@ -115,7 +117,7 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
    * <br>
    * Note that the child component will implicitly receive the props `columns` and `isCondensed` from the `<DataTableManager>`.
    */
-  children: ReactElement;
+  children?: ReactElement;
 
   /**
    * The managed display settings of the table.
@@ -146,16 +148,31 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
   managerTheme?: 'light' | 'dark';
 };
 
+type TColumns = {
+  isTruncated?: boolean;
+  key: string;
+  label: ReactNode;
+  width?: string;
+  align?: 'left' | 'center' | 'right';
+  onClick?: (event: MouseEventHandler) => void;
+  headerIcon?: ReactNode;
+  isSortable?: boolean;
+  disableResizing?: boolean;
+  shouldIgnoreRowClick?: boolean;
+};
+
 const DataTableManager = <Row extends TRow = TRow>(
   props: TDataTableManagerProps<Row>
 ) => {
+  const [columns, setColumns] = useState<TColumns[]>();
+
   const areDisplaySettingsEnabled = Boolean(
     props.displaySettings && !props.displaySettings.disableDisplaySettings
   );
   const isWrappingText =
     areDisplaySettingsEnabled && props.displaySettings!.isWrappingText;
 
-  const columns = useMemo(
+  const updateColumns = useMemo(
     () =>
       props.columns.map((column) => ({
         ...column,
@@ -166,7 +183,13 @@ const DataTableManager = <Row extends TRow = TRow>(
     [areDisplaySettingsEnabled, props.columns, isWrappingText]
   );
 
-  return (
+  useEffect(() => {
+    setColumns(updateColumns);
+    // @ts-ignore
+    window.DataTableColumns = { columns };
+  }, [columns, updateColumns]);
+
+  return props.children ? (
     <Spacings.Stack>
       <DataTableSettings
         topBar={props.topBar}
@@ -181,6 +204,14 @@ const DataTableManager = <Row extends TRow = TRow>(
           areDisplaySettingsEnabled && props.displaySettings!.isCondensed,
       })}
     </Spacings.Stack>
+  ) : (
+    <DataTableSettings
+      topBar={props.topBar}
+      onSettingsChange={props.onSettingsChange}
+      columnManager={props.columnManager}
+      displaySettings={props.displaySettings}
+      managerTheme="light"
+    />
   );
 };
 
