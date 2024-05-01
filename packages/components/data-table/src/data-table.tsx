@@ -4,6 +4,7 @@ import {
   ReactNode,
   MouseEventHandler,
   LegacyRef,
+  useContext,
 } from 'react';
 import isEqual from 'lodash/isEqual';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
@@ -20,6 +21,7 @@ import HeaderCell from './header-cell';
 import DataRow from './data-row';
 import useManualColumnResizing from './use-manual-column-resizing-reducer';
 import ColumnResizingContext from './column-resizing-context';
+import { DataTableManagerContext } from '../../data-table-manager/src/data-table-manager';
 
 export interface TRow {
   id: string;
@@ -239,8 +241,13 @@ export type TDataTableProps<Row extends TRow = TRow> = {
 };
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
+  const useDataTableManagerContext = () => useContext(DataTableManagerContext);
+
+  const { columns } = useDataTableManagerContext();
+  const columnsData = columns && columns.length !== 0 ? columns : props.columns;
+
   warning(
-    props.columns.length > 0,
+    columnsData.length > 0,
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
   );
   const tableRef = useRef<HTMLTableElement>();
@@ -249,7 +256,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   // if the table columns have been measured
   // and if the list of columns, their width field, or the isCondensed prop has changed
   // then we need to reset the resized column widths
-  const columnsInfo = getColumnsLayoutInfo(props.columns);
+  const columnsInfo = getColumnsLayoutInfo(columnsData);
   const prevLayout = usePrevious({
     columns: columnsInfo,
     isCondensed: props.isCondensed,
@@ -273,6 +280,11 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         (tableRef.current.offsetWidth - tableRef.current.clientWidth)
       : undefined;
 
+  const updatedProps = {
+    ...props,
+    columns: columnsData,
+  };
+
   return (
     <TableContainer
       maxWidth={props.maxWidth}
@@ -283,7 +295,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
       <TableGrid
         ref={tableRef as LegacyRef<HTMLTableElement>}
         {...filterDataAttributes(props)}
-        columns={props.columns as TColumn<TRow>[]}
+        columns={columnsData as TColumn<TRow>[]}
         maxHeight={props.maxHeight}
         disableSelfContainment={!!props.disableSelfContainment}
         resizedTotalWidth={resizedTotalWidth}
@@ -291,7 +303,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         <ColumnResizingContext.Provider value={columnResizingReducer}>
           <TableHeader>
             <TableRow isRowClickable={false}>
-              {props.columns.map((column) => (
+              {columnsData.map((column) => (
                 <HeaderCell
                   key={column.key}
                   shouldWrap={props.wrapHeaderLabels}
@@ -319,7 +331,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
           <TableBody>
             {props.rows.map((row, rowIndex) => (
               <DataRow<Row>
-                {...props}
+                {...updatedProps}
                 row={row}
                 key={row.id}
                 rowIndex={rowIndex}

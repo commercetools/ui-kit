@@ -1,4 +1,4 @@
-import { useState, useMemo, useContext } from 'react';
+import { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean, select, withKnobs } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
@@ -10,10 +10,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Readme from '../README.md';
 import { UPDATE_ACTIONS } from './constants';
-import DataTableManager, {
-  DataTableProvider,
-  DataTableManagerContext,
-} from './data-table-manager';
+import DataTableManager, { DataTableProvider } from './data-table-manager';
 
 const items = [
   {
@@ -293,12 +290,6 @@ storiesOf('Components|DataTable', module)
       ...columnManagerButtons,
     };
 
-    const useDataTableManagerContext = () =>
-      useContext(DataTableManagerContext);
-
-    const { columns } = useDataTableManagerContext();
-    console.log({ columns_from_manager_provider: columns });
-
     return (
       <>
         <DataTableProvider>
@@ -325,7 +316,6 @@ storiesOf('Components|DataTable', module)
             onSortChange={onSortChange}
             sortDirection={sortDirection}
             footer={footer}
-            columns={columnsWithSelect}
             isCondensed={isCondensed}
           />
         </DataTableProvider>

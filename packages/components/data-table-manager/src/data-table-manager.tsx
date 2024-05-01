@@ -6,10 +6,14 @@ import {
   createContext,
   useState,
   useEffect,
+  useCallback,
+  cloneElement,
+  ReactElement,
 } from 'react';
 import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
+import { Spacings } from '@commercetools-frontend/ui-kit';
 
 export interface TRow {
   id: string;
@@ -116,7 +120,7 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
    * <br>
    * Note that the child component will implicitly receive the props `columns` and `isCondensed` from the `<DataTableManager>`.
    */
-  // children: ReactElement;
+  children?: ReactElement;
 
   /**
    * The managed display settings of the table.
@@ -147,13 +151,23 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
   managerTheme?: 'light' | 'dark';
 };
 
-type TColumns = Pick<TDataTableManagerProps<TRow>, 'columns'>[];
+type TDataColumns = {
+  isTruncated?: boolean;
+  key: string;
+  label: ReactNode;
+  width?: string;
+  align?: 'left' | 'center' | 'right';
+  onClick?: (event: MouseEventHandler) => void;
+  // renderItem?: ((row: Row, isRowCollapsed: boolean) => ReactNode);
+  headerIcon?: ReactNode;
+  isSortable?: boolean;
+  disableResizing?: boolean;
+  shouldIgnoreRowClick?: boolean;
+}[];
 
 type TDataTableManagerContext = {
-  columns: TColumns;
-  // isCondensed: boolean;
-  // getIsCondensed?: (isCondensed: boolean) => void
-  getColumns?: (columns: TColumns) => void;
+  columns: TDataColumns;
+  getColumns?: (columns: TDataColumns) => void;
 };
 
 export const DataTableManagerContext = createContext<TDataTableManagerContext>({
@@ -164,13 +178,11 @@ export const DataTableProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [columns, setColumns] = useState<
-    Pick<TDataTableManagerProps, 'columns'>[]
-  >([]);
+  const [columns, setColumns] = useState<TDataColumns>([]);
 
-  const getColumns = (
-    columnsFromManager: Pick<TDataTableManagerProps, 'columns'>[]
-  ) => setColumns(columnsFromManager);
+  const getColumns = useCallback((columnsFromManager: TDataColumns) => {
+    return setColumns(columnsFromManager);
+  }, []);
 
   return (
     <DataTableManagerContext.Provider value={{ columns, getColumns }}>
@@ -203,11 +215,25 @@ const DataTableManager = <Row extends TRow = TRow>(
   const { getColumns } = useDataTableManagerContext();
 
   useEffect(() => {
-    // @ts-ignore
     getColumns!(columns);
   }, [columns, getColumns]);
 
-  return (
+  return props.children ? (
+    <Spacings.Stack>
+      <DataTableSettings
+        topBar={props.topBar}
+        onSettingsChange={props.onSettingsChange}
+        columnManager={props.columnManager}
+        displaySettings={props.displaySettings}
+        managerTheme="light"
+      />
+      {cloneElement(props.children, {
+        columns,
+        isCondensed:
+          areDisplaySettingsEnabled && props.displaySettings!.isCondensed,
+      })}
+    </Spacings.Stack>
+  ) : (
     <DataTableSettings
       topBar={props.topBar}
       onSettingsChange={props.onSettingsChange}
