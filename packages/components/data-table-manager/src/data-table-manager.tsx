@@ -4,7 +4,6 @@ import {
   type ReactElement,
   type ReactNode,
   type MouseEventHandler,
-  useEffect,
 } from 'react';
 import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
@@ -167,10 +166,8 @@ const DataTableManager = <Row extends TRow = TRow>(
     [areDisplaySettingsEnabled, props.columns, isWrappingText]
   );
 
-  useEffect(() => {
-    //  @ts-ignore
-    window.DataTableColumns = { columns };
-  }, [columns]);
+  //  @ts-ignore
+  window.dataTableColumns = { columns };
 
   return props.children ? (
     <Spacings.Stack>

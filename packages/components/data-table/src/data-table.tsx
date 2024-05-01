@@ -241,10 +241,11 @@ export type TDataTableProps<Row extends TRow = TRow> = {
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   const columns =
     // @ts-ignore
-    window && window.DataTableColumns && window.DataTableColumns.columns;
+    window && window.dataTableColumns && window.dataTableColumns.columns;
 
   const columnsData: TColumn<Row>[] =
     columns && columns.length !== 0 ? columns : props.columns;
+
   warning(
     columnsData!.length > 0,
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
