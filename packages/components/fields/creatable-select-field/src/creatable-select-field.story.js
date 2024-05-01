@@ -142,6 +142,7 @@ storiesOf('Components|Fields/SelectFields', module)
                 onFocus={action('onFocus')}
                 onInputChange={action('onInputChange')}
                 isAutofocussed={boolean('isAutofocussed', false)}
+                isCondensed={boolean('isCondensed', false)}
                 isDisabled={boolean('isDisabled', false)}
                 isReadOnly={boolean('isReadOnly', false)}
                 isMulti={isMulti}

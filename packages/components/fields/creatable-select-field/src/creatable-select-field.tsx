@@ -268,6 +268,10 @@ export type TCreatableSelectFieldProps = {
    */
   placeholder?: ReactSelectCreatableProps['placeholder'];
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Sets the tabIndex attribute on the input
    * <br>
    * [Props from React select was used](https://react-select.com/props#creatable-props)
@@ -494,6 +498,8 @@ export default class CreatableSelectField extends Component<
             createOptionPosition={this.props.createOptionPosition}
             showOptionGroupDivider={this.props.showOptionGroupDivider}
             iconLeft={this.props.iconLeft}
+            // @ts-ignore
+            isCondensed={this.props.isCondensed}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors
