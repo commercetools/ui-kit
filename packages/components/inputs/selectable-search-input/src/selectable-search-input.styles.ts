@@ -5,6 +5,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import { createSelectStyles } from '@commercetools-uikit/select-utils';
 
 type TInputProps = {
+  isCondensed?: boolean;
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
@@ -161,7 +162,9 @@ const getSelectableSearchInputContainerStyles = (props: TInputProps) => [
     border: 1px solid ${getInputContainerBorderColor(props)};
     border-radius: ${designTokens.borderRadiusForInput};
     box-shadow: ${getInputBoxShadow(props)};
-    height: ${designTokens.heightForInput};
+    height: ${props.isCondensed
+      ? `${designTokens.heightForInputAsSmall}`
+      : `${designTokens.heightForInput}`};
     box-sizing: border-box;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -206,6 +209,7 @@ type TBase = {
 };
 
 type TCreateSelectableSelectStyles = {
+  isCondensed?: boolean;
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
@@ -234,6 +238,7 @@ type TCreateSelectableSelectStyles = {
 const createSelectableSelectStyles = ({
   hasWarning,
   hasError,
+  isCondensed,
   isDisabled,
   isReadOnly,
   menuPortalZIndex,
@@ -258,6 +263,11 @@ const createSelectableSelectStyles = ({
       borderBottomRightRadius: '0',
       borderRight: '0',
       height: '100%',
+      fontSize: `${
+        isCondensed
+          ? `${designTokens.fontSize20}`
+          : `${designTokens.fontSize30}`
+      }`,
       borderColor: (() => {
         if (isDisabled)
           return `${designTokens.borderColorForInputWhenDisabled} !important`;
