@@ -1,5 +1,25 @@
 # @commercetools-uikit/localized-text-field
 
+## 19.2.0
+
+### Minor Changes
+
+- [#2792](https://github.com/commercetools/ui-kit/pull/2792) [`77ea50a`](https://github.com/commercetools/ui-kit/commit/77ea50a184fd1f51832f46a5ce174cc93a1a6e6e) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for isCondensed prop to LocalizedTextField
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`d72e043`](https://github.com/commercetools/ui-kit/commit/d72e043db3f31c330c4a8c34a7b3fbd623387fb3), [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526), [`2c9b378`](https://github.com/commercetools/ui-kit/commit/2c9b378019e6253c0bbdec2f937a275327658c96)]:
+  - @commercetools-uikit/localized-text-input@19.2.0
+  - @commercetools-uikit/field-warnings@19.2.0
+  - @commercetools-uikit/field-errors@19.2.0
+  - @commercetools-uikit/constraints@19.2.0
+  - @commercetools-uikit/field-label@19.2.0
+  - @commercetools-uikit/spacings@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+
 ## 19.1.0
 
 ### Patch Changes

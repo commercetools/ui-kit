@@ -1,5 +1,51 @@
 # @commercetools-frontend/ui-kit
 
+## 19.2.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/selectable-search-input@19.2.0
+  - @commercetools-uikit/dropdown-menu@19.2.0
+  - @commercetools-uikit/primary-action-dropdown@19.2.0
+  - @commercetools-uikit/collapsible-motion@19.2.0
+  - @commercetools-uikit/data-table-manager@19.2.0
+  - @commercetools-uikit/accessible-hidden@19.2.0
+  - @commercetools-uikit/collapsible-panel@19.2.0
+  - @commercetools-uikit/loading-spinner@19.2.0
+  - @commercetools-uikit/notifications@19.2.0
+  - @commercetools-uikit/view-switcher@19.2.0
+  - @commercetools-uikit/field-errors@19.2.0
+  - @commercetools-uikit/progress-bar@19.2.0
+  - @commercetools-uikit/collapsible@19.2.0
+  - @commercetools-uikit/constraints@19.2.0
+  - @commercetools-uikit/field-label@19.2.0
+  - @commercetools-uikit/data-table@19.2.0
+  - @commercetools-uikit/pagination@19.2.0
+  - @commercetools-uikit/messages@19.2.0
+  - @commercetools-uikit/tooltip@19.2.0
+  - @commercetools-uikit/avatar@19.2.0
+  - @commercetools-uikit/icons@19.2.0
+  - @commercetools-uikit/label@19.2.0
+  - @commercetools-uikit/stamp@19.2.0
+  - @commercetools-uikit/card@19.2.0
+  - @commercetools-uikit/grid@19.2.0
+  - @commercetools-uikit/link@19.2.0
+  - @commercetools-uikit/text@19.2.0
+  - @commercetools-uikit/tag@19.2.0
+  - @commercetools-uikit/spacings@19.2.0
+  - @commercetools-uikit/buttons@19.2.0
+  - @commercetools-uikit/hooks@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/fields@19.2.0
+  - @commercetools-uikit/inputs@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+  - @commercetools-uikit/i18n@19.2.0
+
 ## 19.1.0
 
 ### Minor Changes

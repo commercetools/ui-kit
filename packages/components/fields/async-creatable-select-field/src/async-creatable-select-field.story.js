@@ -192,6 +192,7 @@ storiesOf('Components|Fields/SelectFields', module)
                 hintIcon={hintIcon}
                 badge={text('badge', '')}
                 iconLeft={iconLeft ? createElement(iconLeft) : undefined}
+                isCondensed={boolean('isCondensed', false)}
                 {...addMenuPortalProps()}
               />
               <NeighbouringStackingContext />

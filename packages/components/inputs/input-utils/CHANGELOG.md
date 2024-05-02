@@ -1,5 +1,21 @@
 # @commercetools-uikit/input-utils
 
+## 19.2.0
+
+### Minor Changes
+
+- [#2793](https://github.com/commercetools/ui-kit/pull/2793) [`d72e043`](https://github.com/commercetools/ui-kit/commit/d72e043db3f31c330c4a8c34a7b3fbd623387fb3) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for isCondensed property on LocalizedMultilineTextInput
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/flat-button@19.2.0
+  - @commercetools-uikit/icons@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+
 ## 19.1.0
 
 ### Minor Changes

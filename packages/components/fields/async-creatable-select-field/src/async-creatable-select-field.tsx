@@ -160,6 +160,10 @@ export type TAsyncCreatableSelectFieldProps = {
    */
   isClearable?: ReactSelectAsyncCreatableProps['isClearable'];
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Is the select disabled
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -519,6 +523,7 @@ export default class AsyncCreatableSelectField extends Component<
             createOptionPosition={this.props.createOptionPosition}
             showOptionGroupDivider={this.props.showOptionGroupDivider}
             iconLeft={this.props.iconLeft}
+            isCondensed={this.props.isCondensed}
             {...filterDataAttributes(this.props)}
           />
           <FieldErrors

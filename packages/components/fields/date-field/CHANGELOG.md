@@ -1,5 +1,25 @@
 # @commercetools-uikit/date-field
 
+## 19.2.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+- [#2795](https://github.com/commercetools/ui-kit/pull/2795) [`4dbbe80`](https://github.com/commercetools/ui-kit/commit/4dbbe80c2f6eede8b66a3cf2bc95ddd7c89cfcf6) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Add isCondensed prop that when set to true, condenses the input height, icon size and font size.
+
+### Patch Changes
+
+- Updated dependencies [[`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526), [`cd9c9b0`](https://github.com/commercetools/ui-kit/commit/cd9c9b0bf63ca846549d7f8a64773b39b225a0f9)]:
+  - @commercetools-uikit/date-input@19.2.0
+  - @commercetools-uikit/field-warnings@19.2.0
+  - @commercetools-uikit/field-errors@19.2.0
+  - @commercetools-uikit/constraints@19.2.0
+  - @commercetools-uikit/field-label@19.2.0
+  - @commercetools-uikit/spacings@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+
 ## 19.1.0
 
 ### Patch Changes
