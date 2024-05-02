@@ -1,8 +1,13 @@
-// use negative margin to make it so that border doesnt shift content?
 import { designTokens } from '@commercetools-uikit/design-system';
 import { css } from '@emotion/react';
-import { sizeMap } from '../leading-icon/leading-icon.styles';
 import { type TCustomIconProps } from './custom-icon';
+
+const sizeMap = {
+  10: designTokens.spacing50,
+  20: `calc(${designTokens.spacing50} + ${designTokens.spacing20})`,
+  30: designTokens.spacing60,
+  40: designTokens.spacing70,
+};
 
 export const getCustomIconStyles = (props: TCustomIconProps) => {
   const sizeStyles = {

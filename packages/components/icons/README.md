@@ -127,11 +127,11 @@ const app = () => <Icon icon={<YourCustomIcon />} />;
 
 ### Properties
 
-| Props       | Type                                                      | Required | Values                                              | Default | Description                                                                                                     |
-| ----------- | --------------------------------------------------------- | :------: | --------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------- |
-| `size`      | `string`                                                  |          | '10', '20', '30', '40'                              | '20'    | Specifies the icon size                                                                                         |
-| `icon`      | `union`<br/>Possible values:<br/>`, ReactElement, string` |    -     | A `ReactNode` or `string` that display a custom SVG |         | Icon that is displayed within the component, you must supply a child icon with with this prop or the `svg` prop |
-| `hasBorder` | `boolean`                                                 |          | `true`, `false`                                     | `false` | Specifies whether the element displays a border                                                                 |
+| Props       | Type                                                      | Required | Values                                              | Default | Description                                     |
+| ----------- | --------------------------------------------------------- | :------: | --------------------------------------------------- | ------- | ----------------------------------------------- |
+| `size`      | `string`                                                  |          | '10', '20', '30', '40'                              | '20'    | Specifies the icon size                         |
+| `icon`      | `union`<br/>Possible values:<br/>`, ReactElement, string` |    -     | A `ReactNode` or `string` that display a custom SVG |         | Icon displayed as a child of this component     |
+| `hasBorder` | `boolean`                                                 |          | `true`, `false`                                     | `false` | Specifies whether the element displays a border |
 
 ### Where to use
 
