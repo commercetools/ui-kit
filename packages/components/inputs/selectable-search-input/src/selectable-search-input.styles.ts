@@ -263,11 +263,10 @@ const createSelectableSelectStyles = ({
       borderBottomRightRadius: '0',
       borderRight: '0',
       height: '100%',
-      fontSize: `${
-        isCondensed
-          ? `${designTokens.fontSize20}`
-          : `${designTokens.fontSize30}`
-      }`,
+      fontSize: isCondensed ? designTokens.fontSize20 : designTokens.fontSize30,
+      minHeight: isCondensed
+        ? designTokens.heightForInputAsSmall
+        : designTokens.heightForInput,
       borderColor: (() => {
         if (isDisabled)
           return `${designTokens.borderColorForInputWhenDisabled} !important`;
