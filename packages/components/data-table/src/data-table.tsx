@@ -4,6 +4,7 @@ import {
   ReactNode,
   MouseEventHandler,
   LegacyRef,
+  useContext,
 } from 'react';
 import isEqual from 'lodash/isEqual';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
@@ -20,6 +21,7 @@ import HeaderCell from './header-cell';
 import DataRow from './data-row';
 import useManualColumnResizing from './use-manual-column-resizing-reducer';
 import ColumnResizingContext from './column-resizing-context';
+import { DataTableManagerContext } from '../../data-table-manager/src/data-table-manager';
 
 export interface TRow {
   id: string;
@@ -239,15 +241,13 @@ export type TDataTableProps<Row extends TRow = TRow> = {
 };
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
-  const columns =
-    // @ts-ignore
-    window && window.dataTableColumns && window.dataTableColumns.columns;
+  const useDataTableManagerContext = () => useContext(DataTableManagerContext);
 
-  const columnsData: TColumn<Row>[] =
-    columns && columns.length !== 0 ? columns : props.columns;
+  const { columns } = useDataTableManagerContext();
+  const columnsData = columns && columns.length !== 0 ? columns : props.columns;
 
   warning(
-    columnsData!.length > 0,
+    columnsData.length > 0,
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
   );
   const tableRef = useRef<HTMLTableElement>();
@@ -256,7 +256,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   // if the table columns have been measured
   // and if the list of columns, their width field, or the isCondensed prop has changed
   // then we need to reset the resized column widths
-  const columnsInfo = getColumnsLayoutInfo(columnsData!);
+  const columnsInfo = getColumnsLayoutInfo(columnsData);
   const prevLayout = usePrevious({
     columns: columnsInfo,
     isCondensed: props.isCondensed,
@@ -279,6 +279,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         // if the table has a maxHeight, it might add a scrollbar which takes space inside the container
         (tableRef.current.offsetWidth - tableRef.current.clientWidth)
       : undefined;
+
   const updatedProps = {
     ...props,
     columns: columnsData,

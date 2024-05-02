@@ -12,6 +12,7 @@ This component enhances the `<DataTable>` component and additionally provides a 
 
 - The `disableDisplaySettings` enables / disables the layout settings panel, allowing the user to select wrapping text and density display options.
 - The `disableColumnManager` enables / disables the column manager panel, allowing the user to select which columns are visible.
+- To Detach the `DatatableManager` settings dropdown from the Datatable and position it anywhere else, you would need to import a `DataTableProvider` and wrap both components with the provider.
 
 Both panels delegate the handling of the settings change on the parent through function properties, allowing the settings to be persisted or just used as state props.
 
@@ -38,7 +39,9 @@ npm --save install react react-dom react-intl
 ## Usage
 
 ```jsx
-import DataTableManager from '@commercetools-uikit/data-table-manager';
+import DataTableManager, {
+  DataTableProvider,
+} from '@commercetools-uikit/data-table-manager';
 import DataTable from '@commercetools-uikit/data-table';
 
 const rows = [
@@ -53,9 +56,10 @@ const columns = [
 ];
 
 const Example = () => (
-  <DataTableManager columns={columns}>
+  <DataTableProvider>
+    <DataTableManager columns={columns} />
     <DataTable rows={rows} />
-  </DataTableManager>
+  </DataTableProvider>
 );
 
 export default Example;
@@ -63,8 +67,8 @@ export default Example;
 
 ## Properties
 
-| Props                     | Type                                                           | Required | Default                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| ------------------------- | -------------------------------------------------------------- | :------: | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Props                                          | Type                                                        | Required | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ---------------------------------------------- | ----------------------------------------------------------- | :------: | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
 | `columns`                                      | `array`                                                     |    ✅    |         | Each object requires a unique `key` which should correspond to property key of&#xA;the items of `rows` that you want to render under this column, and a `label`&#xA;which defines the name shown on the header.&#xA;The list of columns to be rendered.&#xA;Each column can be customized (see properties below).                                                                                                                                                                                                                                                                                                                                  |
 | `columns[].key`                                | `string`                                                    |    ✅    |         | The unique key of the column that is used to identify your data type.&#xA;You can use this value to determine which value from a row item should be rendered.&#xA;<br>&#xA;For example, if the data is a list of users, where each user has a `firstName` property,&#xA;the column key should be `firstName`, which renders the correct value by default.&#xA;The key can also be some custom or computed value, in which case you need to provide&#xA;an explicit mapping of the value by implementing either the `itemRendered` function or&#xA;the column-specific `renderItem` function.                                                       |
 | `columns[].label`                              | `node`                                                      |    ✅    |         | The label of the column that will be shown on the column header.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |

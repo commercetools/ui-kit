@@ -1,14 +1,18 @@
 import {
   useMemo,
-  cloneElement,
-  type ReactElement,
   type ReactNode,
   type MouseEventHandler,
+  useContext,
+  createContext,
+  useState,
+  useEffect,
+  cloneElement,
+  ReactElement,
 } from 'react';
-import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
+import { Spacings } from '@commercetools-frontend/ui-kit';
 
 export interface TRow {
   id: string;
@@ -146,6 +150,45 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
   managerTheme?: 'light' | 'dark';
 };
 
+type TDataColumns = {
+  isTruncated?: boolean;
+  key: string;
+  label: ReactNode;
+  width?: string;
+  align?: 'left' | 'center' | 'right';
+  onClick?: (event: MouseEventHandler) => void;
+  // renderItem?: ((row: Row, isRowCollapsed: boolean) => ReactNode);
+  headerIcon?: ReactNode;
+  isSortable?: boolean;
+  disableResizing?: boolean;
+  shouldIgnoreRowClick?: boolean;
+}[];
+
+type TDataTableManagerContext = {
+  columns: TDataColumns;
+  getColumns?: (columns: TDataColumns) => void;
+};
+
+export const DataTableManagerContext = createContext<TDataTableManagerContext>({
+  columns: [],
+});
+export const DataTableProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [columns, setColumns] = useState<TDataColumns>([]);
+
+  const getColumns = (columnsFromManager: TDataColumns) =>
+    setColumns(columnsFromManager);
+
+  return (
+    <DataTableManagerContext.Provider value={{ columns, getColumns }}>
+      {children}
+    </DataTableManagerContext.Provider>
+  );
+};
+
 const DataTableManager = <Row extends TRow = TRow>(
   props: TDataTableManagerProps<Row>
 ) => {
@@ -166,8 +209,14 @@ const DataTableManager = <Row extends TRow = TRow>(
     [areDisplaySettingsEnabled, props.columns, isWrappingText]
   );
 
-  //  @ts-ignore
-  window.dataTableColumns = { columns };
+  const useDataTableManagerContext = () => useContext(DataTableManagerContext);
+  const { getColumns } = useDataTableManagerContext();
+
+  useEffect(() => {
+    if (!props.children) {
+      getColumns!(columns);
+    }
+  }, [columns, getColumns, props.children]);
 
   return props.children ? (
     <Spacings.Stack>

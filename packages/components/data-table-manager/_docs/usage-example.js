@@ -1,4 +1,6 @@
-import DataTableManager from '@commercetools-uikit/data-table-manager';
+import DataTableManager, {
+  DataTableProvider,
+} from '@commercetools-uikit/data-table-manager';
 import DataTable from '@commercetools-uikit/data-table';
 
 const rows = [
@@ -13,9 +15,10 @@ const columns = [
 ];
 
 const Example = () => (
-  <DataTableManager columns={columns}>
+  <DataTableProvider>
+    <DataTableManager columns={columns} />
     <DataTable rows={rows} />
-  </DataTableManager>
+  </DataTableProvider>
 );
 
 export default Example;
