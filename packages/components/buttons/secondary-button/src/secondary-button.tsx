@@ -144,9 +144,9 @@ export const SecondaryButton = <
         box-shadow ${designTokens.transitionEaseinout150Ms};
     `,
     getThemeStyles(props.theme),
-    getStateStyles(props.isDisabled, isActive, props.theme),
+    getStateStyles(props.isDisabled, isActive, props.tone),
     getSizeStyles(props.size),
-    getToneStyles(props.tone, props.isDisabled),
+    getToneStyles(props.tone, props.isDisabled, isActive),
   ];
 
   return (

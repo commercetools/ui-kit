@@ -8,7 +8,7 @@ import type { TSecondaryButtonProps } from './secondary-button';
 const getStateStyles = (
   isDisabled: boolean,
   isActive: boolean,
-  theme: Theme
+  tone: TSecondaryButtonProps['tone']
 ) => {
   if (isDisabled) {
     return css`
@@ -36,19 +36,26 @@ const getStateStyles = (
         }
         border: 1px solid ${designTokens.borderColorForButtonAsSecondary};
         box-shadow: ${designTokens.shadow0};
-        background-color: ${designTokens.colorSurface};
-        &:focus,
+        background-color: ${designTokens.colorPrimary90};
         &:hover {
           background-color: ${designTokens.backgroundColorForButtonWhenActive};
         }
       `,
     ];
-    switch (theme) {
+    switch (tone) {
       case 'info':
         return [
           baseActiveStyles,
           css`
-            color: ${designTokens.colorInfo};
+            color: ${designTokens.colorSolid};
+            border-color: ${designTokens.colorInfo85};
+            background-color: ${designTokens.colorInfo85};
+            * {
+              fill: ${designTokens.colorSolid};
+            }
+            &:hover {
+              background-color: ${designTokens.colorInfo85};
+            }
           `,
         ];
       default:
@@ -138,12 +145,14 @@ const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
 
 const getToneStyles = (
   tone: TSecondaryButtonProps['tone'],
-  isDisabled: boolean
+  isDisabled: boolean,
+  isActive: boolean
 ) => {
   switch (tone) {
     case 'info':
       return [
         !isDisabled &&
+          !isActive &&
           css`
             background-color: ${designTokens.colorInfo95};
             border-color: ${designTokens.colorInfo85} !important;
