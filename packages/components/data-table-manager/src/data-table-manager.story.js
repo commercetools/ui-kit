@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean, select, withKnobs } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
@@ -308,15 +308,15 @@ storiesOf('Components|DataTable', module)
             },
             'dark'
           )}
-        />
-        <DataTable
-          rows={withRowSelection ? rowsWithSelection : rows}
-          sortedBy={sortedBy}
-          onSortChange={onSortChange}
-          sortDirection={sortDirection}
-          footer={footer}
-          isCondensed={isCondensed}
-        />
+        >
+          <DataTable
+            rows={withRowSelection ? rowsWithSelection : rows}
+            sortedBy={sortedBy}
+            onSortChange={onSortChange}
+            sortDirection={sortDirection}
+            footer={footer}
+          />
+        </DataTableManager>
         <br />
         <hr />
       </>
