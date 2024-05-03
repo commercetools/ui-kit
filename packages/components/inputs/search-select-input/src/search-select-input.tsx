@@ -143,6 +143,10 @@ export type TSearchSelectInputProps = {
    */
   isClearable?: boolean;
   /**
+   * Whether the input and options are rendered with condensed paddings
+   */
+  isCondensed?: boolean;
+  /**
    * Override the built-in logic to detect whether an option is disabled
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -337,6 +341,7 @@ const SearchSelectInput = (props: TSearchSelectInputProps) => {
     <SearchSelectInputWrapper
       isDisabled={props.isDisabled}
       isReadOnly={props.isReadOnly}
+      isCondensed={props.isCondensed}
     >
       <AsyncSelectInput
         {...props}
