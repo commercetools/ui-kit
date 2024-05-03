@@ -12,7 +12,7 @@ This component enhances the `<DataTable>` component and additionally provides a 
 
 - The `disableDisplaySettings` enables / disables the layout settings panel, allowing the user to select wrapping text and density display options.
 - The `disableColumnManager` enables / disables the column manager panel, allowing the user to select which columns are visible.
-- To Detach the `DatatableManager` settings dropdown from the Datatable and position it anywhere else, you would need to import a `DataTableProvider` and wrap both components with the provider.
+- To Detach the `DatatableManager` settings dropdown from the Datatable and position it anywhere else, you would need to import a `DataTableManagerProvider` and wrap both components with the provider.
 
 Both panels delegate the handling of the settings change on the parent through function properties, allowing the settings to be persisted or just used as state props.
 
@@ -40,7 +40,7 @@ npm --save install react react-dom react-intl
 
 ```jsx
 import DataTableManager, {
-  DataTableProvider,
+  DataTableManagerProvider,
 } from '@commercetools-uikit/data-table-manager';
 import DataTable from '@commercetools-uikit/data-table';
 
@@ -56,10 +56,10 @@ const columns = [
 ];
 
 const Example = () => (
-  <DataTableProvider>
+  <DataTableManagerProvider>
     <DataTableManager columns={columns} />
     <DataTable rows={rows} />
-  </DataTableProvider>
+  </DataTableManagerProvider>
 );
 
 export default Example;

@@ -1,5 +1,5 @@
 import DataTableManager, {
-  DataTableProvider,
+  DataTableManagerProvider,
 } from '@commercetools-uikit/data-table-manager';
 import DataTable from '@commercetools-uikit/data-table';
 
@@ -15,10 +15,10 @@ const columns = [
 ];
 
 const Example = () => (
-  <DataTableProvider>
+  <DataTableManagerProvider>
     <DataTableManager columns={columns} />
     <DataTable rows={rows} />
-  </DataTableProvider>
+  </DataTableManagerProvider>
 );
 
 export default Example;

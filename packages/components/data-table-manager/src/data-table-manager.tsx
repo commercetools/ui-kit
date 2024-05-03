@@ -170,7 +170,7 @@ type TDataTableManagerContext = {
 export const DataTableManagerContext = createContext<TDataTableManagerContext>({
   columns: [],
 });
-export const DataTableProvider = ({
+export const DataTableManagerProvider = ({
   children,
 }: {
   children: React.ReactNode;
