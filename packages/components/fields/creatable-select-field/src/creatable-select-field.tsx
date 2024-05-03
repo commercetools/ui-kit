@@ -498,7 +498,6 @@ export default class CreatableSelectField extends Component<
             createOptionPosition={this.props.createOptionPosition}
             showOptionGroupDivider={this.props.showOptionGroupDivider}
             iconLeft={this.props.iconLeft}
-            // @ts-ignore
             isCondensed={this.props.isCondensed}
             {...filterDataAttributes(this.props)}
           />
