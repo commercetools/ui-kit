@@ -315,7 +315,6 @@ storiesOf('Components|DataTable', module)
             onSortChange={onSortChange}
             sortDirection={sortDirection}
             footer={footer}
-            isCondensed={isCondensed}
           />
         </DataTableManager>
         <br />
