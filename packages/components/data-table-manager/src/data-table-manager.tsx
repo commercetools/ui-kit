@@ -164,12 +164,13 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
 
 type TDataTableManagerContext = {
   columns: TDataColumns;
-  getColumns?: (columns: TDataColumns) => void;
+  updateColumns?: (columns: TDataColumns) => void;
 };
 
 export const DataTableManagerContext = createContext<TDataTableManagerContext>({
   columns: [],
 });
+
 export const DataTableManagerProvider = ({
   children,
 }: {
@@ -177,11 +178,11 @@ export const DataTableManagerProvider = ({
 }) => {
   const [columns, setColumns] = useState<TDataColumns>([]);
 
-  const getColumns = (columnsFromManager: TDataColumns) =>
+  const updateColumns = (columnsFromManager: TDataColumns) =>
     setColumns(columnsFromManager);
 
   return (
-    <DataTableManagerContext.Provider value={{ columns, getColumns }}>
+    <DataTableManagerContext.Provider value={{ columns, updateColumns }}>
       {children}
     </DataTableManagerContext.Provider>
   );
@@ -208,13 +209,13 @@ const DataTableManager = <Row extends TRow = TRow>(
   );
 
   const useDataTableManagerContext = () => useContext(DataTableManagerContext);
-  const { getColumns } = useDataTableManagerContext();
+  const { updateColumns } = useDataTableManagerContext();
 
   useEffect(() => {
     if (!props.children) {
-      getColumns!(columns);
+      updateColumns!(columns);
     }
-  }, [columns, getColumns, props.children]);
+  }, [columns, updateColumns, props.children]);
 
   return props.children ? (
     <Spacings.Stack>
@@ -243,5 +244,7 @@ const DataTableManager = <Row extends TRow = TRow>(
 };
 
 DataTableManager.displayName = 'DataTableManager';
+DataTableManagerProvider.displayName = 'DataTableManagerProvider';
+DataTableManagerContext.displayName = 'DataTableManagerContext';
 
 export default DataTableManager;

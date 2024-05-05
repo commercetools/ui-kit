@@ -21,7 +21,7 @@ import HeaderCell from './header-cell';
 import DataRow from './data-row';
 import useManualColumnResizing from './use-manual-column-resizing-reducer';
 import ColumnResizingContext from './column-resizing-context';
-import { DataTableManagerContext } from '../../data-table-manager/src/data-table-manager';
+import { DataTableManagerContext } from '@commercetools-uikit/data-table-manager/src/data-table-manager';
 
 export interface TRow {
   id: string;
