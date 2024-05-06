@@ -25,6 +25,7 @@ export const getCustomIconStyles = (props: TCustomIconProps) => {
     border-radius: ${designTokens.borderRadius4};
     background-color: ${designTokens.colorTransparent};
     box-sizing: border-box;
+    overflow: hidden;
     border: ${props.hasBorder
       ? `solid ${designTokens.borderWidth1} ${designTokens.colorNeutral90}`
       : 'none'};
