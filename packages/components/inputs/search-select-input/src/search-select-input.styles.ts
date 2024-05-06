@@ -4,7 +4,7 @@ import { designTokens } from '@commercetools-uikit/design-system';
 import type { TSearchSelectInputProps } from './search-select-input';
 
 const SearchSelectInputWrapper = styled.div<
-  Pick<TSearchSelectInputProps, 'isDisabled' | 'isReadOnly'>
+  Pick<TSearchSelectInputProps, 'isDisabled' | 'isReadOnly' | 'isCondensed'>
 >`
   ${(props) =>
     !props.isDisabled && !props.isReadOnly
