@@ -98,6 +98,7 @@ const getBaseStyles = (
         background-color: ${designTokens.backgroundColorForButtonWhenHovered};
         box-shadow: ${designTokens.shadow0};
       }
+      ${isActive ? '&,' : ''}
       &:active {
         background-color: ${designTokens.backgroundColorForButtonWhenActive};
         box-shadow: ${designTokens.shadow0};
