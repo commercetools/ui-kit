@@ -104,5 +104,14 @@ export const component = () => (
         iconLeft={<WorldIcon />}
       />
     </Spec>
+    <Spec label="is condensed">
+      <AsyncSelectInput
+        value={value}
+        isCondensed={true}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+      />
+    </Spec>
   </Suite>
 );

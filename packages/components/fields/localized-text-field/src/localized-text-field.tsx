@@ -146,6 +146,10 @@ export type TLocalizedTextFieldProps = {
    */
   isAutofocussed?: boolean;
   /**
+   * Whether the text inputs for each localization should render with condensed paddings.
+   */
+  isCondensed?: boolean;
+  /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
   isDisabled?: boolean;
@@ -291,6 +295,7 @@ class LocalizedTextField extends Component<
             }
             defaultExpandLanguages={this.props.defaultExpandLanguages}
             isAutofocussed={this.props.isAutofocussed}
+            isCondensed={this.props.isCondensed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             errors={this.props.errorsByLanguage}

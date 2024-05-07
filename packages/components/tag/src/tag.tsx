@@ -99,18 +99,18 @@ const Tag = (props: TTagProps) => {
             ? designTokens.colorNeutral95
             : props.type === 'warning'
             ? designTokens.colorWarning95
-            : designTokens.backgroundColorForTag};
+            : designTokens.colorPrimary95};
           border-color: ${props.isDisabled
             ? designTokens.colorNeutral
             : props.type === 'warning'
             ? designTokens.colorWarning85
-            : designTokens.borderColorForTag};
+            : designTokens.colorPrimary90};
           ${props.onClick &&
           `&:hover {
             background-color: ${
               props.type === 'warning'
                 ? designTokens.colorWarning85
-                : designTokens.backgroundColorForTagWhenHovered
+                : designTokens.colorPrimary90
             };
           }`}
         `}

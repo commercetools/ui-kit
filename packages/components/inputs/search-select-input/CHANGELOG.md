@@ -1,5 +1,21 @@
 # @commercetools-uikit/search-select-input
 
+## 19.2.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`8bf179b`](https://github.com/commercetools/ui-kit/commit/8bf179b975ad9f14ea83cd7d6a70e0abd79a4272), [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/async-select-input@19.2.0
+  - @commercetools-uikit/select-utils@19.2.0
+  - @commercetools-uikit/text@19.2.0
+  - @commercetools-uikit/spacings@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+
 ## 19.1.0
 
 ### Patch Changes

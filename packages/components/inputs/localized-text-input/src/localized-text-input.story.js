@@ -65,6 +65,7 @@ storiesOf('Components|Inputs', module)
                 defaultExpandLanguages || undefined
               }
               isAutofocussed={boolean('isAutofocussed', false)}
+              isCondensed={boolean('isCondensed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               placeholder={object('placeholder', { en: '', de: '' })}

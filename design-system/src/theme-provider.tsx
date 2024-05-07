@@ -130,10 +130,11 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
     attributeFilter: ['data-theme'],
   });
 
+  // TODO - make sure old and new theme return same value as new defaultThemeValue
+  // At least for the remaining places that we still use this function
   const themedValue: TUseThemeResult['themedValue'] = useCallback(
-    (defaultThemeValue, newThemeValue) =>
-      theme === 'default' ? defaultThemeValue : newThemeValue,
-    [theme]
+    (defaultThemeValue, _newThemeValue) => defaultThemeValue,
+    []
   );
 
   // If we use 'useLayoutEffect' here, we would be trying to read the
@@ -149,10 +150,10 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
   }, []);
 
   return {
-    theme: 'default',
+    theme,
     themedValue,
     isNewTheme: false,
-    isRecolouringTheme: theme === 'recolouring',
+    isRecolouringTheme: true,
   };
 };
 

@@ -93,7 +93,7 @@ const getInputStyles = (props: TInputProps) => {
       : 'unset'}; /* fix for mobile safari */
     outline: none;
     overflow: hidden;
-    padding: ${designTokens.paddingForInput};
+    padding: 0 ${designTokens.spacing30};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard},
@@ -114,7 +114,7 @@ const getInputStyles = (props: TInputProps) => {
     :focus:not(:read-only) {
       box-shadow: ${designTokens.shadowForInputWhenFocused};
       border-color: ${designTokens.borderColorForInputWhenFocused};
-      background-color: ${designTokens.backgroundColorForInputWhenFocused};
+      background-color: ${designTokens.colorSurface};
     }
   `;
 };

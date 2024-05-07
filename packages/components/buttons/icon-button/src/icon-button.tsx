@@ -7,7 +7,7 @@ import {
   cloneElement,
 } from 'react';
 import { css } from '@emotion/react';
-import { designTokens, useTheme } from '@commercetools-uikit/design-system';
+import { designTokens } from '@commercetools-uikit/design-system';
 import { filterInvalidAttributes, warning } from '@commercetools-uikit/utils';
 import AccessibleButton from '@commercetools-uikit/accessible-button';
 import {
@@ -90,7 +90,6 @@ const defaultProps: Pick<
 const IconButton = <TStringOrComponent extends ElementType = 'button'>(
   props: TIconButtonProps<TStringOrComponent>
 ) => {
-  const { themedValue } = useTheme();
   warning(
     !(props.theme !== 'default' && !props.isToggleButton),
     `Invalid prop \`theme\` supplied to \`IconButton\`. Only toggle buttons may have a theme.`
@@ -119,10 +118,7 @@ const IconButton = <TStringOrComponent extends ElementType = 'button'>(
           display: flex;
           align-items: center;
           justify-content: center;
-          border: ${themedValue(
-            `1px solid ${designTokens.borderColorForButtonAsSecondary}`,
-            'none'
-          )};
+          border: none;
           background-color: ${designTokens.colorSurface};
           box-shadow: ${designTokens.shadow0};
           color: ${designTokens.fontColorForButtonAsSecondary};

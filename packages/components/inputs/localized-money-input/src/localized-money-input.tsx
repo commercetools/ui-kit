@@ -77,6 +77,10 @@ export type TLocalizedMoneyInputProps = {
    */
   defaultExpandCurrencies?: boolean;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
   isDisabled?: boolean;
@@ -162,6 +166,10 @@ type TLocalizedInputProps = {
    */
   onFocus?: (event: TCustomEvent) => void;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
   isDisabled?: boolean;
@@ -246,6 +254,7 @@ const LocalizedInput = (props: TLocalizedInputProps) => {
           value={props.value}
           onChange={handleChange}
           onBlur={props.onBlur}
+          isCondensed={props.isCondensed}
           isDisabled={props.isDisabled}
           isReadOnly={props.isReadOnly}
           placeholder={props.placeholder}
@@ -335,6 +344,7 @@ const LocalizedMoneyInput = (props: TLocalizedMoneyInputProps) => {
                 }
                 onBlur={props.onBlur}
                 onFocus={props.onFocus}
+                isCondensed={props.isCondensed}
                 isDisabled={props.isDisabled}
                 isReadOnly={props.isReadOnly}
                 hasError={Boolean(

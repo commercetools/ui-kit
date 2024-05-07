@@ -48,6 +48,17 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
+    <Spec label="when condensed">
+      <SearchSelectField
+        title="State"
+        name="form-field-name"
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+        isCondensed={true}
+      />
+    </Spec>
     <Spec label='with "missing" error when not touched'>
       <SearchSelectField
         title="State"
