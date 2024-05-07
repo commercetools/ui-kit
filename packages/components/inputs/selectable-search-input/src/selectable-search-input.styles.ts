@@ -317,6 +317,10 @@ const createSelectableSelectStyles = ({
         ? designTokens.fontColorForInputWhenDisabled
         : designTokens.colorNeutral60,
     }),
+    option: (base: TBase) => ({
+      ...base,
+      fontSize: isCondensed ? designTokens.fontSize20 : designTokens.fontSize30,
+    }),
   };
 };
 
