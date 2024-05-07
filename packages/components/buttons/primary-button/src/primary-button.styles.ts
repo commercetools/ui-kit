@@ -70,7 +70,7 @@ const getButtonStyles = (
         return [
           baseActiveStyles,
           css`
-            background-color: ${designTokens.colorPrimary};
+            background-color: ${designTokens.colorPrimary25};
             &:focus,
             &:hover {
               background-color: ${designTokens.colorPrimary40};
