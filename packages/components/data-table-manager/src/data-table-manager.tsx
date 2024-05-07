@@ -164,11 +164,12 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
 
 type TDataTableManagerContext = {
   columns: TDataColumns;
-  updateColumns?: (columns: TDataColumns) => void;
+  updateColumns: (columns: TDataColumns) => void;
 };
 
 export const DataTableManagerContext = createContext<TDataTableManagerContext>({
   columns: [],
+  updateColumns: (columns: TDataColumns) => [columns],
 });
 
 export const DataTableManagerProvider = ({
@@ -213,7 +214,7 @@ const DataTableManager = <Row extends TRow = TRow>(
 
   useEffect(() => {
     if (!props.children) {
-      updateColumns!(columns);
+      updateColumns(columns);
     }
   }, [columns, updateColumns, props.children]);
 
