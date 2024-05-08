@@ -2,11 +2,8 @@ import { useState, type ReactElement, type ReactNode } from 'react';
 import { warning } from '@commercetools-uikit/utils';
 import { useIntl, type MessageDescriptor } from 'react-intl';
 import styled from '@emotion/styled';
-import AccessibleHidden from '@commercetools-uikit/accessible-hidden';
-import SelectInput from '@commercetools-uikit/select-input';
-import { TableIcon } from '@commercetools-uikit/icons';
+import { ColumnsIcon } from '@commercetools-uikit/icons';
 import Spacings from '@commercetools-uikit/spacings';
-import { designTokens } from '@commercetools-uikit/design-system';
 import { UPDATE_ACTIONS, COLUMN_MANAGER, DISPLAY_SETTINGS } from '../constants';
 import DisplaySettingsManager, {
   DENSITY_COMPACT,
@@ -14,6 +11,9 @@ import DisplaySettingsManager, {
 } from '../display-settings-manager';
 import ColumnSettingsManager from '../column-settings-manager';
 import messages from './messages';
+import DropdownMenu from '@commercetools-uikit/dropdown-menu';
+import IconButton from '@commercetools-uikit/icon-button';
+import Tooltip from '@commercetools-uikit/tooltip';
 
 export type TSelectChangeEvent = {
   target: {
@@ -121,12 +121,10 @@ export type TDataTableSettingsProps = {
   managerTheme?: 'light' | 'dark';
 };
 
-/* The horizontal constraint is set on this container instead of the SelectInput
-because the input is always empty, and therefore doesn't take any space by itself
-but we want to keep enough space for the placeholder to be readable */
-const SelectContainer = styled.div`
-  min-width: ${designTokens.constraint4};
-`;
+export type TDropdownOption = {
+  value: string;
+  label: string;
+};
 
 const TopBarContainer = styled.div`
   flex-grow: 1;
@@ -191,19 +189,11 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
   const [openedPanelId, setOpenedPanelId] = useState<string | null | undefined>(
     null
   );
-
-  const dropdownOptions = getDropdownOptions({
+  const dropdownOptions: TDropdownOption[] = getDropdownOptions({
     areDisplaySettingsEnabled,
     areColumnSettingsEnabled,
     formatMessage: intl.formatMessage,
   });
-
-  const handleDropdownChange = (event: TSelectChangeEvent) =>
-    setOpenedPanelId(
-      Array.isArray(event.target.value)
-        ? event.target.value[0]
-        : event.target.value
-    );
 
   const mappedColumns = getMappedColumns(
     areColumnSettingsEnabled ? props.columnManager!.hideableColumns : undefined
@@ -223,23 +213,33 @@ const DataTableSettings = (props: TDataTableSettingsProps) => {
       <Spacings.Inline justifyContent="space-between" alignItems="center">
         <TopBarContainer>{props.topBar}</TopBarContainer>
         {dropdownOptions.length > 0 && (
-          <SelectContainer>
-            <AccessibleHidden>
-              <label htmlFor="table-settings-dropdown">
-                Open table manager dropdown
-              </label>
-            </AccessibleHidden>
-            <SelectInput
-              id="table-settings-dropdown"
-              // the dropdown always shows the placeholder as selecting an option
-              // will open the corresponding panel (column manager or display settings)
-              value=""
-              placeholder={intl.formatMessage(messages.placeholder)}
-              onChange={handleDropdownChange}
-              options={dropdownOptions}
-              iconLeft={<TableIcon color="neutral60" />}
-            />
-          </SelectContainer>
+          <Tooltip
+            placement="left"
+            title={intl.formatMessage(messages.placeholder)}
+          >
+            <DropdownMenu
+              triggerElement={
+                <IconButton
+                  icon={<ColumnsIcon />}
+                  label="Open table manager dropdown"
+                />
+              }
+              menuHorizontalConstraint={'auto'}
+              menuPosition="right"
+              menuType="list"
+            >
+              {dropdownOptions?.map((option: TDropdownOption) => (
+                <DropdownMenu.ListMenuItem
+                  key={option?.label}
+                  onClick={() => {
+                    setOpenedPanelId(option?.value);
+                  }}
+                >
+                  {option?.label}
+                </DropdownMenu.ListMenuItem>
+              ))}
+            </DropdownMenu>
+          </Tooltip>
         )}
       </Spacings.Inline>
       {openedPanelId === DISPLAY_SETTINGS && (
