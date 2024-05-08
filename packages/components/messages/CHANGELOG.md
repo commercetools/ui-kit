@@ -1,5 +1,13 @@
 # @commercetools-uikit/messages
 
+## 19.3.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/text@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
 ## 19.2.0
 
 ### Minor Changes

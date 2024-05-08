@@ -1,5 +1,24 @@
 # @commercetools-uikit/search-select-field
 
+## 19.3.0
+
+### Minor Changes
+
+- [#2808](https://github.com/commercetools/ui-kit/pull/2808) [`3c06060`](https://github.com/commercetools/ui-kit/commit/3c06060da5528967ab21328823bb0b693f4674f1) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for isCondensed layout for SearchSelectField
+
+### Patch Changes
+
+- Updated dependencies [[`91a86d8`](https://github.com/commercetools/ui-kit/commit/91a86d832c89984dd0af786c58d5db478f2f28e1), [`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a)]:
+  - @commercetools-uikit/search-select-input@19.3.0
+  - @commercetools-uikit/design-system@19.3.0
+  - @commercetools-uikit/constraints@19.3.0
+  - @commercetools-uikit/field-label@19.3.0
+  - @commercetools-uikit/spacings@19.3.0
+  - @commercetools-uikit/field-errors@19.3.0
+  - @commercetools-uikit/field-warnings@19.3.0
+  - @commercetools-uikit/hooks@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
 ## 19.2.0
 
 ### Minor Changes
