@@ -133,7 +133,7 @@ const useTheme = (parentSelector = defaultParentSelector): TUseThemeResult => {
   // TODO - make sure old and new theme return same value as new defaultThemeValue
   // At least for the remaining places that we still use this function
   const themedValue: TUseThemeResult['themedValue'] = useCallback(
-    (defaultThemeValue, _newThemeValue) => defaultThemeValue,
+    (_defaultThemeValue, newThemeValue) => newThemeValue,
     []
   );
 
