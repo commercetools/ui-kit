@@ -1,16 +1,22 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { screen, render, fireEvent, within } from '../../../../test/test-utils';
 import DataTableManager, {
   DataTableManagerProvider,
+  DataTableManagerContext,
 } from './data-table-manager';
 import { UPDATE_ACTIONS } from './constants';
 
+const useDataTableManagerContext = () => useContext(DataTableManagerContext);
+
 /* eslint-disable react/prop-types */
 const TestTable = (props) => {
+  const { columns } = useDataTableManagerContext();
+  const columnsData = columns && columns.length !== 0 ? columns : props.columns;
+
   return (
     <div>
       <ul>
-        {props.columns.map((column) => (
+        {columnsData.map((column) => (
           <li key={column.key}>{column.label}</li>
         ))}
       </ul>
@@ -46,6 +52,11 @@ const TestComponent = (props) => {
   );
 };
 
+// Introduce this component to test that DataTable and DataTableManager should not necessarily be direct descendants
+const SomeOtherComponent = () => {
+  return <div>Some other component</div>;
+};
+
 const DecoupledDatatableTestComponent = (props) => {
   const [isCondensed, setIsCondensed] = useState(false);
   const [isWrappingText, setIsWrappingText] = useState(false);
@@ -55,21 +66,24 @@ const DecoupledDatatableTestComponent = (props) => {
   };
   return (
     <DataTableManagerProvider>
-      <DataTableManager
-        {...props}
-        displaySettings={
-          props.displaySettings
-            ? {
-                ...props.displaySettings,
-                isCondensed,
-                isWrappingText,
-              }
-            : undefined
-        }
-        onSettingsChange={(action, nextValue) => {
-          tableSettingsChangeHandler[action](nextValue);
-        }}
-      />
+      <div>
+        <DataTableManager
+          {...props}
+          displaySettings={
+            props.displaySettings
+              ? {
+                  ...props.displaySettings,
+                  isCondensed,
+                  isWrappingText,
+                }
+              : undefined
+          }
+          onSettingsChange={(action, nextValue) => {
+            tableSettingsChangeHandler[action](nextValue);
+          }}
+        />
+      </div>
+      <SomeOtherComponent />
       <TestTable {...props} />
     </DataTableManagerProvider>
   );

@@ -218,7 +218,7 @@ const DataTableManager = <Row extends TRow = TRow>(
     }
   }, [columns, updateColumns, props.children]);
 
-  return props.children ? (
+  return (
     <Spacings.Stack>
       <DataTableSettings
         topBar={props.topBar}
@@ -227,20 +227,14 @@ const DataTableManager = <Row extends TRow = TRow>(
         displaySettings={props.displaySettings}
         managerTheme="light"
       />
-      {cloneElement(props.children, {
-        columns,
-        isCondensed:
-          areDisplaySettingsEnabled && props.displaySettings!.isCondensed,
-      })}
+      {props.children
+        ? cloneElement(props.children, {
+            columns,
+            isCondensed:
+              areDisplaySettingsEnabled && props.displaySettings!.isCondensed,
+          })
+        : null}
     </Spacings.Stack>
-  ) : (
-    <DataTableSettings
-      topBar={props.topBar}
-      onSettingsChange={props.onSettingsChange}
-      columnManager={props.columnManager}
-      displaySettings={props.displaySettings}
-      managerTheme="light"
-    />
   );
 };
 
