@@ -14,11 +14,24 @@ const columns = [
   { key: 'country', label: 'Country' },
 ];
 
-const Example = () => (
+export const Example = () => (
+  <DataTableManager columns={columns}>
+    <DataTable rows={rows} />
+  </DataTableManager>
+);
+export default Example;
+
+// Introduce this component to test that DataTable and DataTableManager should not necessarily be direct descendants
+const SomeOtherComponent = () => {
+  return <div>Some other component</div>;
+};
+
+// With the data table settings decoupled.
+//  Note is can also be exported as default.
+export const ExampleWithDecoupledDataTableManager = () => (
   <DataTableManagerProvider>
     <DataTableManager columns={columns} />
+    <SomeOtherComponent />
     <DataTable rows={rows} />
   </DataTableManagerProvider>
 );
-
-export default Example;

@@ -84,9 +84,14 @@ const columns = [
   { key: 'country', label: 'Country' },
 ];
 
+const SomeOtherComponent = () => {
+  return <div>Some other component</div>;
+};
+
 const Example = () => (
   <DataTableManagerProvider>
     <DataTableManager columns={columns} />
+    <SomeOtherComponent />
     <DataTable rows={rows} />
   </DataTableManagerProvider>
 );
