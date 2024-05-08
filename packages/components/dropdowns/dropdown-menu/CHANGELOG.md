@@ -1,5 +1,25 @@
 # @commercetools-uikit/dropdown-menu
 
+## 19.3.0
+
+### Minor Changes
+
+- [#2804](https://github.com/commercetools/ui-kit/pull/2804) [`4013cd3`](https://github.com/commercetools/ui-kit/commit/4013cd3dbb3fbfcfaf4b7c97ec3af5e7fd3aaa90) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - We've fixed two issues we had regarding floating menu position when scrolling and its height.
+
+  We're also introducing a new property (`menuMaxHeight`) which allows consumers to limit the floating panel maximum height.
+
+### Patch Changes
+
+- Updated dependencies [[`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a), [`9ae9f0f`](https://github.com/commercetools/ui-kit/commit/9ae9f0ff939884df1ea50f6b26f55a4f26b30fe0)]:
+  - @commercetools-uikit/design-system@19.3.0
+  - @commercetools-uikit/secondary-button@19.3.0
+  - @commercetools-uikit/accessible-button@19.3.0
+  - @commercetools-uikit/constraints@19.3.0
+  - @commercetools-uikit/spacings-inline@19.3.0
+  - @commercetools-uikit/spacings-stack@19.3.0
+  - @commercetools-uikit/hooks@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
 ## 19.2.0
 
 ### Minor Changes

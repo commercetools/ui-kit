@@ -1,5 +1,19 @@
 # @commercetools-uikit/date-range-field
 
+## 19.3.0
+
+### Patch Changes
+
+- Updated dependencies [[`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a)]:
+  - @commercetools-uikit/design-system@19.3.0
+  - @commercetools-uikit/date-range-input@19.3.0
+  - @commercetools-uikit/constraints@19.3.0
+  - @commercetools-uikit/field-label@19.3.0
+  - @commercetools-uikit/spacings@19.3.0
+  - @commercetools-uikit/field-errors@19.3.0
+  - @commercetools-uikit/field-warnings@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
 ## 19.2.0
 
 ### Minor Changes

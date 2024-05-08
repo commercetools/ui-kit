@@ -1,5 +1,14 @@
 # @commercetools-uikit/design-system
 
+## 19.3.0
+
+### Patch Changes
+
+- [#2811](https://github.com/commercetools/ui-kit/pull/2811) [`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fixes the `themedValue` helper exported from the `useTheme` hook so it always return the right-hand side parameter as we now want to always use the "new" themed values.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@19.3.0
+
 ## 19.2.0
 
 ### Minor Changes
