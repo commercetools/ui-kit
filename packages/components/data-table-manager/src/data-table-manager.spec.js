@@ -86,8 +86,10 @@ describe('rendering', () => {
     );
 
     fireEvent.focus(selectDropdown);
-    fireEvent.change(selectDropdown, { target: { value: 'display' } });
-    fireEvent.keyDown(selectDropdown, { key: 'Enter', keyCode: 13, which: 13 });
+    const layoutSettingsOption = await screen.findByLabelText(
+      'Layout settings'
+    );
+    fireEvent.click(layoutSettingsOption);
 
     await screen.findByText('Table layout settings');
 
@@ -131,15 +133,10 @@ describe('rendering', () => {
     );
 
     fireEvent.focus(selectDropdown);
-    fireEvent.change(selectDropdown, { target: { value: 'column' } });
-    fireEvent.keyDown(selectDropdown, {
-      key: 'Enter',
-      keyCode: 13,
-      which: 13,
-    });
+    const columnManagerOption = await screen.findByLabelText('Column manager');
+    fireEvent.click(columnManagerOption);
 
     await screen.findByText('Column Manager');
-
     screen.getByLabelText('Hidden columns');
     expect(
       screen.getByText('There are no hidden columns to show.')
