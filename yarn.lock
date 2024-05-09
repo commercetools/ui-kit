@@ -3026,7 +3026,7 @@ __metadata:
     dompurify: 2.4.7
     prop-types: 15.8.1
     react: 17.0.2
-    react-from-dom: 0.7.2
+    react-from-dom: 0.6.2
   peerDependencies:
     react: 17.x
   languageName: unknown
@@ -16878,12 +16878,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-from-dom@npm:0.7.2":
-  version: 0.7.2
-  resolution: "react-from-dom@npm:0.7.2"
+"react-from-dom@npm:0.6.2":
+  version: 0.6.2
+  resolution: "react-from-dom@npm:0.6.2"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 491bb1d0d675e8963e32f89e0961849a1e3377d611ff615a9d8d5a153607fb253e6dff8759be42e84233c6f9461eb22e0a05339080c31b746c1042383d04ad2a
+  checksum: 5d66b0c1eb591247a73bed9487a04e390abb4ad6c65e6cea7bfdd35070685b90a5da720de30915b963aba3f4628135d6db4c93da40cd5114c8bbe34a9725a83e
   languageName: node
   linkType: hard
 
