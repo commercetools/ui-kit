@@ -3,7 +3,6 @@ import {
   type ReactNode,
   type MouseEventHandler,
   useContext,
-  createContext,
   useState,
   useEffect,
   cloneElement,
@@ -13,6 +12,7 @@ import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
+import { DataTableManagerContext } from './';
 
 export interface TRow {
   id: string;
@@ -162,16 +162,6 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
   managerTheme?: 'light' | 'dark';
 };
 
-type TDataTableManagerContext = {
-  columns: TDataColumns;
-  updateColumns: (columns: TDataColumns) => void;
-};
-
-export const DataTableManagerContext = createContext<TDataTableManagerContext>({
-  columns: [],
-  updateColumns: (columns: TDataColumns) => [columns],
-});
-
 export const DataTableManagerProvider = ({
   children,
 }: {
@@ -239,7 +229,5 @@ const DataTableManager = <Row extends TRow = TRow>(
 };
 
 DataTableManager.displayName = 'DataTableManager';
-DataTableManagerProvider.displayName = 'DataTableManagerProvider';
-DataTableManagerContext.displayName = 'DataTableManagerContext';
 
 export default DataTableManager;

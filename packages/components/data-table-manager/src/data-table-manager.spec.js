@@ -2,8 +2,8 @@ import { useState, useContext } from 'react';
 import { screen, render, fireEvent, within } from '../../../../test/test-utils';
 import DataTableManager, {
   DataTableManagerProvider,
-  DataTableManagerContext,
 } from './data-table-manager';
+import DataTableManagerContext from './data-table-manager-context';
 import { UPDATE_ACTIONS } from './constants';
 
 const useDataTableManagerContext = () => useContext(DataTableManagerContext);

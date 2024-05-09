@@ -21,7 +21,7 @@ import HeaderCell from './header-cell';
 import DataRow from './data-row';
 import useManualColumnResizing from './use-manual-column-resizing-reducer';
 import ColumnResizingContext from './column-resizing-context';
-import { DataTableManagerContext } from '@commercetools-uikit/data-table-manager/src/data-table-manager';
+import DataTableManagerContext from '@commercetools-uikit/data-table-manager/data-table-manager-context';
 
 export interface TRow {
   id: string;
@@ -245,7 +245,6 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
 
   const { columns } = useDataTableManagerContext();
   const columnsData = columns && columns.length !== 0 ? columns : props.columns;
-
   warning(
     columnsData.length > 0,
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
