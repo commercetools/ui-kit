@@ -17,7 +17,10 @@
   "sideEffects": false,
   "main": "dist/commercetools-uikit-data-table-manager.cjs.js",
   "module": "dist/commercetools-uikit-data-table-manager.esm.js",
-  "files": ["dist"],
+  "files": ["dist", "data-table-manager-context"],
+  "preconstruct": {
+    "entrypoints": ["./index.ts", "data-table-manager-context/index.ts"]
+  },
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",

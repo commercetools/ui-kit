@@ -6,6 +6,7 @@ import {
   LegacyRef,
 } from 'react';
 import isEqual from 'lodash/isEqual';
+import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-context';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';
 import {
@@ -239,24 +240,31 @@ export type TDataTableProps<Row extends TRow = TRow> = {
 };
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
-  warning(
-    props.columns.length > 0,
-    `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
-  );
+  const dettachedContext = useDataTableManagerContext();
+  const columns = props.columns || dettachedContext.columns;
+  const isCondensedLayout =
+    props.isCondensed ||
+    (dettachedContext.areDisplaySettingsEnabled &&
+      dettachedContext.displaySettings?.isCondensed);
   const tableRef = useRef<HTMLTableElement>();
   const columnResizingReducer = useManualColumnResizing(tableRef);
+
+  warning(
+    columns.length > 0,
+    `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
+  );
 
   // if the table columns have been measured
   // and if the list of columns, their width field, or the isCondensed prop has changed
   // then we need to reset the resized column widths
-  const columnsInfo = getColumnsLayoutInfo(props.columns);
+  const columnsInfo = getColumnsLayoutInfo(columns);
   const prevLayout = usePrevious({
     columns: columnsInfo,
-    isCondensed: props.isCondensed,
+    isCondensed: isCondensedLayout,
   });
   const currentLayout = {
     columns: columnsInfo,
-    isCondensed: props.isCondensed,
+    isCondensed: isCondensedLayout,
   };
   const hasLayoutChanged = !isEqual(prevLayout, currentLayout);
   useLayoutEffect(() => {
@@ -283,7 +291,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
       <TableGrid
         ref={tableRef as LegacyRef<HTMLTableElement>}
         {...filterDataAttributes(props)}
-        columns={props.columns as TColumn<TRow>[]}
+        columns={columns as TColumn<TRow>[]}
         maxHeight={props.maxHeight}
         disableSelfContainment={!!props.disableSelfContainment}
         resizedTotalWidth={resizedTotalWidth}
@@ -291,11 +299,11 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         <ColumnResizingContext.Provider value={columnResizingReducer}>
           <TableHeader>
             <TableRow isRowClickable={false}>
-              {props.columns.map((column) => (
+              {columns.map((column) => (
                 <HeaderCell
                   key={column.key}
                   shouldWrap={props.wrapHeaderLabels}
-                  isCondensed={props.isCondensed}
+                  isCondensed={isCondensedLayout}
                   iconComponent={column.headerIcon}
                   onColumnResized={props.onColumnResized}
                   disableResizing={column.disableResizing}
@@ -340,7 +348,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
       {props.footer && (
         <Footer
           data-testid="footer"
-          isCondensed={props.isCondensed}
+          isCondensed={isCondensedLayout}
           horizontalCellAlignment={props.horizontalCellAlignment}
           resizedTotalWidth={resizedTotalWidth}
         >
