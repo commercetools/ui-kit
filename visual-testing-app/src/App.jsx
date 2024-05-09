@@ -2,11 +2,11 @@ import './globals.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@commercetools-uikit/design-system';
 
-const pkgComponentsModules = import.meta.globEager(
-  '../../packages/**/*.visualroute.jsx'
+const pkgComponentsModules = import.meta.glob(
+  '../../packages/**/*.visualroute.jsx', { eager: true }
 );
-const designSystemComponentsModules = import.meta.globEager(
-  '../../design-system/**/*.visualroute.jsx'
+const designSystemComponentsModules = import.meta.glob(
+  '../../design-system/**/*.visualroute.jsx', { eager: true }
 );
 
 const allUniqueRouteComponents = Object.values({
