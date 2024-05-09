@@ -8,8 +8,8 @@ import {
 import { warning } from '@commercetools-uikit/utils';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import IconButton from '@commercetools-uikit/icon-button';
-import { InformationIcon } from '@commercetools-uikit/icons';
+import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
+import { InfoIcon } from '@commercetools-uikit/icons';
 import Text from '@commercetools-uikit/text';
 import Constraints from '@commercetools-uikit/constraints';
 import Inline from '@commercetools-uikit/spacings-inline';
@@ -130,10 +130,11 @@ const FieldLabel = (props: TFieldLabelProps) => {
           </Label>
         </Text.Wrap>
         {props.onInfoButtonClick && (
-          <IconButton
+          <SecondaryIconButton
             label="More Info"
-            icon={<InformationIcon />}
-            size="small"
+            icon={<InfoIcon />}
+            size="medium"
+            color="info"
             onClick={props.onInfoButtonClick}
           />
         )}

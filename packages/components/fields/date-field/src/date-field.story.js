@@ -79,6 +79,7 @@ storiesOf('Components|Fields', module)
               onFocus={action('onFocus')}
               minValue={text('minValue', exampleDates.minDate)}
               maxValue={text('maxValue', exampleDates.maxDate)}
+              isCondensed={boolean('isCondensed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               placeholder={placeholder === '' ? undefined : placeholder}

@@ -70,6 +70,10 @@ export type TSearchTextInputProps = {
    */
   isAutofocussed?: boolean;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
   isDisabled?: boolean;
@@ -204,7 +208,7 @@ const SearchTextInput: ForwardRefExoticComponent<
             !props.isReadOnly && (
               <SecondaryIconButton
                 icon={<CloseIcon />}
-                size="medium"
+                size={props.isCondensed ? 'small' : 'medium'}
                 label={'clear-button'}
                 onClick={handleClear}
                 css={getClearIconButtonStyles(props)}
@@ -212,6 +216,7 @@ const SearchTextInput: ForwardRefExoticComponent<
             )}
           <SecondaryIconButton
             icon={<SearchIcon />}
+            size={props.isCondensed ? 'medium' : 'big'}
             label={'search-button'}
             onClick={handleSubmit}
             css={getSearchIconButtonStyles(props)}

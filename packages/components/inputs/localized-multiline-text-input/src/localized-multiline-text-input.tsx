@@ -89,6 +89,10 @@ export type TLocalizedMultilineTextInputProps = {
    */
   defaultExpandMultilineText?: boolean;
   /**
+   * Use this property to turn off caching input measurements.
+   */
+  cacheMeasurements?: boolean;
+  /**
    * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
    */
   hideLanguageExpansionControls?: boolean;
@@ -101,6 +105,10 @@ export type TLocalizedMultilineTextInputProps = {
    * Sets the focus on the first input when `true` is passed.
    */
   isAutofocussed?: boolean;
+  /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
   /**
    * Disables all input fields.
    */
@@ -309,6 +317,8 @@ const LocalizedMultilineTextInput = (
                 onBlur={props.onBlur}
                 onFocus={props.onFocus}
                 isAutofocussed={index === 0 && props.isAutofocussed}
+                cacheMeasurements={props.cacheMeasurements}
+                isCondensed={props.isCondensed}
                 isDisabled={props.isDisabled}
                 isReadOnly={props.isReadOnly}
                 hasError={Boolean(
@@ -362,6 +372,7 @@ LocalizedMultilineTextInput.getName = getName;
 
 LocalizedMultilineTextInput.defaultProps = {
   horizontalConstraint: 'scale',
+  cacheMeasurements: true,
 };
 
 LocalizedMultilineTextInput.createLocalizedString = createLocalizedString;

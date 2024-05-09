@@ -39,6 +39,7 @@ storiesOf('Components|Inputs', module)
                 onChange(event.target.value);
               }}
               isAutofocussed={boolean('isAutofocussed', false)}
+              isCondensed={boolean('isCondensed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               hasError={boolean('hasError', false)}

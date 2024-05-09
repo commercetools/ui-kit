@@ -89,6 +89,7 @@ class SelectStory extends Component {
                   id={text('id', '')}
                   containerId={text('containerId', '')}
                   isClearable={boolean('isClearable', false)}
+                  isCondensed={boolean('isCondensed', false)}
                   isDisabled={boolean('isDisabled', false)}
                   isReadOnly={boolean('isReadOnly', false)}
                   isMulti={isMulti}

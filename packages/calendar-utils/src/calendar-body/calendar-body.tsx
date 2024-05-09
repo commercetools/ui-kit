@@ -17,6 +17,7 @@ import {
 } from './calendar-body.styles';
 
 export type TClearSection = {
+  isCondensed?: boolean;
   isDisabled?: boolean;
   hasError?: boolean;
   hasWarning?: boolean;
@@ -35,7 +36,7 @@ export const ClearSection = (props: TClearSection) => {
       onClick={props.onClear}
       aria-label="clear"
     >
-      <CloseIcon size="medium" />
+      <CloseIcon size={props.isCondensed ? 'small' : 'medium'} />
     </AccessibleButton>
   );
 };
@@ -68,6 +69,7 @@ export type TCalendarBody = {
   isDisabled?: boolean;
   isReadOnly?: boolean;
   isOpen?: boolean;
+  isCondensed?: boolean;
   hasSelection?: boolean;
   hasWarning?: boolean;
   hasError?: boolean;
@@ -141,6 +143,7 @@ export const CalendarBody = (props: TCalendarBody) => {
         />
         {!disabledOrReadOnly && props.hasSelection && props.isClearable && (
           <ClearSection
+            isCondensed={props.isCondensed}
             hasError={props.hasError}
             hasWarning={props.hasWarning}
             isFocused={isFocused}
@@ -162,7 +165,10 @@ export const CalendarBody = (props: TCalendarBody) => {
           {props.icon === 'clock' ? (
             <ClockIcon color="neutral60" />
           ) : (
-            <CalendarIcon color="neutral60" />
+            <CalendarIcon
+              color="neutral60"
+              size={props.isCondensed ? 'medium' : 'big'}
+            />
           )}
         </button>
       </div>

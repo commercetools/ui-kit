@@ -22,7 +22,7 @@ storiesOf('Components|Buttons', module)
       <SecondaryIconButton
         icon={createElement(icons[select('icon', iconNames, iconNames[0])])}
         label={text('label', 'Accessibility text')}
-        color={select('color', ['solid', 'primary'], 'solid')}
+        color={select('color', ['solid', 'primary', 'info'], 'solid')}
         size={select('size', ['big', 'medium', 'small'], 'big')}
         onClick={action('onClick')}
         isDisabled={boolean('isDisabled', false)}

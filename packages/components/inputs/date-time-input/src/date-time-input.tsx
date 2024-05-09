@@ -146,6 +146,10 @@ export type TDateTimeInputProps = {
    */
   placeholder?: string;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Disables the date picker
    */
   isDisabled?: boolean;
@@ -162,7 +166,8 @@ export type TDateTimeInputProps = {
    */
   hasWarning?: boolean;
   /**
-   * The time that will be used by default when a user selects a calendar day
+   * The time that will be used by default when a user selects a calendar day.
+   * It must follow the “HH:mm” pattern (eg: 04:30, 13:25, 23:59)
    */
   defaultDaySelectionTime?: string;
 } & WrappedComponentProps;
@@ -507,6 +512,7 @@ class DateTimeInput extends Component<
                   hasSelection={Boolean(selectedItem)}
                   onClear={clearSelection}
                   isOpen={isOpen}
+                  isCondensed={this.props.isCondensed}
                   isDisabled={this.props.isDisabled}
                   isReadOnly={this.props.isReadOnly}
                   toggleButtonProps={getToggleButtonProps({

@@ -108,6 +108,10 @@ export type TDateInput = {
    */
   placeholder?: string;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Disables the date picker
    */
   isDisabled?: boolean;
@@ -353,6 +357,7 @@ const DateInput = (props: TDateInput) => {
                 isOpen={isOpen}
                 isDisabled={props.isDisabled}
                 isReadOnly={props.isReadOnly}
+                isCondensed={props.isCondensed}
                 toggleButtonProps={getToggleButtonProps()}
                 hasError={props.hasError}
                 hasWarning={props.hasWarning}

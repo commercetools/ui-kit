@@ -125,6 +125,10 @@ export type TTextFieldProps = {
    */
   isAutofocussed?: boolean;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Indicates that the input cannot be modified (e.g not authorized, or changes currently saving).
    */
   isDisabled?: boolean;
@@ -237,6 +241,7 @@ class TextField extends Component<TTextFieldProps, TTextFieldState> {
             onBlur={this.props.onBlur}
             onFocus={this.props.onFocus}
             isAutofocussed={this.props.isAutofocussed}
+            isCondensed={this.props.isCondensed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             hasWarning={hasWarning}

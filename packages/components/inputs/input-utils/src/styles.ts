@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 
 type TInputProps = {
+  isCondensed?: boolean;
   isDisabled?: boolean;
   disabled?: boolean;
   hasError?: boolean;
@@ -78,15 +79,21 @@ const getInputStyles = (props: TInputProps) => {
     display: flex;
     flex: 1;
     font-family: inherit;
-    font-size: ${designTokens.fontSize30};
-    height: ${designTokens.heightForInput};
-    min-height: ${designTokens.heightForInput};
+    font-size: ${props.isCondensed
+      ? `${designTokens.fontSize20}`
+      : `${designTokens.fontSize30}`};
+    height: ${props.isCondensed
+      ? `${designTokens.heightForInputAsSmall}`
+      : `${designTokens.heightForInput}`};
+    min-height: ${props.isCondensed
+      ? `${designTokens.heightForInputAsSmall}`
+      : `${designTokens.heightForInput}`};
     opacity: ${props.isDisabled || props.disabled
       ? '1'
       : 'unset'}; /* fix for mobile safari */
     outline: none;
     overflow: hidden;
-    padding: ${designTokens.paddingForInput};
+    padding: 0 ${designTokens.spacing30};
     transition: border-color ${designTokens.transitionStandard},
       background-color ${designTokens.transitionStandard},
       color ${designTokens.transitionStandard},
@@ -107,7 +114,7 @@ const getInputStyles = (props: TInputProps) => {
     :focus:not(:read-only) {
       box-shadow: ${designTokens.shadowForInputWhenFocused};
       border-color: ${designTokens.borderColorForInputWhenFocused};
-      background-color: ${designTokens.backgroundColorForInputWhenFocused};
+      background-color: ${designTokens.colorSurface};
     }
   `;
 };

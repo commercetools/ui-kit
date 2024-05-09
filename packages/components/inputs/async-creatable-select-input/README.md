@@ -30,28 +30,21 @@ npm --save install react react-dom react-intl
 ## Usage
 
 ```jsx
-import PropTypes from 'prop-types';
 import AsyncCreatableSelectInput from '@commercetools-uikit/async-creatable-select-input';
 
 const Example = (props) => (
   <AsyncCreatableSelectInput
     name="form-field-name"
-    value={props.value}
-    onChange={
-      (/** event */) => {
-        // console.log(event)
-      }
+    value={{ value: 'one', label: 'One' }}
+    onChange={(event) => alert(event.target.value)}
+    loadOptions={() =>
+      Promise.resolve([
+        { value: 'one', label: 'One' },
+        { value: 'two', label: 'Two' },
+      ])
     }
-    options={[
-      { value: 'one', label: 'One' },
-      { value: 'two', label: 'Two' },
-    ]}
   />
 );
-
-Example.propTypes = {
-  value: PropTypes.string,
-};
 
 export default Example;
 ```
@@ -77,6 +70,7 @@ export default Example;
 | `inputValue`              | `AsyncCreatableProps['inputValue']`                                                                   |          |         | The value of the search input&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                               |
 | `containerId`             | `AsyncCreatableProps['id']`                                                                           |          |         | The id to set on the SelectContainer component&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                              |
 | `isClearable`             | `AsyncCreatableProps['isClearable']`                                                                  |          |         | Is the select value clearable&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                               |
+| `isCondensed`             | `boolean`                                                                                             |          |         | Use this property to reduce the paddings of the component for a ui compact variant                                                                                                                                                                                                                                                                                          |
 | `isDisabled`              | `AsyncCreatableProps['isDisabled']`                                                                   |          |         | Is the select disabled&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                                      |
 | `isOptionDisabled`        | `AsyncCreatableProps['isOptionDisabled']`                                                             |          |         | Override the built-in logic to detect whether an option is disabled&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                         |
 | `isMulti`                 | `AsyncCreatableProps['isMulti']`                                                                      |          |         | Support multiple selected options&#xA;<br>&#xA;[Props from React select was used](https://react-select.com/props)                                                                                                                                                                                                                                                           |

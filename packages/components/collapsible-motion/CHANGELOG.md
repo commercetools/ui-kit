@@ -1,5 +1,57 @@
 # @commercetools-uikit/collapsible-motion
 
+## 19.3.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
+## 19.2.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/hooks@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+
+## 19.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+
+## 19.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
+## 18.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@18.5.0
+  - @commercetools-uikit/utils@18.5.0
+
+## 18.4.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@18.4.0
+  - @commercetools-uikit/utils@18.4.0
+
 ## 18.3.0
 
 ### Patch Changes

@@ -20,6 +20,7 @@ type TProps = {
   iconLeft?: ReactNode;
   isMulti?: boolean;
   hasValue?: boolean;
+  isCondensed?: boolean;
   controlShouldRenderValue?: boolean;
   appearance?: 'default' | 'quiet';
   minMenuWidth?:
@@ -110,7 +111,7 @@ const getHorizontalConstraintValue = (
 
 const getInputBackgroundColor = (props: TProps) => {
   if (props.appearance === 'quiet') {
-    return designTokens.backgroundColorForInputAsQuiet;
+    return designTokens.colorTransparent;
   }
   if (props.isDisabled) {
     return designTokens.backgroundColorForInputWhenDisabled;
@@ -121,9 +122,15 @@ const getInputBackgroundColor = (props: TProps) => {
   return designTokens.backgroundColorForInput;
 };
 
+const getMultiValueBackgroundColor = (props: TProps) => {
+  if (props.isDisabled) return designTokens.backgroundColorForInputWhenDisabled;
+  if (props.isReadOnly) return designTokens.backgroundColorForInputWhenReadonly;
+  return designTokens.colorPrimary95;
+};
+
 const getInputBorderColor = (props: TProps, state: TState) => {
   if (props.appearance === 'quiet') {
-    return designTokens.borderColorForInputAsQuiet;
+    return designTokens.colorTransparent;
   }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
@@ -145,7 +152,7 @@ const getInputBorderColor = (props: TProps, state: TState) => {
 
 const getHoverInputBorderColor = (props: TProps) => {
   if (props.appearance === 'quiet') {
-    return designTokens.borderColorForInputAsQuiet;
+    return designTokens.colorTransparent;
   }
   if (props.isDisabled) {
     return designTokens.borderColorForInputWhenDisabled;
@@ -162,10 +169,23 @@ const getHoverInputBorderColor = (props: TProps) => {
   return designTokens.borderColorForInputWhenHovered;
 };
 
+const getHoverInputBackgroundColor = (props: TProps) => {
+  if (!props.isDisabled && !props.isReadOnly) {
+    if (props.appearance === 'quiet') {
+      return 'hsla(240, 64%, 58%, 4%)'; //this is mainly a combination of our primary color hsl(240, 64%, 58%) and an alpha channel of 4%.
+    } else {
+      return designTokens.backgroundColorForInputWhenHovered;
+    }
+  }
+  return null;
+};
+
 const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
-    fontSize: designTokens.fontSize30,
+    fontSize: props.isCondensed
+      ? designTokens.fontSize20
+      : designTokens.fontSize30,
     backgroundColor: getInputBackgroundColor(props),
     borderColor: getInputBorderColor(props, state),
     borderWidth: (() => {
@@ -180,7 +200,9 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
       return designTokens.borderWidth1;
     })(),
     borderRadius: designTokens.borderRadiusForInput,
-    minHeight: designTokens.heightForInput,
+    minHeight: props.isCondensed
+      ? designTokens.heightForInputAsSmall
+      : designTokens.heightForInput,
     cursor: (() => {
       if (props.isDisabled) return 'not-allowed';
       if (props.isReadOnly) return 'default';
@@ -188,8 +210,8 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
     })(),
     padding:
       props.appearance === 'quiet'
-        ? designTokens.paddingForInputAsQuiet
-        : designTokens.paddingForInput,
+        ? `0 ${designTokens.spacing20}`
+        : `0 ${designTokens.spacing30}`,
     transition: `border-color ${designTokens.transitionStandard},
     box-shadow ${designTokens.transitionStandard}`,
     outline: 0,
@@ -208,16 +230,7 @@ const controlStyles = (props: TProps) => (base: TBase, state: TState) => {
 
     '&:hover': {
       borderColor: getHoverInputBorderColor(props),
-      backgroundColor: (() => {
-        if (!props.isDisabled && !props.isReadOnly) {
-          if (props.appearance === 'quiet') {
-            return designTokens.backgroundColorForInputAsQuietWhenHovered;
-          } else {
-            return designTokens.backgroundColorForInputWhenHovered;
-          }
-        }
-        return null;
-      })(),
+      backgroundColor: getHoverInputBackgroundColor(props),
     },
     pointerEvents: 'auto',
     color:
@@ -296,7 +309,7 @@ const menuListStyles = () => (base: TBase) => {
   };
 };
 
-const optionStyles = () => (base: TBase, state: TState) => {
+const optionStyles = (props: TProps) => (base: TBase, state: TState) => {
   return {
     ...base,
     transition: `border-color ${designTokens.transitionStandard},
@@ -304,6 +317,9 @@ const optionStyles = () => (base: TBase, state: TState) => {
       color ${designTokens.transitionStandard}`,
     padding: `${designTokens.spacing20} ${designTokens.spacing30}`,
     lineHeight: designTokens.lineHeight40,
+    fontSize: props.isCondensed
+      ? designTokens.fontSize20
+      : designTokens.fontSize30,
     cursor: state.isDisabled ? 'not-allowed' : 'pointer',
     color: (() => {
       if (!state.isDisabled) return designTokens.fontColorForInput;
@@ -311,9 +327,9 @@ const optionStyles = () => (base: TBase, state: TState) => {
       return base.color;
     })(),
     backgroundColor: (() => {
-      if (state.isSelected)
-        return designTokens.backgroundColorForInputWhenSelected;
-      if (state.isFocused) return designTokens.colorNeutral98;
+      if (state.isSelected) return designTokens.colorPrimary95;
+      if (state.isFocused)
+        return designTokens.backgroundColorForInputWhenHovered;
       return base.backgroundColor;
     })(),
 
@@ -322,7 +338,7 @@ const optionStyles = () => (base: TBase, state: TState) => {
         if (!state.isDisabled) return designTokens.fontColorForInput;
         return base.color;
       })(),
-      backgroundColor: designTokens.backgroundColorForInputWhenActive,
+      backgroundColor: designTokens.colorPrimary95,
     },
   };
 };
@@ -448,28 +464,38 @@ const menuPortalStyles = (props: TProps) => (base: TBase) => ({
   zIndex: props.menuPortalZIndex,
 });
 
-const multiValueStyles = () => (base: TBase) => {
+const multiValueStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
     display: 'flex',
     alignItems: 'center',
-    height: '32px',
-    backgroundColor: designTokens.colorNeutral95,
-    padding: '0',
+    height: props.isCondensed ? 'inherit' : '32px',
+    backgroundColor: getMultiValueBackgroundColor(props),
+    padding: props.isCondensed
+      ? `0 ${designTokens.spacing20} 0 calc(${designTokens.spacing05} + ${designTokens.spacing10})`
+      : designTokens.spacing20,
     border: `1px solid ${designTokens.colorNeutral85}`,
+    borderRadius: designTokens.borderRadius20,
   };
 };
 
 const multiValueLabelStyles = (props: TProps) => (base: TBase) => {
   return {
     ...base,
-    fontSize: designTokens.fontSize30,
+    fontSize: props.isCondensed
+      ? designTokens.fontSize20
+      : designTokens.fontSize30,
+    lineHeight: props.isCondensed
+      ? designTokens.lineHeight20
+      : designTokens.lineHeight40,
     color: (() => {
       if (props.isDisabled) return designTokens.fontColorForInputWhenDisabled;
       if (props.isReadOnly) return designTokens.fontColorForInputWhenReadonly;
       return base.color;
     })(),
-    padding: `${designTokens.spacing10} ${designTokens.spacing20}`,
+    padding: `${props.isCondensed ? '1px' : designTokens.spacing10} ${
+      designTokens.spacing20
+    }`,
     borderRadius: `${designTokens.borderRadius2} 0 0 ${designTokens.borderRadius2}`,
     border: 'none',
     borderWidth: '1px 0 1px 1px',
@@ -520,11 +546,11 @@ export default function createSelectStyles(props: TProps) {
     clearIndicator: clearIndicatorStyles(),
     menuList: menuListStyles(),
     menuPortal: menuPortalStyles(props),
-    multiValue: multiValueStyles(),
+    multiValue: multiValueStyles(props),
     multiValueLabel: multiValueLabelStyles(props),
     multiValueRemove: multiValueRemoveStyles(props),
     indicatorsContainer: indicatorsContainerStyles(),
-    option: optionStyles(),
+    option: optionStyles(props),
     placeholder: placeholderStyles(props),
     valueContainer: valueContainerStyles(props),
     singleValue: singleValueStyles(props),

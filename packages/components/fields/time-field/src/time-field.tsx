@@ -143,6 +143,11 @@ export type TTimeFieldProps = {
    */
   placeholder?: string;
 
+  /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+
   // LabelField
   /**
    * Title of the label
@@ -265,6 +270,7 @@ class TimeField extends Component<TTimeFieldProps, TTimeFieldState> {
             onFocus={this.props.onFocus}
             onBlur={this.props.onBlur}
             isAutofocussed={this.props.isAutofocussed}
+            isCondensed={this.props.isCondensed}
             isDisabled={this.props.isDisabled}
             hasWarning={hasWarning}
             hasError={hasError}

@@ -30,18 +30,6 @@ const defaultProps: Pick<TTagProps, 'type' | 'isDisabled' | 'isDraggable'> = {
 type TBody = Pick<TTagBodyProps, 'to' | 'as'>;
 const Body = styled.div<TBody>``;
 
-const getClickableContentWrapperStyles = (type: TTagBodyProps['type']) => {
-  return type === 'warning'
-    ? []
-    : [
-        css`
-          &:hover {
-            border-color: ${designTokens.colorNeutral};
-          }
-        `,
-      ];
-};
-
 const getTextDetailColor = (isDisabled: TTagBodyProps['isDisabled']) => {
   if (isDisabled) return designTokens.colorNeutral60;
   return designTokens.colorSolid;
@@ -51,20 +39,13 @@ const getContentWrapperStyles = (props: TTagBodyProps) => {
   return css`
     position: relative;
     display: flex;
-    box-sizing: border-box;
     align-items: center;
-    border-radius: ${designTokens.borderRadius2};
     padding: ${designTokens.spacing05} ${designTokens.spacing25};
     white-space: normal;
     text-align: left;
     min-width: 0;
     overflow-wrap: break-word;
     hyphens: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-color: ${props.type === 'warning'
-      ? designTokens.colorWarning
-      : designTokens.colorNeutral};
     color: ${designTokens.colorSolid};
     fill: ${designTokens.colorNeutral40};
 
@@ -93,15 +74,6 @@ const TagBody = (props: TTagBodyProps) => {
       as={props.as}
       css={[
         getContentWrapperStyles(props),
-        Boolean(props.onRemove) &&
-          css`
-            border-right: ${!props.isDisabled && '0'};
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-          `,
-        !props.isDisabled &&
-          Boolean(props.onClick) &&
-          getClickableContentWrapperStyles(props.type),
         !props.isDisabled &&
           Boolean(props.onClick) &&
           css`
@@ -117,9 +89,9 @@ const TagBody = (props: TTagBodyProps) => {
         {props.isDraggable && !props.isDisabled ? (
           <DragIcon data-testid="drag-icon" size="medium" />
         ) : null}
-        <Text.Body tone={textTone} as="span">
+        <Text.Detail tone={textTone} as="span">
           {props.children}
-        </Text.Body>
+        </Text.Detail>
       </Spacings.Inline>
     </Body>
   );

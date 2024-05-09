@@ -1,5 +1,75 @@
 # @commercetools-uikit/input-utils
 
+## 19.3.0
+
+### Patch Changes
+
+- Updated dependencies [[`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a)]:
+  - @commercetools-uikit/design-system@19.3.0
+  - @commercetools-uikit/flat-button@19.3.0
+  - @commercetools-uikit/icons@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
+## 19.2.0
+
+### Minor Changes
+
+- [#2793](https://github.com/commercetools/ui-kit/pull/2793) [`d72e043`](https://github.com/commercetools/ui-kit/commit/d72e043db3f31c330c4a8c34a7b3fbd623387fb3) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for isCondensed property on LocalizedMultilineTextInput
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/flat-button@19.2.0
+  - @commercetools-uikit/icons@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+
+## 19.1.0
+
+### Minor Changes
+
+- [#2778](https://github.com/commercetools/ui-kit/pull/2778) [`2c130c2`](https://github.com/commercetools/ui-kit/commit/2c130c259b0101db34265b5582d7f8388b786172) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Included a new property (**isCondensed**) which allows to render a more visually compact variant of the input.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/flat-button@19.1.0
+  - @commercetools-uikit/icons@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+
+## 19.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`90186d4`](https://github.com/commercetools/ui-kit/commit/90186d48fa136df3c3510b8fc216d7a528294456), [`5606039`](https://github.com/commercetools/ui-kit/commit/5606039ddabfc3f13b10d791490027ea68e2b691), [`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c)]:
+  - @commercetools-uikit/icons@19.0.0
+  - @commercetools-uikit/design-system@19.0.0
+  - @commercetools-uikit/flat-button@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
+## 18.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`96dbded`](https://github.com/commercetools/ui-kit/commit/96dbded975ad3abde9366998c87d613ab1f17546)]:
+  - @commercetools-uikit/icons@18.5.0
+  - @commercetools-uikit/design-system@18.5.0
+  - @commercetools-uikit/flat-button@18.5.0
+  - @commercetools-uikit/utils@18.5.0
+
+## 18.4.0
+
+### Patch Changes
+
+- Updated dependencies [[`7c35211`](https://github.com/commercetools/ui-kit/commit/7c35211111f2b4a042d6cbca78fb59298f7fcf27), [`dd36868`](https://github.com/commercetools/ui-kit/commit/dd368687280284ee49801aaf3f1a61adb8e575d5)]:
+  - @commercetools-uikit/icons@18.4.0
+  - @commercetools-uikit/design-system@18.4.0
+  - @commercetools-uikit/flat-button@18.4.0
+  - @commercetools-uikit/utils@18.4.0
+
 ## 18.3.0
 
 ### Patch Changes

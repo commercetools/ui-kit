@@ -47,6 +47,7 @@ export { default as ConnectedTriangleIcon } from './ConnectedTriangleReact';
 export { default as CopyIcon } from './CopyReact';
 export { default as CubeIcon } from './CubeReact';
 export { default as CubesIcon } from './CubesReact';
+export { default as DiamondIcon } from './DiamondReact';
 export { default as DomainIcon } from './DomainReact';
 export { default as DotIcon } from './DotReact';
 export { default as DownloadIcon } from './DownloadReact';

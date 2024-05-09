@@ -91,5 +91,14 @@ export const component = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
+    <Spec label="minimal">
+      <TimeField
+        title="Release Time"
+        isCondensed={true}
+        horizontalConstraint={7}
+        value={value}
+        onChange={() => {}}
+      />
+    </Spec>
   </Suite>
 );

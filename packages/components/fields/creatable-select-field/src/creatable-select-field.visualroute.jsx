@@ -108,5 +108,16 @@ export const component = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
+    <Spec label="is condensed">
+      <CreatableSelectField
+        title="State"
+        name="form-field-name"
+        isCondensed={true}
+        value={value}
+        onChange={() => {}}
+        options={options}
+        horizontalConstraint={7}
+      />
+    </Spec>
   </Suite>
 );
