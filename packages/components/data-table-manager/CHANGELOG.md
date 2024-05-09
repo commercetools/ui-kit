@@ -1,5 +1,37 @@
 # @commercetools-uikit/data-table-manager
 
+## 19.3.0
+
+### Minor Changes
+
+- [#2797](https://github.com/commercetools/ui-kit/pull/2797) [`8c0c1c8`](https://github.com/commercetools/ui-kit/commit/8c0c1c8be9068b86616d23a245e9a06cf9c8dfee) Thanks [@kterry1](https://github.com/kterry1)! - replace the dataTableManager SelectInput with the new dropDownMenu component
+
+### Patch Changes
+
+- Updated dependencies [[`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a), [`9ae9f0f`](https://github.com/commercetools/ui-kit/commit/9ae9f0ff939884df1ea50f6b26f55a4f26b30fe0), [`4013cd3`](https://github.com/commercetools/ui-kit/commit/4013cd3dbb3fbfcfaf4b7c97ec3af5e7fd3aaa90)]:
+  - @commercetools-uikit/design-system@19.3.0
+  - @commercetools-uikit/secondary-button@19.3.0
+  - @commercetools-uikit/primary-button@19.3.0
+  - @commercetools-uikit/icon-button@19.3.0
+  - @commercetools-uikit/dropdown-menu@19.3.0
+  - @commercetools-uikit/async-select-input@19.3.0
+  - @commercetools-uikit/select-input@19.3.0
+  - @commercetools-uikit/accessible-button@19.3.0
+  - @commercetools-uikit/secondary-icon-button@19.3.0
+  - @commercetools-uikit/card@19.3.0
+  - @commercetools-uikit/field-label@19.3.0
+  - @commercetools-uikit/icons@19.3.0
+  - @commercetools-uikit/radio-input@19.3.0
+  - @commercetools-uikit/tag@19.3.0
+  - @commercetools-uikit/text@19.3.0
+  - @commercetools-uikit/tooltip@19.3.0
+  - @commercetools-uikit/spacings@19.3.0
+  - @commercetools-uikit/accessible-hidden@19.3.0
+  - @commercetools-uikit/collapsible-motion@19.3.0
+  - @commercetools-uikit/grid@19.3.0
+  - @commercetools-uikit/hooks@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
 ## 19.2.0
 
 ### Minor Changes
