@@ -244,9 +244,8 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   const useDataTableManagerContext = () => useContext(DataTableManagerContext);
 
   const { columns } = useDataTableManagerContext();
-  const columnsData = columns && columns.length !== 0 ? columns : props.columns;
   warning(
-    columnsData.length > 0,
+    columns.length !== 0 ? columns : props.columns.length > 0,
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
   );
   const tableRef = useRef<HTMLTableElement>();
@@ -255,7 +254,9 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   // if the table columns have been measured
   // and if the list of columns, their width field, or the isCondensed prop has changed
   // then we need to reset the resized column widths
-  const columnsInfo = getColumnsLayoutInfo(columnsData);
+  const columnsInfo = getColumnsLayoutInfo(
+    columns.length !== 0 ? columns : props.columns
+  );
   const prevLayout = usePrevious({
     columns: columnsInfo,
     isCondensed: props.isCondensed,
@@ -281,7 +282,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
 
   const updatedProps = {
     ...props,
-    columns: columnsData,
+    columns: columns.length !== 0 ? columns : props.columns,
   };
 
   return (
@@ -294,7 +295,9 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
       <TableGrid
         ref={tableRef as LegacyRef<HTMLTableElement>}
         {...filterDataAttributes(props)}
-        columns={columnsData as TColumn<TRow>[]}
+        columns={
+          columns.length !== 0 ? columns : (props.columns as TColumn<TRow>[])
+        }
         maxHeight={props.maxHeight}
         disableSelfContainment={!!props.disableSelfContainment}
         resizedTotalWidth={resizedTotalWidth}
@@ -302,29 +305,33 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
         <ColumnResizingContext.Provider value={columnResizingReducer}>
           <TableHeader>
             <TableRow isRowClickable={false}>
-              {columnsData.map((column) => (
-                <HeaderCell
-                  key={column.key}
-                  shouldWrap={props.wrapHeaderLabels}
-                  isCondensed={props.isCondensed}
-                  iconComponent={column.headerIcon}
-                  onColumnResized={props.onColumnResized}
-                  disableResizing={column.disableResizing}
-                  horizontalCellAlignment={
-                    column.align ? column.align : props.horizontalCellAlignment
-                  }
-                  disableHeaderStickiness={props.disableHeaderStickiness}
-                  columnWidth={column.width}
-                  /* Sorting Props */
-                  onClick={props.onSortChange && props.onSortChange}
-                  sortedBy={props.sortedBy}
-                  columnKey={column.key}
-                  isSortable={column.isSortable}
-                  sortDirection={props.sortDirection}
-                >
-                  {column.label}
-                </HeaderCell>
-              ))}
+              {(columns.length !== 0 ? columns : props.columns).map(
+                (column) => (
+                  <HeaderCell
+                    key={column.key}
+                    shouldWrap={props.wrapHeaderLabels}
+                    isCondensed={props.isCondensed}
+                    iconComponent={column.headerIcon}
+                    onColumnResized={props.onColumnResized}
+                    disableResizing={column.disableResizing}
+                    horizontalCellAlignment={
+                      column.align
+                        ? column.align
+                        : props.horizontalCellAlignment
+                    }
+                    disableHeaderStickiness={props.disableHeaderStickiness}
+                    columnWidth={column.width}
+                    /* Sorting Props */
+                    onClick={props.onSortChange && props.onSortChange}
+                    sortedBy={props.sortedBy}
+                    columnKey={column.key}
+                    isSortable={column.isSortable}
+                    sortDirection={props.sortDirection}
+                  >
+                    {column.label}
+                  </HeaderCell>
+                )
+              )}
             </TableRow>
           </TableHeader>
           <TableBody>
