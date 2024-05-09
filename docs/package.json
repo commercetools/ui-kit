@@ -47,6 +47,9 @@
   "resolutions": {
     "@types/react": "17.0.75",
     "@types/react-dom": "17.0.25",
+    "node-fetch": "^2.6.7",
+    "prismjs": "^1.29.0",
+    "minimatch": "^3.0.5",
     "terser-webpack-plugin": "2.3.8",
     "webpack": "4.47.0"
   },

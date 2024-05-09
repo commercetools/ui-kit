@@ -1,5 +1,27 @@
 # @commercetools-uikit/i18n
 
+## 19.3.0
+
+## 19.2.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+## 19.1.0
+
+## 19.0.0
+
+### Patch Changes
+
+- [#2743](https://github.com/commercetools/ui-kit/pull/2743) [`4d184f6`](https://github.com/commercetools/ui-kit/commit/4d184f678b8691115c444fc0d7aa8655a52faffd) Thanks [@transifex-integration](https://github.com/apps/transifex-integration)! - Updates translations
+
+## 18.5.0
+
+## 18.4.0
+
+## 18.3.0
+
 ## 18.2.0
 
 ## 18.1.0

@@ -47,9 +47,16 @@ const namifyLocale = (locale) => {
 
 const IntlWrapper = (props) => {
   const locale = props.locale;
-  const messages = getMessagesForLocale(locale);
+  const messagesForLocale = getMessagesForLocale(locale);
+  const normalizedMessages = Object.entries(messagesForLocale).reduce(
+    (messages, [messageKey, messageValue]) => ({
+      ...messages,
+      [messageKey]: messageValue.string ?? messageValue,
+    }),
+    {}
+  );
   return (
-    <IntlProvider locale={locale} messages={messages}>
+    <IntlProvider locale={locale} messages={normalizedMessages}>
       {props.children}
     </IntlProvider>
   );

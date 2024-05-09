@@ -153,6 +153,7 @@ storiesOf('Components|Fields/SelectFields', module)
                 isAutofocussed={boolean('isAutofocussed', false)}
                 isDisabled={boolean('isDisabled', false)}
                 isReadOnly={boolean('isReadOnly', false)}
+                isCondensed={boolean('isCondensed', false)}
                 isMulti={isMulti}
                 placeholder={text('placeholder', 'Select...')}
                 title={text('title', 'Favourite animal')}

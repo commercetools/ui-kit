@@ -88,7 +88,10 @@ const getBorderColor = (props: TLabelProps) => {
   if (props.isReadOnly) {
     return designTokens.colorNeutral60;
   }
-  return designTokens.colorPrimary;
+  if (props.isChecked || props.isIndeterminate) {
+    return designTokens.colorPrimary;
+  }
+  return designTokens.colorNeutral60;
 };
 
 const getBackgroundColor = (props: TLabelProps) => {
@@ -148,7 +151,7 @@ const CheckboxIconWrapper = styled.div<TCheckboxIconWrapperProps>`
   ${(props) =>
     props.isHovered
       ? css`
-          background-color: ${designTokens.colorNeutral90};
+          background-color: ${designTokens.colorPrimary95};
         `
       : ''}
 `;
@@ -215,7 +218,7 @@ const Label = styled.label<TLabelProps>`
     background-color: ${(props) =>
       props.isDisabled || props.isReadOnly
         ? 'unset'
-        : designTokens.colorNeutral90};
+        : designTokens.colorPrimary95};
   }
 `;
 

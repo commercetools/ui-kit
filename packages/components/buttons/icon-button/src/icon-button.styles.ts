@@ -84,7 +84,7 @@ const getBaseStyles = (
     return css`
       &,
       &:hover {
-        background-color: ${designTokens.backgroundColorForButtonWhenDisabled};
+        background-color: ${designTokens.colorTransparent};
         border-color: ${designTokens.colorSurface};
         color: ${designTokens.colorNeutral60};
         box-shadow: none;
@@ -115,12 +115,12 @@ const getBaseStyles = (
     case 'primary':
       return css`
         &:hover {
-          background-color: ${designTokens.backgroundColorForButtonAsPrimaryWhenHovered};
+          background-color: ${designTokens.colorPrimary40};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}
         &:active {
-          background-color: ${designTokens.backgroundColorForButtonAsPrimary};
+          background-color: ${designTokens.colorPrimary};
           box-shadow: ${designTokens.shadow0};
         }
         ${isActive ? '&,' : ''}

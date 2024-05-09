@@ -88,19 +88,29 @@ const Tag = (props: TTagProps) => {
             cursor: pointer;
             text-decoration: none;
           }
+          box-sizing: border-box;
           cursor: default;
           min-width: 0;
           display: flex;
-          background-color: ${props.type === 'warning'
+          border-radius: ${designTokens.borderRadius20};
+          border-style: solid;
+          border-width: 1px;
+          background-color: ${props.isDisabled
+            ? designTokens.colorNeutral95
+            : props.type === 'warning'
             ? designTokens.colorWarning95
-            : designTokens.colorNeutral95};
-
+            : designTokens.colorPrimary95};
+          border-color: ${props.isDisabled
+            ? designTokens.colorNeutral
+            : props.type === 'warning'
+            ? designTokens.colorWarning85
+            : designTokens.colorPrimary90};
           ${props.onClick &&
           `&:hover {
             background-color: ${
               props.type === 'warning'
-                ? designTokens.colorWarning95
-                : designTokens.colorNeutral90
+                ? designTokens.colorWarning85
+                : designTokens.colorPrimary90
             };
           }`}
         `}
@@ -124,25 +134,9 @@ const Tag = (props: TTagProps) => {
             onClick={props.onRemove}
             css={[
               css`
-                border-color: ${props.type === 'warning'
-                  ? designTokens.colorWarning
-                  : designTokens.colorNeutral};
                 padding: 0 ${designTokens.spacing25};
-                border-radius: 0 ${designTokens.borderRadius2}
-                  ${designTokens.borderRadius2} 0;
                 display: flex;
                 align-items: center;
-                background: inherit;
-                border-style: solid;
-                border-width: 1px 1px 1px 0;
-                :not(:disabled)&:hover,
-                :not(:disabled)&:focus {
-                  border-color: ${props.type === 'warning'
-                    ? designTokens.colorWarning
-                    : designTokens.colorNeutral};
-
-                  fill: ${designTokens.colorError};
-                }
                 fill: ${designTokens.colorNeutral40};
                 &:disabled {
                   fill: ${designTokens.colorNeutral60};

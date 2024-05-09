@@ -44,11 +44,11 @@ export const getForegroundBarStyles = (props: TProgressBarProps) => css`
   background: ${props.isInverted
     ? designTokens.colorSurface
     : `linear-gradient(
-      to right,
-      #00E5CB,
-      ${designTokens.colorPrimary25},
-      #00E5CB
-    )`};
+          to right,
+          ${designTokens.colorPrimary85},
+          ${designTokens.colorPrimary},
+          ${designTokens.colorPrimary85}
+        )`};
   background-size: 200% 100%;
   animation: ${props.isAnimated && !props.isInverted
     ? css`

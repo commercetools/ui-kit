@@ -61,6 +61,15 @@ export const component = () => (
         isClearable={true}
       />
     </Spec>
+    <Spec label="when condensed">
+      <SearchSelectInput
+        value={value}
+        onChange={() => {}}
+        loadOptions={loadOptions}
+        horizontalConstraint={7}
+        isCondensed={true}
+      />
+    </Spec>
     <Spec label="when input has an error and a warning">
       <SearchSelectInput
         value={value}

@@ -146,6 +146,7 @@ storiesOf('Components|Fields/SelectFields', module)
                 maxMenuHeight={number('maxMenuHeight', 220)}
                 isSearchable={boolean('isSearchable', true)}
                 isClearable={boolean('isClearable', false)}
+                isCondensed={boolean('isCondensed', false)}
                 tabIndex={text('tabIndex', '0')}
                 tabSelectsValue={boolean('tabSelectsValue', true)}
                 // Async props

@@ -161,6 +161,10 @@ export type TAsyncSelectFieldProps = {
    */
   isClearable?: ReactSelectAsyncProps['isClearable'];
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Is the select disabled
    * <br>
    * [Props from React select was used](https://react-select.com/props)
@@ -442,6 +446,7 @@ export default class AsyncSelectField extends Component<
             id={this.state.id}
             containerId={this.props.containerId}
             isClearable={this.props.isClearable}
+            isCondensed={this.props.isCondensed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             isOptionDisabled={this.props.isOptionDisabled}

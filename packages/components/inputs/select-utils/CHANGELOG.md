@@ -1,5 +1,109 @@
 # @commercetools-uikit/select-utils
 
+## 19.3.0
+
+### Minor Changes
+
+- [#2801](https://github.com/commercetools/ui-kit/pull/2801) [`91a86d8`](https://github.com/commercetools/ui-kit/commit/91a86d832c89984dd0af786c58d5db478f2f28e1) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for isCondensed prop on SearchSelectInput component
+
+### Patch Changes
+
+- Updated dependencies [[`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a)]:
+  - @commercetools-uikit/design-system@19.3.0
+  - @commercetools-uikit/accessible-button@19.3.0
+  - @commercetools-uikit/icons@19.3.0
+  - @commercetools-uikit/text@19.3.0
+  - @commercetools-uikit/spacings@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
+## 19.2.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/accessible-button@19.2.0
+  - @commercetools-uikit/icons@19.2.0
+  - @commercetools-uikit/text@19.2.0
+  - @commercetools-uikit/spacings@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+
+## 19.1.0
+
+### Minor Changes
+
+- [#2774](https://github.com/commercetools/ui-kit/pull/2774) [`ff349b0`](https://github.com/commercetools/ui-kit/commit/ff349b0d7b16b0de1af9e233f221c432f166bdd8) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for condensed layout to select input
+
+- [#2780](https://github.com/commercetools/ui-kit/pull/2780) [`cd66594`](https://github.com/commercetools/ui-kit/commit/cd665940c7dbe2e99c4bd70a97fbad102a9dc8b3) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Apply the new tag styles in the select input multi value tags
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/accessible-button@19.1.0
+  - @commercetools-uikit/icons@19.1.0
+  - @commercetools-uikit/text@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+  - @commercetools-uikit/spacings@19.1.0
+
+## 19.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`90186d4`](https://github.com/commercetools/ui-kit/commit/90186d48fa136df3c3510b8fc216d7a528294456), [`5606039`](https://github.com/commercetools/ui-kit/commit/5606039ddabfc3f13b10d791490027ea68e2b691), [`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c)]:
+  - @commercetools-uikit/icons@19.0.0
+  - @commercetools-uikit/design-system@19.0.0
+  - @commercetools-uikit/accessible-button@19.0.0
+  - @commercetools-uikit/text@19.0.0
+  - @commercetools-uikit/spacings@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
+## 18.5.0
+
+### Minor Changes
+
+- [#2742](https://github.com/commercetools/ui-kit/pull/2742) [`96dbded`](https://github.com/commercetools/ui-kit/commit/96dbded975ad3abde9366998c87d613ab1f17546) Thanks [@kark](https://github.com/kark)! - Styling adjustments related to the upcoming new colours schema.
+
+### Patch Changes
+
+- Updated dependencies [[`96dbded`](https://github.com/commercetools/ui-kit/commit/96dbded975ad3abde9366998c87d613ab1f17546)]:
+  - @commercetools-uikit/icons@18.5.0
+  - @commercetools-uikit/text@18.5.0
+  - @commercetools-uikit/design-system@18.5.0
+  - @commercetools-uikit/accessible-button@18.5.0
+  - @commercetools-uikit/spacings@18.5.0
+  - @commercetools-uikit/utils@18.5.0
+
+## 18.4.0
+
+### Patch Changes
+
+- Updated dependencies [[`7c35211`](https://github.com/commercetools/ui-kit/commit/7c35211111f2b4a042d6cbca78fb59298f7fcf27), [`dd36868`](https://github.com/commercetools/ui-kit/commit/dd368687280284ee49801aaf3f1a61adb8e575d5)]:
+  - @commercetools-uikit/icons@18.4.0
+  - @commercetools-uikit/design-system@18.4.0
+  - @commercetools-uikit/accessible-button@18.4.0
+  - @commercetools-uikit/text@18.4.0
+  - @commercetools-uikit/spacings@18.4.0
+  - @commercetools-uikit/utils@18.4.0
+
+## 18.3.0
+
+### Patch Changes
+
+- [#2731](https://github.com/commercetools/ui-kit/pull/2731) [`e0038e4`](https://github.com/commercetools/ui-kit/commit/e0038e4e9ed158d70107147ffe9540e36f41a576) Thanks [@chloe0592](https://github.com/chloe0592)! - Small UI improvements.
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@18.3.0
+  - @commercetools-uikit/accessible-button@18.3.0
+  - @commercetools-uikit/icons@18.3.0
+  - @commercetools-uikit/text@18.3.0
+  - @commercetools-uikit/utils@18.3.0
+  - @commercetools-uikit/spacings@18.3.0
+
 ## 18.2.0
 
 ### Patch Changes

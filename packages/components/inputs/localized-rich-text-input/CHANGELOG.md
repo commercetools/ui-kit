@@ -1,5 +1,188 @@
 # @commercetools-uikit/localized-rich-text-input
 
+## 19.3.0
+
+### Patch Changes
+
+- Updated dependencies [[`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a)]:
+  - @commercetools-uikit/design-system@19.3.0
+  - @commercetools-uikit/flat-button@19.3.0
+  - @commercetools-uikit/constraints@19.3.0
+  - @commercetools-uikit/icons@19.3.0
+  - @commercetools-uikit/input-utils@19.3.0
+  - @commercetools-uikit/rich-text-utils@19.3.0
+  - @commercetools-uikit/spacings-inline@19.3.0
+  - @commercetools-uikit/spacings-stack@19.3.0
+  - @commercetools-uikit/text@19.3.0
+  - @commercetools-uikit/tooltip@19.3.0
+  - @commercetools-uikit/messages@19.3.0
+  - @commercetools-uikit/collapsible-motion@19.3.0
+  - @commercetools-uikit/hooks@19.3.0
+  - @commercetools-uikit/localized-utils@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
+## 19.2.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`d72e043`](https://github.com/commercetools/ui-kit/commit/d72e043db3f31c330c4a8c34a7b3fbd623387fb3), [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/input-utils@19.2.0
+  - @commercetools-uikit/spacings-inline@19.2.0
+  - @commercetools-uikit/spacings-stack@19.2.0
+  - @commercetools-uikit/rich-text-utils@19.2.0
+  - @commercetools-uikit/flat-button@19.2.0
+  - @commercetools-uikit/collapsible-motion@19.2.0
+  - @commercetools-uikit/constraints@19.2.0
+  - @commercetools-uikit/messages@19.2.0
+  - @commercetools-uikit/tooltip@19.2.0
+  - @commercetools-uikit/icons@19.2.0
+  - @commercetools-uikit/text@19.2.0
+  - @commercetools-uikit/localized-utils@19.2.0
+  - @commercetools-uikit/hooks@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+
+## 19.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`2c130c2`](https://github.com/commercetools/ui-kit/commit/2c130c259b0101db34265b5582d7f8388b786172)]:
+  - @commercetools-uikit/input-utils@19.1.0
+  - @commercetools-uikit/rich-text-utils@19.1.0
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/flat-button@19.1.0
+  - @commercetools-uikit/collapsible-motion@19.1.0
+  - @commercetools-uikit/constraints@19.1.0
+  - @commercetools-uikit/icons@19.1.0
+  - @commercetools-uikit/messages@19.1.0
+  - @commercetools-uikit/spacings-inline@19.1.0
+  - @commercetools-uikit/spacings-stack@19.1.0
+  - @commercetools-uikit/text@19.1.0
+  - @commercetools-uikit/tooltip@19.1.0
+  - @commercetools-uikit/hooks@19.1.0
+  - @commercetools-uikit/localized-utils@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+
+## 19.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`90186d4`](https://github.com/commercetools/ui-kit/commit/90186d48fa136df3c3510b8fc216d7a528294456), [`5606039`](https://github.com/commercetools/ui-kit/commit/5606039ddabfc3f13b10d791490027ea68e2b691), [`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c)]:
+  - @commercetools-uikit/icons@19.0.0
+  - @commercetools-uikit/design-system@19.0.0
+  - @commercetools-uikit/input-utils@19.0.0
+  - @commercetools-uikit/rich-text-utils@19.0.0
+  - @commercetools-uikit/flat-button@19.0.0
+  - @commercetools-uikit/constraints@19.0.0
+  - @commercetools-uikit/spacings-inline@19.0.0
+  - @commercetools-uikit/spacings-stack@19.0.0
+  - @commercetools-uikit/text@19.0.0
+  - @commercetools-uikit/tooltip@19.0.0
+  - @commercetools-uikit/messages@19.0.0
+  - @commercetools-uikit/collapsible-motion@19.0.0
+  - @commercetools-uikit/hooks@19.0.0
+  - @commercetools-uikit/localized-utils@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
+## 18.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`96dbded`](https://github.com/commercetools/ui-kit/commit/96dbded975ad3abde9366998c87d613ab1f17546)]:
+  - @commercetools-uikit/icons@18.5.0
+  - @commercetools-uikit/text@18.5.0
+  - @commercetools-uikit/design-system@18.5.0
+  - @commercetools-uikit/input-utils@18.5.0
+  - @commercetools-uikit/rich-text-utils@18.5.0
+  - @commercetools-uikit/flat-button@18.5.0
+  - @commercetools-uikit/messages@18.5.0
+  - @commercetools-uikit/constraints@18.5.0
+  - @commercetools-uikit/spacings-inline@18.5.0
+  - @commercetools-uikit/spacings-stack@18.5.0
+  - @commercetools-uikit/tooltip@18.5.0
+  - @commercetools-uikit/collapsible-motion@18.5.0
+  - @commercetools-uikit/hooks@18.5.0
+  - @commercetools-uikit/localized-utils@18.5.0
+  - @commercetools-uikit/utils@18.5.0
+
+## 18.4.0
+
+### Patch Changes
+
+- Updated dependencies [[`7c35211`](https://github.com/commercetools/ui-kit/commit/7c35211111f2b4a042d6cbca78fb59298f7fcf27), [`dd36868`](https://github.com/commercetools/ui-kit/commit/dd368687280284ee49801aaf3f1a61adb8e575d5)]:
+  - @commercetools-uikit/icons@18.4.0
+  - @commercetools-uikit/design-system@18.4.0
+  - @commercetools-uikit/input-utils@18.4.0
+  - @commercetools-uikit/rich-text-utils@18.4.0
+  - @commercetools-uikit/flat-button@18.4.0
+  - @commercetools-uikit/constraints@18.4.0
+  - @commercetools-uikit/spacings-inline@18.4.0
+  - @commercetools-uikit/spacings-stack@18.4.0
+  - @commercetools-uikit/text@18.4.0
+  - @commercetools-uikit/tooltip@18.4.0
+  - @commercetools-uikit/messages@18.4.0
+  - @commercetools-uikit/collapsible-motion@18.4.0
+  - @commercetools-uikit/hooks@18.4.0
+  - @commercetools-uikit/localized-utils@18.4.0
+  - @commercetools-uikit/utils@18.4.0
+
+## 18.3.0
+
+### Minor Changes
+
+- [#2732](https://github.com/commercetools/ui-kit/pull/2732) [`de3776d`](https://github.com/commercetools/ui-kit/commit/de3776de7692fd606c938768a8a0e8b91bd32d48) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - We've changed how we internally manage the `errors` and `warnings` properties to make it easy for consumers to style them.
+
+  If you currently want to render an error for an specific language, you need to use the `WarningMessage` component to wrap the error text you provide to the component:
+
+  ```jsx
+  <LocalizexTextInput
+    title="Title"
+    value={value}
+    onChange={handleChange}
+    warnings={{
+      en: <WarningMessage>This is a warning</WarningMessage>,
+    }}
+  >
+  ```
+
+  With the new update, you no longer need to wrap the error text so you can provide it as it is:
+
+  ```jsx
+  <LocalizexTextInput
+    title="Title"
+    value={value}
+    onChange={handleChange}
+    warnings={{
+      en: 'This is a warning',
+    }}
+  >
+  ```
+
+  We still support the former, but we encourage using the new way to provide errors and warnings.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/design-system@18.3.0
+  - @commercetools-uikit/flat-button@18.3.0
+  - @commercetools-uikit/collapsible-motion@18.3.0
+  - @commercetools-uikit/constraints@18.3.0
+  - @commercetools-uikit/icons@18.3.0
+  - @commercetools-uikit/input-utils@18.3.0
+  - @commercetools-uikit/rich-text-utils@18.3.0
+  - @commercetools-uikit/messages@18.3.0
+  - @commercetools-uikit/spacings-inline@18.3.0
+  - @commercetools-uikit/spacings-stack@18.3.0
+  - @commercetools-uikit/text@18.3.0
+  - @commercetools-uikit/tooltip@18.3.0
+  - @commercetools-uikit/hooks@18.3.0
+  - @commercetools-uikit/localized-utils@18.3.0
+  - @commercetools-uikit/utils@18.3.0
+
 ## 18.2.0
 
 ### Patch Changes

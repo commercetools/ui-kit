@@ -76,6 +76,25 @@ export const component = () => (
         isDisabled={true}
       />
     </Spec>
+    <Spec label="when isCondensed and open">
+      <LocalizedTextInput
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        isCondensed={true}
+        defaultExpandLanguages={true}
+      />
+    </Spec>
+    <Spec label="when isCondensed and closed">
+      <LocalizedTextInput
+        value={value}
+        onChange={() => {}}
+        selectedLanguage="en"
+        horizontalConstraint={7}
+        isCondensed={true}
+      />
+    </Spec>
     <Spec label="when there is an error for a specific language (first one)">
       <LocalizedTextInput
         value={value}

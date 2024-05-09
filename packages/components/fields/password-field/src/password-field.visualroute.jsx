@@ -102,5 +102,14 @@ export const component = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
+    <Spec label="with not rendered show/hide password button">
+      <PasswordField
+        title="Welcome Text"
+        value={value}
+        onChange={() => {}}
+        horizontalConstraint={7}
+        renderShowHideButton={false}
+      />
+    </Spec>
   </Suite>
 );

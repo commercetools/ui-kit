@@ -15,7 +15,7 @@ export const component = () => (
         I want pizza
       </CheckboxInput>
     </Spec>
-    <Spec label="when indetermiate">
+    <Spec label="when indeterminate">
       <CheckboxInput onChange={() => {}} value="value" isIndeterminate={true}>
         I want kale pizza
       </CheckboxInput>

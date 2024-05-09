@@ -41,6 +41,7 @@ storiesOf('Components|Inputs', module)
               id={text('id', '')}
               name={text('name', '')}
               placeholder={placeholder === '' ? undefined : placeholder}
+              isCondensed={boolean('isCondensed', false)}
               isDisabled={boolean('isDisabled', false)}
               isReadOnly={boolean('isReadOnly', false)}
               hasError={boolean('hasError', false)}

@@ -1,5 +1,97 @@
 # @commercetools-uikit/search-select-input
 
+## 19.3.0
+
+### Minor Changes
+
+- [#2801](https://github.com/commercetools/ui-kit/pull/2801) [`91a86d8`](https://github.com/commercetools/ui-kit/commit/91a86d832c89984dd0af786c58d5db478f2f28e1) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for isCondensed prop on SearchSelectInput component
+
+### Patch Changes
+
+- Updated dependencies [[`91a86d8`](https://github.com/commercetools/ui-kit/commit/91a86d832c89984dd0af786c58d5db478f2f28e1), [`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a)]:
+  - @commercetools-uikit/select-utils@19.3.0
+  - @commercetools-uikit/design-system@19.3.0
+  - @commercetools-uikit/async-select-input@19.3.0
+  - @commercetools-uikit/text@19.3.0
+  - @commercetools-uikit/spacings@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
+## 19.2.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`8bf179b`](https://github.com/commercetools/ui-kit/commit/8bf179b975ad9f14ea83cd7d6a70e0abd79a4272), [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/async-select-input@19.2.0
+  - @commercetools-uikit/select-utils@19.2.0
+  - @commercetools-uikit/text@19.2.0
+  - @commercetools-uikit/spacings@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+
+## 19.1.0
+
+### Patch Changes
+
+- Updated dependencies [[`ff349b0`](https://github.com/commercetools/ui-kit/commit/ff349b0d7b16b0de1af9e233f221c432f166bdd8), [`cd66594`](https://github.com/commercetools/ui-kit/commit/cd665940c7dbe2e99c4bd70a97fbad102a9dc8b3)]:
+  - @commercetools-uikit/select-utils@19.1.0
+  - @commercetools-uikit/async-select-input@19.1.0
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/text@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+  - @commercetools-uikit/spacings@19.1.0
+
+## 19.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c)]:
+  - @commercetools-uikit/design-system@19.0.0
+  - @commercetools-uikit/async-select-input@19.0.0
+  - @commercetools-uikit/select-utils@19.0.0
+  - @commercetools-uikit/text@19.0.0
+  - @commercetools-uikit/spacings@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
+## 18.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`96dbded`](https://github.com/commercetools/ui-kit/commit/96dbded975ad3abde9366998c87d613ab1f17546)]:
+  - @commercetools-uikit/select-utils@18.5.0
+  - @commercetools-uikit/text@18.5.0
+  - @commercetools-uikit/design-system@18.5.0
+  - @commercetools-uikit/async-select-input@18.5.0
+  - @commercetools-uikit/spacings@18.5.0
+  - @commercetools-uikit/utils@18.5.0
+
+## 18.4.0
+
+### Patch Changes
+
+- Updated dependencies [[`dd36868`](https://github.com/commercetools/ui-kit/commit/dd368687280284ee49801aaf3f1a61adb8e575d5)]:
+  - @commercetools-uikit/design-system@18.4.0
+  - @commercetools-uikit/async-select-input@18.4.0
+  - @commercetools-uikit/select-utils@18.4.0
+  - @commercetools-uikit/text@18.4.0
+  - @commercetools-uikit/spacings@18.4.0
+  - @commercetools-uikit/utils@18.4.0
+
+## 18.3.0
+
+### Patch Changes
+
+- Updated dependencies [[`e0038e4`](https://github.com/commercetools/ui-kit/commit/e0038e4e9ed158d70107147ffe9540e36f41a576)]:
+  - @commercetools-uikit/select-utils@18.3.0
+  - @commercetools-uikit/async-select-input@18.3.0
+  - @commercetools-uikit/design-system@18.3.0
+  - @commercetools-uikit/text@18.3.0
+  - @commercetools-uikit/utils@18.3.0
+  - @commercetools-uikit/spacings@18.3.0
+
 ## 18.2.0
 
 ### Patch Changes

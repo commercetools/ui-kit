@@ -100,5 +100,14 @@ export const component = () => (
         renderWarning={() => 'Custom warning'}
       />
     </Spec>
+    <Spec label="is condensed">
+      <DateField
+        title="Release Date"
+        isCondensed={true}
+        horizontalConstraint={7}
+        value={value}
+        onChange={() => {}}
+      />
+    </Spec>
   </Suite>
 );

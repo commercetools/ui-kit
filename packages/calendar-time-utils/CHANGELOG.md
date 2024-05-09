@@ -1,5 +1,62 @@
 # @commercetools-uikit/calendar-time-utils
 
+## 19.3.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@19.3.0
+
+## 19.2.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/utils@19.2.0
+
+## 19.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@19.1.0
+
+## 19.0.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@19.0.0
+
+## 18.5.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@18.5.0
+
+## 18.4.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@18.4.0
+
+## 18.3.0
+
+### Minor Changes
+
+- [#2725](https://github.com/commercetools/ui-kit/pull/2725) [`75fcd4f`](https://github.com/commercetools/ui-kit/commit/75fcd4feef3979b0939bfe5a712742b51038e6a5) Thanks [@leventekobor](https://github.com/leventekobor)! - We've included a new property in the `DateTimeInput` and `DateTimeField` components for consumers to be able to set the default time the calendar will show upon users opening it.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/utils@18.3.0
+
 ## 18.2.0
 
 ### Patch Changes

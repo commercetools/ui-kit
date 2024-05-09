@@ -1,5 +1,141 @@
 # @commercetools-uikit/localized-text-field
 
+## 19.3.0
+
+### Patch Changes
+
+- Updated dependencies [[`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a)]:
+  - @commercetools-uikit/design-system@19.3.0
+  - @commercetools-uikit/constraints@19.3.0
+  - @commercetools-uikit/field-label@19.3.0
+  - @commercetools-uikit/localized-text-input@19.3.0
+  - @commercetools-uikit/spacings@19.3.0
+  - @commercetools-uikit/field-errors@19.3.0
+  - @commercetools-uikit/field-warnings@19.3.0
+  - @commercetools-uikit/utils@19.3.0
+
+## 19.2.0
+
+### Minor Changes
+
+- [#2792](https://github.com/commercetools/ui-kit/pull/2792) [`77ea50a`](https://github.com/commercetools/ui-kit/commit/77ea50a184fd1f51832f46a5ce174cc93a1a6e6e) Thanks [@Sarah4VT](https://github.com/Sarah4VT)! - Add support for isCondensed prop to LocalizedTextField
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`d72e043`](https://github.com/commercetools/ui-kit/commit/d72e043db3f31c330c4a8c34a7b3fbd623387fb3), [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526), [`2c9b378`](https://github.com/commercetools/ui-kit/commit/2c9b378019e6253c0bbdec2f937a275327658c96)]:
+  - @commercetools-uikit/localized-text-input@19.2.0
+  - @commercetools-uikit/field-warnings@19.2.0
+  - @commercetools-uikit/field-errors@19.2.0
+  - @commercetools-uikit/constraints@19.2.0
+  - @commercetools-uikit/field-label@19.2.0
+  - @commercetools-uikit/spacings@19.2.0
+  - @commercetools-uikit/utils@19.2.0
+  - @commercetools-uikit/design-system@19.2.0
+
+## 19.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/localized-text-input@19.1.0
+  - @commercetools-uikit/design-system@19.1.0
+  - @commercetools-uikit/constraints@19.1.0
+  - @commercetools-uikit/field-errors@19.1.0
+  - @commercetools-uikit/field-label@19.1.0
+  - @commercetools-uikit/field-warnings@19.1.0
+  - @commercetools-uikit/utils@19.1.0
+  - @commercetools-uikit/spacings@19.1.0
+
+## 19.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`bfc3902`](https://github.com/commercetools/ui-kit/commit/bfc390219f460e1d5648ac89982f25db4b133bc8), [`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c)]:
+  - @commercetools-uikit/field-label@19.0.0
+  - @commercetools-uikit/design-system@19.0.0
+  - @commercetools-uikit/localized-text-input@19.0.0
+  - @commercetools-uikit/constraints@19.0.0
+  - @commercetools-uikit/spacings@19.0.0
+  - @commercetools-uikit/field-errors@19.0.0
+  - @commercetools-uikit/field-warnings@19.0.0
+  - @commercetools-uikit/utils@19.0.0
+
+## 18.5.0
+
+### Patch Changes
+
+- Updated dependencies [[`96dbded`](https://github.com/commercetools/ui-kit/commit/96dbded975ad3abde9366998c87d613ab1f17546)]:
+  - @commercetools-uikit/design-system@18.5.0
+  - @commercetools-uikit/field-label@18.5.0
+  - @commercetools-uikit/localized-text-input@18.5.0
+  - @commercetools-uikit/constraints@18.5.0
+  - @commercetools-uikit/field-errors@18.5.0
+  - @commercetools-uikit/field-warnings@18.5.0
+  - @commercetools-uikit/spacings@18.5.0
+  - @commercetools-uikit/utils@18.5.0
+
+## 18.4.0
+
+### Patch Changes
+
+- Updated dependencies [[`dd36868`](https://github.com/commercetools/ui-kit/commit/dd368687280284ee49801aaf3f1a61adb8e575d5)]:
+  - @commercetools-uikit/design-system@18.4.0
+  - @commercetools-uikit/field-label@18.4.0
+  - @commercetools-uikit/localized-text-input@18.4.0
+  - @commercetools-uikit/constraints@18.4.0
+  - @commercetools-uikit/spacings@18.4.0
+  - @commercetools-uikit/field-errors@18.4.0
+  - @commercetools-uikit/field-warnings@18.4.0
+  - @commercetools-uikit/utils@18.4.0
+
+## 18.3.0
+
+### Minor Changes
+
+- [#2732](https://github.com/commercetools/ui-kit/pull/2732) [`de3776d`](https://github.com/commercetools/ui-kit/commit/de3776de7692fd606c938768a8a0e8b91bd32d48) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - We've changed how we internally manage the `errorsByLanguage` property to make it easy for consumers to style them.
+
+  If you currently want to render an error for an specific language, you need to use the `ErrorMessage` component to wrap the error text you provide to the component:
+
+  ```jsx
+  <LocalizedTextField
+    title="Title"
+    value={value}
+    onChange={handleChange}
+    errorsByLanguage={{
+      en: <ErrorMessage>This is an error</ErrorMessage>,
+    }}
+  />
+  ```
+
+  With the new update, you no longer need to wrap the error text so you can provide it as it is:
+
+  ```jsx
+  <LocalizedTextField
+    title="Title"
+    value={value}
+    onChange={handleChange}
+    errorsByLanguage={{
+      en: 'This is an error',
+    }}
+  />
+  ```
+
+  We still support the former, but we encourage using the new way to provide errors.
+
+### Patch Changes
+
+- Updated dependencies [[`de3776d`](https://github.com/commercetools/ui-kit/commit/de3776de7692fd606c938768a8a0e8b91bd32d48)]:
+  - @commercetools-uikit/localized-text-input@18.3.0
+  - @commercetools-uikit/design-system@18.3.0
+  - @commercetools-uikit/constraints@18.3.0
+  - @commercetools-uikit/field-errors@18.3.0
+  - @commercetools-uikit/field-label@18.3.0
+  - @commercetools-uikit/field-warnings@18.3.0
+  - @commercetools-uikit/utils@18.3.0
+  - @commercetools-uikit/spacings@18.3.0
+
 ## 18.2.0
 
 ### Patch Changes

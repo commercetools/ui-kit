@@ -1,5 +1,86 @@
 # @commercetools-uikit/design-system
 
+## 19.3.0
+
+### Patch Changes
+
+- [#2811](https://github.com/commercetools/ui-kit/pull/2811) [`a0626f7`](https://github.com/commercetools/ui-kit/commit/a0626f7de81e3a76bea227bdfb3038ad5339a57a) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fixes the `themedValue` helper exported from the `useTheme` hook so it always return the right-hand side parameter as we now want to always use the "new" themed values.
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@19.3.0
+
+## 19.2.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+### Patch Changes
+
+- Updated dependencies [[`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526)]:
+  - @commercetools-uikit/hooks@19.2.0
+
+## 19.1.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@19.1.0
+
+## 19.0.0
+
+### Minor Changes
+
+- [#2758](https://github.com/commercetools/ui-kit/pull/2758) [`e694890`](https://github.com/commercetools/ui-kit/commit/e6948907bb40315a3cfe3a6be5508dd9cc72807c) Thanks [@ddouglasz](https://github.com/ddouglasz)! - This change removes borders and background color from the icon button when in default or disabled state in the new theme
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@19.0.0
+
+## 18.5.0
+
+### Minor Changes
+
+- [#2742](https://github.com/commercetools/ui-kit/pull/2742) [`96dbded`](https://github.com/commercetools/ui-kit/commit/96dbded975ad3abde9366998c87d613ab1f17546) Thanks [@kark](https://github.com/kark)! - Styling adjustments related to the upcoming new colours schema.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@18.5.0
+
+## 18.4.0
+
+### Minor Changes
+
+- [#2739](https://github.com/commercetools/ui-kit/pull/2739) [`dd36868`](https://github.com/commercetools/ui-kit/commit/dd368687280284ee49801aaf3f1a61adb8e575d5) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - This package now contains a CSS file with all CSS variables per theme.
+
+  We still support the `custom-properties.css` file for backwards compatibility, but we now create other files based on each theme using their names as suffix.
+
+  Pattern:
+
+  ```
+  custom-properties_<theme-name>.css
+  ```
+
+  Example:
+
+  ```
+  custom-properties_default.css
+  ```
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@18.4.0
+
+## 18.3.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @commercetools-uikit/hooks@18.3.0
+
 ## 18.2.0
 
 ### Minor Changes

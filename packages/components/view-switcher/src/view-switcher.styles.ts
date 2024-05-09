@@ -21,7 +21,7 @@ const getSizeStyles = (
 const getFontColor = (isDisabled?: boolean, isActive?: boolean) => {
   if (isDisabled) return designTokens.colorNeutral60;
   if (isActive) return designTokens.fontColorForButtonAsSecondary;
-  return designTokens.fontColorForViewSwitcherButton;
+  return designTokens.colorPrimary;
 };
 
 export const getButtonStyles = (
@@ -31,9 +31,10 @@ export const getButtonStyles = (
   isFirstButton?: TViewSwitcherButtonProps['isFirstButton'],
   isLastButton?: TViewSwitcherButtonProps['isLastButton']
 ) => {
-  const borderRadius = `${isFirstButton ? designTokens.borderRadius4 : '0'} ${
-    isLastButton ? `${designTokens.borderRadius4}` : '0 0'
-  } ${isFirstButton ? designTokens.borderRadius4 : '0'}`;
+  const borderRadius = `${isFirstButton ? designTokens.borderRadius4 : '0'}
+  ${isLastButton ? `${designTokens.borderRadius4}` : '0'}
+  ${isLastButton ? `${designTokens.borderRadius4}` : '0'}
+  ${isFirstButton ? designTokens.borderRadius4 : '0'}`;
 
   const fontColor = getFontColor(isDisabled, isActive);
 
@@ -70,7 +71,7 @@ export const getButtonStyles = (
       `,
     isActive &&
       css`
-        background-color: ${designTokens.backgroundColorForButtonWhenActive};
+        background-color: ${designTokens.colorPrimary95};
         box-shadow: ${designTokens.shadow0};
       `,
   ];

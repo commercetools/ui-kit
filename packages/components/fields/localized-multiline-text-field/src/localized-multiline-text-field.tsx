@@ -139,9 +139,13 @@ export type TLocalizedMultilineTextFieldProps = {
    */
   onFocus?: () => void;
   /**
-   * Expands input components holding multiline values instead of collpasing them by default.
+   * Expands input components holding multiline values instead of collapsing them by default.
    */
   defaultExpandMultilineText?: boolean;
+  /**
+   * Use this property to turn off caching input measurements.
+   */
+  cacheMeasurements?: boolean;
   /**
    * Will hide the language expansion controls when set to `true`. All languages will be shown when set to `true`.
    */
@@ -155,6 +159,10 @@ export type TLocalizedMultilineTextFieldProps = {
    * Sets the focus on the first input when `true` is passed.
    */
   isAutofocussed?: boolean;
+  /**
+   * Whether the text inputs for each localization should render with condensed paddings.
+   */
+  isCondensed?: boolean;
   /**
    * Disables all input fields.
    */
@@ -229,9 +237,10 @@ class LocalizedMultilineTextField extends Component<
 
   static defaultProps: Pick<
     TLocalizedMultilineTextFieldProps,
-    'horizontalConstraint'
+    'horizontalConstraint' | 'cacheMeasurements'
   > = {
     horizontalConstraint: 'scale',
+    cacheMeasurements: true,
   };
 
   state = {
@@ -304,6 +313,8 @@ class LocalizedMultilineTextField extends Component<
             }
             defaultExpandLanguages={this.props.defaultExpandLanguages}
             isAutofocussed={this.props.isAutofocussed}
+            cacheMeasurements={this.props.cacheMeasurements}
+            isCondensed={this.props.isCondensed}
             isDisabled={this.props.isDisabled}
             isReadOnly={this.props.isReadOnly}
             errors={this.props.errorsByLanguage}

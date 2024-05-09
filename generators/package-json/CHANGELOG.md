@@ -1,5 +1,17 @@
 # @commercetools-local/generator-package-json
 
+## 3.3.0
+
+### Minor Changes
+
+- [#2785](https://github.com/commercetools/ui-kit/pull/2785) [`3a47d4a`](https://github.com/commercetools/ui-kit/commit/3a47d4a673b4642c7a697eef85afbc41ca6cc526) Thanks [@ddouglasz](https://github.com/ddouglasz)! - Remove unused old theme and token reference
+
+## 3.2.1
+
+### Patch Changes
+
+- [#2761](https://github.com/commercetools/ui-kit/pull/2761) [`bfb7b52`](https://github.com/commercetools/ui-kit/commit/bfb7b52847cb01389d9c204407b4ed2279632624) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - Fix security issue (https://github.com/commercetools/ui-kit/security/dependabot/106)
+
 ## 3.2.0
 
 ### Minor Changes
