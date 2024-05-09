@@ -251,6 +251,7 @@ const createSelectableSelectStyles = ({
     menuPortalZIndex,
     isDisabled,
     isReadOnly,
+    isCondensed,
     horizontalConstraint,
   });
 
@@ -316,10 +317,6 @@ const createSelectableSelectStyles = ({
       fill: isReadOnly
         ? designTokens.fontColorForInputWhenDisabled
         : designTokens.colorNeutral60,
-    }),
-    option: (base: TBase, state: ReactSelectProps) => ({
-      ...selectStyles.option(base, state),
-      fontSize: isCondensed ? designTokens.fontSize20 : designTokens.fontSize30,
     }),
   };
 };
