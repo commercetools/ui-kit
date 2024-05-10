@@ -5,11 +5,11 @@ import {
   type ReactNode,
   type MouseEventHandler,
 } from 'react';
+import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-context';
 import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
-import { useDataTableManagerContext } from './data-table-manager-context/data-table-manager-context';
 
 export interface TRow {
   id: string;
@@ -152,14 +152,14 @@ const DataTableManager = <Row extends TRow = TRow>(
 ) => {
   const dettachedContext = useDataTableManagerContext();
   const _columns = props.columns || dettachedContext.columns;
-  const _displaySettings =
+  const displaySettings =
     props.displaySettings || dettachedContext.displaySettings;
 
   const areDisplaySettingsEnabled = Boolean(
-    _displaySettings && !_displaySettings.disableDisplaySettings
+    displaySettings && !displaySettings.disableDisplaySettings
   );
   const isWrappingText =
-    areDisplaySettingsEnabled && _displaySettings!.isWrappingText;
+    areDisplaySettingsEnabled && displaySettings!.isWrappingText;
 
   if (!_columns) {
     throw new Error(
@@ -184,14 +184,16 @@ const DataTableManager = <Row extends TRow = TRow>(
         topBar={props.topBar}
         onSettingsChange={props.onSettingsChange}
         columnManager={props.columnManager}
-        displaySettings={props.displaySettings}
+        displaySettings={displaySettings}
         managerTheme="light"
       />
-      {cloneElement(props.children, {
-        columns,
-        isCondensed:
-          areDisplaySettingsEnabled && props.displaySettings!.isCondensed,
-      })}
+      {props.children
+        ? cloneElement(props.children, {
+            columns,
+            isCondensed:
+              areDisplaySettingsEnabled && displaySettings!.isCondensed,
+          })
+        : null}
     </Spacings.Stack>
   );
 };

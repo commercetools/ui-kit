@@ -157,7 +157,7 @@ export type TDataTableProps<Row extends TRow = TRow> = {
    * The list of columns to be rendered.
    * Each column can be customized (see properties below).
    */
-  columns: TColumn<Row>[];
+  columns?: TColumn<Row>[];
   /**
    * Element to render within the `tfoot` (footer) element of the table.
    */
@@ -241,11 +241,12 @@ export type TDataTableProps<Row extends TRow = TRow> = {
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   const dettachedContext = useDataTableManagerContext();
-  const columns = props.columns || dettachedContext.columns;
+  const columns: TColumn<Row>[] =
+    props.columns && props.columns.length > 0
+      ? props.columns
+      : dettachedContext.columns;
   const isCondensedLayout =
-    props.isCondensed ||
-    (dettachedContext.areDisplaySettingsEnabled &&
-      dettachedContext.displaySettings?.isCondensed);
+    props.isCondensed || dettachedContext.isCondesedLayout;
   const tableRef = useRef<HTMLTableElement>();
   const columnResizingReducer = useManualColumnResizing(tableRef);
 
@@ -328,6 +329,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
             {props.rows.map((row, rowIndex) => (
               <DataRow<Row>
                 {...props}
+                columns={columns}
                 row={row}
                 key={row.id}
                 rowIndex={rowIndex}

@@ -11,13 +11,11 @@ export type TDataTableManagerContext<Row extends TRow = TRow> = {
    */
   columns: TColumnProps<Row>[];
   displaySettings?: TDisplaySettingsProps;
-  areDisplaySettingsEnabled: boolean;
 };
 
 const DataTableManagerContext = createContext<TDataTableManagerContext>({
   columns: [],
   displaySettings: undefined,
-  areDisplaySettingsEnabled: true,
 });
 
 type TDataTableManagerProvider = TDataTableManagerContext & {
@@ -29,9 +27,6 @@ export const DataTableManagerProvider = (props: TDataTableManagerProvider) => {
     () => ({
       columns: props.columns,
       displaySettings: props.displaySettings,
-      areDisplaySettingsEnabled: Boolean(
-        props.displaySettings && !props.displaySettings.disableDisplaySettings
-      ),
     }),
     [props.columns, props.displaySettings]
   );
@@ -43,5 +38,16 @@ export const DataTableManagerProvider = (props: TDataTableManagerProvider) => {
   );
 };
 
-export const useDataTableManagerContext = () =>
-  useContext(DataTableManagerContext);
+export const useDataTableManagerContext = () => {
+  const contextValue = useContext(DataTableManagerContext);
+  const areDisplaySettingsEnabled = Boolean(
+    contextValue.displaySettings &&
+      !contextValue.displaySettings?.disableDisplaySettings
+  );
+  return {
+    ...contextValue,
+    areDisplaySettingsEnabled,
+    isCondesedLayout:
+      areDisplaySettingsEnabled && contextValue.displaySettings?.isCondensed,
+  };
+};
