@@ -44,10 +44,26 @@ export const useDataTableManagerContext = () => {
     contextValue.displaySettings &&
       !contextValue.displaySettings?.disableDisplaySettings
   );
+  const isWrappingText =
+    areDisplaySettingsEnabled && contextValue.displaySettings?.isWrappingText;
+
+  const columns = useMemo(
+    () =>
+      contextValue.columns.map((column) => ({
+        ...column,
+        isTruncated: areDisplaySettingsEnabled
+          ? isWrappingText
+          : column.isTruncated,
+      })),
+    [areDisplaySettingsEnabled, contextValue.columns, isWrappingText]
+  );
   return {
     ...contextValue,
+    columns,
     areDisplaySettingsEnabled,
     isCondesedLayout:
-      areDisplaySettingsEnabled && contextValue.displaySettings?.isCondensed,
+      areDisplaySettingsEnabled &&
+      (contextValue.displaySettings?.isCondensed === undefined ||
+        contextValue.displaySettings?.isCondensed),
   };
 };

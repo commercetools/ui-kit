@@ -456,8 +456,7 @@ storiesOf('Components|DataTable', module)
         displaySettings={displaySettings}
       >
         <header>
-          <Spacings.Inline>
-            <h2>Department users</h2>
+          <Spacings.Inline justifyContent="flex-end">
             <DataTableManager
               onSettingsChange={(action, nextValue) => {
                 tableSettingsChangeHandler[action](nextValue);
@@ -473,7 +472,7 @@ storiesOf('Components|DataTable', module)
               )}
             />
           </Spacings.Inline>
-          <hr />
+          <hr style={{ marginBottom: '24px' }} />
         </header>
         <main>
           <DataTable

@@ -58,7 +58,6 @@ const defaultProps: Pick<
   | 'itemRenderer'
 > = {
   columns: [],
-  isCondensed: true,
   wrapHeaderLabels: true,
   verticalCellAlignment: 'top',
   horizontalCellAlignment: 'left',
@@ -329,6 +328,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
             {props.rows.map((row, rowIndex) => (
               <DataRow<Row>
                 {...props}
+                isCondensed={isCondensedLayout}
                 columns={columns}
                 row={row}
                 key={row.id}
