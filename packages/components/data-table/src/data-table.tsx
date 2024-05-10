@@ -325,10 +325,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
           <TableBody>
             {props.rows.map((row, rowIndex) => (
               <DataRow<Row>
-                {...{
-                  props,
-                  columns: columnsData,
-                }}
+                {...{ ...props, columns: columnsData }}
                 row={row}
                 key={row.id}
                 rowIndex={rowIndex}
