@@ -1,6 +1,6 @@
 import { createContext, MouseEventHandler, ReactNode } from 'react';
 
-export type TDataColumns = {
+export type TDataTableManagerColumns = {
   isTruncated?: boolean;
   key: string;
   label: ReactNode;
@@ -14,13 +14,13 @@ export type TDataColumns = {
 }[];
 
 export type TDataTableManagerContext = {
-  columns: TDataColumns;
-  updateColumns: (columns: TDataColumns) => void;
+  columns: TDataTableManagerColumns;
+  updateColumns: (columns: TDataTableManagerColumns) => void;
 };
 
 const DataTableManagerContext = createContext<TDataTableManagerContext>({
   columns: [],
-  updateColumns: (columns: TDataColumns) => [columns],
+  updateColumns: (columns: TDataTableManagerColumns) => [columns],
 });
 
 export default DataTableManagerContext;

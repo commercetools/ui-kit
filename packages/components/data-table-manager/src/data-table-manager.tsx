@@ -12,23 +12,11 @@ import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
-import { DataTableManagerContext } from './';
+import { DataTableManagerContext, TDataTableManagerColumns } from './';
 
 export interface TRow {
   id: string;
 }
-type TDataColumns = {
-  isTruncated?: boolean;
-  key: string;
-  label: ReactNode;
-  width?: string;
-  align?: 'left' | 'center' | 'right';
-  onClick?: (event: MouseEventHandler) => void;
-  headerIcon?: ReactNode;
-  isSortable?: boolean;
-  disableResizing?: boolean;
-  shouldIgnoreRowClick?: boolean;
-}[];
 
 export type TColumnProps<Row extends TRow = TRow> = {
   /**
@@ -167,9 +155,9 @@ export const DataTableManagerProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [columns, setColumns] = useState<TDataColumns>([]);
+  const [columns, setColumns] = useState<TDataTableManagerColumns>([]);
 
-  const updateColumns = (columnsFromManager: TDataColumns) =>
+  const updateColumns = (columnsFromManager: TDataTableManagerColumns) =>
     setColumns(columnsFromManager);
 
   return (

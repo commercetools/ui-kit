@@ -17,7 +17,7 @@ Both panels delegate the handling of the settings change on the parent through f
 
 ## Using the DatatableManager when Decoupled from the DataTable
 
-- To Detach the `<DatatableManager>` settings dropdown from the Datatable and position it anywhere else in the component tree, you would need to import a `DataTableManagerProvider` and wrap both components with the provider. This allows the settings component of the DatatableManager to be positioned anywhere withing this provider.
+- To Detach the `<DatatableManager>` settings dropdown from the Datatable and position it anywhere else in the component tree, you would need to import a `DataTableManagerProvider` and wrap both components with the provider. This allows the settings component of the DatatableManager to be positioned anywhere within this provider.
 
 ## Installation
 

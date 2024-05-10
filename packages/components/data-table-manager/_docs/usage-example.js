@@ -27,7 +27,7 @@ const SomeOtherComponent = () => {
 };
 
 // With the data table settings decoupled.
-//  Note is can also be exported as default.
+//  It can also be exported as default.
 export const ExampleWithDecoupledDataTableManager = () => (
   <DataTableManagerProvider>
     <DataTableManager columns={columns} />
