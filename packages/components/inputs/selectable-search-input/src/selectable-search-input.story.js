@@ -96,7 +96,7 @@ storiesOf('Components|Inputs', module)
       option: dropdownValue,
     };
 
-    const valueOverride = {
+    const _experimentalValue = {
       text: '',
       options: [],
     };
@@ -117,7 +117,7 @@ storiesOf('Components|Inputs', module)
             id={text('id', '')}
             name={name}
             value={value}
-            valueOverride={valueOverride}
+            _experimentalValue={_experimentalValue}
             onChange={(event) => {
               action('onChange')(event);
               if (event.target.name.endsWith('.textInput')) {

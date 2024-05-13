@@ -6,7 +6,6 @@ import {
   useState,
   useCallback,
   useRef,
-  useEffect,
 } from 'react';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import Constraints from '@commercetools-uikit/constraints';
@@ -90,10 +89,7 @@ export type TSelectableSearchInputProps = {
    * Value of the input. Consists of text input and selected option.
    */
   value: TValue;
-  /**
-   * This value is used to override the value of the input, if provided. Consists of text input and selected option.
-   */
-  valueOverride?: TValue;
+  _experimentalValue?: TValue;
   /**
    * Called with the event of the input or dropdown when either the selectable dropdown or the text input have changed.
    * The change event from the text input has a suffix of `.textInput` and the change event from the dropdown has a suffix of `.dropdown`.
@@ -270,12 +266,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const transformedSelectDataProps = transformDataProps(props.selectDataProps);
   const transformedInputDataProps = transformDataProps(props.inputDataProps);
 
-  // Ensure input state is always updated when the input changes
-  useEffect(() => {
-    if (props.valueOverride?.text) {
-      setSearchValue(props.valueOverride?.text);
-    }
-  }, [props.valueOverride?.text]);
+  const searchInputValue = props._experimentalValue?.text || searchValue;
 
   const optionsWithoutGroups = props.options.flatMap((option) => {
     if (isOptionObject(option)) {
@@ -358,7 +349,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     event.preventDefault();
     if (props.onSubmit) {
       props.onSubmit({
-        text: searchValue,
+        text: searchInputValue,
         option: selectedOption?.value ?? '',
       });
     }
@@ -457,7 +448,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             id={SelectableSearchInput.getTextInputId(selectablSearchInputId)}
             name={getTextInputName(props.name)}
             type="text"
-            value={searchValue}
+            value={searchInputValue}
             onChange={handleChange}
             onBlur={handleTextInputBlur}
             onFocus={handleTextInputFocus}
@@ -482,7 +473,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             }}
           />
           {props.isClearable &&
-            searchValue &&
+            searchInputValue &&
             !props.isDisabled &&
             !props.isReadOnly && (
               <SecondaryIconButton
