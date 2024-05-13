@@ -3,10 +3,6 @@ import { Suite, Spec } from '../../../../../test/percy';
 
 export const routePath = '/selectable-search-input';
 
-const defaultValue = {
-  text: '',
-  option: '',
-};
 const value = {
   text: 'hello world',
   option: 'one',
@@ -21,7 +17,6 @@ export const component = () => (
     <Spec label="minimal">
       <SelectableSearchInput
         value={value}
-        defaultValue={defaultValue}
         onChange={() => {}}
         horizontalConstraint={16}
         onSubmit={() => {}}
@@ -33,7 +28,6 @@ export const component = () => (
       <SelectableSearchInput
         isDisabled={true}
         value={value}
-        defaultValue={defaultValue}
         onChange={() => {}}
         horizontalConstraint={16}
         onSubmit={() => {}}
@@ -45,7 +39,6 @@ export const component = () => (
       <SelectableSearchInput
         isReadOnly={true}
         value={value}
-        defaultValue={defaultValue}
         onChange={() => {}}
         horizontalConstraint={16}
         onSubmit={() => {}}
@@ -56,7 +49,6 @@ export const component = () => (
     <Spec label="when placeholder is visible">
       <SelectableSearchInput
         value=""
-        defaultValue={defaultValue}
         placeholder="Enter a text"
         onChange={() => {}}
         horizontalConstraint={16}
@@ -69,7 +61,6 @@ export const component = () => (
       <SelectableSearchInput
         isDisabled={true}
         value=""
-        defaultValue={defaultValue}
         placeholder="Enter a text"
         onChange={() => {}}
         horizontalConstraint={16}
@@ -81,7 +72,6 @@ export const component = () => (
     <Spec label="with error">
       <SelectableSearchInput
         value={value}
-        defaultValue={defaultValue}
         onChange={() => {}}
         horizontalConstraint={16}
         onSubmit={() => {}}
@@ -93,7 +83,6 @@ export const component = () => (
     <Spec label="with warning">
       <SelectableSearchInput
         value={value}
-        defaultValue={defaultValue}
         onChange={() => {}}
         horizontalConstraint={16}
         onSubmit={() => {}}
@@ -105,7 +94,6 @@ export const component = () => (
     <Spec label="with error and warning">
       <SelectableSearchInput
         value={value}
-        defaultValue={defaultValue}
         onChange={() => {}}
         horizontalConstraint={16}
         onSubmit={() => {}}
@@ -118,7 +106,6 @@ export const component = () => (
     <Spec label="when disabled with error">
       <SelectableSearchInput
         value={value}
-        defaultValue={defaultValue}
         onChange={() => {}}
         horizontalConstraint={16}
         onSubmit={() => {}}
@@ -131,7 +118,6 @@ export const component = () => (
     <Spec label="when disabled with warning">
       <SelectableSearchInput
         value={value}
-        defaultValue={defaultValue}
         onChange={() => {}}
         horizontalConstraint={16}
         onSubmit={() => {}}
@@ -145,7 +131,6 @@ export const component = () => (
       <SelectableSearchInput
         isReadOnly={true}
         value={value}
-        defaultValue={defaultValue}
         onChange={() => {}}
         horizontalConstraint={16}
         onSubmit={() => {}}
@@ -158,7 +143,6 @@ export const component = () => (
       <SelectableSearchInput
         isReadOnly={true}
         value={value}
-        defaultValue={defaultValue}
         onChange={() => {}}
         horizontalConstraint={16}
         onSubmit={() => {}}

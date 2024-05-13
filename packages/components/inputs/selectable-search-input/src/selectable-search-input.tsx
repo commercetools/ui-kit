@@ -91,9 +91,9 @@ export type TSelectableSearchInputProps = {
    */
   value: TValue;
   /**
-   * Default value of the input. Consists of text input and selected option.
+   * This value is used to override the value of the input, if provided. Consists of text input and selected option.
    */
-  inputValueOverride?: TValue;
+  valueOverride?: TValue;
   /**
    * Called with the event of the input or dropdown when either the selectable dropdown or the text input have changed.
    * The change event from the text input has a suffix of `.textInput` and the change event from the dropdown has a suffix of `.dropdown`.
@@ -268,10 +268,10 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
 
   // Ensure input state is always updated when the input changes
   useEffect(() => {
-    if (props.inputValueOverride?.text) {
-      setSearchValue(props.inputValueOverride?.text);
+    if (props.valueOverride?.text) {
+      setSearchValue(props.valueOverride?.text);
     }
-  }, [props.inputValueOverride?.text]);
+  }, [props.valueOverride?.text]);
 
   const optionsWithoutGroups = props.options.flatMap((option) => {
     if (isOptionObject(option)) {
