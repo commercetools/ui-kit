@@ -146,6 +146,10 @@ export type TSelectableSearchInputProps = {
    */
   isClearable?: boolean;
   /**
+   * Use this property to reduce the paddings of the component for a ui compact variant
+   */
+  isCondensed?: boolean;
+  /**
    * Horizontal size limit of the input fields.
    */
   horizontalConstraint?: 10 | 11 | 12 | 13 | 14 | 15 | 16 | 'scale' | 'auto';
@@ -427,6 +431,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             id={SelectableSearchInput.getDropdownId(selectablSearchInputId)}
             name={getDropdownName(props.name)}
             dropdownHasFocus={dropdownHasFocus}
+            isCondensed={props.isCondensed ?? false}
             handleDropdownFocus={handleDropdownFocus}
             handleDropdownBlur={handleDropdownBlur}
             textInputRef={textInputRef}
@@ -482,7 +487,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             !props.isReadOnly && (
               <SecondaryIconButton
                 icon={<CloseIcon />}
-                size="medium"
+                size={props.isCondensed ? 'small' : 'medium'}
                 label={'clear-button'}
                 onClick={handleClear}
                 css={getClearIconButtonStyles(props)}
@@ -491,6 +496,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
           {props.showSubmitButton && (
             <SecondaryIconButton
               icon={<SearchIcon />}
+              size={props.isCondensed ? 'medium' : 'big'}
               label={'search-button'}
               onClick={handleSubmit}
               css={getSearchIconButtonStyles(props)}

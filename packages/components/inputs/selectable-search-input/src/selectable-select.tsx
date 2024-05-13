@@ -29,6 +29,7 @@ const SingleValue = ({ id, dataProps, ...props }: TSingleValue) => {
 };
 type TSelectableSelect = {
   dropdownHasFocus: boolean;
+  isCondensed: boolean;
   handleDropdownFocus: () => void;
   handleDropdownBlur: () => void;
   textInputRef: React.RefObject<HTMLInputElement>;
@@ -42,6 +43,7 @@ const SelectableSelect = (props: TSelectableSelect) => {
   const dropdownStyles = createSelectableSelectStyles({
     hasWarning: props.hasWarning,
     hasError: props.hasError,
+    isCondensed: props.isCondensed,
     isDisabled: props.isDisabled,
     isReadOnly: props.isReadOnly,
     menuPortalZIndex: props.menuPortalZIndex,

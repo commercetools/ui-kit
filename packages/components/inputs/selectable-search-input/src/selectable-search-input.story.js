@@ -131,6 +131,7 @@ storiesOf('Components|Inputs', module)
             isDisabled={boolean('isDisabled', false)}
             isReadOnly={boolean('isReadOnly', false)}
             isClearable={boolean('isClearable', true)}
+            isCondensed={boolean('isCondensed', false)}
             showSubmitButton={boolean('showSubmitButton', true)}
             hasError={boolean('hasError', false)}
             hasWarning={boolean('hasWarning', false)}
