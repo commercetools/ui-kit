@@ -17,7 +17,7 @@ export const getCustomIconStyles = (props: TCustomIconProps) => {
 
   return css`
     display: flex;
-    flex: 0 0 auto;
+    flex: 1 1 auto;
     justify-content: center;
     align-items: center;
     height: ${sizeStyles.height};
