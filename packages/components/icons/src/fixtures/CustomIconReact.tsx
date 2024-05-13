@@ -1,10 +1,5 @@
 const SvgCustomIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 35 35"
-    role="img"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" role="img">
     <g clipPath="url(#custom-icon_react_svg__a)">
       <path fill="#fff" d="M0 0h35v35H0z" />
       <path

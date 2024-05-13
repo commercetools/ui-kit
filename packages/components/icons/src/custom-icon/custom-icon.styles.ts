@@ -16,10 +16,7 @@ export const getCustomIconStyles = (props: TCustomIconProps) => {
   };
 
   return css`
-    display: flex;
-    flex: 1 1 auto;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
     height: ${sizeStyles.height};
     width: ${sizeStyles.width};
     border-radius: ${designTokens.borderRadius4};
