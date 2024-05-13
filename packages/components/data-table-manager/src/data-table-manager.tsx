@@ -12,7 +12,9 @@ import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
-import { DataTableManagerContext, TDataTableManagerColumns } from './';
+import DataTableManagerContext, {
+  TDataTableManagerColumns,
+} from '@commercetools-uikit/data-table-manager/data-table-manager-context';
 
 export interface TRow {
   id: string;
