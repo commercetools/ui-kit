@@ -42,7 +42,9 @@ npm --save install react react-dom react-intl
 ## Usage
 
 ```jsx
-import DataTableManager from '@commercetools-uikit/data-table-manager';
+import DataTableManager, {
+  DataTableManagerProvider,
+} from '@commercetools-uikit/data-table-manager';
 import DataTable from '@commercetools-uikit/data-table';
 
 const rows = [
@@ -56,10 +58,16 @@ const columns = [
   { key: 'country', label: 'Country' },
 ];
 
+const SomeOtherComponent = () => {
+  return <div>Some other component</div>;
+};
+
 const Example = () => (
-  <DataTableManager columns={columns}>
+  <DataTableManagerProvider>
+    <DataTableManager columns={columns} />
+    <SomeOtherComponent />
     <DataTable rows={rows} />
-  </DataTableManager>
+  </DataTableManagerProvider>
 );
 
 export default Example;

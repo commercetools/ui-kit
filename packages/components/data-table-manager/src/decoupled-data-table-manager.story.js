@@ -10,7 +10,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import SearchTextInput from '@commercetools-uikit/search-text-input';
 import Spacings from '@commercetools-uikit/spacings';
-import Readme from '../README.md';
+import Readme from '../README.decoupled-data-table-manager.md';
 import { UPDATE_ACTIONS } from './constants';
 import DataTableManager, {
   DataTableManagerProvider,
