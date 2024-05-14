@@ -20,11 +20,12 @@
   "preconstruct": {
     "entrypoints": [
       "./index.ts",
+      "./custom-icon/index.ts",
       "./inline-svg/index.ts",
       "./leading-icon/index.ts"
     ]
   },
-  "files": ["dist", "inline-svg", "leading-icon"],
+  "files": ["dist", "custom-icon", "inline-svg", "leading-icon"],
   "scripts": {
     "generate-icons": "svgr -d src/generated -- src/svg"
   },
