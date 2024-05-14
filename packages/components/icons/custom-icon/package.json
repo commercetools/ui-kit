@@ -1,0 +1,4 @@
+{
+  "main": "dist/commercetools-uikit-icons-custom-icon.cjs.js",
+  "module": "dist/commercetools-uikit-icons-custom-icon.esm.js"
+}
