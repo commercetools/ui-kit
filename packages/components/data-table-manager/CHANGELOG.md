@@ -1,5 +1,40 @@
 # @commercetools-uikit/data-table-manager
 
+## 19.3.1
+
+### Patch Changes
+
+- [#2812](https://github.com/commercetools/ui-kit/pull/2812) [`f1fff9f`](https://github.com/commercetools/ui-kit/commit/f1fff9fca6fc25068fbed79c1f14cbfae52e7d2c) Thanks [@CarlosCortizasCT](https://github.com/CarlosCortizasCT)! - We fixed an issue with the `DropdownMenu` component when using these values:
+
+  - `menuPosition`: right
+  - `menuHorizontalConstraint`: auto
+
+  In that situation, the width and positioning of the floating menu was not correctly calculated.
+
+- Updated dependencies [[`f1fff9f`](https://github.com/commercetools/ui-kit/commit/f1fff9fca6fc25068fbed79c1f14cbfae52e7d2c)]:
+  - @commercetools-uikit/dropdown-menu@19.3.1
+  - @commercetools-uikit/design-system@19.3.1
+  - @commercetools-uikit/accessible-hidden@19.3.1
+  - @commercetools-uikit/accessible-button@19.3.1
+  - @commercetools-uikit/icon-button@19.3.1
+  - @commercetools-uikit/primary-button@19.3.1
+  - @commercetools-uikit/secondary-button@19.3.1
+  - @commercetools-uikit/secondary-icon-button@19.3.1
+  - @commercetools-uikit/card@19.3.1
+  - @commercetools-uikit/collapsible-motion@19.3.1
+  - @commercetools-uikit/field-label@19.3.1
+  - @commercetools-uikit/grid@19.3.1
+  - @commercetools-uikit/icons@19.3.1
+  - @commercetools-uikit/async-select-input@19.3.1
+  - @commercetools-uikit/radio-input@19.3.1
+  - @commercetools-uikit/select-input@19.3.1
+  - @commercetools-uikit/tag@19.3.1
+  - @commercetools-uikit/text@19.3.1
+  - @commercetools-uikit/tooltip@19.3.1
+  - @commercetools-uikit/hooks@19.3.1
+  - @commercetools-uikit/utils@19.3.1
+  - @commercetools-uikit/spacings@19.3.1
+
 ## 19.3.0
 
 ### Minor Changes
