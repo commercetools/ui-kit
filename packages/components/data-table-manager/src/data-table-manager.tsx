@@ -2,9 +2,6 @@ import {
   useMemo,
   type ReactNode,
   type MouseEventHandler,
-  useContext,
-  useState,
-  useEffect,
   cloneElement,
   ReactElement,
 } from 'react';
@@ -12,10 +9,6 @@ import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
-import DataTableManagerContext, {
-  TDataTableManagerColumns,
-} from '@commercetools-uikit/data-table-manager/data-table-manager-context';
-
 export interface TRow {
   id: string;
 }
@@ -152,23 +145,6 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
   managerTheme?: 'light' | 'dark';
 };
 
-export const DataTableManagerProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [columns, setColumns] = useState<TDataTableManagerColumns>([]);
-
-  const updateColumns = (columnsFromManager: TDataTableManagerColumns) =>
-    setColumns(columnsFromManager);
-
-  return (
-    <DataTableManagerContext.Provider value={{ columns, updateColumns }}>
-      {children}
-    </DataTableManagerContext.Provider>
-  );
-};
-
 const DataTableManager = <Row extends TRow = TRow>(
   props: TDataTableManagerProps<Row>
 ) => {
@@ -188,15 +164,6 @@ const DataTableManager = <Row extends TRow = TRow>(
       })),
     [areDisplaySettingsEnabled, props.columns, isWrappingText]
   );
-
-  const useDataTableManagerContext = () => useContext(DataTableManagerContext);
-  const { updateColumns } = useDataTableManagerContext();
-
-  useEffect(() => {
-    if (!props.children) {
-      updateColumns(columns);
-    }
-  }, [columns, updateColumns, props.children]);
 
   return (
     <Spacings.Stack>

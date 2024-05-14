@@ -14,7 +14,7 @@ import Readme from '../README.decoupled-data-table-manager.md';
 import { UPDATE_ACTIONS } from './constants';
 import DataTableManager, {
   DataTableManagerProvider,
-} from './data-table-manager';
+} from '@commercetools-uikit/data-table-manager';
 
 const items = [
   {
@@ -294,12 +294,18 @@ storiesOf('Components|DataTable', module)
       ...columnManagerButtons,
     };
 
+    const columns = withRowSelection ? columnsWithSelect : visibleColumns;
+
     return (
-      <DataTableManagerProvider>
+      <DataTableManagerProvider
+        columns={columns}
+        isCondensed={isCondensed}
+        displaySettings={displaySettings}
+      >
         <Spacings.Stack>
           <DataTableManager
             topBar={topBar}
-            columns={withRowSelection ? columnsWithSelect : visibleColumns}
+            columns={columns}
             onSettingsChange={(action, nextValue) => {
               tableSettingsChangeHandler[action](nextValue);
             }}
@@ -316,14 +322,15 @@ storiesOf('Components|DataTable', module)
           />
           <SearchTextInput
             placeholder={text('placeholder', 'Dummy search component')}
+            isReadOnly
           />
           <DataTable
             rows={withRowSelection ? rowsWithSelection : rows}
             sortedBy={sortedBy}
             onSortChange={onSortChange}
             sortDirection={sortDirection}
-            isCondensed={isCondensed}
             footer={footer}
+            isCondensed={isCondensed}
           />
           <br />
           <hr />

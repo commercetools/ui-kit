@@ -4,7 +4,6 @@ import {
   ReactNode,
   MouseEventHandler,
   LegacyRef,
-  useContext,
 } from 'react';
 import isEqual from 'lodash/isEqual';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
@@ -21,7 +20,7 @@ import HeaderCell from './header-cell';
 import DataRow from './data-row';
 import useManualColumnResizing from './use-manual-column-resizing-reducer';
 import ColumnResizingContext from './column-resizing-context';
-import DataTableManagerContext from '@commercetools-uikit/data-table-manager/data-table-manager-context';
+import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
 
 export interface TRow {
   id: string;
@@ -241,10 +240,10 @@ export type TDataTableProps<Row extends TRow = TRow> = {
 };
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
-  const useDataTableManagerContext = () => useContext(DataTableManagerContext);
-
-  const { columns } = useDataTableManagerContext();
+  const { columns, isCondensed } = useDataTableManagerContext();
   const columnsData = columns && columns.length !== 0 ? columns : props.columns;
+  const condensedValue = isCondensed ?? props.isCondensed;
+
   warning(
     columnsData.length > 0,
     `ui-kit/DataTable: empty table "columns", expected at least one column. If you are using DataTableManager you need to pass the "columns" there and they will be injected into DataTable.`
@@ -258,11 +257,11 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   const columnsInfo = getColumnsLayoutInfo(columnsData);
   const prevLayout = usePrevious({
     columns: columnsInfo,
-    isCondensed: props.isCondensed,
+    isCondensed: condensedValue,
   });
   const currentLayout = {
     columns: columnsInfo,
-    isCondensed: props.isCondensed,
+    isCondensed: condensedValue,
   };
   const hasLayoutChanged = !isEqual(prevLayout, currentLayout);
   useLayoutEffect(() => {
@@ -301,7 +300,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
                 <HeaderCell
                   key={column.key}
                   shouldWrap={props.wrapHeaderLabels}
-                  isCondensed={props.isCondensed}
+                  isCondensed={condensedValue}
                   iconComponent={column.headerIcon}
                   onColumnResized={props.onColumnResized}
                   disableResizing={column.disableResizing}
@@ -346,7 +345,7 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
       {props.footer && (
         <Footer
           data-testid="footer"
-          isCondensed={props.isCondensed}
+          isCondensed={condensedValue}
           horizontalCellAlignment={props.horizontalCellAlignment}
           resizedTotalWidth={resizedTotalWidth}
         >

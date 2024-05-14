@@ -1,12 +1,11 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { screen, render, fireEvent, within } from '../../../../test/test-utils';
-import DataTableManager, {
+import DataTableManager from './data-table-manager';
+import {
+  useDataTableManagerContext,
   DataTableManagerProvider,
-} from './data-table-manager';
-import DataTableManagerContext from './data-table-manager-context';
+} from './data-table-manager-provider';
 import { UPDATE_ACTIONS } from './constants';
-
-const useDataTableManagerContext = () => useContext(DataTableManagerContext);
 
 /* eslint-disable react/prop-types */
 const TestTable = (props) => {
@@ -64,7 +63,11 @@ const DecoupledDatatableTestComponent = (props) => {
     [UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE]: setIsWrappingText,
   };
   return (
-    <DataTableManagerProvider>
+    <DataTableManagerProvider
+      columns={props.columns}
+      isCondensed={isCondensed}
+      displaySettings={props.displaySettings}
+    >
       <div>
         <DataTableManager
           {...props}

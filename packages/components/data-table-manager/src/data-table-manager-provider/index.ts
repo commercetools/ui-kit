@@ -1,4 +1,7 @@
-export type { TRow, TColumnProps } from './data-table-manager';
+export {
+  DataTableManagerProvider,
+  useDataTableManagerContext,
+} from './data-table-manager-provider';
 export type {
   TDataTableManagerContext,
   TDataTableManagerColumns,
