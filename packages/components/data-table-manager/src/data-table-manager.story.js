@@ -4,7 +4,7 @@ import { text, boolean, select, withKnobs } from '@storybook/addon-knobs/react';
 import withReadme from 'storybook-readme/with-readme';
 import times from 'lodash/times';
 import DataTable from '@commercetools-uikit/data-table';
-import { DataTableManagerProvider } from '@commercetools-uikit/data-table-manager/data-table-manager-context';
+import { DataTableManagerProvider } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
 import { useRowSelection, useSorting } from '@commercetools-uikit/hooks';
 import PrimaryButton from '@commercetools-uikit/primary-button';
@@ -454,23 +454,14 @@ storiesOf('Components|DataTable', module)
       <DataTableManagerProvider
         columns={withRowSelection ? columnsWithSelect : visibleColumns}
         displaySettings={displaySettings}
+        onSettingsChange={(action, nextValue) => {
+          tableSettingsChangeHandler[action](nextValue);
+        }}
+        columnManager={columnManager}
       >
         <header>
           <Spacings.Inline justifyContent="flex-end">
-            <DataTableManager
-              onSettingsChange={(action, nextValue) => {
-                tableSettingsChangeHandler[action](nextValue);
-              }}
-              columnManager={columnManager}
-              managerTheme={select(
-                'managerTheme',
-                {
-                  dark: 'dark',
-                  light: 'light',
-                },
-                'dark'
-              )}
-            />
+            <DataTableManager />
           </Spacings.Inline>
           <hr style={{ marginBottom: '24px' }} />
         </header>

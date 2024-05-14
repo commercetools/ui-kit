@@ -1,15 +1,4 @@
-import {
-  useMemo,
-  cloneElement,
-  type ReactElement,
-  type ReactNode,
-  type MouseEventHandler,
-} from 'react';
-import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
-import Spacings from '@commercetools-uikit/spacings';
-import DataTableSettings, {
-  type TDataTableSettingsProps,
-} from './data-table-settings';
+import type { MouseEventHandler, ReactElement, ReactNode } from 'react';
 
 export interface TRow {
   id: string;
@@ -101,7 +90,111 @@ export type TColumnProps<Row extends TRow = TRow> = {
   shouldIgnoreRowClick?: boolean;
 };
 
-type TDataTableManagerProps<Row extends TRow = TRow> = {
+export type TSelectChangeEvent = {
+  target: {
+    name?: string;
+    value?: string | string[] | null;
+  };
+  persist: () => void;
+};
+
+type TColumnData = {
+  key: string;
+  label: ReactNode;
+};
+
+export type TDisplaySettingsProps = {
+  /**
+   * Set this flag to `false` to show the display settings panel option.
+   *
+   * @@defaultValue@@: true
+   */
+  disableDisplaySettings?: boolean;
+
+  /**
+   * Set this to `true` to reduce the paddings of all cells, allowing the table to display
+   * more data in less space.
+   *
+   * @@defaultValue@@: true
+   */
+  isCondensed?: boolean;
+
+  /**
+   * Set this to `true` to allow text in a cell to wrap.
+   * <br>
+   * This is required if `disableDisplaySettings` is set to `false`.
+   *
+   * @@defaultValue@@: false
+   */
+  isWrappingText?: boolean;
+
+  /**
+   * A React element to be rendered as the primary button, useful when the display settings work as a form.
+   */
+  primaryButton?: ReactElement;
+
+  /**
+   * A React element to be rendered as the secondary button, useful when the display settings work as a form.
+   */
+  secondaryButton?: ReactElement;
+};
+
+export type TColumnManagerProps = {
+  /**
+   * Set this to `true` to show a search input for the hidden columns panel.
+   */
+  areHiddenColumnsSearchable?: boolean;
+
+  /**
+   * Set this to `false` to show the column settings panel option.
+   *
+   * @@defaultValue@@: true
+   */
+  disableColumnManager?: boolean;
+
+  /**
+   * The keys of the visible columns.
+   */
+  visibleColumnKeys: string[];
+
+  /**
+   * The keys of the visible columns.
+   */
+  hideableColumns?: TColumnData[];
+
+  /**
+   * A callback function, called when the search input for the hidden columns panel changes.
+   */
+  searchHiddenColumns?: (searchTerm: string) => Promise<void> | void;
+
+  /**
+   * Placeholder value of the search input for the hidden columns panel.
+   */
+  searchHiddenColumnsPlaceholder?: string;
+
+  /**
+   * A React element to be rendered as the primary button, useful when the column settings work as a form.
+   */
+  primaryButton?: ReactElement;
+
+  /**
+   * A React element to be rendered as the secondary button, useful when the column settings work as a form.
+   */
+  secondaryButton?: ReactElement;
+};
+
+export type TDataTableSettingsProps = {
+  topBar?: ReactNode;
+  onSettingsChange?: (
+    settingName: string,
+    settingValue: boolean | string[]
+  ) => void;
+  displaySettings?: TDisplaySettingsProps;
+  columnManager?: TColumnManagerProps;
+  managerTheme?: 'light' | 'dark';
+};
+
+export type TDataTableManagerProps<Row extends TRow = TRow> = {
   /**
    * Each object requires a unique `key` which should correspond to property key of
    * the items of `rows` that you want to render under this column, and a `label`
@@ -140,69 +233,4 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
    * A React node for rendering additional information within the table manager.
    */
   topBar?: ReactNode;
-
-  /**
-   * Sets the background theme of the Card that contains the settings
-   * @deprecated This component does not support themes anymore.
-   */
-  managerTheme?: 'light' | 'dark';
 };
-
-const DataTableManager = <Row extends TRow = TRow>(
-  props: TDataTableManagerProps<Row>
-) => {
-  const managerContext = useDataTableManagerContext();
-  const _columns = props.columns || managerContext.columns;
-  const displaySettings =
-    props.displaySettings || managerContext.displaySettings;
-  const topBar = props.topBar || managerContext.topBar;
-  const onSettingsChange =
-    props.onSettingsChange || managerContext.onSettingsChange;
-  const columnManager = props.columnManager || managerContext.columnManager;
-
-  const areDisplaySettingsEnabled = Boolean(
-    displaySettings && !displaySettings.disableDisplaySettings
-  );
-  const isWrappingText =
-    areDisplaySettingsEnabled && displaySettings!.isWrappingText;
-
-  if (!_columns) {
-    throw new Error(
-      'ui-kit/DataTableManager: missing `columns` prop. If you do not provide it to the component, you should be using the DataTableManagerProvider component.'
-    );
-  }
-
-  const columns = useMemo(
-    () =>
-      _columns.map((column) => ({
-        ...column,
-        isTruncated: areDisplaySettingsEnabled
-          ? isWrappingText
-          : column.isTruncated,
-      })),
-    [areDisplaySettingsEnabled, _columns, isWrappingText]
-  );
-
-  return (
-    <Spacings.Stack>
-      <DataTableSettings
-        topBar={topBar}
-        onSettingsChange={onSettingsChange}
-        columnManager={columnManager}
-        displaySettings={displaySettings}
-        managerTheme="light"
-      />
-      {props.children
-        ? cloneElement(props.children, {
-            columns,
-            isCondensed:
-              areDisplaySettingsEnabled && displaySettings!.isCondensed,
-          })
-        : null}
-    </Spacings.Stack>
-  );
-};
-
-DataTableManager.displayName = 'DataTableManager';
-
-export default DataTableManager;

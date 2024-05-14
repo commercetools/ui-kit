@@ -1,16 +1,11 @@
-import { createContext, ReactNode, useContext, useMemo } from 'react';
-import { TColumnProps, TDisplaySettingsProps, TRow } from '../types';
+import { createContext, useContext, useMemo } from 'react';
+import { TDataTableManagerProps, TColumnProps, TRow } from './types';
 
-export type TDataTableManagerContext<Row extends TRow = TRow> = {
-  /**
-   * Each object requires a unique `key` which should correspond to property key of
-   * the items of `rows` that you want to render under this column, and a `label`
-   * which defines the name shown on the header.
-   * The list of columns to be rendered.
-   * Each column can be customized (see properties below).
-   */
+export type TDataTableManagerContext<Row extends TRow = TRow> = Pick<
+  TDataTableManagerProps<Row>,
+  'displaySettings' | 'topBar' | 'onSettingsChange' | 'columnManager'
+> & {
   columns: TColumnProps<Row>[];
-  displaySettings?: TDisplaySettingsProps;
 };
 
 const DataTableManagerContext = createContext<TDataTableManagerContext>({
@@ -18,17 +13,29 @@ const DataTableManagerContext = createContext<TDataTableManagerContext>({
   displaySettings: undefined,
 });
 
-type TDataTableManagerProvider = TDataTableManagerContext & {
-  children: ReactNode;
-};
+type TDataTableManagerProviderProps<Row extends TRow = TRow> =
+  TDataTableManagerProps & {
+    columns: TColumnProps<Row>[];
+  };
 
-export const DataTableManagerProvider = (props: TDataTableManagerProvider) => {
+export const DataTableManagerProvider = (
+  props: TDataTableManagerProviderProps
+) => {
   const contextValue = useMemo(
     () => ({
       columns: props.columns,
       displaySettings: props.displaySettings,
+      topBar: props.topBar,
+      onSettingsChange: props.onSettingsChange,
+      columnManager: props.columnManager,
     }),
-    [props.columns, props.displaySettings]
+    [
+      props.columnManager,
+      props.columns,
+      props.displaySettings,
+      props.onSettingsChange,
+      props.topBar,
+    ]
   );
 
   return (
@@ -38,7 +45,10 @@ export const DataTableManagerProvider = (props: TDataTableManagerProvider) => {
   );
 };
 
-export const useDataTableManagerContext = () => {
+export const useDataTableManagerContext = (): TDataTableManagerContext & {
+  areDisplaySettingsEnabled: boolean;
+  isCondesedLayout: boolean;
+} => {
   const contextValue = useContext(DataTableManagerContext);
   const areDisplaySettingsEnabled = Boolean(
     contextValue.displaySettings &&

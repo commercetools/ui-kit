@@ -6,7 +6,7 @@ import {
   LegacyRef,
 } from 'react';
 import isEqual from 'lodash/isEqual';
-import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-context';
+import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
 import { warning, filterDataAttributes } from '@commercetools-uikit/utils';
 import { usePrevious } from '@commercetools-uikit/hooks';
 import {

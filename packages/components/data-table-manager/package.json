@@ -18,9 +18,9 @@
   "main": "dist/commercetools-uikit-data-table-manager.cjs.js",
   "module": "dist/commercetools-uikit-data-table-manager.esm.js",
   "preconstruct": {
-    "entrypoints": ["./index.ts", "data-table-manager-context/index.ts"]
+    "entrypoints": ["./index.ts", "data-table-manager-provider/index.ts"]
   },
-  "files": ["dist", "data-table-manager-context"],
+  "files": ["dist", "data-table-manager-provider"],
   "dependencies": {
     "@babel/runtime": "^7.20.13",
     "@babel/runtime-corejs3": "^7.20.13",
