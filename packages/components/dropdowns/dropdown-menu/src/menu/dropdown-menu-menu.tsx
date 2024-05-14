@@ -52,19 +52,19 @@ function DropdownBaseMenu(props: TDropdownBaseMenuProps) {
     if (props.isOpen && props.triggerElementRef.current && menuRef.current) {
       const triggerElementCoordinates =
         props.triggerElementRef.current.getBoundingClientRect();
-      const menuElementCoordinates = menuRef.current.getBoundingClientRect();
 
       menuRef.current.style.top = `${
         triggerElementCoordinates.top + triggerElementCoordinates.height
       }px`;
-      menuRef.current.style.left =
-        props.menuPosition === 'left'
-          ? `${triggerElementCoordinates.left}px`
-          : `${
-              triggerElementCoordinates.left +
-              triggerElementCoordinates.width -
-              menuElementCoordinates.width
-            }px`;
+      if (props.menuPosition === 'left') {
+        menuRef.current.style.left = `${triggerElementCoordinates.left}px`;
+        menuRef.current.style.removeProperty('right');
+      } else {
+        menuRef.current.style.right = `${
+          window.innerWidth - triggerElementCoordinates.right
+        }px`;
+        menuRef.current.style.removeProperty('left');
+      }
       menuRef.current.style.maxHeight = props.menuMaxHeight
         ? `${props.menuMaxHeight}px`
         : `calc(${

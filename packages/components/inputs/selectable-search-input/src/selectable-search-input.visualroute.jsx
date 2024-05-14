@@ -152,5 +152,16 @@ export const component = () => (
         showSubmitButton={false}
       />
     </Spec>
+    <Spec label="is condensed">
+      <SelectableSearchInput
+        value={value}
+        onChange={() => {}}
+        isCondensed={true}
+        horizontalConstraint={16}
+        onSubmit={() => {}}
+        onReset={() => {}}
+        options={options}
+      />
+    </Spec>
   </Suite>
 );
