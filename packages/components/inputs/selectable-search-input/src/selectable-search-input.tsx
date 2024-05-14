@@ -265,8 +265,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const legacyDataProps = filterDataAttributes(props);
   const transformedSelectDataProps = transformDataProps(props.selectDataProps);
   const transformedInputDataProps = transformDataProps(props.inputDataProps);
-
-  const searchInputValue = props._experimentalValue?.text || searchValue;
+  const searchInputValue = props._experimentalValue?.text ?? searchValue;
 
   const optionsWithoutGroups = props.options.flatMap((option) => {
     if (isOptionObject(option)) {
