@@ -21,7 +21,6 @@ import DataRow from './data-row';
 import useManualColumnResizing from './use-manual-column-resizing-reducer';
 import ColumnResizingContext from './column-resizing-context';
 import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
-
 export interface TRow {
   id: string;
 }
@@ -241,8 +240,12 @@ export type TDataTableProps<Row extends TRow = TRow> = {
 
 const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
   const { columns, isCondensed } = useDataTableManagerContext();
-  const columnsData = columns && columns.length !== 0 ? columns : props.columns;
-  const condensedValue = isCondensed ?? props.isCondensed;
+  const isValueFromProvider = Boolean(columns && columns.length !== 0);
+  const columnsData = isValueFromProvider ? columns : props.columns;
+  const condensedValue =
+    isValueFromProvider && isCondensed !== undefined
+      ? isCondensed
+      : props.isCondensed;
 
   warning(
     columnsData.length > 0,
@@ -324,7 +327,9 @@ const DataTable = <Row extends TRow = TRow>(props: TDataTableProps<Row>) => {
           <TableBody>
             {props.rows.map((row, rowIndex) => (
               <DataRow<Row>
-                {...{ ...props, columns: columnsData }}
+                {...props}
+                isCondensed={condensedValue}
+                columns={columnsData}
                 row={row}
                 key={row.id}
                 rowIndex={rowIndex}

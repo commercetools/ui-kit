@@ -5,12 +5,15 @@ import withReadme from 'storybook-readme/with-readme';
 import times from 'lodash/times';
 import DataTable from '@commercetools-uikit/data-table';
 import CheckboxInput from '@commercetools-uikit/checkbox-input';
+import SearchTextInput from '@commercetools-uikit/search-text-input';
 import { useRowSelection, useSorting } from '@commercetools-uikit/hooks';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import Readme from '../README.md';
 import { UPDATE_ACTIONS } from './constants';
 import DataTableManager from './data-table-manager';
+import { DataTableManagerProvider } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
+import Spacings from '@commercetools-uikit/spacings';
 
 const items = [
   {
@@ -320,5 +323,158 @@ storiesOf('Components|DataTable', module)
         <br />
         <hr />
       </>
+    );
+  })
+  .add('DecoupledDataTableManager', () => {
+    const [tableData, setTableData] = useState({
+      columns: initialColumnsState,
+      visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
+    });
+
+    const [isCondensed, setIsCondensed] = useState(true);
+    const [isWrappingText, setIsWrappingText] = useState(false);
+
+    const {
+      items: rows,
+      sortedBy,
+      sortDirection,
+      onSortChange,
+    } = useSorting(items);
+
+    const withRowSelection = boolean('withRowSelection', true);
+    const showDisplaySettingsConfirmationButtons = boolean(
+      'showDisplaySettingsConfirmationButtons',
+      false
+    );
+    const showColumnManagerConfirmationButtons = boolean(
+      'showColumnManagerConfirmationButtons',
+      false
+    );
+
+    const {
+      rows: rowsWithSelection,
+      toggleRow,
+      selectAllRows,
+      deselectAllRows,
+      getIsRowSelected,
+      getNumberOfSelectedRows,
+    } = useRowSelection('checkbox', rows);
+
+    const countSelectedRows = getNumberOfSelectedRows();
+    const isSelectColumnHeaderIndeterminate =
+      countSelectedRows > 0 && countSelectedRows < rowsWithSelection.length;
+    const handleSelectColumnHeaderChange =
+      countSelectedRows === 0 ? selectAllRows : deselectAllRows;
+
+    const mappedColumns = tableData.columns.reduce(
+      (columns, column) => ({
+        ...columns,
+        [column.key]: column,
+      }),
+      {}
+    );
+    const visibleColumns = tableData.visibleColumnKeys.map(
+      (columnKey) => mappedColumns[columnKey]
+    );
+
+    const columnsWithSelect = [
+      {
+        key: 'checkbox',
+        label: (
+          <CheckboxInput
+            isIndeterminate={isSelectColumnHeaderIndeterminate}
+            isChecked={countSelectedRows !== 0}
+            onChange={handleSelectColumnHeaderChange}
+          />
+        ),
+        shouldIgnoreRowClick: true,
+        align: 'center',
+        renderItem: (row) => (
+          <CheckboxInput
+            isChecked={getIsRowSelected(row.id)}
+            onChange={() => toggleRow(row.id)}
+          />
+        ),
+        disableResizing: true,
+      },
+      ...visibleColumns,
+    ];
+
+    const tableSettingsChangeHandler = {
+      [UPDATE_ACTIONS.COLUMNS_UPDATE]: (visibleColumnKeys) =>
+        setTableData({
+          ...tableData,
+          visibleColumnKeys,
+        }),
+      [UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE]: setIsCondensed,
+      [UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE]: setIsWrappingText,
+    };
+
+    const displaySettingsButtons = showDisplaySettingsConfirmationButtons
+      ? {
+          primaryButton: <FooterPrimaryButton />,
+          secondaryButton: <FooterSecondaryButton />,
+        }
+      : {};
+
+    const columnManagerButtons = showColumnManagerConfirmationButtons
+      ? {
+          primaryButton: <FooterPrimaryButton />,
+          secondaryButton: <FooterSecondaryButton />,
+        }
+      : {};
+
+    const displaySettings = {
+      disableDisplaySettings: boolean('disableDisplaySettings', false),
+      isCondensed,
+      isWrappingText,
+      ...displaySettingsButtons,
+    };
+
+    const columnManager = {
+      areHiddenColumnsSearchable: boolean('areHiddenColumnsSearchable', true),
+      searchHiddenColumns: (searchTerm) => {
+        setTableData({
+          ...tableData,
+          columns: initialColumnsState.filter(
+            (column) =>
+              tableData.visibleColumnKeys.includes(column.key) ||
+              column.label
+                .toLocaleLowerCase()
+                .includes(searchTerm.toLocaleLowerCase())
+          ),
+        });
+      },
+      disableColumnManager: boolean('disableColumnManager', false),
+      visibleColumnKeys: tableData.visibleColumnKeys,
+      hideableColumns: tableData.columns,
+      ...columnManagerButtons,
+    };
+
+    return (
+      <DataTableManagerProvider
+        columns={withRowSelection ? columnsWithSelect : visibleColumns}
+        displaySettings={displaySettings}
+        onSettingsChange={(action, nextValue) => {
+          tableSettingsChangeHandler[action](nextValue);
+        }}
+        columnManager={columnManager}
+      >
+        <Spacings.Stack>
+          <DataTableManager />
+          <SearchTextInput
+            placeholder={text('placeholder', 'Dummy search component')}
+            isReadOnly
+          />
+          <DataTable
+            rows={withRowSelection ? rowsWithSelection : rows}
+            sortedBy={sortedBy}
+            onSortChange={onSortChange}
+            sortDirection={sortDirection}
+          />
+          <br />
+          <hr />
+        </Spacings.Stack>
+      </DataTableManagerProvider>
     );
   });

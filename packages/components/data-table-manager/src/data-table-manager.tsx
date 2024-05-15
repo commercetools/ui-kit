@@ -9,6 +9,7 @@ import Spacings from '@commercetools-uikit/spacings';
 import DataTableSettings, {
   type TDataTableSettingsProps,
 } from './data-table-settings';
+import { useDataTableManagerContext } from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
 export interface TRow {
   id: string;
 }
@@ -148,30 +149,42 @@ type TDataTableManagerProps<Row extends TRow = TRow> = {
 const DataTableManager = <Row extends TRow = TRow>(
   props: TDataTableManagerProps<Row>
 ) => {
+  const dataTableManagerContext = useDataTableManagerContext();
+
+  const dataTableColumns: TColumnProps<Row>[] =
+    props.columns || dataTableManagerContext.columns;
+  const displaySettings =
+    props.displaySettings || dataTableManagerContext.displaySettings;
+  const topBar = props.topBar || dataTableManagerContext.topBar;
+  const onSettingsChange =
+    props.onSettingsChange || dataTableManagerContext.onSettingsChange;
+  const columnManager =
+    props.columnManager || dataTableManagerContext.columnManager;
+
   const areDisplaySettingsEnabled = Boolean(
-    props.displaySettings && !props.displaySettings.disableDisplaySettings
+    displaySettings && !displaySettings.disableDisplaySettings
   );
   const isWrappingText =
-    areDisplaySettingsEnabled && props.displaySettings!.isWrappingText;
+    areDisplaySettingsEnabled && displaySettings!.isWrappingText;
 
   const columns = useMemo(
     () =>
-      props.columns.map((column) => ({
+      dataTableColumns.map((column) => ({
         ...column,
         isTruncated: areDisplaySettingsEnabled
           ? isWrappingText
           : column.isTruncated,
       })),
-    [areDisplaySettingsEnabled, props.columns, isWrappingText]
+    [dataTableColumns, areDisplaySettingsEnabled, isWrappingText]
   );
 
   return (
     <Spacings.Stack>
       <DataTableSettings
-        topBar={props.topBar}
-        onSettingsChange={props.onSettingsChange}
-        columnManager={props.columnManager}
-        displaySettings={props.displaySettings}
+        topBar={topBar}
+        onSettingsChange={onSettingsChange}
+        columnManager={columnManager}
+        displaySettings={displaySettings}
         managerTheme="light"
       />
       {props.children

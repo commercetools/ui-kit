@@ -5,7 +5,10 @@ import {
   useContext,
   useMemo,
 } from 'react';
-import { type TDataTableSettingsProps } from '../data-table-settings';
+import type {
+  TDataTableSettingsProps,
+  TColumnManagerProps,
+} from '../data-table-settings';
 
 export type TDataTableManagerColumns = {
   isTruncated?: boolean;
@@ -20,50 +23,93 @@ export type TDataTableManagerColumns = {
   shouldIgnoreRowClick?: boolean;
 }[];
 
-export type TDataTableManagerContext = {
+export type TDataTableManagerContext = TDataTableSettingsProps & {
   columns: TDataTableManagerColumns;
   isCondensed: boolean;
 };
 
 const DataTableManagerContext = createContext<TDataTableManagerContext>({
   columns: [],
-  isCondensed: false,
+  displaySettings: undefined,
+  isCondensed: true,
 });
 
-export const useDataTableManagerContext = () =>
-  useContext(DataTableManagerContext);
+export const useDataTableManagerContext = () => {
+  const { columns, topBar, displaySettings, onSettingsChange, columnManager } =
+    useContext(DataTableManagerContext);
 
-export const DataTableManagerProvider = ({
-  children,
-  columns,
-  isCondensed,
-  displaySettings,
-}: {
-  children: React.ReactNode;
-  columns: TDataTableManagerColumns;
-  isCondensed: boolean;
-  displaySettings: TDataTableSettingsProps['displaySettings'];
-}) => {
   const areDisplaySettingsEnabled = Boolean(
     displaySettings && !displaySettings.disableDisplaySettings
   );
   const isWrappingText =
     areDisplaySettingsEnabled && displaySettings!.isWrappingText;
 
-  columns = useMemo(
-    () =>
-      columns.map((column) => ({
+  const contextValue = useMemo(
+    () => ({
+      columns: columns.map((column) => ({
         ...column,
         isTruncated: areDisplaySettingsEnabled
           ? isWrappingText
           : column.isTruncated,
-        isCondensed,
       })),
-    [columns, areDisplaySettingsEnabled, isWrappingText, isCondensed]
+      isCondensed: areDisplaySettingsEnabled && displaySettings!.isCondensed,
+      displaySettings,
+      topBar,
+      onSettingsChange,
+      columnManager,
+    }),
+    [
+      columns,
+      displaySettings,
+      topBar,
+      onSettingsChange,
+      columnManager,
+      areDisplaySettingsEnabled,
+      isWrappingText,
+    ]
+  );
+
+  return contextValue;
+};
+
+export const DataTableManagerProvider = ({
+  children,
+  columns,
+  displaySettings,
+  topBar,
+  onSettingsChange,
+  columnManager,
+  isCondensed,
+}: {
+  children: React.ReactNode;
+  columns: TDataTableManagerColumns;
+  displaySettings: TDataTableSettingsProps['displaySettings'];
+  topBar: string;
+  onSettingsChange: () => void;
+  columnManager: TColumnManagerProps;
+  isCondensed: boolean;
+}) => {
+  const decoupledDataTableManagerContext = useMemo(
+    () => ({
+      columns,
+      isCondensed,
+      displaySettings,
+      topBar,
+      onSettingsChange,
+      columnManager,
+    }),
+    [
+      columns,
+      isCondensed,
+      displaySettings,
+      topBar,
+      onSettingsChange,
+      columnManager,
+    ]
   );
 
   return (
-    <DataTableManagerContext.Provider value={{ columns, isCondensed }}>
+    <DataTableManagerContext.Provider value={decoupledDataTableManagerContext}>
       {children}
     </DataTableManagerContext.Provider>
   );
