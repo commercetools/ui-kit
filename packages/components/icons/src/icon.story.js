@@ -15,6 +15,8 @@ import {
 import Section from '../../../../docs/.storybook/decorators/section';
 import Text from '../../text';
 import Readme from '../README.md';
+import CustomIcon from './custom-icon';
+import CustomReactSvg from './fixtures/CustomIconReact';
 import xssFixtures from './fixtures/xss';
 import InlineSvg from './inline-svg';
 import LeadingIcon from './leading-icon';
@@ -291,6 +293,19 @@ storiesOf('Components|Icons', module)
           isInverted={boolean('isInverted', false)}
           icon={createElement(icons[select('icon', iconNames, iconNames[0])])}
           svg={svg ? svgFixtures.cleanSvg : null}
+        />
+      </Section>
+    );
+  })
+  .add('CustomIcon', () => {
+    // storybook knobs escape input data to html, so we cannot use them to send unescaped svg, so setting it here using a boolean
+    const useString = boolean('use stringified svg for icon', false);
+    return (
+      <Section>
+        <CustomIcon
+          size={select('size', ['10', '20', '30', '40'], '20')}
+          hasBorder={boolean('hasBorder', true)}
+          icon={useString ? svgFixtures.cleanSvg : <CustomReactSvg />}
         />
       </Section>
     );

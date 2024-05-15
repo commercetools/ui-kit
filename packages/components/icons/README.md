@@ -105,3 +105,32 @@ const app = () => <LeadingIcon icon={<ExportIcon />} />;
 ### Where to use
 
 This component can be used wherever it is necessary to display a themed icon.
+
+## Custom Icon
+
+This component is meant to be used whenever consumers need to render an icon which is not part of the [ui-kit icon set](https://uikit.commercetools.com/?path=/story/components-icons--all-icons).
+
+In order to keep visual consistency, we want to keep the available sizes of all icons equal. Bear in mind we would expect custom SVG icons to not contain size attributes so it can be controlled based on the components size attribute.
+
+The component is exported as a separate entry point:
+
+```js
+import CustomIcon from '@commercetools-uikit/icons/custom-icon';
+```
+
+### Usage
+
+```js
+import CustomIcon from '@commercetools-uikit/icons/custom-icon';
+import { YourCustomIcon } from './your-custom-icon-directory';
+
+const app = () => <Icon icon={<YourCustomIcon />} />;
+```
+
+### Properties
+
+| Props       | Type                                                      | Required | Values                                              | Default | Description                                     |
+| ----------- | --------------------------------------------------------- | :------: | --------------------------------------------------- | ------- | ----------------------------------------------- |
+| `size`      | `string`                                                  |          | '10', '20', '30', '40'                              | '20'    | Specifies the icon size                         |
+| `icon`      | `union`<br/>Possible values:<br/>`, ReactElement, string` |    -     | A `ReactNode` or `string` that display a custom SVG |         | Icon displayed as a child of this component     |
+| `hasBorder` | `boolean`                                                 |          | `true`, `false`                                     | `false` | Specifies whether the element displays a border |
