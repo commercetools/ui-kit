@@ -1,6 +1,1 @@
-export {
-  default,
-  type TDataTableSettingsProps,
-  type TSelectChangeEvent,
-  type TColumnManagerProps,
-} from './data-table-settings';
+export { default, type TSelectChangeEvent } from './data-table-settings';

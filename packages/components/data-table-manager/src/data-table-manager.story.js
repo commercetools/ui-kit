@@ -461,17 +461,24 @@ storiesOf('Components|DataTable', module)
         columnManager={columnManager}
       >
         <Spacings.Stack>
-          <DataTableManager />
-          <SearchTextInput
-            placeholder={text('placeholder', 'Dummy search component')}
-            isReadOnly
-          />
-          <DataTable
-            rows={withRowSelection ? rowsWithSelection : rows}
-            sortedBy={sortedBy}
-            onSortChange={onSortChange}
-            sortDirection={sortDirection}
-          />
+          <header>
+            <Spacings.Inline justifyContent="flex-end">
+              <DataTableManager />
+            </Spacings.Inline>
+            <SearchTextInput
+              placeholder={text('placeholder', 'Dummy search component')}
+              isReadOnly
+            />
+          </header>
+          <main>
+            <DataTable
+              rows={withRowSelection ? rowsWithSelection : rows}
+              sortedBy={sortedBy}
+              onSortChange={onSortChange}
+              sortDirection={sortDirection}
+            />
+          </main>
+
           <br />
           <hr />
         </Spacings.Stack>

@@ -1,6 +1,100 @@
 import { type ReactNode, type MouseEventHandler, ReactElement } from 'react';
 
-import type { TDataTableSettingsProps } from './data-table-settings';
+export type TColumnData = {
+  key: string;
+  label: ReactNode;
+};
+
+export type TDisplaySettingsProps = {
+  /**
+   * Set this flag to `false` to show the display settings panel option.
+   *
+   * @@defaultValue@@: true
+   */
+  disableDisplaySettings?: boolean;
+
+  /**
+   * Set this to `true` to reduce the paddings of all cells, allowing the table to display
+   * more data in less space.
+   *
+   * @@defaultValue@@: true
+   */
+  isCondensed?: boolean;
+
+  /**
+   * Set this to `true` to allow text in a cell to wrap.
+   * <br>
+   * This is required if `disableDisplaySettings` is set to `false`.
+   *
+   * @@defaultValue@@: false
+   */
+  isWrappingText?: boolean;
+
+  /**
+   * A React element to be rendered as the primary button, useful when the display settings work as a form.
+   */
+  primaryButton?: ReactElement;
+
+  /**
+   * A React element to be rendered as the secondary button, useful when the display settings work as a form.
+   */
+  secondaryButton?: ReactElement;
+};
+
+export type TColumnManagerProps = {
+  /**
+   * Set this to `true` to show a search input for the hidden columns panel.
+   */
+  areHiddenColumnsSearchable?: boolean;
+
+  /**
+   * Set this to `false` to show the column settings panel option.
+   *
+   * @@defaultValue@@: true
+   */
+  disableColumnManager?: boolean;
+
+  /**
+   * The keys of the visible columns.
+   */
+  visibleColumnKeys: string[];
+
+  /**
+   * The keys of the visible columns.
+   */
+  hideableColumns?: TColumnData[];
+
+  /**
+   * A callback function, called when the search input for the hidden columns panel changes.
+   */
+  searchHiddenColumns?: (searchTerm: string) => Promise<void> | void;
+
+  /**
+   * Placeholder value of the search input for the hidden columns panel.
+   */
+  searchHiddenColumnsPlaceholder?: string;
+
+  /**
+   * A React element to be rendered as the primary button, useful when the column settings work as a form.
+   */
+  primaryButton?: ReactElement;
+
+  /**
+   * A React element to be rendered as the secondary button, useful when the column settings work as a form.
+   */
+  secondaryButton?: ReactElement;
+};
+
+export type TDataTableSettingsProps = {
+  topBar?: ReactNode;
+  onSettingsChange?: (
+    settingName: string,
+    settingValue: boolean | string[]
+  ) => void;
+  displaySettings?: TDisplaySettingsProps;
+  columnManager?: TColumnManagerProps;
+  managerTheme?: 'light' | 'dark';
+};
 
 export interface TRow {
   id: string;
