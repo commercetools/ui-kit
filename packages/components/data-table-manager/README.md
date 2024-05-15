@@ -15,9 +15,7 @@ This component enhances the `<DataTable>` component and additionally provides a 
 
 Both panels delegate the handling of the settings change on the parent through function properties, allowing the settings to be persisted or just used as state props.
 
-## Using the DatatableManager when Decoupled from the DataTable
-
-- To Detach the `<DatatableManager>` settings dropdown from the Datatable and position it anywhere else in the component tree, you would need to import a `DataTableManagerProvider` and wrap both components with the provider. This allows the settings component of the DatatableManager to be positioned anywhere within this provider.
+- The `children` prop can only be used when the datatable manager is used in it's coupled or undetached form, and not when it is detached.
 
 ## Installation
 
@@ -60,6 +58,42 @@ const Example = () => (
   <DataTableManager columns={columns}>
     <DataTable rows={rows} />
   </DataTableManager>
+);
+
+export default Example;
+```
+
+## Using the DatatableManager when Detached from the DataTable
+
+- To Detach the `<DatatableManager>` settings dropdown from the Datatable and position it anywhere else in the component tree, you would need to import a `DataTableManagerProvider` and wrap both components with the provider. This allows the settings component of the DatatableManager to be positioned anywhere within this provider.
+
+```jsx
+import DataTableManager, {
+  DataTableManagerProvider,
+} from '@commercetools-uikit/data-table-manager';
+import DataTable from '@commercetools-uikit/data-table';
+
+const rows = [
+  { id: 'parasite', title: 'Parasite', country: 'South Korea' },
+  { id: 'portrait', title: 'Portrait of a Lady on Fire', country: 'France' },
+  { id: 'wat', title: 'Woman at War', country: 'Iceland' },
+];
+
+const columns = [
+  { key: 'title', label: 'Title' },
+  { key: 'country', label: 'Country' },
+];
+
+const SomeOtherComponent = () => {
+  return <div>Some other component</div>;
+};
+
+const Example = () => (
+  <DataTableManagerProvider columns={columns}>
+    <DataTableManager />
+    <SomeOtherComponent />
+    <DataTable rows={rows} />
+  </DataTableManagerProvider>
 );
 
 export default Example;
