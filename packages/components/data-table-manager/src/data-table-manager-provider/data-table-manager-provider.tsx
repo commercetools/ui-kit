@@ -1,32 +1,15 @@
-import {
-  createContext,
-  MouseEventHandler,
-  ReactNode,
-  useContext,
-  useMemo,
-} from 'react';
+import { createContext, useContext, useMemo } from 'react';
 import type {
   TDataTableSettingsProps,
   TColumnManagerProps,
 } from '../data-table-settings';
+import { TDataTableManagerColumnProps, TRow } from './types';
 
-export type TDataTableManagerColumns = {
-  isTruncated?: boolean;
-  key: string;
-  label: ReactNode;
-  width?: string;
-  align?: 'left' | 'center' | 'right';
-  onClick?: (event: MouseEventHandler) => void;
-  headerIcon?: ReactNode;
-  isSortable?: boolean;
-  disableResizing?: boolean;
-  shouldIgnoreRowClick?: boolean;
-}[];
-
-export type TDataTableManagerContext = TDataTableSettingsProps & {
-  columns: TDataTableManagerColumns;
-  isCondensed: boolean;
-};
+export type TDataTableManagerContext<Row extends TRow = TRow> =
+  TDataTableSettingsProps & {
+    columns: TDataTableManagerColumnProps<Row>[];
+    isCondensed: boolean;
+  };
 
 const DataTableManagerContext = createContext<TDataTableManagerContext>({
   columns: [],
@@ -82,7 +65,7 @@ export const DataTableManagerProvider = ({
   isCondensed,
 }: {
   children: React.ReactNode;
-  columns: TDataTableManagerColumns;
+  columns: TDataTableManagerColumnProps[];
   displaySettings: TDataTableSettingsProps['displaySettings'];
   topBar: string;
   onSettingsChange: () => void;
