@@ -25,6 +25,12 @@ const DataTableManager = <Row extends TRow = TRow>(
   const isWrappingText =
     areDisplaySettingsEnabled && displaySettings!.isWrappingText;
 
+  if (!dataTableColumns) {
+    throw new Error(
+      'ui-kit/DataTableManager: missing `columns` prop. If you do not provide it to the component, then you should use the DataTableManagerProvider component.'
+    );
+  }
+
   const columns = useMemo(
     () =>
       dataTableColumns.map((column) => ({
