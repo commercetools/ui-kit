@@ -5,9 +5,6 @@
 
 ## Description
 
-> THIS COMPONENT IS IN BETA!
-> Please be aware that it may be subject to upcoming breaking changes as it's still in active development.
-
 This component enhances the `<DataTable>` component and additionally provides a UI and state management to handle configuration of the table such as column manager.
 
 - The `disableDisplaySettings` enables / disables the layout settings panel, allowing the user to select wrapping text and density display options.
@@ -15,7 +12,7 @@ This component enhances the `<DataTable>` component and additionally provides a 
 
 Both panels delegate the handling of the settings change on the parent through function properties, allowing the settings to be persisted or just used as state props.
 
-- The `children` prop can only be used when the datatable manager is used in it's coupled or undetached form, and not when it is detached.
+This component will render a triggering element (icon button) above the `<DataTable>` (top-right corner) which users can click to select the panel to open.
 
 ## Installation
 
@@ -38,6 +35,12 @@ npm --save install react react-dom react-intl
 ```
 
 ## Usage
+
+There are two ways this component can be used:
+
+### Attached
+
+The basic usage is when it just wraps the DataTable component.
 
 ```jsx
 import DataTableManager from '@commercetools-uikit/data-table-manager';
@@ -63,9 +66,9 @@ const Example = () => (
 export default Example;
 ```
 
-## Using the DatatableManager when Detached from the DataTable
+### Dettached
 
-- To Detach the `<DatatableManager>` settings dropdown from the Datatable and position it anywhere else in the component tree, you would need to import a `DataTableManagerProvider` and wrap both components with the provider. This allows the settings component of the DatatableManager to be positioned anywhere within this provider.
+As mentioned earlier, the default behaviour is for the triggering element to be placed above the `<DataTable>` component (top-right corner), but there can be use cases where it would be needed to place that triggering element in a different place in the page. This is also possible but requires the usage of one more component (`DataTableManagerProvider`) in order to share the manager state between the manager panels and the `DataTable` component.
 
 ```jsx
 import DataTableManager, {
@@ -142,3 +145,5 @@ export default Example;
 | `onSettingsChange`                             | `func`                                                      |          |         | A callback function, called when any of the properties of either display settings or column settings is modified.&#xA;<br>&#xA;Signature: `(action: string, nextValue: object) => void`                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `topBar`                                       | `node`                                                      |          |         | A React node for rendering additional information within the table manager.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `managerTheme`                                 | `enum`<br/>Possible values:<br/>`'light', 'dark'`           |          |         | Sets the background theme of the Card that contains the settings                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+
+> `*`: `DataTableManagerProvider` component accepts the same properties as the `DataTableManager`

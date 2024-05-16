@@ -14,8 +14,17 @@ const DataTableManagerContext = createContext<TDataTableManagerContext>({
   isCondensed: true,
 });
 
-export const useDataTableManagerContext = () =>
-  useContext(DataTableManagerContext);
+export const useDataTableManagerContext = () => {
+  const dataTableManagerContext = useContext(DataTableManagerContext);
+
+  if (!dataTableManagerContext) {
+    throw new Error(
+      'ui-kit/DataTableManager: `useDataTableManagerContext` must be used within the DataTableManagerProvider.'
+    );
+  }
+
+  return dataTableManagerContext;
+};
 
 export const DataTableManagerProvider = ({
   children,
@@ -32,15 +41,15 @@ export const DataTableManagerProvider = ({
   onSettingsChange: () => void;
   columnManager: TColumnManagerProps;
 }) => {
-  const areDisplaySettingsEnabled = Boolean(
-    displaySettings && !displaySettings.disableDisplaySettings
-  );
+  const decoupledDataTableManagerContext = useMemo(() => {
+    const areDisplaySettingsEnabled = Boolean(
+      displaySettings && !displaySettings.disableDisplaySettings
+    );
 
-  const isWrappingText =
-    areDisplaySettingsEnabled && displaySettings!.isWrappingText;
+    const isWrappingText =
+      areDisplaySettingsEnabled && displaySettings!.isWrappingText;
 
-  const decoupledDataTableManagerContext = useMemo(
-    () => ({
+    return {
       columns: columns.map((column) => ({
         ...column,
         isTruncated: areDisplaySettingsEnabled
@@ -52,17 +61,8 @@ export const DataTableManagerProvider = ({
       onSettingsChange,
       columnManager,
       isCondensed: areDisplaySettingsEnabled && displaySettings!.isCondensed,
-    }),
-    [
-      columns,
-      displaySettings,
-      topBar,
-      onSettingsChange,
-      columnManager,
-      areDisplaySettingsEnabled,
-      isWrappingText,
-    ]
-  );
+    };
+  }, [columns, displaySettings, topBar, onSettingsChange, columnManager]);
 
   return (
     <DataTableManagerContext.Provider value={decoupledDataTableManagerContext}>
