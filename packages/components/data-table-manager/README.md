@@ -66,9 +66,10 @@ const Example = () => (
 export default Example;
 ```
 
-### Dettached
+### Detached
 
 As mentioned earlier, the default behaviour is for the triggering element to be placed above the `<DataTable>` component (top-right corner), but there can be use cases where it would be needed to place that triggering element in a different place in the page. This is also possible but requires the usage of one more component (`DataTableManagerProvider`) in order to share the manager state between the manager panels and the `DataTable` component.
+In this mode, you should pass the manager props to the `DataTableManagerProvider` component and the `DataTableManager` does not need to receive any prop; it can be placed anywhere in the component's tree without requiring any prop.
 
 ```jsx
 import DataTableManager, {

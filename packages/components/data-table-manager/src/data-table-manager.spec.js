@@ -4,7 +4,7 @@ import DataTableManager from './data-table-manager';
 import {
   useDataTableManagerContext,
   DataTableManagerProvider,
-} from './data-table-manager-provider';
+} from '@commercetools-uikit/data-table-manager/data-table-manager-provider';
 import { UPDATE_ACTIONS } from './constants';
 
 /* eslint-disable react/prop-types */
@@ -55,35 +55,33 @@ const SomeOtherComponent = () => {
   return <div>Some other component</div>;
 };
 
-const DecoupledDatatableTestComponent = (props) => {
+const DetachedDatatableTestComponent = (props) => {
   const [isCondensed, setIsCondensed] = useState(false);
   const [isWrappingText, setIsWrappingText] = useState(false);
   const tableSettingsChangeHandler = {
     [UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE]: setIsCondensed,
     [UPDATE_ACTIONS.IS_TABLE_WRAPPING_TEXT_UPDATE]: setIsWrappingText,
   };
+
   return (
     <DataTableManagerProvider
       columns={props.columns}
-      isCondensed={isCondensed}
-      displaySettings={props.displaySettings}
+      {...props}
+      displaySettings={
+        props.displaySettings
+          ? {
+              ...props.displaySettings,
+              isCondensed,
+              isWrappingText,
+            }
+          : undefined
+      }
+      onSettingsChange={(action, nextValue) => {
+        tableSettingsChangeHandler[action](nextValue);
+      }}
     >
       <div>
-        <DataTableManager
-          {...props}
-          displaySettings={
-            props.displaySettings
-              ? {
-                  ...props.displaySettings,
-                  isCondensed,
-                  isWrappingText,
-                }
-              : undefined
-          }
-          onSettingsChange={(action, nextValue) => {
-            tableSettingsChangeHandler[action](nextValue);
-          }}
-        />
+        <DataTableManager />
       </div>
       <SomeOtherComponent />
       <TestTable {...props} />
@@ -200,13 +198,13 @@ describe('rendering', () => {
   });
 });
 
-describe('rendering with decoupled data table', () => {
+describe('rendering with detached data table', () => {
   it('should not render the dropdown if no settings options are passed', async () => {
     const props = createTestProps({
       displaySettings: undefined,
       columnManager: undefined,
     });
-    render(<DecoupledDatatableTestComponent {...props} />);
+    render(<DetachedDatatableTestComponent {...props} />);
 
     expect(screen.queryByText('Table layout settings')).not.toBeInTheDocument();
     expect(screen.queryByText('Column Manager')).not.toBeInTheDocument();
@@ -216,7 +214,7 @@ describe('rendering with decoupled data table', () => {
   });
   it('should render the layout settings panel when clicking on the dropdown option and interact with the layout options', async () => {
     const props = createTestProps();
-    render(<DecoupledDatatableTestComponent {...props} />);
+    render(<DetachedDatatableTestComponent {...props} />);
 
     expect(screen.queryByText('Table layout settings')).not.toBeInTheDocument();
     expect(screen.queryByText('Column Manager')).not.toBeInTheDocument();
@@ -264,7 +262,7 @@ describe('rendering with decoupled data table', () => {
   });
   it('should render the column settings panel when clicking on the dropdown option with no column options in either hidden or visible panels', async () => {
     const props = createTestProps();
-    render(<DecoupledDatatableTestComponent {...props} />);
+    render(<DetachedDatatableTestComponent {...props} />);
 
     expect(screen.queryByText('Table layout settings')).not.toBeInTheDocument();
     expect(screen.queryByText('Column Manager')).not.toBeInTheDocument();

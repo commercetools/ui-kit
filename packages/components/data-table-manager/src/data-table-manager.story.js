@@ -325,7 +325,7 @@ storiesOf('Components|DataTable', module)
       </>
     );
   })
-  .add('DecoupledDataTableManager', () => {
+  .add('DetachedDataTableManager', () => {
     const [tableData, setTableData] = useState({
       columns: initialColumnsState,
       visibleColumnKeys: initialVisibleColumns.map(({ key }) => key),
