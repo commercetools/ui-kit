@@ -2,4 +2,5 @@
 '@commercetools-uikit/selectable-search-input': minor
 ---
 
-When the input of the selectable search input changes, it should show the currently updated value on the input field.
+We're introducing a **temporary** property to handle an internal case.
+Please do not use it as it will be removed in the near future.
