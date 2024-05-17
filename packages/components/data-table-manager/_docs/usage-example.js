@@ -2,6 +2,7 @@ import DataTableManager, {
   DataTableManagerProvider,
 } from '@commercetools-uikit/data-table-manager';
 import DataTable from '@commercetools-uikit/data-table';
+import SearchTextInput from '@commercetools-uikit/search-text-input';
 
 const rows = [
   { id: 'parasite', title: 'Parasite', country: 'South Korea' },
@@ -30,8 +31,13 @@ const SomeOtherComponent = () => {
 //  It can also be exported as default.
 export const ExampleWithDecoupledDataTableManager = () => (
   <DataTableManagerProvider columns={columns}>
-    <DataTableManager />
-    <SomeOtherComponent />
-    <DataTable rows={rows} />
+    <header>
+      <DataTableManager />
+      <SearchTextInput />
+    </header>
+    <main>
+      <SomeOtherComponent />
+      <DataTable rows={rows} />
+    </main>
   </DataTableManagerProvider>
 );
