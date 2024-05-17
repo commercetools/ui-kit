@@ -1,0 +1,4 @@
+{
+  "main": "dist/commercetools-uikit-data-table-manager-data-table-manager-provider.cjs.js",
+  "module": "dist/commercetools-uikit-data-table-manager-data-table-manager-provider.esm.js"
+}
