@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo } from 'react';
 import type { TDataTableSettingsProps, TColumnManagerProps } from '../types';
-import { TDataTableManagerColumnProps, TRow } from './types';
+import type { TDataTableManagerColumnProps, TRow } from './types';
 
 export type TDataTableManagerContext<Row extends TRow = TRow> =
   TDataTableSettingsProps & {

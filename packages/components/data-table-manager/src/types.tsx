@@ -1,4 +1,4 @@
-import { type ReactNode, type MouseEventHandler, ReactElement } from 'react';
+import type { ReactNode, MouseEventHandler, ReactElement } from 'react';
 
 export type TColumnData = {
   key: string;

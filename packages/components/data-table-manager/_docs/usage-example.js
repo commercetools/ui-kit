@@ -29,8 +29,8 @@ const SomeOtherComponent = () => {
 // With the data table settings decoupled.
 //  It can also be exported as default.
 export const ExampleWithDecoupledDataTableManager = () => (
-  <DataTableManagerProvider>
-    <DataTableManager columns={columns} />
+  <DataTableManagerProvider columns={columns}>
+    <DataTableManager />
     <SomeOtherComponent />
     <DataTable rows={rows} />
   </DataTableManagerProvider>
