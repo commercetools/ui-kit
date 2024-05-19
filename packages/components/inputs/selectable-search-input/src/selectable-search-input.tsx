@@ -259,6 +259,7 @@ const transformDataProps = (dataProps?: Record<string, string>) =>
 const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const [dropdownHasFocus, toggleDropdownHasFocus] = useToggleState(false);
   const [searchValue, setSearchValue] = useState(props.value.text || '');
+  const [searchOption, setSearchOption] = useState(props.value.option || '');
   const containerRef = useRef<HTMLDivElement>(null);
   const textInputRef = useRef<HTMLInputElement>(null);
 
@@ -266,6 +267,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const transformedSelectDataProps = transformDataProps(props.selectDataProps);
   const transformedInputDataProps = transformDataProps(props.inputDataProps);
   const searchInputValue = props._experimentalValue?.text ?? searchValue;
+  const searchInputOption = props._experimentalValue?.option ?? searchOption;
 
   const optionsWithoutGroups = props.options.flatMap((option) => {
     if (isOptionObject(option)) {
@@ -275,7 +277,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   });
 
   const selectedOption = optionsWithoutGroups.find(
-    (option) => option.value === props.value.option
+    (option) => option.value === searchInputOption
   );
 
   const selectablSearchInputId = useFieldId(
@@ -296,7 +298,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     componentName: 'SelectableSearchInput',
   });
 
-  const { onFocus, onBlur, name } = props;
+  const { onFocus, onBlur, name, onChange } = props;
   const handleTextInputFocus = useCallback(() => {
     if (onFocus) {
       onFocus({
@@ -408,6 +410,23 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     [onBlur, selectablSearchInputId, name]
   );
 
+  const handleDropdownChange = useCallback(
+    (nextSelectedOptions) => {
+      setSearchOption(nextSelectedOptions.value);
+      if (onChange) {
+        onChange({
+          target: {
+            id: SelectableSearchInput.getDropdownId(selectablSearchInputId),
+            name: getDropdownName(name),
+            value: nextSelectedOptions.value,
+          },
+        });
+      }
+      textInputRef.current?.focus();
+    },
+    [onChange, selectablSearchInputId, name]
+  );
+
   return (
     <Constraints.Horizontal max={props.horizontalConstraint}>
       <Container
@@ -424,6 +443,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             isCondensed={props.isCondensed ?? false}
             handleDropdownFocus={handleDropdownFocus}
             handleDropdownBlur={handleDropdownBlur}
+            handleDropdownChange={handleDropdownChange}
             textInputRef={textInputRef}
             selectedOption={selectedOption}
             dataProps={transformedSelectDataProps}
