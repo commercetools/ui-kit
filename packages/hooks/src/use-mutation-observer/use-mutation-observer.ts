@@ -8,7 +8,10 @@ export type TUseMutationObserverCallback = (
   observer: MutationObserver
 ) => void;
 
-let _mutationObserver: ReturnType<typeof createMutationObserver>;
+const _mutationObservers = new Map<
+  string,
+  ReturnType<typeof createMutationObserver>
+>();
 
 const useLatest = <T>(current: T) => {
   const storedValue = useRef(current);
@@ -18,7 +21,9 @@ const useLatest = <T>(current: T) => {
   return storedValue;
 };
 
-function createMutationObserver() {
+function createMutationObserver(
+  options?: MutationObserverInit & { parentTargetSelector?: string }
+) {
   const callbacks = new Map<Node, TUseMutationObserverCallback[]>();
   const observer = new MutationObserver(
     rafSchd((mutationsList, observer) => {
@@ -33,7 +38,23 @@ function createMutationObserver() {
       }, new Map());
 
       mutationsByTarget.forEach((mutations, target) => {
-        const targetCallbacks = callbacks.get(target);
+        let targetCallbacks = callbacks.get(target);
+
+        // If we're observing the subtree we need to check whether the mutated
+        // element is a child of the target
+        if (
+          !targetCallbacks &&
+          options?.subtree &&
+          options.parentTargetSelector
+        ) {
+          const targettedParentCallback = (target as HTMLElement).closest(
+            options.parentTargetSelector
+          );
+          if (targettedParentCallback) {
+            targetCallbacks = callbacks.get(targettedParentCallback);
+          }
+        }
+
         targetCallbacks?.forEach((cb) => cb(mutations, observer));
       });
     })
@@ -65,17 +86,22 @@ function createMutationObserver() {
   };
 }
 
-const getMutationObserver = () =>
-  !_mutationObserver
-    ? (_mutationObserver = createMutationObserver())
-    : _mutationObserver;
+const getMutationObserver = (
+  options?: MutationObserverInit & { parentTargetSelector?: string }
+): ReturnType<typeof createMutationObserver> => {
+  const key = options ? JSON.stringify(options) : 'defualt';
+  if (!_mutationObservers.has(key)) {
+    _mutationObservers.set(key, createMutationObserver(options));
+  }
+  return _mutationObservers.get(key)!;
+};
 
 function useMutationObserver<T extends HTMLElement>(
   target: React.RefObject<T> | T | null,
   callback: TUseMutationObserverCallback,
-  options?: MutationObserverInit
+  options?: MutationObserverInit & { parentTargetSelector?: string }
 ): MutationObserver {
-  const mutationObserver = getMutationObserver();
+  const mutationObserver = getMutationObserver(options);
   const storedCallback = useLatest(callback);
   const storedOptions = useLatest(options);
 
