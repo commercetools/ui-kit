@@ -5,15 +5,14 @@
 
 ## Description
 
-> THIS COMPONENT IS IN BETA!
-> Please be aware that it may be subject to upcoming breaking changes as it's still in active development.
-
 This component enhances the `<DataTable>` component and additionally provides a UI and state management to handle configuration of the table such as column manager.
 
 - The `disableDisplaySettings` enables / disables the layout settings panel, allowing the user to select wrapping text and density display options.
 - The `disableColumnManager` enables / disables the column manager panel, allowing the user to select which columns are visible.
 
 Both panels delegate the handling of the settings change on the parent through function properties, allowing the settings to be persisted or just used as state props.
+
+This component will render a triggering element (icon button) above the `<DataTable>` (top-right corner) which users can click to select the panel to open.
 
 ## Installation
 
@@ -36,6 +35,12 @@ npm --save install react react-dom react-intl
 ```
 
 ## Usage
+
+There are two ways this component can be used:
+
+### Attached
+
+The basic usage is when it just wraps the DataTable component.
 
 ```jsx
 import DataTableManager from '@commercetools-uikit/data-table-manager';
@@ -61,10 +66,54 @@ const Example = () => (
 export default Example;
 ```
 
+### Detached
+
+As mentioned earlier, the default behaviour places the triggering element above the `<DataTable>` component (top-right corner), but there may be use cases where the triggering element needs to be positioned differently on the page. This is also possible but requires the usage of one more component (`DataTableManagerProvider`) in order to share the manager state between the manager panels and the `DataTable` component.
+
+In this mode, you should pass the manager props to the `DataTableManagerProvider` component and the `DataTableManager` does not need to receive any prop; it can be placed anywhere in the component's tree without requiring any prop.
+
+```jsx
+import DataTableManager, {
+  DataTableManagerProvider,
+} from '@commercetools-uikit/data-table-manager';
+import DataTable from '@commercetools-uikit/data-table';
+import SearchTextInput from '@commercetools-uikit/search-text-input';
+
+const rows = [
+  { id: 'parasite', title: 'Parasite', country: 'South Korea' },
+  { id: 'portrait', title: 'Portrait of a Lady on Fire', country: 'France' },
+  { id: 'wat', title: 'Woman at War', country: 'Iceland' },
+];
+
+const columns = [
+  { key: 'title', label: 'Title' },
+  { key: 'country', label: 'Country' },
+];
+
+const SomeOtherComponent = () => {
+  return <div>Some other component</div>;
+};
+
+const Example = () => (
+  <DataTableManagerProvider columns={columns}>
+    <header>
+      <DataTableManager />
+      <SearchTextInput />
+    </header>
+    <main>
+      <SomeOtherComponent />
+      <DataTable rows={rows} />
+    </main>
+  </DataTableManagerProvider>
+);
+
+export default Example;
+```
+
 ## Properties
 
-| Props                     | Type                                                           | Required | Default                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| ------------------------- | -------------------------------------------------------------- | :------: | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Props                                          | Type                                                        | Required | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ---------------------------------------------- | ----------------------------------------------------------- | :------: | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `columns`                                      | `array`                                                     |    ✅    |         | Each object requires a unique `key` which should correspond to property key of&#xA;the items of `rows` that you want to render under this column, and a `label`&#xA;which defines the name shown on the header.&#xA;The list of columns to be rendered.&#xA;Each column can be customized (see properties below).                                                                                                                                                                                                                                                                                                                                  |
 | `columns[].key`                                | `string`                                                    |    ✅    |         | The unique key of the column that is used to identify your data type.&#xA;You can use this value to determine which value from a row item should be rendered.&#xA;<br>&#xA;For example, if the data is a list of users, where each user has a `firstName` property,&#xA;the column key should be `firstName`, which renders the correct value by default.&#xA;The key can also be some custom or computed value, in which case you need to provide&#xA;an explicit mapping of the value by implementing either the `itemRendered` function or&#xA;the column-specific `renderItem` function.                                                       |
 | `columns[].label`                              | `node`                                                      |    ✅    |         | The label of the column that will be shown on the column header.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -91,10 +140,12 @@ export default Example;
 | `columnManager.hideableColumns[].key`          | `string`                                                    |    ✅    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | `columnManager.hideableColumns[].label`        | `<string, node>`                                            |    ✅    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | `columnManager.areHiddenColumnsSearchable`     | `bool`                                                      |          |         | Set this to `true` to show a search input for the hidden columns panel.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `columnManager.searchHiddenColumns`            | `func`                                                      |          |         | A callback function, called when the search input for the hidden columns panel changes.&#xA;<br>&#xA;Signature: `(searchTerm: string) => Promise<void>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | void` |
+| `columnManager.searchHiddenColumns`            | `func`                                                      |          |         | A callback function, called when the search input for the hidden columns panel changes.&#xA;<br>&#xA;Signature: `(searchTerm: string) => Promise<void>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | `columnManager.searchHiddenColumnsPlaceholder` | `string`                                                    |          |         | Placeholder value of the search input for the hidden columns panel.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `columnManager.primaryButton`                  | `element`                                                   |          |         | A React element to be rendered as the primary button, useful when the column settings work as a form.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | `columnManager.secondaryButton`                | `element`                                                   |          |         | A React element to be rendered as the secondary button, useful when the column settings work as a form.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `onSettingsChange`                             | `func`                                                      |          |         | A callback function, called when any of the properties of either display settings or column settings is modified.&#xA;<br>&#xA;Signature: `(action: string, nextValue: object) => void`                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `topBar`                                       | `node`                                                      |          |         | A React node for rendering additional information within the table manager.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `managerTheme`                                 | `enum`<br/>Possible values:<br/>`'light', 'dark'`           |          |         | Sets the background theme of the Card that contains the settings                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+
+> `*`: `DataTableManagerProvider` component accepts the same properties as the `DataTableManager`

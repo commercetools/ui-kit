@@ -70,6 +70,7 @@ export { default as GearIcon } from './GearReact';
 export { default as GraduationCapIcon } from './GraduationCapReact';
 export { default as GraphIcon } from './GraphReact';
 export { default as GridIcon } from './GridReact';
+export { default as GroupAddIcon } from './GroupAddReact';
 export { default as HeartIcon } from './HeartReact';
 export { default as HomeIcon } from './HomeReact';
 export { default as ImportIcon } from './ImportReact';
