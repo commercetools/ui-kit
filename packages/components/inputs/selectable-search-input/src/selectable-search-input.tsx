@@ -424,7 +424,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
       }
       textInputRef.current?.focus();
     },
-    [props, selectablSearchInputId, name]
+    [props.onChange, selectablSearchInputId, name]
   );
 
   return (
