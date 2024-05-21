@@ -44,7 +44,6 @@ describe('useMutationObserver', () => {
     const observerHandler = jest.fn();
     const mutationObserverProps = {
       subtree: true,
-      parentTargetSelector: '[data-testid="test-container"]'
     };
 
     render(<TestComponent observerHandler={observerHandler} mutationObserverProps={mutationObserverProps} />);
