@@ -298,7 +298,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     componentName: 'SelectableSearchInput',
   });
 
-  const { onFocus, onBlur, name, onChange } = props;
+  const { onFocus, onBlur, name } = props;
   const handleTextInputFocus = useCallback(() => {
     if (onFocus) {
       onFocus({
@@ -328,7 +328,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
     }
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleTextInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
     if (props.onChange) {
       props.onChange({
@@ -413,8 +413,8 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
   const handleDropdownChange = useCallback(
     (nextSelectedOptions) => {
       setSearchOption(nextSelectedOptions.value);
-      if (onChange) {
-        onChange({
+      if (props.onChange) {
+        props.onChange({
           target: {
             id: SelectableSearchInput.getDropdownId(selectablSearchInputId),
             name: getDropdownName(name),
@@ -424,7 +424,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
       }
       textInputRef.current?.focus();
     },
-    [onChange, selectablSearchInputId, name]
+    [props, selectablSearchInputId, name]
   );
 
   return (
@@ -468,7 +468,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             name={getTextInputName(props.name)}
             type="text"
             value={searchInputValue}
-            onChange={handleChange}
+            onChange={handleTextInputChange}
             onBlur={handleTextInputBlur}
             onFocus={handleTextInputFocus}
             disabled={props.isDisabled}
