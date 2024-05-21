@@ -31,6 +31,7 @@ const currencies = {
   BTN: { fractionDigits: 2 },
   BWP: { fractionDigits: 2 },
   BYB: { fractionDigits: 0 },
+  BYN: { fractionDigits: 2 },
   BYR: { fractionDigits: 0 },
   BZD: { fractionDigits: 2 },
   CAD: { fractionDigits: 2 },
