@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
@@ -88,16 +87,10 @@ storiesOf('Components|Inputs', module)
     ];
 
     const name = text('name', '') || 'default-name';
-    const [dropdownValue, setDropdownValue] = useState();
-    const [textInputValue, setTextInputValue] = useState();
 
     const value = {
-      text: textInputValue,
-      option: dropdownValue,
-    };
-    const _experimentalValue = {
-      text: 'hellos',
-      option: 'giraffe',
+      text: '',
+      option: '',
     };
 
     return (
@@ -119,7 +112,6 @@ storiesOf('Components|Inputs', module)
             onChange={(event) => {
               action('onChange')(event);
             }}
-            _experimentalValue={_experimentalValue}
             isAutofocussed={boolean('isAutofocussed', false)}
             isDisabled={boolean('isDisabled', false)}
             isReadOnly={boolean('isReadOnly', false)}
