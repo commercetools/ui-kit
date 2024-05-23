@@ -134,6 +134,35 @@ describe('SelectableSearchInput', () => {
     ).toHaveTextContent('Bar');
   });
 
+  it('should show the passed experimental value when controlled externally', () => {
+    render(
+      <TestComponent
+        value={{ text: 'foo', option: 'bar' }}
+        _experimentalValue={{ text: 'experimental', option: 'bar' }}
+      />
+    );
+    expect(screen.getByLabelText('test-label')).toHaveAttribute(
+      'value',
+      'experimental'
+    );
+    expect(
+      screen.getByTestId('selectable-search-input-container')
+    ).toHaveTextContent('Bar');
+  });
+
+  it('should show an empty input when an empty string is passed externally as value', () => {
+    render(
+      <TestComponent
+        value={{ text: 'foo', option: 'bar' }}
+        _experimentalValue={{ text: '', option: 'bar' }}
+      />
+    );
+    expect(screen.getByLabelText('test-label')).toHaveAttribute('value', '');
+    expect(
+      screen.getByTestId('selectable-search-input-container')
+    ).toHaveTextContent('Bar');
+  });
+
   it('should call onFocus when the dropdown menu is focused', async () => {
     const onFocus = jest.fn();
     render(

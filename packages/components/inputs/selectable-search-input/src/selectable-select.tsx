@@ -5,7 +5,7 @@ import Select, {
   type Props as ReactSelectProps,
 } from 'react-select';
 import { DropdownIndicator, messages } from '@commercetools-uikit/select-utils';
-import { type ReactNode, useCallback } from 'react';
+import { type ReactNode } from 'react';
 import type {
   TSelectableSearchInputProps,
   TOption,
@@ -32,6 +32,7 @@ type TSelectableSelect = {
   isCondensed: boolean;
   handleDropdownFocus: () => void;
   handleDropdownBlur: () => void;
+  handleDropdownChange: ReactSelectProps['onChange'];
   textInputRef: React.RefObject<HTMLInputElement>;
   selectedOption?: TOption;
   dataProps?: Record<string, string>;
@@ -49,23 +50,6 @@ const SelectableSelect = (props: TSelectableSelect) => {
     menuPortalZIndex: props.menuPortalZIndex,
     dropdownHasFocus: props.dropdownHasFocus,
   }) as ReactSelectProps['styles'];
-
-  const { onChange, name, id, textInputRef } = props;
-  const handleDropdownChange = useCallback(
-    (nextSelectedOptions) => {
-      if (onChange) {
-        onChange({
-          target: {
-            id: id,
-            name: name,
-            value: (nextSelectedOptions as TOption).value,
-          },
-        });
-      }
-      textInputRef.current?.focus();
-    },
-    [onChange, id, name, textInputRef]
-  );
 
   return (
     <Select
@@ -94,7 +78,7 @@ const SelectableSelect = (props: TSelectableSelect) => {
       menuPortalTarget={props.menuPortalTarget}
       menuShouldBlockScroll={props.menuShouldBlockScroll}
       onBlur={props.handleDropdownBlur}
-      onChange={handleDropdownChange}
+      onChange={props.handleDropdownChange}
       onInputChange={props.onMenuInputChange}
       noOptionsMessage={
         props.noMenuOptionsMessage ||
