@@ -322,9 +322,8 @@ const optionStyles = (props: TProps) => (base: TBase, state: TState) => {
       : designTokens.fontSize30,
     cursor: state.isDisabled ? 'not-allowed' : 'pointer',
     color: (() => {
-      if (!state.isDisabled) return designTokens.fontColorForInput;
-      if (state.isSelected) return designTokens.fontColorForInput;
-      return base.color;
+      if (state.isDisabled) return designTokens.fontColorForInputWhenDisabled;
+      return designTokens.fontColorForInput;
     })(),
     backgroundColor: (() => {
       if (state.isSelected) return designTokens.colorPrimary95;
@@ -332,13 +331,11 @@ const optionStyles = (props: TProps) => (base: TBase, state: TState) => {
         return designTokens.backgroundColorForInputWhenHovered;
       return base.backgroundColor;
     })(),
-
     '&:active': {
-      color: (() => {
-        if (!state.isDisabled) return designTokens.fontColorForInput;
-        return base.color;
+      backgroundColor: (() => {
+        if (state.isDisabled) return designTokens.colorTransparent;
+        return designTokens.colorPrimary95;
       })(),
-      backgroundColor: designTokens.colorPrimary95,
     },
   };
 };
