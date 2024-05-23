@@ -1,5 +1,26 @@
 # @commercetools-uikit/selectable-search-input
 
+## 19.4.0
+
+### Minor Changes
+
+- [#2809](https://github.com/commercetools/ui-kit/pull/2809) [`adaa8dc`](https://github.com/commercetools/ui-kit/commit/adaa8dca6b5288f4956e5d316751bfc49155b989) Thanks [@jmcreasman](https://github.com/jmcreasman)! - Add isCondensed prop that when set to true, condenses the input height, icon size and font size.
+
+- [#2776](https://github.com/commercetools/ui-kit/pull/2776) [`79318f5`](https://github.com/commercetools/ui-kit/commit/79318f53b9a3a4c0e0650d072f9df5a7b8dcb54a) Thanks [@ddouglasz](https://github.com/ddouglasz)! - We're introducing a **temporary** property to handle an internal case.
+  Please do not use it as it will be removed in the near future.
+
+### Patch Changes
+
+- Updated dependencies [[`d7ac138`](https://github.com/commercetools/ui-kit/commit/d7ac13892fe8ec9c0c4610e80fcc1ba5a941f139), [`3fa6bb7`](https://github.com/commercetools/ui-kit/commit/3fa6bb75284ef68a4a73618f6ad370f2b436c0ce), [`133cdca`](https://github.com/commercetools/ui-kit/commit/133cdcae8e4dcf5c704277a7143e7b0d4670fa76), [`82b5db8`](https://github.com/commercetools/ui-kit/commit/82b5db83881d1fc77d8491cea6439c6fc9c58fb1)]:
+  - @commercetools-uikit/icons@19.4.0
+  - @commercetools-uikit/select-utils@19.4.0
+  - @commercetools-uikit/input-utils@19.4.0
+  - @commercetools-uikit/design-system@19.4.0
+  - @commercetools-uikit/secondary-icon-button@19.4.0
+  - @commercetools-uikit/constraints@19.4.0
+  - @commercetools-uikit/hooks@19.4.0
+  - @commercetools-uikit/utils@19.4.0
+
 ## 19.3.1
 
 ### Patch Changes
