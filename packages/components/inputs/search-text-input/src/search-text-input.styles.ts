@@ -57,6 +57,9 @@ const getSearchTextInputStyles = (props: TInputProps) => [
     font-size: ${props.isCondensed
       ? `${designTokens.fontSize20}`
       : `${designTokens.fontSize30}`};
+    order: 2;
+    padding-left: 0;
+    padding-right: 0;
   `,
 ];
 
@@ -87,8 +90,8 @@ const getIconColor = (props: TInputProps, defaultColor: string) => {
 const getClearIconButtonStyles = (props: TInputProps) => [
   getButtonStyles(),
   css`
-    margin-right: ${designTokens.spacing20};
     fill: ${getIconColor(props, designTokens.colorNeutral60)};
+    order: 3;
     &:hover {
       fill: ${getIconColor(props, designTokens.colorPrimary)};
     }
@@ -98,9 +101,10 @@ const getClearIconButtonStyles = (props: TInputProps) => [
 const getSearchIconButtonStyles = (props: TInputProps) => [
   getButtonStyles(),
   css`
-    margin-right: ${designTokens.spacing25};
+    margin-left: ${designTokens.spacing30};
     fill: ${getIconColor(props, designTokens.colorNeutral60)};
     cursor: ${props.isReadOnly ? 'default' : 'pointer'};
+    order: 1;
     &:hover {
       fill: ${getIconColor(props, designTokens.colorPrimary)};
     }
@@ -132,6 +136,8 @@ const getSearchTextInputContainerStyles = (props: TInputProps) => [
       ? `${designTokens.heightForInputAsSmall}`
       : `${designTokens.heightForInput}`};
     box-sizing: border-box;
+    gap: ${designTokens.spacing10};
+    padding-right: ${designTokens.spacing30};
     &:hover {
       border-color: ${getInputContainerBorderColor(
         props,
