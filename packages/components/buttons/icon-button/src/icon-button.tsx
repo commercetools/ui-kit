@@ -18,6 +18,9 @@ import {
   getHoverStyles,
 } from './icon-button.styles';
 
+type TLegacySizes = 'small' | 'medium' | 'big';
+type TNewSizes = '40' | '30' | '20' | '10';
+
 export type TIconButtonProps<
   TStringOrComponent extends ElementType = 'button'
 > = {
@@ -69,7 +72,7 @@ export type TIconButtonProps<
   /**
    * Indicates the size of the icon.
    */
-  size?: 'small' | 'medium' | 'big';
+  size?: TLegacySizes | TNewSizes;
 } & /**
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be

@@ -38,10 +38,14 @@ const getShapeStyles = (
     case 'square':
       switch (size) {
         case 'small':
+        case '10':
+        case '20':
           return css`
             border-radius: ${designTokens.borderRadius2};
           `;
         case 'medium':
+        case '30':
+        case '40':
         case 'big':
           return css`
             border-radius: ${designTokens.borderRadius4};
@@ -69,6 +73,26 @@ const getSizeStyles = (size: TIconButtonProps['size']) => {
       return css`
         height: ${designTokens.heightForButtonAsBig};
         width: ${designTokens.heightForButtonAsBig};
+      `;
+    case '10':
+      return css`
+        height: ${designTokens.heightForButtonAs10};
+        width: ${designTokens.heightForButtonAs10};
+      `;
+    case '20':
+      return css`
+        height: ${designTokens.heightForButtonAs20};
+        width: ${designTokens.heightForButtonAs20};
+      `;
+    case '30':
+      return css`
+        height: ${designTokens.heightForButtonAs30};
+        width: ${designTokens.heightForButtonAs30};
+      `;
+    case '40':
+      return css`
+        height: ${designTokens.heightForButtonAs40};
+        width: ${designTokens.heightForButtonAs40};
       `;
     default:
       return css``;
