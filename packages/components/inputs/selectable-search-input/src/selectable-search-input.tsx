@@ -226,7 +226,7 @@ export type TSelectableSearchInputProps = {
    * <br/>
    * [Props from React select was used](https://react-select.com/props)
    */
-  components?: ReactSelectProps['components'];
+  selectCustomComponents?: ReactSelectProps['components'];
 };
 
 const defaultProps: Pick<
@@ -453,11 +453,7 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             textInputRef={textInputRef}
             selectedOption={selectedOption}
             dataProps={transformedSelectDataProps}
-            components={
-              {
-                ...props.components,
-              } as ReactSelectProps['components']
-            }
+            selectCustomComponents={props.selectCustomComponents}
           />
         </Constraints.Horizontal>
         <div
