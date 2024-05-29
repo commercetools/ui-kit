@@ -69,6 +69,7 @@ const SelectableSelect = (props: TSelectableSelect) => {
           />
         ),
         DropdownIndicator,
+        ...props.components,
       }}
       options={props.options}
       menuIsOpen={props.isReadOnly ? false : undefined}

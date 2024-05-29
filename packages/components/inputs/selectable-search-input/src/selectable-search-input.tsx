@@ -221,6 +221,12 @@ export type TSelectableSearchInputProps = {
    * eg: inputDataProps={[{ 'prop-1': 'value-1' }, { 'prop-2': 'value-2' }]}
    */
   inputDataProps?: Record<string, string>;
+  /**
+   * Map of components to overwrite the default ones, see what components you can override
+   * <br/>
+   * [Props from React select was used](https://react-select.com/props)
+   */
+  components?: ReactSelectProps['components'];
 };
 
 const defaultProps: Pick<
@@ -447,6 +453,11 @@ const SelectableSearchInput = (props: TSelectableSearchInputProps) => {
             textInputRef={textInputRef}
             selectedOption={selectedOption}
             dataProps={transformedSelectDataProps}
+            components={
+              {
+                ...props.components,
+              } as ReactSelectProps['components']
+            }
           />
         </Constraints.Horizontal>
         <div
