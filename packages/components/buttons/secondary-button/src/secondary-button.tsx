@@ -20,6 +20,31 @@ import {
   getToneStyles,
 } from './secondary-button.styles';
 
+/**
+ * @deprecated Use '10' from `TSizes` instead.
+ */
+type TSmall = 'small';
+
+/**
+ * @deprecated Use '10' from `TSizes` instead.
+ */
+type TMedium = 'medium';
+
+/**
+ * @deprecated Use '20' from `TSizes` instead.
+ */
+type TBig = 'big';
+
+/**
+ * @deprecated Use sizes from `TSizes` instead.
+ */
+type TLegacySizes = TSmall | TMedium | TBig;
+
+/**
+ * Available sizes for the SecondaryButton.
+ */
+type TSizes = '10' | '20';
+
 export type TSecondaryButtonProps<
   TStringOrComponent extends ElementType = 'button'
 > = {
@@ -63,7 +88,7 @@ export type TSecondaryButtonProps<
   /**
    * Indicates the size of the button.
    */
-  size?: 'medium' | 'big';
+  size?: TLegacySizes | TSizes;
   /**
    * Indicates the color scheme of the button.
    * @deprecated Use `tone` instead.
@@ -104,7 +129,7 @@ const defaultProps: Pick<
   type: 'button',
   theme: 'default',
   tone: 'secondary',
-  size: 'big',
+  size: '20',
   isToggleButton: false,
 };
 
@@ -174,7 +199,10 @@ export const SecondaryButton = <
             {props.iconLeft &&
               cloneElement(props.iconLeft, {
                 color: getIconColor(props),
-                size: props.size === 'big' ? 'big' : 'medium',
+                size:
+                  props.size === 'big' || props.size === '20'
+                    ? 'big'
+                    : 'medium',
               })}
           </span>
         )}

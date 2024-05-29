@@ -128,11 +128,13 @@ const getThemeStyles = (theme: Theme) => {
 
 const getSizeStyles = (size: TSecondaryButtonProps['size']) => {
   switch (size) {
+    case '10':
     case 'medium':
       return css`
         height: ${designTokens.heightForButtonAsMedium};
       `;
 
+    case '20':
     case 'big':
       return css`
         height: ${designTokens.heightForButtonAsBig};
