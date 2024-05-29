@@ -13,6 +13,31 @@ import { getBaseStyles } from './secondary-icon-button.styles';
 
 const propsToOmit = ['type'];
 
+/**
+ * @deprecated Use '10' from `TSizes` instead.
+ */
+type TSmall = 'small';
+
+/**
+ * @deprecated Use '30' from `TSizes` instead.
+ */
+type TMedium = 'medium';
+
+/**
+ * @deprecated Use '40' from `TSizes` instead.
+ */
+type TBig = 'big';
+
+/**
+ * @deprecated Use sizes from `TSizes` instead.
+ */
+type TLegacySizes = TSmall | TMedium | TBig;
+
+/**
+ * Available sizes for the SecondaryIconButton.
+ */
+type TSizes = '10' | '20' | '30' | '40';
+
 export type TSecondaryButtonIconProps<
   TStringOrComponent extends ElementType = 'button'
 > = {
@@ -46,7 +71,7 @@ export type TSecondaryButtonIconProps<
   /**
    * Indicates the size of the icon.
    */
-  size?: 'small' | 'medium' | 'big';
+  size?: TLegacySizes | TSizes;
   /**
    * Handler when the button is clicked.
    */
