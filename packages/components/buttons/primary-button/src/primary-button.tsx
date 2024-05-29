@@ -19,6 +19,31 @@ import { getButtonStyles } from './primary-button.styles';
 
 const propsToOmit = ['type'];
 
+/**
+ * @deprecated Use '10' from `TSizes` instead.
+ */
+type TSmall = 'small';
+
+/**
+ * @deprecated Use '10' from `TSizes` instead.
+ */
+type TMedium = 'medium';
+
+/**
+ * @deprecated Use '20' from `TSizes` instead.
+ */
+type TBig = 'big';
+
+/**
+ * @deprecated Use sizes from `TSizes` instead.
+ */
+type TLegacySizes = TSmall | TMedium | TBig;
+
+/**
+ * Available sizes for the PrimaryButton.
+ */
+type TSizes = '10' | '20';
+
 export type TPrimaryButtonProps<
   TStringOrComponent extends ElementType = 'button'
 > = {
@@ -62,11 +87,11 @@ export type TPrimaryButtonProps<
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * Indicates the size of the button.
+   * Sets the size of the button.
    * <br />
-   * `small` value has been deprecated. Please use `medium` value instead as a replacement.
+   * `small`, `medium`, and `big` are deprecated. Use `10`, `20`, instead.
    */
-  size?: 'small' | 'medium' | 'big';
+  size?: TLegacySizes | TSizes;
   /**
    * Indicates the color scheme of the button.
    */
@@ -82,7 +107,7 @@ const defaultProps: Pick<
   'type' | 'tone' | 'size' | 'isToggleButton'
 > = {
   type: 'button',
-  size: 'big',
+  size: '20',
   isToggleButton: false,
   tone: 'primary',
 };
@@ -129,7 +154,10 @@ const PrimaryButton = <TStringOrComponent extends ElementType = 'button'>(
             {props.iconLeft &&
               cloneElement(props.iconLeft, {
                 color: props.isDisabled ? 'neutral60' : 'surface',
-                size: props.size === 'big' ? 'big' : 'medium',
+                size:
+                  props.size === 'big' || props.size === '20'
+                    ? 'big'
+                    : 'medium',
               })}
           </span>
         )}

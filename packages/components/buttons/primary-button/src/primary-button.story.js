@@ -24,7 +24,7 @@ storiesOf('Components|Buttons', module)
         <PrimaryButton
           type={select('type', ['submit', 'reset', 'button'], 'button')}
           tone={select('tone', ['urgent', 'primary', 'critical'], 'primary')}
-          size={select('size', ['medium', 'big'], 'big')}
+          size={select('size', ['10', '20'], '20')}
           {...(selectedIcon
             ? { iconLeft: createElement(icons[selectedIcon]) }
             : {})}
