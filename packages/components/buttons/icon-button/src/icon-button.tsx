@@ -18,8 +18,30 @@ import {
   getHoverStyles,
 } from './icon-button.styles';
 
-type TLegacySizes = 'small' | 'medium' | 'big';
-type TNewSizes = '40' | '30' | '20' | '10';
+/**
+ * @deprecated Use '10' from `TSizes` instead.
+ */
+type TSmall = 'small';
+
+/**
+ * @deprecated Use '30' from `TSizes` instead.
+ */
+type TMedium = 'medium';
+
+/**
+ * @deprecated Use '40' from `TSizes` instead.
+ */
+type TBig = 'big';
+
+/**
+ * @deprecated Use sizes from `TSizes` instead.
+ */
+type TLegacySizes = TSmall | TMedium | TBig;
+
+/**
+ * Available sizes for the IconButton.
+ */
+type TSizes = '10' | '20' | '30' | '40';
 
 export type TIconButtonProps<
   TStringOrComponent extends ElementType = 'button'
@@ -72,7 +94,7 @@ export type TIconButtonProps<
   /**
    * Indicates the size of the icon.
    */
-  size?: TLegacySizes | TNewSizes;
+  size?: TLegacySizes | TSizes;
 } & /**
  * Include any props derived from the React component passed to the `as` prop.
  * For example, given `as={Link}`, all props of the `<Link>` component are allowed to be
@@ -85,7 +107,7 @@ const defaultProps: Pick<
 > = {
   type: 'button',
   theme: 'default',
-  size: 'big',
+  size: '40',
   shape: 'round',
   isToggleButton: false,
 };

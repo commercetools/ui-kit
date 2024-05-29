@@ -143,5 +143,25 @@ export const component = () => (
         theme="info"
       />
     </Spec>
+
+    <Spec label="sizes - when '10'">
+      <IconButton
+        icon={<InformationIcon />}
+        shape="square"
+        size="10"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
+
+    <Spec label="sizes - when '20'">
+      <IconButton
+        icon={<InformationIcon />}
+        shape="square"
+        size="10"
+        label="A label text"
+        onClick={() => {}}
+      />
+    </Spec>
   </Suite>
 );
