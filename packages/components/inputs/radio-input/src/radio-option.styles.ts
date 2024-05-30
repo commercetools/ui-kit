@@ -155,7 +155,7 @@ const RadioOptionLabel = styled.label<TStylesProps>`
 
   ${(props) =>
     !props.isReadOnly
-      ? `:focus-within ${LabelTextWrapper} {
+      ? `:focus-within:has(:focus-visible) ${LabelTextWrapper} {
       outline: auto 2px ${designTokens.borderColorForInputWhenFocused};
       outline-offset: 2px;
       width: fit-content;
