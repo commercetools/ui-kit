@@ -4,6 +4,7 @@ import SelectableSearchInput, {
   type TCustomEvent,
 } from './selectable-search-input';
 import { screen, render, fireEvent } from '../../../../../test/test-utils';
+import { components, OptionProps } from 'react-select';
 
 // We use this component to simulate the whole flow of
 // changing a value and submitting.
@@ -179,6 +180,34 @@ describe('SelectableSearchInput', () => {
         name: 'test-name.dropdown',
       },
     });
+  });
+
+  it('should render custom dropdown component', async () => {
+    const onFocus = jest.fn();
+
+    const Option = (props: OptionProps) => {
+      return (
+        <div>
+          <span>Custom text</span>
+          <components.Option {...props} />
+        </div>
+      );
+    };
+
+    render(
+      <TestComponent
+        value={{ text: 'test value', option: 'bar' }}
+        onFocus={onFocus}
+        selectCustomComponents={{ Option }}
+      />
+    );
+
+    const selectInput = screen.getByLabelText('Bar');
+    fireEvent.focus(selectInput);
+    fireEvent.keyDown(selectInput, { key: 'ArrowDown', code: 'ArrowDown' });
+    expect(
+      screen.getByTestId('selectable-search-input-container')
+    ).toHaveTextContent('Custom text');
   });
 
   it('should call onBlur twice when input loses focus for outside element', () => {
