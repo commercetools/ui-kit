@@ -3,7 +3,6 @@ import { css } from '@emotion/react';
 import { designTokens } from '@commercetools-uikit/design-system';
 import type { TPrimaryButtonProps } from './primary-button';
 
-// TODO
 const getSizeStyles = (size: TPrimaryButtonProps['size']) => {
   switch (size) {
     // rendering the same style for now to not introduce a breaking change
