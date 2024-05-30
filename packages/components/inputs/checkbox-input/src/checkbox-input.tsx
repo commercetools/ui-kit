@@ -210,7 +210,7 @@ const Label = styled.label<TLabelProps>`
   }};
   position: relative;
 
-  &:focus-within ${LabelTextWrapper} {
+  &:focus-within:has(:focus-visible) ${LabelTextWrapper} {
     box-shadow: 0 0 0 2px ${designTokens.borderColorForInputWhenFocused};
   }
 
