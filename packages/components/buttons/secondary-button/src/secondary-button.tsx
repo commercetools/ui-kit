@@ -86,7 +86,9 @@ export type TSecondaryButtonProps<
     event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
   ) => void;
   /**
-   * Indicates the size of the button.
+   * Sets the size of the button.
+   * <br />
+   * `small`, `medium`, and `big` are deprecated. Use `10` or `20`, instead.
    */
   size?: TLegacySizes | TSizes;
   /**

@@ -92,7 +92,7 @@ export type TIconButtonProps<
    */
   theme?: 'default' | 'primary' | 'info';
   /**
-   * Indicates the size of the icon.
+   * Indicates the size of the icon. Available sizes are '10', '20', '30', '40'.
    */
   size?: TLegacySizes | TSizes;
 } & /**
